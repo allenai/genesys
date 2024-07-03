@@ -18,6 +18,8 @@ from .prompts import (
     REVIEWER_PROMPT,
     GAMConfig,
     GAMConfig_10M,
+    GAB_TEMPLATE,
+    GAM_MODEL
 )
 
 C = TypeVar("C",bound="DiscoverySystem")
@@ -81,7 +83,6 @@ class CustomParams(exec_utils.ModuleParams):
             "exclude_hash" : True,
         }
     )
-
     
 @exec_utils.Registry(
     resource_type="system_type",
@@ -119,7 +120,6 @@ class DiscoverySystem(exec_utils.System):
         stream: Optional[ModuleType] = None,
         frontend: Optional[bool] = False,
         status: Optional[bool] = True,
-        model_name: Optional[str]='',
         **kwargs
     ) -> list:
         """Main function for implementing system calls.
@@ -127,19 +127,23 @@ class DiscoverySystem(exec_utils.System):
         :param query: 
             The query to the overall system. 
         :param stream: 
-            The streamlit module for writing to frontend 
+            The (optional) streamlit module for writing to frontend 
         :param frontend: 
             Switch indiciating whether system is being used 
-            with a frontend. 
-        :param model_name: 
-            The name of the model to query (if specified and 
-            multiple models are provided). 
+            with a frontend.
         
         """
-        print(f"query: {query}, passing to desig agent")
-        designer_response = self.designer(query)
+        designer_prompt = DESIGNER_PROMPT.format(
+            gam_py=GAM_MODEL,
+            gab_py=GAB_TEMPLATE,
+            config=GAMConfig_10M().print_config(),
+            instruct=''
+        )
 
-        print(designer_response)
+        designer_out = self.designer(designer_prompt)
+
+        print(designer_out['feedback'])
+        
     
     @classmethod
     def from_config(cls: Type[C],config: ConfigType,**kwargs) -> C:
