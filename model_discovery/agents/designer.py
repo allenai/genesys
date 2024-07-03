@@ -20,14 +20,13 @@ class DesignerAgent(exec_utils.SimpleLMAgent):
     """Agent for designing new models. 
 
     """
-    def query(
-        self,
-        query: str,
-        source: Optional[str] = "user",
-        manual_history: Optional[Tuple[str,str]] = [], 
-        **kwargs
-        ) -> Dict[str,Any]:
-        """Main method for querying agent 
-        
-        """
-        raise NotImplementedError
+    # def query(
+    #     self,
+    #     query: str,
+    #     source: Optional[str] = "user",
+    #     manual_history: Optional[Tuple[str,str]] = [], 
+    #     **kwargs
+    #     ) -> Dict[str,Any]:
+    #     """Main method for querying agent 
+    #     """
+    #     raise NotImplementedError

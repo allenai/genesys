@@ -13,6 +13,12 @@ import exec_utils
 from exec_utils.aliases import ConfigType
 from exec_utils import BuildAgent
 from .agents import *
+from .prompts import (
+    DESIGNER_PROMPT,
+    REVIEWER_PROMPT,
+    GAMConfig,
+    GAMConfig_10M,
+)
 
 C = TypeVar("C",bound="DiscoverySystem")
 
@@ -76,6 +82,7 @@ class CustomParams(exec_utils.ModuleParams):
         }
     )
 
+    
 @exec_utils.Registry(
     resource_type="system_type",
     name="discovery_system",
@@ -105,7 +112,7 @@ class DiscoverySystem(exec_utils.System):
         self.designer = designer
         self.reviewer = reviewer
         self._config = config
-        
+
     def query_system(
         self,
         query: str,
@@ -128,9 +135,11 @@ class DiscoverySystem(exec_utils.System):
             The name of the model to query (if specified and 
             multiple models are provided). 
         
-
         """
-        print("hello world")
+        print(f"query: {query}, passing to desig agent")
+        designer_response = self.designer(query)
+
+        print(designer_response)
     
     @classmethod
     def from_config(cls: Type[C],config: ConfigType,**kwargs) -> C:
