@@ -1,0 +1,50 @@
+# model_discovery 
+
+Utils and code for model discovery experiments. 
+
+# Setting up 
+
+We recommend setting up a conda environment as below
+```
+conda create -n model_discovery python=3.10
+conda activate model_discovery 
+```
+
+Currently, the agent portion relies on a private agent repo [**here**](https://github.com/allenai/exec_utils) (*soon to be made public and renamed*). This can be installed as below (requires github token):
+```
+pip install git+https://{TOKEN}@github.com/allenai/exec_utils
+```
+
+This will install all agent associated requirements. You will also need to incorporate one or more of the following API
+keys to access the underlying models: 
+```shell
+
+export MY_OPENAI_KEY=XXXXXXXXXXXXX
+export TOGETHER_API_KEY=XXXXXXXXXXXXX
+```
+
+To check that the installation works correctly, you can try to the following: 
+```
+from exec_utils import BuildModel
+
+llm = BuildModel()
+llm("what is your name?")
+```
+
+*TODO*: add additional requirements for training portion of code. 
+
+# Current discovery system 
+
+To build a discovery system, you can do the following: 
+```
+from model_discovery import BuildSystem 
+
+
+system = BuildSystem() 
+system("discovery me a new model") 
+```
+The implementation is in `model_discovery/system.py`, which loads a `designer` and `reviewer` agent (by default) from the agent specification files in `etc/agent_spec` (this can be modified as needed and additional agents can be added). 
+
+# Agent front-end 
+
+**todo** 
