@@ -6,7 +6,13 @@ DESIGNER = {
     "agent_type" : "model_agent",
     "instruction": """You are a natural language processing researcher who is trying to discover a novel autoregressive model block for a new language model. 
 The language model will be pretrained with the corpus and then be applied for downstream tasks. 
-The new model is expected to have a low perplexity, high accuracy, good scalability, and efficiency.""",
+The new model is expected to have a low perplexity, high accuracy, good scalability, and efficiency.
+
+Please ONLY RETURN CODE and format your output using JSON and the following schema
+{"code" : "<your code implementation>"}
+
+Please only print the RAW JSON without any additional formatting quotes.
+""",
      "format" : "",
      "examples" : [],
 }

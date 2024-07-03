@@ -1,3 +1,7 @@
+import exec_utils
+import pathlib
+import os
+
 from types import ModuleType
 from typing import (
     Type,
@@ -9,7 +13,7 @@ from typing import (
     Optional,
     Union
 )
-import exec_utils
+
 from exec_utils.aliases import ConfigType
 from exec_utils import BuildAgent
 from .agents import *
@@ -23,6 +27,10 @@ from .prompts import (
 )
 
 C = TypeVar("C",bound="DiscoverySystem")
+
+from . import gab_template as GB
+from . import gam as GM
+
 
 __all__ = [
     "DiscoverySystem",
@@ -83,7 +91,21 @@ class CustomParams(exec_utils.ModuleParams):
             "exclude_hash" : True,
         }
     )
-    
+
+    ### code information
+    block_template: str = exec_utils.ParamField(
+        default=GB.__file__,
+        metadata={
+            "help"         : 'Location of block for prompting ',
+        }
+    )
+    gam_code: str = exec_utils.ParamField(
+        default=GM.__file__,
+        metadata={
+            "help"         : 'Location of code prompting ',
+        }
+    )
+
 @exec_utils.Registry(
     resource_type="system_type",
     name="discovery_system",
@@ -116,7 +138,7 @@ class DiscoverySystem(exec_utils.System):
 
     def query_system(
         self,
-        query: str,
+        query: Optional[str] = '',
         stream: Optional[ModuleType] = None,
         frontend: Optional[bool] = False,
         status: Optional[bool] = True,
@@ -139,12 +161,9 @@ class DiscoverySystem(exec_utils.System):
             config=GAMConfig_10M().print_config(),
             instruct=''
         )
-
         designer_out = self.designer(designer_prompt)
+        print(designer_out)
 
-        print(designer_out['feedback'])
-        
-    
     @classmethod
     def from_config(cls: Type[C],config: ConfigType,**kwargs) -> C:
         """The main method for instantiating system instances from configuration. 
