@@ -5,13 +5,13 @@ Utils and code for model discovery experiments.
 # Setting up 
 
 We recommend setting up a conda environment as below
-```
+```shell
 conda create -n model_discovery python=3.10
 conda activate model_discovery 
 ```
 
 Currently, the agent portion relies on a private agent repo [**here**](https://github.com/allenai/exec_utils) (*soon to be made public and renamed*). This can be installed as below (requires github token):
-```
+```shell
 pip install git+https://{TOKEN}@github.com/allenai/exec_utils
 ```
 
@@ -24,7 +24,7 @@ export TOGETHER_API_KEY=XXXXXXXXXXXXX
 ```
 
 To check that the installation works correctly, you can try to the following: 
-```
+```python
 from exec_utils import BuildModel
 
 llm = BuildModel()
@@ -36,7 +36,7 @@ llm("what is your name?")
 # Current discovery system 
 
 To build a discovery system, you can do the following: 
-```
+```python
 from model_discovery import BuildSystem 
 
 
