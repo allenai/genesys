@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import (
     Dict,
     Tuple,
@@ -18,15 +20,59 @@ __all__ = [
 )
 class DesignerAgent(exec_utils.SimpleLMAgent):
     """Agent for designing new models. 
-
+    
+    Methods 
+    ----------
+    query(query: str) -> dict
+        The main method for handling input queries to the agent. 
+    parse_output(raw_output: str) -> Any
+        The main method for parsing and normalizing the output 
     """
-    # def query(
-    #     self,
-    #     query: str,
-    #     source: Optional[str] = "user",
-    #     manual_history: Optional[Tuple[str,str]] = [], 
-    #     **kwargs
-    #     ) -> Dict[str,Any]:
-    #     """Main method for querying agent 
-    #     """
-    #     raise NotImplementedError
+    def parse_output(self,raw_output: ModelOutput) -> Dict[Any,Any]:
+        """Execution of the output produced by the agent.  
+
+        :param raw_output: 
+            The raw output of the model
+        :returns: 
+            A dictionary containing the formatted output plus 
+            additional details `_details` with information about 
+            the running costs of the model.
+        """
+        raw_text = raw_output.text
+
+        output = {}
+        output["code"] = raw_text
+        output["_details"] = {}
+        output["_details"]["cost"] = raw_output.cost
+        output["_details"]["running_cost"] = self.cost
+
+        return output
+    
+
+    def query(
+        self,
+        query: str,
+        source: Optional[str] = "user",
+        manual_history: Optional[Tuple[str,str]] = [], 
+        **kwargs
+        ) -> Dict[str,Any]:
+        """Main method for querying agent 
+
+        :param query: 
+            The target query to pass to the agent. 
+        :param source: 
+            The source of the query (optional) that indicates where 
+            the query is coming from (e.g., human, assistant, etc)
+        :param intermediate: 
+            Indicates whether the query is part of a series of queries
+            to the agent (which requires using the history)  
+        """
+        self.model_state.query_state = source
+        raw_response = self.model(
+            prompt=query,
+            model_state=self.model_state,
+            history=manual_history
+        )
+        response = self.parse_output(raw_response)
+
+        return response

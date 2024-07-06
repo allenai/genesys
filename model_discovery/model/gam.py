@@ -12,6 +12,19 @@ from transformers.modeling_outputs import CausalLMOutput
 import torch
 from torch import nn, Tensor
 
+from .configs.gam_config import GAMConfig
+from .gab import GAB, gab_config
+from .utils.generation import GenerationMixin
+from .utils.hf import load_config_hf, load_state_dict_hf
+
+try: 
+    from .ops.triton.layer_norm import RMSNorm, layer_norm_fn, rms_norm_fn
+except:
+    RMSNorm       = None
+    layer_norm_fn = None
+    rms_norm_fn   = None 
+    
+
 class Block(nn.Module):
     def __init__(
         self, dim, gab, norm_cls=nn.LayerNorm, fused_add_norm=False, residual_in_fp32=False
@@ -33,6 +46,11 @@ class Block(nn.Module):
         self.fused_add_norm = fused_add_norm
         self.norm = norm_cls(dim)
         self.gab = gab()
+
+        ### turns it off 
+        if RMSNorm is None:
+            self.fused_add_norm = False
+            
         if self.fused_add_norm:
             assert RMSNorm is not None, "RMSNorm import fails"
             assert isinstance(
@@ -98,6 +116,38 @@ def create_block(
     return block
 
 
+# https://github.com/huggingface/transformers/blob/c28d04e9e252a1a099944e325685f14d242ecdcd/src/transformers/models/gpt2/modeling_gpt2.py#L454
+def _init_weights(
+    module,
+    n_layer,
+    initializer_range=0.02,  # Now only used for embedding layer.
+    rescale_prenorm_residual=True,
+):
+    if isinstance(module, nn.Linear):
+        if module.bias is not None:
+            if not getattr(module.bias, "_no_reinit", False):
+                nn.init.zeros_(module.bias)
+    elif isinstance(module, nn.Embedding):
+        nn.init.normal_(module.weight, std=initializer_range)
+
+    if rescale_prenorm_residual:
+        # Reinitialize selected weights subject to the OpenAI GPT-2 Paper Scheme:
+        #   > A modified initialization which accounts for the accumulation on the residual path with model depth. Scale
+        #   > the weights of residual layers at initialization by a factor of 1/√N where N is the # of residual layers.
+        #   >   -- GPT-2 :: https://openai.com/blog/better-language-models/
+        #
+        # Reference (Megatron-LM): https://github.com/NVIDIA/Megatron-LM/blob/main/megatron/model/gpt_model.py
+        for name, p in module.named_parameters():
+            if name in ["out_proj.weight", "fc2.weight"]:
+                # Special Scaled Initialization --> There are 2 Layer Norms per Transformer Block
+                # Following Pytorch init, except scale by 1/sqrt(2 * n_layer)
+                # We need to reinit p since this code could be called multiple times
+                # Having just p *= scale would repeatedly scale it down
+                nn.init.kaiming_uniform_(p, a=math.sqrt(5))
+                with torch.no_grad():
+                    p /= math.sqrt(n_layer)
+
+
 class GAM(nn.Module):
     ''' Generalized Autoregressive Models
         Input:        X: (batch, seqlen, embed_dim)
@@ -122,12 +172,20 @@ class GAM(nn.Module):
         self.d_model = d_model
         self.embedding = nn.Embedding(vocab_size, d_model, **self.factory_kwargs)
 
+        # We change the order of residual and layer norm:
+        # Instead of LN -> Attn / MLP -> Add, we do:
+        # Add -> LN -> Attn / MLP / Mixer, returning both the residual branch (output of Add) and
+        # the main branch (output of MLP / Mixer). The model definition is unchanged.
+        # This is for performance reason: we can fuse add + layer_norm.
         self.fused_add_norm = fused_add_norm
         if self.fused_add_norm:
             if layer_norm_fn is None or rms_norm_fn is None:
                 raise ImportError("Failed to import Triton LayerNorm / RMSNorm kernels")
 
         block_config = gab_config()
+        # if n_layer is None:
+        #     assert 'n_layer' in block_config, "n_layer must be provided if not in block_config"
+        #     n_layer = block_config['n_layer']
         self.n_layer = n_layer
         self.layers = nn.ModuleList(
             [
@@ -186,3 +244,92 @@ class GAM(nn.Module):
                 is_rms_norm=isinstance(self.norm_f, RMSNorm)
             )
         return hidden_states
+
+
+class ModisLMHeadModel(nn.Module, GenerationMixin):
+    ''' Generalized Autoregressive Models with LM Head '''
+
+    def __init__(
+        self,
+        config: GAMConfig,
+        initializer_cfg=None,
+        device=None,
+        dtype=None,
+    ) -> None:
+        self.config = config
+        self.d_model = config.d_model
+        n_layer = config.n_layer
+        vocab_size = config.vocab_size
+        rms_norm = config.rms_norm
+        residual_in_fp32 = config.residual_in_fp32
+        fused_add_norm = config.fused_add_norm
+        pad_vocab_size_multiple = config.pad_vocab_size_multiple
+        factory_kwargs = {"device": device, "dtype": dtype}
+
+        super().__init__()
+        if vocab_size % pad_vocab_size_multiple != 0:
+            vocab_size += pad_vocab_size_multiple - (vocab_size % pad_vocab_size_multiple)
+        self.backbone = GAM(
+            d_model=self.d_model,
+            n_layer=n_layer,
+            vocab_size=vocab_size,
+            rms_norm=rms_norm,
+            initializer_cfg=initializer_cfg,
+            fused_add_norm=fused_add_norm,
+            residual_in_fp32=residual_in_fp32,
+            **factory_kwargs,
+        )
+        self.lm_head = nn.Linear(self.d_model, vocab_size, bias=False, **factory_kwargs)
+
+        # Initialize weights and apply final processing
+        self.apply(
+            partial(
+                _init_weights,
+                n_layer=n_layer,
+                **(initializer_cfg if initializer_cfg is not None else {}),
+            )
+        )
+        self.tie_weights()
+
+    def tie_weights(self):
+        if self.config.tie_embeddings:
+            self.lm_head.weight = self.backbone.embedding.weight
+
+    def allocate_inference_cache(self, batch_size, max_seqlen, dtype=None, **kwargs):
+        return self.backbone.allocate_inference_cache(batch_size, max_seqlen, dtype=dtype, **kwargs)
+
+    def forward(self, input_ids, position_ids=None, inference_params=None, num_last_tokens=0, **mixer_kwargs):
+        """
+        "position_ids" is just to be compatible with Transformer generation. We don't use it.
+        num_last_tokens: if > 0, only return the logits for the last n tokens
+        """
+        hidden_states = self.backbone(input_ids, inference_params=inference_params, **mixer_kwargs)
+        if num_last_tokens > 0:
+            hidden_states = hidden_states[:, -num_last_tokens:]
+        lm_logits = self.lm_head(hidden_states)
+        return CausalLMOutput(logits=lm_logits)
+
+    @classmethod
+    def from_pretrained(cls, config: GAMConfig, pretrained_model_name, device=None, dtype=None, **kwargs):
+        config_data = load_config_hf(pretrained_model_name)
+        config = config(**config_data)
+        model = cls(config, device=device, dtype=dtype, **kwargs)
+        model.load_state_dict(load_state_dict_hf(pretrained_model_name, device=device, dtype=dtype))
+        return model
+
+    def save_pretrained(self, save_directory):
+        """
+        Minimal implementation of save_pretrained for MambaLMHeadModel.
+        Save the model and its configuration file to a directory.
+        """
+        # Ensure save_directory exists
+        os.makedirs(save_directory, exist_ok=True)
+
+        # Save the model's state_dict
+        model_path = os.path.join(save_directory, 'pytorch_model.bin')
+        torch.save(self.state_dict(), model_path)
+
+        # Save the configuration of the model
+        config_path = os.path.join(save_directory, 'config.json')
+        with open(config_path, 'w') as f:
+            json.dump(self.config.__dict__, f, indent=4)

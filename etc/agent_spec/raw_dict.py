@@ -8,13 +8,13 @@ DESIGNER = {
 The language model will be pretrained with the corpus and then be applied for downstream tasks. 
 The new model is expected to have a low perplexity, high accuracy, good scalability, and efficiency.
 
-Please ONLY RETURN CODE and format your output using JSON and the following schema
-{"code" : "<your code implementation>"}
-
-Please only print the RAW JSON without any additional formatting quotes.
 """,
-     "format" : "",
+     "format"     : "Please print python code only (DO NOT WRAP IN QUOTES, just print the raw code) and DO NOT ADD ANY ADDITIONAL TEXT",
      "examples" : [],
+     "_params" : {
+         "model_name" : "gpt-4o-2024-05-13",
+         "max_output_tokens" : 1000,
+     }
 }
 
 with open('designer.json','w') as designer_agent:

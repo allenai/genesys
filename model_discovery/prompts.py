@@ -229,3 +229,5 @@ GAM_MODEL = """class GAM(nn.Module):
             )
         return hidden_states
 """
+
+GAB_ERROR = """Please provide the full gab code, and please do not modify other parts of the code. Specifically, please preserve # gab.py at the beginning of gab.py."""

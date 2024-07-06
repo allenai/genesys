@@ -1,6 +1,8 @@
 import exec_utils
 import pathlib
 import os
+import time
+import tempfile
 
 from types import ModuleType
 from typing import (
@@ -15,27 +17,28 @@ from typing import (
 )
 
 from exec_utils.aliases import ConfigType
-from exec_utils import BuildAgent
+from exec_utils import (
+    BuildAgent,
+    BuildTool
+)
 from .agents import *
 from .prompts import (
     DESIGNER_PROMPT,
     REVIEWER_PROMPT,
     GAMConfig,
     GAMConfig_10M,
-    GAB_TEMPLATE,
-    GAM_MODEL
+    GAB_ERROR
 )
 
-C = TypeVar("C",bound="DiscoverySystem")
-
-from . import gab_template as GB
-from . import gam as GM
-
+C = TypeVar("C",bound="ModelDiscoverySystem")
 
 __all__ = [
-    "DiscoverySystem",
+    "ModelDiscoverySystem",
     "BuildSystem",
 ]
+
+PROJ_SRC = os.path.abspath(os.path.dirname(__file__))
+SYSTEM_OUT = os.path.abspath(f"{PROJ_SRC}/../_runs")
 
 @exec_utils.Registry("config","discovery_system")
 class CustomParams(exec_utils.ModuleParams):
@@ -78,14 +81,18 @@ class CustomParams(exec_utils.ModuleParams):
 
     ### agent profiles
     designer_spec: str = exec_utils.ParamField(
-        default='etc/agent_spec/designer.json',
+        default=os.path.abspath(
+            f'{PROJ_SRC}/../etc/agent_spec/designer.json'
+        ),
         metadata={
             "help"         : 'Specification of design agent',
             "exclude_hash" : True,
         }
     )
     reviewer_spec: str = exec_utils.ParamField(
-        default='etc/agent_spec/reviewer.json',
+        default=os.path.abspath(
+            f'{PROJ_SRC}/../etc/agent_spec/reviewer.json'
+        ),
         metadata={
             "help"         : 'Specification of reviewer agent',
             "exclude_hash" : True,
@@ -94,24 +101,54 @@ class CustomParams(exec_utils.ModuleParams):
 
     ### code information
     block_template: str = exec_utils.ParamField(
-        default=GB.__file__,
+        default=os.path.abspath(
+            f'{PROJ_SRC}/gab_template.py'
+        ),
+        #default=GB.__file__,
         metadata={
             "help"         : 'Location of block for prompting ',
         }
     )
     gam_code: str = exec_utils.ParamField(
-        default=GM.__file__,
+        default=os.path.abspath(
+            f'{PROJ_SRC}/gam.py'
+        ),
         metadata={
             "help"         : 'Location of code prompting ',
         }
     )
 
+    ### debugging
+    debug_steps: bool = exec_utils.ParamField(
+        default=False,
+        metadata={
+            "help"         : 'Debug the steps of the system',
+            "exclude_hash" : True,
+        }
+    )
+
+def get_context_info(config) -> Tuple[str,str]:
+    """Grabs the block and model implementation details for the prompt 
+
+    :param config: 
+        The global configuration 
+    :raises ValueError : 
+    """
+    if not os.path.isfile(config.block_template):
+        raise ValueError(f'Cannot find the block template: {config.block_template}')
+    if not os.path.isfile(config.gam_code):
+        raise ValueError(f'Cannot find the code context')
+    block = open(config.block_template).read()
+    code = open(config.gam_code).read()
+    
+    return (block,code)
+    
 @exec_utils.Registry(
     resource_type="system_type",
-    name="discovery_system",
+    name="model_discovery_system",
     #cache="query_system",
 )
-class DiscoverySystem(exec_utils.System):
+class ModelDiscoverySystem(exec_utils.System):
     """Overall system for discovery
 
     """
@@ -120,6 +157,10 @@ class DiscoverySystem(exec_utils.System):
         self,
         designer : Type[exec_utils.SimpleLMAgent],
         reviewer : Type[exec_utils.SimpleLMAgent],
+        checker  : Type[exec_utils.BaseTool], 
+        *,
+        block_template: str,
+        model_implementation: str,
         config: ConfigType 
     ) -> None:
         """Create a `DiscoverySystem` instance 
@@ -129,12 +170,24 @@ class DiscoverySystem(exec_utils.System):
             The designer agent. 
         :param reviewer: 
            The reviewer agent. 
+        :param block_template: 
+           The autoregressive block that the model has to fill in.
+        :param model_implementation: 
+           The full model implementation for context 
         :param config: 
            System global configuration. 
         """
+        ### modules 
         self.designer = designer
         self.reviewer = reviewer
+        self.checker = checker
+        
+        self.gam_py = model_implementation
+        self.gab_py = block_template
         self._config = config
+
+        ###
+        self._queries = [] 
 
     def query_system(
         self,
@@ -155,15 +208,50 @@ class DiscoverySystem(exec_utils.System):
             with a frontend.
         
         """
-        designer_prompt = DESIGNER_PROMPT.format(
-            gam_py=GAM_MODEL,
-            gab_py=GAB_TEMPLATE,
+        problem_history = []
+        query = DESIGNER_PROMPT.format(
+            gam_py=self.gam_py,
+            gab_py=self.gab_py,
             config=GAMConfig_10M().print_config(),
-            instruct=''
+            instruct=query,
         )
-        designer_out = self.designer(designer_prompt)
-        print(designer_out)
+        source = 'user'
+        self._queries.append(query)
 
+        
+        for attempt in range(self._config.max_design_attempts):
+
+            designer_out = self.designer(
+                query,
+                source=source,
+                manual_history=problem_history, #<--- dialogue history and state
+            )
+            problem_history.append((query,source))
+            
+            try:
+                code = designer_out["code"]
+                problem_history.append((str(code),"assistant"))
+                
+                if self._config.debug_steps:
+                    print(f"DESIGNER CODE PROPOSED #={attempt}:\n===================\n {designer_out['code']}")
+
+                if "# gab.py" not in code: raise
+            except:
+                query = GAB_ERROR
+                source = 'user'
+                continue
+
+            # ## print the design out
+            design_out = f"{self._config.wdir}/{len(self._queries)}_design_{attempt}.py"
+            with open(design_out,'w') as new_design:
+                new_design.write(code)
+
+            self.checker(design_out)
+                
+            break 
+
+
+        
     @classmethod
     def from_config(cls: Type[C],config: ConfigType,**kwargs) -> C:
         """The main method for instantiating system instances from configuration. 
@@ -180,20 +268,28 @@ class DiscoverySystem(exec_utils.System):
             agent_file=config.designer_spec,
             agent_model_type="designer_agent"
         )
+        checker = BuildTool(
+            tool_type="checker",
+        )
         reviewer = BuildAgent(
             config,
             agent_file=config.reviewer_spec,
             agent_model_type="reviewer_agent"
         )
-
-        ## can add more components as needed 
+        
+        
+        ### get the model information for context
+        block, code = get_context_info(config)
 
         return cls(
             designer,
             reviewer,
-            config
+            checker,
+            block_template=block,
+            model_implementation=code,
+            config=config
         )
-    
+
 def BuildSystem(
         config: Optional[ConfigType] = None,
         **kwargs
@@ -204,5 +300,13 @@ def BuildSystem(
         The optional configuration object. 
     """
     from exec_utils import BuildSystem
-    kwargs["system_type"] = "discovery_system"
+    kwargs["system_type"] = "model_discovery_system"
+
+    if config and not config.wdir:
+        wdir = f"{SYSTEM_OUT}/{time.strftime('%Y%m%d_%H%M%S')}"
+        kwargs["wdir"] = wdir
+    elif "wdir" not in kwargs:
+        wdir = f"{SYSTEM_OUT}/{time.strftime('%Y%m%d_%H%M%S')}"
+        kwargs["wdir"] = wdir
+
     return BuildSystem(config,**kwargs)
