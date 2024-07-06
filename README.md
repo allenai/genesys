@@ -22,7 +22,7 @@ keys to access the underlying models:
 
 export MY_OPENAI_KEY=XXXXXXXXXXXXX
 export TOGETHER_API_KEY=XXXXXXXXXXXXX
-export HF_KEY=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
+export HF_KEY=XXXXXXXXXXXXX
 ```
 
 To check that the installation works correctly, you can try to the following: 
