@@ -10,6 +10,3 @@ clean-pyc:
 	find . -name '*~' -exec rm -f {} +
 
 clean: clean-pyc
-
-#test:
-

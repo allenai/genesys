@@ -4,7 +4,7 @@ from dataclasses import dataclass, field, asdict
 @dataclass
 class GAMConfig:
     '''Configurations for Generalized Autoregressive Models.'''
-
+    
     d_model: int
     n_layer: int # d_model and n_layers are provided, so the agent can focus on the block design instead of HPO
     param_magnitude: int # The magnitude of the non-emb parameters, e.g., 1e7, 3.5e7, param num should not exceed it (or with some threshold) 

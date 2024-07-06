@@ -212,12 +212,11 @@ class ModelDiscoverySystem(exec_utils.System):
         query = DESIGNER_PROMPT.format(
             gam_py=self.gam_py,
             gab_py=self.gab_py,
-            config=GAMConfig_10M().print_config(),
+            config=GAMConfig_10M().print_config(), #<--- need to parameterize 
             instruct=query,
         )
         source = 'user'
         self._queries.append(query)
-
         
         for attempt in range(self._config.max_design_attempts):
 
