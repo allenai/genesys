@@ -13,10 +13,8 @@ conda activate model_discovery
 Currently, the agent portion relies on a private agent repo [**here**](https://github.com/allenai/exec_utils) (*soon to be made public and renamed*). This can be installed as below (requires github token):
 ```shell
 pip install git+https://{TOKEN}@github.com/allenai/exec_utils
-pip install -r requirements.txt
+pip install -r requirements.txt # use `requirements_linux.txt` for linux
 ```
-
-
 
 This will install all agent associated requirements. You will also need to incorporate one or more of the following API
 keys to access the underlying models: 
