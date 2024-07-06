@@ -99,6 +99,6 @@ if __name__ == "__main__":
     parser.add_argument("--gradient_accumulation_steps", type=int, default=1)
     parser.add_argument("--optim", type=str, default="adamw_apex_fused") # adamw_apex_fused 
     args = parser.parse_args()
-    
+
     #wandb.init(project="modis", name=f"{args.modelname}_{args.config}")
     #notebook_launcher(run, args=(vars(args),), num_processes=args.n_gpus)
