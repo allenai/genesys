@@ -30,7 +30,13 @@ Other library specific environment variables
 ```
 export DATA_DIR=/path/to/data/dir
 ```
+to specify where to dump data when running training. 
 
+### create beaker image
+You can run 
+```
+sh create_beaker.sh 
+```
 
 
 To check that the installation works correctly, you can try to the following: 
