@@ -10,6 +10,7 @@ conda create -n model_discovery python=3.10
 conda activate model_discovery 
 ```
 
+### python dependencies 
 Currently, the agent portion relies on a private agent repo [**here**](https://github.com/allenai/exec_utils) (*soon to be made public and renamed*). This can be installed as below (requires github token):
 ```shell
 pip install git+https://{TOKEN}@github.com/allenai/exec_utils
@@ -34,18 +35,20 @@ llm = BuildModel()
 llm("what is your name?")
 ```
 
-
+### training data variables 
 Other library specific environment variables 
 ```
 export DATA_DIR=/path/to/data/dir
 ```
 to specify where to dump data when running training. 
 
-### create beaker image
+### create beaker image (ai2 internal) 
 You can run 
 ```
 sh create_beaker.sh 
 ```
+to create a beaker image that allows you to run beaker batch jobs. 
+
 
 
 
