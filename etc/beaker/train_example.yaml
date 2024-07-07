@@ -1,0 +1,22 @@
+description: Example run of training
+budget: ai2/aristo
+tasks:
+  - name: model_discovery_train
+    image:
+      beaker: 01J25NBGQA1YS4ZYSD00167D45
+    command: [python, -m, model_discovery.train]
+    envVars:
+      - name: DATA_DIR
+        value: /output
+      - name: HF_KEY
+        secret: HF_TOKEN_SECRET
+    result:
+      path: /output
+    resources:
+      gpuCount: 4
+    context:
+      priority: low
+      preemptible: true
+    constraints:
+      cluster:
+        - ai2/jupiter-cirrascale-2
