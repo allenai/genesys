@@ -20,9 +20,7 @@ from .. import utils as U
 
 login(os.environ.get("HF_KEY",None))
 #login(token=APIKeys().hf)
-
-
-DATA_DIR=U.pjoin(BasicConfig().basedir,'data')
+#DATA_DIR=U.pjoin(BasicConfig().basedir,'data')
 
 
 
@@ -77,7 +75,14 @@ def pretokenize_dataset(dataset_name):
     def decorator(dataload_func):
         @ft.wraps(dataload_func)
         def wrapper(tokenizer_name=None, context_length=None, *args, **kwargs):
-            tokenized_dir = U.pjoin(DATA_DIR, dataset_name, 'tokenized', tokenizer_name, str(context_length))
+            
+            tokenized_dir = U.pjoin(
+                DATA_DIR,
+                dataset_name,
+                'tokenized',
+                tokenizer_name,
+                str(context_length)
+            )
             tokenizer = get_tokenizer(tokenizer_name)
 
             try:
@@ -114,7 +119,6 @@ loaders={
     'babylm':load_babylm,
     'tinystories':load_tinystories
 }
-
 
 def load_datasets(cfg: GAMConfig): # weights e.g. {'train':[1.5,1.0]} for two datasets
     dataset_dicts = [loaders[dataset](tokenizer_name=cfg.tokenizer, context_length=cfg.context_length) for dataset in cfg.training_data]
