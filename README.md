@@ -26,6 +26,15 @@ export HF_KEY=XXXXXXXXXXXXX
 export GITHUB_TOKEN=XXXXXXXXXXXXX
 ```
 
+To check that the installation works correctly, you can try to the following: 
+```python
+from exec_utils import BuildModel
+
+llm = BuildModel()
+llm("what is your name?")
+```
+
+
 Other library specific environment variables 
 ```
 export DATA_DIR=/path/to/data/dir
@@ -39,13 +48,6 @@ sh create_beaker.sh
 ```
 
 
-To check that the installation works correctly, you can try to the following: 
-```python
-from exec_utils import BuildModel
-
-llm = BuildModel()
-llm("what is your name?")
-```
 
 *TODO*: add additional requirements for training portion of code. 
 
