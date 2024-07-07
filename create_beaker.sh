@@ -12,6 +12,7 @@ echo "Building $IMAGE"
 echo ${GITHUB_TOKEN}
 docker build --build-arg GITHUB=${GITHUB_TOKEN} --platform linux/amd64 --load -f $DOCKERFILE_NAME -t $IMAGE .
 
+
 echo "Now uploading to beaker"
 echo ${IMAGE}
 beaker image create --name=${IM_NAME}_cuda111_${CURRENT} --description="modeldiscovery${CURRENT}_${GIT_HASH}" $IMAGE
