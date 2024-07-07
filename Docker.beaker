@@ -1,0 +1,43 @@
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04
+
+ARG GITHUB
+
+# # Install base tools.
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    git \
+    make \
+    sudo \
+    wget \
+    iputils-ping \
+    unzip 
+
+# # This ensures the dynamic linker (or NVIDIA's container runtime, I'm not sure)
+# # puts the right NVIDIA things in the right place (that THOR requires).
+ENV NVIDIA_DRIVER_CAPABILITIES=graphics,utility,compute
+
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.1.0-1-Linux-x86_64.sh \
+    && echo "32d73e1bc33fda089d7cd9ef4c1be542616bd8e437d1f77afeeaf7afdb019787 Miniconda3-py310_23.1.0-1-Linux-x86_64.sh" \
+        | sha256sum --check \
+    && bash Miniconda3-py310_23.1.0-1-Linux-x86_64.sh -b -p /opt/miniconda3 \
+    && rm Miniconda3-py310_23.1.0-1-Linux-x86_64.sh
+
+ENV PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:$PATH
+
+ENV LD_LIBRARY_PATH=/usr/local/cuda/lib:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+
+ENTRYPOINT ["bash", "-l"]
+
+WORKDIR /stage/allennlp
+
+# ### SPECIFIC TO MY SETTING 
+COPY requirements_linux.txt .
+COPY etc/ etc/
+COPY model_discovery/ model_discovery/
+COPY _runs/ _runs/
+COPY data/ data/
+COPY run.sh run.sh
+
+RUN pip install setuptools==69.5.1
+RUN pip install git+https://$GITHUB@github.com/allenai/exec_utils
+RUN pip install -r requirements_linux.txt

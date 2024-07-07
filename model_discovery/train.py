@@ -4,6 +4,7 @@ import argparse
 import wandb
 
 import transformers
+from huggingface_hub import login
 
 from transformers import (
     TrainingArguments,
@@ -35,21 +36,43 @@ def get_last_checkpoint(output_dir):
     checkpoints = sorted(checkpoints, key=lambda x: int(x.split('-')[-1]))
     return checkpoints[-1]
 
-def run(args):
-    # two default dirs: ckpts and data
-    U.mkdir('data')
+def run(args) -> None:
+    """Runs the trainer 
+
+    :param args: 
+        The global configuration 
+    """
+    ### log into huggingface
+    login(os.environ.get("HF_KEY",None))
+
+    ### set up wandb
+    if not os.environ["DATA_DIR"]:
+        raise ValueError(
+            f'Must specify data directory'
+        )
+    
     if isinstance(args, dict):
         args = Namespace(**args)
-    config: GAMConfig =eval(f"{args.config}()")
-    model = ModisLMHeadModel(config, dtype=torch.bfloat16, device="cuda") # seems should not be bf16 for tf32 mode
+    config: GAMConfig = eval(f"{args.config}()")
+
+    # seems should not be bf16 for tf32 mode
+    model = ModisLMHeadModel(
+        config,
+        dtype=torch.bfloat16,
+        device="cuda" if torch.cuda.is_available() else "cpu"
+    )
+
     model.backbone.print_size()
-    # Iterate over the model's parameters and print their types
+
+    # # Iterate over the model's parameters and print their types
     for name, param in model.named_parameters():
         print(f"Parameter: {name}, Type: {param.dtype}")
-    
+        
     tokenized_datasets, tokenizer = load_datasets(config)
     data_collator = DataCollatorForLanguageModeling(tokenizer, mlm=False)
-
+    
+    #exit('exiting')
+    
     training_tokens=config.param_magnitude*config.training_token_multiplier # suggested by Chinchilla
     num_steps = int(training_tokens / (config.per_device_train_batch_size * args.n_gpus * args.n_nodes * config.context_length))+1
 
@@ -93,12 +116,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--modelname", type=str, default="GPT-2") # should be named after the agent
     parser.add_argument("--config", type=str, default="GAMConfig_10M")
+    parser.add_argument("--data_dir", type=str, default="")
     parser.add_argument("--resume", type=bool, default=False) # whether resume from the latest checkpoint if there is one
     parser.add_argument("--n_gpus", type=int, default=4)
     parser.add_argument("--n_nodes", type=int, default=1)
     parser.add_argument("--gradient_accumulation_steps", type=int, default=1)
     parser.add_argument("--optim", type=str, default="adamw_apex_fused") # adamw_apex_fused 
     args = parser.parse_args()
+
+    run(vars(args))
 
     #wandb.init(project="modis", name=f"{args.modelname}_{args.config}")
     #notebook_launcher(run, args=(vars(args),), num_processes=args.n_gpus)

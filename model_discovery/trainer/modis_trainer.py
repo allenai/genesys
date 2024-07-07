@@ -20,6 +20,6 @@ class ModisTrainer(Trainer):
         return lm_loss
 
     def save_model(self, output_dir, _internal_call):
-        U.mkdir(output_dir)
+        #U.mkdir(output_dir)
         torch.save(self.model.state_dict(), f"{output_dir}/pytorch_model.bin")
         self.tokenizer.save_pretrained(output_dir)

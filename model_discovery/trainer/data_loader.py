@@ -1,6 +1,6 @@
 import os
-
 import transformers
+
 from huggingface_hub import login
 from transformers import AutoTokenizer
 from datasets import (
@@ -18,18 +18,22 @@ from ..model.configs.basic import BasicConfig
 from ..model.configs.apikeys import APIKeys
 from .. import utils as U
 
-login(os.environ.get("HF_KEY",None))
-#login(token=APIKeys().hf)
-#DATA_DIR=U.pjoin(BasicConfig().basedir,'data')
-
-
+#PROJ_SRC = os.path.abspath(os.path.dirname(__file__))
+DATA_DIR = os.environ["DATA_DIR"] #os.path.abspath(f"{PROJ_SRC}/../../data")
 
 def get_tokenizer(tokenizer_name):
     tokenizer=AutoTokenizer.from_pretrained(tokenizer_name)
     tokenizer.pad_token = tokenizer.eos_token
     return tokenizer
 
-def tokenize(element, tokenizer: transformers.PreTrainedTokenizer, context_length: int):
+def tokenize(
+        element,
+        tokenizer: transformers.PreTrainedTokenizer,
+        context_length: int
+    ) -> dict:
+    """Tokenizers input and returns their input_ids 
+
+    """
     outputs = tokenizer(
         element["text"],  # need to change accordingly
         padding='max_length',  # Pad all sequences to max_length
@@ -114,13 +118,20 @@ def load_tinystories(tokenizer_name, context_length):
     }
     return load_dataset("text", data_files=data_files)
 
-
 loaders={
-    'babylm':load_babylm,
-    'tinystories':load_tinystories
+    'babylm'      :load_babylm,
+    'tinystories' :load_tinystories
 }
 
 def load_datasets(cfg: GAMConfig): # weights e.g. {'train':[1.5,1.0]} for two datasets
-    dataset_dicts = [loaders[dataset](tokenizer_name=cfg.tokenizer, context_length=cfg.context_length) for dataset in cfg.training_data]
+    """Loads the datasets 
+
+    """
+    dataset_dicts = [
+        loaders[dataset](
+            tokenizer_name=cfg.tokenizer,
+            context_length=cfg.context_length
+        ) for dataset in cfg.training_data
+    ]
     tokenizer=get_tokenizer(cfg.tokenizer)
     return combine_datasets(dataset_dicts, cfg.training_weight),tokenizer

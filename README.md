@@ -23,7 +23,15 @@ keys to access the underlying models:
 export MY_OPENAI_KEY=XXXXXXXXXXXXX
 export TOGETHER_API_KEY=XXXXXXXXXXXXX
 export HF_KEY=XXXXXXXXXXXXX
+export GITHUB_TOKEN=XXXXXXXXXXXXX
 ```
+
+Other library specific environment variables 
+```
+export DATA_DIR=/path/to/data/dir
+```
+
+
 
 To check that the installation works correctly, you can try to the following: 
 ```python
