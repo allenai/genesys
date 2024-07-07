@@ -47,7 +47,12 @@ You can run
 ```
 sh create_beaker.sh 
 ```
-to create a beaker image that allows you to run beaker batch jobs. 
+to create a beaker image that allows you to run beaker batch jobs. You
+can run a batch job by doing the following: 
+```bash 
+beaker experiment create etc/beaker/train_example.yaml
+
+```
 
 
 
