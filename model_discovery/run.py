@@ -263,8 +263,10 @@ def report(args):
         "trainer_state.json":json.dumps(trainer_state,indent=4),
         "eval_results.json":json.dumps(eval_results,indent=4),
     }
-
-    json.dump(report, open(f"{outdir}/report.json", 'w'), indent=4)
+    with open(f"{outdir}/report.json", 'w') as report_out:
+        report_out.write(json.dumps(report,indent=4))
+        
+    #json.dump(report, open(f"{outdir}/report.json", 'w'), indent=4)
     util_logger.info(f"Report saved at {outdir}/report.json")
     
     return report
@@ -296,12 +298,8 @@ if __name__ == "__main__":
     parser.add_argument("--ckpt_dir", type=str, default='')
     parser.add_argument("--data_dir", type=str, default='')
     parser.add_argument("--download_data_only", action='store_true')
-
-    
     
     
     args = parser.parse_args()
-
-    print(args)
     
     main(args)
