@@ -90,7 +90,7 @@ def run(args) -> None:
         tf32=True,
         ddp_find_unused_parameters=False,  # Set this to False
         # torch_compile=True, # TODO: debug this
-        report_to="wandb",
+        #report_to="wandb",
     )
     trainer = ModisTrainer(
         model=model,
