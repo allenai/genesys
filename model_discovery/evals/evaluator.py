@@ -1,5 +1,7 @@
 import torch
 import sys
+import logging
+
 
 import transformers
 from transformers import AutoTokenizer
@@ -14,6 +16,8 @@ from lm_eval.__main__ import cli_evaluate
 
 from .. import utils as U
 
+util_logger = logging.getLogger('model_discovery.evals.evaluator')
+
 
 @register_model("modis")
 class ModisEvalWrapper(HFLM):
@@ -26,17 +30,20 @@ class ModisEvalWrapper(HFLM):
             max_length=2048,
             batch_size=None,
             device="cuda",
-            dtype=torch.float16, **kwargs
+            dtype=torch.float16,
+            **kwargs
         ):
-        # LM.__init__(self)
-        # self._model = ModisLMHeadModel.from_pretrained(pretrained, device=device, dtype=dtype)
-        # e.g. pretrained="GAMConfig_10M/GPT-3"
-        print("Run Evaluation")
-
-        configname, modelname = pretrained.split("/")
+        util_logger.info('Running evaluation')
+        
+        b = pretrained.split("/")
+        modelname = b[-1]
+        configname = b[-2]
+        ckpt_path = '/'.join(b[:-2])
+        
         config = eval(f"{configname}")
-        ckpt = U.pjoin("ckpts", configname, modelname, "pretrained")
-        print(f"Trying to load from {ckpt}")
+        ckpt = U.pjoin(ckpt_path, configname, modelname, "pretrained")
+        
+        util_logger.info(f'Trying to load from {ckpt}')
         
         model = ModisLMHeadModel.from_pretrained(
             pretrained_model_name=ckpt,
@@ -50,7 +57,6 @@ class ModisEvalWrapper(HFLM):
         tokenizer.pad_token_id = tokenizer.eos_token_id
 
         super().__init__(model,tokenizer=tokenizer)
-        # self._model = model
         self.vocab_size = self.tokenizer.vocab_size
         self._batch_size = int(batch_size) if batch_size is not None else 64
         self._max_length = max_length

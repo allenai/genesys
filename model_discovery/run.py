@@ -187,7 +187,7 @@ def run_eval(args):
     sys.argv = [
         "eval.py",
         "--model", "modis",
-        "--model_args", f"pretrained={args.config}/{args.modelname}",
+        "--model_args", f"pretrained={args.ckpt_dir}/{args.config}/{args.modelname}",
         "--tasks", ",".join(cfg.eval_tasks), 
         "--device", "cuda" if torch.cuda.is_available() else "cpu",
         "--batch_size", f"{cfg.eval_batch_size}",
