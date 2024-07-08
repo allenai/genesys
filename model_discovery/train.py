@@ -163,7 +163,7 @@ def run_train(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--modelname", type=str, default="test1") # should be named after the agent
-    parser.add_argument("--config", type=str, default="GAMConfig_10M_debug")
+    parser.add_argument("--config", type=str, default="GAMConfig_debug")
     parser.add_argument("--resume", type=bool, default=True) # whether resume from the latest checkpoint if there is one, or fully retrain
     parser.add_argument("--n_gpus", type=int, default=6)
     parser.add_argument("--n_nodes", type=int, default=1)
