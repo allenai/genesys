@@ -1,3 +1,4 @@
+import json
 import sys
 import torch
 import random
@@ -33,7 +34,6 @@ torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True
 
 util_logger = logging.getLogger('model_discovery.train')
-
 
 def setup_environ(args) -> None:
     """Sets up the run environment 
@@ -196,6 +196,62 @@ def run_eval(args):
         # "--mixed_precision", "yes"
     ]
     cli_evaluate()
+
+def get_history(run_id, project_path = "aristo/model_discovery"):
+    api = wandb.Api()
+    run = api.run(f"{project_path}/{run_id}")
+    history = run.history()
+    system_metrics = run.history(stream='systemMetrics')
+    for i in ['temp','powerWatts','_timestamp','cpu_percent','powerPercent','network','memoryAllocatedBytes','_wandb','disk','memory.rssMB','memory.availableMB']:
+        system_metrics=system_metrics[[col for col in system_metrics.columns if i not in col]]
+    system_note={
+        "system.memory": "System Memory Utilization (%)",
+        "system.proc.memory.percent": "Process Memory In Use (non-swap) (%)",
+        "system.cpu": "Process CPU Utilization (%)",
+        "system.proc.cpu.threads": "Process CPU Threads In Use",
+    }
+    gpu_ids=[]
+    for i in system_metrics.columns:
+        if 'gpu' in i:
+            gpu_id=i.split('.')[2]
+            if gpu_id not in gpu_ids:
+                gpu_ids.append(gpu_id)
+    for i in gpu_ids:
+        system_metrics.rename(columns={f"system.gpu.{i}.gpu": f"GPU {i} Utilization (%)",
+                                       f"system.gpu.{i}.memoryAllocated": f"GPU {i} Memory Allocated (%)",
+                                       f"system.gpu.{i}.memory": f"GPU {i} Time Spent Accessing Memory (%)"},inplace=True)
+    system_metrics.rename(columns=system_note,inplace=True)
+    return history,system_metrics
+
+def report(args):
+    outdir=f"{args.ckpt_dir}/{args.config}/{args.modelname}"
+    run_id=U.load_json(f"{outdir}/wandb_ids.json")['pretrain']
+    history,system_metrics=get_history(
+        run_id,
+        project_path=f"{args.wandb_entity}/{args.wandb_project}"
+    )
+    trainer_state=U.load_json(f"{outdir}/trainer_state.json")
+    eval_results=get_eval_results(outdir)
+
+    trainer_state.pop("log_history")
+    trainer_state.pop("stateful_callbacks")
+    for i in ['upper_git_hash','transformers_version','pretty_env_info','git_hash']:
+        eval_results.pop(i)
+    
+    report={
+        "training_record.csv":str(history.to_csv(index=False)),
+        "system_metrics.csv":str(system_metrics.to_csv(index=False)),
+        "trainer_state.json":json.dumps(trainer_state,indent=4),
+        "eval_results.json":json.dumps(eval_results,indent=4),
+    }
+
+    json.dump(report, open(f"{outdir}/report.json", 'w'), indent=4)
+    util_logger.info(f"Report saved at {outdir}/report.json")
+    
+    return report
+
+
+    
     
 def main(argv):
     """Main run entry point 
@@ -205,6 +261,7 @@ def main(argv):
     """
     run_train(argv)
     run_eval(argv)
+    report(args)
     
 
 if __name__ == "__main__":
@@ -223,7 +280,6 @@ if __name__ == "__main__":
     parser.add_argument("--ckpt_dir", type=str, default='')
     parser.add_argument("--data_dir", type=str, default='')
     
-
     args = parser.parse_args()
-
+    
     main(args)
