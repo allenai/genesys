@@ -101,7 +101,12 @@ def get_last_checkpoint(output_dir: str):
     checkpoints = sorted(checkpoints, key=lambda x: int(x.split('-')[-1]))
     return checkpoints[-1] # dir of the last checkpoint
 
-def run_train(args):
+def run_train(args) -> None:
+    """Runs the full training pipeline 
+
+    :param args: 
+        The global configuration for training.
+    """
     # two default dirs: ckpts and data
     if isinstance(args, dict):
         args = Namespace(**args)
@@ -242,7 +247,12 @@ def get_history(run_id, project_path = "aristo/model_discovery"):
     system_metrics.rename(columns=system_note,inplace=True)
     return history,system_metrics
 
-def report(args):
+def report(args) -> dict:
+    """Returns the training report 
+
+    :param args: 
+        The global training configuration. 
+    """
     outdir=f"{args.ckpt_dir}/{args.config}/{args.modelname}"
     run_id=U.load_json(f"{outdir}/wandb_ids.json")['pretrain']
     history,system_metrics=get_history(
@@ -260,8 +270,10 @@ def report(args):
     report={
         "training_record.csv":str(history.to_csv(index=False)),
         "system_metrics.csv":str(system_metrics.to_csv(index=False)),
-        "trainer_state.json":json.dumps(trainer_state,indent=4),
-        "eval_results.json":json.dumps(eval_results,indent=4),
+        "trainer_state.json": trainer_state,
+        "eval_results.json": eval_results,
+        #"trainer_state.json":json.dumps(trainer_state,indent=4),
+        #"eval_results.json":json.dumps(eval_results,indent=4),
     }
     with open(f"{outdir}/report.json", 'w') as report_out:
         report_out.write(json.dumps(report,indent=4))
