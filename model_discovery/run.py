@@ -295,9 +295,13 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--ckpt_dir", type=str, default='')
     parser.add_argument("--data_dir", type=str, default='')
-    parser.add_argument("--download_data_only", type=bool, default=default)
+    parser.add_argument("--download_data_only", type=bool, default=False)
+
+    
     
     
     args = parser.parse_args()
+
+    print(args)
     
     main(args)
