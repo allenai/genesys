@@ -1,1 +1,2 @@
-python -m model_discovery.train "$@"
+python -m model_discovery.run "$@"
+zd
