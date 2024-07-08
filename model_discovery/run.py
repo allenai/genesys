@@ -26,7 +26,6 @@ from .model.configs.gam_config import (
 )
 from .model.gam import ModisLMHeadModel
 from .evals.evaluator import run_eval
-
 from . import utils as U
 
 torch.backends.cuda.matmul.allow_tf32 = True
@@ -100,10 +99,7 @@ def run_train(args):
     config: GAMConfig =eval(f"{args.config}()")
     model = ModisLMHeadModel(config, dtype=torch.bfloat16, device="cuda") # seems should not be bf16 for tf32 mode
     model.backbone.print_size()
-    # Iterate over the model's parameters and print their types
-    # for name, param in model.named_parameters():
-    #     print(f"Parameter: {name}, Type: {param.dtype}")
-
+    
     tokenized_datasets, tokenizer = load_datasets(config)
     data_collator = DataCollatorForLanguageModeling(tokenizer, mlm=False)
 
@@ -153,6 +149,15 @@ def run_train(args):
 
     wandb.finish()
 
+def main(argv):
+    """Main run entry point 
+
+    :param argv: 
+        The CLI arguments. 
+    """
+    run_train(argv)
+    run_eval(argv)
+    
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -171,5 +176,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    run_train(args)
-    run_eval(args)
+    main(args)
