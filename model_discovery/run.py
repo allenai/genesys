@@ -25,7 +25,7 @@ from .model.configs.gam_config import (
     GAMConfig_debug
 )
 from .model.gam import ModisLMHeadModel
-from .evals.evaluator import run_eval
+from .evals.evaluator import cli_evaluate
 from . import utils as U
 
 torch.backends.cuda.matmul.allow_tf32 = True
@@ -34,7 +34,13 @@ torch.backends.cudnn.allow_tf32 = True
 util_logger = logging.getLogger('model_discovery.train')
 
 
-def setup_environ(args):
+def setup_environ(args) -> None:
+    """Sets up the run environment 
+
+    :param args: 
+        The global run configuration
+    :raises: ValueError 
+    """
     if not os.environ.get("HF_KEY"):
         raise ValueError('Must set KH_KEY!')
     if not os.environ.get("WANDB_API_KEY"):
@@ -76,7 +82,12 @@ def setup_environ(args):
         torch.cuda.manual_seed_all(args.seed)
         
 
-def get_last_checkpoint(output_dir):
+def get_last_checkpoint(output_dir: str):
+    """Gets the last checkpoint 
+
+    :param output_dir: 
+        The output directory containing the last checkpoint
+    """
     if not os.path.isdir(output_dir):
         return None
     checkpoints = [U.pjoin(output_dir, d) for d in os.listdir(output_dir) 
@@ -148,6 +159,20 @@ def run_train(args):
     print(f"Model saved at {training_args.output_dir}/pretrained")
 
     wandb.finish()
+
+def run_eval(args):
+    cfg=eval(f"{args.config}()")
+    sys.argv = [
+        "eval.py",
+        "--model", "modis",
+        "--model_args", f"pretrained={args.config}/{args.modelname}",
+        "--tasks", ",".join(cfg.eval_tasks), 
+        "--device", "cuda",
+        "--batch_size", f"{cfg.eval_batch_size}",
+        # "--mixed_precision", "yes"
+    ]
+    cli_evaluate()
+    
 
 def main(argv):
     """Main run entry point 

@@ -4,19 +4,15 @@ import sys
 import transformers
 from transformers import AutoTokenizer
 
-from ..model.gam import ModisLMHeadModel
-from ..model.configs.gam_config import (
-    GAMConfig,
-    GAMConfig_10M,
-    GAMConfig_debug
-)
+from modis_gam.model.gam import ModisLMHeadModel
+from configs.gam_config import GAMConfig, GAMConfig_10M, GAMConfig_debug
 
 from lm_eval.api.model import LM
 from lm_eval.models.huggingface import HFLM
 from lm_eval.api.registry import register_model
 from lm_eval.__main__ import cli_evaluate
 
-from .. import utils as U
+import utils as U
 
 
 @register_model("modis")
@@ -54,18 +50,6 @@ class ModisEvalWrapper(HFLM):
         raise NotImplementedError()
 
 
-def run_eval(args):
-    cfg=eval(f"{args.config}()")
-    sys.argv = [
-        "eval.py",
-        "--model", "modis",
-        "--model_args", f"pretrained={args.config}/{args.modelname}",
-        "--tasks", ",".join(cfg.eval_tasks), 
-        "--device", "cuda",
-        "--batch_size", f"{cfg.eval_batch_size}",
-        # "--mixed_precision", "yes"
-    ]
-    cli_evaluate()
 
 
 if __name__ == "__main__":
