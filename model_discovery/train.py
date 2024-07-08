@@ -93,16 +93,10 @@ def run_train(args):
         args = Namespace(**args)
 
     setup_environ(args) 
-    # if args.resume and U.pexists(f"ckpts/{args.config}/{args.modelname}/pretrained"):
-    #     print(f"Model {args.modelname} is already pretrained")
-    #     return
-
-    # if args.resume and U.pexists(f"ckpts/{args.config}/{args.modelname}/wandb_id.txt"):
-    #     wandb_id = open(f"ckpts/{args.config}/{args.modelname}/wandb_id.txt").read()
-    #     wandb.init(resume="must", project="modis", id=wandb_id)
-    # else:
-    #     wandb.init(project="modis", name=f"{args.modelname}_{args.config}")
-
+    if args.resume and U.pexists(f"{args.ckpt_dir}/{args.config}/{args.modelname}/pretrained"):
+        print(f"Model {args.modelname} is already pretrained")
+        return
+    
     config: GAMConfig =eval(f"{args.config}()")
     model = ModisLMHeadModel(config, dtype=torch.bfloat16, device="cuda") # seems should not be bf16 for tf32 mode
     model.backbone.print_size()
@@ -123,7 +117,7 @@ def run_train(args):
         per_device_eval_batch_size = config.per_device_train_batch_size * 2,
         gradient_accumulation_steps=args.gradient_accumulation_steps,
         optim=args.optim,
-        output_dir=f"ckpts/{args.config}/{args.modelname}",
+        output_dir=f"{args.ckpt_dir}/{args.config}/{args.modelname}",
         logging_steps=25,
         save_steps=args.save_steps,
         dataloader_num_workers=16,
@@ -144,7 +138,7 @@ def run_train(args):
         data_collator=data_collator,
     )
     
-    open(f"ckpts/{args.config}/{args.modelname}/wandb_id.txt", "w").write(wandb.run.id)
+    open(f"{args.ckpt_dir}/{args.config}/{args.modelname}/wandb_id.txt", "w").write(wandb.run.id)
 
     # Automatically resume from the latest checkpoint if it exists
     last_checkpoint = get_last_checkpoint(training_args.output_dir)
