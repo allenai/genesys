@@ -12,7 +12,7 @@ from lm_eval.models.huggingface import HFLM
 from lm_eval.api.registry import register_model
 from lm_eval.__main__ import cli_evaluate
 
-import utils as U
+from .. import utils as U
 
 
 @register_model("modis")
