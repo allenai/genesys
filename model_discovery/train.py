@@ -1,7 +1,10 @@
 import torch
+import random
 import os
+import numpy as np
 import argparse
 import wandb
+import logging
 
 import transformers
 from huggingface_hub import login
@@ -18,16 +21,61 @@ from .trainer.data_loader import load_datasets
 from .trainer.modis_trainer import ModisTrainer
 from .model.configs.gam_config import (
     GAMConfig,
-    GAMConfig_10M
+    GAMConfig_10M,
+    GAMConfig_debug
 )
 from .model.gam import ModisLMHeadModel
 from .evals.evaluator import run_eval
-
 
 from . import utils as U
 
 torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True
+
+util_logger = logging.getLogger('model_discovery.train')
+
+
+def setup_environ(args):
+    if not os.environ.get("HF_KEY"):
+        raise ValueError('Must set KH_KEY!')
+    if not os.environ.get("WANDB_API_KEY"):
+        raise ValueError('Must set WANDB_API_KEY')
+    if not os.environ.get("DATA_DIR"):
+        raise ValueError("Must set data_dir")
+    if not args.ckpt_dir:
+        raise ValueError('Must specify the checkpoitn directory via `--ckpt_dir`')
+
+    ### make checkpoint dir 
+    U.mkdir(args.ckpt_dir)
+    util_logger.info(f'Creating checkpoint directory: {args.ckpt_dir}')
+    
+    ### log into the hf hub 
+    login(os.environ.get("HF_KEY",None))
+
+    ## initialize wandb
+    util_logger.info(f'Setting up wandb...')
+    if args.resume and os.path.exists(f"{args.ckpt_dir}/{args.config}/{args.modelname}/wandb_id.txt"):
+        wandb_id = open(f"{args.ckpt_dir}/{args.config}/{args.modelname}/wandb_id.txt").read()
+        wandb.init(
+            resume="must",
+            project=args.wandb_project,
+            id=wandb_id
+        )
+    else: 
+        wandb.init(
+            project=args.wandb_project,
+            entity=args.wandb_entity,
+            name=f"{args.modelname}_{args.config}"
+        )
+        
+    #### seed run
+    util_logger.info(f'Setting seed: seed={args.seed}')
+    random.seed(args.seed)
+    np.random.seed(args.seed)
+    torch.manual_seed(args.seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(args.seed)
+        
 
 def get_last_checkpoint(output_dir):
     if not os.path.isdir(output_dir):
@@ -44,13 +92,7 @@ def run_train(args):
     if isinstance(args, dict):
         args = Namespace(**args)
 
-    ## set up wandb 
-    wandb.init(
-        project=args.wandb_project,
-        entity=args.wandb_entity,
-        name=f"{args.modelname}_{args.config}"
-    )
-    
+    setup_environ(args) 
     # if args.resume and U.pexists(f"ckpts/{args.config}/{args.modelname}/pretrained"):
     #     print(f"Model {args.modelname} is already pretrained")
     #     return
@@ -101,6 +143,7 @@ def run_train(args):
         args=training_args,
         data_collator=data_collator,
     )
+    
     open(f"ckpts/{args.config}/{args.modelname}/wandb_id.txt", "w").write(wandb.run.id)
 
     # Automatically resume from the latest checkpoint if it exists
@@ -117,11 +160,10 @@ def run_train(args):
     wandb.finish()
 
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--modelname", type=str, default="test1") # should be named after the agent
-    parser.add_argument("--config", type=str, default="GAMConfig_debug")
+    parser.add_argument("--config", type=str, default="GAMConfig_10M_debug")
     parser.add_argument("--resume", type=bool, default=True) # whether resume from the latest checkpoint if there is one, or fully retrain
     parser.add_argument("--n_gpus", type=int, default=6)
     parser.add_argument("--n_nodes", type=int, default=1)
@@ -130,6 +172,8 @@ if __name__ == "__main__":
     parser.add_argument("--optim", type=str, default="adamw_hf") # adamw_apex_fused is faster but BUGGY
     parser.add_argument("--wandb_project", type=str, default='model_discovery')
     parser.add_argument("--wandb_entity", type=str, default='aristo')
+    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--ckpt_dir", type=str, default='')
 
     args = parser.parse_args()
 
