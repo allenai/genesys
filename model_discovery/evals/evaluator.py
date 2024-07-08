@@ -4,8 +4,8 @@ import sys
 import transformers
 from transformers import AutoTokenizer
 
-from modis_gam.model.gam import ModisLMHeadModel
-from configs.gam_config import GAMConfig, GAMConfig_10M, GAMConfig_debug
+from ..model.gam import ModisLMHeadModel
+from ..model.configs.gam_config import GAMConfig, GAMConfig_10M, GAMConfig_debug
 
 from lm_eval.api.model import LM
 from lm_eval.models.huggingface import HFLM
