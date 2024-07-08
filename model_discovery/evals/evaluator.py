@@ -20,16 +20,31 @@ class ModisEvalWrapper(HFLM):
 
     AUTO_MODEL_CLASS = transformers.AutoModelForCausalLM
 
-    def __init__(self, pretrained, max_length=2048, batch_size=None, device="cuda",
-                 dtype=torch.float16, **kwargs):
+    def __init__(
+            self,
+            pretrained,
+            max_length=2048,
+            batch_size=None,
+            device="cuda",
+            dtype=torch.float16, **kwargs
+        ):
         # LM.__init__(self)
         # self._model = ModisLMHeadModel.from_pretrained(pretrained, device=device, dtype=dtype)
         # e.g. pretrained="GAMConfig_10M/GPT-3"
         print("Run Evaluation")
+
         configname, modelname = pretrained.split("/")
         config = eval(f"{configname}")
         ckpt = U.pjoin("ckpts", configname, modelname, "pretrained")
-        model = ModisLMHeadModel.from_pretrained(pretrained_model_name=ckpt, config=config, dtype=torch.bfloat16, device="cuda")
+        print(f"Trying to load from {ckpt}")
+        
+        model = ModisLMHeadModel.from_pretrained(
+            pretrained_model_name=ckpt,
+            config=config,
+            dtype=torch.bfloat16,
+            device="cuda" if torch.cuda.is_available() else "cpu" 
+        )
+        
         model.backbone.print_size()
         tokenizer = AutoTokenizer.from_pretrained(config.tokenizer)   
         tokenizer.pad_token_id = tokenizer.eos_token_id
@@ -47,8 +62,6 @@ class ModisEvalWrapper(HFLM):
 
     def _model_generate(self, context, max_length, stop, **generation_kwargs):
         raise NotImplementedError()
-
-
 
 
 if __name__ == "__main__":

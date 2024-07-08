@@ -46,11 +46,15 @@ def setup_environ(args) -> None:
         raise ValueError('Must set KH_KEY!')
     if not os.environ.get("WANDB_API_KEY"):
         raise ValueError('Must set WANDB_API_KEY')
-    if not os.environ.get("DATA_DIR"):
+    if not os.environ.get("DATA_DIR") and not args.data_dir:
         raise ValueError("Must set data_dir")
     if not args.ckpt_dir:
         raise ValueError('Must specify the checkpoitn directory via `--ckpt_dir`')
 
+    if not os.environ.get("DATA_DIR"):
+        util_logger.info(f'Manually changing the data directory: {args.data_dir}')
+        os.environ["DATA_DIR"] = args.data_dir 
+        
     ### make checkpoint dir 
     U.mkdir(args.ckpt_dir)
     util_logger.info(f'Creating checkpoint directory: {args.ckpt_dir}')
@@ -109,7 +113,10 @@ def run_train(args):
         return
     
     config: GAMConfig =eval(f"{args.config}()")
-    model = ModisLMHeadModel(config, dtype=torch.bfloat16, device="cuda") # seems should not be bf16 for tf32 mode
+    model = ModisLMHeadModel(
+        config, dtype=torch.bfloat16,
+        device="cuda" if torch.cuda.is_available() else "cpu" 
+    )
     model.backbone.print_size()
     
     tokenized_datasets, tokenizer = load_datasets(config)
@@ -190,7 +197,6 @@ def run_eval(args):
     ]
     cli_evaluate()
     
-
 def main(argv):
     """Main run entry point 
 
@@ -215,6 +221,8 @@ if __name__ == "__main__":
     parser.add_argument("--wandb_entity", type=str, default='aristo')
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--ckpt_dir", type=str, default='')
+    parser.add_argument("--data_dir", type=str, default='')
+    
 
     args = parser.parse_args()
 
