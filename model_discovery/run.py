@@ -35,11 +35,13 @@ torch.backends.cudnn.allow_tf32 = True
 
 util_logger = logging.getLogger('model_discovery.train')
 
-def setup_environ(args) -> None:
+def setup_environ(args,wand_ids: dict ={}) -> None:
     """Sets up the run environment 
 
     :param args: 
         The global run configuration
+    :param wandb_ids: 
+        The existing (or empty) wandb ids 
     :raises: ValueError 
     """
     if not os.environ.get("HF_KEY"):
@@ -51,11 +53,13 @@ def setup_environ(args) -> None:
     if not args.ckpt_dir:
         raise ValueError('Must specify the checkpoitn directory via `--ckpt_dir`')
 
-    if not os.environ.get("DATA_DIR"):
-        util_logger.info(f'Manually changing the data directory: {args.data_dir}')
+    if not os.environ.get("DATA_DIR") or args.data_dir:
+        util_logger.info(
+            f'Manually changing the data directory based on input: {args.data_dir}'
+        )
         os.environ["DATA_DIR"] = args.data_dir 
         
-    ### make checkpoint dir 
+    ### make checkpoint dir
     U.mkdir(args.ckpt_dir)
     util_logger.info(f'Creating checkpoint directory: {args.ckpt_dir}')
     
@@ -64,13 +68,8 @@ def setup_environ(args) -> None:
 
     ## initialize wandb
     util_logger.info(f'Setting up wandb...')
-    if args.resume and os.path.exists(f"{args.ckpt_dir}/{args.config}/{args.modelname}/wandb_id.txt"):
-        wandb_id = open(f"{args.ckpt_dir}/{args.config}/{args.modelname}/wandb_id.txt").read()
-        wandb.init(
-            resume="must",
-            project=args.wandb_project,
-            id=wandb_id
-        )
+    if args.resume and 'pretrain' in wandb_ids:
+        wandb.init(resume="must", project=args.wandb_project, id=wandb_ids['pretrain'])
     else: 
         wandb.init(
             project=args.wandb_project,
@@ -107,11 +106,15 @@ def run_train(args):
     if isinstance(args, dict):
         args = Namespace(**args)
 
-    setup_environ(args) 
     if args.resume and U.pexists(f"{args.ckpt_dir}/{args.config}/{args.modelname}/pretrained"):
-        print(f"Model {args.modelname} is already pretrained")
+        util_logger.info(f"Model {args.modelname} is already pretrained")
         return
-    
+
+    wandb_ids=U.load_json(
+        f"{args.ckpt_dir}/{args.config}/{args.modelname}/wandb_ids.json"
+    )
+    setup_environ(args,wandb_ids)
+
     config: GAMConfig =eval(f"{args.config}()")
     model = ModisLMHeadModel(
         config, dtype=torch.bfloat16,
@@ -152,20 +155,28 @@ def run_train(args):
         args=training_args,
         data_collator=data_collator,
     )
+    wandb_ids['pretrain']=wandb.run.id
+    U.save_json(wandb_ids,f"{training_args.output_dir}/wandb_ids.json")
     
     open(f"{args.ckpt_dir}/{args.config}/{args.modelname}/wandb_id.txt", "w").write(wandb.run.id)
 
     # Automatically resume from the latest checkpoint if it exists
     last_checkpoint = get_last_checkpoint(training_args.output_dir)
     if args.resume and last_checkpoint:
-        print(f"Resuming training from checkpoint: {last_checkpoint}")
+        util_logger.info(
+            f"Resuming training from checkpoint: {last_checkpoint}"
+        )
         trainer.train(resume_from_checkpoint=last_checkpoint)
     else:
-        print("No checkpoint found, starting training from scratch")
+        util_logger.info(
+            "No checkpoint found, starting training from scratch"
+        )
         trainer.train()
     trainer.save_model(training_args.output_dir+'/pretrained')
-    print(f"Model saved at {training_args.output_dir}/pretrained")
-
+    util_logger.info(
+        f"Model saved at {training_args.output_dir}/pretrained"
+    )
+    
     wandb.finish()
 
 def get_eval_results(output_dir):
@@ -180,9 +191,9 @@ def get_eval_results(output_dir):
 
 def run_eval(args):
     if get_eval_results(f"{args.ckpt_dir}/{args.config}/{args.modelname}"):
-        print(f"Model {args.config}/{args.modelname} is already evaluated")
+        util_logger.info(f"Model {args.config}/{args.modelname} is already evaluated")
         return
-    print("Evaluation Start")
+    util_logger.info("Evaluation Start")
     cfg=eval(f"{args.config}()")
     sys.argv = [
         "eval.py",
@@ -250,9 +261,6 @@ def report(args):
     
     return report
 
-
-    
-    
 def main(argv):
     """Main run entry point 
 
