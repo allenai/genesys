@@ -1,4 +1,5 @@
 import os
+import json
 import functools as ft
 
 pjoin=os.path.join
@@ -14,3 +15,13 @@ def strscale(size):
     elif size>1e6: return f"{size/1e6:.2f}M"
     elif size>1e3: return f"{size/1e3:.2f}K"
     else: return f"{int(size)}"
+        
+def load_json(file,default={}):
+    if not pexists(file):
+        return default
+    with open(file) as f:
+        return json.load(f)
+    
+def save_json(data,file): 
+    with open(file, 'w') as f:
+        json.dump(data, f, indent=4)
