@@ -162,14 +162,20 @@ def run_train(args):
     wandb.finish()
 
 def run_eval(args):
+    if get_eval_results(f"ckpts/{args.config}/{args.modelname}"):
+        print(f"Model {args.config}/{args.modelname} is already evaluated")
+        return
+    print("Evaluation Start")
     cfg=eval(f"{args.config}()")
     sys.argv = [
         "eval.py",
         "--model", "modis",
         "--model_args", f"pretrained={args.config}/{args.modelname}",
         "--tasks", ",".join(cfg.eval_tasks), 
-        "--device", "cuda",
+        "--device", "cuda" if torch.cuda.is_available() else "cpu",
         "--batch_size", f"{cfg.eval_batch_size}",
+        "--output_path", f"{args.ckpt_dir}/{args.config}/{args.modelname}/eval_results",
+        "--wandb_args", f"project={args.wandb_project}",
         # "--mixed_precision", "yes"
     ]
     cli_evaluate()

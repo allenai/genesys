@@ -23,7 +23,6 @@ class ModisEvalWrapper(HFLM):
     def __init__(self, pretrained, max_length=2048, batch_size=None, device="cuda",
                  dtype=torch.float16, **kwargs):
         # LM.__init__(self)
-        super().__init__()
         # self._model = ModisLMHeadModel.from_pretrained(pretrained, device=device, dtype=dtype)
         # e.g. pretrained="GAMConfig_10M/GPT-3"
         print("Run Evaluation")
@@ -32,15 +31,15 @@ class ModisEvalWrapper(HFLM):
         ckpt = U.pjoin("ckpts", configname, modelname, "pretrained")
         model = ModisLMHeadModel.from_pretrained(pretrained_model_name=ckpt, config=config, dtype=torch.bfloat16, device="cuda")
         model.backbone.print_size()
+        tokenizer = AutoTokenizer.from_pretrained(config.tokenizer)   
+        tokenizer.pad_token_id = tokenizer.eos_token_id
 
-        self._model = model
-        # self.tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-neox-20b")
-        self.tokenizer = AutoTokenizer.from_pretrained(config.tokenizer)   
-        self.tokenizer.pad_token_id = self.tokenizer.eos_token_id
+        super().__init__(model,tokenizer=tokenizer)
+        # self._model = model
         self.vocab_size = self.tokenizer.vocab_size
         self._batch_size = int(batch_size) if batch_size is not None else 64
         self._max_length = max_length
-        self._device = torch.device(device)
+        # self._device = torch.device(device)
 
     @property
     def batch_size(self):
