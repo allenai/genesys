@@ -35,7 +35,7 @@ torch.backends.cudnn.allow_tf32 = True
 
 util_logger = logging.getLogger('model_discovery.train')
 
-def setup_environ(args,wand_ids: dict ={}) -> None:
+def setup_environ(args,wandb_ids: dict ={}) -> None:
     """Sets up the run environment 
 
     :param args: 
