@@ -53,11 +53,8 @@ can run a batch job by doing the following:
 beaker experiment create etc/beaker/train_example.yaml
 
 ```
-
-
-
-
-*TODO*: add additional requirements for training portion of code. 
+which shows how to use the built image in beaker to run an example
+training job. 
 
 # Current discovery system 
 

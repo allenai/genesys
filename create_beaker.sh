@@ -1,4 +1,4 @@
-NUM=2
+NUM=3
 
 CURRENT=${NUM}
 IMAGE_NAME=model_discovery
@@ -11,7 +11,6 @@ IM_NAME=${IMAGE}_${NUM}
 echo "Building $IMAGE"
 echo ${GITHUB_TOKEN}
 docker build --build-arg GITHUB=${GITHUB_TOKEN} --platform linux/amd64 --load -f $DOCKERFILE_NAME -t $IMAGE .
-
 
 echo "Now uploading to beaker"
 echo ${IMAGE}

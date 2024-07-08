@@ -124,6 +124,10 @@ def run_train(args):
     
     tokenized_datasets, tokenizer = load_datasets(config)
     data_collator = DataCollatorForLanguageModeling(tokenizer, mlm=False)
+    if args.download_data_only:
+        util_logger.info('Donwloaded data, now stopping...')
+        exit('exiting after data download')
+        
 
     training_tokens=config.param_magnitude*config.training_token_multiplier # suggested by Chinchilla
     num_steps = int(training_tokens / (config.per_device_train_batch_size * args.n_gpus * args.n_nodes * config.context_length))+1
@@ -291,6 +295,8 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--ckpt_dir", type=str, default='')
     parser.add_argument("--data_dir", type=str, default='')
+    parser.add_argument("--download_data_only", type=bool, default=default)
+    
     
     args = parser.parse_args()
     

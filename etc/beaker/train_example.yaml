@@ -1,22 +1,24 @@
-description: Example run of training
+description: Example run of model training
 budget: ai2/aristo
 tasks:
   - name: model_discovery_train
     image:
-      beaker: 01J283XY2874V387CMDER7KH03
-    command: [python, -m, model_discovery.train]
+      beaker: 01J2A76ESJGYCGVBHWQZ89RMW3
+    command: [
+    python, -m, model_discovery.run,
+    --ckpt_dir, /output,
+    --data_dir, /output,
+    ]
     envVars:
-      - name: DATA_DIR
-        value: /output
       - name: HF_KEY
         secret: HF_TOKEN_SECRET
     result:
       path: /output
     resources:
-      gpuCount: 4
+      gpuCount: 1
     context:
       priority: low
       preemptible: true
     constraints:
       cluster:
-        - ai2/jupiter-cirrascale-2
+        - ai2/aristo-elanding-a6000
