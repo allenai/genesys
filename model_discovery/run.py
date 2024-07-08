@@ -161,8 +161,18 @@ def run_train(args):
 
     wandb.finish()
 
+def get_eval_results(output_dir):
+    try:
+        dir1=U.pjoin(output_dir, "eval_results")
+        dir2=U.pjoin(dir1, os.listdir(dir1)[0])
+        dir3=U.pjoin(dir2, os.listdir(dir2)[0])
+        result=U.load_json(dir3)
+        return result
+    except:
+        return None
+
 def run_eval(args):
-    if get_eval_results(f"ckpts/{args.config}/{args.modelname}"):
+    if get_eval_results(f"{args.ckpt_dir}/{args.config}/{args.modelname}"):
         print(f"Model {args.config}/{args.modelname} is already evaluated")
         return
     print("Evaluation Start")
