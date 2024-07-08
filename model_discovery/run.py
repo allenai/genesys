@@ -158,8 +158,6 @@ def run_train(args):
     wandb_ids['pretrain']=wandb.run.id
     U.save_json(wandb_ids,f"{training_args.output_dir}/wandb_ids.json")
     
-    open(f"{args.ckpt_dir}/{args.config}/{args.modelname}/wandb_id.txt", "w").write(wandb.run.id)
-
     # Automatically resume from the latest checkpoint if it exists
     last_checkpoint = get_last_checkpoint(training_args.output_dir)
     if args.resume and last_checkpoint:
@@ -172,10 +170,16 @@ def run_train(args):
             "No checkpoint found, starting training from scratch"
         )
         trainer.train()
+
     trainer.save_model(training_args.output_dir+'/pretrained')
     util_logger.info(
         f"Model saved at {training_args.output_dir}/pretrained"
     )
+    history,system_metrics=get_history(wandb.run.id)
+    history.to_csv(f"{training_args.output_dir}/train_logs.csv")
+    system_metrics.to_csv(f"{training_args.output_dir}/system_metrics.csv")
+    trainer.state.save_to_json(f"{training_args.output_dir}/trainer_state.json")
+    util_logger.info(f"Training logs saved at {training_args.output_dir}")
     
     wandb.finish()
 
