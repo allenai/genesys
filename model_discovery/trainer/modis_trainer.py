@@ -18,8 +18,8 @@ class ModisTrainer(Trainer):
         lm_loss = loss_fct(shift_logits.view(-1, shift_logits.size(-1)), labels.view(-1))
 
         return lm_loss
-
+    
     def save_model(self, output_dir, _internal_call):
-        #U.mkdir(output_dir)
+        U.mkdir(output_dir)
         torch.save(self.model.state_dict(), f"{output_dir}/pytorch_model.bin")
         self.tokenizer.save_pretrained(output_dir)
