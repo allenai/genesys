@@ -3,7 +3,7 @@ budget: ai2/aristo
 tasks:
   - name: model_discovery_train
     image:
-      beaker: 01J25NBGQA1YS4ZYSD00167D45
+      beaker: 01J283XY2874V387CMDER7KH03
     command: [python, -m, model_discovery.train]
     envVars:
       - name: DATA_DIR

@@ -1,9 +1,7 @@
-
 # gab.py
 
 import torch
 import torch.nn as nn
-
 
 class GAB(nn.Module):
     ''' Generalized Autoregressive Block

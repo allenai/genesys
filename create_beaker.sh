@@ -1,4 +1,4 @@
-NUM=1
+NUM=2
 
 CURRENT=${NUM}
 IMAGE_NAME=model_discovery

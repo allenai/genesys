@@ -8,22 +8,25 @@ import copy
 from collections import namedtuple
 
 from transformers.modeling_outputs import CausalLMOutput
+from transformers import PreTrainedModel, PretrainedConfig, AutoTokenizer
 
 import torch
 from torch import nn, Tensor
 
 from .configs.gam_config import GAMConfig
 from .gab import GAB, gab_config
-from .utils.generation import GenerationMixin
+from .utils.generation import decode
 from .utils.hf import load_config_hf, load_state_dict_hf
-
+from .utils.generation import GenerationMixin
 try: 
     from .ops.triton.layer_norm import RMSNorm, layer_norm_fn, rms_norm_fn
 except:
     RMSNorm       = None
     layer_norm_fn = None
     rms_norm_fn   = None 
-    
+
+from .. import utils as U
+
 
 class Block(nn.Module):
     def __init__(
@@ -46,11 +49,6 @@ class Block(nn.Module):
         self.fused_add_norm = fused_add_norm
         self.norm = norm_cls(dim)
         self.gab = gab()
-
-        ### turns it off 
-        if RMSNorm is None:
-            self.fused_add_norm = False
-            
         if self.fused_add_norm:
             assert RMSNorm is not None, "RMSNorm import fails"
             assert isinstance(
@@ -245,9 +243,15 @@ class GAM(nn.Module):
             )
         return hidden_states
 
+    def print_size(self):
+        print(f'Model size: {U.strmodelsize(self)}')
+        print(f'Embedding parameters: {U.strmodelsize(self.embedding)}')
+        print(f'Non-embedding parameters: {U.strmodelsize(self.layers)}')
 
-class ModisLMHeadModel(nn.Module, GenerationMixin):
+
+class ModisLMHeadModel(PreTrainedModel):
     ''' Generalized Autoregressive Models with LM Head '''
+    config_class = GAMConfig
 
     def __init__(
         self,
@@ -266,7 +270,7 @@ class ModisLMHeadModel(nn.Module, GenerationMixin):
         pad_vocab_size_multiple = config.pad_vocab_size_multiple
         factory_kwargs = {"device": device, "dtype": dtype}
 
-        super().__init__()
+        super().__init__(config)
         if vocab_size % pad_vocab_size_multiple != 0:
             vocab_size += pad_vocab_size_multiple - (vocab_size % pad_vocab_size_multiple)
         self.backbone = GAM(
@@ -307,17 +311,19 @@ class ModisLMHeadModel(nn.Module, GenerationMixin):
         if num_last_tokens > 0:
             hidden_states = hidden_states[:, -num_last_tokens:]
         lm_logits = self.lm_head(hidden_states)
+        # CausalLMOutput = namedtuple("CausalLMOutput", ["logits"])
         return CausalLMOutput(logits=lm_logits)
 
     @classmethod
     def from_pretrained(cls, config: GAMConfig, pretrained_model_name, device=None, dtype=None, **kwargs):
         config_data = load_config_hf(pretrained_model_name)
-        config = config(**config_data)
+        # config = config(**config_data)
+        config = config().update_from_dict(config_data)
         model = cls(config, device=device, dtype=dtype, **kwargs)
         model.load_state_dict(load_state_dict_hf(pretrained_model_name, device=device, dtype=dtype))
         return model
 
-    def save_pretrained(self, save_directory):
+    def save_pretrained(self, save_directory, **kwargs):
         """
         Minimal implementation of save_pretrained for MambaLMHeadModel.
         Save the model and its configuration file to a directory.
@@ -333,3 +339,22 @@ class ModisLMHeadModel(nn.Module, GenerationMixin):
         config_path = os.path.join(save_directory, 'config.json')
         with open(config_path, 'w') as f:
             json.dump(self.config.__dict__, f, indent=4)
+
+    def generate( # seems no need, PTM already has this
+        self,
+        input_ids,
+        max_length,
+        top_k=1,
+        top_p=0.0,
+        min_p=0.0,
+        temperature=1.0,
+        return_dict_in_generate=False,
+        output_scores=False,
+        **kwargs,
+    ):
+        output = decode(
+            input_ids, self, max_length, top_k=top_k, top_p=top_p, min_p = min_p, temperature=temperature, **kwargs
+        )
+        if not output_scores:
+            output.scores = None
+        return output if return_dict_in_generate else output.sequences
