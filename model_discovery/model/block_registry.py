@@ -60,4 +60,4 @@ class BlockRegister:
             raise ValueError(
                 f'Block not found by name: {name}'
             )
-        return self.IMPLEMENTATIONS[name]
+        return cls.IMPLEMENTATIONS[name]

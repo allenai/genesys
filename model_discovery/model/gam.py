@@ -278,7 +278,7 @@ class ModisLMHeadModel(PreTrainedModel):
     def __init__(
         self,
         config: GAMConfig,
-        gab_name,
+        block_implementation,
         initializer_cfg=None,
         device=None,
         dtype=None,
@@ -299,7 +299,7 @@ class ModisLMHeadModel(PreTrainedModel):
         self.backbone = GAM(
             d_model=self.d_model,
             n_layer=n_layer,
-            block_implementation=gab_name,
+            block_implementation=block_implementation,
             vocab_size=vocab_size,
             rms_norm=rms_norm,
             initializer_cfg=initializer_cfg,
@@ -392,6 +392,7 @@ class ModisLMHeadModel(PreTrainedModel):
         """
         name = kwargs["gab_name"]
         gab = BlockRegister.load_block(name)
-        kwargs["gab_name"] = gab 
+        kwargs["block_implementation"] = gab 
+        del kwargs["gab_name"]
         
         return cls(config,**kwargs)
