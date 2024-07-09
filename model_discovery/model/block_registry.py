@@ -56,7 +56,7 @@ class BlockRegister:
 
     @classmethod
     def load_block(cls,name):
-        if name not in self.IMPLEMENTATIONS:
+        if name not in cls.IMPLEMENTATIONS:
             raise ValueError(
                 f'Block not found by name: {name}'
             )
