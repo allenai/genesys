@@ -18,7 +18,6 @@ import torch
 from torch import nn, Tensor
 from model_discovery.model.configs.gam_config import GAMConfig
 from model_discovery.model.gab import (
-    #GAB,
     gab_config
 )
 from model_discovery.model.utils.generation import decode
@@ -411,5 +410,4 @@ class ModisLMHeadModel(PreTrainedModel):
         gab = BlockRegister.load_block(name)
         kwargs["block_implementation"] = gab 
         del kwargs["gab_name"]
-
         return cls(config,**kwargs)

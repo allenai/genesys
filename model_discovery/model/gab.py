@@ -5,7 +5,7 @@ import torch.nn as nn
 from .block_registry import BlockRegister
 
 @BlockRegister(
-    name="standard"
+    name="default"
 )
 class GAB(nn.Module):
     ''' Generalized Autoregressive Block
