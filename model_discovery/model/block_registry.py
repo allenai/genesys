@@ -54,7 +54,8 @@ class BlockRegister:
     def add_block(self,name,block_implementation):
         self.IMPLEMENTATIONS[name] = block_implementation
 
-    def load_block(self,name):
+    @classmethod
+    def load_block(cls,name):
         if name not in self.IMPLEMENTATIONS:
             raise ValueError(
                 f'Block not found by name: {name}'

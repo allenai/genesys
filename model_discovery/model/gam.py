@@ -24,6 +24,7 @@ from model_discovery.model.gab import (
 from model_discovery.model.utils.generation import decode
 from model_discovery.model.utils.hf import load_config_hf, load_state_dict_hf
 from model_discovery.model.utils.generation import GenerationMixin
+from model_discovery.model.block_registry import BlockRegister
 
 try: 
     from model_discovery.model.ops.triton.layer_norm import (
@@ -389,4 +390,8 @@ class ModisLMHeadModel(PreTrainedModel):
         :param config: 
             The global configuration. 
         """
+        name = kwargs["gab_name"]
+        gab = BlockRegister.load_black(name)
+        kwargs["gab_name"] = gab 
+        
         return cls(config,**kwargs)
