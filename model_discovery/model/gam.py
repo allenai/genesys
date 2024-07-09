@@ -277,7 +277,7 @@ class ModisLMHeadModel(PreTrainedModel):
     def __init__(
         self,
         config: GAMConfig,
-        block_implementation,
+        gab_name,
         initializer_cfg=None,
         device=None,
         dtype=None,
@@ -298,7 +298,7 @@ class ModisLMHeadModel(PreTrainedModel):
         self.backbone = GAM(
             d_model=self.d_model,
             n_layer=n_layer,
-            block_implementation=block_implementation,
+            block_implementation=gab_name,
             vocab_size=vocab_size,
             rms_norm=rms_norm,
             initializer_cfg=initializer_cfg,
