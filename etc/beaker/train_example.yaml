@@ -3,21 +3,23 @@ budget: ai2/aristo
 tasks:
   - name: model_discovery_train
     image:
-      beaker: 01J2A76ESJGYCGVBHWQZ89RMW3
+      beaker: 01J2AXDY9YRAS8ZV8DQZFR6SM1
     command: [
     python, -m, model_discovery.run,
     --ckpt_dir, /output,
-    --data_dir, /output,
+    --data_dir,/output,
     ]
     envVars:
       - name: HF_KEY
         secret: HF_TOKEN_SECRET
+      - name: WANDB_API_KEY
+        secret: WANDB_API_KEY_SECRET
     result:
       path: /output
     resources:
       gpuCount: 1
     context:
-      priority: low
+      priority: normal
       preemptible: true
     constraints:
       cluster:

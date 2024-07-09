@@ -18,9 +18,6 @@ from ..model.configs.basic import BasicConfig
 #from ..model.configs.apikeys import APIKeys
 from .. import utils as U
 
-#PROJ_SRC = os.path.abspath(os.path.dirname(__file__))
-DATA_DIR = os.environ["DATA_DIR"] #os.path.abspath(f"{PROJ_SRC}/../../data")
-
 def get_tokenizer(tokenizer_name):
     tokenizer=AutoTokenizer.from_pretrained(tokenizer_name)
     tokenizer.pad_token = tokenizer.eos_token
@@ -81,7 +78,7 @@ def pretokenize_dataset(dataset_name):
         def wrapper(tokenizer_name=None, context_length=None, *args, **kwargs):
             
             tokenized_dir = U.pjoin(
-                DATA_DIR,
+                os.environ["DATA_DIR"],
                 dataset_name,
                 'tokenized',
                 tokenizer_name,
