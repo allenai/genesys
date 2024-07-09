@@ -275,7 +275,7 @@ def report(args) -> dict:
     }
     with open(f"{outdir}/report.json", 'w') as report_out:
         report_out.write(json.dumps(report,indent=4))
-    with open(f'{args.ckpt_dir}/metrics.json}','w') as json_out:
+    with open(f'{args.ckpt_dir}/metrics.json','w') as json_out:
         json_out.write(json.dumps(report,indent=4))
         
     #json.dump(report, open(f"{outdir}/report.json", 'w'), indent=4)

@@ -7,13 +7,17 @@ tasks:
     command: [
     python, -m, model_discovery.run,
     --ckpt_dir, /output,
-    --data_dir,/output,
+    --data_dir,/data,
     ]
     envVars:
       - name: HF_KEY
         secret: HF_TOKEN_SECRET
       - name: WANDB_API_KEY
         secret: WANDB_API_KEY_SECRET
+    datasets:
+      - mountPath: /data
+        source:
+          beaker: 01J2AYF57RFQAHR0C906W6KTSG
     result:
       path: /output
     resources:
