@@ -78,7 +78,6 @@ class CustomParams(exec_utils.ModuleParams):
             "exclude_hash" : True,
         }
     )
-
     ### agent profiles
     designer_spec: str = exec_utils.ParamField(
         default=os.path.abspath(
@@ -98,7 +97,6 @@ class CustomParams(exec_utils.ModuleParams):
             "exclude_hash" : True,
         }
     )
-
     ### code information
     block_template: str = exec_utils.ParamField(
         default=os.path.abspath(
@@ -109,15 +107,22 @@ class CustomParams(exec_utils.ModuleParams):
             "help"         : 'Location of block for prompting ',
         }
     )
-    gam_code: str = exec_utils.ParamField(
+    gam_template: str = exec_utils.ParamField(
         default=os.path.abspath(
-            f'{PROJ_SRC}/gam.py'
+            f'{PROJ_SRC}/gam_prompt.py'
         ),
         metadata={
-            "help"         : 'Location of code prompting ',
+            "help" : 'Location of code prompting ',
         }
     )
-
+    gam_implementation: str = exec_utils.ParamField(
+        default=os.path.abspath(
+            f'{PROJ_SRC}/model/gam.py'
+        ),
+        metadata={
+            "help" : 'Location of code prompting ',
+        }
+    )
     ### debugging
     debug_steps: bool = exec_utils.ParamField(
         default=False,
@@ -127,6 +132,7 @@ class CustomParams(exec_utils.ModuleParams):
         }
     )
 
+    
 def get_context_info(config) -> Tuple[str,str]:
     """Grabs the block and model implementation details for the prompt 
 
@@ -136,12 +142,15 @@ def get_context_info(config) -> Tuple[str,str]:
     """
     if not os.path.isfile(config.block_template):
         raise ValueError(f'Cannot find the block template: {config.block_template}')
-    if not os.path.isfile(config.gam_code):
+    if not os.path.isfile(config.gam_template):
         raise ValueError(f'Cannot find the code context')
+    if not os.path.isfile(config.gam_implementation):
+        raise ValueError(f'Cannot find the gam implementation')
     block = open(config.block_template).read()
-    code = open(config.gam_code).read()
+    code = open(config.gam_template).read()
+    implementation = open(config.gam_implementation).read()
     
-    return (block,code)
+    return (block,code,implementation)
     
 @exec_utils.Registry(
     resource_type="system_type",
@@ -161,6 +170,7 @@ class ModelDiscoverySystem(exec_utils.System):
         *,
         block_template: str,
         model_implementation: str,
+        gam_template: str,
         config: ConfigType 
     ) -> None:
         """Create a `DiscoverySystem` instance 
@@ -182,7 +192,8 @@ class ModelDiscoverySystem(exec_utils.System):
         self.reviewer = reviewer
         self.checker = checker
         
-        self.gam_py = model_implementation
+        self.gam_py = gam_template
+        self.gam_implementation = model_implementation
         self.gab_py = block_template
         self._config = config
 
@@ -219,7 +230,7 @@ class ModelDiscoverySystem(exec_utils.System):
         self._queries.append(query)
         
         for attempt in range(self._config.max_design_attempts):
-
+            
             designer_out = self.designer(
                 query,
                 source=source,
@@ -241,12 +252,12 @@ class ModelDiscoverySystem(exec_utils.System):
                 continue
 
             # ## print the design out
-            design_out = f"{self._config.wdir}/{len(self._queries)}_design_{attempt}.py"
-            with open(design_out,'w') as new_design:
-                new_design.write(code)
+            #design_out = f"{self._config.wdir}/{len(self._queries)}_design_{attempt}.py"
+            # with open(design_out,'w') as new_design:
+            #     new_design.write(code)
 
-            self.checker(design_out)
-                
+            self.checker.check(code,self.gam_implementation)
+            
             break 
 
 
@@ -278,14 +289,15 @@ class ModelDiscoverySystem(exec_utils.System):
         
         
         ### get the model information for context
-        block, code = get_context_info(config)
+        block, code, implementation = get_context_info(config)
 
         return cls(
             designer,
             reviewer,
             checker,
             block_template=block,
-            model_implementation=code,
+            model_implementation=implementation,
+            gam_template=code,
             config=config
         )
 

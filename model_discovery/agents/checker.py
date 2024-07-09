@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from tqdm import tqdm
 import torch
 import torch.nn as nn
@@ -5,6 +7,8 @@ import torch.optim as optim
 import importlib
 
 import exec_utils
+
+from ..model.loader import reload_gam
 
 __all__ = [
     "Checker"
@@ -92,14 +96,17 @@ class Checker(exec_utils.BaseTool):
         self.logging.info('Paramete number is within threshold')
         return True
 
-    def check(self, path: str) -> bool:
+    def check(self, gab_code: str,gam_code: str) -> bool:
         """Runs through a bunch of checks for the new module at path 
 
         :param path: 
             The path of the proposed module 
         """
+        ModisLMHeadModel = reload_gam(gam_code,gab_code)
+        print(ModisLMHeadModel)
+        
+
         return True
     
     def __call__(self,path: str) -> bool:
         return self.check(path)
-    

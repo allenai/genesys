@@ -2,7 +2,11 @@
 
 import torch
 import torch.nn as nn
+from .block_registry import BlockRegister
 
+@BlockRegister(
+    name="standard"
+)
 class GAB(nn.Module):
     ''' Generalized Autoregressive Block
         Input:        X: (batch, seqlen, embed_dim)
@@ -50,7 +54,7 @@ class GAB(nn.Module):
         
         Y = self.ffn(X)
         return Y
-
+    
     def forward(self, X, **kwargs):
         ''' Forward pass of the model '''
         Y = self._forward(X, **kwargs)

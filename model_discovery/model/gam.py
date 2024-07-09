@@ -8,24 +8,35 @@ import copy
 from collections import namedtuple
 
 from transformers.modeling_outputs import CausalLMOutput
-from transformers import PreTrainedModel, PretrainedConfig, AutoTokenizer
+from transformers import (
+    PreTrainedModel,
+    PretrainedConfig,
+    AutoTokenizer
+)
 
 import torch
 from torch import nn, Tensor
+from model_discovery.model.configs.gam_config import GAMConfig
+from model_discovery.model.gab import (
+    #GAB,
+    gab_config
+)
+from model_discovery.model.utils.generation import decode
+from model_discovery.model.utils.hf import load_config_hf, load_state_dict_hf
+from model_discovery.model.utils.generation import GenerationMixin
 
-from .configs.gam_config import GAMConfig
-from .gab import GAB, gab_config
-from .utils.generation import decode
-from .utils.hf import load_config_hf, load_state_dict_hf
-from .utils.generation import GenerationMixin
 try: 
-    from .ops.triton.layer_norm import RMSNorm, layer_norm_fn, rms_norm_fn
+    from model_discovery.model.ops.triton.layer_norm import (
+        RMSNorm,
+        layer_norm_fn,
+        rms_norm_fn
+    )
 except:
     RMSNorm       = None
     layer_norm_fn = None
     rms_norm_fn   = None 
 
-from .. import utils as U
+from model_discovery import utils as U
 
 
 class Block(nn.Module):
@@ -88,6 +99,7 @@ class Block(nn.Module):
 
 
 def create_block(
+    block_implementation,
     d_model,
     block_config,
     norm_epsilon=1e-5,
@@ -99,7 +111,14 @@ def create_block(
     dtype=None,
 ):
     factory_kwargs = {"device": device, "dtype": dtype}
-    constructor = partial(GAB, embed_dim=d_model, layer_idx=layer_idx, device=device, dtype=dtype, **block_config)
+    constructor = partial(
+        block_implementation,
+        embed_dim=d_model,
+        layer_idx=layer_idx,
+        device=device,
+        dtype=dtype,
+        **block_config
+    )
     norm_cls = partial(
         nn.LayerNorm if not rms_norm else RMSNorm, eps=norm_epsilon, **factory_kwargs
     )
@@ -155,6 +174,7 @@ class GAM(nn.Module):
         self,
         d_model: int,
         n_layer: int,
+        block_implementation,
         vocab_size: int = 50277,
         norm_epsilon: float = 1e-5,
         rms_norm: bool = False,
@@ -188,6 +208,7 @@ class GAM(nn.Module):
         self.layers = nn.ModuleList(
             [
                 create_block(
+                    block_implementation,
                     d_model,
                     block_config,
                     norm_epsilon=norm_epsilon,
@@ -256,6 +277,7 @@ class ModisLMHeadModel(PreTrainedModel):
     def __init__(
         self,
         config: GAMConfig,
+        block_implementation,
         initializer_cfg=None,
         device=None,
         dtype=None,
@@ -276,6 +298,7 @@ class ModisLMHeadModel(PreTrainedModel):
         self.backbone = GAM(
             d_model=self.d_model,
             n_layer=n_layer,
+            block_implementation=block_implementation,
             vocab_size=vocab_size,
             rms_norm=rms_norm,
             initializer_cfg=initializer_cfg,
@@ -358,3 +381,12 @@ class ModisLMHeadModel(PreTrainedModel):
         if not output_scores:
             output.scores = None
         return output if return_dict_in_generate else output.sequences
+
+    @classmethod
+    def from_config(cls,config,**kwargs):
+        """Loads the model from configuration 
+
+        :param config: 
+            The global configuration. 
+        """
+        return cls(config,**kwargs)

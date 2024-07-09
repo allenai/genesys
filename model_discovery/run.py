@@ -119,11 +119,13 @@ def run_train(args) -> None:
         f"{args.ckpt_dir}/{args.config}/{args.modelname}/wandb_ids.json"
     )
     setup_environ(args,wandb_ids)
-
-    config: GAMConfig =eval(f"{args.config}()")
-    model = ModisLMHeadModel(
-        config, dtype=torch.bfloat16,
-        device="cuda" if torch.cuda.is_available() else "cpu" 
+    
+    config: GAMConfig = eval(f"{args.config}()")
+    model = ModisLMHeadModel.from_config(
+        config,
+        dtype=torch.bfloat16,
+        device="cuda" if torch.cuda.is_available() else "cpu",
+        gab_name=args.gab_name
     )
     model.backbone.print_size()
     
@@ -310,7 +312,7 @@ if __name__ == "__main__":
     parser.add_argument("--ckpt_dir", type=str, default='')
     parser.add_argument("--data_dir", type=str, default='')
     parser.add_argument("--download_data_only", action='store_true')
-    
+    parser.add_argument("--gab_name", type=str, default='standard')
     
     args = parser.parse_args()
     
