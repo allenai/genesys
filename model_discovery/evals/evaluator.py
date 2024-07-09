@@ -7,7 +7,11 @@ import transformers
 from transformers import AutoTokenizer
 
 from ..model.gam import ModisLMHeadModel
-from ..model.configs.gam_config import GAMConfig, GAMConfig_10M, GAMConfig_debug
+from ..model.configs.gam_config import (
+    GAMConfig,
+    GAMConfig_10M,
+    GAMConfig_debug
+)
 
 from lm_eval.api.model import LM
 from lm_eval.models.huggingface import HFLM
@@ -27,6 +31,7 @@ class ModisEvalWrapper(HFLM):
     def __init__(
             self,
             pretrained,
+            gab_name,
             max_length=2048,
             batch_size=None,
             device="cuda",
@@ -47,6 +52,7 @@ class ModisEvalWrapper(HFLM):
         
         model = ModisLMHeadModel.from_pretrained(
             pretrained_model_name=ckpt,
+            gab_name=gab_name,
             config=config,
             dtype=torch.bfloat16,
             device="cuda" if torch.cuda.is_available() else "cpu" 

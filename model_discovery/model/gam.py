@@ -339,11 +339,27 @@ class ModisLMHeadModel(PreTrainedModel):
         return CausalLMOutput(logits=lm_logits)
 
     @classmethod
-    def from_pretrained(cls, config: GAMConfig, pretrained_model_name, device=None, dtype=None, **kwargs):
+    def from_pretrained(
+            cls,
+            config: GAMConfig,
+            pretrained_model_name,
+            device=None,
+            dtype=None,
+            **kwargs
+        ):
         config_data = load_config_hf(pretrained_model_name)
         # config = config(**config_data)
         config = config().update_from_dict(config_data)
-        model = cls(config, device=device, dtype=dtype, **kwargs)
+        name = kwargs["gab_name"]
+        gab = BlockRegister.load_block(name)
+        
+        model = cls(
+            config,
+            block_implementation=gab,
+            device=device,
+            dtype=dtype,
+            **kwargs
+        )
         model.load_state_dict(load_state_dict_hf(pretrained_model_name, device=device, dtype=dtype))
         return model
 
@@ -394,5 +410,5 @@ class ModisLMHeadModel(PreTrainedModel):
         gab = BlockRegister.load_block(name)
         kwargs["block_implementation"] = gab 
         del kwargs["gab_name"]
-        
+
         return cls(config,**kwargs)
