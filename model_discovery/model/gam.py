@@ -352,6 +352,7 @@ class ModisLMHeadModel(PreTrainedModel):
         config = config().update_from_dict(config_data)
         name = kwargs["gab_name"]
         gab = BlockRegister.load_block(name)
+        del kwargs["gab_name"]
         
         model = cls(
             config,
