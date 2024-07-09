@@ -7,6 +7,7 @@ from typing import (
     Optional,
     Any
 )
+import re
 import exec_utils 
 
 __all__ = [
@@ -39,7 +40,10 @@ class DesignerAgent(exec_utils.SimpleLMAgent):
             the running costs of the model.
         """
         raw_text = raw_output.text
-
+        codes = re.findall(r"```python(.*?)```", raw_text, re.DOTALL)
+        if codes:
+            raw_text = codes[0]
+            
         output = {}
         output["code"] = raw_text
         output["_details"] = {}

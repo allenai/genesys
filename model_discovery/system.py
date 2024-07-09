@@ -25,12 +25,17 @@ from .agents import *
 from .prompts import (
     DESIGNER_PROMPT,
     REVIEWER_PROMPT,
-    GAMConfig,
-    GAMConfig_10M,
+    #GAMConfig,
+    #GAMConfig_10M,
     GAB_ERROR
 )
 
 C = TypeVar("C",bound="ModelDiscoverySystem")
+
+from .model.configs.gam_config import (
+    GAMConfig_10M,
+    GAMConfig
+)
 
 __all__ = [
     "ModelDiscoverySystem",
@@ -131,7 +136,13 @@ class CustomParams(exec_utils.ModuleParams):
             "exclude_hash" : True,
         }
     )
-
+    gam_config: str = exec_utils.ParamField(
+        default='GAMConfig_10M',
+        metadata={
+            "help"         : 'Debug the steps of the system',
+            "exclude_hash" : True,
+        }
+    )
     
 def get_context_info(config) -> Tuple[str,str]:
     """Grabs the block and model implementation details for the prompt 
@@ -171,6 +182,7 @@ class ModelDiscoverySystem(exec_utils.System):
         block_template: str,
         model_implementation: str,
         gam_template: str,
+        gam_config,
         config: ConfigType 
     ) -> None:
         """Create a `DiscoverySystem` instance 
@@ -196,6 +208,7 @@ class ModelDiscoverySystem(exec_utils.System):
         self.gam_implementation = model_implementation
         self.gab_py = block_template
         self._config = config
+        self._cfg = gam_config
 
         ###
         self._queries = [] 
@@ -223,7 +236,7 @@ class ModelDiscoverySystem(exec_utils.System):
         query = DESIGNER_PROMPT.format(
             gam_py=self.gam_py,
             gab_py=self.gab_py,
-            config=GAMConfig_10M().print_config(), #<--- need to parameterize 
+            config=self._cfg.print_config(), #<--- need to parameterize 
             instruct=query,
         )
         source = 'user'
@@ -251,12 +264,8 @@ class ModelDiscoverySystem(exec_utils.System):
                 source = 'user'
                 continue
 
-            # ## print the design out
-            #design_out = f"{self._config.wdir}/{len(self._queries)}_design_{attempt}.py"
-            # with open(design_out,'w') as new_design:
-            #     new_design.write(code)
-
-            self.checker.check(code,self.gam_implementation)
+            self.checker.check(self._cfg,code)
+            
             
             break 
 
@@ -290,7 +299,8 @@ class ModelDiscoverySystem(exec_utils.System):
         
         ### get the model information for context
         block, code, implementation = get_context_info(config)
-
+        cfg = eval(f"{config.gam_config}()")
+        
         return cls(
             designer,
             reviewer,
@@ -298,7 +308,8 @@ class ModelDiscoverySystem(exec_utils.System):
             block_template=block,
             model_implementation=implementation,
             gam_template=code,
-            config=config
+            config=config,
+            gam_config=cfg
         )
 
 def BuildSystem(

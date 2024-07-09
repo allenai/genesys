@@ -5,7 +5,6 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import importlib
-
 import exec_utils
 
 from ..model.loader import reload_gam
@@ -95,16 +94,26 @@ class Checker(exec_utils.BaseTool):
             return False
         self.logging.info('Paramete number is within threshold')
         return True
-
-    def check(self, gab_code: str,gam_code: str) -> bool:
+    
+    def check(self, config,gab_code) -> bool:
         """Runs through a bunch of checks for the new module at path 
 
         :param path: 
             The path of the proposed module 
         """
-        ModisLMHeadModel = reload_gam(gam_code,gab_code)
-        print(ModisLMHeadModel)
+        glm = reload_gam(config,gab_code)
+        if torch.cuda.is_available():
+           glm = glm.cuda()
+
+        mock_input=torch.randint(0, 50277, (8, 500))
+        mock_input = mock_input.to(glm.device)
+
+        output = glm(mock_input)
+
+        print(output)
         
+        #ModisLMHeadModel = reload_gam(gab_code)
+        #print(ModisLMHeadModel)
 
         return True
     

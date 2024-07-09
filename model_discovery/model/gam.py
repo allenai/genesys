@@ -183,6 +183,7 @@ class GAM(nn.Module):
         residual_in_fp32 = False,
         device = None,
         dtype = None,
+        block_config: dict = {},
     ) -> None:
         self.factory_kwargs = {"device": device, "dtype": dtype}
         super().__init__()
@@ -195,12 +196,12 @@ class GAM(nn.Module):
         # Add -> LN -> Attn / MLP / Mixer, returning both the residual branch (output of Add) and
         # the main branch (output of MLP / Mixer). The model definition is unchanged.
         # This is for performance reason: we can fuse add + layer_norm.
-        self.fused_add_norm = fused_add_norm
+        self.fused_add_norm = fused_add_norm if RMSNorm else None 
         if self.fused_add_norm:
             if layer_norm_fn is None or rms_norm_fn is None:
                 raise ImportError("Failed to import Triton LayerNorm / RMSNorm kernels")
 
-        block_config = gab_config()
+        #block_config = gab_config()
         # if n_layer is None:
         #     assert 'n_layer' in block_config, "n_layer must be provided if not in block_config"
         #     n_layer = block_config['n_layer']
@@ -222,7 +223,7 @@ class GAM(nn.Module):
             ]
         )
 
-        self.norm_f = (nn.LayerNorm if not rms_norm else RMSNorm)(
+        self.norm_f = (nn.LayerNorm if not rms_norm or not RMSNorm else RMSNorm)(
             d_model, eps=norm_epsilon, **self.factory_kwargs
         )
 
@@ -281,7 +282,16 @@ class ModisLMHeadModel(PreTrainedModel):
         initializer_cfg=None,
         device=None,
         dtype=None,
+        block_config = {},
     ) -> None:
+        """Initializes LM model 
+
+        :param config: 
+            The global GAM model configuration. 
+        :param block_implementation: 
+            The specific GAB model to use. 
+        :param initializer_cfg: 
+        """
         self.config = config
         self.d_model = config.d_model
         n_layer = config.n_layer
@@ -299,6 +309,7 @@ class ModisLMHeadModel(PreTrainedModel):
             d_model=self.d_model,
             n_layer=n_layer,
             block_implementation=block_implementation,
+            block_config=block_config,
             vocab_size=vocab_size,
             rms_norm=rms_norm,
             initializer_cfg=initializer_cfg,
@@ -350,12 +361,14 @@ class ModisLMHeadModel(PreTrainedModel):
         # config = config(**config_data)
         config = config().update_from_dict(config_data)
         name = kwargs["gab_name"]
-        gab = BlockRegister.load_block(name)
+        gab,gab_config = BlockRegister.load_block(name)
         del kwargs["gab_name"]
+        #kwargs["block_config"] = gab_config
         
         model = cls(
             config,
             block_implementation=gab,
+            block_config=gab_config,
             device=device,
             dtype=dtype,
             **kwargs
@@ -393,10 +406,18 @@ class ModisLMHeadModel(PreTrainedModel):
         **kwargs,
     ):
         output = decode(
-            input_ids, self, max_length, top_k=top_k, top_p=top_p, min_p = min_p, temperature=temperature, **kwargs
+            input_ids,
+            self,
+            max_length,
+            top_k=top_k,
+            top_p=top_p,
+            min_p = min_p,
+            temperature=temperature,
+            **kwargs
         )
         if not output_scores:
             output.scores = None
+
         return output if return_dict_in_generate else output.sequences
 
     @classmethod
@@ -407,7 +428,9 @@ class ModisLMHeadModel(PreTrainedModel):
             The global configuration. 
         """
         name = kwargs["gab_name"]
-        gab = BlockRegister.load_block(name)
+        gab,gab_config = BlockRegister.load_block(name)
         kwargs["block_implementation"] = gab 
         del kwargs["gab_name"]
+        kwargs["block_config"] = gab_config
+        
         return cls(config,**kwargs)

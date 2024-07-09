@@ -312,7 +312,7 @@ if __name__ == "__main__":
     parser.add_argument("--ckpt_dir", type=str, default='')
     parser.add_argument("--data_dir", type=str, default='')
     parser.add_argument("--download_data_only", action='store_true')
-    parser.add_argument("--gab_name", type=str, default='default')
+    parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
     
     args = parser.parse_args()
     

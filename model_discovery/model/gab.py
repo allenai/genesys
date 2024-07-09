@@ -4,8 +4,14 @@ import torch
 import torch.nn as nn
 from .block_registry import BlockRegister
 
+
+__all__ = [
+    "GAB",
+]
+
 @BlockRegister(
-    name="default"
+    name="default",
+    config={}
 )
 class GAB(nn.Module):
     ''' Generalized Autoregressive Block

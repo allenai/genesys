@@ -1,5 +1,7 @@
 import importlib.util
 import sys
+from .block_registry import BlockRegister
+from .gam import ModisLMHeadModel
 
 
 def create_code(gam_code: str,gab_code: str) -> str:
@@ -12,7 +14,7 @@ def create_code(gam_code: str,gab_code: str) -> str:
     """
     return gab_code+'\n\n\n'+gam_code.replace('from modis_gam.model.gab import GAB, gab_config','')
 
-def reload_gam(gam_code: str,gab_code: str):
+def reload_gam(config,gab_code: str,name: str = 'new'):
     """Reloads the GAM code with new block 
 
     :param gam_code: 
@@ -20,22 +22,38 @@ def reload_gam(gam_code: str,gab_code: str):
     :param gab_code: 
         The new GAB block 
     """
-    code = create_code(gam_code,gab_code)
+    module = {}
+    exec(gab_code.replace("class GAB","class GABCustom"),module)
+    GAB = module["GABCustom"]
+    gab_config = {} 
+    if "gab_config" in module:
+        gab_config = module["gab_config"]()
 
-    module_name = 'dynamic_gam_module'
-    spec = importlib.util.spec_from_loader(
-        module_name,
-        loader=None
+    BlockRegister.add_block(name,GAB,config=gab_config)
+    
+    model = ModisLMHeadModel.from_config(
+        config,
+        gab_name="new",
     )
 
-    module = importlib.util.module_from_spec(spec)
+    return model 
+        
     
-    # Execute the code in the module's namespace
-    exec(code, module.__dict__)
+    # code = create_code(gam_code,gab_code)
+    # module_name = 'dynamic_gam_module'
+    # spec = importlib.util.spec_from_loader(
+    #     module_name,
+    #     loader=None
+    # )
 
-    # Add the module to sys.modules
-    sys.modules[module_name] = module
+    # module = importlib.util.module_from_spec(spec)
     
-    # Import the module dynamically
-    import dynamic_gam_module
-    return dynamic_gam_module.ModisLMHeadModel
+    # # Execute the code in the module's namespace
+    # exec(code, module.__dict__)
+
+    # # Add the module to sys.modules
+    # sys.modules[module_name] = module
+    
+    # # Import the module dynamically
+    # import dynamic_gam_module
+    # return dynamic_gam_module.ModisLMHeadModel

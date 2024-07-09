@@ -17,9 +17,9 @@ class GAMConfig(PretrainedConfig):
     param_threshold: float = 0.2
     tokenizer: str = 'meta-llama/Llama-2-7b-hf'
     training_token_multiplier: int = 20
-    rms_norm: bool = True
+    rms_norm: bool = False ### triton stuff,
     residual_in_fp32: bool = True
-    fused_add_norm: bool = True
+    fused_add_norm: bool = False
     pad_vocab_size_multiple: int = 8
     tie_embeddings: bool = True
 
@@ -42,6 +42,23 @@ class GAMConfig(PretrainedConfig):
                 print(f"Warning: '{key}' is not a recognized configuration key and will be ignored.")
         return self
     
+    def print_config(self):
+        prints=f'''
+            d_model: {self.d_model}
+            n_layer: {self.n_layer}
+            param_magnitude: {self.param_magnitude} 
+            context_length: {self.context_length}
+            param_threshold: {self.param_threshold}
+            vocab_size: {self.vocab_size}
+            training_token_multiplier: {self.training_token_multiplier}
+            rms_norm: {self.rms_norm}
+            residual_in_fp32: {self.residual_in_fp32}
+            fused_add_norm: {self.fused_add_norm}
+            pad_vocab_size_multiple: {self.pad_vocab_size_multiple}
+            tie_embeddings: {self.tie_embeddings}
+        '''
+        return prints
+    
 
 @dataclass
 class GAMConfig_10M(GAMConfig):
@@ -56,8 +73,22 @@ class GAMConfig_10M(GAMConfig):
     eval_batch_size: int = 512
     learning_rate: float = 1e-4
 
-
-
+    def print_config(self):
+        prints=f'''
+            d_model: {self.d_model}
+            n_layer: {self.n_layer}
+            param_magnitude: {self.param_magnitude} 
+            context_length: {self.context_length}
+            param_threshold: {self.param_threshold}
+            vocab_size: {self.vocab_size}
+            training_token_multiplier: {self.training_token_multiplier}
+            rms_norm: {self.rms_norm}
+            residual_in_fp32: {self.residual_in_fp32}
+            fused_add_norm: {self.fused_add_norm}
+            pad_vocab_size_multiple: {self.pad_vocab_size_multiple}
+            tie_embeddings: {self.tie_embeddings}
+        '''
+        return prints
 
 @dataclass
 class GAMConfig_debug(GAMConfig):
@@ -75,3 +106,20 @@ class GAMConfig_debug(GAMConfig):
     eval_tasks: List[str] = field(default_factory=lambda: ['arc_easy'])
     rms_norm: bool = False # TRITON BUGGY
     fused_add_norm: bool = False # TRITON BUGGY
+
+    def print_config(self):
+        prints=f'''
+            d_model: {self.d_model}
+            n_layer: {self.n_layer}
+            param_magnitude: {self.param_magnitude} 
+            context_length: {self.context_length}
+            param_threshold: {self.param_threshold}
+            vocab_size: {self.vocab_size}
+            training_token_multiplier: {self.training_token_multiplier}
+            rms_norm: {self.rms_norm}
+            residual_in_fp32: {self.residual_in_fp32}
+            fused_add_norm: {self.fused_add_norm}
+            pad_vocab_size_multiple: {self.pad_vocab_size_multiple}
+            tie_embeddings: {self.tie_embeddings}
+        '''
+        return prints
