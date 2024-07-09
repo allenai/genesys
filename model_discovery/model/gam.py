@@ -391,7 +391,7 @@ class ModisLMHeadModel(PreTrainedModel):
             The global configuration. 
         """
         name = kwargs["gab_name"]
-        gab = BlockRegister.load_black(name)
+        gab = BlockRegister.load_block(name)
         kwargs["gab_name"] = gab 
         
         return cls(config,**kwargs)
