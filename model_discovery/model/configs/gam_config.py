@@ -69,7 +69,7 @@ class GAMConfig_debug(GAMConfig):
     param_magnitude: int = 1e7
     context_length: int = 512
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
-    per_device_train_batch_size: int = 256
+    per_device_train_batch_size: int = 32
     eval_batch_size: int = 512
     learning_rate: float = 5e-3 # LR for BS=256 and 6 GPUs 20x tokens
     training_token_multiplier: int = 2

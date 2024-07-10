@@ -389,23 +389,11 @@ if __name__ == "__main__":
     parser.add_argument("--data_dir", type=str, default='')
     parser.add_argument("--download_data_only", action='store_true')
     parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
-    parser.add_argument("--PERF_PROF_MODE", type=bool, default=False) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
+    parser.add_argument("--PERF_PROF_MODE", type=bool, default=True) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
     
     args = parser.parse_args()
     
-    # main(args)
+    main(args)
     
-    start = time.perf_counter()
-    setup_environ(args)
-    # train(args)
-    start1 = time.perf_counter()
-    before_train(args)
-    # notebook_launcher(run_train, args=(vars(args),), num_processes=args.n_gpus)
-    run_train(args)
-    after_train(args)
-    print(f'Training time: {(time.perf_counter() - start1):.1f} s')
-    evalu(args)
-    report(args)
-    util_logger.info(f"Total time: {(time.perf_counter() - start):.1f} s")
 
 
