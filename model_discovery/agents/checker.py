@@ -21,10 +21,11 @@ class Checker(exec_utils.BaseTool):
     """Checker for checking the correctness of model designs.  
     
 
-     Methods 
+    Methods 
     ----------
     check(check,gab_code: str, name: str) 
-        This is the main method that checks the proposed 
+        
+    This is the main method that checks the proposed 
         block using `is_causal` (has causal attention), 
         `check_differentiable` (check that all operations 
         are differentiable)  and `check_magnitude` (that 

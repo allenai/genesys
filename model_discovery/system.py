@@ -156,19 +156,17 @@ def get_context_info(config) -> Tuple[str,str]:
 
     :param config: 
         The global configuration 
-    :raises ValueError : 
+    :raises: ValueError 
+
     """
     if not os.path.isfile(config.block_template):
         raise ValueError(f'Cannot find the block template: {config.block_template}')
     if not os.path.isfile(config.gam_template):
         raise ValueError(f'Cannot find the code context')
-    if not os.path.isfile(config.gam_implementation):
-        raise ValueError(f'Cannot find the gam implementation')
     block = open(config.block_template).read()
     code = open(config.gam_template).read()
-    implementation = open(config.gam_implementation).read()
     
-    return (block,code,implementation)
+    return (block,code) 
 
 class EmptyHandler: 
     def __init__(self,*args,**kwargs):
@@ -196,7 +194,6 @@ class ModelDiscoverySystem(exec_utils.System):
         checker  : Type[exec_utils.BaseTool], 
         *,
         block_template: str,
-        model_implementation: str,
         gam_template: str,
         gam_config,
         config: ConfigType 
@@ -221,7 +218,6 @@ class ModelDiscoverySystem(exec_utils.System):
         self.checker = checker
         
         self.gam_py = gam_template
-        self.gam_implementation = model_implementation
         self.gab_py = block_template
         self._config = config
         self._cfg = gam_config
@@ -283,6 +279,7 @@ class ModelDiscoverySystem(exec_utils.System):
                         stream.markdown(f'```python\n{code}```')
                         
                     if "# gab.py" not in code: raise
+                        
                 except Exception as e:
                     query = GAB_ERROR
                     source = 'user'
@@ -312,7 +309,8 @@ class ModelDiscoverySystem(exec_utils.System):
         :param config: 
             The global configuration used to create instance. 
         :returns: 
-            A `DiscoverySystem` instance from configuration.  
+            A `DiscoverySystem` instance from configuration. 
+
         """
         ### creates designer and reviewer agents
         
@@ -332,7 +330,7 @@ class ModelDiscoverySystem(exec_utils.System):
         
         
         ### get the model information for context
-        block, code, implementation = get_context_info(config)
+        block, code = get_context_info(config)
         cfg = eval(f"{config.gam_config}()")
         
         return cls(
@@ -340,7 +338,6 @@ class ModelDiscoverySystem(exec_utils.System):
             reviewer,
             checker,
             block_template=block,
-            model_implementation=implementation,
             gam_template=code,
             config=config,
             gam_config=cfg
