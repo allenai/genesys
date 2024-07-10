@@ -198,7 +198,6 @@ class GAM(nn.Module):
             if layer_norm_fn is None or rms_norm_fn is None:
                 raise ImportError("Failed to import Triton LayerNorm / RMSNorm kernels")
 
-        #block_config = gab_config()
         # if n_layer is None:
         #     assert 'n_layer' in block_config, "n_layer must be provided if not in block_config"
         #     n_layer = block_config['n_layer']
@@ -238,7 +237,7 @@ class GAM(nn.Module):
             for i, layer in enumerate(self.layers)
         }
 
-    def forward(self, input_ids, inference_params=None, **mixer_kwargs):
+    def forward(self, input_ids, inference_params=None, **kwargs):
         hidden_states = self.embedding(input_ids)
         residual = None
         for layer in self.layers:
@@ -355,7 +354,6 @@ class ModisLMHeadModel(PreTrainedModel):
             **kwargs
         ):
         config_data = load_config_hf(pretrained_model_name)
-        # config = config(**config_data)
         config = config().update_from_dict(config_data)
         name = kwargs["gab_name"]
         gab,gab_config = BlockRegister.load_block(name)
@@ -383,7 +381,7 @@ class ModisLMHeadModel(PreTrainedModel):
 
         # Save the model's state_dict
         model_path = os.path.join(save_directory, 'pytorch_model.bin')
-        torch.gasave(self.state_dict(), model_path)
+        torch.save(self.state_dict(), model_path)
 
         # Save the configuration of the model
         config_path = os.path.join(save_directory, 'config.json')

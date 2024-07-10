@@ -14,8 +14,6 @@ import functools as ft
 from typing import List
 
 from ..model.configs.gam_config import GAMConfig
-from ..model.configs.basic import BasicConfig
-#from ..model.configs.apikeys import APIKeys
 from .. import utils as U
 
 def get_tokenizer(tokenizer_name):

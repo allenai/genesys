@@ -44,14 +44,18 @@ def setup_environ(args,wandb_ids: dict ={}) -> None:
         The existing (or empty) wandb ids 
     :raises: ValueError 
     """
+    if not args.data_dir: # use the data dir from the environment by default
+        args.data_dir=os.environ.get("DATA_DIR")
+    if not args.ckpt_dir:
+        args.ckpt_dir=os.environ.get("CKPT_DIR")
     if not os.environ.get("HF_KEY"):
         raise ValueError('Must set KH_KEY!')
     if not os.environ.get("WANDB_API_KEY"):
         raise ValueError('Must set WANDB_API_KEY')
-    if not os.environ.get("DATA_DIR") and not args.data_dir:
+    if not args.data_dir:
         raise ValueError("Must set data_dir")
-    if not args.ckpt_dir:
-        raise ValueError('Must specify the checkpoitn directory via `--ckpt_dir`')
+    if not args.data_dir:
+        raise ValueError('Must specify the checkpoint directory via `--ckpt_dir`')
 
     if not os.environ.get("DATA_DIR") or args.data_dir:
         util_logger.info(

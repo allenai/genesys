@@ -1,6 +1,12 @@
+# install torch with cuda
 einops
 triton
 wandb
+transformers
 datasets
+evaluate
 accelerate
-lm_eval
+lm-eval # if cause multi-gpu error, uninstall peft
+causal-conv1d
+mamba-ssm
+flash-attn
