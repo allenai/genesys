@@ -6,6 +6,7 @@ import os
 import numpy as np
 import argparse
 import wandb
+import time
 import logging
 
 import transformers
@@ -13,7 +14,8 @@ from huggingface_hub import login
 
 from transformers import (
     TrainingArguments,
-    DataCollatorForLanguageModeling
+    DataCollatorForLanguageModeling,
+    TrainerCallback,
 )
 from accelerate import notebook_launcher
 import functools as ft
@@ -35,13 +37,11 @@ torch.backends.cudnn.allow_tf32 = True
 
 util_logger = logging.getLogger('model_discovery.train')
 
-def setup_environ(args,wandb_ids: dict ={}) -> None:
+def setup_environ(args) -> None:
     """Sets up the run environment 
 
     :param args: 
         The global run configuration
-    :param wandb_ids: 
-        The existing (or empty) wandb ids 
     :raises: ValueError 
     """
     if not args.data_dir: # use the data dir from the environment by default
@@ -66,12 +66,28 @@ def setup_environ(args,wandb_ids: dict ={}) -> None:
     ### make checkpoint dir
     U.mkdir(args.ckpt_dir)
     util_logger.info(f'Creating checkpoint directory: {args.ckpt_dir}')
+
+    #### seed run
+    util_logger.info(f'Setting seed: seed={args.seed}')
+    random.seed(args.seed)
+    np.random.seed(args.seed)
+    torch.manual_seed(args.seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(args.seed)
+
+
+def before_train(args):
+    if args.PERF_PROF_MODE: return # skip the following if in performance profiling mode
     
     ### log into the hf hub 
     login(os.environ.get("HF_KEY",None))
 
     ## initialize wandb
     util_logger.info(f'Setting up wandb...')
+    global wandb_ids
+    wandb_ids=U.load_json(
+        f"{args.ckpt_dir}/{args.config}/{args.modelname}/wandb_ids.json"
+    )
     if args.resume and 'pretrain' in wandb_ids:
         wandb.init(resume="must", project=args.wandb_project, id=wandb_ids['pretrain'])
     else: 
@@ -81,13 +97,6 @@ def setup_environ(args,wandb_ids: dict ={}) -> None:
             name=f"{args.modelname}_{args.config}"
         )
         
-    #### seed run
-    util_logger.info(f'Setting seed: seed={args.seed}')
-    random.seed(args.seed)
-    np.random.seed(args.seed)
-    torch.manual_seed(args.seed)
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed_all(args.seed)
         
 
 def get_last_checkpoint(output_dir: str):
@@ -104,6 +113,8 @@ def get_last_checkpoint(output_dir: str):
         return None
     checkpoints = sorted(checkpoints, key=lambda x: int(x.split('-')[-1]))
     return checkpoints[-1] # dir of the last checkpoint
+    
+    
 
 def run_train(args) -> None:
     """Runs the full training pipeline 
@@ -111,23 +122,13 @@ def run_train(args) -> None:
     :param args: 
         The global configuration for training.
     """
-    # two default dirs: ckpts and data
+    
     if isinstance(args, dict):
         args = Namespace(**args)
-
-    if args.resume and U.pexists(f"{args.ckpt_dir}/{args.config}/{args.modelname}/pretrained"):
-        util_logger.info(f"Model {args.modelname} is already pretrained")
-        return
-
-    wandb_ids=U.load_json(
-        f"{args.ckpt_dir}/{args.config}/{args.modelname}/wandb_ids.json"
-    )
-    setup_environ(args,wandb_ids)
-    
     config: GAMConfig = eval(f"{args.config}()")
     model = ModisLMHeadModel.from_config(
         config,
-        dtype=torch.bfloat16,
+        dtype=torch.bfloat16, # TODO: allow for other dtypes
         device="cuda" if torch.cuda.is_available() else "cpu",
         gab_name=args.gab_name
     )
@@ -170,6 +171,15 @@ def run_train(args) -> None:
         args=training_args,
         data_collator=data_collator,
     )
+
+    if args.PERF_PROF_MODE:
+        exec_profiler(trainer)
+    else:
+        exec_train(training_args, trainer)
+
+
+def exec_train(training_args, trainer):
+    global wandb_ids
     wandb_ids['pretrain']=wandb.run.id
     U.save_json(wandb_ids,f"{training_args.output_dir}/wandb_ids.json")
     
@@ -190,13 +200,63 @@ def run_train(args) -> None:
     util_logger.info(
         f"Model saved at {training_args.output_dir}/pretrained"
     )
-    history,system_metrics=get_history(wandb.run.id)
-    history.to_csv(f"{training_args.output_dir}/train_logs.csv")
-    system_metrics.to_csv(f"{training_args.output_dir}/system_metrics.csv")
     trainer.state.save_to_json(f"{training_args.output_dir}/trainer_state.json")
-    util_logger.info(f"Training logs saved at {training_args.output_dir}")
-    
+
+class ProfCallback(TrainerCallback):
+    def __init__(self, prof):
+        self.prof = prof
+
+    def on_step_end(self, args, state, control, **kwargs):
+        self.prof.step()
+
+def trace_handler(p):
+    print('Profiler results (by CUDA time):')
+    print(p.key_averages().table(sort_by="self_cuda_time_total", row_limit=10))
+    print('Profiler results (by CPU time):')
+    print(p.key_averages().table(sort_by="self_cpu_time_total", row_limit=10))
+    print('Exporting profiler results')
+    output_dir=f"{args.ckpt_dir}/{args.config}/{args.modelname}"
+    p.export_chrome_trace(f"{output_dir}/profiler/trainer_trace_" + str(p.step_num) + ".json") # check chrome://tracing
+
+def exec_profiler(trainer):
+    local_rank = int(os.getenv("LOCAL_RANK", "0"))
+    if local_rank != 0:
+        trainer.train()
+    else:
+        U.mkdir("profiler") 
+        start = time.perf_counter()
+        with torch.profiler.profile(activities=[torch.profiler.ProfilerActivity.CPU,
+                                                torch.profiler.ProfilerActivity.CUDA], 
+                                    # schedule=torch.profiler.schedule(skip_first=3, wait=1, warmup=1, active=30, repeat=1),
+                                    # on_trace_ready=trace_handler,
+                                    profile_memory=True,
+                                    with_stack=True,
+                                    with_flops=True,
+                                    record_shapes=True) as prof:
+            trainer.add_callback(ProfCallback(prof=prof))
+            trainer.train()
+        util_logger.info(f'Profiling time: {(time.perf_counter() - start):.1f} s')
+        trace_handler(prof) # uncomment if not using on_trace_ready
+
+def after_train(args):
+    if args.PERF_PROF_MODE: return
+    output_dir=f"{args.ckpt_dir}/{args.config}/{args.modelname}"
+    history,system_metrics=get_history(wandb.run.id)
+    history.to_csv(f"{output_dir}/train_logs.csv")
+    system_metrics.to_csv(f"{output_dir}/system_metrics.csv")
+    util_logger.info(f"Training logs saved at {output_dir}")
     wandb.finish()
+
+def train(args):
+    if (not args.PERF_PROF_MODE) and args.resume and U.pexists(f"ckpts/{args.config}/{args.modelname}/pretrained"):
+        print(f"Model {args.config}/{args.modelname} is already pretrained")
+        return
+    start = time.perf_counter()
+    before_train(args)
+    notebook_launcher(run_train, args=(vars(args),), num_processes=args.n_gpus)
+    after_train(args)
+    print(f'Training time: {(time.perf_counter() - start):.1f} s')
+
 
 def get_eval_results(output_dir):
     try:
@@ -226,6 +286,11 @@ def run_eval(args):
         # "--mixed_precision", "yes"
     ]
     cli_evaluate()
+    
+def evalu(args):
+    start = time.perf_counter()
+    run_eval(args)
+    util_logger.info(f"Evaluation time: {(time.perf_counter() - start):.1f} s")
 
 def get_history(run_id, project_path = "aristo/model_discovery"):
     api = wandb.Api()
@@ -260,6 +325,9 @@ def report(args) -> dict:
         The global training configuration. 
     """
     outdir=f"{args.ckpt_dir}/{args.config}/{args.modelname}"
+    if args.resume and U.pexists(f"{outdir}/report.json"):
+        print(f"Report already exists at {outdir}/report.json")
+        return
     run_id=U.load_json(f"{outdir}/wandb_ids.json")['pretrain']
     history,system_metrics=get_history(
         run_id,
@@ -281,7 +349,7 @@ def report(args) -> dict:
     }
     with open(f"{outdir}/report.json", 'w') as report_out:
         report_out.write(json.dumps(report,indent=4))
-    with open(f'{args.ckpt_dir}/metrics.json','w') as json_out:
+    with open(f'{args.ckpt_dir}/metrics.json','w') as json_out: # Q: why do twice? 
         json_out.write(json.dumps(report,indent=4))
         
     #json.dump(report, open(f"{outdir}/report.json", 'w'), indent=4)
@@ -289,15 +357,19 @@ def report(args) -> dict:
     
     return report
 
-def main(argv):
+def main(args):
     """Main run entry point 
 
-    :param argv: 
+    :param args: 
         The CLI arguments. 
     """
-    run_train(argv)
-    run_eval(argv)
+    start = time.perf_counter()
+    setup_environ(args)
+    train(args)
+    evalu(args)
     report(args)
+    util_logger.info(f"Total time: {(time.perf_counter() - start):.1f} s")
+
     
 
 if __name__ == "__main__":
@@ -305,7 +377,7 @@ if __name__ == "__main__":
     parser.add_argument("--modelname", type=str, default="test1") # should be named after the agent
     parser.add_argument("--config", type=str, default="GAMConfig_debug")
     parser.add_argument("--resume", type=bool, default=True) # whether resume from the latest checkpoint if there is one, or fully retrain
-    parser.add_argument("--n_gpus", type=int, default=6)
+    parser.add_argument("--n_gpus", type=int, default=torch.cuda.device_count())
     parser.add_argument("--n_nodes", type=int, default=1)
     parser.add_argument("--save_steps", type=int, default=50)
     parser.add_argument("--gradient_accumulation_steps", type=int, default=1)
@@ -317,7 +389,23 @@ if __name__ == "__main__":
     parser.add_argument("--data_dir", type=str, default='')
     parser.add_argument("--download_data_only", action='store_true')
     parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
+    parser.add_argument("--PERF_PROF_MODE", type=bool, default=False) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
     
     args = parser.parse_args()
     
-    main(args)
+    # main(args)
+    
+    start = time.perf_counter()
+    setup_environ(args)
+    # train(args)
+    start1 = time.perf_counter()
+    before_train(args)
+    # notebook_launcher(run_train, args=(vars(args),), num_processes=args.n_gpus)
+    run_train(args)
+    after_train(args)
+    print(f'Training time: {(time.perf_counter() - start1):.1f} s')
+    evalu(args)
+    report(args)
+    util_logger.info(f"Total time: {(time.perf_counter() - start):.1f} s")
+
+

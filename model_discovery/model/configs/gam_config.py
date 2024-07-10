@@ -28,7 +28,7 @@ class GAMConfig(PretrainedConfig):
         tokenizer = AutoTokenizer.from_pretrained(self.tokenizer)
         self.vocab_size = tokenizer.vocab_size  # around 32000 for llama
 
-    def to_str(self):
+    def to_str(self): 
         return "\n".join(f"{key}: {value}" for key, value in self.to_dict().items())
 
     def to_dict(self):
@@ -43,21 +43,7 @@ class GAMConfig(PretrainedConfig):
         return self
     
     def print_config(self):
-        prints=f'''
-            d_model: {self.d_model}
-            n_layer: {self.n_layer}
-            param_magnitude: {self.param_magnitude} 
-            context_length: {self.context_length}
-            param_threshold: {self.param_threshold}
-            vocab_size: {self.vocab_size}
-            training_token_multiplier: {self.training_token_multiplier}
-            rms_norm: {self.rms_norm}
-            residual_in_fp32: {self.residual_in_fp32}
-            fused_add_norm: {self.fused_add_norm}
-            pad_vocab_size_multiple: {self.pad_vocab_size_multiple}
-            tie_embeddings: {self.tie_embeddings}
-        '''
-        return prints
+        return self.to_str()
     
 
 @dataclass
@@ -73,22 +59,6 @@ class GAMConfig_10M(GAMConfig):
     eval_batch_size: int = 512
     learning_rate: float = 1e-4
 
-    def print_config(self):
-        prints=f'''
-            d_model: {self.d_model}
-            n_layer: {self.n_layer}
-            param_magnitude: {self.param_magnitude} 
-            context_length: {self.context_length}
-            param_threshold: {self.param_threshold}
-            vocab_size: {self.vocab_size}
-            training_token_multiplier: {self.training_token_multiplier}
-            rms_norm: {self.rms_norm}
-            residual_in_fp32: {self.residual_in_fp32}
-            fused_add_norm: {self.fused_add_norm}
-            pad_vocab_size_multiple: {self.pad_vocab_size_multiple}
-            tie_embeddings: {self.tie_embeddings}
-        '''
-        return prints
 
 @dataclass
 class GAMConfig_debug(GAMConfig):
@@ -99,27 +69,10 @@ class GAMConfig_debug(GAMConfig):
     param_magnitude: int = 1e7
     context_length: int = 512
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
-    per_device_train_batch_size: int = 32
+    per_device_train_batch_size: int = 256
     eval_batch_size: int = 512
-    learning_rate: float = 1e-4
+    learning_rate: float = 5e-3 # LR for BS=256 and 6 GPUs 20x tokens
     training_token_multiplier: int = 2
     eval_tasks: List[str] = field(default_factory=lambda: ['arc_easy'])
     rms_norm: bool = False # TRITON BUGGY
     fused_add_norm: bool = False # TRITON BUGGY
-
-    def print_config(self):
-        prints=f'''
-            d_model: {self.d_model}
-            n_layer: {self.n_layer}
-            param_magnitude: {self.param_magnitude} 
-            context_length: {self.context_length}
-            param_threshold: {self.param_threshold}
-            vocab_size: {self.vocab_size}
-            training_token_multiplier: {self.training_token_multiplier}
-            rms_norm: {self.rms_norm}
-            residual_in_fp32: {self.residual_in_fp32}
-            fused_add_norm: {self.fused_add_norm}
-            pad_vocab_size_multiple: {self.pad_vocab_size_multiple}
-            tie_embeddings: {self.tie_embeddings}
-        '''
-        return prints
