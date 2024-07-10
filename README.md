@@ -70,4 +70,8 @@ The implementation is in `model_discovery/system.py`, which loads a `designer` a
 
 # Agent front-end 
 
-**todo** 
+You can run: 
+```bash
+
+sh run_demo.sh
+```

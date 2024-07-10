@@ -25,8 +25,6 @@ from .agents import *
 from .prompts import (
     DESIGNER_PROMPT,
     REVIEWER_PROMPT,
-    #GAMConfig,
-    #GAMConfig_10M,
     GAB_ERROR
 )
 
@@ -357,5 +355,5 @@ def BuildSystem(
     elif "wdir" not in kwargs:
         wdir = f"{SYSTEM_OUT}/{time.strftime('%Y%m%d_%H%M%S')}"
         kwargs["wdir"] = wdir
-
+        
     return BuildSystem(config,**kwargs)
