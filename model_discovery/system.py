@@ -162,6 +162,15 @@ def get_context_info(config) -> Tuple[str,str]:
     implementation = open(config.gam_implementation).read()
     
     return (block,code,implementation)
+
+class EmptyHandler: 
+    def __init__(self,*args,**kwargs):
+        pass 
+    def __enter__(self):
+        pass
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+
     
 @exec_utils.Registry(
     resource_type="system_type",
@@ -232,6 +241,9 @@ class ModelDiscoverySystem(exec_utils.System):
             with a frontend.
         
         """
+        status_handler = stream.status if stream and status else EmptyHandler
+
+        
         problem_history = []
         query = DESIGNER_PROMPT.format(
             gam_py=self.gam_py,
@@ -243,47 +255,49 @@ class ModelDiscoverySystem(exec_utils.System):
         self._queries.append(query)
         
         for attempt in range(self._config.max_design_attempts):
+
+            with status_handler(f"Attempt {attempt+1}"): 
             
-            designer_out = self.designer(
-                query,
-                source=source,
-                manual_history=problem_history, #<--- dialogue history and state
-            )
-            problem_history.append((query,source))
-            
-            try:
-                code = designer_out["code"]
-                problem_history.append((str(code),"assistant"))
-                
-                if self._config.debug_steps:
-                    print(f"DESIGNER CODE PROPOSED #={attempt}:\n===================\n {designer_out['code']}")
-
-                if "# gab.py" not in code: raise
-            except:
-                query = GAB_ERROR
-                source = 'user'
-                continue
-
-            if self._config.debug_steps:
-                print("CODE CHECKER.....\n-----------------\n")
-            self.checker.check(self._cfg,code)
-
-            try:
-                assert self.check_magnitute(
-                    layersize,
-                    config.param_magnitude,
-                    config.param_threshold
+                designer_out = self.designer(
+                    query,
+                    source=source,
+                    manual_history=problem_history, #<--- dialogue history and state
                 )
-                
-                
+                problem_history.append((query,source))
             
-            except Exception as e:
-                pass
+                try:
+                    code = designer_out.get("code",None)
+                    problem_history.append((str(code),"assistant"))
+                
+                    if self._config.debug_steps:
+                        print(f"DESIGNER CODE PROPOSED #={attempt}:\n===================\n {designer_out['code']}")
+                    if code and stream:
+                        stream.write('Model authored code block...')
+                        stream.markdown(f'```python\n{code}```')
+                        
+                    if "# gab.py" not in code: raise
+                except Exception as e:
+                    query = GAB_ERROR
+                    source = 'user'
+                    continue
+
+                checkpass,check_report = self.checker.check(self._cfg,code)
+                if self._config.debug_steps:
+                    print(f"CODE CHECKER.....\n-----------------\npass={checkpass}\n{check_report}")
+                if stream:
+                    stream.write(
+                        f"""<details><summary>code check output</summary>{check_report}</details>""",
+                        unsafe_allow_html=True
+                    )
+                    
+                if not checkpass:
+                    query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}"
+                    source = 'user'
+                    self.checker.reset()
+                    continue 
             
-            break 
+                break 
 
-
-        
     @classmethod
     def from_config(cls: Type[C],config: ConfigType,**kwargs) -> C:
         """The main method for instantiating system instances from configuration. 

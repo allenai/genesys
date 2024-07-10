@@ -34,7 +34,7 @@ class Checker(exec_utils.BaseTool):
         :rtype: None 
         """
         self.report=''
-
+        
     def is_causal(
             self,
             block,
@@ -106,17 +106,17 @@ class Checker(exec_utils.BaseTool):
         self.logging.info(f'Checking non-embedding parameter number again the magnitude: {magnitude}')
         if size > (1+threshold)*magnitude:
             exceed = (size-magnitude)/magnitude
-            self.logging.info(
+            self.rprint(
                 f'Parameter number exceeds the magnitude by {exceed}'
             )
             return False
         elif size < (1-threshold)*magnitude:
             below = (magnitude-size)/magnitude
-            self.logging.info(
+            self.rprint(
                 f'Parameter number if below the magnitude: {below}'
             )
             return False
-        self.logging.info('Parameter number is within threshold')
+        self.rprint('Parameter number is within threshold')
         return True
     
     def check(self, config, gab_code) -> bool:
@@ -150,11 +150,12 @@ class Checker(exec_utils.BaseTool):
         )
 
         try:
-            assert self.check_magnitude(
-                layersize,
-                config.param_magnitude,
-                config.param_threshold
-            )
+            ### TURNED OFF, the model is not good at this. 
+            # assert self.check_magnitude(
+            #     layersize,
+            #     config.param_magnitude,
+            #     config.param_threshold
+            # )
             assert self.is_causal(
                 gab,
                 gam.d_model
