@@ -1,8 +1,5 @@
 from transformers import Trainer
 import torch
-import os
-
-from .. import utils as U
 
 
 class ModisTrainer(Trainer):

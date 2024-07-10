@@ -35,7 +35,7 @@ from . import utils as U
 torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True
 
-util_logger = logging.getLogger('model_discovery.train')
+util_logger = logging.getLogger('model_discovery.run')
 
 def setup_environ(args) -> None:
     """Sets up the run environment 
@@ -72,8 +72,6 @@ def setup_environ(args) -> None:
     random.seed(args.seed)
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed_all(args.seed)
 
 
 def before_train(args):
@@ -96,24 +94,6 @@ def before_train(args):
             entity=args.wandb_entity,
             name=f"{args.modelname}_{args.config}"
         )
-        
-        
-
-def get_last_checkpoint(output_dir: str):
-    """Gets the last checkpoint 
-
-    :param output_dir: 
-        The output directory containing the last checkpoint
-    """
-    if not os.path.isdir(output_dir):
-        return None
-    checkpoints = [U.pjoin(output_dir, d) for d in os.listdir(output_dir) 
-                   if U.pexists(U.pjoin(output_dir, d, "pytorch_model.bin")) and d.startswith("checkpoint")]
-    if not checkpoints:
-        return None
-    checkpoints = sorted(checkpoints, key=lambda x: int(x.split('-')[-1]))
-    return checkpoints[-1] # dir of the last checkpoint
-    
     
 
 def run_train(args) -> None:
@@ -122,9 +102,10 @@ def run_train(args) -> None:
     :param args: 
         The global configuration for training.
     """
-    
     if isinstance(args, dict):
         args = Namespace(**args)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(args.seed)
     config: GAMConfig = eval(f"{args.config}()")
     model = ModisLMHeadModel.from_config(
         config,
@@ -160,7 +141,7 @@ def run_train(args) -> None:
         ddp_find_unused_parameters=False,  # Set this to False
         # torch_compile=True, # TODO: debug this
         save_total_limit=5,
-        report_to="wandb",
+        report_to="wandb" if not args.PERF_PROF_MODE else None,
     )
 
     trainer = ModisTrainer(
@@ -184,7 +165,7 @@ def exec_train(training_args, trainer):
     U.save_json(wandb_ids,f"{training_args.output_dir}/wandb_ids.json")
     
     # Automatically resume from the latest checkpoint if it exists
-    last_checkpoint = get_last_checkpoint(training_args.output_dir)
+    last_checkpoint = U.get_last_checkpoint(training_args.output_dir)
     if args.resume and last_checkpoint:
         util_logger.info(
             f"Resuming training from checkpoint: {last_checkpoint}"
@@ -235,7 +216,7 @@ def exec_profiler(trainer):
                                     record_shapes=True) as prof:
             trainer.add_callback(ProfCallback(prof=prof))
             trainer.train()
-        util_logger.info(f'Profiling time: {(time.perf_counter() - start):.1f} s')
+        print(f'Profiling time: {(time.perf_counter() - start):.1f} s')
         trace_handler(prof) # uncomment if not using on_trace_ready
 
 def after_train(args):
@@ -249,13 +230,13 @@ def after_train(args):
 
 def train(args):
     if (not args.PERF_PROF_MODE) and args.resume and U.pexists(f"ckpts/{args.config}/{args.modelname}/pretrained"):
-        print(f"Model {args.config}/{args.modelname} is already pretrained")
+        util_logger(f"Model {args.config}/{args.modelname} is already pretrained")
         return
     start = time.perf_counter()
     before_train(args)
     notebook_launcher(run_train, args=(vars(args),), num_processes=args.n_gpus)
     after_train(args)
-    print(f'Training time: {(time.perf_counter() - start):.1f} s')
+    util_logger(f'Training time: {(time.perf_counter() - start):.1f} s')
 
 
 def get_eval_results(output_dir):
@@ -326,7 +307,7 @@ def report(args) -> dict:
     """
     outdir=f"{args.ckpt_dir}/{args.config}/{args.modelname}"
     if args.resume and U.pexists(f"{outdir}/report.json"):
-        print(f"Report already exists at {outdir}/report.json")
+        util_logger(f"Report already exists at {outdir}/report.json")
         return
     run_id=U.load_json(f"{outdir}/wandb_ids.json")['pretrain']
     history,system_metrics=get_history(
@@ -385,8 +366,8 @@ if __name__ == "__main__":
     parser.add_argument("--wandb_project", type=str, default='model_discovery')
     parser.add_argument("--wandb_entity", type=str, default='aristo')
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--ckpt_dir", type=str, default='')
-    parser.add_argument("--data_dir", type=str, default='')
+    parser.add_argument("--ckpt_dir", type=str, default='ckpt')
+    parser.add_argument("--data_dir", type=str, default='data')
     parser.add_argument("--download_data_only", action='store_true')
     parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
     parser.add_argument("--PERF_PROF_MODE", type=bool, default=True) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
@@ -394,6 +375,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     main(args)
+    # train(args)
     
 
 

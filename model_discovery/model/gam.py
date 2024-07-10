@@ -261,7 +261,7 @@ class GAM(nn.Module):
             )
         return hidden_states
 
-    def print_size(self):
+    def print_size(self,logger=print):
         print(f'Model size: {U.strmodelsize(self)}')
         print(f'Embedding parameters: {U.strmodelsize(self.embedding)}')
         print(f'Non-embedding parameters: {U.strmodelsize(self.layers)}')

@@ -2,6 +2,10 @@
 
 import torch
 import torch.nn as nn
+
+from mamba_ssm.modules.mha import MHA
+from mamba_ssm.modules.mlp import GatedMLP
+
 from .block_registry import BlockRegister
 
 
@@ -19,59 +23,39 @@ class GAB(nn.Module):
         Output:       Y: (batch, seqlen, embed_dim)
         Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
     '''
-    def __init__(self, embed_dim: int, layer_idx: int, device=None, dtype=None, **kwargs):
+    def __init__(self,embed_dim: int,layer_idx: int,device=None,dtype=None,**kwargs):
         # argv: list of hyperparameters
-        factory_kwargs = {"device": device, "dtype": dtype}  # remember to pass it to nn layers
+        factory_kwargs = {"device": device, "dtype": dtype} # remember to pass it to nn layers
         super().__init__()
-        
         self.embed_dim = embed_dim
-        self.num_groups = 4  # Grouped convolutions
-        self.layer_idx = layer_idx
+        self.layer_idx = layer_idx 
+        # COMPLETING THE CODE HERE #
+        if self.layer_idx % 2 == 0:
+            self.fn = MHA(embed_dim, 8)
+        else:
+            self.fn = GatedMLP(embed_dim)
 
-        # Causal convolution
-        self.causal_conv1 = nn.Conv1d(embed_dim, embed_dim, kernel_size=3, padding=2, groups=self.num_groups, **factory_kwargs)
-        self.causal_conv2 = nn.Conv1d(embed_dim, embed_dim, kernel_size=3, padding=2, groups=self.num_groups, **factory_kwargs)
 
-        self.norm1 = nn.LayerNorm(embed_dim, **factory_kwargs)
-        self.norm2 = nn.LayerNorm(embed_dim, **factory_kwargs)
-        self.ffn = nn.Sequential(
-            nn.Linear(embed_dim, 4 * embed_dim, **factory_kwargs), 
-            nn.ReLU(), 
-            nn.Linear(4 * embed_dim, embed_dim, **factory_kwargs)
-        )
-        
-    def _forward(self, X, **kwargs):
+    def _forward(self,X,**kwargs): # type hints are optional but recommended
         ''' Forward pass of the model '''
         assert X.shape[-1] == self.embed_dim
-
-        X = X.transpose(1, 2)  # Transpose to (batch, embed_dim, seqlen) for Conv1d
-        
-        # Causal convolution with slicing to maintain sequence length
-        X = self.causal_conv1(X)[:, :, :-2]
-        X = X.transpose(1, 2)  # Transpose back to (batch, seqlen, embed_dim)
-        X = self.norm1(X)
-        X = torch.relu(X)
-
-        X = X.transpose(1, 2)  # Again transpose for the second convolution
-        X = self.causal_conv2(X)[:, :, :-2]
-        X = X.transpose(1, 2)
-        X = self.norm2(X)
-        X = torch.relu(X)
-        
-        Y = self.ffn(X)
-        return Y
-    
-    def forward(self, X, **kwargs):
+        # COMPLETING THE CODE HERE #
+        return self.fn(X)
+     
+    def forward(self,X,**kwargs):
         ''' Forward pass of the model '''
-        Y = self._forward(X, **kwargs)
+        Y=self._forward(X,**kwargs)
         assert Y.shape[-1] == self.embed_dim
         return Y
     
-
-def gab_config() -> dict:
+    
+def gab_config()->dict:
     ''' Returns a dictionary of hyperparameters for constructing a GAB layer
         embed_dim, layer_idx, device, dtype should not be included in the dictionary which will be provided by the model
     '''
+    # COMPLETING THE CODE HERE #
+
     return {
-        # No additional hyperparameters for now.
+        
     }
+

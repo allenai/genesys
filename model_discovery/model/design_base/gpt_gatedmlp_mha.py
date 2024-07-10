@@ -6,6 +6,17 @@ import torch.nn as nn
 from mamba_ssm.modules.mha import MHA
 from mamba_ssm.modules.mlp import GatedMLP
 
+from .block_registry import BlockRegister
+
+
+__all__ = [
+    "GAB",
+]
+
+@BlockRegister(
+    name="default",
+    config={}
+)
 class GAB(nn.Module):
     ''' Generalized Autoregressive Block
         Input:        X: (batch, seqlen, embed_dim)

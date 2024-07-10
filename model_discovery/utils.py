@@ -25,3 +25,18 @@ def load_json(file,default={}):
 def save_json(data,file): 
     with open(file, 'w') as f:
         json.dump(data, f, indent=4)
+
+def get_last_checkpoint(output_dir: str):
+    """Gets the last checkpoint 
+
+    :param output_dir: 
+        The output directory containing the last checkpoint
+    """
+    if not os.path.isdir(output_dir):
+        return None
+    checkpoints = [pjoin(output_dir, d) for d in os.listdir(output_dir) 
+                   if pexists(pjoin(output_dir, d, "pytorch_model.bin")) and d.startswith("checkpoint")]
+    if not checkpoints:
+        return None
+    checkpoints = sorted(checkpoints, key=lambda x: int(x.split('-')[-1]))
+    return checkpoints[-1] # dir of the last checkpoint
