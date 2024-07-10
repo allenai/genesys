@@ -4,7 +4,7 @@ import os
 import time
 import tempfile
 
-from IPython.display import display, Markdown, Latex
+#from IPython.display import display, Markdown, Latex
 from types import ModuleType
 from typing import (
     Type,
@@ -338,13 +338,18 @@ class ModelDiscoverySystem(exec_utils.System):
                         stream.write('Model authored code block...')
                         stream.markdown(f'```python\n{code}```')
                         
-                    if "# gab.py" not in code: raise
-                        
+                    #if "# gab.py" not in code: raise
+                    assert "# gab.py" in code 
+
                 except Exception as e:
-                    query = GAB_ERROR
+                    query = f"An error was encountered when running the code, error={e}. Please try again."
                     source = 'user'
                     continue
-
+                except AssertionError:
+                    source = "user"
+                    query  = GAB_ERROR
+                    continue 
+                
                 checkpass,check_report = self.checker.check(self._cfg,code,design_name)
                 if stream:
                     stream.write(
