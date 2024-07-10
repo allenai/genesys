@@ -4,6 +4,7 @@ import os
 import time
 import tempfile
 
+from IPython.display import display, Markdown, Latex
 from types import ModuleType
 from typing import (
     Type,
@@ -143,6 +144,13 @@ class CustomParams(exec_utils.ModuleParams):
             "exclude_hash" : True,
         }
     )
+    jupyter: bool = exec_utils.ParamField(
+        default=False,
+        metadata={
+            "help"         : 'Inside of jupyter',
+            "exclude_hash" : True,
+        }
+    )
     gam_config: str = exec_utils.ParamField(
         default='GAMConfig_10M',
         metadata={
@@ -166,6 +174,7 @@ def get_context_info(config) -> Tuple[str,str]:
     :param config: 
         The global configuration 
     :raises: ValueError 
+
     """
     if not os.path.isfile(config.block_template):
         raise ValueError(f'Cannot find the block template: {config.block_template}')
@@ -185,9 +194,12 @@ class EmptyHandler:
         pass
 
 class PrintSystem:
-    def write(self,msg):
+    def __init__(self,config):
+        self.jupyter = config.jupyter        
+    
+    def write(self,msg,**kwargs):
         print(msg)
-    def markdown(self,msg):
+    def markdown(self,msg,**kwargs):
         print(msg)
 
     
@@ -288,7 +300,9 @@ class ModelDiscoverySystem(exec_utils.System):
         
         """
         status_handler = stream.status if stream and status else EmptyHandler
-
+        if stream is None and self._config.debug_steps:
+            stream = PrintSystem(self._config)
+            
         problem_history = []
 
         query = f"{query}\nPlease only raw raw Python code and nothing more, no special formatting or extra text."
@@ -303,6 +317,8 @@ class ModelDiscoverySystem(exec_utils.System):
         self._queries.append(query)
         
         for attempt in range(self._config.max_design_attempts):
+            self.logging.info(f'Attempting design, attempt={attempt}')
+            
             design_name = f"{self._config.run_name}_{attempt}_{len(self._queries)}"
 
             with status_handler(f"Attempt {attempt+1}"): 
@@ -318,8 +334,6 @@ class ModelDiscoverySystem(exec_utils.System):
                     code = designer_out.get("code",None)
                     problem_history.append((str(code),"assistant"))
                 
-                    if self._config.debug_steps:
-                        print(f"DESIGNER CODE PROPOSED #={attempt}:\n===================\n {designer_out['code']}")
                     if code and stream:
                         stream.write('Model authored code block...')
                         stream.markdown(f'```python\n{code}```')
@@ -332,8 +346,6 @@ class ModelDiscoverySystem(exec_utils.System):
                     continue
 
                 checkpass,check_report = self.checker.check(self._cfg,code,design_name)
-                if self._config.debug_steps:
-                    print(f"CODE CHECKER.....\n-----------------\npass={checkpass}\n{check_report}")
                 if stream:
                     stream.write(
                         f"""<details><summary>code check</summary>{check_report}</details>""",
@@ -341,7 +353,7 @@ class ModelDiscoverySystem(exec_utils.System):
                     )
                     
                 if not checkpass:
-                    query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}"
+                    query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix"
                     source = 'user'
                     self.checker.reset()
                     continue 
@@ -354,7 +366,8 @@ class ModelDiscoverySystem(exec_utils.System):
         #### now have the agent defend the design
         if found_design: 
             report_query = "The designed model passed the tests, now please generate a text report explaining and justifying your design."
-            with status_handler(f"Querying agent for report..."): 
+            with status_handler(f"Querying agent for report..."):
+                self.logging.info('Now trying to compile self report...')
                 self_report = self.designer(
                     report_query,
                     source='user',
@@ -416,6 +429,11 @@ def BuildSystem(
 
     :param config: 
         The optional configuration object. 
+
+        
+    >>> from model_discovery import BuildSystem 
+    >>> system = BuildSystem() 
+
     """
     from exec_utils import BuildSystem
     kwargs["system_type"] = "model_discovery_system"
