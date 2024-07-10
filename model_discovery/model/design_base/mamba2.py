@@ -5,6 +5,17 @@ import torch.nn as nn
 
 from mamba_ssm.modules.mamba2 import Mamba2
 
+from .block_registry import BlockRegister
+
+
+__all__ = [
+    "GAB",
+]
+
+@BlockRegister(
+    name="default",
+    config={}
+)
 class GAB(nn.Module):
     ''' Generalized Autoregressive Block
         Input:        X: (batch, seqlen, embed_dim)
@@ -18,8 +29,7 @@ class GAB(nn.Module):
         self.embed_dim = embed_dim
         self.layer_idx = layer_idx 
         # COMPLETING THE CODE HERE #
-        self.fn = Mamba2(d_model=embed_dim,
-            layer_idx=layer_idx,**factory_kwargs)
+        self.fn = Mamba2(d_model=embed_dim,layer_idx=layer_idx,**factory_kwargs)
 
 
     def _forward(self,X,**kwargs): # type hints are optional but recommended

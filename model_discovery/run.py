@@ -37,7 +37,7 @@ torch.backends.cudnn.allow_tf32 = True
 
 util_logger = logging.getLogger('model_discovery.run')
 
-def setup_environ(args) -> None:
+def setup(args) -> None:
     """Sets up the run environment 
 
     :param args: 
@@ -121,8 +121,8 @@ def run_train(args) -> None:
         util_logger.info('Donwloaded data, now stopping...')
         exit('exiting after data download')
         
-
-    training_tokens=config.param_magnitude*config.training_token_multiplier # suggested by Chinchilla
+    num_params = sum(p.numel() for p in model.parameters())
+    training_tokens=num_params*config.training_token_multiplier # suggested by Chinchilla
     num_steps = int(training_tokens / (config.per_device_train_batch_size * args.n_gpus * args.n_nodes * config.context_length))+1
 
     training_args=TrainingArguments(
@@ -201,7 +201,7 @@ def trace_handler(p):
 
 def exec_profiler(trainer):
     local_rank = int(os.getenv("LOCAL_RANK", "0"))
-    if local_rank != 0:
+    if local_rank != -1:
         trainer.train()
     else:
         U.mkdir("profiler") 
@@ -236,7 +236,7 @@ def train(args):
     before_train(args)
     notebook_launcher(run_train, args=(vars(args),), num_processes=args.n_gpus)
     after_train(args)
-    util_logger(f'Training time: {(time.perf_counter() - start):.1f} s')
+    util_logger.info(f'Training time: {(time.perf_counter() - start):.1f} s')
 
 
 def get_eval_results(output_dir):
@@ -345,7 +345,7 @@ def main(args):
         The CLI arguments. 
     """
     start = time.perf_counter()
-    setup_environ(args)
+    setup(args)
     train(args)
     evalu(args)
     report(args)

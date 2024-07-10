@@ -31,9 +31,9 @@ class GAB(nn.Module):
         self.layer_idx = layer_idx 
         # COMPLETING THE CODE HERE #
         if self.layer_idx % 2 == 0:
-            self.fn = MHA(embed_dim, 8)
+            self.fn = MHA(embed_dim, 8, **factory_kwargs)
         else:
-            self.fn = GatedMLP(embed_dim)
+            self.fn = GatedMLP(embed_dim, **factory_kwargs)
 
 
     def _forward(self,X,**kwargs): # type hints are optional but recommended
