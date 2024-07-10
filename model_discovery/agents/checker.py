@@ -19,27 +19,43 @@ __all__ = [
 )
 class Checker(exec_utils.BaseTool):
     """Checker for checking the correctness of model designs.  
+    
+
+     Methods 
+    ----------
+    check(check,gab_code: str, name: str) 
+        This is the main method that checks the proposed 
+        block using `is_causal` (has causal attention), 
+        `check_differentiable` (check that all operations 
+        are differentiable)  and `check_magnitude` (that 
+        parameters are within a certain range)
 
     """
     def __init__(self):
         self.report = ''
 
-    def rprint(self, msg):
+    def rprint(self, msg) -> None:
+        """Log information of check and adds to report 
+
+        :param msg: 
+            The debug and report message.
+ 
+        """
         self.logging.info(msg)
-        self.report+=msg+'\n'
+        self.report += msg+'\n'
 
     def reset(self) -> None:
         """Results the report
         
         :rtype: None 
         """
-        self.report=''
+        self.report = ''
         
     def is_causal(
             self,
             block,
             D: int,
-            seq_len: int =100
+            seq_len: int = 100
         ) -> bool:
         """Checks if a design is causal
 
@@ -71,8 +87,16 @@ class Checker(exec_utils.BaseTool):
                 
         self.rprint('Causality test passed')
         return True
+    
+    def check_differentiable(self,model,vocab_size: int) -> bool:
+        """Check if the mode is differentiable 
 
-    def check_differentiable(self,model,vocab_size):
+        :param model: 
+            The target model with the new block. 
+        :param vocab_size: 
+            The model vocabulary size. 
+
+        """
         self.rprint('Checking differentiability...')
         mock_input = torch.randint(0, vocab_size, (2, 100)).cuda() if \
           torch.cuda.is_available() else torch.randint(0, vocab_size, (2, 100))
@@ -82,13 +106,17 @@ class Checker(exec_utils.BaseTool):
         # Zero the parameter gradients
         optimizer.zero_grad()
         logits = model(mock_input).logits
-        loss = criterion(logits.view(-1, logits.shape[-1]), mock_input.view(-1))
+        loss = criterion(
+            logits.view(-1, logits.shape[-1]),
+            mock_input.view(-1)
+        )
         loss.backward()
         # Check gradients
         for name, param in model.named_parameters():
             if param.grad is None:
                 self.rprint(f"Parameter {name} does not have a gradient")
                 return False
+
         self.rprint('Differentiability test passed')
         return True
 
@@ -99,8 +127,6 @@ class Checker(exec_utils.BaseTool):
             threshold: float
         ) -> bool:
         """Checks that the block maintains a certain limit on parameters 
-
-        :param size: 
             
         """
         self.logging.info(f'Checking non-embedding parameter number again the magnitude: {magnitude}')
@@ -119,14 +145,14 @@ class Checker(exec_utils.BaseTool):
         self.rprint('Parameter number is within threshold')
         return True
     
-    def check(self, config, gab_code) -> bool:
+    def check(self, config, gab_code: str, name: str) -> bool:
         """Runs through a bunch of checks for the new module at path 
 
         :param path: 
             The path of the proposed module 
         """
         try: 
-            glm,gab_config = reload_gam(config,gab_code)
+            glm,gab_config = reload_gam(config,gab_code,name)
             if torch.cuda.is_available():
                 glm = glm.cuda()
 
@@ -134,10 +160,13 @@ class Checker(exec_utils.BaseTool):
             mock_input = mock_input.to(glm.device)
     
             output = glm(mock_input)
-        except Exception as e:
-            self.rprint('Model initialization failed with error: '+str(e)+'\n')
-            return False,self.report
 
+        except Exception as e:
+            self.rprint(
+                'Model initialization failed with error: '+str(e)+'\n'
+            )
+            return False,self.report
+        
         ### check model size 
         gam = glm.backbone
         gab=gam.layers[0].gab

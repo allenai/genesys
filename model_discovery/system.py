@@ -141,7 +141,16 @@ class CustomParams(exec_utils.ModuleParams):
             "exclude_hash" : True,
         }
     )
-    
+    #### name of the system run 
+    run_name: str = exec_utils.ParamField(
+        default='demo',
+        metadata={
+            "help"         : 'The name of the run',
+            "exclude_hash" : True,
+        }
+    )
+
+
 def get_context_info(config) -> Tuple[str,str]:
     """Grabs the block and model implementation details for the prompt 
 
@@ -241,7 +250,6 @@ class ModelDiscoverySystem(exec_utils.System):
         """
         status_handler = stream.status if stream and status else EmptyHandler
 
-        
         problem_history = []
         query = DESIGNER_PROMPT.format(
             gam_py=self.gam_py,
@@ -253,6 +261,7 @@ class ModelDiscoverySystem(exec_utils.System):
         self._queries.append(query)
         
         for attempt in range(self._config.max_design_attempts):
+            design_name = f"{self._config.run_name}_{attempt}_{len(self._queries)}"
 
             with status_handler(f"Attempt {attempt+1}"): 
             
@@ -279,7 +288,7 @@ class ModelDiscoverySystem(exec_utils.System):
                     source = 'user'
                     continue
 
-                checkpass,check_report = self.checker.check(self._cfg,code)
+                checkpass,check_report = self.checker.check(self._cfg,code,design_name)
                 if self._config.debug_steps:
                     print(f"CODE CHECKER.....\n-----------------\npass={checkpass}\n{check_report}")
                 if stream:

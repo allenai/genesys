@@ -3,7 +3,6 @@ import sys
 from .block_registry import BlockRegister
 from .gam import ModisLMHeadModel
 
-
 def create_code(gam_code: str,gab_code: str) -> str:
     """Creates code object by merging together both modules 
 
@@ -17,10 +16,11 @@ def create_code(gam_code: str,gab_code: str) -> str:
 def reload_gam(config,gab_code: str,name: str = 'new'):
     """Reloads the GAM code with new block 
 
-    :param gam_code: 
-        The GAM code 
     :param gab_code: 
-        The new GAB block 
+        The new GAB block. 
+    :param name: 
+        The name of the new block.
+    
     """
     module = {}
     exec(gab_code.replace("class GAB","class GABCustom"),module)
@@ -29,8 +29,13 @@ def reload_gam(config,gab_code: str,name: str = 'new'):
     if "gab_config" in module:
         gab_config = module["gab_config"]()
 
-    BlockRegister.add_block(name,GAB,config=gab_config)
-    
+    ### register the new block  
+    BlockRegister.add_block(
+        name,
+        GAB,
+        config=gab_config
+    )
+    ### load it 
     model = ModisLMHeadModel.from_config(
         config,
         gab_name=name,
