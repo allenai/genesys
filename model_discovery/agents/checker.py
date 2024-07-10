@@ -22,7 +22,11 @@ class Checker(exec_utils.BaseTool):
 
     """
     def __init__(self):
-        self.report = None
+        self.report = ''
+
+    def rprint(self, msg):
+        self.logging.info(msg)
+        self.report+=msg+'\n'
 
     def reset(self) -> None:
         """Results the report
@@ -47,25 +51,45 @@ class Checker(exec_utils.BaseTool):
             The block target sequence length.
         """
         B: int = 2
-        X = torch.arange(seq_len*B*D).float().reshape(B, seq_len, D).device(
-            "cuda" if torch.cuda.is_available() else "cpu" 
-        )
+        X = torch.arange(seq_len*B*D).float().reshape(B, seq_len, D)
+        if torch.cuda.is_available():
+            X = X.cuda()
+            
         Y = block(X)
 
-        self.logging.info('Checking causality...')
+        self.rprint('Checking causality... It checks the causality by changing the future step X[t+delta] of X[t] and see if Y[t] changes.') 
         bar = tqdm(range(seq_len), desc='Causality test',colour='green')
         for t in bar:
             for delta in range(1, seq_len-t):
                 X_mod = X.clone()
-                z = torch.rand(B,D).device("cuda" if torch.cuda.is_available() else "cpu")
-                X_mod[:, t+delta, :] += z
+                X_mod[:, t+delta, :] += torch.rand(B, D).cuda() if torch.cuda.is_available() else torch.rand(B, D)
+                Y_mod = block(X_mod)
+                # If Y[t] changes when a future X[t + delta] changes, then it is not causal
                 if not torch.allclose(Y[:, t,:], Y_mod[:, t,:]):
-                    self.logging.info(
-                        f'Causality test failed at t={t},delta={delta}'
-                    )
+                    self.rprint(f'Failed at t={t}, delta={delta}')
                     return False
                 
-        self.logging.info('Causality test passed')
+        self.rprint('Causality test passed')
+        return True
+
+    def check_differentiable(self,model,vocab_size):
+        self.rprint('Checking differentiability...')
+        mock_input = torch.randint(0, vocab_size, (2, 100)).cuda() if \
+          torch.cuda.is_available() else torch.randint(0, vocab_size, (2, 100))
+        criterion = nn.CrossEntropyLoss()
+        optimizer = optim.Adam(model.parameters())
+
+        # Zero the parameter gradients
+        optimizer.zero_grad()
+        logits = model(mock_input).logits
+        loss = criterion(logits.view(-1, logits.shape[-1]), mock_input.view(-1))
+        loss.backward()
+        # Check gradients
+        for name, param in model.named_parameters():
+            if param.grad is None:
+                self.rprint(f"Parameter {name} does not have a gradient")
+                return False
+        self.rprint('Differentiability test passed')
         return True
 
     def check_magnitude(
@@ -87,35 +111,61 @@ class Checker(exec_utils.BaseTool):
             )
             return False
         elif size < (1-threshold)*magnitude:
-            below=(magnitude-size)/magnitude
+            below = (magnitude-size)/magnitude
             self.logging.info(
                 f'Parameter number if below the magnitude: {below}'
             )
             return False
-        self.logging.info('Paramete number is within threshold')
+        self.logging.info('Parameter number is within threshold')
         return True
     
-    def check(self, config,gab_code) -> bool:
+    def check(self, config, gab_code) -> bool:
         """Runs through a bunch of checks for the new module at path 
 
         :param path: 
             The path of the proposed module 
         """
-        glm = reload_gam(config,gab_code)
-        if torch.cuda.is_available():
-           glm = glm.cuda()
+        try: 
+            glm,gab_config = reload_gam(config,gab_code)
+            if torch.cuda.is_available():
+                glm = glm.cuda()
 
-        mock_input=torch.randint(0, 50277, (8, 500))
-        mock_input = mock_input.to(glm.device)
+            mock_input=torch.randint(0, config.vocab_size, (8, 500))
+            mock_input = mock_input.to(glm.device)
+    
+            output = glm(mock_input)
+        except Exception as e:
+            self.rprint('Model initialization failed with error: '+str(e)+'\n')
+            return False,self.report
 
-        output = glm(mock_input)
+        ### check model size 
+        gam = glm.backbone
+        gab=gam.layers[0].gab
+        size=sum(p.numel() for p in gam.parameters())
+        layersize=sum(p.numel() for p in gam.layers.parameters())
+        perlayer=layersize//gam.n_layer
+        embsize=sum(p.numel() for p in gam.embedding.parameters())
+        self.rprint(
+            f'Model initialization succeed\nNumber of parameters: {size}\nLayers: {layersize}, {perlayer} per layer\nEmbedding: {embsize}'
+        )
 
-        print(output)
-        
-        #ModisLMHeadModel = reload_gam(gab_code)
-        #print(ModisLMHeadModel)
+        try:
+            assert self.check_magnitude(
+                layersize,
+                config.param_magnitude,
+                config.param_threshold
+            )
+            assert self.is_causal(
+                gab,
+                gam.d_model
+            )
+            assert self.check_differentiable(glm,config.vocab_size)
+        except AssertionError:
+            self.rprint('Model test failed\n')
+            return False,self.report
 
-        return True
+        self.rprint("All tests passed!\n")
+        return True,self.report
     
     def __call__(self,path: str) -> bool:
         return self.check(path)

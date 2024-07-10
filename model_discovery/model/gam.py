@@ -17,9 +17,6 @@ from transformers import (
 import torch
 from torch import nn, Tensor
 from model_discovery.model.configs.gam_config import GAMConfig
-from model_discovery.model.gab import (
-    gab_config
-)
 from model_discovery.model.utils.generation import decode
 from model_discovery.model.utils.hf import load_config_hf, load_state_dict_hf
 from model_discovery.model.utils.generation import GenerationMixin
@@ -386,7 +383,7 @@ class ModisLMHeadModel(PreTrainedModel):
 
         # Save the model's state_dict
         model_path = os.path.join(save_directory, 'pytorch_model.bin')
-        torch.save(self.state_dict(), model_path)
+        torch.gasave(self.state_dict(), model_path)
 
         # Save the configuration of the model
         config_path = os.path.join(save_directory, 'config.json')

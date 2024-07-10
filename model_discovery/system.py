@@ -264,8 +264,21 @@ class ModelDiscoverySystem(exec_utils.System):
                 source = 'user'
                 continue
 
+            if self._config.debug_steps:
+                print("CODE CHECKER.....\n-----------------\n")
             self.checker.check(self._cfg,code)
+
+            try:
+                assert self.check_magnitute(
+                    layersize,
+                    config.param_magnitude,
+                    config.param_threshold
+                )
+                
+                
             
+            except Exception as e:
+                pass
             
             break 
 
