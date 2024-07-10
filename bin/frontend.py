@@ -13,26 +13,29 @@ def build_system():
         cache_type="diskcache",
         temperature=0.1,
     )
-
     return system
 
 def main(argv):
-
+    
     ### build the system 
     system = build_system()
 
     st.title("Model discovery engine")
 
     ### side bar 
-    st.sidebar.button("reset")
+    st.sidebar.button("reset design query")
+        
+    filler = "Find me a new model"
+
+    instruction = st.text_input(label = "Add any additional instructions (optional)" )
+    submit = st.button(label="Design model")
 
     
-    filler = "Find me a new model"
-    text_input = st.chat_input(filler)
-    if text_input:
+    if submit or instruction:
+        instruction = str(None) if not instruction else instruction 
         
         with st.spinner(text="running discovery loop"):
-            system(text_input,frontend=True,stream=st)
+            system(instruction,frontend=True,stream=st)
         
     
 if __name__ == "__main__":

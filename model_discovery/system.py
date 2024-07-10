@@ -48,16 +48,26 @@ class CustomParams(exec_utils.ModuleParams):
     """Parameters for working with this discovery system 
     
     :param max_design_attempts: 
-        The number of attempts that the designer agent ca 
+       The number of attempts that the designer agent ca 
         make. 
     :param max_design_refines: 
-        The number of times the designer can refine a design 
+       The number of times the designer can refine a design 
     :param reviwer_threshold: 
-        The threshold for accepting a design for the reviewer. 
+       The threshold for accepting a design for the reviewer. 
     :param designer_spec: 
-        Pointer to the designer specification 
+       Pointer to the designer specification 
     :param reviewer_spec: 
        Pointer to the reviewer specification. 
+    :param block_template: 
+       Points to the file for the GAB block for prompting. 
+    :param gam_template: 
+       Points to the file for the GAM template used in the prompt 
+    :param debug_step: 
+       Print the system steps when running. 
+    :param gam_config: 
+       The target configuration for the GAM model being explored.
+    :param run_name: 
+       The name identifier of the model search session. 
 
     """
     max_design_attempts: int = exec_utils.ParamField(
@@ -105,7 +115,6 @@ class CustomParams(exec_utils.ModuleParams):
         default=os.path.abspath(
             f'{PROJ_SRC}/gab_template.py'
         ),
-        #default=GB.__file__,
         metadata={
             "help"         : 'Location of block for prompting ',
         }
@@ -157,7 +166,6 @@ def get_context_info(config) -> Tuple[str,str]:
     :param config: 
         The global configuration 
     :raises: ValueError 
-
     """
     if not os.path.isfile(config.block_template):
         raise ValueError(f'Cannot find the block template: {config.block_template}')
@@ -176,6 +184,12 @@ class EmptyHandler:
     def __exit__(self, exc_type, exc_val, exc_tb):
         pass
 
+class PrintSystem:
+    def write(self,msg):
+        print(msg)
+    def markdown(self,msg):
+        print(msg)
+
     
 @exec_utils.Registry(
     resource_type="system_type",
@@ -184,6 +198,34 @@ class EmptyHandler:
 )
 class ModelDiscoverySystem(exec_utils.System):
     """Overall system for discovery
+    
+    Attributes
+    --------
+    :param designer: 
+        The designer LLM agent. 
+    :param reviewer: 
+        The reviewer LLM agent. 
+    :param checker: 
+        The checker tool agent. 
+    :param block_template: 
+        The templated code to be filled in during 
+        the block search. 
+    :param gam_config: 
+        the global model configuration 
+    :param config: 
+        The system level configuration. 
+        
+    Methods 
+    --------
+    query_sysetem(query, stream, frontend, status) 
+        The main method for querying the system with the 
+        different agents. 
+
+    Example 
+    --------
+
+    >>> from model_search import BuildSystem  
+    >>> system = BuildSystem()
 
     """
 
@@ -211,6 +253,7 @@ class ModelDiscoverySystem(exec_utils.System):
            The full model implementation for context 
         :param config: 
            System global configuration. 
+
         """
         ### modules 
         self.designer = designer
@@ -247,6 +290,8 @@ class ModelDiscoverySystem(exec_utils.System):
         status_handler = stream.status if stream and status else EmptyHandler
 
         problem_history = []
+
+        query = f"{query}\nPlease only raw raw Python code and nothing more, no special formatting or extra text."
         query = DESIGNER_PROMPT.format(
             gam_py=self.gam_py,
             gab_py=self.gab_py,
@@ -254,6 +299,7 @@ class ModelDiscoverySystem(exec_utils.System):
             instruct=query,
         )
         source = 'user'
+        found_design = False
         self._queries.append(query)
         
         for attempt in range(self._config.max_design_attempts):
@@ -290,7 +336,7 @@ class ModelDiscoverySystem(exec_utils.System):
                     print(f"CODE CHECKER.....\n-----------------\npass={checkpass}\n{check_report}")
                 if stream:
                     stream.write(
-                        f"""<details><summary>code check output</summary>{check_report}</details>""",
+                        f"""<details><summary>code check</summary>{check_report}</details>""",
                         unsafe_allow_html=True
                     )
                     
@@ -299,8 +345,27 @@ class ModelDiscoverySystem(exec_utils.System):
                     source = 'user'
                     self.checker.reset()
                     continue 
+
+                problem_history.append(("The designed model passed, now scoring","user"))
+
+                found_design = True
+                break
+
+        #### now have the agent defend the design
+        if found_design: 
+            report_query = "The designed model passed the tests, now please generate a text report explaining and justifying your design."
+            with status_handler(f"Querying agent for report..."): 
+                self_report = self.designer(
+                    report_query,
+                    source='user',
+                    manual_history=problem_history, 
+                )
+                if stream:
+                    stream.markdown(self_report["code"]) #<-- change
+
+            ### TODO: query the review agent
             
-                break 
+        #### now use the 
 
     @classmethod
     def from_config(cls: Type[C],config: ConfigType,**kwargs) -> C:

@@ -8,12 +8,14 @@ DESIGNER = {
 The language model will be pretrained with the corpus and then be applied for downstream tasks. 
 The new model is expected to have a low perplexity, high accuracy, good scalability, and efficiency.
 
+You have two roles 1) to write code and; 2) to write a report and justify your decisions. When writing code, please only write the raw python code and DO NOT ADD ANYTHING MORE, NO ADDITIONAL TEXT and NO special formatting.
 """,
-     "format"     : "Please print python code only (DO NOT WRAP IN QUOTES, just print the raw code) and DO NOT ADD ANY ADDITIONAL TEXT",
-     "examples" : [],
+     #"format"     : "Please print python code only (DO NOT WRAP IN QUOTES, just print the raw code) and DO NOT ADD ANY ADDITIONAL TEXT",
+    "format" : "",
+    "examples" : [],
      "_params" : {
          "model_name" : "gpt-4o-2024-05-13",
-         "max_output_tokens" : 1000,
+         "max_output_tokens" : 1500,
      }
 }
 
