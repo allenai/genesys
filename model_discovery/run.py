@@ -201,7 +201,7 @@ def trace_handler(p):
 
 def exec_profiler(trainer):
     local_rank = int(os.getenv("LOCAL_RANK", "0"))
-    if local_rank != -1:
+    if local_rank != -1: # CHANGE IT TO 0 TO ENABLE PROFILING or -1 to just test running
         trainer.train()
     else:
         start = time.perf_counter()
@@ -369,11 +369,9 @@ if __name__ == "__main__":
     parser.add_argument("--data_dir", type=str, default='')
     parser.add_argument("--download_data_only", action='store_true')
     parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
-    parser.add_argument("--PERF_PROF_MODE", type=bool, default=False) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
+    parser.add_argument("--PERF_PROF_MODE", type=bool, default=True) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
     
     args = parser.parse_args()
     
     main(args)
-    
-
 
