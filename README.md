@@ -48,9 +48,11 @@ Install the custmoized lm_eval: https://github.com/chengjunyan1/lm-evaluation-ha
 
 You must export DATA_DIR first, then download evaluation data in DATA_DIR, e.g.:
 
-{DATA_DIR}/evaluation_data/blimp_filtered/adjunct_island.jsonl
+{DATA_DIR}/blimp_filtered/adjunct_island.jsonl
 
-The download link for babyLM evaluation data: https://files.osf.io/v1/resources/ad7qg/providers/osfstorage/66358ec34664da20a0ed6acc/?zip=evaluation_data  
+The download link for babyLM evaluation data: https://files.osf.io/v1/resources/ad7qg/providers/osfstorage/66358ec34664da20a0ed6acc/?zip=evaluation_data 
+
+Notice that everytime you change your DATA_DIR, you may need to reinstall it, and remember DO NOT INSTALL peft
 
 ### create beaker image (ai2 internal) 
 You can run 

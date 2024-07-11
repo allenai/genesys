@@ -250,23 +250,24 @@ def get_eval_results(output_dir):
         return None
 
 def run_eval(args):
-    if get_eval_results(f"{args.ckpt_dir}/{args.config}/{args.modelname}"):
-        util_logger.info(f"Model {args.config}/{args.modelname} is already evaluated")
+    if args.resume and get_eval_results(f"ckpts/{args.config}/{args.modelname}"):
+        print(f"Model {args.config}/{args.modelname} is already evaluated")
         return
-    util_logger.info("Evaluation Start")
+    print("Evaluation Start")
     cfg=eval(f"{args.config}()")
     sys.argv = [
-        "eval.py",
+        "",
         "--model", "modis",
-        "--model_args", f"pretrained={args.ckpt_dir}/{args.config}/{args.modelname},gab_name={args.gab_name}",
+        "--model_args", f"pretrained={args.config}/{args.modelname}",
         "--tasks", ",".join(cfg.eval_tasks), 
-        "--device", "cuda" if torch.cuda.is_available() else "cpu",
+        # "--device", "cuda",
         "--batch_size", f"{cfg.eval_batch_size}",
-        "--output_path", f"{args.ckpt_dir}/{args.config}/{args.modelname}/eval_results",
-        "--wandb_args", f"project={args.wandb_project}",
-        # "--mixed_precision", "yes"
+        "--output_path", f"ckpts/{args.config}/{args.modelname}/eval_results",
+        "--cache_requests", "true",
+        # "--wandb_args", "project=modis",
     ]
-    cli_evaluate()
+    # cli_evaluate()
+    notebook_launcher(cli_evaluate, num_processes=args.n_gpus)
     
 def evalu(args):
     start = time.perf_counter()

@@ -13,7 +13,6 @@ from ..model.configs.gam_config import (
     GAMConfig_debug
 )
 
-from lm_eval.api.model import LM
 from lm_eval.models.huggingface import HFLM
 from lm_eval.api.registry import register_model
 from lm_eval.__main__ import cli_evaluate
@@ -61,6 +60,7 @@ class ModisEvalWrapper(HFLM):
         model.backbone.print_size()
         tokenizer = AutoTokenizer.from_pretrained(config.tokenizer)   
         tokenizer.pad_token_id = tokenizer.eos_token_id
+        self._config = config()
 
         super().__init__(model,tokenizer=tokenizer)
         self.vocab_size = self.tokenizer.vocab_size
