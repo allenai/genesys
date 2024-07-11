@@ -3,6 +3,11 @@
 
 
 
+class ScaleClimbingEvolution:
+
+    def __init__(self) -> None:
+        pass
+
 
 def evolve():
     # Evolve new individuals in a population

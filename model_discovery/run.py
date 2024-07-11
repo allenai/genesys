@@ -23,13 +23,13 @@ from argparse import Namespace
 
 from .trainer.data_loader import load_datasets
 from .trainer.modis_trainer import ModisTrainer
-from .model.configs.gam_config import (
+from .configs.gam_config import (
     GAMConfig,
     GAMConfig_10M,
     GAMConfig_debug
 )
 from .model.gam import ModisLMHeadModel
-from .evals.evaluator import cli_evaluate
+from .trainer.evaluator import cli_evaluate
 from . import utils as U
 
 torch.backends.cuda.matmul.allow_tf32 = True

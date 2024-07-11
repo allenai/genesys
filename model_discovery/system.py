@@ -31,7 +31,7 @@ from .prompts import (
 
 C = TypeVar("C",bound="ModelDiscoverySystem")
 
-from .model.configs.gam_config import (
+from .configs.gam_config import (
     GAMConfig_10M,
     GAMConfig
 )
