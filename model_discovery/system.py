@@ -305,7 +305,7 @@ class ModelDiscoverySystem(exec_utils.System):
             
         problem_history = []
 
-        query = f"{query}\nPlease only raw raw Python code and nothing more, no special formatting or extra text."
+        query = f"{query}\nPlease only write raw Python code and nothing more, no special formatting or extra text."
         query = DESIGNER_PROMPT.format(
             gam_py=self.gam_py,
             gab_py=self.gab_py,

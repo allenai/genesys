@@ -204,7 +204,6 @@ def exec_profiler(trainer):
     if local_rank != -1:
         trainer.train()
     else:
-        U.mkdir("profiler") 
         start = time.perf_counter()
         with torch.profiler.profile(activities=[torch.profiler.ProfilerActivity.CPU,
                                                 torch.profiler.ProfilerActivity.CUDA], 
@@ -229,8 +228,8 @@ def after_train(args):
     wandb.finish()
 
 def train(args):
-    if (not args.PERF_PROF_MODE) and args.resume and U.pexists(f"ckpts/{args.config}/{args.modelname}/pretrained"):
-        util_logger(f"Model {args.config}/{args.modelname} is already pretrained")
+    if (not args.PERF_PROF_MODE) and args.resume and U.pexists(f"{args.ckpt_dir}/{args.config}/{args.modelname}/pretrained"):
+        util_logger.info(f"Model {args.config}/{args.modelname} is already pretrained")
         return
     start = time.perf_counter()
     before_train(args)
@@ -250,7 +249,7 @@ def get_eval_results(output_dir):
         return None
 
 def run_eval(args):
-    if args.resume and get_eval_results(f"ckpts/{args.config}/{args.modelname}"):
+    if args.resume and get_eval_results(f"{args.ckpt_dir}/{args.config}/{args.modelname}"):
         print(f"Model {args.config}/{args.modelname} is already evaluated")
         return
     print("Evaluation Start")
@@ -258,15 +257,14 @@ def run_eval(args):
     sys.argv = [
         "",
         "--model", "modis",
-        "--model_args", f"pretrained={args.config}/{args.modelname}",
+        "--model_args", f"pretrained={args.config}/{args.modelname},ckpt_dir={args.ckpt_dir},gab_name={args.gab_name}",
         "--tasks", ",".join(cfg.eval_tasks), 
         # "--device", "cuda",
         "--batch_size", f"{cfg.eval_batch_size}",
-        "--output_path", f"ckpts/{args.config}/{args.modelname}/eval_results",
+        "--output_path", f"{args.ckpt_dir}/{args.config}/{args.modelname}/eval_results",
         "--cache_requests", "true",
         # "--wandb_args", "project=modis",
     ]
-    # cli_evaluate()
     notebook_launcher(cli_evaluate, num_processes=args.n_gpus)
     
 def evalu(args):
@@ -308,7 +306,7 @@ def report(args) -> dict:
     """
     outdir=f"{args.ckpt_dir}/{args.config}/{args.modelname}"
     if args.resume and U.pexists(f"{outdir}/report.json"):
-        util_logger(f"Report already exists at {outdir}/report.json")
+        util_logger.info(f"Report already exists at {outdir}/report.json")
         return
     run_id=U.load_json(f"{outdir}/wandb_ids.json")['pretrain']
     history,system_metrics=get_history(
@@ -371,12 +369,11 @@ if __name__ == "__main__":
     parser.add_argument("--data_dir", type=str, default='')
     parser.add_argument("--download_data_only", action='store_true')
     parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
-    parser.add_argument("--PERF_PROF_MODE", type=bool, default=True) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
+    parser.add_argument("--PERF_PROF_MODE", type=bool, default=False) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
     
     args = parser.parse_args()
     
     main(args)
-    # train(args)
     
 
 

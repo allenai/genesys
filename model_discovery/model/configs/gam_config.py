@@ -73,7 +73,7 @@ class GAMConfig_debug(GAMConfig):
     eval_batch_size: int = 512
     learning_rate: float = 5e-3 # LR for BS=256 and 6 GPUs 20x tokens
     training_token_multiplier: int = 20
-    eval_tasks: List[str] = field(default_factory=lambda: [
+    eval_tasks: List[str] = field(default_factory=lambda: ["blimp_filtered","blimp_supplement",
         "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande"])
     rms_norm: bool = False # TRITON BUGGY
     fused_add_norm: bool = False # TRITON BUGGY

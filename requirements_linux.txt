@@ -6,7 +6,8 @@ transformers
 datasets
 evaluate
 accelerate
-lm-eval # if cause multi-gpu error, uninstall peft
 causal-conv1d
 mamba-ssm
 flash-attn
+# lm-eval # if cause multi-gpu error, uninstall peft
+git+https://github.com/chengjunyan1/lm-evaluation-harness.git

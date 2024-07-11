@@ -54,6 +54,8 @@ The download link for babyLM evaluation data: https://files.osf.io/v1/resources/
 
 Notice that everytime you change your DATA_DIR, you may need to reinstall it, and remember DO NOT INSTALL peft
 
+Supported tasks: https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks, specially, babyLM tasks are: "blimp_filtered","blimp_supplement"
+
 ### create beaker image (ai2 internal) 
 You can run 
 ```

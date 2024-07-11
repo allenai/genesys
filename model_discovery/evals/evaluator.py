@@ -31,6 +31,7 @@ class ModisEvalWrapper(HFLM):
             self,
             pretrained,
             gab_name,
+            ckpt_dir,
             max_length=2048,
             batch_size=None,
             device="cuda",
@@ -42,10 +43,9 @@ class ModisEvalWrapper(HFLM):
         b = pretrained.split("/")
         modelname = b[-1]
         configname = b[-2]
-        ckpt_path = '/'.join(b[:-2])
         
         config = eval(f"{configname}")
-        ckpt = U.pjoin(ckpt_path, configname, modelname, "pretrained")
+        ckpt = U.pjoin(ckpt_dir, configname, modelname, "pretrained")
         
         util_logger.info(f'Trying to load from {ckpt}')
         
@@ -66,7 +66,6 @@ class ModisEvalWrapper(HFLM):
         self.vocab_size = self.tokenizer.vocab_size
         self._batch_size = int(batch_size) if batch_size is not None else 64
         self._max_length = max_length
-        # self._device = torch.device(device)
 
     @property
     def batch_size(self):
