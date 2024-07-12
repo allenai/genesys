@@ -1,6 +1,4 @@
-
-
-
+''' System of R & D Agents and Selector for Scale Climbing Evolution '''
 
 
 class ScaleClimbingEvolution:

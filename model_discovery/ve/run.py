@@ -1,3 +1,5 @@
+''' Run Verification Engine '''
+
 import json
 import sys
 import torch
@@ -21,16 +23,16 @@ from accelerate import notebook_launcher
 import functools as ft
 from argparse import Namespace
 
-from .trainer.data_loader import load_datasets
-from .trainer.modis_trainer import ModisTrainer
-from .configs.gam_config import (
+from .data_loader import load_datasets
+from .modis_trainer import ModisTrainer
+from ..configs.gam_config import (
     GAMConfig,
     GAMConfig_10M,
     GAMConfig_debug
 )
-from .model.gam import ModisLMHeadModel
-from .trainer.evaluator import cli_evaluate
-from . import utils as U
+from ..model.gam import ModisLMHeadModel
+from .evaluator import cli_evaluate
+from .. import utils as U
 
 torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True

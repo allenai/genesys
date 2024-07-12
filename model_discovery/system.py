@@ -1,3 +1,5 @@
+''' System of Review & Design Agents for Model Discovery '''
+
 import exec_utils
 import pathlib
 import os
@@ -23,7 +25,7 @@ from exec_utils import (
     BuildTool
 )
 from .agents import *
-from .prompts import (
+from .agents.prompts.prompts import (
     DESIGNER_PROMPT,
     REVIEWER_PROMPT,
     GAB_ERROR
@@ -114,7 +116,7 @@ class CustomParams(exec_utils.ModuleParams):
     ### code information
     block_template: str = exec_utils.ParamField(
         default=os.path.abspath(
-            f'{PROJ_SRC}/gab_template.py'
+            f'{PROJ_SRC}/agents/prompts/gab_template.py'
         ),
         metadata={
             "help"         : 'Location of block for prompting ',
@@ -122,7 +124,7 @@ class CustomParams(exec_utils.ModuleParams):
     )
     gam_template: str = exec_utils.ParamField(
         default=os.path.abspath(
-            f'{PROJ_SRC}/gam_prompt.py'
+            f'{PROJ_SRC}/agents/prompts/gam_prompt.py'
         ),
         metadata={
             "help" : 'Location of code prompting ',
