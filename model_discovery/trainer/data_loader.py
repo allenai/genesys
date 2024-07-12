@@ -129,4 +129,6 @@ def load_datasets(cfg: GAMConfig): # weights e.g. {'train':[1.5,1.0]} for two da
         ) for dataset in cfg.training_data
     ]
     tokenizer=get_tokenizer(cfg.tokenizer)
-    return combine_datasets(dataset_dicts, cfg.training_weight),tokenizer
+    dataset=combine_datasets(dataset_dicts, cfg.training_weight)
+    assert 'train' in dataset and 'valid' in dataset, "Dataset must have 'train' and 'valid' keys, and optionally a 'test' key"
+    return dataset,tokenizer
