@@ -357,7 +357,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--modelname", type=str, default="test1") # should be named after the agent
+    parser.add_argument("--modelname", type=str, default="test") # should be named after the agent
     parser.add_argument("--config", type=str, default="GAMConfig_debug")
     parser.add_argument("--resume", type=bool, default=True) # whether resume from the latest checkpoint if there is one, or fully retrain
     parser.add_argument("--n_gpus", type=int, default=torch.cuda.device_count())
@@ -372,7 +372,7 @@ if __name__ == "__main__":
     parser.add_argument("--data_dir", type=str, default='')
     parser.add_argument("--download_data_only", action='store_true')
     parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
-    parser.add_argument("--PERF_PROF_MODE", type=bool, default=True) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
+    parser.add_argument("--PERF_PROF_MODE", type=bool, default=False) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
     
     args = parser.parse_args()
     

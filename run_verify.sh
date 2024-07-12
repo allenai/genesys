@@ -1,2 +1,2 @@
-python -m model_discovery.executor.run "$@"
+python -m model_discovery.ve.run "$@"
 
