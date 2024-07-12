@@ -75,3 +75,8 @@ def gab_config() -> dict:
     return {
         # No additional hyperparameters for now.
     }
+
+
+# GAB: {Input -> [C1 -> LN1 -> ReLU1 -> X1]
+#            -> [X1 -> C2 -> LN2 -> ReLU2 -> X2]
+#            -> [X2 + X1] -> FFN(F1 -> ReLU -> F2) -> Output}

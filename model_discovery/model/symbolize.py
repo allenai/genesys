@@ -2,21 +2,27 @@
 
 import inspect
 
+from .design_base.mamba_simple import *
+
 from .block_registry import BlockRegister
 
+from torch.fx import symbolic_trace
 
 class Symbolizer:
     def __init__(self, gab_name: str):
         gab_class,gab_config = BlockRegister.load_block(gab_name)
-        print(gab_class)
-        print(gab_config)
+        # print(gab_class)
+        # print(gab_config)
 
-        gab=gab_class(10,1) # can we do some static analysis?
+        gab=gab_class(128,1) # can we do some static analysis?
 
-        source_code = inspect.getsource(gab_class)
-        inf_code= inspect.getsource(gab._forward)
+        symbolic_traced=symbolic_trace(gab)
 
-        print(inf_code)
+        # source_code = inspect.getsource(gab_class)
+        # inf_code= inspect.getsource(gab._forward)
+
+        print(symbolic_traced.code)
+        print(symbolic_traced.graph)
 
 
 
@@ -26,7 +32,7 @@ class Symbolizer:
 
 if __name__ == '__main__':
 
-    sym=Symbolizer('default')
+    sym=Symbolizer('mamba_simple')
 
 
     

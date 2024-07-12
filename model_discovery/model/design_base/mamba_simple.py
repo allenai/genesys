@@ -122,7 +122,7 @@ class GAB(nn.Module):
 
     def _forward(self,X,inference_params=None):
         ''' Forward pass of the model '''
-        assert X.shape[-1] == self.embed_dim
+        # assert X.shape[-1] == self.embed_dim
         # COMPLETING THE CODE HERE #
         hidden_states=X
         batch, seqlen, dim = hidden_states.shape
@@ -217,9 +217,9 @@ class GAB(nn.Module):
         out = self.out_proj(y)
         return out.unsqueeze(1), conv_state, ssm_state
     
-    def forward(self,X,**kwargs):
+    def forward(self,X):
         ''' Forward pass of the model '''
-        Y=self._forward(X,**kwargs)
+        Y=self._forward(X)
         assert Y.shape[-1] == self.embed_dim
         return Y
     
@@ -234,3 +234,16 @@ def gab_config()->dict:
 
     }
 
+
+
+# Mamba2Simple: {
+#     Input(u) -> Linear(d_model -> d_in_proj) -> zxbcdt
+#     Params: A_log, dt_bias, D, init_states
+#     [
+#         zxbcdt -> split[z, xBC, dt]
+#         xBC -> transpose -> conv1d -> transpose -> act -> split[x, B, C]
+#         x, dt, A_log, B, C, chunk_size, D, seq_idx, initial_states, dt_limit_kwargs
+#         -> mamba_chunk_scan_combined -> rearrange
+#     ]
+#     norm(y, z) -> out_proj -> Output
+# }
