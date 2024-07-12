@@ -9,7 +9,7 @@ import wandb
 import time
 import logging
 
-import transformers
+# import transformers
 from huggingface_hub import login
 
 from transformers import (
@@ -36,6 +36,7 @@ torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True
 
 util_logger = logging.getLogger('model_discovery.run')
+
 
 def setup(args) -> None:
     """Sets up the run environment 
@@ -72,13 +73,13 @@ def setup(args) -> None:
     random.seed(args.seed)
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
+    
+    ### log into the hf hub # Why need this?
+    # login(os.environ.get("HF_KEY",None))
 
 
 def before_train(args):
     if args.PERF_PROF_MODE: return # skip the following if in performance profiling mode
-    
-    ### log into the hf hub 
-    login(os.environ.get("HF_KEY",None))
 
     ## initialize wandb
     util_logger.info(f'Setting up wandb...')

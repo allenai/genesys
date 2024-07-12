@@ -7,7 +7,7 @@ import transformers
 from transformers import AutoTokenizer
 
 from ..model.gam import ModisLMHeadModel
-from ..model import (
+from ..configs.gam_config import (
     GAMConfig,
     GAMConfig_10M,
     GAMConfig_debug

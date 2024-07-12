@@ -13,7 +13,7 @@ import numpy as np
 import functools as ft
 from typing import List
 
-from ..model.configs.gam_config import GAMConfig
+from ..configs.gam_config import GAMConfig
 from .. import utils as U
 
 def get_tokenizer(tokenizer_name):

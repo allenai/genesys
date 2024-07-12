@@ -2,6 +2,8 @@ from dataclasses import dataclass, field, asdict
 from typing import List, Dict, Optional
 from transformers import PretrainedConfig, AutoTokenizer
 
+
+
 @dataclass
 class GAMConfig(PretrainedConfig):
     '''Configurations for Generalized Autoregressive Models.'''
@@ -60,6 +62,70 @@ class GAMConfig_10M(GAMConfig):
     learning_rate: float = 1e-4
 
 
+
+@dataclass
+class GAMConfig_35M(GAMConfig):
+    '''Configurations for Generalized Autoregressive Model with 10M scale (non-embedding).'''
+
+    d_model: int = 256
+    n_layer: int = 6
+    param_magnitude: int = 1e7
+    context_length: int = 512
+    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
+    per_device_train_batch_size: int = 128
+    eval_batch_size: int = 512
+    learning_rate: float = 1e-4
+
+
+
+@dataclass
+class GAMConfig_70M(GAMConfig):
+    '''Configurations for Generalized Autoregressive Model with 10M scale (non-embedding).'''
+
+    d_model: int = 256
+    n_layer: int = 6
+    param_magnitude: int = 1e7
+    context_length: int = 512
+    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
+    per_device_train_batch_size: int = 128
+    eval_batch_size: int = 512
+    learning_rate: float = 1e-4
+
+
+
+@dataclass
+class GAMConfig_130M(GAMConfig):
+    '''Configurations for Generalized Autoregressive Model with 10M scale (non-embedding).'''
+
+    d_model: int = 256
+    n_layer: int = 6
+    param_magnitude: int = 1e7
+    context_length: int = 512
+    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
+    per_device_train_batch_size: int = 128
+    eval_batch_size: int = 512
+    learning_rate: float = 1e-4
+
+
+# 370M
+
+# 780M
+
+# 1.3B
+
+# 2.7B
+
+# 7B
+
+# 13B or 8x7B (active params)
+
+# 35B or 8x22B
+
+# 70B 
+
+# 175B
+
+
 @dataclass
 class GAMConfig_debug(GAMConfig):
     '''Configurations for Generalized Autoregressive Model with 10M scale (non-embedding).'''
@@ -73,7 +139,7 @@ class GAMConfig_debug(GAMConfig):
     eval_batch_size: int = 512
     learning_rate: float = 5e-3 # LR for BS=256 and 6 GPUs 20x tokens
     training_token_multiplier: int = 20
-    eval_tasks: List[str] = field(default_factory=lambda: ["blimp_filtered","blimp_supplement",
+    eval_tasks: List[str] = field(default_factory=lambda: ["blimp_filtered","blimp_supplement","glue",
         "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande"])
     rms_norm: bool = False # TRITON BUGGY
     fused_add_norm: bool = False # TRITON BUGGY
