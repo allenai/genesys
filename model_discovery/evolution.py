@@ -92,8 +92,7 @@ class EvolutionSystem(exec_utils.System):
             config,
             **kwargs
         )
-        print(agent)
-        return cls(None,config) 
+        return cls(agent,config) 
 
 def BuildEvolution(
         config: Optional[ConfigType] = None,
