@@ -6,7 +6,7 @@ import torch.nn as nn
 from mamba_ssm.modules.mha import MHA
 from mamba_ssm.modules.mlp import GatedMLP
 
-from .block_registry import BlockRegister
+from ..block_registry import BlockRegister
 
 
 __all__ = [
@@ -14,7 +14,7 @@ __all__ = [
 ]
 
 @BlockRegister(
-    name="default",
+    name="gpt_gatedmlp_mha",
     config={}
 )
 class GAB(nn.Module):

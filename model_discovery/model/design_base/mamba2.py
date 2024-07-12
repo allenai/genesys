@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 @BlockRegister(
-    name="default",
+    name="mamba2",
     config={}
 )
 class GAB(nn.Module):

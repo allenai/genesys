@@ -2,7 +2,7 @@
 
 import torch
 import torch.nn as nn
-from .block_registry import BlockRegister
+from ..block_registry import BlockRegister
 
 
 __all__ = [
@@ -10,7 +10,7 @@ __all__ = [
 ]
 
 @BlockRegister(
-    name="default",
+    name="causal_conv_block",
     config={}
 )
 class GAB(nn.Module):
