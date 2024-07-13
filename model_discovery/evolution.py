@@ -1,25 +1,6 @@
+''' System of R & D Agents and Selector for Scale Climbing Evolution '''
+
 from __future__ import annotations
-
-# ''' System of R & D Agents and Selector for Scale Climbing Evolution '''
-
-# class ScaleClimbingEvolution:
-
-#     def __init__(self) -> None:
-#         pass
-
-
-# def evolve():
-#     # Evolve new individuals in a population
-#     pass
-
-# def select():
-#     # Select the best individuals in a population
-#     pass
-    
-# def scale_climbing():
-#     # Scale climbing evolutionary algorithm for model hyperparameters
-#     pass
-
 
 import exec_utils
 import pathlib
@@ -42,6 +23,8 @@ from typing import (
 from .system import BuildSystem
 from exec_utils.factory import _check_config
 from exec_utils import BuildSystem as NativeBuild
+from exec_utils.aliases import ConfigType
+
 
 
 __all__ = [
