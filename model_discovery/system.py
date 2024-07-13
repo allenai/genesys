@@ -3,6 +3,7 @@
 import exec_utils
 import pathlib
 import os
+import json
 import time
 import tempfile
 
@@ -165,6 +166,13 @@ class CustomParams(exec_utils.ModuleParams):
         default='demo',
         metadata={
             "help"         : 'The name of the run',
+            "exclude_hash" : True,
+        }
+    )
+    from_json: str = exec_utils.ParamField(
+        default='',
+        metadata={
+            "help"         : 'The location of json',
             "exclude_hash" : True,
         }
     )
@@ -444,12 +452,12 @@ def BuildSystem(
     """
     from exec_utils import BuildSystem
     kwargs["system_type"] = "model_discovery_system"
-
-    if config and not config.wdir:
-        wdir = f"{SYSTEM_OUT}/{time.strftime('%Y%m%d_%H%M%S')}"
-        kwargs["wdir"] = wdir
-    elif "wdir" not in kwargs:
-        wdir = f"{SYSTEM_OUT}/{time.strftime('%Y%m%d_%H%M%S')}"
-        kwargs["wdir"] = wdir
+    
+    # if config and not config.wdir:
+    #     wdir = f"{SYSTEM_OUT}/{time.strftime('%Y%m%d_%H%M%S')}"
+    #     kwargs["wdir"] = wdir
+    # elif "wdir" not in kwargs:
+    #     wdir = f"{SYSTEM_OUT}/{time.strftime('%Y%m%d_%H%M%S')}"
+    #     kwargs["wdir"] = wdir
         
     return BuildSystem(config,**kwargs)
