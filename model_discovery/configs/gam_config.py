@@ -57,7 +57,7 @@ class GAMConfig_10M(GAMConfig):
     param_magnitude: int = 1e7
     context_length: int = 512
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
-    per_device_train_batch_size: int = 128
+    per_device_train_batch_size: int = 256
     eval_batch_size: int = 512
     learning_rate: float = 1e-4
 
@@ -67,13 +67,13 @@ class GAMConfig_10M(GAMConfig):
 class GAMConfig_35M(GAMConfig):
     '''Configurations for Generalized Autoregressive Model with 10M scale (non-embedding).'''
 
-    d_model: int = 256
-    n_layer: int = 6
-    param_magnitude: int = 1e7
+    d_model: int = 512
+    n_layer: int = 8
+    param_magnitude: int = 3.5e7
     context_length: int = 512
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     per_device_train_batch_size: int = 128
-    eval_batch_size: int = 512
+    eval_batch_size: int = 256
     learning_rate: float = 1e-4
 
 

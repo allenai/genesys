@@ -67,8 +67,8 @@ def setup(args) -> None:
         os.environ["DATA_DIR"] = args.data_dir 
         
     ### make checkpoint dir
-    U.mkdir(U.pjoin(args.ckpt_dir,'ve'))
-    util_logger.info(f'Creating checkpoint directory: {args.ckpt_dir}/ve')
+    U.mkdir(U.pjoin(args.ckpt_dir,args.evoname,'ve'))
+    util_logger.info(f'Creating checkpoint directory: {args.ckpt_dir}/{args.evoname}/ve')
 
     #### seed run
     util_logger.info(f'Setting seed: seed={args.seed}')
@@ -87,7 +87,7 @@ def before_train(args):
     util_logger.info(f'Setting up wandb...')
     global wandb_ids
     wandb_ids=U.load_json(
-        f"{args.ckpt_dir}/ve/{args.config}/{args.modelname}/wandb_ids.json"
+        f"{args.ckpt_dir}/{args.evoname}/ve/{args.config}/{args.modelname}/wandb_ids.json"
     )
     if args.resume and 'pretrain' in wandb_ids:
         wandb.init(resume="must", project=args.wandb_project, id=wandb_ids['pretrain'])
@@ -135,7 +135,7 @@ def run_train(args) -> None:
         per_device_eval_batch_size = config.per_device_train_batch_size * 2,
         gradient_accumulation_steps=args.gradient_accumulation_steps,
         optim=args.optim,
-        output_dir=f"{args.ckpt_dir}/ve/{args.config}/{args.modelname}",
+        output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.config}/{args.modelname}",
         logging_steps=25,
         save_steps=args.save_steps,
         dataloader_num_workers=16,
@@ -199,7 +199,7 @@ def trace_handler(p):
     print('Profiler results (by CPU time):')
     print(p.key_averages().table(sort_by="self_cpu_time_total", row_limit=10))
     print('Exporting profiler results')
-    output_dir=f"{args.ckpt_dir}/ve/{args.config}/{args.modelname}"
+    output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.config}/{args.modelname}"
     p.export_chrome_trace(f"{output_dir}/profiler/trainer_trace_" + str(p.step_num) + ".json") # check chrome://tracing
 
 def exec_profiler(trainer):
@@ -223,7 +223,7 @@ def exec_profiler(trainer):
 
 def after_train(args):
     if args.PERF_PROF_MODE: return
-    output_dir=f"{args.ckpt_dir}/ve/{args.config}/{args.modelname}"
+    output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.config}/{args.modelname}"
     history,system_metrics=get_history(wandb.run.id)
     history.to_csv(f"{output_dir}/train_logs.csv")
     system_metrics.to_csv(f"{output_dir}/system_metrics.csv")
@@ -231,7 +231,7 @@ def after_train(args):
     wandb.finish()
 
 def train(args):
-    if (not args.PERF_PROF_MODE) and args.resume and U.pexists(f"{args.ckpt_dir}/ve/{args.config}/{args.modelname}/pretrained"):
+    if (not args.PERF_PROF_MODE) and args.resume and U.pexists(f"{args.ckpt_dir}/{args.evoname}/ve/{args.config}/{args.modelname}/pretrained"):
         util_logger.info(f"Model {args.config}/{args.modelname} is already pretrained")
         return
     start = time.perf_counter()
@@ -252,7 +252,7 @@ def get_eval_results(output_dir):
         return None
 
 def run_eval(args):
-    if args.resume and get_eval_results(f"{args.ckpt_dir}/ve/{args.config}/{args.modelname}"):
+    if args.resume and get_eval_results(f"{args.ckpt_dir}/{args.evoname}/ve/{args.config}/{args.modelname}"):
         print(f"Model {args.config}/{args.modelname} is already evaluated")
         return
     print("Evaluation Start")
@@ -260,11 +260,11 @@ def run_eval(args):
     sys.argv = [
         "",
         "--model", "modis",
-        "--model_args", f"pretrained={args.config}/{args.modelname},ckpt_dir={args.ckpt_dir},gab_name={args.gab_name}",
+        "--model_args", f"pretrained={args.evoname}/{args.config}/{args.modelname},ckpt_dir={args.ckpt_dir},gab_name={args.gab_name}",
         "--tasks", ",".join(cfg.eval_tasks), 
         # "--device", "cuda",
         "--batch_size", f"{cfg.eval_batch_size}",
-        "--output_path", f"{args.ckpt_dir}/ve/{args.config}/{args.modelname}/eval_results",
+        "--output_path", f"{args.ckpt_dir}/{args.evoname}/ve/{args.config}/{args.modelname}/eval_results",
         "--cache_requests", "true",
         # "--wandb_args", "project=modis",
     ]
@@ -307,7 +307,7 @@ def report(args) -> dict:
     :param args: 
         The global training configuration. 
     """
-    outdir=f"{args.ckpt_dir}/ve/{args.config}/{args.modelname}"
+    outdir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.config}/{args.modelname}"
     if args.resume and U.pexists(f"{outdir}/report.json"):
         util_logger.info(f"Report already exists at {outdir}/report.json")
         return
@@ -332,8 +332,6 @@ def report(args) -> dict:
     }
     with open(f"{outdir}/report.json", 'w') as report_out:
         report_out.write(json.dumps(report,indent=4))
-    # with open(f'{args.ckpt_dir}/metrics.json','w') as json_out: # Q: why do twice? 
-    #     json_out.write(json.dumps(report,indent=4))
         
     #json.dump(report, open(f"{outdir}/report.json", 'w'), indent=4)
     util_logger.info(f"Report saved at {outdir}/report.json")
@@ -357,6 +355,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument("--evoname", type=str, default="test") # the name of the whole evolution
     parser.add_argument("--modelname", type=str, default="test") # should be named after the agent, it should be the same as gab name
     parser.add_argument("--config", type=str, default="GAMConfig_debug")
     parser.add_argument("--resume", type=bool, default=True) # whether resume from the latest checkpoint if there is one, or fully retrain

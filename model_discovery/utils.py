@@ -15,6 +15,23 @@ def strscale(size):
     elif size>1e6: return f"{size/1e6:.2f}M"
     elif size>1e3: return f"{size/1e3:.2f}K"
     else: return f"{int(size)}"
+
+
+def letternum2num(s):
+    """
+    Convert a letter-number string to a numeric value for sorting.
+    'M' is treated as 1,000,000
+    'B' is treated as 1,000,000,000
+    """
+    num = float(s[:-1])
+    unit = s[-1]
+    
+    if unit == 'M':
+        return num * 1_000_000
+    elif unit == 'B':
+        return num * 1_000_000_000
+    else:
+        raise ValueError("Unknown unit in string: " + s)
         
 def load_json(file,default={}):
     if not pexists(file):

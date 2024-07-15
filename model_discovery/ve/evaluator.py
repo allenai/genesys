@@ -43,9 +43,10 @@ class ModisEvalWrapper(HFLM):
         b = pretrained.split("/")
         modelname = b[-1]
         configname = b[-2]
+        evoname = b[-3]
         
         config = eval(f"{configname}")
-        ckpt = U.pjoin(ckpt_dir, configname, modelname, "pretrained")
+        ckpt = U.pjoin(ckpt_dir, evoname, 've', configname, modelname, "pretrained")
         
         util_logger.info(f'Trying to load from {ckpt}')
         

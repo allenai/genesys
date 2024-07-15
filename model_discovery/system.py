@@ -35,6 +35,9 @@ from .agents.prompts.prompts import (
 C = TypeVar("C",bound="ModelDiscoverySystem")
 
 from .configs.gam_config import (
+    GAMConfig_130M,
+    GAMConfig_70M,
+    GAMConfig_35M,
     GAMConfig_10M,
     GAMConfig
 )
@@ -259,7 +262,7 @@ class ModelDiscoverySystem(exec_utils.System):
         *,
         block_template: str,
         gam_template: str,
-        gam_config,
+        gam_config: Type[GAMConfig],
         config: ConfigType 
     ) -> None:
         """Create a `DiscoverySystem` instance 
@@ -289,6 +292,9 @@ class ModelDiscoverySystem(exec_utils.System):
 
         ###
         self._queries = [] 
+
+    def set_config(self,cfg:GAMConfig): # reset the gam config of the system
+        self._cfg = cfg
 
     def query_system(
         self,
@@ -351,10 +357,10 @@ class ModelDiscoverySystem(exec_utils.System):
                     #if "# gab.py" not in code: raise
                     assert "# gab.py" in code 
 
-                except Exception as e:
-                    query = f"An error was encountered when running the code, error={e}. Please try again."
-                    source = 'user'
-                    continue
+                # except Exception as e: # <-- should be checker's job?
+                #     query = f"An error was encountered when running the code, error={e}. Please try again."
+                #     source = 'user'
+                #     continue
                 except AssertionError:
                     source = "user"
                     query  = GAB_ERROR
@@ -366,12 +372,13 @@ class ModelDiscoverySystem(exec_utils.System):
                         f"""<details><summary>code check</summary>{check_report}</details>""",
                         unsafe_allow_html=True
                     )
-                    
-                if not checkpass:
-                    query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix"
-                    source = 'user'
-                    self.checker.reset()
-                    continue 
+                
+                ### FOR DEBUGGING, REMEMBER TO UNCOMMENT!
+                # if not checkpass:
+                #     query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix"
+                #     source = 'user'
+                #     self.checker.reset()
+                #     continue 
 
                 problem_history.append(("The designed model passed, now scoring","user"))
 
@@ -380,7 +387,11 @@ class ModelDiscoverySystem(exec_utils.System):
 
         #### now have the agent defend the design
         if found_design: 
-            report_query = "The designed model passed the tests, now please generate a text report explaining and justifying your design."
+            report_query = (
+                "The designed model passed the tests, now please generate a text report explaining and justifying your design."
+                " Generate a creative name of your design as the title of your report in the first line of your response."
+                " Do not include abbreviations or acronyms of your design in the title. You can use them in the body of the report."
+            )
             with status_handler(f"Querying agent for report..."):
                 self.logging.info('Now trying to compile self report...')
                 self_report = self.designer(
@@ -394,6 +405,12 @@ class ModelDiscoverySystem(exec_utils.System):
             ### TODO: query the review agent
             
         #### now use the 
+
+
+        ### TODO: return the design artifacts: name, code, report, explanation, etc.
+        title=self_report['code'].split('\n')[0].replace('#','').strip()
+        return title,code,self_report['code']
+
 
     @classmethod
     def from_config(cls: Type[C],config: ConfigType,**kwargs) -> C:
@@ -439,7 +456,7 @@ class ModelDiscoverySystem(exec_utils.System):
 def BuildSystem(
         config: Optional[ConfigType] = None,
         **kwargs
-    ):
+    ) -> ModelDiscoverySystem:
     """Factory for building an overall system
 
     :param config: 
