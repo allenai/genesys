@@ -34,13 +34,15 @@ from .agents.prompts.prompts import (
 
 C = TypeVar("C",bound="ModelDiscoverySystem")
 
-from .configs.gam_config import (
+from .configs.gam.config import (
     GAMConfig_130M,
     GAMConfig_70M,
     GAMConfig_35M,
     GAMConfig_10M,
     GAMConfig
 )
+
+# import multiprocessing as mp
 
 __all__ = [
     "ModelDiscoverySystem",
@@ -367,6 +369,13 @@ class ModelDiscoverySystem(exec_utils.System):
                     continue 
                 
                 checkpass,check_report = self.checker.check(self._cfg,code,design_name)
+                # mp.set_start_method('spawn')
+                # queue = mp.Queue()
+                # testing_process = mp.Process(target=self.run_check, args=(self, code, design_name, queue))
+                # testing_process.start()
+                # testing_process.join()
+                # checkpass, check_report = queue.get()
+                            
                 if stream:
                     stream.write(
                         f"""<details><summary>code check</summary>{check_report}</details>""",
@@ -374,11 +383,11 @@ class ModelDiscoverySystem(exec_utils.System):
                     )
                 
                 ### FOR DEBUGGING, REMEMBER TO UNCOMMENT!
-                # if not checkpass:
-                #     query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix"
-                #     source = 'user'
-                #     self.checker.reset()
-                #     continue 
+                if not checkpass:
+                    query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix"
+                    source = 'user'
+                    self.checker.reset()
+                    continue 
 
                 problem_history.append(("The designed model passed, now scoring","user"))
 
@@ -408,9 +417,14 @@ class ModelDiscoverySystem(exec_utils.System):
 
 
         ### TODO: return the design artifacts: name, code, report, explanation, etc.
+        if not found_design:
+            return None,None,None
         title=self_report['code'].split('\n')[0].replace('#','').strip()
         return title,code,self_report['code']
 
+    def run_check(self,code,design_name,queue):
+        checkpass,check_report = self.checker.check(self._cfg,code,design_name)
+        queue.put((checkpass, check_report))
 
     @classmethod
     def from_config(cls: Type[C],config: ConfigType,**kwargs) -> C:

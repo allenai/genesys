@@ -7,9 +7,12 @@ import transformers
 from transformers import AutoTokenizer
 
 from ..model.gam import ModisLMHeadModel
-from ..configs.gam_config import (
+from ..configs.gam.config import (
     GAMConfig,
     GAMConfig_10M,
+    GAMConfig_35M,
+    GAMConfig_70M,
+    GAMConfig_130M,
     GAMConfig_debug
 )
 
@@ -41,12 +44,12 @@ class ModisEvalWrapper(HFLM):
         util_logger.info('Running evaluation')
         
         b = pretrained.split("/")
-        modelname = b[-1]
+        design_id = b[-1]
         configname = b[-2]
         evoname = b[-3]
         
         config = eval(f"{configname}")
-        ckpt = U.pjoin(ckpt_dir, evoname, 've', configname, modelname, "pretrained")
+        ckpt = U.pjoin(ckpt_dir, evoname, 've', design_id, "pretrained")
         
         util_logger.info(f'Trying to load from {ckpt}')
         
@@ -75,15 +78,3 @@ class ModisEvalWrapper(HFLM):
     def _model_generate(self, context, max_length, stop, **generation_kwargs):
         raise NotImplementedError()
 
-
-if __name__ == "__main__":
-    sys.argv = [
-        "eval.py",
-        "--model", "modis",
-        "--model_args", "pretrained=GAMConfig_10M/GPT-3",
-        "--tasks", "lambada_openai,hellaswag,piqa,arc_easy,arc_challenge,winogrande,blimp_filtered,blimp_supplement",
-        "--device", "cuda",
-        "--batch_size", "256",
-        # "--mixed_precision", "yes"
-    ]
-    cli_evaluate()

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import sys
 import exec_utils
 import pathlib
 import os
@@ -28,9 +29,12 @@ from exec_utils import BuildSystem as NativeBuild
 from exec_utils.aliases import ConfigType
 
 from model_discovery import utils as U
-from .configs.gam_config import (
+from .configs.gam.config import (
     GAMConfig, GAMConfig_10M, GAMConfig_35M, GAMConfig_70M, GAMConfig_130M,
 )
+
+from .ve.run import main as ve_main
+from .ve.run import parser as ve_parser
 
 
 __all__ = [
@@ -151,6 +155,8 @@ class EvolutionSystem(exec_utils.System):
             self.state['current_scale']=0
         if 'budgets' not in self.state: # remaining budget for each scale
             self.state['budgets']={s.split(':')[0]:int(s.split(':')[1]) for s in scales}
+        # if 'unverified' not in self.state:
+        #     self.state['unverified']=[]
         self.save_state() # save the initialized state
 
         self.scales=[eval(f'GAMConfig_{scale}()') for scale in self.state['scales']]
@@ -188,38 +194,79 @@ class EvolutionSystem(exec_utils.System):
     def save_state(self):
         U.save_json(self.state,U.pjoin(self.evo_dir,'state.json'))
 
-    def run(self):
+    def run(self): 
         """ Run the scale-climbing evolution """
-        for idx,scale in enumerate(self.state['scales']):
-            if idx<self.state['current_scale']:
-                continue
-            self.evolve(idx)
+        raise NotImplementedError("This method is not implemented for multi-gpu yet")
+        while self.evolve():
+            self.verify()
+        
+    def _run(self,mode):
+        if mode=='evolve':
+            print('\n\n'+'+'*50)
+            print("RUNNING IN EVOLUTION MODE...\n\n")
+            ret=self.evolve()
+            if ret is None:
+                print("No budget left for the evolution")
+                time.sleep(1)
+            else:
+                print(f"Design {ret} sampled")
+        elif mode=='verify':
+            print('\n\n'+'x'*50)
+            print("RUNNING IN VERIFICATION MODE...\n\n")
+            ret=self.verify()
+            if ret is None:
+                print("No unverified design left")
+                time.sleep(1)
+            else: 
+                print(f"Design {ret} verified")
+
+    def evolve(self): # run a single evolution step unless no budget left
+        scale_id=self.state['current_scale']
+        scale=self.state['scales'][scale_id]
+        if scale not in self.state['scales']: # no budget left
+            print(f"No budget left for scale {scale}")
+            return None
+        budget=self.state['budgets'][scale]
+        if budget==0:
             self.state['current_scale']+=1
             self.save_state()
+            self.evolve()
+        else:
+            return self._evolve(scale_id)
 
-    def evolve(self,scale_id):
-        """ Evolve the design at a given scale """
-
+    def _evolve(self,scale_id): # do evolve that produce one design
+        instruct,seed_ids=self.select() # use the seed_ids to record the phylogenetic tree
+        artifact=self.sample(scale_id,instruct) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
+        if artifact is None:
+            print("No design sampled")
+            return None
+        # save the design to the phylogenetic tree and update the budget
+        artifact['seed_ids']=seed_ids
+        self.ptree.new_design(artifact)
         scale=self.state['scales'][scale_id]
-        budget=self.state['budgets'][scale]
-        print(f"Evolve at scale {scale} with budget {budget}")
-        for _ in range(budget):
-            instruct,seed_ids=self.select() # use the seed_ids to record the phylogenetic tree
-            artifact=self.sample(scale_id,instruct) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
-
-            # save the design to the phylogenetic tree and update the budget
-            artifact['seed_ids']=seed_ids
-            self.ptree.new_design(artifact)
-            self.state['budgets'][scale]-=1
-            self.save_state() # NOTE!!!: handle it carefully in multi-threading
+        self.state['budgets'][scale]-=1
+        # self.state['unverified'].append(artifact['acronym'])
+        self.save_state() # NOTE!!!: handle it carefully in multi-threading
+        return artifact['acronym']
 
     def sample(self,scale_id,instruct,verbose=True):
         """ Sample a design at a given scale and verify it """
         self.rnd_agent.set_config(self.scales[scale_id])
         title,code,explain=self.rnd_agent(instruct) 
+        if title is None: # no design sampled
+            return None
         for i in [' and ',' for ','-']:
             title=title.replace(i,' ')
         acronym=''.join([i[0].upper() for i in title.split(' ') if i.isalpha()])
+
+        # modify the code to fit the block registry
+        # TODO: change the registry name to acronyms
+        code=code.split('\n')
+        for idx, line in enumerate(code):
+            if 'class GAB(nn.Module):' in line:
+                break
+        code[idx]='from .block_registry import BlockRegister\n\n__all__ = [\n    "GAB",\n]\n\n@BlockRegister(\n    name="default",\n    config={}\n)\nclass GAB(nn.Module):'
+        code='\n'.join(code)
 
         artifact={
             'title':title,
@@ -230,16 +277,36 @@ class EvolutionSystem(exec_utils.System):
             'instruct':instruct,
         }
         return artifact
-    
-
-    def verify(self,artifact):
-        pass
-
 
     def select(self):
         """ Provide the instruction including seeds and instructs for the next design """
         # TODO
         return '',[]
+    
+    def verify(self): # run a single verify that verify one unverified design
+        designed=os.listdir(U.pjoin(self.evo_dir,'db'))
+        for design_id in designed:
+            report_dir=U.pjoin(self.evo_dir,'ve',design_id,'report.json')
+            if U.load_json(report_dir)=={}:
+                for _ in range(3): # try 3 times
+                    self._verify(design_id) # verify the design until it's done
+                    if U.load_json(report_dir)!={}: return design_id
+                return 'FAILED'
+        return None
+        
+
+    def _verify(self,design_id): # do a single verify
+        artifact=U.load_json(U.pjoin(self.evo_dir,'db',design_id,'artifact.json'))
+        with open('/home/junyanc/model_discovery/model_discovery/model/gab.py','w') as f:
+            f.write(artifact['code'])
+        args = ve_parser.parse_args()
+        args.evoname=self.evoname
+        args.design_id=artifact['acronym']
+        args.config=f'GAMConfig_{artifact["scale"]}'
+        args.ckpt_dir=self.ckpt_dir
+        args.data_dir=os.environ.get("DATA_DIR")
+        args.resume=True
+        ve_main(args)
 
     @classmethod
     def from_config(cls,config,**kwargs):
@@ -280,20 +347,23 @@ if __name__ == '__main__':
         "scales=10M:4,35M:1",
     ]
 
-    evoname=strparams[0].split('=')[1]
-    ckpt_dir=os.environ.get("CKPT_DIR")
-    evo_dir=U.pjoin(ckpt_dir,evoname)
-    os.removedirs(evo_dir) if os.path.exists(evo_dir) else None
+    # evoname=strparams[0].split('=')[1]
+    # ckpt_dir=os.environ.get("CKPT_DIR")
+    # evo_dir=U.pjoin(ckpt_dir,evoname)
+    # os.removedirs(evo_dir) if os.path.exists(evo_dir) else None
 
     evolution_system = BuildEvolution(
         strparams=';'.join(strparams),
         cache_type='diskcache',
     )
-    print(evolution_system)
+    # print(evolution_system)
 
-    evolution_system('')
+    # evolution_system('')
 
     # evolution_system.sample(0,'')
-    evolution_system.run()
+    # evolution_system.run()
+
+    mode=ve_parser.parse_args().mode
+    evolution_system._run(mode)
     
 

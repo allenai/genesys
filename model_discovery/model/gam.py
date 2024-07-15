@@ -16,7 +16,7 @@ from transformers import (
 
 import torch
 from torch import nn, Tensor
-from model_discovery.configs.gam_config import GAMConfig
+from model_discovery.configs.gam.config import GAMConfig
 from model_discovery.model.utils.generation import decode
 from model_discovery.model.utils.hf import load_config_hf, load_state_dict_hf
 # from model_discovery.model.utils.generation import GenerationMixin

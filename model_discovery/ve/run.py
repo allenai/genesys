@@ -25,9 +25,12 @@ from argparse import Namespace
 
 from .data_loader import load_datasets
 from .modis_trainer import ModisTrainer
-from ..configs.gam_config import (
+from ..configs.gam.config_test import ( # USE config_test.py for testing, because we only change num steps for faster training
     GAMConfig,
     GAMConfig_10M,
+    GAMConfig_35M,
+    GAMConfig_70M,
+    GAMConfig_130M,
     GAMConfig_debug
 )
 from ..model.gam import ModisLMHeadModel
@@ -38,6 +41,30 @@ torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True
 
 util_logger = logging.getLogger('model_discovery.run')
+
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--evoname", type=str, default="evolution_test") # the name of the whole evolution
+parser.add_argument("--design_id", type=str, default="test") # should be named after the agent, it should be the same as gab name
+parser.add_argument("--config", type=str, default="GAMConfig_debug")
+parser.add_argument("--resume", type=bool, default=True) # whether resume from the latest checkpoint if there is one, or fully retrain
+parser.add_argument("--n_gpus", type=int, default=torch.cuda.device_count())
+parser.add_argument("--n_nodes", type=int, default=1)
+parser.add_argument("--save_steps", type=int, default=50)
+parser.add_argument("--gradient_accumulation_steps", type=int, default=1)
+parser.add_argument("--optim", type=str, default="adamw_hf") # adamw_apex_fused is faster but BUGGY
+parser.add_argument("--wandb_project", type=str, default='model_discovery')
+parser.add_argument("--wandb_entity", type=str, default='aristo')
+parser.add_argument("--seed", type=int, default=42)
+parser.add_argument("--ckpt_dir", type=str, default='')
+parser.add_argument("--data_dir", type=str, default='')
+parser.add_argument("--download_data_only", action='store_true')
+parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
+parser.add_argument("--PERF_PROF_MODE", type=bool, default=False) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
+
+# PATCH for the evolution
+parser.add_argument("--mode", type=str, default='') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
 
 
 def setup(args) -> None:
@@ -87,7 +114,7 @@ def before_train(args):
     util_logger.info(f'Setting up wandb...')
     global wandb_ids
     wandb_ids=U.load_json(
-        f"{args.ckpt_dir}/{args.evoname}/ve/{args.config}/{args.modelname}/wandb_ids.json"
+        f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/wandb_ids.json"
     )
     if args.resume and 'pretrain' in wandb_ids:
         wandb.init(resume="must", project=args.wandb_project, id=wandb_ids['pretrain'])
@@ -95,7 +122,7 @@ def before_train(args):
         wandb.init(
             project=args.wandb_project,
             entity=args.wandb_entity,
-            name=f"{args.modelname}_{args.config}"
+            name=f"{args.evoname}_{args.design_id}"
         )
     
 
@@ -135,7 +162,7 @@ def run_train(args) -> None:
         per_device_eval_batch_size = config.per_device_train_batch_size * 2,
         gradient_accumulation_steps=args.gradient_accumulation_steps,
         optim=args.optim,
-        output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.config}/{args.modelname}",
+        output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}",
         logging_steps=25,
         save_steps=args.save_steps,
         dataloader_num_workers=16,
@@ -159,10 +186,10 @@ def run_train(args) -> None:
     if args.PERF_PROF_MODE:
         exec_profiler(trainer)
     else:
-        exec_train(training_args, trainer)
+        exec_train(args,training_args, trainer)
 
 
-def exec_train(training_args, trainer):
+def exec_train(args,training_args, trainer):
     global wandb_ids
     wandb_ids['pretrain']=wandb.run.id
     U.save_json(wandb_ids,f"{training_args.output_dir}/wandb_ids.json")
@@ -199,7 +226,7 @@ def trace_handler(p):
     print('Profiler results (by CPU time):')
     print(p.key_averages().table(sort_by="self_cpu_time_total", row_limit=10))
     print('Exporting profiler results')
-    output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.config}/{args.modelname}"
+    output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
     p.export_chrome_trace(f"{output_dir}/profiler/trainer_trace_" + str(p.step_num) + ".json") # check chrome://tracing
 
 def exec_profiler(trainer):
@@ -223,7 +250,7 @@ def exec_profiler(trainer):
 
 def after_train(args):
     if args.PERF_PROF_MODE: return
-    output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.config}/{args.modelname}"
+    output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
     history,system_metrics=get_history(wandb.run.id)
     history.to_csv(f"{output_dir}/train_logs.csv")
     system_metrics.to_csv(f"{output_dir}/system_metrics.csv")
@@ -231,8 +258,8 @@ def after_train(args):
     wandb.finish()
 
 def train(args):
-    if (not args.PERF_PROF_MODE) and args.resume and U.pexists(f"{args.ckpt_dir}/{args.evoname}/ve/{args.config}/{args.modelname}/pretrained"):
-        util_logger.info(f"Model {args.config}/{args.modelname} is already pretrained")
+    if (not args.PERF_PROF_MODE) and args.resume and U.pexists(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/pretrained"):
+        util_logger.info(f"Model {args.design_id} is already pretrained")
         return
     start = time.perf_counter()
     before_train(args)
@@ -252,19 +279,19 @@ def get_eval_results(output_dir):
         return None
 
 def run_eval(args):
-    if args.resume and get_eval_results(f"{args.ckpt_dir}/{args.evoname}/ve/{args.config}/{args.modelname}"):
-        print(f"Model {args.config}/{args.modelname} is already evaluated")
+    if args.resume and get_eval_results(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"):
+        print(f"Model {args.design_id} is already evaluated")
         return
     print("Evaluation Start")
     cfg=eval(f"{args.config}()")
     sys.argv = [
         "",
         "--model", "modis",
-        "--model_args", f"pretrained={args.evoname}/{args.config}/{args.modelname},ckpt_dir={args.ckpt_dir},gab_name={args.gab_name}",
+        "--model_args", f"pretrained={args.evoname}/{args.config}/{args.design_id},ckpt_dir={args.ckpt_dir},gab_name={args.gab_name}",
         "--tasks", ",".join(cfg.eval_tasks), 
         # "--device", "cuda",
         "--batch_size", f"{cfg.eval_batch_size}",
-        "--output_path", f"{args.ckpt_dir}/{args.evoname}/ve/{args.config}/{args.modelname}/eval_results",
+        "--output_path", f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/eval_results",
         "--cache_requests", "true",
         # "--wandb_args", "project=modis",
     ]
@@ -307,7 +334,7 @@ def report(args) -> dict:
     :param args: 
         The global training configuration. 
     """
-    outdir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.config}/{args.modelname}"
+    outdir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
     if args.resume and U.pexists(f"{outdir}/report.json"):
         util_logger.info(f"Report already exists at {outdir}/report.json")
         return
@@ -354,26 +381,9 @@ def main(args):
     
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--evoname", type=str, default="test") # the name of the whole evolution
-    parser.add_argument("--modelname", type=str, default="test") # should be named after the agent, it should be the same as gab name
-    parser.add_argument("--config", type=str, default="GAMConfig_debug")
-    parser.add_argument("--resume", type=bool, default=True) # whether resume from the latest checkpoint if there is one, or fully retrain
-    parser.add_argument("--n_gpus", type=int, default=torch.cuda.device_count())
-    parser.add_argument("--n_nodes", type=int, default=1)
-    parser.add_argument("--save_steps", type=int, default=50)
-    parser.add_argument("--gradient_accumulation_steps", type=int, default=1)
-    parser.add_argument("--optim", type=str, default="adamw_hf") # adamw_apex_fused is faster but BUGGY
-    parser.add_argument("--wandb_project", type=str, default='model_discovery')
-    parser.add_argument("--wandb_entity", type=str, default='aristo')
-    parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--ckpt_dir", type=str, default='')
-    parser.add_argument("--data_dir", type=str, default='')
-    parser.add_argument("--download_data_only", action='store_true')
-    parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
-    parser.add_argument("--PERF_PROF_MODE", type=bool, default=False) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
-    
     args = parser.parse_args()
     
+    args.resume = False
+
     main(args)
 

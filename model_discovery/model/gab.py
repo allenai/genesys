@@ -1,9 +1,10 @@
+
 # gab.py
 
 import torch
 import torch.nn as nn
-from .block_registry import BlockRegister
 
+from .block_registry import BlockRegister
 
 __all__ = [
     "GAB",
@@ -14,69 +15,77 @@ __all__ = [
     config={}
 )
 class GAB(nn.Module):
-    ''' Generalized Autoregressive Block
+    """Generalized Autoregressive Block
         Input:        X: (batch, seqlen, embed_dim)
         Output:       Y: (batch, seqlen, embed_dim)
         Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
-    '''
-    def __init__(self, embed_dim: int, layer_idx: int, device=None, dtype=None, **kwargs):
+    """
+    def __init__(self,embed_dim: int,layer_idx: int,device=None,dtype=None,**kwargs):
         # argv: list of hyperparameters
-        factory_kwargs = {"device": device, "dtype": dtype}  # remember to pass it to nn layers
+        factory_kwargs = {"device": device, "dtype": dtype} # remember to pass it to nn layers
         super().__init__()
-        
         self.embed_dim = embed_dim
-        self.num_groups = 4  # Grouped convolutions
-        self.layer_idx = layer_idx
-
-        # Causal convolution
-        self.causal_conv1 = nn.Conv1d(embed_dim, embed_dim, kernel_size=3, padding=2, groups=self.num_groups, **factory_kwargs)
-        self.causal_conv2 = nn.Conv1d(embed_dim, embed_dim, kernel_size=3, padding=2, groups=self.num_groups, **factory_kwargs)
-
-        self.norm1 = nn.LayerNorm(embed_dim, **factory_kwargs)
-        self.norm2 = nn.LayerNorm(embed_dim, **factory_kwargs)
-        self.ffn = nn.Sequential(
-            nn.Linear(embed_dim, 4 * embed_dim, **factory_kwargs), 
-            nn.ReLU(), 
-            nn.Linear(4 * embed_dim, embed_dim, **factory_kwargs)
-        )
+        self.layer_idx = layer_idx 
         
-    def _forward(self, X, **kwargs):
-        ''' Forward pass of the model '''
+        # Define different types of blocks based on layer_idx
+        if layer_idx % 3 == 0:
+            self.block = nn.Sequential(
+                nn.Linear(embed_dim, embed_dim * 4, **factory_kwargs),
+                nn.ReLU(),
+                nn.Linear(embed_dim * 4, embed_dim, **factory_kwargs)
+            )
+        elif layer_idx % 3 == 1:
+            self.block = nn.Sequential(
+                nn.Conv1d(embed_dim, embed_dim * 2, kernel_size=3, padding=1, **factory_kwargs),
+                nn.ReLU(),
+                nn.Conv1d(embed_dim * 2, embed_dim, kernel_size=3, padding=1, **factory_kwargs)
+            )
+        else:
+            self.block = nn.Sequential(
+                nn.Linear(embed_dim, embed_dim * 2, **factory_kwargs),
+                nn.GELU(),
+                nn.Linear(embed_dim * 2, embed_dim, **factory_kwargs)
+            )
+
+    def _forward(self,X,**kwargs): # type hints are optional but recommended
+        """Forward pass of the model"""
         assert X.shape[-1] == self.embed_dim
-
-        X = X.transpose(1, 2)  # Transpose to (batch, embed_dim, seqlen) for Conv1d
         
-        # Causal convolution with slicing to maintain sequence length
-        X = self.causal_conv1(X)[:, :, :-2]
-        X = X.transpose(1, 2)  # Transpose back to (batch, seqlen, embed_dim)
-        X = self.norm1(X)
-        X = torch.relu(X)
-
-        X = X.transpose(1, 2)  # Again transpose for the second convolution
-        X = self.causal_conv2(X)[:, :, :-2]
-        X = X.transpose(1, 2)
-        X = self.norm2(X)
-        X = torch.relu(X)
+        if self.layer_idx % 3 == 1:
+            X = X.transpose(1, 2)  # For Conv1d, change shape to (batch, embed_dim, seqlen)
+            Y = self.block(X)
+            Y = Y.transpose(1, 2)  # Change back to (batch, seqlen, embed_dim)
+        else:
+            Y = self.block(X)
         
-        Y = self.ffn(X)
         return Y
-    
-    def forward(self, X, **kwargs):
-        ''' Forward pass of the model '''
-        Y = self._forward(X, **kwargs)
+     
+    def forward(self,X,**kwargs):
+        """Forward pass of the model"""
+        Y=self._forward(X,**kwargs)
         assert Y.shape[-1] == self.embed_dim
         return Y
     
-
-def gab_config() -> dict:
-    ''' Returns a dictionary of hyperparameters for constructing a GAB layer
+def gab_config()->dict:
+    """Returns a dictionary of hyperparameters for constructing a GAB layer
         embed_dim, layer_idx, device, dtype should not be included in the dictionary which will be provided by the model
-    '''
+    """
     return {
-        # No additional hyperparameters for now.
+        "param_magnitude": 10000000.0,
+        "context_length": 512,
+        "training_data": ['babylm', 'tinystories'],
+        "eval_tasks": ['lambada_openai', 'hellaswag', 'piqa', 'arc_easy', 'arc_challenge', 'winogrande', 'blimp_filtered', 'blimp_supplement'],
+        "vocab_size": 32000,
+        "training_weight": None,
+        "param_threshold": 0.2,
+        "tokenizer": 'meta-llama/Llama-2-7b-hf',
+        "training_token_multiplier": 20,
+        "rms_norm": False,
+        "residual_in_fp32": True,
+        "fused_add_norm": False,
+        "pad_vocab_size_multiple": 8,
+        "tie_embeddings": True,
+        "per_device_train_batch_size": 256,
+        "eval_batch_size": 512,
+        "learning_rate": 0.0001
     }
-
-
-# GAB: {Input -> [C1 -> LN1 -> ReLU1 -> X1]
-#            -> [X1 -> C2 -> LN2 -> ReLU2 -> X2]
-#            -> [X2 + X1] -> FFN(F1 -> ReLU -> F2) -> Output}
