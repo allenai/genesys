@@ -42,6 +42,7 @@ class GAB(nn.Module):
         return Y
     # ------------------------------------------ #
     
+    
 def gab_config()->dict: # THE ARGUMENTS MUST MATCH THE ADDITIONAL ARGUMENTS YOU DEFINE IN GAB CLASS #
     """Returns a dictionary of hyperparameters for constructing a GAB layer
         embed_dim, device, dtype should not be included in the dictionary which will be provided by the model

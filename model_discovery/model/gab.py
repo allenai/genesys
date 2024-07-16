@@ -4,10 +4,12 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+
 # YOU CAN IMPORT MORE MODULES HERE #
 from torch.nn import Parameter
 
 # YOU CAN DEFINE MORE CLASSES OR FUNCTIONS HERE #
+
 class CausalGatedAttention(nn.Module):
     def __init__(self, embed_dim, num_heads, dropout=0.1, device=None, dtype=None):
         super().__init__()
@@ -33,6 +35,7 @@ class CausalGatedAttention(nn.Module):
         attn_output = (attn_weights @ v).transpose(1, 2).reshape(B, N, C)
         attn_output = self.out_proj(attn_output)
         return attn_output
+
 
 class GAB(nn.Module):
     """Generalized Autoregressive Block
@@ -77,3 +80,13 @@ def gab_config() -> dict:
         "mlp_ratio": 4.0,
         "dropout": 0.1
     }
+
+
+
+# Perform registration after defining gab_config
+from .block_registry import BlockRegister
+
+BlockRegister(
+    name="default",
+    config=gab_config()
+)(GAB)

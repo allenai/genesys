@@ -292,12 +292,7 @@ class EvolutionSystem(exec_utils.System):
 
         # modify the code to fit the block registry
         # TODO: change the registry name to acronyms
-        code=code.split('\n')
-        for idx, line in enumerate(code):
-            if 'class GAB(nn.Module):' in line:
-                break
-        code[idx]='from .block_registry import BlockRegister\n\n__all__ = [\n    "GAB",\n]\n\n@BlockRegister(\n    name="default",\n    config={}\n)\nclass GAB(nn.Module):'
-        code='\n'.join(code)
+        code+='\n\n\nfrom .block_registry import BlockRegister\n\nBlockRegister(\n    name="default",\n    config=gab_config()\n)(GAB)'
 
         artifact={
             'title':title,
