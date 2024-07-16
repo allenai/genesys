@@ -228,11 +228,12 @@ def trace_handler(p):
     print(p.key_averages().table(sort_by="self_cpu_time_total", row_limit=10))
     print('Exporting profiler results')
     output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
+    U.mkdir(f"{output_dir}/profiler")
     p.export_chrome_trace(f"{output_dir}/profiler/trainer_trace_" + str(p.step_num) + ".json") # check chrome://tracing
 
 def exec_profiler(trainer):
     local_rank = int(os.getenv("LOCAL_RANK", "0"))
-    if local_rank != -1: # CHANGE IT TO 0 TO ENABLE PROFILING or -1 to just test running
+    if local_rank != 0: # CHANGE IT TO 0 TO ENABLE PROFILING or -1 to just test running
         trainer.train()
     else:
         start = time.perf_counter()
@@ -299,6 +300,7 @@ def run_eval(args):
     notebook_launcher(cli_evaluate, num_processes=args.n_gpus)
     
 def evalu(args):
+    if args.PERF_PROF_MODE: return
     start = time.perf_counter()
     run_eval(args)
     util_logger.info(f"Evaluation time: {(time.perf_counter() - start):.1f} s")
@@ -335,6 +337,7 @@ def report(args) -> dict:
     :param args: 
         The global training configuration. 
     """
+    if args.PERF_PROF_MODE: return
     outdir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
     if args.resume and U.pexists(f"{outdir}/report.json"):
         util_logger.info(f"Report already exists at {outdir}/report.json")
@@ -385,6 +388,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     args.resume = False
+    args.PERF_PROF_MODE = True
 
     main(args)
 
