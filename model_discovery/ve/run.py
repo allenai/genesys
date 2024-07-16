@@ -25,7 +25,7 @@ from argparse import Namespace
 
 from .data_loader import load_datasets
 from .modis_trainer import ModisTrainer
-from ..configs.gam.config_test import ( # USE config_test.py for testing, because we only change num steps for faster training
+from ..configs.gam.config import ( 
     GAMConfig,
     GAMConfig_10M,
     GAMConfig_35M,

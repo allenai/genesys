@@ -1,4 +1,3 @@
-
 # gab.py
 
 import torch
@@ -71,7 +70,7 @@ def gab_config()->dict:
         embed_dim, layer_idx, device, dtype should not be included in the dictionary which will be provided by the model
     """
     return {
-        "param_magnitude": 10000000.0,
+        "param_magnitude": 35000000.0,
         "context_length": 512,
         "training_data": ['babylm', 'tinystories'],
         "eval_tasks": ['lambada_openai', 'hellaswag', 'piqa', 'arc_easy', 'arc_challenge', 'winogrande', 'blimp_filtered', 'blimp_supplement'],
@@ -85,7 +84,7 @@ def gab_config()->dict:
         "fused_add_norm": False,
         "pad_vocab_size_multiple": 8,
         "tie_embeddings": True,
-        "per_device_train_batch_size": 256,
-        "eval_batch_size": 512,
+        "per_device_train_batch_size": 128,
+        "eval_batch_size": 256,
         "learning_rate": 0.0001
     }

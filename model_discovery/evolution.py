@@ -11,6 +11,10 @@ import time
 import tempfile
 from dataclasses import dataclass, field, asdict
 import networkx as nx
+import pandas as pd
+import numpy as np
+from io import StringIO
+import random
 
 from types import ModuleType
 from typing import (
@@ -52,6 +56,7 @@ class DesignArtifact:
     scale: str
     instruct: str
     seed_ids: List[str] = field(default_factory=list)
+    # report: Dict = None
 
     def to_dict(self) -> Dict:
         return asdict(self)
@@ -105,11 +110,36 @@ class PhylogeneticTree:
         for seed_id, design_id in edges_to_add:
             self.G.add_edge(seed_id, design_id)
 
-    def __str__(self):
-        return nx.info(self.G)
 
-
-
+def report_reader(report):
+    metrics={}
+    training_record=report['training_record.csv']
+    system_metrics=report['system_metrics.csv']
+    trainer_state=report['trainer_state.json']
+    eval_results=report['eval_results.json']
+    
+    metrics['perf']={}
+    metrics['perf']['total_train_flos']=trainer_state['total_flos']
+    metrics['perf']['total_eval_time']=float(eval_results['total_evaluation_time_seconds'])
+    metrics['perf']['num_params']=eval_results['config']['model_num_parameters']
+    metrics['eval']={}
+    for task in eval_results['results']:
+        res=eval_results['results'][task]
+        task_alias=res['alias']
+        if 'perplexity,none' in res:
+            metrics['eval'][f'{task_alias}_ppl']=-np.log2(res['perplexity,none']) # the lower the better
+        elif 'acc_norm,none' in res: 
+            metrics['eval'][f'{task_alias}_acc_norm']=res['acc_norm,none']
+        elif 'acc,none' in res:
+            metrics['eval'][f'{task_alias}_acc']=res['acc,none']
+    
+    report={
+        'metrics':metrics,
+        'training_record':training_record,
+        'system_metrics':system_metrics,
+    }
+    # TODO: add an analysis of the report by the Selector agent
+    return report
 
 # @exec_utils.Registry("config","evolution")
 # class CustomParams(exec_utils.ModuleParams):
@@ -222,10 +252,10 @@ class EvolutionSystem(exec_utils.System):
 
     def evolve(self): # run a single evolution step unless no budget left
         scale_id=self.state['current_scale']
-        scale=self.state['scales'][scale_id]
-        if scale not in self.state['scales']: # no budget left
-            print(f"No budget left for scale {scale}")
+        if scale_id>=len(self.state['scales']): # no scale left
+            print("No scale left")
             return None
+        scale=self.state['scales'][scale_id]
         budget=self.state['budgets'][scale]
         if budget==0:
             self.state['current_scale']+=1
@@ -235,7 +265,8 @@ class EvolutionSystem(exec_utils.System):
             return self._evolve(scale_id)
 
     def _evolve(self,scale_id): # do evolve that produce one design
-        instruct,seed_ids=self.select() # use the seed_ids to record the phylogenetic tree
+        K=random.randint(1,2) # sample K designs
+        instruct,seed_ids=self.select(K) # use the seed_ids to record the phylogenetic tree
         artifact=self.sample(scale_id,instruct) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
         if artifact is None:
             print("No design sampled")
@@ -278,10 +309,50 @@ class EvolutionSystem(exec_utils.System):
         }
         return artifact
 
-    def select(self):
+    def make_artifact(self,design_id,report):
+        code=self.ptree.G.nodes[design_id]['data'].code
+        explain=self.ptree.G.nodes[design_id]['data'].explain
+        title=self.ptree.G.nodes[design_id]['data'].title
+        acronym=self.ptree.G.nodes[design_id]['data'].acronym
+        scale=self.ptree.G.nodes[design_id]['data'].scale
+        config:GAMConfig=eval(f'GAMConfig_{scale}()')
+        config_str=config.to_str()
+        artifact_obj=f'## Title: {title}\n## Acronym: {acronym}\n\n## Code:\n\n{code}\n\n## Justification:\n\n{explain}'
+        artifact_obj+=f'\\## Config:\n\n{config_str}\n\n## Report:\n\n{json.dumps(report,indent=4)}'
+        return artifact_obj
+
+    def select(self,K: int=1,selector_instruct=''): # K is the number of designs to sample, instruct is the instruction to the selector, select seeds or select populations
         """ Provide the instruction including seeds and instructs for the next design """
-        # TODO
-        return '',[]
+        assert K>0
+        alpha=0.1
+        r_scale=0.5
+        sample_metrics={}
+        reports={}
+        for node in self.ptree.G.nodes:
+            artifact=self.ptree.G.nodes[node]['data']
+            if U.pexists(U.pjoin(self.evo_dir,'ve',node,'report.json')):
+                report=U.load_json(U.pjoin(self.evo_dir,'ve',node,'report.json'))
+                report=report_reader(report)
+                reports[node]=report
+                # TODO: upgrade this thing
+                sample_metrics[node]=np.mean([v for k,v in report['metrics']['eval'].items() if 'acc' in k])
+                scale_id=self.state['scales'].index(artifact.scale)
+                sample_metrics[node]+=scale_id*r_scale
+
+        # TODO: upgrade this thing
+        K=min(K,len(sample_metrics))
+        if K==0: # no design to sample
+            return '',[]
+        prob=np.array([v for k,v in sample_metrics.items()])*(1-alpha)+np.random.rand(len(sample_metrics))*alpha
+        prob=prob/np.sum(prob)
+        topk=np.random.choice(list(sample_metrics.keys()),size=K,replace=False,p=prob)
+        if K==1: # Mutate
+            artifact_obj=self.make_artifact(topk[0],reports[topk[0]])
+            instruct=f'Please improve based on this design for the new design, think of how to overcome its weaknesses and absorb its advantage:\n\n{artifact_obj}'
+        else: # Cross-over
+            artifact_objs='\n\n\n'.join([self.make_artifact(design_id,reports[design_id]) for design_id in topk])
+            instruct=f'Please improve by combining the advantages and mitigating the disadvantages of these designs for the new design:\n\n{artifact_objs}'
+        return instruct,list(topk)
     
     def verify(self): # run a single verify that verify one unverified design
         designed=os.listdir(U.pjoin(self.evo_dir,'db'))
@@ -290,7 +361,9 @@ class EvolutionSystem(exec_utils.System):
             if U.load_json(report_dir)=={}:
                 for _ in range(3): # try 3 times
                     self._verify(design_id) # verify the design until it's done
-                    if U.load_json(report_dir)!={}: return design_id
+                    report=U.load_json(report_dir)
+                    if report!={}: 
+                        return design_id
                 return 'FAILED'
         return None
         
@@ -341,29 +414,28 @@ def BuildEvolution(
 
 if __name__ == '__main__':
     strparams=[
-        "evoname=evolution_test",
+        # "evoname=evolution_test1",
         # "scales=10M:64,35M:16,70M:4,130M:1",
         # "scales=10M:16,35M:4,70M:1",
         "scales=10M:4,35M:1",
     ]
 
-    # evoname=strparams[0].split('=')[1]
-    # ckpt_dir=os.environ.get("CKPT_DIR")
-    # evo_dir=U.pjoin(ckpt_dir,evoname)
-    # os.removedirs(evo_dir) if os.path.exists(evo_dir) else None
+    evoname=ve_parser.parse_args().evoname
+    strparams.append(f"evoname={evoname}")
 
     evolution_system = BuildEvolution(
         strparams=';'.join(strparams),
         cache_type='diskcache',
     )
-    # print(evolution_system)
-
-    # evolution_system('')
-
-    # evolution_system.sample(0,'')
-    # evolution_system.run()
 
     mode=ve_parser.parse_args().mode
     evolution_system._run(mode)
+
+
+    # instruct,seeds=evolution_system.select(2)
+    # print(instruct)
+    # print(seeds)
+
     
+       
 
