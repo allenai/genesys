@@ -5,6 +5,7 @@ from transformers import PreTrainedModel
 
 import torch
 from torch import nn, Tensor
+from mamba_ssm.modules.mlp import GatedMLP
 
 from .model.configs.gam_config import GAMConfig
 from .model.gab import GAB, gab_config
@@ -12,13 +13,15 @@ from .model.gab import GAB, gab_config
 
 class Block(nn.Module):
     def __init__(
-        self, d_model, block_config, norm_epsilon=1e-5, layer_idx=None, device=None, dtype=None,
+        self, d_model, block_config, norm_epsilon=1e-5, device=None, dtype=None,
     ):
         factory_kwargs = {"device": device, "dtype": dtype}
         super().__init__()
         self.norm = nn.LayerNorm(d_model, eps=norm_epsilon,**factory_kwargs)
-        self.gab = GAB(embed_dim=d_model, layer_idx=layer_idx, device=device, dtype=dtype, **block_config)
-        self.layer_idx = layer_idx
+        self.gab = GAB(embed_dim=d_model, device=device, dtype=dtype, **block_config)
+        self.norm2 = nn.LayerNorm(d_model, eps=norm_epsilon,**factory_kwargs)
+        self.mlp = GatedMLP(in_features=d_model, out_features=d_model, hidden_features=d_model * 4, **factory_kwargs)
+
 
     def forward(
         self, hidden_states: Tensor, residual: Optional[Tensor] = None, inference_params=None, **gab_kwargs
@@ -37,7 +40,7 @@ class GAM(nn.Module):
     def __init__(
         self,
         d_model: int,
-        n_layer: int,
+        n_block: int,
         vocab_size: int = 50277,
         norm_epsilon: float = 1e-5,
         device = None,
@@ -49,17 +52,16 @@ class GAM(nn.Module):
         self.embedding = nn.Embedding(vocab_size, d_model, **self.factory_kwargs)
 
         block_config = gab_config()
-        self.n_layer = n_layer
-        self.layers = nn.ModuleList(
+        self.n_block = n_block
+        self.blocks = nn.ModuleList(
             [
                 Block(
                     d_model,
                     block_config,
                     norm_epsilon=norm_epsilon,
-                    layer_idx=i,
                     **self.factory_kwargs,
                 )
-                for i in range(n_layer)
+                for i in range(n_block)
             ]
         )
 
@@ -70,8 +72,8 @@ class GAM(nn.Module):
     def forward(self, input_ids, inference_params=None, **mixer_kwargs):
         hidden_states = self.embedding(input_ids)
         residual = None
-        for layer in self.layers:
-            hidden_states, residual = layer(
+        for block in self.blocks:
+            hidden_states, residual = block(
                 hidden_states, residual, inference_params=inference_params
             )
         residual = (hidden_states + residual) if residual is not None else hidden_states
@@ -91,14 +93,14 @@ class ModisLMHeadModel(PreTrainedModel):
     ) -> None:
         self.config = config
         self.d_model = config.d_model
-        n_layer = config.n_layer
+        n_block = config.n_block
         vocab_size = config.vocab_size
         factory_kwargs = {"device": device, "dtype": dtype}
 
         super().__init__(config)
         self.backbone = GAM(
             d_model=self.d_model,
-            n_layer=n_layer,
+            n_block=n_block,
             vocab_size=vocab_size,
             **factory_kwargs,
         )

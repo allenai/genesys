@@ -197,7 +197,7 @@ class EvolutionSystem(exec_utils.System):
         print(f"Checkpoint directory: {self.evo_dir}")
 
         self.rnd_agent = BuildSystem(
-            debug_steps=True,
+            debug_steps=True, # True for debugging, but very long
             cache_type="diskcache", #<-- agent caching method 
             temperature=0.1,
             jupyter=False,
@@ -257,8 +257,8 @@ class EvolutionSystem(exec_utils.System):
             return None
         scale=self.state['scales'][scale_id]
         budget=self.state['budgets'][scale]
-        if budget==0:
-            self.state['current_scale']+=1
+        if budget==0: 
+            self.state['current_scale']+=1 # Will influence the sampling distribution
             self.save_state()
             self.evolve()
         else:
@@ -323,10 +323,12 @@ class EvolutionSystem(exec_utils.System):
 
     def select(self,K: int=1,selector_instruct=''): # K is the number of designs to sample, instruct is the instruction to the selector, select seeds or select populations
         """ Provide the instruction including seeds and instructs for the next design """
-        assert K>0
+        K=min(K,len(sample_metrics))
+        if K==0: # no design to sample
+            return '',[]
         alpha=0.1
-        r_scale=0.5
         sample_metrics={}
+        sample_scale={}
         reports={}
         for node in self.ptree.G.nodes:
             artifact=self.ptree.G.nodes[node]['data']
@@ -336,14 +338,12 @@ class EvolutionSystem(exec_utils.System):
                 reports[node]=report
                 # TODO: upgrade this thing
                 sample_metrics[node]=np.mean([v for k,v in report['metrics']['eval'].items() if 'acc' in k])
-                scale_id=self.state['scales'].index(artifact.scale)
-                sample_metrics[node]+=scale_id*r_scale
+                scale_id=self.state['scales'].index(artifact.scale)+1
+                sample_scale[node]=scale_id
 
         # TODO: upgrade this thing
-        K=min(K,len(sample_metrics))
-        if K==0: # no design to sample
-            return '',[]
         prob=np.array([v for k,v in sample_metrics.items()])*(1-alpha)+np.random.rand(len(sample_metrics))*alpha
+        prob=prob*np.array([v for k,v in sample_scale.items()]) # prefer the higher scale
         prob=prob/np.sum(prob)
         topk=np.random.choice(list(sample_metrics.keys()),size=K,replace=False,p=prob)
         if K==1: # Mutate
@@ -429,7 +429,13 @@ if __name__ == '__main__':
     )
 
     mode=ve_parser.parse_args().mode
-    evolution_system._run(mode)
+    # evolution_system._run(mode)
+
+    for i in range(10):
+        print('_'*50,f'Iteration {i}','_'*50)
+        artifact=evolution_system.sample(0,f'{random.random()}')
+        # for i in artifact:
+        #     print(f'{i}:',artifact[i])
 
 
     # instruct,seeds=evolution_system.select(2)

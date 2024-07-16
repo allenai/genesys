@@ -22,14 +22,13 @@ class GAB(nn.Module):
         Output:       Y: (batch, seqlen, embed_dim)
         Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
     '''
-    def __init__(self,embed_dim: int,layer_idx: int,device=None,dtype=None,**kwargs):
+    def __init__(self,embed_dim: int,device=None,dtype=None,**kwargs):
         # argv: list of hyperparameters
         factory_kwargs = {"device": device, "dtype": dtype} # remember to pass it to nn layers
         super().__init__()
         self.embed_dim = embed_dim
-        self.layer_idx = layer_idx 
         # COMPLETING THE CODE HERE #
-        self.fn = Mamba2(d_model=embed_dim,layer_idx=layer_idx,**factory_kwargs)
+        self.fn = Mamba2(d_model=embed_dim,**factory_kwargs)
 
 
     def _forward(self,X,**kwargs): # type hints are optional but recommended
@@ -47,7 +46,7 @@ class GAB(nn.Module):
     
 def gab_config()->dict:
     ''' Returns a dictionary of hyperparameters for constructing a GAB layer
-        embed_dim, layer_idx, device, dtype should not be included in the dictionary which will be provided by the model
+        embed_dim, device, dtype should not be included in the dictionary which will be provided by the model
     '''
     # COMPLETING THE CODE HERE #
 

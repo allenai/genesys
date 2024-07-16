@@ -52,12 +52,7 @@ class Checker(exec_utils.BaseTool):
         """
         self.report = ''
         
-    def is_causal(
-            self,
-            block,
-            D: int,
-            seq_len: int = 100
-        ) -> bool:
+    def is_causal(self, block, D: int, seq_len: int = 100) -> bool:
         """Checks if a design is causal
 
         :param block: 
@@ -68,27 +63,34 @@ class Checker(exec_utils.BaseTool):
             The block target sequence length.
         """
         B: int = 2
-        X = torch.arange(seq_len*B*D).float().reshape(B, seq_len, D)
+        X = torch.arange(seq_len * B * D).float().reshape(B, seq_len, D)
         if torch.cuda.is_available():
             X = X.cuda()
             
+        block.eval()  # Set block to evaluation mode
         Y = block(X)
 
-        self.rprint('Checking causality... It checks the causality by changing the future step X[t+delta] of X[t] and see if Y[t] changes.') 
-        bar = tqdm(range(seq_len), desc='Causality test',colour='green')
+        self.rprint('Checking causality... It checks the causality by changing the future step X[t+delta] of X[t] and see if Y[t] changes.')
+        bar = tqdm(range(seq_len), desc='Causality test', colour='green')
         for t in bar:
-            for delta in range(1, seq_len-t):
+            for delta in range(1, seq_len - t):
                 X_mod = X.clone()
-                X_mod[:, t+delta, :] += torch.rand(B, D).cuda() if torch.cuda.is_available() else torch.rand(B, D)
+                if torch.cuda.is_available():
+                    torch.manual_seed(0)  # Set random seed for reproducibility
+                    X_mod[:, t + delta, :] += torch.rand(B, D).cuda()
+                else:
+                    torch.manual_seed(0)
+                    X_mod[:, t + delta, :] += torch.rand(B, D)
+                    
                 Y_mod = block(X_mod)
                 # If Y[t] changes when a future X[t + delta] changes, then it is not causal
-                if not torch.allclose(Y[:, t,:], Y_mod[:, t,:]):
+                if not torch.allclose(Y[:, t, :], Y_mod[:, t, :]):
                     self.rprint(f'Failed at t={t}, delta={delta}')
                     return False
-                
+
         self.rprint('Causality test passed')
         return True
-    
+
     def check_differentiable(self,model,vocab_size: int) -> bool:
         """Check if the mode is differentiable 
 
@@ -170,19 +172,19 @@ class Checker(exec_utils.BaseTool):
         
         ### check model size 
         gam = glm.backbone
-        gab=gam.layers[0].gab
+        gab=gam.blocks[0].gab
         size=sum(p.numel() for p in gam.parameters())
-        layersize=sum(p.numel() for p in gam.layers.parameters())
-        perlayer=layersize//gam.n_layer
+        blocksize=sum(p.numel() for p in gam.blocks.parameters())
+        perblock=blocksize//gam.n_block
         embsize=sum(p.numel() for p in gam.embedding.parameters())
         self.rprint(
-            f'Model initialization succeed\nNumber of parameters: {size}\nLayers: {layersize}, {perlayer} per layer\nEmbedding: {embsize}'
+            f'Model initialization succeed\nNumber of parameters: {size}\Blocks: {blocksize}, {perblock} per block\nEmbedding: {embsize}'
         )
 
         try:
             ### TURNED OFF, the model is not good at this. 
             # assert self.check_magnitude(
-            #     layersize,
+            #     blocksize,
             #     config.param_magnitude,
             #     config.param_threshold
             # )
@@ -200,3 +202,4 @@ class Checker(exec_utils.BaseTool):
     
     def __call__(self,path: str) -> bool:
         return self.check(path)
+

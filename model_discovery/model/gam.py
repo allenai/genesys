@@ -20,6 +20,8 @@ from model_discovery.configs.gam.config import GAMConfig
 from model_discovery.model.utils.generation import decode
 from model_discovery.model.utils.hf import load_config_hf, load_state_dict_hf
 # from model_discovery.model.utils.generation import GenerationMixin
+from mamba_ssm.modules.mlp import GatedMLP
+
 from model_discovery.model.block_registry import BlockRegister
 
 try: 
@@ -38,7 +40,7 @@ from model_discovery import utils as U
 
 class Block(nn.Module):
     def __init__(
-        self, dim, gab, norm_cls=nn.LayerNorm, fused_add_norm=False, residual_in_fp32=False
+        self, dim, gab, mlp_cls, norm_cls=nn.LayerNorm, fused_add_norm=False, residual_in_fp32=False
     ):
         """
         Simple block wrapping a gab constructor with LayerNorm/RMSNorm and residual connection"
@@ -57,6 +59,8 @@ class Block(nn.Module):
         self.fused_add_norm = fused_add_norm
         self.norm = norm_cls(dim)
         self.gab = gab()
+        self.norm2 = norm_cls(dim)
+        self.mlp = mlp_cls(dim)
         if self.fused_add_norm:
             assert RMSNorm is not None, "RMSNorm import fails"
             assert isinstance(
@@ -89,6 +93,24 @@ class Block(nn.Module):
                 is_rms_norm=isinstance(self.norm, RMSNorm)
             )
         hidden_states = self.gab(hidden_states, inference_params=inference_params, **gab_kwargs)
+        
+        if not self.fused_add_norm:
+            residual = hidden_states + residual
+            residual = self.norm2(residual.to(dtype=self.norm2.weight.dtype))
+            if self.residual_in_fp32:
+                residual = residual.to(torch.float32)
+        else:
+            hidden_states, residual = layer_norm_fn(
+                hidden_states,
+                self.norm2.weight,
+                self.norm2.bias,
+                residual=residual,
+                prenorm=True,
+                residual_in_fp32=self.residual_in_fp32,
+                eps=self.norm2.eps,
+                is_rms_norm=isinstance(self.norm2, RMSNorm)
+            )
+        hidden_states = self.mlp(hidden_states)
         return hidden_states, residual
 
     def allocate_inference_cache(self, batch_size, max_seqlen, dtype=None, **kwargs):
@@ -103,7 +125,6 @@ def create_block(
     rms_norm=False,
     residual_in_fp32=False,
     fused_add_norm=False, # This is for performance reason: we can fuse add + layer_norm
-    layer_idx=None,
     device=None,
     dtype=None,
 ):
@@ -111,7 +132,6 @@ def create_block(
     constructor = partial(
         block_implementation,
         embed_dim=d_model,
-        layer_idx=layer_idx,
         device=device,
         dtype=dtype,
         **block_config
@@ -119,21 +139,24 @@ def create_block(
     norm_cls = partial(
         nn.LayerNorm if not rms_norm else RMSNorm, eps=norm_epsilon, **factory_kwargs
     )
+    mlp_cls = partial(
+        GatedMLP, hidden_features=d_model*4, out_features=d_model, **factory_kwargs
+    )
     block = Block(
         d_model,
         constructor,
+        mlp_cls,
         norm_cls=norm_cls,
         fused_add_norm=fused_add_norm,
         residual_in_fp32=residual_in_fp32,
     )
-    block.layer_idx = layer_idx
     return block
 
 
 # https://github.com/huggingface/transformers/blob/c28d04e9e252a1a099944e325685f14d242ecdcd/src/transformers/models/gpt2/modeling_gpt2.py#L454
 def _init_weights(
     module,
-    n_layer,
+    n_block,
     initializer_range=0.02,  # Now only used for embedding layer.
     rescale_prenorm_residual=True,
 ):
@@ -154,12 +177,12 @@ def _init_weights(
         for name, p in module.named_parameters():
             if name in ["out_proj.weight", "fc2.weight"]:
                 # Special Scaled Initialization --> There are 2 Layer Norms per Transformer Block
-                # Following Pytorch init, except scale by 1/sqrt(2 * n_layer)
+                # Following Pytorch init, except scale by 1/sqrt(2 * n_block)
                 # We need to reinit p since this code could be called multiple times
                 # Having just p *= scale would repeatedly scale it down
                 nn.init.kaiming_uniform_(p, a=math.sqrt(5))
                 with torch.no_grad():
-                    p /= math.sqrt(n_layer)
+                    p /= math.sqrt(n_block)
 
 
 class GAM(nn.Module):
@@ -170,7 +193,7 @@ class GAM(nn.Module):
     def __init__(
         self,
         d_model: int,
-        n_layer: int,
+        n_block: int,
         block_implementation,
         vocab_size: int = 50277,
         norm_epsilon: float = 1e-5,
@@ -198,11 +221,8 @@ class GAM(nn.Module):
             if layer_norm_fn is None or rms_norm_fn is None:
                 raise ImportError("Failed to import Triton LayerNorm / RMSNorm kernels")
 
-        # if n_layer is None:
-        #     assert 'n_layer' in block_config, "n_layer must be provided if not in block_config"
-        #     n_layer = block_config['n_layer']
-        self.n_layer = n_layer
-        self.layers = nn.ModuleList(
+        self.n_block = n_block
+        self.blocks = nn.ModuleList(
             [
                 create_block(
                     block_implementation,
@@ -212,10 +232,9 @@ class GAM(nn.Module):
                     rms_norm=rms_norm,
                     residual_in_fp32=residual_in_fp32,
                     fused_add_norm=fused_add_norm,
-                    layer_idx=i,
                     **self.factory_kwargs,
                 )
-                for i in range(n_layer)
+                for i in range(n_block)
             ]
         )
 
@@ -226,22 +245,22 @@ class GAM(nn.Module):
         self.apply(
             partial(
                 _init_weights,
-                n_layer=n_layer,
+                n_block=n_block,
                 **(initializer_cfg if initializer_cfg is not None else {}),
             )
         )
 
     def allocate_inference_cache(self, batch_size, max_seqlen, dtype=None, **kwargs):
         return {
-            i: layer.allocate_inference_cache(batch_size, max_seqlen, dtype=dtype, **kwargs)
-            for i, layer in enumerate(self.layers)
+            i: block.allocate_inference_cache(batch_size, max_seqlen, dtype=dtype, **kwargs)
+            for i, block in enumerate(self.blocks)
         }
 
     def forward(self, input_ids, inference_params=None, **kwargs):
         hidden_states = self.embedding(input_ids)
         residual = None
-        for layer in self.layers:
-            hidden_states, residual = layer(
+        for block in self.blocks:
+            hidden_states, residual = block(
                 hidden_states, residual, inference_params=inference_params
             )
         if not self.fused_add_norm:
@@ -264,7 +283,7 @@ class GAM(nn.Module):
     def print_size(self,logger=print):
         print(f'Model size: {U.strmodelsize(self)}')
         print(f'Embedding parameters: {U.strmodelsize(self.embedding)}')
-        print(f'Non-embedding parameters: {U.strmodelsize(self.layers)}')
+        print(f'Non-embedding parameters: {U.strmodelsize(self.blocks)}')
 
 
 class ModisLMHeadModel(PreTrainedModel):
@@ -290,7 +309,7 @@ class ModisLMHeadModel(PreTrainedModel):
         """
         self.config = config
         self.d_model = config.d_model
-        n_layer = config.n_layer
+        n_block = config.n_block
         vocab_size = config.vocab_size
         rms_norm = config.rms_norm
         residual_in_fp32 = config.residual_in_fp32
@@ -303,7 +322,7 @@ class ModisLMHeadModel(PreTrainedModel):
             vocab_size += pad_vocab_size_multiple - (vocab_size % pad_vocab_size_multiple)
         self.backbone = GAM(
             d_model=self.d_model,
-            n_layer=n_layer,
+            n_block=n_block,
             block_implementation=block_implementation,
             block_config=block_config,
             vocab_size=vocab_size,
@@ -319,7 +338,7 @@ class ModisLMHeadModel(PreTrainedModel):
         self.apply(
             partial(
                 _init_weights,
-                n_layer=n_layer,
+                n_block=n_block,
                 **(initializer_cfg if initializer_cfg is not None else {}),
             )
         )

@@ -9,7 +9,7 @@ class GAMConfig(PretrainedConfig):
     '''Configurations for Generalized Autoregressive Models.'''
 
     d_model: int
-    n_layer: int
+    n_block: int
     param_magnitude: int
     context_length: int
     training_data: List[str]
@@ -53,7 +53,7 @@ class GAMConfig_10M(GAMConfig):
     '''Configurations for Generalized Autoregressive Model with 10M scale (non-embedding).'''
 
     d_model: int = 256
-    n_layer: int = 6
+    n_block: int = 3
     param_magnitude: int = 1e7
     context_length: int = 512
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
@@ -68,7 +68,7 @@ class GAMConfig_35M(GAMConfig):
     '''Configurations for Generalized Autoregressive Model with 10M scale (non-embedding).'''
 
     d_model: int = 512
-    n_layer: int = 8
+    n_block: int = 4
     param_magnitude: int = 3.5e7
     context_length: int = 512
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
@@ -83,7 +83,7 @@ class GAMConfig_70M(GAMConfig):
     '''Configurations for Generalized Autoregressive Model with 10M scale (non-embedding).'''
 
     d_model: int = 256
-    n_layer: int = 6
+    n_block: int = 6
     param_magnitude: int = 1e7
     context_length: int = 512
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
@@ -98,7 +98,7 @@ class GAMConfig_130M(GAMConfig):
     '''Configurations for Generalized Autoregressive Model with 10M scale (non-embedding).'''
 
     d_model: int = 256
-    n_layer: int = 6
+    n_block: int = 6
     param_magnitude: int = 1e7
     context_length: int = 512
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
@@ -131,7 +131,7 @@ class GAMConfig_debug(GAMConfig):
     '''Configurations for Generalized Autoregressive Model with 10M scale (non-embedding).'''
 
     d_model: int = 256
-    n_layer: int = 6
+    n_block: int = 3
     param_magnitude: int = 1e7
     context_length: int = 512
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
