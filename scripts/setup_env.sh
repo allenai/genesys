@@ -23,7 +23,7 @@ source ~/.bashrc
 
 # Installing the LATEST customized LM evaluation harness
 pip uninstall lm_eval # uninstall current installation first
-pip install git+https://github.com/chengjunyan1/lm-evaluation-harness.git
+pip install -r requirements_linux.txt
 
 # Uninstalling peft
 pip uninstall peft
