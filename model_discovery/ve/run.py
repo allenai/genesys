@@ -79,12 +79,12 @@ def setup(args) -> None:
     if not args.ckpt_dir:
         args.ckpt_dir=os.environ.get("CKPT_DIR")
     if not os.environ.get("HF_KEY"):
-        raise ValueError('Must set KH_KEY!')
+        raise ValueError('Must set HF_KEY')
     if not os.environ.get("WANDB_API_KEY"):
         raise ValueError('Must set WANDB_API_KEY')
     if not args.data_dir:
-        raise ValueError("Must set data_dir")
-    if not args.data_dir:
+        raise ValueError("Must set DATA_DIR")
+    if not args.ckpt_dir:
         raise ValueError('Must specify the checkpoint directory via `--ckpt_dir`')
 
     if not os.environ.get("DATA_DIR") or args.data_dir:
@@ -173,6 +173,7 @@ def run_train(args) -> None:
         save_total_limit=5,
         report_to="wandb" if not args.PERF_PROF_MODE else None,
     )
+    U.mkdir(training_args.output_dir)
 
     trainer = ModisTrainer(
         model=model,
