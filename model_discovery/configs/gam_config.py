@@ -26,6 +26,7 @@ class GAMConfig(PretrainedConfig):
     pad_vocab_size_multiple: int = 8
     tie_embeddings: bool = True
     use_template: bool = False
+    use_rope: bool = True
     per_device_batch_size: int = None # Will overwrite batch_tokens if set
 
     def __post_init__(self):

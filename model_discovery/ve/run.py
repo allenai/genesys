@@ -25,7 +25,7 @@ from argparse import Namespace
 
 from .data_loader import load_datasets
 from .modis_trainer import ModisTrainer
-from ..configs.gam.config import ( 
+from ..configs.gam_config import ( 
     GAMConfig,GAMConfig_14M,GAMConfig_31M,GAMConfig_70M,GAMConfig_125M,GAMConfig_350M,GAMConfig_760M,
     GAMConfig_1300M,GAMConfig_2700M,GAMConfig_6700M,GAMConfig_13B,GAMConfig_175B,GAMConfig_1T,GAMConfig_debug
 )

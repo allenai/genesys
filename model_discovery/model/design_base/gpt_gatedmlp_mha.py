@@ -29,7 +29,7 @@ class GAB(nn.Module):
         super().__init__()
         self.embed_dim = embed_dim
         # COMPLETING THE CODE HERE #
-        self.fn = MHA(embed_dim, n_heads, **factory_kwargs)
+        self.fn = MHA(embed_dim, n_heads, causal=True, **factory_kwargs)
 
 
     def _forward(self,X,**kwargs): # type hints are optional but recommended
