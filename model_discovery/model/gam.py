@@ -20,9 +20,9 @@ from model_discovery.configs.gam.config import GAMConfig
 from model_discovery.model.utils.generation import decode
 from model_discovery.model.utils.hf import load_config_hf, load_state_dict_hf
 # from model_discovery.model.utils.generation import GenerationMixin
-from mamba_ssm.modules.mlp import GatedMLP
+from .utils.layers import GatedMLP, MLP
 
-from model_discovery.model.block_registry import BlockRegister
+# from model_discovery.model.block_registry import BlockRegister
 
 try: 
     from model_discovery.model.ops.triton.layer_norm import (
@@ -36,6 +36,9 @@ except:
     rms_norm_fn   = None 
 
 from model_discovery import utils as U
+
+from ..model.gab import GAB, gab_config
+
 
 
 class Block(nn.Module):
@@ -124,7 +127,7 @@ class Block(nn.Module):
 
 
 def create_block(
-    block_implementation,
+    # block_implementation,
     d_model,
     block_config,
     norm_epsilon=1e-5,
@@ -137,7 +140,8 @@ def create_block(
 ):
     factory_kwargs = {"device": device, "dtype": dtype}
     constructor = partial(
-        block_implementation,
+        # block_implementation,
+        GAB,
         embed_dim=d_model,
         device=device,
         dtype=dtype,
@@ -147,7 +151,7 @@ def create_block(
         nn.LayerNorm if not rms_norm else RMSNorm, eps=norm_epsilon, **factory_kwargs
     )
     mlp_cls = partial(
-        GatedMLP, hidden_features=d_model*4, out_features=d_model, **factory_kwargs
+        MLP, hidden_features=d_model*4, out_features=d_model, **factory_kwargs
     ) if use_template else None # or use regular MLP
     block = Block(
         d_model,
@@ -177,7 +181,7 @@ def _init_weights(
     if rescale_prenorm_residual:
         # Reinitialize selected weights subject to the OpenAI GPT-2 Paper Scheme:
         #   > A modified initialization which accounts for the accumulation on the residual path with model depth. Scale
-        #   > the weights of residual layers at initialization by a factor of 1/√N where N is the # of residual layers.
+        #   > the weights of residual blocks at initialization by a factor of 1/√N where N is the # of residual blocks.
         #   >   -- GPT-2 :: https://openai.com/blog/better-language-models/
         #
         # Reference (Megatron-LM): https://github.com/NVIDIA/Megatron-LM/blob/main/megatron/model/gpt_model.py
@@ -201,7 +205,7 @@ class GAM(nn.Module):
         self,
         d_model: int,
         n_block: int,
-        block_implementation,
+        # block_implementation,
         vocab_size: int = 50277,
         norm_epsilon: float = 1e-5,
         rms_norm: bool = False,
@@ -211,7 +215,7 @@ class GAM(nn.Module):
         use_template = False,
         device = None,
         dtype = None,
-        block_config: dict = {},
+        # block_config: dict = {},
     ) -> None:
         self.factory_kwargs = {"device": device, "dtype": dtype}
         super().__init__()
@@ -228,12 +232,13 @@ class GAM(nn.Module):
         if self.fused_add_norm:
             if layer_norm_fn is None or rms_norm_fn is None:
                 raise ImportError("Failed to import Triton LayerNorm / RMSNorm kernels")
-
+        
+        block_config = gab_config()
         self.n_block = n_block
         self.blocks = nn.ModuleList(
             [
                 create_block(
-                    block_implementation,
+                    # block_implementation,
                     d_model,
                     block_config,
                     norm_epsilon=norm_epsilon,
@@ -292,11 +297,11 @@ class GAM(nn.Module):
     def print_size(self):
         print(f' - GAM params: {U.strmodelsize(self)}')
         print(f'   - Embedding: {U.strmodelsize(self.embedding)}')
-        print(f'   - Non-embedding: {U.strmodelsize(self.layers)}')
-        print(f'     - Per Block: {U.strmodelsize(self.layers[0])}')
-        print(f'       - GAB: {U.strmodelsize(self.layers[0].gab)}')
-        if self.layers[0].use_mlp:
-            print(f'       - MLP: {U.strmodelsize(self.layers[0].mlp)}')
+        print(f'   - Non-embedding: {U.strmodelsize(self.blocks)}')
+        print(f'     - Per Block: {U.strmodelsize(self.blocks[0])}')
+        print(f'       - GAB: {U.strmodelsize(self.blocks[0].gab)}')
+        if self.blocks[0].use_template:
+            print(f'       - MLP: {U.strmodelsize(self.blocks[0].mlp)}')
 
 
 
@@ -308,12 +313,11 @@ class ModisLMHeadModel(PreTrainedModel):
     def __init__(
         self,
         config: GAMConfig,
-        block_implementation,
+        # block_implementation,
         initializer_cfg=None,
-        use_template=False,
         device=None,
         dtype=None,
-        block_config = {},
+        # block_config = {},
     ) -> None:
         """Initializes LM model 
 
@@ -325,11 +329,8 @@ class ModisLMHeadModel(PreTrainedModel):
         """
         self.config = config
         self.d_model = config.d_model
-        n_block = config.n_block
+        n_block=config.n_block
         vocab_size = config.vocab_size
-        rms_norm = config.rms_norm
-        residual_in_fp32 = config.residual_in_fp32
-        fused_add_norm = config.fused_add_norm
         pad_vocab_size_multiple = config.pad_vocab_size_multiple
         factory_kwargs = {"device": device, "dtype": dtype}
 
@@ -339,14 +340,14 @@ class ModisLMHeadModel(PreTrainedModel):
         self.backbone = GAM(
             d_model=self.d_model,
             n_block=n_block,
-            block_implementation=block_implementation,
-            block_config=block_config,
+            # block_implementation=block_implementation,
+            # block_config=block_config,
             vocab_size=vocab_size,
-            rms_norm=rms_norm,
+            rms_norm=config.rms_norm,
             initializer_cfg=initializer_cfg,
-            fused_add_norm=fused_add_norm,
-            residual_in_fp32=residual_in_fp32,
-            use_template=use_template,
+            fused_add_norm = config.fused_add_norm,
+            residual_in_fp32=config.residual_in_fp32,
+            use_template=config.use_template,
             **factory_kwargs,
         )
         self.lm_head = nn.Linear(self.d_model, vocab_size, bias=False, **factory_kwargs)
@@ -458,11 +459,11 @@ class ModisLMHeadModel(PreTrainedModel):
         :param config: 
             The global configuration. 
         """
-        name = kwargs["gab_name"]
-        gab,gab_config = BlockRegister.load_block(name)
-        kwargs["block_implementation"] = gab 
-        del kwargs["gab_name"]
-        kwargs["block_config"] = gab_config
+        # name = kwargs["gab_name"]
+        # gab,gab_config = BlockRegister.load_block(name)
+        # kwargs["block_implementation"] = gab 
+        # del kwargs["gab_name"]
+        # kwargs["block_config"] = gab_config
         
         return cls(config,**kwargs)
 
