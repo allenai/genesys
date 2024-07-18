@@ -34,12 +34,9 @@ from .agents.prompts.prompts import (
 
 C = TypeVar("C",bound="ModelDiscoverySystem")
 
-from .configs.gam.config import (
-    GAMConfig_130M,
-    GAMConfig_70M,
-    GAMConfig_35M,
-    GAMConfig_10M,
-    GAMConfig
+from .configs.gam.config import ( 
+    GAMConfig,GAMConfig_14M,GAMConfig_31M,GAMConfig_70M,GAMConfig_125M,GAMConfig_350M,GAMConfig_760M,
+    GAMConfig_1300M,GAMConfig_2700M,GAMConfig_6700M,GAMConfig_13B,GAMConfig_175B,GAMConfig_1T,GAMConfig_debug
 )
 
 # import multiprocessing as mp

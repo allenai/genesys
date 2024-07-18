@@ -7,6 +7,7 @@ import torch.nn.functional as F
 
 # YOU CAN IMPORT MORE MODULES HERE #
 from torch.nn import Parameter
+from mamba_ssm.modules.mlp import GatedMLP
 
 # YOU CAN DEFINE MORE CLASSES OR FUNCTIONS HERE #
 
@@ -57,14 +58,26 @@ class GAB(nn.Module):
             nn.Linear(int(embed_dim * mlp_ratio), embed_dim, **factory_kwargs),
             nn.Dropout(dropout)
         )
+        # self.gmlp= GatedMLP(embed_dim, int(embed_dim*mlp_ratio), embed_dim, **factory_kwargs)
+        self.norm1= nn.LayerNorm(embed_dim, **factory_kwargs)
+        self.norm2= nn.LayerNorm(embed_dim, **factory_kwargs)
+        # self.norm3= nn.LayerNorm(embed_dim, **factory_kwargs)
 
     def _forward(self, X, **kwargs):
         assert X.shape[-1] == self.embed_dim
         B, N, C = X.shape
         mask = torch.tril(torch.ones(N, N, device=X.device, dtype=X.dtype)).unsqueeze(0).unsqueeze(0)
+        X= self.norm1(X)
         attn_output = self.attn(X, mask)
-        mlp_output = self.mlp(attn_output)
-        return mlp_output
+        residual = X + attn_output
+        residual = self.norm2(residual)
+        mlp_output = self.mlp(residual)
+        residual = residual + mlp_output
+        # residual = self.norm3(residual)
+        # gmlp_output = self.gmlp(residual)
+        # out= residual + gmlp_output
+        out= residual
+        return out
 
     def forward(self, X, **kwargs):
         Y = self._forward(X, **kwargs)

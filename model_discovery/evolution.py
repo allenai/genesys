@@ -33,10 +33,10 @@ from exec_utils import BuildSystem as NativeBuild
 from exec_utils.aliases import ConfigType
 
 from model_discovery import utils as U
-from .configs.gam.config import (
-    GAMConfig, GAMConfig_10M, GAMConfig_35M, GAMConfig_70M, GAMConfig_130M,
+from .configs.gam.config import ( 
+    GAMConfig,GAMConfig_14M,GAMConfig_31M,GAMConfig_70M,GAMConfig_125M,GAMConfig_350M,GAMConfig_760M,
+    GAMConfig_1300M,GAMConfig_2700M,GAMConfig_6700M,GAMConfig_13B,GAMConfig_175B,GAMConfig_1T,GAMConfig_debug
 )
-
 from .ve.run import main as ve_main
 from .ve.run import parser as ve_parser
 

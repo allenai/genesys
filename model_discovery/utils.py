@@ -1,6 +1,7 @@
 import os
 import json
 import functools as ft
+import time
 
 pjoin=os.path.join
 pexists=os.path.exists
@@ -55,3 +56,17 @@ def get_last_checkpoint(output_dir: str):
         return None
     checkpoints = sorted(checkpoints, key=lambda x: int(x.split('-')[-1]))
     return checkpoints[-1] # dir of the last checkpoint
+
+
+class CodeTimer:
+    def __init__(self, label="code block"):
+        self.label = label
+
+    def __enter__(self):
+        self.start = time.time()
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.end = time.time()
+        self.elapsed = self.end - self.start
+        print(f"[Elapsed time for {self.label}: {self.elapsed:.3f} seconds]")

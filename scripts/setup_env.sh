@@ -4,6 +4,7 @@
 # export GITHUB_TOKEN=YOUR-KEY
 # export WANDB_API_KEY=YOUR-KEY
 
+
 # Create directories
 mkdir -p ~/model_discovery/data
 mkdir -p ~/model_discovery/ckpt
@@ -13,10 +14,10 @@ export DATA_DIR=~/model_discovery/data
 export CKPT_DIR=~/model_discovery/ckpt
 
 # OPTIONAL: append these exports to your .bashrc or .bash_profile for them to be set globally
-# echo "export MY_OPENAI_KEY=YOUR-KEY" >> ~/.bashrc
-# echo "export HF_KEY=YOUR-KEY" >> ~/.bashrc
-# echo "export GITHUB_TOKEN=YOUR-KEY" >> ~/.bashrc
-# echo "export WANDB_API_KEY=YOUR-KEY" >> ~/.bashrc
+echo "export MY_OPENAI_KEY=$MY_OPENAI_KEY" >> ~/.bashrc
+echo "export HF_KEY=$HF_KEY" >> ~/.bashrc
+echo "export GITHUB_TOKEN=$GITHUB_TOKEN" >> ~/.bashrc
+echo "export WANDB_API_KEY=$WANDB_API" >> ~/.bashrc
 echo "export DATA_DIR=~/model_discovery/data" >> ~/.bashrc
 echo "export CKPT_DIR=~/model_discovery/ckpt" >> ~/.bashrc
 source ~/.bashrc

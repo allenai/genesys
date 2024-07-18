@@ -13,8 +13,7 @@ times=times[::-1]
 
 print('Theoretical time for 8xA6000')
 for idx,t in enumerate(times):
-    discount=mscales[idx]/scales[idx]
-    print(f'{scales[idx]}: {3.6/8*t*discount*3600:.2f}Gs, discount={discount:.2f}')
+    print(f'{scales[idx]}: {3.6/8*t:.2f}Ghr')
 
 
 accu=0

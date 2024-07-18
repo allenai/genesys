@@ -35,7 +35,7 @@ from .. import utils as U
 
 torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True
-torch.backends.cudnn.benchmark = True
+# torch.backends.cudnn.benchmark = True
 
 util_logger = logging.getLogger('model_discovery.run')
 
@@ -54,11 +54,12 @@ parser.add_argument("--optim", type=str, default="adamw_hf") # adamw_apex_fused 
 parser.add_argument("--wandb_project", type=str, default='model_discovery')
 parser.add_argument("--wandb_entity", type=str, default='aristo')
 parser.add_argument("--seed", type=int, default=42)
-parser.add_argument("--ckpt_dir", type=str, default='')
-parser.add_argument("--data_dir", type=str, default='')
+parser.add_argument("--ckpt_dir", type=str, default=None)
+parser.add_argument("--data_dir", type=str, default=None)
 parser.add_argument("--download_data_only", action='store_true')
 parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
 parser.add_argument("--PERF_PROF_MODE", type=bool, default=False) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
+parser.add_argument("--port", type=str, default="29500") # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
 
 # PATCH for the evolution
 parser.add_argument("--mode", type=str, default='') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
@@ -80,7 +81,7 @@ def setup(args) -> None:
     if not os.environ.get("WANDB_API_KEY"):
         raise ValueError('Must set WANDB_API_KEY')
     if not args.data_dir:
-        raise ValueError("Must set DATA_DIR")
+        raise ValueError('Must specify the data directory via `--data_dir`')
     if not args.ckpt_dir:
         raise ValueError('Must specify the checkpoint directory via `--ckpt_dir`')
 
@@ -125,36 +126,43 @@ def before_train(args):
     util_logger.info(f'Time elapsed for setting up wandb: {(time.perf_counter() - start):.1f} s')
     
 
+
 def run_train(args) -> None:
     """Runs the full training pipeline 
 
     :param args: 
         The global configuration for training.
     """
-    start=time.perf_counter()
-    if isinstance(args, dict):
-        args = Namespace(**args)
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed_all(args.seed)
-    config: GAMConfig = eval(f"{args.config}()")
-    model = ModisLMHeadModel.from_config(
-        config,
-        dtype=torch.bfloat16, # TODO: allow for other dtypes
-        device="cuda" if torch.cuda.is_available() else "cpu",
-        gab_name=args.gab_name
-    )
-    model.backbone.print_size()
+    with U.CodeTimer("setup model"):
+        start=time.perf_counter()
+        if isinstance(args, dict):
+            args = Namespace(**args)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(args.seed)
+        config: GAMConfig = eval(f"{args.config}()")
+        model = ModisLMHeadModel.from_config(
+            config,
+            dtype=torch.bfloat16, # TODO: allow for other dtypes
+            device="cuda" if torch.cuda.is_available() else "cpu",
+            gab_name=args.gab_name
+        )
+        model.print_size()
     
-    tokenized_datasets, tokenizer = load_datasets(config)
-    data_collator = DataCollatorForLanguageModeling(tokenizer, mlm=False)
-    if args.download_data_only:
-        util_logger.info('Donwloaded data, now stopping...')
-        exit('exiting after data download')
+    with U.CodeTimer("loading dataset"):
+        tokenized_datasets, tokenizer = load_datasets(config)
+        data_collator = DataCollatorForLanguageModeling(tokenizer, mlm=False)
+        if args.download_data_only:
+            util_logger.info('Donwloaded data, now stopping...')
+            exit('exiting after data download')
         
     num_params = sum(p.numel() for p in model.parameters())
     training_tokens=num_params*config.training_token_multiplier # suggested by Chinchilla
-    num_steps = int(np.ceil(training_tokens / (config.batch_tokens)))
-    per_device_batch_size=(config.batch_tokens // config.context_length)//args.n_gpus
+    if config.per_device_batch_size:
+        num_steps = int(training_tokens / (config.per_device_batch_size * args.n_gpus * args.n_nodes * config.context_length))+1
+        per_device_batch_size=config.per_device_batch_size
+    else:
+        num_steps = int(np.ceil(training_tokens / (config.batch_tokens)))
+        per_device_batch_size=(config.batch_tokens // config.context_length)//args.n_gpus
     print(f"Training tokens: {training_tokens}, num steps: {num_steps}, per device batch size: {per_device_batch_size}")
 
     training_args=TrainingArguments(
@@ -162,12 +170,13 @@ def run_train(args) -> None:
         max_steps=num_steps,
         per_device_train_batch_size=per_device_batch_size,
         per_device_eval_batch_size = per_device_batch_size * 2,
+        # auto_find_batch_size=True, # TODO: Auto adjust max training step as well 
         gradient_accumulation_steps=args.gradient_accumulation_steps,
         optim=args.optim,
         output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}",
         logging_steps=25,
         save_steps=args.save_steps,
-        dataloader_num_workers=1,
+        dataloader_num_workers=16,
         dataloader_pin_memory=True,
         tf32=True,
         ddp_find_unused_parameters=False,  # Set this to False
@@ -176,17 +185,24 @@ def run_train(args) -> None:
         report_to="wandb" if not args.PERF_PROF_MODE else None,
     )
     U.mkdir(training_args.output_dir)
-
-    trainer = ModisTrainer(
-        model=model,
-        train_dataset=tokenized_datasets["train"],
-        eval_dataset=tokenized_datasets["valid"], 
-        tokenizer=tokenizer,
-        args=training_args,
-        data_collator=data_collator,
-    )
+        
+    with U.CodeTimer("setting up trainer"):
+        trainer = ModisTrainer(
+            model=model,
+            train_dataset=tokenized_datasets["train"],
+            eval_dataset=tokenized_datasets["valid"], 
+            tokenizer=tokenizer,
+            args=training_args,
+            data_collator=data_collator,
+        )
     print(f'Time elapsed for setting up trainer: {(time.perf_counter() - start):.1f} s')
     
+    # class PrintBatchSizeCallback(TrainerCallback):
+    #     def on_train_begin(self, args, state, control, **kwargs):
+    #         print(f"Auto-determined batch size: {args.train_batch_size}")
+
+    # trainer.add_callback(PrintBatchSizeCallback())
+
     if args.PERF_PROF_MODE:
         exec_profiler(trainer)
     else:
@@ -237,7 +253,7 @@ def trace_handler(p,export=True):
 
 def exec_profiler(trainer):
     local_rank = int(os.getenv("LOCAL_RANK", "0"))
-    if local_rank != -1: # CHANGE IT TO 0 TO ENABLE PROFILING or -1 to just test running
+    if local_rank != -1: # CHANGE IT TO 0 TO ENABLE PROFILING or -1 to SKIP PROFILING
         trainer.train()
     else:
         start = time.perf_counter()
@@ -272,7 +288,7 @@ def train(args):
         return
     start = time.perf_counter()
     before_train(args)
-    notebook_launcher(run_train, args=(vars(args),), num_processes=args.n_gpus)
+    notebook_launcher(run_train, args=(vars(args),), num_processes=args.n_gpus, use_port=args.port)
     after_train(args)
     util_logger.info(f'Training time: {(time.perf_counter() - start):.1f} s')
 
@@ -304,7 +320,7 @@ def run_eval(args):
         "--cache_requests", "true",
         # "--wandb_args", "project=modis",
     ]
-    notebook_launcher(cli_evaluate, num_processes=args.n_gpus)
+    notebook_launcher(cli_evaluate, num_processes=args.n_gpus, use_port=args.port)
     
 def evalu(args):
     if args.PERF_PROF_MODE: return
@@ -395,7 +411,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     args.resume = False
+    # args.n_gpus = 2
     args.PERF_PROF_MODE = True
+    args.port="29586"
 
     main(args)
+
 
