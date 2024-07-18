@@ -7,13 +7,9 @@ import transformers
 from transformers import AutoTokenizer
 
 from ..model.gam import ModisLMHeadModel
-from ..configs.gam.config import (
-    GAMConfig,
-    GAMConfig_10M,
-    GAMConfig_35M,
-    GAMConfig_70M,
-    GAMConfig_130M,
-    GAMConfig_debug
+from ..configs.gam.config import ( 
+    GAMConfig,GAMConfig_14M,GAMConfig_31M,GAMConfig_70M,GAMConfig_125M,GAMConfig_350M,GAMConfig_760M,
+    GAMConfig_1300M,GAMConfig_2700M,GAMConfig_6700M,GAMConfig_13B,GAMConfig_175B,GAMConfig_1T,GAMConfig_debug
 )
 
 from lm_eval.models.huggingface import HFLM

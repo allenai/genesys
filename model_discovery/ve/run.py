@@ -26,12 +26,8 @@ from argparse import Namespace
 from .data_loader import load_datasets
 from .modis_trainer import ModisTrainer
 from ..configs.gam.config import ( 
-    GAMConfig,
-    GAMConfig_10M,
-    GAMConfig_35M,
-    GAMConfig_70M,
-    GAMConfig_130M,
-    GAMConfig_debug
+    GAMConfig,GAMConfig_14M,GAMConfig_31M,GAMConfig_70M,GAMConfig_125M,GAMConfig_350M,GAMConfig_760M,
+    GAMConfig_1300M,GAMConfig_2700M,GAMConfig_6700M,GAMConfig_13B,GAMConfig_175B,GAMConfig_1T,GAMConfig_debug
 )
 from ..model.gam import ModisLMHeadModel
 from .evaluator import cli_evaluate
@@ -39,6 +35,7 @@ from .. import utils as U
 
 torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True
+torch.backends.cudnn.benchmark = True
 
 util_logger = logging.getLogger('model_discovery.run')
 
@@ -110,6 +107,7 @@ def setup(args) -> None:
 def before_train(args):
     if args.PERF_PROF_MODE: return # skip the following if in performance profiling mode
 
+    start = time.perf_counter()
     ## initialize wandb
     util_logger.info(f'Setting up wandb...')
     global wandb_ids
@@ -124,6 +122,7 @@ def before_train(args):
             entity=args.wandb_entity,
             name=f"{args.evoname}_{args.design_id}"
         )
+    util_logger.info(f'Time elapsed for setting up wandb: {(time.perf_counter() - start):.1f} s')
     
 
 def run_train(args) -> None:
@@ -132,6 +131,7 @@ def run_train(args) -> None:
     :param args: 
         The global configuration for training.
     """
+    start=time.perf_counter()
     if isinstance(args, dict):
         args = Namespace(**args)
     if torch.cuda.is_available():
@@ -153,19 +153,21 @@ def run_train(args) -> None:
         
     num_params = sum(p.numel() for p in model.parameters())
     training_tokens=num_params*config.training_token_multiplier # suggested by Chinchilla
-    num_steps = int(training_tokens / (config.per_device_train_batch_size * args.n_gpus * args.n_nodes * config.context_length))+1
+    num_steps = int(np.ceil(training_tokens / (config.batch_tokens)))
+    per_device_batch_size=(config.batch_tokens // config.context_length)//args.n_gpus
+    print(f"Training tokens: {training_tokens}, num steps: {num_steps}, per device batch size: {per_device_batch_size}")
 
     training_args=TrainingArguments(
         learning_rate=config.learning_rate,
         max_steps=num_steps,
-        per_device_train_batch_size=config.per_device_train_batch_size,
-        per_device_eval_batch_size = config.per_device_train_batch_size * 2,
+        per_device_train_batch_size=per_device_batch_size,
+        per_device_eval_batch_size = per_device_batch_size * 2,
         gradient_accumulation_steps=args.gradient_accumulation_steps,
         optim=args.optim,
         output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}",
         logging_steps=25,
         save_steps=args.save_steps,
-        dataloader_num_workers=16,
+        dataloader_num_workers=1,
         dataloader_pin_memory=True,
         tf32=True,
         ddp_find_unused_parameters=False,  # Set this to False
@@ -183,7 +185,8 @@ def run_train(args) -> None:
         args=training_args,
         data_collator=data_collator,
     )
-
+    print(f'Time elapsed for setting up trainer: {(time.perf_counter() - start):.1f} s')
+    
     if args.PERF_PROF_MODE:
         exec_profiler(trainer)
     else:
@@ -221,43 +224,47 @@ class ProfCallback(TrainerCallback):
     def on_step_end(self, args, state, control, **kwargs):
         self.prof.step()
 
-def trace_handler(p):
+def trace_handler(p,export=True):
     print('Profiler results (by CUDA time):')
     print(p.key_averages().table(sort_by="self_cuda_time_total", row_limit=10))
     print('Profiler results (by CPU time):')
     print(p.key_averages().table(sort_by="self_cpu_time_total", row_limit=10))
-    print('Exporting profiler results')
-    output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
-    U.mkdir(f"{output_dir}/profiler")
-    p.export_chrome_trace(f"{output_dir}/profiler/trainer_trace_" + str(p.step_num) + ".json") # check chrome://tracing
+    if export:
+        print('Exporting profiler results')
+        output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
+        U.mkdir(f"{output_dir}/profiler")
+        p.export_chrome_trace(f"{output_dir}/profiler/trainer_trace_" + str(p.step_num) + ".json") # check chrome://tracing
 
 def exec_profiler(trainer):
     local_rank = int(os.getenv("LOCAL_RANK", "0"))
-    if local_rank != 0: # CHANGE IT TO 0 TO ENABLE PROFILING or -1 to just test running
+    if local_rank != -1: # CHANGE IT TO 0 TO ENABLE PROFILING or -1 to just test running
         trainer.train()
     else:
         start = time.perf_counter()
         with torch.profiler.profile(activities=[torch.profiler.ProfilerActivity.CPU,
                                                 torch.profiler.ProfilerActivity.CUDA], 
-                                    # schedule=torch.profiler.schedule(skip_first=3, wait=1, warmup=1, active=30, repeat=1),
-                                    # on_trace_ready=trace_handler,
+                                    schedule=torch.profiler.schedule(skip_first=3, wait=1, warmup=1, active=50, repeat=1),
+                                    on_trace_ready=trace_handler,
                                     profile_memory=True,
                                     with_stack=True,
+                                    use_cuda=True,
                                     with_flops=True,
                                     record_shapes=True) as prof:
             trainer.add_callback(ProfCallback(prof=prof))
             trainer.train()
         print(f'Profiling time: {(time.perf_counter() - start):.1f} s')
-        trace_handler(prof) # uncomment if not using on_trace_ready
+        # trace_handler(prof,False) # uncomment if not using on_trace_ready
 
 def after_train(args):
     if args.PERF_PROF_MODE: return
+    start=time.perf_counter()
     output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
     history,system_metrics=get_history(wandb.run.id)
     history.to_csv(f"{output_dir}/train_logs.csv")
     system_metrics.to_csv(f"{output_dir}/system_metrics.csv")
     util_logger.info(f"Training logs saved at {output_dir}")
     wandb.finish()
+    util_logger.info(f"Time elapsed for finishing training: {(time.perf_counter() - start):.1f} s")
 
 def train(args):
     if (not args.PERF_PROF_MODE) and args.resume and U.pexists(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/pretrained"):

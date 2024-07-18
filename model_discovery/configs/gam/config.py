@@ -10,20 +10,21 @@ class GAMConfig(PretrainedConfig):
 
     d_model: int
     n_block: int
-    param_magnitude: int
+    reference_size: int # a reference param num based on GPT
     context_length: int
     training_data: List[str]
     eval_tasks: List[str] = field(default_factory=lambda: ["lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande","blimp_filtered","blimp_supplement"])
     vocab_size: int = None
     training_weight: Dict[str, List[float]] = None
-    param_threshold: float = 0.2
+    size_threshold: float = 0.2
     tokenizer: str = 'meta-llama/Llama-2-7b-hf'
     training_token_multiplier: int = 20
-    rms_norm: bool = False ### triton stuff,
+    rms_norm: bool = True ### triton stuff
     residual_in_fp32: bool = True
-    fused_add_norm: bool = False
+    fused_add_norm: bool = True
     pad_vocab_size_multiple: int = 8
     tie_embeddings: bool = True
+    batch_tokens: int = 1024*1024 # 1M tokens
 
     def __post_init__(self):
         super().__init__()  # Initialize superclass with necessary arguments
@@ -46,100 +47,169 @@ class GAMConfig(PretrainedConfig):
     
     def print_config(self):
         return self.to_str()
-    
+
+
+# Configs below are come from GPT-3 paper https://arxiv.org/pdf/2005.14165, applied by Mamba, TTT
+# The major difference between GPT-3 and Pythia setting is on 760M, where Pythia used an 1B model instead, other differences including lr, bs
+# Notice that due to the use of Llama tokenizer and tied params, the reference size looks different 
 
 @dataclass
-class GAMConfig_10M(GAMConfig):
-    '''Configurations for Generalized Autoregressive Model with 10M scale (non-embedding).'''
-
-    d_model: int = 256
-    n_block: int = 3
-    param_magnitude: int = 1e7
-    context_length: int = 512
+class GAMConfig_14M(GAMConfig):
+    d_model: int = 128
+    n_block: int = 6
+    reference_size: int = 5280384
+    context_length: int = 2048
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
-    per_device_train_batch_size: int = 256
     eval_batch_size: int = 512
-    learning_rate: float = 1e-4
-
+    learning_rate: float = 1e-3
+    batch_tokens: int = 1024*128 # 0.1M tokens
 
 
 @dataclass
-class GAMConfig_35M(GAMConfig):
-    '''Configurations for Generalized Autoregressive Model with 10M scale (non-embedding).'''
-
-    d_model: int = 512
-    n_block: int = 4
-    param_magnitude: int = 3.5e7
-    context_length: int = 512
+class GAMConfig_31M(GAMConfig):
+    d_model: int = 256
+    n_block: int = 6
+    reference_size: int = 12920064
+    context_length: int = 2048
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
-    per_device_train_batch_size: int = 128
     eval_batch_size: int = 256
-    learning_rate: float = 1e-4
-
+    learning_rate: float = 1e-3
+    batch_tokens: int = 1024*256 # 0.25M tokens
 
 
 @dataclass
 class GAMConfig_70M(GAMConfig):
-    '''Configurations for Generalized Autoregressive Model with 10M scale (non-embedding).'''
-
-    d_model: int = 256
+    d_model: int = 512
     n_block: int = 6
-    param_magnitude: int = 1e7
-    context_length: int = 512
+    reference_size: int = 35277312
+    context_length: int = 2048
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
-    per_device_train_batch_size: int = 128
     eval_batch_size: int = 512
-    learning_rate: float = 1e-4
+    learning_rate: float = 1e-3
+    batch_tokens: int = 1024*256 # 0.25M tokens
+
+
+@dataclass
+class GAMConfig_125M(GAMConfig):
+    d_model: int = 768
+    n_block: int = 12
+    reference_size: int = 109566720
+    context_length: int = 2048
+    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
+    eval_batch_size: int = 512
+    learning_rate: float = 6e-4
+    batch_tokens: int = 1024*512 # 0.5M tokens
+    
+
+@dataclass
+class GAMConfig_350M(GAMConfig):
+    d_model: int = 1024
+    n_block: int = 24
+    reference_size: int = 334906368
+    context_length: int = 2048
+    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
+    eval_batch_size: int = 512
+    learning_rate: float = 3e-4
+    batch_tokens: int = 1024*512 # 0.5M tokens
+
+
+@dataclass
+class GAMConfig_760M(GAMConfig):
+    d_model: int = 1536
+    n_block: int = 24
+    reference_size: int = 728851968
+    context_length: int = 2048
+    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
+    eval_batch_size: int = 512
+    learning_rate: float = 2.5e-4
+    batch_tokens: int = 1024*512 # 0.5M tokens
+
+
+@dataclass
+class GAMConfig_1300M(GAMConfig):
+    d_model: int = 2048
+    n_block: int = 24
+    reference_size: int = 1273792512
+    context_length: int = 2048
+    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
+    eval_batch_size: int = 512
+    learning_rate: float = 2e-4
+    batch_tokens: int = 1024*1024 # 1M tokens
+
+
+@dataclass
+class GAMConfig_2700M(GAMConfig):
+    d_model: int = 2560
+    n_block: int = 32
+    reference_size: int = 2598996480
+    context_length: int = 2048
+    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
+    eval_batch_size: int = 512
+    learning_rate: float = 1.6e-4
+    batch_tokens: int = 1024*1024 # 1M tokens
+
+
+@dataclass
+class GAMConfig_6700M(GAMConfig):
+    d_model: int = 4096
+    n_block: int = 32
+    reference_size: int = 6574313472
+    context_length: int = 2048
+    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
+    eval_batch_size: int = 512
+    learning_rate: float = 1.2e-4
+    batch_tokens: int = 2*1024*1024 # 2M tokens
 
 
 
 @dataclass
-class GAMConfig_130M(GAMConfig):
-    '''Configurations for Generalized Autoregressive Model with 10M scale (non-embedding).'''
-
-    d_model: int = 256
-    n_block: int = 6
-    param_magnitude: int = 1e7
-    context_length: int = 512
+class GAMConfig_13B(GAMConfig):
+    d_model: int = 5120
+    n_block: int = 40
+    reference_size: int = 12747985920
+    context_length: int = 2048
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
-    per_device_train_batch_size: int = 128
     eval_batch_size: int = 512
     learning_rate: float = 1e-4
+    batch_tokens: int = 2*1024*1024 # 2M tokens
 
-
-# 370M
-
-# 780M
-
-# 1.3B
-
-# 2.7B
-
-# 7B
-
-# 13B or 8x7B (active params)
-
-# 35B or 8x22B
-
-# 70B 
-
-# 175B
 
 
 @dataclass
-class GAMConfig_debug(GAMConfig):
-    '''Configurations for Generalized Autoregressive Model with 10M scale (non-embedding).'''
+class GAMConfig_175B(GAMConfig):
+    d_model: int = 12288
+    n_block: int = 96
+    reference_size: int = 175e9 # too large to initialize
+    context_length: int = 2048
+    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
+    eval_batch_size: int = 512
+    learning_rate: float = 0.6e-4
+    batch_tokens: int = 3200*1024 # 3.2M tokens
 
-    d_model: int = 256
-    n_block: int = 3
-    param_magnitude: int = 1e7
+
+
+@dataclass
+class GAMConfig_1T(GAMConfig): # Just for fun
+    d_model: int = 20480
+    n_block: int = 200
+    reference_size: int = 1e12 
+    context_length: int = 2048
+    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
+    eval_batch_size: int = 512
+    learning_rate: float = 0.3e-4
+    batch_tokens: int = 6400*1024 # 6.4M tokens
+
+
+
+# Debugging configuration
+
+
+@dataclass
+class GAMConfig_debug(GAMConfig_14M):
     context_length: int = 512
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
-    per_device_train_batch_size: int = 128
-    eval_batch_size: int = 512
-    learning_rate: float = 5e-3 # LR for BS=256 and 6 GPUs 20x tokens
     training_token_multiplier: int = 20
     eval_tasks: List[str] = field(default_factory=lambda: ["blimp_filtered","blimp_supplement","glue",
         "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande"])
-    rms_norm: bool = False # TRITON BUGGY
+    rms_norm: bool = False 
     fused_add_norm: bool = False # TRITON BUGGY

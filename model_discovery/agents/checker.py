@@ -185,8 +185,8 @@ class Checker(exec_utils.BaseTool):
             ### TURNED OFF, the model is not good at this. 
             # assert self.check_magnitude(
             #     blocksize,
-            #     config.param_magnitude,
-            #     config.param_threshold
+            #     config.size_reference,
+            #     config.size_threshold
             # )
             assert self.is_causal(
                 gab,

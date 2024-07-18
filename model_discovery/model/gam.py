@@ -40,7 +40,7 @@ from model_discovery import utils as U
 
 class Block(nn.Module):
     def __init__(
-        self, dim, gab, mlp_cls, norm_cls=nn.LayerNorm, fused_add_norm=False, residual_in_fp32=False
+        self, dim, gab, mlp_cls=None, norm_cls=nn.LayerNorm, fused_add_norm=False, residual_in_fp32=False
     ):
         """
         Simple block wrapping a gab constructor with LayerNorm/RMSNorm and residual connection"
@@ -59,8 +59,10 @@ class Block(nn.Module):
         self.fused_add_norm = fused_add_norm
         self.norm = norm_cls(dim)
         self.gab = gab()
-        self.norm2 = norm_cls(dim)
-        self.mlp = mlp_cls(dim)
+        self.use_mlp = mlp_cls is not None
+        if self.use_mlp: 
+            self.norm2 = norm_cls(dim)
+            self.mlp = mlp_cls(dim)
         if self.fused_add_norm:
             assert RMSNorm is not None, "RMSNorm import fails"
             assert isinstance(
@@ -94,23 +96,24 @@ class Block(nn.Module):
             )
         hidden_states = self.gab(hidden_states, inference_params=inference_params, **gab_kwargs)
         
-        if not self.fused_add_norm:
-            residual = hidden_states + residual
-            residual = self.norm2(residual.to(dtype=self.norm2.weight.dtype))
-            if self.residual_in_fp32:
-                residual = residual.to(torch.float32)
-        else:
-            hidden_states, residual = layer_norm_fn(
-                hidden_states,
-                self.norm2.weight,
-                self.norm2.bias,
-                residual=residual,
-                prenorm=True,
-                residual_in_fp32=self.residual_in_fp32,
-                eps=self.norm2.eps,
-                is_rms_norm=isinstance(self.norm2, RMSNorm)
-            )
-        hidden_states = self.mlp(hidden_states)
+        if self.use_mlp:
+            if not self.fused_add_norm:
+                residual = hidden_states + residual
+                residual = self.norm2(residual.to(dtype=self.norm2.weight.dtype))
+                if self.residual_in_fp32:
+                    residual = residual.to(torch.float32)
+            else:
+                hidden_states, residual = layer_norm_fn(
+                    hidden_states,
+                    self.norm2.weight,
+                    self.norm2.bias,
+                    residual=residual,
+                    prenorm=True,
+                    residual_in_fp32=self.residual_in_fp32,
+                    eps=self.norm2.eps,
+                    is_rms_norm=isinstance(self.norm2, RMSNorm)
+                )
+            hidden_states = self.mlp(hidden_states)
         return hidden_states, residual
 
     def allocate_inference_cache(self, batch_size, max_seqlen, dtype=None, **kwargs):
@@ -125,6 +128,7 @@ def create_block(
     rms_norm=False,
     residual_in_fp32=False,
     fused_add_norm=False, # This is for performance reason: we can fuse add + layer_norm
+    use_mlp=False,
     device=None,
     dtype=None,
 ):
@@ -141,7 +145,7 @@ def create_block(
     )
     mlp_cls = partial(
         GatedMLP, hidden_features=d_model*4, out_features=d_model, **factory_kwargs
-    )
+    ) if use_mlp else None
     block = Block(
         d_model,
         constructor,
@@ -280,10 +284,16 @@ class GAM(nn.Module):
             )
         return hidden_states
 
-    def print_size(self,logger=print):
-        print(f'Model size: {U.strmodelsize(self)}')
-        print(f'Embedding parameters: {U.strmodelsize(self.embedding)}')
-        print(f'Non-embedding parameters: {U.strmodelsize(self.blocks)}')
+    def print_size(self):
+        print(f' - GAM params: {U.strmodelsize(self)}')
+        print(f'   - Embedding: {U.strmodelsize(self.embedding)}')
+        print(f'   - Non-embedding: {U.strmodelsize(self.layers)}')
+        print(f'     - Per Block: {U.strmodelsize(self.layers[0])}')
+        print(f'       - GAB: {U.strmodelsize(self.layers[0].gab)}')
+        if self.layers[0].use_mlp:
+            print(f'       - MLP: {U.strmodelsize(self.layers[0].mlp)}')
+
+
 
 
 class ModisLMHeadModel(PreTrainedModel):
@@ -448,3 +458,11 @@ class ModisLMHeadModel(PreTrainedModel):
         kwargs["block_config"] = gab_config
         
         return cls(config,**kwargs)
+
+    def print_size(self):
+        print('|------Model size------|')
+        tied='tied' if self.config.tie_embeddings else 'untied'
+        print(f' Total params: {U.strmodelsize(self)} ({tied})')
+        self.backbone.print_size()
+        print(f' - LM Head params: {U.strmodelsize(self.lm_head)}')
+        print('|----------------------|')

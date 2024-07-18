@@ -177,14 +177,19 @@ class EvolutionSystem(exec_utils.System):
 
         # load or init the state
         self.state=self.load_state() # load the state by evoname
+        if 'selection_ratio' not in self.state:
+            self.state['selection_ratio']=float(self.params['selection_ratio'])
         if 'scales' not in self.state:
-            scales=self.params['scales'].split(',') # e.g. "10M:64,35M:16,70M:4,130M:1", scale and budget
-            scales=sorted(scales, key=lambda x: U.letternum2num(x.split(':')[0]))
-            self.state['scales']=[s.split(':')[0] for s in scales]
+            scales=self.params['scales'].split(',') # e.g. "10M,35M,70M,130M", scale and budget
+            self.state['scales']=list(sorted(scales, key=lambda x: U.letternum2num(x))) # sort from small to large
         if 'current_scale' not in self.state:
             self.state['current_scale']=0
         if 'budgets' not in self.state: # remaining budget for each scale
-            self.state['budgets']={s.split(':')[0]:int(s.split(':')[1]) for s in scales}
+            self.state['budgets']={}
+            budget=1
+            for scale in self.state['scales']:
+                self.state['budgets'][scale]=int(np.ceil(budget))
+                budget/=self.state['selection_ratio']
         # if 'unverified' not in self.state:
         #     self.state['unverified']=[]
         self.save_state() # save the initialized state
@@ -412,7 +417,8 @@ if __name__ == '__main__':
         # "evoname=evolution_test1",
         # "scales=10M:64,35M:16,70M:4,130M:1",
         # "scales=10M:16,35M:4,70M:1",
-        "scales=10M:4,35M:1",
+        "scales=10M,35M",
+        "selection_ratio=0.3",
     ]
 
     evoname=ve_parser.parse_args().evoname
