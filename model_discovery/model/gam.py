@@ -22,7 +22,7 @@ from model_discovery.model.utils.hf import load_config_hf, load_state_dict_hf
 # from model_discovery.model.utils.generation import GenerationMixin
 from .utils.layers import GatedMLP, MLP
 
-# from model_discovery.model.block_registry import BlockRegister
+from model_discovery.model.block_registry import BlockRegister
 
 try: 
     from model_discovery.model.ops.triton.layer_norm import (
@@ -36,9 +36,6 @@ except:
     rms_norm_fn   = None 
 
 from model_discovery import utils as U
-
-from ..model.gab import GAB, gab_config
-
 
 
 class Block(nn.Module):
@@ -127,7 +124,7 @@ class Block(nn.Module):
 
 
 def create_block(
-    # block_implementation,
+    block_implementation,
     d_model,
     block_config,
     norm_epsilon=1e-5,
@@ -140,8 +137,7 @@ def create_block(
 ):
     factory_kwargs = {"device": device, "dtype": dtype}
     constructor = partial(
-        # block_implementation,
-        GAB,
+        block_implementation,
         embed_dim=d_model,
         device=device,
         dtype=dtype,
@@ -205,7 +201,7 @@ class GAM(nn.Module):
         self,
         d_model: int,
         n_block: int,
-        # block_implementation,
+        block_implementation,
         vocab_size: int = 50277,
         norm_epsilon: float = 1e-5,
         rms_norm: bool = False,
@@ -215,7 +211,7 @@ class GAM(nn.Module):
         use_template = False,
         device = None,
         dtype = None,
-        # block_config: dict = {},
+        block_config: dict = {},
     ) -> None:
         self.factory_kwargs = {"device": device, "dtype": dtype}
         super().__init__()
@@ -232,13 +228,12 @@ class GAM(nn.Module):
         if self.fused_add_norm:
             if layer_norm_fn is None or rms_norm_fn is None:
                 raise ImportError("Failed to import Triton LayerNorm / RMSNorm kernels")
-        
-        block_config = gab_config()
+
         self.n_block = n_block
         self.blocks = nn.ModuleList(
             [
                 create_block(
-                    # block_implementation,
+                    block_implementation,
                     d_model,
                     block_config,
                     norm_epsilon=norm_epsilon,
@@ -313,11 +308,11 @@ class ModisLMHeadModel(PreTrainedModel):
     def __init__(
         self,
         config: GAMConfig,
-        # block_implementation,
+        block_implementation,
         initializer_cfg=None,
         device=None,
         dtype=None,
-        # block_config = {},
+        block_config = {},
     ) -> None:
         """Initializes LM model 
 
@@ -340,8 +335,8 @@ class ModisLMHeadModel(PreTrainedModel):
         self.backbone = GAM(
             d_model=self.d_model,
             n_block=n_block,
-            # block_implementation=block_implementation,
-            # block_config=block_config,
+            block_implementation=block_implementation,
+            block_config=block_config,
             vocab_size=vocab_size,
             rms_norm=config.rms_norm,
             initializer_cfg=initializer_cfg,
@@ -459,11 +454,11 @@ class ModisLMHeadModel(PreTrainedModel):
         :param config: 
             The global configuration. 
         """
-        # name = kwargs["gab_name"]
-        # gab,gab_config = BlockRegister.load_block(name)
-        # kwargs["block_implementation"] = gab 
-        # del kwargs["gab_name"]
-        # kwargs["block_config"] = gab_config
+        name = kwargs["gab_name"]
+        gab,gab_config = BlockRegister.load_block(name)
+        kwargs["block_implementation"] = gab 
+        del kwargs["gab_name"]
+        kwargs["block_config"] = gab_config
         
         return cls(config,**kwargs)
 

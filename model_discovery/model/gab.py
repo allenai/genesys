@@ -46,10 +46,10 @@ def gab_config()->dict:
     }
 
 
-# # Perform registration after defining gab_config
-# from .block_registry import BlockRegister
+# Perform registration after defining gab_config
+from .block_registry import BlockRegister
 
-# BlockRegister(
-#     name="default",
-#     config=gab_config()
-# )(GAB)
+BlockRegister(
+    name="default",
+    config=gab_config()
+)(GAB)
