@@ -1,11 +1,35 @@
+from typing import Optional
+
 from transformers.modeling_outputs import CausalLMOutput
 from transformers import PreTrainedModel
 
 import torch
-from torch import nn
+from torch import nn, Tensor
+from mamba_ssm.modules.mlp import GatedMLP
 
 from .model.configs.gam_config import GAMConfig
 from .model.gab import GAB, gab_config
+
+
+class Block(nn.Module):
+    def __init__(
+        self, d_model, block_config, norm_epsilon=1e-5, device=None, dtype=None,
+    ):
+        factory_kwargs = {"device": device, "dtype": dtype}
+        super().__init__()
+        self.norm = nn.LayerNorm(d_model, eps=norm_epsilon,**factory_kwargs)
+        self.gab = GAB(embed_dim=d_model, device=device, dtype=dtype, **block_config)
+        self.norm2 = nn.LayerNorm(d_model, eps=norm_epsilon,**factory_kwargs)
+        self.mlp = GatedMLP(in_features=d_model, out_features=d_model, hidden_features=d_model * 4, **factory_kwargs)
+
+
+    def forward(
+        self, hidden_states: Tensor, residual: Optional[Tensor] = None, inference_params=None, **gab_kwargs
+    ):
+        residual = (hidden_states + residual) if residual is not None else hidden_states
+        hidden_states = self.norm(residual.to(dtype=self.norm.weight.dtype))
+        hidden_states = self.gab(hidden_states, inference_params=inference_params, **gab_kwargs)
+        return hidden_states, residual
 
 
 class GAM(nn.Module):
@@ -31,11 +55,11 @@ class GAM(nn.Module):
         self.n_block = n_block
         self.blocks = nn.ModuleList(
             [
-                GAB(
-                    embed_dim=d_model, 
-                    device=device, 
-                    dtype=dtype, 
-                    **block_config
+                Block(
+                    d_model,
+                    block_config,
+                    norm_epsilon=norm_epsilon,
+                    **self.factory_kwargs,
                 )
                 for i in range(n_block)
             ]

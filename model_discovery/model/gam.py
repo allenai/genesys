@@ -57,10 +57,10 @@ class Block(nn.Module):
         super().__init__()
         self.residual_in_fp32 = residual_in_fp32
         self.fused_add_norm = fused_add_norm
-        self.norm = norm_cls(dim)
         self.gab = gab()
-        self.use_mlp = mlp_cls is not None
-        if self.use_mlp: 
+        self.use_template = mlp_cls is not None
+        if self.use_template: 
+            self.norm = norm_cls(dim)
             self.norm2 = norm_cls(dim)
             self.mlp = mlp_cls(dim)
         if self.fused_add_norm:
@@ -78,25 +78,28 @@ class Block(nn.Module):
             hidden_states: the sequence to the encoder layer (required).
             residual: hidden_states = GAB(LN(residual))
         """
-        if not self.fused_add_norm:
-            residual = (hidden_states + residual) if residual is not None else hidden_states
-            hidden_states = self.norm(residual.to(dtype=self.norm.weight.dtype))
-            if self.residual_in_fp32:
-                residual = residual.to(torch.float32)
-        else:
-            hidden_states, residual = layer_norm_fn(
-                hidden_states,
-                self.norm.weight,
-                self.norm.bias,
-                residual=residual,
-                prenorm=True,
-                residual_in_fp32=self.residual_in_fp32,
-                eps=self.norm.eps,
-                is_rms_norm=isinstance(self.norm, RMSNorm)
-            )
+
+        # Template includes layer norms, residual connection, and MLP
+        if self.use_template:
+            if not self.fused_add_norm:
+                residual = (hidden_states + residual) if residual is not None else hidden_states
+                hidden_states = self.norm(residual.to(dtype=self.norm.weight.dtype))
+                if self.residual_in_fp32:
+                    residual = residual.to(torch.float32)
+            else:
+                hidden_states, residual = layer_norm_fn(
+                    hidden_states,
+                    self.norm.weight,
+                    self.norm.bias,
+                    residual=residual,
+                    prenorm=True,
+                    residual_in_fp32=self.residual_in_fp32,
+                    eps=self.norm.eps,
+                    is_rms_norm=isinstance(self.norm, RMSNorm)
+                )
         hidden_states = self.gab(hidden_states, inference_params=inference_params, **gab_kwargs)
         
-        if self.use_mlp:
+        if self.use_template:
             if not self.fused_add_norm:
                 residual = hidden_states + residual
                 residual = self.norm2(residual.to(dtype=self.norm2.weight.dtype))
@@ -128,7 +131,7 @@ def create_block(
     rms_norm=False,
     residual_in_fp32=False,
     fused_add_norm=False, # This is for performance reason: we can fuse add + layer_norm
-    use_mlp=False,
+    use_template=False,
     device=None,
     dtype=None,
 ):
@@ -145,7 +148,7 @@ def create_block(
     )
     mlp_cls = partial(
         GatedMLP, hidden_features=d_model*4, out_features=d_model, **factory_kwargs
-    ) if use_mlp else None
+    ) if use_template else None # or use regular MLP
     block = Block(
         d_model,
         constructor,
@@ -205,6 +208,7 @@ class GAM(nn.Module):
         initializer_cfg = None,
         fused_add_norm = False,
         residual_in_fp32 = False,
+        use_template = False,
         device = None,
         dtype = None,
         block_config: dict = {},
@@ -236,6 +240,7 @@ class GAM(nn.Module):
                     rms_norm=rms_norm,
                     residual_in_fp32=residual_in_fp32,
                     fused_add_norm=fused_add_norm,
+                    use_template=use_template,
                     **self.factory_kwargs,
                 )
                 for i in range(n_block)
@@ -305,6 +310,7 @@ class ModisLMHeadModel(PreTrainedModel):
         config: GAMConfig,
         block_implementation,
         initializer_cfg=None,
+        use_template=False,
         device=None,
         dtype=None,
         block_config = {},
@@ -340,6 +346,7 @@ class ModisLMHeadModel(PreTrainedModel):
             initializer_cfg=initializer_cfg,
             fused_add_norm=fused_add_norm,
             residual_in_fp32=residual_in_fp32,
+            use_template=use_template,
             **factory_kwargs,
         )
         self.lm_head = nn.Linear(self.d_model, vocab_size, bias=False, **factory_kwargs)
