@@ -33,6 +33,8 @@ from ..model.gam import ModisLMHeadModel
 from .evaluator import cli_evaluate
 from .. import utils as U
 
+from ..model.block_registry import BlockRegister
+
 torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True
 # torch.backends.cudnn.benchmark = True
@@ -106,9 +108,12 @@ def setup(args) -> None:
 
 
 def before_train(args):
-    if args.PERF_PROF_MODE: return # skip the following if in performance profiling mode
-
     start = time.perf_counter()
+
+    gab,gab_config = BlockRegister.load_block(args.gab_name)
+    if args.PERF_PROF_MODE: # skip the following if in performance profiling mode
+        return gab,gab_config
+        
     ## initialize wandb
     util_logger.info(f'Setting up wandb...')
     global wandb_ids
@@ -124,10 +129,10 @@ def before_train(args):
             name=f"{args.evoname}_{args.design_id}"
         )
     util_logger.info(f'Time elapsed for setting up wandb: {(time.perf_counter() - start):.1f} s')
-    
+    return gab,gab_config
 
 
-def run_train(args) -> None:
+def run_train(args,gab,gab_config) -> None:
     """Runs the full training pipeline 
 
     :param args: 
@@ -137,15 +142,14 @@ def run_train(args) -> None:
         start=time.perf_counter()
         if isinstance(args, dict):
             args = Namespace(**args)
-        if torch.cuda.is_available():
-            torch.cuda.manual_seed_all(args.seed)
+        # if torch.cuda.is_available():
+        #     rank = int(os.getenv("RANK", "0"))
+        #     torch.cuda.manual_seed_all(args.seed*rank)
         config: GAMConfig = eval(f"{args.config}()")
-        model = ModisLMHeadModel.from_config(
-            config,
-            dtype=torch.bfloat16, # TODO: allow for other dtypes
-            device="cuda" if torch.cuda.is_available() else "cpu",
-            gab_name=args.gab_name
-        )
+        model = ModisLMHeadModel(
+            config, gab, dtype=torch.bfloat16, device="cuda",
+            block_config=gab_config
+        ) # seems should not be bf16 for tf32 mode
         model.print_size()
     
     with U.CodeTimer("loading dataset"):
@@ -287,8 +291,8 @@ def train(args):
         util_logger.info(f"Model {args.design_id} is already pretrained")
         return
     start = time.perf_counter()
-    before_train(args)
-    notebook_launcher(run_train, args=(vars(args),), num_processes=args.n_gpus, use_port=args.port)
+    gab,gab_config=before_train(args)
+    notebook_launcher(run_train, args=(vars(args),gab,gab_config), num_processes=args.n_gpus, use_port=args.port)
     after_train(args)
     util_logger.info(f'Training time: {(time.perf_counter() - start):.1f} s')
 
