@@ -195,7 +195,7 @@ class GAMConfig_1T(GAMConfig): # Just for fun
 
 
 @dataclass
-class GAMConfig_debug(GAMConfig_14M):
+class GAMConfig_debug(GAMConfig_31M):
     context_length: int = 512
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     training_token_multiplier: int = 20

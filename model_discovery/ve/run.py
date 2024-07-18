@@ -142,9 +142,8 @@ def run_train(args,gab,gab_config) -> None:
         start=time.perf_counter()
         if isinstance(args, dict):
             args = Namespace(**args)
-        # if torch.cuda.is_available():
-        #     rank = int(os.getenv("RANK", "0"))
-        #     torch.cuda.manual_seed_all(args.seed*rank)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(args.seed)
         config: GAMConfig = eval(f"{args.config}()")
         model = ModisLMHeadModel(
             config, gab, dtype=torch.bfloat16, device="cuda",
