@@ -56,7 +56,8 @@ class DesignArtifact:
     scale: str
     instruct: str
     seed_ids: List[str] = field(default_factory=list)
-    # report: Dict = None
+    # rating: int = None
+    # review: str = None
 
     def to_dict(self) -> Dict:
         return asdict(self)
@@ -70,6 +71,9 @@ class DesignArtifact:
         U.save_json(self.to_dict(),U.pjoin(db_dir,self.acronym,"artifact.json"))
         with open(U.pjoin(db_dir,self.acronym,"gab.py"),'w') as f:
             f.write(self.code)
+        with open(U.pjoin(db_dir,self.acronym,"explaination.md"),'w') as f:
+            f.write(self.explain)
+
 
     @classmethod
     def load(cls, db_dir: str, id:str) -> DesignArtifact:
@@ -189,7 +193,7 @@ class EvolutionSystem(exec_utils.System):
         if 'budgets' not in self.state: # remaining budget for each scale
             self.state['budgets']={}
             budget=1
-            for scale in self.state['scales']:
+            for scale in self.state['scales'][::-1]:
                 self.state['budgets'][scale]=int(np.ceil(budget))
                 budget/=self.state['selection_ratio']
         # if 'unverified' not in self.state:
