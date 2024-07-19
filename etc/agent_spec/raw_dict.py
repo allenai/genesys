@@ -14,7 +14,7 @@ You have two roles 1) to write code and; 2) to write a report and justify your d
     "format" : "",
     "examples" : [],
      "_params" : {
-         "model_name" : "gpt-4o-2024-05-13",
+         "model_name" : "gpt-4o-mini-2024-07-18",
          "max_output_tokens" : 1500,
      }
 }

@@ -289,6 +289,7 @@ class EvolutionSystem(exec_utils.System):
         """ Sample a design at a given scale and verify it """
         self.rnd_agent.set_config(self.scales[scale_id])
         title,code,explain=self.rnd_agent(instruct) 
+        # title,code,explain,review,rating=self.rnd_agent(instruct) 
         if title is None: # no design sampled
             return None
         for i in [' and ',' for ','-']:
@@ -306,6 +307,8 @@ class EvolutionSystem(exec_utils.System):
             'explain':explain,
             'scale':self.state['scales'][scale_id],
             'instruct':instruct,
+            # 'review':review,
+            # 'rating':rating,
         }
         return artifact
 
@@ -372,6 +375,8 @@ class EvolutionSystem(exec_utils.System):
         artifact=U.load_json(U.pjoin(self.evo_dir,'db',design_id,'artifact.json'))
         with open('/home/junyanc/model_discovery/model_discovery/model/gab.py','w') as f:
             f.write(artifact['code'])
+        # rating=artifact['rating']
+        # budget=...
         args = ve_parser.parse_args()
         args.evoname=self.evoname
         args.design_id=artifact['acronym']

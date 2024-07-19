@@ -408,16 +408,18 @@ class ModelDiscoverySystem(exec_utils.System):
                 if stream:
                     stream.markdown(self_report["code"]) #<-- change
 
-            ### TODO: query the review agent
-            
-        #### now use the 
+        ### TODO: query the review agent
+        
 
 
         ### TODO: return the design artifacts: name, code, report, explanation, etc.
         if not found_design:
             return None,None,None
         title=self_report['code'].split('\n')[0].replace('#','').strip()
-        return title,code,self_report['code']
+        return title,code,self_report['code']#,review,rating
+
+    def design(self,query):
+        raise NotImplementedError
 
     def run_check(self,code,design_name,queue):
         checkpass,check_report = self.checker.check(self._cfg,code,design_name)
