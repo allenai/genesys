@@ -148,6 +148,11 @@ class Checker(exec_utils.BaseTool):
         self.rprint('Parameter number is within threshold')
         return True
     
+
+    def check_efficiency(self, model, vocab_size: int) -> bool:
+
+        pass
+    
     def check(self, config, gab_code: str, name: str) -> bool:
         """Runs through a bunch of checks for the new module at path 
 

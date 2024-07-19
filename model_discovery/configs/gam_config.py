@@ -14,19 +14,22 @@ class GAMConfig(PretrainedConfig):
     training_data: List[str]
     batch_tokens: int 
     context_length: int = 2048
-    eval_tasks: List[str] = field(default_factory=lambda: ["lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande","blimp_filtered","blimp_supplement"])
+    eval_tasks: List[str] = field(default_factory=lambda: [
+        "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande",
+        "blimp", # "blimp_filtered","blimp_supplement"
+    ])
     vocab_size: int = None
+    training_token_multiplier: int = 20
     training_weight: Dict[str, List[float]] = None
     size_threshold: float = 0.2
     tokenizer: str = 'meta-llama/Llama-2-7b-hf'
-    training_token_multiplier: int = 20
+    # training_token_multiplier: int = 20
     rms_norm: bool = True ### triton stuff
     residual_in_fp32: bool = True
     fused_add_norm: bool = True
     pad_vocab_size_multiple: int = 8
     tie_embeddings: bool = True
     use_template: bool = False
-    use_rope: bool = True
     per_device_batch_size: int = None # Will overwrite batch_tokens if set
 
     def __post_init__(self):
@@ -86,7 +89,7 @@ class GAMConfig_70M(GAMConfig):
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     eval_batch_size: int = 512
     learning_rate: float = 1e-3
-    batch_tokens: int = 1024*256 # 0.5M tokens
+    batch_tokens: int = 1024*512 # 0.5M tokens
 
 
 @dataclass
@@ -196,17 +199,17 @@ class GAMConfig_1T(GAMConfig): # Just for fun
 
 
 @dataclass
-class GAMConfig_debug(GAMConfig_31M):
-    context_length: int = 512
+class GAMConfig_debug(GAMConfig_14M):
+    context_length: int = 2048
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
-    training_token_multiplier: int = 20
-    eval_tasks: List[str] = field(default_factory=lambda: ["blimp_filtered","blimp_supplement","glue",
-        "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande"])
+    eval_tasks: List[str] = field(default_factory=lambda: [
+        "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande",
+        "blimp", # "blimp_filtered","blimp_supplement"
+    ])
     rms_norm: bool = False 
     fused_add_norm: bool = False # TRITON BUGGY
-    batch_tokens: int = 1024*768 
     use_template: bool = True
-    per_device_batch_size: int = 256
+    # per_device_batch_size: int = 256
     
 
 

@@ -180,7 +180,7 @@ class EvolutionSystem(exec_utils.System):
         if 'selection_ratio' not in self.state:
             self.state['selection_ratio']=float(self.params['selection_ratio'])
         if 'scales' not in self.state:
-            scales=self.params['scales'].split(',') # e.g. "10M,35M,70M,130M", scale and budget
+            scales=self.params['scales'].split(',') # e.g. "14M,31M,70M,125M", scales
             self.state['scales']=list(sorted(scales, key=lambda x: U.letternum2num(x))) # sort from small to large
         if 'current_scale' not in self.state:
             self.state['current_scale']=0
@@ -415,9 +415,7 @@ def BuildEvolution(
 if __name__ == '__main__':
     strparams=[
         # "evoname=evolution_test1",
-        # "scales=10M:64,35M:16,70M:4,130M:1",
-        # "scales=10M:16,35M:4,70M:1",
-        "scales=10M,35M",
+        "scales=14M,31M,70M",
         "selection_ratio=0.3",
     ]
 
