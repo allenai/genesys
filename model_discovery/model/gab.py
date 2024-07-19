@@ -21,7 +21,6 @@ class GAB(nn.Module):
         # COMPLETING THE CODE HERE #
         self.fn = MHA(embed_dim, n_heads, causal=True, **factory_kwargs)
 
-
     def _forward(self,X,**kwargs): # type hints are optional but recommended
         ''' Forward pass of the model '''
         assert X.shape[-1] == self.embed_dim

@@ -11,11 +11,15 @@ DESIGNER_PROMPT="""Design a novel autoregressive model block by completing the b
 
 {gab_py}
 
+The GAB is inhereted from this GABBase class:
+
+{gab_base}
+
 This code will be used to construct a gam model in gam.py:
 
 {gam_py}
 
-This is the configuration for the model:
+This is the configuration for the target model:
 
 {config}
 

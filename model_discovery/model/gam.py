@@ -20,7 +20,7 @@ from model_discovery.configs.gam_config import GAMConfig
 from model_discovery.model.utils.generation import decode
 from model_discovery.model.utils.hf import load_config_hf, load_state_dict_hf
 # from model_discovery.model.utils.generation import GenerationMixin
-from .utils.layers import GatedMLP, MLP
+from .utils.modules import GatedMLP, MLP
 
 from model_discovery.model.block_registry import BlockRegister
 
@@ -63,14 +63,14 @@ class Block(nn.Module):
             self.norm = norm_cls(dim)
             self.norm2 = norm_cls(dim)
             self.mlp = mlp_cls(dim)
-        if self.fused_add_norm:
-            assert RMSNorm is not None, "RMSNorm import fails"
-            assert isinstance(
-                self.norm, (nn.LayerNorm, RMSNorm)
-            ), "Only LayerNorm and RMSNorm are supported for fused_add_norm"
+            if self.fused_add_norm:
+                assert RMSNorm is not None, "RMSNorm import fails"
+                assert isinstance(
+                    self.norm, (nn.LayerNorm, RMSNorm)
+                ), "Only LayerNorm and RMSNorm are supported for fused_add_norm"
 
     def forward(
-            self, hidden_states: Tensor, residual: Optional[Tensor] = None, inference_params=None, **gab_kwargs
+            self, hidden_states: Tensor, residual: Optional[Tensor] = None, **gab_kwargs
     ):
         r"""Pass the input through the encoder layer.
 
@@ -97,12 +97,17 @@ class Block(nn.Module):
                     eps=self.norm.eps,
                     is_rms_norm=isinstance(self.norm, RMSNorm)
                 )
-        hidden_states = self.gab(hidden_states, inference_params=inference_params, **gab_kwargs)
+        else:
+            residual = hidden_states 
+
+        # If no template, then just GAB, all norms and res should be taken care by GAB
+
+        hidden_states = self.gab(hidden_states, **gab_kwargs)
         
         if self.use_template:
             if not self.fused_add_norm:
                 residual = hidden_states + residual
-                residual = self.norm2(residual.to(dtype=self.norm2.weight.dtype))
+                hidden_states = self.norm2(residual.to(dtype=self.norm2.weight.dtype))
                 if self.residual_in_fp32:
                     residual = residual.to(torch.float32)
             else:
@@ -218,6 +223,8 @@ class GAM(nn.Module):
         self.residual_in_fp32 = residual_in_fp32
         self.d_model = d_model
         self.embedding = nn.Embedding(vocab_size, d_model, **self.factory_kwargs)
+        self.use_template = use_template
+        self.n_block=n_block
 
         # We change the order of residual and layer norm:
         # Instead of LN -> Attn / MLP -> Add, we do:
@@ -229,7 +236,6 @@ class GAM(nn.Module):
             if layer_norm_fn is None or rms_norm_fn is None:
                 raise ImportError("Failed to import Triton LayerNorm / RMSNorm kernels")
 
-        self.n_block = n_block
         self.blocks = nn.ModuleList(
             [
                 create_block(
@@ -243,7 +249,7 @@ class GAM(nn.Module):
                     use_template=use_template,
                     **self.factory_kwargs,
                 )
-                for i in range(n_block)
+                for _ in range(n_block)
             ]
         )
 
@@ -265,38 +271,45 @@ class GAM(nn.Module):
             for i, block in enumerate(self.blocks)
         }
 
-    def forward(self, input_ids, inference_params=None, **kwargs):
+    def forward(self, input_ids, inference_params=None, **gab_kwargs):
         hidden_states = self.embedding(input_ids)
         residual = None
         for block in self.blocks:
             hidden_states, residual = block(
-                hidden_states, residual, inference_params=inference_params
+                hidden_states, residual, **gab_kwargs
             )
-        if not self.fused_add_norm:
-            residual = (hidden_states + residual) if residual is not None else hidden_states
-            hidden_states = self.norm_f(residual.to(dtype=self.norm_f.weight.dtype))
+        if self.use_template: # in template, all blocks are pre-res (none for L1), so need a final res here
+            if not self.fused_add_norm:
+                residual = (hidden_states + residual) if residual is not None else hidden_states
+                hidden_states = self.norm_f(residual.to(dtype=self.norm_f.weight.dtype))
+            else:
+                # Set prenorm=False here since we don't need the residual
+                hidden_states = layer_norm_fn(
+                    hidden_states,
+                    self.norm_f.weight,
+                    self.norm_f.bias,
+                    eps=self.norm_f.eps,
+                    residual=residual,
+                    prenorm=False,
+                    residual_in_fp32=self.residual_in_fp32,
+                    is_rms_norm=isinstance(self.norm_f, RMSNorm)
+                )
         else:
-            # Set prenorm=False here since we don't need the residual
-            hidden_states = layer_norm_fn(
-                hidden_states,
-                self.norm_f.weight,
-                self.norm_f.bias,
-                eps=self.norm_f.eps,
-                residual=residual,
-                prenorm=False,
-                residual_in_fp32=self.residual_in_fp32,
-                is_rms_norm=isinstance(self.norm_f, RMSNorm)
-            )
+            hidden_states = self.norm_f(hidden_states) # in non-template, res should be handled by the block
         return hidden_states
 
-    def print_size(self):
-        print(f' - GAM params: {U.strmodelsize(self)}')
-        print(f'   - Embedding: {U.strmodelsize(self.embedding)}')
-        print(f'   - Non-embedding: {U.strmodelsize(self.blocks)}')
-        print(f'     - Per Block: {U.strmodelsize(self.blocks[0])}')
-        print(f'       - GAB: {U.strmodelsize(self.blocks[0].gab)}')
+    def print_size(self,printout=True):
+        size=(
+            f' - GAM params: {U.strmodelsize(self)}\n'
+            f'   - Embedding: {U.strmodelsize(self.embedding)}\n'
+            f'   - Non-embedding: {U.strmodelsize(self.blocks)}\n'
+            f'     - Block: {U.strmodelsize(self.blocks[0])} x {len(self.blocks)}\n'
+            f'       - GAB: {U.strmodelsize(self.blocks[0].gab)}'
+        )
         if self.blocks[0].use_template:
-            print(f'       - MLP: {U.strmodelsize(self.blocks[0].mlp)}')
+            size+=f'       - MLP: {U.strmodelsize(self.blocks[0].mlp)}'
+        if printout: print(size)
+        return size
 
 
 
@@ -364,12 +377,12 @@ class ModisLMHeadModel(PreTrainedModel):
     def allocate_inference_cache(self, batch_size, max_seqlen, dtype=None, **kwargs):
         return self.backbone.allocate_inference_cache(batch_size, max_seqlen, dtype=dtype, **kwargs)
 
-    def forward(self, input_ids, position_ids=None, inference_params=None, num_last_tokens=0, **mixer_kwargs):
+    def forward(self, input_ids, position_ids=None, inference_params=None, num_last_tokens=0, **gab_kwargs):
         """
         "position_ids" is just to be compatible with Transformer generation. We don't use it.
         num_last_tokens: if > 0, only return the logits for the last n tokens
         """
-        hidden_states = self.backbone(input_ids, inference_params=inference_params, **mixer_kwargs)
+        hidden_states = self.backbone(input_ids, **gab_kwargs)
         if num_last_tokens > 0:
             hidden_states = hidden_states[:, -num_last_tokens:]
         lm_logits = self.lm_head(hidden_states)
@@ -463,9 +476,10 @@ class ModisLMHeadModel(PreTrainedModel):
         return cls(config,**kwargs)
 
     def print_size(self):
-        print('|------Model size------|')
+        size=''
+        size+='|------Model size------|\n'
         tied='tied' if self.config.tie_embeddings else 'untied'
-        print(f' Total params: {U.strmodelsize(self)} ({tied})')
-        self.backbone.print_size()
-        print(f' - LM Head params: {U.strmodelsize(self.lm_head)}')
-        print('|----------------------|')
+        size+=f' Total params: {U.strmodelsize(self)} ({tied})\n'
+        size+=self.backbone.print_size()
+        size+=f' - LM Head params: {U.strmodelsize(self.lm_head)}\n'
+        size+='|----------------------|\n'

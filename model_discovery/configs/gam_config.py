@@ -10,6 +10,7 @@ class GAMConfig(PretrainedConfig):
 
     d_model: int
     n_block: int
+    scale: str
     reference_size: int # a reference param num based on GPT
     training_data: List[str]
     batch_tokens: int 
@@ -52,7 +53,16 @@ class GAMConfig(PretrainedConfig):
     
     def print_config(self):
         return self.to_str()
-
+    
+    def to_prompt(self):
+        return (
+            f"scale: {self.scale} # The target scale of the GAM model\n"
+            f"n_block: {self.n_block} # The number of GAB blocks in this GAM model\n"
+            f"vocab_size: {self.vocab_size} # The number of terms in the embedding table\n"
+            f"reference_size: {self.reference_size} # The number of parameters in the reference model with GPT architecture, the designed model should not diviated from this size too much (notice that the param number shown here is based on using a tied embedding param and llama tokenizer which may have a large difference from the target scale when the scale is small)\n"
+            f"reference_d_model: {self.d_model} # The d_model applied by the GPT reference model\n"
+            f"Note: the number of params is computed as d_model * vocab_size + n_block * param_num_of_gab_block\n"
+        )
 
 # Configs below are come from GPT-3 paper https://arxiv.org/pdf/2005.14165, applied by Mamba, TTT
 # The major difference between GPT-3 and Pythia setting is on 760M, where Pythia used an 1B model instead, other differences including lr, bs
@@ -60,6 +70,7 @@ class GAMConfig(PretrainedConfig):
 
 @dataclass
 class GAMConfig_14M(GAMConfig):
+    scale: str = '14M'
     d_model: int = 128
     n_block: int = 6
     reference_size: int = 5280384
@@ -71,6 +82,7 @@ class GAMConfig_14M(GAMConfig):
 
 @dataclass
 class GAMConfig_31M(GAMConfig):
+    scale: str = '31M'
     d_model: int = 256
     n_block: int = 6
     reference_size: int = 12920064
@@ -82,6 +94,7 @@ class GAMConfig_31M(GAMConfig):
 
 @dataclass
 class GAMConfig_70M(GAMConfig):
+    scale: str = '70M'
     d_model: int = 512
     n_block: int = 6
     reference_size: int = 35277312
@@ -93,6 +106,7 @@ class GAMConfig_70M(GAMConfig):
 
 @dataclass
 class GAMConfig_125M(GAMConfig):
+    scale: str = '125M'
     d_model: int = 768
     n_block: int = 12
     reference_size: int = 109566720
@@ -104,6 +118,7 @@ class GAMConfig_125M(GAMConfig):
 
 @dataclass
 class GAMConfig_350M(GAMConfig):
+    scale: str = '350M'
     d_model: int = 1024
     n_block: int = 24
     reference_size: int = 334906368
@@ -115,6 +130,7 @@ class GAMConfig_350M(GAMConfig):
 
 @dataclass
 class GAMConfig_760M(GAMConfig):
+    scale: str = '760M'
     d_model: int = 1536
     n_block: int = 24
     reference_size: int = 728851968
@@ -126,6 +142,7 @@ class GAMConfig_760M(GAMConfig):
 
 @dataclass
 class GAMConfig_1300M(GAMConfig):
+    scale: str = '1.3B'
     d_model: int = 2048
     n_block: int = 24
     reference_size: int = 1273792512
@@ -137,6 +154,7 @@ class GAMConfig_1300M(GAMConfig):
 
 @dataclass
 class GAMConfig_2700M(GAMConfig):
+    scale: str = '2.7B'
     d_model: int = 2560
     n_block: int = 32
     reference_size: int = 2598996480
@@ -148,6 +166,7 @@ class GAMConfig_2700M(GAMConfig):
 
 @dataclass
 class GAMConfig_6700M(GAMConfig):
+    scale: str = '6.7B'
     d_model: int = 4096
     n_block: int = 32
     reference_size: int = 6574313472
@@ -160,6 +179,7 @@ class GAMConfig_6700M(GAMConfig):
 
 @dataclass
 class GAMConfig_13B(GAMConfig):
+    scale: str = '13B'
     d_model: int = 5120
     n_block: int = 40
     reference_size: int = 12747985920
@@ -172,6 +192,7 @@ class GAMConfig_13B(GAMConfig):
 
 @dataclass
 class GAMConfig_175B(GAMConfig):
+    scale: str = '175B'
     d_model: int = 12288
     n_block: int = 96
     reference_size: int = 175e9 # too large to initialize
@@ -184,6 +205,7 @@ class GAMConfig_175B(GAMConfig):
 
 @dataclass
 class GAMConfig_1T(GAMConfig): # Just for fun
+    scale: str = '1T'
     d_model: int = 20480
     n_block: int = 200
     reference_size: int = 1e12 
@@ -199,6 +221,7 @@ class GAMConfig_1T(GAMConfig): # Just for fun
 
 @dataclass
 class GAMConfig_debug(GAMConfig_760M):
+    scale: str = 'debug'
     context_length: int = 512
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     eval_tasks: List[str] = field(default_factory=lambda: [

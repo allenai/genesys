@@ -49,6 +49,26 @@ __all__ = [
 PROJ_SRC = os.path.abspath(os.path.dirname(__file__))
 SYSTEM_OUT = os.path.abspath(f"{PROJ_SRC}/../_runs")
 
+GAB_BASE='''
+class GABBase(nn.Module):
+    """ Base class for Generalized Autoregressive Block """
+    def __init__(self,embed_dim: int): 
+        super().__init__()
+        self.embed_dim = embed_dim
+
+    def _forward(self,X,**kwargs): 
+        raise NotImplementedError
+     
+    # YOU ARE NOT ALLOW TO OVERRIDE THIS METHOD #
+    def forward(self,X,**kwargs):
+        """Forward pass of the model"""
+        assert X.shape[-1] == self.embed_dim
+        Y=self._forward(X,**kwargs)
+        assert Y.shape == X.shape
+        return Y
+'''
+
+
 @exec_utils.Registry("config","discovery_system")
 class CustomParams(exec_utils.ModuleParams):
     """Parameters for working with this discovery system 
@@ -143,7 +163,7 @@ class CustomParams(exec_utils.ModuleParams):
     )
     ### debugging
     debug_steps: bool = exec_utils.ParamField(
-        default=False,
+        default=True,
         metadata={
             "help"         : 'Debug the steps of the system',
             "exclude_hash" : True,
@@ -157,7 +177,7 @@ class CustomParams(exec_utils.ModuleParams):
         }
     )
     gam_config: str = exec_utils.ParamField(
-        default='GAMConfig_10M',
+        default='GAMConfig_14M',
         metadata={
             "help"         : 'Debug the steps of the system',
             "exclude_hash" : True,
@@ -180,7 +200,7 @@ class CustomParams(exec_utils.ModuleParams):
     )
 
 
-def get_context_info(config) -> Tuple[str,str]:
+def get_context_info(config,templated=False) -> Tuple[str,str]:
     """Grabs the block and model implementation details for the prompt 
 
     :param config: 
@@ -190,6 +210,8 @@ def get_context_info(config) -> Tuple[str,str]:
     """
     if not os.path.isfile(config.block_template):
         raise ValueError(f'Cannot find the block template: {config.block_template}')
+    if templated:
+        config.gam_template = config.gam_template.replace('.py','_templated.py')
     if not os.path.isfile(config.gam_template):
         raise ValueError(f'Cannot find the code context')
     block = open(config.block_template).read()
@@ -322,9 +344,10 @@ class ModelDiscoverySystem(exec_utils.System):
 
         query = f"{query}\nPlease only write raw Python code and nothing more, no special formatting or extra text."
         query = DESIGNER_PROMPT.format(
+            gab_base=GAB_BASE,
             gam_py=self.gam_py,
             gab_py=self.gab_py,
-            config=self._cfg.print_config(), #<--- need to parameterize 
+            config=self._cfg.to_prompt(), #<--- need to parameterize 
             instruct=query,
         )
         source = 'user'
@@ -453,8 +476,8 @@ class ModelDiscoverySystem(exec_utils.System):
         
         
         ### get the model information for context
-        block, code = get_context_info(config)
         cfg = eval(f"{config.gam_config}()")
+        block, code = get_context_info(config,templated=cfg.use_template)
         
         return cls(
             designer,

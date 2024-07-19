@@ -151,7 +151,7 @@ class Checker(exec_utils.BaseTool):
 
     def check_efficiency(self, model, vocab_size: int) -> bool:
 
-        pass
+        return True
     
     def check(self, config, gab_code: str, name: str) -> bool:
         """Runs through a bunch of checks for the new module at path 
@@ -159,21 +159,24 @@ class Checker(exec_utils.BaseTool):
         :param path: 
             The path of the proposed module 
         """
-        try: 
-            glm,gab_config = reload_gam(config,gab_code,name)
-            if torch.cuda.is_available():
-                glm = glm.cuda()
+        # try: 
+        print(config)
+        glm,gab_config = reload_gam(config,gab_code,name)
+        if torch.cuda.is_available():
+            glm = glm.cuda()
 
-            mock_input=torch.randint(0, config.vocab_size, (8, 500))
-            mock_input = mock_input.to(glm.device)
-    
-            output = glm(mock_input)
+        glm.print_size()
 
-        except Exception as e:
-            self.rprint(
-                'Model initialization failed with error: '+str(e)+'\n'
-            )
-            return False,self.report
+        mock_input=torch.randint(0, config.vocab_size, (8, 500))
+        mock_input = mock_input.to(glm.device)
+
+        output = glm(mock_input)
+
+        # except Exception as e:
+        #     self.rprint(
+        #         'Model initialization failed with error: '+str(e)+'\n'
+        #     )
+        #     return False,self.report
         
         ### check model size 
         gam = glm.backbone

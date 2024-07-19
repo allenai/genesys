@@ -2,6 +2,26 @@
 from torch import nn
 from torch.nn import functional as F
 
+from abc import ABC, abstractmethod
+
+
+class GABBase(nn.Module):
+    """ Base class for Generalized Autoregressive Block """
+    def __init__(self,embed_dim: int): 
+        super().__init__()
+        self.embed_dim = embed_dim
+
+    def _forward(self,X,**kwargs): 
+        raise NotImplementedError
+     
+    # YOU ARE NOT ALLOW TO OVERRIDE THIS METHOD #
+    def forward(self,X,**kwargs):
+        """Forward pass of the model"""
+        assert X.shape[-1] == self.embed_dim
+        Y=self._forward(X,**kwargs)
+        assert Y.shape == X.shape
+        return Y
+
 
 class GatedMLP(nn.Module):
     def __init__(
@@ -63,3 +83,4 @@ class MLP(nn.Module):
         y=self.activation(y)
         y = self.fc2(y)
         return y
+    

@@ -68,6 +68,8 @@ class DesignArtifact:
     def save(self,db_dir: str):
         U.mkdir(U.pjoin(db_dir,self.acronym))
         U.save_json(self.to_dict(),U.pjoin(db_dir,self.acronym,"artifact.json"))
+        with open(U.pjoin(db_dir,self.acronym,"gab.py"),'w') as f:
+            f.write(self.code)
 
     @classmethod
     def load(cls, db_dir: str, id:str) -> DesignArtifact:
@@ -269,7 +271,7 @@ class EvolutionSystem(exec_utils.System):
         else:
             return self._evolve(scale_id)
 
-    def _evolve(self,scale_id): # do evolve that produce one design
+    def _evolve(self,scale_id): # do evolve that produce one design and operate the phylogenetic tree
         K=random.randint(1,2) # sample K designs
         instruct,seed_ids=self.select(K) # use the seed_ids to record the phylogenetic tree
         artifact=self.sample(scale_id,instruct) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
@@ -326,7 +328,7 @@ class EvolutionSystem(exec_utils.System):
 
     def select(self,K: int=1,selector_instruct=''): # K is the number of designs to sample, instruct is the instruction to the selector, select seeds or select populations
         """ Provide the instruction including seeds and instructs for the next design """
-        K=min(K,len(sample_metrics))
+        K=min(K,len(self.ptree.G.nodes))
         if K==0: # no design to sample
             return '',[]
         alpha=0.1
@@ -424,13 +426,13 @@ def BuildEvolution(
 
 if __name__ == '__main__':
     strparams=[
-        # "evoname=evolution_test1",
+        "evoname=evolution_test1",
         "scales=14M,31M,70M",
-        "selection_ratio=0.3",
+        "selection_ratio=0.25",
     ]
 
-    evoname=ve_parser.parse_args().evoname
-    strparams.append(f"evoname={evoname}")
+    # evoname=ve_parser.parse_args().evoname
+    # strparams.append(f"evoname={evoname}")
 
     evolution_system = BuildEvolution(
         strparams=';'.join(strparams),
@@ -440,9 +442,11 @@ if __name__ == '__main__':
     mode=ve_parser.parse_args().mode
     # evolution_system._run(mode)
 
-    for i in range(10):
-        print('_'*50,f'Iteration {i}','_'*50)
-        artifact=evolution_system.sample(0,f'{random.random()}')
+    evolution_system._evolve(0)
+
+    # for i in range(1):
+    #     print('_'*50,f'Iteration {i}','_'*50)
+    #     artifact=evolution_system.sample(0,f'{random.random()}')
         # for i in artifact:
         #     print(f'{i}:',artifact[i])
 
@@ -452,5 +456,4 @@ if __name__ == '__main__':
     # print(seeds)
 
     
-       
 

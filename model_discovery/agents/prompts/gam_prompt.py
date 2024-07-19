@@ -1,11 +1,21 @@
 from transformers.modeling_outputs import CausalLMOutput
-from transformers import PreTrainedModel
+from transformers import PreTrainedModel, PretrainedConfig
+from dataclasses import dataclass
 
 import torch
 from torch import nn
 
-from .model.configs.gam_config import GAMConfig
-from .model.gab import GAB, gab_config
+from gab import GAB, gab_config
+
+
+@dataclass
+class GAMConfig(PretrainedConfig):
+    '''Configurations for Generalized Autoregressive Models.'''
+
+    d_model: int
+    n_block: int
+    batch_tokens: int 
+    vocab_size: int = None
 
 
 class GAM(nn.Module):
@@ -28,7 +38,6 @@ class GAM(nn.Module):
         self.embedding = nn.Embedding(vocab_size, d_model, **self.factory_kwargs)
 
         block_config = gab_config()
-        self.n_block = n_block
         self.blocks = nn.ModuleList(
             [
                 GAB(
@@ -37,23 +46,21 @@ class GAM(nn.Module):
                     dtype=dtype, 
                     **block_config
                 )
-                for i in range(n_block)
+                for _ in range(n_block)
             ]
         )
-
-        self.norm_f = nn.LayerNorm(
+        self.norm_out = nn.LayerNorm(
             d_model, eps=norm_epsilon, **self.factory_kwargs
         )
 
-    def forward(self, input_ids, inference_params=None, **mixer_kwargs):
+    def forward(self, input_ids, **gab_kwargs):
         hidden_states = self.embedding(input_ids)
-        residual = None
         for block in self.blocks:
-            hidden_states, residual = block(
-                hidden_states, residual, inference_params=inference_params
+            hidden_states= block(
+                hidden_states,
+                **gab_kwargs
             )
-        residual = (hidden_states + residual) if residual is not None else hidden_states
-        hidden_states = self.norm_f(residual.to(dtype=self.norm_f.weight.dtype))
+        hidden_states = self.norm_out(hidden_states)
         return hidden_states
 
 
@@ -67,28 +74,17 @@ class ModisLMHeadModel(PreTrainedModel):
         device=None,
         dtype=None,
     ) -> None:
-        self.config = config
-        self.d_model = config.d_model
-        n_block = config.n_block
-        vocab_size = config.vocab_size
-        factory_kwargs = {"device": device, "dtype": dtype}
-
         super().__init__(config)
+        factory_kwargs = {"device": device, "dtype": dtype}
         self.backbone = GAM(
-            d_model=self.d_model,
-            n_block=n_block,
-            vocab_size=vocab_size,
+            d_model=config.d_model,
+            n_block=config.n_block,
+            vocab_size=config.vocab_size,
             **factory_kwargs,
         )
-        self.lm_head = nn.Linear(self.d_model, vocab_size, bias=False, **factory_kwargs)
+        self.lm_head = nn.Linear(config.d_model, config.vocab_size, bias=False, **factory_kwargs)
 
-    def forward(self, input_ids, position_ids=None, inference_params=None, num_last_tokens=0, **mixer_kwargs):
-        """
-        "position_ids" is just to be compatible with Transformer generation. We don't use it.
-        num_last_tokens: if > 0, only return the logits for the last n tokens
-        """
-        hidden_states = self.backbone(input_ids, inference_params=inference_params, **mixer_kwargs)
-        if num_last_tokens > 0:
-            hidden_states = hidden_states[:, -num_last_tokens:]
+    def forward(self, input_ids, **gab_kwargs):
+        hidden_states = self.backbone(input_ids, **gab_kwargs)
         lm_logits = self.lm_head(hidden_states)
         return CausalLMOutput(logits=lm_logits)
