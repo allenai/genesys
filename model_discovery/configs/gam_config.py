@@ -19,11 +19,10 @@ class GAMConfig(PretrainedConfig):
         "blimp", # "blimp_filtered","blimp_supplement"
     ])
     vocab_size: int = None
-    training_token_multiplier: int = 20
+    # training_token_multiplier: int = 20 # Now desinated by ve args
     training_weight: Dict[str, List[float]] = None
     size_threshold: float = 0.2
     tokenizer: str = 'meta-llama/Llama-2-7b-hf'
-    # training_token_multiplier: int = 20
     rms_norm: bool = True ### triton stuff
     residual_in_fp32: bool = True
     fused_add_norm: bool = True
@@ -199,8 +198,8 @@ class GAMConfig_1T(GAMConfig): # Just for fun
 
 
 @dataclass
-class GAMConfig_debug(GAMConfig_14M):
-    context_length: int = 2048
+class GAMConfig_debug(GAMConfig_760M):
+    context_length: int = 512
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     eval_tasks: List[str] = field(default_factory=lambda: [
         "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande",

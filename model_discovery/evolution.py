@@ -375,8 +375,6 @@ class EvolutionSystem(exec_utils.System):
         artifact=U.load_json(U.pjoin(self.evo_dir,'db',design_id,'artifact.json'))
         with open('/home/junyanc/model_discovery/model_discovery/model/gab.py','w') as f:
             f.write(artifact['code'])
-        # rating=artifact['rating']
-        # budget=...
         args = ve_parser.parse_args()
         args.evoname=self.evoname
         args.design_id=artifact['acronym']
@@ -384,7 +382,14 @@ class EvolutionSystem(exec_utils.System):
         args.ckpt_dir=self.ckpt_dir
         args.data_dir=os.environ.get("DATA_DIR")
         args.resume=True
+        args.training_token_multiplier=self.get_train_budget(artifact)
         ve_main(args)
+
+
+    def get_train_budget(self,artifact):
+        # rating=artifact['rating']
+        return 20
+    
 
     @classmethod
     def from_config(cls,config,**kwargs):

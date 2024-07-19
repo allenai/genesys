@@ -52,7 +52,7 @@ parser.add_argument("--n_gpus", type=int, default=torch.cuda.device_count())
 parser.add_argument("--n_nodes", type=int, default=1)
 parser.add_argument("--save_steps", type=int, default=50)
 parser.add_argument("--gradient_accumulation_steps", type=int, default=1)
-parser.add_argument("--training_multiplier", type=int, default=None) # by default equals to config.training_token_multiplier, can be used for continue pretraining
+parser.add_argument("--training_token_multiplier", type=int, default=20) # by default equals to 20 suggested by Chinchilla
 parser.add_argument("--optim", type=str, default="adamw_hf") # adamw_apex_fused is faster but BUGGY
 parser.add_argument("--wandb_project", type=str, default='model_discovery')
 parser.add_argument("--wandb_entity", type=str, default='aristo')
@@ -66,7 +66,6 @@ parser.add_argument("--port", type=str, default="29500") # Performance profiler 
 
 # PATCH for the evolution
 parser.add_argument("--mode", type=str, default='') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
-parser.add_argument("--allow_continue_pretraining", type=bool, default=True) # Force resume from the latest checkpoint if there is one, or fully retrain
 
 
 def setup(args) -> None:
@@ -164,28 +163,13 @@ def run_train(args,gab,gab_config) -> None:
             exit('exiting after data download')
         
     num_params = sum(p.numel() for p in model.parameters())
-    if args.training_multiplier is None:
-        args.training_multiplier = config.training_token_multiplier
-    training_tokens=num_params*args.training_multiplier # suggested by Chinchilla
-    target_tokens=num_params*config.training_token_multiplier
+    training_tokens=num_params*args.training_token_multiplier 
     if config.per_device_batch_size:
         num_steps = int(training_tokens / (config.per_device_batch_size * args.n_gpus * args.n_nodes * config.context_length))+1
-        target_steps = int(target_tokens / (config.per_device_batch_size * args.n_gpus * args.n_nodes * config.context_length))+1
         per_device_batch_size=config.per_device_batch_size
     else:
         num_steps = int(np.ceil(training_tokens / (config.batch_tokens)))
-        target_steps = int(np.ceil(target_tokens / (config.batch_tokens)))
         per_device_batch_size=(config.batch_tokens // config.context_length)//args.n_gpus
-
-    auto_find_batch_size=True
-
-    output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
-    if args.allow_continue_pretraining and args.resume and U.get_last_checkpoint(output_dir):
-        trainer_state=U.load_json(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/trainer_state.json")
-        auto_per_device_batch_size=trainer_state['train_batch_size']
-        num_steps = int(np.ceil(num_steps*per_device_batch_size/auto_per_device_batch_size))
-        auto_find_batch_size=False
-        per_device_batch_size=auto_per_device_batch_size
     print(f"Training tokens: {training_tokens}, num steps: {num_steps}, per device batch size: {per_device_batch_size}")
 
     training_args=TrainingArguments(
@@ -193,7 +177,7 @@ def run_train(args,gab,gab_config) -> None:
         max_steps=num_steps,
         per_device_train_batch_size=per_device_batch_size,
         per_device_eval_batch_size = per_device_batch_size * 2,
-        auto_find_batch_size=auto_find_batch_size, 
+        auto_find_batch_size=True, 
         gradient_accumulation_steps=args.gradient_accumulation_steps,
         optim=args.optim,
         output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}",
@@ -213,7 +197,6 @@ def run_train(args,gab,gab_config) -> None:
         report_to="wandb" if not args.PERF_PROF_MODE else None,
     )
     U.mkdir(training_args.output_dir)
-    training_args.target_steps = target_steps
     
     with U.CodeTimer("setting up trainer"):
         trainer = ModisTrainer(
@@ -433,8 +416,6 @@ def main(args):
         The CLI arguments. 
     """
     start = time.perf_counter()
-    # if args.allow_continue_pretraining:
-    #     args.resume = True
     setup(args)
     train(args)
     evalu(args)
@@ -450,10 +431,8 @@ if __name__ == "__main__":
     args.design_id = "test_resume"
     args.resume = True
     # args.n_gpus = 1
-    args.PERF_PROF_MODE = False
+    args.PERF_PROF_MODE = True
     args.port="25986"
-    args.training_multiplier = 20
-    args.allow_continue_pretraining=True
 
     main(args)
 
