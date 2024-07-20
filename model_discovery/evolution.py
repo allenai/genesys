@@ -49,6 +49,27 @@ __all__ = [
     "BuildEvolution",
 ]
 
+NODE_COLOR_MAP={
+    '14M':'#5698c3',
+    '31M':'#1177b0',
+    '70M':'#15559a',
+    '125M':'#f0a1a8',
+    '350M':'#f07c82',
+    '760M':'#ee3f4d',
+    '1300M':'#fcb70a',
+}
+
+
+NODE_SIZE_MAP={
+    '14M':20,
+    '31M':25,
+    '70M':30,
+    '125M':35,
+    '350M':40,
+    '760M':45,
+    '1300M':50,
+}
+
 
 @dataclass
 class DesignArtifact:
@@ -129,20 +150,33 @@ class PhylogeneticTree:
         for seed_id, design_id in edges_to_add:
             self.G.add_edge(seed_id, design_id)
 
-    def viz(self,G,height=1000,width="100%"):
-        nt=Network(directed=True,height=height,width=width,notebook=True)
+    def viz(self,G,height=1000,width="100%",layout=False):
+        nt=Network(
+            directed=True,height=height,width=width,notebook=True,
+            layout=layout, #bgcolor="#222222", font_color="#ffffff",
+            #select_menu=True, # filter_menu=True,
+            # heading=f'Phylogenetic Tree for {self.db_dir.split("/")[-2]}'
+        )
         nt.from_nx(G)
         nt.show(U.pjoin(self.db_dir, '..', "phylogenetic_tree.html"))
 
-    def export(self):
-        G=nx.DiGraph()
+    def export(self,layout=False):
+        G=nx.DiGraph()        
         for node in self.G.nodes:
             data=self.G.nodes[node]['data']
-            G.add_node(node,title=data.to_desc())
+            scale=data.scale
+            G.add_node(
+                node,
+                title=data.to_desc(),
+                size=NODE_SIZE_MAP[scale]-5,
+                color=NODE_COLOR_MAP[scale],
+                scale=scale,
+                # rating=data.rating
+            )
         for edge in self.G.edges:
             G.add_edge(edge[0],edge[1])
         write_dot(G, U.pjoin(self.db_dir, '..', "phylogenetic_tree.dot"))
-        self.viz(G)
+        self.viz(G,layout=layout)
 
 
 def report_reader(report):
@@ -316,7 +350,7 @@ class EvolutionSystem(exec_utils.System):
         artifact=self.sample(scale_id,instruct) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
         if artifact is None:
             print("No design sampled")
-            return None
+            return True # no design sampled, continue
         # save the design to the phylogenetic tree and update the budget
         artifact['seed_ids']=seed_ids
         self.ptree.new_design(artifact)
