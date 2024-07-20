@@ -15,6 +15,7 @@ import pandas as pd
 import numpy as np
 from io import StringIO
 import random
+from networkx.drawing.nx_pydot import write_dot
 
 from types import ModuleType
 from typing import (
@@ -55,7 +56,7 @@ class DesignArtifact:
     explain: str
     scale: str
     instruct: str
-    seed_ids: List[str] = field(default_factory=list)
+    seed_ids: List[str]
     # rating: int = None
     # review: str = None
 
@@ -77,13 +78,12 @@ class DesignArtifact:
             with open(U.pjoin(db_dir,self.acronym,"instruct.md"),'w') as f:
                 f.write(self.instruct)
 
-
     @classmethod
     def load(cls, db_dir: str, id:str) -> DesignArtifact:
         return cls.from_dict(U.load_json(U.pjoin(db_dir,id,"artifact.json")))
-
-
+    
 class PhylogeneticTree:
+    # Read from a design base and construct a phylogenetic tree
     def __init__(self, db_dir: str):
         self.G = nx.DiGraph()
         self.db_dir = db_dir
@@ -118,6 +118,19 @@ class PhylogeneticTree:
 
         for seed_id, design_id in edges_to_add:
             self.G.add_edge(seed_id, design_id)
+
+    def export(self):
+        G=nx.DiGraph()
+        for node in self.G.nodes:
+            data=self.G.nodes[node]['data']
+            G.add_node(node,title=data.title,scale=data.scale,
+                    #    explain=data.explain.replace(':',' '),
+                    #    code=f'"{data.code}"'
+                    )
+        for edge in self.G.edges:
+            G.add_edge(edge[0],edge[1])
+        write_dot(G, U.pjoin(self.db_dir, '..', "phylogenetic_tree.dot"))
+        
 
 
 def report_reader(report):
@@ -220,6 +233,7 @@ class EvolutionSystem(exec_utils.System):
             #from_json='/path/to/config'
         )
         self.ptree=PhylogeneticTree(U.pjoin(self.evo_dir,'db'))
+        self.ptree.export()
 
     def query_system(self,
         query: Optional[str] = '',
