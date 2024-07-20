@@ -16,6 +16,8 @@ import numpy as np
 from io import StringIO
 import random
 from networkx.drawing.nx_pydot import write_dot
+from pyvis.network import Network
+
 
 from types import ModuleType
 from typing import (
@@ -55,6 +57,7 @@ class DesignArtifact:
     code: str
     explain: str
     scale: str
+    summary: str
     instruct: str
     seed_ids: List[str]
     # rating: int = None
@@ -77,10 +80,17 @@ class DesignArtifact:
         if self.instruct:
             with open(U.pjoin(db_dir,self.acronym,"instruct.md"),'w') as f:
                 f.write(self.instruct)
+        with open(U.pjoin(db_dir,self.acronym,"summary.md"),'w') as f:
+            f.write(self.summary)
 
     @classmethod
     def load(cls, db_dir: str, id:str) -> DesignArtifact:
         return cls.from_dict(U.load_json(U.pjoin(db_dir,id,"artifact.json")))
+    
+    def to_desc(self) -> str:
+        title=self.title.replace(':',' ')
+        summary=self.summary.replace(':',' ').replace('.','.\n')
+        return f'{title} ({self.scale})\n\n{summary}'
     
 class PhylogeneticTree:
     # Read from a design base and construct a phylogenetic tree
@@ -119,18 +129,20 @@ class PhylogeneticTree:
         for seed_id, design_id in edges_to_add:
             self.G.add_edge(seed_id, design_id)
 
+    def viz(self,G,height=1000,width="100%"):
+        nt=Network(directed=True,height=height,width=width,notebook=True)
+        nt.from_nx(G)
+        nt.show(U.pjoin(self.db_dir, '..', "phylogenetic_tree.html"))
+
     def export(self):
         G=nx.DiGraph()
         for node in self.G.nodes:
             data=self.G.nodes[node]['data']
-            G.add_node(node,title=data.title,scale=data.scale,
-                    #    explain=data.explain.replace(':',' '),
-                    #    code=f'"{data.code}"'
-                    )
+            G.add_node(node,title=data.to_desc())
         for edge in self.G.edges:
             G.add_edge(edge[0],edge[1])
         write_dot(G, U.pjoin(self.db_dir, '..', "phylogenetic_tree.dot"))
-        
+        self.viz(G)
 
 
 def report_reader(report):
@@ -292,13 +304,15 @@ class EvolutionSystem(exec_utils.System):
             self.evolve()
         else:
             return self._evolve(scale_id)
+            
 
     def _evolve(self,scale_id): # do evolve that produce one design and operate the phylogenetic tree
         if scale_id==0:
-            K=np.random.choice([0,1,2,3],p=[0.05,0.4,0.4,0.15]) # TODO: upgrade this to be configurable and better (e.g. decay 0 with scales)
+            K=np.random.choice([0,1,2,3],p=[0.2,0.3,0.3,0.2]) # TODO: upgrade this to be configurable and better (e.g. decay 0 with scales)
         else:   
             K=np.random.choice([1,2,3],p=[0.4,0.4,0.2])
         instruct,seed_ids=self.select(K) # use the seed_ids to record the phylogenetic tree
+        instruct+=f'\nYou should be creative, do not copy the previous designs, design your own block. {np.random.rand()}'
         artifact=self.sample(scale_id,instruct) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
         if artifact is None:
             print("No design sampled")
@@ -310,14 +324,16 @@ class EvolutionSystem(exec_utils.System):
         self.state['budgets'][scale]-=1
         # self.state['unverified'].append(artifact['acronym'])
         self.save_state() # NOTE!!!: handle it carefully in multi-threading
+        self.ptree.export()
         return artifact['acronym']
 
     def sample(self,scale_id,instruct,verbose=True):
         """ Sample a design at a given scale and verify it """
         self.rnd_agent.set_config(self.scales[scale_id])
-        title,code,explain=self.rnd_agent(instruct) 
+        response=self.rnd_agent(instruct) 
+        title,code,explain,summary = response
         # title,code,explain,review,rating=self.rnd_agent(instruct) 
-        if title is None: # no design sampled
+        if response is None: # no design sampled
             return None
         for i in [' and ',' for ','-']:
             title=title.replace(i,' ')
@@ -334,6 +350,7 @@ class EvolutionSystem(exec_utils.System):
             'explain':explain,
             'scale':self.state['scales'][scale_id],
             'instruct':instruct,
+            'summary':summary,
             # 'review':review,
             # 'rating':rating,
         }
@@ -520,6 +537,6 @@ if __name__ == '__main__':
     # evolution_system._evolve(0)
 
 
-    test_evolve('evo_test_001')
+    test_evolve('evo_test_002')
 
     

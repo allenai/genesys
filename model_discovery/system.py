@@ -431,15 +431,34 @@ class ModelDiscoverySystem(exec_utils.System):
                 if stream:
                     stream.markdown(self_report["code"]) #<-- change
 
+        explain=self_report['code']
         ### TODO: query the review agent
         
 
 
         ### TODO: return the design artifacts: name, code, report, explanation, etc.
         if not found_design:
-            return None,None,None
-        title=self_report['code'].split('\n')[0].replace('#','').strip()
-        return title,code,self_report['code']#,review,rating
+            return None
+        
+        title=explain.split('\n')[0].replace('#','').strip()
+
+        ### Generate a summary
+        with status_handler(f"Generating summary..."):
+            self.logging.info('Generating summary of the design...')
+            summary_query = (
+                "Here is a design of an autoregressive language model block. "
+                "The code and explanation of the design are provided below:\n\n"
+                f"{explain}\n\nImplementation of {title}:\n\n{code}\n\n"
+                "Please summarize the design with a description of the design and a simple pseudo code that conclude the core idea in few sentences."
+            )
+            summary = self.designer(
+                summary_query,
+                source='user',
+            )['code']
+            if stream:
+                stream.markdown(summary)
+
+        return title,code,explain,summary#,review,rating
 
     def design(self,query):
         raise NotImplementedError
