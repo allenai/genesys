@@ -73,6 +73,9 @@ class DesignArtifact:
             f.write(self.code)
         with open(U.pjoin(db_dir,self.acronym,"explaination.md"),'w') as f:
             f.write(self.explain)
+        if self.instruct:
+            with open(U.pjoin(db_dir,self.acronym,"instruct.md"),'w') as f:
+                f.write(self.instruct)
 
 
     @classmethod
@@ -180,6 +183,7 @@ class EvolutionSystem(exec_utils.System):
             self.ckpt_dir=os.environ.get("CKPT_DIR")
         self.evo_dir=U.pjoin(self.ckpt_dir,self.evoname)
         U.mkdir(self.evo_dir)
+        self.select_method=self.params['select_method']
 
         # load or init the state
         self.state=self.load_state() # load the state by evoname
@@ -276,7 +280,10 @@ class EvolutionSystem(exec_utils.System):
             return self._evolve(scale_id)
 
     def _evolve(self,scale_id): # do evolve that produce one design and operate the phylogenetic tree
-        K=random.randint(1,2) # sample K designs
+        if scale_id==0:
+            K=np.random.choice([0,1,2,3],p=[0.05,0.4,0.4,0.15]) # TODO: upgrade this to be configurable and better (e.g. decay 0 with scales)
+        else:   
+            K=np.random.choice([1,2,3],p=[0.4,0.4,0.2])
         instruct,seed_ids=self.select(K) # use the seed_ids to record the phylogenetic tree
         artifact=self.sample(scale_id,instruct) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
         if artifact is None:
@@ -318,7 +325,7 @@ class EvolutionSystem(exec_utils.System):
         }
         return artifact
 
-    def make_artifact(self,design_id,report):
+    def make_artifact(self,design_id,report=None):
         code=self.ptree.G.nodes[design_id]['data'].code
         explain=self.ptree.G.nodes[design_id]['data'].explain
         title=self.ptree.G.nodes[design_id]['data'].title
@@ -327,14 +334,32 @@ class EvolutionSystem(exec_utils.System):
         config:GAMConfig=eval(f'GAMConfig_{scale}()')
         config_str=config.to_str()
         artifact_obj=f'## Title: {title}\n## Acronym: {acronym}\n\n## Code:\n\n{code}\n\n## Justification:\n\n{explain}'
-        artifact_obj+=f'\\## Config:\n\n{config_str}\n\n## Report:\n\n{json.dumps(report,indent=4)}'
+        artifact_obj+=f'\\## Config:\n\n{config_str}\n\n'
+        if report:
+            artifact_obj+=f'## Report:\n\n{json.dumps(report,indent=4)}'
         return artifact_obj
+    
+
+    # TODO: upgrade to Selector agent
 
     def select(self,K: int=1,selector_instruct=''): # K is the number of designs to sample, instruct is the instruction to the selector, select seeds or select populations
         """ Provide the instruction including seeds and instructs for the next design """
         K=min(K,len(self.ptree.G.nodes))
         if K==0: # no design to sample
             return '',[]
+        if self.select_method=='heuristic':
+            topk,reports = self.heuristic_select(K,selector_instruct)
+        elif self.select_method=='random':
+            topk,reports = self.random_select(K,selector_instruct)
+        if K==1: # Mutate
+            artifact_obj=self.make_artifact(topk[0],reports[topk[0]])
+            instruct=f'Please improve based on this design for the new design, think of how to overcome its weaknesses and absorb its advantage:\n\n{artifact_obj}'
+        else: # Cross-over
+            artifact_objs='\n\n\n'.join([self.make_artifact(design_id,reports[design_id]) for design_id in topk])
+            instruct=f'Please improve by combining the advantages and mitigating the disadvantages of these designs for the new design:\n\n{artifact_objs}'
+        return instruct,list(topk)
+        
+    def heuristic_select(self,K: int=1,selector_instruct=''):
         alpha=0.1
         sample_metrics={}
         sample_scale={}
@@ -355,13 +380,21 @@ class EvolutionSystem(exec_utils.System):
         prob=prob*np.array([v for k,v in sample_scale.items()]) # prefer the higher scale
         prob=prob/np.sum(prob)
         topk=np.random.choice(list(sample_metrics.keys()),size=K,replace=False,p=prob)
-        if K==1: # Mutate
-            artifact_obj=self.make_artifact(topk[0],reports[topk[0]])
-            instruct=f'Please improve based on this design for the new design, think of how to overcome its weaknesses and absorb its advantage:\n\n{artifact_obj}'
-        else: # Cross-over
-            artifact_objs='\n\n\n'.join([self.make_artifact(design_id,reports[design_id]) for design_id in topk])
-            instruct=f'Please improve by combining the advantages and mitigating the disadvantages of these designs for the new design:\n\n{artifact_objs}'
-        return instruct,list(topk)
+        return topk,reports
+
+    def random_select(self,K: int=1,selector_instruct=''):
+        topk=random.sample(self.ptree.G.nodes,K)
+        reports={}
+        for node in topk:
+            if U.pexists(U.pjoin(self.evo_dir,'ve',node,'report.json')):
+                report=U.load_json(U.pjoin(self.evo_dir,'ve',node,'report.json'))
+                report=report_reader(report)
+                reports[node]=report
+            else:
+                reports[node]=None
+        return topk,reports
+
+
     
     def verify(self): # run a single verify that verify one unverified design
         designed=os.listdir(U.pjoin(self.evo_dir,'db'))
@@ -428,36 +461,51 @@ def BuildEvolution(
 
 
 
+
+
+
+
+
+
+
+
+
+############################################################################################################
+
+def test_evolve(test_name):
+    strparams=[
+        f"evoname={test_name}",
+        "scales=14M,31M,70M",
+        "selection_ratio=0.25",
+        "select_method=random",
+    ]
+    evolution_system = BuildEvolution(
+        strparams=';'.join(strparams),
+        cache_type='diskcache',
+    )
+    while evolution_system.evolve():
+        pass
+
+
+
 if __name__ == '__main__':
     strparams=[
         "evoname=evolution_test1",
         "scales=14M,31M,70M",
         "selection_ratio=0.25",
+        "select_method=random",
     ]
 
     # evoname=ve_parser.parse_args().evoname
     # strparams.append(f"evoname={evoname}")
 
-    evolution_system = BuildEvolution(
-        strparams=';'.join(strparams),
-        cache_type='diskcache',
-    )
-
-    mode=ve_parser.parse_args().mode
-    # evolution_system._run(mode)
-
-    evolution_system._evolve(0)
-
-    # for i in range(1):
-    #     print('_'*50,f'Iteration {i}','_'*50)
-    #     artifact=evolution_system.sample(0,f'{random.random()}')
-        # for i in artifact:
-        #     print(f'{i}:',artifact[i])
+    # evolution_system = BuildEvolution(
+    #     strparams=';'.join(strparams),
+    #     cache_type='diskcache',
+    # )
+    # evolution_system._evolve(0)
 
 
-    # instruct,seeds=evolution_system.select(2)
-    # print(instruct)
-    # print(seeds)
+    test_evolve('evo_test_001')
 
     
-
