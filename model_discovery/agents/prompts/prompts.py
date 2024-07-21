@@ -29,6 +29,7 @@ Here are some hints:
 3. The parameter number of the layers should follow the magnitude by param_magnitude, and can not exceed or below it by param_threshold. You can achieve it through adjusting design or tuning hyperparameters. You may need to do math to estimate the parameter number before chosing the hyperparameters. You can estimate multiple times in your response until you find the proper hyperparameters.
 4. The model should be able to be parallel trained, which means you should not introduce recurrent operators like RNN or LSTM.
 5. The design should be innovative, you are not encouraged to simply copy an existing idea such as transformer block, you need to design your own block.
+6. All dimensions of your model should always be a function of d_model (e.g., 4 times of d_model), you should never ever manually set a dimension of a layer to a fixed number in your config.
 
 {instruct}
 

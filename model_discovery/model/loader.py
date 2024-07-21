@@ -13,7 +13,7 @@ def create_code(gam_code: str,gab_code: str) -> str:
     """
     return gab_code+'\n\n\n'+gam_code.replace('from modis_gam.model.gab import GAB, gab_config','')
 
-def reload_gam(config,gab_code: str,name: str = 'new'):
+def reload_gam(config,gab_code: str,name: str = 'new',autocfg={}):
     """Reloads the GAM code with new block 
 
     :param gab_code: 
@@ -28,6 +28,7 @@ def reload_gam(config,gab_code: str,name: str = 'new'):
     gab_config = {} 
     if "gab_config" in module:
         gab_config = module["gab_config"]()
+    gab_config.update(autocfg)
 
     ### register the new block  
     BlockRegister.add_block(

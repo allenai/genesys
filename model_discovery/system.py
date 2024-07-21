@@ -414,7 +414,16 @@ class ModelDiscoverySystem(exec_utils.System):
                 found_design = True
                 break
 
+        # try:
+        autoconfig = self.checker.tune(self._cfg,code,design_name)
+        # except Exception as e:
+        #     print(f"Error tuning the scale of designed model: {e}")
+        #     return None
+
+
+
         #### now have the agent defend the design
+
         if found_design: 
             report_query = (
                 "The designed model passed the tests, now please generate a text report explaining and justifying your design."
@@ -432,8 +441,9 @@ class ModelDiscoverySystem(exec_utils.System):
                     stream.markdown(self_report["code"]) #<-- change
 
         explain=self_report['code']
-        ### TODO: query the review agent
         
+        ### TODO: query the review agent
+
 
 
         ### TODO: return the design artifacts: name, code, report, explanation, etc.
@@ -441,7 +451,7 @@ class ModelDiscoverySystem(exec_utils.System):
             return None
         
         title=explain.split('\n')[0].replace('#','').strip()
-
+        
         ### Generate a summary
         with status_handler(f"Generating summary..."):
             self.logging.info('Generating summary of the design...')
@@ -458,7 +468,7 @@ class ModelDiscoverySystem(exec_utils.System):
             if stream:
                 stream.markdown(summary)
 
-        return title,code,explain,summary#,review,rating
+        return title,code,explain,summary,autoconfig#,review,rating
 
     def design(self,query):
         raise NotImplementedError

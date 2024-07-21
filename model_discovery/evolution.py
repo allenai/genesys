@@ -365,7 +365,7 @@ class EvolutionSystem(exec_utils.System):
         """ Sample a design at a given scale and verify it """
         self.rnd_agent.set_config(self.scales[scale_id])
         response=self.rnd_agent(instruct) 
-        title,code,explain,summary = response
+        title,code,explain,summary,autocfg = response
         # title,code,explain,review,rating=self.rnd_agent(instruct) 
         if response is None: # no design sampled
             return None
@@ -375,7 +375,8 @@ class EvolutionSystem(exec_utils.System):
 
         # modify the code to fit the block registry
         # TODO: change the registry name to acronyms
-        code+='\n\n\nfrom .block_registry import BlockRegister\n\nBlockRegister(\n    name="default",\n    config=gab_config()\n)(GAB)'
+        code+=f'\n\n\n{autocfg}\nblock_config=gab_config()\nblock_config.update(autoconfig)'
+        code+='\n\n\nfrom .block_registry import BlockRegister\n\nBlockRegister(\n    name="default",\n    config=block_config\n)(GAB)'
 
         artifact={
             'title':title,
@@ -537,7 +538,7 @@ def BuildEvolution(
 
 ############################################################################################################
 
-def test_evolve(test_name):
+def test_evolve(test_name,step=False):
     strparams=[
         f"evoname={test_name}",
         "scales=14M,31M,70M",
@@ -549,7 +550,8 @@ def test_evolve(test_name):
         cache_type='diskcache',
     )
     while evolution_system.evolve():
-        pass
+        if step:
+            break
 
 
 
@@ -571,6 +573,6 @@ if __name__ == '__main__':
     # evolution_system._evolve(0)
 
 
-    test_evolve('evo_test_002')
+    test_evolve('evo_test_003',step=True)
 
     

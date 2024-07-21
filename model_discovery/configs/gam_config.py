@@ -22,7 +22,7 @@ class GAMConfig(PretrainedConfig):
     vocab_size: int = None
     # training_token_multiplier: int = 20 # Now desinated by ve args
     training_weight: Dict[str, List[float]] = None
-    size_threshold: float = 0.2
+    size_threshold: float = 0.2 # e.g. Pythia 410M vs GPT 350M
     tokenizer: str = 'meta-llama/Llama-2-7b-hf'
     rms_norm: bool = True ### triton stuff
     residual_in_fp32: bool = True
@@ -71,7 +71,7 @@ class GAMConfig(PretrainedConfig):
 @dataclass
 class GAMConfig_14M(GAMConfig):
     scale: str = '14M'
-    d_model: int = 128
+    d_model: int = 64
     n_block: int = 6
     reference_size: int = 5280384
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])

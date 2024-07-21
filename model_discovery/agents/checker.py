@@ -153,6 +153,7 @@ class Checker(exec_utils.BaseTool):
 
         return True
     
+
     def check(self, config, gab_code: str, name: str) -> bool:
         """Runs through a bunch of checks for the new module at path 
 
@@ -207,6 +208,76 @@ class Checker(exec_utils.BaseTool):
 
         self.rprint("All tests passed!\n")
         return True,self.report
+    
+    # TODO: maybe tune layers as well, but its complicated due to embedding layer in small scale occupied a lot of size
+    def tune(self,config,gab_code,name)->str: # the model is already correct but we need to tune its scale
+        print('Tuning the model scale...')
+        d_model=config.d_model
+        assert d_model%128==0 # initial d_model from config should be a multiple of 128
+        vocab_size=config.vocab_size
+        reference_size=config.reference_size
+        threshold=config.size_threshold
+        step_size=d_model//8 # smallest d_model is 128
+        if d_model%3==0: # reference d_model is like 256, 384, 512, 768...
+            min_step=24
+        else:
+            min_step=16
+        step_size=max(step_size,min_step) 
+        UB=reference_size*(1+threshold)
+        LB=reference_size*(1-threshold)
+        print(f'Reference size: {reference_size}, threshold: {threshold}, upper bound: {UB}, lower bound: {LB}')
+
+        auto_cfg={'d_model':d_model}
+        glm,_ = reload_gam(config,gab_code,name,auto_cfg)
+        size=sum(p.numel() for p in glm.parameters())
+        if LB<size<UB:
+            print('The model size is already within the threshold.')
+            return 'autoconfig={}'
+        
+        DIR='UP' if size<LB else 'DOWN'
+        while True:
+            if step_size<min_step:
+                break
+            if DIR=='UP':
+                d_model+=step_size
+            else:
+                d_model-=step_size
+            print(f'Trying d_model={d_model}')
+            auto_cfg['d_model']=d_model
+            glm,_ = reload_gam(config,gab_code,name,auto_cfg)
+            size=sum(p.numel() for p in glm.parameters())
+            NEW_DIR='UP' if size<LB else 'DOWN'
+            if NEW_DIR!=DIR:
+                DIR=NEW_DIR
+                step_size=step_size//2
+
+        # Final adjustment to check whether the dim cause error (e.g., dim head)
+        DIR='UP' if size<reference_size else 'DOWN'
+        step_size=step_size//2
+        print(f'Checking model correctness with d_model={d_model}')
+        while True:
+            try:
+                if torch.cuda.is_available():
+                    glm = glm.cuda()
+                mock_input=torch.randint(0, vocab_size, (8, 500)).to(glm.device)
+                _ = glm(mock_input)
+                break
+            except Exception as e:
+                if DIR=='UP':
+                    d_model+=step_size
+                else:
+                    d_model-=step_size
+                print(f'The model is incorrect. Trying d_model={d_model}')
+                glm,_ = reload_gam(config,gab_code,name,auto_cfg)
+                size=sum(p.numel() for p in glm.parameters())
+                if size>reference_size*(1+2*threshold) or size<reference_size*(1-2*threshold):
+                    # Not likely to happen when reference d_model is a multiple of 128 and step_size is at least 8 or 12, but leave it for safety
+                    raise ValueError('The model is too far from the reference size and cannot be correctly tuned.')
+
+        print(f'The model is correct with d_model = {d_model}')
+        print('Model after tuned:')
+        glm.print_size()
+        return "autoconfig = {\n    'd_model': "+str(d_model)+"\n}"
     
     def __call__(self,path: str) -> bool:
         return self.check(path)

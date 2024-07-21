@@ -336,7 +336,11 @@ class ModisLMHeadModel(PreTrainedModel):
         :param initializer_cfg: 
         """
         self.config = config
-        self.d_model = config.d_model
+        if 'd_model' in block_config: # override d_model if it is in block_config for auto-tune
+            self.d_model = block_config['d_model']
+            block_config.pop('d_model')
+        else:
+            self.d_model = config.d_model
         n_block=config.n_block
         vocab_size = config.vocab_size
         pad_vocab_size_multiple = config.pad_vocab_size_multiple
