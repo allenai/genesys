@@ -342,7 +342,7 @@ class ModelDiscoverySystem(exec_utils.System):
             
         problem_history = []
 
-        query = f"{query}\nPlease only write raw Python code and nothing more, no special formatting or extra text."
+        # query = f"{query}\nPlease only write raw Python code and nothing more, no special formatting or extra text."
         query = DESIGNER_PROMPT.format(
             gab_base=GAB_BASE,
             gam_py=self.gam_py,
@@ -360,7 +360,7 @@ class ModelDiscoverySystem(exec_utils.System):
             design_name = f"{self._config.run_name}_{attempt}_{len(self._queries)}"
 
             with status_handler(f"Attempt {attempt+1}"): 
-            
+                
                 designer_out = self.designer(
                     query,
                     source=source,
@@ -370,14 +370,18 @@ class ModelDiscoverySystem(exec_utils.System):
             
                 try:
                     code = designer_out.get("code",None)
-                    problem_history.append((str(code),"assistant"))
-                
-                    if code and stream:
-                        stream.write('Model authored code block...')
-                        stream.markdown(f'```python\n{code}```')
-                        
-                    #if "# gab.py" not in code: raise
+                    text = designer_out.get("text")
+                    problem_history.append((str(text),"assistant"))
+
+                    
                     assert "# gab.py" in code 
+                
+                    if stream: #and code:
+                        stream.write('Model authored code block...')
+                        # stream.markdown(f'```python\n{code}```')
+                        stream.markdown(str(text))
+
+
 
                 # except Exception as e: # <-- should be checker's job?
                 #     query = f"An error was encountered when running the code, error={e}. Please try again."
@@ -414,7 +418,7 @@ class ModelDiscoverySystem(exec_utils.System):
                 found_design = True
                 break
 
-        # Leave it open for now for debugging, the model only fails if it designs a really huge block
+        ### Leave it open for now for debugging, the model only fails if it designs a really huge block
         # try:
         autoconfig = self.checker.tune(self._cfg,code,design_name)
         # except Exception as e:
@@ -439,9 +443,9 @@ class ModelDiscoverySystem(exec_utils.System):
                     manual_history=problem_history, 
                 )
                 if stream:
-                    stream.markdown(self_report["code"]) #<-- change
+                    stream.markdown(self_report["text"]) #<-- change
 
-        explain=self_report['code']
+        explain=self_report['text']
         
         ### TODO: query the review agent
 
@@ -465,7 +469,7 @@ class ModelDiscoverySystem(exec_utils.System):
             summary = self.designer(
                 summary_query,
                 source='user',
-            )['code']
+            )['text']
             if stream:
                 stream.markdown(summary)
 

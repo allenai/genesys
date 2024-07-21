@@ -40,12 +40,13 @@ class DesignerAgent(exec_utils.SimpleLMAgent):
             the running costs of the model.
         """
         raw_text = raw_output.text
+        output = {}
+
         codes = re.findall(r"```python(.*?)```", raw_text, re.DOTALL)
         if codes:
-            raw_text = codes[0]
-            
-        output = {}
-        output["code"] = raw_text
+            output["code"] = codes[0]
+
+        output["text"] = raw_text
         output["_details"] = {}
         output["_details"]["cost"] = raw_output.cost
         output["_details"]["running_cost"] = self.cost
@@ -79,4 +80,10 @@ class DesignerAgent(exec_utils.SimpleLMAgent):
         )
         response = self.parse_output(raw_response)
 
+        # print(query)
+        # print('*'*60)
+        # print(response['text'])
+
         return response
+
+    

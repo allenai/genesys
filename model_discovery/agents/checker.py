@@ -123,30 +123,30 @@ class Checker(exec_utils.BaseTool):
         self.rprint('Differentiability test passed')
         return True
 
-    def check_magnitude(
-            self,
-            size: int,
-            magnitude: float,
-            threshold: float
-        ) -> bool:
-        """Checks that the block maintains a certain limit on parameters 
+    # def check_magnitude(
+    #         self,
+    #         size: int,
+    #         magnitude: float,
+    #         threshold: float
+    #     ) -> bool:
+    #     """Checks that the block maintains a certain limit on parameters 
             
-        """
-        self.logging.info(f'Checking non-embedding parameter number again the magnitude: {magnitude}')
-        if size > (1+threshold)*magnitude:
-            exceed = (size-magnitude)/magnitude
-            self.rprint(
-                f'Parameter number exceeds the magnitude by {exceed}'
-            )
-            return False
-        elif size < (1-threshold)*magnitude:
-            below = (magnitude-size)/magnitude
-            self.rprint(
-                f'Parameter number if below the magnitude: {below}'
-            )
-            return False
-        self.rprint('Parameter number is within threshold')
-        return True
+    #     """
+    #     self.logging.info(f'Checking non-embedding parameter number again the magnitude: {magnitude}')
+    #     if size > (1+threshold)*magnitude:
+    #         exceed = (size-magnitude)/magnitude
+    #         self.rprint(
+    #             f'Parameter number exceeds the magnitude by {exceed}'
+    #         )
+    #         return False
+    #     elif size < (1-threshold)*magnitude:
+    #         below = (magnitude-size)/magnitude
+    #         self.rprint(
+    #             f'Parameter number if below the magnitude: {below}'
+    #         )
+    #         return False
+    #     self.rprint('Parameter number is within threshold')
+    #     return True
     
 
     def check_efficiency(self, model, vocab_size: int) -> bool:

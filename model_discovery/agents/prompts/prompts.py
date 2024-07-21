@@ -6,8 +6,9 @@ from dataclasses import dataclass, field, asdict
 #     * create 2 different types of blocks for layers with layer_idx%2=0,1
 #     * create 3 different types of blocks for layers with layer_idx%3=0,1,2
 #     * create 3 different types of blocks A,B,C, has AABC structure, then you can let layer_idx%4=0,1 for A, 2 for B, 3 for C
+# 1. Use different types of blocks is not required also there is no preference for heterogeneous or homogeneous blocks, you can choose to create only one type of block or multiple types of blocks.
 
-DESIGNER_PROMPT="""Design a novel autoregressive model block by completing the blanks marked in the python code file gab.py below, which includes the initialization where you can define your custom arguments, the forward function where you can define convenient functions in the GAB class such as caches, the configuration with the hyperparameters that correspond to the arguments you defined:
+DESIGNER_PROMPT="""Design a novel autoregressive model block by completing the blanks marked in the Python code file gab.py below, which includes the initialization where you can define your custom arguments, the forward function where you can define convenient functions in the GAB class such as caches, the configuration with the hyperparameters that correspond to the arguments you defined:
 
 {gab_py}
 
@@ -19,23 +20,24 @@ This code will be used to construct a gam model in gam.py:
 
 {gam_py}
 
-This is the configuration for the target model:
+This is the configuration and references for the target model:
 
 {config}
 
-Here are some hints:         
-1. Use different types of blocks is not required also there is no preference for heterogeneous or homogeneous blocks, you can choose to create only one type of block or multiple types of blocks.
-2. The gam model alraedy wrap the GAB blocks with residual connections, normalization, and a gated MLP, so when you design the block, you need to consider that and avoid redundant design.
-3. The parameter number of the layers should follow the magnitude by param_magnitude, and can not exceed or below it by param_threshold. You can achieve it through adjusting design or tuning hyperparameters. You may need to do math to estimate the parameter number before chosing the hyperparameters. You can estimate multiple times in your response until you find the proper hyperparameters.
-4. The model should be able to be parallel trained, which means you should not introduce recurrent operators like RNN or LSTM.
-5. The design should be innovative, you are not encouraged to simply copy an existing idea such as transformer block, you need to design your own block.
-6. All dimensions of your model should always be a function of d_model (e.g., 4 times of d_model), you should never ever manually set a dimension of a layer to a fixed number in your config.
+Here are some hints:      
+1. You need to consider the GAM model structure and the default operations like the normalization when designing the GAB block. 
+2. You need to consider the magnitute of the model based on the reference model size, d_model and n_blocks. The n_blocks can be automatically adjusted so do not need to worry too much.
+3. The model should be able to be parallel trained, which means you should not introduce recurrent operators like RNN or LSTM. The model should always be causal and differentiable.
+4. The design should be innovative, you are not encouraged to simply copy an existing idea such as transformer block, you need to design your own block.
+5. All dimensions of your model should always be a function of d_model (e.g., 4 times of d_model), you should never ever manually set a dimension of a layer to a fixed number in your config.
 
 {instruct}
 
-Now, use the information provided above to complete the code. You are not allowed to change anything besides the GAB class in gab.py.
+Now, use the information provided above to complete the code. You should strictly follow the instructions in gab.py and do not remove anything suggested by the instructions.
 
-Your response should include the full gab.py file with the completed code. You should derive your design step by step with detailed analysis and explanation. Specifically, when providing the full gab.py file, please preserve # gab.py at the beginning of the file.
+Your response should include the full gab.py file with the completed code. 
+Specifically, when providing the full gab.py file, please preserve # gab.py at the beginning of the file.
+You should derive your design step by step with detailed analysis and explanation before writing your code. 
 """
 
 REVIEWER_PROMPT="""This is the proposal of the design of the general autoregressive block (gab) for you to review:

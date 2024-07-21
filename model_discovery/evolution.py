@@ -566,13 +566,71 @@ if __name__ == '__main__':
     # evoname=ve_parser.parse_args().evoname
     # strparams.append(f"evoname={evoname}")
 
-    # evolution_system = BuildEvolution(
-    #     strparams=';'.join(strparams),
-    #     cache_type='diskcache',
-    # )
-    # evolution_system._evolve(0)
-
-
+    evolution_system = BuildEvolution(
+        strparams=';'.join(strparams),
+        cache_type='diskcache',
+    )
     test_evolve('evo_test_003',step=True)
+
+
+
+    code_MHA='''
+# gab.py
+
+import torch
+import torch.nn as nn
+
+from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMPORT STATEMENT #
+
+class GAB(GABBase):
+    """Generalized Autoregressive Block
+        Input:        X: (batch, seqlen, embed_dim)
+        Output:       Y: (batch, seqlen, embed_dim)
+        Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
+    """
+    def __init__(self, embed_dim: int, device=None, dtype=None, n_heads=8, ff_dim=None, dropout=0.1): 
+        factory_kwargs = {"device": device, "dtype": dtype} 
+        super().__init__(embed_dim)
+        
+        if ff_dim is None:
+            ff_dim = 4 * embed_dim  # Feed-forward dimension is 4 times the embedding dimension
+        
+        self.attention = nn.MultiheadAttention(embed_dim, n_heads, dropout=dropout, **factory_kwargs)
+        self.feed_forward = nn.Sequential(
+            nn.Linear(embed_dim, ff_dim, **factory_kwargs),
+            nn.ReLU(),
+            nn.Dropout(dropout),
+            nn.Linear(ff_dim, embed_dim, **factory_kwargs)
+        )
+        self.layer_norm1 = nn.LayerNorm(embed_dim, **factory_kwargs)
+        self.layer_norm2 = nn.LayerNorm(embed_dim, **factory_kwargs)
+        self.dropout = nn.Dropout(dropout)
+
+    def _forward(self, X, **kwargs): 
+        attn_output, _ = self.attention(X, X, X)
+        X = X + self.dropout(attn_output)
+        X = self.layer_norm1(X)
+        ff_output = self.feed_forward(X)
+        X = X + self.dropout(ff_output)
+        X = self.layer_norm2(X)
+        return X
+    
+def gab_config()->dict: 
+    """Returns a dictionary of hyperparameters for constructing a GAB layer
+        embed_dim, device, dtype should not be included in the dictionary which will be provided by the system
+    """
+    return {
+        'n_heads': 8,
+        'ff_dim': None,  # This will be set to 4 * embed_dim in the GAB class
+        'dropout': 0.1
+    }
+'''
+
+    checker=evolution_system.rnd_agent.checker
+    cfg=evolution_system.rnd_agent._cfg
+    design_name='test_design'
+    code=code_MHA
+    # checkpass,check_report = checker.check(cfg,code,design_name)
+
 
     

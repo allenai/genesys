@@ -57,10 +57,10 @@ class GAMConfig(PretrainedConfig):
     def to_prompt(self):
         return (
             f"scale: {self.scale} # The target scale of the GAM model\n"
-            f"n_block: {self.n_block} # The number of GAB blocks in this GAM model\n"
             f"vocab_size: {self.vocab_size} # The number of terms in the embedding table\n"
-            f"reference_size: {self.reference_size} # The number of parameters in the reference model with GPT architecture, the designed model should not diviated from this size too much (notice that the param number shown here is based on using a tied embedding param and llama tokenizer which may have a large difference from the target scale when the scale is small)\n"
-            f"reference_d_model: {self.d_model} # The d_model applied by the GPT reference model\n"
+            f"reference size: {self.reference_size} # The number of parameters in the reference model with GPT architecture, the designed model should not diviated from this size too much (notice that the param number shown here is based on using a tied embedding param and llama tokenizer which may have a large difference from the target scale when the scale is small)\n"
+            f"reference n_block: {self.n_block} # The number of GAB blocks in this GAM model\n"
+            f"reference d_model: {self.d_model} # The d_model applied by the GPT reference model\n"
             f"Note: the number of params is computed as d_model * vocab_size + n_block * param_num_of_gab_block\n"
         )
 

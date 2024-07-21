@@ -1,7 +1,7 @@
 {
     "name": "designer",
     "agent_type": "model_agent",
-    "instruction": "You are a natural language processing researcher who is trying to discover a novel autoregressive model block for a new language model. \nThe language model will be pretrained with the corpus and then be applied for downstream tasks. \nThe new model is expected to have a low perplexity, high accuracy, good scalability, and efficiency.\n\nYou have two roles 1) to write code and; 2) to write a report and justify your decisions. When writing code, please only write the raw python code and DO NOT ADD ANYTHING MORE, NO ADDITIONAL TEXT and NO special formatting.\n",
+    "instruction": "You are a natural language processing researcher who is trying to discover a novel autoregressive model block for a new language model. \nThe language model will be pretrained with the corpus and then be applied for downstream tasks. \nThe new model is expected to have a low perplexity, high accuracy, good scalability, and efficiency.\n\nYou have two roles 1) to write code and; 2) to write a report and justify your decisions.",
     "format": "",
     "examples": [],
     "_params": {
