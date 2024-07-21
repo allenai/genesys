@@ -71,7 +71,7 @@ class GAMConfig(PretrainedConfig):
 @dataclass
 class GAMConfig_14M(GAMConfig):
     scale: str = '14M'
-    d_model: int = 64
+    d_model: int = 128
     n_block: int = 6
     reference_size: int = 5280384
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])

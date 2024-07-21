@@ -210,50 +210,69 @@ class Checker(exec_utils.BaseTool):
         return True,self.report
     
     # TODO: maybe tune layers as well, but its complicated due to embedding layer in small scale occupied a lot of size
-    def tune(self,config,gab_code,name)->str: # the model is already correct but we need to tune its scale
+    def tune(self,config,gab_code,name,tune_dim=True)->str: # the model is already correct but we need to tune its scale
         print('Tuning the model scale...')
         d_model=config.d_model
-        assert d_model%128==0 # initial d_model from config should be a multiple of 128
+        n_block=config.n_block
+        # assert d_model%128==0 # initial d_model from config should be a multiple of 128
         vocab_size=config.vocab_size
         reference_size=config.reference_size
         threshold=config.size_threshold
-        step_size=d_model//8 # smallest d_model is 128
-        if d_model%3==0: # reference d_model is like 256, 384, 512, 768...
-            min_step=24
-        else:
-            min_step=16
-        step_size=max(step_size,min_step) 
         UB=reference_size*(1+threshold)
         LB=reference_size*(1-threshold)
         print(f'Reference size: {reference_size}, threshold: {threshold}, upper bound: {UB}, lower bound: {LB}')
 
-        auto_cfg={'d_model':d_model}
-        glm,_ = reload_gam(config,gab_code,name,auto_cfg)
+        glm,_ = reload_gam(config,gab_code,name)
         size=sum(p.numel() for p in glm.parameters())
         if LB<size<UB:
             print('The model size is already within the threshold.')
             return 'autoconfig={}'
         
-        DIR='UP' if size<LB else 'DOWN'
+        # Tune n_blocks first, then d_model, idea is to maximally keep the size of embedding layer first
+        DIR=1 if size<LB else -1
         while True:
-            if step_size<min_step:
-                break
-            if DIR=='UP':
-                d_model+=step_size
-            else:
-                d_model-=step_size
-            print(f'Trying d_model={d_model}')
-            auto_cfg['d_model']=d_model
+            n_block+=1
+            print(f'Trying n_block={n_block}')
+            auto_cfg={'n_block':n_block}
             glm,_ = reload_gam(config,gab_code,name,auto_cfg)
             size=sum(p.numel() for p in glm.parameters())
-            NEW_DIR='UP' if size<LB else 'DOWN'
+            if LB<size<UB:
+                print('Model after tuned:')
+                glm.print_size()
+                return "autoconfig = {\n    'n_block': "+str(n_block)+"\n}"
+            if (DIR==1 and size>UB) or (DIR==-1 and size<LB):
+                print('The model size requirement cannot be met by tuning n_block.')
+                break
+    
+        if not tune_dim:
+            raise ValueError('The model size requirement cannot be met by tuning n_block.')
+                
+        print('Tuning d_model...')
+        step_size=d_model//8 # smallest d_model is 128
+        if d_model%3==0: # like 384, 768...
+            min_step=24
+        else:
+            min_step=16
+        step_size=max(step_size,min_step) 
+
+        DIR=1 if size<LB else -1
+        while True: # tune d_model as little as possible
+            if (step_size<min_step) or (LB<size<UB):
+                break
+            d_model+=step_size*DIR
+            print(f'Trying d_model={d_model}, n_block={n_block}')
+            auto_cfg={'d_model':d_model,'n_block':n_block}
+            glm,_ = reload_gam(config,gab_code,name,auto_cfg)
+            size=sum(p.numel() for p in glm.parameters())
+            NEW_DIR=1 if size<reference_size else -1
             if NEW_DIR!=DIR:
                 DIR=NEW_DIR
                 step_size=step_size//2
-
-        # Final adjustment to check whether the dim cause error (e.g., dim head)
-        DIR='UP' if size<reference_size else 'DOWN'
-        step_size=step_size//2
+        # if not LB<size<UB: # usually unless the agent create a over huge block
+        #     raise ValueError('The model size requirement cannot be met by tuning d_model.')
+        
+        # Final adjustment of dim to check whether the dim cause error (e.g., dim head)
+        DIR=1 if size<reference_size else -1
         print(f'Checking model correctness with d_model={d_model}')
         while True:
             try:
@@ -263,10 +282,7 @@ class Checker(exec_utils.BaseTool):
                 _ = glm(mock_input)
                 break
             except Exception as e:
-                if DIR=='UP':
-                    d_model+=step_size
-                else:
-                    d_model-=step_size
+                d_model+=step_size*DIR
                 print(f'The model is incorrect. Trying d_model={d_model}')
                 glm,_ = reload_gam(config,gab_code,name,auto_cfg)
                 size=sum(p.numel() for p in glm.parameters())
@@ -277,7 +293,7 @@ class Checker(exec_utils.BaseTool):
         print(f'The model is correct with d_model = {d_model}')
         print('Model after tuned:')
         glm.print_size()
-        return "autoconfig = {\n    'd_model': "+str(d_model)+"\n}"
+        return "autoconfig = {\n    'd_model': "+str(d_model)+"\n    'n_block': "+str(n_block)+"\n}"
     
     def __call__(self,path: str) -> bool:
         return self.check(path)

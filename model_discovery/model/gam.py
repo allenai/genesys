@@ -341,7 +341,11 @@ class ModisLMHeadModel(PreTrainedModel):
             block_config.pop('d_model')
         else:
             self.d_model = config.d_model
-        n_block=config.n_block
+        if 'n_block' in block_config: # override n_block if it is in block_config for auto-tune
+            self.n_block = block_config['n_block']
+            block_config.pop('n_block')
+        else:
+            self.n_block = config.n_block
         vocab_size = config.vocab_size
         pad_vocab_size_multiple = config.pad_vocab_size_multiple
         factory_kwargs = {"device": device, "dtype": dtype}
@@ -351,7 +355,7 @@ class ModisLMHeadModel(PreTrainedModel):
             vocab_size += pad_vocab_size_multiple - (vocab_size % pad_vocab_size_multiple)
         self.backbone = GAM(
             d_model=self.d_model,
-            n_block=n_block,
+            n_block=self.n_block,
             block_implementation=block_implementation,
             block_config=block_config,
             vocab_size=vocab_size,
@@ -368,7 +372,7 @@ class ModisLMHeadModel(PreTrainedModel):
         self.apply(
             partial(
                 _init_weights,
-                n_block=n_block,
+                n_block=self.n_block,
                 **(initializer_cfg if initializer_cfg is not None else {}),
             )
         )

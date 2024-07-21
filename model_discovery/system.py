@@ -414,6 +414,7 @@ class ModelDiscoverySystem(exec_utils.System):
                 found_design = True
                 break
 
+        # Leave it open for now for debugging, the model only fails if it designs a really huge block
         # try:
         autoconfig = self.checker.tune(self._cfg,code,design_name)
         # except Exception as e:
