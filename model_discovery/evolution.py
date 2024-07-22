@@ -61,13 +61,13 @@ NODE_COLOR_MAP={
 
 
 NODE_SIZE_MAP={
-    '14M':20,
-    '31M':25,
-    '70M':30,
-    '125M':35,
-    '350M':40,
-    '760M':45,
-    '1300M':50,
+    '14M':15,
+    '31M':20,
+    '70M':25,
+    '125M':30,
+    '350M':35,
+    '760M':40,
+    '1300M':45,
 }
 
 
@@ -81,8 +81,8 @@ class DesignArtifact:
     summary: str
     instruct: str
     seed_ids: List[str]
-    # rating: int = None
-    # review: str = None
+    rating: int
+    review: str
 
     def to_dict(self) -> Dict:
         return asdict(self)
@@ -103,6 +103,9 @@ class DesignArtifact:
                 f.write(self.instruct)
         with open(U.pjoin(db_dir,self.acronym,"summary.md"),'w') as f:
             f.write(self.summary)
+        with open(U.pjoin(db_dir,self.acronym,"review.md"),'w') as f:
+            f.write(self.review+f'\n\n## Rating\n{self.rating} out of 5')
+        
 
     @classmethod
     def load(cls, db_dir: str, id:str) -> DesignArtifact:
@@ -111,7 +114,7 @@ class DesignArtifact:
     def to_desc(self) -> str:
         title=self.title.replace(':',' ')
         summary=self.summary.replace(':',' ').replace('.','.\n')
-        return f'{title} ({self.scale})\n\n{summary}'
+        return f'{title} ({self.scale})\n\n{summary}\n\nRating: {self.rating} out of 5'
     
 class PhylogeneticTree:
     # Read from a design base and construct a phylogenetic tree
@@ -168,7 +171,7 @@ class PhylogeneticTree:
             G.add_node(
                 node,
                 title=data.to_desc(),
-                size=NODE_SIZE_MAP[scale]-5,
+                size=NODE_SIZE_MAP[scale],
                 color=NODE_COLOR_MAP[scale],
                 scale=scale,
                 # rating=data.rating
@@ -365,10 +368,9 @@ class EvolutionSystem(exec_utils.System):
         """ Sample a design at a given scale and verify it """
         self.rnd_agent.set_config(self.scales[scale_id])
         response=self.rnd_agent(instruct) 
-        title,code,explain,summary,autocfg = response
-        # title,code,explain,review,rating=self.rnd_agent(instruct) 
         if response is None: # no design sampled
             return None
+        title,code,explain,summary,autocfg,review,rating=response
         for i in [' and ',' for ','-']:
             title=title.replace(i,' ')
         acronym=''.join([i[0].upper() for i in title.split(' ') if i.isalpha()])
@@ -386,8 +388,8 @@ class EvolutionSystem(exec_utils.System):
             'scale':self.state['scales'][scale_id],
             'instruct':instruct,
             'summary':summary,
-            # 'review':review,
-            # 'rating':rating,
+            'review':review,
+            'rating':rating,
         }
         return artifact
 
@@ -397,10 +399,13 @@ class EvolutionSystem(exec_utils.System):
         title=self.ptree.G.nodes[design_id]['data'].title
         acronym=self.ptree.G.nodes[design_id]['data'].acronym
         scale=self.ptree.G.nodes[design_id]['data'].scale
+        review=self.ptree.G.nodes[design_id]['data'].review
+        rating=self.ptree.G.nodes[design_id]['data'].rating
         config:GAMConfig=eval(f'GAMConfig_{scale}()')
-        config_str=config.to_str()
+        config_str=config.to_prompt()
         artifact_obj=f'## Title: {title}\n## Acronym: {acronym}\n\n## Code:\n\n{code}\n\n## Justification:\n\n{explain}'
-        artifact_obj+=f'\\## Config:\n\n{config_str}\n\n'
+        artifact_obj+=f'\\## Config and Reference:\n\n{config_str}\n\n'
+        artifact_obj+=f'## Review:\n\n{review}\n\n## Rating:\n\n{rating} out of 5\n\n'
         if report:
             artifact_obj+=f'## Report:\n\n{json.dumps(report,indent=4)}'
         return artifact_obj
@@ -570,8 +575,7 @@ if __name__ == '__main__':
         strparams=';'.join(strparams),
         cache_type='diskcache',
     )
-    # test_evolve('evo_test_003',step=True)
-
+    test_evolve('evo_test_003',step=True)
 
 
     code_MHA='''
@@ -629,7 +633,7 @@ def gab_config()->dict:
     cfg=evolution_system.rnd_agent._cfg
     design_name='test_design'
     code=code_MHA
-    checkpass,check_report = checker.check(cfg,code,design_name)
+    # checkpass,check_report = checker.check(cfg,code,design_name)
 
 
     

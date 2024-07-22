@@ -6,6 +6,8 @@ import os
 import json
 import time
 import tempfile
+import copy
+import uuid
 
 #from IPython.display import display, Markdown, Latex
 from types import ModuleType
@@ -111,7 +113,7 @@ class CustomParams(exec_utils.ModuleParams):
         }
     )
     reviewer_threshold: int = exec_utils.ParamField(
-        default=5,
+        default=3,
         metadata={
             "help"         : 'The threshold for accepting a design',
             "exclude_hash" : True,
@@ -317,6 +319,75 @@ class ModelDiscoverySystem(exec_utils.System):
     def set_config(self,cfg:GAMConfig): # reset the gam config of the system
         self._cfg = cfg
 
+
+    def design(self,query,designer_context,stream,status_handler): # input query, context, output design and explanation
+        problem_history = copy.deepcopy(designer_context) # a new dialog branch
+        source='user'
+
+        for attempt in range(self._config.max_design_attempts):
+            self.logging.info(f'Attempting design, attempt={attempt}')
+            
+            design_name = f"{self._config.run_name}_{attempt}_{len(self._queries)}"
+
+            with status_handler(f"Attempt {attempt+1}"): 
+                
+                designer_out = self.designer(
+                    query,
+                    source=source,
+                    manual_history=problem_history, #<--- dialogue history and state
+                )
+                problem_history.append((query,source))
+            
+                try:
+                    code = designer_out.get("code",None)
+                    text = designer_out.get("text")
+                    problem_history.append((str(text),"assistant"))
+
+                    assert "# gab.py" in code 
+                
+                    if stream: #and code:
+                        stream.write('Model authored code block...')
+                        stream.markdown(str(text))
+
+                except AssertionError:
+                    source = "user"
+                    query  = GAB_ERROR
+                    continue 
+                
+                checkpass,check_report = self.checker.check(self._cfg,code,design_name)
+                
+                if stream:
+                    stream.write(
+                        f"""<details><summary>code check</summary>{check_report}</details>""",
+                        unsafe_allow_html=True
+                    )
+                
+                if checkpass:
+                    report_query = (
+                        "The designed model passed the tests, now please generate a text report explaining and justifying your design."
+                        " Generate a creative name of your design as the title of your report in the first line of your response."
+                        " Do not include abbreviations or acronyms of your design in the title. You can use them in the body of the report."
+                    )
+                    with status_handler(f"Querying agent for report..."):
+                        self.logging.info('Now trying to compile self report...')
+                        self_report = self.designer(
+                            report_query,
+                            source='user',
+                            manual_history=problem_history, # TODO: simplify this, full debugging process maybe not useful
+                        )
+                        if stream:
+                            stream.markdown(self_report["text"]) #<-- change
+
+                    explain=self_report['text']
+                    return code,explain
+                else:
+                    query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix"
+                    source = 'user'
+                    self.checker.reset()
+
+        return None
+        
+
     def query_system(
         self,
         query: Optional[str] = '',
@@ -340,122 +411,63 @@ class ModelDiscoverySystem(exec_utils.System):
         if stream is None and self._config.debug_steps:
             stream = PrintSystem(self._config)
             
-        problem_history = []
+        designer_context = [] # should be input, design, review, design, review, ...
 
         # query = f"{query}\nPlease only write raw Python code and nothing more, no special formatting or extra text."
-        query = DESIGNER_PROMPT.format(
+        designer_query = DESIGNER_PROMPT.format(
             gab_base=GAB_BASE,
             gam_py=self.gam_py,
             gab_py=self.gab_py,
             config=self._cfg.to_prompt(), #<--- need to parameterize 
             instruct=query,
         )
-        source = 'user'
         found_design = False
-        self._queries.append(query)
-        
-        for attempt in range(self._config.max_design_attempts):
-            self.logging.info(f'Attempting design, attempt={attempt}')
+        self._queries.append(designer_query)
+
+        for _ in range(self._config.max_design_refines):
+            response = self.design(query,designer_context,stream,status_handler)
+            if response is None: continue
+
+            code,explain = response
+            proposal=f'{explain}\n\nImplementation:\n\n{code}\n\n'
+            designer_context.append((query,"user")) 
+            designer_context.append((proposal,"assistant"))
             
-            design_name = f"{self._config.run_name}_{attempt}_{len(self._queries)}"
-
-            with status_handler(f"Attempt {attempt+1}"): 
-                
-                designer_out = self.designer(
-                    query,
-                    source=source,
-                    manual_history=problem_history, #<--- dialogue history and state
-                )
-                problem_history.append((query,source))
-            
-                try:
-                    code = designer_out.get("code",None)
-                    text = designer_out.get("text")
-                    problem_history.append((str(text),"assistant"))
-
-                    
-                    assert "# gab.py" in code 
-                
-                    if stream: #and code:
-                        stream.write('Model authored code block...')
-                        # stream.markdown(f'```python\n{code}```')
-                        stream.markdown(str(text))
-
-
-
-                # except Exception as e: # <-- should be checker's job?
-                #     query = f"An error was encountered when running the code, error={e}. Please try again."
-                #     source = 'user'
-                #     continue
-                except AssertionError:
-                    source = "user"
-                    query  = GAB_ERROR
-                    continue 
-                
-                checkpass,check_report = self.checker.check(self._cfg,code,design_name)
-                # mp.set_start_method('spawn')
-                # queue = mp.Queue()
-                # testing_process = mp.Process(target=self.run_check, args=(self, code, design_name, queue))
-                # testing_process.start()
-                # testing_process.join()
-                # checkpass, check_report = queue.get()
-                            
-                if stream:
-                    stream.write(
-                        f"""<details><summary>code check</summary>{check_report}</details>""",
-                        unsafe_allow_html=True
-                    )
-                
-                ### FOR DEBUGGING, REMEMBER TO UNCOMMENT!
-                if not checkpass:
-                    query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix"
-                    source = 'user'
-                    self.checker.reset()
-                    continue 
-
-                problem_history.append(("The designed model passed, now scoring","user"))
-
-                found_design = True
-                break
-
-        ### Leave it open for now for debugging, the model only fails if it designs a really huge block
-        # try:
-        autoconfig = self.checker.tune(self._cfg,code,design_name)
-        # except Exception as e:
-        #     print(f"Error tuning the scale of designed model: {e}")
-        #     return None
-
-
-
-        #### now have the agent defend the design
-
-        if found_design: 
-            report_query = (
-                "The designed model passed the tests, now please generate a text report explaining and justifying your design."
-                " Generate a creative name of your design as the title of your report in the first line of your response."
-                " Do not include abbreviations or acronyms of your design in the title. You can use them in the body of the report."
+            reviewer_query = REVIEWER_PROMPT.format(
+                proposal=proposal,
+                gab_base=GAB_BASE,
+                gam_py=self.gam_py,
+                instruct='' # TODO: add references from S2 etc.
             )
-            with status_handler(f"Querying agent for report..."):
-                self.logging.info('Now trying to compile self report...')
-                self_report = self.designer(
-                    report_query,
+            with status_handler(f"Querying reviewer agent for review..."):
+                response = self.reviewer( # maybe multiple reviewers?
+                    reviewer_query,
                     source='user',
-                    manual_history=problem_history, 
+                    # No history for reviewer or would some history be useful?
                 )
                 if stream:
-                    stream.markdown(self_report["text"]) #<-- change
+                    stream.markdown(response["text"])
+                rating = response["rating"]
+                review = response["review"]
+                if rating >= self._config.reviewer_threshold:
+                    found_design = True
+                    break
+            
+            # remember to change the prompt if using multiple reviewers
+            query=f'The design didn\'t pass the review process, here is the feedback from the reviewer, please improve your design based on the review:\n\n{review}\n\n## Rating\n{rating} out of 5'
 
-        explain=self_report['text']
-        
-        ### TODO: query the review agent
 
-
-
-        ### TODO: return the design artifacts: name, code, report, explanation, etc.
         if not found_design:
             return None
         
-        title=explain.split('\n')[0].replace('#','').strip()
+        title=explain.split('\n')[0].replace('#','').strip()+'_'+str(uuid.uuid4().hex[:6])
+
+        ### Leave it open for now for debugging, the model only fails if it designs a really huge block
+        # try:
+        autocfg = self.checker.tune(self._cfg,code,title)
+        # except Exception as e:
+        #     print(f"Error tuning the scale of designed model: {e}")
+        #     return None
         
         ### Generate a summary
         with status_handler(f"Generating summary..."):
@@ -473,10 +485,8 @@ class ModelDiscoverySystem(exec_utils.System):
             if stream:
                 stream.markdown(summary)
 
-        return title,code,explain,summary,autoconfig#,review,rating
+        return title,code,explain,summary,autocfg,review,rating
 
-    def design(self,query):
-        raise NotImplementedError
 
     def run_check(self,code,design_name,queue):
         checkpass,check_report = self.checker.check(self._cfg,code,design_name)
@@ -507,7 +517,6 @@ class ModelDiscoverySystem(exec_utils.System):
             agent_file=config.reviewer_spec,
             agent_model_type="reviewer_agent"
         )
-        
         
         ### get the model information for context
         cfg = eval(f"{config.gam_config}()")

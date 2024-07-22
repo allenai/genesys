@@ -24,6 +24,8 @@ def reload_gam(config,gab_code: str,name: str = 'new',autocfg={}):
     """
     module = {}
     exec(gab_code.replace("class GAB","class GABCustom"),module)
+    if "GABCustom" not in module:
+        raise ValueError("GAB not found in module. You should never ever change the class name of GAB and it should always inherit from GABBase.")
     GAB = module["GABCustom"]
     gab_config = {} 
     if "gab_config" in module:

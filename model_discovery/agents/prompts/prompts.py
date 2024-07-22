@@ -12,7 +12,7 @@ DESIGNER_PROMPT="""Design a novel autoregressive model block by completing the b
 
 {gab_py}
 
-The GAB is inhereted from this GABBase class:
+The GAB is inherited from this GABBase class, you should never remove the statement that import the GABBase class from gab.py:
 
 {gab_base}
 
@@ -43,6 +43,14 @@ You should derive your design step by step with detailed analysis and explanatio
 REVIEWER_PROMPT="""This is the proposal of the design of the general autoregressive block (gab) for you to review:
 
 {proposal}
+
+The GAB is inhereted from this GABBase class:
+
+{gab_base}
+
+The definition of a gam model in gam.py:
+
+{gam_py}
 
 {instruct}
 
