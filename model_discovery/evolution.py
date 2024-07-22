@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import sys
+import re
 import exec_utils
 import pathlib
 import os
@@ -17,7 +18,6 @@ from io import StringIO
 import random
 from networkx.drawing.nx_pydot import write_dot
 from pyvis.network import Network
-import markdown
 
 
 from types import ModuleType
@@ -117,9 +117,21 @@ class DesignArtifact:
     def to_desc(self) -> str:
         title=self.title.replace(':',' ')
         summary=self.summary.replace(':',' ')
-        mdtext=f'{title} ({self.scale})\n\n{summary}\n\n## Rating\n{self.rating} out of 5'
-        htmlmd=markdown.markdown(mdtext)
-        return htmlmd
+
+        # Split the summary into parts: code blocks and non-code blocks
+        code_block_pattern = re.compile(r'(```python[\s\S]*?```)', re.MULTILINE)
+        numbered_list_pattern = re.compile(r'(\d+\.\s[^\n]*\n)', re.MULTILINE)
+        parts = re.split(r'(```python[\s\S]*?```|\d+\.\s[^\n]*\n)', summary)
+
+        # Replace colons in the non-code block parts
+        for i in range(len(parts)):
+            if not code_block_pattern.match(parts[i]) and not numbered_list_pattern.match(parts[i]):
+                parts[i] = parts[i].replace('.', '.\n').replace(';', ';\n').replace('?', '?\n').replace('!', '!\n').replace(',', '\n')
+
+        # Join the parts back together
+        summary = ''.join(parts)
+        mdtext=f'# {title} ({self.scale})\n\n{summary}\n\n## Rating\n{self.rating} out of 5'
+        return mdtext
     
 class PhylogeneticTree:
     # Read from a design base and construct a phylogenetic tree
@@ -158,17 +170,19 @@ class PhylogeneticTree:
         for seed_id, design_id in edges_to_add:
             self.G.add_edge(seed_id, design_id)
 
-    def viz(self,G,height=1000,width="100%",layout=False):
+    def viz(self,G,height=10000,width="100%",layout=False):
         nt=Network(
-            directed=True,height=height,width=width,notebook=True,
-            layout=layout, #bgcolor="#222222", font_color="#ffffff",
+            directed=True,height=height,width=width,
+            layout=layout, bgcolor="#fafafa", #font_color="#ffffff",
             #select_menu=True, # filter_menu=True,
             # heading=f'Phylogenetic Tree for {self.db_dir.split("/")[-2]}'
         )
+        nt.prep_notebook(True,'./etc/ptree_template.html')
         nt.from_nx(G)
-        nt.show(U.pjoin(self.db_dir, '..', "phylogenetic_tree.html"))
+        fname='PTree.html' if not layout else 'PTree_layout.html'
+        nt.show(U.pjoin(self.db_dir, '..', fname))
 
-    def export(self,layout=False):
+    def export(self):
         G=nx.DiGraph()        
         for node in self.G.nodes:
             data=self.G.nodes[node]['data']
@@ -187,7 +201,8 @@ class PhylogeneticTree:
         for edge in self.G.edges:
             G.add_edge(edge[0],edge[1])
         write_dot(G, U.pjoin(self.db_dir, '..', "phylogenetic_tree.dot"))
-        self.viz(G,layout=layout)
+        self.viz(G)
+        self.viz(G,layout=True)
 
 
 def report_reader(report):

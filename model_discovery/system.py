@@ -7,7 +7,7 @@ import json
 import time
 import tempfile
 import copy
-import uuid
+# import uuid
 
 #from IPython.display import display, Markdown, Latex
 from types import ModuleType
@@ -468,7 +468,7 @@ class ModelDiscoverySystem(exec_utils.System):
         if not found_design:
             return None
         
-        title=explain.split('\n')[0].replace('#','').strip()+'_'+str(uuid.uuid4().hex[:6])
+        title=explain.split('\n')[0].replace('#','').strip()#+'_'+str(uuid.uuid4().hex[:6])
 
         ### Leave it open for now for debugging, the model only fails if it designs a really huge block
         # try:
