@@ -103,6 +103,7 @@ class Checker(exec_utils.BaseTool):
         mock_input = torch.randint(0, vocab_size, (2, 100)).cuda() if \
           torch.cuda.is_available() else torch.randint(0, vocab_size, (2, 100))
         criterion = nn.CrossEntropyLoss()
+        model.train()
         optimizer = optim.Adam(model.parameters())
 
         # Zero the parameter gradients
@@ -134,24 +135,24 @@ class Checker(exec_utils.BaseTool):
         :param path: 
             The path of the proposed module 
         """
-        try: 
-            print(config)
-            glm,gab_config = reload_gam(config,gab_code,name)
-            if torch.cuda.is_available():
-                glm = glm.cuda()
+        # try: 
+        print(config)
+        glm,gab_config = reload_gam(config,gab_code,name)
+        if torch.cuda.is_available():
+            glm = glm.cuda()
 
-            glm.print_size()
+        glm.print_size()
 
-            mock_input=torch.randint(0, config.vocab_size, (8, 500))
-            mock_input = mock_input.to(glm.device)
+        mock_input=torch.randint(0, config.vocab_size, (8, 500))
+        mock_input = mock_input.to(glm.device)
 
-            output = glm(mock_input)
+        output = glm(mock_input)
 
-        except Exception as e:
-            self.rprint(
-                'Model initialization failed with error: '+str(e)+'\n'
-            )
-            return False,self.report
+        # except Exception as e:
+        #     self.rprint(
+        #         'Model initialization failed with error: '+str(e)+'\n'
+        #     )
+        #     return False,self.report
         
         ### check model size 
         gam = glm.backbone

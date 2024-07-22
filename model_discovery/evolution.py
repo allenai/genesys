@@ -596,11 +596,23 @@ class GAB(GABBase):
         if ff_dim is None:
             ff_dim = 4 * embed_dim  # Feed-forward dimension is 4 times the embedding dimension
         
-        self.attn = MHA(embed_dim, n_heads, causal=False, **factory_kwargs)
+        self.attention = nn.MultiheadAttention(embed_dim, n_heads, dropout=dropout, **factory_kwargs)
+        # self.attn = MHA(embed_dim, n_heads, causal=False, **factory_kwargs)
+        # self.lstm=nn.LSTM(embed_dim, embed_dim, batch_first=True)
+        # self.bilstm=nn.LSTM(embed_dim, embed_dim//2, batch_first=True, bidirectional=True)
+        # self.causalconv = nn.Conv1d(embed_dim, embed_dim, kernel_size=3, padding=2, groups=4, **factory_kwargs)
+        # self.conv = nn.Conv1d(embed_dim, embed_dim, 3, padding=1)
 
     def _forward(self, X, **kwargs): 
-        attn_output = self.attn(X)
-        return attn_output 
+        output,_ = self.attention(X, X, X)
+        # mask=nn.Transformer.generate_square_subsequent_mask(len(X)).to(X.device)
+        # output,_ = self.attention(X, X, X, attn_mask=mask)
+        # output = self.attn(X)
+        # output,_ = self.lstm(X)
+        # output,_ = self.bilstm(X)
+        # output = self.causalconv(X.permute(0,2,1)).permute(0,2,1)[:,:-2]
+        # output = self.conv(X.permute(0,2,1)).permute(0,2,1)
+        return output 
     
 def gab_config()->dict: 
     """Returns a dictionary of hyperparameters for constructing a GAB layer
@@ -621,57 +633,3 @@ def gab_config()->dict:
 
 
     
-
-
-
-
-# gab.py
-
-import torch
-import torch.nn as nn
-
-from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMPORT STATEMENT #
-
-class GAB(GABBase):
-    """Generalized Autoregressive Block
-        Input:        X: (batch, seqlen, embed_dim)
-        Output:       Y: (batch, seqlen, embed_dim)
-        Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
-    """
-    def __init__(self, embed_dim: int, device=None, dtype=None, n_heads=8, ff_dim=None, dropout=0.1): 
-        factory_kwargs = {"device": device, "dtype": dtype} 
-        super().__init__(embed_dim)
-        
-        if ff_dim is None:
-            ff_dim = 4 * embed_dim  # Feed-forward dimension is 4 times the embedding dimension
-        
-        self.attention = nn.MultiheadAttention(embed_dim, n_heads, dropout=dropout, **factory_kwargs)
-        self.feed_forward = nn.Sequential(
-            nn.Linear(embed_dim, ff_dim, **factory_kwargs),
-            nn.ReLU(),
-            nn.Dropout(dropout),
-            nn.Linear(ff_dim, embed_dim, **factory_kwargs)
-        )
-        self.layer_norm1 = nn.LayerNorm(embed_dim, **factory_kwargs)
-        self.layer_norm2 = nn.LayerNorm(embed_dim, **factory_kwargs)
-        self.dropout = nn.Dropout(dropout)
-
-    def _forward(self, X, **kwargs): 
-        attn_mask = nn.Transformer.generate_square_subsequent_mask(len(X)).to(X.device)
-        attn_output, _ = self.attention(X, X, X, attn_mask=attn_mask, is_causal=True)
-        X = X + self.dropout(attn_output)
-        X = self.layer_norm1(X)
-        ff_output = self.feed_forward(X)
-        X = X + self.dropout(ff_output)
-        X = self.layer_norm2(X)
-        return X
-    
-def gab_config()->dict: 
-    """Returns a dictionary of hyperparameters for constructing a GAB layer
-        embed_dim, device, dtype should not be included in the dictionary which will be provided by the system
-    """
-    return {
-        'n_heads': 8,
-        'ff_dim': None,  # This will be set to 4 * embed_dim in the GAB class
-        'dropout': 0.1
-    }
