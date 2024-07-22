@@ -51,7 +51,8 @@ class Checker(exec_utils.BaseTool):
         :rtype: None 
         """
         self.report = ''
-        
+
+    ### HAS SOME WEIRD BUGS ### It may also due to torch
     def is_causal(self, block, D: int, seq_len: int = 100) -> bool:
         """Checks if a design is causal
 
@@ -62,34 +63,32 @@ class Checker(exec_utils.BaseTool):
         :param seq_len: 
             The block target sequence length.
         """
-        B: int = 2
+        B: int = 10
         X = torch.arange(seq_len * B * D).float().reshape(B, seq_len, D)
         if torch.cuda.is_available():
             X = X.cuda()
             
-        block.eval()  # Set block to evaluation mode
-        Y = block(X)
+        block.eval()  # Set block to evaluation mode, so that dropout layers are not active
+        with torch.no_grad():
+            Y = block(X)
 
-        self.rprint('Checking causality... It checks the causality by changing the future step X[t+delta] of X[t] and see if Y[t] changes.')
+        print('Checking causality... It checks the causality by changing all future steps X[t+delta] of X[t] and see if Y[t] or any previous outputs change.')
         bar = tqdm(range(seq_len), desc='Causality test', colour='green')
         for t in bar:
-            for delta in range(1, seq_len - t):
-                X_mod = X.clone()
-                if torch.cuda.is_available():
-                    torch.manual_seed(0)  # Set random seed for reproducibility
-                    X_mod[:, t + delta, :] += torch.rand(B, D).cuda()
-                else:
-                    torch.manual_seed(0)
-                    X_mod[:, t + delta, :] += torch.rand(B, D)
-                    
-                Y_mod = block(X_mod)
-                # If Y[t] changes when a future X[t + delta] changes, then it is not causal
-                if not torch.allclose(Y[:, t, :], Y_mod[:, t, :]):
-                    self.rprint(f'Failed at t={t}, delta={delta}')
-                    return False
+            X_mod = X.clone()
+            X_mod[:, t + 1:, :]*=-1 # Perturb the future steps of X[t]
 
-        self.rprint('Causality test passed')
+            with torch.no_grad():
+                Y_mod = block(X_mod)
+                        
+            # If any previous outputs change when future X[t + delta] changes, then it is not causal
+            if not torch.equal(Y[:, :t+1, :], Y_mod[:, :t+1, :]):#, atol=1e-5):
+                print(f'Failed at t={t}')
+                return False
+
+        print('Causality test passed')
         return True
+
 
     def check_differentiable(self,model,vocab_size: int) -> bool:
         """Check if the mode is differentiable 
@@ -122,31 +121,6 @@ class Checker(exec_utils.BaseTool):
 
         self.rprint('Differentiability test passed')
         return True
-
-    # def check_magnitude(
-    #         self,
-    #         size: int,
-    #         magnitude: float,
-    #         threshold: float
-    #     ) -> bool:
-    #     """Checks that the block maintains a certain limit on parameters 
-            
-    #     """
-    #     self.logging.info(f'Checking non-embedding parameter number again the magnitude: {magnitude}')
-    #     if size > (1+threshold)*magnitude:
-    #         exceed = (size-magnitude)/magnitude
-    #         self.rprint(
-    #             f'Parameter number exceeds the magnitude by {exceed}'
-    #         )
-    #         return False
-    #     elif size < (1-threshold)*magnitude:
-    #         below = (magnitude-size)/magnitude
-    #         self.rprint(
-    #             f'Parameter number if below the magnitude: {below}'
-    #         )
-    #         return False
-    #     self.rprint('Parameter number is within threshold')
-    #     return True
     
 
     def check_efficiency(self, model, vocab_size: int) -> bool:
@@ -191,12 +165,6 @@ class Checker(exec_utils.BaseTool):
         )
 
         try:
-            ### TURNED OFF, the model is not good at this. 
-            # assert self.check_magnitude(
-            #     blocksize,
-            #     config.size_reference,
-            #     config.size_threshold
-            # )
             assert self.is_causal(
                 gab,
                 gam.d_model
@@ -209,7 +177,6 @@ class Checker(exec_utils.BaseTool):
         self.rprint("All tests passed!\n")
         return True,self.report
     
-    # TODO: maybe tune layers as well, but its complicated due to embedding layer in small scale occupied a lot of size
     def tune(self,config,gab_code,name,tune_dim=True)->str: # the model is already correct but we need to tune its scale
         print('Tuning the model scale...')
         d_model=config.d_model
