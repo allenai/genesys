@@ -344,7 +344,7 @@ class EvolutionSystem(exec_utils.System):
         if budget==0: 
             self.state['current_scale']+=1 # Will influence the sampling distribution
             self.save_state()
-            self.evolve()
+            return self.evolve()
         else:
             return self._evolve(scale_id)
             
