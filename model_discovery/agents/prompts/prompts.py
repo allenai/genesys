@@ -12,7 +12,7 @@ DESIGNER_PROMPT="""Design a novel autoregressive model block by completing the b
 
 {gab_py}
 
-The GAB is inherited from this GABBase class, you should never remove the statement that import the GABBase class from gab.py:
+The GAB is inherited from this GABBase class, you should always import it by "from model_discovery.model.utils.modules import GABBase", you should never remove this statement from gab.py and you should never define another GABBase class in gab.py:
 
 {gab_base}
 
@@ -25,7 +25,7 @@ This is the configuration and references for the target model:
 {config}
 
 Here are some hints:      
-1. You need to consider the GAM model structure and the default operations like the normalization when designing the GAB block. 
+1. You need to consider the GAM model structure and the default operations like the normalization when designing the GAB block. Always remember that GAB is a part of the GAM model, it should not be designed as a whole model. 
 2. You need to consider the magnitute of the model based on the reference model size, d_model and n_blocks. The n_blocks can be automatically adjusted so do not need to worry too much.
 3. The model should be able to be parallel trained, which means you should not introduce recurrent operators like RNN or LSTM. The model should always be causal and differentiable.
 4. The design should be innovative, you are not encouraged to simply copy an existing idea such as transformer block, you need to design your own block.

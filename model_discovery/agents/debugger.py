@@ -1,0 +1,1 @@
+""" A lightweight (e.g. GPT-4o mini) debugger for the model discovery agents. """

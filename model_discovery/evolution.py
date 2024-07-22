@@ -17,6 +17,7 @@ from io import StringIO
 import random
 from networkx.drawing.nx_pydot import write_dot
 from pyvis.network import Network
+import markdown
 
 
 from types import ModuleType
@@ -59,6 +60,7 @@ NODE_COLOR_MAP={
     '1300M':'#fcb70a',
 }
 
+ROOT_COLOR='#9eccab'
 
 NODE_SIZE_MAP={
     '14M':15,
@@ -76,6 +78,7 @@ class DesignArtifact:
     title: str
     acronym: str # id
     code: str
+    rawcode: str
     explain: str
     scale: str
     summary: str
@@ -83,6 +86,7 @@ class DesignArtifact:
     seed_ids: List[str]
     rating: int
     review: str
+    costs: Dict[str,float]
 
     def to_dict(self) -> Dict:
         return asdict(self)
@@ -106,15 +110,16 @@ class DesignArtifact:
         with open(U.pjoin(db_dir,self.acronym,"review.md"),'w') as f:
             f.write(self.review+f'\n\n## Rating\n{self.rating} out of 5')
         
-
     @classmethod
     def load(cls, db_dir: str, id:str) -> DesignArtifact:
         return cls.from_dict(U.load_json(U.pjoin(db_dir,id,"artifact.json")))
     
     def to_desc(self) -> str:
         title=self.title.replace(':',' ')
-        summary=self.summary.replace(':',' ').replace('.','.\n')
-        return f'{title} ({self.scale})\n\n{summary}\n\nRating: {self.rating} out of 5'
+        summary=self.summary.replace(':',' ')
+        mdtext=f'{title} ({self.scale})\n\n{summary}\n\n## Rating\n{self.rating} out of 5'
+        htmlmd=markdown.markdown(mdtext)
+        return htmlmd
     
 class PhylogeneticTree:
     # Read from a design base and construct a phylogenetic tree
@@ -168,13 +173,16 @@ class PhylogeneticTree:
         for node in self.G.nodes:
             data=self.G.nodes[node]['data']
             scale=data.scale
+            color=NODE_COLOR_MAP[scale]
+            if data.seed_ids == []:
+                color=ROOT_COLOR
             G.add_node(
                 node,
                 title=data.to_desc(),
                 size=NODE_SIZE_MAP[scale],
-                color=NODE_COLOR_MAP[scale],
+                color=color,
                 scale=scale,
-                # rating=data.rating
+                rating=data.rating
             )
         for edge in self.G.edges:
             G.add_edge(edge[0],edge[1])
@@ -262,8 +270,6 @@ class EvolutionSystem(exec_utils.System):
             for scale in self.state['scales'][::-1]:
                 self.state['budgets'][scale]=int(np.ceil(budget))
                 budget/=self.state['selection_ratio']
-        # if 'unverified' not in self.state:
-        #     self.state['unverified']=[]
         self.save_state() # save the initialized state
 
         self.scales=[eval(f'GAMConfig_{scale}()') for scale in self.state['scales']]
@@ -349,7 +355,7 @@ class EvolutionSystem(exec_utils.System):
         else:   
             K=np.random.choice([1,2,3],p=[0.4,0.4,0.2])
         instruct,seed_ids=self.select(K) # use the seed_ids to record the phylogenetic tree
-        instruct+=f'\nYou should be creative, do not copy the previous designs, design your own block. {np.random.rand()}'
+        instruct+=f'\nYou should be creative, do not copy the previous designs, design your own block.'# {np.random.rand()}'
         artifact=self.sample(scale_id,instruct) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
         if artifact is None:
             print("No design sampled")
@@ -370,31 +376,33 @@ class EvolutionSystem(exec_utils.System):
         response=self.rnd_agent(instruct) 
         if response is None: # no design sampled
             return None
-        title,code,explain,summary,autocfg,review,rating=response
+        title,rawcode,explain,summary,autocfg,review,rating,costs=response
         for i in [' and ',' for ','-']:
             title=title.replace(i,' ')
         acronym=''.join([i[0].upper() for i in title.split(' ') if i.isalpha()])
 
         # modify the code to fit the block registry
         # TODO: change the registry name to acronyms
-        code+=f'\n\n\n{autocfg}\nblock_config=gab_config()\nblock_config.update(autoconfig)'
+        code=rawcode+f'\n\n\n{autocfg}\nblock_config=gab_config\nblock_config.update(autoconfig)'
         code+='\n\n\nfrom .block_registry import BlockRegister\n\nBlockRegister(\n    name="default",\n    config=block_config\n)(GAB)'
 
         artifact={
             'title':title,
             'acronym':acronym,
             'code':code,
+            'rawcode':rawcode,
             'explain':explain,
             'scale':self.state['scales'][scale_id],
             'instruct':instruct,
             'summary':summary,
             'review':review,
             'rating':rating,
+            'costs':costs,
         }
         return artifact
 
     def make_artifact(self,design_id,report=None):
-        code=self.ptree.G.nodes[design_id]['data'].code
+        rawcode=self.ptree.G.nodes[design_id]['data'].rawcode
         explain=self.ptree.G.nodes[design_id]['data'].explain
         title=self.ptree.G.nodes[design_id]['data'].title
         acronym=self.ptree.G.nodes[design_id]['data'].acronym
@@ -403,7 +411,7 @@ class EvolutionSystem(exec_utils.System):
         rating=self.ptree.G.nodes[design_id]['data'].rating
         config:GAMConfig=eval(f'GAMConfig_{scale}()')
         config_str=config.to_prompt()
-        artifact_obj=f'## Title: {title}\n## Acronym: {acronym}\n\n## Code:\n\n{code}\n\n## Justification:\n\n{explain}'
+        artifact_obj=f'## Title: {title}\n## Acronym: {acronym}\n\n## Code:\n\n{rawcode}\n\n## Justification:\n\n{explain}'
         artifact_obj+=f'\\## Config and Reference:\n\n{config_str}\n\n'
         artifact_obj+=f'## Review:\n\n{review}\n\n## Rating:\n\n{rating} out of 5\n\n'
         if report:
@@ -575,7 +583,7 @@ if __name__ == '__main__':
         strparams=';'.join(strparams),
         cache_type='diskcache',
     )
-    test_evolve('evo_test_003',step=True)
+    test_evolve('evo_test_003',step=False)
 
 
     code_MHA='''

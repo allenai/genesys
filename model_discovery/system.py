@@ -321,6 +321,7 @@ class ModelDiscoverySystem(exec_utils.System):
 
 
     def design(self,query,designer_context,stream,status_handler): # input query, context, output design and explanation
+        designer_cost = 0
         problem_history = copy.deepcopy(designer_context) # a new dialog branch
         source='user'
 
@@ -341,6 +342,7 @@ class ModelDiscoverySystem(exec_utils.System):
                 try:
                     code = designer_out.get("code",None)
                     text = designer_out.get("text")
+                    designer_cost += designer_out["_details"]["running_cost"]
                     problem_history.append((str(text),"assistant"))
 
                     assert "# gab.py" in code 
@@ -354,7 +356,7 @@ class ModelDiscoverySystem(exec_utils.System):
                     query  = GAB_ERROR
                     continue 
                 
-                checkpass,check_report = self.checker.check(self._cfg,code,design_name)
+                checkpass,check_report,code = self.checker.check(self._cfg,code,design_name)
                 
                 if stream:
                     stream.write(
@@ -379,13 +381,13 @@ class ModelDiscoverySystem(exec_utils.System):
                             stream.markdown(self_report["text"]) #<-- change
 
                     explain=self_report['text']
-                    return code,explain
+                    return code,explain,designer_cost
                 else:
                     query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix"
                     source = 'user'
                     self.checker.reset()
 
-        return None
+        return None,None,designer_cost
         
 
     def query_system(
@@ -407,6 +409,11 @@ class ModelDiscoverySystem(exec_utils.System):
             with a frontend.
         
         """
+        costs={ # NOTE: costs in exec_utils need to be updated
+            'design':0,
+            'review':0,
+            'summary':0,
+        }
         status_handler = stream.status if stream and status else EmptyHandler
         if stream is None and self._config.debug_steps:
             stream = PrintSystem(self._config)
@@ -425,10 +432,10 @@ class ModelDiscoverySystem(exec_utils.System):
         self._queries.append(designer_query)
 
         for _ in range(self._config.max_design_refines):
-            response = self.design(query,designer_context,stream,status_handler)
-            if response is None: continue
+            code,explain,designer_cost = self.design(query,designer_context,stream,status_handler)
+            costs['design'] += designer_cost
+            if code is None: continue
 
-            code,explain = response
             proposal=f'{explain}\n\nImplementation:\n\n{code}\n\n'
             designer_context.append((query,"user")) 
             designer_context.append((proposal,"assistant"))
@@ -449,12 +456,13 @@ class ModelDiscoverySystem(exec_utils.System):
                     stream.markdown(response["text"])
                 rating = response["rating"]
                 review = response["review"]
+                costs['review'] += response["_details"]["running_cost"]
                 if rating >= self._config.reviewer_threshold:
                     found_design = True
                     break
-            
-            # remember to change the prompt if using multiple reviewers
-            query=f'The design didn\'t pass the review process, here is the feedback from the reviewer, please improve your design based on the review:\n\n{review}\n\n## Rating\n{rating} out of 5'
+                else: # next round design
+                    # remember to change the prompt if using multiple reviewers
+                    query=f'The design didn\'t pass the review process, here is the feedback from the reviewer, please improve your design based on the review:\n\n{review}\n\n## Rating\n{rating} out of 5'
 
 
         if not found_design:
@@ -478,19 +486,16 @@ class ModelDiscoverySystem(exec_utils.System):
                 f"{explain}\n\nImplementation of {title}:\n\n{code}\n\n"
                 "Please summarize the design with a description of the design and a simple pseudo code that conclude the core idea in few sentences."
             )
-            summary = self.designer(
+            response = self.designer(
                 summary_query,
                 source='user',
-            )['text']
+            )
+            summary=response['text']
+            costs['summary'] += response["_details"]["running_cost"]
             if stream:
                 stream.markdown(summary)
 
-        return title,code,explain,summary,autocfg,review,rating
-
-
-    def run_check(self,code,design_name,queue):
-        checkpass,check_report = self.checker.check(self._cfg,code,design_name)
-        queue.put((checkpass, check_report))
+        return title,code,explain,summary,autocfg,review,rating,costs
 
     @classmethod
     def from_config(cls: Type[C],config: ConfigType,**kwargs) -> C:

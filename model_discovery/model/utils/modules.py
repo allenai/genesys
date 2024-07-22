@@ -17,9 +17,10 @@ class GABBase(nn.Module):
     # YOU ARE NOT ALLOW TO OVERRIDE THIS METHOD #
     def forward(self,X,**kwargs):
         """Forward pass of the model"""
+        assert len(X.shape) == 3, "Input shape must be (batch, seqlen, embed_dim)"
         assert X.shape[-1] == self.embed_dim
         Y=self._forward(X,**kwargs)
-        assert Y.shape == X.shape
+        assert Y.shape == X.shape, f"GAB Output shape must be the same as input shape, got {Y.shape} instead"
         return Y
 
 

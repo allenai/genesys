@@ -298,17 +298,16 @@ class GAM(nn.Module):
             hidden_states = self.norm_f(hidden_states) # in non-template, res should be handled by the block
         return hidden_states
 
-    def print_size(self,printout=True):
+    def print_size(self):
         size=(
             f' - GAM params: {U.strmodelsize(self)}\n'
             f'   - Embedding: {U.strmodelsize(self.embedding)}\n'
             f'   - Non-embedding: {U.strmodelsize(self.blocks)}\n'
             f'     - Block: {U.strmodelsize(self.blocks[0])} x {len(self.blocks)}\n'
-            f'       - GAB: {U.strmodelsize(self.blocks[0].gab)}'
+            f'       - GAB: {U.strmodelsize(self.blocks[0].gab)}\n'
         )
         if self.blocks[0].use_template:
-            size+=f'       - MLP: {U.strmodelsize(self.blocks[0].mlp)}'
-        if printout: print(size)
+            size+=f'       - MLP: {U.strmodelsize(self.blocks[0].mlp)}\n'
         return size
 
 
@@ -483,7 +482,7 @@ class ModisLMHeadModel(PreTrainedModel):
         
         return cls(config,**kwargs)
 
-    def print_size(self):
+    def print_size(self,printout=True):
         size=''
         size+='|------Model size------|\n'
         tied='tied' if self.config.tie_embeddings else 'untied'
@@ -491,3 +490,6 @@ class ModisLMHeadModel(PreTrainedModel):
         size+=self.backbone.print_size()
         size+=f' - LM Head params: {U.strmodelsize(self.lm_head)}\n'
         size+='|----------------------|\n'
+        if printout:
+            print(size)
+        return size
