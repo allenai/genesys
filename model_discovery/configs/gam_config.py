@@ -220,7 +220,7 @@ class GAMConfig_1T(GAMConfig): # Just for fun
 
 
 @dataclass
-class GAMConfig_debug(GAMConfig_760M):
+class GAMConfig_debug(GAMConfig_14M):
     scale: str = 'debug'
     context_length: int = 512
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
@@ -230,7 +230,7 @@ class GAMConfig_debug(GAMConfig_760M):
     ])
     rms_norm: bool = False 
     fused_add_norm: bool = False # TRITON BUGGY
-    use_template: bool = True
+    use_template: bool = False
     # per_device_batch_size: int = 256
     
 

@@ -86,11 +86,11 @@ if __name__=='__main__':
     # scales=[1300,760,350,125,70,31,14]
     # scales=[760,350,125,70,31,14]
     # scales=[350,125,70,31,14]
-    # scales=[125,70,31,14]
-    # sr=0.25
-    # mode='A6000x8'
-    # cost_estimate(scales,costs_lower,sr=sr,title='Lower bound',mode=mode)
-    # cost_estimate(scales,costs_upper,sr=sr,title='Upper bound',mode=mode)
+    scales=[125,70,31,14]
+    sr=0.25
+    mode='H100'#'A6000x8'
+    cost_estimate(scales,costs_lower,sr=sr,title='Lower bound',mode=mode)
+    cost_estimate(scales,costs_upper,sr=sr,title='Upper bound',mode=mode)
 
 
    

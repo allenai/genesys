@@ -1,5 +1,5 @@
 import inspect
-from .TTT import ttt
+from .ttt import ttt
 
 
 MODEL2CLASS = {

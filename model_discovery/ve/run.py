@@ -46,8 +46,8 @@ util_logger = logging.getLogger('model_discovery.run')
 parser = argparse.ArgumentParser()
 parser.add_argument("--evoname", type=str, default="evolution_test") # the name of the whole evolution
 parser.add_argument("--design_id", type=str, default="test") # should be named after the agent, it should be the same as gab name
-parser.add_argument("--config", type=str, default="GAMConfig_debug")
 parser.add_argument("--resume", type=bool, default=True) # whether resume from the latest checkpoint if there is one, or fully retrain
+parser.add_argument("--scale", type=str, default='debug') 
 parser.add_argument("--n_gpus", type=int, default=torch.cuda.device_count())
 parser.add_argument("--n_nodes", type=int, default=1)
 parser.add_argument("--save_steps", type=int, default=50)
@@ -60,12 +60,14 @@ parser.add_argument("--seed", type=int, default=42)
 parser.add_argument("--ckpt_dir", type=str, default=None)
 parser.add_argument("--data_dir", type=str, default=None)
 parser.add_argument("--download_data_only", action='store_true')
+parser.add_argument("--logging_steps", type=int, default=20)
 parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
 parser.add_argument("--PERF_PROF_MODE", type=bool, default=False) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
 parser.add_argument("--port", type=str, default="29500") # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
 
 # PATCH for the evolution
 parser.add_argument("--mode", type=str, default='') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
+
 
 
 def setup(args) -> None:
@@ -177,11 +179,11 @@ def run_train(args,gab,gab_config) -> None:
         max_steps=num_steps,
         per_device_train_batch_size=per_device_batch_size,
         per_device_eval_batch_size = per_device_batch_size * 2,
-        auto_find_batch_size=True, 
+        auto_find_batch_size=True, # for safety
         gradient_accumulation_steps=args.gradient_accumulation_steps,
         optim=args.optim,
         output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}",
-        logging_steps=25,
+        logging_steps=args.logging_steps,
         save_steps=args.save_steps,
         dataloader_num_workers=16,
         dataloader_pin_memory=True,
@@ -325,11 +327,11 @@ def run_eval(args):
         print(f"Model {args.design_id} is already evaluated")
         return
     print("Evaluation Start")
-    cfg=eval(f"{args.config}()")
+    cfg=eval(f"GAMConfig_{args.scale}()")
     sys.argv = [
         "",
         "--model", "modis",
-        "--model_args", f"pretrained={args.evoname}/{args.config}/{args.design_id},ckpt_dir={args.ckpt_dir},gab_name={args.gab_name}",
+        "--model_args", f"pretrained={args.evoname}/{args.scale}/{args.design_id},ckpt_dir={args.ckpt_dir},gab_name={args.gab_name}",
         "--tasks", ",".join(cfg.eval_tasks), 
         # "--device", "cuda",
         "--batch_size", f"{cfg.eval_batch_size}",
@@ -428,8 +430,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     args.evoname = "ve_test"
-    args.design_id = "test_resume"
-    args.resume = True
+    args.design_id = "test"
+    args.resume = False
     # args.n_gpus = 1
     args.PERF_PROF_MODE = True
     args.port="25986"

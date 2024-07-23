@@ -41,10 +41,10 @@ class ModisEvalWrapper(HFLM):
         
         b = pretrained.split("/")
         design_id = b[-1]
-        configname = b[-2]
+        scale = b[-2]
         evoname = b[-3]
         
-        config = eval(f"{configname}")
+        config = eval(f"GAMConfig_{scale}")
         ckpt = U.pjoin(ckpt_dir, evoname, 've', design_id, "pretrained")
         
         util_logger.info(f'Trying to load from {ckpt}')

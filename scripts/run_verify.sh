@@ -1,2 +1,1 @@
 python -m model_discovery.ve.run "$@"
-

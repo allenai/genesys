@@ -511,7 +511,7 @@ class EvolutionSystem(exec_utils.System):
         args = ve_parser.parse_args()
         args.evoname=self.evoname
         args.design_id=artifact['acronym']
-        args.config=f'GAMConfig_{artifact["scale"]}'
+        args.scale=artifact["scale"]
         args.ckpt_dir=self.ckpt_dir
         args.data_dir=os.environ.get("DATA_DIR")
         args.resume=True

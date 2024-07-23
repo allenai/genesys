@@ -14,11 +14,11 @@ from torch.utils._pytree import tree_map
 
 from transformers.utils import logging
 from transformers.activations import ACT2FN
-from transformers.utils.import_utils import is_causal_conv1d_available
+# from transformers.utils.import_utils import is_causal_conv1d_available # CAUSE EARLY INIT CUDA
 
-if is_causal_conv1d_available():
+try:
     from causal_conv1d import causal_conv1d_fn, causal_conv1d_update
-else:
+except:
     causal_conv1d_update, causal_conv1d_fn = None, None
 
 logger = logging.get_logger(__name__)
@@ -696,7 +696,7 @@ class GAB(GABBase):
 """
 gab_config = { # No need to change, applied by all sizes of TTT
     # THE HYPERPARAMETERS OF ADDITIONAL ARGUMENTS IN GAB CLASS #
-    'scan_checkpoint_group_size': 4,
+    'scan_checkpoint_group_size': 0, #4, buggy now
     'conv_kernel': 4,
     'mini_batch_size': 16,
     'rope_theta': 10000.0,
