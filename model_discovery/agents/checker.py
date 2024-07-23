@@ -56,7 +56,7 @@ class GABFormatChecker:
 
         # Execute the modified AST
         # try: ####LEAVE IT OPEN FOR DEBUGGING CAUSE, REMEMBER TO UNCOMMENT
-        exec(self.gab_code, {}, local_ns)
+        exec(self.gab_code, globals().copy(), local_ns)
         # except Exception as e:
         #     self.errors.append(f'The code is not executable:\n{str(e)}\n')
         #     return self._report_errors()
@@ -89,6 +89,9 @@ class GABFormatChecker:
                     node.test.left.id == '__name__' and
                     isinstance(node.test.comparators[0], ast.Constant) and
                     node.test.comparators[0].value == '__main__'):
+                    self.warnings.append(
+                        'The if __name__ == "__main__": block is removed by the reformatter.\n'
+                    )
                     return None
                 return node
 
@@ -96,7 +99,7 @@ class GABFormatChecker:
     
     def _ensure_super_init(self, code_ast):
         class SuperInitCorrector(ast.NodeTransformer):
-            def visit_ClassDef(self, node):
+            def visit_ClassDef(cls, node):
                 if node.name == 'GAB':
                     for item in node.body:
                         if isinstance(item, ast.FunctionDef) and item.name == '__init__':
@@ -109,6 +112,9 @@ class GABFormatChecker:
                                         isinstance(stmt.value.func.value.func, ast.Name) and
                                         stmt.value.func.value.func.id == 'super'):
                                         found_super = True
+                                        self.warnings.append(
+                                            'The super().__init__(embed_dim) call in GAB is force overwritten by the reformatter. It may cause error if you modified this line.\n'
+                                        )
                                         stmt.value = ast.Call(
                                             func=ast.Attribute(
                                                 value=ast.Call(
@@ -125,6 +131,9 @@ class GABFormatChecker:
                                         break
 
                             if not found_super:
+                                self.warnings.append(
+                                    'The super().__init__(embed_dim) call is missing in the __init__ method. Automatically added by the reformatter.\n'
+                                )
                                 # Insert super().__init__(embed_dim) at the start of the __init__ method
                                 super_call = ast.Expr(
                                     value=ast.Call(
@@ -206,7 +215,7 @@ class GABFormatChecker:
 
         init_signature = inspect.signature(gab_class.__init__)
         init_parameters = init_signature.parameters
-        excluded_args = {'self','embed_dim', 'device', 'dtype'}
+        excluded_args = {'self','embed_dim', 'device', 'dtype','kwargs'}
         init_args = {name for name in init_parameters if name not in excluded_args}
 
         config_args = set(gab_config.keys())

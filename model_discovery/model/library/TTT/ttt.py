@@ -32,6 +32,8 @@ logger = logging.get_logger(__name__)
 # TODO: Further simplify, a lot of code are actually RoPE
 
 
+
+
 ########################
 ### Backbone Modules ###
 ########################
@@ -643,6 +645,12 @@ class GAB(GABBase):
 
         self.seq_norm = RMSNorm(embed_dim, eps=rms_norm_eps)
         self.ffn_norm = RMSNorm(embed_dim, eps=rms_norm_eps)
+
+        self.seq_modeling_block = self.seq_modeling_block.to(device=device, dtype=dtype)
+        self.mlp = self.mlp.to(device=device, dtype=dtype)
+        self.conv = self.conv.to(device=device, dtype=dtype)
+        self.seq_norm = self.seq_norm.to(device=device, dtype=dtype)
+        self.ffn_norm = self.ffn_norm.to(device=device, dtype=dtype)
 
 
     # YOU CAN ADD MORE FUNCTIONS HERE #
