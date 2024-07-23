@@ -170,7 +170,7 @@ class PhylogeneticTree:
         for seed_id, design_id in edges_to_add:
             self.G.add_edge(seed_id, design_id)
 
-    def viz(self,G,height=10000,width="100%",layout=False):
+    def viz(self,G,height=5000,width="100%",layout=False): # larger canvas may be needed for large trees
         nt=Network(
             directed=True,height=height,width=width,
             layout=layout, bgcolor="#fafafa", #font_color="#ffffff",
