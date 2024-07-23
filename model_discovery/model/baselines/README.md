@@ -1,5 +1,7 @@
 # Baselines and Core Reference Designs (155)
 
+Major and latest branches of (autoregressive) model architecture variants after Transformers/GPTs. Collected from surveys, popular repos, and recent papers. Excluded MoE, Hierarchical and Heterogeneous Architectures, and non-causal models. Only consider identical single causal blocks. Can use S2 with reference type to build the phylogenetic tree later.
+
 ## Collected Varaints (50)
 
 ### Example Variants
@@ -47,19 +49,19 @@
 36. Efficient Attention via Control Variates, EVA (ICLR’23 Oral)
 37. DiJiang (ICML’24 Oral)
 38. TNN (ICLR’23)
-39. CoPE (2405)
-40. Infiniti (2404)
-41. PEER (2407)
-
-### More (ET Survey https://arxiv.org/pdf/2009.06732)
+39. CoPE (arXiv 2405)
+40. Infiniti (arXiv 2404)
+41. PEER (arXiv 2407)
 42. CoLT5: Faster Long-Range Transformers with Conditional Computation, https://github.com/lucidrains/CoLT5-attention?tab=readme-ov-file, EMNLP 2023
-43. cosFormer: Rethinking Softmax in Attention, https://github.com/OpenNLPLab/cosFormer, ICLR 2022
-44. Synthesizer: Rethinking Self-Attention in Transformer Models, https://github.com/10-zin/Synthesizer?tab=readme-ov-file, ICML 2021
-45. Luna: Linear unified nested attention, https://github.com/sooftware/luna-transformer, NeurIPS 2021
-46. Functional Interpolation for Relative Positions Improves Long Context Transformers, ICLR 2024
-47. When Linear Attention Meets Autoregressive Decoding: Towards More Effective and Efficient Linearized Large Language Models, ICML 2024
+43. When Linear Attention Meets Autoregressive Decoding: Towards More Effective and Efficient Linearized Large Language Models, ICML 2024
+44. Functional Interpolation for Relative Positions Improves Long Context Transformers, ICLR 2024
+45. Self-attention Networks Localize When QK-eigenspectrum Concentrates (ICML 2024)
+
+### More (e.g., from ET Survey https://arxiv.org/pdf/2009.06732)
+46. Synthesizer: Rethinking Self-Attention in Transformer Models, https://github.com/10-zin/Synthesizer?tab=readme-ov-file, ICML 2021
+47. cosFormer: Rethinking Softmax in Attention, https://github.com/OpenNLPLab/cosFormer, ICLR 2022
 48. LARA: Linear complexity randomized self-attention mechanism (ICML 2022)
-49. Self-attention Networks Localize When QK-eigenspectrum Concentrates (ICML 2024)
+49. Luna: Linear unified nested attention, https://github.com/sooftware/luna-transformer, NeurIPS 2021
 50. Coneheads: Hierarchy Aware Attention, NeurIPS 2023
 
 
@@ -171,7 +173,6 @@
 75. PanGu-π: Enhancing Language Model Architectures via Nonlinearity Compensation, <ins>arXiv, 2023</ins> [[Paper](https://arxiv.org/abs/2312.17276)]
 
 
-
 ## Selected from Lucidrains (https://github.com/LAION-AI/lucidrains-projects) (30)
 
 ### Paper implementations
@@ -195,7 +196,6 @@
 18. Kronecker Attention Networks, https://github.com/lucidrains/kronecker-attention-pytorch?tab=readme-ov-file, KDD 2020
 19. Generating Wikipedia by Summarizing Long Sequences, https://github.com/lucidrains/memory-compressed-attention?tab=readme-ov-file, ICLR 2018
 20. Normalized Attention Without Probability Cage, https://github.com/lucidrains/all-normalization-transformer?tab=readme-ov-file, arXiv 2005
-
 
 ### Experimental projects
 21. Token Shift GPT, https://github.com/lucidrains/token-shift-gpt 
