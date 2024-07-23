@@ -1,6 +1,6 @@
-# Baselines and Core Reference Designs (155)
+# Baselines and Core Reference Designs (155+)
 
-Major and latest branches of (autoregressive) model architecture variants after Transformers/GPTs. Collected from surveys, popular repos, and recent papers. Excluded MoE, Hierarchical and Heterogeneous Architectures, and non-causal models. Only consider identical single causal blocks. Can use S2 with reference type to build the phylogenetic tree later.
+Major and latest branches of (autoregressive) model architecture variants after Transformers/GPTs. Collected from surveys, popular repos, and recent papers. Excluded MoE, Hierarchical and Heterogeneous Architectures, and non-causal models. Only consider identical single causal blocks. Can use S2 with reference type to build the phylogenetic tree later. Do not considering param-sharing like Albert.
 
 ## Collected Varaints (50)
 
@@ -208,3 +208,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 28. Simple Hierarchical Transformer (wip), https://github.com/lucidrains/simple-hierarchical-transformer, Lucidrains
 29. Panoptic Transformer (wip), https://github.com/lucidrains/panoptic-transformer, Lucidrains
 30. Building Blocks for a Complex-Valued Transformer Architecture, https://github.com/lucidrains/complex-valued-transformer?tab=readme-ov-file, ICASSP 2023
+
+
+## Supplementary 
+1. Blockwise Parallel Transformer for Large Context Models, https://arxiv.org/abs/2305.19370 

@@ -55,11 +55,11 @@ class Block(nn.Module):
         The residual needs to be provided (except for the very first block).
         """
         super().__init__()
-        self.residual_in_fp32 = residual_in_fp32
-        self.fused_add_norm = fused_add_norm
         self.gab = gab()
         self.use_template = mlp_cls is not None
         if self.use_template: 
+            self.fused_add_norm = fused_add_norm
+            self.residual_in_fp32 = residual_in_fp32
             self.norm = norm_cls(dim)
             self.norm2 = norm_cls(dim)
             self.mlp = mlp_cls(dim)
