@@ -4,15 +4,6 @@ from model_discovery.model.utils.modules import GABBase
 import math
 import torch.nn.functional as F
 from einops import rearrange, repeat
-try:
-    from causal_conv1d import causal_conv1d_fn
-except ImportError:
-    causal_conv1d_fn = None
-try:
-    from mamba_ssm.ops.triton.layernorm_gated import RMSNorm as RMSNormGated, LayerNorm
-except ImportError:
-    RMSNormGated, LayerNorm = None, None
-from mamba_ssm.ops.triton.layer_norm import RMSNorm, layer_norm_fn
 
 
 def segsum_unstable(x):
@@ -40,6 +31,15 @@ def segsum(x):
     return x_segsum
 
 
+def pad_to_block_length(X, block_len):
+    pad_len = (block_len - X.shape[1] % block_len) % block_len
+    if pad_len > 0:
+        padding = torch.zeros(X.shape[0], pad_len, *X.shape[2:], dtype=X.
+            dtype, device=X.device)
+        X = torch.cat([X, padding], dim=1)
+    return X
+
+
 def ssd_minimal_discrete(X, A, B, C, block_len, initial_states=None):
     """
     Arguments:
@@ -51,7 +51,6 @@ def ssd_minimal_discrete(X, A, B, C, block_len, initial_states=None):
         Y: (batch, length, n_heads, d_head)
     """
     assert X.dtype == A.dtype == B.dtype == C.dtype
-    assert X.shape[1] % block_len == 0
     X, A, B, C = [rearrange(x, 'b (c l) ... -> b c l ...', l=block_len) for
         x in (X, A, B, C)]
     A = rearrange(A, 'b c l h -> b h c l')
@@ -110,9 +109,8 @@ class Mamba2Simple(nn.Module):
         A_log = torch.log(A).to(dtype=dtype)
         self.A_log = nn.Parameter(A_log)
         self.A_log._no_weight_decay = True
-        assert RMSNormGated is not None
-        self.norm = RMSNormGated(self.d_inner, eps=1e-05, norm_before_gate=
-            False, **factory_kwargs)
+        self.norm = nn.LayerNorm(self.d_inner, eps=1e-05, **factory_kwargs)
+        self.silu = nn.SiLU()
         self.out_proj = nn.Linear(self.d_inner, self.d_model, bias=True, **
             factory_kwargs)
 
@@ -121,7 +119,9 @@ class Mamba2Simple(nn.Module):
         u: (B, L, D)
         Returns: same shape as u
         """
-        batch, seqlen, dim = u.shape
+        batch, _seqlen, dim = u.shape
+        u = pad_to_block_length(u, self.chunk_size)
+        seqlen = u.shape[1]
         zxbcdt = self.in_proj(u)
         A = -torch.exp(self.A_log)
         z, xBC, dt = torch.split(zxbcdt, [self.d_inner, self.d_inner + 2 *
@@ -137,8 +137,9 @@ class Mamba2Simple(nn.Module):
         y, _ = ssd_minimal_discrete(x * dt.unsqueeze(-1), A * dt, B, C,
             self.chunk_size)
         y = rearrange(y, 'b l h p -> b l (h p)')
-        y = self.norm(y, z)
+        y = self.norm(y * self.silu(z))
         out = self.out_proj(y)
+        out = out[:, :_seqlen, :]
         return out
 
 
@@ -161,8 +162,8 @@ class GAB(GABBase):
         self.mamba2 = Mamba2Simple(embed_dim, d_state, d_conv, expand,
             headdim, ngroups, A_init_range, dt_min, dt_max, dt_init_floor,
             chunk_size, **factory_kwargs)
-        self.norm1 = RMSNorm(embed_dim, eps=1e-05, **factory_kwargs)
-        self.norm2 = RMSNorm(embed_dim, eps=1e-05, **factory_kwargs)
+        self.norm1 = nn.LayerNorm(embed_dim, **factory_kwargs)
+        self.norm2 = nn.LayerNorm(embed_dim, **factory_kwargs)
 
     def _forward(self, X, **kwargs):
         hidden_states = self.norm1(X.to(dtype=self.norm1.weight.dtype))
@@ -178,4 +179,3 @@ class GAB(GABBase):
 gab_config = {'d_state': 64, 'd_conv': 4, 'expand': 2, 'headdim': 128,
     'ngroups': 1, 'A_init_range': (1, 16), 'dt_min': 0.001, 'dt_max': 0.1,
     'dt_init_floor': 0.0001, 'chunk_size': 256}
-

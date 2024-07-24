@@ -14,13 +14,13 @@ Major and latest branches of (autoregressive) model architecture variants after 
 7. SpikeGPT, SpikeGPT: Generative Pre-trained Language Model with Spiking Neural Networks (TMLR,24), https://github.com/ridgerchu/SpikeGPT 
 
 ### SSMs (https://github.com/state-spaces):
-8. 👉 Mamba2, Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality
+8. ✅ Mamba2, Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality
 9. S4, Efficiently Modeling Long Sequences with Structured State Spaces
 10. HiPPO, HiPPO: Recurrent Memory with Optimal Polynomial Projections
 11. LSSL, Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers
 12. HTTYH, How to Train Your HiPPO: State Space Models with Generalized Orthogonal Basis Projections
 13. S4D, On the Parameterization and Initialization of Diagonal State Space Models
-14. Mamba, Mamba: Linear-Time Sequence Modeling with Selective State Spaces
+14. 👉 Mamba, Mamba: Linear-Time Sequence Modeling with Selective State Spaces
 
 ### Flash Linear Attention (https://github.com/sustcsonglin/flash-linear-attention):
 15. 2024-06	Samba, Samba: Simple Hybrid State Space Models for Efficient Unlimited Context Language Modeling	

@@ -18,10 +18,10 @@ import torch.nn.functional as F
 
 from einops import rearrange, repeat
 
-try:
-    from causal_conv1d import causal_conv1d_fn
-except ImportError:
-    causal_conv1d_fn = None
+# try:
+#     from causal_conv1d import causal_conv1d_fn
+# except ImportError:
+#     causal_conv1d_fn = None
 
 # try:
 #     from mamba_ssm.ops.triton.layernorm_gated import RMSNorm as RMSNormGated, LayerNorm
@@ -71,9 +71,7 @@ def ssd_minimal_discrete(X, A, B, C, block_len, initial_states=None):
         Y: (batch, length, n_heads, d_head)
     """
     assert X.dtype == A.dtype == B.dtype == C.dtype
-    length = X.shape[1]
     # assert X.shape[1] % block_len == 0
-    X = pad_to_block_length(X, block_len) # should be no problem as it is a causal model
 
     # Rearrange into blocks/chunks
     X, A, B, C = [rearrange(x, "b (c l) ... -> b c l ...", l=block_len) for x in (X, A, B, C)]
@@ -106,8 +104,6 @@ def ssd_minimal_discrete(X, A, B, C, block_len, initial_states=None):
 
     # Add output of intra-chunk and inter-chunk terms (diagonal and off-diagonal blocks)
     Y = rearrange(Y_diag+Y_off, "b c l h p -> b (c l) h p")
-
-    Y = Y[:, :length, :, :]  # Trim to original length
     return Y, final_state
 
 
@@ -190,6 +186,7 @@ class Mamba2Simple(nn.Module):
         # assert RMSNormGated is not None
         # self.norm = RMSNormGated(self.d_inner, eps=1e-5, norm_before_gate=False, **factory_kwargs)
         self.norm = nn.LayerNorm(self.d_inner, eps=1e-5, **factory_kwargs)
+        self.silu = nn.SiLU()
 
         self.out_proj = nn.Linear(self.d_inner, self.d_model, bias=True, **factory_kwargs)
 
@@ -198,7 +195,9 @@ class Mamba2Simple(nn.Module):
         u: (B, L, D)
         Returns: same shape as u
         """
-        batch, seqlen, dim = u.shape
+        batch, _seqlen, dim = u.shape
+        u=pad_to_block_length(u, self.chunk_size)
+        seqlen = u.shape[1]
 
         zxbcdt = self.in_proj(u)  # (B, L, d_in_proj)
         A = -torch.exp(self.A_log)  # (nheads) or (d_inner, d_state)
@@ -233,8 +232,9 @@ class Mamba2Simple(nn.Module):
         y = rearrange(y, "b l h p -> b l (h p)")
 
         # Multiply "gate" branch and apply extra normalization layer
-        y = self.norm(y, z)
+        y=self.norm(y * self.silu(z))
         out = self.out_proj(y)
+        out = out[:, :_seqlen, :]
         return out
 
 
