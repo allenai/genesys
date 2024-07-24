@@ -1,4 +1,4 @@
-# Baselines and Core Reference Designs (155+)
+# Baselines and Core Reference Designs (155)
 
 Major and latest branches of (autoregressive) model architecture variants after Transformers/GPTs. Collected from surveys, popular repos, and recent papers. Excluded MoE, Hierarchical and Heterogeneous Architectures, and non-causal models. Only consider identical single causal blocks. Can use S2 with reference type to build the phylogenetic tree later. Do not considering param-sharing like Albert. Sheet: https://docs.google.com/spreadsheets/d/1GxMjIY-RZWChS6g03NP9q4kv9tRjvQ9N8ZBkHIPvR1Y/edit?usp=sharing
 
@@ -211,7 +211,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 
 
 
-# Extention (e.g. from https://github.com/Xnhyacinth/Awesome-LLM-Long-Context-Modeling) (~85)
+# Extention (e.g. from https://github.com/Xnhyacinth/Awesome-LLM-Long-Context-Modeling) (85)
 
 
 ## 2. Efficient Attention
