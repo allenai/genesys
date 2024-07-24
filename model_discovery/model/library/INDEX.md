@@ -1,6 +1,6 @@
 # Baselines and Core Reference Designs (155+)
 
-Major and latest branches of (autoregressive) model architecture variants after Transformers/GPTs. Collected from surveys, popular repos, and recent papers. Excluded MoE, Hierarchical and Heterogeneous Architectures, and non-causal models. Only consider identical single causal blocks. Can use S2 with reference type to build the phylogenetic tree later. Do not considering param-sharing like Albert.
+Major and latest branches of (autoregressive) model architecture variants after Transformers/GPTs. Collected from surveys, popular repos, and recent papers. Excluded MoE, Hierarchical and Heterogeneous Architectures, and non-causal models. Only consider identical single causal blocks. Can use S2 with reference type to build the phylogenetic tree later. Do not considering param-sharing like Albert. Sheet: https://docs.google.com/spreadsheets/d/1GxMjIY-RZWChS6g03NP9q4kv9tRjvQ9N8ZBkHIPvR1Y/edit?usp=sharing
 
 ## Collected Varaints (50)
 
@@ -26,7 +26,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 15. 2024-06	Samba, Samba: Simple Hybrid State Space Models for Efficient Unlimited Context Language Modeling	
 16. 2023-07	RetNet, Retentive network: a successor to transformer for large language models	
 17. 2023-12	GLA, Gated Linear Attention Transformers with Hardware-Efficient Training	
-18. 2023-12	Based, An Educational and Effective Sequence Mixer	
+18. 2024-04	RWKV6, Eagle and Finch: RWKV with Matrix-Valued States and Dynamic Recurrence	
 19. 2024-01	Rebased, Linear Transformers with Learnable Kernel Functions are Better In-Context Models	
 20. 2021-02	Delta Net, Linear Transformers Are Secretly Fast Weight Programmers	
 21. 2023-09	Hedgehog, The Hedgehog & the Porcupine: Expressive Linear Attentions with Softmax Mimicry	
@@ -38,12 +38,12 @@ Major and latest branches of (autoregressive) model architecture variants after 
 27. 2023-09	VQ-transformer, Linear-Time Transformers via Vector Quantization		
 28. 2023-09	HGRN, Hierarchically Gated Recurrent Neural Network for Sequence Modeling	
 29. 2024-04	HGRN2, HGRN2: Gated Linear RNNs with State Expansion	
-30. 2024-04	RWKV6, Eagle and Finch: RWKV with Matrix-Valued States and Dynamic Recurrence	
 
 ### From latest papers: 
+30. Just read twice: closing the recall gap for recurrent language models (arXiv 2407)
 31. Mega: Moving Average Equipped Gated Attention, https://github.com/lucidrains/Mega-pytorch?tab=readme-ov-file, ICLR 2023
 32. DCMHA (ICML’24 Oral), Improving Transformers with Dynamically Composable Multi-Head Attention
-33. AugLA (ICML’24), When Linear Attention Meets Autoregressive Decoding: Towards More Effective and Efficient Linearized Large Language Models, https://github.com/GATECH-EIC/Linearized-LLM/blob/main/flash_pytorch.py 
+33. AugLA (ICML’24), When Linear Attention Meets Autoregressive Decoding: Towards More Effective and Efficient Linearized Large Language Models (ICML 2024), https://github.com/GATECH-EIC/Linearized-LLM/blob/main/flash_pytorch.py 
 34. Ring (ICLR’24), Ring Attention with Blockwise Transformers for Near-Infinite Context
 35. BPT (NeurIPS’23), Blockwise Parallel Transformer for Large Context Models
 36. Efficient Attention via Control Variates, EVA (ICLR’23 Oral)
@@ -53,16 +53,16 @@ Major and latest branches of (autoregressive) model architecture variants after 
 40. Infiniti (arXiv 2404), Leave No Context Behind: Efficient Infinite Context Transformers with Infini-attention
 41. PEER (arXiv 2407), Mixture of A Million Experts
 42. CoLT5: Faster Long-Range Transformers with Conditional Computation, https://github.com/lucidrains/CoLT5-attention?tab=readme-ov-file, EMNLP 2023
-43. When Linear Attention Meets Autoregressive Decoding: Towards More Effective and Efficient Linearized Large Language Models, ICML 2024
-44. Functional Interpolation for Relative Positions Improves Long Context Transformers, ICLR 2024
-45. Self-attention Networks Localize When QK-eigenspectrum Concentrates (ICML 2024)
+43. Self-attention Networks Localize When QK-eigenspectrum Concentrates (ICML 2024)
+44. Coneheads: Hierarchy Aware Attention, NeurIPS 2023
+45. Linear Attention Sequence Parallelism
 
 ### More (e.g., from ET Survey https://arxiv.org/pdf/2009.06732)
 46. Synthesizer: Rethinking Self-Attention in Transformer Models, https://github.com/10-zin/Synthesizer?tab=readme-ov-file, ICML 2021
 47. cosFormer: Rethinking Softmax in Attention, https://github.com/OpenNLPLab/cosFormer, ICLR 2022
 48. LARA: Linear complexity randomized self-attention mechanism (ICML 2022)
 49. Luna: Linear unified nested attention, https://github.com/sooftware/luna-transformer, NeurIPS 2021
-50. Coneheads: Hierarchy Aware Attention, NeurIPS 2023
+50. VN-Transformer: Rotation-Equivariant Attention for Vector Neurons, https://github.com/lucidrains/VN-transformer?tab=readme-ov-file, TMLR 2023
 
 
 ## From *ELLM Survey* (https://github.com/AIoT-MLSys-Lab/Efficient-LLMs-Survey) (75)
@@ -173,14 +173,14 @@ Major and latest branches of (autoregressive) model architecture variants after 
 75. PanGu-π: Enhancing Language Model Architectures via Nonlinearity Compensation, <ins>arXiv, 2023</ins> [[Paper](https://arxiv.org/abs/2312.17276)]
 
 
-## Selected from Lucidrains (https://github.com/LAION-AI/lucidrains-projects) (30)
+## Other, Selects from Lucidrains (https://github.com/LAION-AI/lucidrains-projects) (30)
 
 ### Paper implementations
 1. Compressive Transformers for Long-Range Sequence Modelling, https://github.com/lucidrains/compressive-transformer-pytorch?tab=readme-ov-file, ICLR 2020
 2. Large Memory Layers with Product Keys, https://github.com/lucidrains/product-key-memory?tab=readme-ov-file, NeurIPS 2019
 3. Flash Attention, https://github.com/lucidrains/flash-attention 
 4. MetaFormer Is Actually What You Need for Vision (AR Version), https://github.com/lucidrains/metaformer-gpt?tab=readme-ov-file, CVPR 2022 Oral
-5. VN-Transformer: Rotation-Equivariant Attention for Vector Neurons, https://github.com/lucidrains/VN-transformer?tab=readme-ov-file, TMLR 2023
+5. Generating Wikipedia by Summarizing Long Sequences, https://github.com/lucidrains/memory-compressed-attention?tab=readme-ov-file, ICLR 2018
 6. Compositional Attention: Disentangling Search and Retrieval, https://github.com/lucidrains/compositional-attention-pytorch, ICLR 2022
 7. Transformer Quality in Linear Time, https://github.com/lucidrains/FLASH-pytorch, ICML 2022
 8. Self-attention Does Not Need O(n²) Memory, https://github.com/lucidrains/memory-efficient-attention-pytorch?tab=readme-ov-file
@@ -194,8 +194,8 @@ Major and latest branches of (autoregressive) model architecture variants after 
 16. Pay Attention to MLPs, https://github.com/lucidrains/g-mlp-gpt?tab=readme-ov-file, Google
 17. Addressing Some Limitations of Transformers with Feedback Memory, https://github.com/lucidrains/feedback-transformer-pytorch?tab=readme-ov-file, arXiv 2002, FAIR
 18. Kronecker Attention Networks, https://github.com/lucidrains/kronecker-attention-pytorch?tab=readme-ov-file, KDD 2020
-19. Generating Wikipedia by Summarizing Long Sequences, https://github.com/lucidrains/memory-compressed-attention?tab=readme-ov-file, ICLR 2018
-20. Normalized Attention Without Probability Cage, https://github.com/lucidrains/all-normalization-transformer?tab=readme-ov-file, arXiv 2005
+19. Normalized Attention Without Probability Cage, https://github.com/lucidrains/all-normalization-transformer?tab=readme-ov-file, arXiv 2005
+20. Building Blocks for a Complex-Valued Transformer Architecture, https://github.com/lucidrains/complex-valued-transformer?tab=readme-ov-file, ICASSP 2023
 
 ### Experimental projects
 21. Token Shift GPT, https://github.com/lucidrains/token-shift-gpt 
@@ -207,4 +207,4 @@ Major and latest branches of (autoregressive) model architecture variants after 
 27. Memory Transformer-XL (wip), https://github.com/lucidrains/memory-transformer-xl, Lucidrains
 28. Simple Hierarchical Transformer (wip), https://github.com/lucidrains/simple-hierarchical-transformer, Lucidrains
 29. Panoptic Transformer (wip), https://github.com/lucidrains/panoptic-transformer, Lucidrains
-30. Building Blocks for a Complex-Valued Transformer Architecture, https://github.com/lucidrains/complex-valued-transformer?tab=readme-ov-file, ICASSP 2023
+30. KAN-GPT, https://github.com/AdityaNG/kan-gpt 
