@@ -1,4 +1,4 @@
-# Baselines and Core Reference Designs (155+)
+# Baselines and Core Reference Designs (155)
 
 Major and latest branches of (autoregressive) model architecture variants after Transformers/GPTs. Collected from surveys, popular repos, and recent papers. Excluded MoE, Hierarchical and Heterogeneous Architectures, and non-causal models. Only consider identical single causal blocks. Can use S2 with reference type to build the phylogenetic tree later. Do not considering param-sharing like Albert. Sheet: https://docs.google.com/spreadsheets/d/1GxMjIY-RZWChS6g03NP9q4kv9tRjvQ9N8ZBkHIPvR1Y/edit?usp=sharing
 
@@ -211,7 +211,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 
 
 
-# Extention (e.g. from https://github.com/Xnhyacinth/Awesome-LLM-Long-Context-Modeling) (70+)
+# Extention (e.g. from https://github.com/Xnhyacinth/Awesome-LLM-Long-Context-Modeling) (75+)
 
 
 ## 2. Efficient Attention
@@ -428,6 +428,9 @@ Towards mental time travel: a hierarchical memory for reinforcement learning age
 
 Multi-Stream Transformers, https://github.com/lucidrains/multistream-transformers?tab=readme-ov-file 
 
+Perceiver IO: A General Architecture for Structured Inputs & Outputs (ICLR 2022 Spotlight), https://github.com/lucidrains/perceiver-ar-pytorch
+
+Axial Attention in Multidimensional Transformers, https://github.com/lucidrains/axial-attention?tab=readme-ov-file
 
 ## Mamba
 
@@ -439,4 +442,3 @@ Multi-Stream Transformers, https://github.com/lucidrains/multistream-transformer
 ## Interesting Community projects
 1. KAN-GPT, https://github.com/AdityaNG/kan-gpt 
 2. Semi-autoregressive Simplex-based Diffusion Language Model, https://github.com/xhan77/ssd-lm 
-
