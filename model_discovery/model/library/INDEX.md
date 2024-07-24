@@ -1,4 +1,4 @@
-# Baselines and Core Reference Designs (155)
+# Baselines and Core Reference Designs (155+)
 
 Major and latest branches of (autoregressive) model architecture variants after Transformers/GPTs. Collected from surveys, popular repos, and recent papers. Excluded MoE, Hierarchical and Heterogeneous Architectures, and non-causal models. Only consider identical single causal blocks. Can use S2 with reference type to build the phylogenetic tree later. Do not considering param-sharing like Albert. Sheet: https://docs.google.com/spreadsheets/d/1GxMjIY-RZWChS6g03NP9q4kv9tRjvQ9N8ZBkHIPvR1Y/edit?usp=sharing
 
@@ -424,6 +424,11 @@ KAN or MLP: A Fairer Comparison, https://arxiv.org/pdf/2407.16674, https://githu
 
 Graph Language Models (ACL 2024), https://github.com/Heidelberg-NLP/GraphLanguageModels
 
+Towards mental time travel: a hierarchical memory for reinforcement learning agents (NeurIPS 2021), https://github.com/lucidrains/HTM-pytorch?tab=readme-ov-file
+
+Multi-Stream Transformers, https://github.com/lucidrains/multistream-transformers?tab=readme-ov-file 
+
+
 ## Mamba
 
 (Arxiv 24.03.03) The Hidden Attention of Mamba Models [Paper](https://arxiv.org/abs/2403.01590) [Code ](https://github.com/AmeenAli/HiddenMambaAttn)![Stars](https://img.shields.io/github/stars/AmeenAli/HiddenMambaAttn)
@@ -434,3 +439,4 @@ Graph Language Models (ACL 2024), https://github.com/Heidelberg-NLP/GraphLanguag
 ## Interesting Community projects
 1. KAN-GPT, https://github.com/AdityaNG/kan-gpt 
 2. Semi-autoregressive Simplex-based Diffusion Language Model, https://github.com/xhan77/ssd-lm 
+
