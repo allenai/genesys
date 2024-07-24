@@ -5,7 +5,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 ## Collected Varaints (50)
 
 ### Example Variants
-1. GPT
+1. GPT, Language Models are Few-Shot Learners
 2. ✅ TTT, Learning to (Learn at Test Time): RNNs with Expressive Hidden States, https://github.com/test-time-training/ttt-lm-pytorch
 3. xLSTM, xLSTM: Extended Long Short-Term Memory, https://github.com/NX-AI/xlstm
 4. Griffin, Griffin: Mixing Gated Linear Recurrences with Local Attention for Efficient Language Models, https://github.com/google-deepmind/recurrentgemma
@@ -13,45 +13,45 @@ Major and latest branches of (autoregressive) model architecture variants after 
 6. M2, Monarch Mixer: A Simple Sub-Quadratic GEMM-Based Architecture, https://github.com/HazyResearch/m2
 7. SpikeGPT, SpikeGPT: Generative Pre-trained Language Model with Spiking Neural Networks (TMLR,24), https://github.com/ridgerchu/SpikeGPT 
 
-### 🚧 SSMs (https://github.com/state-spaces):
-8. Mamba2
-9. S4
-10. HiPPO
-11. LSSL
-12. HTTYH
-13. S4D
-14. Mamba
+### SSMs (https://github.com/state-spaces):
+8. 👉 Mamba2, Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality
+9. S4, Efficiently Modeling Long Sequences with Structured State Spaces
+10. HiPPO, HiPPO: Recurrent Memory with Optimal Polynomial Projections
+11. LSSL, Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers
+12. HTTYH, How to Train Your HiPPO: State Space Models with Generalized Orthogonal Basis Projections
+13. S4D, On the Parameterization and Initialization of Diagonal State Space Models
+14. Mamba, Mamba: Linear-Time Sequence Modeling with Selective State Spaces
 
 ### Flash Linear Attention (https://github.com/sustcsonglin/flash-linear-attention):
-15. 2024-06	Samba
-16. 2023-07	RetNet 
-17. 2023-12	GLA
-18. 2023-12	Based
-19. 2024-01	Rebased
-20. 2021-02	Delta Net
-21. 2023-09	Hedgehog 
-22. 2023-10	PolySketchFormer
-23. 2023-07	TransnormerLLM	
-24. 2023-05	RWKV-v4 
-25. 2023-10	GateLoop	
-26. 2021-10	ABC (@UW)	
-27. 2023-09	VQ-transformer	
-28. 2023-09	HGRN
-29. 2024-04	HGRN2
-30. 2024-04	RWKV6
+15. 2024-06	Samba, Samba: Simple Hybrid State Space Models for Efficient Unlimited Context Language Modeling	
+16. 2023-07	RetNet, Retentive network: a successor to transformer for large language models	
+17. 2023-12	GLA, Gated Linear Attention Transformers with Hardware-Efficient Training	
+18. 2023-12	Based, An Educational and Effective Sequence Mixer	
+19. 2024-01	Rebased, Linear Transformers with Learnable Kernel Functions are Better In-Context Models	
+20. 2021-02	Delta Net, Linear Transformers Are Secretly Fast Weight Programmers	
+21. 2023-09	Hedgehog, The Hedgehog & the Porcupine: Expressive Linear Attentions with Softmax Mimicry	
+22. 2023-10	PolySketchFormer, Fast Transformers via Sketching Polynomial Kernels	
+23. 2023-07	TransnormerLLM, A Faster and Better Large Language Model with Improved TransNormer 
+24. 2023-05	RWKV-v4, Reinventing RNNs for the Transformer Era	
+25. 2023-10	GateLoop, Fully Data-Controlled Linear Recurrence for Sequence Modeling		
+26. 2021-10	ABC, Attention with Bounded-memory Control		
+27. 2023-09	VQ-transformer, Linear-Time Transformers via Vector Quantization		
+28. 2023-09	HGRN, Hierarchically Gated Recurrent Neural Network for Sequence Modeling	
+29. 2024-04	HGRN2, HGRN2: Gated Linear RNNs with State Expansion	
+30. 2024-04	RWKV6, Eagle and Finch: RWKV with Matrix-Valued States and Dynamic Recurrence	
 
 ### From latest papers: 
 31. Mega: Moving Average Equipped Gated Attention, https://github.com/lucidrains/Mega-pytorch?tab=readme-ov-file, ICLR 2023
-32. DCMHA (ICML’24 Oral)
-33. AugLA (ICML’24): https://github.com/GATECH-EIC/Linearized-LLM/blob/main/flash_pytorch.py 
-34. Ring (ICLR’24)
-35. BPT (NeurIPS’23)
+32. DCMHA (ICML’24 Oral), Improving Transformers with Dynamically Composable Multi-Head Attention
+33. AugLA (ICML’24), When Linear Attention Meets Autoregressive Decoding: Towards More Effective and Efficient Linearized Large Language Models, https://github.com/GATECH-EIC/Linearized-LLM/blob/main/flash_pytorch.py 
+34. Ring (ICLR’24), Ring Attention with Blockwise Transformers for Near-Infinite Context
+35. BPT (NeurIPS’23), Blockwise Parallel Transformer for Large Context Models
 36. Efficient Attention via Control Variates, EVA (ICLR’23 Oral)
-37. DiJiang (ICML’24 Oral)
-38. TNN (ICLR’23)
-39. CoPE (arXiv 2405)
-40. Infiniti (arXiv 2404)
-41. PEER (arXiv 2407)
+37. DiJiang (ICML’24 Oral), DiJiang: Efficient Large Language Models through Compact Kernelization
+38. TNN (ICLR’23 Spotlight), Toeplitz Neural Network for Sequence Modeling 
+39. CoPE (arXiv 2405), Contextual Position Encoding: Learning to Count What's Important
+40. Infiniti (arXiv 2404), Leave No Context Behind: Efficient Infinite Context Transformers with Infini-attention
+41. PEER (arXiv 2407), Mixture of A Million Experts
 42. CoLT5: Faster Long-Range Transformers with Conditional Computation, https://github.com/lucidrains/CoLT5-attention?tab=readme-ov-file, EMNLP 2023
 43. When Linear Attention Meets Autoregressive Decoding: Towards More Effective and Efficient Linearized Large Language Models, ICML 2024
 44. Functional Interpolation for Relative Positions Improves Long Context Transformers, ICLR 2024
@@ -208,7 +208,3 @@ Major and latest branches of (autoregressive) model architecture variants after 
 28. Simple Hierarchical Transformer (wip), https://github.com/lucidrains/simple-hierarchical-transformer, Lucidrains
 29. Panoptic Transformer (wip), https://github.com/lucidrains/panoptic-transformer, Lucidrains
 30. Building Blocks for a Complex-Valued Transformer Architecture, https://github.com/lucidrains/complex-valued-transformer?tab=readme-ov-file, ICASSP 2023
-
-
-## Supplementary 
-1. Blockwise Parallel Transformer for Large Context Models, https://arxiv.org/abs/2305.19370 

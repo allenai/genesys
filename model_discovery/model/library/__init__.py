@@ -1,14 +1,11 @@
 import inspect
 from .ttt import ttt
-
-
-MODEL2CLASS = {
-    "ttt": ttt.GAB,
-}
+from .mamba2 import mamba2
 
 
 MODEL2CODE = {
     "ttt": inspect.getsource(ttt),
+    "mamba2": inspect.getsource(mamba2),
 }
 
 

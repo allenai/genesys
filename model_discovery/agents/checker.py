@@ -310,7 +310,7 @@ class Checker(exec_utils.BaseTool):
         :param seq_len: 
             The block target sequence length.
         """
-        B: int = 10
+        B: int = 2
         X = torch.arange(seq_len * B * D).float().reshape(B, seq_len, D)
         if torch.cuda.is_available():
             X = X.cuda()
@@ -347,8 +347,8 @@ class Checker(exec_utils.BaseTool):
 
         """
         self.rprint('Checking differentiability...')
-        mock_input = torch.randint(0, vocab_size, (2, 100)).cuda() if \
-          torch.cuda.is_available() else torch.randint(0, vocab_size, (2, 100))
+        mock_input = torch.randint(0, vocab_size, (2, 2048)).cuda() if \
+          torch.cuda.is_available() else torch.randint(0, vocab_size, (2, 2048))
         criterion = nn.CrossEntropyLoss()
         model.train()
         optimizer = optim.Adam(model.parameters())
@@ -398,8 +398,8 @@ class Checker(exec_utils.BaseTool):
 
         """
         self.rprint('Checking forward pass...')
-        mock_input = torch.randint(0, vocab_size, (2, 100)).cuda() if \
-          torch.cuda.is_available() else torch.randint(0, vocab_size, (2, 100))
+        mock_input = torch.randint(0, vocab_size, (2, 2048)).cuda() if \
+          torch.cuda.is_available() else torch.randint(0, vocab_size, (2, 2048))
         emb.eval()
         gab.eval()
         with torch.no_grad():
@@ -434,8 +434,7 @@ class Checker(exec_utils.BaseTool):
                 glm,_ = reload_gam(config,gab_code,name,dtype=torch.bfloat16, device="cuda") # intentially use bfloat16 to check whether the model is correctly defined
             else:
                 glm,_ = reload_gam(config,gab_code,name,dtype=torch.float16, device="cpu")
-
-            mock_input=torch.randint(0, config.vocab_size, (8, 500))
+            mock_input=torch.randint(0, config.vocab_size, (8, 2048))
             mock_input = mock_input.to(glm.device)
             output = glm(mock_input)
     
@@ -472,7 +471,7 @@ class Checker(exec_utils.BaseTool):
                 gam.d_model
             )
             checkpass3=self._check_differentiable(glm,config.vocab_size)
-            # assert checkpass1 and checkpass2 and checkpass3
+            assert checkpass1 and checkpass2 and checkpass3
         except AssertionError:
             self.rprint('Model test failed\n')
             if not checkpass2:
@@ -555,7 +554,7 @@ class Checker(exec_utils.BaseTool):
             try:
                 if torch.cuda.is_available():
                     glm = glm.cuda()
-                mock_input=torch.randint(0, vocab_size, (8, 500)).to(glm.device)
+                mock_input=torch.randint(0, vocab_size, (8, 2048)).to(glm.device)
                 _ = glm(mock_input)
                 break
             except Exception as e:

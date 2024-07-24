@@ -198,3 +198,4 @@ class Mamba2Simple(nn.Module):
             y = self.norm(y, z)
             out = self.out_proj(y)
         return out
+        

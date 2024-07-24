@@ -2,7 +2,7 @@ import os,sys
 
 from model_discovery.agents.checker import *
 
-from model_discovery.model.library import MODEL2CLASS,MODEL2CODE
+from model_discovery.model.library import MODEL2CODE
 
 from model_discovery.configs.gam_config import ( 
     GAMConfig,GAMConfig_14M,GAMConfig_31M,GAMConfig_70M,GAMConfig_125M,GAMConfig_350M,GAMConfig_760M,
@@ -53,20 +53,21 @@ def run(scale,model_name,args): # do a single verify
     args.resume=True
     args.training_token_multiplier=20
     args.logging_steps=10
-    args.n_gpus=4
+    # args.n_gpus=4
     args.port="25869"
     reportdir=f"{ckpt_dir}/{args.evoname}/ve/{args.design_id}/report.json"
     if not os.path.exists(reportdir):
         ve_main(args)
     report=U.load_json(reportdir)
-    savedir=f"{LIBRARY_PATH}/{model_name}/report.json"
-    U.save_json(report,savedir)
+    savedir=f"{LIBRARY_PATH}/{model_name}/reports"
+    U.mkdir(savedir)
+    U.save_json(report,U.pjoin(savedir,f"report_{scale}.json"))
 
 
 if __name__ == "__main__":
 
     scale = '14M' #sys.argv[1]
-    model_name = 'ttt' # sys.argv[2]
+    model_name = 'mamba2' # sys.argv[2]
     args = ve_parser.parse_args()
 
     if args.mode=='check':
