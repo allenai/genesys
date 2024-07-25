@@ -20,13 +20,13 @@ Major and latest branches of (autoregressive) model architecture variants after 
 11. LSSL, Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers
 12. HTTYH, How to Train Your HiPPO: State Space Models with Generalized Orthogonal Basis Projections
 13. S4D, On the Parameterization and Initialization of Diagonal State Space Models
-14. 👉 Mamba, Mamba: Linear-Time Sequence Modeling with Selective State Spaces
+14. Mamba, Mamba: Linear-Time Sequence Modeling with Selective State Spaces
 
 ### Flash Linear Attention (https://github.com/sustcsonglin/flash-linear-attention):
 15. 2024-06	Samba, Samba: Simple Hybrid State Space Models for Efficient Unlimited Context Language Modeling	
-16. 2023-07	RetNet, Retentive network: a successor to transformer for large language models	
+16. 👉 2023-07	RetNet, Retentive network: a successor to transformer for large language models	
 17. 2023-12	GLA, Gated Linear Attention Transformers with Hardware-Efficient Training	
-18. 2024-04	RWKV6, Eagle and Finch: RWKV with Matrix-Valued States and Dynamic Recurrence	
+18. ✅ 2024-04	RWKV6, Eagle and Finch: RWKV with Matrix-Valued States and Dynamic Recurrence	
 19. 2024-01	Rebased, Linear Transformers with Learnable Kernel Functions are Better In-Context Models	
 20. 2021-02	Delta Net, Linear Transformers Are Secretly Fast Weight Programmers	
 21. 2023-09	Hedgehog, The Hedgehog & the Porcupine: Expressive Linear Attentions with Softmax Mimicry	

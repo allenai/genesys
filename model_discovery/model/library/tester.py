@@ -67,7 +67,7 @@ def run(scale,model_name,args): # do a single verify
 if __name__ == "__main__":
 
     scale = '14M' #sys.argv[1]
-    model_name = 'mamba2' # sys.argv[2]
+    model_name = 'rwkv6' # sys.argv[2]
     args = ve_parser.parse_args()
 
     if args.mode=='check':
