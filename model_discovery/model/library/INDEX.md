@@ -1,10 +1,12 @@
-# Baselines and Core Reference Designs (155)
+# Language Modeling Library
+
+## Baselines and Core Reference Designs (155)
 
 Major and latest branches of (autoregressive) model architecture variants after Transformers/GPTs. Collected from surveys, popular repos, and recent papers. Excluded MoE, Hierarchical and Heterogeneous Architectures, and non-causal models. Only consider identical single causal blocks. Can use S2 with reference type to build the phylogenetic tree later. Do not considering param-sharing like Albert. Sheet: https://docs.google.com/spreadsheets/d/1GxMjIY-RZWChS6g03NP9q4kv9tRjvQ9N8ZBkHIPvR1Y/edit?usp=sharing
 
-## Collected Varaints (50)
+### Collected Varaints (50)
 
-### Example Variants
+#### Example Variants
 1. GPT, Language Models are Few-Shot Learners
 2. ✅ TTT, Learning to (Learn at Test Time): RNNs with Expressive Hidden States, https://github.com/test-time-training/ttt-lm-pytorch
 3. 👉 xLSTM, xLSTM: Extended Long Short-Term Memory, https://github.com/NX-AI/xlstm
@@ -13,7 +15,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 6. M2, Monarch Mixer: A Simple Sub-Quadratic GEMM-Based Architecture, https://github.com/HazyResearch/m2
 7. SpikeGPT, SpikeGPT: Generative Pre-trained Language Model with Spiking Neural Networks (TMLR,24), https://github.com/ridgerchu/SpikeGPT 
 
-### SSMs (https://github.com/state-spaces):
+#### SSMs (https://github.com/state-spaces):
 8. ✅ Mamba2, Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality
 9. S4, Efficiently Modeling Long Sequences with Structured State Spaces
 10. HiPPO, HiPPO: Recurrent Memory with Optimal Polynomial Projections
@@ -22,7 +24,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 13. S4D, On the Parameterization and Initialization of Diagonal State Space Models
 14. Mamba, Mamba: Linear-Time Sequence Modeling with Selective State Spaces
 
-### Flash Linear Attention (https://github.com/sustcsonglin/flash-linear-attention):
+#### Flash Linear Attention (https://github.com/sustcsonglin/flash-linear-attention):
 15. 2024-06	Samba, Samba: Simple Hybrid State Space Models for Efficient Unlimited Context Language Modeling	
 16. ❎ 2023-07	RetNet, Retentive network: a successor to transformer for large language models	
 17. 2023-12	GLA, Gated Linear Attention Transformers with Hardware-Efficient Training	
@@ -39,7 +41,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 28. 2023-09	HGRN, Hierarchically Gated Recurrent Neural Network for Sequence Modeling	
 29. 2024-04	HGRN2, HGRN2: Gated Linear RNNs with State Expansion	
 
-### From latest papers: 
+#### From latest papers: 
 30. Just read twice: closing the recall gap for recurrent language models (arXiv 2407)
 31. Mega: Moving Average Equipped Gated Attention, https://github.com/lucidrains/Mega-pytorch?tab=readme-ov-file, ICLR 2023
 32. DCMHA (ICML’24 Oral), Improving Transformers with Dynamically Composable Multi-Head Attention
@@ -57,7 +59,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 44. Coneheads: Hierarchy Aware Attention, NeurIPS 2023
 45. Linear Attention Sequence Parallelism
 
-### More (e.g., from ET Survey https://arxiv.org/pdf/2009.06732)
+#### More (e.g., from ET Survey https://arxiv.org/pdf/2009.06732)
 46. Synthesizer: Rethinking Self-Attention in Transformer Models, https://github.com/10-zin/Synthesizer?tab=readme-ov-file, ICML 2021
 47. cosFormer: Rethinking Softmax in Attention, https://github.com/OpenNLPLab/cosFormer, ICLR 2022
 48. LARA: Linear complexity randomized self-attention mechanism (ICML 2022)
@@ -65,24 +67,24 @@ Major and latest branches of (autoregressive) model architecture variants after 
 50. VN-Transformer: Rotation-Equivariant Attention for Vector Neurons, https://github.com/lucidrains/VN-transformer?tab=readme-ov-file, TMLR 2023
 
 
-## From *ELLM Survey* (https://github.com/AIoT-MLSys-Lab/Efficient-LLMs-Survey) (75)
+### From *ELLM Survey* (https://github.com/AIoT-MLSys-Lab/Efficient-LLMs-Survey) (75)
 
-### Efficient Architecture
+#### Efficient Architecture
 
-#### Efficient Attention
+##### Efficient Attention
 
-##### Sharing-based Attention
+###### Sharing-based Attention
 1. LoMA: Lossless Compressed Memory Attention, <ins>arXiv, 2024</ins> [[Paper](https://arxiv.org/abs/2401.09486)]
 2. MobileLLM: Optimizing Sub-billion Parameter Language Models for On-Device Use Cases, <ins>arXiv, 2024</ins> [[Paper](https://arxiv.org/abs/2402.14905)]
 3. GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints, <ins>EMNLP, 2023</ins> [[Paper](https://arxiv.org/abs/2305.13245)]
 4. Fast Transformer Decoding: One Write-Head is All You Need, <ins>arXiv, 2019</ins> [[Paper](https://arxiv.org/abs/1911.02150)]
 
-##### Feature Information Reduction
+###### Feature Information Reduction
 5. Nyströmformer: A nyström-based algorithm for approximating self-attention, <ins>AAAI, 2021</ins> [[Paper](https://arxiv.org/abs/2102.03902)] [[Code](https://github.com/mlpen/Nystromformer)] [[Code](https://github.com/lucidrains/nystrom-attention)]
 6. Funnel-Transformer: Filtering out Sequential Redundancy for Efficient Language Processing, <ins>NeurIPS, 2020</ins> [[Paper](https://arxiv.org/abs/2006.03236)] [[Code](https://github.com/laiguokun/Funnel-Transformer)]
 7. Set Transformer: A Framework for Attention-based Permutation-Invariant Neural Networks, <ins>ICML, 2019</ins> [[Paper](https://arxiv.org/abs/1810.00825)]
 
-##### Kernelization or Low-Rank
+###### Kernelization or Low-Rank
 8. Loki: Low-Rank Keys for Efficient Sparse Attention, <ins>ICML Workshop, 2023</ins> [[Paper](https://arxiv.org/abs/2406.02542)]
 9. Sumformer: Universal Approximation for Efficient Transformers, <ins>ICML Workshop, 2023</ins> [[Paper](https://arxiv.org/abs/2307.02301)]
 10. FLuRKA: Fast fused Low-Rank & Kernel Attention, <ins>arXiv, 2023</ins> [[Paper](https://arxiv.org/abs/2306.15799)]
@@ -93,7 +95,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 15. Lightweight and Efficient End-to-End Speech Recognition Using Low-Rank Transformer, <ins>ICASSP, 2020</ins> [[Paper](https://arxiv.org/abs/1910.13923)]
 16. Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention, <ins>ICML, 2020</ins> [[Paper](https://arxiv.org/abs/2006.16236)] [[Code](https://github.com/idiap/fast-transformers)]
 
-##### Fixed Pattern Strategies
+###### Fixed Pattern Strategies
 17. Simple linear attention language models balance the recall-throughput tradeoff, <ins>arXiv, 2024</ins> [[Paper](https://arxiv.org/abs/2402.18668)] 
 18. Lightning Attention-2: A Free Lunch for Handling Unlimited Sequence Lengths in Large Language Models, <ins>arXiv, 2024</ins> [[Paper](https://arxiv.org/abs/2401.04658)] [[Code](https://github.com/OpenNLPLab/lightning-attention)]
 19. Faster Causal Attention Over Large Sequences Through Sparse Flash Attention, <ins>ICML Workshop, 2023</ins> [[Paper](https://arxiv.org/abs/2306.01160)]
@@ -103,7 +105,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 23. Blockwise Self-Attention for Long Document Understanding, <ins>EMNLP, 2020</ins> [[Paper](https://arxiv.org/abs/1911.02972v)] [[Code](https://github.com/xptree/BlockBERT)]
 24. Generating Long Sequences with Sparse Transformers, <ins>arXiv, 2019</ins> [[Paper](https://arxiv.org/abs/1904.10509)] 
 
-##### Learnable Pattern Strategies
+###### Learnable Pattern Strategies
 25. MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression, <ins>arXiv, 2024</ins> [[Paper](https://arxiv.org/html/2406.14909v1)]
 26. HyperAttention: Long-context Attention in Near-Linear Time, <ins>arXiv, 2023</ins> [[Paper](https://arxiv.org/abs/2310.05869)] [[Code](https://github.com/insuhan/hyper-attn)]
 27. ClusterFormer: Neural Clustering Attention for Efficient and Effective Transformer, <ins>ACL, 2022</ins> [[Paper](https://aclanthology.org/2022.acl-long.170/)]
@@ -113,9 +115,9 @@ Major and latest branches of (autoregressive) model architecture variants after 
 31. Efficient Content-Based Sparse Attention with Routing Transformers, <ins>TACL, 2020</ins> [[Paper](https://arxiv.org/abs/2003.05997)] [[Code](https://github.com/google-research/google-research/tree/master/routing_transformer)] [[Code](https://github.com/lucidrains/routing-transformer?tab=readme-ov-file)]
 
 
-#### Long Context LLMs
+##### Long Context LLMs
 
-##### Extrapolation and Interpolation
+###### Extrapolation and Interpolation
 32. Two Stones Hit One Bird: Bilevel Positional Encoding for Better Length Extrapolation, <ins>ICML, 2024</ins> [[Paper](https://arxiv.org/abs/2401.16421)]
 33. ∞-Bench: Extending Long Context Evaluation Beyond 100K Tokens, <ins>arXiv, 2024</ins> [[Paper](https://arxiv.org/abs/2402.13718)]
 34. Resonance RoPE: Improving Context Length Generalization of Large Language Models, <ins>arXiv, 2024</ins> [[Paper](https://arxiv.org/abs/2403.00071)] [[Code](https://github.com/sheryc/resonance_rope)]
@@ -132,14 +134,14 @@ Major and latest branches of (autoregressive) model architecture variants after 
 45. Train Short, Test Long: Attention with Linear Biases Enables Input Length Extrapolation, <ins>ICLR, 2022</ins> [[Paper](https://arxiv.org/pdf/2108.12409.pdf)] [[Code](https://github.com/ofirpress/attention_with_linear_biases)]
 46. Exploring Length Generalization in Large Language Models, <ins>NeurIPS, 2022</ins> [[Paper](https://arxiv.org/abs/2207.04901)]
 
-##### Recurrent Structure
+###### Recurrent Structure
 47. Recurrent Memory Transformer, <ins>NeurIPS, 2022</ins> [[Paper](https://arxiv.org/abs/2207.06881)] [[Code](https://github.com/booydar/LM-RMT)] [[Code](https://github.com/lucidrains/recurrent-memory-transformer-pytorch)]
 48. Block-Recurrent Transformers, <ins>NeurIPS, 2022</ins> [[Paper](https://arxiv.org/abs/2203.07852)] [[Code](https://github.com/google-research/meliad)] [[Code](https://github.com/lucidrains/block-recurrent-transformer-pytorch?tab=readme-ov-file)]
 49. ∞-former: Infinite Memory Transformer, <ins>ACL, 2022</ins> [[Paper](https://arxiv.org/abs/2109.00301)] [[Code](https://github.com/deep-spin/infinite-former)]
 50. Memformer: A Memory-Augmented Transformer for Sequence Modeling, <ins>AACL-Findings, 2020</ins> [[Paper]](https://arxiv.org/abs/2010.06891) [[Code](https://github.com/deep-spin/infinite-former)]
 51. Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context, <ins>ACL, 2019</ins> [[Paper](https://arxiv.org/abs/1901.02860)] [[Code](https://github.com/kimiyoung/transformer-xl)]
 
-##### Segmentation and Sliding Window
+###### Segmentation and Sliding Window
 52. XL3M: A Training-free Framework for LLM Length Extension Based on Segment-wise Inference, <ins>arXiv, 2024</ins> [[Paper](https://arxiv.org/abs/2405.17755)]
 53. TransformerFAM: Feedback attention is working memory, <ins>arXiv, 2024</ins> [[Paper](https://arxiv.org/abs/2404.09173)]
 54. Naive Bayes-based Context Extension for Large Language Models, <ins>NAACL, 2024</ins> [[Paper](https://arxiv.org/abs/2403.17552)]
@@ -156,9 +158,9 @@ Major and latest branches of (autoregressive) model architecture variants after 
 65. Efficient Long-Text Understanding with Short-Text Models, <ins>TACL, 2023</ins> [[Paper](https://arxiv.org/abs/2208.00748)] [[Code](https://github.com/Mivg/SLED)]
 
 
-#### Transformer Alternative Architecture
+##### Transformer Alternative Architecture
 
-##### State Space Models
+###### State Space Models
 66. DenseMamba: State Space Models with Dense Hidden Connection for Efficient Large Language Models, <ins>arXiv, 2024</ins> [[Paper](https://arxiv.org/abs/2403.00818)] [[Code](https://github.com/WailordHe/DenseSSM)]
 67. MambaByte: Token-free Selective State Space Model, <ins>arXiv, 2024</ins> [[Paper](https://arxiv.org/abs/2401.13660)] 
 68. Sparse Modular Activation for Efficient Sequence Modeling, <ins>NeurIPS, 2023</ins> [[Paper](https://arxiv.org/abs/2306.11197)] [[Code](https://github.com/renll/SeqBoat)]
@@ -167,15 +169,15 @@ Major and latest branches of (autoregressive) model architecture variants after 
 71. Diagonal State Spaces are as Effective as Structured State Spaces, <ins>NeurIPS, 2022</ins> [[Paper](https://arxiv.org/abs/2203.14343)] [[Code](https://github.com/ag1988/dss)]
 72. Hungry Hungry Hippos: Towards Language Modeling with State Space Models, <ins>ICLR 2023</ins> [[Paper](https://arxiv.org/abs/2212.14052)] [[Code](https://github.com/HazyResearch/H3)]
 
-##### Other Sequential Models
+###### Other Sequential Models
 73. Scalable MatMul-free Language Modeling, <ins>arXiv, 2024</ins> [[Paper](https://arxiv.org/abs/2406.02528)]
 74. MEGALODON: Efficient LLM Pretraining and Inference with Unlimited Context Length, <ins>arXiv, 2024</ins> [[Paper](https://arxiv.org/abs/2404.08801)]
 75. PanGu-π: Enhancing Language Model Architectures via Nonlinearity Compensation, <ins>arXiv, 2023</ins> [[Paper](https://arxiv.org/abs/2312.17276)]
 
 
-## Other, Selects from Lucidrains (https://github.com/LAION-AI/lucidrains-projects) (30)
+### Other, Selects from Lucidrains (https://github.com/LAION-AI/lucidrains-projects) (30)
 
-### Paper implementations
+#### Paper implementations
 1. Compressive Transformers for Long-Range Sequence Modelling, https://github.com/lucidrains/compressive-transformer-pytorch?tab=readme-ov-file, ICLR 2020
 2. Large Memory Layers with Product Keys, https://github.com/lucidrains/product-key-memory?tab=readme-ov-file, NeurIPS 2019
 3. Flash Attention, https://github.com/lucidrains/flash-attention 
@@ -197,7 +199,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 19. Normalized Attention Without Probability Cage, https://github.com/lucidrains/all-normalization-transformer?tab=readme-ov-file, arXiv 2005
 20. Building Blocks for a Complex-Valued Transformer Architecture, https://github.com/lucidrains/complex-valued-transformer?tab=readme-ov-file, ICASSP 2023
 
-## More papers
+#### More papers
 21. Hierarchical Transformers Are More Efficient Language Models (NAACL 2022 Findings)
 
 22. An Attention Free Transformer (arXiv 2021, Apple)
@@ -219,13 +221,12 @@ Major and latest branches of (autoregressive) model architecture variants after 
 30. Staircase Attention for Recurrent Processing of Sequences (NeurIPS 2022)
 
 
+## Extention (e.g. from https://github.com/Xnhyacinth/Awesome-LLM-Long-Context-Modeling) (101)
 
-# Extention (e.g. from https://github.com/Xnhyacinth/Awesome-LLM-Long-Context-Modeling) (101)
 
+### 2. Efficient Attention
 
-## 2. Efficient Attention
-
-### 2.1 Sparse Attention
+#### 2.1 Sparse Attention
 
 4. [**ETC: Encoding Long and Structured Inputs in Transformers.**](https://aclanthology.org/2020.emnlp-main.19/) *Joshua Ainslie, Santiago Ontanon, Chris Alberti, Vaclav Cvicek, Zachary Fisher, Philip Pham, Anirudh Ravula, Sumit Sanghai, Qifan Wang, Li Yang.* EMNLP 2020.
 
@@ -289,7 +290,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 
 42. [**Weighted Grouped Query Attention in Transformers.**](https://arxiv.org/abs/2407.10855) *Sai Sena Chinnakonduru, Astarag Mohapatra.* Arxiv 2024.
 
-### 2.2 Linear Attention
+#### 2.2 Linear Attention
 
 2. [**Learning Fast Algorithms for Linear Transforms Using Butterfly Factorizations.**](https://arxiv.org/abs/1903.05895) *Tri Dao, Albert Gu, Matthew Eichhorn, Atri Rudra, Christopher Ré.* Arxiv 2019.  
 
@@ -315,7 +316,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![GitHub Repo stars](https://img.shields.io/github/stars/OpenNLPLab/LightNet](https://github.com/OpenNLPLab/LightNet)
 
-### 2.3 Hierarchical Attention
+#### 2.3 Hierarchical Attention
 
 1. [**Neural Legal Judgment Prediction in English.**](https://aclanthology.org/P19-1424.pdf) *Ilias Chalkidis, Ion Androutsopoulos, Nikolaos Aletras.* ACL 2019. 
 
@@ -328,7 +329,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 4. [**Erniesparse: Learning hierarchical efficient transformer through regularized self-attention.**](https://arxiv.org/abs/2203.12276) *Yang Liu, Jiaxiang Liu, Li Chen, Yuxiang Lu, Shikun Feng, Zhida Feng, Yu Sun, Hao Tian, Hua Wu, Haifeng Wang.* Arxiv 2022.
 
 
-## 3. Recurrent Transformers
+### 3. Recurrent Transformers
 
 5. [**Memorizing Transformers.**](https://arxiv.org/abs/2203.08913) *Yuhuai Wu, Markus N. Rabe, DeLesley Hutchins, Christian Szegedy.* Arxiv 2022.  
 
@@ -357,7 +358,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![GitHub Repo stars](https://img.shields.io/github/stars/RodkinIvan/associative-recurrent-memory-transformer)](https://github.com/RodkinIvan/associative-recurrent-memory-transformer)
 
 
-## 4. State Space Models
+### 4. State Space Models
 
 4. [**LOCOST: State-Space Models for Long Document Abstractive Summarization.**](https://arxiv.org/abs/2401.17919) *Florian Le Bronnec, Song Duong, Mathieu Ravaut, Alexandre Allauzen, Nancy F. Chen, Vincent Guigue, Alberto Lumbreras, Laure Soulier, Patrick Gallinari.* Arxiv 2024.
 
@@ -377,7 +378,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 
 14. [**Discrete Diffusion Language Model for Long Text Summarization.**](https://arxiv.org/abs/2407.10998) *Do Huu Dat, Do Duc Anh, Anh Tuan Luu, Wray Buntine.* Arxiv 2024.
 
-## 5. Length Extrapolation
+### 5. Length Extrapolation
 
 3. [**KERPLE: Kernelized Relative Positional Embedding for Length Extrapolation.**](https://arxiv.org/abs/2205.09921) *Ta-Chung Chi, Ting-Han Fan, Peter J. Ramadge, Alexander I. Rudnicky.* Arxiv 2022. 
 
@@ -421,7 +422,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![GitHub Repo stars](https://img.shields.io/github/stars/ibm-granite/granite-code-models)](https://github.com/ibm-granite/granite-code-models)
 
 
-## More
+### More
 
 1. **(Arxiv 24.06.04) GrootVL: Tree Topology is All You Need in State Space Model** [Paper](https://arxiv.org/abs/2406.02395) [Code](https://github.com/EasonXiao-888/GrootVL) ![Stars](https://img.shields.io/github/stars/EasonXiao-888/GrootVL)
 
@@ -467,7 +468,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 
 22. SOFT: Softmax-free Transformer with Linear Complexity (NeurIPS 2021 Spotlight)
 
-## Non standard models
+### Non standard models
 1. Discrete Diffusion Modeling by Estimating the Ratios of the Data Distribution (ICML 2024 Best Paper Award), https://arxiv.org/abs/2310.16834
 2. Semi-autoregressive Simplex-based Diffusion Language Model (ACL 2023), https://github.com/xhan77/ssd-lm 
 3. DiffusionBERT: Improving Generative Masked Language Models with Diffusion Models (ACL 2023)
@@ -487,8 +488,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 17. Self Reasoning Tokens (wip), https://github.com/lucidrains/self-reasoning-tokens-pytorch
 
 
-
-# Community projects
+## Community projects
 
 1. Token Shift GPT, https://github.com/lucidrains/token-shift-gpt 
 2. Flash Cosine Similarity Attention (wip), https://github.com/lucidrains/flash-cosine-sim-attention, Lucidrains
