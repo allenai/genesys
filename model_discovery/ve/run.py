@@ -150,7 +150,7 @@ def run_train(args,gab,gab_config) -> None:
         start=time.perf_counter()
         if isinstance(args, dict):
             args = Namespace(**args)
-        config: GAMConfig = eval(f"{args.config}()")
+        config = eval(f"GAMConfig_{args.scale}()")
         model = ModisLMHeadModel(
             config, gab, dtype=torch.bfloat16, device="cuda",
             block_config=gab_config

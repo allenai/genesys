@@ -7,7 +7,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 ### Example Variants
 1. GPT, Language Models are Few-Shot Learners
 2. ✅ TTT, Learning to (Learn at Test Time): RNNs with Expressive Hidden States, https://github.com/test-time-training/ttt-lm-pytorch
-3. xLSTM, xLSTM: Extended Long Short-Term Memory, https://github.com/NX-AI/xlstm
+3. 👉 xLSTM, xLSTM: Extended Long Short-Term Memory, https://github.com/NX-AI/xlstm
 4. Griffin, Griffin: Mixing Gated Linear Recurrences with Local Attention for Efficient Language Models, https://github.com/google-deepmind/recurrentgemma
 5. Hyena, Hyena Hierarchy: Towards Larger Convolutional Language Models (ICML'23 Oral), https://github.com/HazyResearch/safari
 6. M2, Monarch Mixer: A Simple Sub-Quadratic GEMM-Based Architecture, https://github.com/HazyResearch/m2
@@ -24,7 +24,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 
 ### Flash Linear Attention (https://github.com/sustcsonglin/flash-linear-attention):
 15. 2024-06	Samba, Samba: Simple Hybrid State Space Models for Efficient Unlimited Context Language Modeling	
-16. 👉 2023-07	RetNet, Retentive network: a successor to transformer for large language models	
+16. ❎ 2023-07	RetNet, Retentive network: a successor to transformer for large language models	
 17. 2023-12	GLA, Gated Linear Attention Transformers with Hardware-Efficient Training	
 18. ✅ 2024-04	RWKV6, Eagle and Finch: RWKV with Matrix-Valued States and Dynamic Recurrence	
 19. 2024-01	Rebased, Linear Transformers with Learnable Kernel Functions are Better In-Context Models	
@@ -197,21 +197,30 @@ Major and latest branches of (autoregressive) model architecture variants after 
 19. Normalized Attention Without Probability Cage, https://github.com/lucidrains/all-normalization-transformer?tab=readme-ov-file, arXiv 2005
 20. Building Blocks for a Complex-Valued Transformer Architecture, https://github.com/lucidrains/complex-valued-transformer?tab=readme-ov-file, ICASSP 2023
 
-### Experimental projects
-21. Token Shift GPT, https://github.com/lucidrains/token-shift-gpt 
-22. Linear Attention Transformer, https://github.com/lucidrains/linear-attention-transformer
-23. x-Transformers, https://github.com/lucidrains/x-transformers
-24. Local attention, https://github.com/lucidrains/local-attention 
-25. Self Reasoning Tokens (wip), https://github.com/lucidrains/self-reasoning-tokens-pytorch
-26. Flash Cosine Similarity Attention (wip), https://github.com/lucidrains/flash-cosine-sim-attention, Lucidrains
-27. Memory Transformer-XL (wip), https://github.com/lucidrains/memory-transformer-xl, Lucidrains
-28. Simple Hierarchical Transformer (wip), https://github.com/lucidrains/simple-hierarchical-transformer, Lucidrains
-29. Panoptic Transformer (wip), https://github.com/lucidrains/panoptic-transformer, Lucidrains
-30. An Attention Free Transformer
+## More papers
+21. Hierarchical Transformers Are More Efficient Language Models (NAACL 2022 Findings)
+
+22. An Attention Free Transformer (arXiv 2021, Apple)
+
+23. Efficient Beam Tree Recursion (NeurIPS 2023)
+
+24. Fast-R2D2: A Pretrained Recursive Neural Network based on Pruned CKY for Grammar Induction and Text Representation (EMNLP 2022)
+
+25. ChordMixer: A Scalable Neural Attention Model for Sequences with Different Lengths (ICLR 2023)
+
+26. Temporal Latent Bottleneck: Synthesis of Fast and Slow Processing Mechanisms in Sequence Learning (NeurIPS 2022)
+
+27. BP-Transformer: Modelling Long-Range Context via Binary Partitioning (arXiv 2019)
+
+28. Time-aware Large Kernel Convolutions (ICML 2020)
+
+29. Simplified State Space Layers for Sequence Modeling (ICLR 2023 Oral)
+
+30. Staircase Attention for Recurrent Processing of Sequences (NeurIPS 2022)
 
 
 
-# Extention (e.g. from https://github.com/Xnhyacinth/Awesome-LLM-Long-Context-Modeling) (75+)
+# Extention (e.g. from https://github.com/Xnhyacinth/Awesome-LLM-Long-Context-Modeling) (100)
 
 
 ## 2. Efficient Attention
@@ -414,31 +423,77 @@ Major and latest branches of (autoregressive) model architecture variants after 
 
 ## More
 
-**(Arxiv 24.06.04) GrootVL: Tree Topology is All You Need in State Space Model** [Paper](https://arxiv.org/abs/2406.02395) [Code](https://github.com/EasonXiao-888/GrootVL) ![Stars](https://img.shields.io/github/stars/EasonXiao-888/GrootVL)
+1. **(Arxiv 24.06.04) GrootVL: Tree Topology is All You Need in State Space Model** [Paper](https://arxiv.org/abs/2406.02395) [Code](https://github.com/EasonXiao-888/GrootVL) ![Stars](https://img.shields.io/github/stars/EasonXiao-888/GrootVL)
 
-(Arxiv 24.05.26) A Unified Implicit Attention Formulation for Gated-Linear Recurrent Sequence Models [Paper](https://arxiv.org/abs/2405.16504) [Code](https://github.com/Itamarzimm/UnifiedImplicitAttnRepr) ![Stars](https://img.shields.io/github/stars/Itamarzimm/UnifiedImplicitAttnRepr)
+2. (Arxiv 24.05.26) A Unified Implicit Attention Formulation for Gated-Linear Recurrent Sequence Models [Paper](https://arxiv.org/abs/2405.16504) [Code](https://github.com/Itamarzimm/UnifiedImplicitAttnRepr) ![Stars](https://img.shields.io/github/stars/Itamarzimm/UnifiedImplicitAttnRepr)
 
-(Arxiv 24.05.27) The Expressive Capacity of State Space Models: A Formal Language Perspective [Paper](https://arxiv.org/abs/2405.17394) [Code](https://github.com/LeapLabTHU/MLLA) ![Stars](https://img.shields.io/github/stars/LeapLabTHU/MLLA)
+3. (Arxiv 24.05.27) The Expressive Capacity of State Space Models: A Formal Language Perspective [Paper](https://arxiv.org/abs/2405.17394) [Code](https://github.com/LeapLabTHU/MLLA) ![Stars](https://img.shields.io/github/stars/LeapLabTHU/MLLA)
 
-KAN or MLP: A Fairer Comparison, https://arxiv.org/pdf/2407.16674, https://github.com/yu-rp/KANbeFair 
+4. KAN or MLP: A Fairer Comparison, https://arxiv.org/pdf/2407.16674, https://github.com/yu-rp/KANbeFair 
 
-Graph Language Models (ACL 2024), https://github.com/Heidelberg-NLP/GraphLanguageModels
+5. Graph Language Models (ACL 2024), https://github.com/Heidelberg-NLP/GraphLanguageModels
 
-Towards mental time travel: a hierarchical memory for reinforcement learning agents (NeurIPS 2021), https://github.com/lucidrains/HTM-pytorch?tab=readme-ov-file
+6. Towards mental time travel: a hierarchical memory for reinforcement learning agents (NeurIPS 2021), https://github.com/lucidrains/HTM-pytorch?tab=readme-ov-file
 
-Multi-Stream Transformers, https://github.com/lucidrains/multistream-transformers?tab=readme-ov-file 
+7. Multi-Stream Transformers, https://github.com/lucidrains/multistream-transformers?tab=readme-ov-file 
 
-Perceiver IO: A General Architecture for Structured Inputs & Outputs (ICLR 2022 Spotlight), https://github.com/lucidrains/perceiver-ar-pytorch
+8. Perceiver IO: A General Architecture for Structured Inputs & Outputs (ICLR 2022 Spotlight), https://github.com/lucidrains/perceiver-ar-pytorch
 
-Axial Attention in Multidimensional Transformers, https://github.com/lucidrains/axial-attention?tab=readme-ov-file
+9. Axial Attention in Multidimensional Transformers, https://github.com/lucidrains/axial-attention?tab=readme-ov-file
 
-## Mamba
+10. (Arxiv 24.03.03) The Hidden Attention of Mamba Models [Paper](https://arxiv.org/abs/2403.01590) [Code ](https://github.com/AmeenAli/HiddenMambaAttn)![Stars](https://img.shields.io/github/stars/AmeenAli/HiddenMambaAttn)
 
-(Arxiv 24.03.03) The Hidden Attention of Mamba Models [Paper](https://arxiv.org/abs/2403.01590) [Code ](https://github.com/AmeenAli/HiddenMambaAttn)![Stars](https://img.shields.io/github/stars/AmeenAli/HiddenMambaAttn)
+11. (Arxiv 24.03.28) Jamba: A Hybrid Transformer-Mamba Language Model [Paper](https://arxiv.org/abs/2403.19887) [Code](https://huggingface.co/ai21labs/Jamba-v0.1) 
 
-(Arxiv 24.03.28) Jamba: A Hybrid Transformer-Mamba Language Model [Paper](https://arxiv.org/abs/2403.19887) [Code](https://huggingface.co/ai21labs/Jamba-v0.1) 
+12. Sequence Modeling with Multiresolution Convolutional Memory (ICML 2023)
+
+13. Resurrecting Recurrent Neural Networks for Long Sequences (Deepmind 2023)
+
+14. HyperMixer: An MLP-based Low Cost Alternative to Transformers (ACL 2023)
+
+15. Pay Less Attention with Lightweight and Dynamic Convolutions (ICLR 2019 Oral)
+
+16. The Devil in Linear Transformer (EMNLP 2022)
+
+17. Flowformer: Linearizing Transformers with Conservation Flows (ICML 2022)
+
+18. Universal Transformers (ICLR 2019)
+
+19. The Neural Data Router: Adaptive Control Flow in Transformers Improves Systematic Generalization (ICLR 2022)
+
+20. Ordered Memory (NeurIPS 2019)
+
+21. Modeling Hierarchical Structures with Continuous Recursive Neural Networks (ICML 2021)
 
 
-## Interesting Community projects
-1. KAN-GPT, https://github.com/AdityaNG/kan-gpt 
-2. Semi-autoregressive Simplex-based Diffusion Language Model, https://github.com/xhan77/ssd-lm 
+## Non standard models
+1. Discrete Diffusion Modeling by Estimating the Ratios of the Data Distribution (ICML 2024 Best Paper Award), https://arxiv.org/abs/2310.16834
+2. Semi-autoregressive Simplex-based Diffusion Language Model (ACL 2023), https://github.com/xhan77/ssd-lm 
+3. DiffusionBERT: Improving Generative Masked Language Models with Diffusion Models (ACL 2023)
+4. Structured Denoising Diffusion Models in Discrete State-Spaces (NeurIPS 2021)
+5. Diffusion-LM Improves Controllable Text Generation (NeurIPS 2022)
+6. Likelihood-Based Diffusion Language Models (NeurIPS 2023)
+7. TESS: Text-to-Text Self-Conditioned Simplex Diffusion (arXiv 2023)
+8. DiffuSeq: Sequence to Sequence Text Generation with Diffusion Models (ICLR 2023)
+9. Continuous diffusion for categorical data (Deepmind 2022)
+10. Classifier-Free Diffusion Guidance (arXiv 2022)
+11. Self-conditioned Embedding Diffusion for Text Generation (arXiv 2023)
+12. Analog Bits: Generating Discrete Data using Diffusion Models with Self-Conditioning (ICLR 2023)
+13. A Reparameterized Discrete Diffusion Model for Text Generation (arXiv 2023)
+14. Fast Sampling via De-randomization for Discrete Diffusion Models (arXiv 2023)
+15. DINOISER: Diffused Conditional Sequence Learning by Manipulating Noises (TACL 2023)
+16. KAN-GPT, https://github.com/AdityaNG/kan-gpt 
+17. Self Reasoning Tokens (wip), https://github.com/lucidrains/self-reasoning-tokens-pytorch
+
+
+
+# Community projects
+
+1. Token Shift GPT, https://github.com/lucidrains/token-shift-gpt 
+2. Flash Cosine Similarity Attention (wip), https://github.com/lucidrains/flash-cosine-sim-attention, Lucidrains
+3. Memory Transformer-XL (wip), https://github.com/lucidrains/memory-transformer-xl, Lucidrains
+4. Simple Hierarchical Transformer (wip), https://github.com/lucidrains/simple-hierarchical-transformer, Lucidrains
+5. Panoptic Transformer (wip), https://github.com/lucidrains/panoptic-transformer, Lucidrains
+6. Linear Attention Transformer, https://github.com/lucidrains/linear-attention-transformer
+7. x-Transformers, https://github.com/lucidrains/x-transformers
+8. Local attention, https://github.com/lucidrains/local-attention 

@@ -30,8 +30,9 @@ def check_tune(scale, model_name):
     )
     cfg = eval(f"GAMConfig_{scale}()")
     code=MODEL2CODE[model_name]
-    checkpass,_,code = checker.check(cfg,code,model_name)
+    checkpass,report,code = checker.check(cfg,code,model_name)
     if not checkpass:
+        print(report)
         raise Exception('Model does not pass the checker')
     autocfg = checker.tune(cfg,code,model_name)
     # U.save_json(autocfg,f"{LIBRARY_PATH}/{model_name}/autocfg.json")
@@ -67,7 +68,7 @@ def run(scale,model_name,args): # do a single verify
 if __name__ == "__main__":
 
     scale = '14M' #sys.argv[1]
-    model_name = 'rwkv6' # sys.argv[2]
+    model_name = 'retnet' # sys.argv[2]
     args = ve_parser.parse_args()
 
     if args.mode=='check':
