@@ -1,0 +1,17 @@
+{
+    "title": "Sumformer: Universal Approximation for Efficient Transformers",
+    "acronym": "sumformer",
+    "s2id": "f2f68ed280d27bd25d61782224f8a465db8f43bd",
+    "abstract": "Natural language processing (NLP) made an impressive jump with the introduction of Transformers. ChatGPT is one of the most famous examples, changing the perception of the possibilities of AI even outside the research community. However, besides the impressive performance, the quadratic time and space complexity of Transformers with respect to sequence length pose significant limitations for handling long sequences. While efficient Transformer architectures like Linformer and Performer with linear complexity have emerged as promising solutions, their theoretical understanding remains limited. In this paper, we introduce Sumformer, a novel and simple architecture capable of universally approximating equivariant sequence-to-sequence functions. We use Sumformer to give the first universal approximation results for Linformer and Performer. Moreover, we derive a new proof for Transformers, showing that just one attention layer is sufficient for universal approximation.",
+    "venue": "TAG-ML",
+    "year": 2023,
+    "tldr": "Sumformer is introduced, a novel and simple architecture capable of universally approximating equivariant sequence-to-sequence functions and derived a new proof for Transformers, showing that just one attention layer is sufficient for universal approximation.",
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "performer",
+        "linformer",
+        "transformer"
+    ],
+    "code": null
+}

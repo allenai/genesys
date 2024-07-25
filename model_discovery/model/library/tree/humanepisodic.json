@@ -1,0 +1,25 @@
+{
+    "title": "Human-like Episodic Memory for Infinite Context LLMs",
+    "acronym": "humanepisodic",
+    "s2id": "34c856ce5a539d46a996845b194be7ce42df82a2",
+    "abstract": "Large language models (LLMs) have shown remarkable capabilities, but still struggle with processing extensive contexts, limiting their ability to maintain coherence and accuracy over long sequences. In contrast, the human brain excels at organising and retrieving episodic experiences across vast temporal scales, spanning a lifetime. In this work, we introduce EM-LLM, a novel approach that integrates key aspects of human episodic memory and event cognition into LLMs, enabling them to effectively handle practically infinite context lengths while maintaining computational efficiency. EM-LLM organises sequences of tokens into coherent episodic events using a combination of Bayesian surprise and graph-theoretic boundary refinement in an on-line fashion. When needed, these events are retrieved through a two-stage memory process, combining similarity-based and temporally contiguous retrieval for efficient and human-like access to relevant information. Experiments on the LongBench dataset demonstrate EM-LLM's superior performance, outperforming the state-of-the-art InfLLM model with an overall relative improvement of 4.3% across various tasks, including a 33% improvement on the PassageRetrieval task. Furthermore, our analysis reveals strong correlations between EM-LLM's event segmentation and human-perceived events, suggesting a bridge between this artificial system and its biological counterpart. This work not only advances LLM capabilities in processing extended contexts but also provides a computational framework for exploring human memory mechanisms, opening new avenues for interdisciplinary research in AI and cognitive science.",
+    "venue": "",
+    "year": 2024,
+    "tldr": "EM-LLM is introduced, a novel approach that integrates key aspects of human episodic memory and event cognition into LLMs, enabling them to effectively handle practically infinite context lengths while maintaining computational efficiency and providing a computational framework for exploring human memory mechanisms.",
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "infiniti",
+        "pi",
+        "unlimiformer",
+        "stm",
+        "kerple",
+        "memorizingtrans",
+        "alibi",
+        "roformer",
+        "lineartransformer",
+        "compressivetransformer",
+        "transformer"
+    ],
+    "code": null
+}

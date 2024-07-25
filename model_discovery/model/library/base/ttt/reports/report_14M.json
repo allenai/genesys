@@ -1,0 +1,3099 @@
+{
+    "training_record.csv": "_step,_runtime,train/loss,train/grad_norm,train/learning_rate,train/epoch,_timestamp,train/global_step\n0,64.0779640674591,8.8141,11.125,0.000998555632637372,9.931571472554102e-05,1721775199.602714,10\n1,91.26849269866943,6.0742,11.0625,0.0009870562661377438,0.00019863142945108204,1721775226.7932427,20\n2,117.2035915851593,4.002,10.5625,0.0009643523358792647,0.00029794714417662307,1721775252.7283416,30\n3,144.16655373573303,1.9883,7.4375,0.0009310258896527278,0.0003972628589021641,1721775279.6913037,40\n4,171.12700057029724,0.6255,1.8984375,0.0008879312986696501,0.0004965785736277051,1721775306.6517506,50\n5,196.9562292098999,0.1982,0.291015625,0.0008361733545318048,0.0005958942883532461,1721775332.4809792,60\n6,223.86503744125366,0.1271,0.09521484375,0.0007770789463151556,0.0006952100030787872,1721775359.3897874,70\n7,250.3138644695282,0.1153,0.060302734375,0.0007121630438667341,0.0007945257178043282,1721775385.8386145,80\n8,276.89006328582764,0.1067,0.060302734375,0.0006430898593814009,0.0008938414325298692,1721775412.4148133,90\n9,304.19140434265137,0.1003,0.060546875,0.0005716301829371295,0.0009931571472554103,1721775439.7161543,100\n10,330.99663186073303,0.1,0.05908203125,0.0004996159857535115,0.0010924728619809512,1721775466.5213819,110\n11,357.6281111240387,0.0985,0.05859375,0.00042889345498401543,0.0011917885767064923,1721775493.152861,120\n12,384.2854564189911,0.0983,0.057373046875,0.00036127566406240444,0.0012911042914320332,1721775519.8102064,130\n13,410.61317133903503,0.0987,0.056884765625,0.00029849609196681777,0.0013904200061575743,1721775546.1379213,140\n14,436.9033634662628,0.0992,0.055908203125,0.00024216418300179428,0.0014897357208831154,1721775572.4281135,150\n15,463.81712198257446,0.0961,0.056396484375,0.0001937240863869162,0.0015890514356086563,1721775599.341872,160\n16,490.15407395362854,0.0956,0.055419921875,0.00015441763342185228,0.0016883671503341974,1721775625.678824,170\n17,516.6344742774963,0.0967,0.05615234375,0.00012525250136123458,0.0017876828650597383,1721775652.1592243,180\n18,544.0564503669739,0.0982,0.055908203125,0.00010697638016406143,0.0018869985797852794,1721775679.5812004,190\n19,570.4857578277588,0.0979,0.055419921875,0.00010005780439003096,0.0019863142945108206,1721775706.0105078,200\n20,574.2289757728577,,,,0.0019962458659833746,1721775709.7537258,201\n",
+    "system_metrics.csv": "GPU 3 Utilization (%),GPU 4 Time Spent Accessing Memory (%),GPU 2 Time Spent Accessing Memory (%),GPU 5 Time Spent Accessing Memory (%),GPU 1 Time Spent Accessing Memory (%),GPU 0 Time Spent Accessing Memory (%),GPU 0 Utilization (%),GPU 3 Memory Allocated (%),_runtime,GPU 1 Memory Allocated (%),GPU 4 Memory Allocated (%),GPU 1 Utilization (%),Process CPU Utilization (%),Process CPU Threads In Use,System Memory Utilization (%),GPU 4 Utilization (%),GPU 2 Memory Allocated (%),GPU 5 Utilization (%),Process Memory In Use (non-swap) (%),GPU 5 Memory Allocated (%),GPU 3 Time Spent Accessing Memory (%),GPU 2 Utilization (%),GPU 0 Memory Allocated (%)\n0.33,0.0,0.0,0.0,0.0,4.07,3.8,5.06,60.841372,4.73,0.95,0.0,0.01,23,15.45,0.0,4.74,0.0,0.13,0.95,0.0,0.0,11.75\n56.47,0.0,36.67,0.0,38.27,32.8,64.8,84.25,90.843364,84.29,0.95,52.6,0.0,23,16.63,0.0,84.29,0.0,0.13,0.95,36.13,53.93,86.15\n55.47,0.0,34.0,0.0,30.2,42.87,58.47,84.25,120.84581,84.29,0.95,53.2,0.0,23,16.75,0.0,84.29,0.0,0.13,0.95,31.4,57.07,86.16\n68.47,0.0,43.73,0.0,49.07,43.13,56.87,84.25,150.848195,84.29,0.95,68.4,0.0,23,16.71,0.0,84.29,0.0,0.13,0.95,49.87,60.8,86.16\n59.8,0.0,44.53,0.0,38.27,43.93,63.53,84.25,180.85028,84.29,0.95,57.33,0.0,23,16.7,0.0,84.29,0.0,0.13,0.95,39.6,63.67,86.16\n,,,,,,,,210.852407,,,,0.0,23,16.67,,,,0.13,,,,\n55.53,0.0,34.2,0.0,32.4,38.67,50.93,84.25,240.85411,84.29,0.95,47.47,0.0,23,16.81,0.0,84.29,0.0,0.13,0.95,34.6,56.87,86.16\n60.0,0.0,48.73,0.0,43.53,48.33,59.47,84.25,270.856305,84.29,0.95,55.4,0.0,23,16.82,0.0,84.29,0.0,0.13,0.95,45.8,60.87,86.16\n54.13,0.0,45.73,0.0,45.47,43.27,62.2,84.25,300.858364,84.29,0.95,57.4,0.0,23,16.82,0.0,84.29,0.0,0.13,0.95,37.53,61.0,86.16\n62.93,0.0,41.27,0.0,46.27,37.4,47.93,84.25,330.860572,84.29,0.95,56.93,0.0,23,16.82,0.0,84.29,0.0,0.13,0.95,46.13,58.13,86.16\n56.47,0.0,39.93,0.0,38.07,38.07,49.2,84.25,360.862555,84.29,0.95,50.53,0.0,23,16.85,0.0,84.29,0.0,0.13,0.95,30.73,56.33,86.16\n,,,,,,,,390.864656,,,,0.0,23,16.86,,,,0.13,,,,\n57.73,0.0,38.87,0.0,39.13,39.07,50.4,84.25,420.866839,84.29,0.95,57.73,0.0,23,16.89,0.0,84.29,0.0,0.13,0.95,38.07,53.2,86.16\n52.73,0.0,32.13,0.0,30.67,35.47,48.93,84.25,450.869039,84.29,0.95,52.47,0.0,23,16.98,0.0,84.29,0.0,0.13,0.95,36.73,50.6,86.16\n59.8,0.0,45.0,0.0,43.33,44.8,57.6,84.25,480.871102,84.29,0.95,58.0,0.0,23,17.0,0.0,84.29,0.0,0.13,0.95,42.67,62.73,86.16\n57.87,0.0,44.6,0.0,41.4,41.8,58.73,84.25,510.873032,84.29,0.95,57.87,0.0,23,16.92,0.0,84.29,0.0,0.13,0.95,41.0,62.27,86.16\n,,,,,,,,540.87504,,,,0.0,23,16.88,,,,0.13,,,,\n61.6,0.0,49.73,0.0,48.53,48.2,55.93,84.25,570.8767,84.29,0.95,69.07,0.0,23,16.81,0.0,84.29,0.0,0.13,0.95,40.87,68.2,86.16\n,,,,,,,,579.280893,,,,0.0,23,15.54,,,,0.13,,,,\n",
+    "trainer_state.json": {
+        "best_metric": null,
+        "best_model_checkpoint": null,
+        "epoch": 0.0019962458659833746,
+        "eval_steps": 500,
+        "global_step": 201,
+        "is_hyper_param_search": false,
+        "is_local_process_zero": true,
+        "is_world_process_zero": true,
+        "logging_steps": 10,
+        "max_steps": 201,
+        "num_input_tokens_seen": 0,
+        "num_train_epochs": 1,
+        "save_steps": 50,
+        "total_flos": 738754012643328.0,
+        "train_batch_size": 64,
+        "trial_name": null,
+        "trial_params": null
+    },
+    "eval_results.json": {
+        "results": {
+            "arc_challenge": {
+                "alias": "arc_challenge",
+                "acc,none": 0.21245733788395904,
+                "acc_stderr,none": 0.011953482906582954,
+                "acc_norm,none": 0.2627986348122867,
+                "acc_norm_stderr,none": 0.012862523175351333
+            },
+            "arc_easy": {
+                "alias": "arc_easy",
+                "acc,none": 0.25925925925925924,
+                "acc_stderr,none": 0.008992251535805518,
+                "acc_norm,none": 0.265993265993266,
+                "acc_norm_stderr,none": 0.009066789565615694
+            },
+            "blimp": {
+                "acc,none": 0.6177611940298506,
+                "acc_stderr,none": 0.0015701865359036117,
+                "alias": "blimp"
+            },
+            "blimp_adjunct_island": {
+                "alias": " - blimp_adjunct_island",
+                "acc,none": 0.929,
+                "acc_stderr,none": 0.008125578442487923
+            },
+            "blimp_anaphor_gender_agreement": {
+                "alias": " - blimp_anaphor_gender_agreement",
+                "acc,none": 0.675,
+                "acc_stderr,none": 0.014818724459095526
+            },
+            "blimp_anaphor_number_agreement": {
+                "alias": " - blimp_anaphor_number_agreement",
+                "acc,none": 0.645,
+                "acc_stderr,none": 0.01513949154378053
+            },
+            "blimp_animate_subject_passive": {
+                "alias": " - blimp_animate_subject_passive",
+                "acc,none": 0.619,
+                "acc_stderr,none": 0.015364734787007436
+            },
+            "blimp_animate_subject_trans": {
+                "alias": " - blimp_animate_subject_trans",
+                "acc,none": 0.671,
+                "acc_stderr,none": 0.014865395385928352
+            },
+            "blimp_causative": {
+                "alias": " - blimp_causative",
+                "acc,none": 0.455,
+                "acc_stderr,none": 0.015755101498347093
+            },
+            "blimp_complex_NP_island": {
+                "alias": " - blimp_complex_NP_island",
+                "acc,none": 0.931,
+                "acc_stderr,none": 0.00801893405031516
+            },
+            "blimp_coordinate_structure_constraint_complex_left_branch": {
+                "alias": " - blimp_coordinate_structure_constraint_complex_left_branch",
+                "acc,none": 0.922,
+                "acc_stderr,none": 0.00848457353011859
+            },
+            "blimp_coordinate_structure_constraint_object_extraction": {
+                "alias": " - blimp_coordinate_structure_constraint_object_extraction",
+                "acc,none": 0.534,
+                "acc_stderr,none": 0.015782683329937618
+            },
+            "blimp_determiner_noun_agreement_1": {
+                "alias": " - blimp_determiner_noun_agreement_1",
+                "acc,none": 0.544,
+                "acc_stderr,none": 0.01575792855397917
+            },
+            "blimp_determiner_noun_agreement_2": {
+                "alias": " - blimp_determiner_noun_agreement_2",
+                "acc,none": 0.49,
+                "acc_stderr,none": 0.015816135752773207
+            },
+            "blimp_determiner_noun_agreement_irregular_1": {
+                "alias": " - blimp_determiner_noun_agreement_irregular_1",
+                "acc,none": 0.592,
+                "acc_stderr,none": 0.015549205052920676
+            },
+            "blimp_determiner_noun_agreement_irregular_2": {
+                "alias": " - blimp_determiner_noun_agreement_irregular_2",
+                "acc,none": 0.531,
+                "acc_stderr,none": 0.015788865959539003
+            },
+            "blimp_determiner_noun_agreement_with_adj_2": {
+                "alias": " - blimp_determiner_noun_agreement_with_adj_2",
+                "acc,none": 0.473,
+                "acc_stderr,none": 0.01579621855130262
+            },
+            "blimp_determiner_noun_agreement_with_adj_irregular_1": {
+                "alias": " - blimp_determiner_noun_agreement_with_adj_irregular_1",
+                "acc,none": 0.628,
+                "acc_stderr,none": 0.015292149942040577
+            },
+            "blimp_determiner_noun_agreement_with_adj_irregular_2": {
+                "alias": " - blimp_determiner_noun_agreement_with_adj_irregular_2",
+                "acc,none": 0.537,
+                "acc_stderr,none": 0.015775927227262416
+            },
+            "blimp_determiner_noun_agreement_with_adjective_1": {
+                "alias": " - blimp_determiner_noun_agreement_with_adjective_1",
+                "acc,none": 0.528,
+                "acc_stderr,none": 0.01579447578951147
+            },
+            "blimp_distractor_agreement_relational_noun": {
+                "alias": " - blimp_distractor_agreement_relational_noun",
+                "acc,none": 0.498,
+                "acc_stderr,none": 0.015819173374302702
+            },
+            "blimp_distractor_agreement_relative_clause": {
+                "alias": " - blimp_distractor_agreement_relative_clause",
+                "acc,none": 0.555,
+                "acc_stderr,none": 0.015723301886760934
+            },
+            "blimp_drop_argument": {
+                "alias": " - blimp_drop_argument",
+                "acc,none": 0.672,
+                "acc_stderr,none": 0.014853842487270334
+            },
+            "blimp_ellipsis_n_bar_1": {
+                "alias": " - blimp_ellipsis_n_bar_1",
+                "acc,none": 0.916,
+                "acc_stderr,none": 0.008776162089491139
+            },
+            "blimp_ellipsis_n_bar_2": {
+                "alias": " - blimp_ellipsis_n_bar_2",
+                "acc,none": 0.251,
+                "acc_stderr,none": 0.013718133516888907
+            },
+            "blimp_existential_there_object_raising": {
+                "alias": " - blimp_existential_there_object_raising",
+                "acc,none": 0.716,
+                "acc_stderr,none": 0.014267009061031306
+            },
+            "blimp_existential_there_quantifiers_1": {
+                "alias": " - blimp_existential_there_quantifiers_1",
+                "acc,none": 0.745,
+                "acc_stderr,none": 0.013790038620872828
+            },
+            "blimp_existential_there_quantifiers_2": {
+                "alias": " - blimp_existential_there_quantifiers_2",
+                "acc,none": 0.437,
+                "acc_stderr,none": 0.015693223928730377
+            },
+            "blimp_existential_there_subject_raising": {
+                "alias": " - blimp_existential_there_subject_raising",
+                "acc,none": 0.589,
+                "acc_stderr,none": 0.015566673418599275
+            },
+            "blimp_expletive_it_object_raising": {
+                "alias": " - blimp_expletive_it_object_raising",
+                "acc,none": 0.609,
+                "acc_stderr,none": 0.01543882629468179
+            },
+            "blimp_inchoative": {
+                "alias": " - blimp_inchoative",
+                "acc,none": 0.39,
+                "acc_stderr,none": 0.015431725053866611
+            },
+            "blimp_intransitive": {
+                "alias": " - blimp_intransitive",
+                "acc,none": 0.492,
+                "acc_stderr,none": 0.015817274929209004
+            },
+            "blimp_irregular_past_participle_adjectives": {
+                "alias": " - blimp_irregular_past_participle_adjectives",
+                "acc,none": 0.473,
+                "acc_stderr,none": 0.015796218551302612
+            },
+            "blimp_irregular_past_participle_verbs": {
+                "alias": " - blimp_irregular_past_participle_verbs",
+                "acc,none": 0.889,
+                "acc_stderr,none": 0.009938701010583726
+            },
+            "blimp_irregular_plural_subject_verb_agreement_1": {
+                "alias": " - blimp_irregular_plural_subject_verb_agreement_1",
+                "acc,none": 0.533,
+                "acc_stderr,none": 0.015784807891138782
+            },
+            "blimp_irregular_plural_subject_verb_agreement_2": {
+                "alias": " - blimp_irregular_plural_subject_verb_agreement_2",
+                "acc,none": 0.575,
+                "acc_stderr,none": 0.015640320317040105
+            },
+            "blimp_left_branch_island_echo_question": {
+                "alias": " - blimp_left_branch_island_echo_question",
+                "acc,none": 0.854,
+                "acc_stderr,none": 0.011171786285496501
+            },
+            "blimp_left_branch_island_simple_question": {
+                "alias": " - blimp_left_branch_island_simple_question",
+                "acc,none": 0.911,
+                "acc_stderr,none": 0.009008893392651521
+            },
+            "blimp_matrix_question_npi_licensor_present": {
+                "alias": " - blimp_matrix_question_npi_licensor_present",
+                "acc,none": 0.005,
+                "acc_stderr,none": 0.0022315868748448795
+            },
+            "blimp_npi_present_1": {
+                "alias": " - blimp_npi_present_1",
+                "acc,none": 0.229,
+                "acc_stderr,none": 0.01329419932661358
+            },
+            "blimp_npi_present_2": {
+                "alias": " - blimp_npi_present_2",
+                "acc,none": 0.204,
+                "acc_stderr,none": 0.012749374359024382
+            },
+            "blimp_only_npi_licensor_present": {
+                "alias": " - blimp_only_npi_licensor_present",
+                "acc,none": 0.01,
+                "acc_stderr,none": 0.0031480009386767732
+            },
+            "blimp_only_npi_scope": {
+                "alias": " - blimp_only_npi_scope",
+                "acc,none": 0.319,
+                "acc_stderr,none": 0.01474640486547349
+            },
+            "blimp_passive_1": {
+                "alias": " - blimp_passive_1",
+                "acc,none": 0.58,
+                "acc_stderr,none": 0.015615500115072957
+            },
+            "blimp_passive_2": {
+                "alias": " - blimp_passive_2",
+                "acc,none": 0.577,
+                "acc_stderr,none": 0.01563058909047635
+            },
+            "blimp_principle_A_c_command": {
+                "alias": " - blimp_principle_A_c_command",
+                "acc,none": 0.422,
+                "acc_stderr,none": 0.01562562511262067
+            },
+            "blimp_principle_A_case_1": {
+                "alias": " - blimp_principle_A_case_1",
+                "acc,none": 1.0,
+                "acc_stderr,none": 0.0
+            },
+            "blimp_principle_A_case_2": {
+                "alias": " - blimp_principle_A_case_2",
+                "acc,none": 0.381,
+                "acc_stderr,none": 0.015364734787007436
+            },
+            "blimp_principle_A_domain_1": {
+                "alias": " - blimp_principle_A_domain_1",
+                "acc,none": 1.0,
+                "acc_stderr,none": 0.0
+            },
+            "blimp_principle_A_domain_2": {
+                "alias": " - blimp_principle_A_domain_2",
+                "acc,none": 0.544,
+                "acc_stderr,none": 0.01575792855397917
+            },
+            "blimp_principle_A_domain_3": {
+                "alias": " - blimp_principle_A_domain_3",
+                "acc,none": 0.807,
+                "acc_stderr,none": 0.012486268734370143
+            },
+            "blimp_principle_A_reconstruction": {
+                "alias": " - blimp_principle_A_reconstruction",
+                "acc,none": 0.868,
+                "acc_stderr,none": 0.01070937396352802
+            },
+            "blimp_regular_plural_subject_verb_agreement_1": {
+                "alias": " - blimp_regular_plural_subject_verb_agreement_1",
+                "acc,none": 0.475,
+                "acc_stderr,none": 0.01579951342999602
+            },
+            "blimp_regular_plural_subject_verb_agreement_2": {
+                "alias": " - blimp_regular_plural_subject_verb_agreement_2",
+                "acc,none": 0.477,
+                "acc_stderr,none": 0.015802554246726098
+            },
+            "blimp_sentential_negation_npi_licensor_present": {
+                "alias": " - blimp_sentential_negation_npi_licensor_present",
+                "acc,none": 1.0,
+                "acc_stderr,none": 0.0
+            },
+            "blimp_sentential_negation_npi_scope": {
+                "alias": " - blimp_sentential_negation_npi_scope",
+                "acc,none": 0.928,
+                "acc_stderr,none": 0.008178195576218681
+            },
+            "blimp_sentential_subject_island": {
+                "alias": " - blimp_sentential_subject_island",
+                "acc,none": 0.909,
+                "acc_stderr,none": 0.00909954953840025
+            },
+            "blimp_superlative_quantifiers_1": {
+                "alias": " - blimp_superlative_quantifiers_1",
+                "acc,none": 0.509,
+                "acc_stderr,none": 0.015816736995005392
+            },
+            "blimp_superlative_quantifiers_2": {
+                "alias": " - blimp_superlative_quantifiers_2",
+                "acc,none": 0.693,
+                "acc_stderr,none": 0.014593284892852621
+            },
+            "blimp_tough_vs_raising_1": {
+                "alias": " - blimp_tough_vs_raising_1",
+                "acc,none": 0.357,
+                "acc_stderr,none": 0.015158521721486767
+            },
+            "blimp_tough_vs_raising_2": {
+                "alias": " - blimp_tough_vs_raising_2",
+                "acc,none": 0.713,
+                "acc_stderr,none": 0.014312087053809961
+            },
+            "blimp_transitive": {
+                "alias": " - blimp_transitive",
+                "acc,none": 0.574,
+                "acc_stderr,none": 0.01564508768811381
+            },
+            "blimp_wh_island": {
+                "alias": " - blimp_wh_island",
+                "acc,none": 1.0,
+                "acc_stderr,none": 0.0
+            },
+            "blimp_wh_questions_object_gap": {
+                "alias": " - blimp_wh_questions_object_gap",
+                "acc,none": 1.0,
+                "acc_stderr,none": 0.0
+            },
+            "blimp_wh_questions_subject_gap": {
+                "alias": " - blimp_wh_questions_subject_gap",
+                "acc,none": 1.0,
+                "acc_stderr,none": 0.0
+            },
+            "blimp_wh_questions_subject_gap_long_distance": {
+                "alias": " - blimp_wh_questions_subject_gap_long_distance",
+                "acc,none": 1.0,
+                "acc_stderr,none": 0.0
+            },
+            "blimp_wh_vs_that_no_gap": {
+                "alias": " - blimp_wh_vs_that_no_gap",
+                "acc,none": 1.0,
+                "acc_stderr,none": 0.0
+            },
+            "blimp_wh_vs_that_no_gap_long_distance": {
+                "alias": " - blimp_wh_vs_that_no_gap_long_distance",
+                "acc,none": 1.0,
+                "acc_stderr,none": 0.0
+            },
+            "blimp_wh_vs_that_with_gap": {
+                "alias": " - blimp_wh_vs_that_with_gap",
+                "acc,none": 0.0,
+                "acc_stderr,none": 0.0
+            },
+            "blimp_wh_vs_that_with_gap_long_distance": {
+                "alias": " - blimp_wh_vs_that_with_gap_long_distance",
+                "acc,none": 0.0,
+                "acc_stderr,none": 0.0
+            },
+            "hellaswag": {
+                "alias": "hellaswag",
+                "acc,none": 0.25632344154550885,
+                "acc_stderr,none": 0.004357101984278612,
+                "acc_norm,none": 0.2586138219478192,
+                "acc_norm_stderr,none": 0.004369780529824011
+            },
+            "lambada_openai": {
+                "alias": "lambada_openai",
+                "perplexity,none": 25587592.783392716,
+                "perplexity_stderr,none": 2547417.593502686,
+                "acc,none": 0.0,
+                "acc_stderr,none": 0.0
+            },
+            "piqa": {
+                "alias": "piqa",
+                "acc,none": 0.5244831338411317,
+                "acc_stderr,none": 0.011651830225709977,
+                "acc_norm,none": 0.501088139281828,
+                "acc_norm_stderr,none": 0.011665796539540876
+            },
+            "winogrande": {
+                "alias": "winogrande",
+                "acc,none": 0.4861878453038674,
+                "acc_stderr,none": 0.014047122916440422
+            }
+        },
+        "groups": {
+            "blimp": {
+                "acc,none": 0.6177611940298506,
+                "acc_stderr,none": 0.0015701865359036117,
+                "alias": "blimp"
+            }
+        },
+        "group_subtasks": {
+            "arc_challenge": [],
+            "arc_easy": [],
+            "blimp": [
+                "blimp_adjunct_island",
+                "blimp_anaphor_gender_agreement",
+                "blimp_anaphor_number_agreement",
+                "blimp_animate_subject_passive",
+                "blimp_animate_subject_trans",
+                "blimp_causative",
+                "blimp_complex_NP_island",
+                "blimp_coordinate_structure_constraint_complex_left_branch",
+                "blimp_coordinate_structure_constraint_object_extraction",
+                "blimp_determiner_noun_agreement_1",
+                "blimp_determiner_noun_agreement_2",
+                "blimp_determiner_noun_agreement_irregular_1",
+                "blimp_determiner_noun_agreement_irregular_2",
+                "blimp_determiner_noun_agreement_with_adj_2",
+                "blimp_determiner_noun_agreement_with_adj_irregular_1",
+                "blimp_determiner_noun_agreement_with_adj_irregular_2",
+                "blimp_determiner_noun_agreement_with_adjective_1",
+                "blimp_distractor_agreement_relational_noun",
+                "blimp_distractor_agreement_relative_clause",
+                "blimp_drop_argument",
+                "blimp_ellipsis_n_bar_1",
+                "blimp_ellipsis_n_bar_2",
+                "blimp_existential_there_object_raising",
+                "blimp_existential_there_quantifiers_1",
+                "blimp_existential_there_quantifiers_2",
+                "blimp_existential_there_subject_raising",
+                "blimp_expletive_it_object_raising",
+                "blimp_inchoative",
+                "blimp_intransitive",
+                "blimp_irregular_past_participle_adjectives",
+                "blimp_irregular_past_participle_verbs",
+                "blimp_irregular_plural_subject_verb_agreement_1",
+                "blimp_irregular_plural_subject_verb_agreement_2",
+                "blimp_left_branch_island_echo_question",
+                "blimp_left_branch_island_simple_question",
+                "blimp_matrix_question_npi_licensor_present",
+                "blimp_npi_present_1",
+                "blimp_npi_present_2",
+                "blimp_only_npi_licensor_present",
+                "blimp_only_npi_scope",
+                "blimp_passive_1",
+                "blimp_passive_2",
+                "blimp_principle_A_c_command",
+                "blimp_principle_A_case_1",
+                "blimp_principle_A_case_2",
+                "blimp_principle_A_domain_1",
+                "blimp_principle_A_domain_2",
+                "blimp_principle_A_domain_3",
+                "blimp_principle_A_reconstruction",
+                "blimp_regular_plural_subject_verb_agreement_1",
+                "blimp_regular_plural_subject_verb_agreement_2",
+                "blimp_sentential_negation_npi_licensor_present",
+                "blimp_sentential_negation_npi_scope",
+                "blimp_sentential_subject_island",
+                "blimp_superlative_quantifiers_1",
+                "blimp_superlative_quantifiers_2",
+                "blimp_tough_vs_raising_1",
+                "blimp_tough_vs_raising_2",
+                "blimp_transitive",
+                "blimp_wh_island",
+                "blimp_wh_questions_object_gap",
+                "blimp_wh_questions_subject_gap",
+                "blimp_wh_questions_subject_gap_long_distance",
+                "blimp_wh_vs_that_no_gap",
+                "blimp_wh_vs_that_no_gap_long_distance",
+                "blimp_wh_vs_that_with_gap",
+                "blimp_wh_vs_that_with_gap_long_distance"
+            ],
+            "hellaswag": [],
+            "lambada_openai": [],
+            "piqa": [],
+            "winogrande": []
+        },
+        "configs": {
+            "arc_challenge": {
+                "task": "arc_challenge",
+                "tag": [
+                    "ai2_arc"
+                ],
+                "dataset_path": "allenai/ai2_arc",
+                "dataset_name": "ARC-Challenge",
+                "training_split": "train",
+                "validation_split": "validation",
+                "test_split": "test",
+                "doc_to_text": "Question: {{question}}\nAnswer:",
+                "doc_to_target": "{{choices.label.index(answerKey)}}",
+                "doc_to_choice": "{{choices.text}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc",
+                        "aggregation": "mean",
+                        "higher_is_better": true
+                    },
+                    {
+                        "metric": "acc_norm",
+                        "aggregation": "mean",
+                        "higher_is_better": true
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "Question: {{question}}\nAnswer:",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "arc_easy": {
+                "task": "arc_easy",
+                "tag": [
+                    "ai2_arc"
+                ],
+                "dataset_path": "allenai/ai2_arc",
+                "dataset_name": "ARC-Easy",
+                "training_split": "train",
+                "validation_split": "validation",
+                "test_split": "test",
+                "doc_to_text": "Question: {{question}}\nAnswer:",
+                "doc_to_target": "{{choices.label.index(answerKey)}}",
+                "doc_to_choice": "{{choices.text}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc",
+                        "aggregation": "mean",
+                        "higher_is_better": true
+                    },
+                    {
+                        "metric": "acc_norm",
+                        "aggregation": "mean",
+                        "higher_is_better": true
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "Question: {{question}}\nAnswer:",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_adjunct_island": {
+                "task": "blimp_adjunct_island",
+                "dataset_path": "blimp",
+                "dataset_name": "adjunct_island",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_anaphor_gender_agreement": {
+                "task": "blimp_anaphor_gender_agreement",
+                "dataset_path": "blimp",
+                "dataset_name": "anaphor_gender_agreement",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_anaphor_number_agreement": {
+                "task": "blimp_anaphor_number_agreement",
+                "dataset_path": "blimp",
+                "dataset_name": "anaphor_number_agreement",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_animate_subject_passive": {
+                "task": "blimp_animate_subject_passive",
+                "dataset_path": "blimp",
+                "dataset_name": "animate_subject_passive",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_animate_subject_trans": {
+                "task": "blimp_animate_subject_trans",
+                "dataset_path": "blimp",
+                "dataset_name": "animate_subject_trans",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_causative": {
+                "task": "blimp_causative",
+                "dataset_path": "blimp",
+                "dataset_name": "causative",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_complex_NP_island": {
+                "task": "blimp_complex_NP_island",
+                "dataset_path": "blimp",
+                "dataset_name": "complex_NP_island",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_coordinate_structure_constraint_complex_left_branch": {
+                "task": "blimp_coordinate_structure_constraint_complex_left_branch",
+                "dataset_path": "blimp",
+                "dataset_name": "coordinate_structure_constraint_complex_left_branch",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_coordinate_structure_constraint_object_extraction": {
+                "task": "blimp_coordinate_structure_constraint_object_extraction",
+                "dataset_path": "blimp",
+                "dataset_name": "coordinate_structure_constraint_object_extraction",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_determiner_noun_agreement_1": {
+                "task": "blimp_determiner_noun_agreement_1",
+                "dataset_path": "blimp",
+                "dataset_name": "determiner_noun_agreement_1",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_determiner_noun_agreement_2": {
+                "task": "blimp_determiner_noun_agreement_2",
+                "dataset_path": "blimp",
+                "dataset_name": "determiner_noun_agreement_2",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_determiner_noun_agreement_irregular_1": {
+                "task": "blimp_determiner_noun_agreement_irregular_1",
+                "dataset_path": "blimp",
+                "dataset_name": "determiner_noun_agreement_irregular_1",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_determiner_noun_agreement_irregular_2": {
+                "task": "blimp_determiner_noun_agreement_irregular_2",
+                "dataset_path": "blimp",
+                "dataset_name": "determiner_noun_agreement_irregular_2",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_determiner_noun_agreement_with_adj_2": {
+                "task": "blimp_determiner_noun_agreement_with_adj_2",
+                "dataset_path": "blimp",
+                "dataset_name": "determiner_noun_agreement_with_adj_2",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_determiner_noun_agreement_with_adj_irregular_1": {
+                "task": "blimp_determiner_noun_agreement_with_adj_irregular_1",
+                "dataset_path": "blimp",
+                "dataset_name": "determiner_noun_agreement_with_adj_irregular_1",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_determiner_noun_agreement_with_adj_irregular_2": {
+                "task": "blimp_determiner_noun_agreement_with_adj_irregular_2",
+                "dataset_path": "blimp",
+                "dataset_name": "determiner_noun_agreement_with_adj_irregular_2",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_determiner_noun_agreement_with_adjective_1": {
+                "task": "blimp_determiner_noun_agreement_with_adjective_1",
+                "dataset_path": "blimp",
+                "dataset_name": "determiner_noun_agreement_with_adjective_1",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_distractor_agreement_relational_noun": {
+                "task": "blimp_distractor_agreement_relational_noun",
+                "dataset_path": "blimp",
+                "dataset_name": "distractor_agreement_relational_noun",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_distractor_agreement_relative_clause": {
+                "task": "blimp_distractor_agreement_relative_clause",
+                "dataset_path": "blimp",
+                "dataset_name": "distractor_agreement_relative_clause",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_drop_argument": {
+                "task": "blimp_drop_argument",
+                "dataset_path": "blimp",
+                "dataset_name": "drop_argument",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_ellipsis_n_bar_1": {
+                "task": "blimp_ellipsis_n_bar_1",
+                "dataset_path": "blimp",
+                "dataset_name": "ellipsis_n_bar_1",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_ellipsis_n_bar_2": {
+                "task": "blimp_ellipsis_n_bar_2",
+                "dataset_path": "blimp",
+                "dataset_name": "ellipsis_n_bar_2",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_existential_there_object_raising": {
+                "task": "blimp_existential_there_object_raising",
+                "dataset_path": "blimp",
+                "dataset_name": "existential_there_object_raising",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_existential_there_quantifiers_1": {
+                "task": "blimp_existential_there_quantifiers_1",
+                "dataset_path": "blimp",
+                "dataset_name": "existential_there_quantifiers_1",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_existential_there_quantifiers_2": {
+                "task": "blimp_existential_there_quantifiers_2",
+                "dataset_path": "blimp",
+                "dataset_name": "existential_there_quantifiers_2",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_existential_there_subject_raising": {
+                "task": "blimp_existential_there_subject_raising",
+                "dataset_path": "blimp",
+                "dataset_name": "existential_there_subject_raising",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_expletive_it_object_raising": {
+                "task": "blimp_expletive_it_object_raising",
+                "dataset_path": "blimp",
+                "dataset_name": "expletive_it_object_raising",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_inchoative": {
+                "task": "blimp_inchoative",
+                "dataset_path": "blimp",
+                "dataset_name": "inchoative",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_intransitive": {
+                "task": "blimp_intransitive",
+                "dataset_path": "blimp",
+                "dataset_name": "intransitive",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_irregular_past_participle_adjectives": {
+                "task": "blimp_irregular_past_participle_adjectives",
+                "dataset_path": "blimp",
+                "dataset_name": "irregular_past_participle_adjectives",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_irregular_past_participle_verbs": {
+                "task": "blimp_irregular_past_participle_verbs",
+                "dataset_path": "blimp",
+                "dataset_name": "irregular_past_participle_verbs",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_irregular_plural_subject_verb_agreement_1": {
+                "task": "blimp_irregular_plural_subject_verb_agreement_1",
+                "dataset_path": "blimp",
+                "dataset_name": "irregular_plural_subject_verb_agreement_1",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_irregular_plural_subject_verb_agreement_2": {
+                "task": "blimp_irregular_plural_subject_verb_agreement_2",
+                "dataset_path": "blimp",
+                "dataset_name": "irregular_plural_subject_verb_agreement_2",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_left_branch_island_echo_question": {
+                "task": "blimp_left_branch_island_echo_question",
+                "dataset_path": "blimp",
+                "dataset_name": "left_branch_island_echo_question",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_left_branch_island_simple_question": {
+                "task": "blimp_left_branch_island_simple_question",
+                "dataset_path": "blimp",
+                "dataset_name": "left_branch_island_simple_question",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_matrix_question_npi_licensor_present": {
+                "task": "blimp_matrix_question_npi_licensor_present",
+                "dataset_path": "blimp",
+                "dataset_name": "matrix_question_npi_licensor_present",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_npi_present_1": {
+                "task": "blimp_npi_present_1",
+                "dataset_path": "blimp",
+                "dataset_name": "npi_present_1",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_npi_present_2": {
+                "task": "blimp_npi_present_2",
+                "dataset_path": "blimp",
+                "dataset_name": "npi_present_2",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_only_npi_licensor_present": {
+                "task": "blimp_only_npi_licensor_present",
+                "dataset_path": "blimp",
+                "dataset_name": "only_npi_licensor_present",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_only_npi_scope": {
+                "task": "blimp_only_npi_scope",
+                "dataset_path": "blimp",
+                "dataset_name": "only_npi_scope",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_passive_1": {
+                "task": "blimp_passive_1",
+                "dataset_path": "blimp",
+                "dataset_name": "passive_1",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_passive_2": {
+                "task": "blimp_passive_2",
+                "dataset_path": "blimp",
+                "dataset_name": "passive_2",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_principle_A_c_command": {
+                "task": "blimp_principle_A_c_command",
+                "dataset_path": "blimp",
+                "dataset_name": "principle_A_c_command",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_principle_A_case_1": {
+                "task": "blimp_principle_A_case_1",
+                "dataset_path": "blimp",
+                "dataset_name": "principle_A_case_1",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_principle_A_case_2": {
+                "task": "blimp_principle_A_case_2",
+                "dataset_path": "blimp",
+                "dataset_name": "principle_A_case_2",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_principle_A_domain_1": {
+                "task": "blimp_principle_A_domain_1",
+                "dataset_path": "blimp",
+                "dataset_name": "principle_A_domain_1",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_principle_A_domain_2": {
+                "task": "blimp_principle_A_domain_2",
+                "dataset_path": "blimp",
+                "dataset_name": "principle_A_domain_2",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_principle_A_domain_3": {
+                "task": "blimp_principle_A_domain_3",
+                "dataset_path": "blimp",
+                "dataset_name": "principle_A_domain_3",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_principle_A_reconstruction": {
+                "task": "blimp_principle_A_reconstruction",
+                "dataset_path": "blimp",
+                "dataset_name": "principle_A_reconstruction",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_regular_plural_subject_verb_agreement_1": {
+                "task": "blimp_regular_plural_subject_verb_agreement_1",
+                "dataset_path": "blimp",
+                "dataset_name": "regular_plural_subject_verb_agreement_1",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_regular_plural_subject_verb_agreement_2": {
+                "task": "blimp_regular_plural_subject_verb_agreement_2",
+                "dataset_path": "blimp",
+                "dataset_name": "regular_plural_subject_verb_agreement_2",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_sentential_negation_npi_licensor_present": {
+                "task": "blimp_sentential_negation_npi_licensor_present",
+                "dataset_path": "blimp",
+                "dataset_name": "sentential_negation_npi_licensor_present",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_sentential_negation_npi_scope": {
+                "task": "blimp_sentential_negation_npi_scope",
+                "dataset_path": "blimp",
+                "dataset_name": "sentential_negation_npi_scope",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_sentential_subject_island": {
+                "task": "blimp_sentential_subject_island",
+                "dataset_path": "blimp",
+                "dataset_name": "sentential_subject_island",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_superlative_quantifiers_1": {
+                "task": "blimp_superlative_quantifiers_1",
+                "dataset_path": "blimp",
+                "dataset_name": "superlative_quantifiers_1",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_superlative_quantifiers_2": {
+                "task": "blimp_superlative_quantifiers_2",
+                "dataset_path": "blimp",
+                "dataset_name": "superlative_quantifiers_2",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_tough_vs_raising_1": {
+                "task": "blimp_tough_vs_raising_1",
+                "dataset_path": "blimp",
+                "dataset_name": "tough_vs_raising_1",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_tough_vs_raising_2": {
+                "task": "blimp_tough_vs_raising_2",
+                "dataset_path": "blimp",
+                "dataset_name": "tough_vs_raising_2",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_transitive": {
+                "task": "blimp_transitive",
+                "dataset_path": "blimp",
+                "dataset_name": "transitive",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_wh_island": {
+                "task": "blimp_wh_island",
+                "dataset_path": "blimp",
+                "dataset_name": "wh_island",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_wh_questions_object_gap": {
+                "task": "blimp_wh_questions_object_gap",
+                "dataset_path": "blimp",
+                "dataset_name": "wh_questions_object_gap",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_wh_questions_subject_gap": {
+                "task": "blimp_wh_questions_subject_gap",
+                "dataset_path": "blimp",
+                "dataset_name": "wh_questions_subject_gap",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_wh_questions_subject_gap_long_distance": {
+                "task": "blimp_wh_questions_subject_gap_long_distance",
+                "dataset_path": "blimp",
+                "dataset_name": "wh_questions_subject_gap_long_distance",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_wh_vs_that_no_gap": {
+                "task": "blimp_wh_vs_that_no_gap",
+                "dataset_path": "blimp",
+                "dataset_name": "wh_vs_that_no_gap",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_wh_vs_that_no_gap_long_distance": {
+                "task": "blimp_wh_vs_that_no_gap_long_distance",
+                "dataset_path": "blimp",
+                "dataset_name": "wh_vs_that_no_gap_long_distance",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_wh_vs_that_with_gap": {
+                "task": "blimp_wh_vs_that_with_gap",
+                "dataset_path": "blimp",
+                "dataset_name": "wh_vs_that_with_gap",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "blimp_wh_vs_that_with_gap_long_distance": {
+                "task": "blimp_wh_vs_that_with_gap_long_distance",
+                "dataset_path": "blimp",
+                "dataset_name": "wh_vs_that_with_gap_long_distance",
+                "validation_split": "train",
+                "doc_to_text": "",
+                "doc_to_target": 0,
+                "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc"
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "hellaswag": {
+                "task": "hellaswag",
+                "tag": [
+                    "multiple_choice"
+                ],
+                "dataset_path": "hellaswag",
+                "dataset_kwargs": {
+                    "trust_remote_code": true
+                },
+                "training_split": "train",
+                "validation_split": "validation",
+                "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        ctx = doc[\"ctx_a\"] + \" \" + doc[\"ctx_b\"].capitalize()\n        out_doc = {\n            \"query\": preprocess(doc[\"activity_label\"] + \": \" + ctx),\n            \"choices\": [preprocess(ending) for ending in doc[\"endings\"]],\n            \"gold\": int(doc[\"label\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+                "doc_to_text": "{{query}}",
+                "doc_to_target": "{{label}}",
+                "doc_to_choice": "choices",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc",
+                        "aggregation": "mean",
+                        "higher_is_better": true
+                    },
+                    {
+                        "metric": "acc_norm",
+                        "aggregation": "mean",
+                        "higher_is_better": true
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": false,
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "lambada_openai": {
+                "task": "lambada_openai",
+                "tag": [
+                    "lambada"
+                ],
+                "dataset_path": "EleutherAI/lambada_openai",
+                "dataset_name": "default",
+                "dataset_kwargs": {
+                    "trust_remote_code": true
+                },
+                "test_split": "test",
+                "doc_to_text": "{{text.split(' ')[:-1]|join(' ')}}",
+                "doc_to_target": "{{' '+text.split(' ')[-1]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "perplexity",
+                        "aggregation": "perplexity",
+                        "higher_is_better": false
+                    },
+                    {
+                        "metric": "acc",
+                        "aggregation": "mean",
+                        "higher_is_better": true
+                    }
+                ],
+                "output_type": "loglikelihood",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "{{text}}",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "piqa": {
+                "task": "piqa",
+                "dataset_path": "piqa",
+                "dataset_kwargs": {
+                    "trust_remote_code": true
+                },
+                "training_split": "train",
+                "validation_split": "validation",
+                "doc_to_text": "Question: {{goal}}\nAnswer:",
+                "doc_to_target": "label",
+                "doc_to_choice": "{{[sol1, sol2]}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc",
+                        "aggregation": "mean",
+                        "higher_is_better": true
+                    },
+                    {
+                        "metric": "acc_norm",
+                        "aggregation": "mean",
+                        "higher_is_better": true
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "goal",
+                "metadata": {
+                    "version": 1.0
+                }
+            },
+            "winogrande": {
+                "task": "winogrande",
+                "dataset_path": "winogrande",
+                "dataset_name": "winogrande_xl",
+                "training_split": "train",
+                "validation_split": "validation",
+                "doc_to_text": "def doc_to_text(doc):\n    answer_to_num = {\"1\": 0, \"2\": 1}\n    return answer_to_num[doc[\"answer\"]]\n",
+                "doc_to_target": "def doc_to_target(doc):\n    idx = doc[\"sentence\"].index(\"_\") + 1\n    return doc[\"sentence\"][idx:].strip()\n",
+                "doc_to_choice": "def doc_to_choice(doc):\n    idx = doc[\"sentence\"].index(\"_\")\n    options = [doc[\"option1\"], doc[\"option2\"]]\n    return [doc[\"sentence\"][:idx] + opt for opt in options]\n",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "acc",
+                        "aggregation": "mean",
+                        "higher_is_better": true
+                    }
+                ],
+                "output_type": "multiple_choice",
+                "repeats": 1,
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "sentence",
+                "metadata": {
+                    "version": 1.0
+                }
+            }
+        },
+        "versions": {
+            "arc_challenge": 1.0,
+            "arc_easy": 1.0,
+            "blimp": 2.0,
+            "blimp_adjunct_island": 1.0,
+            "blimp_anaphor_gender_agreement": 1.0,
+            "blimp_anaphor_number_agreement": 1.0,
+            "blimp_animate_subject_passive": 1.0,
+            "blimp_animate_subject_trans": 1.0,
+            "blimp_causative": 1.0,
+            "blimp_complex_NP_island": 1.0,
+            "blimp_coordinate_structure_constraint_complex_left_branch": 1.0,
+            "blimp_coordinate_structure_constraint_object_extraction": 1.0,
+            "blimp_determiner_noun_agreement_1": 1.0,
+            "blimp_determiner_noun_agreement_2": 1.0,
+            "blimp_determiner_noun_agreement_irregular_1": 1.0,
+            "blimp_determiner_noun_agreement_irregular_2": 1.0,
+            "blimp_determiner_noun_agreement_with_adj_2": 1.0,
+            "blimp_determiner_noun_agreement_with_adj_irregular_1": 1.0,
+            "blimp_determiner_noun_agreement_with_adj_irregular_2": 1.0,
+            "blimp_determiner_noun_agreement_with_adjective_1": 1.0,
+            "blimp_distractor_agreement_relational_noun": 1.0,
+            "blimp_distractor_agreement_relative_clause": 1.0,
+            "blimp_drop_argument": 1.0,
+            "blimp_ellipsis_n_bar_1": 1.0,
+            "blimp_ellipsis_n_bar_2": 1.0,
+            "blimp_existential_there_object_raising": 1.0,
+            "blimp_existential_there_quantifiers_1": 1.0,
+            "blimp_existential_there_quantifiers_2": 1.0,
+            "blimp_existential_there_subject_raising": 1.0,
+            "blimp_expletive_it_object_raising": 1.0,
+            "blimp_inchoative": 1.0,
+            "blimp_intransitive": 1.0,
+            "blimp_irregular_past_participle_adjectives": 1.0,
+            "blimp_irregular_past_participle_verbs": 1.0,
+            "blimp_irregular_plural_subject_verb_agreement_1": 1.0,
+            "blimp_irregular_plural_subject_verb_agreement_2": 1.0,
+            "blimp_left_branch_island_echo_question": 1.0,
+            "blimp_left_branch_island_simple_question": 1.0,
+            "blimp_matrix_question_npi_licensor_present": 1.0,
+            "blimp_npi_present_1": 1.0,
+            "blimp_npi_present_2": 1.0,
+            "blimp_only_npi_licensor_present": 1.0,
+            "blimp_only_npi_scope": 1.0,
+            "blimp_passive_1": 1.0,
+            "blimp_passive_2": 1.0,
+            "blimp_principle_A_c_command": 1.0,
+            "blimp_principle_A_case_1": 1.0,
+            "blimp_principle_A_case_2": 1.0,
+            "blimp_principle_A_domain_1": 1.0,
+            "blimp_principle_A_domain_2": 1.0,
+            "blimp_principle_A_domain_3": 1.0,
+            "blimp_principle_A_reconstruction": 1.0,
+            "blimp_regular_plural_subject_verb_agreement_1": 1.0,
+            "blimp_regular_plural_subject_verb_agreement_2": 1.0,
+            "blimp_sentential_negation_npi_licensor_present": 1.0,
+            "blimp_sentential_negation_npi_scope": 1.0,
+            "blimp_sentential_subject_island": 1.0,
+            "blimp_superlative_quantifiers_1": 1.0,
+            "blimp_superlative_quantifiers_2": 1.0,
+            "blimp_tough_vs_raising_1": 1.0,
+            "blimp_tough_vs_raising_2": 1.0,
+            "blimp_transitive": 1.0,
+            "blimp_wh_island": 1.0,
+            "blimp_wh_questions_object_gap": 1.0,
+            "blimp_wh_questions_subject_gap": 1.0,
+            "blimp_wh_questions_subject_gap_long_distance": 1.0,
+            "blimp_wh_vs_that_no_gap": 1.0,
+            "blimp_wh_vs_that_no_gap_long_distance": 1.0,
+            "blimp_wh_vs_that_with_gap": 1.0,
+            "blimp_wh_vs_that_with_gap_long_distance": 1.0,
+            "hellaswag": 1.0,
+            "lambada_openai": 1.0,
+            "piqa": 1.0,
+            "winogrande": 1.0
+        },
+        "n-shot": {
+            "arc_challenge": 0,
+            "arc_easy": 0,
+            "blimp_adjunct_island": 0,
+            "blimp_anaphor_gender_agreement": 0,
+            "blimp_anaphor_number_agreement": 0,
+            "blimp_animate_subject_passive": 0,
+            "blimp_animate_subject_trans": 0,
+            "blimp_causative": 0,
+            "blimp_complex_NP_island": 0,
+            "blimp_coordinate_structure_constraint_complex_left_branch": 0,
+            "blimp_coordinate_structure_constraint_object_extraction": 0,
+            "blimp_determiner_noun_agreement_1": 0,
+            "blimp_determiner_noun_agreement_2": 0,
+            "blimp_determiner_noun_agreement_irregular_1": 0,
+            "blimp_determiner_noun_agreement_irregular_2": 0,
+            "blimp_determiner_noun_agreement_with_adj_2": 0,
+            "blimp_determiner_noun_agreement_with_adj_irregular_1": 0,
+            "blimp_determiner_noun_agreement_with_adj_irregular_2": 0,
+            "blimp_determiner_noun_agreement_with_adjective_1": 0,
+            "blimp_distractor_agreement_relational_noun": 0,
+            "blimp_distractor_agreement_relative_clause": 0,
+            "blimp_drop_argument": 0,
+            "blimp_ellipsis_n_bar_1": 0,
+            "blimp_ellipsis_n_bar_2": 0,
+            "blimp_existential_there_object_raising": 0,
+            "blimp_existential_there_quantifiers_1": 0,
+            "blimp_existential_there_quantifiers_2": 0,
+            "blimp_existential_there_subject_raising": 0,
+            "blimp_expletive_it_object_raising": 0,
+            "blimp_inchoative": 0,
+            "blimp_intransitive": 0,
+            "blimp_irregular_past_participle_adjectives": 0,
+            "blimp_irregular_past_participle_verbs": 0,
+            "blimp_irregular_plural_subject_verb_agreement_1": 0,
+            "blimp_irregular_plural_subject_verb_agreement_2": 0,
+            "blimp_left_branch_island_echo_question": 0,
+            "blimp_left_branch_island_simple_question": 0,
+            "blimp_matrix_question_npi_licensor_present": 0,
+            "blimp_npi_present_1": 0,
+            "blimp_npi_present_2": 0,
+            "blimp_only_npi_licensor_present": 0,
+            "blimp_only_npi_scope": 0,
+            "blimp_passive_1": 0,
+            "blimp_passive_2": 0,
+            "blimp_principle_A_c_command": 0,
+            "blimp_principle_A_case_1": 0,
+            "blimp_principle_A_case_2": 0,
+            "blimp_principle_A_domain_1": 0,
+            "blimp_principle_A_domain_2": 0,
+            "blimp_principle_A_domain_3": 0,
+            "blimp_principle_A_reconstruction": 0,
+            "blimp_regular_plural_subject_verb_agreement_1": 0,
+            "blimp_regular_plural_subject_verb_agreement_2": 0,
+            "blimp_sentential_negation_npi_licensor_present": 0,
+            "blimp_sentential_negation_npi_scope": 0,
+            "blimp_sentential_subject_island": 0,
+            "blimp_superlative_quantifiers_1": 0,
+            "blimp_superlative_quantifiers_2": 0,
+            "blimp_tough_vs_raising_1": 0,
+            "blimp_tough_vs_raising_2": 0,
+            "blimp_transitive": 0,
+            "blimp_wh_island": 0,
+            "blimp_wh_questions_object_gap": 0,
+            "blimp_wh_questions_subject_gap": 0,
+            "blimp_wh_questions_subject_gap_long_distance": 0,
+            "blimp_wh_vs_that_no_gap": 0,
+            "blimp_wh_vs_that_no_gap_long_distance": 0,
+            "blimp_wh_vs_that_with_gap": 0,
+            "blimp_wh_vs_that_with_gap_long_distance": 0,
+            "hellaswag": 0,
+            "lambada_openai": 0,
+            "piqa": 0,
+            "winogrande": 0
+        },
+        "higher_is_better": {
+            "arc_challenge": {
+                "acc": true,
+                "acc_norm": true
+            },
+            "arc_easy": {
+                "acc": true,
+                "acc_norm": true
+            },
+            "blimp": {
+                "acc": true
+            },
+            "blimp_adjunct_island": {
+                "acc": true
+            },
+            "blimp_anaphor_gender_agreement": {
+                "acc": true
+            },
+            "blimp_anaphor_number_agreement": {
+                "acc": true
+            },
+            "blimp_animate_subject_passive": {
+                "acc": true
+            },
+            "blimp_animate_subject_trans": {
+                "acc": true
+            },
+            "blimp_causative": {
+                "acc": true
+            },
+            "blimp_complex_NP_island": {
+                "acc": true
+            },
+            "blimp_coordinate_structure_constraint_complex_left_branch": {
+                "acc": true
+            },
+            "blimp_coordinate_structure_constraint_object_extraction": {
+                "acc": true
+            },
+            "blimp_determiner_noun_agreement_1": {
+                "acc": true
+            },
+            "blimp_determiner_noun_agreement_2": {
+                "acc": true
+            },
+            "blimp_determiner_noun_agreement_irregular_1": {
+                "acc": true
+            },
+            "blimp_determiner_noun_agreement_irregular_2": {
+                "acc": true
+            },
+            "blimp_determiner_noun_agreement_with_adj_2": {
+                "acc": true
+            },
+            "blimp_determiner_noun_agreement_with_adj_irregular_1": {
+                "acc": true
+            },
+            "blimp_determiner_noun_agreement_with_adj_irregular_2": {
+                "acc": true
+            },
+            "blimp_determiner_noun_agreement_with_adjective_1": {
+                "acc": true
+            },
+            "blimp_distractor_agreement_relational_noun": {
+                "acc": true
+            },
+            "blimp_distractor_agreement_relative_clause": {
+                "acc": true
+            },
+            "blimp_drop_argument": {
+                "acc": true
+            },
+            "blimp_ellipsis_n_bar_1": {
+                "acc": true
+            },
+            "blimp_ellipsis_n_bar_2": {
+                "acc": true
+            },
+            "blimp_existential_there_object_raising": {
+                "acc": true
+            },
+            "blimp_existential_there_quantifiers_1": {
+                "acc": true
+            },
+            "blimp_existential_there_quantifiers_2": {
+                "acc": true
+            },
+            "blimp_existential_there_subject_raising": {
+                "acc": true
+            },
+            "blimp_expletive_it_object_raising": {
+                "acc": true
+            },
+            "blimp_inchoative": {
+                "acc": true
+            },
+            "blimp_intransitive": {
+                "acc": true
+            },
+            "blimp_irregular_past_participle_adjectives": {
+                "acc": true
+            },
+            "blimp_irregular_past_participle_verbs": {
+                "acc": true
+            },
+            "blimp_irregular_plural_subject_verb_agreement_1": {
+                "acc": true
+            },
+            "blimp_irregular_plural_subject_verb_agreement_2": {
+                "acc": true
+            },
+            "blimp_left_branch_island_echo_question": {
+                "acc": true
+            },
+            "blimp_left_branch_island_simple_question": {
+                "acc": true
+            },
+            "blimp_matrix_question_npi_licensor_present": {
+                "acc": true
+            },
+            "blimp_npi_present_1": {
+                "acc": true
+            },
+            "blimp_npi_present_2": {
+                "acc": true
+            },
+            "blimp_only_npi_licensor_present": {
+                "acc": true
+            },
+            "blimp_only_npi_scope": {
+                "acc": true
+            },
+            "blimp_passive_1": {
+                "acc": true
+            },
+            "blimp_passive_2": {
+                "acc": true
+            },
+            "blimp_principle_A_c_command": {
+                "acc": true
+            },
+            "blimp_principle_A_case_1": {
+                "acc": true
+            },
+            "blimp_principle_A_case_2": {
+                "acc": true
+            },
+            "blimp_principle_A_domain_1": {
+                "acc": true
+            },
+            "blimp_principle_A_domain_2": {
+                "acc": true
+            },
+            "blimp_principle_A_domain_3": {
+                "acc": true
+            },
+            "blimp_principle_A_reconstruction": {
+                "acc": true
+            },
+            "blimp_regular_plural_subject_verb_agreement_1": {
+                "acc": true
+            },
+            "blimp_regular_plural_subject_verb_agreement_2": {
+                "acc": true
+            },
+            "blimp_sentential_negation_npi_licensor_present": {
+                "acc": true
+            },
+            "blimp_sentential_negation_npi_scope": {
+                "acc": true
+            },
+            "blimp_sentential_subject_island": {
+                "acc": true
+            },
+            "blimp_superlative_quantifiers_1": {
+                "acc": true
+            },
+            "blimp_superlative_quantifiers_2": {
+                "acc": true
+            },
+            "blimp_tough_vs_raising_1": {
+                "acc": true
+            },
+            "blimp_tough_vs_raising_2": {
+                "acc": true
+            },
+            "blimp_transitive": {
+                "acc": true
+            },
+            "blimp_wh_island": {
+                "acc": true
+            },
+            "blimp_wh_questions_object_gap": {
+                "acc": true
+            },
+            "blimp_wh_questions_subject_gap": {
+                "acc": true
+            },
+            "blimp_wh_questions_subject_gap_long_distance": {
+                "acc": true
+            },
+            "blimp_wh_vs_that_no_gap": {
+                "acc": true
+            },
+            "blimp_wh_vs_that_no_gap_long_distance": {
+                "acc": true
+            },
+            "blimp_wh_vs_that_with_gap": {
+                "acc": true
+            },
+            "blimp_wh_vs_that_with_gap_long_distance": {
+                "acc": true
+            },
+            "hellaswag": {
+                "acc": true,
+                "acc_norm": true
+            },
+            "lambada_openai": {
+                "perplexity": false,
+                "acc": true
+            },
+            "piqa": {
+                "acc": true,
+                "acc_norm": true
+            },
+            "winogrande": {
+                "acc": true
+            }
+        },
+        "n-samples": {
+            "winogrande": {
+                "original": 1267,
+                "effective": 1267
+            },
+            "piqa": {
+                "original": 1838,
+                "effective": 1838
+            },
+            "lambada_openai": {
+                "original": 5153,
+                "effective": 5153
+            },
+            "hellaswag": {
+                "original": 10042,
+                "effective": 10042
+            },
+            "blimp_adjunct_island": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_anaphor_gender_agreement": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_anaphor_number_agreement": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_animate_subject_passive": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_animate_subject_trans": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_causative": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_complex_NP_island": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_coordinate_structure_constraint_complex_left_branch": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_coordinate_structure_constraint_object_extraction": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_determiner_noun_agreement_1": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_determiner_noun_agreement_2": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_determiner_noun_agreement_irregular_1": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_determiner_noun_agreement_irregular_2": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_determiner_noun_agreement_with_adj_2": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_determiner_noun_agreement_with_adj_irregular_1": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_determiner_noun_agreement_with_adj_irregular_2": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_determiner_noun_agreement_with_adjective_1": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_distractor_agreement_relational_noun": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_distractor_agreement_relative_clause": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_drop_argument": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_ellipsis_n_bar_1": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_ellipsis_n_bar_2": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_existential_there_object_raising": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_existential_there_quantifiers_1": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_existential_there_quantifiers_2": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_existential_there_subject_raising": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_expletive_it_object_raising": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_inchoative": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_intransitive": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_irregular_past_participle_adjectives": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_irregular_past_participle_verbs": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_irregular_plural_subject_verb_agreement_1": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_irregular_plural_subject_verb_agreement_2": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_left_branch_island_echo_question": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_left_branch_island_simple_question": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_matrix_question_npi_licensor_present": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_npi_present_1": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_npi_present_2": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_only_npi_licensor_present": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_only_npi_scope": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_passive_1": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_passive_2": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_principle_A_c_command": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_principle_A_case_1": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_principle_A_case_2": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_principle_A_domain_1": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_principle_A_domain_2": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_principle_A_domain_3": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_principle_A_reconstruction": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_regular_plural_subject_verb_agreement_1": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_regular_plural_subject_verb_agreement_2": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_sentential_negation_npi_licensor_present": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_sentential_negation_npi_scope": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_sentential_subject_island": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_superlative_quantifiers_1": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_superlative_quantifiers_2": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_tough_vs_raising_1": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_tough_vs_raising_2": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_transitive": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_wh_island": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_wh_questions_object_gap": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_wh_questions_subject_gap": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_wh_questions_subject_gap_long_distance": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_wh_vs_that_no_gap": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_wh_vs_that_no_gap_long_distance": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_wh_vs_that_with_gap": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "blimp_wh_vs_that_with_gap_long_distance": {
+                "original": 1000,
+                "effective": 1000
+            },
+            "arc_easy": {
+                "original": 2376,
+                "effective": 2376
+            },
+            "arc_challenge": {
+                "original": 1172,
+                "effective": 1172
+            }
+        },
+        "config": {
+            "model": "modis",
+            "model_args": "pretrained=LIBRARY_HOLD/debug/ttt_14M,ckpt_dir=/home/junyanc/model_discovery/ckpt,gab_name=default",
+            "model_num_parameters": 5264376,
+            "model_dtype": "torch.bfloat16",
+            "model_revision": "main",
+            "batch_size": "512",
+            "batch_sizes": [],
+            "device": null,
+            "use_cache": null,
+            "limit": null,
+            "bootstrap_iters": 100000,
+            "gen_kwargs": null,
+            "random_seed": 0,
+            "numpy_seed": 1234,
+            "torch_seed": 1234,
+            "fewshot_seed": 1234
+        },
+        "date": 1721775729.0257127,
+        "tokenizer_pad_token": [
+            "</s>",
+            "2"
+        ],
+        "tokenizer_eos_token": [
+            "</s>",
+            "2"
+        ],
+        "tokenizer_bos_token": [
+            "<s>",
+            "1"
+        ],
+        "eot_token_id": 2,
+        "max_length": 2048,
+        "task_hashes": {},
+        "model_source": "modis",
+        "model_name": "LIBRARY_HOLD/debug/ttt_14M",
+        "model_name_sanitized": "LIBRARY_HOLD__debug__ttt_14M",
+        "system_instruction": null,
+        "system_instruction_sha": null,
+        "fewshot_as_multiturn": false,
+        "chat_template": null,
+        "chat_template_sha": null,
+        "start_time": 2615437.950064542,
+        "end_time": 2615726.004307819,
+        "total_evaluation_time_seconds": "288.0542432772927"
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "title": "Discrete Diffusion Language Model for Long Text Summarization",
+    "acronym": "discdifflm",
+    "s2id": "e8d49f58030a861810eec227903f39031e7622e6",
+    "abstract": "While diffusion models excel at conditional generating high-quality images, prior works in discrete diffusion models were not evaluated on conditional long-text generation. In this work, we address the limitations of prior discrete diffusion models for conditional long-text generation, particularly in long sequence-to-sequence tasks such as abstractive summarization. Despite fast decoding speeds compared to autoregressive methods, previous diffusion models failed on the abstractive summarization task due to the incompatibility between the backbone architectures and the random noising process. To overcome these challenges, we introduce a novel semantic-aware noising process that enables Transformer backbones to handle long sequences effectively. Additionally, we propose CrossMamba, an adaptation of the Mamba model to the encoder-decoder paradigm, which integrates seamlessly with the random absorbing noising process. Our approaches achieve state-of-the-art performance on three benchmark summarization datasets: Gigaword, CNN/DailyMail, and Arxiv, outperforming existing discrete diffusion models on ROUGE metrics as well as possessing much faster speed in inference compared to autoregressive models.",
+    "venue": "",
+    "year": 2024,
+    "tldr": "This work introduces a novel semantic-aware noising process that enables Transformer backbones to handle long sequences effectively and proposes CrossMamba, an adaptation of the Mamba model to the encoder-decoder paradigm, which integrates seamlessly with the random absorbing noising process.",
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "mamba",
+        "sedd",
+        "tess",
+        "contdiffu",
+        "selfcondembdiffu",
+        "ssdlm",
+        "diffuseq",
+        "analogbits",
+        "diffusionlm",
+        "d3pms"
+    ],
+    "code": null
+}

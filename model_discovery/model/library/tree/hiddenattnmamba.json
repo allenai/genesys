@@ -1,0 +1,18 @@
+{
+    "title": "The Hidden Attention of Mamba Models ",
+    "acronym": "hiddenattnmamba",
+    "s2id": "26e6cd121c5fdb147df83cb848e4813c926737c8",
+    "abstract": "The Mamba layer offers an efficient selective state space model (SSM) that is highly effective in modeling multiple domains, including NLP, long-range sequence processing, and computer vision. Selective SSMs are viewed as dual models, in which one trains in parallel on the entire sequence via an IO-aware parallel scan, and deploys in an autoregressive manner. We add a third view and show that such models can be viewed as attention-driven models. This new perspective enables us to empirically and theoretically compare the underlying mechanisms to that of the self-attention layers in transformers and allows us to peer inside the inner workings of the Mamba model with explainability methods. Our code is publicly available.",
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "A third view is added and it is shown that selective SSMs can be viewed as attention-driven models and empirically and theoretically compare the underlying mechanisms to that of the self-attention layers in transformers.",
+    "citationCount": 19,
+    "influentialCitationCount": 3,
+    "seed_ids": [
+        "retnet",
+        "rwkv4",
+        "hyena",
+        "transformer"
+    ],
+    "code": null
+}

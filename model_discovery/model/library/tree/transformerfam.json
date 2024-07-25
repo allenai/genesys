@@ -1,0 +1,23 @@
+{
+    "title": "TransformerFAM: Feedback attention is working memory",
+    "acronym": "transformerfam",
+    "s2id": "89d786457591d39091cf6ef4831f2bbd72698caf",
+    "abstract": "While Transformers have revolutionized deep learning, their quadratic attention complexity hinders their ability to process infinitely long inputs. We propose Feedback Attention Memory (FAM), a novel Transformer architecture that leverages a feedback loop to enable the network to attend to its own latent representations. This design fosters the emergence of working memory within the Transformer, allowing it to process indefinitely long sequences. TransformerFAM requires no additional weights, enabling seamless integration with pre-trained models. Our experiments show that TransformerFAM significantly improves Transformer performance on long-context tasks across various model sizes (1B, 8B, and 24B). These results showcase the potential to empower Large Language Models (LLMs) to process sequences of unlimited length.",
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "Feedback Attention Memory is proposed, a novel Transformer architecture that leverages a feedback loop to enable the network to attend to its own latent representations, allowing it to process indefinitely long sequences.",
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "pi",
+        "landmarkattn",
+        "rmt",
+        "roformer",
+        "longformer",
+        "reformer",
+        "transformerxl",
+        "transformer",
+        "bert"
+    ],
+    "code": null
+}

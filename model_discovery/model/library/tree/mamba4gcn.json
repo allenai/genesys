@@ -1,0 +1,18 @@
+{
+    "title": "MambaForGCN: Enhancing Long-Range Dependency with State Space Model and Kolmogorov-Arnold Networks for Aspect-Based Sentiment Analysis",
+    "acronym": "mamba4gcn",
+    "s2id": "61223f041fda417c6d3e053c8151adf79b5b33e3",
+    "abstract": "Aspect-based sentiment Analysis (ABSA) identifies and evaluates sentiments toward specific aspects of entities within text, providing detailed insights beyond overall sentiment. However, Attention mechanisms and neural network models struggle with syntactic constraints, and the quadratic complexity of attention mechanisms hinders their adoption for capturing long-range dependencies between aspect and opinion words in ABSA. This complexity can lead to the misinterpretation of irrelevant con-textual words, restricting their effectiveness to short-range dependencies. Some studies have investigated merging semantic and syntactic approaches but face challenges in effectively integrating these methods. To address the above problems, we present MambaForGCN, a novel approach to enhance short and long-range dependencies between aspect and opinion words in ABSA. This innovative approach incorporates syntax-based Graph Convolutional Network (SynGCN) and MambaFormer (Mamba-Transformer) modules to encode input with dependency relations and semantic information. The Multihead Attention (MHA) and Mamba blocks in the MambaFormer module serve as channels to enhance the model with short and long-range dependencies between aspect and opinion words. We also introduce the Kolmogorov-Arnold Networks (KANs) gated fusion, an adaptively integrated feature representation system combining SynGCN and MambaFormer representations. Experimental results on three benchmark datasets demonstrate MambaForGCN's effectiveness, outperforming state-of-the-art (SOTA) baseline models.",
+    "venue": "",
+    "year": 2024,
+    "tldr": "This work presents MambaForGCN, a novel approach to enhance short and long-range dependencies between aspect and opinion words in ABSA, which incorporates syntax-based Graph Convolutional Network (SynGCN) and MambaFormer (Mamba-Transformer) modules to encode input with dependency relations and semantic information.",
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "jamba",
+        "bst",
+        "transformer",
+        "bert"
+    ],
+    "code": null
+}

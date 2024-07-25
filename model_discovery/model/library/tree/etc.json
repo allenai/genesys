@@ -1,0 +1,23 @@
+{
+    "title": "ETC: Encoding Long and Structured Inputs in Transformers",
+    "acronym": "etc",
+    "s2id": "d27669c82faf78ea08cceaa0a171b540cccc304d",
+    "abstract": "Transformer models have advanced the state of the art in many Natural Language Processing (NLP) tasks. In this paper, we present a new Transformer architecture, Extended Transformer Construction (ETC), that addresses two key challenges of standard Transformer architectures, namely scaling input length and encoding structured inputs. To scale attention to longer inputs, we introduce a novel global-local attention mechanism between global tokens and regular input tokens. We also show that combining global-local attention with relative position encodings and a Contrastive Predictive Coding (CPC) pre-training objective allows ETC to encode structured inputs. We achieve state-of-the-art results on four natural language datasets requiring long and/or structured inputs.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2020,
+    "tldr": "A new Transformer architecture, Extended Transformer Construction (ETC), is presented that addresses two key challenges of standard Transformer architectures, namely scaling input length and encoding structured inputs.",
+    "citationCount": 309,
+    "influentialCitationCount": 28,
+    "seed_ids": [
+        "longformer",
+        "routingtransformer",
+        "reformer",
+        "compressivetransformer",
+        "bptrans",
+        "sparsetransformer",
+        "transformerxl",
+        "transformer",
+        "bert"
+    ],
+    "code": null
+}

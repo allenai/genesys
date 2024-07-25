@@ -1,0 +1,21 @@
+{
+    "title": "ChordMixer: A Scalable Neural Attention Model for Sequences with Different Lengths",
+    "acronym": "chordmixer",
+    "s2id": "2fc384087f55111a196c96d88029aab324aa543e",
+    "abstract": "Sequential data naturally have different lengths in many domains, with some very long sequences. As an important modeling tool, neural attention should capture long-range interaction in such sequences. However, most existing neural attention models admit only short sequences, or they have to employ chunking or padding to enforce a constant input length. Here we propose a simple neural network building block called ChordMixer which can model the attention for long sequences with variable lengths. Each ChordMixer block consists of a position-wise rotation layer without learnable parameters and an element-wise MLP layer. Repeatedly applying such blocks forms an effective network backbone that mixes the input signals towards the learning targets. We have tested ChordMixer on the synthetic adding problem, long document classification, and DNA sequence-based taxonomy classification. The experiment results show that our method substantially outperforms other neural attention models.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": "A simple neural network building block called ChordMixer which can model the attention for long sequences with variable lengths, and substantially outperforms other neural attention models.",
+    "citationCount": 11,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "metaformer",
+        "s4",
+        "luna",
+        "nystromformer",
+        "linformer",
+        "reformer",
+        "transformer"
+    ],
+    "code": null
+}

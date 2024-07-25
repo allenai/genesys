@@ -1,0 +1,15 @@
+{
+    "title": "Synthesizer: Rethinking Self-Attention in Transformer Models",
+    "acronym": "synthesizer",
+    "s2id": "a238109c3969ae681eee0d4f1bf2012f28850593",
+    "abstract": "The dot product self-attention is known to be central and indispensable to state-of-the-art Transformer models. But is it really required? This paper investigates the true importance and contribution of the dot product-based self-attention mechanism on the performance of Transformer models. Via extensive experiments, we find that (1) random alignment matrices surprisingly perform quite competitively and (2) learning attention weights from token-token (query-key) interactions is not that important after all. To this end, we propose \\textsc{Synthesizer}, a model that learns synthetic attention weights without token-token interactions. Our experimental results show that \\textsc{Synthesizer} is competitive against vanilla Transformer models across a range of tasks, including MT (EnDe, EnFr), language modeling (LM1B), abstractive summarization (CNN/Dailymail), dialogue generation (PersonaChat) and Multi-task language understanding (GLUE, SuperGLUE).",
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": "The true importance and contribution of the dot product-based self-attention mechanism on the performance of Transformer models is investigated and a model that learns synthetic attention weights without token-token interactions is proposed, called Synthesizer.",
+    "citationCount": 70,
+    "influentialCitationCount": 12,
+    "seed_ids": [
+        "transformer"
+    ],
+    "code": null
+}

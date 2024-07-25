@@ -1,0 +1,25 @@
+{
+    "title": "Fnet: Mixing tokens with fourier transforms",
+    "acronym": "fnet",
+    "s2id": "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+    "abstract": "We show that Transformer encoder architectures can be sped up, with limited accuracy costs, by replacing the self-attention sublayers with simple linear transformations that \u201cmix\u201d input tokens. Most surprisingly, we find that replacing the self-attention sublayer in a Transformer encoder with a standard, unparameterized Fourier Transform achieves 92-97% of the accuracy of BERT counterparts on the GLUE benchmark, but trains 80% faster on GPUs and 70% faster on TPUs at standard 512 input lengths. At longer input lengths, our FNet model is significantly faster: when compared to the \u201cefficient Transformers\u201d on the Long Range Arena benchmark, FNet matches the accuracy of the most accurate models, while outpacing the fastest models across all sequence lengths on GPUs (and across relatively shorter lengths on TPUs). Finally, FNet has a light memory footprint and is particularly efficient at smaller model sizes; for a fixed speed and accuracy budget, small FNet models outperform Transformer counterparts.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": "The FNet model is significantly faster: when compared to the \u201cefficient Transformers\u201d on the Long Range Arena benchmark, FNet matches the accuracy of the most accurate models, while outpacing the fastest models across all sequence lengths on GPUs (and across relatively shorter lengths on TPUs).",
+    "citationCount": 400,
+    "influentialCitationCount": 56,
+    "seed_ids": [
+        "longt5",
+        "rfa",
+        "bigbird",
+        "lineartransformer",
+        "linformer",
+        "synthesizer",
+        "etc",
+        "longformer",
+        "sinkhorn",
+        "transformer",
+        "bert"
+    ],
+    "code": null
+}

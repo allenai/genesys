@@ -1,0 +1,20 @@
+{
+    "title": "A Length-Extrapolatable Transformer",
+    "acronym": "lex",
+    "s2id": "9575afb5702bc33d7df14c48feeee5901ea00369",
+    "abstract": "Position modeling plays a critical role in Transformers. In this paper, we focus on length extrapolation, i.e., training on short texts while evaluating longer sequences. We define attention resolution as an indicator of extrapolation. Then we propose two designs to improve the above metric of Transformers. Specifically, we introduce a relative position embedding to explicitly maximize attention resolution. Moreover, we use blockwise causal attention during inference for better resolution. We evaluate different Transformer variants with language modeling. Experimental results show that our model achieves strong performance in both interpolation and extrapolation settings. The code will be available at https://aka.ms/LeX-Transformer.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": "This paper introduces a relative position embedding to explicitly maximize attention resolution in Transformers and uses blockwise causal attention during inference for better resolution.",
+    "citationCount": 70,
+    "influentialCitationCount": 2,
+    "seed_ids": [
+        "roformer",
+        "bigbird",
+        "linformer",
+        "transformerxl",
+        "transformer",
+        "bert"
+    ],
+    "code": null
+}

@@ -1,0 +1,22 @@
+{
+    "title": "PoSE: Efficient Context Window Extension of LLMs via Positional Skip-wise Training",
+    "acronym": "pose",
+    "s2id": "73290ecbec2f38d1d647ddef1ada69cee41725b3",
+    "abstract": "Large Language Models (LLMs) are trained with a pre-defined context length, restricting their use in scenarios requiring long inputs. Previous efforts for adapting LLMs to a longer length usually requires fine-tuning with this target length (Full-length fine-tuning), suffering intensive training cost. To decouple train length from target length for efficient context window extension, we propose Positional Skip-wisE (PoSE) training that smartly simulates long inputs using a fixed context window. This is achieved by first dividing the original context window into several chunks, then designing distinct skipping bias terms to manipulate the position indices of each chunk. These bias terms and the lengths of each chunk are altered for every training example, allowing the model to adapt to all positions within target length. Experimental results show that PoSE greatly reduces memory and time overhead compared with Full-length fine-tuning, with minimal impact on performance. Leveraging this advantage, we have successfully extended the LLaMA model to 128k tokens using a 2k training context window. Furthermore, we empirically confirm that PoSE is compatible with all RoPE-based LLMs and position interpolation strategies. Notably, our method can potentially support infinite length, limited only by memory usage in inference. With ongoing progress for efficient inference, we believe PoSE can further scale the context window beyond 128k.",
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": "Positional Skip-wisE (PoSE) training that smartly simulates long inputs using a fixed context window is proposed, and can potentially support infinite length, limited only by memory usage in inference.",
+    "citationCount": 38,
+    "influentialCitationCount": 1,
+    "seed_ids": [
+        "yarn",
+        "pi",
+        "landmarkattn",
+        "lex",
+        "rmt",
+        "flashattn",
+        "roformer",
+        "compressivetransformer"
+    ],
+    "code": null
+}

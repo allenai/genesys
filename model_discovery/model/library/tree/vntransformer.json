@@ -1,0 +1,13 @@
+{
+    "title": "VN-Transformer: Rotation-Equivariant Attention for Vector Neurons",
+    "acronym": "vntransformer",
+    "s2id": "9628221b1fa271d93968e97a0a5868b657e0a5be",
+    "abstract": "Rotation equivariance is a desirable property in many practical applications such as motion forecasting and 3D perception, where it can offer benefits like sample efficiency, better generalization, and robustness to input perturbations. Vector Neurons (VN) is a recently developed framework offering a simple yet effective approach for deriving rotation-equivariant analogs of standard machine learning operations by extending one-dimensional scalar neurons to three-dimensional\"vector neurons.\"We introduce a novel\"VN-Transformer\"architecture to address several shortcomings of the current VN models. Our contributions are: $(i)$ we derive a rotation-equivariant attention mechanism which eliminates the need for the heavy feature preprocessing required by the original Vector Neurons models; $(ii)$ we extend the VN framework to support non-spatial attributes, expanding the applicability of these models to real-world datasets; $(iii)$ we derive a rotation-equivariant mechanism for multi-scale reduction of point-cloud resolution, greatly speeding up inference and training; $(iv)$ we show that small tradeoffs in equivariance ($\\epsilon$-approximate equivariance) can be used to obtain large improvements in numerical stability and training robustness on accelerated hardware, and we bound the propagation of equivariance violations in our models. Finally, we apply our VN-Transformer to 3D shape classification and motion forecasting with compelling results.",
+    "venue": "Trans. Mach. Learn. Res.",
+    "year": 2022,
+    "tldr": "A rotation-equivariant attention mechanism is derived which eliminates the need for the heavy feature preprocessing required by the original Vector Neurons models, and small tradeoffs in equivariance can be used to obtain large improvements in numerical stability and training robustness on accelerated hardware.",
+    "citationCount": 12,
+    "influentialCitationCount": 1,
+    "seed_ids": [],
+    "code": null
+}

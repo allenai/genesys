@@ -1,0 +1,21 @@
+{
+    "title": "KERPLE: Kernelized Relative Positional Embedding for Length Extrapolation",
+    "acronym": "kerple",
+    "s2id": "d6c5aab433d9871cabc01ffb1e5e1ea89141155b",
+    "abstract": "Relative positional embeddings (RPE) have received considerable attention since RPEs effectively model the relative distance among tokens and enable length extrapolation. We propose KERPLE, a framework that generalizes relative position embedding for extrapolation by kernelizing positional differences. We achieve this goal using conditionally positive definite (CPD) kernels, a class of functions known for generalizing distance metrics. To maintain the inner product interpretation of self-attention, we show that a CPD kernel can be transformed into a PD kernel by adding a constant offset. This offset is implicitly absorbed in the Softmax normalization during self-attention. The diversity of CPD kernels allows us to derive various RPEs that enable length extrapolation in a principled way. Experiments demonstrate that the logarithmic variant achieves excellent extrapolation performance on three large language modeling datasets. Our implementation and pretrained checkpoints are released at~\\url{https://github.com/chijames/KERPLE.git}.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": "KERPLE is proposed, a framework that generalizes relative position embedding for extrapolation by kernelizing positional differences using conditionally positive definite (CPD) kernels, and it is shown that a CPD kernel can be transformed into a PD kernel by adding a constant offset.",
+    "citationCount": 39,
+    "influentialCitationCount": 7,
+    "seed_ids": [
+        "alibi",
+        "roformer",
+        "performer",
+        "transformer",
+        "bert",
+        "gpt2",
+        "gpt"
+    ],
+    "code": null
+}

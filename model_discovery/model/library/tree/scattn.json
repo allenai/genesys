@@ -1,0 +1,13 @@
+{
+    "title": "Sparse and continuous attention mechanisms",
+    "acronym": "scattn",
+    "s2id": "09e69bf0926e55cd277a3ef5b1450ba083719cb9",
+    "abstract": "Exponential families are widely used in machine learning; they include many distributions in continuous and discrete domains (e.g., Gaussian, Dirichlet, Poisson, and categorical distributions via the softmax transformation). Distributions in each of these families have fixed support. In contrast, for finite domains, there has been recent work on sparse alternatives to softmax (e.g. sparsemax and alpha-entmax), which have varying support, being able to assign zero probability to irrelevant categories. This paper expands that work in two directions: first, we extend alpha-entmax to continuous domains, revealing a link with Tsallis statistics and deformed exponential families. Second, we introduce continuous-domain attention mechanisms, deriving efficient gradient backpropagation algorithms for alpha in {1,2}. Experiments on attention-based text classification, machine translation, and visual question answering illustrate the use of continuous attention in 1D and 2D, showing that it allows attending to time intervals and compact regions.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2020,
+    "tldr": "This paper extends alpha-entmax to continuous domains, revealing a link with Tsallis statistics and deformed exponential families, and introduces continuous-domain attention mechanisms, deriving efficient gradient backpropagation algorithms for alpha in {1,2}.",
+    "citationCount": 28,
+    "influentialCitationCount": 2,
+    "seed_ids": [],
+    "code": null
+}

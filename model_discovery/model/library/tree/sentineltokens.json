@@ -1,0 +1,16 @@
+{
+    "title": "Taking a Deep Breath: Enhancing Language Modeling of Large Language Models with Sentinel Tokens",
+    "acronym": "sentineltokens",
+    "s2id": "0a52a97ec49da2560d96d431f15831bc7e1389e1",
+    "abstract": "Large language models (LLMs) have shown promising efficacy across various tasks, becoming powerful tools in numerous aspects of human life. However, Transformer-based LLMs suffer a performance degradation when modeling long-term contexts due to they discard some information to reduce computational overhead. In this work, we propose a simple yet effective method to enable LLMs to take a deep breath, encouraging them to summarize information contained within discrete text chunks. Specifically, we segment the text into multiple chunks and insert special tokenat the end of each chunk. We then modify the attention mask to integrate the chunk's information into the correspondingtoken. This facilitates LLMs to interpret information not only from historical individual tokens but also from thetoken, aggregating the chunk's semantic information. Experiments on language modeling and out-of-domain downstream tasks validate the superiority of our approach.",
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "A simple yet effective method to enable LLMs to take a deep breath, encouraging them to summarize information contained within discrete text chunks by segmenting the text into multiple chunks and inserting special token at the end of each chunk.",
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "roformer",
+        "bert"
+    ],
+    "code": null
+}

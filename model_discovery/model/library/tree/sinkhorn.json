@@ -1,0 +1,15 @@
+{
+    "title": "Sparse Sinkhorn Attention",
+    "acronym": "sinkhorn",
+    "s2id": "34a4e6818d680875ff0bef9a76de0376118446d1",
+    "abstract": "We propose Sparse Sinkhorn Attention, a new efficient and sparse method for learning to attend. Our method is based on differentiable sorting of internal representations. Concretely, we introduce a meta sorting network that learns to generate latent permutations over sequences. Given sorted sequences, we are then able to compute quasi-global attention with only local windows, improving the memory efficiency of the attention module. To this end, we propose new algorithmic innovations such as Causal Sinkhorn Balancing and SortCut, a dynamic sequence truncation method for tailoring Sinkhorn Attention for encoding and/or decoding purposes. Via extensive experiments on algorithmic seq2seq sorting, language modeling, pixel-wise image generation, document classification and natural language inference, we demonstrate that our memory efficient Sinkhorn Attention method is competitive with vanilla attention and consistently outperforms recently proposed efficient Transformer models such as Sparse Transformers.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2020,
+    "tldr": "This work introduces a meta sorting network that learns to generate latent permutations over sequences and is able to compute quasi-global attention with only local windows, improving the memory efficiency of the attention module.",
+    "citationCount": 285,
+    "influentialCitationCount": 36,
+    "seed_ids": [
+        "sparsetransformer"
+    ],
+    "code": null
+}

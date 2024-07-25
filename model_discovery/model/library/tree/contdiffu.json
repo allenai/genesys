@@ -1,0 +1,22 @@
+{
+    "title": "Continuous diffusion for categorical data ",
+    "acronym": "contdiffu",
+    "s2id": "22775e58932cdfbd273a2a835a22c5d86800a458",
+    "abstract": "Diffusion models have quickly become the go-to paradigm for generative modelling of perceptual signals (such as images and sound) through iterative refinement. Their success hinges on the fact that the underlying physical phenomena are continuous. For inherently discrete and categorical data such as language, various diffusion-inspired alternatives have been proposed. However, the continuous nature of diffusion models conveys many benefits, and in this work we endeavour to preserve it. We propose CDCD, a framework for modelling categorical data with diffusion models that are continuous both in time and input space. We demonstrate its efficacy on several language modelling tasks.",
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": "CD, a framework for modelling categorical data with diffusion models that are continuous both in time and input space, is proposed and its efficacy on several language modelling tasks is demonstrated.",
+    "citationCount": 66,
+    "influentialCitationCount": 8,
+    "seed_ids": [
+        "selfcondembdiffu",
+        "analogbits",
+        "classfreediffu",
+        "diffusionlm",
+        "d3pms",
+        "roformer",
+        "transformer",
+        "bert"
+    ],
+    "code": null
+}

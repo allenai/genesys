@@ -1,0 +1,15 @@
+{
+    "title": "Training LLMs over Neurally Compressed Text",
+    "acronym": "neuralcompress",
+    "s2id": "e27c9c39ecb67e8e7708d8d53bec2f891cfa7a40",
+    "abstract": "In this paper, we explore the idea of training large language models (LLMs) over highly compressed text. While standard subword tokenizers compress text by a small factor, neural text compressors can achieve much higher rates of compression. If it were possible to train LLMs directly over neurally compressed text, this would confer advantages in training and serving efficiency, as well as easier handling of long text spans. The main obstacle to this goal is that strong compression tends to produce opaque outputs that are not well-suited for learning. In particular, we find that text na\\\"ively compressed via Arithmetic Coding is not readily learnable by LLMs. To overcome this, we propose Equal-Info Windows, a novel compression technique whereby text is segmented into blocks that each compress to the same bit length. Using this method, we demonstrate effective learning over neurally compressed text that improves with scale, and outperforms byte-level baselines by a wide margin on perplexity and inference speed benchmarks. While our method delivers worse perplexity than subword tokenizers for models trained with the same parameter count, it has the benefit of shorter sequence lengths. Shorter sequence lengths require fewer autoregressive generation steps, and reduce latency. Finally, we provide extensive analysis of the properties that contribute to learnability, and offer concrete suggestions for how to further improve the performance of high-compression tokenizers.",
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "Equal-Info Windows, a novel compression technique whereby text is segmented into blocks that each compress to the same bit length, is proposed, demonstrating effective learning over neurally compressed text that improves with scale, and outperforms byte-level baselines by a wide margin on perplexity and inference speed benchmarks.",
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "transformer"
+    ],
+    "code": null
+}

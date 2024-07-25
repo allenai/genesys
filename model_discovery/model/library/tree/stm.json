@@ -1,0 +1,19 @@
+{
+    "title": "Efficient Long-Text Understanding with Short-Text Models",
+    "acronym": "stm",
+    "s2id": "732e3faec4e5be4d144256f2c379b9dc49f0b227",
+    "abstract": "Transformer-based pretrained language models (LMs) are ubiquitous across natural language understanding, but cannot be applied to long sequences such as stories, scientific articles, and long documents due to their quadratic complexity. While a myriad of efficient transformer variants have been proposed, they are typically based on custom implementations that require expensive pretraining from scratch. In this work, we propose SLED: SLiding-Encoder and Decoder, a simple approach for processing long sequences that re-uses and leverages battle-tested short-text pretrained LMs. Specifically, we partition the input into overlapping chunks, encode each with a short-text LM encoder and use the pretrained decoder to fuse information across chunks (fusion-in-decoder). We illustrate through controlled experiments that SLED offers a viable strategy for long text understanding and evaluate our approach on SCROLLS, a benchmark with seven datasets across a wide range of language understanding tasks. We find that SLED is competitive with specialized models that are up to 50x larger and require a dedicated and expensive pretraining step.",
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": "This work proposes SLED: SLiding-Encoder and Decoder, a simple approach for processing long sequences that re-uses and leverages battle-tested short-text pretrained LMs and finds that SLED is competitive with specialized models that are up to 50x larger and require a dedicated and expensive pretraining step.",
+    "citationCount": 49,
+    "influentialCitationCount": 5,
+    "seed_ids": [
+        "dssm",
+        "rfa",
+        "longformer",
+        "reformer",
+        "transformer"
+    ],
+    "code": null
+}

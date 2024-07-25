@@ -1,0 +1,15 @@
+{
+    "title": "REMIXERS: A Mixer-Transformer Architecture with Compositional Operators for Natural Language Understanding",
+    "acronym": "remixer",
+    "s2id": "f37e00c1a3919d1a2c2b550c9acc1612f9319f35",
+    "abstract": "Recent work such as MLP-Mixers (Tolstikhin 001 et al., 2021) have demonstrated the promise 002 of All-MLP architectures. While All-MLP ar-003 chitectures have demonstrated reasonable per-004 formance in computer vision and garnered re-005 cent interest, we argue that making them ef-006 fective in NLP applications is still an uphill 007 battle. Hence, there may be no solid rea-008 son to drop the self-attention modules alto-009 gether. In this paper, we propose a new 010 Mixer-Transformer architecture, showing that 011 Transformers and Mixer models can be quite 012 complementary indeed. Fundamentally, we 013 show that Mixer models are capable of act-014 ing as persistent global memory (in a simi-015 lar vein to standard MLPs) while being im-016 bued with global receptive \ufb01elds at the same 017 time. Hence, interleaving sample-dependent 018 and input-local self-attention with persistent 019 Mixer modules can be an effective strategy. 020 Additionally, we propose compositional remix-021 ing, a new way of baking compositional op-022 erators (multiplicative and subtractive compo-023 sition) within the mixing process to improve 024 the expressiveness of the model. This allows 025 us to effectively model relationships between 026 unmixed and mixed representations - an induc-027 tive bias that we postulate is powerful for NLU 028 applications. Via extensive experiments on 14 029 challenging NLU datasets (e.g., SuperGLUE, 030 entailment and compositional generalization), 031 we show that the proposed architecture consis-032 tently outperforms a strong T5 baseline (Raf-033 fel et al., 2019). We believe this work paves",
+    "venue": "",
+    "year": 2021,
+    "tldr": "It is shown that the proposed architecture consis-032 tently outperforms a strong T5 baseline (Raf-033 fel et al., 2019), and it is believed this work paves the way for NLU applications.",
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "bert"
+    ],
+    "code": null
+}

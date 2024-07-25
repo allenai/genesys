@@ -1,0 +1,17 @@
+{
+    "title": "Contextual Position Encoding: Learning to Count What's Important",
+    "acronym": "cope",
+    "s2id": "d7ee15521fcfd8704c8422997614b2b22f5e1148",
+    "abstract": "The attention mechanism is a critical component of Large Language Models (LLMs) that allows tokens in a sequence to interact with each other, but is order-invariant. Incorporating position encoding (PE) makes it possible to address by position, such as attending to the i-th token. However, current PE methods use token counts to derive position, and thus cannot generalize to higher levels of abstraction, such as attending to the i-th sentence. In this paper, we propose a new position encoding method, Contextual Position Encoding (CoPE), that allows positions to be conditioned on context by incrementing position only on certain tokens determined by the model. This allows more general position addressing such as attending to the $i$-th particular word, noun, or sentence. We show that CoPE can solve the selective copy, counting and Flip-Flop tasks where popular position embeddings fail, and improves perplexity on language modeling and coding tasks.",
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "A new position encoding method, Contextual Position Encoding (CoPE), that allows positions to be conditioned on context by incrementing position only on certain tokens determined by the model, and improves perplexity on language modeling and coding tasks.",
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "roformer",
+        "transformer",
+        "gpt2"
+    ],
+    "code": null
+}

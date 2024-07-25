@@ -1,0 +1,16 @@
+{
+    "title": "Loki: Low-Rank Keys for Efficient Sparse Attention",
+    "acronym": "loki",
+    "s2id": "f4c07dc79976a4e3a558bb6fcd0d615673e8ecef",
+    "abstract": "Inference on large language models can be expensive in terms of the compute and memory costs involved, especially when long sequence lengths are used. In particular, the self-attention mechanism used in such models contributes significantly to these costs, which has resulted in several recent works that propose sparse attention approximations for inference. In this work, we propose to approximate the self-attention computation by focusing on the dimensionality of key vectors computed in the attention block. Our analysis reveals that the key vectors lie in a significantly lower-dimensional space, consistently across several datasets and models. Exploiting this observation, we propose Loki, a novel sparse attention method that ranks and selects tokens in the KV-cache based on attention scores computed in low-dimensional space. Our evaluations show that Loki is able to maintain the efficacy of the models better than other popular approximation methods, while speeding up the attention computation due to reduced data movement (load/store) and compute costs.",
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "Loki is proposed, a novel sparse attention method that ranks and selects tokens in the KV-cache based on attention scores computed in low-dimensional space, and is able to maintain the efficacy of the models better than other popular approximation methods.",
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "streamingllm",
+        "sparsetransformer"
+    ],
+    "code": null
+}

@@ -1,0 +1,15 @@
+{
+    "title": "Fast Sampling via Discrete Non-Markov Diffusion Models",
+    "acronym": "derandddm",
+    "s2id": "abca18159e0836406a648414cd4275715f3cc12e",
+    "abstract": "Discrete diffusion models have emerged as powerful tools for high-quality data generation. Despite their success in discrete spaces, such as text generation tasks, the acceleration of discrete diffusion models remains under explored. In this paper, we propose a discrete non-Markov diffusion model, which admits an accelerated reverse sampling for discrete data generation. Our method significantly reduces the number of function evaluations (i.e., calls to the neural network), making the sampling process much faster. Furthermore, we study the transition from finite to infinite step sampling, offering new insights into bridging the gap between discrete and continuous-time processes for discrete diffusion models. Extensive experiments on natural language generation and machine translation tasks demonstrate the superior performance of our method in terms of both generation speed and sample quality compared to existing methods for discrete diffusion models.",
+    "venue": "",
+    "year": 2023,
+    "tldr": "A discrete non-Markov diffusion model is proposed, which admits an accelerated reverse sampling for discrete data generation and significantly reduces the number of function evaluations, making the sampling process much faster and study the transition from finite to infinite step sampling.",
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "d3pms"
+    ],
+    "code": null
+}

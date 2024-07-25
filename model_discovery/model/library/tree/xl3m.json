@@ -1,0 +1,22 @@
+{
+    "title": "XL3M: A Training-free Framework for LLM Length Extension Based on Segment-wise Inference",
+    "acronym": "xl3m",
+    "s2id": "884ca2feb4ffb14390e98daf95d1efbdca7a9b11",
+    "abstract": "Length generalization failure problem, namely the large language model (LLM) fails to generalize to texts longer than its maximum training length, greatly restricts the application of LLM in the scenarios with streaming long inputs. To address this problem, the existing methods either require substantial costs or introduce precision loss. In this paper, we empirically find that the accuracy of the LLM's prediction is highly correlated to its certainty. Based on this, we propose an efficient training free framework, named XL3M (it means extra-long large language model), which enables the LLMs trained on short sequences to reason extremely long sequence without any further training or fine-tuning. Under the XL3M framework, the input context will be firstly decomposed into multiple short sub-contexts, where each sub-context contains an independent segment and a common ``question'' which is a few tokens from the end of the original context. Then XL3M gives a method to measure the relevance between each segment and the ``question'', and constructs a concise key context by splicing all the relevant segments in chronological order. The key context is further used instead of the original context to complete the inference task. Evaluations on comprehensive benchmarks show the superiority of XL3M. Using our framework, a Llama2-7B model is able to reason 20M long sequences on an 8-card Huawei Ascend 910B NPU machine with 64GB memory per card.",
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "An efficient training free framework, named XL3M (it means extra-long large language model), is proposed, which enables the LLMs trained on short sequences to reason extremely long sequence without any further training or fine-tuning.",
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "streamingllm",
+        "yarn",
+        "pi",
+        "unlimiformer",
+        "pcw",
+        "elgllm",
+        "alibi",
+        "roformer"
+    ],
+    "code": null
+}

@@ -1,0 +1,25 @@
+{
+    "title": "You Only Scan Once: Efficient Multi-dimension Sequential Modeling with LightNet",
+    "acronym": "lightnet",
+    "s2id": "7f505660c595d6547e258de0a5978fc2d5fad925",
+    "abstract": "Linear attention mechanisms have gained prominence in causal language models due to their linear computational complexity and enhanced speed. However, the inherent decay mechanism in linear attention presents challenges when applied to multi-dimensional sequence modeling tasks, such as image processing and multi-modal learning. In these scenarios, the utilization of sequential scanning to establish a global receptive field necessitates multiple scans for multi-dimensional data, thereby leading to inefficiencies. This paper identifies the inefficiency caused by a multiplicative linear recurrence and proposes an efficient alternative additive linear recurrence to avoid the issue, as it can handle multi-dimensional data within a single scan. We further develop an efficient multi-dimensional sequential modeling framework called LightNet based on the new recurrence. Moreover, we present two new multi-dimensional linear relative positional encoding methods, MD-TPE and MD-LRPE to enhance the model's ability to discern positional information in multi-dimensional scenarios. Our empirical evaluations across various tasks, including image classification, image generation, bidirectional language modeling, and autoregressive language modeling, demonstrate the efficacy of LightNet, showcasing its potential as a versatile and efficient solution for multi-dimensional sequential modeling.",
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "This paper identifies the inefficiency caused by a multiplicative linear recurrence and proposes an efficient alternative additive linear recurrence to avoid the issue, as it can handle multi-dimensional data within a single scan.",
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "seed_ids": [
+        "secretlinseqmod",
+        "gla",
+        "mamba",
+        "transnormerllm",
+        "retnet",
+        "rwkv4",
+        "transnormer",
+        "s4d",
+        "cosformer",
+        "lineartransformer",
+        "bert"
+    ],
+    "code": null
+}

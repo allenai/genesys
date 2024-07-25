@@ -1,0 +1,27 @@
+{
+    "title": "Zebra: Extending Context Window with Layerwise Grouped Local-Global Attention",
+    "acronym": "zebra",
+    "s2id": "36697944858ab17ca23b23ae2043aa6c0b2e3d5d",
+    "abstract": "This paper introduces a novel approach to enhance the capabilities of Large Language Models (LLMs) in processing and understanding extensive text sequences, a critical aspect in applications requiring deep comprehension and synthesis of large volumes of information. Recognizing the inherent challenges in extending the context window for LLMs, primarily built on Transformer architecture, we propose a new model architecture, referred to as Zebra. This architecture efficiently manages the quadratic time and memory complexity issues associated with full attention in the Transformer by employing grouped local-global attention layers. Our model, akin to a zebra's alternating stripes, balances local and global attention layers, significantly reducing computational requirements and memory consumption. Comprehensive experiments, including pretraining from scratch, continuation of long context adaptation training, and long instruction tuning, are conducted to evaluate the Zebra's performance. The results show that Zebra achieves comparable or superior performance on both short and long sequence benchmarks, while also enhancing training and inference efficiency.",
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": "This paper proposes a new model architecture, referred to as Zebra, that efficiently manages the quadratic time and memory complexity issues associated with full attention in the Transformer by employing grouped local-global attention layers.",
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "receptivefieldana",
+        "flashattn",
+        "longt5",
+        "rfa",
+        "bigbird",
+        "linformer",
+        "etc",
+        "longformer",
+        "compressivetransformer",
+        "mqa",
+        "transformer",
+        "bert",
+        "gpt"
+    ],
+    "code": null
+}

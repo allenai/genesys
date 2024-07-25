@@ -1,0 +1,18 @@
+{
+    "title": "Self-attention Does Not Need $O(n^2)$ Memory",
+    "acronym": "mea",
+    "s2id": "53c3940f35b8b45d55ed49056282e1961954513d",
+    "abstract": "We present a very simple algorithm for attention that requires $O(1)$ memory with respect to sequence length and an extension to self-attention that requires $O(\\log n)$ memory. This is in contrast with the frequently stated belief that self-attention requires $O(n^2)$ memory. While the time complexity is still $O(n^2)$, device memory rather than compute capability is often the limiting factor on modern accelerators. Thus, reducing the memory requirements of attention allows processing of longer sequences than might otherwise be feasible. We provide a practical implementation for accelerators that requires $O(\\sqrt{n})$ memory, is numerically stable, and is within a few percent of the runtime of the standard implementation of attention. We also demonstrate how to differentiate the function while remaining memory-efficient. For sequence length 16384, the memory overhead of self-attention is reduced by 59X for inference and by 32X for differentiation.",
+    "venue": "",
+    "year": 2021,
+    "tldr": "A practical implementation for accelerators that requires $O(\\sqrt{n})$ memory, is numerically stable, and is within a few percent of the runtime of the standard implementation of attention is provided.",
+    "citationCount": 94,
+    "influentialCitationCount": 7,
+    "seed_ids": [
+        "luna",
+        "linformer",
+        "routingtransformer",
+        "reformer"
+    ],
+    "code": null
+}

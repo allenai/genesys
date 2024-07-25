@@ -1,0 +1,13 @@
+{
+    "title": "CoLT5: Faster Long-Range Transformers with Conditional Computation",
+    "acronym": "colt5",
+    "s2id": "27d391d65ab42c30dc35595213ba6585633afa5d",
+    "abstract": "Many natural language processing tasks benefit from long inputs, but processing long documents with Transformers is expensive -- not only due to quadratic attention complexity but also from applying feedforward and projection layers to every token. However, not all tokens are equally important, especially for longer documents. We propose CoLT5, a long-input Transformer model that builds on this intuition by employing conditional computation, devoting more resources to important tokens in both feedforward and attention layers. We show that CoLT5 achieves stronger performance than LongT5 with much faster training and inference, achieving SOTA on the long-input SCROLLS benchmark. Moreover, CoLT5 can effectively and tractably make use of extremely long inputs, showing strong gains up to 64k input length.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": "CoLT5 is proposed, a long-input Transformer model that builds on intuition by employing conditional computation, devoting more resources to important tokens in both feedforward and attention layers, and achieves stronger performance than LongT5 with much faster training and inference.",
+    "citationCount": 46,
+    "influentialCitationCount": 5,
+    "seed_ids": [],
+    "code": null
+}

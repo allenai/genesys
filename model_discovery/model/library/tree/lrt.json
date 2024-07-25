@@ -1,0 +1,13 @@
+{
+    "title": "Lightweight and Efficient End-to-End Speech Recognition Using Low-Rank Transformer",
+    "acronym": "lrt",
+    "s2id": "49e5b09480189fc9b2316a54f9d1e55cf0097c8b",
+    "abstract": "Highly performing deep neural networks come at the cost of computational complexity that limits their practicality for deployment on portable devices. We propose the low-rank transformer (LRT), a memory-efficient and fast neural architecture that significantly reduces the parameters and boosts the speed of training and inference for end-to-end speech recognition. Our approach reduces the number of parameters of the network by more than 50% and speeds up the inference time by around 1.35x compared to the baseline transformer model. The experiments show that our LRT model generalizes better and yields lower error rates on both validation and test sets compared to an uncompressed transformer model. The LRT model outperforms those from existing works on several datasets in an end-to-end setting without using an external language model or acoustic data.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2019,
+    "tldr": "The low-rank transformer (LRT), a memory-efficient and fast neural architecture that significantly reduces the parameters and boosts the speed of training and inference for end-to-end speech recognition, is proposed.",
+    "citationCount": 61,
+    "influentialCitationCount": 6,
+    "seed_ids": [],
+    "code": null
+}

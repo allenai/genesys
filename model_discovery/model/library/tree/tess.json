@@ -1,0 +1,21 @@
+{
+    "title": "TESS: Text-to-Text Self-Conditioned Simplex Diffusion ",
+    "acronym": "tess",
+    "s2id": "67cdecbcfed07b9a29d9e2a92da684604383afd7",
+    "abstract": "Diffusion models have emerged as a powerful paradigm for generation, obtaining strong performance in various continuous domains. However, applying continuous diffusion models to natural language remains challenging due to its discrete nature and the need for a large number of diffusion steps to generate text, making diffusion-based generation expensive.In this work, we propose Text-to-text Self-conditioned Simplex Diffusion (TESS), a text diffusion model that is fully non-autoregressive, employs a new form of self-conditioning, and applies the diffusion process on the logit simplex space rather than the learned embedding space.Through extensive experiments on natural language understanding and generation tasks including summarization, text simplification, paraphrase generation, and question generation, we demonstrate that TESS outperforms state-of-the-art non-autoregressive models, requires fewer diffusion steps with minimal drop in performance, and is competitive with pretrained autoregressive sequence-to-sequence models.",
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": "Text-to-text Self-conditioned Simplex Diffusion (TESS), a text diffusion model that is fully non-autoregressive, employs a new form of self-conditioning, and applies the diffusion process on the logit simplex space rather than the learned embedding space is proposed.",
+    "citationCount": 14,
+    "influentialCitationCount": 3,
+    "seed_ids": [
+        "dinoiser",
+        "contdiffu",
+        "ssdlm",
+        "diffuseq",
+        "analogbits",
+        "diffusionlm",
+        "gpt2"
+    ],
+    "code": null
+}

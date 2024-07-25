@@ -1,0 +1,19 @@
+{
+    "title": "Hierarchical Neural Network Approaches for Long Document Classification",
+    "acronym": "hierarchinn",
+    "s2id": "320584ca7e9fce221ad3ca480efc8c66d31ef80e",
+    "abstract": "Text classification algorithms investigate the intricate relationships between words or phrases and attempt to deduce the document\u2019s interpretation. In the last few years, these algorithms have progressed tremendously. Transformer architecture and sentence encoders have proven to give superior results on natural language processing tasks. But a major limitation of these architectures is their applicability for text no longer than a few hundred words. In this paper, we explore hierarchical transfer learning approaches for long document classification. We employ pre-trained Universal Sentence Encoder (USE) and Bidirectional Encoder Representations from Transformers (BERT) in a hierarchical setup to capture better representations efficiently. Our proposed models are conceptually simple where we divide the input data into chunks and then pass this through base models of BERT and USE. Then output representation for each chunk is then propagated through a shallow neural network comprising of LSTMs or CNNs for classifying the text data. These extensions are evaluated on 6 benchmark datasets. We show that USE + CNN/LSTM performs better than its stand-alone baseline. Whereas the BERT + CNN/LSTM performs on par with its stand-alone counterpart. However, the hierarchical BERT models are still desirable as it avoids the quadratic complexity of the attention mechanism in BERT. Along with the hierarchical approaches, this work also provides a comparison of different deep learning algorithms like USE, BERT, HAN, Longformer, and BigBird for long document classification. The Longformer approach consistently performs well on most of the datasets.",
+    "venue": "International Conference on Machine Learning and Computing",
+    "year": 2022,
+    "tldr": "This work employs pre-trained Universal Sentence Encoder and Bidirectional Encoder Representations from Transformers in a hierarchical setup to capture better representations efficiently and provides a comparison of different deep learning algorithms like USE, BERT, HAN, Longformer, and BigBird for long document classification.",
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "seed_ids": [
+        "bigbird",
+        "longformer",
+        "reformer",
+        "transformer",
+        "bert"
+    ],
+    "code": null
+}

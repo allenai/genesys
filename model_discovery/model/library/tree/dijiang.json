@@ -1,0 +1,25 @@
+{
+    "title": "DiJiang: Efficient Large Language Models through Compact Kernelization",
+    "acronym": "dijiang",
+    "s2id": "ef8846c0b9eb9e915d44e18bf06fda51f9b5e2fa",
+    "abstract": "In an effort to reduce the computational load of Transformers, research on linear attention has gained significant momentum. However, the improvement strategies for attention mechanisms typically necessitate extensive retraining, which is impractical for large language models with a vast array of parameters. In this paper, we present DiJiang, a novel Frequency Domain Kernelization approach that enables the transformation of a pre-trained vanilla Transformer into a linear complexity model with little training costs. By employing a weighted Quasi-Monte Carlo method for sampling, the proposed approach theoretically offers superior approximation efficiency. To further reduce the training computational complexity, our kernelization is based on Discrete Cosine Transform (DCT) operations. Extensive experiments demonstrate that the proposed method achieves comparable performance to the original Transformer, but with significantly reduced training costs and much faster inference speeds. Our DiJiang-7B achieves comparable performance with LLaMA2-7B on various benchmark while requires only about 1/50 training cost. Code is available at https://github.com/YuchuanTian/DiJiang.",
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "DiJiang is presented, a novel Frequency Domain Kernelization approach that enables the transformation of a pre-trained vanilla Transformer into a linear complexity model with little training costs by employing a weighted Quasi-Monte Carlo method for sampling.",
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "streamingllm",
+        "retnet",
+        "eva",
+        "cosformer",
+        "soft",
+        "fnet",
+        "rfa",
+        "performer",
+        "longformer",
+        "reformer",
+        "transformer"
+    ],
+    "code": null
+}

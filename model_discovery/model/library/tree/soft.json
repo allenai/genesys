@@ -1,0 +1,20 @@
+{
+    "title": "SOFT: Softmax-free Transformer with Linear Complexity ",
+    "acronym": "soft",
+    "s2id": "2e644c67a697073d561da4f4dad35e5ad5316cfd",
+    "abstract": "Vision transformers (ViTs) have pushed the state-of-the-art for various visual recognition tasks by patch-wise image tokenization followed by self-attention. However, the employment of self-attention modules results in a quadratic complexity in both computation and memory usage. Various attempts on approximating the self-attention computation with linear complexity have been made in Natural Language Processing. However, an in-depth analysis in this work shows that they are either theoretically flawed or empirically ineffective for visual recognition. We further identify that their limitations are rooted in keeping the softmax self-attention during approximations. Specifically, conventional self-attention is computed by normalizing the scaled dot-product between token feature vectors. Keeping this softmax operation challenges any subsequent linearization efforts. Based on this insight, for the first time, a softmax-free transformer or SOFT is proposed. To remove softmax in self-attention, Gaussian kernel function is used to replace the dot-product similarity without further normalization. This enables a full self-attention matrix to be approximated via a low-rank matrix decomposition. The robustness of the approximation is achieved by calculating its Moore-Penrose inverse using a Newton-Raphson method. Extensive experiments on ImageNet show that our SOFT significantly improves the computational efficiency of existing ViT variants. Crucially, with a linear complexity, much longer token sequences are permitted in SOFT, resulting in superior trade-off between accuracy and complexity.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2021,
+    "tldr": "For the first time, a softmax-free transformer or SOFT is proposed, which significantly improves the computational efficiency of existing ViT variants and allows much longer token sequences to be permitted in SOFT, resulting in superior trade-off between accuracy and complexity.",
+    "citationCount": 118,
+    "influentialCitationCount": 8,
+    "seed_ids": [
+        "rfa",
+        "nystromformer",
+        "performer",
+        "lineartransformer",
+        "linformer",
+        "transformer"
+    ],
+    "code": null
+}

@@ -1,0 +1,21 @@
+{
+    "title": "Two Stones Hit One Bird: Bilevel Positional Encoding for Better Length Extrapolation",
+    "acronym": "bipe",
+    "s2id": "9d932de1d2f51067b6481745f28a2db345293d48",
+    "abstract": "In this work, we leverage the intrinsic segmentation of language sequences and design a new positional encoding method called Bilevel Positional Encoding (BiPE). For each position, our BiPE blends an intra-segment encoding and an inter-segment encoding. The intra-segment encoding identifies the locations within a segment and helps the model capture the semantic information therein via absolute positional encoding. The inter-segment encoding specifies the segment index, models the relationships between segments, and aims to improve extrapolation capabilities via relative positional encoding. Theoretical analysis shows this disentanglement of positional information makes learning more effective. The empirical results also show that our BiPE has superior length extrapolation capabilities across a wide range of tasks in diverse text modalities.",
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "Theoretical analysis shows this disentanglement of positional information makes learning more effective and the empirical results show that the BiPE has superior length extrapolation capabilities across a wide range of tasks in diverse text modalities.",
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "lex",
+        "receptivefieldana",
+        "kerple",
+        "roformer",
+        "gpt3",
+        "compressivetransformer",
+        "transformer"
+    ],
+    "code": null
+}

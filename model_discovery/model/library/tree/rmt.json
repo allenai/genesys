@@ -1,0 +1,16 @@
+{
+    "title": "Recurrent Memory Transformer",
+    "acronym": "rmt",
+    "s2id": "a8cf0f7a20f886acfb332071c2daaf58ba86a5ca",
+    "abstract": "Transformer-based models show their effectiveness across multiple domains and tasks. The self-attention allows to combine information from all sequence elements into context-aware representations. However, global and local information has to be stored mostly in the same element-wise representations. Moreover, the length of an input sequence is limited by quadratic computational complexity of self-attention. In this work, we propose and study a memory-augmented segment-level recurrent Transformer (RMT). Memory allows to store and process local and global information as well as to pass information between segments of the long sequence with the help of recurrence. We implement a memory mechanism with no changes to Transformer model by adding special memory tokens to the input or output sequence. Then the model is trained to control both memory operations and sequence representations processing. Results of experiments show that RMT performs on par with the Transformer-XL on language modeling for smaller memory sizes and outperforms it for tasks that require longer sequence processing. We show that adding memory tokens to Tr-XL is able to improve its performance. This makes Recurrent Memory Transformer a promising architecture for applications that require learning of long-term dependencies and general purpose in memory processing, such as algorithmic tasks and reasoning.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": "Recurrent Memory Transformer is a promising architecture for applications that require learning of long-term dependencies and general purpose in memory processing, such as algorithmic tasks and reasoning.",
+    "citationCount": 68,
+    "influentialCitationCount": 10,
+    "seed_ids": [
+        "transformerxl",
+        "transformer"
+    ],
+    "code": null
+}

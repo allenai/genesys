@@ -1,0 +1,16 @@
+{
+    "title": "LongNet: Scaling Transformers to 1,000,000,000 Tokens",
+    "acronym": "longnet",
+    "s2id": "c12db2c60e8989f646a29ad4f4d24475e860ad91",
+    "abstract": "Scaling sequence length has become a critical demand in the era of large language models. However, existing methods struggle with either computational complexity or model expressivity, rendering the maximum sequence length restricted. In this work, we introduce LongNet, a Transformer variant that can scale sequence length to more than 1 billion tokens, without sacrificing the performance on shorter sequences. Specifically, we propose dilated attention, which expands the attentive field exponentially as the distance grows. LongNet has significant advantages: 1) it has a linear computation complexity and a logarithm dependency between tokens; 2) it can be served as a distributed trainer for extremely long sequences; 3) its dilated attention is a drop-in replacement for standard attention, which can be seamlessly integrated with the existing Transformer-based optimization. Experiments results demonstrate that LongNet yields strong performance on both long-sequence modeling and general language tasks. Our work opens up new possibilities for modeling very long sequences, e.g., treating a whole corpus or even the entire Internet as a sequence.",
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": "This work introduces LongNet, a Transformer variant that can scale sequence length to more than 1 billion tokens, without sacrificing the performance on shorter sequences, and proposes dilated attention, which expands the attentive field exponentially as the distance grows.",
+    "citationCount": 84,
+    "influentialCitationCount": 10,
+    "seed_ids": [
+        "lex",
+        "sparsetransformer"
+    ],
+    "code": null
+}

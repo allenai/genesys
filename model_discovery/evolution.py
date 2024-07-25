@@ -73,6 +73,68 @@ NODE_SIZE_MAP={
 }
 
 
+LIBRARY_DIR = '/home/junyanc/model_discovery/model_discovery/model/library'
+
+PAPER_COLOR = '#AF47D2'
+PWC_COLOR = '#FB773C' # paper with code
+
+
+@dataclass
+class PaperObject:
+    title: str
+    acronym: str
+    s2id: str
+    abstract: str
+    venue: str
+    year: int
+    tldr: str
+    # embedding: list
+    citationCount: int
+    influentialCitationCount: int
+    seed_ids: List[str]
+    code: str = None
+
+    def __post_init__(self):
+        code_dir=U.pjoin(LIBRARY_DIR,'base',self.acronym,self.acronym+'_edu.py')
+        if U.pexists(code_dir):
+            self.code=open(code_dir,'r').read()
+        else:
+            self.code=None
+
+    def to_dict(self) -> Dict:
+        return asdict(self)
+    
+    @property
+    def type(self) -> str:
+        if self.code is not None:
+            return 'PaperWithCode'
+        else:
+            return 'Paper'
+
+    @classmethod
+    def from_dict(cls, dict: Dict):
+        return cls(**dict)
+    
+    @classmethod
+    def load(cls, tree_dir: str, id:str):
+        with open(U.pjoin(tree_dir,id+'.json'),'r') as f:
+            return cls.from_dict(json.load(f))
+
+    def save(self,tree_dir: str):
+        os.makedirs(tree_dir, exist_ok=True)
+        with open(U.pjoin(tree_dir,self.acronym+'.json'),'w') as f:
+            json.dump(self.to_dict(),f,indent=4)
+
+    def to_desc(self) -> str:
+        title=self.title.replace(':',' ')
+        abstract=self.abstract.replace(':',' ').replace('.','.\n')
+        tldr=self.tldr.replace(':',' ').replace(',',',\n')
+        venue=self.venue.replace(':',' ')
+        if not venue: venue='arXiv'
+        mdtext=f'# {title}\nS2 ID {self.s2id}\n\n## TL;DR {tldr}\n\n##Abstract\n{abstract}\n\n## Published at {venue} in {self.year}\n\n## Cited {self.citationCount} times\n\n## Impactful citations {self.influentialCitationCount}'
+        return mdtext
+
+
 @dataclass
 class DesignArtifact:
     title: str
@@ -90,6 +152,10 @@ class DesignArtifact:
 
     def to_dict(self) -> Dict:
         return asdict(self)
+    
+    @property
+    def type(self) -> str:
+        return self.__class__.__name__
     
     @classmethod
     def from_dict(cls, dict: Dict) -> DesignArtifact:
@@ -138,6 +204,7 @@ class PhylogeneticTree:
     def __init__(self, db_dir: str):
         self.G = nx.DiGraph()
         self.db_dir = db_dir
+        self.paper_dir = U.pjoin(LIBRARY_DIR,'tree')
         U.mkdir(db_dir)
         self.load()
 
@@ -159,6 +226,13 @@ class PhylogeneticTree:
             i += 1
         return f"{acronym}{i}"
 
+    def designs(self):
+        nodes=[]
+        for node in self.G.nodes:
+            if self.G.nodes[node]['data'].type=='DesignArtifact':
+                nodes.append(node)
+        return nodes
+
     def load(self):
         edges_to_add = []
         for id in os.listdir(self.db_dir):
@@ -166,9 +240,16 @@ class PhylogeneticTree:
             self.G.add_node(artifact.acronym, data=artifact)
             for seed_id in artifact.seed_ids:
                 edges_to_add.append((seed_id, artifact.acronym))
+        
+        for id in os.listdir(self.paper_dir):
+            id=id.split('.')[0]
+            paper = PaperObject.load(self.paper_dir, id)
+            self.G.add_node(paper.acronym, data=paper)
+            for seed_id in paper.seed_ids:
+                edges_to_add.append((seed_id, paper.acronym))
 
-        for seed_id, design_id in edges_to_add:
-            self.G.add_edge(seed_id, design_id)
+        for seed_id, product_id in edges_to_add:
+            self.G.add_edge(seed_id, product_id)
 
     def viz(self,G,height=5000,width="100%",layout=False): # larger canvas may be needed for large trees
         nt=Network(
@@ -183,20 +264,30 @@ class PhylogeneticTree:
         nt.show(U.pjoin(self.db_dir, '..', fname))
 
     def export(self):
-        G=nx.DiGraph()        
+        G=nx.DiGraph()
         for node in self.G.nodes:
             data=self.G.nodes[node]['data']
-            scale=data.scale
-            color=NODE_COLOR_MAP[scale]
-            if data.seed_ids == []:
-                color=ROOT_COLOR
+            if data.type=='DesignArtifact':
+                scale=data.scale
+                color=NODE_COLOR_MAP[scale]
+                if data.seed_ids == []:
+                    color=ROOT_COLOR
+                size=NODE_SIZE_MAP[scale]
+            elif data.type=='Paper':
+                color=PAPER_COLOR
+                citations=data.citationCount
+                size=5*max(1,int(np.log10(citations+1)))+10
+            elif data.type=='PaperWithCode':
+                color=PWC_COLOR
+                citations=data.citationCount
+                size=5*max(1,int(np.log10(citations+1)))+10
             G.add_node(
                 node,
                 title=data.to_desc(),
-                size=NODE_SIZE_MAP[scale],
+                size=size,
                 color=color,
-                scale=scale,
-                rating=data.rating
+                # scale=scale,
+                # rating=data.rating
             )
         for edge in self.G.edges:
             G.add_edge(edge[0],edge[1])
@@ -458,7 +549,7 @@ class EvolutionSystem(exec_utils.System):
         sample_metrics={}
         sample_scale={}
         reports={}
-        for node in self.ptree.G.nodes:
+        for node in self.ptree.designs():
             artifact=self.ptree.G.nodes[node]['data']
             if U.pexists(U.pjoin(self.evo_dir,'ve',node,'report.json')):
                 report=U.load_json(U.pjoin(self.evo_dir,'ve',node,'report.json'))
@@ -477,7 +568,7 @@ class EvolutionSystem(exec_utils.System):
         return topk,reports
 
     def random_select(self,K: int=1,selector_instruct=''):
-        topk=random.sample(self.ptree.G.nodes,K)
+        topk=random.sample(self.ptree.designs(),K)
         reports={}
         for node in topk:
             if U.pexists(U.pjoin(self.evo_dir,'ve',node,'report.json')):

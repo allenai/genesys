@@ -1,0 +1,18 @@
+{
+    "title": "Attention Alignment and Flexible Positional Embeddings Improve Transformer Length Extrapolation",
+    "acronym": "attnalignnfpe",
+    "s2id": "889617f6dc6fe2de4f0fb004c3c827db1b4c771a",
+    "abstract": "An ideal length-extrapolatable Transformer language model can handle sequences longer than the training length without any fine-tuning. Such long-context utilization capability relies heavily on a flexible positional embedding design. Upon investigating the flexibility of existing large pre-trained Transformer language models, we find that the T5 family deserves a closer look, as its positional embeddings capture rich and flexible attention patterns. However, T5 suffers from the dispersed attention issue: the longer the input sequence, the flatter the attention distribution. To alleviate the issue, we propose two attention alignment strategies via temperature scaling. Our findings show improvement on the long-context utilization capability of T5 on language modeling, retrieval, multi-document question answering, and code completion tasks without any fine-tuning. This suggests that a flexible positional embedding design and attention alignment can go a long way toward Transformer length extrapolation.",
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": "Improvement is shown on the long-context utilization capability of T5 on language modeling, retrieval, multi-document question answering, and code completion tasks without any fine-tuning, suggesting that a flexible positional embedding design and attention alignment can go a long way toward Transformer length extrapolation.",
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "landmarkattn",
+        "kerple",
+        "alibi",
+        "roformer"
+    ],
+    "code": null
+}

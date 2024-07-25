@@ -1,0 +1,20 @@
+{
+    "title": "Linformer: Self-Attention with Linear Complexity",
+    "acronym": "linformer",
+    "s2id": "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+    "abstract": "Large transformer models have shown extraordinary success in achieving state-of-the-art results in many natural language processing applications. However, training and deploying these models can be prohibitively costly for long sequences, as the standard self-attention mechanism of the Transformer uses $O(n^2)$ time and space with respect to sequence length. In this paper, we demonstrate that the self-attention mechanism can be approximated by a low-rank matrix. We further exploit this finding to propose a new self-attention mechanism, which reduces the overall self-attention complexity from $O(n^2)$ to $O(n)$ in both time and space. The resulting linear transformer, the \\textit{Linformer}, performs on par with standard Transformer models, while being much more memory- and time-efficient.",
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": "This paper demonstrates that the self-attention mechanism of the Transformer can be approximated by a low-rank matrix, and proposes a new self-Attention mechanism, which reduces the overall self-ATTention complexity from $O(n^2)$ to $O (n)$ in both time and space.",
+    "citationCount": 1299,
+    "influentialCitationCount": 140,
+    "seed_ids": [
+        "gpt3",
+        "longformer",
+        "reformer",
+        "blockbert",
+        "sparsetransformer",
+        "gpt2"
+    ],
+    "code": null
+}

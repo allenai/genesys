@@ -1,0 +1,24 @@
+{
+    "title": "An Attention Free Transformer",
+    "acronym": "aft",
+    "s2id": "d5e999aae76d5270ef272076979c809817458212",
+    "abstract": "We introduce Attention Free Transformer (AFT), an efficient variant of Transformers that eliminates the need for dot product self attention. In an AFT layer, the key and value are first combined with a set of learned position biases, the result of which is multiplied with the query in an element-wise fashion. This new operation has a memory complexity linear w.r.t. both the context size and the dimension of features, making it compatible to both large input and model sizes. We also introduce AFT-local and AFT-conv, two model variants that take advantage of the idea of locality and spatial weight sharing while maintaining global connectivity. We conduct extensive experiments on two autoregressive modeling tasks (CIFAR10 and Enwik8) as well as an image recognition task (ImageNet-1K classification). We show that AFT demonstrates competitive performance on all the benchmarks, while providing excellent efficiency at the same time.",
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": "Attention Free Transformer (AFT), an efficient variant of Transformers that eliminates the need for dot product self attention, is introduced and demonstrates competitive performance on all the benchmarks, while providing excellent efficiency at the same time.",
+    "citationCount": 90,
+    "influentialCitationCount": 10,
+    "seed_ids": [
+        "performer",
+        "lineartransformer",
+        "synthesizer",
+        "routingtransformer",
+        "sinkhorn",
+        "reformer",
+        "sparsetransformer",
+        "lighdynconv",
+        "transformerxl",
+        "transformer"
+    ],
+    "code": null
+}

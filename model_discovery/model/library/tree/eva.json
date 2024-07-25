@@ -1,0 +1,30 @@
+{
+    "title": "Efficient Attention via Control Variates",
+    "acronym": "eva",
+    "s2id": "ac608a4a6b19b3208e560eee5daadb3cc18638a2",
+    "abstract": "Random-feature-based attention (RFA) is an efficient approximation of softmax attention with linear runtime and space complexity. However, the approximation gap between RFA and conventional softmax attention is not well studied. Built upon previous progress of RFA, we characterize this gap through the lens of control variates and show that RFA can be decomposed into a sum of multiple control variate estimators for each element in the sequence. This new framework reveals that exact softmax attention can be recovered from RFA by manipulating each control variate. Besides, it allows us to develop a more flexible form of control variates, resulting in a novel attention mechanism that significantly reduces the approximation gap while maintaining linear complexity. Extensive experiments demonstrate that our model outperforms state-of-the-art efficient attention mechanisms on both vision and language tasks.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2023,
+    "tldr": "This new framework reveals that exact softmax attention can be recovered from RFA by manipulating each control variate, resulting in a novel attention mechanism that significantly reduces the approximation gap while maintaining linear complexity.",
+    "citationCount": 15,
+    "influentialCitationCount": 1,
+    "seed_ids": [
+        "flashattn",
+        "lara",
+        "abc",
+        "lstransformer",
+        "luna",
+        "rfa",
+        "deltanet",
+        "nystromformer",
+        "performer",
+        "lineartransformer",
+        "linformer",
+        "funneltransformer",
+        "reformer",
+        "compressivetransformer",
+        "sparsetransformer",
+        "transformer"
+    ],
+    "code": null
+}

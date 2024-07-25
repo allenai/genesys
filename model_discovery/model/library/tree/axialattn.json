@@ -1,0 +1,16 @@
+{
+    "title": "Axial Attention in Multidimensional Transformers",
+    "acronym": "axialattn",
+    "s2id": "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+    "abstract": "We propose Axial Transformers, a self-attention-based autoregressive model for images and other data organized as high dimensional tensors. Existing autoregressive models either suffer from excessively large computational resource requirements for high dimensional data, or make compromises in terms of distribution expressiveness or ease of implementation in order to decrease resource requirements. Our architecture, by contrast, maintains both full expressiveness over joint distributions over data and ease of implementation with standard deep learning frameworks, while requiring reasonable memory and computation and achieving state-of-the-art results on standard generative modeling benchmarks. Our models are based on axial attention, a simple generalization of self-attention that naturally aligns with the multiple dimensions of the tensors in both the encoding and the decoding settings. Notably the proposed structure of the layers allows for the vast majority of the context to be computed in parallel during decoding without introducing any independence assumptions. This semi-parallel structure goes a long way to making decoding from even a very large Axial Transformer broadly applicable. We demonstrate state-of-the-art results for the Axial Transformer on the ImageNet-32 and ImageNet-64 image benchmarks as well as on the BAIR Robotic Pushing video benchmark. We open source the implementation of Axial Transformers.",
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": "Axial Transformers is proposed, a self-attention-based autoregressive model for images and other data organized as high dimensional tensors that maintains both full expressiveness over joint distributions over data and ease of implementation with standard deep learning frameworks, while requiring reasonable memory and computation.",
+    "citationCount": 439,
+    "influentialCitationCount": 35,
+    "seed_ids": [
+        "sparsetransformer",
+        "transformer"
+    ],
+    "code": null
+}

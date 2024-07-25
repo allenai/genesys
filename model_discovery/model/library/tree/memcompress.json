@@ -1,0 +1,15 @@
+{
+    "title": "Generating Wikipedia by Summarizing Long Sequences",
+    "acronym": "memcompress",
+    "s2id": "8691706ad0cf5e83969658b2e6bfffdc379440c9",
+    "abstract": "We show that generating English Wikipedia articles can be approached as a multi- document summarization of source documents. We use extractive summarization to coarsely identify salient information and a neural abstractive model to generate the article. For the abstractive model, we introduce a decoder-only architecture that can scalably attend to very long sequences, much longer than typical encoder- decoder architectures used in sequence transduction. We show that this model can generate fluent, coherent multi-sentence paragraphs and even whole Wikipedia articles. When given reference documents, we show it can extract relevant factual information as reflected in perplexity, ROUGE scores and human evaluations.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "tldr": "It is shown that generating English Wikipedia articles can be approached as a multi- document summarization of source documents and a neural abstractive model is introduced, which can generate fluent, coherent multi-sentence paragraphs and even whole Wikipedia articles.",
+    "citationCount": 728,
+    "influentialCitationCount": 91,
+    "seed_ids": [
+        "transformer"
+    ],
+    "code": null
+}

@@ -1,0 +1,16 @@
+{
+    "title": "Softmax Attention with Constant Cost per Token",
+    "acronym": "softmaxattn",
+    "s2id": "723aa15a72f08a4f8264f6301bc932bf40e723f3",
+    "abstract": "We propose a simple modification to the conventional attention mechanism applied by Transformers: Instead of quantifying pairwise query-key similarity with scaled dot-products, we quantify it with the logarithms of scaled dot-products of exponentials. Our modification linearizes attention with exponential kernel feature maps, whose corresponding feature function is infinite dimensional. We show that our modification is expressible as a composition of log-sums of exponentials, with a latent space of constant size, enabling application with constant time and space complexity per token. We implement our modification, verify that it works in practice, and conclude that it is a promising alternative to conventional attention.",
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "This work proposes a simple modification to the conventional attention mechanism applied by Transformers, which quantifies pairwise query-key similarity with scaled dot-products with the logarithms of scaled dot-products of exponentials, and linearizes attention with exponential kernel feature maps.",
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "sparsetransformer",
+        "transformer"
+    ],
+    "code": null
+}

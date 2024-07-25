@@ -1,0 +1,27 @@
+{
+    "title": "Eagle and Finch: RWKV with Matrix-Valued States and Dynamic Recurrence",
+    "acronym": "rwkv6",
+    "s2id": "157ed5647da39a7f5d33a84a90414b2a9e97e301",
+    "abstract": "We present Eagle (RWKV-5) and Finch (RWKV-6), sequence models improving upon the RWKV (RWKV-4) architecture. Our architectural design advancements include multi-headed matrix-valued states and a dynamic recurrence mechanism that improve expressivity while maintaining the inference efficiency characteristics of RNNs. We introduce a new multilingual corpus with 1.12 trillion tokens and a fast tokenizer based on greedy matching for enhanced multilinguality. We trained four Eagle models, ranging from 0.46 to 7.5 billion parameters, and two Finch models with 1.6 and 3.1 billion parameters and find that they achieve competitive performance across a wide variety of benchmarks. We release all our models on HuggingFace under the Apache 2.0 license. Models at: https://huggingface.co/RWKV Training code at: https://github.com/RWKV/RWKV-LM Inference code at: https://github.com/RWKV/ChatRWKV Time-parallel training code at: https://github.com/RWKV/RWKV-infctx-trainer",
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "This work presents Eagle and Finch, sequence models improving upon the RWKV (RWKV-4) architecture, which introduces a new multilingual corpus with 1.12 trillion tokens and a fast tokenizer based on greedy matching for enhanced multilinguality.",
+    "citationCount": 16,
+    "influentialCitationCount": 1,
+    "seed_ids": [
+        "griffin",
+        "hgrn",
+        "rwkv4",
+        "aft",
+        "nystromformer",
+        "performer",
+        "bigbird",
+        "linformer",
+        "longformer",
+        "sinkhorn",
+        "reformer",
+        "compressivetransformer",
+        "sparsetransformer"
+    ],
+    "code": null
+}

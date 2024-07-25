@@ -1,0 +1,24 @@
+{
+    "title": "MambaByte: Token-free Selective State Space Model",
+    "acronym": "mambabyte",
+    "s2id": "a6e2dca754f3dc625a9da5f10f9b7a57079bfd27",
+    "abstract": "Token-free language models learn directly from raw bytes and remove the inductive bias of subword tokenization. Operating on bytes, however, results in significantly longer sequences. In this setting, standard autoregressive Transformers scale poorly as the effective memory required grows with sequence length. The recent development of the Mamba state space model (SSM) offers an appealing alternative approach with a fixed-sized memory state and efficient decoding. We propose MambaByte, a token-free adaptation of the Mamba SSM trained autoregressively on byte sequences. In terms of modeling, we show MambaByte to be competitive with, and even to outperform, state-of-the-art subword Transformers on language modeling tasks while maintaining the benefits of token-free language models, such as robustness to noise. In terms of efficiency, we develop an adaptation of speculative decoding with tokenized drafting and byte-level verification. This results in a $2.6\\times$ inference speedup to the standard MambaByte implementation, showing similar decoding efficiency as the subword Mamba. These findings establish the viability of SSMs in enabling token-free language modeling.",
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "This work proposes MambaByte, a token-free adaptation of the Mamba SSM trained autoregressively on byte sequences, and develops an adaptation of speculative decoding with tokenized drafting and byte-level verification, establishing the viability of SSMs in enabling token-free language modeling.",
+    "citationCount": 18,
+    "influentialCitationCount": 1,
+    "seed_ids": [
+        "mamba",
+        "megabyte",
+        "s5",
+        "gssm",
+        "dssm",
+        "hierarchitrans",
+        "roformer",
+        "funneltransformer",
+        "compressivetransformer",
+        "transformer"
+    ],
+    "code": null
+}

@@ -1,0 +1,15 @@
+{
+    "title": "Scaling Granite Code Models to 128K Context",
+    "acronym": "granite",
+    "s2id": "d772ff2f1c490a2d13d909df22b98c948d32a3dd",
+    "abstract": "This paper introduces long-context Granite code models that support effective context windows of up to 128K tokens. Our solution for scaling context length of Granite 3B/8B code models from 2K/4K to 128K consists of a light-weight continual pretraining by gradually increasing its RoPE base frequency with repository-level file packing and length-upsampled long-context data. Additionally, we also release instruction-tuned models with long-context support which are derived by further finetuning the long context base models on a mix of permissively licensed short and long-context instruction-response pairs. While comparing to the original short-context Granite code models, our long-context models achieve significant improvements on long-context tasks without any noticeable performance degradation on regular code completion benchmarks (e.g., HumanEval). We release all our long-context Granite code models under an Apache 2.0 license for both research and commercial use.",
+    "venue": "",
+    "year": 2024,
+    "tldr": "This paper introduces long-context Granite code models that support effective context windows of up to 128K tokens and achieves significant improvements on long-context tasks without any noticeable performance degradation on regular code completion benchmarks.",
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "ring"
+    ],
+    "code": null
+}

@@ -1,0 +1,19 @@
+{
+    "title": "Reformer: The Efficient Transformer",
+    "acronym": "reformer",
+    "s2id": "055fd6a9f7293269f1b22c1470e63bd02d8d9500",
+    "abstract": "Large Transformer models routinely achieve state-of-the-art results on a number of tasks but training these models can be prohibitively costly, especially on long sequences. We introduce two techniques to improve the efficiency of Transformers. For one, we replace dot-product attention by one that uses locality-sensitive hashing, changing its complexity from O($L^2$) to O($L\\log L$), where $L$ is the length of the sequence. Furthermore, we use reversible residual layers instead of the standard residuals, which allows storing activations only once in the training process instead of $N$ times, where $N$ is the number of layers. The resulting model, the Reformer, performs on par with Transformer models while being much more memory-efficient and much faster on long sequences.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2020,
+    "tldr": "This work replaces dot-product attention by one that uses locality-sensitive hashing and uses reversible residual layers instead of the standard residuals, which allows storing activations only once in the training process instead of several times, making the model much more memory-efficient and much faster on long sequences.",
+    "citationCount": 1881,
+    "influentialCitationCount": 222,
+    "seed_ids": [
+        "productkeymem",
+        "sparsetransformer",
+        "transformer",
+        "gpt2",
+        "bert"
+    ],
+    "code": null
+}

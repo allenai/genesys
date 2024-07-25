@@ -1,0 +1,23 @@
+{
+    "title": "Functional Interpolation for Relative Positions Improves Long Context Transformers",
+    "acronym": "fire",
+    "s2id": "dc48bc1a4d81e0f37603013fd2a95644dc233bd0",
+    "abstract": "Preventing the performance decay of Transformers on inputs longer than those used for training has been an important challenge in extending the context length of these models. Though the Transformer architecture has fundamentally no limits on the input sequence lengths it can process, the choice of position encoding used during training can limit the performance of these models on longer inputs. We propose a novel functional relative position encoding with progressive interpolation, FIRE, to improve Transformer generalization to longer contexts. We theoretically prove that this can represent some of the popular relative position encodings, such as T5\u2019s RPE, Alibi, and Kerple. We next empirically show that FIRE models have better generalization to longer contexts on both zero-shot language modeling and long text benchmarks.",
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": "It is theoretically prove that this can represent some of the popular relative position encodings, such as T5\u2019s RPE, Alibi, and Kerple, and empirically show that FIRE models have better generalization to longer contexts on both zero-shot language modeling and long text benchmarks.",
+    "citationCount": 21,
+    "influentialCitationCount": 3,
+    "seed_ids": [
+        "yarn",
+        "pi",
+        "receptivefieldana",
+        "elgllm",
+        "kerple",
+        "alibi",
+        "roformer",
+        "gpt3",
+        "bert"
+    ],
+    "code": null
+}

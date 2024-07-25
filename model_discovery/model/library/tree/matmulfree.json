@@ -1,0 +1,21 @@
+{
+    "title": "Scalable MatMul-free Language Modeling",
+    "acronym": "matmulfree",
+    "s2id": "401c4147375b016d4758cf2dd859232a8271fdcd",
+    "abstract": "Matrix multiplication (MatMul) typically dominates the overall computational cost of large language models (LLMs). This cost only grows as LLMs scale to larger embedding dimensions and context lengths. In this work, we show that MatMul operations can be completely eliminated from LLMs while maintaining strong performance at billion-parameter scales. Our experiments show that our proposed MatMul-free models achieve performance on-par with state-of-the-art Transformers that require far more memory during inference at a scale up to at least 2.7B parameters. We investigate the scaling laws and find that the performance gap between our MatMul-free models and full precision Transformers narrows as the model size increases. We also provide a GPU-efficient implementation of this model which reduces memory usage by up to 61% over an unoptimized baseline during training. By utilizing an optimized kernel during inference, our model's memory consumption can be reduced by more than 10x compared to unoptimized models. To properly quantify the efficiency of our architecture, we build a custom hardware solution on an FPGA which exploits lightweight operations beyond what GPUs are capable of. We processed billion-parameter scale models at 13W beyond human readable throughput, moving LLMs closer to brain-like efficiency. This work not only shows how far LLMs can be stripped back while still performing effectively, but also points at the types of operations future accelerators should be optimized for in processing the next generation of lightweight LLMs. Our code implementation is available at https://github.com/ridgerchu/matmulfreellm.",
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "This work shows that MatMul operations can be completely eliminated from LLMs while maintaining strong performance at billion-parameter scales and points at the types of operations future accelerators should be optimized for in processing the next generation of lightweight LLMs.",
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "griffin",
+        "hgrn",
+        "rwkv4",
+        "resurrectrnn",
+        "spikegpt",
+        "metaformer",
+        "aft"
+    ],
+    "code": null
+}

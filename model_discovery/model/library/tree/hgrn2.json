@@ -1,0 +1,28 @@
+{
+    "title": "HGRN2: Gated Linear RNNs with State Expansion",
+    "acronym": "hgrn2",
+    "s2id": "46732358e98ce6be0c564ae11f71d556a64b4c35",
+    "abstract": "Hierarchically gated linear RNN (HGRN,Qin et al. 2023) has demonstrated competitive training speed and performance in language modeling, while offering efficient inference. However, the recurrent state size of HGRN remains relatively small, which limits its expressiveness.To address this issue, inspired by linear attention, we introduce a simple outer-product-based state expansion mechanism so that the recurrent state size can be significantly enlarged without introducing any additional parameters. The linear attention form also allows for hardware-efficient training.Our extensive experiments verify the advantage of HGRN2 over HGRN1 in language modeling, image classification, and Long Range Arena.Our largest 3B HGRN2 model slightly outperforms Mamba and LLaMa Architecture Transformer for language modeling in a controlled experiment setting; and performs competitively with many open-source 3B models in downstream evaluation while using much fewer total training tokens.",
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "This work introduces a simple outer-product-based state expansion mechanism so that the recurrent state size of HGRN can be significantly enlarged without introducing any additional parameters, and allows for hardware-efficient training.",
+    "citationCount": 11,
+    "influentialCitationCount": 2,
+    "seed_ids": [
+        "rwkv6",
+        "griffin",
+        "based",
+        "mamba",
+        "hgrn",
+        "tnn",
+        "resurrectrnn",
+        "transnormer",
+        "flash",
+        "s4",
+        "rfa",
+        "deltanet",
+        "performer",
+        "lineartransformer"
+    ],
+    "code": null
+}

@@ -1,0 +1,15 @@
+{
+    "title": "Building Blocks for a Complex-Valued Transformer Architecture",
+    "acronym": "cvt",
+    "s2id": "d6e09d3274df2c717e47fa15575f493422309a10",
+    "abstract": "Most deep learning pipelines are built on real-valued operations to deal with real-valued inputs such as images, speech or music signals. However, a lot of applications naturally make use of complex-valued signals or images, such as MRI or remote sensing. Additionally the Fourier transform of signals is complex-valued and has numerous applications. We aim to make deep learning directly applicable to these complex-valued signals without using projections into \u211d2. Thus we add to the recent developments of complex-valued neural networks by presenting building blocks to transfer the transformer architecture to the complex domain. We present multiple versions of a complex-valued Scaled Dot-Product Attention mechanism as well as a complex-valued layer normalization. We test on a classification and a sequence generation task on the MusicNet dataset and show improved robustness to overfitting while maintaining on-par performance when compared to the real-valued transformer architecture.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2023,
+    "tldr": "This work adds to the recent developments of complex-valued neural networks by presenting building blocks to transfer the transformer architecture to the complex domain and shows improved robustness to overfitting while maintaining on-par performance when compared to the real-valued transformer architecture.",
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "seed_ids": [
+        "transformer"
+    ],
+    "code": null
+}
