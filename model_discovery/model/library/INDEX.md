@@ -220,7 +220,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 
 
 
-# Extention (e.g. from https://github.com/Xnhyacinth/Awesome-LLM-Long-Context-Modeling) (100)
+# Extention (e.g. from https://github.com/Xnhyacinth/Awesome-LLM-Long-Context-Modeling) (101)
 
 
 ## 2. Efficient Attention
@@ -465,6 +465,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 
 21. Modeling Hierarchical Structures with Continuous Recursive Neural Networks (ICML 2021)
 
+22. SOFT: Softmax-free Transformer with Linear Complexity (NeurIPS 2021 Spotlight)
 
 ## Non standard models
 1. Discrete Diffusion Modeling by Estimating the Ratios of the Data Distribution (ICML 2024 Best Paper Award), https://arxiv.org/abs/2310.16834
