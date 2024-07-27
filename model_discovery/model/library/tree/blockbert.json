@@ -1,13 +1,6 @@
 {
-    "title": "Blockwise Self-Attention for Long Document Understanding",
     "acronym": "blockbert",
-    "s2id": "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
-    "abstract": "We present BlockBERT, a lightweight and efficient BERT model for better modeling long-distance dependencies. Our model extends BERT by introducing sparse block structures into the attention matrix to reduce both memory consumption and training/inference time, which also enables attention heads to capture either short- or long-range contextual information. We conduct experiments on language model pre-training and several benchmark question answering datasets with various paragraph lengths. BlockBERT uses 18.7-36.1% less memory and 12.0-25.1% less time to learn the model. During testing, BlockBERT saves 27.8% inference time, while having comparable and sometimes better prediction accuracy, compared to an advanced BERT-based model, RoBERTa.",
-    "venue": "Findings",
-    "year": 2019,
-    "tldr": "This model extends BERT by introducing sparse block structures into the attention matrix to reduce both memory consumption and training/inference time, which also enables attention heads to capture either short- or long-range contextual information.",
-    "citationCount": 216,
-    "influentialCitationCount": 12,
+    "title": "Blockwise Self-Attention for Long Document Understanding",
     "seed_ids": [
         "gpt3",
         "sparsetransformer",
@@ -15,5 +8,22 @@
         "gpt2",
         "bert"
     ],
-    "code": null
+    "s2id": "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+    "abstract": "We present BlockBERT, a lightweight and efficient BERT model for better modeling long-distance dependencies. Our model extends BERT by introducing sparse block structures into the attention matrix to reduce both memory consumption and training/inference time, which also enables attention heads to capture either short- or long-range contextual information. We conduct experiments on language model pre-training and several benchmark question answering datasets with various paragraph lengths. BlockBERT uses 18.7-36.1% less memory and 12.0-25.1% less time to learn the model. During testing, BlockBERT saves 27.8% inference time, while having comparable and sometimes better prediction accuracy, compared to an advanced BERT-based model, RoBERTa.",
+    "authors": [
+        "J. Qiu",
+        "Hao Ma",
+        "Omer Levy",
+        "S. Yih",
+        "Sinong Wang",
+        "Jie Tang"
+    ],
+    "venue": "Findings",
+    "year": 2019,
+    "tldr": "This model extends BERT by introducing sparse block structures into the attention matrix to reduce both memory consumption and training/inference time, which also enables attention heads to capture either short- or long-range contextual information.",
+    "citationCount": 216,
+    "influentialCitationCount": 12,
+    "code": null,
+    "description": null,
+    "url": null
 }

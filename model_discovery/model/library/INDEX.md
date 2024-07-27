@@ -364,13 +364,7 @@ Major and latest branches of (autoregressive) model architecture variants after 
 
 5. [**State Space Models as Foundation Models: A Control Theoretic Overview.**](https://arxiv.org/abs/2403.16899) *Carmen Amo Alonso, Jerome Sieber, Melanie N. Zeilinger.* Arxiv 2024.
 
-7. [**Robustifying State-space Models for Long Sequences via Approximate Diagonalization.**](https://openreview.net/forum?id=DjeQ39QoLQ) *Annan Yu, Arnur Nigmetov, Dmitriy Morozov, Michael W. Mahoney, N. Benjamin Erichson.* ICLR 2024 Spotlight.
-
 8. [**Zamba: A Compact 7B SSM Hybrid Model.**](https://arxiv.org/abs/2405.16712) *Paolo Glorioso, Quentin Anthony, Yury Tokpanov, James Whittington, Jonathan Pilault, Adam Ibrahim, Beren Millidge.* Arxiv 2024.
-
-11. [**An Empirical Study of Mamba-based Language Models.**](https://arxiv.org/abs/2406.07887) *Roger Waleffe, Wonmin Byeon, Duncan Riach, Brandon Norick, Vijay Korthikanti, Tri Dao, Albert Gu, Ali Hatamizadeh, Sudhakar Singh, Deepak Narayanan, Garvit Kulshreshtha, Vartika Singh, Jared Casper, Jan Kautz, Mohammad Shoeybi, Bryan Catanzaro.* Arxiv 2024.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/Megatron-LM)](https://github.com/NVIDIA/Megatron-LM/tree/ssm/examples/mamba)
 
 12. [**B'MOJO: Hybrid State Space Realizations of Foundation Models with Eidetic and Fading Memory.**](https://arxiv.org/abs/2407.06324) *Luca Zancato, Arjun Seshadri, Yonatan Dukler, Aditya Golatkar, Yantao Shen, Benjamin Bowman, Matthew Trager, Alessandro Achille, Stefano Soatto.* Arxiv 2024.
 
@@ -412,8 +406,6 @@ Major and latest branches of (autoregressive) model architecture variants after 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![GitHub Repo stars](https://img.shields.io/github/stars/HanseulJo/position-coupling)](https://github.com/HanseulJo/position-coupling)
 
 50. [**Explicitly Encoding Structural Symmetry is Key to Length Generalization in Arithmetic Tasks.**](https://arxiv.org/abs/2406.01895) *Mahdi Sabbaghi, George Pappas, Hamed Hassani, Surbhi Goel.* Arxiv 2024.
-
-52. [**3D-RPE: Enhancing Long-Context Modeling Through 3D Rotary Position Encoding.**](https://arxiv.org/abs/2406.09897) *Xindian Ma, Wenyuan Liu, Peng Zhang, Nan Xu.* Arxiv 2024.
 
 54. [**Human-like Episodic Memory for Infinite Context LLMs.**](https://arxiv.org/abs/2407.09450) *Zafeirios Fountas, Martin A Benfeghoul, Adnan Oomerjee, Fenia Christopoulou, Gerasimos Lampouras, Haitham Bou-Ammar, Jun Wang.* Arxiv 2024.
 
@@ -498,3 +490,170 @@ Major and latest branches of (autoregressive) model architecture variants after 
 6. Linear Attention Transformer, https://github.com/lucidrains/linear-attention-transformer
 7. x-Transformers, https://github.com/lucidrains/x-transformers
 8. Local attention, https://github.com/lucidrains/local-attention 
+
+
+
+
+
+
+
+
+
+
+
+# Mamba_State_Space_Model_Paper_List
+Paper list for State-Space-Model and its Applications 
+
+
+
+
+
+
+## Year 2024 
+
+* [arXiv:2406.14528] **DeciMamba: Exploring the Length Extrapolation Potential of Mamba**,
+  Assaf Ben-Kish, Itamar Zimerman, Shady Abu-Hussein, Nadav Cohen, Amir Globerson, Lior Wolf, Raja Giryes
+  [[Paper](https://arxiv.org/abs/2406.14528)] 
+  [[Code](https://github.com/assafbk/DeciMamba)]  
+
+* [arXiv:2406.12272] **Slot State Space Models**,  Jindong Jiang, Fei Deng, Gautam Singh, Minseung Lee, Sungjin Ahn
+  [[Paper](https://arxiv.org/abs/2406.12272)] 
+
+* [arXiv:2406.07887] **An Empirical Study of Mamba-based Language Models**, Roger Waleffe, Wonmin Byeon, Duncan Riach, Brandon Norick, Vijay Korthikanti, Tri Dao, Albert Gu, Ali Hatamizadeh, Sudhakar Singh, Deepak Narayanan, Garvit Kulshreshtha, Vartika Singh, Jared Casper, Jan Kautz, Mohammad Shoeybi, Bryan Catanzaro
+  [[Paper](https://arxiv.org/abs/2406.07887)]
+  [[Code](https://github.com/NVIDIA/Megatron-LM)] 
+
+* [arXiv:2406.07592] **MambaLRP: Explaining Selective State Space Sequence Models**, 
+  Farnoush Rezaei Jafari, Grégoire Montavon, Klaus-Robert Müller, Oliver Eberle
+  [[Paper](https://arxiv.org/abs/2406.07592)] 
+
+* **SMR: State Memory Replay for Long Sequence Modeling**,
+  Biqing Qi, Junqi Gao, Kaiyan Zhang, Dong Li, Jianxing Liu, Ligang Wu, Bowen Zhou
+  [[Paper](https://arxiv.org/abs/2405.17534)]
+
+* **Understanding the differences in Foundation Models: Attention, State Space Models, and Recurrent Neural Networks**,
+  Jerome Sieber, Carmen Amo Alonso, Alexandre Didier, Melanie N. Zeilinger, Antonio Orvieto
+  [[Paper](https://arxiv.org/abs/2405.15731)] 
+
+* **There is HOPE to Avoid HiPPOs for Long-memory State Space Models**, Annan Yu, Michael W. Mahoney, N. Benjamin Erichson
+  [[Paper](https://arxiv.org/abs/2405.13975)]
+
+* **Physics-Guided State-Space Model Augmentation Using Weighted Regularized Neural Networks**,
+  Yuhan Liu, Roland Tóth, Maarten Schoukens
+  [[Paper](https://arxiv.org/abs/2405.10429)] 
+
+* [arXiv:2405.06147] **State-Free Inference of State-Space Models: The Transfer Function Approach**,
+  Rom N. Parnichkun, Stefano Massaroli, Alessandro Moro, Jimmy T.H. Smith, Ramin Hasani, Mathias Lechner, Qi An, Christopher Ré, Hajime Asama, Stefano Ermon, Taiji Suzuki, Atsushi Yamashita, Michael Poli
+  [[Paper](https://arxiv.org/abs/2405.06147)]
+  [[Code](https://github.com/ruke1ire/RTF)] 
+
+* [arXiv:2405.19036] **State Space Models are Comparable to Transformers in Estimating Functions with Dynamic Smoothness**, 
+  Naoki Nishikawa, Taiji Suzuki
+  [[Paper](https://arxiv.org/abs/2405.19036)]
+
+* [arXiv:2405.18014] **Coupled Mamba: Enhanced Multi-modal Fusion with Coupled State Space Model**,
+  Wenbing Li, Hang Zhou, Junqing Yu, Zikai Song, Wei Yang
+  [[Paper](https://arxiv.org/abs/2405.18014)] 
+ 
+* **The Illusion of State in State-Space Models**, arXiv:2404.08819 
+  William Merrill, Jackson Petty, Ashish Sabharwal
+  [[Paper](https://arxiv.org/abs/2404.08819)] 
+
+* [2024_117] **MambaMixer: Efficient Selective State Space Models with Dual Token and Channel Selection**,
+  Ali Behrouz, Michele Santacatterina, Ramin Zabih
+  [[Paper](https://arxiv.org/abs/2403.19888)] 
+
+* [2024_116] **Dual-path Mamba: Short and Long-term Bidirectional Selective Structured State Space Models for Speech Separation**,
+  Xilin Jiang, Cong Han, Nima Mesgarani
+  [[Paper](https://arxiv.org/abs/2403.18257)] 
+
+* [2024_109] **Mechanistic Design and Scaling of Hybrid Architectures**,
+  Michael Poli, Armin W Thomas, Eric Nguyen, Pragaash Ponnusamy, Björn Deiseroth, Kristian Kersting, Taiji Suzuki, Brian Hie, Stefano Ermon, Christopher Ré, Ce Zhang, Stefano Massaroli
+  [[Paper](https://arxiv.org/abs/2403.17844)] 
+
+* [2024_095] **Repeat After Me: Transformers are Better than State Space Models at Copying**, Samy Jelassi, David Brandfonbrener, Sham M. Kakade, Eran Malach
+  [[Paper](https://arxiv.org/abs/2402.01032)] 
+
+*  [2024_069]**The pitfalls of next-token prediction**,
+  Gregor Bachmann, Vaishnavh Nagarajan
+  [[Paper](https://arxiv.org/abs/2403.06963)]
+  [[Code](https://github.com/gregorbachmann/Next-Token-Failures)] 
+
+* [2024_048][ICLR 2024] **FlashFFTConv: Efficient Convolutions for Long Sequences with Tensor Cores**, Daniel Y Fu, Hermann Kumbong, Eric Nguyen, Christopher Re
+  [[Paper](https://openreview.net/forum?id=gPKTTAfYBp)] 
+
+* [2024_046]**Efficient Long Sequence Modeling via State Space Augmented Transformer**, Simiao Zuo, Xiaodong Liu, Jian Jiao, Denis X Charles, Eren Manavoglu, Tuo Zhao, Jianfeng Gao
+  [[Paper](https://openreview.net/forum?id=xuxYaBMd9F)] 
+
+* [2024_045][ICLR 2024] **Robustifying State-space Models for Long Sequences via Approximate Diagonalization**, Annan Yu, Arnur Nigmetov, Dmitriy Morozov, Michael W. Mahoney, N. Benjamin Erichson
+  [[Paper](https://openreview.net/forum?id=DjeQ39QoLQ)] 
+
+* [2024_044]**From generalization analysis to optimization designs for state space models**, Fusheng Liu, Qianxiao Li
+  [[Paper](https://openreview.net/forum?id=EGjvMcKrrl)]
+
+* [2024_042][ICLR 2024] **Hieros: Hierarchical Imagination on Structured State Space Sequence World Models**, Paul Mattes, Rainer Schlosser, Ralf Herbrich
+  [[Paper](https://openreview.net/forum?id=5j6wtOO6Fk)] 
+
+* [2024_041]**S4++: Elevating Long Sequence Modeling with State Memory Reply**, [[Paper](https://openreview.net/forum?id=bdnw4qjfH9)] 
+
+* [2024_037][ICLR 2024] **Never Train from Scratch: Fair Comparison of Long-Sequence Models Requires Data-Driven Priors**, Ido Amos, Jonathan Berant, Ankit Gupta
+  [[Paper](https://openreview.net/forum?id=PdaPky8MUn)] 
+
+* [2024_036] [ICLR 2024] **Mastering Memory Tasks with World Models**, Mohammad Reza Samsami, Artem Zholus, Janarthanan Rajendran, Sarath Chandar
+  [[Paper](https://openreview.net/forum?id=1vDArHJ68h)] 
+  [[Project Page](https://recall2imagine.github.io/)] 
+  [[Code](https://github.com/chandar-lab/Recall2Imagine)] 
+
+* [2024_035]**Spectral State Space Models**, Naman Agarwal, Daniel Suo, Xinyi Chen, Elad Hazan
+  [[Paper](https://arxiv.org/abs/2312.06837v3)] 
+
+* [2024_001] **Theoretical Foundations of Deep Selective State-Space Models**, Nicola Muca Cirone, Antonio Orvieto, Benjamin Walker, Cristopher Salvi, Terry Lyons 
+  [[Paper](https://arxiv.org/pdf/2402.19047.pdf)]
+
+
+
+
+
+## Year 2023 
+
+
+* [2023_017] **"StableSSM: Alleviating the Curse of Memory in State-space Models through Stable Reparameterization."** Wang, Shida, and Qianxiao Li. arXiv preprint arXiv:2311.14495 (2023).
+  [[Paper](https://arxiv.org/abs/2311.14495)]
+  [[Code](https://github.com/radarFudan/StableSSM)] 
+
+* [2023_016] **State-space models with layer-wise nonlinearity are universal approximators with exponential decaying memory**, Shida Wang, Beichen Xue
+  [[Paper](https://openreview.net/forum?id=i0OmcF14Kf)] 
+
+* [2023_014] **Mastering Diverse Domains through World Models**, Danijar Hafner,12 Jurgis Pasukonis,1 Jimmy Ba,2 Timothy Lillicrap
+  [[Paper](https://arxiv.org/pdf/2301.04104.pdf)]
+  [[Code](https://danijar.com/dreamerv3)] 
+
+* [2023_007] **Convolutional State Space Models for Long-Range Spatiotemporal Modeling**, Jimmy T.H. Smith, Shalini De Mello, Jan Kautz, Scott W. Linderman, Wonmin Byeon
+  [[Paper](https://arxiv.org/abs/2310.19694)]
+  [[Code](https://github.com/NVlabs/ConvSSM)]
+
+* [2023_006] **Laughing Hyena Distillery: Extracting Compact Recurrences From Convolutions**, Stefano Massaroli, Michael Poli, Daniel Y. Fu, Hermann Kumbong, Rom N. Parnichkun, Aman Timalsina, David W. Romero, Quinn McIntyre, Beidi Chen, Atri Rudra, Ce Zhang, Christopher Re, Stefano Ermon, Yoshua Bengio
+  [[Paper](https://arxiv.org/abs/2310.18780)]
+
+* [2023_005] **Structured state-space models are deep Wiener models**, Fabio Bonassi, Carl Andersson, Per Mattsson, Thomas B. Schön
+  [[Paper](https://arxiv.org/abs/2312.06211)]
+
+## Year 2022 
+
+* [2022_007] [Pre-training] Wang, J., Yan, J. N., Gu, A., & Rush, A. M. (2022). **Pretraining without attention**. arXiv preprint arXiv:2212.10544.
+  [[Paper](https://arxiv.org/abs/2212.10544)]
+  [[Code](https://github.com/jxiw/BiGS)]
+
+
+
+## Related Models
+
+* **RRWKV: Capturing Long-range Dependencies in RWKV**,
+  Leilei Wang
+  [[Paper](https://arxiv.org/abs/2306.05176)] 
+* Hydra: Bidirectional State Space Models Through Generalized Matrix Mixers [paper] [code] (2024.07.13)
+* (ICML 2024) Can Mamba Learn How to Learn? A Comparative Study on In-Context Learning Tasks [paper] (2024.02.06)
+* Longhorn: State Space Models are Amortized Online Learners [paper] [code] (2024.07.13)
+* SLAB: Efficient Transformers with Simplified Linear Attention and Progressive Re-parameterized Batch Normalization
+* Short-Long Convolutions Help Hardware-Efficient Linear Attention to Focus on Long Sequences
+

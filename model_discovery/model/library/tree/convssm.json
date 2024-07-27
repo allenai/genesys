@@ -1,0 +1,22 @@
+{
+    "acronym": "convssm",
+    "title": "Convolutional State Space Models for Long-Range Spatiotemporal Modeling",
+    "seed_ids": [],
+    "s2id": "5ad84fe07a569b6cc339d77cd2c265c1b79d644d",
+    "abstract": "Effectively modeling long spatiotemporal sequences is challenging due to the need to model complex spatial correlations and long-range temporal dependencies simultaneously. ConvLSTMs attempt to address this by updating tensor-valued states with recurrent neural networks, but their sequential computation makes them slow to train. In contrast, Transformers can process an entire spatiotemporal sequence, compressed into tokens, in parallel. However, the cost of attention scales quadratically in length, limiting their scalability to longer sequences. Here, we address the challenges of prior methods and introduce convolutional state space models (ConvSSM) that combine the tensor modeling ideas of ConvLSTM with the long sequence modeling approaches of state space methods such as S4 and S5. First, we demonstrate how parallel scans can be applied to convolutional recurrences to achieve subquadratic parallelization and fast autoregressive generation. We then establish an equivalence between the dynamics of ConvSSMs and SSMs, which motivates parameterization and initialization strategies for modeling long-range dependencies. The result is ConvS5, an efficient ConvSSM variant for long-range spatiotemporal modeling. ConvS5 significantly outperforms Transformers and ConvLSTM on a long horizon Moving-MNIST experiment while training 3X faster than ConvLSTM and generating samples 400X faster than Transformers. In addition, ConvS5 matches or exceeds the performance of state-of-the-art methods on challenging DMLab, Minecraft and Habitat prediction benchmarks and enables new directions for modeling long spatiotemporal sequences.",
+    "authors": [
+        "Jimmy T.H. Smith",
+        "Shalini De Mello",
+        "Jan Kautz",
+        "Scott W. Linderman",
+        "Wonmin Byeon"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": "This work addresses the challenges of prior methods and introduces convolutional state space models (ConvSSM) that combine the tensor modeling ideas of ConvLSTM with the long sequence modeling approaches of state space methods such as S4 and S5 and develops an equivalence between ConvSSMs and SSMs, which motivates parameterization and initialization strategies for modeling long-range dependencies.",
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,16 +1,21 @@
 {
-    "title": "Fast Transformer Decoding: One Write-Head is All You Need",
     "acronym": "mqa",
+    "title": "Fast Transformer Decoding: One Write-Head is All You Need",
+    "seed_ids": [
+        "memcompress",
+        "transformer"
+    ],
     "s2id": "dc52b09089704ebd6f471177474bc29741c50023",
     "abstract": "Multi-head attention layers, as used in the Transformer neural sequence model, are a powerful alternative to RNNs for moving information across and between sequences. While training these layers is generally fast and simple, due to parallelizability across the length of the sequence, incremental inference (where such paralleization is impossible) is often slow, due to the memory-bandwidth cost of repeatedly loading the large \"keys\" and \"values\" tensors. We propose a variant called multi-query attention, where the keys and values are shared across all of the different attention \"heads\", greatly reducing the size of these tensors and hence the memory bandwidth requirements of incremental decoding. We verify experimentally that the resulting models can indeed be much faster to decode, and incur only minor quality degradation from the baseline.",
+    "authors": [
+        "Noam M. Shazeer"
+    ],
     "venue": "arXiv.org",
     "year": 2019,
     "tldr": "This work proposes a variant called multi-query attention, where the keys and values are shared across all of the different attention \"heads\", greatly reducing the size of these tensors and hence the memory bandwidth requirements of incremental decoding.",
     "citationCount": 243,
     "influentialCitationCount": 20,
-    "seed_ids": [
-        "memcompress",
-        "transformer"
-    ],
-    "code": null
+    "code": "import torch\nimport torch.nn.functional as F\nfrom torch import nn, Tensor, BoolTensor\nfrom typing import Optional\n\n\nclass Attention(nn.Module):\n    def __init__(self, word_size:int=512, embed_dim:int=64) -> None:\n        super().__init__()\n        self.embed_dim = embed_dim\n        self.dim_K = torch.tensor(embed_dim, requires_grad=False)\n        self.query = nn.Linear(in_features=word_size, out_features=embed_dim, bias=True)\n        self.key  = nn.Linear(in_features=word_size, out_features=embed_dim, bias=True)\n        self.value = nn.Linear(in_features=word_size, out_features=embed_dim, bias=True)\n\n    def self_attention(self, Q: Tensor, K: Tensor, V: Tensor,\n                       mask:Optional[BoolTensor]=None) -> Tensor:\n        \"\"\"\n        Perform self-attention on the input tensors.\n\n        This is a simple implementation of self-attention that uses the dot product attention mechanism.\n        If you are looking for attention with better performance, please try:\n\n        * `F.scaled_dot_product_attention`\n        * [Flash Attention](https://github.com/Dao-AILab/flash-attention)\n        * [Memory-efficient attention](https://facebookresearch.github.io/xformers/components/ops.html)\n\n        Args:\n            Q (torch.Tensor): The query tensor.\n            K (torch.Tensor): The key tensor.\n            V (torch.Tensor): The value tensor.\n            mask (Optional[torch.BoolTensor]): A mask tensor used to hide specific positions in the input sequence.\n                It should have the same shape as Q, K, and must be a Boolean tensor with 0s indicating positions to be masked.\n                Use `None` for no masking. Default is `None`.\n        Returns:\n            The output tensor of the self-attention layer.\n        \"\"\"\n\n        K_T = torch.transpose(K, 0, 1)\n        score = torch.matmul(Q, K_T)                # Matmul\n        score /= torch.sqrt(self.dim_K)             # Scale\n        if mask is not None:                        # Mask (opt.)\n            score = torch.masked_fill(score, mask==0, -torch.inf)\n        score = torch.softmax(score, dim=-1)        # SoftMax\n        Z = torch.matmul(score, V)                  # Matmul\n        return Z\n\n    def forward(self, x:Tensor, mask:Optional[BoolTensor]=None) -> Tensor:\n        Q = self.query(x)\n        K = self.key(x)\n        V = self.value(x)\n        Z = self.self_attention(Q, K, V, mask=mask)\n        # Z = F.scaled_dot_product_attention(Q, K, V)\n        return Z\n\nclass  MultiQueryAttention(Attention):\n    r\"\"\"\n    https://arxiv.org/pdf/1911.02150.pdf\n    \"\"\"\n    def __init__(self, word_size: int = 512, embed_dim: int = 64, n_query:int=8) -> None:\n        super().__init__(word_size, embed_dim)\n        self.n_query = n_query\n        self.proj = nn.Linear(in_features=embed_dim * n_query,\n                              out_features=embed_dim, bias=False)\n        delattr(self, 'query')\n        self.querys = nn.ModuleList([\n            nn.Linear(in_features=word_size, out_features=embed_dim, bias=True)\n            for _ in range(n_query)\n        ])\n        self.key = nn.Linear(in_features=word_size, out_features=embed_dim, bias=True)\n        self.value = nn.Linear(in_features=word_size, out_features=embed_dim, bias=True)\n\n    def forward(self, x: Tensor, mask:Optional[BoolTensor]=None) -> Tensor:\n        K = self.key(x)\n        V = self.value(x)\n        Z_s = torch.cat([\n            self.self_attention(query(x), K, V, mask) for query in self.querys\n        ], dim=1)\n        Z = self.proj(Z_s)\n        return Z\n\n",
+    "description": null,
+    "url": null
 }

@@ -1,15 +1,47 @@
 {
-    "title": "REMIXERS: A Mixer-Transformer Architecture with Compositional Operators for Natural Language Understanding",
     "acronym": "remixer",
+    "title": "REMIXERS: A Mixer-Transformer Architecture with Compositional Operators for Natural Language Understanding",
+    "seed_ids": [
+        "bert"
+    ],
     "s2id": "f37e00c1a3919d1a2c2b550c9acc1612f9319f35",
     "abstract": "Recent work such as MLP-Mixers (Tolstikhin 001 et al., 2021) have demonstrated the promise 002 of All-MLP architectures. While All-MLP ar-003 chitectures have demonstrated reasonable per-004 formance in computer vision and garnered re-005 cent interest, we argue that making them ef-006 fective in NLP applications is still an uphill 007 battle. Hence, there may be no solid rea-008 son to drop the self-attention modules alto-009 gether. In this paper, we propose a new 010 Mixer-Transformer architecture, showing that 011 Transformers and Mixer models can be quite 012 complementary indeed. Fundamentally, we 013 show that Mixer models are capable of act-014 ing as persistent global memory (in a simi-015 lar vein to standard MLPs) while being im-016 bued with global receptive \ufb01elds at the same 017 time. Hence, interleaving sample-dependent 018 and input-local self-attention with persistent 019 Mixer modules can be an effective strategy. 020 Additionally, we propose compositional remix-021 ing, a new way of baking compositional op-022 erators (multiplicative and subtractive compo-023 sition) within the mixing process to improve 024 the expressiveness of the model. This allows 025 us to effectively model relationships between 026 unmixed and mixed representations - an induc-027 tive bias that we postulate is powerful for NLU 028 applications. Via extensive experiments on 14 029 challenging NLU datasets (e.g., SuperGLUE, 030 entailment and compositional generalization), 031 we show that the proposed architecture consis-032 tently outperforms a strong T5 baseline (Raf-033 fel et al., 2019). We believe this work paves",
+    "authors": [
+        "Chandra Bhagavatula",
+        "R. L. Bras",
+        "Chaitanya",
+        "Keisuke Malaviya",
+        "Ari Sakaguchi",
+        "Han-574 Holtzman",
+        "Doug nah Rashkin",
+        "Scott Wen-tau Downey",
+        "Yih",
+        "Qian Chen",
+        "Xiaodan Zhu",
+        "Zhen-Hua Ling",
+        "Si Wei",
+        "Kyunghyun Cho",
+        "Bart van Merri\u00ebnboer",
+        "Caglar Gul-630",
+        "Dzmitry Bahdanau",
+        "Holger Fethi Bougares",
+        "Peter Hawkins",
+        "Jared Davis",
+        "Afroz Mohiuddin",
+        "Christopher Clark",
+        "Kenton Lee",
+        "Ming-Wei Chang",
+        "Ido Dagan",
+        "Oren Glickman",
+        "Marie-Catherine De Marneff",
+        "Mandy Simons"
+    ],
     "venue": "",
     "year": 2021,
     "tldr": "It is shown that the proposed architecture consis-032 tently outperforms a strong T5 baseline (Raf-033 fel et al., 2019), and it is believed this work paves the way for NLU applications.",
     "citationCount": 0,
     "influentialCitationCount": 0,
-    "seed_ids": [
-        "bert"
-    ],
-    "code": null
+    "code": "import torch\nimport torch.nn.functional as F\nfrom torch import nn, einsum\nfrom einops import rearrange\n\nclass RemixerBlock(nn.Module):\n    def __init__(\n        self,\n        dim,\n        seq_len,\n        causal = False,\n        bias = False\n    ):\n        super().__init__()\n        self.causal = causal\n        self.proj_in = nn.Linear(dim, 2 * dim, bias = bias)\n        self.mixer = nn.Parameter(torch.randn(seq_len, seq_len))\n        self.alpha = nn.Parameter(torch.tensor(0.))\n        self.proj_out = nn.Linear(dim, dim, bias = bias)\n\n    def forward(self, x):\n        mixer, causal, device = self.mixer, self.causal, x.device\n        x, gate = self.proj_in(x).chunk(2, dim = -1)\n        x = F.gelu(gate) * x\n\n        if self.causal:\n            seq = x.shape[1]\n            mask_value = -torch.finfo(x.dtype).max\n            mask = torch.ones((seq, seq), device = device, dtype=torch.bool).triu(1)\n            mixer = mixer[:seq, :seq]\n            mixer = mixer.masked_fill(mask, mask_value)\n\n        mixer = mixer.softmax(dim = -1)\n        mixed = einsum('b n d, m n -> b m d', x, mixer)\n\n        alpha = self.alpha.sigmoid()\n        out = (x * mixed) * alpha + (x - mixed) * (1 - alpha)\n\n        return self.proj_out(out)",
+    "description": null,
+    "url": null
 }

@@ -1,13 +1,6 @@
 {
-    "title": "A Faster and Better Large Language Model with Improved TransNormer",
     "acronym": "transnormerllm",
-    "s2id": "2a38daf98d506477f8180806f503409d5036eaf4",
-    "abstract": "We present TransNormerLLM, the first linear attention-based Large Language Model (LLM) that outperforms conventional softmax attention-based models in terms of both accuracy and efficiency. TransNormerLLM evolves from the previous linear attention architecture TransNormer by making advanced modifications that include positional embedding, linear attention acceleration, gating mechanisms, tensor normalization, and inference acceleration and stabilization. Specifically, we use LRPE together with an exponential decay to avoid attention dilution issues while allowing the model to retain global interactions between tokens. Additionally, we propose Lightning Attention, a cutting-edge technique that accelerates linear attention by more than twice in runtime and reduces memory usage by a remarkable four times. To further enhance the performance of TransNormer, we leverage a gating mechanism for smooth training and a new tensor normalization scheme to accelerate the model, resulting in an impressive acceleration of over $20\\%$. Furthermore, we develop a robust inference algorithm that ensures numerical stability and consistent inference speed, regardless of the sequence length, showcasing superior efficiency during both training and inference stages. We also implement an efficient model parallel schema for TransNormerLLM, enabling seamless deployment on large-scale clusters and facilitating expansion to even more extensive models, i.e., LLMs with 175B parameters. We validate our model design through a series of ablations and train models with sizes of 385M, 1B, and 7B on our self-collected corpus. Benchmark results demonstrate that our models not only match the performance of state-of-the-art LLMs with Transformer but are also significantly faster. Code is released at: https://github.com/OpenNLPLab/TransnormerLLM.",
-    "venue": "",
-    "year": 2023,
-    "tldr": "TransNormerLLM is presented, the first linear attention-based Large Language Model (LLM) that outperforms conventional softmax attention-based models in terms of both accuracy and efficiency and develops a robust inference algorithm that ensures numerical stability and consistent inference speed, regardless of the sequence length.",
-    "citationCount": 7,
-    "influentialCitationCount": 0,
+    "title": "A Faster and Better Large Language Model with Improved TransNormer",
     "seed_ids": [
         "rwkv4",
         "tnn",
@@ -28,5 +21,28 @@
         "gpt2",
         "gpt"
     ],
-    "code": null
+    "s2id": "2a38daf98d506477f8180806f503409d5036eaf4",
+    "abstract": "We present TransNormerLLM, the first linear attention-based Large Language Model (LLM) that outperforms conventional softmax attention-based models in terms of both accuracy and efficiency. TransNormerLLM evolves from the previous linear attention architecture TransNormer by making advanced modifications that include positional embedding, linear attention acceleration, gating mechanisms, tensor normalization, and inference acceleration and stabilization. Specifically, we use LRPE together with an exponential decay to avoid attention dilution issues while allowing the model to retain global interactions between tokens. Additionally, we propose Lightning Attention, a cutting-edge technique that accelerates linear attention by more than twice in runtime and reduces memory usage by a remarkable four times. To further enhance the performance of TransNormer, we leverage a gating mechanism for smooth training and a new tensor normalization scheme to accelerate the model, resulting in an impressive acceleration of over $20\\%$. Furthermore, we develop a robust inference algorithm that ensures numerical stability and consistent inference speed, regardless of the sequence length, showcasing superior efficiency during both training and inference stages. We also implement an efficient model parallel schema for TransNormerLLM, enabling seamless deployment on large-scale clusters and facilitating expansion to even more extensive models, i.e., LLMs with 175B parameters. We validate our model design through a series of ablations and train models with sizes of 385M, 1B, and 7B on our self-collected corpus. Benchmark results demonstrate that our models not only match the performance of state-of-the-art LLMs with Transformer but are also significantly faster. Code is released at: https://github.com/OpenNLPLab/TransnormerLLM.",
+    "authors": [
+        "Zhen Qin",
+        "Dong Li",
+        "Weigao Sun",
+        "Weixuan Sun",
+        "Xuyang Shen",
+        "Xiaodong Han",
+        "Yunshen Wei",
+        "Baohong Lv",
+        "Fei Yuan",
+        "Xiao Luo",
+        "Y. Qiao",
+        "Yiran Zhong"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": "TransNormerLLM is presented, the first linear attention-based Large Language Model (LLM) that outperforms conventional softmax attention-based models in terms of both accuracy and efficiency and develops a robust inference algorithm that ensures numerical stability and consistent inference speed, regardless of the sequence length.",
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
 }

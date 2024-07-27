@@ -1,16 +1,24 @@
 {
-    "title": "Coneheads: Hierarchy Aware Attention",
     "acronym": "coneheads",
+    "title": "Coneheads: Hierarchy Aware Attention",
+    "seed_ids": [
+        "eva",
+        "transformer"
+    ],
     "s2id": "ff9451b34b1959ded1d870131d0d70095bd69686",
     "abstract": "Attention networks such as transformers have achieved state-of-the-art performance in many domains. These networks rely heavily on the dot product attention operator, which computes the similarity between two points by taking their inner product. However, the inner product does not explicitly model the complex structural properties of real world datasets, such as hierarchies between data points. To remedy this, we introduce cone attention, a drop-in replacement for dot product attention based on hyperbolic entailment cones. Cone attention associates two points by the depth of their lowest common ancestor in a hierarchy defined by hyperbolic cones, which intuitively measures the divergence of two points and gives a hierarchy aware similarity score. We test cone attention on a wide variety of models and tasks and show that it improves task-level performance over dot product attention and other baselines, and is able to match dot-product attention with significantly fewer parameters. Our results suggest that cone attention is an effective way to capture hierarchical relationships when calculating attention.",
+    "authors": [
+        "Albert Tseng",
+        "Tao Yu",
+        "Toni J.B. Liu",
+        "Chris De Sa"
+    ],
     "venue": "Neural Information Processing Systems",
     "year": 2023,
     "tldr": "Cone attention is introduced, a drop-in replacement for dot product attention based on hyperbolic entailment cones, and is able to match dot-product attention with significantly fewer parameters, suggesting that cone attention is an effective way to capture hierarchical relationships when calculating attention.",
     "citationCount": 3,
     "influentialCitationCount": 0,
-    "seed_ids": [
-        "eva",
-        "transformer"
-    ],
-    "code": null
+    "code": "import torch\nimport torch.nn.functional as F\n\n\ndef map_psi(x, r):\n    x_x = x[..., :-1]\n    x_y = F.sigmoid(x[..., -1])\n    return x_x * x_y.unsqueeze(-1) * r, x_y * r\n\n\ndef penumbral(q, k, r=1, gamma=1, eps=1e-6):\n    q_x, q_y = map_psi(q, r)\n    k_x, k_y = map_psi(k, r)\n    q_y = q_y.unsqueeze(2)\n    k_y = k_y.unsqueeze(1)\n\n    x_q_y = torch.sqrt(r**2 - q_y**2 + eps)\n    x_k_y = torch.sqrt(r**2 - k_y**2 + eps)\n\n    pairwise_dist = torch.cdist(q_x, k_x)\n\n    lca_height = torch.maximum(torch.maximum(q_y**2, k_y**2),\n                               r**2 - ((x_q_y + x_k_y - pairwise_dist) / 2)**2)\n\n    lca_height_outcone = ((pairwise_dist**2 + k_y**2 - q_y**2) /\n                          (2 * pairwise_dist + eps))**2 + q_y**2\n\n    exists_cone = torch.logical_or(pairwise_dist <= x_q_y,\n                                   (pairwise_dist - x_q_y)**2 + k_y**2 <= r**2)\n\n    return -gamma * torch.where(exists_cone, lca_height, lca_height_outcone)\n\n\ndef map_xi(x):\n    x_x = x[..., :-1]\n    x_y = torch.exp(x[..., -1] / x.shape[-1])\n    return x_x * x_y.unsqueeze(-1), x_y\n\n\ndef umbral(q, k, r=1, gamma=1):\n    q_x, q_y = map_xi(q)\n    k_x, k_y = map_xi(k)\n    q_y = q_y.unsqueeze(2)\n    k_y = k_y.unsqueeze(1)\n    out = torch.maximum(torch.maximum(q_y, k_y),\n                        (torch.cdist(q_x, k_x) / torch.sinh(torch.tensor(r)) +\n                         torch.add(q_y, k_y)) / 2)\n    return -gamma * out\n\n\nif __name__=='__main__':\n    # [b, n, d]\n    q = torch.randn(100, 10, 2)\n    k = torch.randn(100, 10, 2)\n\n    # [100, 10, 10]\n    print(umbral(q, k).shape)\n    # [100, 10, 10]\n    print(penumbral(q, k).shape)\n",
+    "description": null,
+    "url": null
 }

@@ -1,13 +1,6 @@
 {
-    "title": "Improving Transformers with Dynamically Composable Multi-Head Attention",
     "acronym": "dcmha",
-    "s2id": "f4a25d45bb381b3f6ab08e84c9a65bff90e3a104",
-    "abstract": "Multi-Head Attention (MHA) is a key component of Transformer. In MHA, attention heads work independently, causing problems such as low-rank bottleneck of attention score matrices and head redundancy. We propose Dynamically Composable Multi-Head Attention (DCMHA), a parameter and computation efficient attention architecture that tackles the shortcomings of MHA and increases the expressive power of the model by dynamically composing attention heads. At the core of DCMHA is a $\\it{Compose}$ function that transforms the attention score and weight matrices in an input-dependent way. DCMHA can be used as a drop-in replacement of MHA in any transformer architecture to obtain the corresponding DCFormer. DCFormer significantly outperforms Transformer on different architectures and model scales in language modeling, matching the performance of models with ~1.7x-2.0x compute. For example, DCPythia-6.9B outperforms open source Pythia-12B on both pretraining perplexity and downstream task evaluation. The code and models are available at https://github.com/Caiyun-AI/DCFormer.",
-    "venue": "arXiv.org",
-    "year": 2024,
-    "tldr": "D Dynamically Composable Multi-Head Attention (DCMHA), a parameter and computation efficient attention architecture that tackles the shortcomings of MHA and increases the expressive power of the model by dynamically composing attention heads.",
-    "citationCount": 0,
-    "influentialCitationCount": 0,
+    "title": "Improving Transformers with Dynamically Composable Multi-Head Attention",
     "seed_ids": [
         "mamba",
         "rwkv4",
@@ -19,5 +12,20 @@
         "roformer",
         "gpt3"
     ],
-    "code": null
+    "s2id": "f4a25d45bb381b3f6ab08e84c9a65bff90e3a104",
+    "abstract": "Multi-Head Attention (MHA) is a key component of Transformer. In MHA, attention heads work independently, causing problems such as low-rank bottleneck of attention score matrices and head redundancy. We propose Dynamically Composable Multi-Head Attention (DCMHA), a parameter and computation efficient attention architecture that tackles the shortcomings of MHA and increases the expressive power of the model by dynamically composing attention heads. At the core of DCMHA is a $\\it{Compose}$ function that transforms the attention score and weight matrices in an input-dependent way. DCMHA can be used as a drop-in replacement of MHA in any transformer architecture to obtain the corresponding DCFormer. DCFormer significantly outperforms Transformer on different architectures and model scales in language modeling, matching the performance of models with ~1.7x-2.0x compute. For example, DCPythia-6.9B outperforms open source Pythia-12B on both pretraining perplexity and downstream task evaluation. The code and models are available at https://github.com/Caiyun-AI/DCFormer.",
+    "authors": [
+        "Da Xiao",
+        "Qingye Meng",
+        "Shengping Li",
+        "Xingyuan Yuan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "D Dynamically Composable Multi-Head Attention (DCMHA), a parameter and computation efficient attention architecture that tackles the shortcomings of MHA and increases the expressive power of the model by dynamically composing attention heads.",
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": "from einops import rearrange\nfrom torch import einsum, tanh\nfrom torch.nn.functional import gelu\n\nfrom utils import causal_mask, rmsnorm\n\n# B = batch size; S = key/value len; T = query len\n# D_m = model dim; H = num. of heads; D = head dim; R = rank\n\ndef dw_proj(\n    X, # B * T * D_m\n    W_1, # D_m * (H*R*2)\n    W_2 # (H*R*2) * (H*R*2)\n):\n    dw = gelu(X @ W_1) @ W_2\n    dw1, dw2 = dw.chunk(2, dim=-1)\n    dw1 = rmsnorm(rearrange(dw1, 'BT(RH)->BTRH'), dim=-1)\n    dw2 = rearrange(dw2, 'BT(RH)->BTRH')\n    return dw1, dw2\n\ndef compose(\n    a, # B * H * T * S\n    Q, # B * T * D_m\n    K, # B * S * D_m\n    theta\n ):\n    W_q1, W_q2, W_k1, W_k2 = theta.W_q1, theta.W_q2, theta.W_k1, theta.W_k2\n    W_qg, W_kg = theta.W_qg, theta.W_kg # D_m * H\n\n    dw1, dw2 = dw_proj(Q, W_q1, W_q2)\n    h = einsum('BHTS,BTRH->BRTS', a, dw1)\n    o_qp = einsum('BRTS,BTRH->BHTS', h, dw2)\n\n    dw1, dw2 = dw_proj(K, W_k1, W_k2)\n    h = einsum('BHTS,BSRH->BRTS', a, dw1)\n    o_kp = einsum('BRTS,BSRH->BHTS', h, dw2)\n\n    o_qg = einsum('BHTS,BTH->BHTS', a, tanh(Q @ W_qg))\n    o_kg = einsum('BHTS,BSH->BHTS', a, tanh(K @ W_kg))\n    return a + o_qp + o_kp + o_qg + o_kg\n\ndef DCMHA(\n    Q, K, V, W_q, W_k, W_v, W_o, causal,\n    theta_lc, # params for pre-composition\n    theta_pc # params for post-composition\n):\n    q, k, v = [rearrange(x, 'BT(HD)->BHTD') for x in\n        [Q @ W_q, K @ W_k, V @ W_v]]\n    logits = einsum('BHTD,BHSD->BHTS', q, k)\n    logits = compose(logits, Q, K, theta_lc)\n    if causal: logits = causal_mask(logits)\n    probs = logits.softmax(-1)\n    probs = compose(probs, Q, K, theta_pc)\n    o = einsum('BHTS,BHSD->BHTD', probs, v)\n    return rearrange(o, 'BHTD->BT(HD)') @ W_o",
+    "description": null,
+    "url": null
 }

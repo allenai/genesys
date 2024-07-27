@@ -1,13 +1,6 @@
 {
-    "title": "A Unified Implicit Attention Formulation for Gated-Linear Recurrent Sequence Models ",
     "acronym": "glrsm",
-    "s2id": "4f02df5e50a50d593a3336bf9a566c30e6fef00d",
-    "abstract": "Recent advances in efficient sequence modeling have led to attention-free layers, such as Mamba, RWKV, and various gated RNNs, all featuring sub-quadratic complexity in sequence length and excellent scaling properties, enabling the construction of a new type of foundation models. In this paper, we present a unified view of these models, formulating such layers as implicit causal self-attention layers. The formulation includes most of their sub-components and is not limited to a specific part of the architecture. The framework compares the underlying mechanisms on similar grounds for different layers and provides a direct means for applying explainability methods. Our experiments show that our attention matrices and attribution method outperform an alternative and a more limited formulation that was recently proposed for Mamba. For the other architectures for which our method is the first to provide such a view, our method is effective and competitive in the relevant metrics compared to the results obtained by state-of-the-art transformer explainability methods. Our code is publicly available.",
-    "venue": "arXiv.org",
-    "year": 2024,
-    "tldr": "A unified view of attention-free layers of Mamba, RWKV, and various gated RNNs is presented, formulating such layers as implicit causal self-attention layers and providing a direct means for applying explainability methods.",
-    "citationCount": 1,
-    "influentialCitationCount": 0,
+    "title": "A Unified Implicit Attention Formulation for Gated-Linear Recurrent Sequence Models ",
     "seed_ids": [
         "hiddenattnmamba",
         "griffin",
@@ -18,5 +11,19 @@
         "s4",
         "lssl"
     ],
-    "code": null
+    "s2id": "4f02df5e50a50d593a3336bf9a566c30e6fef00d",
+    "abstract": "Recent advances in efficient sequence modeling have led to attention-free layers, such as Mamba, RWKV, and various gated RNNs, all featuring sub-quadratic complexity in sequence length and excellent scaling properties, enabling the construction of a new type of foundation models. In this paper, we present a unified view of these models, formulating such layers as implicit causal self-attention layers. The formulation includes most of their sub-components and is not limited to a specific part of the architecture. The framework compares the underlying mechanisms on similar grounds for different layers and provides a direct means for applying explainability methods. Our experiments show that our attention matrices and attribution method outperform an alternative and a more limited formulation that was recently proposed for Mamba. For the other architectures for which our method is the first to provide such a view, our method is effective and competitive in the relevant metrics compared to the results obtained by state-of-the-art transformer explainability methods. Our code is publicly available.",
+    "authors": [
+        "Itamar Zimerman",
+        "Ameen Ali",
+        "Lior Wolf"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "A unified view of attention-free layers of Mamba, RWKV, and various gated RNNs is presented, formulating such layers as implicit causal self-attention layers and providing a direct means for applying explainability methods.",
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
 }

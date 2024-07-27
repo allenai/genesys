@@ -1,13 +1,6 @@
 {
-    "title": "LongT5: Efficient text-to-text transformer for long sequences",
     "acronym": "longt5",
-    "s2id": "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
-    "abstract": "Recent work has shown that either (1) increasing the input length or (2) increasing model size can improve the performance of Transformer-based neural models. In this paper, we present a new model, called LongT5, with which we explore the effects of scaling both the input length and model size at the same time. Specifically, we integrated attention ideas from long-input transformers (ETC), and adopted pre-training strategies from summarization pre-training (PEGASUS) into the scalable T5 architecture. The result is a new attention mechanism we call {\\em Transient Global} (TGlobal), which mimics ETC's local/global attention mechanism, but without requiring additional side-inputs. We are able to achieve state-of-the-art results on several summarization tasks and outperform the original T5 models on question answering tasks.",
-    "venue": "NAACL-HLT",
-    "year": 2021,
-    "tldr": "A new model, called LongT5, is presented, with which the effects of scaling both the input length and model size at the same time are explored, which mimics ETC's local/global attention mechanism, but without requiring additional side-inputs.",
-    "citationCount": 227,
-    "influentialCitationCount": 40,
+    "title": "LongT5: Efficient text-to-text transformer for long sequences",
     "seed_ids": [
         "luna",
         "rfa",
@@ -17,5 +10,23 @@
         "bert",
         "gpt2"
     ],
-    "code": null
+    "s2id": "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+    "abstract": "Recent work has shown that either (1) increasing the input length or (2) increasing model size can improve the performance of Transformer-based neural models. In this paper, we present a new model, called LongT5, with which we explore the effects of scaling both the input length and model size at the same time. Specifically, we integrated attention ideas from long-input transformers (ETC), and adopted pre-training strategies from summarization pre-training (PEGASUS) into the scalable T5 architecture. The result is a new attention mechanism we call {\\em Transient Global} (TGlobal), which mimics ETC's local/global attention mechanism, but without requiring additional side-inputs. We are able to achieve state-of-the-art results on several summarization tasks and outperform the original T5 models on question answering tasks.",
+    "authors": [
+        "Mandy Guo",
+        "J. Ainslie",
+        "David C. Uthus",
+        "Santiago Onta\u00f1\u00f3n",
+        "Jianmo Ni",
+        "Yun-Hsuan Sung",
+        "Yinfei Yang"
+    ],
+    "venue": "NAACL-HLT",
+    "year": 2021,
+    "tldr": "A new model, called LongT5, is presented, with which the effects of scaling both the input length and model size at the same time are explored, which mimics ETC's local/global attention mechanism, but without requiring additional side-inputs.",
+    "citationCount": 227,
+    "influentialCitationCount": 40,
+    "code": null,
+    "description": null,
+    "url": null
 }

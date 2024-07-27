@@ -1,13 +1,18 @@
 {
-    "title": "Classifier-Free Diffusion Guidance ",
     "acronym": "classfreediffu",
+    "title": "Classifier-Free Diffusion Guidance ",
+    "seed_ids": [],
     "s2id": "af9f365ed86614c800f082bd8eb14be76072ad16",
     "abstract": "Classifier guidance is a recently introduced method to trade off mode coverage and sample fidelity in conditional diffusion models post training, in the same spirit as low temperature sampling or truncation in other types of generative models. Classifier guidance combines the score estimate of a diffusion model with the gradient of an image classifier and thereby requires training an image classifier separate from the diffusion model. It also raises the question of whether guidance can be performed without a classifier. We show that guidance can be indeed performed by a pure generative model without such a classifier: in what we call classifier-free guidance, we jointly train a conditional and an unconditional diffusion model, and we combine the resulting conditional and unconditional score estimates to attain a trade-off between sample quality and diversity similar to that obtained using classifier guidance.",
+    "authors": [
+        "Jonathan Ho"
+    ],
     "venue": "arXiv.org",
     "year": 2022,
     "tldr": "This work jointly train a conditional and an unconditional diffusion model, and combines the resulting conditional and unconditional score estimates to attain a trade-off between sample quality and diversity similar to that obtained using classifier guidance.",
     "citationCount": 2123,
     "influentialCitationCount": 289,
-    "seed_ids": [],
-    "code": null
+    "code": null,
+    "description": null,
+    "url": null
 }

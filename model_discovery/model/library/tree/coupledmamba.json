@@ -1,0 +1,31 @@
+{
+    "acronym": "coupledmamba",
+    "title": "Coupled Mamba: Enhanced Multi-modal Fusion with Coupled State Space Model",
+    "seed_ids": [
+        "mamba",
+        "h3",
+        "s5",
+        "gssm",
+        "s4d",
+        "s4",
+        "lssl",
+        "compressivetransformer"
+    ],
+    "s2id": "29b0e1f632f013a3324f87b2b46148742e9f3645",
+    "abstract": "The essence of multi-modal fusion lies in exploiting the complementary information inherent in diverse modalities. However, prevalent fusion methods rely on traditional neural architectures and are inadequately equipped to capture the dynamics of interactions across modalities, particularly in presence of complex intra- and inter-modality correlations. Recent advancements in State Space Models (SSMs), notably exemplified by the Mamba model, have emerged as promising contenders. Particularly, its state evolving process implies stronger modality fusion paradigm, making multi-modal fusion on SSMs an appealing direction. However, fusing multiple modalities is challenging for SSMs due to its hardware-aware parallelism designs. To this end, this paper proposes the Coupled SSM model, for coupling state chains of multiple modalities while maintaining independence of intra-modality state processes. Specifically, in our coupled scheme, we devise an inter-modal hidden states transition scheme, in which the current state is dependent on the states of its own chain and that of the neighbouring chains at the previous time-step. To fully comply with the hardware-aware parallelism, we devise an expedite coupled state transition scheme and derive its corresponding global convolution kernel for parallelism. Extensive experiments on CMU-MOSEI, CH-SIMS, CH-SIMSV2 through multi-domain input verify the effectiveness of our model compared to current state-of-the-art methods, improved F1-Score by 0.4\\%, 0.9\\%, and 2.3\\% on the three datasets respectively, 49\\% faster inference and 83.7\\% GPU memory save. The results demonstrate that Coupled Mamba model is capable of enhanced multi-modal fusion.",
+    "authors": [
+        "Wenbing Li",
+        "Hang Zhou",
+        "Junqing Yu",
+        "Zikai Song",
+        "Wei Yang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "The Coupled SSM model is proposed, for coupling state chains of multiple modalities while maintaining independence of intra-modality state processes, and demonstrates that Coupled Mamba model is capable of enhanced multi-modal fusion.",
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

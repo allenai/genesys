@@ -1,15 +1,24 @@
 {
-    "title": "Set Transformer",
     "acronym": "settransformer",
+    "title": "Set Transformer",
+    "seed_ids": [
+        "transformer"
+    ],
     "s2id": "e9adc3f0c2f1fb7035fa23c01ae54fcd3ab759c9",
     "abstract": "N/A",
+    "authors": [
+        "Guodong Li",
+        "Lijun Guo",
+        "Rongsheng Zhang",
+        "Jiangbo Qian",
+        "Shangce Gao"
+    ],
     "venue": "Applied intelligence (Boston)",
     "year": 2022,
     "tldr": "A new multi-modal gait recognition framework based on silhouette and pose features based on a set transformer model with a temporal aggregation operation for obtaining set-level spatio-temporal features is proposed.",
     "citationCount": 26,
     "influentialCitationCount": 4,
-    "seed_ids": [
-        "transformer"
-    ],
-    "code": null
+    "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nimport math\n\nclass MAB(nn.Module):\n    def __init__(self, dim_Q, dim_K, dim_V, num_heads, ln=False):\n        super(MAB, self).__init__()\n        self.dim_V = dim_V\n        self.num_heads = num_heads\n        self.fc_q = nn.Linear(dim_Q, dim_V)\n        self.fc_k = nn.Linear(dim_K, dim_V)\n        self.fc_v = nn.Linear(dim_K, dim_V)\n        if ln:\n            self.ln0 = nn.LayerNorm(dim_V)\n            self.ln1 = nn.LayerNorm(dim_V)\n        self.fc_o = nn.Linear(dim_V, dim_V)\n\n    def forward(self, Q, K):\n        Q = self.fc_q(Q)\n        K, V = self.fc_k(K), self.fc_v(K)\n\n        dim_split = self.dim_V // self.num_heads\n        Q_ = torch.cat(Q.split(dim_split, 2), 0)\n        K_ = torch.cat(K.split(dim_split, 2), 0)\n        V_ = torch.cat(V.split(dim_split, 2), 0)\n\n        A = torch.softmax(Q_.bmm(K_.transpose(1,2))/math.sqrt(self.dim_V), 2)\n        O = torch.cat((Q_ + A.bmm(V_)).split(Q.size(0), 0), 2)\n        O = O if getattr(self, 'ln0', None) is None else self.ln0(O)\n        O = O + F.relu(self.fc_o(O))\n        O = O if getattr(self, 'ln1', None) is None else self.ln1(O)\n        return O\n\nclass SAB(nn.Module):\n    def __init__(self, dim_in, dim_out, num_heads, ln=False):\n        super(SAB, self).__init__()\n        self.mab = MAB(dim_in, dim_in, dim_out, num_heads, ln=ln)\n\n    def forward(self, X):\n        return self.mab(X, X)\n\nclass ISAB(nn.Module):\n    def __init__(self, dim_in, dim_out, num_heads, num_inds, ln=False):\n        super(ISAB, self).__init__()\n        self.I = nn.Parameter(torch.Tensor(1, num_inds, dim_out))\n        nn.init.xavier_uniform_(self.I)\n        self.mab0 = MAB(dim_out, dim_in, dim_out, num_heads, ln=ln)\n        self.mab1 = MAB(dim_in, dim_out, dim_out, num_heads, ln=ln)\n\n    def forward(self, X):\n        H = self.mab0(self.I.repeat(X.size(0), 1, 1), X)\n        return self.mab1(X, H)\n\nclass PMA(nn.Module):\n    def __init__(self, dim, num_heads, num_seeds, ln=False):\n        super(PMA, self).__init__()\n        self.S = nn.Parameter(torch.Tensor(1, num_seeds, dim))\n        nn.init.xavier_uniform_(self.S)\n        self.mab = MAB(dim, dim, dim, num_heads, ln=ln)\n\n    def forward(self, X):\n        return self.mab(self.S.repeat(X.size(0), 1, 1), X)\n    \nclass DeepSet(nn.Module):\n    def __init__(self, dim_input, num_outputs, dim_output, dim_hidden=128):\n        super(DeepSet, self).__init__()\n        self.num_outputs = num_outputs\n        self.dim_output = dim_output\n        self.enc = nn.Sequential(\n                nn.Linear(dim_input, dim_hidden),\n                nn.ReLU(),\n                nn.Linear(dim_hidden, dim_hidden),\n                nn.ReLU(),\n                nn.Linear(dim_hidden, dim_hidden),\n                nn.ReLU(),\n                nn.Linear(dim_hidden, dim_hidden))\n        self.dec = nn.Sequential(\n                nn.Linear(dim_hidden, dim_hidden),\n                nn.ReLU(),\n                nn.Linear(dim_hidden, dim_hidden),\n                nn.ReLU(),\n                nn.Linear(dim_hidden, dim_hidden),\n                nn.ReLU(),\n                nn.Linear(dim_hidden, num_outputs*dim_output))\n\n    def forward(self, X):\n        X = self.enc(X).mean(-2)\n        X = self.dec(X).reshape(-1, self.num_outputs, self.dim_output)\n        return X\n\nclass SetTransformer(nn.Module):\n    def __init__(self, dim_input, num_outputs, dim_output,\n            num_inds=32, dim_hidden=128, num_heads=4, ln=False):\n        super(SetTransformer, self).__init__()\n        self.enc = nn.Sequential(\n                ISAB(dim_input, dim_hidden, num_heads, num_inds, ln=ln),\n                ISAB(dim_hidden, dim_hidden, num_heads, num_inds, ln=ln))\n        self.dec = nn.Sequential(\n                PMA(dim_hidden, num_heads, num_outputs, ln=ln),\n                SAB(dim_hidden, dim_hidden, num_heads, ln=ln),\n                SAB(dim_hidden, dim_hidden, num_heads, ln=ln),\n                nn.Linear(dim_hidden, dim_output))\n\n    def forward(self, X):\n        return self.dec(self.enc(X))",
+    "description": null,
+    "url": null
 }

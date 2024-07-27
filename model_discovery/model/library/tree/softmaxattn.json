@@ -1,16 +1,21 @@
 {
-    "title": "Softmax Attention with Constant Cost per Token",
     "acronym": "softmaxattn",
+    "title": "Softmax Attention with Constant Cost per Token",
+    "seed_ids": [
+        "sparsetransformer",
+        "transformer"
+    ],
     "s2id": "723aa15a72f08a4f8264f6301bc932bf40e723f3",
     "abstract": "We propose a simple modification to the conventional attention mechanism applied by Transformers: Instead of quantifying pairwise query-key similarity with scaled dot-products, we quantify it with the logarithms of scaled dot-products of exponentials. Our modification linearizes attention with exponential kernel feature maps, whose corresponding feature function is infinite dimensional. We show that our modification is expressible as a composition of log-sums of exponentials, with a latent space of constant size, enabling application with constant time and space complexity per token. We implement our modification, verify that it works in practice, and conclude that it is a promising alternative to conventional attention.",
+    "authors": [
+        "Franz A. Heinsen"
+    ],
     "venue": "arXiv.org",
     "year": 2024,
     "tldr": "This work proposes a simple modification to the conventional attention mechanism applied by Transformers, which quantifies pairwise query-key similarity with scaled dot-products with the logarithms of scaled dot-products of exponentials, and linearizes attention with exponential kernel feature maps.",
     "citationCount": 0,
     "influentialCitationCount": 0,
-    "seed_ids": [
-        "sparsetransformer",
-        "transformer"
-    ],
-    "code": null
+    "code": "import torch\nimport torch.nn as nn\n\nclass LogAttention(nn.Module):\n    \"\"\"\n    As proposed by Franz A. Heinsen, March 2024.\n\n    Args:\n        is_causal: (optional) bool, if True, compute causal log-attention.\n\n    Input shapes:\n        Q:     [..., n_queries, d_key] queries.\n        K:     [..., n_context, d_key] keys.\n        log_V: [..., n_context, d_val] log-values.\n\n    Output shapes:\n        log_attention: [..., n_queries, d_val] log of Softmax mixtures of values.\n    \"\"\"\n\n    def __init__(self, is_causal=True):\n        super().__init__()\n        self.is_causal = is_causal\n\n    def forward(self, Q, K, log_V, using_prev_context=False):\n        Q = Q.unsqueeze(-1)                                          # [..., n_queries, d_key, 1]\n        K = K.unsqueeze(-1)                                          # [..., n_context, d_key, 1]\n        log_V = log_V.unsqueeze(-2)                                  # [..., n_context, 1, d_val]\n\n        if self.is_causal:\n            K = K.to(torch.float32) if self.training else K          # work-around for PyTorch 2.2 cuda issue\n            H_S = torch.logcumsumexp(K + log_V, dim=-3).to(Q.dtype)  # [..., n_context, d_key, d_val]\n            H_Z = torch.logcumsumexp(K        , dim=-3).to(Q.dtype)  # [..., n_context, d_key, 1]\n        else:\n            H_S = torch.logsumexp(K + log_V, dim=-3, keepdim=True)   # [..., 1, d_key, d_val]\n            H_Z = torch.logsumexp(K        , dim=-3, keepdim=True)   # [..., 1, d_key, 1]\n\n        if using_prev_context:\n            H_S = self.prev_H_S.logaddexp(H_S)                       # [..., :, d_key, d_val]\n            H_Z = self.prev_H_Z.logaddexp(H_Z)                       # [..., :, d_key, 1]\n\n        self.prev_H_S = H_S[..., -1:, :, :].detach()                 # [..., 1, d_key, d_val]\n        self.prev_H_Z = H_Z[..., -1:, :, :].detach()                 # [..., 1, d_key, d_val]\n\n        log_S = torch.logsumexp(Q + H_S, dim=-2)                     # [..., n_queries, d_val]\n        log_Z = torch.logsumexp(Q + H_Z, dim=-2)                     # [..., n_queries, 1]\n    \n        return log_S - log_Z\n",
+    "description": null,
+    "url": null
 }

@@ -1,0 +1,40 @@
+{
+    "acronym": "statefreeinf",
+    "title": "State-Free Inference of State-Space Models: The Transfer Function Approach",
+    "seed_ids": [
+        "mamba",
+        "flashfftconv",
+        "hyenadistill",
+        "h3",
+        "s5",
+        "s4d",
+        "dssm",
+        "s4",
+        "gpt"
+    ],
+    "s2id": "101914972192c4fa0c7eab6ffc72f13d3ae1dde0",
+    "abstract": "We approach designing a state-space model for deep learning applications through its dual representation, the transfer function, and uncover a highly efficient sequence parallel inference algorithm that is state-free: unlike other proposed algorithms, state-free inference does not incur any significant memory or computational cost with an increase in state size. We achieve this using properties of the proposed frequency domain transfer function parametrization, which enables direct computation of its corresponding convolutional kernel's spectrum via a single Fast Fourier Transform. Our experimental results across multiple sequence lengths and state sizes illustrates, on average, a 35% training speed improvement over S4 layers -- parametrized in time-domain -- on the Long Range Arena benchmark, while delivering state-of-the-art downstream performances over other attention-free approaches. Moreover, we report improved perplexity in language modeling over a long convolutional Hyena baseline, by simply introducing our transfer function parametrization. Our code is available at https://github.com/ruke1ire/RTF.",
+    "authors": [
+        "Rom N. Parnichkun",
+        "Stefano Massaroli",
+        "Alessandro Moro",
+        "Jimmy T.H. Smith",
+        "Ramin M. Hasani",
+        "Mathias Lechner",
+        "Qi An",
+        "Christopher R'e",
+        "Hajime Asama",
+        "Stefano Ermon",
+        "Taiji Suzuki",
+        "Atsushi Yamashita",
+        "Michael Poli"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "This work uncovers a highly efficient sequence parallel inference algorithm that is state-free: unlike other proposed algorithms, state-free inference does not incur any significant memory or computational cost with an increase in state size.",
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

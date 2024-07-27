@@ -1,13 +1,6 @@
 {
-    "title": "Extending Context Window of Large Language Models via Semantic Compression",
     "acronym": "semanticcompress",
-    "s2id": "a3dd3adc37cdb8991936f3feb109c20b6f892f3d",
-    "abstract": "Transformer-based Large Language Models (LLMs) often impose limitations on the length of the text input to ensure the generation of fluent and relevant responses. This constraint restricts their applicability in scenarios involving long texts. We propose a novel semantic compression method that enables generalization to texts that are 6-8 times longer, without incurring significant computational costs or requiring fine-tuning. Our proposed framework draws inspiration from source coding in information theory and employs a pre-trained model to reduce the semantic redundancy of long inputs before passing them to the LLMs for downstream tasks. Experimental results demonstrate that our method effectively extends the context window of LLMs across a range of tasks including question answering, summarization, few-shot learning, and information retrieval. Furthermore, the proposed semantic compression method exhibits consistent fluency in text generation while reducing the associated computational overhead.",
-    "venue": "arXiv.org",
-    "year": 2023,
-    "tldr": "This work proposes a novel semantic compression method that enables generalization to texts that are 6-8 times longer, without incurring significant computational costs or requiring fine-tuning.",
-    "citationCount": 9,
-    "influentialCitationCount": 1,
+    "title": "Extending Context Window of Large Language Models via Semantic Compression",
     "seed_ids": [
         "pi",
         "landmarkattn",
@@ -15,5 +8,23 @@
         "flashattn",
         "transformerxl"
     ],
-    "code": null
+    "s2id": "a3dd3adc37cdb8991936f3feb109c20b6f892f3d",
+    "abstract": "Transformer-based Large Language Models (LLMs) often impose limitations on the length of the text input to ensure the generation of fluent and relevant responses. This constraint restricts their applicability in scenarios involving long texts. We propose a novel semantic compression method that enables generalization to texts that are 6-8 times longer, without incurring significant computational costs or requiring fine-tuning. Our proposed framework draws inspiration from source coding in information theory and employs a pre-trained model to reduce the semantic redundancy of long inputs before passing them to the LLMs for downstream tasks. Experimental results demonstrate that our method effectively extends the context window of LLMs across a range of tasks including question answering, summarization, few-shot learning, and information retrieval. Furthermore, the proposed semantic compression method exhibits consistent fluency in text generation while reducing the associated computational overhead.",
+    "authors": [
+        "WeiZhi Fei",
+        "Xueyan Niu",
+        "Pingyi Zhou",
+        "Lu Hou",
+        "Bo Bai",
+        "Lei Deng",
+        "Wei Han"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": "This work proposes a novel semantic compression method that enables generalization to texts that are 6-8 times longer, without incurring significant computational costs or requiring fine-tuning.",
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
 }

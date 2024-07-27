@@ -1,0 +1,29 @@
+{
+    "acronym": "repeatafterme",
+    "title": "Repeat After Me: Transformers are Better than State Space Models at Copying",
+    "seed_ids": [
+        "canmambaicl",
+        "mamba",
+        "s4",
+        "alibi",
+        "roformer",
+        "transformer",
+        "gpt2"
+    ],
+    "s2id": "189fde3f4dfa105bb51472a8945618f395919560",
+    "abstract": "Transformers are the dominant architecture for sequence modeling, but there is growing interest in models that use a fixed-size latent state that does not depend on the sequence length, which we refer to as\"generalized state space models\"(GSSMs). In this paper we show that while GSSMs are promising in terms of inference-time efficiency, they are limited compared to transformer models on tasks that require copying from the input context. We start with a theoretical analysis of the simple task of string copying and prove that a two layer transformer can copy strings of exponential length while GSSMs are fundamentally limited by their fixed-size latent state. Empirically, we find that transformers outperform GSSMs in terms of efficiency and generalization on synthetic tasks that require copying the context. Finally, we evaluate pretrained large language models and find that transformer models dramatically outperform state space models at copying and retrieving information from context. Taken together, these results suggest a fundamental gap between transformers and GSSMs on tasks of practical interest.",
+    "authors": [
+        "Samy Jelassi",
+        "David Brandfonbrener",
+        "S. Kakade",
+        "Eran Malach"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "It is proved that a two layer transformer can copy strings of exponential length while GSSMs are fundamentally limited by their fixed-size latent state, and a fundamental gap between transformers and GSSMs on tasks of practical interest is suggested.",
+    "citationCount": 25,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,13 +1,20 @@
 {
-    "title": "KAN or MLP: A Fairer Comparison",
     "acronym": "kanmlp",
+    "title": "KAN or MLP: A Fairer Comparison",
+    "seed_ids": [],
     "s2id": "3814fefc10766fc802656f91a249678dbe91a641",
     "abstract": "This paper does not introduce a novel method. Instead, it offers a fairer and more comprehensive comparison of KAN and MLP models across various tasks, including machine learning, computer vision, audio processing, natural language processing, and symbolic formula representation. Specifically, we control the number of parameters and FLOPs to compare the performance of KAN and MLP. Our main observation is that, except for symbolic formula representation tasks, MLP generally outperforms KAN. We also conduct ablation studies on KAN and find that its advantage in symbolic formula representation mainly stems from its B-spline activation function. When B-spline is applied to MLP, performance in symbolic formula representation significantly improves, surpassing or matching that of KAN. However, in other tasks where MLP already excels over KAN, B-spline does not substantially enhance MLP's performance. Furthermore, we find that KAN's forgetting issue is more severe than that of MLP in a standard class-incremental continual learning setting, which differs from the findings reported in the KAN paper. We hope these results provide insights for future research on KAN and other MLP alternatives. Project link: https://github.com/yu-rp/KANbeFair",
+    "authors": [
+        "Runpeng Yu",
+        "Weihao Yu",
+        "Xinchao Wang"
+    ],
     "venue": "",
     "year": 2024,
     "tldr": "It is found that KAN's forgetting issue is more severe than that of MLP in a standard class-incremental continual learning setting, which differs from the findings reported in the KAN paper.",
     "citationCount": 0,
     "influentialCitationCount": 0,
-    "seed_ids": [],
-    "code": null
+    "code": null,
+    "description": null,
+    "url": null
 }

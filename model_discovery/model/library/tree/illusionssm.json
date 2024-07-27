@@ -1,0 +1,25 @@
+{
+    "acronym": "illusionssm",
+    "title": "The Illusion of State in State-Space Models",
+    "seed_ids": [
+        "mamba",
+        "liquids4",
+        "s4",
+        "lssl"
+    ],
+    "s2id": "917479a7a72ee7c1fb320c14d770e30ef322ef28",
+    "abstract": "State-space models (SSMs) have emerged as a potential alternative architecture for building large language models (LLMs) compared to the previously ubiquitous transformer architecture. One theoretical weakness of transformers is that they cannot express certain kinds of sequential computation and state tracking (Merrill&Sabharwal, 2023), which SSMs are explicitly designed to address via their close architectural similarity to recurrent neural networks (RNNs). But do SSMs truly have an advantage (over transformers) in expressive power for state tracking? Surprisingly, the answer is no. Our analysis reveals that the expressive power of SSMs is limited very similarly to transformers: SSMs cannot express computation outside the complexity class $\\mathsf{TC}^0$. In particular, this means they cannot solve simple state-tracking problems like permutation composition. It follows that SSMs are provably unable to accurately track chess moves with certain notation, evaluate code, or track entities in a long narrative. To supplement our formal analysis, we report experiments showing that Mamba-style SSMs indeed struggle with state tracking. Thus, despite its recurrent formulation, the\"state\"in an SSM is an illusion: SSMs have similar expressiveness limitations to non-recurrent models like transformers, which may fundamentally limit their ability to solve real-world state-tracking problems.",
+    "authors": [
+        "William Merrill",
+        "Jackson Petty",
+        "Ashish Sabharwal"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "Analysis of state-space models reveals that SSMs have similar expressiveness limitations to non-recurrent models like transformers, which may fundamentally limit their ability to solve real-world state-tracking problems.",
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "genanatooptdesign",
+    "title": "From generalization analysis to optimization designs for state space models",
+    "seed_ids": [
+        "mamba",
+        "resurrectrnn",
+        "hyena",
+        "h3",
+        "gssm",
+        "s4d",
+        "dssm",
+        "s4",
+        "transformer"
+    ],
+    "s2id": "d3ee2e639751cbe75683537aa0d6841bd9a7341f",
+    "abstract": "A State Space Model (SSM) is a foundation model in time series analysis, which has recently been shown as an alternative to transformers in sequence modeling. In this paper, we theoretically study the generalization of SSMs and propose improvements to training algorithms based on the generalization results. Specifically, we give a \\textit{data-dependent} generalization bound for SSMs, showing an interplay between the SSM parameters and the temporal dependencies of the training sequences. Leveraging the generalization bound, we (1) set up a scaling rule for model initialization based on the proposed generalization measure, which significantly improves the robustness of the output value scales on SSMs to different temporal patterns in the sequence data; (2) introduce a new regularization method for training SSMs to enhance the generalization performance. Numerical results are conducted to validate our results.",
+    "authors": [
+        "Fusheng Liu",
+        "Qianxiao Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "This paper gives a data-dependent generalization bound for SSMs, showing an interplay between the SSM parameters and the temporal dependencies of the training sequences, and introduces a new regularization method for training SSMs to enhance the generalization performance.",
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,18 +1,39 @@
 {
-    "title": "An Empirical Study of Mamba-based Language Models",
     "acronym": "mambalms",
+    "title": "An Empirical Study of Mamba-based Language Models",
+    "seed_ids": [
+        "jamba",
+        "repeatafterme",
+        "mamba",
+        "bst",
+        "gpt3"
+    ],
     "s2id": "d668f557b922d0cac746c8ec82f7975f06ac906b",
     "abstract": "Selective state-space models (SSMs) like Mamba overcome some of the shortcomings of Transformers, such as quadratic computational complexity with sequence length and large inference-time memory requirements from the key-value cache. Moreover, recent studies have shown that SSMs can match or exceed the language modeling capabilities of Transformers, making them an attractive alternative. In a controlled setting (e.g., same data), however, studies so far have only presented small scale experiments comparing SSMs to Transformers. To understand the strengths and weaknesses of these architectures at larger scales, we present a direct comparison between 8B-parameter Mamba, Mamba-2, and Transformer models trained on the same datasets of up to 3.5T tokens. We also compare these models to a hybrid architecture consisting of 43% Mamba-2, 7% attention, and 50% MLP layers (Mamba-2-Hybrid). Using a diverse set of tasks, we answer the question of whether Mamba models can match Transformers at larger training budgets. Our results show that while pure SSMs match or exceed Transformers on many tasks, they lag behind Transformers on tasks which require strong copying or in-context learning abilities (e.g., 5-shot MMLU, Phonebook) or long-context reasoning. In contrast, we find that the 8B Mamba-2-Hybrid exceeds the 8B Transformer on all 12 standard tasks we evaluated (+2.65 points on average) and is predicted to be up to 8x faster when generating tokens at inference time. To validate long-context capabilities, we provide additional experiments evaluating variants of the Mamba-2-Hybrid and Transformer extended to support 16K, 32K, and 128K sequences. On an additional 23 long-context tasks, the hybrid model continues to closely match or exceed the Transformer on average. To enable further study, we release the checkpoints as well as the code used to train our models as part of NVIDIA's Megatron-LM project.",
+    "authors": [
+        "R. Waleffe",
+        "Wonmin Byeon",
+        "Duncan Riach",
+        "Brandon Norick",
+        "V. Korthikanti",
+        "Tri Dao",
+        "Albert Gu",
+        "Ali Hatamizadeh",
+        "Sudhakar Singh",
+        "Deepak Narayanan",
+        "Garvit Kulshreshtha",
+        "Vartika Singh",
+        "Jared Casper",
+        "Jan Kautz",
+        "M. Shoeybi",
+        "Bryan Catanzaro"
+    ],
     "venue": "arXiv.org",
     "year": 2024,
     "tldr": "While pure SSMs match or exceed Transformers on many tasks, they lag behind Transformers on tasks which require strong copying or in-context learning abilities or long-context reasoning, and it is found that the 8B Mamba-2-Hybrid exceeds the 8B Transformer on all 12 standard tasks evaluated.",
     "citationCount": 3,
     "influentialCitationCount": 0,
-    "seed_ids": [
-        "jamba",
-        "mamba",
-        "bst",
-        "gpt3"
-    ],
-    "code": null
+    "code": null,
+    "description": null,
+    "url": null
 }

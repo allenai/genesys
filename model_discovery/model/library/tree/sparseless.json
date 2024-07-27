@@ -1,13 +1,6 @@
 {
-    "title": "Sparser is Faster and Less is More: Efficient Sparse Attention for Long-Range Transformers",
     "acronym": "sparseless",
-    "s2id": "ee2b3f7703b553b487428862b83995ea3e8c0c3a",
-    "abstract": "Accommodating long sequences efficiently in autoregressive Transformers, especially within an extended context window, poses significant challenges due to the quadratic computational complexity and substantial KV memory requirements inherent in self-attention mechanisms. In this work, we introduce SPARSEK Attention, a novel sparse attention mechanism designed to overcome these computational and memory obstacles while maintaining performance. Our approach integrates a scoring network and a differentiable top-k mask operator, SPARSEK, to select a constant number of KV pairs for each query, thereby enabling gradient-based optimization. As a result, SPARSEK Attention offers linear time complexity and constant memory footprint during generation. Experimental results reveal that SPARSEK Attention outperforms previous sparse attention methods and provides significant speed improvements during both training and inference, particularly in language modeling and downstream tasks. Furthermore, our method can be seamlessly integrated into pre-trained Large Language Models (LLMs) with minimal fine-tuning, offering a practical solution for effectively managing long-range dependencies in diverse applications.",
-    "venue": "arXiv.org",
-    "year": 2024,
-    "tldr": "SPARSEK Attention is introduced, a novel sparse attention mechanism designed to overcome computational and memory obstacles while maintaining performance and can be seamlessly integrated into pre-trained Large Language Models with minimal fine-tuning.",
-    "citationCount": 0,
-    "influentialCitationCount": 0,
+    "title": "Sparser is Faster and Less is More: Efficient Sparse Attention for Long-Range Transformers",
     "seed_ids": [
         "gla",
         "trams",
@@ -29,5 +22,20 @@
         "transformerxl",
         "gpt2"
     ],
-    "code": null
+    "s2id": "ee2b3f7703b553b487428862b83995ea3e8c0c3a",
+    "abstract": "Accommodating long sequences efficiently in autoregressive Transformers, especially within an extended context window, poses significant challenges due to the quadratic computational complexity and substantial KV memory requirements inherent in self-attention mechanisms. In this work, we introduce SPARSEK Attention, a novel sparse attention mechanism designed to overcome these computational and memory obstacles while maintaining performance. Our approach integrates a scoring network and a differentiable top-k mask operator, SPARSEK, to select a constant number of KV pairs for each query, thereby enabling gradient-based optimization. As a result, SPARSEK Attention offers linear time complexity and constant memory footprint during generation. Experimental results reveal that SPARSEK Attention outperforms previous sparse attention methods and provides significant speed improvements during both training and inference, particularly in language modeling and downstream tasks. Furthermore, our method can be seamlessly integrated into pre-trained Large Language Models (LLMs) with minimal fine-tuning, offering a practical solution for effectively managing long-range dependencies in diverse applications.",
+    "authors": [
+        "Chao Lou",
+        "Zixia Jia",
+        "Zilong Zheng",
+        "Kewei Tu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "SPARSEK Attention is introduced, a novel sparse attention mechanism designed to overcome computational and memory obstacles while maintaining performance and can be seamlessly integrated into pre-trained Large Language Models with minimal fine-tuning.",
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
 }

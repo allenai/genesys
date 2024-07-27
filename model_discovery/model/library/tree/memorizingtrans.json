@@ -1,13 +1,6 @@
 {
-    "title": "Memorizing Transformers",
     "acronym": "memorizingtrans",
-    "s2id": "0e802c0739771acf70e60d59c2df51cd7e8c50c0",
-    "abstract": "Language models typically need to be trained or finetuned in order to acquire new knowledge, which involves updating their weights. We instead envision language models that can simply read and memorize new data at inference time, thus acquiring new knowledge immediately. In this work, we extend language models with the ability to memorize the internal representations of past inputs. We demonstrate that an approximate kNN lookup into a non-differentiable memory of recent (key, value) pairs improves language modeling across various benchmarks and tasks, including generic webtext (C4), math papers (arXiv), books (PG-19), code (Github), as well as formal theorems (Isabelle). We show that the performance steadily improves when we increase the size of memory up to 262K tokens. On benchmarks including code and mathematics, we find that the model is capable of making use of newly defined functions and theorems during test time.",
-    "venue": "International Conference on Learning Representations",
-    "year": 2022,
-    "tldr": "It is demonstrated that an approximate kNN lookup into a non-differentiable memory of recent (key, value) pairs improves language modeling across various benchmarks and tasks, including generic webtext, math papers, books, code, as well as formal theorems (Isabelle).",
-    "citationCount": 138,
-    "influentialCitationCount": 15,
+    "title": "Memorizing Transformers",
     "seed_ids": [
         "htransformer1d",
         "performer",
@@ -18,5 +11,20 @@
         "reformer",
         "transformerxl"
     ],
-    "code": null
+    "s2id": "0e802c0739771acf70e60d59c2df51cd7e8c50c0",
+    "abstract": "Language models typically need to be trained or finetuned in order to acquire new knowledge, which involves updating their weights. We instead envision language models that can simply read and memorize new data at inference time, thus acquiring new knowledge immediately. In this work, we extend language models with the ability to memorize the internal representations of past inputs. We demonstrate that an approximate kNN lookup into a non-differentiable memory of recent (key, value) pairs improves language modeling across various benchmarks and tasks, including generic webtext (C4), math papers (arXiv), books (PG-19), code (Github), as well as formal theorems (Isabelle). We show that the performance steadily improves when we increase the size of memory up to 262K tokens. On benchmarks including code and mathematics, we find that the model is capable of making use of newly defined functions and theorems during test time.",
+    "authors": [
+        "Yuhuai Wu",
+        "M. Rabe",
+        "DeLesley S. Hutchins",
+        "Christian Szegedy"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": "It is demonstrated that an approximate kNN lookup into a non-differentiable memory of recent (key, value) pairs improves language modeling across various benchmarks and tasks, including generic webtext, math papers, books, code, as well as formal theorems (Isabelle).",
+    "citationCount": 138,
+    "influentialCitationCount": 15,
+    "code": null,
+    "description": null,
+    "url": null
 }

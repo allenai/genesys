@@ -1,13 +1,26 @@
 {
-    "title": "Simple linear attention language models balance the recall-throughput tradeoff",
     "acronym": "based",
+    "title": "Simple linear attention language models balance the recall-throughput tradeoff",
+    "seed_ids": [],
     "s2id": "cde66097f4123a62bf3e28d48c764648e8c69f72",
     "abstract": "Recent work has shown that attention-based language models excel at recall, the ability to ground generations in tokens previously seen in context. However, the efficiency of attention-based models is bottle-necked during inference by the KV-cache's aggressive memory consumption. In this work, we explore whether we can improve language model efficiency (e.g. by reducing memory consumption) without compromising on recall. By applying experiments and theory to a broad set of architectures, we identify a key tradeoff between a model's state size and recall ability. We show that efficient alternatives to attention (e.g. H3, Mamba, RWKV) maintain a fixed-size recurrent state, but struggle at recall. We propose BASED a simple architecture combining linear and sliding window attention. By varying BASED window size and linear attention feature dimension, we can dial the state size and traverse the pareto frontier of the recall-memory tradeoff curve, recovering the full quality of attention on one end and the small state size of attention-alternatives on the other. We train language models up to 1.3b parameters and show that BASED matches the strongest sub-quadratic models (e.g. Mamba) in perplexity and outperforms them on real-world recall-intensive tasks by 6.22 accuracy points. Implementations of linear attention are often less efficient than optimized standard attention implementations. To make BASED competitive, we develop IO-aware algorithms that enable 24x higher throughput on language generation than FlashAttention-2, when generating 1024 tokens using 1.3b parameter models. Code for this work is provided at: https://github.com/HazyResearch/based.",
+    "authors": [
+        "Simran Arora",
+        "Sabri Eyuboglu",
+        "Michael Zhang",
+        "Aman Timalsina",
+        "Silas Alberti",
+        "Dylan Zinsley",
+        "James Zou",
+        "Atri Rudra",
+        "Christopher R'e"
+    ],
     "venue": "arXiv.org",
     "year": 2024,
     "tldr": "To make BASED competitive, IO-aware algorithms are developed that enable 24x higher throughput on language generation than FlashAttention-2, when generating 1024 tokens using 1.3b parameters and show that BASED matches the strongest sub-quadratic models and outperforms them on real-world recall-intensive tasks by 6.22 accuracy points.",
     "citationCount": 17,
     "influentialCitationCount": 4,
-    "seed_ids": [],
-    "code": null
+    "code": "from einops import rearrange\nimport torch\nfrom torch import nn\nimport math\n\nclass TaylorExp(nn.Module):\n    \"\"\"\n    Feature map to compute 2nd-order Taylor approximation of exp(q^T k / sqrt(d))\n    \"\"\"\n    def __init__(self, input_dim, head_dim_idx, temp=None, eps=1e-12):\n        super().__init__()\n        self.input_dim = input_dim\n        self.head_dim_idx = head_dim_idx\n        self.temp = 1.0 if temp is None else temp\n        self.eps = eps\n        self.r2 = math.sqrt(2)\n        self.rd = math.sqrt(self.input_dim)\n        self.rrd = math.sqrt(self.rd)\n\n    def forward(self, x: torch.Tensor):\n        # Get 2nd-order terms\n        x2 = (x.unsqueeze(-1) * x.unsqueeze(-2)).flatten(start_dim=-2) / self.r2\n        term1 = torch.ones(x[..., :1].shape).to(x.device)\n        term2 = x / self.rrd\n        term3 = x2 / self.rd\n        terms = [term1, term2, term3]\n        return torch.cat(terms, dim=self.head_dim_idx)\n\nclass TaylorLinAttn(nn.Module):\n    def __init__(self, d_model):\n        super().__init__()\n        self.d_model = d_model\n        self.feature_dim = 16\n        self.num_heads = 16\n        self.num_key_value_heads = 16\n        self.head_dim = self.d_model // self.num_key_value_heads\n        self.eps = 1e-12\n\n        feature_map_kwargs = {\n            \"input_dim\": self.feature_dim,\n            \"head_dim_idx\": -1,\n            \"eps\": 1e-12,\n        }\n        self.feature_map = TaylorExp(**feature_map_kwargs)\n        self.proj_q = nn.Linear(self.d_model, self.feature_dim * self.num_heads, bias=False)\n        self.proj_k = nn.Linear(self.d_model, self.feature_dim * self.num_heads, bias=False)\n        self.proj_v = nn.Linear(self.d_model, self.num_key_value_heads * self.head_dim, bias=False)\n        self.proj_o = nn.Linear(self.num_heads * self.head_dim, self.d_model, bias=False)\n\n    def forward(self, hidden_states: torch.Tensor, *args, **kwargs):\n        b, l, _ = hidden_states.size()\n        q = self.proj_q(hidden_states)\n        k = self.proj_k(hidden_states)\n        v = self.proj_v(hidden_states)\n        q = q.view(b, l, self.num_heads, self.feature_dim).transpose(1, 2)\n        k = k.view(b, l, self.num_key_value_heads, self.feature_dim).transpose(1, 2)\n        v = v.view(b, l, self.num_key_value_heads, self.head_dim).transpose(1, 2)\n\n        # Linear attention\n        q, k = self.feature_map(q), self.feature_map(k)\n        q, k, v = q.unsqueeze(-2), k.unsqueeze(-2), v.unsqueeze(-1)\n\n        # Compute attention\n        num = (q * (k * v).cumsum(dim=2)).sum(dim=-1)\n        denom = (q * k.cumsum(dim=2)).sum(dim=-1) + self.eps\n        y = num / denom\n\n        y = rearrange(y, \"b h l d -> b l (h d)\")\n        y = self.proj_o(y)\n        return y\n",
+    "description": null,
+    "url": null
 }

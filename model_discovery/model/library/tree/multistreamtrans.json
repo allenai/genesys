@@ -1,16 +1,22 @@
 {
-    "title": "Multi-Stream Transformers",
     "acronym": "multistreamtrans",
+    "title": "Multi-Stream Transformers",
+    "seed_ids": [
+        "transformer",
+        "bert"
+    ],
     "s2id": "177e21dbf45d01a0f585bb46e548d795b441aad9",
     "abstract": "Transformer-based encoder-decoder models produce a fused token-wise representation after every encoder layer. We investigate the effects of allowing the encoder to preserve and explore alternative hypotheses, combined at the end of the encoding process. To that end, we design and examine a $\\textit{Multi-stream Transformer}$ architecture and find that splitting the Transformer encoder into multiple encoder streams and allowing the model to merge multiple representational hypotheses improves performance, with further improvement obtained by adding a skip connection between the first and the final encoder layer.",
+    "authors": [
+        "M. Burtsev",
+        "Anna Rumshisky"
+    ],
     "venue": "arXiv.org",
     "year": 2021,
     "tldr": "It is found that splitting the Transformer encoder into multiple encoder streams and allowing the model to merge multiple representational hypotheses improves performance, with further improvement obtained by adding a skip connection between the first and the final encoder layer.",
     "citationCount": 0,
     "influentialCitationCount": 0,
-    "seed_ids": [
-        "transformer",
-        "bert"
-    ],
-    "code": null
+    "code": null,
+    "description": null,
+    "url": null
 }

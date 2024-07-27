@@ -1,0 +1,22 @@
+{
+    "acronym": "ssmlayernonlin",
+    "title": "State-space models with layer-wise nonlinearity are universal approximators with exponential decaying memory",
+    "seed_ids": [
+        "resurrectrnn",
+        "hyena"
+    ],
+    "s2id": "b3caabbae4b7c3b842086b21940ce9d5b25d476f",
+    "abstract": "State-space models have gained popularity in sequence modelling due to their simple and efficient network structures. However, the absence of nonlinear activation along the temporal direction limits the model's capacity. In this paper, we prove that stacking state-space models with layer-wise nonlinear activation is sufficient to approximate any continuous sequence-to-sequence relationship. Our findings demonstrate that the addition of layer-wise nonlinear activation enhances the model's capacity to learn complex sequence patterns. Meanwhile, it can be seen both theoretically and empirically that the state-space models do not fundamentally resolve the issue of exponential decaying memory. Theoretical results are justified by numerical verifications.",
+    "authors": [
+        "Shida Wang",
+        "Beichen Xue"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": "It is proved that stacking state-space models with layer-wise nonlinear activation is sufficient to approximate any continuous sequence-to-sequence relationship.",
+    "citationCount": 14,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

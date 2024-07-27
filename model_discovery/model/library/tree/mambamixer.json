@@ -1,0 +1,34 @@
+{
+    "acronym": "mambamixer",
+    "title": "MambaMixer: Efficient Selective State Space Models with Dual Token and Channel Selection",
+    "seed_ids": [
+        "hiddenattnmamba",
+        "gla",
+        "mamba",
+        "hgrn",
+        "m2",
+        "streamingllm",
+        "longnet",
+        "multiresconvmem",
+        "hyena",
+        "ptwoattn",
+        "s5",
+        "s4d",
+        "hippo"
+    ],
+    "s2id": "3e4ed3b3790980efbb537d381c7bc020eefed53f",
+    "abstract": "Recent advances in deep learning have mainly relied on Transformers due to their data dependency and ability to learn at scale. The attention module in these architectures, however, exhibits quadratic time and space in input size, limiting their scalability for long-sequence modeling. Despite recent attempts to design efficient and effective architecture backbone for multi-dimensional data, such as images and multivariate time series, existing models are either data independent, or fail to allow inter- and intra-dimension communication. Recently, State Space Models (SSMs), and more specifically Selective State Space Models, with efficient hardware-aware implementation, have shown promising potential for long sequence modeling. Motivated by the success of SSMs, we present MambaMixer, a new architecture with data-dependent weights that uses a dual selection mechanism across tokens and channels, called Selective Token and Channel Mixer. MambaMixer connects selective mixers using a weighted averaging mechanism, allowing layers to have direct access to early features. As a proof of concept, we design Vision MambaMixer (ViM2) and Time Series MambaMixer (TSM2) architectures based on the MambaMixer block and explore their performance in various vision and time series forecasting tasks. Our results underline the importance of selective mixing across both tokens and channels. In ImageNet classification, object detection, and semantic segmentation tasks, ViM2 achieves competitive performance with well-established vision models and outperforms SSM-based vision models. In time series forecasting, TSM2 achieves outstanding performance compared to state-of-the-art methods while demonstrating significantly improved computational cost. These results show that while Transformers, cross-channel attention, and MLPs are sufficient for good performance in time series forecasting, neither is necessary.",
+    "authors": [
+        "Ali Behrouz",
+        "Michele Santacatterina",
+        "Ramin Zabih"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "The results show that while Transformers, cross-channel attention, and MLPs are sufficient for good performance in time series forecasting, neither is necessary.",
+    "citationCount": 12,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

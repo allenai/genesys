@@ -1,0 +1,26 @@
+{
+    "acronym": "s4pp",
+    "title": "S4++: Elevating Long Sequence Modeling with State Memory Reply",
+    "seed_ids": [
+        "s4"
+    ],
+    "s2id": null,
+    "abstract": "Recently, state space models (SSMs) have shown significant performance advantages in modeling long sequences. However, in spite of their promising performance, there still exist limitations. 1. Non-Stable-States (NSS): Significant state variance discrepancies arise among discrete sampling steps, occasionally resulting in divergence. 2. Dependency Bias: The unidirectional state space dependency in SSM impedes the effective modeling of intricate dependencies. In this paper, we conduct theoretical analysis of SSM from the even-triggered control (ETC) theory perspective and first propose the presence of NSS Phenomenon. Our findings indicate that NSS primarily results from the sampling steps, and the integration of multi-state inputs into the current state significantly contributes to the mitigation of NSS. Building upon these theoretical analyses and findings, we propose a simple, yet effective, theoretically grounded State Memory Reply (SMR) mechanism that leverages learnable memories to incorporate multi-state information into the current state. This enables the precise modeling of finer state dependencies within the SSM, resulting in the introduction of S4+. Furthermore, we integrate the complex dependency bias into S4+ via interactive cross attentions mechanism, resulting in the development of S4++. Our extensive experiments in autoregressive language modeling and benchmarking against the Long Range Arena demonstrate superior performance in most post-processing tasks.",
+    "authors": [
+        "Biqing Qi",
+        "Junqi Gao",
+        "Dong Li",
+        "Kaiyan Zhang",
+        "Jianxing Liu",
+        "Ligang Wu",
+        "Bowen Zhou"
+    ],
+    "venue": "ICLR 2024 Withdrawn Submission",
+    "year": 2024,
+    "tldr": null,
+    "citationCount": null,
+    "influentialCitationCount": null,
+    "code": null,
+    "description": null,
+    "url": "https://openreview.net/forum?id=bdnw4qjfH9"
+}

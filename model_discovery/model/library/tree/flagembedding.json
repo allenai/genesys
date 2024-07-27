@@ -1,13 +1,6 @@
 {
-    "title": "Soaring from 4K to 400K: Extending LLM\u2019s Context with Activation Beacon",
     "acronym": "flagembedding",
-    "s2id": "2b8439f319dfa73df62ca8957ff6d0c1f3c7a73c",
-    "abstract": "The utilization of long contexts poses a big challenge for LLMs due to their limited context window size. Although the context window can be extended through fine-tuning, it will result in a considerable cost at both training and inference time, and exert an unfavorable impact to the LLM's original capabilities. In this work, we propose a new method called Activation Beacon, which condenses LLM's raw activations into compact forms such that the LLM can perceive a longer context with a limited context window. Activation Beacon is introduced as a plug-in module, which fully preserves the LLM's original capability in short contexts. It works with the sliding window to streamingly process the long context, which leads to a competitive memory and time efficiency in both training and inference. Activation Beacon is trained with short-sequence data of diversified condensing ratios. Thanks to such a treatment, it can be effectively learned to support different context lengths with a small training cost. Our experiment verifies Activation Beacon's effectiveness of context extension: it can remarkably accomplish high-quality extension of Llama-2-7B's context by $\\times100$ times (from 4K to 400K); meanwhile, it can also achieve superior performances across a variety of long-context language modeling and understanding tasks. The source code and model checkpoint are available at \\url{https://github.com/FlagOpen/FlagEmbedding}.",
-    "venue": "arXiv.org",
-    "year": 2024,
-    "tldr": "Activation Beacon is introduced as a plug-in module, which fully preserves the LLM's original capability in short contexts and works with the sliding window to streamingly process the long context, which leads to a competitive memory and time efficiency in both training and inference.",
-    "citationCount": 30,
-    "influentialCitationCount": 1,
+    "title": "Soaring from 4K to 400K: Extending LLM\u2019s Context with Activation Beacon",
     "seed_ids": [
         "streamingllm",
         "pose",
@@ -22,5 +15,22 @@
         "linformer",
         "compressivetransformer"
     ],
-    "code": null
+    "s2id": "2b8439f319dfa73df62ca8957ff6d0c1f3c7a73c",
+    "abstract": "The utilization of long contexts poses a big challenge for LLMs due to their limited context window size. Although the context window can be extended through fine-tuning, it will result in a considerable cost at both training and inference time, and exert an unfavorable impact to the LLM's original capabilities. In this work, we propose a new method called Activation Beacon, which condenses LLM's raw activations into compact forms such that the LLM can perceive a longer context with a limited context window. Activation Beacon is introduced as a plug-in module, which fully preserves the LLM's original capability in short contexts. It works with the sliding window to streamingly process the long context, which leads to a competitive memory and time efficiency in both training and inference. Activation Beacon is trained with short-sequence data of diversified condensing ratios. Thanks to such a treatment, it can be effectively learned to support different context lengths with a small training cost. Our experiment verifies Activation Beacon's effectiveness of context extension: it can remarkably accomplish high-quality extension of Llama-2-7B's context by $\\times100$ times (from 4K to 400K); meanwhile, it can also achieve superior performances across a variety of long-context language modeling and understanding tasks. The source code and model checkpoint are available at \\url{https://github.com/FlagOpen/FlagEmbedding}.",
+    "authors": [
+        "Peitian Zhang",
+        "Zheng Liu",
+        "Shitao Xiao",
+        "Ninglu Shao",
+        "Qiwei Ye",
+        "Zhicheng Dou"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "Activation Beacon is introduced as a plug-in module, which fully preserves the LLM's original capability in short contexts and works with the sliding window to streamingly process the long context, which leads to a competitive memory and time efficiency in both training and inference.",
+    "citationCount": 30,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
 }

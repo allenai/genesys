@@ -1,13 +1,6 @@
 {
-    "title": "Functional Interpolation for Relative Positions Improves Long Context Transformers",
     "acronym": "fire",
-    "s2id": "dc48bc1a4d81e0f37603013fd2a95644dc233bd0",
-    "abstract": "Preventing the performance decay of Transformers on inputs longer than those used for training has been an important challenge in extending the context length of these models. Though the Transformer architecture has fundamentally no limits on the input sequence lengths it can process, the choice of position encoding used during training can limit the performance of these models on longer inputs. We propose a novel functional relative position encoding with progressive interpolation, FIRE, to improve Transformer generalization to longer contexts. We theoretically prove that this can represent some of the popular relative position encodings, such as T5\u2019s RPE, Alibi, and Kerple. We next empirically show that FIRE models have better generalization to longer contexts on both zero-shot language modeling and long text benchmarks.",
-    "venue": "arXiv.org",
-    "year": 2023,
-    "tldr": "It is theoretically prove that this can represent some of the popular relative position encodings, such as T5\u2019s RPE, Alibi, and Kerple, and empirically show that FIRE models have better generalization to longer contexts on both zero-shot language modeling and long text benchmarks.",
-    "citationCount": 21,
-    "influentialCitationCount": 3,
+    "title": "Functional Interpolation for Relative Positions Improves Long Context Transformers",
     "seed_ids": [
         "yarn",
         "pi",
@@ -19,5 +12,26 @@
         "gpt3",
         "bert"
     ],
-    "code": null
+    "s2id": "dc48bc1a4d81e0f37603013fd2a95644dc233bd0",
+    "abstract": "Preventing the performance decay of Transformers on inputs longer than those used for training has been an important challenge in extending the context length of these models. Though the Transformer architecture has fundamentally no limits on the input sequence lengths it can process, the choice of position encoding used during training can limit the performance of these models on longer inputs. We propose a novel functional relative position encoding with progressive interpolation, FIRE, to improve Transformer generalization to longer contexts. We theoretically prove that this can represent some of the popular relative position encodings, such as T5\u2019s RPE, Alibi, and Kerple. We next empirically show that FIRE models have better generalization to longer contexts on both zero-shot language modeling and long text benchmarks.",
+    "authors": [
+        "Shanda Li",
+        "Chong You",
+        "Guru Guruganesh",
+        "J. Ainslie",
+        "Santiago Ontanon",
+        "M. Zaheer",
+        "Sumit K. Sanghai",
+        "Yiming Yang",
+        "Sanjiv Kumar",
+        "Srinadh Bhojanapalli"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": "It is theoretically prove that this can represent some of the popular relative position encodings, such as T5\u2019s RPE, Alibi, and Kerple, and empirically show that FIRE models have better generalization to longer contexts on both zero-shot language modeling and long text benchmarks.",
+    "citationCount": 21,
+    "influentialCitationCount": 3,
+    "code": "import torch\nimport torch.nn as nn\n\nclass FIRE(nn.Module):\n    def __init__(self, num_heads=12, mlp_width=32, init_c=0.1, init_L=512., eps=1e-6):\n        \"\"\"\n        FIRE attention bias module.\n\n        Args:\n            num_heads: number of attention heads.\n            mlp_width: Width of MLP.\n            init_c: initial value of log transformation parameter.\n            init_L: initial value of thresholding parameter.\n            eps: small constant for numerical stability.\n        \"\"\"\n        super(FIRE, self).__init__()\n\n        # Define the MLP layers\n        self.mlp = nn.Sequential(\n            nn.Linear(1, mlp_width),\n            nn.ReLU(),\n            nn.Linear(mlp_width, num_heads)\n        )\n\n        # Initialize c (log transformation parameter)\n        self.c = nn.Parameter(torch.tensor(init_c))\n\n        # Initialize L (threshold)\n        self.init_L = nn.Parameter(torch.tensor(init_L), requires_grad=False)\n        # Learn a multiplier to L\n        self.L_multiplier = nn.Parameter(torch.tensor(1.0))\n\n        self.eps = eps\n\n    def forward(self, x: torch.Tensor):\n        \"\"\"\n        Compute FIRE attention bias.\n\n        Args:\n            x: input sequence, shape [bsz, num_heads, seq_len, hidden_dim]\n\n        Returns:\n            attention bias, shape [1, num_heads, seq_len, seq_len]\n        \"\"\"\n        seq_length = x.size(2)\n        positions = torch.arange(seq_length, dtype=torch.float, device=x.device)\n        rel_distance = positions[:, None] - positions[None, :]\n\n        # Thresholding the normalizer\n        threshold = torch.abs(self.L_multiplier * self.init_L)\n        pos_normalizer = torch.max(positions, threshold)\n        pos_normalizer = pos_normalizer[:, None]\n\n        # Amplifying differences among local positions with log transform\n        rel_distance = torch.log(torch.abs(self.c * rel_distance) + 1)\n        pos_normalizer = torch.log(torch.abs(self.c * pos_normalizer) + 1) + self.eps\n\n        # Progressive interpolation\n        normalized_distance = rel_distance / pos_normalizer\n        fire_bias = self.mlp(normalized_distance.unsqueeze(-1))\n        fire_bias = fire_bias.unsqueeze(0).permute(0, 3, 1, 2)\n        return fire_bias\n",
+    "description": null,
+    "url": null
 }

@@ -1,13 +1,6 @@
 {
-    "title": "How to Train Your HiPPO: State Space Models with Generalized Orthogonal Basis Projections",
     "acronym": "httyh",
-    "s2id": "a30ac45ac5b7bd2148d3fb80ee7f3c29724e3170",
-    "abstract": "Linear time-invariant state space models (SSM) are a classical model from engineering and statistics, that have recently been shown to be very promising in machine learning through the Structured State Space sequence model (S4). A core component of S4 involves initializing the SSM state matrix to a particular matrix called a HiPPO matrix, which was empirically important for S4's ability to handle long sequences. However, the specific matrix that S4 uses was actually derived in previous work for a particular time-varying dynamical system, and the use of this matrix as a time-invariant SSM had no known mathematical interpretation. Consequently, the theoretical mechanism by which S4 models long-range dependencies actually remains unexplained. We derive a more general and intuitive formulation of the HiPPO framework, which provides a simple mathematical interpretation of S4 as a decomposition onto exponentially-warped Legendre polynomials, explaining its ability to capture long dependencies. Our generalization introduces a theoretically rich class of SSMs that also lets us derive more intuitive S4 variants for other bases such as the Fourier basis, and explains other aspects of training S4, such as how to initialize the important timescale parameter. These insights improve S4's performance to 86% on the Long Range Arena benchmark, with 96% on the most difficult Path-X task.",
-    "venue": "International Conference on Learning Representations",
-    "year": 2022,
-    "tldr": "A more general and intuitive formulation of the HiPPO framework is derived, which provides a simple mathematical interpretation of S4 as a decomposition onto exponentially-warped Legendre polynomials, explaining its ability to capture long dependencies.",
-    "citationCount": 50,
-    "influentialCitationCount": 4,
+    "title": "How to Train Your HiPPO: State Space Models with Generalized Orthogonal Basis Projections",
     "seed_ids": [
         "sgconv",
         "s4d",
@@ -15,5 +8,21 @@
         "s4",
         "hippo"
     ],
-    "code": null
+    "s2id": "a30ac45ac5b7bd2148d3fb80ee7f3c29724e3170",
+    "abstract": "Linear time-invariant state space models (SSM) are a classical model from engineering and statistics, that have recently been shown to be very promising in machine learning through the Structured State Space sequence model (S4). A core component of S4 involves initializing the SSM state matrix to a particular matrix called a HiPPO matrix, which was empirically important for S4's ability to handle long sequences. However, the specific matrix that S4 uses was actually derived in previous work for a particular time-varying dynamical system, and the use of this matrix as a time-invariant SSM had no known mathematical interpretation. Consequently, the theoretical mechanism by which S4 models long-range dependencies actually remains unexplained. We derive a more general and intuitive formulation of the HiPPO framework, which provides a simple mathematical interpretation of S4 as a decomposition onto exponentially-warped Legendre polynomials, explaining its ability to capture long dependencies. Our generalization introduces a theoretically rich class of SSMs that also lets us derive more intuitive S4 variants for other bases such as the Fourier basis, and explains other aspects of training S4, such as how to initialize the important timescale parameter. These insights improve S4's performance to 86% on the Long Range Arena benchmark, with 96% on the most difficult Path-X task.",
+    "authors": [
+        "Albert Gu",
+        "Isys Johnson",
+        "Aman Timalsina",
+        "A. Rudra",
+        "Christopher R\u00e9"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": "A more general and intuitive formulation of the HiPPO framework is derived, which provides a simple mathematical interpretation of S4 as a decomposition onto exponentially-warped Legendre polynomials, explaining its ability to capture long dependencies.",
+    "citationCount": 50,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
 }

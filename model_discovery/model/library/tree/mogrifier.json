@@ -1,13 +1,21 @@
 {
-    "title": "Mogrifier LSTM",
     "acronym": "mogrifier",
+    "title": "Mogrifier LSTM",
+    "seed_ids": [],
     "s2id": "3c615eb1bfbd7c25202fa3e1b851973608ae2a73",
     "abstract": "Lithium-ion battery health and remaining useful life (RUL) are essential indicators for reliable operation. Currently, most of the RUL prediction methods proposed for lithium-ion batteries use data-driven methods, but the length of training data limits data-driven strategies. To solve this problem and improve the safety and reliability of lithium-ion batteries, a Li-ion battery RUL prediction method based on iterative transfer learning (ITL) and Mogrifier long and short-term memory network (Mogrifier LSTM) is proposed. Firstly, the capacity degradation data in the source and target domain lithium battery historical lifetime experimental data are extracted, the sparrow search algorithm (SSA) optimizes the variational modal decomposition (VMD) parameters, and several intrinsic mode function (IMF) components are obtained by decomposing the historical capacity degradation data using the optimization-seeking parameters. The highly correlated IMF components are selected using the maximum information factor. Capacity sequence reconstruction is performed as the capacity degradation information of the characterized lithium battery, and the reconstructed capacity degradation information of the source domain battery is iteratively input into the Mogrifier LSTM to obtain the pre-training model; finally, the pre-training model is transferred to the target domain to construct the lithium battery RUL prediction model. The method\u2019s effectiveness is verified using CALCE and NASA Li-ion battery datasets, and the results show that the ITL-Mogrifier LSTM model has higher accuracy and better robustness and stability than other prediction methods.",
+    "authors": [
+        "Zihan Li",
+        "Fang Bai",
+        "Hongfu Zuo",
+        "Y. Zhang"
+    ],
     "venue": "Batteries",
     "year": 2023,
     "tldr": "The ITL-Mogrifier LSTM model has higher accuracy and better robustness and stability than other prediction methods and is verified using CALCE and NASA Li-ion battery datasets.",
     "citationCount": 4,
     "influentialCitationCount": 0,
-    "seed_ids": [],
-    "code": null
+    "code": "from __future__ import annotations\n\nimport torch\nfrom torch import nn, Tensor\nfrom torch.nn import Module\n\nfrom einops import repeat, pack, unpack\n\n# constants\n\nLinear = nn.Linear\n\ndef exists(v):\n    return v is not None\n\ndef default(v, d):\n    return v if exists(v) else d\n\n# maybe factorized projection\n\ndef weight(\n    dim_in,\n    dim_out,\n    k: int | None = None\n):\n    if not exists(k):\n        return Linear(dim_in, dim_out)\n\n    assert k < dim_in and k < dim_out, 'k must be of relative lower rank'\n\n    return nn.Sequential(\n        Linear(dim_in, k),\n        Linear(k, dim_out)\n    )\n\n# main class\n\nclass Mogrifier(Module):\n    def __init__(\n        self,\n        dim: int,\n        iters = 5,\n        factorize_k: int | None = None,\n        dim_hidden: int | None = None,\n        hidden_factorize_k: int | None = None,\n    ):\n        super().__init__()\n        assert iters > 1\n\n        self.dim = dim\n\n        dim_hidden = default(dim_hidden, dim)\n        self.dim_hidden = dim_hidden\n\n        self.iters = iters\n\n        self.Q = nn.Sequential(\n            weight(dim_hidden, dim, factorize_k),\n            nn.Sigmoid()\n        )\n\n        factorize_k = default(hidden_factorize_k, factorize_k)\n\n        self.R = nn.Sequential(\n            weight(dim, dim_hidden, factorize_k),\n            nn.Sigmoid()\n        )\n\n    def forward(\n        self,\n        inputs: Tensor,\n        hiddens: Tensor,\n        iters: int | None = None\n    ):\n        iters = default(iters, self.iters)\n\n        if inputs.ndim == 3 and hiddens.ndim == 2:\n            hiddens = repeat(hiddens, 'b d -> b n d', n = inputs.shape[-2])\n\n        assert inputs.shape[-1] == self.dim\n        assert hiddens.shape[-1] == self.dim_hidden\n        assert inputs.shape[:-2] == hiddens.shape[:-2]\n\n        (inputs, packed_shape), (hiddens, _) = tuple(pack([t], '* d') for t in (inputs, hiddens))\n\n        for ind in range(self.iters):\n            is_even = (ind % 2) == 0\n\n            if is_even:\n                inputs = 2 * self.Q(hiddens) * inputs\n            else:\n                hiddens = 2 * self.R(inputs) * hiddens\n\n        inputs, hiddens = tuple(unpack(t, packed_shape, '* d')[0] for t in (inputs, hiddens))\n        return inputs, hiddens",
+    "description": null,
+    "url": null
 }

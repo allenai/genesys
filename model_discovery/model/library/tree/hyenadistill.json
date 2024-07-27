@@ -1,0 +1,37 @@
+{
+    "acronym": "hyenadistill",
+    "title": "Laughing Hyena Distillery: Extracting Compact Recurrences From Convolutions",
+    "seed_ids": [
+        "gqa",
+        "resurrectrnn",
+        "hyena",
+        "dssm",
+        "mqa"
+    ],
+    "s2id": "cb0ac335adda4ceef9987cbcbca9129e71c37f0a",
+    "abstract": "Recent advances in attention-free sequence models rely on convolutions as alternatives to the attention operator at the core of Transformers. In particular, long convolution sequence models have achieved state-of-the-art performance in many domains, but incur a significant cost during auto-regressive inference workloads -- naively requiring a full pass (or caching of activations) over the input sequence for each generated token -- similarly to attention-based models. In this paper, we seek to enable $\\mathcal O(1)$ compute and memory cost per token in any pre-trained long convolution architecture to reduce memory footprint and increase throughput during generation. Concretely, our methods consist in extracting low-dimensional linear state-space models from each convolution layer, building upon rational interpolation and model-order reduction techniques. We further introduce architectural improvements to convolution-based layers such as Hyena: by weight-tying the filters across channels into heads, we achieve higher pre-training quality and reduce the number of filters to be distilled. The resulting model achieves 10x higher throughput than Transformers and 1.5x higher than Hyena at 1.3B parameters, without any loss in quality after distillation.",
+    "authors": [
+        "Stefano Massaroli",
+        "Michael Poli",
+        "Daniel Y. Fu",
+        "Hermann Kumbong",
+        "Rom N. Parnichkun",
+        "Aman Timalsina",
+        "David W. Romero",
+        "Quinn McIntyre",
+        "Beidi Chen",
+        "A. Rudra",
+        "Ce Zhang",
+        "Christopher R\u00e9",
+        "Stefano Ermon",
+        "Y. Bengio"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": "This paper seeks to enable compute and memory cost per token in any pre-trained long convolution architecture to reduce memory footprint and increase throughput during generation, and introduces architectural improvements to convolution-based layers such as Hyena.",
+    "citationCount": 10,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

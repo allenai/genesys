@@ -75,91 +75,106 @@ NODE_SIZE_MAP={
 
 LIBRARY_DIR = '/home/junyanc/model_discovery/model_discovery/model/library'
 
-PAPER_COLOR = '#AF47D2'
-PWC_COLOR = '#FB773C' # paper with code
+REFERENCE_COLOR = '#AF47D2'
+RWC_COLOR = '#FB773C' # reference with code
 
 
 @dataclass
-class PaperObject:
-    title: str
+class NodeObject:
     acronym: str
-    s2id: str
-    abstract: str
-    venue: str
-    year: int
-    tldr: str
-    # embedding: list
-    citationCount: int
-    influentialCitationCount: int
+    title: str
     seed_ids: List[str]
-    code: str = None
 
-    def __post_init__(self):
-        code_dir=U.pjoin(LIBRARY_DIR,'base',self.acronym,self.acronym+'_edu.py')
-        if U.pexists(code_dir):
-            self.code=open(code_dir,'r').read()
-        else:
-            self.code=None
-
-    def to_dict(self) -> Dict:
-        return asdict(self)
-    
     @property
     def type(self) -> str:
-        if self.code is not None:
-            return 'PaperWithCode'
-        else:
-            return 'Paper'
+        return self.__class__.__name__
+    
+    def to_dict(self) -> Dict:
+        return asdict(self)
 
     @classmethod
     def from_dict(cls, dict: Dict):
         return cls(**dict)
     
     @classmethod
-    def load(cls, tree_dir: str, id:str):
-        with open(U.pjoin(tree_dir,id+'.json'),'r') as f:
+    def load(cls, save_dir: str, acronym:str):
+        with open(U.pjoin(save_dir,acronym+'.json'),'r') as f:
             return cls.from_dict(json.load(f))
 
-    def save(self,tree_dir: str):
-        os.makedirs(tree_dir, exist_ok=True)
-        with open(U.pjoin(tree_dir,self.acronym+'.json'),'w') as f:
+    def save(self,save_dir: str):
+        os.makedirs(save_dir, exist_ok=True)
+        with open(U.pjoin(save_dir,self.acronym+'.json'),'w') as f:
             json.dump(self.to_dict(),f,indent=4)
 
     def to_desc(self) -> str:
-        title=self.title.replace(':',' ')
-        abstract=self.abstract.replace(':',' ').replace('.','.\n')
-        tldr=self.tldr.replace(':',' ').replace(',',',\n')
-        venue=self.venue.replace(':',' ')
-        if not venue: venue='arXiv'
-        mdtext=f'# {title}\nS2 ID {self.s2id}\n\n## TL;DR {tldr}\n\n##Abstract\n{abstract}\n\n## Published at {venue} in {self.year}\n\n## Cited {self.citationCount} times\n\n## Impactful citations {self.influentialCitationCount}'
-        return mdtext
-
+        raise NotImplementedError
 
 @dataclass
-class DesignArtifact:
-    title: str
-    acronym: str # id
+class LibraryReference(NodeObject):
+    s2id: str = None
+    abstract: str = None
+    authors: List[str] = None
+    venue: str = None
+    year: int = None
+    tldr: str = None
+    # embedding: list
+    citationCount: int = None
+    influentialCitationCount: int = None
+    code: str = None
+    description: str = None
+    url: str = None
+
+    def __post_init__(self):
+        py_dir=U.pjoin(LIBRARY_DIR,'base',self.acronym,self.acronym+'_edu.py')
+        go_dir=U.pjoin(LIBRARY_DIR,'base',self.acronym,self.acronym+'_edu.go')
+        if U.pexists(py_dir):
+            self.code=f'# {self.acronym}_edu.py\n\n'+open(py_dir,'r').read()
+        elif U.pexists(go_dir):
+            self.code=f'// {self.acronym}_edu.go\n\n'+open(go_dir,'r').read()
+        else:
+            self.code=None
+
+    @property
+    def type(self) -> str:
+        if self.code is not None:
+            return 'ReferenceWithCode'
+        else:
+            return 'Reference'
+
+    def to_desc(self) -> str:
+        mdtext=f'# {self.title}'
+        if self.s2id:
+            mdtext+=f'\n* S2 ID {self.s2id} *'
+        if self.authors:
+            authors=', '.join(self.authors)
+            mdtext+=f'\n* Authors: {authors} *'
+        if self.tldr:
+            tldr=self.tldr.replace(',',',\n')
+            mdtext+=f'\n\n* TL;DR {tldr} *'
+        if self.abstract:
+            abstract=self.abstract.replace('.','.\n')
+            mdtext+=f'\n\n## Abstract\n{abstract}'
+        if self.venue:
+            mdtext+=f'\n\n* Published at {self.venue} in {self.year} *'
+            mdtext+=f'\n* Cited {self.citationCount} times *'
+            mdtext+=f'\n* Impactful citations {self.influentialCitationCount} *'
+        if self.description:
+            description=self.description.replace('.','.\n')
+            mdtext+=f'\n\n## Description\n{description}'
+        return mdtext.replace(':','')
+    
+
+@dataclass
+class DesignArtifact(NodeObject):
     code: str
     rawcode: str
     explain: str
     scale: str
     summary: str
     instruct: str
-    seed_ids: List[str]
     rating: int
     review: str
     costs: Dict[str,float]
-
-    def to_dict(self) -> Dict:
-        return asdict(self)
-    
-    @property
-    def type(self) -> str:
-        return self.__class__.__name__
-    
-    @classmethod
-    def from_dict(cls, dict: Dict) -> DesignArtifact:
-        return cls(**dict)
 
     def save(self,db_dir: str):
         U.mkdir(U.pjoin(db_dir,self.acronym))
@@ -199,12 +214,12 @@ class DesignArtifact:
         mdtext=f'# {title} ({self.scale})\n\n{summary}\n\n## Rating\n{self.rating} out of 5'
         return mdtext
     
-class PhylogeneticTree:
+class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     # Read from a design base and construct a phylogenetic tree
     def __init__(self, db_dir: str):
         self.G = nx.DiGraph()
         self.db_dir = db_dir
-        self.paper_dir = U.pjoin(LIBRARY_DIR,'tree')
+        self.lib_dir = U.pjoin(LIBRARY_DIR,'tree')
         U.mkdir(db_dir)
         self.load()
 
@@ -232,7 +247,22 @@ class PhylogeneticTree:
             if self.G.nodes[node]['data'].type=='DesignArtifact':
                 nodes.append(node)
         return nodes
-
+    
+    def add_non_redundant_edges(self,edges):
+        G=self.G.copy()
+        for seed_id, product_id in edges:
+            if nx.has_path(G, product_id, seed_id):
+                continue # avoid the cycle
+            G.add_edge(seed_id, product_id)
+            
+        for seed_id, product_id in edges:
+            if seed_id != product_id and nx.has_path(G, seed_id, product_id):
+                if len(nx.shortest_path(G, source=seed_id, target=product_id)) > 1:
+                    continue  # The edge is redundant, skip adding
+            if nx.has_path(self.G, product_id, seed_id):
+                continue # avoid the cycle
+            self.G.add_edge(seed_id, product_id)
+    
     def load(self):
         edges_to_add = []
         for id in os.listdir(self.db_dir):
@@ -241,15 +271,14 @@ class PhylogeneticTree:
             for seed_id in artifact.seed_ids:
                 edges_to_add.append((seed_id, artifact.acronym))
         
-        for id in os.listdir(self.paper_dir):
+        for id in os.listdir(self.lib_dir):
             id=id.split('.')[0]
-            paper = PaperObject.load(self.paper_dir, id)
-            self.G.add_node(paper.acronym, data=paper)
-            for seed_id in paper.seed_ids:
-                edges_to_add.append((seed_id, paper.acronym))
-
-        for seed_id, product_id in edges_to_add:
-            self.G.add_edge(seed_id, product_id)
+            ref = LibraryReference.load(self.lib_dir, id)
+            self.G.add_node(ref.acronym, data=ref)
+            for seed_id in ref.seed_ids:
+                edges_to_add.append((seed_id, ref.acronym))
+            
+        self.add_non_redundant_edges(edges_to_add)
 
     def viz(self,G,height=5000,width="100%",layout=False): # larger canvas may be needed for large trees
         nt=Network(
@@ -273,14 +302,14 @@ class PhylogeneticTree:
                 if data.seed_ids == []:
                     color=ROOT_COLOR
                 size=NODE_SIZE_MAP[scale]
-            elif data.type=='Paper':
-                color=PAPER_COLOR
+            elif data.type=='Reference':
+                color=REFERENCE_COLOR
                 citations=data.citationCount
-                size=5*max(1,int(np.log10(citations+1)))+10
-            elif data.type=='PaperWithCode':
-                color=PWC_COLOR
+                size=5*max(1,int(np.log10(citations+1)))+10 if citations else 10
+            elif data.type=='ReferenceWithCode':
+                color=RWC_COLOR
                 citations=data.citationCount
-                size=5*max(1,int(np.log10(citations+1)))+10
+                size=5*max(1,int(np.log10(citations+1)))+10 if citations else 10
             G.add_node(
                 node,
                 title=data.to_desc(),

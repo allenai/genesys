@@ -1,16 +1,34 @@
 {
-    "title": "Perceiver IO: A General Architecture for Structured Inputs & Outputs",
     "acronym": "perceiverio",
+    "title": "Perceiver IO: A General Architecture for Structured Inputs & Outputs",
+    "seed_ids": [
+        "linformer",
+        "transformer"
+    ],
     "s2id": "9933a5af7895354087baf6c96b64dc8a8973eaed",
     "abstract": "A central goal of machine learning is the development of systems that can solve many problems in as many data domains as possible. Current architectures, however, cannot be applied beyond a small set of stereotyped settings, as they bake in domain&task assumptions or scale poorly to large inputs or outputs. In this work, we propose Perceiver IO, a general-purpose architecture that handles data from arbitrary settings while scaling linearly with the size of inputs and outputs. Our model augments the Perceiver with a flexible querying mechanism that enables outputs of various sizes and semantics, doing away with the need for task-specific architecture engineering. The same architecture achieves strong results on tasks spanning natural language and visual understanding, multi-task and multi-modal reasoning, and StarCraft II. As highlights, Perceiver IO outperforms a Transformer-based BERT baseline on the GLUE language benchmark despite removing input tokenization and achieves state-of-the-art performance on Sintel optical flow estimation with no explicit mechanisms for multiscale correspondence.",
+    "authors": [
+        "Andrew Jaegle",
+        "Sebastian Borgeaud",
+        "Jean-Baptiste Alayrac",
+        "Carl Doersch",
+        "Catalin Ionescu",
+        "David Ding",
+        "Skanda Koppula",
+        "Andrew Brock",
+        "Evan Shelhamer",
+        "Olivier J. H'enaff",
+        "M. Botvinick",
+        "Andrew Zisserman",
+        "O. Vinyals",
+        "Jo\u00e3o Carreira"
+    ],
     "venue": "International Conference on Learning Representations",
     "year": 2021,
     "tldr": "This work proposes Perceiver IO, a general-purpose architecture that handles data from arbitrary settings while scaling linearly with the size of inputs and outputs and augments the Perceiver with a flexible querying mechanism that enables outputs of various sizes and semantics, doing away with the need for task-specific architecture engineering.",
     "citationCount": 458,
     "influentialCitationCount": 46,
-    "seed_ids": [
-        "linformer",
-        "transformer"
-    ],
-    "code": null
+    "code": null,
+    "description": null,
+    "url": null
 }

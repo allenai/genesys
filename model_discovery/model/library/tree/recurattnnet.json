@@ -1,13 +1,6 @@
 {
-    "title": "Recurrent Attention Networks for Long-text Modeling",
     "acronym": "recurattnnet",
-    "s2id": "b1fc02780a21bc0f61d8d8e70a8e8f6987c06bb0",
-    "abstract": "Self-attention-based models have achieved remarkable progress in short-text mining. However, the quadratic computational complexities restrict their application in long text processing. Prior works have adopted the chunking strategy to divide long documents into chunks and stack a self-attention backbone with the recurrent structure to extract semantic representation. Such an approach disables parallelization of the attention mechanism, significantly increasing the training cost and raising hardware requirements. Revisiting the self-attention mechanism and the recurrent structure, this paper proposes a novel long-document encoding model, Recurrent Attention Network (RAN), to enable the recurrent operation of self-attention. Combining the advantages from both sides, the well-designed RAN is capable of extracting global semantics in both token-level and document-level representations, making it inherently compatible with both sequential and classification tasks, respectively. Furthermore, RAN is computationally scalable as it supports parallelization on long document processing. Extensive experiments demonstrate the long-text encoding ability of the proposed RAN model on both classification and sequential tasks, showing its potential for a wide range of applications.",
-    "venue": "Annual Meeting of the Association for Computational Linguistics",
-    "year": 2023,
-    "tldr": "A novel long-document encoding model, Recurrent Attention Network (RAN), is proposed to enable the recurrent operation of self-attention and is capable of extracting global semantics in both token-level and document-level representations, making it inherently compatible with both sequential and classification tasks, respectively.",
-    "citationCount": 9,
-    "influentialCitationCount": 0,
+    "title": "Recurrent Attention Networks for Long-text Modeling",
     "seed_ids": [
         "brt",
         "roformer",
@@ -15,5 +8,24 @@
         "transformer",
         "bert"
     ],
-    "code": null
+    "s2id": "b1fc02780a21bc0f61d8d8e70a8e8f6987c06bb0",
+    "abstract": "Self-attention-based models have achieved remarkable progress in short-text mining. However, the quadratic computational complexities restrict their application in long text processing. Prior works have adopted the chunking strategy to divide long documents into chunks and stack a self-attention backbone with the recurrent structure to extract semantic representation. Such an approach disables parallelization of the attention mechanism, significantly increasing the training cost and raising hardware requirements. Revisiting the self-attention mechanism and the recurrent structure, this paper proposes a novel long-document encoding model, Recurrent Attention Network (RAN), to enable the recurrent operation of self-attention. Combining the advantages from both sides, the well-designed RAN is capable of extracting global semantics in both token-level and document-level representations, making it inherently compatible with both sequential and classification tasks, respectively. Furthermore, RAN is computationally scalable as it supports parallelization on long document processing. Extensive experiments demonstrate the long-text encoding ability of the proposed RAN model on both classification and sequential tasks, showing its potential for a wide range of applications.",
+    "authors": [
+        "Xianming Li",
+        "Zongxi Li",
+        "Xiaotian Luo",
+        "Haoran Xie",
+        "Xing Lee",
+        "Yingbin Zhao",
+        "Fu Lee Wang",
+        "Qing Li"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": "A novel long-document encoding model, Recurrent Attention Network (RAN), is proposed to enable the recurrent operation of self-attention and is capable of extracting global semantics in both token-level and document-level representations, making it inherently compatible with both sequential and classification tasks, respectively.",
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
 }

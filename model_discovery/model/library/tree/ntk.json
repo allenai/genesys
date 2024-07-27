@@ -1,0 +1,20 @@
+{
+    "acronym": "ntk",
+    "title": "NTK-Aware Scaled RoPE",
+    "seed_ids": [
+        "roformer"
+    ],
+    "s2id": null,
+    "abstract": null,
+    "authors": [
+        "bloc97"
+    ],
+    "venue": null,
+    "year": 2023,
+    "tldr": null,
+    "citationCount": null,
+    "influentialCitationCount": null,
+    "code": null,
+    "description": "The \"NTK-Aware Scaled RoPE\" project aims to extend the context size of LLaMA models beyond 8k tokens without fine-tuning and with minimal perplexity degradation. Traditional methods like RoPE interpolation often fail to distinguish between closely positioned tokens, leading to performance issues. By applying Neural Tangent Kernel (NTK) theory, this new method uses a nonlinear interpolation scheme that changes the RoPE's base rather than its scale, allowing for accurate distinction of token positions. This approach enables the LLaMA 7B model to handle longer contexts (up to 12k tokens) with minimal perplexity degradation, without fine-tuning. Initial tests show promising results, suggesting that further fine-tuning could enhance performance even more. The method provides a new way to extend the context window size efficiently, potentially benefiting tasks like long document summarization. The author encourages further experimentation and innovation in this area.",
+    "url": "https://www.reddit.com/r/LocalLLaMA/comments/14lz7j5/ntkaware_scaled_rope_allows_llama_models_to_have"
+}

@@ -1,13 +1,6 @@
 {
-    "title": "Block-State Transformers",
     "acronym": "bst",
-    "s2id": "0a067fab18c67d4a386efa846c080f8afff5e8f3",
-    "abstract": "State space models (SSMs) have shown impressive results on tasks that require modeling long-range dependencies and efficiently scale to long sequences owing to their subquadratic runtime complexity. Originally designed for continuous signals, SSMs have shown superior performance on a plethora of tasks, in vision and audio; however, SSMs still lag Transformer performance in Language Modeling tasks. In this work, we propose a hybrid layer named Block-State Transformer (BST), that internally combines an SSM sublayer for long-range contextualization, and a Block Transformer sublayer for short-term representation of sequences. We study three different, and completely parallelizable, variants that integrate SSMs and block-wise attention. We show that our model outperforms similar Transformer-based architectures on language modeling perplexity and generalizes to longer sequences. In addition, the Block-State Transformer demonstrates more than tenfold increase in speed at the layer level compared to the Block-Recurrent Transformer when model parallelization is employed.",
-    "venue": "Neural Information Processing Systems",
-    "year": 2023,
-    "tldr": "This work proposes a hybrid layer named Block-State Transformer (BST), that internally combines an SSM sublayer for long-range contextualization, and a Block Transformer sub layer for short-term representation of sequences and shows that the model outperforms similar Transformer-based architectures on language modeling perplexity and generalizes to longer sequences.",
-    "citationCount": 7,
-    "influentialCitationCount": 0,
+    "title": "Block-State Transformers",
     "seed_ids": [
         "hyena",
         "gssm",
@@ -19,5 +12,22 @@
         "transformerxl",
         "transformer"
     ],
-    "code": null
+    "s2id": "0a067fab18c67d4a386efa846c080f8afff5e8f3",
+    "abstract": "State space models (SSMs) have shown impressive results on tasks that require modeling long-range dependencies and efficiently scale to long sequences owing to their subquadratic runtime complexity. Originally designed for continuous signals, SSMs have shown superior performance on a plethora of tasks, in vision and audio; however, SSMs still lag Transformer performance in Language Modeling tasks. In this work, we propose a hybrid layer named Block-State Transformer (BST), that internally combines an SSM sublayer for long-range contextualization, and a Block Transformer sublayer for short-term representation of sequences. We study three different, and completely parallelizable, variants that integrate SSMs and block-wise attention. We show that our model outperforms similar Transformer-based architectures on language modeling perplexity and generalizes to longer sequences. In addition, the Block-State Transformer demonstrates more than tenfold increase in speed at the layer level compared to the Block-Recurrent Transformer when model parallelization is employed.",
+    "authors": [
+        "Mahan Fathi",
+        "Jonathan Pilault",
+        "Pierre-Luc Bacon",
+        "C. Pal",
+        "Orhan Firat",
+        "Ross Goroshin"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": "This work proposes a hybrid layer named Block-State Transformer (BST), that internally combines an SSM sublayer for long-range contextualization, and a Block Transformer sub layer for short-term representation of sequences and shows that the model outperforms similar Transformer-based architectures on language modeling perplexity and generalizes to longer sequences.",
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": "\"\"\"Unstructured filters and convolutions.\"\"\"\nimport jax\nfrom jax import numpy as jnp\nfrom einops import rearrange\n\nfrom .modules import dense, get_bias, get_init_context, positional_emb, BRecT\nfrom .config import alpha\n\nwin_length = 512  # (w)\nseq_length = 4096  # (l)\n\ndef get_filters_unstruct(channels):\n    \"\"\"Returns trainable filters and biases.\n\n    Args:\n        channels: number of filters.\n\n    Returns:\n        h: filter of shape (seq_length, channels, dim)\n        b: bias of shape (channels, dim)\n    \"\"\"\n    t = jnp.linspace(0.0, 1.0, seq_length)\n    h = jnp.exp(-alpha * t) * dense(positional_emb(t))\n    b = get_bias()\n    return h, b\n\ndef multichannel_convolution(u, h, b):\n    \"\"\"Multichannel convolution function.\n\n    Args:\n        u: input of shape (seq_length, dim)\n        h: filters of shape (seq_length, channels, dim)\n        b: bias of shape (channels, dim)\n    \"\"\"\n    h = rearrange(h, \"l c d -> c d l\")\n    fft_size = seq_length * 2\n    u_f = jnp.fft.rfft(u, n=fft_size)\n    h_f = jnp.fft.rfft(h, n=fft_size)\n    y = jnp.fft.irfft(h_f * u_f, n=fft_size, norm=\"forward\")[..., :seq_length]  # (c, d, l)\n    y = y + u * b[..., None]  # (c, d, l)\n    y = rearrange(y, \"c d l -> l d c\")\n    return y\n\n\"\"\"Context state collection for BST-SH variant.\"\"\"\nnum_heads = 8  # (h)\nnum_states = 32  # (s)\n\ndef SH_context_states(u):\n    \"\"\"Single-Head Context Collection.\"\"\"\n    h, b = get_filters_unstruct(channels=1)\n    y_1 = multichannel_convolution(u, h, b)  # y_1: (l, d, 1)\n    y_h = dense(y_1)  # lift to multiple heads, y_h: (l, d, h)\n    context_states = jnp.split(y_h, seq_length // win_length, axis=0)\n    return context_states  # (l/w, w, d, h)\n\n\"\"\"Context state collection for BST-MH variant.\"\"\"\n\ndef MH_context_states(u):\n    \"\"\"Multi-Head Context Collection.\"\"\"\n    h, b = get_filters_unstruct(channels=num_heads)\n    y_h = multichannel_convolution(u, h, b)  # y_h: (l, d, h)\n    context_states = jnp.split(y_h, seq_length // win_length, axis=0)\n    return context_states  # (l/w, w, d, h)\n\n\"\"\"Context state collection for BST-MF variant.\"\"\"\n\ndef MF_context_states(u):\n    \"\"\"Multi-Filter Context Collection.\"\"\"\n    h, b = get_filters_unstruct(channels=num_states)\n    y_s = multichannel_convolution(u, h, b)  # y_s: (l, d, s)\n    context_states = jnp.split(y_s, seq_length // win_length, axis=0)  # (l/w, w, d, s)\n    context_states = context_states[:, -1, ...]  # collect the last context states, (l/w, d, s)\n    context_states = rearrange(context_states, \"lw d s -> lw s d\")  # shift context states\n    context_states = jnp.roll(context_states, 1, axis=1)  # corresponding to windows\n    init_context = get_init_context(num_states)  # replace the initial window with trainable weights, (d, s)\n    context_states[0] = init_context\n    context_states = dense(context_states)  # lift to multiple heads\n    return context_states  # (l/w, s, d, h)\n\n\"\"\"Block-State Transformer Layer.\"\"\"\n\nblock_transformer = jax.vmap(BRecT.nonrecurrent_cell)\n\ndef BST(u):\n    \"\"\"Block-State Transformer Layer.\"\"\"\n    global MF  # True if Multi-Filter, False otherwise (SH/MH)\n    u = jnp.split(u, seq_length // win_length, axis=0)  # split inputs into windows (l/w, w, d)\n    context_states = SH_context_states(u) if not MF else MH_context_states(u) if num_heads > 1 else MF_context_states(u)  # collect context states from SSM outputs\n    y = block_transformer(  # pass the contexts in place of recurrent states\n        token_embeddings=u,\n        recurrent_state=context_states,\n        use_cross_attn_causal_mask=not MF,\n        use_cross_positional_emb=MF,  # context IDs\n    )\n    return rearrange(y, \"lw w d -> (lw w) d\")  # (l, d)\n",
+    "description": null,
+    "url": null
 }

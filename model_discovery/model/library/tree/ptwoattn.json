@@ -1,0 +1,31 @@
+{
+    "acronym": "ptwoattn",
+    "title": "Pretraining without attention",
+    "seed_ids": [
+        "h3",
+        "mega",
+        "gssm",
+        "s4d",
+        "flash",
+        "s4",
+        "fnet",
+        "longformer",
+        "bert"
+    ],
+    "s2id": "a128b1c47e6842605fb95bceae930d2135fc38fc",
+    "abstract": "Transformers have been essential to pretraining success in NLP. While other architectures have been used, downstream accuracy is either significantly worse, or requires attention layers to match standard benchmarks such as GLUE. This work explores pretraining without attention by using recent advances in sequence routing based on state-space models (SSMs). Our proposed model, Bidirectional Gated SSM (BiGS), combines SSM layers with a multiplicative gating architecture that has been effective in simplified sequence modeling architectures. The model learns static layers that do not consider pair-wise interactions. Even so, BiGS is able to match BERT pretraining accuracy on GLUE and can be extended to long-form pretraining of 4096 tokens without approximation. Analysis shows that while the models have similar average accuracy, the approach has different inductive biases than BERT in terms of interactions and syntactic representations. All models from this work are available at https://github.com/jxiw/BiGS.",
+    "authors": [
+        "Junxiong Wang",
+        "J. Yan",
+        "Albert Gu",
+        "Alexander M. Rush"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": "This work explores pretraining without attention by using recent advances in sequence routing based on state-space models (SSMs), and proposes a proposed model, Bidirectional Gated SSM (BiGS), that combines SSM layers with a multiplicative gating architecture that has been effective in simplified sequence modeling architectures.",
+    "citationCount": 35,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

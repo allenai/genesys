@@ -1,0 +1,28 @@
+{
+    "acronym": "stablessm",
+    "title": "StableSSM: Alleviating the Curse of Memory in State-space Models through Stable Reparameterization",
+    "seed_ids": [
+        "mamba",
+        "ssmlayernonlin",
+        "retnet",
+        "rwkv4",
+        "resurrectrnn",
+        "hyena",
+        "s4",
+        "hippo"
+    ],
+    "s2id": "9c5062743eaace5c1ff822bba819031f05cd3106",
+    "abstract": "In this paper, we investigate the long-term memory learning capabilities of state-space models (SSMs) from the perspective of parameterization. We prove that state-space models without any reparameterization exhibit a memory limitation similar to that of traditional RNNs: the target relationships that can be stably approximated by state-space models must have an exponential decaying memory. Our analysis identifies this\"curse of memory\"as a result of the recurrent weights converging to a stability boundary, suggesting that a reparameterization technique can be effective. To this end, we introduce a class of reparameterization techniques for SSMs that effectively lift its memory limitations. Besides improving approximation capabilities, we further illustrate that a principled choice of reparameterization scheme can also enhance optimization stability. We validate our findings using synthetic datasets, language models and image classifications.",
+    "authors": [
+        "Shida Wang",
+        "Qianxiao Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": "This paper introduces a class of reparameterization techniques for SSMs that effectively lift its memory limitations and illustrates that a principled choice of reparameterization scheme can also enhance optimization stability.",
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

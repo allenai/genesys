@@ -1,13 +1,6 @@
 {
-    "title": "DINOISER: Diffused Conditional Sequence Learning by Manipulating Noises ",
     "acronym": "dinoiser",
-    "s2id": "020a50f6a7154850ac81e3cde69ad8198ded6751",
-    "abstract": "While diffusion models have achieved great success in generating continuous signals such as images and audio, it remains elusive for diffusion models in learning discrete sequence data like natural languages. Although recent advances circumvent this challenge of discreteness by embedding discrete tokens as continuous surrogates, they still fall short of satisfactory generation quality. To understand this, we first dive deep into the denoised training protocol of diffusion-based sequence generative models and determine their three severe problems, i.e., 1) failing to learn, 2) lack of scalability, and 3) neglecting source conditions. We argue that these problems can be boiled down to the pitfall of the not completely eliminated discreteness in the embedding space, and the scale of noises is decisive herein. In this paper, we introduce DINOISER to facilitate diffusion models for sequence generation by manipulating noises. We propose to adaptively determine the range of sampled noise scales for counter-discreteness training; and encourage the proposed diffused sequence learner to leverage source conditions with amplified noise scales during inference. Experiments show that DINOISER enables consistent improvement over the baselines of previous diffusion-based sequence generative models on several conditional sequence modeling benchmarks thanks to both effective training and inference strategies. Analyses further verify that DINOISER can make better use of source conditions to govern its generative process.",
-    "venue": "arXiv.org",
-    "year": 2023,
-    "tldr": "DINOISER is introduced to facilitate diffusion models for sequence generation by manipulating noises to adaptively determine the range of sampled noise scales for counter-discreteness training; and encourage the proposed diffused sequence learner to leverage source conditions with amplified noise scales during inference.",
-    "citationCount": 27,
-    "influentialCitationCount": 2,
+    "title": "DINOISER: Diffused Conditional Sequence Learning by Manipulating Noises ",
     "seed_ids": [
         "contdiffu",
         "selfcondembdiffu",
@@ -16,5 +9,21 @@
         "diffusionlm",
         "transformer"
     ],
-    "code": null
+    "s2id": "020a50f6a7154850ac81e3cde69ad8198ded6751",
+    "abstract": "While diffusion models have achieved great success in generating continuous signals such as images and audio, it remains elusive for diffusion models in learning discrete sequence data like natural languages. Although recent advances circumvent this challenge of discreteness by embedding discrete tokens as continuous surrogates, they still fall short of satisfactory generation quality. To understand this, we first dive deep into the denoised training protocol of diffusion-based sequence generative models and determine their three severe problems, i.e., 1) failing to learn, 2) lack of scalability, and 3) neglecting source conditions. We argue that these problems can be boiled down to the pitfall of the not completely eliminated discreteness in the embedding space, and the scale of noises is decisive herein. In this paper, we introduce DINOISER to facilitate diffusion models for sequence generation by manipulating noises. We propose to adaptively determine the range of sampled noise scales for counter-discreteness training; and encourage the proposed diffused sequence learner to leverage source conditions with amplified noise scales during inference. Experiments show that DINOISER enables consistent improvement over the baselines of previous diffusion-based sequence generative models on several conditional sequence modeling benchmarks thanks to both effective training and inference strategies. Analyses further verify that DINOISER can make better use of source conditions to govern its generative process.",
+    "authors": [
+        "Jiasheng Ye",
+        "Zaixiang Zheng",
+        "Yu Bao",
+        "Lihua Qian",
+        "Mingxuan Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": "DINOISER is introduced to facilitate diffusion models for sequence generation by manipulating noises to adaptively determine the range of sampled noise scales for counter-discreteness training; and encourage the proposed diffused sequence learner to leverage source conditions with amplified noise scales during inference.",
+    "citationCount": 27,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
 }

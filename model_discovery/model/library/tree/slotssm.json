@@ -1,0 +1,27 @@
+{
+    "acronym": "slotssm",
+    "title": "Slot State Space Models",
+    "seed_ids": [
+        "memtaskwm",
+        "mamba",
+        "hippo",
+        "transformer"
+    ],
+    "s2id": "4cfbf0d0740e94e6b1aeeddbb5fbaae03a9029cc",
+    "abstract": "Recent State Space Models (SSMs) such as S4, S5, and Mamba have shown remarkable computational benefits in long-range temporal dependency modeling. However, in many sequence modeling problems, the underlying process is inherently modular and it is of interest to have inductive biases that mimic this modular structure. In this paper, we introduce SlotSSMs, a novel framework for incorporating independent mechanisms into SSMs to preserve or encourage separation of information. Unlike conventional SSMs that maintain a monolithic state vector, SlotSSMs maintains the state as a collection of multiple vectors called slots. Crucially, the state transitions are performed independently per slot with sparse interactions across slots implemented via the bottleneck of self-attention. In experiments, we evaluate our model in object-centric video understanding, 3D visual reasoning, and video prediction tasks, which involve modeling multiple objects and their long-range temporal dependencies. We find that our proposed design offers substantial performance gains over existing sequence modeling methods.",
+    "authors": [
+        "Jindong Jiang",
+        "Fei Deng",
+        "Gautam Singh",
+        "Minseung Lee",
+        "Sungjin Ahn"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "SlotSSMs is introduced, a novel framework for incorporating independent mechanisms into SSMs to preserve or encourage separation of information and it is found that the proposed design offers substantial performance gains over existing sequence modeling methods.",
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

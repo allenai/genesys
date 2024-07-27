@@ -1,13 +1,6 @@
 {
-    "title": "Resurrecting Recurrent Neural Networks for Long Sequences ",
     "acronym": "resurrectrnn",
-    "s2id": "f393aff1593c2d370ec0ae004910d18e40524967",
-    "abstract": "Recurrent Neural Networks (RNNs) offer fast inference on long sequences but are hard to optimize and slow to train. Deep state-space models (SSMs) have recently been shown to perform remarkably well on long sequence modeling tasks, and have the added benefits of fast parallelizable training and RNN-like fast inference. However, while SSMs are superficially similar to RNNs, there are important differences that make it unclear where their performance boost over RNNs comes from. In this paper, we show that careful design of deep RNNs using standard signal propagation arguments can recover the impressive performance of deep SSMs on long-range reasoning tasks, while also matching their training speed. To achieve this, we analyze and ablate a series of changes to standard RNNs including linearizing and diagonalizing the recurrence, using better parameterizations and initializations, and ensuring proper normalization of the forward pass. Our results provide new insights on the origins of the impressive performance of deep SSMs, while also introducing an RNN block called the Linear Recurrent Unit that matches both their performance on the Long Range Arena benchmark and their computational efficiency.",
-    "venue": "International Conference on Machine Learning",
-    "year": 2023,
-    "tldr": "This paper shows that careful design of deep RNNs using standard signal propagation arguments can recover the impressive performance of deep SSMs on long-range reasoning tasks, whileAlso introducing an RNN block called the Linear Recurrent Unit that matches both their performance on the Long Range Arena benchmark and their computational efficiency.",
-    "citationCount": 146,
-    "influentialCitationCount": 26,
+    "title": "Resurrecting Recurrent Neural Networks for Long Sequences ",
     "seed_ids": [
         "sgconv",
         "s5",
@@ -18,5 +11,23 @@
         "hippo",
         "transformer"
     ],
-    "code": null
+    "s2id": "f393aff1593c2d370ec0ae004910d18e40524967",
+    "abstract": "Recurrent Neural Networks (RNNs) offer fast inference on long sequences but are hard to optimize and slow to train. Deep state-space models (SSMs) have recently been shown to perform remarkably well on long sequence modeling tasks, and have the added benefits of fast parallelizable training and RNN-like fast inference. However, while SSMs are superficially similar to RNNs, there are important differences that make it unclear where their performance boost over RNNs comes from. In this paper, we show that careful design of deep RNNs using standard signal propagation arguments can recover the impressive performance of deep SSMs on long-range reasoning tasks, while also matching their training speed. To achieve this, we analyze and ablate a series of changes to standard RNNs including linearizing and diagonalizing the recurrence, using better parameterizations and initializations, and ensuring proper normalization of the forward pass. Our results provide new insights on the origins of the impressive performance of deep SSMs, while also introducing an RNN block called the Linear Recurrent Unit that matches both their performance on the Long Range Arena benchmark and their computational efficiency.",
+    "authors": [
+        "Antonio Orvieto",
+        "Samuel L. Smith",
+        "Albert Gu",
+        "Anushan Fernando",
+        "Caglar Gulcehre",
+        "Razvan Pascanu",
+        "Soham De"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2023,
+    "tldr": "This paper shows that careful design of deep RNNs using standard signal propagation arguments can recover the impressive performance of deep SSMs on long-range reasoning tasks, whileAlso introducing an RNN block called the Linear Recurrent Unit that matches both their performance on the Long Range Arena benchmark and their computational efficiency.",
+    "citationCount": 146,
+    "influentialCitationCount": 26,
+    "code": null,
+    "description": null,
+    "url": null
 }

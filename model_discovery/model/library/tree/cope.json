@@ -1,17 +1,25 @@
 {
-    "title": "Contextual Position Encoding: Learning to Count What's Important",
     "acronym": "cope",
-    "s2id": "d7ee15521fcfd8704c8422997614b2b22f5e1148",
-    "abstract": "The attention mechanism is a critical component of Large Language Models (LLMs) that allows tokens in a sequence to interact with each other, but is order-invariant. Incorporating position encoding (PE) makes it possible to address by position, such as attending to the i-th token. However, current PE methods use token counts to derive position, and thus cannot generalize to higher levels of abstraction, such as attending to the i-th sentence. In this paper, we propose a new position encoding method, Contextual Position Encoding (CoPE), that allows positions to be conditioned on context by incrementing position only on certain tokens determined by the model. This allows more general position addressing such as attending to the $i$-th particular word, noun, or sentence. We show that CoPE can solve the selective copy, counting and Flip-Flop tasks where popular position embeddings fail, and improves perplexity on language modeling and coding tasks.",
-    "venue": "arXiv.org",
-    "year": 2024,
-    "tldr": "A new position encoding method, Contextual Position Encoding (CoPE), that allows positions to be conditioned on context by incrementing position only on certain tokens determined by the model, and improves perplexity on language modeling and coding tasks.",
-    "citationCount": 5,
-    "influentialCitationCount": 0,
+    "title": "Contextual Position Encoding: Learning to Count What's Important",
     "seed_ids": [
         "roformer",
         "transformer",
         "gpt2"
     ],
-    "code": null
+    "s2id": "d7ee15521fcfd8704c8422997614b2b22f5e1148",
+    "abstract": "The attention mechanism is a critical component of Large Language Models (LLMs) that allows tokens in a sequence to interact with each other, but is order-invariant. Incorporating position encoding (PE) makes it possible to address by position, such as attending to the i-th token. However, current PE methods use token counts to derive position, and thus cannot generalize to higher levels of abstraction, such as attending to the i-th sentence. In this paper, we propose a new position encoding method, Contextual Position Encoding (CoPE), that allows positions to be conditioned on context by incrementing position only on certain tokens determined by the model. This allows more general position addressing such as attending to the $i$-th particular word, noun, or sentence. We show that CoPE can solve the selective copy, counting and Flip-Flop tasks where popular position embeddings fail, and improves perplexity on language modeling and coding tasks.",
+    "authors": [
+        "Olga Golovneva",
+        "Tianlu Wang",
+        "Jason Weston",
+        "Sainbayar Sukhbaatar"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "A new position encoding method, Contextual Position Encoding (CoPE), that allows positions to be conditioned on context by incrementing position only on certain tokens determined by the model, and improves perplexity on language modeling and coding tasks.",
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": "import torch\nimport torch.nn as nn\nimport math\n\n\nclass CoPE(nn.Module):\n    def __init__(self, npos_max, head_dim):\n        super().__init__()\n        self.npos_max = npos_max\n        self.pos_emb = nn.parameter.Parameter(\n        torch.zeros(1, head_dim, npos_max))\n\n    def forward(self, query, attn_logits):\n        # compute positions\n        gates = torch.sigmoid(attn_logits)\n        pos = gates.flip(-1).cumsum(dim = -1).flip(-1)\n        pos = pos.clamp(max = self.npos_max - 1)\n        # interpolate from integer positions\n        pos_ceil = pos.ceil().long()\n        pos_floor = pos.floor().long()\n        logits_int = torch.matmul(query, self.pos_emb)\n        logits_ceil = logits_int.gather(-1, pos_ceil)\n        logits_floor = logits_int.gather(-1, pos_floor)\n        w = pos - pos_floor\n        return logits_ceil * w + logits_floor * (1 - w)\n\nclass SelfAttn(nn.Module):\n    def __init__(self, npos_max, head_dim) :\n        super().__init__()\n        self.cope = CoPE(npos_max, head_dim)\n        self.head_dim = head_dim\n\n    def forward(self, query, key, val, mask):\n        # q, k, v have dimensions batch x seq_len x head_dim\n        attn_logits = torch.bmm(query, key.transpose(-1, -2))\n        attn_logits = attn_logits / math.sqrt(self.head_dim)\n        attn_logits += mask.log()\n        attn_logits += self.cope(query, attn_logits)\n        attn = torch.softmax(attn_logits, dim = -1)\n        out = torch.bmm(attn, val)\n        return out",
+    "description": null,
+    "url": null
 }

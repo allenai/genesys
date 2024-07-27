@@ -1,18 +1,25 @@
 {
-    "title": "Latent Attention for Linear Time Transformers",
     "acronym": "latentattn",
-    "s2id": "2adc906e5d96f79316a53333595eaeb9dc6b3ac3",
-    "abstract": "The time complexity of the standard attention mechanism in a transformer scales quadratically with the length of the sequence. We introduce a method to reduce this to linear scaling with time, based on defining attention via latent vectors. The method is readily usable as a drop-in replacement for the standard attention mechanism. Our\"Latte Transformer\"model can be implemented for both bidirectional and unidirectional tasks, with the causal version allowing a recurrent implementation which is memory and time-efficient during inference of language generation tasks. Whilst next token prediction scales linearly with the sequence length for a standard transformer, a Latte Transformer requires constant time to compute the next token. The empirical performance of our method is comparable to standard attention, yet allows scaling to context windows much larger than practical in standard attention.",
-    "venue": "arXiv.org",
-    "year": 2024,
-    "tldr": "A method to reduce the time complexity of the standard attention mechanism in a transformer to linear scaling with time, based on defining attention via latent vectors is introduced, which allows scaling to context windows much larger than practical in standard attention.",
-    "citationCount": 0,
-    "influentialCitationCount": 0,
+    "title": "Latent Attention for Linear Time Transformers",
     "seed_ids": [
         "mea",
         "s4",
         "lineartransformer",
         "gpt2"
     ],
-    "code": null
+    "s2id": "2adc906e5d96f79316a53333595eaeb9dc6b3ac3",
+    "abstract": "The time complexity of the standard attention mechanism in a transformer scales quadratically with the length of the sequence. We introduce a method to reduce this to linear scaling with time, based on defining attention via latent vectors. The method is readily usable as a drop-in replacement for the standard attention mechanism. Our\"Latte Transformer\"model can be implemented for both bidirectional and unidirectional tasks, with the causal version allowing a recurrent implementation which is memory and time-efficient during inference of language generation tasks. Whilst next token prediction scales linearly with the sequence length for a standard transformer, a Latte Transformer requires constant time to compute the next token. The empirical performance of our method is comparable to standard attention, yet allows scaling to context windows much larger than practical in standard attention.",
+    "authors": [
+        "Rares Dolga",
+        "Marius Cobzarenco",
+        "David Barber"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "A method to reduce the time complexity of the standard attention mechanism in a transformer to linear scaling with time, based on defining attention via latent vectors is introduced, which allows scaling to context windows much larger than practical in standard attention.",
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": "from functools import partial\nimport jax\nimport jax.numpy as jnp\n\n@partial(jax.jit, static_argnums=(3, 5))\ndef causal_latte(Wq, Wk, Wv, H, X, unroll=100):\n    \"\"\"\n    Scan implementation of latte.\n    B: batch size, H: number of heads, T: sequence length, D: hidden dimension, L: latent dimension\n    Args:\n        Wq: jnp.array(D, L) - Query weight matrix\n        Wk: jnp.array(D, L) - Key weight matrix\n        Wv: jnp.array(D, M) - Value weight matrix\n        H: int - number of heads\n        X: jnp.array(B, T, D) - input\n        unroll: int - unroll factor for the loop\n    Returns:\n        y: jnp.array(B, T, D) - transformed output sequence\n    \"\"\"\n\n    def accumulate(carry, args):\n        csum, norm_cumsum, prev_mx = carry\n        Qs_t, curr_alph, V_t, c_mx = args\n\n        revert_maxi = jnp.exp(-c_mx + prev_mx)\n        add_maxi = jnp.exp(curr_alph - c_mx)\n\n        norm_cumsum = jnp.einsum(\"BHL,BHL->BHL\", norm_cumsum, revert_maxi)\n        norm_cumsum += add_maxi\n\n        carry = jnp.einsum(\"BHLD,BHL->BHLD\", csum, revert_maxi)\n        carry += jnp.einsum(\"BHL,BHD->BHLD\", add_maxi, V_t)\n\n        y = jnp.einsum(\"BHL,BHLD->BHD\", Qs_t / norm_cumsum, carry)\n        return ((carry, norm_cumsum, c_mx), y)\n\n    B, T, D = X.shape\n    L = Wk.shape[-1]\n\n    V = jnp.einsum(\"DM,BTD->TBM\", Wv, X).reshape(T, B, H, -1)\n    Q = jnp.einsum(\"DL,BTD->TBL\", Wq, X).reshape(T, B, H, -1)\n    K = jnp.einsum(\"DL,BTD->TBL\", Wk, X).reshape(T, B, H, -1)\n    maxi = jax.lax.cummax(K, axis=0)\n\n    init_alpha = jnp.zeros(shape=(B, H, L // H))\n    init_carry = jnp.zeros((B, H, L // H, D // H))\n    Qs = jax.nn.softmax(Q, axis=-1)\n\n    _, y = jax.lax.scan(\n        accumulate,\n        init=(init_carry, init_alpha, K[0]),\n        xs=[Qs, K, V, maxi],\n        length=T,\n        unroll=unroll\n    )\n\n    # TBHD -> BTHD\n    y = y.transpose(1, 0, 2, 3)\n    return y.reshape(B, T, D)\n",
+    "description": null,
+    "url": null
 }

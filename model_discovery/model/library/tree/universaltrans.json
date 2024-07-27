@@ -1,15 +1,24 @@
 {
-    "title": "Universal Transformers ",
     "acronym": "universaltrans",
+    "title": "Universal Transformers ",
+    "seed_ids": [
+        "transformer"
+    ],
     "s2id": "ac4dafdef1d2b685b7f28a11837414573d39ff4e",
     "abstract": "Recurrent neural networks (RNNs) sequentially process data by updating their state with each new data point, and have long been the de facto choice for sequence modeling tasks. However, their inherently sequential computation makes them slow to train. Feed-forward and convolutional architectures have recently been shown to achieve superior results on some sequence modeling tasks such as machine translation, with the added advantage that they concurrently process all inputs in the sequence, leading to easy parallelization and faster training times. Despite these successes, however, popular feed-forward sequence models like the Transformer fail to generalize in many simple tasks that recurrent models handle with ease, e.g. copying strings or even simple logical inference when the string or formula lengths exceed those observed at training time. We propose the Universal Transformer (UT), a parallel-in-time self-attentive recurrent sequence model which can be cast as a generalization of the Transformer model and which addresses these issues. UTs combine the parallelizability and global receptive field of feed-forward sequence models like the Transformer with the recurrent inductive bias of RNNs. We also add a dynamic per-position halting mechanism and find that it improves accuracy on several tasks. In contrast to the standard Transformer, under certain assumptions, UTs can be shown to be Turing-complete. Our experiments show that UTs outperform standard Transformers on a wide range of algorithmic and language understanding tasks, including the challenging LAMBADA language modeling task where UTs achieve a new state of the art, and machine translation where UTs achieve a 0.9 BLEU improvement over Transformers on the WMT14 En-De dataset.",
+    "authors": [
+        "Mostafa Dehghani",
+        "Stephan Gouws",
+        "O. Vinyals",
+        "Jakob Uszkoreit",
+        "Lukasz Kaiser"
+    ],
     "venue": "International Conference on Learning Representations",
     "year": 2018,
     "tldr": "The Universal Transformer (UT), a parallel-in-time self-attentive recurrent sequence model which can be cast as a generalization of the Transformer model and which addresses issues of parallelizability and global receptive field, is proposed.",
     "citationCount": 673,
     "influentialCitationCount": 65,
-    "seed_ids": [
-        "transformer"
-    ],
-    "code": null
+    "code": null,
+    "description": null,
+    "url": null
 }

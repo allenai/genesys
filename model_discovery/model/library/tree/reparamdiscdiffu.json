@@ -1,13 +1,6 @@
 {
-    "title": "A Reparameterized Discrete Diffusion Model for Text Generation ",
     "acronym": "reparamdiscdiffu",
-    "s2id": "1f898d66acabff511a3871b82799aa73c0055402",
-    "abstract": "This work studies discrete diffusion probabilistic models with applications to natural language generation. We derive an alternative yet equivalent formulation of the sampling from discrete diffusion processes and leverage this insight to develop a family of reparameterized discrete diffusion models. The derived generic framework is highly flexible, offers a fresh perspective of the generation process in discrete diffusion models, and features more effective training and decoding techniques. We conduct extensive experiments to evaluate the text generation capability of our model, demonstrating significant improvements over existing diffusion models.",
-    "venue": "arXiv.org",
-    "year": 2023,
-    "tldr": "This work derives an alternative yet equivalent formulation of the sampling from discrete diffusion processes and leverages this insight to develop a family of reparameterized discrete diffusion models.",
-    "citationCount": 29,
-    "influentialCitationCount": 4,
+    "title": "A Reparameterized Discrete Diffusion Model for Text Generation ",
     "seed_ids": [
         "dinoiser",
         "diffusionbert",
@@ -17,5 +10,20 @@
         "transformer",
         "bert"
     ],
-    "code": null
+    "s2id": "1f898d66acabff511a3871b82799aa73c0055402",
+    "abstract": "This work studies discrete diffusion probabilistic models with applications to natural language generation. We derive an alternative yet equivalent formulation of the sampling from discrete diffusion processes and leverage this insight to develop a family of reparameterized discrete diffusion models. The derived generic framework is highly flexible, offers a fresh perspective of the generation process in discrete diffusion models, and features more effective training and decoding techniques. We conduct extensive experiments to evaluate the text generation capability of our model, demonstrating significant improvements over existing diffusion models.",
+    "authors": [
+        "Lin Zheng",
+        "Jianbo Yuan",
+        "Lei Yu",
+        "Lingpeng Kong"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": "This work derives an alternative yet equivalent formulation of the sampling from discrete diffusion processes and leverages this insight to develop a family of reparameterized discrete diffusion models.",
+    "citationCount": 29,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
 }

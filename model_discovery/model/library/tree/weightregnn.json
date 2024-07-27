@@ -1,0 +1,20 @@
+{
+    "acronym": "weightregnn",
+    "title": "Physics-Guided State-Space Model Augmentation Using Weighted Regularized Neural Networks",
+    "seed_ids": [],
+    "s2id": "9732330db3e9f3fa89caefb8ac538d9f0a8807e6",
+    "abstract": "Physics-guided neural networks (PGNN) is an effective tool that combines the benefits of data-driven modeling with the interpretability and generalization of underlying physical information. However, for a classical PGNN, the penalization of the physics-guided part is at the output level, which leads to a conservative result as systems with highly similar state-transition functions, i.e. only slight differences in parameters, can have significantly different time-series outputs. Furthermore, the classical PGNN cost function regularizes the model estimate over the entire state space with a constant trade-off hyperparameter. In this paper, we introduce a novel model augmentation strategy for nonlinear state-space model identification based on PGNN, using a weighted function regularization (W-PGNN). The proposed approach can efficiently augment the prior physics-based state-space models based on measurement data. A new weighted regularization term is added to the cost function to penalize the difference between the state and output function of the baseline physics-based and final identified model. This ensures the estimated model follows the baseline physics model functions in regions where the data has low information content, while placing greater trust in the data when a high informativity is present. The effectiveness of the proposed strategy over the current PGNN method is demonstrated on a benchmark example.",
+    "authors": [
+        "Yuhan Liu",
+        "Roland T'oth",
+        "M. Schoukens"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "A novel model augmentation strategy for nonlinear state-space model identification based on PGNN, using a weighted function regularization (W-PGNN), which can efficiently augment the prior physics-based state-space models based on measurement data.",
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

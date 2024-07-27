@@ -1,13 +1,19 @@
 {
-    "title": "LoMA: Lossless Compressed Memory Attention",
     "acronym": "loma",
+    "title": "LoMA: Lossless Compressed Memory Attention",
+    "seed_ids": [],
     "s2id": "abd848eb0a37a1625165aa087afe6c148f4f1230",
     "abstract": "Large Language Models (LLMs) face limitations due to the high demand on GPU memory and computational resources when handling long contexts. While sparsify the Key-Value (KV) cache of transformer model is a typical strategy to alleviate resource usage, it unavoidably results in the loss of information. We introduce Lossless Compressed Memory Attention (LoMA), a novel approach that enables lossless compression of the KV cache, thereby reducing the memory and computational demands during autoregressive generation. LoMA incorporates a specialized training or fine-tuning precedure alongside an autoregressive generation algorithm optimized for the compressed context. Our method compresses the KV cache after every $tc$ generated tokens with a compression ratio of $c$ and a target compressed length $t$, and this process occurs within a single inference pass without dependency on auxiliary models. We engineered an efficient training scheme involving specific inputs, attention masks, and position identifiers to instill this compression capability. Experimental validation has demonstrated that LoMA significantly reducing computational consumption and memory usage through achieving lossless KV cache compression.",
+    "authors": [
+        "Yumeng Wang",
+        "Zhenyang Xiao"
+    ],
     "venue": "arXiv.org",
     "year": 2024,
     "tldr": "Lossless Compressed Memory Attention (LoMA) is introduced, a novel approach that enables lossless compression of the KV cache, thereby reducing the memory and computational demands during autoregressive generation.",
     "citationCount": 0,
     "influentialCitationCount": 0,
-    "seed_ids": [],
-    "code": null
+    "code": null,
+    "description": null,
+    "url": null
 }

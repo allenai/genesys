@@ -1,17 +1,31 @@
 {
-    "title": "LOCOST: State-Space Models for Long Document Abstractive Summarization",
     "acronym": "locost",
+    "title": "LOCOST: State-Space Models for Long Document Abstractive Summarization",
+    "seed_ids": [
+        "ptwoattn",
+        "longt5",
+        "fnet",
+        "longformer"
+    ],
     "s2id": "99621f3ce8caf5d99f2b350d53ec8e6c57695bc2",
     "abstract": "State-space models are a low-complexity alternative to transformers for encoding long sequences and capturing long-term dependencies. We propose LOCOST: an encoder-decoder architecture based on state-space models for conditional text generation with long context inputs. With a computational complexity of \\mathcal{O}(L \\log L), this architecture can handle significantly longer sequences than state-of-the-art models that are based on sparse attention patterns. We evaluate our model on a series of long document abstractive summarization tasks. The model reaches a performance level that is 93-96% comparable to the top-performing sparse transformers of the same size while saving up to 50% memory during training and up to 87% during inference. Additionally, LOCOST effectively handles input texts exceeding 600K tokens at inference time, setting new state-of-the-art results on full-book summarization and opening new perspectives for long input processing.",
+    "authors": [
+        "Florian Le Bronnec",
+        "Song Duong",
+        "Mathieu Ravaut",
+        "Alexandre Allauzen",
+        "Nancy F. Chen",
+        "Vincent Guigue",
+        "Alberto Lumbreras",
+        "Laure Soulier",
+        "Patrick Gallinari"
+    ],
     "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
     "year": 2024,
     "tldr": "This work proposes LOCOST: an encoder-decoder architecture based on state-space models for conditional text generation with long context inputs that effectively handles input texts exceeding 600K tokens at inference time, setting new state-of-the-art results on full-book summarization and opening new perspectives for long input processing.",
     "citationCount": 2,
     "influentialCitationCount": 0,
-    "seed_ids": [
-        "longt5",
-        "fnet",
-        "longformer"
-    ],
-    "code": null
+    "code": null,
+    "description": null,
+    "url": null
 }

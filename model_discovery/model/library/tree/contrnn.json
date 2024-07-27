@@ -1,13 +1,19 @@
 {
-    "title": "Modeling Hierarchical Structures with Continuous Recursive Neural Networks ",
     "acronym": "contrnn",
+    "title": "Modeling Hierarchical Structures with Continuous Recursive Neural Networks ",
+    "seed_ids": [],
     "s2id": "db016d2b6d2577c47d62f9de2a7d1ddbf226386a",
     "abstract": "Recursive Neural Networks (RvNNs), which compose sequences according to their underlying hierarchical syntactic structure, have performed well in several natural language processing tasks compared to similar models without structural biases. However, traditional RvNNs are incapable of inducing the latent structure in a plain text sequence on their own. Several extensions have been proposed to overcome this limitation. Nevertheless, these extensions tend to rely on surrogate gradients or reinforcement learning at the cost of higher bias or variance. In this work, we propose Continuous Recursive Neural Network (CRvNN) as a backpropagation-friendly alternative to address the aforementioned limitations. This is done by incorporating a continuous relaxation to the induced structure. We demonstrate that CRvNN achieves strong performance in challenging synthetic tasks such as logical inference and ListOps. We also show that CRvNN performs comparably or better than prior latent structure models on real-world tasks such as sentiment analysis and natural language inference.",
+    "authors": [
+        "Jishnu Ray Chowdhury",
+        "Cornelia Caragea"
+    ],
     "venue": "International Conference on Machine Learning",
     "year": 2021,
     "tldr": "This work proposes Continuous Recursive Neural Network (CRvNN) as a backpropagation-friendly alternative to address the aforementioned limitations of traditional RvNNs by incorporating a continuous relaxation to the induced structure.",
     "citationCount": 11,
     "influentialCitationCount": 1,
-    "seed_ids": [],
-    "code": null
+    "code": null,
+    "description": null,
+    "url": null
 }

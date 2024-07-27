@@ -1,15 +1,26 @@
 {
-    "title": "Generating Wikipedia by Summarizing Long Sequences",
     "acronym": "memcompress",
+    "title": "Generating Wikipedia by Summarizing Long Sequences",
+    "seed_ids": [
+        "transformer"
+    ],
     "s2id": "8691706ad0cf5e83969658b2e6bfffdc379440c9",
     "abstract": "We show that generating English Wikipedia articles can be approached as a multi- document summarization of source documents. We use extractive summarization to coarsely identify salient information and a neural abstractive model to generate the article. For the abstractive model, we introduce a decoder-only architecture that can scalably attend to very long sequences, much longer than typical encoder- decoder architectures used in sequence transduction. We show that this model can generate fluent, coherent multi-sentence paragraphs and even whole Wikipedia articles. When given reference documents, we show it can extract relevant factual information as reflected in perplexity, ROUGE scores and human evaluations.",
+    "authors": [
+        "Peter J. Liu",
+        "Mohammad Saleh",
+        "Etienne Pot",
+        "Ben Goodrich",
+        "Ryan Sepassi",
+        "Lukasz Kaiser",
+        "Noam M. Shazeer"
+    ],
     "venue": "International Conference on Learning Representations",
     "year": 2018,
     "tldr": "It is shown that generating English Wikipedia articles can be approached as a multi- document summarization of source documents and a neural abstractive model is introduced, which can generate fluent, coherent multi-sentence paragraphs and even whole Wikipedia articles.",
     "citationCount": 728,
     "influentialCitationCount": 91,
-    "seed_ids": [
-        "transformer"
-    ],
-    "code": null
+    "code": "import torch\nfrom torch import nn\nimport torch.nn.functional as F\n\n# convolutional compression class\n\nclass ConvCompress(nn.Module):\n    def __init__(self, dim, ratio = 3, groups = 1):\n        super().__init__()\n        self.conv = nn.Conv1d(dim, dim, ratio, stride = ratio, groups = groups)\n\n    def forward(self, mem):\n        mem = mem.transpose(1, 2)\n        compressed_mem = self.conv(mem)\n        return compressed_mem.transpose(1, 2)\n\n# main class\n\nclass MemoryCompressedAttention(nn.Module):\n    def __init__(\n        self,\n        dim,\n        heads = 8,\n        causal = False,\n        compression_factor = 3,\n        dropout = 0.):\n        super().__init__()\n        assert (dim % heads) == 0, 'dimension must be divisible by number of heads'\n\n        self.heads = heads\n        self.causal = causal\n\n        self.compression_factor = compression_factor\n        self.compress_fn = ConvCompress(dim, compression_factor, groups = heads)\n\n        self.to_qkv = nn.Linear(dim, dim * 3, bias = False)\n        self.to_out = nn.Linear(dim, dim)\n\n        self.dropout = nn.Dropout(dropout)\n\n        self.null_k = nn.Parameter(torch.zeros(1, 1, dim))\n        self.null_v = nn.Parameter(torch.zeros(1, 1, dim))\n\n    def forward(self, x, input_mask = None):\n        b, t, d, h, cf, device = *x.shape, self.heads, self.compression_factor, x.device\n        q, k, v = self.to_qkv(x).chunk(3, dim=-1)\n\n        # make sure keys and values sequence lengths\n        # are divisible by the compression factor\n        padding = cf - (t % cf)\n        if padding < cf:\n            k, v = map(lambda t: F.pad(t, (0, 0, padding, 0)), (k, v))\n\n        # compress keys and values\n        k, v = map(self.compress_fn, (k, v))\n\n        # attach a null key and value, in the case that the first query has no keys to pay attention to\n        nk, nv = map(lambda t: t.expand(b, -1, -1), (self.null_k, self.null_v))\n        k = torch.cat((nk, k), dim=1)\n        v = torch.cat((nv, v), dim=1)\n\n        # merge heads\n        q, k, v = map(lambda t: t.reshape(*t.shape[:2], h, -1).transpose(1, 2), (q, k, v))\n\n        # attention\n        dots = torch.einsum('bhid,bhjd->bhij', q, k) * d ** -0.5\n\n        mask_value = -torch.finfo(dots.dtype).max\n\n        # causal masking, if needed\n        if self.causal:\n            mask_q = mask_k = torch.arange(t, device=device)\n\n            if padding < cf:\n                mask_k = F.pad(mask_k, (padding, 0))\n\n            mask_k, _ = mask_k.reshape(-1, cf).max(dim=-1)\n            mask = mask_q[:, None] < mask_k[None, :]\n            mask = F.pad(mask, (1, 0), value=False)\n\n            dots.masked_fill_(mask[None, None, ...], mask_value)\n            del mask\n\n        # input masking\n        if input_mask is not None:\n            mask_q = mask_k = input_mask\n            if padding < cf:\n                mask_k = F.pad(mask_k, (padding, 0), value=True)\n            mask_k = mask_k.reshape(b, -1, cf).sum(dim=-1) > 0\n            mask = mask_q[:, None, :, None] < mask_k[:, None, None, :]\n            mask = F.pad(mask, (1, 0), value=True)\n\n            dots.masked_fill_(~mask, mask_value)\n            del mask\n\n        # attention\n        attn = dots.softmax(dim=-1)\n\n        # dropout\n        attn = self.dropout(attn)\n        out = torch.einsum('bhij,bhjd->bhid', attn, v)\n\n        # split heads and combine\n        out = out.transpose(1, 2).reshape(b, t, d)\n        return self.to_out(out)",
+    "description": null,
+    "url": null
 }

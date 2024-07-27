@@ -1,13 +1,6 @@
 {
-    "title": "State Space Models as Foundation Models: A Control Theoretic Overview",
     "acronym": "ssmfundmodel",
-    "s2id": "2a53d07a399c47151a7b440dacfb3673b9c4e753",
-    "abstract": "In recent years, there has been a growing interest in integrating linear state-space models (SSM) in deep neural network architectures of foundation models. This is exemplified by the recent success of Mamba, showing better performance than the state-of-the-art Transformer architectures in language tasks. Foundation models, like e.g. GPT-4, aim to encode sequential data into a latent space in order to learn a compressed representation of the data. The same goal has been pursued by control theorists using SSMs to efficiently model dynamical systems. Therefore, SSMs can be naturally connected to deep sequence modeling, offering the opportunity to create synergies between the corresponding research areas. This paper is intended as a gentle introduction to SSM-based architectures for control theorists and summarizes the latest research developments. It provides a systematic review of the most successful SSM proposals and highlights their main features from a control theoretic perspective. Additionally, we present a comparative analysis of these models, evaluating their performance on a standardized benchmark designed for assessing a model's efficiency at learning long sequences.",
-    "venue": "arXiv.org",
-    "year": 2024,
-    "tldr": "A systematic review of the most successful SSM proposals and highlights their main features from a control theoretic perspective is provided, and a comparative analysis of these models is presented, evaluating their performance on a standardized benchmark designed for assessing a model's efficiency at learning long sequences.",
-    "citationCount": 5,
-    "influentialCitationCount": 0,
+    "title": "State Space Models as Foundation Models: A Control Theoretic Overview",
     "seed_ids": [
         "hiddenattnmamba",
         "mamba",
@@ -17,5 +10,19 @@
         "s4",
         "hippo"
     ],
-    "code": null
+    "s2id": "2a53d07a399c47151a7b440dacfb3673b9c4e753",
+    "abstract": "In recent years, there has been a growing interest in integrating linear state-space models (SSM) in deep neural network architectures of foundation models. This is exemplified by the recent success of Mamba, showing better performance than the state-of-the-art Transformer architectures in language tasks. Foundation models, like e.g. GPT-4, aim to encode sequential data into a latent space in order to learn a compressed representation of the data. The same goal has been pursued by control theorists using SSMs to efficiently model dynamical systems. Therefore, SSMs can be naturally connected to deep sequence modeling, offering the opportunity to create synergies between the corresponding research areas. This paper is intended as a gentle introduction to SSM-based architectures for control theorists and summarizes the latest research developments. It provides a systematic review of the most successful SSM proposals and highlights their main features from a control theoretic perspective. Additionally, we present a comparative analysis of these models, evaluating their performance on a standardized benchmark designed for assessing a model's efficiency at learning long sequences.",
+    "authors": [
+        "Carmen Amo Alonso",
+        "Jerome Sieber",
+        "M. Zeilinger"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "A systematic review of the most successful SSM proposals and highlights their main features from a control theoretic perspective is provided, and a comparative analysis of these models is presented, evaluating their performance on a standardized benchmark designed for assessing a model's efficiency at learning long sequences.",
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
 }

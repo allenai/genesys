@@ -1,0 +1,29 @@
+{
+    "acronym": "theoryssms",
+    "title": "Theoretical Foundations of Deep Selective State-Space Models",
+    "seed_ids": [
+        "griffin",
+        "gla",
+        "mamba",
+        "gateloop",
+        "retnet",
+        "s4"
+    ],
+    "s2id": "917096f28209ef90c9e6363cf49438341120af5e",
+    "abstract": "Structured state-space models (SSMs) such as S4, stemming from the seminal work of Gu et al., are gaining popularity as effective approaches for modeling sequential data. Deep SSMs demonstrate outstanding performance across a diverse set of domains, at a reduced training and inference cost compared to attention-based transformers. Recent developments show that if the linear recurrence powering SSMs allows for multiplicative interactions between inputs and hidden states (e.g. GateLoop, Mamba, GLA), then the resulting architecture can surpass in both in accuracy and efficiency attention-powered foundation models trained on text, at scales of billion parameters. In this paper, we give theoretical grounding to this recent finding using tools from Rough Path Theory: we show that when random linear recurrences are equipped with simple input-controlled transitions (selectivity mechanism), then the hidden state is provably a low-dimensional projection of a powerful mathematical object called the signature of the input -- capturing non-linear interactions between tokens at distinct timescales. Our theory not only motivates the success of modern selective state-space models such as Mamba but also provides a solid framework to understand the expressive power of future SSM variants.",
+    "authors": [
+        "Nicola Muca Cirone",
+        "Antonio Orvieto",
+        "Benjamin Walker",
+        "C. Salvi",
+        "Terry Lyons"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": "Theoretical grounding is given to this recent finding that when random linear recurrences are equipped with simple input-controlled transitions (selectivity mechanism), then the hidden state is provably a low-dimensional projection of a powerful mathematical object called the signature of the input -- capturing non-linear interactions between tokens at distinct timescales.",
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,13 +1,6 @@
 {
-    "title": "FLuRKA: Fast and accurate unified Low-Rank&Kernel Attention",
     "acronym": "flurka",
-    "s2id": "2fd0aa038cf1009e265e9cbddab8ea6a8e03016a",
-    "abstract": "Many efficient $\\textit{approximate}$ self-attention techniques have become prevalent since the inception of the transformer architecture. Two popular classes of these techniques are low-rank and kernel methods. Each of these methods has its strengths. We observe these strengths synergistically complement each other and exploit them to fuse low-rank and kernel methods, producing a new class of transformers: FLuRKA ($\\textbf{F}$ast $\\textbf{L}$ow-$\\textbf{R}$ank&$\\textbf{K}$ernel$ \\textbf{A}$ttention). FLuRKA are highly $\\textit{training-efficient}$ with faster model speeds $\\textit{and}$ similar model qualities compared to constituent low-rank and kernel methods. We theoretically and empirically evaluate the speed and quality of FLuRKA. Our model speed analysis posits a variety of parameter configurations where FLuRKA exhibit speedups over low-rank and kernel approximations and our model quality analysis bounds the error of FLuRKA with respect to full-attention. Empirically, we instantiate three FLuRKA variants which experience speedups of up to 3.3x and 1.7x over low-rank and kernel methods respectively. This translates to speedups of up to 20x over models with flash-attention. Across a diverse set of tasks spanning language modeling, language understanding, long sequence modeling, machine translation, and image classification, FLuRKA achieve comparable accuracy with underlying low-rank and kernel approximations, occasionally surpassing both.",
-    "venue": "",
-    "year": 2023,
-    "tldr": "This work theoretically and empirically evaluates the speed and quality of FLuRKA, a new class of transformers that achieve comparable accuracy with underlying low-rank and kernel approximations, occasionally surpassing both.",
-    "citationCount": 2,
-    "influentialCitationCount": 0,
+    "title": "FLuRKA: Fast and accurate unified Low-Rank&Kernel Attention",
     "seed_ids": [
         "eva",
         "scatterbrain",
@@ -15,5 +8,21 @@
         "performer",
         "lineartransformer"
     ],
-    "code": null
+    "s2id": "2fd0aa038cf1009e265e9cbddab8ea6a8e03016a",
+    "abstract": "Many efficient $\\textit{approximate}$ self-attention techniques have become prevalent since the inception of the transformer architecture. Two popular classes of these techniques are low-rank and kernel methods. Each of these methods has its strengths. We observe these strengths synergistically complement each other and exploit them to fuse low-rank and kernel methods, producing a new class of transformers: FLuRKA ($\\textbf{F}$ast $\\textbf{L}$ow-$\\textbf{R}$ank&$\\textbf{K}$ernel$ \\textbf{A}$ttention). FLuRKA are highly $\\textit{training-efficient}$ with faster model speeds $\\textit{and}$ similar model qualities compared to constituent low-rank and kernel methods. We theoretically and empirically evaluate the speed and quality of FLuRKA. Our model speed analysis posits a variety of parameter configurations where FLuRKA exhibit speedups over low-rank and kernel approximations and our model quality analysis bounds the error of FLuRKA with respect to full-attention. Empirically, we instantiate three FLuRKA variants which experience speedups of up to 3.3x and 1.7x over low-rank and kernel methods respectively. This translates to speedups of up to 20x over models with flash-attention. Across a diverse set of tasks spanning language modeling, language understanding, long sequence modeling, machine translation, and image classification, FLuRKA achieve comparable accuracy with underlying low-rank and kernel approximations, occasionally surpassing both.",
+    "authors": [
+        "Ahan Gupta",
+        "Hao Guo",
+        "Yueming Yuan",
+        "Yan-Quan Zhou",
+        "Charith Mendis"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": "This work theoretically and empirically evaluates the speed and quality of FLuRKA, a new class of transformers that achieve comparable accuracy with underlying low-rank and kernel approximations, occasionally surpassing both.",
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
 }
