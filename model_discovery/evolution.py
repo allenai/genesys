@@ -18,7 +18,7 @@ from io import StringIO
 import random
 from networkx.drawing.nx_pydot import write_dot
 from pyvis.network import Network
-
+import math
 
 from types import ModuleType
 from typing import (
@@ -149,19 +149,23 @@ class LibraryReference(NodeObject):
             authors=', '.join(self.authors)
             mdtext+=f'\n* Authors: {authors} *'
         if self.tldr:
-            tldr=self.tldr.replace(',',',\n')
-            mdtext+=f'\n\n* TL;DR {tldr} *'
+            # tldr=self.tldr.replace(',',',\n')
+            mdtext+=f'\n\n* TL;DR {self.tldr} *'
         if self.abstract:
             abstract=self.abstract.replace('.','.\n')
             mdtext+=f'\n\n## Abstract\n{abstract}'
         if self.venue:
             mdtext+=f'\n\n* Published at {self.venue} in {self.year} *'
+        if self.citationCount:
             mdtext+=f'\n* Cited {self.citationCount} times *'
+        if self.influentialCitationCount:
             mdtext+=f'\n* Impactful citations {self.influentialCitationCount} *'
         if self.description:
             description=self.description.replace('.','.\n')
             mdtext+=f'\n\n## Description\n{description}'
-        return mdtext.replace(':','')
+        if self.url:
+            mdtext+=f'\n\n* [Link]({self.url}) *'
+        return mdtext.replace(':',' ').replace('e.\ng.\n','e.g.').replace('i.\ne.\n','i.e.')
     
 
 @dataclass
@@ -212,7 +216,7 @@ class DesignArtifact(NodeObject):
         # Join the parts back together
         summary = ''.join(parts)
         mdtext=f'# {title} ({self.scale})\n\n{summary}\n\n## Rating\n{self.rating} out of 5'
-        return mdtext
+        return mdtext.replace('e.\ng.\n','e.g.').replace('i.\ne.\n','i.e.')
     
 class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     # Read from a design base and construct a phylogenetic tree
@@ -248,21 +252,26 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
                 nodes.append(node)
         return nodes
     
-    def add_non_redundant_edges(self,edges):
-        G=self.G.copy()
-        for seed_id, product_id in edges:
-            if nx.has_path(G, product_id, seed_id):
-                continue # avoid the cycle
-            G.add_edge(seed_id, product_id)
+    def remove_redundant_edges(self):
+        G = self.G  # Work directly with self.G
+        topological_order = list(nx.topological_sort(G))
+        redundant_edges = []
+
+        for node in topological_order:
+            # Get all successors of the current node
+            successors = list(G.successors(node))
+            for succ in successors:
+                # Temporarily remove the edge to check for other paths
+                G.remove_edge(node, succ)
+                if nx.has_path(G, node, succ):
+                    redundant_edges.append((node, succ))
+                # Re-add the edge
+                G.add_edge(node, succ)
+
+        # Remove all redundant edges
+        for u, v in redundant_edges:
+            G.remove_edge(u, v)
             
-        for seed_id, product_id in edges:
-            if seed_id != product_id and nx.has_path(G, seed_id, product_id):
-                if len(nx.shortest_path(G, source=seed_id, target=product_id)) > 1:
-                    continue  # The edge is redundant, skip adding
-            if nx.has_path(self.G, product_id, seed_id):
-                continue # avoid the cycle
-            self.G.add_edge(seed_id, product_id)
-    
     def load(self):
         edges_to_add = []
         for id in os.listdir(self.db_dir):
@@ -277,8 +286,14 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             self.G.add_node(ref.acronym, data=ref)
             for seed_id in ref.seed_ids:
                 edges_to_add.append((seed_id, ref.acronym))
+        
+        for seed_id, product_id in edges_to_add:
+            if seed_id == product_id or nx.has_path(self.G, product_id, seed_id):
+                continue
+            self.G.add_edge(seed_id, product_id)
+        
+        self.remove_redundant_edges()
             
-        self.add_non_redundant_edges(edges_to_add)
 
     def viz(self,G,height=5000,width="100%",layout=False): # larger canvas may be needed for large trees
         nt=Network(
@@ -305,11 +320,11 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             elif data.type=='Reference':
                 color=REFERENCE_COLOR
                 citations=data.citationCount
-                size=5*max(1,int(np.log10(citations+1)))+10 if citations else 10
+                size=5*max(0,int(math.log(citations,3)))+10 if citations else 10
             elif data.type=='ReferenceWithCode':
                 color=RWC_COLOR
                 citations=data.citationCount
-                size=5*max(1,int(np.log10(citations+1)))+10 if citations else 10
+                size=5*max(0,int(math.log(citations,3)))+10 if citations else 10
             G.add_node(
                 node,
                 title=data.to_desc(),
