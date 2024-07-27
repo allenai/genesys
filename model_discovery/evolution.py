@@ -733,7 +733,7 @@ if __name__ == '__main__':
         strparams=';'.join(strparams),
         cache_type='diskcache',
     )
-    test_evolve('evo_test_003',step=False)
+    # test_evolve('evo_test_003',step=False)
 
 
     code_MHA='''
@@ -776,22 +776,22 @@ class GAB(GABBase):
         # output = self.conv(X.permute(0,2,1)).permute(0,2,1)
         return output 
     
-def gab_config()->dict: 
-    """Returns a dictionary of hyperparameters for constructing a GAB layer
-        embed_dim, device, dtype should not be included in the dictionary which will be provided by the system
-    """
-    return {
-        'n_heads': 8,
-        'ff_dim': None,  # This will be set to 4 * embed_dim in the GAB class
-        'dropout': 0.1
-    }
+gab_config = {
+    'n_heads': 8,
+    'ff_dim': None,  # This will be set to 4 * embed_dim in the GAB class
+    'dropout': 0.1
+}
 '''
+
+    code_retnet_dir='/home/junyanc/model_discovery/model_discovery/model/library/base/retnet/retnet_edu.py'
+    code_RetNet=open(code_retnet_dir,'r').read()
 
     checker=evolution_system.rnd_agent.checker
     cfg=evolution_system.rnd_agent._cfg
     design_name='test_design'
+
     code=code_MHA
-    # checkpass,check_report = checker.check(cfg,code,design_name)
+    checkpass,check_report,gabcode = checker.check(cfg,code,design_name)
 
 
     

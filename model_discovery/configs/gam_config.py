@@ -2,7 +2,9 @@ from dataclasses import dataclass, field, asdict
 from typing import List, Dict, Optional
 from transformers import PretrainedConfig, AutoTokenizer
 
-
+# A default, benchmark setting for checker to apply
+DEFAULT_TOKENIZER = 'meta-llama/Llama-2-7b-hf'
+DEFAULT_CONTEXT_LENGTH = 2048
 
 @dataclass
 class GAMConfig(PretrainedConfig):
@@ -14,7 +16,7 @@ class GAMConfig(PretrainedConfig):
     reference_size: int # a reference param num based on GPT
     training_data: List[str]
     batch_tokens: int 
-    context_length: int = 2048
+    context_length: int = DEFAULT_CONTEXT_LENGTH
     eval_tasks: List[str] = field(default_factory=lambda: [
         "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande",
         "blimp", # "blimp_filtered","blimp_supplement"
@@ -23,7 +25,7 @@ class GAMConfig(PretrainedConfig):
     # training_token_multiplier: int = 20 # Now desinated by ve args
     training_weight: Dict[str, List[float]] = None
     size_threshold: float = 0.2 # e.g. Pythia 410M vs GPT 350M
-    tokenizer: str = 'meta-llama/Llama-2-7b-hf'
+    tokenizer: str = DEFAULT_TOKENIZER
     rms_norm: bool = True ### triton stuff
     residual_in_fp32: bool = True
     fused_add_norm: bool = True

@@ -127,6 +127,15 @@ def split_heads(tensors, bsz, seqlen, num_heads):
         ]
 
 
+def pad_to_block_length(X, block_len):
+    pad_len = (block_len - X.shape[1] % block_len) % block_len
+    if pad_len > 0:
+        padding = torch.zeros(X.shape[0], pad_len, *X.shape[2:], dtype=X.
+            dtype, device=X.device)
+        X = torch.cat([X, padding], dim=1)
+    return X
+
+
 class MultiScaleRetention(nn.Module):
 
     def __init__(self, embed_dim, heads, use_bias=False, tensor_parallel=
@@ -343,12 +352,17 @@ class GAB(GABBase):
             =dtype)
 
     def _forward(self, X, **kwargs):
+        _slen = X.shape[1]
+        if self.mode == 'blockwise':
+            X = pad_to_block_length(X, self.chunk_size)
         slen = X.shape[1]
         retention_rel_pos = self.retnet_rel_pos(slen, get_decay_scale=not
             self.training, forward_impl=self.mode)
         X = self.layer_norm_1(X)
         Y, _ = self.retention(X, retention_rel_pos, forward_impl=self.mode)
         Y = Y + X
+        if self.mode == 'blockwise':
+            Y = Y[:, :_slen]
         X = self.ffn(self.layer_norm_2(Y)) + Y
         return X
 
@@ -356,4 +370,4 @@ class GAB(GABBase):
 """ The dictionary of hyperparameters for constructing a GAB layer
     embed_dim, device, dtype should NOT be included in gab_config
 """
-gab_config = {'heads': 8, 'chunk_size': 64, 'mode': 'recurrent'}
+gab_config = {'heads': 8, 'chunk_size': 64, 'mode': 'chunkwise'}

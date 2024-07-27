@@ -1,8 +1,8 @@
 import inspect
-from .obj.ttt import ttt
-from .obj.mamba2 import mamba2
-from .obj.rwkv6 import rwkv6
-from .obj.retnet import retnet
+from .base.ttt import ttt
+from .base.mamba2 import mamba2
+from .base.rwkv6 import rwkv6
+from .base.retnet import retnet
 
 
 MODEL2CODE = {

@@ -19,7 +19,7 @@ from model_discovery.ve.run import parser as ve_parser
 from model_discovery import utils as U
 
 
-LIBRARY_PATH = os.path.dirname(os.path.abspath(__file__))
+LIBRARY_PATH = U.pjoin(os.path.dirname(os.path.abspath(__file__)),'base')
 print(LIBRARY_PATH)
 ckpt_dir=os.environ.get("CKPT_DIR")
 

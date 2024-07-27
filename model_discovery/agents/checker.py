@@ -6,6 +6,8 @@ import torch.nn as nn
 import torch.optim as optim
 import importlib
 import exec_utils
+import numpy as np
+import os
 
 from ..model.loader import reload_gam
 
@@ -13,6 +15,15 @@ import ast
 import astor
 import inspect
 import traceback
+from datasets import load_dataset
+
+from transformers import TrainingArguments, DataCollatorForLanguageModeling
+
+from model_discovery.configs.gam_config import DEFAULT_CONTEXT_LENGTH,DEFAULT_TOKENIZER
+from model_discovery.ve.data_loader import load_datasets_args
+from model_discovery.ve.modis_trainer import ModisTrainer
+import model_discovery.utils as U
+
 
 class GABFormatChecker:
     def __init__(self):
@@ -255,6 +266,63 @@ class GABFormatChecker:
         return not bool(self.errors),report,self.gab_code
 
 
+class EffectiveChecker:
+    def __init__(self):
+        self.errors = []
+        self.warnings = []
+        self.ds, self.tokenizer = load_datasets_args(
+            DEFAULT_TOKENIZER,
+            DEFAULT_CONTEXT_LENGTH,
+            ['wikitext2']
+        )
+        self.data_collator = DataCollatorForLanguageModeling(self.tokenizer, mlm=False)
+
+
+    def check_training(self, config, model) -> None:
+        per_device_batch_size=32 #(config.batch_tokens // config.context_length)
+        ckpt_dir=os.environ.get("CKPT_DIR")
+
+        with U.CodeTimer("Training check setup"):
+            training_args=TrainingArguments(
+                output_dir=f'{ckpt_dir}/temp/ve/effective_check',
+                overwrite_output_dir=True,
+                learning_rate=config.learning_rate,
+                save_strategy='no',
+                max_steps=5,
+                per_device_train_batch_size=per_device_batch_size,
+                auto_find_batch_size=True, # for safety
+                optim="adamw_hf",
+                logging_steps=1,
+                dataloader_num_workers=16,
+                dataloader_pin_memory=True,
+                tf32=True,
+                ddp_find_unused_parameters=False,  # Set this to False
+                lr_scheduler_type="cosine_with_min_lr",
+                lr_scheduler_kwargs={
+                    "min_lr_rate": 0.1, 
+                },
+                warmup_ratio=0.02,
+                report_to="none",
+            )
+            trainer = ModisTrainer(
+                model=model,
+                train_dataset=self.ds["train"],
+                tokenizer=self.tokenizer,
+                args=training_args,
+                data_collator=self.data_collator,
+            )
+            trainer.args._n_gpu = 1
+        with U.CodeTimer("Training check running"):
+            output=trainer.train()
+        run_time=output.metrics['train_runtime']
+        loss=output.training_loss
+        losses=[log['loss'] for log in trainer.state.log_history]
+
+    def reset(self):
+        self.errors.clear()
+        self.warnings.clear()
+
+
 __all__ = [
     "Checker"
 ]
@@ -281,6 +349,7 @@ class Checker(exec_utils.BaseTool):
     def __init__(self):
         self.report = ''
         self.format_checker = GABFormatChecker()
+        self.effective_checker = EffectiveChecker()
 
     def rprint(self, msg) -> None:
         """Log information of check and adds to report 
@@ -289,7 +358,8 @@ class Checker(exec_utils.BaseTool):
             The debug and report message.
  
         """
-        self.logging.info(msg)
+        # self.logging.info(msg)
+        print(msg)
         self.report += msg+'\n'
 
     def reset(self) -> None:
@@ -371,9 +441,12 @@ class Checker(exec_utils.BaseTool):
         return True
     
 
-    def _check_efficiency(self, model, vocab_size: int) -> bool:
+    def _check_effectiveness(self, model, config) -> bool:
+        self.rprint('Checking effectiveness...')
 
-        raise NotImplementedError
+        self.effective_checker.check_training(config, model)        
+        # raise NotImplementedError
+        return True
     
     
     def _check_format_and_reformat(self, gab_code: str) -> bool:
@@ -402,9 +475,17 @@ class Checker(exec_utils.BaseTool):
           torch.cuda.is_available() else torch.randint(0, vocab_size, (2, 2048))
         emb.eval()
         gab.eval()
-        with torch.no_grad():
-            input=emb(mock_input)
-            output = gab(input)
+        try:
+            with torch.no_grad():
+                input=emb(mock_input)
+                output = gab(input)
+        except Exception as e:
+            error_trace = traceback.format_exc()
+            self.rprint(
+                'Error: Forward pass failed with error: '+str(e)+'\n'
+                'Full Traceback: \n' + error_trace
+            )
+            return False
         if output.shape != input.shape:
             self.rprint(
                 f'Error: The output shape of GAB should be the same as the input. Expected {mock_input.shape}, got {output.shape}.'
@@ -421,63 +502,69 @@ class Checker(exec_utils.BaseTool):
             The path of the proposed module 
         """
         self.reset()
-        self.rprint('Checking the designed model...')
-        try:
-            checkpass,gab_code = self._check_format_and_reformat(gab_code)
-            assert checkpass
-        except AssertionError:
-            return False,self.report,gab_code
+        with U.CodeTimer("Format checking"):
+            self.rprint('Checking the designed model...')
+            try:
+                checkpass,gab_code = self._check_format_and_reformat(gab_code)
+                assert checkpass
+            except AssertionError:
+                return False,self.report,gab_code
         
-        try: 
-            exec(gab_code,globals())
+        with U.CodeTimer("Model initialization"):
+            try: 
+                exec(gab_code,globals())
+                if torch.cuda.is_available():
+                    glm,_ = reload_gam(config,gab_code,name,dtype=torch.bfloat16, device="cuda") # intentially use bfloat16 to check whether the model is correctly defined
+                else:
+                    glm,_ = reload_gam(config,gab_code,name,dtype=torch.float16, device="cpu")
+                mock_input=torch.randint(0, config.vocab_size, (8, 2048))
+                mock_input = mock_input.to(glm.device)
+                output = glm(mock_input)
+        
+            except Exception as e:
+                error_trace = traceback.format_exc()
+                self.rprint(
+                    'Error: Model initialization failed with error: '+str(e)+'\n'
+                    'Full Traceback: \n' + error_trace + '\n'
+                    'Hint: 1. if it is a dtype or device error, check whether the factory kwargs are passed to the layers. '
+                    '2. If it is a shape error, check whether the output shape is equal to the input shape. The output shape of GAB should be the same as the input.'
+                )
+                return False,self.report,gab_code
+        
+            ### check model size 
+            glm,_ = reload_gam(config,gab_code,name) # reload the model with regular dtype and device
             if torch.cuda.is_available():
-                glm,_ = reload_gam(config,gab_code,name,dtype=torch.bfloat16, device="cuda") # intentially use bfloat16 to check whether the model is correctly defined
-            else:
-                glm,_ = reload_gam(config,gab_code,name,dtype=torch.float16, device="cpu")
-            mock_input=torch.randint(0, config.vocab_size, (8, 2048))
-            mock_input = mock_input.to(glm.device)
-            output = glm(mock_input)
-    
-        except Exception as e:
-            error_trace = traceback.format_exc()
+                glm = glm.cuda()    
+            gam = glm.backbone
+            gab = gam.blocks[0].gab
             self.rprint(
-                'Error: Model initialization failed with error: '+str(e)+'\n'
-                'Full Traceback: \n' + error_trace + '\n'
-                'Hint: 1. if it is a dtype or device error, check whether the factory kwargs are passed to the layers. '
-                '2. If it is a shape error, check whether the output shape is equal to the input shape. The output shape of GAB should be the same as the input.'
+                f'Model initialization succeeded.\n'
+                f'{glm.print_size(printout=False)}'
             )
-            return False,self.report,gab_code
-        
-        ### check model size 
-        glm,_ = reload_gam(config,gab_code,name) # reload the model with regular dtype and device
-        if torch.cuda.is_available():
-            glm = glm.cuda()    
-        gam = glm.backbone
-        gab = gam.blocks[0].gab
-        self.rprint(
-            f'Model initialization succeeded.\n'
-            f'{glm.print_size(printout=False)}'
-        )
 
         # Functional checks
-        try:
-            checkpass1=self._check_forward_pass(
-                gab,
-                gam.embedding,
-                config.vocab_size
-            )
-            checkpass2=self._is_causal(
-                gab,
-                gam.d_model
-            )
-            checkpass3=self._check_differentiable(glm,config.vocab_size)
-            assert checkpass1 and checkpass2 and checkpass3
-        except AssertionError:
-            self.rprint('Model test failed\n')
-            if not checkpass2:
-                self.rprint('Hint: If you used convolutional layer, you should consider that the conv kernel may cover the future steps. '
-                            'You can add padding and truncation of future steps to the conv layer to make it causal.\n')
-            return False,self.report,gab_code
+        with U.CodeTimer("Model tests"):
+            checkpass2=False
+            try:
+                checkpass1=self._check_forward_pass(
+                    gab,
+                    gam.embedding,
+                    config.vocab_size
+                )
+                assert checkpass1
+                checkpass2=self._is_causal(
+                    gab,
+                    gam.d_model
+                )
+                checkpass3=self._check_differentiable(glm,config.vocab_size)
+                checkpass4=self._check_effectiveness(glm,config)
+                assert checkpass2 and checkpass3 and checkpass4
+            except AssertionError:
+                self.rprint('Model test failed\n')
+                if not checkpass2:
+                    self.rprint('Hint: If you used convolutional layer, you should consider that the conv kernel may cover the future steps. '
+                                'You can add padding and truncation of future steps to the conv layer to make it causal.\n')
+                return False,self.report,gab_code
 
         self.rprint("All tests passed!\n")
         return True,self.report,gab_code

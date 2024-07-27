@@ -1,7 +1,7 @@
 import os
 import transformers
 
-from huggingface_hub import login
+# from huggingface_hub import login
 from transformers import AutoTokenizer
 from datasets import (
     load_dataset,
@@ -15,6 +15,7 @@ from typing import List
 
 from ..configs.gam_config import GAMConfig
 from .. import utils as U
+
 
 def get_tokenizer(tokenizer_name):
     tokenizer=AutoTokenizer.from_pretrained(tokenizer_name)
@@ -113,9 +114,15 @@ def load_tinystories(tokenizer_name, context_length):
     }
     return load_dataset("text", data_files=data_files)
 
+@pretokenize_dataset('wikitext-2')
+def load_wikitext2(tokenizer_name, context_length):
+    return load_dataset('wikitext','wikitext-2-v1')
+
+
 loaders={
     'babylm'      :load_babylm,
-    'tinystories' :load_tinystories
+    'tinystories' :load_tinystories,
+    'wikitext2'  :load_wikitext2
 }
 
 def load_datasets(cfg: GAMConfig): # weights e.g. {'train':[1.5,1.0]} for two datasets
@@ -130,5 +137,19 @@ def load_datasets(cfg: GAMConfig): # weights e.g. {'train':[1.5,1.0]} for two da
     ]
     tokenizer=get_tokenizer(cfg.tokenizer)
     dataset=combine_datasets(dataset_dicts, cfg.training_weight)
-    assert 'train' in dataset and 'valid' in dataset, "Dataset must have 'train' and 'valid' keys, and optionally a 'test' key"
+    # assert 'train' in dataset and 'valid' in dataset, "Dataset must have 'train' and 'valid' keys, and optionally a 'test' key"
+    assert 'train' in dataset, "Dataset must have 'train' key"
+    return dataset,tokenizer
+
+def load_datasets_args(tokenizer,context_length,training_data,training_weight=None):
+    dataset_dicts = [
+        loaders[dataset](
+            tokenizer_name=tokenizer,
+            context_length=context_length
+        ) for dataset in training_data
+    ]
+    tokenizer=get_tokenizer(tokenizer)
+    dataset=combine_datasets(dataset_dicts, training_weight)
+    # assert 'train' in dataset and 'valid' in dataset, "Dataset must have 'train' and 'valid' keys, and optionally a 'test' key"
+    assert 'train' in dataset, "Dataset must have 'train' key"
     return dataset,tokenizer

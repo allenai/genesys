@@ -2,7 +2,7 @@
 
 import inspect
 
-from .design_base.mamba_simple import *
+from .example_designs.mamba_simple import *
 
 from .block_registry import BlockRegister
 
