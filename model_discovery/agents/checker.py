@@ -8,6 +8,7 @@ import importlib
 import exec_utils
 import numpy as np
 import os
+import platform
 
 from ..model.loader import reload_gam
 
@@ -266,10 +267,64 @@ class GABFormatChecker:
         return not bool(self.errors),report,self.gab_code
 
 
-class EffectiveChecker:
+def get_system_info_str():
+    system_info=''
+    # CPU Information
+    cpu_info = {
+        'Processor': platform.processor(),
+        'Machine': platform.machine(),
+        'Platform': platform.platform(),
+        'System': platform.system(),
+        'Version': platform.version(),
+    }
+    # print("CPU Info:", cpu_info)
+    system_info+=f'{cpu_info["Processor"]}'       
+
+    # GPU Information
+    if torch.cuda.is_available():
+        gpu_info = []
+        for i in range(torch.cuda.device_count()):
+            gpu_info.append({
+                'Device': torch.cuda.get_device_name(i),
+                'Memory': f"{torch.cuda.get_device_properties(i).total_memory / (1024 ** 3):.2f} GB",
+                'Capability': torch.cuda.get_device_capability(i),
+            })
+        gpu_info = gpu_info[0] # test on 1 gpu
+        system_info+=f' {gpu_info["Device"]} {gpu_info["Memory"]}'
+
+    return system_info
+
+
+BENCHMARK_MODEL = '''
+import torch.nn as nn
+from mamba_ssm.modules.mha import MHA
+from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMPORT STATEMENT #
+from model_discovery.model.utils.modules import MLP 
+
+class GAB(GABBase):
+    def __init__(self,embed_dim: int, n_heads, device=None,dtype=None,**kwargs):
+        factory_kwargs = {"device": device, "dtype": dtype} # remember to pass it to nn layers
+        super().__init__()
+        self.fn = MHA(embed_dim, n_heads, causal=True, **factory_kwargs)
+        self.fn2 = MLP(embed_dim, 4*embed_dim, embed_dim, **factory_kwargs)
+        self.norm1 = nn.LayerNorm(embed_dim, **factory_kwargs)
+        self.norm2 = nn.LayerNorm(embed_dim, **factory_kwargs)
+
+    def _forward(self,X,**kwargs): # type hints are optional but recommended
+        X = self.fn(self.norm1(X))+X
+        X = self.fn2(self.norm2(X))+X
+        return X
+    
+gab_config = {'n_heads':8}
+'''
+
+
+
+class EffectiveChecker: # WORING IN PROGRESS
     def __init__(self):
         self.errors = []
         self.warnings = []
+        self.results = {}
         self.ds, self.tokenizer = load_datasets_args(
             DEFAULT_TOKENIZER,
             DEFAULT_CONTEXT_LENGTH,
@@ -277,19 +332,40 @@ class EffectiveChecker:
         )
         self.data_collator = DataCollatorForLanguageModeling(self.tokenizer, mlm=False)
 
+    def get_benchmark(self,config):
+        return {}
 
     def check_training(self, config, model) -> None:
-        per_device_batch_size=32 #(config.batch_tokens // config.context_length)
-        ckpt_dir=os.environ.get("CKPT_DIR")
+        sysinfo=get_system_info_str()
+        benchmark=U.load_json(f'./agent/checker_benchmark.json')
+        if 'training' not in benchmark:
+            benchmark['training']={}
+        if sysinfo not in benchmark['training']:
+            self.get_benchmark(config)
 
+        run_time,loss,gradient_of_losses=self.test_training(config,model)
+        if gradient_of_losses>0:
+            self.errors.append('The model is not training correctly. The loss is not decreasing. ')
+        if torch.isnan(loss):
+            self.errors.append('The model is not training correctly. The loss is NaN. ')
+        # if run_time>benchmark['run_time']*10:
+        #     self.errors.append('The model is not efficient. The training time is too long. ')
+
+    def check_complexity(self, config, model) -> None:
+        # let the model inference with different input size and see whether the time is linearly increased
+        raise NotImplementedError
+
+    def test_training(self, config, model):
+        # TODO: maybe use profiler to get more metrics
         with U.CodeTimer("Training check setup"):
+            ckpt_dir=os.environ.get("CKPT_DIR")
             training_args=TrainingArguments(
                 output_dir=f'{ckpt_dir}/temp/ve/effective_check',
                 overwrite_output_dir=True,
                 learning_rate=config.learning_rate,
                 save_strategy='no',
                 max_steps=5,
-                per_device_train_batch_size=per_device_batch_size,
+                per_device_train_batch_size=8,
                 auto_find_batch_size=True, # for safety
                 optim="adamw_hf",
                 logging_steps=1,
@@ -314,13 +390,34 @@ class EffectiveChecker:
             trainer.args._n_gpu = 1
         with U.CodeTimer("Training check running"):
             output=trainer.train()
+        
         run_time=output.metrics['train_runtime']
         loss=output.training_loss
         losses=[log['loss'] for log in trainer.state.log_history]
+        gradient_of_losses=np.gradient(losses).mean()
+        return run_time,loss,gradient_of_losses
 
     def reset(self):
         self.errors.clear()
         self.warnings.clear()
+
+    def _report_errors(self) -> bool:
+        if self.errors:
+            report='Errors:\n\n'+'\n'.join(self.errors)
+        else:
+            report='The model is effective.\n'
+        if self.warnings:
+            report+='\n\nWarnings:\n\n'+'\n'.join(self.warnings)
+        return not bool(self.errors),report,self.results
+    
+    def check(self, config, model) -> bool:
+        self.reset()
+        self.check_training(config,model)
+        # self.check_complexity(config,model)
+
+        return self._report_errors()
+
+
 
 
 __all__ = [
@@ -443,10 +540,9 @@ class Checker(exec_utils.BaseTool):
 
     def _check_effectiveness(self, model, config) -> bool:
         self.rprint('Checking effectiveness...')
-
-        self.effective_checker.check_training(config, model)        
-        # raise NotImplementedError
-        return True
+        checkpass,errors,results=self.effective_checker.check(config, model)    
+        self.rprint(errors)
+        return checkpass,results
     
     
     def _check_format_and_reformat(self, gab_code: str) -> bool:
@@ -473,6 +569,7 @@ class Checker(exec_utils.BaseTool):
         self.rprint('Checking forward pass...')
         mock_input = torch.randint(0, vocab_size, (2, 2048)).cuda() if \
           torch.cuda.is_available() else torch.randint(0, vocab_size, (2, 2048))
+        mock_input = mock_input.to(gab.device, gab.dtype)
         emb.eval()
         gab.eval()
         try:
@@ -532,9 +629,6 @@ class Checker(exec_utils.BaseTool):
                 return False,self.report,gab_code
         
             ### check model size 
-            glm,_ = reload_gam(config,gab_code,name) # reload the model with regular dtype and device
-            if torch.cuda.is_available():
-                glm = glm.cuda()    
             gam = glm.backbone
             gab = gam.blocks[0].gab
             self.rprint(
