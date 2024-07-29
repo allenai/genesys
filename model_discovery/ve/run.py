@@ -323,9 +323,10 @@ def get_eval_results(output_dir):
         return None
 
 def run_eval(args):
-    if args.resume and get_eval_results(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"):
-        print(f"Model {args.design_id} is already evaluated")
-        return
+    ### NOTE: Remember to uncomment the following 3 lines
+    # if args.resume and get_eval_results(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"):
+    #     print(f"Model {args.design_id} is already evaluated")
+    #     return
     print("Evaluation Start")
     cfg=eval(f"GAMConfig_{args.scale}()")
     sys.argv = [
@@ -339,7 +340,8 @@ def run_eval(args):
         "--cache_requests", "true",
         # "--wandb_args", "project=modis",
     ]
-    notebook_launcher(cli_evaluate, num_processes=args.n_gpus, use_port=args.port)
+    gab,gab_config=BlockRegister.load_block(args.gab_name)
+    notebook_launcher(cli_evaluate, args=(None,gab,gab_config), num_processes=args.n_gpus, use_port=args.port)
     
 def evalu(args):
     if args.PERF_PROF_MODE: return
@@ -422,8 +424,8 @@ def main(args):
     train(args)
     evalu(args)
     report(args)
-    util_logger.info(f"Total time: {(time.perf_counter() - start):.1f} s")
-
+    # util_logger.info(f"Total time: {(time.perf_counter() - start):.1f} s")
+    print(f"Total time: {(time.perf_counter() - start):.1f} s")
     
 
 if __name__ == "__main__":
@@ -431,9 +433,9 @@ if __name__ == "__main__":
     
     args.evoname = "ve_test"
     args.design_id = "test"
-    args.resume = False
+    args.resume = True
     # args.n_gpus = 1
-    args.PERF_PROF_MODE = True
+    args.PERF_PROF_MODE = False
     args.port="25986"
 
     main(args)

@@ -29,7 +29,9 @@ class ModisEvalWrapper(HFLM):
     def __init__(
             self,
             pretrained,
-            gab_name,
+            # gab_name,
+            gab,
+            gab_config,
             ckpt_dir,
             max_length=2048,
             batch_size=None,
@@ -44,23 +46,29 @@ class ModisEvalWrapper(HFLM):
         scale = b[-2]
         evoname = b[-3]
         
-        config = eval(f"GAMConfig_{scale}")
+        config = eval(f"GAMConfig_{scale}()")
         ckpt = U.pjoin(ckpt_dir, evoname, 've', design_id, "pretrained")
         
         util_logger.info(f'Trying to load from {ckpt}')
         
-        model = ModisLMHeadModel.from_pretrained(
-            pretrained_model_name=ckpt,
-            gab_name=gab_name,
-            config=config,
-            dtype=torch.bfloat16,
-            device="cuda" if torch.cuda.is_available() else "cpu" 
-        )
+        # model = ModisLMHeadModel.from_pretrained(
+        #     pretrained_model_name=ckpt,
+        #     gab_name=gab_name,
+        #     config=config,
+        #     dtype=torch.bfloat16,
+        #     device="cuda" if torch.cuda.is_available() else "cpu" 
+        # )
+
+        
+        model = ModisLMHeadModel(
+            config, gab, dtype=torch.bfloat16, device="cuda",
+            block_config=gab_config
+        ) # seems should not be bf16 for tf32 mode
         
         model.backbone.print_size()
         tokenizer = AutoTokenizer.from_pretrained(config.tokenizer)   
         tokenizer.pad_token_id = tokenizer.eos_token_id
-        self._config = config()
+        self._config = config
 
         super().__init__(model,tokenizer=tokenizer)
         self.vocab_size = self.tokenizer.vocab_size
