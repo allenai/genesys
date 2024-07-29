@@ -40,6 +40,7 @@ torch.backends.cudnn.allow_tf32 = True
 # torch.backends.cudnn.benchmark = True
 
 util_logger = logging.getLogger('model_discovery.run')
+os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
 
 
 
@@ -337,7 +338,7 @@ def run_eval(args):
         # "--device", "cuda",
         "--batch_size", f"{cfg.eval_batch_size}",
         "--output_path", f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/eval_results",
-        "--cache_requests", "true",
+        "--cache_requests", "refresh", # refresh for debugging, true for normal
         # "--wandb_args", "project=modis",
     ]
     gab,gab_config=BlockRegister.load_block(args.gab_name)
