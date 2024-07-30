@@ -338,7 +338,7 @@ def run_eval(args):
         # "--device", "cuda",
         "--batch_size", f"{cfg.eval_batch_size}",
         "--output_path", f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/eval_results",
-        "--cache_requests", "refresh", # refresh for debugging, true for normal
+        "--cache_requests", "true", # refresh for debugging, true for normal #TODO: fast but seems inaccurate???
         # "--wandb_args", "project=modis",
     ]
     gab,gab_config=BlockRegister.load_block(args.gab_name)

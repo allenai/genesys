@@ -227,9 +227,8 @@ class GAMConfig_debug(GAMConfig_14M):
     context_length: int = 512
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     eval_tasks: List[str] = field(default_factory=lambda: [
-        "winogrande",
-        # "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande",
-        # "blimp", # "blimp_filtered","blimp_supplement"
+        "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande",
+        "blimp", # "blimp_filtered","blimp_supplement"
     ])
     rms_norm: bool = False 
     fused_add_norm: bool = False # TRITON BUGGY
