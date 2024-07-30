@@ -347,8 +347,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
                 citations=data.citationCount
                 size=5*max(0,int(math.log(citations,3)))+10 if citations else 10
             else: # VERY SLOW TO LOAD
-                if not with_ext:
-                    continue
+                if not with_ext: continue
                 color=EXT_COLOR_1HOC
                 citations=data.citationCount
                 size=5*max(0,int(math.log(citations,3)))+10 if citations else 10
@@ -362,7 +361,8 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
                 # rating=data.rating
             )
         for edge in self.G.edges:
-            G.add_edge(edge[0],edge[1])
+            if edge[0] in G.nodes and edge[1] in G.nodes:
+                G.add_edge(edge[0],edge[1])
         write_dot(G, U.pjoin(self.db_dir, '..', "phylogenetic_tree.dot"))
         self.viz(G)
         # self.viz(G,layout=True)
