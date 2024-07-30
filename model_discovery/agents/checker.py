@@ -367,12 +367,11 @@ class EffectiveChecker: # WORING IN PROGRESS
 
     def get_benchmark(self,config):
         exec(BENCHMARK_MODEL,globals())
+        glm,_ = reload_gam(config,BENCHMARK_MODEL,'BENCHMARK_MODEL')#,dtype=torch.bfloat16, device="cuda") # intentially use bfloat16 to check whether the model is correctly defined
         if torch.cuda.is_available():
-            glm,_ = reload_gam(config,BENCHMARK_MODEL,'BENCHMARK_MODEL',dtype=torch.bfloat16, device="cuda") # intentially use bfloat16 to check whether the model is correctly defined
             glm = glm.cuda()
             glm=glm.to(torch.bfloat16)
         else:
-            glm,_ = reload_gam(config,BENCHMARK_MODEL,'BENCHMARK_MODEL',dtype=torch.float16, device="cpu")
             glm = glm.to(torch.float16)
         runtime, loss, gradient_of_losses,max_memory_allocated,total_flos,train_loss=self.test_training(config,glm)
         return {'run_time':runtime,'loss':loss,'gradient_of_losses':gradient_of_losses,'max_memory_allocated':max_memory_allocated,
@@ -473,39 +472,37 @@ class EffectiveChecker: # WORING IN PROGRESS
         # TODO: maybe use profiler to get more metrics
         model.train()
         torch.cuda.reset_peak_memory_stats()
-        with U.CodeTimer("Training check setup"):
-            ckpt_dir=os.environ.get("CKPT_DIR")
-            training_args=TrainingArguments(
-                output_dir=f'{ckpt_dir}/temp/ve/effective_check',
-                overwrite_output_dir=True,
-                learning_rate=config.learning_rate,
-                save_strategy='no',
-                max_steps=5,
-                per_device_train_batch_size=8,
-                auto_find_batch_size=True, # for safety
-                optim="adamw_hf",
-                logging_steps=1,
-                dataloader_num_workers=16,
-                dataloader_pin_memory=True,
-                tf32=True,
-                ddp_find_unused_parameters=False,  # Set this to False
-                lr_scheduler_type="cosine_with_min_lr",
-                lr_scheduler_kwargs={
-                    "min_lr_rate": 0.1, 
-                },
-                warmup_ratio=0.02,
-                report_to="none",
-            )
-            trainer = ModisTrainer(
-                model=model,
-                train_dataset=self.ds["train"],
-                tokenizer=self.tokenizer,
-                args=training_args,
-                data_collator=self.data_collator,
-            )
-            trainer.args._n_gpu = 1
-        with U.CodeTimer("Training check running"):
-            output=trainer.train()
+        ckpt_dir=os.environ.get("CKPT_DIR")
+        training_args=TrainingArguments(
+            output_dir=f'{ckpt_dir}/temp/ve/effective_check',
+            overwrite_output_dir=True,
+            learning_rate=config.learning_rate,
+            save_strategy='no',
+            max_steps=5,
+            per_device_train_batch_size=2,
+            auto_find_batch_size=True, # for safety
+            optim="adamw_hf",
+            logging_steps=1,
+            dataloader_num_workers=16,
+            dataloader_pin_memory=True,
+            tf32=True,
+            ddp_find_unused_parameters=False,  # Set this to False
+            lr_scheduler_type="cosine_with_min_lr",
+            lr_scheduler_kwargs={
+                "min_lr_rate": 0.1, 
+            },
+            warmup_ratio=0.02,
+            report_to="none",
+        )
+        trainer = ModisTrainer(
+            model=model,
+            train_dataset=self.ds["train"],
+            tokenizer=self.tokenizer,
+            args=training_args,
+            data_collator=self.data_collator,
+        )
+        trainer.args._n_gpu = 1
+        output=trainer.train()
         
         run_time=output.metrics['train_runtime']
         loss=output.training_loss
@@ -728,16 +725,20 @@ class Checker(exec_utils.BaseTool):
         with U.CodeTimer("Model initialization"):
             try: 
                 exec(gab_code,globals())
+                glm,_ = reload_gam(config,gab_code,name)#,dtype=torch.bfloat16, device="cuda") # intentially use bfloat16 to check whether the model is correctly defined
                 if torch.cuda.is_available():
-                    glm,_ = reload_gam(config,gab_code,name,dtype=torch.bfloat16, device="cuda") # intentially use bfloat16 to check whether the model is correctly defined
-                    glm = glm.cuda()
+                    t0=time.time()
+                    glm = glm.cuda() # this step super slow!!! why??? Any solution???
+                    print(f'Time for moving model to GPU: {time.time()-t0:.2f}s')
                     glm=glm.to(torch.bfloat16)
                 else:
-                    glm,_ = reload_gam(config,gab_code,name,dtype=torch.float16, device="cpu")
-                    glm = glm.to(torch.float16)
-                mock_input=torch.randint(0, config.vocab_size, (8, 2048))
+                    glm=glm.to(torch.float16)
+                mock_input=torch.randint(0, config.vocab_size, (2, 2048))
                 mock_input = mock_input.to(glm.device)
-                output = glm(mock_input)
+                t0=time.time()
+                glm(mock_input) # super slow as well, why??? but its only for the first time initialization
+                print(f'Time for running a fwd pass: {time.time()-t0:.2f}s')
+
         
             except Exception as e:
                 error_trace = traceback.format_exc()
@@ -760,7 +761,7 @@ class Checker(exec_utils.BaseTool):
             )
 
         # Functional checks
-        with U.CodeTimer("Model tests"):
+        with U.CodeTimer("Model functional tests"):
             checkpass2=False
             try:
                 checkpass1=self._check_forward_pass(
@@ -860,7 +861,7 @@ class Checker(exec_utils.BaseTool):
             try:
                 if torch.cuda.is_available():
                     glm = glm.cuda()
-                mock_input=torch.randint(0, vocab_size, (8, 2048)).to(glm.device)
+                mock_input=torch.randint(0, vocab_size, (2, 2048)).to(glm.device)
                 _ = glm(mock_input)
                 break
             except Exception as e:

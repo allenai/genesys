@@ -38,10 +38,15 @@ def reload_gam(config,gab_code: str,name: str = 'new',autocfg={},**kwargs):
         config=gab_config
     )
     ### load it 
-    model = ModisLMHeadModel.from_config(
-        config,
-        gab_name=name,
+    # model = ModisLMHeadModel.from_config(
+    #     config,
+    #     gab_name=name,
+    #     **kwargs
+    # )
+    model = ModisLMHeadModel(
+        config, GAB, 
+        block_config=gab_config,
         **kwargs
-    )
+    ) # seems should not be bf16 for tf32 mode
 
     return model,gab_config

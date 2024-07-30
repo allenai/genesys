@@ -425,8 +425,9 @@ class EvolutionSystem(exec_utils.System):
 
         self.scales=[eval(f'GAMConfig_{scale}()') for scale in self.state['scales']]
 
+        current_scale=self.state['current_scale']
         print(f"Evolution system initialized with scales: {self.state['scales']}")
-        print(f"Current scale: {self.state['current_scale']}")
+        print(f"Current scale: {self.state['scales'][current_scale]}")
         print(f"Budgets remaining: {self.state['budgets']}")
         print(f"Checkpoint directory: {self.evo_dir}")
 
