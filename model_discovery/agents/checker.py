@@ -712,6 +712,7 @@ class Checker(exec_utils.BaseTool):
         :param path: 
             The path of the proposed module 
         """
+        # torch.cuda.empty_cache()
         time_start=time.time()
         self.reset()
         with U.CodeTimer("Format checking"):
@@ -722,7 +723,7 @@ class Checker(exec_utils.BaseTool):
             except AssertionError:
                 return False,self.report,gab_code,{}
         
-        with U.CodeTimer("Model initialization"):
+        with U.CodeTimer("Model initialization"): # NOTE: very time consuming for the first time, but luckily only happens for the very first run, maybe reduce the time of first run>
             try: 
                 exec(gab_code,globals())
                 glm,_ = reload_gam(config,gab_code,name)#,dtype=torch.bfloat16, device="cuda") # intentially use bfloat16 to check whether the model is correctly defined
@@ -737,7 +738,7 @@ class Checker(exec_utils.BaseTool):
                 mock_input = mock_input.to(glm.device)
                 t0=time.time()
                 glm(mock_input) # super slow as well, why??? but its only for the first time initialization
-                print(f'Time for running a fwd pass: {time.time()-t0:.2f}s')
+                print(f'Time for the first forward pass: {time.time()-t0:.2f}s')
 
         
             except Exception as e:
@@ -786,7 +787,7 @@ class Checker(exec_utils.BaseTool):
 
         self.rprint("All tests passed!\n")
         time_end=time.time()
-        print(f'Total time for checking: {time_end-time_start:.2f}s')
+        print(f'[Total time for checking: {time_end-time_start:.2f}s]')
         return True,self.report,gab_code,effectiveness
     
     def tune(self,config,gab_code,name,tune_dim=True)->str: # the model is already correct but we need to tune its scale

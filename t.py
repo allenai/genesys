@@ -53,38 +53,39 @@
 # print('Bi-Dir MHA:',torch.allclose(bidir_out[:,:16], bidir_out_pert[:,:16]))
 
 
-import numpy as np
-from scipy.optimize import curve_fit
+import torch
+from torch import nn
+import time
 
-# Define the function forms for fitting
-def runtime_function(n, a, b,c):
-    return a * np.power(n, b)+c
+class Net(nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        self.conv1 = nn.Conv2d(1, 6, 3)
+        self.conv2 = nn.Conv2d(6, 16, 3)
+        self.fc1 = nn.Linear(16 * 6 * 6, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
 
-def memory_function(n, c, d,e):
-    return c * np.power(n, d)+e
+    def forward(self, x):
+        x = torch.max_pool2d(torch.relu(self.conv1(x)), (2, 2))
+        x = torch.max_pool2d(torch.relu(self.conv2(x)), 2)
+        x = x.view(-1, self.num_flat_features(x))
+        x = torch.relu(self.fc1(x))
+        x = torch.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
 
-def analyze_complexity(sequence_lengths, runtimes, memory_usages):
-    # Convert lists to numpy arrays for fitting
-    sequence_lengths = np.array(sequence_lengths)
-    runtimes = np.array(runtimes)
-    memory_usages = np.array(memory_usages)
-
-    # Fit the runtime data to the runtime_function
-    popt_runtime, _ = curve_fit(runtime_function, sequence_lengths, runtimes)
-    a_runtime, b_runtime,_ = popt_runtime
-
-    # Fit the memory usage data to the memory_function
-    popt_memory, _ = curve_fit(memory_function, sequence_lengths, memory_usages)
-    c_memory, d_memory,_ = popt_memory
-
-    print(f"Runtime complexity: O(n^{b_runtime:.2f})")
-    print(f"Memory usage complexity: O(n^{d_memory:.2f})")
-
-    return popt_runtime, popt_memory
-
-# Example usage with collected data
-sequence_lengths = [500 * K for K in range(1, 11)]
-runtimes = [0.05, 0.12, 0.23, 0.41, 0.64, 0.94, 1.30, 1.74, 2.23, 2.80]  # Replace with actual measured runtimes
-memory_usages = [200, 400, 800, 1200, 1600, 2000, 2400, 2800, 3200, 3600]  # Replace with actual measured memory usage
-
-analyze_complexity(sequence_lengths, runtimes, memory_usages)
+    def num_flat_features(self, x):
+        size = x.size()[1:]
+        num_features = 1
+        for s in size:
+            num_features *= s
+        return num_features
+    
+t0=time.time()
+net = Net().cuda()
+print("Time to create the network: ", time.time()-t0)
+x=torch.randn(8,1,32,32).cuda()
+t0=time.time()
+y=net(x)
+print("Time to forward pass: ", time.time()-t0)

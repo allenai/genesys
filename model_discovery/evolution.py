@@ -798,7 +798,12 @@ gab_config = {
 
     code=code_MHA
     checkpass,check_report,gabcode,effectiveness = checker.check(cfg,code,design_name)
-    print(check_report)
+    print(effectiveness)
+
+    print('Check the second code')
+    code=code_RetNet
+    checkpass,check_report,gabcode,effectiveness = checker.check(cfg,code,design_name)
+
 
 
     
