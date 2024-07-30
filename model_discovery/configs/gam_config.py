@@ -18,8 +18,9 @@ class GAMConfig(PretrainedConfig):
     batch_tokens: int 
     context_length: int = DEFAULT_CONTEXT_LENGTH
     eval_tasks: List[str] = field(default_factory=lambda: [
-        "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande",
-        "blimp", # "blimp_filtered","blimp_supplement"
+        "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande", "openbookqa", # standard
+        # "super-glue-lm-eval-v1","glue","squad_completion","blimp","inverse_scaling_mc","scrolls","unitxt", # benchmarks
+        # "mathqa","sciq","triviaqa","storycloze_2016","drop","babi","coqa","swag","unscramble","wsc273","qa4mre", # reasoning
     ])
     vocab_size: int = None
     # training_token_multiplier: int = 20 # Now desinated by ve args
@@ -226,10 +227,10 @@ class GAMConfig_debug(GAMConfig_14M):
     scale: str = 'debug'
     context_length: int = 512
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
-    eval_tasks: List[str] = field(default_factory=lambda: [
-        "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande",
-        "blimp", # "blimp_filtered","blimp_supplement"
-    ])
+    # eval_tasks: List[str] = field(default_factory=lambda: [
+    #     "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande",
+    #     "blimp", # "blimp_filtered","blimp_supplement"
+    # ])
     rms_norm: bool = False 
     fused_add_norm: bool = False # TRITON BUGGY
     use_template: bool = False
