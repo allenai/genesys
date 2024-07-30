@@ -1,4 +1,4 @@
-# Language Modeling Library (256)
+# Language Modeling Library (300)
 Library of methods and theory that may inspire the language modeling designs. Around 256 major papers & projects, and other interesting stuffs. Google Sheet: https://docs.google.com/spreadsheets/d/1GxMjIY-RZWChS6g03NP9q4kv9tRjvQ9N8ZBkHIPvR1Y/edit?usp=sharing
 
 ## Baselines and Core Reference Designs (155)
@@ -9,8 +9,8 @@ Major and latest branches of (autoregressive) model architecture variants after 
 #### Example Variants
 1. GPT, Language Models are Few-Shot Learners
 2. ✅ TTT, Learning to (Learn at Test Time): RNNs with Expressive Hidden States, https://github.com/test-time-training/ttt-lm-pytorch
-3. 👉 xLSTM, xLSTM: Extended Long Short-Term Memory, https://github.com/NX-AI/xlstm
-4. Griffin, Griffin: Mixing Gated Linear Recurrences with Local Attention for Efficient Language Models, https://github.com/google-deepmind/recurrentgemma
+3. xLSTM, xLSTM: Extended Long Short-Term Memory, https://github.com/NX-AI/xlstm
+4. 👉 Griffin, Griffin: Mixing Gated Linear Recurrences with Local Attention for Efficient Language Models, https://github.com/google-deepmind/recurrentgemma
 5. Hyena, Hyena Hierarchy: Towards Larger Convolutional Language Models (ICML'23 Oral), https://github.com/HazyResearch/safari
 6. M2, Monarch Mixer: A Simple Sub-Quadratic GEMM-Based Architecture, https://github.com/HazyResearch/m2
 7. SpikeGPT, SpikeGPT: Generative Pre-trained Language Model with Spiking Neural Networks (TMLR,24), https://github.com/ridgerchu/SpikeGPT 
