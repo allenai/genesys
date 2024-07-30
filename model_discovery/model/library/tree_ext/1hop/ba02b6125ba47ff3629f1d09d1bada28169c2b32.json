@@ -1,0 +1,25 @@
+{
+    "acronym": "ba02b6125ba47ff3629f1d09d1bada28169c2b32",
+    "title": "Teaching Syntax by Adversarial Distraction",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "ba02b6125ba47ff3629f1d09d1bada28169c2b32",
+    "abstract": "Existing entailment datasets mainly pose problems which can be answered without attention to grammar or word order. Learning syntax requires comparing examples where different grammar and word order change the desired classification. We introduce several datasets based on synthetic transformations of natural entailment examples in SNLI or FEVER, to teach aspects of grammar and word order. We show that without retraining, popular entailment models are unaware that these syntactic differences change meaning. With retraining, some but not all popular entailment models can learn to compare the syntax properly.",
+    "authors": [
+        "Juho Kim",
+        "Christopher Malon",
+        "Asim Kadav"
+    ],
+    "venue": "FEVER@EMNLP",
+    "year": 2018,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Several datasets based on synthetic transformations of natural entailment examples in SNLI or FEVER are introduced, to teach aspects of grammar and word order."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

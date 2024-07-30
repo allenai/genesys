@@ -1,0 +1,27 @@
+{
+    "acronym": "356645552f8f40adf5a99b4e3a69f47699399010",
+    "title": "Quantity doesn\u2019t buy quality syntax with neural language models",
+    "seed_ids": [
+        "gpt",
+        "9f1c5777a193b2c3bb2b25e248a156348e5ba56d",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "356645552f8f40adf5a99b4e3a69f47699399010",
+    "abstract": "Recurrent neural networks can learn to predict upcoming words remarkably well on average; in syntactically complex contexts, however, they often assign unexpectedly high probabilities to ungrammatical words. We investigate to what extent these shortcomings can be mitigated by increasing the size of the network and the corpus on which it is trained. We find that gains from increasing network size are minimal beyond a certain point. Likewise, expanding the training corpus yields diminishing returns; we estimate that the training corpus would need to be unrealistically large for the models to match human performance. A comparison to GPT and BERT, Transformer-based models trained on billions of words, reveals that these models perform even more poorly than our LSTMs in some constructions. Our results make the case for more data efficient architectures.",
+    "authors": [
+        "Marten van Schijndel",
+        "Aaron Mueller",
+        "Tal Linzen"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A comparison to GPT and BERT, Transformer-based models trained on billions of words, reveals that these models perform even more poorly than the authors' LSTMs in some constructions, making the case for more data efficient architectures."
+    },
+    "citationCount": 64,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

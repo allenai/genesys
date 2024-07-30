@@ -1,0 +1,36 @@
+{
+    "acronym": "4853df65daa4c220a57b86960d04c2d1d0bc227a",
+    "title": "Alleviating Distortion in Image Generation via Multi-Resolution Diffusion Models",
+    "seed_ids": [
+        "transformer",
+        "classfreediffu",
+        "76e8218f657c77c38da44daaed5bb54ab727a8fc",
+        "6e3a3b7a8a0376d867cad72eedf2f9b746f29a33",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "4853df65daa4c220a57b86960d04c2d1d0bc227a",
+    "abstract": "This paper presents innovative enhancements to diffusion models by integrating a novel multi-resolution network and time-dependent layer normalization. Diffusion models have gained prominence for their effectiveness in high-fidelity image generation. While conventional approaches rely on convolutional U-Net architectures, recent Transformer-based designs have demonstrated superior performance and scalability. However, Transformer architectures, which tokenize input data (via\"patchification\"), face a trade-off between visual fidelity and computational complexity due to the quadratic nature of self-attention operations concerning token length. While larger patch sizes enable attention computation efficiency, they struggle to capture fine-grained visual details, leading to image distortions. To address this challenge, we propose augmenting the Diffusion model with the Multi-Resolution network (DiMR), a framework that refines features across multiple resolutions, progressively enhancing detail from low to high resolution. Additionally, we introduce Time-Dependent Layer Normalization (TD-LN), a parameter-efficient approach that incorporates time-dependent parameters into layer normalization to inject time information and achieve superior performance. Our method's efficacy is demonstrated on the class-conditional ImageNet generation benchmark, where DiMR-XL variants outperform prior diffusion models, setting new state-of-the-art FID scores of 1.70 on ImageNet 256 x 256 and 2.89 on ImageNet 512 x 512. Project page: https://qihao067.github.io/projects/DiMR",
+    "authors": [
+        "Qihao Liu",
+        "Zhanpeng Zeng",
+        "Ju He",
+        "Qihang Yu",
+        "Xiaohui Shen",
+        "Liang-Chieh Chen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Time-Dependent Layer Normalization (TD-LN), a parameter-efficient approach that incorporates time-dependent parameters into layer normalization to inject time information and achieve superior performance is introduced."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

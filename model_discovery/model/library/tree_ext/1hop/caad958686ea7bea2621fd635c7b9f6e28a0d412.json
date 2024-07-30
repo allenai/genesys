@@ -1,0 +1,28 @@
+{
+    "acronym": "caad958686ea7bea2621fd635c7b9f6e28a0d412",
+    "title": "Complexity-aware Large Scale Origin-Destination Network Generation via Diffusion Model",
+    "seed_ids": [
+        "d3pms",
+        "9714b88d4d984426d901fc539c7c69d03290ce12",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "caad958686ea7bea2621fd635c7b9f6e28a0d412",
+    "abstract": "The Origin-Destination~(OD) networks provide an estimation of the flow of people from every region to others in the city, which is an important research topic in transportation, urban simulation, etc. Given structural regional urban features, generating the OD network has become increasingly appealing to many researchers from diverse domains. However, existing works are limited in independent generation of each OD pair, i.e., flow of people from one region to another, overlooking the relations within the overall network. In this paper, we instead propose to generate the OD network, and design a graph denoising diffusion method to learn the conditional joint probability distribution of the nodes and edges within the OD network given city characteristics at region level. To overcome the learning difficulty of the OD networks covering over thousands of regions, we decompose the original one-shot generative modeling of the diffusion model into two cascaded stages, corresponding to the generation of network topology and the weights of edges, respectively. To further reproduce important network properties contained in the city-wide OD network, we design an elaborated graph denoising network structure including a node property augmentation module and a graph transformer backbone. Empirical experiments on data collected in three large US cities have verified that our method can generate OD matrices for new cities with network statistics remarkably similar with the ground truth, further achieving superior outperformance over competitive baselines in terms of the generation realism.",
+    "authors": [
+        "Can Rong",
+        "Jingtao Ding",
+        "Zhicheng Liu",
+        "Yong Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes to generate the Origin-Destination (OD) network, and design a graph denoising diffusion method to learn the conditional joint probability distribution of the nodes and edges within the OD network given city characteristics at region level, and decomposes the original one-shot generative modeling of the diffusion model."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

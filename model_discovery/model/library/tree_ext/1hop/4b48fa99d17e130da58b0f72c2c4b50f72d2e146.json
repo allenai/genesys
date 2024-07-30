@@ -1,0 +1,31 @@
+{
+    "acronym": "4b48fa99d17e130da58b0f72c2c4b50f72d2e146",
+    "title": "Video ReCap: Recursive Captioning of Hour-Long Videos",
+    "seed_ids": [
+        "gpt2",
+        "0938d0ccc1c633fa0f8c067d914358b1ef53a44b",
+        "70557ea6b65846fc30729ceed224acd4ac64ca5d",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "4b48fa99d17e130da58b0f72c2c4b50f72d2e146",
+    "abstract": "Most video captioning models are designed to process short video clips of few seconds and output text describing low-level visual concepts (e.g., objects, scenes, atomic actions). However, most real-world videos last for minutes or hours and have a complex hierarchical structure spanning different temporal granularities. We propose Video ReCap, a recursive video captioning model that can process video inputs of dramatically different lengths (from 1 second to 2 hours) and output video captions at multiple hierarchy levels. The recursive video-language architecture exploits the synergy between different video hierarchies and can process hour-long videos efficiently. We utilize a curriculum learning training scheme to learn the hierarchical structure of videos, starting from clip-level captions describing atomic actions, then focusing on segment-level descriptions, and concluding with generating summaries for hour-long videos. Furthermore, we introduce Ego4D-HCap dataset by augmenting Ego4D with 8,267 manually collected long-range video summaries. Our recursive model can flexibly generate captions at different hierarchy levels while also being useful for other complex video understanding tasks, such as VideoQA on EgoSchema. Data, code, and models are available at: https://sites.google.com/view/vidrecap",
+    "authors": [
+        "Md Mohaiminul Islam",
+        "Ngan Ho",
+        "Xitong Yang",
+        "Tushar Nagarajan",
+        "Lorenzo Torresani",
+        "Gedas Bertasius"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Video ReCap is proposed, a recursive video captioning model that can process video inputs of dramatically different lengths and output video captions at multiple hierarchy levels and can flexibly generate captions at different hierarchy levels while also being useful for other complex video understanding tasks, such as VideoQA on EgoSchema."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

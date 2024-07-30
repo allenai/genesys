@@ -1,0 +1,27 @@
+{
+    "acronym": "1874f564b46fbfde51762861c1ec1cbfd7852fc0",
+    "title": "Autoregressive Generative Modeling with Noise Conditional Maximum Likelihood Estimation",
+    "seed_ids": [
+        "sparsetransformer",
+        "599bc7cfe98c2b57ddbe111412203a636da57be0",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06"
+    ],
+    "s2id": "1874f564b46fbfde51762861c1ec1cbfd7852fc0",
+    "abstract": "We introduce a simple modi\ufb01cation to the standard maximum likelihood estimation (MLE) framework. Rather than maximizing a single unconditional likelihood of the data under the model, we maximize a family of noise conditional likelihoods consisting of the data perturbed by a continuum of noise levels. We \ufb01nd that models trained this way are more robust to noise, obtain higher test likelihoods, and generate higher quality images. They can also be sampled from via a novel score-based sampling scheme which combats the classical covariate shift problem that occurs during sample generation in autoregressive models. Apply-ing this augmentation to autoregressive image models, we obtain 3.32 bits per dimension on the ImageNet 64x64 dataset, and substantially improve the quality of generated samples in terms of the Frechet Inception distance (FID) \u2014 from 37.50 to 12.09 on the CIFAR-10 dataset.",
+    "authors": [
+        "Henry Li",
+        "Y. Kluger"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that models trained this way are more robust to noise, obtain higher test likelihoods, and generate higher quality images, and they can also be sampled from via a novel score-based sampling scheme which combats the classical covariate shift problem that occurs during sample generation in autoregressive models."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

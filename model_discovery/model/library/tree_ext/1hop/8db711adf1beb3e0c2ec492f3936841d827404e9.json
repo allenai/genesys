@@ -1,0 +1,49 @@
+{
+    "acronym": "8db711adf1beb3e0c2ec492f3936841d827404e9",
+    "title": "The NLP Task Effectiveness of Long-Range Transformers",
+    "seed_ids": [
+        "linformer",
+        "lineartransformer",
+        "bigbird",
+        "longformer",
+        "transformerxl",
+        "e0cbbca02b332f398c6639b3bea0613f79166220",
+        "f75d05e759447c2aedb7097728f29f9a520d9bc1",
+        "42f8a3da7021bc725fa14fdb63fa9c7c9fc934f6",
+        "16529f7194bf7faee8a4e43fd54aefeb8730f236",
+        "4e3935ef7da6bcbb202ec7f8b285c313cadcd044",
+        "9dc624d7258d1a56117ca720aea953ce46b66b21",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "3029263ca51e6c2907f9f99277083cf6afb1adb7",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "3df83a60f55c64b40e6dbcd99cf9f67894a0736e",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "8db711adf1beb3e0c2ec492f3936841d827404e9",
+    "abstract": "Transformer models cannot easily scale to long sequences due to their O(N\u02c62) time and space complexity. This has led to Transformer variants seeking to lower computational complexity, such as Longformer and Performer. While such models have theoretically greater efficiency, their effectiveness on real NLP tasks has not been well studied. We benchmark 7 variants of Transformer models on 5 difficult NLP tasks and 7 datasets. We design experiments to isolate the effect of pretraining and hyperparameter settings, to focus on their capacity for long-range attention. Moreover, we present various methods to investigate attention behaviors to illuminate model details beyond metric scores. We find that the modified attention in long-range transformers has advantages on content selection and query-guided decoding, but they come with previously unrecognized drawbacks such as insufficient attention to distant tokens and accumulated approximation error.",
+    "authors": [
+        "Guanghui Qin",
+        "Yukun Feng",
+        "Benjamin Van Durme"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that the modified attention in long-range transformers has advantages on content selection and query-guided decoding, but they come with previously unrecognized drawbacks such as insufficient attention to distant tokens and accumulated approximation error."
+    },
+    "citationCount": 20,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

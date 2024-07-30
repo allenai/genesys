@@ -1,0 +1,26 @@
+{
+    "acronym": "5d269d0548777b20f8d249490c9178c8974630dd",
+    "title": "A Template Is All You Meme",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "5d269d0548777b20f8d249490c9178c8974630dd",
+    "abstract": "Memes are a modern form of communication and meme templates possess a base semantics that is customizable by whomever posts it on social media. Machine learning systems struggle with memes, which is likely due to such systems having insufficient context to understand memes, as there is more to memes than the obvious image and text. Here, to aid understanding of memes, we release a knowledge base of memes and information found on www.knowyourmeme.com, which we call the Know Your Meme Knowledge Base (KYMKB), composed of more than 54,000 images. The KYMKB includes popular meme templates, examples of each template, and detailed information about the template. We hypothesize that meme templates can be used to inject models with the context missing from previous approaches. To test our hypothesis, we create a non-parametric majority-based classifier, which we call Template-Label Counter (TLC). We find TLC more effective than or competitive with fine-tuned baselines. To demonstrate the power of meme templates and the value of both our knowledge base and method, we conduct thorough classification experiments and exploratory data analysis in the context of five meme analysis tasks.",
+    "authors": [
+        "Luke Bates",
+        "Peter Ebert Christensen",
+        "Preslav Nakov",
+        "Iryna Gurevych"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is hypothesized that meme templates can be used to inject models with the context missing from previous approaches, and a non-parametric majority-based classifier is created, which is called Template-Label Counter (TLC), which is found more effective than or competitive with fine-tuned baselines."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

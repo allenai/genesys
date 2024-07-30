@@ -1,0 +1,32 @@
+{
+    "acronym": "b7d89dc055618b68a29d199457ee1fec18543dab",
+    "title": "A Minimalist Dataset for Systematic Generalization of Perception, Syntax, and Semantics",
+    "seed_ids": [
+        "universaltrans",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "ed535e93d5b5a8b689e861e9c6083a806d1535c2",
+        "5cdab78acc4f3aab429a0dd41c3ec7e605d42e7b",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b7d89dc055618b68a29d199457ee1fec18543dab",
+    "abstract": "Inspired by humans' exceptional ability to master arithmetic and generalize to new problems, we present a new dataset, Handwritten arithmetic with INTegers (HINT), to examine machines' capability of learning generalizable concepts at three levels: perception, syntax, and semantics. In HINT, machines are tasked with learning how concepts are perceived from raw signals such as images (i.e., perception), how multiple concepts are structurally combined to form a valid expression (i.e., syntax), and how concepts are realized to afford various reasoning tasks (i.e., semantics), all in a weakly supervised manner. Focusing on systematic generalization, we carefully design a five-fold test set to evaluate both the interpolation and the extrapolation of learned concepts w.r.t. the three levels. Further, we design a few-shot learning split to determine whether or not models can rapidly learn new concepts and generalize them to more complex scenarios. To comprehend existing models' limitations, we undertake extensive experiments with various sequence-to-sequence models, including RNNs, Transformers, and GPT-3 (with the chain of thought prompting). The results indicate that current models struggle to extrapolate to long-range syntactic dependency and semantics. Models exhibit a considerable gap toward human-level generalization when evaluated with new concepts in a few-shot setting. Moreover, we discover that it is infeasible to solve HINT by merely scaling up the dataset and the model size; this strategy contributes little to the extrapolation of syntax and semantics. Finally, in zero-shot GPT-3 experiments, the chain of thought prompting exhibits impressive results and significantly boosts the test accuracy. We believe the HINT dataset and the experimental findings are of great interest to the learning community on systematic generalization.",
+    "authors": [
+        "Qing Li",
+        "Siyuan Huang",
+        "Yining Hong",
+        "Yixin Zhu",
+        "Y. Wu",
+        "Song-Chun Zhu"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is discovered that it is infeasible to solve HINT by merely scaling up the dataset and the model size; this strategy contributes little to the extrapolation of syntax and semantics."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,25 @@
+{
+    "acronym": "2d3eacbf522ffa329aa91f30d895ba1dfd89a7a3",
+    "title": "Citation Polarity Identification From Scientific Articles Using Deep Learning Methods",
+    "seed_ids": [
+        "bigbird",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "80f9f109d1564cb8f82aa440a5f6f3fbe220c9ef"
+    ],
+    "s2id": "2d3eacbf522ffa329aa91f30d895ba1dfd89a7a3",
+    "abstract": "The way in which research articles are cited reflects how previous work is utilized by other researchers or stakeholders and can indicate the impact of that work on subsequent experiments. Based on human intuition, citations can be perceived as positive, negative, or neutral. While current citation indexing systems provide information on the author and publication name of the cited article, as well as the citation count, they do not indicate the polarity of the citation. This study aims to identify the polarity of citations in scientific research articles using pre-trained language models like BERT, ELECTRA, RoBERTa, Bio-RoBERTa, SPECTER, ERNIE, LongFormer, BigBird, and deep-learning methods. Most citations have a neutral polarity, resulting in imbalanced datasets for training deep-learning models. To address this issue, a class balancing technique is proposed and applied to all datasets to improve consistency and results. Pre-trained language models are used to generate optimal features, and ensemble techniques are utilized to combine all model predictions to produce the highest precision, recall, and F1-scores for all three labels.",
+    "authors": [
+        "Souvik Kundu"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study aims to identify the polarity of citations in scientific research articles using pre-trained language models like BERT, ELECTRA, RoBERTa, Bio-RoberTa, SPECTER, ERNIE, LongFormer, BigBird, and deep-learning methods."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

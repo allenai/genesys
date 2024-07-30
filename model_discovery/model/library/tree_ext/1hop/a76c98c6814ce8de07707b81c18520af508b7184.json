@@ -1,0 +1,25 @@
+{
+    "acronym": "a76c98c6814ce8de07707b81c18520af508b7184",
+    "title": "BERT-Defense: A Probabilistic Model Based on BERT to Combat Cognitively Inspired Orthographic Adversarial Attacks",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "a76c98c6814ce8de07707b81c18520af508b7184",
+    "abstract": "Adversarial attacks expose important blind spots of deep learning systems. While word- and sentence-level attack scenarios mostly deal with finding semantic paraphrases of the input that fool NLP models, character-level attacks typically insert typos into the input stream. It is commonly thought that these are easier to defend via spelling correction modules. In this work, we show that both a standard spellchecker and the approach of Pruthi et al. (2019), which trains to defend against insertions, deletions and swaps, perform poorly on the character-level benchmark recently proposed in Eger and Benz (2020) which includes more challenging attacks such as visual and phonetic perturbations and missing word segmentations. In contrast, we show that an untrained iterative approach which combines context-independent character-level information with context-dependent information from BERT's masked language modeling can perform on par with human crowd-workers from Amazon Mechanical Turk (AMT) supervised via 3-shot learning.",
+    "authors": [
+        "Yannik Keller",
+        "J. Mackensen",
+        "Steffen Eger"
+    ],
+    "venue": "Findings",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows that an untrained iterative approach which combines context-independent character-level information with context-dependent information from BERT's masked language modeling can perform on par with human crowd-workers from Amazon Mechanical Turk supervised via 3-shot learning."
+    },
+    "citationCount": 24,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

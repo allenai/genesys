@@ -1,0 +1,29 @@
+{
+    "acronym": "98183c6a202e89e21a6280dad91ce8cef5d845c6",
+    "title": "A Semantic, Syntactic, And Context-Aware Natural Language Adversarial Example Generator",
+    "seed_ids": [
+        "gpt2",
+        "bert",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "98183c6a202e89e21a6280dad91ce8cef5d845c6",
+    "abstract": "Machine learning models are vulnerable to maliciously crafted Adversarial Examples (AEs). Training a machine learning model with AEs improves its robustness and stability against adversarial attacks. It is essential to develop models that produce high-quality AEs. Developing such models has been much slower in natural language processing (NLP) than in areas such as computer vision. This paper introduces a practical and efficient adversarial attack model called SSCAE for \\textbf{S}emantic, \\textbf{S}yntactic, and \\textbf{C}ontext-aware natural language \\textbf{AE}s generator. SSCAE identifies important words and uses a masked language model to generate an early set of substitutions. Next, two well-known language models are employed to evaluate the initial set in terms of semantic and syntactic characteristics. We introduce (1) a dynamic threshold to capture more efficient perturbations and (2) a local greedy search to generate high-quality AEs. As a black-box method, SSCAE generates humanly imperceptible and context-aware AEs that preserve semantic consistency and the source language's syntactical and grammatical requirements. The effectiveness and superiority of the proposed SSCAE model are illustrated with fifteen comparative experiments and extensive sensitivity analysis for parameter optimization. SSCAE outperforms the existing models in all experiments while maintaining a higher semantic consistency with a lower query number and a comparable perturbation rate.",
+    "authors": [
+        "J. Asl",
+        "Mohammad H. Rafiei",
+        "Manar Alohaly",
+        "Daniel Takabi"
+    ],
+    "venue": "IEEE Transactions on Dependable and Secure Computing",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A practical and efficient adversarial attack model called SSCAE, which generates humanly imperceptible and context-aware AEs that preserve semantic consistency and the source language's syntactical and grammatical requirements."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

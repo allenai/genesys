@@ -77,6 +77,7 @@ LIBRARY_DIR = '/home/junyanc/model_discovery/model_discovery/model/library'
 
 REFERENCE_COLOR = '#AF47D2'
 RWC_COLOR = '#FB773C' # reference with code
+EXT_COLOR_1HOC = '#ed556a' # extended 1-hop reference
 
 
 @dataclass
@@ -167,6 +168,14 @@ class LibraryReference(NodeObject):
             mdtext+=f'\n\n* [Link]({self.url}) *'
         return mdtext.replace(':',' ').replace('e.\ng.\n','e.g.').replace('i.\ne.\n','i.e.')
     
+@dataclass
+class LibraryReference1hop(LibraryReference):
+
+    def type(self):
+        if self.code is not None:
+            return 'Reference1hopWithCode'
+        else:
+            return 'Reference1hop'
 
 @dataclass
 class DesignArtifact(NodeObject):
@@ -225,6 +234,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         self.G = nx.DiGraph()
         self.db_dir = db_dir
         self.lib_dir = U.pjoin(LIBRARY_DIR,'tree')
+        self.lib_ext_dir = U.pjoin(LIBRARY_DIR,'tree_ext')
         U.mkdir(db_dir)
         self.load()
 
@@ -281,9 +291,19 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             for seed_id in artifact.seed_ids:
                 edges_to_add.append((seed_id, artifact.acronym))
         
+        # Load core library
         for id in os.listdir(self.lib_dir):
             id=id.split('.')[0]
             ref = LibraryReference.load(self.lib_dir, id)
+            self.G.add_node(ref.acronym, data=ref)
+            for seed_id in ref.seed_ids:
+                edges_to_add.append((seed_id, ref.acronym))
+
+        # load extended library
+        dir_ext_1hop = U.pjoin(self.lib_ext_dir,'1hop')
+        for i in os.listdir(dir_ext_1hop):
+            id=i.split('.')[0]
+            ref = LibraryReference1hop.load(dir_ext_1hop, id)
             self.G.add_node(ref.acronym, data=ref)
             for seed_id in ref.seed_ids:
                 edges_to_add.append((seed_id, ref.acronym))
@@ -308,7 +328,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         fname='PTree.html' if not layout else 'PTree_layout.html'
         nt.show(U.pjoin(self.db_dir, '..', fname))
 
-    def export(self):
+    def export(self,with_ext=False):
         G=nx.DiGraph()
         for node in self.G.nodes:
             data=self.G.nodes[node]['data']
@@ -326,6 +346,13 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
                 color=RWC_COLOR
                 citations=data.citationCount
                 size=5*max(0,int(math.log(citations,3)))+10 if citations else 10
+            else: # VERY SLOW TO LOAD
+                if not with_ext:
+                    continue
+                color=EXT_COLOR_1HOC
+                citations=data.citationCount
+                size=5*max(0,int(math.log(citations,3)))+10 if citations else 10
+                # continue # skip the 1hop reference, too much
             G.add_node(
                 node,
                 title=data.to_desc(),
@@ -338,7 +365,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             G.add_edge(edge[0],edge[1])
         write_dot(G, U.pjoin(self.db_dir, '..', "phylogenetic_tree.dot"))
         self.viz(G)
-        self.viz(G,layout=True)
+        # self.viz(G,layout=True)
 
 
 def report_reader(report):
@@ -425,9 +452,8 @@ class EvolutionSystem(exec_utils.System):
 
         self.scales=[eval(f'GAMConfig_{scale}()') for scale in self.state['scales']]
 
-        current_scale=self.state['current_scale']
         print(f"Evolution system initialized with scales: {self.state['scales']}")
-        print(f"Current scale: {self.state['scales'][current_scale]}")
+        print(f"Current scale: {self.state['current_scale']}")
         print(f"Budgets remaining: {self.state['budgets']}")
         print(f"Checkpoint directory: {self.evo_dir}")
 
@@ -739,7 +765,7 @@ if __name__ == '__main__':
         strparams=';'.join(strparams),
         cache_type='diskcache',
     )
-    # test_evolve('evo_test_003',step=False)
+    test_evolve('evo_test_003',step=False)
 
 
     code_MHA='''
@@ -796,13 +822,13 @@ gab_config = {
     cfg=evolution_system.rnd_agent._cfg
     design_name='test_design'
 
-    code=code_MHA
-    checkpass,check_report,gabcode,effectiveness = checker.check(cfg,code,design_name)
-    print(effectiveness)
+    # code=code_MHA
+    # checkpass,check_report,gabcode,effectiveness = checker.check(cfg,code,design_name)
+    # print(effectiveness)
 
-    print('Check the second code')
-    code=code_RetNet
-    checkpass,check_report,gabcode,effectiveness = checker.check(cfg,code,design_name)
+    # print('Check the second code')
+    # code=code_RetNet
+    # checkpass,check_report,gabcode,effectiveness = checker.check(cfg,code,design_name)
 
 
 

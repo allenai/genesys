@@ -1,0 +1,40 @@
+{
+    "acronym": "7529f2be24aacc7d65f5d8f654560d144f076906",
+    "title": "Linear Recurrent Units for Sequential Recommendation",
+    "seed_ids": [
+        "s4",
+        "retnet",
+        "rwkv4",
+        "resurrectrnn",
+        "240103933ffe3dac2179cc160a2bd91299357a53",
+        "d62c4d00b277e948956b6610ce2644e88fe1577b",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "d5e999aae76d5270ef272076979c809817458212",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8"
+    ],
+    "s2id": "7529f2be24aacc7d65f5d8f654560d144f076906",
+    "abstract": "State-of-the-art sequential recommendation relies heavily on self-attention-based recommender models. Yet such models are computationally expensive and often too slow for real-time recommendation. Furthermore, the self-attention operation is performed at a sequence-level, thereby making low-cost incremental inference challenging. Inspired by recent advances in efficient language modeling, we propose linear recurrent units for sequential recommendation (LRURec). Similar to recurrent neural networks, LRURec offers rapid inference and can achieve incremental inference on sequential inputs. By decomposing the linear recurrence operation and designing recursive parallelization in our framework, LRURec provides the additional benefits of reduced model size and parallelizable training. Moreover, we optimize the architecture of LRURec by implementing a series of modifications to address the lack of non-linearity and improve training dynamics. To validate the effectiveness of our proposed LRURec, we conduct extensive experiments on multiple real-world datasets and compare its performance against state-of-the-art sequential recommenders. Experimental results demonstrate the effectiveness of LRURec, which consistently outperforms baselines by a significant margin. Results also highlight the efficiency of LRURec with our parallelized training paradigm and fast inference on long sequences, showing its potential to further enhance user experience in sequential recommendation.",
+    "authors": [
+        "Zhenrui Yue",
+        "Yueqi Wang",
+        "Zhankui He",
+        "Huimin Zeng",
+        "Julian McAuley",
+        "Dong Wang"
+    ],
+    "venue": "Web Search and Data Mining",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results demonstrate the effectiveness of the proposed linear recurrent units for sequential recommendation (LRURec), which consistently outperforms baselines by a significant margin and highlights the efficiency of LRURec with the authors' parallelized training paradigm and fast inference on long sequences, showing its potential to further enhance user experience in sequential recommendation."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

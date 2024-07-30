@@ -1,0 +1,32 @@
+{
+    "acronym": "d73519839365a2d55858a85e811932141b7053fc",
+    "title": "MambaMOS: LiDAR-based 3D Moving Object Segmentation with Motion-aware State Space Model",
+    "seed_ids": [
+        "mamba",
+        "46fb606d4059611d95ffc534bef6ad593c2281a3",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336"
+    ],
+    "s2id": "d73519839365a2d55858a85e811932141b7053fc",
+    "abstract": "LiDAR-based Moving Object Segmentation (MOS) aims to locate and segment moving objects in point clouds of the current scan using motion information from previous scans. Despite the promising results achieved by previous MOS methods, several key issues, such as the weak coupling of temporal and spatial information, still need further study. In this paper, we propose a novel LiDAR-based 3D Moving Object Segmentation with Motion-aware State Space Model, termed MambaMOS. Firstly, we develop a novel embedding module, the Time Clue Bootstrapping Embedding (TCBE), to enhance the coupling of temporal and spatial information in point clouds and alleviate the issue of overlooked temporal clues. Secondly, we introduce the Motion-aware State Space Model (MSSM) to endow the model with the capacity to understand the temporal correlations of the same object across different time steps. Specifically, MSSM emphasizes the motion states of the same object at different time steps through two distinct temporal modeling and correlation steps. We utilize an improved state space model to represent these motion differences, significantly modeling the motion states. Finally, extensive experiments on the SemanticKITTI-MOS and KITTI-Road benchmarks demonstrate that the proposed MambaMOS achieves state-of-the-art performance. The source code of this work will be made publicly available at https://github.com/Terminal-K/MambaMOS.",
+    "authors": [
+        "Kang Zeng",
+        "Haowen Shi",
+        "Jiacheng Lin",
+        "Siyu Li",
+        "Jintao Cheng",
+        "Kaiwei Wang",
+        "Zhiyong Li",
+        "Kailun Yang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel LiDAR-based 3D Moving Object Segmentation with Motion-aware State Space Model with novel embedding module, the Time Clue Bootstrapping Embedding (TCBE), and the Motion-aware State Space Model (MSSM) to endow the model with the capacity to understand the temporal correlations of the same object across different time steps."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,32 @@
+{
+    "acronym": "292c3ca299362db1435ae8ea6a35929b430bdb17",
+    "title": "Zero-Shot Learning for Requirements Classification: An Exploratory Study",
+    "seed_ids": [
+        "gpt",
+        "f6245b3e6270e4dc2e279c4b728030523dffcff4",
+        "adc61e21eafecfbf6ebecc570f9f913659a2bfb2",
+        "c6c734e16f66fbfcefac7625cc64599e83292c1e",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "8659bf379ca8756755125a487c43cfe8611ce842",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "292c3ca299362db1435ae8ea6a35929b430bdb17",
+    "abstract": "Context: Requirements engineering researchers have been experimenting with machine learning and deep learning approaches for a range of RE tasks, such as requirements classification, requirements tracing, ambiguity detection, and modelling. However, most of today's ML/DL approaches are based on supervised learning techniques, meaning that they need to be trained using a large amount of task-specific labelled training data. This constraint poses an enormous challenge to RE researchers, as the lack of labelled data makes it difficult for them to fully exploit the benefit of advanced ML/DL technologies. Objective: This paper addresses this problem by showing how a zero-shot learning approach can be used for requirements classification without using any labelled training data. We focus on the classification task because many RE tasks can be framed as classification problems. Method: The ZSL approach used in our study employs contextual word-embeddings and transformer-based language models. We demonstrate this approach through a series of experiments to perform three classification tasks: (1)FR/NFR: classification functional requirements vs non-functional requirements; (2)NFR: identification of NFR classes; (3)Security: classification of security vs non-security requirements. Results: The study shows that the ZSL approach achieves an F1 score of 0.66 for the FR/NFR task. For the NFR task, the approach yields F1~0.72-0.80, considering the most frequent classes. For the Security task, F1~0.66. All of the aforementioned F1 scores are achieved with zero-training efforts. Conclusion: This study demonstrates the potential of ZSL for requirements classification. An important implication is that it is possible to have very little or no training data to perform classification tasks. The proposed approach thus contributes to the solution of the long-standing problem of data shortage in RE.",
+    "authors": [
+        "Waad Alhoshan",
+        "Alessio Ferrari",
+        "Liping Zhao"
+    ],
+    "venue": "Information and Software Technology",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed approach contributes to the solution of the long-standing problem of data shortage in RE by showing how a zero-shot learning approach can be used for requirements classification without using any labelled training data."
+    },
+    "citationCount": 18,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

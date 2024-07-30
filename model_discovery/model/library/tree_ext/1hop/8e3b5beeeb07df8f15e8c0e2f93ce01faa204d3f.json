@@ -1,0 +1,28 @@
+{
+    "acronym": "8e3b5beeeb07df8f15e8c0e2f93ce01faa204d3f",
+    "title": "Structural Pruning of Pre-trained Language Models via Neural Architecture Search",
+    "seed_ids": [
+        "transformer",
+        "bert"
+    ],
+    "s2id": "8e3b5beeeb07df8f15e8c0e2f93ce01faa204d3f",
+    "abstract": "Pre-trained language models (PLM), for example BERT or RoBERTa, mark the state-of-the-art for natural language understanding task when fine-tuned on labeled data. However, their large size poses challenges in deploying them for inference in real-world applications, due to significant GPU memory requirements and high inference latency. This paper explores neural architecture search (NAS) for structural pruning to find sub-parts of the fine-tuned network that optimally trade-off efficiency, for example in terms of model size or latency, and generalization performance. We also show how we can utilize more recently developed two-stage weight-sharing NAS approaches in this setting to accelerate the search process. Unlike traditional pruning methods with fixed thresholds, we propose to adopt a multi-objective approach that identifies the Pareto optimal set of sub-networks, allowing for a more flexible and automated compression process.",
+    "authors": [
+        "Aaron Klein",
+        "Jacek Golebiowski",
+        "Xingchen Ma",
+        "Valerio Perrone",
+        "C\u00e9dric Archambeau"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper explores neural architecture search (NAS) for structural pruning to find sub-parts of the fine-tuned network that optimally trade-off efficiency, for example in terms of model size or latency, and generalization performance."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

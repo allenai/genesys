@@ -1,0 +1,27 @@
+{
+    "acronym": "40b9775eec50184c541a811b289d99146587e2ff",
+    "title": "IDS at SemEval-2020 Task 10: Does Pre-trained Language Model Know What to Emphasize?",
+    "seed_ids": [
+        "gpt",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc"
+    ],
+    "s2id": "40b9775eec50184c541a811b289d99146587e2ff",
+    "abstract": "We propose a novel method that enables us to determine words that deserve to be emphasized from written text in visual media, relying only on the information from the self-attention distributions of pre-trained language models (PLMs). With extensive experiments and analyses, we show that 1) our zero-shot approach is superior to a reasonable baseline that adopts TF-IDF and that 2) there exist several attention heads in PLMs specialized for emphasis selection, confirming that PLMs are capable of recognizing important words in sentences.",
+    "authors": [
+        "Jaeyoul Shin",
+        "Taeuk Kim",
+        "Sang-goo Lee"
+    ],
+    "venue": "International Workshop on Semantic Evaluation",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows that the zero-shot approach is superior to a reasonable baseline that adopts TF-IDF and that there exist several attention heads in PLMs specialized for emphasis selection, confirming that PLMs are capable of recognizing important words in sentences."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

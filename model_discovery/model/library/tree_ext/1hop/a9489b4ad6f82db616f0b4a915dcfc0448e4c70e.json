@@ -1,0 +1,36 @@
+{
+    "acronym": "a9489b4ad6f82db616f0b4a915dcfc0448e4c70e",
+    "title": "On the Scalability of Diffusion-based Text-to-Image Generation",
+    "seed_ids": [
+        "gpt3",
+        "6e3a3b7a8a0376d867cad72eedf2f9b746f29a33",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "a9489b4ad6f82db616f0b4a915dcfc0448e4c70e",
+    "abstract": "Scaling up model and data size has been quite successful for the evolution of LLMs. However, the scaling law for the diffusion based text-to-image (T2I) models is not fully explored. It is also unclear how to efficiently scale the model for better performance at reduced cost. The different training settings and expensive training cost make a fair model comparison extremely difficult. In this work, we empirically study the scaling properties of diffusion based T2I models by performing extensive and rigours ablations on scaling both denoising backbones and training set, including training scaled UNet and Transformer variants ranging from 0.4B to 4B parameters on datasets upto 600M images. For model scaling, we find the location and amount of cross attention distinguishes the performance of existing UNet designs. And increasing the transformer blocks is more parameter-efficient for improving text-image alignment than increasing channel numbers. We then identify an efficient UNet variant, which is 45% smaller and 28% faster than SDXL's UNet. On the data scaling side, we show the quality and diversity of the training set matters more than simply dataset size. Increasing caption density and diversity improves text-image alignment performance and the learning efficiency. Finally, we provide scaling functions to predict the text-image alignment performance as functions of the scale of model size, compute and dataset size.",
+    "authors": [
+        "Hao Li",
+        "Yang Zou",
+        "Ying Wang",
+        "Orchid Majumder",
+        "Yusheng Xie",
+        "R. Manmatha",
+        "Ashwin Swaminathan",
+        "Zhuowen Tu",
+        "Stefano Ermon",
+        "Stefano Soatto"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work empirically study the scaling properties of diffusion based T2I models by performing extensive and rigours ablations on scaling both denoising backbones and training set, including training scaled UNet and Transformer variants."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

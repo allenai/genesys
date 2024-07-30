@@ -1,0 +1,30 @@
+{
+    "acronym": "82f71eb5e9d19d958dc90f488f35c6285ad2c3dc",
+    "title": "CTRLStruct: Dialogue Structure Learning for Open-Domain Response Generation",
+    "seed_ids": [
+        "gpt",
+        "gpt2",
+        "9aacdbc8b04fa63e6fe93f62a737a11c613f08fb",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "6ebfbc954b9975d2f2651f380b9bdf46ae963178",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "82f71eb5e9d19d958dc90f488f35c6285ad2c3dc",
+    "abstract": "Dialogue structure discovery is essential in dialogue generation. Well-structured topic flow can leverage background information and predict future topics to help generate controllable and explainable responses. However, most previous work focused on dialogue structure learning in task-oriented dialogue other than open-domain dialogue which is more complicated and challenging. In this paper, we present a new framework CTRLStruct for dialogue structure learning to effectively explore topic-level dialogue clusters as well as their transitions with unlabelled information. Precisely, dialogue utterances encoded by bi-directional Transformer are further trained through a special designed contrastive learning task to improve representation. Then we perform clustering to utterance-level representations and form topic-level clusters that can be considered as vertices in dialogue structure graph. The edges in the graph indicating transition probability between vertices are calculated by mimicking expert behavior in datasets. Finally, dialogue structure graph is integrated into dialogue model to perform controlled response generation. Experiments on two popular open-domain dialogue datasets show our model can generate more coherent responses compared to some excellent dialogue models, as well as outperform some typical sentence embedding methods in dialogue utterance representation. Code is available in GitHub1.",
+    "authors": [
+        "Congchi Yin",
+        "Pijian Li",
+        "Z. Ren"
+    ],
+    "venue": "The Web Conference",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new framework CTRLStruct is presented for dialogue structure learning to effectively explore topic-level dialogue clusters as well as their transitions with unlabelled information to generate more coherent responses and outperform some typical sentence embedding methods in dialogue utterance representation."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

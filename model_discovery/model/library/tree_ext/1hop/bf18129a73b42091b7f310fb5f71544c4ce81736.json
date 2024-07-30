@@ -1,0 +1,30 @@
+{
+    "acronym": "bf18129a73b42091b7f310fb5f71544c4ce81736",
+    "title": "Contextualizing and Expanding Conversational Queries without Supervision",
+    "seed_ids": [
+        "bert",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "ca545ceefe7c3535ffea0fbcc1cc86bddced3767",
+        "2c953a3c378b40dadf2e3fb486713c8608b8e282",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "bf18129a73b42091b7f310fb5f71544c4ce81736",
+    "abstract": "Most conversational passage retrieval systems try to resolve conversational dependencies by using an intermediate query resolution step. To do so, they synthesize conversational data or assume the availability of large-scale question rewriting datasets. To relax those conditions, we propose a zero-shot unified resolution\u2013retrieval approach, that (i) contextualizes and (ii) expands query embeddings using the conversation history and without fine-tuning on conversational data. Contextualization biases the last user question embeddings towards the conversation. Query expansion is used in two ways: (i) abstractive expansion generates embeddings based on the current question and previous history, whereas (ii) extractive expansion tries to identify history term embeddings based on attention weights from the retriever. Our experiments demonstrate the effectiveness of both contextualization and unified expansion in improving conversational retrieval. Contextualization does so mostly by resolving anaphoras to the conversation and bringing their embeddings closer to the important resolution terms that were omitted. By adding embeddings to the query, expansion targets phenomena of ellipsis more explicitly, with our analysis verifying its effectiveness on identifying and adding important resolutions to the query. By combining contextualization and expansion, we find that our zero-shot unified resolution\u2013retrieval methods are competitive and can even outperform supervised methods.",
+    "authors": [
+        "Antonios Minas Krasakis",
+        "Andrew Yates",
+        "E. Kanoulas"
+    ],
+    "venue": "ACM Trans. Inf. Syst.",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A zero-shot unified resolution\u2013retrieval approach that contextualizes and expands query embeddings using the conversation history and without fine-tuning on conversational data, which proves the effectiveness of both contextualization and unified expansion in improving conversational retrieval."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,33 @@
+{
+    "acronym": "5fd9bc06b3a1ecc869166e7d4131079b8ec3e207",
+    "title": "NarraSum: A Large-Scale Dataset for Abstractive Narrative Summarization",
+    "seed_ids": [
+        "longformer",
+        "21233223e6f14006106f3acedd60e59af18816e1",
+        "42f8a3da7021bc725fa14fdb63fa9c7c9fc934f6",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "01b15017ac59b8d6f2ce3598c4a7d6358c211426",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "5fd9bc06b3a1ecc869166e7d4131079b8ec3e207",
+    "abstract": "Narrative summarization aims to produce a distilled version of a narrative to describe its most salient events and characters. Summarizing a narrative is challenging as it requires an understanding of event causality and character behaviors. To encourage research in this direction, we propose NarraSum, a large-scale narrative summarization dataset. It contains 122K narrative documents, which are collected from plot descriptions of movies and TV episodes with diverse genres, and their corresponding abstractive summaries. Experiments show that there is a large performance gap between humans and the state-of-the-art summarization models on NarraSum. We hope that this dataset will promote future research in summarization, as well as broader studies of natural language understanding and generation. The dataset is available at https://github.com/zhaochaocs/narrasum.",
+    "authors": [
+        "Chao Zhao",
+        "Faeze Brahman",
+        "Kaiqiang Song",
+        "Wenlin Yao",
+        "Dian Yu",
+        "Snigdha Chaturvedi"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experiments show that there is a large performance gap between humans and the state-of-the-art summarization models on NarraSum, a large-scale narrative summarization dataset that contains 122K narrative documents, which are collected from plot descriptions of movies and TV episodes with diverse genres, and their corresponding abstractive summaries."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

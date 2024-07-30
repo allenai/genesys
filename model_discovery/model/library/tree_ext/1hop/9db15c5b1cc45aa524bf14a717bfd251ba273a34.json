@@ -1,0 +1,25 @@
+{
+    "acronym": "9db15c5b1cc45aa524bf14a717bfd251ba273a34",
+    "title": "Differentiable Random Access Memory using Lattices",
+    "seed_ids": [
+        "productkeymem",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc"
+    ],
+    "s2id": "9db15c5b1cc45aa524bf14a717bfd251ba273a34",
+    "abstract": "We introduce a differentiable random access memory module with $O(1)$ performance regardless of size, scaling to billions of entries. The design stores entries on points of a chosen lattice to calculate nearest neighbours of arbitrary points efficiently by exploiting symmetries. Augmenting a standard neural network architecture with a single memory layer based on this, we can scale the parameter count up to memory limits with negligible computational overhead, giving better accuracy at similar cost. On large language modelling tasks, these enhanced models with larger capacity significantly outperform the unmodified transformer baseline. We found continued scaling with memory size up to the limits tested.",
+    "authors": [
+        "Adam P. Goucher",
+        "R. Troll"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Augmenting a standard neural network architecture with a single memory layer based on this design can scale the parameter count up to memory limits with negligible computational overhead, giving better accuracy at similar cost."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

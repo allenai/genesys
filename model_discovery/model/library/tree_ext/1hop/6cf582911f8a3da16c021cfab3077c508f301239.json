@@ -1,0 +1,29 @@
+{
+    "acronym": "6cf582911f8a3da16c021cfab3077c508f301239",
+    "title": "How to Understand Named Entities: Using Common Sense for News Captioning",
+    "seed_ids": [
+        "transformer",
+        "710d183174844da5b7f392667f3cc25d2b098dde"
+    ],
+    "s2id": "6cf582911f8a3da16c021cfab3077c508f301239",
+    "abstract": "News captioning aims to describe an image with its news article body as input. It greatly relies on a set of detected named entities, including real-world people, organizations, and places. This paper exploits commonsense knowledge to understand named entities for news captioning. By ``understand'', we mean correlating the news content with common sense in the wild, which helps an agent to 1) distinguish semantically similar named entities and 2) describe named entities using words outside of training corpora. Our approach consists of three modules: (a) Filter Module aims to clarify the common sense concerning a named entity from two aspects: what does it mean? and what is it related to?, which divide the common sense into explanatory knowledge and relevant knowledge, respectively. (b) Distinguish Module aggregates explanatory knowledge from node-degree, dependency, and distinguish three aspects to distinguish semantically similar named entities. (c) Enrich Module attaches relevant knowledge to named entities to enrich the entity description by commonsense information (e.g., identity and social position). Finally, the probability distributions from both modules are integrated to generate the news captions. Extensive experiments on two challenging datasets (i.e., GoodNews and NYTimes) demonstrate the superiority of our method. Ablation studies and visualization further validate its effectiveness in understanding named entities.",
+    "authors": [
+        "Ning Xu",
+        "Yanhui Wang",
+        "Tingting Zhang",
+        "Hongshuo Tian",
+        "Mohan S. Kankanhalli",
+        "An-An Liu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Commonsense knowledge is exploited to understand named entities for news captioning by correlating the news content with common sense in the wild, which helps an agent to distinguish semantically similar named entities and describe named entities using words outside of training corpora."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

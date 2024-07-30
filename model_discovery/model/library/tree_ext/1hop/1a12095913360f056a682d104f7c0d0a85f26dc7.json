@@ -1,0 +1,36 @@
+{
+    "acronym": "1a12095913360f056a682d104f7c0d0a85f26dc7",
+    "title": "Joint learning of text alignment and abstractive summarization for long documents via unbalanced optimal transport",
+    "seed_ids": [
+        "bigbird",
+        "f8d44802ac8190864c61c9aaf4a8b450261873ab",
+        "0a41cb292242a82b2b09b3bf23b48349b981a640",
+        "e32a12b14e212506115cc6804667b3d8297917e1",
+        "f4566761fe39c4b5273d696d9bc3f4195c9325bb",
+        "9dc624d7258d1a56117ca720aea953ce46b66b21",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "01b15017ac59b8d6f2ce3598c4a7d6358c211426",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "1a12095913360f056a682d104f7c0d0a85f26dc7",
+    "abstract": "Abstract Recently, neural abstractive text summarization (NATS) models based on sequence-to-sequence architecture have drawn a lot of attention. Real-world texts that need to be summarized range from short news with dozens of words to long reports with thousands of words. However, most existing NATS models are not good at summarizing long documents, due to the inherent limitations of their underlying neural architectures. In this paper, we focus on the task of long document summarization (LDS). Based on the inherent section structures of source documents, we divide an abstractive LDS problem into several smaller-sized problems. In this circumstance, how to provide a less-biased target summary as the supervision for each section is vital for the model\u2019s performance. As a preliminary, we formally describe the section-to-summary-sentence (S2SS) alignment for LDS. Based on this, we propose a novel NATS framework for the LDS task. Our framework is built based on the theory of unbalanced optimal transport (UOT), and it is named as UOTSumm. It jointly learns three targets in a unified training objective, including the optimal S2SS alignment, a section-level NATS summarizer, and the number of aligned summary sentences for each section. In this way, UOTSumm directly learns the text alignment from summarization data, without resorting to any biased tool such as ROUGE. UOTSumm can be easily adapted to most existing NATS models. And we implement two versions of UOTSumm, with and without the pretrain-finetune technique. We evaluate UOTSumm on three publicly available LDS benchmarks: PubMed, arXiv, and GovReport. UOTSumm obviously outperforms its counterparts that use ROUGE for the text alignment. When combined with UOTSumm, the performance of two vanilla NATS models improves by a large margin. Besides, UOTSumm achieves better or comparable performance when compared with some recent strong baselines.",
+    "authors": [
+        "Xin Shen",
+        "Wai Lam",
+        "Shumin Ma",
+        "Huadong Wang"
+    ],
+    "venue": "Natural Language Engineering",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel NATS framework built based on the theory of unbalanced optimal transport (UOT), named as UOTSumm, which directly learns the text alignment from summarization data, without resorting to any biased tool such as ROUGE."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

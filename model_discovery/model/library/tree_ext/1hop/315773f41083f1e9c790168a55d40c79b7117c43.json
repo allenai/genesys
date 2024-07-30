@@ -1,0 +1,26 @@
+{
+    "acronym": "315773f41083f1e9c790168a55d40c79b7117c43",
+    "title": "Latent Concept-based Explanation of NLP Models",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "315773f41083f1e9c790168a55d40c79b7117c43",
+    "abstract": "Interpreting and understanding the predictions made by deep learning models poses a formidable challenge due to their inherently opaque nature. Many previous efforts aimed at explaining these predictions rely on input features, specifically, the words within NLP models. However, such explanations are often less informative due to the discrete nature of these words and their lack of contextual verbosity. To address this limitation, we introduce the Latent Concept Attribution method (LACOAT), which generates explanations for predictions based on latent concepts. Our foundational intuition is that a word can exhibit multiple facets, contingent upon the context in which it is used. Therefore, given a word in context, the latent space derived from our training process reflects a specific facet of that word. LACOAT functions by mapping the representations of salient input words into the training latent space, allowing it to provide latent context-based explanations of the prediction.",
+    "authors": [
+        "Xuemin Yu",
+        "Fahim Dalvi",
+        "Nadir Durrani",
+        "Hassan Sajjad"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Latent Concept Attribution method (LACOAT) is introduced, which generates explanations for predictions based on latent concepts based on input features within NLP models by mapping the representations of salient input words into the training latent space, allowing it to provide latent context-based explanations of the prediction."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

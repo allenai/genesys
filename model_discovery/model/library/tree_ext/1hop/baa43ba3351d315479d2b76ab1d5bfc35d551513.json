@@ -1,0 +1,26 @@
+{
+    "acronym": "baa43ba3351d315479d2b76ab1d5bfc35d551513",
+    "title": "Lattice-based Data Augmentation for Code-switching Speech Recognition",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "baa43ba3351d315479d2b76ab1d5bfc35d551513",
+    "abstract": "Code-switching is a common phenomenon that occurs within conversations among multilingual speakers. The limited availability of code-switching resources poses some challenges to code-switching speech recognition. Our work addresses both data scarcity and pronunciation variations in word transitions by introducing speech recognition decoding lattice for data augmentation in code-switching speech recognition, specifically in language modeling. Decoding lattices contain both acoustic and textual information that help solve the pronunciation variations problem. We pretrain GPT2, a transformer-based language model, with lattices obtained from the first-pass decoding of code-switching training data. The first-pass decoding is performed by using the baseline speech recognition system with n-gram language model. We successfully reduce around 2 point of word error rate from the previously mentioned baseline and 0.33 point from the baseline that utilizes GPT2 language model. Ablation study also shows an improvement when including acoustic information for code-switching language model pretraining. In addition, we show that despite having a limited amount of word switching variations information, our proposed method achieves a comparable result with previous studies that employ artificial code-switching sentences.",
+    "authors": [
+        "Roland Hartanto",
+        "K. Uto",
+        "K. Shinoda"
+    ],
+    "venue": "Asia-Pacific Signal and Information Processing Association Annual Summit and Conference",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work addresses both data scarcity and pronunciation variations in word transitions by introducing speech recognition decoding lattice for data augmentation in code-switching speech recognition, specifically in language modeling."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

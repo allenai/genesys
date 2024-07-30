@@ -1,0 +1,26 @@
+{
+    "acronym": "42dfd70854193a89e2188af09e109ee1267d4002",
+    "title": "Riemannian Preconditioned LoRA for Fine-Tuning Foundation Models",
+    "seed_ids": [
+        "gpt2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "42dfd70854193a89e2188af09e109ee1267d4002",
+    "abstract": "Low-Rank Adaptation (LoRA) emerges as a popular parameter-efficient fine-tuning (PEFT) method, which proposes to freeze pretrained model weights and update an additive low-rank trainable matrix. In this work, we study the enhancement of LoRA training by introducing an $r \\times r$ preconditioner in each gradient step where $r$ is the LoRA rank. We theoretically verify that the proposed preconditioner stabilizes feature learning with LoRA under infinite-width NN setting. Empirically, the implementation of this new preconditioner requires a small change to existing optimizer code and creates virtually minuscule storage and runtime overhead. Our experimental results with both large language models and text-to-image diffusion models show that with this new preconditioner, the convergence and reliability of SGD and AdamW can be significantly enhanced. Moreover, the training process becomes much more robust to hyperparameter choices such as learning rate. The new preconditioner can be derived from a novel Riemannian metric in low-rank matrix field. Code can be accessed at https://github.com/pilancilab/Riemannian_Preconditioned_LoRA.",
+    "authors": [
+        "Fangzhao Zhang",
+        "Mert Pilanci"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results with both large language models and text-to-image diffusion models show that with this new preconditioner, the convergence and reliability of SGD and AdamW can be significantly enhanced and the training process becomes much more robust to hyperparameter choices such as learning rate."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

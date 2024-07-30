@@ -1,0 +1,34 @@
+{
+    "acronym": "f3a13abf23afecf534c955954d70c3b0fc41d334",
+    "title": "Composing Ensembles of Pre-trained Models via Iterative Consensus",
+    "seed_ids": [
+        "gpt2",
+        "classfreediffu",
+        "3ff7153fd6bd47d08084c7f50f8fd70026c126e7",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "ada81a4de88a6ce474df2e2446ad11fea480616e",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "5e00596fa946670d894b1bdaeff5a98e3867ef13",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f3a13abf23afecf534c955954d70c3b0fc41d334",
+    "abstract": "Large pre-trained models exhibit distinct and complementary capabilities dependent on the data they are trained on. Language models such as GPT-3 are capable of textual reasoning but cannot understand visual information, while vision models such as DALL-E can generate photorealistic photos but fail to understand complex language descriptions. In this work, we propose a unified framework for composing ensembles of different pre-trained models -- combining the strengths of each individual model to solve various multimodal problems in a zero-shot manner. We use pre-trained models as\"generators\"or\"scorers\"and compose them via closed-loop iterative consensus optimization. The generator constructs proposals and the scorers iteratively provide feedback to refine the generated result. Such closed-loop communication enables models to correct errors caused by other models, significantly boosting performance on downstream tasks, e.g. improving accuracy on grade school math problems by 7.5%, without requiring any model finetuning. We demonstrate that consensus achieved by an ensemble of scorers outperforms the feedback of a single scorer, by leveraging the strengths of each expert model. Results show that the proposed method can be used as a general purpose framework for a wide range of zero-shot multimodal tasks, such as image generation, video question answering, mathematical reasoning, and robotic manipulation. Project page: https://energy-based-model.github.io/composing-pretrained-models.",
+    "authors": [
+        "Shuang Li",
+        "Yilun Du",
+        "J. Tenenbaum",
+        "A. Torralba",
+        "Igor Mordatch"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Results show that the proposed method can be used as a general purpose framework for a wide range of zero-shot multimodal tasks, such as image generation, video question answering, mathematical reasoning, and robotic manipulation."
+    },
+    "citationCount": 19,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

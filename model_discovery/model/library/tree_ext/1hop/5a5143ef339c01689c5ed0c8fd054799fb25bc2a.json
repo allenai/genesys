@@ -1,0 +1,30 @@
+{
+    "acronym": "5a5143ef339c01689c5ed0c8fd054799fb25bc2a",
+    "title": "Jointly Encoding Word Confusion Network and Dialogue Context with BERT for Spoken Language Understanding",
+    "seed_ids": [
+        "gpt",
+        "f98525843f7e03d247a2dc94951799a0d7101437",
+        "c40dcfcad82179f04f8737115eb90621074a4d54"
+    ],
+    "s2id": "5a5143ef339c01689c5ed0c8fd054799fb25bc2a",
+    "abstract": "Spoken Language Understanding (SLU) converts hypotheses from automatic speech recognizer (ASR) into structured semantic representations. ASR recognition errors can severely degenerate the performance of the subsequent SLU module. To address this issue, word confusion networks (WCNs) have been used to encode the input for SLU, which contain richer information than 1-best or n-best hypotheses list. To further eliminate ambiguity, the last system act of dialogue context is also utilized as additional input. In this paper, a novel BERT based SLU model (WCN-BERT SLU) is proposed to encode WCNs and the dialogue context jointly. It can integrate both structural information and ASR posterior probabilities of WCNs in the BERT architecture. Experiments on DSTC2, a benchmark of SLU, show that the proposed method is effective and can outperform previous state-of-the-art models significantly.",
+    "authors": [
+        "Chen Liu",
+        "Su Zhu",
+        "Zijian Zhao",
+        "Ruisheng Cao",
+        "Lu Chen",
+        "Kai Yu"
+    ],
+    "venue": "Interspeech",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel BERT based SLU model (WCN-BERT SLU) is proposed to encode WCNs and the dialogue context jointly and can integrate both structural information and ASR posterior probabilities of WCNs in the BERT architecture."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

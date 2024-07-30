@@ -1,0 +1,28 @@
+{
+    "acronym": "6e02888c86479aa3fbd24996022147eb4be2be8c",
+    "title": "Attention to the Electroretinogram: Gated Multilayer Perceptron for ASD Classification",
+    "seed_ids": [
+        "gmlp"
+    ],
+    "s2id": "6e02888c86479aa3fbd24996022147eb4be2be8c",
+    "abstract": "The electroretinogram (ERG) is a clinical test that records the retina\u2019s electrical response to a brief flash of light as a waveform signal. Analysis of the ERG signal offers a promising non-invasive method for studying different neurodevelopmental and neurodegenerative disorders. Autism Spectrum Disorder (ASD) is a neurodevelopmental condition characterized by poor communication, reduced reciprocal social interaction, and restricted and repetitive stereotyped behaviors that should be detected as early as possible to ensure timely and appropriate intervention to support the individual and their family. In this study, we applied gated Multilayer Perceptron (gMLP) for the light-adapted ERG waveform classification as an effective alternative to Transformers. This study presents the first application of gMLP for ASD classification, which employs basic multilayer perceptrons with fewer parameters than Transformers. We compared the performance of different time-series models on an ASD-Control dataset and found that the superiority of gMLP in classification accuracy was the best at 89.7% compared to alternative models and supports the use of gMLP in classification models based on ERG recordings involving case-control comparisons.",
+    "authors": [
+        "Mikhail Kulyabin",
+        "P. Constable",
+        "Aleksei Zhdanov",
+        "Irene O. Lee",
+        "D. A. Thompson",
+        "Andreas K. Maier"
+    ],
+    "venue": "IEEE Access",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study presents the first application of gMLP for ASD classification, which employs basic multilayer perceptrons with fewer parameters than Transformers and finds that the superiority of gMLP in classification accuracy was the best at 89.7% compared to alternative models."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

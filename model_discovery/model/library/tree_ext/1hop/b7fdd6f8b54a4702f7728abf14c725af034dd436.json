@@ -1,0 +1,31 @@
+{
+    "acronym": "b7fdd6f8b54a4702f7728abf14c725af034dd436",
+    "title": "KalMamba: Towards Efficient Probabilistic State Space Models for RL under Uncertainty",
+    "seed_ids": [
+        "s4",
+        "mamba",
+        "s5",
+        "e34868427f607bd35f11576963c36b95673e5a75",
+        "31b27d90c2d5732386dd3a46a7d8336c0555c6fe",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51"
+    ],
+    "s2id": "b7fdd6f8b54a4702f7728abf14c725af034dd436",
+    "abstract": "Probabilistic State Space Models (SSMs) are essential for Reinforcement Learning (RL) from high-dimensional, partial information as they provide concise representations for control. Yet, they lack the computational efficiency of their recent deterministic counterparts such as S4 or Mamba. We propose KalMamba, an efficient architecture to learn representations for RL that combines the strengths of probabilistic SSMs with the scalability of deterministic SSMs. KalMamba leverages Mamba to learn the dynamics parameters of a linear Gaussian SSM in a latent space. Inference in this latent space amounts to standard Kalman filtering and smoothing. We realize these operations using parallel associative scanning, similar to Mamba, to obtain a principled, highly efficient, and scalable probabilistic SSM. Our experiments show that KalMamba competes with state-of-the-art SSM approaches in RL while significantly improving computational efficiency, especially on longer interaction sequences.",
+    "authors": [
+        "P. Becker",
+        "Niklas Freymuth",
+        "Gerhard Neumann"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "KalMamba is an efficient architecture to learn representations for RL that combines the strengths of probabilistic SSMs with the scalability of deterministic SSMs, and competes with state-of-the-art SSM approaches in RL while significantly improving computational efficiency, especially on longer interaction sequences."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

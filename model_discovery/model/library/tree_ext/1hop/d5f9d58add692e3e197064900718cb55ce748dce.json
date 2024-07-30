@@ -1,0 +1,28 @@
+{
+    "acronym": "d5f9d58add692e3e197064900718cb55ce748dce",
+    "title": "FitDiff: Robust monocular 3D facial shape and reflectance estimation using Diffusion Models",
+    "seed_ids": [
+        "classfreediffu",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "d5f9d58add692e3e197064900718cb55ce748dce",
+    "abstract": "The remarkable progress in 3D face reconstruction has resulted in high-detail and photorealistic facial representations. Recently, Diffusion Models have revolutionized the capabilities of generative methods by surpassing the performance of GANs. In this work, we present FitDiff, a diffusion-based 3D facial avatar generative model. Leveraging diffusion principles, our model accurately generates relightable facial avatars, utilizing an identity embedding extracted from an\"in-the-wild\"2D facial image. The introduced multi-modal diffusion model is the first to concurrently output facial reflectance maps (diffuse and specular albedo and normals) and shapes, showcasing great generalization capabilities. It is solely trained on an annotated subset of a public facial dataset, paired with 3D reconstructions. We revisit the typical 3D facial fitting approach by guiding a reverse diffusion process using perceptual and face recognition losses. Being the first 3D LDM conditioned on face recognition embeddings, FitDiff reconstructs relightable human avatars, that can be used as-is in common rendering engines, starting only from an unconstrained facial image, and achieving state-of-the-art performance.",
+    "authors": [
+        "Stathis Galanakis",
+        "Alexandros Lattas",
+        "Stylianos Moschoglou",
+        "S. Zafeiriou"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Being the first 3D LDM conditioned on face recognition embeddings, FitDiff reconstructs relightable human avatars that can be used as-is in common rendering engines, starting only from an unconstrained facial image, and achieving state-of-the-art performance."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

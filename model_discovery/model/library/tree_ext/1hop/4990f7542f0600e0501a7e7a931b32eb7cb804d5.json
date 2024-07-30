@@ -1,0 +1,33 @@
+{
+    "acronym": "4990f7542f0600e0501a7e7a931b32eb7cb804d5",
+    "title": "VideoMAE: Masked Autoencoders are Data-Efficient Learners for Self-Supervised Video Pre-Training",
+    "seed_ids": [
+        "gpt2",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "78a0fb70b79116eb8d42c5951ced4f9efba513f0",
+        "2d9ae4c167510ed78803735fc57ea67c3cc55a35",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "4990f7542f0600e0501a7e7a931b32eb7cb804d5",
+    "abstract": "Pre-training video transformers on extra large-scale datasets is generally required to achieve premier performance on relatively small datasets. In this paper, we show that video masked autoencoders (VideoMAE) are data-efficient learners for self-supervised video pre-training (SSVP). We are inspired by the recent ImageMAE and propose customized video tube masking with an extremely high ratio. This simple design makes video reconstruction a more challenging self-supervision task, thus encouraging extracting more effective video representations during this pre-training process. We obtain three important findings on SSVP: (1) An extremely high proportion of masking ratio (i.e., 90% to 95%) still yields favorable performance of VideoMAE. The temporally redundant video content enables a higher masking ratio than that of images. (2) VideoMAE achieves impressive results on very small datasets (i.e., around 3k-4k videos) without using any extra data. (3) VideoMAE shows that data quality is more important than data quantity for SSVP. Domain shift between pre-training and target datasets is an important issue. Notably, our VideoMAE with the vanilla ViT can achieve 87.4% on Kinetics-400, 75.4% on Something-Something V2, 91.3% on UCF101, and 62.6% on HMDB51, without using any extra data. Code is available at https://github.com/MCG-NJU/VideoMAE.",
+    "authors": [
+        "Zhan Tong",
+        "Yibing Song",
+        "Jue Wang",
+        "Limin Wang"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper shows that video masked autoencoders (VideoMAE) are data-efficient learners for self-supervised video pre-training (SSVP), and proposes customized video tube masking with an extremely high ratio, inspired by the recent ImageMAE."
+    },
+    "citationCount": 682,
+    "influentialCitationCount": 128,
+    "code": null,
+    "description": null,
+    "url": null
+}

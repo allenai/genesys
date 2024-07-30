@@ -1,0 +1,32 @@
+{
+    "acronym": "172e75ba47cd4f50ef62f63a4251fdbb11b16525",
+    "title": "Knowledge-Grounded Natural Language Recommendation Explanation",
+    "seed_ids": [
+        "gpt2",
+        "c807726bdbc6dec1735560922d3427b8ff0a9370",
+        "8498daeeb893870524ffaa63086f8528795003d4",
+        "b99c61f6957c1b04ec1376b74f82dd1e83559695",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "172e75ba47cd4f50ef62f63a4251fdbb11b16525",
+    "abstract": "Explanations accompanying a recommendation can assist users in understanding the decision made by recommendation systems, which in turn increases a user\u2019s confidence and trust in the system. Recently, research has focused on generating natural language explanations in a human-readable format. Thus far, the proposed approaches leverage item reviews written by users, which are often subjective, sparse in language, and unable to account for new items that have not been purchased or reviewed before. Instead, we aim to generate fact-grounded recommendation explanations that are objectively described with item features while implicitly considering a user\u2019s preferences, based on the user\u2019s purchase history. To achieve this, we propose a knowledge graph (KG) approach to natural language explainable recommendation. Our approach draws on user-item features through a novel collaborative filtering-based KG representation to produce fact-grounded, personalized explanations, while jointly learning user-item representations for recommendation scoring. Experimental results show that our approach consistently outperforms previous state-of-the-art models on natural language explainable recommendation metrics.",
+    "authors": [
+        "Anthony Colas",
+        "J. Araki",
+        "Zhengyu Zhou",
+        "Bingqing Wang",
+        "Z. Feng"
+    ],
+    "venue": "BlackboxNLP Workshop on Analyzing and Interpreting Neural Networks for NLP",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a knowledge graph (KG) approach to natural language explainable recommendation that draws on user-item features through a novel collaborative filtering-based KG representation to produce fact-grounded, personalized explanations, while jointly learning user- item representations for recommendation scoring."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

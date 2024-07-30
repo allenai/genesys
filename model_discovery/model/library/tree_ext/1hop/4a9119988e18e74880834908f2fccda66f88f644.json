@@ -1,0 +1,25 @@
+{
+    "acronym": "4a9119988e18e74880834908f2fccda66f88f644",
+    "title": "Schema Encoding for Transferable Dialogue State Tracking",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "4a9119988e18e74880834908f2fccda66f88f644",
+    "abstract": "Dialogue state tracking (DST) is an essential sub-task for task-oriented dialogue systems. Recent work has focused on deep neural models for DST. However, the neural models require a large dataset for training. Furthermore, applying them to another domain needs a new dataset because the neural models are generally trained to imitate the given dataset. In this paper, we propose Schema Encoding for Transferable Dialogue State Tracking (SET-DST), which is a neural DST method for effective transfer to new domains. Transferable DST could assist developments of dialogue systems even with few dataset on target domains. We use a schema encoder not just to imitate the dataset but to comprehend the schema of the dataset. We aim to transfer the model to new domains by encoding new schemas and using them for DST on multi-domain settings. As a result, SET-DST improved the joint accuracy by 1.46 points on MultiWOZ 2.1.",
+    "authors": [
+        "Hyunmin Jeon",
+        "G. G. Lee"
+    ],
+    "venue": "International Conference on Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes Schema Encoding for Transferable Dialogue State Tracking (SET-DST), which is a neural DST method for effective transfer to new domains by encoding new schemas and using them for DST on multi-domain settings."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

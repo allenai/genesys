@@ -1,0 +1,25 @@
+{
+    "acronym": "053f44b0f9015d96269b04981c27d33d23676371",
+    "title": "DiffSTOCK: Probabilistic relational Stock Market Predictions using Diffusion Models",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "053f44b0f9015d96269b04981c27d33d23676371",
+    "abstract": "In this work, we propose an approach to generalize denoising diffusion probabilistic models for stock market predictions and portfolio management. Present works have demonstrated the efficacy of modeling interstock relations for market time-series forecasting and utilized Graph-based learning models for value prediction and portfolio management. Though convincing, these deterministic approaches still fall short of handling uncertainties i.e., due to the low signal-to-noise ratio of the financial data, it is quite challenging to learn effective deterministic models. Since the probabilistic methods have shown to effectively emulate higher uncertainties for time-series predictions. To this end, we showcase effective utilisation of Denoising Diffusion Probabilistic Models (DDPM), to develop an architecture for providing better market predictions conditioned on the historical financial indicators and inter-stock relations. Additionally, we also provide a novel deterministic architecture MaTCHS which uses Masked Relational Transformer(MRT) to exploit inter-stock relations along with historical stock features. We demonstrate that our model achieves SOTA performance for movement predication and Portfolio management.",
+    "authors": [
+        "Divyanshu Daiya",
+        "Monika Yadav",
+        "Harshit Singh Rao"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work showcases effective utilisation of Denoising Diffusion Probabilistic Models (DDPM) and provides an architecture for providing better market predictions conditioned on the historical financial indicators and inter-stock relations and provides a novel deterministic architecture MaTCHS which uses Masked Relational Transformer (MRT)."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

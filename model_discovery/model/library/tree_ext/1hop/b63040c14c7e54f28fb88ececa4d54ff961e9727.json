@@ -1,0 +1,43 @@
+{
+    "acronym": "b63040c14c7e54f28fb88ececa4d54ff961e9727",
+    "title": "Fast Multipole Attention: A Divide-and-Conquer Attention Mechanism for Long Sequences",
+    "seed_ids": [
+        "linformer",
+        "lineartransformer",
+        "bigbird",
+        "reformer",
+        "htransformer1d",
+        "c49ac1f916d6d2edeb187e6619c8d23acd95eb21",
+        "37abe53ed31caa23ae833b2e67bb4aa1892e8d25",
+        "dbf53ece1a6a8860e41ff5f721c72ceb0fb18dd6",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "c828f4bf1a752700dd2c4a96fdd08ba938cda43d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "b63040c14c7e54f28fb88ececa4d54ff961e9727",
+    "abstract": "Transformer-based models have achieved state-of-the-art performance in many areas. However, the quadratic complexity of self-attention with respect to the input length hinders the applicability of Transformer-based models to long sequences. To address this, we present Fast Multipole Attention, a new attention mechanism that uses a divide-and-conquer strategy to reduce the time and memory complexity of attention for sequences of length $n$ from $\\mathcal{O}(n^2)$ to $\\mathcal{O}(n \\log n)$ or $O(n)$, while retaining a global receptive field. The hierarchical approach groups queries, keys, and values into $\\mathcal{O}( \\log n)$ levels of resolution, where groups at greater distances are increasingly larger in size and the weights to compute group quantities are learned. As such, the interaction between tokens far from each other is considered in lower resolution in an efficient hierarchical manner. The overall complexity of Fast Multipole Attention is $\\mathcal{O}(n)$ or $\\mathcal{O}(n \\log n)$, depending on whether the queries are down-sampled or not. This multi-level divide-and-conquer strategy is inspired by fast summation methods from $n$-body physics and the Fast Multipole Method. We perform evaluation on autoregressive and bidirectional language modeling tasks and compare our Fast Multipole Attention model with other efficient attention variants on medium-size datasets. We find empirically that the Fast Multipole Transformer performs much better than other efficient transformers in terms of memory size and accuracy. The Fast Multipole Attention mechanism has the potential to empower large language models with much greater sequence lengths, taking the full context into account in an efficient, naturally hierarchical manner during training and when generating long sequences.",
+    "authors": [
+        "Yanming Kang",
+        "Giang Tran",
+        "H. Sterck"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Fast Multipole Attention mechanism has the potential to empower large language models with much greater sequence lengths, taking the full context into account in an efficient, naturally hierarchical manner during training and when generating long sequences."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

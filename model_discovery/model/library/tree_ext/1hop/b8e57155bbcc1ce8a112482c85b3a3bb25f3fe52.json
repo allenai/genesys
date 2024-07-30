@@ -1,0 +1,38 @@
+{
+    "acronym": "b8e57155bbcc1ce8a112482c85b3a3bb25f3fe52",
+    "title": "UniTime: A Language-Empowered Unified Model for Cross-Domain Time Series Forecasting",
+    "seed_ids": [
+        "gpt2",
+        "5b7f5488c380cf5085a5dd93e993ad293b225eee",
+        "8064d3873c646dc9ff949d72c54c634a906fc092",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "2e1db8cb373f4d4a51d44308b7a457886d855fbb",
+        "30dcc0e191a376fea0e7a46f94c53872c029efc9",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b8e57155bbcc1ce8a112482c85b3a3bb25f3fe52",
+    "abstract": "Multivariate time series forecasting plays a pivotal role in contemporary web technologies. In contrast to conventional methods that involve creating dedicated models for specific time series application domains, this research advocates for a unified model paradigm that transcends domain boundaries. However, learning an effective cross-domain model presents the following challenges. First, various domains exhibit disparities in data characteristics, e.g., the number of variables, posing hurdles for existing models that impose inflexible constraints on these factors. Second, the model may encounter difficulties in distinguishing data from various domains, leading to suboptimal performance in our assessments. Third, the diverse convergence rates of time series domains can also result in compromised empirical performance. To address these issues, we propose UniTime for effective cross-domain time series learning. Concretely, UniTime can flexibly adapt to data with varying characteristics. It also uses domain instructions and a Language-TS Transformer to offer identification information and align two modalities. In addition, UniTime employs masking to alleviate domain convergence speed imbalance issues. Our extensive experiments demonstrate the effectiveness of UniTime in advancing state-of-the-art forecasting performance and zero-shot transferability.",
+    "authors": [
+        "Xu Liu",
+        "Junfeng Hu",
+        "Yuan Li",
+        "Shizhe Diao",
+        "Yuxuan Liang",
+        "Bryan Hooi",
+        "Roger Zimmermann"
+    ],
+    "venue": "The Web Conference",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Concretely, UniTime can flexibly adapt to data with varying characteristics and uses domain instructions and a Language-TS Transformer to offer identification information and align two modalities, and employs masking to alleviate domain convergence speed imbalance issues."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

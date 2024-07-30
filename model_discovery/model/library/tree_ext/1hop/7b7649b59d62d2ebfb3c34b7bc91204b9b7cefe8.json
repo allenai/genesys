@@ -1,0 +1,33 @@
+{
+    "acronym": "7b7649b59d62d2ebfb3c34b7bc91204b9b7cefe8",
+    "title": "Retentive or Forgetful? Diving into the Knowledge Memorizing Mechanism of Language Models",
+    "seed_ids": [
+        "gpt2",
+        "01f2b214962997260020279bd1fd1f8f372249d4",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "e2587eddd57bc4ba286d91b27c185083f16f40ee",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7b7649b59d62d2ebfb3c34b7bc91204b9b7cefe8",
+    "abstract": "Memory is one of the most essential cognitive functions serving as a repository of world knowledge and episodes of activities. In recent years, large-scale pre-trained language models have shown remarkable memorizing ability. On the contrary, vanilla neural networks without pre-training have been long observed suffering from the catastrophic forgetting problem. To investigate such a retentive-forgetful contradiction and understand the memorizing dynamic mechanism of language models, we conduct thorough experiments by controlling the target knowledge types, the learning strategies and the learning schedules. We find that: 1) Vanilla language models without pre-training are forgetful; 2) Pre-training leads to retentive language models; 3) Knowledge relevance and diversification significantly influence the memory formation. These conclusions are useful for understanding the abilities of pre-trained language models and shed light on designing and evaluating new learning and inference algorithms of language models.",
+    "authors": [
+        "Boxi Cao",
+        "Qiaoyu Tang",
+        "Hongyu Lin",
+        "Xianpei Han",
+        "Jiawei Chen",
+        "Tianshu Wang",
+        "Le Sun"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that Vanilla language models without pre-training are forgetful; pre-training leads to retentive language models; knowledge relevance and diversification significantly influence the memory formation; and knowledge relevance and diversification significantly influence the memory formation."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

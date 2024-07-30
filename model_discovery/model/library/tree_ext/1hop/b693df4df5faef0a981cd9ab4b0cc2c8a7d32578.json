@@ -1,0 +1,24 @@
+{
+    "acronym": "b693df4df5faef0a981cd9ab4b0cc2c8a7d32578",
+    "title": "Sparse Meta Networks for Sequential Adaptation and its Application to Adaptive Language Modelling",
+    "seed_ids": [
+        "transformerxl",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13"
+    ],
+    "s2id": "b693df4df5faef0a981cd9ab4b0cc2c8a7d32578",
+    "abstract": "Training a deep neural network requires a large amount of single-task data and involves a long time-consuming optimization phase. This is not scalable to complex, realistic environments with new unexpected changes. Humans can perform fast incremental learning on the fly and memory systems in the brain play a critical role. We introduce Sparse Meta Networks -- a meta-learning approach to learn online sequential adaptation algorithms for deep neural networks, by using deep neural networks. We augment a deep neural network with a layer-specific fast-weight memory. The fast-weights are generated sparsely at each time step and accumulated incrementally through time providing a useful inductive bias for online continual adaptation. We demonstrate strong performance on a variety of sequential adaptation scenarios, from a simple online reinforcement learning to a large scale adaptive language modelling.",
+    "authors": [
+        "Tsendsuren Munkhdalai"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work augments a deep neural network with a layer-specific fast-weight memory, generated sparsely at each time step and accumulated incrementally through time providing a useful inductive bias for online continual adaptation."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,38 @@
+{
+    "acronym": "896b5489098177512a05b25c74d3daf380edbbe0",
+    "title": "chatClimate: Grounding Conversational AI in Climate Science",
+    "seed_ids": [
+        "gpt2",
+        "ed38c6b157c11476939c426ec6871c926f2f3524",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "fd1b829261ba04bb92e0ab60c4f6e7cea0d99fbf",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "896b5489098177512a05b25c74d3daf380edbbe0",
+    "abstract": "Large Language Models have made remarkable progress in question-answering tasks, but challenges like hallucination and outdated information persist. These issues are especially critical in domains like climate change, where timely access to reliable information is vital. One solution is granting these models access to external, scientifically accurate sources to enhance their knowledge and reliability. Here, we enhance GPT-4 by providing access to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change (IPCC AR6), the most comprehensive, up-to-date, and reliable source in this domain (refer to the \u2019Data Availability\u2019 section). We present our conversational AI prototype, available at www.chatclimate.ai, and demonstrate its ability to answer challenging questions in three different setups: (1) GPT-4, (2) ChatClimate, which relies exclusively on IPCC AR6 reports, and (3) Hybrid ChatClimate, which utilizes IPCC AR6 reports with in-house GPT-4 knowledge. The evaluation of answers by experts show that the hybrid ChatClimate AI assistant provide more accurate responses, highlighting the effectiveness of our solution.",
+    "authors": [
+        "S. Vaghefi",
+        "Qian Wang",
+        "V. Muccione",
+        "Jingwei Ni",
+        "Mathias Kraus",
+        "J. Bingler",
+        "Tobias Schimanski",
+        "Chiara Colesanti-Senni",
+        "Nicolas Webersinke",
+        "Christrian Huggel",
+        "Markus Leippold"
+    ],
+    "venue": "Communications Earth &amp; Environment",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "GPT-4 is enhanced by providing access to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change (IPCC AR6), the most comprehensive, up-to-date, and reliable source in this domain (refer to the \u2019Data Availability\u2019 section)."
+    },
+    "citationCount": 30,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

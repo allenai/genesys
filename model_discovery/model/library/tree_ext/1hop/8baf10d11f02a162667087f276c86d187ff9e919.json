@@ -1,0 +1,27 @@
+{
+    "acronym": "8baf10d11f02a162667087f276c86d187ff9e919",
+    "title": "ALISON: Fast and Effective Stylometric Authorship Obfuscation",
+    "seed_ids": [
+        "bert",
+        "7845bfb55f5ce573b87d77bb76d4d38829b37620"
+    ],
+    "s2id": "8baf10d11f02a162667087f276c86d187ff9e919",
+    "abstract": "Authorship Attribution (AA) and Authorship Obfuscation (AO) are two competing tasks of increasing importance in privacy research. Modern AA leverages an author's consistent writing style to match a text to its author using an AA classifier. AO is the corresponding adversarial task, aiming to modify a text in such a way that its semantics are preserved, yet an AA model cannot correctly infer its authorship. To address privacy concerns raised by state-of-the-art (SOTA) AA methods,\nnew AO methods have been proposed but remain largely impractical to use due to their prohibitively slow training and obfuscation speed, often taking hours.\nTo this challenge, we propose a practical AO method, ALISON, that (1) dramatically reduces training/obfuscation time, demonstrating more than 10x faster obfuscation than SOTA AO methods, (2) achieves better obfuscation success through attacking three transformer-based AA methods on two benchmark datasets, typically performing 15% better than competing methods, (3) does not require direct signals from a target AA classifier during obfuscation, and (4) utilizes unique stylometric features, allowing sound model interpretation for explainable obfuscation. We also demonstrate that ALISON can effectively prevent four SOTA AA methods from accurately determining the authorship of ChatGPT-generated texts, all while minimally changing the original text semantics. To ensure the reproducibility of our findings, our code and data are available at: https://github.com/EricX003/ALISON.",
+    "authors": [
+        "Eric Xing",
+        "Saranya Venkatraman",
+        "Thai Le",
+        "Dongwon Lee"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A practical AO method, ALISON, that dramatically reduces training/obfuscation time, demonstrating more than 10x faster obfuscation than SOTA AO methods, achieves better obfuscation success through attacking three transformer-based AA methods on two benchmark datasets, and utilizes unique stylometric features, allowing sound model interpretation for explainable obfuscation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,35 @@
+{
+    "acronym": "98c703db23d27376f9987f7e8f0fd41baf25f5c4",
+    "title": "MFC-Bench: Benchmarking Multimodal Fact-Checking with Large Vision-Language Models",
+    "seed_ids": [
+        "gpt3",
+        "b842b83a7ff5dff8e3b83915d8c15423b6085728",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3"
+    ],
+    "s2id": "98c703db23d27376f9987f7e8f0fd41baf25f5c4",
+    "abstract": "Large vision-language models (LVLMs) have significantly improved multimodal reasoning tasks, such as visual question answering and image captioning. These models embed multimodal facts within their parameters, rather than relying on external knowledge bases to store factual information explicitly. However, the content discerned by LVLMs may deviate from actual facts due to inherent bias or incorrect inference. To address this issue, we introduce MFC-Bench, a rigorous and comprehensive benchmark designed to evaluate the factual accuracy of LVLMs across three tasks: Manipulation, Out-of-Context, and Veracity Classification. Through our evaluation on MFC-Bench, we benchmarked 12 diverse and representative LVLMs, uncovering that current models still fall short in multimodal fact-checking and demonstrate insensitivity to various forms of manipulated content. We hope that MFC-Bench could raise attention to the trustworthy artificial intelligence potentially assisted by LVLMs in the future. The MFC-Bench and accompanying resources are publicly accessible at https://github.com/wskbest/MFC-Bench, contributing to ongoing research in the multimodal fact-checking field.",
+    "authors": [
+        "Shengkang Wang",
+        "Hongzhan Lin",
+        "Ziyang Luo",
+        "Zhen Ye",
+        "Guang Chen",
+        "Jing Ma"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Through the evaluation on MFC-Bench, it is uncovered that current models still fall short in multimodal fact-checking and demonstrate insensitivity to various forms of manipulated content, and it is hoped that MFC-Bench could raise attention to the trustworthy artificial intelligence potentially assisted by LVLMs in the future."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

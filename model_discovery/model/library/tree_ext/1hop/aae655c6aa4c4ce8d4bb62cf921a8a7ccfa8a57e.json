@@ -1,0 +1,26 @@
+{
+    "acronym": "aae655c6aa4c4ce8d4bb62cf921a8a7ccfa8a57e",
+    "title": "Measuring context dependency in birdsong using artificial neural networks",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "aae655c6aa4c4ce8d4bb62cf921a8a7ccfa8a57e",
+    "abstract": "Context dependency is a key feature in sequential structures of human language, which requires reference between words far apart in the produced sequence. Assessing how long the past context has an effect on the current status provides crucial information to understand the mechanism for complex sequential behaviors. Birdsongs serve as a representative model for studying the context dependency in sequential signals produced by non-human animals, while previous reports were upper-bounded by methodological limitations. Here, we newly estimated the context dependency in birdsongs in a more scalable way using a modern neural-network-based language model whose accessible context length is sufficiently long. The detected context dependency was beyond the order of traditional Markovian models of birdsong, but was consistent with previous experimental investigations. We also studied the relation between the assumed/auto-detected vocabulary size of birdsong (i.e., fine- vs. coarse-grained syllable classifications) and the context dependency. It turned out that the larger vocabulary (or the more fine-grained classification) is assumed, the shorter context dependency is detected.",
+    "authors": [
+        "Takashi Morita",
+        "H. Koda",
+        "K. Okanoya",
+        "Ryosuke O. Tachibana"
+    ],
+    "venue": "PLoS Comput. Biol.",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work newly estimated the context dependency in birdsongs in a more scalable way using a modern neural-network-based language model whose accessible context length is sufficiently long and studied the relation between the assumed/auto-detected vocabulary size of birdsong and thecontext dependency."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

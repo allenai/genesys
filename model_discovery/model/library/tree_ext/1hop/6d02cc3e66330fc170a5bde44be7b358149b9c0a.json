@@ -1,0 +1,37 @@
+{
+    "acronym": "6d02cc3e66330fc170a5bde44be7b358149b9c0a",
+    "title": "Visually-Augmented Language Modeling",
+    "seed_ids": [
+        "gpt2",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "4ff394ada9298daaf25d75b41f5d52e3104ec8a6",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6d02cc3e66330fc170a5bde44be7b358149b9c0a",
+    "abstract": "Human language is grounded on multimodal knowledge including visual knowledge like colors, sizes, and shapes. However, current large-scale pre-trained language models rely on text-only self-supervised training with massive text data, which precludes them from utilizing relevant visual information when necessary. To address this, we propose a novel pre-training framework, named VaLM, to Visually-augment text tokens with retrieved relevant images for Language Modeling. Specifically, VaLM builds on a novel latent text-image alignment method via an image retrieval module to fetch corresponding images given a textual context. With the visually-augmented context, VaLM uses a visual knowledge fusion layer to enable multimodal grounded language modeling by attending to both text context and visual knowledge in images. We evaluate VaLM on various visual knowledge-intensive commonsense reasoning tasks, which require visual information to excel. The experimental results illustrate that VaLM outperforms all strong language-only and vision-language baselines with substantial gains in reasoning object commonsense including color, size, and shape. Our code is available at https://github.com/Victorwz/VaLM.",
+    "authors": [
+        "Weizhi Wang",
+        "Li Dong",
+        "Hao Cheng",
+        "Haoyu Song",
+        "Xiaodong Liu",
+        "Xifeng Yan",
+        "Jianfeng Gao",
+        "Furu Wei"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel pre-training framework, named VaLM, to Visually-augment text tokens with retrieved relevant images for Language Modeling, which builds on a novel latent text-image alignment method via an image retrieval module to fetch corresponding images given a textual context."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

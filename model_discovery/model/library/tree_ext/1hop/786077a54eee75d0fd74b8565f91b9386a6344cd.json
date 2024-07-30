@@ -1,0 +1,41 @@
+{
+    "acronym": "786077a54eee75d0fd74b8565f91b9386a6344cd",
+    "title": "Hierarchical Graph Convolutional Networks for Structured Long Document Classification",
+    "seed_ids": [
+        "bigbird",
+        "longformer",
+        "hitrans",
+        "84daddd294fa3cc12596b5785f81c2a153d2fb1d",
+        "85bb1317013141d5e5f41d18376cd7257c46264a",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "2e14e84ccec924ed770b58108ad1d9de6f0ca295",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "a022bda79947d1f656a1164003c1b3ae9a843df9",
+        "203b543bfa1e564bb80ff4229b43174d7c71b0c0"
+    ],
+    "s2id": "786077a54eee75d0fd74b8565f91b9386a6344cd",
+    "abstract": "Long document classification (LDC) has been a focused interest in natural language processing (NLP) recently with the exponential increase of publications. Based on the pretrained language models, many LDC methods have been proposed and achieved considerable progression. However, most of the existing methods model long documents as sequences of text while omitting the document structure, thus limiting the capability of effectively representing long texts carrying structure information. To mitigate such limitation, we propose a novel hierarchical graph convolutional network (HGCN) for structured LDC in this article, in which a section graph network is proposed to model the macrostructure of a document and a word graph network with a decoupled graph convolutional block is designed to extract the fine-grained features of a document. In addition, an interaction strategy is proposed to integrate these two networks as a whole by propagating features between them. To verify the effectiveness of the proposed model, four structured long document datasets are constructed, and the extensive experiments conducted on these datasets and another unstructured dataset show that the proposed method outperforms the state-of-the-art related classification methods.",
+    "authors": [
+        "Tengfei Liu",
+        "Yongli Hu",
+        "Boyue Wang",
+        "Yanfeng Sun",
+        "Junbin Gao",
+        "Baocai Yin"
+    ],
+    "venue": "IEEE Transactions on Neural Networks and Learning Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel hierarchical graph convolutional network (HGCN) for structured LDC is proposed in this article, in which a section graph network is proposed to model the macrostructure of a document and a word graph network with a decoupled graph Convolutional block is designed to extract the fine-grained features of a documents."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

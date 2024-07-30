@@ -1,0 +1,27 @@
+{
+    "acronym": "8638b0dc96397d6b74b7c26f06a51f8747899004",
+    "title": "SIGMA: A Dataset for Text-to-Code Semantic Parsing with Statistical Analysis",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "8638b0dc96397d6b74b7c26f06a51f8747899004",
+    "abstract": "In the semantic parsing domain, significant progress has been achieved in Text-to-SQL and question-answering tasks, both focused on extracting information from data sources in their native format. However, the inherent constraints of their formal meaning representations, such as SQL programming language, hinder their ability to analyze data from various perspectives, such as conducting statistical analyses. To address this limitation and inspire research in this field, we design SIGMA, a new dataset for Text-to-Code semantic parsing with statistical analysis. SIGMA consists of 6000 questions with corresponding Python code labels. The Python code labels in our dataset cover 4 types of query patterns, which return data in their original format, and 40 types of statistical analysis patterns, which perform statistical operations on the data. We evaluated the SIGMA dataset using three different baseline models: LGESQL, 5mBoP, and SLSQL. The experimental results show that the LGESQL model with ELECTRA outperforms all other models, achieving 83.37% structure accuracy. In terms of execution accuracy, the 5mBoP model, when combined with GraPPa and T5, reaches 76.38%.",
+    "authors": [
+        "Saleh Almohaimeed",
+        "Shenyang Liu",
+        "May Alsofyani",
+        "Saad Almohaimeed",
+        "Liqiang Wang"
+    ],
+    "venue": "International Conference on Machine Learning and Applications",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "SIGMA is a new dataset for Text-to-Code semantic parsing with statistical analysis, which consists of 6000 questions with corresponding Python code labels and shows that the LGESQL model with ELECTRA outperforms all other models, achieving 83.37% structure accuracy."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

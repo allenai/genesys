@@ -1,0 +1,28 @@
+{
+    "acronym": "7455f5f3a524fea54be74fc002266eca0f003a91",
+    "title": "Neural Language Priors",
+    "seed_ids": [
+        "universaltrans",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7455f5f3a524fea54be74fc002266eca0f003a91",
+    "abstract": "The choice of sentence encoder architecture reflects assumptions about how a sentence's meaning is composed from its constituent words. We examine the contribution of these architectures by holding them randomly initialised and fixed, effectively treating them as as hand-crafted language priors, and evaluating the resulting sentence encoders on downstream language tasks. We find that even when encoders are presented with additional information that can be used to solve tasks, the corresponding priors do not leverage this information, except in an isolated case. We also find that apparently uninformative priors are just as good as seemingly informative priors on almost all tasks, indicating that learning is a necessary component to leverage information provided by architecture choice.",
+    "authors": [
+        "Joseph Enguehard",
+        "Dan Busbridge",
+        "V. Zhelezniak",
+        "Nils Y. Hammerla"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that even when encoders are presented with additional information that can be used to solve tasks, the corresponding priors do not leverage this information, except in an isolated case."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

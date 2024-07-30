@@ -1,0 +1,33 @@
+{
+    "acronym": "032b6040bacdcbf7c1a416faf0c225f9dc97dd76",
+    "title": "Leveraging Machine-Generated Rationales to Facilitate Social Meaning Detection in Conversations",
+    "seed_ids": [
+        "gpt2",
+        "bert",
+        "60c7c46a6adccc1e8965c0c8dff40d00f573ddc2",
+        "59707fbd3308257628470d94e56c8165bf4e1cff",
+        "2ea64b7c7617f6cc1768373124ca0243d772a90f",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "032b6040bacdcbf7c1a416faf0c225f9dc97dd76",
+    "abstract": "We present a generalizable classification approach that leverages Large Language Models (LLMs) to facilitate the detection of implicitly encoded social meaning in conversations. We design a multi-faceted prompt to extract a textual explanation of the reasoning that connects visible cues to underlying social meanings. These extracted explanations or rationales serve as augmentations to the conversational text to facilitate dialogue understanding and transfer. Our empirical results over 2,340 experimental settings demonstrate the significant positive impact of adding these rationales. Our findings hold true for in-domain classification, zero-shot, and few-shot domain transfer for two different social meaning detection tasks, each spanning two different corpora.",
+    "authors": [
+        "Ritam Dutt",
+        "Zhen Wu",
+        "Kelly Shi",
+        "Divyanshu Sheth",
+        "Prakhar Gupta",
+        "Carolyn Penstein Rose"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A multi-faceted prompt is designed to extract a textual explanation of the reasoning that connects visible cues to underlying social meanings in conversations, which serves as augmentations to the conversational text to facilitate dialogue understanding and transfer."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

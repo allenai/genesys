@@ -1,0 +1,31 @@
+{
+    "acronym": "5dd17742707ce83f2c7fcc50da28cc94ee63ba0a",
+    "title": "Specializing Neural Networks for Cryptographic Code Completion Applications",
+    "seed_ids": [
+        "transformerxl",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "40df572b0fbeae0f3db9b364be838c6467d189f2",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "5dd17742707ce83f2c7fcc50da28cc94ee63ba0a",
+    "abstract": "Similarities between natural languages and programming languages have prompted researchers to apply neural network models to software problems, such as code generation and repair. However, program-specific characteristics pose unique prediction challenges that require the design of new and specialized neural network solutions. In this work, we identify new prediction challenges in application programming interface (API) completion tasks and find that existing solutions are unable to capture complex program dependencies in program semantics and structures. We design a new neural network model Multi-HyLSTM to overcome the newly identified challenges and comprehend complex dependencies between API calls. Our neural network is empowered with a specialized dataflow analysis to extract multiple global API dependence paths for neural network predictions. We evaluate Multi-HyLSTM on 64,478 Android Apps and predict 774,460 Java cryptographic API calls that are usually challenging for developers to use correctly. Our Multi-HyLSTM achieves an excellent top-1 API completion accuracy at 98.99%. Moreover, we show the effectiveness of our design choices through an ablation study and have released our dataset.",
+    "authors": [
+        "Ya Xiao",
+        "Wen-Kai Song",
+        "Jingyuan Qi",
+        "Bimal Viswanath",
+        "P. McDaniel",
+        "D. Yao"
+    ],
+    "venue": "IEEE Transactions on Software Engineering",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work designs a new neural network model Multi-HyLSTM to overcome the newly identified challenges and comprehend complex dependencies between API calls and achieves an excellent top-1 API completion accuracy at 98.99%."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "d7127ef38b127692840d9ae9266a9011cb29376e",
+    "title": "Advancing Spiking Neural Networks for Sequential Modeling with Central Pattern Generators",
+    "seed_ids": [
+        "transformer",
+        "9f52317ea9c5a6804b978987ff2a6557f98b5b2c"
+    ],
+    "s2id": "d7127ef38b127692840d9ae9266a9011cb29376e",
+    "abstract": "Spiking neural networks (SNNs) represent a promising approach to developing artificial neural networks that are both energy-efficient and biologically plausible. However, applying SNNs to sequential tasks, such as text classification and time-series forecasting, has been hindered by the challenge of creating an effective and hardware-friendly spike-form positional encoding (PE) strategy. Drawing inspiration from the central pattern generators (CPGs) in the human brain, which produce rhythmic patterned outputs without requiring rhythmic inputs, we propose a novel PE technique for SNNs, termed CPG-PE. We demonstrate that the commonly used sinusoidal PE is mathematically a specific solution to the membrane potential dynamics of a particular CPG. Moreover, extensive experiments across various domains, including time-series forecasting, natural language processing, and image classification, show that SNNs with CPG-PE outperform their conventional counterparts. Additionally, we perform analysis experiments to elucidate the mechanism through which SNNs encode positional information and to explore the function of CPGs in the human brain. This investigation may offer valuable insights into the fundamental principles of neural computation.",
+    "authors": [
+        "Changze Lv",
+        "Dongqi Han",
+        "Yansen Wang",
+        "Xiaoqing Zheng",
+        "Xuanjing Huang",
+        "Dongsheng Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work demonstrates that the commonly used sinusoidal PE is mathematically a specific solution to the membrane potential dynamics of a particular CPG, and proposes a novel PE technique for SNNs, termed CPG-PE, which outperform their conventional counterparts."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

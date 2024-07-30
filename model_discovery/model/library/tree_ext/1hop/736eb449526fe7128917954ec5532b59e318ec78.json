@@ -1,0 +1,53 @@
+{
+    "acronym": "736eb449526fe7128917954ec5532b59e318ec78",
+    "title": "Block-Recurrent Transformers",
+    "seed_ids": [
+        "transformerxl",
+        "compressivetransformer",
+        "memorizingtrans",
+        "0e802c0739771acf70e60d59c2df51cd7e8c50c0",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "12809bcb734beafeb47876f42e7b438e27fe99fe",
+        "73d64ecbe3e846394444dab6c5e89ba33e5daa49",
+        "e528466e2aff981511d4ca6e063211297c0b4175",
+        "f75d05e759447c2aedb7097728f29f9a520d9bc1",
+        "dbf53ece1a6a8860e41ff5f721c72ceb0fb18dd6",
+        "5d032bd2632b6f5847767f39ce247098c6bbc563",
+        "86589b6286ef3c55b8b4fccfb41a3b30b7afdf61",
+        "b50815251c948f00baedccaf5f56c281ffa7650f",
+        "64a29bee2e1ad29547d590a3cc26274f4c537145",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "2fd10e095b146f99da8cdc6ff58720e2e8fca36d",
+        "1a703f08da01cf737cce3fb9064259b3f4b44e9c",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "f51497f463566581874c941353dd9d80069c5b77"
+    ],
+    "s2id": "736eb449526fe7128917954ec5532b59e318ec78",
+    "abstract": "We introduce the Block-Recurrent Transformer, which applies a transformer layer in a recurrent fashion along a sequence, and has linear complexity with respect to sequence length. Our recurrent cell operates on blocks of tokens rather than single tokens during training, and leverages parallel computation within a block in order to make efficient use of accelerator hardware. The cell itself is strikingly simple. It is merely a transformer layer: it uses self-attention and cross-attention to efficiently compute a recurrent function over a large set of state vectors and tokens. Our design was inspired in part by LSTM cells, and it uses LSTM-style gates, but it scales the typical LSTM cell up by several orders of magnitude. Our implementation of recurrence has the same cost in both computation time and parameter count as a conventional transformer layer, but offers dramatically improved perplexity in language modeling tasks over very long sequences. Our model out-performs a long-range Transformer XL baseline by a wide margin, while running twice as fast. We demonstrate its effectiveness on PG19 (books), arXiv papers, and GitHub source code. Our code has been released as open source.",
+    "authors": [
+        "DeLesley S. Hutchins",
+        "Imanol Schlag",
+        "Yuhuai Wu",
+        "Ethan Dyer",
+        "Behnam Neyshabur"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 66,
+    "influentialCitationCount": 9,
+    "code": null,
+    "description": null,
+    "url": null
+}

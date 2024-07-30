@@ -1,0 +1,33 @@
+{
+    "acronym": "a98279ca685d7c0ab0a59a241c6c625f9fd7f503",
+    "title": "Hand-crafted Attention is All You Need? A Study of Attention on Self-supervised Audio Transformer",
+    "seed_ids": [
+        "sparsetransformer",
+        "reformer",
+        "routingtransformer",
+        "8af925f4edf45131b5b6fed8aa655089d58692fa",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13"
+    ],
+    "s2id": "a98279ca685d7c0ab0a59a241c6c625f9fd7f503",
+    "abstract": "In this paper, we seek to reduce the computation complexity of transformer-based models for speech representation learning. We evaluate 10 attention mechanisms; then, we pre-train the transformer-based model with those attentions in a self-supervised fashion and use them as feature extractors on downstream tasks, including phoneme classification and speaker classification. We find that the proposed approach, which only uses hand-crafted and learnable attentions, is comparable with the full self-attention.",
+    "authors": [
+        "Tsung-Han Wu",
+        "Chun-Chen Hsieh",
+        "Yen-Hao Chen",
+        "Po-Han Chi",
+        "Hung-yi Lee"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper evaluates 10 attention mechanisms and finds that the proposed approach, which only uses hand-crafted and learnable attentions, is comparable with the full self-attention."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

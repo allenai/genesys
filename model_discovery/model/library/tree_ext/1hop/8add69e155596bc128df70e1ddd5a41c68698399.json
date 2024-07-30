@@ -1,0 +1,30 @@
+{
+    "acronym": "8add69e155596bc128df70e1ddd5a41c68698399",
+    "title": "Controllable Dialogue Simulation with In-Context Learning",
+    "seed_ids": [
+        "gpt2",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8add69e155596bc128df70e1ddd5a41c68698399",
+    "abstract": "Building dialogue systems requires a large corpus of annotated dialogues. Such datasets are usually created via crowdsourcing, which is expensive and time-consuming. In this paper, we propose \\textsc{Dialogic}, a novel dialogue simulation method based on large language model in-context learning to automate dataset creation. Seeded with a few annotated dialogues, \\textsc{Dialogic} automatically selects in-context examples for demonstration and prompts GPT-3 to generate new dialogues and annotations in a controllable way. Our method can rapidly expand a small set of dialogue data with minimum or zero \\textit{human involvement} and \\textit{parameter update} and is thus much more cost-efficient and time-saving than crowdsourcing. Experimental results on the MultiWOZ dataset demonstrate that training a model on the simulated dialogues leads to even better performance than using the same amount of human-generated dialogues under the challenging low-resource settings, with as few as 85 dialogues as a seed. When enough data is available, our method can still serve as an effective data augmentation method. Human evaluation results also show that our simulated dialogues have near-human fluency and annotation accuracy. The code and data are available at \\textbf{\\url{https://github.com/Leezekun/dialogic}}.",
+    "authors": [
+        "Zekun Li",
+        "Wenhu Chen",
+        "SHIYANG LI",
+        "Hong Wang",
+        "Jingu Qian",
+        "Xi Yan"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results on the MultiWOZ dataset demonstrate that training a model on the simulated dialogues leads to even better performance than using the same amount of human-generated dialogues under the challenging low-resource settings, with as few as 85 dialogues as a seed."
+    },
+    "citationCount": 27,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

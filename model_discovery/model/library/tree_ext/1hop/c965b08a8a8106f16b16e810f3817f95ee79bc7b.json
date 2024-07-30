@@ -1,0 +1,23 @@
+{
+    "acronym": "c965b08a8a8106f16b16e810f3817f95ee79bc7b",
+    "title": "SC FORMER : S EGMENT C ORRELATION T RANSFORMER FOR L ONG S EQUENCE T IME S ERIES F ORECASTING",
+    "seed_ids": [
+        "reformer",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676"
+    ],
+    "s2id": "c965b08a8a8106f16b16e810f3817f95ee79bc7b",
+    "abstract": "Long-term time series forecasting is widely used in real-world applications such as financial investment, electricity management and production planning. Recently, transformer-based models with strong sequence modeling ability have shown the potential in this task. However, most of these methods adopt point-wise dependencies discovery, whose complexity increases quadratically with the length of time series, which easily becomes intractable for long-term prediction. This paper proposes a new Transformer-based model called SCformer, which replaces the canonical self-attention with efficient segment correlation attention (SCAttention) mechanism. SCAttention divides time series into segments by the implicit series periodicity and utilizes correlations between segments to capture long short-term dependencies. Besides, we design a dual task that restores past series with the predicted future series to make SCformer more stable. Extensive experiments on several datasets in various fields demonstrate that our SCformer outperforms other Transformer-based methods and training with the additional dual task can enhance the generalization ability of the prediction model.",
+    "authors": [],
+    "venue": "",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new Transformer-based model called SCformer is proposed, which replaces the canonical self-attention with efficient segment correlation attention (SCAttention) mechanism and design a dual task that restores past series with the predicted future series to make SCformer more stable."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

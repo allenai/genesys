@@ -1,0 +1,32 @@
+{
+    "acronym": "a09359e5d97b1980e27ebad3de7b44ba134f564a",
+    "title": "Memory Gym: Towards Endless Tasks to Benchmark Memory Capabilities of Agents",
+    "seed_ids": [
+        "transformerxl",
+        "mentaltimetravel",
+        "d98b5c1d0f9a4e39dc79ea7a3f74e54789df5e13",
+        "32c9b3859086d15184989454eb878638659e64c6",
+        "3f3c01adbdd433d515c19ac8cf6c61c905f0061a",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "008cfd24dfdfb28fc6a89c32772c7ffe5cb0cf8a"
+    ],
+    "s2id": "a09359e5d97b1980e27ebad3de7b44ba134f564a",
+    "abstract": "Memory Gym presents a suite of 2D partially observable environments, namely Mortar Mayhem, Mystery Path, and Searing Spotlights, designed to benchmark memory capabilities in decision-making agents. These environments, originally with finite tasks, are expanded into innovative, endless formats, mirroring the escalating challenges of cumulative memory games such as ``I packed my bag''. This progression in task design shifts the focus from merely assessing sample efficiency to also probing the levels of memory effectiveness in dynamic, prolonged scenarios. To address the gap in available memory-based Deep Reinforcement Learning baselines, we introduce an implementation that integrates Transformer-XL (TrXL) with Proximal Policy Optimization. This approach utilizes TrXL as a form of episodic memory, employing a sliding window technique. Our comparative study between the Gated Recurrent Unit (GRU) and TrXL reveals varied performances across different settings. TrXL, on the finite environments, demonstrates superior sample efficiency in Mystery Path and outperforms in Mortar Mayhem. However, GRU is more efficient on Searing Spotlights. Most notably, in all endless tasks, GRU makes a remarkable resurgence, consistently outperforming TrXL by significant margins. Website and Source Code: https://github.com/MarcoMeter/endless-memory-gym/",
+    "authors": [
+        "Marco Pleines",
+        "M. Pallasch",
+        "Frank Zimmer",
+        "Mike Preuss"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces an implementation that integrates Transformer-XL (TrXL) with Proximal Policy Optimization, and utilizes TrXL as a form of episodic memory, employing a sliding window technique to address the gap in available memory-based Deep Reinforcement Learning baselines."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

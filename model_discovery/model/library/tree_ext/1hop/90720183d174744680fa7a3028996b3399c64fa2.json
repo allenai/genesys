@@ -1,0 +1,34 @@
+{
+    "acronym": "90720183d174744680fa7a3028996b3399c64fa2",
+    "title": "Personalize Segment Anything Model with One Shot",
+    "seed_ids": [
+        "gpt2",
+        "cc052339afebba8adf9d1868d51b9f3b1d6d0eac",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "90720183d174744680fa7a3028996b3399c64fa2",
+    "abstract": "Driven by large-data pre-training, Segment Anything Model (SAM) has been demonstrated as a powerful and promptable framework, revolutionizing the segmentation models. Despite the generality, customizing SAM for specific visual concepts without man-powered prompting is under explored, e.g., automatically segmenting your pet dog in different images. In this paper, we propose a training-free Personalization approach for SAM, termed as PerSAM. Given only a single image with a reference mask, PerSAM first localizes the target concept by a location prior, and segments it within other images or videos via three techniques: target-guided attention, target-semantic prompting, and cascaded post-refinement. In this way, we effectively adapt SAM for private use without any training. To further alleviate the mask ambiguity, we present an efficient one-shot fine-tuning variant, PerSAM-F. Freezing the entire SAM, we introduce two learnable weights for multi-scale masks, only training 2 parameters within 10 seconds for improved performance. To demonstrate our efficacy, we construct a new segmentation dataset, PerSeg, for personalized evaluation, and test our methods on video object segmentation with competitive performance. Besides, our approach can also enhance DreamBooth to personalize Stable Diffusion for text-to-image generation, which discards the background disturbance for better target appearance learning. Code is released at https://github.com/ZrrSkywalker/Personalize-SAM",
+    "authors": [
+        "Renrui Zhang",
+        "Zhengkai Jiang",
+        "Ziyu Guo",
+        "Shilin Yan",
+        "Junting Pan",
+        "Hao Dong",
+        "Peng Gao",
+        "Hongsheng Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A training-free Personalization approach for SAM, termed as PerSAM, which effectively adapt SAM for private use without any training, and can enhance DreamBooth to personalize Stable Diffusion for text-to-image generation, which discards the background disturbance for better target appearance learning."
+    },
+    "citationCount": 100,
+    "influentialCitationCount": 15,
+    "code": null,
+    "description": null,
+    "url": null
+}

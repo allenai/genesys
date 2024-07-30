@@ -1,0 +1,29 @@
+{
+    "acronym": "00cd4e468bf4eae5f3cc5fc8fc459631672a44f6",
+    "title": "The Queen of England is not England\u2019s Queen: On the Lack of Factual Coherency in PLMs",
+    "seed_ids": [
+        "bert",
+        "cd471b5ef162906ef3d9a84398b3f98e9ee4bf56",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "e2587eddd57bc4ba286d91b27c185083f16f40ee",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "00cd4e468bf4eae5f3cc5fc8fc459631672a44f6",
+    "abstract": "Factual knowledge encoded in Pre-trained Language Models (PLMs) enriches their representations and justifies their use as knowledge bases. Previous work has focused on probing PLMs for factual knowledge by measuring how often they can correctly predict an _object_ entity given a subject and a relation, and improving fact retrieval by optimizing the prompts used for querying PLMs. In this work, we consider a complementary aspect, namely the coherency of factual knowledge in PLMs, i.e., how often can PLMs predict the _subject_ entity given its initial prediction of the object entity. This goes beyond evaluating how much PLMs know, and focuses on the internal state of knowledge inside them. Our results indicate that PLMs have low coherency using manually written, optimized and paraphrased prompts, but including an evidence paragraph leads to substantial improvement. This shows that PLMs fail to model inverse relations and need further enhancements to be able to handle retrieving facts from their parameters in a coherent manner, and to be considered as knowledge bases.",
+    "authors": [
+        "Paul Youssef",
+        "Jorg Schlotterer",
+        "Christin Seifert"
+    ],
+    "venue": "Findings",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work considers a complementary aspect, namely the coherency of factual knowledge in PLMs, i.e., how often can PLMs predict the _subject_ entity given its initial prediction of the object entity, and indicates that PLMs have low coherency using manually written, optimized and paraphrased prompts."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

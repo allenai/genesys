@@ -1,0 +1,27 @@
+{
+    "acronym": "eb7d4c6b17c4fc09044c40599f5387665cc55444",
+    "title": "AspirinSum: an Aspect-based utility-preserved de-identification Summarization framework",
+    "seed_ids": [
+        "transformer",
+        "32f28c2b239420ed8bc860d839979d1cdfde4ff5",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "eb7d4c6b17c4fc09044c40599f5387665cc55444",
+    "abstract": "Due to the rapid advancement of Large Language Model (LLM), the whole community eagerly consumes any available text data in order to train the LLM. Currently, large portion of the available text data are collected from internet, which has been thought as a cheap source of the training data. However, when people try to extend the LLM's capability to the personal related domain, such as healthcare or education, the lack of public dataset in these domains make the adaption of the LLM in such domains much slower. The reason of lacking public available dataset in such domains is because they usually contain personal sensitive information. In order to comply with privacy law, the data in such domains need to be de-identified before any kind of dissemination. It had been much research tried to address this problem for the image or tabular data. However, there was limited research on the efficient and general de-identification method for text data. Most of the method based on human annotation or predefined category list. It usually can not be easily adapted to specific domains. The goal of this proposal is to develop a text de-identification framework, which can be easily adapted to the specific domain, leverage the existing expert knowledge without further human annotation. We propose an aspect-based utility-preserved de-identification summarization framework, AspirinSum, by learning to align expert's aspect from existing comment data, it can efficiently summarize the personal sensitive document by extracting personal sensitive aspect related sub-sentence and de-identify it by substituting it with similar aspect sub-sentence. We envision that the de-identified text can then be used in data publishing, eventually publishing our de-identified dataset for downstream task use.",
+    "authors": [
+        "Ya-Lun Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An aspect-based utility-preserved de-identification summarization framework, AspirinSum, by learning to align expert's aspect from existing comment data, it can efficiently summarize the personal sensitive document by extracting personal sensitive aspect related sub-sentence and de-identify it by substituting it with similar aspect sub-sentence."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "1b2bf55e8432c2d42bc94c2abb868ff3bb23f175",
+    "title": "What Makes Data-to-Text Generation Hard for Pretrained Language Models?",
+    "seed_ids": [
+        "gpt2",
+        "1ea7ad7ae45d3d4634b6ffad2a8b0d41ad2fcb25",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "83fac78857c7e65fe10a11a798674dd3cd259c1d",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1b2bf55e8432c2d42bc94c2abb868ff3bb23f175",
+    "abstract": "Expressing natural language descriptions of structured facts or relations \u2013 data-to-text generation (D2T) \u2013 increases the accessibility of structured knowledge repositories. Previous work shows that pre-trained language models (PLMs) perform remarkably well on this task after fine-tuning on a significant amount of task-specific training data. On the other hand, while auto-regressive PLMs can generalize from a few task examples, their efficacy at D2T is largely unexplored. Furthermore, we have an incomplete understanding of the limits of PLMs on D2T. In this work, we conduct an empirical study of both fine-tuned and auto-regressive PLMs on the DART multi-domain D2T dataset. We consider their performance as a function of the amount of task-specific data and how the data is incorporated into the models: zero and few-shot learning, and fine-tuning of model weights. In addition, we probe the limits of PLMs by measuring performance on subsets of the evaluation data: novel predicates and abstractive test examples. To improve the performance on these subsets, we investigate two techniques: providing predicate descriptions in the context and re-ranking generated candidates by information reflected in the source. Finally, we conduct a human evaluation of model errors and show that D2T generation tasks would benefit from datasets with more careful manual curation.",
+    "authors": [
+        "Moniba Keymanesh",
+        "Adrian Benton",
+        "Mark Dredze"
+    ],
+    "venue": "IEEE Games Entertainment Media Conference",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An empirical study of both fine-tuned and auto-regressive PLMs on the DART multi-domain D2T dataset, which considers their performance as a function of the amount of task-specific data and how the data is incorporated into the models: zero and few-shot learning, and fine- Tuning of model weights."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

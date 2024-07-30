@@ -1,0 +1,43 @@
+{
+    "acronym": "9b069ba5259d229bfd4fe3ac3768148e2d1092f8",
+    "title": "ViTALiTy: Unifying Low-rank and Sparse Approximation for Vision Transformer Acceleration with a Linear Taylor Attention",
+    "seed_ids": [
+        "scatterbrain",
+        "performer",
+        "lineartransformer",
+        "cbff35378657225ece138c33e6a23afb3b46b41f",
+        "0d9b8ccb1135b8e380dd8015b080158c6aae3ae5",
+        "5f895e84c1fea75de07b4f90da518273c2e57291",
+        "b97c3c370401dc34d2adbeb24f34de5180a14be6",
+        "5af69480a7ae3b571df6782a11ec4437b386a7d9",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "7d2a78a1f713b71c3a337247d042c5c2f0b2da84",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "9b069ba5259d229bfd4fe3ac3768148e2d1092f8",
+    "abstract": "Vision Transformer (ViT) has emerged as a competitive alternative to convolutional neural networks for various computer vision applications. Specifically, ViTs\u2019 multi-head attention layers make it possible to embed information globally across the overall image. Nevertheless, computing and storing such attention matrices incurs a quadratic cost dependency on the number of patches, limiting its achievable efficiency and scalability and prohibiting more extensive real-world ViT applications on resource-constrained devices. Sparse attention has been shown to be a promising direction for improving hardware acceleration efficiency for NLP models. However, a systematic counterpart approach is still missing for accelerating ViT models. To close the above gap, we propose a first-of-its-kind algorithm-hardware codesigned framework, dubbed VITALITY, for boosting the inference efficiency of ViTs. Unlike sparsity-based Transformer accelerators for NLP, VITALITY unifies both low-rank and sparse components of the attention in ViTs. At the algorithm level, we approximate the dot-product softmax operation via first-order Taylor attention with row-mean centering as the low-rank component to linearize the cost of attention blocks and further boost the accuracy by incorporating a sparsity-based regularization. At the hardware level, we develop a dedicated accelerator to better leverage the resulting workload and pipeline from VITALITY\u2019s linear Taylor attention which requires the execution of only the low-rank component, to further boost the hardware efficiency. Extensive experiments and ablation studies validate that VITALITY offers boosted end-to-end efficiency (e.g., 3\u00d7 faster and 3\u00d7 energy-efficient) under comparable accuracy, with respect to the state-of-the-art solution. We make the codes available on https://github.com/GATECH-EIC/ViTaLiTy",
+    "authors": [
+        "Jyotikrishna Dass",
+        "Shang Wu",
+        "Huihong Shi",
+        "Chaojian Li",
+        "Zhifan Ye",
+        "Zhongfeng Wang",
+        "Yingyan Lin"
+    ],
+    "venue": "International Symposium on High-Performance Computer Architecture",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A first-of-its-kind algorithm-hardware codesigned framework, dubbed VITALITY, for boosting the inference efficiency of ViTs, which unifies both low-rank and sparse components of the attention in ViTs."
+    },
+    "citationCount": 28,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

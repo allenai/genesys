@@ -1,0 +1,25 @@
+{
+    "acronym": "3665f6738d7d7ec1700edb211d477ec5149cbc6b",
+    "title": "Automated Essay Scoring Using Grammatical Variety and Errors with Multi-Task Learning and Item Response Theory",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "3665f6738d7d7ec1700edb211d477ec5149cbc6b",
+    "abstract": "This study examines the effect of grammatical features in automatic essay scoring (AES). We use two kinds of grammatical features as input to an AES model: (1) grammatical items that writers used correctly in essays, and (2) the number of grammatical errors. Experimental results show that grammatical features improve the performance of AES models that predict the holistic scores of essays. Multi-task learning with the holistic and grammar scores, alongside using grammatical features, resulted in a larger improvement in model performance. We also show that a model using grammar abilities estimated using Item Response Theory (IRT) as the labels for the auxiliary task achieved comparable performance to when we used grammar scores assigned by human raters. In addition, we weight the grammatical features using IRT to consider the difficulty of grammatical items and writers\u2019 grammar abilities. We found that weighting grammatical features with the difficulty led to further improvement in performance.",
+    "authors": [
+        "Kosuke Doi",
+        "Katsuhito Sudoh",
+        "Satoshi Nakamura"
+    ],
+    "venue": "Workshop on Innovative Use of NLP for Building Educational Applications",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that weighting grammatical features with the difficulty led to further improvement in performance, and multi-task learning with the holistic and grammar scores, alongside using grammatical features, resulted in a larger improvement in model performance."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

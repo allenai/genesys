@@ -1,0 +1,33 @@
+{
+    "acronym": "78105fd895d648f80374e75c47857cd36edce3f2",
+    "title": "HUMANELY: HUMAN EVALUATION OF LLM YIELD, USING A NOVEL WEB BASED EVALUATION TOOL",
+    "seed_ids": [
+        "gpt3",
+        "5e0cb1c4b91a7486e1c2b15a44a0be56bd74bdc0",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e"
+    ],
+    "s2id": "78105fd895d648f80374e75c47857cd36edce3f2",
+    "abstract": "Large language models (LLMs) have caught the imagination of researchers,developers and public in general the world over with their potential for transformation. Vast amounts of research and development resources are being provided to implement these models in all facets of life. Trained using billions of parameters, various measures of their accuracy and performance have been proposed and used in recent times. While many of the automated natural language assessment parameters measure LLM output performance for use of language, contextual outputs are still hard to measure and quantify. Hence, human evaluation is still an important measure of LLM performance,even though it has been applied variably and inconsistently due to lack of guidance and resource limitations. To provide a structured way to perform comprehensive human evaluation of LLM output, we propose the first guidance and tool called HumanELY. Our approach and tool built using prior knowledge helps perform evaluation of LLM outputs in a comprehensive, consistent, measurable and comparable manner. HumanELY comprises of five key evaluation metrics: relevance, coverage, coherence, harm and comparison. Additional submetrics within these five key metrics provide for Likert scale based human evaluation of LLM outputs. Our related webtool uses this HumanELY guidance to enable LLM evaluation and provide data for comparison against different users performing human evaluation. While all metrics may not be relevant and pertinent to all outputs, it is important to assess and address their use. Lastly, we demonstrate comparison of metrics used in HumanELY against some of the recent publications in the healthcare domain. We focused on the healthcare domain due to the need to demonstrate highest levels of accuracy and lowest levels of harm in a comprehensive manner. We anticipate our guidance and tool to be used for any domain where LLMs find an use case.",
+    "authors": [
+        "A. P. Reprint",
+        "Raghav Awasthi",
+        "Shreya Mishra",
+        "D. Mahapatra",
+        "A. Khanna",
+        "Kamal Maheshwari",
+        "Jacek Cywinski",
+        "F. Papay",
+        "P. Mathur"
+    ],
+    "venue": "medRxiv",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes the first guidance and tool to provide a structured way to perform comprehensive human evaluation of LLM output and focuses on the healthcare domain due to the need to demonstrate highest levels of accuracy and lowest levels of harm in a comprehensive manner."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

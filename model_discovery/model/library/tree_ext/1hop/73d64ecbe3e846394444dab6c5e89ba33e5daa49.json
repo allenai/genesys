@@ -1,0 +1,31 @@
+{
+    "acronym": "73d64ecbe3e846394444dab6c5e89ba33e5daa49",
+    "title": "Memory transformer with hierarchical attention for long document processing",
+    "seed_ids": [
+        "bigbird",
+        "b02c1101684f119f34a668597b67657fa672c8f0",
+        "168fc3525f7b97695a97b04e257ee9bd1e832acb",
+        "63857190aaf5aab1d94b54bb257b7b03b8cb5a50",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "830995ef17cc291c13f42dfd9f462137de1d2179",
+        "2a31319e73d4486716168b65cdf7559baeda18ce"
+    ],
+    "s2id": "73d64ecbe3e846394444dab6c5e89ba33e5daa49",
+    "abstract": "Transformers have attracted lots of interest from the researchers. Up to now, transformers achieved state-of-the-art results in a wide range of natural language processing tasks such as different sequence modeling tasks like language understanding, text summarization and translation, and definitely more transformers to come. Still, transformers has their limitations in the tasks requiring long document processing. This paper introduces a new version of transformer, a Sentence level transformer with global memory pooling and hierarchical attention to cope with long text. We replace self-attention of vanilla transformer with multi-head attention between memory and a sequence, and also add a decoder sequence selector on the top of the encoder output. In our architecture sentences are encoded in parallel and then summarized with soft-attention on every decoding step. Proposed model was validated in machine translation task. We hypothesize that attaching memory slots to each sequence improves the quality of translation, besides tuning the model on context-aware data set by using pre-trained sequence-level weights will help to get more precise translation and promote translating long documents. Results show that extending each sentence with a memory slot and employing the attention over the encoder outputs improves translation results.",
+    "authors": [
+        "Arij Al Adel",
+        "M. Burtsev"
+    ],
+    "venue": "2021 International Conference Engineering and Telecommunication (En&T)",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new version of transformer is introduced, a Sentence level transformer with global memory pooling and hierarchical attention to cope with long text and hypothesize that attaching memory slots to each sequence improves the quality of translation."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "59f3b696530ebe1599e7f653f175a95349babd89",
+    "title": "Linking Surface Facts to Large-Scale Knowledge Graphs",
+    "seed_ids": [
+        "gpt3",
+        "caf3df05598d26698c700d57fd044c0bcd34a0d6"
+    ],
+    "s2id": "59f3b696530ebe1599e7f653f175a95349babd89",
+    "abstract": "Open Information Extraction (OIE) methods extract facts from natural language text in the form of (\"subject\";\"relation\";\"object\") triples. These facts are, however, merely surface forms, the ambiguity of which impedes their downstream usage; e.g., the surface phrase\"Michael Jordan\"may refer to either the former basketball player or the university professor. Knowledge Graphs (KGs), on the other hand, contain facts in a canonical (i.e., unambiguous) form, but their coverage is limited by a static schema (i.e., a fixed set of entities and predicates). To bridge this gap, we need the best of both worlds: (i) high coverage of free-text OIEs, and (ii) semantic precision (i.e., monosemy) of KGs. In order to achieve this goal, we propose a new benchmark with novel evaluation protocols that can, for example, measure fact linking performance on a granular triple slot level, while also measuring if a system has the ability to recognize that a surface form has no match in the existing KG. Our extensive evaluation of several baselines show that detection of out-of-KG entities and predicates is more difficult than accurate linking to existing ones, thus calling for more research efforts on this difficult task. We publicly release all resources (data, benchmark and code) on https://github.com/nec-research/fact-linking.",
+    "authors": [
+        "Gorjan Radevski",
+        "Kiril Gashteovski",
+        "Chia-Chien Hung",
+        "Carolin Lawrence",
+        "Goran Glavavs"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a new benchmark with novel evaluation protocols that can, for example, measure fact linking performance on a granular triple slot level, while also measuring if a system has the ability to recognize that a surface form has no match in the existing KG."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

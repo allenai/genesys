@@ -1,0 +1,29 @@
+{
+    "acronym": "a9e5c4649872cb3a4b417acdce4fae0ea8d72ebf",
+    "title": "Fine-grained Attention in Hierarchical Transformers for Tabular Time-series",
+    "seed_ids": [
+        "bert",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87"
+    ],
+    "s2id": "a9e5c4649872cb3a4b417acdce4fae0ea8d72ebf",
+    "abstract": "Tabular data is ubiquitous in many real-life systems. In particular, time-dependent tabular data, where rows are chronologically related, is typically used for recording historical events, e.g., financial transactions, healthcare records, or stock history. Recently, hierarchical variants of the attention mechanism of transformer architectures have been used to model tabular time-series data. At first, rows (or columns) are encoded separately by computing attention between their fields. Subsequently, encoded rows (or columns) are attended to one another to model the entire tabular time-series. While efficient, this approach constrains the attention granularity and limits its ability to learn patterns at the field-level across separate rows, or columns. We take a first step to address this gap by proposing Fieldy, a fine-grained hierarchical model that contextualizes fields at both the row and column levels. We compare our proposal against state of the art models on regression and classification tasks using public tabular time-series datasets. Our results show that combining row-wise and column-wise attention improves performance without increasing model size. Code and data are available at https://github.com/raphaaal/fieldy.",
+    "authors": [
+        "Rapha\u00ebl Azorin",
+        "Z. B. Houidi",
+        "Massimo Gallo",
+        "A. Finamore",
+        "Pietro Michiardi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed Fieldy, a fine-grained hierarchical model that contextualizes fields at both the row and column levels, is compared against state of the art models on regression and classification tasks using public tabular time-series datasets."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "1b3c238870c810b6f2301cba1c702318776c4f69",
+    "title": "WisPerMed at \"Discharge Me!\": Advancing Text Generation in Healthcare with Large Language Models, Dynamic Expert Selection, and Priming Techniques on MIMIC-IV",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "1b3c238870c810b6f2301cba1c702318776c4f69",
+    "abstract": "This study aims to leverage state of the art language models to automate generating the\"Brief Hospital Course\"and\"Discharge Instructions\"sections of Discharge Summaries from the MIMIC-IV dataset, reducing clinicians' administrative workload. We investigate how automation can improve documentation accuracy, alleviate clinician burnout, and enhance operational efficacy in healthcare facilities. This research was conducted within our participation in the Shared Task Discharge Me! at BioNLP @ ACL 2024. Various strategies were employed, including few-shot learning, instruction tuning, and Dynamic Expert Selection (DES), to develop models capable of generating the required text sections. Notably, utilizing an additional clinical domain-specific dataset demonstrated substantial potential to enhance clinical language processing. The DES method, which optimizes the selection of text outputs from multiple predictions, proved to be especially effective. It achieved the highest overall score of 0.332 in the competition, surpassing single-model outputs. This finding suggests that advanced deep learning methods in combination with DES can effectively automate parts of electronic health record documentation. These advancements could enhance patient care by freeing clinician time for patient interactions. The integration of text selection strategies represents a promising avenue for further research.",
+    "authors": [
+        "Hendrik Damm",
+        "T. M. G. Pakull",
+        "Bahadir Eryilmaz",
+        "Helmut Becker",
+        "Ahmad Idrissi-Yaghir",
+        "Henning Sch\u00e4fer",
+        "Sergej Schultenk\u00e4mper",
+        "Christoph M. Friedrich"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

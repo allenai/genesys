@@ -1,0 +1,29 @@
+{
+    "acronym": "bd1be7cbd4ed1844068e0ea889d5de40f11d75f2",
+    "title": "Learning Domain Specific Sub-layer Latent Variable for Multi-Domain Adaptation Neural Machine Translation",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "bd1be7cbd4ed1844068e0ea889d5de40f11d75f2",
+    "abstract": "Domain adaptation proves to be an effective solution for addressing inadequate translation performance within specific domains. However, the straightforward approach of mixing data from multiple domains to obtain the multi-domain neural machine translation (NMT) model can give rise to the parameter interference between domains problem, resulting in a degradation of overall performance. To address this, we introduce a multi-domain adaptive NMT method aimed at learning domain specific sub-layer latent variable and employ the Gumbel-Softmax reparameterization technique to concurrently train both model parameters and domain specific sub-layer latent variable. This approach facilitates learning private domain-specific knowledge while sharing common domain-invariant knowledge, effectively mitigating the parameter interference problem. The experimental results show that our proposed method significantly improved by up to 7.68 and 3.71 BLEU compared with the baseline model in English-German and Chinese-English public multi-domain datasets, respectively.",
+    "authors": [
+        "Shuanghong Huang",
+        "Chong Feng",
+        "Ge Shi",
+        "Zhengjun Li",
+        "Xuan Zhao",
+        "Xinyan Li",
+        "Xiaomei Wang"
+    ],
+    "venue": "ACM Trans. Asian Low Resour. Lang. Inf. Process.",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a multi-domain adaptive NMT method aimed at learning domain specific sub-layer latent variable and employs the Gumbel-Softmax reparameterization technique to concurrently train both model parameters and domain specific sub-layer latent variable."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

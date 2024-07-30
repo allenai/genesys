@@ -1,0 +1,34 @@
+{
+    "acronym": "0e1ae0bdcc8469db99a4f8008288e20f285f1c6d",
+    "title": "Robust Preference Learning for Storytelling via Contrastive Reinforcement Learning",
+    "seed_ids": [
+        "gpt2",
+        "023edab4738690444e3924e224c2641017a0d794",
+        "23447f473cd240494b0a20ea008038aaef7e3391",
+        "e7c698bdace380f7183dedbe657686f1885f615c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0e1ae0bdcc8469db99a4f8008288e20f285f1c6d",
+    "abstract": "Controlled automated story generation seeks to generate natural language stories satisfying constraints from natural language critiques or preferences. Existing methods to control for story preference utilize prompt engineering which is labor intensive and often inconsistent. They may also use logit-manipulation methods which require annotated datasets to exist for the desired attributes. To address these issues, we first train a contrastive bi-encoder model to align stories with corresponding human critiques, named CARP, building a general purpose preference model. This is subsequently used as a reward function to fine-tune a generative language model via reinforcement learning. However, simply fine-tuning a generative language model with a contrastive reward model does not always reliably result in a story generation system capable of generating stories that meet user preferences. To increase story generation robustness we further fine-tune the contrastive reward model using a prompt-learning technique. A human participant study is then conducted comparing generations from our full system, ablations, and two baselines. We show that the full fine-tuning pipeline results in a story generator preferred over a LLM 20x as large as well as logit-based methods. This motivates the use of contrastive learning for general purpose human preference modeling.",
+    "authors": [
+        "Louis Castricato",
+        "Alexander Havrilla",
+        "Shahbuland Matiana",
+        "M. Pieler",
+        "Anbang Ye",
+        "Ian Yang",
+        "Spencer Frazier",
+        "Mark O. Riedl"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the full fine-tuning pipeline results in a story generator preferred over a LLM 20x as large as well as logit-based methods, and motivates the use of contrastive learning for general purpose human preference modeling."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

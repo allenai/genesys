@@ -1,0 +1,26 @@
+{
+    "acronym": "330ce86ce48648aed8da0dbff16cf8325de6297f",
+    "title": "Learning Interpretable Latent Dialogue Actions With Less Supervision",
+    "seed_ids": [
+        "gpt2",
+        "6ebfbc954b9975d2f2651f380b9bdf46ae963178",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "330ce86ce48648aed8da0dbff16cf8325de6297f",
+    "abstract": "We present a novel architecture for explainable modeling of task-oriented dialogues with discrete latent variables to represent dialogue actions. Our model is based on variational recurrent neural networks (VRNN) and requires no explicit annotation of semantic information. Unlike previous works, our approach models the system and user turns separately and performs database query modeling, which makes the model applicable to task-oriented dialogues while producing easily interpretable action latent variables. We show that our model outperforms previous approaches with less supervision in terms of perplexity and BLEU on three datasets, and we propose a way to measure dialogue success without the need for expert annotation. Finally, we propose a novel way to explain semantics of the latent variables with respect to system actions.",
+    "authors": [
+        "Vojtvech Hudevcek",
+        "Ondrej Dusek"
+    ],
+    "venue": "AACL",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a novel architecture for explainable modeling of task-oriented dialogues with discrete latent variables to represent dialogue actions based on variational recurrent neural networks and proposes a way to measure dialogue success without the need for expert annotation."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

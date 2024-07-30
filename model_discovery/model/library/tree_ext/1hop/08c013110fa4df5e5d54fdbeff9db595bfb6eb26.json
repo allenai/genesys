@@ -1,0 +1,27 @@
+{
+    "acronym": "08c013110fa4df5e5d54fdbeff9db595bfb6eb26",
+    "title": "Exploring the Role of Transliteration in In-Context Learning for Low-resource Languages Written in Non-Latin Scripts",
+    "seed_ids": [
+        "gpt3",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e"
+    ],
+    "s2id": "08c013110fa4df5e5d54fdbeff9db595bfb6eb26",
+    "abstract": "Decoder-only large language models (LLMs) excel in high-resource languages across various tasks through few-shot or even zero-shot in-context learning (ICL). However, their performance often does not transfer well to low-resource languages, especially those written in non-Latin scripts. Inspired by recent work that leverages transliteration in encoder-only models, we investigate whether transliteration is also effective in improving LLMs' performance for low-resource languages written in non-Latin scripts. To this end, we propose three prompt templates, where the target-language text is represented in (1) its original script, (2) Latin script, or (3) both. We apply these methods to several representative LLMs of different sizes on various tasks including text classification and sequential labeling. Our findings show that the effectiveness of transliteration varies by task type and model size. For instance, all models benefit from transliterations for sequential labeling (with increases of up to 25%).",
+    "authors": [
+        "Chunlan Ma",
+        "Yihong Liu",
+        "Haotian Ye",
+        "Hinrich Sch\u00fctze"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes three prompt templates, where the target-language text is represented in (1) its original script, (2) Latin script, or (3) both, and shows that the effectiveness of transliteration varies by task type and model size."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

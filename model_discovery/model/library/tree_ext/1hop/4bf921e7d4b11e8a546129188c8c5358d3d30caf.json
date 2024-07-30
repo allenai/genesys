@@ -1,0 +1,26 @@
+{
+    "acronym": "4bf921e7d4b11e8a546129188c8c5358d3d30caf",
+    "title": "Few-Shot Cross-Lingual Transfer for Prompting Large Language Models in Low-Resource Languages",
+    "seed_ids": [
+        "gpt",
+        "bert",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "4bf921e7d4b11e8a546129188c8c5358d3d30caf",
+    "abstract": "Large pre-trained language models (PLMs) are at the forefront of advances in Natural Language Processing. One widespread use case of PLMs is\"prompting\"- or in-context learning - where a user provides a description of a task and some completed examples of the task to a PLM as context before prompting the PLM to perform the task on a new example. Only the largest, most capable PLMs are able to perform in-context learning effectively, and these models are typically trained with a predominantly English corpus, leaving all other languages behind. The data limitations in most languages preclude the training of language-specific PLMs capable of prompting. Albeit the surge in work of prompting settings, it is still unclear how PLMs should be adapted cross-lingually specifically for prompting. We evaluate the possible methods to adapt LLaMa, a 7B parameter open-source PLM mainly trained in English, for prompting in low-resource languages, namely for Kinyarwanda, Hausa, and Luganda. We consider three methods: few-shot prompting (prompt), language-adaptive fine-tuning (LAFT), and neural machine translation (translate), and evaluate on abstractive summarization, multi-class topic classification, and named-entity recognition. Although LAFT carries the greatest compute cost and intuitively should lead to the best results, our experiments exhibit that LAFT is only occasionally the optimal choice for adapting PLMs for prompting. Rather, the translate and prompt settings are a compute-efficient and cost-effective method of few-shot prompting for the selected low-resource languages. We find that the results are task and language dependent but find that the prompting method is the best on average across all tasks and languages. Results show that the prompt setting performs better than both translating and LAFT with statistical significance for all shots when aggregated across all tasks and languages.",
+    "authors": [
+        "Christopher Toukmaji"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The possible methods to adapt LLaMa, a 7B parameter open-source PLM mainly trained in English, for prompting in low-resource languages, namely for Kinyarwanda, Hausa, and Luganda are considered, and three methods are considered: few-shot prompting, language-adaptive fine-tuning (LAFT), and neural machine translation (translate)."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

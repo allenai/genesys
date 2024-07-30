@@ -1,0 +1,46 @@
+{
+    "acronym": "defecf3dc299214f4cb76a093c6eed2297eaa46f",
+    "title": "FiLM: Frequency improved Legendre Memory Model for Long-term Time Series Forecasting",
+    "seed_ids": [
+        "s4",
+        "hippo",
+        "lssl",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "dbf53ece1a6a8860e41ff5f721c72ceb0fb18dd6",
+        "9b6af0e358e76d22f209c75b1702c3e6ea7815b1",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "30dcc0e191a376fea0e7a46f94c53872c029efc9"
+    ],
+    "s2id": "defecf3dc299214f4cb76a093c6eed2297eaa46f",
+    "abstract": "Recent studies have shown that deep learning models such as RNNs and Transformers have brought significant performance gains for long-term forecasting of time series because they effectively utilize historical information. We found, however, that there is still great room for improvement in how to preserve historical information in neural networks while avoiding overfitting to noise presented in the history. Addressing this allows better utilization of the capabilities of deep learning models. To this end, we design a \\textbf{F}requency \\textbf{i}mproved \\textbf{L}egendre \\textbf{M}emory model, or {\\bf FiLM}: it applies Legendre Polynomials projections to approximate historical information, uses Fourier projection to remove noise, and adds a low-rank approximation to speed up computation. Our empirical studies show that the proposed FiLM significantly improves the accuracy of state-of-the-art models in multivariate and univariate long-term forecasting by (\\textbf{20.3\\%}, \\textbf{22.6\\%}), respectively. We also demonstrate that the representation module developed in this work can be used as a general plug-in to improve the long-term prediction performance of other deep learning modules. Code is available at https://github.com/tianzhou2011/FiLM/",
+    "authors": [
+        "Tian Zhou",
+        "Ziqing Ma",
+        "Xue Wang",
+        "Qingsong Wen",
+        "Liang Sun",
+        "Tao Yao",
+        "Rong Jin"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The empirical studies show that the proposed FiLM significantly improves the accuracy of state-of-the-art models in multivariate and univariate long-term forecasting by (20.3 and 22.6%) and the representation module developed in this work can be used as a general plug-in to improve the long- term prediction performance of other deep learning modules."
+    },
+    "citationCount": 97,
+    "influentialCitationCount": 13,
+    "code": null,
+    "description": null,
+    "url": null
+}

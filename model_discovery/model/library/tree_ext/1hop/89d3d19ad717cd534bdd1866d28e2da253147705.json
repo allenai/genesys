@@ -1,0 +1,36 @@
+{
+    "acronym": "89d3d19ad717cd534bdd1866d28e2da253147705",
+    "title": "EE-LLM: Large-Scale Training and Inference of Early-Exit Large Language Models with 3D Parallelism",
+    "seed_ids": [
+        "gpt",
+        "gpt2",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "0a6906bd6f026d3da3031c641ed03081bd0b574e",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "837ac4ed6825502f0460caec45e12e734c85b113",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "89d3d19ad717cd534bdd1866d28e2da253147705",
+    "abstract": "We present EE-LLM, a framework for large-scale training and inference of early-exit large language models (LLMs). While recent works have shown preliminary evidence for the efficacy of early exiting in accelerating LLM inference, EE-LLM makes a foundational step towards scaling up early-exit LLMs by supporting their training and inference with massive 3D parallelism. Built upon Megatron-LM, EE-LLM implements a variety of algorithmic innovations and performance optimizations tailored to early exiting, including a lightweight method that facilitates backpropagation for the early-exit training objective with pipeline parallelism, techniques of leveraging idle resources in the original pipeline schedule for computation related to early-exit layers, and two approaches of early-exit inference that are compatible with KV caching for autoregressive generation. Our analytical and empirical study shows that EE-LLM achieves great training efficiency with negligible computational overhead compared to standard LLM training, as well as outstanding inference speedup without compromising output quality. To facilitate further research and adoption, we release EE-LLM at https://github.com/pan-x-c/EE-LLM.",
+    "authors": [
+        "Yanxi Chen",
+        "Xuchen Pan",
+        "Yaliang Li",
+        "Bolin Ding",
+        "Jingren Zhou"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "EE-LLM makes a foundational step towards scaling up early-exit LLMs by supporting their training and inference with massive 3D parallelism, and achieves great training efficiency with negligible computational overhead compared to standard LLM training, as well as outstanding inference speedup without compromising output quality."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

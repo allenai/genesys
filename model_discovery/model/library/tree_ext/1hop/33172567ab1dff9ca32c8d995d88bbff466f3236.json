@@ -1,0 +1,30 @@
+{
+    "acronym": "33172567ab1dff9ca32c8d995d88bbff466f3236",
+    "title": "Integrating Multimodal Information in Large Pretrained Transformers",
+    "seed_ids": [
+        "transformerxl",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "33172567ab1dff9ca32c8d995d88bbff466f3236",
+    "abstract": "Recent Transformer-based contextual word representations, including BERT and XLNet, have shown state-of-the-art performance in multiple disciplines within NLP. Fine-tuning the trained contextual models on task-specific datasets has been the key to achieving superior performance downstream. While fine-tuning these pre-trained models is straightforward for lexical applications (applications with only language modality), it is not trivial for multimodal language (a growing area in NLP focused on modeling face-to-face communication). More specifically, this is due to the fact that pre-trained models don\u2019t have the necessary components to accept two extra modalities of vision and acoustic. In this paper, we proposed an attachment to BERT and XLNet called Multimodal Adaptation Gate (MAG). MAG allows BERT and XLNet to accept multimodal nonverbal data during fine-tuning. It does so by generating a shift to internal representation of BERT and XLNet; a shift that is conditioned on the visual and acoustic modalities. In our experiments, we study the commonly used CMU-MOSI and CMU-MOSEI datasets for multimodal sentiment analysis. Fine-tuning MAG-BERT and MAG-XLNet significantly boosts the sentiment analysis performance over previous baselines as well as language-only fine-tuning of BERT and XLNet. On the CMU-MOSI dataset, MAG-XLNet achieves human-level multimodal sentiment analysis performance for the first time in the NLP community.",
+    "authors": [
+        "Wasifur Rahman",
+        "M. Hasan",
+        "Sangwu Lee",
+        "Amir Zadeh",
+        "Chengfeng Mao",
+        "Louis-Philippe Morency",
+        "E. Hoque"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Fine-tuning MAG-BERT and MAG-XLNet significantly boosts the sentiment analysis performance over previous baselines as well as language-only fine- Tuning of BERT and XLNet."
+    },
+    "citationCount": 343,
+    "influentialCitationCount": 56,
+    "code": null,
+    "description": null,
+    "url": null
+}

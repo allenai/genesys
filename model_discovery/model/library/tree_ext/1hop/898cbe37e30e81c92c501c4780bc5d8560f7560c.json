@@ -1,0 +1,28 @@
+{
+    "acronym": "898cbe37e30e81c92c501c4780bc5d8560f7560c",
+    "title": "OSP-Class: Open Set Pseudo-labeling with Noise Robust Training for Text Classification",
+    "seed_ids": [
+        "gpt",
+        "15a6ae89b2bc959d4a5b48a8ce590526b50f1c98",
+        "b30195763eb103e2e5564228119f3810ab423b2e",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "898cbe37e30e81c92c501c4780bc5d8560f7560c",
+    "abstract": "Although text classification performance has been greatly improved with the capability of deep learning based language models, the cost of building labeled training data is still a significant burden. To address this issue, pseudo-labeling based weakly supervised text classification models have attracted significant attention. However, prior works on weakly-supervised classification usually assume that each unlabeled sample belongs to one and only one of the target classes. Such an assumption may not be appropriate or realistic for open set scenarios where the unlabeled data are obtained via a coarse collection process like crowdsourcing. This paper studies weakly-supervised text classification under the open set scenarios, relaxing such a closed set assumption and allowing for out-of-label-space data. We propose a simple combination framework of multiple existing techniques called OSP-Class, an Open Set Pseudo-labeling with noise robust training for text Classification, which is designed to generate a category-specific denoising model that can remove text corpus containing unknown data by jointly combining (1) category vocabulary expansion with pre-trained BERT masked language model, (2) binary pseudo-labeling with weighted random oversampling, and (3) noise robust training with NCE+MAE loss function. Our model achieves the highest F1 score with an average of 92.49% in the open set environment. We demonstrate that the proposed method is comparable and slightly improved performance with some minor settings even if it does not use fundamentally innovative or different techniques.",
+    "authors": [
+        "Dohyung Kim",
+        "Jahwan Koo",
+        "Ung-Mo Kim"
+    ],
+    "venue": "2022 IEEE International Conference on Big Data (Big Data)",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a simple combination framework of multiple existing techniques called OSP-Class, an Open Set Pseudo-labeling with noise robust training for text Classification, designed to generate a category-specific denoising model that can remove text corpus containing unknown data."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

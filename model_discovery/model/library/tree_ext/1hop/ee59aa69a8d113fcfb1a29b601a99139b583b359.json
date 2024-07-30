@@ -1,0 +1,29 @@
+{
+    "acronym": "ee59aa69a8d113fcfb1a29b601a99139b583b359",
+    "title": "Astronomical image time series classification using CONVolutional attENTION (ConvEntion)",
+    "seed_ids": [
+        "linformer",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87"
+    ],
+    "s2id": "ee59aa69a8d113fcfb1a29b601a99139b583b359",
+    "abstract": "Aims. The treatment of astronomical image time series has won increasing attention in recent years. Indeed, numerous surveys following up on transient objects are in progress or under construction, such as the Vera Rubin Observatory Legacy Survey for Space and Time (LSST), which is poised to produce huge amounts of these time series. The associated scientific topics are extensive, ranging from the study of objects in our galaxy to the observation of the most distant supernovae for measuring the expansion of the universe. With such a large amount of data available, the need for robust automatic tools to detect and classify celestial objects is growing steadily. Methods. This study is based on the assumption that astronomical images contain more information than light curves. In this paper, we propose a novel approach based on deep learning for classifying different types of space objects directly using images. We named our approach ConvEntion, which stands for CONVolutional attENTION. It is based on convolutions and transformers, which are new approaches for the treatment of astronomical image time series. Our solution integrates spatio-temporal features and can be applied to various types of image datasets with any number of bands. Results. In this work, we solved various problems the datasets tend to suffer from and we present new results for classifications using astronomical image time series with an increase in accuracy of 13%, compared to state-of-the-art approaches that use image time series, and a 12% increase, compared to approaches that use light curves.",
+    "authors": [
+        "Anass Bairouk",
+        "M. Chaumont",
+        "D. Fouchez",
+        "J. Pasquet",
+        "Fr\u00e9d\u00e9ric Comby",
+        "J. Bautista"
+    ],
+    "venue": "Astronomy &amp; Astrophysics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel approach based on deep learning for classifying different types of space objects directly using images with an increase in accuracy of 13%, compared to state-of-the-art approaches that use image time series, and a 12% increase, compared to approach that use light curves."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

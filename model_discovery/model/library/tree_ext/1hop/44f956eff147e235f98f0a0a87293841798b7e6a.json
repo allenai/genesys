@@ -1,0 +1,26 @@
+{
+    "acronym": "44f956eff147e235f98f0a0a87293841798b7e6a",
+    "title": "Are Recent Deepfake Speech Generators Detectable?",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "44f956eff147e235f98f0a0a87293841798b7e6a",
+    "abstract": "Deep learning methods can generate high-quality synthetic speech which is perceptually indistinguishable from real human speech. Synthetic speech can be maliciously used for fraud. Synthetic speech detection methods have been proposed which perform well on ASVspoof2019 and ASVspoof2021 Datasets. These datasets consist of synthetic speech from conventional neural network speech generators. Recently, many voice cloning methods have been proposed which use diffusion models and generative adversarial networks for high-quality speech synthesis. In this work, we present a new synthetic speech dataset containing 25,000 synthetic speech signals for 11 distinct speakers, with a total duration of 52 hours. We have developed this dataset using 5 recent diffusion model-based synthetic speech generators. These generators can clone a speaker's voice from text using only a few minutes of their real speech. We evaluate 6 of the best synthetic speech detectors that work well on the ASVspoof2019 Dataset on this new dataset, and demonstrate their performance using Equal Error Rate (EER).",
+    "authors": [
+        "Kratika Bhagtani",
+        "Amit Kumar Singh Yadav",
+        "P. Bestagini",
+        "Edward J. Delp"
+    ],
+    "venue": "Information Hiding and Multimedia Security Workshop",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new synthetic speech dataset containing 25,000 synthetic speech signals for 11 distinct speakers, with a total duration of 52 hours is presented, developed using 5 recent diffusion model-based synthetic speech generators."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "15cc694bf68c1abcd8ead2afc65427a42e92ffc4",
+    "title": "Identifying and Measuring Token-Level Sentiment Bias in Pre-trained Language Models with Prompts",
+    "seed_ids": [
+        "gpt",
+        "gpt2",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "5d22b241836e30d5b0d852b463951ab7e3245ea4",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "15cc694bf68c1abcd8ead2afc65427a42e92ffc4",
+    "abstract": "Due to the superior performance, large-scale pre-trained language models (PLMs) have been widely adopted in many aspects of human society. However, we still lack effective tools to understand the potential bias embedded in the black-box models. Recent advances in prompt tuning show the possibility to explore the internal mechanism of the PLMs. In this work, we propose two token-level sentiment tests: Sentiment Association Test (SAT) and Sentiment Shift Test (SST) which utilize the prompt as a probe to detect the latent bias in the PLMs. Our experiments on the collection of sentiment datasets show that both SAT and SST can identify sentiment bias in PLMs and SST is able to quantify the bias. The results also suggest that fine-tuning can possibly augment the existing bias in PLMs.",
+    "authors": [
+        "Apoorv Garg",
+        "Deval Srivastava",
+        "Zhiyang Xu",
+        "Lifu Huang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Two token-level sentiment tests are proposed: SAT and SST which utilize the prompt as a probe to detect the latent bias in the PLMs and suggest that fine-tuning can possibly augment the existing bias in PLMs."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

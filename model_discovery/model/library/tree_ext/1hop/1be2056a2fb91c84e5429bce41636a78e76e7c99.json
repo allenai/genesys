@@ -1,0 +1,28 @@
+{
+    "acronym": "1be2056a2fb91c84e5429bce41636a78e76e7c99",
+    "title": "Simultaneous Interpretation Corpus Construction by Large Language Models in Distant Language Pair",
+    "seed_ids": [
+        "transformer",
+        "2c40e142a4f27d14591b30f7afeb994d42287566",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "1be2056a2fb91c84e5429bce41636a78e76e7c99",
+    "abstract": "In Simultaneous Machine Translation (SiMT) systems, training with a simultaneous interpretation (SI) corpus is an effective method for achieving high-quality yet low-latency systems. However, it is very challenging to curate such a corpus due to limitations in the abilities of annotators, and hence, existing SI corpora are limited. Therefore, we propose a method to convert existing speech translation corpora into interpretation-style data, maintaining the original word order and preserving the entire source content using Large Language Models (LLM-SI-Corpus). We demonstrate that fine-tuning SiMT models in text-to-text and speech-to-text settings with the LLM-SI-Corpus reduces latencies while maintaining the same level of quality as the models trained with offline datasets. The LLM-SI-Corpus is available at \\url{https://github.com/yusuke1997/LLM-SI-Corpus}.",
+    "authors": [
+        "Yusuke Sakai",
+        "Mana Makinae",
+        "Hidetaka Kamigaito",
+        "Taro Watanabe"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that fine-tuning SiMT models in text-to-text and speech-to-text settings with the LLM-SI-Corpus reduces latencies while maintaining the same level of quality as the models trained with offline datasets."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

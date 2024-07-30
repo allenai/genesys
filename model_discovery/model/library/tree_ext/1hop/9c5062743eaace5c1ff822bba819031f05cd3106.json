@@ -1,0 +1,39 @@
+{
+    "acronym": "9c5062743eaace5c1ff822bba819031f05cd3106",
+    "title": "StableSSM: Alleviating the Curse of Memory in State-space Models through Stable Reparameterization",
+    "seed_ids": [
+        "hyena",
+        "s4",
+        "hippo",
+        "ssmlayernonlin",
+        "f5789596531fad358c3166fdb5bd72d8e661c32c",
+        "b3caabbae4b7c3b842086b21940ce9d5b25d476f",
+        "240103933ffe3dac2179cc160a2bd91299357a53",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "998ac3e945857cf2676ee7efdbaf443a0c6f820a",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "7e9ff94476f41041c75e253e84f487db00e9c861"
+    ],
+    "s2id": "9c5062743eaace5c1ff822bba819031f05cd3106",
+    "abstract": "In this paper, we investigate the long-term memory learning capabilities of state-space models (SSMs) from the perspective of parameterization. We prove that state-space models without any reparameterization exhibit a memory limitation similar to that of traditional RNNs: the target relationships that can be stably approximated by state-space models must have an exponential decaying memory. Our analysis identifies this\"curse of memory\"as a result of the recurrent weights converging to a stability boundary, suggesting that a reparameterization technique can be effective. To this end, we introduce a class of reparameterization techniques for SSMs that effectively lift its memory limitations. Besides improving approximation capabilities, we further illustrate that a principled choice of reparameterization scheme can also enhance optimization stability. We validate our findings using synthetic datasets, language models and image classifications.",
+    "authors": [
+        "Shida Wang",
+        "Qianxiao Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces a class of reparameterization techniques for SSMs that effectively lift its memory limitations and illustrates that a principled choice of reparameterization scheme can also enhance optimization stability."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,37 @@
+{
+    "acronym": "c3c469b8d3392aa1117e1d82bd3357d2c12d87ce",
+    "title": "Raptor-T: A Fused and Memory-Efficient Sparse Transformer for Long and Variable-Length Sequences",
+    "seed_ids": [
+        "bigbird",
+        "flashattn",
+        "22b58dce1a13382418b8372bbd50ed3b2533f899",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "33d15b2d2a434ab33a2a88585604f4728a324baf",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "2e14e84ccec924ed770b58108ad1d9de6f0ca295",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a"
+    ],
+    "s2id": "c3c469b8d3392aa1117e1d82bd3357d2c12d87ce",
+    "abstract": "Transformer-based models have made significant advancements across various domains, largely due to the self-attention mechanism's ability to capture contextual relationships in input sequences. However, processing long sequences remains computationally expensive for Transformer models, primarily due to the <inline-formula><tex-math notation=\"LaTeX\">$O(n^{2})$</tex-math><alternatives><mml:math><mml:mi>O</mml:mi><mml:mo stretchy=\"false\">(</mml:mo><mml:msup><mml:mi>n</mml:mi><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup><mml:mo stretchy=\"false\">)</mml:mo></mml:math><inline-graphic xlink:href=\"wang-ieq1-3389507.gif\"/></alternatives></inline-formula> complexity associated with self-attention. To address this, sparse attention has been proposed to reduce the quadratic dependency to linear. Nevertheless, deploying the sparse transformer efficiently encounters two major obstacles: 1) Existing system optimizations are less effective for the sparse transformer due to the algorithm's approximation properties leading to fragmented attention, and 2) the variability of input sequences results in computation and memory access inefficiencies. We present Raptor-T, a cutting-edge transformer framework designed for handling long and variable-length sequences. Raptor-T harnesses the power of the sparse transformer to reduce resource requirements for processing long sequences while also implementing system-level optimizations to accelerate inference performance. To address the fragmented attention issue, Raptor-T employs fused and memory-efficient Multi-Head Attention. Additionally, we introduce an asynchronous data processing method to mitigate GPU-blocking operations caused by sparse attention. Furthermore, Raptor-T minimizes padding for variable-length inputs, effectively reducing the overhead associated with padding and achieving balanced computation on GPUs. In evaluation, we compare Raptor-T's performance against state-of-the-art frameworks on an NVIDIA A100 GPU. The experimental results demonstrate that Raptor-T outperforms FlashAttention-2 and FasterTransformer, achieving an impressive average end-to-end performance improvement of 3.41X and 3.71X, respectively.",
+    "authors": [
+        "Hulin Wang",
+        "Donglin Yang",
+        "Yaqi Xia",
+        "Zheng Zhang",
+        "Qigang Wang",
+        "Jianping Fan",
+        "Xiaobo Zhou",
+        "Dazhao Cheng"
+    ],
+    "venue": "IEEE transactions on computers",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Raptor-T harnesses the power of the sparse transformer to reduce resource requirements for processing long sequences while also implementing system-level optimizations to accelerate inference performance, and introduces an asynchronous data processing method to mitigate GPU-blocking operations caused by sparse attention."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

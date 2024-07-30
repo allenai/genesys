@@ -1,0 +1,38 @@
+{
+    "acronym": "9f0bac228c616236c9fb8c25fbee817b1599a929",
+    "title": "ChemLLM: A Chemical Large Language Model",
+    "seed_ids": [
+        "bert",
+        "42a30dc5470f54ec249f25d3c31e05d7c376c8e3"
+    ],
+    "s2id": "9f0bac228c616236c9fb8c25fbee817b1599a929",
+    "abstract": "Large language models (LLMs) have made impressive progress in chemistry applications. However, the community lacks an LLM specifically designed for chemistry. The main challenges are two-fold: firstly, most chemical data and scientific knowledge are stored in structured databases, which limits the model's ability to sustain coherent dialogue when used directly. Secondly, there is an absence of objective and fair benchmark that encompass most chemistry tasks. Here, we introduce ChemLLM, a comprehensive framework that features the first LLM dedicated to chemistry. It also includes ChemData, a dataset specifically designed for instruction tuning, and ChemBench, a robust benchmark covering nine essential chemistry tasks. ChemLLM is adept at performing various tasks across chemical disciplines with fluid dialogue interaction. Notably, ChemLLM achieves results comparable to GPT-4 on the core chemical tasks and demonstrates competitive performance with LLMs of similar size in general scenarios. ChemLLM paves a new path for exploration in chemical studies, and our method of incorporating structured chemical knowledge into dialogue systems sets a new standard for developing LLMs in various scientific fields. Codes, Datasets, and Model weights are publicly accessible at https://hf.co/AI4Chem",
+    "authors": [
+        "Di Zhang",
+        "Wei Liu",
+        "Qian Tan",
+        "Jingdan Chen",
+        "Hang Yan",
+        "Yuliang Yan",
+        "Jiatong Li",
+        "Weiran Huang",
+        "Xiangyu Yue",
+        "Dongzhan Zhou",
+        "Shufei Zhang",
+        "Mao Su",
+        "Han-sen Zhong",
+        "Yuqiang Li",
+        "Wanli Ouyang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ChemLLM, a comprehensive framework that features the first LLM dedicated to chemistry, also includes ChemData, a dataset specifically designed for instruction tuning, and ChemBench, a robust benchmark covering nine essential chemistry tasks."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

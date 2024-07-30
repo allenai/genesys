@@ -1,0 +1,27 @@
+{
+    "acronym": "9916de999e66a6e36fd2e233f4f53b270934e18b",
+    "title": "Multimodal Reranking for Knowledge-Intensive Visual Question Answering",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "9916de999e66a6e36fd2e233f4f53b270934e18b",
+    "abstract": "Knowledge-intensive visual question answering requires models to effectively use external knowledge to help answer visual questions. A typical pipeline includes a knowledge retriever and an answer generator. However, a retriever that utilizes local information, such as an image patch, may not provide reliable question-candidate relevance scores. Besides, the two-tower architecture also limits the relevance score modeling of a retriever to select top candidates for answer generator reasoning. In this paper, we introduce an additional module, a multi-modal reranker, to improve the ranking quality of knowledge candidates for answer generation. Our reranking module takes multi-modal information from both candidates and questions and performs cross-item interaction for better relevance score modeling. Experiments on OK-VQA and A-OKVQA show that multi-modal reranker from distant supervision provides consistent improvements. We also find a training-testing discrepancy with reranking in answer generation, where performance improves if training knowledge candidates are similar to or noisier than those used in testing.",
+    "authors": [
+        "Haoyang Wen",
+        "Honglei Zhuang",
+        "Hamed Zamani",
+        "Alexander Hauptmann",
+        "Michael Bendersky"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces an additional module, a multi-modal reranker, to improve the ranking quality of knowledge candidates for answer generation, which takes multi-modal information from both candidates and questions and performs cross-item interaction for better relevance score modeling."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

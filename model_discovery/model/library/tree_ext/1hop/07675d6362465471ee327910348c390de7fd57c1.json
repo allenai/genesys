@@ -1,0 +1,27 @@
+{
+    "acronym": "07675d6362465471ee327910348c390de7fd57c1",
+    "title": "Neuron Specialization: Leveraging intrinsic task modularity for multilingual machine translation",
+    "seed_ids": [
+        "transformer",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "07675d6362465471ee327910348c390de7fd57c1",
+    "abstract": "Training a unified multilingual model promotes knowledge transfer but inevitably introduces negative interference. Language-specific modeling methods show promise in reducing interference. However, they often rely on heuristics to distribute capacity and struggle to foster cross-lingual transfer via isolated modules. In this paper, we explore intrinsic task modularity within multilingual networks and leverage these observations to circumvent interference under multilingual translation. We show that neurons in the feed-forward layers tend to be activated in a language-specific manner. Meanwhile, these specialized neurons exhibit structural overlaps that reflect language proximity, which progress across layers. Based on these findings, we propose Neuron Specialization, an approach that identifies specialized neurons to modularize feed-forward layers and then continuously updates them through sparse networks. Extensive experiments show that our approach achieves consistent performance gains over strong baselines with additional analyses demonstrating reduced interference and increased knowledge transfer.",
+    "authors": [
+        "Shaomu Tan",
+        "Di Wu",
+        "Christof Monz"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that neurons in the feed-forward layers tend to be activated in a language-specific manner, and these specialized neurons exhibit structural overlaps that reflect language proximity, which progress across layers, which progress across layers."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

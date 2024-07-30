@@ -1,0 +1,44 @@
+{
+    "acronym": "5d032bd2632b6f5847767f39ce247098c6bbc563",
+    "title": "Combiner: Full Attention Transformer with Sparse Computation Cost",
+    "seed_ids": [
+        "sparsetransformer",
+        "routingtransformer",
+        "axialattn",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "40ca4fcfffa7ca9aa9b7ff06ecf3cd0436712d78",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "bed7c155b843fda8a1c994ce71e9176e43b20f77",
+        "fb507ada871d1e8c29e376dbf7b7879689aa89f9",
+        "dd6de9423afcc0f821fee2bd0363a4091c7f8cd3"
+    ],
+    "s2id": "5d032bd2632b6f5847767f39ce247098c6bbc563",
+    "abstract": "Transformers provide a class of expressive architectures that are extremely effective for sequence modeling. However, the key limitation of transformers is their quadratic memory and time complexity $\\mathcal{O}(L^2)$ with respect to the sequence length in attention layers, which restricts application in extremely long sequences. Most existing approaches leverage sparsity or low-rank assumptions in the attention matrix to reduce cost, but sacrifice expressiveness. Instead, we propose Combiner, which provides full attention capability in each attention head while maintaining low computation and memory complexity. The key idea is to treat the self-attention mechanism as a conditional expectation over embeddings at each location, and approximate the conditional distribution with a structured factorization. Each location can attend to all other locations, either via direct attention, or through indirect attention to abstractions, which are again conditional expectations of embeddings from corresponding local regions. We show that most sparse attention patterns used in existing sparse transformers are able to inspire the design of such factorization for full attention, resulting in the same sub-quadratic cost ($\\mathcal{O}(L\\log(L))$ or $\\mathcal{O}(L\\sqrt{L})$). Combiner is a drop-in replacement for attention layers in existing transformers and can be easily implemented in common frameworks. An experimental evaluation on both autoregressive and bidirectional sequence tasks demonstrates the effectiveness of this approach, yielding state-of-the-art results on several image and text modeling tasks.",
+    "authors": [
+        "Hongyu Ren",
+        "H. Dai",
+        "Zihang Dai",
+        "Mengjiao Yang",
+        "J. Leskovec",
+        "D. Schuurmans",
+        "Bo Dai"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Combiner is a drop-in replacement for attention layers in existing transformers and can be easily implemented in common frameworks, yielding state-of-the-art results on several image and text modeling tasks."
+    },
+    "citationCount": 62,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

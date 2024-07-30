@@ -1,0 +1,36 @@
+{
+    "acronym": "375de1279cc1685a116403bc378ba94aaf6a172e",
+    "title": "Diffusion Language Models Generation Can Be Halted Early",
+    "seed_ids": [
+        "likelihooddifflm",
+        "bb857c72e7c75fc3d4b44b1dcaa66c62ea10a2e1",
+        "d9ffb44ee3c8ec0b6692df8a90451384c1edd89b",
+        "a1186d7d9a9ef258c76afef1177e4f348061a537",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "0b9770a377b3f96cef9f268cee1791d39a0d4893",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "e512964293671abbdc409f313d127cbe85ffe5cd",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "375de1279cc1685a116403bc378ba94aaf6a172e",
+    "abstract": "Diffusion Language models (DLMs) are a promising avenue for text generation due to their practical properties on tractable controllable generation. They also have the advantage of not having to predict text autoregressively. However, despite these notable features, DLMs have not yet reached the performance levels of their autoregressive counterparts. One of the ways to reduce the performance gap between these two types of language models is to speed up the generation of DLMs. Therefore, we propose a novel methodology to address this issue in this work. It enables the execution of more generation steps within a given time frame, leading to higher-quality outputs. Specifically, our methods estimate DLMs completeness of text generation and allow adaptive halting of the generation process. We evaluate our methods on Plaid, SSD, and CDCD DLMs and create a cohesive perspective on their generation workflows. Finally, we confirm that our methods allow halting these models and decrease the generation time by $10$-$40$\\% without a drop in the quality of model samples.",
+    "authors": [
+        "Nikita Balagansky",
+        "Daniil Gavrilov"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel methodology that enables the execution of more generation steps within a given time frame, leading to higher-quality outputs and allows adaptive halting of the generation process."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

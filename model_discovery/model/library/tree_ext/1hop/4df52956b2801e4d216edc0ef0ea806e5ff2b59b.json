@@ -1,0 +1,38 @@
+{
+    "acronym": "4df52956b2801e4d216edc0ef0ea806e5ff2b59b",
+    "title": "Discrete-state Continuous-time Diffusion for Graph Generation",
+    "seed_ids": [
+        "d3pms",
+        "8b20edda4a0013d628b9c4e9e4b42a5f1310b12f",
+        "0dcd241afa426b287da651c13c61bb26f7c546dd",
+        "3ea31f9b80bb69537f11f2c0e7d39c97d0742e3b",
+        "33433e9103b00aa0c42597cbfe13a429fbf5abdf",
+        "e342165a614588878ad0f4bc9bacf3905df34d08",
+        "5eda60d4940d4185df45c5703e103458171d465d",
+        "e9b9a47cd81c66603c827f0f2bc4fba0d9ae77c4"
+    ],
+    "s2id": "4df52956b2801e4d216edc0ef0ea806e5ff2b59b",
+    "abstract": "Graph is a prevalent discrete data structure, whose generation has wide applications such as drug discovery and circuit design. Diffusion generative models, as an emerging research focus, have been applied to graph generation tasks. Overall, according to the space of states and time steps, diffusion generative models can be categorized into discrete-/continuous-state discrete-/continuous-time fashions. In this paper, we formulate the graph diffusion generation in a discrete-state continuous-time setting, which has never been studied in previous graph diffusion models. The rationale of such a formulation is to preserve the discrete nature of graph-structured data and meanwhile provide flexible sampling trade-offs between sample quality and efficiency. Analysis shows that our training objective is closely related to generation quality, and our proposed generation framework enjoys ideal invariant/equivariant properties concerning the permutation of node ordering. Our proposed model shows competitive empirical performance against state-of-the-art graph generation solutions on various benchmarks and, at the same time, can flexibly trade off the generation quality and efficiency in the sampling phase.",
+    "authors": [
+        "Zhe Xu",
+        "Ruizhong Qiu",
+        "Yuzhong Chen",
+        "Huiyuan Chen",
+        "Xiran Fan",
+        "Menghai Pan",
+        "Zhichen Zeng",
+        "Mahashweta Das",
+        "Hanghang Tong"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The rationale of such a formulation is to preserve the discrete nature of graph-structured data and meanwhile provide flexible sampling trade-offs between sample quality and efficiency and the proposed model shows competitive empirical performance against state-of-the-art graph generation solutions on various benchmarks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,36 @@
+{
+    "acronym": "af9d32cbfaf107a018121be41786068c4be4c1ea",
+    "title": "Leveraging GPT-like LLMs to Automate Issue Labeling",
+    "seed_ids": [
+        "gpt3",
+        "bert",
+        "f542c184eec4c3252d678118a7f32cf327b6f23a",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "db783c480faf87b38e8806d4ef455dfde6e335aa",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "b76e98a0a023d37c6534aa2ead09c8ff595f0bae"
+    ],
+    "s2id": "af9d32cbfaf107a018121be41786068c4be4c1ea",
+    "abstract": "Issue labeling is a crucial task for the effective management of software projects. To date, several approaches have been put forth for the automatic assignment of labels to issue reports. In particular, supervised approaches based on the fine-tuning of BERT-like language models have been proposed, achieving state-of-the-art performance. More recently, decoder-only models such as GPT have become prominent in SE research due to their surprising capabilities to achieve state-of-the-art performance even for tasks they have not been trained for. To the best of our knowledge, GPT-like models have not been applied yet to the problem of issue classification, despite the promising results achieved for many other software engineering tasks. In this paper, we investigate to what extent we can leverage GPT-like LLMs to automate the issue labeling task. Our results demonstrate the ability of GPT-like models to correctly classify issue reports in the absence of labeled data that would be required to fine-tune BERT-like LLMs.CCS CONCEPTS\u2022 Software and its engineering \u2192 Documentation; Software evolution; Maintaining software; \u2022 Information systems \u2192 Clustering and classification;",
+    "authors": [
+        "Giuseppe Colavito",
+        "F. Lanubile",
+        "Nicole Novielli",
+        "L. Quaranta"
+    ],
+    "venue": "IEEE Working Conference on Mining Software Repositories",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The ability of GPT-like models to correctly classify issue reports in the absence of labeled data that would be required to fine-tune BERT-like LLMs is demonstrated."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

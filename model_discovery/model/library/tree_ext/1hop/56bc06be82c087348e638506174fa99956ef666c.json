@@ -1,0 +1,36 @@
+{
+    "acronym": "56bc06be82c087348e638506174fa99956ef666c",
+    "title": "Towards Flexible Inference in Sequential Decision Problems via Bidirectional Transformers",
+    "seed_ids": [
+        "gpt",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "59a916cdc943f0282908e6f3fa0360f4c5fb78d0"
+    ],
+    "s2id": "56bc06be82c087348e638506174fa99956ef666c",
+    "abstract": "Randomly masking and predicting word tokens has been a successful approach in pre-training language models for a variety of downstream tasks. In this work, we observe that the same idea also applies naturally to sequential decision making, where many well-studied tasks like behavior cloning, offline RL, inverse dynamics, and waypoint conditioning correspond to different sequence maskings over a sequence of states, actions, and returns. We introduce the FlexiBiT framework, which provides a unified way to specify models which can be trained on many different sequential decision making tasks. We show that a single FlexiBiT model is simultaneously capable of carrying out many tasks with performance similar to or better than specialized models. Additionally, we show that performance can be further improved by fine-tuning our general model on specific tasks of interest.",
+    "authors": [
+        "Micah Carroll",
+        "Jessy Lin",
+        "Orr Paradise",
+        "Raluca Georgescu",
+        "Mingfei Sun",
+        "David Bignell",
+        "Stephanie Milani",
+        "Katja Hofmann",
+        "Matthew J. Hausknecht",
+        "A. Dragan",
+        "Sam Devlin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows that a single FlexiBiT model is simultaneously capable of carrying out many tasks with performance similar to or better than specialized models, and shows that performance can be further improved by fine-tuning the general model on specific tasks of interest."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

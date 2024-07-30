@@ -1,0 +1,30 @@
+{
+    "acronym": "5087869b407f7bf96327e8145bf05c275207bd36",
+    "title": "Improving Machine Reading Comprehension via Adversarial Training",
+    "seed_ids": [
+        "gpt",
+        "67b1f8e48118bb1aa250f400d475425317bf4117",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "5087869b407f7bf96327e8145bf05c275207bd36",
+    "abstract": "Adversarial training (AT) as a regularization method has proved its effectiveness in various tasks, such as image classification and text classification. Though there are successful applications of AT in many tasks of natural language processing (NLP), the mechanism behind it is still unclear. In this paper, we aim to apply AT on machine reading comprehension (MRC) and study its effects from multiple perspectives. We experiment with three different kinds of RC tasks: span-based RC, span-based RC with unanswerable questions and multi-choice RC. The experimental results show that the proposed method can improve the performance significantly and universally on SQuAD1.1, SQuAD2.0 and RACE. With virtual adversarial training (VAT), we explore the possibility of improving the RC models with semi-supervised learning and prove that examples from a different task are also beneficial. We also find that AT helps little in defending against artificial adversarial examples, but AT helps the model to learn better on examples that contain more low-frequency words.",
+    "authors": [
+        "Ziqing Yang",
+        "Yiming Cui",
+        "Wanxiang Che",
+        "Ting Liu",
+        "Shijin Wang",
+        "Guoping Hu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Virtual adversarial training (VAT) is applied on machine reading comprehension (MRC) and the possibility of improving the RC models with semi-supervised learning is explored and it is proved that examples from a different task are also beneficial."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,23 @@
+{
+    "acronym": "d8948ae3b79ad17798c9236b8031ff605e105101",
+    "title": "An Information Retrieval and Extraction Tool for Covid-19 Related Papers",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "d8948ae3b79ad17798c9236b8031ff605e105101",
+    "abstract": "Background: The COVID-19 pandemic has caused severe impacts on health systems worldwide. Its critical nature and the increased interest of individuals and organizations to develop countermeasures to the problem has led to a surge of new studies in scientific journals. Objetive: We sought to develop a tool that incorporates, in a novel way, aspects of Information Retrieval (IR) and Extraction (IE) applied to the COVID-19 Open Research Dataset (CORD-19). The main focus of this paper is to provide researchers with a better search tool for COVID-19 related papers, helping them find reference papers and hightlight relevant entities in text. Method: We applied Latent Dirichlet Allocation (LDA) to model, based on research aspects, the topics of all English abstracts in CORD-19. Relevant named entities of each abstract were extracted and linked to the corresponding UMLS concept. Regular expressions and the K-Nearest Neighbors algorithm were used to rank relevant papers. Results: Our tool has shown the potential to assist researchers by automating a topic-based search of CORD-19 papers. Nonetheless, we identified that more fine-tuned topic modeling parameters and increased accuracy of the research aspect classifier model could lead to a more accurate and reliable tool. Conclusion: We emphasize the need of new automated tools to help researchers find relevant COVID-19 documents, in addition to automatically extracting useful information contained in them. Our work suggests that combining different algorithms and models could lead to new ways of browsing COVID-19 paper data.",
+    "authors": [
+        "Marcos V. L. Pivetta"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A tool that incorporates, in a novel way, aspects of Information Retrieval and Extraction applied to the COVID-19 Open Research Dataset (CORD-19) to provide researchers with a better search tool for COVID-19 related papers, helping them find reference papers and hightlight relevant entities in text."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

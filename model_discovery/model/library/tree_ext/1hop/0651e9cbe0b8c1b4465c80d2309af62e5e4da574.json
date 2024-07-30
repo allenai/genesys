@@ -1,0 +1,33 @@
+{
+    "acronym": "0651e9cbe0b8c1b4465c80d2309af62e5e4da574",
+    "title": "High-Modality Multimodal Transformer: Quantifying Modality&Interaction Heterogeneity for High-Modality Representation Learning",
+    "seed_ids": [
+        "perceiverio",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "0651e9cbe0b8c1b4465c80d2309af62e5e4da574",
+    "abstract": "Many real-world problems are inherently multimodal, from spoken language, gestures, and paralinguistics humans use to communicate, to force, proprioception, and visual sensors on robots. While there has been an explosion of interest in multimodal learning, these methods are focused on a small set of modalities primarily in language, vision, and audio. In order to accelerate generalization towards diverse and understudied modalities, this paper studies efficient representation learning for high-modality scenarios involving a large set of diverse modalities. Since adding new models for every new modality becomes prohibitively expensive, a critical technical challenge is heterogeneity quantification: how can we measure which modalities encode similar information and interactions in order to permit parameter sharing with previous modalities? This paper proposes two new information theoretic metrics for heterogeneity quantification: (1) modality heterogeneity studies how similar 2 modalities {X1,X2} are by measuring how much information can be transferred from X1 to X2, while (2) interaction heterogeneity studies how similarly pairs of modalities {X1,X2}, {X3,X4} interact by measuring how much information can be transferred from fusing {X1,X2} to {X3,X4}. We show the importance of these 2 proposed metrics as a way to automatically prioritize the fusion of modalities that contain unique information or interactions. The result is a single model, HighMMT, that scales up to 10 modalities (text, image, audio, video, sensors, proprioception, speech, time-series, sets, and tables) and 15 tasks from 5 research areas. Not only does HighMMT outperform prior methods on the tradeoff between performance and efficiency, it also demonstrates a crucial scaling behavior: performance continues to improve with each modality added, and it transfers to entirely new modalities and tasks during fine-tuning.",
+    "authors": [
+        "P. Liang",
+        "Yiwei Lyu",
+        "Xiang Fan",
+        "Jeffrey Tsaw",
+        "Yudong Liu",
+        "Shentong Mo",
+        "Dani Yogatama",
+        "Louis-Philippe Morency",
+        "R. Salakhutdinov"
+    ],
+    "venue": "",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The result is a single model, HighMMT, that scales up to 10 modalities (text, image, audio, video, sensors, proprioception, speech, time-series, sets, and tables) and 15 tasks from 5 research areas and demonstrates a crucial scaling behavior."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

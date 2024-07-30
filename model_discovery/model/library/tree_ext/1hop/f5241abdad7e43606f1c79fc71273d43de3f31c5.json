@@ -1,0 +1,29 @@
+{
+    "acronym": "f5241abdad7e43606f1c79fc71273d43de3f31c5",
+    "title": "ButterflyFlow: Building Invertible Layers with Butterfly Matrices",
+    "seed_ids": [
+        "butterfly",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "a68c3412e60560290400d2707596f82a914b7c00"
+    ],
+    "s2id": "f5241abdad7e43606f1c79fc71273d43de3f31c5",
+    "abstract": "Normalizing flows model complex probability distributions using maps obtained by composing invertible layers. Special linear layers such as masked and 1x1 convolutions play a key role in existing architectures because they increase expressive power while having tractable Jacobians and inverses. We propose a new family of invertible linear layers based on butterfly layers, which are known to theoretically capture complex linear structures including permutations and periodicity, yet can be inverted efficiently. This representational power is a key advantage of our approach, as such structures are common in many real-world datasets. Based on our invertible butterfly layers, we construct a new class of normalizing flow models called ButterflyFlow. Empirically, we demonstrate that ButterflyFlows not only achieve strong density estimation results on natural images such as MNIST, CIFAR-10, and ImageNet 32x32, but also obtain significantly better log-likelihoods on structured datasets such as galaxy images and MIMIC-III patient cohorts -- all while being more efficient in terms of memory and computation than relevant baselines.",
+    "authors": [
+        "Chenlin Meng",
+        "Linqi Zhou",
+        "Kristy Choi",
+        "Tri Dao",
+        "Stefano Ermon"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a new family of invertible linear layers based on butterfly layers, known to theoretically capture complex linear structures including permutations and periodicity, yet can be inverted efficiently, and constructs a new class of normalizing flow models called ButterflyFlow."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

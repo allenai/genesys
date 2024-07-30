@@ -1,0 +1,27 @@
+{
+    "acronym": "b55982d68e0002a2d2849482c8fa43daa42425ac",
+    "title": "Rethinking Targeted Adversarial Attacks for Neural Machine Translation",
+    "seed_ids": [
+        "transformer",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b55982d68e0002a2d2849482c8fa43daa42425ac",
+    "abstract": "Targeted adversarial attacks are widely used to evaluate the robustness of neural machine translation systems. Unfortunately, this paper first identifies a critical issue in the existing settings of NMT targeted adversarial attacks, where their attacking results are largely overestimated. To this end, this paper presents a new setting for NMT targeted adversarial attacks that could lead to reliable attacking results. Under the new setting, it then proposes a Targeted Word Gradient adversarial Attack (TWGA) method to craft adversarial examples. Experimental results demonstrate that our proposed setting could provide faithful attacking results for targeted adversarial attacks on NMT systems, and the proposed TWGA method can effectively attack such victim NMT systems. In-depth analyses on a large-scale dataset further illustrate some valuable findings. 1 Our code and data are available at https://github.com/wujunjie1998/TWGA.",
+    "authors": [
+        "Junjie Wu",
+        "Lemao Liu",
+        "Wei Bi",
+        "D. Yeung"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results demonstrate that the proposed setting for NMT targeted adversarial attacks could provide faithful attacking results for targeted adversarial attacks on NMT systems, and the proposed TWGA method can effectively attack such victim NMT systems."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,42 @@
+{
+    "acronym": "9c45b4af25e192733d42a8d384e41002786d0d32",
+    "title": "Superposition Prompting: Improving and Accelerating Retrieval-Augmented Generation",
+    "seed_ids": [
+        "alibi",
+        "4ea5ca620122e6a9a2b000444d36491cebf49c7c",
+        "5d8fec20573bc89ec72151277974919c85d8bdfd",
+        "aade40af0d85b0b4fe15c97f6222d5c2e4d6d9b3",
+        "e89b4ef0f0282327085078058557c04812aa4d35",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "e586a4591ba0303b769f2c07cbddaf1899cb72e4",
+        "6f6e2e0311589a9af045f6acd00b7dee6d19fce4",
+        "af385c0fdd0eda2bbf429bea6fedffc327c8a180",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "980e55d9226cac302d0fae7732da4e67b8bc952c",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "ec307b17f193b14292206b65a1bcc95bfd8f02ed",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "3d473cbb7a377cf960abff31748a1a39bb6c7d7c"
+    ],
+    "s2id": "9c45b4af25e192733d42a8d384e41002786d0d32",
+    "abstract": "Despite the successes of large language models (LLMs), they exhibit significant drawbacks, particularly when processing long contexts. Their inference cost scales quadratically with respect to sequence length, making it expensive for deployment in some real-world text processing applications, such as retrieval-augmented generation (RAG). Additionally, LLMs also exhibit the\"distraction phenomenon\", where irrelevant context in the prompt degrades output quality. To address these drawbacks, we propose a novel RAG prompting methodology, *superposition prompting*, which can be directly applied to pre-trained transformer-based LLMs *without the need for fine-tuning*. At a high level, superposition prompting allows the LLM to process input documents in parallel *prompt paths*, discarding paths once they are deemed irrelevant. We demonstrate the capability of our method to simultaneously enhance time efficiency across a variety of question-answering benchmarks using multiple pre-trained LLMs. Furthermore, our technique significantly improves accuracy when the retrieved context is large relative the context the model was trained on. For example, our approach facilitates a 93x reduction in compute time while *improving* accuracy by 43% on the NaturalQuestions-Open dataset with the MPT-7B instruction-tuned model over naive RAG.",
+    "authors": [
+        "Thomas Merth",
+        "Qichen Fu",
+        "Mohammad Rastegari",
+        "Mahyar Najibi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel RAG prompting methodology, *superposition prompting*, which can be directly applied to pre-trained transformer-based LLMs *without the need for fine-tuning*, and demonstrates the capability of the method to simultaneously enhance time efficiency across a variety of question-answering benchmarks."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

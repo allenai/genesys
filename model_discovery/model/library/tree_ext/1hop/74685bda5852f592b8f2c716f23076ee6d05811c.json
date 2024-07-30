@@ -1,0 +1,30 @@
+{
+    "acronym": "74685bda5852f592b8f2c716f23076ee6d05811c",
+    "title": "A Transferable Time Series Forecasting Service Using Deep Transformer Model for Online Systems",
+    "seed_ids": [
+        "reformer",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "74685bda5852f592b8f2c716f23076ee6d05811c",
+    "abstract": "Many real-world online systems expect to forecast the future trend of software quality to better automate operational processes, optimize software resource cost and ensure software reliability. To achieve that, all kinds of time series metrics collected from online software systems are adopted to characterize and monitor the quality of software services. To meet relevant software engineers\u2019 requirements, we focus on time series forecasting and aim to provide an event-driven and self-adaptive forecasting service. In this paper, we present TTSF-transformer, a transferable time series forecasting service using deep transformer model. TTSF-transformer normalizes multiple metric frequencies to ensure the model sharing across multi-source systems, employs a deep transformer model with Bayesian estimation to generate the predictive marginal distribution, and introduces transfer learning and incremental learning into the training process to ensure the performance of long-term prediction. We conduct experiments on real-world time series metrics from two different types of game business in Tencent\u00ae. The results show that TTSF-transformer significantly outperforms other state-of-the-art methods and is suitable for wide deployment in large online systems.",
+    "authors": [
+        "Tao Huang",
+        "Pengfei Chen",
+        "Jingrun Zhang",
+        "Rui Li",
+        "Rui Wang"
+    ],
+    "venue": "International Conference on Automated Software Engineering",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "TTSF-transformer is presented, a transferable time series forecasting service using deep transformer model that significantly outperforms other state-of-the-art methods and is suitable for wide deployment in large online systems."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

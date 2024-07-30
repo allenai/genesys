@@ -1,0 +1,25 @@
+{
+    "acronym": "f6d4392a5df9a7265d7939c6ac003946c199086a",
+    "title": "An Empirical Study on Pre-trained Embeddings and Language Models for Bot Detection",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "f6d4392a5df9a7265d7939c6ac003946c199086a",
+    "abstract": "Fine-tuning pre-trained language models has significantly advanced the state of art in a wide range of NLP downstream tasks. Usually, such language models are learned from large and well-formed text corpora from e.g. encyclopedic resources, books or news. However, a significant amount of the text to be analyzed nowadays is Web data, often from social media. In this paper we consider the research question: How do standard pre-trained language models generalize and capture the peculiarities of rather short, informal and frequently automatically generated text found in social media? To answer this question, we focus on bot detection in Twitter as our evaluation task and test the performance of fine-tuning approaches based on language models against popular neural architectures such as LSTM and CNN combined with pre-trained and contextualized embeddings. Our results also show strong performance variations among the different language model approaches, which suggest further research.",
+    "authors": [
+        "Andres Garcia-Silva",
+        "Cristian Berrio",
+        "Jos\u00e9 Manu\u00e9l G\u00f3mez-P\u00e9rez"
+    ],
+    "venue": "RepL4NLP@ACL",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper focuses on bot detection in Twitter as a evaluation task and test the performance of fine-tuning approaches based on language models against popular neural architectures such as LSTM and CNN combined with pre-trained and contextualized embeddings."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

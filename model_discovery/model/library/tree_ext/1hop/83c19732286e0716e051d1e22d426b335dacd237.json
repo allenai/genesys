@@ -1,0 +1,35 @@
+{
+    "acronym": "83c19732286e0716e051d1e22d426b335dacd237",
+    "title": "Preparing Lessons for Progressive Training on Language Models",
+    "seed_ids": [
+        "gpt2",
+        "1098ca3dbda5778c2bf6c9e8cbb9bc7a02249e10",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "5a3749929bf5fb8b1f98a7b2a43c3b957bcf6c88",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "83c19732286e0716e051d1e22d426b335dacd237",
+    "abstract": "The rapid progress of Transformers in artificial intelligence has come at the cost of increased resource consumption and greenhouse gas emissions due to growing model sizes. Prior work suggests using pretrained small models to improve training efficiency, but this approach may not be suitable for new model structures. On the other hand, training from scratch can be slow, and progressively stacking layers often fails to achieve significant acceleration. To address these challenges, we propose a novel method called Apollo, which prepares lessons for expanding operations by learning high-layer functionality during training of low layers. Our approach involves low-value-prioritized sampling (LVPS) to train different depths and weight sharing to facilitate efficient expansion. We also introduce an interpolation method for stable model depth extension. Experiments demonstrate that Apollo achieves state-of-the-art acceleration ratios, even rivaling methods using pretrained models, making it a universal and efficient solution for training deep models while reducing time, financial, and environmental costs.",
+    "authors": [
+        "Yu Pan",
+        "Ye Yuan",
+        "Yichun Yin",
+        "Jiaxin Shi",
+        "Zenglin Xu",
+        "Ming Zhang",
+        "Lifeng Shang",
+        "Xin Jiang",
+        "Qun Liu"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Apollo is proposed, which prepares lessons for expanding operations by learning high-layer functionality during training of low layers during training of low layers, and involves low-value-prioritized sampling (LVPS) to train different depths and weight sharing to facilitate efficient expansion."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

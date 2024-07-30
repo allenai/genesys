@@ -1,0 +1,29 @@
+{
+    "acronym": "0b6462d99fa0cbc6e1d4d75c101fe55e943aecdb",
+    "title": "The Hidden Space of Transformer Language Adapters",
+    "seed_ids": [
+        "bert",
+        "d0e2e6c98a7b2c8360aa091c0dc0a270edec8468",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "0b6462d99fa0cbc6e1d4d75c101fe55e943aecdb",
+    "abstract": "We analyze the operation of transformer language adapters, which are small modules trained on top of a frozen language model to adapt its predictions to new target languages. We show that adapted predictions mostly evolve in the source language the model was trained on, while the target language becomes pronounced only in the very last layers of the model. Moreover, the adaptation process is gradual and distributed across layers, where it is possible to skip small groups of adapters without decreasing adaptation performance. Last, we show that adapters operate on top of the model's frozen representation space while largely preserving its structure, rather than on an 'isolated' subspace. Our findings provide a deeper view into the adaptation process of language models to new languages, showcasing the constraints imposed on it by the underlying model and introduces practical implications to enhance its efficiency.",
+    "authors": [
+        "Jesujoba Oluwadara Alabi",
+        "Marius Mosbach",
+        "Matan Eyal",
+        "D. Klakow",
+        "Mor Geva"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "2811559b89a32fdf9facf24f4847f1d37393d158",
+    "title": "Differentially Private Decoding in Large Language Models",
+    "seed_ids": [
+        "gpt2",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2811559b89a32fdf9facf24f4847f1d37393d158",
+    "abstract": "Recent large-scale natural language processing (NLP) systems use a pre-trained Large Language Model (LLM) on massive and diverse corpora as a headstart. In practice, the pre-trained model is adapted to a wide array of tasks via fine-tuning on task-specific datasets. LLMs, while effective, have been shown to memorize instances of training data thereby potentially revealing private information processed during pre-training. The potential leakage might further propagate to the downstream tasks for which LLMs are fine-tuned. On the other hand, privacy-preserving algorithms usually involve retraining from scratch, which is prohibitively expensive for LLMs. In this work, we propose a simple, easy to interpret, and computationally lightweight perturbation mechanism to be applied to an already trained model at the decoding stage. Our perturbation mechanism is model-agnostic and can be used in conjunction with any LLM. We provide theoretical analysis showing that the proposed mechanism is differentially private, and experimental results showing a privacy-utility trade-off.",
+    "authors": [
+        "Jimit Majmudar",
+        "Christophe Dupuy",
+        "Charith Peris",
+        "S. Smaili",
+        "Rahul Gupta",
+        "R. Zemel"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a simple, easy to interpret, and computationally lightweight perturbation mechanism to be applied to an already trained model at the decoding stage, which is model-agnostic and can be used in conjunction with any LLM."
+    },
+    "citationCount": 19,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

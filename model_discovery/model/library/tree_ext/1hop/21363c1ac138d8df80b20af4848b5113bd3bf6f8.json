@@ -1,0 +1,31 @@
+{
+    "acronym": "21363c1ac138d8df80b20af4848b5113bd3bf6f8",
+    "title": "Clone-advisor: recommending code tokens and clone methods with deep learning and information retrieval",
+    "seed_ids": [
+        "gpt",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "2fa3f7ce620a1c7155daef6620dd6bb0e01934f3",
+        "8659bf379ca8756755125a487c43cfe8611ce842",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "21363c1ac138d8df80b20af4848b5113bd3bf6f8",
+    "abstract": "Software developers frequently reuse source code from repositories as it saves development time and effort. Code clones (similar code fragments) accumulated in these repositories represent often repeated functionalities and are candidates for reuse in an exploratory or rapid development. To facilitate code clone reuse, we previously presented DeepClone, a novel deep learning approach for modeling code clones along with non-cloned code to predict the next set of tokens (possibly a complete clone method body) based on the code written so far. The probabilistic nature of language modeling, however, can lead to code output with minor syntax or logic errors. To resolve this, we propose a novel approach called Clone-Advisor. We apply an information retrieval technique on top of DeepClone output to recommend real clone methods closely matching the predicted clone method, thus improving the original output by DeepClone. In this paper we have discussed and refined our previous work on DeepClone in much more detail. Moreover, we have quantitatively evaluated the performance and effectiveness of Clone-Advisor in clone method recommendation.",
+    "authors": [
+        "Muhammad Hammad",
+        "\u00d6nder Babur",
+        "H. A. Basit",
+        "M. Brand"
+    ],
+    "venue": "PeerJ Computer Science",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper applies an information retrieval technique on top of DeepClone output to recommend real clone methods closely matching the predicted clone method, thus improving the original output by DeepClones."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

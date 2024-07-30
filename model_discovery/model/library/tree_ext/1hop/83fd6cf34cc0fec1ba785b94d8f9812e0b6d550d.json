@@ -1,0 +1,31 @@
+{
+    "acronym": "83fd6cf34cc0fec1ba785b94d8f9812e0b6d550d",
+    "title": "KnowLab_AIMed at MEDIQA-CORR 2024: Chain-of-Though (CoT) prompting strategies for medical error detection and correction",
+    "seed_ids": [
+        "gpt3",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2"
+    ],
+    "s2id": "83fd6cf34cc0fec1ba785b94d8f9812e0b6d550d",
+    "abstract": "This paper describes our submission to the MEDIQA-CORR 2024 shared task for automatically detecting and correcting medical errors in clinical notes. We report results for three methods of few-shot In-Context Learning (ICL) augmented with Chain-of-Thought (CoT) and reason prompts using a large language model (LLM). In the first method, we manually analyse a subset of train and validation dataset to infer three CoT prompts by examining error types in the clinical notes. In the second method, we utilise the training dataset to prompt the LLM to deduce reasons about their correctness or incorrectness. The constructed CoTs and reasons are then augmented with ICL examples to solve the tasks of error detection, span identification, and error correction. Finally, we combine the two methods using a rule-based ensemble method. Across the three sub-tasks, our ensemble method achieves a ranking of 3rd for both sub-task 1 and 2, while securing 7th place in sub-task 3 among all submissions.",
+    "authors": [
+        "Zhaolong Wu",
+        "Abul Hasan",
+        "Jinge Wu",
+        "Yunsoo Kim",
+        "Jason PY Cheung",
+        "Teng Zhang",
+        "Honghan Wu"
+    ],
+    "venue": "Clinical Natural Language Processing Workshop",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper describes the submission to the MEDIQA-CORR 2024 shared task for automatically detecting and correcting medical errors in clinical notes and reports results for three methods of few-shot In-Context Learning augmented with Chain-of-Thought (CoT) and reason prompts using a large language model (LLM)."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

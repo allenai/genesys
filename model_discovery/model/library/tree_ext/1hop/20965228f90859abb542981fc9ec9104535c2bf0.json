@@ -1,0 +1,33 @@
+{
+    "acronym": "20965228f90859abb542981fc9ec9104535c2bf0",
+    "title": "When to Use Efficient Self Attention? Profiling Text, Speech and Image Transformer Variants",
+    "seed_ids": [
+        "longformer",
+        "056c03fe16ed91cbf0d4b60efbed7d2724a49948",
+        "af679d69fcc1d0fcf0f039aba937853bcb50a8de",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "20965228f90859abb542981fc9ec9104535c2bf0",
+    "abstract": "We present the first unified study of the efficiency of self-attention-based Transformer variants spanning text, speech and vision. We identify input length thresholds (tipping points) at which efficient Transformer variants become more efficient than vanilla models, using a variety of efficiency metrics (latency, throughput, and memory). To conduct this analysis for speech, we introduce L-HuBERT, a novel local-attention variant of a self-supervised speech model. We observe that these thresholds are (a) much higher than typical dataset sequence lengths and (b) dependent on the metric and modality, showing that choosing the right model depends on modality, task type (long-form vs. typical context) and resource constraints (time vs. memory). By visualising the breakdown of the computational costs for transformer components, we also show that non-self-attention components exhibit significant computational costs. We release our profiling toolkit at https://github.com/ajd12342/profiling-transformers .",
+    "authors": [
+        "Anuj Diwan",
+        "Eunsol Choi",
+        "David Harwath"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work identifies input length thresholds at which efficient Transformer variants become more efficient than vanilla models, using a variety of efficiency metrics (latency, throughput, and memory) and introduces L-HuBERT, a novel local-attention variant of a self-supervised speech model."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

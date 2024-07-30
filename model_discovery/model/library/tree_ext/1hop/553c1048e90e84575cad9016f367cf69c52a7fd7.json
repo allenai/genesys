@@ -1,0 +1,26 @@
+{
+    "acronym": "553c1048e90e84575cad9016f367cf69c52a7fd7",
+    "title": "SesameBERT: Attention for Anywhere",
+    "seed_ids": [
+        "gpt",
+        "5a3749929bf5fb8b1f98a7b2a43c3b957bcf6c88",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "553c1048e90e84575cad9016f367cf69c52a7fd7",
+    "abstract": "Fine-tuning with pre-trained models has achieved exceptional results for many language tasks. In this study, we focused on one such self-attention network model, namely BERT, which has performed well in terms of stacking layers across diverse language-understanding benchmarks. However, in many downstream tasks, information between layers is ignored by BERT for fine-tuning. In addition, although self-attention networks are well-known for their ability to capture global dependencies, room for improvement remains in terms of emphasizing the importance of local contexts. In light of these advantages and disadvantages, this paper proposes SesameBERT, a generalized fine-tuning method that (1) enables the extraction of global information among all layers through Squeeze and Excitation and (2) enriches local information by capturing neighboring contexts via Gaussian blurring. Furthermore, we demonstrated the effectiveness of our approach in the HANS dataset, which is used to determine whether models have adopted shallow heuristics instead of learning underlying generalizations. The experiments revealed that SesameBERT outperformed BERT with respect to GLUE benchmark and the HANS evaluation set.",
+    "authors": [
+        "Ta-Chun Su",
+        "Hsiang-Chih Cheng"
+    ],
+    "venue": "International Conference on Data Science and Advanced Analytics",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "SesameBERT is proposed, a generalized fine-tuning method that enables the extraction of global information among all layers through Squeeze and Excitation and enriches local information by capturing neighboring contexts via Gaussian blurring and demonstrates the effectiveness of the approach in the HANS dataset."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

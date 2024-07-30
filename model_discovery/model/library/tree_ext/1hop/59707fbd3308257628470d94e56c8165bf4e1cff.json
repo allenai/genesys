@@ -1,0 +1,32 @@
+{
+    "acronym": "59707fbd3308257628470d94e56c8165bf4e1cff",
+    "title": "FETA: A Benchmark for Few-Sample Task Transfer in Open-Domain Dialogue",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "59707fbd3308257628470d94e56c8165bf4e1cff",
+    "abstract": "Task transfer, transferring knowledge contained in related tasks, holds the promise of reducing the quantity of labeled data required to fine-tune language models. Dialogue understanding encompasses many diverse tasks, yet task transfer has not been thoroughly studied in conversational AI. This work explores conversational task transfer by introducing FETA: a benchmark for FEw-sample TAsk transfer in open-domain dialogue.FETA contains two underlying sets of conversations upon which there are 10 and 7 tasks annotated, enabling the study of intra-dataset task transfer; task transfer without domain adaptation. We utilize three popular language models and three learning algorithms to analyze the transferability between 132 source-target task pairs and create a baseline for future work.We run experiments in the single- and multi-source settings and report valuable findings, e.g., most performance trends are model-specific, and span extraction and multiple-choice tasks benefit the most from task transfer.In addition to task transfer, FETA can be a valuable resource for future research into the efficiency and generalizability of pre-training datasets and model architectures, as well as for learning settings such as continual and multitask learning.",
+    "authors": [
+        "Alon Albalak",
+        "Yi-Lin Tuan",
+        "Pegah Jandaghi",
+        "Connor Pryor",
+        "Luke Yoffe",
+        "Deepak Ramachandran",
+        "L. Getoor",
+        "J. Pujara",
+        "William Yang Wang"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Conversational task transfer is explored by introducing FETA: a benchmark for FEw-sample TAsk transfer in open-domain dialogue and can be a valuable resource for future research into the efficiency and generalizability of pre-training datasets and model architectures, as well as for learning settings such as continual and multitask learning."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

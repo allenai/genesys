@@ -1,0 +1,26 @@
+{
+    "acronym": "5c1d4ceb99d3f4c984b2178c51b2d8105a408547",
+    "title": "Generalizing CLIP to Unseen Domain via Text-Guided Diverse Novel Feature Synthesis",
+    "seed_ids": [
+        "gpt3"
+    ],
+    "s2id": "5c1d4ceb99d3f4c984b2178c51b2d8105a408547",
+    "abstract": "Vision-language foundation models like CLIP have shown impressive zero-shot generalization, but finetuning on downstream datasets can cause overfitting and loss of its generalization ability on unseen domains. Although collecting additional data from new domains of interest is possible, this method is often impractical due to the challenges in obtaining annotated data. To address this, we propose a plug-and-play feature augmentation method called LDFS (Language-Guided Diverse Feature Synthesis) to synthesize new domain features and improve existing CLIP fine-tuning strategies. LDFS has three main contributions: 1) To synthesize novel domain features and promote diversity, we propose an instance-conditional feature augmentation strategy based on a textguided feature augmentation loss. 2) To maintain feature quality after augmenting, we introduce a pairwise regularizer to preserve augmented feature coherence within the CLIP feature space. 3) We propose to use stochastic text feature augmentation to reduce the modality gap and further facilitate the process of text-guided feature synthesis. Extensive experiments show LDFS superiority in improving CLIP generalization ability on unseen domains without collecting data from those domains. The code will be made publicly available.",
+    "authors": [
+        "Siyuan Yan",
+        "Cheng Luo",
+        "Zhen Yu",
+        "Zongyuan Ge"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a plug-and-play feature augmentation method called LDFS (Language-Guided Diverse Feature Synthesis) to synthesize new domain features and improve existing CLIP fine-tuning strategies to reduce the modality gap and facilitate the process of text-guided feature synthesis."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

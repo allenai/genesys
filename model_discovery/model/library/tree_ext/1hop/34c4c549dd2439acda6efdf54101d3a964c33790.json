@@ -1,0 +1,24 @@
+{
+    "acronym": "34c4c549dd2439acda6efdf54101d3a964c33790",
+    "title": "Decoupling SQL Query Hardness Parsing for Text-to-SQL",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "34c4c549dd2439acda6efdf54101d3a964c33790",
+    "abstract": "The fundamental goal of the Text-to-SQL task is to translate natural language question into SQL query. Current research primarily emphasizes the information coupling between natural language questions and schemas, and significant progress has been made in this area. The natural language questions as the primary task requirements source determines the hardness of correspond SQL queries, the correlation between the two always be ignored. However, when the correlation between questions and queries was decoupled, it may simplify the task. In this paper, we introduce an innovative framework for Text-to-SQL based on decoupling SQL query hardness parsing. This framework decouples the Text-to-SQL task based on query hardness by analyzing questions and schemas, simplifying the multi-hardness task into a single-hardness challenge. This greatly reduces the parsing pressure on the language model. We evaluate our proposed framework and achieve a new state-of-the-art performance of fine-turning methods on Spider dev.",
+    "authors": [
+        "J. Yi",
+        "Guo Chen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This framework decouples the Text-to-SQL task based on query hardness by analyzing questions and schemas, simplifying the multi- Hardness task into a single-hardness challenge, greatly reduces the parsing pressure on the language model."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

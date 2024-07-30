@@ -1,0 +1,34 @@
+{
+    "acronym": "4ce9f93e90bc61c9f55ae6fe4f363cf9622a0e18",
+    "title": "Conditional Denoising Diffusion for Sequential Recommendation",
+    "seed_ids": [
+        "diffusionlm",
+        "diffuseq",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8",
+        "24425954960ce968e5f14360fbdd0605abcadfcf"
+    ],
+    "s2id": "4ce9f93e90bc61c9f55ae6fe4f363cf9622a0e18",
+    "abstract": "Generative models have attracted significant interest due to their ability to handle uncertainty by learning the inherent data distributions. However, two prominent generative models, namely Generative Adversarial Networks (GANs) and Variational AutoEncoders (VAEs), exhibit challenges that impede achieving optimal performance in sequential recommendation tasks. Specifically, GANs suffer from unstable optimization, while VAEs are prone to posterior collapse and over-smoothed generations. The sparse and noisy nature of sequential recommendation further exacerbates these issues. In response to these limitations, we present a conditional denoising diffusion model, which includes a sequence encoder, a cross-attentive denoising decoder, and a step-wise diffuser. This approach streamlines the optimization and generation process by dividing it into easier and tractable steps in a conditional autoregressive manner. Furthermore, we introduce a novel optimization schema that incorporates both cross-divergence loss and contrastive loss. This novel training schema enables the model to generate high-quality sequence/item representations and meanwhile precluding collapse. We conducted comprehensive experiments on four benchmark datasets, and the superior performance achieved by our model attests to its efficacy.",
+    "authors": [
+        "Yu Wang",
+        "Zhiwei Liu",
+        "Liangwei Yang",
+        "Philip S. Yu"
+    ],
+    "venue": "Pacific-Asia Conference on Knowledge Discovery and Data Mining",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a conditional denoising diffusion model, which includes a sequence encoder, a cross-attentive Denoising decoder, and a step-wise diffuser, and introduces a novel optimization schema that incorporates both cross-divergence loss and contrastive loss."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

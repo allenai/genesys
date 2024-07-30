@@ -1,0 +1,36 @@
+{
+    "acronym": "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+    "title": "GLM: General Language Model Pretraining with Autoregressive Blank Infilling",
+    "seed_ids": [
+        "gpt",
+        "1c8aea2bfb61f4661b6907018a5a8bca390900dd",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+    "abstract": "There have been various types of pretraining architectures including autoencoding models (e.g., BERT), autoregressive models (e.g., GPT), and encoder-decoder models (e.g., T5). However, none of the pretraining frameworks performs the best for all tasks of three main categories including natural language understanding (NLU), unconditional generation, and conditional generation. We propose a General Language Model (GLM) based on autoregressive blank infilling to address this challenge. GLM improves blank filling pretraining by adding 2D positional encodings and allowing an arbitrary order to predict spans, which results in performance gains over BERT and T5 on NLU tasks. Meanwhile, GLM can be pretrained for different types of tasks by varying the number and lengths of blanks. On a wide range of tasks across NLU, conditional and unconditional generation, GLM outperforms BERT, T5, and GPT given the same model sizes and data, and achieves the best performance from a single pretrained model with 1.25\u00d7 parameters of BERT Large , demonstrating its generalizability to different downstream tasks.",
+    "authors": [
+        "Zhengxiao Du",
+        "Yujie Qian",
+        "Xiao Liu",
+        "Ming Ding",
+        "J. Qiu",
+        "Zhilin Yang",
+        "Jie Tang"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "GLM improves blank filling pretraining by adding 2D positional encodings and allowing an arbitrary order to predict spans, which results in performance gains over BERT and T5 on NLU tasks, and achieves the best performance from a single pretrained model with 1.25\u00d7 parameters of BERT Large."
+    },
+    "citationCount": 921,
+    "influentialCitationCount": 123,
+    "code": null,
+    "description": null,
+    "url": null
+}

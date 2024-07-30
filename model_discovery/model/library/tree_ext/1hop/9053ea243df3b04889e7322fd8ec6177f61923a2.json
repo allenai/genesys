@@ -1,0 +1,39 @@
+{
+    "acronym": "9053ea243df3b04889e7322fd8ec6177f61923a2",
+    "title": "Follow-Your-Emoji: Fine-Controllable and Expressive Freestyle Portrait Animation",
+    "seed_ids": [
+        "classfreediffu",
+        "d9c20c449a51910ef2d107668d962b4a2e182f52",
+        "ebe4e298853acbe82ed5957f01210e7e38d28b9b",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "9053ea243df3b04889e7322fd8ec6177f61923a2",
+    "abstract": "We present Follow-Your-Emoji, a diffusion-based framework for portrait animation, which animates a reference portrait with target landmark sequences. The main challenge of portrait animation is to preserve the identity of the reference portrait and transfer the target expression to this portrait while maintaining temporal consistency and fidelity. To address these challenges, Follow-Your-Emoji equipped the powerful Stable Diffusion model with two well-designed technologies. Specifically, we first adopt a new explicit motion signal, namely expression-aware landmark, to guide the animation process. We discover this landmark can not only ensure the accurate motion alignment between the reference portrait and target motion during inference but also increase the ability to portray exaggerated expressions (i.e., large pupil movements) and avoid identity leakage. Then, we propose a facial fine-grained loss to improve the model's ability of subtle expression perception and reference portrait appearance reconstruction by using both expression and facial masks. Accordingly, our method demonstrates significant performance in controlling the expression of freestyle portraits, including real humans, cartoons, sculptures, and even animals. By leveraging a simple and effective progressive generation strategy, we extend our model to stable long-term animation, thus increasing its potential application value. To address the lack of a benchmark for this field, we introduce EmojiBench, a comprehensive benchmark comprising diverse portrait images, driving videos, and landmarks. We show extensive evaluations on EmojiBench to verify the superiority of Follow-Your-Emoji.",
+    "authors": [
+        "Yue Ma",
+        "Hongyu Liu",
+        "Hongfa Wang",
+        "Heng Pan",
+        "Yin-Yin He",
+        "Junkun Yuan",
+        "Ailing Zeng",
+        "Chengfei Cai",
+        "H. Shum",
+        "Wei Liu",
+        "Qifeng Chen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents Follow-Your-Emoji, a diffusion-based framework for portrait animation, which animates a reference portrait with target landmark sequences, and proposes a facial fine-grained loss to improve the model's ability of subtle expression perception and reference portrait appearance reconstruction."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

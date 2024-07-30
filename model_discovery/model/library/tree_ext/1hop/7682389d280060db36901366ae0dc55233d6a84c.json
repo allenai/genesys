@@ -1,0 +1,28 @@
+{
+    "acronym": "7682389d280060db36901366ae0dc55233d6a84c",
+    "title": "Music Source Separation with Band-Split RoPE Transformer",
+    "seed_ids": [
+        "roformer",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "7682389d280060db36901366ae0dc55233d6a84c",
+    "abstract": "Music source separation (MSS) aims to separate a music recording into multiple musically distinct stems, such as vocals, bass, drums, and more. Recently, deep learning approaches such as convolutional neural networks (CNNs) and recurrent neural networks (RNNs) have been used, but the improvement is still limited. In this paper, we propose a novel frequency-domain approach based on a Band-Split RoPE Transformer (called BS-RoFormer). BS-RoFormer relies on a band-split module to project the input complex spectrogram into subband-level representations, and then arranges a stack of hierarchical Transformers to model the inner-band as well as inter-band sequences for multi-band mask estimation. To facilitate training the model for MSS, we propose to use the Rotary Position Embedding (RoPE). The BS-RoFormer system trained on MUSDB18HQ and 500 extra songs ranked the first place in the MSS track of Sound Demixing Challenge (SDX23). Benchmarking a smaller version of BS-RoFormer on MUSDB18HQ, we achieve state-of-the-art result without extra training data, with 9.80 dB of average SDR.",
+    "authors": [
+        "Wei-Tsung Lu",
+        "Ju-Chiang Wang",
+        "Qiuqiang Kong",
+        "Yun-Ning Hung"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The BS-RoFormer system trained on MUSDB18HQ and 500 extra songs ranked the first place in the MSS track of Sound Demixing Challenge (SDX23) and achieves state-of-the-art result without extra training data."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

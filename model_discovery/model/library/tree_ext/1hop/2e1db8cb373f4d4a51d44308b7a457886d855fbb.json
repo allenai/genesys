@@ -1,0 +1,31 @@
+{
+    "acronym": "2e1db8cb373f4d4a51d44308b7a457886d855fbb",
+    "title": "End-to-End Object Detection with Adaptive Clustering Transformer",
+    "seed_ids": [
+        "lineartransformer",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "2e1db8cb373f4d4a51d44308b7a457886d855fbb",
+    "abstract": "End-to-end Object Detection with Transformer (DETR)proposes to perform object detection with Transformer and achieve comparable performance with two-stage object detection like Faster-RCNN. However, DETR needs huge computational resources for training and inference due to the high-resolution spatial input. In this paper, a novel variant of transformer named Adaptive Clustering Transformer(ACT) has been proposed to reduce the computation cost for high-resolution input. ACT cluster the query features adaptively using Locality Sensitive Hashing (LSH) and ap-proximate the query-key interaction using the prototype-key interaction. ACT can reduce the quadratic O(N2) complexity inside self-attention into O(NK) where K is the number of prototypes in each layer. ACT can be a drop-in module replacing the original self-attention module without any training. ACT achieves a good balance between accuracy and computation cost (FLOPs). The code is available as supplementary for the ease of experiment replication and verification.",
+    "authors": [
+        "Minghang Zheng",
+        "Peng Gao",
+        "Renrui Zhang",
+        "Xiaogang Wang",
+        "Hongsheng Li",
+        "Hao Dong"
+    ],
+    "venue": "British Machine Vision Conference",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel variant of transformer named Adaptive Clustering Transformer named ACT has been proposed to reduce the computation cost for high-resolution input and achieves a good balance between accuracy and computation cost (FLOPs)."
+    },
+    "citationCount": 164,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

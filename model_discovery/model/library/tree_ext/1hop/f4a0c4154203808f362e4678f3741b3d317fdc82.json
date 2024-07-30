@@ -1,0 +1,52 @@
+{
+    "acronym": "f4a0c4154203808f362e4678f3741b3d317fdc82",
+    "title": "The Hedgehog & the Porcupine: Expressive Linear Attentions with Softmax Mimicry",
+    "seed_ids": [
+        "s4",
+        "performer",
+        "lineartransformer",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "998ac3e945857cf2676ee7efdbaf443a0c6f820a",
+        "ac608a4a6b19b3208e560eee5daadb3cc18638a2",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "e3fc46d5f4aae2c7a8a86b6bd21ca8db5d40fcbd",
+        "f6d8beb02771791d628f7e0773d8906261ce707c",
+        "ac2e15fbfe3ea338725f5d33d17a5a687609c431",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "c49ac1f916d6d2edeb187e6619c8d23acd95eb21",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "4b0541eccd8f98852d6807a14fbac17f775c7b40",
+        "f27e8c4731c575bd5f5db4c93ad8588f684dcbd0",
+        "86589b6286ef3c55b8b4fccfb41a3b30b7afdf61",
+        "054e307c1edf4b28137ffcbce980fe81f0647d20",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "1a703f08da01cf737cce3fb9064259b3f4b44e9c",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "8cef9900c04d7f661c08f4b5b1ed4337ace042a3",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f4a0c4154203808f362e4678f3741b3d317fdc82",
+    "abstract": "Linear attentions have shown potential for improving Transformer efficiency, reducing attention's quadratic complexity to linear in sequence length. This holds exciting promise for (1) training linear Transformers from scratch, (2)\"finetuned-conversion\"of task-specific Transformers into linear versions that recover task performance, and (3)\"pretrained-conversion\"of Transformers such as large language models into linear versions finetunable on downstream tasks. However, linear attentions often underperform standard softmax attention in quality. To close this performance gap, we find prior linear attentions lack key properties of softmax attention tied to good performance: low-entropy (or\"spiky\") weights and dot-product monotonicity. We further observe surprisingly simple feature maps that retain these properties and match softmax performance, but are inefficient to compute in linear attention. We thus propose Hedgehog, a learnable linear attention that retains the spiky and monotonic properties of softmax attention while maintaining linear complexity. Hedgehog uses simple trainable MLPs to produce attention weights mimicking softmax attention. Experiments show Hedgehog recovers over 99% of standard Transformer quality in train-from-scratch and finetuned-conversion settings, outperforming prior linear attentions up to 6 perplexity points on WikiText-103 with causal GPTs, and up to 8.7 GLUE score points on finetuned bidirectional BERTs. Hedgehog also enables pretrained-conversion. Converting a pretrained GPT-2 into a linear attention variant achieves state-of-the-art 16.7 perplexity on WikiText-103 for 125M subquadratic decoder models. We finally turn a pretrained Llama-2 7B into a viable linear attention Llama. With low-rank adaptation, Hedgehog-Llama2 7B achieves 28.1 higher ROUGE-1 points over the base standard attention model, where prior linear attentions lead to 16.5 point drops.",
+    "authors": [
+        "Michael Zhang",
+        "Kush S. Bhatia",
+        "Hermann Kumbong",
+        "Christopher R'e"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Hedgehog is proposed, a learnable linear attention that retains the spiky and monotonic properties of softmax attention while maintaining linear complexity, and enables pretrained-conversion."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "a585828fab3ec46ad27e14adfd299953df107a47",
+    "title": "Transformers Generalize DeepSets and Can be Extended to Graphs and Hypergraphs",
+    "seed_ids": [
+        "performer",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a"
+    ],
+    "s2id": "a585828fab3ec46ad27e14adfd299953df107a47",
+    "abstract": "We present a generalization of Transformers to any-order permutation invariant data (sets, graphs, and hypergraphs). We begin by observing that Transformers generalize DeepSets, or first-order (set-input) permutation invariant MLPs. Then, based on recently characterized higher-order invariant MLPs, we extend the concept of self-attention to higher orders and propose higher-order Transformers for order-$k$ data ($k=2$ for graphs and $k>2$ for hypergraphs). Unfortunately, higher-order Transformers turn out to have prohibitive complexity $\\mathcal{O}(n^{2k})$ to the number of input nodes $n$. To address this problem, we present sparse higher-order Transformers that have quadratic complexity to the number of input hyperedges, and further adopt the kernel attention approach to reduce the complexity to linear. In particular, we show that the sparse second-order Transformers with kernel attention are theoretically more expressive than message passing operations while having an asymptotically identical complexity. Our models achieve significant performance improvement over invariant MLPs and message-passing graph neural networks in large-scale graph regression and set-to-(hyper)graph prediction tasks. Our implementation is available at https://github.com/jw9730/hot.",
+    "authors": [
+        "Jinwoo Kim",
+        "Saeyoon Oh",
+        "Seunghoon Hong"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents sparse second-order Transformers with kernel attention that achieve significant performance improvement over invariant MLPs and message-passing graph neural networks in large-scale graph regression and set-to-(hyper)graph prediction tasks."
+    },
+    "citationCount": 34,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

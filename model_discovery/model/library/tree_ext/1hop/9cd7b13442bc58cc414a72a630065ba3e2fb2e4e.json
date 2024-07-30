@@ -1,0 +1,29 @@
+{
+    "acronym": "9cd7b13442bc58cc414a72a630065ba3e2fb2e4e",
+    "title": "Enhancing E-commerce Product Search through Reinforcement Learning-Powered Query Reformulation",
+    "seed_ids": [
+        "gpt2",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "25db56fc85fe15625c3375064a35e908ba6dfd2a",
+        "3456307cd6519786168dd65be04c3ad815055641",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "9cd7b13442bc58cc414a72a630065ba3e2fb2e4e",
+    "abstract": "Query reformulation (QR) is a widely used technique in web and product search. In QR, we map a poorly formed or low coverage user query to a few semantically similar queries that are rich in product coverage, thereby enabling effective targeted searches with less cognitive load on the user. Recent QR approaches based on generative language models are superior to informational retrieval-based methods but exhibit key limitations: (i) generated reformulations often have low lexical diversity and fail to retrieve a large set of relevant products of a wider variety, (ii) the training objective of generative models does not incorporate a our goal of improving product coverage. In this paper, we propose RLQR (Reinforcement Learning for Query Reformulations), for generating high quality diverse reformulations which aim to maximize the product coverage (number of distinct relevant products returned). We evaluate our approach against supervised generative models and strong RL-based methods. Our experiments demonstrate a 28.6% increase in product coverage compared to a standard generative model, outperforming SOTA benchmarks by a significant margin. We also conduct our experiments on an external Amazon shopping dataset and demonstrate increased product coverage over SOTA algorithms.",
+    "authors": [
+        "Sanjay Agrawal",
+        "S. Merugu",
+        "Vivek Sembium"
+    ],
+    "venue": "International Conference on Information and Knowledge Management",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "RLQR (Reinforcement Learning for Query Reformulations), for generating high quality diverse reformulations which aim to maximize the product coverage, is proposed and evaluated against supervised generative models and strong RL-based methods."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

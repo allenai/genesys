@@ -1,0 +1,30 @@
+{
+    "acronym": "725c8f94dd993691932281c7ac1528f59ac987e7",
+    "title": "Generating realistic neurophysiological time series with denoising diffusion probabilistic models",
+    "seed_ids": [
+        "sgconv",
+        "240300b1da360f22bf0b82c6817eacebba6deed4",
+        "ef7993ab30d0a8afabb4ebab080e471c0d5c743c",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51"
+    ],
+    "s2id": "725c8f94dd993691932281c7ac1528f59ac987e7",
+    "abstract": "In recent years, deep generative models have had a profound impact in engineering and sciences, revolutionizing domains such as image and audio generation, as well as advancing our ability to model scientific data. In particular, Denoising Diffusion Probabilistic Models (DDPMs) have been shown to accurately model time series as complex high-dimensional probability distributions. Experimental and clinical neuroscience also stand to benefit from this progress, since accurate modeling of neurophysiological time series, such as electroencephalography (EEG), electrocorticography (ECoG), and local field potential (LFP) recordings, and their synthetic generation can enable or improve a variety of neuroscientific applications. Here, we present a method for modeling multi-channel and densely sampled neurophysiological recordings using DDPMs, which can be flexibly applied to different recording modalities and experimental configurations. First, we show that DDPMs can generate realistic synthetic data for a variety of datasets including different recording techniques (LFP, ECoG, EEG) and species (rat, macaque, human). DDPM-generated time series accurately capture single- and multi-channel statistics such as frequency spectra and phase-amplitude coupling, as well as fine-grained and dataset-specific features such as sharp wave-ripples. In addition, synthetic time series can be generated based on additional information like experimental conditions or brain states. We demonstrate the utility and flexibility of DDPMs in several neuroscience-specific analyses, such as brain-state classification and imputation of missing channels to improve neural decoding. In summary, DDPMs can serve as accurate generative models of neurophysiological recordings, and have a broad utility in the probabilistic generation of synthetic time series for neuroscientific applications.",
+    "authors": [
+        "Julius Vetter",
+        "J. Macke",
+        "Richard Gao"
+    ],
+    "venue": "bioRxiv",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Denoising Diffusion Probabilistic Models can serve as accurate generative models of neurophysiological recordings, and have a broad utility in the probabilistic generation of synthetic time series for neuroscientific applications."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

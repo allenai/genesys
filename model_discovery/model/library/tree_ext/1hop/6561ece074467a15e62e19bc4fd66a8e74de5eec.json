@@ -1,0 +1,31 @@
+{
+    "acronym": "6561ece074467a15e62e19bc4fd66a8e74de5eec",
+    "title": "Enhancing Detail Preservation for Customized Text-to-Image Generation: A Regularization-Free Approach",
+    "seed_ids": [
+        "classfreediffu",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "6561ece074467a15e62e19bc4fd66a8e74de5eec",
+    "abstract": "Recent text-to-image generation models have demonstrated impressive capability of generating text-aligned images with high fidelity. However, generating images of novel concept provided by the user input image is still a challenging task. To address this problem, researchers have been exploring various methods for customizing pre-trained text-to-image generation models. Currently, most existing methods for customizing pre-trained text-to-image generation models involve the use of regularization techniques to prevent over-fitting. While regularization will ease the challenge of customization and leads to successful content creation with respect to text guidance, it may restrict the model capability, resulting in the loss of detailed information and inferior performance. In this work, we propose a novel framework for customized text-to-image generation without the use of regularization. Specifically, our proposed framework consists of an encoder network and a novel sampling method which can tackle the over-fitting problem without the use of regularization. With the proposed framework, we are able to customize a large-scale text-to-image generation model within half a minute on single GPU, with only one image provided by the user. We demonstrate in experiments that our proposed framework outperforms existing methods, and preserves more fine-grained details.",
+    "authors": [
+        "Yufan Zhou",
+        "Ruiyi Zhang",
+        "Tongfei Sun",
+        "Jinhui Xu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed framework consists of an encoder network and a novel sampling method which can tackle the over-fitting problem without the use of regularization, and is able to customize a large-scale text-to-image generation model within half a minute on single GPU, with only one image provided by the user."
+    },
+    "citationCount": 20,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,42 @@
+{
+    "acronym": "13925d7d5952b1ba5960dfe2c44d977be109b636",
+    "title": "4M: Massively Multimodal Masked Modeling",
+    "seed_ids": [
+        "bert",
+        "3ff7153fd6bd47d08084c7f50f8fd70026c126e7",
+        "32b3553d7dc8a263c63d32eeec2916d1647ab178",
+        "b21670e8061a06ab97e7d6052c9345a326e84ff8",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "599bc7cfe98c2b57ddbe111412203a636da57be0",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "13925d7d5952b1ba5960dfe2c44d977be109b636",
+    "abstract": "Current machine learning models for vision are often highly specialized and limited to a single modality and task. In contrast, recent large language models exhibit a wide range of capabilities, hinting at a possibility for similarly versatile models in computer vision. In this paper, we take a step in this direction and propose a multimodal training scheme called 4M. It consists of training a single unified Transformer encoder-decoder using a masked modeling objective across a wide range of input/output modalities - including text, images, geometric, and semantic modalities, as well as neural network feature maps. 4M achieves scalability by unifying the representation space of all modalities through mapping them into discrete tokens and performing multimodal masked modeling on a small randomized subset of tokens. 4M leads to models that exhibit several key capabilities: (1) they can perform a diverse set of vision tasks out of the box, (2) they excel when fine-tuned for unseen downstream tasks or new input modalities, and (3) they can function as a generative model that can be conditioned on arbitrary modalities, enabling a wide variety of expressive multimodal editing capabilities with remarkable flexibility. Through experimental analyses, we demonstrate the potential of 4M for training versatile and scalable foundation models for vision tasks, setting the stage for further exploration in multimodal learning for vision and other domains.",
+    "authors": [
+        "David Mizrahi",
+        "Roman Bachmann",
+        "Ouguzhan Fatih Kar",
+        "Teresa Yeo",
+        "Mingfei Gao",
+        "Afshin Dehghan",
+        "Amir Zamir"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The potential of 4M for training versatile and scalable foundation models for vision tasks is demonstrated, setting the stage for further exploration in multimodal learning for vision and other domains."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

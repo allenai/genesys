@@ -1,0 +1,29 @@
+{
+    "acronym": "0479ba9c95a54d52af7279f47d8ef50b73484d2d",
+    "title": "Dialogue Planning via Brownian Bridge Stochastic Process for Goal-directed Proactive Dialogue",
+    "seed_ids": [
+        "gpt2",
+        "b304ef413e0c81d6139321e575e9eff10b6d9cb2",
+        "6960918666a8c9d50343bbe9e94baf6415edd5fb",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0479ba9c95a54d52af7279f47d8ef50b73484d2d",
+    "abstract": "Goal-directed dialogue systems aim to proactively reach a pre-determined target through multi-turn conversations. The key to achieving this task lies in planning dialogue paths that smoothly and coherently direct conversations towards the target. However, this is a challenging and under-explored task. In this work, we propose a coherent dialogue planning approach that uses a stochastic process to model the temporal dynamics of dialogue paths. We define a latent space that captures the coherence of goal-directed behavior using a Brownian bridge process, which allows us to incorporate user feedback flexibly in dialogue planning. Based on the derived latent trajectories, we generate dialogue paths explicitly using pre-trained language models. We finally employ these paths as natural language prompts to guide dialogue generation. Our experiments show that our approach generates more coherent utterances and achieves the goal with a higher success rate.",
+    "authors": [
+        "Jian Wang",
+        "Dongding Lin",
+        "Wenjie Li"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A coherent dialogue planning approach that uses a stochastic process to model the temporal dynamics of dialogue paths and defines a latent space that captures the coherence of goal-directed behavior using a Brownian bridge process, which allows to incorporate user feedback flexibly in dialogue planning."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

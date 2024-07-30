@@ -1,0 +1,34 @@
+{
+    "acronym": "8724071215e7a000fa4fe643ac112b148fafc5cd",
+    "title": "ReCycle: Fast and Efficient Long Time Series Forecasting with Residual Cyclic Transformers",
+    "seed_ids": [
+        "transformer",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "30dcc0e191a376fea0e7a46f94c53872c029efc9"
+    ],
+    "s2id": "8724071215e7a000fa4fe643ac112b148fafc5cd",
+    "abstract": "Transformers have recently gained prominence in long time series forecasting by elevating accuracies in a variety of use cases. Regrettably, in the race for better predictive performance the overhead of model architectures has grown onerous, leading to models with computational demand infeasible for most practical applications. To bridge the gap between high method complexity and realistic computational resources, we introduce the Residual Cyclic Transformer, ReCycle. ReCycle utilizes primary cycle compression to address the computational complexity of the attention mechanism in long time series. By learning residuals from refined smoothing average techniques, ReCycle surpasses state-of-the-art accuracy in a variety of application use cases. The reliable and explainable fallback behavior ensured by simple, yet robust, smoothing average techniques additionally lowers the barrier for user acceptance. At the same time, our approach reduces the run time and energy consumption by more than an order of magnitude, making both training and inference feasible on low-performance, low-power and edge computing devices. Code is available at https://github.com/Helmholtz-AI-Energy/ReCycle",
+    "authors": [
+        "Arvid Weyrauch",
+        "T. Steens",
+        "Oskar Taubert",
+        "Benedikt Hanke",
+        "Aslan Eqbal",
+        "Ewa G\u00f6tz",
+        "Achim Streit",
+        "Markus Goetz",
+        "Charlotte Debus"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "By learning residuals from refined smoothing average techniques, ReCycle surpasses state-of-the-art accuracy in a variety of application use cases and reduces the run time and energy consumption by more than an order of magnitude."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

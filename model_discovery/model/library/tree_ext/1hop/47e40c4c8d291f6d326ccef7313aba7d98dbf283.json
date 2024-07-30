@@ -1,0 +1,40 @@
+{
+    "acronym": "47e40c4c8d291f6d326ccef7313aba7d98dbf283",
+    "title": "Text Diffusion Model with Encoder-Decoder Transformers for Sequence-to-Sequence Generation",
+    "seed_ids": [
+        "diffusionlm",
+        "diffuseq",
+        "selfcondembdiffu",
+        "bb7e779c9360a94dd2779c2468fe06b82de7af59",
+        "a979742220a88b1d32e1fbe72c41e8ba3007053c",
+        "22775e58932cdfbd273a2a835a22c5d86800a458",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "47e40c4c8d291f6d326ccef7313aba7d98dbf283",
+    "abstract": "The diffusion model, a new generative modeling paradigm, has achieved great success in image, audio, and video generation.However, considering the discrete categorical nature of the text, it is not trivial to extend continuous diffusion models to natural language. In this work, we propose SeqDiffuSeq, a text diffusion model, to approach sequence-to-sequence text generation with an encoder-decoder Transformer architecture.To improve the generation performance, SeqDiffuSeq is equipped with the self-conditioning technique and our newly proposed adaptive noise schedule technique. Self-conditioning enables SeqDiffuSeq to better use the predicted sequence information during the generation process.The adaptive noise schedule balances the difficulty of denoising across time steps at the token level.Experiment results illustrate the improved performance on five sequence-to-sequence generation tasks compared to other diffusion-based models regarding text quality and inference time.",
+    "authors": [
+        "Hongyi Yuan",
+        "Zheng Yuan",
+        "Chuanqi Tan",
+        "Fei Huang",
+        "Songfang Huang"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes SeqDiffuSeq, a text diffusion model, to approach sequence-to-sequence text generation with an encoder-decoder Transformer architecture and equipped with the self-conditioning technique and the newly proposed adaptive noise schedule technique."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

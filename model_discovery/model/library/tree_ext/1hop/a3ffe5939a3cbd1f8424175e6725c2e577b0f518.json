@@ -1,0 +1,27 @@
+{
+    "acronym": "a3ffe5939a3cbd1f8424175e6725c2e577b0f518",
+    "title": "Effective Unsupervised Constrained Text Generation based on Perturbed Masking",
+    "seed_ids": [
+        "transformer",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a3ffe5939a3cbd1f8424175e6725c2e577b0f518",
+    "abstract": "Unsupervised constrained text generation aims to generate text under a given set of constraints without any supervised data. Current state-of-the-art methods stochastically sample edit positions and actions, which may cause unnecessary search steps. In this paper, we propose PMCTG to improve effectiveness by searching for the best edit position and action in each step. Specifically, PMCTG extends perturbed masking technique to effectively search for the most incongruent token to edit. Then it introduces four multi-aspect scoring functions to select edit action to further reduce search difficulty. Since PMCTG does not require supervised data, it could be applied to different generation tasks. We show that under the unsupervised setting, PMCTG achieves new state-of-the-art results in two representative tasks, namely keywords- to-sentence generation and paraphrasing.",
+    "authors": [
+        "Yingwen Fu",
+        "Wenjie Ou",
+        "Zhou Yu",
+        "Yue Lin"
+    ],
+    "venue": "Findings",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "PMCTG is proposed to improve effectiveness by searching for the best edit position and action in each step by extending perturbed masking technique and introducing four multi-aspect scoring functions to select edit action to further reduce search difficulty."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,25 @@
+{
+    "acronym": "59197410699d5d43be38968daf53d7cc214a366c",
+    "title": "Multi-Granularity Representations of Dialog",
+    "seed_ids": [
+        "gpt",
+        "535bbc71ef9f8a8c6180c599ded774ff6f4f8258"
+    ],
+    "s2id": "59197410699d5d43be38968daf53d7cc214a366c",
+    "abstract": "Neural models of dialog rely on generalized latent representations of language. This paper introduces a novel training procedure which explicitly learns multiple representations of language at several levels of granularity. The multi-granularity training algorithm modifies the mechanism by which negative candidate responses are sampled in order to control the granularity of learned latent representations. Strong performance gains are observed on the next utterance retrieval task using both the MultiWOZ dataset and the Ubuntu dialog corpus. Analysis significantly demonstrates that multiple granularities of representation are being learned, and that multi-granularity training facilitates better transfer to downstream tasks.",
+    "authors": [
+        "Shikib Mehri",
+        "M. Esk\u00e9nazi"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel training procedure which explicitly learns multiple representations of language at several levels of granularity is introduced, and it is demonstrated that multiple granularities of representation are being learned, and that multi-granularity training facilitates better transfer to downstream tasks."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

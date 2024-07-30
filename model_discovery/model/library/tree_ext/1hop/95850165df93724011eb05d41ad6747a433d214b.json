@@ -1,0 +1,24 @@
+{
+    "acronym": "95850165df93724011eb05d41ad6747a433d214b",
+    "title": "Contrastive Language-Graph Pretraining (CLGP)",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "95850165df93724011eb05d41ad6747a433d214b",
+    "abstract": "Recently, contrastive pre-training has emerged as a highly effective approach for linking different data modalities, facilitating cross-modal alignment. One prominent example is Contrastive Learning Image Pretraining (CLIP) [5], which successfully aligns image and text representations, enabling powerful image-text interactions. Building upon the success of CLIP, this principle has been extended to audio representations through CLAP [1, 9], demonstrating the applicability of contrastive learning in other modalities. Inspired by these advancements, our project aims to leverage contrastive learning to align a graph and a text representation. By doing so, we unlock the potential to pose specific questions about a particular graph, facilitating effective knowledge extraction and analysis. An important reference point for our endeavor is the Bootstrapping Language-Image Pre-training (BLIP) model [3], which incorporates a text decoder to generate descriptions from images. This successful integration of text and image representations encourages us to explore the possibility of achieving similar results with graphs in our project. With our proposed approach, we envision enabling zero-shot predictions on graphs, where the aligned representations can be used to infer insights and provide answers to targeted queries without requiring specific training for each new prediction task.",
+    "authors": [
+        "Haggai Maron",
+        "Karolis Martinkus"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This project aims to leverage contrastive learning to align a graph and a text representation to enable zero-shot predictions on graphs, where the aligned representations can be used to infer insights and provide answers to targeted queries without requiring specific training for each new prediction task."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

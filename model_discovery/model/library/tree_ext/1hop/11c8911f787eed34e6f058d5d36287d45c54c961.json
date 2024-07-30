@@ -1,0 +1,31 @@
+{
+    "acronym": "11c8911f787eed34e6f058d5d36287d45c54c961",
+    "title": "Understanding Diffusion Objectives as the ELBO with Simple Data Augmentation",
+    "seed_ids": [
+        "classfreediffu",
+        "6e3a3b7a8a0376d867cad72eedf2f9b746f29a33",
+        "7acc71fad70c4c65203739f156bcb440587df901",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "11c8911f787eed34e6f058d5d36287d45c54c961",
+    "abstract": "To achieve the highest perceptual quality, state-of-the-art diffusion models are optimized with objectives that typically look very different from the maximum likelihood and the Evidence Lower Bound (ELBO) objectives. In this work, we reveal that diffusion model objectives are actually closely related to the ELBO. Specifically, we show that all commonly used diffusion model objectives equate to a weighted integral of ELBOs over different noise levels, where the weighting depends on the specific objective used. Under the condition of monotonic weighting, the connection is even closer: the diffusion objective then equals the ELBO, combined with simple data augmentation, namely Gaussian noise perturbation. We show that this condition holds for a number of state-of-the-art diffusion models. In experiments, we explore new monotonic weightings and demonstrate their effectiveness, achieving state-of-the-art FID scores on the high-resolution ImageNet benchmark.",
+    "authors": [
+        "Diederik P. Kingma",
+        "Ruiqi Gao"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work reveals that diffusion model objectives are actually closely related to the ELBO, and shows that all commonly used diffusion model objective equate to a weighted integral of ELBOs over different noise levels, where the weighting depends on the specific objective used."
+    },
+    "citationCount": 34,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "d972c9bccc5ccef16d71b450dd3ab4c77f67224a",
+    "title": "Adversarial Robustness of Neural-Statistical Features in Detection of Generative Transformers",
+    "seed_ids": [
+        "gpt2",
+        "c6c734e16f66fbfcefac7625cc64599e83292c1e",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "ad7129af0644dbcafa9aa2f111cb76526ea444a1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d972c9bccc5ccef16d71b450dd3ab4c77f67224a",
+    "abstract": "The detection of computer-generated text is an area of rapidly increasing significance as nascent generative models allow for efficient creation of compelling human-like text, which may be abused for the purposes of spam, disinformation, phishing, or online influence campaigns. Past work has studied detection of current state-of-the-art models, but despite a developing threat landscape, there has been minimal analysis of the robustness of detection methods to adversarial attacks. To this end, we evaluate neural and non-neural approaches on their ability to detect computer-generated text, their robustness against text adversarial attacks, and the impact that successful adversarial attacks have on human judgement of text quality. We find that while statistical features underperform neural features, statistical features provide additional adversarial robustness that can be leveraged in ensemble detection models. In the process, we find that previously effective complex phrasal features for detection of computer-generated text hold little predictive power against contemporary generative models, and identify promising statistical features to use instead. Finally, we pioneer the usage of \u0394MAUVE as a proxy measure for human judgement of adversarial text quality.",
+    "authors": [
+        "Evan Crothers",
+        "N. Japkowicz",
+        "H. Viktor",
+        "Paula Branco"
+    ],
+    "venue": "IEEE International Joint Conference on Neural Network",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "While statistical features underperform neural features, statistical features provide additional adversarial robustness that can be leveraged in ensemble detection models, and pioneer the usage of \u0394MAUVE as a proxy measure for human judgement of adversarial text quality."
+    },
+    "citationCount": 19,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

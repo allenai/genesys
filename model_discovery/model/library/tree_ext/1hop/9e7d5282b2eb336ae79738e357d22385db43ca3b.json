@@ -1,0 +1,32 @@
+{
+    "acronym": "9e7d5282b2eb336ae79738e357d22385db43ca3b",
+    "title": "PEPT: Expert Finding Meets Personalized Pre-training",
+    "seed_ids": [
+        "bert",
+        "ca726300a4a85f863eb8da847555ec61103e23d9",
+        "3bcb17559ce96eb20fa79af8194f4af0380d194a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8"
+    ],
+    "s2id": "9e7d5282b2eb336ae79738e357d22385db43ca3b",
+    "abstract": "Finding appropriate experts is essential in Community Question Answering (CQA) platforms as it enables the effective routing of questions to potential users who can provide relevant answers. The key is to personalized learning expert representations based on their historical answered questions, and accurately matching them with target questions. There have been some preliminary works exploring the usability of PLMs in expert finding, such as pre-training expert or question representations. However, these models usually learn pure text representations of experts from histories, disregarding personalized and fine-grained expert modeling. For alleviating this, we present a personalized pre-training and fine-tuning paradigm, which could effectively learn expert interest and expertise simultaneously. Specifically, in our pre-training framework, we integrate historical answered questions of one expert with one target question, and regard it as a candidate aware expert-level input unit. Then, we fuse expert IDs into the pre-training for guiding the model to model personalized expert representations, which can help capture the unique characteristics and expertise of each individual expert. Additionally, in our pre-training task, we design: 1) a question-level masked language model task to learn the relatedness between histories, enabling the modeling of question-level expert interest; 2) a vote-oriented task to capture question-level expert expertise by predicting the vote score the expert would receive. Through our pre-training framework and tasks, our approach could holistically learn expert representations including interests and expertise. Our method has been extensively evaluated on six real-world CQA datasets, and the experimental results consistently demonstrate the superiority of our approach over competitive baseline methods.",
+    "authors": [
+        "Qiyao Peng",
+        "Hongtao Liu",
+        "Hongyan Xu",
+        "Yinghui Wang",
+        "Wenjun Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A personalized pre-training and fine-tuning paradigm, which could effectively learn expert interest and expertise simultaneously, and which has been extensively evaluated on six real-world CQA datasets, demonstrates the superiority of this approach over competitive baseline methods."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

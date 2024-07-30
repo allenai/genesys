@@ -1,0 +1,37 @@
+{
+    "acronym": "24425954960ce968e5f14360fbdd0605abcadfcf",
+    "title": "Difformer: Empowering Diffusion Model on Embedding Space for Text Generation",
+    "seed_ids": [
+        "diffusionlm",
+        "selfcondembdiffu",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "0b9770a377b3f96cef9f268cee1791d39a0d4893",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "24425954960ce968e5f14360fbdd0605abcadfcf",
+    "abstract": "Diffusion models have achieved state-of-the-art synthesis quality on visual and audio tasks, and recent works adapt them to textual data by diffusing on the embedding space. But the difference between the continuous data space and the embedding space raises challenges to the diffusion model, which have not been carefully explored. In this paper, we conduct systematic studies and analyze the challenges threefold. Firstly, the data distribution is learnable for embeddings, which may lead to the collapse of the loss function. Secondly, as the norm of embedding varies between popular and rare words, adding the same noise scale will lead to sub-optimal results. In addition, we \ufb01nd that noises sampled from a standard Gaussian distribution may distract the diffusion process. To solve the above challenges, we propose Difformer, a denoising diffusion probabilistic model based on Transformer, which consists of three techniques including utilizing an anchor loss function, a layer normalization module for embeddings, and a norm factor to the Gaussian noise. All techniques are complementary to each other and critical to boosting the model performance together. Experiments are conducted on benchmark datasets over two seminal text generation tasks including machine translation and text summarization. The results show that Difformer significantly outperforms the embedding diffusion baselines, while achieving competitive results with strong autoregressive baselines.",
+    "authors": [
+        "Zhujin Gao",
+        "Junliang Guo",
+        "Xuejiao Tan",
+        "Yongxin Zhu",
+        "Fang Zhang",
+        "Jiang Bian",
+        "Linli Xu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Difformer is proposed, a denoising diffusion probabilistic model based on Transformer, which consists of three techniques including utilizing an anchor loss function, a layer normalization module for embeddings, and a norm factor to the Gaussian noise."
+    },
+    "citationCount": 35,
+    "influentialCitationCount": 8,
+    "code": null,
+    "description": null,
+    "url": null
+}

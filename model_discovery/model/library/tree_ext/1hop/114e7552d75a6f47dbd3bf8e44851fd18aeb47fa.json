@@ -1,0 +1,28 @@
+{
+    "acronym": "114e7552d75a6f47dbd3bf8e44851fd18aeb47fa",
+    "title": "Contrastive and Consistency Learning for Neural Noisy-Channel Model in Spoken Language Understanding",
+    "seed_ids": [
+        "bert",
+        "42a30dc5470f54ec249f25d3c31e05d7c376c8e3",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "114e7552d75a6f47dbd3bf8e44851fd18aeb47fa",
+    "abstract": "Recently, deep end-to-end learning has been studied for intent classification in Spoken Language Understanding (SLU). However, end-to-end models require a large amount of speech data with intent labels, and highly optimized models are generally sensitive to the inconsistency between the training and evaluation conditions. Therefore, a natural language understanding approach based on Automatic Speech Recognition (ASR) remains attractive because it can utilize a pre-trained general language model and adapt to the mismatch of the speech input environment. Using this module-based approach, we improve a noisy-channel model to handle transcription inconsistencies caused by ASR errors. We propose a two-stage method, Contrastive and Consistency Learning (CCL), that correlates error patterns between clean and noisy ASR transcripts and emphasizes the consistency of the latent features of the two transcripts. Experiments on four benchmark datasets show that CCL outperforms existing methods and improves the ASR robustness in various noisy environments. Code is available at https://github.com/syoung7388/CCL",
+    "authors": [
+        "Suyoung Kim",
+        "Jiyeon Hwang",
+        "Ho-Young Jung"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a two-stage method, Contrastive and Consistency Learning (CCL), that correlates error patterns between clean and noisy ASR transcripts and emphasizes the consistency of the latent features of the two transcripts."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

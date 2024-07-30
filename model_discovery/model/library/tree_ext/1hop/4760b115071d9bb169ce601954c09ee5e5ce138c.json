@@ -1,0 +1,29 @@
+{
+    "acronym": "4760b115071d9bb169ce601954c09ee5e5ce138c",
+    "title": "AdaNovo: Adaptive \\emph{De Novo} Peptide Sequencing with Conditional Mutual Information",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "4760b115071d9bb169ce601954c09ee5e5ce138c",
+    "abstract": "Tandem mass spectrometry has played a pivotal role in advancing proteomics, enabling the analysis of protein composition in biological samples. Despite the development of various deep learning methods for identifying amino acid sequences (peptides) responsible for observed spectra, challenges persist in \\emph{de novo} peptide sequencing. Firstly, prior methods struggle to identify amino acids with post-translational modifications (PTMs) due to their lower frequency in training data compared to canonical amino acids, further resulting in decreased peptide-level identification precision. Secondly, diverse types of noise and missing peaks in mass spectra reduce the reliability of training data (peptide-spectrum matches, PSMs). To address these challenges, we propose AdaNovo, a novel framework that calculates conditional mutual information (CMI) between the spectrum and each amino acid/peptide, using CMI for adaptive model training. Extensive experiments demonstrate AdaNovo's state-of-the-art performance on a 9-species benchmark, where the peptides in the training set are almost completely disjoint from the peptides of the test sets. Moreover, AdaNovo excels in identifying amino acids with PTMs and exhibits robustness against data noise. The supplementary materials contain the official code.",
+    "authors": [
+        "Jun Xia",
+        "Shaorong Chen",
+        "Jingbo Zhou",
+        "Tianze Ling",
+        "Wenjie Du",
+        "Sizhe Liu",
+        "S. Z. Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "AdaNovo is a novel framework that calculates conditional mutual information (CMI) between the spectrum and each amino acid/peptide, using CMI for adaptive model training, and excels in identifying amino acids with PTMs and exhibits robustness against data noise."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,27 @@
+{
+    "acronym": "ecc63e6e2c0c6d197ee2d9336b9887950d965614",
+    "title": "Intra-session Context-aware Feed Recommendation in Live Systems",
+    "seed_ids": [
+        "gpt",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8"
+    ],
+    "s2id": "ecc63e6e2c0c6d197ee2d9336b9887950d965614",
+    "abstract": "Feed recommendation allows users to constantly browse items until feel uninterested and leave the session, which differs from traditional recommendation scenarios. Within a session, user's decision to continue browsing or not substantially affects occurrences of later clicks. However, such type of exposure bias is generally ignored or not explicitly modeled in most feed recommendation studies. In this paper, we model this effect as part of intra-session context, and propose a novel intra-session Context-aware Feed Recommendation (INSCAFER) framework to maximize the total views and total clicks simultaneously. User click and browsing decisions are jointly learned by a multi-task setting, and the intra-session context is encoded by the session-wise exposed item sequence. We deploy our model on Alipay with all key business benchmarks improved. Our method sheds some lights on feed recommendation studies which aim to optimize session-level click and view metrics.",
+    "authors": [
+        "Luo Ji",
+        "Gao Liu",
+        "Mingyang Yin",
+        "Hongxia Yang"
+    ],
+    "venue": "International Conference on Information and Knowledge Management",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel intra-session Context-aware Feed Recommendation (INSCAFER) framework to maximize the total views and total clicks simultaneously and sheds some lights on feed recommendation studies which aim to optimize session-level click and view metrics."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

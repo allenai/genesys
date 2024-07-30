@@ -1,0 +1,47 @@
+{
+    "acronym": "be55e8ec4213868db08f2c3168ae666001bea4b8",
+    "title": "Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling",
+    "seed_ids": [
+        "flashattn",
+        "c51192d7440807dc98cc4374fb5d919390d70b0b",
+        "bb15f3727f827a3cb88b5d3ca48415c09b40a88f",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "bd44f34b47c8a4b6947695853fc2814ac69664a6",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "2c5a8950cf0a13e229ad19093ba064495fda8de7",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "be55e8ec4213868db08f2c3168ae666001bea4b8",
+    "abstract": "How do large language models (LLMs) develop and evolve over the course of training? How do these patterns change as models scale? To answer these questions, we introduce \\textit{Pythia}, a suite of 16 LLMs all trained on public data seen in the exact same order and ranging in size from 70M to 12B parameters. We provide public access to 154 checkpoints for each one of the 16 models, alongside tools to download and reconstruct their exact training dataloaders for further study. We intend \\textit{Pythia} to facilitate research in many areas, and we present several case studies including novel results in memorization, term frequency effects on few-shot performance, and reducing gender bias. We demonstrate that this highly controlled setup can be used to yield novel insights toward LLMs and their training dynamics. Trained models, analysis code, training code, and training data can be found at \\url{https://github.com/EleutherAI/pythia}.",
+    "authors": [
+        "Stella Biderman",
+        "Hailey Schoelkopf",
+        "Quentin G. Anthony",
+        "Herbie Bradley",
+        "Kyle O'Brien",
+        "Eric Hallahan",
+        "Mohammad Aflah Khan",
+        "Shivanshu Purohit",
+        "USVSN Sai Prashanth",
+        "Edward Raff",
+        "Aviya Skowron",
+        "Lintang Sutawika",
+        "Oskar van der Wal"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A suite of 16 LLMs all trained on public data seen in the exact same order and ranging in size from 70M to 12B parameters is introduced, demonstrating that this highly controlled setup can be used to yield novel insights toward LLMs and their training dynamics."
+    },
+    "citationCount": 696,
+    "influentialCitationCount": 100,
+    "code": null,
+    "description": null,
+    "url": null
+}

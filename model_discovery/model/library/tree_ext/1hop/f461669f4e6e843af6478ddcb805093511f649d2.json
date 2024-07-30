@@ -1,0 +1,35 @@
+{
+    "acronym": "f461669f4e6e843af6478ddcb805093511f649d2",
+    "title": "Rethinking Attention Mechanism in Time Series Classification",
+    "seed_ids": [
+        "linformer",
+        "2e644c67a697073d561da4f4dad35e5ad5316cfd",
+        "6b6ffb94626e672caffafc77097491d9ee7a8682",
+        "e32a12b14e212506115cc6804667b3d8297917e1",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "f461669f4e6e843af6478ddcb805093511f649d2",
+    "abstract": "Attention-based models have been widely used in many areas, such as computer vision and natural language processing. However, relevant applications in time series classification (TSC) have not been explored deeply yet, causing a significant number of TSC algorithms still suffer from general problems of attention mechanism, like quadratic complexity. In this paper, we promote the efficiency and performance of the attention mechanism by proposing our flexible multi-head linear attention (FMLA), which enhances locality awareness by layer-wise interactions with deformable convolutional blocks and online knowledge distillation. What's more, we propose a simple but effective mask mechanism that helps reduce the noise influence in time series and decrease the redundancy of the proposed FMLA by masking some positions of each given series proportionally. To stabilize this mechanism, samples are forwarded through the model with random mask layers several times and their outputs are aggregated to teach the same model with regular mask layers. We conduct extensive experiments on 85 UCR2018 datasets to compare our algorithm with 11 well-known ones and the results show that our algorithm has comparable performance in terms of top-1 accuracy. We also compare our model with three Transformer-based models with respect to the floating-point operations per second and number of parameters and find that our algorithm achieves significantly better efficiency with lower complexity.",
+    "authors": [
+        "Bowen Zhao",
+        "Huanlai Xing",
+        "Xinhan Wang",
+        "Fuhong Song",
+        "Zhiwen Xiao"
+    ],
+    "venue": "Information Sciences",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a simple but effective mask mechanism that helps reduce the noise influence in time series and decrease the redundancy of the proposed FMLA by masking some positions of each given series proportionally."
+    },
+    "citationCount": 14,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

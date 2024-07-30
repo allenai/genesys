@@ -1,0 +1,36 @@
+{
+    "acronym": "c5349e515efe3513682ba62da122be5756650af1",
+    "title": "DiffusionInst: Diffusion Model for Instance Segmentation",
+    "seed_ids": [
+        "analogbits",
+        "81621c53c6aa421deb81bb1359138ded0fb4e258",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "8f48171bf05474449777d9bbf6766d480332e09f",
+        "e342165a614588878ad0f4bc9bacf3905df34d08",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "c5349e515efe3513682ba62da122be5756650af1",
+    "abstract": "Diffusion frameworks have achieved comparable performance with previous state-of-the-art image generation models. Researchers are curious about its variants in discriminative tasks because of its powerful noise-to-image denoising pipeline. This paper proposes DiffusionInst, a novel framework that represents instances as instance-aware filters and formulates instance segmentation as a noise-to-filter denoising process. The model is trained to reverse the noisy groundtruth without any inductive bias from RPN. During inference, it takes a randomly generated filter as input and outputs mask in one-step or multi-step denoising. Extensive experimental results on COCO and LVIS show that DiffusionInst achieves competitive performance compared to existing instance segmentation models with various backbones, such as ResNet and Swin Transformers. We hope our work could serve as a strong baseline, which could inspire designing more efficient diffusion frameworks for challenging discriminative tasks. Our code is available in https://github.com/chenhaoxing/DiffusionInst.",
+    "authors": [
+        "Zhangxuan Gu",
+        "Haoxing Chen",
+        "Zhuoer Xu",
+        "Jun Lan",
+        "Changhua Meng",
+        "Weiqiang Wang"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel framework that represents instances as instance-aware filters and formulates instance segmentation as a noise-to-filter denoising process, which could inspire designing more efficient diffusion frameworks for challenging discriminative tasks is proposed."
+    },
+    "citationCount": 42,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

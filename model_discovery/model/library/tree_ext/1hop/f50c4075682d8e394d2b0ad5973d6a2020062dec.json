@@ -1,0 +1,35 @@
+{
+    "acronym": "f50c4075682d8e394d2b0ad5973d6a2020062dec",
+    "title": "RoCoIns: Enhancing Robustness of Large Language Models through Code-Style Instructions",
+    "seed_ids": [
+        "gpt3",
+        "525d93a382f6e7873b5d8a2e0713eb3dff7fb250",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "ed38c6b157c11476939c426ec6871c926f2f3524",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "3bcb17559ce96eb20fa79af8194f4af0380d194a"
+    ],
+    "s2id": "f50c4075682d8e394d2b0ad5973d6a2020062dec",
+    "abstract": "Large Language Models (LLMs) have showcased remarkable capabilities in following human instructions. However, recent studies have raised concerns about the robustness of LLMs for natural language understanding (NLU) tasks when prompted with instructions combining textual adversarial samples. In this paper, drawing inspiration from recent works that LLMs are sensitive to the design of the instructions, we utilize instructions in code style, which are more structural and less ambiguous, to replace typically natural language instructions. Through this conversion, we provide LLMs with more precise instructions and strengthen the robustness of LLMs. Moreover, under few-shot scenarios, we propose a novel method to compose in-context demonstrations using both clean and adversarial samples (adversarial context method) to further boost the robustness of the LLMs. Experiments on eight robustness datasets show that our method consistently outperforms prompting LLMs with natural language, for example, with gpt-3.5-turbo on average, our method achieves an improvement of 5.68% in test set accuracy and a reduction of 5.66 points in Attack Success Rate (ASR).",
+    "authors": [
+        "Yuan Zhang",
+        "Xiao Wang",
+        "Zhiheng Xi",
+        "Han Xia",
+        "Tao Gui",
+        "Qi Zhang",
+        "Xuanjing Huang"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper utilizes instructions in code style, which are more structural and less ambiguous, to replace typically natural language instructions to provide LLMs with more precise instructions and strengthen the robustness of LLMs."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

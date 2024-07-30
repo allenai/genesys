@@ -1,0 +1,39 @@
+{
+    "acronym": "ab45697956dd7a7acbe7ffe70ae77194fdc9135d",
+    "title": "Repetition In Repetition Out: Towards Understanding Neural Text Degeneration from the Data Perspective",
+    "seed_ids": [
+        "gpt2",
+        "bb6ae69945f0f90c5197f8ab7072dcc8eec02cd6",
+        "5697a0ede5425954d48daa6e1893dc87bd7d8be7",
+        "6151ee4af6a3fe78f2df7c605598cd9e02b23c5b",
+        "77ced33cba86b4d01fbfe6622c8f564c89d6a1b3",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "492a655a67e6ec7423a968cedb70eec0cdbc8e98",
+        "7ade458d52d2dfe997b8a617a6b524bda12a619d",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ab45697956dd7a7acbe7ffe70ae77194fdc9135d",
+    "abstract": "There are a number of diverging hypotheses about the neural text degeneration problem, i.e., generating repetitive and dull loops, which makes this problem both interesting and confusing. In this work, we aim to advance our understanding by presenting a straightforward and fundamental explanation from the data perspective. Our preliminary investigation reveals a strong correlation between the degeneration issue and the presence of repetitions in training data. Subsequent experiments also demonstrate that by selectively dropping out the attention to repetitive words in training data, degeneration can be significantly minimized. Furthermore, our empirical analysis illustrates that prior works addressing the degeneration issue from various standpoints, such as the high-inflow words, the likelihood objective, and the self-reinforcement phenomenon, can be interpreted by one simple explanation. That is, penalizing the repetitions in training data is a common and fundamental factor for their effectiveness. Moreover, our experiments reveal that penalizing the repetitions in training data remains critical even when considering larger model sizes and instruction tuning.",
+    "authors": [
+        "Huayang Li",
+        "Tian Lan",
+        "Z. Fu",
+        "Deng Cai",
+        "Lemao Liu",
+        "Nigel Collier",
+        "Taro Watanabe",
+        "Yixuan Su"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work aims to advance understanding of neural text degeneration by presenting a straightforward and fundamental explanation from the data perspective, and illustrates that prior works addressing the degeneration issue from various standpoints, such as the high-inflow words, the likelihood objective, and the self-reinforcement phenomenon, can be interpreted by one simple explanation."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

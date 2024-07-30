@@ -1,0 +1,30 @@
+{
+    "acronym": "05fe77337bb43d4efd2c042c9bd5f044bb6e2271",
+    "title": "NeuS: Neutral Multi-News Summarization for Mitigating Framing Bias",
+    "seed_ids": [
+        "memcompress",
+        "42e41ab2211b8ba78e36326ea21e05bd25d92c42",
+        "d25121da56c9050137800c69520111b30201d1ed",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "05fe77337bb43d4efd2c042c9bd5f044bb6e2271",
+    "abstract": "Media news framing bias can increase political polarization and undermine civil society. The need for automatic mitigation methods is therefore growing. We propose a new task, a neutral summary generation from multiple news articles of the varying political leaningsto facilitate balanced and unbiased news reading.In this paper, we first collect a new dataset, illustrate insights about framing bias through a case study, and propose a new effective metric and model (NeuS-Title) for the task. Based on our discovery that title provides a good signal for framing bias, we present NeuS-Title that learns to neutralize news content in hierarchical order from title to article. Our hierarchical multi-task learning is achieved by formatting our hierarchical data pair (title, article) sequentially with identifier-tokens (\u201cTITLE=>\u201d, \u201cARTICLE=>\u201d) and fine-tuning the auto-regressive decoder with the standard negative log-likelihood objective.We then analyze and point out the remaining challenges and future directions. One of the most interesting observations is that neural NLG models can hallucinate not only factually inaccurate or unverifiable content but also politically biased content.",
+    "authors": [
+        "Nayeon Lee",
+        "Yejin Bang",
+        "Tiezheng Yu",
+        "Andrea Madotto",
+        "Pascale Fung"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a new task, a neutral summary generation from multiple news articles of the varying political leaning to facilitate balanced and unbiased news reading, and presents NeuS-Title that learns to neutralize news content in hierarchical order from title to article."
+    },
+    "citationCount": 18,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

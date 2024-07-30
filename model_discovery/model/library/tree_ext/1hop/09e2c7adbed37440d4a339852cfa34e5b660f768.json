@@ -1,0 +1,29 @@
+{
+    "acronym": "09e2c7adbed37440d4a339852cfa34e5b660f768",
+    "title": "Transformer Transducer: A Streamable Speech Recognition Model with Transformer Encoders and RNN-T Loss",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "09e2c7adbed37440d4a339852cfa34e5b660f768",
+    "abstract": "In this paper we present an end-to-end speech recognition model with Transformer encoders that can be used in a streaming speech recognition system. Transformer computation blocks based on self-attention are used to encode both audio and label sequences independently. The activations from both audio and label encoders are combined with a feed-forward layer to compute a probability distribution over the label space for every combination of acoustic frame position and label history. This is similar to the Recurrent Neural Network Transducer (RNN-T) model, which uses RNNs for information encoding instead of Transformer encoders. The model is trained with the RNN-T loss well-suited to streaming decoding. We present results on the LibriSpeech dataset showing that limiting the left context for self-attention in the Transformer layers makes decoding computationally tractable for streaming, with only a slight degradation in accuracy. We also show that the full attention version of our model beats the-state-of-the art accuracy on the LibriSpeech benchmarks. Our results also show that we can bridge the gap between full attention and limited attention versions of our model by attending to a limited number of future frames.",
+    "authors": [
+        "Qian Zhang",
+        "Han Lu",
+        "Hasim Sak",
+        "Anshuman Tripathi",
+        "E. McDermott",
+        "Stephen Koo",
+        "Shankar Kumar"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An end-to-end speech recognition model with Transformer encoders that can be used in a streaming speech recognition system and shows that the full attention version of the model beats the-state-of-the art accuracy on the LibriSpeech benchmarks."
+    },
+    "citationCount": 415,
+    "influentialCitationCount": 47,
+    "code": null,
+    "description": null,
+    "url": null
+}

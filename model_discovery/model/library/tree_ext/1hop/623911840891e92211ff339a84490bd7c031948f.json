@@ -1,0 +1,29 @@
+{
+    "acronym": "623911840891e92211ff339a84490bd7c031948f",
+    "title": "Efficient Lightweight Image Denoising with Triple Attention Transformer",
+    "seed_ids": [
+        "transformer",
+        "30f326353dfeed21216c1cf98d3c42d794fa054e",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "623911840891e92211ff339a84490bd7c031948f",
+    "abstract": "Transformer has shown outstanding performance on image denoising, but the existing Transformer methods for image denoising are with large model sizes and high computational complexity, which is unfriendly to resource-constrained devices. In this paper, we propose a Lightweight Image Denoising Transformer method (LIDFormer) based on Triple Multi-Dconv Head Transposed Attention (TMDTA) to boost computational efficiency. LIDFormer first implements Discrete Wavelet Transform (DWT), which transforms the input image into a low-frequency space, greatly reducing the computational complexity of image denoising. However, the low-frequency image lacks fine-feature information, which degrades the denoising performance. To handle this problem, we introduce the Complementary Periodic Feature Reusing (CPFR) scheme for aggregating the shallow-layer features and the deep-layer features. Furthermore, TMDTA is proposed to integrate global context along three dimensions, thereby enhancing the ability of global feature representation. Note that our method can be applied as a pipeline for both convolutional neural networks and Transformers. Extensive experiments on several benchmarks demonstrate that the proposed LIDFormer achieves a better trade-off between high performance and low computational complexity on real-world image denoising tasks.",
+    "authors": [
+        "Yubo Zhou",
+        "Jin Lin",
+        "Fangchen Ye",
+        "Yanyun Qu",
+        "Yuan Xie"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Lightweight Image Denoising Transformer method (LIDFormer) based on Triple Multi-Dconv Head Transposed Attention (TMDTA) to boost computational efficiency and integrate global context along three dimensions, thereby enhancing the ability of global feature representation."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "281157da42029bda0196db63b05e9ef3346ca832",
+    "title": "Parallel Tacotron: Non-Autoregressive and Controllable TTS",
+    "seed_ids": [
+        "lighdynconv"
+    ],
+    "s2id": "281157da42029bda0196db63b05e9ef3346ca832",
+    "abstract": "Although neural end-to-end text-to-speech models can synthesize highly natural speech, there is still room for improvements to its efficiency and naturalness. This paper proposes a non-autoregressive neural text-to-speech model augmented with a variational autoencoder-based residual encoder. This model, called Parallel Tacotron, is highly parallelizable during both training and inference, allowing efficient synthesis on modern parallel hardware. The use of the variational autoencoder relaxes the one-to-many mapping nature of the text-to-speech problem and improves naturalness. To further improve the naturalness, we use lightweight convolutions, which can efficiently capture local contexts, and introduce an iterative spectrogram loss inspired by iterative refinement. Experimental results show that Parallel Tacotron matches a strong autoregressive baseline in subjective evaluations with significantly decreased inference time.",
+    "authors": [
+        "Isaac Elias",
+        "H. Zen",
+        "Jonathan Shen",
+        "Yu Zhang",
+        "Ye Jia",
+        "Ron J. Weiss",
+        "Yonghui Wu"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A non-autoregressive neural text-to-speech model augmented with a variational autoencoder-based residual encoder, called Parallel Tacotron, which is highly parallelizable during both training and inference, allowing efficient synthesis on modern parallel hardware."
+    },
+    "citationCount": 91,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "5e0bf5d58b224c6261cc714139a54681a7917149",
+    "title": "LeiBi@COLIEE 2022: Aggregating Tuned Lexical Models with a Cluster-driven BERT-based Model for Case Law Retrieval",
+    "seed_ids": [
+        "longformer",
+        "4e885ce070664e8eb3278659d0b20c7deed34029",
+        "f6245b3e6270e4dc2e279c4b728030523dffcff4",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "15cc6dac02a458f587712880e8b9c15bb97bbbeb"
+    ],
+    "s2id": "5e0bf5d58b224c6261cc714139a54681a7917149",
+    "abstract": "This paper summarizes our approaches submitted to the case law retrieval task in the Competition on Legal Information Extraction/Entailment (COLIEE) 2022. Our methodology consists of four steps; in detail, given a legal case as a query, we reformulate it by extracting various meaningful sentences or n-grams. Then, we utilize the pre-processed query case to retrieve an initial set of possible relevant legal cases, which we further re-rank. Lastly, we aggregate the relevance scores obtained by the first stage and the re-ranking models to improve retrieval effectiveness. In each step of our methodology, we explore various well-known and novel methods. In particular, to reformulate the query cases aiming to make them shorter, we extract unigrams using three different statistical methods: KLI, PLM, IDF-r, as well as models that leverage embeddings (e.g., KeyBERT). Moreover, we investigate if automatic summarization using Longformer-Encoder-Decoder (LED) can produce an effective query representation for this retrieval task. Furthermore, we propose a novel re-ranking cluster-driven approach, which leverages Sentence-BERT models that are pre-tuned on large amounts of data for embedding sentences from query and candidate documents. Finally, we employ a linear aggregation method to combine the relevance scores obtained by traditional IR models and neural-based models, aiming to incorporate the semantic understanding of neural models and the statistically measured topical relevance. We show that aggregating these relevance scores can improve the overall retrieval effectiveness.",
+    "authors": [
+        "Arian Askari",
+        "Georgios Peikos",
+        "G. Pasi",
+        "S. Verberne"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel re-ranking cluster-driven approach, which leverages Sentence-BERT models that are pre-tuned on large amounts of data for embedding sentences from query and candidate documents and a linear aggregation method to combine the relevance scores obtained by traditional IR models and neural-based models are employed."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,33 @@
+{
+    "acronym": "5b1120f547d3969afc49b4a094e874d568e53aca",
+    "title": "Grokked Transformers are Implicit Reasoners: A Mechanistic Journey to the Edge of Generalization",
+    "seed_ids": [
+        "universaltrans",
+        "6d130ebff26dbbf00e3c601973872ff0c0c4235f",
+        "bcd84a2b8f9ae40a908f375425f113c82f8dd739",
+        "db4ab91d5675c37795e719e997a2827d3d83cd45",
+        "e82e3f4347674b75c432cb80604d38ee630d4bf6",
+        "da1d6445b6b64ce9eb4587ba8abbdc490f648ec1",
+        "736eb449526fe7128917954ec5532b59e318ec78",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5b1120f547d3969afc49b4a094e874d568e53aca",
+    "abstract": "We study whether transformers can learn to implicitly reason over parametric knowledge, a skill that even the most capable language models struggle with. Focusing on two representative reasoning types, composition and comparison, we consistently find that transformers can learn implicit reasoning, but only through grokking, i.e., extended training far beyond overfitting. The levels of generalization also vary across reasoning types: when faced with out-of-distribution examples, transformers fail to systematically generalize for composition but succeed for comparison. We delve into the model's internals throughout training, conducting analytical experiments that reveal: 1) the mechanism behind grokking, such as the formation of the generalizing circuit and its relation to the relative efficiency of generalizing and memorizing circuits, and 2) the connection between systematicity and the configuration of the generalizing circuit. Our findings guide data and training setup to better induce implicit reasoning and suggest potential improvements to the transformer architecture, such as encouraging cross-layer knowledge sharing. Furthermore, we demonstrate that for a challenging reasoning task with a large search space, GPT-4-Turbo and Gemini-1.5-Pro based on non-parametric memory fail badly regardless of prompting styles or retrieval augmentation, while a fully grokked transformer can achieve near-perfect accuracy, showcasing the power of parametric memory for complex reasoning.",
+    "authors": [
+        "Boshi Wang",
+        "Xiang Yue",
+        "Yu Su",
+        "Huan Sun"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that for a challenging reasoning task with a large search space, GPT-4-Turbo and Gemini-1.5-Pro based on non-parametric memory fail badly regardless of prompting styles or retrieval augmentation, while a fully grokked transformer can achieve near-perfect accuracy, showcasing the power of parametric memory for complex reasoning."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

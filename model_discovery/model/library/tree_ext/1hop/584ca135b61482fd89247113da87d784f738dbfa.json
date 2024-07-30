@@ -1,0 +1,51 @@
+{
+    "acronym": "584ca135b61482fd89247113da87d784f738dbfa",
+    "title": "Foundational Models Defining a New Era in Vision: A Survey and Outlook",
+    "seed_ids": [
+        "gpt2",
+        "240103933ffe3dac2179cc160a2bd91299357a53",
+        "42a30dc5470f54ec249f25d3c31e05d7c376c8e3",
+        "690df0820f35a47e1ce44f90e6ddb4132aa09267",
+        "84b6fecf016d74512869c698c66c83729abdf359",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "db4ab91d5675c37795e719e997a2827d3d83cd45",
+        "9575afb5702bc33d7df14c48feeee5901ea00369",
+        "25425e299101b13ec2872417a14f961f4f8aa18e",
+        "e342165a614588878ad0f4bc9bacf3905df34d08",
+        "32c9b3859086d15184989454eb878638659e64c6",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "fa717a2e31f0cef4e26921f3b147a98644d2e64c",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "5e00596fa946670d894b1bdaeff5a98e3867ef13",
+        "3a906b77fa218adc171fecb28bb81c24c14dcc7b",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "a2bcacc8fefb859c94c69d524b2368bb4792f9b1",
+        "71cc838d8a50a0d62cc9c679536f1f25b2ea6b7f",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "584ca135b61482fd89247113da87d784f738dbfa",
+    "abstract": "Vision systems to see and reason about the compositional nature of visual scenes are fundamental to understanding our world. The complex relations between objects and their locations, ambiguities, and variations in the real-world environment can be better described in human language, naturally governed by grammatical rules and other modalities such as audio and depth. The models learned to bridge the gap between such modalities coupled with large-scale training data facilitate contextual reasoning, generalization, and prompt capabilities at test time. These models are referred to as foundational models. The output of such models can be modified through human-provided prompts without retraining, e.g., segmenting a particular object by providing a bounding box, having interactive dialogues by asking questions about an image or video scene or manipulating the robot's behavior through language instructions. In this survey, we provide a comprehensive review of such emerging foundational models, including typical architecture designs to combine different modalities (vision, text, audio, etc), training objectives (contrastive, generative), pre-training datasets, fine-tuning mechanisms, and the common prompting patterns; textual, visual, and heterogeneous. We discuss the open challenges and research directions for foundational models in computer vision, including difficulties in their evaluations and benchmarking, gaps in their real-world understanding, limitations of their contextual understanding, biases, vulnerability to adversarial attacks, and interpretability issues. We review recent developments in this field, covering a wide range of applications of foundation models systematically and comprehensively. A comprehensive list of foundational models studied in this work is available at \\url{https://github.com/awaisrauf/Awesome-CV-Foundational-Models}.",
+    "authors": [
+        "Muhammad Awais",
+        "Muzammal Naseer",
+        "Salman Siddique Khan",
+        "R. Anwer",
+        "Hisham Cholakkal",
+        "M. Shah",
+        "Ming Yang",
+        "F. Khan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A comprehensive review of emerging foundational models in computer vision, including typical architecture designs to combine different modalities, training objectives, pre-training datasets, fine-tuning mechanisms, and the common prompting patterns; textual, visual, and heterogeneous."
+    },
+    "citationCount": 56,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

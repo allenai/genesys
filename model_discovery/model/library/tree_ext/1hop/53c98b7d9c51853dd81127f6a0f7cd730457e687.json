@@ -1,0 +1,24 @@
+{
+    "acronym": "53c98b7d9c51853dd81127f6a0f7cd730457e687",
+    "title": "Contextualized Vector Embeddings for Malware Detection",
+    "seed_ids": [
+        "fnet",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f"
+    ],
+    "s2id": "53c98b7d9c51853dd81127f6a0f7cd730457e687",
+    "abstract": "Contextualized Vector Embeddings for Malware Detection by Vinay Pandya Malware classification is a technique to classify different types of malware which form an integral part of system security. The aim of this project is to use context dependant word embeddings to classify malware. Tansformers is a novel architecture which utilizes self attention to handle long range dependencies. They are particularly effective in many complex natural language processing tasks such as Masked Language Modelling(MLM) and Next Sentence Prediction(NSP). Different transfomer architectures such as BERT, DistilBert, Albert, and Roberta are used to generate context dependant word embeddings. These embeddings would help in classifying different malware samples based on their similarity and context. Apart from using transformer models we also experimented with different bidirectional language models sunch as ELMo which can generate contextualized opcode embeddings.This project also discusses algorithms for generating embeddings for byte level N-grams. We utilize Word2vec, Glove and Fasttext algorithms to generate context free embeddings. The classification algorithms employed in this project consist of Resnet-101 CNN, Random forest,Support Vector Machines (SVM), and k nearest neighbours. Transformer models sometimes act as black boxes which makes it difficult to understand their decisions.Various intrepretable models are utilized to explain their inner workings and improve our understanding of the model to explain their results. Index terms Contextualized Embeddings,Transformer models, BERT, Bidirectional Language Models, ELMo, Glove, Word2vec, Fasttext, Optuna",
+    "authors": [
+        "Vinay Pandya"
+    ],
+    "venue": "",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The classification algorithms employed in this project consist of Resnet-101 CNN, Random forest,Support Vector Machines (SVM), and k nearest neighbours, and this project also discusses algorithms for generating embeddings for byte level N-grams."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

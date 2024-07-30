@@ -1,0 +1,30 @@
+{
+    "acronym": "2b160a4e555f6334af20a5444b5f9669699b2b1f",
+    "title": "Learning Socio-Temporal Graphs for Multi-Agent Trajectory Prediction",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2b160a4e555f6334af20a5444b5f9669699b2b1f",
+    "abstract": "In order to predict a pedestrian's trajectory in a crowd accurately, one has to take into account her/his underlying socio-temporal interactions with other pedestrians consistently. Unlike existing work that represents the relevant information separately, partially, or implicitly, we propose a complete representation for it to be fully and explicitly captured and analyzed. In particular, we introduce a Directed Acyclic Graph-based structure, which we term Socio-Temporal Graph (STG), to explicitly capture pair-wise socio-temporal interactions among a group of people across both space and time. Our model is built on a time-varying generative process, whose latent variables determine the structure of the STGs. We design an attention-based model named STGformer that affords an end-to-end pipeline to learn the structure of the STGs for trajectory prediction. Our solution achieves overall state-of-the-art prediction accuracy in two large-scale benchmark datasets. Our analysis shows that a person's past trajectory is critical for predicting another person's future path. Our model learns this relationship with a strong notion of socio-temporal localities. Statistics show that utilizing this information explicitly for prediction yields a noticeable performance gain with respect to the trajectory-only approaches.",
+    "authors": [
+        "Yuke Li",
+        "Lixiong Chen",
+        "Guan-Hong Chen",
+        "Ching-Yao Chan",
+        "Kun Zhang",
+        "Stefano Anzellotti",
+        "Donglai Wei"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a Directed Acyclic Graph-based structure, which is term Socio-Temporal Graph (STG), to explicitly capture pair-wise socio-temporal interactions among a group of people across both space and time."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

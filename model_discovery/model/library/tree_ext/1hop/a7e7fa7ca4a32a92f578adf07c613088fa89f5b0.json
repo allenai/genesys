@@ -1,0 +1,48 @@
+{
+    "acronym": "a7e7fa7ca4a32a92f578adf07c613088fa89f5b0",
+    "title": "A Comprehensive Survey of Compression Algorithms for Language Models",
+    "seed_ids": [
+        "gpt3",
+        "bert",
+        "gqa",
+        "funneltransformer",
+        "linformer",
+        "sparsetransformer",
+        "0a6906bd6f026d3da3031c641ed03081bd0b574e",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "33be243ac9dd8723e6267dea45fd6a6172d4f6a5",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "e4f82c0a13cae6739239ae0c25a554b6daff35af",
+        "3456c1e95d8d2f985a0701232dd55171b3cbd5e0",
+        "d1870f667cbd309df45a244c170d1d4ba36bac03",
+        "8fd0b70cfd6bbdaef9fbe1073afb3920cb61f80b",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "ef8d788a904ed66bd8e30ffa69bc3ea1fe57dda7",
+        "2573af4e13d9a5dddb257d22cd38a600528d9a8b",
+        "c6c734e16f66fbfcefac7625cc64599e83292c1e",
+        "83b8108014e3db4f46354a28ae68193f143c4e7e",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "16c844fd4d97f3c6eb38b0d6527c87d184efedc3",
+        "8264257f573696fc0a1ef7531c825041832197f8"
+    ],
+    "s2id": "a7e7fa7ca4a32a92f578adf07c613088fa89f5b0",
+    "abstract": "How can we compress language models without sacrificing accuracy? The number of compression algorithms for language models is rapidly growing to benefit from remarkable advances of recent language models without side effects due to the gigantic size of language models, such as increased carbon emissions and expensive maintenance fees. While numerous compression algorithms have shown remarkable progress in compressing language models, it ironically becomes challenging to capture emerging trends and identify the fundamental concepts underlying them due to the excessive number of algorithms. In this paper, we survey and summarize diverse compression algorithms including pruning, quantization, knowledge distillation, low-rank approximation, parameter sharing, and efficient architecture design. We not only summarize the overall trend of diverse compression algorithms but also select representative algorithms and provide in-depth analyses of them. We discuss the value of each category of compression algorithms, and the desired properties of low-cost compression algorithms which have a significant impact due to the emergence of large language models. Finally, we introduce promising future research topics based on our survey results.",
+    "authors": [
+        "Seungcheol Park",
+        "Jaehyeon Choi",
+        "Sojin Lee",
+        "U. Kang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper survey and summarize diverse compression algorithms including pruning, quantization, knowledge distillation, low-rank approximation, parameter sharing, and efficient architecture design, and discusses the value of each category of compression algorithms, and the desired properties of low-cost compression algorithms."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

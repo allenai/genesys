@@ -1,0 +1,33 @@
+{
+    "acronym": "44d16a076c00ecada3d425203377e4ec951c4ed0",
+    "title": "MedAgents: Large Language Models as Collaborators for Zero-shot Medical Reasoning",
+    "seed_ids": [
+        "gpt3",
+        "aade40af0d85b0b4fe15c97f6222d5c2e4d6d9b3",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2"
+    ],
+    "s2id": "44d16a076c00ecada3d425203377e4ec951c4ed0",
+    "abstract": "Large language models (LLMs), despite their remarkable progress across various general domains, encounter significant barriers in medicine and healthcare. This field faces unique challenges such as domain-specific terminologies and reasoning over specialized knowledge. To address these issues, we propose MedAgents, a novel multi-disciplinary collaboration framework for the medical domain. MedAgents leverages LLM-based agents in a role-playing setting that participate in a collaborative multi-round discussion, thereby enhancing LLM proficiency and reasoning capabilities. This training-free framework encompasses five critical steps: gathering domain experts, proposing individual analyses, summarising these analyses into a report, iterating over discussions until a consensus is reached, and ultimately making a decision. Our work focuses on the zero-shot setting, which is applicable in real-world scenarios. Experimental results on nine datasets (MedQA, MedMCQA, PubMedQA, and six subtasks from MMLU) establish that our proposed MedAgents framework excels at mining and harnessing the medical expertise within LLMs, as well as extending its reasoning abilities. Our code can be found at https://github.com/gersteinlab/MedAgents.",
+    "authors": [
+        "Xiangru Tang",
+        "Anni Zou",
+        "Zhuosheng Zhang",
+        "Yilun Zhao",
+        "Xingyao Zhang",
+        "Arman Cohan",
+        "Mark B. Gerstein"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results establish that the proposed MedAgents framework excels at mining and harnessing the medical expertise within LLMs, as well as extending its reasoning abilities, which is applicable in real-world scenarios."
+    },
+    "citationCount": 46,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

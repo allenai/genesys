@@ -1,0 +1,31 @@
+{
+    "acronym": "7691311f15c9ddcea8eb81e1ad592447fd2fa4ab",
+    "title": "Baby's CoThought: Leveraging Large Language Models for Enhanced Reasoning in Compact Models",
+    "seed_ids": [
+        "gpt",
+        "1f1668f84731baa67b1f66b81f383dd86893534d",
+        "3fb0731538c59f8520a309996a0567b58965f0fe",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "5a2263092f49540fd0e049050a96882ff29b00c3"
+    ],
+    "s2id": "7691311f15c9ddcea8eb81e1ad592447fd2fa4ab",
+    "abstract": "Large Language Models (LLMs) demonstrate remarkable performance on a variety of natural language understanding (NLU) tasks, primarily due to their in-context learning ability. This ability could be applied to building babylike models, i.e. models at small scales, improving training efficiency. In this paper, we propose a\"CoThought\"pipeline, which efficiently trains smaller\"baby\"language models (BabyLMs) by leveraging the Chain of Thought prompting of LLMs. Our pipeline restructures a dataset of less than 100M in size using GPT-3.5-turbo, transforming it into task-oriented, human-readable texts that are comparable to the school texts for language learners. The BabyLM is then pretrained on this restructured dataset in a RoBERTa fashion. In evaluations across 4 benchmarks, our BabyLM outperforms the vanilla RoBERTa in 10 linguistic, NLU, and question-answering tasks by more than 3 points, showing a superior ability to extract contextual information. These results suggest that compact LMs pretrained on small, LLM-restructured data can better understand tasks and achieve improved performance.",
+    "authors": [
+        "Zheyu Zhang",
+        "Han Yang",
+        "Bolei Ma",
+        "David Rugamer",
+        "Ercong Nie"
+    ],
+    "venue": "Proceedings of the BabyLM Challenge at the 27th Conference on Computational Natural Language Learning",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A \"CoThought\" pipeline is proposed, which efficiently trains smaller\"baby\"language models (BabyLMs) by leveraging the Chain of Thought prompting of LLMs, suggesting that compact LMs pretrained on small, LLM-restructured data can better understand tasks and achieve improved performance."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

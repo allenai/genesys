@@ -1,0 +1,42 @@
+{
+    "acronym": "75c0b5d451e5f50b0d57b032f47d006eda07628b",
+    "title": "MoEUT: Mixture-of-Experts Universal Transformers",
+    "seed_ids": [
+        "flashattn",
+        "neuraldatarouter",
+        "2fc229bfe561f42aae6f3bb84598cfa5737a8b6a",
+        "bcd84a2b8f9ae40a908f375425f113c82f8dd739",
+        "6edccbd83a9aae204785d4821f97855677c33866",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "e528466e2aff981511d4ca6e063211297c0b4175",
+        "ed535e93d5b5a8b689e861e9c6083a806d1535c2",
+        "49e65b12d8d11f2ccb5ddd7be72a8f746b2d1bc2",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "3456c1e95d8d2f985a0701232dd55171b3cbd5e0",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a",
+        "5a2263092f49540fd0e049050a96882ff29b00c3",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "75c0b5d451e5f50b0d57b032f47d006eda07628b",
+    "abstract": "Previous work on Universal Transformers (UTs) has demonstrated the importance of parameter sharing across layers. By allowing recurrence in depth, UTs have advantages over standard Transformers in learning compositional generalizations, but layer-sharing comes with a practical limitation of parameter-compute ratio: it drastically reduces the parameter count compared to the non-shared model with the same dimensionality. Naively scaling up the layer size to compensate for the loss of parameters makes its computational resource requirements prohibitive. In practice, no previous work has succeeded in proposing a shared-layer Transformer design that is competitive in parameter count-dominated tasks such as language modeling. Here we propose MoEUT (pronounced\"moot\"), an effective mixture-of-experts (MoE)-based shared-layer Transformer architecture, which combines several recent advances in MoEs for both feedforward and attention layers of standard Transformers together with novel layer-normalization and grouping schemes that are specific and crucial to UTs. The resulting UT model, for the first time, slightly outperforms standard Transformers on language modeling tasks such as BLiMP and PIQA, while using significantly less compute and memory.",
+    "authors": [
+        "R'obert Csord'as",
+        "Kazuki Irie",
+        "J\u00fcrgen Schmidhuber",
+        "Christopher Potts",
+        "Christopher D. Manning"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed MoEUT (pronounced\"moot\"), an effective mixture-of-experts (MoE)-based shared-layer Transformer architecture, which combines several recent advances in MoEs for both feedforward and attention layers of standard Transformers together with novel layer-normalization and grouping schemes that are specific and crucial to UTs."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,34 @@
+{
+    "acronym": "03226803be2fc4dee589883dcb76f28858192e14",
+    "title": "Activating Wider Areas in Image Super-Resolution",
+    "seed_ids": [
+        "mamba",
+        "2dda6da7375bf5e8bcf60f87b17ba10757f3bc57",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "bb6644a9f5920abfc1fa008f366a9ff48468e063",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "9226ae23b95b3f6891461e086d910ffeb7ac448a",
+        "ba637c4f1a170f1e2dadeadb71a63cf2b9a46de2",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "03226803be2fc4dee589883dcb76f28858192e14",
+    "abstract": "The prevalence of convolution neural networks (CNNs) and vision transformers (ViTs) has markedly revolutionized the area of single-image super-resolution (SISR). To further boost the SR performances, several techniques, such as residual learning and attention mechanism, are introduced, which can be largely attributed to a wider range of activated area, that is, the input pixels that strongly influence the SR results. However, the possibility of further improving SR performance through another versatile vision backbone remains an unresolved challenge. To address this issue, in this paper, we unleash the representation potential of the modern state space model, i.e., Vision Mamba (Vim), in the context of SISR. Specifically, we present three recipes for better utilization of Vim-based models: 1) Integration into a MetaFormer-style block; 2) Pre-training on a larger and broader dataset; 3) Employing complementary attention mechanism, upon which we introduce the MMA. The resulting network MMA is capable of finding the most relevant and representative input pixels to reconstruct the corresponding high-resolution images. Comprehensive experimental analysis reveals that MMA not only achieves competitive or even superior performance compared to state-of-the-art SISR methods but also maintains relatively low memory and computational overheads (e.g., +0.5 dB PSNR elevation on Manga109 dataset with 19.8 M parameters at the scale of 2). Furthermore, MMA proves its versatility in lightweight SR applications. Through this work, we aim to illuminate the potential applications of state space models in the broader realm of image processing rather than SISR, encouraging further exploration in this innovative direction.",
+    "authors": [
+        "Cheng Cheng",
+        "Hang Wang",
+        "Hongbin Sun"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work unleash the representation potential of the modern state space model, i.e., Vision Mamba (Vim), in the context of SISR, to illuminate the potential applications of state space models in the broader realm of image processing rather than SISR, encouraging further exploration in this innovative direction."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "bd8ab487b7a33a9b37b04b4a184b963744394320",
+    "title": "DEERE: Document-Level Event Extraction as Relation Extraction",
+    "seed_ids": [
+        "roformer",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "bd8ab487b7a33a9b37b04b4a184b963744394320",
+    "abstract": "The descriptions of complex events usually span sentences, so we need to extract complete event information from the whole document. To address the challenges of document-level event extraction, we propose a novel framework named Document-level Event Extraction as Relation Extraction (DEERE), which is suitable for document-level event extraction tasks without trigger-word labelling. By well-designed task transformation, DEERE remodels event extraction as single-stage relation extraction, which can mitigate error propagation. A long text supported encoder is adopted in the relation extraction model to aware the global context effectively. A fault-tolerant event integration algorithm is designed to improve the prediction accuracy. Experimental results show that our approach advances the SOTA for the ChFinAnn dataset by an average F1-score of 3.7. The code and data are available at https://github.com/maomaotfntfn/DEERE.",
+    "authors": [
+        "Jian Li",
+        "Ruijuan Hu",
+        "Keliang Zhang",
+        "Haiyan Liu",
+        "Yanzhou Ma"
+    ],
+    "venue": "Mobile Information Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel framework named Document-level Event Extraction as Relation Extraction (DEERE), which is suitable for document-level event extraction tasks without trigger-word labelling, and remodels event extraction as single-stage relation extraction, which can mitigate error propagation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

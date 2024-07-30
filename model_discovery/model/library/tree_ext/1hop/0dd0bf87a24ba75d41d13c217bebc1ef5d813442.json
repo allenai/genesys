@@ -1,0 +1,30 @@
+{
+    "acronym": "0dd0bf87a24ba75d41d13c217bebc1ef5d813442",
+    "title": "Neural Integral Equations",
+    "seed_ids": [
+        "nystromformer",
+        "72f207c777e4a17180cc54ccc6a743d5f43227af",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "5b1bb67f700b676ac44a32ec87aeb9ff018da55f",
+        "8cef9900c04d7f661c08f4b5b1ed4337ace042a3"
+    ],
+    "s2id": "0dd0bf87a24ba75d41d13c217bebc1ef5d813442",
+    "abstract": "Integral equations (IEs) are equations that model spatiotemporal systems with non-local interactions. They have found important applications throughout theoretical and applied sciences, including in physics, chemistry, biology, and engineering. While efficient algorithms exist for solving given IEs, no method exists that can learn an IE and its associated dynamics from data alone. In this paper, we introduce Neural Integral Equations (NIE), a method that learns an unknown integral operator from data through an IE solver. We also introduce Attentional Neural Integral Equations (ANIE), where the integral is replaced by self-attention, which improves scalability, capacity, and results in an interpretable model. We demonstrate that (A)NIE outperforms other methods in both speed and accuracy on several benchmark tasks in ODE, PDE, and IE systems of synthetic and real-world data.",
+    "authors": [
+        "E. Zappala",
+        "Antonio H. O. Fonseca",
+        "J. O. Caro",
+        "D. V. Dijk"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "NIE is introduced, a method that learns an unknown integral operator from data through an IE solver and Attentional Neural Integral Equations (ANIE), where the integral is replaced by self-attention, which improves scalability, capacity, and results in an interpretable model."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

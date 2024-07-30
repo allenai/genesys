@@ -1,0 +1,34 @@
+{
+    "acronym": "67ee20536c30a225b86902af2f091e28e5e19b40",
+    "title": "Memformer: A Memory-Augmented Transformer for Sequence Modeling",
+    "seed_ids": [
+        "linformer",
+        "compressivetransformer",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f51497f463566581874c941353dd9d80069c5b77"
+    ],
+    "s2id": "67ee20536c30a225b86902af2f091e28e5e19b40",
+    "abstract": "Transformers have reached remarkable success in sequence modeling. However, these models have efficiency issues as they need to store all the history token-level representations as memory. We present Memformer, an efficient neural network for sequence modeling, that utilizes an external dynamic memory to encode and retrieve past information. Our model achieves linear time complexity and constant memory space complexity when processing long sequences. We also propose a new optimization scheme, memory replay back-propagation (MRBP), which promotes long-range back-propagation through time with a significantly reduced memory requirement. Experimental results show that Memformer has achieved comparable performance compared to the baselines by using 8.1x less memory space and 3.2x faster on inference. Analysis of the attention pattern shows that our external memory slots can encode and retain important information through timesteps.",
+    "authors": [
+        "Qingyang Wu",
+        "Zhenzhong Lan",
+        "Kun Qian",
+        "Jing Gu",
+        "A. Geramifard",
+        "Zhou Yu"
+    ],
+    "venue": "AACL/IJCNLP",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents Memformer, an efficient neural network for sequence modeling, that utilizes an external dynamic memory to encode and retrieve past information, and proposes a new optimization scheme, memory replay back-propagation (MRBP), which promotes long-range back- Propagation through time with a significantly reduced memory requirement."
+    },
+    "citationCount": 36,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

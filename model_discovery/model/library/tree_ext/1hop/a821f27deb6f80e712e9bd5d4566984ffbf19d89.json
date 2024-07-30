@@ -1,0 +1,26 @@
+{
+    "acronym": "a821f27deb6f80e712e9bd5d4566984ffbf19d89",
+    "title": "Predictive, scalable and interpretable knowledge tracing on structured domains",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "a821f27deb6f80e712e9bd5d4566984ffbf19d89",
+    "abstract": "Intelligent tutoring systems optimize the selection and timing of learning materials to enhance understanding and long-term retention. This requires estimates of both the learner's progress (''knowledge tracing''; KT), and the prerequisite structure of the learning domain (''knowledge mapping''). While recent deep learning models achieve high KT accuracy, they do so at the expense of the interpretability of psychologically-inspired models. In this work, we present a solution to this trade-off. PSI-KT is a hierarchical generative approach that explicitly models how both individual cognitive traits and the prerequisite structure of knowledge influence learning dynamics, thus achieving interpretability by design. Moreover, by using scalable Bayesian inference, PSI-KT targets the real-world need for efficient personalization even with a growing body of learners and learning histories. Evaluated on three datasets from online learning platforms, PSI-KT achieves superior multi-step predictive accuracy and scalable inference in continual-learning settings, all while providing interpretable representations of learner-specific traits and the prerequisite structure of knowledge that causally supports learning. In sum, predictive, scalable and interpretable knowledge tracing with solid knowledge mapping lays a key foundation for effective personalized learning to make education accessible to a broad, global audience.",
+    "authors": [
+        "Hanqi Zhou",
+        "Robert Bamler",
+        "Charley M. Wu",
+        "'Alvaro Tejero-Cantero"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "PSI-KT is a hierarchical generative approach that explicitly models how both individual cognitive traits and the prerequisite structure of knowledge influence learning dynamics, thus achieving interpretability by design and targets the real-world need for efficient personalization even with a growing body of learners and learning histories."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

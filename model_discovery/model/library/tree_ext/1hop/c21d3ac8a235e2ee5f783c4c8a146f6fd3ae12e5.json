@@ -1,0 +1,27 @@
+{
+    "acronym": "c21d3ac8a235e2ee5f783c4c8a146f6fd3ae12e5",
+    "title": "Provably Confidential Language Modelling",
+    "seed_ids": [
+        "gpt2",
+        "d62c4d00b277e948956b6610ce2644e88fe1577b",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "c21d3ac8a235e2ee5f783c4c8a146f6fd3ae12e5",
+    "abstract": "Large language models are shown to memorize privacy information such as social security numbers in training data. Given the sheer scale of the training corpus, it is challenging to screen and filter these privacy data, either manually or automatically. In this paper, we propose Confidentially Redacted Training (CRT), a method to train language generation models while protecting the confidential segments. We borrow ideas from differential privacy (which solves a related but distinct problem) and show that our method is able to provably prevent unintended memorization by randomizing parts of the training process. Moreover, we show that redaction with an approximately correct screening policy amplifies the confidentiality guarantee. We implement the method for both LSTM and GPT language models. Our experimental results show that the models trained by CRT obtain almost the same perplexity while preserving strong confidentiality.",
+    "authors": [
+        "Xuandong Zhao",
+        "Lei Li",
+        "Yu-Xiang Wang"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes Confidentially Redacted Training (CRT), a method to train language generation models while protecting the confidential segments and shows that this method is able to provably prevent unintended memorization by randomizing parts of the training process."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

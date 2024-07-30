@@ -1,0 +1,28 @@
+{
+    "acronym": "64b9be00f4eecd465b4e8e46e2ab7624d7eaeb2b",
+    "title": "Global Self-Attention Networks for Image Recognition",
+    "seed_ids": [
+        "axialattn",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06"
+    ],
+    "s2id": "64b9be00f4eecd465b4e8e46e2ab7624d7eaeb2b",
+    "abstract": "Recently, a series of works in computer vision have shown promising results on various image and video understanding tasks using self-attention. However, due to the quadratic computational and memory complexities of self-attention, these works either apply attention only to low-resolution feature maps in later stages of a deep network or restrict the receptive field of attention in each layer to a small local region. To overcome these limitations, this work introduces a new global self-attention module, referred to as the GSA module, which is efficient enough to serve as the backbone component of a deep network. This module consists of two parallel layers: a content attention layer that attends to pixels based only on their content and a positional attention layer that attends to pixels based on their spatial locations. The output of this module is the sum of the outputs of the two layers. Based on the proposed GSA module, we introduce new standalone global attention-based deep networks that use GSA modules instead of convolutions to model pixel interactions. Due to the global extent of the proposed GSA module, a GSA network has the ability to model long-range pixel interactions throughout the network. Our experimental results show that GSA networks outperform the corresponding convolution-based networks significantly on the CIFAR-100 and ImageNet datasets while using less parameters and computations. The proposed GSA networks also outperform various existing attention-based networks on the ImageNet dataset.",
+    "authors": [
+        "Zhuoran Shen",
+        "Irwan Bello",
+        "Raviteja Vemulapalli",
+        "Xuhui Jia",
+        "Ching-Hui Chen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new global self-attention module, referred to as the GSA module, which is efficient enough to serve as the backbone component of a deep network, and introduces new standalone global attention-based deep networks that use GSA modules instead of convolutions to model pixel interactions."
+    },
+    "citationCount": 25,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

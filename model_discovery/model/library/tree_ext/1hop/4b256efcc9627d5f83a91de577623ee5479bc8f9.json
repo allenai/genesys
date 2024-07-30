@@ -1,0 +1,28 @@
+{
+    "acronym": "4b256efcc9627d5f83a91de577623ee5479bc8f9",
+    "title": "Generating Biographies on Wikipedia: The Impact of Gender Bias on the Retrieval-Based Generation of Women Biographies",
+    "seed_ids": [
+        "memcompress",
+        "f8292d4ddf7a6dfe240eeaa9685f5d18eed9a3f6",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "83fac78857c7e65fe10a11a798674dd3cd259c1d",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "4b256efcc9627d5f83a91de577623ee5479bc8f9",
+    "abstract": "Generating factual, long-form text such as Wikipedia articles raises three key challenges: how to gather relevant evidence, how to structure information into well-formed text, and how to ensure that the generated text is factually correct. We address these by developing a model for English text that uses a retrieval mechanism to identify relevant supporting information on the web and a cache-based pre-trained encoder-decoder to generate long-form biographies section by section, including citation information. To assess the impact of available web evidence on the output text, we compare the performance of our approach when generating biographies about women (for which less information is available on the web) vs. biographies generally. To this end, we curate a dataset of 1,500 biographies about women. We analyze our generated text to understand how differences in available web evidence data affect generation. We evaluate the factuality, fluency, and quality of the generated texts using automatic metrics and human evaluation. We hope that these techniques can be used as a starting point for human writers, to aid in reducing the complexity inherent in the creation of long-form, factual text.",
+    "authors": [
+        "Angela Fan",
+        "Claire Gardent"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A model for English text is developed that uses a retrieval mechanism to identify relevant supporting information on the web and a cache-based pre-trained encoder-decoder to generate long-form biographies section by section, including citation information."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

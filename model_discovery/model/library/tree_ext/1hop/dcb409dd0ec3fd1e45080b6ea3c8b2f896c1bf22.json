@@ -1,0 +1,25 @@
+{
+    "acronym": "dcb409dd0ec3fd1e45080b6ea3c8b2f896c1bf22",
+    "title": "Geotokens and Geotransformers",
+    "seed_ids": [
+        "transformer",
+        "roformer",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "dcb409dd0ec3fd1e45080b6ea3c8b2f896c1bf22",
+    "abstract": "In transformer architectures, position encoding primarily provides a sense of sequence for input tokens. While the original transformer paper's method has shown satisfactory results in general language processing tasks, there have been new proposals, such as Rotary Position Embedding (RoPE), for further improvement. This paper presents geotokens, input components for transformers, each linked to a specific geological location. Unlike typical language sequences, for these tokens, the order is not as vital as the geographical coordinates themselves. To represent the relative position in this context and to keep a balance between the real world distance and the distance in the embedding space, we design a position encoding approach drawing from the RoPE structure but tailored for spherical coordinates.",
+    "authors": [
+        "Eren Unlu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents geotokens, input components for transformers, each linked to a specific geological location, and designs a position encoding approach drawing from the RoPE structure but tailored for spherical coordinates."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

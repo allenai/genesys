@@ -1,0 +1,27 @@
+{
+    "acronym": "8e54571b4ae031139ebde6370640f3d110d3600b",
+    "title": "Leveraging Prompts in LLMs to Overcome Imbalances in Complex Educational Text Data",
+    "seed_ids": [
+        "gpt3",
+        "0456cd227edb95e596e3915ebcfd1133bcc8d725"
+    ],
+    "s2id": "8e54571b4ae031139ebde6370640f3d110d3600b",
+    "abstract": "In this paper, we explore the potential of Large Language Models (LLMs) with assertions to mitigate imbalances in educational datasets. Traditional models often fall short in such contexts, particularly due to the complexity and nuanced nature of the data. This issue is especially prominent in the education sector, where cognitive engagement levels among students show significant variation in their open responses. To test our hypothesis, we utilized an existing technology for assertion-based prompt engineering through an 'Iterative - ICL PE Design Process' comparing traditional Machine Learning (ML) models against LLMs augmented with assertions (N=135). Further, we conduct a sensitivity analysis on a subset (n=27), examining the variance in model performance concerning classification metrics and cognitive engagement levels in each iteration. Our findings reveal that LLMs with assertions significantly outperform traditional ML models, particularly in cognitive engagement levels with minority representation, registering up to a 32% increase in F1-score. Additionally, our sensitivity study indicates that incorporating targeted assertions into the LLM tested on the subset enhances its performance by 11.94%. This improvement primarily addresses errors stemming from the model's limitations in understanding context and resolving lexical ambiguities in student responses.",
+    "authors": [
+        "Jeanne McClure",
+        "Machi Shimmei",
+        "Noboru Matsuda",
+        "Shiyan Jiang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Findings reveal that LLMs with assertions significantly outperform traditional ML models, particularly in cognitive engagement levels with minority representation, registering up to a 32% increase in F1-score."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

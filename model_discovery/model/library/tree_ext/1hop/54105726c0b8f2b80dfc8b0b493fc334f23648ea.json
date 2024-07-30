@@ -1,0 +1,30 @@
+{
+    "acronym": "54105726c0b8f2b80dfc8b0b493fc334f23648ea",
+    "title": "HyperED: A hierarchy\u2010aware network based on\u00a0hyperbolic geometry for event detection",
+    "seed_ids": [
+        "bert",
+        "4ac4f24fa28d69838b2a74bf5ab411bc993e688c",
+        "6ef94216e9845b0031cdbd81084e613acd673578"
+    ],
+    "s2id": "54105726c0b8f2b80dfc8b0b493fc334f23648ea",
+    "abstract": "Event detection plays an essential role in the task of event extraction. It aims at identifying event trigger words in a sentence and classifying event types. Generally, multiple event types are usually well\u2010organized with a hierarchical structure in real\u2010world scenarios, and hierarchical correlations between event types can be used to enhance event detection performance. However, such kind of hierarchical information has received insufficient attention which can lead to misclassification between multiple event types. In addition, the most existing methods perform event detection in Euclidean space, which cannot adequately represent hierarchical relationships. To address these issues, we propose a novel event detection network HyperED which embeds the event context and types in Poincar\u00e9 ball of hyperbolic geometry to help learn hierarchical features between events. Specifically, for the event detection context, we first leverage the pre\u2010trained BERT or BiLSTM in Euclidean space to learn the semantic features of ED sentences. Meanwhile, to make full use of the dependency knowledge, a GNN\u2010based model is applied when encoding event types to learn the correlations between events. Then we use a simple neural\u2010based transformation to project the embeddings into the Poincar\u00e9 ball to capture hierarchical features, and a distance score in hyperbolic space is computed for prediction. The experiments on MAVEN and ACE 2005 datasets indicate the effectiveness of the HyperED model and prove the natural advantages of hyperbolic spaces in expressing hierarchies in an intuitive way.",
+    "authors": [
+        "Meng Zhang",
+        "Zhiwen Xie",
+        "Jin Liu",
+        "Xiao Liu",
+        "Xiao Yu",
+        "Bo Huang"
+    ],
+    "venue": "International Conference on Climate Informatics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel event detection network HyperED is proposed which embeds the event context and types in Poincar\u00e9 ball of hyperbolic geometry to help learn hierarchical features between events and proves the natural advantages of hyperbolic spaces in expressing hierarchies in an intuitive way."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

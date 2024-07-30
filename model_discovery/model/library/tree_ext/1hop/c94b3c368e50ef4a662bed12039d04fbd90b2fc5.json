@@ -1,0 +1,24 @@
+{
+    "acronym": "c94b3c368e50ef4a662bed12039d04fbd90b2fc5",
+    "title": "Combining character information and contextual feature for conversational humor recognition",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "c94b3c368e50ef4a662bed12039d04fbd90b2fc5",
+    "abstract": "Conversational humor often depends on context. Compared to one-liner humor, the task of conversational humor recognition is more complex and difficult. In addition, characters are one of the most important factors in dialogue, and most of the existing research on conversational humor recognition does not consider character information, resulting in poor results. Therefore, this paper proposes a conversational humor recognition model that combines character information and contextual feature. The main and supporting characters are set in a specific sitcom, and their gender is used as character attribute. RoBERTa, Bi-GRU, CNN and Attention are used to extract utterance feature at the word level and contextual feature at the sentence level to recognize one-liner humor and conversational humor in dialogue. This paper conducted experiments on CCL2020 Task 3 and achieved an F1-score of 53.7%, which is an improvement of 2.2% over the current best score, demonstrating the effectiveness of character information and contextual feature on the conversational humor recognition task.",
+    "authors": [
+        "Jihuan Zhao",
+        "Guiyun Zhang"
+    ],
+    "venue": "International Conference on Artificial Intelligence, Virtual Reality, and Visualization",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper conducted experiments on CCL2020 Task 3 and achieved an improvement of 2.2% over the current best score, demonstrating the effectiveness of character information and contextual feature on the conversational humor recognition task."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

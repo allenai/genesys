@@ -1,0 +1,43 @@
+{
+    "acronym": "7154fc93bdefcd237a0ce3902511c0b154049253",
+    "title": "Scalable Diffusion Models with State Space Backbone",
+    "seed_ids": [
+        "mamba",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "11c8911f787eed34e6f058d5d36287d45c54c961",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "15736f7c205d961c00378a938daffaacb5a0718d",
+        "70e91e16eb321067d9402710e14a40cf28311f73",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "82482585e94192b4e9913727e461f89cd08e9725",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "7154fc93bdefcd237a0ce3902511c0b154049253",
+    "abstract": "This paper presents a new exploration into a category of diffusion models built upon state space architecture. We endeavor to train diffusion models for image data, wherein the traditional U-Net backbone is supplanted by a state space backbone, functioning on raw patches or latent space. Given its notable efficacy in accommodating long-range dependencies, Diffusion State Space Models (DiS) are distinguished by treating all inputs including time, condition, and noisy image patches as tokens. Our assessment of DiS encompasses both unconditional and class-conditional image generation scenarios, revealing that DiS exhibits comparable, if not superior, performance to CNN-based or Transformer-based U-Net architectures of commensurate size. Furthermore, we analyze the scalability of DiS, gauged by the forward pass complexity quantified in Gflops. DiS models with higher Gflops, achieved through augmentation of depth/width or augmentation of input tokens, consistently demonstrate lower FID. In addition to demonstrating commendable scalability characteristics, DiS-H/2 models in latent space achieve performance levels akin to prior diffusion models on class-conditional ImageNet benchmarks at the resolution of 256$\\times$256 and 512$\\times$512, while significantly reducing the computational burden. The code and models are available at: https://github.com/feizc/DiS.",
+    "authors": [
+        "Zhengcong Fei",
+        "Mingyuan Fan",
+        "Changqian Yu",
+        "Junshi Huang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper endeavors to train diffusion models for image data, wherein the traditional U-Net backbone is supplanted by a state space backbone, functioning on raw patches or latent space, revealing that DiS exhibits comparable, if not superior, performance to CNN-based or Transformer-based U-Net architectures of commensurate size."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

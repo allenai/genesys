@@ -1,0 +1,25 @@
+{
+    "acronym": "f4fda917eb5c170de67d361b9fdc355599666dbe",
+    "title": "Project CGX: Scalable Deep Learning on Commodity GPUs",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "f4fda917eb5c170de67d361b9fdc355599666dbe",
+    "abstract": "The ability to scale out training workloads has been one of the key performance enablers of deep learning. The main scaling approach is data-parallel GPU-based training, which has been boosted by hardware and software support for highly efficient inter-GPU communication, in particular via bandwidth overprovisioning. This support comes at a price: there is an order of magnitude cost difference between \u201ccloud-grade\u201d servers with such support, relative to their \u201cconsumer-grade\u201d counterparts, although server-grade and consumer-grade GPUs can have similar computational envelopes. In this paper, we investigate whether the expensive hardware overprovisioning approach can be supplanted via algorithmic and system design, and propose a framework called CGX, which provides efficient software support for communication compression. We show that this framework is able to remove communication bottlenecks from consumer-grade multi-GPU systems, in the absence of hardware support: when training modern models and tasks to full accuracy, our framework enables self-speedups of 2-3X on a commodity system using 8 consumer-grade NVIDIA RTX 3090 GPUs, and enables it to surpass the throughput of an NVIDIA DGX-1 server, which has similar peak FLOPS but benefits from bandwidth overprovisioning.",
+    "authors": [
+        "I. Markov",
+        "Hamidreza Ramezanikebrya",
+        "Dan Alistarh"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper investigates whether the expensive hardware overprovisioning approach can be supplanted via algorithmic and system design, and proposes a framework called CGX, which provides efficient software support for communication compression, and is able to remove communication bottlenecks from consumer-grade multi-GPU systems, in the absence of hardware support."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

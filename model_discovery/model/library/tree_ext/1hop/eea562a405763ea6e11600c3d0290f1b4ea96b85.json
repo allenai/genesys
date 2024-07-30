@@ -1,0 +1,26 @@
+{
+    "acronym": "eea562a405763ea6e11600c3d0290f1b4ea96b85",
+    "title": "Transformer Models for Quantum Gate Set Tomography",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "eea562a405763ea6e11600c3d0290f1b4ea96b85",
+    "abstract": "Quantum computation represents a promising frontier in the domain of high-performance computing, blending quantum information theory with practical applications to overcome the limitations of classical computation. This study investigates the challenges of manufacturing high-fidelity and scalable quantum processors. Quantum gate set tomography (QGST) is a critical method for characterizing quantum processors and understanding their operational capabilities and limitations. This paper introduces ML4QGST as a novel approach to QGST by integrating machine learning techniques, specifically utilizing a transformer neural network model. Adapting the transformer model for QGST addresses the computational complexity of modeling quantum systems. Advanced training strategies, including data grouping and curriculum learning, are employed to enhance model performance, demonstrating significant congruence with ground-truth values. We benchmark this training pipeline on the constructed learning model, to successfully perform QGST for $3$ gates on a $1$ qubit system with over-rotation error and depolarizing noise estimation with comparable accuracy to pyGSTi. This research marks a pioneering step in applying deep neural networks to the complex problem of quantum gate set tomography, showcasing the potential of machine learning to tackle nonlinear tomography challenges in quantum computing.",
+    "authors": [
+        "King Yiu Yu",
+        "Aritra Sarkar",
+        "R. Ishihara",
+        "Sebastian Feld"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This research marks a pioneering step in applying deep neural networks to the complex problem of quantum gate set tomography, showcasing the potential of machine learning to tackle nonlinear tomography challenges in quantum computing."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

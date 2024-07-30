@@ -1,0 +1,37 @@
+{
+    "acronym": "1671d70a135b1e28b3a9cbc830feaa9b0c57df32",
+    "title": "Don't throw away your value model! Generating more preferable text with Value-Guided Monte-Carlo Tree Search decoding",
+    "seed_ids": [
+        "gpt2",
+        "023edab4738690444e3924e224c2641017a0d794",
+        "23447f473cd240494b0a20ea008038aaef7e3391",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "1671d70a135b1e28b3a9cbc830feaa9b0c57df32",
+    "abstract": "Inference-time search algorithms such as Monte-Carlo Tree Search (MCTS) may seem unnecessary when generating natural language text based on state-of-the-art reinforcement learning such as Proximal Policy Optimization (PPO). In this paper, we demonstrate that it is possible to get extra mileage out of PPO by integrating MCTS on top. The key idea is not to throw out the value network, a byproduct of PPO training for evaluating partial output sequences, when decoding text out of the policy network. More concretely, we present a novel value-guided decoding algorithm called PPO-MCTS, which can integrate the value network from PPO to work closely with the policy network during inference-time generation. Compared to prior approaches based on MCTS for controlled text generation, the key strength of our approach is to reduce the fundamental mismatch of the scoring mechanisms of the partial outputs between training and test. Evaluation on four text generation tasks demonstrate that PPO-MCTS greatly improves the preferability of generated text compared to the standard practice of using only the PPO policy. Our results demonstrate the promise of search algorithms even on top of the aligned language models from PPO, and the under-explored benefit of the value network.",
+    "authors": [
+        "Jiacheng Liu",
+        "Andrew Cohen",
+        "Ramakanth Pasunuru",
+        "Yejin Choi",
+        "Hannaneh Hajishirzi",
+        "Asli Celikyilmaz"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel value-guided decoding algorithm called PPO-MCTS, which can integrate the value network from PPO to work closely with the policy network during inference-time generation and greatly improves the preferability of generated text compared to the standard practice of using only the PPO policy."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

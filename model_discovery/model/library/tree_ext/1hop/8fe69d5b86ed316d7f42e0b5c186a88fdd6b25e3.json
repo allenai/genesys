@@ -1,0 +1,30 @@
+{
+    "acronym": "8fe69d5b86ed316d7f42e0b5c186a88fdd6b25e3",
+    "title": "Extracting Biomedical Entities from Noisy Audio Transcripts",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "8fe69d5b86ed316d7f42e0b5c186a88fdd6b25e3",
+    "abstract": "Automatic Speech Recognition (ASR) technology is fundamental in transcribing spoken language into text, with considerable applications in the clinical realm, including streamlining medical transcription and integrating with Electronic Health Record (EHR) systems. Nevertheless, challenges persist, especially when transcriptions contain noise, leading to significant drops in performance when Natural Language Processing (NLP) models are applied. Named Entity Recognition (NER), an essential clinical task, is particularly affected by such noise, often termed the ASR-NLP gap. Prior works have primarily studied ASR\u2019s efficiency in clean recordings, leaving a research gap concerning the performance in noisy environments. This paper introduces a novel dataset, BioASR-NER, designed to bridge the ASR-NLP gap in the biomedical domain, focusing on extracting adverse drug reactions and mentions of entities from the Brief Test of Adult Cognition by Telephone (BTACT) exam. Our dataset offers a comprehensive collection of almost 2,000 clean and noisy recordings. In addressing the noise challenge, we present an innovative transcript-cleaning method using GPT-4, investigating both zero-shot and few-shot methodologies. Our study further delves into an error analysis, shedding light on the types of errors in transcription software, corrections by GPT-4, and the challenges GPT-4 faces. This paper aims to foster improved understanding and potential solutions for the ASR-NLP gap, ultimately supporting enhanced healthcare documentation practices.",
+    "authors": [
+        "Nima Ebadi",
+        "Kellen Morgan",
+        "Adrian Tan",
+        "Billy Linares",
+        "Sheri Osborn",
+        "Emma Majors",
+        "Jeremy Davis",
+        "Anthony Rios"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel dataset is introduced, BioASR-NER, designed to bridge the ASR-NLP gap in the biomedical domain, focusing on extracting adverse drug reactions and mentions of entities from the Brief Test of Adult Cognition by Telephone (BTACT) exam."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

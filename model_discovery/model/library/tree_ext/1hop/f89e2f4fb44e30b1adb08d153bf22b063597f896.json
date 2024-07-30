@@ -1,0 +1,35 @@
+{
+    "acronym": "f89e2f4fb44e30b1adb08d153bf22b063597f896",
+    "title": "Current Limitations of Language Models: What You Need is Retrieval",
+    "seed_ids": [
+        "bigbird",
+        "routingtransformer",
+        "transformerxl",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "b0cd93e95fb6885db47d755a4c631158b0198047",
+        "6491d8bcac8490d9ffde33612f87e15c90a44e97",
+        "168fc3525f7b97695a97b04e257ee9bd1e832acb",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13"
+    ],
+    "s2id": "f89e2f4fb44e30b1adb08d153bf22b063597f896",
+    "abstract": "We classify and re-examine some of the current approaches to improve the performance-computes trade-off of language models, including (1) non-causal models (such as masked language models), (2) extension of batch length with efficient attention, (3) recurrence, (4) conditional computation and (5) retrieval. We identify some limitations (1) - (4) suffer from. For example, (1) currently struggles with open-ended text generation with the output loosely constrained by the input as well as performing general textual tasks like GPT-2/3 due to its need for a specific fine-tuning dataset. (2) and (3) do not improve the prediction of the first $\\sim 10^3$ tokens. Scaling up a model size (e.g. efficiently with (4)) still results in poor performance scaling for some tasks. We argue (5) would resolve many of these limitations, and it can (a) reduce the amount of supervision and (b) efficiently extend the context over the entire training dataset and the entire past of the current sample. We speculate how to modify MARGE to perform unsupervised causal modeling that achieves (b) with the retriever jointly trained.",
+    "authors": [
+        "Aran Komatsuzaki"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is argued that improving the performance-computes trade-off of language models can reduce the amount of supervision and efficiently extend the context over the entire training dataset and the entire past of the current sample, and (5) would resolve many of these limitations."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

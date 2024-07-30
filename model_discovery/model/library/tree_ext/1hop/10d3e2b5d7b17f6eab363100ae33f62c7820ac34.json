@@ -1,0 +1,37 @@
+{
+    "acronym": "10d3e2b5d7b17f6eab363100ae33f62c7820ac34",
+    "title": "MeshAnything: Artist-Created Mesh Generation with Autoregressive Transformers",
+    "seed_ids": [
+        "transformer",
+        "f0d37c2af188ec448eaa0ffd729b8bc8724dc17a",
+        "830ed65d226a337088d6d97c3c3b068155bf10ec",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221"
+    ],
+    "s2id": "10d3e2b5d7b17f6eab363100ae33f62c7820ac34",
+    "abstract": "Recently, 3D assets created via reconstruction and generation have matched the quality of manually crafted assets, highlighting their potential for replacement. However, this potential is largely unrealized because these assets always need to be converted to meshes for 3D industry applications, and the meshes produced by current mesh extraction methods are significantly inferior to Artist-Created Meshes (AMs), i.e., meshes created by human artists. Specifically, current mesh extraction methods rely on dense faces and ignore geometric features, leading to inefficiencies, complicated post-processing, and lower representation quality. To address these issues, we introduce MeshAnything, a model that treats mesh extraction as a generation problem, producing AMs aligned with specified shapes. By converting 3D assets in any 3D representation into AMs, MeshAnything can be integrated with various 3D asset production methods, thereby enhancing their application across the 3D industry. The architecture of MeshAnything comprises a VQ-VAE and a shape-conditioned decoder-only transformer. We first learn a mesh vocabulary using the VQ-VAE, then train the shape-conditioned decoder-only transformer on this vocabulary for shape-conditioned autoregressive mesh generation. Our extensive experiments show that our method generates AMs with hundreds of times fewer faces, significantly improving storage, rendering, and simulation efficiencies, while achieving precision comparable to previous methods.",
+    "authors": [
+        "Yiwen Chen",
+        "Tong He",
+        "Di Huang",
+        "Weicai Ye",
+        "Sijin Chen",
+        "Jiaxiang Tang",
+        "Xin Chen",
+        "Zhongang Cai",
+        "Lei Yang",
+        "Gang Yu",
+        "Guosheng Lin",
+        "Chi Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces MeshAnything, a model that treats mesh extraction as a generation problem, producing AMs aligned with specified shapes, which can be integrated with various 3D asset production methods, thereby enhancing their application across the 3D industry."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

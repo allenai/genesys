@@ -1,0 +1,39 @@
+{
+    "acronym": "5b7f5488c380cf5085a5dd93e993ad293b225eee",
+    "title": "One Fits All: Power General Time Series Analysis by Pretrained LM",
+    "seed_ids": [
+        "gpt",
+        "3aa2c10dd6c72267ea8a622c8f30b3c9240d5fab",
+        "8064d3873c646dc9ff949d72c54c634a906fc092",
+        "7bffc157b3b3626a3912a3b0ef74ce5904630fce",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "9b6af0e358e76d22f209c75b1702c3e6ea7815b1",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "40ca4fcfffa7ca9aa9b7ff06ecf3cd0436712d78",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "30dcc0e191a376fea0e7a46f94c53872c029efc9",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5b7f5488c380cf5085a5dd93e993ad293b225eee",
+    "abstract": "Although we have witnessed great success of pre-trained models in natural language processing (NLP) and computer vision (CV), limited progress has been made for general time series analysis. Unlike NLP and CV where a unified model can be used to perform different tasks, specially designed approach still dominates in each time series analysis task such as classification, anomaly detection, forecasting, and few-shot learning. The main challenge that blocks the development of pre-trained model for time series analysis is the lack of a large amount of data for training. In this work, we address this challenge by leveraging language or CV models, pre-trained from billions of tokens, for time series analysis. Specifically, we refrain from altering the self-attention and feedforward layers of the residual blocks in the pre-trained language or image model. This model, known as the Frozen Pretrained Transformer (FPT), is evaluated through fine-tuning on all major types of tasks involving time series. Our results demonstrate that pre-trained models on natural language or images can lead to a comparable or state-of-the-art performance in all main time series analysis tasks, as illustrated in Figure 1. We also found both theoretically and empirically that the self-attention module behaviors similarly to principle component analysis (PCA), an observation that helps explains how transformer bridges the domain gap and a crucial step towards understanding the universality of a pre-trained transformer.The code is publicly available at https://github.com/DAMO-DI-ML/One_Fits_All.",
+    "authors": [
+        "Tian Zhou",
+        "Peisong Niu",
+        "Xue Wang",
+        "Liang Sun",
+        "Rong Jin"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results demonstrate that pre-trained models on natural language or images can lead to a comparable or state-of-the-art performance in all main time series analysis tasks, as illustrated in Figure 1."
+    },
+    "citationCount": 140,
+    "influentialCitationCount": 30,
+    "code": null,
+    "description": null,
+    "url": null
+}

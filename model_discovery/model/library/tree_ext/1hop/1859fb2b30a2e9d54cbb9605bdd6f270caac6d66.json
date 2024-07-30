@@ -1,0 +1,41 @@
+{
+    "acronym": "1859fb2b30a2e9d54cbb9605bdd6f270caac6d66",
+    "title": "DARTFormer: Finding The Best Type Of Attention",
+    "seed_ids": [
+        "linformer",
+        "lineartransformer",
+        "bigbird",
+        "longformer",
+        "sparsetransformer",
+        "sinkhorn",
+        "86c8d930b492a4f9cadc6c60aecdaaded49acc86",
+        "c49ac1f916d6d2edeb187e6619c8d23acd95eb21",
+        "255c526f78bbfec35d4ed73b6dd8eacd9ef2c0b3",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1"
+    ],
+    "s2id": "1859fb2b30a2e9d54cbb9605bdd6f270caac6d66",
+    "abstract": "Given the wide and ever growing range of different efficient Transformer attention mechanisms, it is important to identify which attention is most effective when given a task. In this work, we are also interested in combining different attention types to build heterogeneous Transformers. We first propose a DARTS-like Neural Architecture Search (NAS) method to find the best attention for a given task, in this setup, all heads use the same attention (homogeneous models). Our results suggest that NAS is highly effective on this task, and it identifies the best attention mechanisms for IMDb byte level text classification and Listops. We then extend our framework to search for and build Transformers with multiple different attention types, and call them heterogeneous Transformers. We show that whilst these heterogeneous Transformers are better than the average homogeneous models, they cannot outperform the best. We explore the reasons why heterogeneous attention makes sense, and why it ultimately fails.",
+    "authors": [
+        "Jason Brown",
+        "Yiren Zhao",
+        "Ilia Shumailov",
+        "R. Mullins"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a DARTS-like Neural Architecture Search method to find the best attention for a given task, and extends this framework to search for and build Transformers with multiple different attention types, and shows that whilst these heterogeneous Transformers are better than the average homogeneous models, they cannot outperform the best."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

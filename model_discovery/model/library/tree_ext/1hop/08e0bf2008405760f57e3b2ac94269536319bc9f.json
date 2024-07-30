@@ -1,0 +1,26 @@
+{
+    "acronym": "08e0bf2008405760f57e3b2ac94269536319bc9f",
+    "title": "Personalized Driver Gene Prediction Using Graph Convolutional Networks with Conditional Random Fields",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "08e0bf2008405760f57e3b2ac94269536319bc9f",
+    "abstract": "Simple Summary Identifying cancer driver genes plays a significant role in cancer diagnosis and treatment. With the advancement of next-generation sequencing technologies, a wealth of multi-omics cancer data, including genomic, epigenomic, and transcriptomic data, are now available for cancer research. Integrating these data to effectively identify cancer driver genes causally associated with cancer is a computational challenge. Methods for identifying cancer driver genes are mainly based on population levels. Considering the trend of precision medicine and the heterogeneity of patients, it is challenging but crucial to identify cancer driver genes at the individual level. We developed a method called PDGCN (Personalized Drivers of GCN), which constructs sample\u2013gene interaction networks by integrating multiple types of data features and using network structural features extracted from Node2vec. Then, a graphical convolutional neural network model with a conditional random field layer is used to prioritize candidate driver genes in the network. The results show that PDGCN can identify driver genes at the individual level, providing a new perspective for predicting driver genes in individual samples. Abstract Cancer is a complex and evolutionary disease mainly driven by the accumulation of genetic variations in genes. Identifying cancer driver genes is important. However, most related studies have focused on the population level. Cancer is a disease with high heterogeneity. Thus, the discovery of driver genes at the individual level is becoming more valuable but is a great challenge. Although there have been some computational methods proposed to tackle this challenge, few can cover all patient samples well, and there is still room for performance improvement. In this study, to identify individual-level driver genes more efficiently, we propose the PDGCN method. PDGCN integrates multiple types of data features, including mutation, expression, methylation, copy number data, and system-level gene features, along with network structural features extracted using Node2vec in order to construct a sample\u2013gene interaction network. Prediction is performed using a graphical convolutional neural network model with a conditional random field layer, which is able to better combine the network structural features with biological attribute features. Experiments on the ACC (Adrenocortical Cancer) and KICH (Kidney Chromophobe) datasets from TCGA (The Cancer Genome Atlas) demonstrated that the method performs better compared to other similar methods. It can identify not only frequently mutated driver genes, but also rare candidate driver genes and novel biomarker genes. The results of the survival and enrichment analyses of these detected genes demonstrate that the method can identify important driver genes at the individual level.",
+    "authors": [
+        "Pi-Jing Wei",
+        "An-Dong Zhu",
+        "Ruifen Cao",
+        "Chunhou Zheng"
+    ],
+    "venue": "Biology",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "PDGCN (Personalized Drivers of GCN), which constructs sample\u2013gene interaction networks by integrating multiple types of data features and using network structural features extracted from Node2vec, can identify important driver genes at the individual level."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

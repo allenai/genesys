@@ -1,0 +1,31 @@
+{
+    "acronym": "ec58f2c02c73c15743cf1cccf07638bf23363bc7",
+    "title": "PrivacyRestore: Privacy-Preserving Inference in Large Language Models via Privacy Removal and Restoration",
+    "seed_ids": [
+        "bert",
+        "83edcfbb206ddad38a971d605da09390604248ea",
+        "af710ada8965f274e810053f716f966627a136d9",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "e04a80263d252a3d8a382ba37a249b9345620570"
+    ],
+    "s2id": "ec58f2c02c73c15743cf1cccf07638bf23363bc7",
+    "abstract": "The widespread usage of online Large Language Models (LLMs) inference services has raised significant privacy concerns about the potential exposure of private information in user inputs to eavesdroppers or untrustworthy service providers. Existing privacy protection methods for LLMs suffer from insufficient privacy protection, performance degradation, or severe inference time overhead. In this paper, we propose PrivacyRestore to protect the privacy of user inputs during LLM inference. PrivacyRestore directly removes privacy spans in user inputs and restores privacy information via activation steering during inference. The privacy spans are encoded as restoration vectors. We propose Attention-aware Weighted Aggregation (AWA) which aggregates restoration vectors of all privacy spans in the input into a meta restoration vector. AWA not only ensures proper representation of all privacy spans but also prevents attackers from inferring the privacy spans from the meta restoration vector alone. This meta restoration vector, along with the query with privacy spans removed, is then sent to the server. The experimental results show that PrivacyRestore can protect private information while maintaining acceptable levels of performance and inference efficiency.",
+    "authors": [
+        "Ziqian Zeng",
+        "Jianwei Wang",
+        "Zhengdong Lu",
+        "Huiping Zhuang",
+        "Cen Chen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The experimental results show that PrivacyRestore can protect private information while maintaining acceptable levels of performance and inference efficiency."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

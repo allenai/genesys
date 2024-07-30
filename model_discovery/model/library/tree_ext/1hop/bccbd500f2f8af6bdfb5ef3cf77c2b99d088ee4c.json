@@ -1,0 +1,34 @@
+{
+    "acronym": "bccbd500f2f8af6bdfb5ef3cf77c2b99d088ee4c",
+    "title": "LittleBird: Efficient Faster & Longer Transformer for Question Answering",
+    "seed_ids": [
+        "luna",
+        "bigbird",
+        "longformer",
+        "alibi",
+        "etc",
+        "af679d69fcc1d0fcf0f039aba937853bcb50a8de",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "2573af4e13d9a5dddb257d22cd38a600528d9a8b"
+    ],
+    "s2id": "bccbd500f2f8af6bdfb5ef3cf77c2b99d088ee4c",
+    "abstract": "BERT has shown a lot of sucess in a wide variety of NLP tasks. But it has a limitation dealing with long inputs due to its attention mechanism. Longformer, ETC and BigBird addressed this issue and effectively solved the quadratic dependency problem.However we find that these models are not sufficient, and propose LittleBird, a novel model based on BigBird with improved speed and memory footprint while maintaining accuracy.In particular, we devise a more flexible and efficient position representation method based on Attention with Linear Biases(ALiBi). We also show that replacing the method of global information represented in the BigBird with pack and unpack attention is more effective.The proposed model can work on long inputs even after being pre-trained on short inputs, and can be trained efficiently reusing existing pre-trained language model for short inputs. This is a significant benefit for low-resource languages where large amounts of long text data are difficult to obtain.As a result, our experiments show that LittleBird works very well in a variety of languages, achieving high performance in question answering tasks, particularly in KorQuAD2.0, Korean Question Answering Dataset for long paragraphs.",
+    "authors": [
+        "Minchul Lee",
+        "Kijong Han",
+        "M. Shin"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "LittleBird is proposed, a novel model based on BigBird with improved speed and memory footprint while maintaining accuracy, and a more flexible and efficient position representation method based on Attention with Linear Biases(ALiBi)."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

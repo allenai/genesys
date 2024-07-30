@@ -1,0 +1,31 @@
+{
+    "acronym": "1e66dd20cf7039ca2b3a02a75da05e5468950814",
+    "title": "Disassembling Obfuscated Executables with LLM",
+    "seed_ids": [
+        "transformer",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "0fe2636446cd686830da3d971b31a004d6094b3c"
+    ],
+    "s2id": "1e66dd20cf7039ca2b3a02a75da05e5468950814",
+    "abstract": "Disassembly is a challenging task, particularly for obfuscated executables containing junk bytes, which is designed to induce disassembly errors. Existing solutions rely on heuristics or leverage machine learning techniques, but only achieve limited successes. Fundamentally, such obfuscation cannot be defeated without in-depth understanding of the binary executable's semantics, which is made possible by the emergence of large language models (LLMs). In this paper, we present DisasLLM, a novel LLM-driven dissembler to overcome the challenge in analyzing obfuscated executables. DisasLLM consists of two components: an LLM-based classifier that determines whether an instruction in an assembly code snippet is correctly decoded, and a disassembly strategy that leverages this model to disassemble obfuscated executables end-to-end. We evaluated DisasLLM on a set of heavily obfuscated executables, which is shown to significantly outperform other state-of-the-art disassembly solutions.",
+    "authors": [
+        "Huanyao Rong",
+        "Yue Duan",
+        "Hang Zhang",
+        "Xiaofeng Wang",
+        "Hongbo Chen",
+        "Shengchen Duan",
+        "Shen Wang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DisasLLM is presented, a novel LLM-driven dissembler to overcome the challenge in analyzing obfuscated executables and is shown to significantly outperform other state-of-the-art disassembly solutions."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

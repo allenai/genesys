@@ -1,0 +1,29 @@
+{
+    "acronym": "be7403b7358b74785b90035cb7285308ec34b37d",
+    "title": "Improving Recall of Large Language Models: A Model Collaboration Approach for Relational Triple Extraction",
+    "seed_ids": [
+        "bert",
+        "5fc1a3a49e8f1d106118b69d1d6be3b6caa23da0",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "be7403b7358b74785b90035cb7285308ec34b37d",
+    "abstract": "Relation triple extraction, which outputs a set of triples from long sentences, plays a vital role in knowledge acquisition. Large language models can accurately extract triples from simple sentences through few-shot learning or fine-tuning when given appropriate instructions. However, they often miss out when extracting from complex sentences. In this paper, we design an evaluation-filtering framework that integrates large language models with small models for relational triple extraction tasks. The framework includes an evaluation model that can extract related entity pairs with high precision. We propose a simple labeling principle and a deep neural network to build the model, embedding the outputs as prompts into the extraction process of the large model. We conduct extensive experiments to demonstrate that the proposed method can assist large language models in obtaining more accurate extraction results, especially from complex sentences containing multiple relational triples. Our evaluation model can also be embedded into traditional extraction models to enhance their extraction precision from complex sentences.",
+    "authors": [
+        "Zepeng Ding",
+        "Wenhao Huang",
+        "Jiaqing Liang",
+        "Deqing Yang",
+        "Yanghua Xiao"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An evaluation-filtering framework that integrates large language models with small models for relational triple extraction tasks and includes an evaluation model that can extract related entity pairs with high precision is designed."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

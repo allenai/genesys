@@ -1,0 +1,35 @@
+{
+    "acronym": "e9aec062906c7fb16e540dc9fb7ed2cbcf129407",
+    "title": "Superfiltering: Weak-to-Strong Data Filtering for Fast Instruction-Tuning",
+    "seed_ids": [
+        "gpt2",
+        "d034a77636c0b155eb3f752f161203f7891135cb",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e9aec062906c7fb16e540dc9fb7ed2cbcf129407",
+    "abstract": "Instruction tuning is critical to improve LLMs but usually suffers from low-quality and redundant data. Data filtering for instruction tuning has proved important in improving both the efficiency and performance of the tuning process. But it also leads to extra cost and computation due to the involvement of LLMs in this process. To reduce the filtering cost, we study Superfiltering: Can we use a smaller and weaker model to select data for finetuning a larger and stronger model? Despite the performance gap between weak and strong language models, we find their highly consistent capability to perceive instruction difficulty and data selection results. This enables us to use a much smaller and more efficient model to filter the instruction data used to train a larger language model. Not only does it largely speed up the data filtering, but the filtered-data-finetuned LLM achieves even better performance on standard benchmarks. Extensive experiments validate the efficacy and efficiency of our approach.",
+    "authors": [
+        "Ming Li",
+        "Yong Zhang",
+        "Shwai He",
+        "Zhitao Li",
+        "Hongyu Zhao",
+        "Jianzong Wang",
+        "Ning Cheng",
+        "Tianyi Zhou"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Despite the performance gap between weak and strong language models, LLMs find their highly consistent capability to perceive instruction difficulty and data selection results enables us to use a much smaller and more efficient model to filter the instruction data used to train a larger language model."
+    },
+    "citationCount": 19,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

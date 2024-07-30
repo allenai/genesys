@@ -1,0 +1,31 @@
+{
+    "acronym": "b76124ef53341af42d6d582ffe340cd0ddb49fc8",
+    "title": "We Have a Package for You! A Comprehensive Analysis of Package Hallucinations by Code Generating LLMs",
+    "seed_ids": [
+        "gpt3",
+        "1e909e2a8cdacdcdff125ebcc566f37cb869a1c8",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "b76124ef53341af42d6d582ffe340cd0ddb49fc8",
+    "abstract": "The reliance of popular programming languages such as Python and JavaScript on centralized package repositories and open-source software, combined with the emergence of code-generating Large Language Models (LLMs), has created a new type of threat to the software supply chain: package hallucinations. These hallucinations, which arise from fact-conflicting errors when generating code using LLMs, represent a novel form of package confusion attack that poses a critical threat to the integrity of the software supply chain. This paper conducts a rigorous and comprehensive evaluation of package hallucinations across different programming languages, settings, and parameters, exploring how different configurations of LLMs affect the likelihood of generating erroneous package recommendations and identifying the root causes of this phenomena. Using 16 different popular code generation models, across two programming languages and two unique prompt datasets, we collect 576,000 code samples which we analyze for package hallucinations. Our findings reveal that 19.7% of generated packages across all the tested LLMs are hallucinated, including a staggering 205,474 unique examples of hallucinated package names, further underscoring the severity and pervasiveness of this threat. We also implemented and evaluated mitigation strategies based on Retrieval Augmented Generation (RAG), self-detected feedback, and supervised fine-tuning. These techniques demonstrably reduced package hallucinations, with hallucination rates for one model dropping below 3%. While the mitigation efforts were effective in reducing hallucination rates, our study reveals that package hallucinations are a systemic and persistent phenomenon that pose a significant challenge for code generating LLMs.",
+    "authors": [
+        "Joseph Spracklen",
+        "Raveen Wijewickrama",
+        "A. H. M. N. Sakib",
+        "Anindya Maiti",
+        "Murtuza Jadliwala"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study reveals that package hallucinations are a systemic and persistent phenomenon that pose a significant challenge for code generating LLMs, and implemented and evaluated mitigation strategies based on Retrieval Augmented Generation, self-detected feedback, and supervised fine-tuning that demonstrably reduced package hallucinations."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

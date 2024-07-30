@@ -1,0 +1,28 @@
+{
+    "acronym": "e8fd147fb3f1966776f27b402307fed1775a7b80",
+    "title": "Transfer Learning of Argument Mining in Student Essays",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "e8fd147fb3f1966776f27b402307fed1775a7b80",
+    "abstract": "This paper explores the transferability of a cross-prompt argument mining model trained on argumentative essays authored by native English-speaking learners (EN-L1) across educational contexts and languages. Specifically, the adaptability of a multilingual transformer model is assessed through its application to comparable argumentative essays authored by English-as-a-foreign-language learners (EN-L2) for context transfer, and a dataset composed of essays written by native German learners (DE) for both language and task transfer. To separate language effects from educational context effects, we also perform experiments on a machine-translated version of the German dataset (DE-MT). Our findings demonstrate that, even under zero-shot conditions, a model trained on native English speakers exhibits satisfactory performance on the EN-L2/DE datasets. Machine translation does not substantially enhance this performance, suggesting that distinct writing styles across educational contexts impact performance more than language differences.",
+    "authors": [
+        "Yuning Ding",
+        "Julian Lohmann",
+        "Nils-Jonathan Schaller",
+        "Thorben Jansen",
+        "Andrea Horbach"
+    ],
+    "venue": "Workshop on Innovative Use of NLP for Building Educational Applications",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that, even under zero-shot conditions, a model trained on native English speakers exhibits satisfactory performance on the EN-L2/DE datasets, suggesting that distinct writing styles across educational contexts impact performance more than language differences."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

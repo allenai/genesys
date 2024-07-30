@@ -1,0 +1,25 @@
+{
+    "acronym": "0a1e96a8592149e22f8c64f1765572a52d7d3fee",
+    "title": "Mxgra at SemEval-2020 Task 4: Common Sense Making with Next Token Prediction",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "0a1e96a8592149e22f8c64f1765572a52d7d3fee",
+    "abstract": "In this paper, we explore solutions to a common sense making task in which a model must discern which of two sentences is against common sense. We used a pre-trained language model which we used to calculate complexity scores for input to discern which sentence contained an unlikely sequence of tokens. Other approaches we tested were word vector distances, which were used to find semantic outliers within a sentence, and siamese network. By using the pre-trained language model to calculate perplexity scores based on the sequence of tokens in input sentences, we achieved an accuracy of 75 percent.",
+    "authors": [
+        "Kris Collins",
+        "Max Grathwohl",
+        "Heba Ahmed"
+    ],
+    "venue": "International Workshop on Semantic Evaluation",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A pre-trained language model was used to calculate complexity scores for input to discern which sentence contained an unlikely sequence of tokens, and other approaches were word vector distances, which were used to find semantic outliers within a sentence, and siamese network."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

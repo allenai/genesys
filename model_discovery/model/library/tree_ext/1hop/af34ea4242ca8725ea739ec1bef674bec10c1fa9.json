@@ -1,0 +1,27 @@
+{
+    "acronym": "af34ea4242ca8725ea739ec1bef674bec10c1fa9",
+    "title": "Time-aware Large Kernel Convolutions",
+    "seed_ids": [
+        "lighdynconv",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "af34ea4242ca8725ea739ec1bef674bec10c1fa9",
+    "abstract": "To date, most state-of-the-art sequence modeling architectures use attention to build generative models for language based tasks. Some of these models use all the available sequence tokens to generate an attention distribution which results in time complexity of $O(n^2)$. Alternatively, they utilize depthwise convolutions with softmax normalized kernels of size $k$ acting as a limited-window self-attention, resulting in time complexity of $O(k{\\cdot}n)$. In this paper, we introduce Time-aware Large Kernel (TaLK) Convolutions, a novel adaptive convolution operation that learns to predict the size of a summation kernel instead of using a fixed-sized kernel matrix. This method yields a time complexity of $O(n)$, effectively making the sequence encoding process linear to the number of tokens. We evaluate the proposed method on large-scale standard machine translation, abstractive summarization and language modeling datasets and show that TaLK Convolutions constitute an efficient improvement over other attention/convolution based approaches.",
+    "authors": [
+        "Vasileios Lioutas",
+        "Yuhong Guo"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Time-aware Large Kernel (TaLK) Convolutions is introduced, a novel adaptive convolution operation that learns to predict the size of a summation kernel instead of using a fixed-sized kernel matrix."
+    },
+    "citationCount": 28,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

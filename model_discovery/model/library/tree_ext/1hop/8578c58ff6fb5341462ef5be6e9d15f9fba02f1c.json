@@ -1,0 +1,26 @@
+{
+    "acronym": "8578c58ff6fb5341462ef5be6e9d15f9fba02f1c",
+    "title": "Query-Oriented Data Augmentation for Session Search",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "8578c58ff6fb5341462ef5be6e9d15f9fba02f1c",
+    "abstract": "Modeling contextual information in a search session has drawn more and more attention when understanding complex user intents. Recent methods are all data-driven, i.e., they train different models on large-scale search log data to identify the relevance between search contexts and candidate documents. The common training paradigm is to pair the search context with different candidate documents and train the model to rank the clicked documents higher than the unclicked ones. However, this paradigm neglects the symmetric nature of the relevance between the session context and document, i.e., the clicked documents can also be paired with different search contexts when training. In this work, we propose query-oriented data augmentation to enrich search logs and empower the modeling. We generate supplemental training pairs by altering the most important part of a search context, i.e., the current query, and train our model to rank the generated sequence along with the original sequence. This approach enables models to learn that the relevance of a document may vary as the session context changes, leading to a better understanding of users' search patterns. We develop several strategies to alter the current query, resulting in new training data with varying degrees of difficulty. Through experimentation on two extensive public search logs, we have successfully demonstrated the effectiveness of our model.",
+    "authors": [
+        "Haonan Chen",
+        "Zhicheng Dou",
+        "Yutao Zhu",
+        "Ji-Rong Wen"
+    ],
+    "venue": "IEEE Transactions on Knowledge and Data Engineering",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes query-oriented data augmentation to enrich search logs and empower the modeling, and generates supplemental training pairs by altering the most important part of a search context, i.e., the current query, and trains the model to rank the generated sequence along with the original sequence."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "df602516e28a9ef0ef665ed0aef551984d8d770d",
+    "title": "Recommendation as Language Processing (RLP): A Unified Pretrain, Personalized Prompt & Predict Paradigm (P5)",
+    "seed_ids": [
+        "gpt2",
+        "dca4d9abbc82e57dfa52f932e893d467a63e0682",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "df602516e28a9ef0ef665ed0aef551984d8d770d",
+    "abstract": "For a long time, different recommendation tasks require designing task-specific architectures and training objectives. As a result, it is hard to transfer the knowledge and representations from one task to another, thus restricting the generalization ability of existing recommendation approaches. To deal with such issues, considering that language can describe almost anything and language grounding is a powerful medium to represent various problems or tasks, we present a flexible and unified text-to-text paradigm called \u201cPretrain, Personalized Prompt, and Predict Paradigm\u201d (P5) for recommendation, which unifies various recommendation tasks in a shared framework. In P5, all data such as user-item interactions, user descriptions, item metadata, and user reviews are converted to a common format \u2014 natural language sequences. The rich information from natural language assists P5 to capture deeper semantics for personalization and recommendation. Specifically, P5 learns different tasks with the same language modeling objective during pretraining. Thus, it serves as the foundation model for various downstream recommendation tasks, allows easy integration with other modalities, and enables instruction-based recommendation. P5 advances recommender systems from shallow model to deep model to big model, and will revolutionize the technical form of recommender systems towards universal recommendation engine. With adaptive personalized prompt for different users, P5 is able to make predictions in a zero-shot or few-shot manner and largely reduces the necessity for extensive fine-tuning. On several benchmarks, we conduct experiments to show the effectiveness of P5. To help advance future research on Recommendation as Language Processing (RLP), Personalized Foundation Models (PFM), and Universal Recommendation Engine (URE), we release the source code, dataset, prompts, and pretrained P5 model at https://github.com/jeykigung/P5.",
+    "authors": [
+        "Shijie Geng",
+        "Shuchang Liu",
+        "Zuohui Fu",
+        "Yingqiang Ge",
+        "Yongfeng Zhang"
+    ],
+    "venue": "ACM Conference on Recommender Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A flexible and unified text-to-text paradigm called \u201cPretrain, Personalized Prompt, and Predict Paradigm\u201d (P5) for recommendation, which unifies various recommendation tasks in a shared framework and will revolutionize the technical form of recommender systems towards universal recommendation engine."
+    },
+    "citationCount": 255,
+    "influentialCitationCount": 41,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,34 @@
+{
+    "acronym": "32928378a571b649fa3e670267defb29564e92af",
+    "title": "TranCIM: Full-Digital Bitline-Transpose CIM-based Sparse Transformer Accelerator With Pipeline/Parallel Reconfigurable Modes",
+    "seed_ids": [
+        "etc",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "32928378a571b649fa3e670267defb29564e92af",
+    "abstract": "Transformer models achieve excellent results in the fields like natural language processing, computer vision, and bioinformatics. Their large numbers of matrix multiplications (MMs) lead to substantial data movement and computation. Although computing-in-memory (CIM) has proven to be an efficient architecture for MM computation, transformer\u2019s attention mechanism raises new challenges in memory access and computation aspects: the dynamic MM in attention layers causes redundant OFF-chip memory access; Attention layers dominate transformer\u2019s computation and require high precision. Thus, we design a bitline-transpose CIM-based transformer accelerator TranCIM with pipeline/parallel reconfigurable modes. The pipeline mode alleviates off-chip access for attention layers. The parallel mode is used by fully-connected (FC) layers for high parallelism. The full-digital CIM supports INT16 for attention layers and INT8 for FC layers, without analog CIM\u2019s nonideal issues. Moreover, a sparse attention scheduler (SAS) is proposed to reduce attention computation. The fabricated TranCIM chip only consumes 15.59 <inline-formula> <tex-math notation=\"LaTeX\">$\\mu \\text{J}$ </tex-math></inline-formula>/Token for the bidirectional encoder representations from transformer (BERT)-base model, achieving <inline-formula> <tex-math notation=\"LaTeX\">$12.08\\times $ </tex-math></inline-formula>\u2013<inline-formula> <tex-math notation=\"LaTeX\">$36.82\\times $ </tex-math></inline-formula> lower energy than prior CIM-based accelerators.",
+    "authors": [
+        "Fengbin Tu",
+        "Zihan Wu",
+        "Yiqi Wang",
+        "Ling Liang",
+        "L. Liu",
+        "Yufei Ding",
+        "Leibo Liu",
+        "Shaojun Wei",
+        "Yuan Xie",
+        "Shouyi Yin"
+    ],
+    "venue": "IEEE Journal of Solid-State Circuits",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A bitline-transpose CIM-based transformer accelerator TranCIM with pipeline/parallel reconfigurable modes and a sparse attention scheduler (SAS) is proposed to reduce attention computation."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

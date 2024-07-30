@@ -1,0 +1,34 @@
+{
+    "acronym": "c593320dd421c01ed595c770899ad7fc55aa9fa3",
+    "title": "A Masked Semi-Supervised Learning Approach for Otago Micro Labels Recognition",
+    "seed_ids": [
+        "transformer",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7"
+    ],
+    "s2id": "c593320dd421c01ed595c770899ad7fc55aa9fa3",
+    "abstract": "The Otago Exercise Program (OEP) serves as a vital rehabilitation initiative for older adults, aiming to enhance their strength and balance, and consequently prevent falls. While Human Activity Recognition (HAR) systems have been widely employed in recognizing the activities of individuals, existing systems focus on the duration of macro activities (i.e. a sequence of repetitions of the same exercise), neglecting the ability to discern micro activities (i.e. the individual repetitions of the exercises), in the case of OEP. This study presents a novel semi-supervised machine learning approach aimed at bridging this gap in recognizing the micro activities of OEP. To manage the limited dataset size, our model utilizes a Transformer encoder for feature extraction, subsequently classified by a Temporal Convolutional Network (TCN). Simultaneously, the Transformer encoder is employed for masked unsupervised learning to reconstruct input signals. Results indicate that the masked unsupervised learning task enhances the performance of the supervised learning (classification task), as evidenced by f1-scores surpassing the clinically applicable threshold of 0.8. From the micro activities, two clinically relevant outcomes emerge: counting the number of repetitions of each exercise and calculating the velocity during chair rising. These outcomes enable the automatic monitoring of exercise intensity and difficulty in the daily lives of older adults.",
+    "authors": [
+        "Meng Shang",
+        "L. Dedeyne",
+        "J. Dupont",
+        "Laura Vercauteren",
+        "Nadjia Amini",
+        "Laurence Lapauw",
+        "E. Gielen",
+        "Sabine Verschueren",
+        "Carolina Varon",
+        "W. Raedt",
+        "Bart Vanrumste"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study presents a novel semi-supervised machine learning approach aimed at bridging this gap in recognizing the micro activities of OEP, and indicates that the masked unsupervised learning task enhances the performance of the supervised learning (classification task), as evidenced by f1-scores surpassing the clinically applicable threshold of 0.8."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

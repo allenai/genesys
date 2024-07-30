@@ -1,0 +1,27 @@
+{
+    "acronym": "3ee7b17cc627ac5bc99632a22ef820dc559393e6",
+    "title": "Deepening Hidden Representations from Pre-trained Language Models for Natural Language Understanding",
+    "seed_ids": [
+        "gpt",
+        "5744f56d3253bd7c4341d36de40a93fceaa266b3",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "f6fbb6809374ca57205bd2cf1421d4f4fa04f975"
+    ],
+    "s2id": "3ee7b17cc627ac5bc99632a22ef820dc559393e6",
+    "abstract": "Transformer-based pre-trained language models have proven to be effective for learning contextualized language representation. However, current approaches only take advantage of the output of the encoder's final layer when fine-tuning the downstream tasks. We argue that only taking single layer's output restricts the power of pre-trained representation. Thus we deepen the representation learned by the model by fusing the hidden representation in terms of an explicit HIdden Representation Extractor (HIRE), which automatically absorbs the complementary representation with respect to the output from the final layer. Utilizing RoBERTa as the backbone encoder, our proposed improvement over the pre-trained models is shown effective on multiple natural language understanding tasks and help our model rival with the state-of-the-art models on the GLUE benchmark.",
+    "authors": [
+        "Jie Yang",
+        "Hai Zhao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work deepens the representation learned by the model by fusing the hidden representation in terms of an explicit HIdden Representation Extractor (HIRE), which automatically absorbs the complementary representation with respect to the output from the final layer."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

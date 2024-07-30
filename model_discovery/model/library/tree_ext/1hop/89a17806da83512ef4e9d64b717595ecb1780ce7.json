@@ -1,0 +1,30 @@
+{
+    "acronym": "89a17806da83512ef4e9d64b717595ecb1780ce7",
+    "title": "Reentrancy Vulnerability Detection and Localization: A Deep Learning Based Two-phase Approach",
+    "seed_ids": [
+        "gpt",
+        "0fe2636446cd686830da3d971b31a004d6094b3c"
+    ],
+    "s2id": "89a17806da83512ef4e9d64b717595ecb1780ce7",
+    "abstract": "Smart contracts have been widely and rapidly used to automate financial and business transactions together with blockchains, helping people make agreements while minimizing trusts. With millions of smart contracts deployed on blockchain, various bugs and vulnerabilities in smart contracts have emerged. Following the rapid development of deep learning, many recent studies have used deep learning for vulnerability detection to conduct security checks before deploying smart contracts. These approaches show effective results on detecting whether a smart contract is vulnerable or not whereas their results on locating suspicious statements responsible for the detected vulnerability are still unsatisfactory. To address this problem, we propose a deep learning based two-phase smart contract debugger for reentrancy vulnerability, one of the most severe vulnerabilities, named as ReVulDL: Reentrancy Vulnerability Detection and Localization. ReVulDL integrates the vulnerability detection and localization into a unified debugging pipeline. For the detection phase, given a smart contract, ReVulDL uses a graph-based pre-training model to learn the complex relationships in propagation chains for detecting whether the smart contract contains a reentrancy vulnerability. For the localization phase, if a reentrancy vulnerability is detected, ReVulDL utilizes interpretable machine learning to locate the suspicious statements in smart contract to provide interpretations of the detected vulnerability. Our large-scale empirical study on 47,398 smart contracts shows that ReVulDL achieves promising results in detecting reentrancy vulnerabilities (e.g., outperforming 16 state-of-the-art vulnerability detection approaches) and locating vulnerable statements (e.g., 70.38% of the vulnerable statements are ranked within Top-10).",
+    "authors": [
+        "Zhuo Zhang",
+        "Yan Lei",
+        "Meng Yan",
+        "Yue Yu",
+        "Jiachi Chen",
+        "Shangwen Wang",
+        "Xiaoguang Mao"
+    ],
+    "venue": "International Conference on Automated Software Engineering",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A deep learning based two-phase smart contract debugger for reentrancy vulnerability, one of the most severe vulnerabilities, named as ReVulDL, which achieves promising results in detecting reENTrancy vulnerabilities and locating vulnerable statements."
+    },
+    "citationCount": 30,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

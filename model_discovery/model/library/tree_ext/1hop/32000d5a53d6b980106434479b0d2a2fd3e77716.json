@@ -1,0 +1,28 @@
+{
+    "acronym": "32000d5a53d6b980106434479b0d2a2fd3e77716",
+    "title": "IDN-Sum: A New Dataset for Interactive Digital Narrative Extractive Text Summarisation",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "203b543bfa1e564bb80ff4229b43174d7c71b0c0"
+    ],
+    "s2id": "32000d5a53d6b980106434479b0d2a2fd3e77716",
+    "abstract": "Summarizing Interactive Digital Narratives (IDN) presents some unique challenges to existing text summarization models especially around capturing interactive elements in addition to important plot points. In this paper, we describe the first IDN dataset (IDN-Sum) designed specifically for training and testing IDN text summarization algorithms. Our dataset is generated using random playthroughs of 8 IDN episodes, taken from 2 different IDN games, and consists of 10,000 documents. Playthrough documents are annotated through automatic alignment with fan-sourced summaries using a commonly used alignment algorithm. We also report and discuss results from experiments applying common baseline extractive text summarization algorithms to this dataset. Qualitative analysis of the results reveals shortcomings in common annotation approaches and evaluation methods when applied to narrative and interactive narrative datasets. The dataset is released as open source for future researchers to train and test their own approaches for IDN text.",
+    "authors": [
+        "Summarisation",
+        "Ashwathy T. Revi",
+        "S. Middleton",
+        "D. Millard"
+    ],
+    "venue": "CREATIVESUMM",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The first IDN dataset (IDN-Sum) designed specifically for training and testing IDN text summarization algorithms is described, generated using random playthroughs of 8 IDN episodes, taken from 2 different IDN games, and consists of 10,000 documents."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

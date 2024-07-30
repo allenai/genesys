@@ -1,0 +1,26 @@
+{
+    "acronym": "e136b8e7261e1835acc89bf0402e956bd4ee5225",
+    "title": "Learning Diffusion at Lightspeed",
+    "seed_ids": [
+        "transformer",
+        "e342165a614588878ad0f4bc9bacf3905df34d08"
+    ],
+    "s2id": "e136b8e7261e1835acc89bf0402e956bd4ee5225",
+    "abstract": "Diffusion regulates a phenomenal number of natural processes and the dynamics of many successful generative models. Existing models to learn the diffusion terms from observational data rely on complex bilevel optimization problems and properly model only the drift of the system. We propose a new simple model, JKOnet*, which bypasses altogether the complexity of existing architectures while presenting significantly enhanced representational capacity: JKOnet* recovers the potential, interaction, and internal energy components of the underlying diffusion process. JKOnet* minimizes a simple quadratic loss, runs at lightspeed, and drastically outperforms other baselines in practice. Additionally, JKOnet* provides a closed-form optimal solution for linearly parametrized functionals. Our methodology is based on the interpretation of diffusion processes as energy-minimizing trajectories in the probability space via the so-called JKO scheme, which we study via its first-order optimality conditions, in light of few-weeks-old advancements in optimization in the probability space.",
+    "authors": [
+        "Antonio Terpin",
+        "Nicolas Lanzetti",
+        "Florian D\u00f6rfler"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new simple model, JKOnet*, is proposed, which bypasses altogether the complexity of existing architectures while presenting significantly enhanced representational capacity: JKOnet* recovers the potential, interaction, and internal energy components of the underlying diffusion process."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

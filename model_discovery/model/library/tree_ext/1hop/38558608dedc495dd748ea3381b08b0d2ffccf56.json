@@ -1,0 +1,27 @@
+{
+    "acronym": "38558608dedc495dd748ea3381b08b0d2ffccf56",
+    "title": "Seeing the Unseen: Visual Metaphor Captioning for Videos",
+    "seed_ids": [
+        "bert",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c"
+    ],
+    "s2id": "38558608dedc495dd748ea3381b08b0d2ffccf56",
+    "abstract": "Metaphors are a common communication tool used in our day-to-day life. The detection and generation of metaphors in textual form have been studied extensively but metaphors in other forms have been under-explored. Recent studies have shown that Vision-Language (VL) models cannot understand visual metaphors in memes and adverts. As of now, no probing studies have been done that involve complex language phenomena like metaphors with videos. Hence, we introduce a new VL task of describing the metaphors present in the videos in our work. To facilitate this novel task, we construct and release a manually created dataset with 705 videos and 2115 human-written captions, along with a new metric called Average Concept Distance (ACD), to automatically evaluate the creativity of the metaphors generated. We also propose a novel low-resource video metaphor captioning system: GIT-LLaVA, which obtains comparable performance to SoTA video language models on the proposed task. We perform a comprehensive analysis of existing video language models on this task and publish our dataset, models, and benchmark results to enable further research.",
+    "authors": [
+        "Abisek Rajakumar Kalarani",
+        "Pushpak Bhattacharyya",
+        "Sumit Shekhar"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a new VL task of describing the metaphors present in the videos and proposes a novel low-resource video metaphor captioning system: GIT-LLaVA, which obtains comparable performance to SoTA video language models on the proposed task."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

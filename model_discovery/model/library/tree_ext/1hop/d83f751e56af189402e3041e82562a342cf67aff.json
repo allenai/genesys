@@ -1,0 +1,30 @@
+{
+    "acronym": "d83f751e56af189402e3041e82562a342cf67aff",
+    "title": "Communication-Efficient Large-Scale Distributed Deep Learning: A Comprehensive Survey",
+    "seed_ids": [
+        "gpt3",
+        "83edcfbb206ddad38a971d605da09390604248ea",
+        "5278b81db686b4d36143941bff1c683bea963a63"
+    ],
+    "s2id": "d83f751e56af189402e3041e82562a342cf67aff",
+    "abstract": "With the rapid growth in the volume of data sets, models, and devices in the domain of deep learning, there is increasing attention on large-scale distributed deep learning. In contrast to traditional distributed deep learning, the large-scale scenario poses new challenges that include fault tolerance, scalability of algorithms and infrastructures, and heterogeneity in data sets, models, and resources. Due to intensive synchronization of models and sharing of data across GPUs and computing nodes during distributed training and inference processes, communication efficiency becomes the bottleneck for achieving high performance at a large scale. This article surveys the literature over the period of 2018-2023 on algorithms and technologies aimed at achieving efficient communication in large-scale distributed deep learning at various levels, including algorithms, frameworks, and infrastructures. Specifically, we first introduce efficient algorithms for model synchronization and communication data compression in the context of large-scale distributed training. Next, we introduce efficient strategies related to resource allocation and task scheduling for use in distributed training and inference. After that, we present the latest technologies pertaining to modern communication infrastructures used in distributed deep learning with a focus on examining the impact of the communication overhead in a large-scale and heterogeneous setting. Finally, we conduct a case study on the distributed training of large language models at a large scale to illustrate how to apply these technologies in real cases. This article aims to offer researchers a comprehensive understanding of the current landscape of large-scale distributed deep learning and to reveal promising future research directions toward communication-efficient solutions in this scope.",
+    "authors": [
+        "Feng Liang",
+        "Zhen Zhang",
+        "Haifeng Lu",
+        "Victor C. M. Leung",
+        "Yanyi Guo",
+        "Xiping Hu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A comprehensive understanding of the current landscape of large-scale distributed deep learning is offered to offer researchers a comprehensive understanding of the current landscape and to reveal promising future research directions toward communication-efficient solutions in this scope."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

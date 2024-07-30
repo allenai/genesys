@@ -1,0 +1,29 @@
+{
+    "acronym": "61672e29c47e73cc317425c2842fedba0a52438a",
+    "title": "PersianLLaMA: Towards Building First Persian Large Language Model",
+    "seed_ids": [
+        "gpt2",
+        "bert",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "61672e29c47e73cc317425c2842fedba0a52438a",
+    "abstract": "Despite the widespread use of the Persian language by millions globally, limited efforts have been made in natural language processing for this language. The use of large language models as effective tools in various natural language processing tasks typically requires extensive textual data and robust hardware resources. Consequently, the scarcity of Persian textual data and the unavailability of powerful hardware resources have hindered the development of large language models for Persian. This paper introduces the first large Persian language model, named PersianLLaMA, trained on a collection of Persian texts and datasets. This foundational model comes in two versions, with 7 and 13 billion parameters, trained on formal and colloquial Persian texts using two different approaches. PersianLLaMA has been evaluated for natural language generation tasks based on the latest evaluation methods, namely using larger language models, and for natural language understanding tasks based on automated machine metrics. The results indicate that PersianLLaMA significantly outperforms its competitors in both understanding and generating Persian text. PersianLLaMA marks an important step in the development of Persian natural language processing and can be a valuable resource for the Persian-speaking community. This large language model can be used for various natural language processing tasks, especially text generation like chatbots, question-answering, machine translation, and text summarization",
+    "authors": [
+        "Mohammad Amin Abbasi",
+        "A. Ghafouri",
+        "Mahdi Firouzmandi",
+        "Hassan Naderi",
+        "B. Minaei-Bidgoli"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The first large Persian language model, named PersianLLaMA, trained on a collection of Persian texts and datasets is introduced, which can be used for various natural language processing tasks, especially text generation like chatbots, question-answering, machine translation, and text summarization."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

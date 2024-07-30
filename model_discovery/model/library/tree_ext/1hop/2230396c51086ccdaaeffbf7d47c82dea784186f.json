@@ -1,0 +1,42 @@
+{
+    "acronym": "2230396c51086ccdaaeffbf7d47c82dea784186f",
+    "title": "InfiniMotion: Mamba Boosts Memory in Transformer for Arbitrary Long Motion Generation",
+    "seed_ids": [
+        "transformer",
+        "31fdba3a68f286894f025e734a277e2ce94dd84c",
+        "b9646f057887825d7471ec01664494b0b7ca5a83",
+        "29655c10a041bcbdf7e039c8eca9675cc62213b6",
+        "f52af2c0cf521b48edd50670e9ba9cd02646d2b4",
+        "594d8e1696619f3cebb7c6bffdad8e0a5592f006",
+        "15736f7c205d961c00378a938daffaacb5a0718d",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "168fc3525f7b97695a97b04e257ee9bd1e832acb",
+        "63857190aaf5aab1d94b54bb257b7b03b8cb5a50",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2230396c51086ccdaaeffbf7d47c82dea784186f",
+    "abstract": "Text-to-motion generation holds potential for film, gaming, and robotics, yet current methods often prioritize short motion generation, making it challenging to produce long motion sequences effectively: (1) Current methods struggle to handle long motion sequences as a single input due to prohibitively high computational cost; (2) Breaking down the generation of long motion sequences into shorter segments can result in inconsistent transitions and requires interpolation or inpainting, which lacks entire sequence modeling. To solve these challenges, we propose InfiniMotion, a method that generates continuous motion sequences of arbitrary length within an autoregressive framework. We highlight its groundbreaking capability by generating a continuous 1-hour human motion with around 80,000 frames. Specifically, we introduce the Motion Memory Transformer with Bidirectional Mamba Memory, enhancing the transformer's memory to process long motion sequences effectively without overwhelming computational resources. Notably our method achieves over 30% improvement in FID and 6 times longer demonstration compared to previous state-of-the-art methods, showcasing significant advancements in long motion generation. See project webpage: https://steve-zeyu-zhang.github.io/InfiniMotion/",
+    "authors": [
+        "Zeyu Zhang",
+        "Akide Liu",
+        "Qi Chen",
+        "Feng Chen",
+        "Ian Reid",
+        "Richard Hartley",
+        "Bohan Zhuang",
+        "Hao Tang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Motion Memory Transformer with Bidirectional Mamba Memory is introduced, enhancing the transformer's memory to process long motion sequences effectively without overwhelming computational resources, showcasing significant advancements in long motion generation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

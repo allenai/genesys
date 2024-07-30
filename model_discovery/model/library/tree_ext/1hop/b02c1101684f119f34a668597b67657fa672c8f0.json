@@ -1,0 +1,27 @@
+{
+    "acronym": "b02c1101684f119f34a668597b67657fa672c8f0",
+    "title": "Large Product Key Memory for Pre-trained Language Models",
+    "seed_ids": [
+        "productkeymem",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "830995ef17cc291c13f42dfd9f462137de1d2179"
+    ],
+    "s2id": "b02c1101684f119f34a668597b67657fa672c8f0",
+    "abstract": "Product key memory (PKM) proposed by Lample et al. (2019) enables to improve prediction accuracy by increasing model capacity efficiently with insignificant computational overhead. However, their empirical application is only limited to causal language modeling. Motivated by the recent success of pretrained language models (PLMs), we investigate how to incorporate large PKM into PLMs that can be finetuned for a wide variety of downstream NLP tasks. We define a new memory usage metric, and careful observation using this metric reveals that most memory slots remain outdated during the training of PKM-augmented models. To train better PLMs by tackling this issue, we propose simple but effective solutions: (1) initialization from the model weights pretrained without memory and (2) augmenting PKM by addition rather than replacing a feed-forward network. We verify that both of them are crucial for the pretraining of PKM-augmented PLMs, enhancing memory utilization and downstream performance. Code and pretrained weights are available at https://github.com/clovaai/pkm-transformers.",
+    "authors": [
+        "Gyuwan Kim",
+        "Tae-Hwan Jung"
+    ],
+    "venue": "Findings",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new memory usage metric is defined, and careful observation reveals that most memory slots remain outdated during the training of PKM-augmented models, enhancing memory utilization and downstream performance."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

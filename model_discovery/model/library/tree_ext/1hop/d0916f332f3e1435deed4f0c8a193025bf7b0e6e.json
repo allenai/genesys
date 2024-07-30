@@ -1,0 +1,24 @@
+{
+    "acronym": "d0916f332f3e1435deed4f0c8a193025bf7b0e6e",
+    "title": "Efficient and Interpretable Information Retrieval for Product Question Answering with Heterogeneous Data",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "d0916f332f3e1435deed4f0c8a193025bf7b0e6e",
+    "abstract": "Expansion-enhanced sparse lexical representation improves information retrieval (IR) by minimizing vocabulary mismatch problems during lexical matching. In this paper, we explore the potential of jointly learning dense semantic representation and combining it with the lexical one for ranking candidate information. We present a hybrid information retrieval mechanism that maximizes lexical and semantic matching while minimizing their shortcomings. Our architecture consists of dual hybrid encoders that independently encode queries and information elements. Each encoder jointly learns a dense semantic representation and a sparse lexical representation augmented by a learnable term expansion of the corresponding text through contrastive learning. We demonstrate the efficacy of our model in single-stage ranking of a benchmark product question-answering dataset containing the typical heterogeneous information available on online product pages. Our evaluation demonstrates that our hybrid approach outperforms independently trained retrievers by 10.95% (sparse) and 2.7% (dense) in MRR@5 score. Moreover, our model offers better interpretability and performs comparably to state-of-the-art cross-encoders while reducing response time by 30% (latency) and cutting computational load by approximately 38% (FLOPs).",
+    "authors": [
+        "Biplob Biswas",
+        "R. Ramnath"
+    ],
+    "venue": "ECNLP",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a hybrid information retrieval mechanism that maximizes lexical and semantic matching while minimizing their shortcomings, and offers better interpretability and performs comparably to state-of-the-art cross-encoders."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

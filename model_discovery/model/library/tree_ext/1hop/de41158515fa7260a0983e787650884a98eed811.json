@@ -1,0 +1,51 @@
+{
+    "acronym": "de41158515fa7260a0983e787650884a98eed811",
+    "title": "On the Resurgence of Recurrent Models for Long Sequences - Survey and Research Opportunities in the Transformer Era",
+    "seed_ids": [
+        "s4",
+        "hippo",
+        "lssl",
+        "rwkv4",
+        "s5",
+        "resurrectrnn",
+        "434d751d355d7a7c20efa570e785c76286245e77",
+        "cb0ac335adda4ceef9987cbcbca9129e71c37f0a",
+        "240103933ffe3dac2179cc160a2bd91299357a53",
+        "55d8837c72863e63259a506b56222d08812699b0",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "e3fc46d5f4aae2c7a8a86b6bd21ca8db5d40fcbd",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "736eb449526fe7128917954ec5532b59e318ec78",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "d5e999aae76d5270ef272076979c809817458212",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "1a703f08da01cf737cce3fb9064259b3f4b44e9c",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "ccf84c100fa78c599d0e901a3754ff044aa6bd9e"
+    ],
+    "s2id": "de41158515fa7260a0983e787650884a98eed811",
+    "abstract": "A longstanding challenge for the Machine Learning community is the one of developing models that are capable of processing and learning from very long sequences of data. The outstanding results of Transformers-based networks (e.g., Large Language Models) promotes the idea of parallel attention as the key to succeed in such a challenge, obfuscating the role of classic sequential processing of Recurrent Models. However, in the last few years, researchers who were concerned by the quadratic complexity of self-attention have been proposing a novel wave of neural models, which gets the best from the two worlds, i.e., Transformers and Recurrent Nets. Meanwhile, Deep Space-State Models emerged as robust approaches to function approximation over time, thus opening a new perspective in learning from sequential data, followed by many people in the field and exploited to implement a special class of (linear) Recurrent Neural Networks. This survey is aimed at providing an overview of these trends framed under the unifying umbrella of Recurrence. Moreover, it emphasizes novel research opportunities that become prominent when abandoning the idea of processing long sequences whose length is known-in-advance for the more realistic setting of potentially infinite-length sequences, thus intersecting the field of lifelong-online learning from streamed data.",
+    "authors": [
+        "Matteo Tiezzi",
+        "Michele Casoni",
+        "Alessandro Betti",
+        "Tommaso Guidi",
+        "Marco Gori",
+        "S. Melacci"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This survey is aimed at providing an overview of trends framed under the unifying umbrella of Recurrence, and emphasizes novel research opportunities that become prominent when abandoning the idea of processing long sequences whose length is known-in-advance for the more realistic setting of potentially infinite-length sequences, thus intersecting the field of lifelong-online learning from streamed data."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

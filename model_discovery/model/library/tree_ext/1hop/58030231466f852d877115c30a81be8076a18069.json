@@ -1,0 +1,35 @@
+{
+    "acronym": "58030231466f852d877115c30a81be8076a18069",
+    "title": "Toffee: Efficient Million-Scale Dataset Construction for Subject-Driven Text-to-Image Generation",
+    "seed_ids": [
+        "classfreediffu",
+        "f30bb09dbd95845d792bdac217a9a652635ee8a5",
+        "6561ece074467a15e62e19bc4fd66a8e74de5eec",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "58030231466f852d877115c30a81be8076a18069",
+    "abstract": "In subject-driven text-to-image generation, recent works have achieved superior performance by training the model on synthetic datasets containing numerous image pairs. Trained on these datasets, generative models can produce text-aligned images for specific subject from arbitrary testing image in a zero-shot manner. They even outperform methods which require additional fine-tuning on testing images. However, the cost of creating such datasets is prohibitive for most researchers. To generate a single training pair, current methods fine-tune a pre-trained text-to-image model on the subject image to capture fine-grained details, then use the fine-tuned model to create images for the same subject based on creative text prompts. Consequently, constructing a large-scale dataset with millions of subjects can require hundreds of thousands of GPU hours. To tackle this problem, we propose Toffee, an efficient method to construct datasets for subject-driven editing and generation. Specifically, our dataset construction does not need any subject-level fine-tuning. After pre-training two generative models, we are able to generate infinite number of high-quality samples. We construct the first large-scale dataset for subject-driven image editing and generation, which contains 5 million image pairs, text prompts, and masks. Our dataset is 5 times the size of previous largest dataset, yet our cost is tens of thousands of GPU hours lower. To test the proposed dataset, we also propose a model which is capable of both subject-driven image editing and generation. By simply training the model on our proposed dataset, it obtains competitive results, illustrating the effectiveness of the proposed dataset construction framework.",
+    "authors": [
+        "Yufan Zhou",
+        "Ruiyi Zhang",
+        "Kaizhi Zheng",
+        "Nanxuan Zhao",
+        "Jiuxiang Gu",
+        "Zichao Wang",
+        "Xin Eric Wang",
+        "Tongfei Sun"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work constructs the first large-scale dataset for subject-driven image editing and generation, which contains 5 million image pairs, text prompts, and masks and proposes Toffee, an efficient method to construct datasets for subject-driven editing and generation which does not need any subject-level fine-tuning."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

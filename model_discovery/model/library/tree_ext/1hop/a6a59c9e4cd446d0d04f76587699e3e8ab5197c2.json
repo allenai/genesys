@@ -1,0 +1,31 @@
+{
+    "acronym": "a6a59c9e4cd446d0d04f76587699e3e8ab5197c2",
+    "title": "Semantic-Conditional Diffusion Networks for Image Captioning*",
+    "seed_ids": [
+        "analogbits",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2"
+    ],
+    "s2id": "a6a59c9e4cd446d0d04f76587699e3e8ab5197c2",
+    "abstract": "Recent advances on text-to-image generation have witnessed the rise of diffusion models which act as powerful generative models. Nevertheless, it is not trivial to exploit such latent variable models to capture the dependency among discrete words and meanwhile pursue complex visual-language alignment in image captioning. In this paper, we break the deeply rooted conventions in learning Transformer-based encoder-decoder, and propose a new diffusion model based paradigm tailored for image captioning, namely Semantic-Conditional Diffusion Networks (SCD-Net). Technically, for each input image, we first search the semantically relevant sentences via cross-modal retrieval model to convey the comprehensive semantic information. The rich semantics are further regarded as semantic prior to trigger the learning of Diffusion Transformer, which produces the output sentence in a diffusion process. In SCD-Net, multiple Diffusion Transformer structures are stacked to progressively strengthen the output sentence with better visional-language alignment and linguistical coherence in a cascaded manner. Furthermore, to stabilize the diffusion process, a new self-critical sequence training strategy is designed to guide the learning of SCD-Net with the knowledge of a standard autoregressive Transformer model. Extensive experiments on COCO dataset demonstrate the promising potential of using diffusion models in the challenging image captioning task. Source code is available at",
+    "authors": [
+        "Jianjie Luo",
+        "Yehao Li",
+        "Yingwei Pan",
+        "Ting Yao",
+        "Jianlin Feng",
+        "Hongyang Chao",
+        "Tao Mei"
+    ],
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The deeply rooted conventions in learning Transformer-based encoder-decoder are broken, and a new diffusion model based paradigm tailored for image captioning, namely Semantic-Conditional Diffusion Networks (SCD-Net) is proposed."
+    },
+    "citationCount": 31,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

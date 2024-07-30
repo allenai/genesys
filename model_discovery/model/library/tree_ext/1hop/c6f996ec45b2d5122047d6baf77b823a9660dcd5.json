@@ -1,0 +1,24 @@
+{
+    "acronym": "c6f996ec45b2d5122047d6baf77b823a9660dcd5",
+    "title": "AraPunc: Arabic Punctuation Restoration Using Transformers",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "c6f996ec45b2d5122047d6baf77b823a9660dcd5",
+    "abstract": "Adding punctuation to Arabic text enhances readability and clarity. This is very clear in many applications such as automatic speech recognition (ASR) and machine translation (MT) systems. In this paper, we introduce a new punctuation dataset. Our AraPunc dataset is based on the pre-processing of the Tashkeela \"Arabic diacritization corpus\". We keep six classes: space \u20180\u2019, full-stop \u2018.\u2019, comma \u2018,\u2019, the colon\u2019:\u2019, semicolon \u2018;\u2019, and question mark \u2018?\u2019. We treat the punctuation restoration task as a token-wise classification problem that assigns a class (one of the six classes) to each word on the input sentence. We train different transformer-based language models on our new dataset. We found that XLM-RoBERTa outperforms other transformer-based models with a macro-average F1-score of 0.7851 on the AraPunc test set. We also allowed cross-finetuning between QCRI Aljazeera Speech Recognition (QASR) dataset and our novel AraPunc dataset. We managed to achieve a macro average F1-score of 0.7050 on the QASR test set, after training the model first using the AraPunc dataset. Our experiments revealed that AraPunc provides better representations which makes it more suitable to fine-tune models for punctuation restoration task. We release our dataset and code to facilitate future research on this topic1.",
+    "authors": [
+        "Abdelrahman Sakr",
+        "Marwan Torki"
+    ],
+    "venue": "ACS/IEEE International Conference on Computer Systems and Applications",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new punctuation dataset based on the pre-processing of the Tashkeela \"Arabic diacritization corpus\", which reveals that AraPunc provides better representations which makes it more suitable to fine-tune models for punctuation restoration task."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

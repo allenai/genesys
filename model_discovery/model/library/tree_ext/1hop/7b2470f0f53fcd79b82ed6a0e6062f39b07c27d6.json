@@ -1,0 +1,45 @@
+{
+    "acronym": "7b2470f0f53fcd79b82ed6a0e6062f39b07c27d6",
+    "title": "Hierarchical Context Merging: Better Long Context Understanding for Pre-trained LLMs",
+    "seed_ids": [
+        "yarn",
+        "compressivetransformer",
+        "unlimiformer",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "60b35c6d68acced19b0c66edcfc0ee0a2c11efed",
+        "dbc368bc8b49347dd27679894524fa62f88492c9",
+        "732e3faec4e5be4d144256f2c379b9dc49f0b227",
+        "6edccbd83a9aae204785d4821f97855677c33866",
+        "0e802c0739771acf70e60d59c2df51cd7e8c50c0",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "e3aa232577bb427b1f3a34acbdef84bd85734042"
+    ],
+    "s2id": "7b2470f0f53fcd79b82ed6a0e6062f39b07c27d6",
+    "abstract": "Large language models (LLMs) have shown remarkable performance in various natural language processing tasks. However, a primary constraint they face is the context limit, i.e., the maximum number of tokens they can process. Previous works have explored architectural changes and modifications in positional encoding to relax the constraint, but they often require expensive training or do not address the computational demands of self-attention. In this paper, we present Hierarchical cOntext MERging (HOMER), a new training-free scheme designed to overcome the limitations. HOMER uses a divide-and-conquer algorithm, dividing long inputs into manageable chunks. Each chunk is then processed collectively, employing a hierarchical strategy that merges adjacent chunks at progressive transformer layers. A token reduction technique precedes each merging, ensuring memory usage efficiency. We also propose an optimized computational order reducing the memory requirement to logarithmically scale with respect to input length, making it especially favorable for environments with tight memory restrictions. Our experiments demonstrate the proposed method's superior performance and memory efficiency, enabling the broader use of LLMs in contexts requiring extended context. Code is available at https://github.com/alinlab/HOMER.",
+    "authors": [
+        "Woomin Song",
+        "Seunghyuk Oh",
+        "Sangwoo Mo",
+        "Jaehyung Kim",
+        "Sukmin Yun",
+        "Jung-Woo Ha",
+        "Jinwoo Shin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "HOMER is presented, a new training-free scheme designed to overcome the limitations of large language models by employing a hierarchical strategy that merges adjacent chunks at progressive transformer layers and proposes an optimized computational order reducing the memory requirement to logarithmically scale with respect to input length."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,32 @@
+{
+    "acronym": "d1870f667cbd309df45a244c170d1d4ba36bac03",
+    "title": "Subformer: Exploring Weight Sharing for Parameter Efficiency in Generative Transformers",
+    "seed_ids": [
+        "transformerxl",
+        "b0cd93e95fb6885db47d755a4c631158b0198047",
+        "8af925f4edf45131b5b6fed8aa655089d58692fa",
+        "841d43cf4015042a4ee45745c5b6f2c59c184da5",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9a618cca0d2fc78db1be1aed70517401cb3f3859",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "16c844fd4d97f3c6eb38b0d6527c87d184efedc3"
+    ],
+    "s2id": "d1870f667cbd309df45a244c170d1d4ba36bac03",
+    "abstract": "Transformers have shown improved performance when compared to previous architectures for sequence processing such as RNNs. Despite their sizeable performance gains, as recently suggested, the model is computationally expensive to train and with a high parameter budget. In light of this, we explore parameter-sharing methods in Transformers with a specific focus on generative models. We perform an analysis of different parameter sharing/reduction methods and develop the Subformer. Our model combines sandwich-style parameter sharing, which overcomes naive cross-layer parameter sharing in generative models, and self-attentive embedding factorization (SAFE). Experiments on machine translation, abstractive summarization and language modeling show that the Subformer can outperform the Transformer even when using significantly fewer parameters.",
+    "authors": [
+        "Machel Reid",
+        "Edison Marrese-Taylor",
+        "Y. Matsuo"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This model combines sandwich-style parameter sharing, which overcomes naive cross-layer parameter sharing in generative models, and self-attentive embedding factorization (SAFE) and shows that the Subformer can outperform the Transformer even when using significantly fewer parameters."
+    },
+    "citationCount": 40,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

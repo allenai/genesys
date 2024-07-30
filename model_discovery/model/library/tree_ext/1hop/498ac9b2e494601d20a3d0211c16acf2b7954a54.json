@@ -1,0 +1,39 @@
+{
+    "acronym": "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+    "title": "Imagen Video: High Definition Video Generation with Diffusion Models",
+    "seed_ids": [
+        "classfreediffu",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+    "abstract": "We present Imagen Video, a text-conditional video generation system based on a cascade of video diffusion models. Given a text prompt, Imagen Video generates high definition videos using a base video generation model and a sequence of interleaved spatial and temporal video super-resolution models. We describe how we scale up the system as a high definition text-to-video model including design decisions such as the choice of fully-convolutional temporal and spatial super-resolution models at certain resolutions, and the choice of the v-parameterization of diffusion models. In addition, we confirm and transfer findings from previous work on diffusion-based image generation to the video generation setting. Finally, we apply progressive distillation to our video models with classifier-free guidance for fast, high quality sampling. We find Imagen Video not only capable of generating videos of high fidelity, but also having a high degree of controllability and world knowledge, including the ability to generate diverse videos and text animations in various artistic styles and with 3D object understanding. See https://imagen.research.google/video/ for samples.",
+    "authors": [
+        "Jonathan Ho",
+        "William Chan",
+        "Chitwan Saharia",
+        "Jay Whang",
+        "Ruiqi Gao",
+        "A. Gritsenko",
+        "Diederik P. Kingma",
+        "Ben Poole",
+        "Mohammad Norouzi",
+        "David J. Fleet",
+        "Tim Salimans"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Imagen Video is found to be capable of generating videos of high fidelity, but also having a high degree of controllability and world knowledge, including the ability to generate diverse videos and text animations in various artistic styles and with 3D object understanding."
+    },
+    "citationCount": 956,
+    "influentialCitationCount": 72,
+    "code": null,
+    "description": null,
+    "url": null
+}

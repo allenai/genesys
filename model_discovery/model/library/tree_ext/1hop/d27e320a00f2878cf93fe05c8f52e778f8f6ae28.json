@@ -1,0 +1,44 @@
+{
+    "acronym": "d27e320a00f2878cf93fe05c8f52e778f8f6ae28",
+    "title": "Holographic Global Convolutional Networks for Long-Range Prediction Tasks in Malware Detection",
+    "seed_ids": [
+        "sgconv",
+        "0b5546cde38aa98542f888cc4cfd4403c5fc1834",
+        "2dfd237b2131ef578fef11b69c7981cf29d7b884",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "c51192d7440807dc98cc4374fb5d919390d70b0b",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "bfd2b76998a0521c12903ef5ced517adf70ad2ba",
+        "d98b5c1d0f9a4e39dc79ea7a3f74e54789df5e13",
+        "998ac3e945857cf2676ee7efdbaf443a0c6f820a",
+        "240300b1da360f22bf0b82c6817eacebba6deed4",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "dbf53ece1a6a8860e41ff5f721c72ceb0fb18dd6",
+        "af679d69fcc1d0fcf0f039aba937853bcb50a8de",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87"
+    ],
+    "s2id": "d27e320a00f2878cf93fe05c8f52e778f8f6ae28",
+    "abstract": "Malware detection is an interesting and valuable domain to work in because it has significant real-world impact and unique machine-learning challenges. We investigate existing long-range techniques and benchmarks and find that they're not very suitable in this problem area. In this paper, we introduce Holographic Global Convolutional Networks (HGConv) that utilize the properties of Holographic Reduced Representations (HRR) to encode and decode features from sequence elements. Unlike other global convolutional methods, our method does not require any intricate kernel computation or crafted kernel design. HGConv kernels are defined as simple parameters learned through backpropagation. The proposed method has achieved new SOTA results on Microsoft Malware Classification Challenge, Drebin, and EMBER malware benchmarks. With log-linear complexity in sequence length, the empirical results demonstrate substantially faster run-time by HGConv compared to other methods achieving far more efficient scaling even with sequence length $\\geq 100,000$.",
+    "authors": [
+        "Mohammad Mahmudul Alam",
+        "Edward Raff",
+        "Stella Biderman",
+        "Tim Oates",
+        "James Holt"
+    ],
+    "venue": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Holographic Global Convolutional Networks (HGConv) is introduced that utilize the properties of Holographic Reduced Representations (HRR) to encode and decode features from sequence elements to encode and decode features from sequence elements."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

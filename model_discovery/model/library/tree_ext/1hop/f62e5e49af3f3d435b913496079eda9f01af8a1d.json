@@ -1,0 +1,28 @@
+{
+    "acronym": "f62e5e49af3f3d435b913496079eda9f01af8a1d",
+    "title": "Self-Critical Alternate Learning based Semantic Broadcast Communication",
+    "seed_ids": [
+        "universaltrans"
+    ],
+    "s2id": "f62e5e49af3f3d435b913496079eda9f01af8a1d",
+    "abstract": "Semantic communication (SemCom) has been deemed as a promising communication paradigm to break through the bottleneck of traditional communications. Nonetheless, most of the existing works focus more on point-to-point communication scenarios and its extension to multi-user scenarios is not that straightforward due to its cost-inefficiencies to directly scale the JSCC framework to the multi-user communication system. Meanwhile, previous methods optimize the system by differentiable bit-level supervision, easily leading to a\"semantic gap\". Therefore, we delve into multi-user broadcast communication (BC) based on the universal transformer (UT) and propose a reinforcement learning (RL) based self-critical alternate learning (SCAL) algorithm, named SemanticBC-SCAL, to capably adapt to the different BC channels from one transmitter (TX) to multiple receivers (RXs) for sentence generation task. In particular, to enable stable optimization via a nondifferentiable semantic metric, we regard sentence similarity as a reward and formulate this learning process as an RL problem. Considering the huge decision space, we adopt a lightweight but efficient self-critical supervision to guide the learning process. Meanwhile, an alternate learning mechanism is developed to provide cost-effective learning, in which the encoder and decoders are updated asynchronously with different iterations. Notably, the incorporation of RL makes SemanticBC-SCAL compliant with any user-defined semantic similarity metric and simultaneously addresses the channel non-differentiability issue by alternate learning. Besides, the convergence of SemanticBC-SCAL is also theoretically established. Extensive simulation results have been conducted to verify the effectiveness and superiorness of our approach, especially in low SNRs.",
+    "authors": [
+        "Zhilin Lu",
+        "Rongpeng Li",
+        "Ming Lei",
+        "Chan Wang",
+        "Zhifeng Zhao",
+        "Honggang Zhang"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work enters into multi-user broadcast communication based on the universal transformer (UT) and proposes a reinforcement learning (RL) based self-critical alternate learning (SCAL) algorithm, named SemanticBC-SCAL, to capably adapt to the different BC channels from one transmitter (TX) to multiple receivers (RXs) for sentence generation task."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

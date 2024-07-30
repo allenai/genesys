@@ -1,0 +1,29 @@
+{
+    "acronym": "eb9fc16bd99443af8bca10f9f01f92854ab7cbbc",
+    "title": "Act3D: 3D Feature Field Transformers for Multi-Task Robotic Manipulation",
+    "seed_ids": [
+        "roformer",
+        "60c8d0619481eaafdd1189af610d0e636271fed5",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812"
+    ],
+    "s2id": "eb9fc16bd99443af8bca10f9f01f92854ab7cbbc",
+    "abstract": "3D perceptual representations are well suited for robot manipulation as they easily encode occlusions and simplify spatial reasoning. Many manipulation tasks require high spatial precision in end-effector pose prediction, which typically demands high-resolution 3D feature grids that are computationally expensive to process. As a result, most manipulation policies operate directly in 2D, foregoing 3D inductive biases. In this paper, we introduce Act3D, a manipulation policy transformer that represents the robot's workspace using a 3D feature field with adaptive resolutions dependent on the task at hand. The model lifts 2D pre-trained features to 3D using sensed depth, and attends to them to compute features for sampled 3D points. It samples 3D point grids in a coarse to fine manner, featurizes them using relative-position attention, and selects where to focus the next round of point sampling. In this way, it efficiently computes 3D action maps of high spatial resolution. Act3D sets a new state-of-the-art in RL-Bench, an established manipulation benchmark, where it achieves 10% absolute improvement over the previous SOTA 2D multi-view policy on 74 RLBench tasks and 22% absolute improvement with 3x less compute over the previous SOTA 3D policy. We quantify the importance of relative spatial attention, large-scale vision-language pre-trained 2D backbones, and weight tying across coarse-to-fine attentions in ablative experiments. Code and videos are available on our project website: https://act3d.github.io/.",
+    "authors": [
+        "Th\u00e9ophile Gervet",
+        "Zhou Xian",
+        "N. Gkanatsios",
+        "Katerina Fragkiadaki"
+    ],
+    "venue": "Conference on Robot Learning",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Act3D is introduced, a manipulation policy transformer that represents the robot's workspace using a 3D feature field with adaptive resolutions dependent on the task at hand, and sets a new state-of-the-art in RL-Bench, an established manipulation benchmark."
+    },
+    "citationCount": 21,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

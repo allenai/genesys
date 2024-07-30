@@ -1,0 +1,24 @@
+{
+    "acronym": "4ea2a426d2b3c87ea9632c7f017f6883ae238c36",
+    "title": "Investigating Self-Attention Network for Chinese Word Segmentation",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "4ea2a426d2b3c87ea9632c7f017f6883ae238c36",
+    "abstract": "Neural network has become the dominant method for Chinese word segmentation. Most existing models cast the task as sequence labeling, using BiLSTM-CRF for representing the input, and making output predictions. Recently, attention-based sequence models have emerged as a highly competitive alternative to LSTMs, which allow better running speed by parallelization of computation. We investigate self-attention network (SAN) for Chinese word segmentation, making comparisons between BiLSTM-CRF models. In addition, the influence of contextualized character embeddings is investigated using BERT, and a method is proposed for integrating word information into SAN segmentation. Results show that SAN gives highly competitive results compared with BiLSTMs, with BERT, and word information further improving segmentation for in-domain, and cross-domain segmentation. Our final models give the best results for 6 heterogenous domain benchmarks.",
+    "authors": [
+        "Leilei Gan",
+        "Yue Zhang"
+    ],
+    "venue": "IEEE/ACM Transactions on Audio Speech and Language Processing",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work investigates self-attention network (SAN) for Chinese word segmentation, making comparisons between BiLSTM-CRF models and the influence of contextualized character embeddings using BERT, and proposes a method for integrating word information into SAN segmentation."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

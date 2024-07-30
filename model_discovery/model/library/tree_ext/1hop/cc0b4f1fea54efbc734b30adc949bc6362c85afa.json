@@ -1,0 +1,29 @@
+{
+    "acronym": "cc0b4f1fea54efbc734b30adc949bc6362c85afa",
+    "title": "Knowledge Corpus Error in Question Answering",
+    "seed_ids": [
+        "gpt3",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "46c585ee9abf76779ea4b863d2da4358efd0d1d3",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3"
+    ],
+    "s2id": "cc0b4f1fea54efbc734b30adc949bc6362c85afa",
+    "abstract": "Recent works in open-domain question answering (QA) have explored generating context passages from large language models (LLMs), replacing the traditional retrieval step in the QA pipeline. However, it is not well understood why generated passages can be more effective than retrieved ones. This study revisits the conventional formulation of QA and introduces the concept of knowledge corpus error. This error arises when the knowledge corpus used for retrieval is only a subset of the entire string space, potentially excluding more helpful passages that exist outside the corpus. LLMs may mitigate this shortcoming by generating passages in a larger space. We come up with an experiment of paraphrasing human-annotated gold context using LLMs to observe knowledge corpus error empirically. Our results across three QA benchmarks reveal an increased performance (10% - 13%) when using paraphrased passage, indicating a signal for the existence of knowledge corpus error. Our code is available at https://github.com/xfactlab/emnlp2023-knowledge-corpus-error",
+    "authors": [
+        "Yejoon Lee",
+        "Philhoon Oh",
+        "James Thorne"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study revisits the conventional formulation of QA and introduces the concept of knowledge corpus error, and comes up with an experiment of paraphrasing human-annotated gold context using LLMs to observeknowledge corpus error empirically."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,34 @@
+{
+    "acronym": "ca89b6de0dbe31f523495727dc83f8ab5d2ae1c3",
+    "title": "FAITH: Frequency-domain Attention In Two Horizons for Time Series Forecasting",
+    "seed_ids": [
+        "reformer",
+        "9297502c3b1eaa528e8a8fb85a83842d0577fdc6",
+        "c97c1691f5ac8deba248c8bcde9cf9899a2bb552",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676"
+    ],
+    "s2id": "ca89b6de0dbe31f523495727dc83f8ab5d2ae1c3",
+    "abstract": "Time Series Forecasting plays a crucial role in various fields such as industrial equipment maintenance, meteorology, energy consumption, traffic flow and financial investment. However, despite their considerable advantages over traditional statistical approaches, current deep learning-based predictive models often exhibit a significant deviation between their forecasting outcomes and the ground truth. This discrepancy is largely due to an insufficient emphasis on extracting the sequence's latent information, particularly its global information within the frequency domain and the relationship between different variables. To address this issue, we propose a novel model Frequency-domain Attention In Two Horizons, which decomposes time series into trend and seasonal components using a multi-scale sequence adaptive decomposition and fusion architecture, and processes them separately. FAITH utilizes Frequency Channel feature Extraction Module and Frequency Temporal feature Extraction Module to capture inter-channel relationships and temporal global information in the sequence, significantly improving its ability to handle long-term dependencies and complex patterns. Furthermore, FAITH achieves theoretically linear complexity by modifying the time-frequency domain transformation method, effectively reducing computational costs. Extensive experiments on 6 benchmarks for long-term forecasting and 3 benchmarks for short-term forecasting demonstrate that FAITH outperforms existing models in many fields, such as electricity, weather and traffic, proving its effectiveness and superiority both in long-term and short-term time series forecasting tasks. Our codes and data are available at https://github.com/LRQ577/FAITH.",
+    "authors": [
+        "Ruiqi Li",
+        "Maowei Jiang",
+        "Kai Wang",
+        "Kaiduo Feng",
+        "Quangao Liu",
+        "Yue Sun",
+        "Xiufang Zhou"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel model Frequency-domain Attention In Two Horizons, which decomposes time series into trend and seasonal components using a multi-scale sequence adaptive decomposition and fusion architecture, and processes them separately, and achieves theoretically linear complexity by modifying the time-frequency domain transformation method."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

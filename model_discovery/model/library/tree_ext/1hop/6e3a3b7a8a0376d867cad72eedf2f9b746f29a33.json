@@ -1,0 +1,30 @@
+{
+    "acronym": "6e3a3b7a8a0376d867cad72eedf2f9b746f29a33",
+    "title": "simple diffusion: End-to-end diffusion for high resolution images",
+    "seed_ids": [
+        "classfreediffu",
+        "7acc71fad70c4c65203739f156bcb440587df901",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "6e3a3b7a8a0376d867cad72eedf2f9b746f29a33",
+    "abstract": "Currently, applying diffusion models in pixel space of high resolution images is difficult. Instead, existing approaches focus on diffusion in lower dimensional spaces (latent diffusion), or have multiple super-resolution levels of generation referred to as cascades. The downside is that these approaches add additional complexity to the diffusion framework. This paper aims to improve denoising diffusion for high resolution images while keeping the model as simple as possible. The paper is centered around the research question: How can one train a standard denoising diffusion models on high resolution images, and still obtain performance comparable to these alternate approaches? The four main findings are: 1) the noise schedule should be adjusted for high resolution images, 2) It is sufficient to scale only a particular part of the architecture, 3) dropout should be added at specific locations in the architecture, and 4) downsampling is an effective strategy to avoid high resolution feature maps. Combining these simple yet effective techniques, we achieve state-of-the-art on image generation among diffusion models without sampling modifiers on ImageNet.",
+    "authors": [
+        "Emiel Hoogeboom",
+        "J. Heek",
+        "Tim Salimans"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The four main findings are: 1) the noise schedule should be adjusted for high resolution images, 2) It is sufficient to scale only a particular part of the architecture, 3) dropout should be added at specific locations in the Architecture, and 4) downsampling is an effective strategy to avoid high resolution feature maps."
+    },
+    "citationCount": 133,
+    "influentialCitationCount": 11,
+    "code": null,
+    "description": null,
+    "url": null
+}

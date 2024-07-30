@@ -1,0 +1,32 @@
+{
+    "acronym": "8e6c4425e48b09d64827c64d8de0008f41f9be54",
+    "title": "Qilin-Med: Multi-stage Knowledge Injection Advanced Medical Large Language Model",
+    "seed_ids": [
+        "gpt2",
+        "94ce1d5924e05e8d75e43ce70044293ddcef850a",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8e6c4425e48b09d64827c64d8de0008f41f9be54",
+    "abstract": "Integrating large language models (LLMs) into healthcare holds great potential but faces challenges. Pre-training LLMs from scratch for domains like medicine is resource-heavy and often unfeasible. On the other hand, sole reliance on Supervised Fine-tuning (SFT) can result in overconfident predictions and may not tap into domain-specific insights. In response, we present a multi-stage training method combining Domain-specific Continued Pre-training (DCPT), SFT, and Direct Preference Optimization (DPO). In addition, we publish a 3Gb Chinese Medicine (ChiMed) dataset, encompassing medical question answering, plain texts, knowledge graphs, and dialogues, segmented into three training stages. The medical LLM trained with our pipeline, Qilin-Med, shows substantial performance improvement. In the CPT and SFT phases, Qilin-Med achieved 38.4% and 40.0% accuracy on the CMExam test set, respectively. It outperformed the basemodel Baichuan-7B (accuracy: 33.5%), by 7.5%. In the DPO phase, it scored 16.66 in BLEU-1 and 27.44 in ROUGE-1 on the Huatuo-26M test set, bringing further improvement to the SFT phase (12.69 in BLEU-1 and 24.21 in ROUGE-1). Additionally, we have further enhanced the model's performance through the Retrieval Augmented Generation (RAG) approach. Experiments demonstrate that Qilin-Med-RAG achieves an accuracy rate of 42.8% on CMExam. These results highlight the contribution of our novel training approach in building LLMs for medical applications.",
+    "authors": [
+        "Qichen Ye",
+        "Junling Liu",
+        "Dading Chong",
+        "Peilin Zhou",
+        "Y. Hua",
+        "Andrew Liu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A multi-stage training method combining Domain-specific Continued Pre-training (DCPT), SFT, and Direct Preference Optimization (DPO) is presented, and a 3Gb Chinese Medicine dataset, encompassing medical question answering, plain texts, knowledge graphs, and dialogues, is published."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

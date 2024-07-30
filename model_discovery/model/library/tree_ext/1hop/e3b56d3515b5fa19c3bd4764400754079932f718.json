@@ -1,0 +1,33 @@
+{
+    "acronym": "e3b56d3515b5fa19c3bd4764400754079932f718",
+    "title": "A Unified Efficient Pyramid Transformer for Semantic Segmentation",
+    "seed_ids": [
+        "sparsetransformer",
+        "reformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "18d41e3bd94cf38736e37580912c3b4ba56f08d5",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e3b56d3515b5fa19c3bd4764400754079932f718",
+    "abstract": "Semantic segmentation is a challenging problem due to difficulties in modeling context in complex scenes and class confusions along boundaries. Most literature either focuses on context modeling or boundary refinement, which is less generalizable in open-world scenarios. In this work, we advocate a unified framework (UN-EPT) to segment objects by considering both context information and boundary artifacts. We first adapt a sparse sampling strategy to incorporate the transformer-based attention mechanism for efficient context modeling. In addition, a separate spatial branch is introduced to capture image details for boundary refinement. The whole model can be trained in an end-to-end manner. We demonstrate promising performance on three popular benchmarks for semantic segmentation with low memory footprint.",
+    "authors": [
+        "Fangrui Zhu",
+        "Yi Zhu",
+        "Li Zhang",
+        "Chongruo Wu",
+        "Yanwei Fu",
+        "Mu Li"
+    ],
+    "venue": "2021 IEEE/CVF International Conference on Computer Vision Workshops (ICCVW)",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a unified framework (UN-EPT) to segment objects by considering both context information and boundary artifacts, and demonstrates promising performance on three popular benchmarks for semantic segmentation with low memory footprint."
+    },
+    "citationCount": 23,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

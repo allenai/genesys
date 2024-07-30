@@ -1,0 +1,36 @@
+{
+    "acronym": "9d025ac57702c31a68a7ab97226994e1f489145a",
+    "title": "A 28nm 57.6TOPS/W Attention-based NN Processor with Correlative Computing-in-Memory Ring and Dataflow-reshaped Digital-assisted Computing-in-Memory Array",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "9d025ac57702c31a68a7ab97226994e1f489145a",
+    "abstract": "Computing-in-memory (CIM) is an attractive approach for energy-efficient neural network (NN) processors. Attention mechanisms shows great performance in NLP and CV by capturing contextual knowledge from the entire tokens (X). The attention mechanism is essentially a content-based similarity search by computing attention probabilities (P) and final attention results (Att). For P, first, the query (Q) and the key (K) are computed by X and weight matrices $(\\text{W}_{Q}, \\text{W}_{K})$ respectively. Then, Q is multiplied by $\\text{K}^{T}($ QxK $^{T})$ for the attention score (S). Finally, P is computed by Softmax-activating S. For Att, V is obtained by multiplying X and a weight matrix $(\\text{W}_{V})$, and then, Att is computed by multiplying P and $\\text{V}(\\text{P}\\times \\text{V})$. As shown in Fig. 1, previous CIM chips face several challenges for P and Att computing [1, 2]. First, CIM shows great advantages only if multiplying a fixed matrix. But in P and Att computing, $\\text{W}_{Q}$, $\\text{W}_{K}, \\text{W}_{V}$ are fixed, involving in 15% computations in Longformer. Thus, most computations mismatch the traditional paradigm of CIM. Second, in QxK $^{T}$, 34.7% of the computations are redundant as many near-zeros from Softmax become zero after quantization. Third, CIM macros perform inner product naturally. For Att, V is generated row-by-row (i.e., token-wise), but in $\\text{P}\\times \\text{V}$, a column of V is left-multiplied by P (i.e., tokenacross). Only when V has been fully generated, can CIM macros perform $\\text{P}\\times \\text{V}$. Thus, Att computing cannot be fully pipelined, reducing system throughput. This paper presents a processor named AttCIM that solves these issues with three key features: 1) A correlative CIM ring (CRCIMR) to avoid it to load dynamically generated matrices. 2) A Softmax-based speculate unit (SSU) to eliminate redundant computations in $\\text{Q}\\times \\text{K}^{T}$. 3) A dataflow-reshaped digital-assisted CIM-array (DRCIMA) to achieve fully pipelined computations in $\\text{P}\\times \\text{V}$.",
+    "authors": [
+        "Ruiqi Guo",
+        "Zhiheng Yue",
+        "Hao Li",
+        "Te Hu",
+        "Yabing Wang",
+        "Hao Sun",
+        "Jeng-Long Hsu",
+        "Yaojun Zhang",
+        "Bonan Yan",
+        "Leibo Liu",
+        "Ru Huang",
+        "Shaojun Wei",
+        "Shouyi Yin"
+    ],
+    "venue": "International Symposium on Security in Computing and Communications",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A correlative CIM ring (CRCIMR) to avoid it to load dynamically generated matrices and a dataflow-reshaped digital-assisted CIM-array (DRCIMA) to achieve fully pipelined computations in P and Att computing."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

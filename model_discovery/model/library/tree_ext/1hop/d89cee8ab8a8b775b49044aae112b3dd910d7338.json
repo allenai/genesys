@@ -1,0 +1,30 @@
+{
+    "acronym": "d89cee8ab8a8b775b49044aae112b3dd910d7338",
+    "title": "Penguins Don\u2019t Fly: Reasoning about Generics through Instantiations and Exceptions",
+    "seed_ids": [
+        "gpt2",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d89cee8ab8a8b775b49044aae112b3dd910d7338",
+    "abstract": "Generics express generalizations about the world (e.g., birds can fly) that are not universally true (e.g., newborn birds and penguins cannot fly). Commonsense knowledge bases, used extensively in NLP, encode some generic knowledge but rarely enumerate such exceptions and knowing when a generic statement holds or does not hold true is crucial for developing a comprehensive understanding of generics. We present a novel framework informed by linguistic theory to generate exemplars\u2014specific cases when a generic holds true or false. We generate ~19k exemplars for ~650 generics and show that our framework outperforms a strong GPT-3 baseline by 12.8 precision points. Our analysis highlights the importance of linguistic theory-based controllability for generating exemplars, the insufficiency of knowledge bases as a source of exemplars, and the challenges exemplars pose for the task of natural language inference.",
+    "authors": [
+        "Emily Allaway",
+        "Jena D. Hwang",
+        "Chandra Bhagavatula",
+        "K. McKeown",
+        "Doug Downey",
+        "Yejin Choi"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a novel framework informed by linguistic theory to generate exemplars\u2014specific cases when a generic holds true or false and highlights the importance of linguistic theory-based controllability for generating exemplars, the insufficiency of knowledge bases as a source of exemplar, and the challenges exemplars pose for the task of natural language inference."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

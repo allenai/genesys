@@ -1,0 +1,40 @@
+{
+    "acronym": "d291149a75d7ac194382bd61e515eb40ed0aa106",
+    "title": "Predicting Attention Sparsity in Transformers",
+    "seed_ids": [
+        "longformer",
+        "reformer",
+        "routingtransformer",
+        "f75d05e759447c2aedb7097728f29f9a520d9bc1",
+        "a7721b6523971394a8bd4bfda139122ef59b22cd",
+        "c0f709acf38eb27702b0fbce1215db0ebaa2de2b",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "c828f4bf1a752700dd2c4a96fdd08ba938cda43d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "f6390beca54411b06f3bde424fb983a451789733"
+    ],
+    "s2id": "d291149a75d7ac194382bd61e515eb40ed0aa106",
+    "abstract": "Transformers\u2019 quadratic complexity with respect to the input sequence length has motivated a body of work on efficient sparse approximations to softmax. An alternative path, used by entmax transformers, consists of having built-in exact sparse attention; however this approach still requires quadratic computation. In this paper, we propose Sparsefinder, a simple model trained to identify the sparsity pattern of entmax attention before computing it. We experiment with three variants of our method, based on distances, quantization, and clustering, on two tasks: machine translation (attention in the decoder) and masked language modeling (encoder-only). Our work provides a new angle to study model efficiency by doing extensive analysis of the tradeoff between the sparsity and recall of the predicted attention graph. This allows for detailed comparison between different models along their Pareto curves, important to guide future benchmarks for sparse attention models.",
+    "authors": [
+        "Marcos Vin\u00edcius Treviso",
+        "Ant'onio G'ois",
+        "Patrick Fernandes",
+        "E. Fonseca",
+        "Andr\u00e9 F. T. Martins"
+    ],
+    "venue": "SPNLP",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Sparsefinder is proposed, a simple model trained to identify the sparsity pattern of entmax attention before computing it, which allows for detailed comparison between different models along their Pareto curves, important to guide future benchmarks for sparse attention models."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

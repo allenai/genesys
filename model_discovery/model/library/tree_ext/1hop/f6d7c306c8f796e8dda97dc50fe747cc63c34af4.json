@@ -1,0 +1,29 @@
+{
+    "acronym": "f6d7c306c8f796e8dda97dc50fe747cc63c34af4",
+    "title": "Whistle: Data-Efficient Multilingual and Crosslingual Speech Recognition via Weakly Phonetic Supervision",
+    "seed_ids": [
+        "bert",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f6d7c306c8f796e8dda97dc50fe747cc63c34af4",
+    "abstract": "There exist three approaches for multilingual and crosslingual automatic speech recognition (MCL-ASR) - supervised pre-training with phonetic or graphemic transcription, and self-supervised pre-training. We find that pre-training with phonetic supervision has been underappreciated so far for MCL-ASR, while conceptually it is more advantageous for information sharing between different languages. This paper explores the approach of pre-training with weakly phonetic supervision towards data-efficient MCL-ASR, which is called Whistle. We relax the requirement of gold-standard human-validated phonetic transcripts, and obtain International Phonetic Alphabet (IPA) based transcription by leveraging the LanguageNet grapheme-to-phoneme (G2P) models. We construct a common experimental setup based on the CommonVoice dataset, called CV-Lang10, with 10 seen languages and 2 unseen languages. A set of experiments are conducted on CV-Lang10 to compare, as fair as possible, the three approaches under the common setup for MCL-ASR. Experiments demonstrate the advantages of phoneme-based models (Whistle) for MCL-ASR, in terms of speech recognition for seen languages, crosslingual performance for unseen languages with different amounts of few-shot data, overcoming catastrophic forgetting, and training efficiency.It is found that when training data is more limited, phoneme supervision can achieve better results compared to subword supervision and self-supervision, thereby providing higher data-efficiency. To support reproducibility and promote future research along this direction, we will release the code, models and data for the whole pipeline of Whistle at https://github.com/thu-spmi/CAT upon publication.",
+    "authors": [
+        "Saierdaer Yusuyin",
+        "Te Ma",
+        "Hao Huang",
+        "Wenbo Zhao",
+        "Zhijian Ou"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that when training data is more limited, phoneme supervision can achieve better results compared to subword supervision and self-supervision, thereby providing higher data-efficiency and training efficiency."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "8b25d0065d30ed3c9e6a6cae94de53ef132d656d",
+    "title": "Copy is All You Need",
+    "seed_ids": [
+        "gpt2",
+        "23447f473cd240494b0a20ea008038aaef7e3391",
+        "492a655a67e6ec7423a968cedb70eec0cdbc8e98",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8b25d0065d30ed3c9e6a6cae94de53ef132d656d",
+    "abstract": "The dominant text generation models compose the output by sequentially selecting words from a fixed vocabulary. In this paper, we formulate text generation as progressively copying text segments (e.g., words or phrases) from an existing text collection. We compute the contextualized representations of meaningful text segments and index them using efficient vector search toolkits. The task of text generation is then decomposed into a series of copy-and-paste operations: at each time step, we seek suitable text spans from the text collection rather than selecting from a standalone vocabulary. Experiments on the standard language modeling benchmark (WikiText-103) show that our approach achieves better generation quality according to both automatic and human evaluations. Besides, its inference efficiency is comparable to token-level autoregressive models thanks to the reduction of decoding steps. We also show that our approach allows for effective domain adaptation by simply switching to domain-specific text collection without extra training. Finally, we observe that our approach attains additional performance gains by simply scaling up to larger text collections, again without further training.\\footnote{Our source codes are publicly available at \\url{https://github.com/gmftbyGMFTBY/Copyisallyouneed}.}",
+    "authors": [
+        "Tian Lan",
+        "Deng Cai",
+        "Yan Wang",
+        "Heyan Huang",
+        "Xian-Ling Mao"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper formulate text generation as progressively copying text segments from an existing text collection, and compute the contextualized representations of meaningful text segments and index them using efficient vector search toolkits."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

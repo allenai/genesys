@@ -1,0 +1,34 @@
+{
+    "acronym": "e28f4687b9ddf562807d12d9799add07aa191d51",
+    "title": "Efficient Transformer Inference with Statically Structured Sparse Attention",
+    "seed_ids": [
+        "gpt2",
+        "ec34748a74c84f67edde7cc763922fa6d4486022",
+        "4badd753be64c5c5b57dd2bb2e515fbe0c0720d8",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e28f4687b9ddf562807d12d9799add07aa191d51",
+    "abstract": "Self-attention matrices of Transformers are often highly sparse because the relevant context of each token is typically limited to just a few other tokens in the sequence. To reduce the computational burden of self-attention on Transformer inference, we propose static, structured, sparse attention masks that split attention matrices into dense regions, skipping computations outside these regions while reducing computations inside these regions. To support the proposed mask structure, we design an entropy-aware finetuning algorithm to naturally encourage attention sparsity while maximizing task accuracy. Furthermore, we extend a typical dense deep learning accelerator to efficiently exploit our structured sparsity pattern. Compared to a dense baseline, we achieve 56.6% reduction in energy consumption, 58.9% performance improvement with <1% accuracy loss and 2.6% area overhead.",
+    "authors": [
+        "Steve Dai",
+        "Hasan Genc",
+        "Rangharajan Venkatesan",
+        "Brucek Khailany"
+    ],
+    "venue": "Design Automation Conference",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes static, structured, sparse attention masks that split attention matrices into dense regions, skipping computations outside these regions while reducing computations inside these regions to reduce the computational burden of self-attention on Transformer inference."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

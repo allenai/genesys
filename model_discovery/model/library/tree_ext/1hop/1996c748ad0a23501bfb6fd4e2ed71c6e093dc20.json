@@ -1,0 +1,32 @@
+{
+    "acronym": "1996c748ad0a23501bfb6fd4e2ed71c6e093dc20",
+    "title": "State Causality and Adaptive Covariance Decomposition Based Time Series Forecasting",
+    "seed_ids": [
+        "reformer",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676"
+    ],
+    "s2id": "1996c748ad0a23501bfb6fd4e2ed71c6e093dc20",
+    "abstract": "Time series forecasting is a very vital research topic. The scale of time series in numerous industries has risen considerably in recent years as a result of the advancement of information technology. However, the existing algorithms pay little attention to generating large-scale time series. This article designs a state causality and adaptive covariance decomposition-based time series forecasting method (SCACD). As an observation sequence, the majority of time series is generated under the influence of hidden states. First, SCACD builds neural networks to adaptively estimate the mean and covariance matrix of latent variables; Then, SCACD employs causal convolution to forecast the distribution of future latent variables; Lastly, to avoid loss of information, SCACD applies a sampling approach based on Cholesky decomposition to generate latent variables and observation sequences. Compared to existing outstanding time series prediction models on six real datasets, the model can achieve long-term forecasting while also being lighter, and the forecasting accuracy is improved in the great majority of the prediction tasks.",
+    "authors": [
+        "Jince Wang",
+        "Zibo He",
+        "Tianyu Geng",
+        "Feihu Huang",
+        "Pu Gong",
+        "Peiyu Yi",
+        "Jian Peng"
+    ],
+    "venue": "Italian National Conference on Sensors",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A state causality and adaptive covariance decomposition-based time series forecasting method (SCACD), which can achieve long-term forecasting while also being lighter, and the forecasting accuracy is improved in the great majority of the prediction tasks."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

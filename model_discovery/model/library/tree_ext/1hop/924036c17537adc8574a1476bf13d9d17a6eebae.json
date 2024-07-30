@@ -1,0 +1,30 @@
+{
+    "acronym": "924036c17537adc8574a1476bf13d9d17a6eebae",
+    "title": "ClimaBench: A Benchmark Dataset For Climate Change Text Understanding in English",
+    "seed_ids": [
+        "longformer",
+        "fd33e77884e69f6bc099990fc2790248af2749d9",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "c6c734e16f66fbfcefac7625cc64599e83292c1e",
+        "d9f6ada77448664b71128bb19df15765336974a6"
+    ],
+    "s2id": "924036c17537adc8574a1476bf13d9d17a6eebae",
+    "abstract": "The topic of Climate Change (CC) has received limited attention in NLP despite its real world urgency. Activists and policy-makers need NLP tools in order to effectively process the vast and rapidly growing textual data produced on CC. Their utility, however, primarily depends on whether the current state-of-the-art models can generalize across various tasks in the CC domain. In order to address this gap, we introduce Climate Change Benchmark (ClimaBench), a benchmark collection of existing disparate datasets for evaluating model performance across a diverse set of CC NLU tasks systematically. Further, we enhance the benchmark by releasing two large-scale labelled text classi\ufb01cation and question-answering datasets curated from publicly available environmental disclosures. Lastly, we provide an analysis of several generic and CC-oriented models answering whether \ufb01ne-tuning on domain text offers any improvements across these tasks. We hope this work provides a standard assessment tool for research on CC text data.",
+    "authors": [
+        "Tanmay Laud",
+        "Daniel M. Spokoyny",
+        "Thomas W. Corringham",
+        "Taylor Berg-Kirkpatrick"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Climate Change Benchmark (ClimaBench) is introduced, a benchmark collection of existing disparate datasets for evaluating model performance across a diverse set of CC NLU tasks systematically and an analysis of several generic and CC-oriented models answering whether tuning on domain text offers any improvements across these tasks."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

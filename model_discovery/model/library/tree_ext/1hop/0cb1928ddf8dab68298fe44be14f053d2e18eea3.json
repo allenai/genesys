@@ -1,0 +1,25 @@
+{
+    "acronym": "0cb1928ddf8dab68298fe44be14f053d2e18eea3",
+    "title": "ICU Bloodstream Infection Prediction: A Transformer-Based Approach for EHR Analysis",
+    "seed_ids": [
+        "transformer",
+        "bert"
+    ],
+    "s2id": "0cb1928ddf8dab68298fe44be14f053d2e18eea3",
+    "abstract": "We introduce RatchetEHR, a novel transformer-based framework designed for the predictive analysis of electronic health records (EHR) data in intensive care unit (ICU) settings, with a specific focus on bloodstream infection (BSI) prediction. Leveraging the MIMIC-IV dataset, RatchetEHR demonstrates superior predictive performance compared to other methods, including RNN, LSTM, and XGBoost, particularly due to its advanced handling of sequential and temporal EHR data. A key innovation in RatchetEHR is the integration of the Graph Convolutional Transformer (GCT) component, which significantly enhances the ability to identify hidden structural relationships within EHR data, resulting in more accurate clinical predictions. Through SHAP value analysis, we provide insights into influential features for BSI prediction. RatchetEHR integrates multiple advancements in deep learning which together provide accurate predictions even with a relatively small sample size and highly imbalanced dataset. This study contributes to medical informatics by showcasing the application of advanced AI techniques in healthcare and sets a foundation for further research to optimize these capabilities in EHR data analysis.",
+    "authors": [
+        "Ortal Hirszowicz",
+        "Dvir Aran"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

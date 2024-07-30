@@ -1,0 +1,28 @@
+{
+    "acronym": "21e46f11898748778a31b5b2fe2f60128eb66ba1",
+    "title": "A Study on Prompt-based Few-Shot Learning Methods for Belief State Tracking in Task-oriented Dialog Systems",
+    "seed_ids": [
+        "gpt2",
+        "da454295392cf4caaa39cc465734237ffe55392f",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "21e46f11898748778a31b5b2fe2f60128eb66ba1",
+    "abstract": "We tackle the Dialogue Belief State Tracking(DST) problem of task-oriented conversational systems. Recent approaches to this problem leveraging Transformer-based models have yielded great results. However, training these models is expensive, both in terms of computational resources and time. Additionally, collecting high quality annotated dialogue datasets remains a challenge for researchers because of the extensive annotation required for training these models. Driven by the recent success of pre-trained language models and prompt-based learning, we explore prompt-based few-shot learning for Dialogue Belief State Tracking. We formulate the DST problem as a 2-stage prompt-based language modelling task and train language models for both tasks and present a comprehensive empirical analysis of their separate and joint performance. We demonstrate the potential of prompt-based methods in few-shot learning for DST and provide directions for future improvement.",
+    "authors": [
+        "Debjoy Saha",
+        "Bishal Santra",
+        "Pawan Goyal"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The DST problem is formulated as a 2-stage prompt-based language modelling task and language models for both tasks are trained and a comprehensive empirical analysis of their separate and joint performance is presented."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

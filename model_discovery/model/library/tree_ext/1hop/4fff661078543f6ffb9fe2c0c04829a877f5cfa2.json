@@ -1,0 +1,42 @@
+{
+    "acronym": "4fff661078543f6ffb9fe2c0c04829a877f5cfa2",
+    "title": "Next-Generation Database Interfaces: A Survey of LLM-based Text-to-SQL",
+    "seed_ids": [
+        "gpt3",
+        "b842b83a7ff5dff8e3b83915d8c15423b6085728",
+        "efc5e94635a850ede9c1f8dbce65d5dc536f3bfb",
+        "7d083d654f66f763302d8a5f0678beb753f6507b",
+        "5fc1a3a49e8f1d106118b69d1d6be3b6caa23da0",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "d62c4d00b277e948956b6610ce2644e88fe1577b",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "db4ab91d5675c37795e719e997a2827d3d83cd45",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "47e15941c8b157873c8264e4bf50318d1ba5cd18",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "4fff661078543f6ffb9fe2c0c04829a877f5cfa2",
+    "abstract": "Generating accurate SQL from natural language questions (text-to-SQL) is a long-standing challenge due to the complexities in user question understanding, database schema comprehension, and SQL generation. Conventional text-to-SQL systems, comprising human engineering and deep neural networks, have made substantial progress. Subsequently, pre-trained language models (PLMs) have been developed and utilized for text-to-SQL tasks, achieving promising performance. As modern databases become more complex, the corresponding user questions also grow more challenging, causing PLMs with parameter constraints to produce incorrect SQL. This necessitates more sophisticated and tailored optimization methods, which, in turn, restricts the applications of PLM-based systems. Recently, large language models (LLMs) have demonstrated significant capabilities in natural language understanding as the model scale increases. Therefore, integrating LLM-based implementation can bring unique opportunities, improvements, and solutions to text-to-SQL research. In this survey, we present a comprehensive review of LLM-based text-to-SQL. Specifically, we propose a brief overview of the technical challenges and the evolutionary process of text-to-SQL. Then, we provide a detailed introduction to the datasets and metrics designed to evaluate text-to-SQL systems. After that, we present a systematic analysis of recent advances in LLM-based text-to-SQL. Finally, we discuss the remaining challenges in this field and propose expectations for future research directions.",
+    "authors": [
+        "Zijin Hong",
+        "Zheng Yuan",
+        "Qinggang Zhang",
+        "Hao Chen",
+        "Junnan Dong",
+        "Feiran Huang",
+        "Xiao Huang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This survey presents a comprehensive review of LLM-based text-to-SQL and provides a detailed introduction to the datasets and metrics designed to evaluate text-to-SQL systems."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

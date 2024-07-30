@@ -1,0 +1,26 @@
+{
+    "acronym": "342dc54bd6a94f608065033a28a25f28e0b2ea19",
+    "title": "Key Factor Selection Transformer for Multivariate Time Series Forecasting",
+    "seed_ids": [
+        "sparsetransformer",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "342dc54bd6a94f608065033a28a25f28e0b2ea19",
+    "abstract": "Multivariate time series forecasting has a wide range of applications in transportation, meteorology, finance, etc. Multivariate time series include time-varying target series, exogenous time series and static data series. With the continuous expansion of dimension and scale, multiple exogenous time series can affect the target series in different degrees, and the time dependencies within different series become more complex. However, the previous researches neglect to efficiently identify the key factors and the temporal change information while learning historical time series. In order to solve the problem, we designed Key Factor Selection Transformer. It has three notable features: (i) A two-stage key factor identification-selection mechanism based on variable selection network and Prob-sparse self-attention, emphasizing the influence of key factors on prediction results. (ii) Use GRU network and self-attention mechanism to effectively learn local information and long-term correlation of historical time series. (iii) A new objective function, used to guide the learning of temporal change information. Experimental results on 4 real datasets show that our method significantly improve the prediction performance, providing a new solution to the multivariate time series forecasting problem.",
+    "authors": [
+        "Juntao Hu",
+        "Zehao Liu"
+    ],
+    "venue": "2022 IEEE 24th Int Conf on High Performance Computing & Communications; 8th Int Conf on Data Science & Systems; 20th Int Conf on Smart City; 8th Int Conf on Dependability in Sensor, Cloud & Big Data Systems & Application (HPCC/DSS/SmartCity/DependSys)",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results on 4 real datasets show that the Key Factor Selection Transformer method significantly improve the prediction performance, providing a new solution to the multivariate time series forecasting problem."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

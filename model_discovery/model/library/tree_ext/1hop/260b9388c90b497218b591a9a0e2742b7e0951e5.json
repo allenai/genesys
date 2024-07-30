@@ -1,0 +1,50 @@
+{
+    "acronym": "260b9388c90b497218b591a9a0e2742b7e0951e5",
+    "title": "Momentum Transformer: Closing the Performance Gap Between Self-attention and Its Linearization",
+    "seed_ids": [
+        "performer",
+        "linformer",
+        "lineartransformer",
+        "c4d8e0e72ae5bf2394041d0188f35755d6ea7456",
+        "37abe53ed31caa23ae833b2e67bb4aa1892e8d25",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "8cef9900c04d7f661c08f4b5b1ed4337ace042a3",
+        "830995ef17cc291c13f42dfd9f462137de1d2179",
+        "16c844fd4d97f3c6eb38b0d6527c87d184efedc3",
+        "fb507ada871d1e8c29e376dbf7b7879689aa89f9",
+        "2ff74d426e712522030057624510c03713fa77ba",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "260b9388c90b497218b591a9a0e2742b7e0951e5",
+    "abstract": "Transformers have achieved remarkable success in sequence modeling and beyond but suffer from quadratic computational and memory complexities with respect to the length of the input sequence. Leveraging techniques include sparse and linear attention and hashing tricks; efficient transformers have been proposed to reduce the quadratic complexity of transformers but significantly degrade the accuracy. In response, we first interpret the linear attention and residual connections in computing the attention map as gradient descent steps. We then introduce momentum into these components and propose the \\emph{momentum transformer}, which utilizes momentum to improve the accuracy of linear transformers while maintaining linear memory and computational complexities. Furthermore, we develop an adaptive strategy to compute the momentum value for our model based on the optimal momentum for quadratic optimization. This adaptive momentum eliminates the need to search for the optimal momentum value and further enhances the performance of the momentum transformer. A range of experiments on both autoregressive and non-autoregressive tasks, including image generation and machine translation, demonstrate that the momentum transformer outperforms popular linear transformers in training efficiency and accuracy.",
+    "authors": [
+        "T. Nguyen",
+        "Richard Baraniuk",
+        "Robert M. Kirby",
+        "S. Osher",
+        "Bao Wang"
+    ],
+    "venue": "Mathematical and Scientific Machine Learning",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The momentum transformer is proposed, which utilizes momentum to improve the accuracy of linear transformers while maintaining linear memory and computational complexities and an adaptive strategy to compute the momentum value for the model based on the optimal momentum for quadratic optimization is developed."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

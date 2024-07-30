@@ -1,0 +1,35 @@
+{
+    "acronym": "842182174ebd9e070101c85aa16c0818e5363c42",
+    "title": "The Surprising Effectiveness of Diffusion Models for Optical Flow and Monocular Depth Estimation",
+    "seed_ids": [
+        "perceiverio",
+        "f1c39410893794ee3643efa85be1816964aa85ea",
+        "8f48171bf05474449777d9bbf6766d480332e09f",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "7bffc157b3b3626a3912a3b0ef74ce5904630fce",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "842182174ebd9e070101c85aa16c0818e5363c42",
+    "abstract": "Denoising diffusion probabilistic models have transformed image generation with their impressive fidelity and diversity. We show that they also excel in estimating optical flow and monocular depth, surprisingly, without task-specific architectures and loss functions that are predominant for these tasks. Compared to the point estimates of conventional regression-based methods, diffusion models also enable Monte Carlo inference, e.g., capturing uncertainty and ambiguity in flow and depth. With self-supervised pre-training, the combined use of synthetic and real data for supervised training, and technical innovations (infilling and step-unrolled denoising diffusion training) to handle noisy-incomplete training data, and a simple form of coarse-to-fine refinement, one can train state-of-the-art diffusion models for depth and optical flow estimation. Extensive experiments focus on quantitative performance against benchmarks, ablations, and the model's ability to capture uncertainty and multimodality, and impute missing values. Our model, DDVM (Denoising Diffusion Vision Model), obtains a state-of-the-art relative depth error of 0.074 on the indoor NYU benchmark and an Fl-all outlier rate of 3.26\\% on the KITTI optical flow benchmark, about 25\\% better than the best published method. For an overview see https://diffusion-vision.github.io.",
+    "authors": [
+        "Saurabh Saxena",
+        "Charles Herrmann",
+        "Junhwa Hur",
+        "Abhishek Kar",
+        "Mohammad Norouzi",
+        "Deqing Sun",
+        "David J. Fleet"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows that denoising diffusion probabilistic models also excel in estimating optical flow and monocular depth, surprisingly, without task-specific architectures and loss functions that are predominant for these tasks, compared to the point estimates of conventional regression-based methods."
+    },
+    "citationCount": 28,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "6ded2683f59c637678fb3e91e8951a7179c35bde",
+    "title": "An Exploration of Length Generalization in Transformer-Based Speech Enhancement",
+    "seed_ids": [
+        "transformer",
+        "5a11808dd8f18d177aba5637fd75982ad42dabc8",
+        "d6c5aab433d9871cabc01ffb1e5e1ea89141155b",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "6ded2683f59c637678fb3e91e8951a7179c35bde",
+    "abstract": "The use of Transformer architectures has facilitated remarkable progress in speech enhancement. Training Transformers using substantially long speech utterances is often infeasible as self-attention suffers from quadratic complexity. It is a critical and unexplored challenge for a Transformer-based speech enhancement model to learn from short speech utterances and generalize to longer ones. In this paper, we conduct comprehensive experiments to explore the length generalization problem in speech enhancement with Transformer. Our findings first establish that position embedding provides an effective instrument to alleviate the impact of utterance length on Transformer-based speech enhancement. Specifically, we explore four different position embedding schemes to enable length generalization. The results confirm the superiority of relative position embeddings (RPEs) over absolute PE (APEs) in length generalization.",
+    "authors": [
+        "Qiquan Zhang",
+        "Hongxu Zhu",
+        "Xinyuan Qian",
+        "E. Ambikairajah",
+        "Haizhou Li"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work establishes that position embedding provides an effective instrument to alleviate the impact of utterance length on Transformer-based speech enhancement and confirms the superiority of relative position embeddings (RPEs) over absolute PE (APEs) in length generalization."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

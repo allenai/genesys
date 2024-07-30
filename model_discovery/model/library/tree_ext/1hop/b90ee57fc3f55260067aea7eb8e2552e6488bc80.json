@@ -1,0 +1,28 @@
+{
+    "acronym": "b90ee57fc3f55260067aea7eb8e2552e6488bc80",
+    "title": "Automated Generation of Human-readable Natural Arabic Text from RDF Data",
+    "seed_ids": [
+        "gpt2",
+        "91663fbb9257b1ee5d22d7b9e796e03f374a7a6a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b90ee57fc3f55260067aea7eb8e2552e6488bc80",
+    "abstract": "With the advances in Natural Language Processing (NLP), the industry has been moving towards human-directed artificial intelligence (AI) solutions. Recently, chatbots and automated news generation have captured a lot of attention. The goal is to automatically generate readable text from tabular data or web data commonly represented in Resource Description Framework (RDF) format. The problem can then be formulated as Data-to-text (D2T) generation from structured non-linguistic data into human-readable natural language. Despite the significant work done for the English language, no efforts are being directed towards low-resource languages like the Arabic language. This work promotes the development of the first RDF data-to-text (D2T) generation system for the Arabic language while trying to address the low-resource limitation. We develop several models for the Arabic D2T task using transfer learning from large language models (LLM) such as AraBERT, AraGPT2, and mT5. These models include a baseline Bi-LSTM Sequence-to-Sequence (Seq2Seq) model, as well as encoder-decoder transformers like BERT2BERT, BERT2GPT, and T5. We then provide a detailed comparative study highlighting the strengths and limitations of these methods setting the stage for further advancement in the field. We also introduce a new Arabic dataset (AraWebNLG) that can be used for new model development in the field. To ensure a comprehensive evaluation, general-purpose automated metrics (BLEU and Perplexity scores) are used as well as task-specific human evaluation metrics related to the accuracy of the content selection and fluency of the generated text. The results highlight the importance of pre-training on a large corpus of Arabic data and show that transfer learning from AraBERT gives the best performance. Text-to-text pre-training using mT5 achieves second best performance results even with multilingual weights.",
+    "authors": [
+        "Roudy Touma",
+        "Hazem M. Hajj",
+        "W. El-Hajj",
+        "K. Shaban"
+    ],
+    "venue": "ACM Trans. Asian Low Resour. Lang. Inf. Process.",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work promotes the development of the first RDF data-to-text (D2T) generation system for the Arabic language while trying to address the low-resource limitation."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

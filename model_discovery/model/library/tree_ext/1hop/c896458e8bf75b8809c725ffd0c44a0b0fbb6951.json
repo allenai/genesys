@@ -1,0 +1,31 @@
+{
+    "acronym": "c896458e8bf75b8809c725ffd0c44a0b0fbb6951",
+    "title": "Raply: A profanity-mitigated rap generator",
+    "seed_ids": [
+        "gpt2",
+        "19a9937a1029ee5b1f6da8a945ed9a5c5a029c57",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "c896458e8bf75b8809c725ffd0c44a0b0fbb6951",
+    "abstract": "The task of writing rap is challenging and involves producing complex rhyming schemes, yet meaningful lyrics. In this work, we propose Raply, a fine-tuned GPT-2 model capable of producing meaningful rhyming text in the style of rap. In addition to its rhyming capabilities, the model is able to generate less offensive content. It was achieved through the fine-tuning the model on a new dataset Mitislurs, a profanity-mitigated corpus. We evaluate the output of the model on two criteria: 1) rhyming based on the rhyme density metric; 2) profanity content, using the list of profanities for the English language. To our knowledge, this is the first attempt at profanity mitigation for rap lyrics generation.",
+    "authors": [
+        "Omar Manil Bendali",
+        "Samir Ferroum",
+        "Ekaterina Kozachenko",
+        "Youssef Parviz",
+        "Hanna Shcharbakova",
+        "Anna Tokareva",
+        "Shemair Williams"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes Raply, a fine-tuned GPT-2 model capable of producing meaningful rhyming text in the style of rap and is able to generate less offensive content, the first attempt at profanity mitigation for rap lyrics generation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

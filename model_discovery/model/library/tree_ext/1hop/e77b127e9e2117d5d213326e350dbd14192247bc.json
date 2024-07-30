@@ -1,0 +1,31 @@
+{
+    "acronym": "e77b127e9e2117d5d213326e350dbd14192247bc",
+    "title": "Penalty Decoding: Well Suppress the Self-Reinforcement Effect in Open-Ended Text Generation",
+    "seed_ids": [
+        "gpt2",
+        "91b07210ec07a229e5caf2d5f009a523b39e40ae",
+        "5697a0ede5425954d48daa6e1893dc87bd7d8be7",
+        "6151ee4af6a3fe78f2df7c605598cd9e02b23c5b",
+        "492a655a67e6ec7423a968cedb70eec0cdbc8e98",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e77b127e9e2117d5d213326e350dbd14192247bc",
+    "abstract": "The decoding algorithm is critical for open-ended text generation, transforming latent representations into coherent and meaningful outputs. This paper investigates the self-reinforcement effect in text generation and the effectiveness of a repetition penalty to mitigate it. However, determining the optimal repetition penalty value is challenging. To tackle this, we propose a forgetting mechanism that disregards distant tokens, reducing the burden of penalty selection. In addition, we introduce a length penalty to address overly short sentences caused by excessive penalties. Our penalty decoding approach incorporating three strategies helps resolve issues with sampling methods deviating from factual information. Experimental results demonstrate the efficacy of our approach in generating high-quality sentences resembling human output.",
+    "authors": [
+        "Wenhong Zhu",
+        "Hong-ping Hao",
+        "Rui Wang"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The self-reinforcement effect in text generation and the effectiveness of a repetition penalty to mitigate it is investigated and a forgetting mechanism that disregards distant tokens is proposed, reducing the burden of penalty selection."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

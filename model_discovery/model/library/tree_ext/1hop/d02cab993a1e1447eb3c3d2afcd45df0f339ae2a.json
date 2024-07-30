@@ -1,0 +1,28 @@
+{
+    "acronym": "d02cab993a1e1447eb3c3d2afcd45df0f339ae2a",
+    "title": "Born for Auto-Tagging: Faster and better with new objective functions",
+    "seed_ids": [
+        "performer",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "3bc53c49ae68adacf2d5be2fa795bcb879e2717a",
+        "16c844fd4d97f3c6eb38b0d6527c87d184efedc3"
+    ],
+    "s2id": "d02cab993a1e1447eb3c3d2afcd45df0f339ae2a",
+    "abstract": "Keyword extraction is a task of text mining. It is applied to increase search volume in SEO and ads. Implemented in auto-tagging, it makes tagging on a mass scale of online articles and photos efficiently and accurately. BAT is invented for auto-tagging which served as awoo's AI marketing platform (AMP). awoo AMP not only provides service as a customized recommender system but also increases the converting rate in E-commerce. The strength of BAT converges faster and better than other SOTA models, as its 4-layer structure achieves the best F scores at 50 epochs. In other words, it performs better than other models which require deeper layers at 100 epochs. To generate rich and clean tags, awoo creates new objective functions to maintain similar ${\\rm F_1}$ scores with cross-entropy while enhancing ${\\rm F_2}$ scores simultaneously. To assure the even better performance of F scores awoo revamps the learning rate strategy proposed by Transformer \\cite{Transformer} to increase ${\\rm F_1}$ and ${\\rm F_2}$ scores at the same time.",
+    "authors": [
+        "Chiung-ju Liu",
+        "Huang-Ting Shieh"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "To generate rich and clean tags, awoo creates new objective functions to maintain similar F scores with cross-entropy while enhancing ${\\rm F_2}$ scores simultaneously, and revamps the learning rate strategy proposed by Transformer to increase F scores at the same time."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

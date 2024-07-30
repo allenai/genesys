@@ -1,0 +1,43 @@
+{
+    "acronym": "8ef7980c82f238012587e13c5a11ac69ffb7513b",
+    "title": "QuickLLaMA: Query-aware Inference Acceleration for Large Language Models",
+    "seed_ids": [
+        "streamingllm",
+        "4ea5ca620122e6a9a2b000444d36491cebf49c7c",
+        "4d76206515d6b33903937474273885476fc2771e",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "b31a5884a8ebe96b6300839b28608b97f8f8ef76",
+        "b069c32fcd77160f944ab3ba71ab6f0cfb782c68",
+        "dbc368bc8b49347dd27679894524fa62f88492c9",
+        "68adb03744692247fb834406798894db9fe77010",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "3689b7ca7b07924b6135b8a71b9f1b7937b0a3d5"
+    ],
+    "s2id": "8ef7980c82f238012587e13c5a11ac69ffb7513b",
+    "abstract": "The capacity of Large Language Models (LLMs) to comprehend and reason over long contexts is pivotal for advancements in diverse fields. Yet, they still stuggle with capturing long-distance dependencies within sequences to deeply understand semantics. To address this issue, we introduce Query-aware Inference for LLMs (Q-LLM), a system designed to process extensive sequences akin to human cognition. By focusing on memory data relevant to a given query, Q-LLM can accurately capture pertinent information within a fixed window size and provide precise answers to queries. It doesn't require extra training and can be seamlessly integrated with any LLMs. Q-LLM using LLaMA3 (QuickLLaMA) can read Harry Potter within 30s and accurately answer the questions. Q-LLM improved by 7.17% compared to the current state-of-the-art on LLaMA3, and by 3.26% on Mistral on the $\\infty$-bench. In the Needle-in-a-Haystack task, On widely recognized benchmarks, Q-LLM improved upon the current SOTA by 7.0% on Mistral and achieves 100% on LLaMA3. Our code can be found in https://github.com/dvlab-research/Q-LLM.",
+    "authors": [
+        "Jingyao Li",
+        "Han Shi",
+        "Xin Jiang",
+        "Zhenguo Li",
+        "Hong Xu",
+        "Jiaya Jia"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Query-aware Inference for LLMs (Q-LLM), a system designed to process extensive sequences akin to human cognition, can accurately capture pertinent information within a fixed window size and provide precise answers to queries by focusing on memory data relevant to a given query."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

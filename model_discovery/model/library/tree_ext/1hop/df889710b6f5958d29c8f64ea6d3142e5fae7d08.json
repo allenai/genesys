@@ -1,0 +1,25 @@
+{
+    "acronym": "df889710b6f5958d29c8f64ea6d3142e5fae7d08",
+    "title": "Adapting Transformer Language Models for Predictive Typing in Brain-Computer Interfaces",
+    "seed_ids": [
+        "reformer",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "df889710b6f5958d29c8f64ea6d3142e5fae7d08",
+    "abstract": "Brain-computer interfaces (BCI) are an important mode of alternative and augmentative communication for many people. Unlike keyboards, many BCI systems do not display even the 26 letters of English at one time, let alone all the symbols in more complex systems. Using language models to make character-level predictions, therefore, can greatly speed up BCI typing (Ghosh and Kristensson, 2017). While most existing BCI systems employ character n-gram models or no LM at all, this paper adapts several wordpiece-level Transformer LMs to make character predictions and evaluates them on typing tasks. GPT-2 fares best on clean text, but different LMs react differently to noisy histories. We further analyze the effect of character positions in a word and context lengths.",
+    "authors": [
+        "Shijia Liu",
+        "David A. Smith"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper adapts several wordpiece-level Transformer LMs to make character predictions and evaluates them on typing tasks and analyzes the effect of character positions in a word and context lengths."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "05a8b131dbcccc4dd263f1ac479e8eefbfe9c9c1",
+    "title": "CCDM: Continuous Conditional Diffusion Models for Image Generation",
+    "seed_ids": [
+        "classfreediffu",
+        "e342165a614588878ad0f4bc9bacf3905df34d08",
+        "17d068e78e6f25e65cb08319b19b58279bb8b214",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "05a8b131dbcccc4dd263f1ac479e8eefbfe9c9c1",
+    "abstract": "Continuous Conditional Generative Modeling (CCGM) aims to estimate the distribution of high-dimensional data, typically images, conditioned on scalar continuous variables known as regression labels. While Continuous conditional Generative Adversarial Networks (CcGANs) were initially designed for this task, their adversarial training mechanism remains vulnerable to extremely sparse or imbalanced data, resulting in suboptimal outcomes. To enhance the quality of generated images, a promising alternative is to replace CcGANs with Conditional Diffusion Models (CDMs), renowned for their stable training process and ability to produce more realistic images. However, existing CDMs encounter challenges when applied to CCGM tasks due to several limitations such as inadequate U-Net architectures and deficient model fitting mechanisms for handling regression labels. In this paper, we introduce Continuous Conditional Diffusion Models (CCDMs), the first CDM designed specifically for the CCGM task. CCDMs address the limitations of existing CDMs by introducing specially designed conditional diffusion processes, a modified denoising U-Net with a custom-made conditioning mechanism, a novel hard vicinal loss for model fitting, and an efficient conditional sampling procedure. With comprehensive experiments on four datasets with varying resolutions ranging from 64x64 to 192x192, we demonstrate the superiority of the proposed CCDM over state-of-the-art CCGM models, establishing new benchmarks in CCGM. Extensive ablation studies validate the model design and implementation configuration of the proposed CCDM. Our code is publicly available at https://github.com/UBCDingXin/CCDM.",
+    "authors": [
+        "Xin Ding",
+        "Member Ieee Yongwei Wang",
+        "Kao Zhang",
+        "F. I. Z. Jane Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces Continuous Conditional Diffusion Models (CCDMs), the first CDM designed specifically for the CCGM task and demonstrates the superiority of the proposed CCDM over state-of-the-art CCGM models, establishing new benchmarks in CCGM."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

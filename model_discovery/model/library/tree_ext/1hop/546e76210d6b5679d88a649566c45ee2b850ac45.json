@@ -1,0 +1,35 @@
+{
+    "acronym": "546e76210d6b5679d88a649566c45ee2b850ac45",
+    "title": "Improving Readability for Automatic Speech Recognition Transcription",
+    "seed_ids": [
+        "gpt",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "bf0e844f547eec1e161bc5374c0ab13e9d2aa321",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "546e76210d6b5679d88a649566c45ee2b850ac45",
+    "abstract": "Modern Automatic Speech Recognition (ASR) systems can achieve high performance in terms of recognition accuracy. However, a perfectly accurate transcript still can be challenging to read due to grammatical errors, disfluency, and other noises common in spoken communication. These readable issues introduced by speakers and ASR systems will impair the performance of downstream tasks and the understanding of human readers. In this work, we present a task called ASR post-processing for readability (APR) and formulate it as a sequence-to-sequence text generation problem. The APR task aims to transform the noisy ASR output into a readable text for humans and downstream tasks while maintaining the semantic meaning of speakers. We further study the APR task from the benchmark dataset, evaluation metrics, and baseline models: First, to address the lack of task-specific data, we propose a method to construct a dataset for the APR task by using the data collected for grammatical error correction. Second, we utilize metrics adapted or borrowed from similar tasks to evaluate model performance on the APR task. Lastly, we use several typical or adapted pre-trained models as the baseline models for the APR task. Furthermore, we fine-tune the baseline models on the constructed dataset and compare their performance with a traditional pipeline method in terms of proposed evaluation metrics. Experimental results show that all the fine-tuned baseline models perform better than the traditional pipeline method, and our adapted RoBERTa model outperforms the pipeline method by 4.95 and 6.63 BLEU points on two test sets, respectively. The human evaluation and case study further reveal the ability of the proposed model to improve the readability of ASR transcripts.",
+    "authors": [
+        "Junwei Liao",
+        "S. Eskimez",
+        "Liyang Lu",
+        "Yu Shi",
+        "Ming Gong",
+        "Linjun Shou",
+        "Hong Qu",
+        "Michael Zeng"
+    ],
+    "venue": "ACM Trans. Asian Low Resour. Lang. Inf. Process.",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a task called ASR post-processing for readability (APR) and forms it as a sequence-to-sequence text generation problem and reveals the ability of the proposed model to improve the readability of ASR transcripts."
+    },
+    "citationCount": 44,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

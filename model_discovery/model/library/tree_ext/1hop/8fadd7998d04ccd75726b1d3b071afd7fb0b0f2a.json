@@ -1,0 +1,29 @@
+{
+    "acronym": "8fadd7998d04ccd75726b1d3b071afd7fb0b0f2a",
+    "title": "Experimental Design of Extractive Question-Answering Systems: Influence of Error Scores and Answer Length",
+    "seed_ids": [
+        "bert",
+        "25db56fc85fe15625c3375064a35e908ba6dfd2a",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "a022bda79947d1f656a1164003c1b3ae9a843df9",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8fadd7998d04ccd75726b1d3b071afd7fb0b0f2a",
+    "abstract": "Question-answering (QA) systems are becoming more and more important because they enable human-computer communication in a natural language. In recent years, significant progress has been made with transformer-based models that leverage deep learning in combination with large amounts of text data. However, a significant challenge with QA systems lies in their complexity rooted in the ambiguity and flexibility of a natural language. This makes even their evaluation a formidable task. For this reason, in this study, we focus on the evaluation of extractive question-answering (EQA) systems by conducting a large-scale analysis of distilBERT using benchmark data provided by the Stanford Question Answering Dataset (SQuAD). Specifically, the main objectives of this paper are fourfold. First, we study the influence of the answer length on the performance and we demonstrate that there is an inverse correlation between both. Second, we study differences in exact match (EM) measures because there are different definitions commonly used in the literature. As a result, we find that despite the fact that all of those measures are named \u201dexact match\u201d these measures are actually different from each other. Third, we study the practical relevance of these different definitions because due to the ambivalent meaning of \u201dexact match\u201d in the literature, it is often unclear if reported improvements are genuine or only due to a change in the exact match measure. Importantly, our results show that differences between differently defined EM measures are in the same order of magnitude as reported differences found in the literature. This raises concerns about the robustness of reported results. Fourth, we provide guidelines to improve the experimental design of general EQA studies, aiming to enhance performance evaluation and minimize the potential for spurious results.",
+    "authors": [
+        "Amer Farea",
+        "Frank Emmert-Streib"
+    ],
+    "venue": "Journal of Artificial Intelligence Research",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A large-scale analysis of distilBERT using benchmark data provided by the Stanford Question Answering Dataset provides guidelines to improve the experimental design of general EQA studies, aiming to enhance performance evaluation and minimize the potential for spurious results."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

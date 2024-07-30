@@ -1,0 +1,33 @@
+{
+    "acronym": "baf1a6b0ee20422ccd9b76eb0a8287ee2ee48082",
+    "title": "Data-efficient Large Vision Models through Sequential Autoregression",
+    "seed_ids": [
+        "gpt3",
+        "0448656a78e26b9a2899cf85447f800deda8f5f3",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8"
+    ],
+    "s2id": "baf1a6b0ee20422ccd9b76eb0a8287ee2ee48082",
+    "abstract": "Training general-purpose vision models on purely sequential visual data, eschewing linguistic inputs, has heralded a new frontier in visual understanding. These models are intended to not only comprehend but also seamlessly transit to out-of-domain tasks. However, current endeavors are hamstrung by an over-reliance on colossal models, exemplified by models with upwards of 3B parameters, and the necessity for an extensive corpus of visual data, often comprising a staggering 400B tokens. In this paper, we delve into the development of an efficient, autoregression-based vision model, innovatively architected to operate on a limited dataset. We meticulously demonstrate how this model achieves proficiency in a spectrum of visual tasks spanning both high-level and low-level semantic understanding during the testing phase. Our empirical evaluations underscore the model's agility in adapting to various tasks, heralding a significant reduction in the parameter footprint, and a marked decrease in training data requirements, thereby paving the way for more sustainable and accessible advancements in the field of generalist vision models. The code is available at https://github.com/ggjy/DeLVM.",
+    "authors": [
+        "Jianyuan Guo",
+        "Zhiwei Hao",
+        "Chengcheng Wang",
+        "Yehui Tang",
+        "Han Wu",
+        "Han Hu",
+        "Kai Han",
+        "Chang Xu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper dives into the development of an efficient, autoregression-based vision model, innovatively architected to operate on a limited dataset, heralding a significant reduction in the parameter footprint, and a marked decrease in training data requirements, thereby paving the way for more sustainable and accessible advancements in the field of generalist vision models."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

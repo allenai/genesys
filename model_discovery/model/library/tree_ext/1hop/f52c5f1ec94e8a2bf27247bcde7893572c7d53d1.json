@@ -1,0 +1,42 @@
+{
+    "acronym": "f52c5f1ec94e8a2bf27247bcde7893572c7d53d1",
+    "title": "RoboMamba: Multimodal State Space Model for Efficient Robot Reasoning and Manipulation",
+    "seed_ids": [
+        "mamba",
+        "02d3afd9c306ce0a0d39e211d60468732c591f8f",
+        "e730beb44042499763d36214c0498434e470dfd5",
+        "7154fc93bdefcd237a0ce3902511c0b154049253",
+        "240103933ffe3dac2179cc160a2bd91299357a53",
+        "debbb47abc9fb757857f7c06aa86ca558d37c2d7",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2"
+    ],
+    "s2id": "f52c5f1ec94e8a2bf27247bcde7893572c7d53d1",
+    "abstract": "A fundamental objective in robot manipulation is to enable models to comprehend visual scenes and execute actions. Although existing robot Multimodal Large Language Models (MLLMs) can handle a range of basic tasks, they still face challenges in two areas: 1) inadequate reasoning ability to tackle complex tasks, and 2) high computational costs for MLLM fine-tuning and inference. The recently proposed state space model (SSM) known as Mamba demonstrates promising capabilities in non-trivial sequence modeling with linear inference complexity. Inspired by this, we introduce RoboMamba, an end-to-end robotic MLLM that leverages the Mamba model to deliver both robotic reasoning and action capabilities, while maintaining efficient fine-tuning and inference. Specifically, we first integrate the vision encoder with Mamba, aligning visual data with language embedding through co-training, empowering our model with visual common sense and robot-related reasoning. To further equip RoboMamba with action pose prediction abilities, we explore an efficient fine-tuning strategy with a simple policy head. We find that once RoboMamba possesses sufficient reasoning capability, it can acquire manipulation skills with minimal fine-tuning parameters (0.1\\% of the model) and time (20 minutes). In experiments, RoboMamba demonstrates outstanding reasoning capabilities on general and robotic evaluation benchmarks. Meanwhile, our model showcases impressive pose prediction results in both simulation and real-world experiments, achieving inference speeds 7 times faster than existing robot MLLMs. Our project web page: https://sites.google.com/view/robomamba-web",
+    "authors": [
+        "Jiaming Liu",
+        "Mengzhen Liu",
+        "Zhenyu Wang",
+        "Lily Lee",
+        "Kaichen Zhou",
+        "Pengju An",
+        "Senqiao Yang",
+        "Renrui Zhang",
+        "Yandong Guo",
+        "Shanghang Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces RoboMamba, an end-to-end robotic MLLM that leverages the Mamba model to deliver both robotic reasoning and action capabilities, while maintaining efficient fine-tuning and inference."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

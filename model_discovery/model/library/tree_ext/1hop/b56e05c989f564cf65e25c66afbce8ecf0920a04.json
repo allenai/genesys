@@ -1,0 +1,28 @@
+{
+    "acronym": "b56e05c989f564cf65e25c66afbce8ecf0920a04",
+    "title": "Layer-wise Pruning of Transformer Attention Heads for Efficient Language Modeling",
+    "seed_ids": [
+        "transformerxl",
+        "830995ef17cc291c13f42dfd9f462137de1d2179",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13"
+    ],
+    "s2id": "b56e05c989f564cf65e25c66afbce8ecf0920a04",
+    "abstract": "Recently, the necessity of multiple attention heads in transformer architecture has been questioned [1]. Removing less important heads from a large network is a promising strategy to reduce computation cost and parameters. However, pruning out attention heads in multihead attention does not evenly reduce the overall load, because feedforward modules are not affected. In this study, we apply attention head pruning on All-attention [2] transformer, where savings in the computation are proportional to the number of pruned heads. This improved computing efficiency comes at the cost of pruning sensitivity, which we stabilize with three training techniques. Our attention head pruning enables a considerably fewer number of parameters with a comparable perplexity for transformer-based language modeling.",
+    "authors": [
+        "Kyuhong Shim",
+        "Iksoo Choi",
+        "Wonyong Sung",
+        "Jungwook Choi"
+    ],
+    "venue": "International SoC Design Conference",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study applies attention head pruning on All-attention transformer, where savings in the computation are proportional to the number of pruned heads, and enables a considerably fewer number of parameters with a comparable perplexity for transformer-based language modeling."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

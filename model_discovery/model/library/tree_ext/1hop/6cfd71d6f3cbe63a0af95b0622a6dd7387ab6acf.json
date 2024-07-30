@@ -1,0 +1,33 @@
+{
+    "acronym": "6cfd71d6f3cbe63a0af95b0622a6dd7387ab6acf",
+    "title": "Characterization of MPC-based Private Inference for Transformer-based Models",
+    "seed_ids": [
+        "nystromformer",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc"
+    ],
+    "s2id": "6cfd71d6f3cbe63a0af95b0622a6dd7387ab6acf",
+    "abstract": "In this work, we provide an in-depth characterization study of the performance overhead for running Transformer models with secure multi-party computation (MPC). MPC is a cryptographic framework for protecting both the model and input data privacy in the presence of untrusted compute nodes. Our characterization study shows that Transformers introduce several performance challenges for MPC-based private machine learning inference. First, Transformers rely extensively on \u201csoftmax\u201d functions. While softmax functions are relatively cheap in a non-private execution, softmax dominates the MPC inference runtime, consuming up to 50% of the total inference runtime. Further investigation shows that computing the maximum, needed for providing numerical stability to softmax, is a key culprit for the increase in latency. Second, MPC relies on approximating non-linear functions that are part of the softmax computations, and the narrow dynamic ranges make optimizing softmax while maintaining accuracy quite difficult. Finally, unlike CNNs, Transformer-based NLP models use large embedding tables to convert input words into embedding vectors. Accesses to these embedding tables can disclose inputs; hence, additional obfuscation for embedding access patterns is required for guaranteeing the input privacy. One approach to hide address accesses is to convert an embedding table lookup into a matrix multiplication. However, this naive approach increases MPC inference runtime significantly. We then apply tensor-train (TT) decomposition, a lossy compression technique for representing embedding tables, and evaluate its performance on embedding lookups. We show the trade-off between performance improvements and the corresponding impact on model accuracy using detailed experiments.",
+    "authors": [
+        "Yongqin Wang",
+        "G. Suh",
+        "Wenjie Xiong",
+        "Benjamin Lefaudeux",
+        "Brian Knott",
+        "M. Annavaram",
+        "Hsien-Hsin S. Lee"
+    ],
+    "venue": "IEEE International Symposium on Performance Analysis of Systems and Software",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work provides an in-depth characterization study of the performance overhead for running Transformer models with secure multi-party computation (MPC), and applies tensor-train decomposition, a lossy compression technique for representing embedding tables, and evaluates its performance on embedding lookups."
+    },
+    "citationCount": 19,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

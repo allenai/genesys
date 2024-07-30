@@ -1,0 +1,29 @@
+{
+    "acronym": "5d7946b41dea3ed11dad48a53b1390d59b8c564e",
+    "title": "A Transformer with Stack Attention",
+    "seed_ids": [
+        "transformer",
+        "c6d38add1b7bbc10f0da37a90e3f1b51ee5fb617",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5d7946b41dea3ed11dad48a53b1390d59b8c564e",
+    "abstract": "Natural languages are believed to be (mildly) context-sensitive. Despite underpinning remarkably capable large language models, transformers are unable to model many context-free language tasks. In an attempt to address this limitation in the modeling power of transformer-based language models, we propose augmenting them with a differentiable, stack-based attention mechanism. Our stack-based attention mechanism can be incorporated into any transformer-based language model and adds a level of interpretability to the model. We show that the addition of our stack-based attention mechanism enables the transformer to model some, but not all, deterministic context-free languages.",
+    "authors": [
+        "Jiaoda Li",
+        "Jennifer C. White",
+        "Mrinmaya Sachan",
+        "Ryan Cotterell"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a differentiable, stack-based attention mechanism that can be incorporated into any transformer-based language model and adds a level of interpretability to the model and shows that the addition of this mechanism enables the transformer to model some, but not all, deterministic context-free languages."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

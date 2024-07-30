@@ -1,0 +1,27 @@
+{
+    "acronym": "1be8d6d4ded0955836d4afcc567b766dd8b7df80",
+    "title": "Knowledge Base Grounded Pre-trained Language Models via Distillation",
+    "seed_ids": [
+        "bert",
+        "88051a6dce3b67541d8096647da2f6d31daa9e9a"
+    ],
+    "s2id": "1be8d6d4ded0955836d4afcc567b766dd8b7df80",
+    "abstract": "Knowledge bases are key resources in a wide range of knowledge intensive applications. However, their incompleteness inherently limits their use and gives rise to the importance of their completion. To this end, an open-world view has recently been held in the literature by coupling the ability of knowledge bases to represent factual knowledge, with the abilities of pre-trained language models (PLMs) to capture high-level and contextual linguistic knowledge from large-scale text corpora. In this work, we propose a distillation framework for knowledge base completion where PLMs leverage soft labels in the form of entity and relations predictions provided by a knowledge base embedding model, while keeping their power of entity prediction over large-scale of texts. To better fit with the task of knowledge completion, we extend the traditional masked language modelling of PLMs toward predicting entities and related entities in context. Experiments using the fact classification and relation extraction tasks within the standard KILT evaluation benchmark shows the potential of our proposed approach.",
+    "authors": [
+        "Rapha\u00ebl Sourty",
+        "Jos\u00e9 G. Moreno",
+        "Fran\u00e7ois-Paul Servant",
+        "Lynda Tamine"
+    ],
+    "venue": "ACM Symposium on Applied Computing",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a distillation framework for knowledge base completion where PLMs leverage soft labels in the form of entity and relations predictions provided by a knowledge base embedding model, while keeping their power of entity prediction over large-scale of texts."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

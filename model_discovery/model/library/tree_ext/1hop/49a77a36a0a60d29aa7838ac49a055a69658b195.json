@@ -1,0 +1,35 @@
+{
+    "acronym": "49a77a36a0a60d29aa7838ac49a055a69658b195",
+    "title": "K-PLUG: Knowledge-injected Pre-trained Language Model for Natural Language Understanding and Generation in E-Commerce",
+    "seed_ids": [
+        "gpt",
+        "25db56fc85fe15625c3375064a35e908ba6dfd2a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "031e4e43aaffd7a479738dcea69a2d5be7957aa3"
+    ],
+    "s2id": "49a77a36a0a60d29aa7838ac49a055a69658b195",
+    "abstract": "Existing pre-trained language models (PLMs) have demonstrated the effectiveness of self-supervised learning for a broad range of natural language processing (NLP) tasks. However, most of them are not explicitly aware of domain-specific knowledge, which is essential for downstream tasks in many domains, such as tasks in e-commerce scenarios. In this paper, we propose K-PLUG, a knowledge-injected pre-trained language model based on the encoder-decoder transformer that can be transferred to both natural language understanding and generation tasks. We verify our method in a diverse range of e-commerce scenarios that require domain-specific knowledge. Specifically, we propose five knowledge-aware self-supervised pre-training objectives to formulate the learning of domain-specific knowledge, including e-commerce domain-specific knowledge-bases, aspects of product entities, categories of product entities, and unique selling propositions of product entities. K-PLUG achieves new state-of-the-art results on a suite of domain-specific NLP tasks, including product knowledge base completion, abstractive product summarization, and multi-turn dialogue, significantly outperforms baselines across the board, which demonstrates that the proposed method effectively learns a diverse set of domain-specific knowledge for both language understanding and generation tasks.",
+    "authors": [
+        "Song Xu",
+        "Haoran Li",
+        "Peng Yuan",
+        "Yujia Wang",
+        "Youzheng Wu",
+        "Xiaodong He",
+        "Ying Liu",
+        "Bowen Zhou"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "K-PLUG achieves new state-of-the-art results on a suite of domain-specific NLP tasks, including product knowledge base completion, abstractive product summarization, and multi-turn dialogue, which demonstrates that the proposed method effectively learns a diverse set ofdomain-specific knowledge for both language understanding and generation tasks."
+    },
+    "citationCount": 23,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

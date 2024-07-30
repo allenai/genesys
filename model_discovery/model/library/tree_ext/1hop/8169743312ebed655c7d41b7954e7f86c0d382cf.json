@@ -1,0 +1,25 @@
+{
+    "acronym": "8169743312ebed655c7d41b7954e7f86c0d382cf",
+    "title": "An Algorithm based on Semantic Similarity to Extract Candidate Answers in Question Answering Systems",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "8169743312ebed655c7d41b7954e7f86c0d382cf",
+    "abstract": "Answering complex questions based on multi-hop reasoning on textual data requires retrieving different documents. The main challenge in answering complex questions is the existence of few lexical relations between documents or paragraphs containing answers and questions. This Paper introduces an iterative retrieval method based on text processing techniques, which uses the structure of links inside Wikipedia while recognizing the type of question. This method allows retrieving documents related to open domain multi-step questions on the Wikipedia encyclopedia. The proposed method uses linguistic models based on a deep neural network to recognize the type of question, extract entities and keywords, and finally retrieve and rank documents. The evaluation results of the proposed method on the HotpotQA dataset show an improvement in the performance of the proposed method compared to the basic methods.",
+    "authors": [
+        "Seyed Himan Ghaderi",
+        "A. Ghafouri",
+        "Hassan Naderi"
+    ],
+    "venue": "2024 10th International Conference on Web Research (ICWR)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An iterative retrieval method based on text processing techniques, which uses the structure of links inside Wikipedia while recognizing the type of question while recognizing the type of question, is introduced."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

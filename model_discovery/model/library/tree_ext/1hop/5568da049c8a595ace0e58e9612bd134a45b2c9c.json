@@ -1,0 +1,26 @@
+{
+    "acronym": "5568da049c8a595ace0e58e9612bd134a45b2c9c",
+    "title": "YNU-HPCC at SemEval-2023 Task7: Multi-evidence Natural Language Inference for Clinical Trial Data Based a BioBERT Model",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "5568da049c8a595ace0e58e9612bd134a45b2c9c",
+    "abstract": "This paper describes the system for the YNU-HPCC team in subtask 1 of the SemEval-2023 Task 7: Multi-evidence Natural Language Inference for Clinical Trial Data (NLI4CT). This task requires judging the textual entailment relationship between the given CTR and the statement annotated by the expert annotator. This system is based on the fine-tuned Bi-directional Encoder Representation from Transformers for Biomedical Text Mining (BioBERT) model with supervised contrastive learning and back translation. Supervised contrastive learning is to enhance the classification, and back translation is to enhance the training data. Our system achieved relatively good results on the competition\u2019s official leaderboard. The code of this paper is available at https://github.com/facanhe/SemEval-2023-Task7.",
+    "authors": [
+        "Chao Feng",
+        "Jin Wang",
+        "Xuejie Zhang"
+    ],
+    "venue": "International Workshop on Semantic Evaluation",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The YNU-HPCC team in subtask 1 of the SemEval-2023 Task 7: Multi-evidence Natural Language Inference for Clinical Trial Data (NLI4CT) achieved relatively good results on the competition\u2019s official leaderboard."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

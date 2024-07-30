@@ -1,0 +1,29 @@
+{
+    "acronym": "827a67bbb96c8ed34c0f79e2ea811c5b53a6896b",
+    "title": "Controllable Response Generation for Assistive Use-cases",
+    "seed_ids": [
+        "gpt",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8"
+    ],
+    "s2id": "827a67bbb96c8ed34c0f79e2ea811c5b53a6896b",
+    "abstract": "Conversational agents have become an integral part of the general population for simple task enabling situations. However, these systems are yet to have any social impact on the diverse and minority population, for example, helping people with neurological disorders, for example ALS, and people with speech, language and social communication disorders. Language model technology can play a huge role to help these users carry out daily communication and social interactions. To enable this population, we build a dialog system that can be controlled by users using cues or keywords. We build models that can suggest relevant cues in the dialog response context which is used to control response generation and can speed up communication. We also introduce a keyword loss to lexically constrain the model output. We show both qualitatively and quantitatively that our models can effectively induce the keyword into the model response without degrading the quality of response. In the context of usage of such systems for people with degenerative disorders, we present human evaluation of our cue or keyword predictor and the controllable dialog system and show that our models perform significantly better than models without control. Our study shows that keyword control on end to end response generation models is powerful and can enable and empower users with degenerative disorders to carry out their day to day communication.",
+    "authors": [
+        "Shachi H. Kumar",
+        "Hsuan Su",
+        "R. Manuvinakurike",
+        "Saurav Sahay",
+        "L. Nachman"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study builds models that can suggest relevant cues in the dialog response context which is used to control response generation and can speed up communication and introduces a keyword loss to lexically constrain the model output."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

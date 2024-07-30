@@ -1,0 +1,36 @@
+{
+    "acronym": "edd23cff90be3f27e50e74d7b24cd0ca92370bbd",
+    "title": "Modelling Long Range Dependencies in N-D: From Task-Specific to a General Purpose CNN",
+    "seed_ids": [
+        "s4",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812",
+        "1d5c8c6e5a774d2fef8d92bd28670a6345a97f7a",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a"
+    ],
+    "s2id": "edd23cff90be3f27e50e74d7b24cd0ca92370bbd",
+    "abstract": "Performant Convolutional Neural Network (CNN) architectures must be tailored to specific tasks in order to consider the length, resolution, and dimensionality of the input data. In this work, we tackle the need for problem-specific CNN architectures. We present the Continuous Convolutional Neural Network (CCNN): a single CNN able to process data of arbitrary resolution, dimensionality and length without any structural changes. Its key component are its continuous convolutional kernels which model long-range dependencies at every layer, and thus remove the need of current CNN architectures for task-dependent downsampling and depths. We showcase the generality of our method by using the same architecture for tasks on sequential ($1{\\rm D}$), visual ($2{\\rm D}$) and point-cloud ($3{\\rm D}$) data. Our CCNN matches and often outperforms the current state-of-the-art across all tasks considered.",
+    "authors": [
+        "David M. Knigge",
+        "David W. Romero",
+        "Albert Gu",
+        "E. Gavves",
+        "E. Bekkers",
+        "Jakub M. Tomczak",
+        "M. Hoogendoorn",
+        "J. Sonke"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Continuous Convolutional Neural Network is presented: a single CNN able to process data of arbitrary resolution, dimensionality and length without any structural changes, and often outperforms the current state-of-the-art across all tasks considered."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

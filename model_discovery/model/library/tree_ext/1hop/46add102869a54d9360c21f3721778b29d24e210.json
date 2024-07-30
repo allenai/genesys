@@ -1,0 +1,43 @@
+{
+    "acronym": "46add102869a54d9360c21f3721778b29d24e210",
+    "title": "P^3Sum: Preserving Author\u2019s Perspective in News Summarization with Diffusion Language Models",
+    "seed_ids": [
+        "ssdlm",
+        "tess",
+        "67cdecbcfed07b9a29d9e2a92da684604383afd7",
+        "5471114e37448bea2457b74894b1ecb92bbcfdf6",
+        "22775e58932cdfbd273a2a835a22c5d86800a458",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "0b9770a377b3f96cef9f268cee1791d39a0d4893",
+        "64565e59f40e794b73b5eb52b8a7796c6ff88541",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "f1e56def812bc398d1b2b8c9a7ea6a623abd38e5",
+        "4a6a65968a8eb8c09ffb57a7774ddabb596565b1",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e04a80263d252a3d8a382ba37a249b9345620570"
+    ],
+    "s2id": "46add102869a54d9360c21f3721778b29d24e210",
+    "abstract": "In this work, we take a first step towards designing summarization systems that are faithful to the author\u2019s intent, not only the semantic content of the article. Focusing on a case study of preserving political perspectives in news summarization, we find that existing approaches alter the political opinions and stances of news articles in more than 50% of summaries, misrepresenting the intent and perspectives of the news authors. We thus propose P^3Sum, a diffusion model-based summarization approach controlled by political perspective classifiers. In P^3Sum, the political leaning of a generated summary is iteratively evaluated at each decoding step, and any drift from the article\u2019s original stance incurs a loss back-propagated to the embedding layers, steering the political stance of the summary at inference time. Extensive experiments on three news summarization datasets demonstrate that P^3Sum outperforms state-of-the-art summarization systems and large language models by up to 13.7% in terms of the success rate of stance preservation, with competitive performance on standard metrics of summarization quality. Our findings present a first analysis of preservation of pragmatic features in summarization, highlight the lacunae in existing summarization models\u2014that even state-of-the-art models often struggle to preserve author\u2019s intents\u2014and develop new summarization systems that are more faithful to author\u2019s perspectives.",
+    "authors": [
+        "Yuhan Liu",
+        "Shangbin Feng",
+        "Xiaochuang Han",
+        "Vidhisha Balachandran",
+        "Chan Young Park",
+        "Sachin Kumar",
+        "Yulia Tsvetkov"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The findings present a first analysis of preservation of pragmatic features in summarization, highlight the lacunae in existing summarization models\u2014that even state-of-the-art models often struggle to preserve author\u2019s intents\u2014and develop new summarization systems that are more faithful to author\u2019s perspectives."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

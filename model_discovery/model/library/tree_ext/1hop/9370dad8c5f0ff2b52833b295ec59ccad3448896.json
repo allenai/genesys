@@ -1,0 +1,30 @@
+{
+    "acronym": "9370dad8c5f0ff2b52833b295ec59ccad3448896",
+    "title": "Quixer: A Quantum Transformer Model",
+    "seed_ids": [
+        "transformer",
+        "fnet",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87"
+    ],
+    "s2id": "9370dad8c5f0ff2b52833b295ec59ccad3448896",
+    "abstract": "Progress in the realisation of reliable large-scale quantum computers has motivated research into the design of quantum machine learning models. We present Quixer: a novel quantum transformer model which utilises the Linear Combination of Unitaries and Quantum Singular Value Transform primitives as building blocks. Quixer operates by preparing a superposition of tokens and applying a trainable non-linear transformation to this mix. We present the first results for a quantum transformer model applied to a practical language modelling task, obtaining results competitive with an equivalent classical baseline. In addition, we include resource estimates for evaluating the model on quantum hardware, and provide an open-source implementation for classical simulation. We conclude by highlighting the generality of Quixer, showing that its parameterised components can be substituted with fixed structures to yield new classes of quantum transformers.",
+    "authors": [
+        "Nikhil Khatri",
+        "Gabriel Matos",
+        "Luuk Coopmans",
+        "Stephen Clark"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents Quixer: a novel quantum transformer model which utilises the Linear Combination of Unitaries and Quantum Singular Value Transform primitives as building blocks, and presents the first results for a quantum transformer model applied to a practical language modelling task, obtaining results competitive with an equivalent classical baseline."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

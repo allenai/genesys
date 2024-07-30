@@ -1,0 +1,26 @@
+{
+    "acronym": "7d785a8590a0b1e9cfa76e6f645d1fe2ceeba934",
+    "title": "GNAT: A General Narrative Alignment Tool",
+    "seed_ids": [
+        "compressivetransformer",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "a022bda79947d1f656a1164003c1b3ae9a843df9"
+    ],
+    "s2id": "7d785a8590a0b1e9cfa76e6f645d1fe2ceeba934",
+    "abstract": "Algorithmic sequence alignment identifies similar segments shared between pairs of documents, and is fundamental to many NLP tasks. But it is difficult to recognize similarities between distant versions of narratives such as translations and retellings, particularly for summaries and abridgements which are much shorter than the original novels. We develop a general approach to narrative alignment coupling the Smith-Waterman algorithm from bioinformatics with modern text similarity metrics. We show that the background of alignment scores fits a Gumbel distribution, enabling us to define rigorous p-values on the significance of any alignment. We apply and evaluate our general narrative alignment tool (GNAT) on four distinct problem domains differing greatly in both the relative and absolute length of documents, namely summary-to-book alignment, translated book alignment, short story alignment, and plagiarism detection -- demonstrating the power and performance of our methods.",
+    "authors": [
+        "T. Pial",
+        "S. Skiena"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work develops a general approach to narrative alignment coupling the Smith-Waterman algorithm from bioinformatics with modern text similarity metrics, and shows that the background of alignment scores fits a Gumbel distribution, enabling us to define rigorous p-values on the significance of any alignment."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "47b41bfc9d05b743675b36467ea67dcb3632899d",
+    "title": "A Recurrent Neural Network based Generative Adversarial Network for Long Multivariate Time Series Forecasting",
+    "seed_ids": [
+        "reformer",
+        "3e5b7f0b64c60ca0bb5ef547e8e3dcc2a568ab75",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "30dcc0e191a376fea0e7a46f94c53872c029efc9"
+    ],
+    "s2id": "47b41bfc9d05b743675b36467ea67dcb3632899d",
+    "abstract": "Some multimedia data from real life can be collected as multivariate time series data, such as community-contributed social data or sensor data. Many methods have been proposed for multivariate time series forecasting. In light of its importance in wide applications including traffic or electric power forecasting, appearance of the Transformer model has rapidly revolutionized various architectural design efforts. In Transformer, self-attention is used to achieve state-of-the-art prediction, and further studied for time series modeling in the frequency recently. These related works prove that self-attention mechanisms can reach a satisfied performance whether in time or frequency domain, but we used recurrent neural network (RNN) to verify that these are not critical and necessary. The correlation structure of RNN has time series specific inductive bias, but there are still some shortcomings in long multivariate time series forecasting. To break the forecasting bottleneck of traditional RNN architectures, we introduced RNNGAN, a novel and competitive RNN-based architecture combining the generation capability of Generative Adversarial Network (GAN) with the forecasting power of RNN. Differentiated from the Transformer, RNNGAN uses long short-term memory (LSTM) instead of the self-attention layers to model long-range dependencies. The experiment shows that, compared with the state-of-the-art models, RNNGAN can obtain competitive scores in many benchmark tests when training on multivariate time series datasets in many different fields.",
+    "authors": [
+        "Peiwang Tang",
+        "Qinghua Zhang",
+        "Xianchao Zhang"
+    ],
+    "venue": "International Conference on Multimedia Retrieval",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "RNNGAN is introduced, a novel and competitive RNN-based architecture combining the generation capability of Generative Adversarial Network (GAN) with the forecasting power of RNN, differentiated from the Transformer, which shows that RNNGAN can obtain competitive scores in many benchmark tests when training on multivariate time series datasets in many different fields."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

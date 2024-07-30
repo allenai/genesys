@@ -1,0 +1,34 @@
+{
+    "acronym": "1ca558dd879f39c9f68a91957eefc38c487d69c7",
+    "title": "Knowledge Condensation and Reasoning for Knowledge-based VQA",
+    "seed_ids": [
+        "gpt3",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c"
+    ],
+    "s2id": "1ca558dd879f39c9f68a91957eefc38c487d69c7",
+    "abstract": "Knowledge-based visual question answering (KB-VQA) is a challenging task, which requires the model to leverage external knowledge for comprehending and answering questions grounded in visual content. Recent studies retrieve the knowledge passages from external knowledge bases and then use them to answer questions. However, these retrieved knowledge passages often contain irrelevant or noisy information, which limits the performance of the model. To address the challenge, we propose two synergistic models: Knowledge Condensation model and Knowledge Reasoning model. We condense the retrieved knowledge passages from two perspectives. First, we leverage the multimodal perception and reasoning ability of the visual-language models to distill concise knowledge concepts from retrieved lengthy passages, ensuring relevance to both the visual content and the question. Second, we leverage the text comprehension ability of the large language models to summarize and condense the passages into the knowledge essence which helps answer the question. These two types of condensed knowledge are then seamlessly integrated into our Knowledge Reasoning model, which judiciously navigates through the amalgamated information to arrive at the conclusive answer. Extensive experiments validate the superiority of the proposed method. Compared to previous methods, our method achieves state-of-the-art performance on knowledge-based VQA datasets (65.1% on OK-VQA and 60.1% on A-OKVQA) without resorting to the knowledge produced by GPT-3 (175B).",
+    "authors": [
+        "Dongze Hao",
+        "Jian Jia",
+        "Longteng Guo",
+        "Qunbo Wang",
+        "Te Yang",
+        "Yan Li",
+        "Yanhua Cheng",
+        "Bo Wang",
+        "Quan Chen",
+        "Han Li",
+        "Jing Liu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes two synergistic models: Knowledge Condensation model and Knowledge Reasoning model, which leverage the multimodal perception and reasoning ability of the visual-language models to distill concise knowledge concepts from retrieved lengthy passages, ensuring relevance to both the visual content and the question."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

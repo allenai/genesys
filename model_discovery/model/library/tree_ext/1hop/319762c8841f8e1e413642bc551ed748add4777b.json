@@ -1,0 +1,29 @@
+{
+    "acronym": "319762c8841f8e1e413642bc551ed748add4777b",
+    "title": "Multichannel Long-Term Streaming Neural Speech Enhancement for Static and Moving Speakers",
+    "seed_ids": [
+        "mamba",
+        "240103933ffe3dac2179cc160a2bd91299357a53",
+        "d62c4d00b277e948956b6610ce2644e88fe1577b",
+        "9575afb5702bc33d7df14c48feeee5901ea00369",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "09e2c7adbed37440d4a339852cfa34e5b660f768"
+    ],
+    "s2id": "319762c8841f8e1e413642bc551ed748add4777b",
+    "abstract": "In this work, we extend our previously proposed offline SpatialNet for long-term streaming multichannel speech enhancement in both static and moving speaker scenarios. SpatialNet exploits spatial information, such as the spatial/steering direction of speech, for discriminating between target speech and interferences, and achieved outstanding performance. The core of SpatialNet is a narrow-band self-attention module used for learning the temporal dynamic of spatial vectors. Towards long-term streaming speech enhancement, we propose to replace the offline self-attention network with online networks that have linear inference complexity w.r.t signal length and meanwhile maintain the capability of learning long-term information. Three variants are developed based on (i) masked self-attention, (ii) Retention, a self-attention variant with linear inference complexity, and (iii) Mamba, a structured-state-space-based RNN-like network. Moreover, we investigate the length extrapolation ability of different networks, namely test on signals that are much longer than training signals, and propose a short-signal training plus long-signal fine-tuning strategy, which largely improves the length extrapolation ability of the networks within limited training time. Overall, the proposed online SpatialNet achieves outstanding speech enhancement performance for long audio streams, and for both static and moving speakers. The proposed method is open-sourced in https://github.com/Audio-WestlakeU/NBSS.",
+    "authors": [
+        "Changsheng Quan",
+        "Xiaofei Li"
+    ],
+    "venue": "IEEE Signal Processing Letters",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work extends the previously proposed offline SpatialNet and proposes to replace the offline self-attention network with online networks that have linear inference complexity w.r.t signal length and meanwhile maintain the capability of learning long-term information."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

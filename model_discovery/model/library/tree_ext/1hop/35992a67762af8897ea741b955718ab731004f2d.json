@@ -1,0 +1,36 @@
+{
+    "acronym": "35992a67762af8897ea741b955718ab731004f2d",
+    "title": "Smart Bird: Learnable Sparse Attention for Efficient and Effective Transformer",
+    "seed_ids": [
+        "bigbird",
+        "longformer",
+        "sparsetransformer",
+        "reformer",
+        "e32a12b14e212506115cc6804667b3d8297917e1",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "35992a67762af8897ea741b955718ab731004f2d",
+    "abstract": "Transformer has achieved great success in NLP. However, the quadratic complexity of the self-attention mechanism in Transformer makes it inefficient in handling long sequences. Many existing works explore to accelerate Transformers by computing sparse self-attention instead of a dense one, which usually attends to tokens at certain positions or randomly selected tokens. However, manually selected or random tokens may be uninformative for context modeling. In this paper, we propose Smart Bird, which is an efficient and effective Transformer with learnable sparse attention. In Smart Bird, we first compute a sketched attention matrix with a single-head low-dimensional Transformer, which aims to find potential important interactions between tokens. We then sample token pairs based on their probability scores derived from the sketched attention matrix to generate different sparse attention index matrices for different attention heads. Finally, we select token embeddings according to the index matrices to form the input of sparse attention networks. Extensive experiments on six benchmark datasets for different tasks validate the efficiency and effectiveness of Smart Bird in text modeling.",
+    "authors": [
+        "Chuhan Wu",
+        "Fangzhao Wu",
+        "Tao Qi",
+        "Yongfeng Huang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Smart Bird is proposed, which is an efficient and effective Transformer with learnable sparse attention, which helps to accelerate Transformers by computing sparse self-attention instead of a dense one."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

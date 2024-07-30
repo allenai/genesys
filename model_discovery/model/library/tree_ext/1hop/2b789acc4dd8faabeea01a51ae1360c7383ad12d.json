@@ -1,0 +1,27 @@
+{
+    "acronym": "2b789acc4dd8faabeea01a51ae1360c7383ad12d",
+    "title": "GUANinE v1.0: Benchmark Datasets for Genomic AI Sequence-to-Function Models",
+    "seed_ids": [
+        "bigbird",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2b789acc4dd8faabeea01a51ae1360c7383ad12d",
+    "abstract": "Computational genomics increasingly relies on machine learning methods for genome interpretation, and the recent adoption of neural sequence-to-function models highlights the need for rigorous model specification and controlled evaluation, problems familiar to other fields of AI. Research strategies that have greatly benefited other fields \u2014 including benchmarking, auditing, and algorithmic fairness \u2014 are also needed to advance the field of genomic AI and to facilitate model development. Here we propose a genomic AI benchmark, GUANinE, for evaluating model generalization across a number of distinct genomic tasks. Compared to existing task formulations in computational genomics, GUANinE is large-scale, de-noised, and suitable for evaluating pretrained models. GUANinE v1.0 primarily focuses on functional genomics tasks such as functional element annotation and gene expression prediction, and it also draws upon connections to evolutionary biology through sequence conservation tasks. The current GUANinE tasks provide insight into the performance of existing genomic AI models and non-neural baselines, with opportunities to be refined, revisited, and broadened as the field matures. Finally, the GUANinE benchmark allows us to evaluate new self-supervised T5 models and explore the tradeoffs between tokenization and model performance, while showcasing the potential for self-supervision to complement existing pretraining procedures.",
+    "authors": [
+        "Eyes S. Robson",
+        "Nilah M. Ioannidis"
+    ],
+    "venue": "bioRxiv",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The GUANinE benchmark allows us to evaluate new self-supervised T5 models and explore the tradeoffs between tokenization and model performance, while showcasing the potential for self-supervision to complement existing pretraining procedures."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

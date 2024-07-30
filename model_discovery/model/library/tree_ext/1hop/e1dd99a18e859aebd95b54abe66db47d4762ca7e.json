@@ -1,0 +1,29 @@
+{
+    "acronym": "e1dd99a18e859aebd95b54abe66db47d4762ca7e",
+    "title": "Hate Speech Detection with Generalizable Target-aware Fairness",
+    "seed_ids": [
+        "transformer",
+        "039b1c1210c437f3b3ce6e0275ee2137bf5b951c"
+    ],
+    "s2id": "e1dd99a18e859aebd95b54abe66db47d4762ca7e",
+    "abstract": "To counter the side effect brought by the proliferation of social media platforms, hate speech detection (HSD) plays a vital role in halting the dissemination of toxic online posts at an early stage. However, given the ubiquitous topical communities on social media, a trained HSD classifier easily becomes biased towards specific targeted groups (e.g., female and black people), where a high rate of false positive/negative results can significantly impair public trust in the fairness of content moderation mechanisms, and eventually harm the diversity of online society. Although existing fairness-aware HSD methods can smooth out some discrepancies across targeted groups, they are mostly specific to a narrow selection of targets that are assumed to be known and fixed. This inevitably prevents those methods from generalizing to real-world use cases where new targeted groups constantly emerge over time. To tackle this defect, we propose Generalizable target-aware Fairness (GetFair), a new method for fairly classifying each post that contains diverse and even unseen targets during inference. To remove the HSD classifier's spurious dependence on target-related features, GetFair trains a series of filter functions in an adversarial pipeline, so as to deceive the discriminator that recovers the targeted group from filtered post embeddings. To maintain scalability and generalizability, we innovatively parameterize all filter functions via a hypernetwork that is regularized by the semantic affinity among targets. Taking a target's pretrained word embedding as input, the hypernetwork generates the weights used by each target-specific filter on-the-fly without storing dedicated filter parameters. Finally, comparative experiments on two HSD datasets have shown advantageous performance of GetFair on out-of-sample targets.",
+    "authors": [
+        "Tong Chen",
+        "Danny Wang",
+        "Xurong Liang",
+        "Marten Risius",
+        "Gianluca Demartini",
+        "Hongzhi Yin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Generalizable target-aware Fairness (GetFair), a new method for fairly classifying each post that contains diverse and even unseen targets during inference, and innovatively parameterize all filter functions via a hypernetwork that is regularized by the semantic affinity among targets."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

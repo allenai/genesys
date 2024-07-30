@@ -1,0 +1,36 @@
+{
+    "acronym": "fcdaf1930de1c1ff31f41466c6d7d26468b2515e",
+    "title": "The generative quantum eigensolver (GQE) and its application for ground state search",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "fcdaf1930de1c1ff31f41466c6d7d26468b2515e",
+    "abstract": "We introduce the generative quantum eigensolver (GQE), a novel method for applying classical generative models for quantum simulation. The GQE algorithm optimizes a classical generative model to produce quantum circuits with desired properties. Here, we develop a transformer-based implementation, which we name the generative pre-trained transformer-based (GPT) quantum eigensolver (GPT-QE), leveraging both pre-training on existing datasets and training without any prior knowledge. We demonstrate the effectiveness of training and pre-training GPT-QE in the search for ground states of electronic structure Hamiltonians. GQE strategies can extend beyond the problem of Hamiltonian simulation into other application areas of quantum computing.",
+    "authors": [
+        "Kouhei Nakaji",
+        "L. B. Kristensen",
+        "Jorge A. Campos-Gonzalez-Angulo",
+        "Mohammad Ghazi Vakili",
+        "Haozhe Huang",
+        "Mohsen Bagherimehrab",
+        "Christoph Gorgulla",
+        "FuTe Wong",
+        "Alex McCaskey",
+        "Jin-Sung Kim",
+        "Thien Nguyen",
+        "Pooja Rao",
+        "Al\u00e1n Aspuru-Guzik"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A transformer-based implementation of the GQE algorithm, which is developed, which is named the generative pre-trained transformer-based (GPT) quantum eigensolver (GPT-QE), leveraging both pre-training on existing datasets and training without any prior knowledge in the search for ground states of electronic structure Hamiltonians."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

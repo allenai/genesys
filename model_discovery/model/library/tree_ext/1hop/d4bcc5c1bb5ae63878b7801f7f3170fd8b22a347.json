@@ -1,0 +1,31 @@
+{
+    "acronym": "d4bcc5c1bb5ae63878b7801f7f3170fd8b22a347",
+    "title": "Sim-to-Real Transfer for Quadrupedal Locomotion via Terrain Transformer",
+    "seed_ids": [
+        "gpt",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "d4bcc5c1bb5ae63878b7801f7f3170fd8b22a347",
+    "abstract": "Deep reinforcement learning has recently emerged as an appealing alternative for legged locomotion over multiple terrains by training a policy in physical simulation and then transferring it to the real world (i.e., sim-to-real transfer). Despite considerable progress, the capacity and scalability of traditional neural networks are still limited, which may hinder their applications in more complex environments. In contrast, the Transformer architecture has shown its superiority in a wide range of large-scale sequence modeling tasks, including natural language processing and decision-making problems. In this paper, we propose Terrain Transformer (TERT), a high-capacity Transformer model for quadrupedal locomotion control on various terrains. Furthermore, to better leverage Transformer in sim-to-real scenarios, we present a novel two-stage training framework consisting of an offline pretraining stage and an online correction stage, which can naturally integrate Transformer with privileged training. Extensive experiments in simulation demonstrate that TERT outperforms state-of-the-art baselines on different terrains in terms of return, energy consumption and control smoothness. In further real-world validation, TERT successfully traverses nine challenging terrains, including sand pit and stair down, which can not be accomplished by strong baselines.",
+    "authors": [
+        "Hang Lai",
+        "Weinan Zhang",
+        "Xialin He",
+        "Chen Yu",
+        "Zheng Tian",
+        "Yong Yu",
+        "Jun Wang"
+    ],
+    "venue": "IEEE International Conference on Robotics and Automation",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Terrain Transformer (TERT), a high-capacity Transformer model for quadrupedal locomotion control on various terrains is proposed and a novel two-stage training framework is presented consisting of an offline pretraining stage and an online correction stage, which can naturally integrate Transformer with privileged training."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

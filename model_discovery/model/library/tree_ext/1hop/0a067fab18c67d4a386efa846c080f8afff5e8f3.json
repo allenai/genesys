@@ -1,0 +1,53 @@
+{
+    "acronym": "0a067fab18c67d4a386efa846c080f8afff5e8f3",
+    "title": "Block-State Transformers",
+    "seed_ids": [
+        "hyena",
+        "hippo",
+        "brt",
+        "gssm",
+        "dssm",
+        "flash",
+        "memorizingtrans",
+        "998ac3e945857cf2676ee7efdbaf443a0c6f820a",
+        "54155c2977a977bf129849455dcae3a2b79b3f41",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "70e91e16eb321067d9402710e14a40cf28311f73",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "0e802c0739771acf70e60d59c2df51cd7e8c50c0",
+        "736eb449526fe7128917954ec5532b59e318ec78",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "f2fc9ef411846dd577c26225ce93f50bb1fa760b",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "f51497f463566581874c941353dd9d80069c5b77"
+    ],
+    "s2id": "0a067fab18c67d4a386efa846c080f8afff5e8f3",
+    "abstract": "State space models (SSMs) have shown impressive results on tasks that require modeling long-range dependencies and efficiently scale to long sequences owing to their subquadratic runtime complexity. Originally designed for continuous signals, SSMs have shown superior performance on a plethora of tasks, in vision and audio; however, SSMs still lag Transformer performance in Language Modeling tasks. In this work, we propose a hybrid layer named Block-State Transformer (BST), that internally combines an SSM sublayer for long-range contextualization, and a Block Transformer sublayer for short-term representation of sequences. We study three different, and completely parallelizable, variants that integrate SSMs and block-wise attention. We show that our model outperforms similar Transformer-based architectures on language modeling perplexity and generalizes to longer sequences. In addition, the Block-State Transformer demonstrates more than tenfold increase in speed at the layer level compared to the Block-Recurrent Transformer when model parallelization is employed.",
+    "authors": [
+        "Mahan Fathi",
+        "Jonathan Pilault",
+        "Pierre-Luc Bacon",
+        "C. Pal",
+        "Orhan Firat",
+        "Ross Goroshin"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a hybrid layer named Block-State Transformer (BST), that internally combines an SSM sublayer for long-range contextualization, and a Block Transformer sub layer for short-term representation of sequences and shows that the model outperforms similar Transformer-based architectures on language modeling perplexity and generalizes to longer sequences."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

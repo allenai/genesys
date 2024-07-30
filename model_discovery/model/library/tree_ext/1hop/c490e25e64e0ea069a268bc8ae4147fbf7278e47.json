@@ -1,0 +1,28 @@
+{
+    "acronym": "c490e25e64e0ea069a268bc8ae4147fbf7278e47",
+    "title": "Identifying Self-Disclosures of Use, Misuse and Addiction in Community-based Social Media Posts",
+    "seed_ids": [
+        "gpt3"
+    ],
+    "s2id": "c490e25e64e0ea069a268bc8ae4147fbf7278e47",
+    "abstract": "In the last decade, the United States has lost more than 500,000 people from an overdose involving prescription and illicit opioids making it a national public health emergency (USDHHS, 2017). Medical practitioners require robust and timely tools that can effectively identify at-risk patients. Community-based social media platforms such as Reddit allow self-disclosure for users to discuss otherwise sensitive drug-related behaviors. We present a moderate size corpus of 2500 opioid-related posts from various subreddits labeled with six different phases of opioid use: Medical Use, Misuse, Addiction, Recovery, Relapse, Not Using. For every post, we annotate span-level extractive explanations and crucially study their role both in annotation quality and model development. We evaluate several state-of-the-art models in a supervised, few-shot, or zero-shot setting. Experimental results and error analysis show that identifying the phases of opioid use disorder is highly contextual and challenging. However, we find that using explanations during modeling leads to a significant boost in classification accuracy demonstrating their beneficial role in a high-stakes domain such as studying the opioid use disorder continuum.",
+    "authors": [
+        "Chenghao Yang",
+        "Tuhin Chakrabarty",
+        "K. Hochstatter",
+        "M. Slavin",
+        "N. El-Bassel",
+        "S. Muresan"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A moderate size corpus of 2500 opioid-related posts from various subreddits labeled with six different phases of opioid use is presented, finding that using explanations during modeling leads to a significant boost in classification accuracy demonstrating their beneficial role in a high-stakes domain such as studying the opioid use disorder continuum."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

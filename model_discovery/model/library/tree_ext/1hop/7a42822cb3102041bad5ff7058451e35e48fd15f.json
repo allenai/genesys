@@ -1,0 +1,27 @@
+{
+    "acronym": "7a42822cb3102041bad5ff7058451e35e48fd15f",
+    "title": "CASPER: Causality-Aware Spatiotemporal Graph Neural Networks for Spatiotemporal Time Series Imputation",
+    "seed_ids": [
+        "transformer",
+        "ebb8b4eb5a9ebca7775ce230021414f1748c5e06"
+    ],
+    "s2id": "7a42822cb3102041bad5ff7058451e35e48fd15f",
+    "abstract": "Spatiotemporal time series is the foundation of understanding human activities and their impacts, which is usually collected via monitoring sensors placed at different locations. The collected data usually contains missing values due to various failures, which have significant impact on data analysis. To impute the missing values, a lot of methods have been introduced. When recovering a specific data point, most existing methods tend to take into consideration all the information relevant to that point regardless of whether they have a cause-and-effect relationship. During data collection, it is inevitable that some unknown confounders are included, e.g., background noise in time series and non-causal shortcut edges in the constructed sensor network. These confounders could open backdoor paths between the input and output, in other words, they establish non-causal correlations between the input and output. Over-exploiting these non-causal correlations could result in overfitting and make the model vulnerable to noises. In this paper, we first revisit spatiotemporal time series imputation from a causal perspective, which shows the causal relationships among the input, output, embeddings and confounders. Next, we show how to block the confounders via the frontdoor adjustment. Based on the results of the frontdoor adjustment, we introduce a novel Causality-Aware SPatiotEmpoRal graph neural network (CASPER), which contains a novel Spatiotemporal Causal Attention (SCA) and a Prompt Based Decoder (PBD). PBD could reduce the impact of confounders and SCA could discover the sparse causal relationships among embeddings. Theoretical analysis reveals that SCA discovers causal relationships based on the values of gradients. We evaluate Casper on three real-world datasets, and the experimental results show that Casper outperforms the baselines and effectively discovers causal relationships.",
+    "authors": [
+        "Baoyu Jing",
+        "Dawei Zhou",
+        "Kan Ren",
+        "Carl Yang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel Causality-Aware SPatiotemporal SPatiotEmpoRal graph neural network (CASPER), which contains a novel Spatiotemporal Causal Attention (SCA) and a Prompt Based Decoder (PBD) and theoretical analysis reveals that SCA discovers causal relationships based on the values of gradients."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

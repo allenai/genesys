@@ -1,0 +1,34 @@
+{
+    "acronym": "9ada8fa11b1cdece31f253acae50b62df8d5f823",
+    "title": "CodeT5+: Open Code Large Language Models for Code Understanding and Generation",
+    "seed_ids": [
+        "gpt2",
+        "914254fac74a2da051cccf6ca16afcaad416a079",
+        "4b27f18bff43d605805c92696a979714ced0b805",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "9ada8fa11b1cdece31f253acae50b62df8d5f823",
+    "abstract": "Large language models (LLMs) pretrained on vast source code have achieved prominent progress in code intelligence. However, existing code LLMs have two main limitations in terms of architecture and pretraining tasks. First, they often adopt a specific architecture (encoder-only or decoder-only) or rely on a unified encoder-decoder network for different downstream tasks. The former paradigm is limited by inflexibility in applications while in the latter, the model is treated as a single system for all tasks, leading to suboptimal performance on a subset of tasks. Secondly, they often employ a limited set of pretraining objectives which might not be relevant to some downstream tasks and hence result in substantial performance degrade. To address these limitations, we propose ``CodeT5+'', a family of encoder-decoder LLMs for code in which component modules can be flexibly combined to suit a wide range of downstream code tasks. Such flexibility is enabled by our proposed mixture of pretraining objectives to mitigate the pretrain-finetune discrepancy. These objectives cover span denoising, contrastive learning, text-code matching, and causal LM pretraining tasks, on both unimodal and bimodal multilingual code corpora. Furthermore, we propose to initialize CodeT5+ with frozen off-the-shelf LLMs without training from scratch to efficiently scale up our models, and explore instruction-tuning to align with natural language instructions. We extensively evaluate CodeT5+ on over 20 code-related benchmarks in different settings, including zero-shot, finetuning, and instruction-tuning. We observe state-of-the-art (SoTA) model performance on various code-related tasks, such as code generation and completion, math programming, and text-to-code retrieval tasks. Particularly, our instruction-tuned CodeT5+ 16B achieves new SoTA results on HumanEval code generation task against other open code LLMs.",
+    "authors": [
+        "Yue Wang",
+        "Hung Le",
+        "Akhilesh Deepak Gotmare",
+        "Nghi D. Q. Bui",
+        "Junnan Li",
+        "Steven C. H. Hoi"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes ``CodeT5+'', a family of encoder-decoder LLMs for code in which component modules can be flexibly combined to suit a wide range of downstream code tasks, and proposes a mixture of pretraining objectives to mitigate the pretrain-finetune discrepancy."
+    },
+    "citationCount": 251,
+    "influentialCitationCount": 37,
+    "code": null,
+    "description": null,
+    "url": null
+}

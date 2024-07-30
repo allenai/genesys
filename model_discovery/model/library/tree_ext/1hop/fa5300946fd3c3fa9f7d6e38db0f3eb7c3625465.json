@@ -1,0 +1,29 @@
+{
+    "acronym": "fa5300946fd3c3fa9f7d6e38db0f3eb7c3625465",
+    "title": "Video Question Answering With Semantic Disentanglement and Reasoning",
+    "seed_ids": [
+        "bert",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "fa5300946fd3c3fa9f7d6e38db0f3eb7c3625465",
+    "abstract": "Video question answering aims to provide correct answers given complex videos and related questions, posting high requirements of the comprehension ability in both video and language processing. Existing works phrase this task as a multi-modal fusion process by aligning the video context with the whole question, ignoring the rich semantic details of nouns and verbs separately in the multi-modal reasoning process to derive the final answer. To fill this gap, in addition to the semantic alignment of the whole sentence, we propose to disentangle the semantic understanding of language, and reason over the corresponding frame-level and motion-level video features. We design an unified multi-granularity language module of residual structure to adapt the semantic understanding at different granularity with context exchange, e.g., word-level and sentence-level. To enhance the holistic question understanding for answer prediction, we also design a contrastive sampling approach by selecting irrelevant questions as negative samples to break the intrinsic correlations between questions and answers within the dataset. Notably, our model is competent for both multiple-choice and open-ended video question answering. We further employ a pre-trained language model to retrieve relevant knowledge as candidate answer context to facilitate open-ended VideoQA. Extensive quantitative and qualitative experiments on four public datasets (NextQA, MSVD, MSRVTT, and TGIF-QA-R) demonstrate the effective and superior performance of our proposed model. Our code will be released upon the paper\u2019s acceptance.",
+    "authors": [
+        "Jin Liu",
+        "Guoxiang Wang",
+        "Jialong Xie",
+        "F. Zhou",
+        "Huijuan Xu"
+    ],
+    "venue": "IEEE transactions on circuits and systems for video technology (Print)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work designs an unified multi-granularity language module of residual structure to adapt the semantic understanding at different granularity with context exchange, e.g., word-level and sentence-level, and employs a pre-trained language model to retrieve relevant knowledge as candidate answer context to facilitate open-ended VideoQA."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

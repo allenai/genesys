@@ -1,0 +1,27 @@
+{
+    "acronym": "4b7215ebc0457a7e171bb3007c1e11623eef6615",
+    "title": "Defending against Reconstruction Attacks with R\u00e9nyi Differential Privacy",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "4b7215ebc0457a7e171bb3007c1e11623eef6615",
+    "abstract": "Reconstruction attacks allow an adversary to regenerate data samples of the training set using access to only a trained model. It has been recently shown that simple heuristics can reconstruct data samples from language models, making this threat scenario an important aspect of model release. Differential privacy is a known solution to such attacks, but is often used with a relatively large privacy budget (epsilon>8) which does not translate to meaningful guarantees. In this paper we show that, for a same mechanism, we can derive privacy guarantees for reconstruction attacks that are better than the traditional ones from the literature. In particular, we show that larger privacy budgets do not protect against membership inference, but can still protect extraction of rare secrets. We show experimentally that our guarantees hold against various language models, including GPT-2 finetuned on Wikitext-103.",
+    "authors": [
+        "Pierre Stock",
+        "I. Shilov",
+        "Ilya Mironov",
+        "Alexandre Sablayrolles"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper shows that larger privacy budgets do not protect against membership inference, but can still protect extraction of rare secrets, and shows experimentally that privacy guarantees hold against various language models, including GPT-2 finetuned on Wikitext-103."
+    },
+    "citationCount": 28,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

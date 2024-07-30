@@ -1,0 +1,25 @@
+{
+    "acronym": "2cd2675dd1467bd9e9594625ec80eac9d1557c0f",
+    "title": "On the Relationship Between Variational Inference and Auto-Associative Memory",
+    "seed_ids": [
+        "hopfield"
+    ],
+    "s2id": "2cd2675dd1467bd9e9594625ec80eac9d1557c0f",
+    "abstract": "In this article, we propose a variational inference formulation of auto-associative memories, allowing us to combine perceptual inference and memory retrieval into the same mathematical framework. In this formulation, the prior probability distribution onto latent representations is made memory dependent, thus pulling the inference process towards previously stored representations. We then study how different neural network approaches to variational inference can be applied in this framework. We compare methods relying on amortized inference such as Variational Auto Encoders and methods relying on iterative inference such as Predictive Coding and suggest combining both approaches to design new auto-associative memory models. We evaluate the obtained algorithms on the CIFAR10 and CLEVR image datasets and compare them with other associative memory models such as Hopfield Networks, End-to-End Memory Networks and Neural Turing Machines.",
+    "authors": [
+        "Louis Annabi",
+        "Alexandre Pitti",
+        "M. Quoy"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This article proposes a variational inference formulation of auto-associative memories, allowing to combine perceptual inference and memory retrieval into the same mathematical framework, and evaluates the obtained algorithms on the CIFAR10 and CLEVR image datasets and compares them with other associative memory models."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

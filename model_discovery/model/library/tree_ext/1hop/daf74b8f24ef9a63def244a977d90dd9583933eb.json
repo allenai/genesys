@@ -1,0 +1,29 @@
+{
+    "acronym": "daf74b8f24ef9a63def244a977d90dd9583933eb",
+    "title": "Dynamic Graph Message Passing Networks",
+    "seed_ids": [
+        "soft",
+        "2e644c67a697073d561da4f4dad35e5ad5316cfd",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "daf74b8f24ef9a63def244a977d90dd9583933eb",
+    "abstract": "Modelling long-range dependencies is critical for scene understanding tasks in computer vision. Although convolution neural networks (CNNs) have excelled in many vision tasks, they are still limited in capturing long-range structured relationships as they typically consist of layers of local kernels. A fully-connected graph, such as the self-attention operation in Transformers, is beneficial for such modelling, however, its computational overhead is prohibitive. In this paper, we propose a dynamic graph message passing network, that significantly reduces the computational complexity compared to related works modelling a fully-connected graph. This is achieved by adaptively sampling nodes in the graph, conditioned on the input, for message passing. Based on the sampled nodes, we dynamically predict node-dependent filter weights and the affinity matrix for propagating information between them. This formulation allows us to design a self-attention module, and more importantly a new Transformer-based backbone network, that we use for both image classification pretraining, and for addressing various downstream tasks (e.g. object detection, instance and semantic segmentation). Using this model, we show significant improvements with respect to strong, state-of-the-art baselines on four different tasks. Our approach also outperforms fully-connected graphs while using substantially fewer floating-point operations and parameters. Code and models will be made publicly available at https://github.com/fudan-zvg/DGMN2.",
+    "authors": [
+        "Li Zhang",
+        "Mohan Chen",
+        "Anurag Arnab",
+        "Xiangyang Xue",
+        "Philip H. S. Torr"
+    ],
+    "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a dynamic graph message passing network, that significantly reduces the computational complexity compared to related works modelling a fully-connected graph, and outperforms fully- connected graphs while using substantially fewer floating-point operations and parameters."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

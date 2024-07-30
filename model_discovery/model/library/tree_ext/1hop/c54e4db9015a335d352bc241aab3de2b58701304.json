@@ -1,0 +1,23 @@
+{
+    "acronym": "c54e4db9015a335d352bc241aab3de2b58701304",
+    "title": "Swedish NLP Solutions for Email Classification",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "c54e4db9015a335d352bc241aab3de2b58701304",
+    "abstract": "Assigning categories to text communications is a common task of Natural Language Processing (NLP). In 2018, a new deep learning language representation model, Bidirectional Encoder Representations from Transformers (BERT), was developed which can make inferences from text without task specific architecture. This research investigated whether or not a version of this new model could be used to accurately classify emails as well as, or better than a classical machine learning model such as a Support Vector Machine (SVM). In this thesis project, a BERT model was developed by solely pretraining on the Swedish language (svBERT) and investigated whether it could surpass a multilingual BERT (mBERT) model\u2019s performance on a Swedish email classification task. Specifically, BERT was used in a classification task for customer emails. Fourteen email categories were defined by the client. All emails were in the Swedish language. Three different SVMs and four different BERT models were all created for this task. The best F1 score for the three classical machine learning models (standard or hybrid) and the four deep learning models was determined. The best machine learning model was a hybrid SVM using fastText with an F1 score of 84.33%. The best deep learning model, mPreBERT, achieved an F1 score of 85.16%. These results show that deep learning models can improve upon the accuracy of classical machine learning models and suggest that more extensive pre-training with a Swedish text corpus will markedly improve accuracy.",
+    "authors": [
+        "John Robert Castronuovo"
+    ],
+    "venue": "",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results show that deep learning models can improve upon the accuracy of classical machine learning models and suggest that more extensive pre-training with a Swedish text corpus will markedly improve accuracy."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

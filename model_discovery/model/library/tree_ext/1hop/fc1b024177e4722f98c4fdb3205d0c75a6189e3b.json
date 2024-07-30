@@ -1,0 +1,29 @@
+{
+    "acronym": "fc1b024177e4722f98c4fdb3205d0c75a6189e3b",
+    "title": "Layer-Wise Multi-View Learning for Neural Machine Translation",
+    "seed_ids": [
+        "lighdynconv",
+        "4cf963e5fd88825ac62ad6cce364447e5d2dfb2b",
+        "d9f1eed347959149f27002485a7fe339604fe45d"
+    ],
+    "s2id": "fc1b024177e4722f98c4fdb3205d0c75a6189e3b",
+    "abstract": "Traditional neural machine translation is limited to the topmost encoder layer\u2019s context representation and cannot directly perceive the lower encoder layers. Existing solutions usually rely on the adjustment of network architecture, making the calculation more complicated or introducing additional structural restrictions. In this work, we propose layer-wise multi-view learning to solve this problem, circumventing the necessity to change the model structure. We regard each encoder layer\u2019s off-the-shelf output, a by-product in layer-by-layer encoding, as the redundant view for the input sentence. In this way, in addition to the topmost encoder layer (referred to as the primary view), we also incorporate an intermediate encoder layer as the auxiliary view. We feed the two views to a partially shared decoder to maintain independent prediction. Consistency regularization based on KL divergence is used to encourage the two views to learn from each other. Extensive experimental results on five translation tasks show that our approach yields stable improvements over multiple strong baselines. As another bonus, our method is agnostic to network architectures and can maintain the same inference speed as the original model.",
+    "authors": [
+        "Qiang Wang",
+        "Changliang Li",
+        "Yue Zhang",
+        "Tong Xiao",
+        "Jingbo Zhu"
+    ],
+    "venue": "International Conference on Computational Linguistics",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes layer-wise multi-view learning to solve neural machine translation, circumventing the necessity to change the model structure, and can maintain the same inference speed as the original model."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

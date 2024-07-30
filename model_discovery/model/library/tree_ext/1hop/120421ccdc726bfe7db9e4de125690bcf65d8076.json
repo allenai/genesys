@@ -1,0 +1,31 @@
+{
+    "acronym": "120421ccdc726bfe7db9e4de125690bcf65d8076",
+    "title": "Towards Real-world Scenario: Imbalanced New Intent Discovery",
+    "seed_ids": [
+        "bert",
+        "a0b82beb195c34a5385b5b988e8441eee9d8708e"
+    ],
+    "s2id": "120421ccdc726bfe7db9e4de125690bcf65d8076",
+    "abstract": "New Intent Discovery (NID) aims at detecting known and previously undefined categories of user intent by utilizing limited labeled and massive unlabeled data. Most prior works often operate under the unrealistic assumption that the distribution of both familiar and new intent classes is uniform, overlooking the skewed and long-tailed distributions frequently encountered in real-world scenarios. To bridge the gap, our work introduces the imbalanced new intent discovery (i-NID) task, which seeks to identify familiar and novel intent categories within long-tailed distributions. A new benchmark (ImbaNID-Bench) comprised of three datasets is created to simulate the real-world long-tail distributions. ImbaNID-Bench ranges from broad cross-domain to specific single-domain intent categories, providing a thorough representation of practical use cases. Besides, a robust baseline model ImbaNID is proposed to achieve cluster-friendly intent representations. It includes three stages: model pre-training, generation of reliable pseudo-labels, and robust representation learning that strengthens the model performance to handle the intricacies of real-world data distributions. Our extensive experiments on previous benchmarks and the newly established benchmark demonstrate the superior performance of ImbaNID in addressing the i-NID task, highlighting its potential as a powerful baseline for uncovering and categorizing user intents in imbalanced and long-tailed distributions\\footnote{\\url{https://github.com/Zkdc/i-NID}}.",
+    "authors": [
+        "Shun Zhang",
+        "Chaoran Yan",
+        "Jian Yang",
+        "Jiaheng Liu",
+        "Ying Mo",
+        "Jiaqi Bai",
+        "Tongliang Li",
+        "Zhoujun Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces the imbalanced new intent discovery (i-NID) task, which seeks to identify familiar and novel intent categories within long-tailed distributions, and presents a robust baseline model ImbaNID, which is proposed to achieve cluster-friendly intent representations."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

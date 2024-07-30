@@ -1,0 +1,26 @@
+{
+    "acronym": "f670355c915b4793bef94ca9a0f5da8f0c83964b",
+    "title": "How Does Beam Search improve Span-Level Confidence Estimation in Generative Sequence Labeling?",
+    "seed_ids": [
+        "gpt",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "f670355c915b4793bef94ca9a0f5da8f0c83964b",
+    "abstract": "Sequence labeling is a core task in text understanding for IE/IR systems. Text generation models have increasingly become the go-to solution for such tasks (e.g., entity extraction and dialog slot filling). While most research has focused on the labeling accuracy, a key aspect \u2013 of vital practical importance \u2013 has slipped through the cracks: understanding model confidence. More specifically, we lack a principled understanding of how to reliably gauge the confidence of a model in its predictions for each labeled span. This paper aims to provide some empirical insights on estimating model confidence for generative sequence labeling. Most notably, we find that simply using the decoder\u2019s output probabilities is not the best in realizing well-calibrated confidence estimates. As verified over six public datasets of different tasks, we show that our proposed approach \u2013 which leverages statistics from top-k predictions by a beam search \u2013 significantly reduces calibration errors of the predictions of a generative sequence labeling model.",
+    "authors": [
+        "Kazuma Hashimoto",
+        "Iftekhar Naim",
+        "K. Raman"
+    ],
+    "venue": "UNCERTAINLP",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper aims to provide some empirical insights on estimating model confidence for generative sequence labeling and finds that simply using the decoder\u2019s output probabilities is not the best in realizing well-calibrated confidence estimates."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

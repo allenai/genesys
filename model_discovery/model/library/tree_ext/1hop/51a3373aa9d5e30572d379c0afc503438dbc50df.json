@@ -1,0 +1,29 @@
+{
+    "acronym": "51a3373aa9d5e30572d379c0afc503438dbc50df",
+    "title": "NetTrack: Tracking Highly Dynamic Objects with a Net",
+    "seed_ids": [
+        "gpt3",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "51a3373aa9d5e30572d379c0afc503438dbc50df",
+    "abstract": "The complex dynamicity of open-world objects presents non-negligible challenges for multi-object tracking (MOT), often manifested as severe deformations, fast motion, and occlusions. Most methods that solely depend on coarse-grained object cues, such as boxes and the overall appearance of the object, are susceptible to degradation due to distorted internal relationships of dynamic objects. To address this problem, this work proposes NetTrack, an efficient, generic, and affordable tracking framework to introduce fine-grained learning that is robust to dynamicity. Specifically, NetTrack constructs a dynamicity-aware association with a fine-grained Net, leveraging point-level visual cues. Correspondingly, a fine-grained sampler and matching method have been incorporated. Furthermore, NetTrack learns object-text correspondence for fine-grained localization. To evaluate MOT in extremely dynamic open-world scenarios, a bird flock tracking (BFT) dataset is constructed, which exhibits high dynamicity with diverse species and open-world scenarios. Comprehensive evaluation on BFT validates the effectiveness of fine-grained learning on object dynamicity, and thorough transfer experiments on challenging open-world benchmarks, i.e., TAO, TAO-OW, AnimalTrack, and GMOT-40, validate the strong generalization ability of NetTrack even without finetuning. Project page: https://george-zhuang.github.io/nettrack/.",
+    "authors": [
+        "Guang-Zheng Zheng",
+        "Shijie Lin",
+        "Haobo Zuo",
+        "Changhong Fu",
+        "Jia Pan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes NetTrack, an efficient, generic, and affordable tracking framework to introduce fine-grained learning that is robust to dynamicity, and constructs a dynamicity-aware association with a fine-grained Net, leveraging point-level visual cues."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

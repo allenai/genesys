@@ -1,0 +1,26 @@
+{
+    "acronym": "b1f3d7e03d681470d55a3e9f367f9cea46fe9528",
+    "title": "A Neural Edge-Editing Approach for Document-Level Relation Graph Extraction",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "b1f3d7e03d681470d55a3e9f367f9cea46fe9528",
+    "abstract": "In this paper, we propose a novel edge-editing approach to extract relation information from a document. We treat the relations in a document as a relation graph among entities in this approach. The relation graph is iteratively constructed by editing edges of an initial graph, which might be a graph extracted by another system or an empty graph. The way to edit edges is to classify them in a close-first manner using the document and temporally-constructed graph information; each edge is represented with a document context information by a pretrained transformer model and a graph context information by a graph convolutional neural network model. We evaluate our approach on the task to extract material synthesis procedures from materials science texts. The experimental results show the effectiveness of our approach in editing the graphs initialized by our in-house rule-based system and empty graphs.",
+    "authors": [
+        "Kohei Makino",
+        "Makoto Miwa",
+        "Yutaka Sasaki"
+    ],
+    "venue": "Findings",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The experimental results show the effectiveness of the novel edge-editing approach to extract relation information from a document in editing the graphs initialized by the authors' in-house rule-based system and empty graphs."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

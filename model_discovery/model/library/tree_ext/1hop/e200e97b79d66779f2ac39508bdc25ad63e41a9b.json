@@ -1,0 +1,24 @@
+{
+    "acronym": "e200e97b79d66779f2ac39508bdc25ad63e41a9b",
+    "title": "Language Complexity and Speech Recognition Accuracy: Orthographic Complexity Hurts, Phonological Complexity Doesn't",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "e200e97b79d66779f2ac39508bdc25ad63e41a9b",
+    "abstract": "We investigate what linguistic factors affect the performance of Automatic Speech Recognition (ASR) models. We hypothesize that orthographic and phonological complexities both degrade accuracy. To examine this, we fine-tune the multilingual self-supervised pretrained model Wav2Vec2-XLSR-53 on 25 languages with 15 writing systems, and we compare their ASR accuracy, number of graphemes, unigram grapheme entropy, logographicity (how much word/morpheme-level information is encoded in the writing system), and number of phonemes. The results demonstrate that orthographic complexities significantly correlate with low ASR accuracy, while phonological complexity shows no significant correlation.",
+    "authors": [
+        "Chihiro Taguchi",
+        "David Chiang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that orthographic complexities significantly correlate with low ASR accuracy, while phonological complexity shows no significant correlation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

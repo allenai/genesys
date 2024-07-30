@@ -1,0 +1,35 @@
+{
+    "acronym": "d5f82199e97d325427dffdc027baca75578561f5",
+    "title": "RazorAttention: Efficient KV Cache Compression Through Retrieval Heads",
+    "seed_ids": [
+        "streamingllm",
+        "3fd5bc3077d04965eaa3498372c39bbdd09d55e4",
+        "d53fe76bd2795a19ddf52d012917782f6f6f2c1e",
+        "b085968c4362fb286ad6c5ef71a5db9630da0498",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "e586a4591ba0303b769f2c07cbddaf1899cb72e4",
+        "026b3396a63ed5772329708b7580d633bb86bec9"
+    ],
+    "s2id": "d5f82199e97d325427dffdc027baca75578561f5",
+    "abstract": "The memory and computational demands of Key-Value (KV) cache present significant challenges for deploying long-context language models. Previous approaches attempt to mitigate this issue by selectively dropping tokens, which irreversibly erases critical information that might be needed for future queries. In this paper, we propose a novel compression technique for KV cache that preserves all token information. Our investigation reveals that: i) Most attention heads primarily focus on the local context; ii) Only a few heads, denoted as retrieval heads, can essentially pay attention to all input tokens. These key observations motivate us to use separate caching strategy for attention heads. Therefore, we propose RazorAttention, a training-free KV cache compression algorithm, which maintains a full cache for these crucial retrieval heads and discards the remote tokens in non-retrieval heads. Furthermore, we introduce a novel mechanism involving a\"compensation token\"to further recover the information in the dropped tokens. Extensive evaluations across a diverse set of large language models (LLMs) demonstrate that RazorAttention achieves a reduction in KV cache size by over 70% without noticeable impacts on performance. Additionally, RazorAttention is compatible with FlashAttention, rendering it an efficient and plug-and-play solution that enhances LLM inference efficiency without overhead or retraining of the original model.",
+    "authors": [
+        "Hanlin Tang",
+        "Yang Lin",
+        "Jing Lin",
+        "Qingsen Han",
+        "Shikuan Hong",
+        "Yiwu Yao",
+        "Gongyi Wang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "RazorAttention is proposed, a training-free KV cache compression algorithm, which maintains a full cache for these crucial retrieval heads and discards the remote tokens in non-retrieval heads and introduces a novel mechanism involving a \"compensation token\" to further recover the information in the dropped tokens."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

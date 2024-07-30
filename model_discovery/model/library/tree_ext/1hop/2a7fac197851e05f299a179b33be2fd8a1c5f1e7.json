@@ -1,0 +1,25 @@
+{
+    "acronym": "2a7fac197851e05f299a179b33be2fd8a1c5f1e7",
+    "title": "CAR-Transformer: Cross-Attention Reinforcement Transformer for Cross-Lingual Summarization",
+    "seed_ids": [
+        "transformer",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "2a7fac197851e05f299a179b33be2fd8a1c5f1e7",
+    "abstract": "Cross-Lingual Summarization (CLS) involves generating a summary for a given document in another language. Most of the existing approaches adopt multi-task training and knowledge distillation, which increases the training cost and improves the performance of CLS tasks intuitively but unexplainably. In this work, we propose Cross-Attention Reinforcement (CAR) module and incorporate the module into the transformer backbone to formulate the CAR-Transformer. The CAR module formulates a pseudo summarization policy parameterized by the cross-attention weights reinforced by the ground-truth monolingual summary without introducing extra model parameters. Our approach demonstrates more consistent improvement across CLS tasks compared to traditional multi-task training methods and outperforms the fine-tuned vanilla mBART by 3.67 and the best-performing multi-task training approach by 1.48 in ROUGE-L F1 score on the WikiLingua Korean-to-English CLS task.",
+    "authors": [
+        "Yuang Cai",
+        "Yuyu Yuan"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes Cross-Attention Reinforcement module and incorporates the module into the transformer backbone to formulate the CAR-Transformer, a pseudo summarization policy parameterized by the cross-attention weights reinforced by the ground-truth monolingual summary without introducing extra model parameters."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,26 @@
+{
+    "acronym": "9412df748c04c0bfbfb881739bf9c50edfcd3757",
+    "title": "Demystifying Self-Supervised Learning: An Information-Theoretical Framework",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "9412df748c04c0bfbfb881739bf9c50edfcd3757",
+    "abstract": "Self-supervised representation learning adopts self-defined signals as supervision and uses the learned representation for downstream tasks, such as masked language modeling (e.g., BERT) for natural language processing and contrastive visual representation learning (e.g., SimCLR) for computer vision applications. In this paper, we present a theoretical framework explaining that self-supervised learning is likely to work under the assumption that only the shared information (e.g., contextual information or content) between the input (e.g., non-masked words or original images) and self-supervised signals (e.g., masked-words or augmented images) contributes to downstream tasks. Under this assumption, we demonstrate that self-supervisedly learned representation can extract task-relevant and discard task-irrelevant information. We further connect our theoretical analysis to popular contrastive and predictive (self-supervised) learning objectives. In the experimental section, we provide controlled experiments on two popular tasks: 1) visual representation learning with various self-supervised learning objectives to empirically support our analysis; and 2) visual-textual representation learning to challenge that input and self-supervised signal lie in different modalities.",
+    "authors": [
+        "Yao-Hung Hubert Tsai",
+        "Yue Wu",
+        "R. Salakhutdinov",
+        "Louis-Philippe Morency"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that self-supervisedly learned representation can extract task-relevant and discard task-irrelevant information under the assumption that only the shared information between the input and self- supervised signals contributes to downstream tasks."
+    },
+    "citationCount": 29,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

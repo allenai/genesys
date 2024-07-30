@@ -1,0 +1,28 @@
+{
+    "acronym": "32b77a9c71157d4f02b8662dbab398a61f2b4d51",
+    "title": "Threat Behavior Textual Search by Attention Graph Isomorphism",
+    "seed_ids": [
+        "bert",
+        "80f9f109d1564cb8f82aa440a5f6f3fbe220c9ef",
+        "145b8b5d99a2beba6029418ca043585b90138d12"
+    ],
+    "s2id": "32b77a9c71157d4f02b8662dbab398a61f2b4d51",
+    "abstract": "Cyber attacks cause over $1 trillion loss every year. An important task for cyber security analysts is attack forensics. It entails understanding malware behaviors and attack origins. However, existing automated or manual malware analysis can only disclose a subset of behaviors due to inherent difficulties (e.g., malware cloaking and obfuscation). As such, analysts often resort to text search techniques to identify existing malware reports based on the symptoms they observe, exploiting the fact that malware samples share a lot of similarity, especially those from the same origin. In this paper, we propose a novel malware behavior search technique that is based on graph isomorphism at the attention layers of Transformer models. We also compose a large dataset collected from various agencies to facilitate such research.Our technique outperforms state-of-the-art methods, such as those based on sentence embeddings and keywords by 6-14%. In the case study of 10 real-world malwares, our technique can correctly attribute 8 of them to their ground truth origins while using Google only works for 3 cases.",
+    "authors": [
+        "Chanwoo Bae",
+        "Guanhong Tao",
+        "Zhuo Zhang",
+        "Xiangyu Zhang"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel malware behavior search technique that is based on graph isomorphism at the attention layers of Transformer models is proposed that outperforms state-of-the-art methods, such as those based on sentence embeddings and keywords by 6-14%."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

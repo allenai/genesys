@@ -1,0 +1,40 @@
+{
+    "acronym": "ead12d7dddceb7555d7b1094f0d1893b07490111",
+    "title": "Massive End-to-end Speech Recognition Models with Time Reduction",
+    "seed_ids": [
+        "funneltransformer",
+        "693bdd128a8c0d002402ca367fc70f53c50cecf7",
+        "e25f6a60211aa74ecfde8001a5939ff206102de4",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "ead12d7dddceb7555d7b1094f0d1893b07490111",
+    "abstract": "We investigate massive end-to-end automatic speech recognition (ASR) models with efficiency improvements achieved by time reduction. The encoders of our models use the neural architecture of Google\u2019s universal speech model (USM), with additional funnel pooling layers to significantly reduce the frame rate and speed up training and inference. We also explore a few practical methods to mitigate potential accuracy loss due to time reduction, while enjoying most efficiency gain. Our methods are demonstrated to work with both Connectionist Temporal Classification (CTC) and RNN-Transducer (RNN-T), with up to 2B model parameters, and over two domains. For a large-scale voice search recognition task, we perform extensive studies on vocabulary size, time reduction strategy, and its generalization performance on long-form test sets, and show that a 900M RNN-T is very tolerant to severe time reduction, with as low encoder output frame rate as 640ms. We also provide ablation studies on the Librispeech benchmark for important training hyperparameters and architecture designs, in training 600M RNN-T models at the frame rate of 160ms.",
+    "authors": [
+        "Weiran Wang",
+        "Rohit Prabhavalkar",
+        "Haozhe Shan",
+        "Zhong Meng",
+        "Dongseong Hwang",
+        "Qiujia Li",
+        "K. Sim",
+        "Bo Li",
+        "James Qin",
+        "Xingyu Cai",
+        "Adam Stooke",
+        "Chengjian Zheng",
+        "Yanzhang He",
+        "Tara N. Sainath",
+        "Pedro Moreno Mengibar"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work investigates massive end-to-end automatic speech recognition models with efficiency improvements achieved by time reduction, and demonstrates to work with both Connectionist Temporal Classification (CTC) and RNN-Transducer (RNN-T), with up to 2B model parameters, and over two domains."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

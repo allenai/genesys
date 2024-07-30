@@ -1,0 +1,27 @@
+{
+    "acronym": "96d369b4e71aa42275b8d712b7f3c5fd7f938a7d",
+    "title": "Pointly-Supervised Panoptic Segmentation",
+    "seed_ids": [
+        "gpt2",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "96d369b4e71aa42275b8d712b7f3c5fd7f938a7d",
+    "abstract": "In this paper, we propose a new approach to applying point-level annotations for weakly-supervised panoptic segmentation. Instead of the dense pixel-level labels used by fully supervised methods, point-level labels only provide a single point for each target as supervision, significantly reducing the annotation burden. We formulate the problem in an end-to-end framework by simultaneously generating panoptic pseudo-masks from point-level labels and learning from them. To tackle the core challenge, i.e., panoptic pseudo-mask generation, we propose a principled approach to parsing pixels by minimizing pixel-to-point traversing costs, which model semantic similarity, low-level texture cues, and high-level manifold knowledge to discriminate panoptic targets. We conduct experiments on the Pascal VOC and the MS COCO datasets to demonstrate the approach's effectiveness and show state-of-the-art performance in the weakly-supervised panoptic segmentation problem. Codes are available at https://github.com/BraveGroup/PSPS.git.",
+    "authors": [
+        "Junsong Fan",
+        "Zhaoxiang Zhang",
+        "T. Tan"
+    ],
+    "venue": "European Conference on Computer Vision",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A principled approach to parsing pixels by minimizing pixel-to-point traversing costs, which model semantic similarity, low-level texture cues, and high-level manifold knowledge to discriminate panoptic targets."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

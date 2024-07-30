@@ -1,0 +1,24 @@
+{
+    "acronym": "53d77cd97840ce8cd1c47a013ee254d285143b3e",
+    "title": "Understanding Social Perception, Interactions, and Safety Aspects of Sidewalk Delivery Robots Using Sentiment Analysis",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "53d77cd97840ce8cd1c47a013ee254d285143b3e",
+    "abstract": "This article presents a comprehensive sentiment analysis (SA) of comments on YouTube videos related to Sidewalk Delivery Robots (SDRs). We manually annotated the collected YouTube comments with three sentiment labels: negative (0), positive (1), and neutral (2). We then constructed models for text sentiment classification and tested the models' performance on both binary and ternary classification tasks in terms of accuracy, precision, recall, and F1 score. Our results indicate that, in binary classification tasks, the Support Vector Machine (SVM) model using Term Frequency-Inverse Document Frequency (TF-IDF) and N-gram get the highest accuracy. In ternary classification tasks, the model using Bidirectional Encoder Representations from Transformers (BERT), Long Short-Term Memory Networks (LSTM) and Gated Recurrent Unit (GRU) significantly outperforms other machine learning models, achieving an accuracy, precision, recall, and F1 score of 0.78. Additionally, we employ the Latent Dirichlet Allocation model to generate 10 topics from the comments to explore the public's underlying views on SDRs. Drawing from these findings, we propose targeted recommendations for shaping future policies concerning SDRs. This work provides valuable insights for stakeholders in the SDR sector regarding social perception, interaction, and safety.",
+    "authors": [
+        "Yuchen Du",
+        "Tho V. Le"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A comprehensive sentiment analysis of comments on YouTube videos related to Sidewalk Delivery Robots (SDRs) provides valuable insights for stakeholders in the SDR sector regarding social perception, interaction, and safety."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

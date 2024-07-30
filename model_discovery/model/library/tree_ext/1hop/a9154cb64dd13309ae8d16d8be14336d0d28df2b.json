@@ -1,0 +1,25 @@
+{
+    "acronym": "a9154cb64dd13309ae8d16d8be14336d0d28df2b",
+    "title": "CSTA: CNN-based Spatiotemporal Attention for Video Summarization",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "a9154cb64dd13309ae8d16d8be14336d0d28df2b",
+    "abstract": "Video summarization aims to generate a concise representation of a video, capturing its essential content and key moments while reducing its overall length. Although several methods employ attention mechanisms to handle long-term dependencies, they often fail to capture the visual significance inherent in frames. To address this limitation, we propose a CNN-based SpatioTemporal Attention (CSTA) method that stacks each feature of frames from a single video to form image-like frame representations and applies 2D CNN to these frame features. Our methodology relies on CNN to comprehend the inter and intra-frame relations and to find crucial attributes in videos by exploiting its ability to learn absolute positions within images. In contrast to previous work compromising efficiency by designing additional modules to focus on spatial importance, CSTA requires minimal computational overhead as it uses CNN as a sliding window. Extensive experiments on two benchmark datasets (SumMe and TVSum) demonstrate that our proposed approach achieves state-of-the-art performance with fewer MACs compared to previous methods. Codes are available at https://github.com/thswodnjs3/CSTA.",
+    "authors": [
+        "Jaewon Son",
+        "Jaehun Park",
+        "Kwangsu Kim"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A CNN-based SpatioTemporal Attention (CSTA) method that stacks each feature of frames from a single video to form image-like frame representations and applies 2D CNN to these frame features and achieves state-of-the-art performance with fewer MACs compared to previous methods."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

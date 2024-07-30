@@ -1,0 +1,35 @@
+{
+    "acronym": "49e65b12d8d11f2ccb5ddd7be72a8f746b2d1bc2",
+    "title": "Making Transformers Solve Compositional Tasks",
+    "seed_ids": [
+        "etc",
+        "ed535e93d5b5a8b689e861e9c6083a806d1535c2",
+        "523745e29f6cb1890f18352d449fd3597910c485",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "5cdab78acc4f3aab429a0dd41c3ec7e605d42e7b",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "203b543bfa1e564bb80ff4229b43174d7c71b0c0"
+    ],
+    "s2id": "49e65b12d8d11f2ccb5ddd7be72a8f746b2d1bc2",
+    "abstract": "Several studies have reported the inability of Transformer models to generalize compositionally, a key type of generalization in many NLP tasks such as semantic parsing. In this paper we explore the design space of Transformer models showing that the inductive biases given to the model by several design decisions significantly impact compositional generalization. We identified Transformer configurations that generalize compositionally significantly better than previously reported in the literature in many compositional tasks. We achieve state-of-the-art results in a semantic parsing compositional generalization benchmark (COGS), and a string edit operation composition benchmark (PCFG).",
+    "authors": [
+        "Santiago Ontan'on",
+        "J. Ainslie",
+        "V. Cvicek",
+        "Zachary Kenneth Fisher"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper explores the design space of Transformer models showing that the inductive biases given to the model by several design decisions significantly impact compositional generalization."
+    },
+    "citationCount": 61,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

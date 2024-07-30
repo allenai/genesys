@@ -1,0 +1,32 @@
+{
+    "acronym": "c62a95a62645615283f965809160de06f51f4cd9",
+    "title": "ACC-ViT : Atrous Convolution's Comeback in Vision Transformers",
+    "seed_ids": [
+        "bert",
+        "9a83aeadc8db65fb6da39ec977360541cddaff5c",
+        "19921cefb2470b2f5d984ab9ce92ebb94aedf2ea",
+        "8f48171bf05474449777d9bbf6766d480332e09f",
+        "066c143b427571fb5568f2c581ea9066478d2e55",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "c62a95a62645615283f965809160de06f51f4cd9",
+    "abstract": "Transformers have elevated to the state-of-the-art vision architectures through innovations in attention mechanism inspired from visual perception. At present two classes of attentions prevail in vision transformers, regional and sparse attention. The former bounds the pixel interactions within a region; the latter spreads them across sparse grids. The opposing natures of them have resulted in a dilemma between either preserving hierarchical relation or attaining a global context. In this work, taking inspiration from atrous convolution, we introduce Atrous Attention, a fusion of regional and sparse attention, which can adaptively consolidate both local and global information, while maintaining hierarchical relations. As a further tribute to atrous convolution, we redesign the ubiquitous inverted residual convolution blocks with atrous convolution. Finally, we propose a generalized, hybrid vision transformer backbone, named ACC-ViT, following conventional practices for standard vision tasks. Our tiny version model achieves $\\sim 84 \\%$ accuracy on ImageNet-1K, with less than $28.5$ million parameters, which is $0.42\\%$ improvement over state-of-the-art MaxViT while having $8.4\\%$ less parameters. In addition, we have investigated the efficacy of ACC-ViT backbone under different evaluation settings, such as finetuning, linear probing, and zero-shot learning on tasks involving medical image analysis, object detection, and language-image contrastive learning. ACC-ViT is therefore a strong vision backbone, which is also competitive in mobile-scale versions, ideal for niche applications with small datasets.",
+    "authors": [
+        "Nabil Ibtehaz",
+        "Ning Yan",
+        "Masood S. Mortazavi",
+        "Daisuke Kihara"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces Atrous Attention, a fusion of regional and sparse attention, which can adaptively consolidate both local and global information, while maintaining hierarchical relations and proposes a generalized, hybrid vision transformer backbone, named ACC-ViT, following conventional practices for standard vision tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

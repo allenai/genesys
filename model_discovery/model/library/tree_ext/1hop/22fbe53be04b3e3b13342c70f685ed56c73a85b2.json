@@ -1,0 +1,27 @@
+{
+    "acronym": "22fbe53be04b3e3b13342c70f685ed56c73a85b2",
+    "title": "The Impact of Quantization on the Robustness of Transformer-based Text Classifiers",
+    "seed_ids": [
+        "bert",
+        "e4f82c0a13cae6739239ae0c25a554b6daff35af"
+    ],
+    "s2id": "22fbe53be04b3e3b13342c70f685ed56c73a85b2",
+    "abstract": "Transformer-based models have made remarkable advancements in various NLP areas. Nevertheless, these models often exhibit vulnerabilities when confronted with adversarial attacks. In this paper, we explore the effect of quantization on the robustness of Transformer-based models. Quantization usually involves mapping a high-precision real number to a lower-precision value, aiming at reducing the size of the model at hand. To the best of our knowledge, this work is the first application of quantization on the robustness of NLP models. In our experiments, we evaluate the impact of quantization on BERT and DistilBERT models in text classification using SST-2, Emotion, and MR datasets. We also evaluate the performance of these models against TextFooler, PWWS, and PSO adversarial attacks. Our findings show that quantization significantly improves (by an average of 18.68%) the adversarial accuracy of the models. Furthermore, we compare the effect of quantization versus that of the adversarial training approach on robustness. Our experiments indicate that quantization increases the robustness of the model by 18.80% on average compared to adversarial training without imposing any extra computational overhead during training. Therefore, our results highlight the effectiveness of quantization in improving the robustness of NLP models.",
+    "authors": [
+        "Seyed Parsa Neshaei",
+        "Yasaman Boreshban",
+        "Gholamreza Ghassem-Sani",
+        "Seyed Abolghasem Mirroshandel"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work evaluates the impact of quantization on BERT and DistilBERT models in text classification using SST-2, Emotion, and MR datasets and shows that quantization significantly improves the adversarial accuracy of the models."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

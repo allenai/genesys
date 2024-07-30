@@ -1,0 +1,27 @@
+{
+    "acronym": "5e46bdeb5b97a4f1292d0d4043f23e4b39b7d0e6",
+    "title": "NEO-BENCH: Evaluating Robustness of Large Language Models with Neologisms",
+    "seed_ids": [
+        "gpt3",
+        "ac45bbf9940512d9d686cf8cd3a95969bc313570",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "5e46bdeb5b97a4f1292d0d4043f23e4b39b7d0e6",
+    "abstract": "The performance of Large Language Models (LLMs) degrades from the temporal drift between data used for model training and newer text seen during inference. One understudied avenue of language change causing data drift is the emergence of neologisms -- new word forms -- over time. We create a diverse resource of recent English neologisms by using several popular collection methods. We analyze temporal drift using neologisms by comparing sentences containing new words with near-identical sentences that replace neologisms with existing substitute words. Model performance is nearly halved in machine translation when a single neologism is introduced in a sentence. Motivated by these results, we construct a benchmark to evaluate LLMs' ability to generalize to neologisms with various natural language understanding tasks and model perplexity. Models with later knowledge cutoff dates yield lower perplexities and perform better in downstream tasks. LLMs are also affected differently based on the linguistic origins of words, indicating that neologisms are complex for static LLMs to address. We will release our benchmark and code for reproducing our experiments.",
+    "authors": [
+        "Jonathan Zheng",
+        "Alan Ritter",
+        "Wei Xu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A benchmark to evaluate LLMs' ability to generalize to neologisms with various natural language understanding tasks and model perplexity is constructed and a diverse resource of recent English neologisms is created."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

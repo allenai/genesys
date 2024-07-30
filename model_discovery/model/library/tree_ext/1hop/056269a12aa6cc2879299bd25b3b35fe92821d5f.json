@@ -1,0 +1,28 @@
+{
+    "acronym": "056269a12aa6cc2879299bd25b3b35fe92821d5f",
+    "title": "Exploring adaptive attention in memory transformer applied to coherent video paragraph captioning",
+    "seed_ids": [
+        "transformerxl",
+        "2c953a3c378b40dadf2e3fb486713c8608b8e282",
+        "70557ea6b65846fc30729ceed224acd4ac64ca5d",
+        "203b543bfa1e564bb80ff4229b43174d7c71b0c0"
+    ],
+    "s2id": "056269a12aa6cc2879299bd25b3b35fe92821d5f",
+    "abstract": "A coherent description is the ultimate goal regarding video captioning via a couple of sentences because it might also affect the consistency and intelligibility of the generated results. In this context, a paragraph describing a video is affected by the activities used to both produce its specific narrative and provide some clues that can also assist in decreasing textual repetition. This work proposes a model, named Adaptive Transformer, that uses attention mechanisms to enhance a memory -augmented transformer. This new approach increases the coherence among the generated sentences, assessing data importance (about the video segments) contained in the self-attention results and uses that to improve readability. The test results show the potential of this new approach as it provides higher coherence among the various video segments, decreasing the repetition in the generated sentences and improving the description diversity in the ActivityNet Captions dataset.",
+    "authors": [
+        "Leonardo Vilela Cardoso",
+        "S. Guimar\u00e3es",
+        "Zenilton K. G. Patroc\u00ednio"
+    ],
+    "venue": "IEEE International Conference on Multimedia Big Data",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a model, named Adaptive Transformer, that uses attention mechanisms to enhance a memory -augmented transformer that provides higher coherence among the various video segments, decreasing the repetition in the generated sentences and improving the description diversity in the ActivityNet Captions dataset."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

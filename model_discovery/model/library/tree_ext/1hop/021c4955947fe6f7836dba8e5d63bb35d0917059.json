@@ -1,0 +1,36 @@
+{
+    "acronym": "021c4955947fe6f7836dba8e5d63bb35d0917059",
+    "title": "AbDiffuser: Full-Atom Generation of In-Vitro Functioning Antibodies",
+    "seed_ids": [
+        "d3pms",
+        "9714b88d4d984426d901fc539c7c69d03290ce12",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "021c4955947fe6f7836dba8e5d63bb35d0917059",
+    "abstract": "We introduce AbDiffuser, an equivariant and physics-informed diffusion model for the joint generation of antibody 3D structures and sequences. AbDiffuser is built on top of a new representation of protein structure, relies on a novel architecture for aligned proteins, and utilizes strong diffusion priors to improve the denoising process. Our approach improves protein diffusion by taking advantage of domain knowledge and physics-based constraints; handles sequence-length changes; and reduces memory complexity by an order of magnitude, enabling backbone and side chain generation. We validate AbDiffuser in silico and in vitro. Numerical experiments showcase the ability of AbDiffuser to generate antibodies that closely track the sequence and structural properties of a reference set. Laboratory experiments confirm that all 16 HER2 antibodies discovered were expressed at high levels and that 57.1% of the selected designs were tight binders.",
+    "authors": [
+        "Karolis Martinkus",
+        "J. Ludwiczak",
+        "Kyunghyun Cho",
+        "Weishao Lian",
+        "J. Lafrance-Vanasse",
+        "I. Hotzel",
+        "A. Rajpal",
+        "Y. Wu",
+        "Richard Bonneau",
+        "V. Gligorijevi\u0107",
+        "Andreas Loukas"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "AbDiffuser is introduced, an equivariant and physics-informed diffusion model for the joint generation of antibody 3D structures and sequences that improves protein diffusion by taking advantage of domain knowledge and physics-based constraints; handles sequence-length changes; and reduces memory complexity by an order of magnitude."
+    },
+    "citationCount": 20,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

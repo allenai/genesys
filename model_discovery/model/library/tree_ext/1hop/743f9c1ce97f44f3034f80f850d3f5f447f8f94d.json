@@ -1,0 +1,34 @@
+{
+    "acronym": "743f9c1ce97f44f3034f80f850d3f5f447f8f94d",
+    "title": "InstructPix2NeRF: Instructed 3D Portrait Editing from a Single Image",
+    "seed_ids": [
+        "gpt3",
+        "6827e87642874d9bf69f0f1548d79a164aaa5e1e",
+        "3ff7153fd6bd47d08084c7f50f8fd70026c126e7",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "743f9c1ce97f44f3034f80f850d3f5f447f8f94d",
+    "abstract": "With the success of Neural Radiance Field (NeRF) in 3D-aware portrait editing, a variety of works have achieved promising results regarding both quality and 3D consistency. However, these methods heavily rely on per-prompt optimization when handling natural language as editing instructions. Due to the lack of labeled human face 3D datasets and effective architectures, the area of human-instructed 3D-aware editing for open-world portraits in an end-to-end manner remains under-explored. To solve this problem, we propose an end-to-end diffusion-based framework termed InstructPix2NeRF, which enables instructed 3D-aware portrait editing from a single open-world image with human instructions. At its core lies a conditional latent 3D diffusion process that lifts 2D editing to 3D space by learning the correlation between the paired images' difference and the instructions via triplet data. With the help of our proposed token position randomization strategy, we could even achieve multi-semantic editing through one single pass with the portrait identity well-preserved. Besides, we further propose an identity consistency module that directly modulates the extracted identity signals into our diffusion process, which increases the multi-view 3D identity consistency. Extensive experiments verify the effectiveness of our method and show its superiority against strong baselines quantitatively and qualitatively. Source code and pre-trained models can be found on our project page: \\url{https://mybabyyh.github.io/InstructPix2NeRF}.",
+    "authors": [
+        "Jianhui Li",
+        "Shilong Liu",
+        "Zidong Liu",
+        "Yikai Wang",
+        "Kaiwen Zheng",
+        "Jinghui Xu",
+        "Jianmin Li",
+        "Jun Zhu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an end-to-end diffusion-based framework termed InstructPix2NeRF, which enables instructed 3D-aware portrait editing from a single open-world image with human instructions, and proposes an identity consistency module that directly modulates the extracted identity signals into the diffusion process, which increases the multi-view 3D identity consistency."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

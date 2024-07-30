@@ -1,0 +1,26 @@
+{
+    "acronym": "58e69287a59b72868fdc3156c8b1faca90c262a2",
+    "title": "DynaSemble: Dynamic Ensembling of Textual and Structure-Based Models for Knowledge Graph Completion",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "58e69287a59b72868fdc3156c8b1faca90c262a2",
+    "abstract": "We consider two popular approaches to Knowledge Graph Completion (KGC): textual models that rely on textual entity descriptions, and structure-based models that exploit the connectivity structure of the Knowledge Graph (KG). Preliminary experiments show that these approaches have complementary strengths: structure-based models perform exceptionally well when the gold answer is easily reachable from the query head in the KG, while textual models exploit descriptions to give good performance even when the gold answer is not easily reachable. In response, we propose DynaSemble, a novel method for learning query-dependent ensemble weights to combine these approaches by using the distributions of scores assigned by the models in the ensemble to all candidate entities. DynaSemble achieves state-of-the-art results on three standard KGC datasets, with up to 6.8 pt MRR and 8.3 pt Hits@1 gains over the best baseline model for the WN18RR dataset.",
+    "authors": [
+        "Ananjan Nandi",
+        "Navdeep Kaur",
+        "Parag Singla",
+        "Mausam"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DynaSemble, a novel method for learning query-dependent ensemble weights to combine these approaches by using the distributions of scores assigned by the models in the ensemble to all candidate entities, achieves state-of-the-art results on three standard KGC datasets."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

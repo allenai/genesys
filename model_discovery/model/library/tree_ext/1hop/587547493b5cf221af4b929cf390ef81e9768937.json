@@ -1,0 +1,48 @@
+{
+    "acronym": "587547493b5cf221af4b929cf390ef81e9768937",
+    "title": "Cell2Sentence: Teaching Large Language Models the Language of Biology",
+    "seed_ids": [
+        "gpt2",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "0bff219e8da3167f183b197ee8328ac5dd510b79",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "587547493b5cf221af4b929cf390ef81e9768937",
+    "abstract": "We introduce Cell2Sentence (C2S), a novel method to directly adapt large language models to a biological context, specifically single-cell transcriptomics. By transforming gene expression data into \u201ccell sentences,\u201d C2S bridges the gap between natural language processing and biology. We demonstrate cell sentences enable the finetuning of language models for diverse tasks in biology, including cell generation, complex celltype annotation, and direct data-driven text generation. Our experiments reveal that GPT-2, when fine-tuned with C2S, can generate biologically valid cells based on cell type inputs, and accurately predict cell types from cell sentences. This illustrates that language models, through C2S finetuning, can acquire a significant understanding of single-cell biology while maintaining robust text generation capabilities. C2S offers a flexible, accessible framework to integrate natural language processing with transcriptomics, utilizing existing models and libraries for a wide range of biological applications.",
+    "authors": [
+        "Daniel Levine",
+        "Sacha L\u00e9vy",
+        "S. Rizvi",
+        "Nazreen Pallikkavaliyaveetil",
+        "Xingyu Chen",
+        "David Zhang",
+        "Sina Ghadermarzi",
+        "Ruiming Wu",
+        "Zihe Zheng",
+        "Ivan Vrkic",
+        "Anna Zhong",
+        "Daphne Raskin",
+        "Insu Han",
+        "Antonio Henrique de Oliveira Fonseca",
+        "J. O. Caro",
+        "Amin Karbasi",
+        "Rahul M. Dhodapkar",
+        "David van Dijk"
+    ],
+    "venue": "bioRxiv",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experiments reveal that GPT-2, when fine-tuned with C2S, can generate biologically valid cells based on cell type inputs, and accurately predict cell types from cell sentences, illustrating that language models can acquire a significant understanding of single-cell biology while maintaining robust text generation capabilities."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

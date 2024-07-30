@@ -1,0 +1,34 @@
+{
+    "acronym": "6fe2a4f7594abadafc9feb05e96ab7e9e634ce8f",
+    "title": "Album Storytelling with Iterative Story-aware Captioning and Large Language Models",
+    "seed_ids": [
+        "gpt",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "ada81a4de88a6ce474df2e2446ad11fea480616e",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "5e00596fa946670d894b1bdaeff5a98e3867ef13"
+    ],
+    "s2id": "6fe2a4f7594abadafc9feb05e96ab7e9e634ce8f",
+    "abstract": "This work studies how to transform an album to vivid and coherent stories, a task we refer to as\"album storytelling\". While this task can help preserve memories and facilitate experience sharing, it remains an underexplored area in current literature. With recent advances in Large Language Models (LLMs), it is now possible to generate lengthy, coherent text, opening up the opportunity to develop an AI assistant for album storytelling. One natural approach is to use caption models to describe each photo in the album, and then use LLMs to summarize and rewrite the generated captions into an engaging story. However, we find this often results in stories containing hallucinated information that contradicts the images, as each generated caption (\"story-agnostic\") is not always about the description related to the whole story or miss some necessary information. To address these limitations, we propose a new iterative album storytelling pipeline. Specifically, we start with an initial story and build a story-aware caption model to refine the captions using the whole story as guidance. The polished captions are then fed into the LLMs to generate a new refined story. This process is repeated iteratively until the story contains minimal factual errors while maintaining coherence. To evaluate our proposed pipeline, we introduce a new dataset of image collections from vlogs and a set of systematic evaluation metrics. Our results demonstrate that our method effectively generates more accurate and engaging stories for albums, with enhanced coherence and vividness.",
+    "authors": [
+        "Munan Ning",
+        "Yujia Xie",
+        "Dongdong Chen",
+        "Zeyin Song",
+        "Lu Yuan",
+        "Yonghong Tian",
+        "Qixiang Ye",
+        "Liuliang Yuan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a new iterative album storytelling pipeline, which starts with an initial story and builds a story-aware caption model to refine the captions using the whole story as guidance, then feeds into the LLMs to generate a new refined story."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

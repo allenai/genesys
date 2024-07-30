@@ -1,0 +1,31 @@
+{
+    "acronym": "a3705b800284f133d702e0a68ecdd01a6e391b7e",
+    "title": "On Task Performance and Model Calibration with Supervised and Self-Ensembled In-Context Learning",
+    "seed_ids": [
+        "gpt3",
+        "e8f19023ff09b42b9de38fddefb6b5a244cfef71",
+        "3fb0731538c59f8520a309996a0567b58965f0fe",
+        "acbe813244e07f32eb034d6c27547d772a995d1d",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a3705b800284f133d702e0a68ecdd01a6e391b7e",
+    "abstract": "Following the standard supervised fine-tuning (SFT) paradigm, in-context learning (ICL) has become an efficient approach propelled by the recent advancements in large language models (LLMs), yielding promising performance across various tasks in few-shot data setups. However, both paradigms are prone to suffer from the critical problem of overconfidence (i.e., miscalibration), especially in such limited data setups. In this work, we deliver an in-depth analysis of the behavior across different choices of learning methods from the perspective of both performance and calibration, as well as their interplay. Through extensive controlled experiments, we find that simultaneous gains for both task performance and calibration are difficult to achieve, and the problem of miscalibration exists across all learning methods in low-resource scenarios. To address this challenging trade-off between performance and calibration, we then investigate the potential of self-ensembling techniques applied at different modeling stages (e.g., variations of in-context examples or variations in prompts or different ensembling strategies). We justify the feasibility of self-ensembling on SFT in addition to ICL, to make the predictions more calibrated and have comparable or even better performance. Our work sheds light on which learning paradigm to choose and how to enhance both task performance and calibration of LLMs.",
+    "authors": [
+        "Chengzu Li",
+        "Han Zhou",
+        "Goran Glavavs",
+        "Anna Korhonen",
+        "Ivan Vuli'c"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An in-depth analysis of the behavior across different choices of learning methods from the perspective of both performance and calibration, as well as their interplay sheds light on which learning paradigm to choose and how to enhance both task performance and calibration of LLMs."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

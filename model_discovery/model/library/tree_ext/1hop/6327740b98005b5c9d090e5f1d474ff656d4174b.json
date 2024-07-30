@@ -1,0 +1,31 @@
+{
+    "acronym": "6327740b98005b5c9d090e5f1d474ff656d4174b",
+    "title": "LLMs as Factual Reasoners: Insights from Existing Benchmarks and Beyond",
+    "seed_ids": [
+        "gpt2",
+        "f6245b3e6270e4dc2e279c4b728030523dffcff4",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6327740b98005b5c9d090e5f1d474ff656d4174b",
+    "abstract": "With the recent appearance of LLMs in practical settings, having methods that can effectively detect factual inconsistencies is crucial to reduce the propagation of misinformation and improve trust in model outputs. When testing on existing factual consistency benchmarks, we find that a few large language models (LLMs) perform competitively on classification benchmarks for factual inconsistency detection compared to traditional non-LLM methods. However, a closer analysis reveals that most LLMs fail on more complex formulations of the task and exposes issues with existing evaluation benchmarks, affecting evaluation precision. To address this, we propose a new protocol for inconsistency detection benchmark creation and implement it in a 10-domain benchmark called SummEdits. This new benchmark is 20 times more cost-effective per sample than previous benchmarks and highly reproducible, as we estimate inter-annotator agreement at about 0.9. Most LLMs struggle on SummEdits, with performance close to random chance. The best-performing model, GPT-4, is still 8\\% below estimated human performance, highlighting the gaps in LLMs' ability to reason about facts and detect inconsistencies when they occur.",
+    "authors": [
+        "Philippe Laban",
+        "Wojciech Kryscinski",
+        "Divyansh Agarwal",
+        "Alexander R. Fabbri",
+        "Caiming Xiong",
+        "Shafiq R. Joty",
+        "Chien-Sheng Wu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new protocol for inconsistency detection benchmark creation is proposed and implemented in a 10-domain benchmark called SummEdits, which is 20 times more cost-effective per sample than previous benchmarks and highly reproducible, as it estimates inter-annotator agreement at about 0.9."
+    },
+    "citationCount": 21,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

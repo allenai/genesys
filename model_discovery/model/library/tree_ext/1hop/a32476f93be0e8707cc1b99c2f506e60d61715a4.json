@@ -1,0 +1,30 @@
+{
+    "acronym": "a32476f93be0e8707cc1b99c2f506e60d61715a4",
+    "title": "Janus: A Unified Distributed Training Framework for Sparse Mixture-of-Experts Models",
+    "seed_ids": [
+        "transformerxl",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a32476f93be0e8707cc1b99c2f506e60d61715a4",
+    "abstract": "Scaling models to large sizes to improve performance has led a trend in deep learning, and sparsely activated Mixture-of-Expert (MoE) is a promising architecture to scale models. However, training MoE models in existing systems is expensive, mainly due to the All-to-All communication between layers. All-to-All communication originates from expert-centric paradigm: keeping experts in-place and exchanging intermediate data to feed experts. We propose the novel data-centric paradigm: keeping data in-place and moving experts between GPUs. Since experts' size can be smaller than the size of data, data-centric paradigm can reduce communication workload. Based on this insight, we develop Janus. First, Janus supports fine-grained asynchronous communication, which can overlap computation and communication. Janus implements a hierarchical communication to further reduce cross-node traffic by sharing the fetched experts in the same machine. Second, when scheduling the \"fetching expert\" requests, Janus implements a topology-aware priority strategy to utilize intra-node and inter-node links efficiently. Finally, Janus allows experts to be prefetched, which allows the downstream computation to start immediately once the previous step completes. Evaluated on a 32-A100 cluster, Janus can reduce the traffic up to 16\u00d7 and achieves up to 2.06\u00d7 speedup compared with current MoE training system.",
+    "authors": [
+        "Juncai Liu",
+        "Jessie Hui Wang",
+        "Yimin Jiang"
+    ],
+    "venue": "Conference on Applications, Technologies, Architectures, and Protocols for Computer Communication",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Janus is a novel data-centric paradigm that allows experts to be prefetched, which allows the downstream computation to start immediately once the previous step completes and achieves up to 2.06\u00d7 speedup compared with current MoE training system."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

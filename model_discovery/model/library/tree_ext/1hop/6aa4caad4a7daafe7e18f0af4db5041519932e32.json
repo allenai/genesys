@@ -1,0 +1,34 @@
+{
+    "acronym": "6aa4caad4a7daafe7e18f0af4db5041519932e32",
+    "title": "Memory-Efficient Sparse Pyramid Attention Networks for Whole Slide Image Analysis",
+    "seed_ids": [
+        "bert",
+        "6b597704044b71cbf5c224a441eb5d803445ac1c",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "5a9bc55f6332e38f62eb509b684147a1d4f10fd9"
+    ],
+    "s2id": "6aa4caad4a7daafe7e18f0af4db5041519932e32",
+    "abstract": "Whole Slide Images (WSIs) are crucial for modern pathological diagnosis, yet their gigapixel-scale resolutions and sparse informative regions pose significant computational challenges. Traditional dense attention mechanisms, widely used in computer vision and natural language processing, are impractical for WSI analysis due to the substantial data scale and the redundant processing of uninformative areas. To address these challenges, we propose Memory-Efficient Sparse Pyramid Attention Networks with Shifted Windows (SPAN), drawing inspiration from state-of-the-art sparse attention techniques in other domains. SPAN introduces a sparse pyramid attention architecture that hierarchically focuses on informative regions within the WSI, aiming to reduce memory overhead while preserving critical features. Additionally, the incorporation of shifted windows enables the model to capture long-range contextual dependencies essential for accurate classification. We evaluated SPAN on multiple public WSI datasets, observing its competitive performance. Unlike existing methods that often struggle to model spatial and contextual information due to memory constraints, our approach enables the accurate modeling of these crucial features. Our study also highlights the importance of key design elements in attention mechanisms, such as the shifted-window scheme and the hierarchical structure, which contribute substantially to the effectiveness of SPAN in WSI analysis. The potential of SPAN for memory-efficient and effective analysis of WSI data is thus demonstrated, and the code will be made publicly available following the publication of this work.",
+    "authors": [
+        "Weiyi Wu",
+        "Chongyang Gao",
+        "Xinwen Xu",
+        "Siting Li",
+        "Jiang Gui"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The potential of SPAN for memory-efficient and effective analysis of WSI data is demonstrated, and the code will be made publicly available following the publication of this work."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

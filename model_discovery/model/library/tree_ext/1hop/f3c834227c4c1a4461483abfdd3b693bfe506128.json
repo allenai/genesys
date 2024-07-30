@@ -1,0 +1,33 @@
+{
+    "acronym": "f3c834227c4c1a4461483abfdd3b693bfe506128",
+    "title": "AMP: Autoregressive Motion Prediction Revisited with Next Token Prediction for Autonomous Driving",
+    "seed_ids": [
+        "gpt3",
+        "roformer",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f3c834227c4c1a4461483abfdd3b693bfe506128",
+    "abstract": "As an essential task in autonomous driving (AD), motion prediction aims to predict the future states of surround objects for navigation. One natural solution is to estimate the position of other agents in a step-by-step manner where each predicted time-step is conditioned on both observed time-steps and previously predicted time-steps, i.e., autoregressive prediction. Pioneering works like SocialLSTM and MFP design their decoders based on this intuition. However, almost all state-of-the-art works assume that all predicted time-steps are independent conditioned on observed time-steps, where they use a single linear layer to generate positions of all time-steps simultaneously. They dominate most motion prediction leaderboards due to the simplicity of training MLPs compared to autoregressive networks. In this paper, we introduce the GPT style next token prediction into motion forecasting. In this way, the input and output could be represented in a unified space and thus the autoregressive prediction becomes more feasible. However, different from language data which is composed of homogeneous units -words, the elements in the driving scene could have complex spatial-temporal and semantic relations. To this end, we propose to adopt three factorized attention modules with different neighbors for information aggregation and different position encoding styles to capture their relations, e.g., encoding the transformation between coordinate systems for spatial relativity while adopting RoPE for temporal relativity. Empirically, by equipping with the aforementioned tailored designs, the proposed method achieves state-of-the-art performance in the Waymo Open Motion and Waymo Interaction datasets. Notably, AMP outperforms other recent autoregressive motion prediction methods: MotionLM and StateTransformer, which demonstrates the effectiveness of the proposed designs.",
+    "authors": [
+        "Xiaosong Jia",
+        "Shaoshuai Shi",
+        "Zijun Chen",
+        "Li Jiang",
+        "Wenlong Liao",
+        "Tao He",
+        "Junchi Yan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The GPT style next token prediction into motion forecasting is introduced and, by equipping with the aforementioned tailored designs, the proposed method achieves state-of-the-art performance in the Waymo Open Motion and Waymo Interaction datasets."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

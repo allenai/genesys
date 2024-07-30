@@ -1,0 +1,35 @@
+{
+    "acronym": "bc9705f7b05bc415a0c6514c4873750ed1fdbe36",
+    "title": "Did the Neurons Read your Book? Document-level Membership Inference for Large Language Models",
+    "seed_ids": [
+        "gpt2",
+        "gpt3",
+        "cb754310302086dfbbcd098263200e2a03f65874",
+        "83edcfbb206ddad38a971d605da09390604248ea",
+        "d1101476c85ae324142440e9f568ecbf41625be5",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "bc9705f7b05bc415a0c6514c4873750ed1fdbe36",
+    "abstract": "With large language models (LLMs) poised to become embedded in our daily lives, questions are starting to be raised about the data they learned from. These questions range from potential bias or misinformation LLMs could retain from their training data to questions of copyright and fair use of human-generated text. However, while these questions emerge, developers of the recent state-of-the-art LLMs become increasingly reluctant to disclose details on their training corpus. We here introduce the task of document-level membership inference for real-world LLMs, i.e. inferring whether the LLM has seen a given document during training or not. First, we propose a procedure for the development and evaluation of document-level membership inference for LLMs by leveraging commonly used data sources for training and the model release date. We then propose a practical, black-box method to predict document-level membership and instantiate it on OpenLLaMA-7B with both books and academic papers. We show our methodology to perform very well, reaching an AUC of 0.856 for books and 0.678 for papers. We then show our approach to outperform the sentence-level membership inference attacks used in the privacy literature for the document-level membership task. We further evaluate whether smaller models might be less sensitive to document-level inference and show OpenLLaMA-3B to be approximately as sensitive as OpenLLaMA-7B to our approach. Finally, we consider two mitigation strategies and find the AUC to slowly decrease when only partial documents are considered but to remain fairly high when the model precision is reduced. Taken together, our results show that accurate document-level membership can be inferred for LLMs, increasing the transparency of technology poised to change our lives.",
+    "authors": [
+        "Matthieu Meeus",
+        "Shubham Jain",
+        "Marek Rei",
+        "Yves-Alexandre de Montjoye"
+    ],
+    "venue": "USENIX Security Symposium",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a practical, black-box method to predict document-level membership and instantiate it on OpenLLaMA-7B with both books and academic papers, and shows that accurate document-level membership can be inferred for LLMs."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

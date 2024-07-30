@@ -1,0 +1,33 @@
+{
+    "acronym": "2cbc99846870fcf917156cf7c15217e9ad3ad040",
+    "title": "From Loops to Oops: Fallback Behaviors of Language Models Under Uncertainty",
+    "seed_ids": [
+        "gpt3",
+        "881af971d00621709b4c772750cd3ea9d0fb11fd",
+        "ac45bbf9940512d9d686cf8cd3a95969bc313570",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "492a655a67e6ec7423a968cedb70eec0cdbc8e98",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2cbc99846870fcf917156cf7c15217e9ad3ad040",
+    "abstract": "Large language models (LLMs) often exhibit undesirable behaviors, such as hallucinations and sequence repetitions. We propose to view these behaviors as fallbacks that models exhibit under uncertainty, and investigate the connection between them. We categorize fallback behaviors -- sequence repetitions, degenerate text, and hallucinations -- and extensively analyze them in models from the same family that differ by the amount of pretraining tokens, parameter count, or the inclusion of instruction-following training. Our experiments reveal a clear and consistent ordering of fallback behaviors, across all these axes: the more advanced an LLM is (i.e., trained on more tokens, has more parameters, or instruction-tuned), its fallback behavior shifts from sequence repetitions, to degenerate text, and then to hallucinations. Moreover, the same ordering is observed throughout a single generation, even for the best-performing models; as uncertainty increases, models shift from generating hallucinations to producing degenerate text and then sequence repetitions. Lastly, we demonstrate that while common decoding techniques, such as random sampling, might alleviate some unwanted behaviors like sequence repetitions, they increase harder-to-detect hallucinations.",
+    "authors": [
+        "Maor Ivgi",
+        "Ori Yoran",
+        "Jonathan Berant",
+        "Mor Geva"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work categorizes fallback behaviors -- sequence repetitions, degenerate text, and hallucinations -- and extensively analyze them in models from the same family that differ by the amount of pretraining tokens, parameter count, or the inclusion of instruction-following training."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

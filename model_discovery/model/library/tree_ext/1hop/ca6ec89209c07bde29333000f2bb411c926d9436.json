@@ -1,0 +1,33 @@
+{
+    "acronym": "ca6ec89209c07bde29333000f2bb411c926d9436",
+    "title": "Counterfactual Generation with Identifiability Guarantees",
+    "seed_ids": [
+        "gpt2",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ca6ec89209c07bde29333000f2bb411c926d9436",
+    "abstract": "Counterfactual generation lies at the core of various machine learning tasks, including image translation and controllable text generation. This generation process usually requires the identification of the disentangled latent representations, such as content and style, that underlie the observed data. However, it becomes more challenging when faced with a scarcity of paired data and labeling information. Existing disentangled methods crucially rely on oversimplified assumptions, such as assuming independent content and style variables, to identify the latent variables, even though such assumptions may not hold for complex data distributions. For instance, food reviews tend to involve words like tasty, whereas movie reviews commonly contain words such as thrilling for the same positive sentiment. This problem is exacerbated when data are sampled from multiple domains since the dependence between content and style may vary significantly over domains. In this work, we tackle the domain-varying dependence between the content and the style variables inherent in the counterfactual generation task. We provide identification guarantees for such latent-variable models by leveraging the relative sparsity of the influences from different latent variables. Our theoretical insights enable the development of a doMain AdapTive counTerfactual gEneration model, called (MATTE). Our theoretically grounded framework achieves state-of-the-art performance in unsupervised style transfer tasks, where neither paired data nor style labels are utilized, across four large-scale datasets. Code is available at https://github.com/hanqi-qi/Matte.git",
+    "authors": [
+        "Hanqi Yan",
+        "Lingjing Kong",
+        "Lin Gui",
+        "Yuejie Chi",
+        "Eric P. Xing",
+        "Yulan He",
+        "Kun Zhang"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The theoretical insights enable the development of a doMain AdapTive counTerfactual gEneration model, called (MATTE), which achieves state-of-the-art performance in unsupervised style transfer tasks, where neither paired data nor style labels are utilized, across four large-scale datasets."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

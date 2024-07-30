@@ -1,0 +1,26 @@
+{
+    "acronym": "f20555bfefd34568ae2f37d23c7b506aa8b2f4af",
+    "title": "ReAGent: A Model-agnostic Feature Attribution Method for Generative Language Models",
+    "seed_ids": [
+        "gpt3",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f20555bfefd34568ae2f37d23c7b506aa8b2f4af",
+    "abstract": "Feature attribution methods (FAs), such as gradients and attention, are widely employed approaches to derive the importance of all input features to the model predictions. Existing work in natural language processing has mostly focused on developing and testing FAs for encoder-only language models (LMs) in classification tasks. However, it is unknown if it is faithful to use these FAs for decoder-only models on text generation, due to the inherent differences between model architectures and task settings respectively. Moreover, previous work has demonstrated that there is no `one-wins-all' FA across models and tasks. This makes the selection of a FA computationally expensive for large LMs since input importance derivation often requires multiple forward and backward passes including gradient computations that might be prohibitive even with access to large compute. To address these issues, we present a model-agnostic FA for generative LMs called Recursive Attribution Generator (ReAGent). Our method updates the token importance distribution in a recursive manner. For each update, we compute the difference in the probability distribution over the vocabulary for predicting the next token between using the original input and using a modified version where a part of the input is replaced with RoBERTa predictions. Our intuition is that replacing an important token in the context should have resulted in a larger change in the model's confidence in predicting the token than replacing an unimportant token. Our method can be universally applied to any generative LM without accessing internal model weights or additional training and fine-tuning, as most other FAs require. We extensively compare the faithfulness of ReAGent with seven popular FAs across six decoder-only LMs of various sizes. The results show that our method consistently provides more faithful token importance distributions.",
+    "authors": [
+        "Zhixue Zhao",
+        "Boxuan Shan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A model-agnostic FA for generative LMs called Recursive Attribution Generator (ReAGent), which can be universally applied to any generative LM without accessing internal model weights or additional training and fine-tuning, as most other FAs require."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

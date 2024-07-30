@@ -1,0 +1,37 @@
+{
+    "acronym": "50f250b0b41b0e7f55daadd4a231e7ad79c46b52",
+    "title": "DeFT: Decoding with Flash Tree-attention for Efficient Tree-structured LLM Inference",
+    "seed_ids": [
+        "flashattn",
+        "c8a744a1f47ba30db89e2b7102971fafbd6118c1",
+        "d9e67bb4140cd1703c858b8d09f268cb94ccd355",
+        "4d76206515d6b33903937474273885476fc2771e",
+        "aade40af0d85b0b4fe15c97f6222d5c2e4d6d9b3",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "3d473cbb7a377cf960abff31748a1a39bb6c7d7c"
+    ],
+    "s2id": "50f250b0b41b0e7f55daadd4a231e7ad79c46b52",
+    "abstract": "Given the increasing demand for tree-structured interactions with LLMs, we introduce DeFT (Decoding with Flash Tree-Attention), an IO-aware tree attention algorithm tailored for tree-structured inference. Unlike traditional sequence-based decoding, tree-structured decoding better accommodates modern task requirements, including self-consistency, few-shot prompting, multi-step reasoning, and multi-model/head coordination. However, existing sequence-based inference systems are ill-suited for tree-structured decoding, resulting in redundancy in computation, memory footprints, and memory access, thereby undermining inference efficiency. To address this challenge, DeFT maintains memory-efficient attention calculation with low memory footprints through two key stages: (1) QKV Preparation: We propose a KV-Guided Grouping Strategy with Tree Split to intelligently group QKV, optimizing GPU resource utilization while minimizing memory reads/writes for KV cache between GPU global memory and on-chip shared memory; (2)Attention Calculation: We compute partial attention of each QKV group in a fused kernel and employ a Tree-topology-aware Global Reduction strategy to obtain final attention. By reducing 73-99% KV cache IO and nearly 100% IO for partial results during attention calculation (e.g., Softmax), DeFT achieves up to 2.52/3.82x speedup in the end-to-end/attention latency across three practical tree-based workloads: namely, few-shot prompting, multi-step reasoning, and speculative decoding, over state-of-the-art attention algorithms.",
+    "authors": [
+        "Jinwei Yao",
+        "Kaiqi Chen",
+        "Kexun Zhang",
+        "Jiaxuan You",
+        "Binhang Yuan",
+        "Zeke Wang",
+        "Tao Lin"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DeFT (Decoding with Flash Tree-Attention), an IO-aware tree attention algorithm tailored for tree-structured inference, achieves up to 2.52/3.82x speedup in the end-to-end/attention latency across three practical tree-based workloads: namely, few-shot prompting, multi-step reasoning, and speculative decoding, over state-of-the-art attention algorithms."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

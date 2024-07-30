@@ -1,0 +1,27 @@
+{
+    "acronym": "81c5c35ad1311fb1ebae00f6d87631021fc7d956",
+    "title": "Self-Attention and Dynamic Convolution Hybrid Model for Neural Machine Translation",
+    "seed_ids": [
+        "lighdynconv",
+        "3bc53c49ae68adacf2d5be2fa795bcb879e2717a"
+    ],
+    "s2id": "81c5c35ad1311fb1ebae00f6d87631021fc7d956",
+    "abstract": "In sequence-to-sequence learning, models based on the self-attention mechanism dominate the network structures used for neural machine translation. Recently, convolutional networks have been demonstrated to perform excellently on various translation tasks. Despite the fact that self-attention and convolution have different strengths in modeling sequences, few efforts have been devoted to combining them. In this work, we propose a hybrid model that benefits from both mechanisms. We combine a self-attention module and a dynamic convolution module by taking a weighted sum of their outputs where the weights can be dynamically learned by the model during training. Experimental results show that our hybrid model outperforms baseline models built solely on either of these two mechanisms. And we produce new state-of-the-art results on IWSLT\u201915 English-German dataset.",
+    "authors": [
+        "Zhebin Zhang",
+        "Sai Wu",
+        "Gang Chen",
+        "Dawei Jiang"
+    ],
+    "venue": "2020 IEEE International Conference on Knowledge Graph (ICKG)",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A hybrid model is proposed that combines a self-attention module and a dynamic convolution module by taking a weighted sum of their outputs where the weights can be dynamically learned by the model during training."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

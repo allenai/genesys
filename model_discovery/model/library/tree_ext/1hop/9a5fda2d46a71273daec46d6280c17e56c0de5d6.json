@@ -1,0 +1,29 @@
+{
+    "acronym": "9a5fda2d46a71273daec46d6280c17e56c0de5d6",
+    "title": "Improving Semi-Supervised Text Classification with Dual Meta-Learning",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "9a5fda2d46a71273daec46d6280c17e56c0de5d6",
+    "abstract": "The goal of semi-supervised text classification (SSTC) is to train a model by exploring both a small number of labeled data and a large number of unlabeled data, such that the learned semi-supervised classifier performs better than the supervised classifier trained on solely the labeled samples. Pseudo-labeling is one of the most widely used SSTC techniques, which trains a teacher classifier with a small number of labeled examples to predict pseudo labels for the unlabeled data. The generated pseudo-labeled examples are then utilized to train a student classifier, such that the learned student classifier can outperform the teacher classifier. Nevertheless, the predicted pseudo labels may be inaccurate, making the performance of the student classifier degraded. The student classifier may perform even worse than the teacher classifier. To alleviate this issue, in this paper, we introduce a dual meta-learning (DML) technique for semi-supervised text classification, which improves the teacher and student classifiers simultaneously in an iterative manner. Specifically, we propose a meta-noise correction method to improve the student classifier by proposing a Noise Transition Matrix (NTM) with meta-learning to rectify the noisy pseudo labels. In addition, we devise a meta pseudo supervision method to improve the teacher classifier. Concretely, we exploit the feedback performance from the student classifier to further guide the teacher classifier to produce more accurate pseudo labels for the unlabeled data. In this way, both teacher and student classifiers can co-evolve in the iterative training process. Extensive experiments on four benchmark datasets highlight the effectiveness of our DML method against existing state-of-the-art methods for semi-supervised text classification. We release our code and data of this paper publicly at https://github.com/GRIT621/DML.",
+    "authors": [
+        "Shujie Li",
+        "Guanghu Yuan",
+        "Min Yang",
+        "Ying Shen",
+        "Chengming Li",
+        "Ruifeng Xu",
+        "Xiaoyan Zhao"
+    ],
+    "venue": "ACM Trans. Inf. Syst.",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A dual meta-learning (DML) technique for semi-supervised text classification is introduced, which improves the teacher and student classifiers simultaneously in an iterative manner and devise a meta pseudo supervision method to improve the teacher classifier."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

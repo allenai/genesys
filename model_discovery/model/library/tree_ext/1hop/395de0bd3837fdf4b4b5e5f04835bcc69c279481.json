@@ -1,0 +1,34 @@
+{
+    "acronym": "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+    "title": "BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension",
+    "seed_ids": [
+        "gpt",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+    "abstract": "We present BART, a denoising autoencoder for pretraining sequence-to-sequence models. BART is trained by (1) corrupting text with an arbitrary noising function, and (2) learning a model to reconstruct the original text. It uses a standard Tranformer-based neural machine translation architecture which, despite its simplicity, can be seen as generalizing BERT (due to the bidirectional encoder), GPT (with the left-to-right decoder), and other recent pretraining schemes. We evaluate a number of noising approaches, finding the best performance by both randomly shuffling the order of sentences and using a novel in-filling scheme, where spans of text are replaced with a single mask token. BART is particularly effective when fine tuned for text generation but also works well for comprehension tasks. It matches the performance of RoBERTa on GLUE and SQuAD, and achieves new state-of-the-art results on a range of abstractive dialogue, question answering, and summarization tasks, with gains of up to 3.5 ROUGE. BART also provides a 1.1 BLEU increase over a back-translation system for machine translation, with only target language pretraining. We also replicate other pretraining schemes within the BART framework, to understand their effect on end-task performance.",
+    "authors": [
+        "M. Lewis",
+        "Yinhan Liu",
+        "Naman Goyal",
+        "Marjan Ghazvininejad",
+        "Abdel-rahman Mohamed",
+        "Omer Levy",
+        "Veselin Stoyanov",
+        "Luke Zettlemoyer"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "BART is presented, a denoising autoencoder for pretraining sequence-to-sequence models, which matches the performance of RoBERTa on GLUE and SQuAD, and achieves new state-of-the-art results on a range of abstractive dialogue, question answering, and summarization tasks."
+    },
+    "citationCount": 8749,
+    "influentialCitationCount": 1903,
+    "code": null,
+    "description": null,
+    "url": null
+}

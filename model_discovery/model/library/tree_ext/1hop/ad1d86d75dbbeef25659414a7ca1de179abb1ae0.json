@@ -1,0 +1,25 @@
+{
+    "acronym": "ad1d86d75dbbeef25659414a7ca1de179abb1ae0",
+    "title": "An antimicrobial drug recommender system using MALDI-TOF MS and dual-branch neural networks",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "ad1d86d75dbbeef25659414a7ca1de179abb1ae0",
+    "abstract": "Timely and effective use of antimicrobial drugs can improve patient outcomes, as well as help safeguard against resistance development. Matrix-assisted laser desorption/ionization time-of-flight mass spectrometry (MALDI-TOF MS) is currently routinely used in clinical diagnostics for rapid species identification. Mining additional data from said spectra in the form of antimicrobial resistance (AMR) profiles is, therefore, highly promising. Such AMR profiles could serve as a drop-in solution for drastically improving treatment efficiency, effectiveness, and costs. This study endeavours to develop the first machine learning models capable of predicting AMR profiles for the whole repertoire of species and drugs encountered in clinical microbiology. The resulting models can be interpreted as drug recommender systems for infectious diseases. We find that our dual-branch method delivers considerably higher performance compared to previous approaches. In addition, experiments show that the models can be efficiently fine-tuned to data from other clinical laboratories. MALDI-TOF-based AMR recommender systems can, hence, greatly extend the value of MALDI-TOF MS for clinical diagnostics. All code supporting this study is distributed on PyPI and is packaged under: https://github.com/gdewael/maldi-nn",
+    "authors": [
+        "Gaetan De Waele",
+        "G. Menschaert",
+        "Willem Waegeman"
+    ],
+    "venue": "bioRxiv",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study endeavours to develop the first machine learning models capable of predicting AMR profiles for the whole repertoire of species and drugs encountered in clinical microbiology, and finds that the dual-branch method delivers considerably higher performance compared to previous approaches."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

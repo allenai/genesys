@@ -1,0 +1,33 @@
+{
+    "acronym": "e4d913a4a1e5286b93e4dca0e032c58c3794e873",
+    "title": "ALoRA: Allocating Low-Rank Adaptation for Fine-tuning Large Language Models",
+    "seed_ids": [
+        "transformer",
+        "8973ad5fc1264594a1fda3bd9e04258074cea9cc",
+        "a981a57848e19adb80c4a29471fbb798ac050a8f",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e4d913a4a1e5286b93e4dca0e032c58c3794e873",
+    "abstract": "Parameter-efficient fine-tuning (PEFT) is widely studied for its effectiveness and efficiency in the era of large language models. Low-rank adaptation (LoRA) has demonstrated commendable performance as a popular and representative method. However, it is implemented with a fixed intrinsic rank that might not be the ideal setting for the downstream tasks. Recognizing the need for more flexible downstream task adaptation, we extend the methodology of LoRA to an innovative approach we call allocating low-rank adaptation (ALoRA) that enables dynamic adjustments to the intrinsic rank during the adaptation process. First, we propose a novel method, AB-LoRA, that can effectively estimate the importance score of each LoRA rank. Second, guided by AB-LoRA, we gradually prune abundant and negatively impacting LoRA ranks and allocate the pruned LoRA budgets to important Transformer modules needing higher ranks. We have conducted experiments on various tasks, and the experimental results demonstrate that our ALoRA method can outperform the recent baselines with comparable tunable parameters.",
+    "authors": [
+        "Zequan Liu",
+        "Jiawen Lyn",
+        "Wei Zhu",
+        "Xing Tian",
+        "Yvette Graham"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel method is proposed, AB-LoRA, that can effectively estimate the importance score of each LoRA rank and gradually prune abundant and negatively impacting LoRA ranks and allocate the pruned LoRA budgets to important Transformer modules needing higher ranks."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

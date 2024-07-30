@@ -1,0 +1,26 @@
+{
+    "acronym": "8ace90207a1792f5a8b06f06fba3d5ef43d1bf57",
+    "title": "On Efficient Training, Controllability and Compositional Generalization of Insertion-based Language Generators",
+    "seed_ids": [
+        "transformerxl",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8ace90207a1792f5a8b06f06fba3d5ef43d1bf57",
+    "abstract": "Auto-regressive language models with the left-to-right generation order have been a predominant paradigm for language generation. Recently, out-of-order text generation beyond the traditional left-to-right paradigm has attracted extensive attention, with a notable variation of insertion-based generation, where a model is used to gradually extend the context into a complete sentence purely with insertion operations. However, since insertion operations disturb the position information of each token, it is often believed that each step of the insertion-based likelihood estimation requires a bi-directional re-encoding of the whole generated sequence. This computational overhead prohibits the model from scaling up to generate long, diverse texts such as stories, news articles, and reports. To address this issue, we propose InsNet, an insertion-based sequence model that can be trained as ef\ufb01ciently as traditional transformer decoders while maintaining the same performance as that with a bi-directional context encoder. We evaluate InsNet on story generation and CleVR-CoGENT captioning, showing the advantages of InsNet in several dimensions, including computational costs, generation quality, the ability to perfectly incorporate lexical controls, and better compositional generalization.",
+    "authors": [
+        "Sidi Lu",
+        "Nanyun Peng"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes InsNet, an insertion-based sequence model that can be trained as ef\ufb01ciently as traditional transformer decoders while maintaining the same performance as that with a bi-directional context encoder, and evaluates it on story generation and CleVR-CoGENT captioning."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,35 @@
+{
+    "acronym": "6c52c74debc49cd3ed58a74658655c30adc59d42",
+    "title": "OpenCQA: Open-ended Question Answering with Charts",
+    "seed_ids": [
+        "gpt2",
+        "0e802c0739771acf70e60d59c2df51cd7e8c50c0",
+        "161321ef451d658d66b762cba5c202b12260220e",
+        "faea04bf558c1a8b072bdcfe3cebe06ea4d9d9ca",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "6c52c74debc49cd3ed58a74658655c30adc59d42",
+    "abstract": "Charts are very popular to analyze data and convey important insights. People often analyze visualizations to answer open-ended questions that require explanatory answers. Answering such questions are often difficult and time-consuming as it requires a lot of cognitive and perceptual efforts. To address this challenge, we introduce a new task called OpenCQA, where the goal is to answer an open-ended question about a chart with descriptive texts. We present the annotation process and an in-depth analysis of our dataset. We implement and evaluate a set of baselines under three practical settings. In the first setting, a chart and the accompanying article is provided as input to the model. The second setting provides only the relevant paragraph(s) to the chart instead of the entire article, whereas the third setting requires the model to generate an answer solely based on the chart. Our analysis of the results show that the top performing models generally produce fluent and coherent text while they struggle to perform complex logical and arithmetic reasoning.",
+    "authors": [
+        "Shankar Kantharaj",
+        "Xuan Long Do",
+        "Rixie Tiffany Ko Leong",
+        "J. Tan",
+        "Enamul Hoque",
+        "Shafiq R. Joty"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a new task called OpenCQA, where the goal is to answer an open-ended question about a chart with descriptive texts, and implements and evaluates a set of baselines under three practical settings."
+    },
+    "citationCount": 26,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

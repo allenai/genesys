@@ -1,0 +1,37 @@
+{
+    "acronym": "82b9c77967aa2c2700e42060a89d0b75f9e8a2cc",
+    "title": "YM2413-MDB: A Multi-Instrumental FM Video Game Music Dataset with Emotion Annotations",
+    "seed_ids": [
+        "gpt2",
+        "transformerxl",
+        "2686b6512e0c0ff904dade81572e523a784083b7",
+        "fda805c6e85a03d10549acdc5489420ca8f3d405",
+        "eb0931c39904a40c6cb4aa35c9b21d5e3b7dc856",
+        "479eaafcee15a44b632b3cab41491b517e1531fe",
+        "4c64c35198453662882afd63d618a832c7d8c1b2",
+        "ce510c6cfeac703706460680e977c54554840830",
+        "24a70db0bbb5f486126477e32a6a44ab917a4b11",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "82b9c77967aa2c2700e42060a89d0b75f9e8a2cc",
+    "abstract": "Existing multi-instrumental datasets tend to be biased toward pop and classical music. In addition, they generally lack high-level annotations such as emotion tags. In this paper, we propose YM2413-MDB, an 80s FM video game music dataset with multi-label emotion annotations. It includes 669 audio and MIDI files of music from Sega and MSX PC games in the 80s using YM2413, a programmable sound generator based on FM. The collected game music is arranged with a subset of 15 monophonic instruments and one drum instrument. They were converted from binary commands of the YM2413 sound chip. Each song was labeled with 19 emotion tags by two annotators and validated by three verifiers to obtain refined tags. We provide the baseline models and results for emotion recognition and emotion-conditioned symbolic music generation using YM2413-MDB.",
+    "authors": [
+        "Eunjin Choi",
+        "Y. Chung",
+        "Seolhee Lee",
+        "JongIk Jeon",
+        "Taegyun Kwon",
+        "Juhan Nam"
+    ],
+    "venue": "International Society for Music Information Retrieval Conference",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes YM2413-MDB, an 80s FM video game music dataset with multi-label emotion annotations that includes 669 audio and MIDI files of music from Sega and MSX PC games in the 80s using YM 2413, a programmable sound generator based on FM."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

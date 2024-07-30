@@ -1,0 +1,27 @@
+{
+    "acronym": "cd63025532a62fa245a02ec05e32ac4d23089631",
+    "title": "Dynamic Evaluation of Transformer Language Models",
+    "seed_ids": [
+        "transformerxl",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "cd63025532a62fa245a02ec05e32ac4d23089631",
+    "abstract": "This research note combines two methods that have recently improved the state of the art in language modeling: Transformers and dynamic evaluation. Transformers use stacked layers of self-attention that allow them to capture long range dependencies in sequential data. Dynamic evaluation fits models to the recent sequence history, allowing them to assign higher probabilities to re-occurring sequential patterns. By applying dynamic evaluation to Transformer-XL models, we improve the state of the art on enwik8 from 0.99 to 0.94 bits/char, text8 from 1.08 to 1.04 bits/char, and WikiText-103 from 18.3 to 16.4 perplexity points.",
+    "authors": [
+        "Ben Krause",
+        "Emmanuel Kahembwe",
+        "Iain Murray",
+        "S. Renals"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This research note combines two methods that have recently improved the state of the art in language modeling: Transformers and dynamic evaluation, and applies dynamic evaluation to Transformer-XL models to improve the state on enwik8, text8, and WikiText-103."
+    },
+    "citationCount": 37,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

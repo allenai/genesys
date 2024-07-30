@@ -1,0 +1,30 @@
+{
+    "acronym": "5bdca463873f4f2dfc6897b6c5fd51e799bd76c7",
+    "title": "Generating music with sentiment using Transformer-GANs",
+    "seed_ids": [
+        "lineartransformer",
+        "f07c5c540233b22f0ca154c80c713e2aed3c9606",
+        "eb0931c39904a40c6cb4aa35c9b21d5e3b7dc856",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "ce510c6cfeac703706460680e977c54554840830"
+    ],
+    "s2id": "5bdca463873f4f2dfc6897b6c5fd51e799bd76c7",
+    "abstract": "The field of Automatic Music Generation has seen significant progress thanks to the advent of Deep Learning. However, most of these results have been produced by unconditional models, which lack the ability to interact with their users, not allowing them to guide the generative process in meaningful and practical ways. Moreover, synthesizing music that remains coherent across longer timescales while still capturing the local aspects that make it sound ``realistic'' or ``human-like'' is still challenging. This is due to the large computational requirements needed to work with long sequences of data, and also to limitations imposed by the training schemes that are often employed. In this paper, we propose a generative model of symbolic music conditioned by data retrieved from human sentiment. The model is a Transformer-GAN trained with labels that correspond to different configurations of the valence and arousal dimensions that quantitatively represent human affective states. We try to tackle both of the problems above by employing an efficient linear version of Attention and using a Discriminator both as a tool to improve the overall quality of the generated music and its ability to follow the conditioning signals.",
+    "authors": [
+        "Pedro Neves",
+        "Jos\u00e9 Fornari",
+        "J. Florindo"
+    ],
+    "venue": "International Society for Music Information Retrieval Conference",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a generative model of symbolic music conditioned by data retrieved from human sentiment, a Transformer-GAN trained with labels that correspond to different configurations of the valence and arousal dimensions that quantitatively represent human affective states."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

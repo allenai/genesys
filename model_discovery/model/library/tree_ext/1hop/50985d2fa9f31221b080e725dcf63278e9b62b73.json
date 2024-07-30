@@ -1,0 +1,30 @@
+{
+    "acronym": "50985d2fa9f31221b080e725dcf63278e9b62b73",
+    "title": "PILOT: Legal Case Outcome Prediction with Case Law",
+    "seed_ids": [
+        "bert",
+        "fcc7a44c19a553998dc471031652531c71a832aa",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "61a5ae33fc34efcdbc710004554ec57e607ce75e",
+        "29584ed6d68a06fdf91440a018f6bc83a44fd177"
+    ],
+    "s2id": "50985d2fa9f31221b080e725dcf63278e9b62b73",
+    "abstract": "Machine learning shows promise in predicting the outcome of legal cases, but most research has concentrated on civil law cases rather than case law systems. We identified two unique challenges in making legal case outcome predictions with case law. First, it is crucial to identify relevant precedent cases that serve as fundamental evidence for judges during decision-making. Second, it is necessary to consider the evolution of legal principles over time, as early cases may adhere to different legal contexts. In this paper, we proposed a new framework named PILOT (PredictIng Legal case OuTcome) for case outcome prediction. It comprises two modules for relevant case retrieval and temporal pattern handling, respectively. To benchmark the performance of existing legal case outcome prediction models, we curated a dataset from a large-scale case law database. We demonstrate the importance of accurately identifying precedent cases and mitigating the temporal shift when making predictions for case law, as our method shows a significant improvement over the prior methods that focus on civil law case outcome predictions.",
+    "authors": [
+        "Lang Cao",
+        "Zifeng Wang",
+        "Cao Xiao",
+        "Jimeng Sun"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The importance of accurately identifying precedent cases and mitigating the temporal shift when making predictions for case law is demonstrated, as the proposed PILOT method shows a significant improvement over the prior methods that focus on civil law case outcome predictions."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

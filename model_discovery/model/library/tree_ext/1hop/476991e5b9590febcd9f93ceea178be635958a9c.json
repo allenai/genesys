@@ -1,0 +1,35 @@
+{
+    "acronym": "476991e5b9590febcd9f93ceea178be635958a9c",
+    "title": "Cross-modal Multiple Granularity Interactive Fusion Network for Long Document Classification",
+    "seed_ids": [
+        "longformer",
+        "hitrans",
+        "84daddd294fa3cc12596b5785f81c2a153d2fb1d",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "203b543bfa1e564bb80ff4229b43174d7c71b0c0"
+    ],
+    "s2id": "476991e5b9590febcd9f93ceea178be635958a9c",
+    "abstract": "Long Document Classification (LDC) has attracted great attention in Natural Language Processing and achieved considerable progress owing to the large-scale pre-trained language models. In spite of this, as a different problem from the traditional text classification, LDC is far from being settled. Long documents, such as news and articles, generally have more than thousands of words with complex structures. Moreover, compared with flat text, long documents usually contain multi-modal content of images, which provide rich information but not yet being utilized for classification. In this article, we propose a novel cross-modal method for long document classification, in which multiple granularity feature shifting networks are proposed to integrate the multi-scale text and visual features of long documents adaptively. Additionally, a multi-modal collaborative pooling block is proposed to eliminate redundant fine-grained text features and simultaneously reduce the computational complexity. To verify the effectiveness of the proposed model, we conduct experiments on the Food101 dataset and two constructed multi-modal long document datasets. The experimental results show that the proposed cross-modal method outperforms the single-modal text methods and defeats the state-of-the-art related multi-modal baselines.",
+    "authors": [
+        "Tengfei Liu",
+        "Yongli Hu",
+        "Junbin Gao",
+        "Yanfeng Sun",
+        "Baocai Yin"
+    ],
+    "venue": "ACM Transactions on Knowledge Discovery from Data",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel cross-modal method is proposed, in which multiple granularity feature shifting networks are proposed to integrate the multi-scale text and visual features of long documents adaptively and defeats the state-of-the-art related multi-modal baselines."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

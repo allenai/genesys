@@ -1,0 +1,35 @@
+{
+    "acronym": "1261a5eceee6f4f3853f501f5cc4504ddfacb6ea",
+    "title": "CPS-MEBR: Click Feedback-Aware Web Page Summarization for Multi-Embedding-Based Retrieval",
+    "seed_ids": [
+        "reformer",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "031e4e43aaffd7a479738dcea69a2d5be7957aa3"
+    ],
+    "s2id": "1261a5eceee6f4f3853f501f5cc4504ddfacb6ea",
+    "abstract": "Embedding-based retrieval (EBR) is a technique to use embeddings to represent query and document, and then convert the retrieval problem into a nearest neighbor search problem in the embedding space. Some previous works have mainly focused on representing the web page with a single embedding, but in real web search scenarios, it is difficult to represent all the information of a long and complex structured web page as a single embedding. To address this issue, we design a click feedback-aware web page summarization for multi-embedding-based retrieval (CPS-MEBR) framework which is able to generate multiple embeddings for web pages to match different potential queries. Specifically, we use the click data of users in search logs to train a summary model to extract those sentences in web pages that are frequently clicked by users, which are more likely to answer those potential queries. Meanwhile, we introduce sentence-level semantic interaction to design a multi-embedding-based retrieval (MEBR) model, which can generate multiple embeddings to deal with different potential queries by using frequently clicked sentences in web pages. Offline experiments show that it can perform high quality candidate retrieval compared to single-embedding-based retrieval (SEBR) model.",
+    "authors": [
+        "Wenbiao Li",
+        "Pan Tang",
+        "Zheng-Yu Wu",
+        "Weixue Lu",
+        "Minghua Zhang",
+        "Zhen Tian",
+        "Daiting Shi",
+        "Yu Sun",
+        "Simiu Gu",
+        "Dawei Yin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A click feedback-aware web page summarization for multi-embedding-based retrieval (CPS-MEBR) framework which is able to generate multiple embeddings for web pages to match different potential queries and introduces sentence-level semantic interaction to design this model."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

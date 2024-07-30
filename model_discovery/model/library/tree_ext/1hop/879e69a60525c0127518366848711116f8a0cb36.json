@@ -1,0 +1,25 @@
+{
+    "acronym": "879e69a60525c0127518366848711116f8a0cb36",
+    "title": "ET-Network: A novel efficient transformer deep learning model for automated Urdu handwritten text recognition",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "879e69a60525c0127518366848711116f8a0cb36",
+    "abstract": "Automatic Urdu handwritten text recognition is a challenging task in the OCR industry. Unlike printed text, Urdu handwriting lacks a uniform font and structure. This lack of uniformity causes data inconsistencies and recognition issues. Different writing styles, cursive scripts, and limited data make Urdu text recognition a complicated task. Major languages, such as English, have experienced advances in automated recognition, whereas low-resource languages, such as Urdu, still lag. Transformer-based models are promising for automated recognition in high- and low-resource languages such as Urdu. This paper presents a transformer-based method called ET-Network that integrates self-attention into EfficientNet for feature extraction and a transformer for language modeling. The use of self-attention layers in EfficientNet helps to extract global and local features that capture long-range dependencies. These features proceeded into a vanilla transformer to generate text, and a prefix beam search is used for the finest outcome. NUST-UHWR, UPTI2.0, and MMU-OCR-21 are three datasets used to train and test the ET Network for a handwritten Urdu script. The ET-Network improved the character error rate by 4% and the word error rate by 1.55%, while establishing a new state-of-the-art character error rate of 5.27% and a word error rate of 19.09% for Urdu handwritten text.",
+    "authors": [
+        "Ameer Hamza",
+        "Shengbing Ren",
+        "Usman Saeed"
+    ],
+    "venue": "PLoS ONE",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A transformer-based method called ET-Network that integrates self-attention into EfficientNet for feature extraction and a transformer for language modeling is presented that improves the character error rate and word error rate and establishes a new state-of-the-art character error rate and word error rate for Urdu handwritten text."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

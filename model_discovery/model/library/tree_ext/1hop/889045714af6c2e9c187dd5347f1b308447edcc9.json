@@ -1,0 +1,31 @@
+{
+    "acronym": "889045714af6c2e9c187dd5347f1b308447edcc9",
+    "title": "Leveraging QA Datasets to Improve Generative Data Augmentation",
+    "seed_ids": [
+        "gpt2",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "7eba731a7fd8de712b7b79b5af41a6e2d4dbd191",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "b47381e04739ea3f392ba6c8faaf64105493c196",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "889045714af6c2e9c187dd5347f1b308447edcc9",
+    "abstract": "The ability of generative language models (GLMs) to generate text has improved considerably in the last few years, enabling their use for generative data augmentation. In this work, we propose CONDA, an approach to further improve GLM\u2019s ability to generate synthetic data by reformulating data generation as context generation for a given question-answer (QA) pair and leveraging QA datasets for training context generators. Then, we cast downstream tasks into the same question answering format and adapt the fine-tuned context generators to the target task domain. Finally, we use the fine-tuned GLM to generate relevant contexts, which are in turn used as synthetic training data for their corresponding tasks. We perform extensive experiments on multiple classification datasets and demonstrate substantial improvements in performance for both few- and zero-shot settings. Our analysis reveals that QA datasets that require high-level reasoning abilities (e.g., abstractive and common-sense QA datasets) tend to give the best boost in performance in both few-shot and zero-shot settings.",
+    "authors": [
+        "Dheeraj Mekala",
+        "Tu Vu",
+        "Timo Schick",
+        "Jingbo Shang"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes CONDA, an approach to further improve GLM\u2019s ability to generate synthetic data by reformulating data generation as context generation for a given question-answer (QA) pair and leveraging QA datasets for training context generators."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

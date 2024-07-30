@@ -1,0 +1,27 @@
+{
+    "acronym": "4558b33d64ddfd58a9ab16e3633d05c55a7eca6f",
+    "title": "LLMcap: Large Language Model for Unsupervised PCAP Failure Detection",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "4558b33d64ddfd58a9ab16e3633d05c55a7eca6f",
+    "abstract": "The integration of advanced technologies into telecommunication networks complicates troubleshooting, posing challenges for manual error identification in Packet Capture (PCAP) data. This manual approach, requiring substantial resources, becomes impractical at larger scales. Machine learning (ML) methods offer alternatives, but the scarcity of labeled data limits accuracy. In this study, we propose a self-supervised, large language model-based (LLMcap) method for PCAP failure detection. LLMcap leverages language-learning abilities and employs masked language modeling to learn grammar, context, and structure. Tested rigorously on various PCAPs, it demonstrates high accuracy despite the absence of labeled data during training, presenting a promising solution for efficient network analysis. Index Terms: Network troubleshooting, Packet Capture Analysis, Self-Supervised Learning, Large Language Model, Network Quality of Service, Network Performance.",
+    "authors": [
+        "Lukasz Tulczyjew",
+        "Kinan Jarrah",
+        "Charles Abondo",
+        "Dina Bennett",
+        "Nathanael Weill"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A self-supervised, large language model-based (LLMcap) method for PCAP failure detection that leverages language-learning abilities and employs masked language modeling to learn grammar, context, and structure, presenting a promising solution for efficient network analysis."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

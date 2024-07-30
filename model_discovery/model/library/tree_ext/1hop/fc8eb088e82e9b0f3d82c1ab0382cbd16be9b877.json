@@ -1,0 +1,32 @@
+{
+    "acronym": "fc8eb088e82e9b0f3d82c1ab0382cbd16be9b877",
+    "title": "Learning to Plan for Language Modeling from Unlabeled Data",
+    "seed_ids": [
+        "transformer",
+        "gpt2",
+        "ac45bbf9940512d9d686cf8cd3a95969bc313570",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "270f3bea8ca801870a6cc56b4d36f7f2019c9ed0",
+        "0bd5beed98675a63f9207851674d478009549900",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "fc8eb088e82e9b0f3d82c1ab0382cbd16be9b877",
+    "abstract": "By training to predict the next token in an unlabeled corpus, large language models learn to perform many tasks without any labeled data. However, their next-token-prediction objective arguably limits their performance in scenarios that require planning, such as writing a coherent article. In this paper, we train a module for planning the future writing process via a self-supervised learning objective. By conditioning on generated latent plans, our model extends the successful language model formula to more abstract planning in an unsupervised way. Empirically, we demonstrate that our method improves language modeling performance in general, particularly with respect to the text structure. Because our framework uses a planner module that is unsupervised and external to the language model, new planner modules can be trained at large scale and easily be shared with the community.",
+    "authors": [
+        "Nathan Cornille",
+        "M. Moens",
+        "Florian Mai"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper trains a module for planning the future writing process via a self-supervised learning objective that is unsupervised and external to the language model, and conditioning on generated latent plans extends the successful language model formula to more abstract planning in an unsupervised way."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

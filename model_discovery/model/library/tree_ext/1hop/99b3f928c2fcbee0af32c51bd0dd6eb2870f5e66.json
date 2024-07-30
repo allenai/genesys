@@ -1,0 +1,26 @@
+{
+    "acronym": "99b3f928c2fcbee0af32c51bd0dd6eb2870f5e66",
+    "title": "BERT-Based Model for Reading Comprehension Question Answering",
+    "seed_ids": [
+        "bert",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "99b3f928c2fcbee0af32c51bd0dd6eb2870f5e66",
+    "abstract": "Question Answering (QA) has been an open research topic in the past years due to its significance in different domains. Moreover, it has different challenges to be solved to reach a stage where models can mimic human reasoning and answer various questions and tasks efficiently. This paper proposes an implementation of a pre-trained BERT model that aims to answer reading comprehension questions. The proposed model can be applied to different downstream tasks that are either single sentence, such as sentiment analysis tasks, or pair of sentences, such as question-answering tasks with a given context. The existence of different input embedding representations and output representations supported the model to integrate together to overcome such any downstream task. The proposed model is a BERTBASE with a total of 110M pre-trained parameters. The model has been fine-tuned and evaluated using the SQuAD 2.0 dataset. The model results reached an Exact Match score of 61.12 and 72.5 F1 score.",
+    "authors": [
+        "Abdelrahman A. Mosaed",
+        "Hanan Hindy",
+        "Mostafa M. Aref"
+    ],
+    "venue": "International Conference on the Internet, Cyber Security and Information Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An implementation of a pre-trained BERT model that aims to answer reading comprehension questions and can be applied to different downstream tasks that are either single sentence, such as sentiment analysis tasks, or pair of sentences, such as question-answering tasks with a given context."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

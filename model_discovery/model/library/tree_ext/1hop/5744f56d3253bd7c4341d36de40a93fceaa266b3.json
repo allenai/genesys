@@ -1,0 +1,33 @@
+{
+    "acronym": "5744f56d3253bd7c4341d36de40a93fceaa266b3",
+    "title": "Semantics-aware BERT for Language Understanding",
+    "seed_ids": [
+        "gpt",
+        "67b1f8e48118bb1aa250f400d475425317bf4117",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "031e4e43aaffd7a479738dcea69a2d5be7957aa3",
+        "9a5ba9aee44ab873f3d60b05e2773c693707da88"
+    ],
+    "s2id": "5744f56d3253bd7c4341d36de40a93fceaa266b3",
+    "abstract": "The latest work on language representations carefully integrates contextualized features into language model training, which enables a series of success especially in various machine reading comprehension and natural language inference tasks. However, the existing language representation models including ELMo, GPT and BERT only exploit plain context-sensitive features such as character or word embeddings. They rarely consider incorporating structured semantic information which can provide rich semantics for language representation. To promote natural language understanding, we propose to incorporate explicit contextual semantics from pre-trained semantic role labeling, and introduce an improved language representation model, Semantics-aware BERT (SemBERT), which is capable of explicitly absorbing contextual semantics over a BERT backbone. SemBERT keeps the convenient usability of its BERT precursor in a light fine-tuning way without substantial task-specific modifications. Compared with BERT, semantics-aware BERT is as simple in concept but more powerful. It obtains new state-of-the-art or substantially improves results on ten reading comprehension and language inference tasks.",
+    "authors": [
+        "Zhuosheng Zhang",
+        "Yuwei Wu",
+        "Zhao Hai",
+        "Z. Li",
+        "Shuailiang Zhang",
+        "Xi Zhou",
+        "Xiang Zhou"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to incorporate explicit contextual semantics from pre-trained semantic role labeling, and introduces an improved language representation model, Semantics-aware BERT (SemBERT), which is capable of explicitly absorbing contextual semantics over a BERT backbone."
+    },
+    "citationCount": 327,
+    "influentialCitationCount": 43,
+    "code": null,
+    "description": null,
+    "url": null
+}

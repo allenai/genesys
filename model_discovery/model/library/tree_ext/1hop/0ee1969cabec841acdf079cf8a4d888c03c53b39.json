@@ -1,0 +1,30 @@
+{
+    "acronym": "0ee1969cabec841acdf079cf8a4d888c03c53b39",
+    "title": "Should we tweet this? Generative response modeling for predicting reception of public health messaging on Twitter",
+    "seed_ids": [
+        "gpt2",
+        "c6c734e16f66fbfcefac7625cc64599e83292c1e",
+        "6ebfbc954b9975d2f2651f380b9bdf46ae963178",
+        "32cd4caddc7799050d2e5594eee3af7160676412",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0ee1969cabec841acdf079cf8a4d888c03c53b39",
+    "abstract": "The way people respond to messaging from public health organizations on social media can provide insight into public perceptions on critical health issues, especially during a global crisis such as COVID-19. It could be valuable for high-impact organizations such as the US Centers for Disease Control and Prevention (CDC) or the World Health Organization (WHO) to understand how these perceptions impact reception of messaging on health policy recommendations. We collect two datasets of public health messages and their responses from Twitter relating to COVID-19 and Vaccines, and introduce a predictive method which can be used to explore the potential reception of such messages. Specifically, we harness a generative model (GPT-2) to directly predict probable future responses and demonstrate how it can be used to optimize expected reception of important health guidance. Finally, we introduce a novel evaluation scheme with extensive statistical testing which allows us to conclude that our models capture the semantics and sentiment found in actual public health responses.",
+    "authors": [
+        "Abraham Sanders",
+        "Debjani Ray-Majumder",
+        "John S. Erickson",
+        "Kristin P. Bennett"
+    ],
+    "venue": "Web Science Conference",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A generative model is harnessed to directly predict probable future responses and demonstrate how it can be used to optimize expected reception of important health guidance, and a novel evaluation scheme is introduced which allows for the capture of semantics and sentiment found in actual public health responses."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

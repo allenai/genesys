@@ -1,0 +1,39 @@
+{
+    "acronym": "3169a2478154e26fd7f63fdf43cf3a24f1007962",
+    "title": "BlackMamba: Mixture of Experts for State-Space Models",
+    "seed_ids": [
+        "mamba",
+        "745594bd0dc3e9dc86f74e100cd2c98ed36256c0",
+        "240103933ffe3dac2179cc160a2bd91299357a53",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "998ac3e945857cf2676ee7efdbaf443a0c6f820a",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3169a2478154e26fd7f63fdf43cf3a24f1007962",
+    "abstract": "State-space models (SSMs) have recently demonstrated competitive performance to transformers at large-scale language modeling benchmarks while achieving linear time and memory complexity as a function of sequence length. Mamba, a recently released SSM model, shows impressive performance in both language modeling and long sequence processing tasks. Simultaneously, mixture-of-expert (MoE) models have shown remarkable performance while significantly reducing the compute and latency costs of inference at the expense of a larger memory footprint. In this paper, we present BlackMamba, a novel architecture that combines the Mamba SSM with MoE to obtain the benefits of both. We demonstrate that BlackMamba performs competitively against both Mamba and transformer baselines, and outperforms in inference and training FLOPs. We fully train and open-source 340M/1.5B and 630M/2.8B BlackMamba models on 300B tokens of a custom dataset. We show that BlackMamba inherits and combines both of the benefits of SSM and MoE architectures, combining linear-complexity generation from SSM with cheap and fast inference from MoE. We release all weights, checkpoints, and inference code open-source. Inference code at: https://github.com/Zyphra/BlackMamba",
+    "authors": [
+        "Quentin Anthony",
+        "Yury Tokpanov",
+        "Paolo Glorioso",
+        "Beren Millidge"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "BlackMamba is presented, a novel architecture that combines the Mamba SSM with MoE to obtain the benefits of both, and inherits and combines both of the benefits of SSM and MoE architectures, combining linear-complexity generation from SSM with cheap and fast inference from MoE."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

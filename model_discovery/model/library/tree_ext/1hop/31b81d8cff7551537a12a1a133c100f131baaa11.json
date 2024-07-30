@@ -1,0 +1,34 @@
+{
+    "acronym": "31b81d8cff7551537a12a1a133c100f131baaa11",
+    "title": "Understanding Int4 Quantization for Language Models: Latency Speedup, Composability, and Failure Cases",
+    "seed_ids": [
+        "flashattn",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "2573af4e13d9a5dddb257d22cd38a600528d9a8b",
+        "c6c734e16f66fbfcefac7625cc64599e83292c1e",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "31b81d8cff7551537a12a1a133c100f131baaa11",
+    "abstract": "Improving the deployment efficiency of transformer-based language models has been challenging given their high computation and memory cost. While INT8 quantization has recently been shown to be effective in reducing both the memory cost and latency while preserving model accuracy, it remains unclear whether we can leverage INT4 (which doubles peak hardware throughput) to achieve further latency improvement. In this study, we explore the feasibility of employing INT4 weight and activation (W4A4) quantization for language models. Our findings indicate that W4A4 quantization introduces no to negligible accuracy degradation for encoder-only and encoder-decoder models, but causes a significant accuracy drop for decoder-only models. To materialize the performance gain using W4A4, we develop a highly optimized end-to-end W4A4 encoder inference pipeline supporting different quantization strategies. Our INT4 pipeline is $8.5\\times$ faster for latency-oriented scenarios and up to $3\\times$ for throughput-oriented scenarios compared to the inference of FP16, and improves the SOTA BERT INT8 performance from FasterTransformer by up to $1.7\\times$. We provide insights into the failure cases when applying W4A4 to decoder-only models, and further explore the compatibility of INT4 quantization with other compression methods, like pruning and layer reduction.",
+    "authors": [
+        "Xiaoxia Wu",
+        "Cheng Li",
+        "Reza Yazdani Aminabadi",
+        "Z. Yao",
+        "Yuxiong He"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study explores the feasibility of employing INT4 weight and activation (W4A4) quantization for language models, and provides insights into the failure cases when applying W 4A4 to decoder-only models, as well as exploring the compatibility of INT4 quantization with other compression methods, like pruning and layer reduction."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

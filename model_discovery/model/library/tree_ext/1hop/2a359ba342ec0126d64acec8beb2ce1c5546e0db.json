@@ -1,0 +1,26 @@
+{
+    "acronym": "2a359ba342ec0126d64acec8beb2ce1c5546e0db",
+    "title": "TrimBERT: Tailoring BERT for Trade-offs",
+    "seed_ids": [
+        "normalizedattn",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf"
+    ],
+    "s2id": "2a359ba342ec0126d64acec8beb2ce1c5546e0db",
+    "abstract": "Models based on BERT have been extremely successful in solving a variety of natural language processing (NLP) tasks. Unfortunately, many of these large models require a great deal of computational resources and/or time for pre-training and fine-tuning which limits wider adoptability. While self-attention layers have been well-studied, a strong justification for inclusion of the intermediate layers which follow them remains missing in the literature. In this work, we show that reducing the number of intermediate layers in BERT-Base results in minimal fine-tuning accuracy loss of downstream tasks while significantly decreasing model size and training time. We further mitigate two key bottlenecks, by replacing all softmax operations in the self-attention layers with a computationally simpler alternative and removing half of all layernorm operations. This further decreases the training time while maintaining a high level of fine-tuning accuracy.",
+    "authors": [
+        "S. N. Sridhar",
+        "Anthony Sarah",
+        "Sairam Sundaresan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows that reducing the number of intermediate layers in BERT-Base results in minimal fine-tuning accuracy loss of downstream tasks while significantly decreasing model size and training time."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

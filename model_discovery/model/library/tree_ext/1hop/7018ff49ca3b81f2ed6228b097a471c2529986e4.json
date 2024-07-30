@@ -1,0 +1,32 @@
+{
+    "acronym": "7018ff49ca3b81f2ed6228b097a471c2529986e4",
+    "title": "CoditT5: Pretraining for Source Code and Natural Language Editing",
+    "seed_ids": [
+        "gpt2",
+        "4b27f18bff43d605805c92696a979714ced0b805",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7018ff49ca3b81f2ed6228b097a471c2529986e4",
+    "abstract": "Pretrained language models have been shown to be effective in many software-related generation tasks; however, they are not well-suited for editing tasks as they are not designed to reason about edits. To address this, we propose a novel pretraining objective which explicitly models edits and use it to build CoditT5, a large language model for software-related editing tasks that is pretrained on large amounts of source code and natural language comments. We fine-tune it on various downstream editing tasks, including comment updating, bug fixing, and automated code review. By outperforming standard generation-based models, we demonstrate the generalizability of our approach and its suitability for editing tasks. We also show how a standard generation model and our edit-based model can complement one another through simple reranking strategies, with which we achieve state-of-the-art performance for the three downstream editing tasks.",
+    "authors": [
+        "Jiyang Zhang",
+        "Sheena Panthaplackel",
+        "Pengyu Nie",
+        "Junyi Jessy Li",
+        "Milo\u0161 Gligori\u0107"
+    ],
+    "venue": "International Conference on Automated Software Engineering",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "CoditT5 is a large language model for software-related editing tasks that is pretrained on large amounts of source code and natural language comments that outperforms standard generation-based models and shows how a standard generation model and the edit-based model can complement one another through simple reranking strategies."
+    },
+    "citationCount": 63,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

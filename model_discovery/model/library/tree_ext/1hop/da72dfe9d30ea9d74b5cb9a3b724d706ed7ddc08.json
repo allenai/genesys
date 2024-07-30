@@ -1,0 +1,27 @@
+{
+    "acronym": "da72dfe9d30ea9d74b5cb9a3b724d706ed7ddc08",
+    "title": "Exploring the Effectiveness of Instruction Tuning in Biomedical Language Processing",
+    "seed_ids": [
+        "gpt",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "da72dfe9d30ea9d74b5cb9a3b724d706ed7ddc08",
+    "abstract": "Large Language Models (LLMs), particularly those similar to ChatGPT, have significantly influenced the field of Natural Language Processing (NLP). While these models excel in general language tasks, their performance in domain-specific downstream tasks such as biomedical and clinical Named Entity Recognition (NER), Relation Extraction (RE), and Medical Natural Language Inference (NLI) is still evolving. In this context, our study investigates the potential of instruction tuning for biomedical language processing, applying this technique to two general LLMs of substantial scale. We present a comprehensive, instruction-based model trained on a dataset that consists of approximately $200,000$ instruction-focused samples. This dataset represents a carefully curated compilation of existing data, meticulously adapted and reformatted to align with the specific requirements of our instruction-based tasks. This initiative represents an important step in utilising such models to achieve results on par with specialised encoder-only models like BioBERT and BioClinicalBERT for various classical biomedical NLP tasks. Our work includes an analysis of the dataset's composition and its impact on model performance, providing insights into the intricacies of instruction tuning. By sharing our codes, models, and the distinctively assembled instruction-based dataset, we seek to encourage ongoing research and development in this area.",
+    "authors": [
+        "Omid Rohanian",
+        "Mohammadmahdi Nouriborji",
+        "David A. Clifton"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study investigates the potential of instruction tuning for biomedical language processing, applying this technique to two general LLMs of substantial scale, and presents a comprehensive, instruction-based model trained on a dataset that consists of approximately $200,000$ instruction-focused samples."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "d78d129a206517a6dc2f2b163a1a2c16e9fb1d93",
+    "title": "Self-Supervised Depth Estimation Leveraging Global Perception and Geometric Smoothness",
+    "seed_ids": [
+        "linformer",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "d78d129a206517a6dc2f2b163a1a2c16e9fb1d93",
+    "abstract": "Self-supervised depth estimation has drawn much attention in recent years as it does not require labeled data but image sequences. Moreover, it can be conveniently used in various applications, such as autonomous driving, robotics, realistic navigation, and smart cities. However, extracting global contextual information from images and predicting a geometrically natural depth map remain challenging. In this paper, we present DLNet for pixel-wise depth estimation, which simultaneously extracts global and local features with the aid of our depth Linformer block. This block consists of the Linformer and innovative soft split multi-layer perceptron blocks. Moreover, a three-dimensional geometry smoothness loss is proposed to predict a geometrically natural depth map by imposing the second-order smoothness constraint on the predicted three-dimensional point clouds, thereby realizing improved performance as a byproduct. Finally, we explore the multi-scale prediction strategy and propose the maximum margin dual-scale prediction strategy for further performance improvement. In experiments on the KITTI and Make3D benchmarks, the proposed DLNet achieves performance competitive to those of the state-of-the-art methods, reducing time and space complexities by more than 62% and 56% at a resolution of $416 \\times 128$ , respectively. Extensive testing on various real-world situations further demonstrates the strong practicality and generalization capability of the proposed model.",
+    "authors": [
+        "Shaocheng Jia",
+        "Xin Pei",
+        "W. Yao",
+        "S. Wong"
+    ],
+    "venue": "IEEE transactions on intelligent transportation systems (Print)",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed DLNet for pixel-wise depth estimation is presented, which simultaneously extracts global and local features with the aid of the depth Linformer block, and a three-dimensional geometry smoothness loss is proposed to predict a geometrically natural depth map."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

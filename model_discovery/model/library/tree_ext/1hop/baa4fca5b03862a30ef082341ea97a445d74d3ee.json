@@ -1,0 +1,34 @@
+{
+    "acronym": "baa4fca5b03862a30ef082341ea97a445d74d3ee",
+    "title": "MPCViT: Searching for MPC-friendly Vision Transformer with Heterogeneous Attention",
+    "seed_ids": [
+        "cosformer",
+        "1859fb2b30a2e9d54cbb9605bdd6f270caac6d66",
+        "ec139916edd6feb9b3cb3a0325ca96e21dbb0147",
+        "6cfd71d6f3cbe63a0af95b0622a6dd7387ab6acf",
+        "c49ac1f916d6d2edeb187e6619c8d23acd95eb21",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87"
+    ],
+    "s2id": "baa4fca5b03862a30ef082341ea97a445d74d3ee",
+    "abstract": "\u2014Secure multi-party computation (MPC) enables computation directly on encrypted data on non-colluding untrusted servers and protects both data and model privacy in deep learning inference. However, existing neural network (NN) architectures, including Vision Transformers (ViTs), are not designed or optimized for MPC protocols and incur signi\ufb01cant latency overhead due to the Softmax function in the multi-head attention (MHA). In this paper, we propose an MPC-friendly ViT, dubbed MPCViT, to enable accurate yet ef\ufb01cient ViT inference in MPC. We systematically compare different attention variants in MPC and propose a heterogeneous attention search space, which combines the high-accuracy and MPC-ef\ufb01cient attentions with diverse structure granularities. We further propose a simple yet effective differentiable neural architecture search (NAS) algorithm for fast ViT optimization. MPCViT signi\ufb01cantly outperforms prior-art ViT variants in MPC. With the proposed NAS algorithm, our extensive experiments demonstrate that MPCViT achieves 7.9 \u00d7 and 2.8 \u00d7 latency reduction with better accuracy compared to Linformer and MPCFormer on the Tiny-ImageNet dataset, respectively. Further, with proper knowledge distillation (KD), MPCViT even achieves 1.9% better accuracy compared to the baseline ViT with 9.9 \u00d7 latency reduction on the Tiny-ImageNet dataset.",
+    "authors": [
+        "Wenyuan Zeng",
+        "Meng Li",
+        "Wenjie Xiong",
+        "Wen-jie Lu",
+        "Jin Tan",
+        "Runsheng Wang",
+        "Ru Huang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes an MPC-friendly ViT, dubbed MPCViT, to enable accurate yet ef\ufb01cient ViT inference in MPC, and proposes a heterogeneous attention search space, which combines the high-accuracy andMPC-ef\ufb02cient attentions with diverse structure granularities."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

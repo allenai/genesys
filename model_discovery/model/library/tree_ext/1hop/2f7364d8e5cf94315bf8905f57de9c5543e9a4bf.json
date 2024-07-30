@@ -1,0 +1,36 @@
+{
+    "acronym": "2f7364d8e5cf94315bf8905f57de9c5543e9a4bf",
+    "title": "Adapting Language Models to Compress Contexts",
+    "seed_ids": [
+        "rmt",
+        "transformerxl",
+        "70e91e16eb321067d9402710e14a40cf28311f73",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "da1d6445b6b64ce9eb4587ba8abbdc490f648ec1",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "1944cebf4e41a10ea7bd02ce30404c18c9c4e04f",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "d9f6ada77448664b71128bb19df15765336974a6"
+    ],
+    "s2id": "2f7364d8e5cf94315bf8905f57de9c5543e9a4bf",
+    "abstract": "Transformer-based language models (LMs) are powerful and widely-applicable tools, but their usefulness is constrained by a finite context window and the expensive computational cost of processing long text documents. We propose to adapt pre-trained LMs into AutoCompressors. These models are capable of compressing long contexts into compact summary vectors, which are then accessible to the model as soft prompts. Summary vectors are trained with an unsupervised objective, whereby long documents are processed in segments and summary vectors from all previous segments are used in language modeling. We fine-tune OPT models on sequences of up to 30,720 tokens and show that AutoCompressors can utilize long contexts to improve perplexity. We evaluate AutoCompressors on in-context learning by compressing task demonstrations. We find that summary vectors are good substitutes for plain-text demonstrations, increasing accuracy while reducing inference cost. Finally, we explore the benefits of pre-computing summary vectors for large corpora by applying summary vectors to retrieval-augmented language modeling. Overall, AutoCompressors emerge as a simple and inexpensive solution for extending the context window of LMs while speeding up inference over long contexts.",
+    "authors": [
+        "Alexis Chevalier",
+        "Alexander Wettig",
+        "Anirudh Ajith",
+        "Danqi Chen"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "AutoCompressors emerge as a simple and inexpensive solution for extending the context window of LMs while speeding up inference over long contexts and the benefits of pre-computing summary vectors for large corpora are explored."
+    },
+    "citationCount": 77,
+    "influentialCitationCount": 11,
+    "code": null,
+    "description": null,
+    "url": null
+}

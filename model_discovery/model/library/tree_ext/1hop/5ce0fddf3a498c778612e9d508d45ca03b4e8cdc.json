@@ -1,0 +1,34 @@
+{
+    "acronym": "5ce0fddf3a498c778612e9d508d45ca03b4e8cdc",
+    "title": "Efficient Visual State Space Model for Image Deblurring",
+    "seed_ids": [
+        "mamba",
+        "46ac9f54189e233a189035f35f850f90128f6465",
+        "f67d6126c8436cf91a9cc2ef97c347a41dbf05d4",
+        "e730beb44042499763d36214c0498434e470dfd5",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "fbf68eb0cf8237cef59ebdb301569c79b9676ff9",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "5ce0fddf3a498c778612e9d508d45ca03b4e8cdc",
+    "abstract": "Convolutional neural networks (CNNs) and Vision Transformers (ViTs) have achieved excellent performance in image restoration. ViTs typically yield superior results in image restoration compared to CNNs due to their ability to capture long-range dependencies and input-dependent characteristics. However, the computational complexity of Transformer-based models grows quadratically with the image resolution, limiting their practical appeal in high-resolution image restoration tasks. In this paper, we propose a simple yet effective visual state space model (EVSSM) for image deblurring, leveraging the benefits of state space models (SSMs) to visual data. In contrast to existing methods that employ several fixed-direction scanning for feature extraction, which significantly increases the computational cost, we develop an efficient visual scan block that applies various geometric transformations before each SSM-based module, capturing useful non-local information and maintaining high efficiency. Extensive experimental results show that the proposed EVSSM performs favorably against state-of-the-art image deblurring methods on benchmark datasets and real-captured images.",
+    "authors": [
+        "Lingshun Kong",
+        "Jiangxin Dong",
+        "Ming-Hsuan Yang",
+        "Jinshan Pan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a simple yet effective visual state space model (EVSSM) for image deblurring, leveraging the benefits of state space models (SSMs) to visual data, and develops an efficient visual scan block that applies various geometric transformations before each SSM-based module, capturing useful non-local information and maintaining high efficiency."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

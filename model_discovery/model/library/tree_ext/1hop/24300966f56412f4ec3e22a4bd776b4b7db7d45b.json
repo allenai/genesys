@@ -1,0 +1,24 @@
+{
+    "acronym": "24300966f56412f4ec3e22a4bd776b4b7db7d45b",
+    "title": "Jacquard V2: Refining Datasets using the Human In the Loop Data Correction Method",
+    "seed_ids": [
+        "bigbird"
+    ],
+    "s2id": "24300966f56412f4ec3e22a4bd776b4b7db7d45b",
+    "abstract": "In the context of rapid advancements in industrial automation, vision-based robotic grasping plays an increasingly crucial role. In order to enhance visual recognition accuracy, the utilization of large-scale datasets is imperative for training models to acquire implicit knowledge related to the handling of various objects. Creating datasets from scratch is a time and labor-intensive process. Moreover, existing datasets often contain errors due to automated annotations aimed at expediency, making the improvement of these datasets a substantial research challenge. Consequently, several issues have been identified in the annotation of grasp bounding boxes within the popular Jacquard Grasp. We propose utilizing a Human-In-The-Loop(HIL) method to enhance dataset quality. This approach relies on backbone deep learning networks to predict object positions and orientations for robotic grasping. Predictions with Intersection over Union (IOU) values below 0.2 undergo an assessment by human operators. After their evaluation, the data is categorized into False Negatives(FN) and True Negatives(TN). FN are then subcategorized into either missing annotations or catastrophic labeling errors. Images lacking labels are augmented with valid grasp bounding box information, whereas images afflicted by catastrophic labeling errors are completely removed. The open-source tool Labelbee was employed for 53,026 iterations of HIL dataset enhancement, leading to the removal of 2,884 images and the incorporation of ground truth information for 30,292 images. The enhanced dataset, named the Jacquard V2 Grasping Dataset, served as the training data for a range of neural networks.",
+    "authors": [
+        "Qiuhao Li",
+        "Shenghai Yuan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes utilizing a Human-In-The-Loop(HIL) method to enhance dataset quality, which relies on backbone deep learning networks to predict object positions and orientations for robotic grasping."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

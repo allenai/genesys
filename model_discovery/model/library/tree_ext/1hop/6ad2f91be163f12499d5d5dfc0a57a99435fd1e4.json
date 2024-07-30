@@ -1,0 +1,33 @@
+{
+    "acronym": "6ad2f91be163f12499d5d5dfc0a57a99435fd1e4",
+    "title": "Sasdim: Self-adaptive Noise Scaling Diffusion Model for Spatial Time Series Imputation",
+    "seed_ids": [
+        "sgconv",
+        "240300b1da360f22bf0b82c6817eacebba6deed4",
+        "e342165a614588878ad0f4bc9bacf3905df34d08",
+        "ef7993ab30d0a8afabb4ebab080e471c0d5c743c",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51"
+    ],
+    "s2id": "6ad2f91be163f12499d5d5dfc0a57a99435fd1e4",
+    "abstract": "Spatial time series imputation is critically important to many real applications such as intelligent transportation and air quality monitoring. Although recent transformer and diffusion model based approaches have achieved significant performance gains compared with conventional statistic based methods, spatial time series imputation still remains as a challenging issue due to the complex spatio-temporal dependencies and the noise uncertainty of the spatial time series data. Especially, recent diffusion process based models may introduce random noise to the imputations, and thus cause negative impact on the model performance. To this end, we propose a self-adaptive noise scaling diffusion model named SaSDim to more effectively perform spatial time series imputation. Specially, we propose a new loss function that can scale the noise to the similar intensity, and propose the across spatial-temporal global convolution module to more effectively capture the dynamic spatial-temporal dependencies. Extensive experiments conducted on three real world datasets verify the effectiveness of SaSDim by comparison with current state-of-the-art baselines.",
+    "authors": [
+        "Shunyang Zhang",
+        "Senzhang Wang",
+        "Xianzhen Tan",
+        "Ruochen Liu",
+        "Jian Zhang",
+        "Jianxin Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a self-adaptive noise scaling diffusion model named SaSDim, a new loss function that can scale the noise to the similar intensity, and proposes the across spatial-temporal global convolution module to more effectively capture the dynamic spatial- Temporal dependencies."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

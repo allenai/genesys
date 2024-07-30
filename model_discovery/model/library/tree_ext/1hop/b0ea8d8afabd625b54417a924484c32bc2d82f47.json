@@ -1,0 +1,26 @@
+{
+    "acronym": "b0ea8d8afabd625b54417a924484c32bc2d82f47",
+    "title": "MMCoVaR: multimodal COVID-19 vaccine focused data repository for fake news detection and a baseline architecture for classification",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "b0ea8d8afabd625b54417a924484c32bc2d82f47",
+    "abstract": "The outbreak of COVID-19 has resulted in an \"infodemic\" that has encouraged the propagation of misinformation about COVID-19 and cure methods which, in turn, could negatively affect the adoption of recommended public health measures in the larger population. In this paper, we provide a new multimodal (consisting of images, text and temporal information) labeled dataset containing news articles and tweets on the COVID-19 vaccine. We collected 2,593 news articles from 80 publishers for one year between Feb 16th 2020 to May 8th 2021 and 24184 Twitter posts (collected between April 17th 2021 to May 8th 2021). We combine ratings from two news media ranking sites: Medias Bias Chart and Media Bias/Fact Check (MBFC) to classify the news dataset into two levels of credibility: reliable and unreliable. The combination of two filters allows for higher precision of labeling. We also propose a stance detection mechanism to annotate tweets into three levels of credibility: reliable, unreliable and inconclusive. We provide several statistics as well as other analytics like, publisher distribution, publication date distribution, topic analysis, etc. We also provide a novel architecture that classifies the news data into misinformation or truth to provide a baseline performance for this dataset. We find that the proposed architecture has an F-Score of 0.919 and accuracy of 0.882 for fake news detection. Furthermore, we provide benchmark performance for misinformation detection on tweet dataset. This new multimodal dataset can be used in research on COVID-19 vaccine, including misinformation detection, influence of fake COVID-19 vaccine information, etc.",
+    "authors": [
+        "Mingxuan Chen",
+        "Xinqiao Chu",
+        "K. P. Subbalakshmi"
+    ],
+    "venue": "International Conference on Advances in Social Networks Analysis and Mining",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel architecture that classifies the news data into misinformation or truth to provide a baseline performance for misinformation detection on tweet dataset is provided and a stance detection mechanism to annotate tweets into three levels of credibility: reliable, unreliable and inconclusive is proposed."
+    },
+    "citationCount": 20,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

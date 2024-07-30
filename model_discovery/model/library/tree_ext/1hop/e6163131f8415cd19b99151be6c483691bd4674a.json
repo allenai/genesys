@@ -1,0 +1,31 @@
+{
+    "acronym": "e6163131f8415cd19b99151be6c483691bd4674a",
+    "title": "LGRNet: Local-Global Reciprocal Network for Uterine Fibroid Segmentation in Ultrasound Videos",
+    "seed_ids": [
+        "transformer",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74"
+    ],
+    "s2id": "e6163131f8415cd19b99151be6c483691bd4674a",
+    "abstract": "Regular screening and early discovery of uterine fibroid are crucial for preventing potential malignant transformations and ensuring timely, life-saving interventions. To this end, we collect and annotate the first ultrasound video dataset with 100 videos for uterine fibroid segmentation (UFUV). We also present Local-Global Reciprocal Network (LGRNet) to efficiently and effectively propagate the long-term temporal context which is crucial to help distinguish between uninformative noisy surrounding tissues and target lesion regions. Specifically, the Cyclic Neighborhood Propagation (CNP) is introduced to propagate the inter-frame local temporal context in a cyclic manner. Moreover, to aggregate global temporal context, we first condense each frame into a set of frame bottleneck queries and devise Hilbert Selective Scan (HilbertSS) to both efficiently path connect each frame and preserve the locality bias. A distribute layer is then utilized to disseminate back the global context for reciprocal refinement. Extensive experiments on UFUV and three public Video Polyp Segmentation (VPS) datasets demonstrate consistent improvements compared to state-of-the-art segmentation methods, indicating the effectiveness and versatility of LGRNet. Code, checkpoints, and dataset are available at https://github.com/bio-mlhui/LGRNet",
+    "authors": [
+        "Huihui Xu",
+        "Yijun Yang",
+        "Angelica I. Avil\u00e9s-Rivero",
+        "Guang Yang",
+        "Jing Qin",
+        "Lei Zhu"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The first ultrasound video dataset with 100 videos for uterine fibroid segmentation (UFUV) is collected and the Cyclic Neighborhood Propagation (CNP) is introduced to propagate the inter-frame local temporal context in a cyclic manner and Local-Global Reciprocal Network (LGRNet) is presented to efficiently and effectively propagate the long-term temporal context."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

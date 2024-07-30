@@ -1,0 +1,36 @@
+{
+    "acronym": "02ad9f3fefe33cb9ca546591bec65dbdf7766c80",
+    "title": "Ring Attention with Blockwise Transformers for Near-Infinite Context",
+    "seed_ids": [
+        "bpt",
+        "flashattn",
+        "mea",
+        "a51ac7a5e8f6454268ac16ecdc52ecac98ce54d9",
+        "86b6e42e2ce957f6497d4aa578c9bb4d2b4e4ba3",
+        "f11044596cf2eaf59f83d82b8167b16ba6a08617",
+        "6edccbd83a9aae204785d4821f97855677c33866",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "53c3940f35b8b45d55ed49056282e1961954513d",
+        "16e623059ffccab60f4c35be028a2d4f10933515",
+        "79b4ec1aaf67a04a9afa0d8138f84b7be66c00cb",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a"
+    ],
+    "s2id": "02ad9f3fefe33cb9ca546591bec65dbdf7766c80",
+    "abstract": "Transformers have emerged as the architecture of choice for many state-of-the-art AI models, showcasing exceptional performance across a wide range of AI applications. However, the memory demands imposed by Transformers limit their ability to handle long sequences, thereby posing challenges in utilizing videos, actions, and other long-form sequences and modalities in complex environments. We present a novel approach, Ring Attention with Blockwise Transformers (Ring Attention), which leverages blockwise computation of self-attention and feedforward to distribute long sequences across multiple devices while fully overlapping the communication of key-value blocks with the computation of blockwise attention. Our approach enables training and inference of sequences that are up to device count times longer than those achievable by prior memory-efficient Transformers, without resorting to approximations or incurring additional communication and computation overheads. Extensive experiments on language modeling and reinforcement learning tasks demonstrate the effectiveness of our approach in allowing millions of tokens context size and improving performance.",
+    "authors": [
+        "Hao Liu",
+        "Matei Zaharia",
+        "Pieter Abbeel"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a novel approach, Ring Attention with Blockwise Transformers (Ring Attention), which leverages blockwise computation of self-attention and feedforward to distribute long sequences across multiple devices while fully overlapping the communication of key-value blocks with the computation of blockwise attention."
+    },
+    "citationCount": 70,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

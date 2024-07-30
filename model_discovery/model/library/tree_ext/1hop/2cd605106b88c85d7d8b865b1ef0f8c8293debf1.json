@@ -1,0 +1,32 @@
+{
+    "acronym": "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+    "title": "Zero-Shot Text-to-Image Generation",
+    "seed_ids": [
+        "sparsetransformer",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+    "abstract": "Text-to-image generation has traditionally focused on finding better modeling assumptions for training on a fixed dataset. These assumptions might involve complex architectures, auxiliary losses, or side information such as object part labels or segmentation masks supplied during training. We describe a simple approach for this task based on a transformer that autoregressively models the text and image tokens as a single stream of data. With sufficient data and scale, our approach is competitive with previous domain-specific models when evaluated in a zero-shot fashion.",
+    "authors": [
+        "A. Ramesh",
+        "Mikhail Pavlov",
+        "Gabriel Goh",
+        "S. Gray",
+        "Chelsea Voss",
+        "Alec Radford",
+        "Mark Chen",
+        "I. Sutskever"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work describes a simple approach based on a transformer that autoregressively models the text and image tokens as a single stream of data that is competitive with previous domain-specific models when evaluated in a zero-shot fashion."
+    },
+    "citationCount": 3555,
+    "influentialCitationCount": 321,
+    "code": null,
+    "description": null,
+    "url": null
+}

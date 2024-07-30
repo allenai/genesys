@@ -1,0 +1,43 @@
+{
+    "acronym": "f84f0f957f6c393065003de03c1e877e4890d396",
+    "title": "D2O: Dynamic Discriminative Operations for Efficient Generative Inference of Large Language Models",
+    "seed_ids": [
+        "streamingllm",
+        "e9576198e9ee767ede4b1ac6a739267aa52a9832",
+        "ef1b02dc1b82f9955fc4760fcefd92c0fff9f227",
+        "b085968c4362fb286ad6c5ef71a5db9630da0498",
+        "e68cf52268b45aac3da5a8f899a55b7da609f031",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "b31a5884a8ebe96b6300839b28608b97f8f8ef76",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "e586a4591ba0303b769f2c07cbddaf1899cb72e4",
+        "e4f82c0a13cae6739239ae0c25a554b6daff35af",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "f84f0f957f6c393065003de03c1e877e4890d396",
+    "abstract": "Efficient inference in Large Language Models (LLMs) is impeded by the growing memory demands of key-value (KV) caching, especially for longer sequences. Traditional KV cache eviction strategies, which prioritize less critical KV-pairs based on attention scores, often degrade generation quality, leading to issues such as context loss or hallucinations. To address this, we introduce Dynamic Discriminative Operations (D2O), a novel method that utilizes two-level discriminative strategies to optimize KV cache size without fine-tuning, while preserving essential context. Initially, by observing varying densities of attention weights between shallow and deep layers, we use this insight to determine which layers should avoid excessive eviction to minimize information loss. Subsequently, for the eviction strategy in each layer, D2O innovatively incorporates a compensation mechanism that maintains a similarity threshold to re-discriminate the importance of previously discarded tokens, determining whether they should be recalled and merged with similar tokens. Our approach not only achieves significant memory savings and enhances inference throughput by more than 3 times but also maintains high-quality long-text generation. Extensive experiments across various benchmarks and LLM architectures have demonstrated that D2O significantly enhances performance with a constrained KV cache budget.",
+    "authors": [
+        "Zhongwei Wan",
+        "Xinjian Wu",
+        "Yu Zhang",
+        "Yi Xin",
+        "Chaofan Tao",
+        "Zhihong Zhu",
+        "Xin Wang",
+        "Siqi Luo",
+        "Jing Xiong",
+        "Mi Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Dynamic Discriminative Operations (D2O) is introduced, a novel method that utilizes two-level discriminative strategies to optimize KV cache size without fine-tuning, while preserving essential context."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

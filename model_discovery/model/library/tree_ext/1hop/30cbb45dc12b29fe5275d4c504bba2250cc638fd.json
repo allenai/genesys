@@ -1,0 +1,24 @@
+{
+    "acronym": "30cbb45dc12b29fe5275d4c504bba2250cc638fd",
+    "title": "Neural Combinatorial Optimization on Heterogeneous Graphs: An Application to the Picker Routing Problem in Mixed-shelves Warehouses",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "30cbb45dc12b29fe5275d4c504bba2250cc638fd",
+    "abstract": "In recent years, machine learning (ML) models capable of solving combinatorial optimization (CO) problems have received a surge of attention. While early approaches failed to outperform traditional CO solvers, the gap between handcrafted and learned heuristics has been steadily closing. However, most work in this area has focused on simple CO problems to benchmark new models and algorithms, leaving a gap in the development of methods specifically designed to handle more involved problems. Therefore, this work considers the problem of picker routing in the context of mixed-shelves warehouses, which involves not only a heterogeneous graph representation, but also a combinatorial action space resulting from the integrated selection and routing decisions to be made. We propose both a novel encoder to effectively learn representations of the heterogeneous graph and a hierarchical decoding scheme that exploits the combinatorial structure of the action space. The efficacy of the developed methods is demonstrated through a comprehensive comparison with established architectures as well as exact and heuristic solvers.",
+    "authors": [
+        "Laurin Luttmann",
+        "Lin Xie"
+    ],
+    "venue": "International Conference on Automated Planning and Scheduling",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work considers the problem of picker routing in the context of mixed-shelves warehouses, which involves not only a heterogeneous graph representation, but also a combinatorial action space resulting from the integrated selection and routing decisions to be made, and proposes a novel encoder to effectively learn representations of the heterogeneous graph and a hierarchical decoding scheme that exploits the combinatorial structure of the action space."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

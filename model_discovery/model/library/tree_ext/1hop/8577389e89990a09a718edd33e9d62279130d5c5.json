@@ -1,0 +1,32 @@
+{
+    "acronym": "8577389e89990a09a718edd33e9d62279130d5c5",
+    "title": "DASS: Distilled Audio State Space Models Are Stronger and More Duration-Scalable Learners",
+    "seed_ids": [
+        "mamba",
+        "a2b0cb0673ce65810d832a1f6514442d2b862e66",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51"
+    ],
+    "s2id": "8577389e89990a09a718edd33e9d62279130d5c5",
+    "abstract": "State-space models (SSMs) have emerged as an alternative to Transformers for audio modeling due to their high computational efficiency with long inputs. While recent efforts on Audio SSMs have reported encouraging results, two main limitations remain: First, in 10-second short audio tagging tasks, Audio SSMs still underperform compared to Transformer-based models such as Audio Spectrogram Transformer (AST). Second, although Audio SSMs theoretically support long audio inputs, their actual performance with long audio has not been thoroughly evaluated. To address these limitations, in this paper, 1) We applied knowledge distillation in audio space model training, resulting in a model called Knowledge Distilled Audio SSM (DASS). To the best of our knowledge, it is the first SSM that outperforms the Transformers on AudioSet and achieves an mAP of 47.6; and 2) We designed a new test called Audio Needle In A Haystack (Audio NIAH). We find that DASS, trained with only 10-second audio clips, can retrieve sound events in audio recordings up to 2.5 hours long, while the AST model fails when the input is just 50 seconds, demonstrating SSMs are indeed more duration scalable.",
+    "authors": [
+        "Saurabhchand Bhati",
+        "Yuan Gong",
+        "Leonid Karlinsky",
+        "Hildegard Kuehne",
+        "Rog\u00e9rio Feris",
+        "James Glass"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DASS is the first SSM that outperforms the Transformers on AudioSet and is the first SSM that outperforms the Transformers on AudioSet when the input is just 50 seconds, demonstrating SSMs are indeed more duration scalable."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "8d49a00ac9829942e9b4dd2cf7683490a9161a87",
+    "title": "Is In-Context Learning in Large Language Models Bayesian? A Martingale Perspective",
+    "seed_ids": [
+        "gpt3",
+        "16f01c1b3ddd0b2abd5ddfe4fdb3f74767607277",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "394bd431e522b86581086bcb5cd9be161cf1cdf4",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c"
+    ],
+    "s2id": "8d49a00ac9829942e9b4dd2cf7683490a9161a87",
+    "abstract": "In-context learning (ICL) has emerged as a particularly remarkable characteristic of Large Language Models (LLM): given a pretrained LLM and an observed dataset, LLMs can make predictions for new data points from the same distribution without fine-tuning. Numerous works have postulated ICL as approximately Bayesian inference, rendering this a natural hypothesis. In this work, we analyse this hypothesis from a new angle through the martingale property, a fundamental requirement of a Bayesian learning system for exchangeable data. We show that the martingale property is a necessary condition for unambiguous predictions in such scenarios, and enables a principled, decomposed notion of uncertainty vital in trustworthy, safety-critical systems. We derive actionable checks with corresponding theory and test statistics which must hold if the martingale property is satisfied. We also examine if uncertainty in LLMs decreases as expected in Bayesian learning when more data is observed. In three experiments, we provide evidence for violations of the martingale property, and deviations from a Bayesian scaling behaviour of uncertainty, falsifying the hypothesis that ICL is Bayesian.",
+    "authors": [
+        "Fabian Falck",
+        "Ziyu Wang",
+        "Chris Holmes"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the martingale property is a necessary condition for unambiguous predictions in such scenarios, and enables a principled, decomposed notion of uncertainty vital in trustworthy, safety-critical systems."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

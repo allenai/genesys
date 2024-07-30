@@ -1,0 +1,45 @@
+{
+    "acronym": "aca4df69152787da747b09a694ae226edf356676",
+    "title": "Designing Robust Transformers using Robust Kernel Density Estimation",
+    "seed_ids": [
+        "deltanet",
+        "9b61adb6f0d1e8831ab2f5481a12e2125b13c50a",
+        "48af9b314181b04edcc0b7224ffe4689036b755f",
+        "d8d2e574965fe733eb1416e03df2b5c2914fc530",
+        "72f207c777e4a17180cc54ccc6a743d5f43227af",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "1a703f08da01cf737cce3fb9064259b3f4b44e9c",
+        "3a906b77fa218adc171fecb28bb81c24c14dcc7b",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "8cef9900c04d7f661c08f4b5b1ed4337ace042a3",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "955f90930d48750e7239478b4eed440eb84131cd",
+        "05b22d6ec2cff81bcfbac2a6cf67bc1e9ef0f60a",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "aca4df69152787da747b09a694ae226edf356676",
+    "abstract": "Recent advances in Transformer architectures have empowered their empirical success in a variety of tasks across different domains. However, existing works mainly focus on predictive accuracy and computational cost, without considering other practical issues, such as robustness to contaminated samples. Recent work by Nguyen et al., (2022) has shown that the self-attention mechanism, which is the center of the Transformer architecture, can be viewed as a non-parametric estimator based on kernel density estimation (KDE). This motivates us to leverage a set of robust kernel density estimation methods for alleviating the issue of data contamination. Specifically, we introduce a series of self-attention mechanisms that can be incorporated into different Transformer architectures and discuss the special properties of each method. We then perform extensive empirical studies on language modeling and image classification tasks. Our methods demonstrate robust performance in multiple scenarios while maintaining competitive results on clean datasets.",
+    "authors": [
+        "Xing Han",
+        "Tongzheng Ren",
+        "T. Nguyen",
+        "Khai Nguyen",
+        "J. Ghosh",
+        "Nhat Ho"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a series of self-attention mechanisms that can be incorporated into different Transformer architectures and discusses the special properties of each method, and performs extensive empirical studies on language modeling and image classification tasks."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

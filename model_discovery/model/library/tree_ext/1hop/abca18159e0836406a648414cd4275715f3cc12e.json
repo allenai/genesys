@@ -1,0 +1,41 @@
+{
+    "acronym": "abca18159e0836406a648414cd4275715f3cc12e",
+    "title": "Fast Sampling via Discrete Non-Markov Diffusion Models",
+    "seed_ids": [
+        "d3pms",
+        "9cbbb250a565228ba328038ee7944b89cff53e84",
+        "7b14cef8a08519d7ea33800d52aba8410f48a3f7",
+        "1f898d66acabff511a3871b82799aa73c0055402",
+        "33433e9103b00aa0c42597cbfe13a429fbf5abdf",
+        "a979742220a88b1d32e1fbe72c41e8ba3007053c",
+        "c69361b20ad3d88ad4c5e9e1a3a66d0932f2bc43",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "e9b9a47cd81c66603c827f0f2bc4fba0d9ae77c4",
+        "82482585e94192b4e9913727e461f89cd08e9725",
+        "599bc7cfe98c2b57ddbe111412203a636da57be0",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "abca18159e0836406a648414cd4275715f3cc12e",
+    "abstract": "Discrete diffusion models have emerged as powerful tools for high-quality data generation. Despite their success in discrete spaces, such as text generation tasks, the acceleration of discrete diffusion models remains under explored. In this paper, we propose a discrete non-Markov diffusion model, which admits an accelerated reverse sampling for discrete data generation. Our method significantly reduces the number of function evaluations (i.e., calls to the neural network), making the sampling process much faster. Furthermore, we study the transition from finite to infinite step sampling, offering new insights into bridging the gap between discrete and continuous-time processes for discrete diffusion models. Extensive experiments on natural language generation and machine translation tasks demonstrate the superior performance of our method in terms of both generation speed and sample quality compared to existing methods for discrete diffusion models.",
+    "authors": [
+        "Zixiang Chen",
+        "Huizhuo Yuan",
+        "Yongqian Li",
+        "Yiwen Kou",
+        "Junkai Zhang",
+        "Quanquan Gu"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A discrete non-Markov diffusion model is proposed, which admits an accelerated reverse sampling for discrete data generation and significantly reduces the number of function evaluations, making the sampling process much faster and study the transition from finite to infinite step sampling."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

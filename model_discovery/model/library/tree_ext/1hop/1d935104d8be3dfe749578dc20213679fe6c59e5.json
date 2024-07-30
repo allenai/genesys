@@ -1,0 +1,28 @@
+{
+    "acronym": "1d935104d8be3dfe749578dc20213679fe6c59e5",
+    "title": "Structured Probabilistic Coding",
+    "seed_ids": [
+        "bert",
+        "af524c1068fef53ed8d6ac4f692c9f0c9aa932e3"
+    ],
+    "s2id": "1d935104d8be3dfe749578dc20213679fe6c59e5",
+    "abstract": "This paper presents a new supervised representation learning framework, namely structured probabilistic coding (SPC), to learn compact and informative representations from input related to the target task. SPC is an encoder-only probabilistic coding technology with a structured regularization from the target space. It can enhance the generalization ability of pre-trained language models for better language understanding. Specifically, our probabilistic coding simultaneously performs information encoding and task prediction in one module to more fully utilize the effective information from input data. It uses variational inference in the output space to reduce randomness and uncertainty. Besides, to better control the learning process of probabilistic representations, a structured regularization is proposed to promote uniformity across classes in the latent space. With the regularization term, SPC can preserve the Gaussian structure of the latent code and achieve better coverage of the hidden space with class uniformly. Experimental results on 12 natural language understanding tasks demonstrate that our SPC effectively improves the performance of pre-trained language models for classification and regression. Extensive experiments show that SPC can enhance the generalization capability, robustness to label noise, and clustering quality of output representations.",
+    "authors": [
+        "Dou Hu",
+        "Lingwei Wei",
+        "Yaxin Liu",
+        "Wei Zhou",
+        "Songlin Hu"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results on 12 natural language understanding tasks demonstrate that the structured probabilistic coding effectively improves the performance of pre-trained language models for classification and regression and can enhance the generalization ability of pre-trained language models for better language understanding."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

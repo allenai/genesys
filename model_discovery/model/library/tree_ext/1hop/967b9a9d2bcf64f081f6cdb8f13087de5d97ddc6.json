@@ -1,0 +1,25 @@
+{
+    "acronym": "967b9a9d2bcf64f081f6cdb8f13087de5d97ddc6",
+    "title": "Fusion Transformer with Object Mask Guidance for Image Forgery Analysis",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "967b9a9d2bcf64f081f6cdb8f13087de5d97ddc6",
+    "abstract": "In this work, we introduce OMG-Fuser, a fusion transformer-based network designed to extract information from various forensic signals to enable robust image forgery detection and localization. Our approach can operate with an arbitrary number of forensic signals and leverages object information for their analysis -- unlike previous methods that rely on fusion schemes with few signals and often disregard image semantics. To this end, we design a forensic signal stream composed of a transformer guided by an object attention mechanism, associating patches that depict the same objects. In that way, we incorporate object-level information from the image. Each forensic signal is processed by a different stream that adapts to its peculiarities. A token fusion transformer efficiently aggregates the outputs of an arbitrary number of network streams and generates a fused representation for each image patch. We assess two fusion variants on top of the proposed approach: (i) score-level fusion that fuses the outputs of multiple image forensics algorithms and (ii) feature-level fusion that fuses low-level forensic traces directly. Both variants exceed state-of-the-art performance on seven datasets for image forgery detection and localization, with a relative average improvement of 12.1% and 20.4% in terms of F1. Our model is robust against traditional and novel forgery attacks and can be expanded with new signals without training from scratch. Our code is publicly available at: https://github.com/mever-team/omgfuser",
+    "authors": [
+        "Dimitrios Karageorgiou",
+        "Giorgos Kordopatis-Zilos",
+        "S. Papadopoulos"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces OMG-Fuser, a fusion transformer-based network designed to extract information from various forensic signals to enable robust image forgery detection and localization and assess two fusion variants on top of the proposed approach."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

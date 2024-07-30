@@ -1,0 +1,32 @@
+{
+    "acronym": "57ceadbb37da24ce24b3ab8ff826ddcae717c0e2",
+    "title": "Learning Transferrable Representations of Career Trajectories for Economic Prediction",
+    "seed_ids": [
+        "gpt",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "fb507ada871d1e8c29e376dbf7b7879689aa89f9",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "57ceadbb37da24ce24b3ab8ff826ddcae717c0e2",
+    "abstract": "Understanding career trajectories\u2014the sequences of jobs that individuals hold over their working lives\u2014is important to economists for studying labor markets. In the past, economists have estimated relevant quantities by \ufb01tting predictive models to small surveys, but in recent years large datasets of online resumes have also become available. These new datasets provide job sequences of many more individuals, but they are too large and complex for standard econometric modeling. To this end, we adapt ideas from modern language modeling to the analysis of large-scale job sequence data. We develop CAREER, a transformer-based model that learns a low-dimensional representation of an individual\u2019s job history. This representation can be used to predict jobs directly on a large dataset, or can be \u201ctransferred\u201d to represent jobs in smaller and better-curated datasets. We \ufb01t the model to a large dataset of resumes, 24 million people who are involved in more than a thousand unique occupations. It forms accurate predictions on held-out data, and it learns useful career representations that can be \ufb01ne-tuned to make accurate predictions on common economics datasets. for predicting and forecasting career",
+    "authors": [
+        "Keyon Vafa",
+        "Emil Palikot",
+        "Tianyu Du",
+        "Ayush Kanodia",
+        "S. Athey",
+        "D. Blei"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "CAREER is developed, a transformer-based model that learns a low-dimensional representation of an individual\u2019s job history that can be used to predict jobs directly on a large dataset, or transferred to represent jobs in smaller and better-curated datasets."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

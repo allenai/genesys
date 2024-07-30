@@ -1,0 +1,30 @@
+{
+    "acronym": "208d9e72a80c9333c36f8ede204128e3c808af84",
+    "title": "C3: Confidence Calibration Model Cascade for Inference-Efficient Cross-Lingual Natural Language Understanding",
+    "seed_ids": [
+        "bert",
+        "33be243ac9dd8723e6267dea45fd6a6172d4f6a5",
+        "2573af4e13d9a5dddb257d22cd38a600528d9a8b",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf"
+    ],
+    "s2id": "208d9e72a80c9333c36f8ede204128e3c808af84",
+    "abstract": "Cross-lingual natural language understanding (NLU) is a critical task in natural language processing (NLP). Recent advancements have seen multilingual pre-trained language models (mPLMs) significantly enhance the performance of these tasks. However, mPLMs necessitate substantial resources and incur high computational costs during inference, posing challenges for deployment in real-world and real-time systems. Existing model cascade methods seek to enhance inference efficiency by greedily selecting the lightest model capable of processing the current input from a variety of models, based on model confidence scores. Nonetheless, deep models tend to exhibit overconfidence, and confidence distributions vary across languages. This leads to the emission of confident but incorrect predictions by smaller models, hindering their ability to generalize effectively across test languages. In this study, we introduce a confidence calibration model cascade ($C^3$) method. This approach, simple yet effective, involves calibration prior to cascade inference, thereby enhancing cascade accuracy through more reliable predictions. Extensive experiments conducted on three cross-lingual benchmarks demonstrate that $C^3$ significantly outperforms all state-of-the-art baselines.",
+    "authors": [
+        "Taixi Lu",
+        "Haoyu Wang",
+        "Huajie Shao",
+        "Jing Gao",
+        "Huaxiu Yao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This approach involves calibration prior to cascade inference, thereby enhancing cascade accuracy through more reliable predictions, and significantly outperforms all state-of-the-art baselines."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

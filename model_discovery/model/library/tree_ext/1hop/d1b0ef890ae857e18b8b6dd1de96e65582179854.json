@@ -1,0 +1,24 @@
+{
+    "acronym": "d1b0ef890ae857e18b8b6dd1de96e65582179854",
+    "title": "Central Kurdish Text-to-Speech Synthesis with Novel End-to-End Transformer Training",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "d1b0ef890ae857e18b8b6dd1de96e65582179854",
+    "abstract": "Recent advancements in text-to-speech (TTS) models have aimed to streamline the two-stage process into a single-stage training approach. However, many single-stage models still lag behind in audio quality, particularly when handling Kurdish text and speech. There is a critical need to enhance text-to-speech conversion for the Kurdish language, particularly for the Sorani dialect, which has been relatively neglected and is underrepresented in recent text-to-speech advancements. This study introduces an end-to-end TTS model for efficiently generating high-quality Kurdish audio. The proposed method leverages a variational autoencoder (VAE) that is pre-trained for audio waveform reconstruction and is augmented by adversarial training. This involves aligning the prior distribution established by the pre-trained encoder with the posterior distribution of the text encoder within latent variables. Additionally, a stochastic duration predictor is incorporated to imbue synthesized Kurdish speech with diverse rhythms. By aligning latent distributions and integrating the stochastic duration predictor, the proposed method facilitates the real-time generation of natural Kurdish speech audio, offering flexibility in pitches and rhythms. Empirical evaluation via the mean opinion score (MOS) on a custom dataset confirms the superior performance of our approach (MOS of 3.94) compared with that of a one-stage system and other two-staged systems as assessed through a subjective human evaluation.",
+    "authors": [
+        "Hawraz A. Ahmad",
+        "Rebwar Khalid Hamad"
+    ],
+    "venue": "Algorithms",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study introduces an end-to-end TTS model for efficiently generating high-quality Kurdish audio that leverages a variational autoencoder that is pre-trained for audio waveform reconstruction and is augmented by adversarial training."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

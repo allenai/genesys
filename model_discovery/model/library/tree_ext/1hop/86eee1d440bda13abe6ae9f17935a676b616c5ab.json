@@ -1,0 +1,32 @@
+{
+    "acronym": "86eee1d440bda13abe6ae9f17935a676b616c5ab",
+    "title": "Mitigating Catastrophic Forgetting in Multi-domain Chinese Spelling Correction by Multi-stage Knowledge Transfer Framework",
+    "seed_ids": [
+        "bert",
+        "78520dac908718d7ad7b2a8e90e2a55bd3149c1b"
+    ],
+    "s2id": "86eee1d440bda13abe6ae9f17935a676b616c5ab",
+    "abstract": "Chinese Spelling Correction (CSC) aims to detect and correct spelling errors in given sentences. Recently, multi-domain CSC has gradually attracted the attention of researchers because it is more practicable. In this paper, we focus on the key flaw of the CSC model when adapting to multi-domain scenarios: the tendency to forget previously acquired knowledge upon learning new domain-specific knowledge (i.e., catastrophic forgetting). To address this, we propose a novel model-agnostic Multi-stage Knowledge Transfer (MKT) framework, which utilizes a continuously evolving teacher model for knowledge transfer in each domain, rather than focusing solely on new domain knowledge. It deserves to be mentioned that we are the first to apply continual learning methods to the multi-domain CSC task. Experiments prove the effectiveness of our proposed method, and further analyses demonstrate the importance of overcoming catastrophic forgetting for improving the model performance.",
+    "authors": [
+        "Peng Xing",
+        "Yinghui Li",
+        "Shirong Ma",
+        "Xinnian Liang",
+        "Haojing Huang",
+        "Yangning Li",
+        "Hai-Tao Zheng",
+        "Wenhao Jiang",
+        "Ying Shen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel model-agnostic Multi-stage Knowledge Transfer (MKT) framework is proposed, which utilizes a continuously evolving teacher model for knowledge transfer in each domain, rather than focusing solely on new domain knowledge."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

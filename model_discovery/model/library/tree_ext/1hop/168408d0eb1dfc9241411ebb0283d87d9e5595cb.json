@@ -1,0 +1,36 @@
+{
+    "acronym": "168408d0eb1dfc9241411ebb0283d87d9e5595cb",
+    "title": "CascadedGaze: Efficiency in Global Context Extraction for Image Restoration",
+    "seed_ids": [
+        "linformer",
+        "d1869155960e4b1b882b39171dbecd25a7eda3cd",
+        "fbf68eb0cf8237cef59ebdb301569c79b9676ff9",
+        "2e644c67a697073d561da4f4dad35e5ad5316cfd",
+        "d8d2e574965fe733eb1416e03df2b5c2914fc530",
+        "af679d69fcc1d0fcf0f039aba937853bcb50a8de",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "168408d0eb1dfc9241411ebb0283d87d9e5595cb",
+    "abstract": "Image restoration tasks traditionally rely on convolutional neural networks. However, given the local nature of the convolutional operator, they struggle to capture global information. The promise of attention mechanisms in Transformers is to circumvent this problem, but it comes at the cost of intensive computational overhead. Many recent studies in image restoration have focused on solving the challenge of balancing performance and computational cost via Transformer variants. In this paper, we present CascadedGaze Network (CGNet), an encoder-decoder architecture that employs Global Context Extractor (GCE), a novel and efficient way to capture global information for image restoration. The GCE module leverages small kernels across convolutional layers to learn global dependencies, without requiring self-attention. Extensive experimental results show that our computationally efficient approach performs competitively to a range of state-of-the-art methods on synthetic image denoising and single image deblurring tasks, and pushes the performance boundary further on the real image denoising task.",
+    "authors": [
+        "Amirhosein Ghasemabadi",
+        "Mohammad Salameh",
+        "Muhammad Kamran Janjua",
+        "Chunhua Zhou",
+        "Fengyu Sun",
+        "Di Niu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "CascadedGaze Network is presented, an encoder-decoder architecture that employs Global Context Extractor (GCE), a novel and efficient way to capture global information for image restoration that leverages small kernels across convolutional layers to learn global dependencies, without requiring self-attention."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

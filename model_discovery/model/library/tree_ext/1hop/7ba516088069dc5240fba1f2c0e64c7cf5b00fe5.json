@@ -1,0 +1,23 @@
+{
+    "acronym": "7ba516088069dc5240fba1f2c0e64c7cf5b00fe5",
+    "title": "TopFuzz4SA: An Integrated Fuzzy Neural Network with Topic-aware Auto-encoding for Sentiment Analysis",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "7ba516088069dc5240fba1f2c0e64c7cf5b00fe5",
+    "abstract": "\n Recent advanced deep learning architectures, such as neural seq2seq, transformer, etc. have demonstrated remarkable improvements in multi-typed sentiment classification tasks. Even though recent transformer-based and seq2seq-based models have successfully enabled to capture rich-contextual information of texts, they are still lacking of attention on incorporating the global semantic information, such as topic, in order to sufficiently leverage the performance of downstream SA task. Moreover, emotional expressions of users are normally in forms of natural human-written textual data which might consist a lot of noise and ambiguity which impose great challenges on the processes of textual representation learning as well as sentiment polarity prediction. To meet these challenges, we propose a novel integrated fuzzy-neural architecture with a topic-driven textual representation learning approach for handling SA task, called as: TopFuzz4SA. Specifically, in the proposed TopFuzz4SA model, we first apply a topic-driven neural encoder-decoder architecture with the incorporation of latent topic embedding and attention mechanism to sufficiently learn both rich contextual and global semantic information of the given textual data. Then, the achieved rich semantic representations of texts are fed into a fused deep fuzzy neural network to effectively reduce the feature ambiguity and noise, forming the final textual representations for sentiment classification task. Extensive experiments in benchmark datasets demonstrate the effectiveness of our proposed TopFuzz4SA model in comparing with contemporary state-of-the-art baselines.",
+    "authors": [
+        "Tham Vo"
+    ],
+    "venue": "",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "In the proposed TopFuzz4SA model, a topic-driven neural encoder-decoder architecture is applied with the incorporation of latent topic embedding and attention mechanism to sufficiently learn both rich contextual and global semantic information of the given textual data."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

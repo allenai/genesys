@@ -1,0 +1,50 @@
+{
+    "acronym": "5fa10872ef8037853ff7c8baf5f77fb55a918eca",
+    "title": "Diffusion Models for Non-autoregressive Text Generation: A Survey",
+    "seed_ids": [
+        "diffusionlm",
+        "analogbits",
+        "3a22aad6c18a9559be3bbb197494b434b872a05a",
+        "c360b3a789b2a05072f21f6a8997c68bf1b24087",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "020a50f6a7154850ac81e3cde69ad8198ded6751",
+        "1f898d66acabff511a3871b82799aa73c0055402",
+        "a1186d7d9a9ef258c76afef1177e4f348061a537",
+        "23b7cde603b5ec8d5d13d46e1c453dc52d7c3f6c",
+        "a6a59c9e4cd446d0d04f76587699e3e8ab5197c2",
+        "a979742220a88b1d32e1fbe72c41e8ba3007053c",
+        "22775e58932cdfbd273a2a835a22c5d86800a458",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "0b9770a377b3f96cef9f268cee1791d39a0d4893",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "24425954960ce968e5f14360fbdd0605abcadfcf",
+        "e512964293671abbdc409f313d127cbe85ffe5cd",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5fa10872ef8037853ff7c8baf5f77fb55a918eca",
+    "abstract": "Non-autoregressive (NAR) text generation has attracted much attention in the field of natural language processing, which greatly reduces the inference latency but has to sacrifice the generation accuracy. Recently, diffusion models, a class of latent variable generative models, have been introduced into NAR text generation, showing an improved text generation quality. In this survey, we review the recent progress in diffusion models for NAR text generation. As the background, we first present the general definition of diffusion models and the text diffusion models, and then discuss their merits for NAR generation. As the core content, we further introduce two mainstream diffusion models in existing work of text diffusion, and review the key designs of the diffusion process. Moreover, we discuss the utilization of pre-trained language models (PLMs) for text diffusion models and introduce optimization techniques for text data. Finally, we discuss several promising directions and conclude this paper. Our survey aims to provide researchers with a systematic reference of related research on text diffusion models for NAR generation. We also demonstrate our collection of text diffusion models at https://github.com/RUCAIBox/Awesome-Text-Diffusion-Models.",
+    "authors": [
+        "Yifan Li",
+        "Kun Zhou",
+        "Wayne Xin Zhao",
+        "Ji-rong Wen"
+    ],
+    "venue": "International Joint Conference on Artificial Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A review of the recent progress in diffusion models for NAR text generation, which discusses the utilization of pre-trained language models for text diffusion models and optimization techniques for text data, and several promising directions are discussed."
+    },
+    "citationCount": 18,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

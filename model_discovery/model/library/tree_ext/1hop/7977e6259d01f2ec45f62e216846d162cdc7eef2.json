@@ -1,0 +1,29 @@
+{
+    "acronym": "7977e6259d01f2ec45f62e216846d162cdc7eef2",
+    "title": "Classifying European Court of Human Rights Cases Using Transformer-Based Techniques",
+    "seed_ids": [
+        "neurallegal",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "7977e6259d01f2ec45f62e216846d162cdc7eef2",
+    "abstract": "In the field of text classification, researchers have repeatedly shown the value of transformer-based models such as Bidirectional Encoder Representation from Transformers (BERT) and its variants. Nonetheless, these models are expensive in terms of memory and computational power but have not been utilized to classify long documents of several domains. In addition, transformer models are also often pre-trained on generalized languages, making them less effective in language-specific domains, such as legal documents. In the natural language processing (NLP) domain, there is a growing interest in creating newer models that can handle more complex input sequences and domain-specific languages. Keeping the power of NLP in mind, this study proposes a legal documentation classifier that classifies the legal document by using the sliding window approach to increase the maximum sequence length of the model. We used the ECHR (European Court of Human Rights) publicly available dataset which to a large extent is imbalanced. Therefore, to balance the dataset we have scrapped the case articles from the web and extracted the data. Then, we employed conventional machine learning techniques such as SVM, DT, NB, AdaBoost, and transformer-based neural networks models including BERT, Legal-BERT, RoBERTa, BigBird, ELECTRA, and XLNet for the classification task. The experimental findings show that RoBERTa outperformed all the mentioned BERT versions by obtaining precision, recall, and F1-score of 89.1%, 86.2%, and 86.7%, respectively. While from conventional machine learning techniques, AdaBoost outclasses SVM, DT, and NB by achieving scores of 81.9%, 81.5%, and 81.7% for precision, recall, and F1-score, respectively.",
+    "authors": [
+        "A. Imran",
+        "Henrik Hodnefjeld",
+        "Zenun Kastrati",
+        "Noureen Fatima",
+        "Sher Muhammad Daudpota",
+        "M. A. Wani"
+    ],
+    "venue": "IEEE Access",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study proposes a legal documentation classifier that classifies the legal document by using the sliding window approach to increase the maximum sequence length of the model."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

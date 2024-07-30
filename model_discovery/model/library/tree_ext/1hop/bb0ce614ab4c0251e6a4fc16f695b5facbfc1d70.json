@@ -1,0 +1,26 @@
+{
+    "acronym": "bb0ce614ab4c0251e6a4fc16f695b5facbfc1d70",
+    "title": "Neural Academic Paper Generation",
+    "seed_ids": [
+        "transformerxl",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "bb0ce614ab4c0251e6a4fc16f695b5facbfc1d70",
+    "abstract": "In this work, we tackle the problem of structured text generation, specifically academic paper generation in $\\LaTeX{}$, inspired by the surprisingly good results of basic character-level language models. Our motivation is using more recent and advanced methods of language modeling on a more complex dataset of $\\LaTeX{}$ source files to generate realistic academic papers. Our first contribution is preparing a dataset with $\\LaTeX{}$ source files on recent open-source computer vision papers. Our second contribution is experimenting with recent methods of language modeling and text generation such as Transformer and Transformer-XL to generate consistent $\\LaTeX{}$ code. We report cross-entropy and bits-per-character (BPC) results of the trained models, and we also discuss interesting points on some examples of the generated $\\LaTeX{}$ code.",
+    "authors": [
+        "Samet Demir",
+        "Uras Mutlu",
+        "\u00d6zg\u00fcr \u00d6zdemir"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work reports cross-entropy and bits-per-character (BPC) results of the trained models, and discusses interesting points on some examples of the generated $\\LaTeX{}$ code."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,36 @@
+{
+    "acronym": "6c4e682f1f4c0da9d69ead2f21f2d475622949db",
+    "title": "FuseMax: Leveraging Extended Einsums to Optimize Attention Accelerator Design",
+    "seed_ids": [
+        "transformer",
+        "e92a5332390f0ba94615935541da4da9bed56512",
+        "17a8bd6a5763f6607863348ce1757ac2ad3417fd",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "b97c3c370401dc34d2adbeb24f34de5180a14be6",
+        "2b38ddff8e24a07597c8d042ea7b8b85a678e9b2",
+        "069e0d896da7c79faeee4cf057548d5da7ce885e",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "6c4e682f1f4c0da9d69ead2f21f2d475622949db",
+    "abstract": "Attention for transformers is a critical workload that has recently received significant\"attention\"as a target for custom acceleration. Yet, while prior work succeeds in reducing attention's memory-bandwidth requirements, it creates load imbalance between attention operators (resulting in severe compute under-utilization) and requires on-chip memory that scales with sequence length (which is expected to grow over time). This paper ameliorates these issues, enabling attention with nearly 100% compute utilization, no off-chip memory traffic bottlenecks, and on-chip buffer size requirements that are independent of sequence length. The main conceptual contribution is to use a recently proposed abstraction -- the cascade of Einsums -- to describe, formalize and taxonomize the space of attention algorithms that appear in the literature. In particular, we show how Einsum cascades can be used to infer non-trivial lower bounds on the number of passes a kernel must take through its input data, which has implications for either required on-chip buffer capacity or memory traffic. We show how this notion can be used to meaningfully divide the space of attention algorithms into several categories and use these categories to inform our design process. Based on the above characterization, we propose FuseMax -- a novel mapping of attention onto a spatial array-style architecture. On attention, in an iso-area comparison, FuseMax achieves an average $6.7\\times$ speedup over the prior state-of-the-art FLAT while using $79\\%$ of the energy. Similarly, on the full end-to-end transformer inference, FuseMax achieves an average $5.3\\times$ speedup over FLAT using $83\\%$ of the energy.",
+    "authors": [
+        "Nandeeka Nayak",
+        "Xinrui Wu",
+        "Toluwanimi O. Odemuyiwa",
+        "Michael Pellauer",
+        "J. Emer",
+        "Christopher W. Fletcher"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes FuseMax -- a novel mapping of attention onto a spatial array-style architecture and shows how Einsum cascades can be used to infer non-trivial lower bounds on the number of passes a kernel must take through its input data, which has implications for either required on-chip buffer capacity or memory traffic."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

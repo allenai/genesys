@@ -1,0 +1,35 @@
+{
+    "acronym": "f5ce57d712b609fed1371f3a461ab3ebe9c71184",
+    "title": "Hierarchical Walking Transformer for Object Re-Identification",
+    "seed_ids": [
+        "luna",
+        "d8d2e574965fe733eb1416e03df2b5c2914fc530",
+        "af679d69fcc1d0fcf0f039aba937853bcb50a8de",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "2a31319e73d4486716168b65cdf7559baeda18ce",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "f5ce57d712b609fed1371f3a461ab3ebe9c71184",
+    "abstract": "Recently, transformer purely based on attention mechanism has been applied to a wide range of tasks and achieved impressive performance. Though extensive efforts have been made, there are still drawbacks to the transformer architecture which hinder its further applications: (i) the quadratic complexity brought by attention mechanism; (ii) barely incorporated inductive bias. In this paper, we present a new hierarchical walking attention, which provides a scalable, flexible, and interpretable sparsification strategy to reduce the complexity from quadratic to linear, and meanwhile evidently boost the performance. Specifically, we learn a hierarchical structure by splitting an image with different receptive fields. We associate each high-level region with a supernode, and inject supervision with prior knowledge in this node. Supernode then acts as an indicator to decide whether this area should be skipped and thereby massive unnecessary dot-product terms in attention can be avoided. Two sparsification phases are finally introduced, allowing the transformer to achieve strictly linear complexity. Extensive experiments are conducted to demonstrate the superior performance and efficiency against state-of-the-art methods. Significantly, our method sharply reduces the inference time and the total of tokens by 28% and $94%$ respectively, and brings 2.6%@Rank-1 promotion on MSMT17.",
+    "authors": [
+        "Xudong Tian",
+        "Jun Liu",
+        "Zhizhong Zhang",
+        "Chengjie Wang",
+        "Yanyun Qu",
+        "Yuan Xie",
+        "Lizhuang Ma"
+    ],
+    "venue": "ACM Multimedia",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new hierarchical walking attention is presented, which provides a scalable, flexible, and interpretable sparsification strategy to reduce the complexity from quadratic to linear, and meanwhile evidently boost the performance."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

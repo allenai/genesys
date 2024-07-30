@@ -1,0 +1,33 @@
+{
+    "acronym": "c9d98068784df6edf25e2e11a47dcd12c65cf3d9",
+    "title": "Bridging the Bosphorus: Advancing Turkish Large Language Models through Strategies for Low-Resource Language Adaptation and Benchmarking",
+    "seed_ids": [
+        "gpt2",
+        "gpt3",
+        "sparsetransformer",
+        "a2ca24ae72fbbc54d41083307fc2a24d12f4f23c",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "c9d98068784df6edf25e2e11a47dcd12c65cf3d9",
+    "abstract": "Large Language Models (LLMs) are becoming crucial across various fields, emphasizing the urgency for high-quality models in underrepresented languages. This study explores the unique challenges faced by low-resource languages, such as data scarcity, model selection, evaluation, and computational limitations, with a special focus on Turkish. We conduct an in-depth analysis to evaluate the impact of training strategies, model choices, and data availability on the performance of LLMs designed for underrepresented languages. Our approach includes two methodologies: (i) adapting existing LLMs originally pretrained in English to understand Turkish, and (ii) developing a model from the ground up using Turkish pretraining data, both supplemented with supervised fine-tuning on a novel Turkish instruction-tuning dataset aimed at enhancing reasoning capabilities. The relative performance of these methods is evaluated through the creation of a new leaderboard for Turkish LLMs, featuring benchmarks that assess different reasoning and knowledge skills. Furthermore, we conducted experiments on data and model scaling, both during pretraining and fine-tuning, simultaneously emphasizing the capacity for knowledge transfer across languages and addressing the challenges of catastrophic forgetting encountered during fine-tuning on a different language. Our goal is to offer a detailed guide for advancing the LLM framework in low-resource linguistic contexts, thereby making natural language processing (NLP) benefits more globally accessible.",
+    "authors": [
+        "Emre Can Acikgoz",
+        "Mete Erdogan",
+        "Deniz Yuret"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An in-depth analysis is conducted to evaluate the impact of training strategies, model choices, and data availability on the performance of LLMs designed for underrepresented languages, with a special focus on Turkish."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

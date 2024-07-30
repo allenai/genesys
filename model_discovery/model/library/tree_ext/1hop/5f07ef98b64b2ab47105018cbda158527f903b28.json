@@ -1,0 +1,32 @@
+{
+    "acronym": "5f07ef98b64b2ab47105018cbda158527f903b28",
+    "title": "RSMamba: Remote Sensing Image Classification With State Space Model",
+    "seed_ids": [
+        "mamba",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "5f07ef98b64b2ab47105018cbda158527f903b28",
+    "abstract": "Remote sensing image classification forms the foundation of various understanding tasks, serving a crucial function in remote sensing image interpretation. The recent advancements of convolutional neural networks (CNNs) and transformers have markedly enhanced classification accuracy. Nonetheless, remote sensing scene classification remains a significant challenge, especially given the complexity and diversity of remote sensing scenarios and the variability of spatiotemporal resolutions. The capacity for whole-image understanding can provide more precise semantic cues for scene discrimination. In this letter, we introduce RSMamba, a novel architecture for remote sensing image classification. RSMamba is based on the state space model (SSM) and incorporates an efficient, hardware-aware design known as the Mamba. It integrates the advantages of both a global receptive field and linear modeling complexity. To overcome the limitation of the vanilla Mamba, which can only model causal sequences and is not adaptable to 2-D image data, we propose a dynamic multipath activation mechanism to augment Mamba\u2019s capacity to model noncausal data. Notably, RSMamba maintains the inherent modeling mechanism of the vanilla Mamba, yet exhibits superior performance across multiple remote sensing image classification datasets, e.g., F1 scores of 95.25, 92.63, and 95.18 on the UC Merced, AID, and RESISC45 classification datasets, respectively, exceeding those of concurrent Vim and VMamba. This indicates that RSMamba holds significant potential to function as the backbone of future visual foundation models. The code is available at https://github.com/KyanChen/RSMamba.",
+    "authors": [
+        "Keyan Chen",
+        "Bo-Ying Chen",
+        "Chenyang Liu",
+        "Wenyuan Li",
+        "Zhengxia Zou",
+        "Z. Shi"
+    ],
+    "venue": "IEEE Geoscience and Remote Sensing Letters",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This letter introduces RSMamba, a novel architecture for remote sensing image classification based on the state space model (SSM) and incorporates an efficient, hardware-aware design known as the Mamba, and proposes a dynamic multipath activation mechanism to augment Mamba\u2019s capacity to model noncausal data."
+    },
+    "citationCount": 19,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

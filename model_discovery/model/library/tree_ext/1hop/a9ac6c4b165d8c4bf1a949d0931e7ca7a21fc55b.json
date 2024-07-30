@@ -1,0 +1,45 @@
+{
+    "acronym": "a9ac6c4b165d8c4bf1a949d0931e7ca7a21fc55b",
+    "title": "Discrete Flow Matching",
+    "seed_ids": [
+        "gpt2",
+        "5c9ef2e05941200052b3e6ce6735c0a4c4ea9915",
+        "1206b05eae5a06ba662ae79fb291b50e359c4f42",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "23b7cde603b5ec8d5d13d46e1c453dc52d7c3f6c",
+        "a979742220a88b1d32e1fbe72c41e8ba3007053c",
+        "22775e58932cdfbd273a2a835a22c5d86800a458",
+        "0b9770a377b3f96cef9f268cee1791d39a0d4893",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "e9b9a47cd81c66603c827f0f2bc4fba0d9ae77c4",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "e512964293671abbdc409f313d127cbe85ffe5cd",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a9ac6c4b165d8c4bf1a949d0931e7ca7a21fc55b",
+    "abstract": "Despite Flow Matching and diffusion models having emerged as powerful generative paradigms for continuous variables such as images and videos, their application to high-dimensional discrete data, such as language, is still limited. In this work, we present Discrete Flow Matching, a novel discrete flow paradigm designed specifically for generating discrete data. Discrete Flow Matching offers several key contributions: (i) it works with a general family of probability paths interpolating between source and target distributions; (ii) it allows for a generic formula for sampling from these probability paths using learned posteriors such as the probability denoiser ($x$-prediction) and noise-prediction ($\\epsilon$-prediction); (iii) practically, focusing on specific probability paths defined with different schedulers considerably improves generative perplexity compared to previous discrete diffusion and flow models; and (iv) by scaling Discrete Flow Matching models up to 1.7B parameters, we reach 6.7% Pass@1 and 13.4% Pass@10 on HumanEval and 6.7% Pass@1 and 20.6% Pass@10 on 1-shot MBPP coding benchmarks. Our approach is capable of generating high-quality discrete data in a non-autoregressive fashion, significantly closing the gap between autoregressive models and discrete flow models.",
+    "authors": [
+        "Itai Gat",
+        "Tal Remez",
+        "Neta Shaul",
+        "Felix Kreuk",
+        "Ricky T. Q. Chen",
+        "Gabriel Synnaeve",
+        "Yossi Adi",
+        "Y. Lipman"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents Discrete Flow Matching, a novel discrete flow paradigm designed specifically for generating discrete data capable of generating high-quality discrete data in a non-autoregressive fashion, significantly closing the gap between autoregressive models and discrete flow models."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

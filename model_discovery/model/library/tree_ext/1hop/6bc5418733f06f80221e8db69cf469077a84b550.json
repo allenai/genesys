@@ -1,0 +1,27 @@
+{
+    "acronym": "6bc5418733f06f80221e8db69cf469077a84b550",
+    "title": "Fighting Against the Repetitive Training and Sample Dependency Problem in Few-Shot Named Entity Recognition",
+    "seed_ids": [
+        "bert",
+        "bf722dc893ddaad5045fca5646212ec3badf3c5a"
+    ],
+    "s2id": "6bc5418733f06f80221e8db69cf469077a84b550",
+    "abstract": "Few-shot named entity recognition (NER) systems recognize entities using a few labeled training examples. The general pipeline consists of a span detector to identify entity spans in text and an entity-type classifier to assign types to entities. Current span detectors rely on extensive manual labeling to guide training. Almost every span detector requires initial training on basic span features followed by adaptation to task-specific features. This process leads to repetitive training of the basic span features among span detectors. Additionally, metric-based entity-type classifiers, such as prototypical networks, typically employ a specific metric that gauges the distance between the query sample and entity-type referents, ultimately assigning the most probable entity type to the query sample. However, these classifiers encounter the sample dependency problem, primarily stemming from the limited samples available for each entity-type referent. To address these challenges, we proposed an improved few-shot NER pipeline. First, we introduce a steppingstone span detector that is pre-trained on open-domain Wikipedia data. It can be used to initialize the pipeline span detector to reduce the repetitive training of basic features. Second, we leverage a large language model (LLM) to set reliable entity-type referents, eliminating reliance on few-shot samples of each type. Our model exhibits superior performance with fewer training steps and human-labeled data compared with baselines, as demonstrated through extensive experiments on various datasets. Particularly in fine-grained few-shot NER settings, our model outperforms strong baselines, including ChatGPT. We will publicly release the code, datasets, LLM outputs, and model checkpoints.",
+    "authors": [
+        "Chang Tian",
+        "Wenpeng Yin",
+        "Dan Li",
+        "Marie-Francine Moens"
+    ],
+    "venue": "IEEE Access",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A steppingstone span detector that is pre-trained on open-domain Wikipedia data is introduced and a large language model (LLM) is used to set reliable entity-type referents, eliminating reliance on few-shot samples of each type."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

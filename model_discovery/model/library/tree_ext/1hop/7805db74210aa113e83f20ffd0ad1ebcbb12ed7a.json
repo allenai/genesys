@@ -1,0 +1,33 @@
+{
+    "acronym": "7805db74210aa113e83f20ffd0ad1ebcbb12ed7a",
+    "title": "RECKONING: Reasoning through Dynamic Knowledge Encoding",
+    "seed_ids": [
+        "gpt2",
+        "82a3228dcda7fd2a8e5d1fc9bb2bf43bfb6ac531",
+        "9fa9d5dd481400b2f3904b33d542d70a6affccb9",
+        "89cb62dc83c1b1895267bd28639fbf5bb7ed21a4",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "f48ae425e2567be2d993efcaaf74c2274fc9d7c5",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7805db74210aa113e83f20ffd0ad1ebcbb12ed7a",
+    "abstract": "Recent studies on transformer-based language models show that they can answer questions by reasoning over knowledge provided as part of the context (i.e., in-context reasoning). However, since the available knowledge is often not filtered for a particular question, in-context reasoning can be sensitive to distractor facts, additional content that is irrelevant to a question but that may be relevant for a different question (i.e., not necessarily random noise). In these situations, the model fails to distinguish the knowledge that is necessary to answer the question, leading to spurious reasoning and degraded performance. This reasoning failure contrasts with the model's apparent ability to distinguish its contextual knowledge from all the knowledge it has memorized during pre-training. Following this observation, we propose teaching the model to reason more robustly by folding the provided contextual knowledge into the model's parameters before presenting it with a question. Our method, RECKONING, is a bi-level learning algorithm that teaches language models to reason by updating their parametric knowledge through back-propagation, allowing them to then answer questions using the updated parameters. During training, the inner loop rapidly adapts a copy of the model weights to encode contextual knowledge into its parameters. In the outer loop, the model learns to use the updated weights to reproduce and answer reasoning questions about the memorized knowledge. Our experiments on two multi-hop reasoning datasets show that RECKONING's performance improves over the in-context reasoning baseline (by up to 4.5%). We also find that compared to in-context reasoning, RECKONING generalizes better to longer reasoning chains unseen during training, is more robust to distractors in the context, and is more computationally efficient when multiple questions are asked about the same knowledge.",
+    "authors": [
+        "Zeming Chen",
+        "Gail Weiss",
+        "E. Mitchell",
+        "Asli Celikyilmaz",
+        "Antoine Bosselut"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes teaching the model to reason more robustly by folding the provided contextual knowledge into the model's parameters before presenting it with a question, and shows that RECKONING's performance improves over the in-context reasoning baseline and generalizes better to longer reasoning chains unseen during training."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

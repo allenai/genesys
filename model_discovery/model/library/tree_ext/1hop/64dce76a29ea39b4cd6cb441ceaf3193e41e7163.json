@@ -1,0 +1,27 @@
+{
+    "acronym": "64dce76a29ea39b4cd6cb441ceaf3193e41e7163",
+    "title": "LARS-VSA: A Vector Symbolic Architecture For Learning with Abstract Rules",
+    "seed_ids": [
+        "transformer",
+        "f00eabea95656477e3b4800e800c08e990b5287c",
+        "0b5546cde38aa98542f888cc4cfd4403c5fc1834"
+    ],
+    "s2id": "64dce76a29ea39b4cd6cb441ceaf3193e41e7163",
+    "abstract": "Human cognition excels at symbolic reasoning, deducing abstract rules from limited samples. This has been explained using symbolic and connectionist approaches, inspiring the development of a neuro-symbolic architecture that combines both paradigms. In parallel, recent studies have proposed the use of a\"relational bottleneck\"that separates object-level features from abstract rules, allowing learning from limited amounts of data . While powerful, it is vulnerable to the curse of compositionality meaning that object representations with similar features tend to interfere with each other. In this paper, we leverage hyperdimensional computing, which is inherently robust to such interference to build a compositional architecture. We adapt the\"relational bottleneck\"strategy to a high-dimensional space, incorporating explicit vector binding operations between symbols and relational representations. Additionally, we design a novel high-dimensional attention mechanism that leverages this relational representation. Our system benefits from the low overhead of operations in hyperdimensional space, making it significantly more efficient than the state of the art when evaluated on a variety of test datasets, while maintaining higher or equal accuracy.",
+    "authors": [
+        "Mohamed Mejri",
+        "C. Amarnath",
+        "Abhijit Chatterjee"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper adapts the\"relational bottleneck\" strategy to a high-dimensional space, incorporating explicit vector binding operations between symbols and relational representations, and designs a novel high-dimensional attention mechanism that leverages this relational representation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

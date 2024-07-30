@@ -1,0 +1,26 @@
+{
+    "acronym": "e747987df0200cb5f4d7367500d360b91a9b5b63",
+    "title": "BAMO at SemEval-2024 Task 9: BRAINTEASER: A Novel Task Defying Common Sense",
+    "seed_ids": [
+        "bert",
+        "3cb249077fa9fdd7e18db396f5e053febaa83889"
+    ],
+    "s2id": "e747987df0200cb5f4d7367500d360b91a9b5b63",
+    "abstract": "This paper outlines our approach to SemEval 2024 Task 9, BRAINTEASER: A Novel Task Defying Common Sense. The task aims to evaluate the ability of language models to think creatively. The dataset comprises multi-choice questions that challenge models to think \u2018outside of the box\u2019. We fine-tune 2 models, BERT and RoBERTa Large. Next, we employ a Chain of Thought (CoT) zero-shot prompting approach with 6 large language models, such as GPT-3.5, Mixtral, and Llama2. Finally, we utilize ReConcile, a technique that employs a \u2018round table conference\u2019 approach with multiple agents for zero-shot learning, to generate consensus answers among 3 selected language models. Our best method achieves an overall accuracy of 85 percent on the sentence puzzles subtask.",
+    "authors": [
+        "Baktash Ansari",
+        "Mohammadmostafa Rostamkhani",
+        "Sauleh Eetemadi"
+    ],
+    "venue": "International Workshop on Semantic Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper outlines the approach to SemEval 2024 Task 9, BRAINTEASER: A Novel Task Defying Common Sense, and utilizes ReConcile, a technique that employs a \u2018round table conference\u2019 approach with multiple agents for zero-shot learning, to generate consensus answers among 3 selected language models."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

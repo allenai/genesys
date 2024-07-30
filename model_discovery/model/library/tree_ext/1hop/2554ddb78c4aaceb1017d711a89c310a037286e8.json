@@ -1,0 +1,37 @@
+{
+    "acronym": "2554ddb78c4aaceb1017d711a89c310a037286e8",
+    "title": "Revisiting Recurrent Reinforcement Learning with Memory Monoids",
+    "seed_ids": [
+        "lineartransformer",
+        "240103933ffe3dac2179cc160a2bd91299357a53",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "d98b5c1d0f9a4e39dc79ea7a3f74e54789df5e13",
+        "bfe6fd05f09647b001c7eb6e333a95c881c88344",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "1a703f08da01cf737cce3fb9064259b3f4b44e9c",
+        "6f68e1bb253925d8431588555d3010419f322e04"
+    ],
+    "s2id": "2554ddb78c4aaceb1017d711a89c310a037286e8",
+    "abstract": "Memory models such as Recurrent Neural Networks (RNNs) and Transformers address Partially Observable Markov Decision Processes (POMDPs) by mapping trajectories to latent Markov states. Neither model scales particularly well to long sequences, especially compared to an emerging class of memory models sometimes called linear recurrent models. We discover that we can model the recurrent update of these models using a monoid, leading us to reformulate existing models using a novel memory monoid framework. We revisit the traditional approach to batching in recurrent RL, highlighting both theoretical and empirical deficiencies. We leverage the properties of memory monoids to propose a batching method that improves sample efficiency, increases the return, and simplifies the implementation of recurrent loss functions in RL.",
+    "authors": [
+        "Steven D. Morad",
+        "Chris Lu",
+        "Ryan Kortvelesy",
+        "Stephan Liwicki",
+        "Jakob N. Foerster",
+        "Amanda Prorok"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work revisits the traditional approach to batching in recurrent RL, and leverage the properties of memory monoids to propose a batching method that improves sample efficiency, increases the return, and simplifies the implementation of recurrent loss functions in RL."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

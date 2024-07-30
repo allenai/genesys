@@ -1,0 +1,26 @@
+{
+    "acronym": "e788a19d344f95bca85ac505786938f32edce7e2",
+    "title": "BayesPCN: A Continually Learnable Predictive Coding Associative Memory",
+    "seed_ids": [
+        "hopfield",
+        "1a703f08da01cf737cce3fb9064259b3f4b44e9c",
+        "562bf6d0aac2c6362086ef4c80503de8ea56b340"
+    ],
+    "s2id": "e788a19d344f95bca85ac505786938f32edce7e2",
+    "abstract": "Associative memory plays an important role in human intelligence and its mechanisms have been linked to attention in machine learning. While the machine learning community's interest in associative memories has recently been rekindled, most work has focused on memory recall ($read$) over memory learning ($write$). In this paper, we present BayesPCN, a hierarchical associative memory capable of performing continual one-shot memory writes without meta-learning. Moreover, BayesPCN is able to gradually forget past observations ($forget$) to free its memory. Experiments show that BayesPCN can recall corrupted i.i.d. high-dimensional data observed hundreds to a thousand ``timesteps'' ago without a large drop in recall ability compared to the state-of-the-art offline-learned parametric memory models.",
+    "authors": [
+        "Jason Yoo",
+        "F. Wood"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "BayesPCN is presented, a hierarchical associative memory capable of performing continual one-shot memory writes without meta-learning and able to gradually forget past observations to free its memory."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

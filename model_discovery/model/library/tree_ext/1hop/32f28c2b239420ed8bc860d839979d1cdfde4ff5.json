@@ -1,0 +1,33 @@
+{
+    "acronym": "32f28c2b239420ed8bc860d839979d1cdfde4ff5",
+    "title": "Large-Scale and Multi-Perspective Opinion Summarization with Diverse Review Subsets",
+    "seed_ids": [
+        "gpt3",
+        "e96493b4181de6c60b761dc66492db8e66fd784f",
+        "0a41cb292242a82b2b09b3bf23b48349b981a640",
+        "967188c252c9afb3129aa39c942dd622ff2aa552",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "32f28c2b239420ed8bc860d839979d1cdfde4ff5",
+    "abstract": "Opinion summarization is expected to digest larger review sets and provide summaries from different perspectives. However, most existing solutions are deficient in epitomizing extensive reviews and offering opinion summaries from various angles due to the lack of designs for information selection. To this end, we propose SUBSUMM, a supervised summarization framework for large-scale multi-perspective opinion summarization. SUBSUMM consists of a review sampling strategy set and a two-stage training scheme. The sampling strategies take sentiment orientation and contrastive information value into consideration, with which the review subsets from different perspectives and quality levels can be selected. Subsequently, the summarizer is encouraged to learn from the sub-optimal and optimal subsets successively in order to capitalize on the massive input. Experimental results on AmaSum and Rotten Tomatoes datasets demonstrate that SUBSUMM is adept at generating pros, cons, and verdict summaries from hundreds of input reviews. Furthermore, our in-depth analysis verifies that the advanced selection of review subsets and the two-stage training scheme are vital to boosting the summarization performance.",
+    "authors": [
+        "Han Jiang",
+        "Rui Wang",
+        "Zhihua Wei",
+        "Yu Li",
+        "Xinpeng Wang"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "In-depth analysis verifies that the advanced selection of review subsets and the two-stage training scheme are vital to boosting the summarization performance and demonstrates that SUBSUMM is adept at generating pros, cons, and verdict summaries from hundreds of input reviews."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

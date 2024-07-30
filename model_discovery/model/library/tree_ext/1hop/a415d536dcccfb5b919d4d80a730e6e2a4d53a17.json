@@ -1,0 +1,27 @@
+{
+    "acronym": "a415d536dcccfb5b919d4d80a730e6e2a4d53a17",
+    "title": "Commit Messages in the Age of Large Language Models",
+    "seed_ids": [
+        "gpt3",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3"
+    ],
+    "s2id": "a415d536dcccfb5b919d4d80a730e6e2a4d53a17",
+    "abstract": "Commit messages are explanations of changes made to a codebase that are stored in version control systems. They help developers understand the codebase as it evolves. However, writing commit messages can be tedious and inconsistent among developers. To address this issue, researchers have tried using different methods to automatically generate commit messages, including rule-based, retrieval-based, and learning-based approaches. Advances in large language models offer new possibilities for generating commit messages. In this study, we evaluate the performance of OpenAI's ChatGPT for generating commit messages based on code changes. We compare the results obtained with ChatGPT to previous automatic commit message generation methods that have been trained specifically on commit data. Our goal is to assess the extent to which large pre-trained language models can generate commit messages that are both quantitatively and qualitatively acceptable. We found that ChatGPT was able to outperform previous Automatic Commit Message Generation (ACMG) methods by orders of magnitude, and that, generally, the messages it generates are both accurate and of high-quality. We also provide insights, and a categorization, for the cases where it fails.",
+    "authors": [
+        "Cristina V. Lopes",
+        "Vanessa Klotzman",
+        "Iris Ma",
+        "Iftekar Ahmed"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that ChatGPT was able to outperform previous Automatic Commit Message Generation methods by orders of magnitude, and that, generally, the messages it generates are both accurate and of high-quality."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

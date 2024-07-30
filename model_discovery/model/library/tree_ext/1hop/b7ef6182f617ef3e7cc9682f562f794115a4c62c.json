@@ -1,0 +1,37 @@
+{
+    "acronym": "b7ef6182f617ef3e7cc9682f562f794115a4c62c",
+    "title": "COLD-Attack: Jailbreaking LLMs with Stealthiness and Controllability",
+    "seed_ids": [
+        "bert",
+        "fe13cc3650fd7df8f98d0596bfc13178af82c799",
+        "d8785264bbce47ca1ea7f97e7f3bc4ca6cbe824c",
+        "6d68b5c1eaf03aba857476a9825acf3e48edd840",
+        "6db13f58ff662eefa823a660fa86faf8ddf75533",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "023edab4738690444e3924e224c2641017a0d794",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "4a6a65968a8eb8c09ffb57a7774ddabb596565b1",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "e04a80263d252a3d8a382ba37a249b9345620570"
+    ],
+    "s2id": "b7ef6182f617ef3e7cc9682f562f794115a4c62c",
+    "abstract": "Jailbreaks on large language models (LLMs) have recently received increasing attention. For a comprehensive assessment of LLM safety, it is essential to consider jailbreaks with diverse attributes, such as contextual coherence and sentiment/stylistic variations, and hence it is beneficial to study controllable jailbreaking, i.e. how to enforce control on LLM attacks. In this paper, we formally formulate the controllable attack generation problem, and build a novel connection between this problem and controllable text generation, a well-explored topic of natural language processing. Based on this connection, we adapt the Energy-based Constrained Decoding with Langevin Dynamics (COLD), a state-of-the-art, highly efficient algorithm in controllable text generation, and introduce the COLD-Attack framework which unifies and automates the search of adversarial LLM attacks under a variety of control requirements such as fluency, stealthiness, sentiment, and left-right-coherence. The controllability enabled by COLD-Attack leads to diverse new jailbreak scenarios which not only cover the standard setting of generating fluent (suffix) attack with continuation constraint, but also allow us to address new controllable attack settings such as revising a user query adversarially with paraphrasing constraint, and inserting stealthy attacks in context with position constraint. Our extensive experiments on various LLMs (Llama-2, Mistral, Vicuna, Guanaco, GPT-3.5, and GPT-4) show COLD-Attack's broad applicability, strong controllability, high success rate, and attack transferability. Our code is available at https://github.com/Yu-Fangxu/COLD-Attack.",
+    "authors": [
+        "Xing-ming Guo",
+        "Fangxu Yu",
+        "Huan Zhang",
+        "Lianhui Qin",
+        "Bin Hu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The COLD-Attack framework is introduced, which unifies and automates the search of adversarial LLM attacks under a variety of control requirements such as fluency, stealthiness, sentiment, and left-right-coherence, and leads to diverse new jailbreak scenarios."
+    },
+    "citationCount": 19,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

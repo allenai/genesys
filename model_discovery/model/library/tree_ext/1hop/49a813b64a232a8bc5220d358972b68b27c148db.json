@@ -1,0 +1,23 @@
+{
+    "acronym": "49a813b64a232a8bc5220d358972b68b27c148db",
+    "title": "DeviceBERT: Applied Transfer Learning With Targeted Annotations and Vocabulary Enrichment to Identify Medical Device and Component Terminology in FDA Recall Summaries",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "49a813b64a232a8bc5220d358972b68b27c148db",
+    "abstract": "FDA Medical Device recalls are critical and time-sensitive events, requiring swift identification of impacted devices to inform the public of a recall event and ensure patient safety. The OpenFDA device recall dataset contains valuable information about ongoing device recall actions, but manually extracting relevant device information from the recall action summaries is a time-consuming task. Named Entity Recognition (NER) is a task in Natural Language Processing (NLP) that involves identifying and categorizing named entities in unstructured text. Existing NER models, including domain-specific models like BioBERT, struggle to correctly identify medical device trade names, part numbers and component terms within these summaries. To address this, we propose DeviceBERT, a medical device annotation, pre-processing and enrichment pipeline, which builds on BioBERT to identify and label medical device terminology in the device recall summaries with improved accuracy. Furthermore, we demonstrate that our approach can be applied effectively for performing entity recognition tasks where training data is limited or sparse.",
+    "authors": [
+        "Miriam Farrington"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DeviceBERT is proposed, a medical device annotation, pre-processing and enrichment pipeline, which builds on BioBERT to identify and label medical device terminology in the device recall summaries with improved accuracy, and it is demonstrated that the approach can be applied effectively for performing entity recognition tasks where training data is limited or sparse."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

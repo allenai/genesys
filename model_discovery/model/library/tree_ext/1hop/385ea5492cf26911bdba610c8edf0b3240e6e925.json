@@ -1,0 +1,26 @@
+{
+    "acronym": "385ea5492cf26911bdba610c8edf0b3240e6e925",
+    "title": "Unsupervised Text Embedding Space Generation Using Generative Adversarial Networks for Text Synthesis",
+    "seed_ids": [
+        "gpt2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "385ea5492cf26911bdba610c8edf0b3240e6e925",
+    "abstract": "Generative Adversarial Networks (GAN) is a model for data synthesis, which creates plausible data through the competition of generator and discriminator. Although GAN application to image synthesis is extensively studied, it has inherent limitations to natural language generation. Because natural language is composed of discrete tokens, a generator has difficulty updating its gradient through backpropagation; therefore, most text-GAN studies generate sentences starting with a random token based on a reward system. Thus, the generators of previous studies are pre-trained in an autoregressive way before adversarial training, causing data memorization that synthesized sentences reproduce the training data. In this paper, we synthesize sentences using a framework similar to the original GAN. More specifically, we propose Text Embedding Space Generative Adversarial Networks (TESGAN) which generate continuous text embedding spaces instead of discrete tokens to solve the gradient backpropagation problem. Furthermore, TESGAN conducts unsupervised learning which does not directly refer to the text of the training data to overcome the data memorization issue. By adopting this novel method, TESGAN can synthesize new sentences, showing the potential of unsupervised learning for text synthesis. We expect to see extended research combining Large Language Models with a new perspective of viewing text as an continuous space.",
+    "authors": [
+        "Jun-Min Lee",
+        "Tae-Bin Ha"
+    ],
+    "venue": "Northern European Journal of Language Technology",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Text Embedding Space Generative Adversarial Networks (TESGAN) which generate continuous text embedding spaces instead of discrete tokens to solve the gradient backpropagation problem and can synthesize new sentences, showing the potential of unsupervised learning for text synthesis."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

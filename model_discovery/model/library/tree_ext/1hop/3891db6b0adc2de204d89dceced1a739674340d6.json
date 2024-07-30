@@ -1,0 +1,40 @@
+{
+    "acronym": "3891db6b0adc2de204d89dceced1a739674340d6",
+    "title": "MobileNetV4 - Universal Models for the Mobile Ecosystem",
+    "seed_ids": [
+        "transformer",
+        "9a83aeadc8db65fb6da39ec977360541cddaff5c",
+        "f35016b3180808fa97d59acbdecf47d6e2ed2819",
+        "066c143b427571fb5568f2c581ea9066478d2e55",
+        "dd1139cfc609c2f3263d02e97176d5275caebc0a"
+    ],
+    "s2id": "3891db6b0adc2de204d89dceced1a739674340d6",
+    "abstract": "We present the latest generation of MobileNets, known as MobileNetV4 (MNv4), featuring universally efficient architecture designs for mobile devices. At its core, we introduce the Universal Inverted Bottleneck (UIB) search block, a unified and flexible structure that merges Inverted Bottleneck (IB), ConvNext, Feed Forward Network (FFN), and a novel Extra Depthwise (ExtraDW) variant. Alongside UIB, we present Mobile MQA, an attention block tailored for mobile accelerators, delivering a significant 39% speedup. An optimized neural architecture search (NAS) recipe is also introduced which improves MNv4 search effectiveness. The integration of UIB, Mobile MQA and the refined NAS recipe results in a new suite of MNv4 models that are mostly Pareto optimal across mobile CPUs, DSPs, GPUs, as well as specialized accelerators like Apple Neural Engine and Google Pixel EdgeTPU - a characteristic not found in any other models tested. Finally, to further boost accuracy, we introduce a novel distillation technique. Enhanced by this technique, our MNv4-Hybrid-Large model delivers 87% ImageNet-1K accuracy, with a Pixel 8 EdgeTPU runtime of just 3.8ms.",
+    "authors": [
+        "Danfeng Qin",
+        "Chas Leichner",
+        "M. Delakis",
+        "Marco Fornoni",
+        "Shixin Luo",
+        "Fan Yang",
+        "Weijun Wang",
+        "Colby R. Banbury",
+        "Chengxi Ye",
+        "Berkin Akin",
+        "Vaibhav Aggarwal",
+        "Tenghui Zhu",
+        "Daniele Moro",
+        "Andrew Howard"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Universal Inverted Bottleneck (UIB) search block is introduced, a unified and flexible structure that merges Inverted Bottleneck (IB), ConvNext, ConvNext, Feed Forward Network (FFN), and a novel Extra Depthwise (ExtraDW) variant."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

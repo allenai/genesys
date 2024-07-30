@@ -1,0 +1,27 @@
+{
+    "acronym": "3d9c9848b5e21738c62b23b7684d39a5c191f473",
+    "title": "ExPT: Synthetic Pretraining for Few-Shot Experimental Design",
+    "seed_ids": [
+        "gpt3",
+        "74d4de69a1a81ad9a76abbfcffa24e186e96afd3",
+        "a93d1eec880c768a34ad02e39f668f29d0547494"
+    ],
+    "s2id": "3d9c9848b5e21738c62b23b7684d39a5c191f473",
+    "abstract": "Experimental design is a fundamental problem in many science and engineering fields. In this problem, sample efficiency is crucial due to the time, money, and safety costs of real-world design evaluations. Existing approaches either rely on active data collection or access to large, labeled datasets of past experiments, making them impractical in many real-world scenarios. In this work, we address the more challenging yet realistic setting of few-shot experimental design, where only a few labeled data points of input designs and their corresponding values are available. We approach this problem as a conditional generation task, where a model conditions on a few labeled examples and the desired output to generate an optimal input design. To this end, we introduce Experiment Pretrained Transformers (ExPT), a foundation model for few-shot experimental design that employs a novel combination of synthetic pretraining with in-context learning. In ExPT, we only assume knowledge of a finite collection of unlabelled data points from the input domain and pretrain a transformer neural network to optimize diverse synthetic functions defined over this domain. Unsupervised pretraining allows ExPT to adapt to any design task at test time in an in-context fashion by conditioning on a few labeled data points from the target task and generating the candidate optima. We evaluate ExPT on few-shot experimental design in challenging domains and demonstrate its superior generality and performance compared to existing methods. The source code is available at https://github.com/tung-nd/ExPT.git.",
+    "authors": [
+        "Tung Nguyen",
+        "Sudhanshu Agrawal",
+        "Aditya Grover"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experiment Pretrained Transformers is introduced, a foundation model for few-shot experimental design that employs a novel combination of synthetic pretraining with in-context learning that allows ExPT to adapt to any design task at test time in an in- context fashion by conditioning on a few labeled data points from the target task and generating the candidate optima."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "e875667d1ae8fd8f3b760eee6feb6c8a79497e8c",
+    "title": "Improved Masked Image Generation with Token-Critic",
+    "seed_ids": [
+        "d3pms",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8"
+    ],
+    "s2id": "e875667d1ae8fd8f3b760eee6feb6c8a79497e8c",
+    "abstract": "Non-autoregressive generative transformers recently demonstrated impressive image generation performance, and orders of magnitude faster sampling than their autoregressive counterparts. However, optimal parallel sampling from the true joint distribution of visual tokens remains an open challenge. In this paper we introduce Token-Critic, an auxiliary model to guide the sampling of a non-autoregressive generative transformer. Given a masked-and-reconstructed real image, the Token-Critic model is trained to distinguish which visual tokens belong to the original image and which were sampled by the generative transformer. During non-autoregressive iterative sampling, Token-Critic is used to select which tokens to accept and which to reject and resample. Coupled with Token-Critic, a state-of-the-art generative transformer significantly improves its performance, and outperforms recent diffusion models and GANs in terms of the trade-off between generated image quality and diversity, in the challenging class-conditional ImageNet generation.",
+    "authors": [
+        "Jos\u00e9 Lezama",
+        "Huiwen Chang",
+        "Lu Jiang",
+        "Irfan Essa"
+    ],
+    "venue": "European Conference on Computer Vision",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces Token-Critic, an auxiliary model to guide the sampling of a non-autoregressive generative transformer that significantly improves its performance, and outperforms recent diffusion models and GANs in terms of the trade-off between generated image quality and diversity, in the challenging class-conditional ImageNet generation."
+    },
+    "citationCount": 24,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

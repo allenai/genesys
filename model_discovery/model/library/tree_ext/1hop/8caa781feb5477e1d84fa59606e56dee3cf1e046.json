@@ -1,0 +1,27 @@
+{
+    "acronym": "8caa781feb5477e1d84fa59606e56dee3cf1e046",
+    "title": "Effective Slogan Generation with Noise Perturbation",
+    "seed_ids": [
+        "gpt2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8caa781feb5477e1d84fa59606e56dee3cf1e046",
+    "abstract": "Slogans play a crucial role in building the brand's identity of the firm. A slogan is expected to reflect firm's vision and the brand's value propositions in memorable and likeable ways. Automating the generation of slogans with such characteristics is challenging. Previous studies developed and tested slogan generation with syntactic control and summarization models which are not capable of generating distinctive slogans. We introduce a novel approach that leverages pre-trained transformer T5 model with noise perturbation on newly proposed 1:N matching pair dataset. This approach serves as a contributing factor in generating distinctive and coherent slogans. Furthermore, the proposed approach incorporates descriptions about the firm and brand into the generation of slogans. We evaluate generated slogans based on ROUGE-1, ROUGE-L and Cosine Similarity metrics and also assess them with human subjects in terms of slogan's distinctiveness, coherence, and fluency. The results demonstrate that our approach yields better performance than baseline models and other transformer-based models.",
+    "authors": [
+        "Jongeun Kim",
+        "MinChung Kim",
+        "Taehwan Kim"
+    ],
+    "venue": "International Conference on Information and Knowledge Management",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel approach that leverages pre-trained transformer T5 model with noise perturbation on newly proposed 1:N matching pair dataset serves as a contributing factor in generating distinctive and coherent slogans."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

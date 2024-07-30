@@ -1,0 +1,24 @@
+{
+    "acronym": "2799e9728a82b826ab97098cf602c4ea90b96a10",
+    "title": "Decipherment-Aware Multilingual Learning in Jointly Trained Language Models",
+    "seed_ids": [
+        "bert",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc"
+    ],
+    "s2id": "2799e9728a82b826ab97098cf602c4ea90b96a10",
+    "abstract": "The principle that governs unsupervised multilingual learning (UCL) in jointly trained language models (mBERT as a popular example) is still being debated. Many find it surprising that one can achieve UCL with multiple monolingual corpora. In this work, we anchor UCL in the context of language decipherment and show that the joint training methodology is a decipherment process pivotal for UCL. In a controlled setting, we investigate the effect of different decipherment settings on the multilingual learning performance and consolidate the existing opinions on the contributing factors to multilinguality. From an information-theoretic perspective we draw a limit to the UCL performance and demonstrate the importance of token alignment in challenging decipherment settings caused by differences in the data domain, language order and tokenization granularity. Lastly, we apply lexical alignment to mBERT and investigate the contribution of aligning different lexicon groups to downstream performance.",
+    "authors": [
+        "Grandee Lee"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work anchor UCL in the context of language decipherment and shows that the joint training methodology is a decipherment process pivotal for UCL, and applies lexical alignment to mBERT and investigates the contribution of aligning different lexicon groups to downstream performance."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

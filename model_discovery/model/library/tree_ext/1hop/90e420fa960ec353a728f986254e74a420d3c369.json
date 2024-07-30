@@ -1,0 +1,36 @@
+{
+    "acronym": "90e420fa960ec353a728f986254e74a420d3c369",
+    "title": "ESALE: Enhancing Code-Summary Alignment Learning for Source Code Summarization",
+    "seed_ids": [
+        "transformer",
+        "4b27f18bff43d605805c92696a979714ced0b805",
+        "49c3f85573a3204c5e66317289e4cecfed50f38a",
+        "49cf6a22a5dac5bc98b653534af65ffa0bc0e76d",
+        "0fe2636446cd686830da3d971b31a004d6094b3c"
+    ],
+    "s2id": "90e420fa960ec353a728f986254e74a420d3c369",
+    "abstract": "(Source) code summarization aims to automatically generate succinct natural language summaries for given code snippets. Such summaries play a significant role in promoting developers to understand and maintain code. Inspired by neural machine translation, deep learning-based code summarization techniques widely adopt an encoder-decoder framework, where the encoder transforms given code snippets into context vectors, and the decoder decodes context vectors into summaries. Recently, large-scale pre-trained models for source code are equipped with encoders capable of producing general context vectors and have achieved substantial improvements on code summarization. However, although they are usually trained mainly on code-focused tasks and can capture general code features, they still fall short in capturing specific features that need to be summarized. This paper proposes a novel approach to improve code summarization based on summary-focused tasks. Specifically, we exploit a multi-task learning paradigm to train the encoder on three summary-focused tasks to enhance its ability to learn code-summary alignment, including unidirectional language modeling (ULM), masked language modeling (MLM), and action word prediction (AWP). Unlike pre-trained models that mainly predict masked tokens in code snippets, we design ULM and MLM to predict masked words in summaries. Intuitively, predicting words based on given code snippets would help learn the code-summary alignment. Additionally, we introduce the domain-specific task AWP to enhance the ability of the encoder to learn the alignment between action words and code snippets. The extensive experiments on four datasets demonstrate that our approach, called ESALE significantly outperforms baselines in all three widely used metrics, including BLEU, METEOR, and ROUGE-L.",
+    "authors": [
+        "Chunrong Fang",
+        "Weisong Sun",
+        "Yuchen Chen",
+        "Xiao Chen",
+        "Zhao Wei",
+        "Quanjun Zhang",
+        "Yudu You",
+        "Bin Luo",
+        "Yang Liu",
+        "Zhenyu Chen"
+    ],
+    "venue": "IEEE Transactions on Software Engineering",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper uses a multi-task learning paradigm to train the encoder on three summary-focused tasks to enhance its ability to learn code-summary alignment, including unidirectional language modeling (ULM), masked language modeling (MLM), and action word prediction (AWP)."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

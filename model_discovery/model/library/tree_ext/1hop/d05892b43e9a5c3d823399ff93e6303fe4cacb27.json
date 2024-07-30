@@ -1,0 +1,27 @@
+{
+    "acronym": "d05892b43e9a5c3d823399ff93e6303fe4cacb27",
+    "title": "Towards Generating Informative Textual Description for Neurons in Language Models",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "d05892b43e9a5c3d823399ff93e6303fe4cacb27",
+    "abstract": "Recent developments in transformer-based language models have allowed them to capture a wide variety of world knowledge that can be adapted to downstream tasks with limited resources. However, what pieces of information are understood in these models is unclear, and neuron-level contributions in identifying them are largely unknown. Conventional approaches in neuron explainability either depend on a finite set of pre-defined descriptors or require manual annotations for training a secondary model that can then explain the neurons of the primary model. In this paper, we take BERT as an example and we try to remove these constraints and propose a novel and scalable framework that ties textual descriptions to neurons. We leverage the potential of generative language models to discover human-interpretable descriptors present in a dataset and use an unsupervised approach to explain neurons with these descriptors. Through various qualitative and quantitative analyses, we demonstrate the effectiveness of this framework in generating useful data-specific descriptors with little human involvement in identifying the neurons that encode these descriptors. In particular, our experiment shows that the proposed approach achieves 75% precision@2, and 50% recall@2",
+    "authors": [
+        "Shrayani Mondal",
+        "Rishabh Garodia",
+        "Arbaaz Qureshi",
+        "Taesung Lee",
+        "Youngja Park"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel and scalable framework that ties textual descriptions to neurons and uses the potential of generative language models to discover human-interpretable descriptors present in a dataset and uses an unsupervised approach to explain neurons with these descriptors."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

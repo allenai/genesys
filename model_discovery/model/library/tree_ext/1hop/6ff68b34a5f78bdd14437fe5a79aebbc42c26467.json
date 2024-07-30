@@ -1,0 +1,28 @@
+{
+    "acronym": "6ff68b34a5f78bdd14437fe5a79aebbc42c26467",
+    "title": "DREAM: A Challenge Data Set and Models for Dialogue-Based Reading Comprehension",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "6ff68b34a5f78bdd14437fe5a79aebbc42c26467",
+    "abstract": "We present DREAM, the first dialogue-based multiple-choice reading comprehension data set. Collected from English as a Foreign Language examinations designed by human experts to evaluate the comprehension level of Chinese learners of English, our data set contains 10,197 multiple-choice questions for 6,444 dialogues. In contrast to existing reading comprehension data sets, DREAM is the first to focus on in-depth multi-turn multi-party dialogue understanding. DREAM is likely to present significant challenges for existing reading comprehension systems: 84% of answers are non-extractive, 85% of questions require reasoning beyond a single sentence, and 34% of questions also involve commonsense knowledge. We apply several popular neural reading comprehension models that primarily exploit surface information within the text and find them to, at best, just barely outperform a rule-based approach. We next investigate the effects of incorporating dialogue structure and different kinds of general world knowledge into both rule-based and (neural and non-neural) machine learning-based reading comprehension models. Experimental results on the DREAM data set show the effectiveness of dialogue structure and general world knowledge. DREAM is available at https://dataset.org/dream/.",
+    "authors": [
+        "Kai Sun",
+        "Dian Yu",
+        "Jianshu Chen",
+        "Dong Yu",
+        "Yejin Choi",
+        "Claire Cardie"
+    ],
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results on the DREAM data set show the effectiveness of dialogue structure and general world knowledge, the first dialogue-based multiple-choice reading comprehension data set to focus on in-depth multi-turn multi-party dialogue understanding."
+    },
+    "citationCount": 274,
+    "influentialCitationCount": 57,
+    "code": null,
+    "description": null,
+    "url": null
+}

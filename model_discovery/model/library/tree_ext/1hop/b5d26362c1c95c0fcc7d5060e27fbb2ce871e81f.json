@@ -1,0 +1,25 @@
+{
+    "acronym": "b5d26362c1c95c0fcc7d5060e27fbb2ce871e81f",
+    "title": "Continual Learning Optimizations for Auto-regressive Decoder of Multilingual ASR systems",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "b5d26362c1c95c0fcc7d5060e27fbb2ce871e81f",
+    "abstract": "Continual Learning (CL) involves fine-tuning pre-trained models with new data while maintaining the performance on the pre-trained data. This is particularly relevant for expanding multilingual ASR (MASR) capabilities. However, existing CL methods, mainly designed for computer vision and reinforcement learning tasks, often yield sub-optimal results when directly applied to MASR. We hypothesise that this is because CL of the auto-regressive decoder in the MASR model is difficult. To verify this, we propose four optimizations on the decoder. They include decoder-layer gradient surgery, freezing unused token embeddings, suppressing output of newly added tokens, and learning rate re-scaling. Our experiments on adapting Whisper to 10 unseen languages from the Common Voice dataset demonstrate that these optimizations reduce the Average Word Error Rate (AWER) of pretrained languages from 14.2% to 12.4% compared with Experience Replay, without compromising the AWER of new languages.",
+    "authors": [
+        "Chin Yuen Kwok",
+        "J. Yip",
+        "E. Chng"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Four optimizations on the auto-regressive decoder of the MASR model are proposed, which reduce the Average Word Error Rate (AWER) of pretrained languages from 14.2% to 12.4% compared with Experience Replay, without compromising the AWER of new languages."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

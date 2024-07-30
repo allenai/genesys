@@ -1,0 +1,32 @@
+{
+    "acronym": "88d9b2006ea8807767ce01a3c9f680683c36c5f5",
+    "title": "A Comprehensive Survey on Self-Supervised Learning for Recommendation",
+    "seed_ids": [
+        "transformer",
+        "87c635e6a6ddd69d4c66891ec479a8a39bab0749",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "ca726300a4a85f863eb8da847555ec61103e23d9",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8"
+    ],
+    "s2id": "88d9b2006ea8807767ce01a3c9f680683c36c5f5",
+    "abstract": "Recommender systems play a crucial role in tackling the challenge of information overload by delivering personalized recommendations based on individual user preferences. Deep learning techniques, such as RNNs, GNNs, and Transformer architectures, have significantly propelled the advancement of recommender systems by enhancing their comprehension of user behaviors and preferences. However, supervised learning methods encounter challenges in real-life scenarios due to data sparsity, resulting in limitations in their ability to learn representations effectively. To address this, self-supervised learning (SSL) techniques have emerged as a solution, leveraging inherent data structures to generate supervision signals without relying solely on labeled data. By leveraging unlabeled data and extracting meaningful representations, recommender systems utilizing SSL can make accurate predictions and recommendations even when confronted with data sparsity. In this paper, we provide a comprehensive review of self-supervised learning frameworks designed for recommender systems, encompassing a thorough analysis of over 170 papers. We conduct an exploration of nine distinct scenarios, enabling a comprehensive understanding of SSL-enhanced recommenders in different contexts. For each domain, we elaborate on different self-supervised learning paradigms, namely contrastive learning, generative learning, and adversarial learning, so as to present technical details of how SSL enhances recommender systems in various contexts. We consistently maintain the related open-source materials at https://github.com/HKUDS/Awesome-SSLRec-Papers.",
+    "authors": [
+        "Xubin Ren",
+        "Wei Wei",
+        "Lianghao Xia",
+        "Chao Huang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A comprehensive review of self-supervised learning frameworks designed for recommender systems, encompassing a thorough analysis of over 170 papers, is provided, enabling a comprehensive understanding of SSL-enhanced recommenders in different contexts."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

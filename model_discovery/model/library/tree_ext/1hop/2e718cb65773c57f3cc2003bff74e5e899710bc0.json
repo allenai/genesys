@@ -1,0 +1,33 @@
+{
+    "acronym": "2e718cb65773c57f3cc2003bff74e5e899710bc0",
+    "title": "Labels Need Prompts Too: Mask Matching for Natural Language Understanding Tasks",
+    "seed_ids": [
+        "bert",
+        "85ca3f50c60aa13237bfa2d46d9fc3c42ef5049c",
+        "bf722dc893ddaad5045fca5646212ec3badf3c5a",
+        "da454295392cf4caaa39cc465734237ffe55392f",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "afad10da0a3b83a4f2a94e8c16c84ac64338e9fe",
+        "d9f6ada77448664b71128bb19df15765336974a6"
+    ],
+    "s2id": "2e718cb65773c57f3cc2003bff74e5e899710bc0",
+    "abstract": "Textual label names (descriptions) are typically semantically rich in many natural language understanding (NLU) tasks. In this paper, we incorporate the prompting methodology, which is widely used to enrich model input, into the label side for the first time. Specifically, we propose a Mask Matching method, which equips an input with a prompt and its label with another, and then makes predictions by matching their mask representations. We evaluate our method extensively on 8 NLU tasks with 14 datasets. The experimental results show that Mask Matching significantly outperforms its counterparts of fine-tuning and conventional prompt-tuning, setting up state-of-the-art performances in several datasets. Mask Matching is particularly good at handling NLU tasks with large label counts and informative label names. As pioneering efforts that investigate the label-side prompt, we also discuss open issues for future study.",
+    "authors": [
+        "Bo Li",
+        "Wei Ye",
+        "Quan-ding Wang",
+        "Wen Zhao",
+        "Shikun Zhang"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a Mask Matching method, which equips an input with a prompt and its label with another, and then makes predictions by matching their mask representations, which is particularly good at handling NLU tasks with large label counts and informative label names."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

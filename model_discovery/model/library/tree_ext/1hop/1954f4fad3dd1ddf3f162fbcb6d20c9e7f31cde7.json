@@ -1,0 +1,29 @@
+{
+    "acronym": "1954f4fad3dd1ddf3f162fbcb6d20c9e7f31cde7",
+    "title": "Contextual AD Narration with Interleaved Multimodal Sequence",
+    "seed_ids": [
+        "gpt2",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1954f4fad3dd1ddf3f162fbcb6d20c9e7f31cde7",
+    "abstract": "The Audio Description (AD) task aims to generate descriptions of visual elements for visually impaired individuals to help them access long-form video contents, like movie. With video feature, text, character bank and context information as inputs, the generated ADs are able to correspond to the characters by name and provide reasonable, contextual descriptions to help audience understand the storyline of movie. To achieve this goal, we propose to leverage pre-trained foundation models through a simple and unified framework to generate ADs with interleaved multimodal sequence as input, termed as Uni-AD. To enhance the alignment of features across various modalities with finer granularity, we introduce a simple and lightweight module that maps video features into the textual feature space. Moreover, we also propose a character-refinement module to provide more precise information by identifying the main characters who play more significant role in the video context. With these unique designs, we further incorporate contextual information and a contrastive loss into our architecture to generate more smooth and contextual ADs. Experiments on the MAD-eval dataset show that Uni-AD can achieve state-of-the-art performance on AD generation, which demonstrates the effectiveness of our approach. Code will be available at https://github.com/MCG-NJU/Uni-AD.",
+    "authors": [
+        "Hanlin Wang",
+        "Zhan Tong",
+        "Kecheng Zheng",
+        "Yujun Shen",
+        "Limin Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a simple and lightweight module that maps video features into the textual feature space and proposes a character-refinement module to provide more precise information by identifying the main characters who play more significant role in the video context."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

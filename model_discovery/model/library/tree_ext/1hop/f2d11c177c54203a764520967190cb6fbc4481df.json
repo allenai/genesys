@@ -1,0 +1,30 @@
+{
+    "acronym": "f2d11c177c54203a764520967190cb6fbc4481df",
+    "title": "Dual Consistency-Enhanced Semi-Supervised Sentiment Analysis Towards COVID-19 Tweets",
+    "seed_ids": [
+        "bert",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "031e4e43aaffd7a479738dcea69a2d5be7957aa3"
+    ],
+    "s2id": "f2d11c177c54203a764520967190cb6fbc4481df",
+    "abstract": "In the context of COVID-19, numerous people present their opinions through social networks. It is thus highly desired to conduct sentiment analysis towards COVID-19 tweets to learn the public's attitudes, and facilitate the government to make proper guidelines for avoiding the social unrest. Although many efforts have studied the text-based sentiment classification from various domains (e.g., delivery and shopping reviews), it is hard to directly use these classifiers for the sentiment analysis towards COVID-19 tweets due to the domain gap. In fact, developing the sentiment classifier for COVID-19 tweets is mainly challenged by the limited annotated training dataset, as well as the diverse and informal expressions of user-generated posts. To address these challenges, we construct a large-scale COVID-19 dataset from Weibo and propose a dual COnsistency-enhanced semi-superVIseD network for Sentiment Anlaysis (COVID-SA). In particular, we first introduce a knowledge-based augmentation method to augment data and enhance the model's robustness. We then employ BERT as the text encoder backbone for both labeled data, unlabeled data, and augmented data. Moreover, we propose a dual consistency (i.e., label-oriented consistency and instance-oriented consistency) regularization to promote the model performance. Extensive experiments on our self-constructed dataset and three public datasets show the superiority of COVID-SA over state-of-the-art baselines on various applications.",
+    "authors": [
+        "Teng Sun",
+        "Liqiang Jing",
+        "Yin-wei Wei",
+        "Xuemeng Song",
+        "Zhiyong Cheng",
+        "Liqiang Nie"
+    ],
+    "venue": "IEEE Transactions on Knowledge and Data Engineering",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A large-scale COVID-19 dataset is constructed and a dual COnsistency-enhanced semi-superVIseD network for Sentiment Anlaysis (COVID-SA) is proposed, which introduces a knowledge-based augmentation method to augment data and enhance the model's robustness and proposes a dual consistency regularization to promote the model performance."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

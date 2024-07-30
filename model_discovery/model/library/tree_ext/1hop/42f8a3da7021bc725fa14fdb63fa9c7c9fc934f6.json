@@ -1,0 +1,28 @@
+{
+    "acronym": "42f8a3da7021bc725fa14fdb63fa9c7c9fc934f6",
+    "title": "DocNLI: A Large-scale Dataset for Document-level Natural Language Inference",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "43823cb40516b7f166dca3f42f2fe259c1e851af"
+    ],
+    "s2id": "42f8a3da7021bc725fa14fdb63fa9c7c9fc934f6",
+    "abstract": "Natural language inference (NLI) is formulated as a unified framework for solving various NLP problems such as relation extraction, question answering, summarization, etc. It has been studied intensively in the past few years thanks to the availability of large-scale labeled datasets. However, most existing studies focus on merely sentence-level inference, which limits the scope of NLI's application in downstream NLP problems. This work presents DocNLI -- a newly-constructed large-scale dataset for document-level NLI. DocNLI is transformed from a broad range of NLP problems and covers multiple genres of text. The premises always stay in the document granularity, whereas the hypotheses vary in length from single sentences to passages with hundreds of words. Additionally, DocNLI has pretty limited artifacts which unfortunately widely exist in some popular sentence-level NLI datasets. Our experiments demonstrate that, even without fine-tuning, a model pretrained on DocNLI shows promising performance on popular sentence-level benchmarks, and generalizes well to out-of-domain NLP tasks that rely on inference at document granularity. Task-specific fine-tuning can bring further improvements. Data, code, and pretrained models can be found at https://github.com/salesforce/DocNLI.",
+    "authors": [
+        "Wenpeng Yin",
+        "Dragomir R. Radev",
+        "Caiming Xiong"
+    ],
+    "venue": "Findings",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that, even without fine-tuning, a model pretrained on DocNLI shows promising performance on popular sentence-level benchmarks, and generalizes well to out-of-domain NLP tasks that rely on inference at document granularity."
+    },
+    "citationCount": 82,
+    "influentialCitationCount": 16,
+    "code": null,
+    "description": null,
+    "url": null
+}

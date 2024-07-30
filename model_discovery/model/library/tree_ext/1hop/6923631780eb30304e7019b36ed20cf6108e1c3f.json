@@ -1,0 +1,31 @@
+{
+    "acronym": "6923631780eb30304e7019b36ed20cf6108e1c3f",
+    "title": "Target-constrained Bidirectional Planning for Generation of Target-oriented Proactive Dialogue",
+    "seed_ids": [
+        "transformer",
+        "gpt2",
+        "bert",
+        "fa52baef4ba2603c4382858669887b89cb9e62a0",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6923631780eb30304e7019b36ed20cf6108e1c3f",
+    "abstract": "Target-oriented proactive dialogue systems aim at leading conversations from a dialogue context toward a pre-determined target, such as making recommendations on designated items or introducing new specific topics. To this end, it is critical for such dialogue systems to plan reasonable actions to drive the conversation proactively, and meanwhile, to plan appropriate topics to move the conversation forward to the target topic smoothly. In this work, we mainly focus on effective dialogue planning for target-oriented dialogue generation. Inspired by decision-making theories in cognitive science, we propose a novel target-constrained bidirectional planning (TRIP) approach, which plans an appropriate dialogue path by looking ahead and looking back. By formulating the planning as a generation task, our TRIP bidirectionally generates a dialogue path consisting of a sequence of  pairs using two Transformer decoders. They are expected to supervise each other and converge on consistent actions and topics by minimizing the decision gap and contrastive generation of targets. Moreover, we propose a target-constrained decoding algorithm with a bidirectional agreement to better control the planning process. Subsequently, we adopt the planned dialogue paths to guide dialogue generation in a pipeline manner, where we explore two variants: prompt-based generation and plan-controlled generation. Extensive experiments are conducted on two challenging dialogue datasets, which are re-purposed for exploring target-oriented dialogue. Our automatic and human evaluations demonstrate that the proposed methods significantly outperform various baseline models.",
+    "authors": [
+        "Jian Wang",
+        "Dongding Lin",
+        "Wenjie Li"
+    ],
+    "venue": "ACM Trans. Inf. Syst.",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel target-constrained bidirectional planning (TRIP) approach, which plans an appropriate dialogue path by looking ahead and looking back, and proposes a target-constrained decoding algorithm with a bidirectional agreement to better control the planning process."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,36 @@
+{
+    "acronym": "b83a9e35c3aeeb37708e362473c7617d59b815b5",
+    "title": "The FineWeb Datasets: Decanting the Web for the Finest Text Data at Scale",
+    "seed_ids": [
+        "gpt3",
+        "5471114e37448bea2457b74894b1ecb92bbcfdf6",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b83a9e35c3aeeb37708e362473c7617d59b815b5",
+    "abstract": "The performance of a large language model (LLM) depends heavily on the quality and size of its pretraining dataset. However, the pretraining datasets for state-of-the-art open LLMs like Llama 3 and Mixtral are not publicly available and very little is known about how they were created. In this work, we introduce FineWeb, a 15-trillion token dataset derived from 96 Common Crawl snapshots that produces better-performing LLMs than other open pretraining datasets. To advance the understanding of how best to curate high-quality pretraining datasets, we carefully document and ablate all of the design choices used in FineWeb, including in-depth investigations of deduplication and filtering strategies. In addition, we introduce FineWeb-Edu, a 1.3-trillion token collection of educational text filtered from FineWeb. LLMs pretrained on FineWeb-Edu exhibit dramatically better performance on knowledge- and reasoning-intensive benchmarks like MMLU and ARC. Along with our datasets, we publicly release our data curation codebase and all of the models trained during our ablation experiments.",
+    "authors": [
+        "Guilherme Penedo",
+        "Hynek Kydl\u00edcek",
+        "Loubna Ben Allal",
+        "Anton Lozhkov",
+        "Margaret Mitchell",
+        "Colin Raffel",
+        "Leandro von Werra",
+        "Thomas Wolf"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "FineWeb is introduced, a 15-trillion token dataset derived from 96 Common Crawl snapshots that produces better-performing LLMs than other open pretraining datasets and FineWeb-Edu, a 1.3-trillion token collection of educational text filtered from FineWeb."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

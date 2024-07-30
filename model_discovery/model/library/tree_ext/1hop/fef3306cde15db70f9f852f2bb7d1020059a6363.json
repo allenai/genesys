@@ -1,0 +1,26 @@
+{
+    "acronym": "fef3306cde15db70f9f852f2bb7d1020059a6363",
+    "title": "Non-Autoregressive Sequence-To-Sequence Voice Conversion",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "fef3306cde15db70f9f852f2bb7d1020059a6363",
+    "abstract": "This paper proposes a novel voice conversion (VC) method based on non-autoregressive sequence-to-sequence (NAR-S2S) models. Inspired by the great success of NAR-S2S models such as FastSpeech in text-to-speech (TTS), we extend the FastSpeech2 model for the VC problem. We introduce the convolution-augmented Transformer (Conformer) instead of the Transformer, making it possible to capture both local and global context information from the input sequence. Furthermore, we extend variance predictors to variance converters to explicitly convert the source speaker\u2019s prosody components such as pitch and energy into the target speaker. The experimental evaluation with the Japanese speaker dataset, which consists of male and female speakers of 1,000 utterances, demonstrates that the proposed model enables us to perform more stable, faster, and better conversion than autoregressive S2S (AR-S2S) models such as Tacotron2 and Transformer.",
+    "authors": [
+        "Tomoki Hayashi",
+        "Wen-Chin Huang",
+        "Kazuhiro Kobayashi",
+        "T. Toda"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel voice conversion method based on non-autoregressive sequence-to-sequence (NAR-S2S) models and introduces the convolution-augmented Transformer (Conformer) instead of the Transformer, making it possible to capture both local and global context information from the input sequence."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

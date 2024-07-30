@@ -1,0 +1,28 @@
+{
+    "acronym": "76c733baa00f0c39e7e367877c2c7b5b367947b6",
+    "title": "DADIT: A Dataset for Demographic Classification of Italian Twitter Users and a Comparison of Prediction Methods",
+    "seed_ids": [
+        "gpt3",
+        "e770b81e23905821c40d3483f6bc9b9c06fad4d1"
+    ],
+    "s2id": "76c733baa00f0c39e7e367877c2c7b5b367947b6",
+    "abstract": "Social scientists increasingly use demographically stratified social media data to study the attitudes, beliefs, and behavior of the general public. To facilitate such analyses, we construct, validate, and release publicly the representative DADIT dataset of 30M tweets of 20k Italian Twitter users, along with their bios and profile pictures. We enrich the user data with high-quality labels for gender, age, and location. DADIT enables us to train and compare the performance of various state-of-the-art models for the prediction of the gender and age of social media users. In particular, we investigate if tweets contain valuable information for the task, since popular classifiers like M3 don\u2019t leverage them. Our best XLM-based classifier improves upon the commonly used competitor M3 by up to 53% F1. Especially for age prediction, classifiers profit from including tweets as features. We also confirm these findings on a German test set.",
+    "authors": [
+        "Lorenzo Lupo",
+        "Paul Bose",
+        "Mahyar Habibi",
+        "Dirk Hovy",
+        "Carlo Schwarz"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work constructs, validate, and releases publicly the representative DADIT dataset of 30M tweets of 20k Italian Twitter users, along with their bios and profile pictures, to train and compare the performance of various state-of-the-art models for the prediction of the gender and age of social media users."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

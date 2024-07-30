@@ -1,0 +1,27 @@
+{
+    "acronym": "73b222c2808a95878c8a3aa762b9ba1d4dd9ecd4",
+    "title": "Parameter-Efficient Legal Domain Adaptation",
+    "seed_ids": [
+        "neurallegal",
+        "fd33e77884e69f6bc099990fc2790248af2749d9",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "73b222c2808a95878c8a3aa762b9ba1d4dd9ecd4",
+    "abstract": "Seeking legal advice is often expensive. Recent advancements in machine learning for solving complex problems can be leveraged to help make legal services more accessible to the public. However, real-life applications encounter significant challenges. State-of-the-art language models are growing increasingly large, making parameter-efficient learning increasingly important. Unfortunately, parameter-efficient methods perform poorly with small amounts of data, which are common in the legal domain (where data labelling costs are high). To address these challenges, we propose parameter-efficient legal domain adaptation, which uses vast unsupervised legal data from public legal forums to perform legal pre-training. This method exceeds or matches the fewshot performance of existing models such as LEGAL-BERT on various legal tasks while tuning only approximately 0.1% of model parameters. Additionally, we show that our method can achieve calibration comparable to existing methods across several tasks. To the best of our knowledge, this work is among the first to explore parameter-efficient methods of tuning language models in the legal domain.",
+    "authors": [
+        "Jonathan Li",
+        "R. Bhambhoria",
+        "Xiao-Dan Zhu"
+    ],
+    "venue": "NLLP",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes parameter-efficient legal domain adaptation, which uses vast unsupervised legal data from public legal forums to perform legal pre-training and is among the first to explore parameter- efficient methods of tuning language models in the legal domain."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

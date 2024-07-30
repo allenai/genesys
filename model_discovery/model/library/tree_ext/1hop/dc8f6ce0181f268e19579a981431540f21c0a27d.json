@@ -1,0 +1,40 @@
+{
+    "acronym": "dc8f6ce0181f268e19579a981431540f21c0a27d",
+    "title": "Enforcing Paraphrase Generation via Controllable Latent Diffusion",
+    "seed_ids": [
+        "transformer",
+        "diffuseq",
+        "de85fe2d88188a50ab1f9cffe378b5a4360e8c05",
+        "67cdecbcfed07b9a29d9e2a92da684604383afd7",
+        "f2f85068c9e22a4d8fe6b58e2d92e2d30bc10578",
+        "020a50f6a7154850ac81e3cde69ad8198ded6751",
+        "a1186d7d9a9ef258c76afef1177e4f348061a537",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "dc8f6ce0181f268e19579a981431540f21c0a27d",
+    "abstract": "Paraphrase generation aims to produce high-quality and diverse utterances of a given text. Though state-of-the-art generation via the diffusion model reconciles generation quality and diversity, textual diffusion suffers from a truncation issue that hinders efficiency and quality control. In this work, we propose \\textit{L}atent \\textit{D}iffusion \\textit{P}araphraser~(LDP), a novel paraphrase generation by modeling a controllable diffusion process given a learned latent space. LDP achieves superior generation efficiency compared to its diffusion counterparts. It facilitates only input segments to enforce paraphrase semantics, which further improves the results without external features. Experiments show that LDP achieves improved and diverse paraphrase generation compared to baselines. Further analysis shows that our method is also helpful to other similar text generations and domain adaptations. Our code and data are available at https://github.com/NIL-zhuang/ld4pg.",
+    "authors": [
+        "Wei Zou",
+        "Ziyuan Zhuang",
+        "Shujian Huang",
+        "Jia Liu",
+        "Jiajun Chen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experiments show that LDP achieves improved and diverse paraphrase generation compared to baselines and that the method is also helpful to other similar text generations and domain adaptations."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

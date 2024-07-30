@@ -1,0 +1,44 @@
+{
+    "acronym": "83890356b0c72a29f41200573a650c050fe108b5",
+    "title": "An Overview of Diffusion Models for Text Generation",
+    "seed_ids": [
+        "diffusionlm",
+        "diffuseq",
+        "contdiffu",
+        "analogbits",
+        "a1186d7d9a9ef258c76afef1177e4f348061a537",
+        "a979742220a88b1d32e1fbe72c41e8ba3007053c",
+        "22775e58932cdfbd273a2a835a22c5d86800a458",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "0b9770a377b3f96cef9f268cee1791d39a0d4893",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "e342165a614588878ad0f4bc9bacf3905df34d08",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e512964293671abbdc409f313d127cbe85ffe5cd",
+        "24425954960ce968e5f14360fbdd0605abcadfcf",
+        "71cc838d8a50a0d62cc9c679536f1f25b2ea6b7f"
+    ],
+    "s2id": "83890356b0c72a29f41200573a650c050fe108b5",
+    "abstract": "Given the great success that diffusion models have achieved in generating various types of continuous data, including image, video and audio, there has been a growing interest in the application of these models to text generation. However, the discrete nature of text presents a challenge for diffusion models initially designed for application in a continuous feature space. The two main lines of work that aim to bring together diffusion models and natural language processing are focused on either defining the diffusion process in continuous space by converting discrete tokens to embeddings or defining the diffusion process in discrete space. These recent works attempt to combine diffusion models with leading sequence-to-sequence generation Transformer architecture as well as with existing pre-trained language models. In this work, we give a detailed overview of the approaches developed to date. We present and analyze the benefits and limitations that each model introduces, along with how they compare to the autoregressive models that dominate this field.",
+    "authors": [
+        "Helena \u010ceovi\u0107",
+        "M. \u0160ili\u0107",
+        "G. Dela\u010d",
+        "Klemo Vladimir"
+    ],
+    "venue": "International Convention on Information and Communication Technology, Electronics and Microelectronics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A detailed overview of the approaches developed to date to combine diffusion models with leading sequence-to-sequence generation Transformer architecture as well as with existing pre-trained language models is given."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,34 @@
+{
+    "acronym": "863171ed35ca0035074f73bb202b153cc346f2f3",
+    "title": "PromptCast: A New Prompt-Based Learning Paradigm for Time Series Forecasting",
+    "seed_ids": [
+        "bigbird",
+        "b92628d13e8d090d042232fe6ae0b8998634b893",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "5d733042a5185a97eb80e4c665eaeaf71f9d1bba",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "25db56fc85fe15625c3375064a35e908ba6dfd2a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "30dcc0e191a376fea0e7a46f94c53872c029efc9",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "863171ed35ca0035074f73bb202b153cc346f2f3",
+    "abstract": "This paper presents a new perspective on time series forecasting. In existing time series forecasting methods, the models take a sequence of numerical values as input and yield numerical values as output. The existing SOTA models are largely based on the Transformer architecture, modified with multiple encoding mechanisms to incorporate the context and semantics around the historical data. Inspired by the successes of pre-trained language foundation models, we pose a question about whether these models can also be adapted to solve time-series forecasting. Thus, we propose a new forecasting paradigm: prompt-based time series forecasting (PromptCast). In this novel task, the numerical input and output are transformed into prompts and the forecasting task is framed in a sentence-to-sentence manner, making it possible to directly apply language models for forecasting purposes. To support and facilitate the research of this task, we also present a large-scale dataset (PISA) that includes three real-world forecasting scenarios. We evaluate different SOTA numerical-based forecasting methods and language generation models. The benchmark results with various forecasting settings demonstrate the proposed PromptCast with language generation models is a promising research direction. Additionally, in comparison to conventional numerical-based forecasting, PromptCast shows a much better generalization ability under the zero-shot setting.",
+    "authors": [
+        "Hao Xue",
+        "Flora D.Salim"
+    ],
+    "venue": "IEEE Transactions on Knowledge and Data Engineering",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The benchmark results with various forecasting settings demonstrate the proposed PromptCast with language generation models is a promising research direction, and in comparison to conventional numerical-based forecasting, PromptCast shows a much better generalization ability under the zero-shot setting."
+    },
+    "citationCount": 54,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

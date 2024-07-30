@@ -1,0 +1,32 @@
+{
+    "acronym": "01e721df7fcf8b664deb2cdc97ff58d65553af6b",
+    "title": "State Spaces Aren\u2019t Enough: Machine Translation Needs Attention",
+    "seed_ids": [
+        "hippo",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "70e91e16eb321067d9402710e14a40cf28311f73",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "01e721df7fcf8b664deb2cdc97ff58d65553af6b",
+    "abstract": "Structured State Spaces for Sequences (S4) is a recently proposed sequence model with successful applications in various tasks, e.g. vision, language modelling, and audio. Thanks to its mathematical formulation, it compresses its input to a single hidden state, and is able to capture long range dependencies while avoiding the need for an attention mechanism. In this work, we apply S4 to Machine Translation (MT), and evaluate several encoder-decoder variants on WMT\u201914 and WMT\u201916. In contrast with the success in language modeling, we find that S4 lags behind the Transformer by approximately 4 BLEU points, and that it counter-intuitively struggles with long sentences. Finally, we show that this gap is caused by S4\u2019s inability to summarize the full source sentence in a single hidden state, and show that we can close the gap by introducing an attention mechanism.",
+    "authors": [
+        "Ali Vardasbi",
+        "Telmo Pires",
+        "Robin M. Schmidt",
+        "Stephan Peitz"
+    ],
+    "venue": "European Association for Machine Translation Conferences/Workshops",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that S4 lags behind the Transformer by approximately 4 BLEU points, and that it counter-intuitively struggles with long sentences, and it is shown that this gap is caused by S4\u2019s inability to summarize the full source sentence in a single hidden state, and can be closed by introducing an attention mechanism."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "32b3c1e9679a54ee0390eef943d2eacd7650a177",
+    "title": "Towards Flexible Multi-modal Document Models",
+    "seed_ids": [
+        "perceiverio",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "32b3c1e9679a54ee0390eef943d2eacd7650a177",
+    "abstract": "Creative workflows for generating graphical documents involve complex inter-related tasks, such as aligning elements, choosing appropriate fonts, or employing aesthetically harmonious colors. In this work, we attempt at building a holistic model that can jointly solve many different design tasks. Our model, which we denote by FlexDM, treats vector graphic documents as a set of multi-modal elements, and learns to predict masked fields such as element type, position, styling attributes, image, or text, using a unified architecture. Through the use of explicit multitask learning and in-domain pre-training, our model can better capture the multi-modal relationships among the different document fields. Experimental results corroborate that our single FlexDM is able to successfully solve a multitude of different design tasks, while achieving performance that is competitive with task-specific and costly baselines.11Please find the code and models at: https://cyberagentailab.github.io/flex-dm",
+    "authors": [
+        "Naoto Inoue",
+        "Kotaro Kikuchi",
+        "E. Simo-Serra",
+        "Mayu Otani",
+        "Kota Yamaguchi"
+    ],
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work attempts at building a holistic model that can jointly solve many different design tasks, and treats vector graphic documents as a set of multi-modal elements, and learns to predict masked fields such as element type, position, styling attributes, image, or text, using a unified architecture."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

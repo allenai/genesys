@@ -1,0 +1,42 @@
+{
+    "acronym": "e89b4ef0f0282327085078058557c04812aa4d35",
+    "title": "Scaling In-Context Demonstrations with Structured Attention",
+    "seed_ids": [
+        "longformer",
+        "525d93a382f6e7873b5d8a2e0713eb3dff7fb250",
+        "b65b7f480a61d3dd31d8117b349cabc87c8ccf6c",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "c49ac1f916d6d2edeb187e6619c8d23acd95eb21",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e89b4ef0f0282327085078058557c04812aa4d35",
+    "abstract": "The recent surge of large language models (LLMs) highlights their ability to perform in-context learning, i.e.,\"learning\"to perform a task from a few demonstrations in the context without any parameter updates. However, their capabilities of in-context learning are limited by the model architecture: 1) the use of demonstrations is constrained by a maximum sentence length due to positional embeddings; 2) the quadratic complexity of attention hinders users from using more demonstrations efficiently; 3) LLMs are shown to be sensitive to the order of the demonstrations. In this work, we tackle these challenges by proposing a better architectural design for in-context learning. We propose SAICL (Structured Attention for In-Context Learning), which replaces the full-attention by a structured attention mechanism designed for in-context learning, and removes unnecessary dependencies between individual demonstrations, while making the model invariant to the permutation of demonstrations. We evaluate SAICL in a meta-training framework and show that SAICL achieves comparable or better performance than full attention while obtaining up to 3.4x inference speed-up. SAICL also consistently outperforms a strong Fusion-in-Decoder (FiD) baseline which processes each demonstration independently. Finally, thanks to its linear nature, we demonstrate that SAICL can easily scale to hundreds of demonstrations with continuous performance gains with scaling.",
+    "authors": [
+        "Tianle Cai",
+        "Kaixuan Huang",
+        "Jason Lee",
+        "Mengdi Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes SAICL (Structured Attention for In-Context Learning), which replaces the full-attention by a structured attention mechanism designed for in-context learning, and removes unnecessary dependencies between individual demonstrations, while making the model invariant to the permutation of demonstrations."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

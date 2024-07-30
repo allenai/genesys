@@ -1,0 +1,31 @@
+{
+    "acronym": "41463044dd644112e4aef975af8fd8f9c655f44c",
+    "title": "A Robust Visual Tracking Method Based on Reconstruction Patch Transformer Tracking",
+    "seed_ids": [
+        "performer",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "41463044dd644112e4aef975af8fd8f9c655f44c",
+    "abstract": "Recently, the transformer model has progressed from the field of visual classification to target tracking. Its primary method replaces the cross-correlation operation in the Siamese tracker. The backbone of the network is still a convolutional neural network (CNN). However, the existing transformer-based tracker simply deforms the features extracted by the CNN into patches and feeds them into the transformer encoder. Each patch contains a single element of the spatial dimension of the extracted features and inputs into the transformer structure to use cross-attention instead of cross-correlation operations. This paper proposes a reconstruction patch strategy which combines the extracted features with multiple elements of the spatial dimension into a new patch. The reconstruction operation has the following advantages: (1) the correlation between adjacent elements combines well, and the features extracted by the CNN are usable for classification and regression; (2) using the performer operation reduces the amount of network computation and the dimension of the patch sent to the transformer, thereby sharply reducing the network parameters and improving the model-tracking speed.",
+    "authors": [
+        "Hui-Yong Chen",
+        "Zhenhai Wang",
+        "Hongyu Tian",
+        "Lu Yuan",
+        "Xing-jun Wang",
+        "Peng Leng"
+    ],
+    "venue": "Italian National Conference on Sensors",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a reconstruction patch strategy which combines the extracted features with multiple elements of the spatial dimension into a new patch which reduces the amount of network computation and the dimension of the patch sent to the transformer, thereby sharply reducing the network parameters and improving the model-tracking speed."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "968d2d0e1b62db71134b1323c4cac22779adf556",
+    "title": "Z OT B OT : Using Reading Comprehension and Commonsense Reasoning in Conversational Agents",
+    "seed_ids": [
+        "gpt",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "968d2d0e1b62db71134b1323c4cac22779adf556",
+    "abstract": "We describe the Z OT B OT system for open-ended conversations, designed for the Alexa Prize competition. We focus on two main shortcomings in existing conversational agents: lack of awareness in commonsense reasoning when responding to user utterances (resulting in nonsensical or uninteresting responses) and inability to understand semantics and converse naturally about fact-based articles in a compelling manner. First, we combine existing work in commonsense KBs, pretrained language models, and graph completion models to generate natural and intuitive responses, consistent with our commonsense knowledge, for open-domain utterances. Second, we utilize question generation models for both reading comprehension and conversational followups for discussing fact-based articles. These contributions are implemented within a system engineered to be modular, allowing easy injection of manually-scripted responses, as well as supporting a detailed logging and analysis system. We present examples and analyses highlighting the bene\ufb01ts and shortcomings of Z OT B OT , and conclude with the lessons learned for future research.",
+    "authors": [
+        "William Schallock",
+        "Daniel Agress",
+        "Yao Du",
+        "Dheeru Dua",
+        "Lyuyang Hu",
+        "Yoshitomo Matsubara",
+        "Sameer Singh"
+    ],
+    "venue": "",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Z OT B OT system for open-ended conversations, designed for the Alexa Prize competition, combines existing work in commonsense KBs, pretrained language models, and graph completion models to generate natural and intuitive responses, consistent with the authors' commonsense knowledge, for open-domain utterances."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

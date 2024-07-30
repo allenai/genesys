@@ -1,0 +1,28 @@
+{
+    "acronym": "699ea64f92e05663457e7ae9c4b410e3d30c86d4",
+    "title": "PuzzleVQA: Diagnosing Multimodal Reasoning Challenges of Language Models with Abstract Visual Patterns",
+    "seed_ids": [
+        "gpt3",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda"
+    ],
+    "s2id": "699ea64f92e05663457e7ae9c4b410e3d30c86d4",
+    "abstract": "Large multimodal models extend the impressive capabilities of large language models by integrating multimodal understanding abilities. However, it is not clear how they can emulate the general intelligence and reasoning ability of humans. As recognizing patterns and abstracting concepts are key to general intelligence, we introduce PuzzleVQA, a collection of puzzles based on abstract patterns. With this dataset, we evaluate large multimodal models with abstract patterns based on fundamental concepts, including colors, numbers, sizes, and shapes. Through our experiments on state-of-the-art large multimodal models, we find that they are not able to generalize well to simple abstract patterns. Notably, even GPT-4V cannot solve more than half of the puzzles. To diagnose the reasoning challenges in large multimodal models, we progressively guide the models with our ground truth reasoning explanations for visual perception, inductive reasoning, and deductive reasoning. Our systematic analysis finds that the main bottlenecks of GPT-4V are weaker visual perception and inductive reasoning abilities. Through this work, we hope to shed light on the limitations of large multimodal models and how they can better emulate human cognitive processes in the future (Our data and code will be released publicly at https://github.com/declare-lab/LLM-PuzzleTest).",
+    "authors": [
+        "Yew Ken Chia",
+        "Vernon Toh Yan Han",
+        "Deepanway Ghosal",
+        "Lidong Bing",
+        "Soujanya Poria"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces PuzzleVQA, a collection of puzzles based on abstract patterns, and evaluates large multimodal models with abstract patterns based on fundamental concepts, finding that the main bottlenecks of GPT-4V are weaker visual perception and inductive reasoning abilities."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

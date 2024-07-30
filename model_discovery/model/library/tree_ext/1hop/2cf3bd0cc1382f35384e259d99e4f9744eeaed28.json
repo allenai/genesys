@@ -1,0 +1,36 @@
+{
+    "acronym": "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+    "title": "Blockwise Self-Attention for Long Document Understanding",
+    "seed_ids": [
+        "sparsetransformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "0b5d7a79205b44952e24025ce5d46e9f3aa401a1",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "2a31319e73d4486716168b65cdf7559baeda18ce",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+    "abstract": "We present BlockBERT, a lightweight and efficient BERT model for better modeling long-distance dependencies. Our model extends BERT by introducing sparse block structures into the attention matrix to reduce both memory consumption and training/inference time, which also enables attention heads to capture either short- or long-range contextual information. We conduct experiments on language model pre-training and several benchmark question answering datasets with various paragraph lengths. BlockBERT uses 18.7-36.1% less memory and 12.0-25.1% less time to learn the model. During testing, BlockBERT saves 27.8% inference time, while having comparable and sometimes better prediction accuracy, compared to an advanced BERT-based model, RoBERTa.",
+    "authors": [
+        "J. Qiu",
+        "Hao Ma",
+        "Omer Levy",
+        "S. Yih",
+        "Sinong Wang",
+        "Jie Tang"
+    ],
+    "venue": "Findings",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This model extends BERT by introducing sparse block structures into the attention matrix to reduce both memory consumption and training/inference time, which also enables attention heads to capture either short- or long-range contextual information."
+    },
+    "citationCount": 219,
+    "influentialCitationCount": 12,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,26 @@
+{
+    "acronym": "5f4fcc5088387e8f86f919b48af15d489d6c7ca3",
+    "title": "Identification of a Person in a Trajectory Based on Wearable Sensor Data Analysis",
+    "seed_ids": [
+        "transformer",
+        "35a9749df07a2ab97c51af4d260b095b00da7676"
+    ],
+    "s2id": "5f4fcc5088387e8f86f919b48af15d489d6c7ca3",
+    "abstract": "Human trajectories can be tracked by the internal processing of a camera as an edge device. This work aims to match peoples\u2019 trajectories obtained from cameras to sensor data such as acceleration and angular velocity, obtained from wearable devices. Since human trajectory and sensor data differ in modality, the matching method is not straightforward. Furthermore, complete trajectory information is unavailable; it is difficult to determine which fragments belong to whom. To solve this problem, we newly proposed the SyncScore model to find the similarity between a unit period trajectory and the corresponding sensor data. We also propose a Likelihood Fusion algorithm that systematically updates the similarity data and integrates it over time while keeping other trajectories in mind. We confirmed that the proposed method can match human trajectories and sensor data with an accuracy, a sensitivity, and an F1 of 0.725. Our models achieved decent results on the UEA dataset.",
+    "authors": [
+        "Jinzhe Yan",
+        "M. Toyoura",
+        "Xiangyang Wu"
+    ],
+    "venue": "Italian National Conference on Sensors",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The SyncScore model is newly proposed to find the similarity between a unit period trajectory and the corresponding sensor data and a Likelihood Fusion algorithm is proposed that systematically updates the similarity data and integrates it over time while keeping other trajectories in mind."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

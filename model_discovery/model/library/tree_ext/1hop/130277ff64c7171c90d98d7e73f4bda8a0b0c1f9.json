@@ -1,0 +1,29 @@
+{
+    "acronym": "130277ff64c7171c90d98d7e73f4bda8a0b0c1f9",
+    "title": "KERMIT: Generative Insertion-Based Modeling for Sequences",
+    "seed_ids": [
+        "gpt",
+        "031e4e43aaffd7a479738dcea69a2d5be7957aa3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "130277ff64c7171c90d98d7e73f4bda8a0b0c1f9",
+    "abstract": "We present KERMIT, a simple insertion-based approach to generative modeling for sequences and sequence pairs. KERMIT models the joint distribution and its decompositions (i.e., marginals and conditionals) using a single neural network and, unlike much prior work, does not rely on a prespecified factorization of the data distribution. During training, one can feed KERMIT paired data $(x, y)$ to learn the joint distribution $p(x, y)$, and optionally mix in unpaired data $x$ or $y$ to refine the marginals $p(x)$ or $p(y)$. During inference, we have access to the conditionals $p(x \\mid y)$ and $p(y \\mid x)$ in both directions. We can also sample from the joint distribution or the marginals. The model supports both serial fully autoregressive decoding and parallel partially autoregressive decoding, with the latter exhibiting an empirically logarithmic runtime. We demonstrate through experiments in machine translation, representation learning, and zero-shot cloze question answering that our unified approach is capable of matching or exceeding the performance of dedicated state-of-the-art systems across a wide range of tasks without the need for problem-specific architectural adaptation.",
+    "authors": [
+        "William Chan",
+        "Nikita Kitaev",
+        "Kelvin Guu",
+        "Mitchell Stern",
+        "Jakob Uszkoreit"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "KERMIT is presented, a simple insertion-based approach to generative modeling for sequences and sequence pairs that is capable of matching or exceeding the performance of dedicated state-of-the-art systems across a wide range of tasks without the need for problem-specific architectural adaptation."
+    },
+    "citationCount": 65,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

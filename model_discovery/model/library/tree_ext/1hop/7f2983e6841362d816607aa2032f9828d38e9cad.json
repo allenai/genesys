@@ -1,0 +1,27 @@
+{
+    "acronym": "7f2983e6841362d816607aa2032f9828d38e9cad",
+    "title": "Perplexity from PLM Is Unreliable for Evaluating Text Quality",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7f2983e6841362d816607aa2032f9828d38e9cad",
+    "abstract": "Recently, amounts of works utilize perplexity~(PPL) to evaluate the quality of the generated text. They suppose that if the value of PPL is smaller, the quality(i.e. fluency) of the text to be evaluated is better. However, we find that the PPL referee is unqualified and it cannot evaluate the generated text fairly for the following reasons: (i) The PPL of short text is larger than long text, which goes against common sense, (ii) The repeated text span could damage the performance of PPL, and (iii) The punctuation marks could affect the performance of PPL heavily. Experiments show that the PPL is unreliable for evaluating the quality of given text. Last, we discuss the key problems with evaluating text quality using language models.",
+    "authors": [
+        "Yequan Wang",
+        "Jiawen Deng",
+        "Aixin Sun",
+        "Xuying Meng"
+    ],
+    "venue": "",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that the PPL referee is unqualified and it cannot evaluate the generated text fairly for the following reasons: (i) The PPL of short text is larger than long text, which goes against common sense, (ii) the repeated text span could damage the performance of PPL, and (iii) the punctuation marks could affect the performanceof PPL heavily."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

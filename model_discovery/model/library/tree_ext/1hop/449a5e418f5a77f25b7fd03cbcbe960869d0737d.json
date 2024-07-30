@@ -1,0 +1,25 @@
+{
+    "acronym": "449a5e418f5a77f25b7fd03cbcbe960869d0737d",
+    "title": "A Dual-View Approach to Classifying Radiology Reports by Co-Training",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "449a5e418f5a77f25b7fd03cbcbe960869d0737d",
+    "abstract": "Radiology report analysis provides valuable information that can aid with public health initiatives, and has been attracting increasing attention from the research community. In this work, we present a novel insight that the structure of a radiology report (namely, the Findings and Impression sections) offers different views of a radiology scan. Based on this intuition, we further propose a co-training approach, where two machine learning models are built upon the Findings and Impression sections, respectively, and use each other\u2019s information to boost performance with massive unlabeled data in a semi-supervised manner. We conducted experiments in a public health surveillance study, and results show that our co-training approach is able to improve performance using the dual views and surpass competing supervised and semi-supervised methods.",
+    "authors": [
+        "Yutong Han",
+        "Yan Yuan",
+        "Lili Mou"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a novel insight that the structure of a radiology report (namely, the Findings and Impression sections) offers different views of a radiology scan, and proposes a co-training approach, where two machine learning models are built upon the Findings and Impression sections, respectively."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

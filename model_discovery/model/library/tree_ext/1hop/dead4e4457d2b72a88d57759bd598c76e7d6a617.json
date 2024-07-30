@@ -1,0 +1,26 @@
+{
+    "acronym": "dead4e4457d2b72a88d57759bd598c76e7d6a617",
+    "title": "CODEX: A Cluster-Based Method for Explainable Reinforcement Learning",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "dead4e4457d2b72a88d57759bd598c76e7d6a617",
+    "abstract": "Despite the impressive feats demonstrated by Reinforcement Learning (RL), these algorithms have seen little adoption in high-risk, real-world applications due to current difficulties in explaining RL agent actions and building user trust. We present Counterfactual Demonstrations for Explanation (CODEX), a method that incorporates semantic clustering, which can effectively summarize RL agent behavior in the state-action space. Experimentation on the MiniGrid and StarCraft II gaming environments reveals the semantic clusters retain temporal as well as entity information, which is reflected in the constructed summary of agent behavior. Furthermore, clustering the discrete+continuous game-state latent representations identifies the most crucial episodic events, demonstrating a relationship between the latent and semantic spaces. This work contributes to the growing body of work that strives to unlock the power of RL for widespread use by leveraging and extending techniques from Natural Language Processing.",
+    "authors": [
+        "Timothy K. Mathes",
+        "Jessica Inman",
+        "Andr'es Col'on",
+        "Simon Khan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "CODEX is presented, a method that incorporates semantic clustering, which can effectively summarize RL agent behavior in the state-action space and identifies the most crucial episodic events, demonstrating a relationship between the latent and semantic spaces."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

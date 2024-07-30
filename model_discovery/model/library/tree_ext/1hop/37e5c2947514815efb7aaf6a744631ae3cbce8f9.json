@@ -1,0 +1,37 @@
+{
+    "acronym": "37e5c2947514815efb7aaf6a744631ae3cbce8f9",
+    "title": "Zorro: the masked multimodal transformer",
+    "seed_ids": [
+        "perceiverio",
+        "3c6ec875050ad4d2319725697d74154f66ced597",
+        "c5c3ad98547202f120aaae4007cc665bdff0f447",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812"
+    ],
+    "s2id": "37e5c2947514815efb7aaf6a744631ae3cbce8f9",
+    "abstract": "Attention-based models are appealing for multimodal processing because inputs from multiple modalities can be concatenated and fed to a single backbone network - thus requiring very little fusion engineering. The resulting representations are however fully entangled throughout the network, which may not always be desirable: in learning, contrastive audio-visual self-supervised learning requires independent audio and visual features to operate, otherwise learning collapses; in inference, evaluation of audio-visual models should be possible on benchmarks having just audio or just video. In this paper, we introduce Zorro, a technique that uses masks to control how inputs from each modality are routed inside Transformers, keeping some parts of the representation modality-pure. We apply this technique to three popular transformer-based architectures (ViT, Swin and HiP) and show that with contrastive pre-training Zorro achieves state-of-the-art results on most relevant benchmarks for multimodal tasks (AudioSet and VGGSound). Furthermore, the resulting models are able to perform unimodal inference on both video and audio benchmarks such as Kinetics-400 or ESC-50.",
+    "authors": [
+        "Adri\u00e0 Recasens",
+        "Jason Lin",
+        "Jo\u00e3o Carreira",
+        "Drew Jaegle",
+        "Luyu Wang",
+        "Jean-Baptiste Alayrac",
+        "Pauline Luc",
+        "Antoine Miech",
+        "Lucas Smaira",
+        "Ross Hemsley",
+        "Andrew Zisserman"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces Zorro, a technique that uses masks to control how inputs from each modality are routed inside Transformers, keeping some parts of the representation modality-pure and achieving state-of-the-art results on most relevant benchmarks for multimodal tasks."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

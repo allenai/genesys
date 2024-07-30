@@ -1,0 +1,43 @@
+{
+    "acronym": "017e4a43b69340aecf7d002aa1bb5991f9e91ffb",
+    "title": "DiffuSeq-v2: Bridging Discrete and Continuous Text Spaces for Accelerated Seq2Seq Diffusion Models",
+    "seed_ids": [
+        "diffusionbert",
+        "d3pms",
+        "diffusionlm",
+        "diffuseq",
+        "reparamdiscdiffu",
+        "67cdecbcfed07b9a29d9e2a92da684604383afd7",
+        "f2f85068c9e22a4d8fe6b58e2d92e2d30bc10578",
+        "3a22aad6c18a9559be3bbb197494b434b872a05a",
+        "1f898d66acabff511a3871b82799aa73c0055402",
+        "a1186d7d9a9ef258c76afef1177e4f348061a537",
+        "a979742220a88b1d32e1fbe72c41e8ba3007053c",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "24425954960ce968e5f14360fbdd0605abcadfcf"
+    ],
+    "s2id": "017e4a43b69340aecf7d002aa1bb5991f9e91ffb",
+    "abstract": "Diffusion models have gained prominence in generating high-quality sequences of text. Nevertheless, current approaches predominantly represent discrete text within a continuous diffusion space, which incurs substantial computational overhead during training and results in slower sampling speeds. In this paper, we introduce a soft absorbing state that facilitates the diffusion model in learning to reconstruct discrete mutations based on the underlying Gaussian space, thereby enhancing its capacity to recover conditional signals. During the sampling phase, we employ state-of-the-art ODE solvers within the continuous space to expedite the sampling process. Comprehensive experimental evaluations reveal that our proposed method effectively accelerates the training convergence by 4x and generates samples of similar quality 800x faster, rendering it significantly closer to practical application. \\footnote{The code is released at \\url{https://github.com/Shark-NLP/DiffuSeq}",
+    "authors": [
+        "Shansan Gong",
+        "Mukai Li",
+        "Jiangtao Feng",
+        "Zhiyong Wu",
+        "Lingpeng Kong"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A soft absorbing state is introduced that facilitates the diffusion model in learning to reconstruct discrete mutations based on the underlying Gaussian space, thereby enhancing its capacity to recover conditional signals."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

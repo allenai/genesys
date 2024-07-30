@@ -1,0 +1,26 @@
+{
+    "acronym": "173bd3b71792bf891ab5af4a6454e6ba07576bcd",
+    "title": "Large Language Models as Event Forecasters",
+    "seed_ids": [
+        "transformer",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "173bd3b71792bf891ab5af4a6454e6ba07576bcd",
+    "abstract": "Key elements of human events are extracted as quadruples that consist of subject, relation, object, and timestamp. This representation can be extended to a quintuple by adding a fifth element: a textual summary that briefly describes the event. These quadruples or quintuples, when organized within a specific domain, form a temporal knowledge graph (TKG). Current learning frameworks focus on a few TKG-related tasks, such as predicting an object given a subject and a relation or forecasting the occurrences of multiple types of events (i.e., relation) in the next time window. They typically rely on complex structural and sequential models like graph neural networks (GNNs) and recurrent neural networks (RNNs) to update intermediate embeddings. However, these methods often neglect the contextual information inherent in each quintuple, which can be effectively captured through concise textual descriptions. In this paper, we investigate how large language models (LLMs) can streamline the design of TKG learning frameworks while maintaining competitive accuracy in prediction and forecasting tasks. We develop multiple prompt templates to frame the object prediction (OP) task as a standard question-answering (QA) task, suitable for instruction fine-tuning with an encoder-decoder generative LLM. For multi-event forecasting (MEF), we design simple yet effective prompt templates for each TKG quintuple. This novel approach removes the need for GNNs and RNNs, instead utilizing an encoder-only LLM to generate fixed intermediate embeddings, which are subsequently processed by a prediction head with a self-attention mechanism to forecast potential future relations. Extensive experiments on multiple real-world datasets using various evaluation metrics validate the effectiveness and robustness of our approach.",
+    "authors": [
+        "Libo Zhang",
+        "Yue Ning"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper develops multiple prompt templates to frame the object prediction (OP) task as a standard question-answering (QA) task, suitable for instruction fine-tuning with an encoder-decoder generative LLM, and designs simple yet effective prompt templates for each TKG quintuple."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

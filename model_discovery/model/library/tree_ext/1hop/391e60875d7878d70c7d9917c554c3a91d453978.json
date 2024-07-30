@@ -1,0 +1,34 @@
+{
+    "acronym": "391e60875d7878d70c7d9917c554c3a91d453978",
+    "title": "Multi-Objective Fine-Tuning for Enhanced Program Repair with LLMs",
+    "seed_ids": [
+        "gpt2",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "d3de0bac5703825796c240bfab8dc3c8e0a90222",
+        "4b27f18bff43d605805c92696a979714ced0b805",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "391e60875d7878d70c7d9917c554c3a91d453978",
+    "abstract": "Large language models (LLMs) have demonstrated remarkable capabilities on a broad spectrum of downstream tasks. Within the realm of software engineering, specialized tasks on code, such as program repair, present unique challenges, necessitating fine-tuning to unlock state-of-the-art performance. Fine-tuning approaches proposed in the literature for LLMs on program repair tasks are however generally overlooking the need to reason about the logic behind code changes, beyond syntactic patterns in the data. High-performing fine-tuning experiments also usually come at very high computational costs. With MORepair, we propose a novel perspective on the learning focus of LLM fine-tuning for program repair: we not only adapt the LLM parameters to the syntactic nuances of the task of code transformation (objective 1), but we also specifically fine-tune the LLM with respect to the logical reason behind the code change in the training data (objective 2). Such a multi-objective fine-tuning will instruct LLMs to generate high-quality patches. We apply MORepair to fine-tune four open-source LLMs with different sizes and architectures. Experimental results on C++ and Java repair benchmarks show that the implemented fine-tuning effectively boosts LLM repair performance by 7.6% to 10% in Top-10 repair suggestions. We further show that our fine-tuning strategy yields superior performance compared to the incumbent state-of-the-art in fine-tuned models for program repair, Fine-tune-CoT and RepairLLaMA.",
+    "authors": [
+        "Boyang Yang",
+        "Haoye Tian",
+        "Jiadong Ren",
+        "Hongyu Zhang",
+        "Jacques Klein",
+        "Tegawend'e F. Bissyand'e",
+        "Claire Le Goues",
+        "Shunfu Jin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "MORepair proposes a novel perspective on the learning focus of LLM fine-tuning for program repair: it not only adapt the LLM parameters to the syntactic nuances of the task of code transformation, but also specifically fine-tune the LLM with respect to the logical reason behind the code change in the training data."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

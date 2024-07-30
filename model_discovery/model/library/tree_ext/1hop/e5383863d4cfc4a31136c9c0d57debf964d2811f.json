@@ -1,0 +1,30 @@
+{
+    "acronym": "e5383863d4cfc4a31136c9c0d57debf964d2811f",
+    "title": "Enhancing Length Extrapolation in Sequential Models with Pointer-Augmented Neural Memory",
+    "seed_ids": [
+        "transformerxl",
+        "c6d38add1b7bbc10f0da37a90e3f1b51ee5fb617",
+        "ed535e93d5b5a8b689e861e9c6083a806d1535c2",
+        "4cf963e5fd88825ac62ad6cce364447e5d2dfb2b"
+    ],
+    "s2id": "e5383863d4cfc4a31136c9c0d57debf964d2811f",
+    "abstract": "We propose Pointer-Augmented Neural Memory (PANM) to help neural networks understand and apply symbol processing to new, longer sequences of data. PANM integrates an external neural memory that uses novel physical addresses and pointer manipulation techniques to mimic human and computer symbol processing abilities. PANM facilitates pointer assignment, dereference, and arithmetic by explicitly using physical pointers to access memory content. Remarkably, it can learn to perform these operations through end-to-end training on sequence data, powering various sequential models. Our experiments demonstrate PANM's exceptional length extrapolating capabilities and improved performance in tasks that require symbol processing, such as algorithmic reasoning and Dyck language recognition. PANM helps Transformer achieve up to 100% generalization accuracy in compositional learning tasks and significantly better results in mathematical reasoning, question answering and machine translation tasks.",
+    "authors": [
+        "Hung Le",
+        "D. Nguyen",
+        "Kien Do",
+        "S. Venkatesh",
+        "T. Tran"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "PANM helps Transformer achieve up to 100% generalization accuracy in compositional learning tasks and significantly better results in mathematical reasoning, question answering and machine translation tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

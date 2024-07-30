@@ -1,0 +1,51 @@
+{
+    "acronym": "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+    "title": "Training language models to follow instructions with human feedback",
+    "seed_ids": [
+        "gpt2",
+        "fd1b829261ba04bb92e0ab60c4f6e7cea0d99fbf",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "5d22b241836e30d5b0d852b463951ab7e3245ea4",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+    "abstract": "Making language models bigger does not inherently make them better at following a user's intent. For example, large language models can generate outputs that are untruthful, toxic, or simply not helpful to the user. In other words, these models are not aligned with their users. In this paper, we show an avenue for aligning language models with user intent on a wide range of tasks by fine-tuning with human feedback. Starting with a set of labeler-written prompts and prompts submitted through the OpenAI API, we collect a dataset of labeler demonstrations of the desired model behavior, which we use to fine-tune GPT-3 using supervised learning. We then collect a dataset of rankings of model outputs, which we use to further fine-tune this supervised model using reinforcement learning from human feedback. We call the resulting models InstructGPT. In human evaluations on our prompt distribution, outputs from the 1.3B parameter InstructGPT model are preferred to outputs from the 175B GPT-3, despite having 100x fewer parameters. Moreover, InstructGPT models show improvements in truthfulness and reductions in toxic output generation while having minimal performance regressions on public NLP datasets. Even though InstructGPT still makes simple mistakes, our results show that fine-tuning with human feedback is a promising direction for aligning language models with human intent.",
+    "authors": [
+        "Long Ouyang",
+        "Jeff Wu",
+        "Xu Jiang",
+        "Diogo Almeida",
+        "Carroll L. Wainwright",
+        "Pamela Mishkin",
+        "Chong Zhang",
+        "Sandhini Agarwal",
+        "Katarina Slama",
+        "Alex Ray",
+        "John Schulman",
+        "Jacob Hilton",
+        "Fraser Kelton",
+        "Luke E. Miller",
+        "Maddie Simens",
+        "Amanda Askell",
+        "P. Welinder",
+        "P. Christiano",
+        "J. Leike",
+        "Ryan J. Lowe"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results show that fine-tuning with human feedback is a promising direction for aligning language models with human intent and showing improvements in truthfulness and reductions in toxic output generation while having minimal performance regressions on public NLP datasets."
+    },
+    "citationCount": 7683,
+    "influentialCitationCount": 1036,
+    "code": null,
+    "description": null,
+    "url": null
+}

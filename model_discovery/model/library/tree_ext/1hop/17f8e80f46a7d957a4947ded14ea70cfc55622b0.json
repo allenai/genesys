@@ -1,0 +1,26 @@
+{
+    "acronym": "17f8e80f46a7d957a4947ded14ea70cfc55622b0",
+    "title": "Non-Autoregressive Diffusion-based Temporal Point Processes for Continuous-Time Long-Term Event Prediction",
+    "seed_ids": [
+        "diffusionlm",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed"
+    ],
+    "s2id": "17f8e80f46a7d957a4947ded14ea70cfc55622b0",
+    "abstract": "Continuous-time long-term event prediction plays an important role in many application scenarios. Most existing works rely on autoregressive frameworks to predict event sequences, which suffer from error accumulation, thus compromising prediction quality. Inspired by the success of denoising diffusion probabilistic models, we propose a diffusion-based non-autoregressive temporal point process model for long-term event prediction in continuous time. Instead of generating events one at a time in an autoregressive way, our model predicts the future event sequence entirely as a whole. In order to perform diffusion processes on event sequences, we develop a bidirectional map between target event sequences and the Euclidean vector space. Furthermore, we design a novel denoising network to capture both sequential and contextual features for better sample quality. Extensive experiments are conducted to prove the superiority of our proposed model over state-of-the-art methods on long-term event prediction in continuous time. To the best of our knowledge, this is the first work to apply diffusion methods to long-term event prediction problems.",
+    "authors": [
+        "Wang-Tao Zhou",
+        "Zhao Kang",
+        "Ling Tian"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a diffusion-based non-autoregressive temporal point process model that predicts the future event sequence entirely as a whole and designs a novel denoising network to capture both sequential and contextual features for better sample quality."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

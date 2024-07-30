@@ -1,0 +1,37 @@
+{
+    "acronym": "7304666dce9e90861ca7de928dd6826fb338fbd8",
+    "title": "Sinkhorn Distance Minimization for Knowledge Distillation",
+    "seed_ids": [
+        "gpt2",
+        "2573af4e13d9a5dddb257d22cd38a600528d9a8b",
+        "c6c734e16f66fbfcefac7625cc64599e83292c1e",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7304666dce9e90861ca7de928dd6826fb338fbd8",
+    "abstract": "Knowledge distillation (KD) has been widely adopted to compress large language models (LLMs). Existing KD methods investigate various divergence measures including the Kullback-Leibler (KL), reverse Kullback-Leibler (RKL), and Jensen-Shannon (JS) divergences. However, due to limitations inherent in their assumptions and definitions, these measures fail to deliver effective supervision when few distribution overlap exists between the teacher and the student. In this paper, we show that the aforementioned KL, RKL, and JS divergences respectively suffer from issues of mode-averaging, mode-collapsing, and mode-underestimation, which deteriorates logits-based KD for diverse NLP tasks. We propose the Sinkhorn Knowledge Distillation (SinKD) that exploits the Sinkhorn distance to ensure a nuanced and precise assessment of the disparity between teacher and student distributions. Besides, profit by properties of the Sinkhorn metric, we can get rid of sample-wise KD that restricts the perception of divergence in each teacher-student sample pair. Instead, we propose a batch-wise reformulation to capture geometric intricacies of distributions across samples in the high-dimensional space. Comprehensive evaluation on GLUE and SuperGLUE, in terms of comparability, validity, and generalizability, highlights our superiority over state-of-the-art methods on all kinds of LLMs with encoder-only, encoder-decoder, and decoder-only architectures.",
+    "authors": [
+        "Xiao Cui",
+        "Yulei Qin",
+        "Yuting Gao",
+        "Enwei Zhang",
+        "Zihan Xu",
+        "Tong Wu",
+        "Ke Li",
+        "Xing Sun",
+        "Wen-gang Zhou",
+        "Houqiang Li"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Sinkhorn Knowledge Distillation (SinKD) is proposed that exploits the Sinkhorn distance to ensure a nuanced and precise assessment of the disparity between teacher and student distributions and gets rid of sample-wise KD that restricts the perception of divergence in each teacher-student sample pair."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

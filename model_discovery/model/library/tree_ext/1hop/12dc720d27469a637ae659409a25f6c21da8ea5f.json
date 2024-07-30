@@ -1,0 +1,32 @@
+{
+    "acronym": "12dc720d27469a637ae659409a25f6c21da8ea5f",
+    "title": "FormulaReasoning: A Dataset for Formula-Based Numerical Reasoning",
+    "seed_ids": [
+        "bert",
+        "5fc1a3a49e8f1d106118b69d1d6be3b6caa23da0",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2"
+    ],
+    "s2id": "12dc720d27469a637ae659409a25f6c21da8ea5f",
+    "abstract": "The application of formulas is a fundamental ability of humans when addressing numerical reasoning problems. However, existing numerical reasoning datasets seldom explicitly indicate the formulas employed during the reasoning steps. To bridge this gap, we construct a dataset for formula-based numerical reasoning called FormulaReasoning, which consists of 5,420 reasoning-based questions. We employ it to conduct evaluations of LLMs with size ranging from 7B to over 100B parameters utilizing zero-shot and few-shot chain-of-thought methods, and we further explore using retrieval-augmented LLMs provided with an external formula database associated with our dataset. We also experiment with supervised methods where we divide the reasoning process into formula generation, parameter extraction, and numerical calculation, and perform data augmentation. Our empirical findings underscore the significant potential for improvement in existing models when applied to our complex, formula-driven FormulaReasoning.",
+    "authors": [
+        "Xiao Li",
+        "Sichen Liu",
+        "Bolin Zhu",
+        "Yin Zhu",
+        "Yiwei liu",
+        "Gong Cheng"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A dataset for formula-based numerical reasoning called FormulaReasoning is constructed, which consists of 5,420 reasoning-based questions and is employed to conduct evaluations of LLMs with size ranging from 7B to over 100B parameters utilizing zero-shot and few-shot chain-of-thought methods."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

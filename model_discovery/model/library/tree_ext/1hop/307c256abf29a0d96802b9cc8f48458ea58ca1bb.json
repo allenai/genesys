@@ -1,0 +1,27 @@
+{
+    "acronym": "307c256abf29a0d96802b9cc8f48458ea58ca1bb",
+    "title": "PiC: A Phrase-in-Context Dataset for Phrase Understanding and Semantic Search",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "307c256abf29a0d96802b9cc8f48458ea58ca1bb",
+    "abstract": "While contextualized word embeddings have been a de-facto standard, learning contextualized phrase embeddings is less explored and being hindered by the lack of a human-annotated benchmark that tests machine understanding of phrase semantics given a context sentence or paragraph (instead of phrases alone). To fill this gap, we propose PiC\u2014a dataset of \u223c28K of noun phrases accompanied by their contextual Wikipedia pages and a suite of three tasks for training and evaluating phrase embeddings. Training on PiC improves ranking-models\u2019 accuracy and remarkably pushes span selection (SS) models (i.e., predicting the start and end index of the target phrase) near human accuracy, which is 95% Exact Match (EM) on semantic search given a query phrase and a passage. Interestingly, we find evidence that such impressive performance is because the SS models learn to better capture the common meaning of a phrase regardless of its actual context. SotA models perform poorly in distinguishing two senses of the same phrase in two contexts (\u223c60% EM) and in estimating the similarity between two different phrases in the same context (\u223c70% EM).",
+    "authors": [
+        "Thang M. Pham",
+        "Seunghyun Yoon",
+        "Trung Bui",
+        "Anh Totti Nguyen"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "PiC is proposed\u2014a dataset of noun phrases accompanied by their contextual Wikipedia pages and a suite of three tasks for training and evaluating phrase embeddings and finds evidence that training on PiC improves ranking-models\u2019 accuracy and remarkably pushes span selection models near human accuracy."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

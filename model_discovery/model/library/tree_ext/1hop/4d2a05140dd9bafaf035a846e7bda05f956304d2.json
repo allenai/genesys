@@ -1,0 +1,28 @@
+{
+    "acronym": "4d2a05140dd9bafaf035a846e7bda05f956304d2",
+    "title": "Argmax Flows and Multinomial Diffusion: Towards Non-Autoregressive Language Models",
+    "seed_ids": [
+        "transformerxl",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "4d2a05140dd9bafaf035a846e7bda05f956304d2",
+    "abstract": "The \ufb01eld of language modelling has been largely dominated by autoregressive models, for which sampling is inherently dif\ufb01cult to parallelize. This paper introduces two new classes of generative models for categorical data such as language or image segmentation: Argmax Flows and Multinomial Diffusion . Argmax Flows are de\ufb01ned by a composition of a continuous distribution (such as a normalizing \ufb02ow), and an argmax function. To optimize this model, we learn a probabilistic inverse for the argmax that lifts the categorical data to a continuous space. Multinomial Diffusion gradually adds categorical noise in a diffusion process, for which the generative denoising process is learned. We demonstrate that our models perform competitively on language modelling and modelling of image segmentation maps.",
+    "authors": [
+        "Emiel Hoogeboom",
+        "Didrik Nielsen",
+        "P. Jaini",
+        "Patrick Forr'e",
+        "M. Welling"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces two new classes of generative models for categorical data such as language or image segmentation: Argmax Flows and Multinomial Diffusion."
+    },
+    "citationCount": 66,
+    "influentialCitationCount": 9,
+    "code": null,
+    "description": null,
+    "url": null
+}

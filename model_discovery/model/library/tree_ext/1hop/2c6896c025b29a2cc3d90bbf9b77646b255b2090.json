@@ -1,0 +1,30 @@
+{
+    "acronym": "2c6896c025b29a2cc3d90bbf9b77646b255b2090",
+    "title": "TPD: Enhancing Student Language Model Reasoning via Principle Discovery and Guidance",
+    "seed_ids": [
+        "gpt",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda"
+    ],
+    "s2id": "2c6896c025b29a2cc3d90bbf9b77646b255b2090",
+    "abstract": "Large Language Models (LLMs) have recently showcased remarkable reasoning abilities. However, larger models often surpass their smaller counterparts in reasoning tasks, posing the challenge of effectively transferring these capabilities from larger models. Existing approaches heavily rely on extensive fine-tuning data or continuous interactions with a superior teacher LLM during inference. We introduce a principle-based teacher-student framework called ``Teaching via Principle Discovery'' (TPD) to address these limitations. Inspired by human learning mechanisms, TPD mimics the interaction between a teacher and a student using a principle-based approach. The teacher LLM generates problem-solving instructions and corrective principles based on the student LLM's errors. These principles guide the refinement of instructions and the selection of instructive examples from a validation set. This enables the student model to learn from both the teacher's guidance and its own mistakes. Once the student model begins making inferences, TPD requires no further intervention from the teacher LLM or humans. Through extensive experiments across eight reasoning tasks, we demonstrate the effectiveness of TPD. Compared to standard chain-of-thought prompting, TPD significantly improves the student model's performance, achieving $6.2\\%$ improvement on average.",
+    "authors": [
+        "Haorui Wang",
+        "Rongzhi Zhang",
+        "Yinghao Li",
+        "Lingkai Kong",
+        "Yuchen Zhuang",
+        "Xiusi Chen",
+        "Chao Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a principle-based teacher-student framework called ``Teaching via Principle Discovery'' (TPD), which mimics the interaction between a teacher and a student using a principle-based approach."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

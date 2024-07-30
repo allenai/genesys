@@ -1,0 +1,27 @@
+{
+    "acronym": "5d82817a39ec2cce22d1f807bac0102305b0b6b8",
+    "title": "Improving Line Search Methods for Large Scale Neural Network Training",
+    "seed_ids": [
+        "bert",
+        "592e2a4c8bb3e72b1f6d671d6642907fa81b1782",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5d82817a39ec2cce22d1f807bac0102305b0b6b8",
+    "abstract": "In recent studies, line search methods have shown significant improvements in the performance of traditional stochastic gradient descent techniques, eliminating the need for a specific learning rate schedule [1] \u2013 [3]. In this paper, we identify existing issues in state-of-the-art line search methods [1], [3], propose enhancements, and rigorously evaluate their effectiveness. We test these methods on larger datasets and more complex data domains than before.Specifically, we improve the Armijo line search by integrating the momentum term from ADAM in its search direction, enabling efficient large-scale training, a task that was previously prone to failure using Armijo line search methods. Our optimization approach outperforms both the previous Armijo implementation and tuned learning rate schedules for Adam.Our evaluation focuses on Transformers and CNNs in the domains of NLP and image data.Our work is publicly available as a Python package, which provides a hyperparameter free Pytorch optimizer.",
+    "authors": [
+        "Philip Kenneweg",
+        "Tristan Kenneweg",
+        "Barbara Hammer"
+    ],
+    "venue": "2024 International Conference on Artificial Intelligence, Computer, Data Sciences and Applications (ACDSA)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work improves the Armijo line search by integrating the momentum term from ADAM in its search direction, enabling efficient large-scale training, a task that was previously prone to failure using Armijo line search methods."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,42 @@
+{
+    "acronym": "a6a02052246fa3fb572ce5f9627c3cf3a64a9dd0",
+    "title": "Glauber Generative Model: Discrete Diffusion Models via Binary Classification",
+    "seed_ids": [
+        "likelihooddifflm",
+        "f8d357d38bbcdd93889fe71762eb57842b2ab063",
+        "d9ffb44ee3c8ec0b6692df8a90451384c1edd89b",
+        "67cdecbcfed07b9a29d9e2a92da684604383afd7",
+        "020a50f6a7154850ac81e3cde69ad8198ded6751",
+        "1f898d66acabff511a3871b82799aa73c0055402",
+        "a1186d7d9a9ef258c76afef1177e4f348061a537",
+        "33433e9103b00aa0c42597cbfe13a429fbf5abdf",
+        "a979742220a88b1d32e1fbe72c41e8ba3007053c",
+        "22775e58932cdfbd273a2a835a22c5d86800a458",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "0b9770a377b3f96cef9f268cee1791d39a0d4893",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "6e8f35c6d54acb14109c9b792a62609eac8a7b5e",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a6a02052246fa3fb572ce5f9627c3cf3a64a9dd0",
+    "abstract": "We introduce the Glauber Generative Model (GGM), a new class of discrete diffusion models, to obtain new samples from a distribution given samples from a discrete space. GGM deploys a discrete Markov chain called the heat bath dynamics (or the Glauber dynamics) to denoise a sequence of noisy tokens to a sample from a joint distribution of discrete tokens. Our novel conceptual framework provides an exact reduction of the task of learning the denoising Markov chain to solving a class of binary classification tasks. More specifically, the model learns to classify a given token in a noisy sequence as signal or noise. In contrast, prior works on discrete diffusion models either solve regression problems to learn importance ratios, or minimize loss functions given by variational approximations. We apply GGM to language modeling and image generation, where images are discretized using image tokenizers like VQGANs. We show that it outperforms existing discrete diffusion models in language generation, and demonstrates strong performance for image generation without using dataset-specific image tokenizers. We also show that our model is capable of performing well in zero-shot control settings like text and image infilling.",
+    "authors": [
+        "Harshit Varma",
+        "Dheeraj M. Nagaraj",
+        "Karthikeyan Shanmugam"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Glauber Generative Model is introduced, a new class of discrete diffusion models to obtain new samples from a distribution given samples from a discrete space, that outperforms existing discrete diffusion models in language generation and demonstrates strong performance for image generation without using dataset-specific image tokenizers."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

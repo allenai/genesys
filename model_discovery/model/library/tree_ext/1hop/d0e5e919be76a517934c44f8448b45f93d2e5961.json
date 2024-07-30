@@ -1,0 +1,29 @@
+{
+    "acronym": "d0e5e919be76a517934c44f8448b45f93d2e5961",
+    "title": "Efficient Medical Question Answering with Knowledge-Augmented Question Generation",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d0e5e919be76a517934c44f8448b45f93d2e5961",
+    "abstract": "In the expanding field of language model applications, medical knowledge representation remains a significant challenge due to the specialized nature of the domain. Large language models, such as GPT-4, obtain reasonable scores on medical question-answering tasks, but smaller models are far behind.In this work, we introduce a method to improve the proficiency of a small language model in the medical domain by employing a two-fold approach. We first fine-tune the model on a corpus of medical textbooks. Then, we use GPT-4 to generate questions similar to the downstream task, prompted with textbook knowledge, and use them to fine-tune the model. Additionally, we introduce ECN-QA, a novel Medical QA dataset containing \u201cprogressive questions\u201d composed of related sequential questions. We show the benefits of our training strategy on this dataset.The study\u2019s findings highlight the potential of small language models in the medical domain when appropriately fine-tuned.",
+    "authors": [
+        "Julien Khlaut",
+        "Corentin Dancette",
+        "Elodie Ferreres",
+        "Alaedine Bennani",
+        "Paul H'erent",
+        "Pierre Manceron"
+    ],
+    "venue": "Clinical Natural Language Processing Workshop",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a method to improve the proficiency of a small language model in the medical domain by employing a two-fold approach, first fine-tune the model on a corpus of medical textbooks, and then uses GPT-4 to generate questions similar to the downstream task, prompted with textbook knowledge."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "64a9a997d796678edc9d5693424d9feb2e9d3777",
+    "title": "Commonsense-T2I Challenge: Can Text-to-Image Generation Models Understand Commonsense?",
+    "seed_ids": [
+        "gpt3",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "f48ae425e2567be2d993efcaaf74c2274fc9d7c5"
+    ],
+    "s2id": "64a9a997d796678edc9d5693424d9feb2e9d3777",
+    "abstract": "We present a novel task and benchmark for evaluating the ability of text-to-image(T2I) generation models to produce images that fit commonsense in real life, which we call Commonsense-T2I. Given two adversarial text prompts containing an identical set of action words with minor differences, such as\"a lightbulb without electricity\"v.s.\"a lightbulb with electricity\", we evaluate whether T2I models can conduct visual-commonsense reasoning, e.g. produce images that fit\"the lightbulb is unlit\"vs.\"the lightbulb is lit\"correspondingly. Commonsense-T2I presents an adversarial challenge, providing pairwise text prompts along with expected outputs. The dataset is carefully hand-curated by experts and annotated with fine-grained labels, such as commonsense type and likelihood of the expected outputs, to assist analyzing model behavior. We benchmark a variety of state-of-the-art (sota) T2I models and surprisingly find that, there is still a large gap between image synthesis and real life photos--even the DALL-E 3 model could only achieve 48.92% on Commonsense-T2I, and the stable diffusion XL model only achieves 24.92% accuracy. Our experiments show that GPT-enriched prompts cannot solve this challenge, and we include a detailed analysis about possible reasons for such deficiency. We aim for Commonsense-T2I to serve as a high-quality evaluation benchmark for T2I commonsense checking, fostering advancements in real life image generation.",
+    "authors": [
+        "Xingyu Fu",
+        "Muyu He",
+        "Yujie Lu",
+        "William Yang Wang",
+        "Dan Roth"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Commonsense-T2I is presented to serve as a high-quality evaluation benchmark for T2I commonsense checking, fostering advancements in real life image generation and shows that, there is still a large gap between image synthesis and real life photos."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

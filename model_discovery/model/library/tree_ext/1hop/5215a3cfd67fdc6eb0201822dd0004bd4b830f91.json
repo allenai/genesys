@@ -1,0 +1,37 @@
+{
+    "acronym": "5215a3cfd67fdc6eb0201822dd0004bd4b830f91",
+    "title": "With Greater Text Comes Greater Necessity: Inference-Time Training Helps Long Text Generation",
+    "seed_ids": [
+        "compressivetransformer",
+        "23b09ed66024fdd04d6713b9ba621b866f033d20",
+        "a54761081c2b001c057fb6e1ea9a48058d5aa5e0",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "73290ecbec2f38d1d647ddef1ada69cee41725b3",
+        "8b25d0065d30ed3c9e6a6cae94de53ef132d656d",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "60b35c6d68acced19b0c66edcfc0ee0a2c11efed",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "3689b7ca7b07924b6135b8a71b9f1b7937b0a3d5",
+        "e3aa232577bb427b1f3a34acbdef84bd85734042"
+    ],
+    "s2id": "5215a3cfd67fdc6eb0201822dd0004bd4b830f91",
+    "abstract": "Long text generation, such as novel writing and discourse-level translation with extremely long contexts, presents significant challenges to current language models. Existing methods mainly focus on extending the model's context window through strategies like length extrapolation. However, these approaches demand substantial hardware resources during the training and/or inference phases. Our proposed method, Temp-Lora, introduces an alternative concept. Instead of relying on the KV cache to store all context information, we embeds this information directly into a temporary Lora module. In the process of long text generation, this module is progressively trained with text generated previously. This approach not only efficiently preserves contextual knowledge but also prevents any permanent alteration to the model's parameters given that the module is discarded post-generation. Extensive experiments on the PG19 language modeling benchmark and the GuoFeng discourse-level translation benchmark validate the effectiveness of Temp-Lora. Our results show that: 1) Temp-Lora substantially enhances generation quality for long text, as indicated by a 13.2% decrease in perplexity (PPL) on a subset of PG19, and a 29.3% decrease in PPL along with a 113.2% increase in BLEU score on a subset of GuoFeng, 2) Temp-Lora is compatible with and enhances most existing long text generation methods, and 3) Temp-Lora can greatly reduce computational costs by shortening the context window. For example, we can ensure a moderate improvement in generation quality (a decrease of 3.8% in PPL) while enabling a 51.5% memory usage reduction and a 60.0% decrease in latency for inference.",
+    "authors": [
+        "Y. Wang",
+        "D. Ma",
+        "D. Cai"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed method, Temp-Lora, introduces an alternative concept that embeds contextual knowledge directly into a temporary Lora module in the process of long text generation and prevents any permanent alteration to the model's parameters given that the module is discarded post-generation."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

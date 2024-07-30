@@ -1,0 +1,34 @@
+{
+    "acronym": "54316ea08106f64c9b023e9a5f81d04d0394d869",
+    "title": "TSCMamba: Mamba Meets Multi-View Learning for Time Series Classification",
+    "seed_ids": [
+        "mamba",
+        "3a0c5026f7ea965dc4475c8d857fc3b6df27ae05",
+        "2dda6da7375bf5e8bcf60f87b17ba10757f3bc57",
+        "95b2cb3f4a765014ce025afe5679660982554e6c",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "30dcc0e191a376fea0e7a46f94c53872c029efc9",
+        "f7890aaf985b001e9226da375f8c2289a323db90"
+    ],
+    "s2id": "54316ea08106f64c9b023e9a5f81d04d0394d869",
+    "abstract": "Time series classification (TSC) on multivariate time series is a critical problem. We propose a novel multi-view approach integrating frequency-domain and time-domain features to provide complementary contexts for TSC. Our method fuses continuous wavelet transform spectral features with temporal convolutional or multilayer perceptron features. We leverage the Mamba state space model for efficient and scalable sequence modeling. We also introduce a novel tango scanning scheme to better model sequence relationships. Experiments on 10 standard benchmark datasets demonstrate our approach achieves an average 6.45% accuracy improvement over state-of-the-art TSC models.",
+    "authors": [
+        "Md. Atik Ahamed",
+        "Qiang Cheng"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel multi-view approach integrating frequency-domain and time-domain features to provide complementary contexts for TSC is proposed, which fuses continuous wavelet transform spectral features with temporal convolutional or multilayer perceptron features."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

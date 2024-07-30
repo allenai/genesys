@@ -1,0 +1,27 @@
+{
+    "acronym": "7d5c60dcd838c62b3c3697745bef07ed824d41d3",
+    "title": "Denoising Diffusion Probabilistic Models for Robust Image Super-Resolution in the Wild",
+    "seed_ids": [
+        "classfreediffu",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "7d5c60dcd838c62b3c3697745bef07ed824d41d3",
+    "abstract": "Diffusion models have shown promising results on single-image super-resolution and other image- to-image translation tasks. Despite this success, they have not outperformed state-of-the-art GAN models on the more challenging blind super-resolution task, where the input images are out of distribution, with unknown degradations. This paper introduces SR3+, a diffusion-based model for blind super-resolution, establishing a new state-of-the-art. To this end, we advocate self-supervised training with a combination of composite, parameterized degradations for self-supervised training, and noise-conditioing augmentation during training and testing. With these innovations, a large-scale convolutional architecture, and large-scale datasets, SR3+ greatly outperforms SR3. It outperforms Real-ESRGAN when trained on the same data, with a DRealSR FID score of 36.82 vs. 37.22, which further improves to FID of 32.37 with larger models, and further still with larger training sets.",
+    "authors": [
+        "Hshmat Sahak",
+        "Daniel Watson",
+        "Chitwan Saharia",
+        "David J. Fleet"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces SR3+, a diffusion-based model for blind super-resolution, establishing a new state-of-the-art GAN model for this task, and advocates self-supervised training with a combination of composite, parameterized degradations for self- supervised training, and noise-conditioing augmentation during training and testing."
+    },
+    "citationCount": 28,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

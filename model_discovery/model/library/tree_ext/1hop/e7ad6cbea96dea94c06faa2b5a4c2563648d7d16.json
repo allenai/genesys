@@ -1,0 +1,32 @@
+{
+    "acronym": "e7ad6cbea96dea94c06faa2b5a4c2563648d7d16",
+    "title": "Focused Prefix Tuning for Controllable Text Generation",
+    "seed_ids": [
+        "gpt2",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e7ad6cbea96dea94c06faa2b5a4c2563648d7d16",
+    "abstract": "In a controllable text generation dataset, there exist unannotated attributes that could provide irrelevant learning signals to models that use it for training and thus degrade their performance. We propose focused prefix tuning (FPT) to mitigate the problem and to enable the control to focus on the desired attribute. Experimental results show that FPT can achieve better control accuracy and text fluency than baseline models in single-attribute control tasks. In multi-attribute control tasks, FPT achieves comparable control accuracy with the state-of-the-art approach while keeping the flexibility to control new attributes without retraining existing models.",
+    "authors": [
+        "Congda Ma",
+        "Tianyu Zhao",
+        "Makoto Shing",
+        "Kei Sawada",
+        "M. Okumura"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

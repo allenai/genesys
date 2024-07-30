@@ -1,0 +1,28 @@
+{
+    "acronym": "16513bc0dc13902334a9cb3657056763efdcec6f",
+    "title": "Towards Open-Ended Visual Recognition with Large Language Model",
+    "seed_ids": [
+        "gpt3",
+        "42a30dc5470f54ec249f25d3c31e05d7c376c8e3",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "16513bc0dc13902334a9cb3657056763efdcec6f",
+    "abstract": "Localizing and recognizing objects in the open-ended physical world poses a long-standing challenge within the domain of machine perception. Recent methods have endeavored to address the issue by employing a class-agnostic mask (or box) proposal model, complemented by an open-vocabulary classifier (e.g., CLIP) using pre-extracted text embeddings. However, it is worth noting that these open-vocabulary recognition models still exhibit limitations in practical applications. On one hand, they rely on the provision of class names during testing, where the recognition performance heavily depends on this predefined set of semantic classes by users. On the other hand, when training with multiple datasets, human intervention is required to alleviate the label definition conflict between them. In this paper, we introduce the OmniScient Model (OSM), a novel Large Language Model (LLM) based mask classifier, as a straightforward and effective solution to the aforementioned challenges. Specifically, OSM predicts class labels in a generative manner, thus removing the supply of class names during both training and testing. It also enables cross-dataset training without any human interference, exhibiting robust generalization capabilities due to the world knowledge acquired from the LLM. By combining OSM with an off-the-shelf mask proposal model, we present promising results on various benchmarks, and demonstrate its effectiveness in handling novel concepts. Code/model are available at https://github.com/bytedance/OmniScient-Model.",
+    "authors": [
+        "Qihang Yu",
+        "Xiaohui Shen",
+        "Liang-Chieh Chen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The OmniScient Model is introduced, a novel Large Language Model (LLM) based mask classifier that predicts class labels in a generative manner, thus removing the supply of class names during both training and testing, and enables cross-dataset training without any human interference."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

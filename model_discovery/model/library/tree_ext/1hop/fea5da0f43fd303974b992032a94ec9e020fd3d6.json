@@ -1,0 +1,36 @@
+{
+    "acronym": "fea5da0f43fd303974b992032a94ec9e020fd3d6",
+    "title": "LayoutDiffusion: Improving Graphic Layout Generation by Discrete Diffusion Probabilistic Models",
+    "seed_ids": [
+        "d3pms",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "e342165a614588878ad0f4bc9bacf3905df34d08",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "e9b9a47cd81c66603c827f0f2bc4fba0d9ae77c4",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "4d2a05140dd9bafaf035a846e7bda05f956304d2"
+    ],
+    "s2id": "fea5da0f43fd303974b992032a94ec9e020fd3d6",
+    "abstract": "Creating graphic layouts is a fundamental step in graphic designs. In this work, we present a novel generative model named LayoutDiffusion for automatic layout generation. As layout is typically represented as a sequence of discrete tokens, LayoutDiffusion models layout generation as a discrete denoising diffusion process. It learns to reverse a mild forward process, in which layouts become increasingly chaotic with the growth of forward steps and layouts in the neighboring steps do not differ too much. Designing such a mild forward process is however very challenging as layout has both categorical attributes and ordinal attributes. To tackle the challenge, we summarize three critical factors for achieving a mild forward process for the layout, i.e., legality, coordinate proximity and type disruption. Based on the factors, we propose a block-wise transition matrix coupled with a piece-wise linear noise schedule. Experiments on RICO and PubLayNet datasets show that LayoutDiffusion outperforms state-of-the-art approaches significantly. Moreover, it enables two conditional layout generation tasks in a plug-and-play manner without re-training and achieves better performance than existing methods. Project page: https://layoutdiffusion.github.io.",
+    "authors": [
+        "Junyi Zhang",
+        "Jiaqi Guo",
+        "Shizhao Sun",
+        "Jian-Guang Lou",
+        "D. Zhang"
+    ],
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a novel generative model named LayoutDiffusion, which model layout generation as a discrete denoising diffusion process and enables two conditional layout generation tasks in a plug-and-play manner without re-training and achieves better performance than existing methods."
+    },
+    "citationCount": 20,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "b759a516922b163a93fea70bcc45708a6c24a9c1",
+    "title": "Echoes from Alexandria: A Large Resource for Multilingual Book Summarization",
+    "seed_ids": [
+        "longt5",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "c600b697700c844cbc85009be70f1cdfeef3593e",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "01b15017ac59b8d6f2ce3598c4a7d6358c211426",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "b759a516922b163a93fea70bcc45708a6c24a9c1",
+    "abstract": "In recent years, research in text summarization has mainly focused on the news domain, where texts are typically short and have strong layout features. The task of full-book summarization presents additional challenges which are hard to tackle with current resources, due to their limited size and availability in English only. To overcome these limitations, we present\"Echoes from Alexandria\", or in shortened form,\"Echoes\", a large resource for multilingual book summarization. Echoes features three novel datasets: i) Echo-Wiki, for multilingual book summarization, ii) Echo-XSum, for extremely-compressive multilingual book summarization, and iii) Echo-FairySum, for extractive book summarization. To the best of our knowledge, Echoes, with its thousands of books and summaries, is the largest resource, and the first to be multilingual, featuring 5 languages and 25 language pairs. In addition to Echoes, we also introduce a new extractive-then-abstractive baseline, and, supported by our experimental results and manual analysis of the summaries generated, we argue that this baseline is more suitable for book summarization than purely-abstractive approaches. We release our resource and software at https://github.com/Babelscape/echoes-from-alexandria in the hope of fostering innovative research in multilingual book summarization.",
+    "authors": [
+        "Alessandro Scir\u00e9",
+        "Simone Conia",
+        "Simone Ciciliano",
+        "Roberto Navigli"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The largest resource for multilingual book summarization, and the first to be multilingual, featuring 5 languages and 25 language pairs, is presented and a new extractive-then-abstractive baseline is introduced, it is argued that this baseline is more suitable for book summarizations than purely-ab abstractive approaches."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

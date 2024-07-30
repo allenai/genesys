@@ -1,0 +1,28 @@
+{
+    "acronym": "c4c5a03908e73cce75b3bbb7b0caa87a88a202ef",
+    "title": "Resolving Regular Polysemy in Named Entities",
+    "seed_ids": [
+        "bert",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "c4c5a03908e73cce75b3bbb7b0caa87a88a202ef",
+    "abstract": "Word sense disambiguation primarily addresses the lexical ambiguity of common words based on a predefined sense inventory. Conversely, proper names are usually considered to denote an ad-hoc real-world referent. Once the reference is decided, the ambiguity is purportedly resolved. However, proper names also exhibit ambiguities through appellativization, i.e., they act like common words and may denote different aspects of their referents. We proposed to address the ambiguities of proper names through the light of regular polysemy, which we formalized as dot objects. This paper introduces a combined word sense disambiguation (WSD) model for disambiguating common words against Chinese Wordnet (CWN) and proper names as dot objects. The model leverages the flexibility of a gloss-based model architecture, which takes advantage of the glosses and example sentences of CWN. We show that the model achieves competitive results on both common and proper nouns, even on a relatively sparse sense dataset. Aside from being a performant WSD tool, the model further facilitates the future development of the lexical resource.",
+    "authors": [
+        "S. Hsieh",
+        "Yu-Hsiang Tseng",
+        "Hsin-Yu Chou",
+        "Ching-Wen Yang",
+        "Yu-Yun Chang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A combined word sense disambiguation model for disambiguating common words against Chinese Wordnet (CWN) and proper names as dot objects is introduced, which leverages the flexibility of a gloss-based model architecture, which takes advantage of the glosses and example sentences of CWN."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

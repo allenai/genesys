@@ -1,0 +1,31 @@
+{
+    "acronym": "3b1ed0508a24ef157cb4458ab95dead821b8c90a",
+    "title": "CodeIP: A Grammar-Guided Multi-Bit Watermark for Large Language Models of Code",
+    "seed_ids": [
+        "transformer",
+        "0b0debb710366cdff461938c80763eace1651af6"
+    ],
+    "s2id": "3b1ed0508a24ef157cb4458ab95dead821b8c90a",
+    "abstract": "As Large Language Models (LLMs) are increasingly used to automate code generation, it is often desired to know if the code is AI-generated and by which model, especially for purposes like protecting intellectual property (IP) in industry and preventing academic misconduct in education. Incorporating watermarks into machine-generated content is one way to provide code provenance, but existing solutions are restricted to a single bit or lack flexibility. We present CodeIP, a new watermarking technique for LLM-based code generation. CodeIP enables the insertion of multi-bit information while preserving the semantics of the generated code, improving the strength and diversity of the inerseted watermark. This is achieved by training a type predictor to predict the subsequent grammar type of the next token to enhance the syntactical and semantic correctness of the generated code. Experiments on a real-world dataset across five programming languages showcase the effectiveness of CodeIP.",
+    "authors": [
+        "Batu Guan",
+        "Yao Wan",
+        "Zhangqian Bi",
+        "Zheng Wang",
+        "Hongyu Zhang",
+        "Yulei Sui",
+        "Pan Zhou",
+        "Lichao Sun"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents CodeIP, a new watermarking technique for LLM-based code generation that enables the insertion of multi-bit information while preserving the semantics of the generated code, improving the strength and diversity of the inerseted watermark."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,27 @@
+{
+    "acronym": "4e0f5af6ee4a4d8f59b170263c5f157bef3e5d34",
+    "title": "Large Language Models are Few-Shot Training Example Generators: A Case Study in Fallacy Recognition",
+    "seed_ids": [
+        "gpt3",
+        "3c0c14882318fd7ad3fd51cdc5fc515a7f78effd",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221"
+    ],
+    "s2id": "4e0f5af6ee4a4d8f59b170263c5f157bef3e5d34",
+    "abstract": "Recognizing fallacies is crucial for ensuring the quality and validity of arguments across various domains. However, computational fallacy recognition faces challenges due to the diverse genres, domains, and types of fallacies found in datasets. This leads to a highly multiclass, and even multi-label, setup with substantial class imbalance. In this study, we aim to enhance existing models for fallacy recognition by incorporating additional context and by leveraging large language models to generate synthetic data, thus increasing the representation of the infrequent classes. We experiment with GPT3.5 to generate synthetic examples and we examine the impact of prompt settings for this. Moreover, we explore zero-shot and few-shot scenarios to evaluate the effectiveness of using the generated examples for training smaller models within a unified fallacy recognition framework. Furthermore, we analyze the overlap between the synthetic data and existing fallacy datasets. Finally, we investigate the usefulness of providing supplementary context for detecting fallacy types that need such context, e.g., diversion fallacies. Our evaluation results demonstrate consistent improvements across fallacy types, datasets, and generators.",
+    "authors": [
+        "Tariq Alhindi",
+        "S. Muresan",
+        "Preslav Nakov"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study aims to enhance existing models for fallacy recognition by incorporating additional context and by leveraging large language models to generate synthetic data, thus increasing the representation of the infrequent classes and investigating the usefulness of providing supplementary context for detecting fallacy types that need such context."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

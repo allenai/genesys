@@ -1,0 +1,31 @@
+{
+    "acronym": "94fec3a214e91e3a395c3f202cd8de06fe7231ec",
+    "title": "ChatGPT as an Attack Tool: Stealthy Textual Backdoor Attack via Blackbox Generative Model Trigger",
+    "seed_ids": [
+        "gpt2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "7ade458d52d2dfe997b8a617a6b524bda12a619d",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "94fec3a214e91e3a395c3f202cd8de06fe7231ec",
+    "abstract": "Textual backdoor attacks, characterized by subtle manipulations of input triggers and training dataset labels, pose significant threats to security-sensitive applications. The rise of advanced generative models, such as GPT-4, with their capacity for human-like rewriting, makes these attacks increasingly challenging to detect. In this study, we conduct an in-depth examination of black-box generative models as tools for backdoor attacks, thereby emphasizing the need for effective defense strategies. We propose BGMAttack, a novel framework that harnesses advanced generative models to execute stealthier backdoor attacks on text classifiers. Unlike prior approaches constrained by subpar generation quality, BGMAttack renders backdoor triggers more elusive to human cognition and advanced machine detection. A rigorous evaluation of attack effectiveness over four sentiment classification tasks, complemented by four human cognition stealthiness tests, reveals BGMAttack\u2019s superior performance, achieving a state-of-the-art attack success rate of 97.35% on average while maintaining superior stealth compared to conventional methods. The dataset and code are available: https://github.com/JiazhaoLi/BGMAttack.",
+    "authors": [
+        "Jiazhao Li",
+        "Yijin Yang",
+        "Zhuofeng Wu",
+        "V. Vydiswaran",
+        "Chaowei Xiao"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes BGMAttack, a novel framework that harnesses advanced generative models to execute stealthier backdoor attacks on text classifiers, and renders backdoor triggers more elusive to human cognition and advanced machine detection."
+    },
+    "citationCount": 25,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

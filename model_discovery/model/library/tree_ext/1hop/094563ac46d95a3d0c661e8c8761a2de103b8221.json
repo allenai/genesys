@@ -1,0 +1,26 @@
+{
+    "acronym": "094563ac46d95a3d0c661e8c8761a2de103b8221",
+    "title": "Memory Layers with Multi-Head Attention Mechanisms for Text-Dependent Speaker Verification",
+    "seed_ids": [
+        "productkeymem"
+    ],
+    "s2id": "094563ac46d95a3d0c661e8c8761a2de103b8221",
+    "abstract": "In this paper, we explore an approach based on memory layers and multi-head attention mechanisms to improve in an efficient way the performance of text-dependent speaker verification (SV) systems. The most extended SV systems based on Deep Neural Networks (DNN) extract the embedding of the utterance from the average pooling of the temporal dimension after processing. Unlike previous works, we can exploit the phonetic knowledge needed for text-dependent SV systems by combining the temporal attention of multiple parallel heads with the phonetic embeddings extracted from a phonetic classification network, which helps to guide to the attention mechanism with the role of the positional embedding. The addition of a memory layer to a text-dependent SV system was tested on the RSR2015-part II and DeepMine-part I databases, where, in both cases outperformed the baseline result and the reference system based on the same transformer network without the memory layer.",
+    "authors": [
+        "Victoria Mingote",
+        "A. Miguel",
+        "A. O. Gim\u00e9nez",
+        "EDUARDO LLEIDA SOLANO"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An approach based on memory layers and multi-head attention mechanisms to improve in an efficient way the performance of text-dependent speaker verification (SV) systems by combining the temporal attention of multiple parallel heads with the phonetic embeddings extracted from a phonetic classification network."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

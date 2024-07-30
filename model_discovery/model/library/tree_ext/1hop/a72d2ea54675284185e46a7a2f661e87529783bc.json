@@ -1,0 +1,27 @@
+{
+    "acronym": "a72d2ea54675284185e46a7a2f661e87529783bc",
+    "title": "Investigating the State-of-the-Art Performance and Explainability of Legal Judgment Prediction",
+    "seed_ids": [
+        "longformer",
+        "neurallegal",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "a72d2ea54675284185e46a7a2f661e87529783bc",
+    "abstract": "In the past decade deep learning models have achieved impressive performance on a wide range of tasks. However, they still face challenges in many high-stakes problems. In this paper we study Legal Judgment Prediction (LJP), which is an important high-stakes task utilizing fact descriptions obtained from court cases to make \ufb01nal judgements. We investigate the state-of-the-art of the LJP task by leveraging the most recent deep learning models, longformer , and demonstrate that we obtain the state-of-the-art performance, even with a limited amount of training data, bene\ufb01ting from the advantage of pretraining and the long-sequence modeling capability of longformer . However, our analyses suggest that the improvement is due to the model\u2019s \ufb01tting to spurious correlations , in which the model makes correct decisions based on information irrelevant to the task itself. We advocate that caution should be seriously exercised when explaining the obtained results. The second challenge in many high-stakes problems is interpretability required for models. The \ufb01nal predictions made by deep learning models are useful only if the evidences that support the models\u2019 decisions are consistent with those used by subject-matter experts. We demonstrate that by using post-hoc interpretation, the conventional method XGBoost is actually capable of providing explainable results with a performance comparable to the longformer model, while not being subject to the spurious correlation issue. We hope our work contributes to the line of research on understanding the advantages and limitations of deep learning for high-stakes problems.",
+    "authors": [
+        "R. Bhambhoria",
+        "Samuel Dahan",
+        "Xiao-Dan Zhu"
+    ],
+    "venue": "Canadian AI",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper investigates the state-of-the-art of the LJP task by leveraging the most recent deep learning models, longformer, and demonstrates that by using post-hoc interpretation, the conventional method XGBoost is actually capable of providing explainable results with a performance comparable to the longformer model, while not being subject to the spurious correlation issue."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

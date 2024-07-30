@@ -1,0 +1,32 @@
+{
+    "acronym": "37cb6e8435636d59d3a63c3384064f2dd49ef0c0",
+    "title": "Vision Transformers for Mobile Applications: A Short Survey",
+    "seed_ids": [
+        "hyena",
+        "998ac3e945857cf2676ee7efdbaf443a0c6f820a",
+        "dd1139cfc609c2f3263d02e97176d5275caebc0a",
+        "d5e999aae76d5270ef272076979c809817458212",
+        "7d2a78a1f713b71c3a337247d042c5c2f0b2da84",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "37cb6e8435636d59d3a63c3384064f2dd49ef0c0",
+    "abstract": "Vision Transformers (ViTs) have demonstrated state-of-the-art performance on many Computer Vision Tasks. Unfortunately, deploying these large-scale ViTs is resource-consuming and impossible for many mobile devices. While most in the community are building for larger and larger ViTs, we ask a completely opposite question: How small can a ViT be within the tradeoffs of accuracy and inference latency that make it suitable for mobile deployment? We look into a few ViTs specifically designed for mobile applications and observe that they modify the transformer's architecture or are built around the combination of CNN and transformer. Recent work has also attempted to create sparse ViT networks and proposed alternatives to the attention module. In this paper, we study these architectures, identify the challenges and analyze what really makes a vision transformer suitable for mobile applications. We aim to serve as a baseline for future research direction and hopefully lay the foundation to choose the exemplary vision transformer architecture for your application running on mobile devices.",
+    "authors": [
+        "Nahid Alam",
+        "Steven Kolawole",
+        "S. Sethi",
+        "Nishant Bansali",
+        "Karina Nguyen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper study these architectures, identify the challenges and analyze what really makes a vision transformer suitable for mobile applications, and aims to serve as a baseline for future research direction and lay the foundation to choose the exemplary vision transformer architecture for your application running on mobile devices."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

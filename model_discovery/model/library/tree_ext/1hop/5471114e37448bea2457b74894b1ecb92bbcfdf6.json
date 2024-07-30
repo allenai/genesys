@@ -1,0 +1,29 @@
+{
+    "acronym": "5471114e37448bea2457b74894b1ecb92bbcfdf6",
+    "title": "From Pretraining Data to Language Models to Downstream Tasks: Tracking the Trails of Political Biases Leading to Unfair NLP Models",
+    "seed_ids": [
+        "gpt2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5471114e37448bea2457b74894b1ecb92bbcfdf6",
+    "abstract": "Language models (LMs) are pretrained on diverse data sources\u2014news, discussion forums, books, online encyclopedias. A significant portion of this data includes facts and opinions which, on one hand, celebrate democracy and diversity of ideas, and on the other hand are inherently socially biased. Our work develops new methods to (1) measure media biases in LMs trained on such corpora, along social and economic axes, and (2) measure the fairness of downstream NLP models trained on top of politically biased LMs. We focus on hate speech and misinformation detection, aiming to empirically quantify the effects of political (social, economic) biases in pretraining data on the fairness of high-stakes social-oriented tasks. Our findings reveal that pretrained LMs do have political leanings which reinforce the polarization present in pretraining corpora, propagating social biases into hate speech predictions and media biases into misinformation detectors. We discuss the implications of our findings for NLP research and propose future directions to mitigate unfairness.",
+    "authors": [
+        "Shangbin Feng",
+        "Chan Young Park",
+        "Yuhan Liu",
+        "Yulia Tsvetkov"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The findings reveal that pretrained LMs do have political leanings which reinforce the polarization present in pretraining corpora, propagating social biases into hate speech predictions and media biases into misinformation detectors."
+    },
+    "citationCount": 118,
+    "influentialCitationCount": 9,
+    "code": null,
+    "description": null,
+    "url": null
+}

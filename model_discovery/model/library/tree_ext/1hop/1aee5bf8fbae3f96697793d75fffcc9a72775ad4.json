@@ -1,0 +1,26 @@
+{
+    "acronym": "1aee5bf8fbae3f96697793d75fffcc9a72775ad4",
+    "title": "Will Longformers PAN Out for Authorship Verification? Notebook for PAN at CLEF 2020",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "1aee5bf8fbae3f96697793d75fffcc9a72775ad4",
+    "abstract": "Authorship veri\ufb01cation, the task of identifying if two text excerpts are from the same author, is an important part of evaluating the veracity and authenticity of writings and is one of the challenges for this year\u2019s PAN @ CLEF 2020 event. In this paper, we describe our PAN authorship veri\ufb01cation submission system, a neural network that learns useful features for authorship veri\ufb01cation from fan\ufb01ction texts and their corresponding fandoms. Our system uses the Longformer, a variant of state-of-the-art transformer models, that is pre-trained on large amounts of text. This model combines global self-attention and local self-attention to enable ef\ufb01cient processing of long text inputs (like the fan\ufb01ction data used for PAN @ CLEF 2020), and we augment the pre-trained Longformer model with additional fully-connected layers and \ufb01ne-tune it to learn features that are useful for author veri\ufb01cation. Finally, our model incorporates fandom information via the use of a multi-task loss function that optimizes for both authorship veri\ufb01cation and topic correspondence, allowing it to learn useful fandom features for author veri\ufb01cation indirectly. On a held-out subset of the PAN-provided \u201clarge training\u201d set, our Longformer-based system attained a 0.963 overall veri\ufb01-cation score, outperforming the PAN text compression baseline by 32.8% relative. However, on the of\ufb01cial PAN test set, our system attained a 0.685 overall score, underperforming the PAN text compression baseline by 7.6% relative.",
+    "authors": [
+        "Juanita Ordo\u00f1ez",
+        "Rafael A. Rivera Soto",
+        "Barry Y. Chen"
+    ],
+    "venue": "Conference and Labs of the Evaluation Forum",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper describes the PAN authorship veri\ufb01cation submission system, a neural network that learns useful features for authorship veri\ufb01cation from fan\ufb01ction texts and their corresponding fandoms and incorporates fandom information via the use of a multi-task loss function that optimizes for both authorship veri\ufb01cation and topic correspondence."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

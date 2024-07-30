@@ -1,0 +1,30 @@
+{
+    "acronym": "05e396e79a2f88f0b8f8d99f5ab36ab3efa95c14",
+    "title": "Language-Agnostic Representation Learning of Source Code from Structure and Context",
+    "seed_ids": [
+        "transformerxl",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "05e396e79a2f88f0b8f8d99f5ab36ab3efa95c14",
+    "abstract": "Source code (Context) and its parsed abstract syntax tree (AST; Structure) are two complementary representations of the same computer program. Traditionally, designers of machine learning models have relied predominantly either on Structure or Context. We propose a new model, which jointly learns on Context and Structure of source code. In contrast to previous approaches, our model uses only language-agnostic features, i.e., source code and features that can be computed directly from the AST. Besides obtaining state-of-the-art on monolingual code summarization on all five programming languages considered in this work, we propose the first multilingual code summarization model. We show that jointly training on non-parallel data from multiple programming languages improves results on all individual languages, where the strongest gains are on low-resource languages. Remarkably, multilingual training only from Context does not lead to the same improvements, highlighting the benefits of combining Structure and Context for representation learning on code.",
+    "authors": [
+        "Daniel Zugner",
+        "Tobias Kirschstein",
+        "Michele Catasta",
+        "J. Leskovec",
+        "Stephan Gunnemann"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a new model, which jointly learns on Context and Structure of source code, and shows that jointly training on non-parallel data from multiple programming languages improves results on all individual languages, where the strongest gains are on low-resource languages."
+    },
+    "citationCount": 110,
+    "influentialCitationCount": 17,
+    "code": null,
+    "description": null,
+    "url": null
+}

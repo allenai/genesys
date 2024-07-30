@@ -1,0 +1,35 @@
+{
+    "acronym": "10243faeb3db176f23ecf24568875142b8382e8d",
+    "title": "Unsupervised Melody-to-Lyrics Generation",
+    "seed_ids": [
+        "gpt2",
+        "19a9937a1029ee5b1f6da8a945ed9a5c5a029c57",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "10243faeb3db176f23ecf24568875142b8382e8d",
+    "abstract": "Automatic melody-to-lyric generation is a task in which song lyrics are generated to go with a given melody. It is of significant practical interest and more challenging than unconstrained lyric generation as the music imposes additional constraints onto the lyrics. The training data is limited as most songs are copyrighted, resulting in models that underfit the complicated cross-modal relationship between melody and lyrics. In this work, we propose a method for generating high-quality lyrics without training on any aligned melody-lyric data. Specifically, we design a hierarchical lyric generation framework that first generates a song outline and second the complete lyrics. The framework enables disentanglement of training (based purely on text) from inference (melody-guided text generation) to circumvent the shortage of parallel data.We leverage the segmentation and rhythm alignment between melody and lyrics to compile the given melody into decoding constraints as guidance during inference. The two-step hierarchical design also enables content control via the lyric outline, a much-desired feature for democratizing collaborative song creation. Experimental results show that our model can generate high-quality lyrics that are more on-topic, singable, intelligible, and coherent than strong baselines, for example SongMASS, a SOTA model trained on a parallel dataset, with a 24% relative overall quality improvement based on human ratings. Our code is available at https://github.com/amazon-science/unsupervised-melody-to-lyrics-generation.",
+    "authors": [
+        "Yufei Tian",
+        "Anjali Narayan-Chen",
+        "Shereen Oraby",
+        "Alessandra Cervone",
+        "Gunnar A. Sigurdsson",
+        "Chenyang Tao",
+        "Wenbo Zhao",
+        "Tagyoung Chung",
+        "Jing Huang",
+        "Nanyun Peng"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A hierarchical lyric generation framework that first generates a song outline and second the complete lyrics to circumvent the shortage of parallel data and leverage the segmentation and rhythm alignment between melody and lyrics to compile the given melody into decoding constraints as guidance during inference."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

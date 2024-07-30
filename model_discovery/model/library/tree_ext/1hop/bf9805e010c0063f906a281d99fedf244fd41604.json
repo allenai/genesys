@@ -1,0 +1,25 @@
+{
+    "acronym": "bf9805e010c0063f906a281d99fedf244fd41604",
+    "title": "Positional Encoding Helps Recurrent Neural Networks Handle a Large Vocabulary",
+    "seed_ids": [
+        "hippo",
+        "af385c0fdd0eda2bbf429bea6fedffc327c8a180",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812"
+    ],
+    "s2id": "bf9805e010c0063f906a281d99fedf244fd41604",
+    "abstract": "This study reports an unintuitive finding that positional encoding enhances learning of recurrent neural networks (RNNs). Positional encoding is a high-dimensional representation of time indices on input data. Most famously, positional encoding complements the capabilities of Transformer neural networks, which lack an inherent mechanism for representing the data order. By contrast, RNNs can encode the temporal information of data points on their own, rendering their use of positional encoding seemingly redundant/unnecessary. Nonetheless, investigations through synthetic benchmarks reveal an advantage of coupling positional encoding and RNNs, especially for handling a large vocabulary that yields low-frequency tokens. Further scrutinization unveils that these low-frequency tokens destabilizes the gradients of vanilla RNNs, and the positional encoding resolves this instability. These results shed a new light on the utility of positional encoding beyond its canonical role as a timekeeper for Transformers.",
+    "authors": [
+        "Takashi Morita"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Investigations through synthetic benchmarks reveal an advantage of coupling positional encoding and RNNs, especially for handling a large vocabulary that yields low-frequency tokens, and shed a new light on the utility of positional encoding beyond its canonical role as a timekeeper for Transformers."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

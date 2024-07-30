@@ -1,0 +1,28 @@
+{
+    "acronym": "a936de33f60a1626fd2ad3d29e8c3e0cdf284e52",
+    "title": "U-Shaped Transformer With Frequency-Band Aware Attention for Speech Enhancement",
+    "seed_ids": [
+        "axialattn",
+        "d8d2e574965fe733eb1416e03df2b5c2914fc530",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06"
+    ],
+    "s2id": "a936de33f60a1626fd2ad3d29e8c3e0cdf284e52",
+    "abstract": "Recently, Transformer shows the potential to exploit the long-range sequence dependency in speech with self-attention. It has been introduced in single channel speech enhancement to improve the accuracy of speech estimation from a noise mixture. However, the amount of information represented across attention-heads is often huge, which leads to increased computational complexity. To address this issue, the axial attention is proposed i.e., to split a 2D attention into two 1-D attentions. In this paper, we develop a new method for speech enhancement by leveraging the axial attention, where we generate time and frequency sub-attention maps by calculating the attention map along time- and frequency-axis. Different from the conventional axial attention, the proposed method provides two parallel multi-head attentions for time- and frequency-axis, respectively. Moreover, the frequency-band aware attention is proposed i.e., high frequency-band attention (HFA), and low frequency-band attention (LFA), which facilitates the exploitation of the information related to speech and noise in different frequency bands in the noisy mixture. To re-use high-resolution feature maps from the encoder, we design a U-shaped Transformer, which helps recover lost information from the high-level representations to further improve the speech estimation accuracy. Extensive experiments on four public datasets are used to demonstrate the efficacy of the proposed method.",
+    "authors": [
+        "Yi Li",
+        "Yang Sun",
+        "Wenwu Wang",
+        "S. M. Naqvi"
+    ],
+    "venue": "IEEE/ACM Transactions on Audio Speech and Language Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new method for speech enhancement by leveraging the axial attention, where two parallel multi-head attentions for time- and frequency-axis are provided, which facilitates the exploitation of the information related to speech and noise in different frequency bands in the noisy mixture."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

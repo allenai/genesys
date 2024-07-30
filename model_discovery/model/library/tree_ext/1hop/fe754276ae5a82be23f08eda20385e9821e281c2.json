@@ -1,0 +1,31 @@
+{
+    "acronym": "fe754276ae5a82be23f08eda20385e9821e281c2",
+    "title": "Empowering Large Language Models for Textual Data Augmentation",
+    "seed_ids": [
+        "gpt2",
+        "ee1fdc0e4391f2ef7d3222d47d8677c574fcd95c",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "23c265ba884b92ecbd9d18641078d964697e4590",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "fe754276ae5a82be23f08eda20385e9821e281c2",
+    "abstract": "With the capabilities of understanding and executing natural language instructions, Large language models (LLMs) can potentially act as a powerful tool for textual data augmentation. However, the quality of augmented data depends heavily on the augmentation instructions provided, and the effectiveness can fluctuate across different downstream tasks. While manually crafting and selecting instructions can offer some improvement, this approach faces scalability and consistency issues in practice due to the diversity of downstream tasks. In this work, we address these limitations by proposing a new solution, which can automatically generate a large pool of augmentation instructions and select the most suitable task-informed instructions, thereby empowering LLMs to create high-quality augmented data for different downstream tasks. Empirically, the proposed approach consistently generates augmented data with better quality compared to non-LLM and LLM-based data augmentation methods, leading to the best performance on 26 few-shot learning tasks sourced from a wide range of application domains.",
+    "authors": [
+        "Yichuan Li",
+        "Kaize Ding",
+        "Jianling Wang",
+        "Kyumin Lee"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a new solution, which can automatically generate a large pool of augmentation instructions and select the most suitable task-informed instructions, thereby empowering LLMs to create high-quality augmented data for different downstream tasks."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

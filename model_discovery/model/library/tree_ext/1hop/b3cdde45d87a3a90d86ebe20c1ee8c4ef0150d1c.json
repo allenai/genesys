@@ -1,0 +1,35 @@
+{
+    "acronym": "b3cdde45d87a3a90d86ebe20c1ee8c4ef0150d1c",
+    "title": "Scaling Data Diversity for Fine-Tuning Language Models in Human Alignment",
+    "seed_ids": [
+        "gpt3",
+        "5fc1a3a49e8f1d106118b69d1d6be3b6caa23da0",
+        "525d93a382f6e7873b5d8a2e0713eb3dff7fb250",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1"
+    ],
+    "s2id": "b3cdde45d87a3a90d86ebe20c1ee8c4ef0150d1c",
+    "abstract": "Alignment with human preference prevents large language models (LLMs) from generating misleading or toxic content while requiring high-cost human feedback. Assuming resources of human annotation are limited, there are two different ways of allocating considered: more diverse PROMPTS or more diverse RESPONSES to be labeled. Nonetheless, a straightforward comparison between their impact is absent. In this work, we first control the diversity of both sides according to the number of samples for fine-tuning, which can directly reflect their influence. We find that instead of numerous prompts, more responses but fewer prompts better trigger LLMs for human alignment. Additionally, the concept of diversity for prompts can be more complex than responses that are typically quantified by single digits. Consequently, a new formulation of prompt diversity is proposed, further implying a linear correlation with the final performance of LLMs after fine-tuning. We also leverage it on data augmentation and conduct experiments to show its effect on different algorithms.",
+    "authors": [
+        "Feifan Song",
+        "Bowen Yu",
+        "Hao Lang",
+        "Haiyang Yu",
+        "Fei Huang",
+        "Houfeng Wang",
+        "Yongbin Li"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work finds that instead of numerous prompts, more responses but fewer prompts better trigger LLMs for human alignment, further implying a linear correlation with the final performance of LLMs after fine-tuning."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

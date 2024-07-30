@@ -1,0 +1,30 @@
+{
+    "acronym": "1dbb523a6555d6e0c5727620e2b57daaa5b79dc0",
+    "title": "Convolutions and Self-Attention: Re-interpreting Relative Positions in Pre-trained Language Models",
+    "seed_ids": [
+        "lighdynconv",
+        "84476fdf6ead3553f4493dff8e02308439d6222b",
+        "2a218786f4615b82389f78472e7ff22e6ce57490",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "b47381e04739ea3f392ba6c8faaf64105493c196"
+    ],
+    "s2id": "1dbb523a6555d6e0c5727620e2b57daaa5b79dc0",
+    "abstract": "In this paper, we detail the relationship between convolutions and self-attention in natural language tasks. We show that relative position embeddings in self-attention layers are equivalent to recently-proposed dynamic lightweight convolutions, and we consider multiple new ways of integrating convolutions into Transformer self-attention. Specifically, we propose composite attention, which unites previous relative position encoding methods under a convolutional framework. We conduct experiments by training BERT with composite attention, finding that convolutions consistently improve performance on multiple downstream tasks, replacing absolute position embeddings. To inform future work, we present results comparing lightweight convolutions, dynamic convolutions, and depthwise-separable convolutions in language model pre-training, considering multiple injection points for convolutions in self-attention layers.",
+    "authors": [
+        "Tyler A. Chang",
+        "Yifan Xu",
+        "Weijian Xu",
+        "Z. Tu"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Composite attention is proposed, which unites previous relative position encoding methods under a convolutional framework, and finds that convolutions consistently improve performance on multiple downstream tasks, replacing absolute position embeddings."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

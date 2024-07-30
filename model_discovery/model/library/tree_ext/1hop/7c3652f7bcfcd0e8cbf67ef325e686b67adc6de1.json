@@ -1,0 +1,30 @@
+{
+    "acronym": "7c3652f7bcfcd0e8cbf67ef325e686b67adc6de1",
+    "title": "VMT-Adapter: Parameter-Efficient Transfer Learning for Multi-Task Dense Scene Understanding",
+    "seed_ids": [
+        "bert",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "7c3652f7bcfcd0e8cbf67ef325e686b67adc6de1",
+    "abstract": "Large-scale pre-trained models have achieved remarkable success in various computer vision tasks. A standard approach to leverage these models is to fine-tune all model parameters for downstream tasks, which poses challenges in terms of computational and storage costs. Recently, inspired by Natural Language Processing (NLP), parameter-efficient transfer learning has been successfully applied to vision tasks. However, most existing techniques primarily focus on single-task adaptation, and despite limited research on multi-task adaptation, these methods often exhibit suboptimal training/inference efficiency. In this paper, we first propose an once-for-all Vision Multi-Task Adapter (VMT-Adapter), which strikes approximately O(1) training and inference efficiency w.r.t task number. Concretely, VMT-Adapter shares the knowledge from multiple tasks to enhance cross-task interaction while preserves task-specific knowledge via independent knowledge extraction modules. Notably, since task-specific modules require few parameters, VMT-Adapter can handle an arbitrary number of tasks with a negligible increase of trainable parameters. We also propose VMT-Adapter-Lite, which further reduces the trainable parameters by learning shared parameters between down- and up-projections. Extensive experiments on four dense scene understanding tasks demonstrate the superiority of VMT-Adapter(-Lite), achieving a 3.96% (1.34%) relative improvement compared to single-task full fine-tuning, while utilizing merely \uff5e1% (0.36%) trainable parameters of the pre-trained model.",
+    "authors": [
+        "Yi Xin",
+        "Junlong Du",
+        "Qiang Wang",
+        "Zhiwen Lin",
+        "Ke Yan"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes an once-for-all Vision Multi-Task Adapter (VMT-Adapter), which strikes approximately O(1) training and inference efficiency w.r.t task number and shares the knowledge from multiple tasks to enhance cross-task interaction while preserves task-specific knowledge via independent knowledge extraction modules."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

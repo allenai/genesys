@@ -1,0 +1,24 @@
+{
+    "acronym": "64bcbc763d69e5bf93e176fe19fb918d857bcb1d",
+    "title": "Abstractive Summarization of Legal Text Corpuses Using Transfer Learning",
+    "seed_ids": [
+        "bigbird",
+        "2e9d642b2a5ebd04b215649c697dd180086c0884"
+    ],
+    "s2id": "64bcbc763d69e5bf93e176fe19fb918d857bcb1d",
+    "abstract": "Abstractive summarization using transformers is difficult to perform on long passages of text due to the limited token length that current models like BERT and T5 can process (usually 1024 tokens). This challenge is particularly significant when processing legal documents, which frequently span dozens of pages. In this paper, we utilize the Big Bird architecture proposed by Zaheer et al. (2020) which has an expanded maximum input length of 4096 tokens. Using this extended context window, we explore the effects of various fine-tuning methods on generating ab-stractive summaries of legal documents that are 2 . 5 times larger than our model\u2019s maximum context window - on average. We find that partitioning a document into chunks of 4096 tokens, where the last 500 tokens from the previous chunk are present in the next chunk, produces summaries with a significantly higher level of fluency and accuracy when compared to vanilla fine-tuning methods.",
+    "authors": [
+        "Michael Zhang"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that partitioning a document into chunks of 4096 tokens, where the last 500 tokens from the previous chunk are present in the next chunk, produces summaries with a significantly higher level of fluency and accuracy when compared to vanilla fine-tuning methods."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

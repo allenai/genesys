@@ -1,0 +1,26 @@
+{
+    "acronym": "b0e77071555eb1a49d66893310afff20741976e7",
+    "title": "Text-to-Image Models for Counterfactual Explanations: a Black-Box Approach",
+    "seed_ids": [
+        "classfreediffu",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "b0e77071555eb1a49d66893310afff20741976e7",
+    "abstract": "This paper addresses the challenge of generating Counterfactual Explanations (CEs), involving the identification and modification of the fewest necessary features to alter a classifier\u2019s prediction for a given image. Our proposed method, Text-to-Image Models for Counterfactual Explanations (TIME), is a black-box counterfactual technique based on distillation. Unlike previous methods, this approach requires solely the image and its prediction, omitting the need for the classifier\u2019s structure, parameters, or gradients. Before generating the counterfactuals, TIME introduces two distinct biases into Stable Diffusion in the form of textual embeddings: the context bias, associated with the image\u2019s structure, and the class bias, linked to class-specific features learned by the target classifier. After learning these biases, we find the optimal latent code applying the classifier\u2019s predicted class token and regenerate the image using the target embedding as conditioning, producing the counterfactual explanation. Extensive empirical studies validate that TIME can generate explanations of comparable effectiveness even when operating within a black-box setting.",
+    "authors": [
+        "Guillaume Jeanneret",
+        "Loic Simon",
+        "Fr'ed'eric Jurie"
+    ],
+    "venue": "IEEE Workshop/Winter Conference on Applications of Computer Vision",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper addresses the challenge of generating Counterfactual Explanations, involving the identification and modification of the fewest necessary features to alter a classifier\u2019s prediction for a given image, by proposing a black-box counterfactual technique based on distillation."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

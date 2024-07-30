@@ -1,0 +1,38 @@
+{
+    "acronym": "89d8ca4ee0abb38f30a576901ed955d51ef4850a",
+    "title": "Efficient Representation Learning via Adaptive Context Pooling",
+    "seed_ids": [
+        "longformer",
+        "3cbe314cc5407a6c3249815b5173f22ea15173c2",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "baed71eed57ad462f3ab138d4b1700a738cd5414",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "2e14e84ccec924ed770b58108ad1d9de6f0ca295",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "89d8ca4ee0abb38f30a576901ed955d51ef4850a",
+    "abstract": "Self-attention mechanisms model long-range context by using pairwise attention between all input tokens. In doing so, they assume a fixed attention granularity defined by the individual tokens (e.g., text characters or image pixels), which may not be optimal for modeling complex dependencies at higher levels. In this paper, we propose ContextPool to address this problem by adapting the attention granularity for each token. Inspired by the success of ConvNets that are combined with pooling to capture long-range dependencies, we learn to pool neighboring features for each token before computing attention in a given attention layer. The pooling weights and support size are adaptively determined, allowing the pooled features to encode meaningful context with varying scale. We show that ContextPool makes attention models more expressive, achieving strong performance often with fewer layers and thus significantly reduced cost. Experiments validate that our ContextPool module, when plugged into transformer models, matches or surpasses state-of-the-art performance using less compute on several language and image benchmarks, outperforms recent works with learned context sizes or sparse attention patterns, and is also applicable to ConvNets for efficient feature learning.",
+    "authors": [
+        "Chen Huang",
+        "Walter A. Talbott",
+        "N. Jaitly",
+        "J. Susskind"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Inspired by the success of ConvNets that are combined with pooling to capture long-range dependencies, this paper learns to pool neighboring features for each token before computing attention in a given attention layer, and makes attention models more expressive, achieving strong performance often with fewer layers and thus significantly reduced cost."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

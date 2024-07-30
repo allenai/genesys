@@ -1,0 +1,24 @@
+{
+    "acronym": "83216ea36ae0f492d12082c8e8565b3143123eca",
+    "title": "CAPformer: Compression-Aware Pre-trained Transformer for Low-Light Image Enhancement",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "83216ea36ae0f492d12082c8e8565b3143123eca",
+    "abstract": "Low-Light Image Enhancement (LLIE) has advanced with the surge in phone photography demand, yet many existing methods neglect compression, a crucial concern for resource-constrained phone photography. Most LLIE methods overlook this, hindering their effectiveness. In this study, we investigate the effects of JPEG compression on low-light images and reveal substantial information loss caused by JPEG due to widespread low pixel values in dark areas. Hence, we propose the Compression-Aware Pre-trained Transformer (CAPformer), employing a novel pre-training strategy to learn lossless information from uncompressed low-light images. Additionally, the proposed Brightness-Guided Self-Attention (BGSA) mechanism enhances rational information gathering. Experiments demonstrate the superiority of our approach in mitigating compression effects on LLIE, showcasing its potential for improving LLIE in resource-constrained scenarios.",
+    "authors": [
+        "Wei Wang",
+        "Zhili Jin"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes the Compression-Aware Pre-trained Transformer (CAPformer), employing a novel pre-training strategy to learn lossless information from uncompressed low-light images, and demonstrates the superiority of this approach in mitigating compression effects on LLIE."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

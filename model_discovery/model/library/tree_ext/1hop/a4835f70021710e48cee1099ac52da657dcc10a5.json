@@ -1,0 +1,27 @@
+{
+    "acronym": "a4835f70021710e48cee1099ac52da657dcc10a5",
+    "title": "DUAL TRANSFORMER ENCODERS FOR SESSION-BASED RECOMMENDATION",
+    "seed_ids": [
+        "gpt",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "68e686817f2c33cd09ba3805fa082348f18affd9"
+    ],
+    "s2id": "a4835f70021710e48cee1099ac52da657dcc10a5",
+    "abstract": "When long-term user proles are not available, session-based recommendation methods are used to predict the user's next actions from anonymous sessions-based data. Recent advances in session-based recommendation highlight the necessity of modeling not only user sequential behaviors but also the user's main interest in a session, while avoiding the eect of unintended clicks causing interest drift of the user. In this work, we propose a Dual Transformer Encoder Recommendation model (DTER) as a solution to address this requirement. The idea is to combine the following recipes: (1) a Transformer-based model with dual encoders capable of modeling both sequential patterns and the main interest of the user in a session; (2) a new recommendation model that is designed for learning richer session contexts by conditioning on all permutations of the session prex. This approach provides a unied framework for leveraging the ability of the Transformer's self-attention mechanism in modeling session sequences while taking into account the user's main interest in the session. We empirically evaluate the proposed method on two benchmark datasets. The results show that DTER outperforms state-of-the-art session-based recommendation methods on common evaluation metrics.",
+    "authors": [
+        "P. H. Anh",
+        "Ngo Xuan Bach",
+        "Tu Minh Phuong"
+    ],
+    "venue": "Journal of Computer Science and Cybernetics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed Dual Transformer Encoder Recommendation model (DTER) provides a unied framework for leveraging the ability of the Transformer's self-attention mechanism in modeling session sequences while taking into account the user's main interest in the session."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

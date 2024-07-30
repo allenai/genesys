@@ -1,0 +1,26 @@
+{
+    "acronym": "da691447559f1ff151c0bee3c6800398c4f77b80",
+    "title": "Predicting word vectors for microtext",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "da691447559f1ff151c0bee3c6800398c4f77b80",
+    "abstract": "The use of computer\u2010mediated communication has resulted in a new form of written text called Microtext, which is very different from well\u2010written text. Most previous approaches deal with microtext at the character level rather than just words resulting in increased processing time. In this paper, we propose to transform static word vectors to dynamic form by modelling the effect of neighbouring words and their sentiment strength in the AffectiveSpace. To evaluate the approach, we crawled Tweets from diverse topics and human annotation was used to label their sentiments. We also normalized the tweets to fix phonetic variations, spelling errors, and abbreviations manually. A total of 1432 out\u2010of\u2010vocabulary (OOV) texts and their IV texts made it to the final corpus with their corresponding polarity. To assess the quality of the corpus, we used several OOV classifiers such as linear regression and observed over 90% accuracy. Next, we inferred word vectors using a novel four\u2010gram model based on sentiment intensity and reported accuracy on both open domain and closed domain sentiment classifiers. We observed an improvement in the range of 4\u201320 on Twitter, Movie and Airline reviews over baselines.",
+    "authors": [
+        "I. Chaturvedi",
+        "Ranjan Satapathy",
+        "Curtis Lynch",
+        "Erik Cambria"
+    ],
+    "venue": "Expert Syst. J. Knowl. Eng.",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes to transform static word vectors to dynamic form by modelling the effect of neighbouring words and their sentiment strength in the AffectiveSpace to transform static word vectors to dynamic form by modelling the effect of neighbouring words and their sentiment strength in the AffectiveSpace."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

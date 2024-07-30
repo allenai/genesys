@@ -1,0 +1,44 @@
+{
+    "acronym": "1804ea0c26e9b038547ff7a7e3eedf8d9de9717d",
+    "title": "BioMedLM: A 2.7B Parameter Language Model Trained On Biomedical Text",
+    "seed_ids": [
+        "transformer",
+        "gpt2",
+        "ac45bbf9940512d9d686cf8cd3a95969bc313570",
+        "3958152c43888a0a9461de2b952df4a39491442b",
+        "94ce1d5924e05e8d75e43ce70044293ddcef850a",
+        "785650a805851c7e945523e495c5a523c60f72a4",
+        "d1101476c85ae324142440e9f568ecbf41625be5",
+        "44279244407a64431810f982be6d0c7da4429dd7",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1804ea0c26e9b038547ff7a7e3eedf8d9de9717d",
+    "abstract": "Models such as GPT-4 and Med-PaLM 2 have demonstrated impressive performance on a wide variety of biomedical NLP tasks. However, these models have hundreds of billions of parameters, are computationally expensive to run, require users to send their input data over the internet, and are trained on unknown data sources. Can smaller, more targeted models compete? To address this question, we build and release BioMedLM, a 2.7 billion parameter GPT-style autoregressive model trained exclusively on PubMed abstracts and full articles. When fine-tuned, BioMedLM can produce strong multiple-choice biomedical question-answering results competitive with much larger models, such as achieving a score of 57.3% on MedMCQA (dev) and 69.0% on the MMLU Medical Genetics exam. BioMedLM can also be fine-tuned to produce useful answers to patient questions on medical topics. This demonstrates that smaller models can potentially serve as transparent, privacy-preserving, economical and environmentally friendly foundations for particular NLP applications, such as in biomedicine. The model is available on the Hugging Face Hub: https://huggingface.co/stanford-crfm/BioMedLM.",
+    "authors": [
+        "Elliot Bolton",
+        "Abhinav Venigalla",
+        "Michihiro Yasunaga",
+        "David Hall",
+        "Betty Xiong",
+        "Tony Lee",
+        "R. Daneshjou",
+        "Jonathan Frankle",
+        "Percy Liang",
+        "Michael Carbin",
+        "Christopher D. Manning"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Building and releasing BioMedLM, a 2.7 billion parameter GPT-style autoregressive model trained exclusively on PubMed abstracts and full articles, demonstrates that smaller models can potentially serve as transparent, privacy-preserving, economical and environmentally friendly foundations for particular NLP applications, such as in biomedicine."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,38 @@
+{
+    "acronym": "691eae8477f8091a0e4222de770ee7fbcbc82e17",
+    "title": "RALL-E: Robust Codec Language Modeling with Chain-of-Thought Prompting for Text-to-Speech Synthesis",
+    "seed_ids": [
+        "transformer",
+        "gpt2",
+        "gpt3",
+        "7f8e4e1e8a264ce8909e4482136835396dbbb662",
+        "42e726e2ea5bbb946001947d1a5b31ccc6b7aef9",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "691eae8477f8091a0e4222de770ee7fbcbc82e17",
+    "abstract": "We present RALL-E, a robust language modeling method for text-to-speech (TTS) synthesis. While previous work based on large language models (LLMs) shows impressive performance on zero-shot TTS, such methods often suffer from poor robustness, such as unstable prosody (weird pitch and rhythm/duration) and a high word error rate (WER), due to the autoregressive prediction style of language models. The core idea behind RALL-E is chain-of-thought (CoT) prompting, which decomposes the task into simpler steps to enhance the robustness of LLM-based TTS. To accomplish this idea, RALL-E first predicts prosody features (pitch and duration) of the input text and uses them as intermediate conditions to predict speech tokens in a CoT style. Second, RALL-E utilizes the predicted duration prompt to guide the computing of self-attention weights in Transformer to enforce the model to focus on the corresponding phonemes and prosody features when predicting speech tokens. Results of comprehensive objective and subjective evaluations demonstrate that, compared to a powerful baseline method VALL-E, RALL-E significantly improves the WER of zero-shot TTS from $5.6\\%$ (without reranking) and $1.7\\%$ (with reranking) to $2.5\\%$ and $1.0\\%$, respectively. Furthermore, we demonstrate that RALL-E correctly synthesizes sentences that are hard for VALL-E and reduces the error rate from $68\\%$ to $4\\%$.",
+    "authors": [
+        "Detai Xin",
+        "Xu Tan",
+        "Kai Shen",
+        "Zeqian Ju",
+        "Dongchao Yang",
+        "Yuancheng Wang",
+        "Shinnosuke Takamichi",
+        "H. Saruwatari",
+        "Shujie Liu",
+        "Jinyu Li",
+        "Sheng Zhao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Results of comprehensive objective and subjective evaluations demonstrate that, compared to a powerful baseline method VALL-E, RALL-E significantly improves the WER of zero-shot TTS and correctly synthesizes sentences that are hard for VALL-E and reduces the error rate."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

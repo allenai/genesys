@@ -1,0 +1,32 @@
+{
+    "acronym": "808ab377131e511c922552376d83acdbfa1a7208",
+    "title": "Speech language models lack important brain-relevant semantics",
+    "seed_ids": [
+        "gpt2",
+        "bert",
+        "357569763e23ebeab6ca1da8f33cde493e05dbc0",
+        "8cef169a76fc8ff2971ff3b6832b5de885d37ad4",
+        "89711a7e91ad81874a5a0b1c3359bb67b27c0578",
+        "c6631403d51eff308e93fd0a23018959a2d8544e",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "808ab377131e511c922552376d83acdbfa1a7208",
+    "abstract": "Despite known differences between reading and listening in the brain, recent work has shown that text-based language models predict both text-evoked and speech-evoked brain activity to an impressive degree. This poses the question of what types of information language models truly predict in the brain. We investigate this question via a direct approach, in which we systematically remove specific low-level stimulus features (textual, speech, and visual) from language model representations to assess their impact on alignment with fMRI brain recordings during reading and listening. Comparing these findings with speech-based language models reveals starkly different effects of low-level features on brain alignment. While text-based models show reduced alignment in early sensory regions post-removal, they retain significant predictive power in late language regions. In contrast, speech-based models maintain strong alignment in early auditory regions even after feature removal but lose all predictive power in late language regions. These results suggest that speech-based models provide insights into additional information processed by early auditory regions, but caution is needed when using them to model processing in late language regions. We make our code publicly available. [https://github.com/subbareddy248/speech-llm-brain]",
+    "authors": [
+        "S. Oota",
+        "Emin cCelik",
+        "Fatma Deniz",
+        "Mariya Toneva"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Using a direct approach, this work finds that both text-based and speech-based language models align well with early sensory regions due to shared low-level features, and suggests thatspeech-based models can be further improved to better reflect brain-like language processing."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

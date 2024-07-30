@@ -1,0 +1,29 @@
+{
+    "acronym": "79cb9bca730a4c5bbe73d97c1f40da1d0debe568",
+    "title": "Long Context Question Answering via Supervised Contrastive Learning",
+    "seed_ids": [
+        "longformer",
+        "4e3935ef7da6bcbb202ec7f8b285c313cadcd044",
+        "6aaec722a90eee0185d4bbfebbcd4f228ed1577f",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "79cb9bca730a4c5bbe73d97c1f40da1d0debe568",
+    "abstract": "Long-context question answering (QA) tasks require reasoning over a long document or multiple documents. Addressing these tasks often benefits from identifying a set of evidence spans (e.g., sentences), which provide supporting evidence for answering the question.In this work, we propose a novel method for equipping long-context QA models with an additional sequence-level objective for better identification of the supporting evidence.We achieve this via an additional contrastive supervision signal in finetuning, where the model is encouraged to explicitly discriminate supporting evidence sentences from negative ones by maximizing question-evidence similarity. The proposed additional loss exhibits consistent improvements on three different strong long-context transformer models, across two challenging question answering benchmarks \u2013 HotpotQA and QAsper.",
+    "authors": [
+        "Avi Caciularu",
+        "Ido Dagan",
+        "J. Goldberger",
+        "Arman Cohan"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel method for equipping long-context QA models with an additional sequence-level objective for better identification of the supporting evidence, via an additional contrastive supervision signal in finetuning."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

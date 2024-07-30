@@ -1,0 +1,32 @@
+{
+    "acronym": "17c0fb8e853230cc3abcd96d8427e5edcbcb1a57",
+    "title": "InfoVisDial: An Informative Visual Dialogue Dataset by Bridging Large Multimodal and Language Models",
+    "seed_ids": [
+        "gpt3",
+        "ada81a4de88a6ce474df2e2446ad11fea480616e",
+        "5e00596fa946670d894b1bdaeff5a98e3867ef13",
+        "06c7269c10125589d2599f684b751b1640f7a0cc",
+        "7eba731a7fd8de712b7b79b5af41a6e2d4dbd191"
+    ],
+    "s2id": "17c0fb8e853230cc3abcd96d8427e5edcbcb1a57",
+    "abstract": "In this paper, we build a visual dialogue dataset, named InfoVisDial, which provides rich informative answers in each round even with external knowledge related to the visual content. Different from existing datasets where the answer is compact and short, InfoVisDial contains long free-form answers with rich information in each round of dialogue. For effective data collection, the key idea is to bridge the large-scale multimodal model (e.g., GIT) and the language models (e.g., GPT-3). GIT can describe the image content even with scene text, while GPT-3 can generate informative dialogue based on the image description and appropriate prompting techniques. With such automatic pipeline, we can readily generate informative visual dialogue data at scale. Then, we ask human annotators to rate the generated dialogues to filter the low-quality conversations.Human analyses show that InfoVisDial covers informative and diverse dialogue topics: $54.4\\%$ of the dialogue rounds are related to image scene texts, and $36.7\\%$ require external knowledge. Each round's answer is also long and open-ended: $87.3\\%$ of answers are unique with an average length of $8.9$, compared with $27.37\\%$ and $2.9$ in VisDial. Last, we propose a strong baseline by adapting the GIT model for the visual dialogue task and fine-tune the model on InfoVisDial. Hopefully, our work can motivate more effort on this direction.",
+    "authors": [
+        "Bingbing Wen",
+        "Zhengyuan Yang",
+        "Jianfeng Wang",
+        "Zhe Gan",
+        "Bill Howe",
+        "Lijuan Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A visual dialogue dataset, named InfoVisDial, which provides rich informative answers in each round even with external knowledge related to the visual content, and proposes a strong baseline by adapting the GIT model for the visual dialogue task and fine-tune the model on InfoVisDial."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "31957789eb16c42542b50a53e6135fa8322ced16",
+    "title": "DMGAN: Dynamic Multi-Hop Graph Attention Network for Traffic Forecasting",
+    "seed_ids": [
+        "universaltrans",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "d8d2e574965fe733eb1416e03df2b5c2914fc530"
+    ],
+    "s2id": "31957789eb16c42542b50a53e6135fa8322ced16",
+    "abstract": "In the intelligent transportation system, traffic forecasting, which is generally characterized as a graph spatial-temporal prediction task, plays a crucial role. It is challenging to generate reliable forecast results due to the complexity of traffic topological information and the inherent uncertainty of road traffic circumstances. Existing works generally focus on modeling spatial dependency on static graph structures, but ignore dynamic relations between road segments and cannot extract long-range traffic dependencies in spatial-temporal domains. To bridge the above gaps, we present a novel framework, called Dynamic Multi-Hop Graph Attention Network (DMGAN). Specifically, we leverage dynamic graph modeling to capture time-varying relations across road sections and introduce the multi-hop operation in each message propagation layer to extract long-range spatial dependency. Meanwhile, we develop a fusion-attention module, preserving both local and global hidden layer outputs of the encoder, to capture both long- and short-term temporal dependencies jointly. In this way, our method can fully model complex time-varying traffic topology information and capture the internal patterns of traffic series by integrating dynamic graph structure and temporal attention component. DGMAN achieves state-of-the-art performance in three metrics, as demonstrated by experimental findings on four real-world public traffic datasets, METR-LA, PEMS-BAY, PEMS03, and PEMS07. This code and data are available at https://github.com/EEHITer/2022-TKDE-DMGAN-Pytorch/tree/main for reproducibility and further studies.",
+    "authors": [
+        "Rui Li",
+        "Fan Zhang",
+        "Tong Li",
+        "Ning Zhang",
+        "Tingting Zhang"
+    ],
+    "venue": "IEEE Transactions on Knowledge and Data Engineering",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DMGAN leverage dynamic graph modeling to capture time-varying relations across road sections and introduce the multi-hop operation in each message propagation layer to extract long-range spatial dependency and develop a fusion-attention module to capture both long- and short-term temporal dependencies jointly."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

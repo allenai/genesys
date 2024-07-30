@@ -1,0 +1,34 @@
+{
+    "acronym": "00b167a24f57f96294a4581bb185a57b0a4af365",
+    "title": "LayoutDiffuse: Adapting Foundational Diffusion Models for Layout-to-Image Generation",
+    "seed_ids": [
+        "classfreediffu",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "82482585e94192b4e9913727e461f89cd08e9725",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "00b167a24f57f96294a4581bb185a57b0a4af365",
+    "abstract": "Layout-to-image generation refers to the task of synthesizing photo-realistic images based on semantic layouts. In this paper, we propose LayoutDiffuse that adapts a foundational diffusion model pretrained on large-scale image or text-image datasets for layout-to-image generation. By adopting a novel neural adaptor based on layout attention and task-aware prompts, our method trains efficiently, generates images with both high perceptual quality and layout alignment, and needs less data. Experiments on three datasets show that our method significantly outperforms other 10 generative models based on GANs, VQ-VAE, and diffusion models.",
+    "authors": [
+        "Jiaxin Cheng",
+        "Xiao Liang",
+        "Xingjian Shi",
+        "Tong He",
+        "Tianjun Xiao",
+        "Mu Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes LayoutDiffuse, a novel neural adaptor that adapts a foundational diffusion model pretrained on large-scale image or text-image datasets for layout-to-image generation that significantly outperforms other 10 generative models based on GANs, VQ-VAE, and diffusion models."
+    },
+    "citationCount": 35,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

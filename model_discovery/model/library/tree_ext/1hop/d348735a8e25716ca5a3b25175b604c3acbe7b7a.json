@@ -1,0 +1,33 @@
+{
+    "acronym": "d348735a8e25716ca5a3b25175b604c3acbe7b7a",
+    "title": "The STC ASR System for the VOiCES from a Distance Challenge 2019",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "d348735a8e25716ca5a3b25175b604c3acbe7b7a",
+    "abstract": "This paper is a description of the Speech Technology Center (STC) automatic speech recognition (ASR) system for the \u201dVOiCES from a Distance Challenge 2019\u201d. We participated in the Fixed condition of the ASR task, which means that the only training data available was an 80-hour subset of the LibriSpeech corpus. The main difficulty of the challenge is a mismatch between clean training data and distant noisy development/evaluation data. In order to tackle this, we applied room acoustics simulation and weighted prediction error (WPE) dereverberation. We also utilized well-known speaker adaptation using x-vector speaker embeddings, as well as novel room acoustics adaptation with R-vector room impulse response (RIR) embeddings. The system used a lattice-level combination of 6 acoustic models based on different pronunciation dictionaries and input features. N-best hypotheses were rescored with 3 neural network language models (NNLMs) trained on both words and sub-word units. NNLMs were also explored for out-of-vocabulary (OOV) words handling by means of artificial texts generation. The final system achieved Word Error Rate (WER) of 14.7% on the evaluation data, which is the best result in the challenge.",
+    "authors": [
+        "I. Medennikov",
+        "Yuri Y. Khokhlov",
+        "A. Romanenko",
+        "Ivan Sorokin",
+        "Anton Mitrofanov",
+        "Vladimir Bataev",
+        "A. Andrusenko",
+        "Tatiana Prisyach",
+        "Mariya Korenevskaya",
+        "O. Petrov",
+        "Alexander Zatvornitsky"
+    ],
+    "venue": "Interspeech",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Speech Technology Center (STC) automatic speech recognition (ASR) system for the \u201dVOiCES from a Distance Challenge 2019\u201d participated in the Fixed condition of the ASR task, which means that the only training data available was an 80-hour subset of the LibriSpeech corpus."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

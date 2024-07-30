@@ -1,0 +1,37 @@
+{
+    "acronym": "3ff00d83a2dac26b5885f312e7ff8dedcdadf71c",
+    "title": "Efficient Language Modeling with Sparse all-MLP",
+    "seed_ids": [
+        "gmlp",
+        "da0d38cf2ac7e2a6908e0d9e1fff07058daab2ed",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "96d4f14f107608b68451bd0efe71a76dbc7cf9fe",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3ff00d83a2dac26b5885f312e7ff8dedcdadf71c",
+    "abstract": "All-MLP architectures have attracted increasing interest as an alternative to attention-based models. In NLP, recent work like gMLP shows that all-MLPs can match Transformers in language modeling, but still lag behind in downstream tasks. In this work, we analyze the limitations of MLPs in expressiveness, and propose sparsely activated MLPs with mixture-of-experts (MoEs) in both feature and input (token) dimensions. Such sparse all-MLPs significantly increase model capacity and expressiveness while keeping the compute constant. We address critical challenges in incorporating conditional computation with two routing strategies. The proposed sparse all-MLP improves language modeling perplexity and obtains up to 2$\\times$ improvement in training efficiency compared to both Transformer-based MoEs (GShard, Switch Transformer, Base Layers and HASH Layers) as well as dense Transformers and all-MLPs. Finally, we evaluate its zero-shot in-context learning performance on six downstream tasks, and find that it surpasses Transformer-based MoEs and dense Transformers.",
+    "authors": [
+        "Ping Yu",
+        "Mikel Artetxe",
+        "Myle Ott",
+        "Sam Shleifer",
+        "Hongyu Gong",
+        "Ves Stoyanov",
+        "Xian Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work analyzes the limitations of MLPs in expressiveness, and proposes sparsely activated MLPs with mixture-of-experts (MoEs) in both feature and input (token) dimensions, which significantly increase model capacity and expressiveness while keeping the compute constant."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

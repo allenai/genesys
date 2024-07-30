@@ -1,0 +1,28 @@
+{
+    "acronym": "a8e61923b1404eb7ae286e4ec407a3e3f925f788",
+    "title": "Speechformer: Reducing Information Loss in Direct Speech Translation",
+    "seed_ids": [
+        "linformer",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "a8e61923b1404eb7ae286e4ec407a3e3f925f788",
+    "abstract": "Transformer-based models have gained increasing popularity achieving state-of-the-art performance in many research fields including speech translation. However, Transformer\u2019s quadratic complexity with respect to the input sequence length prevents its adoption as is with audio signals, which are typically represented by long sequences. Current solutions resort to an initial sub-optimal compression based on a fixed sampling of raw audio features. Therefore, potentially useful linguistic information is not accessible to higher-level layers in the architecture. To solve this issue, we propose Speechformer, an architecture that, thanks to reduced memory usage in the attention layers, avoids the initial lossy compression and aggregates information only at a higher level according to more informed linguistic criteria. Experiments on three language pairs (en\u2192de/es/nl) show the efficacy of our solution, with gains of up to 0.8 BLEU on the standard MuST-C corpus and of up to 4.0 BLEU in a low resource scenario.",
+    "authors": [
+        "Sara Papi",
+        "Marco Gaido",
+        "Matteo Negri",
+        "Marco Turchi"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Speechformer is proposed, an architecture that, thanks to reduced memory usage in the attention layers, avoids the initial lossy compression and aggregates information only at a higher level according to more informed linguistic criteria."
+    },
+    "citationCount": 22,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,27 @@
+{
+    "acronym": "528b74239d0d90942a339fad2411d6f7379a8eb4",
+    "title": "EmbedFormer: Embedded Depth-Wise Convolution Layer for Token Mixing",
+    "seed_ids": [
+        "metaformer",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "528b74239d0d90942a339fad2411d6f7379a8eb4",
+    "abstract": "Visual Transformers (ViTs) have shown impressive performance due to their powerful coding ability to catch spatial and channel information. MetaFormer gives us a general architecture of transformers consisting of a token mixer and a channel mixer through which we can generally understand how transformers work. It is proved that the general architecture of the ViTs is more essential to the models\u2019 performance than self-attention mechanism. Then, Depth-wise Convolution layer (DwConv) is widely accepted to replace local self-attention in transformers. In this work, a pure convolutional \"transformer\" is designed. We rethink the difference between the operation of self-attention and DwConv. It is found that the self-attention layer, with an embedding layer, unavoidably affects channel information, while DwConv only mixes the token information per channel. To address the differences between DwConv and self-attention, we implement DwConv with an embedding layer before as the token mixer to instantiate a MetaFormer block and a model named EmbedFormer is introduced. Meanwhile, SEBlock is applied in the channel mixer part to improve performance. On the ImageNet-1K classification task, EmbedFormer achieves top-1 accuracy of 81.7% without additional training images, surpassing the Swin transformer by +0.4% in similar complexity. In addition, EmbedFormer is evaluated in downstream tasks and the results are entirely above those of PoolFormer, ResNet and DeiT. Compared with PoolFormer-S24, another instance of MetaFormer, our EmbedFormer improves the score by +3.0% box AP/+2.3% mask AP on the COCO dataset and +1.3% mIoU on the ADE20K.",
+    "authors": [
+        "Zeji Wang",
+        "Xiaowei He",
+        "Yi Li",
+        "Qinliang Chuai"
+    ],
+    "venue": "Italian National Conference on Sensors",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that the general architecture of the ViTs is more essential to the models\u2019 performance than self-attention mechanism, and Depth-wise Convolution layer (DwConv) is widely accepted to replace local self-Attention in transformers."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

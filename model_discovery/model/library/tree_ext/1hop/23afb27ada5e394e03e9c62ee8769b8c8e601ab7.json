@@ -1,0 +1,34 @@
+{
+    "acronym": "23afb27ada5e394e03e9c62ee8769b8c8e601ab7",
+    "title": "Bag-of-Words vs. Sequence vs. Graph vs. Hierarchy for Single- and Multi-Label Text Classification",
+    "seed_ids": [
+        "gmlp",
+        "15a6ae89b2bc959d4a5b48a8ce590526b50f1c98",
+        "bf80051ca9ae1e76e2bdbdcf44df559e7eb73cb1",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "2573af4e13d9a5dddb257d22cd38a600528d9a8b",
+        "a022bda79947d1f656a1164003c1b3ae9a843df9"
+    ],
+    "s2id": "23afb27ada5e394e03e9c62ee8769b8c8e601ab7",
+    "abstract": "Graph neural networks have triggered a resur-gence of graph-based text classi\ufb01cation methods, de\ufb01ning today\u2019s state of the art. We show that a simple multi-layer perceptron (MLP) using a Bag of Words (BoW) outperforms the recent graph-based models TextGCN and HeteGCN in an inductive text classi\ufb01cation setting and is comparable with HyperGAT in single-label classi\ufb01cation. We also run our own experiments on multi-label classi\ufb01cation, where the simple MLP outperforms the recent sequential-based gMLP and aMLP models. Moreover, we \ufb01ne-tune a sequence-based BERT and a lightweight DistilBERT model, which both outperform all models on both single-label and multi-label settings in most datasets. These results question the importance of synthetic graphs used in modern text classi\ufb01ers. In terms of parameters, DistilBERT is still twice as large as our BoW-based wide MLP, while graph-based models like TextGCN require setting up an O ( N 2 ) graph, where N is the vocabulary plus corpus size.",
+    "authors": [
+        "Andor Diera",
+        "Bao Xin Lin",
+        "Bhakti Khera",
+        "Tim Meuser",
+        "Tushar Singhal",
+        "Lukas Galke",
+        "A. Scherp"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that a simple multi-layer perceptron (MLP) using a Bag of Words (BoW) outperforms the recent graph-based models TextGCN and HeteGCN in an inductive text classi\ufb01cation setting and is comparable with HyperGAT in single-label classi-cation."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

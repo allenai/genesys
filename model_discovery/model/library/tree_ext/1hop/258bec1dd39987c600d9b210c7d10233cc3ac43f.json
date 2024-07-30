@@ -1,0 +1,35 @@
+{
+    "acronym": "258bec1dd39987c600d9b210c7d10233cc3ac43f",
+    "title": "Direct Preference Knowledge Distillation for Large Language Models",
+    "seed_ids": [
+        "gpt2",
+        "e2f8864c3e40298513ca320de0012818ce092bea",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "20db5ac6e88e2457c82856354a2e5d521482f360",
+        "c6c734e16f66fbfcefac7625cc64599e83292c1e",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "258bec1dd39987c600d9b210c7d10233cc3ac43f",
+    "abstract": "In the field of large language models (LLMs), Knowledge Distillation (KD) is a critical technique for transferring capabilities from teacher models to student models. However, existing KD methods face limitations and challenges in distillation of LLMs, including efficiency and insufficient measurement capabilities of traditional KL divergence. It is shown that LLMs can serve as an implicit reward function, which we define as a supplement to KL divergence. In this work, we propose Direct Preference Knowledge Distillation (DPKD) for LLMs. DPKD utilizes distribution divergence to represent the preference loss and implicit reward function. We re-formulate KD of LLMs into two stages: first optimizing and objective consisting of implicit reward and reverse KL divergence and then improving the preference probability of teacher outputs over student outputs. We conducted experiments and analysis on various datasets with LLM parameters ranging from 120M to 13B and demonstrate the broad applicability and effectiveness of our DPKD approach. Meanwhile, we prove the value and effectiveness of the introduced implicit reward and output preference in KD through experiments and theoretical analysis. The DPKD method outperforms the baseline method in both output response precision and exact match percentage. Code and data are available at https://aka.ms/dpkd.",
+    "authors": [
+        "Yixing Li",
+        "Yuxian Gu",
+        "Li Dong",
+        "Dequan Wang",
+        "Yu Cheng",
+        "Furu Wei"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work re-formulates KD of LLMs into two stages: first optimizing and objective consisting of implicit reward and reverse KL divergence and then improving the preference probability of teacher outputs over student outputs, which demonstrates the broad applicability and effectiveness of the DPKD approach."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

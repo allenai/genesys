@@ -1,0 +1,29 @@
+{
+    "acronym": "593b8e4849e9631d8cfbb3d890f12c6ad742ecfb",
+    "title": "Arena: A Patch-of-Interest ViT Inference Acceleration System for Edge-Assisted Video Analytics",
+    "seed_ids": [
+        "transformer",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "593b8e4849e9631d8cfbb3d890f12c6ad742ecfb",
+    "abstract": "The advent of edge computing has made real-time intelligent video analytics feasible. Previous works, based on traditional model architecture (e.g., CNN, RNN, etc.), employ various strategies to filter out non-region-of-interest content to minimize bandwidth and computation consumption but show inferior performance in adverse environments. Recently, visual foundation models based on transformers have shown great performance in adverse environments due to their amazing generalization capability. However, they require a large amount of computation power, which limits their applications in real-time intelligent video analytics. In this paper, we find visual foundation models like Vision Transformer (ViT) also have a dedicated acceleration mechanism for video analytics. To this end, we introduce Arena, an end-to-end edge-assisted video inference acceleration system based on ViT. We leverage the capability of ViT that can be accelerated through token pruning by only offloading and feeding Patches-of-Interest (PoIs) to the downstream models. Additionally, we employ probability-based patch sampling, which provides a simple but efficient mechanism for determining PoIs where the probable locations of objects are in subsequent frames. Through extensive evaluations on public datasets, our findings reveal that Arena can boost inference speeds by up to $1.58\\times$ and $1.82\\times$ on average while consuming only 54% and 34% of the bandwidth, respectively, all with high inference accuracy.",
+    "authors": [
+        "Haosong Peng",
+        "Wei Feng",
+        "Hao Li",
+        "Yufeng Zhan",
+        "Qihua Zhou",
+        "Yuanqing Xia"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces Arena, an end-to-end edge-assisted video inference acceleration system based on ViT that can be accelerated through token pruning by only offloading and feeding Patches-of-Interest (PoIs) to the downstream models, all with high inference accuracy."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

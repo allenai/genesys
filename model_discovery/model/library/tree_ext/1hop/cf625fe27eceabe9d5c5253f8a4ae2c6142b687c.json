@@ -1,0 +1,24 @@
+{
+    "acronym": "cf625fe27eceabe9d5c5253f8a4ae2c6142b687c",
+    "title": "Harvesting the Web for building Large-scale Argumentation Graphs",
+    "seed_ids": [
+        "transformerxl",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "cf625fe27eceabe9d5c5253f8a4ae2c6142b687c",
+    "abstract": "Knowledge graphs have been used successfully in the development of many artificial intelligence systems. In computational argumentation, the emergent area in natural language processing, a new argumentation graph has been constructed by Al-Khatib et al. [2020]. The graph models argumentation knowledge as an \u2018effect\u2019 relation (edge) between concepts (nodes). The effect relation has two categories: positive and negative. Al-Khatib et al. [2020] proposes an approach to acquire the knowledge automatically applying machine learning models. This method takes a claim as input and outputs whether the claim has an \u2018effect\u2019 relation, the relation category, and concepts. However, the mentioned approach shows some shortcomings, such as dealing only with the claim inputs, that diminish the applicability of constructing a large argumentation knowledge graphs. To overcome these shortcomings and construct a large argumentation knowledge graph, we introduce a new approach to mine effect relations between concepts. The new approach, different than Al-Khatib et al. [2020], covers more complex input types and employs the recent advances in text classification. Our implementation includes two main steps: building a new dataset utilizing the paradigm of distance supervision, and developing neural-based classifiers applying an active learning technique to filter the dataset and improve the classification effectiveness. The results of the evaluation experiments show that our approach helps the classifiers to learn new patterns and be able to handle sentences with complex structure.",
+    "authors": [
+        "Anh Thi Phuong Le"
+    ],
+    "venue": "",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new approach to mine effect relations between concepts is introduced, which covers more complex input types and employs the recent advances in text classification and helps the classifiers to learn new patterns and be able to handle sentences with complex structure."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

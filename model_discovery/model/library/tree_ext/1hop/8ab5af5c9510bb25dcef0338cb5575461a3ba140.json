@@ -1,0 +1,29 @@
+{
+    "acronym": "8ab5af5c9510bb25dcef0338cb5575461a3ba140",
+    "title": "nanoT5: A PyTorch Framework for Pre-training and Fine-tuning T5-style Models with Limited Resources",
+    "seed_ids": [
+        "flashattn",
+        "b069c32fcd77160f944ab3ba71ab6f0cfb782c68",
+        "6cb35dd6e1338faa0c3d6a6b0020bbcbcc18653d",
+        "5e52d654fd31f04c1bd884cd5480e6af8c95ad50",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "b21670e8061a06ab97e7d6052c9345a326e84ff8"
+    ],
+    "s2id": "8ab5af5c9510bb25dcef0338cb5575461a3ba140",
+    "abstract": "State-of-the-art language models like T5 have revolutionized the NLP landscape, but their computational demands hinder a large portion of the research community. To address this challenge, we present nanoT5, a specially-optimized PyTorch framework for efficient pre-training and fine-tuning of T5 models. Drawing on insights from optimizer differences and prioritizing efficiency, nanoT5 allows a T5-Base model to be pre-trained on a single GPU in just 16 hours, without any loss in performance. With the introduction of this open-source framework, we hope to widen the accessibility to language modelling research and cater to the community's demand for more user-friendly T5 (Encoder-Decoder) implementations. We make our contributions, including configurations, codebase, pre-training insights, and pre-trained models, available to the public.",
+    "authors": [
+        "Piotr Nawrot"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "N nanoT5, a specially-optimized PyTorch framework for efficient pre-training and fine-tuning of T5 models, is presented, hoping to widen the accessibility to language modelling research and cater to the community's demand for more user-friendly T5 (Encoder-Decoder) implementations."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

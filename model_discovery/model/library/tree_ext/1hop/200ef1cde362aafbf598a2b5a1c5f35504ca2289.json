@@ -1,0 +1,42 @@
+{
+    "acronym": "200ef1cde362aafbf598a2b5a1c5f35504ca2289",
+    "title": "ViTCoD: Vision Transformer Acceleration via Dedicated Algorithm and Accelerator Co-Design",
+    "seed_ids": [
+        "bigbird",
+        "b97c3c370401dc34d2adbeb24f34de5180a14be6",
+        "d291149a75d7ac194382bd61e515eb40ed0aa106",
+        "1a883522f3c0051d70be1f8cbdb8989a77395006",
+        "5af69480a7ae3b571df6782a11ec4437b386a7d9",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "8af925f4edf45131b5b6fed8aa655089d58692fa",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "b1c39d042fdf8f00a407b0df734764beb6c3b062",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "200ef1cde362aafbf598a2b5a1c5f35504ca2289",
+    "abstract": "Vision Transformers (ViTs) have achieved state-of-the-art performance on various vision tasks. However, ViTs\u2019 self-attention module is still arguably a major bottleneck, limiting their achievable hardware efficiency and more extensive applications to resource constrained platforms. Meanwhile, existing accelerators dedicated to NLP Transformers are not optimal for ViTs. This is because there is a large difference between ViTs and Transformers for natural language processing (NLP) tasks: ViTs have a relatively fixed number of input tokens, whose attention maps can be pruned by up to 90% even with fixed sparse patterns, without severely hurting the model accuracy (e.g., <=1.5% under 90% pruning ratio); while NLP Transformers need to handle input sequences of varying numbers of tokens and rely on on-the-fly predictions of dynamic sparse attention patterns for each input to achieve a decent sparsity (e.g., >=50%). To this end, we propose a dedicated algorithm and accelerator co-design framework dubbed ViTCoD for accelerating ViTs. Specifically, on the algorithm level, ViTCoD prunes and polarizes the attention maps to have either denser or sparser fixed patterns for regularizing two levels of workloads without hurting the accuracy, largely reducing the attention computations while leaving room for alleviating the remaining dominant data movements; on top of that, we further integrate a lightweight and learnable auto-encoder module to enable trading the dominant high-cost data movements for lower-cost computations. On the hardware level, we develop a dedicated accelerator to simultaneously coordinate the aforementioned enforced denser and sparser workloads for boosted hardware utilization, while integrating on-chip encoder and decoder engines to leverage ViTCoD\u2019s algorithm pipeline for much reduced data movements. Extensive experiments and ablation studies validate that ViTCoD largely reduces the dominant data movement costs, achieving speedups of up to 235.3\u00d7, 142.9\u00d7, 86.0\u00d7, 10.1\u00d7, and 6.8\u00d7 over general computing platforms CPUs, EdgeGPUs, GPUs, and prior-art Transformer accelerators SpAtten and Sanger under an attention sparsity of 90%, respectively. Our code implementation is available at https://github.com/GATECH-EIC/ViTCoD.",
+    "authors": [
+        "Haoran You",
+        "Zhanyi Sun",
+        "Huihong Shi",
+        "Zhongzhi Yu",
+        "Yang Zhao",
+        "Yongan Zhang",
+        "Chaojian Li",
+        "Baopu Li",
+        "Yingyan Lin"
+    ],
+    "venue": "International Symposium on High-Performance Computer Architecture",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A dedicated algorithm and accelerator co-design framework dubbed ViTCoD for accelerating ViTs and develops a dedicated accelerator to simultaneously coordinate the aforementioned enforced denser and sparser workloads for boosted hardware utilization, while integrating on-chip encoder and decoder engines to leverage ViTCs algorithm pipeline for much reduced data movements."
+    },
+    "citationCount": 38,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

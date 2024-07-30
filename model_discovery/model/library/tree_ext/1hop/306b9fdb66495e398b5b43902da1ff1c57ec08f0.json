@@ -1,0 +1,28 @@
+{
+    "acronym": "306b9fdb66495e398b5b43902da1ff1c57ec08f0",
+    "title": "High-quality distractor generation framework for English reading comprehension",
+    "seed_ids": [
+        "gpt3",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "1d0bf6b0ddcbd8bce7b7a930d88ff922e5c55cea",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "306b9fdb66495e398b5b43902da1ff1c57ec08f0",
+    "abstract": "Distractors are widely used in tasks such as reading comprehension and subject education. Generating high-quality distractors automatically poses a challenging task. Existing frameworks for generating distractors in the context of English reading comprehension primarily rely on training deep neural networks with given passages, questions, and corresponding answers. However, in more difficult questions, these frameworks often produce distractors with low levels of distraction, limiting their practical applications. To address this issue, we propose a framework called \u201cGenerating Distractors Framework with High Distraction\u201d (GDF-HD) that automatically generates high-distraction distractors. The GDF-HD framework categorizes common English reading comprehension questions into three types: detail questions, summary questions, and inference questions. Different question types utilize distinct approaches for generating distractors, and the framework enhances the distraction of these distractors from both syntactic and semantic perspectives. To validate the feasibility and effectiveness of our framework, we conduct experiments and evaluations using the RACE dataset. Additionally, we employ manual assessments to evaluate the quality and distraction levels of the generated distractors. The experimental results demonstrate that the GDF-HD framework is capable of producing high-quality distractors and significantly increasing their distraction levels.",
+    "authors": [
+        "Zhengrong Guo",
+        "Hui Wang",
+        "G. Guo"
+    ],
+    "venue": "2023 5th International Academic Exchange Conference on Science and Technology Innovation (IAECST)",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A framework called \u201cGenerating Distractors Framework with High Distraction\u201d (GDF-HD) that automatically generates high-distraction distractors in the context of English reading comprehension and enhances the distraction of these distractors from both syntactic and semantic perspectives is proposed."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

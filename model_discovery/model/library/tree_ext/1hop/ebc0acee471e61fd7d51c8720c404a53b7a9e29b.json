@@ -1,0 +1,27 @@
+{
+    "acronym": "ebc0acee471e61fd7d51c8720c404a53b7a9e29b",
+    "title": "Comparison of Structural Parsers and Neural Language Models as Surprisal Estimators",
+    "seed_ids": [
+        "gpt2",
+        "97a531f96a8d9a4c1d379637daf7dcc714db1b35",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ebc0acee471e61fd7d51c8720c404a53b7a9e29b",
+    "abstract": "Expectation-based theories of sentence processing posit that processing difficulty is determined by predictability in context. While predictability quantified via surprisal has gained empirical support, this representation-agnostic measure leaves open the question of how to best approximate the human comprehender's latent probability model. This article first describes an incremental left-corner parser that incorporates information about common linguistic abstractions such as syntactic categories, predicate-argument structure, and morphological rules as a computational-level model of sentence processing. The article then evaluates a variety of structural parsers and deep neural language models as cognitive models of sentence processing by comparing the predictive power of their surprisal estimates on self-paced reading, eye-tracking, and fMRI data collected during real-time language processing. The results show that surprisal estimates from the proposed left-corner processing model deliver comparable and often superior fits to self-paced reading and eye-tracking data when compared to those from neural language models trained on much more data. This may suggest that the strong linguistic generalizations made by the proposed processing model may help predict humanlike processing costs that manifest in latency-based measures, even when the amount of training data is limited. Additionally, experiments using Transformer-based language models sharing the same primary architecture and training data show a surprising negative correlation between parameter count and fit to self-paced reading and eye-tracking data. These findings suggest that large-scale neural language models are making weaker generalizations based on patterns of lexical items rather than stronger, more humanlike generalizations based on linguistic structure.",
+    "authors": [
+        "Byung-Doh Oh",
+        "Christian Clark",
+        "William Schuler"
+    ],
+    "venue": "Frontiers in Artificial Intelligence",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Results show that surprisal estimates from the proposed left-corner processing model deliver comparable and often superior fits to self-paced reading and eye-tracking data when compared to those from neural language models trained on much more data, suggesting that the strong linguistic generalizations made by the proposed processing model may help predict humanlike processing costs that manifest in latency-based measures, even when the amount of training data is limited."
+    },
+    "citationCount": 26,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

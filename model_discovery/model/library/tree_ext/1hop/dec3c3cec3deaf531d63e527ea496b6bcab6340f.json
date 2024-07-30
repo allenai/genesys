@@ -1,0 +1,27 @@
+{
+    "acronym": "dec3c3cec3deaf531d63e527ea496b6bcab6340f",
+    "title": "Review of deep learning models for crypto price prediction: implementation and evaluation",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "dec3c3cec3deaf531d63e527ea496b6bcab6340f",
+    "abstract": "There has been much interest in accurate cryptocurrency price forecast models by investors and researchers. Deep Learning models are prominent machine learning techniques that have transformed various fields and have shown potential for finance and economics. Although various deep learning models have been explored for cryptocurrency price forecasting, it is not clear which models are suitable due to high market volatility. In this study, we review the literature about deep learning for cryptocurrency price forecasting and evaluate novel deep learning models for cryptocurrency stock price prediction. Our deep learning models include variants of long short-term memory (LSTM) recurrent neural networks, variants of convolutional neural networks (CNNs), and the Transformer model. We evaluate univariate and multivariate approaches for multi-step ahead predicting of cryptocurrencies close-price. We also carry out volatility analysis on the four cryptocurrencies which reveals significant fluctuations in their prices throughout the COVID-19 pandemic. Additionally, we investigate the prediction accuracy of two scenarios identified by different training sets for the models. First, we use the pre-COVID-19 datasets to model cryptocurrency close-price forecasting during the early period of COVID-19. Secondly, we utilise data from the COVID-19 period to predict prices for 2023 to 2024. Our results show that the convolutional LSTM with a multivariate approach provides the best prediction accuracy in two major experimental settings. Our results also indicate that the multivariate deep learning models exhibit better performance in forecasting four different cryptocurrencies when compared to the univariate models.",
+    "authors": [
+        "Jingyang Wu",
+        "Xinyi Zhang",
+        "Fangyixuan Huang",
+        "Haochen Zhou",
+        "Rohtiash Chandra"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results show that the convolutional LSTM with a multivariate approach provides the best prediction accuracy in two major experimental settings, and indicate that the multivariate deep learning models exhibit better performance in forecasting four different cryptocurrencies when compared to the univariate models."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

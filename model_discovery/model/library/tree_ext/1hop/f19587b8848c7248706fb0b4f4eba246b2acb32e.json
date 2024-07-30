@@ -1,0 +1,31 @@
+{
+    "acronym": "f19587b8848c7248706fb0b4f4eba246b2acb32e",
+    "title": "To Recommend or Not: Recommendability Identification in Conversations with Pre-trained Language Models",
+    "seed_ids": [
+        "bert",
+        "88dd119dba5ee747851ade8f5d517b381614d918",
+        "cbf3bf8f541f5b446c59c8deacbcc18527768c75",
+        "df602516e28a9ef0ef665ed0aef551984d8d770d",
+        "8498daeeb893870524ffaa63086f8528795003d4",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f19587b8848c7248706fb0b4f4eba246b2acb32e",
+    "abstract": "Most current recommender systems primarily focus on what to recommend, assuming users always require personalized recommendations. However, with the widely spread of ChatGPT and other chatbots, a more crucial problem in the context of conversational systems is how to minimize user disruption when we provide recommendation services for users. While previous research has extensively explored different user intents in dialogue systems, fewer efforts are made to investigate whether recommendations should be provided. In this paper, we formally define the recommendability identification problem, which aims to determine whether recommendations are necessary in a specific scenario. First, we propose and define the recommendability identification task, which investigates the need for recommendations in the current conversational context. A new dataset is constructed. Subsequently, we discuss and evaluate the feasibility of leveraging pre-trained language models (PLMs) for recommendability identification. Finally, through comparative experiments, we demonstrate that directly employing PLMs with zero-shot results falls short of meeting the task requirements. Besides, fine-tuning or utilizing soft prompt techniques yields comparable results to traditional classification methods. Our work is the first to study recommendability before recommendation and provides preliminary ways to make it a fundamental component of the future recommendation system.",
+    "authors": [
+        "Zhefan Wang",
+        "Weizhi Ma",
+        "Min Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work is the first to study recommendability before recommendation and provides preliminary ways to make it a fundamental component of the future recommendation system."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "6ef94216e9845b0031cdbd81084e613acd673578",
+    "title": "Modeling Document-Level Context for Event Detection via Important Context Selection",
+    "seed_ids": [
+        "bigbird",
+        "longformer",
+        "reformer",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "6ef94216e9845b0031cdbd81084e613acd673578",
+    "abstract": "The task of Event Detection (ED) in Information Extraction aims to recognize and classify trigger words of events in text. The recent progress has featured advanced transformer-based language models (e.g., BERT) as a critical component in state-of-the-art models for ED. However, the length limit for input texts is a barrier for such ED models as they cannot encode long-range document-level context that has been shown to be beneficial for ED. To address this issue, we propose a novel method to model document-level context for ED that dynamically selects relevant sentences in the document for the event prediction of the target sentence. The target sentence will be then augmented with the selected sentences and consumed entirely by transformer-based language models for improved representation learning for ED. To this end, the REINFORCE algorithm is employed to train the relevant sentence selection for ED. Several information types are then introduced to form the reward function for the training process, including ED performance, sentence similarity, and discourse relations. Our extensive experiments on multiple benchmark datasets reveal the effectiveness of the proposed model, leading to new state-of-the-art performance.",
+    "authors": [
+        "Amir Pouran Ben Veyseh",
+        "Minh Le Nguyen",
+        "Nghia Trung Ngo",
+        "Bonan Min",
+        "Thien Huu Nguyen"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel method to model document-level context for ED that dynamically selects relevant sentences in the document for the event prediction of the target sentence is proposed, leading to new state-of-the-art performance."
+    },
+    "citationCount": 23,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

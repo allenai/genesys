@@ -1,0 +1,30 @@
+{
+    "acronym": "5a4efa0f5a5576c78e536903ae86b693466fb30a",
+    "title": "Efficient Identification of Butterfly Sparse Matrix Factorizations",
+    "seed_ids": [
+        "butterfly",
+        "67904b80a33bc09a5b2b1db296faea1b79fa80e9",
+        "8326dba15f6b8ee6e43c23eea3265a05e59e8135",
+        "fbaa944e73644ce12ea4a0ac8ffb64c3280f3aff",
+        "90b21dbad8969b74d704eed15a3d98722a88e464",
+        "a68c3412e60560290400d2707596f82a914b7c00"
+    ],
+    "s2id": "5a4efa0f5a5576c78e536903ae86b693466fb30a",
+    "abstract": "Fast transforms correspond to factorizations of the form $\\mathbf{Z} = \\mathbf{X}^{(1)} \\ldots \\mathbf{X}^{(J)}$, where each factor $ \\mathbf{X}^{(\\ell)}$ is sparse and possibly structured. This paper investigates essential uniqueness of such factorizations, i.e., uniqueness up to unavoidable scaling ambiguities. Our main contribution is to prove that any $N \\times N$ matrix having the so-called butterfly structure admits an essentially unique factorization into $J$ butterfly factors (where $N = 2^{J}$), and that the factors can be recovered by a hierarchical factorization method, which consists in recursively factorizing the considered matrix into two factors. This hierarchical identifiability property relies on a simple identifiability condition in the two-layer and fixed-support setting. This approach contrasts with existing ones that fit the product of butterfly factors to a given matrix via gradient descent. The proposed method can be applied in particular to retrieve the factorization of the Hadamard or the discrete Fourier transform matrices of size $N=2^J$. Computing such factorizations costs $\\mathcal{O}(N^{2})$, which is of the order of dense matrix-vector multiplication, while the obtained factorizations enable fast $\\mathcal{O}(N \\log N)$ matrix-vector multiplications and have the potential to be applied to compress deep neural networks.",
+    "authors": [
+        "L\u00e9on Zheng",
+        "E. Riccietti",
+        "R. Gribonval"
+    ],
+    "venue": "SIAM Journal on Mathematics of Data Science",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that any $N \\times N$ matrix having the so-called butterfly structure admits an essentially unique factorization into $J$ butterfly factors (where $N = 2^{J}$), and that the factors can be recovered by a hierarchical factorization method, which consists in recursively factorizing the considered matrix into two factors."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

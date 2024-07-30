@@ -1,0 +1,28 @@
+{
+    "acronym": "0043eee62f34e9b1012368d092ea31f44682fecc",
+    "title": "BrainPST: Pre-training Stacked Transformers for Dynamic Brain Functional Network Analysis",
+    "seed_ids": [
+        "bert",
+        "277dd73bfeb5c46513ce305136b0e71fcd2a311c",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "0043eee62f34e9b1012368d092ea31f44682fecc",
+    "abstract": "Deep learning methods have been applied for dynamic brain functional network analysis recently. However, they are usually restricted by the complex spatio-temporal dynamics and the limited labeled data. In this paper, we proposed a stacked Transformer neural network, namely BrainPST, to capture spatio-temporal patterns for dynamic brain functional network classification. BrainPST model integrated spatial and temporal information by stacking two Transformers: one for learning snapshot networks and the other for learning sequence of functional connections. Unlike recent models, BrainPST was designed to pre-train the stacked Transformer network by leveraging unlabeled existing brain imaging data. A pre-training framework with designed pre-training strategies was proposed to learn general spatio-temporal representations from the unlabeled brain networks, and to fine-tune the pre-trained model in downstream tasks. BrainPST is a conceptually simple and effective model. The results of experiments showed the BrainPST model without pre-training achieved comparative performance with the recent models, and the pre-trained BrainPST obtained new state-of-the-art performance. The pre-trained BrainPST improved 3.92% of AUC compared with the model without pre-training.",
+    "authors": [
+        "Jinlong Hu",
+        "Ya-Lin Huang",
+        "Yi Zhuo",
+        "Shoubin Dong"
+    ],
+    "venue": "IEEE International Conference on Bioinformatics and Biomedicine",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A stacked Transformer neural network, namely BrainPST, to capture spatio-temporal patterns for dynamic brain functional network classification and a pre-training framework with designed pre-training strategies was proposed to learn general spatio-temporal representations from the unlabeled brain networks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

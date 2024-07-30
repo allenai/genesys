@@ -1,0 +1,33 @@
+{
+    "acronym": "2686b6512e0c0ff904dade81572e523a784083b7",
+    "title": "DadaGP: A Dataset of Tokenized GuitarPro Songs for Sequence Models",
+    "seed_ids": [
+        "sparsetransformer",
+        "fda805c6e85a03d10549acdc5489420ca8f3d405",
+        "eb0931c39904a40c6cb4aa35c9b21d5e3b7dc856",
+        "ad4c63d617d89ac82ad3fd1dfa68a9f2afa84443",
+        "ce510c6cfeac703706460680e977c54554840830",
+        "fb507ada871d1e8c29e376dbf7b7879689aa89f9"
+    ],
+    "s2id": "2686b6512e0c0ff904dade81572e523a784083b7",
+    "abstract": "Originating in the Renaissance and burgeoning in the digital era, tablatures are a commonly used music notation system which provides explicit representations of instrument fingerings rather than pitches. GuitarPro has established itself as a widely used tablature format and software enabling musicians to edit and share songs for musical practice, learning, and composition. In this work, we present DadaGP, a new symbolic music dataset comprising 26,181 song scores in the GuitarPro format covering 739 musical genres, along with an accompanying tokenized format well-suited for generative sequence models such as the Transformer. The tokenized format is inspired by event-based MIDI encodings, often used in symbolic music generation models. The dataset is released with an encoder/decoder which converts GuitarPro files to tokens and back. We present results of a use case in which DadaGP is used to train a Transformer-based model to generate new songs in GuitarPro format. We discuss other relevant use cases for the dataset (guitar-bass transcription, music style transfer and artist/genre classification) as well as ethical implications. DadaGP opens up the possibility to train GuitarPro score generators, fine-tune models on custom data, create new styles of music, AI-powered songwriting apps, and human-AI improvisation.",
+    "authors": [
+        "Pedro Sarmento",
+        "Adarsh Kumar",
+        "CJ Carr",
+        "Zack Zukowski",
+        "M. Barthet",
+        "Yi-Hsuan Yang"
+    ],
+    "venue": "International Society for Music Information Retrieval Conference",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DadaGP opens up the possibility to train GuitarPro score generators, fine-tune models on custom data, create new styles of music, AI-powered songwriting apps, and human-AI improvisation."
+    },
+    "citationCount": 20,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

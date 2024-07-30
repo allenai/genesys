@@ -1,0 +1,36 @@
+{
+    "acronym": "0645c86da0f6329f13489654210eaaca87be2e22",
+    "title": "You Truly Understand What I Need: Intellectual and Friendly Dialogue Agents grounding Knowledge and Persona",
+    "seed_ids": [
+        "gpt2",
+        "c65c96cfc8b448fe9fd6bbfe1aaaea727515f4f7",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0645c86da0f6329f13489654210eaaca87be2e22",
+    "abstract": "To build a conversational agent that interacts fluently with humans, previous studies blend knowledge or personal profile into the pre-trained language model. However, the model that considers knowledge and persona at the same time is still limited, leading to hallucination and a passive way of using personas. We propose an effective dialogue agent that grounds external knowledge and persona simultaneously. The agent selects the proper knowledge and persona to use for generating the answers with our candidate scoring implemented with a poly-encoder. Then, our model generates the utterance with lesser hallucination and more engagingness utilizing retrieval augmented generation with knowledge-persona enhanced query. We conduct experiments on the persona-knowledge chat and achieve state-of-the-art performance in grounding and generation tasks on the automatic metrics. Moreover, we validate the answers from the models regarding hallucination and engagingness through human evaluation and qualitative results. We show our retriever's effectiveness in extracting relevant documents compared to the other previous retrievers, along with the comparison of multiple candidate scoring methods. Code is available at https://github.com/dlawjddn803/INFO",
+    "authors": [
+        "J. Lim",
+        "Myunghoon Kang",
+        "Yuna Hur",
+        "Seung-Ju Jung",
+        "Jinsung Kim",
+        "Yoonna Jang",
+        "Dongyub Lee",
+        "Hyesung Ji",
+        "Donghoon Shin",
+        "Seung Wook Kim",
+        "Heu-Jeoung Lim"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An effective dialogue agent is proposed that grounds external knowledge and persona simultaneously simultaneously and generates the utterance with lesser hallucination and more engagingness utilizing retrieval augmented generation with knowledge-persona enhanced query."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

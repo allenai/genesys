@@ -1,0 +1,28 @@
+{
+    "acronym": "523745e29f6cb1890f18352d449fd3597910c485",
+    "title": "Improving Compositional Generalization in Classification Tasks via Structure Annotations",
+    "seed_ids": [
+        "etc",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "5cdab78acc4f3aab429a0dd41c3ec7e605d42e7b"
+    ],
+    "s2id": "523745e29f6cb1890f18352d449fd3597910c485",
+    "abstract": "Compositional generalization is the ability to generalize systematically to a new data distribution by combining known components. Although humans seem to have a great ability to generalize compositionally, state-of-the-art neural models struggle to do so. In this work, we study compositional generalization in classification tasks and present two main contributions. First, we study ways to convert a natural language sequence-to-sequence dataset to a classification dataset that also requires compositional generalization. Second, we show that providing structural hints (specifically, providing parse trees and entity links as attention masks for a Transformer model) helps compositional generalization.",
+    "authors": [
+        "Juyong Kim",
+        "Pradeep Ravikumar",
+        "J. Ainslie",
+        "Santiago Ontan'on"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that providing structural hints (specifically, providing parse trees and entity links as attention masks for a Transformer model) helps compositional generalization."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

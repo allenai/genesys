@@ -1,0 +1,24 @@
+{
+    "acronym": "f431fe04c3bbed42db73bdd3aaab79f29c766486",
+    "title": "Learning Dynamic Multimodal Network Slot Concepts from the Web for Forecasting Environmental, Social and Governance Ratings",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "f431fe04c3bbed42db73bdd3aaab79f29c766486",
+    "abstract": "Dynamic multimodal networks are networks with node attributes from different modalities where the attributes and network relationships evolve across time, i.e. both networks and multimodal attributes are dynamic. For example, dynamic relationship networks between companies that evolve across time due to changes in business strategies and alliances, which are associated with dynamic company attributes from multiple modalities such as textual online news, categorical events, and numerical financial-related data. Such information can be useful in predictive tasks involving companies. Environmental, social and governance (ESG) ratings of companies are important for assessing the sustainability risks of companies. The process of generating ESG ratings by expert analysts is however laborious and time-intensive. We thus explore the use of dynamic multimodal networks extracted from the web for forecasting ESG ratings. Learning such dynamic multimodal networks from the web for forecasting ESG ratings is however challenging due to its heterogeneity, and the low signal-to-noise ratios and non-stationary distributions of web information. Human analysts cope with such issues by learning concepts from past experience through relational thinking, and scanning for such concepts when analyzing new information about a company. In this paper, we propose the Dynamic Multimodal Slot Concept Attention-based Network (DynScan) model. DynScan utilizes slot attention mechanisms together with slot concept alignment and disentanglement loss functions to learn latent slot concepts from dynamic multimodal networks to improve performance on ESG rating forecasting tasks. DynScan is evaluated on forecasting tasks on six data sets, comprising three ESG ratings across two sets of companies. Our experiments show that DynScan outperforms other state-of-the-art models on these forecasting tasks. We also visualize the slot concepts learnt by DynScan on five synthetic datasets and three real-world datasets and observe distinct and meaningful slot concepts being learnt by DynScan across both synthetic and real-world datasets.",
+    "authors": [
+        "Gary (Ming) Ang",
+        "Ee-Peng Lim"
+    ],
+    "venue": "ACM Transactions on the Web",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DynScan utilizes slot attention mechanisms together with slot concept alignment and disentanglement loss functions to learn latent slot concepts from dynamic multimodal networks to improve performance on ESG rating forecasting tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

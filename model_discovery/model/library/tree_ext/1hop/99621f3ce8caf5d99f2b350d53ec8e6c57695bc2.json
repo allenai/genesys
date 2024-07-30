@@ -1,0 +1,45 @@
+{
+    "acronym": "99621f3ce8caf5d99f2b350d53ec8e6c57695bc2",
+    "title": "LOCOST: State-Space Models for Long Document Abstractive Summarization",
+    "seed_ids": [
+        "longformer",
+        "longt5",
+        "fnet",
+        "a128b1c47e6842605fb95bceae930d2135fc38fc",
+        "661e8d555c4424b5953f17434f2ba910bfcf3afe",
+        "3b39efe6c91ae432dd35bb79431edb8a6719f906",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "5b1641b7661b4d9ec2826e847ebf1b36f2d5bdec",
+        "9dc624d7258d1a56117ca720aea953ce46b66b21",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "99621f3ce8caf5d99f2b350d53ec8e6c57695bc2",
+    "abstract": "State-space models are a low-complexity alternative to transformers for encoding long sequences and capturing long-term dependencies. We propose LOCOST: an encoder-decoder architecture based on state-space models for conditional text generation with long context inputs. With a computational complexity of \\mathcal{O}(L \\log L), this architecture can handle significantly longer sequences than state-of-the-art models that are based on sparse attention patterns. We evaluate our model on a series of long document abstractive summarization tasks. The model reaches a performance level that is 93-96% comparable to the top-performing sparse transformers of the same size while saving up to 50% memory during training and up to 87% during inference. Additionally, LOCOST effectively handles input texts exceeding 600K tokens at inference time, setting new state-of-the-art results on full-book summarization and opening new perspectives for long input processing.",
+    "authors": [
+        "Florian Le Bronnec",
+        "Song Duong",
+        "Mathieu Ravaut",
+        "Alexandre Allauzen",
+        "Nancy F. Chen",
+        "Vincent Guigue",
+        "Alberto Lumbreras",
+        "Laure Soulier",
+        "Patrick Gallinari"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes LOCOST: an encoder-decoder architecture based on state-space models for conditional text generation with long context inputs that effectively handles input texts exceeding 600K tokens at inference time, setting new state-of-the-art results on full-book summarization and opening new perspectives for long input processing."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

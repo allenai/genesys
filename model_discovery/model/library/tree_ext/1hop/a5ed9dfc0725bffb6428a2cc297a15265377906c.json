@@ -1,0 +1,26 @@
+{
+    "acronym": "a5ed9dfc0725bffb6428a2cc297a15265377906c",
+    "title": "Hello, It\u2019s GPT-2 - How Can I Help You? Towards the Use of Pretrained Language Models for Task-Oriented Dialogue Systems",
+    "seed_ids": [
+        "gpt",
+        "791c3c30f2af10ac06f4fbc5b1e8960064aacbc7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a5ed9dfc0725bffb6428a2cc297a15265377906c",
+    "abstract": "Data scarcity is a long-standing and crucial challenge that hinders quick development of task-oriented dialogue systems across multiple domains: task-oriented dialogue models are expected to learn grammar, syntax, dialogue reasoning, decision making, and language generation from absurdly small amounts of task-specific data. In this paper, we demonstrate that recent progress in language modeling pre-training and transfer learning shows promise to overcome this problem. We propose a task-oriented dialogue model that operates solely on text input: it effectively bypasses explicit policy and language generation modules. Building on top of the TransferTransfo framework (Wolf et al., 2019) and generative model pre-training (Radford et al., 2019), we validate the approach on complex multi-domain task-oriented dialogues from the MultiWOZ dataset. Our automatic and human evaluations show that the proposed model is on par with a strong task-specific neural baseline. In the long run, our approach holds promise to mitigate the data scarcity problem, and to support the construction of more engaging and more eloquent task-oriented conversational agents.",
+    "authors": [
+        "Pawe\u0142 Budzianowski",
+        "Ivan Vulic"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a task-oriented dialogue model that operates solely on text input: it effectively bypasses explicit policy and language generation modules and holds promise to mitigate the data scarcity problem, and to support the construction of more engaging and more eloquent task- oriented conversational agents."
+    },
+    "citationCount": 285,
+    "influentialCitationCount": 21,
+    "code": null,
+    "description": null,
+    "url": null
+}

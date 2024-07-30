@@ -1,0 +1,32 @@
+{
+    "acronym": "e36dbc1ae9b5116b798d519948de097c3bf19e5b",
+    "title": "Multitask Learning Can Improve Worst-Group Outcomes",
+    "seed_ids": [
+        "bert",
+        "55b901b3f5a0ec6788cbad0c0acdd4aa0f35c72f",
+        "4990f7542f0600e0501a7e7a931b32eb7cb804d5",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "145b8b5d99a2beba6029418ca043585b90138d12"
+    ],
+    "s2id": "e36dbc1ae9b5116b798d519948de097c3bf19e5b",
+    "abstract": "In order to create machine learning systems that serve a variety of users well, it is vital to not only achieve high average performance but also ensure equitable outcomes across diverse groups. However, most machine learning methods are designed to improve a model's average performance on a chosen end task without consideration for their impact on worst group error. Multitask learning (MTL) is one such widely used technique. In this paper, we seek not only to understand the impact of MTL on worst-group accuracy but also to explore its potential as a tool to address the challenge of group-wise fairness. We primarily consider the standard setting of fine-tuning a pre-trained model, where, following recent work \\citep{gururangan2020don, dery2023aang}, we multitask the end task with the pre-training objective constructed from the end task data itself. In settings with few or no group annotations, we find that multitasking often, but not consistently, achieves better worst-group accuracy than Just-Train-Twice (JTT; \\citet{pmlr-v139-liu21f}) -- a representative distributionally robust optimization (DRO) method. Leveraging insights from synthetic data experiments, we propose to modify standard MTL by regularizing the joint multitask representation space. We run a large number of fine-tuning experiments across computer vision and natural language processing datasets and find that our regularized MTL approach \\emph{consistently} outperforms JTT on both average and worst-group outcomes. Our official code can be found here: \\href{https://github.com/atharvajk98/MTL-group-robustness.git}{\\url{https://github.com/atharvajk98/MTL-group-robustness}}.",
+    "authors": [
+        "Atharva Kulkarni",
+        "L. Dery",
+        "Amrith Rajagopal Setlur",
+        "Aditi Raghunathan",
+        "Ameet Talwalkar",
+        "Graham Neubig"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes to modify standard MTL by regularizing the joint multitask representation space by regularizing the joint multitask representation space and finds that the regularized MTL approach consistently outperforms JTT on both average and worst-group outcomes."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

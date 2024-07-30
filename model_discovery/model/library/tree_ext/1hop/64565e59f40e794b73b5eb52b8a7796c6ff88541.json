@@ -1,0 +1,46 @@
+{
+    "acronym": "64565e59f40e794b73b5eb52b8a7796c6ff88541",
+    "title": "Z-Code++: A Pre-trained Language Model Optimized for Abstractive Summarization",
+    "seed_ids": [
+        "gpt2",
+        "longt5",
+        "e96493b4181de6c60b761dc66492db8e66fd784f",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "161321ef451d658d66b762cba5c202b12260220e",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "7cc730da554003dda77796d2cb4f06da5dfd5592",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "2a7023e7d1dbd6ea0d98efd09a1f18d8599fe78f",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "64565e59f40e794b73b5eb52b8a7796c6ff88541",
+    "abstract": "This paper presents Z-Code++, a new pre-trained language model optimized for abstractive text summarization. The model extends the state-of-the-art encoder-decoder model using three techniques. First, we use a two-phase pre-training to improve the model\u2019s performance on low-resource summarization tasks. The model is first pre-trained using text corpora for language understanding, then is continually pre-trained on summarization corpora for grounded text generation. Second, we replace self-attention layers in the encoder with disentangled attention layers, where each word is represented using two vectors that encode its content and position, respectively. Third, we use fusion-in-encoder, a simple yet effective method of encoding long sequences in a hierarchical manner. Z-Code++ createsa new state-of-the-art on 9 of 13 text summarization tasks across 5 languages. Our model is parameter-efficient in that it outperforms the 600x larger PaLM540B on XSum, and the finetuned 200x larger GPT3175B on SAMSum. In zero-shot and few-shot settings, our model substantially outperforms the competing models.",
+    "authors": [
+        "Pengcheng He",
+        "Baolin Peng",
+        "Liyang Lu",
+        "Song Wang",
+        "Jie Mei",
+        "Yang Liu",
+        "Ruochen Xu",
+        "H. Awadalla",
+        "Yu Shi",
+        "Chenguang Zhu",
+        "Wayne Xiong",
+        "Michael Zeng",
+        "Jianfeng Gao",
+        "Xuedong Huang"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Z-Code++, a new pre-trained language model optimized for abstractive text summarization, is presented, which is parameter-efficient in that it outperforms the 600x larger PaLM540B on XSum, and the finetuned 200x larger GPT3175B on SAMSum."
+    },
+    "citationCount": 33,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

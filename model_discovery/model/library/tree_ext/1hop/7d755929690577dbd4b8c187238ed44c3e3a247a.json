@@ -1,0 +1,38 @@
+{
+    "acronym": "7d755929690577dbd4b8c187238ed44c3e3a247a",
+    "title": "3D-RPE: Enhancing Long-Context Modeling Through 3D Rotary Position Encoding",
+    "seed_ids": [
+        "pi",
+        "roformer",
+        "cf7ab5df804575bad88a9fcf0fbf7707bf500944",
+        "2b8439f319dfa73df62ca8957ff6d0c1f3c7a73c",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "b6346f9fa093b8e85df712485a2b851b9f680dac",
+        "b31a5884a8ebe96b6300839b28608b97f8f8ef76",
+        "b0db25e317cf856f1ec1ca3df0e573d850ed4696",
+        "b069c32fcd77160f944ab3ba71ab6f0cfb782c68",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+        "f51497f463566581874c941353dd9d80069c5b77"
+    ],
+    "s2id": "7d755929690577dbd4b8c187238ed44c3e3a247a",
+    "abstract": "Inspired by the Bloch Sphere representation, we propose a novel rotary position encoding on a three-dimensional sphere, named 3D Rotary Position Encoding (3D-RPE). 3D-RPE is an advanced version of the widely used 2D Rotary Position Encoding (RoPE), with two major advantages for modeling long contexts: controllable long-term decay and improved position resolution. For controllable long-term decay, 3D-RPE allows for the regulation of long-term decay within the chunk size, ensuring the modeling of relative positional information between tokens at a distant relative position. For enhanced position resolution, 3D-RPE can mitigate the degradation of position resolution caused by position interpolation on RoPE. We have conducted experiments on long-context Natural Language Understanding (NLU) and long-sequence Language Modeling (LM) tasks. From the experimental results, 3D-RPE achieved performance improvements over RoPE, especially in long-context NLU tasks.",
+    "authors": [
+        "Xindian Ma",
+        "Wenyuan Liu",
+        "Peng Zhang",
+        "Nan Xu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "3D-RPE is an advanced version of the widely used 2D Rotary Position Encoding (RoPE), with two major advantages for modeling long contexts: controllable long-term decay and improved position resolution."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

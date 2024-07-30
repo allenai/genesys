@@ -1,0 +1,31 @@
+{
+    "acronym": "83625c62b58671740c23654f3b64485811545bbc",
+    "title": "Text Guided Image Editing with Automatic Concept Locating and Forgetting",
+    "seed_ids": [
+        "classfreediffu",
+        "6e3a3b7a8a0376d867cad72eedf2f9b746f29a33",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "83625c62b58671740c23654f3b64485811545bbc",
+    "abstract": "With the advancement of image-to-image diffusion models guided by text, significant progress has been made in image editing. However, a persistent challenge remains in seamlessly incorporating objects into images based on textual instructions, without relying on extra user-provided guidance. Text and images are inherently distinct modalities, bringing out difficulties in fully capturing the semantic intent conveyed through language and accurately translating that into the desired visual modifications. Therefore, text-guided image editing models often produce generations with residual object attributes that do not fully align with human expectations. To address this challenge, the models should comprehend the image content effectively away from a disconnect between the provided textual editing prompts and the actual modifications made to the image. In our paper, we propose a novel method called Locate and Forget (LaF), which effectively locates potential target concepts in the image for modification by comparing the syntactic trees of the target prompt and scene descriptions in the input image, intending to forget their existence clues in the generated image. Compared to the baselines, our method demonstrates its superiority in text-guided image editing tasks both qualitatively and quantitatively.",
+    "authors": [
+        "Jia Li",
+        "Lijie Hu",
+        "Zhixian He",
+        "Jingfeng Zhang",
+        "Tianhang Zheng",
+        "Di Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel method called Locate and Forget (LaF) is proposed, which effectively locates potential target concepts in the image for modification by comparing the syntactic trees of the target prompt and scene descriptions in the input image, intending to forget their existence clues in the generated image."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

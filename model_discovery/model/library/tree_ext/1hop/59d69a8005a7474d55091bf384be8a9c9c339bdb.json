@@ -1,0 +1,27 @@
+{
+    "acronym": "59d69a8005a7474d55091bf384be8a9c9c339bdb",
+    "title": "Transformer-based Model for ASR N-Best Rescoring and Rewriting",
+    "seed_ids": [
+        "transformer",
+        "f537eb37522aa762f904c003e2af00f14113b44c",
+        "bf0e844f547eec1e161bc5374c0ab13e9d2aa321"
+    ],
+    "s2id": "59d69a8005a7474d55091bf384be8a9c9c339bdb",
+    "abstract": "Voice assistants increasingly use on-device Automatic Speech Recognition (ASR) to ensure speed and privacy. However, due to resource constraints on the device, queries pertaining to complex information domains often require further processing by a search engine. For such applications, we propose a novel Transformer based model capable of rescoring and rewriting, by exploring full context of the N-best hypotheses in parallel. We also propose a new discriminative sequence training objective that can work well for both rescore and rewrite tasks. We show that our Rescore+Rewrite model outperforms the Rescore-only baseline, and achieves up to an average 8.6% relative Word Error Rate (WER) reduction over the ASR system by itself.",
+    "authors": [
+        "Iwen E. Kang",
+        "Christophe Van Gysel",
+        "Man-Hung Siu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel Transformer based model capable of rescoring and rewriting, by exploring full context of the N-best hypotheses in parallel is proposed, and a new discriminative sequence training objective is proposed that can work well for both rescore and rewrite tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

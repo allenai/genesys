@@ -1,0 +1,51 @@
+{
+    "acronym": "a9468d8bfa6bd016dfd3128c4e8408e30eb8549b",
+    "title": "LLM Maybe LongLM: Self-Extend LLM Context Window Without Tuning",
+    "seed_ids": [
+        "yarn",
+        "compressivetransformer",
+        "a54761081c2b001c057fb6e1ea9a48058d5aa5e0",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "5e0cb1c4b91a7486e1c2b15a44a0be56bd74bdc0",
+        "73290ecbec2f38d1d647ddef1ada69cee41725b3",
+        "b31a5884a8ebe96b6300839b28608b97f8f8ef76",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "2dfb9171e180dcb0af23d305e024d43d311708ab",
+        "b0db25e317cf856f1ec1ca3df0e573d850ed4696",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "60b35c6d68acced19b0c66edcfc0ee0a2c11efed",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "9575afb5702bc33d7df14c48feeee5901ea00369",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "a9c214e846188adb645021cd7b1964b8ea1fef6f",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "4badd753be64c5c5b57dd2bb2e515fbe0c0720d8",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "e3aa232577bb427b1f3a34acbdef84bd85734042"
+    ],
+    "s2id": "a9468d8bfa6bd016dfd3128c4e8408e30eb8549b",
+    "abstract": "It is well known that LLMs cannot generalize well to long contexts whose lengths are larger than the training sequence length. This poses challenges when employing LLMs for processing long input sequences during inference. In this work, we argue that LLMs themselves have inherent capabilities to handle long contexts without fine-tuning. To achieve this goal, we propose SelfExtend to extend the context window of LLMs by constructing bi-level attention information: the grouped attention and the neighbor attention. The grouped attention captures the dependencies among tokens that are far apart, while neighbor attention captures dependencies among adjacent tokens within a specified range. The two-level attentions are computed based on the original model's self-attention mechanism during inference. With minor code modification, our SelfExtend can effortlessly extend existing LLMs' context window without any fine-tuning. We conduct comprehensive experiments on multiple benchmarks and the results show that our SelfExtend can effectively extend existing LLMs' context window length. The code can be found at \\url{https://github.com/datamllab/LongLM}.",
+    "authors": [
+        "Hongye Jin",
+        "Xiaotian Han",
+        "Jingfeng Yang",
+        "Zhimeng Jiang",
+        "Zirui Liu",
+        "Chia-yuan Chang",
+        "Huiyuan Chen",
+        "Xia Hu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is argued that LLMs themselves have inherent capabilities to handle long contexts without fine-tuning and this work proposes SelfExtend to extend the context window of LLMs by constructing bi-level attention information: the grouped attention and the neighbor attention."
+    },
+    "citationCount": 33,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "b70282e64ddfc128c77a43acf4f8b6f95c6969ff",
+    "title": "Multimodal Sentiment and Personality Perception Under Speech: A Comparison of Transformer-based Architectures",
+    "seed_ids": [
+        "lineartransformer",
+        "6f68e1bb253925d8431588555d3010419f322e04"
+    ],
+    "s2id": "b70282e64ddfc128c77a43acf4f8b6f95c6969ff",
+    "abstract": "Human-machine, human-robot interaction, and collaboration appear in diverse fields, from homecare to Cyber-Physical Systems. Technological development is fast, whereas real-time methods for social communication analysis that can measure small changes in sentiment and personality states, including visual, acoustic and language modalities are lagging, particularly when the goal is to build robust, appearance invariant, and fair methods. We study and compare methods capable of fusing modalities while satisfying real-time and invariant appearance conditions. We compare state-of-the-art transformer architectures in sentiment estimation and introduce them in the much less explored field of personality perception. We show that the architectures perform differently on automatic sentiment and personality perception, suggesting that each task may be better captured/modeled by a particular method. Our work calls attention to the attractive properties of the linear versions of the transformer architectures. In particular, we show that the best results are achieved by fusing the different architectures\u2019 preprocessing methods. However, they pose extreme conditions in computation power and energy consumption for real-time computations for quadratic transformers due to their memory requirements. In turn, linear transformers pave the way for quantifying small changes in sentiment estimation and personality perception for real-time social communications for machines and robots.",
+    "authors": [
+        "\u00c1d\u00e1m Fodor",
+        "R. R. Saboundji",
+        "Julio C. S. Jacques Junior",
+        "Sergio Escalera",
+        "D. Gallardo-Pujol",
+        "Andr\u00e1s L\u0151rincz"
+    ],
+    "venue": "DYAD@ICCV",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work compares state-of-the-art transformer architectures in sentiment estimation and introduces them in the much less explored field of personality perception, showing that the architectures perform differently on automatic sentiment and personality perception, suggesting that each task may be better captured/modeled by a particular method."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

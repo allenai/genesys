@@ -1,0 +1,29 @@
+{
+    "acronym": "ff6d17044ac6292b9ceb87d80b11f0e269bdc543",
+    "title": "Learning from Unlabeled 3D Environments for Vision-and-Language Navigation",
+    "seed_ids": [
+        "gpt2",
+        "104f75283ae9027eb478e7984bd26b680277ce6f",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ff6d17044ac6292b9ceb87d80b11f0e269bdc543",
+    "abstract": "In vision-and-language navigation (VLN), an embodied agent is required to navigate in realistic 3D environments following natural language instructions. One major bottleneck for existing VLN approaches is the lack of sufficient training data, resulting in unsatisfactory generalization to unseen environments. While VLN data is typically collected manually, such an approach is expensive and prevents scalability. In this work, we address the data scarcity issue by proposing to automatically create a large-scale VLN dataset from 900 unlabeled 3D buildings from HM3D. We generate a navigation graph for each building and transfer object predictions from 2D to generate pseudo 3D object labels by cross-view consistency. We then fine-tune a pretrained language model using pseudo object labels as prompts to alleviate the cross-modal gap in instruction generation. Our resulting HM3D-AutoVLN dataset is an order of magnitude larger than existing VLN datasets in terms of navigation environments and instructions. We experimentally demonstrate that HM3D-AutoVLN significantly increases the generalization ability of resulting VLN models. On the SPL metric, our approach improves over state of the art by 7.1% and 8.1% on the unseen validation splits of REVERIE and SOON datasets respectively.",
+    "authors": [
+        "Shizhe Chen",
+        "Pierre-Louis Guhur",
+        "Makarand Tapaswi",
+        "C. Schmid",
+        "I. Laptev"
+    ],
+    "venue": "European Conference on Computer Vision",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to automatically create a large-scale VLN dataset from 900 unlabeled 3D buildings from HM3D and fine-tune a pretrained language model using pseudo object labels as prompts to alleviate the cross-modal gap in instruction generation."
+    },
+    "citationCount": 31,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

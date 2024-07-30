@@ -1,0 +1,32 @@
+{
+    "acronym": "4d17732d90440682b0500f4e209c6cc4fac20e0e",
+    "title": "Teaching Algorithmic Reasoning via In-context Learning",
+    "seed_ids": [
+        "elgllm",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "92173d081b15824d22a9ef070e118744ceee8052",
+        "ed535e93d5b5a8b689e861e9c6083a806d1535c2"
+    ],
+    "s2id": "4d17732d90440682b0500f4e209c6cc4fac20e0e",
+    "abstract": "Large language models (LLMs) have shown increasing in-context learning capabilities through scaling up model and data size. Despite this progress, LLMs are still unable to solve algorithmic reasoning problems. While providing a rationale with the final answer has led to further improvements in multi-step reasoning problems, Anil et al. 2022 showed that even simple algorithmic reasoning tasks such as parity are far from solved. In this work, we identify and study four key stages for successfully teaching algorithmic reasoning to LLMs: (1) formulating algorithms as skills, (2) teaching multiple skills simultaneously (skill accumulation), (3) teaching how to combine skills (skill composition) and (4) teaching how to use skills as tools. We show that it is possible to teach algorithmic reasoning to LLMs via in-context learning, which we refer to as algorithmic prompting. We evaluate our approach on a variety of arithmetic and quantitative reasoning tasks, and demonstrate significant boosts in performance over existing prompting techniques. In particular, for long parity, addition, multiplication and subtraction, we achieve an error reduction of approximately 10x, 9x, 5x and 2x respectively compared to the best available baselines.",
+    "authors": [
+        "Hattie Zhou",
+        "Azade Nova",
+        "H. Larochelle",
+        "Aaron C. Courville",
+        "Behnam Neyshabur",
+        "Hanie Sedghi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows that it is possible to teach algorithmic reasoning to LLMs via in-context learning, which it is referred to as algorithmic prompting, and evaluates the approach on a variety of arithmetic and quantitative reasoning tasks, and demonstrates significant boosts in performance."
+    },
+    "citationCount": 87,
+    "influentialCitationCount": 9,
+    "code": null,
+    "description": null,
+    "url": null
+}

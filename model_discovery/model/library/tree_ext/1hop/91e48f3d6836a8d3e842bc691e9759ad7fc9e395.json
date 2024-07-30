@@ -1,0 +1,33 @@
+{
+    "acronym": "91e48f3d6836a8d3e842bc691e9759ad7fc9e395",
+    "title": "Text2MDT: Extracting Medical Decision Trees from Medical Texts",
+    "seed_ids": [
+        "bert",
+        "85ca3f50c60aa13237bfa2d46d9fc3c42ef5049c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "91e48f3d6836a8d3e842bc691e9759ad7fc9e395",
+    "abstract": "Knowledge of the medical decision process, which can be modeled as medical decision trees (MDTs), is critical to build clinical decision support systems. However, the current MDT construction methods rely heavily on time-consuming and laborious manual annotation. In this work, we propose a novel task, Text2MDT, to explore the automatic extraction of MDTs from medical texts such as medical guidelines and textbooks. We normalize the form of the MDT and create an annotated Text-to-MDT dataset in Chinese with the participation of medical experts. We investigate two different methods for the Text2MDT tasks: (a) an end-to-end framework which only relies on a GPT style large language models (LLM) instruction tuning to generate all the node information and tree structures. (b) The pipeline framework which decomposes the Text2MDT task to three subtasks. Experiments on our Text2MDT dataset demonstrate that: (a) the end-to-end method basd on LLMs (7B parameters or larger) show promising results, and successfully outperform the pipeline methods. (b) The chain-of-thought (COT) prompting method \\cite{Wei2022ChainOT} can improve the performance of the fine-tuned LLMs on the Text2MDT test set. (c) the lightweight pipelined method based on encoder-based pretrained models can perform comparably with LLMs with model complexity two magnititudes smaller. Our Text2MDT dataset is open-sourced at \\url{https://tianchi.aliyun.com/dataset/95414}, and the source codes are open-sourced at \\url{https://github.com/michael-wzhu/text2dt}.",
+    "authors": [
+        "Wei Zhu",
+        "Wenfeng Li",
+        "Xing Tian",
+        "Pengfei Wang",
+        "Xiaoling Wang",
+        "Jin Chen",
+        "Yuanbin Wu",
+        "Yuan Ni",
+        "Guotong Xie"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel task, Text2MDT, to explore the automatic extraction of MDTs from medical texts such as medical guidelines and textbooks, and normalizes the form of the MDT and creates an annotated Text-to-MDT dataset in Chinese with the participation of medical experts."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

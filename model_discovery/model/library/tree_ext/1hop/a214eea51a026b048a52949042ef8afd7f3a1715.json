@@ -1,0 +1,36 @@
+{
+    "acronym": "a214eea51a026b048a52949042ef8afd7f3a1715",
+    "title": "Nano: Nested Human-in-the-Loop Reward Learning for Few-shot Language Model Control",
+    "seed_ids": [
+        "gpt2",
+        "023edab4738690444e3924e224c2641017a0d794",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "102ebe229df18c8733ea1b8def56cd79996e2178",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a214eea51a026b048a52949042ef8afd7f3a1715",
+    "abstract": "Pretrained language models have demonstrated extraordinary capabilities in language generation. However, real-world tasks often require controlling the distribution of generated text in order to mitigate bias, promote fairness, and achieve personalization. Existing techniques for controlling the distribution of generated text only work with quantified distributions, which require pre-defined categories, proportions of the distribution, or an existing corpus following the desired distributions. However, many important distributions, such as personal preferences, are unquantified. In this work, we tackle the problem of generating text following arbitrary distributions (quantified and unquantified) by proposing Nano, a few-shot human-in-the-loop training algorithm that continuously learns from human feedback. Nano achieves state-of-the-art results on single topic/attribute as well as quantified distribution control compared to previous works. We also show that Nano is able to learn unquantified distributions, achieves personalization, and captures differences between different individuals' personal preferences with high sample efficiency.",
+    "authors": [
+        "Xiang Fan",
+        "Yiwei Lyu",
+        "P. Liang",
+        "R. Salakhutdinov",
+        "Louis-Philippe Morency"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Nano, a few-shot human-in-the-loop training algorithm that continuously learns from human feedback, is proposed, which achieves state-of- the-art results on single topic/attribute as well as quantified distribution control compared to previous works."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

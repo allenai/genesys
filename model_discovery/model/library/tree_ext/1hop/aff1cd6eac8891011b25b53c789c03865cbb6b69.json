@@ -1,0 +1,28 @@
+{
+    "acronym": "aff1cd6eac8891011b25b53c789c03865cbb6b69",
+    "title": "Learning to Hash for Trajectory Similarity Computation and Search",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "aff1cd6eac8891011b25b53c789c03865cbb6b69",
+    "abstract": "Searching for similar trajectories from a database is an important way for extracting human-understandable knowledge. However, due to the huge volume of trajectories and high computation complexity of distance between trajectories, it is difficult to search for exact results, which motivates the research of approximating approaches. In this study, we propose a learning to hash method for trajectory similarity computation and search, called Traj2Hash, which consists of a two-channel trajectory encoder and a hash layer to encode trajectories into Euclidean and Hamming space, respectively. The embeddings of trajectories obtained from the encoder are capable of preserving the reverse symmetric property and more representative due to the reverse augmentation and the lower-bound induced read-out layer. Moreover, we design a decomposed grid representation in the encoder to make the model lighter and better. In the model training phase, we combine a weighted mean squared error loss and a ranking-based hashing loss to enable the model similarity-aware and representations self-structured, respectively, in which a fast trajectory triplet generation method is leveraged to enrich the training corpus. Extensive experiments conducted on real data offer evidence of the effectiveness and efficiency of the proposed model.",
+    "authors": [
+        "Liwei Deng",
+        "Yan Zhao",
+        "Jin Chen",
+        "Shuncheng Liu",
+        "Yuyang Xia",
+        "Kai Zheng"
+    ],
+    "venue": "IEEE International Conference on Data Engineering",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study proposes a learning to hash method for trajectory similarity computation and search, called Traj2Hash, which consists of a two-channel trajectory encoder and a hash layer to encode trajectories into Euclidean and Hamming space, respectively."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

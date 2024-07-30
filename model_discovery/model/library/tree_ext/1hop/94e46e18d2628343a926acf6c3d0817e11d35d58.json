@@ -1,0 +1,48 @@
+{
+    "acronym": "94e46e18d2628343a926acf6c3d0817e11d35d58",
+    "title": "ERNIE-SPARSE: Learning Hierarchical Efficient Transformer Through Regularized Self-Attention",
+    "seed_ids": [
+        "bigbird",
+        "longformer",
+        "sparsetransformer",
+        "84daddd294fa3cc12596b5785f81c2a153d2fb1d",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "baed71eed57ad462f3ab138d4b1700a738cd5414",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "80f9f109d1564cb8f82aa440a5f6f3fbe220c9ef",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "7cc730da554003dda77796d2cb4f06da5dfd5592",
+        "ad7129af0644dbcafa9aa2f111cb76526ea444a1",
+        "203b543bfa1e564bb80ff4229b43174d7c71b0c0"
+    ],
+    "s2id": "94e46e18d2628343a926acf6c3d0817e11d35d58",
+    "abstract": "Sparse Transformer has recently attracted a lot of attention since the ability for reducing the quadratic dependency on the sequence length. We argue that two factors, information bottleneck sensitivity and inconsistency between different attention topologies, could affect the performance of the Sparse Transformer. This paper proposes a well-designed model named ERNIE-Sparse. It consists of two distinctive parts: (i) Hierarchical Sparse Transformer (HST) to sequentially unify local and global information. (ii) Self-Attention Regularization (SAR) method, a novel regularization designed to minimize the distance for transformers with different attention topologies. To evaluate the effectiveness of ERNIE-Sparse, we perform extensive evaluations. Firstly, we perform experiments on a multi-modal long sequence modeling task benchmark, Long Range Arena (LRA). Experimental results demonstrate that ERNIE-Sparse significantly outperforms a variety of strong baseline methods including the dense attention and other efficient sparse attention methods and achieves improvements by 2.77% (57.78% vs. 55.01%). Secondly, to further show the effectiveness of our method, we pretrain ERNIE-Sparse and verified it on 3 text classification and 2 QA downstream tasks, achieve improvements on classification benchmark by 0.83% (92.46% vs. 91.63%), on QA benchmark by 3.24% (74.67% vs. 71.43%). Experimental results continue to demonstrate its superior performance.",
+    "authors": [
+        "Yang Liu",
+        "Jiaxiang Liu",
+        "L. Chen",
+        "Yuxiang Lu",
+        "Shi Feng",
+        "Zhida Feng",
+        "Yu Sun",
+        "Hao Tian",
+        "Huancheng Wu",
+        "Hai-feng Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results demonstrate that ERNIE-Sparse significantly outperforms a variety of strong baseline methods including the dense attention and other efficient sparse attention methods and achieves improvements on classification benchmark and on QA downstream tasks."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

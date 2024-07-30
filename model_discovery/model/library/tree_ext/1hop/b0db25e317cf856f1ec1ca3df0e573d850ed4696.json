@@ -1,0 +1,48 @@
+{
+    "acronym": "b0db25e317cf856f1ec1ca3df0e573d850ed4696",
+    "title": "L-Eval: Instituting Standardized Evaluation for Long Context Language Models",
+    "seed_ids": [
+        "roformer",
+        "b31a5884a8ebe96b6300839b28608b97f8f8ef76",
+        "8bc8b9ae855bc0aa19e7223899440ffbdc61f4d8",
+        "240103933ffe3dac2179cc160a2bd91299357a53",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "60b35c6d68acced19b0c66edcfc0ee0a2c11efed",
+        "dbc368bc8b49347dd27679894524fa62f88492c9",
+        "594d8e1696619f3cebb7c6bffdad8e0a5592f006",
+        "2e6fa3095df1d1ed041dfb4f5a18e31d4b7bd7bb",
+        "465471bb5bf1a945549d6291c2d23367966b4957",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "2d629fa3d687cfc453c6b61909c46983ebea0323",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "f75d05e759447c2aedb7097728f29f9a520d9bc1",
+        "ec307b17f193b14292206b65a1bcc95bfd8f02ed",
+        "4e3935ef7da6bcbb202ec7f8b285c313cadcd044",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "9dc624d7258d1a56117ca720aea953ce46b66b21",
+        "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+        "7e9ff94476f41041c75e253e84f487db00e9c861"
+    ],
+    "s2id": "b0db25e317cf856f1ec1ca3df0e573d850ed4696",
+    "abstract": "Recently, there has been growing interest in extending the context length of large language models (LLMs), aiming to effectively process long inputs of one turn or conversations with more extensive histories. While proprietary models such as GPT-4 and Claude can largely preserve the reasoning ability in an extended context, open-source models are still progressing through the early stages of development. To bridge this gap, we propose L-Eval to institute a more standardized evaluation for long context language models (LCLMs) addressing two key aspects: dataset construction and evaluation metrics. On the one hand, we build a new evaluation suite containing 20 sub-tasks, 508 long documents, and over 2,000 human-labeled query-response pairs encompassing diverse question styles, domains, and input length (3k$\\sim$200k tokens). On the other hand, we investigate the effectiveness in evalution metrics for LCLMs. Results show that popular n-gram matching metrics generally can not correlate well with human judgment, and thus we strongly advocate for length-instruction-enhanced (LIE) evaluation and employing LLM judges. We conducted a comprehensive study of 4 popular commercial LLMs and 12 open-source counterparts using the L-Eval benchmark. Our empirical findings offer useful insights into the study of LCLMs and lay the groundwork for the development of more principled evaluation of these models.",
+    "authors": [
+        "Chen An",
+        "Shansan Gong",
+        "Ming Zhong",
+        "Mukai Li",
+        "Jun Zhang",
+        "Lingpeng Kong",
+        "Xipeng Qiu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A comprehensive study of 4 popular commercial LLMs and 12 open-source counterparts using the L-Eval benchmark, which shows that popular n-gram matching metrics generally can not correlate well with human judgment, and thus strongly advocate for length-instruction-enhanced (LIE) evaluation and employing LLM judges."
+    },
+    "citationCount": 59,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

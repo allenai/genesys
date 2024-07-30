@@ -1,0 +1,24 @@
+{
+    "acronym": "7860ce3b830dfed0426d230908d98637c72532c8",
+    "title": "Generating Rate Features for Mobile Applications",
+    "seed_ids": [
+        "gpt3"
+    ],
+    "s2id": "7860ce3b830dfed0426d230908d98637c72532c8",
+    "abstract": "Mobile application (app) stores employ standardized mechanisms for rating hosted apps, typically in the form of free text reviews and numerical rating scales. App users use these mechanisms to express their opinions about their apps and discover apps that fit their specific needs. However, existing app rating systems do not take into account the operational characteristics of application domains. Thus, generated user reviews are often short, subjective, and one-dimensional. To overcome these limitations, in this paper, we propose a multi-dimensional rating system for mobile apps. Our assumption is that an adaptive goal-based app rating system can prompt users to generate higher-quality reviews. To achieve our research objectives, we initially apply extractive summarization to generate short and concise summaries of salient themes in app reviews. Extracted summaries are then fed to a language model to generate Rate Features for apps. Our results show that the language model GPT-3.5 can be prompted to generate abstract, neutral, and domain-specific Rate Features that are aligned to a large extent with user goals in different application domains. CCS CONCEPTS \u2022 Software and its engineering $\\rightarrow$ Maintaining software.",
+    "authors": [
+        "Shristi Shrestha",
+        "Anas Mahmoud"
+    ],
+    "venue": "International Conference on Mobile Software Engineering and Systems",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results show that the language model GPT-3.5 can be prompted to generate abstract, neutral, and domain-specific Rate Features that are aligned to a large extent with user goals in different application domains."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

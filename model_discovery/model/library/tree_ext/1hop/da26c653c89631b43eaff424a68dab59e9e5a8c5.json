@@ -1,0 +1,25 @@
+{
+    "acronym": "da26c653c89631b43eaff424a68dab59e9e5a8c5",
+    "title": "A Simple and Effective Approach to Automatic Post-Editing with Transfer Learning",
+    "seed_ids": [
+        "gpt",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc"
+    ],
+    "s2id": "da26c653c89631b43eaff424a68dab59e9e5a8c5",
+    "abstract": "Automatic post-editing (APE) seeks to automatically refine the output of a black-box machine translation (MT) system through human post-edits. APE systems are usually trained by complementing human post-edited data with large, artificial data generated through back-translations, a time-consuming process often no easier than training a MT system from scratch. in this paper, we propose an alternative where we fine-tune pre-trained BERT models on both the encoder and decoder of an APE system, exploring several parameter sharing strategies. By only training on a dataset of 23K sentences for 3 hours on a single GPU we obtain results that are competitive with systems that were trained on 5M artificial sentences. When we add this artificial data our method obtains state-of-the-art results.",
+    "authors": [
+        "Gon\u00e7alo M. Correia",
+        "Andr\u00e9 F. T. Martins"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper fine-tune pre-trained BERT models on both the encoder and decoder of an APE system, exploring several parameter sharing strategies and obtains results that are competitive with systems that were trained on 5M artificial sentences."
+    },
+    "citationCount": 38,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

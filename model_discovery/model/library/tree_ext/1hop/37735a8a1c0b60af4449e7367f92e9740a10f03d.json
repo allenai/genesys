@@ -1,0 +1,28 @@
+{
+    "acronym": "37735a8a1c0b60af4449e7367f92e9740a10f03d",
+    "title": "T-JEPA: A Joint-Embedding Predictive Architecture for Trajectory Similarity Computation",
+    "seed_ids": [
+        "transformer",
+        "9cb4d0d96e745f2712e5b8f8c63c29d842905b44",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7"
+    ],
+    "s2id": "37735a8a1c0b60af4449e7367f92e9740a10f03d",
+    "abstract": "Trajectory similarity computation is an essential technique for analyzing moving patterns of spatial data across various applications such as traffic management, wildlife tracking, and location-based services. Modern methods often apply deep learning techniques to approximate heuristic metrics but struggle to learn more robust and generalized representations from the vast amounts of unlabeled trajectory data. Recent approaches focus on self-supervised learning methods such as contrastive learning, which have made significant advancements in trajectory representation learning. However, contrastive learning-based methods heavily depend on manually pre-defined data augmentation schemes, limiting the diversity of generated trajectories and resulting in learning from such variations in 2D Euclidean space, which prevents capturing high-level semantic variations. To address these limitations, we propose T-JEPA, a self-supervised trajectory similarity computation method employing Joint-Embedding Predictive Architecture (JEPA) to enhance trajectory representation learning. T-JEPA samples and predicts trajectory information in representation space, enabling the model to infer the missing components of trajectories at high-level semantics without relying on domain knowledge or manual effort. Extensive experiments conducted on three urban trajectory datasets and two Foursquare datasets demonstrate the effectiveness of T-JEPA in trajectory similarity computation.",
+    "authors": [
+        "Lihuan Li",
+        "Hao Xue",
+        "Yang Song",
+        "Flora D. Salim"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "T-JEPA is proposed, a self-supervised trajectory similarity computation method employing Joint-Embedding Predictive Architecture (JEPA) to enhance trajectory representation learning, enabling the model to infer the missing components of trajectories at high-level semantics without relying on domain knowledge or manual effort."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

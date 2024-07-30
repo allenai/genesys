@@ -1,0 +1,49 @@
+{
+    "acronym": "23b7cde603b5ec8d5d13d46e1c453dc52d7c3f6c",
+    "title": "Latent Diffusion for Language Generation",
+    "seed_ids": [
+        "diffuseq",
+        "020a50f6a7154850ac81e3cde69ad8198ded6751",
+        "1f898d66acabff511a3871b82799aa73c0055402",
+        "6e3a3b7a8a0376d867cad72eedf2f9b746f29a33",
+        "a979742220a88b1d32e1fbe72c41e8ba3007053c",
+        "22775e58932cdfbd273a2a835a22c5d86800a458",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "023edab4738690444e3924e224c2641017a0d794",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "492a655a67e6ec7423a968cedb70eec0cdbc8e98",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "599bc7cfe98c2b57ddbe111412203a636da57be0",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "4d2a05140dd9bafaf035a846e7bda05f956304d2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "23b7cde603b5ec8d5d13d46e1c453dc52d7c3f6c",
+    "abstract": "Diffusion models have achieved great success in modeling continuous data modalities such as images, audio, and video, but have seen limited use in discrete domains such as language. Recent attempts to adapt diffusion to language have presented diffusion as an alternative to autoregressive language generation. We instead view diffusion as a complementary method that can augment the generative capabilities of existing pre-trained language models. We demonstrate that continuous diffusion models can be learned in the latent space of a pre-trained encoder-decoder model, enabling us to sample continuous latent representations that can be decoded into natural language with the pre-trained decoder. We show that our latent diffusion models are more effective at sampling novel text from data distributions than a strong autoregressive baseline and also enable controllable generation.",
+    "authors": [
+        "Justin Lovelace",
+        "Varsha Kishore",
+        "Chao-gang Wan",
+        "Eliot Shekhtman",
+        "Kilian Q. Weinberger"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that continuous diffusion models can be learned in the latent space of a pre-trained encoder-decoder model, enabling them to sample continuous latent representations that can be decoded into natural language with the pre- trained decoder."
+    },
+    "citationCount": 34,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

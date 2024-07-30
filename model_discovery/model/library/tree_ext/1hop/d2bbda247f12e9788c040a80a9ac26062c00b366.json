@@ -1,0 +1,29 @@
+{
+    "acronym": "d2bbda247f12e9788c040a80a9ac26062c00b366",
+    "title": "Classifier-free Diffusion Models for Machine Translation",
+    "seed_ids": [
+        "diffusionlm",
+        "diffuseq",
+        "a1186d7d9a9ef258c76afef1177e4f348061a537",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "e342165a614588878ad0f4bc9bacf3905df34d08",
+        "17d068e78e6f25e65cb08319b19b58279bb8b214",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "e04a80263d252a3d8a382ba37a249b9345620570"
+    ],
+    "s2id": "d2bbda247f12e9788c040a80a9ac26062c00b366",
+    "abstract": "In the domain of natural language processing, specifically, the task of neural machine translation, non-autoregressive models (NAR) have struggled to achieve results comparable to state-of-the-art autoregressive (AR) models (Xiao et al., 2023). First attempts at applying the idea of Denoising Diffusion Probabilistic Models Ho et al., 2020; Sohl-Dickstein et al., 2015, a type of model from the family of diffusion models to language modeling tasks, have shown promising results Gong et al., 2023; Li et al., 2022. Diffusion models have previously been successfully applied to various continuous domain problems such as image generation (Sohl-Dickstein et al., 2015; Song & Ermon, 2019). For conditioning the generation process diffusion models may rely on classifier guidance (Li et al., 2022; Luo, 2022; Song & Ermon, 2019; Song et al., 2020) by external models, or alternatively methods of classifier-free guidance (Ho & Salimans, 2022). This thesis explores the potential of diffusion models with classifier-free guidance for the task of neural machine translation. In the experiments performed the evaluated models did not match the performance of the state-of-the-art transformer model (Vaswani et al., 2017). Further evaluations indicate that the evaluated diffusion models performed relatively worse than the transformer model on longer sequences.",
+    "authors": [],
+    "venue": "",
+    "year": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This thesis explores the potential of diffusion models with classifier-free guidance for the task of neural machine translation and indicates that the evaluated diffusion models performed relatively worse than the transformer model on longer sequences."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

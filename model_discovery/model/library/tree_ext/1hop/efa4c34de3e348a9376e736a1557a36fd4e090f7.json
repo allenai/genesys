@@ -1,0 +1,27 @@
+{
+    "acronym": "efa4c34de3e348a9376e736a1557a36fd4e090f7",
+    "title": "Controlled Text Generation using T5 based Encoder-Decoder Soft Prompt Tuning and Analysis of the Utility of Generated Text in AI",
+    "seed_ids": [
+        "gpt2",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "efa4c34de3e348a9376e736a1557a36fd4e090f7",
+    "abstract": "Controlled text generation is a very important task in the arena of natural language processing due to its promising applications. In order to achieve this task we mainly introduce the novel soft prompt tuning method of using soft prompts at both encoder and decoder levels together in a T5 model and investigate the performance as the behaviour of an additional soft prompt related to the decoder of a T5 model in controlled text generation remained unexplored. Then we also investigate the feasibility of steering the output of this extended soft prompted T5 model at decoder level and finally analyse the utility of generated text to be used in AI related tasks such as training AI models with an interpretability analysis of the classifier trained with synthetic text, as there is a lack of proper analysis of methodologies in generating properly labelled data to be utilized in AI tasks. Through the performed in-depth intrinsic and extrinsic evaluations of this generation model along with the artificially generated data, we found that this model produced better results compared to the T5 model with a single soft prompt at encoder level and the sentiment classifier trained using this artificially generated data can produce comparable classification results to the results of a classifier trained with real labelled data and also the classifier decision is interpretable with respect to the input text content.",
+    "authors": [
+        "Damith Chamalke Senadeera",
+        "Julia Ive"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This model produced better results compared to the T5 model with a single soft prompt at encoder level and the sentiment classifiers trained using this artificially generated data can produce comparable classification results to the results of a classifier trained with real labelled data and also the classifier decision is interpretable with respect to the input text content."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

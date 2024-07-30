@@ -1,0 +1,36 @@
+{
+    "acronym": "b204c257d06eb7148ef7e1fc0ca72e3e9eae2064",
+    "title": "Efficient Stagewise Pretraining via Progressive Subnetworks",
+    "seed_ids": [
+        "bert",
+        "6cb35dd6e1338faa0c3d6a6b0020bbcbcc18653d",
+        "a7a40b35b6f37c554f1c5c2038892ed70c693a64",
+        "b21670e8061a06ab97e7d6052c9345a326e84ff8",
+        "5a3749929bf5fb8b1f98a7b2a43c3b957bcf6c88",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "b204c257d06eb7148ef7e1fc0ca72e3e9eae2064",
+    "abstract": "Recent developments in large language models have sparked interest in efficient pretraining methods. A recent effective paradigm is to perform stage-wise training, where the size of the model is gradually increased over the course of training (e.g. gradual stacking (Reddi et al., 2023)). While the resource and wall-time savings are appealing, it has limitations, particularly the inability to evaluate the full model during earlier stages, and degradation in model quality due to smaller model capacity in the initial stages. In this work, we propose an alternative framework, progressive subnetwork training, that maintains the full model throughout training, but only trains subnetworks within the model in each step. We focus on a simple instantiation of this framework, Random Path Training (RaPTr) that only trains a sub-path of layers in each step, progressively increasing the path lengths in stages. RaPTr achieves better pre-training loss for BERT and UL2 language models while requiring 20-33% fewer FLOPs compared to standard training, and is competitive or better than other efficient training methods. Furthermore, RaPTr shows better downstream performance on UL2, improving QA tasks and SuperGLUE by 1-5% compared to standard training and stacking. Finally, we provide a theoretical basis for RaPTr to justify (a) the increasing complexity of subnetworks in stages, and (b) the stability in loss across stage transitions due to residual connections and layer norm.",
+    "authors": [
+        "Abhishek Panigrahi",
+        "Nikunj Saunshi",
+        "Kaifeng Lyu",
+        "Sobhan Miryoosefi",
+        "Sashank J. Reddi",
+        "Satyen Kale",
+        "Sanjiv Kumar"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an alternative framework, progressive subnetwork training, that maintains the full model throughout training, but only trains subnetworks within the model in each step, and achieves better pre-training loss for BERT and UL2 language models while requiring 20-33% fewer FLOPs compared to standard training, and is competitive or better than other efficient training methods."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

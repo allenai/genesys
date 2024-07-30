@@ -1,0 +1,29 @@
+{
+    "acronym": "4053adcc254898ac50abe5f3c701c27b4cbce33b",
+    "title": "An Empirical Study on the Effectiveness of Large Language Models for SATD Identification and Classification",
+    "seed_ids": [
+        "bert",
+        "ca31b8584b6c022ef15ddfe994fe361e002b7729",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "4053adcc254898ac50abe5f3c701c27b4cbce33b",
+    "abstract": "Self-Admitted Technical Debt (SATD), a concept highlighting sub-optimal choices in software development documented in code comments or other project resources, poses challenges in the maintainability and evolution of software systems. Large language models (LLMs) have demonstrated significant effectiveness across a broad range of software tasks, especially in software text generation tasks. Nonetheless, their effectiveness in tasks related to SATD is still under-researched. In this paper, we investigate the efficacy of LLMs in both identification and classification of SATD. For both tasks, we investigate the performance gain from using more recent LLMs, specifically the Flan-T5 family, across different common usage settings. Our results demonstrate that for SATD identification, all fine-tuned LLMs outperform the best existing non-LLM baseline, i.e., the CNN model, with a 4.4% to 7.2% improvement in F1 score. In the SATD classification task, while our largest fine-tuned model, Flan-T5-XL, still led in performance, the CNN model exhibited competitive results, even surpassing four of six LLMs. We also found that the largest Flan-T5 model, i.e., Flan-T5-XXL, when used with a zero-shot in-context learning (ICL) approach for SATD identification, provides competitive results with traditional approaches but performs 6.4% to 9.2% worse than fine-tuned LLMs. For SATD classification, few-shot ICL approach, incorporating examples and category descriptions in prompts, outperforms the zero-shot approach and even surpasses the fine-tuned smaller Flan-T5 models. Moreover, our experiments demonstrate that incorporating contextual information, such as surrounding code, into the SATD classification task enables larger fine-tuned LLMs to improve their performance.",
+    "authors": [
+        "Mohammad Sadegh Sheikhaei",
+        "Yuan Tian",
+        "Shaowei Wang",
+        "Bowen Xu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper investigates the efficacy of LLMs in both identification and classification of SATD and demonstrates that incorporating contextual information, such as surrounding code, into the SATD classification task enables larger fine-tuned LLMs to improve their performance."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

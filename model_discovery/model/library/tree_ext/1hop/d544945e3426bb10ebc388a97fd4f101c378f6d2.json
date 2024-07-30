@@ -1,0 +1,25 @@
+{
+    "acronym": "d544945e3426bb10ebc388a97fd4f101c378f6d2",
+    "title": "Sequential transfer learning in NLP for text summarization",
+    "seed_ids": [
+        "gpt",
+        "memcompress",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d544945e3426bb10ebc388a97fd4f101c378f6d2",
+    "abstract": "This thesis investigates recent techniques for transfer learning and their influence on machine summarization systems. A current trend in Natural Language Processing (NLP) is to pre-train extensive language models in advance and adapt these to address problems in various task domains. Since these techniques have rarely been investigated in the context of text summarization, this thesis develops a workflow to integrate and evaluate pre-trained language models in neural text summarization. Based on news articles of the CNN / DailyMail dataset [35] and the CopyNet [32] summarization model, the conducted experiments show that transfer learning can have a positive impact on summarising texts. Further findings suggest that datasets with less historical data are more likely to benefit from transfer learning. On the other hand, however, this work demonstrates that the components of text summarization models limit the abilities of state-of-the-art transfer learning techniques. In the field of machine learning, this thesis is designed for readers interested in the state-of-the-art in transfer learning for NLP and its influence on the generation of summaries.",
+    "authors": [
+        "Pascal Fecht"
+    ],
+    "venue": "",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work demonstrates that the components of text summarization models limit the abilities of state-of-the-art transfer learning techniques, and suggests that datasets with less historical data are more likely to benefit from transfer learning."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

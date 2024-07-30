@@ -1,0 +1,52 @@
+{
+    "acronym": "a298d956dc3472541adc3d4bf2908755e5ff54d4",
+    "title": "A Probabilistic Framework for Pruning Transformers Via a Finite Admixture of Keys",
+    "seed_ids": [
+        "deltanet",
+        "48af9b314181b04edcc0b7224ffe4689036b755f",
+        "37abe53ed31caa23ae833b2e67bb4aa1892e8d25",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "1a703f08da01cf737cce3fb9064259b3f4b44e9c",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "8cef9900c04d7f661c08f4b5b1ed4337ace042a3",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf",
+        "84898960f68fa78296a102edc8ac81739f9a9408",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "16c844fd4d97f3c6eb38b0d6527c87d184efedc3",
+        "05b22d6ec2cff81bcfbac2a6cf67bc1e9ef0f60a",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a298d956dc3472541adc3d4bf2908755e5ff54d4",
+    "abstract": "Pairwise dot product-based self-attention is key to the success of transformers which achieve state-of-the-art performance across a variety of applications in language and vision, but are costly to compute. It has been shown that most attention scores and keys in transformers are redundant and can be removed without loss of accuracy. In this paper, we develop a novel probabilistic framework for pruning attention scores and keys in transformers. We first formulate an admixture model of attention keys whose input data to be clustered are attention queries. We show that attention scores in self-attention correspond to the posterior distribution of this model when attention keys admit a uniform prior distribution. We then relax this uniform prior constraint and let the model learn these priors from data, resulting in a new Finite Admixture of Keys (FiAK). The learned priors are used for pruning away redundant attention scores and keys in the baseline transformers, improving the diversity of attention patterns that the models capture. We corroborate the efficiency of transformers pruned with FiAK on the ImageNet object classification and WikiText-103 language modeling tasks. Our experiments demonstrate that transformers pruned with FiAK yield similar or better accuracy than the baseline dense transformers while being much more efficient in terms of memory and computational cost.",
+    "authors": [
+        "T. Nguyen",
+        "Tam Nguyen",
+        "Long Bui",
+        "Hai Do",
+        "Duy Khuong Nguyen",
+        "Dung D. Le",
+        "Hung The Tran",
+        "Nhat Ho",
+        "S. Osher",
+        "Richard Baraniuk"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel probabilistic framework for pruning attention scores and keys in transformers is developed and it is demonstrated that transformers pruned with FiAK yield similar or better accuracy than the baseline dense transformers while being much more efficient in terms of memory and computational cost."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

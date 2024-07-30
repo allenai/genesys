@@ -1,0 +1,28 @@
+{
+    "acronym": "446895e8cd74dd17762750d50e0bd1f57032e8f4",
+    "title": "Mask-Conformer: Augmenting Conformer with Mask-Predict Decoder",
+    "seed_ids": [
+        "bert",
+        "09e2c7adbed37440d4a339852cfa34e5b660f768"
+    ],
+    "s2id": "446895e8cd74dd17762750d50e0bd1f57032e8f4",
+    "abstract": "Much of the recent progress in automatic speech recognition (ASR) lies in developing an acoustic encoder, such as enlarging its capacity and designing a refined architecture for speech processing. With these highly optimized encoders, the decoder has become less influential in its role as a language model (LM). In this work, we explore an effective approach for employing the LM structure in an ASR model. The proposed Mask-Conformer augments a Conformer-based model with a mask-predict decoder, which learns output context via the masked LM objective. The mask-predict decoder is applied to stacks of encoder layers, where the decoder output explicitly conditions the subsequent layers using cross-attention. We also propose a fill-mask decoding algorithm that refines a sequence using the decoder\u2019s linguistic information. Experimental results show that Mask-Conformer outperforms strong baselines on some tasks. In addition, our analyses validate the effectiveness of the proposed model design.",
+    "authors": [
+        "Yosuke Higuchi",
+        "Andrew Rosenberg",
+        "Yuan Wang",
+        "M. Baskar",
+        "B. Ramabhadran"
+    ],
+    "venue": "Automatic Speech Recognition & Understanding",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed Mask-Conformer augments a Conformer-based model with a mask-predict decoder, which learns output context via the masked LM objective, and proposes a fill-mask decoding algorithm that refines a sequence using the decoder\u2019s linguistic information."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

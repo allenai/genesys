@@ -1,0 +1,31 @@
+{
+    "acronym": "100ace2a9bbeb752f2d5f7a79abdf880d17cb95b",
+    "title": "Diffusion-RSCC: Diffusion Probabilistic Model for Change Captioning in Remote Sensing Images",
+    "seed_ids": [
+        "diffusionlm",
+        "1f898d66acabff511a3871b82799aa73c0055402",
+        "a6a59c9e4cd446d0d04f76587699e3e8ab5197c2",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "17d068e78e6f25e65cb08319b19b58279bb8b214",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "fa3a9f31788a52ef1979060e98b60bdc3b9e066f"
+    ],
+    "s2id": "100ace2a9bbeb752f2d5f7a79abdf880d17cb95b",
+    "abstract": "Remote sensing image change captioning (RSICC) aims at generating human-like language to describe the semantic changes between bi-temporal remote sensing image pairs. It provides valuable insights into environmental dynamics and land management. Unlike conventional change captioning task, RSICC involves not only retrieving relevant information across different modalities and generating fluent captions, but also mitigating the impact of pixel-level differences on terrain change localization. The pixel problem due to long time span decreases the accuracy of generated caption. Inspired by the remarkable generative power of diffusion model, we propose a probabilistic diffusion model for RSICC to solve the aforementioned problems. In training process, we construct a noise predictor conditioned on cross modal features to learn the distribution from the real caption distribution to the standard Gaussian distribution under the Markov chain. Meanwhile, a cross-mode fusion and a stacking self-attention module are designed for noise predictor in the reverse process. In testing phase, the well-trained noise predictor helps to estimate the mean value of the distribution and generate change captions step by step. Extensive experiments on the LEVIR-CC dataset demonstrate the effectiveness of our Diffusion-RSCC and its individual components. The quantitative results showcase superior performance over existing methods across both traditional and newly augmented metrics. The code and materials will be available online at https://github.com/Fay-Y/Diffusion-RSCC.",
+    "authors": [
+        "Xiaofei Yu",
+        "Yitong Li",
+        "Jie Ma"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A probabilistic diffusion model is proposed for RSICC to solve the aforementioned problems of pixel problem due to long time span, and superior performance over existing methods across both traditional and newly augmented metrics."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

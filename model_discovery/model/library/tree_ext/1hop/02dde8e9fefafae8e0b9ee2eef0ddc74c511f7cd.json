@@ -1,0 +1,32 @@
+{
+    "acronym": "02dde8e9fefafae8e0b9ee2eef0ddc74c511f7cd",
+    "title": "Wuerstchen: An Efficient Architecture for Large-Scale Text-to-Image Diffusion Models",
+    "seed_ids": [
+        "classfreediffu",
+        "cf694df964caa156ec306b45d3a3127533cb458f",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "02dde8e9fefafae8e0b9ee2eef0ddc74c511f7cd",
+    "abstract": "We introduce W\\\"urstchen, a novel architecture for text-to-image synthesis that combines competitive performance with unprecedented cost-effectiveness for large-scale text-to-image diffusion models. A key contribution of our work is to develop a latent diffusion technique in which we learn a detailed but extremely compact semantic image representation used to guide the diffusion process. This highly compressed representation of an image provides much more detailed guidance compared to latent representations of language and this significantly reduces the computational requirements to achieve state-of-the-art results. Our approach also improves the quality of text-conditioned image generation based on our user preference study. The training requirements of our approach consists of 24,602 A100-GPU hours - compared to Stable Diffusion 2.1's 200,000 GPU hours. Our approach also requires less training data to achieve these results. Furthermore, our compact latent representations allows us to perform inference over twice as fast, slashing the usual costs and carbon footprint of a state-of-the-art (SOTA) diffusion model significantly, without compromising the end performance. In a broader comparison against SOTA models our approach is substantially more efficient and compares favorably in terms of image quality. We believe that this work motivates more emphasis on the prioritization of both performance and computational accessibility.",
+    "authors": [
+        "Pablo Pernias",
+        "Dominic Rampas",
+        "Mats L. Richter",
+        "Christopher J. Pal",
+        "Marc Aubreville"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Wurstchen is introduced, a novel architecture for text-to-image synthesis that combines competitive performance with unprecedented cost-effectiveness for large-scale text- to-image diffusion models and significantly reduces the computational requirements to achieve state-of-the-art results."
+    },
+    "citationCount": 34,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

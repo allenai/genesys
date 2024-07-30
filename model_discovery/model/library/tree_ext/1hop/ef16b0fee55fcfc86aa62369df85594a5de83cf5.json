@@ -1,0 +1,29 @@
+{
+    "acronym": "ef16b0fee55fcfc86aa62369df85594a5de83cf5",
+    "title": "Post-hurricane building damage assessment using street-view imagery and structured data: A multi-modal deep learning approach",
+    "seed_ids": [
+        "transformer",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "ef16b0fee55fcfc86aa62369df85594a5de83cf5",
+    "abstract": "Accurately assessing building damage is critical for disaster response and recovery. However, many existing models for detecting building damage have poor prediction accuracy due to their limited capabilities of identifying detailed, comprehensive structural and/or non-structural damage from the street-view image. Additionally, these models mainly rely on the imagery data for damage classification, failing to account for other critical information, such as wind speed, building characteristics, evacuation zones, and distance of the building to the hurricane track. To address these limitations, in this study, we propose a novel multi-modal (i.e., imagery and structured data) approach for post-hurricane building damage classification, named the Multi-Modal Swin Transformer (MMST). We empirically train and evaluate the proposed MMST using data collected from the 2022 Hurricane Ian in Florida, USA. Results show that MMST outperforms all selected state-of-the-art benchmark models and can achieve an accuracy of 92.67%, which are 7.71% improvement in accuracy compared to Visual Geometry Group 16 (VGG-16). In addition to the street-view imagery data, building value, building age, and wind speed are the most important predictors for damage level classification. The proposed MMST can be deployed to assist in rapid damage assessment and guide reconnaissance efforts in future hurricanes.",
+    "authors": [
+        "Zhuoqun Xue",
+        "Xiaojian Zhang",
+        "D. Prevatt",
+        "Jennifer Bridge",
+        "Susu Xu",
+        "Xilei Zhao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed Multi-Modal Swin Transformer (MMST) outperforms all selected state-of-the-art benchmark models and can achieve an accuracy of 92.67%, which are 7.71% improvement in accuracy compared to Visual Geometry Group 16 (VGG-16)."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

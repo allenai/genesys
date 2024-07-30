@@ -1,0 +1,49 @@
+{
+    "acronym": "e10ee483325f590b1e139dfafdb03edeb2e1766a",
+    "title": "Linear Log-Normal Attention with Unbiased Concentration",
+    "seed_ids": [
+        "nystromformer",
+        "performer",
+        "lineartransformer",
+        "reformer",
+        "lstransformer",
+        "f35f5aedc30e2c5ded210d9c91ba6e84bd029425",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "4b0541eccd8f98852d6807a14fbac17f775c7b40",
+        "1a883522f3c0051d70be1f8cbdb8989a77395006",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "8cef9900c04d7f661c08f4b5b1ed4337ace042a3",
+        "203b543bfa1e564bb80ff4229b43174d7c71b0c0",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "927d707786ac1e19cb421aed6f5b0603b9dadc88"
+    ],
+    "s2id": "e10ee483325f590b1e139dfafdb03edeb2e1766a",
+    "abstract": "Transformer models have achieved remarkable results in a wide range of applications. However, their scalability is hampered by the quadratic time and memory complexity of the self-attention mechanism concerning the sequence length. This limitation poses a substantial obstacle when dealing with long documents or high-resolution images. In this work, we study the self-attention mechanism by analyzing the distribution of the attention matrix and its concentration ability. Furthermore, we propose instruments to measure these quantities and introduce a novel self-attention mechanism, Linear Log-Normal Attention, designed to emulate the distribution and concentration behavior of the original self-attention. Our experimental results on popular natural language benchmarks reveal that our proposed Linear Log-Normal Attention outperforms other linearized attention alternatives, offering a promising avenue for enhancing the scalability of transformer models.",
+    "authors": [
+        "Yury Nahshan",
+        "Dor-Joseph Kampeas",
+        "E. Haleva"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work studies the self-attention mechanism by analyzing the distribution of the attention matrix and its concentration ability and proposes a novel self-attention mechanism, Linear Log-Normal Attention, designed to emulate the distribution and concentration behavior of the original self-attention."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

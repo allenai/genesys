@@ -1,0 +1,26 @@
+{
+    "acronym": "b64c50ae270d4949579f15d4a0501fbf91d9ab4d",
+    "title": "Exploring the Trade-off Between Model Performance and Explanation Plausibility of Text Classifiers Using Human Rationales",
+    "seed_ids": [
+        "bert",
+        "61ae335f89b2ecc9736fba81b074660882c6347c"
+    ],
+    "s2id": "b64c50ae270d4949579f15d4a0501fbf91d9ab4d",
+    "abstract": "Saliency post-hoc explainability methods are important tools for understanding increasingly complex NLP models. While these methods can reflect the model's reasoning, they may not align with human intuition, making the explanations not plausible. In this work, we present a methodology for incorporating rationales, which are text annotations explaining human decisions, into text classification models. This incorporation enhances the plausibility of post-hoc explanations while preserving their faithfulness. Our approach is agnostic to model architectures and explainability methods. We introduce the rationales during model training by augmenting the standard cross-entropy loss with a novel loss function inspired by contrastive learning. By leveraging a multi-objective optimization algorithm, we explore the trade-off between the two loss functions and generate a Pareto-optimal frontier of models that balance performance and plausibility. Through extensive experiments involving diverse models, datasets, and explainability methods, we demonstrate that our approach significantly enhances the quality of model explanations without causing substantial (sometimes negligible) degradation in the original model's performance.",
+    "authors": [
+        "Lucas Emanuel Resck",
+        "Marcos M. Raimundo",
+        "Jorge Poco"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a methodology for incorporating rationales, which are text annotations explaining human decisions, into text classification models, and significantly enhances the quality of model explanations without causing substantial (sometimes negligible) degradation in the original model's performance."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

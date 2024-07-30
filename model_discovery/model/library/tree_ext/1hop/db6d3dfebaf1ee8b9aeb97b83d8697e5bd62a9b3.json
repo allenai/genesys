@@ -1,0 +1,26 @@
+{
+    "acronym": "db6d3dfebaf1ee8b9aeb97b83d8697e5bd62a9b3",
+    "title": "Entropy- and Distance-Based Predictors From GPT-2 Attention Patterns Predict Reading Times Over and Above GPT-2 Surprisal",
+    "seed_ids": [
+        "gpt2",
+        "ebc0acee471e61fd7d51c8720c404a53b7a9e29b",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "db6d3dfebaf1ee8b9aeb97b83d8697e5bd62a9b3",
+    "abstract": "Transformer-based large language models are trained to make predictions about the next word by aggregating representations of previous tokens through their self-attention mechanism. In the field of cognitive modeling, such attention patterns have recently been interpreted as embodying the process of cue-based retrieval, in which attention over multiple targets is taken to generate interference and latency during retrieval. Under this framework, this work first defines an entropy-based predictor that quantifies the diffuseness of self-attention, as well as distance-based predictors that capture the incremental change in attention patterns across timesteps. Moreover, following recent studies that question the informativeness of attention weights, we also experiment with alternative methods for incorporating vector norms into attention weights. Regression experiments using predictors calculated from the GPT-2 language model show that these predictors deliver a substantially better fit to held-out self-paced reading and eye-tracking data over a rigorous baseline including GPT-2 surprisal.",
+    "authors": [
+        "Byung-Doh Oh",
+        "William Schuler"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work defines an entropy-based predictor that quantifies the diffuseness of self-attention, as well as distance-based predictors that capture the incremental change in attention patterns across timesteps, and experiments with alternative methods for incorporating vector norms into attention weights."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

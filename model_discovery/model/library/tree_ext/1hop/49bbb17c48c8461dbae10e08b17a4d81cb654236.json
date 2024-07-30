@@ -1,0 +1,30 @@
+{
+    "acronym": "49bbb17c48c8461dbae10e08b17a4d81cb654236",
+    "title": "Group-Transformer: Towards A Lightweight Character-level Language Model",
+    "seed_ids": [
+        "transformerxl",
+        "830995ef17cc291c13f42dfd9f462137de1d2179",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "49bbb17c48c8461dbae10e08b17a4d81cb654236",
+    "abstract": "Character-level language modeling based on Transformer has brought great success by alleviating limitation of recursive operation. However, existing Transformer-based models require substantial computational resources, which hinders the usability of character-level language models in applications with limited resources. In this paper, we propose a lightweight model, called GroupTransformer , that factorizes the calculation paths by grouped embedding operators. Additionally, Group-Transformer employs inter-group linear operators to prevent performance degradation from the group strategy. With comparison experiments on about five times larger and the best performing LSTM-based models and compatible parameter size of Transformer-based models, we show that GroupTransformer has better performance on two benchmark tasks, enwik8 and text8. Further experiments including ablation studies and qualitative analysis revealed that the proposed work contributes to the effective lightweight model for practical application. The implementation code will be available.",
+    "authors": [
+        "Sungrae Park",
+        "Geewook Kim",
+        "Junyeop Lee",
+        "Junbum Cha",
+        "Ji-Hoon Kim Hwalsuk Lee"
+    ],
+    "venue": "",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A lightweight model, called GroupTransformer, is proposed that factorizes the calculation paths by grouped embedding operators and employs inter-group linear operators to prevent performance degradation from the group strategy."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

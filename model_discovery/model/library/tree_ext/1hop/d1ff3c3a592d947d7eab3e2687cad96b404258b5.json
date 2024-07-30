@@ -1,0 +1,32 @@
+{
+    "acronym": "d1ff3c3a592d947d7eab3e2687cad96b404258b5",
+    "title": "Q-S5: Towards Quantized State Space Models",
+    "seed_ids": [
+        "s5",
+        "5be7e6b04c5a240cff340034aae2b57c677e211f",
+        "2e8ca21114ecefac88fd2b3a2daacae352b1907f",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "7e9ff94476f41041c75e253e84f487db00e9c861"
+    ],
+    "s2id": "d1ff3c3a592d947d7eab3e2687cad96b404258b5",
+    "abstract": "In the quest for next-generation sequence modeling architectures, State Space Models (SSMs) have emerged as a potent alternative to transformers, particularly for their computational efficiency and suitability for dynamical systems. This paper investigates the effect of quantization on the S5 model to understand its impact on model performance and to facilitate its deployment to edge and resource-constrained platforms. Using quantization-aware training (QAT) and post-training quantization (PTQ), we systematically evaluate the quantization sensitivity of SSMs across different tasks like dynamical systems modeling, Sequential MNIST (sMNIST) and most of the Long Range Arena (LRA). We present fully quantized S5 models whose test accuracy drops less than 1% on sMNIST and most of the LRA. We find that performance on most tasks degrades significantly for recurrent weights below 8-bit precision, but that other components can be compressed further without significant loss of performance. Our results further show that PTQ only performs well on language-based LRA tasks whereas all others require QAT. Our investigation provides necessary insights for the continued development of efficient and hardware-optimized SSMs.",
+    "authors": [
+        "Steven Abreu",
+        "Jens E. Pedersen",
+        "Kade Heckel",
+        "Alessandro Pierro"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that performance on most tasks degrades significantly for recurrent weights below 8-bit precision, but that other components can be compressed further without significant loss of performance."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

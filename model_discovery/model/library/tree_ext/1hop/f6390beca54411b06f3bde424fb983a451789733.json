@@ -1,0 +1,27 @@
+{
+    "acronym": "f6390beca54411b06f3bde424fb983a451789733",
+    "title": "Adaptively Sparse Transformers",
+    "seed_ids": [
+        "sparsetransformer",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f6390beca54411b06f3bde424fb983a451789733",
+    "abstract": "Attention mechanisms have become ubiquitous in NLP. Recent architectures, notably the Transformer, learn powerful context-aware word representations through layered, multi-headed attention. The multiple heads learn diverse types of word relationships. However, with standard softmax attention, all attention heads are dense, assigning a non-zero weight to all context words. In this work, we introduce the adaptively sparse Transformer, wherein attention heads have flexible, context-dependent sparsity patterns. This sparsity is accomplished by replacing softmax with alpha-entmax: a differentiable generalization of softmax that allows low-scoring words to receive precisely zero weight. Moreover, we derive a method to automatically learn the alpha parameter \u2013 which controls the shape and sparsity of alpha-entmax \u2013 allowing attention heads to choose between focused or spread-out behavior. Our adaptively sparse Transformer improves interpretability and head diversity when compared to softmax Transformers on machine translation datasets. Findings of the quantitative and qualitative analysis of our approach include that heads in different layers learn different sparsity preferences and tend to be more diverse in their attention distributions than softmax Transformers. Furthermore, at no cost in accuracy, sparsity in attention heads helps to uncover different head specializations.",
+    "authors": [
+        "Gon\u00e7alo M. Correia",
+        "Vlad Niculae",
+        "Andr\u00e9 F. T. Martins"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces the adaptively sparse Transformer, wherein attention heads have flexible, context-dependent sparsity patterns, accomplished by replacing softmax with alpha-entmax: a differentiable generalization of softmax that allows low-scoring words to receive precisely zero weight."
+    },
+    "citationCount": 206,
+    "influentialCitationCount": 19,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,38 @@
+{
+    "acronym": "ab27a41e10d2362a58db2465073f2b8a4a29312a",
+    "title": "Stateful Memory-Augmented Transformers for Efficient Dialogue Modeling",
+    "seed_ids": [
+        "gpt2",
+        "compressivetransformer",
+        "dbc368bc8b49347dd27679894524fa62f88492c9",
+        "914254fac74a2da051cccf6ca16afcaad416a079",
+        "b21670e8061a06ab97e7d6052c9345a326e84ff8",
+        "0e802c0739771acf70e60d59c2df51cd7e8c50c0",
+        "736eb449526fe7128917954ec5532b59e318ec78",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "c49ac1f916d6d2edeb187e6619c8d23acd95eb21",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "168fc3525f7b97695a97b04e257ee9bd1e832acb",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ab27a41e10d2362a58db2465073f2b8a4a29312a",
+    "abstract": "Transformer models have achieved great performance in dialogue generation tasks. However, their inability to process long dialogue history often leads to truncation of the context. To address this problem, we propose a novel memory-augmented transformer that is compatible with existing pre-trained encoder-decoder models and enables efficient preservation of the dialogue history information. The new model incorporates a separate memory module alongside the pre-trained transformer, which can effectively interchange information between the memory states and the current input context. We evaluate the efficiency of our model on three dialogue datasets and two language modeling datasets. Experimental results show that our method has achieved superior efficiency and performance compared to other pre-trained Transformer baselines.",
+    "authors": [
+        "Qingyang Wu",
+        "Zhou Yu"
+    ],
+    "venue": "Findings",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel memory-augmented transformer that is compatible with existing pre-trained encoder-decoder models and enables efficient preservation of the dialogue history information is proposed."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

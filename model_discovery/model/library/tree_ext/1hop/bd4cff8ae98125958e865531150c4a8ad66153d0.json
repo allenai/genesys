@@ -1,0 +1,27 @@
+{
+    "acronym": "bd4cff8ae98125958e865531150c4a8ad66153d0",
+    "title": "Neuro-symbolic Natural Logic with Introspective Revision for Natural Language Inference",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "bd4cff8ae98125958e865531150c4a8ad66153d0",
+    "abstract": "We introduce a neuro-symbolic natural logic framework based on reinforcement learning with introspective revision. The model samples and rewards specific reasoning paths through policy gradient, in which the introspective revision algorithm modifies intermediate symbolic reasoning steps to discover reward-earning operations as well as leverages external knowledge to alleviate spurious reasoning and training inefficiency. The framework is supported by properly designed local relation models to avoid input entangling, which helps ensure the interpretability of the proof paths. The proposed model has built-in interpretability and shows superior capability in monotonicity inference, systematic generalization, and interpretability, compared with previous models on the existing datasets.",
+    "authors": [
+        "Yufei Feng",
+        "Xiaoyu Yang",
+        "Xiao-Dan Zhu",
+        "Michael A. Greenspan"
+    ],
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A neuro-symbolic natural logic framework based on reinforcement learning with introspective revision that shows superior capability in monotonicity inference, systematic generalization, and interpretability, compared with previous models on the existing datasets is introduced."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

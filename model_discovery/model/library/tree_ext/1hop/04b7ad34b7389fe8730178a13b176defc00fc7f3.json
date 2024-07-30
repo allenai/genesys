@@ -1,0 +1,36 @@
+{
+    "acronym": "04b7ad34b7389fe8730178a13b176defc00fc7f3",
+    "title": "Self-Supervised Sentence Compression for Meeting Summarization",
+    "seed_ids": [
+        "longformer",
+        "sinkhorn",
+        "c600b697700c844cbc85009be70f1cdfeef3593e",
+        "ac95a18762133d4065ac8af518c33084d83c5582",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "04b7ad34b7389fe8730178a13b176defc00fc7f3",
+    "abstract": "The conventional summarization model often fails to capture critical information in meeting transcripts, as meeting corpus usually involves multiple parties with lengthy conversations and is stuffed with redundant and trivial content. To tackle this problem, we present SVB, an effective and ef\ufb01cient framework for meeting summarization that \u2018compress\u2019 the redundancy while preserving important content via three processes: sliding-window dialogue restoration and S coring, channel-wise importance score V oting, and relative positional B ucketing. Speci\ufb01cally, under the self-supervised paradigm, the sliding-window scoring aims to rate the importance of each token from multiple views. Then these ratings are aggregated by channel-wise voting. Tokens with high ratings will be regarded as salient information and labeled as anchors . Finally, to tailor the lengthy input to an acceptable length for the language model, the relative positional bucketing algorithm is performed to retain the anchors while compressing other irrelevant contents in different granularities. With-out large-scale pre-training or expert-grade annotating tools, our proposed method outperforms previous state-of-the-art approaches. A vast amount of evaluations and analyses are conducted to prove the effectiveness of our method.",
+    "authors": [
+        "Haochen Tan",
+        "Han Wu",
+        "Wei Shao",
+        "Xinyun Zhang",
+        "Mingjie Zhan",
+        "Zhaohui Hou",
+        "Ding Liang",
+        "Linqi Song"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "SVB is presented, an effective andcient framework for meeting summarization that \u2018compress\u2019 the redundancy while preserving important content via three processes: sliding-window dialogue restoration and S coring, channel-wise importance score V oting, and relative positional bucketing."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

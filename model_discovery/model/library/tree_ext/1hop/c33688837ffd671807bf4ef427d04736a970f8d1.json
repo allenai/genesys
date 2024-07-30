@@ -1,0 +1,24 @@
+{
+    "acronym": "c33688837ffd671807bf4ef427d04736a970f8d1",
+    "title": "Disentangling Knowledge-based and Visual Reasoning by Question Decomposition in KB-VQA",
+    "seed_ids": [
+        "gpt3"
+    ],
+    "s2id": "c33688837ffd671807bf4ef427d04736a970f8d1",
+    "abstract": "We study the Knowledge-Based visual question-answering problem, for which given a question, the models need to ground it into the visual modality to find the answer. Although many recent works use question-dependent captioners to verbalize the given image and use Large Language Models to solve the VQA problem, the research results show they are not reasonably performing for multi-hop questions. Our study shows that replacing a complex question with several simpler questions helps to extract more relevant information from the image and provide a stronger comprehension of it. Moreover, we analyze the decomposed questions to find out the modality of the information that is required to answer them and use a captioner for the visual questions and LLMs as a general knowledge source for the non-visual KB-based questions. Our results demonstrate the positive impact of using simple questions before retrieving visual or non-visual information. We have provided results and analysis on three well-known VQA datasets including OKVQA, A-OKVQA, and KRVQA, and achieved up to 2% improvement in accuracy.",
+    "authors": [
+        "Elham J. Barezi",
+        "Parisa Kordjamshidi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study shows that replacing a complex question with several simpler questions helps to extract more relevant information from the image and provide a stronger comprehension of it and demonstrates the positive impact of using simple questions before retrieving visual or non-visual information."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

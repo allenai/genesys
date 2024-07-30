@@ -1,0 +1,25 @@
+{
+    "acronym": "34a1459f8f5af3cdaf7edad3c3656ce64aeb486a",
+    "title": "Nested Deformable Multi-head Attention for Facial Image Inpainting",
+    "seed_ids": [
+        "luna",
+        "af679d69fcc1d0fcf0f039aba937853bcb50a8de"
+    ],
+    "s2id": "34a1459f8f5af3cdaf7edad3c3656ce64aeb486a",
+    "abstract": "Extracting adequate contextual information is an important aspect of any image inpainting method. To achieve this, ample image inpainting methods are available that aim to focus on large receptive fields. Recent advancements in the deep learning field with the introduction of transformers for image inpainting paved the way toward plausible results. Stacking multiple transformer blocks in a single layer causes the architecture to become computationally complex. In this context, we propose a novel lightweight architecture with a nested deformable attention-based transformer layer for feature fusion. The nested attention helps the network to focus on long-term dependencies from encoder and decoder features. Also, multi-head attention consisting of a deformable convolution is proposed to delve into the diverse receptive fields. With the advantage of nested and deformable attention, we propose a lightweight architecture for facial image inpainting. The results comparison on Celeb HQ [25] dataset using known (NVIDIA) and unknown (QD-IMD) masks and Places2 [57] dataset with NVIDIA masks along with extensive ablation study prove the superiority of the proposed approach for image inpainting tasks. The code is available at: https://github.com/shrutiphutke/NDMA_Facial_Inpainting.",
+    "authors": [
+        "Shruti S. Phutke",
+        "Subrahmanyam Murala"
+    ],
+    "venue": "IEEE Workshop/Winter Conference on Applications of Computer Vision",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel lightweight architecture with a nested deformable attention-based transformer layer for feature fusion and multi-head attention consisting of a deformable convolution is proposed to delve into the diverse receptive fields for facial image inpainting."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

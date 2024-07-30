@@ -1,0 +1,34 @@
+{
+    "acronym": "d0612d91867c879b44be4b56cebdc725e2942172",
+    "title": "CYCLE: Learning to Self-Refine the Code Generation",
+    "seed_ids": [
+        "gpt",
+        "gpt2",
+        "gpt3",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "1bf21dabbdfc81fd4f9e92b1201ecce744cabb6a",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d0612d91867c879b44be4b56cebdc725e2942172",
+    "abstract": "Pre-trained code language models have achieved promising performance in code generation and improved the programming efficiency of human developers. However, their self-refinement capability is typically overlooked by the existing evaluations of code LMs, which focus only on the accuracy of the one-time prediction. For the cases when code LMs fail to implement the correct program, developers actually find it hard to debug and fix the faulty prediction since it is not written by the developers themselves. Unfortunately, our study reveals that code LMs cannot efficiently self-refine their faulty generations as well. In this paper, we propose CYCLE framework, learning to self-refine the faulty generation according to the available feedback, such as the execution results reported by the test suites. We evaluate CYCLE on three popular code generation benchmarks, HumanEval, MBPP, and APPS. The results reveal that CYCLE successfully maintains, sometimes improves, the quality of one-time code generation, while significantly improving the self-refinement capability of code LMs. We implement four variants of CYCLE with varied numbers of parameters across 350M, 1B, 2B, and 3B, and the experiments show that CYCLE consistently boosts the code generation performance, by up to 63.5",
+    "authors": [
+        "Yangruibo Ding",
+        "Marcus J. Min",
+        "Gail E. Kaiser",
+        "Baishakhi Ray"
+    ],
+    "venue": "Proc. ACM Program. Lang.",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes CYCLE framework, learning to self-refine the faulty generation according to the available feedback, such as the execution results reported by the test suites, and reveals that CYCLE successfully maintains, sometimes improves, the quality of one-time code generation, while significantly improving the self-refinement capability of code LMs."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

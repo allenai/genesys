@@ -1,0 +1,26 @@
+{
+    "acronym": "9be1f788ab36ccec282ee29cb3ba60499b3fdcf2",
+    "title": "Pose-aware Disentangled Multiscale Transformer for Pose Guided Person Image Generation",
+    "seed_ids": [
+        "axialattn",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "9be1f788ab36ccec282ee29cb3ba60499b3fdcf2",
+    "abstract": "Pose Guided Person Image Generation (PGPIG) is the task that transforms the pose of a person's image from the source image, its pose information, and the target pose information. Most existing PGPIG methods require additional pose information or tasks, which limits their application. Moreover, they use CNNs, which can only extract features from neighboring pixels and cannot consider the consistency of the entire image. This paper proposes a PGPIG network solving these problems by using a module containing Axial Transformers with large receptive field. The proposed method disentangles the PGPIG task into two subtasks: \u201crough pose transformation\u201d and \u201cdetailed texture generation\u201d. In the former task, low-resolution feature maps are transformed by blocks containing Axial Transformer. The latter task uses a CNN network with Adaptive Instance Normalization. Experiments show that the proposed method has competitive performance with other state-of-the-art methods. Furthermore, despite achieving excellent performance, the proposed network has a significantly fewer parameters than existing methods.",
+    "authors": [
+        "Kei Shibasaki",
+        "Masaaki Ikehara"
+    ],
+    "venue": "European Signal Processing Conference",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A PGPIG network solving the challenge of transforming the pose of a person's image from the source image, its pose information, and the target pose information by using a module containing Axial Transformers with large receptive field is proposed."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

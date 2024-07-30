@@ -1,0 +1,32 @@
+{
+    "acronym": "a6aa8e4670de5b1858f86a6ab6692b9c317d5136",
+    "title": "When Does Monolingual Data Help Multilingual Translation: The Role of Domain and Model Scale",
+    "seed_ids": [
+        "transformerxl",
+        "b21670e8061a06ab97e7d6052c9345a326e84ff8",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc"
+    ],
+    "s2id": "a6aa8e4670de5b1858f86a6ab6692b9c317d5136",
+    "abstract": "Multilingual machine translation (MMT), trained on a mixture of parallel and monolingual data, is key for improving translation in low-resource language pairs. However, the literature offers conflicting results on the performance of different methods of including monolingual data. To resolve this, we examine how denoising autoencoding (DAE) and backtranslation (BT) impact MMT under different data conditions and model scales. Unlike prior studies, we use a realistic dataset of 100 translation directions and consider many domain combinations of monolingual and test data. We find that monolingual data generally helps MMT, but models are surprisingly brittle to domain mismatches, especially at smaller model scales. BT is beneficial when the parallel, monolingual, and test data sources are similar but can be detrimental otherwise, while DAE is less effective than previously reported. Next, we analyze the impact of scale (from 90M to 1.6B parameters) and find it is important for both methods, particularly DAE. As scale increases, DAE transitions from underperforming the parallel-only baseline at 90M to converging with BT performance at 1.6B, and even surpassing it in low-resource. These results offer new insights into how to best use monolingual data in MMT.",
+    "authors": [
+        "Christos Baziotis",
+        "Biao Zhang",
+        "Alexandra Birch",
+        "B. Haddow"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that monolingual data generally helps MMT, but models are surprisingly brittle to domain mismatches, especially at smaller model scales."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

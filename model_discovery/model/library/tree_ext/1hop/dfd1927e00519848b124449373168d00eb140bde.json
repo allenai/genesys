@@ -1,0 +1,32 @@
+{
+    "acronym": "dfd1927e00519848b124449373168d00eb140bde",
+    "title": "DynaQuant: Compressing Deep Learning Training Checkpoints via Dynamic Quantization",
+    "seed_ids": [
+        "gpt2",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "dfd1927e00519848b124449373168d00eb140bde",
+    "abstract": "With the increase in the scale of Deep Learning (DL) training workloads in terms of compute resources and time consumption, the likelihood of encountering in-training failures rises substantially, leading to lost work and resource wastage. Such failures are typically offset by a checkpointing mechanism, which comes at the cost of storage and network bandwidth overhead. State-of-the-art approaches involve lossy model compression mechanisms, which induce a tradeoff between the resulting model quality (accuracy) and compression ratio. Delta compression is then used to further reduce the overhead by only storing the difference between consecutive checkpoints. We make a key enabling observation that the sensitivity of model weights to compression varies during training, and different weights benefit from different quantization levels (ranging from retaining full precision to pruning). We propose (1) a non-uniform quantization scheme that leverages this variation, (2) an efficient search mechanism that dynamically finds the best quantization configurations, and (3) a quantization-aware delta compression mechanism that rearranges weights to minimize checkpoint differences, thereby maximizing compression. We instantiate these contributions in DynaQuant - a framework for DL workload checkpoint compression. Our experiments show that DynaQuant consistently achieves a better tradeoff between accuracy and compression ratios compared to prior works, enabling a compression ratio up to 39x and withstanding up to 10 restores with negligible accuracy impact for fault-tolerant training. DynaQuant achieves at least an order of magnitude reduction in checkpoint storage overhead for training failure recovery as well as transfer learning use cases without any loss of accuracy.",
+    "authors": [
+        "Amey Agrawal",
+        "Sameer Reddy",
+        "S. Bhattamishra",
+        "Venkata Prabhakara Sarath Nookala",
+        "Vidushi Vashishth",
+        "Kexin Rong",
+        "Alexey Tumanov"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DynaQuant consistently achieves a better tradeoff between accuracy and compression ratios compared to prior works, enabling a compression ratio up to 39x and withstanding up to 10 restores with negligible accuracy impact for fault-tolerant training."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

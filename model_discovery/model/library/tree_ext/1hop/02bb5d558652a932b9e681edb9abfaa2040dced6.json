@@ -1,0 +1,26 @@
+{
+    "acronym": "02bb5d558652a932b9e681edb9abfaa2040dced6",
+    "title": "TemporalMaxer: Maximize Temporal Context with only Max Pooling for Temporal Action Localization",
+    "seed_ids": [
+        "metaformer",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f"
+    ],
+    "s2id": "02bb5d558652a932b9e681edb9abfaa2040dced6",
+    "abstract": "Temporal Action Localization (TAL) is a challenging task in video understanding that aims to identify and localize actions within a video sequence. Recent studies have emphasized the importance of applying long-term temporal context modeling (TCM) blocks to the extracted video clip features such as employing complex self-attention mechanisms. In this paper, we present the simplest method ever to address this task and argue that the extracted video clip features are already informative to achieve outstanding performance without sophisticated architectures. To this end, we introduce TemporalMaxer, which minimizes long-term temporal context modeling while maximizing information from the extracted video clip features with a basic, parameter-free, and local region operating max-pooling block. Picking out only the most critical information for adjacent and local clip embeddings, this block results in a more efficient TAL model. We demonstrate that TemporalMaxer outperforms other state-of-the-art methods that utilize long-term TCM such as self-attention on various TAL datasets while requiring significantly fewer parameters and computational resources. The code for our approach is publicly available at https://github.com/TuanTNG/TemporalMaxer",
+    "authors": [
+        "Tuan N. Tang",
+        "Kwonyoung Kim",
+        "K. Sohn"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents TemporalMaxer, which minimizes long-term temporal context modeling while maximizing information from the extracted video clip features with a basic, parameter-free, and local region operating max-pooling block, and demonstrates that it outperforms other state-of-the-art methods that utilize long- term TCM such as self-attention on various TAL datasets while requiring significantly fewer parameters and computational resources."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "ac3390c58ef059277466c51a4b642ada8c4b3205",
+    "title": "Making LLMs Worth Every Penny: Resource-Limited Text Classification in Banking",
+    "seed_ids": [
+        "bert",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "270f3bea8ca801870a6cc56b4d36f7f2019c9ed0",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ac3390c58ef059277466c51a4b642ada8c4b3205",
+    "abstract": "Standard Full-Data classifiers in NLP demand thousands of labeled examples, which is impractical in data-limited domains. Few-shot methods offer an alternative, utilizing contrastive learning techniques that can be effective with as little as 20 examples per class. Similarly, Large Language Models (LLMs) like GPT-4 can perform effectively with just 1-5 examples per class. However, the performance-cost trade-offs of these methods remain underexplored, a critical concern for budget-limited organizations. Our work addresses this gap by studying the aforementioned approaches over the Banking77 financial intent detection dataset, including the evaluation of cutting-edge LLMs by OpenAI, Cohere, and Anthropic in a comprehensive set of few-shot scenarios. We complete the picture with two additional methods: first, a cost-effective querying method for LLMs based on retrieval-augmented generation (RAG), able to reduce operational costs multiple times compared to classic few-shot approaches, and second, a data augmentation method using GPT-4, able to improve performance in data-limited scenarios. Finally, to inspire future research, we provide a human expert\u2019s curated subset of Banking77, along with extensive error analysis.",
+    "authors": [
+        "L. Loukas",
+        "Ilias Stogiannidis",
+        "Odysseas Diamantopoulos",
+        "Prodromos Malakasiotis",
+        "Stavros Vassos"
+    ],
+    "venue": "International Conference on AI in Finance",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work studies the aforementioned approaches over the Banking77 financial intent detection dataset, including the evaluation of cutting-edge LLMs by OpenAI, Cohere, and Anthropic in a comprehensive set of few-shot scenarios, and provides a human expert\u2019s curated subset of Banking77, along with extensive error analysis."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

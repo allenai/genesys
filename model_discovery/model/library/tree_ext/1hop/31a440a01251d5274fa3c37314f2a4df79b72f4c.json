@@ -1,0 +1,32 @@
+{
+    "acronym": "31a440a01251d5274fa3c37314f2a4df79b72f4c",
+    "title": "An effective framework for semistructured document classification via hierarchical attention model",
+    "seed_ids": [
+        "gpt",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "a8427ce5aee6d62800c725588e89940ed4910e0d"
+    ],
+    "s2id": "31a440a01251d5274fa3c37314f2a4df79b72f4c",
+    "abstract": "Recent years have witnessed the rapidly growing of the amount of semistructured documents in real\u2010world applications. Due to the huge size of the real\u2010world data, how to manage semistructured documents effectively is a big challenge for researchers. As a fundamental task in natural language processing field, document classification is a feasible way to handle the large\u2010scale semistructured documents. However, existing methods fail to explicitly take advantage of the hierarchical semantics in semistructured documents. It's known that the contained semantics is beneficial for understanding the semistructured documents. Considering the hierarchical structure of a given semistructured document, we propose a semistructured document classification framework which explicitly utilizes the semantic hierarchical attention mechanism. More specifically, the hierarchical attention mechanism and graph neural network are employed to model semistructured documents, by which the multilevel semantic relationships and grammatical information are considered. Moreover, we propose an adaptive class cost learning method to treat the issue of data imbalance. Comprehensive experiments are conducted on two real\u2010world data sets, and the results demonstrate that our framework performs better than selected baselines for semistructured document classification.",
+    "authors": [
+        "Weizhong Zhao",
+        "Dandan Fang",
+        "Jinyong Zhang",
+        "Yao Zhao",
+        "Xiaowei Xu",
+        "Xingpeng Jiang",
+        "Xiaohua Hu",
+        "Tingting He"
+    ],
+    "venue": "International Journal of Intelligent Systems",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a semistructured document classification framework which explicitly utilizes the semantic hierarchical attention mechanism and graph neural network to model semistructureured documents, by which the multilevel semantic relationships and grammatical information are considered."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "a31ffd9494c741b52335517d7277fb6a037c5ccd",
+    "title": "An Event-based Abductive Learning for Hard Time-sensitive Question Answering",
+    "seed_ids": [
+        "bigbird",
+        "92173d081b15824d22a9ef070e118744ceee8052",
+        "5d733042a5185a97eb80e4c665eaeaf71f9d1bba",
+        "867915b9587c046ce8e4b71ab4dee2a1d8bf0b48"
+    ],
+    "s2id": "a31ffd9494c741b52335517d7277fb6a037c5ccd",
+    "abstract": "Time-Sensitive Question Answering (TSQA) is to answer questions qualified for a certain timestamp based on the given document. It is split into easy and hard modes depending on whether the document contain time qualifiers mentioned in the question. While existing models have performed well on easy mode, their performance is significant reduced for answering hard time-sensitive questions, whose time qualifiers are implicit in the document. An intuitive idea is to match temporal events in the given document by treating time-sensitive question as a temporal event of missing objects. However, not all temporal events extracted from the document have explicit time qualifiers. In this paper, we propose an Event-AL framework, in which a graph pruning model is designed to locate the timespan of implicit temporal events by capturing temporal relation between events. Moreover, we present an abductive reasoning module to determine proper objects while providing explanations. Besides, as the same relation may be scattered throughout the document in diverse expressions, a relation-based prompt is introduced to instructs LLMs in extracting candidate temporal events. We conduct extensive experiment and results show that Event-AL outperforms strong baselines for hard time-sensitive questions, with a 12.7% improvement in EM scores. In addition, it also exhibits great superiority for multi-answer and beyond hard time-sensitive questions.",
+    "authors": [
+        "Shaojuan Wu",
+        "Jitong Li",
+        "Xiaowang Zhang",
+        "Zhiyong Feng"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Results show that Event-AL outperforms strong baselines for hard time-sensitive questions, with a 12.7% improvement in EM scores, and exhibits great superiority for multi-answer and beyond hard time-sensitive questions."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "d59e0ade452948c706f2b17e844406f9ec122889",
+    "title": "SSSD-ECG-nle: New Label Embeddings with Structured State-Space Models for ECG generation",
+    "seed_ids": [
+        "hippo",
+        "2dfd237b2131ef578fef11b69c7981cf29d7b884",
+        "e342165a614588878ad0f4bc9bacf3905df34d08",
+        "ef7993ab30d0a8afabb4ebab080e471c0d5c743c",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2"
+    ],
+    "s2id": "d59e0ade452948c706f2b17e844406f9ec122889",
+    "abstract": "An electrocardiogram (ECG) is vital for identifying cardiac diseases, offering crucial insights for diagnosing heart conditions and informing potentially life-saving treatments. However, like other types of medical data, ECGs are subject to privacy concerns when distributed and analyzed. Diffusion models have made significant progress in recent years, creating the possibility for synthesizing data comparable to the real one and allowing their widespread adoption without privacy concerns. In this paper, we use diffusion models with structured state spaces for generating digital 10-second 12-lead ECG signals. We propose the SSSD-ECG-nle architecture based on SSSD-ECG with a modified conditioning mechanism and demonstrate its efficiency on downstream tasks. We conduct quantitative and qualitative evaluations, including analyzing convergence speed, the impact of adding positive samples, and assessment with physicians' expert knowledge. Finally, we share the results of physician evaluations and also make synthetic data available to ensure the reproducibility of the experiments described.",
+    "authors": [
+        "Sergey Skorik",
+        "A. Avetisyan"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes the SSSD-ECG-nle architecture based on SSSD-ECG with a modified conditioning mechanism and demonstrates its efficiency on downstream tasks, and conducts quantitative and qualitative evaluations, including analyzing convergence speed, the impact of adding positive samples, and assessment with physicians' expert knowledge."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

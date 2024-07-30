@@ -1,0 +1,28 @@
+{
+    "acronym": "af37fe8cf84d73913f70bfec3177ba802c0f69ae",
+    "title": "See and Learn More: Dense Caption-Aware Representation for Visual Question Answering",
+    "seed_ids": [
+        "bert",
+        "6adb1518f0332e13caaffa5ac5c28dfdd56d4ac4"
+    ],
+    "s2id": "af37fe8cf84d73913f70bfec3177ba802c0f69ae",
+    "abstract": "With the rapid development of deep learning models, great improvements have been achieved in the Visual Question Answering (VQA) field. However, modern VQA models are easily affected by language priors, which ignore image information and learn the superficial relationship between questions and answers, even in the optimal pre-training model. The main reason is that visual information is not fully extracted and utilized, which results in a domain gap between vision and language modalities to a certain extent. In order to mitigate the circumstances, we propose to extract dense captions (auxiliary semantic information) from images to enhance the visual information for reasoning and utilize them to release the gap between vision and language since the dense captions and the questions are from the same language modality (i.e., phrase or sentence). In this paper, we propose a novel dense caption-aware visual question answering model called DenseCapBert to enhance visual reasoning. Specifically, we generate dense captions for the images and propose a multimodal interaction mechanism to fuse dense captions, images, and questions in a unified framework, which makes the VQA models more robust. The experimental results on GQA, GQA-OOD, VQA v2, and VQA-CP v2 datasets show that dense captions are beneficial to improving the model generalization and our model effectively mitigates the language bias problem.",
+    "authors": [
+        "Yandong Bi",
+        "Huajie Jiang",
+        "Yongli Hu",
+        "Yanfeng Sun",
+        "Baocai Yin"
+    ],
+    "venue": "IEEE transactions on circuits and systems for video technology (Print)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel dense caption-aware visual question answering model called DenseCapBert to enhance visual reasoning and generates dense captions for the images and proposes a multimodal interaction mechanism to fuse dense captions, images, and questions in a unified framework, which makes the VQA models more robust."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "9b6af0e358e76d22f209c75b1702c3e6ea7815b1",
+    "title": "Global Filter Networks for Image Classification",
+    "seed_ids": [
+        "gmlp",
+        "fnet",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "9b6af0e358e76d22f209c75b1702c3e6ea7815b1",
+    "abstract": "Recent advances in self-attention and pure multi-layer perceptrons (MLP) models for vision have shown great potential in achieving promising performance with fewer inductive biases. These models are generally based on learning interaction among spatial locations from raw data. The complexity of self-attention and MLP grows quadratically as the image size increases, which makes these models hard to scale up when high-resolution features are required. In this paper, we present the Global Filter Network (GFNet), a conceptually simple yet computationally efficient architecture, that learns long-term spatial dependencies in the frequency domain with log-linear complexity. Our architecture replaces the self-attention layer in vision transformers with three key operations: a 2D discrete Fourier transform, an element-wise multiplication between frequency-domain features and learnable global filters, and a 2D inverse Fourier transform. We exhibit favorable accuracy/complexity trade-offs of our models on both ImageNet and downstream tasks. Our results demonstrate that GFNet can be a very competitive alternative to transformer-style models and CNNs in efficiency, generalization ability and robustness. Code is available at https://github.com/raoyongming/GFNet",
+    "authors": [
+        "Yongming Rao",
+        "Wenliang Zhao",
+        "Zheng Zhu",
+        "Jiwen Lu",
+        "Jie Zhou"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Global Filter Network is presented, a conceptually simple yet computationally efficient architecture that learns long-term spatial dependencies in the frequency domain with log-linear complexity and can be a very competitive alternative to transformer-style models and CNNs in efficiency, generalization ability and robustness."
+    },
+    "citationCount": 320,
+    "influentialCitationCount": 45,
+    "code": null,
+    "description": null,
+    "url": null
+}

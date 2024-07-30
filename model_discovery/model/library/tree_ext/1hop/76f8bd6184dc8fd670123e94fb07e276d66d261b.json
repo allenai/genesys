@@ -1,0 +1,28 @@
+{
+    "acronym": "76f8bd6184dc8fd670123e94fb07e276d66d261b",
+    "title": "Multi-pretraining for Large-scale Text Classification",
+    "seed_ids": [
+        "gpt",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "76f8bd6184dc8fd670123e94fb07e276d66d261b",
+    "abstract": "Deep neural network-based pretraining methods have achieved impressive results in many natural language processing tasks including text classification. However, their applicability to large-scale text classification with numerous categories (e.g., several thousands) is yet to be well-studied, where the training data is insufficient and skewed in terms of categories. In addition, existing pretraining methods usually involve excessive computation and memory overheads. In this paper, we develop a novel multi-pretraining framework for large-scale text classification. This multi-pretraining framework includes both a self-supervised pretraining and a weakly supervised pretraining. We newly introduce an out-of-context words detection task on the unlabeled data as the self-supervised pretraining. It captures the topic-consistency of words used in sentences, which is proven to be useful for text classification. In addition, we propose a weakly supervised pretraining, where labels for text classification are obtained automatically from an existing approach. Experimental results clearly show that both pretraining approaches are effective for large-scale text classification task. The proposed scheme exhibits significant improvements as much as 3.8% in terms of macro-averaging F1-score over strong pretraining methods, while being computationally efficient.",
+    "authors": [
+        "Kang-Min Kim",
+        "Bumsu Hyeon",
+        "Yeachan Kim",
+        "Jun-Hyung Park",
+        "SangKeun Lee"
+    ],
+    "venue": "Findings",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper develops a novel multi-pretraining framework for large-scale text classification that includes both a self-supervised and a weakly supervised pretraining, where labels for text classification are obtained automatically from an existing approach."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

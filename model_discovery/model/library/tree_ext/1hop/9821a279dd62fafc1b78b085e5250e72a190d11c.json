@@ -1,0 +1,25 @@
+{
+    "acronym": "9821a279dd62fafc1b78b085e5250e72a190d11c",
+    "title": "Magnetic Localization Method for Vehicles Based on Transformer",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "9821a279dd62fafc1b78b085e5250e72a190d11c",
+    "abstract": "Magnetic positioning is a promising technique for vehicles in Global Navigation Satellite System (GNSS)-denied scenarios. Traditional magnetic positioning methods resolve the position coordinates by calculating the similarity between the measured sequence and the sequence generated from the magnetic database with criteria such as the Mean Absolute Difference (MAD), PRODuct correlation (PROD), etc., which usually suffer from a high mismatch rate. To solve this problem, we propose a novel magnetic localization method for vehicles based on Transformer. In this paper, we cast the magnetic localization problem as a regression task, in which a neural network is trained by equidistant sequences to predict the current position. In addition, by adopting Transformer to perform magnetic localization of vehicles for the first time, magnetic features are extracted, and positional relationships are explored to guarantee positioning accuracy. The experimental results show that the proposed method can greatly improve the magnetic positioning accuracy, with an average improvement of approximately 2 m.",
+    "authors": [
+        "Yi Lu",
+        "Dongyan Wei",
+        "Hong Yuan"
+    ],
+    "venue": "Applied Sciences",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "By adopting Transformer to perform magnetic localization of vehicles for the first time, magnetic features are extracted, and positional relationships are explored to guarantee positioning accuracy."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

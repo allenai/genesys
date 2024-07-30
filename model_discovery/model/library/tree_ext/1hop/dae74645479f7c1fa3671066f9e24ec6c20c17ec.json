@@ -1,0 +1,35 @@
+{
+    "acronym": "dae74645479f7c1fa3671066f9e24ec6c20c17ec",
+    "title": "TrojanPuzzle: Covertly Poisoning Code-Suggestion Models",
+    "seed_ids": [
+        "gpt2",
+        "3bcb17559ce96eb20fa79af8194f4af0380d194a",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "dae74645479f7c1fa3671066f9e24ec6c20c17ec",
+    "abstract": "With tools like GitHub Copilot, automatic code suggestion is no longer a dream in software engineering. These tools, based on large language models, are typically trained on massive corpora of code mined from unvetted public sources. As a result, these models are susceptible to data poisoning attacks where an adversary manipulates the model's training by injecting malicious data. Poisoning attacks could be designed to influence the model's suggestions at run time for chosen contexts, such as inducing the model into suggesting insecure code payloads. To achieve this, prior attacks explicitly inject the insecure code payload into the training data, making the poison data detectable by static analysis tools that can remove such malicious data from the training set. In this work, we demonstrate two novel attacks, COVERT and TROJANPUZZLE, that can bypass static analysis by planting malicious poison data in out-of-context regions such as docstrings. Our most novel attack, TROJANPUZZLE, goes one step further in generating less suspicious poison data by never explicitly including certain (suspicious) parts of the payload in the poison data, while still inducing a model that suggests the entire payload when completing code (i.e., outside docstrings). This makes TROJANPUZZLE robust against signature-based dataset-cleansing methods that can filter out suspicious sequences from the training data. Our evaluation against models of two sizes demonstrates that both COVERT and TROJANPUZZLE have significant implications for practitioners when selecting code used to train or tune code-suggestion models.",
+    "authors": [
+        "H. Aghakhani",
+        "Wei Dai",
+        "Andre Manoel",
+        "Xavier Fernandes",
+        "Anant Kharkar",
+        "Christopher Kruegel",
+        "Giovanni Vigna",
+        "David Evans",
+        "B. Zorn",
+        "Robert Sim"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Two novel attacks are demonstrated, COVERT and TROJANPUZZLE, that can bypass static analysis by planting malicious poison data in out-of-context regions such as docstrings and have significant implications for practitioners when selecting code used to train or tune code-suggestion models."
+    },
+    "citationCount": 22,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

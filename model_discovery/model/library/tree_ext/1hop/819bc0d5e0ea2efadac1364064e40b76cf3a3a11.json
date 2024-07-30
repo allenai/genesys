@@ -1,0 +1,31 @@
+{
+    "acronym": "819bc0d5e0ea2efadac1364064e40b76cf3a3a11",
+    "title": "Towards a Foundation Model for Partial Differential Equations: Multi-Operator Learning and Extrapolation",
+    "seed_ids": [
+        "transformer",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "819bc0d5e0ea2efadac1364064e40b76cf3a3a11",
+    "abstract": "Foundation models, such as large language models, have demonstrated success in addressing various language and image processing tasks. In this work, we introduce a multi-modal foundation model for scientific problems, named PROSE-PDE. Our model, designed for bi-modality to bi-modality learning, is a multi-operator learning approach which can predict future states of spatiotemporal systems while concurrently learning the underlying governing equations of the physical system. Specifically, we focus on multi-operator learning by training distinct one-dimensional time-dependent nonlinear constant coefficient partial differential equations, with potential applications to many physical applications including physics, geology, and biology. More importantly, we provide three extrapolation studies to demonstrate that PROSE-PDE can generalize physical features through the robust training of multiple operators and that the proposed model can extrapolate to predict PDE solutions whose models or data were unseen during the training. Furthermore, we show through systematic numerical experiments that the utilization of the symbolic modality in our model effectively resolves the well-posedness problems with training multiple operators and thus enhances our model's predictive capabilities.",
+    "authors": [
+        "Jingmin Sun",
+        "Yuxuan Liu",
+        "Zecheng Zhang",
+        "Hayden Schaeffer"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work provides three extrapolation studies to demonstrate that PROSE-PDE can generalize physical features through the robust training of multiple operators and that the proposed model can extrapolate to predict PDE solutions whose models or data were unseen during the training."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

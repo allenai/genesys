@@ -1,0 +1,27 @@
+{
+    "acronym": "feb50c531e2432523a8243f1d13a5bd869482018",
+    "title": "Minority Positive Sampling for Switching Points - an Anecdote for the Code-Mixing Language Modeling",
+    "seed_ids": [
+        "gpt",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "feb50c531e2432523a8243f1d13a5bd869482018",
+    "abstract": "Code-Mixing (CM) or language mixing is a social norm in multilingual societies. CM is quite prevalent in social media conversations in multilingual regions like - India, Europe, Canada and Mexico. In this paper, we explore the problem of Language Modeling (LM) for code-mixed Hinglish text. In recent times, there have been several success stories with neural language modeling like Generative Pre-trained Transformer (GPT) (Radford et al., 2019), Bidirectional Encoder Representations from Transformers (BERT) (Devlin et al., 2018) etc.. Hence, neural language models have become the new holy grail of modern NLP, although LM for CM is an unexplored area altogether. To better understand the problem of LM for CM, we initially experimented with several statistical language modeling techniques and consequently experimented with contemporary neural language models. Analysis shows switching-points are the main challenge for the LMCM performance drop, therefore in this paper we introduce the idea of minority positive sampling to selectively induce more sample to achieve better performance. On the contrary, all neural language models demand a huge corpus to train on for better performance. Finally, we are reporting a perplexity of 139 for Hinglish (Hindi-English language pair) LMCM using statistical bi-directional techniques.",
+    "authors": [
+        "Arindam Chatterjee",
+        "V. Guptha",
+        "P. Chopra",
+        "A. Das"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Analysis shows switching-points are the main challenge for the LMCM performance drop, therefore the idea of minority positive sampling to selectively induce more sample to achieve better performance is introduced."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

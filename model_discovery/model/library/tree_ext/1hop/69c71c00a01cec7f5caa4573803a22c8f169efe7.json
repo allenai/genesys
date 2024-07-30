@@ -1,0 +1,28 @@
+{
+    "acronym": "69c71c00a01cec7f5caa4573803a22c8f169efe7",
+    "title": "SMART: Towards Pre-trained Missing-Aware Model for Patient Health Status Prediction",
+    "seed_ids": [
+        "transformer",
+        "5ee2008c1eab4545f1e001b2cf3c0578b7a1aafe"
+    ],
+    "s2id": "69c71c00a01cec7f5caa4573803a22c8f169efe7",
+    "abstract": "Electronic health record (EHR) data has emerged as a valuable resource for analyzing patient health status. However, the prevalence of missing data in EHR poses significant challenges to existing methods, leading to spurious correlations and suboptimal predictions. While various imputation techniques have been developed to address this issue, they often obsess unnecessary details and may introduce additional noise when making clinical predictions. To tackle this problem, we propose SMART, a Self-Supervised Missing-Aware RepresenTation Learning approach for patient health status prediction, which encodes missing information via elaborated attentions and learns to impute missing values through a novel self-supervised pre-training approach that reconstructs missing data representations in the latent space. By adopting missing-aware attentions and focusing on learning higher-order representations, SMART promotes better generalization and robustness to missing data. We validate the effectiveness of SMART through extensive experiments on six EHR tasks, demonstrating its superiority over state-of-the-art methods.",
+    "authors": [
+        "Zhihao Yu",
+        "Xu Chu",
+        "Yujie Jin",
+        "Yasha Wang",
+        "Junfeng Zhao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "SMART, a Self-Supervised Missing-Aware RepresenTation Learning approach for patient health status prediction, which encodes missing information via elaborated attentions and learns to impute missing values through a novel self-supervised pre-training approach that reconstructs missing data representations in the latent space is proposed."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

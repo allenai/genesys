@@ -1,0 +1,28 @@
+{
+    "acronym": "bd7a316842ca0e8446d3c35768ac2aaad168bd5e",
+    "title": "MEDPNet: Achieving High-Precision Adaptive Registration for Complex Die Castings",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "bd7a316842ca0e8446d3c35768ac2aaad168bd5e",
+    "abstract": "Due to their complex spatial structure and diverse geometric features, achieving high-precision and robust point cloud registration for complex Die Castings has been a significant challenge in the die-casting industry. Existing point cloud registration methods primarily optimize network models using well-established high-quality datasets, often neglecting practical application in real scenarios. To address this gap, this paper proposes a high-precision adaptive registration method called Multiscale Efficient Deep Closest Point (MEDPNet) and introduces a die-casting point cloud dataset, DieCastCloud, specifically designed to tackle the challenges of point cloud registration in the die-casting industry. The MEDPNet method performs coarse die-casting point cloud data registration using the Efficient-DCP method, followed by precision registration using the Multiscale feature fusion dual-channel registration (MDR) method. We enhance the modeling capability and computational efficiency of the model by replacing the attention mechanism of the Transformer in DCP with Efficient Attention and implementing a collaborative scale mechanism through the combination of serial and parallel blocks. Additionally, we propose the MDR method, which utilizes multilayer perceptrons (MLP), Normal Distributions Transform (NDT), and Iterative Closest Point (ICP) to achieve learnable adaptive fusion, enabling high-precision, scalable, and noise-resistant global point cloud registration. Our proposed method demonstrates excellent performance compared to state-of-the-art geometric and learning-based registration methods when applied to complex die-casting point cloud data.",
+    "authors": [
+        "Yuqing Du",
+        "Yu Song",
+        "Ce Guo",
+        "Xiaojing Tian",
+        "Dong Liu",
+        "Ming Cong"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a high-precision adaptive registration method called Multiscale Efficient Deep Closest Point (MEDPNet) and introduces a die-casting point cloud dataset, DieCastCloud, specifically designed to tackle the challenges of point cloud registration in the die-casting industry."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

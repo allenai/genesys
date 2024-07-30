@@ -1,0 +1,35 @@
+{
+    "acronym": "48c1bf8bab85f4d6a2490a4d3efc8b1fb4a2b261",
+    "title": "Is Flash Attention Stable?",
+    "seed_ids": [
+        "transformer",
+        "flashattn",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336"
+    ],
+    "s2id": "48c1bf8bab85f4d6a2490a4d3efc8b1fb4a2b261",
+    "abstract": "Training large-scale machine learning models poses distinct system challenges, given both the size and complexity of today's workloads. Recently, many organizations training state-of-the-art Generative AI models have reported cases of instability during training, often taking the form of loss spikes. Numeric deviation has emerged as a potential cause of this training instability, although quantifying this is especially challenging given the costly nature of training runs. In this work, we develop a principled approach to understanding the effects of numeric deviation, and construct proxies to put observations into context when downstream effects are difficult to quantify. As a case study, we apply this framework to analyze the widely-adopted Flash Attention optimization. We find that Flash Attention sees roughly an order of magnitude more numeric deviation as compared to Baseline Attention at BF16 when measured during an isolated forward pass. We then use a data-driven analysis based on the Wasserstein Distance to provide upper bounds on how this numeric deviation impacts model weights during training, finding that the numerical deviation present in Flash Attention is 2-5 times less significant than low-precision training.",
+    "authors": [
+        "Alicia Golden",
+        "Samuel Hsia",
+        "Fei Sun",
+        "Bilge Acun",
+        "Basil Hosmer",
+        "Yejin Lee",
+        "Zachary DeVito",
+        "Jeff Johnson",
+        "Gu-Yeon Wei",
+        "David Brooks",
+        "Carole-Jean Wu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A principled approach to understanding the effects of numeric deviation is developed, and proxies are constructed to put observations into context when downstream effects are difficult to quantify, to analyze the widely-adopted Flash Attention optimization."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

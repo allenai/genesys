@@ -1,0 +1,32 @@
+{
+    "acronym": "f3173cd86ae95a53f44f0d1093e85df4988a459a",
+    "title": "What Helps Transformers Recognize Conversational Structure? Importance of Context, Punctuation, and Labels in Dialog Act Recognition",
+    "seed_ids": [
+        "longformer",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "8af925f4edf45131b5b6fed8aa655089d58692fa",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "2e14e84ccec924ed770b58108ad1d9de6f0ca295",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "f3173cd86ae95a53f44f0d1093e85df4988a459a",
+    "abstract": "Abstract Dialog acts can be interpreted as the atomic units of a conversation, more fine-grained than utterances, characterized by a specific communicative function. The ability to structure a conversational transcript as a sequence of dialog acts\u2014dialog act recognition, including the segmentation\u2014is critical for understanding dialog. We apply two pre-trained transformer models, XLNet and Longformer, to this task in English and achieve strong results on Switchboard Dialog Act and Meeting Recorder Dialog Act corpora with dialog act segmentation error rates (DSER) of 8.4% and 14.2%. To understand the key factors affecting dialog act recognition, we perform a comparative analysis of models trained under different conditions. We find that the inclusion of a broader conversational context helps disambiguate many dialog act classes, especially those infrequent in the training data. The presence of punctuation in the transcripts has a massive effect on the models\u2019 performance, and a detailed analysis reveals specific segmentation patterns observed in its absence. Finally, we find that the label set specificity does not affect dialog act segmentation performance. These findings have significant practical implications for spoken language understanding applications that depend heavily on a good-quality segmentation being available.",
+    "authors": [
+        "Piotr \u017belasko",
+        "R. Pappagari",
+        "N. Dehak"
+    ],
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The inclusion of a broader conversational context helps disambiguate many dialog act classes, especially those infrequent in the training data, and the presence of punctuation in the transcripts has a massive effect on the models\u2019 performance, and a detailed analysis reveals specific segmentation patterns observed in its absence."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

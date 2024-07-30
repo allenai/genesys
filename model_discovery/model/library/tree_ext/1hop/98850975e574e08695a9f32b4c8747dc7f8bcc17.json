@@ -1,0 +1,31 @@
+{
+    "acronym": "98850975e574e08695a9f32b4c8747dc7f8bcc17",
+    "title": "Maximizing Communication Efficiency for Large-scale Training via 0/1 Adam",
+    "seed_ids": [
+        "gpt2",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "ad7129af0644dbcafa9aa2f111cb76526ea444a1",
+        "d931f84abfc4550c10ceb113b142c8eb3e07571e",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "98850975e574e08695a9f32b4c8747dc7f8bcc17",
+    "abstract": "1-bit gradient compression and local steps are two representative techniques that enable drastic communication reduction in distributed SGD. Their benefits, however, remain an open question on Adam-based large model pre-training (e.g. BERT and GPT). In this paper, we demonstrate the non-linearity in Adam causes slow convergence even when 1-bit compression or local steps are individually applied. To alleviate this limitation, we propose 0/1 Adam that linearizes each Adam step via approximating its optimizer states using their stale estimates and linear correlation. 0/1 Adam performs an Adam-like step to preserve the adaptivity, while its linearity allows utilizing 1-bit compression and local steps simultaneously for wall-clock time speed up. We provide convergence guarantee for 0/1 Adam on smooth non-convex objectives. On various large-scale benchmarks such as BERT-Base, BERT-Large, GPT-2 pre-training and ImageNet, we demonstrate on up to 128 GPUs that 0/1 Adam is able to reduce up to 87% of data volume, 54% of communication rounds, and achieve up to 2$\\times$ higher training throughput and end-to-end training time reduction compared to the state-of-the-art baseline 1-bit Adam; while enjoying the same statistical convergence speed and end task model accuracy on GLUE dataset and ImageNet validation set.",
+    "authors": [
+        "Yucheng Lu",
+        "Conglong Li",
+        "Minjia Zhang",
+        "Christopher De Sa",
+        "Yuxiong He"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The non-linearity in Adam causes slow convergence even when 1-bit compression or local steps are individually applied, so 0/1 Adam is proposed that linearizes each Adam step via approximating its optimizer states using their stale estimates and linear correlation."
+    },
+    "citationCount": 14,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

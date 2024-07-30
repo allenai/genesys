@@ -1,0 +1,37 @@
+{
+    "acronym": "4d80dae4039b4de6c1ba30227d5981fd1cbb4a1f",
+    "title": "Parameterization of Cross-token Relations with Relative Positional Encoding for Vision MLP",
+    "seed_ids": [
+        "gmlp",
+        "2c4d5b1278125d84c9e66ebe1032af888d9211f3",
+        "a9c214e846188adb645021cd7b1964b8ea1fef6f",
+        "f75cddf2d42ed01b34686704eb3504becef67442",
+        "71363797140647ebb3f540584de0a8758d2f7aa2",
+        "7509c66a666e2e3f14bc8676b969b945ee6e136f",
+        "84476fdf6ead3553f4493dff8e02308439d6222b",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "4d80dae4039b4de6c1ba30227d5981fd1cbb4a1f",
+    "abstract": "Vision multi-layer perceptrons (MLPs) have shown promising performance in computer vision tasks, and become the main competitor of CNNs and vision Transformers. They use token-mixing layers to capture cross-token interactions, as opposed to the multi-head self-attention mechanism used by Transformers. However, the heavily parameterized token-mixing layers naturally lack mechanisms to capture local information and multi-granular non-local relations, thus their discriminative power is restrained. To tackle this issue, we propose a new positional spacial gating unit (PoSGU). It exploits the attention formulations used in the classical relative positional encoding (RPE), to efficiently encode the cross-token relations for token mixing. It can successfully reduce the current quadratic parameter complexity O(N2) of vision MLPs to $O(N)$ and O(1). We experiment with two RPE mechanisms, and further propose a group-wise extension to improve their expressive power with the accomplishment of multi-granular contexts. These then serve as the key building blocks of a new type of vision MLP, referred to as PosMLP. We evaluate the effectiveness of the proposed approach by conducting thorough experiments, demonstrating an improved or comparable performance with reduced parameter complexity. For instance, for a model trained on ImageNet1K, we achieve a performance improvement from 72.14% to 74.02% and a learnable parameter reduction from 19.4M to 18.2M. Code could be found at https://github.com/Zhicaiwww/PosMLP https://github.com/Zhicaiwww/PosMLP.",
+    "authors": [
+        "Zhicai Wang",
+        "Y. Hao",
+        "Xingyu Gao",
+        "Hao Zhang",
+        "Shuo Wang",
+        "Tingting Mu",
+        "Xiangnan He"
+    ],
+    "venue": "ACM Multimedia",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new positional spacial gating unit (PoSGU) is proposed that exploits the attention formulations used in the classical relative positional encoding (RPE), to efficiently encode the cross-token relations for token mixing and can successfully reduce the current quadratic parameter complexity O(N2) of vision MLPs."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,42 @@
+{
+    "acronym": "d17f3afd033cc33eaa3a88df16cb2bcb205a853f",
+    "title": "Continuous Diffusion for Mixed-Type Tabular Data",
+    "seed_ids": [
+        "contdiffu",
+        "bb857c72e7c75fc3d4b44b1dcaa66c62ea10a2e1",
+        "54b6e5dcef733c151adef0ac06430f63cb301a36",
+        "11c8911f787eed34e6f058d5d36287d45c54c961",
+        "7acc71fad70c4c65203739f156bcb440587df901",
+        "33433e9103b00aa0c42597cbfe13a429fbf5abdf",
+        "22775e58932cdfbd273a2a835a22c5d86800a458",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "394bd431e522b86581086bcb5cd9be161cf1cdf4",
+        "25d3a4e048d0020ba9cffc6442ebd4e7bb548a55",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "e9b9a47cd81c66603c827f0f2bc4fba0d9ae77c4",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "d17f3afd033cc33eaa3a88df16cb2bcb205a853f",
+    "abstract": "Score-based generative models (or diffusion models for short) have proven successful for generating text and image data. However, the adaption of this model family to tabular data of mixed-type has fallen short so far. In this paper, we propose CDTD, a Continuous Diffusion model for mixed-type Tabular Data. Specifically, we combine score matching and score interpolation to ensure a common continuous noise distribution for both continuous and categorical features alike. We counteract the high heterogeneity inherent to data of mixed-type with distinct, adaptive noise schedules per feature or per data type. The learnable noise schedules ensure optimally allocated model capacity and balanced generative capability. We homogenize the data types further with model-specific loss calibration and initialization schemes tailored to mixed-type tabular data. Our experimental results show that CDTD consistently outperforms state-of-the-art benchmark models, captures feature correlations exceptionally well, and that heterogeneity in the noise schedule design boosts the sample quality.",
+    "authors": [
+        "Markus Mueller",
+        "Kathrin Gruber",
+        "Dennis Fok"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes CDTD, a Continuous Diffusion model for mixed-type Tabular Data, which combines score matching and score interpolation to ensure a common continuous noise distribution for both continuous and categorical features alike."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "fc773da8606fe08b835eb2071050fad8379e2dc6",
+    "title": "Interpret Vision Transformers as ConvNets with Dynamic Convolutions",
+    "seed_ids": [
+        "linformer",
+        "6b6ffb94626e672caffafc77097491d9ee7a8682",
+        "2365410a710b421b2295cdca0074946cb50bb1d4",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "fc773da8606fe08b835eb2071050fad8379e2dc6",
+    "abstract": "There has been a debate about the superiority between vision Transformers and ConvNets, serving as the backbone of computer vision models. Although they are usually considered as two completely different architectures, in this paper, we interpret vision Transformers as ConvNets with dynamic convolutions, which enables us to characterize existing Transformers and dynamic ConvNets in a unified framework and compare their design choices side by side. In addition, our interpretation can also guide the network design as researchers now can consider vision Transformers from the design space of ConvNets and vice versa. We demonstrate such potential through two specific studies. First, we inspect the role of softmax in vision Transformers as the activation function and find it can be replaced by commonly used ConvNets modules, such as ReLU and Layer Normalization, which results in a faster convergence rate and better performance. Second, following the design of depth-wise convolution, we create a corresponding depth-wise vision Transformer that is more efficient with comparable performance. The potential of the proposed unified interpretation is not limited to the given examples and we hope it can inspire the community and give rise to more advanced network architectures.",
+    "authors": [
+        "Chong Zhou",
+        "Chen Change Loy",
+        "Bo Dai"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper interprets vision Transformers as ConvNets with dynamic convolutions, which enables us to characterize existing Transformers and dynamic ConvNet in a unified framework and compare their design choices side by side."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "14ceaf4fda4e7988c3c6c63436a8f0c67b9ec698",
+    "title": "Learning Interpretable Legal Case Retrieval via Knowledge-Guided Case Reformulation",
+    "seed_ids": [
+        "bert",
+        "5fc1a3a49e8f1d106118b69d1d6be3b6caa23da0",
+        "1e3e65e7773b7869d9bd7f5394b54199e48195e6",
+        "15cc6dac02a458f587712880e8b9c15bb97bbbeb"
+    ],
+    "s2id": "14ceaf4fda4e7988c3c6c63436a8f0c67b9ec698",
+    "abstract": "Legal case retrieval for sourcing similar cases is critical in upholding judicial fairness. Different from general web search, legal case retrieval involves processing lengthy, complex, and highly specialized legal documents. Existing methods in this domain often overlook the incorporation of legal expert knowledge, which is crucial for accurately understanding and modeling legal cases, leading to unsatisfactory retrieval performance. This paper introduces KELLER, a legal knowledge-guided case reformulation approach based on large language models (LLMs) for effective and interpretable legal case retrieval. By incorporating professional legal knowledge about crimes and law articles, we enable large language models to accurately reformulate the original legal case into concise sub-facts of crimes, which contain the essential information of the case. Extensive experiments on two legal case retrieval benchmarks demonstrate superior retrieval performance and robustness on complex legal case queries of KELLER over existing methods.",
+    "authors": [
+        "Chenlong Deng",
+        "Kelong Mao",
+        "Zhicheng Dou"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces KELLER, a legal knowledge-guided case reformulation approach based on large language models (LLMs) for effective and interpretable legal case retrieval that enables large language models to accurately reformulate the original legal case into concise sub-facts of crimes, which contain the essential information of the case."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

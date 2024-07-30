@@ -1,0 +1,51 @@
+{
+    "acronym": "f8d357d38bbcdd93889fe71762eb57842b2ab063",
+    "title": "Simple and Effective Masked Diffusion Language Models",
+    "seed_ids": [
+        "bert",
+        "diffusionbert",
+        "d3pms",
+        "bfd2b76998a0521c12903ef5ced517adf70ad2ba",
+        "d9ffb44ee3c8ec0b6692df8a90451384c1edd89b",
+        "4319a5faceb0f94fc791e49dc0b94dd4d142f90e",
+        "5f90d43e6ece5c6ee6e8186e4b57d46c85377713",
+        "23b7cde603b5ec8d5d13d46e1c453dc52d7c3f6c",
+        "33433e9103b00aa0c42597cbfe13a429fbf5abdf",
+        "a979742220a88b1d32e1fbe72c41e8ba3007053c",
+        "22775e58932cdfbd273a2a835a22c5d86800a458",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "0b9770a377b3f96cef9f268cee1791d39a0d4893",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "e9b9a47cd81c66603c827f0f2bc4fba0d9ae77c4",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "063eee315e864f0842d3074629dccc4bb36d19e7",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "8514e90a83b2609d188c07be1cde90307b2c6afe",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f8d357d38bbcdd93889fe71762eb57842b2ab063",
+    "abstract": "While diffusion models excel at generating high-quality images, prior work reports a significant performance gap between diffusion and autoregressive (AR) methods in language modeling. In this work, we show that simple masked discrete diffusion is more performant than previously thought. We apply an effective training recipe that improves the performance of masked diffusion models and derive a simplified, Rao-Blackwellized objective that results in additional improvements. Our objective has a simple form -- it is a mixture of classical masked language modeling losses -- and can be used to train encoder-only language models that admit efficient samplers, including ones that can generate arbitrary lengths of text semi-autoregressively like a traditional language model. On language modeling benchmarks, a range of masked diffusion models trained with modern engineering practices achieves a new state-of-the-art among diffusion models, and approaches AR perplexity. We release our code at: https://github.com/kuleshov-group/mdlm",
+    "authors": [
+        "S. Sahoo",
+        "Marianne Arriola",
+        "Yair Schiff",
+        "Aaron Gokaslan",
+        "Edgar Marroquin",
+        "Justin T Chiu",
+        "Alexander Rush",
+        "Volodymyr Kuleshov"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An effective training recipe is applied that improves the performance of masked diffusion models and a simplified, Rao-Blackwellized objective is derived that can be used to train encoder-only language models that admit efficient samplers."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

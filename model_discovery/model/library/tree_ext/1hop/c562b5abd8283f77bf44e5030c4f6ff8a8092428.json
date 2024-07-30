@@ -1,0 +1,32 @@
+{
+    "acronym": "c562b5abd8283f77bf44e5030c4f6ff8a8092428",
+    "title": "\u03b4-CAUSAL: Exploring Defeasibility in Causal Reasoning",
+    "seed_ids": [
+        "gpt2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "4d16457cded23bce6eaa91cd17aefd22af2279f0",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "c562b5abd8283f77bf44e5030c4f6ff8a8092428",
+    "abstract": "Defeasibility in causal reasoning implies that the causal relationship between cause and effect can be strengthened or weakened. Namely, the causal strength between cause and effect should increase or decrease with the incorporation of strengthening arguments (supporters) or weakening arguments (defeaters), respectively. However, existing works ignore defeasibility in causal reasoning and fail to evaluate existing causal strength metrics in defeasible settings. In this work, we present $\\delta$-CAUSAL, the first benchmark dataset for studying defeasibility in causal reasoning. $\\delta$-CAUSAL includes around 11K events spanning ten domains, featuring defeasible causality pairs, i.e., cause-effect pairs accompanied by supporters and defeaters. We further show current causal strength metrics fail to reflect the change of causal strength with the incorporation of supporters or defeaters in $\\delta$-CAUSAL. To this end, we propose CESAR (Causal Embedding aSsociation with Attention Rating), a metric that measures causal strength based on token-level causal relationships. CESAR achieves a significant 69.7% relative improvement over existing metrics, increasing from 47.2% to 80.1% in capturing the causal strength change brought by supporters and defeaters. We further demonstrate even Large Language Models (LLMs) like GPT-3.5 still lag 4.5 and 10.7 points behind humans in generating supporters and defeaters, emphasizing the challenge posed by $\\delta$-CAUSAL.",
+    "authors": [
+        "Shaobo Cui",
+        "Lazar Milikic",
+        "Yiyang Feng",
+        "Mete Ismayilzada",
+        "Debjit Paul",
+        "Antoine Bosselut",
+        "B. Faltings"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents $\\delta$-CAUSAL, the first benchmark dataset for studying defeasibility in causal reasoning, and proposes CESAR (Causal Embedding aSsociation with Attention Rating), a metric that measures causal strength based on token-level causal relationships."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

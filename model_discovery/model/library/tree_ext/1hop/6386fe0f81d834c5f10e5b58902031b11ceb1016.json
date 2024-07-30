@@ -1,0 +1,30 @@
+{
+    "acronym": "6386fe0f81d834c5f10e5b58902031b11ceb1016",
+    "title": "Aligning LLMs for FL-free Program Repair",
+    "seed_ids": [
+        "gpt3",
+        "d3de0bac5703825796c240bfab8dc3c8e0a90222",
+        "e37155d21818513bd40d64ee212099aac82bd6f8",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "0fe2636446cd686830da3d971b31a004d6094b3c"
+    ],
+    "s2id": "6386fe0f81d834c5f10e5b58902031b11ceb1016",
+    "abstract": "Large language models (LLMs) have achieved decent results on automated program repair (APR). However, the next token prediction training objective of decoder-only LLMs (e.g., GPT-4) is misaligned with the masked span prediction objective of current infilling-style methods, which impedes LLMs from fully leveraging pre-trained knowledge for program repair. In addition, while some LLMs are capable of locating and repairing bugs end-to-end when using the related artifacts (e.g., test cases) as input, existing methods regard them as separate tasks and ask LLMs to generate patches at fixed locations. This restriction hinders LLMs from exploring potential patches beyond the given locations. In this paper, we investigate a new approach to adapt LLMs to program repair. Our core insight is that LLM's APR capability can be greatly improved by simply aligning the output to their training objective and allowing them to refine the whole program without first performing fault localization. Based on this insight, we designed D4C, a straightforward prompting framework for APR. D4C can repair 180 bugs correctly in Defects4J, with each patch being sampled only 10 times. This surpasses the SOTA APR methods with perfect fault localization by 10% and reduces the patch sampling number by 90%. Our findings reveal that (1) objective alignment is crucial for fully exploiting LLM's pre-trained capability, and (2) replacing the traditional localize-then-repair workflow with direct debugging is more effective for LLM-based APR methods. Thus, we believe this paper introduces a new mindset for harnessing LLMs in APR.",
+    "authors": [
+        "Junjielong Xu",
+        "Ying Fu",
+        "Shin Hwei Tan",
+        "Pinjia He"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "D4C, a straightforward prompting framework for APR, is designed and revealed that objective alignment is crucial for fully exploiting LLM's pre-trained capability, and replacing the traditional localize-then-repair workflow with direct debugging is more effective for LLM-based APR methods."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

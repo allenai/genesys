@@ -1,0 +1,27 @@
+{
+    "acronym": "ddae537a62a43c061eacdbfe96ecbd2d6a6aa7d0",
+    "title": "Enriching Urdu NER with BERT Embedding, Data Augmentation, and Hybrid Encoder-CNN Architecture",
+    "seed_ids": [
+        "bert",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ddae537a62a43c061eacdbfe96ecbd2d6a6aa7d0",
+    "abstract": "Named Entity Recognition (NER) is an indispensable component of Natural Language Processing (NLP), which aims to identify and classify entities within text data. While Deep Learning (DL) models have excelled in NER for well-resourced languages such as English, Spanish, and Chinese, they face significant hurdles when dealing with low-resource languages such as Urdu. These challenges stem from the intricate linguistic characteristics of Urdu, including morphological diversity, a context-dependent lexicon, and the scarcity of training data. This study addresses these issues by focusing on Urdu Named Entity Recognition (U-NER) and introducing three key contributions. First, various pre-trained embedding methods are employed, encompassing Word2vec (W2V), GloVe, FastText, Bidirectional Encoder Representations from Transformers (BERT), and Embeddings from language models (ELMo). In particular, fine-tuning is performed on BERTBASE and ELMo using Urdu Wikipedia and news articles. Second, a novel generative Data Augmentation (DA) technique replaces Named Entities (NEs) with mask tokens, employing pre-trained masked language models to predict masked tokens, effectively expanding the training dataset. Finally, the study introduces a novel hybrid model combining a Transformer Encoder with a Convolutional Neural Network (CNN) to capture the intricate morphology of Urdu. These modules enable the model to handle polysemy, extract short- and long-range dependencies, and enhance learning capacity. Empirical experiments demonstrate that the proposed model, incorporating BERT embeddings and an innovative DA approach, attains the highest F1-score of 93.99%, highlighting its efficacy for the U-NER task.",
+    "authors": [
+        "Anil Ahmed",
+        "Degen Huang",
+        "Syed Yasser Arafat",
+        "Imran Hameed"
+    ],
+    "venue": "ACM Trans. Asian Low Resour. Lang. Inf. Process.",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel hybrid model combining a Transformer Encoder with a Convolutional Neural Network to capture the intricate morphology of Urdu is introduced, enabling the model to handle polysemy, extract short- and long-range dependencies, and enhance learning capacity."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

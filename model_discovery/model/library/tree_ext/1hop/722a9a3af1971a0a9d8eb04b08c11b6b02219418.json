@@ -1,0 +1,25 @@
+{
+    "acronym": "722a9a3af1971a0a9d8eb04b08c11b6b02219418",
+    "title": "Accelerating the Global Aggregation of Local Explanations",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "722a9a3af1971a0a9d8eb04b08c11b6b02219418",
+    "abstract": "Local explanation methods highlight the input tokens that have a considerable impact on the outcome of classifying the document at hand. For example, the Anchor algorithm applies a statistical analysis of the sensitivity of the classifier to changes in the token. Aggregating local explanations over a dataset provides a global explanation of the model.\nSuch aggregation aims to detect words with the most impact, giving valuable insights about the model, like what it has learned in training and which adversarial examples expose its weaknesses.\nHowever, standard aggregation methods bear a high computational cost:\na naive implementation applies a costly algorithm to each token of each document, and hence, it is infeasible for a simple user running in the scope of a short analysis session. \n\nWe devise techniques for accelerating the global aggregation of the Anchor algorithm. Specifically, our goal is to compute a set of top-k words with the highest global impact according to different aggregation functions. Some of our techniques are lossless and some are lossy.\nWe show that for a very mild loss of quality, we are able to accelerate the computation by up to 30 times, reducing the computation from hours to minutes. We also devise and study a probabilistic model that accounts for noise in the Anchor algorithm and diminishes the bias toward words that are frequent yet low in impact.",
+    "authors": [
+        "Alon Mor",
+        "Yonatan Belinkov",
+        "B. Kimelfeld"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The goal is to compute a set of top-k words with the highest global impact according to different aggregation functions, and devise and study a probabilistic model that accounts for noise in the Anchor algorithm and diminishes the bias toward words that are frequent yet low in impact."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

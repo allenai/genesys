@@ -1,0 +1,31 @@
+{
+    "acronym": "5e5f6e3620a9b472cfa8cb81b264f350cd77d5d4",
+    "title": "Look Before You Leap: Problem Elaboration Prompting Improves Mathematical Reasoning in Large Language Models",
+    "seed_ids": [
+        "gpt3",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c"
+    ],
+    "s2id": "5e5f6e3620a9b472cfa8cb81b264f350cd77d5d4",
+    "abstract": "Large language models (LLMs) still grapple with complex tasks like mathematical reasoning. Despite significant efforts invested in improving prefix prompts or reasoning process, the crucial role of problem context might have been neglected. Accurate recognition of inputs is fundamental for solving mathematical tasks, as ill-formed problems could potentially mislead LLM's reasoning. In this study, we propose a new approach named Problem Elaboration Prompting (PEP) to enhance the mathematical capacities of LLMs. Specifically, PEP decomposes and elucidates the problem context before reasoning, therefore enhancing the context modeling and parsing efficiency. Experiments across datasets and models demonstrate promising performances: (1) PEP demonstrates an overall enhancement in various mathematical tasks. For instance, with the GPT-3.5 model, PEP exhibits improvements of 9.93% and 8.80% on GSM8k through greedy decoding and self-consistency, respectively. (2) PEP can be easily implemented and integrated with other prompting methods. (3) PEP shows particular strength in handling distraction problems.",
+    "authors": [
+        "Haoran Liao",
+        "Jidong Tian",
+        "Shaohua Hu",
+        "Hao He",
+        "Yaohui Jin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new approach named Problem Elaboration Prompting (PEP) is proposed to enhance the mathematical capacities of LLMs by decomposing and elucidates the problem context before reasoning, therefore enhancing the context modeling and parsing efficiency."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

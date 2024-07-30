@@ -1,0 +1,28 @@
+{
+    "acronym": "5cd4fe8174b582f27d79859e4b79e0eba2a1d5f0",
+    "title": "Is Anisotropy Inherent to Transformers?",
+    "seed_ids": [
+        "gpt2",
+        "ba637c4f1a170f1e2dadeadb71a63cf2b9a46de2",
+        "7fed15cc79332f83b7bfe920c02a9c954322ddcc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5cd4fe8174b582f27d79859e4b79e0eba2a1d5f0",
+    "abstract": "The representation degeneration problem is a phenomenon that is widely observed among self-supervised learning methods based on Transformers. In NLP, it takes the form of anisotropy, a singular property of hidden representations which makes them unexpectedly close to each other in terms of angular distance (cosine-similarity). Some recent works tend to show that anisotropy is a consequence of optimizing the cross-entropy loss on long-tailed distributions of tokens. We show in this paper that anisotropy can also be observed empirically in language models with specific objectives that should not suffer directly from the same consequences. We also show that the anisotropy problem extends to Transformers trained on other modalities. Our observations tend to demonstrate that anisotropy might actually be inherent to Transformers-based models.",
+    "authors": [
+        "Nathan Godey",
+        "Eric Villemonte de la Clergerie",
+        "Beno\u00eet Sagot"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper shows that anisotropy can also be observed empirically in language models with specific objectives that should not suffer directly from the same consequences of cross-entropy loss on long-tailed distributions of tokens."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

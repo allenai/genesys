@@ -1,0 +1,31 @@
+{
+    "acronym": "f8cf6c42d48326ff7ae172c5e555178d440bf7cb",
+    "title": "WAVPROMPT: Towards Few-Shot Spoken Language Understanding with Frozen Language Models",
+    "seed_ids": [
+        "gpt2",
+        "3bcb17559ce96eb20fa79af8194f4af0380d194a",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f8cf6c42d48326ff7ae172c5e555178d440bf7cb",
+    "abstract": "Large-scale auto-regressive language models pretrained on massive text have demonstrated their impressive ability to perform new natural language tasks with only a few text examples, without the need for fine-tuning. Recent studies further show that such a few-shot learning ability can be extended to the text-image setting by training an encoder to encode the images into embeddings functioning like the text embeddings of the language model. Interested in exploring the possibility of transferring the few-shot learning ability to the audio-text setting, we propose a novel speech understanding framework, WavPrompt, where we finetune a wav2vec model to generate a sequence of audio embeddings understood by the language model. We show that WavPrompt is a few-shot learner that can perform speech understanding tasks better than a naive text baseline. We conduct detailed ablation studies on different components and hyperparameters to empirically identify the best model configuration. In addition, we conduct a non-speech understanding experiment to show WavPrompt can extract more information than just the transcriptions. Code is available at https://github.com/Hertin/WavPrompt",
+    "authors": [
+        "Heting Gao",
+        "Junrui Ni",
+        "Kaizhi Qian",
+        "Yang Zhang",
+        "Shiyu Chang",
+        "M. Hasegawa-Johnson"
+    ],
+    "venue": "Interspeech",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel speech understanding framework, WavPrompt, where a wav2vec model is finetune to generate a sequence of audio embeddings understood by the language model, and shows that WAVPrompt is a few-shot learner that can perform speech understanding tasks better than a naive text baseline."
+    },
+    "citationCount": 22,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

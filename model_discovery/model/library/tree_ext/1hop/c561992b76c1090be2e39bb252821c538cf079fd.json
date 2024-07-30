@@ -1,0 +1,27 @@
+{
+    "acronym": "c561992b76c1090be2e39bb252821c538cf079fd",
+    "title": "Towards Understanding of Medical Randomized Controlled Trials by Conclusion Generation",
+    "seed_ids": [
+        "gpt",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "c561992b76c1090be2e39bb252821c538cf079fd",
+    "abstract": "Randomized controlled trials (RCTs) represent the paramount evidence of clinical medicine. Using machines to interpret the massive amount of RCTs has the potential of aiding clinical decision-making. We propose a RCT conclusion generation task from the PubMed 200k RCT sentence classification dataset to examine the effectiveness of sequence-to-sequence models on understanding RCTs. We first build a pointer-generator baseline model for conclusion generation. Then we fine-tune the state-of-the-art GPT-2 language model, which is pre-trained with general domain data, for this new medical domain task. Both automatic and human evaluation show that our GPT-2 fine-tuned models achieve improved quality and correctness in the generated conclusions compared to the baseline pointer-generator model. Further inspection points out the limitations of this current approach and future directions to explore.",
+    "authors": [
+        "A. Shieh",
+        "Yung-Sung Chuang",
+        "Shang-Yu Su",
+        "Yun-Nung (Vivian) Chen"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A RCT conclusion generation task from the PubMed 200k RCT sentence classification dataset is proposed to examine the effectiveness of sequence-to-sequence models on understanding RCTs and shows that GPT-2 fine-tuned models achieve improved quality and correctness in the generated conclusions compared to the baseline pointer-generator model."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

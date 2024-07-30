@@ -1,0 +1,25 @@
+{
+    "acronym": "3bddda884c5264d2d3ae7087c2d570243dbe1db4",
+    "title": "MechGPT, a language-based strategy for mechanics and materials modeling that connects knowledge across scales, disciplines and modalities",
+    "seed_ids": [
+        "roformer",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3bddda884c5264d2d3ae7087c2d570243dbe1db4",
+    "abstract": "\n For centuries, researchers have sought out ways to connect disparate areas of knowledge. While early scholars (Galileo, da Vinci, etc.) were experts across fields, specialization has taken hold later. With the advent of Artificial Intelligence, we can now explore relationships across areas (e.g., mechanics-biology) or disparate domains (e.g., failure mechanics-art). To achieve this, we use a fine-tuned Large Language Model (LLM), here for a subset of knowledge in multiscale materials failure. The approach includes the use of a general-purpose LLM to distill question-answer pairs from raw sources followed by LLM fine-tuning. The resulting MechGPT LLM foundation model is used in a series of computational experiments to explore its capacity for knowledge retrieval, various language tasks, hypothesis generation, and connecting knowledge across disparate areas. While the model has some ability to recall knowledge from training, we find that LLMs are particularly useful to extract structural insights through Ontological Knowledge Graphs. These interpretable graph structures provide explanatory insights, frameworks for new research questions, and visual representations of knowledge that also can be used in retrieval-augmented generation. Three versions of MechGPT are discussed, featuring different sizes from 13 billion to 70 billion parameters, and reaching context lengths of more than 10,000 tokens. This provides ample capacity for sophisticated retrieval augmented strategies, as well as agent-based modeling where multiple LLMs interact collaboratively and/or adversarially, the incorporation of new data from the literature or web searches, as well as multimodality.",
+    "authors": [
+        "M. Buehler"
+    ],
+    "venue": "Applied Mechanics Review",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A fine-tuned Large Language Model is used, here for a subset of knowledge in multiscale materials failure, and it is found that LLMs are particularly useful to extract structural insights through Ontological Knowledge Graphs."
+    },
+    "citationCount": 18,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

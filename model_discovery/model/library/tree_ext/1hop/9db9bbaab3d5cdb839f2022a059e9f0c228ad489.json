@@ -1,0 +1,34 @@
+{
+    "acronym": "9db9bbaab3d5cdb839f2022a059e9f0c228ad489",
+    "title": "A Diagonal-Structured-State-Space-Sequence-Model-Based Deep Learning Framework for Effective Diagnosis of Mild Cognitive Impairment",
+    "seed_ids": [
+        "s4",
+        "hippo",
+        "s4d",
+        "a30ac45ac5b7bd2148d3fb80ee7f3c29724e3170",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2"
+    ],
+    "s2id": "9db9bbaab3d5cdb839f2022a059e9f0c228ad489",
+    "abstract": "Early diagnosis of mild cognitive impairment (MCI) may effectively prevent its development to Alzheimer\u2019s disease. Function connectivity (FC) of the brain networks is a widely used biomarker for MCI detection. However, FC estimated by predefined metrics may be unable to fully characterize the brain signals. This article aims to develop a deep learning framework directly applied to the brain signals for improved MCI diagnosis. A resting-state functional magnetic resonance imaging (rs-fMRI) dataset containing normal controls (NCs), early MCI (EMCI), and late MCI (LMCI) was used to develop and evaluate our model. Blood-oxygenation-level-dependent (BOLD) signals were measured by the fMRI. A 1-D pointwise convolution was employed to freely capture the spatial features, and a diagonal structured state space sequence (S4D) model was designed to extract the temporal features, particularly the long-term dependence of the BOLD signals. The proposed model was evaluated on three classification tasks, i.e., NC versus EMCI, EMCI versus LMCI, and NC versus EMCI versus LMCI, with repeated tenfold cross validation. Accuracy, sensitivity, specificity, and area under the receiver operating characteristic curve were calculated as performance metrics. For the two binary classification tasks, our model achieves the best performance in all metrics among seven state-of-the-art (SOTA) methods. For the three-category classification, despite slightly lower sensitivity, our model produces an overall superior performance than other methods. Our results indicate that long-term dependence of the BOLD signals may contribute significantly to MCI detection, providing useful information for automated diagnosis of MCI.",
+    "authors": [
+        "Tangwei Cao",
+        "Xin Liu",
+        "Zuyu Du",
+        "Jiankui Zhou",
+        "Jie Zheng",
+        "Lin Xu"
+    ],
+    "venue": "IEEE Sensors Journal",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A deep learning framework directly applied to the brain signals for improved MCI diagnosis and indicates that long-term dependence of the BOLD signals may contribute significantly to MCI detection, providing useful information for automated diagnosis of MCI."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

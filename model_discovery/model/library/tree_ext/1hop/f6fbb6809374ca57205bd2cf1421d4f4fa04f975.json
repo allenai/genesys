@@ -1,0 +1,30 @@
+{
+    "acronym": "f6fbb6809374ca57205bd2cf1421d4f4fa04f975",
+    "title": "Linguistic Knowledge and Transferability of Contextual Representations",
+    "seed_ids": [
+        "gpt",
+        "e2587eddd57bc4ba286d91b27c185083f16f40ee",
+        "8659bf379ca8756755125a487c43cfe8611ce842",
+        "256623ff025f36d343588bcd0b966c1fd26afcf8"
+    ],
+    "s2id": "f6fbb6809374ca57205bd2cf1421d4f4fa04f975",
+    "abstract": "Contextual word representations derived from large-scale neural language models are successful across a diverse set of NLP tasks, suggesting that they encode useful and transferable features of language. To shed light on the linguistic knowledge they capture, we study the representations produced by several recent pretrained contextualizers (variants of ELMo, the OpenAI transformer language model, and BERT) with a suite of sixteen diverse probing tasks. We find that linear models trained on top of frozen contextual representations are competitive with state-of-the-art task-specific models in many cases, but fail on tasks requiring fine-grained linguistic knowledge (e.g., conjunct identification). To investigate the transferability of contextual word representations, we quantify differences in the transferability of individual layers within contextualizers, especially between recurrent neural networks (RNNs) and transformers. For instance, higher layers of RNNs are more task-specific, while transformer layers do not exhibit the same monotonic trend. In addition, to better understand what makes contextual word representations transferable, we compare language model pretraining with eleven supervised pretraining tasks. For any given task, pretraining on a closely related task yields better performance than language model pretraining (which is better on average) when the pretraining dataset is fixed. However, language model pretraining on more data gives the best results.",
+    "authors": [
+        "Nelson F. Liu",
+        "Matt Gardner",
+        "Yonatan Belinkov",
+        "Matthew E. Peters",
+        "Noah A. Smith"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that linear models trained on top of frozen contextual representations are competitive with state-of-the-art task-specific models in many cases, but fail on tasks requiring fine-grained linguistic knowledge."
+    },
+    "citationCount": 670,
+    "influentialCitationCount": 149,
+    "code": null,
+    "description": null,
+    "url": null
+}

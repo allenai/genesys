@@ -1,0 +1,31 @@
+{
+    "acronym": "7f4bdef8c9d660af6b18a55de0699e5e65ce3b54",
+    "title": "Plan-Grounded Large Language Models for Dual Goal Conversational Settings",
+    "seed_ids": [
+        "gpt3",
+        "memcompress",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1"
+    ],
+    "s2id": "7f4bdef8c9d660af6b18a55de0699e5e65ce3b54",
+    "abstract": "Training Large Language Models (LLMs) to follow user instructions has shown to supply the LLM with ample capacity to converse fluently while being aligned with humans. Yet, it is not completely clear how an LLM can lead a plan-grounded conversation in mixed-initiative settings where instructions flow in both directions of the conversation, i.e. both the LLM and the user provide instructions to one another. In this paper, we tackle a dual goal mixed-initiative conversational setting where the LLM not only grounds the conversation on an arbitrary plan but also seeks to satisfy both a procedural plan and user instructions. The LLM is then responsible for guiding the user through the plan and, at the same time, adapting to new circumstances, answering questions, and activating safety guardrails when needed. We propose a novel LLM that grounds the dialogue on a procedural plan, can take the dialogue initiative, and enforces guardrails on the system\u2019s behavior, while also improving the LLM\u2019s responses to unexpected user behavior. Experiments in controlled settings and with real users show that the best-performing model, which we call PlanLLM, achieves a 2.1x improvement over a strong baseline. Moreover, experiments also show good generalization to unseen domains.",
+    "authors": [
+        "Diogo Gl\u00f3ria-Silva",
+        "Rafael Ferreira",
+        "Diogo Tavares",
+        "David Semedo",
+        "Jo\u00e3o Magalh\u00e3es"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel LLM is proposed that grounds the dialogue on a procedural plan, can take the dialogue initiative, and enforces guardrails on the system\u2019s behavior, while also improving the LLM\u2019s responses to unexpected user behavior."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

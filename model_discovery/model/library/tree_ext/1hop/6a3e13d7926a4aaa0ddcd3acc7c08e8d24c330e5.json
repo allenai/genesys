@@ -1,0 +1,35 @@
+{
+    "acronym": "6a3e13d7926a4aaa0ddcd3acc7c08e8d24c330e5",
+    "title": "ReadTwice: Reading Very Large Documents with Memories",
+    "seed_ids": [
+        "longformer",
+        "etc",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "203b543bfa1e564bb80ff4229b43174d7c71b0c0",
+        "031e4e43aaffd7a479738dcea69a2d5be7957aa3"
+    ],
+    "s2id": "6a3e13d7926a4aaa0ddcd3acc7c08e8d24c330e5",
+    "abstract": "Knowledge-intensive tasks such as question answering often require assimilating information from different sections of large inputs such as books or article collections. We propose ReadTwice, a simple and effective technique that combines several strengths of prior approaches to model long-range dependencies with Transformers. The main idea is to read text in small segments, in parallel, summarizing each segment into a memory table to be used in a second read of the text. We show that the method outperforms models of comparable size on several question answering (QA) datasets and sets a new state of the art on the challenging NarrativeQA task, with questions about entire books.",
+    "authors": [
+        "Yury Zemlyanskiy",
+        "J. Ainslie",
+        "Michiel de Jong",
+        "Philip Pham",
+        "Ilya Eckstein",
+        "Fei Sha"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the ReadTwice method outperforms models of comparable size on several question answering (QA) datasets and sets a new state of the art on the challenging NarrativeQA task, with questions about entire books."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

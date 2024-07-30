@@ -1,0 +1,32 @@
+{
+    "acronym": "50af83ea20201b51014358534650213e6133650c",
+    "title": "FastRPB: a Scalable Relative Positional Encoding for Long Sequence Tasks",
+    "seed_ids": [
+        "lineartransformer",
+        "0d508600d77d8a7e6a655cdb6d139779732f649f",
+        "d8d2e574965fe733eb1416e03df2b5c2914fc530",
+        "08ffdec40291a2ccb5f8a6cc048b01247fb34b96",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "2ff74d426e712522030057624510c03713fa77ba"
+    ],
+    "s2id": "50af83ea20201b51014358534650213e6133650c",
+    "abstract": "Transformers achieve remarkable performance in various domains, including NLP, CV, audio processing, and graph analysis. However, they do not scale well on long sequence tasks due to their quadratic complexity w.r.t. the inputs length. Linear Transformers were proposed to address this limitation. However, these models have shown weaker performance on the long sequence tasks comparing to the original one. In this paper, we explore Linear Transformer models, rethinking their two core components. Firstly, we improved Linear Transformer with Shift-Invariant Kernel Function SIKF, which achieve higher accuracy without loss in speed. Secondly, we introduce FastRPB which stands for Fast Relative Positional Bias, which efficiently adds positional information to self-attention using Fast Fourier Transformation. FastRPB is independent of the self-attention mechanism and can be combined with an original self-attention and all its efficient variants. FastRPB has O(N log(N)) computational complexity, requiring O(N) memory w.r.t. input sequence length N.",
+    "authors": [
+        "Maksim Zubkov",
+        "Daniil Gavrilov"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper improved Linear Transformer with Shift-Invariant Kernel Function SIKF, which achieve higher accuracy without loss in speed and introduces FastRPB which stands for Fast Relative Positional Bias, which efficiently adds positional information to self-attention using Fast Fourier Transformation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

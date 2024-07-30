@@ -1,0 +1,27 @@
+{
+    "acronym": "914b19ee20129b6b622f2d7183bc61f24fc96687",
+    "title": "CSA-Trans: Code Structure Aware Transformer for AST",
+    "seed_ids": [
+        "transformer",
+        "50790468a774f3ecd663e79932e6da4e813048aa",
+        "5eda60d4940d4185df45c5703e103458171d465d",
+        "a585828fab3ec46ad27e14adfd299953df107a47"
+    ],
+    "s2id": "914b19ee20129b6b622f2d7183bc61f24fc96687",
+    "abstract": "When applying the Transformer architecture to source code, designing a good self-attention mechanism is critical as it affects how node relationship is extracted from the Abstract Syntax Trees (ASTs) of the source code. We present Code Structure Aware Transformer (CSA-Trans), which uses Code Structure Embedder (CSE) to generate specific PE for each node in AST. CSE generates node Positional Encoding (PE) using disentangled attention. To further extend the self-attention capability, we adopt Stochastic Block Model (SBM) attention. Our evaluation shows that our PE captures the relationships between AST nodes better than other graph-related PE techniques. We also show through quantitative and qualitative analysis that SBM attention is able to generate more node specific attention coefficients. We demonstrate that CSA-Trans outperforms 14 baselines in code summarization tasks for both Python and Java, while being 41.92% faster and 25.31% memory efficient in Java dataset compared to AST-Trans and SG-Trans respectively.",
+    "authors": [
+        "Saeyoon Oh",
+        "Shin Yoo"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents Code Structure Aware Transformer (CSA-Trans), which uses Code Structure Embedder (CSE) to generate specific PE for each node in AST, and adopts Stochastic Block Model (SBM) attention to extend the self-attention capability."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

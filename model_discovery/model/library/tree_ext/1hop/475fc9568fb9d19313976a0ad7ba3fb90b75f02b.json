@@ -1,0 +1,27 @@
+{
+    "acronym": "475fc9568fb9d19313976a0ad7ba3fb90b75f02b",
+    "title": "Search Result Diversification Using Query Aspects as Bottlenecks",
+    "seed_ids": [
+        "gpt3",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "475fc9568fb9d19313976a0ad7ba3fb90b75f02b",
+    "abstract": "We address some of the limitations of coverage-based search result diversification models, which often consist of separate components and rely on external systems for query aspects. To overcome these challenges, we introduce an end-to-end learning framework called DUB. Our approach preserves the intrinsic interpretability of coverage-based methods while enhancing diversification performance. Drawing inspiration from the information bottleneck method, we propose an aspect extractor that generates query aspect embeddings optimized as information bottlenecks for the task of diversified document re-ranking. Experimental results demonstrate that DUB outperforms state-of-the-art diversification models.",
+    "authors": [
+        "Puxuan Yu",
+        "Razieh Rahimi",
+        "Zhiqi Huang",
+        "James Allan"
+    ],
+    "venue": "International Conference on Information and Knowledge Management",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an aspect extractor that generates query aspect embeddings optimized as information bottlenecks for the task of diversified document re-ranking and demonstrates that DUB outperforms state-of-the-art diversification models."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

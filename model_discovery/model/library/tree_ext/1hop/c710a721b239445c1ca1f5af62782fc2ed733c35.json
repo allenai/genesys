@@ -1,0 +1,28 @@
+{
+    "acronym": "c710a721b239445c1ca1f5af62782fc2ed733c35",
+    "title": "Towards Joint Sequence-Structure Generation of Nucleic Acid and Protein Complexes with SE(3)-Discrete Diffusion",
+    "seed_ids": [
+        "analogbits",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed"
+    ],
+    "s2id": "c710a721b239445c1ca1f5af62782fc2ed733c35",
+    "abstract": "Generative models of macromolecules carry abundant and impactful implications for industrial and biomedical efforts in protein engineering. However, existing methods are currently limited to modeling protein structures or sequences, independently or jointly, without regard to the interactions that commonly occur between proteins and other macromolecules. In this work, we introduce MMDiff, a generative model that jointly designs sequences and structures of nucleic acid and protein complexes, independently or in complex, using joint SE(3)-discrete diffusion noise. Such a model has important implications for emerging areas of macromolecular design including structure-based transcription factor design and design of noncoding RNA sequences. We demonstrate the utility of MMDiff through a rigorous new design benchmark for macromolecular complex generation that we introduce in this work. Our results demonstrate that MMDiff is able to successfully generate micro-RNA and single-stranded DNA molecules while being modestly capable of joint modeling DNA and RNA molecules in interaction with multi-chain protein complexes. Source code: https://github.com/Profluent-Internships/MMDiff.",
+    "authors": [
+        "Alex Morehead",
+        "Jeffrey A. Ruffolo",
+        "Aadyot Bhatnagar",
+        "Ali Madani"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results demonstrate that MMDiff is able to successfully generate micro-RNA and single-stranded DNA molecules while being modestly capable of joint modeling DNA and RNA molecules in interaction with multi-chain protein complexes."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

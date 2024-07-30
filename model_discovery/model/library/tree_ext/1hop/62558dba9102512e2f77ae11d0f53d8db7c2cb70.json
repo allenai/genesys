@@ -1,0 +1,28 @@
+{
+    "acronym": "62558dba9102512e2f77ae11d0f53d8db7c2cb70",
+    "title": "Revisiting Disentanglement in Downstream Tasks: A Study on Its Necessity for Abstract Visual Reasoning",
+    "seed_ids": [
+        "transformer",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7"
+    ],
+    "s2id": "62558dba9102512e2f77ae11d0f53d8db7c2cb70",
+    "abstract": "In representation learning, a disentangled representation is highly desirable as it encodes generative factors of data in a separable and compact pattern. Researchers have advocated leveraging disentangled representations to complete downstream tasks with encouraging empirical evidence. This paper further investigates the necessity of disentangled representation in downstream applications. Specifically, we show that dimension-wise disentangled representations are unnecessary on a fundamental downstream task, abstract visual reasoning. We provide extensive empirical evidence against the necessity of disentanglement, covering multiple datasets, representation learning methods, and downstream network architectures. Furthermore, our findings suggest that the informativeness of representations is a better indicator of downstream performance than disentanglement. Finally, the positive correlation between informativeness and disentanglement explains the claimed usefulness of disentangled representations in previous works. The source code is available at https://github.com/Richard-coder-Nai/disentanglement-lib-necessity.git",
+    "authors": [
+        "Ruiqian Nai",
+        "Zixin Wen",
+        "Ji Li",
+        "Yuanzhi Li",
+        "Yang Gao"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that dimension-wise disentangled representations are unnecessary on a fundamental downstream task, abstract visual reasoning, and suggested that the informativeness of representations is a better indicator of downstream performance than disentanglement."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

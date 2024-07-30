@@ -1,0 +1,29 @@
+{
+    "acronym": "0399533de2d1d21f456663d1bd5355c8b3c32a58",
+    "title": "Unlearn What You Want to Forget: Efficient Unlearning for LLMs",
+    "seed_ids": [
+        "gpt3",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0399533de2d1d21f456663d1bd5355c8b3c32a58",
+    "abstract": "Large language models (LLMs) have achieved significant progress from pre-training on and memorizing a wide range of textual data, however, this process might suffer from privacy issues and violations of data protection regulations. As a result, the ability to easily remove data related to individual users from such models while not deteriorating their predictive quality after the removal becomes increasingly important. To address these issues, in this work, we propose an efficient unlearning framework that could efficiently update LLMs without having to retrain the whole model after data removals, by introducing lightweight unlearning layers learned with a selective teacher-student objective into the transformers. In addition, we introduce a fusion mechanism to effectively combine different unlearning layers that learns to forget different sets of data to handle a sequence of forgetting operations. Experiments on classification and generation tasks demonstrate the effectiveness of our proposed methods compared to the state-of-the-art baselines.",
+    "authors": [
+        "Jiaao Chen",
+        "Diyi Yang"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an efficient unlearning framework that could efficiently update LLMs without having to retrain the whole model after data removals, by introducing lightweight unlearning layers learned with a selective teacher-student objective into the transformers."
+    },
+    "citationCount": 63,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

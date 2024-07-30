@@ -1,0 +1,28 @@
+{
+    "acronym": "cadab8d84c0195c752bc06d209c9b41b3fbe5f41",
+    "title": "Analyzing and Simulating User Utterance Reformulation in Conversational Recommender Systems",
+    "seed_ids": [
+        "gpt2",
+        "ca545ceefe7c3535ffea0fbcc1cc86bddced3767",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "cadab8d84c0195c752bc06d209c9b41b3fbe5f41",
+    "abstract": "User simulation has been a cost-effective technique for evaluating conversational recommender systems. However, building a human-like simulator is still an open challenge. In this work, we focus on how users reformulate their utterances when a conversational agent fails to understand them. First, we perform a user study, involving five conversational agents across different domains, to identify common reformulation types and their transition relationships. A common pattern that emerges is that persistent users would first try to rephrase, then simplify, before giving up. Next, to incorporate the observed reformulation behavior in a user simulator, we introduce the task of reformulation sequence generation: to generate a sequence of reformulated utterances with a given intent (rephrase or simplify). We develop methods by extending transformer models guided by the reformulation type and perform further filtering based on estimated reading difficulty. We demonstrate the effectiveness of our approach using both automatic and human evaluation.",
+    "authors": [
+        "Shuo Zhang",
+        "Mu-Chun Wang",
+        "K. Balog"
+    ],
+    "venue": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work focuses on how users reformulate their utterances when a conversational agent fails to understand them, and introduces the task of reformulation sequence generation: to generate a sequence of reformulated utterances with a given intent."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

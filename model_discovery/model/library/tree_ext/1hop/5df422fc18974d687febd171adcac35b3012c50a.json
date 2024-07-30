@@ -1,0 +1,27 @@
+{
+    "acronym": "5df422fc18974d687febd171adcac35b3012c50a",
+    "title": "Discrete Prompt Compression With Reinforcement Learning",
+    "seed_ids": [
+        "gpt2",
+        "2f7364d8e5cf94315bf8905f57de9c5543e9a4bf",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5df422fc18974d687febd171adcac35b3012c50a",
+    "abstract": "Compressed prompts aid instruction-tuned language models (LMs) in overcoming context window limitations and reducing computational costs. Existing methods, which are primarily based on training embeddings, face various challenges associated with interpretability, the fixed number of embedding tokens, reusability across different LMs, and inapplicability when interacting with black-box APIs. This study proposes prompt compression with reinforcement learning (PCRL), which is a discrete prompt compression method that addresses these issues. The proposed PCRL method utilizes a computationally efficient policy network that edits prompts directly. The training approach employed in the proposed PCRLs can be applied flexibly to various types of LMs, including both decoder-only and encoder-decoder architecture and it can be trained without gradient access to the LMs or labeled data. The proposed PCRL achieves an average reduction of 24.6% in terms of the token count across various instruction prompts while maintaining sufficient performance. In addition, we demonstrate that the learned policy can be transferred to larger LMs, and through a comprehensive analysis, we explore the token importance within the prompts. The source code is available at https://github.com/nenomigami/PromptCompressor.",
+    "authors": [
+        "Hoyoun Jung",
+        "Kyung-Joong Kim"
+    ],
+    "venue": "IEEE Access",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study proposes prompt compression with reinforcement learning (PCRL), which is a discrete prompt compression method that addresses issues associated with interpretability, reusability across different LMs, and inapplicability when interacting with black-box APIs."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

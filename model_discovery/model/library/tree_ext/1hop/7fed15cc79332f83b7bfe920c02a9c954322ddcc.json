@@ -1,0 +1,30 @@
+{
+    "acronym": "7fed15cc79332f83b7bfe920c02a9c954322ddcc",
+    "title": "Improving Neural Language Generation with Spectrum Control",
+    "seed_ids": [
+        "transformerxl",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7fed15cc79332f83b7bfe920c02a9c954322ddcc",
+    "abstract": "Recent Transformer-based models such as Transformer-XL and BERT have achieved huge success on various natural language processing tasks. However, contextualized embeddings at the output layer of these powerful models tend to degenerate and occupy an anisotropic cone in the vector space, which is called the representation degeneration problem. In this paper, we propose a novel spectrum control approach to address this degeneration problem. The core idea of our method is to directly guide the spectra training of the output embedding matrix with a slow-decaying singular value prior distribution through a reparameterization framework. We show that our proposed method encourages isotropy of the learned word representations while maintains the modeling power of these contextual neural models. We further provide a theoretical analysis and insight on the benefit of modeling singular value distribution. We demonstrate that our spectrum control method outperforms the state-of-the-art Transformer-XL modeling for language model, and various Transformer-based models for machine translation, on common benchmark datasets for these tasks.",
+    "authors": [
+        "Lingxiao Wang",
+        "Jing Huang",
+        "Kevin Huang",
+        "Ziniu Hu",
+        "Guangtao Wang",
+        "Quanquan Gu"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel spectrum control approach to directly guide the spectra training of the output embedding matrix with a slow-decaying singular value prior distribution through a reparameterization framework and demonstrates that this method outperforms the state-of-the-art Trans transformer-XL modeling for language model, and various Transformer-based models for machine translation, on common benchmark datasets for these tasks."
+    },
+    "citationCount": 74,
+    "influentialCitationCount": 12,
+    "code": null,
+    "description": null,
+    "url": null
+}

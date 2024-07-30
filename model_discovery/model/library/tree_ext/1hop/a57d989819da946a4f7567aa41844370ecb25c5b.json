@@ -1,0 +1,31 @@
+{
+    "acronym": "a57d989819da946a4f7567aa41844370ecb25c5b",
+    "title": "ObfuscaTune: Obfuscated Offsite Fine-tuning and Inference of Proprietary LLMs on Private Datasets",
+    "seed_ids": [
+        "gpt2",
+        "0e3d1457a66e442fae46c8f96886dc76aef3b085",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a57d989819da946a4f7567aa41844370ecb25c5b",
+    "abstract": "This work addresses the timely yet underexplored problem of performing inference and finetuning of a proprietary LLM owned by a model provider entity on the confidential/private data of another data owner entity, in a way that ensures the confidentiality of both the model and the data. Hereby, the finetuning is conducted offsite, i.e., on the computation infrastructure of a third-party cloud provider. We tackle this problem by proposing ObfuscaTune, a novel, efficient and fully utility-preserving approach that combines a simple yet effective obfuscation technique with an efficient usage of confidential computing (only 5% of the model parameters are placed on TEE). We empirically demonstrate the effectiveness of ObfuscaTune by validating it on GPT-2 models with different sizes on four NLP benchmark datasets. Finally, we compare to a na\\\"ive version of our approach to highlight the necessity of using random matrices with low condition numbers in our approach to reduce errors induced by the obfuscation.",
+    "authors": [
+        "Ahmed Frikha",
+        "Nassim Walha",
+        "Ricardo Mendes",
+        "K. K. Nakka",
+        "Xue Jiang",
+        "Xuebing Zhou"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

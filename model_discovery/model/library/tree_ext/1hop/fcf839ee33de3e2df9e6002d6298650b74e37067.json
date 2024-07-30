@@ -1,0 +1,32 @@
+{
+    "acronym": "fcf839ee33de3e2df9e6002d6298650b74e37067",
+    "title": "ShareBERT: Embeddings Are Capable of Learning Hidden Layers",
+    "seed_ids": [
+        "transformer",
+        "bert",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "d1870f667cbd309df45a244c170d1d4ba36bac03",
+        "2573af4e13d9a5dddb257d22cd38a600528d9a8b",
+        "9a618cca0d2fc78db1be1aed70517401cb3f3859",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf"
+    ],
+    "s2id": "fcf839ee33de3e2df9e6002d6298650b74e37067",
+    "abstract": "The deployment of Pre-trained Language Models in memory-limited devices is hindered by their massive number of parameters, which motivated the interest in developing smaller architectures.\nEstablished works in the model compression literature showcased that small models often present a noticeable performance degradation and need to be paired with transfer learning methods, such as Knowledge Distillation. \nIn this work, we propose a parameter-sharing method that consists of sharing parameters between embeddings and the hidden layers, enabling the design of near-zero parameter encoders. To demonstrate its effectiveness, we present an architecture design called ShareBERT, which can preserve up to 95.5%\nof BERT Base performances, using only 5M parameters (21.9\u00d7 fewer parameters) without the help of Knowledge Distillation. We demonstrate empirically that our proposal does not negatively affect the model learning capabilities and that it is even beneficial for representation learning. Code will be available at https://github.com/jchenghu/sharebert.",
+    "authors": [
+        "J. Hu",
+        "Roberto Cavicchioli",
+        "Giulia Berardinelli",
+        "Alessandro Capotondi"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a parameter-sharing method that consists of sharing parameters between embeddings and the hidden layers, enabling the design of near-zero parameter encoders, and presents an architecture design called ShareBERT, which can preserve up to 95.5% of BERT Base performances, using only 5M parameters."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "744ebaadb521be2c7a0f0af97ad2c8d2f77a796e",
+    "title": "DORE: Document Ordered Relation Extraction based on Generative Framework",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "744ebaadb521be2c7a0f0af97ad2c8d2f77a796e",
+    "abstract": "In recent years, there is a surge of generation-based information extraction work, which allows a more direct use of pre-trained language models and efficiently captures output dependencies. However, previous generative methods using lexical representation do not naturally fit document-level relation extraction (DocRE) where there are multiple entities and relational facts. In this paper, we investigate the root cause of the underwhelming performance of the existing generative DocRE models and discover that the culprit is the inadequacy of the training paradigm, instead of the capacities of the models. We propose to generate a symbolic and ordered sequence from the relation matrix which is deterministic and easier for model to learn. Moreover, we design a parallel row generation method to process overlong target sequences. Besides, we introduce several negative sampling strategies to improve the performance with balanced signals. Experimental results on four datasets show that our proposed method can improve the performance of the generative DocRE models. We have released our code at https://github.com/ayyyq/DORE.",
+    "authors": [
+        "Qipeng Guo",
+        "Yuqing Yang",
+        "Hang Yan",
+        "Xipeng Qiu",
+        "Zheng Zhang"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper investigates the root cause of the underwhelming performance of the existing generative DocRE models and proposes to generate a symbolic and ordered sequence from the relation matrix which is deterministic and easier for model to learn."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

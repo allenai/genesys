@@ -1,0 +1,28 @@
+{
+    "acronym": "c9ae3ff576e1824edd90e5e32d134b78dbea839a",
+    "title": "Crowdsourcing Thumbnail Captions: Data Collection and Validation",
+    "seed_ids": [
+        "gpt2",
+        "dddf7b0403ec3ffd74adfcd3012f6e4adf37e15a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "c9ae3ff576e1824edd90e5e32d134b78dbea839a",
+    "abstract": "Speech interfaces, such as personal assistants and screen readers, read image captions to users. Typically, however, only one caption is available per image, which may not be adequate for all situations (e.g., browsing large quantities of images). Long captions provide a deeper understanding of an image but require more time to listen to, whereas shorter captions may not allow for such thorough comprehension yet have the advantage of being faster to consume. We explore how to effectively collect both thumbnail captions\u2014succinct image descriptions meant to be consumed quickly\u2014and comprehensive captions\u2014which allow individuals to understand visual content in greater detail. We consider text-based instructions and time-constrained methods to collect descriptions at these two levels of detail and find that a time-constrained method is the most effective for collecting thumbnail captions while preserving caption accuracy. Additionally, we verify that caption authors using this time-constrained method are still able to focus on the most important regions of an image by tracking their eye gaze. We evaluate our collected captions along human-rated axes\u2014correctness, fluency, amount of detail, and mentions of important concepts\u2014and discuss the potential for model-based metrics to perform large-scale automatic evaluations in the future.",
+    "authors": [
+        "Carlos Alejandro Aguirre",
+        "Shiye Cao",
+        "Amama Mahmood",
+        "Chien-Ming Huang"
+    ],
+    "venue": "ACM Trans. Interact. Intell. Syst.",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A time-constrained method is found that is the most effective for collecting thumbnail captions while preserving caption accuracy and it is verified that caption authors are still able to focus on the most important regions of an image by tracking their eye gaze."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

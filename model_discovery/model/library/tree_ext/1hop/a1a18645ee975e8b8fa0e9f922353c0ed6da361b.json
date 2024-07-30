@@ -1,0 +1,35 @@
+{
+    "acronym": "a1a18645ee975e8b8fa0e9f922353c0ed6da361b",
+    "title": "Does compressing activations help model parallel training?",
+    "seed_ids": [
+        "gpt2",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "ff5eb1bd55d61ae919865f6b4dab84e6ae1974f3",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a1a18645ee975e8b8fa0e9f922353c0ed6da361b",
+    "abstract": "Large-scale Transformer models are known for their exceptional performance in a range of tasks, but training them can be difficult due to the requirement for communication-intensive model parallelism. One way to improve training speed is to compress the message size in communication. Previous approaches have primarily focused on compressing gradients in a data parallelism setting, but compression in a model-parallel setting is an understudied area. We have discovered that model parallelism has fundamentally different characteristics than data parallelism. In this work, we present the first empirical study on the effectiveness of compression methods for model parallelism. We implement and evaluate three common classes of compression algorithms - pruning-based, learning-based, and quantization-based - using a popular Transformer training framework. We evaluate these methods across more than 160 settings and 8 popular datasets, taking into account different hyperparameters, hardware, and both fine-tuning and pre-training stages. We also provide analysis when the model is scaled up. Finally, we provide insights for future development of model parallelism compression algorithms.",
+    "authors": [
+        "S. Bian",
+        "Dacheng Li",
+        "Hongyi Wang",
+        "Eric P. Xing",
+        "S. Venkataraman"
+    ],
+    "venue": "Conference on Machine Learning and Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents the first empirical study on the effectiveness of compression methods for model parallelism, and implements and evaluates three common classes of compression algorithms - pruning-based, learning- based, and quantization-based - using a popular Transformer training framework."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "7d9d772aa184a1a11d5d4870b6d3ecb76dec3069",
+    "title": "Scene-Aware Activity Program Generation with Language Guidance",
+    "seed_ids": [
+        "gpt3",
+        "6151ee4af6a3fe78f2df7c605598cd9e02b23c5b",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7d9d772aa184a1a11d5d4870b6d3ecb76dec3069",
+    "abstract": "We address the problem of scene-aware activity program generation, which requires decomposing a given activity task into instructions that can be sequentially performed within a target scene to complete the activity. While existing methods have shown the ability to generate rational or executable programs, generating programs with both high rationality and executability still remains a challenge. Hence, we propose a novel method where the key idea is to explicitly combine the language rationality of a powerful language model with dynamic perception of the target scene where instructions are executed, to generate programs with high rationality and executability. Our method iteratively generates instructions for the activity program. Specifically, a two-branch feature encoder operates on a language-based and graph-based representation of the current generation progress to extract language features and scene graph features, respectively. These features are then used by a predictor to generate the next instruction in the program. Subsequently, another module performs the predicted action and updates the scene for perception in the next iteration. Extensive evaluations are conducted on the VirtualHome-Env dataset, showing the advantages of our method over previous work. Key algorithmic designs are validated through ablation studies, and results on other types of inputs are also presented to show the generalizability of our method.",
+    "authors": [
+        "Zejia Su",
+        "Qingnan Fan",
+        "Xuelin Chen",
+        "Oliver van Kaick",
+        "Hui Huang",
+        "Ruizhen Hu"
+    ],
+    "venue": "ACM Transactions on Graphics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel method where the key idea is to explicitly combine the language rationality of a powerful language model with dynamic perception of the target scene where instructions are executed, to generate programs with high rationality and executability is proposed."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

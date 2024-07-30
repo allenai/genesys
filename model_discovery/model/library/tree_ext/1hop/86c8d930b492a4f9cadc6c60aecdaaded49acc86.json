@@ -1,0 +1,47 @@
+{
+    "acronym": "86c8d930b492a4f9cadc6c60aecdaaded49acc86",
+    "title": "Neural Architecture Search on Efficient Transformers and Beyond",
+    "seed_ids": [
+        "cosformer",
+        "lineartransformer",
+        "6be32b4321f95b79bb2e37feeab0c3c7f902195e",
+        "c49ac1f916d6d2edeb187e6619c8d23acd95eb21",
+        "255c526f78bbfec35d4ed73b6dd8eacd9ef2c0b3",
+        "a7721b6523971394a8bd4bfda139122ef59b22cd",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "0b991a1a5bcdb13646ac0b6873d09bde4cc36fb5",
+        "ef8d788a904ed66bd8e30ffa69bc3ea1fe57dda7",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "16c844fd4d97f3c6eb38b0d6527c87d184efedc3"
+    ],
+    "s2id": "86c8d930b492a4f9cadc6c60aecdaaded49acc86",
+    "abstract": "Recently, numerous efficient Transformers have been proposed to reduce the quadratic computational complexity of standard Transformers caused by the Softmax attention. However, most of them simply swap Softmax with an efficient attention mechanism without considering the customized architectures specially for the efficient attention. In this paper, we argue that the handcrafted vanilla Transformer architectures for Softmax attention may not be suitable for efficient Transformers. To address this issue, we propose a new framework to find optimal architectures for efficient Transformers with the neural architecture search (NAS) technique. The proposed method is validated on popular machine translation and image classification tasks. We observe that the optimal architecture of the efficient Transformer has the reduced computation compared with that of the standard Transformer, but the general accuracy is less comparable. It indicates that the Softmax attention and efficient attention have their own distinctions but neither of them can simultaneously balance the accuracy and efficiency well. This motivates us to mix the two types of attention to reduce the performance imbalance. Besides the search spaces that commonly used in existing NAS Transformer approaches, we propose a new search space that allows the NAS algorithm to automatically search the attention variants along with architectures. Extensive experiments on WMT' 14 En-De and CIFAR-10 demonstrate that our searched architecture maintains comparable accuracy to the standard Transformer with notably improved computational efficiency.",
+    "authors": [
+        "Zexiang Liu",
+        "Dong Li",
+        "Kaiyue Lu",
+        "Zhen Qin",
+        "Weixuan Sun",
+        "Jiacheng Xu",
+        "Yiran Zhong"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper argues that the handcrafted vanilla Transformer architectures for Softmax attention may not be suitable for efficient Transformers, and proposes a new framework to find optimal architectures for efficientTransformers with the neural architecture search (NAS) technique."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

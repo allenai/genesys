@@ -1,0 +1,30 @@
+{
+    "acronym": "0334ca1c603260ca7eafdb7e21efc4ccf96bdb0a",
+    "title": "UniColor",
+    "seed_ids": [
+        "axialattn",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "30f326353dfeed21216c1cf98d3c42d794fa054e",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "e763fdc9ae56826ff799163ea035b29bffd8ea6f"
+    ],
+    "s2id": "0334ca1c603260ca7eafdb7e21efc4ccf96bdb0a",
+    "abstract": "We propose the first unified framework UniColor to support colorization in multiple modalities, including both unconditional and conditional ones, such as stroke, exemplar, text, and even a mix of them. Rather than learning a separate model for each type of condition, we introduce a two-stage colorization framework for incorporating various conditions into a single model. In the first stage, multi-modal conditions are converted into a common representation of hint points. Particularly, we propose a novel CLIP-based method to convert the text to hint points. In the second stage, we propose a Transformer-based network composed of Chroma-VQGAN and Hybrid-Transformer to generate diverse and high-quality colorization results conditioned on hint points. Both qualitative and quantitative comparisons demonstrate that our method outperforms state-of-the-art methods in every control modality and further enables multi-modal colorization that was not feasible before. Moreover, we design an interactive interface showing the effectiveness of our unified framework in practical usage, including automatic colorization, hybrid-control colorization, local recolorization, and iterative color editing. Our code and models are available at https://luckyhzt.github.io/unicolor.",
+    "authors": [
+        "Zhitong Huang",
+        "Nanxuan Zhao",
+        "Jing Liao"
+    ],
+    "venue": "ACM Transactions on Graphics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a two-stage colorization framework for incorporating various conditions into a single model, which outperforms state-of-the-art methods in every control modality and enables multi-modal colorization that was not feasible before."
+    },
+    "citationCount": 14,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

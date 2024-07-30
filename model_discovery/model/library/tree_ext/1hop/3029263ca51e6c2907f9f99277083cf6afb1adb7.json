@@ -1,0 +1,27 @@
+{
+    "acronym": "3029263ca51e6c2907f9f99277083cf6afb1adb7",
+    "title": "Coreference Resolution without Span Representations",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3029263ca51e6c2907f9f99277083cf6afb1adb7",
+    "abstract": "The introduction of pretrained language models has reduced many complex task-specific NLP models to simple lightweight layers. An exception to this trend is coreference resolution, where a sophisticated task-specific model is appended to a pretrained transformer encoder. While highly effective, the model has a very large memory footprint \u2013 primarily due to dynamically-constructed span and span-pair representations \u2013 which hinders the processing of complete documents and the ability to train on multiple instances in a single batch. We introduce a lightweight end-to-end coreference model that removes the dependency on span representations, handcrafted features, and heuristics. Our model performs competitively with the current standard model, while being simpler and more efficient.",
+    "authors": [
+        "Yuval Kirstain",
+        "Ori Ram",
+        "Omer Levy"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A lightweight end-to-end coreference model that removes the dependency on span representations, handcrafted features, and heuristics and performs competitively with the current standard model, while being simpler and more efficient."
+    },
+    "citationCount": 65,
+    "influentialCitationCount": 8,
+    "code": null,
+    "description": null,
+    "url": null
+}

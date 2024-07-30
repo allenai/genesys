@@ -1,0 +1,25 @@
+{
+    "acronym": "43d917c32d538261e87e311998baabca6d5e2bbe",
+    "title": "Survey on Sketch-to-photo Translation",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "43d917c32d538261e87e311998baabca6d5e2bbe",
+    "abstract": "Sketch-based understanding is involved in human communication and cognitive development, making it essential in visual perception. A specific task in this domain is sketch-to-photo translation, where a model produces realistic images from simple drawings. To this end, large paired training datasets are commonly required, which is impractical in real applications. Thus, this work studies conditional generative models for sketch-to-photo translation, overcoming the lack of training datasets by a self-supervised approach that produces sketch-photo pairs from a target catalog. Our study shows the benefit of cycle-consistency loss and UNet architectures that, together with the proposed dataset generation, improve performance in real applications like eCommerce. Our results also reveal the weakness of conditional DDPMs for generating images resembling the input sketch, even though they achieve a high FID score.",
+    "authors": [
+        "Diego Donoso",
+        "J. M. Saavedra"
+    ],
+    "venue": "ACM Computing Surveys",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work studies conditional generative models for sketch-to-photo translation, overcoming the lack of training datasets by a self-supervised approach that produces sketch-photo pairs from a target catalog."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,26 @@
+{
+    "acronym": "2a0953e6aa8a8c4b88928957338e93f8636ebe84",
+    "title": "Reasoning Circuits: Few-shot Multi-hop Question Generation with Structured Rationales",
+    "seed_ids": [
+        "gpt2",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2a0953e6aa8a8c4b88928957338e93f8636ebe84",
+    "abstract": "Multi-hop Question Generation is the task of generating questions which require the reader to reason over and combine information spread across multiple passages employing several reasoning steps. Chain-of-thought rationale generation has been shown to improve performance on multi-step reasoning tasks and make model predictions more interpretable. However, few-shot performance gains from including rationales have been largely observed only in +100B language models, and otherwise require large-scale manual rationale annotation. In this paper, we introduce a new framework for applying chain-of-thought inspired structured rationale generation to multi-hop question generation under a very low supervision regime (8- to 128-shot). We propose to annotate a small number of examples following our proposed multi-step rationale schema, treating each reasoning step as a separate task to be performed by a generative language model. We show that our framework leads to improved control over the difficulty of the generated questions and better performance compared to baselines trained without rationales, both on automatic evaluation metrics and in human evaluation. Importantly, we show that this is achievable with a modest model size.",
+    "authors": [
+        "Saurabh Kulshreshtha",
+        "Anna Rumshisky"
+    ],
+    "venue": "NLRSE",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new framework for applying chain-of-thought inspired structured rationale generation to multi-hop question generation under a very low supervision regime is introduced, treating each reasoning step as a separate task to be performed by a generative language model."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

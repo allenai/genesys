@@ -1,0 +1,30 @@
+{
+    "acronym": "04076b11027e28b242d18d87b3f635c24076ef99",
+    "title": "Improving Topic Tracing with a Textual Reader for Conversational Knowledge Based Question Answering",
+    "seed_ids": [
+        "bert",
+        "c94bd1fc0ea4f7c67cd493f18f66d27e445fec40"
+    ],
+    "s2id": "04076b11027e28b242d18d87b3f635c24076ef99",
+    "abstract": "Conversational KBQA(Knowledge Based Question Answering) is a sequential question-answering process in the form of conversation based on knowledge, and it has been paid great attention in recent years. One of the major challenges in conversational KBQA is the ellipsis and co-reference of topic entities in follow-up questions, which affects the performance of the whole conversational KBQA. Previous approaches identified the topics of current turn questions by encoding conversation records or modeling entities in conversation records. However, they ignored the meanings carried by the entities themselves in the modeling process. To solve the above problem and mitigate the impact of the problem on the whole KBQA system, we propose a new textual reader to integrate entity-related textual information and construct a graph-based neural network containing the textual reader to determine the topics of questions. The graph-based neural network scores entities in each question in conversations. Further, the scores are jointly cooperated with the similarity between questions and answers to obtain the correct answers in conversational KBQA systems. Our proposed method improved the accuracy with 5.5% at topic entity prediction and 1.5% at conversational KBQA on benchmark datasets compared with baseline methods in more real-world settings respectively. Experiment results on two datasets demonstrate that our proposed method improves the performance of topic tracing and conversational KBQA.",
+    "authors": [
+        "Zhipeng Liu",
+        "Jing He",
+        "Tao Gong",
+        "Heng Weng",
+        "Fu Lee Wang",
+        "Hai Liu",
+        "Tianyong Hao"
+    ],
+    "venue": "IEEE Transactions on Emerging Topics in Computational Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new textual reader is proposed to integrate entity-related textual information and construct a graph-based neural network containing the textual reader to determine the topics of questions to improve the performance of topic tracing and conversational KBQA."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

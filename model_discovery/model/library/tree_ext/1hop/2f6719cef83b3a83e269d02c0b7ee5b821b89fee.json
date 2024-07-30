@@ -1,0 +1,28 @@
+{
+    "acronym": "2f6719cef83b3a83e269d02c0b7ee5b821b89fee",
+    "title": "CAMIL: Context-Aware Multiple Instance Learning for Whole Slide Image Classification",
+    "seed_ids": [
+        "nystromformer",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85"
+    ],
+    "s2id": "2f6719cef83b3a83e269d02c0b7ee5b821b89fee",
+    "abstract": "Cancer diagnoses typically involve human pathologists examining whole slide images (WSIs) of tissue section biopsies to identify tumor cells and their subtypes. However, arti\ufb01cial intelligence (AI)-based models, particularly weakly supervised approaches, have recently emerged as viable alternatives. Weakly supervised approaches often use image subsections or tiles as input, with the overall classi\ufb01cation of the WSI based on attention scores assigned to each tile. However, this method overlooks the potential for false positives/negatives because tumors can be heterogeneous, with cancer and normal cells growing in patterns larger than a single tile. Such errors at the tile level could lead to misclassi\ufb01cation at the tumor level. To address this limitation, we developed a novel deep learning pooling operator called CHARM (Contrastive Histopathology Attention Resolved Models). CHARM leverages the dependencies among single tiles within a WSI and imposes contextual constraints as prior knowledge to multiple instance learning models. We tested CHARM on the subtyping of non-small cell lung cancer (NSLC) and lymph node (LN) metastasis, and the results demonstrated its superiority over other state-of-the-art weakly supervised classi\ufb01cation algorithms. Furthermore, CHARM facilitates interpretability by visualizing regions of attention.",
+    "authors": [
+        "Olga Fourkioti",
+        "A. Arampatzis",
+        "Chen Jin",
+        "M. D. Vries",
+        "C. Bakal"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel deep learning pooling operator called CHARM (Contrastive Histopathology Attention Resolved Models) leverages the dependencies among single tiles within a WSI and imposes contextual constraints as prior knowledge to multiple instance learning models, and facilitates interpretability by visualizing regions of attention."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

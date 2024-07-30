@@ -1,0 +1,31 @@
+{
+    "acronym": "272afc28d03890160b1f2808cc551c962ea9138c",
+    "title": "ProofNet: Autoformalizing and Formally Proving Undergraduate-Level Mathematics",
+    "seed_ids": [
+        "memorizingtrans",
+        "d62c4d00b277e948956b6610ce2644e88fe1577b",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "0e802c0739771acf70e60d59c2df51cd7e8c50c0"
+    ],
+    "s2id": "272afc28d03890160b1f2808cc551c962ea9138c",
+    "abstract": "We introduce ProofNet, a benchmark for autoformalization and formal proving of undergraduate-level mathematics. The ProofNet benchmarks consists of 371 examples, each consisting of a formal theorem statement in Lean 3, a natural language theorem statement, and a natural language proof. The problems are primarily drawn from popular undergraduate pure mathematics textbooks and cover topics such as real and complex analysis, linear algebra, abstract algebra, and topology. We intend for ProofNet to be a challenging benchmark that will drive progress in autoformalization and automatic theorem proving. We report baseline results on statement autoformalization via in-context learning. Moreover, we introduce two novel statement autoformalization methods: prompt retrieval and distilled backtranslation.",
+    "authors": [
+        "Zhangir Azerbayev",
+        "Bartosz Piotrowski",
+        "Hailey Schoelkopf",
+        "Edward W. Ayers",
+        "Dragomir R. Radev",
+        "J. Avigad"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces ProofNet, a benchmark for autoformalization and formal proving of undergraduate-level mathematics, and introduces two novel statement auto Formalization methods: prompt retrieval and distilled backtranslation."
+    },
+    "citationCount": 33,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

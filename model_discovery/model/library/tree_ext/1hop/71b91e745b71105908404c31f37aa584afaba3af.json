@@ -1,0 +1,37 @@
+{
+    "acronym": "71b91e745b71105908404c31f37aa584afaba3af",
+    "title": "Psychology-guided Controllable Story Generation",
+    "seed_ids": [
+        "gpt2",
+        "e244ed6bb506f1fc40990ebf2b30831c40231d09",
+        "df7bf316e7bad359e87b10544155be09336720ca",
+        "e7c698bdace380f7183dedbe657686f1885f615c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "4d16457cded23bce6eaa91cd17aefd22af2279f0",
+        "a5ed9dfc0725bffb6428a2cc297a15265377906c",
+        "f48ae425e2567be2d993efcaaf74c2274fc9d7c5",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "71b91e745b71105908404c31f37aa584afaba3af",
+    "abstract": "Controllable story generation is a challenging task in the field of NLP, which has attracted increasing research interest in recent years. However, most existing works generate a whole story conditioned on the appointed keywords or emotions, ignoring the psychological changes of the protagonist. Inspired by psychology theories, we introduce global psychological state chains, which include the needs and emotions of the protagonists, to help a story generation system create more controllable and well-planned stories. In this paper, we propose a Psychology-guided Controllable Story Generation System (PICS) to generate stories that adhere to the given leading context and desired psychological state chains for the protagonist. Specifically, psychological state trackers are employed to memorize the protagonist\u2019s local psychological states to capture their inner temporal relationships. In addition, psychological state planners are adopted to gain the protagonist\u2019s global psychological states for story planning. Eventually, a psychology controller is designed to integrate the local and global psychological states into the story context representation for composing psychology-guided stories. Automatic and manual evaluations demonstrate that PICS outperforms baselines, and each part of PICS shows effectiveness for writing stories with more consistent psychological changes.",
+    "authors": [
+        "Yuqiang Xie",
+        "Yue Hu",
+        "Yunpeng Li",
+        "Guanqun Bi",
+        "Luxi Xing",
+        "Wei Peng"
+    ],
+    "venue": "International Conference on Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Psychology-guided Controllable Story Generation System (PICS) to generate stories that adhere to the given leading context and desired psychological state chains for the protagonist, and each part of PICS shows effectiveness for writing stories with more consistent psychological changes."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

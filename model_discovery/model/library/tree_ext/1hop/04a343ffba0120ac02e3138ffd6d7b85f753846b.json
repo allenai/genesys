@@ -1,0 +1,26 @@
+{
+    "acronym": "04a343ffba0120ac02e3138ffd6d7b85f753846b",
+    "title": "Playing the Werewolf game with artificial intelligence for language understanding",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "04a343ffba0120ac02e3138ffd6d7b85f753846b",
+    "abstract": "The Werewolf game is a social deduction game based on free natural language communication, in which players try to deceive others in order to survive. An important feature of this game is that a large portion of the conversations are false information, and the behavior of artificial intelligence (AI) in such a situation has not been widely investigated. The purpose of this study is to develop an AI agent that can play Werewolf through natural language conversations. First, we collected game logs from 15 human players. Next, we fine-tuned a Transformer-based pretrained language model to construct a value network that can predict a posterior probability of winning a game at any given phase of the game and given a candidate for the next action. We then developed an AI agent that can interact with humans and choose the best voting target on the basis of its probability from the value network. Lastly, we evaluated the performance of the agent by having it actually play the game with human players. We found that our AI agent, Deep Wolf, could play Werewolf as competitively as average human players in a villager or a betrayer role, whereas Deep Wolf was inferior to human players in a werewolf or a seer role. These results suggest that current language models have the capability to suspect what others are saying, tell a lie, or detect lies in conversations.",
+    "authors": [
+        "Hisaichi Shibata",
+        "S. Miki",
+        "Yuta Nakamura"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results suggest that current language models have the capability to suspect what others are saying, tell a lie, or detect lies in conversations, as well as to interact with humans and choose the best voting target on the basis of its probability from the value network."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

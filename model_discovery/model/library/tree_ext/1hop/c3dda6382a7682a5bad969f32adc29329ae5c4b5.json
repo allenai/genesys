@@ -1,0 +1,43 @@
+{
+    "acronym": "c3dda6382a7682a5bad969f32adc29329ae5c4b5",
+    "title": "HARDSEA: Hybrid Analog-ReRAM Clustering and Digital-SRAM In-Memory Computing Accelerator for Dynamic Sparse Self-Attention in Transformer",
+    "seed_ids": [
+        "bert",
+        "9b069ba5259d229bfd4fe3ac3768148e2d1092f8",
+        "200ef1cde362aafbf598a2b5a1c5f35504ca2289",
+        "13270b9759cf0296b5a346fbb58b706e8ad0a982",
+        "f841f3d912be52a621aab1a979632e9daeab6599",
+        "78bb909c314784ff345fe2bea997e74ca08ee0e5",
+        "b97c3c370401dc34d2adbeb24f34de5180a14be6",
+        "5af69480a7ae3b571df6782a11ec4437b386a7d9",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "c3dda6382a7682a5bad969f32adc29329ae5c4b5",
+    "abstract": "Self-attention-based transformers have outperformed recurrent and convolutional neural networks (RNN/ CNNs) in many applications. Despite the effectiveness, calculating self-attention is prohibitively costly due to quadratic computation and memory requirements. To solve this challenge, this article proposes a hybrid analog-ReRAM and digital-SRAM in-memory computing accelerator (HARDSEA), a computing-in-memory (CIM) accelerator supporting self-attention in transformer applications. To trade off between energy efficiency and algorithm accuracy, HARDSEA features an algorithm-architecture-circuit codesign. A product-quantization-based scheme dynamically facilitates self-attention sparsity by predicting lightweight token relevance. A hybrid in-memory computing architecture employs both high-efficiency analog ReRAM-CIM and high-precision digital SRAM-CIM to implement the proposed new scheme. The ReRAM-CIM, whose precision is sensitive to circuit nonidealities, takes charge of token relevance prediction where only computing monotonicity is demanded. The SRAM-CIM, utilized for exact sparse attention computing, is reorganized as an on-memory-boundary computing scheme, thus adapting to irregular sparsity patterns. In addition, we propose a time-domain winner-take-all (WTA) circuit to replace the expensive ADCs in ReRAM-CIM macros. Experimental results show that HARDSEA prunes BERT and GPT-2 models to 12%\u201333% sparsity without accuracy loss, achieving <inline-formula> <tex-math notation=\"LaTeX\">$13.5\\times $ </tex-math></inline-formula>\u2013<inline-formula> <tex-math notation=\"LaTeX\">$28.5\\times $ </tex-math></inline-formula> speedup and <inline-formula> <tex-math notation=\"LaTeX\">$291.6\\times $ </tex-math></inline-formula>\u2013<inline-formula> <tex-math notation=\"LaTeX\">$1894.3\\times $ </tex-math></inline-formula> energy efficiency over GPU. Compared to state-of-the-art transformer accelerators, HARDSEA has <inline-formula> <tex-math notation=\"LaTeX\">$1.2\\times $ </tex-math></inline-formula>\u2013<inline-formula> <tex-math notation=\"LaTeX\">$14.9\\times $ </tex-math></inline-formula> better energy efficiency at the same level of throughput.",
+    "authors": [
+        "Shiwei Liu",
+        "Chen Mu",
+        "Hao Jiang",
+        "Yunzhengmao Wang",
+        "Jinshan Zhang",
+        "Feng Lin",
+        "Keji Zhou",
+        "Qi Liu",
+        "Chixiao Chen"
+    ],
+    "venue": "IEEE Transactions on Very Large Scale Integration (VLSI) Systems",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A hybrid analog-ReRAM and digital-SRAM in-memory computing accelerator (HARDSEA), a computing-in-memory (CIM) accelerator supporting self-attention in transformer applications, and a time-domain winner-take-all (WTA) circuit to replace the expensive ADCs in ReRAM-CIM macros are proposed."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

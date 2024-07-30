@@ -1,0 +1,26 @@
+{
+    "acronym": "288e64e8adb23d81e291a2cb51e3a56b315023b7",
+    "title": "OVM, Outcome-supervised Value Models for Planning in Mathematical Reasoning",
+    "seed_ids": [
+        "flashattn",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336"
+    ],
+    "s2id": "288e64e8adb23d81e291a2cb51e3a56b315023b7",
+    "abstract": "Large language models (LLMs) often struggle with maintaining accuracy throughout multiple multiple reasoning steps, especially in mathematical reasoning where an error in earlier steps can propagate to subsequent ones and it ultimately leading to an incorrect answer. To reduce error propagation, guided decoding is employed to direct the LM decoding on a step-by-step basis. We argue that in guided decoding, assessing the potential of an incomplete reasoning path can be more advantageous than simply ensuring per-step correctness, as the former approach leads towards a correct final answer. This transforms the task into a $\\textit{value estimation}$ problem in planning. Inspired by the findings that $\\textit{outcome supervision for guided decoding essentially acts as a value model}$, we propose Outcome-supervised Value Model (OVM) that employs outcome supervision for training a value model, which prioritizes steps that lead to accurate conclusions. Furthermore, the OVM eliminates the need for labor-intensive annotations of step-level correctness, thereby significantly enhancing its scalability. Our experiments on two multi-step mathematical reasoning datasets, GSM8K and Game of 24, demonstrate the superior performance of the OVM model. Notably, in GSM8K, our $\\textbf{OVM-7B model achieves state-of-the-art results among LLMs up to 13B parameters}$; especially it does not utilize GPT-4 or code execution. These findings offer a novel perspective on the role of outcome supervision in training value models for multi-step reasoning tasks and provide theoretical justification for its advantage in value estimation for guided decoding.",
+    "authors": [
+        "Fei Yu",
+        "Anningzhe Gao",
+        "Benyou Wang"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Outcome-supervised Value Model (OVM) is proposed that employs outcome supervision for training a value model, which prioritizes steps that lead to accurate conclusions, thereby significantly enhancing its scalability and eliminating the need for labor-intensive annotations of step-level correctness."
+    },
+    "citationCount": 18,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

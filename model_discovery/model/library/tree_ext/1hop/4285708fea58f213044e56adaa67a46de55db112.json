@@ -1,0 +1,33 @@
+{
+    "acronym": "4285708fea58f213044e56adaa67a46de55db112",
+    "title": "Melons: Generating Melody With Long-Term Structure Using Transformers And Structure Graph",
+    "seed_ids": [
+        "lineartransformer",
+        "eb0931c39904a40c6cb4aa35c9b21d5e3b7dc856",
+        "479eaafcee15a44b632b3cab41491b517e1531fe",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "ce510c6cfeac703706460680e977c54554840830",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8"
+    ],
+    "s2id": "4285708fea58f213044e56adaa67a46de55db112",
+    "abstract": "The creation of long melody sequences requires effective expression of coherent musical structure. However, there is no clear representation of musical structure. Recent works on music generation have suggested various approaches to deal with the structural information of music, but generating a full-song melody with clear long-term structure remains a challenge. In this paper, we propose MELONS, a melody generation framework based on a graph representation of music structure which consists of eight types of bar-level relations. MELONS adopts a multi-step generation method with transformer-based networks by factoring melody generation into two sub-problems: structure generation and structure conditional melody generation. Experimental results show that MELONS can produce structured melodies with high quality and rich contents.",
+    "authors": [
+        "Yi Zou",
+        "Pei Zou",
+        "Yi Zhao",
+        "Kai Zhang",
+        "Ran Zhang",
+        "Xiaorui Wang"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "MELONS is proposed, a melody generation framework based on a graph representation of music structure which consists of eight types of bar-level relations which can produce structured melodies with high quality and rich contents."
+    },
+    "citationCount": 26,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

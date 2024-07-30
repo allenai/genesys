@@ -1,0 +1,24 @@
+{
+    "acronym": "54bc257c802847bbd8ecadc7fe50f883e193b9f2",
+    "title": "Unseen Object Reasoning with Shared Appearance Cues",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "54bc257c802847bbd8ecadc7fe50f883e193b9f2",
+    "abstract": "This paper introduces an innovative approach to open world recognition (OWR), where we leverage knowledge acquired from known objects to address the recognition of previously unseen objects. The traditional method of object modeling relies on supervised learning with strict closed-set assumptions, presupposing that objects encountered during inference are already known at the training phase. However, this assumption proves inadequate for real-world scenarios due to the impracticality of accounting for the immense diversity of objects. Our hypothesis posits that object appearances can be represented as collections of\"shareable\"mid-level features, arranged in constellations to form object instances. By adopting this framework, we can efficiently dissect and represent both known and unknown objects in terms of their appearance cues. Our paper introduces a straightforward yet elegant method for modeling novel or unseen objects, utilizing established appearance cues and accounting for inherent uncertainties. This representation not only enables the detection of out-of-distribution objects or novel categories among unseen objects but also facilitates a deeper level of reasoning, empowering the identification of the superclass to which an unknown instance belongs. This novel approach holds promise for advancing open world recognition in diverse applications.",
+    "authors": [
+        "Paridhi Singh",
+        "Arun Kumar"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces an innovative approach to open world recognition (OWR), where knowledge acquired from known objects are leveraged to address the recognition of previously unseen objects, utilizing established appearance cues and accounting for inherent uncertainties."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

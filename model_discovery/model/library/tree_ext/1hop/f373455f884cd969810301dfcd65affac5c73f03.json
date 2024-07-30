@@ -1,0 +1,31 @@
+{
+    "acronym": "f373455f884cd969810301dfcd65affac5c73f03",
+    "title": "StyleBART: Decorate Pretrained Model with Style Adapters for Unsupervised Stylistic Headline Generation",
+    "seed_ids": [
+        "gpt2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f373455f884cd969810301dfcd65affac5c73f03",
+    "abstract": "Stylistic headline generation is the task to generate a headline that not only summarizes the content of an article, but also reflects a desired style that attracts users. As style-specific article-headline pairs are scarce, previous researches focus on unsupervised approaches with a standard headline generation dataset and mono-style corpora. In this work, we follow this line and propose StyleBART, an unsupervised approach for stylistic headline generation. Our method decorates the pretrained BART model with adapters that are responsible for different styles and allows the generation of headlines with diverse styles by simply switching the adapters. Different from previous works, StyleBART separates the task of style learning and headline generation, making it possible to freely combine the base model and the style adapters during inference. We further propose an inverse paraphrasing task to enhance the style adapters. Extensive automatic and human evaluations show that StyleBART achieves new state-of-the-art performance in the unsupervised stylistic headline generation task, producing high-quality headlines with the desired style.",
+    "authors": [
+        "Hanqing Wang",
+        "Yajing Luo",
+        "Boya Xiong",
+        "Guanhua Chen",
+        "Yun Chen"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes StyleBART, an unsupervised approach for stylistic headline generation that decorates the pretrained BART model with adapters that are responsible for different styles and allows the generation of headlines with diverse styles by simply switching the adapters."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

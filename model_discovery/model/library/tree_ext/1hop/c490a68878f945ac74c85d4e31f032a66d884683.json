@@ -1,0 +1,30 @@
+{
+    "acronym": "c490a68878f945ac74c85d4e31f032a66d884683",
+    "title": "Concept-centric Personalization with Large-scale Diffusion Priors",
+    "seed_ids": [
+        "classfreediffu",
+        "3ff7153fd6bd47d08084c7f50f8fd70026c126e7",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "c490a68878f945ac74c85d4e31f032a66d884683",
+    "abstract": "Despite large-scale diffusion models being highly capable of generating diverse open-world content, they still struggle to match the photorealism and fidelity of concept-specific generators. In this work, we present the task of customizing large-scale diffusion priors for specific concepts as concept-centric personalization. Our goal is to generate high-quality concept-centric images while maintaining the versatile controllability inherent to open-world models, enabling applications in diverse tasks such as concept-centric stylization and image translation. To tackle these challenges, we identify catastrophic forgetting of guidance prediction from diffusion priors as the fundamental issue. Consequently, we develop a guidance-decoupled personalization framework specifically designed to address this task. We propose Generalized Classifier-free Guidance (GCFG) as the foundational theory for our framework. This approach extends Classifier-free Guidance (CFG) to accommodate an arbitrary number of guidances, sourced from a variety of conditions and models. Employing GCFG enables us to separate conditional guidance into two distinct components: concept guidance for fidelity and control guidance for controllability. This division makes it feasible to train a specialized model for concept guidance, while ensuring both control and unconditional guidance remain intact. We then present a null-text Concept-centric Diffusion Model as a concept-specific generator to learn concept guidance without the need for text annotations. Code will be available at https://github.com/PRIV-Creation/Concept-centric-Personalization.",
+    "authors": [
+        "Pu Cao",
+        "Lu Yang",
+        "Feng Zhou",
+        "Tianrui Huang",
+        "Qing Song"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a guidance-decoupled personalization framework for customizing large-scale diffusion priors for specific concepts as concept-centric personalization, and proposes Generalized Classifier-free Guidance (GCFG) as the foundational theory for this framework."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "d6db74a36301fdbb4859b5f7ff302337666b93ce",
+    "title": "Towards Unified Conversational Recommender Systems via Knowledge-Enhanced Prompt Learning",
+    "seed_ids": [
+        "gpt2",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d6db74a36301fdbb4859b5f7ff302337666b93ce",
+    "abstract": "Conversational recommender systems (CRS) aim to proactively elicit user preference and recommend high-quality items through natural language conversations. Typically, a CRS consists of a recommendation module to predict preferred items for users and a conversation module to generate appropriate responses. To develop an effective CRS, it is essential to seamlessly integrate the two modules. Existing works either design semantic alignment strategies, or share knowledge resources and representations between the two modules. However, these approaches still rely on different architectures or techniques to develop the two modules, making it difficult for effective module integration. To address this problem, we propose a unified CRS model named UniCRS based on knowledge-enhanced prompt learning. Our approach unifies the recommendation and conversation subtasks into the prompt learning paradigm, and utilizes knowledge-enhanced prompts based on a fixed pre-trained language model (PLM) to fulfill both subtasks in a unified approach. In the prompt design, we include fused knowledge representations, task-specific soft tokens, and the dialogue context, which can provide sufficient contextual information to adapt the PLM for the CRS task. Besides, for the recommendation subtask, we also incorporate the generated response template as an important part of the prompt, to enhance the information interaction between the two subtasks. Extensive experiments on two public CRS datasets have demonstrated the effectiveness of our approach. Our code is publicly available at the link: https://github.com/RUCAIBox/UniCRS.",
+    "authors": [
+        "Xiaolei Wang",
+        "Kun Zhou",
+        "Ji-rong Wen",
+        "Wayne Xin Zhao"
+    ],
+    "venue": "Knowledge Discovery and Data Mining",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This approach unifies the recommendation and conversation subtasks into the prompt learning paradigm, and utilizes knowledge-enhanced prompts based on a fixed pre-trained language model (PLM) to fulfill both subtasks in a unified approach."
+    },
+    "citationCount": 73,
+    "influentialCitationCount": 10,
+    "code": null,
+    "description": null,
+    "url": null
+}

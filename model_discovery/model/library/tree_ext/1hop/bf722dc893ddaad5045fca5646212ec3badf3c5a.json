@@ -1,0 +1,35 @@
+{
+    "acronym": "bf722dc893ddaad5045fca5646212ec3badf3c5a",
+    "title": "Prompt-Learning for Fine-Grained Entity Typing",
+    "seed_ids": [
+        "gpt",
+        "da454295392cf4caaa39cc465734237ffe55392f",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "3bcb17559ce96eb20fa79af8194f4af0380d194a",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3"
+    ],
+    "s2id": "bf722dc893ddaad5045fca5646212ec3badf3c5a",
+    "abstract": "As an effective approach to tune pre-trained language models (PLMs) for specific tasks, prompt-learning has recently attracted much attention from researchers. By using \\textit{cloze}-style language prompts to stimulate the versatile knowledge of PLMs, prompt-learning can achieve promising results on a series of NLP tasks, such as natural language inference, sentiment classification, and knowledge probing. In this work, we investigate the application of prompt-learning on fine-grained entity typing in fully supervised, few-shot and zero-shot scenarios. We first develop a simple and effective prompt-learning pipeline by constructing entity-oriented verbalizers and templates and conducting masked language modeling. Further, to tackle the zero-shot regime, we propose a self-supervised strategy that carries out distribution-level optimization in prompt-learning to automatically summarize the information of entity types. Extensive experiments on three fine-grained entity typing benchmarks (with up to 86 classes) under fully supervised, few-shot and zero-shot settings show that prompt-learning methods significantly outperform fine-tuning baselines, especially when the training data is insufficient.",
+    "authors": [
+        "Ning Ding",
+        "Yulin Chen",
+        "Xu Han",
+        "Guangwei Xu",
+        "Pengjun Xie",
+        "Haitao Zheng",
+        "Zhiyuan Liu",
+        "Juan-Zi Li",
+        "Hong-Gee Kim"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work develops a simple and effective prompt-learning pipeline, and proposes a self-supervised strategy that carries out distribution-level optimization in prompt- learning to automatically summarize the information of entity types in the zero-shot regime."
+    },
+    "citationCount": 123,
+    "influentialCitationCount": 10,
+    "code": null,
+    "description": null,
+    "url": null
+}

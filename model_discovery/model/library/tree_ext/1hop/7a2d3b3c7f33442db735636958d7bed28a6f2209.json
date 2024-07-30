@@ -1,0 +1,32 @@
+{
+    "acronym": "7a2d3b3c7f33442db735636958d7bed28a6f2209",
+    "title": "Slide, Constrain, Parse, Repeat: Synchronous SlidingWindows for Document AMR Parsing",
+    "seed_ids": [
+        "bigbird",
+        "732e3faec4e5be4d144256f2c379b9dc49f0b227",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "7a2d3b3c7f33442db735636958d7bed28a6f2209",
+    "abstract": "The sliding window approach provides an elegant way to handle contexts of sizes larger than the Transformer's input window, for tasks like language modeling. Here we extend this approach to the sequence-to-sequence task of document parsing. For this, we exploit recent progress in transition-based parsing to implement a parser with synchronous sliding windows over source and target. We develop an oracle and a parser for document-level AMR by expanding on Structured-BART such that it leverages source-target alignments and constrains decoding to guarantee synchronicity and consistency across overlapping windows. We evaluate our oracle and parser using the Abstract Meaning Representation (AMR) parsing 3.0 corpus. On the Multi-Sentence development set of AMR 3.0, we show that our transition oracle loses only 8\\% of the gold cross-sentential links despite using a sliding window. In practice, this approach also results in a high-quality document-level parser with manageable memory requirements. Our proposed system performs on par with the state-of-the-art pipeline approach for document-level AMR parsing task on Multi-Sentence AMR 3.0 corpus while maintaining sentence-level parsing performance.",
+    "authors": [
+        "Sadhana Kumaravel",
+        "Tahira Naseem",
+        "Ram\u00f3n Fern\u00e1ndez Astudillo",
+        "Radu Florian",
+        "S. Roukos"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work develops an oracle and a parser for document-level AMR by expanding on Structured-BART such that it leverages source-target alignments and constrains decoding to guarantee synchronicity and consistency across overlapping windows."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

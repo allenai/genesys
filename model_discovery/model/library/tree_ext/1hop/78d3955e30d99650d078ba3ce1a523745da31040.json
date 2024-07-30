@@ -1,0 +1,29 @@
+{
+    "acronym": "78d3955e30d99650d078ba3ce1a523745da31040",
+    "title": "Referee: Reference-Free Sentence Summarization with Sharper Controllability through Symbolic Knowledge Distillation",
+    "seed_ids": [
+        "gpt2",
+        "ad7129af0644dbcafa9aa2f111cb76526ea444a1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "78d3955e30d99650d078ba3ce1a523745da31040",
+    "abstract": "We present Referee, a novel framework for sentence summarization that can be trained reference-free (i.e., requiring no gold summaries for supervision), while allowing direct control for compression ratio. Our work is the first to demonstrate that reference-free, controlled sentence summarization is feasible via the conceptual framework of Symbolic Knowledge Distillation (West et al., 2022), where latent knowledge in pre-trained language models is distilled via explicit examples sampled from the teacher models, further purified with three types of filters: length, fidelity, and Information Bottleneck. Moreover, we uniquely propose iterative distillation of knowledge, where student models from the previous iteration of distillation serve as teacher models in the next iteration. Starting off from a relatively modest set of GPT3-generated summaries, we demonstrate how iterative knowledge distillation can lead to considerably smaller, but better summarizers with sharper controllability. A useful by-product of this iterative distillation process is a high-quality dataset of sentence-summary pairs with varying degrees of compression ratios. Empirical results demonstrate that the final student models vastly outperform the much larger GPT3-Instruct model in terms of the controllability of compression ratios, without compromising the quality of resulting summarization.",
+    "authors": [
+        "Melanie Sclar",
+        "Peter West",
+        "Sachin Kumar",
+        "Yulia Tsvetkov",
+        "Yejin Choi"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work is the first to demonstrate that reference-free, controlled sentence summarization is feasible via the conceptual framework of Symbolic Knowledge Distillation, where latent knowledge in pre-trained language models is distilled via explicit examples sampled from the teacher models."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "637357eb041ea0f1e113f7f37e934c8e40103508",
+    "title": "Reinforcement Tuning for Detecting Stances and Debunking Rumors Jointly with Large Language Models",
+    "seed_ids": [
+        "bert",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "637357eb041ea0f1e113f7f37e934c8e40103508",
+    "abstract": "Learning multi-task models for jointly detecting stance and verifying rumors poses challenges due to the need for training data of stance at post level and rumor veracity at claim level, which are difficult to obtain. To address this issue, we leverage large language models (LLMs) as the foundation annotators for the joint stance detection (SD) and rumor verification (RV) tasks, dubbed as JSDRV. We introduce a novel reinforcement tuning framework to enhance the joint predictive capabilities of LLM-based SD and RV components. Specifically, we devise a policy for selecting LLM-annotated data at the two levels, employing a hybrid reward mechanism to choose high-quality labels for effective LLM fine-tuning on both tasks. Results demonstrate that JSDRV improves the capabilities of LLMs in the joint tasks, not only outperforming state-of-the-art methods but also generalizing to non-LLMs accommodated as task models.",
+    "authors": [
+        "Ruichao Yang",
+        "Wei Gao",
+        "Jing Ma",
+        "Hongzhan Lin",
+        "Bo Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a novel reinforcement tuning framework to enhance the joint predictive capabilities of LLM-based SD and RV components, and devise a policy for selecting LLM-annotated data at the two levels, employing a hybrid reward mechanism to choose high-quality labels for effective LLM fine-tuning on both tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "24b980ac6ea1ba553430c3d3fda453449f47df98",
+    "title": "A Comparative Study of Quality Evaluation Methods for Text Summarization",
+    "seed_ids": [
+        "transformer",
+        "bigbird",
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "24b980ac6ea1ba553430c3d3fda453449f47df98",
+    "abstract": "Evaluating text summarization has been a challenging task in natural language processing (NLP). Automatic metrics which heavily rely on reference summaries are not suitable in many situations, while human evaluation is time-consuming and labor-intensive. To bridge this gap, this paper proposes a novel method based on large language models (LLMs) for evaluating text summarization. We also conducts a comparative study on eight automatic metrics, human evaluation, and our proposed LLM-based method. Seven different types of state-of-the-art (SOTA) summarization models were evaluated. We perform extensive experiments and analysis on datasets with patent documents. Our results show that LLMs evaluation aligns closely with human evaluation, while widely-used automatic metrics such as ROUGE-2, BERTScore, and SummaC do not and also lack consistency. Based on the empirical comparison, we propose a LLM-powered framework for automatically evaluating and improving text summarization, which is beneficial and could attract wide attention among the community.",
+    "authors": [
+        "Huyen Nguyen",
+        "Haihua Chen",
+        "Lavanya Pobbathi",
+        "Junhua Ding"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel method based on large language models (LLMs) for evaluating text summarization shows that LLMs evaluation aligns closely with human evaluation, while widely-used automatic metrics such as ROUGE-2, BERTScore, and SummaC do not and also lack consistency."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

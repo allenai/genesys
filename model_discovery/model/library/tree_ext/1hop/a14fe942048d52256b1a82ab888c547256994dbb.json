@@ -1,0 +1,38 @@
+{
+    "acronym": "a14fe942048d52256b1a82ab888c547256994dbb",
+    "title": "FMRT: Learning Accurate Feature Matching with Reconciliatory Transformer",
+    "seed_ids": [
+        "lineartransformer",
+        "6a72020974974604651970b6808e95f0ed5cf1ee",
+        "221e3f9f9c6e68eb68dd7084ef8e1e692869da85",
+        "9ede78aa6a5471b2bbf07987ed62232df7446f4e",
+        "0d9b8ccb1135b8e380dd8015b080158c6aae3ae5",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "6954a6bb9d6f3e365b26b694c963ae1d62a03444"
+    ],
+    "s2id": "a14fe942048d52256b1a82ab888c547256994dbb",
+    "abstract": "Local Feature Matching, an essential component of several computer vision tasks (e.g., structure from motion and visual localization), has been effectively settled by Transformer-based methods. However, these methods only integrate long-range context information among keypoints with a fixed receptive field, which constrains the network from reconciling the importance of features with different receptive fields to realize complete image perception, hence limiting the matching accuracy. In addition, these methods utilize a conventional handcrafted encoding approach to integrate the positional information of keypoints into the visual descriptors, which limits the capability of the network to extract reliable positional encoding message. In this study, we propose Feature Matching with Reconciliatory Transformer (FMRT), a novel Transformer-based detector-free method that reconciles different features with multiple receptive fields adaptively and utilizes parallel networks to realize reliable positional encoding. Specifically, FMRT proposes a dedicated Reconciliatory Transformer (RecFormer) that consists of a Global Perception Attention Layer (GPAL) to extract visual descriptors with different receptive fields and integrate global context information under various scales, Perception Weight Layer (PWL) to measure the importance of various receptive fields adaptively, and Local Perception Feed-forward Network (LPFFN) to extract deep aggregated multi-scale local feature representation. Extensive experiments demonstrate that FMRT yields extraordinary performance on multiple benchmarks, including pose estimation, visual localization, homography estimation, and image matching.",
+    "authors": [
+        "Xinyu Zhang",
+        "Li Wang",
+        "Zhiqiang Jiang",
+        "Kun Dai",
+        "Tao Xie",
+        "Lei Yang",
+        "Wenhao Yu",
+        "Yang Shen",
+        "Jun Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study proposes Feature Matching with Reconciliatory Transformer (FMRT), a novel Transformer-based detector-free method that reconciles different features with multiple receptive fields adaptively and utilizes parallel networks to realize reliable positional encoding."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

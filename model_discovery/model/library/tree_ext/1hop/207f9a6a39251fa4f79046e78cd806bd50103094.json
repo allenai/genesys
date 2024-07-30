@@ -1,0 +1,29 @@
+{
+    "acronym": "207f9a6a39251fa4f79046e78cd806bd50103094",
+    "title": "Integrating Offline Reinforcement Learning with Transformers for Sequential Recommendation",
+    "seed_ids": [
+        "gpt2",
+        "59a916cdc943f0282908e6f3fa0360f4c5fb78d0",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "207f9a6a39251fa4f79046e78cd806bd50103094",
+    "abstract": "We consider the problem of sequential recommendation, where the current recommendation is made based on past interactions. This recommendation task requires efficient processing of the sequential data and aims to provide recommendations that maximize the long-term reward. To this end, we train a farsighted recommender by using an offline RL algorithm with the policy network in our model architecture that has been initialized from a pre-trained transformer model. The pre-trained model leverages the superb ability of the transformer to process sequential information. Compared to prior works that rely on online interaction via simulation, we focus on implementing a fully offline RL framework that is able to converge in a fast and stable way. Through extensive experiments on public datasets, we show that our method is robust across various recommendation regimes, including e-commerce and movie suggestions. Compared to state-of-the-art supervised learning algorithms, our algorithm yields recommendations of higher quality, demonstrating the clear advantage of combining RL and transformers.",
+    "authors": [
+        "Xumei Xi",
+        "YuKe Zhao",
+        "Quan Liu",
+        "Liwen Ouyang",
+        "Yang Wu"
+    ],
+    "venue": "ACM Conference on Recommender Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work trains a farsighted recommender by using an offline RL algorithm with the policy network in their model architecture that has been initialized from a pre-trained transformer model, demonstrating the clear advantage of combining RL and transformers."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "997d7b9645af64c1920e2ffb7da51f8e1b0f42a7",
+    "title": "MUDiff: Unified Diffusion for Complete Molecule Generation",
+    "seed_ids": [
+        "d3pms",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "997d7b9645af64c1920e2ffb7da51f8e1b0f42a7",
+    "abstract": "Molecule generation is a very important practical problem, with uses in drug discovery and material design, and AI methods promise to provide useful solutions. However, existing methods for molecule generation focus either on 2D graph structure or on 3D geometric structure, which is not sufficient to represent a complete molecule as 2D graph captures mainly topology while 3D geometry captures mainly spatial atom arrangements. Combining these representations is essential to better represent a molecule. In this paper, we present a new model for generating a comprehensive representation of molecules, including atom features, 2D discrete molecule structures, and 3D continuous molecule coordinates, by combining discrete and continuous diffusion processes. The use of diffusion processes allows for capturing the probabilistic nature of molecular processes and exploring the effect of different factors on molecular structures. Additionally, we propose a novel graph transformer architecture to denoise the diffusion process. The transformer adheres to 3D roto-translation equivariance constraints, allowing it to learn invariant atom and edge representations while preserving the equivariance of atom coordinates. This transformer can be used to learn molecular representations robust to geometric transformations. We evaluate the performance of our model through experiments and comparisons with existing methods, showing its ability to generate more stable and valid molecules. Our model is a promising approach for designing stable and diverse molecules and can be applied to a wide range of tasks in molecular modeling.",
+    "authors": [
+        "Chenqing Hua",
+        "Sitao Luan",
+        "Minkai Xu",
+        "Rex Ying",
+        "Jie Fu",
+        "Stefano Ermon",
+        "Doina Precup"
+    ],
+    "venue": "LOG IN",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new model for generating a comprehensive representation of molecules, including atom features, 2D discrete molecule structures, and 3D continuous molecule coordinates, by combining discrete and continuous diffusion processes is presented."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

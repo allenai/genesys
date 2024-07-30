@@ -1,0 +1,26 @@
+{
+    "acronym": "12467f15dfa47f8d50e30adb77fec7822c8e51c5",
+    "title": "Meta-MSGAT: Meta Multi-scale Fused Graph Attention Network",
+    "seed_ids": [
+        "metaformer",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f"
+    ],
+    "s2id": "12467f15dfa47f8d50e30adb77fec7822c8e51c5",
+    "abstract": "In recent years, graph attention networks(GAT) have received extensive attention. According to the different attention extraction methods, GAT is mainly divided into two categories: hierarchical graph attention and structural information extraction of attention. However, they cannot achieve plug-and-play effects. Recent studies have found that the excellent performance of Transformer on different tasks lies not in the multi-head attention mechanism but in the structure itself. Inspired by the above, we propose a plug-and-play graph attention convolution structure: Meta Multi-scale Fused Graph Attention Network(Meta-MSGAT). Meta-MSGAT consists of multi-scale feature extraction, feature transformation and aggregation, and message-passing. The Multi-scale feature extraction is implemented using multiple channels. Feature transformation and aggregation consist of different convolution kernels to increase the diverse representation of features. The message-passing layer consists of a mixer that does not limit the specific network layer. To verify the effectiveness of our proposed structure, we performed extensive experiments on six datasets and achieved an improvement from 0.35% to 2.76% compared to baselines. In particular, we use MLP or GAT instead of the mixer for ablation experiments, and both achieve superior performance over baselines.",
+    "authors": [
+        "Ting Chen",
+        "Jianming Wang",
+        "Yukuan Sun"
+    ],
+    "venue": "IEEE International Joint Conference on Neural Network",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a plug-and-play graph attention convolution structure: Meta Multi-scale Fused Graph Attention Network (Meta-MSGAT), which consists of multi-scale feature extraction, feature transformation and aggregation, and message-passing."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

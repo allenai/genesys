@@ -1,0 +1,25 @@
+{
+    "acronym": "006b3a17acfa95ff675869607e7edfe290eb57e5",
+    "title": "BW-EDA-EEND: streaming END-TO-END Neural Speaker Diarization for a Variable Number of Speakers",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "006b3a17acfa95ff675869607e7edfe290eb57e5",
+    "abstract": "We present a novel online end-to-end neural diarization system, BW-EDA-EEND, that processes data incrementally for a variable number of speakers. The system is based on the Encoder-Decoder-Attractor (EDA) architecture of Horiguchi et al., but utilizes the incremental Transformer encoder, attending only to its left contexts and using block-level recurrence in the hidden states to carry information from block to block, making the algorithm complexity linear in time. We propose two variants: For unlimited-latency BW-EDA-EEND, which processes inputs in linear time, we show only moderate degradation for up to two speakers using a context size of 10 seconds compared to offline EDA-EEND. With more than two speakers, the accuracy gap between online and offline grows, but the algorithm still outperforms a baseline offline clustering diarization system for one to four speakers with unlimited context size, and shows comparable accuracy with context size of 10 seconds. For limited-latency BW-EDA-EEND, which produces diarization outputs block-by-block as audio arrives, we show accuracy comparable to the offline clustering-based system.",
+    "authors": [
+        "Eunjung Han",
+        "Chul Lee",
+        "A. Stolcke"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel online end-to-end neural diarization system that processes data incrementally for a variable number of speakers based on the Encoder-Decoder-Attractor architecture but utilizes the incremental Transformer encoder, attending only to its left contexts and using block-level recurrence in the hidden states to carry information from block to block."
+    },
+    "citationCount": 36,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

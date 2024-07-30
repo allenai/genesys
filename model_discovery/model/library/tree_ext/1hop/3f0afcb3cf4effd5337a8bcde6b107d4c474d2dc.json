@@ -1,0 +1,35 @@
+{
+    "acronym": "3f0afcb3cf4effd5337a8bcde6b107d4c474d2dc",
+    "title": "Meta In-Context Learning Makes Large Language Models Better Zero and Few-Shot Relation Extractors",
+    "seed_ids": [
+        "gpt3",
+        "c4382ef185f93db523f805fe8e90ce1b50744563",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "2f291b0b59483e9c3c4a3391f34e6b29aff848a1",
+        "743dcf234cffd54c4e096a10a284dd81572b16ea",
+        "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3f0afcb3cf4effd5337a8bcde6b107d4c474d2dc",
+    "abstract": "Relation extraction (RE) is an important task that aims to identify the relationships between entities in texts. While large language models (LLMs) have revealed remarkable in-context learning (ICL) capability for general zero and few-shot learning, recent studies indicate that current LLMs still struggle with zero and few-shot RE. Previous studies are mainly dedicated to design prompt formats and select good examples for improving ICL-based RE. Although both factors are vital for ICL, if one can fundamentally boost the ICL capability of LLMs in RE, the zero and few-shot RE performance via ICL would be significantly improved. To this end, we introduce Micre (Meta In-Context learning of LLMs for Relation Extraction), a new meta-training framework for zero and few-shot RE where an LLM is tuned to do ICL on a diverse collection of RE datasets (i.e., learning to learn in context for RE). Through meta-training, the model becomes more effectively to learn a new RE task in context by conditioning on a few training examples with no parameter updates or task-specific templates at inference time, enabling better zero and few-shot task generalization. We experiment Micre on various LLMs with different model scales and 12 public RE datasets, and then evaluate it on unseen RE benchmarks under zero and few-shot settings. Micre delivers comparable or superior performance compared to a range of baselines including supervised fine-tuning and typical in-context learning methods. We find that the gains are particular significant for larger model scales, and using a diverse set of the meta-training RE datasets is key to improvements. Empirically, we show that Micre can transfer the relation semantic knowledge via relation label name during inference on target RE datasets.",
+    "authors": [
+        "Guozheng Li",
+        "Peng Wang",
+        "Jiajun Liu",
+        "Yikai Guo",
+        "Ke Ji",
+        "Ziyu Shang",
+        "Zijie Xu"
+    ],
+    "venue": "Proceedings of the Thirty-ThirdInternational Joint Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Micre (Meta In-Context learning of LLMs for Relation Extraction), a new meta-training framework for zero and few-shot RE where an LLM is tuned to do ICL on a diverse collection of RE datasets, delivers comparable or superior performance compared to a range of baselines including supervised fine-tuning and typical in-context learning methods."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

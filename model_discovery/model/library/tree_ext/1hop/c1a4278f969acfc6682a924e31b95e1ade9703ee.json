@@ -1,0 +1,47 @@
+{
+    "acronym": "c1a4278f969acfc6682a924e31b95e1ade9703ee",
+    "title": "Memory-efficient Transformers via Top-k Attention",
+    "seed_ids": [
+        "performer",
+        "lineartransformer",
+        "longformer",
+        "sparsetransformer",
+        "a4bd6a22dcdc740a9ff20af48fe2d828f0190b17",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "cec7872b194aadf54140578b9be52939eb1112e9",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "63857190aaf5aab1d94b54bb257b7b03b8cb5a50",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "2e14e84ccec924ed770b58108ad1d9de6f0ca295",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "830995ef17cc291c13f42dfd9f462137de1d2179",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "c1a4278f969acfc6682a924e31b95e1ade9703ee",
+    "abstract": "Following the success of dot-product attention in Transformers, numerous approximations have been recently proposed to address its quadratic complexity with respect to the input length. While these variants are memory and compute efficient, it is not possible to directly use them with popular pre-trained language models trained using vanilla attention, without an expensive corrective pre-training stage. In this work, we propose a simple yet highly accurate approximation for vanilla attention. We process the queries in chunks, and for each query, compute the top-*k* scores with respect to the keys. Our approach offers several advantages: (a) its memory usage is linear in the input size, similar to linear attention variants, such as Performer and RFA (b) it is a drop-in replacement for vanilla attention that does not require any corrective pre-training, and (c) it can also lead to significant memory savings in the feed-forward layers after casting them into the familiar query-key-value framework. We evaluate the quality of top-*k* approximation for multi-head attention layers on the Long Range Arena Benchmark, and for feed-forward layers of T5 and UnifiedQA on multiple QA datasets. We show our approach leads to accuracy that is nearly-identical to vanilla attention in multiple setups including training from scratch, fine-tuning, and zero-shot inference.",
+    "authors": [
+        "Ankit Gupta",
+        "Guy Dar",
+        "Shaya Goodman",
+        "David Ciprut",
+        "Jonathan Berant"
+    ],
+    "venue": "SUSTAINLP",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a simple yet highly accurate approximation for vanilla attention that leads to accuracy that is nearly-identical to vanilla attention in multiple setups including training from scratch, fine-tuning, and zero-shot inference."
+    },
+    "citationCount": 34,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

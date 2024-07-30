@@ -1,0 +1,29 @@
+{
+    "acronym": "d85f16e1285fad7ea187a4815275bc345345f839",
+    "title": "Search, Examine and Early-Termination: Fake News Detection with Annotation-Free Evidences",
+    "seed_ids": [
+        "bert",
+        "837ac4ed6825502f0460caec45e12e734c85b113",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "d85f16e1285fad7ea187a4815275bc345345f839",
+    "abstract": "Pioneer researches recognize evidences as crucial elements in fake news detection apart from patterns. Existing evidence-aware methods either require laborious pre-processing procedures to assure relevant and high-quality evidence data, or incorporate the entire spectrum of available evidences in all news cases, regardless of the quality and quantity of the retrieved data. In this paper, we propose an approach named \\textbf{SEE} that retrieves useful information from web-searched annotation-free evidences with an early-termination mechanism. The proposed SEE is constructed by three main phases: \\textbf{S}earching online materials using the news as a query and directly using their titles as evidences without any annotating or filtering procedure, sequentially \\textbf{E}xamining the news alongside with each piece of evidence via attention mechanisms to produce new hidden states with retrieved information, and allowing \\textbf{E}arly-termination within the examining loop by assessing whether there is adequate confidence for producing a correct prediction. We have conducted extensive experiments on datasets with unprocessed evidences, i.e., Weibo21, GossipCop, and pre-processed evidences, namely Snopes and PolitiFact. The experimental results demonstrate that the proposed method outperforms state-of-the-art approaches.",
+    "authors": [
+        "Yuzhou Yang",
+        "Yangming Zhou",
+        "Qichao Ying",
+        "Zhenxing Qian",
+        "Xinpeng Zhang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An approach that retrieves useful information from web-searched annotation-free evidences with an early-termination mechanism that outperforms state-of-the-art approaches is proposed."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

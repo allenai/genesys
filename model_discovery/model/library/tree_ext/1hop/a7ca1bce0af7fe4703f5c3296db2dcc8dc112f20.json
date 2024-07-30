@@ -1,0 +1,35 @@
+{
+    "acronym": "a7ca1bce0af7fe4703f5c3296db2dcc8dc112f20",
+    "title": "FiDO: Fusion-in-Decoder optimized for stronger performance and faster inference",
+    "seed_ids": [
+        "mqa",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "0e802c0739771acf70e60d59c2df51cd7e8c50c0",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "6a3e13d7926a4aaa0ddcd3acc7c08e8d24c330e5"
+    ],
+    "s2id": "a7ca1bce0af7fe4703f5c3296db2dcc8dc112f20",
+    "abstract": "Fusion-in-Decoder (FiD) is a powerful retrieval-augmented language model that sets the state-of-the-art on many knowledge-intensive NLP tasks. However, the architecture used for FiD was chosen by making minimal modifications to a standard T5 model, which our analysis shows to be highly suboptimal for a retrieval-augmented model. In particular, FiD allocates the bulk of FLOPs to the encoder, while the majority of inference time results from memory bandwidth constraints in the decoder. We propose two simple changes to the FiD architecture to alleviate memory bandwidth constraints, and speed up inference by 7x. This allows us to use a much larger decoder at modest cost. We denote FiD with the above modifications as FiDO, and show that it strongly improves performance over existing FiD models for a wide range of inference budgets. For example, FiDO-Large-XXL performs faster inference than FiD-Base and achieves better performance than FiD-Large.",
+    "authors": [
+        "Michiel de Jong",
+        "Yury Zemlyanskiy",
+        "J. Ainslie",
+        "Nicholas FitzGerald",
+        "Sumit K. Sanghai",
+        "Fei Sha",
+        "W. Cohen"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Two simple changes to the FiD architecture are proposed to alleviate memory bandwidth constraints, and speed up inference by 7x, which allows us to use a much larger decoder at modest cost and strongly improves performance over existing FiD models for a wide range of inference budgets."
+    },
+    "citationCount": 25,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

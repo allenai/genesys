@@ -1,0 +1,36 @@
+{
+    "acronym": "a28474db72957c239127374cfee3c8ed8190defc",
+    "title": "RAID: A Shared Benchmark for Robust Evaluation of Machine-Generated Text Detectors",
+    "seed_ids": [
+        "bert",
+        "73081c0d391f057e89b21347860c89cd09c1d2b1",
+        "1c13af186d1e177b85ef1ec3fc7b8d33ec314cfd",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "7845bfb55f5ce573b87d77bb76d4d38829b37620",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a28474db72957c239127374cfee3c8ed8190defc",
+    "abstract": "Many commercial and open-source models claim to detect machine-generated text with extremely high accuracy (99% or more). However, very few of these detectors are evaluated on shared benchmark datasets and even when they are, the datasets used for evaluation are insufficiently challenging-lacking variations in sampling strategy, adversarial attacks, and open-source generative models. In this work we present RAID: the largest and most challenging benchmark dataset for machine-generated text detection. RAID includes over 6 million generations spanning 11 models, 8 domains, 11 adversarial attacks and 4 decoding strategies. Using RAID, we evaluate the out-of-domain and adversarial robustness of 8 open- and 4 closed-source detectors and find that current detectors are easily fooled by adversarial attacks, variations in sampling strategies, repetition penalties, and unseen generative models. We release our data along with a leaderboard to encourage future research.",
+    "authors": [
+        "Liam Dugan",
+        "Alyssa Hwang",
+        "Filip Trhlik",
+        "Josh Magnus Ludan",
+        "Andrew Zhu",
+        "Hainiu Xu",
+        "Daphne Ippolito",
+        "Christopher Callison-Burch"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Using RAID, this work evaluates the out-of-domain and adversarial robustness of 8 open- and 4 closed-source detectors and finds that current detectors are easily fooled by adversarial attacks, variations in sampling strategies, repetition penalties, and unseen generative models."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

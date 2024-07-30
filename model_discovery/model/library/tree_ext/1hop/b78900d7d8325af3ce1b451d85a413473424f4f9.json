@@ -1,0 +1,26 @@
+{
+    "acronym": "b78900d7d8325af3ce1b451d85a413473424f4f9",
+    "title": "Hardening Soft Information: A Transformer-Based Approach to Forecasting Stock Return Volatility",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "b78900d7d8325af3ce1b451d85a413473424f4f9",
+    "abstract": "Historically, the field of financial forecasting almost exclusively relied on so-called hard information \u2013 i.e., numerical data with well-defined and unambiguous meaning. Over the last few decades, however, researchers and practitioners alike have, following the advances in natural language understanding, started recognizing the benefits of integrating soft information into financial modelling. In line with the above, this paper examines whether contemporary attention-based sequence-to-sequence models, known as Transformers, can help improve stock return volatility prediction when applied to corporate annual reports. Using a publicly available benchmark dataset, we show, in an empirical analysis, that out-of-the-box Transformer models have the ability to outmatch current state-of-the-art results and, more importantly, that our proposed feature-based Transformer approach can outperform a robust numerical baseline. To the best of our knowledge, this is the first empirical study focusing on stock return volatility prediction (1) to ever experiment with state-of-the-art Transformer architectures and (2) to demonstrate that a model based solely on soft information can surpass its numerical counterpart. Furthermore, we show that by including an additional numerical feature into our best text-only model, we can push the performance of our model even further, suggesting that soft and hard information contain different predictive signals.",
+    "authors": [
+        "M. Caron",
+        "Oliver M\u00fcller"
+    ],
+    "venue": "2020 IEEE International Conference on Big Data (Big Data)",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This is the first empirical study focusing on stock return volatility prediction to ever experiment with state-of-the-art Transformer architectures and to demonstrate that a model based solely on soft information can surpass its numerical counterpart."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

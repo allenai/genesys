@@ -1,0 +1,26 @@
+{
+    "acronym": "872652f870f1d7697412ebf14603d4e7b749f1e2",
+    "title": "Automata Extraction from Transformers",
+    "seed_ids": [
+        "bert",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51"
+    ],
+    "s2id": "872652f870f1d7697412ebf14603d4e7b749f1e2",
+    "abstract": "In modern machine (ML) learning systems, Transformer-based architectures have achieved milestone success across a broad spectrum of tasks, yet understanding their operational mechanisms remains an open problem. To improve the transparency of ML systems, automata extraction methods, which interpret stateful ML models as automata typically through formal languages, have proven effective for explaining the mechanism of recurrent neural networks (RNNs). However, few works have been applied to this paradigm to Transformer models. In particular, understanding their processing of formal languages and identifying their limitations in this area remains unexplored. In this paper, we propose an automata extraction algorithm specifically designed for Transformer models. Treating the Transformer model as a black-box system, we track the model through the transformation process of their internal latent representations during their operations, and then use classical pedagogical approaches like L* algorithm to interpret them as deterministic finite-state automata (DFA). Overall, our study reveals how the Transformer model comprehends the structure of formal languages, which not only enhances the interpretability of the Transformer-based ML systems but also marks a crucial step toward a deeper understanding of how ML systems process formal languages. Code and data are available at https://github.com/Zhang-Yihao/Transfomer2DFA.",
+    "authors": [
+        "Yihao Zhang",
+        "Zeming Wei",
+        "Meng Sun"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study reveals how the Transformer model comprehends the structure of formal languages, which not only enhances the interpretability of the Transformer-based ML systems but also marks a crucial step toward a deeper understanding of how ML systems process formal languages."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

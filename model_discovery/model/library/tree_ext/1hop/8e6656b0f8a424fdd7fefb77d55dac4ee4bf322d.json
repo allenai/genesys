@@ -1,0 +1,26 @@
+{
+    "acronym": "8e6656b0f8a424fdd7fefb77d55dac4ee4bf322d",
+    "title": "Testing learning hypotheses using neural networks by manipulating learning data",
+    "seed_ids": [
+        "gpt2",
+        "5a2263092f49540fd0e049050a96882ff29b00c3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8e6656b0f8a424fdd7fefb77d55dac4ee4bf322d",
+    "abstract": "Although passivization is productive in English, it is not completely general -- some exceptions exist (e.g. *One hour was lasted by the meeting). How do English speakers learn these exceptions to an otherwise general pattern? Using neural network language models as theories of acquisition, we explore the sources of indirect evidence that a learner can leverage to learn whether a verb can passivize. We first characterize English speakers' judgments of exceptions to the passive, confirming that speakers find some verbs more passivizable than others. We then show that a neural network language model can learn restrictions to the passive that are similar to those displayed by humans, suggesting that evidence for these exceptions is available in the linguistic input. We test the causal role of two hypotheses for how the language model learns these restrictions by training models on modified training corpora, which we create by altering the existing training corpora to remove features of the input implicated by each hypothesis. We find that while the frequency with which a verb appears in the passive significantly affects its passivizability, the semantics of the verb does not. This study highlight the utility of altering a language model's training data for answering questions where complete control over a learner's input is vital.",
+    "authors": [
+        "Cara Su-Yi Leong",
+        "Tal Linzen"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study characterize English speakers' judgments of exceptions to the passive, and shows that a neural network language model can learn restrictions to the passive that are similar to those displayed by humans, suggesting that evidence for these exceptions is available in the linguistic input."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

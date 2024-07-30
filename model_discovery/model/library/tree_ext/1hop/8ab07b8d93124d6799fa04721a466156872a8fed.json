@@ -1,0 +1,26 @@
+{
+    "acronym": "8ab07b8d93124d6799fa04721a466156872a8fed",
+    "title": "A Multi-Label Text Classification Model with Enhanced Label Information",
+    "seed_ids": [
+        "transformer",
+        "33d15b2d2a434ab33a2a88585604f4728a324baf",
+        "5bdfbded52da393eb3f7a0270a4f135bb564ee4a"
+    ],
+    "s2id": "8ab07b8d93124d6799fa04721a466156872a8fed",
+    "abstract": "Multi-label text classification is a challenging and fundamental task in natural language processing. Previous studies have lacked in-depth exploration of label information and the interaction between labels and text, which leaves out some valid information. To address this limitation, this paper proposes a novel model with enhanced label information. In this model, we build a label semantics-aware text encoder to enhance semantic interaction between labels and text. Additionally, we use a graph convolution network to encode structural relationships between labels. Conditional layer normalization is then utilized to incorporate this structure information into the model. Experimental results on the RCV1 and AAPD datasets, two widely recognized benchmarks for multi-label text classification tasks, demonstrate that our model surpasses prior work across multiple metrics. We analyze model performance on labels of different frequencies to showcase the effectiveness of our model on long-tailed labels. Furthermore, detailed ablation experiments were conducted to analyze each module of the model, demonstrating the effectiveness of our approach.",
+    "authors": [
+        "Min Wang",
+        "Yan Gao"
+    ],
+    "venue": "International Conference on Computer Supported Cooperative Work in Design",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel model with enhanced label information is proposed, which builds a label semantics-aware text encoder to enhance semantic interaction between labels and text and uses a graph convolution network to encode structural relationships between labels."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

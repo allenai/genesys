@@ -1,0 +1,34 @@
+{
+    "acronym": "759b95f7f90addc4c526cd92557e486ab143fbec",
+    "title": "Style Vectors for Steering Generative Large Language Models",
+    "seed_ids": [
+        "gpt3",
+        "530dbd3247bdec8ee9b2513ebbe6b6df5e4d6055",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "759b95f7f90addc4c526cd92557e486ab143fbec",
+    "abstract": "This research explores strategies for steering the output of large language models (LLMs) towards specific styles, such as sentiment, emotion, or writing style, by adding style vectors to the activations of hidden layers during text generation. We show that style vectors can be simply computed from recorded layer activations for input texts in a specific style in contrast to more complex training-based approaches. Through a series of experiments, we demonstrate the effectiveness of activation engineering using such style vectors to influence the style of generated text in a nuanced and parameterisable way, distinguishing it from prompt engineering. The presented research constitutes a significant step towards developing more adaptive and effective AI-empowered interactive systems.",
+    "authors": [
+        "Kai Konen",
+        "Sophie Jentzsch",
+        "Diaoul\u00e9 Diallo",
+        "Peer Schutt",
+        "Oliver Bensch",
+        "Roxanne El Baff",
+        "Dominik Opitz",
+        "Tobias Hecking"
+    ],
+    "venue": "Findings",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that style vectors can be simply computed from recorded layer activations for input texts in a specific style in contrast to more complex training-based approaches, demonstrating the effectiveness of activation engineering using such style vectors."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

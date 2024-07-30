@@ -1,0 +1,32 @@
+{
+    "acronym": "e815a843ecdb0838e0ab84dbd6091b725a400fa5",
+    "title": "LLaMA-E: Empowering E-commerce Authoring with Object-Interleaved Instruction Following",
+    "seed_ids": [
+        "gpt2",
+        "2029349c55c1dba3493c5b3bd25152f18ba21ae2",
+        "49a77a36a0a60d29aa7838ac49a055a69658b195",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e815a843ecdb0838e0ab84dbd6091b725a400fa5",
+    "abstract": "E-commerce authoring entails creating engaging, diverse, and targeted content to enhance preference elicitation and retrieval experience. While Large Language Models (LLMs) have revolutionized content generation, they often fall short in e-commerce applications due to their limited memorization of domain-specific features. This paper proposes LLaMA-E, the unified e-commerce authoring models that address the contextual preferences of customers, sellers, and platforms, the essential objects in e-commerce operation. We design the instruction set derived from tasks of ads generation, query-enhanced product title rewriting, product classification, purchase intent speculation, and general e-commerce Q&A. The instruction formulation ensures the interleaved cover of the presented and required object features, allowing the alignment of base models to parameterise e-commerce knowledge comprehensively. The proposed LLaMA-E models achieve state-of-the-art evaluation performance and exhibit the advantage in zero-shot practical applications. To our knowledge, this is the first LLM tailored to empower authoring applications with comprehensive scenario understanding by integrating features focused on participated objects.",
+    "authors": [
+        "Kaize Shi",
+        "Xueyao Sun",
+        "Dingxian Wang",
+        "Yinlin Fu",
+        "Guandong Xu",
+        "Qing Li"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes LLaMA-E, the unified e-commerce authoring models that address the contextual preferences of customers, sellers, and platforms, the essential objects in e-commerce operation, and is the first LLM tailored to empower authoring applications with comprehensive scenario understanding by integrating features focused on participated objects."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,32 @@
+{
+    "acronym": "01acbbec8b54b781d8ff1fae4657e49595cdf831",
+    "title": "Integrating Pre-Trained Language Model into Neural Machine Translation",
+    "seed_ids": [
+        "gpt",
+        "698113eac0df3bd6d8cf724ea6b5fa94a5bc57d9",
+        "64f94eb97891ca17273464fcb9c507c5a5c7dba7",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "7a09101ac03b74db501648597fa54e992a0fc84f",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "a022bda79947d1f656a1164003c1b3ae9a843df9",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc"
+    ],
+    "s2id": "01acbbec8b54b781d8ff1fae4657e49595cdf831",
+    "abstract": "Neural Machine Translation (NMT) has become a significant technology in natural language processing through extensive research and development. However, the deficiency of high-quality bilingual language pair data still poses a major challenge to improving NMT performance. Recent studies are exploring the use of contextual information from pre-trained language model (PLM) to address this problem. Yet, the issue of in-compatibility between PLM and NMT model remains unresolved. This study proposes a PLM-integrated NMT (PiNMT) model to overcome the identified problems. The PiNMT model consists of three critical components, PLM Multi Layer Converter, Embedding Fusion, and Cosine Alignment, each playing a vital role in providing effective PLM information to NMT. Furthermore, two training strategies, Separate Learning Rates and Dual Step Training, are also introduced in this paper. By implementing the proposed PiNMT model and training strategy, we achieved state-of-the-art performance on the IWSLT'14 En\u2194De dataset. This study's outcomes are noteworthy as they demonstrate a novel approach for efficiently integrating PLM with NMT to overcome incompatibility and enhance performance.",
+    "authors": [
+        "Soon-Jae Hwang",
+        "Chang-Sung Jeong"
+    ],
+    "venue": "2023 2nd International Conference on Frontiers of Communications, Information System and Data Science (CISDS)",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study proposes a PLM-integrated NMT (PiNMT) model, a novel approach for efficiently integrating PLM with NMT to overcome incompatibility and enhance performance, and achieves state-of-the-art performance on the IWSLT'14 En\u2194De dataset."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

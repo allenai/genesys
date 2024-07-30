@@ -1,0 +1,29 @@
+{
+    "acronym": "eaee0b647d336c6fc8b844812675ec35cddf14a1",
+    "title": "Why Does Surprisal From Larger Transformer-Based Language Models Provide a Poorer Fit to Human Reading Times?",
+    "seed_ids": [
+        "gpt2",
+        "db6d3dfebaf1ee8b9aeb97b83d8697e5bd62a9b3",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "ebc0acee471e61fd7d51c8720c404a53b7a9e29b",
+        "97a531f96a8d9a4c1d379637daf7dcc714db1b35",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "eaee0b647d336c6fc8b844812675ec35cddf14a1",
+    "abstract": "This work presents a linguistic analysis into why larger Transformer-based pre-trained language models with more parameters and lower perplexity nonetheless yield surprisal estimates that are less predictive of human reading times. First, regression analyses show a strictly monotonic, positive log-linear relationship between perplexity and fit to reading times for the more recently released five GPT-Neo variants and eight OPT variants on two separate datasets, replicating earlier results limited to just GPT-2 (Oh et al., 2022). Subsequently, analysis of residual errors reveals a systematic deviation of the larger variants, such as underpredicting reading times of named entities and making compensatory overpredictions for reading times of function words such as modals and conjunctions. These results suggest that the propensity of larger Transformer-based models to \u2018memorize\u2019 sequences during training makes their surprisal estimates diverge from humanlike expectations, which warrants caution in using pre-trained language models to study human language processing.",
+    "authors": [
+        "Byung-Doh Oh",
+        "William Schuler"
+    ],
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results suggest that the propensity of larger Transformer-based models to \u2018memorize\u2019 sequences during training makes their surprisal estimates diverge from humanlike expectations, which warrants caution in using pre-trained language models to study human language processing."
+    },
+    "citationCount": 56,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

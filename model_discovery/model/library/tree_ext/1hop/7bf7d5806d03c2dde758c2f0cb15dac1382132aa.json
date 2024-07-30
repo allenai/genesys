@@ -1,0 +1,25 @@
+{
+    "acronym": "7bf7d5806d03c2dde758c2f0cb15dac1382132aa",
+    "title": "AdOCTeRA: Adaptive Optimization Constraints for improved Text-guided Retrieval of Apartments",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "7bf7d5806d03c2dde758c2f0cb15dac1382132aa",
+    "abstract": "Nowadays, it is common for workers to relocate to new countries while seeking better job opportunities, or to live as digital nomads. While doing so, they face the problem of finding a new place to call home, requiring them to trust online advertisements or to physically visit the apartment. Recently, the research community investigated the possibility of performing the search on the Metaverse, hence reducing time and costs related to traveling and limiting carbon emissions. The methods available are based on state-of-the-art cross-modal retrieval techniques, which learn a joint embedding space by mapping apartment-descriptions pairs close. However, these methodologies push all the other pairs far away in the embedding space. In this paper, we identify this decision as a limitation, since different apartments are likely to share many aspects. To overcome it, we propose AdOCTeRA, which automatically separates the apartments into three classes -- very similar, slightly similar, and dissimilar -- and proposes adaptive optimization constraints for each of them. We validate our methodology on a large dataset of more than 6000 apartments, obtaining considerable relative improvements over the previous state-of-the-art (+3.8% R@5 and +7.3% R@10), and consistent improvements over the baseline across all the experiments. The source code is available at \\hrefhttps://github.com/aliabdari/AdOCTeRA https://github.com/aliabdari/AdOCTeRA",
+    "authors": [
+        "Ali Abdari",
+        "Alex Falcon",
+        "Giuseppe Serra"
+    ],
+    "venue": "International Conference on Multimedia Retrieval",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes AdOCTeRA, which automatically separates the apartments into three classes -- very similar, slightly similar, and dissimilar -- and proposes adaptive optimization constraints for each of them, and validate the methodology on a large dataset of more than 6000 apartments."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

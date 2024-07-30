@@ -1,0 +1,29 @@
+{
+    "acronym": "a6a828dcaaf373554b53b8f8002de126f3e38695",
+    "title": "An Integer-Only and Group-Vector Systolic Accelerator for Efficiently Mapping Vision Transformer on Edge",
+    "seed_ids": [
+        "gpt3",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "a6a828dcaaf373554b53b8f8002de126f3e38695",
+    "abstract": "Transformer-like network has shown remarkable high performance in both natural language processing and computer vision. However, the huge computational demands in non-linear floating-point arithmetic and the irregular memory access requirement in self-attention mechanism make it still a challenge to deploy Transformer on edge. To address the above issues, we propose integer-only quantization scheme for the simplification of non-linear operations (such as LayerNorm, Softmax and Gelu), meanwhile algorithm-hardware co-design strategy is applied to guarantee both the high accuracy and high efficiency. Besides, we construct general-purpose group vector systolic array to efficiently accelerate the matrix multiplication operations including both regular matrix-multiplication/convolution and the irregular multi-head self-attention mechanism. Unified data-package strategy and flexible on-/off-chip data storage management strategy are also proposed to further improve the performance. The design has been deployed on Xilinx ZCU102 FPGA platform, achieving an overall inference latency of 4.077ms and 11.15ms per image for ViT-tiny and ViT-s, respectively. The average throughput can reach as high as 762.7 GOPs, which shows significant improvement over the previous state-of-the-art FPGA Transformer accelerator.",
+    "authors": [
+        "Mingqiang Huang",
+        "Junyi Luo",
+        "Chenchen Ding",
+        "Zikun Wei",
+        "Sixiao Huang",
+        "Hao Yu"
+    ],
+    "venue": "IEEE Transactions on Circuits and Systems Part 1: Regular Papers",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

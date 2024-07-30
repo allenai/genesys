@@ -1,0 +1,34 @@
+{
+    "acronym": "9b54e80ab60632213cfd0a90d2f10f62619e0eb4",
+    "title": "Fusion-Mamba for Cross-modality Object Detection",
+    "seed_ids": [
+        "mamba",
+        "0a32e6ff6eaac83ff325bae4557a8362222979aa",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444"
+    ],
+    "s2id": "9b54e80ab60632213cfd0a90d2f10f62619e0eb4",
+    "abstract": "Cross-modality fusing complementary information from different modalities effectively improves object detection performance, making it more useful and robust for a wider range of applications. Existing fusion strategies combine different types of images or merge different backbone features through elaborated neural network modules. However, these methods neglect that modality disparities affect cross-modality fusion performance, as different modalities with different camera focal lengths, placements, and angles are hardly fused. In this paper, we investigate cross-modality fusion by associating cross-modal features in a hidden state space based on an improved Mamba with a gating mechanism. We design a Fusion-Mamba block (FMB) to map cross-modal features into a hidden state space for interaction, thereby reducing disparities between cross-modal features and enhancing the representation consistency of fused features. FMB contains two modules: the State Space Channel Swapping (SSCS) module facilitates shallow feature fusion, and the Dual State Space Fusion (DSSF) enables deep fusion in a hidden state space. Through extensive experiments on public datasets, our proposed approach outperforms the state-of-the-art methods on $m$AP with 5.9% on $M^3FD$ and 4.9% on FLIR-Aligned datasets, demonstrating superior object detection performance. To the best of our knowledge, this is the first work to explore the potential of Mamba for cross-modal fusion and establish a new baseline for cross-modality object detection.",
+    "authors": [
+        "Wenhao Dong",
+        "Haodong Zhu",
+        "Shaohui Lin",
+        "Xiaoyan Luo",
+        "Yunhang Shen",
+        "Xuhui Liu",
+        "Juan Zhang",
+        "Guodong Guo",
+        "Baochang Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper designs a Fusion-Mamba block (FMB) to map cross-modal features into a hidden state space for interaction, thereby reducing disparities between cross-modal features and enhancing the representation consistency of fused features."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

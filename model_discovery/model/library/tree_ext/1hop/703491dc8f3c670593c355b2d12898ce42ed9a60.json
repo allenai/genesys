@@ -1,0 +1,27 @@
+{
+    "acronym": "703491dc8f3c670593c355b2d12898ce42ed9a60",
+    "title": "Towards Ordinal Suicide Ideation Detection on Social Media",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "703491dc8f3c670593c355b2d12898ce42ed9a60",
+    "abstract": "The rising ubiquity of social media presents a platform for individuals to express suicide ideation, instead of traditional, formal clinical settings. While neural methods for assessing suicide risk on social media have shown promise, a crippling limitation of existing solutions is that they ignore the inherent ordinal nature across fine-grain levels of suicide risk. To this end, we reformulate suicide risk assessment as an Ordinal Regression problem, over the Columbia-Suicide Severity Scale. We propose SISMO, a hierarchical attention model optimized to factor in the graded nature of increasing suicide risk levels, through soft probability distribution since not all wrong risk-levels are equally wrong. We establish the face value of SISMO for preliminary suicide risk assessment on real-world Reddit data annotated by clinical experts. We conclude by discussing the empirical, practical, and ethical considerations pertaining to SISMO in a larger picture, as a human-in-the-loop framework",
+    "authors": [
+        "Ramit Sawhney",
+        "Harshit Joshi",
+        "Saumya Gandhi",
+        "R. Shah"
+    ],
+    "venue": "Web Search and Data Mining",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work reformulates suicide risk assessment as an Ordinal Regression problem, over the Columbia-Suicide Severity Scale, and proposes SISMO, a hierarchical attention model optimized to factor in the graded nature of increasing suicide risk levels, through soft probability distribution since not all wrong risk-levels are equally wrong."
+    },
+    "citationCount": 30,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

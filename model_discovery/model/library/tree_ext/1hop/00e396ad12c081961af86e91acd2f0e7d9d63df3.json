@@ -1,0 +1,38 @@
+{
+    "acronym": "00e396ad12c081961af86e91acd2f0e7d9d63df3",
+    "title": "Prefix-diffusion: A Lightweight Diffusion Model for Diverse Image Captioning",
+    "seed_ids": [
+        "diffusionlm",
+        "analogbits",
+        "c8a7474edf6ee5b7be689aa3b664ac04bed7be9d",
+        "42a30dc5470f54ec249f25d3c31e05d7c376c8e3",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "00e396ad12c081961af86e91acd2f0e7d9d63df3",
+    "abstract": "While impressive performance has been achieved in image captioning, the limited diversity of the generated captions and the large parameter scale remain major barriers to the real-word application of these systems. In this work, we propose a lightweight image captioning network in combination with continuous diffusion, called Prefix-diffusion. To achieve diversity, we design an efficient method that injects prefix image embeddings into the denoising process of the diffusion model. In order to reduce trainable parameters, we employ a pre-trained model to extract image features and further design an extra mapping network. Prefix-diffusion is able to generate diverse captions with relatively less parameters, while maintaining the fluency and relevance of the captions benefiting from the generative capabilities of the diffusion model. Our work paves the way for scaling up diffusion models for image captioning, and achieves promising performance compared with recent approaches.",
+    "authors": [
+        "Guisheng Liu",
+        "Yi Li",
+        "Zhengcong Fei",
+        "Haiyan Fu",
+        "Xiangyang Luo",
+        "Yanqing Guo"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a lightweight image captioning network in combination with continuous diffusion, called Prefix-diffusion, that is able to generate diverse captions with relatively less parameters, while maintaining the fluency and relevance of the captions benefiting from the generative capabilities of the diffusion model."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

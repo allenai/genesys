@@ -1,0 +1,31 @@
+{
+    "acronym": "76d1781c8ae8c28841e4ba8ed226384eb6f77fd0",
+    "title": "Sparsity-Preserving Differentially Private Training of Large Embedding Models",
+    "seed_ids": [
+        "bert",
+        "6fcbb819920ce206269105d1524489a33518d06d",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "76d1781c8ae8c28841e4ba8ed226384eb6f77fd0",
+    "abstract": "As the use of large embedding models in recommendation systems and language applications increases, concerns over user data privacy have also risen. DP-SGD, a training algorithm that combines differential privacy with stochastic gradient descent, has been the workhorse in protecting user privacy without compromising model accuracy by much. However, applying DP-SGD naively to embedding models can destroy gradient sparsity, leading to reduced training efficiency. To address this issue, we present two new algorithms, DP-FEST and DP-AdaFEST, that preserve gradient sparsity during private training of large embedding models. Our algorithms achieve substantial reductions ($10^6 \\times$) in gradient size, while maintaining comparable levels of accuracy, on benchmark real-world datasets.",
+    "authors": [
+        "Badih Ghazi",
+        "Yangsibo Huang",
+        "Pritish Kamath",
+        "Ravi Kumar",
+        "Pasin Manurangsi",
+        "Amer Sinha",
+        "Chiyuan Zhang"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Two new algorithms are presented, DP-FEST and DP-AdaFEST, that preserve gradient sparsity during private training of large embedding models and achieve substantial reductions in gradient size, while maintaining comparable levels of accuracy, on benchmark real-world datasets."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,32 @@
+{
+    "acronym": "af72203da1d04f344d81496b9d28bf04ed40be8e",
+    "title": "LLAVIDAL: Benchmarking Large Language Vision Models for Daily Activities of Living",
+    "seed_ids": [
+        "gpt3",
+        "0938d0ccc1c633fa0f8c067d914358b1ef53a44b",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "ada81a4de88a6ce474df2e2446ad11fea480616e"
+    ],
+    "s2id": "af72203da1d04f344d81496b9d28bf04ed40be8e",
+    "abstract": "Large Language Vision Models (LLVMs) have demonstrated effectiveness in processing internet videos, yet they struggle with the visually perplexing dynamics present in Activities of Daily Living (ADL) due to limited pertinent datasets and models tailored to relevant cues. To this end, we propose a framework for curating ADL multiview datasets to fine-tune LLVMs, resulting in the creation of ADL-X, comprising 100K RGB video-instruction pairs, language descriptions, 3D skeletons, and action-conditioned object trajectories. We introduce LLAVIDAL, an LLVM capable of incorporating 3D poses and relevant object trajectories to understand the intricate spatiotemporal relationships within ADLs. Furthermore, we present a novel benchmark, ADLMCQ, for quantifying LLVM effectiveness in ADL scenarios. When trained on ADL-X, LLAVIDAL consistently achieves state-of-the-art performance across all ADL evaluation metrics. Qualitative analysis reveals LLAVIDAL's temporal reasoning capabilities in understanding ADL. The link to the dataset is provided at: https://adl-x.github.io/",
+    "authors": [
+        "Rajatsubhra Chakraborty",
+        "Arkaprava Sinha",
+        "Dominick Reilly",
+        "Manish Kumar Govind",
+        "Pu Wang",
+        "Fran\u00e7ois Br\u00e9mond",
+        "Srijan Das"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "LLAVIDAL is introduced, an LLVM capable of incorporating 3D poses and relevant object trajectories to understand the intricate spatiotemporal relationships within ADLs, and a novel benchmark, ADLMCQ, is presented for quantifying LLVM effectiveness in ADL scenarios."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

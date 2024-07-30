@@ -1,0 +1,25 @@
+{
+    "acronym": "a7a3b46cdc90609810899975892787a9ae6a4f34",
+    "title": "Repurposing Decoder-Transformer Language Models for Abstractive Summarization",
+    "seed_ids": [
+        "memcompress",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a7a3b46cdc90609810899975892787a9ae6a4f34",
+    "abstract": "Neural network models have shown excellent fluency and performance when applied to abstractive summarization. Many approaches to neural abstractive summarization involve the introduction of significant inductive bias, exemplified through the use of components such as pointer-generator architectures, coverage, and partially extractive procedures, designed to mimic the process by which humans summarize documents. We show that it is possible to attain competitive performance by instead directly viewing summarization as a language modeling problem and effectively leveraging transfer learning. We introduce a simple procedure built upon decoder-transformers to obtain highly competitive ROUGE scores for summarization performance using a language modeling loss alone, with no beam-search or other decoding-time optimization, and instead relying on efficient nucleus sampling and greedy decoding.",
+    "authors": [
+        "Luke de Oliveira",
+        "Alfredo L'ainez Rodrigo"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a simple procedure built upon decoder-transformers to obtain highly competitive ROUGE scores for summarization performance using a language modeling loss alone, with no beam-search or other decoding-time optimization, and instead relying on efficient nucleus sampling and greedy decoding."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

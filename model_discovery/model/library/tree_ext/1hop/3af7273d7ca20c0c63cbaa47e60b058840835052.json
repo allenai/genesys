@@ -1,0 +1,46 @@
+{
+    "acronym": "3af7273d7ca20c0c63cbaa47e60b058840835052",
+    "title": "VideoMamba: State Space Model for Efficient Video Understanding",
+    "seed_ids": [
+        "mamba",
+        "roformer",
+        "e730beb44042499763d36214c0498434e470dfd5",
+        "21ddc4fc3551619b8a64db6ae124acc72aaae2c2",
+        "1df04f33a8ef313cc2067147dbb79c3ca7c5c99f",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "09312f70402847d4c2b5b5348d902ad0b2d4a0d5",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "9226ae23b95b3f6891461e086d910ffeb7ac448a",
+        "4990f7542f0600e0501a7e7a931b32eb7cb804d5",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "78a0fb70b79116eb8d42c5951ced4f9efba513f0",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "3af7273d7ca20c0c63cbaa47e60b058840835052",
+    "abstract": "Addressing the dual challenges of local redundancy and global dependencies in video understanding, this work innovatively adapts the Mamba to the video domain. The proposed VideoMamba overcomes the limitations of existing 3D convolution neural networks and video transformers. Its linear-complexity operator enables efficient long-term modeling, which is crucial for high-resolution long video understanding. Extensive evaluations reveal VideoMamba's four core abilities: (1) Scalability in the visual domain without extensive dataset pretraining, thanks to a novel self-distillation technique; (2) Sensitivity for recognizing short-term actions even with fine-grained motion differences; (3) Superiority in long-term video understanding, showcasing significant advancements over traditional feature-based models; and (4) Compatibility with other modalities, demonstrating robustness in multi-modal contexts. Through these distinct advantages, VideoMamba sets a new benchmark for video understanding, offering a scalable and efficient solution for comprehensive video understanding. All the code and models are available at https://github.com/OpenGVLab/VideoMamba.",
+    "authors": [
+        "Kunchang Li",
+        "Xinhao Li",
+        "Yi Wang",
+        "Yinan He",
+        "Yali Wang",
+        "Limin Wang",
+        "Yu Qiao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work innovatively adapts the Mamba to the video domain, offering a scalable and efficient solution for comprehensive video understanding that overcomes the limitations of existing 3D convolution neural networks and video transformers."
+    },
+    "citationCount": 47,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

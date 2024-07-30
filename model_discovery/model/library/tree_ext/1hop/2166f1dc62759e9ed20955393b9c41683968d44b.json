@@ -1,0 +1,29 @@
+{
+    "acronym": "2166f1dc62759e9ed20955393b9c41683968d44b",
+    "title": "Let's Synthesize Step by Step: Iterative Dataset Synthesis with Large Language Models by Extrapolating Errors from Small Models",
+    "seed_ids": [
+        "gpt3",
+        "23c265ba884b92ecbd9d18641078d964697e4590",
+        "c6c734e16f66fbfcefac7625cc64599e83292c1e",
+        "7eba731a7fd8de712b7b79b5af41a6e2d4dbd191",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2166f1dc62759e9ed20955393b9c41683968d44b",
+    "abstract": "*Data Synthesis* is a promising way to train a small model with very little labeled data. One approach for data synthesis is to leverage the rich knowledge from large language models to synthesize pseudo training examples for small models, making it possible to achieve both data and compute efficiency at the same time. However, a key challenge in data synthesis is that the synthesized dataset often suffers from a large distributional discrepancy from the *real task* data distribution. Thus, in this paper, we propose *Synthesis Step by Step* (**S3**), a data synthesis framework that shrinks this distribution gap by iteratively extrapolating the errors made by a small model trained on the synthesized dataset on a small real-world validation dataset using a large language model. Extensive experiments on multiple NLP tasks show that our approach improves the performance of a small model by reducing the gap between the synthetic dataset and the real data, resulting in significant improvement compared to several baselines: 9.48% improvement compared to ZeroGen and 2.73% compared to GoldGen, and at most 15.17% improvement compared to the small model trained on human-annotated data.",
+    "authors": [
+        "Ruida Wang",
+        "Wangchunshu Zhou",
+        "Mrinmaya Sachan"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes *Synthesis Step by Step* (**S3**), a data synthesis framework that shrinks this distribution gap by iteratively extrapolating the errors made by a small model trained on the synthesized dataset on a small real-world validation dataset using a large language model."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

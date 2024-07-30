@@ -1,0 +1,31 @@
+{
+    "acronym": "6db13f58ff662eefa823a660fa86faf8ddf75533",
+    "title": "Controllable Text Generation with Language Constraints",
+    "seed_ids": [
+        "gpt2",
+        "538288d24bdad73d831dfed44b706958287ed318",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6db13f58ff662eefa823a660fa86faf8ddf75533",
+    "abstract": "We consider the task of text generation in language models with constraints specified in natural language. To this end, we first create a challenging benchmark Cognac that provides as input to the model a topic with example text, along with a constraint on text to be avoided. Unlike prior work, our benchmark contains knowledge-intensive constraints sourced from databases like Wordnet and Wikidata, which allows for straightforward evaluation while striking a balance between broad attribute-level and narrow lexical-level controls. We find that even state-of-the-art language models like GPT-3 fail often on this task, and propose a solution to leverage a language model's own internal knowledge to guide generation. Our method, called CognacGen, first queries the language model to generate guidance terms for a specified topic or constraint, and uses the guidance to modify the model's token generation probabilities. We propose three forms of guidance (binary verifier, top-k tokens, textual example), and employ prefix-tuning approaches to distill the guidance to tackle diverse natural language constraints. Through extensive empirical evaluations, we demonstrate that CognacGen can successfully generalize to unseen instructions and outperform competitive baselines in generating constraint conforming text.",
+    "authors": [
+        "Howard Chen",
+        "Huihan Li",
+        "Danqi Chen",
+        "Karthik Narasimhan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work creates a challenging benchmark Cognac that provides as input to the model a topic with example text, along with a constraint on text to be avoided, and proposes a solution to leverage a language model's own internal knowledge to guide generation."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

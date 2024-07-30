@@ -1,0 +1,36 @@
+{
+    "acronym": "7c1b18b5075bd779813c3a30dae3aeb99fdd802e",
+    "title": "jurBERT: A Romanian BERT Model for Legal Judgement Prediction",
+    "seed_ids": [
+        "bigbird",
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "069e0d896da7c79faeee4cf057548d5da7ce885e",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "a022bda79947d1f656a1164003c1b3ae9a843df9",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7c1b18b5075bd779813c3a30dae3aeb99fdd802e",
+    "abstract": "Transformer-based models have become the de facto standard in the field of Natural Language Processing (NLP). By leveraging large unlabeled text corpora, they enable efficient transfer learning leading to state-of-the-art results on numerous NLP tasks. Nevertheless, for low resource languages and highly specialized tasks, transformer models tend to lag behind more classical approaches (e.g. SVM, LSTM) due to the lack of aforementioned corpora. In this paper we focus on the legal domain and we introduce a Romanian BERT model pre-trained on a large specialized corpus. Our model outperforms several strong baselines for legal judgement prediction on two different corpora consisting of cases from trials involving banks in Romania.",
+    "authors": [
+        "Mihai Masala",
+        "R. Iacob",
+        "Ana Sabina Uban",
+        "Marina-Anca Cidot\u00e3",
+        "Horia Velicu",
+        "Traian Rebedea",
+        "M. Popescu"
+    ],
+    "venue": "NLLP",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces a Romanian BERT model pre-trained on a large specialized corpus and outperforms several strong baselines for legal judgement prediction on two different corpora consisting of cases from trials involving banks in Romania."
+    },
+    "citationCount": 22,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

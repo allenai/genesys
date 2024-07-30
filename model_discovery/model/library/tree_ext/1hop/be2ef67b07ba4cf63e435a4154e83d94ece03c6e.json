@@ -1,0 +1,42 @@
+{
+    "acronym": "be2ef67b07ba4cf63e435a4154e83d94ece03c6e",
+    "title": "Incorporating Exponential Smoothing into MLP: A Simple but Effective Sequence Model",
+    "seed_ids": [
+        "hippo",
+        "mega",
+        "resurrectrnn",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "594d8e1696619f3cebb7c6bffdad8e0a5592f006",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "240300b1da360f22bf0b82c6817eacebba6deed4",
+        "70e91e16eb321067d9402710e14a40cf28311f73",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "bf80051ca9ae1e76e2bdbdcf44df559e7eb73cb1",
+        "054e307c1edf4b28137ffcbce980fe81f0647d20",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "be2ef67b07ba4cf63e435a4154e83d94ece03c6e",
+    "abstract": "Modeling long-range dependencies in sequential data is a crucial step in sequence learning. A recently developed model, the Structured State Space (S4), demonstrated significant effectiveness in modeling long-range sequences. However, It is unclear whether the success of S4 can be attributed to its intricate parameterization and HiPPO initialization or simply due to State Space Models (SSMs). To further investigate the potential of the deep SSMs, we start with exponential smoothing (ETS), a simple SSM, and propose a stacked architecture by directly incorporating it into an element-wise MLP. We augment simple ETS with additional parameters and complex field to reduce the inductive bias. Despite increasing less than 1\\% of parameters of element-wise MLP, our models achieve comparable results to S4 on the LRA benchmark.",
+    "authors": [
+        "Jiqun Chu",
+        "Zuoquan Lin"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work starts with exponential smoothing (ETS), a simple SSM, and proposes a stacked architecture by directly incorporating it into an element-wise MLP, which achieves comparable results to S4 on the LRA benchmark."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,24 @@
+{
+    "acronym": "77407a9758900672de113938ed1d2ab961e37b79",
+    "title": "Extracting Definienda in Mathematical Scholarly Articles with Transformers",
+    "seed_ids": [
+        "gpt3"
+    ],
+    "s2id": "77407a9758900672de113938ed1d2ab961e37b79",
+    "abstract": "We consider automatically identifying the defined term within a mathematical definition from the text of an academic article. Inspired by the development of transformer-based natural language processing applications, we pose the problem as (a) a token-level classification task using fine-tuned pre-trained transformers; and (b) a question-answering task using a generalist large language model (GPT). We also propose a rule-based approach to build a labeled dataset from the LATEX source of papers. Experimental results show that it is possible to reach high levels of precision and recall using either recent (and expensive) GPT 4 or simpler pre-trained models fine-tuned on our task.",
+    "authors": [
+        "Shufan Jiang",
+        "Pierre Senellart"
+    ],
+    "venue": "WIESP",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results show that it is possible to reach high levels of precision and recall using either recent (and expensive) GPT 4 or simpler pre-trained models fine-tuned on this task."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

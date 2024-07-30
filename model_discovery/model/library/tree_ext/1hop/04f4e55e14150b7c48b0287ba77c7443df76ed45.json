@@ -1,0 +1,31 @@
+{
+    "acronym": "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+    "title": "PIQA: Reasoning about Physical Commonsense in Natural Language",
+    "seed_ids": [
+        "gpt",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "f48ae425e2567be2d993efcaaf74c2274fc9d7c5",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28"
+    ],
+    "s2id": "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+    "abstract": "To apply eyeshadow without a brush, should I use a cotton swab or a toothpick? Questions requiring this kind of physical commonsense pose a challenge to today's natural language understanding systems. While recent pretrained models (such as BERT) have made progress on question answering over more abstract domains \u2013 such as news articles and encyclopedia entries, where text is plentiful \u2013 in more physical domains, text is inherently limited due to reporting bias. Can AI systems learn to reliably answer physical commonsense questions without experiencing the physical world?In this paper, we introduce the task of physical commonsense reasoning and a corresponding benchmark dataset Physical Interaction: Question Answering or PIQA. Though humans find the dataset easy (95% accuracy), large pretrained models struggle (\u223c75%). We provide analysis about the dimensions of knowledge that existing models lack, which offers significant opportunities for future research.",
+    "authors": [
+        "Yonatan Bisk",
+        "Rowan Zellers",
+        "Ronan Le Bras",
+        "Jianfeng Gao",
+        "Yejin Choi"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The task of physical commonsense reasoning and a corresponding benchmark dataset Physical Interaction: Question Answering or PIQA are introduced and analysis about the dimensions of knowledge that existing models lack are provided, which offers significant opportunities for future research."
+    },
+    "citationCount": 963,
+    "influentialCitationCount": 131,
+    "code": null,
+    "description": null,
+    "url": null
+}

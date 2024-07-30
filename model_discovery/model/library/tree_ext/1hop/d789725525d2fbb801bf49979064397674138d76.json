@@ -1,0 +1,32 @@
+{
+    "acronym": "d789725525d2fbb801bf49979064397674138d76",
+    "title": "Investigating Forgetting in Pre-Trained Representations Through Continual Learning",
+    "seed_ids": [
+        "gpt2",
+        "c5f208832fa22c50061d8480b92556750d785fd3",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "e2587eddd57bc4ba286d91b27c185083f16f40ee",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d789725525d2fbb801bf49979064397674138d76",
+    "abstract": "Representation forgetting refers to the drift of contextualized representations during continual training. Intuitively, the representation forgetting can influence the general knowledge stored in pre-trained language models (LMs), but the concrete effect is still unclear. In this paper, we study the effect of representation forgetting on the generality of pre-trained language models, i.e. the potential capability for tackling future downstream tasks. Specifically, we design three metrics, including overall generality destruction (GD), syntactic knowledge forgetting (SynF), and semantic knowledge forgetting (SemF), to measure the evolution of general knowledge in continual learning. With extensive experiments, we find that the generality is destructed in various pre-trained LMs, and syntactic and semantic knowledge is forgotten through continual learning. Based on our experiments and analysis, we further get two insights into alleviating general knowledge forgetting: 1) training on general linguistic tasks at first can mitigate general knowledge forgetting; 2) the hybrid continual learning method can mitigate the generality destruction and maintain more general knowledge compared with those only considering rehearsal or regularization.",
+    "authors": [
+        "Yun Luo",
+        "Zhen Yang",
+        "Xuefeng Bai",
+        "Fandong Meng",
+        "Jie Zhou",
+        "Yue Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper designs three metrics, including overall generality destruction, syntactic knowledge forgetting (SynF), and semanticknowledge forgetting (SemF), to measure the evolution of general knowledge in continual learning, and finds that the generality is destructed in various pre-trained LMs, and syntactic and semantic knowledge is forgotten through continual learning."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

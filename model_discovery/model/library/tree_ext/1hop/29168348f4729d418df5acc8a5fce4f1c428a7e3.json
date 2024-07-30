@@ -1,0 +1,33 @@
+{
+    "acronym": "29168348f4729d418df5acc8a5fce4f1c428a7e3",
+    "title": "Sparsifying Transformer Models with Trainable Representation Pooling",
+    "seed_ids": [
+        "longformer",
+        "e32a12b14e212506115cc6804667b3d8297917e1",
+        "3df83a60f55c64b40e6dbcd99cf9f67894a0736e",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "01b15017ac59b8d6f2ce3598c4a7d6358c211426",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "29168348f4729d418df5acc8a5fce4f1c428a7e3",
+    "abstract": "We propose a novel method to sparsify attention in the Transformer model by learning to select the most-informative token representations during the training process, thus focusing on the task-specific parts of an input. A reduction of quadratic time and memory complexity to sublinear was achieved due to a robust trainable top-k operator.Our experiments on a challenging long document summarization task show that even our simple baseline performs comparably to the current SOTA, and with trainable pooling we can retain its top quality, while being 1.8\\times faster during training, 4.5\\times faster during inference, and up to 13\\times more computationally efficient in the decoder.",
+    "authors": [
+        "Michal Pietruszka",
+        "\u0141ukasz Borchmann",
+        "Lukasz Garncarek"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel method to sparsify attention in the Transformer model by learning to select the most-informative token representations during the training process, thus focusing on the task-specific parts of an input."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

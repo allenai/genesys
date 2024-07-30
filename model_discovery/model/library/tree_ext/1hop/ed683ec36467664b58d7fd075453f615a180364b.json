@@ -1,0 +1,35 @@
+{
+    "acronym": "ed683ec36467664b58d7fd075453f615a180364b",
+    "title": "ConvoFusion: Multi-Modal Conversational Diffusion for Co-Speech Gesture Synthesis",
+    "seed_ids": [
+        "transformer",
+        "3985b81334ab90fbcbb30bbb3cc2840d00d509ba",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "559652ebfa7d4a23419430fff1aef961e5b9698c",
+        "465b80aea2b99ffe0710325f5c256e8d2ac642a5",
+        "15736f7c205d961c00378a938daffaacb5a0718d",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "ed683ec36467664b58d7fd075453f615a180364b",
+    "abstract": "Gestures play a key role in human communication. Recent methods for co-speech gesture generation, while managing to generate beat-aligned motions, struggle generating gestures that are semantically aligned with the utterance. Compared to beat gestures that align naturally to the audio signal, semantically coherent gestures require modeling the complex interactions between the language and human motion, and can be controlled by focusing on certain words. Therefore, we present ConvoFusion, a diffusion-based approach for multi-modal gesture synthesis, which can not only generate gestures based on multi-modal speech inputs, but can also facilitate controllability in gesture synthesis. Our method proposes two guidance objectives that allow the users to modulate the impact of different conditioning modalities (e.g. audio vs text) as well as to choose certain words to be emphasized during gesturing. Our method is versatile in that it can be trained either for generating monologue gestures or even the conversational gestures. To further advance the research on multi-party interactive gestures, the DnD Group Gesture dataset is released, which contains 6 hours of gesture data showing 5 people interacting with one another. We compare our method with several recent works and demonstrate effectiveness of our method on a variety of tasks. We urge the reader to watch our supplementary video at our website.",
+    "authors": [
+        "Muhammad Hamza Mughal",
+        "Rishabh Dabral",
+        "I. Habibie",
+        "Lucia Donatelli",
+        "Marc Habermann",
+        "Christian Theobalt"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ConvoFusion is presented, a diffusion-based approach for multi-modal gesture synthesis, which can not only generate gestures based on multi-modal speech inputs, but can also facilitate controllability in gesture synthesis."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,35 @@
+{
+    "acronym": "40fffd624ea26739011799f3aefc8f8629311d7e",
+    "title": "Unifying Feature and Cost Aggregation with Transformers for Semantic and Visual Correspondence",
+    "seed_ids": [
+        "transformer",
+        "cc052339afebba8adf9d1868d51b9f3b1d6d0eac",
+        "dfd010efb39ba37d1d2a945572e45bd3d8879fa5",
+        "7bffc157b3b3626a3912a3b0ef74ce5904630fce",
+        "877dcb2fa9c663ee17c06fed66d16813e226a3ec",
+        "2e644c67a697073d561da4f4dad35e5ad5316cfd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "6954a6bb9d6f3e365b26b694c963ae1d62a03444"
+    ],
+    "s2id": "40fffd624ea26739011799f3aefc8f8629311d7e",
+    "abstract": "This paper introduces a Transformer-based integrative feature and cost aggregation network designed for dense matching tasks. In the context of dense matching, many works benefit from one of two forms of aggregation: feature aggregation, which pertains to the alignment of similar features, or cost aggregation, a procedure aimed at instilling coherence in the flow estimates across neighboring pixels. In this work, we first show that feature aggregation and cost aggregation exhibit distinct characteristics and reveal the potential for substantial benefits stemming from the judicious use of both aggregation processes. We then introduce a simple yet effective architecture that harnesses self- and cross-attention mechanisms to show that our approach unifies feature aggregation and cost aggregation and effectively harnesses the strengths of both techniques. Within the proposed attention layers, the features and cost volume both complement each other, and the attention layers are interleaved through a coarse-to-fine design to further promote accurate correspondence estimation. Finally at inference, our network produces multi-scale predictions, computes their confidence scores, and selects the most confident flow for final prediction. Our framework is evaluated on standard benchmarks for semantic matching, and also applied to geometric matching, where we show that our approach achieves significant improvements compared to existing methods.",
+    "authors": [
+        "Sung\u2010Jin Hong",
+        "Seokju Cho",
+        "Seungryong Kim",
+        "Stephen Lin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces a Transformer-based integrative feature and cost aggregation network designed for dense matching tasks and introduces a simple yet effective architecture that harnesses self- and cross-attention mechanisms to show that this approach unifies feature aggregation and cost aggregation and effectively harnesses the strengths of both techniques."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,27 @@
+{
+    "acronym": "740f4b02a62d9b0e77723ddfe03f4d1d21b0b318",
+    "title": "SICRN: Advancing Speech Enhancement through State Space Model and Inplace Convolution Techniques",
+    "seed_ids": [
+        "s4",
+        "154d5cf9a40d313cdf62372621f554a809fbb103",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51"
+    ],
+    "s2id": "740f4b02a62d9b0e77723ddfe03f4d1d21b0b318",
+    "abstract": "Speech enhancement aims to improve speech quality and intelligibility, especially in noisy environments where background noise degrades speech signals. Currently, deep learning methods achieve great success in speech enhancement, e.g. the representative convolutional recurrent neural network (CRN) and its variants. However, CRN typically employs consecutive downsampling and upsampling convolution for frequency modeling, which destroys the inherent structure of the signal over frequency. Additionally, convolutional layers lacks of temporal modelling abilities. To address these issues, we propose an innovative module combing a State space model and Inplace Convolution (SIC), and to replace the conventional convolution in CRN, called SICRN. Specifically, a dual-path multidimensional State space model captures the global frequencies dependency and long-term temporal dependencies. Meanwhile, the 2D-inplace convolution is used to capture the local structure, which abandons the downsampling and upsampling. Systematic evaluations on the public INTERSPEECH 2020 DNS challenge dataset demonstrate SICRN's efficacy. Compared to strong baselines, SICRN achieves performance close to state-of-the-art while having advantages in model parameters, computations, and algorithmic delay. The proposed SICRN shows great promise for improved speech enhancement.",
+    "authors": [
+        "Changjiang Zhao",
+        "Shulin He",
+        "Xueliang Zhang"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An innovative module combing a State space model and Inplace Convolution (SIC), and to replace the conventional convolution in CRN, called SICRN is proposed, which shows great promise for improved speech enhancement."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

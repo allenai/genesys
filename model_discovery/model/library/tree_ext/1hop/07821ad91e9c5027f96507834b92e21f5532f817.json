@@ -1,0 +1,27 @@
+{
+    "acronym": "07821ad91e9c5027f96507834b92e21f5532f817",
+    "title": "Non-Parametric Memory Guidance for Multi-Document Summarization",
+    "seed_ids": [
+        "longformer",
+        "34042e2680e475510a1030b54165a81534ad88d3",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "07821ad91e9c5027f96507834b92e21f5532f817",
+    "abstract": "Multi-document summarization (MDS) is a difficult task in Natural Language Processing, aiming to summarize information from several documents. However, the source documents are often insufficient to obtain a qualitative summary. We propose a retriever-guided model combined with non-parametric memory for summary generation. This model retrieves relevant candidates from a database and then generates the summary considering the candidates with a copy mechanism and the source documents. The retriever is implemented with Approximate Nearest Neighbor Search (ANN) to search large databases. Our method is evaluated on the MultiXScience dataset which includes scientific articles. Finally, we discuss our results and possible directions for future work.",
+    "authors": [
+        "Florian Baud",
+        "Alex Aussem"
+    ],
+    "venue": "Recent Advances in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a retriever-guided model combined with non-parametric memory for summary generation that retrieves relevant candidates from a database and then generates the summary considering the candidates with a copy mechanism and the source documents."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

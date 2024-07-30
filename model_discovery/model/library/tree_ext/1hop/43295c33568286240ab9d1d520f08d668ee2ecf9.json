@@ -1,0 +1,27 @@
+{
+    "acronym": "43295c33568286240ab9d1d520f08d668ee2ecf9",
+    "title": "Research Method Classification with Deep Transfer Learning for Semi-Automatic Meta-Analysis of Information Systems Papers",
+    "seed_ids": [
+        "gpt",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "43295c33568286240ab9d1d520f08d668ee2ecf9",
+    "abstract": "This paper presents an artifact that uses deep transfer learning methods for the multi-label classification of research methods for an Information Systems corpus. The artifact can support researchers with frequently performed yet time-consuming classification and structure-seeking tasks that are often part of literature analyses. We use a corpus of 5,388 papers from AIS journals and conferences, of which 1,766 have been manually labelled with up to five research methods. The unlabelled papers are used for finetuning the language model, whereas the labelled data are used for training and testing. Our approach outperforms state of the art research method classification that deploy SVM. We show that deep transfer learning models can lead to a better recognition of research methods than shallower word embedding approaches like word2vec or GloVe. The results illustrate the potential of establishing semi-automated methods for meta-analysis.",
+    "authors": [
+        "Anna Anisienia",
+        "R. Mueller",
+        "Anna Kupfer",
+        "T. Staake"
+    ],
+    "venue": "Hawaii International Conference on System Sciences",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that deep transfer learning models can lead to a better recognition of research methods than shallower word embedding approaches like word2vec or GloVe and illustrate the potential of establishing semi-automated methods for meta-analysis."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

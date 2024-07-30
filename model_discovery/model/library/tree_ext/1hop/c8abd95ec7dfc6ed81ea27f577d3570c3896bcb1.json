@@ -1,0 +1,34 @@
+{
+    "acronym": "c8abd95ec7dfc6ed81ea27f577d3570c3896bcb1",
+    "title": "Consistent Diffusion Models: Mitigating Sampling Drift by Learning to be Consistent",
+    "seed_ids": [
+        "analogbits",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "17d068e78e6f25e65cb08319b19b58279bb8b214",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "c8abd95ec7dfc6ed81ea27f577d3570c3896bcb1",
+    "abstract": "Imperfect score-matching leads to a shift between the training and the sampling distribution of diffusion models. Due to the recursive nature of the generation process, errors in previous steps yield sampling iterates that drift away from the training distribution. Yet, the standard training objective via Denoising Score Matching (DSM) is only designed to optimize over non-drifted data. To train on drifted data, we propose to enforce a \\emph{consistency} property which states that predictions of the model on its own generated data are consistent across time. Theoretically, we show that if the score is learned perfectly on some non-drifted points (via DSM) and if the consistency property is enforced everywhere, then the score is learned accurately everywhere. Empirically we show that our novel training objective yields state-of-the-art results for conditional and unconditional generation in CIFAR-10 and baseline improvements in AFHQ and FFHQ. We open-source our code and models: https://github.com/giannisdaras/cdm",
+    "authors": [
+        "Giannis Daras",
+        "Y. Dagan",
+        "A. Dimakis",
+        "C. Daskalakis"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to enforce a \\emph{consistency} property which states that predictions of the model on its own generated data are consistent across time, and shows that if the score is learned perfectly on some non-drifted points and if the consistency property is enforced everywhere, then the scores are learned accurately everywhere."
+    },
+    "citationCount": 24,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

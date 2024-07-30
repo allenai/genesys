@@ -1,0 +1,28 @@
+{
+    "acronym": "3b81eca915a041b12eab31ffa62fca5bdabfbf17",
+    "title": "Certifiably Robust RAG against Retrieval Corruption",
+    "seed_ids": [
+        "gpt3"
+    ],
+    "s2id": "3b81eca915a041b12eab31ffa62fca5bdabfbf17",
+    "abstract": "Retrieval-augmented generation (RAG) has been shown vulnerable to retrieval corruption attacks: an attacker can inject malicious passages into retrieval results to induce inaccurate responses. In this paper, we propose RobustRAG as the first defense framework against retrieval corruption attacks. The key insight of RobustRAG is an isolate-then-aggregate strategy: we get LLM responses from each passage in isolation and then securely aggregate these isolated responses. To instantiate RobustRAG, we design keyword-based and decoding-based algorithms for securely aggregating unstructured text responses. Notably, RobustRAG can achieve certifiable robustness: we can formally prove and certify that, for certain queries, RobustRAG can always return accurate responses, even when the attacker has full knowledge of our defense and can arbitrarily inject a small number of malicious passages. We evaluate RobustRAG on open-domain QA and long-form text generation datasets and demonstrate its effectiveness and generalizability across various tasks and datasets.",
+    "authors": [
+        "Chong Xiang",
+        "Tong Wu",
+        "Zexuan Zhong",
+        "David Wagner",
+        "Danqi Chen",
+        "Prateek Mittal"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes RobustRAG, a key insight of RobustRAG is an isolate-then-aggregate strategy: the authors get LLM responses from each passage in isolation and then securely aggregate these isolated responses, which can achieve certifiable robustness."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

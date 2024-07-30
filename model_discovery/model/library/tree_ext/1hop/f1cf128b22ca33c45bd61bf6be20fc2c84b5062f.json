@@ -1,0 +1,26 @@
+{
+    "acronym": "f1cf128b22ca33c45bd61bf6be20fc2c84b5062f",
+    "title": "An efficient computational framework for gastrointestinal disorder prediction using attention-based transfer learning",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "f1cf128b22ca33c45bd61bf6be20fc2c84b5062f",
+    "abstract": "Diagnosing gastrointestinal (GI) disorders, which affect parts of the digestive system such as the stomach and intestines, can be difficult even for experienced gastroenterologists due to the variety of ways these conditions present. Early diagnosis is critical for successful treatment, but the review process is time-consuming and labor-intensive. Computer-aided diagnostic (CAD) methods provide a solution by automating diagnosis, saving time, reducing workload, and lowering the likelihood of missing critical signs. In recent years, machine learning and deep learning approaches have been used to develop many CAD systems to address this issue. However, existing systems need to be improved for better safety and reliability on larger datasets before they can be used in medical diagnostics. In our study, we developed an effective CAD system for classifying eight types of GI images by combining transfer learning with an attention mechanism. Our experimental results show that ConvNeXt is an effective pre-trained network for feature extraction, and ConvNeXt+Attention (our proposed method) is a robust CAD system that outperforms other cutting-edge approaches. Our proposed method had an area under the receiver operating characteristic curve of 0.9997 and an area under the precision-recall curve of 0.9973, indicating excellent performance. The conclusion regarding the effectiveness of the system was also supported by the values of other evaluation metrics.",
+    "authors": [
+        "Jiajie Zhou",
+        "Wei Song",
+        "Yeliu Liu",
+        "Xiaoming Yuan"
+    ],
+    "venue": "PeerJ Computer Science",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study developed an effective CAD system for classifying eight types of GI images by combining transfer learning with an attention mechanism and shows that ConvNeXt is an effective pre-trained network for feature extraction, and ConvNeXt+Attention is a robust CAD system that outperforms other cutting-edge approaches."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

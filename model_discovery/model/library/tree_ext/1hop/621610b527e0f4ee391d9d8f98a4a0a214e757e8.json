@@ -1,0 +1,31 @@
+{
+    "acronym": "621610b527e0f4ee391d9d8f98a4a0a214e757e8",
+    "title": "Near-real-time Earthquake-induced Fatality Estimation using Crowdsourced Data and Large-Language Models",
+    "seed_ids": [
+        "gpt2",
+        "gpt3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "621610b527e0f4ee391d9d8f98a4a0a214e757e8",
+    "abstract": "When a damaging earthquake occurs, immediate information about casualties is critical for time-sensitive decision-making by emergency response and aid agencies in the first hours and days. Systems such as Prompt Assessment of Global Earthquakes for Response (PAGER) by the U.S. Geological Survey (USGS) were developed to provide a forecast within about 30 minutes of any significant earthquake globally. Traditional systems for estimating human loss in disasters often depend on manually collected early casualty reports from global media, a process that's labor-intensive and slow with notable time delays. Recently, some systems have employed keyword matching and topic modeling to extract relevant information from social media. However, these methods struggle with the complex semantics in multilingual texts and the challenge of interpreting ever-changing, often conflicting reports of death and injury numbers from various unverified sources on social media platforms. In this work, we introduce an end-to-end framework to significantly improve the timeliness and accuracy of global earthquake-induced human loss forecasting using multi-lingual, crowdsourced social media. Our framework integrates (1) a hierarchical casualty extraction model built upon large language models, prompt design, and few-shot learning to retrieve quantitative human loss claims from social media, (2) a physical constraint-aware, dynamic-truth discovery model that discovers the truthful human loss from massive noisy and potentially conflicting human loss claims, and (3) a Bayesian updating loss projection model that dynamically updates the final loss estimation using discovered truths. We test the framework in real-time on a series of global earthquake events in 2021 and 2022 and show that our framework streamlines casualty data retrieval, achieving speed and accuracy comparable to manual methods by USGS.",
+    "authors": [
+        "Chenguang Wang",
+        "Davis Engler",
+        "Xuechun Li",
+        "James Hou",
+        "David J. Wald",
+        "Kishor Jaiswal",
+        "Susu Xu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An end-to-end framework to significantly improve the timeliness and accuracy of global earthquake-induced human loss forecasting using multi-lingual, crowdsourced social media is introduced and it is shown that the framework streamlines casualty data retrieval, achieving speed and accuracy comparable to manual methods by USGS."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,35 @@
+{
+    "acronym": "d78df936a717f278e89221f74f3f894e90d8c1fe",
+    "title": "JASMINE: Arabic GPT Models for Few-Shot Learning",
+    "seed_ids": [
+        "gpt2",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "fd1b829261ba04bb92e0ab60c4f6e7cea0d99fbf",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d78df936a717f278e89221f74f3f894e90d8c1fe",
+    "abstract": "Scholarship on generative pretraining (GPT) remains acutely Anglocentric, leaving serious gaps in our understanding of the whole class of autoregressive models. For example, we have little knowledge about the potential of these models and their societal impacts in diverse linguistic and cultural settings. We alleviate this issue for Arabic, a wide collection of languages and dialectal varieties with more than 400 million population, by introducing JASMINE. JASMINE is a suite of powerful Arabic autoregressive Transformer language models ranging in size between 300 million-6.7 billion parameters pretrained on a large and diverse dataset (~ 235 GB of text). We also carefully design and release a comprehensive benchmark for both automated and human evaluation of Arabic autoregressive models, with coverage of potential social biases, harms, and toxicity. Using our novel benchmark, we evaluate JASMINE extensively showing powerful performance intrinsically as well as in few-shot learning on a wide range of NLP tasks. We aim to responsibly release our models and evaluation benchmark with interested researchers, along with code for experimenting with them.",
+    "authors": [
+        "El Moatez Billah Nagoudi",
+        "Muhammad Abdul-Mageed",
+        "AbdelRahim Elmadany",
+        "Alcides Alcoba Inciarte",
+        "Md. Tawkat Islam Khondaker"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces JASMINE, a suite of powerful Arabic autoregressive Transformer language models ranging in size between 300 million-6.7 billion parameters pretrained on a large and diverse dataset, and carefully design and release a comprehensive benchmark for both automated and human evaluation."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

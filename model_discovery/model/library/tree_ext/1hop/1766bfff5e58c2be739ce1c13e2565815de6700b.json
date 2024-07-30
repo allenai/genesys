@@ -1,0 +1,31 @@
+{
+    "acronym": "1766bfff5e58c2be739ce1c13e2565815de6700b",
+    "title": "Time Weaver: A Conditional Time Series Generation Model",
+    "seed_ids": [
+        "s4",
+        "ef7993ab30d0a8afabb4ebab080e471c0d5c743c",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51"
+    ],
+    "s2id": "1766bfff5e58c2be739ce1c13e2565815de6700b",
+    "abstract": "Imagine generating a city's electricity demand pattern based on weather, the presence of an electric vehicle, and location, which could be used for capacity planning during a winter freeze. Such real-world time series are often enriched with paired heterogeneous contextual metadata (weather, location, etc.). Current approaches to time series generation often ignore this paired metadata, and its heterogeneity poses several practical challenges in adapting existing conditional generation approaches from the image, audio, and video domains to the time series domain. To address this gap, we introduce Time Weaver, a novel diffusion-based model that leverages the heterogeneous metadata in the form of categorical, continuous, and even time-variant variables to significantly improve time series generation. Additionally, we show that naive extensions of standard evaluation metrics from the image to the time series domain are insufficient. These metrics do not penalize conditional generation approaches for their poor specificity in reproducing the metadata-specific features in the generated time series. Thus, we innovate a novel evaluation metric that accurately captures the specificity of conditional generation and the realism of the generated time series. We show that Time Weaver outperforms state-of-the-art benchmarks, such as Generative Adversarial Networks (GANs), by up to 27% in downstream classification tasks on real-world energy, medical, air quality, and traffic data sets.",
+    "authors": [
+        "Sai Shankar Narasimhan",
+        "Shubhankar Agarwal",
+        "Oguzhan Akcin",
+        "Sujay Sanghavi",
+        "Sandeep P. Chinchali"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Time Weaver is introduced, a novel diffusion-based model that leverages the heterogeneous metadata in the form of categorical, continuous, and even time-variant variables to significantly improve time series generation and outperforms state-of-the-art benchmarks."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "a24c4730e18bc1fd88c112cbdd2be2a93e17e34f",
+    "title": "Set Prediction Guided by Semantic Concepts for Diverse Video Captioning",
+    "seed_ids": [
+        "gpt2",
+        "0938d0ccc1c633fa0f8c067d914358b1ef53a44b",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a24c4730e18bc1fd88c112cbdd2be2a93e17e34f",
+    "abstract": "Diverse video captioning aims to generate a set of sentences to describe the given video in various aspects. Mainstream methods are trained with independent pairs of a video and a caption from its ground-truth set without exploiting the intra-set relationship, resulting in low diversity of generated captions. Different from them, we formulate diverse captioning into a semantic-concept-guided set prediction (SCG-SP) problem by fitting the predicted caption set to the ground-truth set, where the set-level relationship is fully captured. Specifically, our set prediction consists of two synergistic tasks, i.e., caption generation and an auxiliary task of concept combination prediction providing extra semantic supervision. Each caption in the set is attached to a concept combination indicating the primary semantic content of the caption and facilitating element alignment in set prediction. Furthermore, we apply a diversity regularization term on concepts to encourage the model to generate semantically diverse captions with various concept combinations. These two tasks share multiple semantics-specific encodings as input, which are obtained by iterative interaction between visual features and conceptual queries. The correspondence between the generated captions and specific concept combinations further guarantees the interpretability of our model. Extensive experiments on benchmark datasets show that the proposed SCG-SP achieves state-of-the-art (SOTA) performance under both relevance and diversity metrics.",
+    "authors": [
+        "Yifan Lu",
+        "Ziqi Zhang",
+        "Chunfen Yuan",
+        "Peng Li",
+        "Yan Wang",
+        "Bing Li",
+        "Weiming Hu"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed SCG-SP achieves state-of-the-art (SOTA) performance under both relevance and diversity metrics and applies a diversity regularization term on concepts to encourage the model to generate semantically diverse captions with various concept combinations."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

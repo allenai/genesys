@@ -1,0 +1,26 @@
+{
+    "acronym": "a93f97cbadbe1e3a759a64ebc65ed1c2039cc0a3",
+    "title": "Domain Private Transformers for Multi-Domain Dialog Systems",
+    "seed_ids": [
+        "gpt2",
+        "a5ed9dfc0725bffb6428a2cc297a15265377906c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a93f97cbadbe1e3a759a64ebc65ed1c2039cc0a3",
+    "abstract": "Large, general purpose language models have demonstrated impressive performance across many different conversational domains. While multi-domain language models achieve low overall perplexity, their outputs are not guaranteed to stay within the domain of a given input prompt. This paper proposes domain privacy as a novel way to quantify how likely a conditional language model will leak across domains. We also develop policy functions based on token-level domain classification, and propose an efficient fine-tuning method to improve the trained model's domain privacy. Experiments on membership inference attacks show that our proposed method has comparable resiliency to methods adapted from recent literature on differentially private language models.",
+    "authors": [
+        "Anmol Kabra",
+        "Ethan R. Elenberg"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,32 @@
+{
+    "acronym": "29fa031268ffe0a80f7a4e3fb3a135db7fcd0b8d",
+    "title": "KBioXLM: A Knowledge-anchored Biomedical Multilingual Pretrained Language Model",
+    "seed_ids": [
+        "bert",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc"
+    ],
+    "s2id": "29fa031268ffe0a80f7a4e3fb3a135db7fcd0b8d",
+    "abstract": "Most biomedical pretrained language models are monolingual and cannot handle the growing cross-lingual requirements. The scarcity of non-English domain corpora, not to mention parallel data, poses a significant hurdle in training multilingual biomedical models. Since knowledge forms the core of domain-specific corpora and can be translated into various languages accurately, we propose a model called KBioXLM, which transforms the multilingual pretrained model XLM-R into the biomedical domain using a knowledge-anchored approach. We achieve a biomedical multilingual corpus by incorporating three granularity knowledge alignments (entity, fact, and passage levels) into monolingual corpora. Then we design three corresponding training tasks (entity masking, relation masking, and passage relation prediction) and continue training on top of the XLM-R model to enhance its domain cross-lingual ability. To validate the effectiveness of our model, we translate the English benchmarks of multiple tasks into Chinese. Experimental results demonstrate that our model significantly outperforms monolingual and multilingual pretrained models in cross-lingual zero-shot and few-shot scenarios, achieving improvements of up to 10+ points. Our code is publicly available at https://github.com/ngwlh-gl/KBioXLM.",
+    "authors": [
+        "Lei Geng",
+        "Xu Yan",
+        "Ziqiang Cao",
+        "Juntao Li",
+        "Wenjie Li",
+        "Sujian Li",
+        "Xinjie Zhou",
+        "Yang Yang",
+        "Jun Zhang"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a model called KBioXLM, which transforms the multilingual pretrained model XLM-R into the biomedical domain using a knowledge-anchored approach, and achieves a biomedical multilingual corpus by incorporating three granularity knowledge alignments into monolingual corpora."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

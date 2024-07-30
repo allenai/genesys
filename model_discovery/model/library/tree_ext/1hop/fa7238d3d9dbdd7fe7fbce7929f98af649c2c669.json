@@ -1,0 +1,27 @@
+{
+    "acronym": "fa7238d3d9dbdd7fe7fbce7929f98af649c2c669",
+    "title": "FaBERT: Pre-training BERT on Persian Blogs",
+    "seed_ids": [
+        "bert",
+        "8950f2aa21a519d39fe8a7bcd7f02d0cb2ab1000"
+    ],
+    "s2id": "fa7238d3d9dbdd7fe7fbce7929f98af649c2c669",
+    "abstract": "We introduce FaBERT, a Persian BERT-base model pre-trained on the HmBlogs corpus, encompassing both informal and formal Persian texts. FaBERT is designed to excel in traditional Natural Language Understanding (NLU) tasks, addressing the intricacies of diverse sentence structures and linguistic styles prevalent in the Persian language. In our comprehensive evaluation of FaBERT on 12 datasets in various downstream tasks, encompassing Sentiment Analysis (SA), Named Entity Recognition (NER), Natural Language Inference (NLI), Question Answering (QA), and Question Paraphrasing (QP), it consistently demonstrated improved performance, all achieved within a compact model size. The findings highlight the importance of utilizing diverse and cleaned corpora, such as HmBlogs, to enhance the performance of language models like BERT in Persian Natural Language Processing (NLP) applications. FaBERT is openly accessible at https://huggingface.co/sbunlp/fabert",
+    "authors": [
+        "Mostafa Masumi",
+        "Seyed Soroush Majd",
+        "M. Shamsfard",
+        "Hamid Beigy"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

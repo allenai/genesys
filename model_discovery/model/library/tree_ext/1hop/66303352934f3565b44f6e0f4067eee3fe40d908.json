@@ -1,0 +1,26 @@
+{
+    "acronym": "66303352934f3565b44f6e0f4067eee3fe40d908",
+    "title": "PuTR: A Pure Transformer for Decoupled and Online Multi-Object Tracking",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "66303352934f3565b44f6e0f4067eee3fe40d908",
+    "abstract": "Recent advances in Multi-Object Tracking (MOT) have achieved remarkable success in short-term association within the decoupled tracking-by-detection online paradigm. However, long-term tracking still remains a challenging task. Although graph-based approaches can address this issue by modeling trajectories as a graph in the decoupled manner, their non-online nature poses obstacles for real-time applications. In this paper, we demonstrate that the trajectory graph is a directed acyclic graph, which can be represented by an object sequence arranged by frame and a binary adjacency matrix. It is a coincidence that the binary matrix matches the attention mask in the Transformer, and the object sequence serves exactly as a natural input sequence. Intuitively, we propose that a pure Transformer can naturally unify short- and long-term associations in a decoupled and online manner. Our experiments show that a classic Transformer architecture naturally suits the association problem and achieves a strong baseline compared to existing foundational methods across four datasets: DanceTrack, SportsMOT, MOT17, and MOT20, as well as superior generalizability in domain shift. Moreover, the decoupled property also enables efficient training and inference. This work pioneers a promising Transformer-based approach for the MOT task, and provides code to facilitate further research. https://github.com/chongweiliu/PuTR",
+    "authors": [
+        "Chongwei Liu",
+        "Haojie Li",
+        "Zhihui Wang",
+        "Rui Xu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that the trajectory graph is a directed acyclic graph, which can be represented by an object sequence arranged by frame and a binary adjacency matrix, which is a coincidence that the binary matrix matches the attention mask in the Transformer."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

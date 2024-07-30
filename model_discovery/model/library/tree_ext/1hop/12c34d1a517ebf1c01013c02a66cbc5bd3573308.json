@@ -1,0 +1,37 @@
+{
+    "acronym": "12c34d1a517ebf1c01013c02a66cbc5bd3573308",
+    "title": "Emergent Abilities in Reduced-Scale Generative Language Models",
+    "seed_ids": [
+        "gpt3",
+        "539fadfb615ef84c240f4741061c44eeda540091",
+        "1dede9d21db0be1c58208e1f970e57aac4fc45f8",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "9aaa71d9311b44e2228eac213c24c37bb9ca64d1",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "9dc624d7258d1a56117ca720aea953ce46b66b21",
+        "5a2263092f49540fd0e049050a96882ff29b00c3",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "12c34d1a517ebf1c01013c02a66cbc5bd3573308",
+    "abstract": "Large language models can solve new tasks without task-specific fine-tuning. This ability, also known as in-context learning (ICL), is considered an emergent ability and is primarily seen in large language models with billions of parameters. This study investigates if such emergent properties are strictly tied to model size or can be demonstrated by smaller models trained on reduced-scale data. To explore this, we simplify pre-training data and pre-train 36 causal language models with parameters varying from 1 million to 165 million parameters. We show that models trained on this simplified pre-training data demonstrate enhanced zero-shot capabilities across various tasks in simplified language, achieving performance comparable to that of pre-trained models six times larger on unrestricted language. This suggests that downscaling the language allows zero-shot learning capabilities to emerge in models with limited size. Additionally, we find that these smaller models pre-trained on simplified data demonstrate a power law relationship between the evaluation loss and the three scaling factors: compute, dataset size, and model size.",
+    "authors": [
+        "Sherin Muckatira",
+        "Vijeta Deshpande",
+        "Vladislav Lialin",
+        "Anna Rumshisky"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that models trained on this simplified pre-training data demonstrate enhanced zero-shot capabilities across various tasks in simplified language, achieving performance comparable to that of pre-trained models six times larger on unrestricted language, suggesting that downscaling the language allows zero-shot learning capabilities to emerge in models with limited size."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

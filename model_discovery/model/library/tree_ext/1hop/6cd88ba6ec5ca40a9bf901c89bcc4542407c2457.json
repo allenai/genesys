@@ -1,0 +1,27 @@
+{
+    "acronym": "6cd88ba6ec5ca40a9bf901c89bcc4542407c2457",
+    "title": "Attention Score is not All You Need for Token Importance Indicator in KV Cache Reduction: Value Also Matters",
+    "seed_ids": [
+        "streamingllm",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "b31a5884a8ebe96b6300839b28608b97f8f8ef76"
+    ],
+    "s2id": "6cd88ba6ec5ca40a9bf901c89bcc4542407c2457",
+    "abstract": "Scaling the context size of large language models (LLMs) enables them to perform various new tasks, e.g., book summarization. However, the memory cost of the Key and Value (KV) cache in attention significantly limits the practical applications of LLMs. Recent works have explored token pruning for KV cache reduction in LLMs, relying solely on attention scores as a token importance indicator. However, our investigation into value vector norms revealed a notably non-uniform pattern questioning their reliance only on attention scores. Inspired by this, we propose a new method: Value-Aware Token Pruning (VATP) which uses both attention scores and the $ \\ell_{1} $ norm of value vectors to evaluate token importance. Extensive experiments on LLaMA2-7B-chat and Vicuna-v1.5-7B across 16 LongBench tasks demonstrate VATP's superior performance.",
+    "authors": [
+        "Zhiyu Guo",
+        "Hidetaka Kamigaito",
+        "Taro Watanabe"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a new method: Value-Aware Token Pruning (VATP) which uses both attention scores and the norm of value vectors to evaluate token importance and demonstrates VATP's superior performance."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

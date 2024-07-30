@@ -1,0 +1,32 @@
+{
+    "acronym": "735e95cf11d660ae099277f6e368431f38865911",
+    "title": "Efficient Document Ranking with Learnable Late Interactions",
+    "seed_ids": [
+        "transformer",
+        "bert"
+    ],
+    "s2id": "735e95cf11d660ae099277f6e368431f38865911",
+    "abstract": "Cross-Encoder (CE) and Dual-Encoder (DE) models are two fundamental approaches for query-document relevance in information retrieval. To predict relevance, CE models use joint query-document embeddings, while DE models maintain factorized query and document embeddings; usually, the former has higher quality while the latter benefits from lower latency. Recently, late-interaction models have been proposed to realize more favorable latency-quality tradeoffs, by using a DE structure followed by a lightweight scorer based on query and document token embeddings. However, these lightweight scorers are often hand-crafted, and there is no understanding of their approximation power; further, such scorers require access to individual document token embeddings, which imposes an increased latency and storage burden. In this paper, we propose novel learnable late-interaction models (LITE) that resolve these issues. Theoretically, we prove that LITE is a universal approximator of continuous scoring functions, even for relatively small embedding dimension. Empirically, LITE outperforms previous late-interaction models such as ColBERT on both in-domain and zero-shot re-ranking tasks. For instance, experiments on MS MARCO passage re-ranking show that LITE not only yields a model with better generalization, but also lowers latency and requires 0.25x storage compared to ColBERT.",
+    "authors": [
+        "Ziwei Ji",
+        "Himanshu Jain",
+        "Andreas Veit",
+        "Sashank J. Reddi",
+        "Sadeep Jayasumana",
+        "A. Rawat",
+        "A. Menon",
+        "Felix X. Yu",
+        "Sanjiv Kumar"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Theoretically, it is proved that LITE is a universal approximator of continuous scoring functions, even for relatively small embedding dimension, and empirically, LITE outperforms previous late-interaction models such as ColBERT on both in-domain and zero-shot re-ranking tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

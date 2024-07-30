@@ -1,0 +1,48 @@
+{
+    "acronym": "13270b9759cf0296b5a346fbb58b706e8ad0a982",
+    "title": "Adaptable Butterfly Accelerator for Attention-based NNs via Hardware and Algorithm Co-design",
+    "seed_ids": [
+        "sparsetransformer",
+        "fnet",
+        "8326dba15f6b8ee6e43c23eea3265a05e59e8135",
+        "90b21dbad8969b74d704eed15a3d98722a88e464",
+        "5f895e84c1fea75de07b4f90da518273c2e57291",
+        "b97c3c370401dc34d2adbeb24f34de5180a14be6",
+        "5af69480a7ae3b571df6782a11ec4437b386a7d9",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "a68c3412e60560290400d2707596f82a914b7c00",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "62dc8ddb4907db4b889c5e93673d9b3c189d1f25",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "13270b9759cf0296b5a346fbb58b706e8ad0a982",
+    "abstract": "Attention-based neural networks have become pervasive in many AI tasks. Despite their excellent algorithmic performance, the use of the attention mechanism and feedforward network (FFN) demands excessive computational and memory resources, which often compromises their hardware performance. Although various sparse variants have been introduced, most approaches only focus on mitigating the quadratic scaling of attention on the algorithm level, without explicitly considering the efficiency of mapping their methods on real hardware designs. Furthermore, most efforts only focus on either the attention mechanism or the FFNs but without jointly optimizing both parts, causing most of the current designs to lack scalability when dealing with different input lengths. This paper systematically considers the sparsity patterns in different variants from a hardware perspective. On the algorithmic level, we propose FABNet, a hardware-friendly variant that adopts a unified butterfly sparsity pattern to approximate both the attention mechanism and the FFNs. On the hardware level, a novel adaptable butterfly accelerator is proposed that can be configured at runtime via dedicated hardware control to accelerate different butterfly layers using a single unified hardware engine. On the Long-Range-Arena dataset, FABNet achieves the same accuracy as the vanilla Transformer while reducing the amount of computation by 10$\\sim66\\times$ and the number of parameters 2$\\sim22\\times$. By jointly optimizing the algorithm and hardware, our FPGA-based butterfly accelerator achieves 14.2$\\sim23.2\\times$ speedup over state-of-the-art accelerators normalized to the same computational budget. Compared with optimized CPU and GPU designs on Raspberry Pi 4 and Jetson Nano, our system is up to $273.8\\times$ and $15.1\\times$ faster under the same power budget",
+    "authors": [
+        "Hongxiang Fan",
+        "Thomas C. P. Chau",
+        "Stylianos I. Venieris",
+        "Royson Lee",
+        "Alexandros Kouris",
+        "W. Luk",
+        "N. Lane",
+        "M. Abdelfattah"
+    ],
+    "venue": "Micro",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "FABNet is proposed, a hardware-friendly variant that adopts a unified butterfly sparsity pattern to approximate both the attention mechanism and the FFNs and a novel adaptable butterfly accelerator is proposed that can be configured at runtime via dedicated hardware control to accelerate different butterfly layers using a single unified hardware engine."
+    },
+    "citationCount": 36,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

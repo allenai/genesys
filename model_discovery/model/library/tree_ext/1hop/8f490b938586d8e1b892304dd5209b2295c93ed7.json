@@ -1,0 +1,42 @@
+{
+    "acronym": "8f490b938586d8e1b892304dd5209b2295c93ed7",
+    "title": "Transformers Can Achieve Length Generalization But Not Robustly",
+    "seed_ids": [
+        "elgllm",
+        "kerple",
+        "1ec3a3ff77cb4b424499b3805ecc90182ecd8f8b",
+        "200fcd964f41efe0c35a3f888a520ede08a3269c",
+        "ffd97533ac66b7d02ca58c1d5951d5427da0ffd6",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "6f6e2e0311589a9af045f6acd00b7dee6d19fce4",
+        "af385c0fdd0eda2bbf429bea6fedffc327c8a180",
+        "4d17732d90440682b0500f4e209c6cc4fac20e0e",
+        "e82e3f4347674b75c432cb80604d38ee630d4bf6",
+        "c6d38add1b7bbc10f0da37a90e3f1b51ee5fb617",
+        "d6c5aab433d9871cabc01ffb1e5e1ea89141155b",
+        "a2fc77f075f666b462d9350e7576f0ba9845c61b",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "dc48bc1a4d81e0f37603013fd2a95644dc233bd0"
+    ],
+    "s2id": "8f490b938586d8e1b892304dd5209b2295c93ed7",
+    "abstract": "Length generalization, defined as the ability to extrapolate from shorter training sequences to longer test ones, is a significant challenge for language models. This issue persists even with large-scale Transformers handling relatively straightforward tasks. In this paper, we test the Transformer's ability of length generalization using the task of addition of two integers. We show that the success of length generalization is intricately linked to the data format and the type of position encoding. Using the right combination of data format and position encodings, we show for the first time that standard Transformers can extrapolate to a sequence length that is 2.5x the input length. Nevertheless, unlike in-distribution generalization, length generalization remains fragile, significantly influenced by factors like random weight initialization and training data order, leading to large variances across different random seeds.",
+    "authors": [
+        "Yongchao Zhou",
+        "Uri Alon",
+        "Xinyun Chen",
+        "Xuezhi Wang",
+        "Rishabh Agarwal",
+        "Denny Zhou"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper shows for the first time that standard Transformers can extrapolate to a sequence length that is 2.5x the input length, and shows that the success of length generalization is intricately linked to the data format and the type of position encoding."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

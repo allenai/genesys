@@ -1,0 +1,40 @@
+{
+    "acronym": "47596705a00601eca040d82b8fe25457f2683bd1",
+    "title": "Hardware-Software Co-Design of an In-Memory Transformer Network Accelerator",
+    "seed_ids": [
+        "longformer",
+        "sparsetransformer",
+        "transformerxl",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "47596705a00601eca040d82b8fe25457f2683bd1",
+    "abstract": "Transformer networks have outperformed recurrent and convolutional neural networks in terms of accuracy in various sequential tasks. However, memory and compute bottlenecks prevent transformer networks from scaling to long sequences due to their high execution time and energy consumption. Different neural attention mechanisms have been proposed to lower computational load but still suffer from the memory bandwidth bottleneck. In-memory processing can help alleviate memory bottlenecks by reducing the transfer overhead between the memory and compute units, thus allowing transformer networks to scale to longer sequences. We propose an in-memory transformer network accelerator (iMTransformer) that uses a combination of crossbars and content-addressable memories to accelerate transformer networks. We accelerate transformer networks by (1) computing in-memory, thus minimizing the memory transfer overhead, (2) caching reusable parameters to reduce the number of operations, and (3) exploiting the available parallelism in the attention mechanism computation. To reduce energy consumption, the following techniques are introduced: (1) a configurable attention selector is used to choose different sparse attention patterns, (2) a content-addressable memory aided locality sensitive hashing helps to filter the number of sequence elements by their importance, and (3) FeFET-based crossbars are used to store projection weights while CMOS-based crossbars are used as an attentional cache to store attention scores for later reuse. Using a CMOS-FeFET hybrid iMTransformer introduced a significant energy improvement compared to the CMOS-only iMTransformer. The CMOS-FeFET hybrid iMTransformer achieved an 8.96\u00d7 delay improvement and 12.57\u00d7 energy improvement for the Vanilla transformers compared to the GPU baseline at a sequence length of 512. Implementing BERT using CMOS-FeFET hybrid iMTransformer achieves 13.71\u00d7 delay improvement and 8.95\u00d7 delay improvement compared to the GPU baseline at sequence length of 512. The hybrid iMTransformer also achieves a throughput of 2.23 K samples/sec and 124.8 samples/s/W using the MLPerf benchmark using BERT-large and SQuAD 1.1 dataset, an 11\u00d7 speedup and 7.92\u00d7 energy improvement compared to the GPU baseline.",
+    "authors": [
+        "Ann Franchesca Laguna",
+        "Mohammed Mehdi",
+        "A. Kazemi",
+        "Xunzhao Yin",
+        "M. Niemier",
+        "Sharon Hu"
+    ],
+    "venue": "Frontiers in Electronics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an in-memory transformer network accelerator (iMTransformer) that uses a combination of crossbars and content-addressable memories to accelerate transformer networks."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "b20c7278b9fdb16f455426220482099af102207f",
+    "title": "Vectorized Conditional Neural Fields: A Framework for Solving Time-dependent Parametric Partial Differential Equations",
+    "seed_ids": [
+        "lineartransformer",
+        "94576783bc73bf55a0091203a3d45a0a4665a1ae",
+        "72f207c777e4a17180cc54ccc6a743d5f43227af",
+        "5b1bb67f700b676ac44a32ec87aeb9ff018da55f",
+        "6f68e1bb253925d8431588555d3010419f322e04"
+    ],
+    "s2id": "b20c7278b9fdb16f455426220482099af102207f",
+    "abstract": "Transformer models are increasingly used for solving Partial Differential Equations (PDEs). Several adaptations have been proposed, all of which suffer from the typical problems of Transformers, such as quadratic memory and time complexity. Furthermore, all prevalent architectures for PDE solving lack at least one of several desirable properties of an ideal surrogate model, such as (i) generalization to PDE parameters not seen during training, (ii) spatial and temporal zero-shot super-resolution, (iii) continuous temporal extrapolation, (iv) support for 1D, 2D, and 3D PDEs, and (v) efficient inference for longer temporal rollouts. To address these limitations, we propose Vectorized Conditional Neural Fields (VCNeFs), which represent the solution of time-dependent PDEs as neural fields. Contrary to prior methods, however, VCNeFs compute, for a set of multiple spatio-temporal query points, their solutions in parallel and model their dependencies through attention mechanisms. Moreover, VCNeF can condition the neural field on both the initial conditions and the parameters of the PDEs. An extensive set of experiments demonstrates that VCNeFs are competitive with and often outperform existing ML-based surrogate models.",
+    "authors": [
+        "Jan Hagnberger",
+        "Marimuthu Kalimuthu",
+        "Daniel Musekamp",
+        "Mathias Niepert"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Vectorized Conditional Neural Fields (VCNeFs), which represent the solution of time-dependent PDEs as neural fields, are proposed, which are competitive with and often outperform existing ML-based surrogate models."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

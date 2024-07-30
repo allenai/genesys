@@ -1,0 +1,25 @@
+{
+    "acronym": "d351a0300200a7f3550bf3bf6534bae07165c256",
+    "title": "Text classification based on PEGCN: Graph convolution classification using location information and edge features",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "d351a0300200a7f3550bf3bf6534bae07165c256",
+    "abstract": "The purpose of text classification is to label the text with known labels. In recent years, the method based on graph neural network (GNN) has achieved good results. However, the existing methods based on GNN only regard the text as the set of co\u2010occurring words, without considering the position information of each word in the statement. At the same time, the method mainly extracts the node features in the graph, and the edge features between the nodes are not used enough. To solve these problems, a new text classification method, graph convolutional network using positions and edges, is proposed. In the word embedding section, a positional encoding input representation is employed to enable the neural network to learn the relative positional information among words. Meanwhile, the dimension of the adjacency matrix is increased to extract the multi\u2010dimensional edge features. Through experiments on multiple text classification datasets, the proposed method is shown to be superior to the traditional text classification method, and has achieved a maximum improvement of more than 4%.",
+    "authors": [
+        "Ruidong Zhang",
+        "Zelin Guo",
+        "Hai Huan"
+    ],
+    "venue": "Expert Syst. J. Knowl. Eng.",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new text classification method, graph convolutional network using positions and edges, is proposed, and a positional encoding input representation is employed to enable the neural network to learn the relative positional information among words."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

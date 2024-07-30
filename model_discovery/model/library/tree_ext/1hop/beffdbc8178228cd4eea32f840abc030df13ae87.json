@@ -1,0 +1,26 @@
+{
+    "acronym": "beffdbc8178228cd4eea32f840abc030df13ae87",
+    "title": "Sensitivity Analysis on Transferred Neural Architectures of BERT and GPT-2 for Financial Sentiment Analysis",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "beffdbc8178228cd4eea32f840abc030df13ae87",
+    "abstract": "The explosion in novel NLP word embedding and deep learning techniques has induced significant endeavors into potential applications. One of these directions is in the financial sector. Although there is a lot of work done in state-of-the-art models like GPT and BERT, there are relatively few works on how well these methods perform through fine-tuning after being pre-trained, as well as info on how sensitive their parameters are. We investigate the performance and sensitivity of transferred neural architectures from pre-trained GPT-2 and BERT models. We test the fine-tuning performance based on freezing transformer layers, batch size, and learning rate. We find that BERT\u2019s parameters are hypersensitive to stochasticity in fine-tuning and that GPT-2 is more stable in such practice. It is also clear that the earlier layers of GPT-2 and BERT contain essential word pattern information that should be maintained.",
+    "authors": [
+        "Tracy Qian",
+        "Andy Xie",
+        "Camille Bruckmann"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work investigates the performance and sensitivity of transferred neural architectures from pre-trained GPT-2 and BERT models and finds that BERT\u2019s parameters are hypersensitive to stochasticity in fine-tuning and that G PT-2 is more stable in such practice."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

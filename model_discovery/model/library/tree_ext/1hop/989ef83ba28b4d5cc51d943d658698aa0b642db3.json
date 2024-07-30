@@ -1,0 +1,29 @@
+{
+    "acronym": "989ef83ba28b4d5cc51d943d658698aa0b642db3",
+    "title": "Expose Backdoors on the Way: A Feature-Based Efficient Defense against Textual Backdoor Attacks",
+    "seed_ids": [
+        "gpt2",
+        "3bcb17559ce96eb20fa79af8194f4af0380d194a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "989ef83ba28b4d5cc51d943d658698aa0b642db3",
+    "abstract": "Natural language processing (NLP) models are known to be vulnerable to backdoor attacks, which poses a newly arisen threat to NLP models. Prior online backdoor defense methods for NLP models only focus on the anomalies at either the input or output level, still suffering from fragility to adaptive attacks and high computational cost. In this work, we take the first step to investigate the unconcealment of textual poisoned samples at the intermediate-feature level and propose a feature-based efficient online defense method. Through extensive experiments on existing attacking methods, we find that the poisoned samples are far away from clean samples in the intermediate feature space of a poisoned NLP model. Motivated by this observation, we devise a distance-based anomaly score (DAN) to distinguish poisoned samples from clean samples at the feature level. Experiments on sentiment analysis and offense detection tasks demonstrate the superiority of DAN, as it substantially surpasses existing online defense methods in terms of defending performance and enjoys lower inference costs. Moreover, we show that DAN is also resistant to adaptive attacks based on feature-level regularization. Our code is available at https://github.com/lancopku/DAN.",
+    "authors": [
+        "Sishuo Chen",
+        "Wenkai Yang",
+        "Zhiyuan Zhang",
+        "Xiaohan Bi",
+        "Xu Sun"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A distance-based anomaly score (DAN) to distinguish poisoned samples from clean samples at the feature level and demonstrate the superiority of DAN, as it substantially surpasses existing online defense methods in terms of defending performance and enjoys lower inference costs."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

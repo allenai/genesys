@@ -1,0 +1,37 @@
+{
+    "acronym": "bf6ce546c589fa8054b3972b266532664914bd21",
+    "title": "Fast Vision Transformers with HiLo Attention",
+    "seed_ids": [
+        "performer",
+        "ba637c4f1a170f1e2dadeadb71a63cf2b9a46de2",
+        "fbf68eb0cf8237cef59ebdb301569c79b9676ff9",
+        "0d9b8ccb1135b8e380dd8015b080158c6aae3ae5",
+        "9b6af0e358e76d22f209c75b1702c3e6ea7815b1",
+        "3cbe314cc5407a6c3249815b5173f22ea15173c2",
+        "81fcd9309e1168fe0664d8df4213771e4ebfa343",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "bf6ce546c589fa8054b3972b266532664914bd21",
+    "abstract": "Vision Transformers (ViTs) have triggered the most recent and significant breakthroughs in computer vision. Their efficient designs are mostly guided by the indirect metric of computational complexity, i.e., FLOPs, which however has a clear gap with the direct metric such as throughput. Thus, we propose to use the direct speed evaluation on the target platform as the design principle for efficient ViTs. Particularly, we introduce LITv2, a simple and effective ViT which performs favourably against the existing state-of-the-art methods across a spectrum of different model sizes with faster speed. At the core of LITv2 is a novel self-attention mechanism, which we dub HiLo. HiLo is inspired by the insight that high frequencies in an image capture local fine details and low frequencies focus on global structures, whereas a multi-head self-attention layer neglects the characteristic of different frequencies. Therefore, we propose to disentangle the high/low frequency patterns in an attention layer by separating the heads into two groups, where one group encodes high frequencies via self-attention within each local window, and another group encodes low frequencies by performing global attention between the average-pooled low-frequency keys and values from each window and each query position in the input feature map. Benefiting from the efficient design for both groups, we show that HiLo is superior to the existing attention mechanisms by comprehensively benchmarking FLOPs, speed and memory consumption on GPUs and CPUs. For example, HiLo is 1.4x faster than spatial reduction attention and 1.6x faster than local window attention on CPUs. Powered by HiLo, LITv2 serves as a strong backbone for mainstream vision tasks including image classification, dense detection and segmentation. Code is available at https://github.com/ziplab/LITv2.",
+    "authors": [
+        "Zizheng Pan",
+        "Jianfei Cai",
+        "Bohan Zhuang"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces LITv2, a simple and effective ViT which performs favourably against the existing state-of-the-art methods across a spectrum of different model sizes with faster speed and shows that HiLo is superior to the existing attention mechanisms by comprehensively benchmarking FLOPs, speed and memory consumption on GPUs and CPUs."
+    },
+    "citationCount": 84,
+    "influentialCitationCount": 9,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "b19683b83c63cc245f78bd5bf095cbd41149be7e",
+    "title": "I-Tuning: Tuning Frozen Language Models with Image for Lightweight Image Captioning",
+    "seed_ids": [
+        "gpt2",
+        "22312f763328cf540791de8c2449ea1e7436f476",
+        "5e00596fa946670d894b1bdaeff5a98e3867ef13",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b19683b83c63cc245f78bd5bf095cbd41149be7e",
+    "abstract": "Image Captioning is a traditional vision-and-language task that aims to generate the language description of an image. Recent studies focus on scaling up the model size and the number of training data, which significantly increase the cost of model training. Different to these heavy-cost models, we introduce a lightweight image captioning framework (I-Tuning), which contains a small number of trainable parameters. We design a novel I-Tuning cross-attention module to connect the non-trainable pre-trained language decoder GPT2 and vision encoder CLIP-ViT. Since most parameters are not required to be updated during training, our framework is lightweight and fast. Experimental results conducted on three image captioning benchmarks reveal that our frame-work achieves comparable or better performance than the large-scale baseline systems. But our models contain up to 10 times fewer trainable parameters and require much fewer data for training compared with state-of-the-art baselines.",
+    "authors": [
+        "Ziyang Luo",
+        "Zhipeng Hu",
+        "Yadong Xi",
+        "Rongsheng Zhang",
+        "Jing Ma"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel I-Tuning cross-attention module is designed to connect the non-trainable pre-trained language decoder GPT2 and vision encoder CLIP-ViT and achieves comparable or better performance than the large-scale baseline systems."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

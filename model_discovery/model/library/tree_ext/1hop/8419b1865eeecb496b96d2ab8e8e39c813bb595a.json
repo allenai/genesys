@@ -1,0 +1,27 @@
+{
+    "acronym": "8419b1865eeecb496b96d2ab8e8e39c813bb595a",
+    "title": "Inverse Probability of Treatment Weighting with Deep Sequence Models Enables Accurate treatment effect Estimation from Electronic Health Records",
+    "seed_ids": [
+        "transformer",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8419b1865eeecb496b96d2ab8e8e39c813bb595a",
+    "abstract": "Observational data have been actively used to estimate treatment effect, driven by the growing availability of electronic health records (EHRs). However, EHRs typically consist of longitudinal records, often introducing time-dependent confoundings that hinder the unbiased estimation of treatment effect. Inverse probability of treatment weighting (IPTW) is a widely used propensity score method since it provides unbiased treatment effect estimation and its derivation is straightforward. In this study, we aim to utilize IPTW to estimate treatment effect in the presence of time-dependent confounding using claims records. Previous studies have utilized propensity score methods with features derived from claims records through feature processing, which generally requires domain knowledge and additional resources to extract information to accurately estimate propensity scores. Deep sequence models, particularly recurrent neural networks and self-attention-based architectures, have demonstrated good performance in modeling EHRs for various downstream tasks. We propose that these deep sequence models can provide accurate IPTW estimation of treatment effect by directly estimating the propensity scores from claims records without the need for feature processing. We empirically demonstrate this by conducting comprehensive evaluations using synthetic and semi-synthetic datasets.",
+    "authors": [
+        "Junghwan Lee",
+        "Simin Ma",
+        "N. Serban",
+        "Shihao Yang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study proposes that deep sequence models can provide accurate IPTW estimation of treatment effect by directly estimating the propensity scores from claims records without the need for feature processing, and empirically demonstrates this by conducting comprehensive evaluations using synthetic and semi-synthetic datasets."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "7ee9f63f9ae49219f72fec1f297f9934f72557f9",
+    "title": "Modeling Diachronic Change in English Scientific Writing over 300+ Years with Transformer-based Language Model Surprisal",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "7ee9f63f9ae49219f72fec1f297f9934f72557f9",
+    "abstract": "This study presents an analysis of diachronic linguistic changes in English scientific writing, utilizing surprisal from transformer-based language models. Unlike traditional n-gram models, transformer-based models are potentially better at capturing nuanced linguistic changes such as long-range dependencies by considering variable context sizes. However, to create diachronically comparable language models there are several challenges with historical data, notably an exponential increase in no. of texts, tokens per text and vocabulary size over time. We address these by using a shared vocabulary and employing a robust training strategy that includes initial uniform sampling from the corpus and continuing pre-training on specific temporal segments. Our empirical analysis highlights the predictive power of surprisal from transformer-based models, particularly in analyzing complex linguistic structures like relative clauses. The models\u2019 broader contextual awareness and the inclusion of dependency length annotations contribute to a more intricate understanding of communicative efficiency. While our focus is on scientific English, our approach can be applied to other low-resource scenarios.",
+    "authors": [
+        "Julius Steuer",
+        "Marie-Pauline Krielke",
+        "Stefan Fischer",
+        "Stefania Degaetano-Ortlieb",
+        "Marius Mosbach",
+        "Dietrich Klakow"
+    ],
+    "venue": "Workshop on Building and Using Comparable Corpora",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study presents an analysis of diachronic linguistic changes in English scientific writing, utilizing surprisal from transformer-based language models, and highlights the predictive power of surprisal from transformer-based models, particularly in analyzing complex linguistic structures like relative clauses."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,34 @@
+{
+    "acronym": "9b169500bceb842a37fabb290df927a92131f8ab",
+    "title": "Image Captioning via Dynamic Path Customization",
+    "seed_ids": [
+        "transformer",
+        "a6a59c9e4cd446d0d04f76587699e3e8ab5197c2",
+        "7f71875f8214dffa4f3276da123c4990a6d437cc",
+        "485c08025157973bb52a935c6aa3bee74f990c01",
+        "5e00596fa946670d894b1bdaeff5a98e3867ef13",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "9b169500bceb842a37fabb290df927a92131f8ab",
+    "abstract": "This paper explores a novel dynamic network for vision and language tasks, where the inferring structure is customized on the fly for different inputs. Most previous state-of-the-art approaches are static and hand-crafted networks, which not only heavily rely on expert knowledge, but also ignore the semantic diversity of input samples, therefore resulting in suboptimal performance. To address these issues, we propose a novel Dynamic Transformer Network (DTNet) for image captioning, which dynamically assigns customized paths to different samples, leading to discriminative yet accurate captions. Specifically, to build a rich routing space and improve routing efficiency, we introduce five types of basic cells and group them into two separate routing spaces according to their operating domains, i.e., spatial and channel. Then, we design a Spatial-Channel Joint Router (SCJR), which endows the model with the capability of path customization based on both spatial and channel information of the input sample. To validate the effectiveness of our proposed DTNet, we conduct extensive experiments on the MS-COCO dataset and achieve new state-of-the-art performance on both the Karpathy split and the online test server.",
+    "authors": [
+        "Yiwei Ma",
+        "Jiayi Ji",
+        "Xiaoshuai Sun",
+        "Yiyi Zhou",
+        "Xiaopeng Hong",
+        "Yongjian Wu",
+        "Rongrong Ji"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel Dynamic Transformer Network (DTNet) for image captioning, which dynamically assigns customized paths to different samples, leading to discriminative yet accurate captions."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

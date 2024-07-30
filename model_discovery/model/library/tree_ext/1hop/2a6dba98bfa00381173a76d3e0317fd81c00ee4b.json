@@ -1,0 +1,26 @@
+{
+    "acronym": "2a6dba98bfa00381173a76d3e0317fd81c00ee4b",
+    "title": "Keypoint Action Tokens Enable In-Context Imitation Learning in Robotics",
+    "seed_ids": [
+        "gpt3",
+        "525d93a382f6e7873b5d8a2e0713eb3dff7fb250",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2a6dba98bfa00381173a76d3e0317fd81c00ee4b",
+    "abstract": "We show that off-the-shelf text-based Transformers, with no additional training, can perform few-shot in-context visual imitation learning, mapping visual observations to action sequences that emulate the demonstrator's behaviour. We achieve this by transforming visual observations (inputs) and trajectories of actions (outputs) into sequences of tokens that a text-pretrained Transformer (GPT-4 Turbo) can ingest and generate, via a framework we call Keypoint Action Tokens (KAT). Despite being trained only on language, we show that these Transformers excel at translating tokenised visual keypoint observations into action trajectories, performing on par or better than state-of-the-art imitation learning (diffusion policies) in the low-data regime on a suite of real-world, everyday tasks. Rather than operating in the language domain as is typical, KAT leverages text-based Transformers to operate in the vision and action domains to learn general patterns in demonstration data for highly efficient imitation learning, indicating promising new avenues for repurposing natural language models for embodied tasks. Videos are available at https://www.robot-learning.uk/keypoint-action-tokens.",
+    "authors": [
+        "Norman Di Palo",
+        "Edward Johns"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

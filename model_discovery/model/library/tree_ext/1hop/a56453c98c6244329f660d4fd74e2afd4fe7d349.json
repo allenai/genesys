@@ -1,0 +1,43 @@
+{
+    "acronym": "a56453c98c6244329f660d4fd74e2afd4fe7d349",
+    "title": "A Survey on Mixture of Experts",
+    "seed_ids": [
+        "jamba",
+        "c8b18682965ff9dccc0130dab3d679f78cefa617",
+        "53a803388e83ae89261624099d7be4287ace67cb",
+        "cbaf689fd9ea9bc939510019d90535d6249b3367",
+        "bcd84a2b8f9ae40a908f375425f113c82f8dd739",
+        "a51ac7a5e8f6454268ac16ecdc52ecac98ce54d9",
+        "43014fc85c4860487336579ec98f509fec1803f7",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "16e623059ffccab60f4c35be028a2d4f10933515",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "0bd2602df71e89c8961562175c8759e625e99389",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "a56453c98c6244329f660d4fd74e2afd4fe7d349",
+    "abstract": "Large language models (LLMs) have garnered unprecedented advancements across diverse fields, ranging from natural language processing to computer vision and beyond. The prowess of LLMs is underpinned by their substantial model size, extensive and diverse datasets, and the vast computational power harnessed during training, all of which contribute to the emergent abilities of LLMs (e.g., in-context learning) that are not present in small models. Within this context, the mixture of experts (MoE) has emerged as an effective method for substantially scaling up model capacity with minimal computation overhead, gaining significant attention from academia and industry. Despite its growing prevalence, there lacks a systematic and comprehensive review of the literature on MoE. This survey seeks to bridge that gap, serving as an essential resource for researchers delving into the intricacies of MoE. We first briefly introduce the structure of the MoE layer, followed by proposing a new taxonomy of MoE. Next, we overview the core designs for various MoE models including both algorithmic and systemic aspects, alongside collections of available open-source implementations, hyperparameter configurations and empirical evaluations. Furthermore, we delineate the multifaceted applications of MoE in practice, and outline some potential directions for future research. To facilitate ongoing updates and the sharing of cutting-edge developments in MoE research, we have established a resource repository accessible at https://github.com/withinmiaov/A-Survey-on-Mixture-of-Experts.",
+    "authors": [
+        "Weilin Cai",
+        "Juyong Jiang",
+        "Fan Wang",
+        "Jing Tang",
+        "Sunghun Kim",
+        "Jiayi Huang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The structure of the MoE layer is introduced, followed by proposing a new taxonomy of MoE, and the core designs for various MoE models including both algorithmic and systemic aspects are overviewed, alongside collections of available open-source implementations, hyperparameter configurations and empirical evaluations."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

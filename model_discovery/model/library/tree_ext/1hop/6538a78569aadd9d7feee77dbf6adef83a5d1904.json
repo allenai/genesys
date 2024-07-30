@@ -1,0 +1,31 @@
+{
+    "acronym": "6538a78569aadd9d7feee77dbf6adef83a5d1904",
+    "title": "LM-Combiner: A Contextual Rewriting Model for Chinese Grammatical Error Correction",
+    "seed_ids": [
+        "gpt2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "f8b89d917065d5e406ba9769be020ba0d95a31ce",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6538a78569aadd9d7feee77dbf6adef83a5d1904",
+    "abstract": "Over-correction is a critical problem in Chinese grammatical error correction (CGEC) task. Recent work using model ensemble methods based on voting can effectively mitigate over-correction and improve the precision of the GEC system. However, these methods still require the output of several GEC systems and inevitably lead to reduced error recall. In this light, we propose the LM-Combiner, a rewriting model that can directly modify the over-correction of GEC system outputs without a model ensemble. Specifically, we train the model on an over-correction dataset constructed through the proposed K-fold cross inference method, which allows it to directly generate filtered sentences by combining the original and the over-corrected text. In the inference stage, we directly take the original sentences and the output results of other systems as input and then obtain the filtered sentences through LM-Combiner. Experiments on the FCGEC dataset show that our proposed method effectively alleviates the over-correction of the original system (+18.2 Precision) while ensuring the error recall remains unchanged. Besides, we find that LM-Combiner still has a good rewriting performance even with small parameters and few training data, and thus can cost-effectively mitigate the over-correction of black-box GEC systems (e.g., ChatGPT).",
+    "authors": [
+        "Yixuan Wang",
+        "Baoxin Wang",
+        "Yijun Liu",
+        "Dayong Wu",
+        "Wanxiang Che"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The LM-Combiner is proposed, a rewriting model that can directly modify the over-correction of GEC system outputs without a model ensemble and still has a good rewriting performance even with small parameters and few training data, and thus can cost-effectively mitigate the over-correction of black-box GEC systems."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

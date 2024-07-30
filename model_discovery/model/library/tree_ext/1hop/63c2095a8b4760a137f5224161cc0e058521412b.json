@@ -1,0 +1,35 @@
+{
+    "acronym": "63c2095a8b4760a137f5224161cc0e058521412b",
+    "title": "IPoD: Implicit Field Learning with Point Diffusion for Generalizable 3D Object Reconstruction from Single RGB-D Images",
+    "seed_ids": [
+        "analogbits",
+        "166314254ab27888fb49399dcf17764feb347a66",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "63c2095a8b4760a137f5224161cc0e058521412b",
+    "abstract": "Generalizable 3D object reconstruction from single-view RGB-D images remains a challenging task, particularly with real-world data. Current state-of-the-art methods develop Transformer-based implicit field learning, necessitating an intensive learning paradigm that requires dense query-supervision uniformly sampled throughout the entire space. We propose a novel approach, IPoD, which harmonizes implicit field learning with point diffusion. This approach treats the query points for implicit field learning as a noisy point cloud for iterative denoising, allowing for their dynamic adaptation to the target object shape. Such adaptive query points harness diffusion learning's capability for coarse shape recovery and also enhances the implicit representation's ability to delineate finer details. Besides, an additional self-conditioning mechanism is designed to use implicit predictions as the guidance of diffusion learning, leading to a cooperative system. Experiments conducted on the CO3D-v2 dataset affirm the superiority of IPoD, achieving 7.8% improvement in F-score and 28.6% in Chamfer distance over existing methods. The generalizability of IPoD is also demonstrated on the MVImgNet dataset. Our project page is at https://yushuang-wu.github.io/IPoD.",
+    "authors": [
+        "Yushuang Wu",
+        "Luyue Shi",
+        "Junhao Cai",
+        "Weihao Yuan",
+        "Lingteng Qiu",
+        "Zilong Dong",
+        "Liefeng Bo",
+        "Shuguang Cui",
+        "Xiaoguang Han"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel approach, IPoD, which harmonizes implicit field learning with point diffusion, and treats the query points for implicit field learning as a noisy point cloud for iterative denoising, allowing for their dynamic adaptation to the target object shape."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,32 @@
+{
+    "acronym": "e4948367fffd12029184d4828718e6208f9ed64b",
+    "title": "Generalizable and Stable Finetuning of Pretrained Language Models on Low-Resource Texts",
+    "seed_ids": [
+        "bert",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "b47381e04739ea3f392ba6c8faaf64105493c196",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e4948367fffd12029184d4828718e6208f9ed64b",
+    "abstract": "Pretrained Language Models (PLMs) have advanced Natural Language Processing (NLP) tasks significantly, but finetuning PLMs on low-resource datasets poses significant challenges such as instability and overfitting. Previous methods tackle these issues by finetuning a strategically chosen subnetwork on a downstream task, while keeping the remaining weights fixed to the pretrained weights. However, they rely on a suboptimal criteria for sub-network selection, leading to suboptimal solutions. To address these limitations, we propose a regularization method based on attention-guided weight mixup for finetuning PLMs. Our approach represents each network weight as a mixup of task-specific weight and pretrained weight, controlled by a learnable attention parameter, providing finer control over sub-network selection. Furthermore, we employ a bi-level optimization (BLO) based framework on two separate splits of the training dataset, improving generalization and combating overfitting. We validate the efficacy of our proposed method through extensive experiments, demonstrating its superiority over previous methods, particularly in the context of finetuning PLMs on low-resource datasets. Our code is available at https://github.com/Sai-Ashish/Attention_guided_weight_mixup_BLO.",
+    "authors": [
+        "Sai Ashish Somayajula",
+        "Youwei Liang",
+        "Abhishek Singh",
+        "Li Zhang",
+        "Pengtao Xie"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a regularization method based on attention-guided weight mixup for finetuning PLMs, which represents each network weight as a mixup of task-specific weight and pretrained weight, controlled by a learnable attention parameter, providing finer control over sub-network selection."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

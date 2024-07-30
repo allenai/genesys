@@ -1,0 +1,26 @@
+{
+    "acronym": "caf452575e4c9a2bbd5b77be2a17ab6d81fa060d",
+    "title": "Mining Clues from Incomplete Utterance: A Query-enhanced Network for Incomplete Utterance Rewriting",
+    "seed_ids": [
+        "roformer",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "caf452575e4c9a2bbd5b77be2a17ab6d81fa060d",
+    "abstract": "Incomplete utterance rewriting has recently raised wide attention. However, previous works do not consider the semantic structural information between incomplete utterance and rewritten utterance or model the semantic structure implicitly and insufficiently. To address this problem, we propose a QUEry-Enhanced Network(QUEEN) to solve this problem. Firstly, our proposed query template explicitly brings guided semantic structural knowledge between the incomplete utterance and the rewritten utterance making model perceive where to refer back to or recover omitted tokens. Then, we adopt a fast and effective edit operation scoring network to model the relation between two tokens. Benefiting from extra information and the well-designed network, QUEEN achieves state-of-the-art performance on several public datasets.",
+    "authors": [
+        "Shuzheng Si",
+        "Shuang Zeng",
+        "Baobao Chang"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a QUEry-Enhanced Network (QUEEN), which adopts a fast and effective edit operation scoring network to model the relation between two tokens and achieves state-of-the-art performance on several public datasets."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

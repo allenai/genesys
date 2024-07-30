@@ -1,0 +1,29 @@
+{
+    "acronym": "808245dbe81f988fbcf5143d0762462500e705c0",
+    "title": "Graph-based Keyword Planning for Legal Clause Generation from Topics",
+    "seed_ids": [
+        "gpt2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "808245dbe81f988fbcf5143d0762462500e705c0",
+    "abstract": "Generating domain-specific content such as legal clauses based on minimal user-provided information can be of significant benefit in automating legal contract generation. In this paper, we propose a controllable graph-based mechanism that can generate legal clauses using only the topic or type of the legal clauses. Our pipeline consists of two stages involving a graph-based planner followed by a clause generator. The planner outlines the content of a legal clause as a sequence of keywords in the order of generic to more specific clause information based on the input topic using a controllable graph-based mechanism. The generation stage takes in a given plan and generates a clause. The pipeline consists of a graph-based planner followed by text generation. We illustrate the effectiveness of our proposed two-stage approach on a broad set of clause topics in contracts.",
+    "authors": [
+        "Sagar Joshi",
+        "Sumanth Balaji",
+        "Aparna Garimella",
+        "Vasudeva Varma"
+    ],
+    "venue": "NLLP",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a controllable graph-based mechanism that can generate legal clauses using only the topic or type of the legal clauses, and illustrates the effectiveness of this two-stage approach on a broad set of clause topics in contracts."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

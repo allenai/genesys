@@ -1,0 +1,29 @@
+{
+    "acronym": "b90d733a310465eb7ccd16d8a7b8b254ad866d69",
+    "title": "ISD-QA: Iterative Distillation of Commonsense Knowledge from General Language Models for Unsupervised Question Answering",
+    "seed_ids": [
+        "gpt2",
+        "3de9d381813ec99441a55f248c41570410e4062b",
+        "a5ed9dfc0725bffb6428a2cc297a15265377906c",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b90d733a310465eb7ccd16d8a7b8b254ad866d69",
+    "abstract": "Commonsense question answering has primarily been tackled through supervised transfer learning, where a language model pre-trained on large amounts of data is used as the starting point. While successful, the approach requires large amounts of labeled question-answer pairs, with increasingly larger amounts of data required as the complexity of scenarios or tasks such as commonsense QA increases. In this paper, we hypothesize that large-scale pre-training of language models encodes the necessary commonsense knowledge to answer common questions in context without labeled data. We propose a novel framework called Iterative Self Distillation for QA (ISD-QA), which extracts the \"dark knowledge\" encoded during largescale pre-training of language models to provide supervision for commonsense question answering. We show that the approach can be used to train common neural QA models for commonsense question answering by distilling knowledge from language models in an unsupervised manner. With no bells and whistles, we achieve an average of 68% of the performance of fully supervised QA models while requiring no labeled training data. Extensive experiments on three public benchmarks (OpenBookQA, HellaSWAG, and CommonsenseQA) show the effectiveness of the proposed approach.",
+    "authors": [
+        "Priyadharsini Ramamurthy",
+        "Sathyanarayanan N. Aakur"
+    ],
+    "venue": "International Conference on Pattern Recognition",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel framework called Iterative Self Distillation for QA (ISD-QA), which extracts the \"dark knowledge\" encoded during largescale pre-training of language models to provide supervision for commonsense question answering by distilling knowledge from language models in an unsupervised manner."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

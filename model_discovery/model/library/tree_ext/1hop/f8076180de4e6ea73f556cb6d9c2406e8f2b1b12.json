@@ -1,0 +1,33 @@
+{
+    "acronym": "f8076180de4e6ea73f556cb6d9c2406e8f2b1b12",
+    "title": "PI3D: Efficient Text-to-3D Generation with Pseudo-Image Diffusion",
+    "seed_ids": [
+        "classfreediffu",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "f8076180de4e6ea73f556cb6d9c2406e8f2b1b12",
+    "abstract": "Diffusion models trained on large-scale text-image datasets have demonstrated a strong capability of controllable high-quality image generation from arbitrary text prompts. However, the generation quality and generalization ability of 3D diffusion models is hindered by the scarcity of high-quality and large-scale 3D datasets. In this paper, we present PI3D, a framework that fully leverages the pre-trained text-to-image diffusion models' ability to generate high-quality 3D shapes from text prompts in minutes. The core idea is to connect the 2D and 3D domains by representing a 3D shape as a set of Pseudo RGB Images. We fine-tune an existing text-to-image diffusion model to produce such pseudo-images using a small number of text-3D pairs. Surprisingly, we find that it can already generate meaningful and consistent 3D shapes given complex text descriptions. We further take the generated shapes as the starting point for a lightweight iterative refinement using score distillation sampling to achieve high-quality generation under a low budget. PI3D generates a single 3D shape from text in only 3 minutes and the quality is validated to outperform existing 3D generative models by a large margin.",
+    "authors": [
+        "Ying-Tian Liu",
+        "Guan Luo",
+        "Heyi Sun",
+        "Wei Yin",
+        "Yuanchen Guo",
+        "Song-Hai Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "PI3D is presented, a framework that fully leverages the pre-trained text-to-image diffusion models' ability to generate high-quality 3D shapes from text prompts in minutes and the quality is validated to outperform existing 3D generative models by a large margin."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

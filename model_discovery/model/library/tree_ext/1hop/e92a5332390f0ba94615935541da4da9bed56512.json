@@ -1,0 +1,36 @@
+{
+    "acronym": "e92a5332390f0ba94615935541da4da9bed56512",
+    "title": "OliVe: Accelerating Large Language Models via Hardware-friendly Outlier-Victim Pair Quantization",
+    "seed_ids": [
+        "gpt2",
+        "4c14b1c41cb0aaa68f5d3f4a432f55e7199657ea",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e92a5332390f0ba94615935541da4da9bed56512",
+    "abstract": "Transformer-based large language models (LLMs) have achieved great success with the growing model size. LLMs' size grows by 240\u00d7 every two years, which outpaces the hardware progress and makes model inference increasingly costly. Model quantization is a promising approach to mitigate the widening gap between LLM size and hardware capacity. However, the existence of outliers, values with significant magnitudes, in LLMs makes existing quantization methods less effective. Prior outlier-aware quantization schemes adopt sparsity encoding techniques to separate outliers from normal values where the process requires global coordination (e.g., a global sparsity coordination list). This incurs complex encoding/decoding hardware logics and an extra orchestration controller for the computation between outlier and normal values. As such, it is not hardware-efficient and hence only achieves sub-optimal quantization benefits. We propose OliVe, an algorithm/architecture co-designed solution that adopts an outlier-victim pair (OVP) quantization and handles outlier values locally with low hardware overheads and high performance gains. The key insight of OliVe is that outliers are important while the normal values next to them are not. Thus those normal values (called victims) can be sacrificed to accommodate outliers. This enables a memory-aligned OVP encoding scheme, which can be efficiently integrated to the existing hardware accelerators like systolic array and tensor core. As a result, OliVe-based accelerator surpasses the existing outlier-aware accelerator, GOBO, by 4.5\u00d7 speedup and 4.0\u00d7 energy reduction, respectively, with a superior model accuracy.",
+    "authors": [
+        "Cong Guo",
+        "Jiaming Tang",
+        "Weiming Hu",
+        "Jingwen Leng",
+        "Chen Zhang",
+        "Fan Yang",
+        "Yun-Bo Liu",
+        "Minyi Guo",
+        "Yuhao Zhu"
+    ],
+    "venue": "International Symposium on Computer Architecture",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The key insight of OliVe is that outliers are important while the normal values next to them are not, which enables a memory-aligned OVP encoding scheme, which can be efficiently integrated to the existing hardware accelerators like systolic array and tensor core."
+    },
+    "citationCount": 31,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

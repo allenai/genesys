@@ -1,0 +1,26 @@
+{
+    "acronym": "ac6f967a7eecc0d00480ecb831b5650e3be76091",
+    "title": "Fine-Grained Analysis of Team Collaborative Dialogue",
+    "seed_ids": [
+        "bert",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "ac6f967a7eecc0d00480ecb831b5650e3be76091",
+    "abstract": "Natural language analysis of human collaborative chat dialogues is an understudied domain with many unique challenges: a large number of dialogue act labels, underspecified and dynamic tasks, interleaved topics, and long-range contextual dependence. While prior work has studied broad metrics of team dialogue and associated performance using methods such as LSA, there has been little effort in generating fine-grained descriptions of team dynamics and individual performance from dialogue. We describe initial work towards developing an explainable analytics tool in the software development domain using Slack chats mined from our organization, including generation of a novel, hierarchical labeling scheme; design of descriptive metrics based on the frequency of occurrence of dialogue acts; and initial results using a transformer + CRF architecture to incorporate long-range context.",
+    "authors": [
+        "Ian Perera",
+        "Matthew Johnson",
+        "Carson Wilber"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Initial work towards developing an explainable analytics tool in the software development domain is described, including generation of a novel, hierarchical labeling scheme; design of descriptive metrics based on the frequency of occurrence of dialogue acts; and initial results using a transformer + CRF architecture to incorporate long-range context."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

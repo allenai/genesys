@@ -1,0 +1,29 @@
+{
+    "acronym": "cc0a23e6d76c78fa8d930ca3d6848a34ad3289b0",
+    "title": "Modelling Commonsense Commonalities with Multi-Facet Concept Embeddings",
+    "seed_ids": [
+        "bert",
+        "d567a35ef739cb5e531d66e9b8007e50ce2d4bea",
+        "e7c02a1ec61127826162369e01ef523574bc024f"
+    ],
+    "s2id": "cc0a23e6d76c78fa8d930ca3d6848a34ad3289b0",
+    "abstract": "Concept embeddings offer a practical and efficient mechanism for injecting commonsense knowledge into downstream tasks. Their core purpose is often not to predict the commonsense properties of concepts themselves, but rather to identify commonalities, i.e.\\ sets of concepts which share some property of interest. Such commonalities are the basis for inductive generalisation, hence high-quality concept embeddings can make learning easier and more robust. Unfortunately, standard embeddings primarily reflect basic taxonomic categories, making them unsuitable for finding commonalities that refer to more specific aspects (e.g.\\ the colour of objects or the materials they are made of). In this paper, we address this limitation by explicitly modelling the different facets of interest when learning concept embeddings. We show that this leads to embeddings which capture a more diverse range of commonsense properties, and consistently improves results in downstream tasks such as ultra-fine entity typing and ontology completion.",
+    "authors": [
+        "Hanane Kteich",
+        "Na Li",
+        "Usashi Chatterjee",
+        "Zied Bouraoui",
+        "Steven Schockaert"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper explicitly modelling the different facets of interest when learning concept embeddings leads to embeddings which capture a more diverse range of commonsense properties, and consistently improves results in downstream tasks such as ultra-fine entity typing and ontology completion."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

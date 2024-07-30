@@ -1,0 +1,27 @@
+{
+    "acronym": "b250c272d4ed9df8c19a6cc8f060eb00ab0db567",
+    "title": "Discrete Dictionary-based Decomposition Layer for Structured Representation Learning",
+    "seed_ids": [
+        "deltanet",
+        "1a703f08da01cf737cce3fb9064259b3f4b44e9c",
+        "6f68e1bb253925d8431588555d3010419f322e04"
+    ],
+    "s2id": "b250c272d4ed9df8c19a6cc8f060eb00ab0db567",
+    "abstract": "Neuro-symbolic neural networks have been extensively studied to integrate symbolic operations with neural networks, thereby improving systematic generalization. Specifically, Tensor Product Representation (TPR) framework enables neural networks to perform differentiable symbolic operations by encoding the symbolic structure of data within vector spaces. However, TPR-based neural networks often struggle to decompose unseen data into structured TPR representations, undermining their symbolic operations. To address this decomposition problem, we propose a Discrete Dictionary-based Decomposition (D3) layer designed to enhance the decomposition capabilities of TPR-based models. D3 employs discrete, learnable key-value dictionaries trained to capture symbolic features essential for decomposition operations. It leverages the prior knowledge acquired during training to generate structured TPR representations by mapping input data to pre-learned symbolic features within these dictionaries. D3 is a straightforward drop-in layer that can be seamlessly integrated into any TPR-based model without modifications. Our experimental results demonstrate that D3 significantly improves the systematic generalization of various TPR-based models while requiring fewer additional parameters. Notably, D3 outperforms baseline models on the synthetic task that demands the systematic decomposition of unseen combinatorial data.",
+    "authors": [
+        "Taewon Park",
+        "Hyun-Chul Kim",
+        "Minho Lee"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Discrete Dictionary-based Decomposition (D3) layer designed to enhance the decomposition capabilities of TPR-based models, which significantly improves the systematic generalization of various TPR-based models while requiring fewer additional parameters."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

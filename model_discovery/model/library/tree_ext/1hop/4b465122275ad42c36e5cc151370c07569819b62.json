@@ -1,0 +1,37 @@
+{
+    "acronym": "4b465122275ad42c36e5cc151370c07569819b62",
+    "title": "KnowGPT: Knowledge Graph based Prompting for Large Language Models",
+    "seed_ids": [
+        "bert",
+        "a1f76db91c0debcf93ae9889736bce8470902113",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "fd33e77884e69f6bc099990fc2790248af2749d9",
+        "319b84be7a843250bc81d7086f79a4126d550277",
+        "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+        "710d183174844da5b7f392667f3cc25d2b098dde",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "4b465122275ad42c36e5cc151370c07569819b62",
+    "abstract": "Large Language Models (LLMs) have demonstrated remarkable capabilities in many real-world applications. Nonetheless, LLMs are often criticized for their tendency to produce hallucinations, wherein the models fabricate incorrect statements on tasks beyond their knowledge and perception. To alleviate this issue, researchers have explored leveraging the factual knowledge in knowledge graphs (KGs) to ground the LLM's responses in established facts and principles. However, most state-of-the-art LLMs are closed-source, making it challenging to develop a prompting framework that can efficiently and effectively integrate KGs into LLMs with hard prompts only. Generally, existing KG-enhanced LLMs usually suffer from three critical issues, including huge search space, high API costs, and laborious prompt engineering, that impede their widespread application in practice. To this end, we introduce a novel Knowledge Graph based PrompTing framework, namely KnowGPT, to enhance LLMs with domain knowledge. KnowGPT contains a knowledge extraction module to extract the most informative knowledge from KGs, and a context-aware prompt construction module to automatically convert extracted knowledge into effective prompts. Experiments on three benchmarks demonstrate that KnowGPT significantly outperforms all competitors. Notably, KnowGPT achieves a 92.6% accuracy on OpenbookQA leaderboard, comparable to human-level performance.",
+    "authors": [
+        "Qinggang Zhang",
+        "Junnan Dong",
+        "Hao Chen",
+        "D. Zha",
+        "Zailiang Yu",
+        "Xiao Huang"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel Knowledge Graph based PrompTing framework, namely KnowGPT, to enhance LLMs with domain knowledge, which contains a knowledge extraction module to extract the most informative knowledge from KGs, and a context-aware prompt construction module to automatically convert extracted knowledge into effective prompts."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

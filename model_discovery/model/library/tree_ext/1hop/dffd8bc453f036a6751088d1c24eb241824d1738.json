@@ -1,0 +1,29 @@
+{
+    "acronym": "dffd8bc453f036a6751088d1c24eb241824d1738",
+    "title": "Foreground\u2013background decoupling matting",
+    "seed_ids": [
+        "flash",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "dffd8bc453f036a6751088d1c24eb241824d1738",
+    "abstract": "Image matting aims to extract specific objects, deployed in many applications. Generally, the automatic matting methods need an extra before overcome the intricate details and the diverse appearances. Recently, the matting community has paid more attentions to the investigation of trimap\u2010free matting direction to address the dependency of priors. Most trimap\u2010free approaches divide the matting task into global segmentation and detail matting subtasks. Unfortunately, these methods suffer from stagewise modeling, uncorrectable errors, or subtasks bottleneck problems. To address these issues, we propose a new set of matting subtasks, including foreground segmentation, background segmentation, and disambiguation. And we present a novel Foreground\u2013Background Decoupling Matting (FBDM) network motivated by the new subtasks. Specifically, we first design a nested attention mechanism to decouple the backbone features. Then, we utilize two independent progressive semantic decoders by the decoupling features to complete the foreground and background segmentation subtasks. Finally, we utilize multiple of the proposed frequency division local disambiguation modules to achieve the disambiguation subtask. Besides, we establish a challenging potted plant (PPT) benchmark which contains 100 potted plants images in the real world for the matting community. Extensive experiments on several public benchmarks and the PPTs benchmark demonstrate that the proposed FBDM generates the best results compared with the state\u2010of\u2010the\u2010art trimap\u2010free methods.",
+    "authors": [
+        "Jiawei Wu",
+        "Guolin Zheng",
+        "Kun Zeng",
+        "Haoyi Fan",
+        "Zuoyong Li"
+    ],
+    "venue": "International Journal of Intelligent Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel Foreground\u2013Background Decoupling Matting (FBDM) network motivated by the new subtasks, and extensive experiments demonstrate that the proposed FBDM generates the best results compared with the state\u2010of\u2010the\u2010art trimap\u2010free methods."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,34 @@
+{
+    "acronym": "03d5a1ec8c021bc8f243e3b06fdedd694053dbf7",
+    "title": "Automated Commit Intelligence by Pre-training",
+    "seed_ids": [
+        "bert",
+        "2409931dbff657b0d3ddc2777d02c9128fbe18cc",
+        "7018ff49ca3b81f2ed6228b097a471c2529986e4",
+        "4b27f18bff43d605805c92696a979714ced0b805",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "03d5a1ec8c021bc8f243e3b06fdedd694053dbf7",
+    "abstract": "GitHub commits, which record the code changes with natural language messages for description, play a critical role in software developers\u2019 comprehension of software evolution. Due to their importance in software development, several learning-based works are conducted for GitHub commits, such as commit message generation and security patch identification. However, most existing works focus on customizing specialized neural networks for different tasks. Inspired by the superiority of code pre-trained models, which has confirmed their effectiveness across different downstream tasks, to promote the development of open-source software community, we first collect a large-scale commit benchmark including over 7.99 million commits across 7 programming languages. Based on this benchmark, we present CommitBART, a pre-trained encoder-decoder Transformer model for GitHub commits. The model is pre-trained by three categories (i.e., denoising objectives, cross-modal generation, and contrastive learning) for six pre-training tasks to learn commit fragment representations. Our model is evaluated on one understanding task and three generation tasks for commits. The comprehensive experiments on these tasks demonstrate that CommitBART significantly outperforms previous pre-trained works for code. Further analysis also reveals that each pre-training task enhances the model performance.",
+    "authors": [
+        "Shangqing Liu",
+        "Yanzhou Li",
+        "Xiaofei Xie",
+        "Wei Ma",
+        "Guozhu Meng",
+        "Yang Liu"
+    ],
+    "venue": "ACM Transactions on Software Engineering and Methodology",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Inspired by the superiority of code pre-trained models, a pre-trained encoder-decoder Transformer model is presented, a pre-trained encoder-decoder Transformer model for GitHub commits that significantly outperforms previous pre-trained works for code."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

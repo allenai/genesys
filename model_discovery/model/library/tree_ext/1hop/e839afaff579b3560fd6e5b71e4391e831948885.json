@@ -1,0 +1,25 @@
+{
+    "acronym": "e839afaff579b3560fd6e5b71e4391e831948885",
+    "title": "Text summarization using transfer learning",
+    "seed_ids": [
+        "memcompress",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e839afaff579b3560fd6e5b71e4391e831948885",
+    "abstract": "A summary of a long text document enables people to easily grasp the information of the topic without having the need to read the whole document. This thesis aims to automate text summarization by using two approaches: extractive and abstractive. The former approach utilizes submodular functions and the language representation model BERT, while the latter uses the language model GPT-2. We operate on two types of datasets: CNN/DailyMail, a benchmarked news article dataset and Podcast, a dataset comprised of podcast episode transcripts. The results obtained using the GPT-2 on the CNN/DailyMail dataset are competitive to state-of-the-art. Besides the quantitative evaluation, we also perform a qualitative investigation in the form of a human evaluation, along with inspection of the trained model that demonstrates that it learns reasonable abstractions.",
+    "authors": [
+        "Victor Risne",
+        "Ad\u00e9le Siitova"
+    ],
+    "venue": "",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This thesis aims to automate text summarization by using two approaches: extractive and abstractive and operates on two types of datasets: CNN/DailyMail, a benchmarked news article dataset and Podcast, a dataset comprised of podcast episode transcripts."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

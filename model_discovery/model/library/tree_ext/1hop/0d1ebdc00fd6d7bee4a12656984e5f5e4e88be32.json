@@ -1,0 +1,27 @@
+{
+    "acronym": "0d1ebdc00fd6d7bee4a12656984e5f5e4e88be32",
+    "title": "Three-stage Logical Table-to-Text Generation based on Type Control",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0d1ebdc00fd6d7bee4a12656984e5f5e4e88be32",
+    "abstract": "Table-to-Text generation is to express the information in the table in words. Considering the simplicity and logic of the statement, the task of logical Table-to-Text generation is derived. Logical Table-to-Text generation is to generate logically faithful and smooth text based on tables. However, there are few studies on this task at present, and the effect of related generative models is not ideal, which makes this task still very challenging. In this paper, we propose a three-stage generative model that conforms to the human thinking of generating logical texts. On the basis of generating surface fact texts from tables, coarse templates are generated first, and then logical texts are generated. At the same time, in order to enhance the rationality of generating texts of different logical types from the same table input, we propose to take the logical type of the reference text as a known premise and input it together with the table and table title to generate texts with higher similarity. Experiments on the LogicNLG dataset show that both ideas have their effectiveness, and the model outperforms the baseline model overall. Combining the two ideas for experiments, the overall effect of the model is better, especially in terms of text similarity.",
+    "authors": [
+        "Weiwei Shi",
+        "Yubo Liu",
+        "Jiehui Wu",
+        "Jianming Liao"
+    ],
+    "venue": "International Conference on Advances in Computing and Artificial Intelligence",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a three-stage generative model that conforms to the human thinking of generating logical texts and proposes to take the logical type of the reference text as a known premise and input it together with the table and table title to generate texts with higher similarity."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

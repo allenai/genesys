@@ -1,0 +1,35 @@
+{
+    "acronym": "746a9b434d05b47beb1bd6a96f4d5c89d9d8bd0a",
+    "title": "Your Transformer May Not be as Powerful as You Expect",
+    "seed_ids": [
+        "transformerxl",
+        "5d032bd2632b6f5847767f39ce247098c6bbc563",
+        "0d508600d77d8a7e6a655cdb6d139779732f649f",
+        "94576783bc73bf55a0091203a3d45a0a4665a1ae",
+        "79b4ec1aaf67a04a9afa0d8138f84b7be66c00cb",
+        "40ca4fcfffa7ca9aa9b7ff06ecf3cd0436712d78",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "746a9b434d05b47beb1bd6a96f4d5c89d9d8bd0a",
+    "abstract": "Relative Positional Encoding (RPE), which encodes the relative distance between any pair of tokens, is one of the most successful modifications to the original Transformer. As far as we know, theoretical understanding of the RPE-based Transformers is largely unexplored. In this work, we mathematically analyze the power of RPE-based Transformers regarding whether the model is capable of approximating any continuous sequence-to-sequence functions. One may naturally assume the answer is in the affirmative -- RPE-based Transformers are universal function approximators. However, we present a negative result by showing there exist continuous sequence-to-sequence functions that RPE-based Transformers cannot approximate no matter how deep and wide the neural network is. One key reason lies in that most RPEs are placed in the softmax attention that always generates a right stochastic matrix. This restricts the network from capturing positional information in the RPEs and limits its capacity. To overcome the problem and make the model more powerful, we first present sufficient conditions for RPE-based Transformers to achieve universal function approximation. With the theoretical guidance, we develop a novel attention module, called Universal RPE-based (URPE) Attention, which satisfies the conditions. Therefore, the corresponding URPE-based Transformers become universal function approximators. Extensive experiments covering typical architectures and tasks demonstrate that our model is parameter-efficient and can achieve superior performance to strong baselines in a wide range of applications. The code will be made publicly available at https://github.com/lsj2408/URPE.",
+    "authors": [
+        "Shengjie Luo",
+        "Shanda Li",
+        "Shuxin Zheng",
+        "Tie-Yan Liu",
+        "Liwei Wang",
+        "Di He"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work mathematically analyzes the power of RPE-based Transformers regarding whether the model is capable of approximating any continuous sequence-to-sequence functions and develops a novel attention module, called Universal R PE-based (URPE) Attention, which satisfies the conditions and the corresponding URPE- based Transformers become universal function approximators."
+    },
+    "citationCount": 35,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

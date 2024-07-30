@@ -1,0 +1,27 @@
+{
+    "acronym": "9a5c83d28a407c25eb1e133306f49597bc16c0c6",
+    "title": "You Need to Pay Better Attention",
+    "seed_ids": [
+        "transformer",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "3cbe314cc5407a6c3249815b5173f22ea15173c2",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "9a5c83d28a407c25eb1e133306f49597bc16c0c6",
+    "abstract": "Scaled Dot Product Attention (SDPA) is the backbone of many modern deep-learning models. It is so versatile that it has been used in natural language, vision, and multi-modal domains with very little change compared to its original formulation. This paper discusses why the current formulation is inefficient by delving into the mathematical details of the attention mechanism. We propose three improvements to mitigate these inefficiencies, thereby, introducing three enhanced attention mechanisms: Optimised, Efficient, and Super Attention. Optimised and Efficient Attention have one and two matrix multiplications fewer per head, respectively, and 25% and 50% fewer parameters, respectively, than standard SDPA, but perform similarly to standard SDPA in both vision and natural language tasks. They can be used in all applications where SDPA is used while offering smaller model sizes and faster training and inference without noticeable loss in performance. Super Attention introduces a new linear transformation on the values, transforming them from the left. It outperforms standard SPDA on vision and natural language tasks by up to 17% while having one fewer matrix multiplication per head and 25% fewer parameters than standard SDPA. Consequently, it is also faster than standard SDPA. Super Attention is ideal in applications where the attention layer's context length is fixed, such as Vision Transformers. In addition to providing mathematical reasoning, we evaluate the presented attention mechanisms on several datasets including MNIST, CIFAR100, ImageNet, IMDB Movie Reviews, and Amazon Reviews datasets, as well as combined Europarl and Anki English-Spanish datasets for neural machine translation.",
+    "authors": [
+        "Mehran Hosseini",
+        "Peyman Hosseini"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Why the current formulation of Scalable Dot Product Attention is inefficient is discussed by delving into the mathematical details of the attention mechanism, and three improvements to mitigate these inefficiencies are proposed."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

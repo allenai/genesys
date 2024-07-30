@@ -1,0 +1,29 @@
+{
+    "acronym": "7a8da0a187507681df78e9138a25b6cf4a239801",
+    "title": "Unconditional Image-Text Pair Generation with Multimodal Cross Quantizer",
+    "seed_ids": [
+        "gpt2",
+        "2d9ae4c167510ed78803735fc57ea67c3cc55a35",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7a8da0a187507681df78e9138a25b6cf4a239801",
+    "abstract": "Although deep generative models have gained a lot of attention, most of the existing works are designed for unimodal generation. In this paper, we explore a new method for unconditional image-text pair generation. We design Multimodal Cross-Quantization VAE (MXQ-VAE), a novel vector quantizer for joint image-text representations, with which we discover that a joint image-text representation space is effective for semantically consistent image-text pair generation. To learn a multimodal semantic correlation in a quantized space, we combine VQ-VAE with a Transformer encoder and apply an input masking strategy. Specifically, MXQ-VAE accepts a masked image-text pair as input and learns a quantized joint representation space, so that the input can be converted to a unified code sequence, then we perform unconditional image-text pair generation with the code sequence. Extensive experiments show the correlation between the quantized joint space and the multimodal generation capability on synthetic and real-world datasets. In addition, we demonstrate the superiority of our approach in these two aspects over several baselines. The source code is publicly available at: https://github.com/ttumyche/MXQ-VAE.",
+    "authors": [
+        "Hyungyu Lee",
+        "Sungjin Park",
+        "E. Choi"
+    ],
+    "venue": "British Machine Vision Conference",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Multimodal Cross-Quantization VAE (MXQ-VAE), a novel vector quantizer for joint image-text representations, is designed, with which it is discovered that a jointimage-text representation space is effective for semantically consistent image- text pair generation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

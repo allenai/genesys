@@ -1,0 +1,37 @@
+{
+    "acronym": "7d1fa55b32aa5d81cba98d3feb5e45ddfd87acd2",
+    "title": "A Close Look at Spatial Modeling: From Attention to Convolution",
+    "seed_ids": [
+        "metaformer",
+        "fa717a2e31f0cef4e26921f3b147a98644d2e64c",
+        "ba637c4f1a170f1e2dadeadb71a63cf2b9a46de2",
+        "2e644c67a697073d561da4f4dad35e5ad5316cfd",
+        "485c08025157973bb52a935c6aa3bee74f990c01",
+        "71363797140647ebb3f540584de0a8758d2f7aa2",
+        "6b6ffb94626e672caffafc77097491d9ee7a8682",
+        "d5e999aae76d5270ef272076979c809817458212",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "7d1fa55b32aa5d81cba98d3feb5e45ddfd87acd2",
+    "abstract": "Vision Transformers have shown great promise recently for many vision tasks due to the insightful architecture design and attention mechanism. By revisiting the self-attention responses in Transformers, we empirically observe two interesting issues. First, Vision Transformers present a queryirrelevant behavior at deep layers, where the attention maps exhibit nearly consistent contexts in global scope, regardless of the query patch position (also head-irrelevant). Second, the attention maps are intrinsically sparse, few tokens dominate the attention weights; introducing the knowledge from ConvNets would largely smooth the attention and enhance the performance. Motivated by above observations, we generalize self-attention formulation to abstract a queryirrelevant global context directly and further integrate the global context into convolutions. The resulting model, a Fully Convolutional Vision Transformer (i.e., FCViT), purely consists of convolutional layers and firmly inherits the merits of both attention mechanism and convolutions, including dynamic property, weight sharing, and short- and long-range feature modeling, etc. Experimental results demonstrate the effectiveness of FCViT. With less than 14M parameters, our FCViT-S12 outperforms related work ResT-Lite by 3.7% top1 accuracy on ImageNet-1K. When scaling FCViT to larger models, we still perform better than previous state-of-the-art ConvNeXt with even fewer parameters. FCViT-based models also demonstrate promising transferability to downstream tasks, like object detection, instance segmentation, and semantic segmentation. Codes and models are made available at: https://github.com/ma-xu/FCViT.",
+    "authors": [
+        "Xu Ma",
+        "Huan Wang",
+        "Can Qin",
+        "Kunpeng Li",
+        "Xing Zhao",
+        "Jie Fu",
+        "Yun Fu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The resulting model, a Fully Convolutional Vision Transformer (i.e., FCViT), purely consists of convolutional layers and firmly inherits the merits of both attention mechanism and convolutions, including dynamic property, weight sharing, and short- and long-range feature modeling, etc."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

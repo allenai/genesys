@@ -1,0 +1,28 @@
+{
+    "acronym": "91663fbb9257b1ee5d22d7b9e796e03f374a7a6a",
+    "title": "hULMonA: The Universal Language Model in Arabic",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "91663fbb9257b1ee5d22d7b9e796e03f374a7a6a",
+    "abstract": "Arabic is a complex language with limited resources which makes it challenging to produce accurate text classification tasks such as sentiment analysis. The utilization of transfer learning (TL) has recently shown promising results for advancing accuracy of text classification in English. TL models are pre-trained on large corpora, and then fine-tuned on task-specific datasets. In particular, universal language models (ULMs), such as recently developed BERT, have achieved state-of-the-art results in various NLP tasks in English. In this paper, we hypothesize that similar success can be achieved for Arabic. The work aims at supporting the hypothesis by developing the first Universal Language Model in Arabic (hULMonA - \u062d\u0644\u0645\u0646\u0627 meaning our dream), demonstrating its use for Arabic classifications tasks, and demonstrating how a pre-trained multi-lingual BERT can also be used for Arabic. We then conduct a benchmark study to evaluate both ULM successes with Arabic sentiment analysis. Experiment results show that the developed hULMonA and multi-lingual ULM are able to generalize well to multiple Arabic data sets and achieve new state of the art results in Arabic Sentiment Analysis for some of the tested sets.",
+    "authors": [
+        "Obeida ElJundi",
+        "Wissam Antoun",
+        "Nour El Droubi",
+        "Hazem M. Hajj",
+        "W. El-Hajj",
+        "K. Shaban"
+    ],
+    "venue": "WANLP@ACL 2019",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Developing the first Universal Language Model in Arabic (hULMonA) and demonstrating its use for Arabic classifications tasks, and demonstrating how a pre-trained multi-lingual BERT can also be used for Arabic."
+    },
+    "citationCount": 50,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

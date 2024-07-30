@@ -1,0 +1,42 @@
+{
+    "acronym": "cbbc2cc774c50b0b19922185b80e9ce90b7cd2f6",
+    "title": "Retrieval-Pretrained Transformer: Long-range Language Modeling with Self-retrieval",
+    "seed_ids": [
+        "transformerxl",
+        "d53fe76bd2795a19ddf52d012917782f6f6f2c1e",
+        "dbc368bc8b49347dd27679894524fa62f88492c9",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "6a0fe3c3c36574e848a6fe3b4dc3ce8853d8eb54",
+        "465471bb5bf1a945549d6291c2d23367966b4957",
+        "732e3faec4e5be4d144256f2c379b9dc49f0b227",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "da1d6445b6b64ce9eb4587ba8abbdc490f648ec1",
+        "736eb449526fe7128917954ec5532b59e318ec78",
+        "f75d05e759447c2aedb7097728f29f9a520d9bc1",
+        "64a29bee2e1ad29547d590a3cc26274f4c537145",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "46c585ee9abf76779ea4b863d2da4358efd0d1d3",
+        "0822f8d7e6a72a65e65f147d3a8d8fccd485da40",
+        "3df83a60f55c64b40e6dbcd99cf9f67894a0736e",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "f51497f463566581874c941353dd9d80069c5b77"
+    ],
+    "s2id": "cbbc2cc774c50b0b19922185b80e9ce90b7cd2f6",
+    "abstract": "Retrieval-augmented language models (LMs) have received much attention recently. However, typically the retriever is not trained jointly as a native component of the LM, but added post-hoc to an already-pretrained LM, which limits the ability of the LM and the retriever to adapt to one another. In this work, we propose the Retrieval-Pretrained Transformer (RPT), an architecture and training procedure for jointly training a retrieval-augmented LM from scratch and apply it to the task of modeling long texts. Given a recently generated text chunk in a long document, the LM computes query representations, which are then used to retrieve earlier chunks in the document, located potentially tens of thousands of tokens before. Information from retrieved chunks is fused into the LM representations to predict the next target chunk. We train the retriever component with a semantic objective, where the goal is to retrieve chunks that increase the probability of the next chunk, according to a reference LM. We evaluate RPT on four long-range language modeling tasks, spanning books, code, and mathematical writing, and demonstrate that RPT improves retrieval quality and subsequently perplexity across the board compared to strong baselines.",
+    "authors": [
+        "Ohad Rubin",
+        "Jonathan Berant"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Retrieval-Pretrained Transformer (RPT) is proposed, an architecture and training procedure for jointly training a retrieval-augmented LM from scratch and apply it to the task of modeling long texts."
+    },
+    "citationCount": 20,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

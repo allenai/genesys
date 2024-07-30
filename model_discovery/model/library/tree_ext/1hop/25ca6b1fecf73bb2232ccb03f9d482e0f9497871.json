@@ -1,0 +1,29 @@
+{
+    "acronym": "25ca6b1fecf73bb2232ccb03f9d482e0f9497871",
+    "title": "Slot Dependency Modeling for Zero-Shot Cross-Domain Dialogue State Tracking",
+    "seed_ids": [
+        "gpt",
+        "da454295392cf4caaa39cc465734237ffe55392f"
+    ],
+    "s2id": "25ca6b1fecf73bb2232ccb03f9d482e0f9497871",
+    "abstract": "Zero-shot learning for Dialogue State Tracking (DST) focuses on generalizing to an unseen domain without the expense of collecting in domain data. However, previous zero-shot DST methods ignore the slot dependencies in a multidomain dialogue, resulting in sub-optimal performances when adapting to unseen domains. In this paper, we utilize slot prompts combination, slot values demonstration, and slot constraint object to model the slot-slot dependencies, slot-value dependency and slot-context dependency respectively. Specifically, each slot prompt consists of a slot-specific prompt and a slot-shared prompt to capture the shared knowledge across different domains. Experimental results show the effectiveness of our proposed method over existing state-of-art generation methods under zero-shot/few-shot settings.",
+    "authors": [
+        "Qingyue Wang",
+        "Yanan Cao",
+        "Piji Li",
+        "Yanhe Fu",
+        "Zheng Lin",
+        "Li Guo"
+    ],
+    "venue": "International Conference on Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results show the effectiveness of the proposed method over existing state-of-art generation methods under zero-shot/few-shot settings."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

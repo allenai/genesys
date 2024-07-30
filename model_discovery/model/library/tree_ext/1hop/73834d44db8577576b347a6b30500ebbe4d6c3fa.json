@@ -1,0 +1,28 @@
+{
+    "acronym": "73834d44db8577576b347a6b30500ebbe4d6c3fa",
+    "title": "Document Classification for COVID-19 Literature",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "73834d44db8577576b347a6b30500ebbe4d6c3fa",
+    "abstract": "The global pandemic has made it more important than ever to quickly and accurately retrieve relevant scientific literature for effective consumption by researchers in a wide range of fields. We provide an analysis of several multi-label document classification models on the LitCovid dataset, a growing collection of 23,000 research papers regarding the novel 2019 coronavirus. We find that pre-trained language models fine-tuned on this dataset outperform all other baselines and that BioBERT surpasses the others by a small margin with micro-F1 and accuracy scores of around 86% and 75% respectively on the test set. We evaluate the data efficiency and generalizability of these models as essential features of any system prepared to deal with an urgent situation like the current health crisis. We perform a data ablation study to determine how important article titles are for achieving reasonable performance on this dataset. Finally, we explore 50 errors made by the best performing models on LitCovid documents and find that they often (1) correlate certain labels too closely together and (2) fail to focus on discriminative sections of the articles; both of which are important issues to address in future work. Both data and code are available on GitHub.",
+    "authors": [
+        "Bernal Jimenez Gutierrez",
+        "Jucheng Zeng",
+        "Dongdong Zhang",
+        "Ping Zhang",
+        "Yu Su"
+    ],
+    "venue": "Findings",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An analysis of several multi-label document classification models on the LitCovid dataset, a growing collection of 23,000 research papers regarding the novel 2019 coronavirus, finds that pre-trained language models fine-tuned on this dataset outperform all other baselines and that BioBERT surpasses the others by a small margin."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

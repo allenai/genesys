@@ -1,0 +1,33 @@
+{
+    "acronym": "40c0d1f38ab081e21cc3b1e2e5334a9b54b6ff08",
+    "title": "The Impact of Reasoning Step Length on Large Language Models",
+    "seed_ids": [
+        "gpt3",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c"
+    ],
+    "s2id": "40c0d1f38ab081e21cc3b1e2e5334a9b54b6ff08",
+    "abstract": "Chain of Thought (CoT) is significant in improving the reasoning abilities of large language models (LLMs). However, the correlation between the effectiveness of CoT and the length of reasoning steps in prompts remains largely unknown. To shed light on this, we have conducted several empirical experiments to explore the relations. Specifically, we design experiments that expand and compress the rationale reasoning steps within CoT demonstrations while keeping all other factors constant. We have the following key findings. First, the results indicate that lengthening the reasoning steps in prompts, even without adding new information into the prompt, considerably enhances LLMs' reasoning abilities across multiple datasets. Alternatively, shortening the reasoning steps, even while preserving the key information, significantly diminishes the reasoning abilities of models. This finding highlights the importance of the number of steps in CoT prompts and provides practical guidance to make better use of LLMs' potential in complex problem-solving scenarios. Second, we also investigated the relationship between the performance of CoT and the rationales used in demonstrations. Surprisingly, the result shows that even incorrect rationales can yield favorable outcomes if they maintain the requisite length of inference. Third, we observed that the advantages of increasing reasoning steps are task-dependent: simpler tasks require fewer steps, whereas complex tasks gain significantly from longer inference sequences. The code is available at https://github.com/MingyuJ666/The-Impact-of-Reasoning-Step-Length-on-Large-Language-Models",
+    "authors": [
+        "Mingyu Jin",
+        "Qinkai Yu",
+        "Dong Shu",
+        "Haiyan Zhao",
+        "Wenyue Hua",
+        "Yanda Meng",
+        "Yongfeng Zhang",
+        "Mengnan Du"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results indicate that lengthening the reasoning steps in prompts, even without adding new information into the prompt, considerably enhances LLMs' reasoning abilities across multiple datasets, and shows that even incorrect rationales can yield favorable outcomes if they maintain the requisite length of inference."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

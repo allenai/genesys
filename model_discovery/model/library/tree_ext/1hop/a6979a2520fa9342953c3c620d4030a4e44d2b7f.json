@@ -1,0 +1,29 @@
+{
+    "acronym": "a6979a2520fa9342953c3c620d4030a4e44d2b7f",
+    "title": "Towards Quantitative Precision for ECG Analysis: Leveraging State Space Models, Self-Supervision and Patient Metadata",
+    "seed_ids": [
+        "s4",
+        "36c4eca757276b906d92336228316d318700126b",
+        "ef7993ab30d0a8afabb4ebab080e471c0d5c743c",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2"
+    ],
+    "s2id": "a6979a2520fa9342953c3c620d4030a4e44d2b7f",
+    "abstract": "Deep learning has emerged as the preferred modeling approach for automatic ECG analysis. In this study, we investigate three elements aimed at improving the quantitative accuracy of such systems. These components consistently enhance performance beyond the existing state-of-the-art, which is predominantly based on convolutional models. Firstly, we explore more expressive architectures by exploiting structured state space models (SSMs). These models have shown promise in capturing long-term dependencies in time series data. By incorporating SSMs into our approach, we not only achieve better performance, but also gain insights into long-standing questions in the field. Specifically, for standard diagnostic tasks, we find no advantage in using higher sampling rates such as 500 Hz compared to 100 Hz. Similarly, extending the input size of the model beyond 3 seconds does not lead to significant improvements. Secondly, we demonstrate that self-supervised learning using contrastive predictive coding can further improve the performance of SSMs. By leveraging self-supervision, we enable the model to learn more robust and representative features, leading to improved analysis accuracy. Lastly, we depart from synthetic benchmarking scenarios and incorporate basic demographic metadata alongside the ECG signal as input. This inclusion of patient metadata departs from the conventional practice of relying solely on the signal itself. Remarkably, this addition consistently yields positive effects on predictive performance. We firmly believe that all three components should be considered when developing next-generation ECG analysis algorithms.",
+    "authors": [
+        "Temesgen Mehari",
+        "Nils Strodthoff"
+    ],
+    "venue": "IEEE journal of biomedical and health informatics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study investigates three elements aimed at improving the quantitative accuracy of automatic ECG analysis and demonstrates that self-supervised learning using contrastive predictive coding can further improve the performance of structured state space models (SSMs)."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

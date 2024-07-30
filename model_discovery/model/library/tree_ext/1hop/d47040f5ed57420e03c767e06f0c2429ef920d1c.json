@@ -1,0 +1,45 @@
+{
+    "acronym": "d47040f5ed57420e03c767e06f0c2429ef920d1c",
+    "title": "Fibottention: Inceptive Visual Representation Learning with Diverse Attention Across Heads",
+    "seed_ids": [
+        "transformer",
+        "bigbird",
+        "longformer",
+        "295364abf15c24b4ccc11f62882160f51fe915eb",
+        "19921cefb2470b2f5d984ab9ce92ebb94aedf2ea",
+        "a883336e5c2e9f46f5012343227a6be4671c9ca0",
+        "3cbe314cc5407a6c3249815b5173f22ea15173c2",
+        "4badd753be64c5c5b57dd2bb2e515fbe0c0720d8",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "40ca4fcfffa7ca9aa9b7ff06ecf3cd0436712d78",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "2a31319e73d4486716168b65cdf7559baeda18ce",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d47040f5ed57420e03c767e06f0c2429ef920d1c",
+    "abstract": "Visual perception tasks are predominantly solved by Vision Transformer (ViT) architectures, which, despite their effectiveness, encounter a computational bottleneck due to the quadratic complexity of computing self-attention. This inefficiency is largely due to the self-attention heads capturing redundant token interactions, reflecting inherent redundancy within visual data. Many works have aimed to reduce the computational complexity of self-attention in ViTs, leading to the development of efficient and sparse transformer architectures. In this paper, viewing through the efficiency lens, we realized that introducing any sparse self-attention strategy in ViTs can keep the computational overhead low. However, these strategies are sub-optimal as they often fail to capture fine-grained visual details. This observation leads us to propose a general, efficient, sparse architecture, named Fibottention, for approximating self-attention with superlinear complexity that is built upon Fibonacci sequences. The key strategies in Fibottention include: it excludes proximate tokens to reduce redundancy, employs structured sparsity by design to decrease computational demands, and incorporates inception-like diversity across attention heads. This diversity ensures the capture of complementary information through non-overlapping token interactions, optimizing both performance and resource utilization in ViTs for visual representation learning. We embed our Fibottention mechanism into multiple state-of-the-art transformer architectures dedicated to visual tasks. Leveraging only 2-6% of the elements in the self-attention heads, Fibottention in conjunction with ViT and its variants, consistently achieves significant performance boosts compared to standard ViTs in nine datasets across three domains $\\unicode{x2013}$ image classification, video understanding, and robot learning tasks.",
+    "authors": [
+        "Ali Khaleghi Rahimian",
+        "Manish Kumar Govind",
+        "Subhajit Maity",
+        "Dominick Reilly",
+        "Christian Kummerle",
+        "Srijan Das",
+        "A. Dutta"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A general, efficient, sparse architecture for approximating self-attention with superlinear complexity that is built upon Fibonacci sequences is proposed, named Fibottention, which embeds the Fibottention mechanism into multiple state-of-the-art transformer architectures dedicated to visual tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "b6fabf7f4a8549ff22fdac29874c417c44e0dcbd",
+    "title": "Teacher-student knowledge distillation from BERT",
+    "seed_ids": [
+        "gpt",
+        "c1957e25155d713e7599b9d7e1e318c03cd2631a",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf",
+        "e2587eddd57bc4ba286d91b27c185083f16f40ee",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b6fabf7f4a8549ff22fdac29874c417c44e0dcbd",
+    "abstract": "Since 2017, natural language processing (NLP) has seen a revolution due to new neural language models \u2013 Transformers (Vaswani et al., 2017). Pre-trained on large text corpora and widely applicable even for NLP tasks with little data, Transformer models like BERT (Devlin et al., 2019) became widely used. While powerful, these large models are too computationally expensive and slow for many practical applications. This inspired a lot of recent effort in compressing BERT to make it smaller and faster. One particularly promising approach is knowledge distillation, where the large BERT is used as a \u201cteacher\u201d from which much smaller \u201cstudent\u201d models \u201clearn\u201d. Today, there is a lot of work on understanding the linguistic skills possessed by BERT, and on compressing the model using knowledge distillation. However, little is known about the learning process itself and about the skills learnt by the student models. I aim to explore both via practical means: By distilling BERT into two architecturally diverse students on diverse NLP tasks, and by subsequently analysing what the students learnt. For analysis, all models are probed for different linguistic capabilities (as proposed by Conneau et al. (2018)), and the models\u2019 behaviour is inspected in terms of concrete decisions and the confidences with which they are made. Both students \u2013 a down-scaled BERT and a bidirectional LSTM model \u2013 are found to learn well, resulting in models up to 14,000x smaller and 1,100x faster than the teacher. However, each NLP task is shown to rely on different linguistic skills and be of different difficulty, thus requiring a different student size and embedding type (word-level embeddings vs sub-word embeddings). On a difficult linguistic acceptability task, both students\u2019 learning is hindered by their inability to match the teacher\u2019s understanding of semantics. Even where students perform on par with their teacher, they are found to rely on easier cues such as characteristic keywords. Analysing the models\u2019 correctness and confidence patterns shows how all models behave similarly on certain tasks and differ on others, with the shallower BiLSTM student better mimicking the teacher\u2019s behaviour. Finally, by probing all models, I measure and localise diverse linguistic capabilities. Some possessed language knowledge is found to be merely residual (not necessary), and I demonstrate a novel use of probing for tracing such knowledge back to its origins.",
+    "authors": [
+        "Sam Su\u010d\u0301\u0131k"
+    ],
+    "venue": "",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work distilling BERT into two architecturally diverse students on diverse NLP tasks, and subsequently analysing what the students learnt, demonstrates a novel use of probing for tracing such knowledge back to its origins."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

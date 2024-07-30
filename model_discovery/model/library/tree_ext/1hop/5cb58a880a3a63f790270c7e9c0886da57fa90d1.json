@@ -1,0 +1,27 @@
+{
+    "acronym": "5cb58a880a3a63f790270c7e9c0886da57fa90d1",
+    "title": "Modeling interpretable correspondence between cell state and perturbation response with CellCap",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "5cb58a880a3a63f790270c7e9c0886da57fa90d1",
+    "abstract": "Single-cell transcriptomics, in conjunction with genetic and compound perturbations, offers a robust approach for exploring cellular behaviors in diverse contexts. Such experiments allow un-covering cell-state-specific responses to perturbations, a crucial aspect in unraveling the intricate molecular mechanisms governing cellular behavior and potentially discovering novel regulatory pathways and therapeutic targets. However, prevailing computational methods predominantly focus on predicting average cellular responses, disregarding the inherent response heterogeneity associated with cell state diversity. In this study, we present CellCap, a deep generative model designed for the end-to-end analysis of single-cell perturbation experiments. CellCap employs sparse dictionary learning in a latent space to deconstruct cell-state-specific perturbation responses into a set of transcriptional response programs. These programs are then utilized by each perturbation condition and each cell at varying degrees. The incorporation of specific model design choices, such as dot-product cross-attention between cell states and response programs, along with a linearly-decoded latent space, underlay the interpretation power of CellCap. We evaluate CellCap\u2019s model interpretability through multiple simulated scenarios and apply it to two real single-cell perturbation datasets. These datasets feature either heterogeneous cellular populations or a complex experimental setup. Our results demonstrate that CellCap successfully uncovers the relationship between cell state and perturbation response, unveiling novel insights overlooked in previous analyses. The model\u2019s interpretability, coupled with its effectiveness in capturing heterogeneous responses, positions CellCap as a valuable tool for advancing our understanding of cellular behaviors in the context of perturbation experiments.",
+    "authors": [
+        "Yang Xu",
+        "Stephen J. Fleming",
+        "M. Tegtmeyer",
+        "S. Mccarroll",
+        "M. Babadi"
+    ],
+    "venue": "bioRxiv",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results demonstrate that CellCap successfully uncovers the relationship between cell state and perturbation response, unveiling novel insights overlooked in previous analyses and positions CellCap as a valuable tool for advancing the understanding of cellular behaviors in the context of perturbation experiments."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

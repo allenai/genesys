@@ -1,0 +1,25 @@
+{
+    "acronym": "f685c1234eb0ebaef8f96b938fddfa6c5faa280e",
+    "title": "Multi-view Action Recognition via Directed Gromov-Wasserstein Discrepancy",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "f685c1234eb0ebaef8f96b938fddfa6c5faa280e",
+    "abstract": "Action recognition has become one of the popular research topics in computer vision. There are various methods based on Convolutional Networks and self-attention mechanisms as Transformers to solve both spatial and temporal dimensions problems of action recognition tasks that achieve competitive performances. However, these methods lack a guarantee of the correctness of the action subject that the models give attention to, i.e., how to ensure an action recognition model focuses on the proper action subject to make a reasonable action prediction. In this paper, we propose a multi-view attention consistency method that computes the similarity between two attentions from two different views of the action videos using Directed Gromov-Wasserstein Discrepancy. Furthermore, our approach applies the idea of Neural Radiance Field to implicitly render the features from novel views when training on single-view datasets. Therefore, the contributions in this work are three-fold. Firstly, we introduce the multi-view attention consistency to solve the problem of reasonable prediction in action recognition. Secondly, we define a new metric for multi-view consistent attention using Directed Gromov-Wasserstein Discrepancy. Thirdly, we built an action recognition model based on Video Transformers and Neural Radiance Fields. Compared to the recent action recognition methods, the proposed approach achieves state-of-the-art results on three large-scale datasets, i.e., Jester, Something-Something V2, and Kinetics-400.",
+    "authors": [
+        "Hoang-Quan Nguyen",
+        "Thanh-Dat Truong",
+        "Khoa Luu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A multi-view attention consistency method that computes the similarity between two attentions from two different views of the action videos using Directed Gromov-Wasserstein Discrepancy and the idea of Neural Radiance Field to implicitly render the features from novel views when training on single-view datasets is proposed."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

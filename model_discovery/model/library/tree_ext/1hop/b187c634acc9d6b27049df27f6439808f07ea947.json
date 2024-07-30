@@ -1,0 +1,25 @@
+{
+    "acronym": "b187c634acc9d6b27049df27f6439808f07ea947",
+    "title": "Figuratively Speaking: Authorship Attribution via Multi-Task Figurative Language Modeling",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "b187c634acc9d6b27049df27f6439808f07ea947",
+    "abstract": "The identification of Figurative Language (FL) features in text is crucial for various Natural Language Processing (NLP) tasks, where understanding of the author's intended meaning and its nuances is key for successful communication. At the same time, the use of a specific blend of various FL forms most accurately reflects a writer's style, rather than the use of any single construct, such as just metaphors or irony. Thus, we postulate that FL features could play an important role in Authorship Attribution (AA) tasks. We believe that our is the first computational study of AA based on FL use. Accordingly, we propose a Multi-task Figurative Language Model (MFLM) that learns to detect multiple FL features in text at once. We demonstrate, through detailed evaluation across multiple test sets, that the our model tends to perform equally or outperform specialized binary models in FL detection. Subsequently, we evaluate the predictive capability of joint FL features towards the AA task on three datasets, observing improved AA performance through the integration of MFLM embeddings.",
+    "authors": [
+        "Gregorios A. Katsios",
+        "Ning Sa",
+        "T. Strzalkowski"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Multi-task Figurative Language Model (MFLM) that learns to detect multiple FL features in text at once is proposed, demonstrating, through detailed evaluation across multiple test sets, that the model tends to perform equally or outperform specialized binary models in FL detection."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

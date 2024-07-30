@@ -1,0 +1,26 @@
+{
+    "acronym": "48ac4aa7e1d8bfabea4ee39b814fab85aa3e5775",
+    "title": "Language Contamination Helps Explains the Cross-lingual Capabilities of English Pretrained Models",
+    "seed_ids": [
+        "gpt2",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "48ac4aa7e1d8bfabea4ee39b814fab85aa3e5775",
+    "abstract": "English pretrained language models, which make up the backbone of many modern NLP systems, require huge amounts of unlabeled training data. These models are generally presented as being trained only on English text but have been found to transfer surprisingly well to other languages. We investigate this phenomenon and find that common English pretraining corpora actually contain significant amounts of non-English text: even when less than 1% of data is not English (well within the error rate of strong language classifiers), this leads to hundreds of millions of foreign language tokens in large-scale datasets. We then demonstrate that even these small percentages of non-English data facilitate cross-lingual transfer for models trained on them, with target language performance strongly correlated to the amount of in-language data seen during pretraining. In light of these findings, we argue that no model is truly monolingual when pretrained at scale, which should be considered when evaluating cross-lingual transfer.",
+    "authors": [
+        "Terra Blevins",
+        "Luke Zettlemoyer"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is argued that no model is truly monolingual when pretrained at scale, which should be considered when evaluating cross-lingual transfer."
+    },
+    "citationCount": 61,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

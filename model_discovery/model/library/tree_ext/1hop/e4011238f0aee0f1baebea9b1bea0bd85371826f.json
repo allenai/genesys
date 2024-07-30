@@ -1,0 +1,34 @@
+{
+    "acronym": "e4011238f0aee0f1baebea9b1bea0bd85371826f",
+    "title": "Benchmarking and In-depth Performance Study of Large Language Models on Habana Gaudi Processors",
+    "seed_ids": [
+        "gpt",
+        "performer",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87"
+    ],
+    "s2id": "e4011238f0aee0f1baebea9b1bea0bd85371826f",
+    "abstract": "Transformer models have achieved remarkable success in various machine learning tasks but suffer from high computational complexity and resource requirements. The quadratic complexity of the self-attention mechanism further exacerbates these challenges when dealing with long sequences and large datasets. Specialized AI hardware accelerators, such as the Habana GAUDI architecture, offer a promising solution to tackle these issues. GAUDI features a Matrix Multiplication Engine (MME) and a cluster of fully programmable Tensor Processing Cores (TPC). This paper explores the untapped potential of using GAUDI processors to accelerate Transformer-based models, addressing key challenges in the process. Firstly, we provide a comprehensive performance comparison between the MME and TPC components, illuminating their relative strengths and weaknesses. Secondly, we explore strategies to optimize MME and TPC utilization, offering practical insights to enhance computational efficiency. Thirdly, we evaluate the performance of Transformers on GAUDI, particularly in handling long sequences and uncovering performance bottlenecks. Lastly, we evaluate the end-to-end performance of two Transformer-based large language models (LLM) on GAUDI. The contributions of this work encompass practical insights for practitioners and researchers alike. We delve into GAUDI\u2019s capabilities for Transformers through systematic profiling, analysis, and optimization exploration. Our study bridges a research gap and offers a roadmap for optimizing Transformer-based model training on the GAUDI architecture.",
+    "authors": [
+        "Chengming Zhang",
+        "Baixi Sun",
+        "Xiaodong Yu",
+        "Zhen Xie",
+        "Weijian Zheng",
+        "K. Iskra",
+        "Pete Beckman",
+        "Dingwen Tao"
+    ],
+    "venue": "SC Workshops",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study bridges a research gap and offers a roadmap for optimizing Transformer-based model training on the GAUDI architecture through systematic profiling, analysis, and optimization exploration."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

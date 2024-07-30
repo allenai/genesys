@@ -1,0 +1,33 @@
+{
+    "acronym": "90de947a4c324d1a8ff8e72843ccc465b72b49c4",
+    "title": "FinGPT-HPC: Efficient Pretraining and Finetuning Large Language Models for Financial Applications with High-Performance Computing",
+    "seed_ids": [
+        "gpt2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28"
+    ],
+    "s2id": "90de947a4c324d1a8ff8e72843ccc465b72b49c4",
+    "abstract": "Large language models (LLMs) are computationally intensive. The computation workload and the memory footprint grow quadratically with the dimension (layer width). Most of LLMs' parameters come from the linear layers of the transformer structure and are highly redundant. These linear layers contribute more than 80% of the computation workload and 99% of the model size. To pretrain and finetune LLMs efficiently, there are three major challenges to address: 1) reducing redundancy of the linear layers; 2) reducing GPU memory footprint; 3) improving GPU utilization when using distributed training. Prior methods, such as LoRA and QLoRA, utilized low-rank matrices and quantization to reduce the number of trainable parameters and model size, respectively. However, the resulting model still consumes a large amount of GPU memory. In this paper, we present high-performance GPU-based methods that exploit low-rank structures to pretrain and finetune LLMs for financial applications. We replace one conventional linear layer of the transformer structure with two narrower linear layers, which allows us to reduce the number of parameters by several orders of magnitude. By quantizing the parameters into low precision (8-bit and 4-bit), the memory consumption of the resulting model is further reduced. Compared with existing LLMs, our methods achieve a speedup of 1.3X and a model compression ratio of 2.64X for pretaining without accuracy drop. For finetuning, our methods achieve an average accuracy increase of 6.3% and 24.0% in general tasks and financial tasks, respectively, and GPU memory consumption ratio of 6.3X. The sizes of our models are smaller than 0.59 GB, allowing inference on a smartphone.",
+    "authors": [
+        "Xiao-Yang Liu",
+        "Jie Zhang",
+        "Guoxuan Wang",
+        "Weiqin Tong",
+        "Anwar Elwalid"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "High-performance GPU-based methods that exploit low-rank structures to pretrain and finetune LLMs for financial applications are presented, which replace one conventional linear layer of the transformer structure with two narrower linear layers, which allows the number of parameters to be reduced by several orders of magnitude."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

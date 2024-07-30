@@ -1,0 +1,35 @@
+{
+    "acronym": "bbd6d6874a8ca1c155bcfb540e8d55199944cdc5",
+    "title": "RoAST: Robustifying Language Models via Adversarial Perturbation with Selective Training",
+    "seed_ids": [
+        "gpt2",
+        "bert",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "bbd6d6874a8ca1c155bcfb540e8d55199944cdc5",
+    "abstract": "Fine-tuning pre-trained language models (LMs) has become the de facto standard in many NLP tasks. Nevertheless, fine-tuned LMs are still prone to robustness issues, such as adversarial robustness and model calibration. Several perspectives of robustness for LMs have been studied independently, but lacking a unified consideration in multiple perspectives. In this paper, we propose Robustifying LMs via Adversarial perturbation with Selective Training (RoAST), a simple yet effective fine-tuning technique to enhance the multi-perspective robustness of LMs in a unified way. RoAST effectively incorporates two important sources for the model robustness, robustness on the perturbed inputs and generalizable knowledge in pre-trained LMs. To be specific, RoAST introduces adversarial perturbation during fine-tuning while the model parameters are selectively updated upon their relative importance to minimize unnecessary deviation. Under a unified evaluation of fine-tuned LMs by incorporating four representative perspectives of model robustness, we demonstrate the effectiveness of RoAST compared to state-of-the-art fine-tuning methods on six different types of LMs, which indicates its usefulness in practice.",
+    "authors": [
+        "Jaehyung Kim",
+        "Yuning Mao",
+        "Rui Hou",
+        "Hanchao Yu",
+        "Davis Liang",
+        "Pascale Fung",
+        "Qifan Wang",
+        "Fuli Feng",
+        "Lifu Huang",
+        "Madian Khabsa"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Under a unified evaluation of fine-tuned LMs by incorporating four representative perspectives of model robustness, the effectiveness of RoAST is demonstrated compared to state-of-the-art fine- tuning methods on six different types of LMs, which indicates its usefulness in practice."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

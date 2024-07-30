@@ -1,0 +1,27 @@
+{
+    "acronym": "d81f4f03913a0087e9b623f6d0dbd9f169b971f5",
+    "title": "Better Automatic Evaluation of Open-Domain Dialogue Systems with Contextualized Embeddings",
+    "seed_ids": [
+        "gpt",
+        "f6fbb6809374ca57205bd2cf1421d4f4fa04f975"
+    ],
+    "s2id": "d81f4f03913a0087e9b623f6d0dbd9f169b971f5",
+    "abstract": "Despite advances in open-domain dialogue systems, automatic evaluation of such systems is still a challenging problem. Traditional reference-based metrics such as BLEU are ineffective because there could be many valid responses for a given context that share no common words with reference responses. A recent work proposed Referenced metric and Unreferenced metric Blended Evaluation Routine (RUBER) to combine a learning-based metric, which predicts relatedness between a generated response and a given query, with reference-based metric; it showed high correlation with human judgments. In this paper, we explore using contextualized word embeddings to compute more accurate relatedness scores, thus better evaluation metrics. Experiments show that our evaluation metrics outperform RUBER, which is trained on static embeddings.",
+    "authors": [
+        "Sarik Ghazarian",
+        "Johnny Tian-Zheng Wei",
+        "A. Galstyan",
+        "Nanyun Peng"
+    ],
+    "venue": "Proceedings of the Workshop on Methods for Optimizing and Evaluating Neural Language Generation",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Using contextualized word embeddings to compute more accurate relatedness scores and thus better evaluation metrics is explored, and experiments show that the evaluation metrics outperform RUBER, which is trained on staticembeddings."
+    },
+    "citationCount": 87,
+    "influentialCitationCount": 23,
+    "code": null,
+    "description": null,
+    "url": null
+}

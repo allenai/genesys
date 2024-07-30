@@ -1,0 +1,28 @@
+{
+    "acronym": "9f7f67870b6625084166aa7ed58200c75f5947d0",
+    "title": "Towards More Realistic Generation of Information-Seeking Conversations",
+    "seed_ids": [
+        "longformer",
+        "ba2a423d8c7ae6cfa3424fb13bdbe3a35e5f2273",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "9f7f67870b6625084166aa7ed58200c75f5947d0",
+    "abstract": "In this paper, we introduce a novel framework SimSeek ( sim ulating information-seek ing conversation from unlabeled documents) and compare two variants of it to provide a deeper perspective into the information-seeking behavior. We \ufb01rst introduce a strong simulator for information-sym metric conversation, SimSeek-sym, where questioner and answerer share all knowledge when conversing with one another. Although it simulates reasonable conversations, we take a further step toward more realistic information-seeking conversation. Hence, we propose SimSeek-asym that assumes information asym metry between two agents, which encourages the questioner to seek new information from an inaccessible document. In our experiments, we demonstrate that SimSeek-asym successfully generates information-seeking conversations for two downstream tasks, CQA and conversational search. In particular, SimSeek-asym improves baseline models by 1.1-1.9 F1 score in QuAC (Choi et al., 2018), and by 1.1 of MRR in OR-QuAC (Qu et al., 2020). Moreover, we thoroughly analyze our synthetic datasets to identify crucial factors for realistic information-seeking conversation.",
+    "authors": [
+        "Gangwoo Kim",
+        "Sungdong Kim",
+        "Kang Min Yoo",
+        "Jaewoo Kang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes SimSeek-asym, a novel framework that assumes information asym metry between two agents, which encourages the questioner to seek new information from an inaccessible document, and demonstrates that SimSeek-asym successfully generates information-seeking conversations for two downstream tasks."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

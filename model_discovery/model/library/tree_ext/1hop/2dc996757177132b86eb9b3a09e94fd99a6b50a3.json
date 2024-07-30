@@ -1,0 +1,26 @@
+{
+    "acronym": "2dc996757177132b86eb9b3a09e94fd99a6b50a3",
+    "title": "LIGHTPAFF: A TWO-STAGE DISTILLATION FRAME-",
+    "seed_ids": [
+        "gpt",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2dc996757177132b86eb9b3a09e94fd99a6b50a3",
+    "abstract": "While pre-training and fine-tuning, e.g., BERT (Devlin et al., 2018), GPT-2 (Radford et al., 2019), have achieved great success in language understanding and generation tasks, the pre-trained models are usually too big for online deployment in terms of both memory cost and inference speed, which hinders them from practical online usage. In this paper, we propose LightPAFF, a Lightweight Pre-training And Fine-tuning Framework that leverages two-stage knowledge distillation to transfer knowledge from a big teacher model to a lightweight student model in both pre-training and fine-tuning stages. In this way the lightweight model can achieve similar accuracy as the big teacher model, but with much fewer parameters and thus faster online inference speed. LightPAFF can support different pretraining methods (such as BERT, GPT-2 and MASS (Song et al., 2019)) and be applied to many downstream tasks. Experiments on three language understanding tasks, three language modeling tasks and three sequence to sequence generation tasks demonstrate that while achieving similar accuracy with the big BERT, GPT-2 and MASS models, LightPAFF reduces the model size by nearly 5x and improves online inference speed by 5x-7x.",
+    "authors": [],
+    "venue": "",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "LightPAFF is proposed, a Lightweight Pre-training And Fine-tuning Framework that leverages two-stage knowledge distillation to transfer knowledge from a big teacher model to a lightweight student model in both pre-training and fine- Tuning stages so that the lightweight model can achieve similar accuracy as thebig teacher model, but with much fewer parameters and thus faster online inference speed."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

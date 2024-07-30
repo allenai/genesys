@@ -1,0 +1,28 @@
+{
+    "acronym": "a932b662645ab4a348c44c73bb81876cb415ae95",
+    "title": "DE-COP: Detecting Copyrighted Content in Language Models Training Data",
+    "seed_ids": [
+        "gpt3",
+        "c21d3ac8a235e2ee5f783c4c8a146f6fd3ae12e5",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a932b662645ab4a348c44c73bb81876cb415ae95",
+    "abstract": "How can we detect if copyrighted content was used in the training process of a language model, considering that the training data is typically undisclosed? We are motivated by the premise that a language model is likely to identify verbatim excerpts from its training text. We propose DE-COP, a method to determine whether a piece of copyrighted content was included in training. DE-COP's core approach is to probe an LLM with multiple-choice questions, whose options include both verbatim text and their paraphrases. We construct BookTection, a benchmark with excerpts from 165 books published prior and subsequent to a model's training cutoff, along with their paraphrases. Our experiments show that DE-COP surpasses the prior best method by 9.6% in detection performance (AUC) on models with logits available. Moreover, DE-COP also achieves an average accuracy of 72% for detecting suspect books on fully black-box models where prior methods give approximately 4% accuracy. The code and datasets are available at https://github.com/LeiLiLab/DE-COP.",
+    "authors": [
+        "Andr\u00e9 V. Duarte",
+        "Xuandong Zhao",
+        "Arlindo L. Oliveira",
+        "Lei Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DE-COP is proposed, a method to determine whether a piece of copyrighted content was included in training of a language model, and achieves an average accuracy of 72% for detecting suspect books on fully black-box models where prior methods give approximately 4% accuracy."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

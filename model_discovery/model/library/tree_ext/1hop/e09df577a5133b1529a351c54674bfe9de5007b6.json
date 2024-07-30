@@ -1,0 +1,27 @@
+{
+    "acronym": "e09df577a5133b1529a351c54674bfe9de5007b6",
+    "title": "Linking negative herding effect to online public opinion: A new BiGADG approach for sentiment classification",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "e09df577a5133b1529a351c54674bfe9de5007b6",
+    "abstract": "The negative herding effect tends to cause the spread of negative emotions among netizens, resulting in significant public opinion crises. Therefore, linking the negative herding effect and online public opinion, we aim to exploring the connection between netizens' emotions, opinions, and the negative herding effect. To better distinguish the emotions in texts, a new BiGADG (Bidirectional Gated recurrent unit based on Attention with Distance\u2010based dependency syntax Graph convolutional network) model is proposed in this article. This model includes primarily the proposed dependency syntax based on dependency distance, Bidirectional Gated Recurrent Unit (BiGRU), multi\u2010head self\u2010attention and Graph Convolutional Network (GCN). Particularly, the dependency syntax based on dependency distances incorporates word\u2010to\u2010word dependency distances into the traditional dependency syntax, which enriches the syntactic structural features of the text. After the experiments, the accuracy of BiGADG model is 86.53%, which is 3.11% higher compared to BERT model. It is evident that our model for sentiment classification has been improved. Based on the results of sentiment classification, we investigate the existence of negative herding behaviour and its underlying motivation in online public opinion. We have found that the negative herding effect, if not effectively managed, may trigger large\u2010scale and uncontrollable public opinion crises.",
+    "authors": [
+        "Yiyin Zhou",
+        "Yanrong Hu",
+        "Hongjiu Liu",
+        "Ping Huang",
+        "Dan Dai"
+    ],
+    "venue": "Expert Syst. J. Knowl. Eng.",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The existence of negative herding behaviour and its underlying motivation in online public opinion is investigated and it is found that the negative herding effect, if not effectively managed, may trigger large\u2010scale and uncontrollable public opinion crises."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

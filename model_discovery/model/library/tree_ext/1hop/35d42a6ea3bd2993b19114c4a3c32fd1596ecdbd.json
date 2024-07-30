@@ -1,0 +1,25 @@
+{
+    "acronym": "35d42a6ea3bd2993b19114c4a3c32fd1596ecdbd",
+    "title": "LSP: Acceleration of Graph Neural Networks via Locality Sensitive Pruning of Graphs",
+    "seed_ids": [
+        "reformer"
+    ],
+    "s2id": "35d42a6ea3bd2993b19114c4a3c32fd1596ecdbd",
+    "abstract": "Graph Neural Networks (GNNs) have emerged as highly successful tools for graph-related tasks. However, real- world problems involve very large graphs, and the compute resources needed to fit GNNs to those problems grow rapidly. Moreover, the noisy nature and size of real-world graphs cause GNNs to over-fit if not regularized properly. Surprisingly, recent works show that large graphs often involve many redundant components that can be removed without compromising the per- formance too much. This includes node or edge removals during inference through GNNs layers or as a pre-processing step that sparsifies the input graph. This intriguing phenomenon enables the development of state-of-the-art GNNs that are both efficient and accurate. In this paper, we take a further step towards demystifying this phenomenon and propose a systematic method called Locality-Sensitive Pruning (LSP) for graph pruning based on Locality-Sensitive Hashing. We aim to sparsify a graph so that similar local environments of the original graph result in similar environments in the resulting sparsified graph, which is an essential feature for graph-related tasks. To justify the application of pruning based on local graph properties, we exemplify the advantage of applying pruning based on locality properties over other pruning strategies in various scenarios. Extensive experiments on synthetic and real-world datasets demonstrate the superiority of LSP, which removes a significant amount of edges from large graphs without compromising the performance, accompanied by a considerable acceleration.",
+    "authors": [
+        "Eitan Kosman",
+        "J. Oren",
+        "Dotan Di Castro"
+    ],
+    "venue": "2022 IEEE International Conference on Data Mining Workshops (ICDMW)",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The aim of LSP is to sparsify a graph so that similar local environments of the original graph result in similar environments in the resulting sparsified graph, which is an essential feature for graph-related tasks."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

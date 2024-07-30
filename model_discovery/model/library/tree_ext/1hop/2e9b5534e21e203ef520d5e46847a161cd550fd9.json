@@ -1,0 +1,32 @@
+{
+    "acronym": "2e9b5534e21e203ef520d5e46847a161cd550fd9",
+    "title": "EHRKit: A Python Natural Language Processing Toolkit for Electronic Health Record Texts",
+    "seed_ids": [
+        "bigbird",
+        "caf3df05598d26698c700d57fd044c0bcd34a0d6",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "2e9b5534e21e203ef520d5e46847a161cd550fd9",
+    "abstract": "The Electronic Health Record (EHR) is an essential part of the modern medical system and impacts healthcare delivery, operations, and research. Unstructured text is attracting much attention despite structured information in the EHRs and has become an exciting research field. The success of the recent neural Natural Language Processing (NLP) method has led to a new direction for processing unstructured clinical notes. In this work, we create a python library for clinical texts, EHRKit. This library contains two main parts: MIMIC-III-specific functions and tasks specific functions. The first part introduces a list of interfaces for accessing MIMIC-III NOTEEVENTS data, including basic search, information retrieval, and information extraction. The second part integrates many third-party libraries for up to 12 off-shelf NLP tasks such as named entity recognition, summarization, machine translation, etc.",
+    "authors": [
+        "Irene Li",
+        "Keen You",
+        "Xiangru Tang",
+        "Yujie Qiao",
+        "Lucas Huang",
+        "Chia-Chun Hsieh",
+        "Benjamin Rosand",
+        "Dragomir R. Radev"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work creates a python library for clinical texts, EHRKit, which integrates many third-party libraries for up to 12 off-shelf NLP tasks such as named entity recognition, summarization, machine translation, etc."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

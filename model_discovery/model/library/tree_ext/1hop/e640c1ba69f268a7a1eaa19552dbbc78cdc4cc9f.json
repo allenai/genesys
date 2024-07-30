@@ -1,0 +1,31 @@
+{
+    "acronym": "e640c1ba69f268a7a1eaa19552dbbc78cdc4cc9f",
+    "title": "Limits of Deep Learning: Sequence Modeling through the Lens of Complexity Theory",
+    "seed_ids": [
+        "s4",
+        "c264e98dcf3d9ee5365b87a882445a7aacbb0e70",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "e82e3f4347674b75c432cb80604d38ee630d4bf6",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51"
+    ],
+    "s2id": "e640c1ba69f268a7a1eaa19552dbbc78cdc4cc9f",
+    "abstract": "Deep learning models have achieved significant success across various applications but continue to struggle with tasks requiring complex reasoning over sequences, such as function composition and compositional tasks. Despite advancements, models like Structured State Space Models (SSMs) and Transformers underperform in deep compositionality tasks due to inherent architectural and training limitations. Maintaining accuracy over multiple reasoning steps remains a primary challenge, as current models often rely on shortcuts rather than genuine multi-step reasoning, leading to performance degradation as task complexity increases. Existing research highlights these shortcomings but lacks comprehensive theoretical and empirical analysis for SSMs. Our contributions address this gap by providing a theoretical framework based on complexity theory to explain SSMs' limitations. Moreover, we present extensive empirical evidence demonstrating how these limitations impair function composition and algorithmic task performance. Our experiments reveal significant performance drops as task complexity increases, even with Chain-of-Thought (CoT) prompting. Models frequently resort to shortcuts, leading to errors in multi-step reasoning. This underscores the need for innovative solutions beyond current deep learning paradigms to achieve reliable multi-step reasoning and compositional task-solving in practical applications.",
+    "authors": [
+        "Nikola Zubi'c",
+        "Federico Sold'a",
+        "Aurelio Sulser",
+        "Davide Scaramuzza"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work provides a theoretical framework based on complexity theory to explain Structured State Space Models' limitations and presents extensive empirical evidence demonstrating how these limitations impair function composition and algorithmic task performance."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

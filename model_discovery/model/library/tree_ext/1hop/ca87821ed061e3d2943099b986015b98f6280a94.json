@@ -1,0 +1,28 @@
+{
+    "acronym": "ca87821ed061e3d2943099b986015b98f6280a94",
+    "title": "Siamese Biattention Pooling Network for Change Detection in Remote Sensing",
+    "seed_ids": [
+        "metaformer"
+    ],
+    "s2id": "ca87821ed061e3d2943099b986015b98f6280a94",
+    "abstract": "Change detection (CD) in remote sensing aims to identify variations in image pairs captured at the same location but different times. While recent deep learning approaches, particularly those incorporating attention mechanisms, have achieved encouraging results on this task, they often fall short of comprehensively exploiting the change relevant patterns that are present in paired images. In this study, we propose a novel deep learning architecture, namely Siamese Bi-Attention Pooling Network (SBA-PN), to emphasize broad-scale change patterns by exploiting both intraimage and interimage contexts. The overall structure of SBA-PN aligns with the U-Net based encoder-decoder paradigm. A Siamese Transformer-like encoder formulates paired multiscale feature maps. To effectively emphasize change relevant patterns, a spatial optimal pooling module is devised, replacing the conventional self-attention mechanism. A contrastive pixel-wise supervision scheme is designed for shallow encoder layers in pursuit of change-aware feature maps. Next, the decoder mirrors the multiscale design, which formulates difference maps using a novel biattention mechanism from paired feature maps. During the decoding phase, a channel deviation pooling module is devised to further emphasize salient change regions. Comprehensive experimental results demonstrate the effectiveness of the proposed method with the state-of-the-art performance on two commonly used benchmark datasets, Sun Yat-Sen University (SYSU)-CD and LEarning VIsion Remote sensing (LEVIR)-CD.",
+    "authors": [
+        "He-Ju Chen",
+        "Kun Hu",
+        "P. Filippi",
+        "Wei Xiang",
+        "Thomas F. A. Bishop",
+        "Zhiyong Wang"
+    ],
+    "venue": "IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel deep learning architecture, namely Siamese Bi-Attention Pooling Network (SBA-PN), is proposed to emphasize broad-scale change patterns by exploiting both intraimage and interimage contexts and demonstrates the effectiveness with the state-of-the-art performance on two commonly used benchmark datasets."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

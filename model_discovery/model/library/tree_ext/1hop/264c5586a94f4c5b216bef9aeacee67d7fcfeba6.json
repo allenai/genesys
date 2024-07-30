@@ -1,0 +1,31 @@
+{
+    "acronym": "264c5586a94f4c5b216bef9aeacee67d7fcfeba6",
+    "title": "ConcEPT: Concept-Enhanced Pre-Training for Language Models",
+    "seed_ids": [
+        "bert",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "f48ae425e2567be2d993efcaaf74c2274fc9d7c5",
+        "031e4e43aaffd7a479738dcea69a2d5be7957aa3"
+    ],
+    "s2id": "264c5586a94f4c5b216bef9aeacee67d7fcfeba6",
+    "abstract": "Pre-trained language models (PLMs) have been prevailing in state-of-the-art methods for natural language processing, and knowledge-enhanced PLMs are further proposed to promote model performance in knowledge-intensive tasks. However, conceptual knowledge, one essential kind of knowledge for human cognition, still remains understudied in this line of research. This limits PLMs' performance in scenarios requiring human-like cognition, such as understanding long-tail entities with concepts. In this paper, we propose ConcEPT, which stands for Concept-Enhanced Pre-Training for language models, to infuse conceptual knowledge into PLMs. ConcEPT exploits external taxonomies with entity concept prediction, a novel pre-training objective to predict the concepts of entities mentioned in the pre-training contexts. Unlike previous concept-enhanced methods, ConcEPT can be readily adapted to various downstream applications without entity linking or concept mapping. Results of extensive experiments show the effectiveness of ConcEPT in four tasks such as entity typing, which validates that our model gains improved conceptual knowledge with concept-enhanced pre-training.",
+    "authors": [
+        "Xintao Wang",
+        "Zhouhong Gu",
+        "Jiaqing Liang",
+        "Dakuan Lu",
+        "Yanghua Xiao",
+        "Wei Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Results of extensive experiments show the effectiveness of ConcEPT in four tasks such as entity typing, which validates that the model gains improved conceptual knowledge with concept-enhanced pre-training."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

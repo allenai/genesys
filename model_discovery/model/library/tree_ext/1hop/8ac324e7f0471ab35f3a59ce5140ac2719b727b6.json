@@ -1,0 +1,32 @@
+{
+    "acronym": "8ac324e7f0471ab35f3a59ce5140ac2719b727b6",
+    "title": "Local Knowledge Powered Conversational Agents",
+    "seed_ids": [
+        "gpt",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "791c3c30f2af10ac06f4fbc5b1e8960064aacbc7",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8ac324e7f0471ab35f3a59ce5140ac2719b727b6",
+    "abstract": "State-of-the-art conversational agents have advanced significantly in conjunction with the use of large transformer-based language models. However, even with these advancements, conversational agents still lack the ability to produce responses that are informative and coherent with the local context. In this work, we propose a dialog framework that incorporates both local knowledge as well as users' past dialogues to generate high quality conversations. We introduce an approach to build a dataset based on Reddit conversations, where outbound URL links are widely available in the conversations and the hyperlinked documents can be naturally included as local external knowledge. Using our framework and dataset, we demonstrate that incorporating local knowledge can largely improve informativeness, coherency and realisticness measures using human evaluations. In particular, our approach consistently outperforms the state-of-the-art conversational model on the Reddit dataset across all three measures. We also find that scaling the size of our models from 117M to 8.3B parameters yields consistent improvement of validation perplexity as well as human evaluated metrics. Our model with 8.3B parameters can generate human-like responses as rated by various human evaluations in a single-turn dialog setting.",
+    "authors": [
+        "Sashank Santhanam",
+        "Wei Ping",
+        "Raul Puri",
+        "M. Shoeybi",
+        "M. Patwary",
+        "Bryan Catanzaro"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a dialog framework that incorporates both local knowledge as well as users' past dialogues to generate high quality conversations and demonstrates that incorporating local knowledge can largely improve informativeness, coherency and realisticness measures using human evaluations."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

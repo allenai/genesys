@@ -1,0 +1,26 @@
+{
+    "acronym": "245493ef01b0201452d940542f58b62d1661fc6a",
+    "title": "A STEP towards Interpretable Multi-Hop Reasoning:Bridge Phrase Identification and Query Expansion",
+    "seed_ids": [
+        "longformer",
+        "2c953a3c378b40dadf2e3fb486713c8608b8e282",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "245493ef01b0201452d940542f58b62d1661fc6a",
+    "abstract": "We propose an unsupervised method for the identification of bridge phrases in multi-hop question answering (QA). Our method constructs a graph of noun phrases from the question and the available context, and applies the Steiner tree algorithm to identify the minimal sub-graph that connects all question phrases. Nodes in the sub-graph that bridge loosely-connected or disjoint subsets of question phrases due to low-strength semantic relations are extracted as bridge phrases. The identified bridge phrases are then used to expand the query based on the initial question, helping in increasing the relevance of evidence that has little lexical overlap or semantic relation with the question. Through an evaluation on HotpotQA, a popular dataset for multi-hop QA, we show that our method yields: (a) improved evidence retrieval, (b) improved QA performance when using the retrieved sentences; and (c) effective and faithful explanations when answers are provided.",
+    "authors": [
+        "Fan Luo",
+        "M. Surdeanu"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An unsupervised method for the identification of bridge phrases in multi-hop question answering (QA) that constructs a graph of noun phrases from the question and the available context and applies the Steiner tree algorithm to identify the minimal sub-graph that connects all question phrases."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

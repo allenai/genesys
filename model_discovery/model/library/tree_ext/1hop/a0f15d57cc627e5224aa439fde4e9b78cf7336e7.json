@@ -1,0 +1,35 @@
+{
+    "acronym": "a0f15d57cc627e5224aa439fde4e9b78cf7336e7",
+    "title": "A Theory for Length Generalization in Learning to Reason",
+    "seed_ids": [
+        "elgllm",
+        "2fc074288f66711e4ee37350d364e74c1c401163",
+        "1ec3a3ff77cb4b424499b3805ecc90182ecd8f8b",
+        "200fcd964f41efe0c35a3f888a520ede08a3269c",
+        "6f6e2e0311589a9af045f6acd00b7dee6d19fce4",
+        "af385c0fdd0eda2bbf429bea6fedffc327c8a180",
+        "465ec2212d865e875e64638b3dd1ecaac21c5ddd",
+        "9575afb5702bc33d7df14c48feeee5901ea00369",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "92173d081b15824d22a9ef070e118744ceee8052",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "e3aa232577bb427b1f3a34acbdef84bd85734042"
+    ],
+    "s2id": "a0f15d57cc627e5224aa439fde4e9b78cf7336e7",
+    "abstract": "Length generalization (LG) is a challenging problem in learning to reason. It refers to the phenomenon that when trained on reasoning problems of smaller lengths or sizes, the resulting model struggles with problems of larger sizes or lengths. Although LG has been studied by many researchers, the challenge remains. This paper proposes a theoretical study of LG for problems whose reasoning processes can be modeled as DAGs (directed acyclic graphs). The paper first identifies and proves the conditions under which LG can be achieved in learning to reason. It then designs problem representations based on the theory to learn to solve challenging reasoning problems like parity, addition, and multiplication, using a Transformer to achieve perfect LG.",
+    "authors": [
+        "Changnan Xiao",
+        "Bing Liu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The paper first identifies and proves the conditions under which LG can be achieved in learning to reason, and designs problem representations based on the theory to learn to solve challenging reasoning problems like parity, addition, and multiplication."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

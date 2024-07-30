@@ -1,0 +1,25 @@
+{
+    "acronym": "8a08373ed0977a35e1ca20689e08fbbb28010fc0",
+    "title": "Separating the Wheat from the Chaff with BREAD: An open-source benchmark and metrics to detect redundancy in text",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "8a08373ed0977a35e1ca20689e08fbbb28010fc0",
+    "abstract": "Data quality is a problem that perpetually resurfaces throughout the field of NLP, regardless of task, domain, or architecture, and remains especially severe for lower-resource languages. A typical and insidious issue, affecting both training data and model output, is data that is repetitive and dominated by linguistically uninteresting boilerplate, such as price catalogs or computer-generated log files. Though this problem permeates many web-scraped corpora, there has yet to be a benchmark to test against, or a systematic study to find simple metrics that generalize across languages and agree with human judgements of data quality. In the present work, we create and release BREAD, a human-labeled benchmark on repetitive boilerplate vs. plausible linguistic content, spanning 360 languages. We release several baseline CRED (Character REDundancy) scores along with it, and evaluate their effectiveness on BREAD. We hope that the community will use this resource to develop better filtering methods, and that our reference implementations of CRED scores can become standard corpus evaluation tools, driving the development of cleaner language modeling corpora, especially in low-resource languages.",
+    "authors": [
+        "Isaac Caswell",
+        "Lisa Wang",
+        "Isabel Papadimitriou"
+    ],
+    "venue": "IEEE Games Entertainment Media Conference",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work creates and releases BREAD, a human-labeled benchmark on repetitive boilerplate vs. plausible linguistic content, spanning 360 languages, and releases several baseline CRED (Character REDundancy) scores along with it, and evaluates their effectiveness on BREAD."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

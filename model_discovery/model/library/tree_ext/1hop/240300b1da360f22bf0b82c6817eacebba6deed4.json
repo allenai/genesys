@@ -1,0 +1,41 @@
+{
+    "acronym": "240300b1da360f22bf0b82c6817eacebba6deed4",
+    "title": "What Makes Convolutional Models Great on Long Sequence Modeling?",
+    "seed_ids": [
+        "s4",
+        "lssl",
+        "synthesizer",
+        "70e91e16eb321067d9402710e14a40cf28311f73",
+        "a30ac45ac5b7bd2148d3fb80ee7f3c29724e3170",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "c49ac1f916d6d2edeb187e6619c8d23acd95eb21",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "0d508600d77d8a7e6a655cdb6d139779732f649f",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "1d5c8c6e5a774d2fef8d92bd28670a6345a97f7a",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "240300b1da360f22bf0b82c6817eacebba6deed4",
+    "abstract": "Convolutional models have been widely used in multiple domains. However, most existing models only use local convolution, making the model unable to handle long-range dependency efficiently. Attention overcomes this problem by aggregating global information but also makes the computational complexity quadratic to the sequence length. Recently, Gu et al. [2021] proposed a model called S4 inspired by the state space model. S4 can be efficiently implemented as a global convolutional model whose kernel size equals the input sequence length. S4 can model much longer sequences than Transformers and achieve significant gains over SoTA on several long-range tasks. Despite its empirical success, S4 is involved. It requires sophisticated parameterization and initialization schemes. As a result, S4 is less intuitive and hard to use. Here we aim to demystify S4 and extract basic principles that contribute to the success of S4 as a global convolutional model. We focus on the structure of the convolution kernel and identify two critical but intuitive principles enjoyed by S4 that are sufficient to make up an effective global convolutional model: 1) The parameterization of the convolutional kernel needs to be efficient in the sense that the number of parameters should scale sub-linearly with sequence length. 2) The kernel needs to satisfy a decaying structure that the weights for convolving with closer neighbors are larger than the more distant ones. Based on the two principles, we propose a simple yet effective convolutional model called Structured Global Convolution (SGConv). SGConv exhibits strong empirical performance over several tasks: 1) With faster speed, SGConv surpasses S4 on Long Range Arena and Speech Command datasets. 2) When plugging SGConv into standard language and vision models, it shows the potential to improve both efficiency and performance.",
+    "authors": [
+        "Yuhong Li",
+        "Tianle Cai",
+        "Yi Zhang",
+        "De-huai Chen",
+        "Debadeepta Dey"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A simple yet effective convolutional model called Structured Global Convolution (SGConv), which exhibits strong empirical performance over several tasks and shows the potential to improve both efficiency and performance when plugging SGConv into standard language and vision models."
+    },
+    "citationCount": 70,
+    "influentialCitationCount": 14,
+    "code": null,
+    "description": null,
+    "url": null
+}

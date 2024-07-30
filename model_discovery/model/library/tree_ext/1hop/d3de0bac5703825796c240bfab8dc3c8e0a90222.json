@@ -1,0 +1,32 @@
+{
+    "acronym": "d3de0bac5703825796c240bfab8dc3c8e0a90222",
+    "title": "Impact of Code Language Models on Automated Program Repair",
+    "seed_ids": [
+        "gpt",
+        "e37155d21818513bd40d64ee212099aac82bd6f8",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d3de0bac5703825796c240bfab8dc3c8e0a90222",
+    "abstract": "Automated program repair (APR) aims to help developers improve software reliability by generating patches for buggy programs. Although many code language models (CLM) are developed and effective in many software tasks such as code completion, there has been little comprehensive, in-depth work to evaluate CLMs' fixing capabilities and to fine-tune CLMs for the APR task. Firstly, this work is the first to evaluate ten CLMs on four APR benchmarks, which shows that surprisingly, the best CLM, as is, fixes 72% more bugs than the state-of-the-art deep-learning (DL)-based APR techniques. Secondly, one of the four APR benchmarks was created by us in this paper to avoid data leaking for a fair evaluation. Thirdly, it is the first work to fine-tune CLMs with APR training data, which shows that fine-tuning brings 31%-1,267% improvement to CLMs and enables them to fix 46%-164 % more bugs than existing DL-based APR techniques. Fourthly, this work studies the impact of buggy lines, showing that CLMs, as is, cannot make good use of the buggy lines to fix bugs, yet fine-tuned CLMs could potentially over-rely on buggy lines. Lastly, this work analyzes the size, time, and memory efficiency of different CLMs. This work shows promising directions for the APR domain, such as fine-tuning CLMs with APR-specific designs, and also raises awareness of fair and comprehensive evaluations of CLMs and calls for more transparent reporting of open-source repositories used in the pre-training data to address the data leaking problem.",
+    "authors": [
+        "Nan Jiang",
+        "Kevin Liu",
+        "Thibaud Lutellier",
+        "Lin Tan"
+    ],
+    "venue": "International Conference on Software Engineering",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work is the first to evaluate ten CLMs on four APR benchmarks, which shows that surprisingly, the best CLM, as is, fixes 72% more bugs than the state-of-the-art deep-learning (DL)-based APR techniques."
+    },
+    "citationCount": 117,
+    "influentialCitationCount": 18,
+    "code": null,
+    "description": null,
+    "url": null
+}

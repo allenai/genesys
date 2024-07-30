@@ -1,0 +1,34 @@
+{
+    "acronym": "5d7a7dfcc73d2d245b9eb3662e9f4e390b2486db",
+    "title": "DuNST: Dual Noisy Self Training for Semi-Supervised Controllable Text Generation",
+    "seed_ids": [
+        "gpt2",
+        "473e55ded26b201b834ae73966474299528ec48d",
+        "06cd65936fdb2d2a5d51ca7fd612c48fbffc228e",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "b30195763eb103e2e5564228119f3810ab423b2e",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5d7a7dfcc73d2d245b9eb3662e9f4e390b2486db",
+    "abstract": "Self-training (ST) has prospered again in language understanding by augmenting the fine-tuning of big pre-trained models when labeled data is insufficient. However, it remains challenging to incorporate ST into attribute-controllable language generation. Augmented only by self-generated pseudo text, generation models over-exploit the previously learned text space and fail to explore a larger one, suffering from a restricted generalization boundary and limited controllability. In this work, we propose DuNST, a novel ST framework to tackle these problems. DuNST jointly models text generation and classification as a dual process and further perturbs and escapes from the collapsed space by adding two kinds of flexible noise. In this way, our model could construct and utilize both pseudo text generated from given labels and pseudo labels predicted from available unlabeled text, which are gradually refined during the ST phase. We theoretically demonstrate that DuNST can be regarded as enhancing the exploration of the potentially larger real text space while maintaining exploitation, guaranteeing improved performance. Experiments on three controllable generation tasks show that DuNST significantly boosts control accuracy with comparable generation fluency and diversity against several strong baselines.",
+    "authors": [
+        "Yuxi Feng",
+        "Xiaoyuan Yi",
+        "Xiting Wang",
+        "L. Lakshmanan",
+        "Xing Xie"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DuNST jointly models text generation and classification as a dual process and further perturbs and escapes from the collapsed space by adding two kinds of flexible noise, and theoretically demonstrate that DuNST can be regarded as enhancing the exploration of the potentially larger real text space while maintaining exploitation, guaranteeing improved performance."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

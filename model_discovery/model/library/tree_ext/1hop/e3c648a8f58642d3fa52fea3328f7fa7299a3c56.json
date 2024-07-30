@@ -1,0 +1,27 @@
+{
+    "acronym": "e3c648a8f58642d3fa52fea3328f7fa7299a3c56",
+    "title": "Background Summarization of Event Timelines",
+    "seed_ids": [
+        "longt5",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de"
+    ],
+    "s2id": "e3c648a8f58642d3fa52fea3328f7fa7299a3c56",
+    "abstract": "Generating concise summaries of news events is a challenging natural language processing task. While journalists often curate timelines to highlight key sub-events, newcomers to a news event face challenges in catching up on its historical context. In this paper, we address this need by introducing the task of background news summarization, which complements each timeline update with a background summary of relevant preceding events. We construct a dataset by merging existing timeline datasets and asking human annotators to write a background summary for each timestep of each news event. We establish strong baseline performance using state-of-the-art summarization systems and propose a query-focused variant to generate background summaries. To evaluate background summary quality, we present a question-answering-based evaluation metric, Background Utility Score (BUS), which measures the percentage of questions about a current event timestep that a background summary answers. Our experiments show the effectiveness of instruction fine-tuned systems such as Flan-T5, in addition to strong zero-shot performance using GPT-3.5.",
+    "authors": [
+        "Adithya Pratapa",
+        "Kevin Small",
+        "Markus Dreyer"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces the task of background news summarization, which complements each timeline update with a background summary of relevant preceding events, and presents a question-answering-based evaluation metric, Background Utility Score (BUS), which measures the percentage of questions about a current event timestep that a background summaries answers."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,25 @@
+{
+    "acronym": "f41925e2f40c664f0294ca10031fb3860e826d7f",
+    "title": "Native-Language Identification with Attention",
+    "seed_ids": [
+        "bigbird",
+        "80f9f109d1564cb8f82aa440a5f6f3fbe220c9ef"
+    ],
+    "s2id": "f41925e2f40c664f0294ca10031fb3860e826d7f",
+    "abstract": "The paper explores how an attention-based approach can increase performance on the task of native-language identi\ufb01cation (NLI), i.e., to identify an author\u2019s \ufb01rst language given information expressed in a second language. Previously, Support Vector Machines have consistently outperformed deep learning-based meth-ods on the TOEFL11 data set, the de facto standard for evaluating NLI systems. The attention-based system BERT (Bidirectional Encoder Representations from Trans-formers) was \ufb01rst tested in isolation on the TOEFL11 data set, then used in a meta-classi\ufb01er stack in combination with traditional techniques to produce an accuracy of 0.853. However, more labelled NLI data is now available, so BERT was also trained on the much larger Reddit-L2 data set, containing 50 times as many examples as previously used for English NLI, giving an accuracy of 0.902 on the Reddit-L2 in-domain test scenario, improving the state-of-the-art by 21.2 percentage points.",
+    "authors": [
+        "Stian Steinbakken",
+        "Bj\u00f6rn Gamb\u00e4ck"
+    ],
+    "venue": "ICON",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

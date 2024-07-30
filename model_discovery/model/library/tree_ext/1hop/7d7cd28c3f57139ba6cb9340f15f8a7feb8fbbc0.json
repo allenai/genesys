@@ -1,0 +1,32 @@
+{
+    "acronym": "7d7cd28c3f57139ba6cb9340f15f8a7feb8fbbc0",
+    "title": "MU-Bench: A Multitask Multimodal Benchmark for Machine Unlearning",
+    "seed_ids": [
+        "bert",
+        "0399533de2d1d21f456663d1bd5355c8b3c32a58",
+        "d2726daa50c4dba55913d11f63f122700f0a033a",
+        "37fbaa328e7867e4b63de070ee834a3fb510f666",
+        "7f1a473834eea608980e4e04cce21be18d65b9b6",
+        "71ba5f845bd22d42003675b7cea970ca9e590bcc",
+        "023edab4738690444e3924e224c2641017a0d794",
+        "4990f7542f0600e0501a7e7a931b32eb7cb804d5",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "7d7cd28c3f57139ba6cb9340f15f8a7feb8fbbc0",
+    "abstract": "Recent advancements in Machine Unlearning (MU) have introduced solutions to selectively remove certain training samples, such as those with outdated or sensitive information, from trained models. Despite these advancements, evaluation of MU methods have been inconsistent, employing different trained models and architectures, and sample removal strategies, which hampers accurate comparison. In addition, prior MU approaches have mainly focused on singular tasks or modalities, which is not comprehensive. To address these limitations, we develop MU-Bench, the first comprehensive benchmark for MU that (i) unifies the sets of deleted samples and trained models, and (ii) provides broad coverage of tasks and data modalities, including previously unexplored domains such as speech and video classification. Our evaluation show that RandLabel and SalUn are the most effective general MU approaches on MU-Bench, and BadT and SCRUB are capable of achieving random performance on the deletion set. We analyze several under-investigated aspects of unlearning, including scalability, the impacts of parameter-efficient fine-tuning and curriculum learning, and susceptibility to dataset biases. MU-Bench provides an easy-to-use package that includes dataset splits, models, and implementations, together with a leader board to enable unified and scalable MU research.",
+    "authors": [
+        "Jiali Cheng",
+        "Hadi Amiri"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "MU-Bench is developed, the first comprehensive benchmark for MU that unifies the sets of deleted samples and trained models, and provides broad coverage of tasks and data modalities, including previously unexplored domains such as speech and video classification."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

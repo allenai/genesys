@@ -1,0 +1,27 @@
+{
+    "acronym": "0c9d86d967832698bd86194442a58269f427c01d",
+    "title": "Smartphone Sensor-Based Human Motion Characterization with Neural Stochastic Differential Equations and Transformer Model",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0c9d86d967832698bd86194442a58269f427c01d",
+    "abstract": "With many conveniences afforded by advances in smartphone technology, developing advanced data analysis methods for health-related information from smartphone users has become a fast-growing research topic in the healthcare field. Along these lines, this paper addresses smartphone sensor-based characterization of human motions with neural stochastic differential equations (NSDEs) and a Transformer model. NSDEs and modeling via Transformer networks are two of the most prominent deep learning-based modeling approaches, with significant performance yields in many applications. For the problem of modeling dynamical features, stochastic differential equations and deep neural networks are frequently used paradigms in science and engineering, respectively. Combining these two paradigms in one unified framework has drawn significant interest in the deep learning community, and NSDEs are among the leading technologies for combining these efforts. The use of attention has also become a widely adopted strategy in many deep learning applications, and a Transformer is a deep learning model that uses the mechanism of self-attention. This concept of a self-attention based Transformer was originally introduced for tasks of natural language processing (NLP), and due to its excellent performance and versatility, the scope of its applications is rapidly expanding. By utilizing the techniques of neural stochastic differential equations and a Transformer model along with data obtained from smartphone sensors, we present a deep learning method capable of efficiently characterizing human motions. For characterizing human motions, we encode the high-dimensional sequential data from smartphone sensors into latent variables in a low-dimensional latent space. The concept of the latent variable is particularly useful because it can not only carry condensed information concerning motion data, but also learn their low-dimensional representations. More precisely, we use neural stochastic differential equations for modeling transitions of human motion in a latent space, and rely on a Generative Pre-trained Transformer 2 (GPT2)-based Transformer model for approximating the intractable posterior of conditional latent variables. Our experiments show that the proposed method can yield promising results for the problem of characterizing human motion patterns and some related tasks including user identification.",
+    "authors": [
+        "Juwon Lee",
+        "Taehwan Kim",
+        "Jeongho Park",
+        "Joo-Yong Park"
+    ],
+    "venue": "Italian National Conference on Sensors",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper addresses smartphone sensor-based characterization of human motions with neural stochastic differential equations (NSDEs) and a Transformer model along with data obtained from smartphone sensors to present a deep learning method capable of efficiently characterizing human motions."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

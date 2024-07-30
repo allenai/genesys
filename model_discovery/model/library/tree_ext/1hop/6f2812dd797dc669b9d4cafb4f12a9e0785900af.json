@@ -1,0 +1,30 @@
+{
+    "acronym": "6f2812dd797dc669b9d4cafb4f12a9e0785900af",
+    "title": "Continual Few-shot Event Detection via Hierarchical Augmentation Networks",
+    "seed_ids": [
+        "bert",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c"
+    ],
+    "s2id": "6f2812dd797dc669b9d4cafb4f12a9e0785900af",
+    "abstract": "Traditional continual event detection relies on abundant labeled data for training, which is often impractical to obtain in real-world applications. In this paper, we introduce continual few-shot event detection (CFED), a more commonly encountered scenario when a substantial number of labeled samples are not accessible. The CFED task is challenging as it involves memorizing previous event types and learning new event types with few-shot samples. To mitigate these challenges, we propose a memory-based framework: Hierarchical Augmentation Network (HANet). To memorize previous event types with limited memory, we incorporate prototypical augmentation into the memory set. For the issue of learning new event types in few-shot scenarios, we propose a contrastive augmentation module for token representations. Despite comparing with previous state-of-the-art methods, we also conduct comparisons with ChatGPT. Experiment results demonstrate that our method significantly outperforms all of these methods in multiple continual few-shot event detection tasks.",
+    "authors": [
+        "Chenlong Zhang",
+        "Pengfei Cao",
+        "Yubo Chen",
+        "Kang Liu",
+        "Zhiqiang Zhang",
+        "Mengshu Sun",
+        "Jun Zhao"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces continual few-shot event detection (CFED), a more commonly encountered scenario when a substantial number of labeled samples are not accessible, and proposes a memory-based framework: Hierarchical Augmentation Network (HANet)."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

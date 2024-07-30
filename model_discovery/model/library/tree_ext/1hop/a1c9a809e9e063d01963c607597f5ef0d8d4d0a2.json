@@ -1,0 +1,28 @@
+{
+    "acronym": "a1c9a809e9e063d01963c607597f5ef0d8d4d0a2",
+    "title": "GRUBERT: A GRU-Based Method to Fuse BERT Hidden Layers for Twitter Sentiment Analysis",
+    "seed_ids": [
+        "gpt",
+        "f6fbb6809374ca57205bd2cf1421d4f4fa04f975",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a1c9a809e9e063d01963c607597f5ef0d8d4d0a2",
+    "abstract": "In this work, we introduce a GRU-based architecture called GRUBERT that learns to map the different BERT hidden layers to fused embeddings with the aim of achieving high accuracy on the Twitter sentiment analysis task. Tweets are known for their highly diverse language, and by exploiting different linguistic information present across BERT hidden layers, we can capture the full extent of this language at the embedding level. Our method can be easily adapted to other embeddings capturing different linguistic information. We show that our method outperforms well-known heuristics of using BERT (e.g. using only the last layer) and other embeddings such as ELMo. We observe potential label noise resulting from the data acquisition process and employ early stopping as well as a voting classifier to overcome it.",
+    "authors": [
+        "Leo Horne",
+        "Matthias Matti",
+        "Pouya Pourjafar",
+        "Zuowen Wang"
+    ],
+    "venue": "AACL",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a GRU-based architecture called GRUBERT that learns to map the different BERT hidden layers to fused embeddings with the aim of achieving high accuracy on the Twitter sentiment analysis task."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "5265fb150e7350ffdc87f419e886feba70932f1f",
+    "title": "Retrieval-Augmented Language Model for Extreme Multi-Label Knowledge Graph Link Prediction",
+    "seed_ids": [
+        "bert",
+        "d02cab993a1e1447eb3c3d2afcd45df0f339ae2a"
+    ],
+    "s2id": "5265fb150e7350ffdc87f419e886feba70932f1f",
+    "abstract": "Extrapolation in Large language models (LLMs) for open-ended inquiry encounters two pivotal issues: (1) hallucination and (2) expensive training costs. These issues present challenges for LLMs in specialized domains and personalized data, requiring truthful responses and low fine-tuning costs. Existing works attempt to tackle the problem by augmenting the input of a smaller language model with information from a knowledge graph (KG). However, they have two limitations: (1) failing to extract relevant information from a large one-hop neighborhood in KG and (2) applying the same augmentation strategy for KGs with different characteristics that may result in low performance. Moreover, open-ended inquiry typically yields multiple responses, further complicating extrapolation. We propose a new task, the extreme multi-label KG link prediction task, to enable a model to perform extrapolation with multiple responses using structured real-world knowledge. Our retriever identifies relevant one-hop neighbors by considering entity, relation, and textual data together. Our experiments demonstrate that (1) KGs with different characteristics require different augmenting strategies, and (2) augmenting the language model's input with textual data improves task performance significantly. By incorporating the retrieval-augmented framework with KG, our framework, with a small parameter size, is able to extrapolate based on a given KG. The code can be obtained on GitHub: https://github.com/exiled1143/Retrieval-Augmented-Language-Model-for-Multi-Label-Knowledge-Graph-Link-Prediction.git",
+    "authors": [
+        "Yu-Hsiang Lin",
+        "Huang-Ting Shieh",
+        "Chih-Yu Liu",
+        "Kuang-Ting Lee",
+        "Hsiao-Cheng Chang",
+        "Jing-Lun Yang",
+        "Yu-Sheng Lin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a new task, the extreme multi-label KG link prediction task, to enable a model to perform extrapolation with multiple responses using structured real-world knowledge and implements a retrieval-augmented framework with KG that is able to extrapolate based on a given KG."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

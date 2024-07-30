@@ -1,0 +1,27 @@
+{
+    "acronym": "318c6ef80e149340405d75ae73577208d6e30027",
+    "title": "Domain Adaptation with External Off-Policy Acoustic Catalogs for Scalable Contextual End-to-End Automated Speech Recognition",
+    "seed_ids": [
+        "memorizingtrans",
+        "0e802c0739771acf70e60d59c2df51cd7e8c50c0"
+    ],
+    "s2id": "318c6ef80e149340405d75ae73577208d6e30027",
+    "abstract": "Despite improvements to the generalization performance of automated speech recognition (ASR) models, specializing ASR models for downstream tasks remains a challenging task, primarily due to reduced data availability (necessitating increased data collection), and rapidly shifting data distributions (requiring more frequent model fine-tuning). In this work, we investigate the potential of leveraging external knowledge, particularly through off-policy generated text-to-speech key-value stores, to allow for flexible post-training adaptation to new data distributions. In our approach, audio embeddings captured from text-to-speech are used, along with semantic text embeddings, to bias ASR via an approximate k-nearest-neighbor (KNN) based attentive fusion step. Our experiments on LibiriSpeech and in-house voice assistant/search datasets show that the proposed approach can reduce domain adaptation time by up to 1K GPU-hours while providing up to 3% WER improvement compared to a fine-tuning baseline, suggesting a promising approach for adapting production ASR systems in challenging zero and few-shot scenarios.",
+    "authors": [
+        "David Chan",
+        "Shalini Ghosh",
+        "A. Rastrow",
+        "Bj\u00f6rn Hoffmeister"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work investigates the potential of leveraging external knowledge, particularly through off-policy generated text-to-speech key-value stores, to allow for flexible post-training adaptation to new data distributions to aid in adapting production ASR systems in challenging zero and few-shot scenarios."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

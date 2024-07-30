@@ -1,0 +1,29 @@
+{
+    "acronym": "33cb9f6a8be59dee2b3d75a64441ad8fa83f6c82",
+    "title": "Universal Transformer Hawkes process",
+    "seed_ids": [
+        "universaltrans",
+        "8cd4054b41936ba0889edc26be8969c3dc8491d8"
+    ],
+    "s2id": "33cb9f6a8be59dee2b3d75a64441ad8fa83f6c82",
+    "abstract": "The recent increase of asynchronous event sequence data in a diversity of fields, make researchers pay more attention to how to mine knowledge from them. In the initial research phase, researchers tend to make use of basic mathematical-based point process models, such as Poisson process and Hawkes process. And in recent years, recurrent neural network (RNN) based point process models are proposed which have significant model performance improvement, while it is still hard to describe the long-term relation between events. To address this issue, transformer Hawkes process is proposed. However, it is worth noting that transformer with a fixed stack of different layers is failure to implement the parallel processing, recursive learning, and abstracting the local salient properties, while they may be very important. In order to make up for this shortcoming, we present a Universal Transformer Hawkes Process (UTHP), which introduces the recurrent structure in encode process, and introduce convolutional neural network (CNN) in the position-wise-feed-forward neural network. Experiments on several datasets show that the performance of our model is improved compared to the performance of the state-of-the-art.",
+    "authors": [
+        "Lu-ning Zhang",
+        "Jian-wei Liu",
+        "Zhi-yan Song",
+        "Xin Zuo",
+        "Wei-min Li",
+        "Ze-yu Liu"
+    ],
+    "venue": "IEEE International Joint Conference on Neural Network",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Universal Transformer Hawkes Process (UTHP), which introduces the recurrent structure in encode process, and introduces convolutional neural network (CNN) in the position-wise-feed-forward neural network and is improved compared to the performance of the state-of-the-art."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

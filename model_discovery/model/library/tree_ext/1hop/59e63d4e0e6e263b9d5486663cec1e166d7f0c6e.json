@@ -1,0 +1,28 @@
+{
+    "acronym": "59e63d4e0e6e263b9d5486663cec1e166d7f0c6e",
+    "title": "Abstractive and mixed summarization for long-single documents",
+    "seed_ids": [
+        "gpt",
+        "25db56fc85fe15625c3375064a35e908ba6dfd2a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "59e63d4e0e6e263b9d5486663cec1e166d7f0c6e",
+    "abstract": "The lack of diversity in the datasets available for automatic summarization of documents has meant that the vast majority of neural models for automatic summarization have been trained with news articles. These datasets are relatively small, with an average size of about 600 words, and the models trained with such data sets see their performance limited to short documents. In order to surmount this problem, this paper uses scientific papers as the dataset on which different models are trained. These models have been chosen based on their performance on the CNN/Daily Mail data set, so that the highest ranked model of each architectural variant is selected. In this work, six different models are compared, two with an RNN architecture, one with a CNN architecture, two with a Transformer architecture and one with a Transformer architecture combined with reinforcement learning. The results from this work show that those models that use a hierarchical encoder to model the structure of the document has a better performance than the rest.",
+    "authors": [
+        "Roger Barrull",
+        "J. Kalita"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Six different models are compared and it is shown that those models that use a hierarchical encoder to model the structure of the document has a better performance than the rest."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

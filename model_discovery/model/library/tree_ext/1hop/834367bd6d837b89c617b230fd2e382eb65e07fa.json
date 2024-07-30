@@ -1,0 +1,33 @@
+{
+    "acronym": "834367bd6d837b89c617b230fd2e382eb65e07fa",
+    "title": "FastDoc : Domain-Specific Fast Continual Pre-training Technique using Document-Level Metadata and Taxonomy",
+    "seed_ids": [
+        "longformer",
+        "7a49beff86a855f237f96ae3f0aefc9780cb31be",
+        "5397ef2da78aac248826b66156bed824d8aa03fb",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "834367bd6d837b89c617b230fd2e382eb65e07fa",
+    "abstract": "In this paper, we propose FastDoc ( Fast Continual Pre-training Technique using Doc ument Level Metadata and Taxonomy), a novel, compute-efficient framework that utilizes Document metadata and Domain-Specific Taxonomy as supervision signals to continually pre-train transformer encoder on a domain-specific corpus. The main innovation is that during domain-specific pretraining, an open-domain encoder is continually pre-trained using sentence-level embeddings as inputs (to accommodate long documents), however, fine-tuning is done with token-level embeddings as inputs to this encoder. We perform such domain-specific pre-training on three different domains namely customer support, scientific, and legal domains, and compare performance on 6 different downstream tasks and 9 different datasets. The novel use of document-level supervision along with sentence-level embedding input for pre-training reduces pre-training compute by around 1 , 000, 4 , 500, and 500 times compared to MLM and/or NSP in Customer Support, Scientific, and",
+    "authors": [
+        "Abhilash Nandy",
+        "Manav Nitin",
+        "Kapadnis",
+        "Sohan Patnaik",
+        "Pawan Goyal",
+        "Niloy Ganguly"
+    ],
+    "venue": "",
+    "year": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The novel use of document-level supervision along with sentence-level embedding input for pre-training reduces pre-training compute by around 1, 000, 4, 500, and 500 times compared to MLM and/or NSP in Customer Support, Scientific, and legal domains."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

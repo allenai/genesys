@@ -1,0 +1,48 @@
+{
+    "acronym": "fea8a3096391a418cb9ef724e0ff9754e5a467fd",
+    "title": "SiMBA: Simplified Mamba-Based Architecture for Vision and Multivariate Time series",
+    "seed_ids": [
+        "hyena",
+        "hippo",
+        "mamba",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "5c104f905fcacf390270f619f232a2ba4eb873f2",
+        "9297502c3b1eaa528e8a8fb85a83842d0577fdc6",
+        "ab892825da3c560ff72d84d57a4239a6f12fa8b9",
+        "240103933ffe3dac2179cc160a2bd91299357a53",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "c57467e652f3f9131b3e7e40c23059abe395f01d",
+        "998ac3e945857cf2676ee7efdbaf443a0c6f820a",
+        "54155c2977a977bf129849455dcae3a2b79b3f41",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "70e91e16eb321067d9402710e14a40cf28311f73",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "dd1139cfc609c2f3263d02e97176d5275caebc0a",
+        "bf6ce546c589fa8054b3972b266532664914bd21",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "9b6af0e358e76d22f209c75b1702c3e6ea7815b1",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "955f90930d48750e7239478b4eed440eb84131cd",
+        "30dcc0e191a376fea0e7a46f94c53872c029efc9",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "fea8a3096391a418cb9ef724e0ff9754e5a467fd",
+    "abstract": "Transformers have widely adopted attention networks for sequence mixing and MLPs for channel mixing, playing a pivotal role in achieving breakthroughs across domains. However, recent literature highlights issues with attention networks, including low inductive bias and quadratic complexity concerning input sequence length. State Space Models (SSMs) like S4 and others (Hippo, Global Convolutions, liquid S4, LRU, Mega, and Mamba), have emerged to address the above issues to help handle longer sequence lengths. Mamba, while being the state-of-the-art SSM, has a stability issue when scaled to large networks for computer vision datasets. We propose SiMBA, a new architecture that introduces Einstein FFT (EinFFT) for channel modeling by specific eigenvalue computations and uses the Mamba block for sequence modeling. Extensive performance studies across image and time-series benchmarks demonstrate that SiMBA outperforms existing SSMs, bridging the performance gap with state-of-the-art transformers. Notably, SiMBA establishes itself as the new state-of-the-art SSM on ImageNet and transfer learning benchmarks such as Stanford Car and Flower as well as task learning benchmarks as well as seven time series benchmark datasets. The project page is available on this website ~\\url{https://github.com/badripatro/Simba}.",
+    "authors": [
+        "B. N. Patro",
+        "Vijay S. Agneeswaran"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "SiMBA, a new architecture that introduces Einstein FFT (EinFFT) for channel modeling by specific eigenvalue computations and uses the Mamba block for sequence modeling and outperforms existing SSMs, bridging the performance gap with state-of-the-art transformers."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

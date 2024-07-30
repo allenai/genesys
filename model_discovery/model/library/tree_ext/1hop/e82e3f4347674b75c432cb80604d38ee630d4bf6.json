@@ -1,0 +1,34 @@
+{
+    "acronym": "e82e3f4347674b75c432cb80604d38ee630d4bf6",
+    "title": "Transformers Learn Shortcuts to Automata",
+    "seed_ids": [
+        "gpt2",
+        "elgllm",
+        "235303a8bc1e4892efd525a38ead657422d8a519",
+        "c6d38add1b7bbc10f0da37a90e3f1b51ee5fb617",
+        "a2fc77f075f666b462d9350e7576f0ba9845c61b",
+        "92173d081b15824d22a9ef070e118744ceee8052",
+        "054e307c1edf4b28137ffcbce980fe81f0647d20",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e82e3f4347674b75c432cb80604d38ee630d4bf6",
+    "abstract": "Algorithmic reasoning requires capabilities which are most naturally understood through recurrent models of computation, like the Turing machine. However, Transformer models, while lacking recurrence, are able to perform such reasoning using far fewer layers than the number of reasoning steps. This raises the question: what solutions are learned by these shallow and non-recurrent models? We find that a low-depth Transformer can represent the computations of any finite-state automaton (thus, any bounded-memory algorithm), by hierarchically reparameterizing its recurrent dynamics. Our theoretical results characterize shortcut solutions, whereby a Transformer with $o(T)$ layers can exactly replicate the computation of an automaton on an input sequence of length $T$. We find that polynomial-sized $O(\\log T)$-depth solutions always exist; furthermore, $O(1)$-depth simulators are surprisingly common, and can be understood using tools from Krohn-Rhodes theory and circuit complexity. Empirically, we perform synthetic experiments by training Transformers to simulate a wide variety of automata, and show that shortcut solutions can be learned via standard training. We further investigate the brittleness of these solutions and propose potential mitigations.",
+    "authors": [
+        "Bingbin Liu",
+        "J. Ash",
+        "Surbhi Goel",
+        "A. Krishnamurthy",
+        "Cyril Zhang"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that a low-depth Transformer can represent the computations of any finite-state automaton (thus, any bounded-memory algorithm), by hierarchically reparameterizing its recurrent dynamics."
+    },
+    "citationCount": 98,
+    "influentialCitationCount": 10,
+    "code": null,
+    "description": null,
+    "url": null
+}

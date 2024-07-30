@@ -1,0 +1,25 @@
+{
+    "acronym": "c10734946b8390ca254ab4ed7bfec363536fc6ef",
+    "title": "OARelatedWork: A Large-Scale Dataset of Related Work Sections with Full-texts from Open Access Sources",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "c10734946b8390ca254ab4ed7bfec363536fc6ef",
+    "abstract": "This paper introduces OARelatedWork, the first large-scale multi-document summarization dataset for related work generation containing whole related work sections and full-texts of cited papers. The dataset includes 94 450 papers and 5 824 689 unique referenced papers. It was designed for the task of automatically generating related work to shift the field toward generating entire related work sections from all available content instead of generating parts of related work sections from abstracts only, which is the current mainstream in this field for abstractive approaches. We show that the estimated upper bound for extractive summarization increases by 217% in the ROUGE-2 score, when using full content instead of abstracts. Furthermore, we show the benefits of full content data on naive, oracle, traditional, and transformer-based baselines. Long outputs, such as related work sections, pose challenges for automatic evaluation metrics like BERTScore due to their limited input length. We tackle this issue by proposing and evaluating a meta-metric using BERTScore. Despite operating on smaller blocks, we show this meta-metric correlates with human judgment, comparably to the original BERTScore.",
+    "authors": [
+        "Martin Docekal",
+        "Martin Fajcik",
+        "Pavel Smrz"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces OARelatedWork, the first large-scale multi-document summarization dataset for related work generation containing whole related work sections and full-texts of cited papers, and proposes and evaluates a meta-metric that correlates with human judgment, comparably to the original BERTScore."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

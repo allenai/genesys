@@ -1,0 +1,30 @@
+{
+    "acronym": "31c28feb2647fb5b6eef9b0bd6cc1a4f3071e750",
+    "title": "EEDN: Enhanced Encoder-Decoder Network with Local and Global Context Learning for POI Recommendation",
+    "seed_ids": [
+        "lstransformer",
+        "1a883522f3c0051d70be1f8cbdb8989a77395006",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "31c28feb2647fb5b6eef9b0bd6cc1a4f3071e750",
+    "abstract": "The point-of-interest (POI) recommendation predicts users' destinations, which might be of interest to users and has attracted considerable attention as one of the major applications in location-based social networks (LBSNs). Recent work on graph-based neural networks (GNN) or matrix factorization-based (MF) approaches has resulted in better representations of users and POIs to forecast users' latent preferences. However, they still suffer from the implicit feedback and cold-start problems of check-in data, as they cannot capture both local and global graph-based relations among users (or POIs) simultaneously, and the cold-start neighbors are not handled properly during graph convolution in GNN. In this paper, we propose an enhanced encoder-decoder network (EEDN) to exploit rich latent features between users, POIs, and interactions between users and POIs for POI recommendation. The encoder of EEDN utilizes a hybrid hypergraph convolution to enhance the aggregation ability of each graph convolution step and learns to derive more robust cold-start-aware user representations. In contrast, the decoder mines local and global interactions by both graph- and sequential-based patterns for modeling implicit feedback, especially to alleviate exposure bias. Extensive experiments in three public real-world datasets demonstrate that EEDN outperforms state-of-the-art methods. Our source codes and data are released at https://github.com/WangXFng/EEDN",
+    "authors": [
+        "Xinfeng Wang",
+        "Fumiyo Fukumoto",
+        "Jin Cui",
+        "Yoshimi Suzuki",
+        "Jiyi Li",
+        "Dongjin Yu"
+    ],
+    "venue": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An enhanced encoder-decoder network (EEDN) to exploit rich latent features between users, POIs, and interactions between users and POIs for POI recommendation and outperforms state-of-the-art methods."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

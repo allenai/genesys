@@ -1,0 +1,32 @@
+{
+    "acronym": "afdf2daa43ff4415d54a4c4501a339d619a2d13b",
+    "title": "MASTER: Multi-task Pre-trained Bottlenecked Masked Autoencoders are Better Dense Retrievers",
+    "seed_ids": [
+        "gpt2",
+        "9bbdcc03d872987eef9165f4a63c3878a5b05189",
+        "80f9f109d1564cb8f82aa440a5f6f3fbe220c9ef",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "afdf2daa43ff4415d54a4c4501a339d619a2d13b",
+    "abstract": "Pre-trained Transformers (\\eg BERT) have been commonly used in existing dense retrieval methods for parameter initialization, and recent studies are exploring more effective pre-training tasks for further improving the quality of dense vectors. Although various novel and effective tasks have been proposed, their different input formats and learning objectives make them hard to be integrated for jointly improving the model performance. In this work, we aim to unify a variety of pre-training tasks into the bottlenecked masked autoencoder manner, and integrate them into a multi-task pre-trained model, namely MASTER. Concretely, MASTER utilizes a shared-encoder multi-decoder architecture that can construct a representation bottleneck to compress the abundant semantic information across tasks into dense vectors. Based on it, we integrate three types of representative pre-training tasks: corrupted passages recovering, related passages recovering and PLMs outputs recovering, to characterize the inner-passage information, inter-passage relations and PLMs knowledge. Extensive experiments have shown that our approach outperforms competitive dense retrieval methods. Our code and data are publicly released in \\url{https://github.com/microsoft/SimXNS}.",
+    "authors": [
+        "Kun Zhou",
+        "Xiao Liu",
+        "Yeyun Gong",
+        "Wayne Xin Zhao",
+        "Daxin Jiang",
+        "Nan Duan",
+        "Ji-rong Wen"
+    ],
+    "venue": "ECML/PKDD",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work aims to unify a variety of pre-training tasks into the bottlenecked masked autoencoder manner, and integrate them into a multi-task pre-trained model, namely MASTER."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

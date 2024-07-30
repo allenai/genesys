@@ -1,0 +1,33 @@
+{
+    "acronym": "00ce8beee350a260395676490915d7ebfa7430d1",
+    "title": "Impact of Model Size on Fine-tuned LLM Performance in Data-to-Text Generation: A State-of-the-Art Investigation",
+    "seed_ids": [
+        "transformer",
+        "gpt2",
+        "gpt3",
+        "bert",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "00ce8beee350a260395676490915d7ebfa7430d1",
+    "abstract": "Data-to-text (D2T) generation aims to generate human-readable text from semi-structured data, such as tables and graphs. The recent success of D2T is largely attributed to advancements in LLMs. Despite the success of LLMs, no research has been conducted to illustrate the impact of model size on the performance of fine-tuned LLMs for D2T tasks. D2T model performance is typically assessed based on three key qualities: \\textit{readability} (indicates fluency and coherence), \\textit{informativeness} (measures content similarity), and \\textit{faithfulness} (assesses consistency of factual information). It is currently uncertain whether increasing the size of LLMs effectively improves performance in D2T tasks across these three qualities. The objective of this study is to investigate the performance of fine-tuned LLMs in D2T tasks in terms of model size. Through extensive comparative analysis, we aim to elucidate both the advantages and limitations of scaling model sizes across five widely used D2T datasets (E2E, ViGGo, WikiTableText, DART, and WebNLG) and twelve state-of-the-art LLMs with varying sizes from five different LLM families (T5, BART, OPT, BLOOM, and Llama 2). To comprehensively cover all the three essential qualities of D2T models, we incorporate six widely recognized automatic metrics -- \\textsc{BLEU}, \\textsc{METEOR}, \\textsc{BERTScore}, \\textsc{MoverScore}, \\textsc{Parent}, and \\textsc{BARTScore}. We also provide an in-depth analysis of LLM performance concerning model size in the presence of source-reference divergence, a critical aspect of D2T tasks. Our investigation reveals that increasing LLM size enhances \\textit{readability} and \\textit{informativeness} in D2T tasks, but larger (in terms of size) LLMs may sacrifice \\textit{faithfulness}. Moreover, small-sized LLMs show more resilience than larger ones when source-reference divergence is present.",
+    "authors": [
+        "Joy Mahapatra",
+        "Utpal Garain"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Investigation of fine-tuned LLMs in D2T tasks in terms of model size reveals that increasing LLM size enhances readability andformativeness in D2T tasks, but larger LLMs may sacrifice \\textit{faithfulness}."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

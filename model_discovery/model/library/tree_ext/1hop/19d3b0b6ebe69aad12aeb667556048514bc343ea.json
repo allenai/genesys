@@ -1,0 +1,26 @@
+{
+    "acronym": "19d3b0b6ebe69aad12aeb667556048514bc343ea",
+    "title": "Fine-tuning minBERT for Various Downstream Tasks",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "19d3b0b6ebe69aad12aeb667556048514bc343ea",
+    "abstract": "Bidirectional Encoder Representations from Transformers (BERT) is a transformer-based model that generates contextual word representations. It uses a transformer-based architecture to pretrain on large amounts of textual data and can be fine-tuned for a wide range of natural language processing tasks. In this study, beyond implementing the minBERT model to perform semantic analysis, we investigate in various fine-tuning strategies of BERT model to make it simultaneously perform well on multiple downstream tasks, including sentiment analysis, paraphrase detection, and semantic textual similarity. We explore various extensions on BERT including gradient surgery, tuning model architecture and hyperparameters, incorporating additional datasets",
+    "authors": [
+        "Stanford CS224N",
+        "Default Project",
+        "Longling Tian",
+        "Siqi Wang"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Beyond implementing the minBERT model to perform semantic analysis, various fine-tuning strategies of BERT model are investigated to make it simultaneously perform well on multiple downstream tasks, including sentiment analysis, paraphrase detection, and semantic textual similarity."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

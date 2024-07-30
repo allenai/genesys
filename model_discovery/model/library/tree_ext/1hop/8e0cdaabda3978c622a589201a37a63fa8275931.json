@@ -1,0 +1,32 @@
+{
+    "acronym": "8e0cdaabda3978c622a589201a37a63fa8275931",
+    "title": "Scavenging Hyena: Distilling Transformers into Long Convolution Models",
+    "seed_ids": [
+        "hyenadistill",
+        "cb0ac335adda4ceef9987cbcbca9129e71c37f0a",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "2573af4e13d9a5dddb257d22cd38a600528d9a8b"
+    ],
+    "s2id": "8e0cdaabda3978c622a589201a37a63fa8275931",
+    "abstract": "The rapid evolution of Large Language Models (LLMs), epitomized by architectures like GPT-4, has reshaped the landscape of natural language processing. This paper introduces a pioneering approach to address the efficiency concerns associated with LLM pre-training, proposing the use of knowledge distillation for cross-architecture transfer. Leveraging insights from the efficient Hyena mechanism, our method replaces attention heads in transformer models by Hyena, offering a cost-effective alternative to traditional pre-training while confronting the challenge of processing long contextual information, inherent in quadratic attention mechanisms. Unlike conventional compression-focused methods, our technique not only enhances inference speed but also surpasses pre-training in terms of both accuracy and efficiency. In the era of evolving LLMs, our work contributes to the pursuit of sustainable AI solutions, striking a balance between computational power and environmental impact.",
+    "authors": [
+        "Tokiniaina Raharison Ralambomihanta",
+        "Shahrad Mohammadzadeh",
+        "Mohammad Sami Nur Islam",
+        "Wassim Jabbour",
+        "Laurence Liang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces a pioneering approach to address the efficiency concerns associated with LLM pre-training, proposing the use of knowledge distillation for cross-architecture transfer and replaces attention heads in transformer models by Hyena, offering a cost-effective alternative to traditional pre-training."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

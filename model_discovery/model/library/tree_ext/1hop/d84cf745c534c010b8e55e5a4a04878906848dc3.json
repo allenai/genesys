@@ -1,0 +1,36 @@
+{
+    "acronym": "d84cf745c534c010b8e55e5a4a04878906848dc3",
+    "title": "TEST: Text Prototype Aligned Embedding to Activate LLM's Ability for Time Series",
+    "seed_ids": [
+        "gpt2",
+        "16f01c1b3ddd0b2abd5ddfe4fdb3f74767607277",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "5b7f5488c380cf5085a5dd93e993ad293b225eee",
+        "863171ed35ca0035074f73bb202b153cc346f2f3",
+        "8064d3873c646dc9ff949d72c54c634a906fc092",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d84cf745c534c010b8e55e5a4a04878906848dc3",
+    "abstract": "This work summarizes two ways to accomplish Time-Series (TS) tasks in today's Large Language Model (LLM) context: LLM-for-TS (model-centric) designs and trains a fundamental large model, or fine-tunes a pre-trained LLM for TS data; TS-for-LLM (data-centric) converts TS into a model-friendly representation to enable the pre-trained LLM to handle TS data. Given the lack of data, limited resources, semantic context requirements, and so on, this work focuses on TS-for-LLM, where we aim to activate LLM's ability for TS data by designing a TS embedding method suitable for LLM. The proposed method is named TEST. It first tokenizes TS, builds an encoder to embed TS via instance-wise, feature-wise, and text-prototype-aligned contrast, where the TS embedding space is aligned to LLM embedding layer space, then creates soft prompts to make LLM more open to that embeddings, and finally implements TS tasks using the frozen LLM. We also demonstrate the feasibility of TS-for-LLM through theory and experiments. Experiments are carried out on TS classification, forecasting, and representation tasks using eight frozen LLMs with various structures and sizes. The results show that the pre-trained LLM with TEST strategy can achieve better or comparable performance than today's SOTA TS models and offer benefits for few-shot and generalization. By treating LLM as the pattern machine, TEST can endow LLM's ability to process TS data without compromising language ability. We hope that this study will serve as a foundation for future work to support TS+LLM progress.",
+    "authors": [
+        "Chenxi Sun",
+        "Yaliang Li",
+        "Hongyan Li",
+        "linda Qiao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work aims to activate LLM's ability for TS data by designing a TS embedding method suitable for LLM, named TEST, and shows that the pre-trained LLM with TEST strategy can achieve better or comparable performance than today's SOTA TS models and offer benefits for few-shot and generalization."
+    },
+    "citationCount": 40,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

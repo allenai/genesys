@@ -1,0 +1,27 @@
+{
+    "acronym": "685dd6147818ceda3ed6cae469eaef8c2034f942",
+    "title": "From Easy to Hard: Learning Curricular Shape-aware Features for Robust Panoptic Scene Graph Generation",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "685dd6147818ceda3ed6cae469eaef8c2034f942",
+    "abstract": "Panoptic Scene Graph Generation (PSG) aims to generate a comprehensive graph-structure representation based on panoptic segmentation masks. Despite remarkable progress in PSG, almost all existing methods neglect the importance of shape-aware features, which inherently focus on the contours and boundaries of objects. To bridge this gap, we propose a model-agnostic Curricular shApe-aware FEature (CAFE) learning strategy for PSG. Specifically, we incorporate shape-aware features (i.e., mask features and boundary features) into PSG, moving beyond reliance solely on bbox features. Furthermore, drawing inspiration from human cognition, we propose to integrate shape-aware features in an easy-to-hard manner. To achieve this, we categorize the predicates into three groups based on cognition learning difficulty and correspondingly divide the training process into three stages. Each stage utilizes a specialized relation classifier to distinguish specific groups of predicates. As the learning difficulty of predicates increases, these classifiers are equipped with features of ascending complexity. We also incorporate knowledge distillation to retain knowledge acquired in earlier stages. Due to its model-agnostic nature, CAFE can be seamlessly incorporated into any PSG model. Extensive experiments and ablations on two PSG tasks under both robust and zero-shot PSG have attested to the superiority and robustness of our proposed CAFE, which outperforms existing state-of-the-art methods by a large margin.",
+    "authors": [
+        "Hanrong Shi",
+        "Lin Li",
+        "Jun Xiao",
+        "Yueting Zhuang",
+        "Long Chen"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a model-agnostic Curricular shApe-aware FEature (CAFE) learning strategy for PSG, which outperforms existing state-of-the-art methods by a large margin and incorporates shape-aware features into PSG, moving beyond reliance solely on bbox features."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

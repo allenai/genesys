@@ -1,0 +1,26 @@
+{
+    "acronym": "a042544abeb2b8d7d0a82a203580860325aedc1b",
+    "title": "Mitigating analytical variability in fMRI results with style transfer",
+    "seed_ids": [
+        "classfreediffu",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "a042544abeb2b8d7d0a82a203580860325aedc1b",
+    "abstract": "We propose a novel approach to improve the reproducibility of neuroimaging results by converting statistic maps across different functional MRI pipelines. We make the assumption that pipelines can be considered as a style component of data and propose to use different generative models, among which, Diffusion Models (DM) to convert data between pipelines. We design a new DM-based unsupervised multi-domain image-to-image transition framework and constrain the generation of 3D fMRI statistic maps using the latent space of an auxiliary classifier that distinguishes statistic maps from different pipelines. We extend traditional sampling techniques used in DM to improve the transition performance. Our experiments demonstrate that our proposed methods are successful: pipelines can indeed be transferred, providing an important source of data augmentation for future medical studies.",
+    "authors": [
+        "Elodie Germani",
+        "Elisa Fromont",
+        "Camille Maumet"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new DM-based unsupervised multi-domain image-to-image transition framework is designed and constrain the generation of 3D fMRI statistic maps using the latent space of an auxiliary classifier that distinguishes statistic maps from different pipelines."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

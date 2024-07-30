@@ -1,0 +1,30 @@
+{
+    "acronym": "0284fa05879f1609bf459f15a4d40e22355cd5ae",
+    "title": "Image Caption Generation using Vision Transformer and GPT Architecture",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0284fa05879f1609bf459f15a4d40e22355cd5ae",
+    "abstract": "Transformer-based models have reshaped image captioning but grapple with issues like caption accuracy, particularly for complex visuals. Addressing these shortcomings is essential. Motivated by existing challenges, the Vision Transformer (ViT) as encoder and Generative Pretrained Transformer 2 (GPT-2) as decoder have been employed to enhance caption quality, utilizing the Seq2Seq framework and training on Flickr8k. This work introduced a novel ViT-GPT-2 image captioning model, evaluating it against benchmarks including Flickr8k. The model excels with BLEU-4 at 39.76 and METEOR at 52.30, bridging visual-textual gaps effectively. This research advances image captioning, offering practitioners an improved model for content indexing, accessibility, and human-computer interaction. ViT- GPT-2\u2019s success underscores bridging semantic gaps in image captioning, with future work exploring diverse datasets and fine-tuning techniques for enhanced performance.",
+    "authors": [
+        "Swapneel Mishra",
+        "Saumya Seth",
+        "Shrishti Jain",
+        "Vasudev Pant",
+        "Jolly Parikh",
+        "Rachna Jain",
+        "Sardar M. N. Islam"
+    ],
+    "venue": "2024 2nd International Conference on Advancement in Computation & Computer Technologies (InCACCT)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduced a novel ViT-GPT-2 image captioning model, evaluating it against benchmarks including Flickr8k and offering practitioners an improved model for content indexing, accessibility, and human-computer interaction."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

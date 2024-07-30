@@ -1,0 +1,28 @@
+{
+    "acronym": "1c73d712dd614d2eebf06f55229348f8e8b46b47",
+    "title": "On the Importance of Feature Decorrelation for Unsupervised Representation Learning in Reinforcement Learning",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "1c73d712dd614d2eebf06f55229348f8e8b46b47",
+    "abstract": "Recently, unsupervised representation learning (URL) has improved the sample efficiency of Reinforcement Learning (RL) by pretraining a model from a large unlabeled dataset. The underlying principle of these methods is to learn temporally predictive representations by predicting future states in the latent space. However, an important challenge of this approach is the representational collapse, where the subspace of the latent representations collapses into a low-dimensional manifold. To address this issue, we propose a novel URL framework that causally predicts future states while increasing the dimension of the latent manifold by decorrelating the features in the latent space. Through extensive empirical studies, we demonstrate that our framework effectively learns predictive representations without collapse, which significantly improves the sample efficiency of state-of-the-art URL methods on the Atari 100k benchmark. The code is available at https://github.com/dojeon-ai/SimTPR.",
+    "authors": [
+        "Hojoon Lee",
+        "Ko-tik Lee",
+        "Dongyoon Hwang",
+        "Hyunho Lee",
+        "ByungKun Lee",
+        "J. Choo"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel URL framework that causally predicts future states while increasing the dimension of the latent manifold by decorrelating the features in the latent space and demonstrates that this framework effectively learns predictive representations without collapse."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,33 @@
+{
+    "acronym": "81521a80f7aa939281863c15b42e446ff5a0e65a",
+    "title": "Adan: Adaptive Nesterov Momentum Algorithm for Faster Optimizing Deep Models",
+    "seed_ids": [
+        "gpt2",
+        "transformerxl",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "42a7015e48a1e00b70ebb442a82afb4b10017c0b",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "81521a80f7aa939281863c15b42e446ff5a0e65a",
+    "abstract": "In deep learning, different kinds of deep networks typically need different optimizers, which have to be chosen after multiple trials, making the training process inefficient. To relieve this issue and consistently improve the model training speed across deep networks, we propose the ADAptive Nesterov momentum algorithm, Adan for short. Adan first reformulates the vanilla Nesterov acceleration to develop a new Nesterov momentum estimation (NME) method, which avoids the extra overhead of computing gradient at the extrapolation point. Then Adan adopts NME to estimate the gradient's first- and second-order moments in adaptive gradient algorithms for convergence acceleration. Besides, we prove that Adan finds an \u03f5-approximate first-order stationary point within O(\u03f5-3.5) stochastic gradient complexity on the non-convex stochastic problems (e.g.deep learning problems), matching the best-known lower bound. Extensive experimental results show that Adan consistently surpasses the corresponding SoTA optimizers on vision, language, and RL tasks and sets new SoTAs for many popular networks and frameworks, eg\u00a0ResNet, ConvNext, ViT, Swin, MAE, DETR, GPT-2, Transformer-XL, and BERT. More surprisingly, Adan can use half of the training cost (epochs) of SoTA optimizers to achieve higher or comparable performance on ViT, GPT-2, MAE, etc, and also shows great tolerance to a large range of minibatch size, e.g.from 1k to 32k. Code is released at https://github.com/sail-sg/Adan, and has been used in multiple popular deep learning frameworks or projects.",
+    "authors": [
+        "Xingyu Xie",
+        "Pan Zhou",
+        "Huan Li",
+        "Zhouchen Lin",
+        "Shuicheng Yan"
+    ],
+    "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Adan can use half of the training cost of SoTA optimizers to achieve higher or comparable performance on ViT, GPT-2, MAE, etc, and also shows great tolerance to a large range of minibatch size, e.g. from 1k to 32k."
+    },
+    "citationCount": 80,
+    "influentialCitationCount": 17,
+    "code": null,
+    "description": null,
+    "url": null
+}

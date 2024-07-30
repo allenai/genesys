@@ -1,0 +1,38 @@
+{
+    "acronym": "b07112533752dd3cbb2a4613e0f7c2a967af5b9f",
+    "title": "Representation Learning for Stack Overflow Posts: How Far Are We?",
+    "seed_ids": [
+        "gpt2",
+        "longformer",
+        "6c05127d198de1f11d5af696b9f207fff2d8e41a",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b07112533752dd3cbb2a4613e0f7c2a967af5b9f",
+    "abstract": "The tremendous success of Stack Overflow has accumulated an extensive corpus of software engineering knowledge, thus motivating researchers to propose various solutions for analyzing its content. The performance of such solutions hinges significantly on the selection of representation models for Stack Overflow posts. As the volume of literature on Stack Overflow continues to burgeon, it highlights the need for a powerful Stack Overflow post representation model and drives researchers\u2019 interest in developing specialized representation models that can adeptly capture the intricacies of Stack Overflow posts. The state-of-the-art (SOTA) Stack Overflow post representation models are Post2Vec and BERTOverflow, which are built upon neural networks such as convolutional neural network and transformer architecture (e.g., BERT). Despite their promising results, these representation methods have not been evaluated in the same experimental setting. To fill the research gap, we first empirically compare the performance of the representation models designed specifically for Stack Overflow posts (Post2Vec and BERTOverflow) in a wide range of related tasks (i.e., tag recommendation, relatedness prediction, and API recommendation). The results show that Post2Vec cannot further improve the SOTA techniques of the considered downstream tasks, and BERTOverflow shows surprisingly poor performance. To find more suitable representation models for the posts, we further explore a diverse set of transformer-based models, including (1) general domain language models (RoBERTa, Longformer, and GPT2) and (2) language models built with software engineering related textual artifacts (CodeBERT, GraphCodeBERT, seBERT, CodeT5, PLBart, and CodeGen). This exploration shows that models like CodeBERT and RoBERTa are suitable for representing Stack Overflow posts. However, it also illustrates the \u201cNo Silver Bullet\u201d concept, as none of the models consistently wins against all the others. Inspired by the findings, we propose SOBERT, which employs a simple yet effective strategy to improve the representation models of Stack Overflow posts by continuing the pre-training phase with the textual artifact from Stack Overflow. The overall experimental results demonstrate that SOBERT can consistently outperform the considered models and increase the SOTA performance significantly for all the downstream tasks.",
+    "authors": [
+        "Junda He",
+        "Zhou Xin",
+        "Bowen Xu",
+        "Ting Zhang",
+        "Kisub Kim",
+        "Zhou Yang",
+        "Ferdian Thung",
+        "I. Irsan",
+        "David Lo"
+    ],
+    "venue": "ACM Transactions on Software Engineering and Methodology",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Inspired by the findings, SOBERT is proposed, which employs a simple yet effective strategy to improve the representation models of Stack Overflow posts by continuing the pre-training phase with the textual artifact from Stack Overflow."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

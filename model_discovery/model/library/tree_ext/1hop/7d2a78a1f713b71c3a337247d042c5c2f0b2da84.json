@@ -1,0 +1,34 @@
+{
+    "acronym": "7d2a78a1f713b71c3a337247d042c5c2f0b2da84",
+    "title": "EfficientViT: Enhanced Linear Attention for High-Resolution Low-Computation Visual Recognition",
+    "seed_ids": [
+        "lineartransformer",
+        "c49ac1f916d6d2edeb187e6619c8d23acd95eb21",
+        "0d9b8ccb1135b8e380dd8015b080158c6aae3ae5",
+        "5d032bd2632b6f5847767f39ce247098c6bbc563",
+        "af679d69fcc1d0fcf0f039aba937853bcb50a8de",
+        "3cbe314cc5407a6c3249815b5173f22ea15173c2",
+        "ac591dbf261777e05d89c27f9a7bcb06f88aab5a",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "7d2a78a1f713b71c3a337247d042c5c2f0b2da84",
+    "abstract": "Vision Transformer (ViT) has achieved remarkable performance in many vision tasks. However, ViT is inferior to convolutional neural networks (CNNs) when targeting high-resolution mobile vision applications. The key computational bottle-neck of ViT is the softmax attention module which has quadratic computational complexity with the input resolution. It is essential to reduce the cost of ViT to deploy it on edge devices. Existing methods (e.g., Swin, PVT) restrict the softmax attention within local windows or reduce the resolution of key/value tensors to reduce the cost, which sacri\ufb01ces ViT\u2019s core advantages on global feature extractions. In this work, we present Ef\ufb01cientViT , an ef\ufb01cient ViT architecture for high-resolution low-computation visual recognition. Instead of restricting the softmax attention, we propose to replace softmax attention with linear attention while enhancing its local feature extraction ability with depthwise convolution. Ef\ufb01cientViT maintains global and local feature extraction capability while enjoying linear computational complexity. Extensive experiments on COCO object detection and Cityscapes semantic segmentation demonstrate the effectiveness of our method. On the COCO dataset, Ef\ufb01cientViT achieves 42.6 AP with 4.4G MACs, surpassing Ef\ufb01cientDet-D1 by 2.4 AP while having 27.9% fewer MACs. On Cityscapes, Ef\ufb01cientViT reaches 78.7 mIoU with 19.1G MACs, outperforming SegFormer by 2.5 mIoU while requiring less than 1/3 the computational cost. On Qualcomm Snapdragon 855 CPU, Ef\ufb01cientViT is 3 \u00d7 faster than Ef\ufb01cientNet while achieving higher ImageNet accuracy.",
+    "authors": [
+        "Han Cai",
+        "Chuang Gan",
+        "Song Han"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Ef\ufb01cientViT, an ef\ufb01cient ViT architecture for high-resolution low-computation visual recognition, proposes to replace softmax attention with linear attention while enhancing its local feature extraction ability with depthwise convolution."
+    },
+    "citationCount": 51,
+    "influentialCitationCount": 8,
+    "code": null,
+    "description": null,
+    "url": null
+}

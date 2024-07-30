@@ -1,0 +1,32 @@
+{
+    "acronym": "41e4f520cc1616cb3a3fa6bf4b5ab0a16f5af25b",
+    "title": "Controlled Randomness Improves the Performance of Transformer Models",
+    "seed_ids": [
+        "longformer",
+        "3958152c43888a0a9461de2b952df4a39491442b",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "41e4f520cc1616cb3a3fa6bf4b5ab0a16f5af25b",
+    "abstract": "During the pre-training step of natural language models, the main objective is to learn a general representation of the pre-training dataset, usually requiring large amounts of textual data to capture the complexity and diversity of natural language. Contrasting this, in most cases, the size of the data available to solve the specific downstream task is often dwarfed by the aforementioned pre-training dataset, especially in domains where data is scarce. We introduce controlled randomness, i.e. noise, into the training process to improve fine-tuning language models and explore the performance of targeted noise in addition to the parameters of these models. We find that adding such noise can improve the performance in our two downstream tasks of joint named entity recognition and relation extraction and text summarization.",
+    "authors": [
+        "Tobias Deu\u03b2er",
+        "Cong Zhao",
+        "Wolfgang Kr\u00e4mer",
+        "David Leonhard",
+        "C. Bauckhage",
+        "R. Sifa"
+    ],
+    "venue": "International Conference on Machine Learning and Applications",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

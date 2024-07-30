@@ -1,0 +1,33 @@
+{
+    "acronym": "0390f8b6c0b2d377530b385bf5b1c0099eb7d70b",
+    "title": "Smart-Infinity: Fast Large Language Model Training using Near-Storage Processing on a Real System",
+    "seed_ids": [
+        "gpt2",
+        "ff5eb1bd55d61ae919865f6b4dab84e6ae1974f3",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0390f8b6c0b2d377530b385bf5b1c0099eb7d70b",
+    "abstract": "The recent huge advance of Large Language Models (LLMs) is mainly driven by the increase in the number of parameters. This has led to substantial memory capacity requirements, necessitating the use of dozens of GPUs just to meet the capacity. One popular solution to this is storage-offloaded training, which uses host memory and storage as an extended memory hierarchy. However, this obviously comes at the cost of storage bandwidth bottleneck because storage devices have orders of magnitude lower bandwidth compared to that of GPU device memories. Our work, Smart-Infinity, addresses the storage bandwidth bottleneck of storage-offloaded LLM training using near-storage processing devices on a real system. The main component of Smart-Infinity is SmartUpdate, which performs parameter updates on custom near-storage accelerators. We identify that moving parameter updates to the storage side removes most of the storage traffic. In addition, we propose an efficient data transfer handler structure to address the system integration issues for Smart-Infinity. The handler allows overlapping data transfers with fixed memory consumption by reusing the device buffer. Lastly, we propose accelerator-assisted gradient compression/decompression to enhance the scalability of Smart-Infinity. When scaling to multiple near-storage processing devices, the write traffic on the shared channel becomes the bottleneck. To alleviate this, we compress the gradients on the GPU and decompress them on the accelerators. It provides further acceleration from reduced traffic. As a result, Smart-Infinity achieves a significant speedup compared to the baseline. Notably, SmartInfinity is a ready-to-use approach that is fully integrated into PyTorch on a real system. The implementation of Smart-Infinity is available at https://github.com/AIS-SNU/smart-infinity.",
+    "authors": [
+        "Hongsun Jang",
+        "Jaeyong Song",
+        "Jaewon Jung",
+        "Jaeyoung Park",
+        "Youngsok Kim",
+        "Jinho Lee"
+    ],
+    "venue": "International Symposium on High-Performance Computer Architecture",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work addresses the storage bandwidth bottleneck of storage-offloaded LLM training using near-storage processing devices on a real system, and proposes accelerator-assisted gradient compression/decompression to enhance the scalability of Smart-Infinity."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

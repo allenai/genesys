@@ -1,0 +1,27 @@
+{
+    "acronym": "9dc17f9a8a6c5994ae0d8764022ff3d2a3d7fae4",
+    "title": "KPG: Key Propagation Graph Generator for Rumor Detection based on Reinforcement Learning",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "9dc17f9a8a6c5994ae0d8764022ff3d2a3d7fae4",
+    "abstract": "The proliferation of rumors on social media platforms during significant events, such as the US elections and the COVID-19 pandemic, has a profound impact on social stability and public health. Existing approaches for rumor detection primarily rely on propagation graphs to enhance model effectiveness. However, the presence of noisy and irrelevant structures during the propagation process limits the efficacy of these approaches. To tackle this issue, techniques such as weight adjustment and data augmentation have been proposed. However, these techniques heavily depend on rich original propagation structures, thus hindering performance when dealing with rumors that lack sufficient propagation information in the early propagation stages. In this paper, we propose Key Propagation Graph Generator (KPG), a novel reinforcement learning-based rumor detection framework that generates contextually coherent and informative propagation patterns for events with insufficient topology information, while also identifies indicative substructures for events with redundant and noisy propagation structures. KPG consists of two key components: the Candidate Response Generator (CRG) and the Ending Node Selector (ENS). CRG learns the latent distribution from refined propagation patterns, filtering out noise and generating new candidates for ENS. Simultaneously, ENS identifies the most influential substructures within propagation graphs and generates training data for CRG. Moreover, we introduce an end-to-end framework that utilizes rewards to guide the entire training process via a pre-trained graph neural network. Extensive experiments conducted on four datasets demonstrate the superiority of our KPG compared to the state-of-the-art approaches.",
+    "authors": [
+        "Yusong Zhang",
+        "Kun Xie",
+        "Xingyi Zhang",
+        "Xiangyu Dong",
+        "Sibo Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes Key Propagation Graph Generator (KPG), a novel reinforcement learning-based rumor detection framework that generates contextually coherent and informative propagation patterns for events with insufficient topology information, while also identifies indicative substructures for events with redundant and noisy propagation structures."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

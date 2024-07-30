@@ -1,0 +1,29 @@
+{
+    "acronym": "dc3590e9b6a96f27c063cbbf748a161eabfdbb7f",
+    "title": "Regressor-free Molecule Generation to Support Drug Response Prediction",
+    "seed_ids": [
+        "classfreediffu",
+        "7b14cef8a08519d7ea33800d52aba8410f48a3f7"
+    ],
+    "s2id": "dc3590e9b6a96f27c063cbbf748a161eabfdbb7f",
+    "abstract": "Drug response prediction (DRP) is a crucial phase in drug discovery, and the most important metric for its evaluation is the IC50 score. DRP results are heavily dependent on the quality of the generated molecules. Existing molecule generation methods typically employ classifier-based guidance, enabling sampling within the IC50 classification range. However, these methods fail to ensure the sampling space range's effectiveness, generating numerous ineffective molecules. Through experimental and theoretical study, we hypothesize that conditional generation based on the target IC50 score can obtain a more effective sampling space. As a result, we introduce regressor-free guidance molecule generation to ensure sampling within a more effective space and support DRP. Regressor-free guidance combines a diffusion model's score estimation with a regression controller model's gradient based on number labels. To effectively map regression labels between drugs and cell lines, we design a common-sense numerical knowledge graph that constrains the order of text representations. Experimental results on the real-world dataset for the DRP task demonstrate our method's effectiveness in drug discovery. The code is available at:https://anonymous.4open.science/r/RMCD-DBD1.",
+    "authors": [
+        "Kun Li",
+        "Xiuwen Gong",
+        "Shirui Pan",
+        "Jia Wu",
+        "Bo Du",
+        "Wenbin Hu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Regressor-free guidance molecule generation is introduced to ensure sampling within a more effective space and support DRP, and a common-sense numerical knowledge graph is designed that constrains the order of text representations."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

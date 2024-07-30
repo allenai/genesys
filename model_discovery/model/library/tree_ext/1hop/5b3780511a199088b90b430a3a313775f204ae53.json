@@ -1,0 +1,30 @@
+{
+    "acronym": "5b3780511a199088b90b430a3a313775f204ae53",
+    "title": "Lightweight Spatial Modeling for Combinatorial Information Extraction From Documents",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "5b3780511a199088b90b430a3a313775f204ae53",
+    "abstract": "Documents that consist of diverse templates and exhibit complex spatial structures pose a challenge for document entity classification. We propose KNN-Former, which incorporates a new kind of spatial bias in attention calculation based on the K-nearest-neighbor (KNN) graph of document entities. We limit entities\u2019 attention only to their local radius defined by the KNN graph. We also use combinatorial matching to address the one-to-one mapping property that exists in many documents, where one field has only one corresponding entity. Moreover, our method is highly parameter-efficient compared to existing approaches in terms of the number of trainable parameters. Despite this, experiments across various datasets show our method outperforms baselines in most entity types. Many real-world documents exhibit combinatorial properties which can be leveraged as inductive biases to improve extraction accuracy, but existing datasets do not cover these documents.To facilitate future research into these types of documents, we release a new ID document dataset that covers diverse templates and languages. We also release enhanced annotations for an existing dataset.",
+    "authors": [
+        "Yanfei Dong",
+        "Lambert Deng",
+        "Jiazheng Zhang",
+        "Xiaodong Yu",
+        "Ting Lin",
+        "Francesco Gelli",
+        "Soujanya Poria",
+        "W. Lee"
+    ],
+    "venue": "Findings",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes KNN-Former, which incorporates a new kind of spatial bias in attention calculation based on the K-nearest-neighbor (KNN) graph of document entities, which limits entities\u2019 attention only to their local radius defined by the KNN graph."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

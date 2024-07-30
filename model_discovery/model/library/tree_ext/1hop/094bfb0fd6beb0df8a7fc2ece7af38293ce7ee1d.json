@@ -1,0 +1,31 @@
+{
+    "acronym": "094bfb0fd6beb0df8a7fc2ece7af38293ce7ee1d",
+    "title": "A Goal Interaction Graph Planning Framework for Conversational Recommendation",
+    "seed_ids": [
+        "gpt2",
+        "0479ba9c95a54d52af7279f47d8ef50b73484d2d",
+        "fa52baef4ba2603c4382858669887b89cb9e62a0",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "094bfb0fd6beb0df8a7fc2ece7af38293ce7ee1d",
+    "abstract": "Multi-goal conversational recommender system (MG-CRS) which is more in line with realistic scenarios has attracted a lot of attention. MG-CRS can dynamically capture the demands of users in conversation, continuously engage their interests, and make recommendations. The key of accomplishing these tasks is to plan a reasonable goal sequence which can naturally guide the user to accept the recommended goal. Previous works have demonstrated that mining the correlations of goals from the goal sequences in the dialogue corpus is helpful for recommending the goal that the user is interested in. However, they independently model correlations for each level of goal (i.e., goal type or entity) and neglect the order of goals appear in the dialogue. In this paper, we propose a goal interaction graph planning framework which constructs a directed heterogeneous graph to flexibly model the correlations between any level of goals and retain the order of goals. We design a goal interaction graph learning module to model the goal correlations and propagate goal representations via directed edges, then use an encoder and a dual-way fusion decoder to extract the most relevant information with the current goal from the conversation and domain knowledge, making the next-goal prediction fully exploit the prior goal correlations and user feedback. Finally we generate engaging responses based on the predicted goal sequence to complete the recommendation task. Experiments on two benchmark datasets show that our method achieves significant improvements in both the goal planning and response generation tasks.",
+    "authors": [
+        "Xiaotong Zhang",
+        "Xuefang Jia",
+        "Han Liu",
+        "Xinyue Liu",
+        "Xianchao Zhang"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A goal interaction graph planning framework which constructs a directed heterogeneous graph to flexibly model the correlations between any level of goals and retain the order of goals and generates engaging responses based on the predicted goal sequence to complete the recommendation task."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

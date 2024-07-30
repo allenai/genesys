@@ -1,0 +1,29 @@
+{
+    "acronym": "ceec4e2f08777997ba41132a5c6b397f54c3a569",
+    "title": "Joint Learning-based Multiple Documents Heterogeneous Graph Inference for Biomedical Entity Linking",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "ceec4e2f08777997ba41132a5c6b397f54c3a569",
+    "abstract": "Biomedical Entity Linking(BEL) is the task of linking biomedical mentions in natural language corpora such as diseases and drugs to standard entities in a given knowledge base. The same biomedical entity can have multiple mentions, including synonyms, morphological variations and names with different word order. Thus, making predictions for each mention with an insufficient context in a single biomedical document is challenging, especially when mentions or linked entities are unseen during training. This paper proposes an inference method for biomedical entity linking based on the heterogeneous graph constructed on multiple documents. We first design a joint representation learning method and compute mention-mention and mention-entity similarity in a unified semantic space. Based on them, we utilize the mutual nearest neighbors relationship between mentions and the relationship between mention and entity to construct a heterogeneous graph. Finally, we apply a clustering-based method to make linking predictions, which associates each mention in the documents with a unique entity. Extensive experiments on three biomedical entity linking benchmarks (MedMentions, BC5CDR and NCBI) demonstrate that our method outperforms other state-of-the-art entity linking models.",
+    "authors": [
+        "Qizhu Dai",
+        "Qin Lei",
+        "Jiang Zhong",
+        "Xue Li",
+        "Chen Wang",
+        "Hong Yin",
+        "Rongzhen Li"
+    ],
+    "venue": "IEEE International Conference on Bioinformatics and Biomedicine",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes an inference method for biomedical entity linking based on the heterogeneous graph constructed on multiple documents, and demonstrates that this method outperforms other state-of-the-art entity linking models."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

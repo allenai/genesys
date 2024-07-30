@@ -1,0 +1,33 @@
+{
+    "acronym": "443d898928eb8e32d2e6f8f287beaa63f5b00eb9",
+    "title": "JaCoText: A Pretrained Model for Java Code-Text Generation",
+    "seed_ids": [
+        "gpt2",
+        "8bd182f01c99e643c9a5a96832dc1a16b9cd10d0",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "443d898928eb8e32d2e6f8f287beaa63f5b00eb9",
+    "abstract": "Pretrained transformer-based models have shown high performance in natural language generation task. However, a new wave of interest has surged: automatic programming language generation. This task consists of translating natural language instructions to a programming code. Despite the fact that well-known pretrained models on language generation have achieved good performance in learning programming languages, effort is still needed in automatic code generation. In this paper, we introduce JaCoText, a model based on Transformers neural network. It aims to generate java source code from natural language text. JaCoText leverages advantages of both natural language and code generation models. More specifically, we study some findings from the state of the art and use them to (1) initialize our model from powerful pretrained models, (2) explore additional pretraining on our java dataset, (3) carry out experiments combining the unimodal and bimodal data in the training, and (4) scale the input and output length during the fine-tuning of the model. Conducted experiments on CONCODE dataset show that JaCoText achieves new state-of-the-art results.",
+    "authors": [
+        "Jessica L'opez Espejel",
+        "Mahaman Sanoussi Yahaya Alassan",
+        "Walid Dahhane",
+        "E. Ettifouri"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces JaCoText, a model based on Transformers neural network that aims to generate java source code from natural language text and achieves new state-of-the-art results."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

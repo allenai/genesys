@@ -1,0 +1,33 @@
+{
+    "acronym": "2b60b8b639c916f934026af4bd4b9a8b66062704",
+    "title": "MuLD: The Multitask Long Document Benchmark",
+    "seed_ids": [
+        "longformer",
+        "reformer",
+        "83238f3402fc4a7c4efa48bae180d81cabed23ee",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "d9f6ada77448664b71128bb19df15765336974a6"
+    ],
+    "s2id": "2b60b8b639c916f934026af4bd4b9a8b66062704",
+    "abstract": "The impressive progress in NLP techniques has been driven by the development of multi-task benchmarks such as GLUE and SuperGLUE. While these benchmarks focus on tasks for one or two input sentences, there has been exciting work in designing efficient techniques for processing much longer inputs. In this paper, we present MuLD: a new long document benchmark consisting of only documents over 10,000 tokens. By modifying existing NLP tasks, we create a diverse benchmark which requires models to successfully model long-term dependencies in the text. We evaluate how existing models perform, and find that our benchmark is much more challenging than their \u2018short document\u2019 equivalents. Furthermore, by evaluating both regular and efficient transformers, we show that models with increased context length are better able to solve the tasks presented, suggesting that future improvements in these models are vital for solving similar long document problems. We release the data and code for baselines to encourage further research on efficient NLP models.",
+    "authors": [
+        "G. Hudson",
+        "N. A. Moubayed"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "MuLD is presented: a new long document benchmark consisting of only documents over 10,000 tokens, which requires models to successfully model long-term dependencies in the text and shows that models with increased context length are better able to solve the tasks presented."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

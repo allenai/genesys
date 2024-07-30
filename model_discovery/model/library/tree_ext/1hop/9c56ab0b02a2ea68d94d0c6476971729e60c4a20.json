@@ -1,0 +1,42 @@
+{
+    "acronym": "9c56ab0b02a2ea68d94d0c6476971729e60c4a20",
+    "title": "HRSAM: Efficiently Segment Anything in High-Resolution Images",
+    "seed_ids": [
+        "mamba",
+        "flashattn",
+        "9bd60a0b1b5e70c9e6ccfde513f8fdea61d8b503",
+        "5867382590f9f0ff8caf15804d20bde10845b2d2",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "131ba9932572c92155874db93626cf299659254e",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "d6c5aab433d9871cabc01ffb1e5e1ea89141155b",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "3a906b77fa218adc171fecb28bb81c24c14dcc7b",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "2a31319e73d4486716168b65cdf7559baeda18ce",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "9c56ab0b02a2ea68d94d0c6476971729e60c4a20",
+    "abstract": "The Segment Anything Model (SAM) has significantly advanced interactive segmentation but struggles with high-resolution images crucial for high-precision segmentation. This is primarily due to the quadratic space complexity of SAM-implemented attention and the length extrapolation issue in common global attention. This study proposes HRSAM that integrates Flash Attention and incorporates Plain, Shifted and newly proposed Cycle-scan Window (PSCWin) attention to address these issues. The shifted window attention is redesigned with padding to maintain consistent window sizes, enabling effective length extrapolation. The cycle-scan window attention adopts the recently developed State Space Models (SSMs) to ensure global information exchange with minimal computational overhead. Such window-based attention allows HRSAM to perform effective attention computations on scaled input images while maintaining low latency. Moreover, we further propose HRSAM++ that additionally employs a multi-scale strategy to enhance HRSAM's performance. The experiments on the high-precision segmentation datasets HQSeg44K and DAVIS show that high-resolution inputs enable the SAM-distilled HRSAM models to outperform the teacher model while maintaining lower latency. Compared to the SOTAs, HRSAM achieves a 1.56 improvement in interactive segmentation's NoC95 metric with only 31% of the latency. HRSAM++ further enhances the performance, achieving a 1.63 improvement in NoC95 with just 38% of the latency.",
+    "authors": [
+        "You Huang",
+        "Wenbin Lai",
+        "Jiayi Ji",
+        "Liujuan Cao",
+        "Shengchuan Zhang",
+        "Rongrong Ji"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study proposes HRSAM that integrates Flash Attention and incorporates Plain, Shifted and newly proposed Cycle-scan Window (PSCWin) attention to address issues of SAM-implemented attention and shows that high-resolution inputs enable the SAM-distilled HRSAM models to outperform the teacher model while maintaining lower latency."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

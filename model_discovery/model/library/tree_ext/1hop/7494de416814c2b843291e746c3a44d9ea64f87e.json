@@ -1,0 +1,28 @@
+{
+    "acronym": "7494de416814c2b843291e746c3a44d9ea64f87e",
+    "title": "Low Resource Summarization using Pre-trained Language Models",
+    "seed_ids": [
+        "gpt",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc"
+    ],
+    "s2id": "7494de416814c2b843291e746c3a44d9ea64f87e",
+    "abstract": "With the advent of Deep Learning based Artificial Neural Networks models, Natural Language Processing (NLP) has witnessed significant improvements in textual data processing in terms of its efficiency and accuracy. However, the research is mostly restricted to high-resource languages such as English and low-resource languages still suffer from a lack of available resources in terms of training datasets as well as models with even baseline evaluation results. Considering the limited availability of resources for low-resource languages, we propose a methodology for adapting self-attentive transformer-based architecture models (mBERT, mT5) for low-resource summarization, supplemented by the construction of a new baseline dataset (76.5k article, summary pairs) in a low-resource language Urdu. Choosing news (a publicly available source) as the application domain has the potential to make the proposed methodology useful for reproducing in other languages with limited resources. Our adapted summarization model urT5 with up to 44.78% reduction in size as compared to mT5 can capture contextual information of low resource language effectively with evaluation score (up to 46.35 ROUGE-1, 77 BERTScore) at par with state-of-the-art models in high resource language English (PEGASUS: 47.21, BART: 45.14 on XSUM Dataset). The proposed method provided a baseline approach towards extractive as well as abstractive summarization with competitive evaluation results in a limited resource setup.",
+    "authors": [
+        "Mubashir Munaf",
+        "Hammad Afzal",
+        "Khawir Mahmood",
+        "N. Iltaf"
+    ],
+    "venue": "ACM Transactions on Asian and Low-Resource Language Information Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed method provided a baseline approach towards extractive as well as abstractive summarization with competitive evaluation results in a limited resource setup."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

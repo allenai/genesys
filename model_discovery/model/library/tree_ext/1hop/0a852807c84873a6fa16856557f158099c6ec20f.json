@@ -1,0 +1,31 @@
+{
+    "acronym": "0a852807c84873a6fa16856557f158099c6ec20f",
+    "title": "Efficient Structured Prediction with Transformer Encoders",
+    "seed_ids": [
+        "transformer",
+        "bert",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a",
+        "3ee7b17cc627ac5bc99632a22ef820dc559393e6",
+        "e2587eddd57bc4ba286d91b27c185083f16f40ee",
+        "8659bf379ca8756755125a487c43cfe8611ce842",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "a1c9a809e9e063d01963c607597f5ef0d8d4d0a2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0a852807c84873a6fa16856557f158099c6ec20f",
+    "abstract": "Finetuning is a useful method for adapting Transformer-based text encoders to new tasks but can be computationally expensive for structured prediction tasks that require tuning at the token level. Furthermore, finetuning is inherently inefficient in updating all base model parameters, which prevents parameter sharing across tasks. To address these issues, we propose a method for efficient task adaptation of frozen Transformer encoders based on the local contribution of their intermediate layers to token representations. Our adapter uses a novel attention mechanism to aggregate intermediate layers and tailor the resulting representations to a target task. Experiments on several structured prediction tasks demonstrate that our method outperforms previous approaches, retaining over 99% of the finetuning performance at a fraction of the training cost. Our proposed method offers an efficient solution for adapting frozen Transformer encoders to new tasks, improving performance and enabling parameter sharing across different tasks.",
+    "authors": [
+        "Ali Basirat"
+    ],
+    "venue": "Northern European Journal of Language Technology",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed adapter uses a novel attention mechanism to aggregate intermediate layers and tailor the resulting representations to a target task, offering an efficient solution for adapting frozen Transformer encoders to new tasks, improving performance and enabling parameter sharing across different tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

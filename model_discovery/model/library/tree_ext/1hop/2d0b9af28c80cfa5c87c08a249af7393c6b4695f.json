@@ -1,0 +1,29 @@
+{
+    "acronym": "2d0b9af28c80cfa5c87c08a249af7393c6b4695f",
+    "title": "Enabling Early Health Care Intervention by Detecting Depression in Users of Web-Based Forums using Language Models: Longitudinal Analysis and Evaluation",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "2d0b9af28c80cfa5c87c08a249af7393c6b4695f",
+    "abstract": "Background Major depressive disorder is a common mental disorder affecting 5% of adults worldwide. Early contact with health care services is critical for achieving accurate diagnosis and improving patient outcomes. Key symptoms of major depressive disorder (depression hereafter) such as cognitive distortions are observed in verbal communication, which can also manifest in the structure of written language. Thus, the automatic analysis of text outputs may provide opportunities for early intervention in settings where written communication is rich and regular, such as social media and web-based forums. Objective The objective of this study was 2-fold. We sought to gauge the effectiveness of different machine learning approaches to identify users of the mass web-based forum Reddit, who eventually disclose a diagnosis of depression. We then aimed to determine whether the time between a forum post and a depression diagnosis date was a relevant factor in performing this detection. Methods A total of 2 Reddit data sets containing posts belonging to users with and without a history of depression diagnosis were obtained. The intersection of these data sets provided users with an estimated date of depression diagnosis. This derived data set was used as an input for several machine learning classifiers, including transformer-based language models (LMs). Results Bidirectional Encoder Representations from Transformers (BERT) and MentalBERT transformer-based LMs proved the most effective in distinguishing forum users with a known depression diagnosis from those without. They each obtained a mean F1-score of 0.64 across the experimental setups used for binary classification. The results also suggested that the final 12 to 16 weeks (about 3-4 months) of posts before a depressed user\u2019s estimated diagnosis date are the most indicative of their illness, with data before that period not helping the models detect more accurately. Furthermore, in the 4- to 8-week period before the user\u2019s estimated diagnosis date, their posts exhibited more negative sentiment than any other 4-week period in their post history. Conclusions Transformer-based LMs may be used on data from web-based social media forums to identify users at risk for psychiatric conditions such as depression. Language features picked up by these classifiers might predate depression onset by weeks to months, enabling proactive mental health care interventions to support those at risk for this condition.",
+    "authors": [
+        "D. Owen",
+        "Dimosthenis Antypas",
+        "Athanasios Hassoulas",
+        "A. Pardi\u00f1as",
+        "Luis Espinosa-Anke",
+        "Jose Camacho Collados"
+    ],
+    "venue": "JMIR AI",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Transformer-based LMs may be used on data from web-based social media forums to identify users at risk for psychiatric conditions such as depression, with results suggesting that the final 12 to 16 weeks of posts before a depressed user\u2019s estimated diagnosis date are the most indicative of their illness."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

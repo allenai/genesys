@@ -1,0 +1,31 @@
+{
+    "acronym": "c14a7d982fc910fb7d3eb4fb2c760f19d69d3e92",
+    "title": "Wikiformer: Pre-training with Structured Information of Wikipedia for Ad-hoc Retrieval",
+    "seed_ids": [
+        "bert",
+        "75f1c7dadb4ed733fb4d3a4cc47b9cbde9ad98cc",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "c14a7d982fc910fb7d3eb4fb2c760f19d69d3e92",
+    "abstract": "With the development of deep learning and natural language processing techniques, pre-trained language models have been widely used to solve information retrieval (IR) problems. Benefiting from the pre-training and fine-tuning paradigm, these models achieve state-of-the-art performance. In previous works, plain texts in Wikipedia have been widely used in the pre-training stage. However, the rich structured information in Wikipedia, such as the titles, abstracts, hierarchical heading (multi-level title) structure, relationship between articles, references, hyperlink structures, and the writing organizations, has not been fully explored. In this paper, we devise four pre-training objectives tailored for IR tasks based on the structured knowledge of Wikipedia. Compared to existing pre-training methods, our approach can better capture the semantic knowledge in the training corpus by leveraging the human-edited structured data from Wikipedia. Experimental results on multiple IR benchmark datasets show the superior performance of our model in both zero-shot and fine-tuning settings compared to existing strong retrieval baselines. Besides, experimental results in biomedical and legal domains demonstrate that our approach achieves better performance in vertical domains compared to previous models, especially in scenarios where long text similarity matching is needed. The code is available at https://github.com/oneal2000/Wikiformer.",
+    "authors": [
+        "Weihang Su",
+        "Qingyao Ai",
+        "Xiangsheng Li",
+        "Jia Chen",
+        "Yiqun Liu",
+        "Xiaolong Wu",
+        "Shengluan Hou"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results on multiple IR benchmark datasets show the superior performance of the model in both zero-shot and fine-tuning settings compared to existing strong retrieval baselines and experimental results in biomedical and legal domains demonstrate that the approach achieves better performance in vertical domains compared to previous models."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

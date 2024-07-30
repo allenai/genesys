@@ -1,0 +1,33 @@
+{
+    "acronym": "05d70085d1b580b2369942410ae77c48d1eeacca",
+    "title": "Exploring Extreme Parameter Compression for Pre-trained Language Models",
+    "seed_ids": [
+        "gpt2",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "0b991a1a5bcdb13646ac0b6873d09bde4cc36fb5",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf",
+        "62dc8ddb4907db4b889c5e93673d9b3c189d1f25",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "05d70085d1b580b2369942410ae77c48d1eeacca",
+    "abstract": "Recent work explored the potential of large-scale Transformer-based pre-trained models, especially Pre-trained Language Models (PLMs) in natural language processing. This raises many concerns from various perspectives, e.g., financial costs and carbon emissions. Compressing PLMs like BERT with negligible performance loss for faster inference and cheaper deployment has attracted much attention. In this work, we aim to explore larger compression ratios for PLMs, among which tensor decomposition is a potential but under-investigated one. Two decomposition and reconstruction protocols are further proposed to improve the effectiveness and efficiency during compression. Our compressed BERT with ${1}/{7}$ parameters in Transformer layers performs on-par with, sometimes slightly better than the original BERT in GLUE benchmark. A tiny version achieves $96.7\\%$ performance of BERT-base with $ {1}/{48} $ encoder parameters (i.e., less than 2M parameters excluding the embedding layer) and $2.7 \\times$ faster on inference. To show that the proposed method is orthogonal to existing compression methods like knowledge distillation, we also explore the benefit of the proposed method on a distilled BERT.",
+    "authors": [
+        "Yuxin Ren",
+        "Benyou Wang",
+        "Lifeng Shang",
+        "Xin Jiang",
+        "Qun Liu"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work aims to explore larger compression ratios for PLMs, among which tensor decomposition is a potential but under-investigated one, and shows that the proposed method is orthogonal to existing compression methods like knowledge distillation."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

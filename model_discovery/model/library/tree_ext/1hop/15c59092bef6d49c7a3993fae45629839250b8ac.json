@@ -1,0 +1,40 @@
+{
+    "acronym": "15c59092bef6d49c7a3993fae45629839250b8ac",
+    "title": "Improving Autoregressive NLP Tasks via Modular Linearized Attention",
+    "seed_ids": [
+        "cosformer",
+        "performer",
+        "86c8d930b492a4f9cadc6c60aecdaaded49acc86",
+        "c49ac1f916d6d2edeb187e6619c8d23acd95eb21",
+        "255c526f78bbfec35d4ed73b6dd8eacd9ef2c0b3",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "67ee20536c30a225b86902af2f091e28e5e19b40",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "15c59092bef6d49c7a3993fae45629839250b8ac",
+    "abstract": "Various natural language processing (NLP) tasks necessitate models that are efficient and small based on their ultimate application at the edge or in other resource-constrained environments. While prior research has reduced the size of these models, increasing computational efficiency without considerable performance impacts remains difficult, especially for autoregressive tasks. This paper proposes modular linearized attention (MLA), which combines multiple efficient attention mechanisms, including cosFormer, to maximize inference quality while achieving notable speedups. We validate this approach on several autoregressive NLP tasks, including speech-to-text neural machine translation (S2T NMT), speech-to-text simultaneous translation (SimulST), and autoregressive text-to-spectrogram, noting efficiency gains on TTS and competitive performance for NMT and SimulST during training and inference.",
+    "authors": [
+        "Victor Agostinelli",
+        "Lizhong Chen"
+    ],
+    "venue": "ECML/PKDD",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Modular linearized attention (MLA) is proposed, which combines multiple efficient attention mechanisms, including cosFormer, to maximize inference quality while achieving notable speedups on autoregressive NLP tasks."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,42 @@
+{
+    "acronym": "08ffdec40291a2ccb5f8a6cc048b01247fb34b96",
+    "title": "Relative Positional Encoding for Transformers with Linear Complexity",
+    "seed_ids": [
+        "lineartransformer",
+        "cec7872b194aadf54140578b9be52939eb1112e9",
+        "eb0931c39904a40c6cb4aa35c9b21d5e3b7dc856",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "4889ba5a8ae8b2169dd44d1d3a605bf9820bae8d",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "84476fdf6ead3553f4493dff8e02308439d6222b",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "0a82b81fbc0bc25bf4d60f9a18c8ee3571e80d7d",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "7a79099447bef9a3ea13b1dc409d04b3dff57320",
+        "8cef9900c04d7f661c08f4b5b1ed4337ace042a3",
+        "24a70db0bbb5f486126477e32a6a44ab917a4b11",
+        "dc35daba3fb34b2e6a5b12530badb7b799262bbf"
+    ],
+    "s2id": "08ffdec40291a2ccb5f8a6cc048b01247fb34b96",
+    "abstract": "Recent advances in Transformer models allow for unprecedented sequence lengths, due to linear space and time complexity. In the meantime, relative positional encoding (RPE) was proposed as beneficial for classical Transformers and consists in exploiting lags instead of absolute positions for inference. Still, RPE is not available for the recent linear-variants of the Transformer, because it requires the explicit computation of the attention matrix, which is precisely what is avoided by such methods. In this paper, we bridge this gap and present Stochastic Positional Encoding as a way to generate PE that can be used as a replacement to the classical additive (sinusoidal) PE and provably behaves like RPE. The main theoretical contribution is to make a connection between positional encoding and cross-covariance structures of correlated Gaussian processes. We illustrate the performance of our approach on the Long-Range Arena benchmark and on music generation.",
+    "authors": [
+        "A. Liutkus",
+        "Ond\u0159ej C\u00edfka",
+        "Shih-Lun Wu",
+        "Umut Simsekli",
+        "Yi-Hsuan Yang",
+        "Ga\u00ebl Richard"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Stochastic Positional Encoding is presented as a way to generate PE that can be used as a replacement to the classical additive (sinusoidal) PE and provably behaves like RPE."
+    },
+    "citationCount": 34,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

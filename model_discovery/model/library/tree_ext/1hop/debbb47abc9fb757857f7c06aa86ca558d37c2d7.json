@@ -1,0 +1,43 @@
+{
+    "acronym": "debbb47abc9fb757857f7c06aa86ca558d37c2d7",
+    "title": "2-D SSM: A General Spatial Layer for Visual Transformers",
+    "seed_ids": [
+        "hyena",
+        "s4",
+        "mega",
+        "dssm",
+        "998ac3e945857cf2676ee7efdbaf443a0c6f820a",
+        "54155c2977a977bf129849455dcae3a2b79b3f41",
+        "edd23cff90be3f27e50e74d7b24cd0ca92370bbd",
+        "bb6644a9f5920abfc1fa008f366a9ff48468e063",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "661e8d555c4424b5953f17434f2ba910bfcf3afe",
+        "240300b1da360f22bf0b82c6817eacebba6deed4",
+        "70e91e16eb321067d9402710e14a40cf28311f73",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "debbb47abc9fb757857f7c06aa86ca558d37c2d7",
+    "abstract": "A central objective in computer vision is to design models with appropriate 2-D inductive bias. Desiderata for 2D inductive bias include two-dimensional position awareness, dynamic spatial locality, and translation and permutation invariance. To address these goals, we leverage an expressive variation of the multidimensional State Space Model (SSM). Our approach introduces efficient parameterization, accelerated computation, and a suitable normalization scheme. Empirically, we observe that incorporating our layer at the beginning of each transformer block of Vision Transformers (ViT) significantly enhances performance for multiple ViT backbones and across datasets. The new layer is effective even with a negligible amount of additional parameters and inference time. Ablation studies and visualizations demonstrate that the layer has a strong 2-D inductive bias. For example, vision transformers equipped with our layer exhibit effective performance even without positional encoding",
+    "authors": [
+        "Ethan Baron",
+        "Itamar Zimerman",
+        "Lior Wolf"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work leverages an expressive variation of the multidimensional State Space Model (SSM) to address two-dimensional position awareness, dynamic spatial locality, and translation and permutation invariance and introduces efficient parameterization, accelerated computation, and a suitable normalization scheme."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

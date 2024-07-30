@@ -1,0 +1,27 @@
+{
+    "acronym": "01a126eecec79e89150d8f749099ed6303aff04c",
+    "title": "The future is different: Large pre-trained language models fail in prediction tasks",
+    "seed_ids": [
+        "gpt",
+        "3bcb17559ce96eb20fa79af8194f4af0380d194a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "01a126eecec79e89150d8f749099ed6303aff04c",
+    "abstract": "Large pre-trained language models (LPLM) have shown spectacular success when fine-tuned on downstream supervised tasks. Yet, it is known that their performance can drastically drop when there is a distribution shift between the data used during training and that used at inference time. In this paper we focus on data distributions that naturally change over time and introduce four new REDDIT datasets, namely the WALLSTREETBETS, ASKSCIENCE, THE DONALD, and POLITICS sub-reddits. First, we empirically demonstrate that LPLM can display average performance drops of about 88% (in the best case!) when predicting the popularity of future posts from sub-reddits whose topic distribution changes with time. We then introduce a simple methodology that leverages neural variational dynamic topic models and attention mechanisms to infer temporal language model representations for regression tasks. Our models display performance drops of only about 40% in the worst cases (2% in the best ones) when predicting the popularity of future posts, while using only about 7% of the total number of parameters of LPLM and providing interpretable representations that offer insight into real-world events, like the GameStop short squeeze of 2021",
+    "authors": [
+        "K. Cvejoski",
+        "Rams\u00e9s J. S\u00e1nchez",
+        "C. Ojeda"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper empirically demonstrate that LPLM can display average performance drops of about 88% when predicting the popularity of future posts from sub-reddits whose topic distribution changes with time and introduces a simple methodology that leverages neural variational dynamic topic models and attention mechanisms to infer temporal language model representations for regression tasks."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

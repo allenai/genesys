@@ -1,0 +1,27 @@
+{
+    "acronym": "793d1a34fe4a8c9692982ca98e9b63c42d070da2",
+    "title": "RUBERT: A Bilingual Roman Urdu BERT Using Cross Lingual Transfer Learning",
+    "seed_ids": [
+        "gpt",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc"
+    ],
+    "s2id": "793d1a34fe4a8c9692982ca98e9b63c42d070da2",
+    "abstract": "In recent studies, it has been shown that Multilingual language models underperform their monolingual counterparts. It is also a well-known fact that training and maintaining monolingual models for each language is a costly and time-consuming process. Roman Urdu is a resource-starved language used popularly on social media platforms and chat apps. In this research, we propose a novel dataset of scraped tweets containing 54M tokens and 3M sentences. Additionally, we also propose RUBERT a bilingual Roman Urdu model created by additional pretraining of English BERT. We compare its performance with a monolingual Roman Urdu BERT trained from scratch and a multilingual Roman Urdu BERT created by additional pretraining of Multilingual BERT. We show through our experiments that additional pretraining of the English BERT produces the most notable performance improvement.",
+    "authors": [
+        "Usama Khalid",
+        "M. O. Beg",
+        "Muhammad Umair Arshad"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel dataset of scraped tweets containing 54M tokens and 3M sentences is proposed and it is shown that additional pretraining of the English BERT produces the most notable performance improvement."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

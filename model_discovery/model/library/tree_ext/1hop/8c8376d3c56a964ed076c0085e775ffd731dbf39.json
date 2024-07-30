@@ -1,0 +1,35 @@
+{
+    "acronym": "8c8376d3c56a964ed076c0085e775ffd731dbf39",
+    "title": "Thorough Characterization and Analysis of Large Transformer Model Training At-Scale",
+    "seed_ids": [
+        "gpt3",
+        "ff5eb1bd55d61ae919865f6b4dab84e6ae1974f3",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a"
+    ],
+    "s2id": "8c8376d3c56a964ed076c0085e775ffd731dbf39",
+    "abstract": "Large transformer models have recently achieved great success across various domains. With a growing number of model parameters, a large transformer model training today typically involves model sharding, data parallelism, and model parallelism. Thus, the throughput of large-scale model training depends heavily on the network bandwidth since a combination of model sharding and multiple parallelism strategies incurs various costs. However, prior characterizations of transformer models on high-bandwidth DGX machines that use TFLOPS as a metric may not reflect the performance of a system with lower bandwidth. Furthermore, data and model parallelism reveal significantly distinct training profiles on different system bandwidths at scale and, thus, need a thorough study. In this paper, we provide a bottom-up breakdown of training throughput into compute and communication time, and quantitatively analyze their respective influences on overall end-to-end training scaling. Our evaluation involves an in-depth exploration of data parallelism, scaling up to 512 GPUs with limited bandwidth, and examines three model sharding strategies among six model sizes. We also evaluate three combinations of model parallelism on both high and low bandwidth supercomputing systems. Overall, our work provides a broader perspective on large-scale transformer model training, and our analysis and evaluation yield practical insights for predicting training scaling, shaping the future development of supercomputing system design.",
+    "authors": [
+        "Scott Cheng",
+        "Jun-Liang Lin",
+        "M. Emani",
+        "Siddhisanket Raskar",
+        "Sam Foreman",
+        "Zhen Xie",
+        "Venkat Vishwanath",
+        "M. Kandemir"
+    ],
+    "venue": "Proceedings of the ACM on Measurement and Analysis of Computing Systems",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A bottom-up breakdown of training throughput into compute and communication time, and quantitatively analyze their respective influences on overall end-to-end training scaling are provided, providing a broader perspective on large-scale transformer model training."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

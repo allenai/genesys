@@ -1,0 +1,27 @@
+{
+    "acronym": "f271385cace80adef4c584c471f8c0a756756d5a",
+    "title": "Mitigating Data Shift of Biomedical Research Articles for Information Retrieval and Semantic Indexing",
+    "seed_ids": [
+        "longformer",
+        "2c953a3c378b40dadf2e3fb486713c8608b8e282",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "f271385cace80adef4c584c471f8c0a756756d5a",
+    "abstract": "Researchers have explored novel methods for both semantic indexing and information retrieval of biomedical research articles. Moreover, most solutions treat each task independently. However, both tasks are related. For instance, semantic indexes are generally used to filter results from an information retrieval system. Hence, one task can potentially improve the performance of models trained for the other task. Thus, this study proposes a unified retriever-ranker-based model to tackle the tasks of information retrieval (IR) and semantic indexing (SI). Particularly, our proposed model can adapt to rapid shifts in scientific research. Our results show that the model effectively leverages task similarity to improve the robustness to dataset shift. For SI, the Micro f1 score increases by 8% and the LCA-F score improves by 5%. For IR, the MAP increases by 5% on average.",
+    "authors": [
+        "Nima Ebadi",
+        "Anthony Rios",
+        "Peyman Najafirad"
+    ],
+    "venue": "SDP",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study proposes a unified retriever-ranker-based model to tackle the tasks of information retrieval (IR) and semantic indexing (SI), and shows that the model effectively leverages task similarity to improve the robustness to dataset shift."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

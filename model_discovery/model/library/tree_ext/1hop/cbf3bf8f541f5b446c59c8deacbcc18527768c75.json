@@ -1,0 +1,36 @@
+{
+    "acronym": "cbf3bf8f541f5b446c59c8deacbcc18527768c75",
+    "title": "M6-Rec: Generative Pretrained Language Models are Open-Ended Recommender Systems",
+    "seed_ids": [
+        "gpt2",
+        "24e775b20adf21e9b5b95c6a9b7a5c164d055849",
+        "319b84be7a843250bc81d7086f79a4126d550277",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "2573af4e13d9a5dddb257d22cd38a600528d9a8b",
+        "c6c734e16f66fbfcefac7625cc64599e83292c1e",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "7422756d2416c62d7660bd217d817acc8ec35a09",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "cbf3bf8f541f5b446c59c8deacbcc18527768c75",
+    "abstract": "Industrial recommender systems have been growing increasingly complex, may involve \\emph{diverse domains} such as e-commerce products and user-generated contents, and can comprise \\emph{a myriad of tasks} such as retrieval, ranking, explanation generation, and even AI-assisted content production. The mainstream approach so far is to develop individual algorithms for each domain and each task. In this paper, we explore the possibility of developing a unified foundation model to support \\emph{open-ended domains and tasks} in an industrial recommender system, which may reduce the demand on downstream settings' data and can minimize the carbon footprint by avoiding training a separate model from scratch for every task. Deriving a unified foundation is challenging due to (i) the potentially unlimited set of downstream domains and tasks, and (ii) the real-world systems' emphasis on computational efficiency. We thus build our foundation upon M6, an existing large-scale industrial pretrained language model similar to GPT-3 and T5, and leverage M6's pretrained ability for sample-efficient downstream adaptation, by representing user behavior data as plain texts and converting the tasks to either language understanding or generation. To deal with a tight hardware budget, we propose an improved version of prompt tuning that outperforms fine-tuning with negligible 1\\% task-specific parameters, and employ techniques such as late interaction, early exiting, parameter sharing, and pruning to further reduce the inference time and the model size. We demonstrate the foundation model's versatility on a wide range of tasks such as retrieval, ranking, zero-shot recommendation, explanation generation, personalized content creation, and conversational recommendation, and manage to deploy it on both cloud servers and mobile devices.",
+    "authors": [
+        "Zeyu Cui",
+        "Jianxin Ma",
+        "Chang Zhou",
+        "Jingren Zhou",
+        "Hongxia Yang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper builds their foundation upon M6, an existing large-scale industrial pretrained language model similar to GPT-3 and T5, and leverage M6's pretrained ability for sample-efficient downstream adaptation, by representing user behavior data as plain texts and converting the tasks to either language understanding or generation."
+    },
+    "citationCount": 134,
+    "influentialCitationCount": 16,
+    "code": null,
+    "description": null,
+    "url": null
+}

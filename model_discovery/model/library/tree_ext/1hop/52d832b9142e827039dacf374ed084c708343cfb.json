@@ -1,0 +1,29 @@
+{
+    "acronym": "52d832b9142e827039dacf374ed084c708343cfb",
+    "title": "Faster Neighborhood Attention: Reducing the O(n^2) Cost of Self Attention at the Threadblock Level",
+    "seed_ids": [
+        "flashattn",
+        "a883336e5c2e9f46f5012343227a6be4671c9ca0",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "53c3940f35b8b45d55ed49056282e1961954513d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "52d832b9142e827039dacf374ed084c708343cfb",
+    "abstract": "Neighborhood attention reduces the cost of self attention by restricting each token's attention span to its nearest neighbors. This restriction, parameterized by a window size and dilation factor, draws a spectrum of possible attention patterns between linear projection and self attention. Neighborhood attention, and more generally sliding window attention patterns, have long been bounded by infrastructure, particularly in higher-rank spaces (2-D and 3-D), calling for the development of custom kernels, which have been limited in either functionality, or performance, if not both. In this work, we first show that neighborhood attention can be represented as a batched GEMM problem, similar to standard attention, and implement it for 1-D and 2-D neighborhood attention. These kernels on average provide 895% and 272% improvement in full precision latency compared to existing naive kernels for 1-D and 2-D neighborhood attention respectively. We find certain inherent inefficiencies in all unfused neighborhood attention kernels that bound their performance and lower-precision scalability. We also developed fused neighborhood attention; an adaptation of fused dot-product attention kernels that allow fine-grained control over attention across different spatial axes. Known for reducing the quadratic time complexity of self attention to a linear complexity, neighborhood attention can now enjoy a reduced and constant memory footprint, and record-breaking half precision latency. We observe that our fused kernels successfully circumvent some of the unavoidable inefficiencies in unfused implementations. While our unfused GEMM-based kernels only improve half precision performance compared to naive kernels by an average of 496% and 113% in 1-D and 2-D problems respectively, our fused kernels improve naive kernels by an average of 1607% and 581% in 1-D and 2-D problems respectively.",
+    "authors": [
+        "Ali Hassani",
+        "Wen-Mei Hwu",
+        "Humphrey Shi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Fused neighborhood attention is developed; an adaptation of fused dot-product attention kernels that allow fine-grained control over attention across different spatial axes that can now enjoy a reduced and constant memory footprint, and record-breaking half precision latency."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

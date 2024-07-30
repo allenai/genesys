@@ -1,0 +1,32 @@
+{
+    "acronym": "89efe09229191cd6af41894dca8806d2a5e1282c",
+    "title": "Position Engineering: Boosting Large Language Models through Positional Information Manipulation",
+    "seed_ids": [
+        "roformer",
+        "c9603ec967879c24973b5bd48861df2e5555932e",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "89efe09229191cd6af41894dca8806d2a5e1282c",
+    "abstract": "The performance of large language models (LLMs) is significantly influenced by the quality of the prompts provided. In response, researchers have developed enormous prompt engineering strategies aimed at modifying the prompt text to enhance task performance. In this paper, we introduce a novel technique termed position engineering, which offers a more efficient way to guide large language models. Unlike prompt engineering, which requires substantial effort to modify the text provided to LLMs, position engineering merely involves altering the positional information in the prompt without modifying the text itself. We have evaluated position engineering in two widely-used LLM scenarios: retrieval-augmented generation (RAG) and in-context learning (ICL). Our findings show that position engineering substantially improves upon the baseline in both cases. Position engineering thus represents a promising new strategy for exploiting the capabilities of large language models.",
+    "authors": [
+        "Zhiyuan He",
+        "Huiqiang Jiang",
+        "Zilong Wang",
+        "Yuqing Yang",
+        "Luna Qiu",
+        "Lili Qiu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel technique termed position engineering is introduced, which offers a more efficient way to guide large language models and substantially improves upon the baseline in both cases of retrieval-augmented generation and in-context learning."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

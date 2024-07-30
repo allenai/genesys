@@ -1,0 +1,31 @@
+{
+    "acronym": "f45f85fa1beaa795c24c4ff86f1f2deece72252f",
+    "title": "A decoder-only foundation model for time-series forecasting",
+    "seed_ids": [
+        "gpt2",
+        "5b7f5488c380cf5085a5dd93e993ad293b225eee",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f45f85fa1beaa795c24c4ff86f1f2deece72252f",
+    "abstract": "Motivated by recent advances in large language models for Natural Language Processing (NLP), we design a time-series foundation model for forecasting whose out-of-the-box zero-shot performance on a variety of public datasets comes close to the accuracy of state-of-the-art supervised forecasting models for each individual dataset. Our model is based on pretraining a patched-decoder style attention model on a large time-series corpus, and can work well across different forecasting history lengths, prediction lengths and temporal granularities.",
+    "authors": [
+        "Abhimanyu Das",
+        "Weihao Kong",
+        "Rajat Sen",
+        "Yichen Zhou"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This model is based on pretraining a patched-decoder style attention model on a large time-series corpus, and can work well across different forecasting history lengths, prediction lengths and temporal granularities."
+    },
+    "citationCount": 43,
+    "influentialCitationCount": 8,
+    "code": null,
+    "description": null,
+    "url": null
+}

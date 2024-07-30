@@ -1,0 +1,27 @@
+{
+    "acronym": "c7b01581b571f95805965546816927c02f670e7a",
+    "title": "DMSD-CDFSAR: Distillation from Mixed-Source Domain for Cross-Domain Few-shot Action Recognition",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "c7b01581b571f95805965546816927c02f670e7a",
+    "abstract": "Few-shot action recognition is an emerging field in computer vision, primarily focused on meta-learning within the same domain. However, challenges arise in real-world scenario deployment, as gathering extensive labeled data within a specific domain is laborious and time-intensive. Thus, attention shifts towards cross-domain few-shot action recognition, requiring the model to generalize across domains with significant deviations. Therefore, we propose a novel approach, ``Distillation from Mixed-Source Domain\", tailored to address this conundrum. Our method strategically integrates insights from both labeled data of the source domain and unlabeled data of the target domain during the training. The ResNet18 is used as the backbone to extract spatial features from the source and target domains. We design two branches for meta-training: the original-source and the mixed-source branches. In the first branch, a Domain Temporal Encoder is employed to capture temporal features for both the source and target domains. Additionally, a Domain Temporal Decoder is employed to reconstruct all extracted features. In the other branch, a Domain Mixed Encoder is used to handle labeled source domain data and unlabeled target domain data, generating mixed-source domain features. We incorporate a pre-training stage before meta-training, featuring a network architecture similar to that of the first branch. Lastly, we introduce a dual distillation mechanism to refine the classification probabilities of source domain features, aligning them with those of mixed-source domain features. This iterative process enriches the insights of the original-source branch with knowledge from the mixed-source branch, thereby enhancing the model's generalization capabilities. Our code is available at URL: \\url{https://xxxx/xxxx/xxxx.git}",
+    "authors": [
+        "Fei-Yu Guo",
+        "YiKang Wang",
+        "Han Qi",
+        "Li Zhu",
+        "Jing Sun"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A dual distillation mechanism is introduced to refine the classification probabilities of source domain features, aligning them with those of mixed-source domain features, thereby enhancing the model's generalization capabilities."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

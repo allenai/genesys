@@ -1,0 +1,31 @@
+{
+    "acronym": "fec591a4eec18459b78cecf53a24a3fb63faf192",
+    "title": "SketchDeco: Decorating B&W Sketches with Colour",
+    "seed_ids": [
+        "transformer",
+        "16356fb02bb6f13e96fbf34aa9ab8fca2870ba3e",
+        "166314254ab27888fb49399dcf17764feb347a66",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "fec591a4eec18459b78cecf53a24a3fb63faf192",
+    "abstract": "This paper introduces a novel approach to sketch colourisation, inspired by the universal childhood activity of colouring and its professional applications in design and story-boarding. Striking a balance between precision and convenience, our method utilises region masks and colour palettes to allow intuitive user control, steering clear of the meticulousness of manual colour assignments or the limitations of textual prompts. By strategically combining ControlNet and staged generation, incorporating Stable Diffusion v1.5, and leveraging BLIP-2 text prompts, our methodology facilitates faithful image generation and user-directed colourisation. Addressing challenges of local and global consistency, we employ inventive solutions such as an inversion scheme, guided sampling, and a self-attention mechanism with a scaling factor. The resulting tool is not only fast and training-free but also compatible with consumer-grade Nvidia RTX 4090 Super GPUs, making it a valuable asset for both creative professionals and enthusiasts in various fields. Project Page: \\url{https://chaitron.github.io/SketchDeco/}",
+    "authors": [
+        "Chaitat Utintu",
+        "Pinaki Nath Chowdhury",
+        "Aneeshan Sain",
+        "Subhadeep Koley",
+        "A. Bhunia",
+        "Yi-Zhe Song"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces a novel approach to sketch colourisation, inspired by the universal childhood activity of colouring and its professional applications in design and story-boarding, and employs inventive solutions such as an inversion scheme, guided sampling, and a self-attention mechanism with a scaling factor."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

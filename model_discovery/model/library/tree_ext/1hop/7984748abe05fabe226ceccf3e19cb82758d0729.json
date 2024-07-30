@@ -1,0 +1,26 @@
+{
+    "acronym": "7984748abe05fabe226ceccf3e19cb82758d0729",
+    "title": "Evaluating Human Alignment and Model Faithfulness of LLM Rationale",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "7984748abe05fabe226ceccf3e19cb82758d0729",
+    "abstract": "We study how well large language models (LLMs) explain their generations with rationales -- a set of tokens extracted from the input texts that reflect the decision process of LLMs. We examine LLM rationales extracted with two methods: 1) attribution-based methods that use attention or gradients to locate important tokens, and 2) prompting-based methods that guide LLMs to extract rationales using prompts. Through extensive experiments, we show that prompting-based rationales align better with human-annotated rationales than attribution-based rationales, and demonstrate reasonable alignment with humans even when model performance is poor. We additionally find that the faithfulness limitations of prompting-based methods, which are identified in previous work, may be linked to their collapsed predictions. By fine-tuning these models on the corresponding datasets, both prompting and attribution methods demonstrate improved faithfulness. Our study sheds light on more rigorous and fair evaluations of LLM rationales, especially for prompting-based ones.",
+    "authors": [
+        "Mohsen Fayyaz",
+        "Fan Yin",
+        "Jiao Sun",
+        "Nanyun Peng"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study studies how well large language models explain their generations with rationales, and shows that prompting-based rationales align better with human-annotated rationales than attribution-based rationales, and demonstrate reasonable alignment with humans even when model performance is poor."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

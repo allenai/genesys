@@ -1,0 +1,28 @@
+{
+    "acronym": "fb84816401a7254681c17901875b2bd3112397e4",
+    "title": "BiLoRA: A Bi-level Optimization Framework for Overfitting-Resilient Low-Rank Adaptation of Large Pre-trained Models",
+    "seed_ids": [
+        "gpt2",
+        "3bcb17559ce96eb20fa79af8194f4af0380d194a",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "fb84816401a7254681c17901875b2bd3112397e4",
+    "abstract": "Low-rank adaptation (LoRA) is a popular method for fine-tuning large-scale pre-trained models in downstream tasks by learning low-rank incremental matrices. Though LoRA and its variants effectively reduce the number of trainable parameters compared to full fine-tuning methods, they often overfit training data, resulting in sub-optimal generalization on test data. To address this problem, we introduce BiLoRA, an overfitting-alleviating fine-tuning approach based on bi-level optimization (BLO). BiLoRA employs pseudo singular value decomposition to parameterize low-rank incremental matrices and splits the training of pseudo singular vectors and values across two different subsets of training data. This division, embedded within separate levels of the BLO framework, mitigates the risk of overfitting to a single dataset. Tested on ten datasets covering natural language understanding and generation tasks and applied to various well-known large pre-trained models, BiLoRA significantly outperforms LoRA methods and other fine-tuning approaches, with similar amounts of trainable parameters.",
+    "authors": [
+        "Rushi Qiang",
+        "Ruiyi Zhang",
+        "Pengtao Xie"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "BiLoRA is introduced, an overfitting-alleviating fine-tuning approach based on bi-level optimization (BLO) that significantly outperforms LoRA methods and other fine-tuning approaches, with similar amounts of trainable parameters."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

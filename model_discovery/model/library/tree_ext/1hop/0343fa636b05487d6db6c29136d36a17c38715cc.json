@@ -1,0 +1,33 @@
+{
+    "acronym": "0343fa636b05487d6db6c29136d36a17c38715cc",
+    "title": "The Power of Selecting Key Blocks with Local Pre-ranking for Long Document Information Retrieval",
+    "seed_ids": [
+        "longformer",
+        "sparsetransformer",
+        "9eb7860ae9777997ed17f6de623b0ab08cfc2df5",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "8382402fe166df3de499dac182e42baa51335926",
+        "4d244972ed2e0286363bfb054cb269574d21a72c"
+    ],
+    "s2id": "0343fa636b05487d6db6c29136d36a17c38715cc",
+    "abstract": "Les r\u00e9seaux neuronaux profonds et les mod\u00e8les fond\u00e9s sur les transformeurs comme BERT ont envahi le domaine de la recherche d\u2019informations (RI) ces derni\u00e8res ann\u00e9es. Leur succ\u00e8s est li\u00e9 au m\u00e9canisme d\u2019auto-attention qui permet de capturer les d\u00e9pendances entre les mots ind\u00e9pendamment de leur distance. Cependant, en raison de sa complexit\u00e9 quadratique dans le nombre de mots, ce m\u00e9canisme ne peut \u00eatre directement utilis\u00e9 sur de longues s\u00e9quences, ce qui ne permet pas de d\u00e9ployer enti\u00e8rement les mod\u00e8les neuronaux sur des documents longs pouvant contenir des milliers de mots. Trois strat\u00e9gies standard ont \u00e9t\u00e9 adopt\u00e9es pour contourner ce probl\u00e8me. La premi\u00e8re consiste \u00e0 tronquer les documents longs, la deuxi\u00e8me \u00e0 segmenter les documents longs en passages plus courts et la derni\u00e8re \u00e0 remplacer le module d\u2019auto-attention par des modules d\u2019attention parcimonieux. Dans le premier cas, des informations importantes peuvent \u00eatre perdues et le jugement de pertinence n\u2019est fond\u00e9 que sur une partie de l\u2019information contenue dans le document. Dans le deuxi\u00e8me cas, une architecture hi\u00e9rarchique peut \u00eatre adopt\u00e9e pour construire une repr\u00e9sentation du document sur la base des repr\u00e9sentations de chaque passage. Cela dit, malgr\u00e9 ses r\u00e9sultats prometteurs, cette strat\u00e9gie reste co\u00fbteuse en temps, en m\u00e9moire et en \u00e9nergie. Dans le troisi\u00e8me cas, les contraintes de parcimonie peuvent conduire \u00e0 manquer des d\u00e9pendances importantes et, in fine, \u00e0 des r\u00e9sultats sous-optimaux. L\u2019approche que nous proposons est l\u00e9g\u00e8rement diff\u00e9rente de ces strat\u00e9gies et vise \u00e0 capturer, dans les documents longs, les blocs les plus importants permettant de d\u00e9cider du statut, pertinent ou non, de l\u2019ensemble du document. Elle repose sur trois \u00e9tapes principales : (a) la s\u00e9lection de blocs cl\u00e9s (c\u2019est-\u00e0-dire susceptibles d\u2019\u00eatre pertinents) avec un pr\u00e9-classement local en utilisant soit des mod\u00e8les de RI classiques, soit un module d\u2019apprentissage, (b) l\u2019apprentissage d\u2019une repr\u00e9sentation conjointe des requ\u00eates et des blocs cl\u00e9s \u00e0 l\u2019aide d\u2019un mod\u00e8le BERT standard, et (c) le calcul d\u2019un score de pertinence final qui peut \u00eatre consid\u00e9r\u00e9 comme une agr\u00e9gation d\u2019informations de pertinence locale. Dans cet article, nous menons tout d\u2019abord une analyse qui r\u00e9v\u00e8le que les signaux de pertinence peuvent appara\u00eetre \u00e0 diff\u00e9rents endroits dans les documents et que de tels signaux sont mieux captur\u00e9s par des relations s\u00e9mantiques que par des correspondances exactes. Nous examinons ensuite plusieurs m\u00e9thodes pour s\u00e9lectionner les blocs pertinents et montrons comment int\u00e9grer ces m\u00e9thodes dans les mod\u00e8les r\u00e9cents de RI.",
+    "authors": [
+        "Minghan Li",
+        "Diana Nicoleta Popa",
+        "Johan Chagnon",
+        "Yagmur Gizem Cinar",
+        "\u00c9ric Gaussier"
+    ],
+    "venue": "JEPTALNRECITAL",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "L\u2019approche que nous proposons est l\u00e9g\u00e8rement diff\u00e9rente de ces strat\u00e9gies et vise \u00e0 capturer, dans les documents longs, les blocs les plus importants permettant de d\u00e9cider du statut, pertinent ou non, de l\u2019ensemble du document."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

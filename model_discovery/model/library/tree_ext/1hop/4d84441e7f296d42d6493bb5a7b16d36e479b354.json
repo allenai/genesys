@@ -1,0 +1,51 @@
+{
+    "acronym": "4d84441e7f296d42d6493bb5a7b16d36e479b354",
+    "title": "Diffusion-RWKV: Scaling RWKV-Like Architectures for Diffusion Models",
+    "seed_ids": [
+        "rwkv4",
+        "51f38bd957fa863022feb5878fa1ba3bea6657cf",
+        "7154fc93bdefcd237a0ce3902511c0b154049253",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "434d751d355d7a7c20efa570e785c76286245e77",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "11c8911f787eed34e6f058d5d36287d45c54c961",
+        "998ac3e945857cf2676ee7efdbaf443a0c6f820a",
+        "70e91e16eb321067d9402710e14a40cf28311f73",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "d8d2e574965fe733eb1416e03df2b5c2914fc530",
+        "af679d69fcc1d0fcf0f039aba937853bcb50a8de",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "4d84441e7f296d42d6493bb5a7b16d36e479b354",
+    "abstract": "Transformers have catalyzed advancements in computer vision and natural language processing (NLP) fields. However, substantial computational complexity poses limitations for their application in long-context tasks, such as high-resolution image generation. This paper introduces a series of architectures adapted from the RWKV model used in the NLP, with requisite modifications tailored for diffusion model applied to image generation tasks, referred to as Diffusion-RWKV. Similar to the diffusion with Transformers, our model is designed to efficiently handle patchnified inputs in a sequence with extra conditions, while also scaling up effectively, accommodating both large-scale parameters and extensive datasets. Its distinctive advantage manifests in its reduced spatial aggregation complexity, rendering it exceptionally adept at processing high-resolution images, thereby eliminating the necessity for windowing or group cached operations. Experimental results on both condition and unconditional image generation tasks demonstrate that Diffison-RWKV achieves performance on par with or surpasses existing CNN or Transformer-based diffusion models in FID and IS metrics while significantly reducing total computation FLOP usage.",
+    "authors": [
+        "Zhengcong Fei",
+        "Mingyuan Fan",
+        "Changqian Yu",
+        "Debang Li",
+        "Junshi Huang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results on both condition and unconditional image generation tasks demonstrate that Diffison-RWKV achieves performance on par with or surpasses existing CNN or Transformer-based diffusion models in FID and IS metrics while significantly reducing total computation FLOP usage."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

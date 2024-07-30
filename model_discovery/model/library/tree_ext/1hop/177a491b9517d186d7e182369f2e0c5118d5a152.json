@@ -1,0 +1,32 @@
+{
+    "acronym": "177a491b9517d186d7e182369f2e0c5118d5a152",
+    "title": "GenKubeSec: LLM-Based Kubernetes Misconfiguration Detection, Localization, Reasoning, and Remediation",
+    "seed_ids": [
+        "gpt3",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "9ada8fa11b1cdece31f253acae50b62df8d5f823",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "a022bda79947d1f656a1164003c1b3ae9a843df9",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "177a491b9517d186d7e182369f2e0c5118d5a152",
+    "abstract": "A key challenge associated with Kubernetes configuration files (KCFs) is that they are often highly complex and error-prone, leading to security vulnerabilities and operational setbacks. Rule-based (RB) tools for KCF misconfiguration detection rely on static rule sets, making them inherently limited and unable to detect newly-discovered misconfigurations. RB tools also suffer from misdetection, since mistakes are likely when coding the detection rules. Recent methods for detecting and remediating KCF misconfigurations are limited in terms of their scalability and detection coverage, or due to the fact that they have high expertise requirements and do not offer automated remediation along with misconfiguration detection. Novel approaches that employ LLMs in their pipeline rely on API-based, general-purpose, and mainly commercial models. Thus, they pose security challenges, have inconsistent classification performance, and can be costly. In this paper, we propose GenKubeSec, a comprehensive and adaptive, LLM-based method, which, in addition to detecting a wide variety of KCF misconfigurations, also identifies the exact location of the misconfigurations and provides detailed reasoning about them, along with suggested remediation. When empirically compared with three industry-standard RB tools, GenKubeSec achieved equivalent precision (0.990) and superior recall (0.999). When a random sample of KCFs was examined by a Kubernetes security expert, GenKubeSec's explanations as to misconfiguration localization, reasoning and remediation were 100% correct, informative and useful. To facilitate further advancements in this domain, we share the unique dataset we collected, a unified misconfiguration index we developed for label standardization, our experimentation code, and GenKubeSec itself as an open-source tool.",
+    "authors": [
+        "Ehud Malul",
+        "Yair Meidan",
+        "D. Mimran",
+        "Y. Elovici",
+        "A. Shabtai"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "GenKubeSec is proposed, a comprehensive and adaptive, LLM-based method, which, in addition to detecting a wide variety of KCF misconfigurations, also identifies the exact location of the misconfigurations and provides detailed reasoning about them, along with suggested remediation."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,40 @@
+{
+    "acronym": "02ea31434584fcf07e6f805273494329deb2ee13",
+    "title": "BACON: Supercharge Your VLM with Bag-of-Concept Graph to Mitigate Hallucinations",
+    "seed_ids": [
+        "gpt3",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "02ea31434584fcf07e6f805273494329deb2ee13",
+    "abstract": "This paper presents Bag-of-Concept Graph (BACON) to gift models with limited linguistic abilities to taste the privilege of Vision Language Models (VLMs) and boost downstream tasks such as detection, visual question answering (VQA), and image generation. Since the visual scenes in physical worlds are structured with complex relations between objects, BACON breaks down annotations into basic minimum elements and presents them in a graph structure. Element-wise style enables easy understanding, and structural composition liberates difficult locating. Careful prompt design births the BACON captions with the help of public-available VLMs and segmentation methods. In this way, we gather a dataset with 100K annotated images, which endow VLMs with remarkable capabilities, such as accurately generating BACON, transforming prompts into BACON format, envisioning scenarios in the style of BACONr, and dynamically modifying elements within BACON through interactive dialogue and more. Wide representative experiments, including detection, VQA, and image generation tasks, tell BACON as a lifeline to achieve previous out-of-reach tasks or excel in their current cutting-edge solutions.",
+    "authors": [
+        "Zhantao Yang",
+        "Ruili Feng",
+        "Keyu Yan",
+        "Huangji Wang",
+        "Zhicai Wang",
+        "Shangwen Zhu",
+        "Han Zhang",
+        "Jie Xiao",
+        "Pingyu Wu",
+        "Kai Zhu",
+        "Jixuan Chen",
+        "Chen-Wei Xie",
+        "Chaojie Mao",
+        "Yue Yang",
+        "Hongyang Zhang",
+        "Yu Liu",
+        "Fan Cheng"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "BACON is presented to gift models with limited linguistic abilities to taste the privilege of Vision Language Models (VLMs) and boost downstream tasks such as detection, visual question answering (VQA), and image generation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

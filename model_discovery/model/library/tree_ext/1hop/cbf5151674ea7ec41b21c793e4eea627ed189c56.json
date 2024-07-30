@@ -1,0 +1,28 @@
+{
+    "acronym": "cbf5151674ea7ec41b21c793e4eea627ed189c56",
+    "title": "Represent Code as Action Sequence for Predicting Next Method Call",
+    "seed_ids": [
+        "gpt2",
+        "40df572b0fbeae0f3db9b364be838c6467d189f2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "cbf5151674ea7ec41b21c793e4eea627ed189c56",
+    "abstract": "As human beings take actions with a goal in mind, we could predict the following action of a person depending on his previous actions. Inspired by this, after collecting and analyzing more than 13,000 repositories with 441,290 Python source code files from the Internet, we find the actions expressed in code are in the developers\u2019 high-level programming language statements. Previous code comprehension and code completion research paid little attention to code editing contexts like code file names and repository names while representing code for machine learning models. After modeling code as action sequences and modeling method names, file names and repository names as code editing context, we use modern natural language processing techniques to utilize the huge open source resources from the Internet and train a code completion model which takes the action sequences in code as input to complete code for developers. In the evaluation part, the experiments we conduct show the GPT-2 model trained with our action sequence code representation achieves 81.92% top-5 accuracy for next method call token prediction, compared to 61.89% of same GPT-2 model trained with same dataset. As for the context of the code we propose, we find it important for machines to comprehend the code better. Given the pre-trained natural language model, the training time of our model for 1,000,000 lines code is less than 16.7 minutes. All the above contribute to code comprehension and enhance code completion via unlimited resources from the Internet.",
+    "authors": [
+        "Yu Jiang",
+        "Liang Wang",
+        "Hao Hu",
+        "Xianping Tao"
+    ],
+    "venue": "Asia-Pacific Symposium on Internetware",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work uses modern natural language processing techniques to utilize the huge open source resources from the Internet and train a code completion model which takes the action sequences in code as input to complete code for developers."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

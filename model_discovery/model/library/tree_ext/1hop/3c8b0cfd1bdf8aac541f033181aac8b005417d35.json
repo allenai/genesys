@@ -1,0 +1,29 @@
+{
+    "acronym": "3c8b0cfd1bdf8aac541f033181aac8b005417d35",
+    "title": "Cross-Temporal Snapshot Alignment for Dynamic Networks",
+    "seed_ids": [
+        "roformer",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3c8b0cfd1bdf8aac541f033181aac8b005417d35",
+    "abstract": "In this paper, we study the task of cross-temporal snapshot alignment for dynamic networks. The goal of this task is to match equivalent nodes across temporal snapshots of a given dynamic network. Previous static network alignment methods ignore the non-stationary nature of networks, while existing dynamic counterparts focusing on two separate evolving networks do not take into account the problem of aligning two snapshots of the same dynamic network. To alleviate these issues, we propose a Cross-Temporal Snapshot Alignment model (CTSA), which maps nodes from different snapshots into the same semantic space and makes the equivalent nodes in the source and target snapshots to be aligned locate as closely as possible. Our CTSA model utilizes graph neural networks to embed nodes for each snapshot by aggregating the local structural information, and integrates the self-attention based encoders to model the dependencies in different snapshots over time. Additionally, to improve the alignment performance of the model, we contrive a novel positional embedding learning method, which takes into account both the ordering information of input representation sequences at each time step and the graph information of each network snapshot. Experimental results on real-world dynamic networks demonstrate that our model outperforms the state-of-the-art baselines.",
+    "authors": [
+        "Shangsong Liang",
+        "Shaowei Tang",
+        "Zaiqiao Meng",
+        "Qiang Zhang"
+    ],
+    "venue": "IEEE Transactions on Knowledge and Data Engineering",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Cross-Temporal Snapshot Alignment model (CTSA) is proposed, which maps nodes from different snapshots into the same semantic space and makes the equivalent nodes in the source and target snapshots to be aligned as closely as possible."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

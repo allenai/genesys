@@ -1,0 +1,24 @@
+{
+    "acronym": "d989f59ef6a54a933b40ece2bedfbdc6bb9c178d",
+    "title": "Asking the Right Question at the Right Time: Human and Model Uncertainty Guidance to Ask Clarification Questions",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "d989f59ef6a54a933b40ece2bedfbdc6bb9c178d",
+    "abstract": "Clarification questions are an essential dialogue tool to signal misunderstanding, ambiguities, and under-specification in language use. While humans are able to resolve uncertainty by asking questions since childhood, modern dialogue systems struggle to generate effective questions. To make progress in this direction, in this work we take a collaborative dialogue task as a testbed and study how model uncertainty relates to human uncertainty\u2014an as yet under-explored problem. We show that model uncertainty does not mirror human clarification-seeking behavior, which suggests that using human clarification questions as supervision for deciding when to ask may not be the most effective way to resolve model uncertainty. To address this issue, we propose an approach to generating clarification questions based on model uncertainty estimation, compare it to several alternatives, and show that it leads to significant improvements in terms of task success. Our findings highlight the importance of equipping dialogue systems with the ability to assess their own uncertainty and exploit in interaction.",
+    "authors": [
+        "A. Testoni",
+        "R. Fern'andez"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that model uncertainty does not mirror human clarification-seeking behavior, which suggests that using human clarification questions as supervision for deciding when to ask may not be the most effective way to resolve model uncertainty."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,34 @@
+{
+    "acronym": "89b55b6ccc177b924177d1d8b782484de994def4",
+    "title": "Retaining Key Information under High Compression Ratios: Query-Guided Compressor for LLMs",
+    "seed_ids": [
+        "compresscontext",
+        "b31a5884a8ebe96b6300839b28608b97f8f8ef76",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "2f7364d8e5cf94315bf8905f57de9c5543e9a4bf",
+        "dbc368bc8b49347dd27679894524fa62f88492c9",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c"
+    ],
+    "s2id": "89b55b6ccc177b924177d1d8b782484de994def4",
+    "abstract": "The growing popularity of Large Language Models has sparked interest in context compression for Large Language Models (LLMs). However, the performance of previous methods degrades dramatically as compression ratios increase, sometimes even falling to the closed-book level. This decline can be attributed to the loss of key information during the compression process. Our preliminary study supports this hypothesis, emphasizing the significance of retaining key information to maintain model performance under high compression ratios. As a result, we introduce Query-Guided Compressor (QGC), which leverages queries to guide the context compression process, effectively preserving key information within the compressed context. Additionally, we employ a dynamic compression strategy. We validate the effectiveness of our proposed QGC on the Question Answering task, including NaturalQuestions, TriviaQA, and HotpotQA datasets. Experimental results show that QGC can consistently perform well even at high compression ratios, which also offers significant benefits in terms of inference cost and throughput.",
+    "authors": [
+        "Zhiwei Cao",
+        "Qian Cao",
+        "Yu Lu",
+        "Ningxin Peng",
+        "Luyang Huang",
+        "Shanbo Cheng",
+        "Jinsong Su"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results show that QGC can consistently perform well even at high compression ratios, which also offers significant benefits in terms of inference cost and throughput."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

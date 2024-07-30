@@ -1,0 +1,27 @@
+{
+    "acronym": "d015e1eae27ca71d01f319a5556242b925efff8e",
+    "title": "Defense Against Syntactic Textual Backdoor Attacks with Token Substitution",
+    "seed_ids": [
+        "bert",
+        "989ef83ba28b4d5cc51d943d658698aa0b642db3"
+    ],
+    "s2id": "d015e1eae27ca71d01f319a5556242b925efff8e",
+    "abstract": "Textual backdoor attacks present a substantial security risk to Large Language Models (LLM). It embeds carefully chosen triggers into a victim model at the training stage, and makes the model erroneously predict inputs containing the same triggers as a certain class. Prior backdoor defense methods primarily target special token-based triggers, leaving syntax-based triggers insufficiently addressed. To fill this gap, this paper proposes a novel online defense algorithm that effectively counters syntax-based as well as special token-based backdoor attacks. The algorithm replaces semantically meaningful words in sentences with entirely different ones but preserves the syntactic templates or special tokens, and then compares the predicted labels before and after the substitution to determine whether a sentence contains triggers. Experimental results confirm the algorithm's performance against these two types of triggers, offering a comprehensive defense strategy for model integrity.",
+    "authors": [
+        "Xing Li",
+        "Xianwen He",
+        "Yao Li",
+        "Minhao Cheng"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel online defense algorithm that effectively counters syntax-based as well as special token-based backdoor attacks, and compares the predicted labels before and after the substitution to determine whether a sentence contains triggers."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

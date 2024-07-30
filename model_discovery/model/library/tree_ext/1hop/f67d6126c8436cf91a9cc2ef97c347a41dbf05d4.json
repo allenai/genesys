@@ -1,0 +1,38 @@
+{
+    "acronym": "f67d6126c8436cf91a9cc2ef97c347a41dbf05d4",
+    "title": "VmambaIR: Visual State Space Model for Image Restoration",
+    "seed_ids": [
+        "mamba",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "315d7a58fada47c5729645f0af8ddfaa0743f82f",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "f67d6126c8436cf91a9cc2ef97c347a41dbf05d4",
+    "abstract": "Image restoration is a critical task in low-level computer vision, aiming to restore high-quality images from degraded inputs. Various models, such as convolutional neural networks (CNNs), generative adversarial networks (GANs), transformers, and diffusion models (DMs), have been employed to address this problem with significant impact. However, CNNs have limitations in capturing long-range dependencies. DMs require large prior models and computationally intensive denoising steps. Transformers have powerful modeling capabilities but face challenges due to quadratic complexity with input image size. To address these challenges, we propose VmambaIR, which introduces State Space Models (SSMs) with linear complexity into comprehensive image restoration tasks. We utilize a Unet architecture to stack our proposed Omni Selective Scan (OSS) blocks, consisting of an OSS module and an Efficient Feed-Forward Network (EFFN). Our proposed omni selective scan mechanism overcomes the unidirectional modeling limitation of SSMs by efficiently modeling image information flows in all six directions. Furthermore, we conducted a comprehensive evaluation of our VmambaIR across multiple image restoration tasks, including image deraining, single image super-resolution, and real-world image super-resolution. Extensive experimental results demonstrate that our proposed VmambaIR achieves state-of-the-art (SOTA) performance with much fewer computational resources and parameters. Our research highlights the potential of state space models as promising alternatives to the transformer and CNN architectures in serving as foundational frameworks for next-generation low-level visual tasks.",
+    "authors": [
+        "Yuan Shi",
+        "Bin Xia",
+        "Xiaoyu Jin",
+        "Xing Wang",
+        "Tianyu Zhao",
+        "Xin Xia",
+        "Xuefeng Xiao",
+        "Wenming Yang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed VmambaIR introduces State Space Models (SSMs) with linear complexity into comprehensive image restoration tasks, and achieves state-of-the-art (SOTA) performance with much fewer computational resources and parameters."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

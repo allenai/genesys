@@ -1,0 +1,30 @@
+{
+    "acronym": "2c0b112d66d70487971bc96ef8c927464af8c8a8",
+    "title": "Towards a foundation model for geospatial artificial intelligence (vision paper)",
+    "seed_ids": [
+        "gpt2",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2c0b112d66d70487971bc96ef8c927464af8c8a8",
+    "abstract": "Large pre-trained models, also known as foundation models (FMs), are trained in a task-agnostic manner on large-scale data and can be adapted to a wide range of downstream tasks by fine tuning, few-shot, or even zero-shot learning. Despite their successes in language and vision tasks, we have yet to see an attempt to develop foundation models for geospatial artificial intelligence (GeoAI). In this work, we explore the promises and challenges for developing multimodal foundation models for GeoAI. We first show the advantages of this idea by testing the performance of existing Large pre-trained Language Models (LLMs) (e.g. GPT-2 and GPT-3) on two geospatial semantics tasks. Results indicate that these task-agnostic LLMs can outperform task-specific fully-supervised models on both tasks with 2--9% improvement in a few-shot learning setting. However, we also show the limitations of these existing foundation models given the multimodality nature of GeoAI, especially when dealing with geometries in conjunction with other modalities. So we discuss the possibility of a multimodal foundation model which can reason over various types of geospatial data through geospatial alignments. We conclude this paper by discussing the unique risks and challenges to develop such model for GeoAI.",
+    "authors": [
+        "Gengchen Mai",
+        "Chris Cundy",
+        "Kristy Choi",
+        "Yingjie Hu",
+        "Ni Lao",
+        "Stefano Ermon"
+    ],
+    "venue": "SIGSPATIAL/GIS",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The possibility of a multimodal foundation model which can reason over various types ofGeoAI data through geospatial alignments is discussed, by discussing the unique risks and challenges to develop such model for GeoAI."
+    },
+    "citationCount": 46,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

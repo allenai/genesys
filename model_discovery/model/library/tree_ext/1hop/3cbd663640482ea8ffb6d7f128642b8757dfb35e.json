@@ -1,0 +1,43 @@
+{
+    "acronym": "3cbd663640482ea8ffb6d7f128642b8757dfb35e",
+    "title": "NovaCOMET: Open Commonsense Foundation Models with Symbolic Knowledge Distillation",
+    "seed_ids": [
+        "gpt3",
+        "f78fe02f681a0a9a6867b007bd39e3884de64a91",
+        "78d3955e30d99650d078ba3ce1a523745da31040",
+        "023edab4738690444e3924e224c2641017a0d794",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "f48ae425e2567be2d993efcaaf74c2274fc9d7c5",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "3cbd663640482ea8ffb6d7f128642b8757dfb35e",
+    "abstract": "We present NovaCOMET, an open commonsense knowledge model, that combines the best aspects of knowledge and general task models. Compared to previous knowledge models, NovaCOMET allows open-format relations enabling direct application to reasoning tasks; compared to general task models like Flan-T5, it explicitly centers knowledge, enabling superior performance for commonsense reasoning. NovaCOMET leverages the knowledge of opaque proprietary models to create an open knowledge pipeline. First, knowledge is symbolically distilled into NovATOMIC, a publicly-released discrete knowledge graph which can be audited, critiqued, and filtered. Next, we train NovaCOMET on NovATOMIC by fine-tuning an open-source pretrained model. NovaCOMET uses an open-format training objective, replacing the fixed relation sets of past knowledge models, enabling arbitrary structures within the data to serve as inputs or outputs. The resulting generation model, optionally augmented with human annotation, matches or exceeds comparable open task models like Flan-T5 on a range of commonsense generation tasks. NovaCOMET serves as a counterexample to the contemporary focus on instruction tuning only, demonstrating a distinct advantage to explicitly modeling commonsense knowledge as well.",
+    "authors": [
+        "Peter West",
+        "R. L. Bras",
+        "Taylor Sorensen",
+        "Bill Yuchen Lin",
+        "Liwei Jiang",
+        "Ximing Lu",
+        "Khyathi Raghavi Chandu",
+        "Jack Hessel",
+        "Ashutosh Baheti",
+        "Chandra Bhagavatula",
+        "Yejin Choi"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "NovaCOMET serves as a counterexample to the contemporary focus on instruction tuning only, demonstrating a distinct advantage to explicitly modeling commonsense knowledge as well."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

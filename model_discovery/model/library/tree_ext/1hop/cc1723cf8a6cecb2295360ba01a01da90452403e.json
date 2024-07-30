@@ -1,0 +1,28 @@
+{
+    "acronym": "cc1723cf8a6cecb2295360ba01a01da90452403e",
+    "title": "Structured Thoughts Automaton: First Formalized Execution Model for Auto-Regressive Language Models",
+    "seed_ids": [
+        "gpt",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "c2329c685f11efa25c562f97be71ff03103423fd"
+    ],
+    "s2id": "cc1723cf8a6cecb2295360ba01a01da90452403e",
+    "abstract": "In recent months, Language Models (LMs) have become a part of daily discourse, with focus on OpenAI and the potential of Artificial General Intelligence (AGI). Furthermore, the leaking of LLama's weights to the public has led to an influx of innovations demonstrating the impressive capabilities of generative LMs. While we believe that AGI is still a distant goal, we recognize the potential of LMs in solving tasks such as searching complex documents, compiling reports with basic analysis, and providing assistance in problem-solving. In this paper, we propose formalizing the execution model of language models. We investigate current execution models, to find that this formalism has received little attention, and present our contribution: the first formalized execution model for LMs. We introduce a new algorithm for sampling the predictions of LMs, which we use to build a reliable and inspectable execution model. We introduce a low-level language to write\"cognitive program\"for this execution model. We hope to shed light on the need for execution models for LMs and encourage further research in this area.",
+    "authors": [
+        "T. Vanderbruggen",
+        "C. Liao",
+        "P. Pirkelbauer",
+        "Pei-Hung Lin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new algorithm for sampling the predictions of LMs is introduced, which is used to build a reliable and inspectable execution model, and a low-level language is introduced to write a cognitive program for this execution model."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

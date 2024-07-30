@@ -1,0 +1,42 @@
+{
+    "acronym": "6001dce1c8f63350263e013e0e6ff69816f0a9af",
+    "title": "Text Classification via Large Language Models",
+    "seed_ids": [
+        "gpt2",
+        "563a851106623b9f112d0e2a290d3950a871079c",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "da454295392cf4caaa39cc465734237ffe55392f",
+        "a07a94168608322600fd3cab54df1410b96852b6",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "80f9f109d1564cb8f82aa440a5f6f3fbe220c9ef",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "a022bda79947d1f656a1164003c1b3ae9a843df9",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6001dce1c8f63350263e013e0e6ff69816f0a9af",
+    "abstract": "Despite the remarkable success of large-scale Language Models (LLMs) such as GPT-3, their performances still significantly underperform fine-tuned models in the task of text classification. This is due to (1) the lack of reasoning ability in addressing complex linguistic phenomena (e.g., intensification, contrast, irony etc); (2) limited number of tokens allowed in in-context learning. In this paper, we introduce Clue And Reasoning Prompting (CARP). CARP adopts a progressive reasoning strategy tailored to addressing the complex linguistic phenomena involved in text classification: CARP first prompts LLMs to find superficial clues (e.g., keywords, tones, semantic relations, references, etc), based on which a diagnostic reasoning process is induced for final decisions. To further address the limited-token issue, CARP uses a fine-tuned model on the supervised dataset for $k$NN demonstration search in the in-context learning, allowing the model to take the advantage of both LLM's generalization ability and the task-specific evidence provided by the full labeled dataset. Remarkably, CARP yields new SOTA performances on 4 out of 5 widely-used text-classification benchmarks, 97.39 (+1.24) on SST-2, 96.40 (+0.72) on AGNews, 98.78 (+0.25) on R8 and 96.95 (+0.6) on R52, and a performance comparable to SOTA on MR (92.39 v.s. 93.3). More importantly, we find that CARP delivers impressive abilities on low-resource and domain-adaptation setups. Specifically, using 16 examples per class, CARP achieves comparable performances to supervised models with 1,024 examples per class.",
+    "authors": [
+        "Xiaofei Sun",
+        "Xiaoya Li",
+        "Jiwei Li",
+        "Fei Wu",
+        "Shangwei Guo",
+        "Tianwei Zhang",
+        "Guoyin Wang"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Clue And Reasoning Prompting (CARP) adopts a progressive reasoning strategy tailored to addressing the complex linguistic phenomena involved in text classification, and achieves comparable performances to supervised models with 1,024 examples per class."
+    },
+    "citationCount": 50,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

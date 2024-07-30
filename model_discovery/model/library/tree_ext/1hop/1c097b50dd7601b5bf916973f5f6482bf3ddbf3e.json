@@ -1,0 +1,27 @@
+{
+    "acronym": "1c097b50dd7601b5bf916973f5f6482bf3ddbf3e",
+    "title": "CoAVT: A Cognition-Inspired Unified Audio-Visual-Text Pre-Training Model for Multimodal Processing",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "1c097b50dd7601b5bf916973f5f6482bf3ddbf3e",
+    "abstract": "There has been a long-standing quest for a unified audio-visual-text model to enable various multimodal understanding tasks, which mimics the listening, seeing and reading process of human beings. Humans tends to represent knowledge using two separate systems: one for representing verbal (textual) information and one for representing non-verbal (visual and auditory) information. These two systems can operate independently but can also interact with each other. Motivated by this understanding of human cognition, in this paper, we introduce CoAVT -- a novel cognition-inspired Correlated Audio-Visual-Text pre-training model to connect the three modalities. It contains a joint audio-visual encoder that learns to encode audio-visual synchronization information together with the audio and visual content for non-verbal information, and a text encoder to handle textual input for verbal information. To bridge the gap between modalities, CoAVT employs a query encoder, which contains a set of learnable query embeddings, and extracts the most informative audiovisual features of the corresponding text. Additionally, to leverage the correspondences between audio and vision with language respectively, we also establish the audio-text and visual-text bi-modal alignments upon the foundational audiovisual-text tri-modal alignment to enhance the multimodal representation learning. Finally, we jointly optimize CoAVT model with three multimodal objectives: contrastive loss, matching loss and language modeling loss. Extensive experiments show that CoAVT can learn strong multimodal correlations and be generalized to various downstream tasks. CoAVT establishes new state-of-the-art performance on text-video retrieval task on AudioCaps for both zero-shot and fine-tuning settings, audio-visual event classification and audio-visual retrieval tasks on AudioSet and VGGSound.",
+    "authors": [
+        "Xianghu Yue",
+        "Xiaohai Tian",
+        "Malu Zhang",
+        "Zhizheng Wu",
+        "Haizhou Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces CoAVT -- a novel cognition-inspired Correlated Audio-Visual-Text pre-training model to connect the three modalities, and establishes new state-of-the-art performance on text-video retrieval task on AudioCaps for both zero-shot and fine-tuning settings, audio-visual event classification and audio-visual retrieval tasks on AudioSet and VGGSound."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,26 @@
+{
+    "acronym": "8f8504aa422cada0f95a44255f804f1d79067b73",
+    "title": "Latent Universal Task-Specific BERT",
+    "seed_ids": [
+        "universaltrans",
+        "16c844fd4d97f3c6eb38b0d6527c87d184efedc3"
+    ],
+    "s2id": "8f8504aa422cada0f95a44255f804f1d79067b73",
+    "abstract": "This paper describes a language representation model which combines the Bidirectional Encoder Representations from Transformers (BERT) learning mechanism described in Devlin et al. (2018) with a generalization of the Universal Transformer model described in Dehghani et al. (2018). We further improve this model by adding a latent variable that represents the persona and topics of interests of the writer for each training example. We also describe a simple method to improve the usefulness of our language representation for solving problems in a specific domain at the expense of its ability to generalize to other fields. Finally, we release a pre-trained language representation model for social texts that was trained on 100 million tweets.",
+    "authors": [
+        "A. Rozental",
+        "Zohar Kelrich",
+        "Daniel Fleischer"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A language representation model which combines the Bidirectional Encoder Representations from Transformers (BERT) learning mechanism with a generalization of the Universal Transformer model, and is improved by adding a latent variable that represents the persona and topics of interests of the writer for each training example."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

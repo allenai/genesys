@@ -1,0 +1,24 @@
+{
+    "acronym": "50b98a77638cb28bfd860b3e9d41b7fa2eb391ef",
+    "title": "Enhancing Transfer Learning of LLMs through Fine- Tuning on Task - Related Corpora for Automated Short-Answer Grading",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "50b98a77638cb28bfd860b3e9d41b7fa2eb391ef",
+    "abstract": "Automated short-answer grading (ASAG) is a cru-cial element of any intelligent tutoring platform. Machine Learning (ML) has shown great promise for ASAG. However, this task remains challenging even for Deep Learning (DL) approaches and Large Language Models (LLMs), requiring semantic inference and textual entailment recognition. The SemEval-2013 Task 7, The Joint Student Response Analysis and 8th Recognizing Textual Entailment Challenge, is a benchmark widely used for research on ASAG. The SciEntsBank data included in this collection contains nearly 11,000 answers to 197 assessment questions in 15 different science domains. Despite the popularity, only a few researchers have explored the potential of DL or LLMs for this task. In this project, we explore the effectiveness of the RoBERTa Large model, an LLM trained on an extensive text corpus for language comprehension. By fine-tuning the model on the Multi-Genre Natural Language Inference (MNLI) corpus for semantic inference and subsequently on the SciEntsBank dataset, with a focus on the 3-way labels of correct, incorrect, and contradictory, we achieved a weighted Fl-score of 0.77, 0.72, and 0.72 on unseen answers, questions, and domains, respectively. Notably, our model significantly benefits from fine-tuning on the MNLI corpus, particularly in enhancing its performance on the contradictory class (which constitutes only 10% of the dataset) through transfer learning leading to significant improvements on the more challenging test sets: unseen questions and unseen domains.",
+    "authors": [
+        "Nazmul Kazi",
+        "Indika Kahanda"
+    ],
+    "venue": "International Conference on Machine Learning and Applications",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This project explores the effectiveness of the RoBERTa Large model, an LLM trained on an extensive text corpus for language comprehension, an LLM trained on an extensive text corpus for language comprehension benefits from fine-tuning on the MNLI corpus, particularly in enhancing its performance on the contradictory class."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

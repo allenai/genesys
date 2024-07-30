@@ -1,0 +1,31 @@
+{
+    "acronym": "bd818d68b7709d79c0e4e8afa53d900abe419342",
+    "title": "An Approach to Improve Robustness of NLP Systems against ASR Errors",
+    "seed_ids": [
+        "gpt",
+        "f98525843f7e03d247a2dc94951799a0d7101437",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "83b56c3c7a61767bd88d85796aa5dbc4976912c3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "bd818d68b7709d79c0e4e8afa53d900abe419342",
+    "abstract": "Speech-enabled systems typically first convert audio to text through an automatic speech recognition (ASR) model and then feed the text to downstream natural language processing (NLP) modules. The errors of the ASR system can seriously downgrade the performance of the NLP modules. Therefore, it is essential to make them robust to the ASR errors. Previous work has shown it is effective to employ data augmentation methods to solve this problem by injecting ASR noise during the training process. In this paper, we utilize the prevalent pre-trained language model to generate training samples with ASR-plausible noise. Compare to the previous methods, our approach generates ASR noise that better fits the real-world error distribution. Experimental results on spoken language translation(SLT) and spoken language understanding (SLU) show that our approach effectively improves the system robustness against the ASR errors and achieves state-of-the-art results on both tasks.",
+    "authors": [
+        "Tong Cui",
+        "Jinghui Xiao",
+        "Liangyou Li",
+        "Xin Jiang",
+        "Qun Liu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper utilizes the prevalent pre-trained language model to generate training samples with ASR-plausible noise and effectively improves the system robustness against the ASR errors and achieves state-of-the-art results on both tasks."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

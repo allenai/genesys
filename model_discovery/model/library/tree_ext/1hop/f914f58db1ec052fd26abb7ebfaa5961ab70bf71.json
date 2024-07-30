@@ -1,0 +1,25 @@
+{
+    "acronym": "f914f58db1ec052fd26abb7ebfaa5961ab70bf71",
+    "title": "Transfer Learning for T-Cell Response Prediction",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "f914f58db1ec052fd26abb7ebfaa5961ab70bf71",
+    "abstract": "We study the prediction of T-cell response for specific given peptides, which could, among other applications, be a crucial step towards the development of personalized cancer vaccines. It is a challenging task due to limited, heterogeneous training data featuring a multi-domain structure; such data entail the danger of shortcut learning, where models learn general characteristics of peptide sources, such as the source organism, rather than specific peptide characteristics associated with T-cell response. Using a transformer model for T-cell response prediction, we show that the danger of inflated predictive performance is not merely theoretical but occurs in practice. Consequently, we propose a domain-aware evaluation scheme. We then study different transfer learning techniques to deal with the multi-domain structure and shortcut learning. We demonstrate a per-source fine tuning approach to be effective across a wide range of peptide sources and further show that our final model outperforms existing state-of-the-art approaches for predicting T-cell responses for human peptides.",
+    "authors": [
+        "Josua Stadelmaier",
+        "Brandon Malone",
+        "Ralf Eggeling"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the danger of inflated predictive performance is not merely theoretical but occurs in practice, and a domain-aware evaluation scheme is proposed, which outperforms existing state-of-the-art approaches for predicting T-cell responses for human peptides."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

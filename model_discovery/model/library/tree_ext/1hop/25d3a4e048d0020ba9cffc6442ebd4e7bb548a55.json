@@ -1,0 +1,32 @@
+{
+    "acronym": "25d3a4e048d0020ba9cffc6442ebd4e7bb548a55",
+    "title": "TabDDPM: Modelling Tabular Data with Diffusion Models",
+    "seed_ids": [
+        "d3pms",
+        "diffusionlm",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "e9b9a47cd81c66603c827f0f2bc4fba0d9ae77c4",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "25d3a4e048d0020ba9cffc6442ebd4e7bb548a55",
+    "abstract": "Denoising diffusion probabilistic models are currently becoming the leading paradigm of generative modeling for many important data modalities. Being the most prevalent in the computer vision community, diffusion models have also recently gained some attention in other domains, including speech, NLP, and graph-like data. In this work, we investigate if the framework of diffusion models can be advantageous for general tabular problems, where datapoints are typically represented by vectors of heterogeneous features. The inherent heterogeneity of tabular data makes it quite challenging for accurate modeling, since the individual features can be of completely different nature, i.e., some of them can be continuous and some of them can be discrete. To address such data types, we introduce TabDDPM -- a diffusion model that can be universally applied to any tabular dataset and handles any type of feature. We extensively evaluate TabDDPM on a wide set of benchmarks and demonstrate its superiority over existing GAN/VAE alternatives, which is consistent with the advantage of diffusion models in other fields. Additionally, we show that TabDDPM is eligible for privacy-oriented setups, where the original datapoints cannot be publicly shared.",
+    "authors": [
+        "Akim Kotelnikov",
+        "Dmitry Baranchuk",
+        "Ivan Rubachev",
+        "Artem Babenko"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces TabDDPM -- a diffusion model that can be universally applied to any tabular dataset and handles any type of feature and demonstrates its superiority over existing GAN/VAE alternatives, which is consistent with the advantage of diffusion models in other fields."
+    },
+    "citationCount": 113,
+    "influentialCitationCount": 31,
+    "code": null,
+    "description": null,
+    "url": null
+}

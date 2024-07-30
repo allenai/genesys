@@ -1,0 +1,29 @@
+{
+    "acronym": "0d6bb585493e34975f0437faa3179db3a02f6ae8",
+    "title": "Prompt-and-Rerank: A Method for Zero-Shot and Few-Shot Arbitrary Textual Style Transfer with Small Language Models",
+    "seed_ids": [
+        "gpt2",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0d6bb585493e34975f0437faa3179db3a02f6ae8",
+    "abstract": "We propose a method for arbitrary textual style transfer (TST)\u2014the task of transforming a text into any given style\u2014utilizing general-purpose pre-trained language models. Our method, Prompt-and-Rerank, is based on a mathematical formulation of the TST task, decomposing it into three constituent components: textual similarity, target style strength, and fluency. Our method uses zero-shot or few-shot prompting to obtain a set of candidate generations in the target style, and then re-ranks them according to the three components. Our method enables small pre-trained language models to perform on par with state-of-the-art large-scale models while using two orders of magnitude less compute and memory. We also investigate the effect of model size and prompt design (e.g., prompt paraphrasing and delimiter-pair choice) on style transfer quality across seven diverse textual style transfer datasets, finding, among other things, that delimiter-pair choice has a large impact on performance, and that models have biases on the direction of style transfer.",
+    "authors": [
+        "Mirac Suzgun",
+        "Luke Melas-Kyriazi",
+        "Dan Jurafsky"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a method for arbitrary textual style transfer (TST), based on a mathematical formulation of the TST task, that enables small pre-trained language models to perform on par with state-of-the-art large-scale models while using two orders of magnitude less compute and memory."
+    },
+    "citationCount": 49,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

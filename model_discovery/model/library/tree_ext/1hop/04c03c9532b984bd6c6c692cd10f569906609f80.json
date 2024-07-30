@@ -1,0 +1,34 @@
+{
+    "acronym": "04c03c9532b984bd6c6c692cd10f569906609f80",
+    "title": "Co-training and Co-distillation for Quality Improvement and Compression of Language Models",
+    "seed_ids": [
+        "bert",
+        "c6c734e16f66fbfcefac7625cc64599e83292c1e",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "04c03c9532b984bd6c6c692cd10f569906609f80",
+    "abstract": "Knowledge Distillation (KD) compresses computationally expensive pre-trained language models (PLMs) by transferring their knowledge to smaller models, allowing their use in resource-constrained or real-time settings. However, most smaller models fail to surpass the performance of the original larger model, resulting in sacrificing performance to improve inference speed. To address this issue, we propose Co-Training and Co-Distillation (CTCD), a novel framework that improves performance and inference speed together by co-training two models while mutually distilling knowledge. The CTCD framework successfully achieves this based on two significant findings: 1) Distilling knowledge from the smaller model to the larger model during co-training improves the performance of the larger model. 2) The enhanced performance of the larger model further boosts the performance of the smaller model. The CTCD framework shows promise as it can be combined with existing techniques like architecture design or data augmentation, replacing one-way KD methods, to achieve further performance improvement. Extensive ablation studies demonstrate the effectiveness of CTCD, and the small model distilled by CTCD outperforms the original larger model by a significant margin of 1.66 on the GLUE benchmark.",
+    "authors": [
+        "Hayeon Lee",
+        "Rui Hou",
+        "Jongpil Kim",
+        "Davis Liang",
+        "Hongbo Zhang",
+        "Sung Ju Hwang",
+        "Alexander Min"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed Co-Training and Co-Distillation (CTCD) framework shows promise as it can be combined with existing techniques like architecture design or data augmentation, replacing one-way KD methods, to achieve further performance improvement."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

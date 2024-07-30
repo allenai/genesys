@@ -1,0 +1,27 @@
+{
+    "acronym": "7913f57abb8b927e72be76d2197910aa0400c828",
+    "title": "OpenAI\u2019s Narrative Embeddings Can Be Used for Detecting Post-Traumatic Stress Following Childbirth Via Birth Stories",
+    "seed_ids": [
+        "gpt3",
+        "44279244407a64431810f982be6d0c7da4429dd7"
+    ],
+    "s2id": "7913f57abb8b927e72be76d2197910aa0400c828",
+    "abstract": "Free-text analysis using Machine Learning (ML)-based Natural Language Processing (NLP) shows promise for diagnosing psychiatric conditions. Chat Generative Pre-trained Transformer (ChatGPT) has demonstrated preliminary initial feasibility for this purpose; however, whether it can accurately assess mental illness remains to be determined. This study evaluates the effectiveness of ChatGPT and the text-embedding-ada-002 (ADA) model in detecting post-traumatic stress disorder following childbirth (CB-PTSD), a maternal postpartum mental illness affecting millions of women annually, with no standard screening protocol. Using a sample of 1,295 women who gave birth in the last six months and were 18+ years old, recruited through hospital announcements, social media, and professional organizations, we explore ChatGPT\u2019s and ADA\u2019s potential to screen for CB-PTSD by analyzing maternal childbirth narratives. The PTSD Checklist for DSM-5 (PCL-5; cutoff 31) was used to assess CB-PTSD. By developing an ML model that utilizes numerical vector representation of the ADA model, we identify CB-PTSD via narrative classification. Our model outperformed (F1 score: 0.82) ChatGPT and six previously published large language models (LLMs) trained on mental health or clinical domains data, suggesting that the ADA model can be harnessed to identify CB-PTSD. Our modeling approach could be generalized to assess other mental health disorders.",
+    "authors": [
+        "Alon Bartal",
+        "Kathleen M. Jagodnik",
+        "Sabrina J Chan",
+        "Sharon Dekel"
+    ],
+    "venue": "Research Square",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An ML model that utilizes numerical vector representation of the ADA model, and outperformed ChatGPT and six previously published large language models trained on mental health or clinical domains data, suggesting that the ADA model can be harnessed to identify CB-PTSD."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

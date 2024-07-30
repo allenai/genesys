@@ -1,0 +1,25 @@
+{
+    "acronym": "585be5e23a04b33630f37ce37a86f4b03911e840",
+    "title": "KnowledgeVIS: Interpreting Language Models by Comparing Fill-in-the-Blank Prompts",
+    "seed_ids": [
+        "bert",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3"
+    ],
+    "s2id": "585be5e23a04b33630f37ce37a86f4b03911e840",
+    "abstract": "Recent growth in the popularity of large language models has led to their increased usage for summarizing, predicting, and generating text, making it vital to help researchers and engineers understand how and why they work. We present KnowledgeVIS, a human-in-the-loop visual analytics system for interpreting language models using fill-in-the-blank sentences as prompts. By comparing predictions between sentences, KnowledgeVIS reveals learned associations that intuitively connect what language models learn during training to natural language tasks downstream, helping users create and test multiple prompt variations, analyze predicted words using a novel semantic clustering technique, and discover insights using interactive visualizations. Collectively, these visualizations help users identify the likelihood and uniqueness of individual predictions, compare sets of predictions between prompts, and summarize patterns and relationships between predictions across all prompts. We demonstrate the capabilities of KnowledgeVIS with feedback from six NLP experts as well as three different use cases: (1) probing biomedical knowledge in two domain-adapted models; and (2) evaluating harmful identity stereotypes and (3) discovering facts and relationships between three general-purpose models.",
+    "authors": [
+        "Adam Joseph Coscia",
+        "A. Endert"
+    ],
+    "venue": "IEEE Transactions on Visualization and Computer Graphics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "KnowledgeVIS, a human-in-the-loop visual analytics system for interpreting language models using fill-in-the-blank sentences as prompts, reveals learned associations that intuitively connect what language models learn during training to natural language tasks downstream."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

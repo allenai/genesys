@@ -1,0 +1,28 @@
+{
+    "acronym": "c1957e25155d713e7599b9d7e1e318c03cd2631a",
+    "title": "Distilling Transformers into Simple Neural Networks with Unlabeled Transfer Data",
+    "seed_ids": [
+        "gpt",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "7ebed46b7f3ec913e508e6468304fcaea832eda1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "c1957e25155d713e7599b9d7e1e318c03cd2631a",
+    "abstract": "Recent advances in pre-training huge models on large amounts of text through self supervision have obtained state-of-the-art results in various natural language processing tasks. However, these huge and expensive models are difficult to use in practise for downstream tasks. Some recent efforts use knowledge distillation to compress these models. However, we see a gap between the performance of the smaller student models as compared to that of the large teacher. In this work, we leverage large amounts of in-domain unlabeled transfer data in addition to a limited amount of labeled training instances to bridge this gap. We show that simple RNN based student models even with hard distillation can perform at par with the huge teachers given the transfer set. The student performance can be further improved with soft distillation and leveraging teacher intermediate representations. We show that our student models can compress the huge teacher by up to 26x while still matching or even marginally exceeding the teacher performance in low-resource settings with small amount of labeled data.",
+    "authors": [
+        "Subhabrata Mukherjee",
+        "Ahmed Hassan Awadallah"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that simple RNN based student models even with hard distillation can perform at par with the huge teachers given the transfer set, and can compress the huge teacher by up to 26x while still matching or even marginally exceeding the teacher performance in low-resource settings with small amount of labeled data."
+    },
+    "citationCount": 25,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,32 @@
+{
+    "acronym": "9e76ba15c351e71cdb8adf901eb6b18736a967df",
+    "title": "Temporally Multi-Scale Sparse Self-Attention for Physical Activity Data Imputation",
+    "seed_ids": [
+        "transformer",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "9e76ba15c351e71cdb8adf901eb6b18736a967df",
+    "abstract": "Wearable sensors enable health researchers to continuously collect data pertaining to the physiological state of individuals in real-world settings. However, such data can be subject to extensive missingness due to a complex combination of factors. In this work, we study the problem of imputation of missing step count data, one of the most ubiquitous forms of wearable sensor data. We construct a novel and large scale data set consisting of a training set with over 3 million hourly step count observations and a test set with over 2.5 million hourly step count observations. We propose a domain knowledge-informed sparse self-attention model for this task that captures the temporal multi-scale nature of step-count data. We assess the performance of the model relative to baselines and conduct ablation studies to verify our specific model designs.",
+    "authors": [
+        "Hui Wei",
+        "Maxwell A. Xu",
+        "Colin Samplawski",
+        "James M. Rehg",
+        "Santosh Kumar",
+        "Benjamin M. Marlin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work constructs a novel and large scale data set consisting of a training set with over 3 million hourly step count observations and a test set with over 2.5 million hourly step count observations and proposes a domain knowledge-informed sparse self-attention model that captures the temporal multi-scale nature of step-count data."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

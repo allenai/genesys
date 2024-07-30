@@ -1,0 +1,32 @@
+{
+    "acronym": "635deabb5d38f199c6fa8c7ec2e0f5610f4df436",
+    "title": "BESTOW: Efficient and Streamable Speech Language Model with the Best of Two Worlds in GPT and T5",
+    "seed_ids": [
+        "gpt3",
+        "5fc1a3a49e8f1d106118b69d1d6be3b6caa23da0",
+        "09e2c7adbed37440d4a339852cfa34e5b660f768"
+    ],
+    "s2id": "635deabb5d38f199c6fa8c7ec2e0f5610f4df436",
+    "abstract": "Incorporating speech understanding capabilities into pretrained large-language models has become a vital research direction (SpeechLLM). The previous architectures can be categorized as: i) GPT-style, prepend speech prompts to the text prompts as a sequence of LLM inputs like a decoder-only model; ii) T5-style, introduce speech cross-attention to each layer of the pretrained LLMs. We propose BESTOW architecture to bring the BESt features from TwO Worlds into a single model that is highly efficient and has strong multitask capabilities. Moreover, there is no clear streaming solution for either style, especially considering the solution should generalize to speech multitask. We reformulate streamable SpeechLLM as a read-write policy problem and unifies the offline and streaming research with BESTOW architecture. Hence we demonstrate the first open-source SpeechLLM solution that enables Streaming and Multitask at scale (beyond ASR) at the same time. This streamable solution achieves very strong performance on a wide range of speech tasks (ASR, AST, SQA, unseen DynamicSuperb). It is end-to-end optimizable, with lower training/inference cost, and demonstrates LLM knowledge transferability to speech.",
+    "authors": [
+        "Zhehuai Chen",
+        "He Huang",
+        "Oleksii Hrinchuk",
+        "Krishna C. Puvvada",
+        "N. Koluguri",
+        "Piotr .Zelasko",
+        "Jagadeesh Balam",
+        "Boris Ginsburg"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work reformulates streamable SpeechLLM as a read-write policy problem and unifies the offline and streaming research with BESTOW architecture, which enables Streaming and Multitask at scale (beyond ASR) at the same time."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

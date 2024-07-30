@@ -1,0 +1,24 @@
+{
+    "acronym": "8ea24b1dbb3e690ebc64543c03f0552a6c1fb49d",
+    "title": "Knowledge of cultural moral norms in large language models",
+    "seed_ids": [
+        "gpt2",
+        "2ea64b7c7617f6cc1768373124ca0243d772a90f",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8ea24b1dbb3e690ebc64543c03f0552a6c1fb49d",
+    "abstract": "Moral norms vary across cultures. A recent line of work suggests that English large language models contain human-like moral biases, but these studies typically do not examine moral variation in a diverse cultural setting. We investigate the extent to which monolingual English language models contain knowledge about moral norms in different countries. We consider two levels of analysis: 1) whether language models capture fine-grained moral variation across countries over a variety of topics such as \u201chomosexuality\u201d and \u201cdivorce\u201d; 2) whether language models capture cultural diversity and shared tendencies in which topics people around the globe tend to diverge or agree on in their moral judgment. We perform our analyses with two public datasets from the World Values Survey (across 55 countries) and PEW global surveys (across 40 countries) on morality. We find that pre-trained English language models predict empirical moral norms across countries worse than the English moral norms reported previously. However, fine-tuning language models on the survey data improves inference across countries at the expense of a less accurate estimate of the English moral norms. We discuss the relevance and challenges of incorporating cultural knowledge into the automated inference of moral norms.",
+    "authors": [
+        "Aida Ramezani",
+        "Yang Xu"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": null,
+    "citationCount": 27,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

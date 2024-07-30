@@ -1,0 +1,26 @@
+{
+    "acronym": "d67a96941af05f0643d884bcd2b7da8967bf5860",
+    "title": "Unilateral boundary time series forecasting",
+    "seed_ids": [
+        "transformer",
+        "8064d3873c646dc9ff949d72c54c634a906fc092"
+    ],
+    "s2id": "d67a96941af05f0643d884bcd2b7da8967bf5860",
+    "abstract": "Time series forecasting is an essential tool across numerous domains, yet traditional models often falter when faced with unilateral boundary conditions, where data is systematically overestimated or underestimated. This paper introduces a novel approach to the task of unilateral boundary time series forecasting. Our research bridges the gap in existing methods by proposing a specialized framework to accurately forecast within these skewed datasets. The cornerstone of our approach is the unilateral mean square error (UMSE), an asymmetric loss function that strategically addresses underestimation biases in training data, improving the precision of forecasts. We further enhance model performance through the implementation of a dual model structure that processes underestimated and accurately estimated data points separately, allowing for a nuanced analysis of the data trends. Additionally, feature reconstruction is employed to recapture obscured dynamics, ensuring a comprehensive understanding of the data. We demonstrate the effectiveness of our methods through extensive experimentation with LightGBM and GRU models across diverse datasets, showcasing superior accuracy and robustness in comparison to traditional models and existing methods. Our findings not only validate the efficacy of our approach but also reveal its model-independence and broad applicability. This work lays the groundwork for future research in this domain, opening new avenues for sophisticated analytical models in various industries where precise time series forecasting is crucial.",
+    "authors": [
+        "Chao-Min Chang",
+        "Cheng-Te Li",
+        "Shou-de Lin"
+    ],
+    "venue": "Frontiers Big Data",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel approach to the task of unilateral boundary time series forecasting is introduced, proposing a specialized framework to accurately forecast within these skewed datasets with superior accuracy and robustness in comparison to traditional models and existing methods."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

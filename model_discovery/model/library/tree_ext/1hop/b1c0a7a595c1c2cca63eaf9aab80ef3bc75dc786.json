@@ -1,0 +1,32 @@
+{
+    "acronym": "b1c0a7a595c1c2cca63eaf9aab80ef3bc75dc786",
+    "title": "Large Scale Knowledge Washing",
+    "seed_ids": [
+        "gpt2",
+        "0399533de2d1d21f456663d1bd5355c8b3c32a58",
+        "b31a5884a8ebe96b6300839b28608b97f8f8ef76",
+        "023edab4738690444e3924e224c2641017a0d794",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b1c0a7a595c1c2cca63eaf9aab80ef3bc75dc786",
+    "abstract": "Large language models show impressive abilities in memorizing world knowledge, which leads to concerns regarding memorization of private information, toxic or sensitive knowledge, and copyrighted content. We introduce the problem of Large Scale Knowledge Washing, focusing on unlearning an extensive amount of factual knowledge. Previous unlearning methods usually define the reverse loss and update the model via backpropagation, which may affect the model's fluency and reasoning ability or even destroy the model due to extensive training with the reverse loss. Existing works introduce additional data from downstream tasks to prevent the model from losing capabilities, which requires downstream task awareness. Controlling the tradeoff of unlearning and maintaining existing capabilities is also challenging. To this end, we propose LAW (Large Scale Washing) to update the MLP layers in decoder-only large language models to perform knowledge washing, as inspired by model editing methods and based on the hypothesis that knowledge and reasoning are disentanglable. We derive a new objective with the knowledge to be unlearned to update the weights of certain MLP layers. Experimental results demonstrate the effectiveness of LAW in forgetting target knowledge while maintaining reasoning ability. The code will be open-sourced at https://github.com/wangyu-ustc/LargeScaleWashing.",
+    "authors": [
+        "Yu Wang",
+        "Ruihan Wu",
+        "Zexue He",
+        "Xiusi Chen",
+        "Julian McAuley"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "LAW (Large Scale Washing) is proposed to update the MLP layers in decoder-only large language models to perform knowledge washing, as inspired by model editing methods and based on the hypothesis that knowledge and reasoning are disentanglable."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

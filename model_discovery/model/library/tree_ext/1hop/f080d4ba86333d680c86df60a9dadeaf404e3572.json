@@ -1,0 +1,34 @@
+{
+    "acronym": "f080d4ba86333d680c86df60a9dadeaf404e3572",
+    "title": "Tunable Soft Prompts are Messengers in Federated Learning",
+    "seed_ids": [
+        "gpt2",
+        "0e3d1457a66e442fae46c8f96886dc76aef3b085",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f080d4ba86333d680c86df60a9dadeaf404e3572",
+    "abstract": "Federated learning (FL) enables multiple participants to collaboratively train machine learning models using decentralized data sources, alleviating privacy concerns that arise from directly sharing local data. However, the lack of model privacy protection in FL becomes an unneglectable challenge, especially when people want to federally finetune models based on a proprietary large language model. In this study, we propose a novel FL training approach that accomplishes information exchange among participants via tunable soft prompts. These soft prompts, updated and transmitted between the server and clients, assume the role of the global model parameters and serve as messengers to deliver useful knowledge from the local data and global model. As the global model itself is not required to be shared and the local training is conducted based on an auxiliary model with fewer parameters than the global model, the proposed approach provides protection for the global model while reducing communication and computation costs in FL. Extensive experiments show the effectiveness of the proposed approach compared to several baselines. We have released the source code at \\url{https://github.com/alibaba/FederatedScope/tree/fedsp/federatedscope/nlp/fedsp}.",
+    "authors": [
+        "Chenhe Dong",
+        "Yuexiang Xie",
+        "Bolin Ding",
+        "Ying Shen",
+        "Yaliang Li"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study proposes a novel FL training approach that accomplishes information exchange among participants via tunable soft prompts that provides protection for the global model while reducing communication and computation costs in FL."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

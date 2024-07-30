@@ -1,0 +1,32 @@
+{
+    "acronym": "1a637e71eeaab433a3acd1593849b27584465df8",
+    "title": "A Stack-Propagation Framework for Low-Resource Personalized Dialogue Generation",
+    "seed_ids": [
+        "gpt",
+        "gpt2",
+        "200050c1f51e2c930e62b078c6ce20f2a6675468",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "6ebfbc954b9975d2f2651f380b9bdf46ae963178",
+        "791c3c30f2af10ac06f4fbc5b1e8960064aacbc7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1a637e71eeaab433a3acd1593849b27584465df8",
+    "abstract": "With the resurgent interest in building open-domain dialogue systems, the dialogue generation task has attracted increasing attention over the past few years. This task is usually formulated as a conditional generation problem, which aims to generate a natural and meaningful response given dialogue contexts and specific constraints, such as persona. And maintaining a consistent persona is essential for the dialogue systems to gain trust from the users. Although tremendous advancements have been brought, traditional persona-based dialogue models are typically trained by leveraging a large number of persona-dense dialogue examples. Yet, such persona-dense training data are expensive to obtain, leading to a limited scale. This work presents a novel approach to learning from limited training examples by regarding consistency understanding as a regularization of response generation. To this end, we propose a novel stack-propagation framework for learning a generation and understanding pipeline. Specifically, the framework stacks a Transformer encoder and two Transformer decoders, where the first decoder models response generation and the second serves as a regularizer and jointly models response generation and consistency understanding. The proposed framework can benefit from the stacked encoder and decoders to learn from much smaller personalized dialogue data while maintaining competitive performance. Under different low-resource settings, subjective and objective evaluations prove that the stack-propagation framework outperforms strong baselines in response quality and persona consistency and largely overcomes the shortcomings of traditional models that rely heavily on the persona-dense dialogue data.",
+    "authors": [
+        "Haoyu Song",
+        "Weinan Zhang",
+        "Kaiyan Zhang",
+        "Ting Liu"
+    ],
+    "venue": "ACM Trans. Inf. Syst.",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Under different low-resource settings, subjective and objective evaluations prove that the stack-propagation framework outperforms strong baselines in response quality and persona consistency and largely overcomes the shortcomings of traditional models that rely heavily on the persona-dense dialogue data."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,42 @@
+{
+    "acronym": "16f01c1b3ddd0b2abd5ddfe4fdb3f74767607277",
+    "title": "Time-LLM: Time Series Forecasting by Reprogramming Large Language Models",
+    "seed_ids": [
+        "gpt2",
+        "f3ca1515d610ec8811d3b4f9a209eae099523048",
+        "f8a2813614f4e9c8adab3da2cbb667ad7e4d6bcf",
+        "5b7f5488c380cf5085a5dd93e993ad293b225eee",
+        "8064d3873c646dc9ff949d72c54c634a906fc092",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "16f01c1b3ddd0b2abd5ddfe4fdb3f74767607277",
+    "abstract": "Time series forecasting holds significant importance in many real-world dynamic systems and has been extensively studied. Unlike natural language process (NLP) and computer vision (CV), where a single large model can tackle multiple tasks, models for time series forecasting are often specialized, necessitating distinct designs for different tasks and applications. While pre-trained foundation models have made impressive strides in NLP and CV, their development in time series domains has been constrained by data sparsity. Recent studies have revealed that large language models (LLMs) possess robust pattern recognition and reasoning abilities over complex sequences of tokens. However, the challenge remains in effectively aligning the modalities of time series data and natural language to leverage these capabilities. In this work, we present Time-LLM, a reprogramming framework to repurpose LLMs for general time series forecasting with the backbone language models kept intact. We begin by reprogramming the input time series with text prototypes before feeding it into the frozen LLM to align the two modalities. To augment the LLM's ability to reason with time series data, we propose Prompt-as-Prefix (PaP), which enriches the input context and directs the transformation of reprogrammed input patches. The transformed time series patches from the LLM are finally projected to obtain the forecasts. Our comprehensive evaluations demonstrate that Time-LLM is a powerful time series learner that outperforms state-of-the-art, specialized forecasting models. Moreover, Time-LLM excels in both few-shot and zero-shot learning scenarios.",
+    "authors": [
+        "Ming Jin",
+        "Shiyu Wang",
+        "Lintao Ma",
+        "Zhixuan Chu",
+        "James Y. Zhang",
+        "X. Shi",
+        "Pin-Yu Chen",
+        "Yuxuan Liang",
+        "Yuan-Fang Li",
+        "Shirui Pan",
+        "Qingsong Wen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Time-LLM is a reprogramming framework to repurpose LLMs for general time series forecasting with the backbone language models kept intact and is demonstrated to be a powerful time series learner that outperforms state-of-the-art, specialized forecasting models."
+    },
+    "citationCount": 108,
+    "influentialCitationCount": 20,
+    "code": null,
+    "description": null,
+    "url": null
+}

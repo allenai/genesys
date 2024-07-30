@@ -1,0 +1,30 @@
+{
+    "acronym": "3b9475f14b2c9b9b326d49a6dc69a2b191dda592",
+    "title": "Automated Federated Pipeline for Parameter-Efficient Fine-Tuning of Large Language Models",
+    "seed_ids": [
+        "bert",
+        "fb482570117a91e0fcf5b9aff1dfd55b24dc5e3a",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "3b9475f14b2c9b9b326d49a6dc69a2b191dda592",
+    "abstract": "Recently, there has been a surge in the development of advanced intelligent generative content (AIGC), especially large language models (LLMs). However, for many downstream tasks, it is necessary to fine-tune LLMs using private data. While federated learning offers a promising privacy-preserving solution to LLM fine-tuning, the substantial size of an LLM, combined with high computational and communication demands, makes it hard to apply to downstream tasks. More importantly, private edge servers often possess varying computing and network resources in real-world scenarios, introducing additional complexities to LLM fine-tuning. To tackle these problems, we design and implement an automated federated pipeline, named FedPipe, to fine-tune LLMs with minimal training cost but without adding any inference latency. FedPipe firstly identifies the weights to be fine-tuned based on their contributions to the LLM training. It then configures a low-rank adapter for each selected weight to train local low-rank adapters on an edge server, and aggregate local adapters of all edge servers to fine-tune the whole LLM. Finally, it appropriately quantizes the parameters of LLM to reduce memory space according to the requirements of edge servers. Extensive experiments demonstrate that FedPipe expedites the model training and achieves higher accuracy than state-of-the-art benchmarks.",
+    "authors": [
+        "Zihan Fang",
+        "Zheng Lin",
+        "Zhe Chen",
+        "Xianhao Chen",
+        "Yue Gao",
+        "Yuguang Fang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An automated federated pipeline, named FedPipe, to fine-tune LLMs with minimal training cost but without adding any inference latency, and achieves higher accuracy than state-of-the-art benchmarks."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

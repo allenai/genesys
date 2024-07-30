@@ -1,0 +1,26 @@
+{
+    "acronym": "765866ecb5fe6a225d4e791498caf6a8351c16c7",
+    "title": "Faster Transformer Decoding: N-gram Masked Self-Attention",
+    "seed_ids": [
+        "mqa"
+    ],
+    "s2id": "765866ecb5fe6a225d4e791498caf6a8351c16c7",
+    "abstract": "Motivated by the fact that most of the information relevant to the prediction of target tokens is drawn from the source sentence $S=s_1, \\ldots, s_S$, we propose truncating the target-side window used for computing self-attention by making an $N$-gram assumption. Experiments on WMT EnDe and EnFr data sets show that the $N$-gram masked self-attention model loses very little in BLEU score for $N$ values in the range $4, \\ldots, 8$, depending on the task.",
+    "authors": [
+        "Ciprian Chelba",
+        "M. Chen",
+        "Ankur Bapna",
+        "Noam M. Shazeer"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experiments on WMT EnDe and EnFr data sets show that the N-gram masked self-attention model loses very little in BLEU score for values in the range of $4, \\ldots, 8$ depending on the task."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

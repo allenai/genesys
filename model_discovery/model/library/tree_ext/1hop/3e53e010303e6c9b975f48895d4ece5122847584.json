@@ -1,0 +1,42 @@
+{
+    "acronym": "3e53e010303e6c9b975f48895d4ece5122847584",
+    "title": "RenderDiffusion: Text Generation as Image Generation",
+    "seed_ids": [
+        "diffusionbert",
+        "diffuseq",
+        "a1186d7d9a9ef258c76afef1177e4f348061a537",
+        "23b7cde603b5ec8d5d13d46e1c453dc52d7c3f6c",
+        "a979742220a88b1d32e1fbe72c41e8ba3007053c",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "599bc7cfe98c2b57ddbe111412203a636da57be0",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "24425954960ce968e5f14360fbdd0605abcadfcf",
+        "e512964293671abbdc409f313d127cbe85ffe5cd",
+        "4d2a05140dd9bafaf035a846e7bda05f956304d2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3e53e010303e6c9b975f48895d4ece5122847584",
+    "abstract": "Diffusion models have become a new generative paradigm for text generation. Considering the discrete categorical nature of text, in this paper, we propose R ENDER D IFFUSION , a novel diffusion approach for text generation via text-guided image generation. Our key idea is to render the target text as a glyph image containing visual language content. In this way, conditional text generation can be cast as a glyph image generation task, and it is then natural to apply continuous diffusion models to discrete texts. Specially, we utilize a cascaded architecture ( i.e., a base and a super-resolution diffusion model) to generate high-\ufb01delity glyph images, conditioned on the input text. Furthermore, we design a text grounding module to transform and re\ufb01ne the visual language content from generated glyph images into the \ufb01nal texts. In experiments over four conditional text generation tasks and two classes of metrics ( i.e., quality and diversity), R ENDER D IF - FUSION can achieve comparable or even better results than several baselines, including pretrained language models. Our model also makes signi\ufb01-cant improvements compared to the recent diffusion model.",
+    "authors": [
+        "Junyi Li",
+        "Wayne Xin Zhao",
+        "J. Nie",
+        "Ji-rong Wen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes R ENDER D IF - FUSION, a novel diffusion approach for text generation via text-guided image generation that can achieve comparable or even better results than several baselines, including pretrained language models."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,27 @@
+{
+    "acronym": "68191ba0666b9a8a0a9dfb00628279b6eaf34d71",
+    "title": "Joint Learning of Neural Transfer and Architecture Adaptation for Image Recognition",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "68191ba0666b9a8a0a9dfb00628279b6eaf34d71",
+    "abstract": "Current state-of-the-art visual recognition systems usually rely on the following pipeline: 1) pretraining a neural network on a large-scale data set (e.g., ImageNet) and 2) finetuning the network weights on a smaller, task-specific data set. Such a pipeline assumes that the sole weight adaptation is able to transfer the network capability from one domain to another domain based on a strong assumption that a fixed architecture is appropriate for all domains. However, each domain with a distinct recognition target may need different levels/paths of feature hierarchy, where some neurons may become redundant, and some others are reactivated to form new network structures. In this work, we prove that dynamically adapting network architectures tailored for each domain task along with weight finetuning benefits in both efficiency and effectiveness, compared to the existing image recognition pipeline that only tunes the weights regardless of the architecture. Our method can be easily generalized to an unsupervised paradigm by replacing supernet training with self-supervised learning in the source domain tasks and performing linear evaluation in the downstream tasks. This further improves the search efficiency of our method. Moreover, we also provide principled and empirical analysis to explain why our approach works by investigating the ineffectiveness of existing neural architecture search. We find that preserving the joint distribution of the network architecture and weights is of importance. This analysis not only benefits image recognition but also provides insights for crafting neural networks. Experiments on five representative image recognition tasks, such as person re-identification, age estimation, gender recognition, image classification, and unsupervised domain adaptation, demonstrate the effectiveness of our method.",
+    "authors": [
+        "Guangrun Wang",
+        "Liang Lin",
+        "Rongcong Chen",
+        "Guangcong Wang",
+        "Jiqi Zhang"
+    ],
+    "venue": "IEEE Transactions on Neural Networks and Learning Systems",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proves that dynamically adapting network architectures tailored for each domain task along with weight finetuning benefits in both efficiency and effectiveness, compared to the existing image recognition pipeline that only tunes the weights regardless of the architecture."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

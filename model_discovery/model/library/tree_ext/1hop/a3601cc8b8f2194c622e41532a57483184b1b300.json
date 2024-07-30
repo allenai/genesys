@@ -1,0 +1,32 @@
+{
+    "acronym": "a3601cc8b8f2194c622e41532a57483184b1b300",
+    "title": "Long-term Frame-Event Visual Tracking: Benchmark Dataset and Baseline",
+    "seed_ids": [
+        "hopfield",
+        "a37dcb3fc71f93136de370195d2227083589d69c",
+        "562bf6d0aac2c6362086ef4c80503de8ea56b340"
+    ],
+    "s2id": "a3601cc8b8f2194c622e41532a57483184b1b300",
+    "abstract": "Current event-/frame-event based trackers undergo evaluation on short-term tracking datasets, however, the tracking of real-world scenarios involves long-term tracking, and the performance of existing tracking algorithms in these scenarios remains unclear. In this paper, we first propose a new long-term and large-scale frame-event single object tracking dataset, termed FELT. It contains 742 videos and 1,594,474 RGB frames and event stream pairs and has become the largest frame-event tracking dataset to date. We re-train and evaluate 15 baseline trackers on our dataset for future works to compare. More importantly, we find that the RGB frames and event streams are naturally incomplete due to the influence of challenging factors and spatially sparse event flow. In response to this, we propose a novel associative memory Transformer network as a unified backbone by introducing modern Hopfield layers into multi-head self-attention blocks to fuse both RGB and event data. Extensive experiments on RGB-Event (FELT), RGB-Thermal (RGBT234, LasHeR), and RGB-Depth (DepthTrack) datasets fully validated the effectiveness of our model. The dataset and source code can be found at \\url{https://github.com/Event-AHU/FELT_SOT_Benchmark}.",
+    "authors": [
+        "Xiao Wang",
+        "Ju Huang",
+        "Shiao Wang",
+        "Chuanming Tang",
+        "Bowei Jiang",
+        "Yonghong Tian",
+        "Jin Tang",
+        "Bin Luo"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel associative memory Transformer network is proposed as a unified backbone by introducing modern Hopfield layers into multi-head self-attention blocks to fuse both RGB and event data."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "87fed8c2eb9f2b8d3b50e7d4a279fd59ae52ea1e",
+    "title": "End-to-End Multimodal Representation Learning for Video Dialog",
+    "seed_ids": [
+        "gpt2",
+        "6ebfbc954b9975d2f2651f380b9bdf46ae963178",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "87fed8c2eb9f2b8d3b50e7d4a279fd59ae52ea1e",
+    "abstract": "Video-based dialog task is a challenging multimodal learning task that has received increasing attention over the past few years with state-of-the-art obtaining new performance records. This progress is largely powered by the adaptation of the more powerful transformer-based language encoders. Despite this progress, existing approaches do not effectively utilize visual features to help solve tasks. Recent studies show that state-of-the-art models are biased toward textual information rather than visual cues. In order to better leverage the available visual information, this study proposes a new framework that combines 3D-CNN network and transformer-based networks into a single visual encoder to extract more robust semantic representations from videos. The visual encoder is jointly trained end-to-end with other input modalities such as text and audio. Experiments on the AVSD task show significant improvement over baselines in both generative and retrieval tasks.",
+    "authors": [
+        "Huda AlAmri",
+        "Anthony Bilic",
+        "Michael Hu",
+        "Apoorva Beedu",
+        "Irfan Essa"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study proposes a new framework that combines 3D-CNN network and transformer-based networks into a single visual encoder to extract more robust semantic representations from videos."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

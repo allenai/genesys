@@ -1,0 +1,42 @@
+{
+    "acronym": "40ca4fcfffa7ca9aa9b7ff06ecf3cd0436712d78",
+    "title": "$O(n)$ Connections are Expressive Enough: Universal Approximability of Sparse Transformers",
+    "seed_ids": [
+        "bigbird",
+        "longformer",
+        "sparsetransformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "016a3ba7adcae71f5a23ed2663d8062ae1da63e6",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "b1c39d042fdf8f00a407b0df734764beb6c3b062",
+        "2e14e84ccec924ed770b58108ad1d9de6f0ca295",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "2a31319e73d4486716168b65cdf7559baeda18ce",
+        "3694381e74445a8b9f8cb8d373e39626e47191b5",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "40ca4fcfffa7ca9aa9b7ff06ecf3cd0436712d78",
+    "abstract": "Transformer networks use pairwise attention to compute contextual embeddings of inputs, and have redefined the state of the art in many NLP tasks. However, these models suffer from quadratic computational cost in the input sequence length $n$ to compute attention in each layer. This has prompted recent research into faster attention models, with a predominant approach involving sparsifying the connections in the attention layers. While empirically promising for long sequences, fundamental questions remain unanswered: Can sparse transformers approximate any arbitrary sequence-to-sequence function, similar to their dense counterparts? How does the sparsity pattern and the sparsity level affect their performance? In this paper, we address these questions and provide a unifying framework that captures existing sparse attention models. Our analysis proposes sufficient conditions under which we prove that a sparse attention model can universally approximate any sequence-to-sequence function. Surprisingly, our results show the existence of models with only $O(n)$ connections per attention layer that can approximate the same function class as the dense model with $n^2$ connections. Lastly, we present experiments comparing different patterns/levels of sparsity on standard NLP tasks.",
+    "authors": [
+        "Chulhee Yun",
+        "Yin-Wen Chang",
+        "Srinadh Bhojanapalli",
+        "A. Rawat",
+        "Sashank J. Reddi",
+        "Sanjiv Kumar"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes sufficient conditions under which to prove that a sparse attention model can universally approximate any sequence-to-sequence function, and shows the existence of models with only $O(n)$ connections per attention layer that can approximate the same function class as the dense model with $n^2$ connections."
+    },
+    "citationCount": 63,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

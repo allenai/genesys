@@ -1,0 +1,31 @@
+{
+    "acronym": "a8a71f9b10b281e796fdc2ee7aaec40067739574",
+    "title": "STEPS: A Benchmark for Order Reasoning in Sequential Tasks",
+    "seed_ids": [
+        "gpt2",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "6d02cc3e66330fc170a5bde44be7b358149b9c0a",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "a8a71f9b10b281e796fdc2ee7aaec40067739574",
+    "abstract": "Various human activities can be abstracted into a sequence of actions in natural text, i.e. cooking, repairing, manufacturing, etc. Such action sequences heavily depend on the executing order, while disorder in action sequences leads to failure of further task execution by robots or AI agents. Therefore, to verify the order reasoning capability of current neural models in sequential tasks, we propose a challenging benchmark , named STEPS. STEPS involves two subtask settings, focusing on determining the rationality of given next step in recipes and selecting the reasonable step from the multi-choice question, respectively. We describe the data construction and task formulations, and benchmark most of significant Large Language Models (LLMs). The experimental results demonstrate 1) The commonsense reasoning of action orders in sequential tasks are challenging to resolve via zero-shot prompting or few-shot in-context learning for LLMs; 2) Prompting method still significantly lags behind tuning-based method on STEPS.",
+    "authors": [
+        "Weizhi Wang",
+        "Hong Wang",
+        "Xi Yan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The experimental results demonstrate that the commonsense reasoning of action orders in sequential tasks are challenging to resolve via zero-shot prompting or few-shot in-context learning for LLMs, and Prompting method still significantly lags behind tuning-based method on STEPS."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

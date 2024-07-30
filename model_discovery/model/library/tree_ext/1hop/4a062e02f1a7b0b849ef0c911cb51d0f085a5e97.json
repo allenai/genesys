@@ -1,0 +1,28 @@
+{
+    "acronym": "4a062e02f1a7b0b849ef0c911cb51d0f085a5e97",
+    "title": "Evaluating Graph Attention Networks as an Alternative to Transformers for ABSA Task in Low-Resource Languages",
+    "seed_ids": [
+        "bert",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336"
+    ],
+    "s2id": "4a062e02f1a7b0b849ef0c911cb51d0f085a5e97",
+    "abstract": "Opinions toward subjects and products hold immense relevance in business to guide decision-making processes. However, due to the increase in user-generated content, manual analysis is unrealistic. Techniques such as Sentiment Analysis are paramount to understanding and quantifying human emotion expressed in text data. Aspect-Based Sentiment Analysis aims to extract aspects from an opinionated text while identifying their underlying sentiment. Graph-based text representations have been shown to bring benefits to this task, as they explicitly represent structural relationships in text. While studies have demonstrated the effectiveness of this representation for Aspect-based Sentiment Analysis using Graph Neural Networks in English, there is only sparse evidence of improvement using these techniques for low-resource languages such as Portuguese. We develop a straightforward Graph Attention Network model for the Aspect-Based Sentiment Analysis task in Brazilian Portuguese. The proposed approach achieves a Balanced Accuracy score of 0.74, yielding competitive results and ranking third place in the ABSAPT competition. Furthermore, by leveraging sparse graph connections our model is less computationally demanding than a Transformer architecture in terms of training and inference.",
+    "authors": [
+        "Gabriel Gomes",
+        "Alexandre T. Bender",
+        "Arthur Cerveira",
+        "Larissa A. Freitas",
+        "Ulisses B. Corr\u02c6ea"
+    ],
+    "venue": "The International FLAIRS Conference Proceedings",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A straightforward Graph Attention Network model is developed for the Aspect-Based Sentiment Analysis task in Brazilian Portuguese, which is less computationally demanding than a Transformer architecture in terms of training and inference."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "9810718f3591a73589b3b74fa16ed04aaf83ae42",
+    "title": "LibriTTS-P: A Corpus with Speaking Style and Speaker Identity Prompts for Text-to-Speech and Style Captioning",
+    "seed_ids": [
+        "transformer",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "9810718f3591a73589b3b74fa16ed04aaf83ae42",
+    "abstract": "We introduce LibriTTS-P, a new corpus based on LibriTTS-R that includes utterance-level descriptions (i.e., prompts) of speaking style and speaker-level prompts of speaker characteristics. We employ a hybrid approach to construct prompt annotations: (1) manual annotations that capture human perceptions of speaker characteristics and (2) synthetic annotations on speaking style. Compared to existing English prompt datasets, our corpus provides more diverse prompt annotations for all speakers of LibriTTS-R. Experimental results for prompt-based controllable TTS demonstrate that the TTS model trained with LibriTTS-P achieves higher naturalness than the model using the conventional dataset. Furthermore, the results for style captioning tasks show that the model utilizing LibriTTS-P generates 2.5 times more accurate words than the model using a conventional dataset. Our corpus, LibriTTS-P, is available at https://github.com/line/LibriTTS-P.",
+    "authors": [
+        "Masaya Kawamura",
+        "Ryuichi Yamamoto",
+        "Yuma Shirahata",
+        "Takuya Hasumi",
+        "Kentaro Tachibana"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "LibriTTS-P is introduced, a new corpus based on LibriTTS-R that includes utterance-level descriptions (i.e., prompts) of speaking style and speaker-level prompts of speaker characteristics and employs a hybrid approach to construct prompt annotations."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

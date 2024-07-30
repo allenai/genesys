@@ -1,0 +1,33 @@
+{
+    "acronym": "9932a6b10f6c40232a5d0eeb47bf2f579c124c85",
+    "title": "Forwardformer: Efficient Transformer With Multi-Scale Forward Self-Attention for Day-Ahead Load Forecasting",
+    "seed_ids": [
+        "longformer",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "4cf963e5fd88825ac62ad6cce364447e5d2dfb2b"
+    ],
+    "s2id": "9932a6b10f6c40232a5d0eeb47bf2f579c124c85",
+    "abstract": "Accurate load forecasting can maintain the safety and stability of power grids. The mainstream models are based on complex recurrent or convolutional neural networks (RNNs, CNNs), and in recent years they are often used in combination with the attention mechanism. The shortcomings of these models are that they cannot get rid of sequential computation and fail to capture long-term dependence. For better application in day-ahead load forecasting (DALF), we propose a new network architecture, i.e., Forwardformer, which is implemented by imposing some effective improvements on the Transformer (a pioneering network model with applications in Natural Language Processing (NLP)). The core of Forwardformer is the multi-scale forward self-attention (MSFSA) and the correction structure of the encoder-dual decoder, which confer better computational efficiency and forecasting accuracy. Meanwhile, to improve forecasting accuracy on special days (weekends, holidays, etc.), the MSFSA configures dilated attention and global attention for them, respectively. Experiments performed on datasets from China and America demonstrated that the Forwardformer requires less runtime while being superior in forecasting accuracy. Especially in terms of weekends and holidays, it has outstanding advantages and provides a new solution to the DALF problem.",
+    "authors": [
+        "Kai Qu",
+        "Gangquan Si",
+        "Zihan Shan",
+        "Qianyue Wang",
+        "Xiaoliang Liu",
+        "Chen Yang"
+    ],
+    "venue": "IEEE Transactions on Power Systems",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The core of Forwardformer is the multi-scale forward self-attention (MSFSA) and the correction structure of the encoder-dual decoder, which confer better computational efficiency and forecasting accuracy."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

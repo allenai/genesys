@@ -1,0 +1,25 @@
+{
+    "acronym": "52ba35523e01b1146f2519ca31bab52c4a54fe74",
+    "title": "Counting Like Transformers: Compiling Temporal Counting Logic Into Softmax Transformers",
+    "seed_ids": [
+        "transformer",
+        "d078b6e88bc4749f4eb83f289537a88b4aaf54e6"
+    ],
+    "s2id": "52ba35523e01b1146f2519ca31bab52c4a54fe74",
+    "abstract": "Deriving formal bounds on the expressivity of transformers, as well as studying transformers that are constructed to implement known algorithms, are both effective methods for better understanding the computational power of transformers. Towards both ends, we introduce the temporal counting logic $\\textbf{K}_\\text{t}$[#] alongside the RASP variant $\\textbf{C-RASP}$. We show they are equivalent to each other, and that together they are the best-known lower bound on the formal expressivity of future-masked soft attention transformers with unbounded input size. We prove this by showing all $\\textbf{K}_\\text{t}$[#] formulas can be compiled into these transformers. As a case study, we demonstrate on paper how to use $\\textbf{C-RASP}$ to construct simple transformer language models that, using greedy decoding, can only generate sentences that have given properties formally specified in $\\textbf{K}_\\text{t}$[#].",
+    "authors": [
+        "Andy Yang",
+        "David Chiang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that all $\\textbf{K}_\\text{t}$[#] formulas can be compiled into these transformers, and that together they are the best-known lower bound on the formal expressivity of future-masked soft attention transformers with unbounded input size."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

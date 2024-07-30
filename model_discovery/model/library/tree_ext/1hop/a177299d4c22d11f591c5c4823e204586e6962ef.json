@@ -1,0 +1,29 @@
+{
+    "acronym": "a177299d4c22d11f591c5c4823e204586e6962ef",
+    "title": "BrainMAE: A Region-aware Self-supervised Learning Framework for Brain Signals",
+    "seed_ids": [
+        "gpt3",
+        "bert",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a177299d4c22d11f591c5c4823e204586e6962ef",
+    "abstract": "The human brain is a complex, dynamic network, which is commonly studied using functional magnetic resonance imaging (fMRI) and modeled as network of Regions of interest (ROIs) for understanding various brain functions. Recent studies utilize deep learning approaches to learn the brain network representation based on functional connectivity (FC) profile, broadly falling into two main categories. The Fixed-FC approaches, utilizing the FC profile which represents the linear temporal relation within the brain network, are limited by failing to capture informative brain temporal dynamics. On the other hand, the Dynamic-FC approaches, modeling the evolving FC profile over time, often exhibit less satisfactory performance due to challenges in handling the inherent noisy nature of fMRI data. To address these challenges, we propose Brain Masked Auto-Encoder (BrainMAE) for learning representations directly from fMRI time-series data. Our approach incorporates two essential components: a region-aware graph attention mechanism designed to capture the relationships between different brain ROIs, and a novel self-supervised masked autoencoding framework for effective model pre-training. These components enable the model to capture rich temporal dynamics of brain activity while maintaining resilience to inherent noise in fMRI data. Our experiments demonstrate that BrainMAE consistently outperforms established baseline methods by significant margins in four distinct downstream tasks. Finally, leveraging the model's inherent interpretability, our analysis of model-generated representations reveals findings that resonate with ongoing research in the field of neuroscience.",
+    "authors": [
+        "Yifan Yang",
+        "Yutong Mao",
+        "Xufu Liu",
+        "Xiao Liu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Brain Masked Auto-Encoder (BrainMAE) is proposed for learning representations directly from fMRI time-series data that combines a region-aware graph attention mechanism designed to capture the relationships between different brain ROIs, and a novel self-supervised masked autoencoding framework for effective model pre-training."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

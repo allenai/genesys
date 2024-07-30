@@ -1,0 +1,29 @@
+{
+    "acronym": "d3a95b0727ef67ef9264cd20da10a545977ace51",
+    "title": "TwistList: Resources and Baselines for Tongue Twister Generation",
+    "seed_ids": [
+        "gpt2",
+        "58b8da3821affc426895a85dbac5556322e6e2a9",
+        "19a9937a1029ee5b1f6da8a945ed9a5c5a029c57",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d3a95b0727ef67ef9264cd20da10a545977ace51",
+    "abstract": "Previous work in phonetically-grounded language generation has mainly focused on domains such as lyrics and poetry. In this paper, we present work on the generation of tongue twisters - a form of language that is required to be phonetically conditioned to maximise sound overlap, whilst maintaining semantic consistency with an input topic, and still being grammatically correct. We present TwistList, a large annotated dataset of tongue twisters, consisting of 2.1K+ human-authored examples. We additionally present several benchmark systems (referred to as TwisterMisters) for the proposed task of tongue twister generation, including models that both do and do not require training on in-domain data. We present the results of automatic and human evaluation to demonstrate the performance ofexisting mainstream pre-trained models in this task with limited (or no) task specific training and data, and no explicit phonetic knowledge. We find that the task of tongue twister generation is challenging for models under these conditions, yet some models are still capable of generating acceptable examples of this language type.",
+    "authors": [
+        "Tyler Loakman",
+        "Chen Tang",
+        "Chenghua Lin"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that the task of tongue twister generation is challenging for models under these conditions, yet some models are still capable of generating acceptable examples of this language type."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

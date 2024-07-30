@@ -1,0 +1,36 @@
+{
+    "acronym": "74d511fd4c69afac05dd99b35a80b6de67ceece1",
+    "title": "Fourier Prompt Tuning for Modality-Incomplete Scene Segmentation",
+    "seed_ids": [
+        "fnet",
+        "2d47489190be65e601a3d35e6d348b6723bfdfc8",
+        "c57467e652f3f9131b3e7e40c23059abe395f01d",
+        "d5ab24beec066610a0af109e25913dba3e42a978",
+        "e0d9d80dd0ef1a9996feac61d3315f44ec31aca3",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f"
+    ],
+    "s2id": "74d511fd4c69afac05dd99b35a80b6de67ceece1",
+    "abstract": "Integrating information from multiple modalities enhances the robustness of scene perception systems in autonomous vehicles, providing a more comprehensive and reliable sensory framework. However, the modality incompleteness in multi-modal segmentation remains under-explored. In this work, we establish a task called Modality-Incomplete Scene Segmentation (MISS), which encompasses both system-level modality absence and sensor-level modality errors. To avoid the predominant modality reliance in multi-modal fusion, we introduce a Missing-aware Modal Switch (MMS) strategy to proactively manage missing modalities during training. Utilizing bit-level batch-wise sampling enhances the model\u2019s performance in both complete and incomplete testing scenarios. Furthermore, we introduce the Fourier Prompt Tuning (FPT) method to incorporate representative spectral information into a limited number of learnable prompts that maintain robustness against all MISS scenarios. Akin to fine-tuning effects but with fewer tunable parameters (1.1%). Extensive experiments prove the efficacy of our proposed approach, showcasing an improvement of 5.84% mIoU over the prior state-of-the-art parameter-efficient methods in modality missing. The source code is publicly available at https://github.com/RuipingL/MISS.",
+    "authors": [
+        "Ruiping Liu",
+        "Jiaming Zhang",
+        "Kunyu Peng",
+        "Yufan Chen",
+        "Ke Cao",
+        "Junwei Zheng",
+        "M. Sarfraz",
+        "Kailun Yang",
+        "Rainer Stiefelhagen"
+    ],
+    "venue": "2024 IEEE Intelligent Vehicles Symposium (IV)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work establishes a task called Modality-Incomplete Scene Segmentation (MISS), which encompasses both system-level modality absence and sensor-level modality errors, and introduces a Missing-aware Modal Switch (MMS) strategy to proactively manage missing modalities during training."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

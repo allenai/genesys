@@ -1,0 +1,29 @@
+{
+    "acronym": "5335fe1bf347f7ad1dce1611ea4b60bd8391a090",
+    "title": "Transferring Inductive Biases through Knowledge Distillation",
+    "seed_ids": [
+        "universaltrans",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf",
+        "7ebed46b7f3ec913e508e6468304fcaea832eda1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5335fe1bf347f7ad1dce1611ea4b60bd8391a090",
+    "abstract": "Having the right inductive biases can be crucial in many tasks or scenarios where data or computing resources are a limiting factor, or where training data is not perfectly representative of the conditions at test time. However, defining, designing and efficiently adapting inductive biases is not necessarily straightforward. In this paper, we explore the power of knowledge distillation for transferring the effect of inductive biases from one model to another. We consider families of models with different inductive biases, LSTMs vs. Transformers and CNNs vs. MLPs, in the context of tasks and scenarios where having the right inductive biases is critical. We study how the effect of inductive biases is transferred through knowledge distillation, in terms of not only performance but also different aspects of converged solutions.",
+    "authors": [
+        "Samira Abnar",
+        "Mostafa Dehghani",
+        "W. Zuidema"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper considers families of models with different inductive biases, LSTMs vs. Transformers and CNNs vs. MLPs, in the context of tasks and scenarios where having the right inductive bias is critical."
+    },
+    "citationCount": 49,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

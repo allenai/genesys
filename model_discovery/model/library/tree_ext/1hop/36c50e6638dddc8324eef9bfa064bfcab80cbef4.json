@@ -1,0 +1,36 @@
+{
+    "acronym": "36c50e6638dddc8324eef9bfa064bfcab80cbef4",
+    "title": "ProsocialDialog: A Prosocial Backbone for Conversational Agents",
+    "seed_ids": [
+        "gpt2",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "6d23532a1e9a8116041fd5aac6b0ef8ddd6d8171",
+        "fd1b829261ba04bb92e0ab60c4f6e7cea0d99fbf",
+        "2ea64b7c7617f6cc1768373124ca0243d772a90f",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "36c50e6638dddc8324eef9bfa064bfcab80cbef4",
+    "abstract": "Most existing dialogue systems fail to respond properly to potentially unsafe user utterances by either ignoring or passively agreeing with them. To address this issue, we introduce ProsocialDialog, the first large-scale multi-turn dialogue dataset to teach conversational agents to respond to problematic content following social norms. Covering diverse unethical, problematic, biased, and toxic situations, ProsocialDialog contains responses that encourage prosocial behavior, grounded in commonsense social rules (i.e., rules-of-thumb, RoTs). Created via a human-AI collaborative framework, ProsocialDialog consists of 58K dialogues, with 331K utterances, 160K unique RoTs, and 497K dialogue safety labels accompanied by free-form rationales.With this dataset, we introduce a dialogue safety detection module, Canary, capable of generating RoTs given conversational context, and a socially-informed dialogue agent, Prost. Empirical results show that Prost generates more socially acceptable dialogues compared to other state-of-the-art language and dialogue models in both in-domain and out-of-domain settings. Additionally, Canary effectively guides conversational agents and off-the-shelf language models to generate significantly more prosocial responses. Our work highlights the promise and importance of creating and steering conversational AI to be socially responsible.",
+    "authors": [
+        "Hyunwoo Kim",
+        "Youngjae Yu",
+        "Liwei Jiang",
+        "Ximing Lu",
+        "Daniel Khashabi",
+        "Gunhee Kim",
+        "Yejin Choi",
+        "Maarten Sap"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces ProsocialDialog, the first large-scale multi-turn dialogue dataset to teach conversational agents to respond to problematic content following social norms, and introduces a dialogue safety detection module, Canary, capable of generating RoTs given conversational context, and a socially-informed dialogue agent, Prost."
+    },
+    "citationCount": 86,
+    "influentialCitationCount": 10,
+    "code": null,
+    "description": null,
+    "url": null
+}

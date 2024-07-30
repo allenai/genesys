@@ -1,0 +1,26 @@
+{
+    "acronym": "9538ae749417eb39af04658e15f65e05ee3012f3",
+    "title": "MUSE: P ARALLEL M ULTI -S CALE A TTENTION FOR S EQUENCE TO S EQUENCE L EARNING",
+    "seed_ids": [
+        "lighdynconv",
+        "830995ef17cc291c13f42dfd9f462137de1d2179",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "16c844fd4d97f3c6eb38b0d6527c87d184efedc3"
+    ],
+    "s2id": "9538ae749417eb39af04658e15f65e05ee3012f3",
+    "abstract": "In sequence to sequence learning, the self-attention mechanism proves to be highly effective, and achieves significant improvements in many tasks. However, the self-attention mechanism is not without its own flaws. Although self-attention can model extremely long dependencies, the attention in deep layers tends to overconcentrate on a single token, leading to insufficient use of local information and difficultly in representing long sequences. In this work, we explore parallel multi-scale representation learning on sequence data, striving to capture both long-range and short-range language structures. To this end, we propose the Parallel MUlti-Scale attEntion (MUSE) and MUSE-simple. MUSE-simple contains the basic idea of parallel multi-scale representation learning, and it encodes the sequence in parallel, in terms of different scales with the help from self-attention, and pointwise transformation. MUSE builds on MUSE-simple and explores combining convolution and self-attention for learning sequence representations from more different scales. We focus on machine translation and the proposed approach achieves substantial performance improvements over Transformer, especially on long sequences. More importantly, we find that although conceptually simple, its success in practice requires intricate considerations, and the multi-scale attention must build on unified semantic space. Under common setting, the proposed model achieves substantial performance and outperforms all previous models on three main machine translation tasks. In addition, MUSE has potential for accelerating inference due to its parallelism.",
+    "authors": [],
+    "venue": "",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes the Parallel MUlti-Scale attEntion (MUSE) and MUSE-simple, and finds that although conceptually simple, its success in practice requires intricate considerations, and the multi-scale attention must build on unified semantic space."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

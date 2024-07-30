@@ -1,0 +1,31 @@
+{
+    "acronym": "8f80da970d0645ae69e4c44702a3fdd670a65dd9",
+    "title": "SCCA: Shifted Cross Chunk Attention for long contextual semantic expansion",
+    "seed_ids": [
+        "pi",
+        "73290ecbec2f38d1d647ddef1ada69cee41725b3",
+        "b31a5884a8ebe96b6300839b28608b97f8f8ef76",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "4e3935ef7da6bcbb202ec7f8b285c313cadcd044",
+        "9dc624d7258d1a56117ca720aea953ce46b66b21",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "8f80da970d0645ae69e4c44702a3fdd670a65dd9",
+    "abstract": "Sparse attention as a efficient method can significantly decrease the computation cost, but current sparse attention tend to rely on window self attention which block the global information flow. For this problem, we present Shifted Cross Chunk Attention (SCCA), using different KV shifting strategy to extend respective field in each attention layer. Except, we combine Dilated Attention(DA) and Dilated Neighborhood Attention(DNA) to present Shifted Dilated Attention(SDA). Both SCCA and SDA can accumulate attention results in multi head attention to obtain approximate respective field in full attention. In this paper, we conduct language modeling experiments using different pattern of SCCA and combination of SCCA and SDA. The proposed shifted cross chunk attention (SCCA) can effectively extend large language models (LLMs) to longer context combined with Positional interpolation(PI) and LoRA than current sparse attention. Notably, SCCA adopts LLaMA2 7B from 4k context to 8k in single V100. This attention pattern can provide a Plug-and-play fine-tuning method to extend model context while retaining their original architectures, and is compatible with most existing techniques.",
+    "authors": [
+        "Yuxiang Guo"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed shifted cross chunk attention (SCCA) can effectively extend large language models (LLMs) to longer context combined with Positional interpolation and LoRA than current sparse attention."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

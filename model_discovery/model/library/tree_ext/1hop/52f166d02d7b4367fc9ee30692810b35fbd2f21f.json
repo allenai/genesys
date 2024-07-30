@@ -1,0 +1,33 @@
+{
+    "acronym": "52f166d02d7b4367fc9ee30692810b35fbd2f21f",
+    "title": "Scaling Data Generation in Vision-and-Language Navigation",
+    "seed_ids": [
+        "gpt2",
+        "ff6d17044ac6292b9ceb87d80b11f0e269bdc543",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "52f166d02d7b4367fc9ee30692810b35fbd2f21f",
+    "abstract": "Recent research in language-guided visual navigation has demonstrated a significant demand for the diversity of traversable environments and the quantity of supervision for training generalizable agents. To tackle the common data scarcity issue in existing vision-and-language navigation datasets, we propose an effective paradigm for generating large-scale data for learning, which applies 1200+ photo-realistic environments from HM3D and Gibson datasets and synthesizes 4.9 million instruction-trajectory pairs using fully-accessible resources on the web. Importantly, we investigate the influence of each component in this paradigm on the agent\u2019s performance and study how to adequately apply the augmented data to pre-train and fine-tune an agent. Thanks to our large-scale dataset, the performance of an existing agent can be pushed up (+11% absolute with regard to previous SoTA) to a significantly new best of 80% single-run success rate on the R2R test split by simple imitation learning. The long-lasting generalization gap between navigating in seen and unseen environments is also reduced to less than 1% (versus 8% in the previous best method). Moreover, our paradigm also facilitates different models to achieve new state-of-the-art navigation results on CVDN, REVERIE, and R2R in continuous environments.",
+    "authors": [
+        "Zun Wang",
+        "Jialu Li",
+        "Yicong Hong",
+        "Yi Wang",
+        "Qi Wu",
+        "Mohit Bansal",
+        "Stephen Gould",
+        "Hao Tan",
+        "Yu Qiao"
+    ],
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an effective paradigm for generating large-scale data for learning, which applies 1200+ photo-realistic environments from HM3D and Gibson datasets and synthesizes 4.9 million instruction-trajectory pairs using fully-accessible resources on the web."
+    },
+    "citationCount": 25,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

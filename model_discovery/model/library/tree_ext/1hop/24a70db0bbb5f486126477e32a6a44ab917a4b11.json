@@ -1,0 +1,29 @@
+{
+    "acronym": "24a70db0bbb5f486126477e32a6a44ab917a4b11",
+    "title": "LakhNES: Improving Multi-instrumental Music Generation with Cross-domain Pre-training",
+    "seed_ids": [
+        "transformerxl",
+        "fb507ada871d1e8c29e376dbf7b7879689aa89f9",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "24a70db0bbb5f486126477e32a6a44ab917a4b11",
+    "abstract": "We are interested in the task of generating multi-instrumental music scores. The Transformer architecture has recently shown great promise for the task of piano score generation; here we adapt it to the multi-instrumental setting. Transformers are complex, high-dimensional language models which are capable of capturing long-term structure in sequence data, but require large amounts of data to fit. Their success on piano score generation is partially explained by the large volumes of symbolic data readily available for that domain. We leverage the recently-introduced NES-MDB dataset of four-instrument scores from an early video game sound synthesis chip (the NES), which we find to be well-suited to training with the Transformer architecture. To further improve the performance of our model, we propose a pre-training technique to leverage the information in a large collection of heterogeneous music, namely the Lakh MIDI dataset. Despite differences between the two corpora, we find that this transfer learning procedure improves both quantitative and qualitative performance for our primary task.",
+    "authors": [
+        "Chris Donahue",
+        "H. H. Mao",
+        "Yiting Li",
+        "G. Cottrell",
+        "Julian McAuley"
+    ],
+    "venue": "International Society for Music Information Retrieval Conference",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "To improve the performance of the Transformer architecture, this work proposes a pre-training technique to leverage the information in a large collection of heterogeneous music, namely the Lakh MIDI dataset, and finds that this transfer learning procedure improves both quantitative and qualitative performance for the primary task."
+    },
+    "citationCount": 102,
+    "influentialCitationCount": 14,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,33 @@
+{
+    "acronym": "685983c3d4348af2e130b71ac8f843526b311959",
+    "title": "BehaviorGPT: Smart Agent Simulation for Autonomous Driving with Next-Patch Prediction",
+    "seed_ids": [
+        "transformer",
+        "247fbf266e70e196d983f53e7b4990b9548b0fc5",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "685983c3d4348af2e130b71ac8f843526b311959",
+    "abstract": "Simulating realistic interactions among traffic agents is crucial for efficiently validating the safety of autonomous driving systems. Existing leading simulators primarily use an encoder-decoder structure to encode the historical trajectories for future simulation. However, such a paradigm complicates the model architecture, and the manual separation of history and future trajectories leads to low data utilization. To address these challenges, we propose Behavior Generative Pre-trained Transformers (BehaviorGPT), a decoder-only, autoregressive architecture designed to simulate the sequential motion of multiple agents. Crucially, our approach discards the traditional separation between\"history\"and\"future,\"treating each time step as the\"current\"one, resulting in a simpler, more parameter- and data-efficient design that scales seamlessly with data and computation. Additionally, we introduce the Next-Patch Prediction Paradigm (NP3), which enables models to reason at the patch level of trajectories and capture long-range spatial-temporal interactions. BehaviorGPT ranks first across several metrics on the Waymo Sim Agents Benchmark, demonstrating its exceptional performance in multi-agent and agent-map interactions. We outperformed state-of-the-art models with a realism score of 0.741 and improved the minADE metric to 1.540, with an approximately 91.6% reduction in model parameters.",
+    "authors": [
+        "Zikang Zhou",
+        "Haibo Hu",
+        "Xinhong Chen",
+        "Jianping Wang",
+        "Nan Guan",
+        "Kui Wu",
+        "Yung-Hui Li",
+        "Yu-Kai Huang",
+        "Chun Jason Xue"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Behavior Generative Pre-trained Transformers is proposed, a decoder-only, autoregressive architecture designed to simulate the sequential motion of multiple agents that ranks first across several metrics on the Waymo Sim Agents Benchmark, demonstrating its exceptional performance in multi-agent and agent-map interactions."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

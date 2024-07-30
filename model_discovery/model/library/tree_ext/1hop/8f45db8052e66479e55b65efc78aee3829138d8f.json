@@ -1,0 +1,29 @@
+{
+    "acronym": "8f45db8052e66479e55b65efc78aee3829138d8f",
+    "title": "DenoSent: A Denoising Objective for Self-Supervised Sentence Representation Learning",
+    "seed_ids": [
+        "bert",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c"
+    ],
+    "s2id": "8f45db8052e66479e55b65efc78aee3829138d8f",
+    "abstract": "Contrastive-learning-based methods have dominated sentence representation learning. These methods regularize the representation space by pulling similar sentence representations closer and pushing away the dissimilar ones and have been proven effective in various NLP tasks, e.g., semantic textual similarity (STS) tasks. However, it is challenging for these methods to learn fine-grained semantics as they only learn from the inter-sentence perspective, i.e., their supervision signal comes from the relationship between data samples. In this work, we propose a novel denoising objective that inherits from another perspective, i.e., the intra-sentence perspective. By introducing both discrete and continuous noise, we generate noisy sentences and then train our model to restore them to their original form. Our empirical evaluations demonstrate that this approach delivers competitive results on both semantic textual similarity (STS) and a wide range of transfer tasks, standing up well in comparison to contrastive-learning-based methods. Notably, the proposed intra-sentence denoising objective complements existing inter-sentence contrastive methodologies and can be integrated with them to further enhance performance. Our code is available at https://github.com/xinghaow99/DenoSent.",
+    "authors": [
+        "Xinghao Wang",
+        "Junliang He",
+        "Pengyu Wang",
+        "Yunhua Zhou",
+        "Tianxiang Sun",
+        "Xipeng Qiu"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel denoising objective that inherits from another perspective, i.e., the intra-sentence perspective is proposed, which complements existing inter-sentence contrastive methodologies and can be integrated with them to further enhance performance."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

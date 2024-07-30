@@ -1,0 +1,28 @@
+{
+    "acronym": "ef16ae2b6f3adda9e1b0145c10dfa6e81089aa09",
+    "title": "Neural Machine Translation with Dynamic Graph Convolutional Decoder",
+    "seed_ids": [
+        "lighdynconv",
+        "75352cc69a29bd5fc411e0e79737cb96b6309161"
+    ],
+    "s2id": "ef16ae2b6f3adda9e1b0145c10dfa6e81089aa09",
+    "abstract": "Existing wisdom demonstrates the significance of syntactic knowledge for the improvement of neural machine translation models. However, most previous works merely focus on leveraging the source syntax in the well-known encoder-decoder framework. In sharp contrast, this paper proposes an end-to-end translation architecture from the (graph \\&sequence) structural inputs to the (graph \\&sequence) outputs, where the target translation and its corresponding syntactic graph are jointly modeled and generated. We propose a customized Dynamic Spatial-Temporal Graph Convolutional Decoder (Dyn-STGCD), which is designed for consuming source feature representations and their syntactic graph, and auto-regressively generating the target syntactic graph and tokens simultaneously. We conduct extensive experiments on five widely acknowledged translation benchmarks, verifying that our proposal achieves consistent improvements over baselines and other syntax-aware variants.",
+    "authors": [
+        "Lei Li",
+        "Kai Fan",
+        "Ling Yang",
+        "Hongjian Li",
+        "Chun Yuan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a customized Dynamic Spatial-Temporal Graph Convolutional Decoder (Dyn-STGCD), which is designed for consuming source feature representations and their syntactic graph, and auto-regressively generating the target syntacticgraph and tokens simultaneously."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

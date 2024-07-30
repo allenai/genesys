@@ -1,0 +1,26 @@
+{
+    "acronym": "c1ee6d0b0df818d0d80e0d99369366a2c61a6423",
+    "title": "EfficientSwin: A Hybrid Model for Blood Cell Classification with Saliency Maps Visualization",
+    "seed_ids": [
+        "transformer",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "c1ee6d0b0df818d0d80e0d99369366a2c61a6423",
+    "abstract": "Blood cell (BC) classification holds significant importance in medical diagnostics as it enables the identification and differentiation of various types of BCs, which is crucial for detecting specific infections, disorders, or conditions, and guiding appropriate treatment decisions. Accurate BC classification simplifies the evaluation of immune system performance and the diagnosis of various ailments such as infections, leukemia, and other hematological disorders. Deep learning algorithms perform excellently in the automated identification and differentiation of various types of BCs. One of the advanced deep learning models, EfficientNet has shown remarkable performance with limited datasets, another model Swin Transformer\u2019s capability to capture intricate patterns and features makes it more accurate, albeit with limitations due to its large number of parameters. However, medical image datasets are often limited, necessitating a solution that balances accuracy and efficiency. To address this, we propose a novel hybrid model, by combining the strengths of these two models. We first fine-tuned the Swin Transformer on a blood cell dataset comprising wihite blood cells, red blood cells and platelets, achieving promising outcomes. Subsequently, our hybrid model, EfficientSwin, outperformed the standalone Swin Transformer, achieving an impressive 98.14% accuracy in BCs classification. Furthermore, we compared our approach with previous research on white blood cell datasets, showcasing the superiority of EfficientSwin in accurately classifying blood cells. We also employed saliency maps for a visual representation of our classification results, further illustrating the efficacy of our approach.",
+    "authors": [
+        "Tanviben Patel",
+        "Hoda El-Sayed",
+        "Md Kamruzzaman Sarker"
+    ],
+    "venue": "Conference of the Open Innovations Association",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel hybrid model, EfficientSwin, is proposed, which outperformed the standalone Swin Transformer in BCs classification and compared with previous research on white blood cell datasets, showcasing the superiority of EfficientSwin in accurately classifying blood cells."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

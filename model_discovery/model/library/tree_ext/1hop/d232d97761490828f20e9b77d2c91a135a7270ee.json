@@ -1,0 +1,46 @@
+{
+    "acronym": "d232d97761490828f20e9b77d2c91a135a7270ee",
+    "title": "OFASys: A Multi-Modal Multi-Task Learning System for Building Generalist Models",
+    "seed_ids": [
+        "gpt2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d232d97761490828f20e9b77d2c91a135a7270ee",
+    "abstract": "Generalist models, which are capable of performing diverse multi-modal tasks in a task-agnostic way within a single model, have been explored recently. Being, hopefully, an alternative to approaching general-purpose AI, existing generalist models are still at an early stage, where modality and task coverage is limited. To empower multi-modal task-scaling and speed up this line of research, we release a generalist model learning system, OFASys, built on top of a declarative task interface named multi-modal instruction. At the core of OFASys is the idea of decoupling multi-modal task representations from the underlying model implementations. In OFASys, a task involving multiple modalities can be defined declaratively even with just a single line of code. The system automatically generates task plans from such instructions for training and inference. It also facilitates multi-task training for diverse multi-modal workloads. As a starting point, we provide presets of 7 different modalities and 23 highly-diverse example tasks in OFASys, with which we also develop a first-in-kind, single model, OFA+, that can handle text, image, speech, video, and motion data. The single OFA+ model achieves 95% performance in average with only 16% parameters of 15 task-finetuned models, showcasing the performance reliability of multi-modal task-scaling provided by OFASys. Available at https://github.com/OFA-Sys/OFASys",
+    "authors": [
+        "Jinze Bai",
+        "Rui Men",
+        "Han Yang",
+        "Xuancheng Ren",
+        "K. Dang",
+        "Yichang Zhang",
+        "Xiaohuan Zhou",
+        "Peng Wang",
+        "Sinan Tan",
+        "An Yang",
+        "Zeyu Cui",
+        "Yu Han",
+        "Shuai Bai",
+        "Wenhang Ge",
+        "Jianxin Ma",
+        "Junyang Lin",
+        "Jingren Zhou",
+        "Chang Zhou"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A generalist model learning system built on top of a declarative task interface named OFASys, which develops a first-in-kind, single model, OFA+, that can handle text, image, speech, video, and motion data and demonstrates the performance reliability of multi-modal task-scaling provided byOFASys."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

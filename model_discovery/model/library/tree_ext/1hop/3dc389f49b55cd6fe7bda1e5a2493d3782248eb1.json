@@ -1,0 +1,34 @@
+{
+    "acronym": "3dc389f49b55cd6fe7bda1e5a2493d3782248eb1",
+    "title": "Efficient Online Processing with Deep Neural Networks",
+    "seed_ids": [
+        "transformerxl",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "86fb2ee92569d35a8b471d814fa4c7653728536f",
+        "d10864946d1733444f0472acf1294f15b350e65e",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "94b69cf199fa0b6c842e17fe5d6174a9d161c3df",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "8659bf379ca8756755125a487c43cfe8611ce842",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3dc389f49b55cd6fe7bda1e5a2493d3782248eb1",
+    "abstract": "The capabilities and adoption of deep neural networks (DNNs) grow at an exhilarating pace: Vision models accurately classify human actions in videos and identify cancerous tissue in medical scans as precisely than human experts; large language models answer wide-ranging questions, generate code, and write prose, becoming the topic of everyday dinner-table conversations. Even though their uses are exhilarating, the continually increasing model sizes and computational complexities have a dark side. The economic cost and negative environmental externalities of training and serving models is in evident disharmony with financial viability and climate action goals. Instead of pursuing yet another increase in predictive performance, this dissertation is dedicated to the improvement of neural network efficiency. Specifically, a core contribution addresses the efficiency aspects during online inference. Here, the concept of Continual Inference Networks (CINs) is proposed and explored across four publications. CINs extend prior state-of-the-art methods developed for offline processing of spatio-temporal data and reuse their pre-trained weights, improving their online processing efficiency by an order of magnitude. These advances are attained through a bottom-up computational reorganization and judicious architectural modifications. The benefit to online inference is demonstrated by reformulating several widely used network architectures into CINs, including 3D CNNs, ST-GCNs, and Transformer Encoders. An orthogonal contribution tackles the concurrent adaptation and computational acceleration of a large source model into multiple lightweight derived models. Drawing on fusible adapter networks and structured pruning, Structured Pruning Adapters achieve superior predictive accuracy under aggressive pruning using significantly fewer learned weights compared to fine-tuning with pruning.",
+    "authors": [
+        "Lukas Hedegaard"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This dissertation is dedicated to the improvement of neural network efficiency and proposes and explores the concept of Continual Inference Networks (CINs), a core contribution addresses the efficiency aspects during online inference."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

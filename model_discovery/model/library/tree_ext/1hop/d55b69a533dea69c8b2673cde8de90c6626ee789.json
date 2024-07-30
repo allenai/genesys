@@ -1,0 +1,39 @@
+{
+    "acronym": "d55b69a533dea69c8b2673cde8de90c6626ee789",
+    "title": "A Text-guided Protein Design Framework",
+    "seed_ids": [
+        "d3pms",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e512964293671abbdc409f313d127cbe85ffe5cd",
+        "24425954960ce968e5f14360fbdd0605abcadfcf",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d55b69a533dea69c8b2673cde8de90c6626ee789",
+    "abstract": "Current AI-assisted protein design mainly utilizes protein sequential and structural information. Meanwhile, there exists tremendous knowledge curated by humans in the text format describing proteins' high-level functionalities. Yet, whether the incorporation of such text data can help protein design tasks has not been explored. To bridge this gap, we propose ProteinDT, a multi-modal framework that leverages textual descriptions for protein design. ProteinDT consists of three subsequent steps: ProteinCLAP which aligns the representation of two modalities, a facilitator that generates the protein representation from the text modality, and a decoder that creates the protein sequences from the representation. To train ProteinDT, we construct a large dataset, SwissProtCLAP, with 441K text and protein pairs. We quantitatively verify the effectiveness of ProteinDT on three challenging tasks: (1) over 90\\% accuracy for text-guided protein generation; (2) best hit ratio on 10 zero-shot text-guided protein editing tasks; (3) superior performance on four out of six protein property prediction benchmarks.",
+    "authors": [
+        "Shengchao Liu",
+        "Yutao Zhu",
+        "Jiarui Lu",
+        "Zhao Xu",
+        "Weili Nie",
+        "A. Gitter",
+        "Chaowei Xiao",
+        "Jian Tang",
+        "Hongyu Guo",
+        "Anima Anandkumar"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes ProteinDT, a multi-modal framework that leverages textual descriptions for protein design that achieves superior performance on four out of six protein property prediction benchmarks."
+    },
+    "citationCount": 38,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,33 @@
+{
+    "acronym": "31ced335258047c2b6703165887d87048b8acc98",
+    "title": "Civil Rephrases Of Toxic Texts With Self-Supervised Transformers",
+    "seed_ids": [
+        "transformerxl",
+        "069e0d896da7c79faeee4cf057548d5da7ce885e",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "31ced335258047c2b6703165887d87048b8acc98",
+    "abstract": "Platforms that support online commentary, from social networks to news sites, are increasingly leveraging machine learning to assist their moderation efforts. But this process does not typically provide feedback to the author that would help them contribute according to the community guidelines. This is prohibitively time-consuming for human moderators to do, and computational approaches are still nascent. This work focuses on models that can help suggest rephrasings of toxic comments in a more civil manner. Inspired by recent progress in unpaired sequence-to-sequence tasks, a self-supervised learning model is introduced, called CAE-T5. CAE-T5 employs a pre-trained text-to-text transformer, which is fine tuned with a denoising and cyclic auto-encoder loss. Experimenting with the largest toxicity detection dataset to date (Civil Comments) our model generates sentences that are more fluent and better at preserving the initial content compared to earlier text style transfer systems which we compare with using several scoring systems and human evaluation.",
+    "authors": [
+        "Leo Laugier",
+        "John Pavlopoulos",
+        "Jeffrey Scott Sorensen",
+        "Lucas Dixon"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Inspired by recent progress in unpaired sequence-to-sequence tasks, a self-supervised learning model is introduced, called CAE-T5, which generates sentences that are more fluent and better at preserving the initial content compared to earlier text style transfer systems."
+    },
+    "citationCount": 41,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "96abb51a78ba429e40dfab84db0f10cadb69e157",
+    "title": "Local All-Pair Correspondence for Point Tracking",
+    "seed_ids": [
+        "transformer",
+        "40fffd624ea26739011799f3aefc8f8629311d7e",
+        "cc052339afebba8adf9d1868d51b9f3b1d6d0eac",
+        "877dcb2fa9c663ee17c06fed66d16813e226a3ec"
+    ],
+    "s2id": "96abb51a78ba429e40dfab84db0f10cadb69e157",
+    "abstract": "We introduce LocoTrack, a highly accurate and efficient model designed for the task of tracking any point (TAP) across video sequences. Previous approaches in this task often rely on local 2D correlation maps to establish correspondences from a point in the query image to a local region in the target image, which often struggle with homogeneous regions or repetitive features, leading to matching ambiguities. LocoTrack overcomes this challenge with a novel approach that utilizes all-pair correspondences across regions, i.e., local 4D correlation, to establish precise correspondences, with bidirectional correspondence and matching smoothness significantly enhancing robustness against ambiguities. We also incorporate a lightweight correlation encoder to enhance computational efficiency, and a compact Transformer architecture to integrate long-term temporal information. LocoTrack achieves unmatched accuracy on all TAP-Vid benchmarks and operates at a speed almost 6 times faster than the current state-of-the-art.",
+    "authors": [
+        "Seokju Cho",
+        "Jiahui Huang",
+        "Jisu Nam",
+        "Honggyu An",
+        "Seungryong Kim",
+        "Joon-Young Lee"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "LocoTrack is introduced, a highly accurate and efficient model designed for the task of tracking any point (TAP) across video sequences, that utilizes all-pair correspondences across regions, i.e., local 4D correlation, to establish precise correspondences, with bidirectional correspondence and matching smoothness significantly enhancing robustness against ambiguities."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

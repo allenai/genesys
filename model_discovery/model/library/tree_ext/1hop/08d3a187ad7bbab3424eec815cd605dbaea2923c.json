@@ -1,0 +1,26 @@
+{
+    "acronym": "08d3a187ad7bbab3424eec815cd605dbaea2923c",
+    "title": "On Initializing Transformers with Pre-trained Embeddings",
+    "seed_ids": [
+        "bert",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d"
+    ],
+    "s2id": "08d3a187ad7bbab3424eec815cd605dbaea2923c",
+    "abstract": "It has become common practice now to use random initialization schemes, rather than the pre-trained embeddings, when training transformer based models from scratch. Indeed, we find that pre-trained word embeddings from GloVe, and some sub-word embeddings extracted from language models such as T5 and mT5 fare much worse compared to random initialization. This is counter-intuitive given the well-known representational and transfer-learning advantages of pre-training. Interestingly, we also find that BERT and mBERT embeddings fare better than random initialization, showing the advantages of pre-trained representations. In this work, we posit two potential factors that contribute to these mixed results: the model sensitivity to parameter distribution and the embedding interactions with position encodings. We observe that pre-trained GloVe, T5, and mT5 embeddings have a wider distribution of values. As argued in the initialization studies, such large value initializations can lead to poor training because of saturated outputs. Further, the larger embedding values can, in effect, absorb the smaller position encoding values when added together, thus losing position information. Standardizing the pre-trained embeddings to a narrow range (e.g. as prescribed by Xavier) leads to substantial gains for Glove, T5, and mT5 embeddings. On the other hand, BERT pre-trained embeddings, while larger, are still relatively closer to Xavier initialization range which may allow it to effectively transfer the pre-trained knowledge.",
+    "authors": [
+        "Ha Young Kim",
+        "Niranjan Balasubramanian",
+        "Byungkon Kang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work finds that pre-trained word embeddings from GloVe, and some sub-word embeddings extracted from language models such as T5 and mT5 fare much worse compared to random initialization, and finds that BERT and mBERT embeddings fare better than random initialization, showing the advantages of pre-trained representations."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

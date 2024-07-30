@@ -1,0 +1,30 @@
+{
+    "acronym": "9ef90a5142a0347f4d15250a0b6b3b8f91ddd950",
+    "title": "Knowledge-Aware Audio-Grounded Generative Slot Filling for Limited Annotated Data",
+    "seed_ids": [
+        "gpt2",
+        "f98525843f7e03d247a2dc94951799a0d7101437",
+        "a5ed9dfc0725bffb6428a2cc297a15265377906c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "9ef90a5142a0347f4d15250a0b6b3b8f91ddd950",
+    "abstract": "Manually annotating fine-grained slot-value labels for task-oriented dialogue (ToD) systems is an expensive and time-consuming endeavour. This motivates research into slot-filling methods that operate with limited amounts of labelled data. Moreover, the majority of current work on ToD is based solely on text as the input modality, neglecting the additional challenges of imperfect automatic speech recognition (ASR) when working with spoken language. In this work, we propose a Knowledge-Aware Audio-Grounded generative slot-filling framework, termed KA2G, that focuses on few-shot and zero-shot slot filling for ToD with speech input. KA2G achieves robust and data-efficient slot filling for speech-based ToD by 1) framing it as a text generation task, 2) grounding text generation additionally in the audio modality, and 3) conditioning on available external knowledge (e.g. a predefined list of possible slot values). We show that combining both modalities within the KA2G framework improves the robustness against ASR errors. Further, the knowledge-aware slot-value generator in KA2G, implemented via a pointer generator mechanism, particularly benefits few-shot and zero-shot learning. Experiments, conducted on the standard speech-based single-turn SLURP dataset and a multi-turn dataset extracted from a commercial ToD system, display strong and consistent gains over prior work, especially in few-shot and zero-shot setups.",
+    "authors": [
+        "Guangzhi Sun",
+        "C. Zhang",
+        "Ivan Vulic",
+        "Pawe\u0142 Budzianowski",
+        "P. Woodland"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Knowledge-Aware Audio-Grounded generative slot-filling framework that focuses on few-shot and zero-shot slot filling for speech-based ToD with speech input, and shows that combining both modalities within the KA2G framework improves the robustness against ASR errors."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

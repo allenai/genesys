@@ -1,0 +1,33 @@
+{
+    "acronym": "cc2d5d7226029a8d0271496faa52509d8ebb5b26",
+    "title": "Medical SANSformers: Training self-supervised transformers without attention for Electronic Medical Records",
+    "seed_ids": [
+        "gmlp",
+        "axialattn",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "cc2d5d7226029a8d0271496faa52509d8ebb5b26",
+    "abstract": "We leverage deep sequential models to tackle the problem of predicting healthcare utilization for patients, which could help governments to better allocate resources for future healthcare use. Speci\ufb01cally, we study the problem of divergent subgroups , wherein the outcome distribution in a smaller subset of the population considerably deviates from that of the general population. The traditional approach for building specialized models for divergent subgroups could be problematic if the size of the subgroup is very small (for example, rare diseases). To address this challenge, we \ufb01rst develop a novel attention-free sequential model, SANSformers, instilled with inductive biases suited for modeling clinical codes in electronic medical records. We then design a task-speci\ufb01c self-supervision objective and demonstrate its e\ufb00ectiveness, particularly in scarce data settings, by pre-training each model on the entire health registry (with close to one million patients) before \ufb01ne-tuning for downstream tasks on the divergent subgroups. We compare the novel SANSformer architecture with the LSTM and Transformer models using two data sources and a multi-task learning objective that aids healthcare utilization prediction. Empirically, the attention-free SANSformer models perform consistently well across experiments, outperforming the baselines in most cases by at least \u223c 10 %. Furthermore, the self-supervised pre-training boosts performance signi\ufb01cantly throughout, for example by over \u223c 50 % (and as high as 800 %) on R 2 score when predicting the number of hospital",
+    "authors": [
+        "Yogesh Kumar",
+        "Alexander Ilin",
+        "Henri Salo",
+        "S. Kulathinal",
+        "M. Leinonen",
+        "Pekka Marttinen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel attention-free sequential model, SANSformers, instilled with inductive biases suited for modeling clinical codes in electronic medical records is developed and compared with the LSTM and Transformer models using two data sources and a multi-task learning objective that aids healthcare utilization prediction."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

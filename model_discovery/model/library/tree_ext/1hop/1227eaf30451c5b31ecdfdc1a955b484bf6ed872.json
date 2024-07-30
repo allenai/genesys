@@ -1,0 +1,26 @@
+{
+    "acronym": "1227eaf30451c5b31ecdfdc1a955b484bf6ed872",
+    "title": "Reversible Jump Attack to Textual Classifiers with Modification Reduction",
+    "seed_ids": [
+        "bert",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1227eaf30451c5b31ecdfdc1a955b484bf6ed872",
+    "abstract": "Recent studies on adversarial examples expose vulnerabilities of natural language processing models. Existing techniques for generating adversarial examples are typically driven by deterministic hierarchical rules that are agnostic to the optimal adversarial examples, a strategy that often results in adversarial samples with a suboptimal balance between magnitudes of changes and attack successes. To this end, in this research we propose two algorithms, Reversible Jump Attack (RJA) and Metropolis\u2013Hasting Modification Reduction (MMR), to generate highly effective adversarial examples and to improve the imperceptibility of the examples, respectively. RJA utilizes a novel randomization mechanism to enlarge the search space and efficiently adapts to a number of perturbed words for adversarial examples. With these generated adversarial examples, MMR applies the Metropolis\u2013Hasting sampler to enhance the imperceptibility of adversarial examples. Extensive experiments demonstrate that RJA-MMR outperforms current state-of-the-art methods in attack performance, imperceptibility, fluency and grammar correctness.",
+    "authors": [
+        "Mingze Ni",
+        "Zhensu Sun",
+        "Wei Liu"
+    ],
+    "venue": "Machine-mediated learning",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This research proposes two algorithms, Reversible Jump Attack and Metropolis\u2013Hasting Modification Reduction (MMR), to generate highly effective adversarial examples and to improve the imperceptibility of the examples, respectively."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

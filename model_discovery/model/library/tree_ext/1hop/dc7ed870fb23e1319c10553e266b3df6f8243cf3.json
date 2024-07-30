@@ -1,0 +1,35 @@
+{
+    "acronym": "dc7ed870fb23e1319c10553e266b3df6f8243cf3",
+    "title": "UltraPixel: Advancing Ultra-High-Resolution Image Synthesis to New Peaks",
+    "seed_ids": [
+        "classfreediffu",
+        "df5b72f541fdd0328563ec93896d217c3b3660e3",
+        "cf694df964caa156ec306b45d3a3127533cb458f",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "dc7ed870fb23e1319c10553e266b3df6f8243cf3",
+    "abstract": "Ultra-high-resolution image generation poses great challenges, such as increased semantic planning complexity and detail synthesis difficulties, alongside substantial training resource demands. We present UltraPixel, a novel architecture utilizing cascade diffusion models to generate high-quality images at multiple resolutions (\\textit{e.g.}, 1K to 6K) within a single model, while maintaining computational efficiency. UltraPixel leverages semantics-rich representations of lower-resolution images in the later denoising stage to guide the whole generation of highly detailed high-resolution images, significantly reducing complexity. Furthermore, we introduce implicit neural representations for continuous upsampling and scale-aware normalization layers adaptable to various resolutions. Notably, both low- and high-resolution processes are performed in the most compact space, sharing the majority of parameters with less than 3$\\%$ additional parameters for high-resolution outputs, largely enhancing training and inference efficiency. Our model achieves fast training with reduced data requirements, producing photo-realistic high-resolution images and demonstrating state-of-the-art performance in extensive experiments.",
+    "authors": [
+        "Jingjing Ren",
+        "Wenbo Li",
+        "Haoyu Chen",
+        "Renjing Pei",
+        "Bin Shao",
+        "Yong Guo",
+        "Long Peng",
+        "Fenglong Song",
+        "Lei Zhu"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents UltraPixel, a novel architecture utilizing cascade diffusion models to generate high-quality images at multiple resolutions within a single model, while maintaining computational efficiency."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

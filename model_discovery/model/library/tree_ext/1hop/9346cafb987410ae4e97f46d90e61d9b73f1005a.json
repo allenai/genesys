@@ -1,0 +1,32 @@
+{
+    "acronym": "9346cafb987410ae4e97f46d90e61d9b73f1005a",
+    "title": "Pool-unet: A Novel Tongue Image Segmentation Method Based on Pool-former and Multi-task Mask Learning",
+    "seed_ids": [
+        "metaformer",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "9346cafb987410ae4e97f46d90e61d9b73f1005a",
+    "abstract": "SUMMARY Automated tongue segmentation plays a crucial role in the realm of computer-aided tongue diagnosis. The challenge lies in developing algorithms that achieve higher segmentation accuracy and maintain less memory space and swift inference capabilities. To relieve this issue, we propose a novel Pool-unet integrating Pool-former and Multi-task mask learning for tongue image segmentation. First of all, we collected 756 tongue images taken in various shooting environments and from different angles and accurately labeled the tongue under the guidance of a medical professional. Second, we propose the Pool-unet model, combining a hierar-chicalPool-formermoduleandaU-shapedsymmetricencoder-decoderwith skip-connections,whichutilizesapatchexpandinglayerforup-samplingandapatchembeddinglayerfordown-samplingtomaintainspatialres-olution,toeffectivelycaptureglobalandlocalinformationusingfewerparametersandfasterinference.Finally,aMulti-taskmasklearningstrat-egyisdesigned,whichimprovesthegeneralizationandanti-interferenceabilityofthemodelthroughtheMulti-taskpre-trainingandself-supervised fine-tuningstages.Experimentalresultsonthetonguedatasetshowthatcomparedtothestate-of-the-artmethod(OET-NET),ourmethodhas25% fewermodelparameters,achieves22%fasterinferencetimes,andexhibits0.91%and0.55%improvementsinMeanIntersectionOverUnion(MIOU), andMeanPixelAccuracy(MPA),respectively.",
+    "authors": [
+        "Xiangrun Li",
+        "Qiyu Sheng",
+        "Guangda Zhou",
+        "Jialong Wei",
+        "Yanmin Shi",
+        "Zhen Zhao",
+        "Yongwei Li",
+        "Xingfeng Li",
+        "Yang Liu"
+    ],
+    "venue": "IEICE Transactions on Fundamentals of Electronics Communications and Computer Sciences",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel Pool-unet integrating Pool-former and Multi-task mask learning for tongue image segmentation is proposed, combining a hierar-chical Pool-former moduleandaU-shapedsymmetricencoder-decoder with skip-connections and a Multi-taskmasklearningstrat-egy, which improves generalization and anti-interferenceability through the Multi-taskpre-training and self-supervised fine-tuning stages."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

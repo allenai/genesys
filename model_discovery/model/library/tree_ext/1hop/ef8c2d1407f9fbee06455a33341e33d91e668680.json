@@ -1,0 +1,26 @@
+{
+    "acronym": "ef8c2d1407f9fbee06455a33341e33d91e668680",
+    "title": "Learning Health-Bots from Training Data that was Automatically Created using Paraphrase Detection and Expert Knowledge",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "ef8c2d1407f9fbee06455a33341e33d91e668680",
+    "abstract": "A key bottleneck for developing dialog models is the lack of adequate training data. Due to privacy issues, dialog data is even scarcer in the health domain. We propose a novel method for creating dialog corpora which we apply to create doctor-patient interaction data. We use this data to learn both a generation and a hybrid classification/retrieval model and find that the generation model consistently outperforms the hybrid model. We show that our data creation method has several advantages. Not only does it allow for the semi-automatic creation of large quantities of training data. It also provides a natural way of guiding learning and a novel method for assessing the quality of human-machine interactions.",
+    "authors": [
+        "Anna A. Liednikova",
+        "P. Jolivet",
+        "Alexandre Durand-Salmon",
+        "Claire Gardent"
+    ],
+    "venue": "International Conference on Computational Linguistics",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel method for creating dialog corpora is proposed which is applied to create doctor-patient interaction data and it is found that the generation model consistently outperforms the hybrid model."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

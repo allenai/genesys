@@ -1,0 +1,36 @@
+{
+    "acronym": "33f67b79a2a49e80702634d0aa8e67f397e24c7e",
+    "title": "FlowFormer: A Transformer Architecture and Its Masked Cost Volume Autoencoding for Optical Flow",
+    "seed_ids": [
+        "perceiverio",
+        "34103f1294844c447fe8872bf5c3ab1c7ce32103",
+        "4990f7542f0600e0501a7e7a931b32eb7cb804d5",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "33f67b79a2a49e80702634d0aa8e67f397e24c7e",
+    "abstract": "This paper introduces a novel transformer-based network architecture, FlowFormer, along with the Masked Cost Volume AutoEncoding (MCVA) for pretraining it to tackle the problem of optical flow estimation. FlowFormer tokenizes the 4D cost-volume built from the source-target image pair and iteratively refines flow estimation with a cost-volume encoder-decoder architecture. The cost-volume encoder derives a cost memory with alternate-group transformer~(AGT) layers in a latent space and the decoder recurrently decodes flow from the cost memory with dynamic positional cost queries. On the Sintel benchmark, FlowFormer architecture achieves 1.16 and 2.09 average end-point-error~(AEPE) on the clean and final pass, a 16.5\\% and 15.5\\% error reduction from the GMA~(1.388 and 2.47). MCVA enhances FlowFormer by pretraining the cost-volume encoder with a masked autoencoding scheme, which further unleashes the capability of FlowFormer with unlabeled data. This is especially critical in optical flow estimation because ground truth flows are more expensive to acquire than labels in other vision tasks. MCVA improves FlowFormer all-sided and FlowFormer+MCVA ranks 1st among all published methods on both Sintel and KITTI-2015 benchmarks and achieves the best generalization performance. Specifically, FlowFormer+MCVA achieves 1.07 and 1.94 AEPE on the Sintel benchmark, leading to 7.76\\% and 7.18\\% error reductions from FlowFormer.",
+    "authors": [
+        "Zhaoyang Huang",
+        "Xiaoyu Shi",
+        "Chao Zhang",
+        "Qiang Wang",
+        "Yijin Li",
+        "Hongwei Qin",
+        "Jifeng Dai",
+        "Xiaogang Wang",
+        "Hongsheng Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "MCVA enhances FlowFormer by pretraining the cost-volume encoder with a masked autoencoding scheme, which further unleashes the capability of FlowFormer with unlabeled data, and improves FlowFormer all-sided and FlowFormer+MCVA ranks 1st among all published methods on both Sintel and KITTI-2015 benchmarks and achieves the best generalization performance."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

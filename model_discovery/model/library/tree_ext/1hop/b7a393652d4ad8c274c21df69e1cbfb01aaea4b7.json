@@ -1,0 +1,27 @@
+{
+    "acronym": "b7a393652d4ad8c274c21df69e1cbfb01aaea4b7",
+    "title": "Lexical-Semantic Content, Not Syntactic Structure, Is the Main Contributor to ANN-Brain Similarity of fMRI Responses in the Language Network",
+    "seed_ids": [
+        "gpt2",
+        "8cef169a76fc8ff2971ff3b6832b5de885d37ad4",
+        "23e04389f8728a5736382d3662341a1a2a25e171",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b7a393652d4ad8c274c21df69e1cbfb01aaea4b7",
+    "abstract": "Abstract Representations from artificial neural network (ANN) language models have been shown to predict human brain activity in the language network. To understand what aspects of linguistic stimuli contribute to ANN-to-brain similarity, we used an fMRI data set of responses to n = 627 naturalistic English sentences (Pereira et al., 2018) and systematically manipulated the stimuli for which ANN representations were extracted. In particular, we (i) perturbed sentences\u2019 word order, (ii) removed different subsets of words, or (iii) replaced sentences with other sentences of varying semantic similarity. We found that the lexical-semantic content of the sentence (largely carried by content words) rather than the sentence\u2019s syntactic form (conveyed via word order or function words) is primarily responsible for the ANN-to-brain similarity. In follow-up analyses, we found that perturbation manipulations that adversely affect brain predictivity also lead to more divergent representations in the ANN\u2019s embedding space and decrease the ANN\u2019s ability to predict upcoming tokens in those stimuli. Further, results are robust as to whether the mapping model is trained on intact or perturbed stimuli and whether the ANN sentence representations are conditioned on the same linguistic context that humans saw. The critical result\u2014that lexical-semantic content is the main contributor to the similarity between ANN representations and neural ones\u2014aligns with the idea that the goal of the human language system is to extract meaning from linguistic strings. Finally, this work highlights the strength of systematic experimental manipulations for evaluating how close we are to accurate and generalizable models of the human language network.",
+    "authors": [
+        "Carina Kauf",
+        "Greta Tuckute",
+        "Roger Levy",
+        "Jacob Andreas",
+        "Evelina Fedorenko"
+    ],
+    "venue": "Neurobiology of Language",
+    "year": 2023,
+    "tldr": null,
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

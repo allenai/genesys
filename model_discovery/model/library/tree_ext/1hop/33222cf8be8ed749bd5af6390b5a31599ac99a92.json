@@ -1,0 +1,31 @@
+{
+    "acronym": "33222cf8be8ed749bd5af6390b5a31599ac99a92",
+    "title": "Towards Effective Utilization of Pre-trained Language Models",
+    "seed_ids": [
+        "gpt",
+        "3bcb17559ce96eb20fa79af8194f4af0380d194a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "7ebed46b7f3ec913e508e6468304fcaea832eda1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "33222cf8be8ed749bd5af6390b5a31599ac99a92",
+    "abstract": "In the natural language processing (NLP) literature, neural networks are becoming increasingly deeper and more complex. Recent advancements in neural NLP are large pretrained language models (e.g. BERT), which lead to significant performance gains in various downstream tasks. Such models, however, require intensive computational resource to train and are difficult to deploy in practice due to poor inference-time efficiency. In this thesis, we are trying to solve this problem through knowledge distillation (KD), where a large pretrained model serves as teacher and transfers its knowledge to a small student model. We also want to demonstrate the competitiveness of small, shallow neural networks. We propose a simple yet effective approach that transfers the knowledge of a large pretrained network (namely, BERT) to a shallow neural architecture (namely, a bidirectional long short-term memory network). To facilitate this process, we propose heuristic data augmentation methods, so that the teacher model can better express its knowledge on the augmented corpus. Experimental results on various natural language understanding tasks show that our distilled model achieves high performance comparable to the ELMo model (a LSTM based pretrained model) in both single-sentence and sentence-pair tasks, while using roughly 60\u2013100 times fewer parameters and 8\u201315 times less inference time. Although experiments show that small BiLSTMs are more expressive on natural language tasks than previously thought, we wish to further exploit its capacity through a different KD framework. We propose MKD, a Multi-Task Knowledge Distillation Approach. It distills the student model from different tasks jointly, so that the distilled model learns a more universal language representation by leveraging cross-task data. Furthermore, we evaluate our approach on two different student model architectures, one is bi-attentive LSTM based network, another uses three layer Transformer models. For LSTM based student, our approach keeps the advantage of inference speed while maintaining comparable performance as those specifically designed for Transformer methods. For our Transformerbased student, it does provide a modest gain, and outperforms other KD methods without using external training data.",
+    "authors": [
+        "Linqing Liu"
+    ],
+    "venue": "",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This thesis proposes MKD, a Multi-Task Knowledge Distillation Approach, where a large pretrained model serves as teacher and transfers its knowledge to a small student model, which distills the student model from different tasks jointly, so that the distilled model learns a more universal language representation by leveraging cross-task data."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

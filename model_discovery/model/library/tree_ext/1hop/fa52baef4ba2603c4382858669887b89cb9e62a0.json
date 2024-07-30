@@ -1,0 +1,32 @@
+{
+    "acronym": "fa52baef4ba2603c4382858669887b89cb9e62a0",
+    "title": "A Unified Multi-task Learning Framework for Multi-goal Conversational Recommender Systems",
+    "seed_ids": [
+        "gpt2",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "6ebfbc954b9975d2f2651f380b9bdf46ae963178",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "fa52baef4ba2603c4382858669887b89cb9e62a0",
+    "abstract": "Recent years witnessed several advances in developing multi-goal conversational recommender systems (MG-CRS) that can proactively attract users\u2019 interests and naturally lead user-engaged dialogues with multiple conversational goals and diverse topics. Four tasks are often involved in MG-CRS, including Goal Planning, Topic Prediction, Item Recommendation, and Response Generation. Most existing studies address only some of these tasks. To handle the whole problem of MG-CRS, modularized frameworks are adopted where each task is tackled independently without considering their interdependencies. In this work, we propose a novel Unified MultI-goal conversational recommeNDer system (UniMIND). Specifically, we unify these four tasks with different formulations into the same sequence-to-sequence paradigm. Prompt-based learning strategies are investigated to endow the unified model with the capability of multi-task learning. Finally, the overall learning and inference procedure consists of three stages, including multi-task learning, prompt-based tuning, and inference. Experimental results on two MG-CRS benchmarks (DuRecDial and TG-ReDial) show that UniMIND achieves state-of-the-art performance on all tasks with a unified model. Extensive analyses and discussions are provided for shedding some new perspectives for MG-CRS.",
+    "authors": [
+        "Yang Deng",
+        "Wenxuan Zhang",
+        "Weiwen Xu",
+        "Wenqiang Lei",
+        "Tat-seng Chua",
+        "W. Lam"
+    ],
+    "venue": "ACM Trans. Inf. Syst.",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel Unified MultI-goal conversational recommeNDer system (UniMIND), which unify these four tasks with different formulations into the same sequence-to-sequence paradigm and achieves state of the art performance on all tasks with a unified model."
+    },
+    "citationCount": 41,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

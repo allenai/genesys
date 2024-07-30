@@ -1,0 +1,31 @@
+{
+    "acronym": "d47a0adfeee0c83299391d6bc205a1adb70d792e",
+    "title": "Leveraging External Knowledge Resources to Enable Domain-Specific Comprehension",
+    "seed_ids": [
+        "gmlp",
+        "75f1c7dadb4ed733fb4d3a4cc47b9cbde9ad98cc",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "95ecc81c2b3ef1cb7ba4028fe2a8f2e04b6f397b",
+        "f48ae425e2567be2d993efcaaf74c2274fc9d7c5",
+        "d9f6ada77448664b71128bb19df15765336974a6"
+    ],
+    "s2id": "d47a0adfeee0c83299391d6bc205a1adb70d792e",
+    "abstract": "Machine Reading Comprehension (MRC) has been a long-standing problem in NLP and, with the recent introduction of the BERT family of transformer based language models, it has come a long way to getting solved. Unfortunately, however, when BERT variants trained on general text corpora are applied to domain-specific text, their performance inevitably degrades on account of the domain shift i.e. genre/subject matter discrepancy between the training and downstream application data. Knowledge graphs act as reservoirs for either open or closed domain information and prior studies have shown that they can be used to improve the performance of general-purpose transformers in domain-specific applications. Building on existing work, we introduce a method using Multi-Layer Perceptrons (MLPs) for aligning and integrating embeddings extracted from knowledge graphs with the embeddings spaces of pre-trained language models (LMs). We fuse the aligned embeddings with open-domain LMs BERT and RoBERTa, and fine-tune them for two MRC tasks namely span detection (COVID-QA) and multiple-choice questions (PubMedQA). On the COVID-QA dataset, we see that our approach allows these models to perform similar to their domain-specific counterparts, Bio/Sci-BERT, as evidenced by the Exact Match (EM) metric. With regards to PubMedQA, we observe an overall improvement in accuracy while the F1 stays relatively the same over the domain-specific models.",
+    "authors": [
+        "Saptarshi Sengupta",
+        "Connor T. Heaton",
+        "Prasenjit Mitra",
+        "Soumalya Sarkar"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a method using Multi-Layer Perceptrons (MLPs) for aligning and integrating embeddings extracted from knowledge graphs with the embeddings spaces of pre-trained language models (LMs)."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

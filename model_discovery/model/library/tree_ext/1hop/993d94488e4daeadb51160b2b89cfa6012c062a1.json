@@ -1,0 +1,27 @@
+{
+    "acronym": "993d94488e4daeadb51160b2b89cfa6012c062a1",
+    "title": "UniPoll: A Unified Social Media Poll Generation Framework via Multi-Objective Optimization",
+    "seed_ids": [
+        "gpt",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "993d94488e4daeadb51160b2b89cfa6012c062a1",
+    "abstract": "Social media platforms are essential outlets for expressing opinions, providing a valuable resource for capturing public viewpoints via text analytics. However, for many users, passive browsing is their preferred mode of interaction, leading to their perspectives being overlooked by text analytics methods. Meanwhile, social media polls have emerged as a practical feature for gathering public opinions, allowing post authors to pose questions with pre-defined answer options for readers to vote on. To broaden the benefits of polls for posts without them, this article explores the automatic generation of a poll from a social media post by leveraging cutting-edge natural language generation (NLG) techniques. However, existing NLG techniques, primarily developed for general-domain texts, may be ineffective when applied to noisy social media data, which often feature implicit context-question-answer relations. To tackle these challenges, we enrich a post context with its comments and propose a novel unified poll generation framework called UniPoll. It employs prompt tuning with multi-objective optimization to bolster the connection exploration between contexts (posts and comments) and polls (questions and answers). Experimental comparisons on a large-scale Chinese Weibo dataset show that UniPoll significantly outperforms T5, the state-of-the-art NLG model, which generates question and answer separately. Comprehensive qualitative and quantitative analyses further underscore the superiority of UniPoll through various evaluation lenses.",
+    "authors": [
+        "Yixia Li",
+        "Rong Xiang",
+        "Yanlin Song",
+        "Jing Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental comparisons show that UniPoll significantly outperforms T5, the state-of-the-art NLG model, which generates question and answer separately, and comprehensive qualitative and quantitative analyses further underscore the superiority of UniPoll through various evaluation lenses."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

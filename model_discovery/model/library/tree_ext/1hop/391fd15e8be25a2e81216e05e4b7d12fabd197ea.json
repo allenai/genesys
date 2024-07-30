@@ -1,0 +1,24 @@
+{
+    "acronym": "391fd15e8be25a2e81216e05e4b7d12fabd197ea",
+    "title": "Exploiting Contextual Target Attributes for Target Sentiment Classification",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "391fd15e8be25a2e81216e05e4b7d12fabd197ea",
+    "abstract": "In the past few years, pre-trained language models (PTLMs) have brought significant improvements to target sentiment classification (TSC). Existing PTLM-based models can be categorized into two groups: 1) fine-tuning-based models that adopt PTLM as the context encoder; 2) prompting-based models that transfer the classification task to the text/word generation task. Despite the improvements achieved by these models, we argue that they have their respective limitations. For fine-tuning-based models, they cannot make the best use of the PTLMs\u2019 strong language modeling ability because the pre-train task and downstream fine-tuning task are not consistent. For prompting-based models, although they can sufficiently leverage the language modeling ability, it is hard to explicitly model the target-context interactions, which are widely realized as a crucial point of this task. In this paper, we present a new perspective of leveraging PTLM for TSC: simultaneously leveraging the merits of both language modeling and explicit target-context interactions via contextual target attributes. Specifically, we design the domain- and target-constrained cloze test, which can leverage the PTLMs\u2019 strong language modeling ability to generate the given target\u2019s attributes pertaining to the review context. The attributes contain the background and property information of the target, which can help to enrich the semantics of the review context and the target. To exploit the attributes for tackling TSC, we first construct a heterogeneous information graph by treating the attributes as nodes and combining them with (1) the syntax graph automatically produced by the off-the-shelf dependency parser and (2) the semantics graph of the review context, which is derived from the self-attention mechanism. Then we propose a heterogeneous information gated graph convolutional network to model the interactions among the attribute information, the syntactic information, and the contextual information. The experimental results on three benchmark datasets demonstrate the superiority of our model, which achieves new state-of-the-art performance.",
+    "authors": [
+        "Bowen Xing",
+        "Ivor W. Tsang"
+    ],
+    "venue": "Journal of Artificial Intelligence Research",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The domain- and target-constrained cloze test is designed, which can leverage the PTLMs\u2019 strong language modeling ability to generate the given target\u2019s attributes pertaining to the review context, and proposes a heterogeneous information gated graph convolutional network to model the interactions."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

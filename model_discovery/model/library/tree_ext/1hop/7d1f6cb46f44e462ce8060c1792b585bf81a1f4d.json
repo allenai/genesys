@@ -1,0 +1,28 @@
+{
+    "acronym": "7d1f6cb46f44e462ce8060c1792b585bf81a1f4d",
+    "title": "Efficient conformer-based speech recognition with linear attention",
+    "seed_ids": [
+        "lrt",
+        "cec7872b194aadf54140578b9be52939eb1112e9",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "0b991a1a5bcdb13646ac0b6873d09bde4cc36fb5"
+    ],
+    "s2id": "7d1f6cb46f44e462ce8060c1792b585bf81a1f4d",
+    "abstract": "Recently, conformer-based end-to-end automatic speech recognition, which outperforms recurrent neural network based ones, has received much attention. Although the parallel computing of conformer is more efficient than recurrent neural networks, the computational complexity of its dot-product self-attention is quadratic with respect to the length of the input feature. To reduce the computational complexity of the self-attention layer, we propose multi-head linear self-attention for the self-attention layer, which reduces its computational complexity to linear order. In addition, we propose to factorize the feed for-ward module of the conformer by low-rank matrix factorization, which successfully reduces the number of the parameters by ap-proximate 50 % with little performance loss. The proposed model, named linear attention based conformer (LAC), can be trained and inferenced jointly with the connectionist temporal classification objective, which further improves the performance of LAC. To evaluate the effectiveness of LAC, we conduct experiments on the AISHELL-l and LibriSpeech corpora. Results show that the proposed LAC achieves better performance than 7 recently proposed speech recognition models, and is competitive with the state-of-the-art conformer. Meanwhile, the proposed LAC has a number of parameters of only 50 % over the conformer with faster training speed than the latter.",
+    "authors": [
+        "Shengqiang Li",
+        "Menglong Xu",
+        "Xiao-Lei Zhang"
+    ],
+    "venue": "Asia-Pacific Signal and Information Processing Association Annual Summit and Conference",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed model, named linear attention based conformer (LAC), can be trained and inferenced jointly with the connectionist temporal classification objective, which improves the performance of LAC and is competitive with the state-of-the-art conformer."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

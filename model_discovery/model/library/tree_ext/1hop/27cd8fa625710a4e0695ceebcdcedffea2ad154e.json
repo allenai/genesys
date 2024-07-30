@@ -1,0 +1,30 @@
+{
+    "acronym": "27cd8fa625710a4e0695ceebcdcedffea2ad154e",
+    "title": "SciMRC: Multi-perspective Scientific Machine Reading Comprehension",
+    "seed_ids": [
+        "longformer",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "4e3935ef7da6bcbb202ec7f8b285c313cadcd044",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "27cd8fa625710a4e0695ceebcdcedffea2ad154e",
+    "abstract": "Scientific Machine Reading Comprehension (SMRC) aims to facilitate the understanding of scientific texts through human-machine interactions. While existing dataset has significantly contributed to this field, it predominantly focus on single-perspective question-answer pairs, thereby overlooking the inherent variation in comprehension levels among different readers. To address this limitation, we introduce a novel multi-perspective scientific machine reading comprehension dataset, SciMRC, which incorporates perspectives from beginners, students, and experts. Our dataset comprises 741 scientific papers and 6,057 question-answer pairs, with 3,306, 1,800, and 951 pairs corresponding to beginners, students, and experts respectively. Extensive experiments conducted on SciMRC using pre-trained models underscore the importance of considering diverse perspectives in SMRC and highlight the challenging nature of our scientific machine comprehension tasks.",
+    "authors": [
+        "Xiao Zhang",
+        "Heqi Zheng",
+        "Yuxiang Nie",
+        "Heyan Huang",
+        "Xian-Ling Mao"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel multi-perspective scientific machine reading comprehension dataset, SciMRC, which incorporates perspectives from beginners, students, and experts is introduced, which highlights the challenging nature of the scientific machine comprehension tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

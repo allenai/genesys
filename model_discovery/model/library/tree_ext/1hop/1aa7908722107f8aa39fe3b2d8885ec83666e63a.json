@@ -1,0 +1,35 @@
+{
+    "acronym": "1aa7908722107f8aa39fe3b2d8885ec83666e63a",
+    "title": "An Image is Worth More Than 16x16 Patches: Exploring Transformers on Individual Pixels",
+    "seed_ids": [
+        "transformer",
+        "classfreediffu",
+        "02ad9f3fefe33cb9ca546591bec65dbdf7766c80",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8"
+    ],
+    "s2id": "1aa7908722107f8aa39fe3b2d8885ec83666e63a",
+    "abstract": "This work does not introduce a new method. Instead, we present an interesting finding that questions the necessity of the inductive bias -- locality in modern computer vision architectures. Concretely, we find that vanilla Transformers can operate by directly treating each individual pixel as a token and achieve highly performant results. This is substantially different from the popular design in Vision Transformer, which maintains the inductive bias from ConvNets towards local neighborhoods (e.g. by treating each 16x16 patch as a token). We mainly showcase the effectiveness of pixels-as-tokens across three well-studied tasks in computer vision: supervised learning for object classification, self-supervised learning via masked autoencoding, and image generation with diffusion models. Although directly operating on individual pixels is less computationally practical, we believe the community must be aware of this surprising piece of knowledge when devising the next generation of neural architectures for computer vision.",
+    "authors": [
+        "Duy-Kien Nguyen",
+        "Mahmoud Assran",
+        "Unnat Jain",
+        "Martin R. Oswald",
+        "Cees G. M. Snoek",
+        "Xinlei Chen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that vanilla Transformers can operate by directly treating each individual pixel as a token and achieve highly performant results, and the community must be aware of this surprising piece of knowledge when devising the next generation of neural architectures for computer vision."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

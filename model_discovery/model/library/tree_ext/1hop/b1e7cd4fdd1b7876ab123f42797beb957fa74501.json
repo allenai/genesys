@@ -1,0 +1,33 @@
+{
+    "acronym": "b1e7cd4fdd1b7876ab123f42797beb957fa74501",
+    "title": "Wnet: Audio-Guided Video Object Segmentation via Wavelet-Based Cross- Modal Denoising Networks",
+    "seed_ids": [
+        "fnet",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f"
+    ],
+    "s2id": "b1e7cd4fdd1b7876ab123f42797beb957fa74501",
+    "abstract": "Audio-Guided video object segmentation is a challenging problem in visual analysis and editing, which automatically separates foreground objects from the background in a video sequence according to the referring audio expressions. However, existing referring video object segmentation works mainly focus on the guidance of text-based referring expressions, due to the lack of modeling the semantic representations of audio-video interaction contents. In this paper, we consider the problem of audio-guided video semantic segmentation from the viewpoint of end-to-end denoising encoder-decoder network learning. We propose the wavelet-based encoder network to learn the cross-modal representations of the video contents with audio-form queries. Specifically, we adopt the multi-head cross-modal attention layers to explore the potential relations of video and query contents. A 2-dimension discrete wavelet trans-form is merged into the transformer encoder to decompose the audio-video features. Next, we maximize mutual information between the encoded features and multi-modal features after cross-modal attention layers to enhance the au-dio guidance. Then, a self attention-free decoder network is developed to generate the target masks with frequency-domain transforms. In addition, we construct the first large-scale audio-guided video semantic segmentation dataset. The extensive experiments show the effectiveness of our method11Code is available at: https://github.com/asudahkzj/Wnet.git.",
+    "authors": [
+        "Wenwen Pan",
+        "Haonan Shi",
+        "Zhou Zhao",
+        "Jieming Zhu",
+        "Xiuqiang He",
+        "Zhi-geng Pan",
+        "Lianli Gao",
+        "Jun Yu",
+        "Fei Wu",
+        "Qi Tian"
+    ],
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The wavelet-based encoder network is proposed to learn the cross-modal representations of the video contents with audio-form queries and the first large-scale audio-guided video semantic segmentation dataset is constructed."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

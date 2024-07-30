@@ -1,0 +1,46 @@
+{
+    "acronym": "690a37a2ba67b44b012bf9aa92e6a7f7670f487f",
+    "title": "Dynamic Sparse Attention for Scalable Transformer Acceleration",
+    "seed_ids": [
+        "bigbird",
+        "longformer",
+        "reformer",
+        "da0d38cf2ac7e2a6908e0d9e1fff07058daab2ed",
+        "5af69480a7ae3b571df6782a11ec4437b386a7d9",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "4badd753be64c5c5b57dd2bb2e515fbe0c0720d8",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "5a3749929bf5fb8b1f98a7b2a43c3b957bcf6c88",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "690a37a2ba67b44b012bf9aa92e6a7f7670f487f",
+    "abstract": "Transformers are the mainstream of NLP applications and are becoming increasingly popular in other domains such as Computer Vision. Despite the improvements in model quality, the enormous computation costs make Transformers difficult at deployment, especially when the sequence length is large in emerging applications. Processing attention mechanism as the essential component of Transformer is the bottleneck of execution due to the quadratic complexity. Prior art explores sparse patterns in attention to support long sequence modeling, but those pieces of work are on static or fixed patterns. We demonstrate that the sparse patterns are dynamic, depending on input sequences. Thus, we propose the Dynamic Sparse Attention (DSA) that can efficiently exploit dynamic sparse patterns in attention. Compared with other methods, our approach can achieve better trade-offs between accuracy and model complexity. Moving forward, we identify challenges and provide solutions to implement DSA on existing hardware (GPUs) and specialized hardware in order to achieve practical speedup and efficiency improvements for Transformer execution.",
+    "authors": [
+        "Liu Liu",
+        "Zheng Qu",
+        "Zhaodong Chen",
+        "Fengbin Tu",
+        "Yufei Ding",
+        "Yuan Xie"
+    ],
+    "venue": "IEEE transactions on computers",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes the Dynamic Sparse Attention (DSA) that can efficiently exploit dynamic sparse patterns in attention and demonstrates that the sparse patterns are dynamic, depending on input sequences."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

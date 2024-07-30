@@ -1,0 +1,28 @@
+{
+    "acronym": "4900bb5f24c4b4dd3ee2bf2ae1c58f1ee59cfbc8",
+    "title": "Towards Self-Supervised Category-Level Object Pose and Size Estimation",
+    "seed_ids": [
+        "linformer",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87"
+    ],
+    "s2id": "4900bb5f24c4b4dd3ee2bf2ae1c58f1ee59cfbc8",
+    "abstract": ". In this work, we tackle the challenging problem of category-level object pose and size estimation from a single depth image. Although previous fully-supervised works have demonstrated promising performance, collecting ground-truth pose labels is generally time-consuming and labor-intensive. Instead, we propose a label-free method that learns to enforce the geometric consistency between category template mesh and observed object point cloud under a self-supervision manner. Specif-ically, our method consists of three key components: differentiable shape deformation, registration, and rendering. In particular, shape deformation and registration are applied to the template mesh to eliminate the differences in shape, pose and scale. A differentiable renderer is then deployed to enforce geometric consistency between point clouds lifted from the rendered depth and the observed scene for self-supervision. We evaluate our approach on real-world datasets and find that our approach outperforms the simple traditional baseline by large margins while being competitive with some fully-supervised approaches. and some fully-supervised algorithms. syn.: synthesis data; R&D: RGBD; D: depth only; Ours-P: point-based; Ours-M: mesh-based; -: results not reported. SPD*: We use the official code 4 of SPD and train on REAL275 for 50 epochs as ours.",
+    "authors": [
+        "Yisheng He",
+        "Haoqiang Fan",
+        "Haibin Huang",
+        "Qifeng Chen",
+        "Jian Sun"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a label-free method that learns to enforce the geometric consistency between category template mesh and observed object point cloud under a self-supervision manner, and finds that it outperforms the simple traditional baseline by large margins while being competitive with some fully-supervised approaches."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

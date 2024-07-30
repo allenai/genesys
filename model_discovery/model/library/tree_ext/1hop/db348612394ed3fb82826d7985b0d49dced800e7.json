@@ -1,0 +1,36 @@
+{
+    "acronym": "db348612394ed3fb82826d7985b0d49dced800e7",
+    "title": "DEFT: Efficient Finetuning of Conditional Diffusion Models by Learning the Generalised h-transform",
+    "seed_ids": [
+        "classfreediffu",
+        "84cd9279669c056fa3c38fe90a06265ec7852e03",
+        "7198e6acc18981d8bd01ee2f904e53e73d2ad78d",
+        "37232ccce1cfafbe9b9918557f0b6cdf80e5b83a",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "db348612394ed3fb82826d7985b0d49dced800e7",
+    "abstract": "Generative modelling paradigms based on denoising diffusion processes have emerged as a leading candidate for conditional sampling in inverse problems. In many real-world applications, we often have access to large, expensively trained unconditional diffusion models, which we aim to exploit for improving conditional sampling. Most recent approaches are motivated heuristically and lack a unifying framework, obscuring connections between them. Further, they often suffer from issues such as being very sensitive to hyperparameters, being expensive to train or needing access to weights hidden behind a closed API. In this work, we unify conditional training and sampling using the mathematically well-understood Doob's h-transform. This new perspective allows us to unify many existing methods under a common umbrella. Under this framework, we propose DEFT (Doob's h-transform Efficient FineTuning), a new approach for conditional generation that simply fine-tunes a very small network to quickly learn the conditional $h$-transform, while keeping the larger unconditional network unchanged. DEFT is much faster than existing baselines while achieving state-of-the-art performance across a variety of linear and non-linear benchmarks. On image reconstruction tasks, we achieve speedups of up to 1.6$\\times$, while having the best perceptual quality on natural images and reconstruction performance on medical images.",
+    "authors": [
+        "Alexander Denker",
+        "Francisco Vargas",
+        "Shreyas Padhy",
+        "Kieran Didi",
+        "Simon V. Mathis",
+        "Vincent Dutordoir",
+        "Riccardo Barbano",
+        "Emile Mathieu",
+        "U. J. Komorowska",
+        "Pietro Li\u00f2"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work unify conditional training and sampling using the mathematically well-understood Doob's h-transform, and proposes DEFT (Doob's h-transform Efficient FineTuning), a new approach for conditional generation that simply fine-tunes a very small network to quickly learn the conditional h-transform, while keeping the larger unconditional network unchanged."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

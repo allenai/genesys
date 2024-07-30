@@ -1,0 +1,46 @@
+{
+    "acronym": "b3bf9fe13195e9aa70e1dac04e01fcff7008e812",
+    "title": "Perceiver: General Perception with Iterative Attention",
+    "seed_ids": [
+        "linformer",
+        "axialattn",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "cec7872b194aadf54140578b9be52939eb1112e9",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "2e14e84ccec924ed770b58108ad1d9de6f0ca295",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b3bf9fe13195e9aa70e1dac04e01fcff7008e812",
+    "abstract": "Biological systems perceive the world by simultaneously processing high-dimensional inputs from modalities as diverse as vision, audition, touch, proprioception, etc. The perception models used in deep learning on the other hand are designed for individual modalities, often relying on domain-specific assumptions such as the local grid structures exploited by virtually all existing vision models. These priors introduce helpful inductive biases, but also lock models to individual modalities. In this paper we introduce the Perceiver - a model that builds upon Transformers and hence makes few architectural assumptions about the relationship between its inputs, but that also scales to hundreds of thousands of inputs, like ConvNets. The model leverages an asymmetric attention mechanism to iteratively distill inputs into a tight latent bottleneck, allowing it to scale to handle very large inputs. We show that this architecture is competitive with or outperforms strong, specialized models on classification tasks across various modalities: images, point clouds, audio, video, and video+audio. The Perceiver obtains performance comparable to ResNet-50 and ViT on ImageNet without 2D convolutions by directly attending to 50,000 pixels. It is also competitive in all modalities in AudioSet.",
+    "authors": [
+        "Andrew Jaegle",
+        "Felix Gimeno",
+        "Andrew Brock",
+        "Andrew Zisserman",
+        "O. Vinyals",
+        "Jo\u00e3o Carreira"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces the Perceiver - a model that builds upon Transformers and hence makes few architectural assumptions about the relationship between its inputs, but that also scales to hundreds of thousands of inputs, like ConvNets."
+    },
+    "citationCount": 745,
+    "influentialCitationCount": 87,
+    "code": null,
+    "description": null,
+    "url": null
+}

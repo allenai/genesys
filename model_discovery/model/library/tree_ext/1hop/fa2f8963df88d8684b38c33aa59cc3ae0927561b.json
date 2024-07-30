@@ -1,0 +1,38 @@
+{
+    "acronym": "fa2f8963df88d8684b38c33aa59cc3ae0927561b",
+    "title": "How Well Can a Long Sequence Model Model Long Sequences? Comparing Architechtural Inductive Biases on Long-Context Abilities",
+    "seed_ids": [
+        "mamba2",
+        "917479a7a72ee7c1fb320c14d770e30ef322ef28",
+        "fe33be95849c556ce0bdffaa1d2c7db9bb2e2c61",
+        "d8b51d518f2dd62943762ceaa8961d3b1bfbcc1a",
+        "d53fe76bd2795a19ddf52d012917782f6f6f2c1e",
+        "9da427202cc48370fd66359f5d72ff5ff3bc8b57",
+        "189fde3f4dfa105bb51472a8945618f395919560",
+        "b31a5884a8ebe96b6300839b28608b97f8f8ef76",
+        "60b35c6d68acced19b0c66edcfc0ee0a2c11efed",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "01e721df7fcf8b664deb2cdc97ff58d65553af6b",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "998ac3e945857cf2676ee7efdbaf443a0c6f820a",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "6f68e1bb253925d8431588555d3010419f322e04"
+    ],
+    "s2id": "fa2f8963df88d8684b38c33aa59cc3ae0927561b",
+    "abstract": "Long sequences occur in abundance within real-world scenarios, hence properly modelling them opens numerous down-stream use-cases. Deep neural networks, however, have often struggled with these for a variety of reasons. Recent advances, both in system engineering as well as model design, have enabled the scaling up of model that are purported to support extended context length. In particular, the state-space and linear recurrent neural network families of models hypothetically can entend to infinite sequence lenth. However, is this too good to be true? We conduct an evaluation to show that while such claims may be sound theoretically, there remain large practical gaps that are empirically observed. In particular, recurrent models still suffer in the same settings as long-context LLMs with attention. We further show that different inductive biases have inconsistent extrapolation capabilities, highlighting the need to further study such paradigms and investigate why long-context models seemingly fail to behave as one might expect.",
+    "authors": [
+        "Jerry Huang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that different inductive biases have inconsistent extrapolation capabilities, highlighting the need to further study such paradigms and investigate why long-context models seemingly fail to behave as one might expect."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

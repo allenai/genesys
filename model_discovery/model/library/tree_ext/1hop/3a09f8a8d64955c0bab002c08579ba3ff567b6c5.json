@@ -1,0 +1,37 @@
+{
+    "acronym": "3a09f8a8d64955c0bab002c08579ba3ff567b6c5",
+    "title": "Contrastive Energy Prediction for Exact Energy-Guided Diffusion Sampling in Offline Reinforcement Learning",
+    "seed_ids": [
+        "diffusionlm",
+        "classfreediffu",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40"
+    ],
+    "s2id": "3a09f8a8d64955c0bab002c08579ba3ff567b6c5",
+    "abstract": "Guided sampling is a vital approach for applying diffusion models in real-world tasks that embeds human-defined guidance during the sampling procedure. This paper considers a general setting where the guidance is defined by an (unnormalized) energy function. The main challenge for this setting is that the intermediate guidance during the diffusion sampling procedure, which is jointly defined by the sampling distribution and the energy function, is unknown and is hard to estimate. To address this challenge, we propose an exact formulation of the intermediate guidance as well as a novel training objective named contrastive energy prediction (CEP) to learn the exact guidance. Our method is guaranteed to converge to the exact guidance under unlimited model capacity and data samples, while previous methods can not. We demonstrate the effectiveness of our method by applying it to offline reinforcement learning (RL). Extensive experiments on D4RL benchmarks demonstrate that our method outperforms existing state-of-the-art algorithms. We also provide some examples of applying CEP for image synthesis to demonstrate the scalability of CEP on high-dimensional data.",
+    "authors": [
+        "Cheng Lu",
+        "Huayu Chen",
+        "Jianfei Chen",
+        "Hang Su",
+        "Chongxuan Li",
+        "Jun Zhu"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes an exact formulation of the intermediate guidance as well as a novel training objective named contrastive energy prediction (CEP) to learn the exact guidance in a general setting where the guidance is defined by an (unnormalized) energy function."
+    },
+    "citationCount": 28,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

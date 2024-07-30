@@ -1,0 +1,29 @@
+{
+    "acronym": "4d244972ed2e0286363bfb054cb269574d21a72c",
+    "title": "Globalizing BERT-based Transformer Architectures for Long Document Summarization",
+    "seed_ids": [
+        "reformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "01b15017ac59b8d6f2ce3598c4a7d6358c211426",
+        "8382402fe166df3de499dac182e42baa51335926",
+        "7cc730da554003dda77796d2cb4f06da5dfd5592",
+        "203b543bfa1e564bb80ff4229b43174d7c71b0c0",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "4d244972ed2e0286363bfb054cb269574d21a72c",
+    "abstract": "Fine-tuning a large language model on downstream tasks has become a commonly adopted process in the Natural Language Processing (NLP) (CITATION). However, such a process, when associated with the current transformer-based (CITATION) architectures, shows several limitations when the target task requires to reason with long documents. In this work, we introduce a novel hierarchical propagation layer that spreads information between multiple transformer windows. We adopt a hierarchical approach where the input is divided in multiple blocks independently processed by the scaled dot-attentions and combined between the successive layers. We validate the effectiveness of our approach on three extractive summarization corpora of long scientific papers and news articles. We compare our approach to standard and pre-trained language-model-based summarizers and report state-of-the-art results for long document summarization and comparable results for smaller document summarization.",
+    "authors": [
+        "Quentin Grail"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a novel hierarchical propagation layer that spreads information between multiple transformer windows and adopts a hierarchical approach where the input is divided in multiple blocks independently processed by the scaled dot-attentions and combined between the successive layers."
+    },
+    "citationCount": 58,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

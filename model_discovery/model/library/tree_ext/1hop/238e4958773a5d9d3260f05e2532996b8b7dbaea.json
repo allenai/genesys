@@ -1,0 +1,33 @@
+{
+    "acronym": "238e4958773a5d9d3260f05e2532996b8b7dbaea",
+    "title": "Towards a General Purpose CNN for Long Range Dependencies in ND",
+    "seed_ids": [
+        "s4",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "1d5c8c6e5a774d2fef8d92bd28670a6345a97f7a",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a"
+    ],
+    "s2id": "238e4958773a5d9d3260f05e2532996b8b7dbaea",
+    "abstract": "The use of Convolutional Neural Networks (CNNs) is widespread in Deep Learning due to a range of desirable model properties which result in an efficient and effective machine learning framework. However, performant CNN architectures must be tailored to specific tasks in order to incorporate considerations such as the input length, resolution, and dimentionality. In this work, we overcome the need for problem-specific CNN architectures with our Continuous Convolutional Neural Network (CCNN): a single CNN architecture equipped with continuous convolutional kernels that can be used for tasks on data of arbitrary resolution, dimensionality and length without structural changes. Continuous convolutional kernels model long range dependencies at every layer, and remove the need for downsampling layers and task-dependent depths needed in current CNN architectures. We show the generality of our approach by applying the same CCNN to a wide set of tasks on sequential (1$\\mathrm{D}$) and visual data (2$\\mathrm{D}$). Our CCNN performs competitively and often outperforms the current state-of-the-art across all tasks considered.",
+    "authors": [
+        "David W. Romero",
+        "David M. Knigge",
+        "Albert Gu",
+        "E. Bekkers",
+        "E. Gavves",
+        "Jakub M. Tomczak",
+        "M. Hoogendoorn"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A single CNN architecture equipped with continuous convolutional kernels that can be used for tasks on data of arbitrary resolution, dimensionality and length without structural changes, and removes the need for downsampling layers and task-dependent depths needed in current CNN architectures."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

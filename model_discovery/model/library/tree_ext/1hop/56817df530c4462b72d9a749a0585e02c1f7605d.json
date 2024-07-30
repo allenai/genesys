@@ -1,0 +1,29 @@
+{
+    "acronym": "56817df530c4462b72d9a749a0585e02c1f7605d",
+    "title": "Who's the Best Detective? Large Language Models vs. Traditional Machine Learning in Detecting Incoherent Fourth Grade Math Answers",
+    "seed_ids": [
+        "bert",
+        "2029349c55c1dba3493c5b3bd25152f18ba21ae2",
+        "db4ab91d5675c37795e719e997a2827d3d83cd45",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "1a8a4686f81efdcb5b1dd1e24eca9997280e2521",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1"
+    ],
+    "s2id": "56817df530c4462b72d9a749a0585e02c1f7605d",
+    "abstract": "Written answers to open-ended questions can have a higher long-term effect on learning than multiple-choice questions. However, it is critical that teachers immediately review the answers, and ask to redo those that are incoherent. This can be a difficult task and can be time-consuming for teachers. A possible solution is to automate the detection of incoherent answers. One option is to automate the review with Large Language Models (LLM). They have a powerful discursive ability that can be used to explain decisions. In this paper, we analyze the responses of fourth graders in mathematics using three LLMs: GPT-3, BLOOM, and YOU. We used them with zero, one, two, three and four shots. We compared their performance with the results of various classifiers trained with Machine Learning (ML). We found that LLMs perform worse than MLs in detecting incoherent answers. The difficulty seems to reside in recursive questions that contain both questions and answers, and in responses from students with typical fourth-grader misspellings. Upon closer examination, we have found that the ChatGPT model faces the same challenges.",
+    "authors": [
+        "Felipe Urrutia",
+        "Roberto Araya"
+    ],
+    "venue": "Journal of educational computing research",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper analyzes the responses of fourth graders in mathematics using three LLMs: GPT-3, BLOOM, and YOU, and finds that LLMs perform worse than MLs in detecting incoherent answers."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

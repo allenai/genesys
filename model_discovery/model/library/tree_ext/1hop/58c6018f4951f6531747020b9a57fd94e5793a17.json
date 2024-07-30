@@ -1,0 +1,29 @@
+{
+    "acronym": "58c6018f4951f6531747020b9a57fd94e5793a17",
+    "title": "Dual-Stream Attention-TCN for EMG Removal From a Single-Channel EEG",
+    "seed_ids": [
+        "transformer",
+        "730a34374384f8abb886e464758b1a145edef938"
+    ],
+    "s2id": "58c6018f4951f6531747020b9a57fd94e5793a17",
+    "abstract": "Long-term and mobile healthcare applications have increased the use of single-channel electroencephalogram (EEG) systems. However, electromyography (EMG) artifacts often disturb EEGs. The lack of spatial correlation, diversity of waveforms, and time-varying overlap make eliminating EMG interference from a single-channel EEG difficult. To overcome these challenges, we create dual-stream attention-based temporal convolution network (DSATCN), a dual-stream learning model that makes use of multilevel and multiscale temporal dependencies in different frequency bands to perform robust EEG reconstruction. The first DSATCN stream extracts low-frequency band EEG features with reduced EMG interference. The second stream selectively combines the high-level features of the first stream with its own low-level features to refine the EEG reconstruction across the entire frequency band, lowering the risk of overfitting. Both streams employ a novel attention-based temporal convolution network (ATCN) to adaptively separate the overlapping features of EEGs and EMGs. The ATCN has multiple stages to represent various temporal dependencies at different levels. Each stage consists of multiscale dilated convolutions and fast Fourier transform modulations, which efficiently enrich the receptive fields and establish global self-attention mechanisms. The stages\u2019 outputs are merged by relaxed attentional feature fusion modules, which bridge semantic gaps between features at various levels. Extensive experimental results on three semi-simulated data sets containing 318 700 samples show that the proposed model significantly outperforms the existing methods in EEG reconstruction accuracy. And its computational cost meets the criteria for real-time processing. Our code is available at https://github.com/BaenRH/DSATCN.",
+    "authors": [
+        "Jun Lu",
+        "Ruihan Cai",
+        "Zhichao Guo",
+        "Qiyu Yang",
+        "Kan Xie",
+        "Shengli Xie"
+    ],
+    "venue": "IEEE Internet of Things Journal",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A dual-stream attention-based temporal convolution network (DSATCN), a dual-stream learning model that makes use of multilevel and multiscale temporal dependencies in different frequency bands to perform robust EEG reconstruction accuracy and meets the criteria for real-time processing."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

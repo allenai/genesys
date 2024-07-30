@@ -1,0 +1,28 @@
+{
+    "acronym": "639bfaf75f61c417b6e3282e91c3057258b6ed46",
+    "title": "STRONG - Structure Controllable Legal Opinion Summary Generation",
+    "seed_ids": [
+        "longformer",
+        "367d38c8a1e788ef061d7f48f74a440ac85a34c9",
+        "a3c8c57075dfebf7f5a57952afafb7407762cc46",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "639bfaf75f61c417b6e3282e91c3057258b6ed46",
+    "abstract": "We propose an approach for the structure controllable summarization of long legal opinions that considers the argument structure of the document. Our approach involves using predicted argument role information to guide the model in generating coherent summaries that follow a provided structure pattern. We demonstrate the effectiveness of our approach on a dataset of legal opinions and show that it outperforms several strong baselines with respect to ROUGE, BERTScore, and structure similarity.",
+    "authors": [
+        "Yang Zhong",
+        "Diane Litman"
+    ],
+    "venue": "International Joint Conference on Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The approach involves using predicted argument role information to guide the model in generating coherent summaries that follow a provided structure pattern and it outperforms several strong baselines with respect to ROUGE, BERTScore, and structure similarity."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

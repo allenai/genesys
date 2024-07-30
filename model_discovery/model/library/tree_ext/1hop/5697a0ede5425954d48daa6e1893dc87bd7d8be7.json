@@ -1,0 +1,31 @@
+{
+    "acronym": "5697a0ede5425954d48daa6e1893dc87bd7d8be7",
+    "title": "Contrastive Search Is What You Need For Neural Text Generation",
+    "seed_ids": [
+        "gpt2",
+        "6151ee4af6a3fe78f2df7c605598cd9e02b23c5b",
+        "05bcf9999525656cfaa59bc71f8572d771ff3776",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "492a655a67e6ec7423a968cedb70eec0cdbc8e98",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5697a0ede5425954d48daa6e1893dc87bd7d8be7",
+    "abstract": "Generating text with autoregressive language models (LMs) is of great importance to many natural language processing (NLP) applications. Previous solutions for this task often produce text that contains degenerative expressions or lacks semantic consistency. Recently, Su et al. introduced a new decoding method, contrastive search, based on the isotropic representation space of the language model and obtained new state of the art on various benchmarks. Additionally, Su et al. argued that the representations of autoregressive LMs (e.g. GPT-2) are intrinsically anisotropic which is also shared by previous studies. Therefore, to ensure the language model follows an isotropic distribution, Su et al. proposed a contrastive learning scheme, SimCTG, which calibrates the language model's representations through additional training. In this study, we first answer the question:\"Are autoregressive LMs really anisotropic?\". To this end, we extensively evaluate the isotropy of LMs across 16 major languages. Surprisingly, we find that the anisotropic problem only exists in the two specific English GPT-2-small/medium models. On the other hand, all other evaluated LMs are naturally isotropic which is in contrast to the conclusion drawn by previous studies. Based on our findings, we further assess the contrastive search decoding method using off-the-shelf LMs on four generation tasks across 16 languages. Our experimental results demonstrate that contrastive search significantly outperforms previous decoding methods without any additional training. More notably, on 12 out of the 16 evaluated languages, contrastive search performs comparably with human-level performances as judged by human evaluations. Our code and other related resources are publicly available at https://github.com/yxuansu/Contrastive_Search_Is_What_You_Need.",
+    "authors": [
+        "Yixuan Su",
+        "Nigel Collier"
+    ],
+    "venue": "Trans. Mach. Learn. Res.",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Surprisingly, the anisotropic problem only exists in the two specific English GPT-2-small/medium models, and all other evaluated LMs are naturally isotropic which is in contrast to the conclusion drawn by previous studies."
+    },
+    "citationCount": 42,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

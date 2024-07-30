@@ -1,0 +1,31 @@
+{
+    "acronym": "fca1ad2e38d3c6784b3eab0629a8e62df8698e3a",
+    "title": "A Multidimensional Communication Scheduling Method for Hybrid Parallel DNN Training",
+    "seed_ids": [
+        "gpt2",
+        "bert",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "fca1ad2e38d3c6784b3eab0629a8e62df8698e3a",
+    "abstract": "The transformer-based deep neural network (DNN) models have shown considerable success across diverse tasks, prompting widespread adoption of distributed training methods such as data parallelism and pipeline parallelism. With the increasing parameter number, hybrid parallel training becomes imperative to scale training. The primary bottleneck in scaling remains the communication overhead. The communication scheduling technique, emphasizing the overlap of communication with computation, has demonstrated its benefits in scaling. However, most existing works focus on data parallelism, overlooking the nuances of hybrid parallel training. In this paper, we propose TriRace, an efficient communication scheduling framework for accelerating communications in hybrid parallel training of asynchronous pipeline parallelism and data parallelism. To achieve effective computation-communication overlap, TriRace introduces 3D communication scheduling, which adeptly leverages data dependencies between communication and computations, efficiently scheduling AllReduce communication, sparse communication, and peer-to-peer communication in hybrid parallel training. To avoid possible communication contentions, TriRace also incorporates a topology-aware runtime which optimizes the execution of communication operations by considering ongoing communication operations and real-time network status. We have implemented a prototype of TriRace based on PyTorch and Pipedream-2BW, and conducted comprehensive evaluations with three representative baselines. Experimental results show that TriRace achieves up to 1.07\u20131.45\u00d7 speedup compared to the state-of-the-art pipeline parallelism training baseline Pipedream-2BW, and 1.24\u20131.81\u00d7 speedup compared to the Megatron.",
+    "authors": [
+        "Shengwei Li",
+        "KaiCheng Lu",
+        "Zhiquan Lai",
+        "Weijie Liu",
+        "Ke-shi Ge",
+        "Dongsheng Li"
+    ],
+    "venue": "IEEE Transactions on Parallel and Distributed Systems",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "TriRace is proposed, an efficient communication scheduling framework for accelerating communications in hybrid parallel training of asynchronous pipeline parallelism and data parallelism, which adeptly leverages data dependencies between communication and computations, efficiently scheduling AllReduce communication, sparse communication, and peer-to-peer communication in hybrid parallel training."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

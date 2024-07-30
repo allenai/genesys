@@ -1,0 +1,29 @@
+{
+    "acronym": "ddc8626a334e9540811bc27d4658327810bd7531",
+    "title": "CORAL: Contextual Response Retrievability Loss Function for Training Dialog Generation Models",
+    "seed_ids": [
+        "gpt2",
+        "6ebfbc954b9975d2f2651f380b9bdf46ae963178",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ddc8626a334e9540811bc27d4658327810bd7531",
+    "abstract": "In the field of Natural Language Processing, there are many tasks that can be tackled effectively using the cross-entropy (CE) loss function. However, the task of dialog generation poses unique challenges for CE loss. This is because CE loss assumes that, for any given input, the only possible output is the one available as the ground truth in the training dataset. But, in dialog generation, there can be multiple valid responses (for a given context) that not only have different surface forms but can also be semantically different. Furthermore, CE loss computation for the dialog generation task does not take the input context into consideration and, hence, it grades the response irrespective of the context. To grade the generated response for qualities like relevance, engagingness, etc., the loss function should depend on both the context and the generated response. To address these limitations, this paper proposes CORAL, a novel loss function based on a reinforcement learning (RL) view of the dialog generation task with a reward function that estimates human preference for generated responses while considering both the context and the response. Furthermore, to overcome challenges such as high sample complexity of RL training and a large action space, we propose a mix-policy training algorithm. Notably, using CORAL we can train dialog generation models without assuming the ground-truth as the only correct response. Extensive comparisons on benchmark datasets demonstrate that CORAL based models outperform strong state-of-the-art baseline models of different sizes.",
+    "authors": [
+        "Bishal Santra",
+        "Ravi Ghadia",
+        "Arpit Dwivedi",
+        "Manish Gupta",
+        "Pawan Goyal"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes CORAL, a novel loss function based on a reinforcement learning (RL) view of the dialog generation task with a reward function that estimates human preference for generated responses while considering both the context and the response."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

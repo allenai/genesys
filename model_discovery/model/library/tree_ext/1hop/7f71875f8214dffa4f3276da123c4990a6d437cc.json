@@ -1,0 +1,33 @@
+{
+    "acronym": "7f71875f8214dffa4f3276da123c4990a6d437cc",
+    "title": "Enabling Multimodal Generation on CLIP via Vision-Language Knowledge Distillation",
+    "seed_ids": [
+        "gpt",
+        "gpt2",
+        "5e00596fa946670d894b1bdaeff5a98e3867ef13",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7f71875f8214dffa4f3276da123c4990a6d437cc",
+    "abstract": "The recent large-scale vision-language pre-training (VLP) of dual-stream architectures (e.g., CLIP) with a tremendous amount of image-text pair data, has shown its superiority on various multimodal alignment tasks. Despite its success, the resulting models are not capable of multimodal generative tasks due to the weak text encoder. To tackle this problem, we propose to augment the dual-stream VLP model with a textual pre-trained language model (PLM) via vision-language knowledge distillation (VLKD), enabling the capability for multimodal generation. VLKD is pretty data- and computation-efficient compared to the pre-training from scratch. Experimental results show that the resulting model has strong zero-shot performance on multimodal generation tasks, such as open-ended visual question answering and image captioning. For example, it achieves 44.5% zero-shot accuracy on the VQAv2 dataset, surpassing the previous state-of-the-art zero-shot model with 7\\times fewer parameters. Furthermore, the original textual language understanding and generation ability of the PLM is maintained after VLKD, which makes our model versatile for both multimodal and unimodal tasks.",
+    "authors": [
+        "Wenliang Dai",
+        "Lu Hou",
+        "Lifeng Shang",
+        "Xin Jiang",
+        "Qun Liu",
+        "Pascale Fung"
+    ],
+    "venue": "Findings",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The dual-stream VLP model is augmented with a textual pre-trained language model (PLM) via vision-language knowledge distillation (VLKD), enabling the capability for multimodal generation and the original textual language understanding and generation ability of the PLM is maintained after VLKD, which makes the model versatile for both multimodals and unimodal tasks."
+    },
+    "citationCount": 67,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

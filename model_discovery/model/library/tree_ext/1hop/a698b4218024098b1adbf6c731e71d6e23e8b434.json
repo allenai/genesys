@@ -1,0 +1,31 @@
+{
+    "acronym": "a698b4218024098b1adbf6c731e71d6e23e8b434",
+    "title": "RAUCG: Retrieval-Augmented Unsupervised Counter Narrative Generation for Hate Speech",
+    "seed_ids": [
+        "gpt2",
+        "15190e8b459bd85d546286f7d7da61b4f4f3f58a",
+        "4a6a65968a8eb8c09ffb57a7774ddabb596565b1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a698b4218024098b1adbf6c731e71d6e23e8b434",
+    "abstract": "The Counter Narrative (CN) is a promising approach to combat online hate speech (HS) without infringing on freedom of speech. In recent years, there has been a growing interest in automatically generating CNs using natural language generation techniques. However, current automatic CN generation methods mainly rely on expert-authored datasets for training, which are time-consuming and labor-intensive to acquire. Furthermore, these methods cannot directly obtain and extend counter-knowledge from external statistics, facts, or examples. To address these limitations, we propose Retrieval-Augmented Unsupervised Counter Narrative Generation (RAUCG) to automatically expand external counter-knowledge and map it into CNs in an unsupervised paradigm. Specifically, we first introduce an SSF retrieval method to retrieve counter-knowledge from the multiple perspectives of stance consistency, semantic overlap rate, and fitness for HS. Then we design an energy-based decoding mechanism by quantizing knowledge injection, countering and fluency constraints into differentiable functions, to enable the model to build mappings from counter-knowledge to CNs without expert-authored CN data. Lastly, we comprehensively evaluate model performance in terms of language quality, toxicity, persuasiveness, relevance, and success rate of countering HS, etc. Experimental results show that RAUCG outperforms strong baselines on all metrics and exhibits stronger generalization capabilities, achieving significant improvements of +2.0% in relevance and +4.5% in success rate of countering metrics. Moreover, RAUCG enabled GPT2 to outperform T0 in all metrics, despite the latter being approximately eight times larger than the former. Warning: This paper may contain offensive or upsetting content!",
+    "authors": [
+        "Shuyu Jiang",
+        "Wenyi Tang",
+        "Xingshu Chen",
+        "Rui Tang",
+        "Haizhou Wang",
+        "Wenxian Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Retrieval-Augmented Unsupervised Counter Narrative Generation (RAUCG) is proposed to automatically expand external counter-knowledge and map it into CNs in an unsupervised paradigm and comprehensively evaluates model performance in terms of language quality, toxicity, persuasion, relevance, and success rate of countering HS, etc."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

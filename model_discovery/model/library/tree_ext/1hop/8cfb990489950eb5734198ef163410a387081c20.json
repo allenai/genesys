@@ -1,0 +1,41 @@
+{
+    "acronym": "8cfb990489950eb5734198ef163410a387081c20",
+    "title": "In-Context Learning with Long-Context Models: An In-Depth Exploration",
+    "seed_ids": [
+        "pcw",
+        "7b2470f0f53fcd79b82ed6a0e6062f39b07c27d6",
+        "2330035c7586a0dc0b1f09e9c00106b295acf543",
+        "02ad9f3fefe33cb9ca546591bec65dbdf7766c80",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "73290ecbec2f38d1d647ddef1ada69cee41725b3",
+        "a7fc585cc4c2b6822646b2c410e0c427a20798f2",
+        "b069c32fcd77160f944ab3ba71ab6f0cfb782c68",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "412e266cddfd87c79087a88ba1e4d11b89a45a13",
+        "dbc368bc8b49347dd27679894524fa62f88492c9",
+        "980e55d9226cac302d0fae7732da4e67b8bc952c",
+        "06edda0310b4ec7c5012d012349252a3a77521b6",
+        "732e3faec4e5be4d144256f2c379b9dc49f0b227"
+    ],
+    "s2id": "8cfb990489950eb5734198ef163410a387081c20",
+    "abstract": "As model context lengths continue to increase, the number of demonstrations that can be provided in-context approaches the size of entire training datasets. We study the behavior of in-context learning (ICL) at this extreme scale on multiple datasets and models. We show that, for many datasets with large label spaces, performance continues to increase with hundreds or thousands of demonstrations. We contrast this with example retrieval and finetuning: example retrieval shows excellent performance at low context lengths but has diminished gains with more demonstrations; finetuning is more data hungry than ICL but can sometimes exceed long-context ICL performance with additional data. We use this ICL setting as a testbed to study several properties of both in-context learning and long-context models. We show that long-context ICL is less sensitive to random input shuffling than short-context ICL, that grouping of same-label examples can negatively impact performance, and that the performance boosts we see do not arise from cumulative gain from encoding many examples together. We conclude that although long-context ICL can be surprisingly effective, most of this gain comes from attending back to similar examples rather than task learning.",
+    "authors": [
+        "Amanda Bertsch",
+        "Maor Ivgi",
+        "Uri Alon",
+        "Jonathan Berant",
+        "Matthew R. Gormley",
+        "Graham Neubig"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is concluded that although long-context ICL can be surprisingly effective, most of this gain comes from attending back to similar examples rather than task learning."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

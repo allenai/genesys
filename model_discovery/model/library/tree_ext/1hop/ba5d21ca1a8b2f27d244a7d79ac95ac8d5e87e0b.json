@@ -1,0 +1,29 @@
+{
+    "acronym": "ba5d21ca1a8b2f27d244a7d79ac95ac8d5e87e0b",
+    "title": "Diffutoon: High-Resolution Editable Toon Shading via Diffusion Models",
+    "seed_ids": [
+        "flashattn",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "ba5d21ca1a8b2f27d244a7d79ac95ac8d5e87e0b",
+    "abstract": "Toon shading is a type of non-photorealistic rendering task in animation. Its primary purpose is to render objects with a flat and stylized appearance. As diffusion models have ascended to the forefront of image synthesis, this paper delves into an innovative form of toon shading based on diffusion models, aiming to directly render photorealistic videos into anime styles. In video stylization, existing methods encounter persistent challenges, notably in maintaining consistency and achieving high visual quality. In this paper, we model the toon shading problem as four subproblems, i.e., stylization, consistency enhancement, structure guidance, and colorization. To address the challenges in video stylization, we propose an effective toon shading approach called Diffutoon. Diffutoon is capable of rendering remarkably detailed, high-resolution, and extended-duration videos in anime style. It can also edit the video content according to input prompts via an additional branch. The efficacy of Diffutoon is evaluated through quantitive metrics and human evaluation. Notably, Diffutoon surpasses both open-source and closed-source baseline approaches in our experiments. Our work is accompanied by the release of both the source code and example videos on Github.",
+    "authors": [
+        "Zhongjie Duan",
+        "Chengyu Wang",
+        "Cen Chen",
+        "Weining Qian",
+        "Jun Huang"
+    ],
+    "venue": "Proceedings of the Thirty-ThirdInternational Joint Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An innovative form of toon shading based on diffusion models, aiming to directly render photorealistic videos into anime styles, is proposed called Diffutoon, capable of rendering remarkably detailed, high-resolution, and extended-duration videos in anime style."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

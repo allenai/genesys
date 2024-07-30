@@ -1,0 +1,26 @@
+{
+    "acronym": "9aaa9387819b5b4aac7473beb8768797ec592aed",
+    "title": "Reinforcement Learning finetuned Vision-Code Transformer for UI-to-Code Generation",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "9aaa9387819b5b4aac7473beb8768797ec592aed",
+    "abstract": "Automated HTML/CSS code generation from screenshots is an important yet challenging problem with broad applications in website development and design. In this paper, we present a novel vision-code transformer approach that leverages an Encoder-Decoder architecture as well as explore actor-critic fine-tuning as a method for improving upon the baseline. For this purpose, two image encoders are compared: Vision Transformer (ViT) and Document Image Transformer (DiT). We propose an end-to-end pipeline that can generate high-quality code snippets directly from screenshots, streamlining the website creation process for developers. To train and evaluate our models, we created a synthetic dataset of 30,000 unique pairs of code and corresponding screenshots. We evaluate the performance of our approach using a combination of automated metrics such as MSE, BLEU, IoU, and a novel htmlBLEU score, where our models demonstrated strong performance. We establish a strong baseline with the DiT-GPT2 model and show that actor-critic can be used to improve IoU score from the baseline of 0.64 to 0.79 and lower MSE from 12.25 to 9.02. We achieved similar performance as when using larger models, with much lower computational cost.",
+    "authors": [
+        "Davit Soselia",
+        "Khalid Saifullah",
+        "Tianyi Zhou"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes an end-to-end pipeline that can generate high-quality code snippets directly from screenshots, streamlining the website creation process for developers and achieves similar performance as when using larger models, with much lower computational cost."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

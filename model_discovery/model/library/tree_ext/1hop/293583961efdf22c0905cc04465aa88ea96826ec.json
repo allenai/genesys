@@ -1,0 +1,28 @@
+{
+    "acronym": "293583961efdf22c0905cc04465aa88ea96826ec",
+    "title": "Causal schema induction for knowledge discovery",
+    "seed_ids": [
+        "gpt2",
+        "21233223e6f14006106f3acedd60e59af18816e1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "293583961efdf22c0905cc04465aa88ea96826ec",
+    "abstract": "Making sense of familiar yet new situations typically involves making generalizations about causal schemas, stories that help humans reason about event sequences. Reasoning about events includes identifying cause and effect relations shared across event instances, a process we refer to as causal schema induction. Statistical schema induction systems may leverage structural knowledge encoded in discourse or the causal graphs associated with event meaning, however resources to study such causal structure are few in number and limited in size. In this work, we investigate how to apply schema induction models to the task of knowledge discovery for enhanced search of English-language news texts. To tackle the problem of data scarcity, we present Torquestra, a manually curated dataset of text-graph-schema units integrating temporal, event, and causal structures. We benchmark our dataset on three knowledge discovery tasks, building and evaluating models for each. Results show that systems that harness causal structure are effective at identifying texts sharing similar causal meaning components rather than relying on lexical cues alone. We make our dataset and models available for research purposes.",
+    "authors": [
+        "Michael Regan",
+        "Jena D. Hwang",
+        "Keisuke Sakaguchi",
+        "J. Pustejovsky"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work investigates how to apply schema induction models to the task of knowledge discovery for enhanced search of English-language news texts, and presents Torquestra, a manually curated dataset of text-graph-schema units integrating temporal, event, and causal structures."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

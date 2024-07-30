@@ -1,0 +1,37 @@
+{
+    "acronym": "ade22704be8a0fc3730d320cc7934b2ccbcd97e4",
+    "title": "Striped Attention: Faster Ring Attention for Causal Transformers",
+    "seed_ids": [
+        "ring",
+        "flashattn",
+        "mea",
+        "02ad9f3fefe33cb9ca546591bec65dbdf7766c80",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "53c3940f35b8b45d55ed49056282e1961954513d",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ade22704be8a0fc3730d320cc7934b2ccbcd97e4",
+    "abstract": "To help address the growing demand for ever-longer sequence lengths in transformer models, Liu et al. recently proposed Ring Attention, an exact attention algorithm capable of overcoming per-device memory bottle- necks by distributing self-attention across multiple devices. In this paper, we study the performance characteristics of Ring Attention in the important special case of causal transformer models, and identify a key workload imbal- ance due to triangular structure of causal attention computations. We propose a simple extension to Ring Attention, which we call Striped Attention to fix this imbalance. Instead of devices having contiguous subsequences, each device has a subset of tokens distributed uniformly throughout the sequence, which we demonstrate leads to more even workloads. In experiments running Striped Attention on A100 GPUs and TPUv4s, we are able to achieve up to 1.45x end-to-end throughput improvements over the original Ring Attention algorithm on causal transformer training at a sequence length of 256k. Furthermore, on 16 TPUv4 chips, we were able to achieve 1.65x speedups at sequence lengths of 786k. We release the code for our experiments as open source",
+    "authors": [
+        "William Brandon",
+        "Aniruddha Nrusimha",
+        "Kevin Qian",
+        "Zachary Ankner",
+        "Tian Jin",
+        "Zhiye Song",
+        "Jonathan Ragan-Kelley"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a simple extension to Ring Attention, which it is demonstrated leads to more even workloads, and proposes Striped Attention, a subset of tokens distributed uniformly throughout the sequence, which is able to achieve up to 1.45x end-to-end throughput improvements."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

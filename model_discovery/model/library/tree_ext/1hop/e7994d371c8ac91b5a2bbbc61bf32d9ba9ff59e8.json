@@ -1,0 +1,31 @@
+{
+    "acronym": "e7994d371c8ac91b5a2bbbc61bf32d9ba9ff59e8",
+    "title": "Parameter-Efficient Tuning on Layer Normalization for Pre-trained Language Models",
+    "seed_ids": [
+        "gpt2",
+        "3bcb17559ce96eb20fa79af8194f4af0380d194a",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "e7994d371c8ac91b5a2bbbc61bf32d9ba9ff59e8",
+    "abstract": "Conventional fine-tuning encounters increasing difficulties given the size of current Pre-trained Language Models, which makes parameter-efficient tuning become the focal point of frontier research. Previous methods in this field add tunable adapters into MHA or/and FFN of Transformer blocks to enable PLMs achieve transferability. However, as an important part of Transformer architecture, the power of layer normalization for parameter-efficent tuning is ignored. In this paper, we first propose LN-tuning, by tuning the gain and bias term of Layer Normalization module with only 0.03\\% parameters, which is of high time-efficency and significantly superior to baselines which are less than 0.1\\% tunable parameters. Further, we study the unified framework of combining LN-tuning with previous ones and we find that: (1) the unified framework of combining prefix-tuning, the adapter-based method working on MHA, and LN-tuning achieves SOTA performance. (2) unified framework which tunes MHA and LayerNorm simultaneously can get performance improvement but those which tune FFN and LayerNorm simultaneous will cause performance decrease. Ablation study validates LN-tuning is of no abundant parameters and gives a further understanding of it.",
+    "authors": [
+        "Wang Qi",
+        "Yu-Ping Ruan",
+        "Y. Zuo",
+        "Taihao Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes LN-tuning, by tuning the gain and bias term of Layer Normalization module with only 0.03\\% parameters, which is of high time-efficency and significantly superior to baselines which are less than 0.1\\% tunable parameters."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

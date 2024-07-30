@@ -1,0 +1,41 @@
+{
+    "acronym": "919e5db29c7b7be4468b975eb4c0fa4a543165fc",
+    "title": "State Space Models on Temporal Graphs: A First-Principles Study",
+    "seed_ids": [
+        "s4",
+        "hippo",
+        "mamba",
+        "s5",
+        "2dda6da7375bf5e8bcf60f87b17ba10757f3bc57",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "5c104f905fcacf390270f619f232a2ba4eb873f2",
+        "a7d68b1702af08ce4dbbf2cd0b083e744ae5c6be",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2"
+    ],
+    "s2id": "919e5db29c7b7be4468b975eb4c0fa4a543165fc",
+    "abstract": "Over the past few years, research on deep graph learning has shifted from static graphs to temporal graphs in response to real-world complex systems that exhibit dynamic behaviors. In practice, temporal graphs are formalized as an ordered sequence of static graph snapshots observed at discrete time points. Sequence models such as RNNs or Transformers have long been the predominant backbone networks for modeling such temporal graphs. Yet, despite the promising results, RNNs struggle with long-range dependencies, while transformers are burdened by quadratic computational complexity. Recently, state space models (SSMs), which are framed as discretized representations of an underlying continuous-time linear dynamical system, have garnered substantial attention and achieved breakthrough advancements in independent sequence modeling. In this work, we undertake a principled investigation that extends SSM theory to temporal graphs by integrating structural information into the online approximation objective via the adoption of a Laplacian regularization term. The emergent continuous-time system introduces novel algorithmic challenges, thereby necessitating our development of GraphSSM, a graph state space model for modeling the dynamics of temporal graphs. Extensive experimental results demonstrate the effectiveness of our GraphSSM framework across various temporal graph benchmarks.",
+    "authors": [
+        "Jintang Li",
+        "Ruofan Wu",
+        "Xinzhou Jin",
+        "Boqun Ma",
+        "Liang Chen",
+        "Zibin Zheng"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work undertaking a principled investigation that extends SSM theory to temporal graphs by integrating structural information into the online approximation objective via the adoption of a Laplacian regularization term demonstrates the effectiveness of the GraphSSM framework across various temporal graph benchmarks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

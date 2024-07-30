@@ -1,0 +1,29 @@
+{
+    "acronym": "06fa9e995f27ddab18061870c7c3f21863bd2a9d",
+    "title": "Long-Term Sequence Predictor Based on Sequence Decomposition and Result Calibration",
+    "seed_ids": [
+        "reformer",
+        "8064d3873c646dc9ff949d72c54c634a906fc092",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "30dcc0e191a376fea0e7a46f94c53872c029efc9"
+    ],
+    "s2id": "06fa9e995f27ddab18061870c7c3f21863bd2a9d",
+    "abstract": "With the rapid development of society, time series prediction has become increasingly prevalent in various real-life applications. It finds extensive use in forecasting future energy, electricity, transportation, and disease trends, among other fields. The emergence of deep learning has led to the proposal of numerous time series prediction models, particularly those based on the Transformer architecture, which have demonstrated remarkable performance across various domains. In this paper, an improved time series model based on series decomposition is presented. Drawing inspiration from Autoformer, an auto-correlation mechanism is introduced to assess the similarity between time series data points and their past observations with varying time lags. The study reveals that the predicted value of a time series not only relies on its historical values but also may be influenced by predicted values at some future points. Therefore, a method is proposed to calibrate the predicted values once the predictions are obtained. Experimental results on multiple benchmark datasets demonstrate that this model outperforms existing state-of-the-art methods, yielding lower losses and exhibiting superior forecasting accuracy. The proposed approach shows great promise for enhancing time series prediction in practical applications.",
+    "authors": [
+        "Zhe Yu",
+        "Shouheng Tuo"
+    ],
+    "venue": "International Conference on Artificial Intelligence and Pattern Recognition",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An improved time series model based on series decomposition based on Autoformer is presented, which outperforms existing state-of-the-art methods, yielding lower losses and exhibiting superior forecasting accuracy."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,26 @@
+{
+    "acronym": "a5ec883e080d858b5df60f1b5d711d514459b1e4",
+    "title": "Still a Pain in the Neck: Evaluating Text Representations on Lexical Composition",
+    "seed_ids": [
+        "gpt",
+        "e2587eddd57bc4ba286d91b27c185083f16f40ee",
+        "f6fbb6809374ca57205bd2cf1421d4f4fa04f975"
+    ],
+    "s2id": "a5ec883e080d858b5df60f1b5d711d514459b1e4",
+    "abstract": "Building meaningful phrase representations is challenging because phrase meanings are not simply the sum of their constituent meanings. Lexical composition can shift the meanings of the constituent words and introduce implicit information. We tested a broad range of textual representations for their capacity to address these issues. We found that, as expected, contextualized word representations perform better than static word embeddings, more so on detecting meaning shift than in recovering implicit information, in which their performance is still far from that of humans. Our evaluation suite, consisting of six tasks related to lexical composition effects, can serve future research aiming to improve representations.",
+    "authors": [
+        "Vered Shwartz",
+        "Ido Dagan"
+    ],
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that contextualized word representations perform better than static word embeddings, more so on detecting meaning shift than in recovering implicit information, in which their performance is still far from that of humans."
+    },
+    "citationCount": 68,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

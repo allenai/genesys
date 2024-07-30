@@ -1,0 +1,33 @@
+{
+    "acronym": "24354722e36c358b69893ab05220d6f2291989d1",
+    "title": "TinyChart: Efficient Chart Understanding with Visual Token Merging and Program-of-Thoughts Learning",
+    "seed_ids": [
+        "transformer",
+        "dfa7120276a0a5d36c40de13278c9884305b7c7d",
+        "6c52c74debc49cd3ed58a74658655c30adc59d42",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c"
+    ],
+    "s2id": "24354722e36c358b69893ab05220d6f2291989d1",
+    "abstract": "Charts are important for presenting and explaining complex data relationships. Recently, multimodal large language models (MLLMs) have shown remarkable capabilities in various chart understanding tasks. However, the sheer size of these models in terms of parameters and computational requirements limits their use in resource-constrained environments. In this paper, we present TinyChart, an efficient MLLM for chart understanding with only 3B parameters. TinyChart overcomes two key challenges in efficient chart understanding: (1) reduce the burden of learning numerical computations through a Program-of-Thoughts (PoT) learning strategy, which trains the model to generate Python programs for numerical calculations, and (2) reduce lengthy vision feature sequences produced by the vision transformer for high-resolution images through a Vision Token Merging module, which gradually merges most similar vision tokens. Extensive experiments demonstrate that our 3B TinyChart achieves SOTA performance on a variety of chart understanding benchmarks including ChartQA, Chart-to-Text, Chart-to-Table, OpenCQA, and ChartX. It outperforms several chart understanding MLLM with up to 13B parameters such as ChartLlama and ChartAst, and close-sourced general-purpose MLLM GPT-4V on ChartQA. It also demonstrates its superior efficiency with higher throughput during inference due to a smaller model scale and more efficient vision encoding. Our code and model are available at https://github.com/X-PLUG/mPLUG-DocOwl/tree/main/TinyChart.",
+    "authors": [
+        "Liang Zhang",
+        "Anwen Hu",
+        "Haiyang Xu",
+        "Mingshi Yan",
+        "Yichen Xu",
+        "Qin Jin",
+        "Ji Zhang",
+        "Fei Huang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "TinyChart is presented, an efficient MLLM for chart understanding with only 3B parameters that overcomes two key challenges in efficient chart understanding: reduce the burden of learning numerical computations through a Program-of-Thoughts (PoT) learning strategy, and reduce lengthy vision feature sequences produced by the vision transformer for high-resolution images through a Vision Token Merging module."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

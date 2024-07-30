@@ -1,0 +1,30 @@
+{
+    "acronym": "0789104dd0dfe229be1cff270e4c94d7791454bb",
+    "title": "DSPy Assertions: Computational Constraints for Self-Refining Language Model Pipelines",
+    "seed_ids": [
+        "gpt3",
+        "c2329c685f11efa25c562f97be71ff03103423fd"
+    ],
+    "s2id": "0789104dd0dfe229be1cff270e4c94d7791454bb",
+    "abstract": "Chaining language model (LM) calls as composable modules is fueling a new way of programming, but ensuring LMs adhere to important constraints requires heuristic\"prompt engineering\". We introduce LM Assertions, a programming construct for expressing computational constraints that LMs should satisfy. We integrate our constructs into the recent DSPy programming model for LMs, and present new strategies that allow DSPy to compile programs with LM Assertions into more reliable and accurate systems. We also propose strategies to use assertions at inference time for automatic self-refinement with LMs. We report on four diverse case studies for text generation and find that LM Assertions improve not only compliance with imposed rules but also downstream task performance, passing constraints up to 164% more often and generating up to 37% more higher-quality responses. Our reference implementation of LM Assertions is integrated into DSPy at https://github.com/stanfordnlp/dspy",
+    "authors": [
+        "Arnav Singhvi",
+        "Manish Shetty",
+        "Shangyin Tan",
+        "Christopher Potts",
+        "Koushik Sen",
+        "Matei Zaharia",
+        "O. Khattab"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "LM Assertions, a programming construct for expressing computational constraints that LMs should satisfy, is introduced and it is found that LM Assertions improve not only compliance with imposed rules but also downstream task performance, passing constraints up to 164% more often and generating up to 37% more higher-quality responses."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

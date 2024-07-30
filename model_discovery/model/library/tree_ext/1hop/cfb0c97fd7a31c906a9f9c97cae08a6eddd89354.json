@@ -1,0 +1,27 @@
+{
+    "acronym": "cfb0c97fd7a31c906a9f9c97cae08a6eddd89354",
+    "title": "RISE: Leveraging Retrieval Techniques for Summarization Evaluation",
+    "seed_ids": [
+        "longt5",
+        "3c5f7e7ee0ab7413ba3bf8ad3400810da542d617",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "9dc624d7258d1a56117ca720aea953ce46b66b21"
+    ],
+    "s2id": "cfb0c97fd7a31c906a9f9c97cae08a6eddd89354",
+    "abstract": "Evaluating automatically-generated text summaries is a challenging task. While there have been many interesting approaches, they still fall short of human evaluations. We present RISE, a new approach for evaluating summaries by leveraging techniques from information retrieval. RISE is first trained as a retrieval task using a dual-encoder retrieval setup, and can then be subsequently utilized for evaluating a generated summary given an input document, without gold reference summaries. RISE is especially well suited when working on new datasets where one may not have reference summaries available for evaluation. We conduct comprehensive experiments on the SummEval benchmark (Fabbri et al., 2021) and the results show that RISE has higher correlation with human evaluations compared to many past approaches to summarization evaluation. Furthermore, RISE also demonstrates data-efficiency and generalizability across languages.",
+    "authors": [
+        "David C. Uthus",
+        "Jianmo Ni"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "RISE is a new approach for evaluating summaries by leveraging techniques from information retrieval that has higher correlation with human evaluations compared to many past approaches to summarization evaluation and also demonstrates data-efficiency and generalizability across languages."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "77786eda28e5f0b25d682c27846334d53daf43e4",
+    "title": "Complex-Valued Relative Positional Encodings for Transformer",
+    "seed_ids": [
+        "transformerxl",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "d6b414487787d0b6efd735a3236a690ad13aae70",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "77786eda28e5f0b25d682c27846334d53daf43e4",
+    "abstract": "Recently, the self-attention mechanism (Transformer) has shown its advantages in various natural language processing (NLP) tasks. Since positional information is crucial to NLP tasks, the positional encoding has become a critical factor in improving the performance of the Transformer. In this paper, we present a simple but effective complex-valued relative positional encoding (CRPE) method. Specifically, we map the query and key vectors to the complex domain based on their positions. Hence, the attention weights will directly contain the relative positional information by the dot product between the complex-valued query and key vectors. To demonstrate the effectiveness of our method, we use four typical NLP tasks: named entity recognition, text classification, machine translation, and language modeling. The datasets of these tasks comprise texts of varying lengths. In the experiments, our method outperforms the baseline positional encodings across all datasets. The results show that our method is more effective for long and short texts while containing fewer parameters.",
+    "authors": [
+        "Gang Yang",
+        "Hongzhe Xu"
+    ],
+    "venue": "2023 3rd International Conference on Neural Networks, Information and Communication Engineering (NNICE)",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A simple but effective complex-valued relative positional encoding (CRPE) method that maps the query and key vectors to the complex domain based on their positions, and shows that the method is more effective for long and short texts while containing fewer parameters."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

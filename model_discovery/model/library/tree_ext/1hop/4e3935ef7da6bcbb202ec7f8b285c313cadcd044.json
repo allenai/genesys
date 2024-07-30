@@ -1,0 +1,30 @@
+{
+    "acronym": "4e3935ef7da6bcbb202ec7f8b285c313cadcd044",
+    "title": "A Dataset of Information-Seeking Questions and Answers Anchored in Research Papers",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "4e3935ef7da6bcbb202ec7f8b285c313cadcd044",
+    "abstract": "Readers of academic research papers often read with the goal of answering specific questions. Question Answering systems that can answer those questions can make consumption of the content much more efficient. However, building such tools requires data that reflect the difficulty of the task arising from complex reasoning about claims made in multiple parts of a paper. In contrast, existing information-seeking question answering datasets usually contain questions about generic factoid-type information. We therefore present Qasper, a dataset of 5049 questions over 1585 Natural Language Processing papers. Each question is written by an NLP practitioner who read only the title and abstract of the corresponding paper, and the question seeks information present in the full text. The questions are then answered by a separate set of NLP practitioners who also provide supporting evidence to answers. We find that existing models that do well on other QA tasks do not perform well on answering these questions, underperforming humans by at least 27 F1 points when answering them from entire papers, motivating further research in document-grounded, information-seeking QA, which our dataset is designed to facilitate.",
+    "authors": [
+        "Pradeep Dasigi",
+        "Kyle Lo",
+        "Iz Beltagy",
+        "Arman Cohan",
+        "Noah A. Smith",
+        "Matt Gardner"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Qasper is presented, a dataset of 5049 questions over 1585 Natural Language Processing papers that is designed to facilitate document-grounded, information-seeking QA, and finds that existing models that do well on other QA tasks do not perform well on answering these questions."
+    },
+    "citationCount": 169,
+    "influentialCitationCount": 28,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "4adfeb240da82855c9a7e4393eca98d983a9e35e",
+    "title": "Local Information Assisted Attention-Free Decoder for Audio Captioning",
+    "seed_ids": [
+        "aft",
+        "c9a94c4091b77dd035444c167c989abecf0d9398",
+        "d5e999aae76d5270ef272076979c809817458212",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "4adfeb240da82855c9a7e4393eca98d983a9e35e",
+    "abstract": "Automated audio captioning aims to describe audio data with captions using natural language. Existing methods often employ an encoder-decoder structure, where the attention-based decoder (e.g., Transformer decoder) is widely used and achieves state-of-the-art performance. Although this method effectively captures global information within audio data via the self-attention mechanism, it may ignore the event with short time duration, due to its limitation in capturing local information in an audio signal, leading to inaccurate prediction of captions. To address this issue, we propose a method using the pretrained audio neural networks (PANNs) as the encoder and local information assisted attention-free Transformer (LocalAFT) as the decoder. The novelty of our method is in the proposal of the LocalAFT decoder, which allows local information within an audio signal to be captured while retaining the global information. This enables the events of different duration, including short duration, to be captured for more precise caption generation. Experiments show that our method outperforms the state-of-the-art methods in Task 6 of the DCASE 2021 Challenge with the standard attention-based decoder for caption generation.",
+    "authors": [
+        "Feiyang Xiao",
+        "Jian Guan",
+        "Haiyan Lan",
+        "Qiaoxi Zhu",
+        "Wenwu Wang"
+    ],
+    "venue": "IEEE Signal Processing Letters",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The pretrained audio neural networks (PANNs) are used as the encoder and local information assisted attention-free Transformer (LocalAFT) as the decoder, which allows local information within an audio signal to be captured while retaining the global information."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

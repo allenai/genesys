@@ -1,0 +1,25 @@
+{
+    "acronym": "8ad52064aebb4710d4917560320945a8156d04d0",
+    "title": "Weakly-Supervised Action Learning in Procedural Task Videos via Process Knowledge Decomposition",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "8ad52064aebb4710d4917560320945a8156d04d0",
+    "abstract": "Action learning is a research area that aims to recognize the action category of each frame in the video. Context information is crucial for learning actions, but most existing methods face two challenges in exploiting this information: 1) They apply global attention to aggregate global features for action representation, resulting in inefficiency and redundancy. 2) They impose implicit action constraints to regularize the action distribution, leading to subjectivity, interpretability issues, and optimization difficulties. To address these challenges, we propose an end-to-end weakly-supervised Action Learning framework with Process Knowledge Decomposition (AL-PKD), which leverages the intrinsic characteristics of procedural task videos. To enhance the effectiveness and adaptability of context aggregation, we first design the TEAL-Net action recognition network. Specifically, the TEAL-Net accounts for the diverse neighbor distributions of action nodes across categories and collects local neighborhood features with different receptive fields through feature pyramids, improving the accuracy and efficiency of action representation. Moreover, to overcome the drawbacks of implicit constraint strategies, we next employ process mining techniques to extract three types of explicit action pair constraints: sequentiality, concurrency, and selectivity. These constraints guide the model\u2019s predictions and improve the interpretability of the learning process. Finally, we use the Viterbi algorithm to dynamically infer the optimal action boundaries based on the frame-level predictions, which helps to eliminate local misclassifications. Experiments on three datasets of Breakfast, CrossTask, and PEVD demonstrate that our method achieves state-of-the-art performance.",
+    "authors": [
+        "Minghao Zou",
+        "Qingtian Zeng",
+        "Xue Zhang"
+    ],
+    "venue": "IEEE transactions on circuits and systems for video technology (Print)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an end-to-end weakly-supervised Action Learning framework with Process Knowledge Decomposition (AL-PKD), which leverages the intrinsic characteristics of procedural task videos and designs the TEAL-Net action recognition network, which enhances the effectiveness and adaptability of context aggregation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

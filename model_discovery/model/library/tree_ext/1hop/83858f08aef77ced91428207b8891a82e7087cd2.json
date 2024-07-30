@@ -1,0 +1,34 @@
+{
+    "acronym": "83858f08aef77ced91428207b8891a82e7087cd2",
+    "title": "ScheMoE: An Extensible Mixture-of-Experts Distributed Training System with Tasks Scheduling",
+    "seed_ids": [
+        "transformer",
+        "bert",
+        "a32476f93be0e8707cc1b99c2f506e60d61715a4",
+        "ff5eb1bd55d61ae919865f6b4dab84e6ae1974f3"
+    ],
+    "s2id": "83858f08aef77ced91428207b8891a82e7087cd2",
+    "abstract": "In recent years, large-scale models can be easily scaled to trillions of parameters with sparsely activated mixture-of-experts (MoE), which significantly improves the model quality while only requiring a sub-linear increase in computational costs. However, MoE layers require the input data to be dynamically routed to a particular GPU for computing during distributed training. The highly dynamic property of data routing and high communication costs in MoE make the training system low scaling efficiency on GPU clusters. In this work, we propose an extensible and efficient MoE training system, ScheMoE, which is equipped with several features. 1) ScheMoE provides a generic scheduling framework that allows the communication and computation tasks in training MoE models to be scheduled in an optimal way. 2) ScheMoE integrates our proposed novel all-to-all collective which better utilizes intra- and inter-connect bandwidths. 3) ScheMoE supports easy extensions of customized all-to-all collectives and data compression approaches while enjoying our scheduling algorithm. Extensive experiments are conducted on a 32-GPU cluster and the results show that ScheMoE outperforms existing state-of-the-art MoE systems, Tutel and Faster-MoE, by 9%-30%.",
+    "authors": [
+        "S. Shi",
+        "Xinglin Pan",
+        "Qiang Wang",
+        "Chengjian Liu",
+        "Xiaozhe Ren",
+        "Zhongzhe Hu",
+        "Yu Yang",
+        "Bo Li",
+        "Xiaowen Chu"
+    ],
+    "venue": "European Conference on Computer Systems",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an extensible and efficient MoE training system, ScheMoE, which is equipped with several features and outperforms existing state-of-the-art MoE systems, Tutel and Faster-MoE, by 9%-30%."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

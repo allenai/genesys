@@ -1,0 +1,30 @@
+{
+    "acronym": "b3fe9a43686211016ae9a5a28b3fe253578f7fb2",
+    "title": "Towards Accurate Guided Diffusion Sampling through Symplectic Adjoint Method",
+    "seed_ids": [
+        "classfreediffu",
+        "cf694df964caa156ec306b45d3a3127533cb458f",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "b3fe9a43686211016ae9a5a28b3fe253578f7fb2",
+    "abstract": "Training-free guided sampling in diffusion models leverages off-the-shelf pre-trained networks, such as an aesthetic evaluation model, to guide the generation process. Current training-free guided sampling algorithms obtain the guidance energy function based on a one-step estimate of the clean image. However, since the off-the-shelf pre-trained networks are trained on clean images, the one-step estimation procedure of the clean image may be inaccurate, especially in the early stages of the generation process in diffusion models. This causes the guidance in the early time steps to be inaccurate. To overcome this problem, we propose Symplectic Adjoint Guidance (SAG), which calculates the gradient guidance in two inner stages. Firstly, SAG estimates the clean image via $n$ function calls, where $n$ serves as a flexible hyperparameter that can be tailored to meet specific image quality requirements. Secondly, SAG uses the symplectic adjoint method to obtain the gradients accurately and efficiently in terms of the memory requirements. Extensive experiments demonstrate that SAG generates images with higher qualities compared to the baselines in both guided image and video generation tasks.",
+    "authors": [
+        "Jiachun Pan",
+        "Hanshu Yan",
+        "J. Liew",
+        "Jiashi Feng",
+        "Vincent Y. F. Tan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Symplectic Adjoint Guidance (SAG) is proposed, which calculates the gradient guidance in two inner stages and generates images with higher qualities compared to the baselines in both guided image and video generation tasks."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

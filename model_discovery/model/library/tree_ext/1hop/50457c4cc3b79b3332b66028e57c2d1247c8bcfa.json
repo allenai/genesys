@@ -1,0 +1,35 @@
+{
+    "acronym": "50457c4cc3b79b3332b66028e57c2d1247c8bcfa",
+    "title": "State Space Models are Comparable to Transformers in Estimating Functions with Dynamic Smoothness",
+    "seed_ids": [
+        "hyena",
+        "mamba",
+        "917479a7a72ee7c1fb320c14d770e30ef322ef28",
+        "2a53d07a399c47151a7b440dacfb3673b9c4e753",
+        "917096f28209ef90c9e6363cf49438341120af5e",
+        "cb0ac335adda4ceef9987cbcbca9129e71c37f0a",
+        "b3caabbae4b7c3b842086b21940ce9d5b25d476f",
+        "bfd2b76998a0521c12903ef5ced517adf70ad2ba",
+        "998ac3e945857cf2676ee7efdbaf443a0c6f820a",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "6f68e1bb253925d8431588555d3010419f322e04"
+    ],
+    "s2id": "50457c4cc3b79b3332b66028e57c2d1247c8bcfa",
+    "abstract": "Deep neural networks based on state space models (SSMs) are attracting much attention in sequence modeling since their computational cost is significantly smaller than that of Transformers. While the capabilities of SSMs have been primarily investigated through experimental comparisons, theoretical understanding of SSMs is still limited. In particular, there is a lack of statistical and quantitative evaluation of whether SSM can replace Transformers. In this paper, we theoretically explore in which tasks SSMs can be alternatives of Transformers from the perspective of estimating sequence-to-sequence functions. We consider the setting where the target function has direction-dependent smoothness and prove that SSMs can estimate such functions with the same convergence rate as Transformers. Additionally, we prove that SSMs can estimate the target function, even if the smoothness changes depending on the input sequence, as well as Transformers. Our results show the possibility that SSMs can replace Transformers when estimating the functions in certain classes that appear in practice.",
+    "authors": [
+        "Naoki Nishikawa",
+        "Taiji Suzuki"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results show the possibility that SSMs can replace Transformers when estimating the functions in certain classes that appear in practice and prove that SSMs can estimate such functions with the same convergence rate as Transformers."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

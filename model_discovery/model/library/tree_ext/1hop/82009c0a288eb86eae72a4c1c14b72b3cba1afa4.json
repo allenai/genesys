@@ -1,0 +1,28 @@
+{
+    "acronym": "82009c0a288eb86eae72a4c1c14b72b3cba1afa4",
+    "title": "Leveraging deep active learning to identify low-resource mobility functioning information in public clinical notes",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "82009c0a288eb86eae72a4c1c14b72b3cba1afa4",
+    "abstract": "Function is increasingly recognized as an important indicator of whole-person health, although it receives little attention in clinical natural language processing research. We introduce the first public annotated dataset specifically on the Mobility domain of the International Classification of Functioning, Disability and Health (ICF), aiming to facilitate automatic extraction and analysis of functioning information from free-text clinical notes. We utilize the National NLP Clinical Challenges (n2c2) research dataset to construct a pool of candidate sentences using keyword expansion. Our active learning approach, using query-by-committee sampling weighted by density representativeness, selects informative sentences for human annotation. We train BERT and CRF models, and use predictions from these models to guide the selection of new sentences for subsequent annotation iterations. Our final dataset consists of 4,265 sentences with a total of 11,784 entities, including 5,511 Action entities, 5,328 Mobility entities, 306 Assistance entities, and 639 Quantification entities. The inter-annotator agreement (IAA), averaged over all entity types, is 0.72 for exact matching and 0.91 for partial matching. We also train and evaluate common BERT models and state-of-the-art Nested NER models. The best F1 scores are 0.84 for Action, 0.7 for Mobility, 0.62 for Assistance, and 0.71 for Quantification. Empirical results demonstrate promising potential of NER models to accurately extract mobility functioning information from clinical text. The public availability of our annotated dataset will facilitate further research to comprehensively capture functioning information in electronic health records (EHRs).",
+    "authors": [
+        "Tuan-Dung Le",
+        "Zhuqi Miao",
+        "Samuel Alvarado",
+        "Brittany Smith",
+        "William Paiva",
+        "Thanh Thieu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces the first public annotated dataset specifically on the Mobility domain of the International Classification of Functioning, Disability and Health (ICF), aiming to facilitate automatic extraction and analysis of functioning information from free-text clinical notes."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,25 @@
+{
+    "acronym": "08ddcce3b2f08be2c6080c7914bab01033a4ef7c",
+    "title": "Mission-Conditioned Path Planning with Transformer Variational Autoencoder",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "08ddcce3b2f08be2c6080c7914bab01033a4ef7c",
+    "abstract": "This paper introduces a novel deep learning framework for robotic path planning that addresses two primary challenges: integrating mission specifications defined through Linear Temporal Logic (LTL) and enhancing trajectory quality via cost function integration within the configuration space. Our approach utilizes a Conditional Variational Autoencoder (CVAE) to efficiently encode optimal trajectory distributions, which are subsequently processed by a Transformer network. This network leverages mission-specific information from LTL formulas to generate control sequences, ensuring adherence to LTL specifications and the generation of near-optimal trajectories. Additionally, our framework incorporates an anchor control set\u2014a curated collection of plausible control values. At each timestep, the proposed method selects and refines a control from this set, enabling precise adjustments to achieve desired outcomes. Comparative analysis and rigorous simulation testing demonstrate that our method outperforms both traditional sampling-based and other deep-learning-based path-planning techniques in terms of computational efficiency, trajectory optimality, and mission success rates.",
+    "authors": [
+        "Kyoungho Lee",
+        "Eunji Im",
+        "Kyunghoon Cho"
+    ],
+    "venue": "Electronics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

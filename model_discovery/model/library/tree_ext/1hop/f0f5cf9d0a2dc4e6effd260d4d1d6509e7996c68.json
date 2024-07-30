@@ -1,0 +1,33 @@
+{
+    "acronym": "f0f5cf9d0a2dc4e6effd260d4d1d6509e7996c68",
+    "title": "Parameter-Efficient Conversational Recommender System as a Language Processing Task",
+    "seed_ids": [
+        "gpt2",
+        "d6db74a36301fdbb4859b5f7ff302337666b93ce",
+        "fa52baef4ba2603c4382858669887b89cb9e62a0",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f0f5cf9d0a2dc4e6effd260d4d1d6509e7996c68",
+    "abstract": "Conversational recommender systems (CRS) aim to recommend relevant items to users by eliciting user preference through natural language conversation. Prior work often utilizes external knowledge graphs for items\u2019 semantic information, a language model for dialogue generation, and a recommendation module for ranking relevant items. This combination of multiple components suffers from a cumber-some training process, and leads to semantic misalignment issues between dialogue generation and item recommendation. In this paper, we represent items in natural language and formulate CRS as a natural language processing task. Accordingly, we leverage the power of pre-trained language models to encode items, understand user intent via conversation, perform item recommendation through semantic matching, and generate dialogues. As a unified model, our PECRS (Parameter-Efficient CRS), can be optimized in a single stage, without relying on non-textual metadata such as a knowledge graph. Experiments on two benchmark CRS datasets, ReDial and INSPIRED, demonstrate the effectiveness of PECRS on recommendation and conversation. Our code is available at: https://github.com/Ravoxsg/efficient_unified_crs.",
+    "authors": [
+        "Mathieu Ravaut",
+        "Hao Zhang",
+        "Lu Xu",
+        "Aixin Sun",
+        "Yong Liu"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper represents items in natural language and formulate CRS as a natural language processing task, and develops a unified model, PECRS (Parameter-Efficient CRS), that can be optimized in a single stage, without relying on non-textual metadata such as a knowledge graph."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

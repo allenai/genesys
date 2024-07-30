@@ -1,0 +1,26 @@
+{
+    "acronym": "90619f1d57d19998ff97656410c78a254fda6e1f",
+    "title": "Linguistic Collapse: Neural Collapse in (Large) Language Models",
+    "seed_ids": [
+        "transformer",
+        "gpt",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "90619f1d57d19998ff97656410c78a254fda6e1f",
+    "abstract": "Neural collapse ($\\mathcal{NC}$) is a phenomenon observed in classification tasks where top-layer representations collapse into their class means, which become equinorm, equiangular and aligned with the classifiers. These behaviors -- associated with generalization and robustness -- would manifest under specific conditions: models are trained towards zero loss, with noise-free labels belonging to balanced classes, which do not outnumber the model's hidden dimension. Recent studies have explored $\\mathcal{NC}$ in the absence of one or more of these conditions to extend and capitalize on the associated benefits of ideal geometries. Language modeling presents a curious frontier, as \\textit{training by token prediction} constitutes a classification task where none of the conditions exist: the vocabulary is imbalanced and exceeds the embedding dimension; different tokens might correspond to similar contextual embeddings; and large language models (LLMs) in particular are typically only trained for a few epochs. This paper empirically investigates the impact of scaling the architectures and training of causal language models (CLMs) on their progression towards $\\mathcal{NC}$. We find that $\\mathcal{NC}$ properties that develop with scaling are linked to generalization. Moreover, there is evidence of some relationship between $\\mathcal{NC}$ and generalization independent of scale. Our work therefore underscores the generality of $\\mathcal{NC}$ as it extends to the novel and more challenging setting of language modeling. Downstream, we seek to inspire further research on the phenomenon to deepen our understanding of LLMs -- and neural networks at large -- and improve existing architectures based on $\\mathcal{NC}$-related properties.",
+    "authors": [
+        "Robert Wu",
+        "V. Papyan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper empirically investigates the impact of scaling the architectures and training of causal language models (CLMs) on their progression towards $\\mathcal{NC}$ and finds that properties that develop with scaling are linked to generalization."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,35 @@
+{
+    "acronym": "b140873b84e192cf81ec228f0fa8e1098ca5f3bd",
+    "title": "Hierarchical Multi-Modal Prompting Transformer for Multi-Modal Long Document Classification",
+    "seed_ids": [
+        "transformer",
+        "bigbird",
+        "longformer",
+        "786077a54eee75d0fd74b8565f91b9386a6344cd",
+        "84daddd294fa3cc12596b5785f81c2a153d2fb1d",
+        "4e3935ef7da6bcbb202ec7f8b285c313cadcd044",
+        "afad10da0a3b83a4f2a94e8c16c84ac64338e9fe",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "b140873b84e192cf81ec228f0fa8e1098ca5f3bd",
+    "abstract": "In the context of long document classification (LDC), effectively utilizing multi-modal information encompassing texts and images within these documents has not received adequate attention. This task showcases several notable characteristics. Firstly, the text possesses an implicit or explicit hierarchical structure consisting of sections, sentences, and words. Secondly, the distribution of images is dispersed, encompassing various types such as highly relevant topic images and loosely related reference images. Lastly, intricate and diverse relationships exist between images and text at different levels. To address these challenges, we propose a novel approach called Hierarchical Multi-modal Prompting Transformer (HMPT). Our proposed method constructs the uni-modal and multi-modal transformers at both the section and sentence levels, facilitating effective interaction between features. Notably, we design an adaptive multi-scale multi-modal transformer tailored to capture the multi-granularity correlations between sentences and images. Additionally, we introduce three different types of shared prompts, i.e., shared section, sentence, and image prompts, as bridges connecting the isolated transformers, enabling seamless information interaction across different levels and modalities. To validate the model performance, we conducted experiments on two newly created and two publicly available multi-modal long document datasets. The obtained results show that our method outperforms state-of-the-art single-modality and multi-modality classification methods.",
+    "authors": [
+        "Tengfei Liu",
+        "Yongli Hu",
+        "Junbin Gao",
+        "Yanfeng Sun",
+        "Baocai Yin"
+    ],
+    "venue": "IEEE transactions on circuits and systems for video technology (Print)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed method constructs the uni-modal and multi-modal transformers at both the section and sentence levels, facilitating effective interaction between features, and outperforms state-of-the-art single-modality and multi-modality classification methods."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

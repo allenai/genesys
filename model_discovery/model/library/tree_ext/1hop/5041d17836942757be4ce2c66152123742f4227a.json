@@ -1,0 +1,35 @@
+{
+    "acronym": "5041d17836942757be4ce2c66152123742f4227a",
+    "title": "BOOST: Harnessing Black-Box Control to Boost Commonsense in LMs' Generation",
+    "seed_ids": [
+        "gpt2",
+        "gpt3",
+        "c4fb74b5f69e5c0f3822b82e1bd082d5d95fc8d0",
+        "12daedd80a4f860960c5b50314d09d6827f4fd4a",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "4a6a65968a8eb8c09ffb57a7774ddabb596565b1",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "f48ae425e2567be2d993efcaaf74c2274fc9d7c5",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5041d17836942757be4ce2c66152123742f4227a",
+    "abstract": "Large language models (LLMs) such as GPT-3 have demonstrated a strong capability to generate coherent and contextually relevant text. However, amidst their successes, a crucial issue persists: their generated outputs still lack commonsense at times. Moreover, fine-tuning the entire LLM towards more commonsensical outputs is computationally expensive if not infeasible. In this paper, we present a computation-efficient framework that steers a frozen Pre-Trained Language Model (PTLM) towards more commonsensical generation (i.e., producing a plausible output that incorporates a list of concepts in a meaningful way). Specifically, we first construct a reference-free evaluator that assigns a sentence with a commonsensical score by grounding the sentence to a dynamic commonsense knowledge base from four different relational aspects. We then use the scorer as the oracle for commonsense knowledge, and extend the controllable generation method called NADO to train an auxiliary head that guides a fixed PTLM to better satisfy the oracle. We test our framework on a series of GPT-2-, Flan-T5-, and Alpaca-based language models (LMs) on two constrained concept-to-sentence benchmarks. Human evaluation results demonstrate that our method consistently leads to the most commonsensical outputs.",
+    "authors": [
+        "Yufei Tian",
+        "Felix Zhang",
+        "Nanyun Peng"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A computation-efficient framework that steers a frozen Pre-Trained Language Model (PTLM) towards more commonsensical generation (i.e., producing a plausible output that incorporates a list of concepts in a meaningful way) and human evaluation results demonstrate that this method consistently leads to the most commonsensical outputs."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

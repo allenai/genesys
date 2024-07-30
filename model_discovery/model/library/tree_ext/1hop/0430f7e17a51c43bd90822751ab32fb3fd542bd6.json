@@ -1,0 +1,32 @@
+{
+    "acronym": "0430f7e17a51c43bd90822751ab32fb3fd542bd6",
+    "title": "Symmetric Dot-Product Attention for Efficient Training of BERT Language Models",
+    "seed_ids": [
+        "transformer",
+        "bert",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "d9f6ada77448664b71128bb19df15765336974a6"
+    ],
+    "s2id": "0430f7e17a51c43bd90822751ab32fb3fd542bd6",
+    "abstract": "Initially introduced as a machine translation model, the Transformer architecture has now become the foundation for modern deep learning architecture, with applications in a wide range of fields, from computer vision to natural language processing. Nowadays, to tackle increasingly more complex tasks, Transformer-based models are stretched to enormous sizes, requiring increasingly larger training datasets, and unsustainable amount of compute resources. The ubiquitous nature of the Transformer and its core component, the attention mechanism, are thus prime targets for efficiency research. In this work, we propose an alternative compatibility function for the self-attention mechanism introduced by the Transformer architecture. This compatibility function exploits an overlap in the learned representation of the traditional scaled dot-product attention, leading to a symmetric with pairwise coefficient dot-product attention. When applied to the pre-training of BERT-like models, this new symmetric attention mechanism reaches a score of 79.36 on the GLUE benchmark against 78.74 for the traditional implementation, leads to a reduction of 6% in the number of trainable parameters, and reduces the number of training steps required before convergence by half.",
+    "authors": [
+        "Martin Courtois",
+        "Malte Ostendorff",
+        "Leonhard Hennig",
+        "Georg Rehm"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an alternative compatibility function for the self-attention mechanism introduced by the Transformer architecture, which exploits an overlap in the learned representation of the traditional scaled dot-product attention, leading to a symmetric with pairwise coefficient dot-product attention."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

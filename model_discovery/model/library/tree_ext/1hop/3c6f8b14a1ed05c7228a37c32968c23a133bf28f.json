@@ -1,0 +1,30 @@
+{
+    "acronym": "3c6f8b14a1ed05c7228a37c32968c23a133bf28f",
+    "title": "SlipStream: Adapting Pipelines for Distributed Training of Large DNNs Amid Failures",
+    "seed_ids": [
+        "gpt3",
+        "6dc5c6190dfbe55c8b45b7b23800614c21e5b51c",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a"
+    ],
+    "s2id": "3c6f8b14a1ed05c7228a37c32968c23a133bf28f",
+    "abstract": "Training large Deep Neural Network (DNN) models requires thousands of GPUs for days or weeks at a time. At these scales, failures are frequent and can have a big impact on training throughput. Restoring performance using spare GPU servers becomes increasingly expensive as models grow. SlipStream is a system for efficient DNN training in the presence of failures, without using spare servers. It exploits the functional redundancy inherent in distributed training systems -- servers hold the same model parameters across data-parallel groups -- as well as the bubbles in the pipeline schedule within each data-parallel group. SlipStream dynamically re-routes the work of a failed server to its data-parallel peers, ensuring continuous training despite multiple failures. However, re-routing work leads to imbalances across pipeline stages that degrades training throughput. SlipStream introduces two optimizations that allow re-routed work to execute within bubbles of the original pipeline schedule. First, it decouples the backward pass computation into two phases. Second, it staggers the execution of the optimizer step across pipeline stages. Combined, these optimizations enable schedules that minimize or even eliminate training throughput degradation during failures. We describe a prototype for SlipStream and show that it achieves high training throughput under multiple failures, outperforming recent proposals for fault-tolerant training such as Oobleck and Bamboo by up to 1.46x and 1.64x, respectively.",
+    "authors": [
+        "Swapnil Gandhi",
+        "Mark Zhao",
+        "Athinagoras Skiadopoulos",
+        "Christos Kozyrakis"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A prototype for SlipStream is described and it is shown that it achieves high training throughput under multiple failures, outperforming recent proposals for fault-tolerant training such as Oobleck and Bamboo by up to 1.46x and 1.64x, respectively."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

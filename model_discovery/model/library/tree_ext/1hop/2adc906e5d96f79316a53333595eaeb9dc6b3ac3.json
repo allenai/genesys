@@ -1,0 +1,38 @@
+{
+    "acronym": "2adc906e5d96f79316a53333595eaeb9dc6b3ac3",
+    "title": "Latent Attention for Linear Time Transformers",
+    "seed_ids": [
+        "gpt2",
+        "mea",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "53c3940f35b8b45d55ed49056282e1961954513d",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812",
+        "3a906b77fa218adc171fecb28bb81c24c14dcc7b",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2adc906e5d96f79316a53333595eaeb9dc6b3ac3",
+    "abstract": "The time complexity of the standard attention mechanism in a transformer scales quadratically with the length of the sequence. We introduce a method to reduce this to linear scaling with time, based on defining attention via latent vectors. The method is readily usable as a drop-in replacement for the standard attention mechanism. Our\"Latte Transformer\"model can be implemented for both bidirectional and unidirectional tasks, with the causal version allowing a recurrent implementation which is memory and time-efficient during inference of language generation tasks. Whilst next token prediction scales linearly with the sequence length for a standard transformer, a Latte Transformer requires constant time to compute the next token. The empirical performance of our method is comparable to standard attention, yet allows scaling to context windows much larger than practical in standard attention.",
+    "authors": [
+        "Rares Dolga",
+        "Marius Cobzarenco",
+        "David Barber"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A method to reduce the time complexity of the standard attention mechanism in a transformer to linear scaling with time, based on defining attention via latent vectors is introduced, which allows scaling to context windows much larger than practical in standard attention."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

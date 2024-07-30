@@ -1,0 +1,29 @@
+{
+    "acronym": "933cb8bf1cd50d6d5833a627683327b15db28836",
+    "title": "Joint Language Semantic and Structure Embedding for Knowledge Graph Completion",
+    "seed_ids": [
+        "gpt2",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "933cb8bf1cd50d6d5833a627683327b15db28836",
+    "abstract": "The task of completing knowledge triplets has broad downstream applications. Both structural and semantic information plays an important role in knowledge graph completion. Unlike previous approaches that rely on either the structures or semantics of the knowledge graphs, we propose to jointly embed the semantics in the natural language description of the knowledge triplets with their structure information. Our method embeds knowledge graphs for the completion task via fine-tuning pre-trained language models with respect to a probabilistic structured loss, where the forward pass of the language models captures semantics and the loss reconstructs structures. Our extensive experiments on a variety of knowledge graph benchmarks have demonstrated the state-of-the-art performance of our method. We also show that our method can significantly improve the performance in a low-resource regime, thanks to the better use of semantics. The code and datasets are available at https://github.com/pkusjh/LASS.",
+    "authors": [
+        "Jianhao Shen",
+        "Chenguang Wang",
+        "Linyuan Gong",
+        "Dawn Song"
+    ],
+    "venue": "International Conference on Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to jointly embed the semantics in the natural language description of the knowledge triplets with their structure information via fine-tuning pre-trained language models with respect to a probabilistic structured loss, where the forward pass of the language models captures semantics and the loss reconstructs structures."
+    },
+    "citationCount": 19,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

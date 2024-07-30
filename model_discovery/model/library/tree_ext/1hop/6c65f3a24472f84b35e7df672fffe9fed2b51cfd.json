@@ -1,0 +1,33 @@
+{
+    "acronym": "6c65f3a24472f84b35e7df672fffe9fed2b51cfd",
+    "title": "A General and Flexible Multi-concept Parsing Framework for Multilingual Semantic Matching",
+    "seed_ids": [
+        "transformer",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "6c65f3a24472f84b35e7df672fffe9fed2b51cfd",
+    "abstract": "Sentence semantic matching is a research hotspot in natural language processing, which is considerably significant in various key scenarios, such as community question answering, searching, chatbot, and recommendation. Since most of the advanced models directly model the semantic relevance among words between two sentences while neglecting the \\textit{keywords} and \\textit{intents} concepts of them, DC-Match is proposed to disentangle keywords from intents and utilizes them to optimize the matching performance. Although DC-Match is a simple yet effective method for semantic matching, it highly depends on the external NER techniques to identify the keywords of sentences, which limits the performance of semantic matching for minor languages since satisfactory NER tools are usually hard to obtain. In this paper, we propose to generally and flexibly resolve the text into multi concepts for multilingual semantic matching to liberate the model from the reliance on NER models. To this end, we devise a \\underline{M}ulti-\\underline{C}oncept \\underline{P}arsed \\underline{S}emantic \\underline{M}atching framework based on the pre-trained language models, abbreviated as \\textbf{MCP-SM}, to extract various concepts and infuse them into the classification tokens. We conduct comprehensive experiments on English datasets QQP and MRPC, and Chinese dataset Medical-SM. Besides, we experiment on Arabic datasets MQ2Q and XNLI, the outstanding performance further prove MCP-SM's applicability in low-resource languages.",
+    "authors": [
+        "D. Yao",
+        "Asaad Alghamdi",
+        "Qingrong Xia",
+        "Xiaoye Qu",
+        "Xinyu Duan",
+        "Zhefeng Wang",
+        "Yi Zheng",
+        "Baoxing Huai",
+        "Peilun Cheng",
+        "Zhou Zhao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A framework based on the pre-trained language models, abbreviated as MCP-SM, to extract various concepts and infuse them into the classification tokens to liberate the model from the reliance on NER models is devised."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

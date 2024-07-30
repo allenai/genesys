@@ -1,0 +1,36 @@
+{
+    "acronym": "3c759e2f16bfde8d31189631e4893d3ac8ff05f2",
+    "title": "Mitigating Gender Bias in Distilled Language Models via Counterfactual Role Reversal",
+    "seed_ids": [
+        "gpt2",
+        "76a786b1acd6d1aca56e12a8a1db34569fdf9f3a",
+        "7ea0e91c5d5dc73f2133bc46d7ebb6cb83034dae",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3c759e2f16bfde8d31189631e4893d3ac8ff05f2",
+    "abstract": "Language models excel at generating coherent text, and model compression techniques such as knowledge distillation have enabled their use in resource-constrained settings. However, these models can be biased in multiple ways, including the unfounded association of male and female genders with gender-neutral professions. Therefore, knowledge distillation without any fairness constraints may preserve or exaggerate the teacher model\u2019s biases onto the distilled model. To this end, we present a novel approach to mitigate gender disparity in text generation by learning a fair model during knowledge distillation. We propose two modifications to the base knowledge distillation based on counterfactual role reversal\u2014modifying teacher probabilities and augmenting the training set. We evaluate gender polarity across professions in open-ended text generated from the resulting distilled and finetuned GPT\u20132 models and demonstrate a substantial reduction in gender disparity with only a minor compromise in utility. Finally, we observe that language models that reduce gender polarity in language generation do not improve embedding fairness or downstream classification fairness.",
+    "authors": [
+        "Umang Gupta",
+        "J. Dhamala",
+        "Varun Kumar",
+        "Apurv Verma",
+        "Yada Pruksachatkun",
+        "Satyapriya Krishna",
+        "Rahul Gupta",
+        "Kai-Wei Chang",
+        "G. V. Steeg",
+        "A. Galstyan"
+    ],
+    "venue": "Findings",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel approach to mitigate gender disparity in text generation by learning a fair model during knowledge distillation is presented and two modifications based on counterfactual role reversal are proposed\u2014modifying teacher probabilities and augmenting the training set."
+    },
+    "citationCount": 41,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

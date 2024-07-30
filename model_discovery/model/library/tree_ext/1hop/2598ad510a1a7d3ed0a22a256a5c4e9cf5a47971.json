@@ -1,0 +1,32 @@
+{
+    "acronym": "2598ad510a1a7d3ed0a22a256a5c4e9cf5a47971",
+    "title": "PyScribe\u2013Learning to describe python code",
+    "seed_ids": [
+        "bert",
+        "0fe2636446cd686830da3d971b31a004d6094b3c"
+    ],
+    "s2id": "2598ad510a1a7d3ed0a22a256a5c4e9cf5a47971",
+    "abstract": "Code comment generation, which attempts to summarize the functionality of source code in textual descriptions, plays an important role in automatic software development research. Currently, several structural neural networks have been exploited to preserve the syntax structure of source code based on abstract syntax trees (ASTs). However, they can not well capture both the long\u2010distance and local relations between nodes while retaining the overall structural information of AST. To mitigate this problem, we present a prototype tool titled PyScribe, which extends the Transformer model to a new encoder\u2010decoder\u2010based framework. Particularly, the triplet position is designed and integrated into the node\u2010level and edge\u2010level structural features of AST for producing Python code comments automatically. This paper, to the best of our knowledge, makes the first effort to model the edges of AST as an explicit component for improved code representation. By specifying triplet positions for each node and edge, the overall structural information can be well preserved in the learning process. Moreover, the captured node and edge features go through a two\u2010stage decoding process to yield higher qualified comments. To evaluate the effectiveness of PyScribe, we resort to a large dataset of code\u2010comment pairs by mining Jupyter Notebooks from GitHub, for which we have made it publicly available to support further studies. The experimental results reveal that PyScribe is indeed effective, outperforming the state\u2010ofthe\u2010art by achieving an average BLEU score (i.e., av\u2010BLEU) of \u2248$$ \\approx $$ 0.28.",
+    "authors": [
+        "Juncai Guo",
+        "Jin Liu",
+        "Xiao Liu",
+        "Yao Wan",
+        "Yanjie Zhao",
+        "Li Li",
+        "Kui Liu",
+        "Jacques Klein",
+        "T\u00e9gawend\u00e9 F. Bissyand\u00e9"
+    ],
+    "venue": "Software, Practice & Experience",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a prototype tool titled PyScribe, which extends the Transformer model to a new encoder\u2010decoder\u2010based framework, and makes the first effort to model the edges of AST as an explicit component for improved code representation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

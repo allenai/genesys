@@ -1,0 +1,41 @@
+{
+    "acronym": "465ec2212d865e875e64638b3dd1ecaac21c5ddd",
+    "title": "Transformer Working Memory Enables Regular Language Reasoning and Natural Language Length Extrapolation",
+    "seed_ids": [
+        "alibi",
+        "elgllm",
+        "kerple",
+        "resurrectrnn",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "e82e3f4347674b75c432cb80604d38ee630d4bf6",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "c6d38add1b7bbc10f0da37a90e3f1b51ee5fb617",
+        "d6c5aab433d9871cabc01ffb1e5e1ea89141155b",
+        "92173d081b15824d22a9ef070e118744ceee8052",
+        "e528466e2aff981511d4ca6e063211297c0b4175",
+        "46c585ee9abf76779ea4b863d2da4358efd0d1d3",
+        "3df83a60f55c64b40e6dbcd99cf9f67894a0736e",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "48ad536d00742a31eb8c6408c5d7ad96e654fe7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "465ec2212d865e875e64638b3dd1ecaac21c5ddd",
+    "abstract": "Unlike recurrent models, conventional wisdom has it that Transformers cannot perfectly model regular languages. Inspired by the notion of working memory, we propose a new Transformer variant named RegularGPT. With its novel combination of Weight-Sharing, Adaptive-Depth, and Sliding-Dilated-Attention, RegularGPT constructs working memory along the depth dimension, thereby enabling efficient and successful modeling of regular languages such as PARITY. We further test RegularGPT on the task of natural language length extrapolation and surprisingly find that it rediscovers the local windowed attention effect deemed necessary in prior work for length extrapolation.",
+    "authors": [
+        "Ta-Chung Chi",
+        "Ting-Han Fan",
+        "A. Rudnicky",
+        "P. Ramadge"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Inspired by the notion of working memory, a new Transformer variant named RegularGPT is proposed, which constructs working memory along the depth dimension, thereby enabling efficient and successful modeling of regular languages such as PARITY."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

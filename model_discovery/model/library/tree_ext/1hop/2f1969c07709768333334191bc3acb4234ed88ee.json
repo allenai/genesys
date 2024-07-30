@@ -1,0 +1,40 @@
+{
+    "acronym": "2f1969c07709768333334191bc3acb4234ed88ee",
+    "title": "Temporal Cross-Attention for Dynamic Embedding and Tokenization of Multimodal Electronic Health Records",
+    "seed_ids": [
+        "longformer",
+        "737a4a6da8c790bcc29f57182c601ebbcd5b59a6",
+        "0651e9cbe0b8c1b4465c80d2309af62e5e4da574",
+        "f30e95be411456a709e7cb9a8b3a3e557bd0356a",
+        "7072db6eddb85ecd2c117365d91bd694760f726e",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "2f1969c07709768333334191bc3acb4234ed88ee",
+    "abstract": "The breadth, scale, and temporal granularity of modern electronic health records (EHR) systems offers great potential for estimating personalized and contextual patient health trajectories using sequential deep learning. However, learning useful representations of EHR data is challenging due to its high dimensionality, sparsity, multimodality, irregular and variable-specific recording frequency, and timestamp duplication when multiple measurements are recorded simultaneously. Although recent efforts to fuse structured EHR and unstructured clinical notes suggest the potential for more accurate prediction of clinical outcomes, less focus has been placed on EHR embedding approaches that directly address temporal EHR challenges by learning time-aware representations from multimodal patient time series. In this paper, we introduce a dynamic embedding and tokenization framework for precise representation of multimodal clinical time series that combines novel methods for encoding time and sequential position with temporal cross-attention. Our embedding and tokenization framework, when integrated into a multitask transformer classifier with sliding window attention, outperformed baseline approaches on the exemplar task of predicting the occurrence of nine postoperative complications of more than 120,000 major inpatient surgeries using multimodal data from three hospitals and two academic health centers in the United States.",
+    "authors": [
+        "Yingbo Ma",
+        "Suraj Kolla",
+        "Dhruv Kaliraman",
+        "Victoria Nolan",
+        "Zhenhong Hu",
+        "Ziyuan Guan",
+        "Yuanfang Ren",
+        "Brooke Armfield",
+        "T. Ozrazgat-Baslanti",
+        "Tyler J. Loftus",
+        "Parisa Rashidi",
+        "A. Bihorac",
+        "B. Shickel"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A dynamic embedding and tokenization framework for precise representation of multimodal clinical time series that combines novel methods for encoding time and sequential position with temporal cross-attention is introduced."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

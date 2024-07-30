@@ -1,0 +1,26 @@
+{
+    "acronym": "4161ad2d2495d8af1d62dc5e71882bde642cd1c1",
+    "title": "Large Language Models Are State-of-the-Art Evaluators of Translation Quality",
+    "seed_ids": [
+        "gpt2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "4161ad2d2495d8af1d62dc5e71882bde642cd1c1",
+    "abstract": "We describe GEMBA, a GPT-based metric for assessment of translation quality, which works both with a reference translation and without. In our evaluation, we focus on zero-shot prompting, comparing four prompt variants in two modes, based on the availability of the reference. We investigate seven versions of GPT models, including ChatGPT. We show that our method for translation quality assessment only works with GPT 3.5 and larger models. Comparing to results from WMT22\u2019s Metrics shared task, our method achieves state-of-the-art accuracy in both modes when compared to MQM-based human labels. Our results are valid on the system level for all three WMT22 Metrics shared task language pairs, namely English into German, English into Russian, and Chinese into English. This provides a first glimpse into the usefulness of pre-trained, generative large language models for quality assessment of translations. We publicly release all our code and prompt templates used for the experiments described in this work, as well as all corresponding scoring results, to allow for external validation and reproducibility.",
+    "authors": [
+        "Tom Kocmi",
+        "C. Federmann"
+    ],
+    "venue": "European Association for Machine Translation Conferences/Workshops",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "GEMBA, a GPT-based metric for assessment of translation quality, which works both with a reference translation and without, is described, and achieves state-of-the-art accuracy in both modes when compared to MQM-based human labels."
+    },
+    "citationCount": 207,
+    "influentialCitationCount": 18,
+    "code": null,
+    "description": null,
+    "url": null
+}

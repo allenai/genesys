@@ -1,0 +1,37 @@
+{
+    "acronym": "34840fa8ab28fb51db79ec9763e70ce57a46016d",
+    "title": "UvA-DARE (Digital Academic Repository) Self-Guided Diffusion Models",
+    "seed_ids": [
+        "classfreediffu",
+        "3ff7153fd6bd47d08084c7f50f8fd70026c126e7",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "a225d5d846ba5110232ed5bb32d54ea742b1c2d4",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "2e644c67a697073d561da4f4dad35e5ad5316cfd",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "33f3f31f871070f19b0c3e967a24e322bfc178f2"
+    ],
+    "s2id": "34840fa8ab28fb51db79ec9763e70ce57a46016d",
+    "abstract": "Diffusion models have demonstrated remarkable progress in image generation quality, especially when guidance is used to control the generative process. However, guidance requires a large amount of image-annotation pairs for training and is thus dependent on their availability and correctness. In this paper, we eliminate the need for such annotation by instead exploiting the flexibility of self-supervision signals to design a framework for self-guided diffusion models. By leveraging a feature extraction function and a self-annotation function, our method provides guidance signals at various image granularities: from the level of holistic images to object boxes and even segmentation masks. Our experiments on single-label and multi-label image datasets demonstrate that self-labeled guidance always outperforms diffusion models without guidance and may even surpass guidance based on ground-truth labels. When equipped with self-supervised box or mask proposals, our method further generates visually diverse yet semantically consistent images, without the need for any class, box, or segment label annotation. Self-guided diffusion is simple, flexible and expected to profit from deployment at scale.",
+    "authors": [
+        "Vincent Tao Hu",
+        "David W. Zhang",
+        "Yuki M. Asano",
+        "G. Burghouts",
+        "Cees G. M. Snoek"
+    ],
+    "venue": "",
+    "year": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper eliminates the need for image-annotation pairs for guidance by exploiting the flexibility of self-supervision signals to design a framework for self-guided diffusion models and generates visually diverse yet semantically consistent images, without the need for any class, box, or segment label annotation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

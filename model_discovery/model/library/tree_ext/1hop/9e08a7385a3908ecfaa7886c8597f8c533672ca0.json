@@ -1,0 +1,29 @@
+{
+    "acronym": "9e08a7385a3908ecfaa7886c8597f8c533672ca0",
+    "title": "Automatically Identifying Local and Global Circuits with Linear Computation Graphs",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "9e08a7385a3908ecfaa7886c8597f8c533672ca0",
+    "abstract": "Circuit analysis of any certain model behavior is a central task in mechanistic interpretability. We introduce our circuit discovery pipeline with Sparse Autoencoders (SAEs) and a variant called Transcoders. With these two modules inserted into the model, the model's computation graph with respect to OV and MLP circuits becomes strictly linear. Our methods do not require linear approximation to compute the causal effect of each node. This fine-grained graph identifies both end-to-end and local circuits accounting for either logits or intermediate features. We can scalably apply this pipeline with a technique called Hierarchical Attribution. We analyze three kinds of circuits in GPT-2 Small: bracket, induction, and Indirect Object Identification circuits. Our results reveal new findings underlying existing discoveries.",
+    "authors": [
+        "Xuyang Ge",
+        "Fukang Zhu",
+        "Wentao Shu",
+        "Junxuan Wang",
+        "Zhengfu He",
+        "Xipeng Qiu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces its circuit discovery pipeline with Sparse Autoencoders (SAEs) and a variant called Transcoders and a variant called Transcoders, and analyzes three kinds of circuits in GPT-2 Small, revealing new findings underlying existing discoveries."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

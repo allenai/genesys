@@ -1,0 +1,37 @@
+{
+    "acronym": "39fbce781d28b36ad41bd897e0a0ca71a285351a",
+    "title": "From Similarity to Superiority: Channel Clustering for Time Series Forecasting",
+    "seed_ids": [
+        "transformer",
+        "9297502c3b1eaa528e8a8fb85a83842d0577fdc6",
+        "afeeb8f5018eebb1a1d334b94dbbfc48d167efef",
+        "16f01c1b3ddd0b2abd5ddfe4fdb3f74767607277",
+        "defecf3dc299214f4cb76a093c6eed2297eaa46f",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "f7890aaf985b001e9226da375f8c2289a323db90"
+    ],
+    "s2id": "39fbce781d28b36ad41bd897e0a0ca71a285351a",
+    "abstract": "Time series forecasting has attracted significant attention in recent decades. Previous studies have demonstrated that the Channel-Independent (CI) strategy improves forecasting performance by treating different channels individually, while it leads to poor generalization on unseen instances and ignores potentially necessary interactions between channels. Conversely, the Channel-Dependent (CD) strategy mixes all channels with even irrelevant and indiscriminate information, which, however, results in oversmoothing issues and limits forecasting accuracy. There is a lack of channel strategy that effectively balances individual channel treatment for improved forecasting performance without overlooking essential interactions between channels. Motivated by our observation of a correlation between the time series model's performance boost against channel mixing and the intrinsic similarity on a pair of channels, we developed a novel and adaptable Channel Clustering Module (CCM). CCM dynamically groups channels characterized by intrinsic similarities and leverages cluster identity instead of channel identity, combining the best of CD and CI worlds. Extensive experiments on real-world datasets demonstrate that CCM can (1) boost the performance of CI and CD models by an average margin of 2.4% and 7.2% on long-term and short-term forecasting, respectively; (2) enable zero-shot forecasting with mainstream time series forecasting models; (3) uncover intrinsic time series patterns among channels and improve interpretability of complex time series models.",
+    "authors": [
+        "Jialin Chen",
+        "J. E. Lenssen",
+        "Aosong Feng",
+        "Weihua Hu",
+        "Matthias Fey",
+        "L. Tassiulas",
+        "J. Leskovec",
+        "Rex Ying"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "CCM dynamically groups channels characterized by intrinsic similarities and leverages cluster identity instead of channel identity, combining the best of CD and CI worlds and uncover intrinsic time series patterns among channels and improve interpretability of complex time series models."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

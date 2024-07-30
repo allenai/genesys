@@ -1,0 +1,29 @@
+{
+    "acronym": "511f44611a812b59184598767ea63c87afaddbe8",
+    "title": "The KITMUS Test: Evaluating Knowledge Integration from Multiple Sources",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "511f44611a812b59184598767ea63c87afaddbe8",
+    "abstract": "Many state-of-the-art natural language understanding (NLU) models are based on pretrained neural language models. These models often make inferences using information from multiple sources. An important class of such inferences are those that require both background knowledge, presumably contained in a model\u2019s pretrained parameters, and instance-specific information that is supplied at inference time. However, the integration and reasoning abilities of NLU models in the presence of multiple knowledge sources have been largely understudied. In this work, we propose a test suite of coreference resolution subtasks that require reasoning over multiple facts. These subtasks differ in terms of which knowledge sources contain the relevant facts. We also introduce subtasks where knowledge is present only at inference time using fictional knowledge. We evaluate state-of-the-art coreference resolution models on our dataset. Our results indicate that several models struggle to reason on-the-fly over knowledge observed both at pretrain time and at inference time. However, with task-specific training, a subset of models demonstrates the ability to integrate certain knowledge types from multiple sources. Still, even the best performing models seem to have difficulties with reliably integrating knowledge presented only at inference time.",
+    "authors": [
+        "Akshatha Arodi",
+        "Martin P\u00f6msl",
+        "Kaheer Suleman",
+        "Adam Trischler",
+        "Alexandra Olteanu",
+        "J. Cheung"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a test suite of coreference resolution subtasks that require reasoning over multiple facts and introduces subtasks where knowledge is present only at inference time using fictional knowledge."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

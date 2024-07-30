@@ -1,0 +1,28 @@
+{
+    "acronym": "934942934a6a785e2a80daa6421fa79971558b89",
+    "title": "BViT: Broad Attention based Vision Transformer",
+    "seed_ids": [
+        "gmlp",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "934942934a6a785e2a80daa6421fa79971558b89",
+    "abstract": "Recent works have demonstrated that transformer can achieve promising performance in computer vision, by exploiting the relationship among image patches with self-attention. They only consider the attention in a single feature layer, but ignore the complementarity of attention in different layers. In this article, we propose broad attention to improve the performance by incorporating the attention relationship of different layers for vision transformer (ViT), which is called BViT. The broad attention is implemented by broad connection and parameter-free attention. Broad connection of each transformer layer promotes the transmission and integration of information for BViT. Without introducing additional trainable parameters, parameter-free attention jointly focuses on the already available attention information in different layers for extracting useful information and building their relationship. Experiments on image classification tasks demonstrate that BViT delivers superior accuracy of 75.0%/81.6% top-1 accuracy on ImageNet with 5M/22M parameters. Moreover, we transfer BViT to downstream object recognition benchmarks to achieve 98.9% and 89.9% on CIFAR10 and CIFAR100, respectively, that exceed ViT with fewer parameters. For the generalization test, the broad attention in Swin Transformer, T2T-ViT and LVT also brings an improvement of more than 1%. To sum up, broad attention is promising to promote the performance of attention-based models. Code and pretrained models are available at https://github.com/DRL/BViT.",
+    "authors": [
+        "Nannan Li",
+        "Yaran Chen",
+        "Weifan Li",
+        "Zixiang Ding",
+        "Dong Zhao"
+    ],
+    "venue": "IEEE Transactions on Neural Networks and Learning Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

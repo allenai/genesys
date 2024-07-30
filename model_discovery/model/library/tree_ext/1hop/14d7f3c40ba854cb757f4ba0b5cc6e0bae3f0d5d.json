@@ -1,0 +1,34 @@
+{
+    "acronym": "14d7f3c40ba854cb757f4ba0b5cc6e0bae3f0d5d",
+    "title": "Finding the Pillars of Strength for Multi-Head Attention",
+    "seed_ids": [
+        "lighdynconv",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "8af925f4edf45131b5b6fed8aa655089d58692fa",
+        "59e3f0fcd07a44fd1293681528209d0b0d78e75e",
+        "830995ef17cc291c13f42dfd9f462137de1d2179",
+        "8cd4054b41936ba0889edc26be8969c3dc8491d8",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "14d7f3c40ba854cb757f4ba0b5cc6e0bae3f0d5d",
+    "abstract": "Recent studies have revealed some issues of Multi-Head Attention (MHA), e.g., redundancy and over-parameterization. Specifically, the heads of MHA were originally designed to attend to information from different representation subspaces, whereas prior studies found that some attention heads likely learn similar features and can be pruned without harming performance. Inspired by the minimum-redundancy feature selection, we assume that focusing on the most representative and distinctive features with minimum resources can mitigate the above issues and lead to more effective and efficient MHAs. In particular, we propose Grouped Head Attention, trained with a self-supervised group constraint that group attention heads, where each group focuses on an essential but distinctive feature subset. We additionally propose a Voting-to-Stay procedure to remove redundant heads, thus achieving a transformer with lighter weights. Extensive experiments are consistent with our hypothesis. Moreover, our method achieves significant performance gains on three well-established tasks while considerably compressing parameters.",
+    "authors": [
+        "Jinjie Ni",
+        "Rui Mao",
+        "Zonglin Yang",
+        "Han Lei",
+        "E. Cambria"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Inspired by the minimum-redundancy feature selection, it is assumed that focusing on the most representative and distinctive features with minimum resources can mitigate the above issues and lead to more effective and efficient MHAs."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

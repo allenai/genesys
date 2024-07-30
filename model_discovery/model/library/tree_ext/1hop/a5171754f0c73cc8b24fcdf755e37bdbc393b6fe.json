@@ -1,0 +1,34 @@
+{
+    "acronym": "a5171754f0c73cc8b24fcdf755e37bdbc393b6fe",
+    "title": "Text2Data: Low-Resource Data Generation with Textual Control",
+    "seed_ids": [
+        "classfreediffu",
+        "dce62170e8be820bcec51aae2eceed3943ca6c9a",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "15736f7c205d961c00378a938daffaacb5a0718d"
+    ],
+    "s2id": "a5171754f0c73cc8b24fcdf755e37bdbc393b6fe",
+    "abstract": "Natural language serves as a common and straightforward control signal for humans to interact seamlessly with machines. Recognizing the importance of this interface, the machine learning community is investing considerable effort in generating data that is semantically coherent with textual instructions. While strides have been made in text-to-data generation spanning image editing, audio synthesis, video creation, and beyond, low-resource areas characterized by expensive annotations or complex data structures, such as molecules, motion dynamics, and time series, often lack textual labels. This deficiency impedes supervised learning, thereby constraining the application of advanced generative models for text-to-data tasks. In response to these challenges in the low-resource scenario, we propose Text2Data, a novel approach that utilizes unlabeled data to understand the underlying data distribution through an unsupervised diffusion model. Subsequently, it undergoes controllable finetuning via a novel constraint optimization-based learning objective that ensures controllability and effectively counteracts catastrophic forgetting. Comprehensive experiments demonstrate that Text2Data is able to achieve enhanced performance regarding controllability across various modalities, including molecules, motions and time series, when compared to existing baselines.",
+    "authors": [
+        "Shiyu Wang",
+        "Yihao Feng",
+        "Tian Lan",
+        "Ning Yu",
+        "Yu Bai",
+        "Ran Xu",
+        "Huan Wang",
+        "Caiming Xiong",
+        "Silvio Savarese"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Text2Data is a novel approach that utilizes unlabeled data to understand the underlying data distribution through an unsupervised diffusion model and undergoes controllable finetuning via a novel constraint optimization-based learning objective that ensures controllability and effectively counteracts catastrophic forgetting."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

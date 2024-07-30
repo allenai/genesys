@@ -1,0 +1,26 @@
+{
+    "acronym": "b283d1021d411df0a96bd70eed70572888570d8e",
+    "title": "Investigating the potential of Sparse Mixtures-of-Experts for multi-domain neural machine translation",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "b283d1021d411df0a96bd70eed70572888570d8e",
+    "abstract": "We focus on multi-domain Neural Machine Translation, with the goal of developing efficient models which can handle data from various domains seen during training and are robust to domains unseen during training. We hypothesize that Sparse Mixture-of-Experts (SMoE) models are a good fit for this task, as they enable efficient model scaling, which helps to accommodate a variety of multi-domain data, and allow flexible sharing of parameters between domains, potentially enabling knowledge transfer between similar domains and limiting negative transfer. We conduct a series of experiments aimed at validating the utility of SMoE for the multi-domain scenario, and find that a straightforward width scaling of Transformer is a simpler and surprisingly more efficient approach in practice, and reaches the same performance level as SMoE. We also search for a better recipe for robustness of multi-domain systems, highlighting the importance of mixing-in a generic domain, i.e. Paracrawl, and introducing a simple technique, domain randomization.",
+    "authors": [
+        "Nadezhda Chirkova",
+        "Vassilina Nikoulina",
+        "Jean-Luc Meunier",
+        "Alexandre B'erard"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work hypothesizes that Sparse Mixture-of-Experts (SMoE) models are a good fit for this task, as they enable efficient model scaling, which helps to accommodate a variety of multi-domain data, and allow flexible sharing of parameters between domains."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

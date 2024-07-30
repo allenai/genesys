@@ -1,0 +1,26 @@
+{
+    "acronym": "2a2dda2c2cf49e4457c1c2973071064fde09f1c2",
+    "title": "TR2MTL: LLM based framework for Metric Temporal Logic Formalization of Traffic Rules",
+    "seed_ids": [
+        "gpt3",
+        "980e55d9226cac302d0fae7732da4e67b8bc952c"
+    ],
+    "s2id": "2a2dda2c2cf49e4457c1c2973071064fde09f1c2",
+    "abstract": "Traffic rules formalization is crucial for verifying the compliance and safety of autonomous vehicles (AVs). However, manual translation of natural language traffic rules as formal specification requires domain knowledge and logic expertise, which limits its adaptation. This paper introduces TR2MTL, a framework that employs large language models (LLMs) to automatically translate traffic rules (TR) into metric temporal logic (MTL). It is envisioned as a human-in-loop system for AV rule formalization. It utilizes a chain-of-thought in-context learning approach to guide the LLM in step-by-step translation and generating valid and grammatically correct MTL formulas. It can be extended to various forms of temporal logic and rules. We evaluated the framework on a challenging dataset of traffic rules we created from various sources and compared it against LLMs using different in-context learning methods. Results show that TR2MTL is domain-agnostic, achieving high accuracy and generalization capability even with a small dataset. Moreover, the method effectively predicts formulas with varying degrees of logical and semantic structure in unstructured traffic rules.",
+    "authors": [
+        "Kumar Manas",
+        "Stefan Zwicklbauer",
+        "Adrian Paschke"
+    ],
+    "venue": "2024 IEEE Intelligent Vehicles Symposium (IV)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "TR2MTL, a framework that employs large language models (LLMs) to automatically translate traffic rules (TR) into metric temporal logic (MTL) is introduced, envisioned as a human-in-loop system for AV rule formalization."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

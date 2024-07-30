@@ -1,0 +1,26 @@
+{
+    "acronym": "831a75a469aebb5bd8dafe3132235c2755f1421c",
+    "title": "Fairness Testing of Machine Translation Systems",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "831a75a469aebb5bd8dafe3132235c2755f1421c",
+    "abstract": "Machine translation is integral to international communication and extensively employed in diverse human-related applications. Despite remarkable progress, fairness issues persist within current machine translation systems. In this paper, we propose FairMT, an automated fairness testing approach tailored for machine translation systems. FairMT operates on the assumption that translations of semantically similar sentences, containing protected attributes from distinct demographic groups, should maintain comparable meanings. It comprises three key steps: (1) test input generation, producing inputs covering various demographic groups; (2) test oracle generation, identifying potential unfair translations based on semantic similarity measurements; and (3) regression, discerning genuine fairness issues from those caused by low-quality translation. Leveraging FairMT, we conduct an empirical study on three leading machine translation systems\u2014Google Translate, T5, and Transformer. Our investigation uncovers up to 832, 1,984, and 2,627 unfair translations across the three systems, respectively. Intriguingly, we observe that fair translations tend to exhibit superior translation performance, challenging the conventional wisdom of a fairness-performance trade-off prevalent in the fairness literature.",
+    "authors": [
+        "Zeyu Sun",
+        "Zhenpeng Chen",
+        "Jie M. Zhang",
+        "Dan Hao"
+    ],
+    "venue": "ACM Transactions on Software Engineering and Methodology",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Intriguingly, it is observed that fair translations tend to exhibit superior translation performance, challenging the conventional wisdom of a fairness-performance trade-off prevalent in the fairness literature."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

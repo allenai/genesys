@@ -1,0 +1,34 @@
+{
+    "acronym": "143a5cd40df8b9edd3bdccc6d7b2245150be8616",
+    "title": "Revisiting Parallel Context Windows: A Frustratingly Simple Alternative and Chain-of-Thought Deterioration",
+    "seed_ids": [
+        "pcw",
+        "980e55d9226cac302d0fae7732da4e67b8bc952c",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+        "d9f6ada77448664b71128bb19df15765336974a6"
+    ],
+    "s2id": "143a5cd40df8b9edd3bdccc6d7b2245150be8616",
+    "abstract": "We identify two crucial limitations in the evaluation of recent parallel-integrated method Parallel Context Windows (PCW), which extends the maximum context lengths of language models, e.g., 2048 for LLaMA, by harnessing window-wise attention and positional embedding techniques. We first show that a simple yet strong baseline, weighted sum ensemble, is missing for the in-context few-shot classification. Moreover, on more challenging Chain-of-Thought (CoT) reasoning (e.g., HotpotQA), PCW would present unexpected deterioration regarding question miscomprehension and false inference. Based on our findings, we suggest that the existing PCW design may not guarantee sufficient improvement and practicality in handling lengthy documents in real-world applications. More community efforts on enabling language models' long context understanding ability should be paid.",
+    "authors": [
+        "Kejuan Yang",
+        "Xiao Liu",
+        "Kaiwen Men",
+        "Aohan Zeng",
+        "Yuxiao Dong",
+        "Jie Tang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The existing PCW design may not guarantee sufficient improvement and practicality in handling lengthy documents in real-world applications and more community efforts on enabling language models' long context understanding ability should be paid."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

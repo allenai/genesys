@@ -1,0 +1,35 @@
+{
+    "acronym": "ae9e6c36a68302803783f03cd914055b67d2559b",
+    "title": "Improving the Robustness of Transformer-based Large Language Models with Dynamic Attention",
+    "seed_ids": [
+        "bert",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "d8d2e574965fe733eb1416e03df2b5c2914fc530",
+        "837ac4ed6825502f0460caec45e12e734c85b113",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "7b49bcd9fd53158a57d158550461bcb72ac83fbc",
+        "01d08fa6c229bf3070600e49f8ab05449361817e"
+    ],
+    "s2id": "ae9e6c36a68302803783f03cd914055b67d2559b",
+    "abstract": "Transformer-based models, such as BERT and GPT, have been widely adopted in natural language processing (NLP) due to their exceptional performance. However, recent studies show their vulnerability to textual adversarial attacks where the model's output can be misled by intentionally manipulating the text inputs. Despite various methods that have been proposed to enhance the model's robustness and mitigate this vulnerability, many require heavy consumption resources (e.g., adversarial training) or only provide limited protection (e.g., defensive dropout). In this paper, we propose a novel method called dynamic attention, tailored for the transformer architecture, to enhance the inherent robustness of the model itself against various adversarial attacks. Our method requires no downstream task knowledge and does not incur additional costs. The proposed dynamic attention consists of two modules: (I) attention rectification, which masks or weakens the attention value of the chosen tokens, and (ii) dynamic modeling, which dynamically builds the set of candidate tokens. Extensive experiments demonstrate that dynamic attention significantly mitigates the impact of adversarial attacks, improving up to 33\\% better performance than previous methods against widely-used adversarial attacks. The model-level design of dynamic attention enables it to be easily combined with other defense methods (e.g., adversarial training) to further enhance the model's robustness. Furthermore, we demonstrate that dynamic attention preserves the state-of-the-art robustness space of the original model compared to other dynamic modeling methods.",
+    "authors": [
+        "Lujia Shen",
+        "Yuwen Pu",
+        "Shouling Ji",
+        "Changjiang Li",
+        "Xuhong Zhang",
+        "Chunpeng Ge",
+        "Ting Wang"
+    ],
+    "venue": "Proceedings 2024 Network and Distributed System Security Symposium",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel method called dynamic attention, tailored for the transformer architecture, to enhance the inherent robustness of the model itself against various adversarial attacks, and demonstrates that dynamic attention preserves the state-of-the-art robustness space of the original model compared to other dynamic modeling methods."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

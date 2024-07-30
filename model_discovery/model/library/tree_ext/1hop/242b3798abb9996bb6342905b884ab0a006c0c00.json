@@ -1,0 +1,39 @@
+{
+    "acronym": "242b3798abb9996bb6342905b884ab0a006c0c00",
+    "title": "Lightweight Structure-Aware Attention for Visual Understanding",
+    "seed_ids": [
+        "cosformer",
+        "c49ac1f916d6d2edeb187e6619c8d23acd95eb21",
+        "9b6af0e358e76d22f209c75b1702c3e6ea7815b1",
+        "0d508600d77d8a7e6a655cdb6d139779732f649f",
+        "08ffdec40291a2ccb5f8a6cc048b01247fb34b96",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "3cbe314cc5407a6c3249815b5173f22ea15173c2",
+        "cec7872b194aadf54140578b9be52939eb1112e9",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "5a9bc55f6332e38f62eb509b684147a1d4f10fd9"
+    ],
+    "s2id": "242b3798abb9996bb6342905b884ab0a006c0c00",
+    "abstract": "Vision Transformers (ViTs) have become a dominant paradigm for visual representation learning with self-attention operators. Although these operators provide flexibility to the model with their adjustable attention kernels, they suffer from inherent limitations: (1) the attention kernel is not discriminative enough, resulting in high redundancy of the ViT layers, and (2) the complexity in computation and memory is quadratic in the sequence length. In this paper, we propose a novel attention operator, called lightweight structure-aware attention (LiSA), which has a better representation power with log-linear complexity. Our operator learns structural patterns by using a set of relative position embeddings (RPEs). To achieve log-linear complexity, the RPEs are approximated with fast Fourier transforms. Our experiments and ablation studies demonstrate that ViTs based on the proposed operator outperform self-attention and other existing operators, achieving state-of-the-art results on ImageNet, and competitive results on other visual understanding benchmarks such as COCO and Something-Something-V2. The source code of our approach will be released online.",
+    "authors": [
+        "Heeseung Kwon",
+        "F. M. Castro",
+        "M. Mar\u00edn-Jim\u00e9nez",
+        "N. Guil",
+        "Alahari Karteek"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that ViTs based on the proposed operator outperform self-attention and other existing operators, achieving state-of-the-art results on ImageNet, and competitive results on other visual understanding benchmarks such as COCO and Something-Something-V2."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

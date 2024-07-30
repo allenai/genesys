@@ -1,0 +1,31 @@
+{
+    "acronym": "2c2833fe22afebe9aa0fca46de5425ba50dc274e",
+    "title": "Scalable Numerical Embeddings for Multivariate Time Series: Enhancing Healthcare Data Representation Learning",
+    "seed_ids": [
+        "transformer",
+        "e0d3b7d2b7bd26dd526e48c2bae64e14dc5babcf"
+    ],
+    "s2id": "2c2833fe22afebe9aa0fca46de5425ba50dc274e",
+    "abstract": "Multivariate time series (MTS) data, when sampled irregularly and asynchronously, often present extensive missing values. Conventional methodologies for MTS analysis tend to rely on temporal embeddings based on timestamps that necessitate subsequent imputations, yet these imputed values frequently deviate substantially from their actual counterparts, thereby compromising prediction accuracy. Furthermore, these methods typically fail to provide robust initial embeddings for values infrequently observed or even absent within the training set, posing significant challenges to model generalizability. In response to these challenges, we propose SCAlable Numerical Embedding (SCANE), a novel framework that treats each feature value as an independent token, effectively bypassing the need for imputation. SCANE regularizes the traits of distinct feature embeddings and enhances representational learning through a scalable embedding mechanism. Coupling SCANE with the Transformer Encoder architecture, we develop the Scalable nUMerical eMbeddIng Transformer (SUMMIT), which is engineered to deliver precise predictive outputs for MTS characterized by prevalent missing entries. Our experimental validation, conducted across three disparate electronic health record (EHR) datasets marked by elevated missing value frequencies, confirms the superior performance of SUMMIT over contemporary state-of-the-art approaches addressing similar challenges. These results substantiate the efficacy of SCANE and SUMMIT, underscoring their potential applicability across a broad spectrum of MTS data analytical tasks.",
+    "authors": [
+        "Chun-Kai Huang",
+        "Yi-Hsien Hsieh",
+        "Ta-Jung Chien",
+        "Li-Cheng Chien",
+        "Shao-Hua Sun",
+        "T. Su",
+        "J. Kao",
+        "Che Lin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes SCAlable Numerical Embedding (SCANE), a novel framework that treats each feature value as an independent token, effectively bypassing the need for imputation, and develops the Scalable nUMerical eMbeddIng Transformer (SUMMIT), which is engineered to deliver precise predictive outputs for MTS characterized by prevalent missing entries."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

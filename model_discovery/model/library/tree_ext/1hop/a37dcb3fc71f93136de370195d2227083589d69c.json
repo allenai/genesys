@@ -1,0 +1,31 @@
+{
+    "acronym": "a37dcb3fc71f93136de370195d2227083589d69c",
+    "title": "Txt2Img-MHN: Remote Sensing Image Generation From Text Using Modern Hopfield Networks",
+    "seed_ids": [
+        "hopfield",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "eb95b02edfaeb28f528b5ee8b705388bb9a933be",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "562bf6d0aac2c6362086ef4c80503de8ea56b340"
+    ],
+    "s2id": "a37dcb3fc71f93136de370195d2227083589d69c",
+    "abstract": "The synthesis of high-resolution remote sensing images based on text descriptions has great potential in many practical application scenarios. Although deep neural networks have achieved great success in many important remote sensing tasks, generating realistic remote sensing images from text descriptions is still very difficult. To address this challenge, we propose a novel text-to-image modern Hopfield network (Txt2Img-MHN). The main idea of Txt2Img-MHN is to conduct hierarchical prototype learning on both text and image embeddings with modern Hopfield layers. Instead of directly learning concrete but highly diverse text-image joint feature representations for different semantics, Txt2Img-MHN aims to learn the most representative prototypes from text-image embeddings, achieving a coarse-to-fine learning strategy. These learned prototypes can then be utilized to represent more complex semantics in the text-to-image generation task. To better evaluate the realism and semantic consistency of the generated images, we further conduct zero-shot classification on real remote sensing data using the classification model trained on synthesized images. Despite its simplicity, we find that the overall accuracy in the zero-shot classification may serve as a good metric to evaluate the ability to generate an image from text. Extensive experiments on the benchmark remote sensing text-image dataset demonstrate that the proposed Txt2Img-MHN can generate more realistic remote sensing images than existing methods. Code and pre-trained models are available online (https://github.com/YonghaoXu/Txt2Img-MHN).",
+    "authors": [
+        "Yonghao Xu",
+        "Weikang Yu",
+        "Pedram Ghamisi",
+        "Michael Kopp",
+        "Sepp Hochreiter"
+    ],
+    "venue": "IEEE Transactions on Image Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed Txt2Img-MHN can generate more realistic remote sensing images than existing methods and the overall accuracy in the zero-shot classification may serve as a good metric to evaluate the ability to generate an image from text."
+    },
+    "citationCount": 18,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

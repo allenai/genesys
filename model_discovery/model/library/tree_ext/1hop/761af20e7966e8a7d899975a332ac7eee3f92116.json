@@ -1,0 +1,32 @@
+{
+    "acronym": "761af20e7966e8a7d899975a332ac7eee3f92116",
+    "title": "How to Protect Copyright Data in Optimization of Large Language Models?",
+    "seed_ids": [
+        "gpt2",
+        "aa62931579f0a03f9a05fc16506a22b166ef0875",
+        "6cb35dd6e1338faa0c3d6a6b0020bbcbcc18653d",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "5f895e84c1fea75de07b4f90da518273c2e57291",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "b745b5512ad3b1f652dc0cbb5ddf5a940f397f7d",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "761af20e7966e8a7d899975a332ac7eee3f92116",
+    "abstract": "Large language models (LLMs) and generative AI have played a transformative role in computer research and applications. Controversy has arisen as to whether these models output copyrighted data, which can occur if the data the models are trained on is copyrighted. LLMs are built on the transformer neural network architecture, which in turn relies on a mathematical computation called Attention that uses the softmax function.\n\nIn this paper, we observe that large language model training and optimization can be seen as a softmax regression problem. We then establish a method of efficiently performing softmax regression, in a way that prevents the regression function from generating copyright data. This establishes a theoretical method of training large language models in a way that avoids generating copyright data.",
+    "authors": [
+        "T. Chu",
+        "Zhao Song",
+        "Chiwun Yang"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is observed that large language model training and optimization can be seen as a softmax regression problem, and a method of efficiently performing softmax regression, in a way that prevents the regression function from generating copyright data is established."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "9efea405e5dfd277472f24f1dd95a26ca5734a6a",
+    "title": "ViTamin: Designing Scalable Vision Models in the Vision-Language Era",
+    "seed_ids": [
+        "transformer",
+        "16513bc0dc13902334a9cb3657056763efdcec6f",
+        "dd1139cfc609c2f3263d02e97176d5275caebc0a",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "9efea405e5dfd277472f24f1dd95a26ca5734a6a",
+    "abstract": "Recent breakthroughs in vision-language models (VLMs) start a new page in the vision community. The VLMs provide stronger and more generalizable feature embeddings compared to those from ImageNet-pretrained models, thanks to the training on the large-scale Internet image-text pairs. However, despite the amazing achievement from the VLMs, vanilla Vision Transformers (ViTs) remain the default choice for the image encoder. Although pure transformer proves its effectiveness in the text encoding area, it remains questionable whether it is also the case for image encoding, especially considering that various types of networks are proposed on the ImageNet benchmark, which, unfortunately, are rarely studied in VLMs. Due to small data/model scale, the original conclusions of model design on ImageNet can be limited and biased. In this paper, we aim at building an evaluation protocol of vision models in the vision-language era under the contrastive language-image pretraining (CLIP) framework. We provide a comprehensive way to benchmark different vision models, covering their zero-shot performance and scalability in both model and training data sizes. To this end, we introduce ViTamin, a new vision models tailored for VLMs. ViTamin-L significantly outperforms ViT-L by 2.0% ImageNet zero-shot accuracy, when using the same publicly available DataComp-1B dataset and the same OpenCLIP training scheme. ViTamin-L presents promising results on 60 diverse benchmarks, including classification, retrieval, open-vocabulary detection and segmentation, and large multi-modal models. When further scaling up the model size, our ViTamin-XL with only 436M parameters attains 82.9% ImageNet zero-shot accuracy, surpassing 82.0% achieved by EVA-E that has ten times more parameters (4.4B).",
+    "authors": [
+        "Jienneg Chen",
+        "Qihang Yu",
+        "Xiaohui Shen",
+        "Alan L. Yuille",
+        "Liang-Chieh Chen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An evaluation protocol of vision models in the vision-language era under the contrastive language-image pretraining (CLIP) framework is built, and ViTamin, a new vision models tailored for VLMs is introduced, with promising results on 60 diverse benchmarks."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

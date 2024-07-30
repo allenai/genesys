@@ -1,0 +1,30 @@
+{
+    "acronym": "5367755b10bad2576328d3400dcaeabb78bec2ea",
+    "title": "Exploring Learning-based Motion Models in Multi-Object Tracking",
+    "seed_ids": [
+        "s4",
+        "mamba",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "7e9ff94476f41041c75e253e84f487db00e9c861"
+    ],
+    "s2id": "5367755b10bad2576328d3400dcaeabb78bec2ea",
+    "abstract": "In the field of multi-object tracking (MOT), traditional methods often rely on the Kalman Filter for motion prediction, leveraging its strengths in linear motion scenarios. However, the inherent limitations of these methods become evident when confronted with complex, nonlinear motions and occlusions prevalent in dynamic environments like sports and dance. This paper explores the possibilities of replacing the Kalman Filter with various learning-based motion model that effectively enhances tracking accuracy and adaptability beyond the constraints of Kalman Filter-based systems. In this paper, we proposed MambaTrack, an online motion-based tracker that outperforms all existing motion-based trackers on the challenging DanceTrack and SportsMOT datasets. Moreover, we further exploit the potential of the state-space-model in trajectory feature extraction to boost the tracking performance and proposed MambaTrack+, which achieves the state-of-the-art performance on DanceTrack dataset with 56.1 HOTA and 54.9 IDF1.",
+    "authors": [
+        "Hsiang-Wei Huang",
+        "Cheng-Yen Yang",
+        "Wenhao Chai",
+        "Zhongyu Jiang",
+        "Jenq-Neng Hwang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "MambaTrack is proposed, an online motion-based tracker that outperforms all existing motion-based trackers on the challenging DanceTrack and SportsMOT datasets and further exploits the potential of the state-space-model in trajectory feature extraction to boost the tracking performance."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

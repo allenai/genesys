@@ -1,0 +1,36 @@
+{
+    "acronym": "66bc083c16257ca3878d5eeaa8dd83ab37a1e5a5",
+    "title": "OPa-Ma: Text Guided Mamba for 360-degree Image Out-painting",
+    "seed_ids": [
+        "mamba",
+        "62ac3ef81e54e1d1930fb5980b236345ee2e4f32",
+        "3a0c5026f7ea965dc4475c8d857fc3b6df27ae05",
+        "1df04f33a8ef313cc2067147dbb79c3ca7c5c99f",
+        "1e291a7c189f4cce66cf647fdae9546465f73341",
+        "6827e87642874d9bf69f0f1548d79a164aaa5e1e",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51"
+    ],
+    "s2id": "66bc083c16257ca3878d5eeaa8dd83ab37a1e5a5",
+    "abstract": "In this paper, we tackle the recently popular topic of generating 360-degree images given the conventional narrow field of view (NFoV) images that could be taken from a single camera or cellphone. This task aims to predict the reasonable and consistent surroundings from the NFoV images. Existing methods for feature extraction and fusion, often built with transformer-based architectures, incur substantial memory usage and computational expense. They also have limitations in maintaining visual continuity across the entire 360-degree images, which could cause inconsistent texture and style generation. To solve the aforementioned issues, we propose a novel text-guided out-painting framework equipped with a State-Space Model called Mamba to utilize its long-sequence modelling and spatial continuity. Furthermore, incorporating textual information is an effective strategy for guiding image generation, enriching the process with detailed context and increasing diversity. Efficiently extracting textual features and integrating them with image attributes presents a significant challenge for 360-degree image out-painting. To address this, we develop two modules, Visual-textual Consistency Refiner (VCR) and Global-local Mamba Adapter (GMA). VCR enhances contextual richness by fusing the modified text features with the image features, while GMA provides adaptive state-selective conditions by capturing the information flow from global to local representations. Our proposed method achieves state-of-the-art performance with extensive experiments on two broadly used 360-degree image datasets, including indoor and outdoor settings.",
+    "authors": [
+        "Penglei Gao",
+        "Kai Yao",
+        "Tiandi Ye",
+        "Steven Wang",
+        "Yuan Yao",
+        "Xiaofeng Wang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel text-guided out-painting framework equipped with a State-Space Model called Mamba to utilize its long-sequence modelling and spatial continuity, and develops two modules, Visual-textual Consistency Refiner (VCR) and Global-local Mamba Adapter (GMA)."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

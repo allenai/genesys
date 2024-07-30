@@ -1,0 +1,40 @@
+{
+    "acronym": "3bef44ef3aacddaae56d6efc9f6767e64bc65b31",
+    "title": "BioLaySumm 2023 Shared Task: Lay Summarisation of Biomedical Research Articles",
+    "seed_ids": [
+        "longformer",
+        "3c5f7e7ee0ab7413ba3bf8ad3400810da542d617",
+        "687733531aa65ea28b8a389399d3cbce9c99cee8",
+        "8a9e7290d403dd2098e5ce80d6338ae03071cf85",
+        "44279244407a64431810f982be6d0c7da4429dd7",
+        "65b6753b4ce9036dbb81e4cc9899e895496717fb",
+        "274f903041b1a830b37f57929d837c1706e94ec7",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "49a482fb40ed6e7fba590fc20608ec577b2a55e1",
+        "b2c98e2e25edcb4f9c9e448fe09411ee2789b27d",
+        "b8fefb8529e5372a142f923f5826e15a92301d03"
+    ],
+    "s2id": "3bef44ef3aacddaae56d6efc9f6767e64bc65b31",
+    "abstract": "This paper presents the results of the shared task on Lay Summarisation of Biomedical Research Articles (BioLaySumm), hosted at the BioNLP Workshop at ACL 2023. The goal of this shared task is to develop abstractive summarisation models capable of generating \u201clay summaries\u201d (i.e., summaries that are comprehensible to non-technical audiences) in both a controllable and non-controllable setting.There are two subtasks: 1) Lay Summarisation, where the goal is for participants to build models for lay summary generation only, given the full article text and the corresponding abstract as input; and2) Readability-controlled Summarisation, where the goal is for participants to train models to generate both the technical abstract and the lay summary, given an article\u2019s main text as input.In addition to overall results, we report on the setup and insights from the BioLaySumm shared task, which attracted a total of 20 participating teams across both subtasks.",
+    "authors": [
+        "Tomas Goldsack",
+        "Zheheng Luo",
+        "Qianqian Xie",
+        "Carolina Scarton",
+        "M. Shardlow",
+        "S. Ananiadou",
+        "Chenghua Lin"
+    ],
+    "venue": "Workshop on Biomedical Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The goal of this shared task is to develop abstractive summarisation models capable of generating \u201clay summaries\u201d in both a controllable and non-controllable setting."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

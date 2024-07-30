@@ -1,0 +1,32 @@
+{
+    "acronym": "f4df57d3b7fbdcee443dfd9d6df6bea9928fef81",
+    "title": "Dance with You: The Diversity Controllable Dancer Generation via Diffusion Models",
+    "seed_ids": [
+        "classfreediffu",
+        "15736f7c205d961c00378a938daffaacb5a0718d",
+        "3ff7153fd6bd47d08084c7f50f8fd70026c126e7",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "2d9ae4c167510ed78803735fc57ea67c3cc55a35"
+    ],
+    "s2id": "f4df57d3b7fbdcee443dfd9d6df6bea9928fef81",
+    "abstract": "Recently, digital humans for interpersonal interaction in virtual environments have gained significant attention. In this paper, we introduce a novel multi-dancer synthesis task called partner dancer generation, which involves synthesizing virtual human dancers capable of performing dance with users. The task aims to control the pose diversity between the lead dancer and the partner dancer. The core of this task is to ensure the controllable diversity of the generated partner dancer while maintaining temporal coordination with the lead dancer. This scenario varies from earlier research in generating dance motions driven by music, as our emphasis is on automatically designing partner dancer postures according to pre-defined diversity, the pose of lead dancer, as well as the accompanying tunes. To achieve this objective, we propose a three-stage framework called Dance-with-You (DanY). Initially, we employ a 3D Pose Collection stage to collect a wide range of basic dance poses as references for motion generation. Then, we introduce a hyper-parameter that coordinates the similarity between dancers by masking poses to prevent the generation of sequences that are over-diverse or consistent. To avoid the rigidity of movements, we design a Dance Pre-generated stage to pre-generate these masked poses instead of filling them with zeros. After that, a Dance Motion Transfer stage is adopted with leader sequences and music, in which a multi-conditional sampling formula is rewritten to transfer the pre-generated poses into a sequence with a partner style. In practice, to address the lack of multi-person datasets, we introduce AIST-M, a new dataset for partner dancer generation, which is publicly availiable at https://github.com/JJessicaYao/AIST-M-Dataset. Comprehensive evaluations on our AIST-M dataset demonstrate that the proposed DanY can synthesize satisfactory partner dancer results with controllable diversity.",
+    "authors": [
+        "Siyue Yao",
+        "Mingjie Sun",
+        "Bingliang Li",
+        "Fengyu Yang",
+        "Junle Wang",
+        "Ruimao Zhang"
+    ],
+    "venue": "ACM Multimedia",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel multi-dancer synthesis task called partner dancer generation, which involves synthesizing virtual human dancers capable of performing dance with users, is introduced and comprehensive evaluations on the proposed DanY can synthesize satisfactory partner dancer results with controllable diversity are demonstrated."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

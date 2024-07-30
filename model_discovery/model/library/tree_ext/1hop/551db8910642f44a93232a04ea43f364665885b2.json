@@ -1,0 +1,30 @@
+{
+    "acronym": "551db8910642f44a93232a04ea43f364665885b2",
+    "title": "The BEA 2023 Shared Task on Generating AI Teacher Responses in Educational Dialogues",
+    "seed_ids": [
+        "gpt2",
+        "dfc622a5defde3d7b78bbab6b04eaac6632cedb7",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "551db8910642f44a93232a04ea43f364665885b2",
+    "abstract": "This paper describes the results of the first shared task on generation of teacher responses in educational dialogues. The goal of the task was to benchmark the ability of generative language models to act as AI teachers, replying to a student in a teacherstudent dialogue. Eight teams participated in the competition hosted on CodaLab and experimented with a wide variety of state-of-the-art models, including Alpaca, Bloom, DialoGPT, DistilGPT-2, Flan-T5, GPT- 2, GPT-3, GPT-4, LLaMA, OPT-2.7B, and T5- base. Their submissions were automatically scored using BERTScore and DialogRPT metrics, and the top three among them were further manually evaluated in terms of pedagogical ability based on Tack and Piech (2022). The NAISTeacher system, which ranked first in both automated and human evaluation, generated responses with GPT-3.5 Turbo using an ensemble of prompts and DialogRPT-based ranking of responses for given dialogue contexts. Despite promising achievements of the participating teams, the results also highlight the need for evaluation metrics better suited to educational contexts.",
+    "authors": [
+        "Ana\u00efs Tack",
+        "E. Kochmar",
+        "Zheng Yuan",
+        "Serge Bibauw",
+        "C. Piech"
+    ],
+    "venue": "Workshop on Innovative Use of NLP for Building Educational Applications",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The goal of the task was to benchmark the ability of generative language models to act as AI teachers, replying to a student in a teacherstudent dialogue, and the results highlight the need for evaluation metrics better suited to educational contexts."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

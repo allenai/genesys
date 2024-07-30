@@ -1,0 +1,40 @@
+{
+    "acronym": "3f5405ffaa526adb43554520147c82e47a0e7d21",
+    "title": "StreamingDialogue: Prolonged Dialogue Learning via Long Context Compression with Minimal Losses",
+    "seed_ids": [
+        "longformer",
+        "4ea5ca620122e6a9a2b000444d36491cebf49c7c",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "5fc1a3a49e8f1d106118b69d1d6be3b6caa23da0",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "af385c0fdd0eda2bbf429bea6fedffc327c8a180",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "2e14e84ccec924ed770b58108ad1d9de6f0ca295",
+        "24615e613d4551f7aaa0557befa0a8bc403f39cd"
+    ],
+    "s2id": "3f5405ffaa526adb43554520147c82e47a0e7d21",
+    "abstract": "Standard Large Language Models (LLMs) struggle with handling dialogues with long contexts due to efficiency and consistency issues. According to our observation, dialogue contexts are highly structured, and the special token of \\textit{End-of-Utterance} (EoU) in dialogues has the potential to aggregate information. We refer to the EoU tokens as ``conversational attention sinks'' (conv-attn sinks). Accordingly, we introduce StreamingDialogue, which compresses long dialogue history into conv-attn sinks with minimal losses, and thus reduces computational complexity quadratically with the number of sinks (i.e., the number of utterances). Current LLMs already demonstrate the ability to handle long context window, e.g., a window size of 200k or more. To this end, by compressing utterances into EoUs, our method has the potential to handle more than 200k of utterances, resulting in a prolonged dialogue learning. In order to minimize information losses from reconstruction after compression, we design two learning strategies of short-memory reconstruction (SMR) and long-memory reactivation (LMR). Our method outperforms strong baselines in dialogue tasks and achieves a 4 $\\times$ speedup while reducing memory usage by 18 $\\times$ compared to dense attention recomputation.",
+    "authors": [
+        "Jia-Nan Li",
+        "Quan Tu",
+        "Cunli Mao",
+        "Zhengtao Yu",
+        "Ji-Rong Wen",
+        "Rui Yan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "StreamingDialogue is introduced, which compresses long dialogue history into conv-attn sinks with minimal losses, and thus reduces computational complexity quadratically with the number of sinks, and has the potential to handle more than 200k of utterances, resulting in a prolonged dialogue learning."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

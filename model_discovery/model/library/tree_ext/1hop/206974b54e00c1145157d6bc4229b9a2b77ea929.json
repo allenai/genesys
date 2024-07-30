@@ -1,0 +1,31 @@
+{
+    "acronym": "206974b54e00c1145157d6bc4229b9a2b77ea929",
+    "title": "H-vmunet: High-order Vision Mamba UNet for Medical Image Segmentation",
+    "seed_ids": [
+        "mamba",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "9b6af0e358e76d22f209c75b1702c3e6ea7815b1"
+    ],
+    "s2id": "206974b54e00c1145157d6bc4229b9a2b77ea929",
+    "abstract": "In the field of medical image segmentation, variant models based on Convolutional Neural Networks (CNNs) and Visual Transformers (ViTs) as the base modules have been very widely developed and applied. However, CNNs are often limited in their ability to deal with long sequences of information, while the low sensitivity of ViTs to local feature information and the problem of secondary computational complexity limit their development. Recently, the emergence of state-space models (SSMs), especially 2D-selective-scan (SS2D), has had an impact on the longtime dominance of traditional CNNs and ViTs as the foundational modules of visual neural networks. In this paper, we extend the adaptability of SS2D by proposing a High-order Vision Mamba UNet (H-vmunet) for medical image segmentation. Among them, the proposed High-order 2D-selective-scan (H-SS2D) progressively reduces the introduction of redundant information during SS2D operations through higher-order interactions. In addition, the proposed Local-SS2D module improves the learning ability of local features of SS2D at each order of interaction. We conducted comparison and ablation experiments on three publicly available medical image datasets (ISIC2017, Spleen, and CVC-ClinicDB), and the results all demonstrate the strong competitiveness of H-vmunet in medical image segmentation tasks. The code is available from https://github.com/wurenkai/H-vmunet .",
+    "authors": [
+        "Renkai Wu",
+        "Yinghao Liu",
+        "Pengchen Liang",
+        "Qing Chang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A High-order 2D-selective-scan (H-SS2D) module that progressively reduces the introduction of redundant information during SS2D operations through higher-order interactions and improves the learning ability of local features of SS2D at each order of interaction is proposed."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

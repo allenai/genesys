@@ -1,0 +1,30 @@
+{
+    "acronym": "2e14e84ccec924ed770b58108ad1d9de6f0ca295",
+    "title": "BP-Transformer: Modelling Long-Range Context via Binary Partitioning",
+    "seed_ids": [
+        "transformerxl",
+        "7cc730da554003dda77796d2cb4f06da5dfd5592",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "2a31319e73d4486716168b65cdf7559baeda18ce"
+    ],
+    "s2id": "2e14e84ccec924ed770b58108ad1d9de6f0ca295",
+    "abstract": "The Transformer model is widely successful on many natural language processing tasks. However, the quadratic complexity of self-attention limit its application on long text. In this paper, adopting a fine-to-coarse attention mechanism on multi-scale spans via binary partitioning (BP), we propose BP-Transformer (BPT for short). BPT yields $O(k\\cdot n\\log (n/k))$ connections where $k$ is a hyperparameter to control the density of attention. BPT has a good balance between computation complexity and model capacity. A series of experiments on text classification, machine translation and language modeling shows BPT has a superior performance for long text than previous self-attention models. Our code, hyperparameters and CUDA kernels for sparse attention are available in PyTorch.",
+    "authors": [
+        "Zihao Ye",
+        "Qipeng Guo",
+        "Quan Gan",
+        "Xipeng Qiu",
+        "Zheng Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Ad adopting a fine-to-coarse attention mechanism on multi-scale spans via binary partitioning (BP), BP-Transformer (BPT for short) is proposed, which has a superior performance for long text than previous self-attention models."
+    },
+    "citationCount": 73,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

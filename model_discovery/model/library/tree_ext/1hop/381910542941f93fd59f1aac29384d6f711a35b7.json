@@ -1,0 +1,30 @@
+{
+    "acronym": "381910542941f93fd59f1aac29384d6f711a35b7",
+    "title": "Entity Anchored ICD Coding",
+    "seed_ids": [
+        "longformer",
+        "6fe5cfbe53f14012766240e4b1fd4af000ecb4ba",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "d9f6ada77448664b71128bb19df15765336974a6"
+    ],
+    "s2id": "381910542941f93fd59f1aac29384d6f711a35b7",
+    "abstract": "Medical coding is a complex task, requiring assignment of a subset of over 72,000 ICD codes to a patient's notes. Modern natural language processing approaches to these tasks have been challenged by the length of the input and size of the output space. We limit our model inputs to a small window around medical entities found in our documents. From those local contexts, we build contextualized representations of both ICD codes and entities, and aggregate over these representations to form document-level predictions. In contrast to existing methods which use a representation fixed either in size or by codes seen in training, we represent ICD codes by encoding the code description with local context. We discuss metrics appropriate to deploying coding systems in practice. We show that our approach is superior to existing methods in both standard and deployable measures, including performance on rare and unseen codes.",
+    "authors": [
+        "Jay DeYoung",
+        "Han-Chin Shing",
+        "Luyang Kong",
+        "C. Winestock",
+        "Chaitanya P. Shivade"
+    ],
+    "venue": "American Medical Informatics Association Annual Symposium",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work represents ICD codes by encoding the code description with local context, and shows that this approach is superior to existing methods in both standard and deployable measures, including performance on rare and unseen codes."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

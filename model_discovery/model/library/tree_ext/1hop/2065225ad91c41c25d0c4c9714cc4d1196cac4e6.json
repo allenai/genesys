@@ -1,0 +1,29 @@
+{
+    "acronym": "2065225ad91c41c25d0c4c9714cc4d1196cac4e6",
+    "title": "Efficient Estimate of Low-Frequency Words\u2019 Embeddings Based on the Dictionary: A Case Study on Chinese",
+    "seed_ids": [
+        "gpt",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "2065225ad91c41c25d0c4c9714cc4d1196cac4e6",
+    "abstract": "Obtaining high-quality embeddings of out-of-vocabularies (OOVs) and low-frequency words is a challenge in natural language processing (NLP). To efficiently estimate the embeddings of OOVs and low-frequency words, we propose a new method that uses the dictionary to estimate the embeddings of OOVs and low-frequency words. More specifically, the explanatory note of an entry in dictionaries accurately describes the semantics of the corresponding word. Naturally, we adopt the sentence representation model to extract the semantics of the explanatory note and regard the semantics as the embedding of the corresponding word. We design a new sentence representation model to encode sentences to extract the semantics from the explanatory notes of entries more efficiently. Based on the assumption that the higher quality of word embeddings will lead to better performance, we design an extrinsic experiment to evaluate the quality of low-frequency words\u2019 embeddings. The experimental results show that the embeddings of low-frequency words estimated by our proposed method have higher quality. In addition, both intrinsic and extrinsic experiments show that our proposed sentence representation model can represent the semantics of sentences well.",
+    "authors": [
+        "Xianwen Liao",
+        "Yongzhong Huang",
+        "Changfu Wei",
+        "Chenhao Zhang",
+        "Yongqing Deng",
+        "Ke Yi"
+    ],
+    "venue": "Applied Sciences",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a new method that uses the dictionary to estimate the embeddings of OOVs and low-frequency words and designs a new sentence representation model to encode sentences to extract the semantics from the explanatory notes of entries more efficiently."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "b28db25f64a0b7010856334c96881d39b82eea39",
+    "title": "Thai Knowledge-Augmented Language Model Adaptation (ThaiKALA)",
+    "seed_ids": [
+        "gpt3",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "b28db25f64a0b7010856334c96881d39b82eea39",
+    "abstract": "Large language models have exhibited considerable prowess in diverse NLP tasks, demonstrating promising performance. However, they still have limitations in effectively capturing domain-specific knowledge and contextually-relevant information, resulting in hallucination issues. To address these challenges, This paper presents ThaiKALA, a framework designed for the Thai language to augment domain-specific knowledge into the language model. The framework utilizes three modules to handle Thai language specifically: event extraction, a self-defined ID database, and a multilingual language model. To confirm the performance, the framework is also evaluated with strong generative baselines like GPT-3 and GPT-3.5-turbo-16k. As a result, ThaiKALA, with only Entity Memory, outperforms all baselines including GPT-3 and GPT-3.5 in extractive Question Answering (EQA) tasks, achieving a higher exact match (42.48%) and competitive F1 scores (67.07%). These results demonstrate that ThaiKALA is effective in enhancing the language model\u2019s performance on Thai extractive QA by augmenting the extracted knowledge.",
+    "authors": [
+        "Pavaris Ruangchutiphophan",
+        "Chanatip Saetia",
+        "Thititorn Seneewong Na Ayutthaya",
+        "Tawunrat Chalothorn"
+    ],
+    "venue": "2023 18th International Joint Symposium on Artificial Intelligence and Natural Language Processing (iSAI-NLP)",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ThaiKALA, a framework designed for the Thai language to augment domain-specific knowledge into the language model, demonstrates that ThaiKALA is effective in enhancing the language model\u2019s performance on Thai extractive QA by augmenting the extracted knowledge."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "d7f64f2bdd80ea15f21ef7d867e102ac9ecdc797",
+    "title": "GateLoop: Fully Data-Controlled Linear Recurrence for Sequence Modeling",
+    "seed_ids": [
+        "retnet",
+        "resurrectrnn",
+        "240103933ffe3dac2179cc160a2bd91299357a53",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "ccf84c100fa78c599d0e901a3754ff044aa6bd9e"
+    ],
+    "s2id": "d7f64f2bdd80ea15f21ef7d867e102ac9ecdc797",
+    "abstract": "Linear Recurrence has proven to be a powerful tool for modeling long sequences efficiently. In this work, we show that existing models fail to take full advantage of its potential. Motivated by this finding, we develop GateLoop, a foundational sequence model that generalizes linear recurrent models such as S4, S5, LRU and RetNet, by employing data-controlled state transitions. Utilizing this theoretical advance, GateLoop empirically outperforms existing models for auto-regressive language modeling. Our method comes with a low-cost $O(l)$ recurrent mode and an efficient $O(l \\log_{2} l)$ parallel mode making use of highly optimized associative scan implementations. Furthermore, we derive an $O(l^2)$ surrogate attention mode, revealing remarkable implications for Transformer and recently proposed architectures. Specifically, we prove that our approach can be interpreted as providing data-controlled relative-positional information to Attention. While many existing models solely rely on data-controlled cumulative sums for context aggregation, our findings suggest that incorporating data-controlled complex cumulative products may be a crucial step towards more powerful sequence models.",
+    "authors": [
+        "Tobias Katsch"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "GateLoop is developed, a foundational sequence model that generalizes linear recurrent models such as S4, S5, LRU and RetNet by employing data-controlled state transitions, and empirically outperforms existing models for auto-regressive language modeling."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "9eb7860ae9777997ed17f6de623b0ab08cfc2df5",
+    "title": "Long Document Ranking with Query-Directed Sparse Transformer",
+    "seed_ids": [
+        "longformer",
+        "sparsetransformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "8382402fe166df3de499dac182e42baa51335926",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13"
+    ],
+    "s2id": "9eb7860ae9777997ed17f6de623b0ab08cfc2df5",
+    "abstract": "The computing cost of transformer self-attention often necessitates breaking long documents to fit in pretrained models in document ranking tasks. In this paper, we design Query-Directed Sparse attention that induces IR-axiomatic structures in transformer self-attention. Our model, QDS-Transformer, enforces the principle properties desired in ranking: local contextualization, hierarchical representation, and query-oriented proximity matching, while it also enjoys efficiency from sparsity. Experiments on four fully supervised and few-shot TREC document ranking benchmarks demonstrate the consistent and robust advantage of QDS-Transformer over previous approaches, as they either retrofit long documents into BERT or use sparse attention without emphasizing IR principles. We further quantify the computing complexity and demonstrates that our sparse attention with TVM implementation is twice more efficient that the fully-connected self-attention. All source codes, trained model, and predictions of this work are available at https://github.com/hallogameboy/QDS-Transformer.",
+    "authors": [
+        "Jyun-Yu Jiang",
+        "Chenyan Xiong",
+        "Chia-Jung Lee",
+        "Wei Wang"
+    ],
+    "venue": "Findings",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper designs Query-Directed Sparse attention that induces IR-axiomatic structures in transformer self-attention that enforces the principle properties desired in ranking: local contextualization, hierarchical representation, and query-oriented proximity matching, while it also enjoys efficiency from sparsity."
+    },
+    "citationCount": 23,
+    "influentialCitationCount": 8,
+    "code": null,
+    "description": null,
+    "url": null
+}

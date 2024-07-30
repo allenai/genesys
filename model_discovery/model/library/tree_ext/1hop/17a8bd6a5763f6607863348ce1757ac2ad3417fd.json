@@ -1,0 +1,33 @@
+{
+    "acronym": "17a8bd6a5763f6607863348ce1757ac2ad3417fd",
+    "title": "Accelerating Transformer Networks through Recomposing Softmax Layers",
+    "seed_ids": [
+        "bigbird",
+        "longformer",
+        "a7a62a32989afe90d514e744a436229724cc04a7",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "17a8bd6a5763f6607863348ce1757ac2ad3417fd",
+    "abstract": "The transformer model has become a crucial deep learning model as it provides accuracy superior to that by conventional models in various domains, such as image processing, genomics, and natural language processing. Recently, the importance of the softmax layer has increased as a growing number of transformer models process longer sequences to improve their accuracy rates. However, it is difficult to accelerate a softmax layer with methods introduced in previous studies due to the differences in the data access patterns of softmax layers and other adjacent layers. We address this challenge by accelerating the softmax layer through a recomposition strategy. By decomposing the softmax layer into multiple sub-layers, we change its data access pattern. Then, we fuse the decomposed softmax sub-layers with the subsequent and preceding operations. Softmax recomposition achieves up to 1.25 $\\times$, 1.12 $\\times$, 1.57 $\\times$, and 1.65 $\\times$ speedups in inferring BERT, GPT-Neo, BigBird, and Longformer on a modern GPU by significantly reducing the off-chip memory traffic.",
+    "authors": [
+        "Jaewan Choi",
+        "Hailong Li",
+        "Byeongho Kim",
+        "Seunghwan Hwang",
+        "Jung Ho Ahn"
+    ],
+    "venue": "IEEE International Symposium on Workload Characterization",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The transformer model has become a crucial deep learning model as it provides accuracy superior to that by conventional models in various domains, such as image processing, genomics, and natural language processing, and this work addresses this challenge by accelerating the softmax layer through a recomposition strategy."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,25 @@
+{
+    "acronym": "9f0a45103aa474ee4d0946de8b690087dd065b60",
+    "title": "Knowledge Enhanced Attention for Robust Natural Language Inference",
+    "seed_ids": [
+        "gpt",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad"
+    ],
+    "s2id": "9f0a45103aa474ee4d0946de8b690087dd065b60",
+    "abstract": "Neural network models have been very successful at achieving high accuracy on natural language inference (NLI) tasks. However, as demonstrated in recent literature, when tested on some simple adversarial examples, most of the models suffer a significant drop in performance. This raises the concern about the robustness of NLI models. In this paper, we propose to make NLI models robust by incorporating external knowledge to the attention mechanism using a simple transformation. We apply the new attention to two popular types of NLI models: one is Transformer encoder, and the other is a decomposable model, and show that our method can significantly improve their robustness. Moreover, when combined with BERT pretraining, our method achieves the human-level performance on the adversarial SNLI data set.",
+    "authors": [
+        "Alexander Hanbo Li",
+        "A. Sethy"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper applies the new attention to two popular types of NLI models: one is Transformer encoder, and the other is a decomposable model, and shows that the method can significantly improve their robustness."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

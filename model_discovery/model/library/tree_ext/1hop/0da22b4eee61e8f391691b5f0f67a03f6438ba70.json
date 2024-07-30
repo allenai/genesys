@@ -1,0 +1,27 @@
+{
+    "acronym": "0da22b4eee61e8f391691b5f0f67a03f6438ba70",
+    "title": "Context-Aware Amino Acid Embedding Advances Analysis of TCR-Epitope Interactions",
+    "seed_ids": [
+        "gpt3",
+        "bert"
+    ],
+    "s2id": "0da22b4eee61e8f391691b5f0f67a03f6438ba70",
+    "abstract": "Accurate prediction of binding interaction between T cell receptors (TCRs) and host cells is fundamental to understanding the regulation of the adaptive immune system as well as to developing data-driven approaches for personalized immunotherapy. While several machine learning models have been developed for this prediction task, the question of how to specifically embed TCR sequences into numeric representations remains largely unexplored compared to protein sequences in general. Here, we investigate whether the embedding models designed for protein sequences, and the most widely used BLOSUM-based embedding techniques are suitable for TCR analysis. Additionally, we present our context-aware amino acid embedding models (catELMo) designed explicitly for TCR analysis and trained on 4M unlabeled TCR sequences with no supervision. We validate the effectiveness of catELMo in both supervised and unsupervised scenarios by stacking the simplest models on top of our learned embeddings. For the supervised task, we choose the binding affinity prediction problem of TCR and epitope sequences and demonstrate notably significant performance gains (up by at least 14% AUC) compared to existing embedding models as well as the state-of-the-art methods. Additionally, we also show that our learned embeddings reduce more than 93% annotation cost while achieving comparable results to the state-of-the-art methods. In TCR clustering task (unsupervised), catELMo identifies TCR clusters that are more homogeneous and complete about their binding epitopes. Altogether, our catELMo trained without any explicit supervision interprets TCR sequences better and negates the need for complex deep neural network architectures in downstream tasks.",
+    "authors": [
+        "Pengfei Zhang",
+        "Seo-Jin Bang",
+        "Michael Cai",
+        "Heewook Lee"
+    ],
+    "venue": "bioRxiv",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The authors' context-aware amino acid embedding models (catELMo) designed explicitly for TCR analysis and trained on 4M unlabeled TCR sequences with no supervision interprets TCR sequences better and negates the need for complex deep neural network architectures in downstream tasks."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

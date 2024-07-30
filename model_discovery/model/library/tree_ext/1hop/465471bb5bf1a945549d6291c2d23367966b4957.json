@@ -1,0 +1,35 @@
+{
+    "acronym": "465471bb5bf1a945549d6291c2d23367966b4957",
+    "title": "In-Context Retrieval-Augmented Language Models",
+    "seed_ids": [
+        "gpt2",
+        "a72975eb88eb31f193e9587e7415cb04e7bcdbee",
+        "980e55d9226cac302d0fae7732da4e67b8bc952c",
+        "da1d6445b6b64ce9eb4587ba8abbdc490f648ec1",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "ad7129af0644dbcafa9aa2f111cb76526ea444a1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "465471bb5bf1a945549d6291c2d23367966b4957",
+    "abstract": "Abstract Retrieval-Augmented Language Modeling (RALM) methods, which condition a language model (LM) on relevant documents from a grounding corpus during generation, were shown to significantly improve language modeling performance. In addition, they can mitigate the problem of factually inaccurate text generation and provide natural source attribution mechanism. Existing RALM approaches focus on modifying the LM architecture in order to facilitate the incorporation of external information, significantly complicating deployment. This paper considers a simple alternative, which we dub In-Context RALM: leaving the LM architecture unchanged and prepending grounding documents to the input, without any further training of the LM. We show that In-Context RALM that builds on off-the-shelf general purpose retrievers provides surprisingly large LM gains across model sizes and diverse corpora. We also demonstrate that the document retrieval and ranking mechanism can be specialized to the RALM setting to further boost performance. We conclude that In-Context RALM has considerable potential to increase the prevalence of LM grounding, particularly in settings where a pretrained LM must be used without modification or even via API access.1",
+    "authors": [
+        "Ori Ram",
+        "Yoav Levine",
+        "Itay Dalmedigos",
+        "Dor Muhlgay",
+        "A. Shashua",
+        "Kevin Leyton-Brown",
+        "Y. Shoham"
+    ],
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that In-Context RALM that builds on off-the-shelf general purpose retrievers provides surprisingly large LM gains across model sizes and diverse corpora, and that the document retrieval and ranking mechanism can be specialized to the RALm setting to further boost performance."
+    },
+    "citationCount": 282,
+    "influentialCitationCount": 31,
+    "code": null,
+    "description": null,
+    "url": null
+}

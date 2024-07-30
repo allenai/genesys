@@ -1,0 +1,26 @@
+{
+    "acronym": "0e0918bd63e0b1e985fed5bab05ba6935e52e0cd",
+    "title": "CoMM: Collaborative Multi-Agent, Multi-Reasoning-Path Prompting for Complex Problem Solving",
+    "seed_ids": [
+        "gpt3",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2"
+    ],
+    "s2id": "0e0918bd63e0b1e985fed5bab05ba6935e52e0cd",
+    "abstract": "Large Language Models (LLMs) have shown great ability in solving traditional natural language tasks and elementary reasoning tasks with appropriate prompting techniques. However, their ability is still limited in solving complicated science problems. In this work, we aim to push the upper bound of the reasoning capability of LLMs by proposing a collaborative multi-agent, multi-reasoning-path (CoMM) prompting framework. Specifically, we prompt LLMs to play different roles in a problem-solving team, and encourage different role-play agents to collaboratively solve the target task. In particular, we discover that applying different reasoning paths for different roles is an effective strategy to implement few-shot prompting approaches in the multi-agent scenarios. Empirical results demonstrate the effectiveness of the proposed methods on two college-level science problems over competitive baselines. Our further analysis shows the necessity of prompting LLMs to play different roles or experts independently. We release the code at: https://github.com/amazon-science/comm-prompt",
+    "authors": [
+        "Pei Chen",
+        "Boran Han",
+        "Shuai Zhang"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work aims to push the upper bound of the reasoning capability of LLMs by proposing a collaborative multi-agent, multi-reasoning-path (CoMM) prompting framework, and finds that applying different reasoning paths for different roles is an effective strategy to implement few-shot prompting approaches in the multi-agent scenarios."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

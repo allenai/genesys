@@ -1,0 +1,30 @@
+{
+    "acronym": "f753b0e58629daaa7ccc1c36da842bb028c6a1ee",
+    "title": "Hopfield Boosting for Out-of-Distribution Detection",
+    "seed_ids": [
+        "hopfield",
+        "264fb3355fe11c9063bc9e466d438f720d15ef52",
+        "eb95b02edfaeb28f528b5ee8b705388bb9a933be",
+        "cfd5982c81538f128bd7aa755929c8c0f4ee2bbe"
+    ],
+    "s2id": "f753b0e58629daaa7ccc1c36da842bb028c6a1ee",
+    "abstract": "Out-of-distribution (OOD) detection is crucial for real-world machine learning. Outlier exposure methods, which use auxiliary outlier data, can significantly enhance OOD detection. We present Hopfield Boosting, a boosting technique employing modern Hopfield energy (MHE) to refine the decision boundary between in-distribution (ID) and OOD data. Our method focuses on challenging outlier examples near the decision boundary, achieving a 40% improvement in FPR95 on CIFAR-10, setting a new state-of-the-art in OOD detection with outlier exposure.",
+    "authors": [
+        "Claus Hofmann",
+        "Simon Schmid",
+        "Bernhard Lehner",
+        "Daniel Klotz",
+        "Sepp Hochreiter"
+    ],
+    "venue": "",
+    "year": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Hopfield Boosting is presented, a boosting technique employing modern Hopfield energy (MHE) to refine the decision boundary between in-distribution (ID) and OOD data, achieving a 40% improvement in FPR95 on CIFAR-10, setting a new state-of-the-art in OOD detection with outlier exposure."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

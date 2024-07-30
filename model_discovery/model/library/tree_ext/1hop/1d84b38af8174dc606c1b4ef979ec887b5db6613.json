@@ -1,0 +1,26 @@
+{
+    "acronym": "1d84b38af8174dc606c1b4ef979ec887b5db6613",
+    "title": "Counting and Algorithmic Generalization with Transformers",
+    "seed_ids": [
+        "universaltrans",
+        "7691c40975cf25fae4b7a55278a65d2dcb361646"
+    ],
+    "s2id": "1d84b38af8174dc606c1b4ef979ec887b5db6613",
+    "abstract": "Algorithmic generalization in machine learning refers to the ability to learn the underlying algorithm that generates data in a way that generalizes out-of-distribution. This is generally considered a difficult task for most machine learning algorithms. Here, we analyze algorithmic generalization when counting is required, either implicitly or explicitly. We show that standard Transformers are based on architectural decisions that hinder out-of-distribution performance for such tasks. In particular, we discuss the consequences of using layer normalization and of normalizing the attention weights via softmax. With ablation of the problematic operations, we demonstrate that a modified transformer can exhibit a good algorithmic generalization performance on counting while using a very lightweight architecture.",
+    "authors": [
+        "Simon Ouellette",
+        "Rolf Pfister",
+        "Hansueli Jud"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows that standard Transformers are based on architectural decisions that hinder out-of-distribution performance for such tasks, and discusses the consequences of using layer normalization and of normalizing the attention weights via softmax."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

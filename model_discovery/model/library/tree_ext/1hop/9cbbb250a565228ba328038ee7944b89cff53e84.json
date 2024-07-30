@@ -1,0 +1,53 @@
+{
+    "acronym": "9cbbb250a565228ba328038ee7944b89cff53e84",
+    "title": "Diffusion Language Models Can Perform Many Tasks with Scaling and Instruction-Finetuning",
+    "seed_ids": [
+        "diffuseq",
+        "reparamdiscdiffu",
+        "d9ffb44ee3c8ec0b6692df8a90451384c1edd89b",
+        "9e16d8cc6096ec0d2733a4ecf41ce09d9a4bd19c",
+        "49cbfa5848aaa74ce01d29ee5328f1a2b466ce27",
+        "375de1279cc1685a116403bc378ba94aaf6a172e",
+        "54b6e5dcef733c151adef0ac06430f63cb301a36",
+        "020a50f6a7154850ac81e3cde69ad8198ded6751",
+        "1f898d66acabff511a3871b82799aa73c0055402",
+        "a1186d7d9a9ef258c76afef1177e4f348061a537",
+        "a979742220a88b1d32e1fbe72c41e8ba3007053c",
+        "22775e58932cdfbd273a2a835a22c5d86800a458",
+        "0b9770a377b3f96cef9f268cee1791d39a0d4893",
+        "bb15f3727f827a3cb88b5d3ca48415c09b40a88f",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "b21670e8061a06ab97e7d6052c9345a326e84ff8",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "0e3d6a7c9c04cf3ba9c902724548846a5ade04b4",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "24425954960ce968e5f14360fbdd0605abcadfcf",
+        "e512964293671abbdc409f313d127cbe85ffe5cd",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "9cbbb250a565228ba328038ee7944b89cff53e84",
+    "abstract": "The recent surge of generative AI has been fueled by the generative power of diffusion probabilistic models and the scalable capabilities of large language models. Despite their potential, it remains elusive whether diffusion language models can solve general language tasks comparable to their autoregressive counterparts. This paper demonstrates that scaling diffusion models w.r.t. data, sizes, and tasks can effectively make them strong language learners. We build competent diffusion language models at scale by first acquiring knowledge from massive data via masked language modeling pretraining thanks to their intrinsic connections. We then reprogram pretrained masked language models into diffusion language models via diffusive adaptation, wherein task-specific finetuning and instruction finetuning are explored to unlock their versatility in solving general language tasks. Experiments show that scaling diffusion language models consistently improves performance across downstream language tasks. We further discover that instruction finetuning can elicit zero-shot and few-shot in-context learning abilities that help tackle many unseen tasks by following natural language instructions, and show promise in advanced and challenging abilities such as reasoning.",
+    "authors": [
+        "Jiasheng Ye",
+        "Zaixiang Zheng",
+        "Yu Bao",
+        "Lihua Qian",
+        "Quanquan Gu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper demonstrates that scaling diffusion models w.r.t. data, sizes, and tasks can effectively make them strong language learners and discovers that instruction finetuning can elicit zero-shot and few-shot in-context learning abilities that help tackle many unseen tasks by following natural language instructions."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

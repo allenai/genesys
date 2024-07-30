@@ -1,0 +1,33 @@
+{
+    "acronym": "93948a2aac559fcaf4314f8f472a0f122f465411",
+    "title": "Residual Shuffle-Exchange Networks for Fast Processing of Long Sequences",
+    "seed_ids": [
+        "universaltrans",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "2a31319e73d4486716168b65cdf7559baeda18ce",
+        "fb507ada871d1e8c29e376dbf7b7879689aa89f9",
+        "07fa8c8a703abd7496f4781e9dee53d5de9c8717",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "93948a2aac559fcaf4314f8f472a0f122f465411",
+    "abstract": "Attention is a commonly used mechanism in sequence processing, but it is of O(n^2) complexity which prevents its application to long sequences. The recently introduced neural Shuffle-Exchange network offers a computation-efficient alternative, enabling the modelling of long-range dependencies in O(n log n) time. The model, however, is quite complex, involving a sophisticated gating mechanism derived from the Gated Recurrent Unit. In this paper, we present a simple and lightweight variant of the Shuffle-Exchange network, which is based on a residual network employing GELU and Layer Normalization. The proposed architecture not only scales to longer sequences but also converges faster and provides better accuracy. It surpasses the Shuffle-Exchange network on the LAMBADA language modelling task and achieves state-of-the-art performance on the MusicNet dataset for music transcription while being efficient in the number of parameters. We show how to combine the improved Shuffle-Exchange network with convolutional layers, establishing it as a useful building block in long sequence processing applications.",
+    "authors": [
+        "Andis Draguns",
+        "Emils Ozolins",
+        "A. Sostaks",
+        "Matiss Apinis",
+        "K\u0101rlis Freivalds"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a simple and lightweight variant of the Shuffle-Exchange network, which is based on a residual network employing GELU and Layer Normalization and achieves state-of-the-art performance on the MusicNet dataset for music transcription while being efficient in the number of parameters."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

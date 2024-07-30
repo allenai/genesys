@@ -1,0 +1,30 @@
+{
+    "acronym": "f1a9e0830bc36c048fa4659beaa62609869895b5",
+    "title": "Break the Sequential Dependency of LLM Inference Using Lookahead Decoding",
+    "seed_ids": [
+        "flashattn",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a"
+    ],
+    "s2id": "f1a9e0830bc36c048fa4659beaa62609869895b5",
+    "abstract": "Autoregressive decoding of large language models (LLMs) is memory bandwidth bounded, resulting in high latency and significant wastes of the parallel processing power of modern accelerators. Existing methods for accelerating LLM decoding often require a draft model (e.g., speculative decoding), which is nontrivial to obtain and unable to generalize. In this paper, we introduce Lookahead decoding, an exact, parallel decoding algorithm that accelerates LLM decoding without needing auxiliary models or data stores. It allows trading per-step log(FLOPs) to reduce the number of total decoding steps, is more parallelizable on single or multiple modern accelerators, and is compatible with concurrent memory-efficient attention (e.g., FlashAttention). Our implementation of Lookahead decoding can speed up autoregressive decoding by up to 1.8x on MT-bench and 4x with strong scaling on multiple GPUs in code completion tasks. Our code is avialable at https://github.com/hao-ai-lab/LookaheadDecoding",
+    "authors": [
+        "Yichao Fu",
+        "Peter D. Bailis",
+        "Ion Stoica",
+        "Hao Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Lookahead decoding is introduced, an exact, parallel decoding algorithm that accelerates LLM decoding without needing auxiliary models or data stores, is more parallelizable on single or multiple modern accelerators, and is compatible with concurrent memory-efficient attention."
+    },
+    "citationCount": 50,
+    "influentialCitationCount": 10,
+    "code": null,
+    "description": null,
+    "url": null
+}

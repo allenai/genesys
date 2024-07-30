@@ -1,0 +1,32 @@
+{
+    "acronym": "c010e76751aaac668bbd5494b2c98a2b7fdd5947",
+    "title": "Tale of Two Cs: Computation vs. Communication Scaling for Future Transformers on Future Hardware",
+    "seed_ids": [
+        "gpt2",
+        "transformerxl",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "80f9f109d1564cb8f82aa440a5f6f3fbe220c9ef",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "c010e76751aaac668bbd5494b2c98a2b7fdd5947",
+    "abstract": "Scaling neural network models has delivered dramatic quality gains across ML problems. However, this scaling also increased the reliance on efficient distributed training techniques. Accordingly, like other distributed computing scenarios, it is important to understand how compute and communication will scale relative to one another as models scale and hardware evolves? A careful study which answers this question can better guide the design of future systems which can efficiently train future large models.Accordingly, we comprehensively analyze compute vs. communication (Comp-vs.-Comm) scaling for future Transformer models on future hardware, across multiple axes (algorithmic, empirical, hardware evolution). First, our algorithmic analysis shows that compute generally enjoys an edge over communication as models scale. However, these trends are being stressed since device memory capacity scales much slower than model size. We quantify this edge by empirically studying how Comp-vs.-Comm scales for future models on future hardware. To avoid profiling numerous Transformer models across many setups, we extract execution regions and project costs using operator models. This allows a spectrum (hundreds) of future model/hardware scenarios to be accurately studied (< 15% error) and reduces profiling costs by 2100\u00d7. Our experiments show that communication will be a significant portion (40-75%) of runtime as models and hardware evolve. Moreover, communication that is often hidden by overlapped computation in today\u2019s models cannot be hidden in future, larger models. Overall, this work highlights communication\u2019s increasingly large role as models scale, discusses promising techniques to potentially tackle communication, and discusses how our analysis influences their potential improvements.",
+    "authors": [
+        "Suchita Pati",
+        "Shaizeen Aga",
+        "Mahzabeen Islam",
+        "N. Jayasena",
+        "Matthew D. Sinclair"
+    ],
+    "venue": "IEEE International Symposium on Workload Characterization",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work comprehensively analyzes compute vs. communication (Comp-vs.-Comm) scaling for future Transformer models on future hardware, across multiple axes, and shows that communication will be a significant portion of runtime as models and hardware evolve."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "f4dde217d326e547b85a5cc0f5defaa973ce7a54",
+    "title": "EffEval: A Comprehensive Evaluation of Efficiency for MT Evaluation Metrics",
+    "seed_ids": [
+        "gpt2",
+        "270f3bea8ca801870a6cc56b4d36f7f2019c9ed0",
+        "c6c734e16f66fbfcefac7625cc64599e83292c1e",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f4dde217d326e547b85a5cc0f5defaa973ce7a54",
+    "abstract": "Efficiency is a key property to foster inclusiveness and reduce environmental costs, especially in an era of LLMs. In this work, we provide a comprehensive evaluation of efficiency for MT evaluation metrics. Our approach involves replacing computation-intensive transformers with lighter alternatives and employing linear and quadratic approximations for alignment algorithms on top of LLM representations. We evaluate six (reference-free and reference-based) metrics across three MT datasets and examine 16 lightweight transformers. In addition, we look into the training efficiency of metrics like COMET by utilizing adapters. Our results indicate that (a) TinyBERT provides the optimal balance between quality and efficiency, (b) CPU speed-ups are more substantial than those on GPU; (c) WMD approximations yield no efficiency gains while reducing quality and (d) adapters enhance training efficiency (regarding backward pass speed and memory requirements) as well as, in some cases, metric quality. These findings can help to strike a balance between evaluation speed and quality, which is essential for effective NLG systems. Furthermore, our research contributes to the ongoing efforts to optimize NLG evaluation metrics with minimal impact on performance. To our knowledge, ours is the most comprehensive analysis of different aspects of efficiency for MT metrics conducted so far.",
+    "authors": [
+        "Jens Grunwald",
+        "Christoph Leiter",
+        "Steffen Eger"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work provides a comprehensive evaluation of efficiency for MT evaluation metrics by replacing computation-intensive transformers with lighter alternatives and employing linear and quadratic approximations for alignment algorithms on top of LLM representations."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

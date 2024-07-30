@@ -1,0 +1,29 @@
+{
+    "acronym": "dc385646887a3669ae0ee506a263d592f4f7c7a6",
+    "title": "Finding Support Examples for In-Context Learning",
+    "seed_ids": [
+        "gpt2",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "48abfc41a0abf023d2037ebb2f274835e0d322d0",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "a07a94168608322600fd3cab54df1410b96852b6",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "dc385646887a3669ae0ee506a263d592f4f7c7a6",
+    "abstract": "Additionally, the strong dependency among in-context examples makes it an NP-hard combinatorial optimization problem and enumerating all permutations is infeasible. Hence we propose LENS, a fiLter-thEN-Search method to tackle this challenge in two stages: First we filter the dataset to obtain informative in-context examples individually. Specifically, we propose a novel metric, InfoScore, to evaluate the example's in-context informativeness based on the language model's feedback, and further propose a progressive filtering process to filter out uninformative examples. Then we propose diversity-guided example search which iteratively refines and evaluates the selected example permutations, to find examples that fully depict the task. The experimental results show that LENS significantly outperforms a wide range of baselines.",
+    "authors": [
+        "Xiaonan Li",
+        "Xipeng Qiu"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel metric is proposed, InfoScore, to evaluate the example's in-context informativeness based on the language model's feedback, and further proposed a progressive filtering process to filter out uninformative examples."
+    },
+    "citationCount": 56,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

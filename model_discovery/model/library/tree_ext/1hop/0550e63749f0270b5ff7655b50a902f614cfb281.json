@@ -1,0 +1,34 @@
+{
+    "acronym": "0550e63749f0270b5ff7655b50a902f614cfb281",
+    "title": "Benchmarking GPT-4 on Algorithmic Problems: A Systematic Evaluation of Prompting Strategies",
+    "seed_ids": [
+        "neuraldatarouter",
+        "6f6e2e0311589a9af045f6acd00b7dee6d19fce4",
+        "af385c0fdd0eda2bbf429bea6fedffc327c8a180",
+        "b1f33e956e36bf25e118c0d537dcc519cfe52e60",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "92173d081b15824d22a9ef070e118744ceee8052",
+        "e528466e2aff981511d4ca6e063211297c0b4175",
+        "ed535e93d5b5a8b689e861e9c6083a806d1535c2",
+        "49e65b12d8d11f2ccb5ddd7be72a8f746b2d1bc2"
+    ],
+    "s2id": "0550e63749f0270b5ff7655b50a902f614cfb281",
+    "abstract": "Large Language Models (LLMs) have revolutionized the field of Natural Language Processing thanks to their ability to reuse knowledge acquired on massive text corpora on a wide variety of downstream tasks, with minimal (if any) tuning steps. At the same time, it has been repeatedly shown that LLMs lack systematic generalization, which allows to extrapolate the learned statistical regularities outside the training distribution. In this work, we offer a systematic benchmarking of GPT-4, one of the most advanced LLMs available, on three algorithmic tasks characterized by the possibility to control the problem difficulty with two parameters. We compare the performance of GPT-4 with that of its predecessor (GPT-3.5) and with a variant of the Transformer-Encoder architecture recently introduced to solve similar tasks, the Neural Data Router. We find that the deployment of advanced prompting techniques allows GPT-4 to reach superior accuracy on all tasks, demonstrating that state-of-the-art LLMs constitute a very strong baseline also in challenging tasks that require systematic generalization.",
+    "authors": [
+        "Flavio Petruzzellis",
+        "Alberto Testolin",
+        "A. Sperduti"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work offers a systematic benchmarking of GPT-4, one of the most advanced LLMs available, on three algorithmic tasks characterized by the possibility to control the problem difficulty with two parameters, finding that the deployment of advanced prompting techniques allows GPT-4 to reach superior accuracy on all tasks."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

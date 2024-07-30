@@ -1,0 +1,33 @@
+{
+    "acronym": "4471ee1ecf7b774a7756de6ae736abb6c2cb3208",
+    "title": "MVSFormer++: Revealing the Devil in Transformer's Details for Multi-View Stereo",
+    "seed_ids": [
+        "lineartransformer",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "7bffc157b3b3626a3912a3b0ef74ce5904630fce",
+        "0d9b8ccb1135b8e380dd8015b080158c6aae3ae5",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "4471ee1ecf7b774a7756de6ae736abb6c2cb3208",
+    "abstract": "Recent advancements in learning-based Multi-View Stereo (MVS) methods have prominently featured transformer-based models with attention mechanisms. However, existing approaches have not thoroughly investigated the profound influence of transformers on different MVS modules, resulting in limited depth estimation capabilities. In this paper, we introduce MVSFormer++, a method that prudently maximizes the inherent characteristics of attention to enhance various components of the MVS pipeline. Formally, our approach involves infusing cross-view information into the pre-trained DINOv2 model to facilitate MVS learning. Furthermore, we employ different attention mechanisms for the feature encoder and cost volume regularization, focusing on feature and spatial aggregations respectively. Additionally, we uncover that some design details would substantially impact the performance of transformer modules in MVS, including normalized 3D positional encoding, adaptive attention scaling, and the position of layer normalization. Comprehensive experiments on DTU, Tanks-and-Temples, BlendedMVS, and ETH3D validate the effectiveness of the proposed method. Notably, MVSFormer++ achieves state-of-the-art performance on the challenging DTU and Tanks-and-Temples benchmarks.",
+    "authors": [
+        "Chenjie Cao",
+        "Xinlin Ren",
+        "Yanwei Fu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces MVSFormer++, a method that prudently maximizes the inherent characteristics of attention to enhance various components of the MVS pipeline, and achieves state-of-the-art performance on the challenging DTU and Tanks-and-Temples benchmarks."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

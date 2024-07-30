@@ -1,0 +1,47 @@
+{
+    "acronym": "03a015adaa28e2b2c83bf4c7cc9d0a930ab12218",
+    "title": "Let the Code LLM Edit Itself When You Edit the Code",
+    "seed_ids": [
+        "roformer",
+        "9d932de1d2f51067b6481745f28a2db345293d48",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "5735e49e501c8e51e9be4079592e46e047747b03",
+        "9575afb5702bc33d7df14c48feeee5901ea00369",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "746a9b434d05b47beb1bd6a96f4d5c89d9d8bd0a",
+        "d6c5aab433d9871cabc01ffb1e5e1ea89141155b",
+        "0d508600d77d8a7e6a655cdb6d139779732f649f",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "dc48bc1a4d81e0f37603013fd2a95644dc233bd0",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "03a015adaa28e2b2c83bf4c7cc9d0a930ab12218",
+    "abstract": "In this work, we investigate a typical scenario in code generation where a developer edits existing code in real time and requests a code assistant, e.g., a large language model, to re-predict the next token or next line on the fly. Naively, the LLM needs to re-encode the entire KV cache to provide an accurate prediction. However, this process is computationally expensive, especially when the sequence length is long. Simply encoding the edited subsequence and integrating it to the original KV cache meets the temporal confusion problem, leading to significantly worse performance. We address this efficiency and accuracy trade-off by introducing \\underline{\\textbf{Positional \\textbf{I}ntegrity \\textbf{E}ncoding} (PIE). Building upon the rotary positional encoding, PIE first removes the rotary matrices in the Key cache that introduce temporal confusion and then reapplies the correct rotary matrices. This process ensures that positional relationships between tokens are correct and requires only a single round of matrix multiplication. We validate the effectiveness of PIE through extensive experiments on the RepoBench-C-8k dataset, utilizing DeepSeek-Coder models with 1.3B, 6.7B, and 33B parameters. Our evaluation includes three real-world coding tasks: code insertion, code deletion, and multi-place code editing. Results demonstrate that PIE reduces computational overhead by over 85% compared to the standard full recomputation approach across all model sizes and tasks while well approximating the model performance.",
+    "authors": [
+        "Zhenyu He",
+        "Jun Zhang",
+        "Shengjie Luo",
+        "Jingjing Xu",
+        "Z. Zhang",
+        "Di He"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work investigates a typical scenario in code generation where a developer edits existing code in real time and requests a code assistant, e.g., a large language model, to re-predict the next token or next line on the fly, and introduces positional positional encoding (PIE), a building upon the rotary positional encoding."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

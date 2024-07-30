@@ -1,0 +1,33 @@
+{
+    "acronym": "d5cfc82ac7ad6c5e9c91ef18bba6d2979b632443",
+    "title": "Merak: An Efficient Distributed DNN Training Framework With Automated 3D Parallelism for Giant Foundation Models",
+    "seed_ids": [
+        "gpt2",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d5cfc82ac7ad6c5e9c91ef18bba6d2979b632443",
+    "abstract": "Foundation models are in the process of becoming the dominant deep learning technology. Pretraining a foundation model is always time-consuming due to the large scale of both the model parameter and training dataset. Besides being computing-intensive, the pretraining process is extremely memory- and communication-intensive. These challenges make it necessary to apply 3D parallelism, which integrates data parallelism, pipeline model parallelism, and tensor model parallelism, to achieve high training efficiency. However, current 3D parallelism frameworks still encounter two issues: i) they are not transparent to model developers, requiring manual model modification to parallelize training, and ii) their utilization of computation resources, GPU memory, and network bandwidth is insufficient. We propose Merak, an automated 3D parallelism deep learning training framework with high resource utilization. Merak automatically deploys 3D parallelism with an automatic model partitioner, which includes a graph-sharding algorithm and proxy node-based model graph. Merak also offers a non-intrusive API to scale out foundation model training with minimal code modification. In addition, we design a high-performance 3D parallel runtime engine that employs several techniques to exploit available training resources, including a shifted critical path pipeline schedule that increases computation utilization, stage-aware recomputation that makes use of idle worker memory, and sub-pipelined tensor model parallelism that overlaps communication and computation. Experiments on 64 GPUs demonstrate Merak's capability to speed up training performance over state-of-the-art 3D parallelism frameworks of models with 1.5, 2.5, 8.3, and 20 billion parameters by up to 1.42, 1.39, 1.43, and 1.61\u00d7, respectively.",
+    "authors": [
+        "Zhiquan Lai",
+        "Shengwei Li",
+        "Xudong Tang",
+        "Ke-shi Ge",
+        "Weijie Liu",
+        "Yabo Duan",
+        "Linbo Qiao",
+        "Dongsheng Li"
+    ],
+    "venue": "IEEE Transactions on Parallel and Distributed Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Merak is proposed, an automated 3D parallelism deep learning training framework with high resource utilization that employs several techniques to exploit available training resources, including a shifted critical path pipeline schedule that increases computation utilization, stage-aware recomputation that makes use of idle worker memory, and sub-pipelined tensor model parallelism that overlaps communication and computation."
+    },
+    "citationCount": 25,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

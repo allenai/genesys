@@ -1,0 +1,29 @@
+{
+    "acronym": "a5803f092db46e19a0d8cfa82b702af2b5f58d4e",
+    "title": "Noise Map Guidance: Inversion with Spatial Context for Real Image Editing",
+    "seed_ids": [
+        "classfreediffu",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "a5803f092db46e19a0d8cfa82b702af2b5f58d4e",
+    "abstract": "Text-guided diffusion models have become a popular tool in image synthesis, known for producing high-quality and diverse images. However, their application to editing real images often encounters hurdles primarily due to the text condition deteriorating the reconstruction quality and subsequently affecting editing fidelity. Null-text Inversion (NTI) has made strides in this area, but it fails to capture spatial context and requires computationally intensive per-timestep optimization. Addressing these challenges, we present Noise Map Guidance (NMG), an inversion method rich in a spatial context, tailored for real-image editing. Significantly, NMG achieves this without necessitating optimization, yet preserves the editing quality. Our empirical investigations highlight NMG's adaptability across various editing techniques and its robustness to variants of DDIM inversions.",
+    "authors": [
+        "Hansam Cho",
+        "Jonghyun Lee",
+        "Seoung Bum Kim",
+        "Tae-Hyun Oh",
+        "Yonghyun Jeong"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Noise Map Guidance (NMG) is presented, an inversion method rich in a spatial context, tailored for real-image editing, and achieves this without necessitating optimization, yet preserves the editing quality."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

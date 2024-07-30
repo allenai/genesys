@@ -1,0 +1,29 @@
+{
+    "acronym": "5c783294a9ddf2d53a2a43c8d46699603a557033",
+    "title": "On Using Transformers for Speech-Separation",
+    "seed_ids": [
+        "reformer",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "5c783294a9ddf2d53a2a43c8d46699603a557033",
+    "abstract": "\u2014Transformers have enabled major improvements in deep learning. They often outperform recurrent and convolutional models in many tasks while taking advantage of parallel processing. Recently, we have proposed SepFormer, which uses self-attention and obtains state-of-the art results on WSJ0-2/3 Mix datasets for speech separation. In this paper, we extend our previous work by providing results on more datasets including LibriMix, and WHAM!, WHAMR! which include noisy and noisy-reverberant conditions. Moreover we provide denoising, and denoising+dereverberation results in the context of speech enhancement, respectively on WHAM! and WHAMR! datasets. We also investigate incorporating recently proposed ef\ufb01cient self-attention mechanisms inside the SepFormer model, and show that by using ef\ufb01cient self-attention mechanisms it is possible to reduce the memory requirements signi\ufb01cantly while performing better than the popular convtasnet model on WSJ0-2Mix dataset.",
+    "authors": [
+        "Cem Subakan",
+        "M. Ravanelli",
+        "Samuele Cornell",
+        "Fran\u00e7ois Grondin",
+        "Mirko Bronzi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper extends previous work by providing results on more datasets including LibriMix, and WHAM!, WHAMR! which include noisy and noisy-reverberant conditions, and investigates incorporating recently proposed ef\ufb01cient self-attention mechanisms inside the SepFormer model."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

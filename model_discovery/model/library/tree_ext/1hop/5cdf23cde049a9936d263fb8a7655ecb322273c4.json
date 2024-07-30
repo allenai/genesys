@@ -1,0 +1,27 @@
+{
+    "acronym": "5cdf23cde049a9936d263fb8a7655ecb322273c4",
+    "title": "Self-Supervised Lightweight Depth Estimation in Endoscopy Combining CNN and Transformer",
+    "seed_ids": [
+        "metaformer"
+    ],
+    "s2id": "5cdf23cde049a9936d263fb8a7655ecb322273c4",
+    "abstract": "In recent years, an increasing number of medical engineering tasks, such as surgical navigation, pre-operative registration, and surgical robotics, rely on 3D reconstruction techniques. Self-supervised depth estimation has attracted interest in endoscopic scenarios because it does not require ground truth. Most existing methods depend on expanding the size of parameters to improve their performance. There, designing a lightweight self-supervised model that can obtain competitive results is a hot topic. We propose a lightweight network with a tight coupling of convolutional neural network (CNN) and Transformer for depth estimation. Unlike other methods that use CNN and Transformer to extract features separately and then fuse them on the deepest layer, we utilize the modules of CNN and Transformer to extract features at different scales in the encoder. This hierarchical structure leverages the advantages of CNN in texture perception and Transformer in shape extraction. In the same scale of feature extraction, the CNN is used to acquire local features while the Transformer encodes global information. Finally, we add multi-head attention modules to the pose network to improve the accuracy of predicted poses. Experiments demonstrate that our approach obtains comparable results while effectively compressing the model parameters on two datasets.",
+    "authors": [
+        "Zhuoyue Yang",
+        "Junjun Pan",
+        "Ju Dai",
+        "Zhen Sun",
+        "Yi Xiao"
+    ],
+    "venue": "IEEE Transactions on Medical Imaging",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a lightweight network with a tight coupling of convolutional neural network (CNN) and Transformer for depth estimation and adds multi-head attention modules to the pose network to improve the accuracy of predicted poses."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

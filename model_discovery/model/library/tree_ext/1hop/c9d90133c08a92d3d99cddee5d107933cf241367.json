@@ -1,0 +1,37 @@
+{
+    "acronym": "c9d90133c08a92d3d99cddee5d107933cf241367",
+    "title": "FormLM: Recommending Creation Ideas for Online Forms by Modelling Semantic and Structural Information",
+    "seed_ids": [
+        "gpt2",
+        "fd1b829261ba04bb92e0ab60c4f6e7cea0d99fbf",
+        "395aae6e7a79e5760457ca38e868acc970016230",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9485b4104c8990d9ed796e5a3d40107f92c0400e",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "7cc730da554003dda77796d2cb4f06da5dfd5592",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "c9d90133c08a92d3d99cddee5d107933cf241367",
+    "abstract": "Online forms are widely used to collect data from human and have a multi-billion market. Many software products provide online services for creating semi-structured forms where questions and descriptions are organized by predefined structures. However, the design and creation process of forms is still tedious and requires expert knowledge. To assist form designers, in this work we present FormLM to model online forms (by enhancing pre-trained language model with form structural information) and recommend form creation ideas (including question / options recommendations and block type suggestion). For model training and evaluation, we collect the first public online form dataset with 62K online forms. Experiment results show that FormLM significantly outperforms general-purpose language models on all tasks, with an improvement by 4.71 on Question Recommendation and 10.6 on Block Type Suggestion in terms of ROUGE-1 and Macro-F1, respectively.",
+    "authors": [
+        "Yijia Shao",
+        "Mengyu Zhou",
+        "Yifan Zhong",
+        "Tao Wu",
+        "Hongwei Han",
+        "Shi Han",
+        "Gideon Huang",
+        "Dongmei Zhang"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents FormLM to model online forms (by enhancing pre-trained language model with form structural information) and recommend form creation ideas (including question / options recommendations and block type suggestion) and shows that FormLM significantly outperforms general-purpose language models on all tasks."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

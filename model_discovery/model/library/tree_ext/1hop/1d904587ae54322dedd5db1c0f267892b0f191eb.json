@@ -1,0 +1,29 @@
+{
+    "acronym": "1d904587ae54322dedd5db1c0f267892b0f191eb",
+    "title": "Leveraging Large Language Models for Efficient Failure Analysis in Game Development",
+    "seed_ids": [
+        "bert",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1d904587ae54322dedd5db1c0f267892b0f191eb",
+    "abstract": "In games, and more generally in the field of software development, early detection of bugs is vital to maintain a high quality of the final product. Automated tests are a powerful tool that can catch a problem earlier in development by executing periodically. As an example, when new code is submitted to the code base, a new automated test verifies these changes. However, identifying the specific change responsible for a test failure becomes harder when dealing with batches of changes -- especially in the case of a large-scale project such as a AAA game, where thousands of people contribute to a single code base. This paper proposes a new approach to automatically identify which change in the code caused a test to fail. The method leverages Large Language Models (LLMs) to associate error messages with the corresponding code changes causing the failure. We investigate the effectiveness of our approach with quantitative and qualitative evaluations. Our approach reaches an accuracy of 71% in our newly created dataset, which comprises issues reported by developers at EA over a period of one year. We further evaluated our model through a user study to assess the utility and usability of the tool from a developer perspective, resulting in a significant reduction in time -- up to 60% -- spent investigating issues.",
+    "authors": [
+        "Leonardo Marini",
+        "Linus Gissl'en",
+        "Alessandro Sestini"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new approach to automatically identify which change in the code caused a test to fail is proposed, which leverages Large Language Models (LLMs) to associate error messages with the corresponding code changes causing the failure."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,38 @@
+{
+    "acronym": "b46d05bcf42295b872f3cebf875643d2e66496a4",
+    "title": "Direct Language Model Alignment from Online AI Feedback",
+    "seed_ids": [
+        "gpt2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b46d05bcf42295b872f3cebf875643d2e66496a4",
+    "abstract": "Direct alignment from preferences (DAP) methods, such as DPO, have recently emerged as efficient alternatives to reinforcement learning from human feedback (RLHF), that do not require a separate reward model. However, the preference datasets used in DAP methods are usually collected ahead of training and never updated, thus the feedback is purely offline. Moreover, responses in these datasets are often sampled from a language model distinct from the one being aligned, and since the model evolves over training, the alignment phase is inevitably off-policy. In this study, we posit that online feedback is key and improves DAP methods. Our method, online AI feedback (OAIF), uses an LLM as annotator: on each training iteration, we sample two responses from the current model and prompt the LLM annotator to choose which one is preferred, thus providing online feedback. Despite its simplicity, we demonstrate via human evaluation in several tasks that OAIF outperforms both offline DAP and RLHF methods. We further show that the feedback leveraged in OAIF is easily controllable, via instruction prompts to the LLM annotator.",
+    "authors": [
+        "Shangmin Guo",
+        "Biao Zhang",
+        "Tianlin Liu",
+        "Tianqi Liu",
+        "Misha Khalman",
+        "Felipe Llinares-L\u00f3pez",
+        "Alexandre Ram\u00e9",
+        "Thomas Mesnard",
+        "Yao Zhao",
+        "Bilal Piot",
+        "Johan Ferret",
+        "Mathieu Blondel"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study proposes and demonstrates via human evaluation in several tasks that OAIF outperforms both offline DAP and RLHF methods, and shows that the feedback leveraged in OAIF is easily controllable, via instruction prompts to the LLM annotator."
+    },
+    "citationCount": 42,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

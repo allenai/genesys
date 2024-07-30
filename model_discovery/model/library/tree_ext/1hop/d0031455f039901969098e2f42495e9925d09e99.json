@@ -1,0 +1,26 @@
+{
+    "acronym": "d0031455f039901969098e2f42495e9925d09e99",
+    "title": "Hierarchical Emotion Prediction and Control in Text-to-Speech Synthesis",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "d0031455f039901969098e2f42495e9925d09e99",
+    "abstract": "It remains a challenge to effectively control the emotion rendering in text-to-speech (TTS) synthesis. Prior studies have primarily focused on learning a global prosodic representation at the utterance level, which strongly correlates with linguistic prosody. Our goal is to construct a hierarchical emotion distribution (ED) that effectively encapsulates intensity variations of emotions at various levels of granularity, encompassing phonemes, words, and utterances. During TTS training, the hierarchical ED is extracted from the ground-truth audio and guides the predictor to establish a connection between emotional and linguistic prosody. At run-time inference, the TTS model generates emotional speech and, at the same time, provides quantitative control of emotion over the speech constituents. Both objective and subjective evaluations validate the effectiveness of the proposed framework in terms of emotion prediction and control.",
+    "authors": [
+        "Sho Inoue",
+        "Kun Zhou",
+        "Shuai Wang",
+        "Haizhou Li"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The goal is to construct a hierarchical emotion distribution that effectively encapsulates intensity variations of emotions at various levels of granularity, encompassing phonemes, words, and utterances."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

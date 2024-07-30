@@ -1,0 +1,36 @@
+{
+    "acronym": "92b06f0ea03f405ae439ad448a069bf7b8ad6c28",
+    "title": "Sequence Shortening for Context-Aware Machine Translation",
+    "seed_ids": [
+        "funneltransformer",
+        "hierarchitrans",
+        "4293121e2bef84aa8db5aab6634cfcd2d06947d4",
+        "231e768f0cd280faa0f725bb353262cb4fed08d1",
+        "b0de1d5fe394226cec0a59d783ab739eb52da76f",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "f2fc9ef411846dd577c26225ce93f50bb1fa760b",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "7a09101ac03b74db501648597fa54e992a0fc84f",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "92b06f0ea03f405ae439ad448a069bf7b8ad6c28",
+    "abstract": "Context-aware Machine Translation aims to improve translations of sentences by incorporating surrounding sentences as context. Towards this task, two main architectures have been applied, namely single-encoder (based on concatenation) and multi-encoder models. In this study, we show that a special case of multi-encoder architecture, where the latent representation of the source sentence is cached and reused as the context in the next step, achieves higher accuracy on the contrastive datasets (where the models have to rank the correct translation among the provided sentences) and comparable BLEU and COMET scores as the single- and multi-encoder approaches. Furthermore, we investigate the application of Sequence Shortening to the cached representations. We test three pooling-based shortening techniques and introduce two novel methods - Latent Grouping and Latent Selecting, where the network learns to group tokens or selects the tokens to be cached as context. Our experiments show that the two methods achieve competitive BLEU and COMET scores and accuracies on the contrastive datasets to the other tested methods while potentially allowing for higher interpretability and reducing the growth of memory requirements with increased context size.",
+    "authors": [
+        "Pawe\u0142 M\u0105ka",
+        "Yusuf Can Semerci",
+        "Jan Scholtes",
+        "Gerasimos Spanakis"
+    ],
+    "venue": "Findings",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study shows that a special case of multi-encoder architecture, where the latent representation of the source sentence is cached and reused as the context in the next step, achieves higher accuracy on the contrastive datasets and comparable BLEU and COMET scores as the single- and multi-encoder approaches."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

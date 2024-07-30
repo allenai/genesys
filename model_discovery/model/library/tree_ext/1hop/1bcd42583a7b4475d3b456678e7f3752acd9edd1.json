@@ -1,0 +1,37 @@
+{
+    "acronym": "1bcd42583a7b4475d3b456678e7f3752acd9edd1",
+    "title": "FlexiBERT: Are Current Transformer Architectures too Homogeneous and Rigid?",
+    "seed_ids": [
+        "fnet",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "2a218786f4615b82389f78472e7ff22e6ce57490",
+        "ef8d788a904ed66bd8e30ffa69bc3ea1fe57dda7",
+        "270f3bea8ca801870a6cc56b4d36f7f2019c9ed0",
+        "2573af4e13d9a5dddb257d22cd38a600528d9a8b",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "16c844fd4d97f3c6eb38b0d6527c87d184efedc3",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "fb507ada871d1e8c29e376dbf7b7879689aa89f9"
+    ],
+    "s2id": "1bcd42583a7b4475d3b456678e7f3752acd9edd1",
+    "abstract": "The existence of a plethora of language models makes the problem of selecting the best one for a custom task challenging. Most state-of-the-art methods leverage transformer-based models (e.g., BERT) or their variants. However, training such models and exploring their hyperparameter space is computationally expensive. Prior work proposes several neural architecture search (NAS) methods that employ performance predictors (e.g., surrogate models) to address this issue; however, such works limit analysis to homogeneous models that use fixed dimensionality throughout the network. This leads to sub-optimal architectures. To address this limitation, we propose a suite of heterogeneous and flexible models, namely FlexiBERT, that have varied encoder layers with a diverse set of possible operations and different hidden dimensions. For better-posed surrogate modeling in this expanded design space, we propose a new graph-similarity-based embedding scheme. We also propose a novel NAS policy, called BOSHNAS, that leverages this new scheme, Bayesian modeling, and second-order optimization, to quickly train and use a neural surrogate model to converge to the optimal architecture. A comprehensive set of experiments shows that the proposed policy, when applied to the FlexiBERT design space, pushes the performance frontier upwards compared to traditional models. FlexiBERT-Mini, one of our proposed models, has 3% fewer parameters than BERT-Mini and achieves 8.9% higher GLUE score. A FlexiBERT model with equivalent performance as the best homogeneous model has 2.6\u00d7 smaller size. FlexiBERT-Large, another proposed model, attains state-of-the-art results, outperforming the baseline models by at least 5.7% on the GLUE benchmark.",
+    "authors": [
+        "Shikhar Tuli",
+        "Bhishma Dedhia",
+        "Shreshth Tuli",
+        "N. Jha"
+    ],
+    "venue": "Journal of Artificial Intelligence Research",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A suite of heterogeneous and flexible models, namely FlexiBERT, that have varied encoder layers with a diverse set of possible operations and different hidden dimensions are proposed, and a new graph-similarity-based embedding scheme is proposed, called BOSHNAS, to quickly train and use a neural surrogate model to converge to the optimal architecture."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

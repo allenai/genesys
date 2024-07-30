@@ -1,0 +1,44 @@
+{
+    "acronym": "d9ffb44ee3c8ec0b6692df8a90451384c1edd89b",
+    "title": "Likelihood-Based Diffusion Language Models",
+    "seed_ids": [
+        "gpt2",
+        "diffusionlm",
+        "contdiffu",
+        "analogbits",
+        "020a50f6a7154850ac81e3cde69ad8198ded6751",
+        "a1186d7d9a9ef258c76afef1177e4f348061a537",
+        "23b7cde603b5ec8d5d13d46e1c453dc52d7c3f6c",
+        "22775e58932cdfbd273a2a835a22c5d86800a458",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "0b9770a377b3f96cef9f268cee1791d39a0d4893",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "e512964293671abbdc409f313d127cbe85ffe5cd",
+        "24425954960ce968e5f14360fbdd0605abcadfcf",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d9ffb44ee3c8ec0b6692df8a90451384c1edd89b",
+    "abstract": "Despite a growing interest in diffusion-based language models, existing work has not shown that these models can attain nontrivial likelihoods on standard language modeling benchmarks. In this work, we take the first steps towards closing the likelihood gap between autoregressive and diffusion-based language models, with the goal of building and releasing a diffusion model which outperforms a small but widely-known autoregressive model. We pursue this goal through algorithmic improvements, scaling laws, and increased compute. On the algorithmic front, we introduce several methodological improvements for the maximum-likelihood training of diffusion language models. We then study scaling laws for our diffusion models and find compute-optimal training regimes which differ substantially from autoregressive models. Using our methods and scaling analysis, we train and release Plaid 1B, a large diffusion language model which outperforms GPT-2 124M in likelihood on benchmark datasets and generates fluent samples in unconditional and zero-shot control settings.",
+    "authors": [
+        "Ishaan Gulrajani",
+        "Tatsunori Hashimoto"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work takes the first steps towards closing the likelihood gap between autoregressive and diffusion-based language models, with the goal of building and releasing a diffusion model which outperforms a small but widely-known autore progressive model."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,33 @@
+{
+    "acronym": "3cfa6f1bbfbfb7a0c58b11f8142f153630a4c17b",
+    "title": "SELMA: Learning and Merging Skill-Specific Text-to-Image Experts with Auto-Generated Data",
+    "seed_ids": [
+        "classfreediffu",
+        "cf694df964caa156ec306b45d3a3127533cb458f",
+        "9550076d9930dd3533ab9276126f1a9265fad7b4",
+        "71ba5f845bd22d42003675b7cea970ca9e590bcc",
+        "3ff7153fd6bd47d08084c7f50f8fd70026c126e7",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "3cfa6f1bbfbfb7a0c58b11f8142f153630a4c17b",
+    "abstract": "Recent text-to-image (T2I) generation models have demonstrated impressive capabilities in creating images from text descriptions. However, these T2I generation models often fall short of generating images that precisely match the details of the text inputs, such as incorrect spatial relationship or missing objects. In this paper, we introduce SELMA: Skill-Specific Expert Learning and Merging with Auto-Generated Data, a novel paradigm to improve the faithfulness of T2I models by fine-tuning models on automatically generated, multi-skill image-text datasets, with skill-specific expert learning and merging. First, SELMA leverages an LLM's in-context learning capability to generate multiple datasets of text prompts that can teach different skills, and then generates the images with a T2I model based on the prompts. Next, SELMA adapts the T2I model to the new skills by learning multiple single-skill LoRA (low-rank adaptation) experts followed by expert merging. Our independent expert fine-tuning specializes multiple models for different skills, and expert merging helps build a joint multi-skill T2I model that can generate faithful images given diverse text prompts, while mitigating the knowledge conflict from different datasets. We empirically demonstrate that SELMA significantly improves the semantic alignment and text faithfulness of state-of-the-art T2I diffusion models on multiple benchmarks (+2.1% on TIFA and +6.9% on DSG), human preference metrics (PickScore, ImageReward, and HPS), as well as human evaluation. Moreover, fine-tuning with image-text pairs auto-collected via SELMA shows comparable performance to fine-tuning with ground truth data. Lastly, we show that fine-tuning with images from a weaker T2I model can help improve the generation quality of a stronger T2I model, suggesting promising weak-to-strong generalization in T2I models.",
+    "authors": [
+        "Jialu Li",
+        "Jaemin Cho",
+        "Yi-Lin Sung",
+        "Jaehong Yoon",
+        "Mohit Bansal"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that SELMA significantly improves the semantic alignment and text faithfulness of state-of-the-art T2I diffusion models on multiple benchmarks, human preference metrics (PickScore, ImageReward, and HPS), as well as human evaluation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

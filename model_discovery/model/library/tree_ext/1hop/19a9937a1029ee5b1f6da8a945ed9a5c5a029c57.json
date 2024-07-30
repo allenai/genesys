@@ -1,0 +1,36 @@
+{
+    "acronym": "19a9937a1029ee5b1f6da8a945ed9a5c5a029c57",
+    "title": "DeepRapper: Neural Rap Generation with Rhyme and Rhythm Modeling",
+    "seed_ids": [
+        "gpt",
+        "4c64c35198453662882afd63d618a832c7d8c1b2",
+        "ce510c6cfeac703706460680e977c54554840830",
+        "83b56c3c7a61767bd88d85796aa5dbc4976912c3",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "19a9937a1029ee5b1f6da8a945ed9a5c5a029c57",
+    "abstract": "Rap generation, which aims to produce lyrics and corresponding singing beats, needs to model both rhymes and rhythms. Previous works for rap generation focused on rhyming lyrics, but ignored rhythmic beats, which are important for rap performance. In this paper, we develop DeepRapper, a Transformer-based rap generation system that can model both rhymes and rhythms. Since there is no available rap datasets with rhythmic beats, we develop a data mining pipeline to collect a large-scale rap dataset, which includes a large number of rap songs with aligned lyrics and rhythmic beats. Second, we design a Transformer-based autoregressive language model which carefully models rhymes and rhythms. Specifically, we generate lyrics in the reverse order with rhyme representation and constraint for rhyme enhancement, and insert a beat symbol into lyrics for rhythm/beat modeling. To our knowledge, DeepRapper is the first system to generate rap with both rhymes and rhythms. Both objective and subjective evaluations demonstrate that DeepRapper generates creative and high-quality raps with rhymes and rhythms.",
+    "authors": [
+        "Lanqing Xue",
+        "Kaitao Song",
+        "Duocai Wu",
+        "Xu Tan",
+        "N. Zhang",
+        "Tao Qin",
+        "Weiqiang Zhang",
+        "Tie-Yan Liu"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "To the knowledge, DeepRapper is the first system to generate rap with both rhymes and rhythms, and a Transformer-based autoregressive language model which carefully models rh rhyme and rhythms."
+    },
+    "citationCount": 32,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

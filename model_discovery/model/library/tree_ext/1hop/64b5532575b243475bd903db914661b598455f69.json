@@ -1,0 +1,24 @@
+{
+    "acronym": "64b5532575b243475bd903db914661b598455f69",
+    "title": "RankAug: Augmented data ranking for text classification",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "64b5532575b243475bd903db914661b598455f69",
+    "abstract": "Research on data generation and augmentation has been focused majorly around enhancing generation models, leaving a notable gap in the exploration and refinement of methods for evaluating synthetic data. There are several text similarity metrics within the context of generated data filtering which can impact the performance of specific Natural Language Understanding (NLU) tasks, specifically focusing on intent and sentiment classification. In this study, we propose RankAug, a text-ranking approach that detects and filters out the top augmented texts in terms of being most similar in meaning with lexical and syntactical diversity. Through experiments conducted on multiple datasets, we demonstrate that the judicious selection of filtering techniques can yield a substantial improvement of up to 35% in classification accuracy for under-represented classes.",
+    "authors": [
+        "Tiasa Singha Roy",
+        "Priya Basu"
+    ],
+    "venue": "IEEE Games Entertainment Media Conference",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "RankAug is proposed, a text-ranking approach that detects and filters out the top augmented texts in terms of being most similar in meaning with lexical and syntactical diversity and demonstrates that the judicious selection of filtering techniques can yield a substantial improvement of up to 35% in classification accuracy for under-represented classes."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

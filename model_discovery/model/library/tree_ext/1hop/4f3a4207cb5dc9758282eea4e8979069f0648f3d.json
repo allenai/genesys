@@ -1,0 +1,27 @@
+{
+    "acronym": "4f3a4207cb5dc9758282eea4e8979069f0648f3d",
+    "title": "Neural Network-Based Prediction of Vehicle Energy Consumption on Highways",
+    "seed_ids": [
+        "transformer",
+        "d8d2e574965fe733eb1416e03df2b5c2914fc530"
+    ],
+    "s2id": "4f3a4207cb5dc9758282eea4e8979069f0648f3d",
+    "abstract": "The use of predictive energy management systems can improve the efficiency of multi-energy storage vehicles. However, current systems have limitations, such as short prediction horizons, the requirement for input data that is not publicly available, or the training of the Neural Networks on the routes on which the prediction is made. To overcome these challenges, this paper introduces a novel method for long-horizon energy prediction, utilizing readily available data such as route geometry and traffic information. Our study compares Convolutional Neural Networks (CNNs), Gated Recurrent Units (GRUs), and Transformer Networks optimized using the Asynchronous Successive Halving Algorithm (ASHA). The models were evaluated in a simulated environment using the Simulation of Urban MObility (SUMO) and further tested on real-world driving data, demonstrating that we are able to predict the consumed energy over a 45km stretch of highway with a median RMSE of 0.018 kWh/km for practical application. The energy prediction developed in this study has the potential to enhance predictive energy management systems, thereby optimizing energy usage and contributing to CO2 emission reduction.",
+    "authors": [
+        "Dennis Bank",
+        "Daniel Fink",
+        "Simon F. G. Ehlers",
+        "Thomas Seel"
+    ],
+    "venue": "European Control Conference",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel method for long-horizon energy prediction, utilizing readily available data such as route geometry and traffic information is introduced, thereby optimizing energy usage and contributing to CO2 emission reduction."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

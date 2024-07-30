@@ -1,0 +1,34 @@
+{
+    "acronym": "2f291b0b59483e9c3c4a3391f34e6b29aff848a1",
+    "title": "DeepStruct: Pretraining of Language Models for Structure Prediction",
+    "seed_ids": [
+        "gpt",
+        "gpt2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9f1c5777a193b2c3bb2b25e248a156348e5ba56d",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2f291b0b59483e9c3c4a3391f34e6b29aff848a1",
+    "abstract": "We introduce a method for improving the structural understanding abilities of language models. Unlike previous approaches that finetune the models with task-specific augmentation, we pretrain language models to generate structures from the text on a collection of task-agnostic corpora. Our structure pretraining enables zero-shot transfer of the learned knowledge that models have about the structure tasks. We study the performance of this approach on 28 datasets, spanning 10 structure prediction tasks including open information extraction, joint entity and relation extraction, named entity recognition, relation classification, semantic role labeling, event extraction, coreference resolution, factual probe, intent detection, and dialogue state tracking. We further enhance the pretraining with the task-specific training sets. We show that a 10B parameter language model transfers non-trivially to most tasks and obtains state-of-the-art performance on 21 of 28 datasets that we evaluate. Our code and datasets will be made publicly available.",
+    "authors": [
+        "Chenguang Wang",
+        "Xiao Liu",
+        "Zui Chen",
+        "Haoyun Hong",
+        "Jie Tang",
+        "Dawn Song"
+    ],
+    "venue": "Findings",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that a 10B parameter language model transfers non-trivially to most tasks and obtains state-of-the-art performance on 21 of 28 datasets that are evaluated."
+    },
+    "citationCount": 51,
+    "influentialCitationCount": 11,
+    "code": null,
+    "description": null,
+    "url": null
+}

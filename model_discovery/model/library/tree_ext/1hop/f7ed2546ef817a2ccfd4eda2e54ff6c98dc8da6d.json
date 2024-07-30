@@ -1,0 +1,38 @@
+{
+    "acronym": "f7ed2546ef817a2ccfd4eda2e54ff6c98dc8da6d",
+    "title": "The Case for Co-Designing Model Architectures with Hardware",
+    "seed_ids": [
+        "gpt3",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "22b58dce1a13382418b8372bbd50ed3b2533f899",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f7ed2546ef817a2ccfd4eda2e54ff6c98dc8da6d",
+    "abstract": "While GPUs are responsible for training the vast majority of state-of-the-art deep learning models, the implications of their architecture are often overlooked when designing new deep learning (DL) models. As a consequence, modifying a DL model to be more amenable to the target hardware can significantly improve the runtime performance of DL training and inference. In this paper, we provide a set of guidelines for users to maximize the runtime performance of their transformer models. These guidelines have been created by carefully considering the impact of various model hyperparameters controlling model shape on the efficiency of the underlying computation kernels executed on the GPU. We find the throughput of models with efficient model shapes is up to 39\\% higher while preserving accuracy compared to models with a similar number of parameters but with unoptimized shapes.",
+    "authors": [
+        "Quentin G. Anthony",
+        "Jacob Hatef",
+        "Deepak Narayanan",
+        "Stella Biderman",
+        "Stas Bekman",
+        "Junqi Yin",
+        "A. Shafi",
+        "H. Subramoni",
+        "Dhabaleswar K. Panda"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper provides a set of guidelines for users to maximize the runtime performance of their transformer models by carefully considering the impact of various model hyperparameters controlling model shape on the efficiency of the underlying computation kernels executed on the GPU."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

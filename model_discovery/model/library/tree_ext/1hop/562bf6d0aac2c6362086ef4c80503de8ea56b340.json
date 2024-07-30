@@ -1,0 +1,33 @@
+{
+    "acronym": "562bf6d0aac2c6362086ef4c80503de8ea56b340",
+    "title": "Modern Hopfield Networks and Attention for Immune Repertoire Classification",
+    "seed_ids": [
+        "hopfield"
+    ],
+    "s2id": "562bf6d0aac2c6362086ef4c80503de8ea56b340",
+    "abstract": "A central mechanism in machine learning is to identify, store, and recognize patterns. How to learn, access, and retrieve such patterns is crucial in Hopfield networks and the more recent transformer architectures. We show that the attention mechanism of transformer architectures is actually the update rule of modern Hop-field networks that can store exponentially many patterns. We exploit this high storage capacity of modern Hopfield networks to solve a challenging multiple instance learning (MIL) problem in computational biology: immune repertoire classification. Accurate and interpretable machine learning methods solving this problem could pave the way towards new vaccines and therapies, which is currently a very relevant research topic intensified by the COVID-19 crisis. Immune repertoire classification based on the vast number of immunosequences of an individual is a MIL problem with an unprecedentedly massive number of instances, two orders of magnitude larger than currently considered problems, and with an extremely low witness rate. In this work, we present our novel method DeepRC that integrates transformer-like attention, or equivalently modern Hopfield networks, into deep learning architectures for massive MIL such as immune repertoire classification. We demonstrate that DeepRC outperforms all other methods with respect to predictive performance on large-scale experiments, including simulated and real-world virus infection data, and enables the extraction of sequence motifs that are connected to a given disease class. Source code and datasets: https://github.com/ml-jku/DeepRC",
+    "authors": [
+        "Michael Widrich",
+        "Bernhard Sch\u00e4fl",
+        "Milena Pavlovi\u0107",
+        "Hubert Ramsauer",
+        "Lukas Gruber",
+        "Markus Holzleitner",
+        "Johannes Brandstetter",
+        "G. K. Sandve",
+        "Victor Greiff",
+        "Sepp Hochreiter",
+        "G. Klambauer"
+    ],
+    "venue": "bioRxiv",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a novel method DeepRC that integrates transformer-like attention, or equivalently modern Hopfield networks, into deep learning architectures for massive MIL such as immune repertoire classification, and demonstrates that DeepRC outperforms all other methods with respect to predictive performance on large-scale experiments."
+    },
+    "citationCount": 103,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

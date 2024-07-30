@@ -1,0 +1,31 @@
+{
+    "acronym": "8b418947454affb80ba47454b65af7e8fea705ae",
+    "title": "DynaPipe: Optimizing Multi-task Training through Dynamic Pipelines",
+    "seed_ids": [
+        "gpt3",
+        "22b58dce1a13382418b8372bbd50ed3b2533f899",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "8b418947454affb80ba47454b65af7e8fea705ae",
+    "abstract": "Multi-task model training has been adopted to enable a single deep neural network model (often a large language model) to handle multiple tasks (e.g., question answering and text summarization). Multi-task training commonly receives input sequences of highly different lengths due to the diverse contexts of different tasks. Padding (to the same sequence length) or packing (short examples into long sequences of the same length) is usually adopted to prepare input samples for model training, which is nonetheless not space or computation efficient. This paper proposes a dynamic micro-batching approach to tackle sequence length variation and enable efficient multi-task model training. We advocate pipelineparallel training of the large model with variable-length micro-batches, each of which potentially comprises a different number of samples. We optimize micro-batch construction using a dynamic programming-based approach, and handle micro-batch execution time variation through dynamic pipeline and communication scheduling, enabling highly efficient pipeline training. Extensive evaluation on the FLANv2 dataset demonstrates up to 4.39x higher training throughput when training T5, and 3.25x when training GPT, as compared with packing-based baselines. DynaPipe's source code is publicly available at https://github.com/awslabs/optimizing-multitask-training-through-dynamic-pipelines.",
+    "authors": [
+        "Chenyu Jiang",
+        "Zhen Jia",
+        "Shuai Zheng",
+        "Yida Wang",
+        "Chuan Wu"
+    ],
+    "venue": "European Conference on Computer Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A dynamic micro-batching approach to tackle sequence length variation and enable efficient multi-task model training is proposed and optimized micro-batch construction using a dynamic programming-based approach, and handle micro-batch execution time variation through dynamic pipeline and communication scheduling, enabling highly efficient pipeline training."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

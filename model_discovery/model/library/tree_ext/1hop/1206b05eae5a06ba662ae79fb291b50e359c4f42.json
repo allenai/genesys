@@ -1,0 +1,38 @@
+{
+    "acronym": "1206b05eae5a06ba662ae79fb291b50e359c4f42",
+    "title": "Stable Video Diffusion: Scaling Latent Video Diffusion Models to Large Datasets",
+    "seed_ids": [
+        "classfreediffu",
+        "6e3a3b7a8a0376d867cad72eedf2f9b746f29a33",
+        "e3f5a9251529f34bc15b89e3294e576efbc0af4c",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "2d9ae4c167510ed78803735fc57ea67c3cc55a35",
+        "e763fdc9ae56826ff799163ea035b29bffd8ea6f"
+    ],
+    "s2id": "1206b05eae5a06ba662ae79fb291b50e359c4f42",
+    "abstract": "We present Stable Video Diffusion - a latent video diffusion model for high-resolution, state-of-the-art text-to-video and image-to-video generation. Recently, latent diffusion models trained for 2D image synthesis have been turned into generative video models by inserting temporal layers and finetuning them on small, high-quality video datasets. However, training methods in the literature vary widely, and the field has yet to agree on a unified strategy for curating video data. In this paper, we identify and evaluate three different stages for successful training of video LDMs: text-to-image pretraining, video pretraining, and high-quality video finetuning. Furthermore, we demonstrate the necessity of a well-curated pretraining dataset for generating high-quality videos and present a systematic curation process to train a strong base model, including captioning and filtering strategies. We then explore the impact of finetuning our base model on high-quality data and train a text-to-video model that is competitive with closed-source video generation. We also show that our base model provides a powerful motion representation for downstream tasks such as image-to-video generation and adaptability to camera motion-specific LoRA modules. Finally, we demonstrate that our model provides a strong multi-view 3D-prior and can serve as a base to finetune a multi-view diffusion model that jointly generates multiple views of objects in a feedforward fashion, outperforming image-based methods at a fraction of their compute budget. We release code and model weights at https://github.com/Stability-AI/generative-models .",
+    "authors": [
+        "A. Blattmann",
+        "Tim Dockhorn",
+        "Sumith Kulal",
+        "Daniel Mendelevitch",
+        "Maciej Kilian",
+        "Dominik Lorenz"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper identifies and evaluates three different stages for successful training of video LDMs: text-to-image Pretraining, video pretraining, and high-quality video finetuning, and shows that the necessity of a well-curated pretraining dataset for generating high- quality videos and a systematic curation process to train a strong base model."
+    },
+    "citationCount": 304,
+    "influentialCitationCount": 60,
+    "code": null,
+    "description": null,
+    "url": null
+}

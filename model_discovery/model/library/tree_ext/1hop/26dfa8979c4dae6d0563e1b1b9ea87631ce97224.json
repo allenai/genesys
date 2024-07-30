@@ -1,0 +1,28 @@
+{
+    "acronym": "26dfa8979c4dae6d0563e1b1b9ea87631ce97224",
+    "title": "Two Heads are Better Than One: Hypergraph-Enhanced Graph Reasoning for Visual Event Ratiocination",
+    "seed_ids": [
+        "transformerxl",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "26dfa8979c4dae6d0563e1b1b9ea87631ce97224",
+    "abstract": "Even with a still image, humans can ratiocinate various visual cause-and-effect descriptions before, at present, and after, as well as beyond the given image. However, it is challenging for models to achieve such task\u2013the visual event ratio-cination, owing to the limitations of time and space. To this end, we propose a novel multi-modal model, Hypergraph-Enhanced Graph Reasoning . First it represents the contents from the same modality as a semantic graph and mines the intra-modality relationship, therefore breaking the limitations in the spatial domain. Then, we introduce the Graph Self-Attention Enhancement . On the one hand, this enables semantic graph representations from different modalities to enhance each other and captures the inter-modality relationship along the line. On the other hand, it utilizes our built multi-modal hypergraphs in different moments to boost individual semantic graph representations, and breaks the limitations in the temporal domain. Our method illustrates the case of \u201ctwo heads are better than one\u201d in the sense that semantic graph representations with the help of the proposed enhancement mechanism are more robust than those without. Finally, we re-project these representations and leverage their outcomes to generate textual cause-and-effect descriptions. Experimental results show that our model achieves signi\ufb01cantly higher performance in comparison with other state-of-the-arts.",
+    "authors": [
+        "Wenbo Zheng",
+        "Lan Yan",
+        "Chao Gou",
+        "Fei-Yue Wang"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel multi-modal model that represents the contents from the same modality as a semantic graph and mines the intra-modality relationship, therefore breaking the limitations in the spatial domain and illustrates the case of \u201ctwo heads are better than one\u201d in the sense that semantic graph representations with the help of the proposed enhancement mechanism are more robust than those without."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

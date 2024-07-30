@@ -1,0 +1,27 @@
+{
+    "acronym": "acaa8c957d75b67088eabc49bea7ccbaccf8a4f3",
+    "title": "Cross-Domain Sentiment Classification With Bidirectional Contextualized Transformer Language Models",
+    "seed_ids": [
+        "gpt",
+        "transformerxl",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "acaa8c957d75b67088eabc49bea7ccbaccf8a4f3",
+    "abstract": "Cross-domain sentiment classification is an important Natural Language Processing (NLP) task that aims at leveraging knowledge obtained from a source domain to train a high-performance learner for sentiment classification on a target domain. Existing transfer learning methods applied on cross-domain sentiment classification mostly focus on inducing a low-dimensional feature representation shared across domains based on pivots and non-pivots, which is still a low-level representation of sequence data. Recently, there have been great progress in the NLP literature in developing high-level representation language models based on Transformer architecture, which are pre-trained on large text corpus and fine-tuned for specific task with an additional layer on top. Among such language models, the bidirectional contextualized Transformer language models of BERT and XLNet have greatly impacted NLP research field. In this paper, we fine-tune BERT and XLNet for the cross-domain sentiment classification. We then explore their transferability in the context of cross-domain sentiment classification through in-depth analysis of two models\u2019 performances and update the state-of-the-arts with a significant margin of improvement. Our results show that such bidirectional contextualized language models outperform the previous state-of-the-arts methods for cross-domain sentiment classification while using up to 120 times less data.",
+    "authors": [
+        "Batsergelen Myagmar",
+        "Jie Li",
+        "Shigetomo Kimura"
+    ],
+    "venue": "IEEE Access",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results show that such bidirectional contextualized Transformer language models outperform the previous state-of-the-arts methods for cross-domain sentiment classification while using up to 120 times less data."
+    },
+    "citationCount": 40,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

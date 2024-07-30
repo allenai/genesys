@@ -1,0 +1,31 @@
+{
+    "acronym": "74a5c1ddb657a7dab8fc3930f9100b2fafa682dd",
+    "title": "BabyStories: Can Reinforcement Learning Teach Baby Language Models to Write Better Stories?",
+    "seed_ids": [
+        "gpt2",
+        "9aaa71d9311b44e2228eac213c24c37bb9ca64d1",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "5a2263092f49540fd0e049050a96882ff29b00c3",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "74a5c1ddb657a7dab8fc3930f9100b2fafa682dd",
+    "abstract": "Language models have seen significant growth in the size of their corpus, leading to notable performance improvements. Yet, there has been limited progress in developing models that handle smaller, more human-like datasets. As part of the BabyLM shared task, this study explores the impact of reinforcement learning from human feedback (RLHF) on language models pretrained from scratch with a limited training corpus. Comparing two GPT-2 variants, the larger model performs better in storytelling tasks after RLHF fine-tuning. These findings suggest that RLHF techniques may be more advantageous for larger models due to their higher learning and adaptation capacity, though more experiments are needed to confirm this finding. These insights highlight the potential benefits of RLHF fine-tuning for language models within limited data, enhancing their ability to maintain narrative focus and coherence while adhering better to initial instructions in storytelling tasks. The code for this work is publicly at https://github.com/Zephyr1022/BabyStories-UTSA.",
+    "authors": [
+        "Xingmeng Zhao",
+        "Tongnian Wang",
+        "Sheri Osborn",
+        "A. Rios"
+    ],
+    "venue": "Proceedings of the BabyLM Challenge at the 27th Conference on Computational Natural Language Learning",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Comparing two GPT-2 variants, the larger model performs better in storytelling tasks after RLHF fine-tuning, suggesting that RLHF techniques may be more advantageous for larger models due to their higher learning and adaptation capacity, though more experiments are needed to confirm this finding."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

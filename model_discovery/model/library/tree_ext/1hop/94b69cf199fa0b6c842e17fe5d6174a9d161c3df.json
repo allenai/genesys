@@ -1,0 +1,27 @@
+{
+    "acronym": "94b69cf199fa0b6c842e17fe5d6174a9d161c3df",
+    "title": "Video Transformer Network",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "94b69cf199fa0b6c842e17fe5d6174a9d161c3df",
+    "abstract": "This paper presents VTN, a transformer-based framework for video recognition. Inspired by recent developments in vision transformers, we ditch the standard approach in video action recognition that relies on 3D ConvNets and introduce a method that classifies actions by attending to the entire video sequence information. Our approach is generic and builds on top of any given 2D spatial network. In terms of wall runtime, it trains 16.1\u00d7 faster and runs 5.1\u00d7 faster during inference while maintaining competitive accuracy compared to other state-of-the-art methods. It enables whole video analysis, via a single end-to-end pass, while requiring 1.5\u00d7 fewer GFLOPs. We report competitive results on Kinetics-400 and Moments in Time benchmarks and present an ablation study of VTN properties and the trade-off between accuracy and inference speed. We hope our approach will serve as a new baseline and start a fresh line of research in the video recognition domain. Code and models are available at: https://github.com/bomri/SlowFast/blob/master/projects/vtn/README.md.",
+    "authors": [
+        "Daniel Neimark",
+        "Omri Bar",
+        "Maya Zohar",
+        "Dotan Asselmann"
+    ],
+    "venue": "2021 IEEE/CVF International Conference on Computer Vision Workshops (ICCVW)",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Inspired by recent developments in vision transformers, VTN is presented, a transformer-based framework for video recognition that enables whole video analysis, via a single end-to-end pass, while requiring 1.5\u00d7 fewer GFLOPs."
+    },
+    "citationCount": 355,
+    "influentialCitationCount": 32,
+    "code": null,
+    "description": null,
+    "url": null
+}

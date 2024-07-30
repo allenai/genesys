@@ -1,0 +1,26 @@
+{
+    "acronym": "c5f208832fa22c50061d8480b92556750d785fd3",
+    "title": "Alleviating Representational Shift for Continual Fine-tuning",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "c5f208832fa22c50061d8480b92556750d785fd3",
+    "abstract": "We study a practical setting of continual learning: fine-tuning on a pre-trained model continually. Previous work has found that, when training on new tasks, the features (penultimate layer representations) of previous data will change, called representational shift. Besides the shift of features, we reveal that the intermediate layers\u2019 representational shift (IRS) also matters since it disrupts batch normalization, which is another crucial cause of catastrophic forgetting. Motivated by this, we propose ConFiT, a fine-tuning method incorporating two components, cross-convolution batch normalization (Xconv BN) and hierarchical fine-tuning. Xconv BN maintains pre-convolution running means instead of post-convolution, and recovers post-convolution ones before testing, which corrects the inaccurate estimates of means under IRS. Hierarchical fine-tuning leverages a multi-stage strategy to fine-tune the pre-trained network, preventing massive changes in Conv layers and thus alleviating IRS. Experimental results on four datasets show that our method remarkably outperforms several state-of-the-art methods with lower storage overhead.",
+    "authors": [
+        "Shibo Jie",
+        "Zhi-Hong Deng",
+        "Ziheng Li"
+    ],
+    "venue": "2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ConFiT is proposed, a fine-tuning method incorporating two components, cross-convolution batch normalization (Xconv BN) and hierarchical fine- Tuning, which remarkably outperforms several state-of-the-art methods with lower storage overhead."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

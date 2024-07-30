@@ -1,0 +1,38 @@
+{
+    "acronym": "2a53d07a399c47151a7b440dacfb3673b9c4e753",
+    "title": "State Space Models as Foundation Models: A Control Theoretic Overview",
+    "seed_ids": [
+        "s4",
+        "mamba",
+        "26e6cd121c5fdb147df83cb848e4813c926737c8",
+        "d53fe76bd2795a19ddf52d012917782f6f6f2c1e",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06"
+    ],
+    "s2id": "2a53d07a399c47151a7b440dacfb3673b9c4e753",
+    "abstract": "In recent years, there has been a growing interest in integrating linear state-space models (SSM) in deep neural network architectures of foundation models. This is exemplified by the recent success of Mamba, showing better performance than the state-of-the-art Transformer architectures in language tasks. Foundation models, like e.g. GPT-4, aim to encode sequential data into a latent space in order to learn a compressed representation of the data. The same goal has been pursued by control theorists using SSMs to efficiently model dynamical systems. Therefore, SSMs can be naturally connected to deep sequence modeling, offering the opportunity to create synergies between the corresponding research areas. This paper is intended as a gentle introduction to SSM-based architectures for control theorists and summarizes the latest research developments. It provides a systematic review of the most successful SSM proposals and highlights their main features from a control theoretic perspective. Additionally, we present a comparative analysis of these models, evaluating their performance on a standardized benchmark designed for assessing a model's efficiency at learning long sequences.",
+    "authors": [
+        "Carmen Amo Alonso",
+        "Jerome Sieber",
+        "M. Zeilinger"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A systematic review of the most successful SSM proposals and highlights their main features from a control theoretic perspective is provided, and a comparative analysis of these models is presented, evaluating their performance on a standardized benchmark designed for assessing a model's efficiency at learning long sequences."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

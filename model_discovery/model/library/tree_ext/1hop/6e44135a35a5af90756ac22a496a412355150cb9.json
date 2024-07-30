@@ -1,0 +1,32 @@
+{
+    "acronym": "6e44135a35a5af90756ac22a496a412355150cb9",
+    "title": "Diffusion Probabilistic Fields",
+    "seed_ids": [
+        "perceiverio",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "d5e999aae76d5270ef272076979c809817458212",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "6e44135a35a5af90756ac22a496a412355150cb9",
+    "abstract": "Diffusion probabilistic models have quickly become a major approach for generative modeling of images, 3D geometry, video and other domains. However, to adapt diffusion generative modeling to these domains the denoising network needs to be carefully designed for each domain independently, oftentimes under the assumption that data lives in a Euclidean grid. In this paper we introduce Diffusion Probabilistic Fields (DPF), a diffusion model that can learn distributions over continuous functions defined over metric spaces, commonly known as fields. We extend the formulation of diffusion probabilistic models to deal with this field parametrization in an explicit way, enabling us to define an end-to-end learning algorithm that side-steps the requirement of representing fields with latent vectors as in previous approaches (Dupont et al., 2022a; Du et al., 2021). We empirically show that, while using the same denoising network, DPF effectively deals with different modalities like 2D images and 3D geometry, in addition to modeling distributions over fields defined on non-Euclidean metric spaces.",
+    "authors": [
+        "Peiye Zhuang",
+        "Samira Abnar",
+        "Jiatao Gu",
+        "Alex Schwing",
+        "Joshua M. Susskind",
+        "Miguel 'Angel Bautista"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DPF is introduced, a diffusion model that can learn distributions over continuous functions defined over metric spaces, commonly known as fields, and an end-to-end learning algorithm is defined that side-steps the requirement of representing fields with latent vectors as in previous approaches."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

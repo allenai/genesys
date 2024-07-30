@@ -1,0 +1,28 @@
+{
+    "acronym": "8498daeeb893870524ffaa63086f8528795003d4",
+    "title": "Personalized Prompt Learning for Explainable Recommendation",
+    "seed_ids": [
+        "gpt",
+        "gpt2",
+        "200050c1f51e2c930e62b078c6ce20f2a6675468",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8498daeeb893870524ffaa63086f8528795003d4",
+    "abstract": "Providing user-understandable explanations to justify recommendations could help users better understand the recommended items, increase the system\u2019s ease of use, and gain users\u2019 trust. A typical approach to realize it is natural language generation. However, previous works mostly adopt recurrent neural networks to meet the ends, leaving the potentially more effective pre-trained Transformer models under-explored. In fact, user and item IDs, as important identifiers in recommender systems, are inherently in different semantic space as words that pre-trained models were already trained on. Thus, how to effectively fuse IDs into such models becomes a critical issue. Inspired by recent advancement in prompt learning, we come up with two solutions: find alternative words to represent IDs (called discrete prompt learning) and directly input ID vectors to a pre-trained model (termed continuous prompt learning). In the latter case, ID vectors are randomly initialized but the model is trained in advance on large corpora, so they are actually in different learning stages. To bridge the gap, we further propose two training strategies: sequential tuning and recommendation as regularization. Extensive experiments show that our continuous prompt learning approach equipped with the training strategies consistently outperforms strong baselines on three datasets of explainable recommendation.",
+    "authors": [
+        "Lei Li",
+        "Yongfeng Zhang",
+        "Li Chen"
+    ],
+    "venue": "ACM Trans. Inf. Syst.",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Inspired by recent advancement in prompt learning, a continuous prompt learning approach equipped with the training strategies consistently outperforms strong baselines on three datasets of explainable recommendation and proposes two training strategies: sequential tuning and recommendation as regularization."
+    },
+    "citationCount": 91,
+    "influentialCitationCount": 13,
+    "code": null,
+    "description": null,
+    "url": null
+}

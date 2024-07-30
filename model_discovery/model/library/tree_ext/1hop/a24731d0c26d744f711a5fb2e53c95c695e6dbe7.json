@@ -1,0 +1,32 @@
+{
+    "acronym": "a24731d0c26d744f711a5fb2e53c95c695e6dbe7",
+    "title": "FedGCS: A Generative Framework for Efficient Client Selection in Federated Learning via Gradient-based Optimization",
+    "seed_ids": [
+        "gpt3",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a24731d0c26d744f711a5fb2e53c95c695e6dbe7",
+    "abstract": "Federated Learning faces significant challenges in statistical and system heterogeneity, along with high energy consumption, necessitating efficient client selection strategies. Traditional approaches, including heuristic and learning-based methods, fall short of addressing these complexities holistically. In response, we propose FedGCS, a novel generative client selection framework that innovatively recasts the client selection process as a generative task. Drawing inspiration from the methodologies used in large language models, FedGCS efficiently encodes abundant decision-making knowledge within a continuous representation space, enabling efficient gradient-based optimization to search for optimal client selection that will be finally output via generation. The framework comprises four steps: (1) automatic collection of diverse \u201cselection-score\u201d pair data using classical client selection methods; (2) training an encoder-evaluator-decoder framework on this data to construct a continuous representation space; (3) employing gradient-based optimization in this space for optimal client selection; (4) generating the final optimal client selection via using beam search for the well-trained decoder. FedGCS outperforms traditional methods by being more comprehensive, generalizable, and efficient, simultaneously optimizing for model performance, latency, and energy consumption. The effectiveness of FedGCS is proven through extensive experimental analyses.",
+    "authors": [
+        "Zhiyuan Ning",
+        "Chunlin Tian",
+        "Meng Xiao",
+        "Wei Fan",
+        "Pengyang Wang",
+        "Li Li",
+        "P. Wang",
+        "Yuanchun Zhou"
+    ],
+    "venue": "Proceedings of the Thirty-ThirdInternational Joint Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "FedGCS is proposed, a novel generative client selection framework that innovatively recasts the client selection process as a generative task, and outperforms traditional methods by being more comprehensive, generalizable, and efficient, simultaneously optimizing for model performance, latency, and energy consumption."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

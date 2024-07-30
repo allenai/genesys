@@ -1,0 +1,38 @@
+{
+    "acronym": "9bd60a0b1b5e70c9e6ccfde513f8fdea61d8b503",
+    "title": "ReMamber: Referring Image Segmentation with Mamba Twister",
+    "seed_ids": [
+        "mamba",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "55cd2d0a8f26c4dc458303f937af2b6fb8f8b693",
+        "bb6644a9f5920abfc1fa008f366a9ff48468e063",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "9226ae23b95b3f6891461e086d910ffeb7ac448a",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2"
+    ],
+    "s2id": "9bd60a0b1b5e70c9e6ccfde513f8fdea61d8b503",
+    "abstract": "Referring Image Segmentation~(RIS) leveraging transformers has achieved great success on the interpretation of complex visual-language tasks. However, the quadratic computation cost makes it resource-consuming in capturing long-range visual-language dependencies. Fortunately, Mamba addresses this with efficient linear complexity in processing. However, directly applying Mamba to multi-modal interactions presents challenges, primarily due to inadequate channel interactions for the effective fusion of multi-modal data. In this paper, we propose ReMamber, a novel RIS architecture that integrates the power of Mamba with a multi-modal Mamba Twister block. The Mamba Twister explicitly models image-text interaction, and fuses textual and visual features through its unique channel and spatial twisting mechanism. We achieve competitive results on three challenging benchmarks with a simple and efficient architecture. Moreover, we conduct thorough analyses of ReMamber and discuss other fusion designs using Mamba. These provide valuable perspectives for future research. The code has been released at: https://github.com/yyh-rain-song/ReMamber.",
+    "authors": [
+        "Yu-Hao Yang",
+        "Chaofan Ma",
+        "Jiangchao Yao",
+        "Zhun Zhong",
+        "Ya Zhang",
+        "Yanfeng Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes ReMamber, a novel RIS architecture that integrates the power of Mamba with a multi-modal Mamba Twister block, and fuses textual and visual features through its unique channel and spatial twisting mechanism."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

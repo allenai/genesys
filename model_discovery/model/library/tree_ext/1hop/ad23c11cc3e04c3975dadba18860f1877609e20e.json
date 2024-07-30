@@ -1,0 +1,29 @@
+{
+    "acronym": "ad23c11cc3e04c3975dadba18860f1877609e20e",
+    "title": "Can LLM Substitute Human Labeling? A Case Study of Fine-grained Chinese Address Entity Recognition Dataset for UAV Delivery",
+    "seed_ids": [
+        "gpt3",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "ad23c11cc3e04c3975dadba18860f1877609e20e",
+    "abstract": "We present CNER-UAV, a fine-grained C hinese N ame E ntity R ecognition dataset specifically designed for the task of address resolution in U nmanned A erial V ehicle delivery systems. The dataset encompasses a diverse range of five categories, enabling comprehensive training and evaluation of NER models. To construct this dataset, we sourced the data from a real-world UAV delivery system and conducted a rigorous data cleaning and desensitization process to ensure privacy and data integrity. The resulting dataset, consisting of around 12,000 annotated samples, underwent human experts and L arge L anguage M odel annotation. We evaluated classical NER models on our dataset and provided in-depth analysis. The dataset and models are publicly available at https://github.com/zhhvvv/CNER-UAV.",
+    "authors": [
+        "Yuxuan Yao",
+        "Sichun Luo",
+        "Haohan Zhao",
+        "Guanzhi Deng",
+        "Linqi Song"
+    ],
+    "venue": "The Web Conference",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "CNER-UAV is presented, a fine-grained dataset specifically designed for the task of address resolution in UAV delivery systems, enabling comprehensive training and evaluation of NER models."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

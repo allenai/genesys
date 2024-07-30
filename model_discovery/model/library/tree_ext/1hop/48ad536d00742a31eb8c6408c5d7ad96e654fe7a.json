@@ -1,0 +1,34 @@
+{
+    "acronym": "48ad536d00742a31eb8c6408c5d7ad96e654fe7a",
+    "title": "Receptive Field Alignment Enables Transformer Length Extrapolation",
+    "seed_ids": [
+        "longformer",
+        "alibi",
+        "roformer",
+        "kerple",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "d6c5aab433d9871cabc01ffb1e5e1ea89141155b",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "63857190aaf5aab1d94b54bb257b7b03b8cb5a50",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "48ad536d00742a31eb8c6408c5d7ad96e654fe7a",
+    "abstract": "Length extrapolation is a desirable property that permits training a transformer language model on short sequences and retaining similar perplexities when the model is tested on substantially longer sequences. A relative positional embedding mechanism applied on the transformer self-attention matrix, ALiBi, demonstrates the length extrapolation property with the widest usage to date. In this paper, we show that ALiBi surprisingly does not utilize tokens further than the training sequence length, which can be explained by its implicit windowed attention effect that aligns the receptive \ufb01eld during training and testing stages. Inspired by ALiBi and the receptive \ufb01led alignment hypothesis, we propose another transformer positional embedding design named Sandwich that uses longer than training sequence length information, and it is a greatly simpli\ufb01ed formulation of the earliest proposed Sinusoidal positional embedding. Finally, we show that both ALiBi and Sandwich enable ef\ufb01cient inference thanks to their implicit windowed attention effect.",
+    "authors": [
+        "Ta-Chung Chi",
+        "Ting-Han Fan",
+        "Alexander I. Rudnicky"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that ALiBi surprisingly does not utilize tokens further than the training sequence length, which can be explained by its implicit windowed attention effect that aligns the receptive during training and testing stages, and another transformer positional embedding design named Sandwich is proposed that uses longer thanTraining sequence length information."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

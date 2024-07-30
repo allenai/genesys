@@ -1,0 +1,36 @@
+{
+    "acronym": "e923cdf6414b38fc639b015af43ac8aa82109411",
+    "title": "IAPT: Instruction-Aware Prompt Tuning for Large Language Models",
+    "seed_ids": [
+        "transformer",
+        "989254f702db9bdc6f2424803ce1ba5a99949fab",
+        "91e48f3d6836a8d3e842bc691e9759ad7fc9e395",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "a981a57848e19adb80c4a29471fbb798ac050a8f",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e923cdf6414b38fc639b015af43ac8aa82109411",
+    "abstract": "Soft prompt tuning is a widely studied parameter-efficient fine-tuning method. However, it has a clear drawback: many soft tokens must be inserted into the input sequences to guarantee downstream performance. As a result, soft prompt tuning is less considered than Low-rank adaptation (LoRA) in the large language modeling (LLM) era. In this work, we propose a novel prompt tuning method, Instruction-Aware Prompt Tuning (IAPT), that requires only four soft tokens. First, we install a parameter-efficient soft prompt generator at each Transformer layer to generate idiosyncratic soft prompts for each input instruction. The generated soft prompts can be seen as a semantic summary of the input instructions and can effectively guide the output generation. Second, the soft prompt generators are modules with a bottleneck architecture consisting of a self-attention pooling operation, two linear projections, and an activation function. Pilot experiments show that prompt generators at different Transformer layers require different activation functions. Thus, we propose to learn the idiosyncratic activation functions for prompt generators automatically with the help of rational functions. We have conducted experiments on various tasks, and the experimental results demonstrate that (a) our IAPT method can outperform the recent baselines with comparable tunable parameters. (b) Our IAPT method is more efficient than LoRA under the single-backbone multi-tenant setting.",
+    "authors": [
+        "Wei Zhu",
+        "Aaron Xuxiang Tian",
+        "Congrui Yin",
+        "Yuan Ni",
+        "Xiaoling Wang",
+        "Guotong Xie"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel prompt tuning method, Instruction-Aware Prompt Tuning (IAPT), that requires only four soft tokens to learn the idiosyncratic activation functions for prompt generators automatically with the help of rational functions."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

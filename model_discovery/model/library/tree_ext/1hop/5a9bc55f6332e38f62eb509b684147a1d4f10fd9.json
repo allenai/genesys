@@ -1,0 +1,37 @@
+{
+    "acronym": "5a9bc55f6332e38f62eb509b684147a1d4f10fd9",
+    "title": "Focal Attention for Long-Range Interactions in Vision Transformers",
+    "seed_ids": [
+        "bigbird",
+        "longformer",
+        "3cbe314cc5407a6c3249815b5173f22ea15173c2",
+        "3a906b77fa218adc171fecb28bb81c24c14dcc7b",
+        "2e1db8cb373f4d4a51d44308b7a457886d855fbb",
+        "baed71eed57ad462f3ab138d4b1700a738cd5414",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "5a9bc55f6332e38f62eb509b684147a1d4f10fd9",
+    "abstract": "Recently, Vision Transformer and its variants have shown great promise on various computer vision tasks. The ability of capturing local and global visual dependencies through self-attention is the key to its success. However, this also brings challenges due to quadratic computational overhead, especially for the high-resolution vision tasks ( e.g. , object detection). Many recent works have attempted to reduce the cost and improve model performance by applying either coarse-grained global attention or \ufb01ne-grained local attention. However, both approaches cripple the modeling power of the original self-attention mechanism of multi-layer Transformers, leading to sub-optimal solutions. In this paper, we present focal attention , a new attention mechanism that incorporates both \ufb01ne-grained local and coarse-grained global interactions. In this new mechanism, each token attends its closest surrounding tokens at \ufb01ne granularity and the tokens far away at coarse granularity, and thus can capture both short-and long-range visual dependencies ef\ufb01ciently and effectively. With focal attention, we build a new variant of Vision Transformer models, called Focal Transformers , which achieve superior performance over the state-of-the-art (SoTA) Vision Transformers on a range of public image classi\ufb01cation and object detection benchmarks. In particular, our Focal Transformer models with a moderate size of 51.1M and a large size of 89.8M achieve 83.6 % and 84.0 % Top-1 accuracy, respectively, on ImageNet classi\ufb01cation at 224 \u00d7 224 . When employed as the backbones, Focal Transformers achieve consistent and substantial improvements over the current SoTA Swin Transformers [43] across 6 different object detection methods. Our largest Focal Transformer yields 58.7 / 59.0 box mAPs and 50.9 / 51.3 mask mAPs on COCO mini-val/test-dev, and 55.4 mIoU on ADE20K for semantic segmentation, creating new SoTA on three of the most challenging computer vision tasks. Our code is available at: https://github. com/microsoft/Focal-Transformer .",
+    "authors": [
+        "Jianwei Yang",
+        "Chunyuan Li",
+        "Pengchuan Zhang",
+        "Xiyang Dai",
+        "Bin Xiao",
+        "Lu Yuan",
+        "Jianfeng Gao"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new variant of Vision Transformer models, called Focal Transformers, is built, which achieve superior performance over the state-of-the-art (SoTA) Vision Transformers on a range of public image classi\ufb01cation and object detection benchmarks."
+    },
+    "citationCount": 106,
+    "influentialCitationCount": 11,
+    "code": null,
+    "description": null,
+    "url": null
+}

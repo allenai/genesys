@@ -1,0 +1,32 @@
+{
+    "acronym": "c48245d00985ca12f5442a88bb2837323fff1ccf",
+    "title": "GSmoothFace: Generalized Smooth Talking Face Generation via Fine Grained 3D Face Guidance",
+    "seed_ids": [
+        "bert",
+        "dd23991294bf53c6301ab79fa49752e6458d2eab"
+    ],
+    "s2id": "c48245d00985ca12f5442a88bb2837323fff1ccf",
+    "abstract": "Although existing speech-driven talking face generation methods achieve significant progress, they are far from real-world application due to the avatar-specific training demand and unstable lip movements. To address the above issues, we propose the GSmoothFace, a novel two-stage generalized talking face generation model guided by a fine-grained 3d face model, which can synthesize smooth lip dynamics while preserving the speaker's identity. Our proposed GSmoothFace model mainly consists of the Audio to Expression Prediction (A2EP) module and the Target Adaptive Face Translation (TAFT) module. Specifically, we first develop the A2EP module to predict expression parameters synchronized with the driven speech. It uses a transformer to capture the long-term audio context and learns the parameters from the fine-grained 3D facial vertices, resulting in accurate and smooth lip-synchronization performance. Afterward, the well-designed TAFT module, empowered by Morphology Augmented Face Blending (MAFB), takes the predicted expression parameters and target video as inputs to modify the facial region of the target video without distorting the background content. The TAFT effectively exploits the identity appearance and background context in the target video, which makes it possible to generalize to different speakers without retraining. Both quantitative and qualitative experiments confirm the superiority of our method in terms of realism, lip synchronization, and visual quality. See the project page for code, data, and request pre-trained models: https://zhanghm1995.github.io/GSmoothFace.",
+    "authors": [
+        "Haiming Zhang",
+        "Zhihao Yuan",
+        "Chaoda Zheng",
+        "Xu Yan",
+        "Baoyuan Wang",
+        "Guanbin Li",
+        "Song Wu",
+        "Shuguang Cui",
+        "Zhen Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The GSmoothFace is a novel two-stage generalized talking face generation model guided by a fine-grained 3d face model, which can synthesize smooth lip dynamics while preserving the speaker's identity."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

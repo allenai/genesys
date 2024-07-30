@@ -1,0 +1,26 @@
+{
+    "acronym": "95d6d5ecb6ec57cf913e955107070496450cfd4c",
+    "title": "MossFormer: Pushing the Performance Limit of Monaural Speech Separation Using Gated Single-Head Transformer with Convolution-Augmented Joint Self-Attentions",
+    "seed_ids": [
+        "flash",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "95d6d5ecb6ec57cf913e955107070496450cfd4c",
+    "abstract": "Transformer based models have provided significant performance improvements in monaural speech separation. However, there is still a performance gap compared to a recent proposed upper bound. The major limitation of the current dual-path Transformer models is the inefficient modelling of long-range elemental interactions and local feature patterns. In this work, we achieve the upper bound by proposing a gated single-head transformer architecture with convolution-augmented joint self-attentions, named MossFormer (Monaural speech separation TransFormer). To effectively solve the indirect elemental interactions across chunks in the dual-path architecture, MossFormer employs a joint local and global self-attention architecture that simultaneously performs a full-computation self-attention on local chunks and a linearised low-cost self-attention over the full sequence. The joint attention enables MossFormer model full-sequence elemental interaction directly. In addition, we employ a powerful attentive gating mechanism with simplified single-head self-attentions. Besides the attentive long-range modelling, we also augment MossFormer with convolutions for the position-wise local pattern modelling. As a consequence, MossFormer significantly outperforms the previous models and achieves the state-of-the-art results on WSJ0-2/3mix and WHAM!/WHAMR! benchmarks. Our model achieves the SI-SDRi upper bound of 21.2 dB on WSJ0-3mix and only 0.3 dB below the upper bound of 23.1 dB on WSJ0-2mix.",
+    "authors": [
+        "Shengkui Zhao",
+        "Bin Ma"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A gated single-head transformer architecture with convolution-augmented joint self-attentions, named MossFormer (Monaural speech separation TransFormer), which significantly outperforms the previous models and achieves the state-of-the-art results on WSJ0-2/3mix and WHAM!/WHAMR!."
+    },
+    "citationCount": 30,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

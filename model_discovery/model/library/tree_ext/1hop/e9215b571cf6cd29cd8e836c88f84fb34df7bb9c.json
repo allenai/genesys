@@ -1,0 +1,30 @@
+{
+    "acronym": "e9215b571cf6cd29cd8e836c88f84fb34df7bb9c",
+    "title": "Remote Sensing Image Scene Classification via Self-Supervised Learning and Knowledge Distillation",
+    "seed_ids": [
+        "gmlp",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "485c08025157973bb52a935c6aa3bee74f990c01",
+        "f75cddf2d42ed01b34686704eb3504becef67442",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "e9215b571cf6cd29cd8e836c88f84fb34df7bb9c",
+    "abstract": "The main challenges of remote sensing image scene classification are extracting discriminative features and making full use of the training data. The current mainstream deep learning methods usually only use the hard labels of the samples, ignoring the potential soft labels and natural labels. Self-supervised learning can take full advantage of natural labels. However, it is difficult to train a self-supervised network due to the limitations of the dataset and computing resources. We propose a self-supervised knowledge distillation network (SSKDNet) to solve the aforementioned challenges. Specifically, the feature maps of the backbone are used as supervision signals, and the branch learns to restore the low-level feature maps after background masking and shuffling. The \u201cdark knowledge\u201d of the branch is transferred to the backbone through knowledge distillation (KD). The backbone and branch are optimized together in the KD process without independent pre-training. Moreover, we propose a feature fusion module to fuse feature maps dynamically. In general, SSKDNet can make full use of soft labels and has excellent discriminative feature extraction capabilities. Experimental results conducted on three datasets demonstrate the effectiveness of the proposed approach.",
+    "authors": [
+        "Yibo Zhao",
+        "J. Liu",
+        "Jinlong Yang",
+        "Zebin Wu"
+    ],
+    "venue": "Remote Sensing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A self-supervised knowledge distillation network (SSKDNet) that can make full use of soft labels and has excellent discriminative feature extraction capabilities is proposed."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,32 @@
+{
+    "acronym": "5548d8a116dff78827d658ef0bbf3fa0dcaec8f1",
+    "title": "MSP: Multi-Stage Prompting for Making Pre-trained Language Models Better Translators",
+    "seed_ids": [
+        "gpt",
+        "319b84be7a843250bc81d7086f79a4126d550277",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "64f94eb97891ca17273464fcb9c507c5a5c7dba7",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "7a09101ac03b74db501648597fa54e992a0fc84f",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5548d8a116dff78827d658ef0bbf3fa0dcaec8f1",
+    "abstract": "Prompting has recently been shown as a promising approach for applying pre-trained language models to perform downstream tasks. We present Multi-Stage Prompting, a simple and automatic approach for leveraging pre-trained language models to translation tasks. To better mitigate the discrepancy between pre-training and translation, MSP divides the translation process via pre-trained language models into three separate stages: the encoding stage, the re-encoding stage, and the decoding stage. During each stage, we independently apply different continuous prompts for allowing pre-trained language models better shift to translation tasks. We conduct extensive experiments on three translation tasks. Experiments show that our method can significantly improve the translation performance of pre-trained language models.",
+    "authors": [
+        "Zhixing Tan",
+        "Xiangwen Zhang",
+        "Shuo Wang",
+        "Yang Liu"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents Multi-Stage Prompting, a simple and automatic approach for leveraging pre-trained language models to translation tasks that can significantly improve the translation performance of pre- trained language models."
+    },
+    "citationCount": 44,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "0588860f4076cbec9b7b2fe37a58877fdc848a38",
+    "title": "Beyond Scaling: Predicting Patent Approval with Domain-specific Fine-grained Claim Dependency Graph",
+    "seed_ids": [
+        "bert",
+        "b18e50747e88953e86046a7bec5afc17bf2649a0",
+        "81205b4f8f067c3000667cc53a5454a8c9a743c4"
+    ],
+    "s2id": "0588860f4076cbec9b7b2fe37a58877fdc848a38",
+    "abstract": "Model scaling is becoming the default choice for many language tasks due to the success of large language models (LLMs). However, it can fall short in specific scenarios where simple customized methods excel. In this paper, we delve into the patent approval pre-diction task and unveil that simple domain-specific graph methods outperform enlarging the model, using the intrinsic dependencies within the patent data. Specifically, we first extend the embedding-based state-of-the-art (SOTA) by scaling up its backbone model with various sizes of open-source LLMs, then explore prompt-based methods to harness proprietary LLMs' potential, but find the best results close to random guessing, underlining the ineffectiveness of model scaling-up. Hence, we propose a novel Fine-grained cLAim depeNdency (FLAN) Graph through meticulous patent data analyses, capturing the inherent dependencies across segments of the patent text. As it is model-agnostic, we apply cost-effective graph models to our FLAN Graph to obtain representations for approval prediction. Extensive experiments and detailed analyses prove that incorporating FLAN Graph via various graph models consistently outperforms all LLM baselines significantly. We hope that our observations and analyses in this paper can bring more attention to this challenging task and prompt further research into the limitations of LLMs. Our source code and dataset can be obtained from http://github.com/ShangDataLab/FLAN-Graph.",
+    "authors": [
+        "Xiaochen Kev Gao",
+        "Feng Yao",
+        "Kewen Zhao",
+        "Beilei He",
+        "Animesh Kumar",
+        "Vish Krishnan",
+        "Jingbo Shang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper delves into the patent approval pre-diction task and unveils that simple domain-specific graph methods outperform enlarging the model, using the intrinsic dependencies within the patent data."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

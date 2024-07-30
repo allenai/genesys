@@ -1,0 +1,29 @@
+{
+    "acronym": "7ea0e91c5d5dc73f2133bc46d7ebb6cb83034dae",
+    "title": "Detecting Emergent Intersectional Biases: Contextualized Word Embeddings Contain a Distribution of Human-like Biases",
+    "seed_ids": [
+        "gpt",
+        "039b1c1210c437f3b3ce6e0275ee2137bf5b951c",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "e2587eddd57bc4ba286d91b27c185083f16f40ee",
+        "5e9c85235210b59a16bdd84b444a904ae271f7e7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7ea0e91c5d5dc73f2133bc46d7ebb6cb83034dae",
+    "abstract": "With the starting point that implicit human biases are reflected in the statistical regularities of language, it is possible to measure biases in English static word embeddings. State-of-the-art neural language models generate dynamic word embeddings dependent on the context in which the word appears. Current methods measure pre-defined social and intersectional biases that occur in contexts defined by sentence templates. Dispensing with templates, we introduce the Contextualized Embedding Association Test (CEAT), that can summarize the magnitude of overall bias in neural language models by incorporating a random-effects model. Experiments on social and intersectional biases show that CEAT finds evidence of all tested biases and provides comprehensive information on the variance of effect magnitudes of the same bias in different contexts. All the models trained on English corpora that we study contain biased representations. GPT-2 contains the smallest magnitude of overall bias followed by GPT, BERT, and then ELMo, negatively correlating with the contextualization levels of the models. Furthermore, we develop two methods, Intersectional Bias Detection (IBD) and Emergent Intersectional Bias Detection (EIBD), to automatically identify the intersectional biases and emergent intersectional biases from static word embeddings in addition to measuring them in contextualized word embeddings. We present the first algorithmic bias detection findings on how intersectional group members are strongly associated with unique emergent biases that do not overlap with the biases of their constituent minority identities. IBD achieves an accuracy of 81.6% and 82.7%, respectively, when detecting the intersectional biases of African American females and Mexican American females, where the random correct identification rates are 14.3% and 13.3%. EIBD reaches an accuracy of 84.7% and 65.3%, respectively, when detecting the emergent intersectional biases unique to African American females and Mexican American females, where the random correct identification rates are 9.2% and 6.1%. Our results indicate that intersectional biases associated with members of multiple minority groups, such as African American females and Mexican American females, have the highest magnitude across all neural language models.",
+    "authors": [
+        "W. Guo",
+        "Aylin Caliskan"
+    ],
+    "venue": "AAAI/ACM Conference on AI, Ethics, and Society",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The first algorithmic bias detection findings on how intersectional group members are strongly associated with unique emergent biases that do not overlap with the biases of their constituent minority identities are presented."
+    },
+    "citationCount": 182,
+    "influentialCitationCount": 15,
+    "code": null,
+    "description": null,
+    "url": null
+}

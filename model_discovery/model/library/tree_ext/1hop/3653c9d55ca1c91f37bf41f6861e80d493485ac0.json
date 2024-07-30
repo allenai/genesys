@@ -1,0 +1,31 @@
+{
+    "acronym": "3653c9d55ca1c91f37bf41f6861e80d493485ac0",
+    "title": "Integrating LSTM and BERT for Long-Sequence Data Analysis in Intelligent Tutoring Systems",
+    "seed_ids": [
+        "bert",
+        "6c761cfdb031701072582e434d8f64d436255da6",
+        "2a218786f4615b82389f78472e7ff22e6ce57490",
+        "24a70db0bbb5f486126477e32a6a44ab917a4b11",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8"
+    ],
+    "s2id": "3653c9d55ca1c91f37bf41f6861e80d493485ac0",
+    "abstract": "The field of Knowledge Tracing aims to understand how students learn and master knowledge over time by analyzing their historical behaviour data. To achieve this goal, many researchers have proposed Knowledge Tracing models that use data from Intelligent Tutoring Systems to predict students' subsequent actions. However, with the development of Intelligent Tutoring Systems, large-scale datasets containing long-sequence data began to emerge. Recent deep learning based Knowledge Tracing models face obstacles such as low efficiency, low accuracy, and low interpretability when dealing with large-scale datasets containing long-sequence data. To address these issues and promote the sustainable development of Intelligent Tutoring Systems, we propose a LSTM BERT-based Knowledge Tracing model for long sequence data processing, namely LBKT, which uses a BERT-based architecture with a Rasch model-based embeddings block to deal with different difficulty levels information and an LSTM block to process the sequential characteristic in students' actions. LBKT achieves the best performance on most benchmark datasets on the metrics of ACC and AUC. Additionally, an ablation study is conducted to analyse the impact of each component of LBKT's overall performance. Moreover, we used t-SNE as the visualisation tool to demonstrate the model's embedding strategy. The results indicate that LBKT is faster, more interpretable, and has a lower memory cost than the traditional deep learning based Knowledge Tracing methods.",
+    "authors": [
+        "Zhaoxing Li",
+        "Jujie Yang",
+        "Jindi Wang",
+        "Lei Shi",
+        "Sebastian Stein"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A LSTM BERT-based Knowledge Tracing model for long sequence data processing is proposed, namely LBKT, which uses a BERT-based architecture with a Rasch model-based embeddings block to deal with different difficulty levels information and an LSTM block to process the sequential characteristic in students' actions."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

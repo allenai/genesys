@@ -1,0 +1,30 @@
+{
+    "acronym": "2c23641cc7daf5501a2077a2a8e78be9fafbd7a1",
+    "title": "Locate&Edit: Energy-based Text Editing for Efficient, Flexible, and Faithful Controlled Text Generation",
+    "seed_ids": [
+        "gpt2",
+        "f1e56def812bc398d1b2b8c9a7ea6a623abd38e5",
+        "4a6a65968a8eb8c09ffb57a7774ddabb596565b1",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2c23641cc7daf5501a2077a2a8e78be9fafbd7a1",
+    "abstract": "Recent approaches to controlled text generation (CTG) often involve manipulating the weights or logits of base language models (LMs) at decoding time. However, these methods are inapplicable to latest black-box LMs and ineffective at preserving the core semantics of the base LM's original generations. In this work, we propose Locate&Edit(L&E), an efficient and flexible energy-based approach to CTG, which edits text outputs from a base LM using off-the-shelf energy models. Given text outputs from the base LM, L&E first locates spans that are most relevant to constraints (e.g., toxicity) utilizing energy models, and then edits these spans by replacing them with more suitable alternatives. Importantly, our method is compatible with black-box LMs, as it requires only the text outputs. Also, since L&E doesn't mandate specific architecture for its component models, it can work with a diverse combination of available off-the-shelf models. Moreover, L&E preserves the base LM's original generations, by selectively modifying constraint-related aspects of the texts and leaving others unchanged. These targeted edits also ensure that L&E operates efficiently. Our experiments confirm that L&E achieves superior semantic preservation of the base LM generations and speed, while simultaneously obtaining competitive or improved constraint satisfaction. Furthermore, we analyze how the granularity of energy distribution impacts CTG performance and find that fine-grained, regression-based energy models improve constraint satisfaction, compared to conventional binary classifier energy models.",
+    "authors": [
+        "Hye Ryung Son",
+        "Jay-Yoon Lee"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes Locate&Edit (L&E), an efficient and flexible energy-based approach to CTG, which edits text outputs from a base LM using off-the-shelf energy models, and achieves superior semantic preservation of the base LM generations and speed, while simultaneously obtaining competitive or improved constraint satisfaction."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

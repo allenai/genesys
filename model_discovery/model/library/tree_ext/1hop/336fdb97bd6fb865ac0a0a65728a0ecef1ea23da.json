@@ -1,0 +1,33 @@
+{
+    "acronym": "336fdb97bd6fb865ac0a0a65728a0ecef1ea23da",
+    "title": "Theoretical Insights for Diffusion Guidance: A Case Study for Gaussian Mixture Models",
+    "seed_ids": [
+        "classfreediffu",
+        "e342165a614588878ad0f4bc9bacf3905df34d08",
+        "355e7b4ec396fef5c0ae1e12b0fd2d8130b21dc2",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "fd1b829261ba04bb92e0ab60c4f6e7cea0d99fbf"
+    ],
+    "s2id": "336fdb97bd6fb865ac0a0a65728a0ecef1ea23da",
+    "abstract": "Diffusion models benefit from instillation of task-specific information into the score function to steer the sample generation towards desired properties. Such information is coined as guidance. For example, in text-to-image synthesis, text input is encoded as guidance to generate semantically aligned images. Proper guidance inputs are closely tied to the performance of diffusion models. A common observation is that strong guidance promotes a tight alignment to the task-specific information, while reducing the diversity of the generated samples. In this paper, we provide the first theoretical study towards understanding the influence of guidance on diffusion models in the context of Gaussian mixture models. Under mild conditions, we prove that incorporating diffusion guidance not only boosts classification confidence but also diminishes distribution diversity, leading to a reduction in the differential entropy of the output distribution. Our analysis covers the widely adopted sampling schemes including DDPM and DDIM, and leverages comparison inequalities for differential equations as well as the Fokker-Planck equation that characterizes the evolution of probability density function, which may be of independent theoretical interest.",
+    "authors": [
+        "Yuchen Wu",
+        "Minshuo Chen",
+        "Zihao Li",
+        "Mengdi Wang",
+        "Yuting Wei"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Under mild conditions, it is proved that incorporating diffusion guidance not only boosts classification confidence but also diminishes distribution diversity, leading to a reduction in the differential entropy of the output distribution."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

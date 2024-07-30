@@ -1,0 +1,31 @@
+{
+    "acronym": "5e3b635ae9985d96901a1a53442408e8a54d2fa8",
+    "title": "A Generative Model for Text Control in Minecraft",
+    "seed_ids": [
+        "classfreediffu",
+        "25425e299101b13ec2872417a14f961f4f8aa18e",
+        "32c9b3859086d15184989454eb878638659e64c6",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "5e3b635ae9985d96901a1a53442408e8a54d2fa8",
+    "abstract": "Constructing AI models that respond to text instructions is challenging, especially for sequential decision-making tasks. This work introduces an instruction-tuned Video Pretraining (VPT) model for Minecraft\u2122 called S TEVE -1, demonstrating that the unCLIP approach, utilized in DALL\u2022E 2, is also effective for creating instruction-following sequential decision-making agents. S TEVE -1 is trained in two steps: adapting the pretrained VPT model to follow commands in MineCLIP\u2019s latent space, then training a prior to predict latent codes from text. This allows us to finetune VPT through self-supervised behavioral cloning and hindsight relabeling, bypassing the need for costly human text annotations. By leveraging pretrained models like VPT and MineCLIP and employing best practices from text-conditioned image generation, S TEVE -1 costs just $60 to train and can follow a wide range of short-horizon open-ended text and visual instructions in Minecraft . S TEVE -1 sets a new bar for open-ended instruction following in Minecraft with low-level controls (mouse and keyboard) and raw pixel inputs, far outperforming previous baselines. We provide experimental evidence highlighting key factors for downstream performance, including pretraining, classifier-free guidance, and data scaling. All resources, including our model weights, training scripts, and evaluation tools are made available for further research.",
+    "authors": [
+        "Shalev Lifshitz",
+        "Keiran Paster",
+        "\u2020. HarrisChan",
+        "Jimmy Ba",
+        "Sheila A. McIlraith"
+    ],
+    "venue": "",
+    "year": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces an instruction-tuned Video Pretraining model for Minecraft called S TEVE -1, demonstrating that the unCLIP approach, utilized in DALL\u2022E 2, is also effective for creating instruction-following sequential decision-making agents."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

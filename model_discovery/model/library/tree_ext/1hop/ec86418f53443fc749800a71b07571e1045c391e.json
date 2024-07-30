@@ -1,0 +1,28 @@
+{
+    "acronym": "ec86418f53443fc749800a71b07571e1045c391e",
+    "title": "Classifying Human-Generated and AI-Generated Election Claims in Social Media",
+    "seed_ids": [
+        "bert",
+        "1e909e2a8cdacdcdff125ebcc566f37cb869a1c8"
+    ],
+    "s2id": "ec86418f53443fc749800a71b07571e1045c391e",
+    "abstract": "Politics is one of the most prevalent topics discussed on social media platforms, particularly during major election cycles, where users engage in conversations about candidates and electoral processes. Malicious actors may use this opportunity to disseminate misinformation to undermine trust in the electoral process. The emergence of Large Language Models (LLMs) exacerbates this issue by enabling malicious actors to generate misinformation at an unprecedented scale. Artificial intelligence (AI)-generated content is often indistinguishable from authentic user content, raising concerns about the integrity of information on social networks. In this paper, we present a novel taxonomy for characterizing election-related claims. This taxonomy provides an instrument for analyzing election-related claims, with granular categories related to jurisdiction, equipment, processes, and the nature of claims. We introduce ElectAI, a novel benchmark dataset that consists of 9,900 tweets, each labeled as human- or AI-generated. For AI-generated tweets, the specific LLM variant that produced them is specified. We annotated a subset of 1,550 tweets using the proposed taxonomy to capture the characteristics of election-related claims. We explored the capabilities of LLMs in extracting the taxonomy attributes and trained various machine learning models using ElectAI to distinguish between human- and AI-generated posts and identify the specific LLM variant.",
+    "authors": [
+        "A. Dmonte",
+        "Marcos Zampieri",
+        "Kevin Lybarger",
+        "Massimiliano Albanese",
+        "Genya Coulter"
+    ],
+    "venue": "Proceedings of the 21st International Conference on Security and Cryptography",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a novel taxonomy for characterizing election-related claims, and introduces ElectAI, a novel benchmark dataset that consists of 9,900 tweets, each labeled as human- or AI-generated, and explores the capabilities of LLMs in extracting the taxonomy attributes."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "5f5adc7b50771979f5c8c5107ead099b8342c2f6",
+    "title": "ERGO: Event Relational Graph Transformer for Document-level Event Causality Identification",
+    "seed_ids": [
+        "longformer",
+        "42f8a3da7021bc725fa14fdb63fa9c7c9fc934f6",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "5f5adc7b50771979f5c8c5107ead099b8342c2f6",
+    "abstract": "Document-level Event Causality Identification (DECI) aims to identify event-event causal relations in a document. Existing works usually build an event graph for global reasoning across multiple sentences. However, the edges between events have to be carefully designed through heuristic rules or external tools. In this paper, we propose a novel Event Relational Graph TransfOrmer (ERGO) framework for DECI, to ease the graph construction and improve it over the noisy edge issue. Different from conventional event graphs, we define a pair of events as a node and build a complete event relational graph without any prior knowledge or tools. This naturally formulates DECI as a node classification problem, and thus we capture the causation transitivity among event pairs via a graph transformer. Furthermore, we design a criss-cross constraint and an adaptive focal loss for the imbalanced classification, to alleviate the issues of false positives and false negatives. Extensive experiments on two benchmark datasets show that ERGO greatly outperforms previous state-of-the-art (SOTA) methods (12.8% F1 gains on average).",
+    "authors": [
+        "Meiqi Chen",
+        "Yixin Cao",
+        "Kunquan Deng",
+        "Mukai Li",
+        "Kunpeng Wang",
+        "Jing Shao",
+        "Yan Zhang"
+    ],
+    "venue": "International Conference on Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel Event Relational Graph TransfOrmer (ERGO) framework for DECI, to ease the graph construction and improve it over the noisy edge issue, and captures the causation transitivity among event pairs via a graph transformer."
+    },
+    "citationCount": 20,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

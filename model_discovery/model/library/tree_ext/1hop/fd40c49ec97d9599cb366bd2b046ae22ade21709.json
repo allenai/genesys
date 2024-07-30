@@ -1,0 +1,29 @@
+{
+    "acronym": "fd40c49ec97d9599cb366bd2b046ae22ade21709",
+    "title": "NadGPT: Semi-Supervised Network Anomaly Detection via Auto-Regressive Auxiliary Prediction",
+    "seed_ids": [
+        "roformer",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "fd40c49ec97d9599cb366bd2b046ae22ade21709",
+    "abstract": "We present NadGPT, a transformer-based semi-supervised framework for network anomaly detection. It is known that transformer models are good at modeling long sequence data such as network traffic; however, without sufficient ground-truth labels, transformer models tend to suffer from over-fitting thus leading to inferior performance. Inspired by the recent success of GPT models in natural language processing (NLP), we propose a new auxiliary self-supervised task plugged to the backbone transformer, which enables GPT-like auto-regressive training on network traffic sequence without using ground-truth labels. Experiments demonstrate the proposed method greatly reduces the requirements of labels in network anomaly detection. For example, on ISCX 2012 dataset, given only 0.05% training labels our semi-supervised approach obtains nontrivial 81.7% (2-class) and 64.9% (5-class) Fl-scores on the validation set, which is far better than the supervised counterparts using the same training data. We hope our research could inspire more label-efficient methods in network traffic analysis.",
+    "authors": [
+        "Yuqiao Hou",
+        "Zhen Xu",
+        "Liming Wang",
+        "Yuxiang Wang",
+        "Hongjia Li"
+    ],
+    "venue": "IEEE International Conference on Systems, Man and Cybernetics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Inspired by the recent success of GPT models in natural language processing (NLP), a new auxiliary self-supervised task plugged to the backbone transformer is proposed, which enables GPT-like auto-regressive training on network traffic sequence without using ground-truth labels."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

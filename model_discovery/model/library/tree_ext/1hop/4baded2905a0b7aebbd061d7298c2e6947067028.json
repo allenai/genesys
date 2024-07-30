@@ -1,0 +1,30 @@
+{
+    "acronym": "4baded2905a0b7aebbd061d7298c2e6947067028",
+    "title": "The Right Model for the Job: An Evaluation of Legal Multi-Label Classification Baselines",
+    "seed_ids": [
+        "neurallegal",
+        "156a66da569b68ea776c5db38e033aadb4755971",
+        "fd33e77884e69f6bc099990fc2790248af2749d9"
+    ],
+    "s2id": "4baded2905a0b7aebbd061d7298c2e6947067028",
+    "abstract": "Multi-Label Classification (MLC) is a common task in the legal domain, where more than one label may be assigned to a legal document. A wide range of methods can be applied, ranging from traditional ML approaches to the latest Transformer-based architectures. In this work, we perform an evaluation of different MLC methods using two public legal datasets, POSTURE50K and EURLEX57K. By varying the amount of training data and the number of labels, we explore the comparative advantage offered by different approaches in relation to the dataset properties. Our findings highlight DistilRoBERTa and LegalBERT as performing consistently well in legal MLC with reasonable computational demands. T5 also demonstrates comparable performance while offering advantages as a generative model in the presence of changing label sets. Finally, we show that the CrossEncoder exhibits potential for notable macro-F1 score improvements, albeit with increased computational costs.",
+    "authors": [
+        "Martina Forster",
+        "Claudia Schulz",
+        "Prudhvi Nokku",
+        "Melicaalsadat Mirsafian",
+        "Jaykumar Kasundra",
+        "Stavroula Skylaki"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work performs an evaluation of different MLC methods using two public legal datasets, POSTURE50K and EURLEX57K, and highlights DistilRoBERTa and LegalBERT as performing consistently well in legal MLC with reasonable computational demands."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

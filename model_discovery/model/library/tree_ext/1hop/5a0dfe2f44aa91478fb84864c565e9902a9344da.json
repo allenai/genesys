@@ -1,0 +1,27 @@
+{
+    "acronym": "5a0dfe2f44aa91478fb84864c565e9902a9344da",
+    "title": "Analysing Word Representation from the Input and Output Embeddings in Neural Network Language Models",
+    "seed_ids": [
+        "gpt",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "e2587eddd57bc4ba286d91b27c185083f16f40ee"
+    ],
+    "s2id": "5a0dfe2f44aa91478fb84864c565e9902a9344da",
+    "abstract": "Researchers have recently demonstrated that tying the neural weights between the input look-up table and the output classification layer can improve training and lower perplexity on sequence learning tasks such as language modelling. Such a procedure is possible due to the design of the softmax classification layer, which previous work has shown to comprise a viable set of semantic representations for the model vocabulary, and these these output embeddings are known to perform well on word similarity benchmarks. In this paper, we make meaningful comparisons between the input and output embeddings and other SOTA distributional models to gain a better understanding of the types of information they represent. We also construct a new set of word embeddings using the output embeddings to create locally-optimal approximations for the intermediate representations from the language model. These locally-optimal embeddings demonstrate excellent performance across all our evaluations.",
+    "authors": [
+        "Steven Derby",
+        "Paul Miller",
+        "Barry Devereux"
+    ],
+    "venue": "Conference on Computational Natural Language Learning",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Comparisons are made between the input and output embeddings and other SOTA distributional models to gain a better understanding of the types of information they represent and create locally-optimal approximations for the intermediate representations from the language model."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

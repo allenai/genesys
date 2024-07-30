@@ -1,0 +1,32 @@
+{
+    "acronym": "2d9ae4c167510ed78803735fc57ea67c3cc55a35",
+    "title": "VideoGPT: Video Generation using VQ-VAE and Transformers",
+    "seed_ids": [
+        "sparsetransformer",
+        "axialattn",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "e763fdc9ae56826ff799163ea035b29bffd8ea6f",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2d9ae4c167510ed78803735fc57ea67c3cc55a35",
+    "abstract": "We present VideoGPT: a conceptually simple architecture for scaling likelihood based generative modeling to natural videos. VideoGPT uses VQ-VAE that learns downsampled discrete latent representations of a raw video by employing 3D convolutions and axial self-attention. A simple GPT-like architecture is then used to autoregressively model the discrete latents using spatio-temporal position encodings. Despite the simplicity in formulation and ease of training, our architecture is able to generate samples competitive with state-of-the-art GAN models for video generation on the BAIR Robot dataset, and generate high fidelity natural videos from UCF-101 and Tumbler GIF Dataset (TGIF). We hope our proposed architecture serves as a reproducible reference for a minimalistic implementation of transformer based video generation models. Samples and code are available at https://wilson1yan.github.io/videogpt/index.html",
+    "authors": [
+        "Wilson Yan",
+        "Yunzhi Zhang",
+        "P. Abbeel",
+        "A. Srinivas"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "VideoGPT uses VQ-VAE that learns downsampled discrete latent representations of a raw video by employing 3D convolutions and axial self-attention to autoregressively model the discrete latents using spatio-temporal position encodings."
+    },
+    "citationCount": 331,
+    "influentialCitationCount": 40,
+    "code": null,
+    "description": null,
+    "url": null
+}

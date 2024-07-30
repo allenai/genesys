@@ -1,0 +1,32 @@
+{
+    "acronym": "15445324e3f8e1ca4809d2ad9e4d6a65a492041b",
+    "title": "Mamba meets crack segmentation",
+    "seed_ids": [
+        "s4",
+        "31700a32d5d48f787170cd0ecd3ba0e5eb37d371",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "15445324e3f8e1ca4809d2ad9e4d6a65a492041b",
+    "abstract": "Cracks pose safety risks to infrastructure and cannot be overlooked. The prevailing structures in existing crack segmentation networks predominantly consist of CNNs or Transformers. However, CNNs exhibit a deficiency in global modeling capability, hindering the representation to entire crack features. Transformers can capture long-range dependencies but suffer from high and quadratic complexity. Recently, Mamba has garnered extensive attention due to its linear spatial and computational complexity and its powerful global perception. This study explores the representation capabilities of Mamba to crack features. Specifically, this paper uncovers the connection between Mamba and the attention mechanism, providing a profound insight, an attention perspective, into interpreting Mamba and devising a novel Mamba module following the principles of attention blocks, namely CrackMamba. We compare CrackMamba with the most prominent visual Mamba modules, Vim and Vmamba, on two datasets comprising asphalt pavement and concrete pavement cracks, and steel cracks, respectively. The quantitative results show that CrackMamba stands out as the sole Mamba block consistently enhancing the baseline model's performance across all evaluation measures, while reducing its parameters and computational costs. Moreover, this paper substantiates that Mamba can achieve global receptive fields through both theoretical analysis and visual interpretability. The discoveries of this study offer a dual contribution. First, as a plug-and-play and simple yet effective Mamba module, CrackMamba exhibits immense potential for integration into various crack segmentation models. Second, the proposed innovative Mamba design concept, integrating Mamba with the attention mechanism, holds significant reference value for all Mamba-based computer vision models, not limited to crack segmentation networks, as investigated in this study.",
+    "authors": [
+        "Zhili He",
+        "Yuhao Wang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The connection between Mamba and the attention mechanism is uncovers, providing a profound insight, an attention perspective, into interpreting Mamba and devising a novel Mamba module following the principles of attention blocks, namely CrackMamba."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

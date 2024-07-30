@@ -1,0 +1,28 @@
+{
+    "acronym": "507b45c939c123cd6c308ba4258287962efc0cd8",
+    "title": "Show Me How To Revise: Improving Lexically Constrained Sentence Generation with XLNet",
+    "seed_ids": [
+        "gpt",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "507b45c939c123cd6c308ba4258287962efc0cd8",
+    "abstract": "Lexically constrained sentence generation allows the incorporation of prior knowledge such as lexical constraints into the output. This technique has been applied to machine translation, and dialog response generation. Previous work usually used Markov Chain Monte Carlo (MCMC) sampling to generate lexically constrained sentences, but they randomly determined the position to be edited and the action to be taken, resulting in many invalid refinements. To overcome this challenge, we used a classifier to instruct the MCMC-based models where and how to refine the candidate sentences. First, we developed two methods to create synthetic data on which the pre-trained model is fine-tuned to obtain a reliable classifier. Next, we proposed a two-step approach, \u201cPredict and Revise\u201d, for constrained sentence generation. During the predict step, we leveraged the classifier to compute the learned prior for the candidate sentence. During the revise step, we resorted to MCMC sampling to revise the candidate sentence by conducting a sampled action at a sampled position drawn from the learned prior. We compared our proposed models with many strong baselines on two tasks, generating sentences with lexical constraints and text infilling. Experimental results have demonstrated that our proposed model performs much better than the previous work in terms of sentence fluency and diversity. Our code, pre-trained models and Appendix are available at https://github.com/NLPCode/MCMCXLNet.",
+    "authors": [
+        "Xingwei He",
+        "V. Li"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work used a classifier to instruct the MCMC-based models where and how to refine the candidate sentences, and proposed a two-step approach, \u201cPredict and Revise\u201d, for constrained sentence generation."
+    },
+    "citationCount": 20,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

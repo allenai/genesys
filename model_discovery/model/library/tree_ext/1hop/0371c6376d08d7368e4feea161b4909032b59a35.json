@@ -1,0 +1,28 @@
+{
+    "acronym": "0371c6376d08d7368e4feea161b4909032b59a35",
+    "title": "NLQuAD: A Non-Factoid Long Question Answering Data Set",
+    "seed_ids": [
+        "longformer",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "0371c6376d08d7368e4feea161b4909032b59a35",
+    "abstract": "We introduce NLQuAD, the first data set with baseline methods for non-factoid long question answering, a task requiring document-level language understanding. In contrast to existing span detection question answering data sets, NLQuAD has non-factoid questions that are not answerable by a short span of text and demanding multiple-sentence descriptive answers and opinions. We show the limitation of the F1 score for evaluation of long answers and introduce Intersection over Union (IoU), which measures position-sensitive overlap between the predicted and the target answer spans. To establish baseline performances, we compare BERT, RoBERTa, and Longformer models. Experimental results and human evaluations show that Longformer outperforms the other architectures, but results are still far behind a human upper bound, leaving substantial room for improvements. NLQuAD\u2019s samples exceed the input limitation of most pre-trained Transformer-based models, encouraging future research on long sequence language models.",
+    "authors": [
+        "Amir Soleimani",
+        "Christof Monz",
+        "M. Worring"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "NLQuAD\u2019s samples exceed the input limitation of most pre-trained Transformer-based models, encouraging future research on long sequence language models and shows that Longformer outperforms the other architectures, but results are still far behind a human upper bound."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

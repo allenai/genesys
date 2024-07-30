@@ -1,0 +1,25 @@
+{
+    "acronym": "3bd20a43a8d6228c81eec7dbd76441dda2e51bb9",
+    "title": "IIM: an information interaction mechanism for aspect-based sentiment analysis",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "3bd20a43a8d6228c81eec7dbd76441dda2e51bb9",
+    "abstract": "ABSTRACT Term polarity co-extraction is an aspect-based sentiment analysis task, which has been widely used in the fields of user opinions extraction. It consists of two subtasks: aspect term extraction and aspect sentiment classification. Most existing studies solve aforesaid subtasks as independent tasks or simply unify the two subtasks without making full use of the relationship between tasks to mine the interaction of text information, which leads to low performance for practical applications. Meanwhile, the learning framework for these studies has a label drift phenomenon (LDP) in the process of predictive learning, increasing the learning error rate. To address the above problems, this study unifies subtasks and proposes a Unified framework based on the information interaction mechanism framework, called IIM. Specifically, we design an Information Interaction Channel (IIC) to construct closer semantic features to extract preliminary term-polarity unified labels from the perspective of basic semantics. For label inconsistency between aspect terms, a Position-aware Module (SAM) is proposed to alleviate the Label Drift Phenomenon (LDP). Moreover, we introduce a syntax-attention graph neural network (Syn-AttGCN) to model the syntactic structure of text and strengthen the emotional connection between aspect terms. The experimental results show that IIM outperforms most baselines. Meanwhile, the SAM module has a certain slowing effect on LDP.",
+    "authors": [
+        "Le Chen",
+        "Lina Ge",
+        "Wei Zhou"
+    ],
+    "venue": "Connection science",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An Information Interaction Channel (IIC) is designed to construct closer semantic features to extract preliminary term-polarity unified labels from the perspective of basic semantics and a syntax-attention graph neural network is introduced to model the syntactic structure of text and strengthen the emotional connection between aspect terms."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

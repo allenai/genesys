@@ -1,0 +1,26 @@
+{
+    "acronym": "e9579e82c728f5e6a4b074e1199fa03365d574e3",
+    "title": "Combining Denoising Autoencoders with Contrastive Learning to fine-tune Transformer Models",
+    "seed_ids": [
+        "bert",
+        "c6c734e16f66fbfcefac7625cc64599e83292c1e",
+        "a022bda79947d1f656a1164003c1b3ae9a843df9"
+    ],
+    "s2id": "e9579e82c728f5e6a4b074e1199fa03365d574e3",
+    "abstract": "Recently, using large pretrained Transformer models for transfer learning tasks has evolved to the point where they have become one of the flagship trends in the Natural Language Processing (NLP) community, giving rise to various outlooks such as prompt-based, adapters or combinations with unsupervised approaches, among many others. This work proposes a 3 Phase technique to adjust a base model for a classification task. First, we adapt the model's signal to the data distribution by performing further training with a Denoising Autoencoder (DAE). Second, we adjust the representation space of the output to the corresponding classes by clustering through a Contrastive Learning (CL) method. In addition, we introduce a new data augmentation approach for Supervised Contrastive Learning to correct the unbalanced datasets. Third, we apply fine-tuning to delimit the predefined categories. These different phases provide relevant and complementary knowledge to the model to learn the final task. We supply extensive experimental results on several datasets to demonstrate these claims. Moreover, we include an ablation study and compare the proposed method against other ways of combining these techniques.",
+    "authors": [
+        "Alejo Lopez-Avila",
+        "V\u00edctor Su\u00e1rez-Paniagua"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a 3 Phase technique to adjust a base model for a classification task, and introduces a new data augmentation approach for Supervised Contrastive Learning to correct the unbalanced datasets."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

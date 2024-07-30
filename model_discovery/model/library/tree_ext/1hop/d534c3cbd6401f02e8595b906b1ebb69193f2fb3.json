@@ -1,0 +1,28 @@
+{
+    "acronym": "d534c3cbd6401f02e8595b906b1ebb69193f2fb3",
+    "title": "MQDD \u2013 Pre-training of Multimodal Question Duplicity Detection for Software Engineering Domain",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "0fe2636446cd686830da3d971b31a004d6094b3c"
+    ],
+    "s2id": "d534c3cbd6401f02e8595b906b1ebb69193f2fb3",
+    "abstract": "This work proposes a new pipeline for leveraging data collected on the Stack Over\ufb02ow web-site for pre-training a multimodal model for searching duplicates on question answering websites. Our multimodal model is trained on question descriptions and source codes in multiple programming languages. We design two new learning objectives to improve duplicate detection capabilities. The result of this work is a mature, \ufb01ne-tuned Multimodal Question Duplicity Detection (MQDD) model, ready to be integrated into a Stack Over\ufb02ow search sys-tem, where it can help users \ufb01nd answers for already answered questions. Alongside the MQDD model, we release two datasets re-lated to the software engineering domain. The \ufb01rst Stack Over\ufb02ow Dataset (SOD) represents a massive corpus of paired questions and answers. The second Stack Over\ufb02ow Duplicity Dataset (SODD) contains data for training duplicate detection models.",
+    "authors": [
+        "Jan Pasek",
+        "Jakub Sido",
+        "Miloslav Konop\u00edk",
+        "Ond\u02c7rej Pra\u017e\u00e1k"
+    ],
+    "venue": "",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The result of this work is a mature, mature, Ne-tuned Multimodal Question Duplicity Detection (MQDD) model, ready to be integrated into a Stack Over\ufb02ow search sys-tem, where it can help users find answers for already answered questions."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

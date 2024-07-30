@@ -1,0 +1,29 @@
+{
+    "acronym": "7ed3f5cab06f2562096815b53cf07ba041217b6e",
+    "title": "A domain adaptive pre-training language model for sentence classification of Chinese electronic medical record",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "7ed3f5cab06f2562096815b53cf07ba041217b6e",
+    "abstract": "Accurately extracting and classifying Chinese electronic medical record (EMR), which contain huge amounts of valuable medical information, have promising practical application and medical value in the health care of China. While the pivotal issue has gathered escalating attention, the bulk of current research is directed towards operations conducted at the document or entity level within medical records. Only a restricted body of work addresses these concerns at the sentence level, a critical aspect for downstream tasks like medical information retrieval, diagnosis normalization, and question answering. In this paper, we present a domain adaptive pre-training language model named CEMR-LM for sentence classification of Chinese EMRs. CEMR-LM acquires Chinese medical domain knowledge through the utilization of copious unlabeled clinical corpus for pre-training the language model. This is fortified by combining fine-tuning strategy and a dual-channel mechanism, which collectively contribute to the model\u2019s heightened performance. Experiments on the benchmark dataset and real world hospital dataset both demonstrate that CEMR-LM is superior to the state-of-the-art methods. Furthermore, CEMR-LM possesses the capability to elucidate indicative elements within medical records by visualizing of the attention weights embedded within the model. The implemented code and experimental datasets are available online at https://github.com/BioMedBigDataCenter/CEMR-LM.",
+    "authors": [
+        "Yilin Zou",
+        "Peng Zhang",
+        "Yunchao Ling",
+        "Daqing Lv",
+        "Ziming Li",
+        "Shun Lu",
+        "Guoqing Zhang"
+    ],
+    "venue": "IEEE International Conference on Bioinformatics and Biomedicine",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "CEMR-LM acquires Chinese medical domain knowledge through the utilization of copious unlabeled clinical corpus for pre-training the language model, fortified by combining fine-tuning strategy and a dual-channel mechanism, which collectively contribute to the model\u2019s heightened performance."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "b6511d2cad195b4e595737f080031647296136f6",
+    "title": "A Comparative Study of Prompting Strategies for Legal Text Classification",
+    "seed_ids": [
+        "neurallegal",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "fd33e77884e69f6bc099990fc2790248af2749d9"
+    ],
+    "s2id": "b6511d2cad195b4e595737f080031647296136f6",
+    "abstract": "In this study, we explore the performance oflarge language models (LLMs) using differ-ent prompt engineering approaches in the con-text of legal text classification. Prior researchhas demonstrated that various prompting tech-niques can improve the performance of a di-verse array of tasks done by LLMs. However,in this research, we observe that professionaldocuments, and in particular legal documents,pose unique challenges for LLMs. We experi-ment with several LLMs and various promptingtechniques, including zero/few-shot prompting,prompt ensembling, chain-of-thought, and ac-tivation fine-tuning and compare the perfor-mance on legal datasets. Although the newgeneration of LLMs and prompt optimizationtechniques have been shown to improve gener-ation and understanding of generic tasks, ourfindings suggest that such improvements maynot readily transfer to other domains. Specifi-cally, experiments indicate that not all prompt-ing approaches and models are well-suited forthe legal domain which involves complexitiessuch as long documents and domain-specificlanguage.",
+    "authors": [
+        "Ali Hakimi Parizi",
+        "Yuyang Liu",
+        "Prudhvi Nokku",
+        "Sina Gholamian",
+        "David B. Emerson"
+    ],
+    "venue": "NLLP",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Although the new generation of LLMs and prompt optimizationtechniques have been shown to improve gener-ation and understanding of generic tasks, findings suggest that such improvements may not readily transfer to other domains."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

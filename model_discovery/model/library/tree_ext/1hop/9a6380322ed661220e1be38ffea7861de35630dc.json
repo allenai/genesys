@@ -1,0 +1,39 @@
+{
+    "acronym": "9a6380322ed661220e1be38ffea7861de35630dc",
+    "title": "SPANet: Frequency-balancing Token Mixer using Spectral Pooling Aggregation Modulation",
+    "seed_ids": [
+        "metaformer",
+        "bf6ce546c589fa8054b3972b266532664914bd21",
+        "fa717a2e31f0cef4e26921f3b147a98644d2e64c",
+        "b52844a746dafd8a5051cef49abbbda64a312605",
+        "2c4d5b1278125d84c9e66ebe1032af888d9211f3",
+        "a9c214e846188adb645021cd7b1964b8ea1fef6f",
+        "f75cddf2d42ed01b34686704eb3504becef67442",
+        "9b6af0e358e76d22f209c75b1702c3e6ea7815b1",
+        "6b6ffb94626e672caffafc77097491d9ee7a8682",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "94b69cf199fa0b6c842e17fe5d6174a9d161c3df",
+        "2e1db8cb373f4d4a51d44308b7a457886d855fbb",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "9a6380322ed661220e1be38ffea7861de35630dc",
+    "abstract": "Recent studies show that self-attentions behave like low-pass filters (as opposed to convolutions) and enhancing their high-pass filtering capability improves model performance. Contrary to this idea, we investigate existing convolution-based models with spectral analysis and observe that improving the low-pass filtering in convolution operations also leads to performance improvement. To account for this observation, we hypothesize that utilizing optimal token mixers that capture balanced representations of both high- and low-frequency components can enhance the performance of models. We verify this by decomposing visual features into the frequency domain and combining them in a balanced manner. To handle this, we replace the balancing problem with a mask filtering problem in the frequency domain. Then, we introduce a novel token-mixer named SPAM and leverage it to derive a MetaFormer model termed as SPANet. Experimental results show that the proposed method provides a way to achieve this balance, and the balanced representations of both high- and low-frequency components can improve the performance of models on multiple computer vision tasks. Our code is available at https://doranlyong.github.io/projects/spanet/.",
+    "authors": [
+        "Guhnoo Yun",
+        "J. Yoo",
+        "Kijung Kim",
+        "Jeongho Lee",
+        "Dong Hwan Kim"
+    ],
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results show that the proposed method provides a way to achieve this balance, and the balanced representations of both high- and low-frequency components can improve the performance of models on multiple computer vision tasks."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

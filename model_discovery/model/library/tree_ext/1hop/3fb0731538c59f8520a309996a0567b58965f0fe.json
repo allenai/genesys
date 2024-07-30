@@ -1,0 +1,32 @@
+{
+    "acronym": "3fb0731538c59f8520a309996a0567b58965f0fe",
+    "title": "Pre-Training to Learn in Context",
+    "seed_ids": [
+        "gpt2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "3bcb17559ce96eb20fa79af8194f4af0380d194a",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "6ff68b34a5f78bdd14437fe5a79aebbc42c26467",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3fb0731538c59f8520a309996a0567b58965f0fe",
+    "abstract": "In-context learning, where pre-trained language models learn to perform tasks from task examples and instructions in their contexts, has attracted much attention in the NLP community. However, the ability of in-context learning is not fully exploited because language models are not explicitly trained to learn in context. To this end, we propose PICL (Pre-training for In-Context Learning), a framework to enhance the language models\u2019 in-context learning ability by pre-training the model on a large collection of \u201cintrinsic tasks\u201d in the general plain-text corpus using the simple language modeling objective. PICL encourages the model to infer and perform tasks by conditioning on the contexts while maintaining task generalization of pre-trained models. We evaluate the in-context learning performance of the model trained with PICL on seven widely-used text classification datasets and the Super-NaturalInstrctions benchmark, which contains 100+ NLP tasks formulated to text generation. Our experiments show that PICL is more effective and task-generalizable than a range of baselines, outperforming larger language models with nearly 4x parameters. The code is publicly available at https://github.com/thu-coai/PICL.",
+    "authors": [
+        "Yuxian Gu",
+        "Li Dong",
+        "Furu Wei",
+        "Minlie Huang"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "PICL (Pre-training for In-Context Learning), a framework to enhance the language models\u2019 in-context learning ability by pre-training the model on a large collection of \u201cintrinsic tasks\u201d in the general plain-text corpus using the simple language modeling objective."
+    },
+    "citationCount": 23,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

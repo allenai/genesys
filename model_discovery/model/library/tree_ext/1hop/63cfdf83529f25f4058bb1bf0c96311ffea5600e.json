@@ -1,0 +1,28 @@
+{
+    "acronym": "63cfdf83529f25f4058bb1bf0c96311ffea5600e",
+    "title": "GEE! Grammar Error Explanation with Large Language Models",
+    "seed_ids": [
+        "gpt3",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "63cfdf83529f25f4058bb1bf0c96311ffea5600e",
+    "abstract": "Grammatical error correction tools are effective at correcting grammatical errors in users' input sentences but do not provide users with \\textit{natural language} explanations about their errors. Such explanations are essential for helping users learn the language by gaining a deeper understanding of its grammatical rules (DeKeyser, 2003; Ellis et al., 2006). To address this gap, we propose the task of grammar error explanation, where a system needs to provide one-sentence explanations for each grammatical error in a pair of erroneous and corrected sentences. We analyze the capability of GPT-4 in grammar error explanation, and find that it only produces explanations for 60.2% of the errors using one-shot prompting. To improve upon this performance, we develop a two-step pipeline that leverages fine-tuned and prompted large language models to perform structured atomic token edit extraction, followed by prompting GPT-4 to generate explanations. We evaluate our pipeline on German and Chinese grammar error correction data sampled from language learners with a wide range of proficiency levels. Human evaluation reveals that our pipeline produces 93.9% and 98.0% correct explanations for German and Chinese data, respectively. To encourage further research in this area, we will open-source our data and code.",
+    "authors": [
+        "Yixiao Song",
+        "Kalpesh Krishna",
+        "Rajesh Bhatt",
+        "Kevin Gimpel",
+        "Mohit Iyyer"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A two-step pipeline that leverages fine-tuned and prompted large language models to perform structured atomic token edit extraction, followed by prompting GPT-4 to generate explanations is developed, which produces 93.9% and 98.0% correct explanations for German and Chinese data, respectively."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

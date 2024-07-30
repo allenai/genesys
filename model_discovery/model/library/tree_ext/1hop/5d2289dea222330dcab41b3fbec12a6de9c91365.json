@@ -1,0 +1,27 @@
+{
+    "acronym": "5d2289dea222330dcab41b3fbec12a6de9c91365",
+    "title": "Learn to Dance with AIST++: Music Conditioned 3D Dance Generation",
+    "seed_ids": [
+        "gpt",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc"
+    ],
+    "s2id": "5d2289dea222330dcab41b3fbec12a6de9c91365",
+    "abstract": "In this paper, we present a transformer-based learning framework for 3D dance generation conditioned on music. We carefully design our network architecture and empirically study the keys for obtaining qualitatively pleasing results. The critical components include a deep cross-modal transformer, which well learns the correlation be-tween the music and dance motion; and the full-attention with future-N supervision mechanism which is essential in producing long-range non-freezing motion. In addition, we propose a new dataset of paired 3D motion and music called AIST++, which we reconstruct from the AIST multi-view dance videos. This dataset contains 1.1M frames of 3D dance motion in 1408 sequences, covering 10 gen-res of dance choreographies and accompanied with multi-view camera parameters. To our knowledge it is the largest dataset of this kind. Rich experiments on AIST++ demonstrate our method produces much better results than the state-of-the-art methods both qualitatively and quantitatively. Please watch the video project page and dataset at https://google.github.io/aichoreographer.",
+    "authors": [
+        "Ruilong Li",
+        "Sha Yang",
+        "D. A. Ross",
+        "Angjoo Kanazawa"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A transformer-based learning framework for 3D dance generation conditioned on music that combines a deep cross-modal transformer, which well learns the correlation be-tween the music and dance motion; and the full-attention with future-N supervision mechanism which is essential in producing long-range non-freezing motion."
+    },
+    "citationCount": 99,
+    "influentialCitationCount": 18,
+    "code": null,
+    "description": null,
+    "url": null
+}

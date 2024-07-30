@@ -1,0 +1,30 @@
+{
+    "acronym": "5bab76d1d092037f540ed9589d90694e228f745c",
+    "title": "Unified Static and Dynamic Network: Efficient Temporal Filtering for Video Grounding",
+    "seed_ids": [
+        "transformer",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51"
+    ],
+    "s2id": "5bab76d1d092037f540ed9589d90694e228f745c",
+    "abstract": "Inspired by the activity-silent and persistent activity mechanisms in human visual perception biology, we design a Unified Static and Dynamic Network (UniSDNet), to learn the semantic association between the video and text/audio queries in a cross-modal environment for efficient video grounding. For static modeling, we devise a novel residual structure (ResMLP) to boost the global comprehensive interaction between the video segments and queries, achieving more effective semantic enhancement/supplement. For dynamic modeling, we effectively exploit three characteristics of the persistent activity mechanism in our network design for a better video context comprehension. Specifically, we construct a diffusely connected video clip graph on the basis of 2D sparse temporal masking to reflect the\"short-term effect\"relationship. We innovatively consider the temporal distance and relevance as the joint\"auxiliary evidence clues\"and design a multi-kernel Temporal Gaussian Filter to expand the context clue into high-dimensional space, simulating the\"complex visual perception\", and then conduct element level filtering convolution operations on neighbour clip nodes in message passing stage for finally generating and ranking the candidate proposals. Our UniSDNet is applicable to both Natural Language Video Grounding (NLVG) and Spoken Language Video Grounding (SLVG) tasks. Our UniSDNet achieves SOTA performance on three widely used datasets for NLVG, as well as three datasets for SLVG, e.g., reporting new records at 38.88% R@1,IoU@0.7 on ActivityNet Captions and 40.26% R@1,IoU@0.5 on TACoS. To facilitate this field, we collect two new datasets (Charades-STA Speech and TACoS Speech) for SLVG task. Meanwhile, the inference speed of our UniSDNet is 1.56$\\times$ faster than the strong multi-query benchmark. Code is available at: https://github.com/xian-sh/UniSDNet.",
+    "authors": [
+        "Jingjing Hu",
+        "Dan Guo",
+        "Kun Li",
+        "Zhan Si",
+        "Xun Yang",
+        "Xiaojun Chang",
+        "Meng Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A diffusely connected video clip graph is constructed on the basis of 2D sparse temporal masking to reflect the\"short-term effect\"relationship and a novel residual structure (ResMLP) is devised to boost the global comprehensive interaction between the video segments and queries, achieving more effective semantic enhancement/supplement."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,38 @@
+{
+    "acronym": "ccf84c100fa78c599d0e901a3754ff044aa6bd9e",
+    "title": "Encoding Recurrence into Transformers",
+    "seed_ids": [
+        "transformerxl",
+        "d6a0dfd5f39222d8924b7727a0a49f81fa247d71",
+        "defecf3dc299214f4cb76a093c6eed2297eaa46f",
+        "736eb449526fe7128917954ec5532b59e318ec78",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "37abe53ed31caa23ae833b2e67bb4aa1892e8d25",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "7cc730da554003dda77796d2cb4f06da5dfd5592"
+    ],
+    "s2id": "ccf84c100fa78c599d0e901a3754ff044aa6bd9e",
+    "abstract": "This paper novelly breaks down with ignorable loss an RNN layer into a sequence of simple RNNs, each of which can be further rewritten into a lightweight positional encoding matrix of a self-attention, named the Recurrence Encoding Matrix (REM). Thus, recurrent dynamics introduced by the RNN layer can be encapsulated into the positional encodings of a multihead self-attention, and this makes it possible to seamlessly incorporate these recurrent dynamics into a Transformer, leading to a new module, Self-Attention with Recurrence (RSA). The proposed module can leverage the recurrent inductive bias of REMs to achieve a better sample efficiency than its corresponding baseline Transformer, while the self-attention is used to model the remaining non-recurrent signals. The relative proportions of these two components are controlled by a data-driven gated mechanism, and the effectiveness of RSA modules are demonstrated by four sequential learning tasks.",
+    "authors": [
+        "Feiqing Huang",
+        "Kexin Lu",
+        "Yuxi Cai",
+        "Zhen Qin",
+        "Yanwen Fang",
+        "Guangjian Tian",
+        "Guodong Li"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Recurrent dynamics introduced by the RNN layer can be encapsulated into the positional encodings of a multihead self-attention, and this makes it possible to seamlessly incorporate these recurrent dynamics into a Transformer, leading to a new module, Self-Attention with Recurrence (RSA)."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

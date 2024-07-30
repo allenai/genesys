@@ -1,0 +1,30 @@
+{
+    "acronym": "6243773c6a18e1f08794cd319f768910eeaaab4e",
+    "title": "Understanding Semantics from Speech Through Pre-training",
+    "seed_ids": [
+        "gpt",
+        "80f9f109d1564cb8f82aa440a5f6f3fbe220c9ef",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "6243773c6a18e1f08794cd319f768910eeaaab4e",
+    "abstract": "End-to-end Spoken Language Understanding (SLU) is proposed to infer the semantic meaning directly from audio features without intermediate text representation. Although the acoustic model component of an end-to-end SLU system can be pre-trained with Automatic Speech Recognition (ASR) targets, the SLU component can only learn semantic features from limited task-specific training data. In this paper, for the first time we propose to do large-scale unsupervised pre-training for the SLU component of an end-to-end SLU system, so that the SLU component may preserve semantic features from massive unlabeled audio data. As the output of the acoustic model component, i.e. phoneme posterior sequences, has much different characteristic from text sequences, we propose a novel pre-training model called BERT-PLM, which stands for Bidirectional Encoder Representations from Transformers through Permutation Language Modeling. BERT-PLM trains the SLU component on unlabeled data through a regression objective equivalent to the partial permutation language modeling objective, while leverages full bi-directional context information with BERT networks. The experiment results show that our approach out-perform the state-of-the-art end-to-end systems with over 12.5% error reduction.",
+    "authors": [
+        "P. Wang",
+        "Liangchen Wei",
+        "Yong Cao",
+        "Jinghui Xie",
+        "Yuji Cao",
+        "Zaiqing Nie"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel pre-training model called BERT-PLM, which stands for Bidirectional Encoder Representations from Transformers through Permutation Language Modeling, which trains the SLU component on unlabeled data through a regression objective equivalent to the partial permutation language modeling objective, while leverages full bi-directional context information with BERT networks."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

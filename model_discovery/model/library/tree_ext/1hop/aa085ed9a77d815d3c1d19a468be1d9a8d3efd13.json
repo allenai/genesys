@@ -1,0 +1,36 @@
+{
+    "acronym": "aa085ed9a77d815d3c1d19a468be1d9a8d3efd13",
+    "title": "Massive Activations in Large Language Models",
+    "seed_ids": [
+        "gpt2",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "f5789596531fad358c3166fdb5bd72d8e661c32c",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28"
+    ],
+    "s2id": "aa085ed9a77d815d3c1d19a468be1d9a8d3efd13",
+    "abstract": "We observe an empirical phenomenon in Large Language Models (LLMs) -- very few activations exhibit significantly larger values than others (e.g., 100,000 times larger). We call them massive activations. First, we demonstrate the widespread existence of massive activations across various LLMs and characterize their locations. Second, we find their values largely stay constant regardless of the input, and they function as indispensable bias terms in LLMs. Third, these massive activations lead to the concentration of attention probabilities to their corresponding tokens, and further, implicit bias terms in the self-attention output. Last, we also study massive activations in Vision Transformers.",
+    "authors": [
+        "Mingjie Sun",
+        "Xinlei Chen",
+        "J. Z. Kolter",
+        "Zhuang Liu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The widespread existence of massive activations across various LLMs is demonstrated, their values largely stay constant regardless of the input, and they function as indispensable bias terms in LLMs."
+    },
+    "citationCount": 14,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

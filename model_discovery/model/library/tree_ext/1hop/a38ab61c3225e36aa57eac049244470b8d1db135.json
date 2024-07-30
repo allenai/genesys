@@ -1,0 +1,25 @@
+{
+    "acronym": "a38ab61c3225e36aa57eac049244470b8d1db135",
+    "title": "Interpretable Detection of Malicious Behavior in Windows Portable Executables Using Multi-Head 2D Transformers",
+    "seed_ids": [
+        "transformer",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "a38ab61c3225e36aa57eac049244470b8d1db135",
+    "abstract": ": Windows malware is becoming an increasingly pressing problem as the amount of malware continues to grow and more sensitive information is stored on systems. One of the major challenges in tackling this problem is the complexity of malware analysis, which requires expertise from human analysts. Recent developments in machine learning have led to the creation of deep models for malware detection. However, these models often lack transparency, making it dif\ufb01cult to understand the reasoning behind the model\u2019s decisions, otherwise known as the black-box problem. To address these limitations, this paper presents a novel model for malware detection, utilizing vision transformers to analyze the opcode sequences of more than 350,000 Windows portable executable malware samples from real-world datasets. The model achieved a high accuracy of 0.9864, not only surpassing previous results but also providing valuable insights into the reasoning behind the classi\ufb01cation. Our model is able to pinpoint speci\ufb01c instructions that lead to malicious behavior in malware samples, aiding human experts in their analysis and driving further advancements in the \ufb01eld. We report our \ufb01ndings and show how causality can be established between malicious code and actual classi\ufb01cation by a deep learning model thus opening up this black-box problem for deeper analysis.",
+    "authors": [
+        "Sohail Khan",
+        "Mohammad Nauman"
+    ],
+    "venue": "Big Data Mining and Analytics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel model for malware detection is presented, utilizing vision transformers to analyze the opcode sequences of more than 350,000 Windows portable executable malware samples from real-world datasets and it is shown how causality can be established between malicious code and actual classi\ufb01cation by a deep learning model thus opening up this black-box problem for deeper analysis."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

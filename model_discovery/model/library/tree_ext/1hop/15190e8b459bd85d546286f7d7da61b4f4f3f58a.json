@@ -1,0 +1,40 @@
+{
+    "acronym": "15190e8b459bd85d546286f7d7da61b4f4f3f58a",
+    "title": "What Language Model Architecture and Pretraining Objective Work Best for Zero-Shot Generalization?",
+    "seed_ids": [
+        "gpt",
+        "gpt2",
+        "memcompress",
+        "bb15f3727f827a3cb88b5d3ca48415c09b40a88f",
+        "79b4ec1aaf67a04a9afa0d8138f84b7be66c00cb",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28"
+    ],
+    "s2id": "15190e8b459bd85d546286f7d7da61b4f4f3f58a",
+    "abstract": "Large pretrained Transformer language models have been shown to exhibit zero-shot generalization, i.e. they can perform a wide variety of tasks that they were not explicitly trained on. However, the architectures and pretraining objectives used across state-of-the-art models differ significantly, and there has been limited systematic comparison of these factors. In this work, we present a large-scale evaluation of modeling choices and their impact on zero-shot generalization. In particular, we focus on text-to-text models and experiment with three model architectures (causal/non-causal decoder-only and encoder-decoder), trained with two different pretraining objectives (autoregressive and masked language modeling), and evaluated with and without multitask prompted finetuning. We train models with over 5 billion parameters for more than 170 billion tokens, thereby increasing the likelihood that our conclusions will transfer to even larger scales. Our experiments show that causal decoder-only models trained on an autoregressive language modeling objective exhibit the strongest zero-shot generalization after purely unsupervised pretraining. However, models with non-causal visibility on their input trained with a masked language modeling objective followed by multitask finetuning perform the best among our experiments. We therefore consider the adaptation of pretrained models across architectures and objectives. We find that pretrained non-causal decoder models can be adapted into performant generative causal decoder models, using autoregressive language modeling as a downstream task. Furthermore, we find that pretrained causal decoder models can be efficiently adapted into non-causal decoder models, ultimately achieving competitive performance after multitask finetuning. Code and checkpoints are available at https://github.com/bigscience-workshop/architecture-objective.",
+    "authors": [
+        "Thomas Wang",
+        "Adam Roberts",
+        "Daniel Hesslow",
+        "Teven Le Scao",
+        "Hyung Won Chung",
+        "Iz Beltagy",
+        "Julien Launay",
+        "Colin Raffel"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A large-scale evaluation of modeling choices and their impact on zero-shot generalization finds that pretrained non-causal decoder models can be adapted into performant generative causal decoding models, using autoregressive language modeling as a downstream task."
+    },
+    "citationCount": 127,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

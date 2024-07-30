@@ -1,0 +1,29 @@
+{
+    "acronym": "85a3a45f13c35ca460132db0f4ba713cb955ed1b",
+    "title": "CoMERA: Computing- and Memory-Efficient Training via Rank-Adaptive Tensor Optimization",
+    "seed_ids": [
+        "gpt3",
+        "90b21dbad8969b74d704eed15a3d98722a88e464"
+    ],
+    "s2id": "85a3a45f13c35ca460132db0f4ba713cb955ed1b",
+    "abstract": "Training large AI models such as deep learning recommendation systems and foundation language (or multi-modal) models costs massive GPUs and computing time. The high training cost has become only affordable to big tech companies, meanwhile also causing increasing concerns about the environmental impact. This paper presents CoMERA, a Computing- and Memory-Efficient training method via Rank-Adaptive tensor optimization. CoMERA achieves end-to-end rank-adaptive tensor-compressed training via a multi-objective optimization formulation, and improves the training to provide both a high compression ratio and excellent accuracy in the training process. Our optimized numerical computation (e.g., optimized tensorized embedding and tensor-vector contractions) and GPU implementation eliminate part of the run-time overhead in the tensorized training on GPU. This leads to, for the first time, $2-3\\times$ speedup per training epoch compared with standard training. CoMERA also outperforms the recent GaLore in terms of both memory and computing efficiency. Specifically, CoMERA is $2\\times$ faster per training epoch and $9\\times$ more memory-efficient than GaLore on a tested six-encoder transformer with single-batch training. With further HPC optimization, CoMERA may significantly reduce the training cost of large language models.",
+    "authors": [
+        "Zi Yang",
+        "Samridhi Choudhary",
+        "Xinfeng Xie",
+        "Cao Gao",
+        "Siegfried Kunzmann",
+        "Zheng Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "CoMERA achieves end-to-end rank-adaptive tensor-compressed training via a multi-objective optimization formulation, and improves the training to provide both a high compression ratio and excellent accuracy in the training process."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

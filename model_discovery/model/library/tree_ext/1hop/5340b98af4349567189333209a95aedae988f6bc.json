@@ -1,0 +1,30 @@
+{
+    "acronym": "5340b98af4349567189333209a95aedae988f6bc",
+    "title": "Scope Ambiguities in Large Language Models",
+    "seed_ids": [
+        "gpt3",
+        "cd471b5ef162906ef3d9a84398b3f98e9ee4bf56",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "a5ec883e080d858b5df60f1b5d711d514459b1e4",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5340b98af4349567189333209a95aedae988f6bc",
+    "abstract": "Abstract Sentences containing multiple semantic operators with overlapping scope often create ambiguities in interpretation, known as scope ambiguities. These ambiguities offer rich insights into the interaction between semantic structure and world knowledge in language processing. Despite this, there has been little research into how modern large language models treat them. In this paper, we investigate how different versions of certain autoregressive language models\u2014GPT-2, GPT-3/3.5, Llama 2, and GPT-4\u2014treat scope ambiguous sentences, and compare this with human judgments. We introduce novel datasets that contain a joint total of almost 1,000 unique scope-ambiguous sentences, containing interactions between a range of semantic operators, and annotated for human judgments. Using these datasets, we find evidence that several models (i) are sensitive to the meaning ambiguity in these sentences, in a way that patterns well with human judgments, and (ii) can successfully identify human-preferred readings at a high level of accuracy (over 90% in some cases).1",
+    "authors": [
+        "Gaurav Kamath",
+        "Sebastian Schuster",
+        "Sowmya Vajjala",
+        "Siva Reddy"
+    ],
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Novel datasets that contain a joint total of almost 1,000 unique scope-ambiguous sentences, containing interactions between a range of semantic operators, and annotated for human judgments find evidence that several models are sensitive to the meaning ambiguity in these sentences, in a way that patterns well with human judgments."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

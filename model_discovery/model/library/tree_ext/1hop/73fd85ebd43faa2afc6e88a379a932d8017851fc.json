@@ -1,0 +1,30 @@
+{
+    "acronym": "73fd85ebd43faa2afc6e88a379a932d8017851fc",
+    "title": "Large Scale Transfer Learning for Tabular Data via Language Modeling",
+    "seed_ids": [
+        "gpt3",
+        "f45f85fa1beaa795c24c4ff86f1f2deece72252f",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "b92628d13e8d090d042232fe6ae0b8998634b893",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "73fd85ebd43faa2afc6e88a379a932d8017851fc",
+    "abstract": "Tabular data -- structured, heterogeneous, spreadsheet-style data with rows and columns -- is widely used in practice across many domains. However, while recent foundation models have reduced the need for developing task-specific datasets and predictors in domains such as language modeling and computer vision, this transfer learning paradigm has not had similar impact in the tabular domain. In this work, we seek to narrow this gap and present TabuLa-8B, a language model for tabular prediction. We define a process for extracting a large, high-quality training dataset from the TabLib corpus, proposing methods for tabular data filtering and quality control. Using the resulting dataset, which comprises over 1.6B rows from 3.1M unique tables, we fine-tune a Llama 3-8B large language model (LLM) for tabular data prediction (classification and binned regression) using a novel packing and attention scheme for tabular prediction. Through evaluation across a test suite of 329 datasets, we find that TabuLa-8B has zero-shot accuracy on unseen tables that is over 15 percentage points (pp) higher than random guessing, a feat that is not possible with existing state-of-the-art tabular prediction models (e.g. XGBoost, TabPFN). In the few-shot setting (1-32 shots), without any fine-tuning on the target datasets, TabuLa-8B is 5-15 pp more accurate than XGBoost and TabPFN models that are explicitly trained on equal, or even up to 16x more data. We release our model, code, and data along with the publication of this paper.",
+    "authors": [
+        "Josh Gardner",
+        "Juan C. Perdomo",
+        "Ludwig Schmidt"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A process for extracting a large, high-quality training dataset from the TabLib corpus is defined, proposing methods for tabular data filtering and quality control, and a Llama 3-8B large language model is fine-tune for tabular data prediction using a novel packing and attention scheme for tabular prediction."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

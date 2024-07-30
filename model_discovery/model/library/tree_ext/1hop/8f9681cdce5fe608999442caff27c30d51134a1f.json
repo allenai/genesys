@@ -1,0 +1,30 @@
+{
+    "acronym": "8f9681cdce5fe608999442caff27c30d51134a1f",
+    "title": "Fine-tuning Transformers with Additional Context to Classify Discursive Moves in Mathematics Classrooms",
+    "seed_ids": [
+        "bigbird",
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "8f9681cdce5fe608999442caff27c30d51134a1f",
+    "abstract": "\u201cTalk moves\u201d are specific discursive strategies used by teachers and students to facilitate conversations in which students share their thinking, and actively consider the ideas of others, and engage in rich discussions. Experts in instructional practices often rely on cues to identify and document these strategies, for example by annotating classroom transcripts. Prior efforts to develop automated systems to classify teacher talk moves using transformers achieved a performance of 76.32% F1. In this paper, we investigate the feasibility of using enriched contextual cues to improve model performance. We applied state-of-the-art deep learning approaches for Natural Language Processing (NLP), including Robustly optimized bidirectional encoder representations from transformers (Roberta) with a special input representation that supports previous and subsequent utterances as context for talk moves classification. We worked with the publically available TalkMoves dataset, which contains utterances sourced from real-world classroom sessions (human- transcribed and annotated). Through a series of experimentations, we found that a combination of previous and subsequent utterances improved the transformers\u2019 ability to differentiate talk moves (by 2.6% F1). These results constitute a new state of the art over previously published results and provide actionable insights to those in the broader NLP community who are working to develop similar transformer-based classification models.",
+    "authors": [
+        "Abhijit Suresh",
+        "Jennifer Jacobs",
+        "Margaret Perkoff",
+        "James H. Martin",
+        "T. Sumner"
+    ],
+    "venue": "Workshop on Innovative Use of NLP for Building Educational Applications",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

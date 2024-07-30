@@ -1,0 +1,29 @@
+{
+    "acronym": "8918b843cb68676a5395dd270c9bab8851819c27",
+    "title": "LaRa: Latents and Rays for Multi-Camera Bird's-Eye-View Semantic Segmentation",
+    "seed_ids": [
+        "perceiverio",
+        "5af48c42e56fe46087d0412678873ffab7ddf3ad"
+    ],
+    "s2id": "8918b843cb68676a5395dd270c9bab8851819c27",
+    "abstract": "Recent works in autonomous driving have widely adopted the bird's-eye-view (BEV) semantic map as an intermediate representation of the world. Online prediction of these BEV maps involves non-trivial operations such as multi-camera data extraction as well as fusion and projection into a common topview grid. This is usually done with error-prone geometric operations (e.g., homography or back-projection from monocular depth estimation) or expensive direct dense mapping between image pixels and pixels in BEV (e.g., with MLP or attention). In this work, we present 'LaRa', an efficient encoder-decoder, transformer-based model for vehicle semantic segmentation from multiple cameras. Our approach uses a system of cross-attention to aggregate information over multiple sensors into a compact, yet rich, collection of latent representations. These latent representations, after being processed by a series of self-attention blocks, are then reprojected with a second cross-attention in the BEV space. We demonstrate that our model outperforms the best previous works using transformers on nuScenes. The code and trained models are available at https://github.com/valeoai/LaRa",
+    "authors": [
+        "Florent Bartoccioni",
+        "'Eloi Zablocki",
+        "Andrei Bursuc",
+        "Patrick P'erez",
+        "M. Cord",
+        "Alahari Karteek"
+    ],
+    "venue": "Conference on Robot Learning",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "'LaRa' is presented, an efficient encoder-decoder, transformer-based model for vehicle semantic segmentation from multiple cameras that outperforms the best previous works using transformers on nuScenes."
+    },
+    "citationCount": 24,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

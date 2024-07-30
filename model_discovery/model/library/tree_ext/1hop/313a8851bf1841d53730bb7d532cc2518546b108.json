@@ -1,0 +1,27 @@
+{
+    "acronym": "313a8851bf1841d53730bb7d532cc2518546b108",
+    "title": "An efficient multi\u2010scale transformer for satellite image dehazing",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "313a8851bf1841d53730bb7d532cc2518546b108",
+    "abstract": "Given the impressive achievement of convolutional neural networks (CNNs) in grasping image priors from extensive datasets, they have been widely utilized for tasks related to image restoration. Recently, there is been significant progress in another category of neural architectures\u2014Transformers. These models have demonstrated remarkable performance in natural language tasks and higher\u2010level vision applications. Despite their ability to address some of CNNs limitations, such as restricted receptive fields and adaptability issues, Transformer models often face difficulties when processing images with a high level of detail. This is because the complexity of the computations required increases significantly with the image's spatial resolution. As a result, their application to most high\u2010resolution image restoration tasks becomes impractical. In our research, we introduce a novel Transformer model, named DehFormer, by implementing specific design modifications in its fundamental components, for example, the multi\u2010head attention and feed\u2010forward network. Specifically, the proposed architecture consists of the three modules, that is, (a) multi\u2010scale feature aggregation network (MSFAN), (b) the gated\u2010Dconv feed\u2010forward network (GFFN), (c) and the multi\u2010Dconv head transposed attention (MDHTA). For the MDHTA module, our objective is to scrutinize the mechanics of scaled dot\u2010product attention through the utilization of per\u2010element product operations, thereby bypassing the need for matrix multiplications and operating directly in the frequency domain for enhanced efficiency. For the GFFN module, which enables only the relevant and valuable information to advance through the network hierarchy, thereby enhancing the efficiency of information flow within the model. Extensive experiments are conducted on the SateHazelk, RS\u2010Haze, and RSID datasets, resulting in performance that significantly exceeds that of existing methods.",
+    "authors": [
+        "Lei Yang",
+        "Jianzhong Cao",
+        "Weining Chen",
+        "Hao Wang",
+        "Lang He"
+    ],
+    "venue": "Expert Syst. J. Knowl. Eng.",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This research introduces a novel Transformer model, named DehFormer, by implementing specific design modifications in its fundamental components, for example, the multi\u2010head attention and feed\u2010forward network."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

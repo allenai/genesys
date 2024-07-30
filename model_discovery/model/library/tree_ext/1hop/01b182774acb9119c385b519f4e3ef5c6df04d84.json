@@ -1,0 +1,31 @@
+{
+    "acronym": "01b182774acb9119c385b519f4e3ef5c6df04d84",
+    "title": "TCFLTformer: TextCNN-Flat-Lattice Transformer for Entity Recognition of Air Traffic Management Cyber Threat Knowledge Graphs",
+    "seed_ids": [
+        "rwkv4",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "1b492746ee3a304a13950cad1a59861b9ee44645",
+        "d6b414487787d0b6efd735a3236a690ad13aae70"
+    ],
+    "s2id": "01b182774acb9119c385b519f4e3ef5c6df04d84",
+    "abstract": "With the development of the air traffic management system (ATM), the cyber threat for ATM is becoming more and more serious. The recognition of ATM cyber threat entities is an important task, which can help ATM security experts quickly and accurately recognize threat entities, providing data support for the later construction of knowledge graphs, and ensuring the security and stability of ATM. The entity recognition methods are mainly based on traditional machine learning in a period of time; however, the methods have problems such as low recall and low accuracy. Moreover, in recent years, the rise of deep learning technology has provided new ideas and methods for ATM cyber threat entity recognition. Alternatively, in the convolutional neural network (CNN), the convolution operation can efficiently extract the local features, while it is difficult to capture the global representation information. In Transformer, the attention mechanism can capture feature dependencies over long distances, while it usually ignores the details of local features. To solve these problems, a TextCNN-Flat-Lattice Transformer (TCFLTformer) with CNN-Transformer hybrid architecture is proposed for ATM cyber threat entity recognition, in which a relative positional embedding (RPE) is designed to encode position text content information, and a multibranch prediction head (MBPH) is utilized to enhance deep feature learning. TCFLTformer first uses CNN to carry out convolution and pooling operations on the text to extract local features and then uses a Flat-Lattice Transformer to learn temporal and relative positional characteristics of the text to obtain the final annotation results. Experimental results show that this method has achieved better results in the task of ATM cyber threat entity recognition, and it has high practical value and theoretical contribution. Besides, the proposed method expands the research field of ATM cyber threat entity recognition, and the research results can also provide references for other text classification and sequence annotation tasks.",
+    "authors": [
+        "Chao Liu",
+        "Buhong Wang",
+        "Zhen Wang",
+        "Jiwei Tian",
+        "Peng Luo",
+        "Yong Yang"
+    ],
+    "venue": "Aerospace",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A TextCNN-Flat-Lattice Transformer (TCFLTformer) with CNN-Transformer hybrid architecture is proposed for ATM cyber threat entity recognition, in which a relative positional embedding is designed to encode position text content information, and a multibranch prediction head is utilized to enhance deep feature learning."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

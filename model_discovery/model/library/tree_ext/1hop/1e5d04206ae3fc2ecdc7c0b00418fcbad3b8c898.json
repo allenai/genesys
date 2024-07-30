@@ -1,0 +1,25 @@
+{
+    "acronym": "1e5d04206ae3fc2ecdc7c0b00418fcbad3b8c898",
+    "title": "Double Multi-Head Attention Multimodal System for Odyssey 2024 Speech Emotion Recognition Challenge",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "1e5d04206ae3fc2ecdc7c0b00418fcbad3b8c898",
+    "abstract": "As computer-based applications are becoming more integrated into our daily lives, the importance of Speech Emotion Recognition (SER) has increased significantly. Promoting research with innovative approaches in SER, the Odyssey 2024 Speech Emotion Recognition Challenge was organized as part of the Odyssey 2024 Speaker and Language Recognition Workshop. In this paper we describe the Double Multi-Head Attention Multimodal System developed for this challenge. Pre-trained self-supervised models were used to extract informative acoustic and text features. An early fusion strategy was adopted, where a Multi-Head Attention layer transforms these mixed features into complementary contextualized representations. A second attention mechanism is then applied to pool these representations into an utterance-level vector. Our proposed system achieved the third position in the categorical task ranking with a 34.41% Macro-F1 score, where 31 teams participated in total.",
+    "authors": [
+        "Federico Costa",
+        "Miquel India",
+        "Javier Hernando"
+    ],
+    "venue": "The Speaker and Language Recognition Workshop",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper describes the Double Multi-Head Attention Multimodal System developed for the Odyssey 2024 Speech Emotion Recognition Challenge, which achieved the third position in the categorical task ranking with a 34.41% Macro-F1 score."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "d33b3fa98fe353baf1ba5d6a243aff862e2a8c11",
+    "title": "Transformer Inertial Poser: Real-time Human Motion Reconstruction from Sparse IMUs with Simultaneous Terrain Generation",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "d33b3fa98fe353baf1ba5d6a243aff862e2a8c11",
+    "abstract": "Real-time human motion reconstruction from a sparse set of (e.g. six) wearable IMUs provides a non-intrusive and economic approach to motion capture. Without the ability to acquire position information directly from IMUs, recent works took data-driven approaches that utilize large human motion datasets to tackle this under-determined problem. Still, challenges remain such as temporal consistency, drifting of global and joint motions, and diverse coverage of motion types on various terrains. We propose a novel method to simultaneously estimate full-body motion and generate plausible visited terrain from only six IMU sensors in real-time. Our method incorporates 1. a conditional Transformer decoder model giving consistent predictions by explicitly reasoning prediction history, 2. a simple yet general learning target named \"stationary body points\u201d (SBPs) which can be stably predicted by the Transformer model and utilized by analytical routines to correct joint and global drifting, and 3. an algorithm to generate regularized terrain height maps from noisy SBP predictions which can in turn correct noisy global motion estimation. We evaluate our framework extensively on synthesized and real IMU data, and with real-time live demos, and show superior performance over strong baseline methods.",
+    "authors": [
+        "Yifeng Jiang",
+        "Yuting Ye",
+        "D. Gopinath",
+        "Jungdam Won",
+        "Alexander W. Winkler",
+        "C. Liu"
+    ],
+    "venue": "ACM SIGGRAPH Conference and Exhibition on Computer Graphics and Interactive Techniques in Asia",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel method to simultaneously estimate full-body motion and generate plausible visited terrain from only six IMU sensors in real-time and shows superior performance over strong baseline methods."
+    },
+    "citationCount": 39,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

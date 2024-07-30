@@ -1,0 +1,31 @@
+{
+    "acronym": "f38446f2b9df8452ff372a463e3d5ee9bf5d8ff0",
+    "title": "Large Transformers are Better EEG Learners",
+    "seed_ids": [
+        "gpt2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f38446f2b9df8452ff372a463e3d5ee9bf5d8ff0",
+    "abstract": "Pre-trained large transformer models have achieved remarkable performance in the fields of natural language processing and computer vision. However, the limited availability of public electroencephalogram (EEG) data presents a unique challenge for extending the success of these models to EEG-based tasks. To address this gap, we propose AdaCT, plug-and-play Adapters designed for Converting Time series data into spatio-temporal 2D pseudo-images or text forms. Essentially, AdaCT-I transforms multi-channel or lengthy single-channel time series data into spatio-temporal 2D pseudo-images for fine-tuning pre-trained vision transformers, while AdaCT-T converts short single-channel data into text for fine-tuning pre-trained language transformers. The proposed approach allows for seamless integration of pre-trained vision models and language models in time series decoding tasks, particularly in EEG data analysis. Experimental results on diverse benchmark datasets, including Epileptic Seizure Recognition, Sleep-EDF, and UCI HAR, demonstrate the superiority of AdaCT over baseline methods. Overall, we provide a promising transfer learning framework for leveraging the capabilities of pre-trained vision and language models in EEG-based tasks, thereby advancing the field of time series decoding and enhancing interpretability in EEG data analysis. Our code will be available at https://github.com/wangbxj1234/AdaCE.",
+    "authors": [
+        "Bingxin Wang",
+        "Xiao-Ying Fu",
+        "Yuan Lan",
+        "Luchan Zhang",
+        "Yang Xiang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "AdaCT, plug-and-play Adapters designed for Converting Time series data into spatio-temporal 2D pseudo-images or text forms, provides a promising transfer learning framework for leveraging the capabilities of pre-trained vision and language models in EEG-based tasks, thereby advancing the field of time series decoding and enhancing interpretability in EEG data analysis."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

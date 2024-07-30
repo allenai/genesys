@@ -1,0 +1,25 @@
+{
+    "acronym": "32866d39e10361b01df5fda4cd6527895722f280",
+    "title": "Boosting Video Captioning with Dynamic Loss Network",
+    "seed_ids": [
+        "transformerxl",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "32866d39e10361b01df5fda4cd6527895722f280",
+    "abstract": "Video captioning is one of the challenging problems at the intersection of vision and language, having many real-life applications in video retrieval, video surveillance, assisting visually challenged people, Human-machine interface, and many more. Recent deep learning based methods have shown promising results but are still on the lower side than other vision tasks (such as image classification, object detection). A significant drawback with existing video captioning methods is that they are optimized over cross-entropy loss function, which is uncorrelated to the de facto evaluation metrics (BLEU, METEOR, CIDER, ROUGE). In other words, cross-entropy is not a proper surrogate of the true loss function for video captioning. To mitigate this, methods like REINFORCE, Actor-Critic, and Minimum Risk Training (MRT) have been applied but have limitations and are not very effective. This paper proposes an alternate solution by introducing a dynamic loss network (DLN), providing an additional feedback signal that reflects the evaluation metrics directly. Our solution proves to be more efficient than other solutions and can be easily adapted to similar tasks. Our results on Microsoft Research Video Description Corpus (MSVD) and MSR-Video to Text (MSRVTT) datasets outperform previous methods.",
+    "authors": [
+        "Nasib Ullah",
+        "Partha Pratim Mohanta"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes an alternate solution to video captioning by introducing a dynamic loss network (DLN), providing an additional feedback signal that reflects the evaluation metrics directly, and results on Microsoft Research Video Description Corpus and MSR-Video to Text datasets outperform previous methods."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

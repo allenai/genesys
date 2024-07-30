@@ -1,0 +1,32 @@
+{
+    "acronym": "6e8f35c6d54acb14109c9b792a62609eac8a7b5e",
+    "title": "TransGAN: Two Pure Transformers Can Make One Strong GAN, and That Can Scale Up",
+    "seed_ids": [
+        "nystromformer",
+        "eaf3a64b637b3699678374a2afe8dde05d17a5cc",
+        "3cbe314cc5407a6c3249815b5173f22ea15173c2",
+        "30f326353dfeed21216c1cf98d3c42d794fa054e",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "fb507ada871d1e8c29e376dbf7b7879689aa89f9",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "6e8f35c6d54acb14109c9b792a62609eac8a7b5e",
+    "abstract": "The recent explosive interest on transformers has suggested their potential to become powerful\"universal\"models for computer vision tasks, such as classification, detection, and segmentation. While those attempts mainly study the discriminative models, we explore transformers on some more notoriously difficult vision tasks, e.g., generative adversarial networks (GANs). Our goal is to conduct the first pilot study in building a GAN completely free of convolutions, using only pure transformer-based architectures. Our vanilla GAN architecture, dubbed TransGAN, consists of a memory-friendly transformer-based generator that progressively increases feature resolution, and correspondingly a multi-scale discriminator to capture simultaneously semantic contexts and low-level textures. On top of them, we introduce the new module of grid self-attention for alleviating the memory bottleneck further, in order to scale up TransGAN to high-resolution generation. We also develop a unique training recipe including a series of techniques that can mitigate the training instability issues of TransGAN, such as data augmentation, modified normalization, and relative position encoding. Our best architecture achieves highly competitive performance compared to current state-of-the-art GANs using convolutional backbones. Specifically, TransGAN sets new state-of-the-art inception score of 10.43 and FID of 18.28 on STL-10, outperforming StyleGAN-V2. When it comes to higher-resolution (e.g. 256 x 256) generation tasks, such as on CelebA-HQ and LSUN-Church, TransGAN continues to produce diverse visual examples with high fidelity and impressive texture details. In addition, we dive deep into the transformer-based generation models to understand how their behaviors differ from convolutional ones, by visualizing training dynamics. The code is available at https://github.com/VITA-Group/TransGAN.",
+    "authors": [
+        "Yifan Jiang",
+        "Shiyu Chang",
+        "Zhangyang Wang"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The goal is to conduct the first pilot study in building a GAN completely free of convolutions, using only pure transformer-based architectures, and develops a unique training recipe including a series of techniques that can mitigate the training instability issues of TransGAN."
+    },
+    "citationCount": 309,
+    "influentialCitationCount": 14,
+    "code": null,
+    "description": null,
+    "url": null
+}

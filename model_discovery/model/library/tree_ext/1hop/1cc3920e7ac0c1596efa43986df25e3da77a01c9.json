@@ -1,0 +1,29 @@
+{
+    "acronym": "1cc3920e7ac0c1596efa43986df25e3da77a01c9",
+    "title": "Semantics of Multiword Expressions in Transformer-Based Models: A Survey",
+    "seed_ids": [
+        "gpt2",
+        "307c256abf29a0d96802b9cc8f48458ea58ca1bb",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "a5ec883e080d858b5df60f1b5d711d514459b1e4",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1cc3920e7ac0c1596efa43986df25e3da77a01c9",
+    "abstract": "Multiword expressions (MWEs) are composed of multiple words and exhibit variable degrees of compositionality. As such, their meanings are notoriously difficult to model, and it is unclear to what extent this issue affects transformer architectures. Addressing this gap, we provide the first in-depth survey of MWE processing with transformer models. We overall find that they capture MWE semantics inconsistently, as shown by reliance on surface patterns and memorized information. MWE meaning is also strongly localized, predominantly in early layers of the architecture. Representations benefit from specific linguistic properties, such as lower semantic idiosyncrasy and ambiguity of target expressions. Our findings overall question the ability of transformer models to robustly capture fine-grained semantics. Furthermore, we highlight the need for more directly comparable evaluation setups.",
+    "authors": [
+        "Filip Miletic",
+        "Sabine Schulte im Walde"
+    ],
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that transformer models capture MWE semantics inconsistently, as shown by reliance on surface patterns and memorized information, and the need for more directly comparable evaluation setups is highlighted."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

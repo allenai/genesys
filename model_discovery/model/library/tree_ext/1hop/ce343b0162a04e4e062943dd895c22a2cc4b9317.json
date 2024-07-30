@@ -1,0 +1,27 @@
+{
+    "acronym": "ce343b0162a04e4e062943dd895c22a2cc4b9317",
+    "title": "Generalization, Mayhems and Limits in Recurrent Proximal Policy Optimization",
+    "seed_ids": [
+        "mentaltimetravel",
+        "008cfd24dfdfb28fc6a89c32772c7ffe5cb0cf8a"
+    ],
+    "s2id": "ce343b0162a04e4e062943dd895c22a2cc4b9317",
+    "abstract": "At first sight it may seem straightforward to use recurrent layers in Deep Reinforcement Learning algorithms to enable agents to make use of memory in the setting of partially observable environments. Starting from widely used Proximal Policy Optimization (PPO), we highlight vital details that one must get right when adding recurrence to achieve a correct and efficient implementation, namely: properly shaping the neural net's forward pass, arranging the training data, correspondingly selecting hidden states for sequence beginnings and masking paddings for loss computation. We further explore the limitations of recurrent PPO by benchmarking the contributed novel environments Mortar Mayhem and Searing Spotlights that challenge the agent's memory beyond solely capacity and distraction tasks. Remarkably, we can demonstrate a transition to strong generalization in Mortar Mayhem when scaling the number of training seeds, while the agent does not succeed on Searing Spotlights, which seems to be a tough challenge for memory-based agents.",
+    "authors": [
+        "Marco Pleines",
+        "M. Pallasch",
+        "F. Zimmer",
+        "M. Preuss"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work can demonstrate a transition to strong generalization in Mortar Mayhem when scaling the number of training seeds, while the agent does not succeed on Searing Spotlights, which seems to be a tough challenge for memory-based agents."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

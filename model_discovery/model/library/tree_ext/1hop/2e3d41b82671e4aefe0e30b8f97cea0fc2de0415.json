@@ -1,0 +1,26 @@
+{
+    "acronym": "2e3d41b82671e4aefe0e30b8f97cea0fc2de0415",
+    "title": "Generative Pre-Training of Time-Series Data for Unsupervised Fault Detection in Semiconductor Manufacturing",
+    "seed_ids": [
+        "gpt",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2e3d41b82671e4aefe0e30b8f97cea0fc2de0415",
+    "abstract": "This paper introduces TRACE-GPT, which stands for Time-seRies Anomaly-detection with Convolutional Embedding and Generative Pre-trained Transformers. TRACE-GPT is designed to pre-train univariate time-series sensor data and detect faults on unlabeled datasets in semiconductor manufacturing. In semiconductor industry, classifying abnormal time-series sensor data from normal data is important because it is directly related to wafer defect. However, small, unlabeled, and even mixed training data without enough anomalies make classification tasks difficult. In this research, we capture features of time-series data with temporal convolutional embedding and Generative Pre-trained Transformer (GPT) to classify abnormal sequences from normal sequences using cross entropy loss. We prove that our model shows better performance than previous unsupervised models with both an open dataset, the University of California Riverside (UCR) time-series classification archive, and the process log of our Chemical Vapor Deposition (CVD) equipment. Our model has the highest F1 score at Equal Error Rate (EER) across all datasets and is only 0.026 below the supervised state-of-the-art baseline on the open dataset.",
+    "authors": [
+        "Sewoong Lee",
+        "JinKyou Choi",
+        "Min Su Kim"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that the TRACE-GPT model shows better performance than previous unsupervised models with both an open dataset, the University of California Riverside (UCR) time-series classification archive, and the process log of the authors' Chemical Vapor Deposition (CVD) equipment."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

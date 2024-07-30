@@ -1,0 +1,38 @@
+{
+    "acronym": "156a66da569b68ea776c5db38e033aadb4755971",
+    "title": "Processing Long Legal Documents with Pre-trained Transformers: Modding LegalBERT and Longformer",
+    "seed_ids": [
+        "longformer",
+        "etc",
+        "7eb44db2322570d641548c54420dee8f7756dbab",
+        "fd33e77884e69f6bc099990fc2790248af2749d9",
+        "61a5ae33fc34efcdbc710004554ec57e607ce75e",
+        "1e3e65e7773b7869d9bd7f5394b54199e48195e6",
+        "29584ed6d68a06fdf91440a018f6bc83a44fd177",
+        "afad10da0a3b83a4f2a94e8c16c84ac64338e9fe",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "cc2d1a66c701e9be9124eb95431b6c3dd79a61d3"
+    ],
+    "s2id": "156a66da569b68ea776c5db38e033aadb4755971",
+    "abstract": "Pre-trained Transformers currently dominate most NLP tasks. They impose, however, limits on the maximum input length (512 sub-words in BERT), which are too restrictive in the legal domain. Even sparse-attention models, such as Longformer and BigBird, which increase the maximum input length to 4,096 sub-words, severely truncate texts in three of the six datasets of LexGLUE. Simpler linear classifiers with TF-IDF features can handle texts of any length, require far less resources to train and deploy, but are usually outperformed by pre-trained Transformers. We explore two directions to cope with long legal texts: (i) modifying a Longformer warm-started from LegalBERT to handle even longer texts (up to 8,192 sub-words), and (ii) modifying LegalBERT to use TF-IDF representations. The first approach is the best in terms of performance, surpassing a hierarchical version of LegalBERT, which was the previous state of the art in LexGLUE. The second approach leads to computationally more efficient models at the expense of lower performance, but the resulting models still outperform overall a linear SVM with TF-IDF features in long legal document classification.",
+    "authors": [
+        "Dimitris Mamakas",
+        "Petros Tsotsi",
+        "Ion Androutsopoulos",
+        "Ilias Chalkidis"
+    ],
+    "venue": "NLLP",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Two directions to cope with long legal texts are explored: modifying a Longformer warm-started from LegalBERT to handle even longer texts, and modifying LegalberT to use TF-IDF representations, which are the best in terms of performance."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

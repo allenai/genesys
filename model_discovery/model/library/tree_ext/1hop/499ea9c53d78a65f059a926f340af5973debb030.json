@@ -1,0 +1,31 @@
+{
+    "acronym": "499ea9c53d78a65f059a926f340af5973debb030",
+    "title": "ParaICL: Towards Robust Parallel In-Context Learning",
+    "seed_ids": [
+        "gpt3",
+        "980e55d9226cac302d0fae7732da4e67b8bc952c",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "499ea9c53d78a65f059a926f340af5973debb030",
+    "abstract": "Large language models (LLMs) have become the norm in natural language processing (NLP), excelling in few-shot in-context learning (ICL) with their remarkable abilities. Nonetheless, the success of ICL largely hinges on the choice of few-shot demonstration examples, making the selection process increasingly crucial. Existing methods have delved into optimizing the quantity and semantic similarity of these examples to improve ICL performances. However, our preliminary experiments indicate that the effectiveness of ICL is limited by the length of the input context. Moreover, varying combinations of few-shot demonstration examples can significantly boost accuracy across different test samples. To address this, we propose a novel method named parallel in-context learning (ParaICL) that effectively utilizes all demonstration examples without exceeding the manageable input context length. ParaICL employs parallel batching to distribute demonstration examples into different batches according to the semantic similarities of the questions in the demonstrations to the test question. It then computes normalized batch semantic scores for each batch. A weighted average semantic objective, constrained by adaptive plausibility, is applied to select the most appropriate tokens. Through extensive experiments, we validate the effectiveness of ParaICL and conduct ablation studies to underscore its design rationale. We further demonstrate that ParaICL can seamlessly integrate with existing methods.",
+    "authors": [
+        "Xingxuan Li",
+        "Xuan-Phi Nguyen",
+        "Shafiq R. Joty",
+        "Li Bing"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ParaICL employs parallel batching to distribute demonstration examples into different batches according to the semantic similarities of the questions in the demonstrations to the test question, and computes normalized batch semantic scores for each batch."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

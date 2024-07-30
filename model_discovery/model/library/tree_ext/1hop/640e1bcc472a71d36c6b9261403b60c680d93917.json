@@ -1,0 +1,35 @@
+{
+    "acronym": "640e1bcc472a71d36c6b9261403b60c680d93917",
+    "title": "GET: a foundation model of transcription across human cell types",
+    "seed_ids": [
+        "transformer",
+        "bfd2b76998a0521c12903ef5ced517adf70ad2ba"
+    ],
+    "s2id": "640e1bcc472a71d36c6b9261403b60c680d93917",
+    "abstract": "Transcriptional regulation, involving the complex interplay between regulatory sequences and proteins, directs all biological processes. Computational models of transcription lack generalizability to accurately extrapolate in unseen cell types and conditions. Here, we introduce GET, an interpretable foundation model designed to uncover regulatory grammars across 213 human fetal and adult cell types. Relying exclusively on chromatin accessibility data and sequence information, GET achieves experimental-level accuracy in predicting gene expression even in previously unseen cell types. GET showcases remarkable adaptability across new sequencing platforms and assays, enabling regulatory inference across a broad range of cell types and conditions, and uncovering universal and cell type specific transcription factor interaction networks. We evaluated its performance on prediction of regulatory activity, inference of regulatory elements and regulators, and identification of physical interactions between transcription factors. Specifically, we show GET outperforms current models in predicting lentivirus-based massive parallel reporter assay readout with reduced input data. In fetal erythroblasts, we identify distal (>1Mbp) regulatory regions that were missed by previous models. In B cells, we identified a lymphocyte-specific transcription factor-transcription factor interaction that explains the functional significance of a leukemia-risk predisposing germline mutation. In sum, we provide a generalizable and accurate model for transcription together with catalogs of gene regulation and transcription factor interactions, all with cell type specificity.",
+    "authors": [
+        "Xi Fu",
+        "Shentong Mo",
+        "Anqi Shao",
+        "Anouchka P. Laurent",
+        "Alejandro L Buendia",
+        "Adolfo A. Ferrando",
+        "Alberto Ciccia",
+        "Yanyan Lan",
+        "Teresa Palomero",
+        "David M. Owens",
+        "Eric P. Xing",
+        "Ra\u00fal Rabad\u00e1n"
+    ],
+    "venue": "bioRxiv",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces GET, an interpretable foundation model designed to uncover regulatory grammars across 213 human fetal and adult cell types and provides a generalizable and accurate model for transcription together with catalogs of gene regulation and transcription factor interactions, all with cell type specificity."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "69d5ed2b0836931bd41ded2b0e8452eb3baae4f4",
+    "title": "scHyena: Foundation Model for Full-Length Single-Cell RNA-Seq Analysis in Brain",
+    "seed_ids": [
+        "performer",
+        "bfd2b76998a0521c12903ef5ced517adf70ad2ba",
+        "998ac3e945857cf2676ee7efdbaf443a0c6f820a",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d"
+    ],
+    "s2id": "69d5ed2b0836931bd41ded2b0e8452eb3baae4f4",
+    "abstract": "Single-cell RNA sequencing (scRNA-seq) has made significant strides in unraveling the intricate cellular diversity within complex tissues. This is particularly critical in the brain, presenting a greater diversity of cell types than other tissue types, to gain a deeper understanding of brain function within various cellular contexts. However, analyzing scRNA-seq data remains a challenge due to inherent measurement noise stemming from dropout events and the limited utilization of extensive gene expression information. In this work, we introduce scHyena, a foundation model designed to address these challenges and enhance the accuracy of scRNA-seq analysis in the brain. Specifically, inspired by the recent Hyena operator, we design a novel Transformer architecture called singe-cell Hyena (scHyena) that is equipped with a linear adaptor layer, the positional encoding via gene-embedding, and a {bidirectional} Hyena operator. This enables us to process full-length scRNA-seq data without losing any information from the raw data. In particular, our model learns generalizable features of cells and genes through pre-training scHyena using the full length of scRNA-seq data. We demonstrate the superior performance of scHyena compared to other benchmark methods in downstream tasks, including cell type classification and scRNA-seq imputation.",
+    "authors": [
+        "Gyutaek Oh",
+        "B. Choi",
+        "Inkyung Jung",
+        "Jong Chul Ye"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work designs a novel Transformer architecture called singe-cell Hyena (scHyena) that is equipped with a linear adaptor layer, the positional encoding via gene-embedding, and a {bidirectional} Hyena operator that enables the model to process full-length scRNA-seq data without losing any information from the raw data."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

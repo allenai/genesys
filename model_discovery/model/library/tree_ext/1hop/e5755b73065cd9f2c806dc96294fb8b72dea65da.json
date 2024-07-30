@@ -1,0 +1,28 @@
+{
+    "acronym": "e5755b73065cd9f2c806dc96294fb8b72dea65da",
+    "title": "Shilling Black-box Review-based Recommender Systems through Fake Review Generation",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e5755b73065cd9f2c806dc96294fb8b72dea65da",
+    "abstract": "Review-Based Recommender Systems (RBRS) have attracted increasing research interest due to their ability to alleviate well-known cold-start problems. RBRS utilizes reviews to construct the user and items representations. However, in this paper, we argue that such a reliance on reviews may instead expose systems to the risk of being shilled. To explore this possibility, in this paper, we propose the first generation-based model for shilling attacks against RBRSs. Specifically, we learn a fake review generator through reinforcement learning, which maliciously promotes items by forcing prediction shifts after adding generated reviews to the system. By introducing the auxiliary rewards to increase text fluency and diversity with the aid of pre-trained language models and aspect predictors, the generated reviews can be effective for shilling with high fidelity. Experimental results demonstrate that the proposed framework can successfully attack three different kinds of RBRSs on the Amazon corpus with three domains and Yelp corpus. Furthermore, human studies also show that the generated reviews are fluent and informative. Finally, equipped with Attack Review Generators (ARGs), RBRSs with adversarial training are much more robust to malicious reviews.",
+    "authors": [
+        "Hung-Yun Chiang",
+        "Yi-Syuan Chen",
+        "Yun-Zhu Song",
+        "Hong-Han Shuai",
+        "Jason J. S. Chang"
+    ],
+    "venue": "Knowledge Discovery and Data Mining",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes the first generation-based model for shilling attacks against RBRSs, and learns a fake review generator through reinforcement learning, which maliciously promotes items by forcing prediction shifts after adding generated reviews to the system."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

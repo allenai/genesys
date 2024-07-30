@@ -1,0 +1,43 @@
+{
+    "acronym": "2f0203386f3dcbffb47c9f7fe2d19d373d9dda2f",
+    "title": "Exploring Transformer Extrapolation",
+    "seed_ids": [
+        "tnn",
+        "alibi",
+        "kerple",
+        "0664d52b1040e048fff7e7d1d13a310964207768",
+        "434d751d355d7a7c20efa570e785c76286245e77",
+        "8bc8b9ae855bc0aa19e7223899440ffbdc61f4d8",
+        "f35f5aedc30e2c5ded210d9c91ba6e84bd029425",
+        "e3fc46d5f4aae2c7a8a86b6bd21ca8db5d40fcbd",
+        "ee1e1afe75eb0e20d57bf316f5ab1ca2c369d100",
+        "86c8d930b492a4f9cadc6c60aecdaaded49acc86",
+        "6be32b4321f95b79bb2e37feeab0c3c7f902195e",
+        "d6c5aab433d9871cabc01ffb1e5e1ea89141155b",
+        "c49ac1f916d6d2edeb187e6619c8d23acd95eb21",
+        "4b0541eccd8f98852d6807a14fbac17f775c7b40",
+        "08ffdec40291a2ccb5f8a6cc048b01247fb34b96",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "48ad536d00742a31eb8c6408c5d7ad96e654fe7a"
+    ],
+    "s2id": "2f0203386f3dcbffb47c9f7fe2d19d373d9dda2f",
+    "abstract": "Length extrapolation has attracted considerable attention recently since it allows transformers to be tested on longer sequences than those used in training. Previous research has shown that this property can be attained by using carefully designed Relative Positional Encodings (RPEs). While these methods perform well on a variety of corpora, the conditions for length extrapolation have yet to be investigated. This paper attempts to determine what types of RPEs allow for length extrapolation through a thorough mathematical and empirical analysis. We discover that a transformer is certain to possess this property as long as the series that corresponds to the RPE's exponential converges. Two practices are derived from the conditions and examined in language modeling tasks on a variety of corpora. As a bonus from the conditions, we derive a new Theoretical Receptive Field (TRF) to measure the receptive field of RPEs without taking any training steps. Extensive experiments are conducted on the Wikitext-103, Books, Github, and WikiBook datasets to demonstrate the viability of our discovered conditions. We also compare TRF to Empirical Receptive Field (ERF) across different models, showing consistently matched trends on these datasets. Code is released at: https://github.com/OpenNLPLab/Rpe.",
+    "authors": [
+        "Zhen Qin",
+        "Yiran Zhong",
+        "Huiyuan Deng"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper attempts to determine what types of RPEs allow for length extrapolation through a thorough mathematical and empirical analysis and derives a new Theoretical Receptive Field (TRF) to measure the receptive field of RPEs without taking any training steps."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

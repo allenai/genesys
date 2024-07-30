@@ -1,0 +1,33 @@
+{
+    "acronym": "c8d5c5ebc1aaada257141aa4f65e890bb8224b4d",
+    "title": "ZooPFL: Exploring Black-box Foundation Models for Personalized Federated Learning",
+    "seed_ids": [
+        "gpt2",
+        "242dbbef9e7f624525c57645f193e0b13a90ad44",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "c8d5c5ebc1aaada257141aa4f65e890bb8224b4d",
+    "abstract": "When personalized federated learning (FL) meets large foundation models, new challenges arise from various limitations in resources. In addition to typical limitations such as data, computation, and communication costs, access to the models is also often limited. This paper endeavors to solve both the challenges of limited resources and personalization. i.e., distribution shifts between clients. To do so, we propose a method named ZOOPFL that uses Zeroth-Order Optimization for Personalized Federated Learning. ZOOPFL avoids direct interference with the foundation models and instead learns to adapt its inputs through zeroth-order optimization. In addition, we employ simple yet effective linear projections to remap its predictions for personalization. To reduce the computation costs and enhance personalization, we propose input surgery to incorporate an auto-encoder with low-dimensional and client-specific embeddings. We provide theoretical support for ZOOPFL to analyze its convergence. Extensive empirical experiments on computer vision and natural language processing tasks using popular foundation models demonstrate its effectiveness for FL on black-box foundation models.",
+    "authors": [
+        "Wang Lu",
+        "Hao Yu",
+        "Jindong Wang",
+        "Damien Teney",
+        "Haohan Wang",
+        "Yiqiang Chen",
+        "Qiang Yang",
+        "Xing Xie",
+        "Xiangyang Ji"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a method named ZOOPFL that uses Zeroth-Order Optimization for Personalized Federated Learning, and proposes input surgery to incorporate an auto-encoder with low-dimensional and client-specific embeddings to reduce the computation costs and enhance personalization."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

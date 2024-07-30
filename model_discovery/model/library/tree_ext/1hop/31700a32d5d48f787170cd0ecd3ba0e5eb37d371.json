@@ -1,0 +1,29 @@
+{
+    "acronym": "31700a32d5d48f787170cd0ecd3ba0e5eb37d371",
+    "title": "RS3Mamba: Visual State Space Model for Remote Sensing Image Semantic Segmentation",
+    "seed_ids": [
+        "mamba",
+        "5f07ef98b64b2ab47105018cbda158527f903b28",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "31700a32d5d48f787170cd0ecd3ba0e5eb37d371",
+    "abstract": "Semantic segmentation of remote sensing images is a fundamental task in geoscience research. However, convolutional neural networks (CNNs) and transformers have some significant shortcomings. The former are limited by insufficient long-range modeling capabilities, while the latter are hampered by computational complexity. Recently, a novel visual state space (VSS) model represented by Mamba has emerged, capable of modeling long-range relationships with linear computability. In this research, we propose a novel dual-branch network named remote sensing image semantic segmentation Mamba (RS3Mamba) designed specifically for remote sensing tasks. RS3Mamba uses VSS blocks to construct an auxiliary branch, providing additional global information to a convolution-based main branch. Moreover, considering the distinct characteristics of the two branches, we introduce a collaborative completion module (CCM) to refine and fuse features from the dual-encoder using a novel adaptive mechanism. Through experiments on two widely used datasets, the proposed RS3Mamba was found to outperform the state-of-the-art methods in terms of mIoU with 0.66% on ISPRS Vaihingen and 1.70% on LoveDA Urban, demonstrating its effectiveness and potential. The source code is available at https://github.com/sstary/SSRS.",
+    "authors": [
+        "Xianping Ma",
+        "Xiaokang Zhang",
+        "Man-On Pun"
+    ],
+    "venue": "IEEE Geoscience and Remote Sensing Letters",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This research proposes a novel dual-branch network named remote sensing image semantic segmentation Mamba (RS3Mamba), designed specifically for remote sensing tasks, and introduces a collaborative completion module (CCM) to refine and fuse features from the dual-encoder using a novel adaptive mechanism."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

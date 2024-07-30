@@ -1,0 +1,27 @@
+{
+    "acronym": "e3782079153fb07b3483750ab19b8ef31c7b5f04",
+    "title": "Balancing Exploration and Exploitation in LLM using Soft RLLF for Enhanced Negation Understanding",
+    "seed_ids": [
+        "gpt2",
+        "ca2ea26b851fea6914a65b233b7daf8f32e38073",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e3782079153fb07b3483750ab19b8ef31c7b5f04",
+    "abstract": "Finetuning approaches in NLP often focus on exploitation rather than exploration, which may lead to suboptimal models. Given the vast search space of natural language, this limited exploration can restrict their performance in complex, high-stakes domains, where accurate negation understanding and logical reasoning abilities are crucial. To address this issue, we leverage Reinforcement Learning from Logical Feedback (RLLF) to create an effective balance between exploration and exploitation in LLMs. Our approach employs an appropriate benchmark dataset for training and evaluation, highlighting the importance of exploration in enhancing negation understanding capabilities. We compare the performance of our RLLF-enhanced LLMs with baseline models trained without RLLF, demonstrating the value of this balanced approach. Furthermore, we showcase the potential of our method in legal AI applications by employing transfer learning and evaluating its impact on negation understanding. Our experimental results exhibit the effectiveness of balancing exploration and exploitation with RLLF in improving LLMs' negation capabilities. This has implications for the development of more accurate, reliable, and logically consistent language models in high-stakes domains.",
+    "authors": [
+        "Ha-Thanh Nguyen",
+        "Ken Satoh"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work leverages Reinforcement Learning from Logical Feedback (RLLF) to create an effective balance between exploration and exploitation in LLMs and demonstrates the effectiveness of balancing exploration and exploitation with RLLF in improving LLMs' negation capabilities."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

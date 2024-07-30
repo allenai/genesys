@@ -1,0 +1,32 @@
+{
+    "acronym": "1490766edf4dbbd5ae4c21566ecd98fe9e6228bb",
+    "title": "STEP: Sequence-to-Sequence Transformer Pre-training for Document Summarization",
+    "seed_ids": [
+        "gpt",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "203b543bfa1e564bb80ff4229b43174d7c71b0c0",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1490766edf4dbbd5ae4c21566ecd98fe9e6228bb",
+    "abstract": "Abstractive summarization aims to rewrite a long document to its shorter form, which is usually modeled as a sequence-to-sequence (Seq2Seq) learning problem. Seq2Seq Transformers are powerful models for this problem. Unfortunately, training large Seq2Seq Transformers on limited supervised summarization data is challenging. We, therefore, propose STEP (as shorthand for Sequence-to-Sequence Transformer Pre-training), which can be trained on large scale unlabeled documents. Specifically, STEP is pre-trained using three different tasks, namely sentence reordering, next sentence generation, and masked document generation. Experiments on two summarization datasets show that all three tasks can improve performance upon a heavily tuned large Seq2Seq Transformer which already includes a strong pre-trained encoder by a large margin. By using our best task to pre-train STEP, we outperform the best published abstractive model on CNN/DailyMail by 0.8 ROUGE-2 and New York Times by 2.4 ROUGE-2.",
+    "authors": [
+        "Yanyan Zou",
+        "Xingxing Zhang",
+        "Wei Lu",
+        "Furu Wei",
+        "Ming Zhou"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "STEP (as shorthand for Sequence-to-Sequence Transformer Pre-training), which can be trained on large scale unlabeled documents, is proposed, which is pre-trained using three different tasks, namely sentence reordering, next sentence generation, and masked document generation."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

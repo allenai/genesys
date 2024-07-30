@@ -1,0 +1,41 @@
+{
+    "acronym": "c74e1671cee1e19c49a5aafbedfe403af471b8ec",
+    "title": "GENA-LM: A Family of Open-Source Foundational DNA Language Models for Long Sequences",
+    "seed_ids": [
+        "bigbird",
+        "bfd2b76998a0521c12903ef5ced517adf70ad2ba",
+        "0f4780f3f42dbe9755d54495ae17244cc88a7483",
+        "594d8e1696619f3cebb7c6bffdad8e0a5592f006",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "67ee20536c30a225b86902af2f091e28e5e19b40",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "baed71eed57ad462f3ab138d4b1700a738cd5414",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "2a31319e73d4486716168b65cdf7559baeda18ce"
+    ],
+    "s2id": "c74e1671cee1e19c49a5aafbedfe403af471b8ec",
+    "abstract": "Recent advancements in genomics, propelled by artificial intelligence, have unlocked unprecedented capabilities in interpreting genomic sequences, mitigating the need for exhaustive experimental analysis of complex, intertwined molecular processes inherent in DNA function. A significant challenge, however, resides in accurately decoding genomic sequences, which inherently involves comprehending rich contextual information dispersed across thousands of nucleotides. To address this need, we introduce GENA-LM, a suite of transformer-based foundational DNA language models capable of handling input lengths up to 36,000 base pairs. Notably, integration of the newly-developed Recurrent Memory mechanism allows these models to process even larger DNA segments. We provide pre-trained versions of GENA-LM, demonstrating their capability for fine-tuning and addressing a spectrum of complex biological tasks with modest computational demands. While language models have already achieved significant breakthroughs in protein biology, GENA-LM showcases a similarly promising potential for reshaping the landscape of genomics and multi-omics data analysis. All models are publicly available on GitHub https://github.com/AIRI-Institute/GENA LM and HuggingFace https://huggingface.co/AIRI-Institute.",
+    "authors": [
+        "V. Fishman",
+        "Yuri Kuratov",
+        "Maxim Petrov",
+        "Aleksei Shmelev",
+        "Denis Shepelin",
+        "N. Chekanov",
+        "O. Kardymon",
+        "M. Burtsev"
+    ],
+    "venue": "bioRxiv",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces GENA-LM, a suite of transformer-based foundational DNA language models capable of handling input lengths up to 36,000 base pairs and integration of the newly-developed Recurrent Memory mechanism allows these models to process even larger DNA segments."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

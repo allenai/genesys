@@ -1,0 +1,30 @@
+{
+    "acronym": "ba827e53286f9b7d94c48afc529af086eaf7be82",
+    "title": "Understanding Long Documents with Different Position-Aware Attentions",
+    "seed_ids": [
+        "bigbird",
+        "longformer",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "ba827e53286f9b7d94c48afc529af086eaf7be82",
+    "abstract": "Despite several successes in document understanding, the practical task for long document understanding is largely under-explored due to several challenges in computation and how to efficiently absorb long multimodal input. Most current transformer-based approaches only deal with short documents and employ solely textual information for attention due to its prohibitive computation and memory limit. To address those issues in long document understanding, we explore different approaches in handling 1D and new 2D position-aware attention with essentially shortened context. Experimental results show that our proposed models have advantages for this task based on various evaluation metrics. Furthermore, our model makes changes only to the attention and thus can be easily adapted to any transformer-based architecture.",
+    "authors": [
+        "Hai Pham",
+        "Guoxin Wang",
+        "Yijuan Lu",
+        "D. Flor\u00eancio",
+        "Changrong Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work explores different approaches in handling 1D and new 2D position-aware attention with essentially shortened context and proposes a model that makes changes only to the attention and thus can be easily adapted to any transformer-based architecture."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

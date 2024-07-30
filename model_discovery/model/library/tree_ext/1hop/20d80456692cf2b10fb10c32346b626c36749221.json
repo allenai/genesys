@@ -1,0 +1,26 @@
+{
+    "acronym": "20d80456692cf2b10fb10c32346b626c36749221",
+    "title": "Harmonizing Code-mixed Conversations: Personality-assisted Code-mixed Response Generation in Dialogues",
+    "seed_ids": [
+        "axialattn",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06"
+    ],
+    "s2id": "20d80456692cf2b10fb10c32346b626c36749221",
+    "abstract": "Code-mixing, the blending of multiple languages within a single conversation, introduces a distinctive challenge, particularly in the context of response generation. Capturing the intricacies of code-mixing proves to be a formidable task, given the wide-ranging variations influenced by individual speaking styles and cultural backgrounds. In this study, we explore response generation within code-mixed conversations. We introduce a novel approach centered on harnessing the Big Five personality traits acquired in an unsupervised manner from the conversations to bolster the performance of response generation. These inferred personality attributes are seamlessly woven into the fabric of the dialogue context, using a novel fusion mechanism, . It uses an effective two-step attention formulation to fuse the dialogue and personality information. This fusion not only enhances the contextual relevance of generated responses but also elevates the overall performance of the model. Our experimental results, grounded in a dataset comprising of multi-party Hindi-English code-mix conversations, highlight the substantial advantages offered by personality-infused models over their conventional counterparts. This is evident in the increase observed in ROUGE and BLUE scores for the response generation task when the identified personality is seamlessly integrated into the dialogue context. Qualitative assessment for personality identification and response generation aligns well with our quantitative results.",
+    "authors": [
+        "Shivani Kumar",
+        "Tanmoy Chakraborty"
+    ],
+    "venue": "Findings",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study introduces a novel approach centered on harnessing the Big Five personality traits acquired in an unsupervised manner from the conversations to bolster the performance of response generation within code-mixed conversations."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

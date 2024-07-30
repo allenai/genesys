@@ -1,0 +1,50 @@
+{
+    "acronym": "6ac92ad74a4f41f2479da7edb2b483dbf57f10b7",
+    "title": "Attendre: Wait To Attend By Retrieval With Evicted Queries in Memory-Based Transformers for Long Context Processing",
+    "seed_ids": [
+        "streamingllm",
+        "compressivetransformer",
+        "roformer",
+        "unlimiformer",
+        "4ea5ca620122e6a9a2b000444d36491cebf49c7c",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "b069c32fcd77160f944ab3ba71ab6f0cfb782c68",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "6f6e2e0311589a9af045f6acd00b7dee6d19fce4",
+        "c193eb176985a81ae64f63c5e50b2f11cfb7c4e6",
+        "2d01b6afbc86cba1cb895dbcd9396b13952bf0e5",
+        "dbc368bc8b49347dd27679894524fa62f88492c9",
+        "594d8e1696619f3cebb7c6bffdad8e0a5592f006",
+        "68adb03744692247fb834406798894db9fe77010",
+        "980d1c3bf9d1a3c0ce68567e0efc1a72f203f12c",
+        "70e91e16eb321067d9402710e14a40cf28311f73",
+        "3b39efe6c91ae432dd35bb79431edb8a6719f906",
+        "b21670e8061a06ab97e7d6052c9345a326e84ff8",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "2d82ee05b132d4681c3bd517afc17d608fe6e525",
+        "64a29bee2e1ad29547d590a3cc26274f4c537145",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "67ee20536c30a225b86902af2f091e28e5e19b40",
+        "70557ea6b65846fc30729ceed224acd4ac64ca5d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "2dad9763f8b128da231b3fb9c9fff7ad730b89a1"
+    ],
+    "s2id": "6ac92ad74a4f41f2479da7edb2b483dbf57f10b7",
+    "abstract": "As LLMs have become capable of processing more complex types of inputs, researchers have recently studied how to efficiently and affordably process possibly arbitrarily long sequences. One effective approach is to use a FIFO memory to store keys and values of an attention sublayer from past chunks to allow subsequent queries to attend. However, this approach requires a large memory and/or takes into the consideration the specific LM architecture. Moreover, due to the causal nature between the key-values in prior context and the queries at present, this approach cannot be extended to bidirectional attention such as in an encoder-decoder or PrefixLM decoder-only architecture. In this paper, we propose to use eviction policies, such as LRA and LFA, to reduce the memory size and adapt to various architectures, and we also propose the Attendre layer, a wait-to-attend mechanism by retrieving the key-value memory (K/V memory) with evicted queries in the query memory (Q memory). As a first step, we evaluate this method in the context length extension setup using the TriviaQA reading comprehension task, and show the effectiveness of the approach.",
+    "authors": [
+        "Zi Yang",
+        "Nan Hua"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Attendre layer is proposed, a wait-to-attend mechanism by retrieving the key-value memory (K/V memory) with evicted queries in the query memory (Q memory) with evicted queries in the query memory (Q memory) is evaluated."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

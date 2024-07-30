@@ -1,0 +1,30 @@
+{
+    "acronym": "dee37d0513291f5b02c24173d9881de06eec84ba",
+    "title": "SEHF: A Summary-Enhanced Hierarchical Framework for Financial Report Sentiment Analysis",
+    "seed_ids": [
+        "bert",
+        "319b84be7a843250bc81d7086f79a4126d550277",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "dee37d0513291f5b02c24173d9881de06eec84ba",
+    "abstract": "Financial reports serve as crucial resources for investors and researchers, providing analysts\u2019 assessments of stocks that play a vital role in stock market applications. However, detecting analysts\u2019 opinions and sentiments in financial reports is challenging. First, the formal and professional language used in these reports makes it difficult for previous methods to comprehend domain-specific knowledge. Second, financial reports often adopt lengthy and elaborate expressions to convey rich semantics, which exposes the existing methods to contextual information loss, especially on long-term dependencies. To address these problems, we propose a summary-enhanced hierarchical framework (SEHF), which leverages summary information to enhance financial report sentiment analysis. Our framework incorporates financial bidirectional and auto-regressive transformer (FinBART), equipped with extended position encoding to summarize lengthy report articles and capture long-range interactions. To mitigate information loss, we initially divide each report into segments and then propose the hierarchical analyst sentiment representation network (ASRN), which utilizes financial bidirectional encoder representation from transformer (FinBERT), bidirectional long short-term memory (BiLSTM)-Attention, and dendrite (DD) network to fuse information in the generated summary and report segments. Notably, FinBART and FinBERT are pretrained on large-scale financial corpora to effectively understand professional expressions. Furthermore, we construct a new dataset large-scale Chinese financial report (LCFR) for the lack of supervised datasets. Experimental results on LCFR and a benchmark dataset show that SEHF significantly outperforms state-of-the-art (SOTA) baselines, and the ablation study highlights the effectiveness of aggregating sentiment information in the summary and report segments.",
+    "authors": [
+        "Haozhou Li",
+        "Qinke Peng",
+        "Xinyuan Wang",
+        "Xu Mou",
+        "Yonghao Wang"
+    ],
+    "venue": "IEEE Transactions on Computational Social Systems",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A summary-enhanced hierarchical framework (SEHF), which leverages summary information to enhance financial report sentiment analysis and construct a new dataset large-scale Chinese financial report (LCFR) for the lack of supervised datasets."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

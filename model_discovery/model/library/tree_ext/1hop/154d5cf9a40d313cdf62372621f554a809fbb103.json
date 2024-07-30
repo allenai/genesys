@@ -1,0 +1,28 @@
+{
+    "acronym": "154d5cf9a40d313cdf62372621f554a809fbb103",
+    "title": "A Multi-dimensional Deep Structured State Space Approach to Speech Enhancement Using Small-footprint Models",
+    "seed_ids": [
+        "s4",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2"
+    ],
+    "s2id": "154d5cf9a40d313cdf62372621f554a809fbb103",
+    "abstract": "We propose a multi-dimensional structured state space (S4) approach to speech enhancement. To better capture the spectral dependencies across the frequency axis, we focus on modifying the multi-dimensional S4 layer with whitening transformation to build new small-footprint models that also achieve good performance. We explore several S4-based deep architectures in time (T) and time-frequency (TF) domains. The 2-D S4 layer can be considered a particular convolutional layer with an infinite receptive field although it utilizes fewer parameters than a conventional convolutional layer. Evaluated on the VoiceBank-DEMAND data set, when compared with the conventional U-net model based on convolutional layers, the proposed TF-domain S4-based model is 78.6% smaller in size, yet it still achieves competitive results with a PESQ score of 3.15 with data augmentation. By increasing the model size, we can even reach a PESQ score of 3.18.",
+    "authors": [
+        "Pin-Jui Ku",
+        "Chao Yang",
+        "Sabato Marco Siniscalchi",
+        "Chin-Hui Lee"
+    ],
+    "venue": "Interspeech",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work focuses on modifying the multi-dimensional S4 layer with whitening transformation to build new small-footprint models that also achieve good performance and explores several S4-based deep architectures in time (T) and time-frequency (TF) domains."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

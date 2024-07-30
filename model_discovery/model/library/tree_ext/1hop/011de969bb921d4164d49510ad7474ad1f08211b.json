@@ -1,0 +1,27 @@
+{
+    "acronym": "011de969bb921d4164d49510ad7474ad1f08211b",
+    "title": "HC2L: Hybrid and Cooperative Contrastive Learning for Cross-lingual Spoken Language Understanding",
+    "seed_ids": [
+        "bert",
+        "9e46a2f7d0193fee8b3d702bfeb9692ed6660e14",
+        "65f788fb964901e3f1149a0a53317535ca85ed7d",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc"
+    ],
+    "s2id": "011de969bb921d4164d49510ad7474ad1f08211b",
+    "abstract": "State-of-the-art model for zero-shot cross-lingual spoken language understanding performs cross-lingual unsupervised contrastive learning to achieve the label-agnostic semantic alignment between each utterance and its code-switched data. However, it ignores the precious intent/slot labels, whose label information is promising to help capture the label-aware semantics structure and then leverage supervised contrastive learning to improve both source and target languages' semantics. In this paper, we propose Hybrid and Cooperative Contrastive Learning to address this problem. Apart from cross-lingual unsupervised contrastive learning, we design a holistic approach that exploits source language supervised contrastive learning, cross-lingual supervised contrastive learning and multilingual supervised contrastive learning to perform label-aware semantics alignments in a comprehensive manner. Each kind of supervised contrastive learning mechanism includes both single-task and joint-task scenarios. In our model, one contrastive learning mechanism's input is enhanced by others. Thus the total four contrastive learning mechanisms are cooperative to learn more consistent and discriminative representations in the virtuous cycle during the training process. Experiments show that our model obtains consistent improvements over 9 languages, achieving new state-of-the-art performance.",
+    "authors": [
+        "Bowen Xing",
+        "Ivor W. Tsang"
+    ],
+    "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes Hybrid and Cooperative Contrastive Learning, a holistic approach that exploits source language supervised contrastive learning, cross-lingual supervised contrastive learning and multilingual supervised contrastive learning to perform label-aware semantics alignments in a comprehensive manner."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

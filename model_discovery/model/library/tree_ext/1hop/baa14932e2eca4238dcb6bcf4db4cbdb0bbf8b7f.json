@@ -1,0 +1,33 @@
+{
+    "acronym": "baa14932e2eca4238dcb6bcf4db4cbdb0bbf8b7f",
+    "title": "A Neural Network for High-Precise and Well-Interpretable Electrocardiogram Classification",
+    "seed_ids": [
+        "transformerxl",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87"
+    ],
+    "s2id": "baa14932e2eca4238dcb6bcf4db4cbdb0bbf8b7f",
+    "abstract": "Manual heart disease diagnosis with the electrocardiogram (ECG) is intractable due to the intertwined signal features and lengthy diagnosis procedure, especially for the 24-hour dynamic ECG signals. Consequently, even experienced cardiologists may face difficulty in producing all accurate ECG reports. In recent years, neural network-based automatic ECG diagnosis methods have exhibited promising performance, suggesting a potential alternative to the labor-intensive examination conducted by cardiologists. However, many existing approaches failed to adequately consider the temporal and channel dimensions when assembling features and ignored interpretability. And clinical theory underscores the necessity of prolonged signal observations for diagnosing certain ECG conditions such as tachycardia. Moreover, specific heart diseases manifest primarily through distinct ECG leads represented as channels. In response to these challenges, this paper introduces a novel neural network architecture for ECG classification (diagnosis). The proposed model incorporates Lead Fusing blocks, transformer-XL encoder-based Encoder modules, and hierarchical temporal attentions. Importantly, this classifier operates directly on raw ECG time-series signals rather than cardiac cycles. Signal integration begins with the Lead Fusing blocks, followed by the Encoder modules and hierarchical temporal attentions, enabling the extraction of long-dependent features. Furthermore, we argue that existing convolution-based methods compromise interpretability, while our proposed neural network offers improved clarity in this regard. Experimental evaluation on a comprehensive public dataset confirms the superiority of our classifier over state-of-the-art methods. Moreover, visualizations reveal the enhanced interpretability provided by our approach. Highlights Our model extracts long-dependent features of ECG signals based on the Transformer-XL encoder. The proposed network offers the improved interpretability. Our classifier achieves superior performance over other state-of-the-art methods.",
+    "authors": [
+        "Xiaoqiang Liu",
+        "Liang He",
+        "Jiadong Yan",
+        "Yisen Huang",
+        "Yubin Wang",
+        "Chanchan Lin",
+        "Yingxuan Huang",
+        "Xiaobo Liu"
+    ],
+    "venue": "bioRxiv",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is argued that existing convolution-based methods compromise interpretability, while the proposed neural network offers improved clarity in this regard, and experimental evaluation on a comprehensive public dataset confirms the superiority of the classifier over state-of-the-art methods."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

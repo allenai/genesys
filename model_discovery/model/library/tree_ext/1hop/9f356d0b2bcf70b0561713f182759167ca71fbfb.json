@@ -1,0 +1,28 @@
+{
+    "acronym": "9f356d0b2bcf70b0561713f182759167ca71fbfb",
+    "title": "Enhancing Representation Learning with Label Association for Multi-Label Text Classification",
+    "seed_ids": [
+        "bert",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "9f356d0b2bcf70b0561713f182759167ca71fbfb",
+    "abstract": "Multi-label text classification (MLTC) is an important task in the field of natural language processing (NLP). Suffering from limited input length, most existing models learn text representation and label representation separately, leading to the overlook of correlations between texts and labels. To this end, we introduce a comprehensive model for the MLTC task. Under the same representation space, our model, which is equipped with Graph Convolutional Network (GCN) layer, attention mechanism, and contrastive learning objective, learns representations of texts and labels jointly. To tackle the issue caused by the input length limitation, we develop a two-stage label reduction method via the application of label merging and association. Our method\u2019s effectiveness is validated through extensive experiments on various MLTC datasets, unraveling the intricate correlations between texts and labels.",
+    "authors": [
+        "Wang Zhang",
+        "Xin Wang",
+        "Yuhong Wu",
+        "Xingpeng Zhang",
+        "Huayi Zhan"
+    ],
+    "venue": "BigData Congress [Services Society]",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A two-stage label reduction method via the application of label merging and association is developed, which is validated through extensive experiments on various MLTC datasets, unraveling the intricate correlations between texts and labels."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

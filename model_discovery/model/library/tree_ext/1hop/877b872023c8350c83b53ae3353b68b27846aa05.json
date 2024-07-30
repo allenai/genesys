@@ -1,0 +1,28 @@
+{
+    "acronym": "877b872023c8350c83b53ae3353b68b27846aa05",
+    "title": "Modeling Aspect Correlation for Aspect-based Sentiment Analysis via Recurrent Inverse Learning Guidance",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "877b872023c8350c83b53ae3353b68b27846aa05",
+    "abstract": "Aspect-based sentiment analysis (ABSA) aims to distinguish sentiment polarity of every specific aspect in a given sentence. Previous researches have realized the importance of interactive learning with context and aspects. However, these methods are ill-studied to learn complex sentence with multiple aspects due to overlapped polarity feature. And they do not consider the correlation between aspects to distinguish overlapped feature. In order to solve this problem, we propose a new method called Recurrent Inverse Learning Guided Network (RILGNet). Our RILGNet has two points to improve the modeling of aspect correlation and the selecting of aspect feature. First, we use Recurrent Mechanism to improve the joint representation of aspects, which enhances the aspect correlation modeling iteratively. Second, we propose Inverse Learning Guidance to improve the selection of aspect feature by considering aspect correlation, which provides more useful information to determine polarity. Experimental results on SemEval 2014 Datasets demonstrate the effectiveness of RILGNet, and we further prove that RILGNet is state-of-the-art method in multiaspect scenarios.",
+    "authors": [
+        "Longfeng Li",
+        "Haifeng Sun",
+        "Q. Qi",
+        "Jingyu Wang",
+        "Jing Wang",
+        "Jianxin Liao"
+    ],
+    "venue": "International Conference on Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed Recurrent Inverse Learning Guided Network has two points to improve the modeling of aspect correlation and the selecting of aspect feature, and it is proved that RILGNet is state-of-the-art method in multiaspect scenarios."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

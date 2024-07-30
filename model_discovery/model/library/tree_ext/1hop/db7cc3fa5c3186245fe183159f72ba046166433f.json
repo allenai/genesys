@@ -1,0 +1,29 @@
+{
+    "acronym": "db7cc3fa5c3186245fe183159f72ba046166433f",
+    "title": "RobustSentEmbed: Robust Sentence Embeddings Using Adversarial Self-Supervised Contrastive Learning",
+    "seed_ids": [
+        "bert",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "a022bda79947d1f656a1164003c1b3ae9a843df9"
+    ],
+    "s2id": "db7cc3fa5c3186245fe183159f72ba046166433f",
+    "abstract": "Pre-trained language models (PLMs) have consistently demonstrated outstanding performance across a diverse spectrum of natural language processing tasks. Nevertheless, despite their success with unseen data, current PLM-based representations often exhibit poor robustness in adversarial settings. In this paper, we introduce RobustSentEmbed, a self-supervised sentence embedding framework designed to improve both generalization and robustness in diverse text representation tasks and against a diverse set of adversarial attacks. Through the generation of high-risk adversarial perturbations and their utilization in a novel objective function, RobustSentEmbed adeptly learns high-quality and robust sentence embeddings. Our experiments confirm the superiority of RobustSentEmbed over state-of-the-art representations. Specifically, Our framework achieves a significant reduction in the success rate of various adversarial attacks, notably reducing the BERTAttack success rate by almost half (from 75.51\\% to 38.81\\%). The framework also yields improvements of 1.59\\% and 0.23\\% in semantic textual similarity tasks and various transfer tasks, respectively.",
+    "authors": [
+        "J. Asl",
+        "Prajwal Panzade",
+        "Eduardo Blanco",
+        "Daniel Takabi",
+        "Zhipeng Cai"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces RobustSentEmbed, a self-supervised sentence embedding framework designed to improve both generalization and robustness in diverse text representation tasks and against a diverse set of adversarial attacks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

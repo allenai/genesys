@@ -1,0 +1,27 @@
+{
+    "acronym": "5d50c81ddd0ed89086de72f344cfbb658703cc25",
+    "title": "Convincing Rationales for Visual Question Answering Reasoning",
+    "seed_ids": [
+        "gpt2",
+        "5e00596fa946670d894b1bdaeff5a98e3867ef13",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5d50c81ddd0ed89086de72f344cfbb658703cc25",
+    "abstract": "Visual Question Answering (VQA) is a challenging task of predicting the answer to a question about the content of an image. It requires deep understanding of both the textual question and visual image. Prior works directly evaluate the answering models by simply calculating the accuracy of the predicted answers. However, the inner reasoning behind the prediction is disregarded in such a\"black box\"system, and we do not even know if one can trust the predictions. In some cases, the models still get the correct answers even when they focus on irrelevant visual regions or textual tokens, which makes the models unreliable and illogical. To generate both visual and textual rationales next to the predicted answer to the given image/question pair, we propose Convincing Rationales for VQA, CRVQA. Considering the extra annotations brought by the new outputs, {CRVQA} is trained and evaluated by samples converted from some existing VQA datasets and their visual labels. The extensive experiments demonstrate that the visual and textual rationales support the prediction of the answers, and further improve the accuracy. Furthermore, {CRVQA} achieves competitive performance on generic VQA datatsets in the zero-shot evaluation setting. The dataset and source code will be released under https://github.com/lik1996/CRVQA2024.",
+    "authors": [
+        "Kun Li",
+        "G. Vosselman",
+        "Michael Ying Yang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Convincing Rationales for VQA, CRVQA is proposed, which achieves competitive performance on generic VQA datatsets in the zero-shot evaluation setting and improves the accuracy of the answers."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,38 @@
+{
+    "acronym": "1386b8a11929cf02da291c56aca353e33bbc22ed",
+    "title": "Diffusion-LM Improves Controllable Text Generation",
+    "seed_ids": [
+        "gpt",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "4a6a65968a8eb8c09ffb57a7774ddabb596565b1",
+        "599bc7cfe98c2b57ddbe111412203a636da57be0",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "4d2a05140dd9bafaf035a846e7bda05f956304d2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1386b8a11929cf02da291c56aca353e33bbc22ed",
+    "abstract": "Controlling the behavior of language models (LMs) without re-training is a major open problem in natural language generation. While recent works have demonstrated successes on controlling simple sentence attributes (e.g., sentiment), there has been little progress on complex, fine-grained controls (e.g., syntactic structure). To address this challenge, we develop a new non-autoregressive language model based on continuous diffusions that we call Diffusion-LM. Building upon the recent successes of diffusion models in continuous domains, Diffusion-LM iteratively denoises a sequence of Gaussian vectors into word vectors, yielding a sequence of intermediate latent variables. The continuous, hierarchical nature of these intermediate variables enables a simple gradient-based algorithm to perform complex, controllable generation tasks. We demonstrate successful control of Diffusion-LM for six challenging fine-grained control tasks, significantly outperforming prior work.",
+    "authors": [
+        "Xiang Lisa Li",
+        "John Thickstun",
+        "Ishaan Gulrajani",
+        "Percy Liang",
+        "Tatsunori Hashimoto"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work develops a new non-autoregressive language model based on continuous diffusions that is significantly outperforming prior work on controlling the behavior of language models without re-training and demonstrates successful control of Diffusion-LM for six challenging fine-grained control tasks."
+    },
+    "citationCount": 511,
+    "influentialCitationCount": 73,
+    "code": null,
+    "description": null,
+    "url": null
+}

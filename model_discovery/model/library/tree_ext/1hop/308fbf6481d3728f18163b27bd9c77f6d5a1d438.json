@@ -1,0 +1,40 @@
+{
+    "acronym": "308fbf6481d3728f18163b27bd9c77f6d5a1d438",
+    "title": "RecycleGPT: An Autoregressive Language Model with Recyclable Module",
+    "seed_ids": [
+        "flashattn",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "bd44f34b47c8a4b6947695853fc2814ac69664a6",
+        "da0d38cf2ac7e2a6908e0d9e1fff07058daab2ed",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13"
+    ],
+    "s2id": "308fbf6481d3728f18163b27bd9c77f6d5a1d438",
+    "abstract": "Existing large language models have to run K times to generate a sequence of K tokens. In this paper, we present RecycleGPT, a generative language model with fast decoding speed by recycling pre-generated model states without running the whole model in multiple steps. Our approach relies on the observation that adjacent tokens in a sequence usually have strong correlations and the next token in a sequence can be reasonably guessed or inferred based on the preceding ones. Experiments and analysis demonstrate the effectiveness of our approach in lowering inference latency, achieving up to 1.4x speedup while preserving high performance.",
+    "authors": [
+        "Yu Jiang",
+        "Qiaozhi He",
+        "Xiaomin Zhuang",
+        "Zhihua Wu",
+        "Kunpeng Wang",
+        "Wenlai Zhao",
+        "Guangwen Yang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "RecycleGPT is presented, a generative language model with fast decoding speed by recycling pre-generated model states without running the whole model in multiple steps based on the observation that adjacent tokens in a sequence usually have strong correlations."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

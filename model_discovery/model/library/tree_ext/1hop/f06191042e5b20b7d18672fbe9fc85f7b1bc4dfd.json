@@ -1,0 +1,31 @@
+{
+    "acronym": "f06191042e5b20b7d18672fbe9fc85f7b1bc4dfd",
+    "title": "L4Q: Parameter Efficient Quantization-Aware Fine-Tuning on Large Language Models",
+    "seed_ids": [
+        "gpt3",
+        "b085968c4362fb286ad6c5ef71a5db9630da0498",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "f06191042e5b20b7d18672fbe9fc85f7b1bc4dfd",
+    "abstract": "Due to the high memory and computational costs associated with Large Language Models, model compression via quantization and parameter-efficient fine-tuning (PEFT) methods, such as low-rank adaptation (LoRA), are gaining popularity. This has led to active research on quantization-aware PEFT techniques, which aim to create models with high accuracy and low memory overhead. Among quantization methods, post-training quantization (PTQ) is more commonly used in previous works than quantization-aware training (QAT), despite QAT's potential for higher accuracy. This preference is due to PTQ's low training overhead. However, PTQ-based PEFT methods often utilize high-precision parameters, making it difficult to fully exploit the efficiency of quantization. Additionally, they have limited adaptation ability due to a reduced and constrained LoRA parameter structure. To overcome these challenges, we propose L4Q, which leverages joint quantization and fine-tuning to reduce QAT's memory overhead and produce models that consist entirely of quantized weights while achieving effective adaptation to downstream tasks. By design, L4Q allows quantization parameters to reflect weight updates, while weight updates reduce quantization errors. Our experiments demonstrate that this coupled quantization and fine-tuning approach yields superior accuracy compared to decoupled fine-tuning schemes in sub-4-bit quantization. Using the LLaMA model families and instructional datasets, we showcase L4Q's capabilities in language tasks and few-shot in-context learning.",
+    "authors": [
+        "Hyesung Jeon",
+        "Yulhwa Kim",
+        "Jae-Joon Kim"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "L4Q is proposed, which leverages joint quantization and fine-tuning to reduce QAT's memory overhead and produce models that consist entirely of quantized weights while achieving effective adaptation to downstream tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

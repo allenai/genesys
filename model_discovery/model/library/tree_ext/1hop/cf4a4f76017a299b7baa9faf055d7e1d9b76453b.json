@@ -1,0 +1,45 @@
+{
+    "acronym": "cf4a4f76017a299b7baa9faf055d7e1d9b76453b",
+    "title": "Adaptive Multi-Resolution Attention with Linear Complexity",
+    "seed_ids": [
+        "nystromformer",
+        "performer",
+        "lineartransformer",
+        "reformer",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "4ee1754f89b250753242c3baf58773dda5d9bf39",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "2e14e84ccec924ed770b58108ad1d9de6f0ca295",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "2a31319e73d4486716168b65cdf7559baeda18ce"
+    ],
+    "s2id": "cf4a4f76017a299b7baa9faf055d7e1d9b76453b",
+    "abstract": "Transformers have improved the state-of-the-art across numerous tasks in sequence modeling. Besides the quadratic computational and memory complexity with respect to the sequence length, the self-attention mechanism only processes information at the same scale, i.e., all attention heads are in the same resolution, resulting in the limited power of the Transformer. To remedy this, we propose a novel and efficient structure named Adaptive Multi-Resolution Attention (AdaMRA for short), which scales linearly to sequence length in terms of time and space. Specifically, we leverage a multi-resolution multi-head attention mechanism, enabling attention heads to capture long-range contextual information in a coarse-to-fine fashion. Moreover, to capture the potential relations between query representation and clues of different attention granularities, we leave the decision of which resolution of attention to use to query, which further improves the model's capacity compared to the vanilla Transformer. In an effort to reduce complexity, we adopt kernel attention without degrading the performance. Extensive experiments demonstrate the effectiveness and efficiency of our model by achieving state-of-the-art speed-memory-accuracy trade-off. To facilitate AdaMRA utilization by the scientific community, the implementation will be made publicly available.",
+    "authors": [
+        "Yao Zhang",
+        "Yunpu Ma",
+        "T. Seidl",
+        "Volker Tresp"
+    ],
+    "venue": "IEEE International Joint Conference on Neural Network",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel and efficient structure named Adaptive Multi-Resolution Attention (AdaMRA for short), which scales linearly to sequence length in terms of time and space and leverages a multi-resolution multi-head attention mechanism, enabling attention heads to capture long-range contextual information in a coarse-to-fine fashion."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "362a4fa25d6bf370acec489494bb689ca21c9577",
+    "title": "Think from Words(TFW): Initiating Human-Like Cognition in Large Language Models Through Think from Words for Japanese Text-level Classification",
+    "seed_ids": [
+        "gpt3",
+        "233e48a00e5172819b36d3834cd0f4335b7ed595",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c"
+    ],
+    "s2id": "362a4fa25d6bf370acec489494bb689ca21c9577",
+    "abstract": "The proliferation of Large Language Models (LLMs) has spurred extensive research into LLM-related Prompt investigations, such as Instruction Learning (IL), In-context Learning (ICL), and Chain-of-Thought (CoT). These approaches aim to improve LLMs' responses by enabling them to provide concise statements or examples for deeper contemplation when addressing questions. However, independent thinking by LLMs can introduce variability in their thought processes, leading to potential inaccuracies. In response, our study seeks to bridge the gap between LLM and human-like thinking processes, recognizing that text comprehension begins with understanding individual words. To tackle this challenge, we have expanded the CoT method to cater to a specific domain. Our approach, known as\"Think from Words\"(TFW), initiates the comprehension process at the word level and then extends it to encompass the entire text. We also propose\"TFW with Extra word-level information\"(TFW Extra), augmenting comprehension with additional word-level data. To assess our methods, we employ text classification on six Japanese datasets comprising text-level and word-level elements. Our findings not only validate the effectiveness of TFW but also shed light on the impact of various word-level information types on LLMs' text comprehension, offering insights into their potential to cause misinterpretations and errors in the overall comprehension of the final text.",
+    "authors": [
+        "Chengguang Gan",
+        "Qinghao Zhang",
+        "Tatsunori Mori"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The findings not only validate the effectiveness of TFW but also shed light on the impact of various word-level information types on LLMs' text comprehension, offering insights into their potential to cause misinterpretations and errors in the overall comprehension of the final text."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

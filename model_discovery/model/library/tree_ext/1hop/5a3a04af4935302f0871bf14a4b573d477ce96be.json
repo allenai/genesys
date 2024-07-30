@@ -1,0 +1,44 @@
+{
+    "acronym": "5a3a04af4935302f0871bf14a4b573d477ce96be",
+    "title": "Stay on topic with Classifier-Free Guidance",
+    "seed_ids": [
+        "classfreediffu",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "12daedd80a4f860960c5b50314d09d6827f4fd4a",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "92173d081b15824d22a9ef070e118744ceee8052",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "7ade458d52d2dfe997b8a617a6b524bda12a619d",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28"
+    ],
+    "s2id": "5a3a04af4935302f0871bf14a4b573d477ce96be",
+    "abstract": "Classifier-Free Guidance (CFG) has recently emerged in text-to-image generation as a lightweight technique to encourage prompt-adherence in generations. In this work, we demonstrate that CFG can be used broadly as an inference-time technique in pure language modeling. We show that CFG (1) improves the performance of Pythia, GPT-2 and LLaMA-family models across an array of tasks: Q\\&A, reasoning, code generation, and machine translation, achieving SOTA on LAMBADA with LLaMA-7B over PaLM-540B; (2) brings improvements equivalent to a model with twice the parameter-count; (3) can stack alongside other inference-time methods like Chain-of-Thought and Self-Consistency, yielding further improvements in difficult tasks; (4) can be used to increase the faithfulness and coherence of assistants in challenging form-driven and content-driven prompts: in a human evaluation we show a 75\\% preference for GPT4All using CFG over baseline.",
+    "authors": [
+        "Guillaume Sanchez",
+        "Honglu Fan",
+        "Alexander Spangher",
+        "Elad Levi",
+        "Pawan Sasanka Ammanamanchi",
+        "Stella Biderman"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows that CFG improves the performance of Pythia, GPT-2 and LLaMA-family models across an array of tasks: Q&A, reasoning, code generation, and machine translation, and can stack alongside other inference-time methods like Chain-of-Thought and Self-Consistency, yielding further improvements in difficult tasks."
+    },
+    "citationCount": 24,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

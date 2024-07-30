@@ -1,0 +1,46 @@
+{
+    "acronym": "bdb09079420ddca897e7afdde8fe33784d8920f1",
+    "title": "TCNCA: Temporal Convolution Network with Chunked Attention for Scalable Sequence Processing",
+    "seed_ids": [
+        "mega",
+        "transformerxl",
+        "s5",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "998ac3e945857cf2676ee7efdbaf443a0c6f820a",
+        "54155c2977a977bf129849455dcae3a2b79b3f41",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "240300b1da360f22bf0b82c6817eacebba6deed4",
+        "70e91e16eb321067d9402710e14a40cf28311f73",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "4f82bd927f6d79fd2e3ddf9d34bec0dc46b8e18c",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "11df9ac34655f4ad746e4db39c49f928f0cbd201",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "5b1bb67f700b676ac44a32ec87aeb9ff018da55f",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd"
+    ],
+    "s2id": "bdb09079420ddca897e7afdde8fe33784d8920f1",
+    "abstract": "MEGA is a recent transformer-based architecture, which utilizes a linear recurrent operator whose parallel computation, based on the FFT, scales as $O(LlogL)$, with $L$ being the sequence length. We build upon their approach by replacing the linear recurrence with a special temporal convolutional network which permits larger receptive field size with shallower networks, and reduces the computational complexity to $O(L)$. The resulting model is called TCNCA, a Temporal Convolutional Network with Chunked Attention. We evaluate TCNCA on EnWik8 language modeling, long-range-arena (LRA) sequence classification, as well as a synthetic reasoning benchmark associative recall. On EnWik8, TCNCA outperforms MEGA, reaching a lower loss with $1.37\\times$/$1.24\\times$ faster forward/backward pass during training. The dilated convolutions used in TCNCA are consistently and significantly faster operations than the FFT-based parallelized recurrence in GPUs, making them a scalable candidate for handling very large sequence lengths: they are up to $7.07\\times$/$2.86\\times$ faster in the forward/backward pass for sequences up to 131k. Further on LRA, TCNCA achieves, on average, $1.28\\times$ speed-up during inference with similar accuracy to what MEGA achieves. On associative recall, we find that even a simplified version of TCNCA, without excessive multiplicative and additive interactions, remains superior or competitive to MEGA on a range of sequence lengths and vocabulary sizes.",
+    "authors": [
+        "Aleksandar Terzic",
+        "Michael Hersche",
+        "G. Karunaratne",
+        "Luca Benini",
+        "Abu Sebastian",
+        "Abbas Rahimi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "TCNCA is evaluated on EnWik8 language modeling, long-range-arena sequence classification, as well as a synthetic reasoning benchmark associative recall, finding that even a simplified version of TCNCA remains superior or competitive to MEGA on a range of sequence lengths and vocabulary sizes."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,35 @@
+{
+    "acronym": "93e6edbf671f8b9e3ce2b282d02a59a9665a2053",
+    "title": "FaceCLIP: Facial Image-to-Video Translation via a Brief Text Description",
+    "seed_ids": [
+        "transformer",
+        "b8b5015b153709176385873e34339f9e520d128f",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "93e6edbf671f8b9e3ce2b282d02a59a9665a2053",
+    "abstract": "The existing image-to-video translation methods generally follow a frame-by-frame generative paradigm, while extracting the temporal information from a reference video or an audio stream. Inspired by the recent success in text-guided image generation, we explore a more challenging but promising task, Text-guided Image-to-Video (TI2V) translation. Given an image and a brief text description as input, TI2V aims to generate a facial expression video following the image and text. To this end, we first propose an automatic video captioning pipeline to generate dense textual descriptions for facial video datasets, using both expression labels and action units. These dense textual descriptions provide precise semantic guidance for TI2V learning. Then we design and train an efficient framework, FaceCLIP, on these datasets to deal with the TI2V translation task. FaceCLIP adopts a video autoencoder to model the temporal information of training videos, and a pretrained CLIP model to embed the video frames and the text description. We design a reconstruction loss and an embedding alignment loss to train the autoencoder to obtain the text-guided video generative ability. Recognizing that expressions are closely tied to facial landmark motions, the reconstruction loss is applied to facial landmarks rather than each video frame, significantly enhancing training efficiency. We compare FaceCLIP with several potential baseline methods, and extensively evaluate the performance using multiple metrics. Both qualitative and quantitative results validate the superiority of FaceCLIP in terms of both visual quality and expression-text consistency. Moreover, the unique ability of FaceCLIP to generate videos based on abstract texts demonstrates its stronger generalization capability.",
+    "authors": [
+        "Jiayi Guo",
+        "Hayk Manukyan",
+        "Chenyu Yang",
+        "Chaofei Wang",
+        "Levon Khachatryan",
+        "Shant Navasardyan",
+        "Shiji Song",
+        "Humphrey Shi",
+        "Gao Huang"
+    ],
+    "venue": "IEEE transactions on circuits and systems for video technology (Print)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A reconstruction loss and an embedding alignment loss are designed to train the autoencoder to obtain the text-guided video generative ability, and the unique ability of FaceCLIP to generate videos based on abstract texts demonstrates its stronger generalization capability."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

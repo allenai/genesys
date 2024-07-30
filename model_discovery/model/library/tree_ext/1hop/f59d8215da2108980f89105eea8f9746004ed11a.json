@@ -1,0 +1,27 @@
+{
+    "acronym": "f59d8215da2108980f89105eea8f9746004ed11a",
+    "title": "End-to-End Trainable Soft Retriever for Low-resource Relation Extraction",
+    "seed_ids": [
+        "gpt3",
+        "2f291b0b59483e9c3c4a3391f34e6b29aff848a1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f59d8215da2108980f89105eea8f9746004ed11a",
+    "abstract": "This study addresses a crucial challenge in instance-based relation extraction using text generation models: end-to-end training in target relation extraction task is not applicable to retrievers due to the non-differentiable nature of instance selection. We propose a novel End-to-end TRAinable Soft K-nearest neighbor retriever (ETRASK) by the neural prompting method that utilizes a soft, differentiable selection of the $k$ nearest instances. This approach enables the end-to-end training of retrievers in target tasks. On the TACRED benchmark dataset with a low-resource setting where the training data was reduced to 10\\%, our method achieved a state-of-the-art F1 score of 71.5\\%. Moreover, ETRASK consistently improved the baseline model by adding instances for all settings. These results highlight the efficacy of our approach in enhancing relation extraction performance, especially in resource-constrained environments. Our findings offer a promising direction for future research with extraction and the broader application of text generation in natural language processing.",
+    "authors": [
+        "Kohei Makino",
+        "Makoto Miwa",
+        "Yutaka Sasaki"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel End-to-end TRAinable Soft K-nearest neighbor retriever (ETRASK) by the neural prompting method that utilizes a soft, differentiable selection of the $k$ nearest instances to enable the end-to-end training of retrievers in target tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

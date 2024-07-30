@@ -1,0 +1,30 @@
+{
+    "acronym": "f440d229cd42d35290e1c64cfb13a4ee96c22eea",
+    "title": "Bayesian Diffusion Models for 3D Shape Reconstruction",
+    "seed_ids": [
+        "classfreediffu",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "f440d229cd42d35290e1c64cfb13a4ee96c22eea",
+    "abstract": "We present Bayesian Diffusion Models (BDM), a prediction algorithm that performs effective Bayesian inference by tightly coupling the top-down (prior) information with the bottom-up (data-driven) procedure via joint diffusion processes. We show the effectiveness of BDM on the 3D shape reconstruction task. Compared to prototypical deep learning data-driven approaches trained on paired (supervised) data-labels (e.g. image-point clouds) datasets, our BDM brings in rich prior information from standalone labels (e.g. point clouds) to improve the bottom-up 3D reconstruction. As opposed to the standard Bayesian frameworks where explicit prior and likelihood are required for the inference, BDM performs seamless information fusion via coupled diffusion processes with learned gradient computation networks. The specialty of our BDM lies in its capability to engage the active and effective information exchange and fusion of the top-down and bottom-up processes where each itself is a diffusion process. We demonstrate state-of-the-art results on both synthetic and real-world benchmarks for 3D shape reconstruction.",
+    "authors": [
+        "Haiyang Xu",
+        "Yu Lei",
+        "Zeyuan Chen",
+        "Xiang Zhang",
+        "Yue Zhao",
+        "Yilin Wang",
+        "Zhuowen Tu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

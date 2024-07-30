@@ -1,0 +1,43 @@
+{
+    "acronym": "a3c8c57075dfebf7f5a57952afafb7407762cc46",
+    "title": "Discourse-Aware Soft Prompting for Text Generation",
+    "seed_ids": [
+        "linformer",
+        "3d318019788418b21478e8736d03afadc1607690",
+        "34042e2680e475510a1030b54165a81534ad88d3",
+        "da454295392cf4caaa39cc465734237ffe55392f",
+        "64a29bee2e1ad29547d590a3cc26274f4c537145",
+        "f4566761fe39c4b5273d696d9bc3f4195c9325bb",
+        "161321ef451d658d66b762cba5c202b12260220e",
+        "4badd753be64c5c5b57dd2bb2e515fbe0c0720d8",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "2c953a3c378b40dadf2e3fb486713c8608b8e282",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "7cc730da554003dda77796d2cb4f06da5dfd5592",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "2a7023e7d1dbd6ea0d98efd09a1f18d8599fe78f",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a3c8c57075dfebf7f5a57952afafb7407762cc46",
+    "abstract": "Current efficient fine-tuning methods(e.g., adapters, prefix-tuning, etc.) have optimized conditional text generation via training a small set of extra parameters of the neural language model, while freezing the rest for efficiency. While showing strong performance on some generation tasks, they don\u2019t generalize across all generation tasks. We show that soft-prompt based conditional text generation can be improved with simple and efficient methods that simulate modeling the discourse structure of human written text.We investigate two design choices: First, we apply hierarchical blocking on the prefix parameters to simulate a higher-level discourse structure of human written text. Second, we apply attention sparsity on the prefix parameters at different layers of the network and learn sparse transformations on the softmax-function. We show that structured design of prefix parameters yields more coherent, faithful and relevant generations than the baseline prefix-tuning on all generation tasks.",
+    "authors": [
+        "Marjan Ghazvininejad",
+        "Vladimir Karpukhin",
+        "Vera Gor",
+        "Asli Celikyilmaz"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work investigates two design choices and shows that structured design of prefix parameters yields more coherent, faithful and relevant generations than the baseline prefix-tuning on all generation tasks."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

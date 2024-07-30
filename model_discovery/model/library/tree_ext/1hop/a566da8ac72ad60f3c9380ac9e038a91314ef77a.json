@@ -1,0 +1,29 @@
+{
+    "acronym": "a566da8ac72ad60f3c9380ac9e038a91314ef77a",
+    "title": "Acronyms and Opportunities for Improving Deep Nets",
+    "seed_ids": [
+        "transformerxl",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "80f9f109d1564cb8f82aa440a5f6f3fbe220c9ef"
+    ],
+    "s2id": "a566da8ac72ad60f3c9380ac9e038a91314ef77a",
+    "abstract": "Recently, several studies have reported promising results with BERT-like methods on acronym tasks. In this study, we find an older rule-based program, Ab3P, not only performs better, but error analysis suggests why. There is a well-known spelling convention in acronyms where each letter in the short form (SF) refers to \u201csalient\u201d letters in the long form (LF). The error analysis uses decision trees and logistic regression to show that there is an opportunity for many pre-trained models (BERT, T5, BioBert, BART, ERNIE) to take advantage of this spelling convention.",
+    "authors": [
+        "Kenneth Ward Church",
+        "Boxiang Liu"
+    ],
+    "venue": "Frontiers in Artificial Intelligence",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An older rule-based program, Ab3P, not only performs better, but error analysis suggests why, and there is an opportunity for many pre-trained models to take advantage of a well-known spelling convention in acronyms."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

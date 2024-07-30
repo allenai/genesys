@@ -1,0 +1,38 @@
+{
+    "acronym": "9bc14e02456e156680e8feff32018e16fd0ec9d9",
+    "title": "Dual Hyperspectral Mamba for Efficient Spectral Compressive Imaging",
+    "seed_ids": [
+        "mamba",
+        "3af7273d7ca20c0c63cbaa47e60b058840835052",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "bb6644a9f5920abfc1fa008f366a9ff48468e063",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2"
+    ],
+    "s2id": "9bc14e02456e156680e8feff32018e16fd0ec9d9",
+    "abstract": "Deep unfolding methods have made impressive progress in restoring 3D hyperspectral images (HSIs) from 2D measurements through convolution neural networks or Transformers in spectral compressive imaging. However, they cannot efficiently capture long-range dependencies using global receptive fields, which significantly limits their performance in HSI reconstruction. Moreover, these methods may suffer from local context neglect if we directly utilize Mamba to unfold a 2D feature map as a 1D sequence for modeling global long-range dependencies. To address these challenges, we propose a novel Dual Hyperspectral Mamba (DHM) to explore both global long-range dependencies and local contexts for efficient HSI reconstruction. After learning informative parameters to estimate degradation patterns of the CASSI system, we use them to scale the linear projection and offer noise level for the denoiser (i.e., our proposed DHM). Specifically, our DHM consists of multiple dual hyperspectral S4 blocks (DHSBs) to restore original HSIs. Particularly, each DHSB contains a global hyperspectral S4 block (GHSB) to model long-range dependencies across the entire high-resolution HSIs using global receptive fields, and a local hyperspectral S4 block (LHSB) to address local context neglect by establishing structured state-space sequence (S4) models within local windows. Experiments verify the benefits of our DHM for HSI reconstruction. The source codes and models will be available at https://github.com/JiahuaDong/DHM.",
+    "authors": [
+        "Jiahua Dong",
+        "Hui Yin",
+        "Hongliu Li",
+        "Wenbo Li",
+        "Yulun Zhang",
+        "Salman Khan",
+        "Fahad Shahbaz Khan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel Dual Hyperspectral Mamba (DHM) to explore both global long-range dependencies and local contexts for efficient HSI reconstruction, and demonstrates the benefits of the DHM for HSI reconstruction."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

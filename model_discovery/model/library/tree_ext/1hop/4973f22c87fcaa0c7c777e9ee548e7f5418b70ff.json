@@ -1,0 +1,31 @@
+{
+    "acronym": "4973f22c87fcaa0c7c777e9ee548e7f5418b70ff",
+    "title": "MAXIM: Multi-Axis MLP for Image Processing (Supplementary Material)",
+    "seed_ids": [
+        "gmlp",
+        "eaf3a64b637b3699678374a2afe8dde05d17a5cc",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "4973f22c87fcaa0c7c777e9ee548e7f5418b70ff",
+    "abstract": "All the datasets used in the paper are summarized in Tab. 1. We describe details of training for each dataset in the following. Note that we used the `2 loss for the dehazing task while using the loss defined in the main paper for all the other tasks. Image Denoising. We trained our model on 320 highresolution images provided in SIDD [2] and evaluated on 1,280 (256\u00d7 256) and 1,000 (512\u00d7 512) images provided by authors of SIDD [2] and DND [27], respectively. The results on DND were obtained via the online server [1]. We cropped the training images into 512 \u00d7 512 patches with a stride of 256 to prepare the training patches. We trained the MAXIM-3S model for 600k steps with a batch size of 256. Image Deblurring. We trained our model on 2,103 image pairs from GoPro [23]. To demonstrate generalization ability, we evaluated our GoPro trained model on 1,111 pairs of the GoPro evaluation set, 2,025 images in the HIDE dataset [33], as well as the RealBlur dataset [32], which contains 980 paired images of camera JPEG output and RAW images, respectively. We cropped training images from GoPro into 512 \u00d7 512 patches with a stride of 128 to generate training patches. We trained our MAXIM-3S model over 600k steps with a batch size of 256. For evaluation on RealBlur setting (2) (see main paper), we loaded the GoPro pre-trained checkpoint and fine-tuned for 70k and 15k iterations on RealBlur-J and RealBlur-R, respectively. Additionally, we trained our model on 24,000 images Task Dataset #Train #Test Test Dubname",
+    "authors": [
+        "Zhengzhong Tu",
+        "Hossein Talebi",
+        "Han Zhang",
+        "Feng Yang",
+        "P. Milanfar",
+        "A. Bovik",
+        "Yinxiao Li"
+    ],
+    "venue": "",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "All the datasets used in the paper are summarized in Tab."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

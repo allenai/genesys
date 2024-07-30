@@ -1,0 +1,37 @@
+{
+    "acronym": "dee2bf14c31f876e7cf2c43b816dacbac666268f",
+    "title": "Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention",
+    "seed_ids": [
+        "streamingllm",
+        "c8a744a1f47ba30db89e2b7102971fafbd6118c1",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "e3aa232577bb427b1f3a34acbdef84bd85734042"
+    ],
+    "s2id": "dee2bf14c31f876e7cf2c43b816dacbac666268f",
+    "abstract": "Interacting with humans through multi-turn conversations is a fundamental feature of large language models (LLMs). However, existing LLM serving engines executing multi-turn conversations are inefficient due to the need to repeatedly compute the key-value (KV) caches of historical tokens, incurring high serving costs. To address the problem, this paper proposes CachedAttention, a new attention mechanism that enables reuse of KV caches across multi-turn conversations, significantly reducing the repetitive computation overheads. CachedAttention maintains a hierarchical KV caching system that leverages cost-effective memory/storage mediums to save KV caches for all requests. To reduce KV cache access overheads from slow mediums, CachedAttention employs layer-wise pre-loading and asynchronous saving schemes to overlap the KV cache access with the GPU computation. To ensure that the KV caches to be accessed are placed in the fastest hierarchy, CachedAttention employs scheduler-aware fetching and eviction schemes to consciously place the KV caches in different layers based on the hints from the inference job scheduler. To avoid the invalidation of the saved KV caches incurred by context window overflow, CachedAttention enables the saved KV caches to remain valid via decoupling the positional encoding and effectively truncating the KV caches. Extensive experimental results demonstrate that CachedAttention significantly decreases the time to the first token (TTFT) by up to 87%, improves the prompt prefilling throughput by up to 7.8$\\times$ for multi-turn conversations, and reduces the end-to-end inference cost by up to 70%.",
+    "authors": [
+        "Bin Gao",
+        "Zhuomin He",
+        "Puru Sharma",
+        "Qingxuan Kang",
+        "Djordje Jevdjic",
+        "Junbo Deng",
+        "Xingkun Yang",
+        "Zhou Yu",
+        "Pengfei Zuo"
+    ],
+    "venue": "USENIX Annual Technical Conference",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "CachedAttention is proposed, a new attention mechanism that enables reuse of KV caches across multi-turn conversations, significantly reducing the repetitive computation overheads and reducing the end-to-end inference cost."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

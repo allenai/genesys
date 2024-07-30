@@ -1,0 +1,27 @@
+{
+    "acronym": "dc0f9a4988fccd8cdd6d64e475306f8a639ac1af",
+    "title": "Decision Stacks: Flexible Reinforcement Learning via Modular Generative Models",
+    "seed_ids": [
+        "gpt",
+        "74d4de69a1a81ad9a76abbfcffa24e186e96afd3",
+        "a93d1eec880c768a34ad02e39f668f29d0547494",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "dc0f9a4988fccd8cdd6d64e475306f8a639ac1af",
+    "abstract": "Reinforcement learning presents an attractive paradigm to reason about several distinct aspects of sequential decision making, such as specifying complex goals, planning future observations and actions, and critiquing their utilities. However, the combined integration of these capabilities poses competing algorithmic challenges in retaining maximal expressivity while allowing for flexibility in modeling choices for efficient learning and inference. We present Decision Stacks, a generative framework that decomposes goal-conditioned policy agents into 3 generative modules. These modules simulate the temporal evolution of observations, rewards, and actions via independent generative models that can be learned in parallel via teacher forcing. Our framework guarantees both expressivity and flexibility in designing individual modules to account for key factors such as architectural bias, optimization objective and dynamics, transferrability across domains, and inference speed. Our empirical results demonstrate the effectiveness of Decision Stacks for offline policy optimization for several MDP and POMDP environments, outperforming existing methods and enabling flexible generative decision making.",
+    "authors": [
+        "Siyan Zhao",
+        "Aditya Grover"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Decision Stacks is presented, a generative framework that decomposes goal-conditioned policy agents into 3 generative modules that simulate the temporal evolution of observations, rewards, and actions via independent generative models that can be learned in parallel via teacher forcing."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "00a6ea1e57ae3b7e93af2d3848ed5fa28b15f49c",
+    "title": "Multi-embodiment Legged Robot Control as a Sequence Modeling Problem",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "00a6ea1e57ae3b7e93af2d3848ed5fa28b15f49c",
+    "abstract": "Robots are traditionally bounded by a fixed embodiment during their operational lifetime, which limits their ability to adapt to their surroundings. Co-optimizing control and morphology of a robot, however, is often inefficient due to the complex interplay between the controller and morphology. In this paper, we propose a learning-based control method that can inherently take morphology into consideration such that once the control policy is trained in the simulator, it can be easily deployed to real robots with different embodiments. In particular, we present the Embodiment-aware Transformer (EAT), an architecture that casts this control problem as conditional sequence modeling. EAT outputs the optimal actions by leveraging a causally masked Transformer. By conditioning an autoregressive model on the desired robot embodiment, past states, and actions, our EAT model can generate future actions that best fit the current robot embodiment. Experimental results show that EAT can outperform all other alternatives in embodiment-varying tasks, and succeed in an example of real-world evolution tasks: stepping down a stair through updating the morphology alone. We hope that EAT will inspire a new push toward real-world evolution across many domains, where algorithms like EAT can blaze a trail by bridging the field of evolutionary robotics and big data sequence modeling.",
+    "authors": [
+        "Chenyi Yu",
+        "Weinan Zhang",
+        "H. Lai",
+        "Zheng Tian",
+        "L. Kneip",
+        "Jun Wang"
+    ],
+    "venue": "IEEE International Conference on Robotics and Automation",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Embodiment-aware Transformer (EAT) is presented, an architecture that casts this control problem as conditional sequence modeling and can outperform all other alternatives in embodiment-varying tasks, and succeed in an example of real-world evolution tasks."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

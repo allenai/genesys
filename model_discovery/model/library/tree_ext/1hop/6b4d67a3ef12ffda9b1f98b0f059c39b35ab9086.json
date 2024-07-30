@@ -1,0 +1,39 @@
+{
+    "acronym": "6b4d67a3ef12ffda9b1f98b0f059c39b35ab9086",
+    "title": "MVP: Minimal Viable Phrase for Long Text Understanding",
+    "seed_ids": [
+        "longformer",
+        "stm",
+        "247ac77a559d00d69f4353b02fb9e6529e3849cd",
+        "732e3faec4e5be4d144256f2c379b9dc49f0b227",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "2b60b8b639c916f934026af4bd4b9a8b66062704",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "f75d05e759447c2aedb7097728f29f9a520d9bc1",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "baed71eed57ad462f3ab138d4b1700a738cd5414",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "6b4d67a3ef12ffda9b1f98b0f059c39b35ab9086",
+    "abstract": "A recent renewal in interest in long text understanding has sparked the emergence of high-quality long text benchmarks, as well as new models demonstrating significant performance improvements on these benchmarks. However, gauging the implication of these advancements based solely on the length of the input text offers limited insight. Such benchmarks may require models to parse long-range dependencies or merely to locate and comprehend the relevant paragraph within a longer text. This work introduces the Minimal Viable Phrase (MVP), a novel metric that determines, through perturbations to the input text, the shortest average text length that needs to be preserved to execute the task with limited performance degradation. Our evaluation of the popular SCROLLS benchmark reveals that only one of its seven tasks necessitates an MVP of over 512 tokens\u2013the maximum text length manageable by the previous generation of pre-trained models. We highlight the limited need for understanding long-range dependencies in resolving these tasks, discuss the specific design decisions that seem to have led to the QuALITY task requiring reliance on long-range dependencies to be solved, and point out specific modeling choices that seem to outperform on the QuALITY task.",
+    "authors": [
+        "Louis Clou\u00e2tre",
+        "Amal Zouaq",
+        "Sarath Chandar"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces the Minimal Viable Phrase (MVP), a novel metric that determines, through perturbations to the input text, the shortest average text length that needs to be preserved to execute the task with limited performance degradation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

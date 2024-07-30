@@ -1,0 +1,26 @@
+{
+    "acronym": "9c045c7e2e71cd173f7b69ada4e3f9271ae90059",
+    "title": "DualH: A Dual Hierarchical Model for Temporal Action Localization",
+    "seed_ids": [
+        "transformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "9c045c7e2e71cd173f7b69ada4e3f9271ae90059",
+    "abstract": "Temporal action localization aims to detect action boundaries and classify action labels in untrimmed videos. Recent efforts have focused on utilizing Transformers to encode extracted features into a bottom-up pyramid feature map and localizing actions from all levels of the pyramid while only considering features from those specific levels. A limitation of this bottom-up encoding is that the lower-level features lack broader contexts, while the upper-level features lose local boundary information. Consequently, the performance of the model may be hindered. In this work, we propose a dual hierarchical model to mitigate this issue. The first hierarchy operates on the full temporal sequence to encode features at multiple scales. These features are fused to ensure all temporal locations consider both local boundary information and broader contexts. Next, the fused feature is downsampled to a pyramid representation for localizing actions at multiple resolutions. Experimental results on THUMOS14, ActivityNet-1.3, and EPIC-KITCHENS-100 demonstrate that our dual hierarchical design improves the performance with respect to the conventional bottom-up pyramid Transformer-based models.",
+    "authors": [
+        "Zejian Zhang",
+        "Cristina Palmero",
+        "Sergio Escalera"
+    ],
+    "venue": "IEEE International Conference on Automatic Face & Gesture Recognition",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a dual hierarchical model that improves the performance with respect to the conventional bottom-up pyramid Transformer-based models and downsampled to a pyramid representation for localizing actions at multiple resolutions."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

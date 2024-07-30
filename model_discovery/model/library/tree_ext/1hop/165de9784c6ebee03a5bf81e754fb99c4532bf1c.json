@@ -1,0 +1,31 @@
+{
+    "acronym": "165de9784c6ebee03a5bf81e754fb99c4532bf1c",
+    "title": "Efficient Parallelization Layouts for Large-Scale Distributed Model Training",
+    "seed_ids": [
+        "flashattn",
+        "8511ea96d61593de57cbc2e996910e5cb3dbfe84",
+        "a51ac7a5e8f6454268ac16ecdc52ecac98ce54d9",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a"
+    ],
+    "s2id": "165de9784c6ebee03a5bf81e754fb99c4532bf1c",
+    "abstract": "Efficiently training large language models requires parallelizing across hundreds of hardware accelerators and invoking various compute and memory optimizations. When combined, many of these strategies have complex interactions regarding the final training efficiency. Prior work tackling this problem did not have access to the latest set of optimizations, such as FlashAttention or sequence parallelism. In this work, we conduct a comprehensive ablation study of possible training configurations for large language models. We distill this large study into several key recommendations for the most efficient training. For instance, we find that using a micro-batch size of 1 usually enables the most efficient training layouts. Larger micro-batch sizes necessitate activation checkpointing or higher degrees of model parallelism and also lead to larger pipeline bubbles. Our most efficient configurations enable us to achieve state-of-the-art training efficiency results over a range of model sizes, most notably a Model FLOPs utilization of 70.5% when training a Llama 13B model.",
+    "authors": [
+        "Johannes Hagemann",
+        "Samuel Weinbach",
+        "Konstantin Dobler",
+        "Maximilian Schall",
+        "Gerard de Melo"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work conducts a comprehensive ablation study of possible training configurations for large language models and finds that using a micro-batch size of 1 usually enables the most efficient training layouts."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

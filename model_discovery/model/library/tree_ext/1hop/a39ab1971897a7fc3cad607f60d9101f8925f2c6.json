@@ -1,0 +1,25 @@
+{
+    "acronym": "a39ab1971897a7fc3cad607f60d9101f8925f2c6",
+    "title": "Co-Channel Multiuser Modulation Classification Using Data-Driven Blind Signal Separation",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "a39ab1971897a7fc3cad607f60d9101f8925f2c6",
+    "abstract": "Automatic modulation classification (AMC) aims to identify the modulation type of received signals, playing a crucial role in ensuring secure dynamic spectrum access in the Cognitive Radio-enabled Internet of Things (CR-IoT). Most existing algorithms assume that the receiver is affected by only one desired transmitter, solely focusing on identifying the modulation type of that specific transmitter. However, owing to the broadcast nature of wireless communication, the received signal is often a time\u2013frequency overlapped co-channel signal, requiring identification of the modulation type of all transmitted signals. Notably, current single-user modulation classification (SUMC) methods cannot implement co-channel multiuser modulation classification (MUMC). To address this problem, this article proposes the first end-to-end MUMC scheme to support blind signal separation (BSS). This scheme consists of two stages: 1) signal recovery and 2) modulation-type identification. First, we propose a data-driven sparse component analysis-based BSS model to recover target signals from the received signals. Subsequently, the modulation types of the recovered signals are classified using an SUMC model. Additionally, a number counter is developed to cope with changes in the number of target signals. The proposed scheme pioneers the development of a BSS model based on physical characteristics of the communication signal. Numerical results verify that it outperforms existing competitive MUMC methods, particularly for high-order modulation types.",
+    "authors": [
+        "Wen Deng",
+        "Xiang Wang",
+        "Zhitao Huang"
+    ],
+    "venue": "IEEE Internet of Things Journal",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The first end-to-end MUMC scheme to support blind signal separation (BSS) is proposed, pioneers the development of a BSS model based on physical characteristics of the communication signal, and outperforms existing competitive MUMC methods, particularly for high-order modulation types."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

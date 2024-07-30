@@ -1,0 +1,36 @@
+{
+    "acronym": "9a4f929b44345b9d547f8d2e1700caaab99237c0",
+    "title": "Task-Adaptive Tokenization: Enhancing Long-Form Text Generation Efficacy in Mental Health and Beyond",
+    "seed_ids": [
+        "gpt2",
+        "c35ff61df76580117326d10c86faa85869dcdaf7",
+        "17fbffb05fa14e21d1c506fd5f0f568b955fe983",
+        "70e91e16eb321067d9402710e14a40cf28311f73",
+        "2613734d0fcff478915ea61e702160cfe88311d8",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "9a4f929b44345b9d547f8d2e1700caaab99237c0",
+    "abstract": "We propose task-adaptive tokenization as a way to adapt the generation pipeline to the specifics of a downstream task and enhance long-form generation in mental health. Inspired by insights from cognitive science, our task-adaptive tokenizer samples variable segmentations from multiple outcomes, with sampling probabilities optimized based on task-specific data. We introduce a strategy for building a specialized vocabulary and introduce a vocabulary merging protocol that allows for the integration of task-specific tokens into the pre-trained model's tokenization step. Through extensive experiments on psychological question-answering tasks in both Chinese and English, we find that our task-adaptive tokenization approach brings a significant improvement in generation performance while using up to 60% fewer tokens. Preliminary experiments point to promising results when using our tokenization approach with very large language models.",
+    "authors": [
+        "Siyang Liu",
+        "Naihao Deng",
+        "Sahand Sabour",
+        "Yilin Jia",
+        "Minlie Huang",
+        "Rada Mihalcea"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Through extensive experiments on psychological question-answering tasks in both Chinese and English, this work finds that the task-adaptive tokenization approach brings a significant improvement in generation performance while using up to 60% fewer tokens."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

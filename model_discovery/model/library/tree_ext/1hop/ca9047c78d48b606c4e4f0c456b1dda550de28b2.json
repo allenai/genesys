@@ -1,0 +1,31 @@
+{
+    "acronym": "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+    "title": "Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers",
+    "seed_ids": [
+        "hippo",
+        "11df9ac34655f4ad746e4db39c49f928f0cbd201",
+        "1d5c8c6e5a774d2fef8d92bd28670a6345a97f7a"
+    ],
+    "s2id": "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+    "abstract": "Recurrent neural networks (RNNs), temporal convolutions, and neural differential equations (NDEs) are popular families of deep learning models for time-series data, each with unique strengths and tradeoffs in modeling power and computational efficiency. We introduce a simple sequence model inspired by control systems that generalizes these approaches while addressing their shortcomings. The Linear State-Space Layer (LSSL) maps a sequence $u \\mapsto y$ by simply simulating a linear continuous-time state-space representation $\\dot{x} = Ax + Bu, y = Cx + Du$. Theoretically, we show that LSSL models are closely related to the three aforementioned families of models and inherit their strengths. For example, they generalize convolutions to continuous-time, explain common RNN heuristics, and share features of NDEs such as time-scale adaptation. We then incorporate and generalize recent theory on continuous-time memorization to introduce a trainable subset of structured matrices $A$ that endow LSSLs with long-range memory. Empirically, stacking LSSL layers into a simple deep neural network obtains state-of-the-art results across time series benchmarks for long dependencies in sequential image classification, real-world healthcare regression tasks, and speech. On a difficult speech classification task with length-16000 sequences, LSSL outperforms prior approaches by 24 accuracy points, and even outperforms baselines that use hand-crafted features on 100x shorter sequences.",
+    "authors": [
+        "Albert Gu",
+        "Isys Johnson",
+        "Karan Goel",
+        "Khaled Kamal Saab",
+        "Tri Dao",
+        "A. Rudra",
+        "Christopher R'e"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A simple sequence model inspired by control systems that generalizes RNN heuristics, temporal convolutions, and neural differential equations while addressing their shortcomings, and introduces a trainable subset of structured matrices that endow LSSLs with long-range memory."
+    },
+    "citationCount": 247,
+    "influentialCitationCount": 14,
+    "code": null,
+    "description": null,
+    "url": null
+}

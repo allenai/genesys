@@ -1,0 +1,31 @@
+{
+    "acronym": "f2fc9ef411846dd577c26225ce93f50bb1fa760b",
+    "title": "Multi-scale Transformer Language Models",
+    "seed_ids": [
+        "gpt",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "9a618cca0d2fc78db1be1aed70517401cb3f3859",
+        "7cc730da554003dda77796d2cb4f06da5dfd5592",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f2fc9ef411846dd577c26225ce93f50bb1fa760b",
+    "abstract": "We investigate multi-scale transformer language models that learn representations of text at multiple scales, and present three different architectures that have an inductive bias to handle the hierarchical nature of language. Experiments on large-scale language modeling benchmarks empirically demonstrate favorable likelihood vs memory footprint trade-offs, e.g. we show that it is possible to train a hierarchical variant with 30 layers that has 23% smaller memory footprint and better perplexity, compared to a vanilla transformer with less than half the number of layers, on the Toronto BookCorpus. We analyze the advantages of learned representations at multiple scales in terms of memory footprint, compute time, and perplexity, which are particularly appealing given the quadratic scaling of transformers' run time and memory usage with respect to sequence length.",
+    "authors": [
+        "Sandeep Subramanian",
+        "R. Collobert",
+        "Marc'Aurelio Ranzato",
+        "Y-Lan Boureau"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that it is possible to train a hierarchical variant with 30 layers that has 23% smaller memory footprint and better perplexity, compared to a vanilla transformer with less than half the number of layers on the Toronto BookCorpus."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

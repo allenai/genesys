@@ -1,0 +1,33 @@
+{
+    "acronym": "7a079dd04a9c4709fe2abefd4fbdf6dee8e6704d",
+    "title": "Improving Few-shot Generalization of Safety Classifiers via Data Augmented Parameter-Efficient Fine-Tuning",
+    "seed_ids": [
+        "gpt3",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "2ea64b7c7617f6cc1768373124ca0243d772a90f",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7a079dd04a9c4709fe2abefd4fbdf6dee8e6704d",
+    "abstract": "As large language models (LLMs) are widely adopted, new safety issues and policies emerge, to which existing safety classifiers do not generalize well. If we have only observed a few examples of violations of a new safety rule, how can we build a classifier to detect violations? In this paper, we study the novel setting of domain-generalized few-shot learning for LLM-based text safety classifiers. Unlike prior few-shot work, these new safety issues can be hard to uncover and we do not get to choose the few examples. We demonstrate that existing few-shot techniques do not perform well in this setting, and rather we propose to do parameter-efficient fine-tuning (PEFT) combined with augmenting training data based on similar examples in prior existing rules. We empirically show that our approach of similarity-based data-augmentation + prompt-tuning (DAPT) consistently outperforms baselines that either do not rely on data augmentation or on PEFT by 7-17% F1 score in the Social Chemistry moral judgement and 9-13% AUC in the Toxicity detection tasks, even when the new rule is loosely correlated with existing ones.",
+    "authors": [
+        "Ananth Balashankar",
+        "Xiao Ma",
+        "Aradhana Sinha",
+        "Ahmad Beirami",
+        "Yao Qin",
+        "Jilin Chen",
+        "Alex Beutel"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the approach of similarity-based data-augmentation + prompt-tuning (DAPT) consistently outperforms baselines that either do not rely on data augmentation or on PEFT by 7-17% F1 score in the Social Chemistry moral judgement and 9-13% AUC in the Toxicity detection tasks."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

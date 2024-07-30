@@ -1,0 +1,29 @@
+{
+    "acronym": "615fcfc610fff4dc58dff482cfa3ca1f1e6a3ee5",
+    "title": "Improving Low-Resource Question Answering using Active Learning in Multiple Stages",
+    "seed_ids": [
+        "gpt2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "615fcfc610fff4dc58dff482cfa3ca1f1e6a3ee5",
+    "abstract": "Neural approaches have become very popular in the domain of Question Answering, however they require a large amount of annotated data. Furthermore, they often yield very good performance but only in the domain they were trained on. In this work we propose a novel approach that combines data augmentation via question-answer generation with Active Learning to improve performance in low resource settings, where the target domains are diverse in terms of difficulty and similarity to the source domain. We also investigate Active Learning for question answering in different stages, overall reducing the annotation effort of humans. For this purpose, we consider target domains in realistic settings, with an extremely low amount of annotated samples but with many unlabeled documents, which we assume can be obtained with little effort. Additionally, we assume sufficient amount of labeled data from the source domain is available. We perform extensive experiments to find the best setup for incorporating domain experts. Our findings show that our novel approach, where humans are incorporated as early as possible in the process, boosts performance in the low-resource, domain-specific setting, allowing for low-labeling-effort question answering systems in new, specialized domains. They further demonstrate how human annotation affects the performance of QA depending on the stage it is performed.",
+    "authors": [
+        "Maximilian Schmidt",
+        "A. Bartezzaghi",
+        "Jasmina Bogojeska",
+        "A. Malossi",
+        "Thang Vu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel approach that combines data augmentation via question-answer generation with Active Learning to improve performance in low resource settings, where the target domains are diverse in terms of difficulty and similarity to the source domain."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "2cb38ec656450864e126d0662cbf34a37387bd3e",
+    "title": "Sparsifying Transformer Models with Differentiable Representation Pooling",
+    "seed_ids": [
+        "sparsetransformer",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1"
+    ],
+    "s2id": "2cb38ec656450864e126d0662cbf34a37387bd3e",
+    "abstract": "We propose a novel method to sparsify attention in the Transformer model by learning to select the most-informative token representations, thus leveraging the model's information bottleneck with twofold strength. A careful analysis shows that the contextualization of encoded representations in our model is significantly more effective than in the original Transformer. We achieve a notable reduction in memory usage due to an improved differentiable top-k operator, making the model suitable to process long documents, as shown on an example of a summarization task.",
+    "authors": [
+        "Michal Pietruszka",
+        "\u0141ukasz Borchmann",
+        "Filip Grali'nski"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel method to sparsify attention in the Transformer model by learning to select the most-informative token representations, thus leveraging the model's information bottleneck with twofold strength."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,34 @@
+{
+    "acronym": "ff2c8108050041994ab3c54f482602dbf44445df",
+    "title": "Design as Desired: Utilizing Visual Question Answering for Multimodal Pre-training",
+    "seed_ids": [
+        "transformer",
+        "785650a805851c7e945523e495c5a523c60f72a4",
+        "f8b89d917065d5e406ba9769be020ba0d95a31ce",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ff2c8108050041994ab3c54f482602dbf44445df",
+    "abstract": "Multimodal pre-training demonstrates its potential in the medical domain, which learns medical visual representations from paired medical reports. However, many pre-training tasks require extra annotations from clinicians, and most of them fail to explicitly guide the model to learn the desired features of different pathologies. To the best of our knowledge, we are the first to utilize Visual Question Answering (VQA) for multimodal pre-training to guide the framework focusing on targeted pathological features. In this work, we leverage descriptions in medical reports to design multi-granular question-answer pairs associated with different diseases, which assist the framework in pre-training without requiring extra annotations from experts. We also propose a novel pre-training framework with a quasi-textual feature transformer, a module designed to transform visual features into a quasi-textual space closer to the textual domain via a contrastive learning strategy. This narrows the vision-language gap and facilitates modality alignment. Our framework is applied to four downstream tasks: report generation, classification, segmentation, and detection across five datasets. Extensive experiments demonstrate the superiority of our framework compared to other state-of-the-art methods. Our code will be released upon acceptance.",
+    "authors": [
+        "Tongkun Su",
+        "Jun Li",
+        "Xi Zhang",
+        "Haibo Jin",
+        "Hao Chen",
+        "Qiong Wang",
+        "Faqin Lv",
+        "Baoliang Zhao",
+        "Yin Hu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work is the first to utilize Visual Question Answering (VQA) for multimodal pre-training to guide the framework focusing on targeted pathological features, and proposes a novel pre-training framework with a quasi-textual feature transformer, a module designed to transform visual features into a quasi-textual space closer to the textual domain via a contrastive learning strategy."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

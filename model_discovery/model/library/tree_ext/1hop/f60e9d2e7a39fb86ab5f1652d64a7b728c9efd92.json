@@ -1,0 +1,26 @@
+{
+    "acronym": "f60e9d2e7a39fb86ab5f1652d64a7b728c9efd92",
+    "title": "Code Comment Inconsistency Detection with BERT and Longformer",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "0fe2636446cd686830da3d971b31a004d6094b3c"
+    ],
+    "s2id": "f60e9d2e7a39fb86ab5f1652d64a7b728c9efd92",
+    "abstract": "Comments, or natural language descriptions of source code, are standard practice among software developers. By communicating important aspects of the code such as functionality and usage, comments help with software project maintenance. However, when the code is modified without an accompanying correction to the comment, an inconsistency between the comment and code can arise, which opens up the possibility for developer confusion and bugs. In this paper, we propose two models based on BERT (Devlin et al., 2019) and Longformer (Beltagy et al., 2020) to detect such inconsistencies in a natural language inference (NLI) context. Through an evaluation on a previously established corpus of comment-method pairs both during and after code changes, we demonstrate that our models outperform multiple baselines and yield comparable results to the state-of-the-art models that exclude linguistic and lexical features. We further discuss ideas for future research in using pretrained language models for both inconsistency detection and automatic comment updating.",
+    "authors": [
+        "Theo Steiner",
+        "Rui Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes two models based on BERT and Longformer to detect inconsistencies in a natural language inference (NLI) context and demonstrates that their models outperform multiple baselines and yield comparable results to the state-of-the-art models that exclude linguistic and lexical features."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

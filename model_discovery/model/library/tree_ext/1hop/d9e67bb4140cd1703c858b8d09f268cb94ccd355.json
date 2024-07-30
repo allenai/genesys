@@ -1,0 +1,35 @@
+{
+    "acronym": "d9e67bb4140cd1703c858b8d09f268cb94ccd355",
+    "title": "Hydragen: High-Throughput LLM Inference with Shared Prefixes",
+    "seed_ids": [
+        "mqa",
+        "5c104f905fcacf390270f619f232a2ba4eb873f2",
+        "aade40af0d85b0b4fe15c97f6222d5c2e4d6d9b3",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "53c3940f35b8b45d55ed49056282e1961954513d",
+        "3d473cbb7a377cf960abff31748a1a39bb6c7d7c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d9e67bb4140cd1703c858b8d09f268cb94ccd355",
+    "abstract": "Transformer-based large language models (LLMs) are now deployed to hundreds of millions of users. LLM inference is commonly performed on batches of sequences that share a prefix, such as few-shot examples or a chatbot system prompt. Decoding in this large-batch setting can be bottlenecked by the attention operation, which reads large key-value (KV) caches from memory and computes inefficient matrix-vector products for every sequence in the batch. In this work, we introduce Hydragen, a hardware-aware exact implementation of attention with shared prefixes. Hydragen computes attention over the shared prefix and unique suffixes separately. This decomposition enables efficient prefix attention by batching queries together across sequences, reducing redundant memory reads and enabling the use of hardware-friendly matrix multiplications. Our method can improve end-to-end CodeLlama-13b throughput by up to 32x against competitive baselines, with speedup growing with the batch size and shared prefix length. Hydragen also enables the use of very long shared contexts: with a large batch size, increasing the prefix length from 1K to 16K tokens decreases Hydragen throughput by less than 15%, while the throughput of baselines drops by over 90%. Hydragen generalizes beyond simple prefix-suffix decomposition and can be applied to tree-based prompt sharing patterns, allowing us to further reduce inference time on competitive programming problems by 55%.",
+    "authors": [
+        "Jordan Juravsky",
+        "Bradley Brown",
+        "Ryan Ehrlich",
+        "Daniel Y. Fu",
+        "Christopher R'e",
+        "Azalia Mirhoseini"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Hydragen is introduced, a hardware-aware exact implementation of attention with shared prefixes that can improve end-to-end CodeLlama-13b throughput by up to 32x and reduce inference time on competitive programming problems by 55%."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

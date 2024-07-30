@@ -1,0 +1,53 @@
+{
+    "acronym": "5f0b826ffe17faa2cdec21752e7d1863bd909f2c",
+    "title": "Foundation Models in Robotics: Applications, Challenges, and the Future",
+    "seed_ids": [
+        "gpt3",
+        "337f421a364a6fa8ca423afd627bee2426f69395",
+        "bfe6fd05f09647b001c7eb6e333a95c881c88344",
+        "f1c39410893794ee3643efa85be1816964aa85ea",
+        "25425e299101b13ec2872417a14f961f4f8aa18e",
+        "979810ca765695a481c37126103b8ba256ee2192",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "60c8d0619481eaafdd1189af610d0e636271fed5",
+        "32c9b3859086d15184989454eb878638659e64c6",
+        "b21670e8061a06ab97e7d6052c9345a326e84ff8",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "ada81a4de88a6ce474df2e2446ad11fea480616e",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "3a906b77fa218adc171fecb28bb81c24c14dcc7b",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5f0b826ffe17faa2cdec21752e7d1863bd909f2c",
+    "abstract": "We survey applications of pretrained foundation models in robotics. Traditional deep learning models in robotics are trained on small datasets tailored for specific tasks, which limits their adaptability across diverse applications. In contrast, foundation models pretrained on internet-scale data appear to have superior generalization capabilities, and in some instances display an emergent ability to find zero-shot solutions to problems that are not present in the training data. Foundation models may hold the potential to enhance various components of the robot autonomy stack, from perception to decision-making and control. For example, large language models can generate code or provide common sense reasoning, while vision-language models enable open-vocabulary visual recognition. However, significant open research challenges remain, particularly around the scarcity of robot-relevant training data, safety guarantees and uncertainty quantification, and real-time execution. In this survey, we study recent papers that have used or built foundation models to solve robotics problems. We explore how foundation models contribute to improving robot capabilities in the domains of perception, decision-making, and control. We discuss the challenges hindering the adoption of foundation models in robot autonomy and provide opportunities and potential pathways for future advancements. The GitHub project corresponding to this paper (Preliminary release. We are committed to further enhancing and updating this work to ensure its quality and relevance) can be found here: https://github.com/robotics-survey/Awesome-Robotics-Foundation-Models",
+    "authors": [
+        "Roya Firoozi",
+        "Johnathan Tucker",
+        "Stephen Tian",
+        "Anirudha Majumdar",
+        "Jiankai Sun",
+        "Weiyu Liu",
+        "Yuke Zhu",
+        "Shuran Song",
+        "Ashish Kapoor",
+        "Karol Hausman",
+        "Brian Ichter",
+        "Danny Driess",
+        "Jiajun Wu",
+        "Cewu Lu",
+        "Mac Schwager"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "How foundation models contribute to improving robot capabilities in the domains of perception, decision-making, and control is explored and the challenges hindering the adoption of foundation models in robot autonomy are discussed."
+    },
+    "citationCount": 44,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

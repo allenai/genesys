@@ -1,0 +1,33 @@
+{
+    "acronym": "ba81ddef8264238e57a3bfd9da38283e62035e31",
+    "title": "Leveraging task dependency and contrastive learning for Legal Judgement Prediction on the European Court of Human Rights",
+    "seed_ids": [
+        "neurallegal",
+        "0476fe2b42398f3482946fff2d5392e22662a248",
+        "9166caa474031b62bacad8a920db8308e6a15120",
+        "fd33e77884e69f6bc099990fc2790248af2749d9",
+        "c67843e9ccb8221abb5d2feecc4f3ce2708e9cf2",
+        "61a5ae33fc34efcdbc710004554ec57e607ce75e",
+        "29584ed6d68a06fdf91440a018f6bc83a44fd177",
+        "cc2d1a66c701e9be9124eb95431b6c3dd79a61d3"
+    ],
+    "s2id": "ba81ddef8264238e57a3bfd9da38283e62035e31",
+    "abstract": "We report on an experiment in legal judgement prediction on European Court of Human Rights cases where our model \ufb01rst learns to predict the convention articles allegedly violated by the state from case facts descriptions, and subsequently utilizes that information to predict a \ufb01nding of a violation by the court. We assess the dependency between these two tasks at the feature and outcome level. Further-more, we leverage a hierarchical contrastive loss to pull together article speci\ufb01c representations of cases at the higher level level, leading to distinctive article clusters, and further pulls the cases in each article cluster based on their outcome leading to sub-clusters of cases with similar outcomes. Our experiment results demonstrate that, given a static pre-trained encoder, our models produce a small but consistent improvement in prediction performance over single-task and joint models without contrastive loss.",
+    "authors": [
+        "Marcel Perez",
+        "San Blas",
+        "Phillip Kemper",
+        "Matthias Grabmair"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The experiment results demonstrate that, given a static pre-trained encoder, the models produce a small but consistent improvement in prediction performance over single-task and joint models without contrastive loss."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

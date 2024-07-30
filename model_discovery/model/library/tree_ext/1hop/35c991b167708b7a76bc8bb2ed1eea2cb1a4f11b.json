@@ -1,0 +1,39 @@
+{
+    "acronym": "35c991b167708b7a76bc8bb2ed1eea2cb1a4f11b",
+    "title": "On the Role of Attention Masks and LayerNorm in Transformers",
+    "seed_ids": [
+        "gpt2",
+        "bert",
+        "bigbird",
+        "longformer",
+        "89d786457591d39091cf6ef4831f2bbd72698caf",
+        "96c88b196e3e432710debab39f49ee72f2b96a10",
+        "d078b6e88bc4749f4eb83f289537a88b4aaf54e6",
+        "b8c236dc5963dac36b0d8e419beb5876e3a18f96",
+        "40ca4fcfffa7ca9aa9b7ff06ecf3cd0436712d78",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "35c991b167708b7a76bc8bb2ed1eea2cb1a4f11b",
+    "abstract": "Self-attention is the key mechanism of transformers, which are the essential building blocks of modern foundation models. Recent studies have shown that pure self-attention suffers from an increasing degree of rank collapse as depth increases, limiting model expressivity and further utilization of model depth. The existing literature on rank collapse, however, has mostly overlooked other critical components in transformers that may alleviate the rank collapse issue. In this paper, we provide a general analysis of rank collapse under self-attention, taking into account the effects of attention masks and layer normalization (LayerNorm). In particular, we find that although pure masked attention still suffers from exponential collapse to a rank one subspace, local masked attention can provably slow down the collapse rate. In the case of self-attention with LayerNorm, we first show that for certain classes of value matrices, collapse to a rank one subspace still happens exponentially. However, through construction of nontrivial counterexamples, we then establish that with proper choice of value matrices, a general class of sequences may not converge to a rank one subspace, and the self-attention dynamics with LayerNorm can simultaneously possess a rich set of equilibria with any possible rank between one and full. Our result refutes the previous hypothesis that LayerNorm plays no role in the rank collapse of self-attention and suggests that self-attention with LayerNorm constitutes a much more expressive, versatile nonlinear dynamical system than what was originally thought.",
+    "authors": [
+        "Xinyi Wu",
+        "A. Ajorlou",
+        "Yifei Wang",
+        "Stefanie Jegelka",
+        "A. Jadbabaie"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper provides a general analysis of rank collapse under self-attention, taking into account the effects of attention masks and layer normalization (LayerNorm), and suggests that self-attention with LayerNorm constitutes a much more expressive, versatile nonlinear dynamical system than what was originally thought."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

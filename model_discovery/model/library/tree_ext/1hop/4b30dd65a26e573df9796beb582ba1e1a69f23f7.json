@@ -1,0 +1,39 @@
+{
+    "acronym": "4b30dd65a26e573df9796beb582ba1e1a69f23f7",
+    "title": "Reservoir Transformers",
+    "seed_ids": [
+        "reformer",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "0b991a1a5bcdb13646ac0b6873d09bde4cc36fb5",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "2573af4e13d9a5dddb257d22cd38a600528d9a8b",
+        "7455f5f3a524fea54be74fc002266eca0f003a91",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "4b30dd65a26e573df9796beb582ba1e1a69f23f7",
+    "abstract": "We demonstrate that transformers obtain impressive performance even when some of the layers are randomly initialized and never updated. Inspired by old and well-established ideas in machine learning, we explore a variety of non-linear \u201creservoir\u201d layers interspersed with regular transformer layers, and show improvements in wall-clock compute time until convergence, as well as overall performance, on various machine translation and (masked) language modelling tasks.",
+    "authors": [
+        "Sheng Shen",
+        "Alexei Baevski",
+        "Ari S. Morcos",
+        "K. Keutzer",
+        "Michael Auli",
+        "Douwe Kiela"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Inspired by old and well-established ideas in machine learning, a variety of non-linear \u201creservoir\u201d layers interspersed with regular transformer layers are explored, and improvements in wall-clock compute time until convergence are shown."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

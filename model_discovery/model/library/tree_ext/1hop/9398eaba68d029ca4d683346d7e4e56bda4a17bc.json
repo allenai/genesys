@@ -1,0 +1,31 @@
+{
+    "acronym": "9398eaba68d029ca4d683346d7e4e56bda4a17bc",
+    "title": "DPP-Based Adversarial Prompt Searching for Lanugage Models",
+    "seed_ids": [
+        "gpt2",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "f1e56def812bc398d1b2b8c9a7ea6a623abd38e5",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "4a6a65968a8eb8c09ffb57a7774ddabb596565b1",
+        "999deaecf0adb9defa3b233be32c6a1c3f7090a3",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "9398eaba68d029ca4d683346d7e4e56bda4a17bc",
+    "abstract": "Language models risk generating mindless and offensive content, which hinders their safe deployment. Therefore, it is crucial to discover and modify potential toxic outputs of pre-trained language models before deployment. In this work, we elicit toxic content by automatically searching for a prompt that directs pre-trained language models towards the generation of a specific target output. The problem is challenging due to the discrete nature of textual data and the considerable computational resources required for a single forward pass of the language model. To combat these challenges, we introduce Auto-regressive Selective Replacement Ascent (ASRA), a discrete optimization algorithm that selects prompts based on both quality and similarity with determinantal point process (DPP). Experimental results on six different pre-trained language models demonstrate the efficacy of ASRA for eliciting toxic content. Furthermore, our analysis reveals a strong correlation between the success rate of ASRA attacks and the perplexity of target outputs, while indicating limited association with the quantity of model parameters.",
+    "authors": [
+        "Xu Zhang",
+        "Xiaojun Wan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces Auto-regressive Selective Replacement Ascent (ASRA), a discrete optimization algorithm that selects prompts based on both quality and similarity with determinantal point process (DPP) to elicit toxic content by automatically searching for a prompt that directs pre-trained language models towards the generation of a specific target output."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

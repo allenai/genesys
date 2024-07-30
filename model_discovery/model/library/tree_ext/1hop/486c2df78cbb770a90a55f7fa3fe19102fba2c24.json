@@ -1,0 +1,29 @@
+{
+    "acronym": "486c2df78cbb770a90a55f7fa3fe19102fba2c24",
+    "title": "LLaMA-VID: An Image is Worth 2 Tokens in Large Language Models",
+    "seed_ids": [
+        "bert",
+        "b6346f9fa093b8e85df712485a2b851b9f680dac",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "486c2df78cbb770a90a55f7fa3fe19102fba2c24",
+    "abstract": "In this work, we present a novel method to tackle the token generation challenge in Vision Language Models (VLMs) for video and image understanding, called LLaMA-VID. Current VLMs, while proficient in tasks like image captioning and visual question answering, face computational burdens when processing long videos due to the excessive visual tokens. LLaMA-VID addresses this issue by representing each frame with two distinct tokens, namely context token and content token. The context token encodes the overall image context based on user input, whereas the content token encapsulates visual cues in each frame. This dual-token strategy significantly reduces the overload of long videos while preserving critical information. Generally, LLaMA-VID empowers existing frameworks to support hour-long videos and pushes their upper limit with an extra context token. It is proved to surpass previous methods on most of video- or image-based benchmarks. Code is available https://github.com/dvlab-research/LLaMA-VID}{https://github.com/dvlab-research/LLaMA-VID",
+    "authors": [
+        "Yanwei Li",
+        "Chengyao Wang",
+        "Jiaya Jia"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel method to tackle the token generation challenge in Vision Language Models (VLMs) for video and image understanding, called LLaMA-VID, which empowers existing frameworks to support hour-long videos and pushes their upper limit with an extra context token."
+    },
+    "citationCount": 63,
+    "influentialCitationCount": 14,
+    "code": null,
+    "description": null,
+    "url": null
+}

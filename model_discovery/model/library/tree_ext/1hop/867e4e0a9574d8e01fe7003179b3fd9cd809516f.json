@@ -1,0 +1,29 @@
+{
+    "acronym": "867e4e0a9574d8e01fe7003179b3fd9cd809516f",
+    "title": "I am a Strange Dataset: Metalinguistic Tests for Language Models",
+    "seed_ids": [
+        "gpt3",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "867e4e0a9574d8e01fe7003179b3fd9cd809516f",
+    "abstract": "Statements involving metalinguistic self-reference (\"This paper has six sections.\") are prevalent in many domains. Can large language models (LLMs) handle such language? In this paper, we present\"I am a Strange Dataset\", a new dataset for addressing this question. There are two subtasks: generation and verification. In generation, models continue statements like\"The penultimate word in this sentence is\"(where a correct continuation is\"is\"). In verification, models judge the truth of statements like\"The penultimate word in this sentence is sentence.\"(false). We also provide minimally different metalinguistic non-self-reference examples to complement the main dataset by probing for whether models can handle metalinguistic language at all. The dataset is hand-crafted by experts and validated by non-expert annotators. We test a variety of open-source LLMs (7B to 70B parameters) as well as closed-source LLMs through APIs. All models perform close to chance across both subtasks and even on the non-self-referential metalinguistic control data, though we find some steady improvement with model scale. GPT 4 is the only model to consistently do significantly better than chance, and it is still only in the 60% range, while our untrained human annotators score well in the 89-93% range. The dataset and evaluation toolkit are available at https://github.com/TristanThrush/i-am-a-strange-dataset.",
+    "authors": [
+        "Tristan Thrush",
+        "Jared Moore",
+        "Miguel Monares",
+        "Christopher Potts",
+        "Douwe Kiela"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents \"I am a Strange Dataset\", a new dataset for addressing the question of whether large language models can handle metalinguistic language at all, and tests a variety of open-source LLMs as well as closed-source LLMs through APIs."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

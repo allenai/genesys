@@ -1,0 +1,38 @@
+{
+    "acronym": "cd2277d7d5776972287b586b67e3d290af60d5d6",
+    "title": "Hippocrates: An Open-Source Framework for Advancing Large Language Models in Healthcare",
+    "seed_ids": [
+        "gpt2",
+        "2f231367b55f30186467158c644a9890c498e4cf",
+        "5fc1a3a49e8f1d106118b69d1d6be3b6caa23da0",
+        "44279244407a64431810f982be6d0c7da4429dd7",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "cd2277d7d5776972287b586b67e3d290af60d5d6",
+    "abstract": "The integration of Large Language Models (LLMs) into healthcare promises to transform medical diagnostics, research, and patient care. Yet, the progression of medical LLMs faces obstacles such as complex training requirements, rigorous evaluation demands, and the dominance of proprietary models that restrict academic exploration. Transparent, comprehensive access to LLM resources is essential for advancing the field, fostering reproducibility, and encouraging innovation in healthcare AI. We present Hippocrates, an open-source LLM framework specifically developed for the medical domain. In stark contrast to previous efforts, it offers unrestricted access to its training datasets, codebase, checkpoints, and evaluation protocols. This open approach is designed to stimulate collaborative research, allowing the community to build upon, refine, and rigorously evaluate medical LLMs within a transparent ecosystem. Also, we introduce Hippo, a family of 7B models tailored for the medical domain, fine-tuned from Mistral and LLaMA2 through continual pre-training, instruction tuning, and reinforcement learning from human and AI feedback. Our models outperform existing open medical LLMs models by a large-margin, even surpassing models with 70B parameters. Through Hippocrates, we aspire to unlock the full potential of LLMs not just to advance medical knowledge and patient care but also to democratize the benefits of AI research in healthcare, making them available across the globe.",
+    "authors": [
+        "Emre Can Acikgoz",
+        "Osman Batur .Ince",
+        "Rayene Bench",
+        "Arda Anil Boz",
+        ".Ilker Kesen",
+        "Aykut Erdem",
+        "Erkut Erdem"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Hippocrates is presented, an open-source LLM framework specifically developed for the medical domain, which offers unrestricted access to its training datasets, codebase, checkpoints, and evaluation protocols and introduces Hippo, a family of 7B models tailored for the medical domain."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

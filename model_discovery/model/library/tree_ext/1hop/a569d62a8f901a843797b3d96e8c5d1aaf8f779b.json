@@ -1,0 +1,36 @@
+{
+    "acronym": "a569d62a8f901a843797b3d96e8c5d1aaf8f779b",
+    "title": "DiffuDetox: A Mixed Diffusion Model for Text Detoxification",
+    "seed_ids": [
+        "diffuseq",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "31ced335258047c2b6703165887d87048b8acc98",
+        "bd883b3a88f038274dee7ad6f8dde70f80dbb030",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a569d62a8f901a843797b3d96e8c5d1aaf8f779b",
+    "abstract": "Text detoxification is a conditional text generation task aiming to remove offensive content from toxic text. It is highly useful for online forums and social media, where offensive content is frequently encountered. Intuitively, there are diverse ways to detoxify sentences while preserving their meanings, and we can select from detoxified sentences before displaying text to users. Conditional diffusion models are particularly suitable for this task given their demonstrated higher generative diversity than existing conditional text generation models based on language models. Nonetheless, text fluency declines when they are trained with insufficient data, which is the case for this task. In this work, we propose DiffuDetox, a mixed conditional and unconditional diffusion model for text detoxification. The conditional model takes toxic text as the condition and reduces its toxicity, yielding a diverse set of detoxified sentences. The unconditional model is trained to recover the input text, which allows the introduction of additional fluent text for training and thus ensures text fluency. Extensive experimental results and in-depth analysis demonstrate the effectiveness of our proposed DiffuDetox.",
+    "authors": [
+        "Griffin Floto",
+        "Mohammad Mahdi Torabi pour",
+        "Parsa Farinneya",
+        "Zhenwei Tang",
+        "Ali Pesaranghader",
+        "Manasa Bharadwaj",
+        "S. Sanner"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes DiffuDetox, a mixed conditional and unconditional diffusion model for text detoxification that takes toxic text as the condition and reduces its toxicity, yielding a diverse set of detoxified sentences."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,33 @@
+{
+    "acronym": "0456cd227edb95e596e3915ebcfd1133bcc8d725",
+    "title": "Investigating the Learning Behaviour of In-context Learning: A Comparison with Supervised Learning",
+    "seed_ids": [
+        "gpt2",
+        "b47381e04739ea3f392ba6c8faaf64105493c196",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0456cd227edb95e596e3915ebcfd1133bcc8d725",
+    "abstract": "Large language models (LLMs) have shown remarkable capacity for in-context learning (ICL), where learning a new task from just a few training examples is done without being explicitly pre-trained. However, despite the success of LLMs, there has been little understanding of how ICL learns the knowledge from the given prompts. In this paper, to make progress toward understanding the learning behaviour of ICL, we train the same LLMs with the same demonstration examples via ICL and supervised learning (SL), respectively, and investigate their performance under label perturbations (i.e., noisy labels and label imbalance) on a range of classification tasks. First, via extensive experiments, we find that gold labels have significant impacts on the downstream in-context performance, especially for large language models; however, imbalanced labels matter little to ICL across all model sizes. Second, when comparing with SL, we show empirically that ICL is less sensitive to label perturbations than SL, and ICL gradually attains comparable performance to SL as the model size increases.",
+    "authors": [
+        "Xindi Wang",
+        "Yufei Wang",
+        "Can Xu",
+        "Xiubo Geng",
+        "Bowen Zhang",
+        "Chongyang Tao",
+        "Frank Rudzicz",
+        "Robert E. Mercer",
+        "Daxin Jiang"
+    ],
+    "venue": "European Conference on Artificial Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown empirically that ICL is less sensitive to label perturbations than SL, and ICL gradually attains comparable performance to SL as the model size increases, and via extensive experiments, it is found that gold labels have significant impacts on the downstream in-context performance, especially for large language models; however, imbalanced labels matter little to ICL across all model sizes."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

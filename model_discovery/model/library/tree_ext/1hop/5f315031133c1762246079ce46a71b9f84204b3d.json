@@ -1,0 +1,27 @@
+{
+    "acronym": "5f315031133c1762246079ce46a71b9f84204b3d",
+    "title": "Distilling Large Language Models for Text-Attributed Graph Learning",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "5f315031133c1762246079ce46a71b9f84204b3d",
+    "abstract": "Text-Attributed Graphs (TAGs) are graphs of connected textual documents. Graph models can efficiently learn TAGs, but their training heavily relies on human-annotated labels, which are scarce or even unavailable in many applications. Large language models (LLMs) have recently demonstrated remarkable capabilities in few-shot and zero-shot TAG learning, but they suffer from scalability, cost, and privacy issues. Therefore, in this work, we focus on synergizing LLMs and graph models with their complementary strengths by distilling the power of LLMs to a local graph model on TAG learning. To address the inherent gaps between LLMs (generative models for texts) and graph models (discriminative models for graphs), we propose first to let LLMs teach an interpreter with rich textual rationale and then let a student model mimic the interpreter's reasoning without LLMs' textual rationale. Extensive experiments validate the efficacy of our proposed framework.",
+    "authors": [
+        "Bo Pan",
+        "Zhengwu Zhang",
+        "Yifei Zhang",
+        "Yuntong Hu",
+        "Liang Zhao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes first to let LLMs teach an interpreter with rich textual rationale and then let a student model mimic the interpreter's reasoning without LLMs' textual rationale, and then proposes a framework to address the inherent gaps between LLMs and graph models."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

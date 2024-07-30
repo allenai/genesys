@@ -1,0 +1,25 @@
+{
+    "acronym": "7d22e6d110a2be18ef7236fb2238fd85463de4b2",
+    "title": "DDLP: Unsupervised Object-Centric Video Prediction with Deep Dynamic Latent Particles",
+    "seed_ids": [
+        "gpt",
+        "2d9ae4c167510ed78803735fc57ea67c3cc55a35"
+    ],
+    "s2id": "7d22e6d110a2be18ef7236fb2238fd85463de4b2",
+    "abstract": "We propose a new object-centric video prediction algorithm based on the deep latent particle (DLP) representation. In comparison to existing slot- or patch-based representations, DLPs model the scene using a set of keypoints with learned parameters for properties such as position and size, and are both efficient and interpretable. Our method, deep dynamic latent particles (DDLP), yields state-of-the-art object-centric video prediction results on several challenging datasets. The interpretable nature of DDLP allows us to perform ``what-if'' generation -- predict the consequence of changing properties of objects in the initial frames, and DLP's compact structure enables efficient diffusion-based unconditional video generation. Videos, code and pre-trained models are available: https://taldatech.github.io/ddlp-web",
+    "authors": [
+        "Tal Daniel",
+        "Aviv Tamar"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The interpretable nature of DDLP allows us to perform ``what-if'' generation -- predict the consequence of changing properties of objects in the initial frames, and DLP's compact structure enables efficient diffusion-based unconditional video generation."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

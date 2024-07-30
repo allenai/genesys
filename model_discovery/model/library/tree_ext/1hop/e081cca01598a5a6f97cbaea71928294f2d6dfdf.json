@@ -1,0 +1,34 @@
+{
+    "acronym": "e081cca01598a5a6f97cbaea71928294f2d6dfdf",
+    "title": "TimeMIL: Advancing Multivariate Time Series Classification via a Time-aware Multiple Instance Learning",
+    "seed_ids": [
+        "nystromformer",
+        "9b61adb6f0d1e8831ab2f5481a12e2125b13c50a",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85"
+    ],
+    "s2id": "e081cca01598a5a6f97cbaea71928294f2d6dfdf",
+    "abstract": "Deep neural networks, including transformers and convolutional neural networks, have significantly improved multivariate time series classification (MTSC). However, these methods often rely on supervised learning, which does not fully account for the sparsity and locality of patterns in time series data (e.g., diseases-related anomalous points in ECG). To address this challenge, we formally reformulate MTSC as a weakly supervised problem, introducing a novel multiple-instance learning (MIL) framework for better localization of patterns of interest and modeling time dependencies within time series. Our novel approach, TimeMIL, formulates the temporal correlation and ordering within a time-aware MIL pooling, leveraging a tokenized transformer with a specialized learnable wavelet positional token. The proposed method surpassed 26 recent state-of-the-art methods, underscoring the effectiveness of the weakly supervised TimeMIL in MTSC. The code will be available at https://github.com/xiwenc1/TimeMIL.",
+    "authors": [
+        "Xiwen Chen",
+        "Peijie Qiu",
+        "Wenhui Zhu",
+        "Huayu Li",
+        "Hao Wang",
+        "Aristeidis Sotiras",
+        "Yalin Wang",
+        "Abolfazl Razi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work formally reformulate MTSC as a weakly supervised problem, introducing a novel multiple-instance learning (MIL) framework for better localization of patterns of interest and modeling time dependencies within time series."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

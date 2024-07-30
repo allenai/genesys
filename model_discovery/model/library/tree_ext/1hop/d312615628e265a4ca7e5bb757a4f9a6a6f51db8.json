@@ -1,0 +1,31 @@
+{
+    "acronym": "d312615628e265a4ca7e5bb757a4f9a6a6f51db8",
+    "title": "Deeper vs Wider: A Revisit of Transformer Configuration",
+    "seed_ids": [
+        "gpt",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7"
+    ],
+    "s2id": "d312615628e265a4ca7e5bb757a4f9a6a6f51db8",
+    "abstract": "Transformer-based models have delivered impressive results on many tasks, partic-ularly vision and language tasks. In many model training situations, conventional con\ufb01gurations are typically adopted. For example, we often set the base model with hidden dimensions ( i.e., model width) to be 768 and the number of transformer layers ( i.e., model depth) to be 12. In this paper, we revisit these conventional con\ufb01gurations. Through theoretical analysis and experimental evaluation, we show that the masked autoencoder is effective in alleviating the over-smoothing issue in deep transformer training. Based on this \ufb01nding, we propose Bamboo, an idea of using deeper and narrower transformer con\ufb01gurations, for masked autoencoder training. On ImageNet, with such a simple change in con\ufb01guration, re-designed model achieves 87.1% top-1 accuracy and outperforms SoTA models like MAE and BEiT. On language tasks, re-designed model outperforms BERT with default setting by 1.1 points on average, on GLUE datasets.",
+    "authors": [
+        "Fuzhao Xue",
+        "Jianghai Chen",
+        "Aixin Sun",
+        "Xiaozhe Ren",
+        "Zangwei Zheng",
+        "Xiaoxin He",
+        "Xin Jiang",
+        "Yang You"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Bamboo, an idea of using deeper and narrower transformer con\ufb01gurations, for masked autoencoder training, is proposed, effective in alleviating the over-smoothing issue in deep transformer training."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

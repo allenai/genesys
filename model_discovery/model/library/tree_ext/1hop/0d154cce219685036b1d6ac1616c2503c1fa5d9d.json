@@ -1,0 +1,30 @@
+{
+    "acronym": "0d154cce219685036b1d6ac1616c2503c1fa5d9d",
+    "title": "Cramming Protein Language Model Training in 24 GPU Hours",
+    "seed_ids": [
+        "bert",
+        "c064c79e3026f81e5043cd5b0f4264b4d43336e6"
+    ],
+    "s2id": "0d154cce219685036b1d6ac1616c2503c1fa5d9d",
+    "abstract": "Protein language models (pLMs) are ubiquitous across biological machine learning research, but state-of-the-art models like ESM2 take hundreds of thousands of GPU hours to pre-train on the vast protein universe. Resource requirements for scaling up pLMs prevent fundamental investigations into how optimal modeling choices might differ from those used in natural language. Here, we define a \u201ccramming\u201d challenge for pLMs and train performant models in 24 hours on a single GPU. By re-examining many aspects of pLM training, we are able to train a 67 million parameter model in a single day that achieves comparable performance on downstream protein fitness landscape inference tasks to ESM-3B, a model trained for over 15, 000\u00d7 more GPU hours than ours. We open source our library1 for training and inference, LBSTER: Language models for Biological Sequence Transformation and Evolutionary Representation.",
+    "authors": [
+        "Nathan C. Frey",
+        "Taylor Joren",
+        "Aya Abdelsalam Ismail",
+        "Allen Goodman",
+        "Richard Bonneau",
+        "Kyunghyun Cho",
+        "V. Gligorijevi\u0107"
+    ],
+    "venue": "bioRxiv",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "By re-examining many aspects of pLM training, this work is able to train a 67 million parameter model in a single day that achieves comparable performance on downstream protein fitness landscape inference tasks to ESM-3B, a model trained for over 15, 000\u00d7 more GPU hours than the authors'."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

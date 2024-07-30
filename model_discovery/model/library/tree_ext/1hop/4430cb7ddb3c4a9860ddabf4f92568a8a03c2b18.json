@@ -1,0 +1,35 @@
+{
+    "acronym": "4430cb7ddb3c4a9860ddabf4f92568a8a03c2b18",
+    "title": "DocInfer: Document-level Natural Language Inference using Optimal Evidence Selection",
+    "seed_ids": [
+        "longformer",
+        "caf084d6f1f46f1aad60691efbb1b9bb0a77d257",
+        "42f8a3da7021bc725fa14fdb63fa9c7c9fc934f6",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "8382402fe166df3de499dac182e42baa51335926",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "867915b9587c046ce8e4b71ab4dee2a1d8bf0b48",
+        "6ef94216e9845b0031cdbd81084e613acd673578"
+    ],
+    "s2id": "4430cb7ddb3c4a9860ddabf4f92568a8a03c2b18",
+    "abstract": "We present DocInfer - a novel, end-to-end Document-level Natural Language Inference model that builds a hierarchical document graph enriched through inter-sentence relations (topical, entity-based, concept-based), performs paragraph pruning using the novel SubGraph Pooling layer, followed by optimal evidence selection based on REINFORCE algorithm to identify the most important context sentences for a given hypothesis. Our evidence selection mechanism allows it to transcend the input length limitation of modern BERT-like Transformer models while presenting the entire evidence together for inferential reasoning. We show this is an important property needed to reason on large documents where the evidence may be fragmented and located arbitrarily far from each other. Extensive experiments on popular corpora - DocNLI, ContractNLI, and ConTRoL datasets, and our new proposed dataset called CaseHoldNLI on the task of legal judicial reasoning, demonstrate significant performance gains of 8-12% over SOTA methods. Our ablation studies validate the impact of our model. Performance improvement of 3-6% on annotation-scarce downstream tasks of fact verification, multiple-choice QA, and contract clause retrieval demonstrates the usefulness of DocInfer beyond primary NLI tasks.",
+    "authors": [
+        "Puneet Mathur",
+        "Gautam Kunapuli",
+        "Riyaz Ahmad Bhat",
+        "Manish Shrivastava",
+        "Dinesh Manocha",
+        "M. Singh"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DocInfer is a novel, end-to-end Document-level Natural Language Inference model that builds a hierarchical document graph enriched through inter-sentence relations, performs paragraph pruning using the novel SubGraph Pooling layer, followed by optimal evidence selection based on REINFORCE algorithm to identify the most important context sentences for a given hypothesis."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

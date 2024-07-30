@@ -1,0 +1,28 @@
+{
+    "acronym": "0af41dcfc5c0ecace0022e501f51295258fb4fae",
+    "title": "WIDIn: Wording Image for Domain-Invariant Representation in Single-Source Domain Generalization",
+    "seed_ids": [
+        "bert",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7"
+    ],
+    "s2id": "0af41dcfc5c0ecace0022e501f51295258fb4fae",
+    "abstract": "Language has been useful in extending the vision encoder to data from diverse distributions without empirical discovery in training domains. However, as the image description is mostly at coarse-grained level and ignores visual details, the resulted embeddings are still ineffective in overcoming complexity of domains at inference time. We present a self-supervision framework WIDIn, Wording Images for Domain-Invariant representation, to disentangle discriminative visual representation, by only leveraging data in a single domain and without any test prior. Specifically, for each image, we first estimate the language embedding with fine-grained alignment, which can be consequently used to adaptively identify and then remove domain-specific counterpart from the raw visual embedding. WIDIn can be applied to both pretrained vision-language models like CLIP, and separately trained uni-modal models like MoCo and BERT. Experimental studies on three domain generalization datasets demonstrate the effectiveness of our approach.",
+    "authors": [
+        "Jiawei Ma",
+        "Yulei Niu",
+        "Shiyuan Huang",
+        "G. Han",
+        "Shih-Fu Chang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A self-supervision framework WIDIn, Wording Images for Domain-Invariant representation, to disentangle discriminative visual representation by only leveraging data in a single domain and without any test prior is presented."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

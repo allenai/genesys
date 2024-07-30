@@ -1,0 +1,34 @@
+{
+    "acronym": "5d4b8e3afdabf927cedf3302cd6819ae20250423",
+    "title": "Every Answer Matters: Evaluating Commonsense with Probabilistic Measures",
+    "seed_ids": [
+        "gpt2",
+        "01f2b214962997260020279bd1fd1f8f372249d4",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "5d4b8e3afdabf927cedf3302cd6819ae20250423",
+    "abstract": "Large language models have demonstrated impressive performance on commonsense tasks; however, these tasks are often posed as multiple-choice questions, allowing models to exploit systematic biases. Commonsense is also inherently probabilistic with multiple correct answers. The purpose of\"boiling water\"could be making tea and cooking, but it also could be killing germs. Existing tasks do not capture the probabilistic nature of common sense. To this end, we present commonsense frame completion (CFC), a new generative task that evaluates common sense via multiple open-ended generations. We also propose a method of probabilistic evaluation that strongly correlates with human judgments. Humans drastically outperform strong language model baselines on our dataset, indicating this approach is both a challenging and useful evaluation of machine common sense.",
+    "authors": [
+        "Qi Cheng",
+        "Michael Boratko",
+        "Pranay Kumar Yelugam",
+        "T. O\u2019Gorman",
+        "Nalini Singh",
+        "Andrew McCallum",
+        "X. Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Humans drastically outperform strong language model baselines on the authors' dataset, indicating this approach is both a challenging and useful evaluation of machine common sense."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

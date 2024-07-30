@@ -1,0 +1,35 @@
+{
+    "acronym": "698113eac0df3bd6d8cf724ea6b5fa94a5bc57d9",
+    "title": "Deep Fusing Pre-trained Models into Neural Machine Translation",
+    "seed_ids": [
+        "gpt",
+        "gpt2",
+        "311909621177c397c6b7099beff32332124f7d46",
+        "3bcb17559ce96eb20fa79af8194f4af0380d194a",
+        "64f94eb97891ca17273464fcb9c507c5a5c7dba7",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "7a09101ac03b74db501648597fa54e992a0fc84f",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "698113eac0df3bd6d8cf724ea6b5fa94a5bc57d9",
+    "abstract": "Pre-training and fine-tuning have become the de facto paradigm in many natural language processing (NLP) tasks. However, compared to other NLP tasks, neural machine translation (NMT) aims to generate target language sentences through the contextual representation from the source language counterparts. This characteristic means the optimization objective of NMT is far from that of the universal pre-trained models (PTMs), leading to the standard procedure of pre-training and fine-tuning does not work well in NMT. In this paper, we propose a novel framework to deep fuse the pre-trained representation into NMT, fully exploring the potential of PTMs in NMT. Specifically, we directly replace the randomly initialized Transformer encoder with a pre-trained encoder and propose a layer-wise coordination structure to coordinate PTM and NMT decoder learning. Then, we introduce a partitioned multi-task learning method to fine-tune the pre-trained parameter, reducing the gap between PTM and NMT by progressively learning the task-specific representation. Experimental results show that our approach achieves considerable improvements on WMT14 En2De, WMT14 En2Fr, and WMT16 Ro2En translation benchmarks and outperforms previous work in both autoregressive and non-autoregressive NMT models.",
+    "authors": [
+        "Rongxiang Weng",
+        "Heng Yu",
+        "Weihua Luo",
+        "M. Zhang"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel framework to deep fuse the pre-trained representation into NMT, fully exploring the potential of PTMs in NMT is proposed and outperforms previous work in both autoregressive and non-autoregressive NMT models."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

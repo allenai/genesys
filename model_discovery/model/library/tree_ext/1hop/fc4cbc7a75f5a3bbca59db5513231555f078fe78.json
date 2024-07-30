@@ -1,0 +1,45 @@
+{
+    "acronym": "fc4cbc7a75f5a3bbca59db5513231555f078fe78",
+    "title": "MetaFormer Baselines for Vision",
+    "seed_ids": [
+        "gpt",
+        "metaformer",
+        "d1869155960e4b1b882b39171dbecd25a7eda3cd",
+        "44aa16ed0f3e22c82b10fcc9d23459ecfb7fcdb3",
+        "fa717a2e31f0cef4e26921f3b147a98644d2e64c",
+        "ba637c4f1a170f1e2dadeadb71a63cf2b9a46de2",
+        "f75cddf2d42ed01b34686704eb3504becef67442",
+        "71363797140647ebb3f540584de0a8758d2f7aa2",
+        "9b6af0e358e76d22f209c75b1702c3e6ea7815b1",
+        "6b6ffb94626e672caffafc77097491d9ee7a8682",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "d6b414487787d0b6efd735a3236a690ad13aae70",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "5a9bc55f6332e38f62eb509b684147a1d4f10fd9"
+    ],
+    "s2id": "fc4cbc7a75f5a3bbca59db5513231555f078fe78",
+    "abstract": "MetaFormer, the abstracted architecture of Transformer, has been found to play a significant role in achieving competitive performance. In this paper, we further explore the capacity of MetaFormer, again, by migrating our focus away from the token mixer design: we introduce several baseline models under MetaFormer using the most basic or common mixers, and demonstrate their gratifying performance. We summarize our observations as follows: <list list-type=\"ordered\"> <list-item><label>1)</label><p><italic>MetaFormer ensures solid lower bound of performance:</italic> By merely adopting identity mapping as the token mixer, the MetaFormer model, termed <italic>IdentityFormer</italic>, achieves <inline-formula><tex-math notation=\"LaTeX\">$> $</tex-math><alternatives><mml:math><mml:mo>></mml:mo></mml:math><inline-graphic xlink:href=\"wang-ieq1-3329173.gif\"/></alternatives></inline-formula>80% accuracy on ImageNet-1 K.</p></list-item> <list-item><label>2)</label><p><italic>MetaFormer works well with arbitrary token mixers:</italic> When specifying the token mixer as even a random matrix to mix tokens, the resulting model <italic>RandFormer</italic> yields an accuracy of <inline-formula><tex-math notation=\"LaTeX\">$> $</tex-math><alternatives><mml:math><mml:mo>></mml:mo></mml:math><inline-graphic xlink:href=\"wang-ieq2-3329173.gif\"/></alternatives></inline-formula>81%, outperforming IdentityFormer. Rest assured of MetaFormer's results when new token mixers are adopted.</p></list-item> <list-item><label>3)</label><p><italic>MetaFormer effortlessly offers state-of-the-art results:</italic> With just conventional token mixers dated back five years ago, the models instantiated from MetaFormer already beat state of the art.</p></list-item> </list> <list list-type=\"ordered\"> <list-item><label>a)</label><p><italic>ConvFormer outperforms ConvNeXt:</italic> Taking the common depthwise separable convolutions as the token mixer, the model termed <italic>ConvFormer</italic>, which can be regarded as pure CNNs, outperforms the strong CNN model ConvNeXt.</p></list-item> <list-item><label>b)</label><p><italic>CAFormer sets new record on ImageNet-1 K:</italic> By simply applying depthwise separable convolutions as token mixer in the bottom stages and vanilla self-attention in the top stages, the resulting model <italic>CAFormer</italic> sets a new record on ImageNet-1 K: it achieves an accuracy of 85.5% at <inline-formula><tex-math notation=\"LaTeX\">$224 \\times 224$</tex-math><alternatives><mml:math><mml:mrow><mml:mn>224</mml:mn><mml:mo>\u00d7</mml:mo><mml:mn>224</mml:mn></mml:mrow></mml:math><inline-graphic xlink:href=\"wang-ieq3-3329173.gif\"/></alternatives></inline-formula> resolution, under normal supervised training without external data or distillation.</p></list-item> </list> In our expedition to probe MetaFormer, we also find that a new activation, <italic>StarReLU</italic>, reduces 71% FLOPs of activation compared with commonly-used GELU yet achieves better performance. Specifically, StarReLU is a variant of Squared ReLU dedicated to alleviating distribution shift. We expect StarReLU to find great potential in MetaFormer-like models alongside other neural networks.",
+    "authors": [
+        "Weihao Yu",
+        "Chenyang Si",
+        "Pan Zhou",
+        "Mi Luo",
+        "Yichen Zhou",
+        "Jiashi Feng",
+        "Shuicheng Yan",
+        "Xinchao Wang"
+    ],
+    "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The capacity of MetaFormer is explored, again, by migrating the focus away from the token mixer design, and several baseline models under MetaFormer are introduced using the most basic or common mixers, and demonstrate their gratifying performance."
+    },
+    "citationCount": 64,
+    "influentialCitationCount": 9,
+    "code": null,
+    "description": null,
+    "url": null
+}

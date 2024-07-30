@@ -1,0 +1,27 @@
+{
+    "acronym": "2918c61c667d02693e2fc56ccb1441f05953226f",
+    "title": "Learning to Prompt with Text Only Supervision for Vision-Language Models",
+    "seed_ids": [
+        "gpt3"
+    ],
+    "s2id": "2918c61c667d02693e2fc56ccb1441f05953226f",
+    "abstract": "Foundational vision-language models such as CLIP are becoming a new paradigm in vision, due to their excellent generalization abilities. However, adapting these models for downstream tasks while maintaining their generalization remains a challenge. In literature, one branch of methods adapts CLIP by learning prompts using visual information. While effective, most of these works require labeled data which is not practical, and often struggle to generalize towards new datasets due to over-fitting on the source data. An alternative approach resorts to training-free methods by generating class descriptions from large language models (LLMs) and perform prompt ensembling. However, these methods often generate class specific prompts that cannot be transferred to other classes, which incur higher costs by generating LLM descriptions for each class separately. In this work, we propose to combine the strengths of these both streams of methods by learning prompts using only text data derived from LLMs. As supervised training of prompts is not trivial due to absence of images, we develop a training approach that allows prompts to extract rich contextual knowledge from LLM data. Moreover, with LLM contextual data mapped within the learned prompts, it enables zero-shot transfer of prompts to new classes and datasets potentially cutting the LLM prompt engineering cost. To the best of our knowledge, this is the first work that learns generalized prompts using text only data. We perform extensive evaluations on 4 benchmarks where our method improves over prior ensembling works while being competitive to those utilizing labeled images. Our code and pre-trained models are available at https://github.com/muzairkhattak/ProText.",
+    "authors": [
+        "Muhammad Uzair Khattak",
+        "Muhammad Ferjad Naeem",
+        "Muzammal Naseer",
+        "L. V. Gool",
+        "F. Tombari"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work develops a training approach that allows prompts to extract rich contextual knowledge from LLM data and enables zero-shot transfer of prompts to new classes and datasets potentially cutting the LLM prompt engineering cost."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

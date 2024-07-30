@@ -1,0 +1,31 @@
+{
+    "acronym": "e06e5e20e00df91cc4e1005e0c3d7719fb4bf33e",
+    "title": "LegalTurk Optimized BERT for Multi-Label Text Classification and NER",
+    "seed_ids": [
+        "bert",
+        "6c761cfdb031701072582e434d8f64d436255da6",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "d56c1fc337fb07ec004dc846f80582c327af717c",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "7c1b18b5075bd779813c3a30dae3aeb99fdd802e"
+    ],
+    "s2id": "e06e5e20e00df91cc4e1005e0c3d7719fb4bf33e",
+    "abstract": "The introduction of the Transformer neural network, along with techniques like self-supervised pre-training and transfer learning, has paved the way for advanced models like BERT. Despite BERT's impressive performance, opportunities for further enhancement exist. To our knowledge, most efforts are focusing on improving BERT's performance in English and in general domains, with no study specifically addressing the legal Turkish domain. Our study is primarily dedicated to enhancing the BERT model within the legal Turkish domain through modifications in the pre-training phase. In this work, we introduce our innovative modified pre-training approach by combining diverse masking strategies. In the fine-tuning task, we focus on two essential downstream tasks in the legal domain: name entity recognition and multi-label text classification. To evaluate our modified pre-training approach, we fine-tuned all customized models alongside the original BERT models to compare their performance. Our modified approach demonstrated significant improvements in both NER and multi-label text classification tasks compared to the original BERT model. Finally, to showcase the impact of our proposed models, we trained our best models with different corpus sizes and compared them with BERTurk models. The experimental results demonstrate that our innovative approach, despite being pre-trained on a smaller corpus, competes with BERTurk.",
+    "authors": [
+        "Farnaz Zeidi",
+        "M. Amasyali",
+        "cCiugdem Erol"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces an innovative modified pre-training approach by combining diverse masking strategies that demonstrates significant improvements in both NER and multi-label text classification tasks compared to the original BERT model."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,27 @@
+{
+    "acronym": "bb429a17280c2df86ac34789df880a4f728009ae",
+    "title": "Probing for Referential Information in Language Models",
+    "seed_ids": [
+        "transformerxl",
+        "101d1b1872df566088cb31b95b7e78024a484a64",
+        "356645552f8f40adf5a99b4e3a69f47699399010"
+    ],
+    "s2id": "bb429a17280c2df86ac34789df880a4f728009ae",
+    "abstract": "Language models keep track of complex information about the preceding context \u2013 including, e.g., syntactic relations in a sentence. We investigate whether they also capture information beneficial for resolving pronominal anaphora in English. We analyze two state of the art models with LSTM and Transformer architectures, via probe tasks and analysis on a coreference annotated corpus. The Transformer outperforms the LSTM in all analyses. Our results suggest that language models are more successful at learning grammatical constraints than they are at learning truly referential information, in the sense of capturing the fact that we use language to refer to entities in the world. However, we find traces of the latter aspect, too.",
+    "authors": [
+        "Ionut-Teodor Sorodoc",
+        "Kristina Gulordava",
+        "Gemma Boleda"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work analyzes two state of the art models with LSTM and Transformer architectures, via probe tasks and analysis on a coreference annotated corpus, suggesting that language models are more successful at learning grammatical constraints than they are at learning truly referential information."
+    },
+    "citationCount": 29,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

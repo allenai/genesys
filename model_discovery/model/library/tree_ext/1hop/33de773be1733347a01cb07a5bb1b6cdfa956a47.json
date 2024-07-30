@@ -1,0 +1,38 @@
+{
+    "acronym": "33de773be1733347a01cb07a5bb1b6cdfa956a47",
+    "title": "AudioLDM 2: Learning Holistic Audio Generation With Self-Supervised Pretraining",
+    "seed_ids": [
+        "gpt2",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "0b4c5379e602664a6ea87458b7f4c374d144557a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "33de773be1733347a01cb07a5bb1b6cdfa956a47",
+    "abstract": "Although audio generation shares commonalities across different types of audio, such as speech, music, and sound effects, designing models for each type requires careful consideration of specific objectives and biases that can significantly differ from those of other types. To bring us closer to a unified perspective of audio generation, this paper proposes a holistic framework that utilizes the same learning method for speech, music, and sound effect generation. Our framework utilizes a general representation of audio, called \u201clanguage of audio\u201d (LOA). Any audio can be translated into LOA based on AudioMAE, a self-supervised pre-trained representation learning model. In the generation process, we translate other modalities into LOA by using a GPT-2 model, and we perform self-supervised audio generation learning with a latent diffusion model conditioned on the LOA of audio in our training set. The proposed framework naturally brings advantages such as reusable self-supervised pretrained latent diffusion models. Experiments on the major benchmarks of text-to-audio, text-to-music, and text-to-speech with three AudioLDM 2 variants demonstrate competitive performance of the AudioLDM 2 framework against previous approaches.",
+    "authors": [
+        "Haohe Liu",
+        "Qiao Tian",
+        "Yiitan Yuan",
+        "Xubo Liu",
+        "Xinhao Mei",
+        "Qiuqiang Kong",
+        "Yuping Wang",
+        "Wenwu Wang",
+        "Yuxuan Wang",
+        "M. Plumbley"
+    ],
+    "venue": "IEEE/ACM Transactions on Audio Speech and Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A holistic framework that utilizes the same learning method for speech, music, and sound effect generation, and naturally brings advantages such as reusable self-supervised pretrained latent diffusion models."
+    },
+    "citationCount": 94,
+    "influentialCitationCount": 22,
+    "code": null,
+    "description": null,
+    "url": null
+}

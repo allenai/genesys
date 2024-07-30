@@ -1,0 +1,41 @@
+{
+    "acronym": "e9576198e9ee767ede4b1ac6a739267aa52a9832",
+    "title": "Dynamic Memory Compression: Retrofitting LLMs for Accelerated Inference",
+    "seed_ids": [
+        "flashattn",
+        "53a803388e83ae89261624099d7be4287ace67cb",
+        "b085968c4362fb286ad6c5ef71a5db9630da0498",
+        "3e8d4062ec4353ff2701c7769336dbdb97f8814c",
+        "e586a4591ba0303b769f2c07cbddaf1899cb72e4",
+        "c193eb176985a81ae64f63c5e50b2f11cfb7c4e6",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "5e52d654fd31f04c1bd884cd5480e6af8c95ad50",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28"
+    ],
+    "s2id": "e9576198e9ee767ede4b1ac6a739267aa52a9832",
+    "abstract": "Transformers have emerged as the backbone of large language models (LLMs). However, generation remains inefficient due to the need to store in memory a cache of key-value representations for past tokens, whose size scales linearly with the input sequence length and batch size. As a solution, we propose Dynamic Memory Compression (DMC), a method for online key-value cache compression at inference time. Most importantly, the model learns to apply different compression ratios in different heads and layers. We retrofit pre-trained LLMs such as Llama 2 (7B, 13B and 70B) into DMC Transformers, achieving up to 7x throughput increase during auto-regressive inference on an NVIDIA H100 GPU. DMC is applied via continued pre-training on a negligible percentage of the original data without adding any extra parameters. DMC preserves the original downstream performance with up to 4x cache compression, outperforming up-trained grouped-query attention (GQA) and key-value eviction policies (H$_2$O, TOVA). GQA and DMC can be even combined to obtain compounded gains. Hence, DMC can serve as a drop-in replacement for KV caching in existing LLMs to fit longer contexts and larger batches within any given memory budget.",
+    "authors": [
+        "Piotr Nawrot",
+        "Adrian La'ncucki",
+        "Marcin Chochowski",
+        "David Tarjan",
+        "E. M. Ponti"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Dynamic Memory Compression can serve as a drop-in replacement for KV caching in existing LLMs to fit longer contexts and larger batches within any given memory budget."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

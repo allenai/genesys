@@ -1,0 +1,31 @@
+{
+    "acronym": "70f2fdbc26dc3f86f77baf344f36538ce697f99d",
+    "title": "Emergency Department Decision Support using Clinical Pseudo-notes",
+    "seed_ids": [
+        "gpt",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "70f2fdbc26dc3f86f77baf344f36538ce697f99d",
+    "abstract": "In this work, we introduce the Multiple Embedding Model for EHR (MEME), an approach that serializes multimodal EHR tabular data into text using pseudo-notes, mimicking clinical text generation. This conversion not only preserves better representations of categorical data and learns contexts but also enables the effective employment of pretrained foundation models for rich feature representation. To address potential issues with context length, our framework encodes embeddings for each EHR modality separately. We demonstrate the effectiveness of MEME by applying it to several decision support tasks within the Emergency Department across multiple hospital systems. Our findings indicate that MEME outperforms traditional machine learning, EHR-specific foundation models, and general LLMs, highlighting its potential as a general and extendible EHR representation strategy.",
+    "authors": [
+        "Simon A. Lee",
+        "Sujay Jain",
+        "Alex Chen",
+        "Kyoka Ono",
+        "Jennifer Fang",
+        "\u00c1. Rudas",
+        "Jeffrey N. Chiang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The findings indicate that MEME outperforms traditional machine learning, EHR-specific foundation models, and general LLMs, highlighting its potential as a general and extendible EHR representation strategy."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

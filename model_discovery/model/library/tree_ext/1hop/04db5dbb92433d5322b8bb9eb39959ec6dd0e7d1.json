@@ -1,0 +1,27 @@
+{
+    "acronym": "04db5dbb92433d5322b8bb9eb39959ec6dd0e7d1",
+    "title": "Robustness of Speech Separation Models for Similar-pitch Speakers",
+    "seed_ids": [
+        "transformer",
+        "95d6d5ecb6ec57cf913e955107070496450cfd4c"
+    ],
+    "s2id": "04db5dbb92433d5322b8bb9eb39959ec6dd0e7d1",
+    "abstract": "Single-channel speech separation is a crucial task for enhancing speech recognition systems in multi-speaker environments. This paper investigates the robustness of state-of-the-art Neural Network models in scenarios where the pitch differences between speakers are minimal. Building on earlier findings by Ditter and Gerkmann, which identified a significant performance drop for the 2018 Chimera++ under similar-pitch conditions, our study extends the analysis to more recent and sophisticated Neural Network models. Our experiments reveal that modern models have substantially reduced the performance gap for matched training and testing conditions. However, a substantial performance gap persists under mismatched conditions, with models performing well for large pitch differences but showing worse performance if the speakers' pitches are similar. These findings motivate further research into the generalizability of speech separation models to similar-pitch speakers and unseen data.",
+    "authors": [
+        "Bunlong Lay",
+        "Sebastian Zaczek",
+        "Kristina Tesch",
+        "Timo Gerkmann"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper investigates the robustness of state-of-the-art Neural Network models in scenarios where the pitch differences between speakers are minimal, and reveals that modern models have substantially reduced the performance gap for matched training and testing conditions."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

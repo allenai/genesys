@@ -1,0 +1,28 @@
+{
+    "acronym": "390d16408bc16177a7160807b86ec607b5615b45",
+    "title": "FLUID-GPT (Fast Learning to Understand and Investigate Dynamics with a Generative Pre-Trained Transformer): Efficient Predictions of Particle Trajectories and Erosion",
+    "seed_ids": [
+        "gpt2",
+        "5b1bb67f700b676ac44a32ec87aeb9ff018da55f",
+        "d931f84abfc4550c10ceb113b142c8eb3e07571e",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "390d16408bc16177a7160807b86ec607b5615b45",
+    "abstract": "The deleterious impact of erosion due to high-velocity particle impingement adversely affects a variety of engineering and industrial systems, resulting in irreversible mechanical wear of materials/components. Brute force computational fluid dynamics (CFD) calculations are commonly used to predict surface erosion by directly solving the Navier\u2013Stokes equations for fluid and particle dynamics; however, these numerical approaches often require significant computational resources. In contrast, recent data-driven approaches using machine learning (ML) have shown immense promise for more efficient and accurate predictions to sidestep computationally demanding CFD calculations. To this end, we have developed FLUID-GPT (Fast Learning to Understand and Investigate Dynamics with a Generative Pre-Trained Transformer), a new hybrid ML architecture for accurately predicting particle trajectories and erosion on an industrial-scale steam header geometry. Our FLUID-GPT approach utilizes a Generative Pre-Trained Transformer 2 (GPT-2) with a convolutional neural network (CNN) for the first time to predict surface erosion using only information from five initial conditions: particle size, main-inlet speed, main-inlet pressure, subinlet speed, and subinlet pressure. Compared to the bidirectional long- and short-term memory (BiLSTM) ML techniques used in previous work, our FLUID-GPT model is much more accurate (a 54% decrease in the mean squared error) and efficient (70% less training time). Our work demonstrates that FLUID-GPT is an accurate and efficient ML approach for predicting time-series trajectories and their subsequent spatial erosion patterns in these complex dynamic systems.",
+    "authors": [
+        "Steve D. Yang",
+        "Z. Ali",
+        "Bryan M. Wong"
+    ],
+    "venue": "Industrial & Engineering Chemistry Research",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work demonstrates that FLUID-GPT is an accurate and efficient ML approach for predicting time-series trajectories and their subsequent spatial erosion patterns in these complex dynamic systems."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

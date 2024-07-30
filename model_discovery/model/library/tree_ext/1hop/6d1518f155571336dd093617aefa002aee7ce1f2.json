@@ -1,0 +1,26 @@
+{
+    "acronym": "6d1518f155571336dd093617aefa002aee7ce1f2",
+    "title": "Comparison study of unsupervised paraphrase detection: Deep learning\u2014The key for semantic similarity detection",
+    "seed_ids": [
+        "gpt",
+        "7cb5e9570b562d12df7bbca1cdf5bfcd33ae504b",
+        "28709eca90cac4102518fce9d9b4982ea949d20a"
+    ],
+    "s2id": "6d1518f155571336dd093617aefa002aee7ce1f2",
+    "abstract": "Automatic detection of concealed plagiarism in the form of paraphrases is a difficult task, and finding a successful unsupervised approach for paraphrase detection is necessary as a precondition to change that. This comparative study identified the most efficient methods for unsupervised paraphrased document detection using similarity measures alone or combined with Deep Learning (DL) models. It proved the hypothesis that some DL models are more successful than the best statistically\u2010based methods in that task. Many experiments were carried out, and their results were compared. The text similarities between documents are obtained from 60 different methods using five paraphrase corpora, including the new one made by authors, as an important original contribution. Some DL models achieved significantly better results than those obtained by the best statistical methods, especially pre\u2010trained transformer\u2010based language models with average values of Accuracy and F1 of 85.8% and 88.3%, respectively, with top values of 99.9% and 98.4% for Accuracy and F1 on some corpora. These results are even better than those of supervised and combined approaches. Therefore, here presented results prove that detecting concealed plagiarism becomes an attainable goal. This study highlighted those language models with the best overall results for paraphrase detection as best suited for further research. The study also discussed the choice of similarity/distance measure paired with embeddings produced by DL models and some advantages of using cosine similarity as the fastest measure. For 60 different methods, complexity has been defined in O notation. Times needed for their implementation have also been presented. The article's results and conclusions are a firm base for future semantic similarity, paraphrasing, and plagiarism detection studies, clearly marking state\u2010of\u2010the\u2010art tools and methods.",
+    "authors": [
+        "T. Vrbanec",
+        "A. Me\u0161trovi\u0107"
+    ],
+    "venue": "Expert Syst. J. Knowl. Eng.",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Results prove that detecting concealed plagiarism becomes an attainable goal, and highlighted those language models with the best overall results for paraphrase detection as best suited for further research."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

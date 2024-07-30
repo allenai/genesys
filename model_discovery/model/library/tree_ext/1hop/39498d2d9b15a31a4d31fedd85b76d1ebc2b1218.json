@@ -1,0 +1,30 @@
+{
+    "acronym": "39498d2d9b15a31a4d31fedd85b76d1ebc2b1218",
+    "title": "GIMO: Gaze-Informed Human Motion Prediction in Context",
+    "seed_ids": [
+        "perceiverio"
+    ],
+    "s2id": "39498d2d9b15a31a4d31fedd85b76d1ebc2b1218",
+    "abstract": "Predicting human motion is critical for assistive robots and AR/VR applications, where the interaction with humans needs to be safe and comfortable. Meanwhile, an accurate prediction depends on understanding both the scene context and human intentions. Even though many works study scene-aware human motion prediction, the latter is largely underexplored due to the lack of ego-centric views that disclose human intent and the limited diversity in motion and scenes. To reduce the gap, we propose a large-scale human motion dataset that delivers high-quality body pose sequences, scene scans, as well as ego-centric views with the eye gaze that serves as a surrogate for inferring human intent. By employing inertial sensors for motion capture, our data collection is not tied to specific scenes, which further boosts the motion dynamics observed from our subjects. We perform an extensive study of the benefits of leveraging the eye gaze for ego-centric human motion prediction with various state-of-the-art architectures. Moreover, to realize the full potential of the gaze, we propose a novel network architecture that enables bidirectional communication between the gaze and motion branches. Our network achieves the top performance in human motion prediction on the proposed dataset, thanks to the intent information from eye gaze and the denoised gaze feature modulated by the motion. Code and data can be found at https://github.com/y-zheng18/GIMO.",
+    "authors": [
+        "Yang Zheng",
+        "Yanchao Yang",
+        "Kaichun Mo",
+        "Jiaman Li",
+        "Tao Yu",
+        "Yebin Liu",
+        "Karen Liu",
+        "L. Guibas"
+    ],
+    "venue": "European Conference on Computer Vision",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A large-scale human motion dataset that delivers high-quality body pose sequences, scene scans, as well as ego-centric views with the eye gaze that serves as a surrogate for inferring human intent and a novel network architecture that enables bidirectional communication between the gaze and motion branches is proposed."
+    },
+    "citationCount": 45,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

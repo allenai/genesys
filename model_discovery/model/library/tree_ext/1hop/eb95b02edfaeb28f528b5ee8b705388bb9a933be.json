@@ -1,0 +1,36 @@
+{
+    "acronym": "eb95b02edfaeb28f528b5ee8b705388bb9a933be",
+    "title": "CLOOB: Modern Hopfield Networks with InfoLOOB Outperform CLIP",
+    "seed_ids": [
+        "hopfield",
+        "264fb3355fe11c9063bc9e466d438f720d15ef52",
+        "3f3c01adbdd433d515c19ac8cf6c61c905f0061a",
+        "562bf6d0aac2c6362086ef4c80503de8ea56b340"
+    ],
+    "s2id": "eb95b02edfaeb28f528b5ee8b705388bb9a933be",
+    "abstract": "CLIP yielded impressive results on zero-shot transfer learning tasks and is considered as a foundation model like BERT or GPT3. CLIP vision models that have a rich representation are pre-trained using the InfoNCE objective and natural language supervision before they are fine-tuned on particular tasks. Though CLIP excels at zero-shot transfer learning, it suffers from an explaining away problem, that is, it focuses on one or few features, while neglecting other relevant features. This problem is caused by insufficiently extracting the covariance structure in the original multi-modal data. We suggest to use modern Hopfield networks to tackle the problem of explaining away. Their retrieved embeddings have an enriched covariance structure derived from co-occurrences of features in the stored embeddings. However, modern Hopfield networks increase the saturation effect of the InfoNCE objective which hampers learning. We propose to use the InfoLOOB objective to mitigate this saturation effect. We introduce the novel\"Contrastive Leave One Out Boost\"(CLOOB), which uses modern Hopfield networks for covariance enrichment together with the InfoLOOB objective. In experiments we compare CLOOB to CLIP after pre-training on the Conceptual Captions and the YFCC dataset with respect to their zero-shot transfer learning performance on other datasets. CLOOB consistently outperforms CLIP at zero-shot transfer learning across all considered architectures and datasets.",
+    "authors": [
+        "Andreas Furst",
+        "Elisabeth Rumetshofer",
+        "Viet-Hung Tran",
+        "Hubert Ramsauer",
+        "Fei Tang",
+        "Johannes Lehner",
+        "David P. Kreil",
+        "Michael Kopp",
+        "G. Klambauer",
+        "Angela Bitto-Nemling",
+        "Sepp Hochreiter"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces the novel\"Contrastive Leave One Out Boost\"(CLOOB), which uses modern Hopfield networks for covariance enrichment together with the InfoLOOB objective to mitigate this saturation effect of the InfoNCE objective."
+    },
+    "citationCount": 87,
+    "influentialCitationCount": 12,
+    "code": null,
+    "description": null,
+    "url": null
+}

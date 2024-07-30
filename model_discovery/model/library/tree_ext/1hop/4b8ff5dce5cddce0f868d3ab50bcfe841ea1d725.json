@@ -1,0 +1,33 @@
+{
+    "acronym": "4b8ff5dce5cddce0f868d3ab50bcfe841ea1d725",
+    "title": "In What Languages are Generative Language Models the Most Formal? Analyzing Formality Distribution across Languages",
+    "seed_ids": [
+        "gpt2",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "76a786b1acd6d1aca56e12a8a1db34569fdf9f3a",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "4b8ff5dce5cddce0f868d3ab50bcfe841ea1d725",
+    "abstract": "Multilingual generative language models (LMs) are increasingly fluent in a large variety of languages. Trained on the concatenation of corpora in multiple languages, they enable powerful transfer from high-resource languages to low-resource ones. However, it is still unknown what cultural biases are induced in the predictions of these models. In this work, we focus on one language property highly influenced by culture: formality. We analyze the formality distributions of XGLM and BLOOM's predictions, two popular generative multilingual language models, in 5 languages. We classify 1,200 generations per language as formal, informal, or incohesive and measure the impact of the prompt formality on the predictions. Overall, we observe a diversity of behaviors across the models and languages. For instance, XGLM generates informal text in Arabic and Bengali when conditioned with informal prompts, much more than BLOOM. In addition, even though both models are highly biased toward the formal style when prompted neutrally, we find that the models generate a significant amount of informal predictions even when prompted with formal text. We release with this work 6,000 annotated samples, paving the way for future work on the formality of generative multilingual LMs.",
+    "authors": [
+        "Asim Ersoy",
+        "Gerson Vizcarra",
+        "T. Mayeesha",
+        "Benjamin Muller"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work analyzes the formality distributions of XGLM and BLOOM's predictions, two popular generative multilingual language models, in 5 languages and finds that the models generate a significant amount of informal predictions even when prompted with formal text."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

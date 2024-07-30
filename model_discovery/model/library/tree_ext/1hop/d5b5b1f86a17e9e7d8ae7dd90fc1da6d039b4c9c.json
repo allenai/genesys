@@ -1,0 +1,34 @@
+{
+    "acronym": "d5b5b1f86a17e9e7d8ae7dd90fc1da6d039b4c9c",
+    "title": "Multidocument Aspect Classification for Aspect-Based Abstractive Summarization",
+    "seed_ids": [
+        "longformer",
+        "addd2d86d19c1e7c8854e827fb2656a50c250440",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "83fac78857c7e65fe10a11a798674dd3cd259c1d",
+        "7cc730da554003dda77796d2cb4f06da5dfd5592",
+        "4d244972ed2e0286363bfb054cb269574d21a72c"
+    ],
+    "s2id": "d5b5b1f86a17e9e7d8ae7dd90fc1da6d039b4c9c",
+    "abstract": "Multidocument aspect-based summarization (AspSumm) aims to generate focused summaries based on the target aspects from a cluster of relevant documents. Generating such summaries can better satisfy readers\u2019 specific points of interest, as readers may have different concerns about the same articles. However, previous methods usually generate aspect-based summaries based on the given aspects without using the relationship among aspects to assist in the summarization. In this work, we propose a two-stage general framework for multidocument AspSumm. The model first discovers the latent relationship among aspects and then uses relevant sentences selected by aspect discovery to generate abstractive summaries. We exploit latent dependencies among aspects using a tag mask training (TMT) strategy, which increases the interpretability of the model. In addition to improvements in summarization over aspect-based strong baselines, experimental results show that our proposed model can accurately discover multidomain aspects on the WikiAsp dataset.",
+    "authors": [
+        "Ye Wang",
+        "Yingmin Zhou",
+        "Mengzhu Wang",
+        "Zhenghan Chen",
+        "Zhiping Cai",
+        "Junyang Chen",
+        "Victor C. M. Leung"
+    ],
+    "venue": "IEEE Transactions on Computational Social Systems",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The model first discovers the latent relationship among aspects and then uses relevant sentences selected by aspect discovery to generate abstractive summaries, and exploits latent dependencies among aspects using a tag mask training (TMT) strategy, which increases the interpretability of the model."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

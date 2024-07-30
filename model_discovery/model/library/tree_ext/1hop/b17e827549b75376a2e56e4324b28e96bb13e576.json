@@ -1,0 +1,30 @@
+{
+    "acronym": "b17e827549b75376a2e56e4324b28e96bb13e576",
+    "title": "EriBERTa: A Bilingual Pre-Trained Language Model for Clinical Natural Language Processing",
+    "seed_ids": [
+        "longformer",
+        "b15469d0ab3dc3a9dec037d761817b3fe546bed6",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "a022bda79947d1f656a1164003c1b3ae9a843df9",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc"
+    ],
+    "s2id": "b17e827549b75376a2e56e4324b28e96bb13e576",
+    "abstract": "The utilization of clinical reports for various secondary purposes, including health research and treatment monitoring, is crucial for enhancing patient care. Natural Language Processing (NLP) tools have emerged as valuable assets for extracting and processing relevant information from these reports. However, the availability of specialized language models for the clinical domain in Spanish has been limited. In this paper, we introduce EriBERTa, a bilingual domain-specific language model pre-trained on extensive medical and clinical corpora. We demonstrate that EriBERTa outperforms previous Spanish language models in the clinical domain, showcasing its superior capabilities in understanding medical texts and extracting meaningful information. Moreover, EriBERTa exhibits promising transfer learning abilities, allowing for knowledge transfer from one language to another. This aspect is particularly beneficial given the scarcity of Spanish clinical data.",
+    "authors": [
+        "Iker de la Iglesia",
+        "Aitziber Atutxa",
+        "Koldo Gojenola",
+        "Ander Barrena"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that EriBERTa outperforms previous Spanish language models in the clinical domain, showcasing its superior capabilities in understanding medical texts and extracting meaningful information."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

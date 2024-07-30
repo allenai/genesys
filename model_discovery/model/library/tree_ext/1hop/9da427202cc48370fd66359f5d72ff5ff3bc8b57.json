@@ -1,0 +1,51 @@
+{
+    "acronym": "9da427202cc48370fd66359f5d72ff5ff3bc8b57",
+    "title": "Can Mamba Learn How to Learn? A Comparative Study on In-Context Learning Tasks",
+    "seed_ids": [
+        "mamba",
+        "85447eeb6e5276e713957835125a2273f9ac0694",
+        "62b18cc55dcc7ffe52c28e1086aee893b7bc4334",
+        "1ec3a3ff77cb4b424499b3805ecc90182ecd8f8b",
+        "240103933ffe3dac2179cc160a2bd91299357a53",
+        "0a067fab18c67d4a386efa846c080f8afff5e8f3",
+        "f5e9337477d7a9eb6267d0310549fdefafbb7fe2",
+        "9e16d8cc6096ec0d2733a4ecf41ce09d9a4bd19c",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "998ac3e945857cf2676ee7efdbaf443a0c6f820a",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "525d93a382f6e7873b5d8a2e0713eb3dff7fb250",
+        "661e8d555c4424b5953f17434f2ba910bfcf3afe",
+        "e82e3f4347674b75c432cb80604d38ee630d4bf6",
+        "c6d38add1b7bbc10f0da37a90e3f1b51ee5fb617",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "d5e999aae76d5270ef272076979c809817458212",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "9da427202cc48370fd66359f5d72ff5ff3bc8b57",
+    "abstract": "State-space models (SSMs), such as Mamba (Gu&Dao, 2023), have been proposed as alternatives to Transformer networks in language modeling, by incorporating gating, convolutions, and input-dependent token selection to mitigate the quadratic cost of multi-head attention. Although SSMs exhibit competitive performance, their in-context learning (ICL) capabilities, a remarkable emergent property of modern language models that enables task execution without parameter optimization, remain underexplored compared to Transformers. In this study, we evaluate the ICL performance of SSMs, focusing on Mamba, against Transformer models across various tasks. Our results show that SSMs perform comparably to Transformers in standard regression ICL tasks, while outperforming them in tasks like sparse parity learning. However, SSMs fall short in tasks involving non-standard retrieval functionality. To address these limitations, we introduce a hybrid model, MambaFormer, that combines Mamba with attention blocks, surpassing individual models in tasks where they struggle independently. Our findings suggest that hybrid architectures offer promising avenues for enhancing ICL in language models.",
+    "authors": [
+        "Jongho Park",
+        "Jaeseung Park",
+        "Zheyang Xiong",
+        "Nayoung Lee",
+        "Jaewoong Cho",
+        "Samet Oymak",
+        "Kangwook Lee",
+        "Dimitris Papailiopoulos"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A hybrid model is introduced, MambaFormer, that combines Mamba with attention blocks, surpassing individual models in tasks where they struggle independently, and suggests that hybrid architectures offer promising avenues for enhancing ICL in language models."
+    },
+    "citationCount": 24,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

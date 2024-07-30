@@ -1,0 +1,36 @@
+{
+    "acronym": "40438187c1037ebce7b477a400853ba1b47ef772",
+    "title": "HyenaPixel: Global Image Context with Convolutions",
+    "seed_ids": [
+        "hyena",
+        "metaformer",
+        "e6917b14918f90e8fb89ad4debebd3937e57a123",
+        "131ba9932572c92155874db93626cf299659254e",
+        "998ac3e945857cf2676ee7efdbaf443a0c6f820a",
+        "54155c2977a977bf129849455dcae3a2b79b3f41",
+        "fc4cbc7a75f5a3bbca59db5513231555f078fe78",
+        "d1869155960e4b1b882b39171dbecd25a7eda3cd",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "1d5c8c6e5a774d2fef8d92bd28670a6345a97f7a",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "40438187c1037ebce7b477a400853ba1b47ef772",
+    "abstract": "In computer vision, a larger effective receptive field (ERF) is associated with better performance. While attention natively supports global context, its quadratic complexity limits its applicability to tasks that benefit from high-resolution input. In this work, we extend Hyena, a convolution-based attention replacement, from causal sequences to bidirectional data and two-dimensional image space. We scale Hyena's convolution kernels beyond the feature map size, up to 191$\\times$191, to maximize ERF while maintaining sub-quadratic complexity in the number of pixels. We integrate our two-dimensional Hyena, HyenaPixel, and bidirectional Hyena into the MetaFormer framework. For image categorization, HyenaPixel and bidirectional Hyena achieve a competitive ImageNet-1k top-1 accuracy of 84.9% and 85.2%, respectively, with no additional training data, while outperforming other convolutional and large-kernel networks. Combining HyenaPixel with attention further improves accuracy. We attribute the success of bidirectional Hyena to learning the data-dependent geometric arrangement of pixels without a fixed neighborhood definition. Experimental results on downstream tasks suggest that HyenaPixel with large filters and a fixed neighborhood leads to better localization performance.",
+    "authors": [
+        "Julian Spravil",
+        "Sebastian Houben",
+        "Sven Behnke"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work extends Hyena, a convolution-based attention replacement, from causal sequences to bidirectional data and two-dimensional image space, and scales Hyena's convolution kernels beyond the feature map size to maximize ERF while maintaining sub-quadratic complexity in the number of pixels."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

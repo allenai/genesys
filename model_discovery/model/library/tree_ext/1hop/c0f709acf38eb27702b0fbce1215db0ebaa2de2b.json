@@ -1,0 +1,35 @@
+{
+    "acronym": "c0f709acf38eb27702b0fbce1215db0ebaa2de2b",
+    "title": "SMYRF: Efficient Attention using Asymmetric Clustering",
+    "seed_ids": [
+        "longformer",
+        "reformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "2a31319e73d4486716168b65cdf7559baeda18ce"
+    ],
+    "s2id": "c0f709acf38eb27702b0fbce1215db0ebaa2de2b",
+    "abstract": "We propose a novel type of balanced clustering algorithm to approximate attention. Attention complexity is reduced from $O(N^2)$ to $O(N \\log N)$, where $N$ is the sequence length. Our algorithm, SMYRF, uses Locality Sensitive Hashing (LSH) in a novel way by defining new Asymmetric transformations and an adaptive scheme that produces balanced clusters. The biggest advantage of SMYRF is that it can be used as a drop-in replacement for dense attention layers without any retraining. On the contrary, prior fast attention methods impose constraints (e.g. queries and keys share the same vector representations) and require re-training from scratch. We apply our method to pre-trained state-of-the-art Natural Language Processing and Computer Vision models and we report significant memory and speed benefits. Notably, SMYRF-BERT outperforms (slightly) BERT on GLUE, while using $50\\%$ less memory. We also show that SMYRF can be used interchangeably with dense attention before and after training. Finally, we use SMYRF to train GANs with attention in high resolutions. Using a single TPU, we were able to scale attention to 128x128=16k and 256x256=65k tokens on BigGAN on CelebA-HQ.",
+    "authors": [
+        "Giannis Daras",
+        "Nikita Kitaev",
+        "Augustus Odena",
+        "A. Dimakis"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The algorithm, SMYRF, uses Locality Sensitive Hashing (LSH) in a novel way by defining new Asymmetric transformations and an adaptive scheme that produces balanced clusters that can be used interchangeably with dense attention before and after training."
+    },
+    "citationCount": 39,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

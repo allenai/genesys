@@ -1,0 +1,28 @@
+{
+    "acronym": "ec307b17f193b14292206b65a1bcc95bfd8f02ed",
+    "title": "\u266b MuSiQue: Multihop Questions via Single-hop Question Composition",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "ec307b17f193b14292206b65a1bcc95bfd8f02ed",
+    "abstract": "Multihop reasoning remains an elusive goal as existing multihop benchmarks are known to be largely solvable via shortcuts. Can we create a question answering (QA) dataset that, by construction, requires proper multihop reasoning? To this end, we introduce a bottom\u2013up approach that systematically selects composable pairs of single-hop questions that are connected, that is, where one reasoning step critically relies on information from another. This bottom\u2013up methodology lets us explore a vast space of questions and add stringent filters as well as other mechanisms targeting connected reasoning. It provides fine-grained control over the construction process and the properties of the resulting k-hop questions. We use this methodology to create MuSiQue-Ans, a new multihop QA dataset with 25K 2\u20134 hop questions. Relative to existing datasets, MuSiQue-Ans is more difficult overall (3\u00d7 increase in human\u2013machine gap), and harder to cheat via disconnected reasoning (e.g., a single-hop model has a 30-point drop in F1). We further add unanswerable contrast questions to produce a more stringent dataset, MuSiQue-Full. We hope our datasets will help the NLP community develop models that perform genuine multihop reasoning.1",
+    "authors": [
+        "H. Trivedi",
+        "Niranjan Balasubramanian",
+        "Tushar Khot",
+        "Ashish Sabharwal"
+    ],
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A bottom\u2013up approach is introduced that systematically selects composable pairs of single-hop questions that are connected, that is, where one reasoning step critically relies on information from another, to create a new multihop QA dataset with 25K 2\u20134 hop questions."
+    },
+    "citationCount": 112,
+    "influentialCitationCount": 23,
+    "code": null,
+    "description": null,
+    "url": null
+}

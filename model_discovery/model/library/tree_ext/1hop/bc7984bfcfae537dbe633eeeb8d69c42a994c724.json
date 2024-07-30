@@ -1,0 +1,36 @@
+{
+    "acronym": "bc7984bfcfae537dbe633eeeb8d69c42a994c724",
+    "title": "ELLE: Efficient Lifelong Pre-training for Emerging Data",
+    "seed_ids": [
+        "gpt",
+        "7a49beff86a855f237f96ae3f0aefc9780cb31be",
+        "981995fd64611f475179b280f4e9c241051ac185",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "ad7129af0644dbcafa9aa2f111cb76526ea444a1",
+        "5a3749929bf5fb8b1f98a7b2a43c3b957bcf6c88",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "7422756d2416c62d7660bd217d817acc8ec35a09"
+    ],
+    "s2id": "bc7984bfcfae537dbe633eeeb8d69c42a994c724",
+    "abstract": "Current pre-trained language models (PLM) are typically trained with static data, ignoring that in real-world scenarios, streaming data of various sources may continuously grow. This requires PLMs to integrate the information from all the sources in a lifelong manner. Although this goal could be achieved by exhaustive pre-training on all the existing data, such a process is known to be computationally expensive. To this end, we propose ELLE, aiming at efficient lifelong pre-training for emerging data. Specifically, ELLE consists of (1) function preserved model expansion, which flexibly expands an existing PLM\u2019s width and depth to improve the efficiency of knowledge acquisition; and (2) pre-trained domain prompts, which disentangle the versatile knowledge learned during pre-training and stimulate the proper knowledge for downstream tasks. We experiment ELLE with streaming data from 5 domains on BERT and GPT. The results show the superiority of ELLE over various lifelong learning baselines in both pre-training efficiency and downstream performances. The codes are publicly available at https://github.com/thunlp/ELLE.",
+    "authors": [
+        "Yujia Qin",
+        "Jiajie Zhang",
+        "Yankai Lin",
+        "Zhiyuan Liu",
+        "Peng Li",
+        "Maosong Sun",
+        "Jie Zhou"
+    ],
+    "venue": "Findings",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed ELLE consists of function preserved model expansion, which flexibly expands an existing PLM\u2019s width and depth to improve the efficiency of knowledge acquisition, and pre-trained domain prompts, which disentangle the versatile knowledge learned during pre-training and stimulate the proper knowledge for downstream tasks."
+    },
+    "citationCount": 52,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

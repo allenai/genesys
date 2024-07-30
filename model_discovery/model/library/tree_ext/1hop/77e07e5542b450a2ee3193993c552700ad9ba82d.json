@@ -1,0 +1,32 @@
+{
+    "acronym": "77e07e5542b450a2ee3193993c552700ad9ba82d",
+    "title": "FollowIR: Evaluating and Teaching Information Retrieval Models to Follow Instructions",
+    "seed_ids": [
+        "gpt3",
+        "ac45bbf9940512d9d686cf8cd3a95969bc313570",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c"
+    ],
+    "s2id": "77e07e5542b450a2ee3193993c552700ad9ba82d",
+    "abstract": "Modern Language Models (LMs) are capable of following long and complex instructions that enable a large and diverse set of user requests. While Information Retrieval (IR) models use these LMs as the backbone of their architectures, virtually none of them allow users to provide detailed instructions alongside queries, thus limiting their ability to satisfy complex information needs. In this work, we study the use of instructions in IR systems. First, we introduce our dataset FollowIR, which contains a rigorous instruction evaluation benchmark as well as a training set for helping IR models learn to better follow real-world instructions. FollowIR repurposes detailed instructions -- also known as narratives -- developed for professional assessors to evaluate retrieval systems. In particular, we build our benchmark from three collections curated for shared tasks at the Text REtrieval Conference (TREC). These collections contains hundreds to thousands of labeled documents per query, making them suitable for our exploration. Through this process, we can measure how well IR models follow instructions, through a new pairwise evaluation framework. Our results indicate that existing retrieval models fail to correctly use instructions, using them for basic keywords and struggling to understand long-form information. However, we show that it is possible for IR models to learn to follow complex instructions: our new FollowIR-7B model has significant improvements after fine-tuning on our training set.",
+    "authors": [
+        "Orion Weller",
+        "Benjamin Chang",
+        "Sean MacAvaney",
+        "Kyle Lo",
+        "Arman Cohan",
+        "Benjamin Van Durme",
+        "Dawn Lawrie",
+        "Luca Soldaini"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces the dataset FollowIR, which contains a rigorous instruction evaluation benchmark as well as a training set for helping IR models learn to better follow real-world instructions, and shows that it is possible for IR models to learn to follow complex instructions."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "3074f2f3a7dbaec548e00d8c2f6522059cbe729c",
+    "title": "CTformer: convolution-free Token2Token dilated vision transformer for low-dose CT denoising",
+    "seed_ids": [
+        "performer",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "3074f2f3a7dbaec548e00d8c2f6522059cbe729c",
+    "abstract": "Objective. Low-dose computed tomography (LDCT) denoising is an important problem in CT research. Compared to the normal dose CT, LDCT images are subjected to severe noise and artifacts. Recently in many studies, vision transformers have shown superior feature representation ability over the convolutional neural networks (CNNs). However, unlike CNNs, the potential of vision transformers in LDCT denoising was little explored so far. Our paper aims to further explore the power of transformer for the LDCT denoising problem. Approach. In this paper, we propose a Convolution-free Token2Token Dilated Vision Transformer (CTformer) for LDCT denoising. The CTformer uses a more powerful token rearrangement to encompass local contextual information and thus avoids convolution. It also dilates and shifts feature maps to capture longer-range interaction. We interpret the CTformer by statically inspecting patterns of its internal attention maps and dynamically tracing the hierarchical attention flow with an explanatory graph. Furthermore, overlapped inference mechanism is employed to effectively eliminate the boundary artifacts that are common for encoder-decoder-based denoising models. Main results. Experimental results on Mayo dataset suggest that the CTformer outperforms the state-of-the-art denoising methods with a low computational overhead. Significance. The proposed model delivers excellent denoising performance on LDCT. Moreover, low computational cost and interpretability make the CTformer promising for clinical applications.",
+    "authors": [
+        "Dayang Wang",
+        "Fenglei Fan",
+        "Zhan Wu",
+        "R. Liu",
+        "Fei Wang",
+        "Hengyong Yu"
+    ],
+    "venue": "Physics in Medicine and Biology",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a Convolution-free Token2Token Dilated Vision Transformer (CTformer), which uses a more powerful token rearrangement to encompass local contextual information and thus avoids convolution in LDCT denoising."
+    },
+    "citationCount": 67,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,33 @@
+{
+    "acronym": "35dee171e843f07d13622f57e475fcbcab7aad31",
+    "title": "Multi-Document Summarization Using Selective Attention Span and Reinforcement Learning",
+    "seed_ids": [
+        "longt5",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "42e41ab2211b8ba78e36326ea21e05bd25d92c42",
+        "a62209a3f90a5bb23054b0a126f5f5f23b9e4b53",
+        "f4566761fe39c4b5273d696d9bc3f4195c9325bb",
+        "9dc624d7258d1a56117ca720aea953ce46b66b21",
+        "46e7383e6fb8da77479d0a828c7a24d924302169",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "35dee171e843f07d13622f57e475fcbcab7aad31",
+    "abstract": "Abstractive text summarization systems using recently improved RNN-based sequence-to-sequence architecture have shown great promise for single-document summarization. However, such neural models fail to perpetuate the performance in the multi-document summarization setting owing to the long-range dependencies within the documents, overlapping/contradicting facts and extrinsic model hallucinations. These shortcomings augment the model to generate inconsistent, repetitive and non-factual summaries. In this work, we introduce <monospace>REISA</monospace>, a sequence-to-sequence model with a novel <italic>reinforced selective attention span</italic> that attends over the input and recalibrates the local attention weights to focus on important segments while generating output at each time step. <monospace>REISA</monospace> utilizes a reinforcement learning-based policy gradient algorithm to reward the model and formulate attention distributions over the encoder input. We further benchmark <monospace>REISA</monospace> on two widely-used multi-document summarization corpora \u2013 Multinews and CQASumm, and observe an improvement of <inline-formula><tex-math notation=\"LaTeX\">$+2.91$</tex-math></inline-formula> and <inline-formula><tex-math notation=\"LaTeX\">$+6.64$</tex-math></inline-formula> ROUGE-L scores, respectively. The qualitative analyses on semantic similarity by BERTScore, faithfulness by question-answer evaluation and human evaluation show significant improvement over the baseline-generated summaries.",
+    "authors": [
+        "Yash Kumar Atri",
+        "Vikram Goyal",
+        "Tanmoy Chakraborty"
+    ],
+    "venue": "IEEE/ACM Transactions on Audio Speech and Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces <monospace>REISA</monospace>, a sequence-to-sequence model with a novel Reinforced selective attention span that attends over the input and recalibrates the local attention weights to focus on important segments while generating output at each time step."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

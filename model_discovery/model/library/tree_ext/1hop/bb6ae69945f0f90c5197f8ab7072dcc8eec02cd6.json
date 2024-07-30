@@ -1,0 +1,36 @@
+{
+    "acronym": "bb6ae69945f0f90c5197f8ab7072dcc8eec02cd6",
+    "title": "A Frustratingly Simple Decoding Method for Neural Text Generation",
+    "seed_ids": [
+        "gpt2",
+        "91b07210ec07a229e5caf2d5f009a523b39e40ae",
+        "6151ee4af6a3fe78f2df7c605598cd9e02b23c5b",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "429c03b91a6cb59c77dcfd313d065346989a46f0",
+        "492a655a67e6ec7423a968cedb70eec0cdbc8e98",
+        "7ade458d52d2dfe997b8a617a6b524bda12a619d",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "bb6ae69945f0f90c5197f8ab7072dcc8eec02cd6",
+    "abstract": "We introduce a frustratingly simple, highly efficient, and surprisingly effective decoding method, termed Frustratingly Simple Decoding (FSD), for neural text generation. The idea behind FSD is straightforward: We construct an anti-language model (anti-LM) based on previously generated text, which is employed to penalize the future generation of repetitive content. The anti-LM can be implemented as simple as an n-gram language model or a vectorized variant. In this way, FSD incurs no additional model parameters and negligible computational overhead (FSD can be as fast as greedy search). Despite its simplicity, FSD is surprisingly effective and generalizes across different datasets, models, and languages. Extensive experiments show that FSD outperforms established strong baselines in terms of generation quality, decoding speed, and universality.",
+    "authors": [
+        "Haoran Yang",
+        "Deng Cai",
+        "Huayang Li",
+        "Wei Bi",
+        "Wai Lam",
+        "Shuming Shi"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Frustratingly Simple Decoding is introduced, a frustratingly simple, highly efficient, and surprisingly effective decoding method for neural text generation that outperforms established strong baselines in terms of generation quality, decoding speed, and universality."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

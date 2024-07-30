@@ -1,0 +1,26 @@
+{
+    "acronym": "3294f92f35ead64b92b17dfa626f66ba74798425",
+    "title": "PoseTron: Enabling Close-Proximity Human-Robot Collaboration Through Multi-human Motion Prediction",
+    "seed_ids": [
+        "transformer",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "3294f92f35ead64b92b17dfa626f66ba74798425",
+    "abstract": "As robots enter human workspaces, there is a crucial need for robots to understand and predict human motion to achieve safe and fluent human-robot collaboration (HRC). However, accurate prediction is challenging due to a lack of large-scale datasets for close-proximity HRC and the absence of generalizable algorithms. To overcome these challenges, we present INTERACT, a comprehensive multimodal dataset covering 3-D Skeleton, RGB+D, gaze, and robot joint data for human-human and human-robot collaboration. Additionally, we introduce PoseTron, a novel transformer-based architecture to address the gap in learning algorithms. PoseTron introduces a conditional attention mechanism in the encoder enabling efficient weighing of motion information from all agents to incorporate team dynamics. The decoder features a novel multimodal attention mechanism, which weights representations from different modalities and the encoder outputs to predict future motion. We extensively evaluated PoseTron by comparing its performance on the INTERACT dataset against state-of-the-art algorithms. The results suggest that PoseTron outperformed all other methods across all the scenarios, attaining lowest prediction errors. Furthermore, we conducted a comprehensive ablation study, emphasizing the importance of design choices, pointing towards a promising direction for integrating motion prediction with robot perception in safe and effective HRC.",
+    "authors": [
+        "M. S. Yasar",
+        "Md. Mofijul Islam",
+        "Tariq Iqbal"
+    ],
+    "venue": "IEEE/ACM International Conference on Human-Robot Interaction",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "InterACT, a comprehensive multimodal dataset covering 3-D Skeleton, RGB+D, gaze, and robot joint data for human-human and human-robot collaboration, and PoseTron, a novel transformer-based architecture to address the gap in learning algorithms are presented."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

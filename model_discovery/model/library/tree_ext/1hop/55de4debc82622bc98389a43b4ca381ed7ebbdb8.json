@@ -1,0 +1,27 @@
+{
+    "acronym": "55de4debc82622bc98389a43b4ca381ed7ebbdb8",
+    "title": "MEGP: Dual feature extraction network for Chinese medical entity recognition",
+    "seed_ids": [
+        "roformer",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "55de4debc82622bc98389a43b4ca381ed7ebbdb8",
+    "abstract": "Named Entity Recognition(NER) is a key technology for information extraction. Chinese medical text contains a high number of nested entities, making entity recognition more complex compared to ordinary text. Previous methods for recognizing entities of Chinese medical text often ignore the nested entity parts and directly use sequence labeling methods to recognize the whole entity. Therefore, this paper proposes a named entity recognition model for Chinese medical text that effectively improves the accuracy of nested entities. The model based on dual features extraction network and Global Pointer. The different features are obtained by pre-training model RoBERTa-wwm and four-corner method and combined with BiLSTM to obtain fused feature vectors. Then using the Global Pointer to decode the features to obtain the recognition results. The experimental results show that the proposed model has an average F1-score of 71.6% on the CMeEE dataset, which performs better than the benchmark models. The proposed model is significantly superior to the existing methods in terms of nested-type entity recognition performance, and the overall accuracy is increased by 8.96% compared with the benchmark models.",
+    "authors": [
+        "Yijie Zhang",
+        "Yan Gao",
+        "Dan Tang",
+        "Qiong Zeng"
+    ],
+    "venue": "International Symposium on Artificial Intelligence in Medical Sciences",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed model is significantly superior to the existing methods in terms of nested-type entity recognition performance, and the overall accuracy is increased by 8.96% compared with the benchmark models."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

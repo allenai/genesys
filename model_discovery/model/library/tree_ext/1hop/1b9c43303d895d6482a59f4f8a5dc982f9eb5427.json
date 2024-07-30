@@ -1,0 +1,29 @@
+{
+    "acronym": "1b9c43303d895d6482a59f4f8a5dc982f9eb5427",
+    "title": "Fine-tuning Pre-trained Named Entity Recognition Models For Indian Languages",
+    "seed_ids": [
+        "bert",
+        "b76e98a0a023d37c6534aa2ead09c8ff595f0bae"
+    ],
+    "s2id": "1b9c43303d895d6482a59f4f8a5dc982f9eb5427",
+    "abstract": "Named Entity Recognition (NER) is a use-ful component in Natural Language Process-ing (NLP) applications. It is used in varioustasks such as Machine Translation, Summa-rization, Information Retrieval, and Question-Answering systems. The research on NER iscentered around English and some other ma-jor languages, whereas limited attention hasbeen given to Indian languages. We analyze thechallenges and propose techniques that can betailored for Multilingual Named Entity Recog-nition for Indian Languages. We present a hu-man annotated named entity corpora of \u223c40Ksentences for 4 Indian languages from two ofthe major Indian language families. Addition-ally, we show the transfer learning capabilitiesof pre-trained transformer models from a highresource language to multiple low resource lan-guages through a series of experiments. Wealso present a multilingual model fine-tunedon our dataset, which achieves an F1 score of\u223c0.80 on our dataset on average. We achievecomparable performance on completely unseenbenchmark datasets for Indian languages whichaffirms the usability of our model.",
+    "authors": [
+        "Sankalp Bahad",
+        "Pruthwik Mishra",
+        "Karunesh Arora",
+        "R. Balabantaray",
+        "D. Sharma",
+        "Parameswari Krishnamurthy"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A hu-man annotated named entity corpora of \u223c40Ksentences for 4 Indian languages from two of the major Indian language families is presented and comparable performance on completely unseenbenchmark datasets for Indian languages is achieved which confirms the usability of the model."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

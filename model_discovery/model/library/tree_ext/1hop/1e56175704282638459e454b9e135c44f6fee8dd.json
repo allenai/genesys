@@ -1,0 +1,27 @@
+{
+    "acronym": "1e56175704282638459e454b9e135c44f6fee8dd",
+    "title": "Multi-scale attention fusion network for semantic segmentation of remote sensing images",
+    "seed_ids": [
+        "linformer",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1e56175704282638459e454b9e135c44f6fee8dd",
+    "abstract": "ABSTRACT In the realm of high-resolution remote sensing image (HRSI) segmentation, convolutional neural networks have shown their effectiveness and superiority. However, there are still two problems in the segmentation model that generally adopts the encoder-decoder structure in the face of HRSI: 1) Fusing high-level feature maps and low-level feature maps directly in the decoder will make spatial detail features easy to mask; 2) Although self-attention has been used to capture the long-distance dependence of features, the consumption of computing power and memory makes it have many restrictions in practical applications. Aiming at these two problems, this paper proposes a new HRSI segmentation model (named MLWNet). First, the introduction of the maximum pooling module improves the quality of the feature map and obtains the receptive field of the whole map and rich global semantic information. Then, based on a new linear complexity self-attention mechanism, we design a multi-scale linear self-attention module to abstract the correlation between contexts. Finally, the weighted feature fusion helps the feature map restore spatial details and refine the segmentation results. On the two HRSI datasets of ISPRS Potsdam and ISPRS Vaihingen, MLWNet achieved mIOU segmentation accuracy of 78.19% and 71.61%, respectively, which not only outperforms other mainstream segmentation models but also has only 17.423\u2009M parameters. The segmentation model in this study has high precision and small parameters, which can provide decision information for real-time use of remote sensing images.",
+    "authors": [
+        "Zhiqiang Wen",
+        "Hongxu Huang",
+        "Shuai Liu"
+    ],
+    "venue": "International Journal of Remote Sensing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new HRSI segmentation model (named MLWNet), based on a new linear complexity self-attention mechanism, which has high precision and small parameters, which can provide decision information for real-time use of remote sensing images."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

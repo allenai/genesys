@@ -1,0 +1,33 @@
+{
+    "acronym": "9e46a2f7d0193fee8b3d702bfeb9692ed6660e14",
+    "title": "DiffSLU: Knowledge Distillation Based Diffusion Model for Cross-Lingual Spoken Language Understanding",
+    "seed_ids": [
+        "diffuseq",
+        "42d755b43b32090ca33377265ad42d73c76604cd",
+        "a1186d7d9a9ef258c76afef1177e4f348061a537",
+        "23b7cde603b5ec8d5d13d46e1c453dc52d7c3f6c",
+        "22775e58932cdfbd273a2a835a22c5d86800a458",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "0b9770a377b3f96cef9f268cee1791d39a0d4893",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "24425954960ce968e5f14360fbdd0605abcadfcf"
+    ],
+    "s2id": "9e46a2f7d0193fee8b3d702bfeb9692ed6660e14",
+    "abstract": "Spoken language understanding (SLU) has achieved great success in high-resource languages, but it still remains challenging in the low-resource languages due to the scarcity of labeled training data. Hence, there is an increasing interest in zero-shot cross-lingual SLU. SLU typically has two subtasks, including intent detection and slot filling. Slots and intent in the same utterance are correlated, thus it is beneficial to achieve mutual guidance between them. In this paper, we propose a novel cross-lingual SLU framework termed DiffSLU, which leverages powerful diffusion model to enhance the mutual guidance. In addition, we also utilize knowledge distillation to facilitate knowledge transfer. Experimental results demonstrate that our Diff-SLU can improve the performance compared with the strong baselines and achieves the new state-of-the-art performance on MultiATIS++ dataset, obtaining a relative improvement of 3.1 % over the previous best model in overall accuracy.",
+    "authors": [
+        "Tianjun Mao",
+        "Chenghong Zhang"
+    ],
+    "venue": "Interspeech",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel cross-lingual SLU framework termed DiffSLU, which leverages powerful diffusion model to enhance the mutual guidance and also utilizes knowledge distillation to facilitate knowledge transfer."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

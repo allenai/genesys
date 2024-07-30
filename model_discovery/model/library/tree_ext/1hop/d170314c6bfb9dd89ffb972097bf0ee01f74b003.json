@@ -1,0 +1,30 @@
+{
+    "acronym": "d170314c6bfb9dd89ffb972097bf0ee01f74b003",
+    "title": "Energy Saving Based on Transformer Models with LeakyReLU Activation Function",
+    "seed_ids": [
+        "gpt3",
+        "52045d4d4ae305aebb9e92fbbcf23104242c4d31",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "c49ac1f916d6d2edeb187e6619c8d23acd95eb21",
+        "2e644c67a697073d561da4f4dad35e5ad5316cfd",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d170314c6bfb9dd89ffb972097bf0ee01f74b003",
+    "abstract": "In this paper, energy saving based on transformers with LeakyReLU attention mechanisms is discussed. Softmax functions in attention mechanisms of transformers are replaced by LeakyReLU functions, which include ReLU functions as special cases. The goal of doing so is to explore possible trans-former architectures with reduced computational complexity for saving electrical energy in the inference phase. Theoretical analysis based on a general-purpose computing model shows that, under given conditions and assumptions, the worst-case time complexities for computing attention in transformers are in the rank, from low to high complexity, of ReLU, LeakyReLU, and softmax. In particular, as shown in experimental results on language translation and deterministic network flow aggregation tasks, transformers with ReLU (LeakyReLU with 0 negative slope) and LeakyReLU (0.1 negative slope) attention consume less average computation time compared to that with softmax attention in inference phases. The theoretical and experimental results show that the transformers with LeakyReLU activation may save energy in the language translation and deterministic networking tasks.",
+    "authors": [
+        "Jiasen Wang",
+        "Xinqi Li",
+        "Jun Wang"
+    ],
+    "venue": "International Conference on Information and Software Technologies",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The theoretical and experimental results show that the transformers with LeakyReLU activation may save energy in the language translation and deterministic networking tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

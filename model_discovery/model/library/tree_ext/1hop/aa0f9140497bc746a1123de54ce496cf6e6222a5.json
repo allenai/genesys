@@ -1,0 +1,33 @@
+{
+    "acronym": "aa0f9140497bc746a1123de54ce496cf6e6222a5",
+    "title": "Learning to Navigate Wikipedia by Taking Random Walks",
+    "seed_ids": [
+        "bigbird",
+        "56765a17295370c70cbc510329c082ec60ed3c62"
+    ],
+    "s2id": "aa0f9140497bc746a1123de54ce496cf6e6222a5",
+    "abstract": "A fundamental ability of an intelligent web-based agent is seeking out and acquiring new information. Internet search engines reliably find the correct vicinity but the top results may be a few links away from the desired target. A complementary approach is navigation via hyperlinks, employing a policy that comprehends local content and selects a link that moves it closer to the target. In this paper, we show that behavioral cloning of randomly sampled trajectories is sufficient to learn an effective link selection policy. We demonstrate the approach on a graph version of Wikipedia with 38M nodes and 387M edges. The model is able to efficiently navigate between nodes 5 and 20 steps apart 96% and 92% of the time, respectively. We then use the resulting embeddings and policy in downstream fact verification and question answering tasks where, in combination with basic TF-IDF search and ranking methods, they are competitive results to the state-of-the-art methods.",
+    "authors": [
+        "M. Zaheer",
+        "Kenneth Marino",
+        "Will Grathwohl",
+        "John Schultz",
+        "Wendy Shang",
+        "Sheila Babayan",
+        "Arun Ahuja",
+        "Ishita Dasgupta",
+        "Christine Kaeser-Chen",
+        "R. Fergus"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that behavioral cloning of randomly sampled trajectories is sufficient to learn an effective link selection policy and is used in downstream fact verification and question answering tasks where they are competitive results to the state-of-the-art methods."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

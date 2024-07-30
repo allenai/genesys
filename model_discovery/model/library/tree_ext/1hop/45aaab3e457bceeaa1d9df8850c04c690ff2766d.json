@@ -1,0 +1,25 @@
+{
+    "acronym": "45aaab3e457bceeaa1d9df8850c04c690ff2766d",
+    "title": "Faster Transformers for text summarization",
+    "seed_ids": [
+        "memcompress",
+        "lighdynconv"
+    ],
+    "s2id": "45aaab3e457bceeaa1d9df8850c04c690ff2766d",
+    "abstract": "Lightweight Convolutions [2]: This model replaces self-attention layers by some kind of local convolutions where each filter only takes into account one dimension, via a matrix W \u2208 Rd\u00d7k where k is the size of the convolution window. Oi,c = k \u2211 j=1 W \u2032 c,j \u00b7X(i+j\u2212dk+1 2 ]),c where X \u2208 Rn\u00d7d is the input and O \u2208 Rn\u00d7d is the output. W\u2019 is the matrix W with a softmax layer applied across each channel. Complexity: O(n\u00d7 k \u00d7 d).",
+    "authors": [
+        "Alexandre Matton",
+        "A. Sabran"
+    ],
+    "venue": "",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Lightweight Convolutions [2]: This model replaces self-attention layers by some kind of local convolutions where each filter only takes into account one dimension, via a matrix W \u2208 Rd\u00d7k where k is the size of the convolution window."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

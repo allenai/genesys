@@ -1,0 +1,31 @@
+{
+    "acronym": "bbe197158adb4b6e85a6eeab4619ea0fc6857941",
+    "title": "MarioGPT: Open-Ended Text2Level Generation through Large Language Models",
+    "seed_ids": [
+        "gpt2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "bbe197158adb4b6e85a6eeab4619ea0fc6857941",
+    "abstract": "Procedural Content Generation (PCG) algorithms provide a technique to generate complex and diverse environments in an automated way. However, while generating content with PCG methods is often straightforward, generating meaningful content that reflects specific intentions and constraints remains challenging. Furthermore, many PCG algorithms lack the ability to generate content in an open-ended manner. Recently, Large Language Models (LLMs) have shown to be incredibly effective in many diverse domains. These trained LLMs can be fine-tuned, re-using information and accelerating training for new tasks. In this work, we introduce MarioGPT, a fine-tuned GPT2 model trained to generate tile-based game levels, in our case Super Mario Bros levels. We show that MarioGPT can not only generate diverse levels, but can be text-prompted for controllable level generation, addressing one of the key challenges of current PCG techniques. As far as we know, MarioGPT is the first text-to-level model. We also combine MarioGPT with novelty search, enabling it to generate diverse levels with varying play-style dynamics (i.e. player paths). This combination allows for the open-ended generation of an increasingly diverse range of content.",
+    "authors": [
+        "Shyam Sudhakaran",
+        "Miguel Gonz'alez-Duque",
+        "Claire Glanois",
+        "Matthias Anton Freiberger",
+        "Elias Najarro",
+        "S. Risi"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "MarioGPT is the first text-to-level model trained to generate tile-based game levels, and it is shown that MarioGPT can not only generate diverse levels, but can be text-prompted for controllable level generation, addressing one of the key challenges of current PCG techniques."
+    },
+    "citationCount": 28,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

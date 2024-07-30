@@ -1,0 +1,44 @@
+{
+    "acronym": "1d4c48335d841014d0145256c3c4e7f6c426b8fb",
+    "title": "You Only Cache Once: Decoder-Decoder Architectures for Language Models",
+    "seed_ids": [
+        "transformer",
+        "mamba",
+        "retnet",
+        "gqa",
+        "cbaf689fd9ea9bc939510019d90535d6249b3367",
+        "62b18cc55dcc7ffe52c28e1086aee893b7bc4334",
+        "d7f64f2bdd80ea15f21ef7d867e102ac9ecdc797",
+        "02ad9f3fefe33cb9ca546591bec65dbdf7766c80",
+        "5e0cb1c4b91a7486e1c2b15a44a0be56bd74bdc0",
+        "240103933ffe3dac2179cc160a2bd91299357a53",
+        "80980cd10d19f021c14a6b7eee871b6a5d328024",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "1d4c48335d841014d0145256c3c4e7f6c426b8fb",
+    "abstract": "We introduce a decoder-decoder architecture, YOCO, for large language models, which only caches key-value pairs once. It consists of two components, i.e., a cross-decoder stacked upon a self-decoder. The self-decoder efficiently encodes global key-value (KV) caches that are reused by the cross-decoder via cross-attention. The overall model behaves like a decoder-only Transformer, although YOCO only caches once. The design substantially reduces GPU memory demands, yet retains global attention capability. Additionally, the computation flow enables prefilling to early exit without changing the final output, thereby significantly speeding up the prefill stage. Experimental results demonstrate that YOCO achieves favorable performance compared to Transformer in various settings of scaling up model size and number of training tokens. We also extend YOCO to 1M context length with near-perfect needle retrieval accuracy. The profiling results show that YOCO improves inference memory, prefill latency, and throughput by orders of magnitude across context lengths and model sizes. Code is available at https://aka.ms/YOCO.",
+    "authors": [
+        "Yutao Sun",
+        "Li Dong",
+        "Yi Zhu",
+        "Shaohan Huang",
+        "Wenhui Wang",
+        "Shuming Ma",
+        "Quanlu Zhang",
+        "Jianyong Wang",
+        "Furu Wei"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A decoder-decoder architecture, YOCO, for large language models, which only caches key-value pairs once, and improves inference memory, prefill latency, and throughput by orders of magnitude across context lengths and model sizes."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

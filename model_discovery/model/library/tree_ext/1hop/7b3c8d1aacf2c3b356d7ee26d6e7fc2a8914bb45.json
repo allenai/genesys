@@ -1,0 +1,37 @@
+{
+    "acronym": "7b3c8d1aacf2c3b356d7ee26d6e7fc2a8914bb45",
+    "title": "Fewer Truncations Improve Language Modeling",
+    "seed_ids": [
+        "gpt3",
+        "31d65e179b1d00484154b3525d93846dd82f23d8",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "fd1b829261ba04bb92e0ab60c4f6e7cea0d99fbf",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28"
+    ],
+    "s2id": "7b3c8d1aacf2c3b356d7ee26d6e7fc2a8914bb45",
+    "abstract": "In large language model training, input documents are typically concatenated together and then split into sequences of equal length to avoid padding tokens. Despite its efficiency, the concatenation approach compromises data integrity -- it inevitably breaks many documents into incomplete pieces, leading to excessive truncations that hinder the model from learning to compose logically coherent and factually consistent content that is grounded on the complete context. To address the issue, we propose Best-fit Packing, a scalable and efficient method that packs documents into training sequences through length-aware combinatorial optimization. Our method completely eliminates unnecessary truncations while retaining the same training efficiency as concatenation. Empirical results from both text and code pre-training show that our method achieves superior performance (e.g., relatively +4.7% on reading comprehension; +16.8% in context following; and +9.2% on program synthesis), and reduces closed-domain hallucination effectively by up to 58.3%.",
+    "authors": [
+        "Hantian Ding",
+        "Zijian Wang",
+        "Giovanni Paolini",
+        "Varun Kumar",
+        "Anoop Deoras",
+        "Dan Roth",
+        "Stefano Soatto"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes Best-fit Packing, a scalable and efficient method that packs documents into training sequences through length-aware combinatorial optimization, and completely eliminates unnecessary truncations while retaining the same training efficiency as concatenation."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "b525ca9f3c0c64b004774e81ad55d306dc4eda52",
+    "title": "CT3D++: Improving 3D Object Detection with Keypoint-induced Channel-wise Transformer",
+    "seed_ids": [
+        "transformer",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "b525ca9f3c0c64b004774e81ad55d306dc4eda52",
+    "abstract": "The field of 3D object detection from point clouds is rapidly advancing in computer vision, aiming to accurately and efficiently detect and localize objects in three-dimensional space. Current 3D detectors commonly fall short in terms of flexibility and scalability, with ample room for advancements in performance. In this paper, our objective is to address these limitations by introducing two frameworks for 3D object detection with minimal hand-crafted design. Firstly, we propose CT3D, which sequentially performs raw-point-based embedding, a standard Transformer encoder, and a channel-wise decoder for point features within each proposal. Secondly, we present an enhanced network called CT3D++, which incorporates geometric and semantic fusion-based embedding to extract more valuable and comprehensive proposal-aware information. Additionally, CT3D ++ utilizes a point-to-key bidirectional encoder for more efficient feature encoding with reduced computational cost. By replacing the corresponding components of CT3D with these novel modules, CT3D++ achieves state-of-the-art performance on both the KITTI dataset and the large-scale Way\\-mo Open Dataset. The source code for our frameworks will be made accessible at https://github.com/hlsheng1/CT3D-plusplus.",
+    "authors": [
+        "Hualian Sheng",
+        "Sijia Cai",
+        "Na Zhao",
+        "Bing Deng",
+        "Qiao Liang",
+        "Min-Jian Zhao",
+        "Jieping Ye"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents an enhanced network called CT3D++, which incorporates geometric and semantic fusion-based embedding to extract more valuable and comprehensive proposal-aware information and utilizes a point-to-key bidirectional encoder for more efficient feature encoding with reduced computational cost."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

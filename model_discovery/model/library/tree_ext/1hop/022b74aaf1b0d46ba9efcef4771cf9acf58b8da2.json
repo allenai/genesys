@@ -1,0 +1,30 @@
+{
+    "acronym": "022b74aaf1b0d46ba9efcef4771cf9acf58b8da2",
+    "title": "mLongT5: A Multilingual and Efficient Text-To-Text Transformer for Longer Sequences",
+    "seed_ids": [
+        "longt5",
+        "b21670e8061a06ab97e7d6052c9345a326e84ff8",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "022b74aaf1b0d46ba9efcef4771cf9acf58b8da2",
+    "abstract": "We present our work on developing a multilingual, efficient text-to-text transformer that is suitable for handling long inputs. This model, called mLongT5, builds upon the architecture of LongT5, while leveraging the multilingual datasets used for pretraining mT5 and the pretraining tasks of UL2. We evaluate this model on a variety of multilingual summarization and question-answering tasks, and the results show stronger performance for mLongT5 when compared to existing multilingual models such as mBART or M-BERT.",
+    "authors": [
+        "David C. Uthus",
+        "Santiago Ontan'on",
+        "J. Ainslie",
+        "Mandy Guo"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work builds upon the architecture of LongT5, while leveraging the multilingual datasets used for pretraining mT5 and the pretraining tasks of UL2, and shows stronger performance for mLongT5 when compared to existing multilingual models such as mBART or M-BERT."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

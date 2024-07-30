@@ -1,0 +1,32 @@
+{
+    "acronym": "200526f0cfaf9ac9e452890b3ef7bc1a4b42c98a",
+    "title": "Discop: Provably Secure Steganography in Practice Based on \"Distribution Copies\"",
+    "seed_ids": [
+        "gpt2",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "200526f0cfaf9ac9e452890b3ef7bc1a4b42c98a",
+    "abstract": "Steganography is the act of disguising the transmission of secret information as seemingly innocent. Although provably secure steganography has been proposed for decades, it has not been mainstream in this field because its strict requirements (such as a perfect sampler and an explicit data distribution) are challenging to satisfy in traditional data environments. The popularity of deep generative models is gradually increasing and can provide an excellent opportunity to solve this problem. Several methods attempting to achieve provably secure steganography based on deep generative models have been proposed in recent years. However, they cannot achieve the expected security in practice due to unrealistic conditions, such as the balanced grouping of discrete elements and a perfect match between the message and channel distributions. In this paper, we propose a new provably secure steganography method in practice named Discop, which constructs several \"distribution copies\" during the generation process. At each time step of generation, the message determines from which \"distribution copy\" to sample. As long as the receiver agrees on some shared information with the sender, he can extract the message without error. To further improve the embedding rate, we recursively construct more \"distribution copies\" by creating Huffman trees. We prove that Discop can strictly maintain the original distribution so that the adversary cannot perform better than random guessing. Moreover, we conduct experiments on multiple generation tasks for diverse digital media, and the results show that Discop\u2019s security and efficiency outperform those of previous methods.",
+    "authors": [
+        "Jinyang Ding",
+        "Kejiang Chen",
+        "Yaofei Wang",
+        "Na Zhao",
+        "Weiming Zhang",
+        "Neng H. Yu"
+    ],
+    "venue": "IEEE Symposium on Security and Privacy",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new provably secure steganography method in practice named Discop, which constructs several \"distribution copies\" during the generation process, and it is proved that Discop can strictly maintain the original distribution so that the adversary cannot perform better than random guessing."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "d237fa9155311740ecca679313fc1df7e7e4a2c8",
+    "title": "TSIC-CLIP: Traffic Scene Image Captioning Model Based on Clip",
+    "seed_ids": [
+        "transformer",
+        "7f71875f8214dffa4f3276da123c4990a6d437cc"
+    ],
+    "s2id": "d237fa9155311740ecca679313fc1df7e7e4a2c8",
+    "abstract": "Image captioning in traffic scenes presents several challenges, including imprecise caption generation, lack of personalization, and an unwieldy number of model parameters. We propose a new image captioning model for traffic scenes to address these issues. The model incorporates an adapter-based fine-tuned feature extraction part to enhance personalization and a caption generation module using global weighted attention pooling to reduce model parameters and improve accuracy. The proposed model consists of four main stages. In the first stage, the Image-Encoder extracts the global features of the input image and divides it into nine sub-regions, encoding each sub-region separately. In the second stage, the Text-Encoder encodes the text dataset to obtain text features. It then calculates the similarity between the image sub-region features and encoded text features, selecting the text features with the highest similarity. Subsequently, the pre-trained Faster RCNN model extracts local image features. The model then splices together the text features, global image features, and local image features to fuse the multimodal information. In the final stage, the extracted features are fed into the Captioning model, which effectively fuses the different features using a novel global weighted attention pooling layer. The Captioning model then generates natural language image captions. The proposed model is evaluated on the MS-COCO dataset, Flickr 30K dataset, and BUUISE-Image dataset, using mainstream evaluation metrics. Experiments demonstrate significant improvements across all evaluation metrics on the public datasets and strong performance on the BUUISE-Image traffic scene dataset.",
+    "authors": [
+        "Hao Zhang",
+        "Cheng Xu",
+        "Bingxin Xu",
+        "Muwei Jian",
+        "Hongzhe Liu",
+        "Xuewei Li"
+    ],
+    "venue": "Information Technology and Control",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new image captioning model for traffic scenes that incorporates an adapter-based fine-tuned feature extraction part to enhance personalization and a caption generation module using global weighted attention pooling to reduce model parameters and improve accuracy is proposed."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

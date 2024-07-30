@@ -1,0 +1,36 @@
+{
+    "acronym": "0cd82dfae930ac4b57c0e959f744f2d10bf87649",
+    "title": "Cluster-Former: Clustering-based Sparse Transformer for Long-Range Dependency Encoding",
+    "seed_ids": [
+        "sparsetransformer",
+        "reformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13"
+    ],
+    "s2id": "0cd82dfae930ac4b57c0e959f744f2d10bf87649",
+    "abstract": "Transformer has become ubiquitous in the deep learning field. One of the key ingredients that destined its success is the self-attention mechanism, which allows fully-connected contextual encoding over input tokens. However, despite its effectiveness in modeling short sequences, self-attention suffers when handling inputs with extreme long-range dependencies, as its complexity grows quadratically with respect to the sequence length. Therefore, long sequences are often encoded by Transformer in chunks using a sliding window. In this paper, we propose Cluster-Former, a novel clustering-based sparse Transformer to perform attention across chunked sequences. Our proposed method allows information integration beyond local windows, which is especially beneficial for question answering (QA) and language modeling tasks that rely on long-range dependencies. Experiments show that Cluster-Former achieves state-of-the-art performance on several major QA benchmarks.",
+    "authors": [
+        "Shuohang Wang",
+        "Luowei Zhou",
+        "Zhe Gan",
+        "Yen-Chun Chen",
+        "Yuwei Fang",
+        "Siqi Sun",
+        "Yu Cheng",
+        "Jingjing Liu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Cluster-Former is proposed, a novel clustering-based sparse Transformer to perform attention across chunked sequences that allows information integration beyond local windows, which is especially beneficial for question answering (QA) and language modeling tasks that rely on long-range dependencies."
+    },
+    "citationCount": 24,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,40 @@
+{
+    "acronym": "a8404aa3b7eb9799be52a2a8789bea3733da8950",
+    "title": "Graph Convolutions Enrich the Self-Attention in Transformers!",
+    "seed_ids": [
+        "bert",
+        "ab892825da3c560ff72d84d57a4239a6f12fa8b9",
+        "c57467e652f3f9131b3e7e40c23059abe395f01d",
+        "277dd73bfeb5c46513ce305136b0e71fcd2a311c",
+        "9b6af0e358e76d22f209c75b1702c3e6ea7815b1",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e382a73c4f87020e5ee8af8feacc6053347a129f",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a8404aa3b7eb9799be52a2a8789bea3733da8950",
+    "abstract": "Transformers, renowned for their self-attention mechanism, have achieved state-of-the-art performance across various tasks in natural language processing, computer vision, time-series modeling, etc. However, one of the challenges with deep Transformer models is the oversmoothing problem, where representations across layers converge to indistinguishable values, leading to significant performance degradation. We interpret the original self-attention as a simple graph filter and redesign it from a graph signal processing (GSP) perspective. We propose a graph-filter-based self-attention (GFSA) to learn a general yet effective one, whose complexity, however, is slightly larger than that of the original self-attention mechanism. We demonstrate that GFSA improves the performance of Transformers in various fields, including computer vision, natural language processing, graph regression, speech recognition, and code classification.",
+    "authors": [
+        "Jeongwhan Choi",
+        "Hyowon Wi",
+        "Jayoung Kim",
+        "Yehjin Shin",
+        "Kookjin Lee",
+        "Nathaniel Trask",
+        "Noseong Park"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a graph-filter-based self-attention (GFSA) to learn a general yet effective one, whose complexity, however, is slightly larger than that of the original self-attention mechanism."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

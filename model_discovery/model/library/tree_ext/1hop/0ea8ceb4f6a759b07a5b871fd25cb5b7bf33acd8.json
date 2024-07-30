@@ -1,0 +1,30 @@
+{
+    "acronym": "0ea8ceb4f6a759b07a5b871fd25cb5b7bf33acd8",
+    "title": "Why Lift so Heavy? Slimming Large Language Models by Cutting Off the Layers",
+    "seed_ids": [
+        "gpt2",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "f6fbb6809374ca57205bd2cf1421d4f4fa04f975",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0ea8ceb4f6a759b07a5b871fd25cb5b7bf33acd8",
+    "abstract": "Large Language Models (LLMs) possess outstanding capabilities in addressing various natural language processing (NLP) tasks. However, the sheer size of these models poses challenges in terms of storage, training and inference due to the inclusion of billions of parameters through layer stacking. While traditional approaches such as model pruning or distillation offer ways for reducing model size, they often come at the expense of performance retention. In our investigation, we systematically explore the approach of reducing the number of layers in LLMs. Surprisingly, we observe that even with fewer layers, LLMs maintain similar or better performance levels, particularly in prompt-based fine-tuning for text classification tasks. Remarkably, in certain cases, models with a single layer outperform their fully layered counterparts. These findings offer valuable insights for future work aimed at mitigating the size constraints of LLMs while preserving their performance, thereby opening avenues for significantly more efficient use of LLMs.",
+    "authors": [
+        "Shuzhou Yuan",
+        "Ercong Nie",
+        "Bolei Ma",
+        "Michael Farber"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Surprisingly, it is observed that even with fewer layers, LLMs maintain similar or better performance levels, particularly in prompt-based fine-tuning for text classification tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

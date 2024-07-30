@@ -1,0 +1,36 @@
+{
+    "acronym": "c689c37c5367abe4790bff402c1d54944ae73b2a",
+    "title": "OLMES: A Standard for Language Model Evaluations",
+    "seed_ids": [
+        "gpt3",
+        "dfa0de5cae63eacd675339fc81b13479c51bb153",
+        "ac45bbf9940512d9d686cf8cd3a95969bc313570",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "ed38c6b157c11476939c426ec6871c926f2f3524",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "c689c37c5367abe4790bff402c1d54944ae73b2a",
+    "abstract": "Progress in AI is often demonstrated by new models claiming improved performance on tasks measuring model capabilities. Evaluating language models in particular is challenging, as small changes to how a model is evaluated on a task can lead to large changes in measured performance. There is no common standard setup, so different models are evaluated on the same tasks in different ways, leading to claims about which models perform best not being reproducible. We propose OLMES, a completely documented, practical, open standard for reproducible LLM evaluations. In developing this standard, we identify and review the varying factors in evaluation practices adopted by the community - such as details of prompt formatting, choice of in-context examples, probability normalizations, and task formulation. In particular, OLMES supports meaningful comparisons between smaller base models that require the unnatural\"cloze\"formulation of multiple-choice questions against larger models that can utilize the original formulation. OLMES includes well-considered recommendations guided by results from existing literature as well as new experiments investigating open questions.",
+    "authors": [
+        "Yuling Gu",
+        "Oyvind Tafjord",
+        "Bailey Kuehl",
+        "Dany Haddad",
+        "Jesse Dodge",
+        "Hanna Hajishirzi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes OLMES, a completely documented, practical, open standard for reproducible LLM evaluations, which supports meaningful comparisons between smaller base models that require the unnatural\"cloze\"formulation of multiple-choice questions against larger models that can utilize the original formulation."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

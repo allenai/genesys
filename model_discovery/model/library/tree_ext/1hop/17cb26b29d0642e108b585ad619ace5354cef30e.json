@@ -1,0 +1,28 @@
+{
+    "acronym": "17cb26b29d0642e108b585ad619ace5354cef30e",
+    "title": "Sequential Best-Arm Identification with Application to Brain-Computer Interface",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "17cb26b29d0642e108b585ad619ace5354cef30e",
+    "abstract": "A brain-computer interface (BCI) is a technology that enables direct communication between the brain and an external device or computer system. It allows individuals to interact with the device using only their thoughts, and holds immense potential for a wide range of applications in medicine, rehabilitation, and human augmentation. An electroencephalogram (EEG) and event-related potential (ERP)-based speller system is a type of BCI that allows users to spell words without using a physical keyboard, but instead by recording and interpreting brain signals under different stimulus presentation paradigms. Conventional non-adaptive paradigms treat each word selection independently, leading to a lengthy learning process. To improve the sampling efficiency, we cast the problem as a sequence of best-arm identification tasks in multi-armed bandits. Leveraging pre-trained large language models (LLMs), we utilize the prior knowledge learned from previous tasks to inform and facilitate subsequent tasks. To do so in a coherent way, we propose a sequential top-two Thompson sampling (STTS) algorithm under the fixed-confidence setting and the fixed-budget setting. We study the theoretical property of the proposed algorithm, and demonstrate its substantial empirical improvement through both synthetic data analysis as well as a P300 BCI speller simulator example.",
+    "authors": [
+        "Xiaoping Zhou",
+        "Botao Hao",
+        "Jian Kang",
+        "Tor Lattimore",
+        "Lexin Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a sequential top-two Thompson sampling (STTS) algorithm under the fixed-confidence setting and theFixed-budget setting, and studies the theoretical property of the proposed algorithm, and demonstrates its substantial empirical improvement through both synthetic data analysis as well as a P300 BCI speller simulator example."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

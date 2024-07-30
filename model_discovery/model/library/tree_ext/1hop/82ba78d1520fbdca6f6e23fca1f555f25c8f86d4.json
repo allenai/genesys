@@ -1,0 +1,41 @@
+{
+    "acronym": "82ba78d1520fbdca6f6e23fca1f555f25c8f86d4",
+    "title": "Flexibly Scaling Large Language Models Contexts Through Extensible Tokenization",
+    "seed_ids": [
+        "compresscontext",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "b6346f9fa093b8e85df712485a2b851b9f680dac",
+        "b31a5884a8ebe96b6300839b28608b97f8f8ef76",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "b069c32fcd77160f944ab3ba71ab6f0cfb782c68",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "60b35c6d68acced19b0c66edcfc0ee0a2c11efed",
+        "2f7364d8e5cf94315bf8905f57de9c5543e9a4bf",
+        "594d8e1696619f3cebb7c6bffdad8e0a5592f006",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "0e802c0739771acf70e60d59c2df51cd7e8c50c0",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "e3aa232577bb427b1f3a34acbdef84bd85734042",
+        "2dad9763f8b128da231b3fb9c9fff7ad730b89a1"
+    ],
+    "s2id": "82ba78d1520fbdca6f6e23fca1f555f25c8f86d4",
+    "abstract": "Large language models (LLMs) are in need of sufficient contexts to handle many critical applications, such as retrieval augmented generation and few-shot learning. However, due to the constrained window size, the LLMs can only access to the information within a limited context. Although the size of context window can be extended by fine-tuning, it will result in a substantial cost in both training and inference stage. In this paper, we present Extensible Tokenization as an alternative method which realizes the flexible scaling of LLMs' context. Extensible Tokenization stands as a midware in between of the tokenized context and the LLM, which transforms the raw token embeddings into the extensible embeddings. Such embeddings provide a more compact representation for the long context, on top of which the LLM is able to perceive more information with the same context window. Extensible Tokenization is also featured by its flexibility: the scaling factor can be flexibly determined within a feasible scope, leading to the extension of an arbitrary context length at the inference time. Besides, Extensible Tokenization is introduced as a drop-in component, which can be seamlessly plugged into not only the LLM itself and but also its fine-tuned derivatives, bringing in the extended contextual information while fully preserving the LLM's existing capabilities. We perform comprehensive experiments on long-context language modeling and understanding tasks, which verify Extensible Tokenization as an effective, efficient, flexible, and compatible method to extend LLM's context. Our model and source code will be made publicly available.",
+    "authors": [
+        "Ninglu Shao",
+        "Shitao Xiao",
+        "Zheng Liu",
+        "Peitian Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents Extensible Tokenization as an alternative method which realizes the flexible scaling of LLMs' context, and introduces it as a drop-in component which can be seamlessly plugged into not only the LLM itself and but also its fine-tuned derivatives, bringing in the extended contextual information while fully preserving the LLM's existing capabilities."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

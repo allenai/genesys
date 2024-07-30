@@ -1,0 +1,31 @@
+{
+    "acronym": "4e21879b564cc2e803b16edf0dda9f1edb91b497",
+    "title": "Text-to-3D with Classifier Score Distillation",
+    "seed_ids": [
+        "classfreediffu",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2"
+    ],
+    "s2id": "4e21879b564cc2e803b16edf0dda9f1edb91b497",
+    "abstract": "Text-to-3D generation has made remarkable progress recently, particularly with methods based on Score Distillation Sampling (SDS) that leverages pre-trained 2D diffusion models. While the usage of classifier-free guidance is well acknowledged to be crucial for successful optimization, it is considered an auxiliary trick rather than the most essential component. In this paper, we re-evaluate the role of classifier-free guidance in score distillation and discover a surprising finding: the guidance alone is enough for effective text-to-3D generation tasks. We name this method Classifier Score Distillation (CSD), which can be interpreted as using an implicit classification model for generation. This new perspective reveals new insights for understanding existing techniques. We validate the effectiveness of CSD across a variety of text-to-3D tasks including shape generation, texture synthesis, and shape editing, achieving results superior to those of state-of-the-art methods. Our project page is https://xinyu-andy.github.io/Classifier-Score-Distillation",
+    "authors": [
+        "Xin Yu",
+        "Yuanchen Guo",
+        "Yangguang Li",
+        "Ding Liang",
+        "Song-Hai Zhang",
+        "Xiaojuan Qi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper re-evaluate the role of classifier-free guidance in score distillation and discovers a surprising finding: the guidance alone is enough for effective text-to-3D generation tasks."
+    },
+    "citationCount": 40,
+    "influentialCitationCount": 9,
+    "code": null,
+    "description": null,
+    "url": null
+}

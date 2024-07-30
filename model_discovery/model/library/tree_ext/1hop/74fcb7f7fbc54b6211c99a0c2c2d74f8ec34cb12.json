@@ -1,0 +1,29 @@
+{
+    "acronym": "74fcb7f7fbc54b6211c99a0c2c2d74f8ec34cb12",
+    "title": "Enconter: Entity Constrained Progressive Sequence Generation via Insertion-based Transformer",
+    "seed_ids": [
+        "gpt",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "130277ff64c7171c90d98d7e73f4bda8a0b0c1f9",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "74fcb7f7fbc54b6211c99a0c2c2d74f8ec34cb12",
+    "abstract": "Pretrained using large amount of data, autoregressive language models are able to generate high quality sequences. However, these models do not perform well under hard lexical constraints as they lack fine control of content generation process. Progressive insertion based transformers can overcome the above limitation and efficiently generate a sequence in parallel given some input tokens as constraint. These transformers however may fail to support hard lexical constraints as their generation process is more likely to terminate prematurely. The paper analyses such early termination problems and proposes the ENtity CONstrained insertion TransformER(ENCONTER), a new insertion transformer that addresses the above pitfall without compromising much generation efficiency. We introduce a new training strategy that considers predefined hard lexical constraints (e.g., entities to be included in the generated sequence). Our experiments show that ENCONTER outperforms other baseline models in several performance metrics rendering it more suitable in practical applications.",
+    "authors": [
+        "Lee-Hsun Hsieh",
+        "Yang-Yin Lee",
+        "Ee-Peng Lim"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The paper proposes the ENtity CONstrained insertion TransformER(ENCONTER), a new insertion transformer that addresses the above pitfall without compromising much generation efficiency and introduces a new training strategy that considers predefined hard lexical constraints."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

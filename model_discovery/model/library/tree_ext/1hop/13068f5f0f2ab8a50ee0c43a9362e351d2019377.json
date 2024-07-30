@@ -1,0 +1,27 @@
+{
+    "acronym": "13068f5f0f2ab8a50ee0c43a9362e351d2019377",
+    "title": "EM Pre-training for Multi-party Dialogue Response Generation",
+    "seed_ids": [
+        "gpt",
+        "9ae4666bf38e820292f8a889cb4a9fd796d2dba1",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "6ebfbc954b9975d2f2651f380b9bdf46ae963178"
+    ],
+    "s2id": "13068f5f0f2ab8a50ee0c43a9362e351d2019377",
+    "abstract": "Dialogue response generation requires an agent to generate a response according to the current dialogue history, in terms of which two-party dialogues have been well studied, but leaving a great gap for multi-party dialogues at the same time. Different from two-party dialogues where each response is a direct reply to its previous utterance, the addressee of a response utterance should be specified before it is generated in the multi-party scenario. Thanks to the huge amount of two-party conversational data, various pre-trained language models for two-party dialogue response generation have been proposed. However, due to the lack of annotated addressee labels in multi-party dialogue datasets, it is hard to use them to pre-train a response generation model for multi-party dialogues. To tackle this obstacle, we propose an Expectation-Maximization (EM) approach that iteratively performs the expectation steps to generate addressee labels, and the maximization steps to optimize a response generation model. Theoretical analyses and extensive experiments have justified the feasibility and effectiveness of our proposed method. The official implementation of this paper is available at https://github.com/EricLee8/MPDRG.",
+    "authors": [
+        "Yiyang Li",
+        "Hai Zhao"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An Expectation-Maximization (EM) approach that iteratively performs the expectation steps to generate addressee labels, and the maximization steps to optimize a response generation model for multi-party dialogues is proposed."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

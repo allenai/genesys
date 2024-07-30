@@ -1,0 +1,31 @@
+{
+    "acronym": "7962cae10754ac3e9d1836f129febbcb904e4b6c",
+    "title": "WOUAF: Weight Modulation for User Attribution and Fingerprinting in Text-to-Image Diffusion Models",
+    "seed_ids": [
+        "classfreediffu",
+        "3256eab72323fc3cbaafd55edf958c23db8dbe25",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "7962cae10754ac3e9d1836f129febbcb904e4b6c",
+    "abstract": "The rapid advancement of generative models, facilitating the creation of hyper-realistic images from textual descriptions, has concurrently escalated critical societal concerns such as misinformation. Although providing some mitigation, traditional fingerprinting mechanisms fall short in attributing responsibility for the malicious use of synthetic images. This paper introduces a novel approach to model fingerprinting that assigns responsibility for the generated images, thereby serving as a potential countermeasure to model misuse. Our method modifies generative models based on each user's unique digital fingerprint, imprinting a unique identifier onto the resultant content that can be traced back to the user. This approach, incorporating fine-tuning into Text-to-Image (T2I) tasks using the Stable Diffusion Model, demonstrates near-perfect attribution accuracy with a minimal impact on output quality. Through extensive evaluation, we show that our method outperforms baseline methods with an average improvement of 11\\% in handling image post-processes. Our method presents a promising and novel avenue for accountable model distribution and responsible use. Our code is available in \\url{https://github.com/kylemin/WOUAF}.",
+    "authors": [
+        "C. Kim",
+        "Kyle Min",
+        "Maitreya Patel",
+        "Sheng Cheng",
+        "Yezhou Yang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel approach to model fingerprinting that assigns responsibility for the generated images, thereby serving as a potential countermeasure to model misuse and presenting a promising and novel avenue for accountable model distribution and responsible use is introduced."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

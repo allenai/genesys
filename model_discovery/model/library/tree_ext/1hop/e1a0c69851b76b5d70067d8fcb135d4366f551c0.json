@@ -1,0 +1,33 @@
+{
+    "acronym": "e1a0c69851b76b5d70067d8fcb135d4366f551c0",
+    "title": "Investigating the Performance of Language Models for Completing Code in Functional Programming Languages: a Haskell Case Study",
+    "seed_ids": [
+        "gpt2",
+        "914254fac74a2da051cccf6ca16afcaad416a079",
+        "4b27f18bff43d605805c92696a979714ced0b805",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "9f1c5777a193b2c3bb2b25e248a156348e5ba56d",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e1a0c69851b76b5d70067d8fcb135d4366f551c0",
+    "abstract": "Language model-based code completion models have quickly grown in use, helping thousands of developers write code in many different programming languages. However, research on code completion models typically focuses on imperative languages such as Python and JavaScript, which results in a lack of representation for functional programming languages. Consequently, these models often perform poorly on functional languages such as Haskell. To investigate whether this can be alleviated, we evaluate the performance of two language models for code, CodeGPT and UniXcoder, on the functional programming language Haskell. We fine-tune and evaluate the models on Haskell functions sourced from a publicly accessible Haskell dataset on HuggingFace. Additionally, we manually evaluate the models using our novel translated HumanEval dataset. Our automatic evaluation shows that knowledge of imperative programming languages in the pre-training of LLMs may not transfer well to functional languages, but that code completion on functional languages is feasible. Consequently, this shows the need for more high-quality Haskell datasets. A manual evaluation on HumanEval-Haskell indicates CodeGPT frequently generates empty predictions and extra comments, while UniXcoder more often produces incomplete or incorrect predictions. Finally, we release HumanEval-Haskell, along with the fine-tuned models and all code required to reproduce our experiments on GitHub [41].",
+    "authors": [
+        "Tim van Dam",
+        "Frank van der Heijden",
+        "Philippe de Bekker",
+        "Berend Nieuwschepen",
+        "Marc Otten",
+        "M. Izadi"
+    ],
+    "venue": "FORGE",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An automatic evaluation shows that knowledge of imperative programming languages in the pre-training of LLMs may not transfer well to functional languages, but that code completion on functional languages is feasible, and shows the need for more high-quality Haskell datasets."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

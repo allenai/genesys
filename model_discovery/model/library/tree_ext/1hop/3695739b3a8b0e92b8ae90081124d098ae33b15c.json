@@ -1,0 +1,46 @@
+{
+    "acronym": "3695739b3a8b0e92b8ae90081124d098ae33b15c",
+    "title": "FlightLLM: Efficient Large Language Model Inference with a Complete Mapping Flow on FPGAs",
+    "seed_ids": [
+        "bigbird",
+        "b0c5c673c690c644a7d4af73adb783bd98486181",
+        "13270b9759cf0296b5a346fbb58b706e8ad0a982",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "1900de2b966ca55ee5ca24ec94d5debe66e80c5b",
+        "2b38ddff8e24a07597c8d042ea7b8b85a678e9b2",
+        "5af69480a7ae3b571df6782a11ec4437b386a7d9",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "3695739b3a8b0e92b8ae90081124d098ae33b15c",
+    "abstract": "Transformer-based Large Language Models (LLMs) have made a significant impact on various domains. However, LLMs' efficiency suffers from both heavy computation and memory overheads. Compression techniques like sparsification and quantization are commonly used to mitigate the gap between LLM's computation/memory overheads and hardware capacity. However, existing GPU and transformer-based accelerators cannot efficiently process compressed LLMs, due to the following unresolved challenges: low computational efficiency, underutilized memory bandwidth, and large compilation overheads. This paper proposes FlightLLM, enabling efficient LLMs inference with a complete mapping flow on FPGAs. In FlightLLM, we highlight an innovative solution that the computation and memory overhead of LLMs can be solved by utilizing FPGA-specific resources (e.g., DSP48 and heterogeneous memory hierarchy). We propose a configurable sparse DSP chain to support different sparsity patterns with high computation efficiency. Second, we propose an always-on-chip decode scheme to boost memory bandwidth with mixed-precision support. Finally, to make FlightLLM available for real-world LLMs, we propose a length adaptive compilation method to reduce the compilation overhead. Implemented on the Xilinx Alveo U280 FPGA, FlightLLM achieves 6.0\u00d7 higher energy efficiency and 1.8\u00d7 better cost efficiency against commercial GPUs (e.g., NVIDIA V100S) on modern LLMs (e.g., LLaMA2-7B) using vLLM and SmoothQuant under the batch size of one. FlightLLM beats NVIDIA A100 GPU with 1.2\u00d7 higher throughput using the latest Versal VHK158 FPGA.",
+    "authors": [
+        "Shulin Zeng",
+        "Jun Liu",
+        "Guohao Dai",
+        "Xinhao Yang",
+        "Tianyu Fu",
+        "Hongyi Wang",
+        "Wenheng Ma",
+        "Hanbo Sun",
+        "Shiyao Li",
+        "Zixiao Huang",
+        "Yadong Dai",
+        "Jintao Li",
+        "Zehao Wang",
+        "Ruoyu Zhang",
+        "Kairui Wen",
+        "Xuefei Ning",
+        "Yu Wang"
+    ],
+    "venue": "Symposium on Field Programmable Gate Arrays",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "In FlightLLM, an innovative solution that the computation and memory overhead of LLMs can be solved by utilizing FPGA-specific resources (e.g., DSP48 and heterogeneous memory hierarchy) is highlighted, enabling efficient LLMs inference with a complete mapping flow on FPGAs."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

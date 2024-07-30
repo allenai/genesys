@@ -1,0 +1,32 @@
+{
+    "acronym": "161bf3f0705ef8e088f53b383363338daac9af44",
+    "title": "Latent Positional Information is in the Self-Attention Variance of Transformer Language Models Without Positional Embeddings",
+    "seed_ids": [
+        "gpt2",
+        "bb15f3727f827a3cb88b5d3ca48415c09b40a88f",
+        "a2fc77f075f666b462d9350e7576f0ba9845c61b",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a",
+        "8cef9900c04d7f661c08f4b5b1ed4337ace042a3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "161bf3f0705ef8e088f53b383363338daac9af44",
+    "abstract": "The use of positional embeddings in transformer language models is widely accepted. However, recent research has called into question the necessity of such embeddings. We further extend this inquiry by demonstrating that a randomly initialized and frozen transformer language model, devoid of positional embeddings, inherently encodes strong positional information through the shrinkage of self-attention variance. To quantify this variance, we derive the underlying distribution of each step within a transformer layer. Through empirical validation using a fully pretrained model, we show that the variance shrinkage effect still persists after extensive gradient updates. Our findings serve to justify the decision to discard positional embeddings and thus facilitate more efficient pretraining of transformer language models.",
+    "authors": [
+        "Ta-Chung Chi",
+        "Ting-Han Fan",
+        "Li-Wei Chen",
+        "A. Rudnicky",
+        "P. Ramadge"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work demonstrates that a randomly initialized and frozen transformer language model, devoid of positional embeddings, inherently encodes strong positional information through the shrinkage of self-attention variance, and derives the underlying distribution of each step within a transformer layer."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

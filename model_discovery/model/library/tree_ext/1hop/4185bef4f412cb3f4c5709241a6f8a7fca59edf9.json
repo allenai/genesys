@@ -1,0 +1,26 @@
+{
+    "acronym": "4185bef4f412cb3f4c5709241a6f8a7fca59edf9",
+    "title": "CIDR: A Cooperative Integrated Dynamic Refining Method for Minimal Feature Removal Problem",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "4185bef4f412cb3f4c5709241a6f8a7fca59edf9",
+    "abstract": "The minimal feature removal problem in the post-hoc explanation area aims to identify the minimal feature set (MFS). Prior studies using the greedy algorithm to calculate the minimal feature set lack the exploration of feature interactions under a monotonic assumption which cannot be satisfied in general scenarios. In order to address the above limitations, \nwe propose a Cooperative Integrated Dynamic Refining method (CIDR) to efficiently discover minimal feature sets. Specifically, we design Cooperative Integrated Gradients (CIG) to detect interactions between features. By incorporating CIG and characteristics of the minimal feature set, we transform the minimal feature removal problem into a knapsack problem. Additionally, we devise an auxiliary Minimal Feature Refinement algorithm to determine the minimal feature set from numerous candidate sets. To the best of our knowledge, our work is the first to address the minimal feature removal problem in the field of natural language processing. Extensive experiments demonstrate that CIDR is capable of tracing representative minimal feature sets with improved interpretability across various models and datasets.",
+    "authors": [
+        "Qian Chen",
+        "Tao Zhang",
+        "Dongyang Li",
+        "Xiaofeng He"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work designs Cooperative Integrated Gradients (CIG) to detect interactions between features to efficiently discover minimal feature sets and devise an auxiliary Minimal Feature Refinement algorithm to determine the minimal feature set from numerous candidate sets."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

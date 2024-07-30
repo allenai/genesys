@@ -1,0 +1,34 @@
+{
+    "acronym": "493e1ba13e1ee7a67dbac53a8a0ff8aecde2e54f",
+    "title": "GTR-CTRL: Instrument and Genre Conditioning for Guitar-Focused Music Generation with Transformers",
+    "seed_ids": [
+        "transformerxl",
+        "2686b6512e0c0ff904dade81572e523a784083b7",
+        "eb0931c39904a40c6cb4aa35c9b21d5e3b7dc856",
+        "ad4c63d617d89ac82ad3fd1dfa68a9f2afa84443",
+        "ce510c6cfeac703706460680e977c54554840830",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "fb507ada871d1e8c29e376dbf7b7879689aa89f9"
+    ],
+    "s2id": "493e1ba13e1ee7a67dbac53a8a0ff8aecde2e54f",
+    "abstract": "Recently, symbolic music generation with deep learning techniques has witnessed steady improvements. Most works on this topic focus on MIDI representations, but less attention has been paid to symbolic music generation using guitar tablatures (tabs) which can be used to encode multiple instruments. Tabs include information on expressive techniques and fingerings for fretted string instruments in addition to rhythm and pitch. In this work, we use the DadaGP dataset for guitar tab music generation, a corpus of over 26k songs in GuitarPro and token formats. We introduce methods to condition a Transformer-XL deep learning model to generate guitar tabs (GTR-CTRL) based on desired instrumentation (inst-CTRL) and genre (genre-CTRL). Special control tokens are appended at the beginning of each song in the training corpus. We assess the performance of the model with and without conditioning. We propose instrument presence metrics to assess the inst-CTRL model's response to a given instrumentation prompt. We trained a BERT model for downstream genre classification and used it to assess the results obtained with the genre-CTRL model. Statistical analyses evidence significant differences between the conditioned and unconditioned models. Overall, results indicate that the GTR-CTRL methods provide more flexibility and control for guitar-focused symbolic music generation than an unconditioned model.",
+    "authors": [
+        "Pedro Sarmento",
+        "Adarsh Kumar",
+        "Yu-Hua Chen",
+        "CJ Carr",
+        "Zack Zukowski",
+        "M. Barthet"
+    ],
+    "venue": "EvoMUSART@EvoStar",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces methods to condition a Transformer-XL deep learning model to generate guitar tabs (GTR-CTRL) based on desired instrumentation and genre and assesses the performance of the model with and without conditioning."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

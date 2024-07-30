@@ -1,0 +1,27 @@
+{
+    "acronym": "a747d79da542133ae0c136b70557f7ae80a0a70d",
+    "title": "Incorporating Adaptive Sparse Graph Convolutional Neural Networks for Segmentation of Organs at Risk in Radiotherapy",
+    "seed_ids": [
+        "transformer",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "a747d79da542133ae0c136b70557f7ae80a0a70d",
+    "abstract": "Precisely segmenting the organs at risk (OARs) in computed tomography (CT) plays an important role in radiotherapy\u2019s treatment planning, aiding in the protection of critical tissues during irradiation. Renowned deep convolutional neural networks (DCNNs) and prevailing transformer-based architectures are widely utilized to accomplish the segmentation task, showcasing advantages in capturing local and contextual characteristics. Graph convolutional networks (GCNs) are another specialized model designed for processing the nongrid dataset, e.g., citation relationship. The DCNNs and GCNs are considered as two distinct models applicable to the grid and nongrid datasets, respectively. Motivated by the recently developed dynamic-channel GCN (DCGCN) that attempts to leverage the graph structure to enhance the feature extracted by the DCNNs, this paper proposes a novel architecture termed adaptive sparse GCN (ASGCN) to mitigate the inherent limitations in DCGCN from the aspect of node\u2019s representation and adjacency matrix\u2019s construction. For the node\u2019s representation, the global average pooling used in the DCGCN is replaced by the learning mechanism to accommodate the segmentation task. For the adjacency matrix, an adaptive regularization strategy is leveraged to penalize the coefficient in the adjacency matrix, resulting in a sparse one that can better exploit the relationships between nodes. Rigorous experiments on multiple OARs\u2019 segmentation tasks of the head and neck demonstrate that the proposed ASGCN can effectively improve the segmentation accuracy. Comparison between the proposed method and other prevalent architectures further confirms the superiority of the ASGCN.",
+    "authors": [
+        "Junjie Hu",
+        "Chengrong Yu",
+        "Shengqian Zhu",
+        "Haixian Zhang"
+    ],
+    "venue": "International Journal of Intelligent Systems",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Rigorous experiments on multiple OARs\u2019 segmentation tasks of the head and neck demonstrate that the proposed ASGCN can effectively improve the segmentation accuracy, and comparison between the proposed method and other prevalent architectures further confirms the superiority of the ASGCN."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

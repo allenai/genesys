@@ -1,0 +1,30 @@
+{
+    "acronym": "0e83a0e03c4feed4472c796bdbd84e3d59020c99",
+    "title": "Do Pretrained Language Models Indeed Understand Software Engineering Tasks?",
+    "seed_ids": [
+        "gpt",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "0e83a0e03c4feed4472c796bdbd84e3d59020c99",
+    "abstract": "Artificial intelligence (AI) for software engineering (SE) tasks has recently achieved promising performance. In this article, we investigate to what extent the pre-trained language model truly understands those SE tasks such as code search, code summarization, etc. We conduct a comprehensive empirical study on a board set of AI for SE (AI4SE) tasks by feeding them with variant inputs: 1) with various masking rates and 2) with sufficient input subset method. Then, the trained models are evaluated on different SE tasks, including code search, code summarization, and duplicate bug report detection. Our experimental results show that pre-trained language models are insensitive to the given input, thus they achieve similar performance in these three SE tasks. We refer to this phenomenon as overinterpretation, where a model confidently makes a decision without salient features, or where a model finds some irrelevant relationships between the final decision and the dataset. Our study investigates two approaches to mitigate the overinterpretation phenomenon: whole word mask strategy and ensembling. To the best of our knowledge, we are the first to reveal this overinterpretation phenomenon to the AI4SE community, which is an important reminder for researchers to design the input for the models and calls for necessary future work in understanding and implementing AI4SE tasks.",
+    "authors": [
+        "Yao Li",
+        "Tao Zhang",
+        "Xiapu Luo",
+        "Haipeng Cai",
+        "Sen Fang",
+        "Dawei Yuan"
+    ],
+    "venue": "IEEE Transactions on Software Engineering",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study investigates two approaches to mitigate the overinterpretation phenomenon: whole word mask strategy and ensembling, which is an important reminder for researchers to design the input for the models and calls for necessary future work in understanding and implementing AI4SE tasks."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

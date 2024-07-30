@@ -1,0 +1,43 @@
+{
+    "acronym": "82df0e8419fe147a6c0fa9a8c7f69d6b85931865",
+    "title": "Evade the Trap of Mediocrity: Promoting Diversity and Novelty in Text Generation via Concentrating Attention",
+    "seed_ids": [
+        "sparsetransformer",
+        "06cd65936fdb2d2a5d51ca7fd612c48fbffc228e",
+        "6151ee4af6a3fe78f2df7c605598cd9e02b23c5b",
+        "492a655a67e6ec7423a968cedb70eec0cdbc8e98",
+        "9dc624d7258d1a56117ca720aea953ce46b66b21",
+        "4badd753be64c5c5b57dd2bb2e515fbe0c0720d8",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "0cd82dfae930ac4b57c0e959f744f2d10bf87649",
+        "c2f36f14419565a0fed3032b7f1d1811daf6702e",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "82df0e8419fe147a6c0fa9a8c7f69d6b85931865",
+    "abstract": "Recently, powerful Transformer architectures have proven superior in generating high-quality sentences. Nevertheless, these models tend to produce dull high-frequency phrases, severely hurting the diversity and novelty of generated text. In this work, we dig into the intrinsic mechanism of this problem and found that sparser attention values in Transformer could improve diversity. To understand such a phenomenon, we first conduct both empirical and theoretical analysis and then attribute it to representation degeneration caused by the attentive mixture of the hidden states during training. We term this process the Trap of Mediocrity. To escape from such a trap, we introduce a novel attention regularization loss to control the sharpness of the attention distribution, which is transparent to model structures and can be easily implemented within 20 lines of python code. We prove that this method could be mathematically regarded as learning a Bayesian approximation of posterior attention. Experiments show that our method improved the diversity and novelty of the generated text while maintaining comparable quality on a variety of conditional and unconditional generation tasks.",
+    "authors": [
+        "Wenhao Li",
+        "Xiaoyuan Yi",
+        "Jinyi Hu",
+        "Maosong Sun",
+        "Xing Xie"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a novel attention regularization loss to control the sharpness of the attention distribution, which is transparent to model structures and can be easily implemented within 20 lines of python code and proves that this method could be mathematically regarded as a Bayesian approximation of posterior attention."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

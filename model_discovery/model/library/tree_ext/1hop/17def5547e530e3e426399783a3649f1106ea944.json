@@ -1,0 +1,31 @@
+{
+    "acronym": "17def5547e530e3e426399783a3649f1106ea944",
+    "title": "SDXS: Real-Time One-Step Latent Diffusion Models with Image Conditions",
+    "seed_ids": [
+        "classfreediffu",
+        "1206b05eae5a06ba662ae79fb291b50e359c4f42",
+        "315d7a58fada47c5729645f0af8ddfaa0743f82f",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "82482585e94192b4e9913727e461f89cd08e9725",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "17def5547e530e3e426399783a3649f1106ea944",
+    "abstract": "Recent advancements in diffusion models have positioned them at the forefront of image generation. Despite their superior performance, diffusion models are not without drawbacks; they are characterized by complex architectures and substantial computational demands, resulting in significant latency due to their iterative sampling process. To mitigate these limitations, we introduce a dual approach involving model miniaturization and a reduction in sampling steps, aimed at significantly decreasing model latency. Our methodology leverages knowledge distillation to streamline the U-Net and image decoder architectures, and introduces an innovative one-step DM training technique that utilizes feature matching and score distillation. We present two models, SDXS-512 and SDXS-1024, achieving inference speeds of approximately 100 FPS (30x faster than SD v1.5) and 30 FPS (60x faster than SDXL) on a single GPU, respectively. Moreover, our training approach offers promising applications in image-conditioned control, facilitating efficient image-to-image translation.",
+    "authors": [
+        "Yuda Song",
+        "Zehao Sun",
+        "Xuanwu Yin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a dual approach involving model miniaturization and a reduction in sampling steps, aimed at significantly decreasing model latency, and introduces an innovative one-step DM training technique that utilizes feature matching and score distillation."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

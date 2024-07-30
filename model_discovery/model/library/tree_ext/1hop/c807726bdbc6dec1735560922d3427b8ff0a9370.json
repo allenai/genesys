@@ -1,0 +1,28 @@
+{
+    "acronym": "c807726bdbc6dec1735560922d3427b8ff0a9370",
+    "title": "GAP: A Graph-aware Language Model Framework for Knowledge Graph-to-Text Generation",
+    "seed_ids": [
+        "gpt2",
+        "b99c61f6957c1b04ec1376b74f82dd1e83559695",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "c807726bdbc6dec1735560922d3427b8ff0a9370",
+    "abstract": "Recent improvements in KG-to-text generation are due to additional auxiliary pre-training tasks designed to give the fine-tune task a boost in performance. These tasks require extensive computational resources while only suggesting marginal improvements. Here, we demonstrate that by fusing graph-aware elements into existing pre-trained language models, we are able to outperform state-of-the-art models and close the gap imposed by additional pre-training tasks. We do so by proposing a mask structure to capture neighborhood information and a novel type encoder that adds a bias to the graph-attention weights depending on the connection type. Experiments on two KG-to-text benchmark datasets show our models are competitive while involving fewer parameters and no additional pre-training tasks. By formulating the problem as a framework, we can interchange the various proposed components and begin interpreting KG-to-text generative models based on the topological and type information found in a graph.",
+    "authors": [
+        "Anthony Colas",
+        "Mehrdad Alvandipour",
+        "D. Wang"
+    ],
+    "venue": "International Conference on Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that by fusing graph-aware elements into existing pre-trained language models, this work is able to outperform state-of-the-art models and close the gap imposed by additional pre-training tasks."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

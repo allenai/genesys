@@ -1,0 +1,24 @@
+{
+    "acronym": "ea84fd2edeac96d11aa1af0492a34b5b68ee409a",
+    "title": "HYU SUBMISSION FOR THE DCASE 2023 TASK 7: DIFFUSION PROBABILISTIC MODEL WITH ADVERSARIAL TRAINING FOR FOLEY SOUND SYNTHESIS Technical",
+    "seed_ids": [
+        "classfreediffu"
+    ],
+    "s2id": "ea84fd2edeac96d11aa1af0492a34b5b68ee409a",
+    "abstract": "This paper is a technical report of the Hanyang University team sub-mission for the DCASE 2023 challenge task 7, Foley Sound Synthesis. The goal of the task is to build a generative model that can synthesize high-quality and various foley sounds: the sounds of dog barking, footsteps, gunshots, keyboards, moving motor vehicles, rainy scenes, and sneezing. The core strategy of the submissions is a diffusion probabilistic model-based acoustic model. Also, we adopted adversarial training on the evidence lower bound (ELBO) of the diffusion model for the higher quality. The submissions did not use any external dataset and achieved lower Frechet audio distance (FAD) scores than the DCASE baseline, except for the sounds of moving motor vehicles.",
+    "authors": [
+        "Won-Gook Choi",
+        "Joon-Hyuk Chang"
+    ],
+    "venue": "",
+    "year": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

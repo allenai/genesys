@@ -1,0 +1,30 @@
+{
+    "acronym": "547e0ce5cefc92d831231e08b23e449596b761bf",
+    "title": "Variance-Reducing Couplings for Random Features: Perspectives from Optimal Transport",
+    "seed_ids": [
+        "performer",
+        "3725e21357c43404a1f19cfebc330d19734eeec0",
+        "dc1b905c0af4dc318b63cd52fbc867c788df4b8c",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d"
+    ],
+    "s2id": "547e0ce5cefc92d831231e08b23e449596b761bf",
+    "abstract": "Random features (RFs) are a popular technique to scale up kernel methods in machine learning, replacing exact kernel evaluations with stochastic Monte Carlo estimates. They underpin models as diverse as efficient transformers (by approximating attention) to sparse spectrum Gaussian processes (by approximating the covariance function). Efficiency can be further improved by speeding up the convergence of these estimates: a variance reduction problem. We tackle this through the unifying framework of optimal transport, using theoretical insights and numerical algorithms to develop novel, high-performing RF couplings for kernels defined on Euclidean and discrete input spaces. They enjoy concrete theoretical performance guarantees and sometimes provide strong empirical downstream gains, including for scalable approximate inference on graphs. We reach surprising conclusions about the benefits and limitations of variance reduction as a paradigm.",
+    "authors": [
+        "Isaac Reid",
+        "Stratis Markou",
+        "Krzysztof Choromanski",
+        "Richard E. Turner",
+        "Adrian Weller"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work uses theoretical insights and numerical algorithms to develop novel, high-performing RF couplings for kernels defined on Euclidean and discrete input spaces, and reaches surprising conclusions about the benefits and limitations of variance reduction as a paradigm."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

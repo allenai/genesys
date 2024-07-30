@@ -1,0 +1,32 @@
+{
+    "acronym": "aada990f990b677b07f44547c7aa9651f988865e",
+    "title": "Machine Learning for Brain Disorders: Transformers and Visual Transformers",
+    "seed_ids": [
+        "perceiverio",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "3a906b77fa218adc171fecb28bb81c24c14dcc7b",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "aada990f990b677b07f44547c7aa9651f988865e",
+    "abstract": "Transformers were initially introduced for natural language processing (NLP) tasks, but fast they were adopted by most deep learning fields, including computer vision. They measure the relationships between pairs of input tokens (words in the case of text strings, parts of images for visual Transformers), termed attention. The cost is exponential with the number of tokens. For image classification, the most common Transformer Architecture uses only the Transformer Encoder in order to transform the various input tokens. However, there are also numerous other applications in which the decoder part of the traditional Transformer Architecture is also used. Here, we first introduce the Attention mechanism (Section 1), and then the Basic Transformer Block including the Vision Transformer (Section 2). Next, we discuss some improvements of visual Transformers to account for small datasets or less computation(Section 3). Finally, we introduce Visual Transformers applied to tasks other than image classification, such as detection, segmentation, generation and training without labels (Section 4) and other domains, such as video or multimodality using text or audio data (Section 5).",
+    "authors": [
+        "Robin Courant",
+        "Maika Edberg",
+        "Nicolas Dufour",
+        "Vicky Kalogeiton"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Visual Transformers applied to tasks other than image classification, such as detection, segmentation, generation and training without labels and other domains,such as video or multimodality using text or audio data are introduced."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,24 @@
+{
+    "acronym": "ec578b5bba19c604116794c374a3f5df9a7aa261",
+    "title": "Deep Learning for Music Composition: Generation, Recommendation and Control",
+    "seed_ids": [
+        "memcompress",
+        "fb507ada871d1e8c29e376dbf7b7879689aa89f9"
+    ],
+    "s2id": "ec578b5bba19c604116794c374a3f5df9a7aa261",
+    "abstract": "Technology has always helped expand the range of musical expression, from the fortepiano to synthesizers to electronic sequencers. Could machine learning further extend human creativity? We explore three ways deep learning supports the creative process: generation, recommendation, and control. Generative models can synthesize stylistic idioms, enabling artists to explore a wider palette of possibilities. Recommendation tools can assist artists in curation. Better model control helps artists stay in the creative loop. Furthermore, this control could take place at one or more musically-meaningful levels \u2013 the score, the performance, or timbre \u2013 or on a non-musical level, such as a subjective quality like \u201cscary.\u201d This dissertation posits that deep learning models designed to better match the structure of music can generate, recommend and provide control in the creative process, making music composition more accessible. I describe four projects to support this statement. AdaptiveKnobs (Huang et al., 2014) uses Gaussian Processes to capture the nonlinear multimodal relationship between low-level sound synthesis parameters and perceived sound qualities. By using active learning, we assist sound designers in defining their own intuitive knobs by querying them on sounds that the model expects to improve the controls most. ChordRipple (Huang et al., 2016) uses Chord2Vec to learn chord embeddings for recommending creative substitutions and a Ripple mechanism to propagate changes, allowing novices to compose more adventurous chord progressions. Music Transformer (Huang et al., 2019) uses self-attention mechanisms to capture the self-similarity structure of music, generating coherent expressive piano music from scratch. As the model processes composition and performance as one, improvisers can play an initial motif and have the model develop it in a coherent fashion. Coconet (Huang et al., 2017) uses convolutions to capture pitch and temporal invariance. The generative model fills in arbitrarily-partial musical scores, allowing it to perform a wide range of musical tasks. The model uses Gibbs sampling to approximate how human composers improve their music through rewriting. Recently, Coconet powered the Bach Doodle, harmonizing more than 50 million melodies composed by users. We hope machine learning can enable new ways of approaching the creative process for both novices and musicians.",
+    "authors": [
+        "Cheng-Zhi Anna Huang"
+    ],
+    "venue": "",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This dissertation posits that deep learning models designed to better match the structure of music can generate, recommend and provide control in the creative process, making music composition more accessible."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

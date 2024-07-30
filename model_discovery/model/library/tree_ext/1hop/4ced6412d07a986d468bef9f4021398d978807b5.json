@@ -1,0 +1,27 @@
+{
+    "acronym": "4ced6412d07a986d468bef9f4021398d978807b5",
+    "title": "Uncertainty-Aware Pedestrian Trajectory Prediction via Distributional Diffusion",
+    "seed_ids": [
+        "classfreediffu",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "4ced6412d07a986d468bef9f4021398d978807b5",
+    "abstract": "Tremendous efforts have been put forth on predicting pedestrian trajectory with generative models to accommodate uncertainty and multi-modality in human behaviors. An individual's inherent uncertainty, e.g., change of destination, can be masked by complex patterns resulting from the movements of interacting pedestrians. However, latent variable-based generative models often entangle such uncertainty with complexity, leading to limited either latent expressivity or predictive diversity. In this work, we propose to separately model these two factors by implicitly deriving a flexible latent representation to capture intricate pedestrian movements, while integrating predictive uncertainty of individuals with explicit bivariate Gaussian mixture densities over their future locations. More specifically, we present a model-agnostic uncertainty-aware pedestrian trajectory prediction framework, parameterizing sufficient statistics for the mixture of Gaussians that jointly comprise the multi-modal trajectories. We further estimate these parameters of interest by approximating a denoising process that progressively recovers pedestrian movements from noise. Unlike previous studies, we translate the predictive stochasticity to explicit distributions, allowing it to readily generate plausible future trajectories indicating individuals' self-uncertainty. Moreover, our framework is compatible with different neural net architectures. We empirically show the performance gains over state-of-the-art even with lighter backbones, across most scenes on two public benchmarks.",
+    "authors": [
+        "Yao Liu",
+        "Zesheng Ye",
+        "Binghao Li",
+        "L. Yao"
+    ],
+    "venue": "Knowledge-Based Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a model-agnostic uncertainty-aware pedestrian trajectory prediction framework, parameterizing sufficient statistics for the mixture of Gaussians that jointly comprise the multi-modal trajectories, and translates the predictive stochasticity to explicit distributions."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

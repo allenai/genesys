@@ -1,0 +1,26 @@
+{
+    "acronym": "933f1e0a8d98e691b1740e071fae16c1a2dc5d97",
+    "title": "PLSUM: Generating PT-BR Wikipedia by Summarizing Multiple Websites",
+    "seed_ids": [
+        "longformer",
+        "memcompress",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "933f1e0a8d98e691b1740e071fae16c1a2dc5d97",
+    "abstract": "Wikipedia is an important free source of intelligible knowledge. Despite that, Brazilian Portuguese Wikipedia still lacks descriptions for many subjects. In an effort to expand the Brazilian Wikipedia, we contribute PLSum, a framework for generating wiki-like abstractive summaries from multiple descriptive websites. The framework has an extractive stage followed by an abstractive one. In particular, for the abstractive stage, we fine-tune and compare two recent variations of the Transformer neural network, PTT5, and Longformer. To fine-tune and evaluate the model, we created a dataset with thousands of examples, linking reference websites to Wikipedia. Our results show that it is possible to generate meaningful abstractive summaries from Brazilian Portuguese web content.",
+    "authors": [
+        "A. Oliveira",
+        "A. H. R. Costa"
+    ],
+    "venue": "Anais do XVIII Encontro Nacional de Intelig\u00eancia Artificial e Computacional (ENIAC 2021)",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "PLSum, a framework for generating wiki-like abstractive summaries from multiple descriptive websites with an extractive stage followed by an abstractive one, is contributed to the Brazilian Wikipedia."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

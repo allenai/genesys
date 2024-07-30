@@ -1,0 +1,28 @@
+{
+    "acronym": "9c2e4e5ee224c20a45c37244924138b50f3fe603",
+    "title": "Learning to Look Inside: Augmenting Token-Based Encoders with Character-Level Information",
+    "seed_ids": [
+        "gpt",
+        "a022bda79947d1f656a1164003c1b3ae9a843df9",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "9c2e4e5ee224c20a45c37244924138b50f3fe603",
+    "abstract": "Commonly-used transformer language models depend on a tokenization schema which sets an unchangeable subword vocabulary prior to pre-training, destined to be applied to all downstream tasks regardless of domain shift, novel word formations, or other sources of vocabulary mismatch. Recent work has shown that\"token-free\"models can be trained directly on characters or bytes, but training these models from scratch requires substantial computational resources, and this implies discarding the many domain-specific models that were trained on tokens. In this paper, we present XRayEmb, a method for retrofitting existing token-based models with character-level information. XRayEmb is composed of a character-level\"encoder\"that computes vector representations of character sequences, and a generative component that decodes from the internal representation to a character sequence. We show that incorporating XRayEmb's learned vectors into sequences of pre-trained token embeddings helps performance on both autoregressive and masked pre-trained transformer architectures and on both sequence-level and sequence tagging tasks, particularly on non-standard English text.",
+    "authors": [
+        "Yuval Pinter",
+        "A. Stent",
+        "Mark Dredze",
+        "Jacob Eisenstein"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that incorporating XRayEmb's learned vectors into sequences of pre- trained token embeddings helps performance on both autoregressive and masked pre-trained transformer architectures and on both sequence-level and sequence tagging tasks, particularly on non-standard English text."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

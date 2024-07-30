@@ -1,0 +1,32 @@
+{
+    "acronym": "faffb6320ff1f25cd472ba0afe7cdba5dde79a5f",
+    "title": "Test-time Backdoor Mitigation for Black-Box Large Language Models with Defensive Demonstrations",
+    "seed_ids": [
+        "gpt3",
+        "1e69f7b278ba4ae61fdbeb3330d041107287bd20",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2"
+    ],
+    "s2id": "faffb6320ff1f25cd472ba0afe7cdba5dde79a5f",
+    "abstract": "Existing studies in backdoor defense have predominantly focused on the training phase, overlooking the critical aspect of testing time defense. This gap becomes particularly pronounced in the context of Large Language Models (LLMs) deployed as Web Services, which typically offer only black-box access, rendering training-time defenses impractical. To bridge this gap, our work introduces defensive demonstrations, an innovative backdoor defense strategy for blackbox large language models. Our method involves identifying the task and retrieving task-relevant demonstrations from an uncontaminated pool. These demonstrations are then combined with user queries and presented to the model during testing, without requiring any modifications/tuning to the black-box model or insights into its internal mechanisms. Defensive demonstrations are designed to counteract the adverse effects of triggers, aiming to recalibrate and correct the behavior of poisoned models during test-time evaluations. Extensive experiments show that defensive demonstrations are effective in defending both instance-level and instruction-level backdoor attacks, not only rectifying the behavior of poisoned models but also surpassing existing baselines in most scenarios.",
+    "authors": [
+        "W. Mo",
+        "Jiashu Xu",
+        "Qin Liu",
+        "Jiong Wang",
+        "Jun Yan",
+        "Chaowei Xiao",
+        "Muhao Chen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Defensive demonstrations are designed to counteract the adverse effects of triggers, aiming to recalibrate and correct the behavior of poisoned models during test-time evaluations, and are effective in defending both instance-level and instruction-level backdoor attacks."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

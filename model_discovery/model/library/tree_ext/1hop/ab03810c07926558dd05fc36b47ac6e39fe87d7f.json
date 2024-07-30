@@ -1,0 +1,27 @@
+{
+    "acronym": "ab03810c07926558dd05fc36b47ac6e39fe87d7f",
+    "title": "Multimodal Transformers for Real-Time Surgical Activity Prediction",
+    "seed_ids": [
+        "transformer",
+        "35a9749df07a2ab97c51af4d260b095b00da7676"
+    ],
+    "s2id": "ab03810c07926558dd05fc36b47ac6e39fe87d7f",
+    "abstract": "Real-time recognition and prediction of surgical activities are fundamental to advancing safety and autonomy in robot-assisted surgery. This paper presents a multimodal transformer architecture for real-time recognition and prediction of surgical gestures and trajectories based on short segments of kinematic and video data. We conduct an ablation study to evaluate the impact of fusing different input modalities and their representations on gesture recognition and prediction performance. We perform an end-to-end assessment of the proposed architecture using the JHU-ISI Gesture and Skill Assessment Working Set (JIGSAWS) dataset. Our model outperforms the state-of-the-art (SOTA) with 89.5\\% accuracy for gesture prediction through effective fusion of kinematic features with spatial and contextual video features. It achieves the real-time performance of 1.1-1.3ms for processing a 1-second input window by relying on a computationally efficient model.",
+    "authors": [
+        "Keshara Weerasinghe",
+        "Seyed Hamid Reza Roodabeh",
+        "Kay Hutchinson",
+        "H. Alemzadeh"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a multimodal transformer architecture for real-time recognition and prediction of surgical gestures and trajectories based on short segments of kinematic and video data and conducts an ablation study to evaluate the impact of fusing different input modalities and their representations on gesture recognition and prediction performance."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,33 @@
+{
+    "acronym": "56c3f1286585f14aa6b34c53f4c09c6e5e6e068a",
+    "title": "A Study on Transformer Configuration and Training Objective",
+    "seed_ids": [
+        "gpt",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7"
+    ],
+    "s2id": "56c3f1286585f14aa6b34c53f4c09c6e5e6e068a",
+    "abstract": "Transformer-based models have delivered impressive results on many tasks, particularly vision and language tasks. In many model training situations, conventional configurations are typically adopted. For example, we often set the base model with hidden dimensions (i.e. model width) to be 768 and the number of transformer layers (i.e. model depth) to be 12. In this paper, we revisit these conventional configurations. Through theoretical analysis and experimental evaluation, we show that the masked autoencoder is effective in alleviating the over-smoothing issue in deep transformer training. Based on this finding, we propose Bamboo, an idea of using deeper and narrower transformer configurations, for masked autoencoder training. On ImageNet, with such a simple change in configuration, re-designed model achieves 87.1% top-1 accuracy and outperforms SoTA models like MAE and BEiT. On language tasks, re-designed model outperforms BERT with default setting by 1.1 points on average, on GLUE datasets.",
+    "authors": [
+        "Fuzhao Xue",
+        "Jianghai Chen",
+        "Aixin Sun",
+        "Xiaozhe Ren",
+        "Zangwei Zheng",
+        "Xiaoxin He",
+        "Yongming Chen",
+        "Xin Jiang",
+        "Yang You"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the masked autoencoder is effective in alleviating the over-smoothing issue in deep transformer training and proposed Bamboo, an idea of using deeper and narrower transformer configurations, for masked aut Koencoder training."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

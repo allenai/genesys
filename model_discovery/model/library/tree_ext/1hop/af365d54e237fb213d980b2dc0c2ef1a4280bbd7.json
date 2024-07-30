@@ -1,0 +1,33 @@
+{
+    "acronym": "af365d54e237fb213d980b2dc0c2ef1a4280bbd7",
+    "title": "In-Context Learning Dynamics with Random Binary Sequences",
+    "seed_ids": [
+        "gpt3",
+        "f5e9337477d7a9eb6267d0310549fdefafbb7fe2",
+        "525d93a382f6e7873b5d8a2e0713eb3dff7fb250",
+        "e82e3f4347674b75c432cb80604d38ee630d4bf6",
+        "c6d38add1b7bbc10f0da37a90e3f1b51ee5fb617",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "af365d54e237fb213d980b2dc0c2ef1a4280bbd7",
+    "abstract": "Large language models (LLMs) trained on huge corpora of text datasets demonstrate intriguing capabilities, achieving state-of-the-art performance on tasks they were not explicitly trained for. The precise nature of LLM capabilities is often mysterious, and different prompts can elicit different capabilities through in-context learning. We propose a framework that enables us to analyze in-context learning dynamics to understand latent concepts underlying LLMs' behavioral patterns. This provides a more nuanced understanding than success-or-failure evaluation benchmarks, but does not require observing internal activations as a mechanistic interpretation of circuits would. Inspired by the cognitive science of human randomness perception, we use random binary sequences as context and study dynamics of in-context learning by manipulating properties of context data, such as sequence length. In the latest GPT-3.5+ models, we find emergent abilities to generate seemingly random numbers and learn basic formal languages, with striking in-context learning dynamics where model outputs transition sharply from seemingly random behaviors to deterministic repetition.",
+    "authors": [
+        "Eric J. Bigelow",
+        "Ekdeep Singh Lubana",
+        "Robert P. Dick",
+        "Hidenori Tanaka",
+        "T. Ullman"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A framework is proposed that enables us to analyze in-context learning dynamics to understand latent concepts underlying LLMs' behavioral patterns, providing a more nuanced understanding than success-or-failure evaluation benchmarks, but does not require observing internal activations as a mechanistic interpretation of circuits would."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

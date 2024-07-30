@@ -1,0 +1,30 @@
+{
+    "acronym": "b2e32806ea51b93bf5fb734540072edeab314f8a",
+    "title": "UniGen: Universal Domain Generalization for Sentiment Classification via Zero-shot Dataset Generation",
+    "seed_ids": [
+        "gpt2",
+        "23c265ba884b92ecbd9d18641078d964697e4590",
+        "7eba731a7fd8de712b7b79b5af41a6e2d4dbd191",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b2e32806ea51b93bf5fb734540072edeab314f8a",
+    "abstract": "Although pre-trained language models have exhibited great flexibility and versatility with prompt-based few-shot learning, they suffer from the extensive parameter size and limited applicability for inference. Recent studies have suggested that PLMs be used as dataset generators and a tiny task-specific model be trained to achieve efficient inference. However, their applicability to various domains is limited because they tend to generate domain-specific datasets. In this work, we propose a novel approach to universal domain generalization that generates a dataset regardless of the target domain. This allows for generalization of the tiny task model to any domain that shares the label space, thus enhancing the real-world applicability of the dataset generation paradigm. Our experiments indicate that the proposed method accomplishes generalizability across various domains while using a parameter set that is orders of magnitude smaller than PLMs.",
+    "authors": [
+        "Juhwan Choi",
+        "Yeonghwa Kim",
+        "Seunguk Yu",
+        "Jungmin Yun",
+        "Youngbin Kim"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel approach to universal domain generalization that generates a dataset regardless of the target domain regardless of the target domain is proposed that accomplishes generalizability across various domains while using a parameter set that is orders of magnitude smaller than PLMs."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

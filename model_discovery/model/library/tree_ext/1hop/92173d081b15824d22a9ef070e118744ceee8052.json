@@ -1,0 +1,35 @@
+{
+    "acronym": "92173d081b15824d22a9ef070e118744ceee8052",
+    "title": "Show Your Work: Scratchpads for Intermediate Computation with Language Models",
+    "seed_ids": [
+        "universaltrans",
+        "7e9ff94476f41041c75e253e84f487db00e9c861"
+    ],
+    "s2id": "92173d081b15824d22a9ef070e118744ceee8052",
+    "abstract": "Large pre-trained language models perform remarkably well on tasks that can be done\"in one pass\", such as generating realistic text or synthesizing computer programs. However, they struggle with tasks that require unbounded multi-step computation, such as adding integers or executing programs. Surprisingly, we find that these same models are able to perform complex multi-step computations -- even in the few-shot regime -- when asked to perform the operation\"step by step\", showing the results of intermediate computations. In particular, we train transformers to perform multi-step computations by asking them to emit intermediate computation steps into a\"scratchpad\". On a series of increasingly complex tasks ranging from long addition to the execution of arbitrary programs, we show that scratchpads dramatically improve the ability of language models to perform multi-step computations.",
+    "authors": [
+        "Maxwell Nye",
+        "Anders Andreassen",
+        "Guy Gur-Ari",
+        "H. Michalewski",
+        "Jacob Austin",
+        "David Bieber",
+        "David Dohan",
+        "Aitor Lewkowycz",
+        "Maarten Bosma",
+        "D. Luan",
+        "Charles Sutton",
+        "Augustus Odena"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "On a series of increasingly complex tasks ranging from long addition to the execution of arbitrary programs, it is shown that scratchpads dramatically improve the ability of language models to perform multi-step computations."
+    },
+    "citationCount": 514,
+    "influentialCitationCount": 44,
+    "code": null,
+    "description": null,
+    "url": null
+}

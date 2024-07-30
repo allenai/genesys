@@ -1,0 +1,26 @@
+{
+    "acronym": "4e06fa91a71690fddae3d4618e8ee25993d09dd1",
+    "title": "Cross-Attention is all you need: Real-Time Streaming Transformers for Personalised Speech Enhancement",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "4e06fa91a71690fddae3d4618e8ee25993d09dd1",
+    "abstract": "Personalised speech enhancement (PSE), which extracts only the speech of a target user and removes everything else from a recorded audio clip, can potentially improve users' experiences of audio AI modules deployed in the wild. To support a large variety of downstream audio tasks, such as real-time ASR and audio-call enhancement, a PSE solution should operate in a streaming mode, i.e., input audio cleaning should happen in real-time with a small latency and real-time factor. Personalisation is typically achieved by extracting a target speaker's voice profile from an enrolment audio, in the form of a static embedding vector, and then using it to condition the output of a PSE model. However, a fixed target speaker embedding may not be optimal under all conditions. In this work, we present a streaming Transformer-based PSE model and propose a novel cross-attention approach that gives adaptive target speaker representations. We present extensive experiments and show that our proposed cross-attention approach outperforms competitive baselines consistently, even when our model is only approximately half the size.",
+    "authors": [
+        "Shucong Zhang",
+        "Malcolm Chadwick",
+        "Alberto Gil C. P. Ramos",
+        "S. Bhattacharya"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A streaming Transformer-based PSE model is presented and a novel cross-attention approach that gives adaptive target speaker representations is proposed that outperforms competitive baselines consistently, even when the model is only approximately half the size."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

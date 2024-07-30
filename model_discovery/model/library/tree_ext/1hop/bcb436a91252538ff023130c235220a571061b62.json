@@ -1,0 +1,28 @@
+{
+    "acronym": "bcb436a91252538ff023130c235220a571061b62",
+    "title": "SUBFORMER: A PARAMETER REDUCED TRANS-",
+    "seed_ids": [
+        "transformerxl",
+        "lighdynconv",
+        "b0cd93e95fb6885db47d755a4c631158b0198047",
+        "8af925f4edf45131b5b6fed8aa655089d58692fa",
+        "841d43cf4015042a4ee45745c5b6f2c59c184da5",
+        "9a618cca0d2fc78db1be1aed70517401cb3f3859",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "16c844fd4d97f3c6eb38b0d6527c87d184efedc3"
+    ],
+    "s2id": "bcb436a91252538ff023130c235220a571061b62",
+    "abstract": "The advent of the Transformer can arguably be described as a driving force behind many of the recent advances in natural language processing. However, despite their sizeable performance improvements, as recently shown, the model is severely over-parameterized, being parameter inefficient and computationally expensive to train. Inspired by the success of parameter-sharing in pre-trained deep contextualized word representation encoders, we explore parameter-sharing methods in Transformers, with a specific focus on encoder-decoder models for sequence-to-sequence tasks such as Machine Translation. We perform an analysis of different parameter sharing/reduction methods and develop the Subformer, a parameter efficient Transformer-based model which combines the newly proposed Sandwich-style parameter sharing technique and self-attentive embedding factorization (SAFE). Experiments on machine translation, abstractive summarization, and language modeling show that the Subformer can outperform the Transformer even when using significantly fewer parameters. On the WMT\u201914 English-German test set, we show we can perform equally well, and even sometimes outperform (+0.1 BLEU score) the Transformer-base model while using 40% fewer parameters. We also perform equally well as Transformer-big with 40% fewer parameters, achieve performance within 0.1 BLEU with 70% fewer parameters, and outperform the model by 0.7 BLEU with 12M fewer parameters. We also outperform the standard Transformer-XL model, achieving a significant 3.6 lower perplexity with 37% fewer parameters.1",
+    "authors": [],
+    "venue": "",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Subformer is developed, a parameter efficient Transformer-based model which combines the newly proposed Sandwich-style parameter sharing technique and self-attentive embedding factorization (SAFE), and experiments show that the Subformer can outperform the Transformer even when using significantly fewer parameters."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

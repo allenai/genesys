@@ -1,0 +1,27 @@
+{
+    "acronym": "72b266bfc4c5c32f73906bf6d30c4199583b17af",
+    "title": "TCCT-Net: Two-Stream Network Architecture for Fast and Efficient Engagement Estimation via Behavioral Feature Signals",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "72b266bfc4c5c32f73906bf6d30c4199583b17af",
+    "abstract": "Engagement analysis finds various applications in healthcare, education, advertisement, services. Deep Neural Networks, used for analysis, possess complex architecture and need large amounts of input data, computational power, inference time. These constraints challenge embedding systems into devices for real-time use. To address these limitations, we present a novel two-stream feature fusion\"Tensor-Convolution and Convolution-Transformer Network\"(TCCT-Net) architecture. To better learn the meaningful patterns in the temporal-spatial domain, we design a\"CT\"stream that integrates a hybrid convolutional-transformer. In parallel, to efficiently extract rich patterns from the temporal-frequency domain and boost processing speed, we introduce a\"TC\"stream that uses Continuous Wavelet Transform (CWT) to represent information in a 2D tensor form. Evaluated on the EngageNet dataset, the proposed method outperforms existing baselines, utilizing only two behavioral features (head pose rotations) compared to the 98 used in baseline models. Furthermore, comparative analysis shows TCCT-Net's architecture offers an order-of-magnitude improvement in inference speed compared to state-of-the-art image-based Recurrent Neural Network (RNN) methods. The code will be released at https://github.com/vedernikovphoto/TCCT_Net.",
+    "authors": [
+        "Alexander Vedernikov",
+        "Puneet Kumar",
+        "Haoyu Chen",
+        "Tapio Sepp\u00e4nen",
+        "Xiaobai Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Compar analysis shows TCCT-Net's architecture offers an order-of-magnitude improvement in inference speed compared to state-of-the-art image-based Recurrent Neural Network (RNN) methods."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,27 @@
+{
+    "acronym": "d3537b66465085a36528abb76ac744a493181811",
+    "title": "Demonstration-Conditioned Reinforcement Learning for Few-Shot Imitation",
+    "seed_ids": [
+        "axialattn",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06"
+    ],
+    "s2id": "d3537b66465085a36528abb76ac744a493181811",
+    "abstract": "In few-shot imitation , an agent is given a few demonstrations of a previously unseen task, and must then successfully perform that task. We propose a novel approach to learning few-shot-imitation agents that we call demonstration-conditioned reinforcement learning (DCRL). Given a training set consisting of demonstrations, reward functions and transition distributions for multiple tasks, the idea is to de\ufb01ne a policy that takes demonstrations and current state as inputs, and to train this policy to maximize the average of the cumulative reward over the set of training tasks. Compared to concurrent approaches, DCRL has several advantages, such as the ability to improve upon suboptimal demonstrations, to operate given state-only demonstrations, and to cope with a domain shift between the demonstra-tor and the agent. Moreover, we show that DCRL outperforms methods based on behaviour cloning by a large margin, on navigation tasks and on robotic manipulation tasks from the Meta-World benchmark.",
+    "authors": [
+        "C. Dance",
+        "Julien Perez",
+        "Th\u00e9o Cachet"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel approach to learning few-shot-imitation agents that is called demonstration-conditioned reinforcement learning (DCRL), and shows that DCRL outperforms methods based on behaviour cloning by a large margin, on navigation tasks and on robotic manipulation tasks from the Meta-World benchmark."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

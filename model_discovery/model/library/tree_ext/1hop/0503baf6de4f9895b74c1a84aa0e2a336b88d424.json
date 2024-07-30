@@ -1,0 +1,28 @@
+{
+    "acronym": "0503baf6de4f9895b74c1a84aa0e2a336b88d424",
+    "title": "Long Sequence Decoder Network for Mobile Sensing",
+    "seed_ids": [
+        "s4d",
+        "a30ac45ac5b7bd2148d3fb80ee7f3c29724e3170",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "7e9ff94476f41041c75e253e84f487db00e9c861"
+    ],
+    "s2id": "0503baf6de4f9895b74c1a84aa0e2a336b88d424",
+    "abstract": "The reconstruction and estimation of spatio-temporal patterns poses significant challenges when sensor measurements are limited. The use of mobile sensors adds additional complexity due to the change in sensor locations over time. In such cases, historical measurement and sensor information are useful for better performance, including models such as Kalman filters, recurrent neural networks (RNNs) or transformer models. However, many of these approaches often fail to efficiently handle long sequences of data in such scenarios and are sensitive to noise. In this paper, we consider a model-free approach using the {\\em structured state space sequence} (S4D) model as a deep learning layer in traditional sequence models to learn a better representation of historical sensor data. Specifically, it is integrated with a shallow decoder network for reconstruction of the high-dimensional state space. We also introduce a novel initialization of the S4D model using a Butterworth filter design to reduce noise in the inputs. Consequently, we construct a robust S4D (rS4D) model by appending the filtering S4D layer before the original S4D structure. This robust variant enhances the capability to accurately reconstruct spatio-temporal patterns with noisy mobile sensor measurements in long sequence. Numerical experiments demonstrate that our model achieves better performance compared with previous approaches. Our results underscore the efficacy of leveraging state space models within the context of spatio-temporal data reconstruction and estimation using limited mobile sensor resources, particularly in terms of long-sequence dependency and robustness to noise.",
+    "authors": [
+        "Jiazhong Mei",
+        "J. Kutz"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper considers a model-free approach using the S4D model as a deep learning layer in traditional sequence models to learn a better representation of historical sensor data and constructs a robust S4D (rS4D) model, integrated with a shallow decoder network for reconstruction of the high-dimensional state space."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

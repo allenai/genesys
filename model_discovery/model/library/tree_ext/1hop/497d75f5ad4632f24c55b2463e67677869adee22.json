@@ -1,0 +1,31 @@
+{
+    "acronym": "497d75f5ad4632f24c55b2463e67677869adee22",
+    "title": "Transformer Layers as Painters",
+    "seed_ids": [
+        "bert",
+        "96c88b196e3e432710debab39f49ee72f2b96a10",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "56c3f1286585f14aa6b34c53f4c09c6e5e6e068a",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28"
+    ],
+    "s2id": "497d75f5ad4632f24c55b2463e67677869adee22",
+    "abstract": "Despite their nearly universal adoption for large language models, the internal workings of transformers are not well understood. We aim to better understand the impact of removing or reorganizing information throughout the layers of a pretrained transformer. Such an understanding could both yield better usage of existing models as well as to make architectural improvements to produce new variants. We present a series of empirical studies on frozen models that show that the lower and final layers of pretrained transformers differ from middle layers, but that middle layers have a surprising amount of uniformity. We further show that some classes of problems have robustness to skipping layers, running the layers in an order different from how they were trained, or running the layers in parallel. Our observations suggest that even frozen pretrained models may gracefully trade accuracy for latency by skipping layers or running layers in parallel.",
+    "authors": [
+        "Qi Sun",
+        "Marc Pickett",
+        "Aakash Kumar Nain",
+        "Llion Jones"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A series of empirical studies on frozen models are presented that show that the lower and final layers of pretrained transformers differ from middle layers, but that middle layers have a surprising amount of uniformity."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

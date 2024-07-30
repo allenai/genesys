@@ -1,0 +1,29 @@
+{
+    "acronym": "90a1ac6b6654b3fd5b4b55577537f0d9e1425674",
+    "title": "Connecting Consistency Distillation to Score Distillation for Text-to-3D Generation",
+    "seed_ids": [
+        "classfreediffu",
+        "4e21879b564cc2e803b16edf0dda9f1edb91b497",
+        "85a70c0a048cba4f53dcf332ee73f6032a2e53bc",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "90a1ac6b6654b3fd5b4b55577537f0d9e1425674",
+    "abstract": "Although recent advancements in text-to-3D generation have significantly improved generation quality, issues like limited level of detail and low fidelity still persist, which requires further improvement. To understand the essence of those issues, we thoroughly analyze current score distillation methods by connecting theories of consistency distillation to score distillation. Based on the insights acquired through analysis, we propose an optimization framework, Guided Consistency Sampling (GCS), integrated with 3D Gaussian Splatting (3DGS) to alleviate those issues. Additionally, we have observed the persistent oversaturation in the rendered views of generated 3D assets. From experiments, we find that it is caused by unwanted accumulated brightness in 3DGS during optimization. To mitigate this issue, we introduce a Brightness-Equalized Generation (BEG) scheme in 3DGS rendering. Experimental results demonstrate that our approach generates 3D assets with more details and higher fidelity than state-of-the-art methods. The codes are released at https://github.com/LMozart/ECCV2024-GCS-BEG.",
+    "authors": [
+        "Zong-Han Li",
+        "Minghui Hu",
+        "Qian Zheng",
+        "Xudong Jiang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An optimization framework, Guided Consistency Sampling (GCS), integrated with 3D Gaussian Splatting (3DGS) to alleviate issues of limited level of detail and low fidelity, and introduces a Brightness-Equalized Generation (BEG) scheme in 3DGS rendering."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

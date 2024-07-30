@@ -1,0 +1,38 @@
+{
+    "acronym": "a21426633bfac7998538355bd0108c04e1be0a0e",
+    "title": "VCR-Graphormer: A Mini-batch Graph Transformer via Virtual Connections",
+    "seed_ids": [
+        "transformer",
+        "59b7448f816908cfb49a2ab5e63b2fa5786387f7",
+        "5eda60d4940d4185df45c5703e103458171d465d",
+        "277dd73bfeb5c46513ce305136b0e71fcd2a311c",
+        "d8d2e574965fe733eb1416e03df2b5c2914fc530",
+        "3a906b77fa218adc171fecb28bb81c24c14dcc7b",
+        "322cfc0af8b29eff694bc80bca5e456b35e400cc"
+    ],
+    "s2id": "a21426633bfac7998538355bd0108c04e1be0a0e",
+    "abstract": "Graph transformer has been proven as an effective graph learning method for its adoption of attention mechanism that is capable of capturing expressive representations from complex topological and feature information of graphs. Graph transformer conventionally performs dense attention (or global attention) for every pair of nodes to learn node representation vectors, resulting in quadratic computational costs that are unaffordable for large-scale graph data. Therefore, mini-batch training for graph transformers is a promising direction, but limited samples in each mini-batch can not support effective dense attention to encode informative representations. Facing this bottleneck, (1) we start by assigning each node a token list that is sampled by personalized PageRank (PPR) and then apply standard multi-head self-attention only on this list to compute its node representations. This PPR tokenization method decouples model training from complex graph topological information and makes heavy feature engineering offline and independent, such that mini-batch training of graph transformers is possible by loading each node's token list in batches. We further prove this PPR tokenization is viable as a graph convolution network with a fixed polynomial filter and jumping knowledge. However, only using personalized PageRank may limit information carried by a token list, which could not support different graph inductive biases for model training. To this end, (2) we rewire graphs by introducing multiple types of virtual connections through structure- and content-based super nodes that enable PPR tokenization to encode local and global contexts, long-range interaction, and heterophilous information into each node's token list, and then formalize our Virtual Connection Ranking based Graph Transformer (VCR-Graphormer).",
+    "authors": [
+        "Dongqi Fu",
+        "Zhigang Hua",
+        "Yan Xie",
+        "Jin Fang",
+        "Si Zhang",
+        "Kaan Sancak",
+        "Hao Wu",
+        "Andrey Malevich",
+        "Jingrui He",
+        "Bo Long"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work rewire graphs by introducing multiple types of virtual connections through structure- and content-based super nodes that enable PPR tokenization to encode local and global contexts, long-range interaction, and heterophilous information into each node's token list, and formalize the Virtual Connection Ranking based Graph Transformer (VCR-Graphormer)."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

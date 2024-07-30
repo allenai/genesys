@@ -1,0 +1,33 @@
+{
+    "acronym": "9a13a0bfa8e2d15cbc30cde868f03238d583b950",
+    "title": "Too Late to Train, Too Early To Use? A Study on Necessity and Viability of Low-Resource Bengali LLMs",
+    "seed_ids": [
+        "gpt3",
+        "53a803388e83ae89261624099d7be4287ace67cb",
+        "5b30e6cc9095a659ab62e458db49fd8da685bdbd",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1"
+    ],
+    "s2id": "9a13a0bfa8e2d15cbc30cde868f03238d583b950",
+    "abstract": "Each new generation of English-oriented Large Language Models (LLMs) exhibits enhanced cross-lingual transfer capabilities and significantly outperforms older LLMs on low-resource languages. This prompts the question: Is there a need for LLMs dedicated to a particular low-resource language? We aim to explore this question for Bengali, a low-to-moderate resource Indo-Aryan language native to the Bengal region of South Asia. We compare the performance of open-weight and closed-source LLMs such as LLaMA-3 and GPT-4 against fine-tuned encoder-decoder models across a diverse set of Bengali downstream tasks, including translation, summarization, paraphrasing, question-answering, and natural language inference. Our findings reveal that while LLMs generally excel in reasoning tasks, their performance in tasks requiring Bengali script generation is inconsistent. Key challenges include inefficient tokenization of Bengali script by existing LLMs, leading to increased computational costs and potential performance degradation. Additionally, we highlight biases in machine-translated datasets commonly used for Bengali NLP tasks. We conclude that there is a significant need for a Bengali-oriented LLM, but the field currently lacks the high-quality pretraining and instruction-tuning datasets necessary to develop a highly effective model.",
+    "authors": [
+        "Tamzeed Mahfuz",
+        "Satak Kumar Dey",
+        "Ruwad Naswan",
+        "Hasnaen Adil",
+        "Khondker Salman Sayeed",
+        "Haz Sameen Shahgir"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "There is a significant need for a Bengali-oriented Large Language Models, but the field currently lacks the high-quality pretraining and instruction-tuning datasets necessary to develop a highly effective model."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

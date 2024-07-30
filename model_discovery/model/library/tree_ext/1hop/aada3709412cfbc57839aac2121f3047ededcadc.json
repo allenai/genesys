@@ -1,0 +1,26 @@
+{
+    "acronym": "aada3709412cfbc57839aac2121f3047ededcadc",
+    "title": "Reinforcement Learning to Disentangle Multiqubit Quantum States from Partial Observations",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "aada3709412cfbc57839aac2121f3047ededcadc",
+    "abstract": "Using partial knowledge of a quantum state to control multiqubit entanglement is a largely unexplored paradigm in the emerging field of quantum interactive dynamics with the potential to address outstanding challenges in quantum state preparation and compression, quantum control, and quantum complexity. We present a deep reinforcement learning (RL) approach to constructing short disentangling circuits for arbitrary 4-, 5-, and 6-qubit states using an actor-critic algorithm. With access to only two-qubit reduced density matrices, our agent decides which pairs of qubits to apply two-qubit gates on; requiring only local information makes it directly applicable on modern NISQ devices. Utilizing a permutation-equivariant transformer architecture, the agent can autonomously identify qubit permutations within the state, and adjusts the disentangling protocol accordingly. Once trained, it provides circuits from different initial states without further optimization. We demonstrate the agent's ability to identify and exploit the entanglement structure of multiqubit states. For 4-, 5-, and 6-qubit Haar-random states, the agent learns to construct disentangling circuits that exhibit strong correlations both between consecutive gates and among the qubits involved. Through extensive benchmarking, we show the efficacy of the RL approach to find disentangling protocols with minimal gate resources. We explore the resilience of our trained agents to noise, highlighting their potential for real-world quantum computing applications. Analyzing optimal disentangling protocols, we report a general circuit to prepare an arbitrary 4-qubit state using at most 5 two-qubit (10 CNOT) gates.",
+    "authors": [
+        "Pavel Tashev",
+        "Stefan Petrov",
+        "Friederike Metz",
+        "Marin Bukov"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A deep reinforcement learning approach to constructing short disentangling circuits for arbitrary 4, 5, and 6-qubit states using an actor-critic algorithm and the efficacy of the RL approach to find disentangling protocols with minimal gate resources is shown."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

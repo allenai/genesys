@@ -1,0 +1,40 @@
+{
+    "acronym": "97f7a0c4be425f0019f7fca603d3dfd522da025a",
+    "title": "PrE-Text: Training Language Models on Private Federated Data in the Age of LLMs",
+    "seed_ids": [
+        "gpt2",
+        "be6c26ba4a0e1e821e260fe05f7c9366099f1d7f",
+        "27f8c420f0967eba781f0e1c03db7363570b66af",
+        "0399533de2d1d21f456663d1bd5355c8b3c32a58",
+        "385c2ee0bf829676d1a5aacfc697fc6a9d245ed5",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "af710ada8965f274e810053f716f966627a136d9",
+        "6fcbb819920ce206269105d1524489a33518d06d",
+        "c21d3ac8a235e2ee5f783c4c8a146f6fd3ae12e5",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "97f7a0c4be425f0019f7fca603d3dfd522da025a",
+    "abstract": "On-device training is currently the most common approach for training machine learning (ML) models on private, distributed user data. Despite this, on-device training has several drawbacks: (1) most user devices are too small to train large models on-device, (2) on-device training is communication- and computation-intensive, and (3) on-device training can be difficult to debug and deploy. To address these problems, we propose Private Evolution-Text (PrE-Text), a method for generating differentially private (DP) synthetic textual data. First, we show that across multiple datasets, training small models (models that fit on user devices) with PrE-Text synthetic data outperforms small models trained on-device under practical privacy regimes ($\\epsilon=1.29$, $\\epsilon=7.58$). We achieve these results while using 9$\\times$ fewer rounds, 6$\\times$ less client computation per round, and 100$\\times$ less communication per round. Second, finetuning large models on PrE-Text's DP synthetic data improves large language model (LLM) performance on private data across the same range of privacy budgets. Altogether, these results suggest that training on DP synthetic data can be a better option than training a model on-device on private distributed data. Code is available at https://github.com/houcharlie/PrE-Text.",
+    "authors": [
+        "Charlie Hou",
+        "Akshat Shrivastava",
+        "Hongyuan Zhan",
+        "Rylan Conway",
+        "Trang Le",
+        "Adithya Sagar",
+        "Giulia Fanti",
+        "Daniel Lazar"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Across multiple datasets, training small models with PrE-Text synthetic data outperforms small models trained on-device under practical privacy regimes and suggests that training on DP synthetic data can be a better option than training a model on-device on private distributed data."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

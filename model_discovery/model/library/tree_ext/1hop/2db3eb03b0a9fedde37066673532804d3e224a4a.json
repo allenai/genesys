@@ -1,0 +1,25 @@
+{
+    "acronym": "2db3eb03b0a9fedde37066673532804d3e224a4a",
+    "title": "Language models can generate molecules, materials, and protein binding sites directly in three dimensions as XYZ, CIF, and PDB files",
+    "seed_ids": [
+        "gpt",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2db3eb03b0a9fedde37066673532804d3e224a4a",
+    "abstract": "Language models are powerful tools for molecular design. Currently, the dominant paradigm is to parse molecular graphs into linear string representations that can easily be trained on. This approach has been very successful, however, it is limited to chemical structures that can be completely represented by a graph -- like organic molecules -- while materials and biomolecular structures like protein binding sites require a more complete representation that includes the relative positioning of their atoms in space. In this work, we show how language models, without any architecture modifications, trained using next-token prediction -- can generate novel and valid structures in three dimensions from various substantially different distributions of chemical structures. In particular, we demonstrate that language models trained directly on sequences derived directly from chemical file formats like XYZ files, Crystallographic Information files (CIFs), or Protein Data Bank files (PDBs) can directly generate molecules, crystals, and protein binding sites in three dimensions. Furthermore, despite being trained on chemical file sequences -- language models still achieve performance comparable to state-of-the-art models that use graph and graph-derived string representations, as well as other domain-specific 3D generative models. In doing so, we demonstrate that it is not necessary to use simplified molecular representations to train chemical language models -- that they are powerful generative models capable of directly exploring chemical space in three dimensions for very different structures.",
+    "authors": [
+        "Daniel Flam-Shepherd",
+        "Al\u00e1n Aspuru-Guzik"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work demonstrates that language models trained directly on sequences derived directly from chemical file formats like XYZ files, Crystallographic Information files, or Protein Data Bank files (PDBs) can directly generate molecules, crystals, and protein binding sites in three dimensions."
+    },
+    "citationCount": 27,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

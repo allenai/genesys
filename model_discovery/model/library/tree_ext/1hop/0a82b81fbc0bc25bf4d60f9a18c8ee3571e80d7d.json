@@ -1,0 +1,30 @@
+{
+    "acronym": "0a82b81fbc0bc25bf4d60f9a18c8ee3571e80d7d",
+    "title": "Relative Positional Encoding for Speech Recognition and Direct Translation",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "0a82b81fbc0bc25bf4d60f9a18c8ee3571e80d7d",
+    "abstract": "Transformer models are powerful sequence-to-sequence architectures that are capable of directly mapping speech inputs to transcriptions or translations. However, the mechanism for modeling positions in this model was tailored for text modeling, and thus is less ideal for acoustic inputs. In this work, we adapt the relative position encoding scheme to the Speech Transformer, where the key addition is relative distance between input states in the self-attention network. As a result, the network can better adapt to the variable distributions present in speech data. Our experiments show that our resulting model achieves the best recognition result on the Switchboard benchmark in the non-augmentation condition, and the best published result in the MuST-C speech translation benchmark. We also show that this model is able to better utilize synthetic data than the Transformer, and adapts better to variable sentence segmentation quality for speech translation.",
+    "authors": [
+        "Ngoc-Quan Pham",
+        "Thanh-Le Ha",
+        "Tuan-Nam Nguyen",
+        "T. Nguyen",
+        "Elizabeth Salesky",
+        "S. Stueker",
+        "J. Niehues",
+        "A. Waibel"
+    ],
+    "venue": "Interspeech",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work adapts the relative position encoding scheme to the Speech Transformer, where the key addition is relative distance between input states in the self-attention network, so the network can better adapt to the variable distributions present in speech data."
+    },
+    "citationCount": 32,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

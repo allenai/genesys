@@ -1,0 +1,42 @@
+{
+    "acronym": "80cee5037d01470edc7fbd20c564f2e1fc2c6b85",
+    "title": "MultiLegalPile: A 689GB Multilingual Legal Corpus",
+    "seed_ids": [
+        "longformer",
+        "9e16d8cc6096ec0d2733a4ecf41ce09d9a4bd19c",
+        "be76b0f32e287d866bc7aefc700052f9825ed3ce",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "fd33e77884e69f6bc099990fc2790248af2749d9",
+        "c67843e9ccb8221abb5d2feecc4f3ce2708e9cf2",
+        "0d8384c422d34b313c17bb9c57c2150711eb4bfa",
+        "29584ed6d68a06fdf91440a018f6bc83a44fd177",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "c6c734e16f66fbfcefac7625cc64599e83292c1e",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "ad7129af0644dbcafa9aa2f111cb76526ea444a1",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "7c1b18b5075bd779813c3a30dae3aeb99fdd802e",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "80cee5037d01470edc7fbd20c564f2e1fc2c6b85",
+    "abstract": "Large, high-quality datasets are crucial for training Large Language Models (LLMs). However, so far, there are few datasets available for specialized critical domains such as law and the available ones are often only for the English language. We curate and release MultiLegalPile, a 689GB corpus in 24 languages from 17 jurisdictions. The MultiLegalPile corpus, which includes diverse legal data sources with varying licenses, allows for pretraining NLP models under fair use, with more permissive licenses for the Eurlex Resources and Legal mC4 subsets. We pretrain two RoBERTa models and one Longformer multilingually, and 24 monolingual models on each of the language-specific subsets and evaluate them on LEXTREME. Additionally, we evaluate the English and multilingual models on LexGLUE. Our multilingual models set a new SotA on LEXTREME and our English models on LexGLUE. We release the dataset, the trained models, and all of the code under the most open possible licenses.",
+    "authors": [
+        "Joel Niklaus",
+        "Veton Matoshi",
+        "Matthias Sturmer",
+        "Ilias Chalkidis",
+        "Daniel E. Ho"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The MultiLegalPile corpus, which includes diverse legal data sources with varying licenses, allows for pretraining NLP models under fair use, with more permissive licenses for the Eurlex Resources and Legal mC4 subsets."
+    },
+    "citationCount": 19,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

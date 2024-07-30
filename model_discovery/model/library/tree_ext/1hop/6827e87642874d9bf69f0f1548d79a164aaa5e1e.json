@@ -1,0 +1,44 @@
+{
+    "acronym": "6827e87642874d9bf69f0f1548d79a164aaa5e1e",
+    "title": "One Transformer Fits All Distributions in Multi-Modal Diffusion at Scale",
+    "seed_ids": [
+        "gpt2",
+        "classfreediffu",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6827e87642874d9bf69f0f1548d79a164aaa5e1e",
+    "abstract": "This paper proposes a unified diffusion framework (dubbed UniDiffuser) to fit all distributions relevant to a set of multi-modal data in one model. Our key insight is -- learning diffusion models for marginal, conditional, and joint distributions can be unified as predicting the noise in the perturbed data, where the perturbation levels (i.e. timesteps) can be different for different modalities. Inspired by the unified view, UniDiffuser learns all distributions simultaneously with a minimal modification to the original diffusion model -- perturbs data in all modalities instead of a single modality, inputs individual timesteps in different modalities, and predicts the noise of all modalities instead of a single modality. UniDiffuser is parameterized by a transformer for diffusion models to handle input types of different modalities. Implemented on large-scale paired image-text data, UniDiffuser is able to perform image, text, text-to-image, image-to-text, and image-text pair generation by setting proper timesteps without additional overhead. In particular, UniDiffuser is able to produce perceptually realistic samples in all tasks and its quantitative results (e.g., the FID and CLIP score) are not only superior to existing general-purpose models but also comparable to the bespoken models (e.g., Stable Diffusion and DALL-E 2) in representative tasks (e.g., text-to-image generation).",
+    "authors": [
+        "Fan Bao",
+        "Shen Nie",
+        "Kaiwen Xue",
+        "Chongxuan Li",
+        "Shiliang Pu",
+        "Yaole Wang",
+        "Gang Yue",
+        "Yue Cao",
+        "Hang Su",
+        "Jun Zhu"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "UniDiffuser is able to produce perceptually realistic samples in all tasks and its quantitative results are not only superior to existing general-purpose models but also comparable to the bespoken models in representative tasks (e.g., text-to-image generation)."
+    },
+    "citationCount": 99,
+    "influentialCitationCount": 14,
+    "code": null,
+    "description": null,
+    "url": null
+}

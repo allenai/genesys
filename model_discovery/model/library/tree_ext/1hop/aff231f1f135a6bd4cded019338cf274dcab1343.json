@@ -1,0 +1,39 @@
+{
+    "acronym": "aff231f1f135a6bd4cded019338cf274dcab1343",
+    "title": "Tackling Long Code Search with Splitting, Encoding, and Aggregating",
+    "seed_ids": [
+        "longformer",
+        "e22ae34ea102a781d0494e115639e8d081bf6920",
+        "2a09ebbfcca1a6994eeb472cd4159f5f3858dbf9",
+        "9eb7860ae9777997ed17f6de623b0ab08cfc2df5",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "2e14e84ccec924ed770b58108ad1d9de6f0ca295",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "203b543bfa1e564bb80ff4229b43174d7c71b0c0",
+        "2a31319e73d4486716168b65cdf7559baeda18ce"
+    ],
+    "s2id": "aff231f1f135a6bd4cded019338cf274dcab1343",
+    "abstract": "Code search with natural language helps us reuse existing code snippets. Thanks to the Transformer-based pretraining models, the performance of code search has been improved significantly. However, due to the quadratic complexity of multi-head self-attention, there is a limit on the input token length. For efficient training on standard GPUs like V100, existing pretrained code models, including GraphCodeBERT, CodeBERT, RoBERTa (code), take the first 256 tokens by default, which makes them unable to represent the complete information of long code that is greater than 256 tokens. To tackle the long code problem, we propose a new baseline SEA (Split, Encode and Aggregate), which splits long code into code blocks, encodes these blocks into embeddings, and aggregates them to obtain a comprehensive long code representation. With SEA, we could directly use Transformer-based pretraining models to model long code without changing their internal structure and re-pretraining. We also compare SEA with sparse Trasnformer methods. With GraphCodeBERT as the encoder, SEA achieves an overall mean reciprocal ranking score of 0.785, which is 10.1% higher than GraphCodeBERT on the CodeSearchNet benchmark, justifying SEA as a strong baseline for long code search.",
+    "authors": [
+        "Fan Hu",
+        "Yanlin Wang",
+        "Lun Du",
+        "Hongyu Zhang",
+        "Shi Han",
+        "Dongmei Zhang",
+        "Xirong Li"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new baseline SEA (Split, Encode and Aggregate), which splits long code into code blocks, encodes these blocks into embeddings, and aggregates them to obtain a comprehensive long code representation, is proposed and compared with sparse Trasnformer methods."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

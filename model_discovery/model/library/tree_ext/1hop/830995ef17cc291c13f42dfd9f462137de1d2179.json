@@ -1,0 +1,28 @@
+{
+    "acronym": "830995ef17cc291c13f42dfd9f462137de1d2179",
+    "title": "Augmenting Self-attention with Persistent Memory",
+    "seed_ids": [
+        "transformerxl",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13"
+    ],
+    "s2id": "830995ef17cc291c13f42dfd9f462137de1d2179",
+    "abstract": "Transformer networks have lead to important progress in language modeling and machine translation. These models include two consecutive modules, a feed-forward layer and a self-attention layer. The latter allows the network to capture long term dependencies and are often regarded as the key ingredient in the success of Transformers. Building upon this intuition, we propose a new model that solely consists of attention layers. More precisely, we augment the self-attention layers with persistent memory vectors that play a similar role as the feed-forward layer. Thanks to these vectors, we can remove the feed-forward layer without degrading the performance of a transformer. Our evaluation shows the benefits brought by our model on standard character and word level language modeling benchmarks.",
+    "authors": [
+        "Sainbayar Sukhbaatar",
+        "Edouard Grave",
+        "Guillaume Lample",
+        "H. J\u00e9gou",
+        "Armand Joulin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new model that solely consists of attention layers is proposed that augment the self-attention layers with persistent memory vectors that play a similar role as the feed-forward layer."
+    },
+    "citationCount": 116,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,26 @@
+{
+    "acronym": "9a1eb2cf0b900e1f76d655bc8ed42b66c992a05e",
+    "title": "RNA-TorsionBERT: leveraging language models for RNA 3D torsion angles prediction",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "9a1eb2cf0b900e1f76d655bc8ed42b66c992a05e",
+    "abstract": "Predicting the 3D structure of RNA is an ongoing challenge that has yet to be completely addressed despite continuous advancements. RNA 3D structures rely on distances between residues and base interactions but also backbone torsional angles. Knowing the torsional angles for each residue could help reconstruct its global folding, which is what we tackle in this work. This paper presents a novel approach for directly predicting RNA torsional angles from raw sequence data. Our method draws inspiration from the successful application of language models in various domains and adapts them to RNA. We have developed a language-based model, RNA-TorsionBERT, incorporating better sequential interactions for predicting RNA torsional and pseudo-torsional angles from the sequence only. Through extensive benchmarking, we demonstrate that our method improves the prediction of torsional angles compared to state-of-the-art methods. In addition, by using our predictive model, we have inferred a torsion angle-dependent scoring function, called RNA-Torsion-A, that replaces the true reference angles by our model prediction. We show that it accurately evaluates the quality of near-native predicted structures, in terms of RNA backbone torsion and pseudo-torsion angle values. Our work demonstrates promising results, suggesting the potential utility of language models in advancing RNA 3D structure prediction. The source code is freely available on the EvryRNA platform: https://evryrna.ibisc.univ-evry.fr/evryrna/RNA-TorsionBERT.",
+    "authors": [
+        "Cl\u00e9ment Bernard",
+        "Guillaume Postic",
+        "Sahar Ghannay",
+        "F. Tahi"
+    ],
+    "venue": "bioRxiv",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A language-based model is developed, RNA-TorsionBERT, incorporating better sequential interactions for predicting RNA torsional and pseudo-torsional angles from the sequence only, and it accurately evaluates the quality of near-native predicted structures, in terms of RNA backbone torsion and pseudo-torsion angle values."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

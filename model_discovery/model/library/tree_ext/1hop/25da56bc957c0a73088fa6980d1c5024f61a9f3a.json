@@ -1,0 +1,33 @@
+{
+    "acronym": "25da56bc957c0a73088fa6980d1c5024f61a9f3a",
+    "title": "DESTEIN: Navigating Detoxification of Language Models via Universal Steering Pairs and Head-wise Activation Fusion",
+    "seed_ids": [
+        "gpt2",
+        "062bbb6474309d3c42397d8ab808505a91ca6ef2",
+        "c1043ea52f602764b5b863d082ef81995f2adff5",
+        "59e0ef773d2383875c6711f136e7159af06dcdbb",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "25da56bc957c0a73088fa6980d1c5024f61a9f3a",
+    "abstract": "Despite the remarkable achievements of language models (LMs) across a broad spectrum of tasks, their propensity for generating toxic outputs remains a prevalent concern. Current solutions involving fine-tuning or auxiliary models usually require extensive memory and computational resources, rendering them less practical for deployment in large language models (LLMs). In this paper, we propose DeStein, a novel method that detoxififies LMs by altering their internal representations in the activation space with lower resource and time cost. Specifically, we leverage self-induced steering pairs to identify detoxification vectors through arithmetic operations in the activation space. During inference, detoxification is achieved by blending the detoxification vectors with the original representations. Empirical results demonstrate that our method significantly outperforms previous state-of-the-art approaches on popular detoxification metrics, while also maintaining satisfactory generation quality and diversity. Furthermore, we extend our method to multiple LLMs, demonstrating its practicality and scalability. We open-source our method at https://github.com/LizLizLi/DeStein . Warning: Some example model outputs contain highly offensive or disturbing text.",
+    "authors": [
+        "Yu Li",
+        "Zhihua Wei",
+        "Han Jiang",
+        "Chuanyang Gong"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DeStein is proposed, a novel method that detoxififies LMs by altering their internal representations in the activation space with lower resource and time cost and extends to multiple LLMs, demonstrating its practicality and scalability."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

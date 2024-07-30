@@ -1,0 +1,28 @@
+{
+    "acronym": "050d66cab131c8e10c230df9469d897622ccf7d2",
+    "title": "SpecDec++: Boosting Speculative Decoding via Adaptive Candidate Lengths",
+    "seed_ids": [
+        "bert",
+        "d0deaec3e1f74701ac43600d9e64c5c969be7391",
+        "f1a9e0830bc36c048fa4659beaa62609869895b5",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed"
+    ],
+    "s2id": "050d66cab131c8e10c230df9469d897622ccf7d2",
+    "abstract": "Speculative decoding reduces the inference latency of a target large language model via utilizing a smaller and faster draft model. Its performance depends on a hyperparameter K -- the candidate length, i.e., the number of candidate tokens for the target model to verify in each round. However, previous methods often use simple heuristics to choose K, which may result in sub-optimal performance. We study the choice of the candidate length K and formulate it as a Markov Decision Process. We theoretically show that the optimal policy of this Markov decision process takes the form of a threshold policy, i.e., the current speculation should stop and be verified when the probability of getting a rejection exceeds a threshold value. Motivated by this theory, we propose SpecDec++, an enhanced version of speculative decoding that adaptively determines the candidate length on the fly. We augment the draft model with a trained acceptance prediction head to predict the conditional acceptance probability of the candidate tokens. SpecDec++ will stop the current speculation when the predicted probability that at least one token gets rejected exceeds a threshold. We implement SpecDec++ and apply it to the llama-2-chat 7B&70B model pair. Our adaptive method achieves a 2.04x speedup on the Alpaca dataset (an additional 7.2% improvement over the baseline speculative decoding). On the GSM8K and HumanEval datasets, our method achieves a 2.26x speedup (9.4% improvement) and 2.23x speedup (11.1% improvement), respectively.",
+    "authors": [
+        "Kaixuan Huang",
+        "Xudong Guo",
+        "Mengdi Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes SpecDec++, an enhanced version of speculative decoding that adaptively determines the candidate length on the fly that achieves a 2.04x speedup on the Alpaca dataset and an additional 7.2% improvement over the baseline speculative decoding."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

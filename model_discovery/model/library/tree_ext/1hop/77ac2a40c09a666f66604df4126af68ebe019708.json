@@ -1,0 +1,37 @@
+{
+    "acronym": "77ac2a40c09a666f66604df4126af68ebe019708",
+    "title": "Federating to Grow Transformers with Constrained Resources without Model Sharing",
+    "seed_ids": [
+        "bert",
+        "a7a40b35b6f37c554f1c5c2038892ed70c693a64",
+        "434f4ecbfdea4496bbcd763427fc605bf11abddc",
+        "7a49beff86a855f237f96ae3f0aefc9780cb31be",
+        "981995fd64611f475179b280f4e9c241051ac185",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "5a3749929bf5fb8b1f98a7b2a43c3b957bcf6c88",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "77ac2a40c09a666f66604df4126af68ebe019708",
+    "abstract": "The high resource consumption of large-scale models discourages resource-constrained users from developing their customized transformers. To this end, this paper considers a federated framework named Fed-Grow for multiple participants to cooperatively scale a transformer from their pre-trained small models. Under the Fed-Grow, a Dual-LiGO (Dual Linear Growth Operator) architecture is designed to help participants expand their pre-trained small models to a transformer. In Dual-LiGO, the Local-LiGO part is used to address the heterogeneity problem caused by the various pre-trained models, and the Global-LiGO part is shared to exchange the implicit knowledge from the pre-trained models, local data, and training process of participants. Instead of model sharing, only sharing the Global-LiGO strengthens the privacy of our approach. Compared with several state-of-the-art methods in simulation, our approach has higher accuracy, better precision, and lower resource consumption on computations and communications. To the best of our knowledge, most of the previous model-scaling works are centralized, and our work is the first one that cooperatively grows a transformer from multiple pre-trained heterogeneous models with the user privacy protected in terms of local data and models. We hope that our approach can extend the transformers to the broadly distributed scenarios and encourage more resource-constrained users to enjoy the bonus taken by the large-scale transformers.",
+    "authors": [
+        "Shikun Shen",
+        "Yifei Zou",
+        "Yuan Yuan",
+        "Yanwei Zheng",
+        "Peng Li",
+        "Xiuzhen Cheng",
+        "Dongxiao Yu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work is the first one that cooperatively grows a transformer from multiple pre-trained heterogeneous models with the user privacy protected in terms of local data and models."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

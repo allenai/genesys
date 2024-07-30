@@ -1,0 +1,34 @@
+{
+    "acronym": "229d378b78ab1211c1dc5ca8c9942c0511b51937",
+    "title": "Improving Cross-lingual Representation for Semantic Retrieval with Code-switching",
+    "seed_ids": [
+        "bert",
+        "73f3c9aa81fa2771fbe6c10c3c0b2b90a5844697",
+        "311909621177c397c6b7099beff32332124f7d46",
+        "65f788fb964901e3f1149a0a53317535ca85ed7d",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "229d378b78ab1211c1dc5ca8c9942c0511b51937",
+    "abstract": "Semantic Retrieval (SR) has become an indispensable part of the FAQ system in the task-oriented question-answering (QA) dialogue scenario. The demands for a cross-lingual smart-customer-service system for an e-commerce platform or some particular business conditions have been increasing recently. Most previous studies exploit cross-lingual pre-trained models (PTMs) for multi-lingual knowledge retrieval directly, while some others also leverage the continual pre-training before fine-tuning PTMs on the downstream tasks. However, no matter which schema is used, the previous work ignores to inform PTMs of some features of the downstream task, i.e. train their PTMs without providing any signals related to SR. To this end, in this work, we propose an Alternative Cross-lingual PTM for SR via code-switching. We are the first to utilize the code-switching approach for cross-lingual SR. Besides, we introduce the novel code-switched continual pre-training instead of directly using the PTMs on the SR tasks. The experimental results show that our proposed approach consistently outperforms the previous SOTA methods on SR and semantic textual similarity (STS) tasks with three business corpora and four open datasets in 20+ languages.",
+    "authors": [
+        "M. Maimaiti",
+        "Yuanhang Zheng",
+        "Ji Zhang",
+        "Fei Huang",
+        "Yue Zhang",
+        "Wenpei Luo",
+        "Kaiyu Huang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an Alternative Cross-lingual PTM for SR via code-switching and is the first to utilize the code-switching approach for cross-lingual SR, and introduces the novel code-switched continual pre-training instead of directly using the PTMs on the SR tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

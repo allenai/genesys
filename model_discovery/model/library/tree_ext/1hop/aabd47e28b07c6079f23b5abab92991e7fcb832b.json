@@ -1,0 +1,35 @@
+{
+    "acronym": "aabd47e28b07c6079f23b5abab92991e7fcb832b",
+    "title": "PianoBART: Symbolic Piano Music Generation and Understanding with Large-Scale Pre-Training",
+    "seed_ids": [
+        "bert",
+        "6a316d0913596b65032f4b6956ba19a40e6c960f",
+        "eb0931c39904a40c6cb4aa35c9b21d5e3b7dc856",
+        "4c64c35198453662882afd63d618a832c7d8c1b2",
+        "ce510c6cfeac703706460680e977c54554840830",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "fb507ada871d1e8c29e376dbf7b7879689aa89f9"
+    ],
+    "s2id": "aabd47e28b07c6079f23b5abab92991e7fcb832b",
+    "abstract": "Learning musical structures and composition patterns is necessary for both music generation and understanding, but current methods do not make uniform use of learned features to generate and comprehend music simultaneously. In this paper, we propose PianoBART, a pre-trained model that uses BART for both symbolic piano music generation and understanding. We devise a multi-level object selection strategy for different pre-training tasks of PianoBART, which can prevent information leakage or loss and enhance learning ability. The musical semantics captured in pre-training are fine-tuned for music generation and understanding tasks. Experiments demonstrate that PianoBART efficiently learns musical patterns and achieves outstanding performance in generating high-quality coherent pieces and comprehending music. Our code and supplementary material are available at https://github.com/RS2002/PianoBart.",
+    "authors": [
+        "Xiao Liang",
+        "Zijian Zhao",
+        "Weichao Zeng",
+        "Yutong He",
+        "Fupeng He",
+        "Yiyi Wang",
+        "Chengying Gao"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A multi-level object selection strategy for different pre-training tasks of PianoBART is devised, which can prevent information leakage or loss and enhance learning ability."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

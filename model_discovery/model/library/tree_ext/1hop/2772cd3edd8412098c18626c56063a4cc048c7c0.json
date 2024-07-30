@@ -1,0 +1,40 @@
+{
+    "acronym": "2772cd3edd8412098c18626c56063a4cc048c7c0",
+    "title": "DMM: Disparity-guided Multispectral Mamba for Oriented Object Detection in Remote Sensing",
+    "seed_ids": [
+        "mamba",
+        "8d41082767eafaa3eee9380aa1adad4c6452fe9e",
+        "cbaf689fd9ea9bc939510019d90535d6249b3367",
+        "5f07ef98b64b2ab47105018cbda158527f903b28",
+        "1df04f33a8ef313cc2067147dbb79c3ca7c5c99f",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "745594bd0dc3e9dc86f74e100cd2c98ed36256c0",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "2772cd3edd8412098c18626c56063a4cc048c7c0",
+    "abstract": "Multispectral oriented object detection faces challenges due to both inter-modal and intra-modal discrepancies. Recent studies often rely on transformer-based models to address these issues and achieve cross-modal fusion detection. However, the quadratic computational complexity of transformers limits their performance. Inspired by the efficiency and lower complexity of Mamba in long sequence tasks, we propose Disparity-guided Multispectral Mamba (DMM), a multispectral oriented object detection framework comprised of a Disparity-guided Cross-modal Fusion Mamba (DCFM) module, a Multi-scale Target-aware Attention (MTA) module, and a Target-Prior Aware (TPA) auxiliary task. The DCFM module leverages disparity information between modalities to adaptively merge features from RGB and IR images, mitigating inter-modal conflicts. The MTA module aims to enhance feature representation by focusing on relevant target regions within the RGB modality, addressing intra-modal variations. The TPA auxiliary task utilizes single-modal labels to guide the optimization of the MTA module, ensuring it focuses on targets and their local context. Extensive experiments on the DroneVehicle and VEDAI datasets demonstrate the effectiveness of our method, which outperforms state-of-the-art methods while maintaining computational efficiency. Code will be available at https://github.com/Another-0/DMM.",
+    "authors": [
+        "Minghang Zhou",
+        "Tianyu Li",
+        "Chaofan Qiao",
+        "Dongyu Xie",
+        "Guoqing Wang",
+        "Ningjuan Ruan",
+        "Lin Mei",
+        "Yang Yang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Disparity-guided Multispectral Mamba, a multispectral oriented object detection framework comprised of a Disparity-guided Cross-modal Fusion Mamba module, a Multi-scale Target-aware Attention module, and a Target-Prior Aware auxiliary task."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

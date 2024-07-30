@@ -1,0 +1,36 @@
+{
+    "acronym": "7e72ccb32491711fcf3b59ac77359a57c2ff52de",
+    "title": "Automatic Speech Recognition Datasets in Cantonese Language: A Survey and a New Dataset",
+    "seed_ids": [
+        "lrt",
+        "4e4a031305beefec1935eac801b81fd64f55f82f",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "7e72ccb32491711fcf3b59ac77359a57c2ff52de",
+    "abstract": "Automatic speech recognition (ASR) on low resource languages improves access of linguistic minorities to technological advantages provided by Arti\ufb01cial Intelligence (AI). In this paper, we address a problem of data scarcity of Hong Kong Cantonese language by creating a new Cantonese dataset. Our dataset, M ulti-D omain C antonese C orpus (MDCC), consists of 73.6 hours of clean read speech paired with transcripts, collected from Cantonese audiobooks from Hong Kong. It combines philosophy, politics, education, culture, lifestyle and family domains, covering a wide range of topics. We also review all existing Cantonese datasets and perform experiments on the two biggest datasets (MDCC and Common Voice zh-HK). We analyze the existing datasets according to their speech type, data source, total size and availability. The results of experiments conducted with Fairseq S2T Transformer, a state-of-the-art ASR model, show the e\ufb00ectiveness of our dataset. In addition, we create a powerful and robust Cantonese ASR model by applying multi-dataset learning on MDCC and Common Voice zh-HK.",
+    "authors": [
+        "Tiezheng Yu",
+        "Rita Frieske",
+        "Peng Xu",
+        "Samuel Cahyawijaya",
+        "Cheuk Tung Shadow Yiu",
+        "Holy Lovenia",
+        "Wenliang Dai",
+        "Elham J. Barezi",
+        "Qifeng Chen",
+        "Xiaojuan Ma",
+        "Bertram E. Shi",
+        "Pascale Fung"
+    ],
+    "venue": "",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper addresses a problem of data scarcity of Hong Kong Cantonese language by creating a new Cantonese dataset and creates a powerful and robust Cantonese ASR model by applying multi-dataset learning on MDCC and Common Voice zh-HK."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

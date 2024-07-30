@@ -1,0 +1,36 @@
+{
+    "acronym": "e46a79cf7c2c9192639f9e1d12280650e06b9d56",
+    "title": "Autoregressive Image Generation without Vector Quantization",
+    "seed_ids": [
+        "transformer",
+        "gpt",
+        "bb857c72e7c75fc3d4b44b1dcaa66c62ea10a2e1",
+        "11c8911f787eed34e6f058d5d36287d45c54c961",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e46a79cf7c2c9192639f9e1d12280650e06b9d56",
+    "abstract": "Conventional wisdom holds that autoregressive models for image generation are typically accompanied by vector-quantized tokens. We observe that while a discrete-valued space can facilitate representing a categorical distribution, it is not a necessity for autoregressive modeling. In this work, we propose to model the per-token probability distribution using a diffusion procedure, which allows us to apply autoregressive models in a continuous-valued space. Rather than using categorical cross-entropy loss, we define a Diffusion Loss function to model the per-token probability. This approach eliminates the need for discrete-valued tokenizers. We evaluate its effectiveness across a wide range of cases, including standard autoregressive models and generalized masked autoregressive (MAR) variants. By removing vector quantization, our image generator achieves strong results while enjoying the speed advantage of sequence modeling. We hope this work will motivate the use of autoregressive generation in other continuous-valued domains and applications.",
+    "authors": [
+        "Tianhong Li",
+        "Yonglong Tian",
+        "He Li",
+        "Mingyang Deng",
+        "Kaiming He"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to model the per-token probability distribution using a diffusion procedure, which allows to apply autoregressive models in a continuous-valued space and evaluates its effectiveness across a wide range of cases, including standard autoregressive models and generalized masked autoregressive (MAR) variants."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

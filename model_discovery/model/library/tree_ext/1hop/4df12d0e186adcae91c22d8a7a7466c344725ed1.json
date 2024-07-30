@@ -1,0 +1,30 @@
+{
+    "acronym": "4df12d0e186adcae91c22d8a7a7466c344725ed1",
+    "title": "VLCAP: Vision-Language with Contrastive Learning for Coherent Video Paragraph Captioning",
+    "seed_ids": [
+        "transformerxl",
+        "70557ea6b65846fc30729ceed224acd4ac64ca5d"
+    ],
+    "s2id": "4df12d0e186adcae91c22d8a7a7466c344725ed1",
+    "abstract": "In this paper, we leverage the human perceiving process, that involves vision and language interaction, to generate a coherent paragraph description of untrimmed videos. We propose vision-language (VL) features consisting of two modalities, i.e., (i) vision modality to capture global visual content of the entire scene and (ii) language modality to extract scene elements description of both human and non-human objects (e.g. animals, vehicles, etc), visual and non-visual elements (e.g. relations, activities, etc). Furthermore, we propose to train our proposed VLCap under a contrastive learning VL loss. The experiments and ablation studies on ActivityNet Captions and YouCookII datasets show that our VLCap outperforms existing SOTA methods on both accuracy and diversity metrics. Source code: https://github.com/UARK-AICV/VLCAP",
+    "authors": [
+        "Kashu Yamazaki",
+        "Sang Truong",
+        "Khoa T. Vo",
+        "Michael Kidd",
+        "Chase Rainwater",
+        "Khoa Luu",
+        "Ngan T. H. Le"
+    ],
+    "venue": "International Conference on Information Photonics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The experiments and ablation studies on ActivityNet Captions and YouCookII datasets show that the proposed VLCap outperforms existing SOTA methods on both accuracy and diversity metrics."
+    },
+    "citationCount": 20,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

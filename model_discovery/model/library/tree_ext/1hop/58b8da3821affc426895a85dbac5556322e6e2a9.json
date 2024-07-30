@@ -1,0 +1,33 @@
+{
+    "acronym": "58b8da3821affc426895a85dbac5556322e6e2a9",
+    "title": "EtriCA: Event-Triggered Context-Aware Story Generation Augmented by Cross Attention",
+    "seed_ids": [
+        "gpt2",
+        "9aacdbc8b04fa63e6fe93f62a737a11c613f08fb",
+        "a23f58609e7caecb68ec16d7a175b24e482b515d",
+        "07a9f47885cae97efb7b4aa109392128532433da",
+        "e7c698bdace380f7183dedbe657686f1885f615c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "58b8da3821affc426895a85dbac5556322e6e2a9",
+    "abstract": "One of the key challenges of automatic story generation is how to generate a long narrative that can maintain fluency, relevance, and coherence. Despite recent progress, current story generation systems still face the challenge of how to effectively capture contextual and event features, which has a profound impact on a model's generation performance. To address these challenges, we present EtriCA, a novel neural generation model, which improves the relevance and coherence of the generated stories through residually mapping context features to event sequences with a cross-attention mechanism. Such a feature capturing mechanism allows our model to better exploit the logical relatedness between events when generating stories. Extensive experiments based on both automatic and human evaluations show that our model significantly outperforms state-of-the-art baselines, demonstrating the effectiveness of our model in leveraging context and event features.",
+    "authors": [
+        "Chen Tang",
+        "Chenghua Lin",
+        "Hen-Hsen Huang",
+        "Frank Guerin",
+        "Zhihao Zhang"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "EtriCA is presented, a novel neural generation model, which improves the relevance and coherence of the generated stories through residually mapping context features to event sequences with a cross-attention mechanism."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

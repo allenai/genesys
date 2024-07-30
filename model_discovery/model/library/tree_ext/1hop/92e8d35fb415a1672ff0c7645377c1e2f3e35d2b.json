@@ -1,0 +1,28 @@
+{
+    "acronym": "92e8d35fb415a1672ff0c7645377c1e2f3e35d2b",
+    "title": "Pathformer: Recursive Path Query Encoding for Complex Logical Query Answering",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "92e8d35fb415a1672ff0c7645377c1e2f3e35d2b",
+    "abstract": "Complex Logical Query Answering (CLQA) over incomplete knowledge graphs is a challenging task. Recently, Query Embedding (QE) methods are proposed to solve CLQA by performing multi-hop logical reasoning. However, most of them only consider historical query context information while ignoring future information, which leads to their failure to capture the complex dependencies behind the elements of a query. In recent years, the transformer architecture has shown a strong ability to model long-range dependencies between words. The bidirectional attention mechanism proposed by the transformer can solve the limitation of these QE methods regarding query context. Still, as a sequence model, it is difficult for the transformer to model complex logical queries with branch structure computation graphs directly. To this end, we propose a neural one-point embedding method called Pathformer based on the tree-like computation graph, i.e., query computation tree. Specifically, Pathformer decomposes the query computation tree into path query sequences by branches and then uses the transformer encoder to recursively encode these path query sequences to obtain the final query embedding. This allows Pathformer to fully utilize future context information to explicitly model the complex interactions between various parts of the path query. Experimental results show that Pathformer outperforms existing competitive neural QE methods, and we found that Pathformer has the potential to be applied to non-one-point embedding space.",
+    "authors": [
+        "Chongzhi Zhang",
+        "Zhiping Peng",
+        "Junhao Zheng",
+        "Linghao Wang",
+        "Ruifeng Shi",
+        "Qianli Ma"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results show that Pathformer outperforms existing competitive neural QE methods, and it is found that Pathformer has the potential to be applied to non-one-point embedding space."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

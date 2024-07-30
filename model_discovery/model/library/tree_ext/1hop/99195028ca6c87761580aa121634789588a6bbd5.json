@@ -1,0 +1,33 @@
+{
+    "acronym": "99195028ca6c87761580aa121634789588a6bbd5",
+    "title": "Prompt-Singer: Controllable Singing-Voice-Synthesis with Natural Language Prompt",
+    "seed_ids": [
+        "bert",
+        "412e266cddfd87c79087a88ba1e4d11b89a45a13",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "99195028ca6c87761580aa121634789588a6bbd5",
+    "abstract": "Recent singing-voice-synthesis (SVS) methods have achieved remarkable audio quality and naturalness, yet they lack the capability to control the style attributes of the synthesized singing explicitly. We propose Prompt-Singer, the first SVS method that enables attribute controlling on singer gender, vocal range and volume with natural language. We adopt a model architecture based on a decoder-only transformer with a multi-scale hierarchy, and design a range-melody decoupled pitch representation that enables text-conditioned vocal range control while keeping melodic accuracy. Furthermore, we explore various experiment settings, including different types of text representations, text encoder fine-tuning, and introducing speech data to alleviate data scarcity, aiming to facilitate further research. Experiments show that our model achieves favorable controlling ability and audio quality. Audio samples are available at http://prompt-singer.github.io .",
+    "authors": [
+        "Yongqi Wang",
+        "Ruofan Hu",
+        "Rongjie Huang",
+        "Zhiqing Hong",
+        "Ruiqi Li",
+        "Wenrui Liu",
+        "Fuming You",
+        "Tao Jin",
+        "Zhou Zhao"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

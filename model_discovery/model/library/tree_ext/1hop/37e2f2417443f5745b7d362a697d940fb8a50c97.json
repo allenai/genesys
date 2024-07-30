@@ -1,0 +1,30 @@
+{
+    "acronym": "37e2f2417443f5745b7d362a697d940fb8a50c97",
+    "title": "ConceptEVA: Concept-Based Interactive Exploration and Customization of Document Summaries",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "37e2f2417443f5745b7d362a697d940fb8a50c97",
+    "abstract": "With the most advanced natural language processing and artificial intelligence approaches, effective summarization of long and multi-topic documents\u2014such as academic papers\u2014for readers from different domains still remains a challenge. To address this, we introduce ConceptEVA, a mixed-initiative approach to generate, evaluate, and customize summaries for long and multi-topic documents. ConceptEVA incorporates a custom multi-task longformer encoder decoder to summarize longer documents. Interactive visualizations of document concepts as a network reflecting both semantic relatedness and co-occurrence help users focus on concepts of interest. The user can select these concepts and automatically update the summary to emphasize them. We present two iterations of ConceptEVA evaluated through an expert review and a within-subjects study. We find that participants\u2019 satisfaction with customized summaries through ConceptEVA is higher than their own manually-generated summary, while incorporating critique into the summaries proved challenging. Based on our findings, we make recommendations for designing summarization systems incorporating mixed-initiative interactions.",
+    "authors": [
+        "Xiaoyu Zhang",
+        "J. Li",
+        "Po-Wei Chi",
+        "Senthil K. Chandrasegaran",
+        "Kwan-Liu Ma"
+    ],
+    "venue": "International Conference on Human Factors in Computing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ConceptEVA, a mixed-initiative approach to generate, evaluate, and customize summaries for long and multi-topic documents, is introduced and participants\u2019 satisfaction with customized summaries through ConceptEVA is higher than their own manually-generated summary."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,33 @@
+{
+    "acronym": "89a8d24658d98370403d2775721dcc972bb06ed0",
+    "title": "OpenSTL: A Comprehensive Benchmark of Spatio-Temporal Predictive Learning",
+    "seed_ids": [
+        "metaformer",
+        "ba637c4f1a170f1e2dadeadb71a63cf2b9a46de2",
+        "687f0af2b6b6eb9dde326d7c6759dedf4b9e917a",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "89a8d24658d98370403d2775721dcc972bb06ed0",
+    "abstract": "Spatio-temporal predictive learning is a learning paradigm that enables models to learn spatial and temporal patterns by predicting future frames from given past frames in an unsupervised manner. Despite remarkable progress in recent years, a lack of systematic understanding persists due to the diverse settings, complex implementation, and difficult reproducibility. Without standardization, comparisons can be unfair and insights inconclusive. To address this dilemma, we propose OpenSTL, a comprehensive benchmark for spatio-temporal predictive learning that categorizes prevalent approaches into recurrent-based and recurrent-free models. OpenSTL provides a modular and extensible framework implementing various state-of-the-art methods. We conduct standard evaluations on datasets across various domains, including synthetic moving object trajectory, human motion, driving scenes, traffic flow and weather forecasting. Based on our observations, we provide a detailed analysis of how model architecture and dataset properties affect spatio-temporal predictive learning performance. Surprisingly, we find that recurrent-free models achieve a good balance between efficiency and performance than recurrent models. Thus, we further extend the common MetaFormers to boost recurrent-free spatial-temporal predictive learning. We open-source the code and models at https://github.com/chengtan9907/OpenSTL.",
+    "authors": [
+        "Cheng Tan",
+        "Siyuan Li",
+        "Zhangyang Gao",
+        "Wen-Cai Guan",
+        "Zedong Wang",
+        "Zicheng Liu",
+        "Lirong Wu",
+        "Stan Z. Li"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Surprisingly, it is found that recurrent-free models achieve a good balance between efficiency and performance than recurrent models, and the common MetaFormers are extended to boost recurrent- free spatial-temporal predictive learning."
+    },
+    "citationCount": 26,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "c3d877b29594bc6f244e638f576be3dca5551f11",
+    "title": "A Comparative Study of Pretrained Language Models for Long Clinical Text",
+    "seed_ids": [
+        "bigbird",
+        "longformer",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "c3d877b29594bc6f244e638f576be3dca5551f11",
+    "abstract": "OBJECTIVE\nClinical knowledge-enriched transformer models (eg, ClinicalBERT) have state-of-the-art results on clinical natural language processing (NLP) tasks. One of the core limitations of these transformer models is the substantial memory consumption due to their full self-attention mechanism, which leads to the performance degradation in long clinical texts. To overcome this, we propose to leverage long-sequence transformer models (eg, Longformer and BigBird), which extend the maximum input sequence length from 512 to 4096, to enhance the ability to model long-term dependencies in long clinical texts.\n\n\nMATERIALS AND METHODS\nInspired by the success of long-sequence transformer models and the fact that clinical notes are mostly long, we introduce 2 domain-enriched language models, Clinical-Longformer and Clinical-BigBird, which are pretrained on a large-scale clinical corpus. We evaluate both language models using 10 baseline tasks including named entity recognition, question answering, natural language inference, and document classification tasks.\n\n\nRESULTS\nThe results demonstrate that Clinical-Longformer and Clinical-BigBird consistently and significantly outperform ClinicalBERT and other short-sequence transformers in all 10 downstream tasks and achieve new state-of-the-art results.\n\n\nDISCUSSION\nOur pretrained language models provide the bedrock for clinical NLP using long texts. We have made our source code available at https://github.com/luoyuanlab/Clinical-Longformer, and the pretrained models available for public download at: https://huggingface.co/yikuan8/Clinical-Longformer.\n\n\nCONCLUSION\nThis study demonstrates that clinical knowledge-enriched long-sequence transformers are able to learn long-term dependencies in long clinical text. Our methods can also inspire the development of other domain-enriched long-sequence transformers.",
+    "authors": [
+        "Yikuan Li",
+        "R. M. Wehbe",
+        "F. Ahmad",
+        "Hanyin Wang",
+        "Yuan Luo"
+    ],
+    "venue": "J. Am. Medical Informatics Assoc.",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study demonstrates that clinical knowledge-enriched long-sequence transformers are able to learn long-term dependencies in long clinical text, and can also inspire the development of other domain-en enriched long- sequence transformers."
+    },
+    "citationCount": 50,
+    "influentialCitationCount": 10,
+    "code": null,
+    "description": null,
+    "url": null
+}

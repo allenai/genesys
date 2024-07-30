@@ -1,0 +1,31 @@
+{
+    "acronym": "47580b1d396125a34d58747e9488f1ddae09c394",
+    "title": "External Knowledge Selection with Weighted Negative Sampling in Knowledge-grounded Task-oriented Dialogue Systems",
+    "seed_ids": [
+        "gpt2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "47580b1d396125a34d58747e9488f1ddae09c394",
+    "abstract": "Constructing a robust dialogue system on spoken conversations bring more challenge than written conversation. In this respect, DSTC10-Track2-Task2 is proposed, which aims to build a task-oriented dialogue (TOD) system incorporating unstructured external knowledge on a spoken conversation, extending DSTC9-Track1. This paper introduces our system containing four advanced methods: data construction, weighted negative sampling, post-training, and style transfer. We first automatically construct a large training data because DSTC10-Track2 does not release the official training set. For the knowledge selection task, we propose weighted negative sampling to train the model more fine-grained manner. We also employ post-training and style transfer for the response generation task to generate an appropriate response with a similar style to the target response. In the experiment, we investigate the effect of weighted negative sampling, post-training, and style transfer. Our model ranked 7 out of 16 teams in the objective evaluation and 6 in human evaluation.",
+    "authors": [
+        "Janghoon Han",
+        "Joongbo Shin",
+        "Hosung Song",
+        "Hyunjik Jo",
+        "Gyeonghun Kim",
+        "Yireun Kim",
+        "Stanley Jungkyu Choi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces a system containing four advanced methods: data construction, weighted negative sampling, post-training, and style transfer, which ranked 7 out of 16 teams in the objective evaluation and 6 in human evaluation."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "a8ba53466d46bf340fae2c2c23cafadef0a9d168",
+    "title": "MCWS-Transformers: Towards an Efficient Modeling of Protein Sequences via Multi Context-Window Based Scaled Self-Attention",
+    "seed_ids": [
+        "performer",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d"
+    ],
+    "s2id": "a8ba53466d46bf340fae2c2c23cafadef0a9d168",
+    "abstract": "This paper advances the self-attention mechanism in the standard transformer network specific to the modeling of the protein sequences. We introduce a novel context-window based scaled self-attention mechanism for processing protein sequences that is based on the notion of (i) local context and (ii) large contextual pattern. Both notions are essential to building a good representation for protein sequences. The proposed context-window based scaled self-attention mechanism is further used to build the multi context-window based scaled (MCWS) transformer network for the protein function prediction task at the protein sub-sequence level. Overall, the proposed MCWS transformer network produced improved predictive performances, outperforming existing state-of-the-art approaches by substantial margins. With respect to the standard transformer network, the proposed network produced improvements in F1-score of +2.30% and +2.08% on the biological process (BP) and molecular function (MF) datasets, respectively. The corresponding improvements over the state-of-the-art ProtVecGen-Plus+ProtVecGen-Ensemble approach are +3.38% (BP) and +2.86% (MF). Equally important, robust performances were obtained across protein sequences of different lengths.",
+    "authors": [
+        "Ashish Ranjan",
+        "M. S. Fahad",
+        "David Fern\u00e1ndez-Baca",
+        "Sudhakar Tripathi",
+        "A. Deepak"
+    ],
+    "venue": "IEEE/ACM Transactions on Computational Biology & Bioinformatics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel context-window based scaled self-attention mechanism for processing protein sequences that is based on the notion of local context and large contextual pattern is introduced, essential to building a good representation for protein sequences."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

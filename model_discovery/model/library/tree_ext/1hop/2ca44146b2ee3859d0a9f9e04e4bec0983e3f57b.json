@@ -1,0 +1,27 @@
+{
+    "acronym": "2ca44146b2ee3859d0a9f9e04e4bec0983e3f57b",
+    "title": "Interpretable Self-supervised Multi-task Learning for COVID-19 Information Retrieval and Extraction",
+    "seed_ids": [
+        "longformer",
+        "63857190aaf5aab1d94b54bb257b7b03b8cb5a50",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "2ca44146b2ee3859d0a9f9e04e4bec0983e3f57b",
+    "abstract": "The rapidly evolving literature of COVID-19 related articles makes it challenging for NLP models to be effectively trained for information retrieval and extraction with the corresponding labeled data that follows the current distribution of the pandemic. On the other hand, due to the uncertainty of the situation, human experts' supervision would always be required to double check the decision making of these models highlighting the importance of interpretability. In the light of these challenges, this study proposes an interpretable self-supervised multi-task learning model to jointly and effectively tackle the tasks of information retrieval (IR) and extraction (IE) during the current emergency health crisis situation. Our results show that our model effectively leverage the multi-task and self-supervised learning to improve generalization, data efficiency and robustness to the ongoing dataset shift problem. Our model outperforms baselines in IE and IR tasks, respectively by micro-f score of 0.08 (LCA-F score of 0.05), and MAP of 0.05 on average. In IE the zero- and few-shot learning performances are on average 0.32 and 0.19 micro-f score higher than those of the baselines.",
+    "authors": [
+        "Nima Ebadi",
+        "Peyman Najafirad"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study proposes an interpretable self-supervised multi-task learning model to jointly and effectively tackle the tasks of information retrieval (IR) and extraction (IE) during the current emergency health crisis situation and shows that the model effectively leverage the multi- task and self- supervised learning to improve generalization, data efficiency and robustness to the ongoing dataset shift problem."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

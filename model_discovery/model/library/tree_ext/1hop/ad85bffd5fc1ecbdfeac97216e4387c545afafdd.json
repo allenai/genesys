@@ -1,0 +1,28 @@
+{
+    "acronym": "ad85bffd5fc1ecbdfeac97216e4387c545afafdd",
+    "title": "MindGPT: Interpreting What You See with Non-invasive Brain Recordings",
+    "seed_ids": [
+        "gpt2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ad85bffd5fc1ecbdfeac97216e4387c545afafdd",
+    "abstract": "Decoding of seen visual contents with non-invasive brain recordings has important scientific and practical values. Efforts have been made to recover the seen images from brain signals. However, most existing approaches cannot faithfully reflect the visual contents due to insufficient image quality or semantic mismatches. Compared with reconstructing pixel-level visual images, speaking is a more efficient and effective way to explain visual information. Here we introduce a non-invasive neural decoder, termed as MindGPT, which interprets perceived visual stimuli into natural languages from fMRI signals. Specifically, our model builds upon a visually guided neural encoder with a cross-attention mechanism, which permits us to guide latent neural representations towards a desired language semantic direction in an end-to-end manner by the collaborative use of the large language model GPT. By doing so, we found that the neural representations of the MindGPT are explainable, which can be used to evaluate the contributions of visual properties to language semantics. Our experiments show that the generated word sequences truthfully represented the visual information (with essential details) conveyed in the seen stimuli. The results also suggested that with respect to language decoding tasks, the higher visual cortex (HVC) is more semantically informative than the lower visual cortex (LVC), and using only the HVC can recover most of the semantic information. The code of the MindGPT model will be publicly available at https://github.com/JxuanC/MindGPT.",
+    "authors": [
+        "Jiaxuan Chen",
+        "Yu Qi",
+        "Yueming Wang",
+        "Gang Pan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A non-invasive neural decoder, termed as MindGPT, which interprets perceived visual stimuli into natural languages from fMRI signals is introduced, which found that the neural representations of the MindG PT are explainable, which can be used to evaluate the contributions of visual properties to language semantics."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

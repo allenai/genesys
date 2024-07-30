@@ -1,0 +1,25 @@
+{
+    "acronym": "411db4a83b794a89ce484bc8d44bc7435c6b9ff3",
+    "title": "Hadamard Estimated Attention Transformer (HEAT): Fast Approximation of Dot Product Self-attention for Transformers Using Low-Rank Projection of Hadamard Product",
+    "seed_ids": [
+        "linformer",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87"
+    ],
+    "s2id": "411db4a83b794a89ce484bc8d44bc7435c6b9ff3",
+    "abstract": "In this paper, the author proposes a new transformer model called Hadamard Estimated Attention Transformer or HEAT, that utilizes a low-rank projection of the Hadamard product to approximate the self-attention mechanism in standard transformer architectures and thus aiming to speedup transformer training, finetuning, and inference altogether. The study shows how it is significantly better than the original transformer that uses dot product self-attention by offering a faster way to compute the original self-attention mechanism while maintaining and ultimately surpassing the quality of the original transformer architecture. It also bests Linformer and Nystr\u00f6mformer in several machine translation tasks while matching and even outperforming Nystr\u00f6mformer's accuracy in various text classification tasks.",
+    "authors": [
+        "Jasper Kyle Catapang"
+    ],
+    "venue": "2022 9th International Conference on Soft Computing & Machine Intelligence (ISCMI)",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new transformer model called HEAT, that utilizes a low-rank projection of the Hadamard product to approximate the self-attention mechanism in standard transformer architectures and thus aiming to speedup transformer training, finetuning, and inference altogether is proposed."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

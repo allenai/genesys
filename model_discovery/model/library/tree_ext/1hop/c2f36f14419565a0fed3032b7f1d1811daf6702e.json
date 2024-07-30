@@ -1,0 +1,28 @@
+{
+    "acronym": "c2f36f14419565a0fed3032b7f1d1811daf6702e",
+    "title": "On Sparsifying Encoder Outputs in Sequence-to-Sequence Models",
+    "seed_ids": [
+        "memcompress",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "7cc730da554003dda77796d2cb4f06da5dfd5592",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13"
+    ],
+    "s2id": "c2f36f14419565a0fed3032b7f1d1811daf6702e",
+    "abstract": "Sequence-to-sequence models usually transfer all encoder outputs to the decoder for generation. In this work, by contrast, we hypothesize that these encoder outputs can be compressed to shorten the sequence delivered for decoding. We take Transformer as the testbed and introduce a layer of stochastic gates in-between the encoder and the decoder. The gates are regularized using the expected value of the sparsity-inducing L0penalty, resulting in completely masking-out a subset of encoder outputs. In other words, via joint training, the L0DROP layer forces Transformer to route information through a subset of its encoder states. We investigate the effects of this sparsification on two machine translation and two summarization tasks. Experiments show that, depending on the task, around 40-70% of source encodings can be pruned without significantly compromising quality. The decrease of the output length endows L0DROP with the potential of improving decoding efficiency, where it yields a speedup of up to 1.65x on document summarization tasks against the standard Transformer. We analyze the L0DROP behaviour and observe that it exhibits systematic preferences for pruning certain word types, e.g., function words and punctuation get pruned most. Inspired by these observations, we explore the feasibility of specifying rule-based patterns that mask out encoder outputs based on information such as part-of-speech tags, word frequency and word position.",
+    "authors": [
+        "Biao Zhang",
+        "Ivan Titov",
+        "Rico Sennrich"
+    ],
+    "venue": "Findings",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The decrease of the output length endows L0DROP with the potential of improving decoding efficiency, where it yields a speedup of up to 1.65x on document summarization tasks against the standard Transformer."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

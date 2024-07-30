@@ -1,0 +1,41 @@
+{
+    "acronym": "96d104dfe727f78a35faaafe81481f3672b485ee",
+    "title": "Large Language Models are Visual Reasoning Coordinators",
+    "seed_ids": [
+        "gpt3",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "f3a13abf23afecf534c955954d70c3b0fc41d334",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "ada81a4de88a6ce474df2e2446ad11fea480616e",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "ac34c70ee85b048ad97328713c790f389656e4eb",
+        "c94bd1fc0ea4f7c67cd493f18f66d27e445fec40",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "96d104dfe727f78a35faaafe81481f3672b485ee",
+    "abstract": "Visual reasoning requires multimodal perception and commonsense cognition of the world. Recently, multiple vision-language models (VLMs) have been proposed with excellent commonsense reasoning ability in various domains. However, how to harness the collective power of these complementary VLMs is rarely explored. Existing methods like ensemble still struggle to aggregate these models with the desired higher-order communications. In this work, we propose Cola, a novel paradigm that coordinates multiple VLMs for visual reasoning. Our key insight is that a large language model (LLM) can efficiently coordinate multiple VLMs by facilitating natural language communication that leverages their distinct and complementary capabilities. Extensive experiments demonstrate that our instruction tuning variant, Cola-FT, achieves state-of-the-art performance on visual question answering (VQA), outside knowledge VQA, visual entailment, and visual spatial reasoning tasks. Moreover, we show that our in-context learning variant, Cola-Zero, exhibits competitive performance in zero and few-shot settings, without finetuning. Through systematic ablation studies and visualizations, we validate that a coordinator LLM indeed comprehends the instruction prompts as well as the separate functionalities of VLMs; it then coordinates them to enable impressive visual reasoning capabilities.",
+    "authors": [
+        "Liangyu Chen",
+        "Boyi Li",
+        "Sheng Shen",
+        "Jingkang Yang",
+        "Chunyuan Li",
+        "Kurt Keutzer",
+        "Trevor Darrell",
+        "Ziwei Liu"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes Cola, a novel paradigm that coordinates multiple VLMs for visual reasoning by facilitating natural language communication that leverages their distinct and complementary capabilities, and validate that a coordinator LLM indeed comprehends the instruction prompts as well as the separate functionalities of VL Ms and coordinates them to enable impressive visual reasoning capabilities."
+    },
+    "citationCount": 27,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

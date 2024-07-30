@@ -1,0 +1,26 @@
+{
+    "acronym": "a5fba797b6645db3710a33563ee7a53c4bb8de04",
+    "title": "Combating Missing Modalities in Egocentric Videos at Test Time",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "a5fba797b6645db3710a33563ee7a53c4bb8de04",
+    "abstract": "Understanding videos that contain multiple modalities is crucial, especially in egocentric videos, where combining various sensory inputs significantly improves tasks like action recognition and moment localization. However, real-world applications often face challenges with incomplete modalities due to privacy concerns, efficiency needs, or hardware issues. Current methods, while effective, often necessitate retraining the model entirely to handle missing modalities, making them computationally intensive, particularly with large training datasets. In this study, we propose a novel approach to address this issue at test time without requiring retraining. We frame the problem as a test-time adaptation task, where the model adjusts to the available unlabeled data at test time. Our method, MiDl~(Mutual information with self-Distillation), encourages the model to be insensitive to the specific modality source present during testing by minimizing the mutual information between the prediction and the available modality. Additionally, we incorporate self-distillation to maintain the model's original performance when both modalities are available. MiDl represents the first self-supervised, online solution for handling missing modalities exclusively at test time. Through experiments with various pretrained models and datasets, MiDl demonstrates substantial performance improvement without the need for retraining.",
+    "authors": [
+        "Merey Ramazanova",
+        "A. Pardo",
+        "Bernard Ghanem",
+        "Motasem Alfarra"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "MiDl represents the first self-supervised, online solution for handling missing modalities exclusively at test time without requiring retraining, and demonstrates substantial performance improvement without the need for retraining."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

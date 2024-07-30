@@ -1,0 +1,26 @@
+{
+    "acronym": "cf4435c00eda85163cf53a55ed276d0ceb7f2f2c",
+    "title": "Quantum Interference Model for Semantic Biases of Glosses in Word Sense Disambiguation",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "cf4435c00eda85163cf53a55ed276d0ceb7f2f2c",
+    "abstract": "Word Sense Disambiguation (WSD) aims to determine the meaning of the target word according to the given context. Currently, a single representation enhanced by glosses from different dictionaries or languages is used to characterize each word sense. By analyzing the similarity between glosses of the same word sense, we find semantic biases among them, revealing that the glosses have their own descriptive perspectives. Therefore, the traditional approach of integrating all glosses by a single representation results in failing to present the unique semantics revealed by the individual glosses. In this paper, a quantum superposition state is employed to formalize the representations of multiple glosses of the same word sense to reveal their distributions. Furthermore, the quantum interference model is leveraged to calculate the probability that the target word belongs to this superposition state. The advantage is that the interference term can be regarded as a confidence level to guide word sense recognition. Finally, experiments are performed under standard WSD evaluation framework and the latest cross-lingual datasets, and the results verify the effectiveness of our model.",
+    "authors": [
+        "Junwei Zhang",
+        "Ruifang He",
+        "Fengyu Guo",
+        "Chang Liu"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A quantum superposition state is employed to formalize the representations of multiple glosses of the same word sense to reveal their distributions, and the quantum interference model is leveraged to calculate the probability that the target word belongs to this superposition state."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,37 @@
+{
+    "acronym": "72883ceab65262f1e38ab1cd4262a326425488f1",
+    "title": "Vanishing Gradients in Reinforcement Finetuning of Language Models",
+    "seed_ids": [
+        "gpt2",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "023edab4738690444e3924e224c2641017a0d794",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "72883ceab65262f1e38ab1cd4262a326425488f1",
+    "abstract": "Pretrained language models are commonly aligned with human preferences and downstream tasks via reinforcement finetuning (RFT), which refers to maximizing a (possibly learned) reward function using policy gradient algorithms. This work identifies a fundamental optimization obstacle in RFT: we prove that the expected gradient for an input vanishes when its reward standard deviation under the model is small, even if the expected reward is far from optimal. Through experiments on an RFT benchmark and controlled environments, as well as a theoretical analysis, we then demonstrate that vanishing gradients due to small reward standard deviation are prevalent and detrimental, leading to extremely slow reward maximization. Lastly, we explore ways to overcome vanishing gradients in RFT. We find the common practice of an initial supervised finetuning (SFT) phase to be the most promising candidate, which sheds light on its importance in an RFT pipeline. Moreover, we show that a relatively small number of SFT optimization steps on as few as 1% of the input samples can suffice, indicating that the initial SFT phase need not be expensive in terms of compute and data labeling efforts. Overall, our results emphasize that being mindful for inputs whose expected gradient vanishes, as measured by the reward standard deviation, is crucial for successful execution of RFT.",
+    "authors": [
+        "Noam Razin",
+        "Hattie Zhou",
+        "O. Saremi",
+        "Vimal Thilak",
+        "Arwen Bradley",
+        "Preetum Nakkiran",
+        "Josh Susskind",
+        "Etai Littwin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that the expected gradient for an input vanishes when its reward standard deviation under the model is small, even if the expected reward is far from optimal, which emphasizes that being mindful for inputs whose expected gradient vanishes is crucial for successful execution of RFT."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

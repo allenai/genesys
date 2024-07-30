@@ -1,0 +1,29 @@
+{
+    "acronym": "bad0750a47a1af069592109adecd7384f0fddfb8",
+    "title": "Characterizing Stereotypical Bias from Privacy-preserving Pre-Training",
+    "seed_ids": [
+        "gpt2",
+        "bert",
+        "385c2ee0bf829676d1a5aacfc697fc6a9d245ed5",
+        "5e9c85235210b59a16bdd84b444a904ae271f7e7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "bad0750a47a1af069592109adecd7384f0fddfb8",
+    "abstract": "Differential Privacy (DP) can be applied to raw text by exploiting the spatial arrangement of words in an embedding space. We investigate the implications of such text privatization on Language Models (LMs) and their tendency towards stereotypical associations. Since previous studies documented that linguistic proficiency correlates with stereotypical bias, one could assume that techniques for text privatization, which are known to degrade language modeling capabilities, would cancel out undesirable biases. By testing BERT models trained on texts containing biased statements primed with varying degrees of privacy, our study reveals that while stereotypical bias generally diminishes when privacy is tightened, text privatization does not uniformly equate to diminishing bias across all social domains. This highlights the need for careful diagnosis of bias in LMs that undergo text privatization.",
+    "authors": [
+        "Stefan Arnold",
+        "Rene Grobner",
+        "Annika Schreiner"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study reveals that while stereotypical bias generally diminishes when privacy is tightened, text privatization does not uniformly equate to diminishing bias across all social domains, highlighting the need for careful diagnosis of bias in LMs that undergo text privatization."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

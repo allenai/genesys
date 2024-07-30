@@ -1,0 +1,38 @@
+{
+    "acronym": "a2f44031dfa55f6da176955bcc37aac726de3a00",
+    "title": "Unleashing the Power of Pre-trained Language Models for Offline Reinforcement Learning",
+    "seed_ids": [
+        "gpt",
+        "gpt2",
+        "gpt3",
+        "efabf7727dc3212676f03f1384809ce019db109d",
+        "f11044596cf2eaf59f83d82b8167b16ba6a08617",
+        "860bc4f071f35d6d8529a52c2c1858d030779a6a",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "3a906b77fa218adc171fecb28bb81c24c14dcc7b",
+        "4b30dd65a26e573df9796beb582ba1e1a69f23f7",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a2f44031dfa55f6da176955bcc37aac726de3a00",
+    "abstract": "Offline reinforcement learning (RL) aims to find a near-optimal policy using pre-collected datasets. In real-world scenarios, data collection could be costly and risky; therefore, offline RL becomes particularly challenging when the in-domain data is limited. Given recent advances in Large Language Models (LLMs) and their few-shot learning prowess, this paper introduces $\\textbf{La}$nguage Models for $\\textbf{Mo}$tion Control ($\\textbf{LaMo}$), a general framework based on Decision Transformers to effectively use pre-trained Language Models (LMs) for offline RL. Our framework highlights four crucial components: (1) Initializing Decision Transformers with sequentially pre-trained LMs, (2) employing the LoRA fine-tuning method, in contrast to full-weight fine-tuning, to combine the pre-trained knowledge from LMs and in-domain knowledge effectively, (3) using the non-linear MLP transformation instead of linear projections, to generate embeddings, and (4) integrating an auxiliary language prediction loss during fine-tuning to stabilize the LMs and retain their original abilities on languages. Empirical results indicate $\\textbf{LaMo}$ achieves state-of-the-art performance in sparse-reward tasks and closes the gap between value-based offline RL methods and decision transformers in dense-reward tasks. In particular, our method demonstrates superior performance in scenarios with limited data samples. Our project website is https://lamo2023.github.io",
+    "authors": [
+        "Ruizhe Shi",
+        "Yuyao Liu",
+        "Yanjie Ze",
+        "Simon S. Du",
+        "Huazhe Xu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Empirical results indicate $\\textbf{LaMo}$ achieves state-of-the-art performance in sparse-reward tasks and closes the gap between value-based offline RL methods and decision transformers in dense-reWARD tasks."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

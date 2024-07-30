@@ -1,0 +1,28 @@
+{
+    "acronym": "105f2ea0f902f33a9d9a1fa079f4dcdeb16d655c",
+    "title": "Accelerating the inference of string generation-based chemical reaction models for industrial applications",
+    "seed_ids": [
+        "gpt3",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d"
+    ],
+    "s2id": "105f2ea0f902f33a9d9a1fa079f4dcdeb16d655c",
+    "abstract": "Template-free SMILES-to-SMILES translation models for reaction prediction and single-step retrosynthesis are of interest for industrial applications in computer-aided synthesis planning systems due to their state-of-the-art accuracy. However, they suffer from slow inference speed. We present a method to accelerate inference in autoregressive SMILES generators through speculative decoding by copying query string subsequences into target strings in the right places. We apply our method to the molecular transformer implemented in Pytorch Lightning and achieve over 3X faster inference in reaction prediction and single-step retrosynthesis, with no loss in accuracy.",
+    "authors": [
+        "Mikhail Andronov",
+        "Natalia Andronova",
+        "Michael Wand",
+        "Jurgen Schmidhuber",
+        "Djork-Arn\u00e9 Clevert"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a method to accelerate inference in autoregressive SMILES generators through speculative decoding by copying query string subsequences into target strings in the right places by copying query string subsequences into target strings in the right places."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

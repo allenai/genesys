@@ -1,0 +1,36 @@
+{
+    "acronym": "bea2659de9d935ed34eb5472da8b676d0ea3f401",
+    "title": "Cure the headache of Transformers via Collinear Constrained Attention",
+    "seed_ids": [
+        "alibi",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "60b35c6d68acced19b0c66edcfc0ee0a2c11efed",
+        "9575afb5702bc33d7df14c48feeee5901ea00369",
+        "c6d38add1b7bbc10f0da37a90e3f1b51ee5fb617",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "f51497f463566581874c941353dd9d80069c5b77"
+    ],
+    "s2id": "bea2659de9d935ed34eb5472da8b676d0ea3f401",
+    "abstract": "As the rapid progression of practical applications based on Large Language Models continues, the importance of extrapolating performance has grown exponentially in the research domain. In our study, we identified an anomalous behavior in Transformer models that had been previously overlooked, leading to a chaos around closest tokens which carried the most important information. We've coined this discovery the\"headache of Transformers\". To address this at its core, we introduced a novel self-attention structure named Collinear Constrained Attention (CoCA). This structure can be seamlessly integrated with existing extrapolation, interpolation methods, and other optimization strategies designed for traditional Transformer models. We have achieved excellent extrapolating performance even for 16 times to 24 times of sequence lengths during inference without any fine-tuning on our model. We have also enhanced CoCA's computational and spatial efficiency to ensure its practicality. We plan to open-source CoCA shortly. In the meantime, we've made our code available in the appendix for reappearing experiments.",
+    "authors": [
+        "Shiyi Zhu",
+        "Jingting Ye",
+        "Wei Jiang",
+        "Qi Zhang",
+        "Yifan Wu",
+        "Jianguo Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study has introduced a novel self-attention structure named Collinear Constrained Attention (CoCA), which can be seamlessly integrated with existing extrapolation, interpolation methods, and other optimization strategies designed for traditional Transformer models."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,26 @@
+{
+    "acronym": "04a1e1cc3a3db7ec959f681e733f705bed00b158",
+    "title": "Sparse Domain Transfer via Elastic Net Regularization",
+    "seed_ids": [
+        "gpt",
+        "bert",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "04a1e1cc3a3db7ec959f681e733f705bed00b158",
+    "abstract": "Transportation of samples across different domains is a central task in several machine learning problems. A sensible requirement for domain transfer tasks in computer vision and language domains is the sparsity of the transportation map, i.e., the transfer algorithm aims to modify the least number of input features while transporting samples across the source and target domains. In this work, we propose Elastic Net Optimal Transport (ENOT) to address the sparse distribution transfer problem. The ENOT framework utilizes the $L_1$-norm and $L_2$-norm regularization mechanisms to find a sparse and stable transportation map between the source and target domains. To compute the ENOT transport map, we consider the dual formulation of the ENOT optimization task and prove that the sparsified gradient of the optimal potential function in the ENOT's dual representation provides the ENOT transport map. Furthermore, we demonstrate the application of the ENOT framework to perform feature selection for sparse domain transfer. We present the numerical results of applying ENOT to several domain transfer problems for synthetic Gaussian mixtures and real image and text data. Our empirical results indicate the success of the ENOT framework in identifying a sparse domain transport map.",
+    "authors": [
+        "Jingwei Zhang",
+        "Farzan Farnia"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The dual formulation of the ENOT optimization task is considered and the sparsified gradient of the optimal potential function in the ENOT's dual representation provides the ENOT transport map, and the empirical results indicate the success of the ENOT framework in identifying a sparse domain transport map."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

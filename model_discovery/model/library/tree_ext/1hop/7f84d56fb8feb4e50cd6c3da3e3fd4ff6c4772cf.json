@@ -1,0 +1,44 @@
+{
+    "acronym": "7f84d56fb8feb4e50cd6c3da3e3fd4ff6c4772cf",
+    "title": "ElitePLM: An Empirical Study on General Language Ability Evaluation of Pretrained Language Models",
+    "seed_ids": [
+        "gpt",
+        "982cbf7fcee4f3964dd1d411fdeadad6e6f1d465",
+        "25db56fc85fe15625c3375064a35e908ba6dfd2a",
+        "01f2b214962997260020279bd1fd1f8f372249d4",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "e2587eddd57bc4ba286d91b27c185083f16f40ee",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "f6fbb6809374ca57205bd2cf1421d4f4fa04f975",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "7f84d56fb8feb4e50cd6c3da3e3fd4ff6c4772cf",
+    "abstract": "Nowadays, pretrained language models (PLMs) have dominated the majority of NLP tasks. While, little research has been conducted on systematically evaluating the language abilities of PLMs. In this paper, we present a large-scale empirical study on general language ability evaluation of PLMs (ElitePLM). In our study, we design four evaluation dimensions, memory, comprehension, reasoning, and composition, to measure ten widely-used PLMs within five categories. Our empirical results demonstrate that: (1) PLMs with varying training objectives and strategies are good at different ability tests; (2) fine-tuning PLMs in downstream tasks is usually sensitive to the data size and distribution; (3) PLMs have excellent transferability between similar tasks. Moreover, the prediction results of PLMs in our experiments are released as an open resource for more deep and detailed analysis on the language abilities of PLMs. This paper can guide the future work to select, apply, and design PLMs for specific tasks. We have made all the details of experiments publicly available at https://github.com/RUCAIBox/ElitePLM.",
+    "authors": [
+        "Junyi Li",
+        "Tianyi Tang",
+        "Zheng Gong",
+        "Lixin Yang",
+        "Zhuohao Yu",
+        "Z. Chen",
+        "Jingyuan Wang",
+        "Wayne Xin Zhao",
+        "Ji-rong Wen"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a large-scale empirical study on general language ability evaluation of PLMs (ElitePLM), and demonstrates that PLMs with varying training objectives and strategies are good at different ability tests and have excellent transferability between similar tasks."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

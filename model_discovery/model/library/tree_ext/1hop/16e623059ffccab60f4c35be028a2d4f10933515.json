@@ -1,0 +1,29 @@
+{
+    "acronym": "16e623059ffccab60f4c35be028a2d4f10933515",
+    "title": "Sequence Parallelism: Long Sequence Training from System Perspective",
+    "seed_ids": [
+        "linformer",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "16e623059ffccab60f4c35be028a2d4f10933515",
+    "abstract": "Transformer achieves promising results on various tasks. However, self-attention suffers from quadratic memory requirements with respect to the sequence length. Existing work focuses on reducing time and space complexity from an algorithm perspective. In this work, we propose sequence parallelism, a memory-efficient parallelism to solve this issue from system perspective instead. Our approach is compatible with most existing parallelisms (e.g., data, pipeline, and tensor parallelism), which means our sequence parallelism makes 4D parallelism possible. More importantly, we no longer require a single device to hold the whole sequence. Besides, using efficient attention with linear complexity, our sequence parallelism enables us to train transformer with infinite long sequence. Specifically, we split the input sequence into multiple chunks and feed each chunk into its corresponding device (i.e., GPU). To compute the attention output, we integrated ring-style communication with self-attention calculation and proposed Ring Self-Attention (RSA). Experiments show that sequence parallelism performs well when scaling with batch size and sequence length. Compared with tensor parallelism, our approach achieved 13.7\\times and 3.0\\times maximum batch size and sequence length respectively when scaling up to 64 NVIDIA P100 GPUs. With efficient attention, sequence can handle sequence with over 114K tokens, which is over 27\\times longer than existing efficient attention works holding the whole sequence on a single device.",
+    "authors": [
+        "Shenggui Li",
+        "Fuzhao Xue",
+        "Yongbin Li",
+        "Yang You"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes sequence parallelism, a memory-efficient parallelism that is compatible with most existing parallelisms, which means it makes 4D parallelism possible and no longer requires a single device to hold the whole sequence."
+    },
+    "citationCount": 37,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,33 @@
+{
+    "acronym": "f8c6d9ed61fdf04cd390dce017a817152cf4d580",
+    "title": "An Exploratory Study on Long Dialogue Summarization: What Works and What's Next",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "f8c6d9ed61fdf04cd390dce017a817152cf4d580",
+    "abstract": "Dialogue summarization helps readers capture salient information from long conversations in meetings, interviews, and TV series. However, real-world dialogues pose a great challenge to current summarization models, as the dialogue length typically exceeds the input limits imposed by recent transformer-based pre-trained models, and the interactive nature of dialogues makes relevant information more context-dependent and sparsely distributed than news articles. In this work, we perform a comprehensive study on long dialogue summarization by investigating three strategies to deal with the lengthy input problem and locate relevant information: (1) extended transformer models such as Longformer, (2) retrieve-then-summarize pipeline models with several dialogue utterance retrieval methods, and (3) hierarchical dialogue encoding models such as HMNet. Our experimental results on three long dialogue datasets (QMSum, MediaSum, SummScreen) show that the retrieve-then-summarize pipeline models yield the best performance. We also demonstrate that the summary quality can be further improved with a stronger retrieval model and pretraining on proper external summarization datasets.",
+    "authors": [
+        "Yusen Zhang",
+        "Ansong Ni",
+        "Tao Yu",
+        "Rui Zhang",
+        "Chenguang Zhu",
+        "Budhaditya Deb",
+        "Asli Celikyilmaz",
+        "A. Awadallah",
+        "Dragomir R. Radev"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work performs a comprehensive study on long dialogue summarization by investigating three strategies to deal with the lengthy input problem and locate relevant information: extended transformer models such as Longformer, retrieve-then-summarize pipeline models with several dialogue utterance retrieval methods, and hierarchical dialogue encoding modelssuch as HMNet."
+    },
+    "citationCount": 43,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

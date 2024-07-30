@@ -1,0 +1,33 @@
+{
+    "acronym": "c6d38add1b7bbc10f0da37a90e3f1b51ee5fb617",
+    "title": "Neural Networks and the Chomsky Hierarchy",
+    "seed_ids": [
+        "transformerxl",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "3694381e74445a8b9f8cb8d373e39626e47191b5"
+    ],
+    "s2id": "c6d38add1b7bbc10f0da37a90e3f1b51ee5fb617",
+    "abstract": "Reliable generalization lies at the heart of safe ML and AI. However, understanding when and how neural networks generalize remains one of the most important unsolved problems in the field. In this work, we conduct an extensive empirical study (20'910 models, 15 tasks) to investigate whether insights from the theory of computation can predict the limits of neural network generalization in practice. We demonstrate that grouping tasks according to the Chomsky hierarchy allows us to forecast whether certain architectures will be able to generalize to out-of-distribution inputs. This includes negative results where even extensive amounts of data and training time never lead to any non-trivial generalization, despite models having sufficient capacity to fit the training data perfectly. Our results show that, for our subset of tasks, RNNs and Transformers fail to generalize on non-regular tasks, LSTMs can solve regular and counter-language tasks, and only networks augmented with structured memory (such as a stack or memory tape) can successfully generalize on context-free and context-sensitive tasks.",
+    "authors": [
+        "Gr'egoire Del'etang",
+        "Anian Ruoss",
+        "Jordi Grau-Moya",
+        "Tim Genewein",
+        "L. Wenliang",
+        "Elliot Catt",
+        "Marcus Hutter",
+        "S. Legg",
+        "Pedro A. Ortega"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that grouping tasks according to the Chomsky hierarchy allows us to forecast whether certain architectures will be able to generalize to out-of-distribution inputs, including negative results where even extensive amounts of data and training time never lead to any non-trivial generalization."
+    },
+    "citationCount": 85,
+    "influentialCitationCount": 8,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "95c953fb805cb1c3df95d0ecf4293c0e35419ea7",
+    "title": "Metaformer: A Transformer That Tends to Mine Metaphorical-Level Information",
+    "seed_ids": [
+        "reformer",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "d8d2e574965fe733eb1416e03df2b5c2914fc530",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "ce510c6cfeac703706460680e977c54554840830"
+    ],
+    "s2id": "95c953fb805cb1c3df95d0ecf4293c0e35419ea7",
+    "abstract": "Since introducing the Transformer model, it has dramatically influenced various fields of machine learning. The field of time series prediction has also been significantly impacted, where Transformer family models have flourished, and many variants have been differentiated. These Transformer models mainly use attention mechanisms to implement feature extraction and multi-head attention mechanisms to enhance the strength of feature extraction. However, multi-head attention is essentially a simple superposition of the same attention, so they do not guarantee that the model can capture different features. Conversely, multi-head attention mechanisms may lead to much information redundancy and computational resource waste. In order to ensure that the Transformer can capture information from multiple perspectives and increase the diversity of its captured features, this paper proposes a hierarchical attention mechanism, for the first time, to improve the shortcomings of insufficient information diversity captured by the traditional multi-head attention mechanisms and the lack of information interaction among the heads. Additionally, global feature aggregation using graph networks is used to mitigate inductive bias. Finally, we conducted experiments on four benchmark datasets, and the experimental results show that the proposed model can outperform the baseline model in several metrics.",
+    "authors": [
+        "Bo Peng",
+        "Yuanming Ding",
+        "Wei Kang"
+    ],
+    "venue": "Italian National Conference on Sensors",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a hierarchical attention mechanism, for the first time, to improve the shortcomings of insufficient information diversity captured by the traditional multi-head attention mechanisms and the lack of information interaction among the heads."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

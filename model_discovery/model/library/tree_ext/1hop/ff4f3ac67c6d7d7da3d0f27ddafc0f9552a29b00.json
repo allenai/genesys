@@ -1,0 +1,34 @@
+{
+    "acronym": "ff4f3ac67c6d7d7da3d0f27ddafc0f9552a29b00",
+    "title": "VLIS: Unimodal Language Models Guide Multimodal Language Generation",
+    "seed_ids": [
+        "gpt3",
+        "bee79110f7b89292955984c7110ed0de8ae719a1",
+        "5697a0ede5425954d48daa6e1893dc87bd7d8be7",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "05bcf9999525656cfaa59bc71f8572d771ff3776",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "ada81a4de88a6ce474df2e2446ad11fea480616e",
+        "7f71875f8214dffa4f3276da123c4990a6d437cc",
+        "492a655a67e6ec7423a968cedb70eec0cdbc8e98",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ff4f3ac67c6d7d7da3d0f27ddafc0f9552a29b00",
+    "abstract": "Multimodal language generation, which leverages the synergy of language and vision, is a rapidly expanding field. However, existing vision-language models face challenges in tasks that require complex linguistic understanding. To address this issue, we introduce Visual-Language models as Importance Sampling weights (VLIS), a novel framework that combines the visual conditioning capability of vision-language models with the language understanding of unimodal text-only language models without further training. It extracts pointwise mutual information of each image and text from a visual-language model and uses the value as an importance sampling weight to adjust the token likelihood from a text-only model. VLIS improves vision-language models on diverse tasks, including commonsense understanding (WHOOPS, OK-VQA, and ScienceQA) and complex text generation (Concadia, Image Paragraph Captioning, and ROCStories). Our results suggest that VLIS represents a promising new direction for multimodal language generation.",
+    "authors": [
+        "Jiwan Chung",
+        "Youngjae Yu"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces Visual-Language models as Importance Sampling weights (VLIS), a novel framework that combines the visual conditioning capability of vision-language models with the language understanding of unimodal text-only language models without further training."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

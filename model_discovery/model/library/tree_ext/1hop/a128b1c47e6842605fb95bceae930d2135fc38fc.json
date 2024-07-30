@@ -1,0 +1,46 @@
+{
+    "acronym": "a128b1c47e6842605fb95bceae930d2135fc38fc",
+    "title": "Pretraining Without Attention",
+    "seed_ids": [
+        "s4",
+        "s4d",
+        "longformer",
+        "gssm",
+        "flash",
+        "fnet",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "70e91e16eb321067d9402710e14a40cf28311f73",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "79b4ec1aaf67a04a9afa0d8138f84b7be66c00cb",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "8659bf379ca8756755125a487c43cfe8611ce842"
+    ],
+    "s2id": "a128b1c47e6842605fb95bceae930d2135fc38fc",
+    "abstract": "Transformers have been essential to pretraining success in NLP. While other architectures have been used, downstream accuracy is either significantly worse, or requires attention layers to match standard benchmarks such as GLUE. This work explores pretraining without attention by using recent advances in sequence routing based on state-space models (SSMs). Our proposed model, Bidirectional Gated SSM (BiGS), combines SSM layers with a multiplicative gating architecture that has been effective in simplified sequence modeling architectures. The model learns static layers that do not consider pair-wise interactions. Even so, BiGS is able to match BERT pretraining accuracy on GLUE and can be extended to long-form pretraining of 4096 tokens without approximation. Analysis shows that while the models have similar average accuracy, the approach has different inductive biases than BERT in terms of interactions and syntactic representations. All models from this work are available at https://github.com/jxiw/BiGS.",
+    "authors": [
+        "Junxiong Wang",
+        "J. Yan",
+        "Albert Gu",
+        "Alexander M. Rush"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work explores pretraining without attention by using recent advances in sequence routing based on state-space models (SSMs), and proposes a proposed model, Bidirectional Gated SSM (BiGS), that combines SSM layers with a multiplicative gating architecture that has been effective in simplified sequence modeling architectures."
+    },
+    "citationCount": 35,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

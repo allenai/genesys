@@ -1,0 +1,31 @@
+{
+    "acronym": "685ca8238989d93a4c196abc6627bb960967d786",
+    "title": "Learning to Extend Program Graphs to Work-in-Progress Code",
+    "seed_ids": [
+        "transformerxl",
+        "05e396e79a2f88f0b8f8d99f5ab36ab3efa95c14",
+        "c6f608a3731a1fde355835a0e10a65ac71f80643",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "685ca8238989d93a4c196abc6627bb960967d786",
+    "abstract": "Source code spends most of its time in a broken or incomplete state during software development. This presents a challenge to machine learning for code, since high-performing models typically rely on graph structured representations of programs derived from traditional program analyses. Such analyses may be undefined for broken or incomplete code. We extend the notion of program graphs to work-in-progress code by learning to predict edge relations between tokens, training on well-formed code before transferring to work-in-progress code. We consider the tasks of code completion and localizing and repairing variable misuse in a work-in-process scenario. We demonstrate that training relation-aware models with fine-tuned edges consistently leads to improved performance on both tasks.",
+    "authors": [
+        "Xuechen Li",
+        "Chris J. Maddison",
+        "Daniel Tarlow"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work considers the tasks of code completion and localizing and repairing variable misuse in a work-in-process scenario, and demonstrates that training relation-aware models with fine-tuned edges consistently leads to improved performance on both tasks."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

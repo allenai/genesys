@@ -1,0 +1,33 @@
+{
+    "acronym": "b6c286ac8ecf52db774ed8066998a920eaf3d2a2",
+    "title": "An Investigation of Incorporating Mamba for Speech Enhancement",
+    "seed_ids": [
+        "mamba",
+        "154d5cf9a40d313cdf62372621f554a809fbb103",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51"
+    ],
+    "s2id": "b6c286ac8ecf52db774ed8066998a920eaf3d2a2",
+    "abstract": "This work aims to study a scalable state-space model (SSM), Mamba, for the speech enhancement (SE) task. We exploit a Mamba-based regression model to characterize speech signals and build an SE system upon Mamba, termed SEMamba. We explore the properties of Mamba by integrating it as the core model in both basic and advanced SE systems, along with utilizing signal-level distances as well as metric-oriented loss functions. SEMamba demonstrates promising results and attains a PESQ score of 3.55 on the VoiceBank-DEMAND dataset. When combined with the perceptual contrast stretching technique, the proposed SEMamba yields a new state-of-the-art PESQ score of 3.69.",
+    "authors": [
+        "Rong-Yu Chao",
+        "Wen-Huang Cheng",
+        "Moreno La Quatra",
+        "Sabato Marco Siniscalchi",
+        "Chao-Han Huck Yang",
+        "Szu-Wei Fu",
+        "Yu Tsao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work exploits a Mamba-based regression model to characterize speech signals and builds an SE system upon Mamba, termed SEMamba, which demonstrates promising results and attains a PESQ score of 3.55 on the VoiceBank-DEMAND dataset."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

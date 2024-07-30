@@ -1,0 +1,33 @@
+{
+    "acronym": "572b9183d3eaf45a31c9308f20e420c5f922588e",
+    "title": "Do Language Models Perform Generalizable Commonsense Inference?",
+    "seed_ids": [
+        "gpt",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "fc89687c64fb17f09f8dc0b0d18115b8c770f8b7",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "f48ae425e2567be2d993efcaaf74c2274fc9d7c5",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "572b9183d3eaf45a31c9308f20e420c5f922588e",
+    "abstract": "Inspired by evidence that pretrained language models (LMs) encode commonsense knowledge, recent work has applied LMs to automatically populate commonsense knowledge graphs (CKGs). However, there is a lack of understanding on their generalization to multiple CKGs, unseen relations, and novel entities. This paper analyzes the ability of LMs to perform generalizable commonsense inference, in terms of knowledge capacity, transferability, and induction. Our experiments with these three aspects show that: (1) LMs can adapt to different schemas defined by multiple CKGs but fail to reuse the knowledge to generalize to new relations. (2) Adapted LMs generalize well to unseen subjects, but less so on novel objects. Future work should investigate how to improve the transferability and induction of commonsense mining from LMs.",
+    "authors": [
+        "Peifeng Wang",
+        "Filip Ilievski",
+        "Muhao Chen",
+        "Xiang Ren"
+    ],
+    "venue": "Findings",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The ability of LMs to perform generalizable commonsense inference, in terms of knowledge capacity, transferability, and induction, is analyzed."
+    },
+    "citationCount": 18,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

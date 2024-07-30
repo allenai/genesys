@@ -1,0 +1,34 @@
+{
+    "acronym": "c57467e652f3f9131b3e7e40c23059abe395f01d",
+    "title": "SpectFormer: Frequency and Attention is what you need in a Vision Transformer",
+    "seed_ids": [
+        "fnet",
+        "a9d13e00c30fa82ec201587719efc11a11fceb7e",
+        "bf6ce546c589fa8054b3972b266532664914bd21",
+        "f75cddf2d42ed01b34686704eb3504becef67442",
+        "71363797140647ebb3f540584de0a8758d2f7aa2",
+        "9b6af0e358e76d22f209c75b1702c3e6ea7815b1",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "3cbe314cc5407a6c3249815b5173f22ea15173c2",
+        "955f90930d48750e7239478b4eed440eb84131cd",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "c57467e652f3f9131b3e7e40c23059abe395f01d",
+    "abstract": "Vision transformers have been applied successfully for image recognition tasks. There have been either multi-headed self-attention based (ViT \\cite{dosovitskiy2020image}, DeIT, \\cite{touvron2021training}) similar to the original work in textual models or more recently based on spectral layers (Fnet\\cite{lee2021fnet}, GFNet\\cite{rao2021global}, AFNO\\cite{guibas2021efficient}). We hypothesize that both spectral and multi-headed attention plays a major role. We investigate this hypothesis through this work and observe that indeed combining spectral and multi-headed attention layers provides a better transformer architecture. We thus propose the novel Spectformer architecture for transformers that combines spectral and multi-headed attention layers. We believe that the resulting representation allows the transformer to capture the feature representation appropriately and it yields improved performance over other transformer representations. For instance, it improves the top-1 accuracy by 2\\% on ImageNet compared to both GFNet-H and LiT. SpectFormer-S reaches 84.25\\% top-1 accuracy on ImageNet-1K (state of the art for small version). Further, Spectformer-L achieves 85.7\\% that is the state of the art for the comparable base version of the transformers. We further ensure that we obtain reasonable results in other scenarios such as transfer learning on standard datasets such as CIFAR-10, CIFAR-100, Oxford-IIIT-flower, and Standford Car datasets. We then investigate its use in downstream tasks such of object detection and instance segmentation on the MS-COCO dataset and observe that Spectformer shows consistent performance that is comparable to the best backbones and can be further optimized and improved. Hence, we believe that combined spectral and attention layers are what are needed for vision transformers.",
+    "authors": [
+        "Badri N. Patro",
+        "Vinay P. Namboodiri",
+        "Vijay Srinivas Agneeswaran"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes the novel Spectformer architecture for transformers that combines spectral and multi-headed attention layers and investigates its use in downstream tasks such of object detection and instance segmentation on the MS-COCO dataset and observes that Spectformer shows consistent performance that is comparable to the best backbones and can be further optimized and improved."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

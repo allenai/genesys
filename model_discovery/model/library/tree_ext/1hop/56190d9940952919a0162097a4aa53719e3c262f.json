@@ -1,0 +1,27 @@
+{
+    "acronym": "56190d9940952919a0162097a4aa53719e3c262f",
+    "title": "Protein Representation Learning by Capturing Protein Sequence-Structure-Function Relationship",
+    "seed_ids": [
+        "bert",
+        "7bcdfc0759561118cd79667379c5d174e2a747f2"
+    ],
+    "s2id": "56190d9940952919a0162097a4aa53719e3c262f",
+    "abstract": "The goal of protein representation learning is to extract knowledge from protein databases that can be applied to various protein-related downstream tasks. Although protein sequence, structure, and function are the three key modalities for a comprehensive understanding of proteins, existing methods for protein representation learning have utilized only one or two of these modalities due to the difficulty of capturing the asymmetric interrelationships between them. To account for this asymmetry, we introduce our novel asymmetric multi-modal masked autoencoder (AMMA). AMMA adopts (1) a unified multi-modal encoder to integrate all three modalities into a unified representation space and (2) asymmetric decoders to ensure that sequence latent features reflect structural and functional information. The experiments demonstrate that the proposed AMMA is highly effective in learning protein representations that exhibit well-aligned inter-modal relationships, which in turn makes it effective for various downstream protein-related tasks.",
+    "authors": [
+        "Eunji Ko",
+        "Seul Lee",
+        "Minseon Kim",
+        "Dongki Kim"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The experiments demonstrate that the proposed AMMA is highly effective in learning protein representations that exhibit well-aligned inter-modal relationships, which in turn makes it effective for various downstream protein-related tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

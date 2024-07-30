@@ -1,0 +1,29 @@
+{
+    "acronym": "f4847d928cdb071f0abc5683ca63d6bc38bcecb0",
+    "title": "Auto-Regressive Self-Attention Models for Diagnosis Prediction on Electronic Health Records",
+    "seed_ids": [
+        "gpt",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f4847d928cdb071f0abc5683ca63d6bc38bcecb0",
+    "abstract": "Insufficient data and data lacking the diversity to represent the general public is a common challenge when modelling diagnosis prediction. We consider a much larger and more diverse database of commercial Electronic Health Records than what is prevalent in the literature. We formulate a simplified version of diagnosis prediction that focuses on major developments in medical histories of patients. To this end, we leverage Auto-Regressive Self-Attention models that have seen promising applications in language modelling and extend them to incorporate ontological representations of medical codes. Additionally, we include time-intervals between diagnoses into the attention calculation. We evaluate models and baselines at different levels of diagnostic granularity and our results suggest that using very detailed clinical classifications does not significantly degrade performance, possibly allowing their use in practice. Our model outperforms all baselines and we suggest that leveraging the ontology for generating diagnosis representations is mostly helpful for rare diagnoses.",
+    "authors": [
+        "Pascal Wullschleger",
+        "Simone Lionetti",
+        "D. Daly",
+        "Francesca Volpe",
+        "G. Caro"
+    ],
+    "venue": "2022 IEEE International Conference on Big Data (Big Data)",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work forms a simplified version of diagnosis prediction that focuses on major developments in medical histories of patients and leverages Auto-Regressive Self-Attention models that have seen promising applications in language modelling to incorporate ontological representations of medical codes."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

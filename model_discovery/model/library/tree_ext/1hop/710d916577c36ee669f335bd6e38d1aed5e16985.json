@@ -1,0 +1,33 @@
+{
+    "acronym": "710d916577c36ee669f335bd6e38d1aed5e16985",
+    "title": "Look Ahead or Look Around? A Theoretical Comparison Between Autoregressive and Masked Pretraining",
+    "seed_ids": [
+        "gpt",
+        "15190e8b459bd85d546286f7d7da61b4f4f3f58a",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "8cd4054b41936ba0889edc26be8969c3dc8491d8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "710d916577c36ee669f335bd6e38d1aed5e16985",
+    "abstract": "In recent years, the rise of generative self-supervised learning (SSL) paradigms has exhibited impressive performance across visual, language, and multi-modal domains. While the varied designs of generative SSL objectives lead to distinct properties in downstream tasks, a theoretical understanding of these differences remains largely unexplored. In this paper, we establish the first theoretical comparisons between two leading generative SSL paradigms: autoregressive SSL and masked SSL. Through establishing theoretical frameworks, we elucidate the strengths and limitations of autoregressive and masked SSL within the primary evaluation tasks of classification and content generation. Our findings demonstrate that in classification tasks, the flexibility of targeted tokens in masked SSL fosters more inter-sample connections compared to the fixed position of target tokens in autoregressive SSL, which yields superior clustering performance. In content generation tasks, the misalignment between the flexible lengths of test samples and the fixed length of unmasked texts in masked SSL (vs. flexible lengths of conditional texts in autoregressive SSL) hinders its generation performance. To leverage each other's strengths and mitigate weaknesses, we propose diversity-enhanced autoregressive and variable-length masked objectives, which substantially improve the classification performance of autoregressive SSL and the generation performance of masked SSL. Code is available at https://github.com/PKU-ML/LookAheadLookAround.",
+    "authors": [
+        "Qi Zhang",
+        "Tianqi Du",
+        "Hao Huang",
+        "Yifei Wang",
+        "Yisen Wang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper establishes the first theoretical comparisons between two leading generative SSL paradigms: autoregressive SSL and masked SSL and proposes diversity-enhanced autoregressive and variable-length masked objectives, which substantially improve the classification performance of autoregressive SSL and the generation performance of masked SSL."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "d69521c1521bfa3fefb32b2106da38b1821e975d",
+    "title": "NAPG: Non-Autoregressive Program Generation for Hybrid Tabular-Textual Question Answering",
+    "seed_ids": [
+        "gpt2",
+        "395aae6e7a79e5760457ca38e868acc970016230",
+        "93d3e45395117e21214d404c8753b578c29266d1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d69521c1521bfa3fefb32b2106da38b1821e975d",
+    "abstract": "Hybrid tabular-textual question answering (QA) requires reasoning from heterogeneous information, and the types of reasoning are mainly divided into numerical reasoning and span extraction. Current numerical reasoning methods autoregressively decode program sequences, and each decoding step produces either an operator or an operand. However, the step-by-step decoding suffers from exposure bias, and the accuracy of program generation drops sharply as the decoding steps unfold due to error propagation. In this paper, we propose a non-autoregressive program generation framework, which independently generates complete program tuples containing both operators and operands, can address the error propagation issue while significantly boosting the speed of program generation. Experiments on the ConvFinQA and MultiHiertt datasets show that our non-autoregressive program generation method can bring about substantial improvements over the strong FinQANet (+5.06 Exe Acc and +4.80 Prog Acc points) and MT2Net (+7.97 EM and +6.38 F1 points) baselines, establishing the new state-of-the-art performance, while being much faster (21x) in program generation. Finally, with increasing numbers of numerical reasoning steps the performance drop of our method is significantly smaller than that of the baselines. Our code will be publicly available soon.",
+    "authors": [
+        "Tengxun Zhang",
+        "Hongfei Xu",
+        "Josef van Genabith",
+        "Deyi Xiong",
+        "Hongying Zan"
+    ],
+    "venue": "Natural Language Processing and Chinese Computing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a non-autoregressive program generation framework, which independently generates complete program tuples containing both operators and operands, which can address the error propagation issue while significantly boosting the speed of program generation."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "68226f0ae91283d240a9c294b956cda239a56281",
+    "title": "DP-TabICL: In-Context Learning with Differentially Private Tabular Data",
+    "seed_ids": [
+        "gpt3",
+        "8a16740aec48eb80bf0e7cff0e83455181bb8759",
+        "4d17732d90440682b0500f4e209c6cc4fac20e0e",
+        "394bd431e522b86581086bcb5cd9be161cf1cdf4",
+        "b92628d13e8d090d042232fe6ae0b8998634b893"
+    ],
+    "s2id": "68226f0ae91283d240a9c294b956cda239a56281",
+    "abstract": "In-context learning (ICL) enables large language models (LLMs) to adapt to new tasks by conditioning on demonstrations of question-answer pairs and it has been shown to have comparable performance to costly model retraining and fine-tuning. Recently, ICL has been extended to allow tabular data to be used as demonstration examples by serializing individual records into natural language formats. However, it has been shown that LLMs can leak information contained in prompts, and since tabular data often contain sensitive information, understanding how to protect the underlying tabular data used in ICL is a critical area of research. This work serves as an initial investigation into how to use differential privacy (DP) -- the long-established gold standard for data privacy and anonymization -- to protect tabular data used in ICL. Specifically, we investigate the application of DP mechanisms for private tabular ICL via data privatization prior to serialization and prompting. We formulate two private ICL frameworks with provable privacy guarantees in both the local (LDP-TabICL) and global (GDP-TabICL) DP scenarios via injecting noise into individual records or group statistics, respectively. We evaluate our DP-based frameworks on eight real-world tabular datasets and across multiple ICL and DP settings. Our evaluations show that DP-based ICL can protect the privacy of the underlying tabular data while achieving comparable performance to non-LLM baselines, especially under high privacy regimes.",
+    "authors": [
+        "Alycia N. Carey",
+        "Karuna Bhaila",
+        "Kennedy Edemacu",
+        "Xintao Wu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

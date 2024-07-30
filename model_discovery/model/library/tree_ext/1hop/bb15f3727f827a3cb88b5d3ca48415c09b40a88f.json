@@ -1,0 +1,50 @@
+{
+    "acronym": "bb15f3727f827a3cb88b5d3ca48415c09b40a88f",
+    "title": "What Language Model to Train if You Have One Million GPU Hours?",
+    "seed_ids": [
+        "gpt2",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "15190e8b459bd85d546286f7d7da61b4f4f3f58a",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28"
+    ],
+    "s2id": "bb15f3727f827a3cb88b5d3ca48415c09b40a88f",
+    "abstract": "The crystallization of modeling methods around the Transformer architecture has been a boon for practitioners. Simple, well-motivated architectural variations can transfer across tasks and scale, increasing the impact of modeling research. However, with the emergence of state-of-the-art 100B+ parameters models, large language models are increasingly expensive to accurately design and train. Notably, it can be difficult to evaluate how modeling decisions may impact emergent capabilities, given that these capabilities arise mainly from sheer scale alone. In the process of building BLOOM--the Big Science Large Open-science Open-access Multilingual language model--our goal is to identify an architecture and training setup that makes the best use of our 1,000,000 A100-GPU-hours budget. Specifically, we perform an ablation study at the billion-parameter scale comparing different modeling practices and their impact on zero-shot generalization. In addition, we study the impact of various popular pre-training corpora on zero-shot generalization. We also study the performance of a multilingual model and how it compares to the English-only one. Finally, we consider the scaling behaviour of Transformers to choose the target model size, shape, and training setup. All our models and code are open-sourced at https://huggingface.co/bigscience .",
+    "authors": [
+        "Teven Le Scao",
+        "Thomas Wang",
+        "Daniel Hesslow",
+        "Lucile Saulnier",
+        "Stas Bekman",
+        "Saiful Bari",
+        "Stella Biderman",
+        "Hady ElSahar",
+        "Niklas Muennighoff",
+        "Jason Phang",
+        "Ofir Press",
+        "Colin Raffel",
+        "Victor Sanh",
+        "Sheng Shen",
+        "Lintang Sutawika",
+        "Jaesung Tae",
+        "Zheng-Xin Yong",
+        "Julien Launay",
+        "Iz Beltagy"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An ablation study at the billion-parameter scale comparing different modeling practices and their impact on zero-shot generalization is performed, and the scaling behaviour of Transformers is considered to choose the target model size, shape, and training setup."
+    },
+    "citationCount": 80,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "6ac542adf273907fc842aca4ef1110aab6b54b55",
+    "title": "Learning Intrinsic Dimension via Information Bottleneck for Explainable Aspect-based Sentiment Analysis",
+    "seed_ids": [
+        "bert",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "6ac542adf273907fc842aca4ef1110aab6b54b55",
+    "abstract": "Gradient-based explanation methods are increasingly used to interpret neural models in natural language processing (NLP) due to their high fidelity. Such methods determine word-level importance using dimension-level gradient values through a norm function, often presuming equal significance for all gradient dimensions. However, in the context of Aspect-based Sentiment Analysis (ABSA), our preliminary research suggests that only specific dimensions are pertinent. To address this, we propose the Information Bottleneck-based Gradient (IBG) explanation framework for ABSA. This framework leverages an information bottleneck to refine word embeddings into a concise intrinsic dimension, maintaining essential features and omitting unrelated information. Comprehensive tests show that our IBG approach considerably improves both the models\u2019 performance and the explanations\u2019 clarity by identifying sentiment-aware features.",
+    "authors": [
+        "Zhenxiao Cheng",
+        "Jie Zhou",
+        "Wen Wu",
+        "Qin Chen",
+        "Liang He"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Information Bottleneck-based Gradient (IBG) explanation framework for ABSA is proposed, which leverages an information bottleneck to refine word embeddings into a concise intrinsic dimension, maintaining essential features and omitting unrelated information."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

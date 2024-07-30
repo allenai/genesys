@@ -1,0 +1,29 @@
+{
+    "acronym": "bb1841c934f956322abdef2c64180e6f43035b29",
+    "title": "How Good Is It? Evaluating the Efficacy of Common versus Domain-Specific Prompts on Foundational Large Language Models",
+    "seed_ids": [
+        "gpt",
+        "8597c0dc4fa5805306d9dd73622b9d27f4e74557",
+        "b842b83a7ff5dff8e3b83915d8c15423b6085728",
+        "b6346f9fa093b8e85df712485a2b851b9f680dac",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "bb1841c934f956322abdef2c64180e6f43035b29",
+    "abstract": "Recently, large language models (LLMs) have expanded into various domains. However, there remains a need to evaluate how these models perform when prompted with commonplace queries compared to domain-specific queries, which may be useful for benchmarking prior to fine-tuning domain-specific downstream tasks. This study evaluates LLMs, specifically Gemma-2B and Gemma-7B, across diverse domains, including cybersecurity, medicine, and finance, compared to common knowledge queries. This study employs a comprehensive methodology to evaluate foundational models, encompassing problem formulation, data analysis, and the development of novel outlier detection techniques. This methodological rigor enhances the credibility of the presented evaluation frameworks. This study focused on assessing inference time, response length, throughput, quality, and resource utilization and investigated the correlations between these factors. The results indicate that model size and types of prompts used for inference significantly influenced response length and quality. In addition, common prompts, which include various types of queries, generate diverse and inconsistent responses at irregular intervals. In contrast, domain-specific prompts consistently generate concise responses within a reasonable time. Overall, this study underscores the need for comprehensive evaluation frameworks to enhance the reliability of benchmarking procedures in multidomain AI research.",
+    "authors": [
+        "Oluyemi E. Amujo",
+        "S. Yang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results indicate that model size and types of prompts used for inference significantly influenced response length and quality, and this underscores the need for comprehensive evaluation frameworks to enhance the reliability of benchmarking procedures in multidomain AI research."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

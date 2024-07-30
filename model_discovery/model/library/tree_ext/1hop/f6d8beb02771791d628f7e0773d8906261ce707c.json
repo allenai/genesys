@@ -1,0 +1,37 @@
+{
+    "acronym": "f6d8beb02771791d628f7e0773d8906261ce707c",
+    "title": "Fine-Tuning Pre-trained Transformers into Decaying Fast Weights",
+    "seed_ids": [
+        "gpt2",
+        "deltanet",
+        "abc",
+        "2d82ee05b132d4681c3bd517afc17d608fe6e525",
+        "e0cbbca02b332f398c6639b3bea0613f79166220",
+        "d5e999aae76d5270ef272076979c809817458212",
+        "054e307c1edf4b28137ffcbce980fe81f0647d20",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "2fd10e095b146f99da8cdc6ff58720e2e8fca36d",
+        "1a703f08da01cf737cce3fb9064259b3f4b44e9c",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f6d8beb02771791d628f7e0773d8906261ce707c",
+    "abstract": "Autoregressive Transformers are strong language models but incur O(T) complexity during per-token generation due to the self-attention mechanism. Recent work proposes kernel-based methods to approximate causal self-attention by replacing it with recurrent formulations with various update rules and feature maps to achieve O(1) time and memory complexity. We explore these approaches and find that they are unnecessarily complex, and propose a simple alternative - decaying fast weights - that runs fast on GPU, outperforms prior methods, and retains 99% of attention\u2019s performance for GPT-2. We also show competitive performance on WikiText-103 against more complex attention substitutes.",
+    "authors": [
+        "H. H. Mao"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work explores kernel-based methods to approximate causal self-attention by replacing it with recurrent formulations with various update rules and feature maps and proposes a simple alternative that runs fast on GPU, outperforms prior methods, and retains 99% of attention\u2019s performance for GPT-2."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

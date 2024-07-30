@@ -1,0 +1,38 @@
+{
+    "acronym": "bd9e2e3c45eedfffe777eb3211087d95e9353cf0",
+    "title": "Automated Disentangled Sequential Recommendation with Large Language Models",
+    "seed_ids": [
+        "transformer",
+        "sparsetransformer",
+        "ca7bd64d372e3bcb3f4633ca4a20291ff57de3c3",
+        "cbf3bf8f541f5b446c59c8deacbcc18527768c75",
+        "df602516e28a9ef0ef665ed0aef551984d8d770d",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "62dc8ddb4907db4b889c5e93673d9b3c189d1f25",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8",
+        "16c844fd4d97f3c6eb38b0d6527c87d184efedc3"
+    ],
+    "s2id": "bd9e2e3c45eedfffe777eb3211087d95e9353cf0",
+    "abstract": "Sequential recommendation aims to recommend the next items that a target user may have interest in based on the user\u2019s sequence of past behaviors, which has become a hot research topic in both academia and industry. In the literature, sequential recommendation adopts a Sequence-to-Item or Sequence-to-Sequence training strategy, which supervises a sequential model with a user\u2019s next one or more behaviors as the labels and the sequence of the past behaviors as the input. However, existing powerful sequential recommendation approaches employ more and more complex deep structures such as Transformer in order to accurately capture the sequential patterns, which heavily rely on hand-crafted designs on key attention mechanism to achieve state-of-the-art performance, thus failing to automatically obtain the optimal design of attention representation architectures in various scenarios with different data. Other works on classic automated deep recommender systems only focus on traditional settings, ignoring the problem of sequential scenarios. In this paper, we study the problem of automated sequential recommendation, which faces two main challenges: i) How can we design a proper search space tailored for attention automation in sequential recommendation, and ii) How can we accurately search effective attention representation architectures considering multiple user interests reflected in the sequential behavior. To tackle these challenges, we propose an automated disentangled sequential recommendation (AutoDisenSeq) model. In particular, we employ neural architecture search (NAS) and design a search space tailored for automated attention representation in attentive intention-disentangled sequential recommendation with an expressive and efficient space complexity of \\(O(n^{2})\\) given \\(n\\) as the number of layers. We further propose a context-aware parameter sharing mechanism taking characteristics of each sub-architecture into account to enable accurate architecture performance estimations and great flexibility for disentanglement of latent intention representation. Moreover, we propose AutoDisenSeq-LLM, which utilizes the textual understanding power of large language model (LLM) as a guidance to refine the candidate list for recommendation from AutoDisenSeq. We conduct extensive experiments to show that our proposed AutoDisenSeq model and AutoDisenSeq-LLM model outperform existing baseline methods on four real-world datasets in both overall recommendation and cold-start recommendation scenarios.",
+    "authors": [
+        "Xin Wang",
+        "Hong Chen",
+        "Zirui Pan",
+        "Yuwei Zhou",
+        "Chaoyu Guan",
+        "Lifeng Sun",
+        "Wenwu Zhu"
+    ],
+    "venue": "ACM Transactions on Information Systems",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An automated disentangled sequential recommendation (AutoDisenSeq) model that employs neural architecture search (NAS) and design a search space tailored for automated attention representation in attentive intention-disentangled sequential recommendation with an expressive and efficient space complexity of \\(O(n^{2})\\) given \\(n\\) as the number of layers is proposed."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

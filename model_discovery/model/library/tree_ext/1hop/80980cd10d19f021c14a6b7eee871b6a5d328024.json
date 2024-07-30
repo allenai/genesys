@@ -1,0 +1,39 @@
+{
+    "acronym": "80980cd10d19f021c14a6b7eee871b6a5d328024",
+    "title": "Augmenting Language Models with Long-Term Memory",
+    "seed_ids": [
+        "gpt2",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "6d02cc3e66330fc170a5bde44be7b358149b9c0a",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "b9a701c90f3d3df27366f5b29a97f798eb940ac7",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "80980cd10d19f021c14a6b7eee871b6a5d328024",
+    "abstract": "Existing large language models (LLMs) can only afford fix-sized inputs due to the input length limit, preventing them from utilizing rich long-context information from past inputs. To address this, we propose a framework, Language Models Augmented with Long-Term Memory (LongMem), which enables LLMs to memorize long history. We design a novel decoupled network architecture with the original backbone LLM frozen as a memory encoder and an adaptive residual side-network as a memory retriever and reader. Such a decoupled memory design can easily cache and update long-term past contexts for memory retrieval without suffering from memory staleness. Enhanced with memory-augmented adaptation training, LongMem can thus memorize long past context and use long-term memory for language modeling. The proposed memory retrieval module can handle unlimited-length context in its memory bank to benefit various downstream tasks. Typically, LongMem can enlarge the long-form memory to 65k tokens and thus cache many-shot extra demonstration examples as long-form memory for in-context learning. Experiments show that our method outperforms strong long-context models on ChapterBreak, a challenging long-context modeling benchmark, and achieves remarkable improvements on memory-augmented in-context learning over LLMs. The results demonstrate that the proposed method is effective in helping language models to memorize and utilize long-form contents. Our code is open-sourced at https://aka.ms/LongMem.",
+    "authors": [
+        "Weizhi Wang",
+        "Li Dong",
+        "Hao Cheng",
+        "Xiaodong Liu",
+        "Xifeng Yan",
+        "Jianfeng Gao",
+        "Furu Wei"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experiments show that the proposed framework, Language Models Augmented with Long-Term Memory (LongMem), outperforms strong long-context models on ChapterBreak, a challenging long- context modeling benchmark, and achieves remarkable improvements on memory-augmented in-context learning over LLMs."
+    },
+    "citationCount": 51,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,32 @@
+{
+    "acronym": "eec3a05bc647552e85e8eccc4421d90e0b337b8b",
+    "title": "Improving Query-Focused Meeting Summarization with Query-Relevant Knowledge",
+    "seed_ids": [
+        "memcompress",
+        "247ac77a559d00d69f4353b02fb9e6529e3849cd",
+        "13850aabbe8b70e99560a42504773a76ab5a4f47",
+        "0a41cb292242a82b2b09b3bf23b48349b981a640",
+        "ac95a18762133d4065ac8af518c33084d83c5582",
+        "270f3bea8ca801870a6cc56b4d36f7f2019c9ed0",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "eec3a05bc647552e85e8eccc4421d90e0b337b8b",
+    "abstract": "Query-Focused Meeting Summarization (QFMS) aims to generate a summary of a given meeting transcript conditioned upon a query. The main challenges for QFMS are the long input text length and sparse query-relevant information in the meeting transcript. In this paper, we propose a knowledge-enhanced two-stage framework called Knowledge-Aware Summarizer (KAS) to tackle the challenges. In the first stage, we introduce knowledge-aware scores to improve the query-relevant segment extraction. In the second stage, we incorporate query-relevant knowledge in the summary generation. Experimental results on the QMSum dataset show that our approach achieves state-of-the-art performance. Further analysis proves the competency of our methods in generating relevant and faithful summaries.",
+    "authors": [
+        "Tiezheng Yu",
+        "Ziwei Ji",
+        "Pascale Fung"
+    ],
+    "venue": "International Joint Conference on Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A knowledge-enhanced two-stage framework called Knowledge-Aware Summarizer (KAS) to tackle the challenges ofQuery-Focused Meeting Summarization, introducing knowledge-aware scores to improve the query-relevant segment extraction and incorporating query- relevant knowledge in the summary generation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

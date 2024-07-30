@@ -1,0 +1,33 @@
+{
+    "acronym": "ce563f485188dfc236dafb8160c203f1034754a1",
+    "title": "Commonsense Knowledge Adversarial Dataset that Challenges ELECTRA",
+    "seed_ids": [
+        "gpt",
+        "710d183174844da5b7f392667f3cc25d2b098dde",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ce563f485188dfc236dafb8160c203f1034754a1",
+    "abstract": "Commonsense knowledge is critical in human reading comprehension. While machine comprehension has made significant progress in recent years, the ability in handling commonsense knowledge remains limited. Synonyms are one of the most widely used commonsense knowledge. Constructing adversarial dataset is an important approach to find weak points of machine comprehension models and support the design of solutions. To investigate machine comprehension models' ability in handling the commonsense knowledge, we created a Question and Answer Dataset with common knowledge of Synonyms (QADS). QADS are questions generated based on SQuAD 2.0 by applying commonsense knowledge of synonyms. The synonyms are extracted from WordNet. Words often have multiple meanings and synonyms. We used an enhanced lesk algorithm to perform word sense disambiguation to identify synonyms for the context. ELECTRA achieves the state-of-art result on the SQuAD 2.0 dataset in 2019. With about 1/10 scale, ELECTRA can achieve similar performance as BERT does. However, QADS shows that ELECTRA has little ability to handle commonsense knowledge of synonyms. In our experiment, ELECTRA-small can achieve 70% accuracy on SQuAD 2.0, but only 20% on QADS. ELECTRA-large did not perform much better. Its accuracy on SQuAD 2.0 is 88% but dropped significantly to 26% on QADS. In our earlier experiments, BERT, although also failed badly on QADS, was not as bad as ELECTRA. The result shows that even top-performing NLP models have little ability to handle commonsense knowledge which is essential in reading comprehension.",
+    "authors": [
+        "Gongqi Lin",
+        "Yuan Miao",
+        "Xiaoyong Yang",
+        "Wenwu Ou",
+        "Li-zhen Cui",
+        "Wenting Guo",
+        "C. Miao"
+    ],
+    "venue": "International Conference on Control, Automation, Robotics and Vision",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The result shows that even top-performing NLP models have little ability to handle commonsense knowledge which is essential in reading comprehension, and creates a Question and Answer Dataset with common knowledge of Synonyms."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

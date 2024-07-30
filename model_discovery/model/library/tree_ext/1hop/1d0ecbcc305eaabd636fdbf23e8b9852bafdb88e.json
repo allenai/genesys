@@ -1,0 +1,33 @@
+{
+    "acronym": "1d0ecbcc305eaabd636fdbf23e8b9852bafdb88e",
+    "title": "Diffusion-based Contrastive Learning for Sequential Recommendation",
+    "seed_ids": [
+        "diffusionlm",
+        "diffuseq",
+        "c718c0a7185b16edc29432fe943489ca630c3c48",
+        "4ce9f93e90bc61c9f55ae6fe4f363cf9622a0e18",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8"
+    ],
+    "s2id": "1d0ecbcc305eaabd636fdbf23e8b9852bafdb88e",
+    "abstract": "Self-supervised contrastive learning, which directly extracts inherent data correlations from unlabeled data, has been widely utilized to mitigate the data sparsity issue in sequential recommendation. The majority of existing methods create different augmented views of the same user sequence via random augmentation, and subsequently minimize their distance in the embedding space to enhance the quality of user representations. However, random augmentation often disrupts the semantic information and interest evolution pattern inherent in the user sequence, leading to the generation of semantically distinct augmented views. Promoting similarity of these semantically diverse augmented sequences can render the learned user representations insensitive to variations in user preferences and interest evolution, contradicting the core learning objectives of sequential recommendation. To address this issue, we leverage the inherent characteristics of sequential recommendation and propose the use of context information to generate more reasonable augmented positive samples. Specifically, we introduce a context-aware diffusion-based contrastive learning method for sequential recommendation. Given a user sequence, our method selects certain positions and employs a context-aware diffusion model to generate alternative items for these positions with the guidance of context information. These generated items then replace the corresponding original items, creating a semantically consistent augmented view of the original sequence. Additionally, to maintain representation cohesion, item embeddings are shared between the diffusion model and the recommendation model, and the entire framework is trained in an end-to-end manner. Extensive experiments on five benchmark datasets demonstrate the superiority of our proposed method.",
+    "authors": [
+        "Ziqiang Cui",
+        "Haolun Wu",
+        "Bowei He",
+        "Ji Cheng",
+        "Chen Ma"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a context-aware diffusion-based contrastive learning method for sequential recommendation that selects certain positions and employs a context-aware diffusion model to generate alternative items for these positions with the guidance of context information to generate more reasonable augmented positive samples."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

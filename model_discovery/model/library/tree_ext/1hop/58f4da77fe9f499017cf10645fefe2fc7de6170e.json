@@ -1,0 +1,28 @@
+{
+    "acronym": "58f4da77fe9f499017cf10645fefe2fc7de6170e",
+    "title": "Open-Vocabulary Video Relation Extraction",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "58f4da77fe9f499017cf10645fefe2fc7de6170e",
+    "abstract": "A comprehensive understanding of videos is inseparable from describing the action with its contextual action-object interactions. However, many current video understanding tasks prioritize general action classification and overlook the actors and relationships that shape the nature of the action, resulting in a superficial understanding of the action. \nMotivated by this, we introduce Open-vocabulary Video Relation Extraction (OVRE), a novel task that views action understanding through the lens of action-centric relation triplets. OVRE focuses on pairwise relations that take part in the action and describes these relation triplets with natural languages. Moreover, we curate the Moments-OVRE dataset, which comprises 180K videos with action-centric relation triplets, sourced from a multi-label action classification dataset. With Moments-OVRE, we further propose a cross-modal mapping model to generate relation triplets as a sequence. Finally, we benchmark existing cross-modal generation models on the new task of OVRE. Our code and dataset are available at https://github.com/Iriya99/OVRE.",
+    "authors": [
+        "Wentao Tian",
+        "Zheng Wang",
+        "Yu Fu",
+        "Jingjing Chen",
+        "Lechao Cheng"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces Open-vocabulary Video Relation Extraction (OVRE), a novel task that views action understanding through the lens of action-centric relation triplets, and proposes a cross-modal mapping model to generate relation triplets as a sequence."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

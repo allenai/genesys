@@ -1,0 +1,25 @@
+{
+    "acronym": "2b74676b1a34b32c9a4d16000641eb90dc1d25dd",
+    "title": "RAGSys: Item-Cold-Start Recommender as RAG System",
+    "seed_ids": [
+        "bert",
+        "48abfc41a0abf023d2037ebb2f274835e0d322d0"
+    ],
+    "s2id": "2b74676b1a34b32c9a4d16000641eb90dc1d25dd",
+    "abstract": "Large Language Models (LLM) hold immense promise for real-world applications, but their generic knowledge often falls short of domain-specific needs. Fine-tuning, a common approach, can suffer from catastrophic forgetting and hinder generalizability. In-Context Learning (ICL) offers an alternative, which can leverage Retrieval-Augmented Generation (RAG) to provide LLMs with relevant demonstrations for few-shot learning tasks. This paper explores the desired qualities of a demonstration retrieval system for ICL. We argue that ICL retrieval in this context resembles item-cold-start recommender systems, prioritizing discovery and maximizing information gain over strict relevance. We propose a novel evaluation method that measures the LLM's subsequent performance on NLP tasks, eliminating the need for subjective diversity scores. Our findings demonstrate the critical role of diversity and quality bias in retrieved demonstrations for effective ICL, and highlight the potential of recommender system techniques in this domain.",
+    "authors": [
+        "Emile Contal",
+        "Garrin McGoldrick"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel evaluation method is proposed that measures the LLM's subsequent performance on NLP tasks, eliminating the need for subjective diversity scores, and demonstrates the critical role of diversity and quality bias in retrieved demonstrations for effective ICL."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

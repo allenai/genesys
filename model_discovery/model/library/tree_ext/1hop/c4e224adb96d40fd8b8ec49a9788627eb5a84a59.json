@@ -1,0 +1,39 @@
+{
+    "acronym": "c4e224adb96d40fd8b8ec49a9788627eb5a84a59",
+    "title": "Scaffold-BPE: Enhancing Byte Pair Encoding with Simple and Effective Scaffold Token Removal",
+    "seed_ids": [
+        "gpt2",
+        "gpt3",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "d9f1eed347959149f27002485a7fe339604fe45d",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28"
+    ],
+    "s2id": "c4e224adb96d40fd8b8ec49a9788627eb5a84a59",
+    "abstract": "Byte Pair Encoding (BPE) serves as a foundation method for text tokenization in the Natural Language Processing (NLP) field. Despite its wide adoption, the original BPE algorithm harbors an inherent flaw: it inadvertently introduces a frequency imbalance for tokens in the text corpus. Since BPE iteratively merges the most frequent token pair in the text corpus while keeping all tokens that have been merged in the vocabulary, it unavoidably holds tokens that primarily represent subwords of complete words and appear infrequently on their own in the text corpus. We term such tokens as Scaffold Tokens. Due to their infrequent appearance in the text corpus, Scaffold Tokens pose a learning imbalance issue for language models. To address that issue, we propose Scaffold-BPE, which incorporates a dynamic scaffold token removal mechanism by parameter-free, computation-light, and easy-to-implement modifications to the original BPE. This novel approach ensures the exclusion of low-frequency Scaffold Tokens from the token representations for the given texts, thereby mitigating the issue of frequency imbalance and facilitating model training. On extensive experiments across language modeling tasks and machine translation tasks, Scaffold-BPE consistently outperforms the original BPE, well demonstrating its effectiveness and superiority.",
+    "authors": [
+        "Haoran Lian",
+        "Yizhe Xiong",
+        "Jianwei Niu",
+        "Shasha Mo",
+        "Zhenpeng Su",
+        "Zijia Lin",
+        "Peng Liu",
+        "Hui Chen",
+        "Guiguang Ding"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed Scaffold-BPE incorporates a dynamic scaffold token removal mechanism by parameter-free, computation-light, and easy-to-implement modifications to the original BPE, which consistently outperforms the original BPE, well demonstrating its effectiveness and superiority."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

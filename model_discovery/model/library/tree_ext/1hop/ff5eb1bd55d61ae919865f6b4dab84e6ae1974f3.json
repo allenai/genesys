@@ -1,0 +1,33 @@
+{
+    "acronym": "ff5eb1bd55d61ae919865f6b4dab84e6ae1974f3",
+    "title": "Optimus-CC: Efficient Large NLP Model Training with 3D Parallelism Aware Communication Compression",
+    "seed_ids": [
+        "gpt2",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "ad7129af0644dbcafa9aa2f111cb76526ea444a1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ff5eb1bd55d61ae919865f6b4dab84e6ae1974f3",
+    "abstract": "In training of modern large natural language processing (NLP) models, it has become a common practice to split models using 3D parallelism to multiple GPUs. Such technique, however, suffers from a high overhead of inter-node communication. Compressing the communication is one way to mitigate the overhead by reducing the inter-node traffic volume; however, the existing compression techniques have critical limitations to be applied for NLP models with 3D parallelism in that 1) only the data parallelism traffic is targeted, and 2) the existing compression schemes already harm the model quality too much. In this paper, we present Optimus-CC, a fast and scalable distributed training framework for large NLP models with aggressive communication compression. Optimus-CC differs from existing communication compression frameworks in the following ways: First, we compress pipeline parallel (inter-stage) traffic. In specific, we compress the inter-stage backpropagation and the embedding synchronization in addition to the existing data-parallel traffic compression methods. Second, we propose techniques to avoid the model quality drop that comes from the compression. We further provide mathematical and empirical analyses to show that our techniques can successfully suppress the compression error. Lastly, we analyze the pipeline and opt to selectively compress those traffic lying on the critical path. This further helps reduce the compression error. We demonstrate our solution on a GPU cluster, and achieve superior speedup from the baseline state-of-the-art solutions for distributed training without sacrificing the model quality.",
+    "authors": [
+        "Jaeyong Song",
+        "Jinkyu Yim",
+        "Jaewon Jung",
+        "Hongsun Jang",
+        "H. Kim",
+        "Youngsok Kim",
+        "Jinho Lee"
+    ],
+    "venue": "International Conference on Architectural Support for Programming Languages and Operating Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Optimus-CC is presented, a fast and scalable distributed training framework for large NLP models with aggressive communication compression that achieves superior speedup from the baseline state-of-the-art solutions for distributed training without sacrificing the model quality."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

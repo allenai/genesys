@@ -1,0 +1,27 @@
+{
+    "acronym": "b740dc66e4c0716767b5b9ccace31e5366bb51ce",
+    "title": "In-memory Activation Compression for GPT Training",
+    "seed_ids": [
+        "gpt2",
+        "0b5d7a79205b44952e24025ce5d46e9f3aa401a1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b740dc66e4c0716767b5b9ccace31e5366bb51ce",
+    "abstract": "Recently, a large number of parameters in Transformer-based language models have caused memory short-ages during training. Although solutions such as mixed precision and model parallelism have been proposed, they have the limitation of inducing communication overhead and requiring modification of the model by a programmer. To address this issue, we propose a scheme that compresses activation data in memory, enabling the reduction of memory usage during training in a user-transparent manner. The compression algorithm gathers activation data into a block and compresses it, using base-delta compression for the exponent and bit-plane zero compression for the sign and mantissa. Then, the important bits are arranged in order, and LSB truncation is applied to fit the target size. The proposed compression algorithm achieves a compression ratio of 2.09 for the sign, 2.04 for the exponent, and 1.21 for the mantissa. A compression ratio of 3.2 is obtained by applying up to the truncation, and we confirm the convergence of GPT-2 training with the compression.",
+    "authors": [
+        "Seungyong Lee",
+        "Geonu Yun",
+        "Hyuk-Jae Lee"
+    ],
+    "venue": "International Conference on Artificial Intelligence Circuits and Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a scheme that compresses activation data in memory, enabling the reduction of memory usage during training in a user-transparent manner and confirms the convergence of GPT-2 training with the compression."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "8514471bc62270bf48d0bead9a86253f02817cb6",
+    "title": "Do large language models solve verbal analogies like children do?",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8514471bc62270bf48d0bead9a86253f02817cb6",
+    "abstract": "Analogy-making lies at the heart of human cognition. Adults solve analogies such as \\textit{Horse belongs to stable like chicken belongs to ...?} by mapping relations (\\textit{kept in}) and answering \\textit{chicken coop}. In contrast, children often use association, e.g., answering \\textit{egg}. This paper investigates whether large language models (LLMs) solve verbal analogies in A:B::C:? form using associations, similar to what children do. We use verbal analogies extracted from an online adaptive learning environment, where 14,002 7-12 year-olds from the Netherlands solved 622 analogies in Dutch. The six tested Dutch monolingual and multilingual LLMs performed around the same level as children, with MGPT performing worst, around the 7-year-old level, and XLM-V and GPT-3 the best, slightly above the 11-year-old level. However, when we control for associative processes this picture changes and each model's performance level drops 1-2 years. Further experiments demonstrate that associative processes often underlie correctly solved analogies. We conclude that the LLMs we tested indeed tend to solve verbal analogies by association with C like children do.",
+    "authors": [
+        "Claire E. Stevenson",
+        "Mathilde ter Veen",
+        "Rochelle Choenni",
+        "Han L. J. van der Maas",
+        "Ekaterina Shutova"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper investigates whether large language models (LLMs) solve verbal analogies in A:B::C:?"
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,32 @@
+{
+    "acronym": "c77e8affde18b46295b3cb153937bb32b3eaf933",
+    "title": "Enhancing Distractor Generation for Multiple-Choice Questions with Retrieval Augmented Pretraining and Knowledge Graph Integration",
+    "seed_ids": [
+        "bert",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "c77e8affde18b46295b3cb153937bb32b3eaf933",
+    "abstract": "In this paper, we tackle the task of distractor generation (DG) for multiple-choice questions. Our study introduces two key designs. First, we propose \\textit{retrieval augmented pretraining}, which involves refining the language model pretraining to align it more closely with the downstream task of DG. Second, we explore the integration of knowledge graphs to enhance the performance of DG. Through experiments with benchmarking datasets, we show that our models significantly outperform the state-of-the-art results. Our best-performing model advances the F1@3 score from 14.80 to 16.47 in MCQ dataset and from 15.92 to 16.50 in Sciq dataset.",
+    "authors": [
+        "Han-Cheng Yu",
+        "Yu-An Shih",
+        "Kin-Man Law",
+        "Kai-Yu Hsieh",
+        "Yu-Chen Cheng",
+        "Hsin-Chih Ho",
+        "Zih-An Lin",
+        "Wen-Chuan Hsu",
+        "Yao-Chung Fan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study proposes retrieval augmented pretraining, which involves refining the language model pretraining to align it more closely with the downstream task of DG, and explores the integration of knowledge graphs to enhance the performance of DG."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

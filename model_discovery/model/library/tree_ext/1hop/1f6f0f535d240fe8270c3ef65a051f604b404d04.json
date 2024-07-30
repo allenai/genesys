@@ -1,0 +1,52 @@
+{
+    "acronym": "1f6f0f535d240fe8270c3ef65a051f604b404d04",
+    "title": "WellDunn: On the Robustness and Explainability of Language Models and Large Language Models in Identifying Wellness Dimensions",
+    "seed_ids": [
+        "bert",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "031e4e43aaffd7a479738dcea69a2d5be7957aa3"
+    ],
+    "s2id": "1f6f0f535d240fe8270c3ef65a051f604b404d04",
+    "abstract": "Language Models (LMs) are being proposed for mental health applications where the heightened risk of adverse outcomes means predictive performance may not be a sufficient litmus test of a model's utility in clinical practice. A model that can be trusted for practice should have a correspondence between explanation and clinical determination, yet no prior research has examined the attention fidelity of these models and their effect on ground truth explanations. We introduce an evaluation design that focuses on the robustness and explainability of LMs in identifying Wellness Dimensions (WD). We focus on two mental health and well-being datasets: (a) Multi-label Classification-based MultiWD, and (b) WellXplain for evaluating attention mechanism veracity against expert-labeled explanations. The labels are based on Halbert Dunn's theory of wellness, which gives grounding to our evaluation. We reveal four surprising results about LMs/LLMs: (1) Despite their human-like capabilities, GPT-3.5/4 lag behind RoBERTa, and MedAlpaca, a fine-tuned LLM fails to deliver any remarkable improvements in performance or explanations. (2) Re-examining LMs' predictions based on a confidence-oriented loss function reveals a significant performance drop. (3) Across all LMs/LLMs, the alignment between attention and explanations remains low, with LLMs scoring a dismal 0.0. (4) Most mental health-specific LMs/LLMs overlook domain-specific knowledge and undervalue explanations, causing these discrepancies. This study highlights the need for further research into their consistency and explanations in mental health and well-being.",
+    "authors": [
+        "Seyedali Mohammadi",
+        "Edward Raff",
+        "Jinendra Malekar",
+        "Booz Allen",
+        "Hamilton",
+        "Francis Ferraro",
+        "Manas Gaur",
+        "Yu Sun",
+        "Shuohuan Wang",
+        "Yukun Li",
+        "Shikun Feng",
+        "Xuyi Chen",
+        "Han Zhang",
+        "Xin Tian",
+        "Danxiang Zhu",
+        "Hao Tian",
+        "Hua Wu. 2019",
+        "Ernie",
+        "Hugo Touvron",
+        "Thibaut Lavril",
+        "Gautier Izacard",
+        "Xavier Martinet",
+        "Marie-Anne Lachaux",
+        "Timoth\u00e9e Lacroix",
+        "Baptiste Rozi\u00e8re",
+        "Naman Goyal",
+        "Eric Hambro"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The need for further research into language models' consistency and explanations in mental health and well-being is highlighted, with an evaluation design that focuses on the robustness and explainability of LMs in identifying Wellness Dimensions (WD)."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

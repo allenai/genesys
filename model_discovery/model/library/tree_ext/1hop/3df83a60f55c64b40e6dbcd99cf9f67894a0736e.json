@@ -1,0 +1,29 @@
+{
+    "acronym": "3df83a60f55c64b40e6dbcd99cf9f67894a0736e",
+    "title": "Do Transformers Need Deep Long-Range Memory?",
+    "seed_ids": [
+        "transformerxl",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3df83a60f55c64b40e6dbcd99cf9f67894a0736e",
+    "abstract": "Deep attention models have advanced the modelling of sequential data across many domains. For language modelling in particular, the Transformer-XL \u2014 a Transformer augmented with a long-range memory of past activations \u2014 has been shown to be state-of-the-art across a variety of well-studied benchmarks. The Transformer-XL incorporates a long-range memory at every layer of the network, which renders its state to be thousands of times larger than RNN predecessors. However it is unclear whether this is necessary. We perform a set of interventions to show that comparable performance can be obtained with 6X fewer long range memories and better performance can be obtained by limiting the range of attention in lower layers of the network.",
+    "authors": [
+        "Jack W. Rae",
+        "Ali Razavi"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work performs a set of interventions to show that comparable performance can be obtained with 6X fewer long range memories and better performance can been obtained by limiting the range of attention in lower layers of the network."
+    },
+    "citationCount": 37,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "ef96ab066113cac9317768c57439a79d10360a7b",
+    "title": "Towards Coherent and Consistent Use of Entities in Narrative Generation",
+    "seed_ids": [
+        "transformerxl",
+        "e7c698bdace380f7183dedbe657686f1885f615c",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ef96ab066113cac9317768c57439a79d10360a7b",
+    "abstract": "Large pre-trained language models (LMs) have demonstrated impressive capabilities in generating long, fluent text; however, there is little to no analysis on their ability to maintain entity coherence and consistency. In this work, we focus on the end task of narrative generation and systematically analyse the long-range entity coherence and consistency in generated stories. First, we propose a set of automatic metrics for measuring model performance in terms of entity usage. Given these metrics, we quantify the limitations of current LMs. Next, we propose augmenting a pre-trained LM with a dynamic entity memory in an end-to-end manner by using an auxiliary entity-related loss for guiding the reads and writes to the memory. We demonstrate that the dynamic entity memory increases entity coherence according to both automatic and human judgment and helps preserving entity-related information especially in settings with a limited context window. Finally, we also validate that our automatic metrics are correlated with human ratings and serve as a good indicator of the quality of generated stories.",
+    "authors": [
+        "Pinelopi Papalampidi",
+        "Kris Cao",
+        "Tom\u00e1s Kocisk\u00fd"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a set of automatic metrics for measuring model performance in terms of entity usage and demonstrates that these automatic metrics are correlated with human ratings and serve as a good indicator of the quality of generated stories."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

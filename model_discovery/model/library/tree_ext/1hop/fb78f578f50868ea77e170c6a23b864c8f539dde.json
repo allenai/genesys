@@ -1,0 +1,36 @@
+{
+    "acronym": "fb78f578f50868ea77e170c6a23b864c8f539dde",
+    "title": "DiffusEmp: A Diffusion Model-Based Framework with Multi-Grained Control for Empathetic Response Generation",
+    "seed_ids": [
+        "diffusionlm",
+        "diffuseq",
+        "a979742220a88b1d32e1fbe72c41e8ba3007053c",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "fb78f578f50868ea77e170c6a23b864c8f539dde",
+    "abstract": "Empathy is a crucial factor in open-domain conversations, which naturally shows one\u2019s caring and understanding to others. Though several methods have been proposed to generate empathetic responses, existing works often lead to monotonous empathy that refers to generic and safe expressions. In this paper, we propose to use explicit control to guide the empathy expression and design a framework DiffusEmp based on conditional diffusion language model to unify the utilization of dialogue context and attribute-oriented control signals. Specifically, communication mechanism, intent, and semantic frame are imported as multi-grained signals that control the empathy realization from coarse to fine levels. We then design a specific masking strategy to reflect the relationship between multi-grained signals and response tokens, and integrate it into the diffusion model to influence the generative process. Experimental results on a benchmark dataset EmpatheticDialogue show that our framework outperforms competitive baselines in terms of controllability, informativeness, and diversity without the loss of context-relatedness.",
+    "authors": [
+        "Guanqun Bi",
+        "Lei Shen",
+        "Yanan Cao",
+        "Meng Chen",
+        "Yuqiang Xie",
+        "Zheng Lin",
+        "Xiao-feng He"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes to use explicit control to guide the empathy expression and design a framework DiffusEmp based on conditional diffusion language model to unify the utilization of dialogue context and attribute-oriented control signals."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

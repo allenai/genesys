@@ -1,0 +1,38 @@
+{
+    "acronym": "0b5546cde38aa98542f888cc4cfd4403c5fc1834",
+    "title": "MIMONets: Multiple-Input-Multiple-Output Neural Networks Exploiting Computation in Superposition",
+    "seed_ids": [
+        "performer",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "2537af99905a27d9b84ba9968715f4287f1d3359",
+        "86fb2ee92569d35a8b471d814fa4c7653728536f",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "1a703f08da01cf737cce3fb9064259b3f4b44e9c",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "0b5546cde38aa98542f888cc4cfd4403c5fc1834",
+    "abstract": "With the advent of deep learning, progressively larger neural networks have been designed to solve complex tasks. We take advantage of these capacity-rich models to lower the cost of inference by exploiting computation in superposition. To reduce the computational burden per input, we propose Multiple-Input-Multiple-Output Neural Networks (MIMONets) capable of handling many inputs at once. MIMONets augment various deep neural network architectures with variable binding mechanisms to represent an arbitrary number of inputs in a compositional data structure via fixed-width distributed representations. Accordingly, MIMONets adapt nonlinear neural transformations to process the data structure holistically, leading to a speedup nearly proportional to the number of superposed input items in the data structure. After processing in superposition, an unbinding mechanism recovers each transformed input of interest. MIMONets also provide a dynamic trade-off between accuracy and throughput by an instantaneous on-demand switching between a set of accuracy-throughput operating points, yet within a single set of fixed parameters. We apply the concept of MIMONets to both CNN and Transformer architectures resulting in MIMOConv and MIMOFormer, respectively. Empirical evaluations show that MIMOConv achieves about 2-4 x speedup at an accuracy delta within [+0.68, -3.18]% compared to WideResNet CNNs on CIFAR10 and CIFAR100. Similarly, MIMOFormer can handle 2-4 inputs at once while maintaining a high average accuracy within a [-1.07, -3.43]% delta on the long range arena benchmark. Finally, we provide mathematical bounds on the interference between superposition channels in MIMOFormer. Our code is available at https://github.com/IBM/multiple-input-multiple-output-nets.",
+    "authors": [
+        "Nicolas Menet",
+        "Michael Hersche",
+        "G. Karunaratne",
+        "Luca Benini",
+        "Abu Sebastian",
+        "Abbas Rahimi"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes Multiple-Input-Multiple-Output Neural Networks capable of handling many inputs at once, and applies the concept of MIMONets to both CNN and Transformer architectures resulting in MIMOConv and MIMoFormer, respectively."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

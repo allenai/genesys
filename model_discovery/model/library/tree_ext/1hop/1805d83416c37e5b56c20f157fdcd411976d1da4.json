@@ -1,0 +1,35 @@
+{
+    "acronym": "1805d83416c37e5b56c20f157fdcd411976d1da4",
+    "title": "Putting Machine Translation in Context with the Noisy Channel Model",
+    "seed_ids": [
+        "transformerxl",
+        "a7a3b46cdc90609810899975892787a9ae6a4f34",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "ad7129af0644dbcafa9aa2f111cb76526ea444a1",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1805d83416c37e5b56c20f157fdcd411976d1da4",
+    "abstract": "We show that Bayes' rule provides a compelling mechanism for controlling unconditional document language models, using the long-standing challenge of effectively leveraging document context in machine translation. In our formulation, we estimate the probability of a candidate translation as the product of the unconditional probability of the candidate output document and the ``reverse translation probability'' of translating the candidate output back into the input source language document---the so-called ``noisy channel'' decomposition. A particular advantage of our model is that it requires only parallel sentences to train, rather than parallel documents, which are not always available. Using a new beam search reranking approximation to solve the decoding problem, we find that document language models outperform language models that assume independence between sentences, and that using either a document or sentence language model outperforms comparable models that directly estimate the translation probability. We obtain the best-published results on the NIST Chinese--English translation task, a standard task for evaluating document translation. Our model also outperforms the benchmark Transformer model by approximately 2.5 BLEU on the WMT19 Chinese--English translation task.",
+    "authors": [
+        "Lei Yu",
+        "Laurent Sartran",
+        "Wojciech Stokowiec",
+        "Wang Ling",
+        "Lingpeng Kong",
+        "Phil Blunsom",
+        "Chris Dyer"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that Bayes' rule provides a compelling mechanism for controlling unconditional document language models, and that using either a document or sentence language model outperforms comparable models that directly estimate the translation probability."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

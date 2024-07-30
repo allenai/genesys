@@ -1,0 +1,27 @@
+{
+    "acronym": "2cdc532135d0aba7655b95690ab42f9f2b527066",
+    "title": "Contrastive Pre-training for Deep Session Data Understanding",
+    "seed_ids": [
+        "bert",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8"
+    ],
+    "s2id": "2cdc532135d0aba7655b95690ab42f9f2b527066",
+    "abstract": "Session data has been widely used for understanding user's behavior in e-commerce. Researchers are trying to leverage session data for different tasks, such as purchase intention prediction, remaining length prediction, recommendation, etc., as it provides context clues about the user's dynamic interests. However, online shopping session data is semi-structured and complex in nature, which contains both unstructured textual data about the products, search queries, and structured user action sequences. Most existing works focus on leveraging the coarse-grained item sequences for specific tasks, while largely ignore the fine-grained information from text and user action details. In this work, we delve into deep session data understanding via scrutinizing the various clues inside the rich information in user sessions. Specifically, we propose to pre-train a general-purpose User Behavior Model (UBM) over large-scale session data with rich details, such as product title, attributes and various kinds of user actions. A two-stage pre-training scheme is introduced to encourage the model to self-learn from various augmentations with contrastive learning objectives, which spans different granularity levels of session data. Then the well-trained session understanding model can be easily fine-tuned for various downstream tasks. Extensive experiments show that UBM better captures the complex intra-item semantic relations, inter-item connections and inter-interaction dependencies, leading to large performance gains as compared to the baselines on several downstream tasks. And it also demonstrates strong robustness when data is sparse.",
+    "authors": [
+        "Zixuan Li",
+        "Lizi Liao",
+        "Yunshan Ma",
+        "Tat-Seng Chua"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to pre-train a general-purpose User Behavior Model (UBM) over large-scale session data with rich details, such as product title, attributes and various kinds of user actions, leading to large performance gains as compared to the baselines on several downstream tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

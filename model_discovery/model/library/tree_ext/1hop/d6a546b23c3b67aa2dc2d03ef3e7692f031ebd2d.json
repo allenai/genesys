@@ -1,0 +1,33 @@
+{
+    "acronym": "d6a546b23c3b67aa2dc2d03ef3e7692f031ebd2d",
+    "title": "DsDm: Model-Aware Dataset Selection with Datamodels",
+    "seed_ids": [
+        "gpt3",
+        "1607ee857e7fd5bcd16581859f4049cd61fc909a",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d6a546b23c3b67aa2dc2d03ef3e7692f031ebd2d",
+    "abstract": "When selecting data for training large-scale models, standard practice is to filter for examples that match human notions of data quality. Such filtering yields qualitatively clean datapoints that intuitively should improve model behavior. However, in practice the opposite can often happen: we find that selecting according to similarity with\"high quality\"data sources may not increase (and can even hurt) performance compared to randomly selecting data. To develop better methods for selecting data, we start by framing dataset selection as an optimization problem that we can directly solve for: given target tasks, a learning algorithm, and candidate data, select the subset that maximizes model performance. This framework thus avoids handpicked notions of data quality, and instead models explicitly how the learning process uses train datapoints to predict on the target tasks. Our resulting method greatly improves language model (LM) performance on both pre-specified tasks and previously unseen tasks. Specifically, choosing target tasks representative of standard LM problems and evaluating on diverse held-out benchmarks, our selected datasets provide a 2x compute multiplier over baseline methods.",
+    "authors": [
+        "Logan Engstrom",
+        "Axel Feldmann",
+        "A. Madry"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This framework frames dataset selection as an optimization problem that the learning process uses train datapoints to predict on the target tasks, and instead models explicitly how the learning process uses train datapoints to predict on the target tasks."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

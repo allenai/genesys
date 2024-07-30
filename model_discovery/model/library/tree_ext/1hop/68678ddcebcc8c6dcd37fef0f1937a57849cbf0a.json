@@ -1,0 +1,28 @@
+{
+    "acronym": "68678ddcebcc8c6dcd37fef0f1937a57849cbf0a",
+    "title": "Boosting Prompt-Based Self-Training With Mapping-Free Automatic Verbalizer for Multi-Class Classification",
+    "seed_ids": [
+        "bert",
+        "da454295392cf4caaa39cc465734237ffe55392f",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "68678ddcebcc8c6dcd37fef0f1937a57849cbf0a",
+    "abstract": "Recently, prompt-based fine-tuning has garnered considerable interest as a core technique for few-shot text classification task. This approach reformulates the fine-tuning objective to align with the Masked Language Modeling (MLM) objective. Leveraging unlabeled data, prompt-based self-training has shown greater effectiveness in binary and three-class classification. However, prompt-based self-training for multi-class classification has not been adequately investigated, despite its significant applicability to real-world scenarios. Moreover, extending current methods to multi-class classification suffers from the verbalizer that extracts the predicted value of manually pre-defined single label word for each class from MLM predictions. Consequently, we introduce a novel, efficient verbalizer structure, named Mapping-free Automatic Verbalizer (MAV). Comprising two fully connected layers, MAV serves as a trainable verbalizer that automatically extracts the requisite word features for classification by capitalizing on all available information from MLM predictions. Experimental results on five multi-class classification datasets indicate MAV's superior self-training efficacy.",
+    "authors": [
+        "Yoo-Seok Kho",
+        "Jaehee Kim",
+        "Pilsung Kang"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a novel, efficient verbalizer structure, named Mapping-free Automatic Verbalizer (MAV), which serves as a trainable verbalizer that automatically extracts the requisite word features for classification by capitalizing on all available information from MLM predictions."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

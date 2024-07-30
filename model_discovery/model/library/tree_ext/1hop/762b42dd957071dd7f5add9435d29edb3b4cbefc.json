@@ -1,0 +1,35 @@
+{
+    "acronym": "762b42dd957071dd7f5add9435d29edb3b4cbefc",
+    "title": "Robust Classification via a Single Diffusion Model",
+    "seed_ids": [
+        "classfreediffu",
+        "c570475cab4c8d0662144c4d414c17e776d39409",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "762b42dd957071dd7f5add9435d29edb3b4cbefc",
+    "abstract": "Diffusion models have been applied to improve adversarial robustness of image classifiers by purifying the adversarial noises or generating realistic data for adversarial training. However, diffusion-based purification can be evaded by stronger adaptive attacks while adversarial training does not perform well under unseen threats, exhibiting inevitable limitations of these methods. To better harness the expressive power of diffusion models, this paper proposes Robust Diffusion Classifier (RDC), a generative classifier that is constructed from a pre-trained diffusion model to be adversarially robust. RDC first maximizes the data likelihood of a given input and then predicts the class probabilities of the optimized input using the conditional likelihood estimated by the diffusion model through Bayes' theorem. To further reduce the computational cost, we propose a new diffusion backbone called multi-head diffusion and develop efficient sampling strategies. As RDC does not require training on particular adversarial attacks, we demonstrate that it is more generalizable to defend against multiple unseen threats. In particular, RDC achieves $75.67\\%$ robust accuracy against various $\\ell_\\infty$ norm-bounded adaptive attacks with $\\epsilon_\\infty=8/255$ on CIFAR-10, surpassing the previous state-of-the-art adversarial training models by $+4.77\\%$. The results highlight the potential of generative classifiers by employing pre-trained diffusion models for adversarial robustness compared with the commonly studied discriminative classifiers. Code is available at \\url{https://github.com/huanranchen/DiffusionClassifier}.",
+    "authors": [
+        "Huanran Chen",
+        "Yinpeng Dong",
+        "Zhengyi Wang",
+        "X. Yang",
+        "Chen-Dong Duan",
+        "Hang Su",
+        "Jun Zhu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes Robust Diffusion Classifier (RDC), a generative classifier that is constructed from a pre-trained diffusion model to be adversarially robust, and highlights the potential of generative classifiers by employing pre-trained diffusion models for adversarial robustness compared with the commonly studied discriminative classifiers."
+    },
+    "citationCount": 19,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

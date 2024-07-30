@@ -1,0 +1,28 @@
+{
+    "acronym": "e6e7d253ace58185acc8b4d8962f7c7b75ab110b",
+    "title": "DiscoScore: Evaluating Text Generation with BERT and Discourse Coherence",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "2b01e6552cc929e1727fc145db82a252b3294c89"
+    ],
+    "s2id": "e6e7d253ace58185acc8b4d8962f7c7b75ab110b",
+    "abstract": "Recently, there has been a growing interest in designing text generation systems from a discourse coherence perspective, e.g., modeling the interdependence between sentences. Still, recent BERT-based evaluation metrics are weak in recognizing coherence, and thus are not reliable in a way to spot the discourse-level improvements of those text generation systems. In this work, we introduce DiscoScore, a parametrized discourse metric, which uses BERT to model discourse coherence from different perspectives, driven by Centering theory. Our experiments encompass 16 non-discourse and discourse metrics, including DiscoScore and popular coherence models, evaluated on summarization and document-level machine translation (MT). We find that (i) the majority of BERT-based metrics correlate much worse with human rated coherence than early discourse metrics, invented a decade ago; (ii) the recent state-of-the-art BARTScore is weak when operated at system level\u2014which is particularly problematic as systems are typically compared in this manner. DiscoScore, in contrast, achieves strong system-level correlation with human ratings, not only in coherence but also in factual consistency and other aspects, and surpasses BARTScore by over 10 correlation points on average. Further, aiming to understand DiscoScore, we provide justifications to the importance of discourse coherence for evaluation metrics, and explain the superiority of one variant over another. Our code is available at {url{https://github.com/AIPHES/DiscoScore}.",
+    "authors": [
+        "Wei Zhao",
+        "M. Strube",
+        "Steffen Eger"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DiscoScore is introduced, a parametrized discourse metric, which uses BERT to model discourse coherence from different perspectives, driven by Centering theory, and achieves strong system-level correlation with human ratings, not only in coherence but also in factual consistency and other aspects, and surpasses BARTScore by over 10 correlation points on average."
+    },
+    "citationCount": 24,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "89cb62dc83c1b1895267bd28639fbf5bb7ed21a4",
+    "title": "Measuring Systematic Generalization in Neural Proof Generation with Transformers",
+    "seed_ids": [
+        "memcompress",
+        "5cdab78acc4f3aab429a0dd41c3ec7e605d42e7b",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "e2587eddd57bc4ba286d91b27c185083f16f40ee",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "89cb62dc83c1b1895267bd28639fbf5bb7ed21a4",
+    "abstract": "We are interested in understanding how well Transformer language models (TLMs) can perform reasoning tasks when trained on knowledge encoded in the form of natural language. We investigate their systematic generalization abilities on a logical reasoning task in natural language, which involves reasoning over relationships between entities grounded in first-order logical proofs. Specifically, we perform soft theorem-proving by leveraging TLMs to generate natural language proofs. We test the generated proofs for logical consistency, along with the accuracy of the final inference. We observe length-generalization issues when evaluated on longer-than-trained sequences. However, we observe TLMs improve their generalization performance after being exposed to longer, exhaustive proofs. In addition, we discover that TLMs are able to generalize better using backward-chaining proofs compared to their forward-chaining counterparts, while they find it easier to generate forward chaining proofs. We observe that models that are not trained to generate proofs are better at generalizing to problems based on longer proofs. This suggests that Transformers have efficient internal reasoning strategies that are harder to interpret. These results highlight the systematic generalization behavior of TLMs in the context of logical reasoning, and we believe this work motivates deeper inspection of their underlying reasoning strategies.",
+    "authors": [
+        "Nicolas Gontier",
+        "Koustuv Sinha",
+        "Siva Reddy",
+        "C. Pal"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is observed that models that are not trained to generate proofs are better at generalizing to problems based on longer proofs, which suggests that Transformers have efficient internal reasoning strategies that are harder to interpret."
+    },
+    "citationCount": 59,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

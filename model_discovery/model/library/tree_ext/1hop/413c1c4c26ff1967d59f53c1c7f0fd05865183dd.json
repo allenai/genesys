@@ -1,0 +1,27 @@
+{
+    "acronym": "413c1c4c26ff1967d59f53c1c7f0fd05865183dd",
+    "title": "Affective Natural Language Generation of Event Descriptions through Fine-grained Appraisal Conditions",
+    "seed_ids": [
+        "gpt",
+        "gpt2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "413c1c4c26ff1967d59f53c1c7f0fd05865183dd",
+    "abstract": "Models for affective text generation have shown a remarkable progress, but they commonly rely only on basic emotion theories or valance/arousal values as conditions. This is appropriate when the goal is to create explicit emotion statements (\u201cThe kid is happy.\u201d). Emotions are, however, commonly communicated implicitly. For instance, the emotional interpretation of an event (\u201cTheir dog died.\u201d) does often not require an explicit emotion statement. In psychology, appraisal theories explain the link between a cognitive evaluation of an event and the potentially developed emotion. They put the assessment of the situation on the spot, for instance regarding the own control or the responsibility for what happens. We hypothesize and subsequently show that including appraisal variables as conditions in a generation framework comes with two advantages. (1) The generation model is informed in greater detail about what makes a specific emotion and what properties it has. This leads to text generation that better fulfills the condition. (2) The variables of appraisal allow a user to perform a more fine-grained control of the generated text, by stating properties of a situation instead of only providing the emotion category. Our Bart and T5-based experiments with 7 emotions (Anger, Disgust, Fear, Guilt, Joy, Sadness, Shame), and 7 appraisals (Attention, Responsibility, Control, Circumstance, Pleasantness, Effort, Certainty) show that (1) adding appraisals during training improves the accurateness of the generated texts by 10 pp in F1. Further, (2) the texts with appraisal variables are longer and contain more details. This exemplifies the greater control for users.",
+    "authors": [
+        "Yarik Menchaca Resendiz",
+        "Roman Klinger"
+    ],
+    "venue": "International Conference on Natural Language Generation",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is hypothesize and subsequently show that including appraisal variables as conditions in a generation framework comes with two advantages: (1) the generation model is informed in greater detail about what makes a specific emotion and what properties it has, which leads to text generation that better fulfills the condition."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,35 @@
+{
+    "acronym": "ad63a1e67eae4b404a40b820bfde8f869e9d23bf",
+    "title": "Towards Robust Speech Representation Learning for Thousands of Languages",
+    "seed_ids": [
+        "transformer",
+        "ac45bbf9940512d9d686cf8cd3a95969bc313570",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336"
+    ],
+    "s2id": "ad63a1e67eae4b404a40b820bfde8f869e9d23bf",
+    "abstract": "Self-supervised learning (SSL) has helped extend speech technologies to more languages by reducing the need for labeled data. However, models are still far from supporting the world's 7000+ languages. We propose XEUS, a Cross-lingual Encoder for Universal Speech, trained on over 1 million hours of data across 4057 languages, extending the language coverage of SSL models 4-fold. We combine 1 million hours of speech from existing publicly accessible corpora with a newly created corpus of 7400+ hours from 4057 languages, which will be publicly released. To handle the diverse conditions of multilingual speech data, we augment the typical SSL masked prediction approach with a novel dereverberation objective, increasing robustness. We evaluate XEUS on several benchmarks, and show that it consistently outperforms or achieves comparable results to state-of-the-art (SOTA) SSL models across a variety of tasks. XEUS sets a new SOTA on the ML-SUPERB benchmark: it outperforms MMS 1B and w2v-BERT 2.0 v2 by 0.8% and 4.4% respectively, despite having less parameters or pre-training data. Checkpoints, code, and data are found in https://www.wavlab.org/activities/2024/xeus/.",
+    "authors": [
+        "William Chen",
+        "Wangyou Zhang",
+        "Yifan Peng",
+        "Xinjian Li",
+        "Jinchuan Tian",
+        "Jiatong Shi",
+        "Xuankai Chang",
+        "Soumi Maiti",
+        "Karen Livescu",
+        "Shinji Watanabe"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "XEUS is proposed, a Cross-lingual Encoder for Universal Speech, trained on over 1 million hours of data across 4057 languages, extending the language coverage of SSL models 4-fold, and sets a new SOTA on the ML-SUPERB benchmark."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

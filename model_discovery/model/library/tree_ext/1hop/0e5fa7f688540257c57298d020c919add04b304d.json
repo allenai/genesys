@@ -1,0 +1,33 @@
+{
+    "acronym": "0e5fa7f688540257c57298d020c919add04b304d",
+    "title": "LookupFFN: Making Transformers Compute-lite for CPU inference",
+    "seed_ids": [
+        "nystromformer",
+        "ebd1619e5856084cfe60b40cc141a7f69d75b523",
+        "f10d9715c1b5e2f07ef5c32fa3231358bdda94b4",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "b745b5512ad3b1f652dc0cbb5ddf5a940f397f7d"
+    ],
+    "s2id": "0e5fa7f688540257c57298d020c919add04b304d",
+    "abstract": "While GPU clusters are the de facto choice for training large deep neural network (DNN) models today, several reasons including ease of workflow, security and cost have led to efforts investigating whether CPUs may be viable for inference in routine use in many sectors of the industry. But the imbalance between the compute capabilities of GPUs and CPUs is huge. Motivated by these considerations, we study a module which is a workhorse within modern DNN architectures, GEMM based Feed Forward Networks (FFNs), and assess the extent to which it can be made compute- (or FLOP-) lite. Specifically, we propose an alternative formulation (we call it LookupFFN) to GEMM based FFNs inspired by the recent studies of using Locality Sensitive Hashing (LSH) to approximate FFNs. Our formulation recasts most essential operations as a memory look-up, leveraging the trade-off between the two resources on any platform: compute and memory (since CPUs offer it in abundance). For RoBERTa language model pretraining, our formulation achieves similar performance compared to GEMM based FFNs, while dramatically reducing the required FLOP. Our development is complemented with a detailed hardware profiling of strategies that will maximize efficiency -- not just on contemporary hardware but on products that will be offered in the near/medium term future. Code is avaiable at \\url{https://github.com/mlpen/LookupFFN}.",
+    "authors": [
+        "Zhanpeng Zeng",
+        "Michael Davies",
+        "Pranav Pulijala",
+        "Karthikeyan Sankaralingam",
+        "Vikas Singh"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an alternative formulation to GEMM based FFNs inspired by the recent studies of using Locality Sensitive Hashing to approximate FFNs, and recasts most essential operations as a memory look-up, leveraging the trade-off between the two resources on any platform: compute and memory."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

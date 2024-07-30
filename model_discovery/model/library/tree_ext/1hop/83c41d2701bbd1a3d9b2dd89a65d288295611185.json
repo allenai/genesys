@@ -1,0 +1,32 @@
+{
+    "acronym": "83c41d2701bbd1a3d9b2dd89a65d288295611185",
+    "title": "Comparing Plausibility Estimates in Base and Instruction-Tuned Large Language Models",
+    "seed_ids": [
+        "gpt2",
+        "9cffc161896ce2b8d1a3083ab4f293bc166134ce",
+        "307d522c7bd7eafc21e67027b207ad9690243715",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "5a2263092f49540fd0e049050a96882ff29b00c3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "83c41d2701bbd1a3d9b2dd89a65d288295611185",
+    "abstract": "Instruction-tuned LLMs can respond to explicit queries formulated as prompts, which greatly facilitates interaction with human users. However, prompt-based approaches might not always be able to tap into the wealth of implicit knowledge acquired by LLMs during pre-training. This paper presents a comprehensive study of ways to evaluate semantic plausibility in LLMs. We compare base and instruction-tuned LLM performance on an English sentence plausibility task via (a) explicit prompting and (b) implicit estimation via direct readout of the probabilities models assign to strings. Experiment 1 shows that, across model architectures and plausibility datasets, (i) log likelihood ($\\textit{LL}$) scores are the most reliable indicator of sentence plausibility, with zero-shot prompting yielding inconsistent and typically poor results; (ii) $\\textit{LL}$-based performance is still inferior to human performance; (iii) instruction-tuned models have worse $\\textit{LL}$-based performance than base models. In Experiment 2, we show that $\\textit{LL}$ scores across models are modulated by context in the expected way, showing high performance on three metrics of context-sensitive plausibility and providing a direct match to explicit human plausibility judgments. Overall, $\\textit{LL}$ estimates remain a more reliable measure of plausibility in LLMs than direct prompting.",
+    "authors": [
+        "Carina Kauf",
+        "Emmanuele Chersoni",
+        "Alessandro Lenci",
+        "Evelina Fedorenko",
+        "Anna A. Ivanova"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a comprehensive study of ways to evaluate semantic plausibility in LLMs, showing that $\\textit{LL}$ estimates remain a more reliable measure of plausibility in LLMs than direct prompting."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "5fb0f16d1a661c3997d3ed3f71fc95f8b8161f1e",
+    "title": "How Important is Domain Specificity in Language Models and Instruction Finetuning for Biomedical Relation Extraction?",
+    "seed_ids": [
+        "bert",
+        "44279244407a64431810f982be6d0c7da4429dd7",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5fb0f16d1a661c3997d3ed3f71fc95f8b8161f1e",
+    "abstract": "Cutting edge techniques developed in the general NLP domain are often subsequently applied to the high-value, data-rich biomedical domain. The past few years have seen generative language models (LMs), instruction finetuning, and few-shot learning become foci of NLP research. As such, generative LMs pretrained on biomedical corpora have proliferated and biomedical instruction finetuning has been attempted as well, all with the hope that domain specificity improves performance on downstream tasks. Given the nontrivial effort in training such models, we investigate what, if any, benefits they have in the key biomedical NLP task of relation extraction. Specifically, we address two questions: (1) Do LMs trained on biomedical corpora outperform those trained on general domain corpora? (2) Do models instruction finetuned on biomedical datasets outperform those finetuned on assorted datasets or those simply pretrained? We tackle these questions using existing LMs, testing across four datasets. In a surprising result, general-domain models typically outperformed biomedical-domain models. However, biomedical instruction finetuning improved performance to a similar degree as general instruction finetuning, despite having orders of magnitude fewer instructions. Our findings suggest it may be more fruitful to focus research effort on larger-scale biomedical instruction finetuning of general LMs over building domain-specific biomedical LMs",
+    "authors": [
+        "Aviv Brokman",
+        "Ramakanth Kavuluru"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It may be more fruitful to focus research effort on larger-scale biomedical instruction finetuning of general LMs over building domain-specific biomedical LMs, as well as general-domain models typically outperformed biomedical-domain models."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

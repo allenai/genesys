@@ -1,0 +1,33 @@
+{
+    "acronym": "1391be13b2e9669f6b12b5fa6bb48d6ac37aa99d",
+    "title": "GateHUB: Gated History Unit with Background Suppression for Online Action Detection",
+    "seed_ids": [
+        "transformerxl",
+        "perceiverio",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "1391be13b2e9669f6b12b5fa6bb48d6ac37aa99d",
+    "abstract": "Online action detection is the task of predicting the action as soon as it happens in a streaming video. A major challenge is that the model does not have access to the future and has to solely rely on the history, i.e., the frames observed so far, to make predictions. It is therefore important to accentuate parts of the history that are more informative to the prediction of the current frame. We present GateHUB, Gated History Unit with Background Suppression, that comprises a novel position-guided gated cross attention mechanism to enhance or suppress parts of the history as per how informative they are for current frame prediction. GateHUB further proposes Future-augmented History (FaH) to make history features more informative by using subsequently observed frames when available. In a single unified framework, GateHUB integrates the transformer's ability of long-range temporal modeling and the recurrent model's capacity to selectively encode relevant information. GateHUB also introduces a background suppression objective to further mitigate false positive background frames that closely resemble the action frames. Extensive validation on three benchmark datasets, THUMOS, TVSeries, and HDD, demonstrates that GateHUB significantly outperforms all existing methods and is also more efficient than the existing best work. Furthermore, a flow free version of GateHUB is able to achieve higher or close accuracy at 2.8\u00d7 higher frame rate compared to all existing methods that require both RGB and optical flow information for prediction.",
+    "authors": [
+        "Junwen Chen",
+        "Gaurav Mittal",
+        "Ye Yu",
+        "Yu Kong",
+        "Mei Chen"
+    ],
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "GateHUB is presented, Gated History Unit with Background Suppression, that comprises a novel position-guided gated cross attention mechanism to enhance or suppress parts of the history as per how informative they are for current frame prediction."
+    },
+    "citationCount": 21,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

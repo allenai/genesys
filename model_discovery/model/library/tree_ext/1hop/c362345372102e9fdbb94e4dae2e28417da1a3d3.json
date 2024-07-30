@@ -1,0 +1,33 @@
+{
+    "acronym": "c362345372102e9fdbb94e4dae2e28417da1a3d3",
+    "title": "TextManiA: Enriching Visual Feature by Text-driven Manifold Augmentation",
+    "seed_ids": [
+        "gpt2",
+        "4d42fc9c9dbdeadc8772ba3a00ac9231bfbbe2fb",
+        "7f71875f8214dffa4f3276da123c4990a6d437cc",
+        "bc64190d42d9dc34077b6a096d9053bb88deaa3a",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "c362345372102e9fdbb94e4dae2e28417da1a3d3",
+    "abstract": "We propose TextManiA, a text-driven manifold augmentation method that semantically enriches visual feature spaces, regardless of class distribution. TextManiA augments visual data with intra-class semantic perturbation by exploiting easy-to-understand visually mimetic words, i.e., attributes. This work is built on an interesting hypothesis that general language models, e.g., BERT and GPT, encompass visual information to some extent, even without training on visual training data. Given the hypothesis, TextManiA transfers pre-trained text representation obtained from a well-established large language encoder to a target visual feature space being learned. Our extensive analysis hints that the language encoder indeed encompasses visual information at least useful to augment visual representation. Our experiments demonstrate that TextManiA is particularly powerful in scarce samples with class imbalance as well as even distribution. We also show compatibility with the label mix-based approaches in evenly distributed scarce data.",
+    "authors": [
+        "Moon Ye-Bin",
+        "Jisoo Kim",
+        "Hong-Kyu Kim",
+        "Kilho Son",
+        "Tae-Hyun Oh"
+    ],
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work is built on an interesting hypothesis that general language models, e.g., BERT and GPT, encompass visual information to some extent, even without training on visual training data, and suggests that the language encoder indeed encompasses visual information at least useful to augment visual representation."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

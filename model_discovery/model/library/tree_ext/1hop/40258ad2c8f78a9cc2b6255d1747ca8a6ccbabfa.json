@@ -1,0 +1,29 @@
+{
+    "acronym": "40258ad2c8f78a9cc2b6255d1747ca8a6ccbabfa",
+    "title": "LiteFormer: A Lightweight and Efficient Transformer for Rotating Machine Fault Diagnosis",
+    "seed_ids": [
+        "transformer",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "40258ad2c8f78a9cc2b6255d1747ca8a6ccbabfa",
+    "abstract": "Transformer has shown impressive performance on global feature modeling in many applications. However, two drawbacks induced by its intrinsic architecture limit its application, especially in fault diagnosis. First, the quadratic complexity of its self-attention scheme extremely increases the computation cost, which poses a challenge to apply Transformer to a computationally limited platform like an industry system. In addition, the sequence-based modeling in the Transformer increases the training difficulty and requires a large-scale training dataset. This drawback becomes serious when Transformer is applied in fault diagnosis where only limited data is available. To mitigate these issues, we rethink this common approach and propose a new Transformer, which is more suitable for fault diagnosis. In this article, we first show that the attention module can be actually replaced with or even surpassed by a convolution layer under some conditions in mathematics and experiments. Then, we adopt the convolutions into the Transformer, where the computation burden issue is alleviated and the fault classification accuracy is significantly improved. Furthermore, to increase the computation efficiency, a lightweight Transformer called LiteFormer, is developed by utilizing the depth-wise convolutional layer. Extensive experiments are carried out on four datasets: Case Western Reserve University dataset; Paderborn University dataset; and two gearbox datasets of drivetrain dynamic simulator. Through our experiments, our LiteFormer not only reduces the computation cost in model training, but also sets new state-of-the-art results, surpassing other counterparts in both fault classification accuracy and model robustness.",
+    "authors": [
+        "Wenjun Sun",
+        "Ruqiang Yan",
+        "Ruibing Jin",
+        "Jiawen Xu",
+        "Yuan Yang",
+        "Zhenghua Chen"
+    ],
+    "venue": "IEEE Transactions on Reliability",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This article shows that the attention module can be actually replaced with or even surpassed by a convolution layer under some conditions in mathematics and experiments and adopts the convolutions into the Transformer, where the computation burden issue is alleviated and the fault classification accuracy is significantly improved."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

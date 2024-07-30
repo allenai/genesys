@@ -1,0 +1,29 @@
+{
+    "acronym": "17752a46674b5a4a0dfaae09246c7a7f97490f38",
+    "title": "Argumentation Element Annotation Modeling using XLNet",
+    "seed_ids": [
+        "transformerxl",
+        "0a9b7f2ff0e25f4eecd946bae4ad2f8c2d53b562",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "d9f6ada77448664b71128bb19df15765336974a6"
+    ],
+    "s2id": "17752a46674b5a4a0dfaae09246c7a7f97490f38",
+    "abstract": "This study demonstrates the effectiveness of XLNet, a transformer-based language model, for annotating argumentative elements in persuasive essays. XLNet's architecture incorporates a recurrent mechanism that allows it to model long-term dependencies in lengthy texts. Fine-tuned XLNet models were applied to three datasets annotated with different schemes - a proprietary dataset using the Annotations for Revisions and Reflections on Writing (ARROW) scheme, the PERSUADE corpus, and the Argument Annotated Essays (AAE) dataset. The XLNet models achieved strong performance across all datasets, even surpassing human agreement levels in some cases. This shows XLNet capably handles diverse annotation schemes and lengthy essays. Comparisons between the model outputs on different datasets also revealed insights into the relationships between the annotation tags. Overall, XLNet's strong performance on modeling argumentative structures across diverse datasets highlights its suitability for providing automated feedback on essay organization.",
+    "authors": [
+        "Christopher M. Ormerod",
+        "Amy Burkhardt",
+        "Mackenzie Young",
+        "Susan Lottridge"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The effectiveness of XLNet, a transformer-based language model, for annotating argumentative elements in persuasive essays and its suitability for providing automated feedback on essay organization is demonstrated."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

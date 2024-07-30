@@ -1,0 +1,32 @@
+{
+    "acronym": "65b6753b4ce9036dbb81e4cc9899e895496717fb",
+    "title": "Factorizing Content and Budget Decisions in Abstractive Summarization of Long Documents",
+    "seed_ids": [
+        "bigbird",
+        "3d318019788418b21478e8736d03afadc1607690",
+        "c600b697700c844cbc85009be70f1cdfeef3593e",
+        "0a41cb292242a82b2b09b3bf23b48349b981a640",
+        "9dc624d7258d1a56117ca720aea953ce46b66b21",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "01b15017ac59b8d6f2ce3598c4a7d6358c211426",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "65b6753b4ce9036dbb81e4cc9899e895496717fb",
+    "abstract": "We argue that disentangling content selection from the budget used to cover salient content improves the performance and applicability of abstractive summarizers. Our method, FactorSum, does this disentanglement by factorizing summarization into two steps through an energy function: (1) generation of abstractive summary views covering salient information in subsets of the input document (document views); (2) combination of these views into a final summary, following a budget and content guidance. This guidance may come from different sources, including from an advisor model such as BART or BigBird, or in oracle mode \u2013 from the reference. This factorization achieves significantly higher ROUGE scores on multiple benchmarks for long document summarization, namely PubMed, arXiv, and GovReport. Most notably, our model is effective for domain adaptation. When trained only on PubMed samples, it achieves a 46.29 ROUGE-1 score on arXiv, outperforming PEGASUS trained in domain by a large margin. Our experimental results indicate that the performance gains are due to more flexible budget adaptation and processing of shorter contexts provided by partial document views.",
+    "authors": [
+        "Marcio Fonseca",
+        "Yftah Ziser",
+        "Shay B. Cohen"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "FactorSum, a method for factorizing summarization into two steps through an energy function, achieves significantly higher ROUGE scores on multiple benchmarks for long document summarization, namely PubMed, arXiv, and GovReport, and is effective for domain adaptation."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

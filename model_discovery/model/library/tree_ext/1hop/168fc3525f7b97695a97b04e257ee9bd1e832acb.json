@@ -1,0 +1,30 @@
+{
+    "acronym": "168fc3525f7b97695a97b04e257ee9bd1e832acb",
+    "title": "Memory Transformer",
+    "seed_ids": [
+        "transformerxl",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "baed71eed57ad462f3ab138d4b1700a738cd5414",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f51497f463566581874c941353dd9d80069c5b77"
+    ],
+    "s2id": "168fc3525f7b97695a97b04e257ee9bd1e832acb",
+    "abstract": "Transformer-based models have achieved state-of-the-art results in many natural language processing (NLP) tasks. The self-attention architecture allows us to combine information from all elements of a sequence into context-aware representations. However, all-to-all attention severely hurts the scaling of the model to large sequences. Another limitation is that information about the context is stored in the same element-wise representations. This makes the processing of properties related to the sequence as a whole more difficult. Adding trainable memory to selectively store local as well as global representations of a sequence is a promising direction to improve the Transformer model. Memory-augmented neural networks (MANNs) extend traditional neural architectures with general-purpose memory for representations. MANNs have demonstrated the capability to learn simple algorithms like Copy or Reverse and can be successfully trained via backpropagation on diverse tasks from question answering to language modeling outperforming RNNs and LSTMs of comparable complexity. In this work, we propose and study two extensions of the Transformer baseline (1) by adding memory tokens to store non-local representations, and (2) creating memory bottleneck for the global information. We evaluate these memory augmented Transformers on machine translation task and demonstrate that memory size positively correlates with the model performance. Attention patterns over the memory suggest that it improves the model's ability to process a global context. We expect that the application of Memory Transformer architectures to the tasks of language modeling, reading comprehension, and text summarization, as well as other NLP tasks that require the processing of long contexts will contribute to solving challenging problems of natural language understanding and generation.",
+    "authors": [
+        "M. Burtsev",
+        "Grigory V. Sapunov"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes and study two extensions of the Transformer baseline by adding memory tokens to store non-local representations, and creating memory bottleneck for the global information, and evaluates these memory augmented Transformers on machine translation task and demonstrates that memory size positively correlates with the model performance."
+    },
+    "citationCount": 44,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

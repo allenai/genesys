@@ -1,0 +1,27 @@
+{
+    "acronym": "8a36bde6c15a2dc06079a0fb41a4be35be4ef51b",
+    "title": "IndiVec: An Exploration of Leveraging Large Language Models for Media Bias Detection with Fine-Grained Bias Indicators",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "8a36bde6c15a2dc06079a0fb41a4be35be4ef51b",
+    "abstract": "This study focuses on media bias detection, crucial in today\u2019s era of influential social media platforms shaping individual attitudes and opinions. In contrast to prior work that primarily relies on training specific models tailored to particular datasets, resulting in limited adaptability and subpar performance on out-of-domain data, we introduce a general bias detection framework, IndiVec, built upon large language models. IndiVec begins by constructing a fine-grained media bias database, leveraging the robust instruction-following capabilities of large language models and vector database techniques. When confronted with new input for bias detection, our framework automatically selects the most relevant indicator from the vector database and employs majority voting to determine the input\u2019s bias label. IndiVec excels compared to previous methods due to its adaptability (demonstrating consistent performance across diverse datasets from various sources) and explainability (providing explicit top-k indicators to interpret bias predictions). Experimental results on four political bias datasets highlight IndiVec\u2019s significant superiority over baselines. Furthermore, additional experiments and analysis provide profound insights into the framework\u2019s effectiveness.",
+    "authors": [
+        "Luyang Lin",
+        "Lingzhi Wang",
+        "Xiaoyan Zhao",
+        "Jing Li",
+        "Kam-Fai Wong"
+    ],
+    "venue": "Findings",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "IndiVec excels compared to previous methods due to its adaptability and explainability (demonstrating consistent performance across diverse datasets from various sources) and explainability (providing explicit top-k indicators to interpret bias predictions)."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

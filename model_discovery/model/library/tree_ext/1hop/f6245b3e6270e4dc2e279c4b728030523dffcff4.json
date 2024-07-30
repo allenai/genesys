@@ -1,0 +1,28 @@
+{
+    "acronym": "f6245b3e6270e4dc2e279c4b728030523dffcff4",
+    "title": "LEGAL-BERT: \u201cPreparing the Muppets for Court\u2019\u201d",
+    "seed_ids": [
+        "neurallegal",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "f6245b3e6270e4dc2e279c4b728030523dffcff4",
+    "abstract": "BERT has achieved impressive performance in several NLP tasks. However, there has been limited investigation on its adaptation guidelines in specialised domains. Here we focus on the legal domain, where we explore several approaches for applying BERT models to downstream legal tasks, evaluating on multiple datasets. Our findings indicate that the previous guidelines for pre-training and fine-tuning, often blindly followed, do not always generalize well in the legal domain. Thus we propose a systematic investigation of the available strategies when applying BERT in specialised domains. These are: (a) use the original BERT out of the box, (b) adapt BERT by additional pre-training on domain-specific corpora, and (c) pre-train BERT from scratch on domain-specific corpora. We also propose a broader hyper-parameter search space when fine-tuning for downstream tasks and we release LEGAL-BERT, a family of BERT models intended to assist legal NLP research, computational law, and legal technology applications.",
+    "authors": [
+        "Ilias Chalkidis",
+        "Manos Fergadiotis",
+        "Prodromos Malakasiotis",
+        "Nikolaos Aletras",
+        "Ion Androutsopoulos"
+    ],
+    "venue": "Findings",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a broader hyper-parameter search space when fine-tuning for downstream tasks and releases LEGAL-BERT, a family of BERT models intended to assist legal NLP research, computational law, and legal technology applications."
+    },
+    "citationCount": 204,
+    "influentialCitationCount": 35,
+    "code": null,
+    "description": null,
+    "url": null
+}

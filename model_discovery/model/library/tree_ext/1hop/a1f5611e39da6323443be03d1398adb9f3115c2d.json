@@ -1,0 +1,27 @@
+{
+    "acronym": "a1f5611e39da6323443be03d1398adb9f3115c2d",
+    "title": "Are You Robert or RoBERTa? Deceiving Online Authorship Attribution Models Using Neural Text Generators",
+    "seed_ids": [
+        "gpt2",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a1f5611e39da6323443be03d1398adb9f3115c2d",
+    "abstract": "Recently, there has been a rise in the development of powerful pre-trained natural language models, including GPT-2, Grover, and XLM. These models have shown state-of-the-art capabilities towards a variety of different NLP tasks, including question answering, content summarisation, and text generation. Alongside this, there have been many studies focused on online authorship attribution (AA). That is, the use of trained models to identify the authors of online texts. Given the power of natural language models in generating convincing texts, this paper examines the degree to which these language models can generate texts capable of deceiving online AA models. Experimenting with both blog and Twitter data, we utilise GPT-2 language models to generate texts using the existing posts of online users. We then examine whether GPT-2-based text generators are capable of mimicking authorial style to such a degree that they can deceive typical AA models. From this, we find that current AI-based text generators are able to successfully mimic authorship, showing capabilities towards this on both datasets. Our findings, in turn, highlight the current capacity of powerful natural language models to generate original online posts capable of mimicking authorial style sufficiently to deceive popular AA methods. This is a key finding given the proposed role of AA in real-world applications such as spam-detection and the investigation of criminal activity online -- where deceptive texts could be automatically generated to mimic authorship in order to mislead these critical AA systems.",
+    "authors": [
+        "Keenan I. Jones",
+        "Jason R. C. Nurse",
+        "Shujun Li"
+    ],
+    "venue": "International Conference on Web and Social Media",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper examines the degree to which GPT-2 language models can generate texts capable of deceiving online AA models, and finds that current AI-based text generators are able to successfully mimic authorship."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

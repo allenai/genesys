@@ -1,0 +1,46 @@
+{
+    "acronym": "1bed8c7541381b1f79027c240b64c9276573fc3c",
+    "title": "Simplified and Generalized Masked Diffusion for Discrete Data",
+    "seed_ids": [
+        "d3pms",
+        "008bf3537ffac6fb160a0638c5e3d631a7501d7b",
+        "7b14cef8a08519d7ea33800d52aba8410f48a3f7",
+        "d9ffb44ee3c8ec0b6692df8a90451384c1edd89b",
+        "4319a5faceb0f94fc791e49dc0b94dd4d142f90e",
+        "1f898d66acabff511a3871b82799aa73c0055402",
+        "23b7cde603b5ec8d5d13d46e1c453dc52d7c3f6c",
+        "22775e58932cdfbd273a2a835a22c5d86800a458",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "e9b9a47cd81c66603c827f0f2bc4fba0d9ae77c4",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "7091030c831a81f5968285e91340b9fd5a107f6c",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "599bc7cfe98c2b57ddbe111412203a636da57be0",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1bed8c7541381b1f79027c240b64c9276573fc3c",
+    "abstract": "Masked (or absorbing) diffusion is actively explored as an alternative to autoregressive models for generative modeling of discrete data. However, existing work in this area has been hindered by unnecessarily complex model formulations and unclear relationships between different perspectives, leading to suboptimal parameterization, training objectives, and ad hoc adjustments to counteract these issues. In this work, we aim to provide a simple and general framework that unlocks the full potential of masked diffusion models. We show that the continuous-time variational objective of masked diffusion models is a simple weighted integral of cross-entropy losses. Our framework also enables training generalized masked diffusion models with state-dependent masking schedules. When evaluated by perplexity, our models trained on OpenWebText surpass prior diffusion language models at GPT-2 scale and demonstrate superior performance on 4 out of 5 zero-shot language modeling tasks. Furthermore, our models vastly outperform previous discrete diffusion models on pixel-level image modeling, achieving 2.78~(CIFAR-10) and 3.42 (ImageNet 64$\\times$64) bits per dimension that are comparable or better than autoregressive models of similar sizes.",
+    "authors": [
+        "Jiaxin Shi",
+        "Kehang Han",
+        "Zhe Wang",
+        "Arnaud Doucet",
+        "Michalis K. Titsias"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows that the continuous-time variational objective of masked diffusion models is a simple weighted integral of cross-entropy losses, and provides a simple and general framework that unlocks the full potential of masked diffusion models."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

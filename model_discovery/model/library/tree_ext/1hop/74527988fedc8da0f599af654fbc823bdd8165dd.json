@@ -1,0 +1,26 @@
+{
+    "acronym": "74527988fedc8da0f599af654fbc823bdd8165dd",
+    "title": "Optical Flow Estimation in 360$^\\circ$ Videos: Dataset, Model and Application",
+    "seed_ids": [
+        "perceiverio"
+    ],
+    "s2id": "74527988fedc8da0f599af654fbc823bdd8165dd",
+    "abstract": "Optical flow estimation has been a long-lasting and fundamental problem in the computer vision community. However, despite the advances of optical flow estimation in perspective videos, the 360$^\\circ$ videos counterpart remains in its infancy, primarily due to the shortage of benchmark datasets and the failure to accommodate the omnidirectional nature of 360$^\\circ$ videos. We propose the first perceptually realistic 360$^\\circ$ filed-of-view video benchmark dataset, namely FLOW360, with 40 different videos and 4,000 video frames. We then conduct comprehensive characteristic analysis and extensive comparisons with existing datasets, manifesting FLOW360's perceptual realism, uniqueness, and diversity. Moreover, we present a novel Siamese representation Learning framework for Omnidirectional Flow (SLOF) estimation, which is trained in a contrastive manner via a hybrid loss that combines siamese contrastive and optical flow losses. By training the model on random rotations of the input omnidirectional frames, our proposed contrastive scheme accommodates the omnidirectional nature of optical flow estimation in 360$^\\circ$ videos, resulting in significantly reduced prediction errors. The learning scheme is further proven to be efficient by expanding our siamese learning scheme and omnidirectional optical flow estimation to the egocentric activity recognition task, where the classification accuracy is boosted up to $\\sim$26%. To summarize, we study the optical flow estimation in 360$^\\circ$ videos problem from perspectives of the benchmark dataset, learning model, and also practical application. The FLOW360 dataset and code are available at https://siamlof.github.io.",
+    "authors": [
+        "Bin Duan",
+        "Keshav Bhandari",
+        "Gaowen Liu",
+        "Yan Yan"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel Siamese representation Learning framework for Omnidirectional Flow (SLOF) estimation, which is trained in a contrastive manner via a hybrid loss that combines siamese contrastive and optical flow losses, resulting in significantly reduced prediction errors."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

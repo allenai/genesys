@@ -1,0 +1,30 @@
+{
+    "acronym": "11e6396be09a4105aae830f433357290af864235",
+    "title": "Efficient Long Sequence Encoding via Synchronization",
+    "seed_ids": [
+        "etc",
+        "c828f4bf1a752700dd2c4a96fdd08ba938cda43d",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "11e6396be09a4105aae830f433357290af864235",
+    "abstract": "Pre-trained Transformer models have achieved successes in a wide range of NLP tasks, but are inefficient when dealing with long input sequences. Existing studies try to overcome this challenge via segmenting the long sequence followed by hierarchical encoding or post-hoc aggregation. We propose a synchronization mechanism for hierarchical encoding. Our approach first identifies anchor tokens across segments and groups them by their roles in the original input sequence. Then inside Transformer layer, anchor embeddings are synchronized within their group via a self-attention module. Our approach is a general framework with sufficient flexibility -- when adapted to a new task, it is easy to be enhanced with the task-specific anchor definitions. Experiments on two representative tasks with different types of long input texts, NarrativeQA summary setting and wild multi-hop reasoning from HotpotQA, demonstrate that our approach is able to improve the global information exchange among segments while maintaining efficiency.",
+    "authors": [
+        "Xiangyang Mou",
+        "Mo Yu",
+        "Bingsheng Yao",
+        "Lifu Huang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a synchronization mechanism for hierarchical encoding that identifies anchor tokens across segments and groups them by their roles in the original input sequence, and inside Transformer layer, anchor embeddings are synchronized within their group via a self-attention module."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

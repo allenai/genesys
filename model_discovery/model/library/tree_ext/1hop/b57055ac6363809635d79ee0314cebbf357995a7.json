@@ -1,0 +1,29 @@
+{
+    "acronym": "b57055ac6363809635d79ee0314cebbf357995a7",
+    "title": "Cross-modal credibility modelling for EEG-based multimodal emotion recognition",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "b57055ac6363809635d79ee0314cebbf357995a7",
+    "abstract": "Objective. The study of emotion recognition through electroencephalography (EEG) has garnered significant attention recently. Integrating EEG with other peripheral physiological signals may greatly enhance performance in emotion recognition. Nonetheless, existing approaches still suffer from two predominant challenges: modality heterogeneity, stemming from the diverse mechanisms across modalities, and fusion credibility, which arises when one or multiple modalities fail to provide highly credible signals. Approach. In this paper, we introduce a novel multimodal physiological signal fusion model that incorporates both intra-inter modality reconstruction and sequential pattern consistency, thereby ensuring a computable and credible EEG-based multimodal emotion recognition. For the modality heterogeneity issue, we first implement a local self-attention transformer to obtain intra-modal features for each respective modality. Subsequently, we devise a pairwise cross-attention transformer to reveal the inter-modal correlations among different modalities, thereby rendering different modalities compatible and diminishing the heterogeneity concern. For the fusion credibility issue, we introduce the concept of sequential pattern consistency to measure whether different modalities evolve in a consistent way. Specifically, we propose to measure the varying trends of different modalities, and compute the inter-modality consistency scores to ascertain fusion credibility. Main results. We conduct extensive experiments on two benchmarked datasets (DEAP and MAHNOB-HCI) with the subject-dependent paradigm. For the DEAP dataset, our method improves the accuracy by 4.58%, and the F1 score by 0.63%, compared to the state-of-the-art baseline. Similarly, for the MAHNOB-HCI dataset, our method improves the accuracy by 3.97%, and the F1 score by 4.21%. In addition, we gain much insight into the proposed framework through significance test, ablation experiments, confusion matrices and hyperparameter analysis. Consequently, we demonstrate the effectiveness of the proposed credibility modelling through statistical analysis and carefully designed experiments. Significance. All experimental results demonstrate the effectiveness of our proposed architecture and indicate that credibility modelling is essential for multimodal emotion recognition.",
+    "authors": [
+        "Yuzhe Zhang",
+        "Huan Liu",
+        "Di Wang",
+        "Dalin Zhang",
+        "Tianyu Lou",
+        "Qinghua Zheng",
+        "Chai Quek"
+    ],
+    "venue": "Journal of Neural Engineering",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel multimodal physiological signal fusion model that incorporates both intra-inter modality reconstruction and sequential pattern consistency is introduced, thereby ensuring a computable and credible EEG-based multimodal emotion recognition and indicates that credibility modelling is essential for multimodal emotion recognition."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

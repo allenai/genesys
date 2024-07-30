@@ -1,0 +1,32 @@
+{
+    "acronym": "b210cd21ffd5e7d82daa838a844e56e35d26fe74",
+    "title": "PICK: Polished & Informed Candidate Scoring for Knowledge-Grounded Dialogue Systems",
+    "seed_ids": [
+        "gpt2",
+        "f8292d4ddf7a6dfe240eeaa9685f5d18eed9a3f6",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "ba2a423d8c7ae6cfa3424fb13bdbe3a35e5f2273",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b210cd21ffd5e7d82daa838a844e56e35d26fe74",
+    "abstract": "Grounding dialogue response generation on external knowledge is proposed to produce informative and engaging responses. However, current knowledge-grounded dialogue (KGD) systems often fail to align the generated responses with human-preferred qualities due to several issues like hallucination and the lack of coherence. Upon analyzing multiple language model generations, we observe the presence of alternative generated responses within a single decoding process. These alternative responses are more faithful and exhibit a comparable or higher level of relevance to prior conversational turns compared to the optimal responses prioritized by the decoding processes. To address these challenges and driven by these observations, we propose Polished \\&Informed Candidate Scoring (PICK), a generation re-scoring framework that empowers models to generate faithful and relevant responses without requiring additional labeled data or model tuning. Through comprehensive automatic and human evaluations, we demonstrate the effectiveness of PICK in generating responses that are more faithful while keeping them relevant to the dialogue history. Furthermore, PICK consistently improves the system's performance with both oracle and retrieved knowledge in all decoding strategies. We provide the detailed implementation in https://github.com/bryanwilie/pick .",
+    "authors": [
+        "Bryan Wilie",
+        "Yan Xu",
+        "Willy Chung",
+        "Samuel Cahyawijaya",
+        "Holy Lovenia",
+        "Pascale Fung"
+    ],
+    "venue": "International Joint Conference on Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Polished \\&Informed Candidate Scoring (PICK), a generation re-scoring framework that empowers models to generate faithful and relevant responses without requiring additional labeled data or model tuning, is proposed."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

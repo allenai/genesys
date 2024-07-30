@@ -1,0 +1,28 @@
+{
+    "acronym": "909b06df0e0db0ea64b6f87c12d38627be721ef6",
+    "title": "Aligning a medium-size GPT model in English to a small closed domain in Spanish using reinforcement learning",
+    "seed_ids": [
+        "gpt2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "909b06df0e0db0ea64b6f87c12d38627be721ef6",
+    "abstract": "In this paper, we propose a methodology to align a medium-sized GPT model, originally trained in English for an open domain, to a small closed domain in Spanish. The application for which the model is finely tuned is the question answering task. To achieve this we also needed to train and implement another neural network (which we called the reward model) that could score and determine whether an answer is appropriate for a given question. This component served to improve the decoding and generation of the answers of the system. Numerical metrics such as BLEU and perplexity were used to evaluate the model, and human judgment was also used to compare the decoding technique with others. Finally, the results favored the proposed method, and it was determined that it is feasible to use a reward model to align the generation of responses.",
+    "authors": [
+        "Oscar R. Navarrete-Parra",
+        "V\u00edctor Uc Cetina",
+        "Jorge Reyes-Maga\u00f1a"
+    ],
+    "venue": "Proces. del Leng. Natural",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a methodology to align a medium-sized GPT model, originally trained in English for an open domain, to a small closed domain in Spanish and determines that it is feasible to use a reward model to align the generation of responses."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

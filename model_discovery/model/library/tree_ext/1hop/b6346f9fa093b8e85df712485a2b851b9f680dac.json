@@ -1,0 +1,48 @@
+{
+    "acronym": "b6346f9fa093b8e85df712485a2b851b9f680dac",
+    "title": "LongLoRA: Efficient Fine-tuning of Long-Context Large Language Models",
+    "seed_ids": [
+        "blockbert",
+        "sparsetransformer",
+        "pi",
+        "compressivetransformer",
+        "73290ecbec2f38d1d647ddef1ada69cee41725b3",
+        "b31a5884a8ebe96b6300839b28608b97f8f8ef76",
+        "b069c32fcd77160f944ab3ba71ab6f0cfb782c68",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "60b35c6d68acced19b0c66edcfc0ee0a2c11efed",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "0e802c0739771acf70e60d59c2df51cd7e8c50c0",
+        "90b21dbad8969b74d704eed15a3d98722a88e464",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "e3aa232577bb427b1f3a34acbdef84bd85734042",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "b6346f9fa093b8e85df712485a2b851b9f680dac",
+    "abstract": "We present LongLoRA, an efficient fine-tuning approach that extends the context sizes of pre-trained large language models (LLMs), with limited computation cost. Typically, training LLMs with long context sizes is computationally expensive, requiring extensive training hours and GPU resources. For example, training on the context length of 8192 needs 16x computational costs in self-attention layers as that of 2048. In this paper, we speed up the context extension of LLMs in two aspects. On the one hand, although dense global attention is needed during inference, fine-tuning the model can be effectively and efficiently done by sparse local attention. The proposed shifted sparse attention effectively enables context extension, leading to non-trivial computation saving with similar performance to fine-tuning with vanilla attention. Particularly, it can be implemented with only two lines of code in training, while being optional in inference. On the other hand, we revisit the parameter-efficient fine-tuning regime for context expansion. Notably, we find that LoRA for context extension works well under the premise of trainable embedding and normalization. LongLoRA combines this improved LoRA with S^2-Attn. LongLoRA demonstrates strong empirical results on various tasks on Llama2 models from 7B/13B to 70B. LongLoRA extends Llama2 7B from 4k context to 100k, or Llama2 70B to 32k on a single 8x A100 machine. LongLoRA extends models' context while retaining their original architectures, and is compatible with most existing techniques, like Flash-Attention2. In addition, we further conduct supervised fine-tuning with LongLoRA and our long instruction-following LongAlpaca dataset.",
+    "authors": [
+        "Yukang Chen",
+        "Shengju Qian",
+        "Haotian Tang",
+        "Xin Lai",
+        "Zhijian Liu",
+        "Song Han",
+        "Jiaya Jia"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "LongLoRA is presented, an efficient fine-tuning approach that extends the context sizes of pre-trained large language models (LLMs), with limited computation cost, and is compatible with most existing techniques, like Flash-Attention2."
+    },
+    "citationCount": 70,
+    "influentialCitationCount": 13,
+    "code": null,
+    "description": null,
+    "url": null
+}

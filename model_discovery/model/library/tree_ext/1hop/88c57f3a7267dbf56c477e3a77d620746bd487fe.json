@@ -1,0 +1,30 @@
+{
+    "acronym": "88c57f3a7267dbf56c477e3a77d620746bd487fe",
+    "title": "Farzi Data: Autoregressive Data Distillation",
+    "seed_ids": [
+        "gpt",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8"
+    ],
+    "s2id": "88c57f3a7267dbf56c477e3a77d620746bd487fe",
+    "abstract": "We study data distillation for auto-regressive machine learning tasks, where the input and output have a strict left-to-right causal structure. More specifically, we propose Farzi, which summarizes an event sequence dataset into a small number of synthetic sequences -- Farzi Data -- which are optimized to maintain (if not improve) model performance compared to training on the full dataset. Under the hood, Farzi conducts memory-efficient data distillation by (i) deriving efficient reverse-mode differentiation of the Adam optimizer by leveraging Hessian-Vector Products; and (ii) factorizing the high-dimensional discrete event-space into a latent-space which provably promotes implicit regularization. Empirically, for sequential recommendation and language modeling tasks, we are able to achieve 98-120% of downstream full-data performance when training state-of-the-art models on Farzi Data of size as little as 0.1% of the original dataset. Notably, being able to train better models with significantly less data sheds light on the design of future large auto-regressive models, and opens up new opportunities to further scale up model and data sizes.",
+    "authors": [
+        "Noveen Sachdeva",
+        "Zexue He",
+        "Wang-Cheng Kang",
+        "Jianmo Ni",
+        "D. Cheng",
+        "Julian J. McAuley"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Farzi is proposed, which summarizes an event sequence dataset into a small number of synthetic sequences -- Farzi Data -- which are optimized to maintain (if not improve) model performance compared to training on the full dataset."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

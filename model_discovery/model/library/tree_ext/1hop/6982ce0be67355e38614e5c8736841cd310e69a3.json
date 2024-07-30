@@ -1,0 +1,27 @@
+{
+    "acronym": "6982ce0be67355e38614e5c8736841cd310e69a3",
+    "title": "Minimizing PLM-Based Few-Shot Intent Detectors",
+    "seed_ids": [
+        "bert",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "e4f82c0a13cae6739239ae0c25a554b6daff35af"
+    ],
+    "s2id": "6982ce0be67355e38614e5c8736841cd310e69a3",
+    "abstract": "Recent research has demonstrated the feasibility of training efficient intent detectors based on pre-trained language model~(PLM) with limited labeled data. However, deploying these detectors in resource-constrained environments such as mobile devices poses challenges due to their large sizes. In this work, we aim to address this issue by exploring techniques to minimize the size of PLM-based intent detectors trained with few-shot data. Specifically, we utilize large language models (LLMs) for data augmentation, employ a cutting-edge model compression method for knowledge distillation, and devise a vocabulary pruning mechanism called V-Prune. Through these approaches, we successfully achieve a compression ratio of 21 in model memory usage, including both Transformer and the vocabulary, while maintaining almost identical performance levels on four real-world benchmarks.",
+    "authors": [
+        "Haode Zhang",
+        "Xiao-Ming Wu",
+        "A. Lam"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work utilizes large language models (LLMs) for data augmentation, employs a cutting-edge model compression method for knowledge distillation, and devise a vocabulary pruning mechanism called V-Prune to minimize the size of PLM-based intent detectors trained with few-shot data."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

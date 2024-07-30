@@ -1,0 +1,32 @@
+{
+    "acronym": "585501ecddaf0bc3a607990d8c7b0eef203ac2ba",
+    "title": "Alignment is Key for Applying Diffusion Models to Retrosynthesis",
+    "seed_ids": [
+        "d3pms",
+        "7e243fd3fc349ff9fc7c3011543823645ac25ed6",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "1df0f782b0d2264c455ba3a4332c26dbc014f2ee",
+        "599bc7cfe98c2b57ddbe111412203a636da57be0"
+    ],
+    "s2id": "585501ecddaf0bc3a607990d8c7b0eef203ac2ba",
+    "abstract": "Retrosynthesis, the task of identifying precursors for a given molecule, can be naturally framed as a conditional graph generation task. Diffusion models are a particularly promising modelling approach, enabling post-hoc conditioning and trading off quality for speed during generation. We show mathematically that permutation equivariant denoisers severely limit the expressiveness of graph diffusion models and thus their adaptation to retrosynthesis. To address this limitation, we relax the equivariance requirement such that it only applies to aligned permutations of the conditioning and the generated graphs obtained through atom mapping. Our new denoiser achieves the highest top-$1$ accuracy ($54.7$\\%) across template-free and template-based methods on USPTO-50k. We also demonstrate the ability for flexible post-training conditioning and good sample quality with small diffusion step counts, highlighting the potential for interactive applications and additional controls for multi-step planning.",
+    "authors": [
+        "Najwa Laabid",
+        "Severi Rissanen",
+        "Markus Heinonen",
+        "Arno Solin",
+        "Vikas Garg"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows mathematically that permutation equivariant denoisers severely limit the expressiveness of graph diffusion models and thus their adaptation to retrosynthesis, and relaxes the equivariance requirement such that it only applies to aligned permutations of the conditioning and the generated graphs obtained through atom mapping."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

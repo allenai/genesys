@@ -1,0 +1,26 @@
+{
+    "acronym": "85ea80dced297ebcb42e541c16c1024c0098d478",
+    "title": "FakeStack: Hierarchical Tri-BERT-CNN-LSTM stacked model for effective fake news detection",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "85ea80dced297ebcb42e541c16c1024c0098d478",
+    "abstract": "False news articles pose a serious challenge in today\u2019s information landscape, impacting public opinion and decision-making. Efforts to counter this issue have led to research in deep learning and machine learning methods. However, a gap exists in effectively using contextual cues and skip connections within models, limiting the development of comprehensive detection systems that harness contextual information and vital data propagation. Thus, we propose a model of deep learning, FakeStack, in order to identify bogus news accurately. The model combines the power of pre-trained Bidirectional Encoder Representation of Transformers (BERT) embeddings with a deep Convolutional Neural Network (CNN) having skip convolution block and Long Short-Term Memory (LSTM). The model has been trained and tested on English fake news dataset, and various performance metrics were employed to assess its effectiveness. The results showcase the exceptional performance of FakeStack, achieving an accuracy of 99.74%, precision of 99.67%, recall of 99.80%, and F1-score of 99.74%. Our model\u2019s performance was extended to two additional datasets. For the LIAR dataset, our accuracy reached 75.58%, while the WELFake dataset showcased an impressive accuracy of 98.25%. Comparative analysis with other baseline models, including CNN, BERT-CNN, and BERT-LSTM, further highlights the superiority of FakeStack, surpassing all models evaluated. This study underscores the potential of advanced techniques in combating the spread of false news and ensuring the dissemination of reliable information.",
+    "authors": [
+        "Ashfia Jannat Keya",
+        "Hasibul Hossain Shajeeb",
+        "Md Saifur Rahman",
+        "M. F. Mridha"
+    ],
+    "venue": "PLoS ONE",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This model combines the power of pre-trained Bidirectional Encoder Representation of Transformers embeddings with a deep Convolutional Neural Network having skip convolution block and Long Short-Term Memory to identify bogus news accurately."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

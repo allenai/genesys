@@ -1,0 +1,28 @@
+{
+    "acronym": "2f8f7aac687886705c05bdf82e23036a1cc121c8",
+    "title": "Edinburgh\u2019s End-to-End Multilingual Speech Translation System for IWSLT 2021",
+    "seed_ids": [
+        "rela",
+        "a7721b6523971394a8bd4bfda139122ef59b22cd",
+        "c2f36f14419565a0fed3032b7f1d1811daf6702e",
+        "4cf963e5fd88825ac62ad6cce364447e5d2dfb2b",
+        "d9f1eed347959149f27002485a7fe339604fe45d"
+    ],
+    "s2id": "2f8f7aac687886705c05bdf82e23036a1cc121c8",
+    "abstract": "This paper describes Edinburgh\u2019s submissions to the IWSLT2021 multilingual speech translation (ST) task. We aim at improving multilingual translation and zero-shot performance in the constrained setting (without using any extra training data) through methods that encourage transfer learning and larger capacity modeling with advanced neural components. We build our end-to-end multilingual ST model based on Transformer, integrating techniques including adaptive speech feature selection, language-specific modeling, multi-task learning, deep and big Transformer, sparsified linear attention and root mean square layer normalization. We adopt data augmentation using machine translation models for ST which converts the zero-shot problem into a zero-resource one. Experimental results show that these methods deliver substantial improvements, surpassing the official baseline by > 15 average BLEU and outperforming our cascading system by > 2 average BLEU. Our final submission achieves competitive performance (runner up).",
+    "authors": [
+        "Biao Zhang",
+        "Rico Sennrich"
+    ],
+    "venue": "International Workshop on Spoken Language Translation",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Edinburgh's submissions to the IWSLT2021 multilingual speech translation (ST) task are described, with Edinburgh's end-to-end multilingual ST model based on Transformer built, integrating techniques including adaptive speech feature selection, language-specific modeling, multi-task learning, deep and big Transformer, sparsified linear attention and root mean square layer normalization."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

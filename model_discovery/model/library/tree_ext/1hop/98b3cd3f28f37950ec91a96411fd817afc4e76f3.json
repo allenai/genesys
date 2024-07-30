@@ -1,0 +1,23 @@
+{
+    "acronym": "98b3cd3f28f37950ec91a96411fd817afc4e76f3",
+    "title": "ICLR 2020 Concatenated Nodes Features GraphSAGE Sparse Representation Adjacency Matrix Node Feature : Ops Type Output Shape Input Ops Aggregator 1 Aggregator 2 Segment 1 Segment 2 Transformer",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "98b3cd3f28f37950ec91a96411fd817afc4e76f3",
+    "abstract": "Runtime and scalability of large neural networks can be significantly affected by the placement of operations in their dataflow graphs on suitable devices. With increasingly complex neural network architectures and heterogeneous device characteristics, finding a reasonable placement is extremely challenging even for domain experts. Most existing automated device placement approaches are impractical due to the significant amount of compute required and their inability to generalize to new, previously held-out graphs. To address both limitations, we propose an efficient end-to-end method based on a scalable sequential attention mechanism over a graph neural network that is transferable to new graphs. On a diverse set of representative deep learning models, including Inception-v3, AmoebaNet, Transformer-XL, and WaveNet, our method on average achieves 16% improvement over human experts and 9.2% improvement over the prior art with 15\u00d7 faster convergence. To further reduce the computation cost, we pre-train the policy network on a set of dataflow graphs and use a superposition network to fine-tune it on each individual graph, achieving state-of-the-art performance on large hold-out graphs with over 50k nodes, such as an 8-layer GNMT.",
+    "authors": [
+        "Dataflow Graphs"
+    ],
+    "venue": "",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an efficient end-to-end method based on a scalable sequential attention mechanism over a graph neural network that is transferable to new graphs that achieves state-of-the-art performance on large hold-out graphs with over 50k nodes, such as an 8-layer GNMT."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

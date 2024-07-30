@@ -1,0 +1,26 @@
+{
+    "acronym": "45761806a2dddecf7796e63557c2795a61e64401",
+    "title": "A unified information-theoretic model of EEG signatures of human language processing",
+    "seed_ids": [
+        "gpt2",
+        "ea0ea0da2e774bc0b73c4470de6cbd1fc979b265",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "45761806a2dddecf7796e63557c2795a61e64401",
+    "abstract": "We advance an information-theoretic model of human language processing in the brain, in which incoming linguistic input is processed at two levels, in terms of a heuristic interpretation and in terms of error correction. We propose that these two kinds of information processing have distinct electroencephalographic signatures, corresponding to the well-documented N400 and P600 components of language-related event-related potentials (ERPs). Formally, we show that the information content (surprisal) of a word in context can be decomposed into two quantities: (A) heuristic surprise, which signals processing difficulty of word given its inferred context, and corresponds with the N400 signal; and (B) discrepancy signal, which reflects divergence between the true context and the inferred context, and corresponds to the P600 signal. Both of these quantities can be estimated using modern NLP techniques. We validate our theory by successfully simulating ERP patterns elicited by a variety of linguistic manipulations in previously-reported experimental data from Ryskin et al. (2021). Our theory is in principle compatible with traditional cognitive theories assuming a `good-enough' heuristic interpretation stage, but with precise information-theoretic formulation.",
+    "authors": [
+        "Jiaxuan Li",
+        "Richard Futrell"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the information content (surprisal) of a word in context can be decomposed into two quantities: heuristic surprise, which signals processing difficulty of word given its inferred context, and corresponds with the N400 signal; and discrepancy signal, which reflects divergence between the true context and the inferred context and corresponds to the P600 signal."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

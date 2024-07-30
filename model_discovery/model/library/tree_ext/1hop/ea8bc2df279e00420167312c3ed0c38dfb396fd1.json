@@ -1,0 +1,32 @@
+{
+    "acronym": "ea8bc2df279e00420167312c3ed0c38dfb396fd1",
+    "title": "Removing Undesirable Concepts in Text-to-Image Diffusion Models with Learnable Prompts",
+    "seed_ids": [
+        "transformer",
+        "e342165a614588878ad0f4bc9bacf3905df34d08",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "ea8bc2df279e00420167312c3ed0c38dfb396fd1",
+    "abstract": "Diffusion models have shown remarkable capability in generating visually impressive content from textual descriptions. However, these models are trained on vast internet data, much of which contains undesirable elements such as sensitive content, copyrighted material, and unethical or harmful concepts. Therefore, beyond generating high-quality content, it is crucial to ensure these models do not propagate these undesirable elements. To address this issue, we propose a novel method to remove undesirable concepts from text-to-image diffusion models by incorporating a learnable prompt into the cross-attention module. This learnable prompt acts as additional memory, capturing the knowledge of undesirable concepts and reducing their dependency on the model parameters and corresponding textual inputs. By transferring this knowledge to the prompt, erasing undesirable concepts becomes more stable and has minimal negative impact on other concepts. We demonstrate the effectiveness of our method on the Stable Diffusion model, showcasing its superiority over state-of-the-art erasure methods in removing undesirable content while preserving unrelated elements.",
+    "authors": [
+        "Anh-Vu Bui",
+        "Khanh Doan",
+        "Trung Le",
+        "Paul Montague",
+        "Tamas Abraham",
+        "Dinh Q. Phung"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel method to remove undesirable concepts from text-to-image diffusion models by incorporating a learnable prompt into the cross-attention module and demonstrating its superiority over state-of-the-art erasure methods in removing undesirable content while preserving unrelated elements."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

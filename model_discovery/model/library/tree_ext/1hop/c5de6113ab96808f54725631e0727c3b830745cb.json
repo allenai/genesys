@@ -1,0 +1,28 @@
+{
+    "acronym": "c5de6113ab96808f54725631e0727c3b830745cb",
+    "title": "TIDMAD: Time Series Dataset for Discovering Dark Matter with AI Denoising",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "c5de6113ab96808f54725631e0727c3b830745cb",
+    "abstract": "Dark matter makes up approximately 85% of total matter in our universe, yet it has never been directly observed in any laboratory on Earth. The origin of dark matter is one of the most important questions in contemporary physics, and a convincing detection of dark matter would be a Nobel-Prize-level breakthrough in fundamental science. The ABRACADABRA experiment was specifically designed to search for dark matter. Although it has not yet made a discovery, ABRACADABRA has produced several dark matter search results widely endorsed by the physics community. The experiment generates ultra-long time-series data at a rate of 10 million samples per second, where the dark matter signal would manifest itself as a sinusoidal oscillation mode within the ultra-long time series. In this paper, we present the TIDMAD -- a comprehensive data release from the ABRACADABRA experiment including three key components: an ultra-long time series dataset divided into training, validation, and science subsets; a carefully-designed denoising score for direct model benchmarking; and a complete analysis framework which produces a community-standard dark matter search result suitable for publication as a physics paper. This data release enables core AI algorithms to extract the signal and produce real physics results thereby advancing fundamental science. The data downloading and associated analysis scripts are available at https://github.com/jessicafry/TIDMAD",
+    "authors": [
+        "J. T. Fry",
+        "Aobo Li",
+        "Lindley Winslow",
+        "Xinyi Hope Fu",
+        "Zhenghao Fu",
+        "K. M. W. Pappas"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The TIDMAD -- a comprehensive data release from the ABRACADABRA experiment including three key components: an ultra-long time series dataset divided into training, validation, and science subsets; a carefully-designed denoising score for direct model benchmarking; and a complete analysis framework which produces a community-standard dark matter search result suitable for publication as a physics paper."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

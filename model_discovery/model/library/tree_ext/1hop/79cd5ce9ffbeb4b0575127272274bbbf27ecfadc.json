@@ -1,0 +1,30 @@
+{
+    "acronym": "79cd5ce9ffbeb4b0575127272274bbbf27ecfadc",
+    "title": "Tell, Don't Show!: Language Guidance Eases Transfer Across Domains in Images and Videos",
+    "seed_ids": [
+        "gpt2",
+        "3238761b4e0b3afdb1655cd996285adeebbdd7af",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "79cd5ce9ffbeb4b0575127272274bbbf27ecfadc",
+    "abstract": "We introduce LaGTran, a novel framework that utilizes text supervision to guide robust transfer of discriminative knowledge from labeled source to unlabeled target data with domain gaps. While unsupervised adaptation methods have been established to address this problem, they show limitations in handling challenging domain shifts due to their exclusive operation within the pixel-space. Motivated by our observation that semantically richer text modality has more favorable transfer properties, we devise a transfer mechanism to use a source-trained text-classifier to generate predictions on the target text descriptions, and utilize these predictions as supervision for the corresponding images. Our approach driven by language guidance is surprisingly easy and simple, yet significantly outperforms all prior approaches on challenging datasets like GeoNet and DomainNet, validating its extreme effectiveness. To further extend the scope of our study beyond images, we introduce a new benchmark called Ego2Exo to study ego-exo transfer in videos and find that our language-aided approach LaGTran yields significant gains in this highly challenging and non-trivial transfer setting. Code, models, and proposed datasets are publicly available at https://tarun005.github.io/lagtran/.",
+    "authors": [
+        "Tarun Kalluri",
+        "Bodhisattwa Prasad Majumder",
+        "Manmohan Chandraker"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "LaGTran is introduced, a novel framework that utilizes text supervision to guide robust transfer of discriminative knowledge from labeled source to unlabeled target data with domain gaps and significantly outperforms all prior approaches on challenging datasets like GeoNet and DomainNet, validating its extreme effectiveness."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

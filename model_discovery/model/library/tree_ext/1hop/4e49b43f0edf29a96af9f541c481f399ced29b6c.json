@@ -1,0 +1,28 @@
+{
+    "acronym": "4e49b43f0edf29a96af9f541c481f399ced29b6c",
+    "title": "Diffusion Models for Counterfactual Generation and Anomaly Detection in Brain Images",
+    "seed_ids": [
+        "classfreediffu",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "4e49b43f0edf29a96af9f541c481f399ced29b6c",
+    "abstract": "Segmentation masks of pathological areas are useful in many medical applications, such as brain tumour and stroke management. Moreover, healthy counterfactuals of diseased images can be used to enhance radiologists' training files and to improve the interpretability of segmentation models. In this work, we present a weakly supervised method to generate a healthy version of a diseased image and then use it to obtain a pixel-wise anomaly map. To do so, we start by considering a saliency map that approximately covers the pathological areas, obtained with ACAT. Then, we propose a technique that allows to perform targeted modifications to these regions, while preserving the rest of the image. In particular, we employ a diffusion model trained on healthy samples and combine Denoising Diffusion Probabilistic Model (DDPM) and Denoising Diffusion Implicit Model (DDIM) at each step of the sampling process. DDPM is used to modify the areas affected by a lesion within the saliency map, while DDIM guarantees reconstruction of the normal anatomy outside of it. The two parts are also fused at each timestep, to guarantee the generation of a sample with a coherent appearance and a seamless transition between edited and unedited parts. We verify that when our method is applied to healthy samples, the input images are reconstructed without significant modifications. We compare our approach with alternative weakly supervised methods on IST-3 for stroke lesion segmentation and on BraTS2021 for brain tumour segmentation, where we improve the DICE score of the best competing method from $0.6534$ to $0.7056$.",
+    "authors": [
+        "A. Fontanella",
+        "Grant Mair",
+        "Joanna M. Wardlaw",
+        "E. Trucco",
+        "A. Storkey"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a weakly supervised method to generate a healthy version of a diseased image and then uses it to obtain a pixel-wise anomaly map and compares it with alternativeWeakly supervised methods on IST-3 for stroke lesion segmentation and on BraTS2021 for brain tumour segmentation."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

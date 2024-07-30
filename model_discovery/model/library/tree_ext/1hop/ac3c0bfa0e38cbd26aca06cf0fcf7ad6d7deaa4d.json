@@ -1,0 +1,29 @@
+{
+    "acronym": "ac3c0bfa0e38cbd26aca06cf0fcf7ad6d7deaa4d",
+    "title": "Neural Differential Equations for Learning to Program Neural Nets Through Continuous Learning Rules",
+    "seed_ids": [
+        "deltanet",
+        "lineartransformer",
+        "86589b6286ef3c55b8b4fccfb41a3b30b7afdf61",
+        "1a703f08da01cf737cce3fb9064259b3f4b44e9c",
+        "6f68e1bb253925d8431588555d3010419f322e04"
+    ],
+    "s2id": "ac3c0bfa0e38cbd26aca06cf0fcf7ad6d7deaa4d",
+    "abstract": "Neural ordinary differential equations (ODEs) have attracted much attention as continuous-time counterparts of deep residual neural networks (NNs), and numerous extensions for recurrent NNs have been proposed. Since the 1980s, ODEs have also been used to derive theoretical results for NN learning rules, e.g., the famous connection between Oja's rule and principal component analysis. Such rules are typically expressed as additive iterative update processes which have straightforward ODE counterparts. Here we introduce a novel combination of learning rules and Neural ODEs to build continuous-time sequence processing nets that learn to manipulate short-term memory in rapidly changing synaptic connections of other nets. This yields continuous-time counterparts of Fast Weight Programmers and linear Transformers. Our novel models outperform the best existing Neural Controlled Differential Equation based models on various time series classification tasks, while also addressing their fundamental scalability limitations. Our code is public.",
+    "authors": [
+        "Kazuki Irie",
+        "Francesco Faccio",
+        "J. Schmidhuber"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a novel combination of learning rules and Neural ODEs to build continuous-time sequence processing nets that learn to manipulate short-term memory in rapidly changing synaptic connections of other nets."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

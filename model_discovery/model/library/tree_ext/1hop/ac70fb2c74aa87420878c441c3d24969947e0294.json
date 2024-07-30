@@ -1,0 +1,34 @@
+{
+    "acronym": "ac70fb2c74aa87420878c441c3d24969947e0294",
+    "title": "Artificial Neural Network Language Models Predict Human Brain Responses to Language Even After a Developmentally Realistic Amount of Training",
+    "seed_ids": [
+        "gpt2",
+        "c0b52e2eb308d1b823af3582956d246e47899be5",
+        "34a833ed550b82952417f5449e1ede2cc2ec279d",
+        "eaee0b647d336c6fc8b844812675ec35cddf14a1",
+        "23e04389f8728a5736382d3662341a1a2a25e171",
+        "356645552f8f40adf5a99b4e3a69f47699399010",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ac70fb2c74aa87420878c441c3d24969947e0294",
+    "abstract": "Artificial neural networks have emerged as computationally plausible models of human language processing. A major criticism of these models is that the amount of training data they receive far exceeds that of humans during language learning. Here, we use two complementary approaches to ask how the models\u2019 ability to capture human fMRI responses to sentences is affected by the amount of training data. First, we evaluate GPT-2 models trained on 1 million, 10 million, 100 million, or 1 billion words against an fMRI benchmark. We consider the 100-million-word model to be developmentally plausible in terms of the amount of training data given that this amount is similar to what children are estimated to be exposed to during the first 10 years of life. Second, we test the performance of a GPT-2 model trained on a 9-billion-token dataset to reach state-of-the-art next-word prediction performance on the human benchmark at different stages during training. Across both approaches, we find that (i) the models trained on a developmentally plausible amount of data already achieve near-maximal performance in capturing fMRI responses to sentences. Further, (ii) lower perplexity\u2014a measure of next-word prediction performance\u2014is associated with stronger alignment with human data, suggesting that models that have received enough training to achieve sufficiently high next-word prediction performance also acquire representations of sentences that are predictive of human fMRI responses. In tandem, these findings establish that although some training is necessary for the models\u2019 predictive ability, a developmentally realistic amount of training (\u223c100 million words) may suffice.",
+    "authors": [
+        "Eghbal A. Hosseini",
+        "Martin Schrimpf",
+        "Yian Zhang",
+        "Samuel R. Bowman",
+        "Noga Zaslavsky",
+        "Evelina Fedorenko"
+    ],
+    "venue": "bioRxiv",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is established that although some training is necessary for the models\u2019 predictive ability, a developmentally realistic amount of training may suffice and lower perplexity\u2014a measure of next-word prediction performance\u2014is associated with stronger alignment with human data, suggesting that models that have received enough training to achieve sufficiently high next- word prediction performance also acquire representations of sentences that are predictive of human fMRI responses."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

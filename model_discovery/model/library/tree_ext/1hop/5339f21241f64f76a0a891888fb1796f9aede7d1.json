@@ -1,0 +1,29 @@
+{
+    "acronym": "5339f21241f64f76a0a891888fb1796f9aede7d1",
+    "title": "Arrows of Time for Large Language Models",
+    "seed_ids": [
+        "gpt",
+        "gpt2",
+        "a77b69be7727f61b61d02bd0e03209c830267c0b",
+        "130277ff64c7171c90d98d7e73f4bda8a0b0c1f9",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5339f21241f64f76a0a891888fb1796f9aede7d1",
+    "abstract": "We study the probabilistic modeling performed by Autoregressive Large Language Models (LLMs) through the angle of time directionality, addressing a question first raised in (Shannon, 1951). For large enough models, we empirically find a time asymmetry in their ability to learn natural language: a difference in the average log-perplexity when trying to predict the next token versus when trying to predict the previous one. This difference is at the same time subtle and very consistent across various modalities (language, model size, training time, ...). Theoretically, this is surprising: from an information-theoretic point of view, there should be no such difference. We provide a theoretical framework to explain how such an asymmetry can appear from sparsity and computational complexity considerations, and outline a number of perspectives opened by our results.",
+    "authors": [
+        "Vassilis Papadopoulos",
+        "J'er'emie Wenger",
+        "Cl'ement Hongler"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A theoretical framework is provided to explain how an asymmetry in the ability to learn natural language can appear from sparsity and computational complexity considerations, and a number of perspectives opened by the results are outlined."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

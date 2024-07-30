@@ -1,0 +1,31 @@
+{
+    "acronym": "d0f108b8f5fcfb81e4354b498f3f8491740ece7e",
+    "title": "COMET-M: Reasoning about Multiple Events in Complex Sentences",
+    "seed_ids": [
+        "gpt",
+        "f78fe02f681a0a9a6867b007bd39e3884de64a91",
+        "2797f8c0398af676612698f2ccc1723a8692f271",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "f48ae425e2567be2d993efcaaf74c2274fc9d7c5",
+        "6ff68b34a5f78bdd14437fe5a79aebbc42c26467"
+    ],
+    "s2id": "d0f108b8f5fcfb81e4354b498f3f8491740ece7e",
+    "abstract": "Understanding the speaker's intended meaning often involves drawing commonsense inferences to reason about what is not stated explicitly. In multi-event sentences, it requires understanding the relationships between events based on contextual knowledge. We propose COMET-M (Multi-Event), an event-centric commonsense model capable of generating commonsense inferences for a target event within a complex sentence. COMET-M builds upon COMET (Bosselut et al., 2019), which excels at generating event-centric inferences for simple sentences, but struggles with the complexity of multi-event sentences prevalent in natural text. To overcome this limitation, we curate a multi-event inference dataset of 35K human-written inferences. We trained COMET-M on the human-written inferences and also created baselines using automatically labeled examples. Experimental results demonstrate the significant performance improvement of COMET-M over COMET in generating multi-event inferences. Moreover, COMET-M successfully produces distinct inferences for each target event, taking the complete context into consideration. COMET-M holds promise for downstream tasks involving natural text such as coreference resolution, dialogue, and story understanding.",
+    "authors": [
+        "Sahithya Ravi",
+        "R. Ng",
+        "Vered Shwartz"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ComET-M (Multi-Event), an event-centric commonsense model capable of generating commonsense inferences for a target event within a complex sentence, is proposed and holds promise for downstream tasks involving natural text such as coreference resolution, dialogue, and story understanding."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

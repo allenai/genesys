@@ -1,0 +1,29 @@
+{
+    "acronym": "f5da2cc2f1651ac728883658ac1ddde4f0b40709",
+    "title": "Input Transformation for Pre-Trained-Model-Based Cross-Language Code Search",
+    "seed_ids": [
+        "gpt3",
+        "4b27f18bff43d605805c92696a979714ced0b805",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "f5da2cc2f1651ac728883658ac1ddde4f0b40709",
+    "abstract": "Cross-language code-to-code search has great po-tential to boost software development and software mainte-nance. However, performing this task is nontrivial since it requires to accurately understand the semantics of code written in different programming languages. To address this challenge, a natural idea is to leverage the power of pretrained language models trained on diverse languages and have shown great potential in producing high-quality representations for code across different languages. A dominating way of utilizing pretrained models is to directly use code token sequences as the inputs, due to their Transformer-based architectures. Nonetheless, beyond the lexical information, code snippets inherently contain rich semantic information, which may not be adequately captured through the token sequence. To overcome this limitation, we propose an input transformation approach that, given a code snippet, can generate a sequence with semantic information as the input to the pretrained model, which enables us to effectively obtain the representations of the code. Our key insight is that code snippets in different languages that implement the identical functionality, although may differ significantly with respect to the token sequences or the syntactic structures, could share certain similarities regarding to their Program Dependency Graphs (PDGs). Therefore, instead of directly using the token sequence, we propose to first build the semantic graph that can model the semantics of code in different languages based on the data flow and control flow information by optimizing the PDGs. After that, a graph to sequence transformation module is designed and the final transformation result can be obtained. Finally, the contrastive learning is exploited to fine-tune the model. Our large-scale evaluation results show that our method can achieve promising effectiveness because it consistently outperforms the state-of-the-art C4 approach by at least 6% with respect to the Mean Reciprocal Rank (MRR) value, under six different settings.",
+    "authors": [
+        "Mingyang Geng",
+        "Dezun Dong",
+        "Pingjing Lu"
+    ],
+    "venue": "IEEE International Conference on Software Quality, Reliability and Security Companion",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an input transformation approach that, given a code snippet, can generate a sequence with semantic information as the input to the pretrained model, which enables us to effectively obtain the representations of the code."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

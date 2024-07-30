@@ -1,0 +1,50 @@
+{
+    "acronym": "bdd07688083de2fc792a48ba935cd33256066827",
+    "title": "LongEmbed: Extending Embedding Models for Long Context Retrieval",
+    "seed_ids": [
+        "selfextend",
+        "pcw",
+        "b842b83a7ff5dff8e3b83915d8c15423b6085728",
+        "f016f079ee63a0487756f895c1d93ff0110d3ecd",
+        "cf7ab5df804575bad88a9fcf0fbf7707bf500944",
+        "2330035c7586a0dc0b1f09e9c00106b295acf543",
+        "c9603ec967879c24973b5bd48861df2e5555932e",
+        "26e13e1da4f47c93c9ad0daf9cc9e2bb4ffd063d",
+        "0595dac8260443365dfbe4821787419736baaa66",
+        "2b8439f319dfa73df62ca8957ff6d0c1f3c7a73c",
+        "a9468d8bfa6bd016dfd3128c4e8408e30eb8549b",
+        "e22ae34ea102a781d0494e115639e8d081bf6920",
+        "5fc1a3a49e8f1d106118b69d1d6be3b6caa23da0",
+        "5e0cb1c4b91a7486e1c2b15a44a0be56bd74bdc0",
+        "73290ecbec2f38d1d647ddef1ada69cee41725b3",
+        "b31a5884a8ebe96b6300839b28608b97f8f8ef76",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "80980cd10d19f021c14a6b7eee871b6a5d328024",
+        "af385c0fdd0eda2bbf429bea6fedffc327c8a180",
+        "60b35c6d68acced19b0c66edcfc0ee0a2c11efed",
+        "980e55d9226cac302d0fae7732da4e67b8bc952c",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "bdd07688083de2fc792a48ba935cd33256066827",
+    "abstract": "Embedding models play a pivot role in modern NLP applications such as IR and RAG. While the context limit of LLMs has been pushed beyond 1 million tokens, embedding models are still confined to a narrow context window not exceeding 8k tokens, refrained from application scenarios requiring long inputs such as legal contracts. This paper explores context window extension of existing embedding models, pushing the limit to 32k without requiring additional training. First, we examine the performance of current embedding models for long context retrieval on our newly constructed LongEmbed benchmark. LongEmbed comprises two synthetic tasks and four carefully chosen real-world tasks, featuring documents of varying length and dispersed target information. Benchmarking results underscore huge room for improvement in these models. Based on this, comprehensive experiments show that training-free context window extension strategies like position interpolation can effectively extend the context window of existing embedding models by several folds, regardless of their original context being 512 or beyond 4k. Furthermore, for models employing absolute position encoding (APE), we show the possibility of further fine-tuning to harvest notable performance gains while strictly preserving original behavior for short inputs. For models using rotary position embedding (RoPE), significant enhancements are observed when employing RoPE-specific methods, such as NTK and SelfExtend, indicating RoPE's superiority over APE for context window extension. To facilitate future research, we release E5-Base-4k and E5-RoPE-Base, along with the LongEmbed benchmark.",
+    "authors": [
+        "Dawei Zhu",
+        "Liang Wang",
+        "Nan Yang",
+        "Yifan Song",
+        "Wenhao Wu",
+        "Furu Wei",
+        "Sujian Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Comprehensive experiments show that training-free context window extension strategies like position interpolation can effectively extend the context window of existing embedding models by several folds, regardless of their original context being 512 or beyond 4k."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

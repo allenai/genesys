@@ -1,0 +1,30 @@
+{
+    "acronym": "b52844a746dafd8a5051cef49abbbda64a312605",
+    "title": "When Shift Operation Meets Vision Transformer: An Extremely Simple Alternative to Attention Mechanism",
+    "seed_ids": [
+        "gmlp",
+        "f75cddf2d42ed01b34686704eb3504becef67442",
+        "71363797140647ebb3f540584de0a8758d2f7aa2",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "b52844a746dafd8a5051cef49abbbda64a312605",
+    "abstract": "Attention mechanism has been widely believed as the key to success of vision transformers (ViTs), since it provides a flexible and powerful way to model spatial relationships. However, is the attention mechanism truly an indispensable part of ViT? Can it be replaced by some other alternatives? To demystify the role of attention mechanism, we simplify it into an extremely simple case: ZERO FLOP and ZERO parameter. Concretely, we revisit the shift operation. It does not contain any parameter or arithmetic calculation. The only operation is to exchange a small portion of the channels between neighboring features. Based on this simple operation, we construct a new backbone network, namely ShiftViT, where the attention layers in ViT are substituted by shift operations. Surprisingly, ShiftViT works quite well in several mainstream tasks, e.g., classification, detection, and segmentation. The performance is on par with or even better than the strong baseline Swin Transformer. These results suggest that the attention mechanism might not be the vital factor that makes ViT successful. It can be even replaced by a zero-parameter operation. We should pay more attentions to the remaining parts of ViT in the future work. Code is available at github.com/microsoft/SPACH.",
+    "authors": [
+        "Guangting Wang",
+        "Yucheng Zhao",
+        "Chuanxin Tang",
+        "Chong Luo",
+        "Wenjun Zeng"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The role of attention mechanism is simplified into an extremely simple case: ZERO FLOP and ZERO parameter, and a new backbone network is constructed, namely ShiftViT, where the attention layers in ViT are substituted by shift operations."
+    },
+    "citationCount": 48,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,24 @@
+{
+    "acronym": "152b0e91306db50ff574a58de07b202b4a510aa8",
+    "title": "Topological properties of basins of attraction and expressiveness of width bounded neural networks",
+    "seed_ids": [
+        "hopfield"
+    ],
+    "s2id": "152b0e91306db50ff574a58de07b202b4a510aa8",
+    "abstract": "In Radhakrishnan et al. [2020], the authors empirically show that autoencoders trained with usual SGD methods shape out basins of attraction around their training data. We consider network functions of width not exceeding the input dimension and prove that in this situation basins of attraction are bounded and their complement cannot have bounded components. Our conditions in these results are met in several experiments of the latter work and we thus address a question posed therein. We also show that under some more restrictive conditions the basins of attraction are path-connected. The tightness of the conditions in our results is demonstrated by means of several examples. Finally, the arguments used to prove the above results allow us to derive a root cause why scalar-valued neural network functions that fulfill our bounded width condition are not dense in spaces of continuous functions.",
+    "authors": [
+        "H. Beise",
+        "S. Cruz"
+    ],
+    "venue": "",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The arguments used to prove the above results allow us to derive a root cause why scalar-valued neural network functions that fulfill the bounded width condition are not dense in spaces of continuous functions."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

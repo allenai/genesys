@@ -1,0 +1,41 @@
+{
+    "acronym": "13f10195d2a24fea28c0ea57cbd393aa76256c26",
+    "title": "What Dense Graph Do You Need for Self-Attention?",
+    "seed_ids": [
+        "bigbird",
+        "longformer",
+        "sparsetransformer",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "90b21dbad8969b74d704eed15a3d98722a88e464",
+        "dbf53ece1a6a8860e41ff5f721c72ceb0fb18dd6",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "4badd753be64c5c5b57dd2bb2e515fbe0c0720d8",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "2a31319e73d4486716168b65cdf7559baeda18ce"
+    ],
+    "s2id": "13f10195d2a24fea28c0ea57cbd393aa76256c26",
+    "abstract": "Transformers have made progress in miscellaneous tasks, but suffer from quadratic computational and memory complexities. Recent works propose sparse Transformers with attention on sparse graphs to reduce complexity and remain strong performance. While effective, the crucial parts of how dense a graph needs to be to perform well are not fully explored. In this paper, we propose Normalized Information Payload (NIP), a graph scoring function measuring information transfer on graph, which provides an analysis tool for trade-offs between performance and complexity. Guided by this theoretical analysis, we present Hypercube Transformer, a sparse Transformer that models token interactions in a hypercube and shows comparable or even better results with vanilla Transformer while yielding $O(N\\log N)$ complexity with sequence length $N$. Experiments on tasks requiring various sequence lengths lay validation for our graph function well.",
+    "authors": [
+        "Yuxing Wang",
+        "Chu-Tak Lee",
+        "Qipeng Guo",
+        "Zhangyue Yin",
+        "Yunhua Zhou",
+        "Xuanjing Huang",
+        "Xipeng Qiu"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Hypercube Transformer is presented, a sparse Transformer that models token interactions in a hypercube and shows comparable or even better results with vanilla Transformer while yielding O(N\\log N)$ complexity with sequence length $N$."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "59eccbe007ccf92172499db8420c12ea0933e24b",
+    "title": "Explicitly Modeled Attention Maps for Image Classification",
+    "seed_ids": [
+        "gpt",
+        "16c844fd4d97f3c6eb38b0d6527c87d184efedc3",
+        "0a6a6f8f1a76ce48ff52af27d4928eeed5d082a3"
+    ],
+    "s2id": "59eccbe007ccf92172499db8420c12ea0933e24b",
+    "abstract": "Self-attention networks have shown remarkable progress in computer vision tasks\nsuch as image classification. The main benefit of the self-attention mechanism is\nthe ability to capture long-range feature interactions in attention-maps. However,\nthe computation of attention-maps requires a learnable key, query, and positional\nencoding, whose usage is often not intuitive and computationally expensive. To\nmitigate this problem, we propose a novel self-attention module with explicitly\nmodeled attention-maps using only a single learnable parameter for low computational overhead. The design of explicitly modeled attention-maps using geometric prior is based on the observation that the spatial context for a given pixel within an image is mostly dominated by its neighbors, while more distant pixels have a minor contribution. Concretely, the attention-maps are parametrized via simple functions (e.g., Gaussian kernel) with a learnable radius, which is modeled independently of the input content. Our evaluation shows that our method achieves an accuracy improvement of up to 2.2% over the ResNet-baselines in ImageNet ILSVRC and outperforms other self-attention methods such as AA-ResNet152 in accuracy by 0.9% with 6.4% fewer parameters and 6.7% fewer GFLOPs. This result empirically indicates the value of incorporating geometric prior into self-attention mechanism when applied in image classification.",
+    "authors": [
+        "Andong Tan",
+        "D. Nguyen",
+        "Maximilian Dax",
+        "M. Nie\u00dfner",
+        "T. Brox"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel self-attention module with explicitly modeled attention-maps using only a single learnable parameter for low computational overhead and achieves an accuracy improvement over the ResNet-baselines in ImageNet ILSVRC."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

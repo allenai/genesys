@@ -1,0 +1,53 @@
+{
+    "acronym": "0a6906bd6f026d3da3031c641ed03081bd0b574e",
+    "title": "Full Stack Optimization of Transformer Inference: a Survey",
+    "seed_ids": [
+        "gpt2",
+        "512ff5037b28be7415d318ae6e8eeb0abb8c7013",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "17a8bd6a5763f6607863348ce1757ac2ad3417fd",
+        "13270b9759cf0296b5a346fbb58b706e8ad0a982",
+        "cbff35378657225ece138c33e6a23afb3b46b41f",
+        "dd1139cfc609c2f3263d02e97176d5275caebc0a",
+        "b97c3c370401dc34d2adbeb24f34de5180a14be6",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "5af69480a7ae3b571df6782a11ec4437b386a7d9",
+        "ef8d788a904ed66bd8e30ffa69bc3ea1fe57dda7",
+        "8af925f4edf45131b5b6fed8aa655089d58692fa",
+        "2573af4e13d9a5dddb257d22cd38a600528d9a8b",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "16c844fd4d97f3c6eb38b0d6527c87d184efedc3",
+        "7d2a78a1f713b71c3a337247d042c5c2f0b2da84",
+        "42b65c3871ef550cc6d8e9668ef6646aa1db975c",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0a6906bd6f026d3da3031c641ed03081bd0b574e",
+    "abstract": "Recent advances in state-of-the-art DNN architecture design have been moving toward Transformer models. These models achieve superior accuracy across a wide range of applications. This trend has been consistent over the past several years since Transformer models were originally introduced. However, the amount of compute and bandwidth required for inference of recent Transformer models is growing at a significant rate, and this has made their deployment in latency-sensitive applications challenging. As such, there has been an increased focus on making Transformer models more efficient, with methods that range from changing the architecture design, all the way to developing dedicated domain-specific accelerators. In this work, we survey different approaches for efficient Transformer inference, including: (i) analysis and profiling of the bottlenecks in existing Transformer architectures and their similarities and differences with previous convolutional models; (ii) implications of Transformer architecture on hardware, including the impact of non-linear operations such as Layer Normalization, Softmax, and GELU, as well as linear operations, on hardware design; (iii) approaches for optimizing a fixed Transformer architecture; (iv) challenges in finding the right mapping and scheduling of operations for Transformer models; and (v) approaches for optimizing Transformer models by adapting the architecture using neural architecture search. Finally, we perform a case study by applying the surveyed optimizations on Gemmini, the open-source, full-stack DNN accelerator generator, and we show how each of these approaches can yield improvements, compared to previous benchmark results on Gemmini. Among other things, we find that a full-stack co-design approach with the aforementioned methods can result in up to 88.7x speedup with a minimal performance degradation for Transformer inference.",
+    "authors": [
+        "Sehoon Kim",
+        "Coleman Hooper",
+        "Thanakul Wattanawong",
+        "Minwoo Kang",
+        "Ruohan Yan",
+        "Hasan Gen\u00e7",
+        "Grace Dinh",
+        "Qijing Huang",
+        "K. Keutzer",
+        "Michael W. Mahoney",
+        "Y. Shao",
+        "A. Gholami"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work surveys different approaches for efficient Transformer inference, and finds that a full-stack co-design approach with the aforementioned methods can result in up to 88.7x speedup with a minimal performance degradation for Trans transformer inference."
+    },
+    "citationCount": 58,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,47 @@
+{
+    "acronym": "9fdf392c20b4aa9e756e07e9acb10e14f7379418",
+    "title": "Never Miss A Beat: An Efficient Recipe for Context Window Extension of Large Language Models with Consistent \"Middle\" Enhancement",
+    "seed_ids": [
+        "pi",
+        "yarn",
+        "pose",
+        "93765da00ae8f14bb7675b95fc55a8a57fff091f",
+        "61e113406312785f8471e53dc28da7377ab6ced4",
+        "3fd5bc3077d04965eaa3498372c39bbdd09d55e4",
+        "c9603ec967879c24973b5bd48861df2e5555932e",
+        "9da427202cc48370fd66359f5d72ff5ff3bc8b57",
+        "0595dac8260443365dfbe4821787419736baaa66",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "5e0cb1c4b91a7486e1c2b15a44a0be56bd74bdc0",
+        "73290ecbec2f38d1d647ddef1ada69cee41725b3",
+        "b31a5884a8ebe96b6300839b28608b97f8f8ef76",
+        "2dfb9171e180dcb0af23d305e024d43d311708ab",
+        "b069c32fcd77160f944ab3ba71ab6f0cfb782c68",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "6f6e2e0311589a9af045f6acd00b7dee6d19fce4",
+        "af385c0fdd0eda2bbf429bea6fedffc327c8a180",
+        "60b35c6d68acced19b0c66edcfc0ee0a2c11efed",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "9dc624d7258d1a56117ca720aea953ce46b66b21",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "e3aa232577bb427b1f3a34acbdef84bd85734042"
+    ],
+    "s2id": "9fdf392c20b4aa9e756e07e9acb10e14f7379418",
+    "abstract": "Recently, many methods have been developed to extend the context length of pre-trained large language models (LLMs), but they often require fine-tuning at the target length ($\\gg4K$) and struggle to effectively utilize information from the middle part of the context. To address these issues, we propose $\\textbf{C}$ontinuity-$\\textbf{R}$elativity ind$\\textbf{E}$xing with g$\\textbf{A}$ussian $\\textbf{M}$iddle (CREAM), which interpolates positional encodings by manipulating position indices. Apart from being simple, CREAM is training-efficient: it only requires fine-tuning at the pre-trained context window (eg, Llama 2-4K) and can extend LLMs to a much longer target context length (eg, 256K). To ensure that the model focuses more on the information in the middle, we introduce a truncated Gaussian to encourage sampling from the middle part of the context during fine-tuning, thus alleviating the ``Lost-in-the-Middle'' problem faced by long-context LLMs. Experimental results show that CREAM successfully extends LLMs to the target length for both Base and Chat versions of $\\texttt{Llama2-7B}$ with ``Never Miss A Beat''. Our code will be publicly available soon.",
+    "authors": [
+        "Tong Wu",
+        "Yanpeng Zhao",
+        "Zilong Zheng"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A truncated Gaussian is introduced to encourage sampling from the middle part of the context during fine-tuning, thus alleviating the ``Lost-in-the-Middle'' problem faced by long-context LLMs."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

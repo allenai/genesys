@@ -1,0 +1,33 @@
+{
+    "acronym": "149a523493e2c41bfbc7b1299425fa9c918c0cdd",
+    "title": "Persona-Guided Planning for Controlling the Protagonist\u2019s Persona in Story Generation",
+    "seed_ids": [
+        "gpt2",
+        "21233223e6f14006106f3acedd60e59af18816e1",
+        "e7c698bdace380f7183dedbe657686f1885f615c",
+        "200050c1f51e2c930e62b078c6ce20f2a6675468",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "149a523493e2c41bfbc7b1299425fa9c918c0cdd",
+    "abstract": "Endowing the protagonist with a specific personality is essential for writing an engaging story. In this paper, we aim to control the protagonist\u2019s persona in story generation, i.e., generating a story from a leading context and a persona description, where the protagonist should exhibit the specified personality through a coherent event sequence. Considering that personas are usually embodied implicitly and sparsely in stories, we propose a planning-based generation model named ConPer to explicitly model the relationship between personas and events. ConPer first plans events of the protagonist\u2019s behavior which are motivated by the specified persona through predicting one target sentence, then plans the plot as a sequence of keywords with the guidance of the predicted persona-related events and commonsense knowledge, and finally generates the whole story. Both automatic and manual evaluation results demonstrate that ConPer outperforms state-of-the-art baselines for generating more coherent and persona-controllable stories. Our code is available at https://github.com/thu-coai/ConPer.",
+    "authors": [
+        "Zhexin Zhang",
+        "Jiaxin Wen",
+        "Jian Guan",
+        "Minlie Huang"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a planning-based generation model named ConPer to explicitly model the relationship between personas and events, and demonstrates that ConPer outperforms state-of-the-art baselines for generating more coherent and persona-controllable stories."
+    },
+    "citationCount": 20,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

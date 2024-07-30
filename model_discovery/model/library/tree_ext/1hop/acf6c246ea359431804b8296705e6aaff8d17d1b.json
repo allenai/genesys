@@ -1,0 +1,29 @@
+{
+    "acronym": "acf6c246ea359431804b8296705e6aaff8d17d1b",
+    "title": "Data-oriented Dynamic Fine-tuning Parameter Selection Strategy for FISH Mask based Efficient Fine-tuning",
+    "seed_ids": [
+        "gpt2",
+        "bert",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "acf6c246ea359431804b8296705e6aaff8d17d1b",
+    "abstract": "In view of the huge number of parameters of Large language models (LLMs) , tuning all parameters is very costly, and accordingly fine-tuning specific parameters is more sensible. Most of parameter efficient fine-tuning (PEFT) concentrate on parameter selection strategies, such as additive method, selective method and reparametrization-based method. However, there are few methods that consider the impact of data samples on parameter selecting, such as Fish Mask based method. Fish Mask randomly choose a part of data samples and treat them equally during parameter selection, which is unable to dynamically select optimal parameters for inconstant data distributions. In this work, we adopt a data-oriented perspective, then proposing an IRD ($\\mathrm{\\underline I}$terative sample-parameter $\\mathrm{\\underline R}$ange $\\mathrm{\\underline D}$ecreasing) algorithm to search the best setting of sample-parameter pair for FISH Mask. In each iteration, by searching the set of samples and parameters with larger Fish information, IRD can find better sample-parameter pair in most scale. We demonstrate the effectiveness and rationality of proposed strategy by conducting experiments on GLUE benchmark. Experimental results show our strategy optimizes the parameter selection and achieves preferable performance.",
+    "authors": [
+        "Ming Dong",
+        "Kang Xue",
+        "Bolong Zheng",
+        "Tingting He"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work adopts a data-oriented perspective, and proposes an IRD algorithm to search the best setting of sample-parameter pair for FISH Mask, a Fish Mask based method, which optimizes the parameter selection and achieves preferable performance."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

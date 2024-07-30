@@ -1,0 +1,24 @@
+{
+    "acronym": "368b66f8f16e314834d51e8c4db7d844806c3787",
+    "title": "Transformer-based Named Entity Recognition with Combined Data Representation",
+    "seed_ids": [
+        "bert",
+        "b76e98a0a023d37c6534aa2ead09c8ff595f0bae"
+    ],
+    "s2id": "368b66f8f16e314834d51e8c4db7d844806c3787",
+    "abstract": "This study examines transformer-based models and their effectiveness in named entity recognition tasks. The study investigates data representation strategies, including single, merged, and context, which respectively use one sentence, multiple sentences, and sentences joined with attention to context per vector. Analysis shows that training models with a single strategy may lead to poor performance on different data representations. To address this limitation, the study proposes a combined training procedure that utilizes all three strategies to improve model stability and adaptability. The results of this approach are presented and discussed for four languages (English, Polish, Czech, and German) across various datasets, demonstrating the effectiveness of the combined strategy.",
+    "authors": [
+        "Michal Marci'nczuk"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study investigates data representation strategies, including single, merged, and context, which respectively use one sentence, multiple sentences, and sentences joined with attention to context per vector to improve model stability and adaptability."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

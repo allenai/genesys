@@ -1,0 +1,27 @@
+{
+    "acronym": "d2b1d047ef3a2dad5eb54fe9a9a4cfe9179df188",
+    "title": "SaRLog: Semantic-Aware Robust Log Anomaly Detection via BERT-Augmented Contrastive Learning",
+    "seed_ids": [
+        "bert",
+        "6456edc602f038bc4922f1314485d4a625e5d8b3",
+        "2d5e2280a988ad71c40aeb189b4d4dcea56b793d"
+    ],
+    "s2id": "d2b1d047ef3a2dad5eb54fe9a9a4cfe9179df188",
+    "abstract": "Numerous deep learning-based methods have been developed to address the intricacies of anomaly detection tasks within system logs, presenting two significant challenges. First, balancing model complexity with the capacity to generate semantically meaningful representations for the downstream detection model, is a delicate task. Second, these methods generally depend on extensive labeled data for effective training. Despite efforts to address these challenges separately, a comprehensive solution that efficiently tackles both issues simultaneously are lacking. In response, we introduce Semantic-aware Robust Log (SaRLog), a comprehensive solution designed to overcome the limitations of existing methods by leveraging the contextual semantic information extraction capability of bidirectional encoder representations from transformers (BERTs) and the few-shot learning capability of the Siamese network. The Siamese network, featured with contractive loss, is implemented on top of a custom domain-specific fine-tuned BERT. Our comparative analysis validates SaRLog\u2019s effectiveness against established baseline methods, demonstrating F1 score improvement of up to 31.2% and 46.7% on BGL and Thunderbird data sets, respectively. Moreover, additional experimental analysis aimed at evaluating the few-shot learning capability highlights the robustness and generalization efficiency of SaRLog. Thus, by overcoming data set variability and improving model generalization, SaRLog advances log anomaly detection, thereby effectively handling complex log data challenges.",
+    "authors": [
+        "Lelisa Adeba Jilcha",
+        "Deuk-Hun Kim",
+        "Jin Kwak"
+    ],
+    "venue": "IEEE Internet of Things Journal",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Semantic-aware Robust Log (SaRLog), a comprehensive solution designed to overcome the limitations of existing methods by leveraging the contextual semantic information extraction capability of bidirectional encoder representations from transformers and the few-shot learning capability of the Siamese network, is introduced."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

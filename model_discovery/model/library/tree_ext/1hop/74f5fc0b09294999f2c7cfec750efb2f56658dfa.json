@@ -1,0 +1,30 @@
+{
+    "acronym": "74f5fc0b09294999f2c7cfec750efb2f56658dfa",
+    "title": "HIINT: Historical, Intra- and Inter- personal Dynamics Modeling with Cross-person Memory Transformer",
+    "seed_ids": [
+        "memformer",
+        "bed629bc6ed311418dc8b870a1ee2b79576066b2",
+        "67ee20536c30a225b86902af2f091e28e5e19b40"
+    ],
+    "s2id": "74f5fc0b09294999f2c7cfec750efb2f56658dfa",
+    "abstract": "Accurately modeling affect dynamics, which refers to the changes and fluctuations in emotions and affective displays during human conversations, is crucial for understanding human interactions. However, modeling affect dynamics is challenging due to contextual factors, such as the complex and nuanced nature of intra- and inter- personal dependencies. Intrapersonal dependencies refer to the influences and dynamics within an individual, including their affective states and how it evolves over time. Interpersonal dependencies, on the other hand, involve the interactions and dynamics between individuals, encompassing how affective displays are influenced by and influence others during conversations. To address these challenges, we propose a Cross-person Memory Transformer (CPM-T) framework which explicitly models intra- and inter- personal dependencies in multi-modal non-verbal cues. The CPM-T framework maintains memory modules to store and update dependencies between earlier and later parts of a conversation. Additionally, our framework employs cross-modal attention to effectively align information from multi-modalities and leverage cross-person attention to align behaviors in multi-party interactions. We evaluate the effectiveness and robustness of our approach on three publicly available datasets for joint engagement, rapport, and human belief prediction tasks. Our framework outperforms baseline models in average F1-scores by up to 22.6%, 15.1%, and 10.0% respectively on these three tasks. Finally, we demonstrate the importance of each component in the framework via ablation studies with respect to multimodal temporal behavior.",
+    "authors": [
+        "Y. Kim",
+        "Dong Won Lee",
+        "P. Liang",
+        "Sharifa Alghowinem",
+        "C. Breazeal",
+        "Hae Won Park"
+    ],
+    "venue": "International Conference on Multimodal Interaction",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Cross-person Memory Transformer (CPM-T) framework which explicitly models intra- and inter- personal dependencies in multi-modal non-verbal cues, which outperforms baseline models in average F1-scores on three publicly available datasets for joint engagement, rapport, and human belief prediction tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

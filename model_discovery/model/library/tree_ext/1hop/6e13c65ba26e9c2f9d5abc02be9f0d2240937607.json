@@ -1,0 +1,33 @@
+{
+    "acronym": "6e13c65ba26e9c2f9d5abc02be9f0d2240937607",
+    "title": "DiffS2UT: A Semantic Preserving Diffusion Model for Textless Direct Speech-to-Speech Translation",
+    "seed_ids": [
+        "d3pms",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "24425954960ce968e5f14360fbdd0605abcadfcf"
+    ],
+    "s2id": "6e13c65ba26e9c2f9d5abc02be9f0d2240937607",
+    "abstract": "While Diffusion Generative Models have achieved great success on image generation tasks, how to efficiently and effectively incorporate them into speech generation especially translation tasks remains a non-trivial problem. Specifically, due to the low information density of speech data, the transformed discrete speech unit sequence is much longer than the corresponding text transcription, posing significant challenges to existing auto-regressive models. Furthermore, it is not optimal to brutally apply discrete diffusion on the speech unit sequence while disregarding the continuous space structure, which will degrade the generation performance significantly. In this paper, we propose a novel diffusion model by applying the diffusion forward process in the \\textit{continuous} speech representation space, while employing the diffusion backward process in the \\textit{discrete} speech unit space. In this way, we preserve the semantic structure of the continuous speech representation space in the diffusion process and integrate the continuous and discrete diffusion models. We conduct extensive experiments on the textless direct speech-to-speech translation task, where the proposed method achieves comparable results to the computationally intensive auto-regressive baselines (500 steps on average) with significantly fewer decoding steps (50 steps).",
+    "authors": [
+        "Yongxin Zhu",
+        "Zhujin Gao",
+        "Xinyuan Zhou",
+        "Zhongyi Ye",
+        "Linli Xu"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel diffusion model by applying the diffusion forward process in the \\textit{continuous} speech representation space, while employing the diffusion backward process inthe speech unit space to preserve the semantic structure of the continuous speech representationspace in the diffusion process and integrate the continuous and discrete diffusion models."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

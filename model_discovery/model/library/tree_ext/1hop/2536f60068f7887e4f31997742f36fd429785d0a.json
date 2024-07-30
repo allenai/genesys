@@ -1,0 +1,33 @@
+{
+    "acronym": "2536f60068f7887e4f31997742f36fd429785d0a",
+    "title": "ESTISR: Adapting Efficient Scene Text Image Super-resolution for Real-Scenes",
+    "seed_ids": [
+        "cosformer",
+        "performer",
+        "c49ac1f916d6d2edeb187e6619c8d23acd95eb21",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "2536f60068f7887e4f31997742f36fd429785d0a",
+    "abstract": "While scene text image super-resolution (STISR) has yielded remarkable improvements in accurately recognizing scene text, prior methodologies have placed excessive emphasis on optimizing performance, rather than paying due attention to efficiency - a crucial factor in ensuring deployment of the STISR-STR pipeline. In this work, we propose a novel Efficient Scene Text Image Super-resolution (ESTISR) Network for resource-limited deployment platform. ESTISR's functionality primarily depends on two critical components: a CNN-based feature extractor and an efficient self-attention mechanism used for decoding low-resolution images. We designed a re-parameterized inverted residual block specifically suited for resource-limited circumstances as the feature extractor. Meanwhile, we proposed a novel self-attention mechanism, softmax shrinking, based on a kernel-based approach. This innovative technique offers linear complexity while also naturally incorporating discriminating low-level features into the self-attention structure. Extensive experiments on TextZoom show that ESTISR retains a high image restoration quality and improved STR accuracy of low-resolution images. Furthermore, ESTISR consistently outperforms current methods in terms of actual running time and peak memory consumption, while achieving a better trade-off between performance and efficiency.",
+    "authors": [
+        "Minghao Fu",
+        "Xin Man",
+        "Yihan Xu",
+        "Jie Shao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work designed a re-parameterized inverted residual block specifically suited for resource-limited circumstances as the feature extractor and proposed a novel self-attention mechanism, softmax shrinking, based on a kernel-based approach, which consistently outperforms current methods in terms of actual running time and peak memory consumption."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

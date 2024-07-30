@@ -1,0 +1,28 @@
+{
+    "acronym": "275b31fd4e12b24aa760cbdb2db2dd04f937258e",
+    "title": "Continual Sequence Generation with Adaptive Compositional Modules",
+    "seed_ids": [
+        "gpt2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "275b31fd4e12b24aa760cbdb2db2dd04f937258e",
+    "abstract": "Continual learning is essential for real-world deployment when there is a need to quickly adapt the model to new tasks without forgetting knowledge of old tasks. Existing work on continual sequence generation either always reuses existing parameters to learn new tasks, which is vulnerable to catastrophic forgetting on dissimilar tasks, or blindly adds new parameters for every new task, which could prevent knowledge sharing between similar tasks. To get the best of both worlds, in this work, we propose continual sequence generation with adaptive compositional modules to adaptively add modules in transformer architectures and compose both old and new modules for new tasks. We also incorporate pseudo experience replay to facilitate knowledge transfer in those shared modules. Experiment results on various sequences of generation tasks show that our framework can adaptively add modules or reuse modules based on task similarity, outperforming state-of-the-art baselines in terms of both performance and parameter efficiency. We make our code public at https://github.com/GT-SALT/Adaptive-Compositional-Modules.",
+    "authors": [
+        "Yanzhe Zhang",
+        "Xuezhi Wang",
+        "Diyi Yang"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results show that the proposed continual sequence generation with adaptive compositional modules with pseudo experience replay can adaptively add modules or reuse modules based on task similarity, outperforming state-of-the-art baselines in terms of both performance and parameter efficiency."
+    },
+    "citationCount": 27,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

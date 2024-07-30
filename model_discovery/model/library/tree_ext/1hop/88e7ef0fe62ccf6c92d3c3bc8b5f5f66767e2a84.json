@@ -1,0 +1,31 @@
+{
+    "acronym": "88e7ef0fe62ccf6c92d3c3bc8b5f5f66767e2a84",
+    "title": "Text-to-Code Generation with Modality-relative Pre-training",
+    "seed_ids": [
+        "gpt",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "1bf21dabbdfc81fd4f9e92b1201ecce744cabb6a",
+        "4b27f18bff43d605805c92696a979714ced0b805",
+        "42a7015e48a1e00b70ebb442a82afb4b10017c0b",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "0fe2636446cd686830da3d971b31a004d6094b3c"
+    ],
+    "s2id": "88e7ef0fe62ccf6c92d3c3bc8b5f5f66767e2a84",
+    "abstract": "Large pre-trained language models have recently been expanded and applied to programming language tasks with great success, often through further pre-training of a strictly-natural language model\u2013where training sequences typically contain both natural and (linearised) programming language. Such approaches effectively map both modalities of the sequence into the same embedding space. However, programming language keywords (e.g. \u201cwhile\u201d) often have very strictly defined semantics. As such, transfer learning from their natural language usage may not necessarily be beneficial to their code application and vise versa. Assuming an already pre-trained language model, in this work we investigate how sequence tokens can be adapted and represented differently, depending on which modality they belong to, and to the ultimate benefit of the downstream task. We experiment with separating embedding spaces between modalities during further model pre-training with modality-relative training objectives. We focus on text-to-code generation and observe consistent improvements across two backbone models and two test sets, measuring pass@k and a novel incremental variation.",
+    "authors": [
+        "Fenia Christopoulou",
+        "Guchun Zhang",
+        "Gerasimos Lampouras"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work investigates how sequence tokens can be adapted and represented differently, depending on which modality they belong to, and to the ultimate benefit of the downstream task, and experiment with separating embedding spaces between modalities during further model pre-training with modality-relative training objectives."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

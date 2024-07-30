@@ -1,0 +1,29 @@
+{
+    "acronym": "4f3888ea13bef9403d6c7a96c14a85575a79bce0",
+    "title": "Kernel Attention Transformer (KAT) for Histopathology Whole Slide Image Classification",
+    "seed_ids": [
+        "nystromformer",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87"
+    ],
+    "s2id": "4f3888ea13bef9403d6c7a96c14a85575a79bce0",
+    "abstract": "Transformer has been widely used in histopathology whole slide image (WSI) classification for the purpose of tumor grading, prognosis analysis, etc. However, the design of token-wise self-attention and positional embedding strategy in the common Transformer limits the effectiveness and efficiency in the application to gigapixel histopathology images. In this paper, we propose a kernel attention Transformer (KAT) for histopathology WSI classification. The information transmission of the tokens is achieved by cross-attention between the tokens and a set of kernels related to a set of positional anchors on the WSI. Compared to the common Transformer structure, the proposed KAT can better describe the hierarchical context information of the local regions of the WSI and meanwhile maintains a lower computational complexity. The proposed method was evaluated on a gastric dataset with 2040 WSIs and an endometrial dataset with 2560 WSIs, and was compared with 6 state-of-the-art methods. The experimental results have demonstrated the proposed KAT is effective and efficient in the task of histopathology WSI classification and is superior to the state-of-the-art methods. The code is available at https://github.com/zhengyushan/kat.",
+    "authors": [
+        "Yushan Zheng",
+        "Jun Li",
+        "Jun Shi",
+        "Feng-ying Xie",
+        "Zhi-guo Jiang"
+    ],
+    "venue": "International Conference on Medical Image Computing and Computer-Assisted Intervention",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The experimental results have demonstrated the proposed KAT is effective and efficient in the task of histopathology WSI classification and is superior to the state-of-the-art methods."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

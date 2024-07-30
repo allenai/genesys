@@ -1,0 +1,30 @@
+{
+    "acronym": "f30e95be411456a709e7cb9a8b3a3e557bd0356a",
+    "title": "Clinical-Longformer and Clinical-BigBird: Transformers for long clinical sequences",
+    "seed_ids": [
+        "bigbird",
+        "longformer",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "f30e95be411456a709e7cb9a8b3a3e557bd0356a",
+    "abstract": "Transformers-based models, such as BERT, have dramatically improved the performance for various natural language processing tasks. The clinical knowledge enriched model, namely ClinicalBERT, also achieved state-of-the-art results when performed on clinical named entity recognition and natural language inference tasks. One of the core limitations of these transformers is the substantial memory consumption due to their full self-attention mechanism. To overcome this, long sequence transformer models, e.g. Longformer and BigBird, were proposed with the idea of sparse attention mechanism to reduce the memory usage from quadratic to the sequence length to a linear scale. These models extended the maximum input sequence length from 512 to 4096, which enhanced the ability of modeling long-term dependency and consequently achieved optimal results in a variety of tasks. Inspired by the success of these long sequence transformer models, we introduce two domain enriched language models, namely Clinical-Longformer and Clinical-BigBird, which are pre-trained from large-scale clinical corpora. We evaluate both pre-trained models using 10 baseline tasks including named entity recognition, question answering, and document classification tasks. The results demonstrate that Clinical-Longformer and Clinical-BigBird consistently and significantly outperform ClinicalBERT as well as other short-sequence transformers in all downstream tasks. We have made our source code available at [https://github.com/luoyuanlab/Clinical-Longformer] the pre-trained models available for public download at: [https://huggingface.co/yikuan8/Clinical-Longformer].",
+    "authors": [
+        "Yikuan Li",
+        "R. M. Wehbe",
+        "F. Ahmad",
+        "Hanyin Wang",
+        "Yuan Luo"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Two domain enriched language models, namely Clinical-Longformer and Clinical-BigBird, which are pre-trained from large-scale clinical corpora are introduced that consistently and significantly outperform ClinicalBERT as well as other short-sequence transformers in all downstream tasks."
+    },
+    "citationCount": 72,
+    "influentialCitationCount": 8,
+    "code": null,
+    "description": null,
+    "url": null
+}

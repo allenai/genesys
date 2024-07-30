@@ -1,0 +1,41 @@
+{
+    "acronym": "24e775b20adf21e9b5b95c6a9b7a5c164d055849",
+    "title": "M6-10T: A Sharing-Delinking Paradigm for Efficient Multi-Trillion Parameter Pretraining",
+    "seed_ids": [
+        "gpt",
+        "319b84be7a843250bc81d7086f79a4126d550277",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9a618cca0d2fc78db1be1aed70517401cb3f3859",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "24e775b20adf21e9b5b95c6a9b7a5c164d055849",
+    "abstract": "Recent expeditious developments in deep learning algorithms, distributed training, and even hardware design for large models have enabled training extreme-scale models, say GPT-3 and Switch Transformer possessing hundreds of billions or even trillions of parameters. However, under limited resources, extreme-scale model training that requires enormous amounts of computes and memory footprint suffers from frustratingly low efficiency in model convergence. In this paper, we propose a simple training strategy called\"Pseudo-to-Real\"for high-memory-footprint-required large models. Pseudo-to-Real is compatible with large models with architecture of sequential layers. We demonstrate a practice of pretraining unprecedented 10-trillion-parameter model, an order of magnitude larger than the state-of-the-art, on solely 512 GPUs within 10 days. Besides demonstrating the application of Pseudo-to-Real, we also provide a technique, Granular CPU offloading, to manage CPU memory for training large model and maintain high GPU utilities. Fast training of extreme-scale models on a decent amount of resources can bring much smaller carbon footprint and contribute to greener AI.",
+    "authors": [
+        "Junyang Lin",
+        "An Yang",
+        "Jinze Bai",
+        "Chang Zhou",
+        "Le Jiang",
+        "Xianyan Jia",
+        "Ang Wang",
+        "J. Zhang",
+        "Yong Li",
+        "Wei Lin",
+        "Jingren Zhou",
+        "Hongxia Yang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Pseudo-to-Real is a simple training strategy for high-memory-footprint-required large models that is compatible with large models with architecture of sequential layers and demonstrates a practice of pretraining unprecedented 10-trillion-parameter model on solely 512 GPUs within 10 days."
+    },
+    "citationCount": 34,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

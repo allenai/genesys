@@ -1,0 +1,34 @@
+{
+    "acronym": "21ad0d9f734cf88f387eea01bda14ca9448219e7",
+    "title": "MusicJam: Visualizing Music Insights via Generated Narrative Illustrations",
+    "seed_ids": [
+        "gpt",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "e6e7d253ace58185acc8b4d8962f7c7b75ab110b",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "21ad0d9f734cf88f387eea01bda14ca9448219e7",
+    "abstract": "Visualizing the insights of the invisible music is able to bring listeners an enjoyable and immersive listening experience, and therefore has attracted much attention in the field of information visualization. Over the past decades, various music visualization techniques have been introduced. However, most of them are manually designed by following the visual encoding rules, thus shown in form of a graphical visual representation whose visual encoding schema is usually taking effort to understand. Recently, some researchers use figures or illustrations to represent music moods, lyrics, and musical features, which are more intuitive and attractive. However, in these techniques, the figures are usually pre-selected or statically generated, so they cannot precisely convey insights of different pieces of music. To address this issue, in this paper, we introduce MusicJam, a music visualization system that is able to generate narrative illustrations to represent the insight of the input music. The system leverages a novel generation model designed based on GPT-2 to generate meaningful lyrics given the input music and then employs the stable diffusion model to transform the lyrics into coherent illustrations. Finally, the generated results are synchronized and rendered as an MP4 video accompanied by the input music. We evaluated the proposed lyric generation model by comparing it to the baseline models and conducted a user study to estimate the quality of the generated illustrations and the final music videos. The results showed the power of our technique.",
+    "authors": [
+        "Chuer Chen",
+        "Nan Cao",
+        "Jiani Hou",
+        "Yi Guo",
+        "Yulei Zhang",
+        "Yang Shi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "MusicJam is introduced, a music visualization system that is able to generate narrative illustrations to represent the insight of the input music and leverages a novel generation model designed based on GPT-2 to generate meaningful lyrics given theinput music and then employs the stable diffusion model to transform the lyrics into coherent illustrations."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

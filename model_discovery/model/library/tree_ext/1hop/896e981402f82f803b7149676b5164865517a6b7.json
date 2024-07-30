@@ -1,0 +1,30 @@
+{
+    "acronym": "896e981402f82f803b7149676b5164865517a6b7",
+    "title": "Multimodal Dialogue Systems via Capturing Context-aware Dependencies and Ordinal Information of Semantic Elements",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "896e981402f82f803b7149676b5164865517a6b7",
+    "abstract": "The topic of multimodal conversation systems has recently garnered significant attention across various industries, including travel and retail, among others. While pioneering works in this field have shown promising performance, they often focus solely on context information at the utterance level, overlooking the context-aware dependencies of multimodal semantic elements like words and images. Furthermore, the ordinal information of images, which indicates the relevance between visual context and users\u2019 demands, remains underutilized during the integration of visual content. Additionally, the exploration of how to effectively utilize corresponding attributes provided by users when searching for desired products is still largely unexplored. To address these challenges, we propose PMATE, a Position-aware Multimodal diAlogue system with semanTic Elements. Specifically, to obtain semantic representations at the element level, we first unfold the multimodal historical utterances and devise a position-aware multimodal element-level encoder. This component considers all images that may be relevant to the current turn and introduces a novel position-aware image selector to choose related images before fusing the information from the two modalities. Finally, we present a knowledge-aware two-stage decoder and an attribute-enhanced image searcher for the tasks of generating textual responses and selecting image responses, respectively. We extensively evaluate our model on two large-scale multimodal dialogue datasets, and the results of our experiments demonstrate that our approach outperforms several baseline methods.",
+    "authors": [
+        "Weidong He",
+        "Zhi Li",
+        "Hao Wang",
+        "Tong Xu",
+        "Zhefeng Wang",
+        "Baoxing Huai",
+        "N. Yuan",
+        "Enhong Chen"
+    ],
+    "venue": "ACM Transactions on Intelligent Systems and Technology",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "PMATE, a Position-aware Multimodal diAlogue system with semanTic Elements, which combines a position-aware multimodal element-level encoder with a knowledge-aware two-stage decoder and an attribute-enhanced image searcher for the tasks of generating textual responses and selecting image responses."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

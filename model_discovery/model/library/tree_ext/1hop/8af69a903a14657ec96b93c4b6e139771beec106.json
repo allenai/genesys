@@ -1,0 +1,27 @@
+{
+    "acronym": "8af69a903a14657ec96b93c4b6e139771beec106",
+    "title": "On the Explainability of Natural Language Processing Deep Models",
+    "seed_ids": [
+        "gpt2",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "e2587eddd57bc4ba286d91b27c185083f16f40ee",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8af69a903a14657ec96b93c4b6e139771beec106",
+    "abstract": "Despite their success, deep networks are used as black-box models with outputs that are not easily explainable during the learning and the prediction phases. This lack of interpretability is significantly limiting the adoption of such models in domains where decisions are critical such as the medical and legal fields. Recently, researchers have been interested in developing methods that help explain individual decisions and decipher the hidden representations of machine learning models in general and deep networks specifically. While there has been a recent explosion of work on Explainable Artificial Intelligence (ExAI) on deep models that operate on imagery and tabular data, textual datasets present new challenges to the ExAI community. Such challenges can be attributed to the lack of input structure in textual data, the use of word embeddings that add to the opacity of the models and the difficulty of the visualization of the inner workings of deep models when they are trained on textual data. Lately, methods have been developed to address the aforementioned challenges and present satisfactory explanations on Natural Language Processing (NLP) models. However, such methods are yet to be studied in a comprehensive framework where common challenges are properly stated and rigorous evaluation practices and metrics are proposed. Motivated to democratize ExAI methods in the NLP field, we present in this work a survey that studies model-agnostic as well as model-specific explainability methods on NLP models. Such methods can either develop inherently interpretable NLP models or operate on pre-trained models in a post hoc manner. We make this distinction and we further decompose the methods into three categories according to what they explain: (1) word embeddings (input level), (2) inner workings of NLP models (processing level), and (3) models\u2019 decisions (output level). We also detail the different evaluation approaches interpretability methods in the NLP field. Finally, we present a case-study on the well-known neural machine translation in an appendix, and we propose promising future research directions for ExAI in the NLP field.",
+    "authors": [
+        "Julia El Zini",
+        "M. Awad"
+    ],
+    "venue": "ACM Computing Surveys",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A survey that studies model-agnostic as well as model-specific explainability methods on NLP models, and decomposes the methods into three categories according to what they explain, which detail the different evaluation approaches interpretability methods in the NLP field."
+    },
+    "citationCount": 45,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

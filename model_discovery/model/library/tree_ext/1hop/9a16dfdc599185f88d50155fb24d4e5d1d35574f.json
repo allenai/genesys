@@ -1,0 +1,23 @@
+{
+    "acronym": "9a16dfdc599185f88d50155fb24d4e5d1d35574f",
+    "title": "How Do Transformers \"Do\" Physics? Investigating the Simple Harmonic Oscillator",
+    "seed_ids": [
+        "transformer",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "9a16dfdc599185f88d50155fb24d4e5d1d35574f",
+    "abstract": "How do transformers model physics? Do transformers model systems with interpretable analytical solutions, or do they create\"alien physics\"that are difficult for humans to decipher? We take a step in demystifying this larger puzzle by investigating the simple harmonic oscillator (SHO), $\\ddot{x}+2\\gamma \\dot{x}+\\omega_0^2x=0$, one of the most fundamental systems in physics. Our goal is to identify the methods transformers use to model the SHO, and to do so we hypothesize and evaluate possible methods by analyzing the encoding of these methods' intermediates. We develop four criteria for the use of a method within the simple testbed of linear regression, where our method is $y = wx$ and our intermediate is $w$: (1) Can the intermediate be predicted from hidden states? (2) Is the intermediate's encoding quality correlated with model performance? (3) Can the majority of variance in hidden states be explained by the intermediate? (4) Can we intervene on hidden states to produce predictable outcomes? Armed with these two correlational (1,2), weak causal (3) and strong causal (4) criteria, we determine that transformers use known numerical methods to model trajectories of the simple harmonic oscillator, specifically the matrix exponential method. Our analysis framework can conveniently extend to high-dimensional linear systems and nonlinear systems, which we hope will help reveal the\"world model\"hidden in transformers.",
+    "authors": [
+        "Subhash Kantamneni",
+        "Ziming Liu",
+        "Max Tegmark"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": null,
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

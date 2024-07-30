@@ -1,0 +1,33 @@
+{
+    "acronym": "ec382c23f41cb6b0d112899319aebcf2336cf446",
+    "title": "Multimodal Cross-Document Event Coreference Resolution Using Linear Semantic Transfer and Mixed-Modality Ensembles",
+    "seed_ids": [
+        "bert",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "ec382c23f41cb6b0d112899319aebcf2336cf446",
+    "abstract": "Event coreference resolution (ECR) is the task of determining whether distinct mentions of events within a multi-document corpus are actually linked to the same underlying occurrence. Images of the events can help facilitate resolution when language is ambiguous. Here, we propose a multimodal cross-document event coreference resolution method that integrates visual and textual cues with a simple linear map between vision and language models. As existing ECR benchmark datasets rarely provide images for all event mentions, we augment the popular ECB+ dataset with event-centric images scraped from the internet and generated using image diffusion models. We establish three methods that incorporate images and text for coreference: 1) a standard fused model with finetuning, 2) a novel linear mapping method without finetuning and 3) an ensembling approach based on splitting mention pairs by semantic and discourse-level difficulty. We evaluate on 2 datasets: the augmented ECB+, and AIDA Phase 1. Our ensemble systems using cross-modal linear mapping establish an upper limit (91.9 CoNLL F1) on ECB+ ECR performance given the preprocessing assumptions used, and establish a novel baseline on AIDA Phase 1. Our results demonstrate the utility of multimodal information in ECR for certain challenging coreference problems, and highlight a need for more multimodal resources in the coreference resolution space.",
+    "authors": [
+        "Abhijnan Nath",
+        "Huma Jamil",
+        "Shafiuddin Rehan Ahmed",
+        "G. Baker",
+        "Rahul Ghosh",
+        "James H. Martin",
+        "Nathaniel Blanchard",
+        "Nikhil Krishnaswamy"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a multimodal cross-document event coreference resolution method that integrates visual and textual cues with a simple linear map between vision and language models and establishes three methods that incorporate images and text for coreference."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

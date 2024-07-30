@@ -1,0 +1,29 @@
+{
+    "acronym": "021a1f5c4e44cf9163a5a1cfe8ad3e5a4ac9d2f6",
+    "title": "MCSD: An Efficient Language Model with Diverse Fusion",
+    "seed_ids": [
+        "rwkv4",
+        "d53fe76bd2795a19ddf52d012917782f6f6f2c1e",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "d5e999aae76d5270ef272076979c809817458212"
+    ],
+    "s2id": "021a1f5c4e44cf9163a5a1cfe8ad3e5a4ac9d2f6",
+    "abstract": "Transformers excel in Natural Language Processing (NLP) due to their prowess in capturing long-term dependencies but suffer from exponential resource consumption with increasing sequence lengths. To address these challenges, we propose MCSD model, an efficient language model with linear scaling and fast inference speed. MCSD model leverages diverse feature fusion, primarily through the multi-channel slope and decay (MCSD) block, to robustly represent features. This block comprises slope and decay sections that extract features across diverse temporal receptive fields, facilitating capture of both local and global information. In addition, MCSD block conducts element-wise fusion of diverse features to further enhance the delicate feature extraction capability. For inference, we formulate the inference process into a recurrent representation, slashing space complexity to $O(1)$ and time complexity to $O(N)$ respectively. Our experiments show that MCSD attains higher throughput and lower GPU memory consumption compared to Transformers, while maintaining comparable performance to larger-scale language learning models on benchmark tests. These attributes position MCSD as a promising base for edge deployment and embodied intelligence.",
+    "authors": [
+        "Hua Yang",
+        "Duohai Li",
+        "Shiman Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "MCSD model, an efficient language model with linear scaling and fast inference speed, leverages diverse feature fusion, primarily through the multi-channel slope and decay (MCSD) block, to robustly represent features to position MCSD as a promising base for edge deployment and embodied intelligence."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

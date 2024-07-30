@@ -1,0 +1,35 @@
+{
+    "acronym": "7bd8bb0db32d52626d7799787d165c0529527778",
+    "title": "FlashFace: Human Image Personalization with High-fidelity Identity Preservation",
+    "seed_ids": [
+        "classfreediffu",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "7bd8bb0db32d52626d7799787d165c0529527778",
+    "abstract": "This work presents FlashFace, a practical tool with which users can easily personalize their own photos on the fly by providing one or a few reference face images and a text prompt. Our approach is distinguishable from existing human photo customization methods by higher-fidelity identity preservation and better instruction following, benefiting from two subtle designs. First, we encode the face identity into a series of feature maps instead of one image token as in prior arts, allowing the model to retain more details of the reference faces (e.g., scars, tattoos, and face shape ). Second, we introduce a disentangled integration strategy to balance the text and image guidance during the text-to-image generation process, alleviating the conflict between the reference faces and the text prompts (e.g., personalizing an adult into a\"child\"or an\"elder\"). Extensive experimental results demonstrate the effectiveness of our method on various applications, including human image personalization, face swapping under language prompts, making virtual characters into real people, etc. Project Page: https://jshilong.github.io/flashface-page.",
+    "authors": [
+        "Shilong Zhang",
+        "Lianghua Huang",
+        "Xi Chen",
+        "Yifei Zhang",
+        "Zhigang Wu",
+        "Yutong Feng",
+        "Wei Wang",
+        "Yujun Shen",
+        "Yu Liu",
+        "Ping Luo"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents FlashFace, a practical tool with which users can easily personalize their own photos on the fly by providing one or a few reference face images and a text prompt, benefiting from two subtle designs."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

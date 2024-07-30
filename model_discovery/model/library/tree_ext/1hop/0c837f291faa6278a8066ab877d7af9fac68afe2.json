@@ -1,0 +1,27 @@
+{
+    "acronym": "0c837f291faa6278a8066ab877d7af9fac68afe2",
+    "title": "Self-Supervised Pre-Training Boosts Semantic Scene Segmentation on LiDAR data",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0c837f291faa6278a8066ab877d7af9fac68afe2",
+    "abstract": "Airborne LiDAR systems have the capability to capture the Earth\u2019s surface by generating extensive point cloud data comprised of points mainly defined by 3D coordinates. However, labeling such points for supervised learning tasks is time-consuming. As a result, there is a need to investigate techniques that can learn from unlabeled data to significantly reduce the number of annotated samples. In this work, we propose to train a self-supervised encoder with Barlow Twins and use it as a pre-trained network in the task of semantic scene segmentation. The experimental results demonstrate that our unsupervised pre-training boosts performance once fine-tuned on the supervised task, especially for under-represented categories.",
+    "authors": [
+        "Mariona Car\u00f3s",
+        "Ariadna Just",
+        "S. Segu\u00ed",
+        "Jordi Vitri\u00e0"
+    ],
+    "venue": "2023 18th International Conference on Machine Vision and Applications (MVA)",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to train a self-supervised encoder with Barlow Twins and use it as a pre-trained network in the task of semantic scene segmentation and demonstrates that the unsupervised pre-training boosts performance once fine-tuned on the supervised task, especially for under-represented categories."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

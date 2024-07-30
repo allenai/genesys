@@ -1,0 +1,52 @@
+{
+    "acronym": "cf7ab5df804575bad88a9fcf0fbf7707bf500944",
+    "title": "Training-Free Long-Context Scaling of Large Language Models",
+    "seed_ids": [
+        "pi",
+        "clex",
+        "landmarkattn",
+        "9d932de1d2f51067b6481745f28a2db345293d48",
+        "7294c426b8a95975ca932eaf8f700acdd3d950b2",
+        "2b8439f319dfa73df62ca8957ff6d0c1f3c7a73c",
+        "f051d49dc844347cec7d0816cfd804a0adc85768",
+        "36697944858ab17ca23b23ae2043aa6c0b2e3d5d",
+        "a54761081c2b001c057fb6e1ea9a48058d5aa5e0",
+        "539fadfb615ef84c240f4741061c44eeda540091",
+        "5e0cb1c4b91a7486e1c2b15a44a0be56bd74bdc0",
+        "73290ecbec2f38d1d647ddef1ada69cee41725b3",
+        "b0db25e317cf856f1ec1ca3df0e573d850ed4696",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "6f6e2e0311589a9af045f6acd00b7dee6d19fce4",
+        "60b35c6d68acced19b0c66edcfc0ee0a2c11efed",
+        "48abfc41a0abf023d2037ebb2f274835e0d322d0",
+        "980e55d9226cac302d0fae7732da4e67b8bc952c",
+        "5735e49e501c8e51e9be4079592e46e047747b03",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "4e3935ef7da6bcbb202ec7f8b285c313cadcd044",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "e3aa232577bb427b1f3a34acbdef84bd85734042",
+        "dc48bc1a4d81e0f37603013fd2a95644dc233bd0"
+    ],
+    "s2id": "cf7ab5df804575bad88a9fcf0fbf7707bf500944",
+    "abstract": "The ability of Large Language Models (LLMs) to process and generate coherent text is markedly weakened when the number of input tokens exceeds their pretraining length. Given the expensive overhead of finetuning large-scale models with longer sequences, we propose Dual Chunk Attention (DCA), which enables Llama2 70B to support context windows of more than 100k tokens without continual training. By decomposing the attention computation for long sequences into chunk-based modules, DCA manages to effectively capture the relative positional information of tokens within the same chunk (Intra-Chunk) and across distinct chunks (Inter-Chunk), as well as integrates seamlessly with Flash Attention. In addition to its impressive extrapolation capability, DCA achieves performance on practical long-context tasks that is comparable to or even better than that of finetuned models. When compared with proprietary models, our training-free 70B model attains 94% of the performance of gpt-3.5-16k, indicating it is a viable open-source alternative. All code and data used in this work are released at \\url{https://github.com/HKUNLP/ChunkLlama}.",
+    "authors": [
+        "Chen An",
+        "Fei Huang",
+        "Jun Zhang",
+        "Shansan Gong",
+        "Xipeng Qiu",
+        "Chang Zhou",
+        "Lingpeng Kong"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Dual Chunk Attention (DCA) is proposed, which enables Llama2 70B to support context windows of more than 100k tokens without continual training, and achieves performance on practical long-context tasks that is comparable to or even better than that of finetuned models."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

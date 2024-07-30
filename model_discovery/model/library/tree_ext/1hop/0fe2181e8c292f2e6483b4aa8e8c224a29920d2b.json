@@ -1,0 +1,27 @@
+{
+    "acronym": "0fe2181e8c292f2e6483b4aa8e8c224a29920d2b",
+    "title": "Leveraging Relaxed Equilibrium by Lazy Transition for Sequence Modeling",
+    "seed_ids": [
+        "gpt",
+        "universaltrans",
+        "9a618cca0d2fc78db1be1aed70517401cb3f3859",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0fe2181e8c292f2e6483b4aa8e8c224a29920d2b",
+    "abstract": "In sequence modeling, certain tokens are usually less ambiguous than others, and representations of these tokens require fewer refinements for disambiguation. However, given the nature of attention-based models like Transformer and UT (universal transformer), all tokens are equally processed towards depth. Inspired by the equilibrium phenomenon, we present a lazy transition, a mechanism to adjust the significance of iterative refinements for each token representation. Our lazy transition is deployed on top of UT to build LT (lazy transformer), where all tokens are processed unequally towards depth. Eventually, LT is encouraged to oscillate around a relaxed equilibrium. Our experiments show that LT outperforms baseline models on several tasks of machine translation, pre-training, Learning to Execute, and LAMBADA.",
+    "authors": [
+        "Xi Ai",
+        "Bin Fang"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A lazy transition is presented, a mechanism to adjust the significance of iterative refinements for each token representation in sequence modeling, deployed on top of UT to build LT (lazy transformer), where all tokens are processed unequally towards depth."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

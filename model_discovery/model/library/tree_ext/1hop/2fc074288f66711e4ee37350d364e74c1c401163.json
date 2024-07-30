@@ -1,0 +1,53 @@
+{
+    "acronym": "2fc074288f66711e4ee37350d364e74c1c401163",
+    "title": "Recursion in Recursion: Two-Level Nested Recursion for Length Generalization with Scalability",
+    "seed_ids": [
+        "s4d",
+        "mega",
+        "effibeam",
+        "contrnn",
+        "9e3e56957e249cdebdd8673fd1174980ed694560",
+        "465ec2212d865e875e64638b3dd1ecaac21c5ddd",
+        "6b655b74da908e2e0d7c37996d36d5ff4a28f030",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "54155c2977a977bf129849455dcae3a2b79b3f41",
+        "240300b1da360f22bf0b82c6817eacebba6deed4",
+        "9166caa474031b62bacad8a920db8308e6a15120",
+        "70e91e16eb321067d9402710e14a40cf28311f73",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "a30ac45ac5b7bd2148d3fb80ee7f3c29724e3170",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "2fc384087f55111a196c96d88029aab324aa543e",
+        "d6a0dfd5f39222d8924b7727a0a49f81fa247d71",
+        "736eb449526fe7128917954ec5532b59e318ec78",
+        "3c6ec875050ad4d2319725697d74154f66ced597",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "70a10d95e968158c2a862af217186c74c44b5e25",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "231e768f0cd280faa0f725bb353262cb4fed08d1",
+        "dbf53ece1a6a8860e41ff5f721c72ceb0fb18dd6",
+        "5d032bd2632b6f5847767f39ce247098c6bbc563",
+        "b50815251c948f00baedccaf5f56c281ffa7650f",
+        "84daddd294fa3cc12596b5785f81c2a153d2fb1d",
+        "79b4ec1aaf67a04a9afa0d8138f84b7be66c00cb",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "7cc730da554003dda77796d2cb4f06da5dfd5592"
+    ],
+    "s2id": "2fc074288f66711e4ee37350d364e74c1c401163",
+    "abstract": "Binary Balanced Tree RvNNs (BBT-RvNNs) enforce sequence composition according to a preset balanced binary tree structure. Thus, their non-linear recursion depth is just $\\log_2 n$ ($n$ being the sequence length). Such logarithmic scaling makes BBT-RvNNs efficient and scalable on long sequence tasks such as Long Range Arena (LRA). However, such computational efficiency comes at a cost because BBT-RvNNs cannot solve simple arithmetic tasks like ListOps. On the flip side, RvNNs (e.g., Beam Tree RvNN) that do succeed on ListOps (and other structure-sensitive tasks like formal logical inference) are generally several times more expensive than even RNNs. In this paper, we introduce a novel framework -- Recursion in Recursion (RIR) to strike a balance between the two sides - getting some of the benefits from both worlds. In RIR, we use a form of two-level nested recursion - where the outer recursion is a $k$-ary balanced tree model with another recursive model (inner recursion) implementing its cell function. For the inner recursion, we choose Beam Tree RvNNs (BT-RvNN). To adjust BT-RvNNs within RIR we also propose a novel strategy of beam alignment. Overall, this entails that the total recursive depth in RIR is upper-bounded by $k \\log_k n$. Our best RIR-based model is the first model that demonstrates high ($\\geq 90\\%$) length-generalization performance on ListOps while at the same time being scalable enough to be trainable on long sequence inputs from LRA. Moreover, in terms of accuracy in the LRA language tasks, it performs competitively with Structured State Space Models (SSMs) without any special initialization - outperforming Transformers by a large margin. On the other hand, while SSMs can marginally outperform RIR on LRA, they (SSMs) fail to length-generalize on ListOps. Our code is available at: \\url{https://github.com/JRC1995/BeamRecursionFamily/}.",
+    "authors": [
+        "Jishnu Ray Chowdhury",
+        "Cornelia Caragea"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The best RIR-based model is the first model that demonstrates high length-generalization performance on ListOps while at the same time being scalable enough to be trainable on long sequence inputs from LRA."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

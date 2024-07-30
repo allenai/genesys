@@ -1,0 +1,25 @@
+{
+    "acronym": "2f231367b55f30186467158c644a9890c498e4cf",
+    "title": "Gemini Goes to Med School: Exploring the Capabilities of Multimodal Large Language Models on Medical Challenge Problems & Hallucinations",
+    "seed_ids": [
+        "gpt3",
+        "0b0debb710366cdff461938c80763eace1651af6"
+    ],
+    "s2id": "2f231367b55f30186467158c644a9890c498e4cf",
+    "abstract": "Large language models have the potential to be valuable in the healthcare industry, but it\u2019s crucial to verify their safety and effectiveness through rigorous evaluation. In our study, we evaluated LLMs, including Google\u2019s Gemini, across various medical tasks. Despite Gemini\u2019s capabilities, it underperformed compared to leading models like MedPaLM 2 and GPT-4, particularly in medical visual question answering (VQA), with a notable accuracy gap (Gemini at 61.45% vs. GPT-4V at 88%). Our analysis revealed that Gemini is highly susceptible to hallucinations, overconfidence, and knowledge gaps, which indicate risks if deployed uncritically. We also performed a detailed analysis by medical subject and test type, providing actionable feedback for developers and clinicians. To mitigate risks, we implemented effective prompting strategies, improving performance, and contributed to the field by releasing a Python module for medical LLM evaluation and establishing a leaderboard on Hugging Face for ongoing research and development. Python module can be found at https://github.com/promptslab/RosettaEval",
+    "authors": [
+        "Ankit Pal",
+        "Malaikannan Sankarasubbu"
+    ],
+    "venue": "Clinical Natural Language Processing Workshop",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Gemini is highly susceptible to hallucinations, overconfidence, and knowledge gaps, which indicate risks if deployed uncritically, and a Python module for medical LLM evaluation is released and contributed to the field by releasing a Python module for medical LLM evaluation."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

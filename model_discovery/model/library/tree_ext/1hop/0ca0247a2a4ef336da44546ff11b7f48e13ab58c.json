@@ -1,0 +1,42 @@
+{
+    "acronym": "0ca0247a2a4ef336da44546ff11b7f48e13ab58c",
+    "title": "Controlled and Conditional Text to Image Generation with Diffusion Prior",
+    "seed_ids": [
+        "classfreediffu",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "82482585e94192b4e9913727e461f89cd08e9725",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "0ca0247a2a4ef336da44546ff11b7f48e13ab58c",
+    "abstract": "Denoising Diffusion models have shown remarkable performance in generating diverse, high quality images from text. Numerous techniques have been proposed on top of or in alignment with models like Stable Diffusion and Imagen that generate images directly from text. A lesser explored approach is DALLE-2's two step process comprising a Diffusion Prior that generates a CLIP image embedding from text and a Diffusion Decoder that generates an image from a CLIP image embedding. We explore the capabilities of the Diffusion Prior and the advantages of an intermediate CLIP representation. We observe that Diffusion Prior can be used in a memory and compute efficient way to constrain the generation to a specific domain without altering the larger Diffusion Decoder. Moreover, we show that the Diffusion Prior can be trained with additional conditional information such as color histogram to further control the generation. We show quantitatively and qualitatively that the proposed approaches perform better than prompt engineering for domain specific generation and existing baselines for color conditioned generation. We believe that our observations and results will instigate further research into the diffusion prior and uncover more of its capabilities.",
+    "authors": [
+        "Pranav Aggarwal",
+        "Hareesh Ravi",
+        "Naveen Marri",
+        "Sachin Kelkar",
+        "F. Chen",
+        "V. Khuc",
+        "Midhun Harikumar",
+        "Ritiz Tambi",
+        "Sudharshan Reddy Kakumanu",
+        "Purvak Lapsiya",
+        "Alvin Ghouas",
+        "Sarah Saber",
+        "Malavika Ramprasad",
+        "Baldo Faieta",
+        "Ajinkya Kale"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Diffusion Prior can be used in a memory and compute efficient way to constrain the generation to a specific domain without altering the larger Diffusion Decoder and can be trained with additional conditional information such as color histogram to further control the generation."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

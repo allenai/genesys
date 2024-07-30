@@ -1,0 +1,33 @@
+{
+    "acronym": "3cfea2a4291ea4e5e0061d8a626e414e27ec5ac5",
+    "title": "Evidence for Hypodescent in Visual Semantic AI",
+    "seed_ids": [
+        "gpt2",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "5dd7bc394e032eb0e982699a5f0c781fab9e3111",
+        "5e00596fa946670d894b1bdaeff5a98e3867ef13",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "7ea0e91c5d5dc73f2133bc46d7ebb6cb83034dae",
+        "5e9c85235210b59a16bdd84b444a904ae271f7e7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3cfea2a4291ea4e5e0061d8a626e414e27ec5ac5",
+    "abstract": "We examine the state-of-the-art multimodal \u201dvisual semantic\u201d model CLIP (\u201dContrastive Language Image Pretraining\u201d) for the rule of hypodescent, or one-drop rule, whereby multiracial people are more likely to be assigned a racial or ethnic label corresponding to a minority or disadvantaged racial or ethnic group than to the equivalent majority or advantaged group. A face morphing experiment grounded in psychological research demonstrating hypodescent indicates that, at the midway point of 1,000 series of morphed images, CLIP associates 69.7% of Black-White female images with a Black text label over a White text label, and similarly prefers Latina (75.8%) and Asian (89.1%) text labels at the midway point for Latina-White female and Asian-White female morphs, reflecting hypodescent. Additionally, assessment of the underlying cosine similarities in the model reveals that association with White is correlated with association with \u201dperson,\u201d with Pearson\u2019s \u03c1 as high as 0.82, p < 10\u2212 90 over a 21,000-image morph series, indicating that a White person corresponds to the default representation of a person in CLIP. Finally, we show that the stereotype-congruent pleasantness association of an image correlates with association with the Black text label in CLIP, with Pearson\u2019s \u03c1 = 0.48, p < 10\u2212 90 for 21,000 Black-White multiracial male images, and \u03c1 = 0.41, p < 10\u2212 90 for Black-White multiracial female images. CLIP is trained on English-language text gathered using data collected from an American website (Wikipedia), and our findings demonstrate that CLIP embeds the values of American racial hierarchy, reflecting the implicit and explicit beliefs that are present in human minds. We contextualize these findings within the history of and psychology of hypodescent. Overall, the data suggests that AI supervised using natural language will, unless checked, learn biases that reflect racial hierarchies.",
+    "authors": [
+        "R. Wolfe",
+        "M. Banaji",
+        "Aylin Caliskan"
+    ],
+    "venue": "Conference on Fairness, Accountability and Transparency",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The data suggests that AI supervised using natural language will, unless checked, learn biases that reflect racial hierarchies, reflecting the implicit and explicit beliefs that are present in human minds."
+    },
+    "citationCount": 21,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

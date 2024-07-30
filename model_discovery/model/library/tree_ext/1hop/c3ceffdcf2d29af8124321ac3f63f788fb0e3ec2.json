@@ -1,0 +1,31 @@
+{
+    "acronym": "c3ceffdcf2d29af8124321ac3f63f788fb0e3ec2",
+    "title": "Finding the Needle in a Haystack: Zero-shot Rationale Extraction for Long Text Classifiers",
+    "seed_ids": [
+        "bigbird",
+        "da0d38cf2ac7e2a6908e0d9e1fff07058daab2ed",
+        "231e768f0cd280faa0f725bb353262cb4fed08d1",
+        "6fe5cfbe53f14012766240e4b1fd4af000ecb4ba",
+        "1a883522f3c0051d70be1f8cbdb8989a77395006",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "a022bda79947d1f656a1164003c1b3ae9a843df9",
+        "203b543bfa1e564bb80ff4229b43174d7c71b0c0"
+    ],
+    "s2id": "c3ceffdcf2d29af8124321ac3f63f788fb0e3ec2",
+    "abstract": "We investigate various soft attention architectures to extract plausible token-level rationale from long document Transformers, such as Longformer. We find that a direct application of Weighted Soft Attention, a method used to extract rationale from sentence classifiers, does not select meaningful rationale from long text classifiers. We suspect it is due to the insufficient token-level supervision signal. We propose Mean Soft Attention and Top-k Rest-0 Soft Attention as modifications to the original system that significantly improve the quality of the extracted rationale. We report slow runtimes of the soft attention architectures for long documents. We propose a novel Compositional Soft Attention system that uses a soft attention layer to compose contextual token embeddings obtained for individual sentences. When combined with RoBERTa, we find the Compositional system to be 30 \u2212 65% faster than long document Transformers. We learn that the Compositional Soft Attention ranks individual tokens substantially better than other soft attention systems, but note that it underperforms on the task of sequence labelling and document classification.",
+    "authors": [
+        "H. Yannakoudakis"
+    ],
+    "venue": "",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is learned that the Compositional Soft Attention ranks individual tokens substantially better than other soft attention systems, but note that it underperforms on the task of sequence labelling and document classification."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

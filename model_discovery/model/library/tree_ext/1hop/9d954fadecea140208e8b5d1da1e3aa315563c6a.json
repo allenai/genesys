@@ -1,0 +1,27 @@
+{
+    "acronym": "9d954fadecea140208e8b5d1da1e3aa315563c6a",
+    "title": "Replication Study: Controlled Generation using Diffusion-LM and FUDGE",
+    "seed_ids": [
+        "diffusionlm",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8"
+    ],
+    "s2id": "9d954fadecea140208e8b5d1da1e3aa315563c6a",
+    "abstract": "With the recent explosion in the popularity of large language models, controlling their behavior has become an important problem. The task of controlled generation, which entails performing control on the output of a language model without heavy retraining, has received increased attention from the research community in recent years. For this replication study, we look at Diffusion-LM and FUDGE, two popular methods for handling controlled generation. This paper is organized as follows: we begin with an overview of the task of controlled generation, followed by an exposition of the principles and methodology un-derpinning Diffusion-LM and FUDGE. Subse-quently, we discuss various \ufb01ne-tuning meth-ods that serve as benchmarks for our investigation. Centering on semantic control and parts-of-speech (POS) tagging tasks, we delineate our experimental design to assess the afore-mentioned models. We conclude this study with an extensive analysis of the results that we obtain and their direct comparison with existing implementations.",
+    "authors": [
+        "A. Goel",
+        "Devyani Maladkar"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper begins with an overview of the task of controlled generation, followed by an exposition of the principles and methodology un-derpinning Diffusion-LM and FUDGE, two popular methods for handling controlled generation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,36 @@
+{
+    "acronym": "87a108853c92a969fda26d0fd91bbd1d70706a98",
+    "title": "The Evolution of Multimodal Model Architectures",
+    "seed_ids": [
+        "transformer",
+        "6d49ed0ea24b9c218f5ec6731cd261ce618df2ac",
+        "97388c71be60282e149c2c3d00db7c0eb2c946e4",
+        "616e98ba9e60f36c6ee226cc66c787610f0bbb62",
+        "13925d7d5952b1ba5960dfe2c44d977be109b636",
+        "e263e08a20080a2543d0ca29d3d63c4717a8beb6",
+        "dfa7120276a0a5d36c40de13278c9884305b7c7d",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40"
+    ],
+    "s2id": "87a108853c92a969fda26d0fd91bbd1d70706a98",
+    "abstract": "This work uniquely identifies and characterizes four prevalent multimodal model architectural patterns in the contemporary multimodal landscape. Systematically categorizing models by architecture type facilitates monitoring of developments in the multimodal domain. Distinct from recent survey papers that present general information on multimodal architectures, this research conducts a comprehensive exploration of architectural details and identifies four specific architectural types. The types are distinguished by their respective methodologies for integrating multimodal inputs into the deep neural network model. The first two types (Type A and B) deeply fuses multimodal inputs within the internal layers of the model, whereas the following two types (Type C and D) facilitate early fusion at the input stage. Type-A employs standard cross-attention, whereas Type-B utilizes custom-designed layers for modality fusion within the internal layers. On the other hand, Type-C utilizes modality-specific encoders, while Type-D leverages tokenizers to process the modalities at the model's input stage. The identified architecture types aid the monitoring of any-to-any multimodal model development. Notably, Type-C and Type-D are currently favored in the construction of any-to-any multimodal models. Type-C, distinguished by its non-tokenizing multimodal model architecture, is emerging as a viable alternative to Type-D, which utilizes input-tokenizing techniques. To assist in model selection, this work highlights the advantages and disadvantages of each architecture type based on data and compute requirements, architecture complexity, scalability, simplification of adding modalities, training objectives, and any-to-any multimodal generation capability.",
+    "authors": [
+        "S. Wadekar",
+        "Abhishek Chaurasia",
+        "Aman Chadha",
+        "Eugenio Culurciello"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work uniquely identifies and characterizes four prevalent multimodal model architectural patterns in the contemporary multimodal landscape and highlights the advantages and disadvantages of each architecture type based on data and compute requirements, architecture complexity, scalability, simplification of adding modalities, training objectives, and any-to-any multimodal generation capability."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

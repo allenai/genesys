@@ -1,0 +1,32 @@
+{
+    "acronym": "6e31cedc02984a564107d15716071c86894bedf0",
+    "title": "ConZIC: Controllable Zero-shot Image Captioning by Sampling-Based Polishing",
+    "seed_ids": [
+        "gpt2",
+        "05bcf9999525656cfaa59bc71f8572d771ff3776",
+        "3cbe314cc5407a6c3249815b5173f22ea15173c2",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6e31cedc02984a564107d15716071c86894bedf0",
+    "abstract": "Zero-shot capability has been considered as a new revolution of deep learning, letting machines work on tasks without curated training data. As a good start and the only existing outcome of zero-shot image captioning (IC), ZeroCap abandons supervised training and sequentially searches every word in the caption using the knowledge of large-scale pre-trained models. Though effective, its autoregressive generation and gradient-directed searching mechanism limit the diversity of captions and inference speed, respectively. Moreover, ZeroCap does not consider the controllability issue of zero-shot IC. To move forward, we propose a framework for Controllable Zero-shot IC, named ConZIC. The core of ConZIC is a novel sampling-based non-autoregressive language model named Gibbs-BERT, which can generate and continuously polish every word. Extensive quantitative and qualitative results demonstrate the superior performance of our proposed ConZIC for both zero-shot IC and controllable zero-shot IC. Especially, ConZIC achieves about $5\\times$ generation speed than ZeroCap, and about $1.5\\times$ diversity scores, with accurate generation given different control signals. Our code is available at https://github.com/joeyz0z/ConZIC.",
+    "authors": [
+        "Zequn Zeng",
+        "Hao Zhang",
+        "Zhengjue Wang",
+        "Ruiying Lu",
+        "Dongsheng Wang",
+        "Bo Chen"
+    ],
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed ConZIC is a novel sampling-based non-autoregressive language model named Gibbs-BERT, which can generate and continuously polish every word and achieves superior performance for both zero-shot IC and controllable zero- shot IC."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

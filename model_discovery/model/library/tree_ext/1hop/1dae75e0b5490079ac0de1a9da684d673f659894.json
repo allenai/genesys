@@ -1,0 +1,33 @@
+{
+    "acronym": "1dae75e0b5490079ac0de1a9da684d673f659894",
+    "title": "SHERL: Synthesizing High Accuracy and Efficient Memory for Resource-Limited Transfer Learning",
+    "seed_ids": [
+        "bert",
+        "a45fd3a9eb9bbd4f265800bb0b46c9ae4bfe3cd7",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1dae75e0b5490079ac0de1a9da684d673f659894",
+    "abstract": "Parameter-efficient transfer learning (PETL) has emerged as a flourishing research field for adapting large pre-trained models to downstream tasks, greatly reducing trainable parameters while grappling with memory challenges during fine-tuning. To address it, memory-efficient series (METL) avoid backpropagating gradients through the large backbone. However, they compromise by exclusively relying on frozen intermediate outputs and limiting the exhaustive exploration of prior knowledge from pre-trained models. Moreover, the dependency and redundancy between cross-layer features are frequently overlooked, thereby submerging more discriminative representations and causing an inherent performance gap (vs. conventional PETL methods). Hence, we propose an innovative METL strategy called SHERL for resource-limited scenarios to decouple the entire adaptation into two successive and complementary processes. In the early route, intermediate outputs are consolidated via an anti-redundancy operation, enhancing their compatibility for subsequent interactions; thereby in the late route, utilizing minimal late pre-trained layers could alleviate the peak demand on memory overhead and regulate these fairly flexible features into more adaptive and powerful representations for new domains. Extensive ablations on vision-and-language and language-only tasks show that SHERL combines the strengths of both parameter and memory-efficient techniques, performing on-par or better across diverse architectures with lower memory during fine-tuning. Our code is publicly available at: https://github.com/Paranioar/SHERL.",
+    "authors": [
+        "Haiwen Diao",
+        "Bo Wan",
+        "Xuecong Jia",
+        "Yunzhi Zhuge",
+        "Ying Zhang",
+        "Huchuan Lu",
+        "Long Chen"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Extensive ablations on vision-and-language and language-only tasks show that SHERL combines the strengths of both parameter and memory-efficient techniques, performing on-par or better across diverse architectures with lower memory during fine-tuning."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "1470b23c089db20c222094d2d155853a2bd26f3c",
+    "title": "Topics in Contextualised Attention Embeddings",
+    "seed_ids": [
+        "gpt",
+        "5744f56d3253bd7c4341d36de40a93fceaa266b3",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1470b23c089db20c222094d2d155853a2bd26f3c",
+    "abstract": "Contextualised word vectors obtained via pre-trained language models encode a variety of knowledge that has already been exploited in applications. Complementary to these language models are probabilistic topic models that learn thematic patterns from the text. Recent work has demonstrated that conducting clustering on the word-level contextual representations from a language model emulates word clusters that are discovered in latent topics of words from Latent Dirichlet Allocation. The important question is how such topical word clusters are automatically formed, through clustering, in the language model when it has not been explicitly designed to model latent topics. To address this question, we design different probe experiments. Using BERT and DistilBERT, we find that the attention framework plays a key role in modelling such word topic clusters. We strongly believe that our work paves way for further research into the relationships between probabilistic topic models and pre-trained language models.",
+    "authors": [
+        "Mozhgan Talebpour",
+        "A. G. S. D. Herrera",
+        "Shoaib Jameel"
+    ],
+    "venue": "European Conference on Information Retrieval",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Using BERT and DistilBERT, this work finds that the attention framework plays a key role in modelling word topic clusters in probabilistic topic models and pre-trained language models."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

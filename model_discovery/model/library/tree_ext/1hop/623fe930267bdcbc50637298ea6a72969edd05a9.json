@@ -1,0 +1,24 @@
+{
+    "acronym": "623fe930267bdcbc50637298ea6a72969edd05a9",
+    "title": "K-Order Graph-oriented Transformer with GraAttention for 3D Pose and Shape Estimation",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "623fe930267bdcbc50637298ea6a72969edd05a9",
+    "abstract": "We propose a novel attention-based 2D-to-3D pose estimation network for graph-structured data, named KOG-Transformer, and a 3D pose-to-shape estimation network for hand data, named GASE-Net. Previous 3D pose estimation methods have focused on various modifications to the graph convolution kernel, such as abandoning weight sharing or increasing the receptive field. Some of these methods employ attention-based non-local modules as auxiliary modules. In order to better model the relationship between nodes in graph-structured data and fuse the information of different neighbor nodes in a differentiated way, we make targeted modifications to the attention module and propose two modules designed for graph-structured data, graph relative positional encoding multi-head self-attention (GR-MSA) and K-order graph-oriented multi-head self-attention (KOG-MSA). By stacking GR-MSA and KOG-MSA, we propose a novel network KOG-Transformer for 2D-to-3D pose estimation. Furthermore, we propose a network for shape estimation on hand data, called GraAttention shape estimation network (GASE-Net), which takes a 3D pose as input and gradually models the shape of the hand from sparse to dense. We have empirically shown the superiority of KOG-Transformer through extensive experiments. Experimental results show that KOG-Transformer significantly outperforms the previous state-of-the-art methods on the benchmark dataset Human3.6M. We evaluate the effect of GASE-Net on two public available hand datasets, ObMan and InterHand2.6M. GASE-Net can predict the corresponding shape for input pose with strong generalization ability.",
+    "authors": [
+        "Weixi Zhao",
+        "Weiqiang Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel attention-based 2D-to-3D pose estimation network for graph-structured data, named KOG-Transformer, and a 3D pose- to-shape estimation network, named GASE-Net, which can predict the corresponding shape for input pose with strong generalization ability are proposed."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

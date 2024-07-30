@@ -1,0 +1,25 @@
+{
+    "acronym": "83e128a25c6664b775005837cd90dd3d64b1737f",
+    "title": "Generative Pre-trained Transformer (GPT) Models for Irony Detection and Classification",
+    "seed_ids": [
+        "gpt",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "83e128a25c6664b775005837cd90dd3d64b1737f",
+    "abstract": "The tasks of identifying and classifying ironic texts remain an ongoing challenge, necessitating continued exploration for enhanced solutions in NLP. This study delves into assessing the effectiveness of Generative Pre-trained Transformer (GPT) models, which have emerged in recent years, in handling irony detection and classification tasks through the implementation of zero-shot learning and few-shot learning methods in English texts. Additionally, we compare GPT text embedding models with GloVe, a proven text embedding model, utilizing various machine learning and deep learning approaches. Within this study, we employed the SemEval-2018 Task 3 dataset, curated as part of the Semantic Evaluation 2018 workshop. The most noteworthy achievement in binary classification, namely irony detection, is an F1 score of 68.9%, attained by the text-davinci-003 model through few-shot learning, with access to forty-two samples for training. In terms of multiclass classification, namely irony classification, the text-embedding-ada-002 text embedding model, in conjunction with the Gaussian Naive Bayes algorithm, attained the best result with an F1 score of 48.5%. The best results obtained in the study achieved comparable results with previous studies.",
+    "authors": [
+        "Mustafa Ulvi Aytekin",
+        "O. Ayhan Erdem"
+    ],
+    "venue": "2023 4th International Informatics and Software Engineering Conference (IISEC)",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study delves into assessing the effectiveness of Generative Pre-trained Transformer models, which have emerged in recent years, in handling irony detection and classification tasks through the implementation of zero-shot learning and few-shot learning methods in English texts."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

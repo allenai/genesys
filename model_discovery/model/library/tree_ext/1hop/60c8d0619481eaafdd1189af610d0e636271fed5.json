@@ -1,0 +1,29 @@
+{
+    "acronym": "60c8d0619481eaafdd1189af610d0e636271fed5",
+    "title": "Perceiver-Actor: A Multi-Task Transformer for Robotic Manipulation",
+    "seed_ids": [
+        "perceiverio",
+        "ada81a4de88a6ce474df2e2446ad11fea480616e",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "60c8d0619481eaafdd1189af610d0e636271fed5",
+    "abstract": "Transformers have revolutionized vision and natural language processing with their ability to scale with large datasets. But in robotic manipulation, data is both limited and expensive. Can manipulation still benefit from Transformers with the right problem formulation? We investigate this question with PerAct, a language-conditioned behavior-cloning agent for multi-task 6-DoF manipulation. PerAct encodes language goals and RGB-D voxel observations with a Perceiver Transformer, and outputs discretized actions by ``detecting the next best voxel action''. Unlike frameworks that operate on 2D images, the voxelized 3D observation and action space provides a strong structural prior for efficiently learning 6-DoF actions. With this formulation, we train a single multi-task Transformer for 18 RLBench tasks (with 249 variations) and 7 real-world tasks (with 18 variations) from just a few demonstrations per task. Our results show that PerAct significantly outperforms unstructured image-to-action agents and 3D ConvNet baselines for a wide range of tabletop tasks.",
+    "authors": [
+        "Mohit Shridhar",
+        "Lucas Manuelli",
+        "D. Fox"
+    ],
+    "venue": "Conference on Robot Learning",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "PerAct is investigated, a language-conditioned behavior-cloning agent for multi-task 6-DoF manipulation that significantly outperforms unstructured image-to-action agents and 3D ConvNet baselines for a wide range of tabletop tasks."
+    },
+    "citationCount": 297,
+    "influentialCitationCount": 49,
+    "code": null,
+    "description": null,
+    "url": null
+}

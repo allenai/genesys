@@ -1,0 +1,39 @@
+{
+    "acronym": "caf6f975ecbe1552271cb8fe7464e07c90847d76",
+    "title": "MEMO : Accelerating Transformers with Memoization on Big Memory Systems",
+    "seed_ids": [
+        "gpt2",
+        "reformer",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "b97c3c370401dc34d2adbeb24f34de5180a14be6",
+        "2b38ddff8e24a07597c8d042ea7b8b85a678e9b2",
+        "5af69480a7ae3b571df6782a11ec4437b386a7d9",
+        "6da4b231148bf26677233d1f778d08a5d26f4313",
+        "dd618e8ece2d2a248487522c987df685258c047b",
+        "ef8d788a904ed66bd8e30ffa69bc3ea1fe57dda7",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "caf6f975ecbe1552271cb8fe7464e07c90847d76",
+    "abstract": "Transformer models gain popularity because of their superior inference accuracy and inference throughput. However, the transformer is computation-intensive, causing a long inference time. The existing works on transformer inference acceleration have limitations caused by either the modification of transformer architectures or the need of specialized hardware. In this paper, we identify the opportunities of using memoization to accelerate the self-attention mechanism in transformers without the above limitations. Built upon a unique observation that there is rich similarity in attention computation across inference sequences, we build a memoization database that leverages the emerging big memory system. We introduce a novel embedding technique to find semantically similar inputs to identify computation similarity. We also introduce a series of techniques such as memory mapping and selective memoization to avoid memory copy and unnecessary overhead. We enable 22% inference-latency reduction on average (up to 68%) with negligible loss in inference accuracy.",
+    "authors": [
+        "Yuan Feng",
+        "Hyeran Jeon",
+        "F. Blagojevic",
+        "Cyril Guyot",
+        "Qing Li",
+        "Dong Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel embedding technique to find semantically similar inputs to identify computation similarity and a series of techniques such as memory mapping and selective memoization to avoid memory copy and unnecessary overhead are introduced."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

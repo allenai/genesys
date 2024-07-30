@@ -1,0 +1,30 @@
+{
+    "acronym": "b13c96e6e3ead456e6d804207be4360f6706fda8",
+    "title": "Asynchronous Multimodal Video Sequence Fusion via Learning Modality-Exclusive and -Agnostic Representations",
+    "seed_ids": [
+        "transformer",
+        "33172567ab1dff9ca32c8d995d88bbff466f3236"
+    ],
+    "s2id": "b13c96e6e3ead456e6d804207be4360f6706fda8",
+    "abstract": "Understanding human intentions (e.g., emotions) from videos has received considerable attention recently. Video streams generally constitute a blend of temporal data stemming from distinct modalities, including natural language, facial expressions, and auditory clues. Despite the impressive advancements of previous works via attention-based paradigms, the inherent temporal asynchrony and modality heterogeneity challenges remain in multimodal sequence fusion, causing adverse performance bottlenecks. To tackle these issues, we propose a Multimodal fusion approach for learning modality-Exclusive and modality-Agnostic representations (MEA) to refine multimodal features and leverage the complementarity across distinct modalities. On the one hand, MEA introduces a predictive self-attention module to capture reliable context dynamics within modalities and reinforce unique features over the modality-exclusive spaces. On the other hand, a hierarchical cross-modal attention module is designed to explore valuable element correlations among modalities over the modality-agnostic space. Meanwhile, a double-discriminator strategy is presented to ensure the production of distinct representations in an adversarial manner. Eventually, we propose a decoupled graph fusion mechanism to enhance knowledge exchange across heterogeneous modalities and learn robust multimodal representations for downstream tasks. Numerous experiments are implemented on three multimodal datasets with asynchronous sequences. Systematic analyses show the necessity of our approach.",
+    "authors": [
+        "Dingkang Yang",
+        "Mingcheng Li",
+        "Linhao Qu",
+        "Kun Yang",
+        "Peng Zhai",
+        "Song Wang",
+        "Lihua Zhang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Multimodal fusion approach for learning modality-Exclusive and modality-Agnostic representations (MEA) is proposed to refine multimodal features and leverage the complementarity across distinct modalities to refine multimodal features and leverage the complementarity across distinct modalities."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,32 @@
+{
+    "acronym": "0eb69035aef6b190f0fd0c3892b9bbd26388a2a0",
+    "title": "P-TA: Using Proximal Policy Optimization to Enhance Tabular Data Augmentation via Large Language Models",
+    "seed_ids": [
+        "gpt2",
+        "4e1cac32403c6caff15aa8c2a3560031bb05c6d4",
+        "394bd431e522b86581086bcb5cd9be161cf1cdf4",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0eb69035aef6b190f0fd0c3892b9bbd26388a2a0",
+    "abstract": "A multitude of industries depend on accurate and reasonable tabular data augmentation for their business processes. Contemporary methodologies in generating tabular data revolve around utilizing Generative Adversarial Networks (GAN) or fine-tuning Large Language Models (LLM). However, GAN-based approaches are documented to produce samples with common-sense errors attributed to the absence of external knowledge. On the other hand, LLM-based methods exhibit a limited capacity to capture the disparities between synthesized and actual data distribution due to the absence of feedback from a discriminator during training. Furthermore, the decoding of LLM-based generation introduces gradient breakpoints, impeding the backpropagation of loss from a discriminator, thereby complicating the integration of these two approaches. To solve this challenge, we propose using proximal policy optimization (PPO) to apply GANs, guiding LLMs to enhance the probability distribution of tabular features. This approach enables the utilization of LLMs as generators for GANs in synthesizing tabular data. Our experiments demonstrate that PPO leads to an approximately 4\\% improvement in the accuracy of models trained on synthetically generated data over state-of-the-art across three real-world datasets.",
+    "authors": [
+        "Shuo Yang",
+        "Chenchen Yuan",
+        "Yao Rong",
+        "Felix Steinbauer",
+        "Gjergji Kasneci"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "PPO is proposed using proximal policy optimization (PPO) to apply GANs, guiding LLMs to enhance the probability distribution of tabular features, enabling the utilization of LLMs as generators for GANs in synthesizing tabular data."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

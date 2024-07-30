@@ -1,0 +1,34 @@
+{
+    "acronym": "25f862a81cfc5ea845ac7f3dd928549d7c87425b",
+    "title": "AudioLCM: Text-to-Audio Generation with Latent Consistency Models",
+    "seed_ids": [
+        "classfreediffu",
+        "33de773be1733347a01cb07a5bb1b6cdfa956a47",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "25f862a81cfc5ea845ac7f3dd928549d7c87425b",
+    "abstract": "Recent advancements in Latent Diffusion Models (LDMs) have propelled them to the forefront of various generative tasks. However, their iterative sampling process poses a significant computational burden, resulting in slow generation speeds and limiting their application in text-to-audio generation deployment. In this work, we introduce AudioLCM, a novel consistency-based model tailored for efficient and high-quality text-to-audio generation. AudioLCM integrates Consistency Models into the generation process, facilitating rapid inference through a mapping from any point at any time step to the trajectory's initial point. To overcome the convergence issue inherent in LDMs with reduced sample iterations, we propose the Guided Latent Consistency Distillation with a multi-step Ordinary Differential Equation (ODE) solver. This innovation shortens the time schedule from thousands to dozens of steps while maintaining sample quality, thereby achieving fast convergence and high-quality generation. Furthermore, to optimize the performance of transformer-based neural network architectures, we integrate the advanced techniques pioneered by LLaMA into the foundational framework of transformers. This architecture supports stable and efficient training, ensuring robust performance in text-to-audio synthesis. Experimental results on text-to-sound generation and text-to-music synthesis tasks demonstrate that AudioLCM needs only 2 iterations to synthesize high-fidelity audios, while it maintains sample quality competitive with state-of-the-art models using hundreds of steps. AudioLCM enables a sampling speed of 333x faster than real-time on a single NVIDIA 4090Ti GPU, making generative models practically applicable to text-to-audio generation deployment. Our extensive preliminary analysis shows that each design in AudioLCM is effective.",
+    "authors": [
+        "Huadai Liu",
+        "Rongjie Huang",
+        "Yang Liu",
+        "Hengyuan Cao",
+        "Jialei Wang",
+        "Xize Cheng",
+        "Siqi Zheng",
+        "Zhou Zhao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces AudioLCM, a novel consistency-based model tailored for efficient and high-quality text-to-audio generation and proposes the Guided Latent Consistency Distillation with a multi-step Ordinary Differential Equation (ODE) solver to overcome the convergence issue inherent in LDMs with reduced sample iterations."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

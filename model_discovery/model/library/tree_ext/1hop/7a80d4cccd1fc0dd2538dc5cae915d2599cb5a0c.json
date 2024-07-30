@@ -1,0 +1,28 @@
+{
+    "acronym": "7a80d4cccd1fc0dd2538dc5cae915d2599cb5a0c",
+    "title": "SCM: A Searched Convolutional Metaformer for SAR Ship Classification",
+    "seed_ids": [
+        "metaformer",
+        "2d98048c2d2fcd3f6b989d2a54003808906ab4b7",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "7a80d4cccd1fc0dd2538dc5cae915d2599cb5a0c",
+    "abstract": "Ship classification technology using synthetic aperture radar (SAR) has become a research hotspot. Many deep-learning-based methods have been proposed with handcrafted models or using transplanted computer vision networks. However, most of these methods are designed for graphics processing unit (GPU) platforms, leading to limited scope for application. This paper proposes a novel mini-size searched convolutional Metaformer (SCM) for classifying SAR ships. Firstly, a network architecture searching (NAS) algorithm with progressive data augmentation is proposed to find an efficient baseline convolutional network. Then, a transformer classifier is employed to improve the spatial awareness capability. Moreover, a ConvFormer cell is proposed by filling the searched normal convolutional cell into a Metaformer block. This novel cell architecture further improves the feature-extracting capability. Experimental results obtained show that the proposed SCM provides the best accuracy with only 0.46\u00d7106 weights, achieving a good trade-off between performance and model size.",
+    "authors": [
+        "Hairui Zhu",
+        "Shanhong Guo",
+        "Weixing Sheng",
+        "Lei Xiao"
+    ],
+    "venue": "Remote Sensing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel mini-size searched convolutional Metaformer (SCM) for classifying SAR ships with the best accuracy with only 0.46\u00d7106 weights is proposed, achieving a good trade-off between performance and model size."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

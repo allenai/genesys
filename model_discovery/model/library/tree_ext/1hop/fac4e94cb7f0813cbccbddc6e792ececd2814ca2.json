@@ -1,0 +1,28 @@
+{
+    "acronym": "fac4e94cb7f0813cbccbddc6e792ececd2814ca2",
+    "title": "Evaluating Diversity in Automatic Poetry Generation",
+    "seed_ids": [
+        "gpt2",
+        "7cdebb73662387d9040da4f27a7dc04dbffa3c3e",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "fac4e94cb7f0813cbccbddc6e792ececd2814ca2",
+    "abstract": "Natural Language Generation (NLG), and more generally generative AI, are among the currently most impactful research fields. Creative NLG, such as automatic poetry generation, is a fascinating niche in this area. While most previous research has focused on forms of the Turing test when evaluating automatic poetry generation - can humans distinguish between automatic and human generated poetry - we evaluate the diversity of automatically generated poetry, by comparing distributions of generated poetry to distributions of human poetry along structural, lexical, semantic and stylistic dimensions, assessing different model types (word vs. character-level, general purpose LLMs vs. poetry-specific models), including the very recent LLaMA3, and types of fine-tuning (conditioned vs. unconditioned). We find that current automatic poetry systems are considerably underdiverse along multiple dimensions - they often do not rhyme sufficiently, are semantically too uniform and even do not match the length distribution of human poetry. Our experiments reveal, however, that style-conditioning and character-level modeling clearly increases diversity across virtually all dimensions we explore. Our identified limitations may serve as the basis for more genuinely diverse future poetry generation models.",
+    "authors": [
+        "Yanran Chen",
+        "Hannes Groner",
+        "Sina Zarrie\u00df",
+        "Steffen Eger"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The diversity of automatically generated poetry is evaluated, by comparing distributions of generated poetry to distributions of human poetry along structural, lexical, semantic and stylistic dimensions, and it is found that current automatic poetry systems are considerably underdiverse along multiple dimensions."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

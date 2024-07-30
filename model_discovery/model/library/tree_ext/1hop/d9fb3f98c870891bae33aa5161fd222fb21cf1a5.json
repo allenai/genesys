@@ -1,0 +1,30 @@
+{
+    "acronym": "d9fb3f98c870891bae33aa5161fd222fb21cf1a5",
+    "title": "Deciphering the Factors Influencing the Efficacy of Chain-of-Thought: Probability, Memorization, and Noisy Reasoning",
+    "seed_ids": [
+        "gpt2",
+        "40c0d1f38ab081e21cc3b1e2e5334a9b54b6ff08",
+        "7b7649b59d62d2ebfb3c34b7bc91204b9b7cefe8",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d9fb3f98c870891bae33aa5161fd222fb21cf1a5",
+    "abstract": "Chain-of-Thought (CoT) prompting has been shown to enhance the multi-step reasoning capabilities of Large Language Models (LLMs). However, debates persist about whether LLMs exhibit abstract generalization or rely on shallow heuristics when given CoT prompts. To understand the factors influencing CoT reasoning we provide a detailed case study of the symbolic reasoning task of decoding shift ciphers, where letters are shifted forward some number of steps in the alphabet. GPT-4 achieves zero accuracy on most shift ciphers with standard prompting, but with CoT its accuracy improves to an average of 32%. By focusing on a single relatively simple task, we are able to identify three factors that systematically affect CoT performance: the probability of the task's expected output (probability), what the model has implicitly learned during pre-training (memorization), and the number of intermediate operations involved in reasoning (noisy reasoning). We show that these factors can drastically influence the task accuracy; e.g., varying the output's probability of occurrence can shift accuracy from 26% to 70%. We also demonstrate that it is essential for the model to explicitly produce intermediate steps as output that can be conditioned on to increase the probability of the correct answer. Our experiments indicate that as long as the model does so, the validity of the demonstrations in the prompt does not matter. Overall, we conclude that CoT prompting performance reflects both memorization and a probabilistic version of genuine reasoning.",
+    "authors": [
+        "Akshara Prabhakar",
+        "Thomas L. Griffiths",
+        "R. Thomas McCoy"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "CoT prompting performance reflects both memorization and a probabilistic version of genuine reasoning, as well as the validity of the demonstrations in the prompt does not matter."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

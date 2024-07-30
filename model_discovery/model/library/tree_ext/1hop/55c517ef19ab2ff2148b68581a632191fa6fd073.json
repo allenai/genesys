@@ -1,0 +1,37 @@
+{
+    "acronym": "55c517ef19ab2ff2148b68581a632191fa6fd073",
+    "title": "Recipe-MPR: A Test Collection for Evaluating Multi-aspect Preference-based Natural Language Retrieval",
+    "seed_ids": [
+        "gpt2",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "55c517ef19ab2ff2148b68581a632191fa6fd073",
+    "abstract": "The rise of interactive recommendation assistants has led to a novel domain of natural language (NL) recommendation that would benefit from improved multi-aspect reasoning to retrieve relevant items based on NL statements of preference. Such preference statements often involve multiple aspects, e.g., \"I would like meat lasagna but I'm watching my weight\". Unfortunately, progress in this domain is slowed by the lack of annotated data. To address this gap, we curate a novel dataset which captures logical reasoning over multi-aspect, NL preference-based queries and a set of multiple-choice, multi-aspect item descriptions. We focus on the recipe domain in which multi-aspect preferences are often encountered due to the complexity of the human diet. The goal of publishing our dataset is to provide a benchmark for joint progress in three key areas: 1) structured, multi-aspect NL reasoning with a variety of properties (e.g., level of specificity, presence of negation, and the need for commonsense, analogical, and/or temporal inference), 2) the ability of recommender systems to respond to NL preference utterances, and 3) explainable NL recommendation facilitated by aspect extraction and reasoning. We perform experiments using a variety of methods (sparse and dense retrieval, zero- and few-shot reasoning with large language models) in two settings: a monolithic setting which uses the full query and an aspect-based setting which isolates individual query aspects and aggregates the results. GPT-3 results in much stronger performance than other methods with 73% zero-shot accuracy and 83% few-shot accuracy in the monolithic setting. Aspect-based GPT-3, which facilitates structured explanations, also shows promise with 68% zero-shot accuracy. These results establish baselines for future research into explainable recommendations via multi-aspect preference-based NL reasoning.",
+    "authors": [
+        "Haochen Zhang",
+        "A. Korikov",
+        "Parsa Farinneya",
+        "Mohammad Mahdi Abdollah Pour",
+        "Manasa Bharadwaj",
+        "Ali Pesaranghader",
+        "Xi Yu Huang",
+        "Yi Xin Lok",
+        "Zhaoqi Wang",
+        "Nathan Jones",
+        "S. Sanner"
+    ],
+    "venue": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel dataset which captures logical reasoning over multi-aspect, NL preference-based queries and a set of multiple-choice, multi-Aspect item descriptions is published to provide a benchmark for joint progress in three key areas: structured,multi- aspect NL reasoning with a variety of properties, the ability of recommender systems to respond to NL preference utterances, and explainable NL recommendation facilitated by aspect extraction and reasoning."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "10351310828503a248dc9d6a9ebc6c1a61bc00f8",
+    "title": "SpMMPlu: A Compiler Plug-in with Sparse IR for Efficient Sparse Matrix Multiplication",
+    "seed_ids": [
+        "sparsetransformer",
+        "b97c3c370401dc34d2adbeb24f34de5180a14be6",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "10351310828503a248dc9d6a9ebc6c1a61bc00f8",
+    "abstract": "Sparsity is becoming arguably the most critical dimension to explore for efficiency and scalability as deep learning models grow significantly larger. Particularly, pruning is a common method to reduce redundant computations in attention-based and convolution-based models. The induced sparse matrix multiplication (SpMM) normally requires domain-specific hardware architecture (DSA) to eliminate unnecessary zero-valued computations. However, generating an optimal kernel code for SpMM on general-purpose and ISA-based spatial accelerators without changing the hardware architecture is still an open problem.In this paper, we propose a compiler plug-in named SpMMPlu, which can extend the representation and optimization ability for SpMM in current deep learning compiler frameworks that only support dense matrix multiplication. The key of SpMMPlu is a flexible intermediate representation\u2014 Sparse IR, representing the SpMM with various sparsity patterns based on meta-ops with a multi-level structure. Meta-op takes abstraction of the hardware intrinsic as its minimum granularity, and the powerful optimizers of existing NN compiler backends (e.g., Auto-schedule in TVM, AKG in MindSpore) can be easily reused for its computational scheduling and code generation. Moreover, we propose a two-step (segmentation & grouping) method to achieve an efficient Sparse IR for each sparsity pattern. Only three passes are added in SpMMPlu to provide an automatic solution for SpMM kernel code generation. We embed SpMMPlu into MindSpore and do experiments on NVIDIA V100 GPU and Huawei Ascend 910 to verify its effectiveness and scalability. The results show that with SpMMPlu, MindSpore can support various sparsity patterns and deliver a 1.93\u00d7 (on V100 GPU) and 2.21\u00d7 (on AScend 910) speedup averagely compared to the dense counterpart.",
+    "authors": [
+        "Tao Yang",
+        "Yiyuan Zhou",
+        "Qidong Tang",
+        "Feng Xu",
+        "Hui Ma",
+        "Jieru Zhao",
+        "Li Jiang"
+    ],
+    "venue": "Design Automation Conference",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A compiler plug-in named SpMMPlu is proposed, which can extend the representation and optimization ability for SpMM in current deep learning compiler frameworks that only support dense matrix multiplication and proposes a two-step method to achieve an efficient Sparse IR for each sparsity pattern."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

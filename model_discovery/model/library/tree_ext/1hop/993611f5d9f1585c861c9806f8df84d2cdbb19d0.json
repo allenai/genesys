@@ -1,0 +1,27 @@
+{
+    "acronym": "993611f5d9f1585c861c9806f8df84d2cdbb19d0",
+    "title": "APT: Adaptive Pruning and Tuning Pretrained Language Models for Efficient Training and Inference",
+    "seed_ids": [
+        "bert",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "993611f5d9f1585c861c9806f8df84d2cdbb19d0",
+    "abstract": "Fine-tuning and inference with large Language Models (LM) are generally known to be expensive. Parameter-efficient fine-tuning over pretrained LMs reduces training memory by updating a small number of LM parameters but does not improve inference efficiency. Structured pruning improves LM inference efficiency by removing consistent parameter blocks, yet often increases training memory and time. To improve both training and inference efficiency, we introduce APT that adaptively prunes and tunes parameters for the LMs. At the early stage of fine-tuning, APT dynamically adds salient tuning parameters for fast and accurate convergence while discarding unimportant parameters for efficiency. Compared to baselines, our experiments show that APT maintains up to 98% task performance when pruning RoBERTa and T5 models with 40% parameters left while keeping 86.4% LLaMA models' performance with 70% parameters remained. Furthermore, APT speeds up LMs fine-tuning by up to 8x and reduces large LMs memory training footprint by up to 70%.",
+    "authors": [
+        "Bowen Zhao",
+        "Hannaneh Hajishirzi",
+        "Qingqing Cao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces APT that adaptively prunes and tunes parameters for the LMs and dynamically adds salient tuning parameters for fast and accurate convergence while discarding unimportant parameters for efficiency."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,26 @@
+{
+    "acronym": "31249eaaf157270af7c99c684cf91d754883d2b0",
+    "title": "Pcc-tuning: Breaking the Contrastive Learning Ceiling in Semantic Textual Similarity",
+    "seed_ids": [
+        "bert",
+        "e22ae34ea102a781d0494e115639e8d081bf6920",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221"
+    ],
+    "s2id": "31249eaaf157270af7c99c684cf91d754883d2b0",
+    "abstract": "Semantic Textual Similarity (STS) constitutes a critical research direction in computational linguistics and serves as a key indicator of the encoding capabilities of embedding models. Driven by advances in pre-trained language models and contrastive learning techniques, leading sentence representation methods can already achieved average Spearman's correlation scores of approximately 86 across seven STS benchmarks in SentEval. However, further improvements have become increasingly marginal, with no existing method attaining an average score higher than 87 on these tasks. This paper conducts an in-depth analysis of this phenomenon and concludes that the upper limit for Spearman's correlation scores using contrastive learning is 87.5. To transcend this ceiling, we propose an innovative approach termed Pcc-tuning, which employs Pearson's correlation coefficient as a loss function to refine model performance beyond contrastive learning. Experimental results demonstrate that Pcc-tuning markedly surpasses previous state-of-the-art strategies, raising the Spearman's correlation score to above 90.",
+    "authors": [
+        "Bowen Zhang",
+        "Chunping Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An innovative approach termed Pcc-tuning is proposed, which employs Pearson's correlation coefficient as a loss function to refine model performance beyond contrastive learning, and markedly surpasses previous state-of-the-art strategies, raising the Spearman's correlation score to above 90."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

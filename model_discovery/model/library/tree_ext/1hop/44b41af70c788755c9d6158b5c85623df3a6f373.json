@@ -1,0 +1,26 @@
+{
+    "acronym": "44b41af70c788755c9d6158b5c85623df3a6f373",
+    "title": "From Transformers to Reformers",
+    "seed_ids": [
+        "reformer",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "44b41af70c788755c9d6158b5c85623df3a6f373",
+    "abstract": "This paper investigates different deep learning models for various tasks of Natural Language Processing. Recent ongoing research is about the Transformer models and their variations (like the Reformer model). The Recurrent Neural Networks models were efficient up to an only a fixed size of the window. They were unable to capture long-term dependencies for large sequences. To overcome this limitation, the attention mechanism was introduced which is incorporated in the Transformer model. The dot product attention in transformers has a complexity of O(n2) where n is the sequence length. This computation becomes infeasible for large sequences. Also, the residual layers consume a lot of memory because activations need to be stored for back-propagation. To overcome this limitation of memory efficiency and to make transformers learn over larger sequences, the Reformer models were introduced. Our research includes the evaluation of the performance of these two models on various Natural Language Processing tasks.",
+    "authors": [
+        "Nauman Riaz",
+        "Seemab Latif",
+        "R. Latif"
+    ],
+    "venue": "2021 International Conference on Digital Futures and Transformative Technologies (ICoDT2)",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Reformer models were introduced to make transformers learn over larger sequences, and the evaluation of the performance of these two models on various Natural Language Processing tasks is included."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

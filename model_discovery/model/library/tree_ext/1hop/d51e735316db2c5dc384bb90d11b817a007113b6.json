@@ -1,0 +1,33 @@
+{
+    "acronym": "d51e735316db2c5dc384bb90d11b817a007113b6",
+    "title": "TextCraft: Zero-Shot Generation of High-Fidelity and Diverse Shapes from Text",
+    "seed_ids": [
+        "classfreediffu",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "d51e735316db2c5dc384bb90d11b817a007113b6",
+    "abstract": "Language is one of the primary means by which we describe the 3D world around us. While rapid progress has been made in text-to-2D-image synthesis, similar progress in text-to-3D-shape synthesis has been hindered by the lack of paired (text, shape) data. Moreover, extant methods for text-to-shape generation have limited shape diversity and fidelity. We introduce TextCraft, a method to address these limitations by producing high-fidelity and diverse 3D shapes without the need for (text, shape) pairs for training. TextCraft achieves this by using CLIP and using a multi-resolution approach by first generating in a low-dimensional latent space and then upscaling to a higher resolution, improving the fidelity of the generated shape. To improve shape diversity, we use a discrete latent space which is modelled using a bidirectional transformer conditioned on the interchangeable image-text embedding space induced by CLIP. Moreover, we present a novel variant of classifier-free guidance, which further improves the accuracydiversity trade-off. Finally, we perform extensive experiments that demonstrate that TextCraft outperforms state-of-the-art baselines. \u201ca baseball cap\u201d \u201ca skateboard\u201d \u201ca motor bike\u201d \u201ca formula one car\u201d \u201ca round guitar\u201d \u201ca bathtub\u201d Figure 1: We propose a new zero-shot text-to-shape generation method called TextCraft. The generated shapes are high-quality and can reflect the semantic meaning from the text input in ShapeNet55.",
+    "authors": [
+        "Aditya Sanghi",
+        "Rao Fu",
+        "Vivian Liu",
+        "Karl D. D. Willis",
+        "Hooman Shayani",
+        "A. Khasahmadi",
+        "Srinath Sridhar",
+        "Daniel Ritchie"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces TextCraft, a method to address limitations in text-to-shape generation by producing high-fidelity and diverse 3D shapes without the need for (text, shape) pairs for training by using CLIP and using a multi-resolution approach."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

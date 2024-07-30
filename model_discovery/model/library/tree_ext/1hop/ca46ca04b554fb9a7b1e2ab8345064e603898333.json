@@ -1,0 +1,30 @@
+{
+    "acronym": "ca46ca04b554fb9a7b1e2ab8345064e603898333",
+    "title": "FreeTensor: a free-form DSL with holistic optimizations for irregular tensor programs",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "ca46ca04b554fb9a7b1e2ab8345064e603898333",
+    "abstract": "Tensor programs are of critical use in many domains. Existing frameworks, such as PyTorch, TensorFlow, and JAX, adopt operator-based programming to ease programming, increase performance, and perform automatic differentiation. However, as the rapid development of tensor programs, operator-based programming shows significant limitations for irregular patterns since a large amount of redundant computation or memory access is introduced. In this work, we propose FreeTensor, a free-form domain specific language which supports redundancy-avoid programming by introducing fine-grained control flow. With optimizations including partial evaluation, dependence-aware transformations, and fine-grained automatic differentiation, FreeTensor is able to generate high performance tensor programs on both CPU and GPU. Experiments show a speedup over existing tensor programming frameworks up to 5.10 \u00d7 (2.08 \u00d7 on average) without differentiation, and up to 127.74 \u00d7 (36.26 \u00d7 on average) after differentiation, for typical irregular tensor programs.",
+    "authors": [
+        "Shizhi Tang",
+        "Jidong Zhai",
+        "Haojie Wang",
+        "Lin Jiang",
+        "Liyan Zheng",
+        "Zhenhao Yuan",
+        "Chen Zhang"
+    ],
+    "venue": "ACM-SIGPLAN Symposium on Programming Language Design and Implementation",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes FreeTensor, a free-form domain specific language which supports redundancy-avoid programming by introducing fine-grained control flow and is able to generate high performance tensor programs on both CPU and GPU."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

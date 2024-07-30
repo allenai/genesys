@@ -1,0 +1,36 @@
+{
+    "acronym": "b16855a3338052be6202eeea3a18b5496a67cef2",
+    "title": "Context Generation Improves Open Domain Question Answering",
+    "seed_ids": [
+        "gpt2",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b16855a3338052be6202eeea3a18b5496a67cef2",
+    "abstract": "Closed-book question answering (QA) requires a model to directly answer an open-domain question without access to any external knowledge. Prior work on closed-book QA either directly finetunes or prompts a pretrained language model (LM) to leverage the stored knowledge. However, they do not fully exploit the parameterized knowledge. To address this inefficiency, we propose a two-stage, closed-book QA framework which employs a coarse-to-fine approach to extract the relevant knowledge and answer a question. We first generate a related context for a given question by prompting a pretrained LM. We then prompt the same LM to generate an answer using the generated context and the question. Additionally, we marginalize over the generated contexts to improve the accuracies and reduce context uncertainty. Experimental results on three QA benchmarks show that our method significantly outperforms previous closed-book QA methods. For example on TriviaQA, our method improves exact match accuracy from 55.3% to 68.6%, and is on par with open-book QA methods (68.6% vs. 68.0%). Our results show that our new methodology is able to better exploit the stored knowledge in pretrained LMs without adding extra learnable parameters or needing finetuning, and paves the way for hybrid models that integrate pretrained LMs with external knowledge.",
+    "authors": [
+        "Dan Su",
+        "M. Patwary",
+        "Shrimai Prabhumoye",
+        "Peng Xu",
+        "R. Prenger",
+        "M. Shoeybi",
+        "Pascale Fung",
+        "Anima Anandkumar",
+        "Bryan Catanzaro"
+    ],
+    "venue": "Findings",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A two-stage, closed-book QA framework which employs a coarse-to-fine approach to extract the relevant knowledge and answer a question and paves the way for hybrid models that integrate pretrained LMs with external knowledge."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

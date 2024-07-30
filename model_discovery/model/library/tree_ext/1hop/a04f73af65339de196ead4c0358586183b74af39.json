@@ -1,0 +1,36 @@
+{
+    "acronym": "a04f73af65339de196ead4c0358586183b74af39",
+    "title": "Learning Long-form Video Prior via Generative Pre-Training",
+    "seed_ids": [
+        "gpt2",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a04f73af65339de196ead4c0358586183b74af39",
+    "abstract": "Concepts involved in long-form videos such as people, objects, and their interactions, can be viewed as following an implicit prior. They are notably complex and continue to pose challenges to be comprehensively learned. In recent years, generative pre-training (GPT) has exhibited versatile capacities in modeling any kind of text content even visual locations. Can this manner work for learning long-form video prior? Instead of operating on pixel space, it is efficient to employ visual locations like bounding boxes and keypoints to represent key information in videos, which can be simply discretized and then tokenized for consumption by GPT. Due to the scarcity of suitable data, we create a new dataset called \\textbf{Storyboard20K} from movies to serve as a representative. It includes synopses, shot-by-shot keyframes, and fine-grained annotations of film sets and characters with consistent IDs, bounding boxes, and whole body keypoints. In this way, long-form videos can be represented by a set of tokens and be learned via generative pre-training. Experimental results validate that our approach has great potential for learning long-form video prior. Code and data will be released at \\url{https://github.com/showlab/Long-form-Video-Prior}.",
+    "authors": [
+        "Jinheng Xie",
+        "Jiajun Feng",
+        "Zhaoxu Tian",
+        "Kevin Qinghong Lin",
+        "Yawen Huang",
+        "Xi Xia",
+        "Nanxu Gong",
+        "Xu Zuo",
+        "Jiaqi Yang",
+        "Yefeng Zheng",
+        "Mike Zheng Shou"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results validate that the approach has great potential for learning long-form video prior and that it is efficient to employ visual locations like bounding boxes and keypoints to represent key information in videos."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

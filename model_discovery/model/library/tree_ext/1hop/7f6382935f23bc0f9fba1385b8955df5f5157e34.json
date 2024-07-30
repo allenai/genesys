@@ -1,0 +1,25 @@
+{
+    "acronym": "7f6382935f23bc0f9fba1385b8955df5f5157e34",
+    "title": "Generating Synthetic Clinical Data that Capture Class Imbalanced Distributions with Generative Adversarial Networks: Example using Antiretroviral Therapy for HIV",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "7f6382935f23bc0f9fba1385b8955df5f5157e34",
+    "abstract": "OBJECTIVE\nClinical data's confidential nature often limits the development of machine learning models in healthcare. Generative adversarial networks (GANs) can synthesise realistic datasets, but suffer from mode collapse, resulting in low diversity and bias towards majority demographics and common clinical practices. This work proposes an extension to the classic GAN framework that includes a variational autoencoder (VAE) and an external memory mechanism to overcome these limitations and generate synthetic data accurately describing imbalanced class distributions commonly found in clinical variables.\n\n\nMETHODS\nThe proposed method generated a synthetic dataset related to antiretroviral therapy for human immunodeficiency virus (ART for HIV). We evaluated it based on five metrics: (1) accurately representing imbalanced class distribution; (2) the realism of the individual variables; (3) the realism among variables; (4) patient disclosure risk; and (5) the utility of the generated dataset for developing downstream machine learning models.\n\n\nRESULTS\nThe proposed method overcomes the issue of mode collapse and generates a synthetic dataset that accurately describes imbalanced class distributions commonly found in clinical variables. The generated data has a patient disclosure risk of 0.095%, lower than the 9% threshold stated by Health Canada and the European Medicines Agency, making it suitable for distribution to the research community with high security. The generated data also has high utility, indicating the potential of the proposed method to enable the development of downstream machine learning algorithms for healthcare applications using synthetic data.\n\n\nCONCLUSION\nOur proposed extension to the classic GAN framework, which includes a VAE and an external memory mechanism, represents a promising approach towards generating synthetic data that accurately describe imbalanced class distributions commonly found in clinical variables. This method overcomes the limitations of GANs and creates more realistic datasets with higher patient cohort diversity, facilitating the development of downstream machine learning algorithms for healthcare applications.",
+    "authors": [
+        "N. Kuo",
+        "Louisa R Jorm",
+        "S. Barbieri"
+    ],
+    "venue": "Journal of Biomedical Informatics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an extension to the classic GAN framework that includes a variational autoencoder (VAE) and an external memory mechanism to overcome limitations and generate synthetic data accurately describing imbalanced class distributions commonly found in clinical variables."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

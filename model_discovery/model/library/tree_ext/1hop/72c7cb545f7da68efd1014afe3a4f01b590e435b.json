@@ -1,0 +1,31 @@
+{
+    "acronym": "72c7cb545f7da68efd1014afe3a4f01b590e435b",
+    "title": "WinoQueer: A Community-in-the-Loop Benchmark for Anti-LGBTQ+ Bias in Large Language Models",
+    "seed_ids": [
+        "gpt2",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "7ef43bacd43393ff116e6fcda6a52a6902e016d7",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "72c7cb545f7da68efd1014afe3a4f01b590e435b",
+    "abstract": "We present WinoQueer: a benchmark specifically designed to measure whether large language models (LLMs) encode biases that are harmful to the LGBTQ+ community. The benchmark is community-sourced, via application of a novel method that generates a bias benchmark from a community survey. We apply our benchmark to several popular LLMs and find that off-the-shelf models generally do exhibit considerable anti-queer bias. Finally, we show that LLM bias against a marginalized community can be somewhat mitigated by finetuning on data written about or by members of that community, and that social media text written by community members is more effective than news text written about the community by non-members. Our method for community-in-the-loop benchmark development provides a blueprint for future researchers to develop community-driven, harms-grounded LLM benchmarks for other marginalized communities.",
+    "authors": [
+        "Virginia K. Felkner",
+        "Ho-Chun Herbert Chang",
+        "Eugene Jang",
+        "Jonathan May"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that LLM bias against a marginalized community can be somewhat mitigated by finetuning on data written about or by members of that community, and that social media text written by community members is more effective than news text written about the community by non-members."
+    },
+    "citationCount": 14,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

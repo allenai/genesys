@@ -1,0 +1,32 @@
+{
+    "acronym": "a68c3412e60560290400d2707596f82a914b7c00",
+    "title": "Kaleidoscope: An Efficient, Learnable Representation For All Structured Linear Maps",
+    "seed_ids": [
+        "butterfly",
+        "lighdynconv",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "a68c3412e60560290400d2707596f82a914b7c00",
+    "abstract": "Modern neural network architectures use structured linear transformations, such as low-rank matrices, sparse matrices, permutations, and the Fourier transform, to improve inference speed and reduce memory usage compared to general linear maps. However, choosing which of the myriad structured transformations to use (and its associated parameterization) is a laborious task that requires trading off speed, space, and accuracy. We consider a different approach: we introduce a family of matrices called kaleidoscope matrices (K-matrices) that provably capture any structured matrix with near-optimal space (parameter) and time (arithmetic operation) complexity. We empirically validate that K-matrices can be automatically learned within end-to-end pipelines to replace hand-crafted procedures, in order to improve model quality. For example, replacing channel shuffles in ShuffleNet improves classification accuracy on ImageNet by up to 5%. Learnable K-matrices can also simplify hand-engineered pipelines---we replace filter bank feature computation in speech data preprocessing with a kaleidoscope layer, resulting in only 0.4% loss in accuracy on the TIMIT speech recognition task. K-matrices can also capture latent structure in models: for a challenging permuted image classification task, adding a K-matrix to a standard convolutional architecture can enable learning the latent permutation and improve accuracy by over 8 points. We provide a practically efficient implementation of our approach, and use K-matrices in a Transformer network to attain 36% faster end-to-end inference speed on a language translation task.",
+    "authors": [
+        "Tri Dao",
+        "N. Sohoni",
+        "Albert Gu",
+        "Matthew Eichhorn",
+        "Amit Blonder",
+        "Megan Leszczynski",
+        "A. Rudra",
+        "Christopher R\u00e9"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A family of matrices called kaleidoscope matrices (K-matrices) are introduced that provably capture any structured matrix with near-optimal space (parameter) and time (arithmetic operation) complexity that can be automatically learned within end-to-end pipelines to replace hand-crafted procedures."
+    },
+    "citationCount": 39,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

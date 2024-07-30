@@ -1,0 +1,34 @@
+{
+    "acronym": "062bbb6474309d3c42397d8ab808505a91ca6ef2",
+    "title": "Air-Decoding: Attribute Distribution Reconstruction for Decoding-Time Controllable Text Generation",
+    "seed_ids": [
+        "gpt2",
+        "670edecb7a0d3887893c8f287e66209b87e5f56f",
+        "492a655a67e6ec7423a968cedb70eec0cdbc8e98",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "062bbb6474309d3c42397d8ab808505a91ca6ef2",
+    "abstract": "Controllable text generation (CTG) aims to generate text with desired attributes, and decoding-time-based methods have shown promising performance on this task. However, in this paper, we identify the phenomenon of Attribute Collapse for the first time. It causes the fluency of generated text to rapidly decrease when the control strength exceeds a critical value, rendering the text completely unusable. This limitation hinders the effectiveness of decoding methods in achieving high levels of controllability. To address this problem, we propose a novel lightweight decoding framework named Air-Decoding. Its main idea is reconstructing the attribute distributions to balance the weights between attribute words and non-attribute words to generate more fluent text. Specifically, we train prefixes by prefix-tuning to obtain attribute distributions. Then we design a novel attribute distribution reconstruction method to balance the obtained distributions and use the reconstructed distributions to guide language models for generation, effectively avoiding the issue of Attribute Collapse. Experiments on multiple CTG tasks prove that our method achieves a new state-of-the-art control performance.",
+    "authors": [
+        "Tianqi Zhong",
+        "Quan Wang",
+        "Jingxuan Han",
+        "Yongdong Zhang",
+        "Zhendong Mao"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel lightweight decoding framework named Air-Decoding is proposed, reconstructing the attribute distributions to balance the weights between attribute words and non-attribute words to generate more fluent text and achieves a new state-of-the-art control performance."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,25 @@
+{
+    "acronym": "14320496649e82d849680ddf3eb89b7764f9a3f3",
+    "title": "A review of practice of using evolutionary algorithms for neural network synthesis and training",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "14320496649e82d849680ddf3eb89b7764f9a3f3",
+    "abstract": "The object of this research is the application of evolutionary algorithms for the synthesis and training of neural networks. The paper aims to select and review the existing experience on using evolutionary algorithms as competitive methods to conventional approaches in neural network training and creation, and to evaluate such existing solutions for further development of this field.\nThe essence of the obtained results lies in the successful application of genetic algorithms in conjunction with neural networks to optimize parameters, architecture, and weight coefficients of the networks. The genetic algorithms allowed improving the performance and accuracy of neural networks, especially in cases where backpropagation algorithms faced difficulties in finding optimal solutions.\nThese results can be attributed to the fact that genetic algorithms are efficient methods for global optimization in parameter space. They help avoid local minima and discover more reliable and stable solutions. The obtained findings can be practically utilized to enhance the performance and quality of neural networks in various classification and prediction tasks. The use of genetic algorithms enables the selection of optimal weight coefficients, network connections, and identification of significant features from the dataset. However, they come with the limitation of additional time costs for evaluating the entire population according to the selection criteria.\nIt is worth noting that the application of genetic algorithms is not a universal method for all tasks, and the algorithm parameters should be individually tuned for each specific problem. Further research could focus on refining the combination methods of genetic algorithms and neural networks, as well as exploring their application in new domains and tasks.",
+    "authors": [
+        "Bohdan Hirianskyi",
+        "B. Bulakh"
+    ],
+    "venue": "Technology audit and production reserves",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The existing experience on using evolutionary algorithms as competitive methods to conventional approaches in neural network training and creation is selected and evaluated to evaluate such existing solutions for further development of this field."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

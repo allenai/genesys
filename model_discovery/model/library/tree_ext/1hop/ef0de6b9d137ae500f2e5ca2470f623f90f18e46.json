@@ -1,0 +1,28 @@
+{
+    "acronym": "ef0de6b9d137ae500f2e5ca2470f623f90f18e46",
+    "title": "Towards discovery: an end-to-end system for uncovering novel biomedical relations",
+    "seed_ids": [
+        "bert",
+        "44279244407a64431810f982be6d0c7da4429dd7"
+    ],
+    "s2id": "ef0de6b9d137ae500f2e5ca2470f623f90f18e46",
+    "abstract": "Abstract Biomedical relation extraction is an ongoing challenge within the natural language processing community. Its application is important for understanding scientific biomedical literature, with many use cases, such as drug discovery, precision medicine, disease diagnosis, treatment optimization and biomedical knowledge graph construction. Therefore, the development of a tool capable of effectively addressing this task holds the potential to improve knowledge discovery by automating the extraction of relations from research manuscripts. The first track in the BioCreative VIII competition extended the scope of this challenge by introducing the detection of novel relations within the literature. This paper describes that our participation system initially focused on jointly extracting and classifying novel relations between biomedical entities. We then describe our subsequent advancement to an end-to-end model. Specifically, we enhanced our initial system by incorporating it into a cascading pipeline that includes a tagger and linker module. This integration enables the comprehensive extraction of relations and classification of their novelty directly from raw text. Our experiments yielded promising results, and our tagger module managed to attain state-of-the-art named entity recognition performance, with a micro F1-score of 90.24, while our end-to-end system achieved a competitive novelty F1-score of 24.59. The code to run our system is publicly available at https://github.com/ieeta-pt/BioNExt. Database URL: https://github.com/ieeta-pt/BioNExt",
+    "authors": [
+        "Tiago Almeida",
+        "R. A. A. Jonker",
+        "Rui Antunes",
+        "Jo\u00e3o Rafael Almeida",
+        "S\u00e9rgio Matos"
+    ],
+    "venue": "Database : the journal of biological databases and curation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper enhances the initial participation system by incorporating it into a cascading pipeline that includes a tagger and linker module that enables the comprehensive extraction of relations and classification of their novelty directly from raw text."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

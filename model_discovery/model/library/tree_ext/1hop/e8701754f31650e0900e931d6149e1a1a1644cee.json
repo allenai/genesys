@@ -1,0 +1,35 @@
+{
+    "acronym": "e8701754f31650e0900e931d6149e1a1a1644cee",
+    "title": "FViT: A Focal Vision Transformer with Gabor Filter",
+    "seed_ids": [
+        "metaformer",
+        "9a83aeadc8db65fb6da39ec977360541cddaff5c",
+        "28a840d36aeabb165804c293f9b91a47d118f3b9",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "934942934a6a785e2a80daa6421fa79971558b89",
+        "333212e246fb65f7c9d43862021e78f007c48449",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "e8701754f31650e0900e931d6149e1a1a1644cee",
+    "abstract": "Vision transformers have achieved encouraging progress in various computer vision tasks. A common belief is that this is attributed to the competence of self-attention in modeling the global dependencies among feature tokens. Unfortunately, self-attention still faces some challenges in dense prediction tasks, such as the high computational complexity and absence of desirable inductive bias. To address these issues, we revisit the potential benefits of integrating vision transformer with Gabor filter, and propose a Learnable Gabor Filter (LGF) by using convolution. As an alternative to self-attention, we employ LGF to simulate the response of simple cells in the biological visual system to input images, prompting models to focus on discriminative feature representations of targets from various scales and orientations. Additionally, we design a Bionic Focal Vision (BFV) block based on the LGF. This block draws inspiration from neuroscience and introduces a Multi-Path Feed Forward Network (MPFFN) to emulate the working way of biological visual cortex processing information in parallel. Furthermore, we develop a unified and efficient pyramid backbone network family called Focal Vision Transformers (FViTs) by stacking BFV blocks. Experimental results show that FViTs exhibit highly competitive performance in various vision tasks. Especially in terms of computational efficiency and scalability, FViTs show significant advantages compared with other counterparts. Code is available at https://github.com/nkusyl/FViT",
+    "authors": [
+        "Yulong Shi",
+        "Mingwei Sun",
+        "Yongshuai Wang",
+        "Rui Wang",
+        "Hui Sun",
+        "Zengqiang Chen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work revisits the potential benefits of integrating vision transformer with Gabor filter, and proposes a Learnable Gabor Filter (LGF) by using convolution, and develops a unified and efficient pyramid backbone network family called Focal Vision Transformers (FViTs) by stacking BFV blocks."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

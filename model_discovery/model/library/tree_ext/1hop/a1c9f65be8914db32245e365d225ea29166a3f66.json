@@ -1,0 +1,29 @@
+{
+    "acronym": "a1c9f65be8914db32245e365d225ea29166a3f66",
+    "title": "Enhancing text comprehension for Question Answering with Contrastive Learning",
+    "seed_ids": [
+        "longformer",
+        "732e3faec4e5be4d144256f2c379b9dc49f0b227",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "79cb9bca730a4c5bbe73d97c1f40da1d0debe568",
+        "4e3935ef7da6bcbb202ec7f8b285c313cadcd044",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "a1c9f65be8914db32245e365d225ea29166a3f66",
+    "abstract": "Although Question Answering (QA) have advanced to the human-level language skills in NLP tasks, there is still a problem: the QA model gets confused when there are similar sentences or paragraphs. Existing studies focus on enhancing the text understanding of the candidate answers to improve the overall performance of the QA models. However, since these methods focus on re-ranking queries or candidate answers, they fail to resolve the confusion when many generated answers are similar to the expected answer. To address these issues, we propose a novel contrastive learning framework called ContrastiveQA that alleviates the confusion problem in answer extraction. We propose a supervised method where we generate positive and negative samples from the candidate answers and the given answer, respectively. We thus introduce ContrastiveQA, which uses contrastive learning with sampling data to reduce incorrect answers. Experimental results on four QA benchmarks show the effectiveness of the proposed method.",
+    "authors": [
+        "Seungyeon Lee",
+        "Minho Lee"
+    ],
+    "venue": "Workshop on Representation Learning for NLP",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces ContrastiveQA, which uses contrastive learning with sampling data to reduce incorrect answers in Question Answering and proposes a supervised method where positive and negative samples from the candidate answers and the given answer are generated."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "314358d6e9969cb89da0ad0b6aa4f406294d3ff4",
+    "title": "Generalized Conditioned Dialogue Generation Based on Pre-trained Language Model",
+    "seed_ids": [
+        "memcompress",
+        "200050c1f51e2c930e62b078c6ce20f2a6675468",
+        "11ed7f038bd7efd1491f3957959e1e30bc120c38",
+        "031e4e43aaffd7a479738dcea69a2d5be7957aa3",
+        "b47381e04739ea3f392ba6c8faaf64105493c196"
+    ],
+    "s2id": "314358d6e9969cb89da0ad0b6aa4f406294d3ff4",
+    "abstract": "We investigate the general problem of conditioned dialogue, in which a condition label is used as input to designate the type of the target response such as a persona. A major challenge for conditioned dialogue generation is the lack of substantial dialogue data labeled with conditions. Thus, we propose to complement the labeled dialogue data with labeled non-dialogue text data, and fine-tune BERT based on them. Our fine-tuning approach utilizes BERT for both encoder and decoder via different input representations and self-attention masks in order to distinguish the source and target side. On the target (generation) side, we use a new attention routing mechanism to choose between generating a generic word or condition-related word at each position. Our model is instantiated to persona- and topic-related dialogue. Experimental results in both cases show that our approach can produce significantly better responses than the state-of-the-art baselines.",
+    "authors": [
+        "Yan Zeng",
+        "J. Nie"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to complement the labeled dialogue data with labeled non-dialogue text data, and fine-tune BERT based on them, and utilizes BERT for both encoder and decoder via different input representations and self-attention masks in order to distinguish the source and target side."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

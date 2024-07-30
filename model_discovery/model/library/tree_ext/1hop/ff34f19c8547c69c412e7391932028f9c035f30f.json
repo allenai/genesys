@@ -1,0 +1,26 @@
+{
+    "acronym": "ff34f19c8547c69c412e7391932028f9c035f30f",
+    "title": "Improving Korean NLP Tasks with Linguistically Informed Subword Tokenization and Sub-character Decomposition",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "ff34f19c8547c69c412e7391932028f9c035f30f",
+    "abstract": "We introduce a morpheme-aware subword tokenization method that utilizes sub-character decomposition to address the challenges of applying Byte Pair Encoding (BPE) to Korean, a language characterized by its rich morphology and unique writing system. Our approach balances linguistic accuracy with computational efficiency in Pre-trained Language Models (PLMs). Our evaluations show that this technique achieves good performances overall, notably improving results in the syntactic task of NIKL-CoLA. This suggests that integrating morpheme type information can enhance language models' syntactic and semantic capabilities, indicating that adopting more linguistic insights can further improve performance beyond standard morphological analysis.",
+    "authors": [
+        "Tae-Hee Jeon",
+        "Bongseok Yang",
+        "ChangHwan Kim",
+        "Yoonseob Lim"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A morpheme-aware subword tokenization method that utilizes sub-character decomposition to address the challenges of applying Byte Pair Encoding to Korean, indicating that adopting more linguistic insights can further improve performance beyond standard morphological analysis."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

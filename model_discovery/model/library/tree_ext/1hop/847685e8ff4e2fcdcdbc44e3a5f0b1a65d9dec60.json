@@ -1,0 +1,31 @@
+{
+    "acronym": "847685e8ff4e2fcdcdbc44e3a5f0b1a65d9dec60",
+    "title": "Diff-IP2D: Diffusion-Based Hand-Object Interaction Prediction on Egocentric Videos",
+    "seed_ids": [
+        "diffuseq",
+        "017e4a43b69340aecf7d002aa1bb5991f9e91ffb",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "847685e8ff4e2fcdcdbc44e3a5f0b1a65d9dec60",
+    "abstract": "Understanding how humans would behave during hand-object interaction is vital for applications in service robot manipulation and extended reality. To achieve this, some recent works have been proposed to simultaneously forecast hand trajectories and object affordances on human egocentric videos. The joint prediction serves as a comprehensive representation of future hand-object interactions in 2D space, indicating potential human motion and motivation. However, the existing approaches mostly adopt the autoregressive paradigm for unidirectional prediction, which lacks mutual constraints within the holistic future sequence, and accumulates errors along the time axis. Meanwhile, these works basically overlook the effect of camera egomotion on first-person view predictions. To address these limitations, we propose a novel diffusion-based interaction prediction method, namely Diff-IP2D, to forecast future hand trajectories and object affordances concurrently in an iterative non-autoregressive manner. We transform the sequential 2D images into latent feature space and design a denoising diffusion model to predict future latent interaction features conditioned on past ones. Motion features are further integrated into the conditional denoising process to enable Diff-IP2D aware of the camera wearer's dynamics for more accurate interaction prediction. Extensive experiments demonstrate that our method significantly outperforms the state-of-the-art baselines on both the off-the-shelf metrics and our newly proposed evaluation protocol. This highlights the efficacy of leveraging a generative paradigm for 2D hand-object interaction prediction. The code of Diff-IP2D will be released at https://github.com/IRMVLab/Diff-IP2D.",
+    "authors": [
+        "Junyi Ma",
+        "Jingyi Xu",
+        "Xieyuanli Chen",
+        "Hesheng Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel diffusion-based interaction prediction method, namely Diff-IP2D, to forecast future hand trajectories and object affordances concurrently in an iterative non-autoregressive manner is proposed and significantly outperforms the state-of-the-art baselines on both the off-the-shelf metrics and the newly proposed evaluation protocol."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

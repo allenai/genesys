@@ -1,0 +1,40 @@
+{
+    "acronym": "21bc2ba103891049075d70bc3a857b16ca1a71aa",
+    "title": "ParaGuide: Guided Diffusion Paraphrasers for Plug-and-Play Textual Style Transfer",
+    "seed_ids": [
+        "ssdlm",
+        "diffusionlm",
+        "likelihooddifflm",
+        "tess",
+        "d9ffb44ee3c8ec0b6692df8a90451384c1edd89b",
+        "67cdecbcfed07b9a29d9e2a92da684604383afd7",
+        "a1186d7d9a9ef258c76afef1177e4f348061a537",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "0b9770a377b3f96cef9f268cee1791d39a0d4893",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "21bc2ba103891049075d70bc3a857b16ca1a71aa",
+    "abstract": "Textual style transfer is the task of transforming stylistic properties of text while preserving meaning. Target \"styles\" can be defined in numerous ways, ranging from single attributes (e.g. formality) to authorship (e.g. Shakespeare). Previous unsupervised style-transfer approaches generally rely on significant amounts of labeled data for only a fixed set of styles or require large language models. In contrast, we introduce a novel diffusion-based framework for general-purpose style transfer that can be flexibly adapted to arbitrary target styles at inference time. Our parameter-efficient approach, ParaGuide, leverages paraphrase-conditioned diffusion models alongside gradient-based guidance from both off-the-shelf classifiers and strong existing style embedders to transform the style of text while preserving semantic information. We validate the method on the Enron Email Corpus, with both human and automatic evaluations, and find that it outperforms strong baselines on formality, sentiment, and even authorship style transfer.",
+    "authors": [
+        "Zachary Horvitz",
+        "Ajay Patel",
+        "Chris Callison-Burch",
+        "Zhou Yu",
+        "K. McKeown"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a novel diffusion-based framework for general-purpose style transfer that can be flexibly adapted to arbitrary target styles at inference time and validate the method on the Enron Email Corpus, finding that it outperforms strong baselines on formality, sentiment, and even authorship style transfer."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

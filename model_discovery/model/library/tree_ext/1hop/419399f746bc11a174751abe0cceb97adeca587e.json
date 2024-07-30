@@ -1,0 +1,31 @@
+{
+    "acronym": "419399f746bc11a174751abe0cceb97adeca587e",
+    "title": "Empathetic Response Generation with Relation-aware Commonsense Knowledge",
+    "seed_ids": [
+        "transformer",
+        "710d183174844da5b7f392667f3cc25d2b098dde",
+        "f48ae425e2567be2d993efcaaf74c2274fc9d7c5",
+        "824d15233236e804b40ad827a3b076e07b2c3d3b"
+    ],
+    "s2id": "419399f746bc11a174751abe0cceb97adeca587e",
+    "abstract": "The development of AI in mental health is a growing field with potential global impact. Machine agents need to perceive users' mental states and respond empathically. Since mental states are often latent and implicit, building such chatbots requires both knowledge learning and knowledge utilization. Our work contributes to this by developing a chatbot that aims to recognize and empathetically respond to users' mental states. We introduce a Conditional Variational Autoencoders (CVAE)-based model that utilizes relation-aware commonsense knowledge to generate responses. This model, while not a replacement for professional mental health support, demonstrates promise in offering informative and empathetic interactions in a controlled environment. On the dataset EmpatheticDialogues, we compare with several SOTA methods and empirically validate the effectiveness of our approach on response informativeness and empathy exhibition. Detailed analysis is also given to demonstrate the learning capability as well as model interpretability. Our code is accessible at http://github.com/ChangyuChen347/COMET-VAE.",
+    "authors": [
+        "C. Chen",
+        "Yanran Li",
+        "Chen Wei",
+        "Jianwei Cui",
+        "Bin Wang",
+        "Rui Yan"
+    ],
+    "venue": "Web Search and Data Mining",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work develops a chatbot that aims to recognize and empathetically respond to users' mental states and introduces a Conditional Variational Autoencoders (CVAE)-based model that utilizes relation-aware commonsense knowledge to generate responses."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

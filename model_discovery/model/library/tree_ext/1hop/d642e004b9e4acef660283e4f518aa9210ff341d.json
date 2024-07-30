@@ -1,0 +1,31 @@
+{
+    "acronym": "d642e004b9e4acef660283e4f518aa9210ff341d",
+    "title": "Cost-Effective In-Context Learning for Entity Resolution: A Design Space Exploration",
+    "seed_ids": [
+        "gpt3",
+        "7d9b662031fa785b493ed8255cd6ad19d2d8ea1e",
+        "0456cd227edb95e596e3915ebcfd1133bcc8d725"
+    ],
+    "s2id": "d642e004b9e4acef660283e4f518aa9210ff341d",
+    "abstract": "Entity resolution (ER) is an important data integration task with a wide spectrum of applications. The state-of-the-art solutions on ER rely on pre-trained language models (PLMs), which require fine-tuning on a lot of labeled matching/non-matching entity pairs. Recently, large languages models (LLMs), such as GPT-4, have shown the ability to perform many tasks without tuning model parameters, which is known as in-context learning (ICL) that facilitates effective learning from a few labeled input context demonstrations. However, existing ICL approaches to ER typically necessitate providing a task description and a set of demonstrations for each entity pair and thus have limitations on the monetary cost of interfacing LLMs. To address the problem, in this paper, we provide a comprehensive study to investigate how to develop a cost-effective batch prompting approach to ER. We introduce a framework BATCHER consisting of demonstration selection and question batching and explore different design choices that support batch prompting for ER. We also devise a covering-based demonstration selection strategy that achieves an effective balance between matching accuracy and monetary cost. We conduct a thorough evaluation to explore the design space and evaluate our proposed strategies. Through extensive experiments, we find that batch prompting is very cost-effective for ER, compared with not only PLM-based methods fine-tuned with extensive labeled data but also LLM-based methods with manually designed prompting. We also provide guidance for selecting appropriate design choices for batch prompting.",
+    "authors": [
+        "Meihao Fan",
+        "Xiaoyue Han",
+        "Ju Fan",
+        "Chengliang Chai",
+        "Nan Tang",
+        "Guoliang Li",
+        "Xiaoyong Du"
+    ],
+    "venue": "IEEE International Conference on Data Engineering",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A comprehensive study to investigate how to develop a cost-effective batch prompting approach to ER and introduces a framework BATCHER consisting of demonstration selection and question batching and explores different design choices that support batch prompting for ER."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

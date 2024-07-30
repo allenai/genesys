@@ -1,0 +1,41 @@
+{
+    "acronym": "4b0541eccd8f98852d6807a14fbac17f775c7b40",
+    "title": "Skyformer: Remodel Self-Attention with Gaussian Kernel and Nystr\u00f6m Method",
+    "seed_ids": [
+        "nystromformer",
+        "performer",
+        "linformer",
+        "reformer",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "b1c39d042fdf8f00a407b0df734764beb6c3b062",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "4b0541eccd8f98852d6807a14fbac17f775c7b40",
+    "abstract": "Transformers are expensive to train due to the quadratic time and space complexity in the self-attention mechanism. On the other hand, although kernel machines suffer from the same computation bottleneck in pairwise dot products, several approximation schemes have been successfully incorporated to considerably reduce their computational cost without sacrificing too much accuracy. In this work, we leverage the computation methods for kernel machines to alleviate the high computational cost and introduce Skyformer, which replaces the softmax structure with a Gaussian kernel to stabilize the model training and adapts the Nystr\\\"om method to a non-positive semidefinite matrix to accelerate the computation. We further conduct theoretical analysis by showing that the matrix approximation error of our proposed method is small in the spectral norm. Experiments on Long Range Arena benchmark show that the proposed method is sufficient in getting comparable or even better performance than the full self-attention while requiring fewer computation resources.",
+    "authors": [
+        "Yifan Chen",
+        "Qi Zeng",
+        "Heng Ji",
+        "Yun Yang"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Skyformer is introduced, which replaces the softmax structure with a Gaussian kernel to stabilize the model training and adapts the Nystr\\\"om method to a non-positive semidefinite matrix to accelerate the computation."
+    },
+    "citationCount": 31,
+    "influentialCitationCount": 9,
+    "code": null,
+    "description": null,
+    "url": null
+}

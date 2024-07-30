@@ -1,0 +1,39 @@
+{
+    "acronym": "fefce2a7218815734cefeab724e7b69adea1df9a",
+    "title": "Bridging Associative Memory and Probabilistic Modeling",
+    "seed_ids": [
+        "hopfield",
+        "f5789596531fad358c3166fdb5bd72d8e661c32c",
+        "27029ad43dfb2a94e89feeec8a5bda39f3534477",
+        "2cd2675dd1467bd9e9594625ec80eac9d1557c0f",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "fefce2a7218815734cefeab724e7b69adea1df9a",
+    "abstract": "Associative memory and probabilistic modeling are two fundamental topics in artificial intelligence. The first studies recurrent neural networks designed to denoise, complete and retrieve data, whereas the second studies learning and sampling from probability distributions. Based on the observation that associative memory's energy functions can be seen as probabilistic modeling's negative log likelihoods, we build a bridge between the two that enables useful flow of ideas in both directions. We showcase four examples: First, we propose new energy-based models that flexibly adapt their energy functions to new in-context datasets, an approach we term \\textit{in-context learning of energy functions}. Second, we propose two new associative memory models: one that dynamically creates new memories as necessitated by the training data using Bayesian nonparametrics, and another that explicitly computes proportional memory assignments using the evidence lower bound. Third, using tools from associative memory, we analytically and numerically characterize the memory capacity of Gaussian kernel density estimators, a widespread tool in probababilistic modeling. Fourth, we study a widespread implementation choice in transformers -- normalization followed by self attention -- to show it performs clustering on the hypersphere. Altogether, this work urges further exchange of useful ideas between these two continents of artificial intelligence.",
+    "authors": [
+        "Rylan Schaeffer",
+        "Nika Zahedi",
+        "Mikail Khona",
+        "Dhruv Pai",
+        "Sang T. Truong",
+        "Yilun Du",
+        "Mitchell Ostrow",
+        "Sarthak Chandra",
+        "Andres Carranza",
+        "I. Fiete",
+        "Andrey Gromov",
+        "Oluwasanmi Koyejo"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes two new associative memory models: one that dynamically creates new memories as necessitated by the training data using Bayesian nonparametrics, and another that explicitly computes proportional memory assignments using the evidence lower bound."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

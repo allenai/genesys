@@ -1,0 +1,28 @@
+{
+    "acronym": "002431a77880b796a620db6c529f7586e6a659b9",
+    "title": "An Efficient Training Accelerator for Transformers With Hardware-Algorithm Co-Optimization",
+    "seed_ids": [
+        "gpt2",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "002431a77880b796a620db6c529f7586e6a659b9",
+    "abstract": "Transformers have achieved significant success in deep learning, and training Transformers efficiently on resource-constrained platforms has been attracting continuous attention for domain adaptions and privacy concerns. However, deploying Transformers training on these platforms is still challenging due to its dynamic workloads, intensive computations, and massive memory accesses. To address these issues, we propose an Efficient Training Accelerator for TRansformers (TRETA) through a hardware-algorithm co-optimization strategy. First, a hardware-friendly mixed-precision training algorithm is presented based on a compact and efficient data format, which significantly reduces the computation and memory requirements. Second, a flexible and scalable architecture is proposed to achieve high utilization of computing resources when processing arbitrary irregular general matrix multiplication (GEMM) operations during training. These irregular GEMMs lead to severe under-utilization when simply mapped on traditional systolic architectures. Third, we develop training-oriented architectures for the crucial Softmax and layer normalization functions in Transformers, respectively. These area-efficient modules have unified and flexible microarchitectures to meet various computation requirements of different training phases. Finally, TRETA is implemented under Taiwan Semiconductor Manufacturing Company (TSMC) 28-nm technology and evaluated on multiple benchmarks. The experimental results show that our training framework achieves the same accuracy as the full precision baseline. Moreover, TRETA can achieve 14.71 tera operations per second (TOPS) and 3.31 TOPS/W in terms of throughput and energy efficiency, respectively. Compared with prior arts, the proposed design shows 1.4\u2013 $24.5\\times $ speedup and 1.5\u2013 $25.4\\times $ energy efficiency improvement.",
+    "authors": [
+        "Haikuo Shao",
+        "Jinming Lu",
+        "Meiqi Wang",
+        "Zhongfeng Wang"
+    ],
+    "venue": "IEEE Transactions on Very Large Scale Integration (VLSI) Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An Efficient Training Accelerator for TRansformers (TRETA) is proposed through a hardware-algorithm co-optimization strategy and training-oriented architectures for the crucial Softmax and layer normalization functions in Transformers are developed."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

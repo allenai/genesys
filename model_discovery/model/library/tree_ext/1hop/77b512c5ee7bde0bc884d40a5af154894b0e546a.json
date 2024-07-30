@@ -1,0 +1,27 @@
+{
+    "acronym": "77b512c5ee7bde0bc884d40a5af154894b0e546a",
+    "title": "ArgSciChat: A Dataset for Argumentative Dialogues on Scientific Papers",
+    "seed_ids": [
+        "longformer",
+        "4e3935ef7da6bcbb202ec7f8b285c313cadcd044",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "77b512c5ee7bde0bc884d40a5af154894b0e546a",
+    "abstract": "The applications of conversational agents for scientific disciplines (as expert domains) are understudied due to the lack of dialogue data to train such agents. While most data collection frameworks, such as Amazon Mechanical Turk, foster data collection for generic domains by connecting crowd workers and task designers, these frameworks are not much optimized for data collection in expert domains. Scientists are rarely present in these frameworks due to their limited time budget. Therefore, we introduce a novel framework to collect dialogues between scientists as domain experts on scientific papers. Our framework lets scientists present their scientific papers as groundings for dialogues and participate in dialogue they like its paper title. We use our framework to collect a novel argumentative dialogue dataset, ArgSciChat. It consists of 498 messages collected from 41 dialogues on 20 scientific papers. Alongside extensive analysis on ArgSciChat, we evaluate a recent conversational agent on our dataset. Experimental results show that this agent poorly performs on ArgSciChat, motivating further research on argumentative scientific agents. We release our framework and the dataset.",
+    "authors": [
+        "Federico Ruggeri",
+        "Mohsen Mesgar",
+        "Iryna Gurevych"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel framework to collect dialogues between scientists as domain experts on scientific papers and lets scientists present their scientific papers as groundings for dialogues and participate in dialogue they like its paper title is introduced."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,33 @@
+{
+    "acronym": "470754e17de89081f63dde4719922fe9b63251d5",
+    "title": "Large Language Models are Edge-Case Fuzzers: Testing Deep Learning Libraries via FuzzGPT",
+    "seed_ids": [
+        "gpt",
+        "92173d081b15824d22a9ef070e118744ceee8052",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "470754e17de89081f63dde4719922fe9b63251d5",
+    "abstract": "Deep Learning (DL) library bugs affect downstream DL applications, emphasizing the need for reliable systems. Generating valid input programs for fuzzing DL libraries is challenging due to the need for satisfying both language syntax/semantics and constraints for constructing valid computational graphs. Recently, the TitanFuzz work demonstrates that modern Large Language Models (LLMs) can be directly leveraged to implicitly learn all the constraints to generate valid DL programs for fuzzing. However, LLMs tend to generate ordinary programs following similar patterns seen in their massive training corpora, while fuzzing favors unusual inputs that cover edge cases or are unlikely to be manually produced. To fill this gap, this paper proposes FuzzGPT, the first technique to prime LLMs to synthesize unusual programs for fuzzing. FuzzGPT is built on the well-known hypothesis that historical bug-triggering programs may include rare/valuable code ingredients important for bug finding. Traditional techniques leveraging such historical information require intensive human efforts to design dedicated generators and ensure the validity of generated programs. FuzzGPT demonstrates that this process can be fully automated via the intrinsic capabilities of LLMs (including fine-tuning and in-context learning), while being generalizable and applicable to challenging domains. While FuzzGPT can be applied with different LLMs, this paper focuses on the powerful GPT-style models: Codex and CodeGen. Moreover, FuzzGPT also shows the potential of directly leveraging the instruct-following capability of the recent ChatGPT for effective fuzzing. Evaluation on two popular DL libraries (PyTorch and TensorFlow) shows that FuzzGPT can substantially outperform TitanFuzz, detecting 76 bugs, with 49 already confirmed as previously unknown bugs, including 11 high-priority bugs or security vulnerabilities.",
+    "authors": [
+        "Yinlin Deng",
+        "Chun Xia",
+        "Chenyuan Yang",
+        "Shizhuo Zhang",
+        "Shujing Yang",
+        "Lingming Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "FuzzGPT is the first technique to prime LLMs to synthesize unusual programs for fuzzing, built on the well-known hypothesis that historical bug-triggering programs may include rare/valuable code ingredients important for bug finding."
+    },
+    "citationCount": 42,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

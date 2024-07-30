@@ -1,0 +1,36 @@
+{
+    "acronym": "7d787b9c0fb93091c31720dc35eef29b63478c06",
+    "title": "Unsupervised Multi-Granularity Summarization",
+    "seed_ids": [
+        "longformer",
+        "274f903041b1a830b37f57929d837c1706e94ec7",
+        "addd2d86d19c1e7c8854e827fb2656a50c250440",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "7d787b9c0fb93091c31720dc35eef29b63478c06",
+    "abstract": "Text summarization is a user-preference based task, i.e., for one document, users often have different priorities for summary. As a key aspect of customization in summarization, granularity is used to measure the semantic coverage between the summary and source document. However, developing systems that can generate summaries with customizable semantic coverage is still an under-explored topic. In this paper, we propose the first unsupervised multi-granularity summarization framework, GranuSum. We take events as the basic semantic units of the source documents and propose to rank these events by their salience. We also develop a model to summarize input documents with given events as anchors and hints. By inputting different numbers of events, GranuSum is capable of producing multi-granular summaries in an unsupervised manner. Meanwhile, we annotate a new benchmark GranuDUC that contains multiple summaries at different granularities for each document cluster. Experimental results confirm the substantial superiority of GranuSum on multi-granularity summarization over strong baselines. Further, by exploiting the event information, GranuSum also exhibits state-of-the-art performance under the conventional unsupervised abstractive setting. Dataset for this paper can be found at: https://github.com/maszhongming/GranuDUC",
+    "authors": [
+        "Ming Zhong",
+        "Yang Liu",
+        "Suyu Ge",
+        "Yuning Mao",
+        "Yizhu Jiao",
+        "Xingxing Zhang",
+        "Yichong Xu",
+        "Chenguang Zhu",
+        "Michael Zeng",
+        "Jiawei Han"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper takes events as the basic semantic units of the source documents and proposes to rank these events by their salience, which exhibits state-of-the-art performance under the conventional unsupervised abstractive setting."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

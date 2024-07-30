@@ -1,0 +1,26 @@
+{
+    "acronym": "fd5a9dfe39e1918b631e0519e272d2643d8e6bca",
+    "title": "Impossible Triangle: What's Next for Pre-trained Language Models?",
+    "seed_ids": [
+        "gpt2",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "fd5a9dfe39e1918b631e0519e272d2643d8e6bca",
+    "abstract": "Recent development of large-scale pre-trained language models (PLM) have significantly improved the capability of models in various NLP tasks, in terms of performance after task-specific fine-tuning and zero-shot / few-shot learning. However, many of such models come with a dauntingly huge size that few institutions can afford to pre-train, fine-tune or even deploy, while moderate-sized models usually lack strong generalized few-shot learning capabilities. In this paper, we first elaborate the current obstacles of using PLM models in terms of the Impossible Triangle: 1) moderate model size, 2) state-of-the-art few-shot learning capability, and 3) state-of-the-art fine-tuning capability. We argue that all existing PLM models lack one or more properties from the Impossible Triangle. To remedy these missing properties of PLMs, various techniques have been proposed, such as knowledge distillation, data augmentation and prompt learning, which inevitably brings additional work to the application of PLMs in real scenarios. We then offer insights into future research directions of PLMs to achieve the Impossible Triangle, and break down the task into several key phases.",
+    "authors": [
+        "Chenguang Zhu",
+        "Michael Zeng"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is argued that all existing PLM models lack one or more properties from the Impossible Triangle, and insights into future research directions of PLMs to achieve the Impossible triangle are offered."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

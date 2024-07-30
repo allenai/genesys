@@ -1,0 +1,25 @@
+{
+    "acronym": "e083905b0fc1cf82937630cb8d69093b39e4cf98",
+    "title": "Localization of Fake News Detection via Multitask Transfer Learning",
+    "seed_ids": [
+        "gpt",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e083905b0fc1cf82937630cb8d69093b39e4cf98",
+    "abstract": "The use of the internet as a fast medium of spreading fake news reinforces the need for computational tools that combat it. Techniques that train fake news classifiers exist, but they all assume an abundance of resources including large labeled datasets and expert-curated corpora, which low-resource languages may not have. In this work, we make two main contributions: First, we alleviate resource scarcity by constructing the first expertly-curated benchmark dataset for fake news detection in Filipino, which we call \u201cFake News Filipino.\u201d Second, we benchmark Transfer Learning (TL) techniques and show that they can be used to train robust fake news classifiers from little data, achieving 91% accuracy on our fake news dataset, reducing the error by 14% compared to established few-shot baselines. Furthermore, lifting ideas from multitask learning, we show that augmenting transformer-based transfer techniques with auxiliary language modeling losses improves their performance by adapting to writing style. Using this, we improve TL performance by 4-6%, achieving an accuracy of 96% on our best model. Lastly, we show that our method generalizes well to different types of news articles, including political news, entertainment news, and opinion articles.",
+    "authors": [
+        "Jan Christian Blaise Cruz",
+        "C. Cheng"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work alleviates resource scarcity by constructing the first expertly-curated benchmark dataset for fake news detection in Filipino and shows that augmenting transformer-based transfer techniques with auxiliary language modeling losses improves their performance by adapting to writing style."
+    },
+    "citationCount": 30,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

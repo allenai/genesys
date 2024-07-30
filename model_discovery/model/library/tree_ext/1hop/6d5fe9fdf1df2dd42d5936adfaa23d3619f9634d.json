@@ -1,0 +1,35 @@
+{
+    "acronym": "6d5fe9fdf1df2dd42d5936adfaa23d3619f9634d",
+    "title": "Detecting Machine-Generated Texts by Multi-Population Aware Optimization for Maximum Mean Discrepancy",
+    "seed_ids": [
+        "gpt2",
+        "gpt3",
+        "f8c6cb00ab9775f90ded5025b49cc260cede9350",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a",
+        "ad7129af0644dbcafa9aa2f111cb76526ea444a1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6d5fe9fdf1df2dd42d5936adfaa23d3619f9634d",
+    "abstract": "Large language models (LLMs) such as ChatGPT have exhibited remarkable performance in generating human-like texts. However, machine-generated texts (MGTs) may carry critical risks, such as plagiarism issues, misleading information, or hallucination issues. Therefore, it is very urgent and important to detect MGTs in many situations. Unfortunately, it is challenging to distinguish MGTs and human-written texts because the distributional discrepancy between them is often very subtle due to the remarkable performance of LLMs. In this paper, we seek to exploit \\textit{maximum mean discrepancy} (MMD) to address this issue in the sense that MMD can well identify distributional discrepancies. However, directly training a detector with MMD using diverse MGTs will incur a significantly increased variance of MMD since MGTs may contain \\textit{multiple text populations} due to various LLMs. This will severely impair MMD's ability to measure the difference between two samples. To tackle this, we propose a novel \\textit{multi-population} aware optimization method for MMD called MMD-MP, which can \\textit{avoid variance increases} and thus improve the stability to measure the distributional discrepancy. Relying on MMD-MP, we develop two methods for paragraph-based and sentence-based detection, respectively. Extensive experiments on various LLMs, \\eg, GPT2 and ChatGPT, show superior detection performance of our MMD-MP. The source code is available at \\url{https://github.com/ZSHsh98/MMD-MP}.",
+    "authors": [
+        "Shuhai Zhang",
+        "Yiliao Song",
+        "Jiahao Yang",
+        "Yuanqing Li",
+        "Bo Han",
+        "Mingkui Tan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel novel multi-population aware optimization method for MMD called MMD-MP, which can avoid variance increases and thus improve the stability to measure the distributional discrepancy, is proposed."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

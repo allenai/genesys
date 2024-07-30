@@ -1,0 +1,25 @@
+{
+    "acronym": "0a9164a015a0716097496dd3187d52e87a71c352",
+    "title": "Automated Writing Evaluation Using Sentence by Sentence Scoring Model",
+    "seed_ids": [
+        "bigbird",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "0a9164a015a0716097496dd3187d52e87a71c352",
+    "abstract": "Automated writing evaluation is the use of computer programs to assess written work and offer feedback to the writer. This process is commonly used in educational settings [1] to grade essays and give students a better understanding of their writing abilities. Existing works score specific dimensions of an essay, grammar, word choice, coherence, and others to provide targeted feedback. Also, most systems focus on evaluating the essay as a whole rather than individual sentences. Sentence-level evaluation can provide more detailed and specific feedback to the writers, which may help to improve their writing skills over time. In this work, we propose a mechanism for evaluating student essays at the sentence level. A publicly available essay dataset was collected and then evaluated manually by experts to prepare a dataset with sentence-level scores. Two models were developed: the first model is based on pre-trained models (BigBird, Longformer, and DeBERTa), and the second model is a neural network architecture based on multi-head-attention mechanisms. Models calculate the holistic score for each sentence. The final score for each essay is obtained by summing up the marks for each sentence. Experimental results show that the proposed model can score essays with high accuracy and low average error.",
+    "authors": [
+        "Mehadi Hossain",
+        "H. Mustafa"
+    ],
+    "venue": "2023 International Conference on Next-Generation Computing, IoT and Machine Learning (NCIM)",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a mechanism for evaluating student essays at the sentence level and shows that the proposed model can score essays with high accuracy and low average error."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

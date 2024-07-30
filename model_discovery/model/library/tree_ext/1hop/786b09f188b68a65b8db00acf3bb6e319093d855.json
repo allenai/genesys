@@ -1,0 +1,31 @@
+{
+    "acronym": "786b09f188b68a65b8db00acf3bb6e319093d855",
+    "title": "An Empirical Study on JIT Defect Prediction Based on BERT-style Model",
+    "seed_ids": [
+        "bert",
+        "daa7b3f8d5610cd2dd1badde8c3a3e6f58726aa3",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "b76e98a0a023d37c6534aa2ead09c8ff595f0bae",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "786b09f188b68a65b8db00acf3bb6e319093d855",
+    "abstract": "Previous works on Just-In-Time (JIT) defect prediction tasks have primarily applied pre-trained models directly, neglecting the configurations of their fine-tuning process. In this study, we perform a systematic empirical study to understand the impact of the settings of the fine-tuning process on BERT-style pre-trained model for JIT defect prediction. Specifically, we explore the impact of different parameter freezing settings, parameter initialization settings, and optimizer strategies on the performance of BERT-style models for JIT defect prediction. Our findings reveal the crucial role of the first encoder layer in the BERT-style model and the project sensitivity to parameter initialization settings. Another notable finding is that the addition of a weight decay strategy in the Adam optimizer can slightly improve model performance. Additionally, we compare performance using different feature extractors (FCN, CNN, LSTM, transformer) and find that a simple network can achieve great performance. These results offer new insights for fine-tuning pre-trained models for JIT defect prediction. We combine these findings to find a cost-effective fine-tuning method based on LoRA, which achieve a comparable performance with only one-third memory consumption than original fine-tuning process.",
+    "authors": [
+        "Yuxiang Guo",
+        "Xiaopeng Gao",
+        "Bo Jiang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A systematic empirical study to understand the impact of the settings of the fine-tuning process on BERT-style pre-trained model for JIT defect prediction finds a cost-effective fine-tuning method based on LoRA, which achieve a comparable performance with only one-third memory consumption than original fine-tuning process."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

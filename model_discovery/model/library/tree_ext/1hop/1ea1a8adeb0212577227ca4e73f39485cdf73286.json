@@ -1,0 +1,39 @@
+{
+    "acronym": "1ea1a8adeb0212577227ca4e73f39485cdf73286",
+    "title": "Exploring Progress in Multivariate Time Series Forecasting: Comprehensive Benchmarking and Heterogeneity Analysis",
+    "seed_ids": [
+        "reformer",
+        "defecf3dc299214f4cb76a093c6eed2297eaa46f",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "30dcc0e191a376fea0e7a46f94c53872c029efc9"
+    ],
+    "s2id": "1ea1a8adeb0212577227ca4e73f39485cdf73286",
+    "abstract": "Multivariate Time Series (MTS) widely exists in real-word complex systems, such as traffic and energy systems, making their forecasting crucial for understanding and influencing these systems. Recently, deep learning-based approaches have gained much popularity for effectively modeling temporal and spatial dependencies in MTS, specifically in Long-term Time Series Forecasting (LTSF) and Spatial-Temporal Forecasting (STF). However, the fair benchmarking issue and the choice of technical approaches have been hotly debated in related work. Such controversies significantly hinder our understanding of progress in this field. Thus, this paper aims to address these controversies to present insights into advancements achieved. To resolve benchmarking issues, we introduce BasicTS, a benchmark designed for fair comparisons in MTS forecasting. BasicTS establishes a unified training pipeline and reasonable evaluation settings, enabling an unbiased evaluation of over 30 popular MTS forecasting models on more than 18 datasets. Furthermore, we highlight the heterogeneity among MTS datasets and classify them based on temporal and spatial characteristics. We further prove that neglecting heterogeneity is the primary reason for generating controversies in technical approaches. Moreover, based on the proposed BasicTS and rich heterogeneous MTS datasets, we conduct an exhaustive and reproducible performance and efficiency comparison of popular models, providing insights for researchers in selecting and designing MTS forecasting models.",
+    "authors": [
+        "Zezhi Shao",
+        "Fei Wang",
+        "Yongjun Xu",
+        "Wei Wei",
+        "Chengqing Yu",
+        "Zhao Zhang",
+        "Di Yao",
+        "Guangyin Jin",
+        "Xin Cao",
+        "Gao Cong",
+        "Christian S. Jensen",
+        "Xueqi Cheng"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that neglecting heterogeneity is the primary reason for generating controversies in technical approaches and an exhaustive and reproducible performance and efficiency comparison of popular models is conducted, providing insights for researchers in selecting and designing MTS forecasting models."
+    },
+    "citationCount": 14,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

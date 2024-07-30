@@ -1,0 +1,31 @@
+{
+    "acronym": "1601ad7616681ed9d7e1b9a04b64c1ad9c7196c7",
+    "title": "Prefixing Attention Sinks can Mitigate Activation Outliers for Large Language Model Quantization",
+    "seed_ids": [
+        "streamingllm",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a"
+    ],
+    "s2id": "1601ad7616681ed9d7e1b9a04b64c1ad9c7196c7",
+    "abstract": "Despite recent advances in LLM quantization, activation quantization remains to be challenging due to the activation outliers. Conventional remedies, e.g., mixing precisions for different channels, introduce extra overhead and reduce the speedup. In this work, we develop a simple yet effective strategy to facilitate per-tensor activation quantization by preventing the generation of problematic tokens. Precisely, we propose a method to find a set of key-value cache, coined CushionCache, which mitigates outliers in subsequent tokens when inserted as a prefix. CushionCache works in two steps: First, we greedily search for a prompt token sequence that minimizes the maximum activation values in subsequent tokens. Then, we further tune the token cache to regularize the activations of subsequent tokens to be more quantization-friendly. The proposed method successfully addresses activation outliers of LLMs, providing a substantial performance boost for per-tensor activation quantization methods. We thoroughly evaluate our method over a wide range of models and benchmarks and find that it significantly surpasses the established baseline of per-tensor W8A8 quantization and can be seamlessly integrated with the recent activation quantization method.",
+    "authors": [
+        "Seungwoo Son",
+        "Wonpyo Park",
+        "Woohyun Han",
+        "Kyuyeun Kim",
+        "Jaeho Lee"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A method to find a set of key-value cache, coined CushionCache, which mitigates outliers in subsequent tokens when inserted as a prefix is proposed, providing a substantial performance boost for per-tensor activation quantization methods."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

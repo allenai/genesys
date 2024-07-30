@@ -1,0 +1,26 @@
+{
+    "acronym": "971cd906a4b4c58117c2a4d940e4478ed3c96b8e",
+    "title": "Insights into Object Semantics: Leveraging Transformer Networks for Advanced Image Captioning",
+    "seed_ids": [
+        "transformer",
+        "a6a59c9e4cd446d0d04f76587699e3e8ab5197c2",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "971cd906a4b4c58117c2a4d940e4478ed3c96b8e",
+    "abstract": "Image captioning is a technique used to generate descriptive captions for images. Typically, it involves employing a Convolutional Neural Network (CNN) as the encoder to extract visual features, and a decoder model, often based on Recurrent Neural Networks (RNNs), to generate the captions. Recently, the encoder\u2013decoder architecture has witnessed the widespread adoption of the self-attention mechanism. However, this approach faces certain challenges that require further research. One such challenge is that the extracted visual features do not fully exploit the available image information, primarily due to the absence of semantic concepts. This limitation restricts the ability to fully comprehend the content depicted in the image. To address this issue, we present a new image-Transformer-based model boosted with image object semantic representation. Our model incorporates semantic representation in encoder attention, enhancing visual features by integrating instance-level concepts. Additionally, we employ Transformer as the decoder in the language generation module. By doing so, we achieve improved performance in generating accurate and diverse captions. We evaluated the performance of our model on the MS-COCO and novel MACE datasets. The results illustrate that our model aligns with state-of-the-art approaches in terms of caption generation.",
+    "authors": [
+        "Deema Abdal Hafeth",
+        "Stefanos D. Kollias"
+    ],
+    "venue": "Italian National Conference on Sensors",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new image-Transformer-based model boosted with image object semantic representation is presented that incorporates semantic representation in encoder attention, enhancing visual features by integrating instance-level concepts and achieves improved performance in generating accurate and diverse captions."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

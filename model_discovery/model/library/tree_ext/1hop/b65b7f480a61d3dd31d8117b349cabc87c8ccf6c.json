@@ -1,0 +1,34 @@
+{
+    "acronym": "b65b7f480a61d3dd31d8117b349cabc87c8ccf6c",
+    "title": "Bidirectional Language Models Are Also Few-shot Learners",
+    "seed_ids": [
+        "gpt2",
+        "914254fac74a2da051cccf6ca16afcaad416a079",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "15190e8b459bd85d546286f7d7da61b4f4f3f58a",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b65b7f480a61d3dd31d8117b349cabc87c8ccf6c",
+    "abstract": "Large language models such as GPT-3 (Brown et al., 2020) can perform arbitrary tasks without undergoing fine-tuning after being prompted with only a few labeled examples. An arbitrary task can be reformulated as a natural language prompt, and a language model can be asked to generate the completion, indirectly performing the task in a paradigm known as prompt-based learning. To date, emergent prompt-based learning capabilities have mainly been demonstrated for unidirectional language models. However, bidirectional language models pre-trained on denoising objectives such as masked language modeling produce stronger learned representations for transfer learning. This motivates the possibility of prompting bidirectional models, but their pre-training objectives have made them largely incompatible with the existing prompting paradigm. We present SAP (Sequential Autoregressive Prompting), a technique that enables the prompting of bidirectional models. Utilizing the machine translation task as a case study, we prompt the bidirectional mT5 model (Xue et al., 2021) with SAP and demonstrate its few-shot and zero-shot translations outperform the few-shot translations of unidirectional models like GPT-3 and XGLM (Lin et al., 2021), despite mT5's approximately 50% fewer parameters. We further show SAP is effective on question answering and summarization. For the first time, our results demonstrate prompt-based learning is an emergent property of a broader class of language models, rather than only unidirectional models.",
+    "authors": [
+        "Ajay Patel",
+        "Bryan Li",
+        "Mohammad Sadegh Rasooli",
+        "Noah Constant",
+        "Colin Raffel",
+        "Chris Callison-Burch"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "For the first time, prompt-based learning is an emergent property of a broader class of language models, rather than only unidirectional models, and is shown to be effective on question answering and summarization."
+    },
+    "citationCount": 26,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

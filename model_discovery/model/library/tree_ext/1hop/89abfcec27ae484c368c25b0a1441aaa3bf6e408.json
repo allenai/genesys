@@ -1,0 +1,31 @@
+{
+    "acronym": "89abfcec27ae484c368c25b0a1441aaa3bf6e408",
+    "title": "What is the Consumer Attitude toward Healthcare Services? A Transfer Learning Approach for Detecting Emotions from Consumer Feedback",
+    "seed_ids": [
+        "bert",
+        "longformer",
+        "c3d877b29594bc6f244e638f576be3dca5551f11",
+        "b15469d0ab3dc3a9dec037d761817b3fe546bed6",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "89abfcec27ae484c368c25b0a1441aaa3bf6e408",
+    "abstract": "The capability of offering patient-centered healthcare services involves knowing the consumer needs. Many of these needs can be conveyed through opinions about services that can be found on social networks. The consumers/patients can express their complains, satisfaction, frustration, etc. in terms of feelings and emotions toward those services; for that reason, it is pivotal to accurately detect them. There are many recent techniques to detect sentiments or emotions, but one of the most promising is transfer learning. This allows adapting a model originally trained for a task to a different one by fine-tuning. Following this idea, the primary objective of this research is to study whether several pre-trained language models can be adapted to a task such as patient emotion detection in an efficient manner. For this purpose, seven clinical and biomedical pre-trained models and four domain-general models have been adapted to detect multiple emotions. These models have been tuned using a dataset consisting of real patient opinions which convey several emotions per opinion. The experiments carried out state the domain-specific pre-trained models outperform the domain-general ones. Particularly, Clinical-Longformer obtained the best scores, 98.18% and 95.82% in terms of accuracy and F1-score, respectively. Analyzing the patient feedback available on social networks may provide valuable knowledge about consumer sentiments and emotions, especially for healthcare managers. This information can be very interesting for\u00a0purposes such as assessing the quality of healthcare services or designing patient-centered services.",
+    "authors": [
+        "Bashar Alshouha",
+        "J. Serrano-Guerrero",
+        "David Elizondo",
+        "Francisco P. Romero",
+        "J. A. Olivas"
+    ],
+    "venue": "Journal of universal computer science (Online)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Whether several pre-trained language models can be adapted to a task such as patient emotion detection in an efficient manner is studied and seven clinical and biomedical pre-trained models and four domain-general models have been adapted to detect multiple emotions."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

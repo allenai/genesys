@@ -1,0 +1,26 @@
+{
+    "acronym": "ce2e4e215db4a68d0dd46a8851648043a17a1852",
+    "title": "HDTSLR: A Framework Based on Hierarchical Dynamic Positional Encoding for Sign Language Recognition",
+    "seed_ids": [
+        "transformer",
+        "a9c214e846188adb645021cd7b1964b8ea1fef6f"
+    ],
+    "s2id": "ce2e4e215db4a68d0dd46a8851648043a17a1852",
+    "abstract": "Sign language is the basic way for people with hearing impairment to communicate, and sign language recognition (SLR) could effectively help in this regard. Mainstream Transformer-based SLR requires positional encoding to sense the positional information of the data. However, existing PE methods globally encode the sign data result in weaken or even ignoring the sequence variation within the gestures. This article proposes HDTSLR: A Transformer-based SLR framework built on hierarchical dynamic positional encoding (HDPE) enhances individual gesture sequence features while preserving the sign overall temporal features. HDPE designs semantic positional encoding utilizing predefined scale functions with trainable biases to emphasize sign semantic relationships. The t-distribution is used by the designed lexical positional encoding to explore the unique variation of gestures. Before the HDPE operation, the sign language data is split into equal-length feature clips while feature extraction and chunking are performed by the autoencoder. The feature clips with significant changes in gesture chunk are further selected and aggregated with the remaining ones by deforming Gram matrix. In addition, HDTSLR is evaluated on the one-handed and two-handed datasets, achieving word error rates of 16.59% and 21.67%, respectively. Comparison experiments show that it outperforms known SLR methods in both accuracy and robustness.",
+    "authors": [
+        "Jiangtao Zhang",
+        "Qingshan Wang",
+        "Qi Wang"
+    ],
+    "venue": "IEEE Transactions on Mobile Computing",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This article proposes HDTSLR: A Transformer-based SLR framework built on hierarchical dynamic positional encoding (HDPE) enhances individual gesture sequence features while preserving the sign overall temporal features."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

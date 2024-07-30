@@ -1,0 +1,34 @@
+{
+    "acronym": "7198e6acc18981d8bd01ee2f904e53e73d2ad78d",
+    "title": "Denoising Diffusion Bridge Models",
+    "seed_ids": [
+        "classfreediffu",
+        "6e3a3b7a8a0376d867cad72eedf2f9b746f29a33",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "355e7b4ec396fef5c0ae1e12b0fd2d8130b21dc2",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "7198e6acc18981d8bd01ee2f904e53e73d2ad78d",
+    "abstract": "Diffusion models are powerful generative models that map noise to data using stochastic processes. However, for many applications such as image editing, the model input comes from a distribution that is not random noise. As such, diffusion models must rely on cumbersome methods like guidance or projected sampling to incorporate this information in the generative process. In our work, we propose Denoising Diffusion Bridge Models (DDBMs), a natural alternative to this paradigm based on diffusion bridges, a family of processes that interpolate between two paired distributions given as endpoints. Our method learns the score of the diffusion bridge from data and maps from one endpoint distribution to the other by solving a (stochastic) differential equation based on the learned score. Our method naturally unifies several classes of generative models, such as score-based diffusion models and OT-Flow-Matching, allowing us to adapt existing design and architectural choices to our more general problem. Empirically, we apply DDBMs to challenging image datasets in both pixel and latent space. On standard image translation problems, DDBMs achieve significant improvement over baseline methods, and, when we reduce the problem to image generation by setting the source distribution to random noise, DDBMs achieve comparable FID scores to state-of-the-art methods despite being built for a more general task.",
+    "authors": [
+        "Linqi Zhou",
+        "Aaron Lou",
+        "Samar Khanna",
+        "Stefano Ermon"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Denoising Diffusion Bridge Models (DDBMs) are proposed, a natural alternative to this paradigm based on diffusion bridges, a family of processes that interpolate between two paired distributions given as endpoints that achieve significant improvement over baseline methods."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

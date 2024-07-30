@@ -1,0 +1,35 @@
+{
+    "acronym": "129c1855ceaf6d2c1825fe8bf16950ee63e4d636",
+    "title": "Recurrent neural networks: vanishing and exploding gradients are not the end of the story",
+    "seed_ids": [
+        "resurrectrnn",
+        "917479a7a72ee7c1fb320c14d770e30ef322ef28",
+        "d53fe76bd2795a19ddf52d012917782f6f6f2c1e",
+        "bbbed70ab3e2b3717e3af69007e36be7426935f7",
+        "55d8837c72863e63259a506b56222d08812699b0",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "bf80051ca9ae1e76e2bdbdcf44df559e7eb73cb1",
+        "6f68e1bb253925d8431588555d3010419f322e04"
+    ],
+    "s2id": "129c1855ceaf6d2c1825fe8bf16950ee63e4d636",
+    "abstract": "Recurrent neural networks (RNNs) notoriously struggle to learn long-term memories, primarily due to vanishing and exploding gradients. The recent success of state-space models (SSMs), a subclass of RNNs, to overcome such difficulties challenges our theoretical understanding. In this paper, we delve into the optimization challenges of RNNs and discover that, as the memory of a network increases, changes in its parameters result in increasingly large output variations, making gradient-based learning highly sensitive, even without exploding gradients. Our analysis further reveals the importance of the element-wise recurrence design pattern combined with careful parametrizations in mitigating this effect. This feature is present in SSMs, as well as in other architectures, such as LSTMs. Overall, our insights provide a new explanation for some of the difficulties in gradient-based learning of RNNs and why some architectures perform better than others.",
+    "authors": [
+        "Nicolas Zucchet",
+        "Antonio Orvieto"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is discovered that, as the memory of a network increases, changes in its parameters result in increasingly large output variations, making gradient-based learning highly sensitive, even without exploding gradients."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

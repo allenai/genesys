@@ -1,0 +1,33 @@
+{
+    "acronym": "86454a0383d8b59ae2843116f960a1c99551f5ed",
+    "title": "Parameter-Efficient Tuning Large Language Models for Graph Representation Learning",
+    "seed_ids": [
+        "gpt3",
+        "67239d6e9c2c5f8a6d19cb35154e5aa7eaa00f51",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "270f3bea8ca801870a6cc56b4d36f7f2019c9ed0",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "86454a0383d8b59ae2843116f960a1c99551f5ed",
+    "abstract": "Text-rich graphs, which exhibit rich textual information on nodes and edges, are prevalent across a wide range of real-world business applications. Large Language Models (LLMs) have demonstrated remarkable abilities in understanding text, which also introduced the potential for more expressive modeling in text-rich graphs. Despite these capabilities, efficiently applying LLMs to representation learning on graphs presents significant challenges. Recently, parameter-efficient fine-tuning methods for LLMs have enabled efficient new task generalization with minimal time and memory consumption. Inspired by this, we introduce Graph-aware Parameter-Efficient Fine-Tuning - GPEFT, a novel approach for efficient graph representation learning with LLMs on text-rich graphs. Specifically, we utilize a graph neural network (GNN) to encode structural information from neighboring nodes into a graph prompt. This prompt is then inserted at the beginning of the text sequence. To improve the quality of graph prompts, we pre-trained the GNN to assist the frozen LLM in predicting the next token in the node text. Compared with existing joint GNN and LMs, our method directly generate the node embeddings from large language models with an affordable fine-tuning cost. We validate our approach through comprehensive experiments conducted on 8 different text-rich graphs, observing an average improvement of 2% in hit@1 and Mean Reciprocal Rank (MRR) in link prediction evaluations. Our results demonstrate the efficacy and efficiency of our model, showing that it can be smoothly integrated with various large language models, including OPT, LLaMA and Falcon.",
+    "authors": [
+        "Qi Zhu",
+        "Da Zheng",
+        "Xiang Song",
+        "Shichang Zhang",
+        "Bowen Jin",
+        "Yizhou Sun",
+        "G. Karypis"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Graph-aware Parameter-Efficient Fine-Tuning - GPEFT is introduced, a novel approach for efficient graph representation learning with LLMs on text-rich graphs that directly generate the node embeddings from large language models with an affordable fine-tuning cost."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

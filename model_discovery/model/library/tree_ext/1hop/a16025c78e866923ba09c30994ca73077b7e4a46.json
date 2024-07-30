@@ -1,0 +1,25 @@
+{
+    "acronym": "a16025c78e866923ba09c30994ca73077b7e4a46",
+    "title": "Auto FAQ Generation",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "a16025c78e866923ba09c30994ca73077b7e4a46",
+    "abstract": "FAQ documents are commonly used with text documents and websites to provide important information in the form of question answer pairs to either aid in reading comprehension or provide a shortcut to the key ideas. We suppose that salient sentences from a given document serve as a good proxy fro the answers to an aggregated set of FAQs from readers. We propose a system for generating FAQ documents that extract the salient questions and their corresponding answers from sizeable text documents scraped from the Stanford Encyclopedia of Philosophy. We use existing text summarization, sentence ranking via the Text rank algorithm, and question-generation tools to create an initial set of questions and answers. Finally, we apply some heuristics to filter out invalid questions. We use human evaluation to rate the generated questions on grammar, whether the question is meaningful, and whether the question's answerability is present within a summarized context. On average, participants thought 71 percent of the questions were meaningful.",
+    "authors": [
+        "Anjaneya Teja Sarma Kalvakolanu",
+        "NagaSai Chandra",
+        "Michael Fekadu"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A system for generating FAQ documents that extract the salient questions and their corresponding answers from sizeable text documents scraped from the Stanford Encyclopedia of Philosophy to create an initial set of questions and answers."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,32 @@
+{
+    "acronym": "daa7b3f8d5610cd2dd1badde8c3a3e6f58726aa3",
+    "title": "A study on the impact of pre-trained model on Just-In-Time defect prediction",
+    "seed_ids": [
+        "gpt",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "e092ecf56fcca38d0cd6fe9e1e6b11c380f6c286",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "daa7b3f8d5610cd2dd1badde8c3a3e6f58726aa3",
+    "abstract": "Previous researchers conducting Just-In-Time (JIT) defect prediction tasks have primarily focused on the performance of individual pre-trained models, without exploring the relationship between different pre-trained models as backbones. In this study, we build six models: RoBERTaJIT, CodeBERTJIT, BARTJIT, PLBARTJIT, GPT2JIT, and CodeGPTJIT, each with a distinct pre-trained model as its backbone. We systematically explore the differences and connections between these models. Specifically, we investigate the performance of the models when using Commit code and Commit message as inputs, as well as the relationship between training efficiency and model distribution among these six models. Additionally, we conduct an ablation experiment to explore the sensitivity of each model to inputs. Furthermore, we investigate how the models perform in zero-shot and few-shot scenarios. Our findings indicate that each model based on different backbones shows improvements, and when the backbone\u2019s pre-training model is similar, the training resources that need to be consumed are closer. We also observe that Commit code plays a significant role in defect detection, and different pre-trained models demonstrate better defect detection ability with a balanced dataset under few-shot scenarios. These results provide new insights for optimizing JIT defect prediction tasks using pre-trained models and highlight the factors that require more attention when constructing such models. Additionally, CodeGPTJIT and GPT2JIT achieved better performance than DeepJIT and CC2Vec on the two datasets respectively under 2000 training samples. These findings emphasize the effectiveness of transformer-based pre-trained models in JIT defect prediction tasks, especially in scenarios with limited training data.",
+    "authors": [
+        "Yuxiang Guo",
+        "Xiaopeng Gao",
+        "Zhenyu Zhang",
+        "W. Chan",
+        "Bo Jiang"
+    ],
+    "venue": "International Conference on Software Quality, Reliability and Security",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The findings indicate that each model based on different backbones shows improvements, and when the backbone\u2019s pre-training model is similar, the training resources that need to be consumed are closer, and that Commit code plays a significant role in defect detection."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

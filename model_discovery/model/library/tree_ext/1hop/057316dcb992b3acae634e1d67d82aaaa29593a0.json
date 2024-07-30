@@ -1,0 +1,39 @@
+{
+    "acronym": "057316dcb992b3acae634e1d67d82aaaa29593a0",
+    "title": "L-MAE: Longitudinal masked auto-encoder with time and severity-aware encoding for diabetic retinopathy progression prediction",
+    "seed_ids": [
+        "transformer",
+        "ac2e15fbfe3ea338725f5d33d17a5a687609c431",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "ec34748a74c84f67edde7cc763922fa6d4486022",
+        "34a4e6818d680875ff0bef9a76de0376118446d1"
+    ],
+    "s2id": "057316dcb992b3acae634e1d67d82aaaa29593a0",
+    "abstract": "Pre-training strategies based on self-supervised learning (SSL) have proven to be effective pretext tasks for many downstream tasks in computer vision. Due to the significant disparity between medical and natural images, the application of typical SSL is not straightforward in medical imaging. Additionally, those pretext tasks often lack context, which is critical for computer-aided clinical decision support. In this paper, we developed a longitudinal masked auto-encoder (MAE) based on the well-known Transformer-based MAE. In particular, we explored the importance of time-aware position embedding as well as disease progression-aware masking. Taking into account the time between examinations instead of just scheduling them offers the benefit of capturing temporal changes and trends. The masking strategy, for its part, evolves during follow-up to better capture pathological changes, ensuring a more accurate assessment of disease progression. Using OPHDIAT, a large follow-up screening dataset targeting diabetic retinopathy (DR), we evaluated the pre-trained weights on a longitudinal task, which is to predict the severity label of the next visit within 3 years based on the past time series examinations. Our results demonstrated the relevancy of both time-aware position embedding and masking strategies based on disease progression knowledge. Compared to popular baseline models and standard longitudinal Transformers, these simple yet effective extensions significantly enhance the predictive ability of deep classification models.",
+    "authors": [
+        "Rachid Zeghlache",
+        "Pierre-Henri Conze",
+        "Mostafa EL HABIB DAHO",
+        "Yi-Hsuan Li",
+        "Alireza Rezaei",
+        "Hugo Le Boit'e",
+        "R. Tadayoni",
+        "Pascale Massin",
+        "B. Cochener",
+        "Ikram Brahim",
+        "G. Quellec",
+        "M. Lamard"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A longitudinal masked auto-encoder (MAE) based on the well-known Transformer-based MAE is developed, demonstrating the importance of time-aware position embedding as well as disease progression-aware masking in both time-aware position embedding and disease progression knowledge."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

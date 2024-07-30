@@ -1,0 +1,35 @@
+{
+    "acronym": "0966f31da72a58ab863f9b1f5e748213cdf9b1c9",
+    "title": "Global Structure Knowledge-Guided Relation Extraction Method for Visually-Rich Document",
+    "seed_ids": [
+        "poolingformer",
+        "da0d38cf2ac7e2a6908e0d9e1fff07058daab2ed",
+        "e32a12b14e212506115cc6804667b3d8297917e1",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "5a9bc55f6332e38f62eb509b684147a1d4f10fd9",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "0966f31da72a58ab863f9b1f5e748213cdf9b1c9",
+    "abstract": "Visual Relation Extraction (VRE) is a powerful means of discovering relationships between entities within visually-rich documents. Existing methods often focus on manipulating entity features to find pairwise relations, yet neglect the more fundamental structural information that links disparate entity pairs together. The absence of global structure information may make the model struggle to learn long-range relations and easily predict conflicted results. To alleviate such limitations, we propose a GlObal Structure knowledge-guided relation Extraction (GOSE) framework. GOSE initiates by generating preliminary relation predictions on entity pairs extracted from a scanned image of the document. Subsequently, global structural knowledge is captured from the preceding iterative predictions, which are then incorporated into the representations of the entities. This\"generate-capture-incorporate\"cycle is repeated multiple times, allowing entity representations and global structure knowledge to be mutually reinforced. Extensive experiments validate that GOSE not only outperforms existing methods in the standard fine-tuning setting but also reveals superior cross-lingual learning capabilities; indeed, even yields stronger data-efficient performance in the low-resource setting. The code for GOSE will be available at https://github.com/chenxn2020/GOSE.",
+    "authors": [
+        "Xiangnan Chen",
+        "Juncheng Li",
+        "Duo Dong",
+        "Qianwen Xiao",
+        "Jun Lin",
+        "Xiaozhong Liu",
+        "Siliang Tang"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Extensive experiments validate that GOSE not only outperforms existing methods in the standard fine-tuning setting but also reveals superior cross-lingual learning capabilities; indeed, even yields stronger data-efficient performance in the low-resource setting."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

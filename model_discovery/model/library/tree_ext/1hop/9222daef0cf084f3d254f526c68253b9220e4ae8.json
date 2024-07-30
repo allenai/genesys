@@ -1,0 +1,30 @@
+{
+    "acronym": "9222daef0cf084f3d254f526c68253b9220e4ae8",
+    "title": "An Effective-Efficient Approach for Dense Multi-Label Action Detection",
+    "seed_ids": [
+        "transformer",
+        "2ed5d5fbcf172814d1d23838d04fafeca8f96f0b",
+        "0938d0ccc1c633fa0f8c067d914358b1ef53a44b",
+        "94576783bc73bf55a0091203a3d45a0a4665a1ae",
+        "7072db6eddb85ecd2c117365d91bd694760f726e"
+    ],
+    "s2id": "9222daef0cf084f3d254f526c68253b9220e4ae8",
+    "abstract": "Unlike the sparse label action detection task, where a single action occurs in each timestamp of a video, in a dense multi-label scenario, actions can overlap. To address this challenging task, it is necessary to simultaneously learn (i) temporal dependencies and (ii) co-occurrence action relationships. Recent approaches model temporal information by extracting multi-scale features through hierarchical transformer-based networks. However, the self-attention mechanism in transformers inherently loses temporal positional information. We argue that combining this with multiple sub-sampling processes in hierarchical designs can lead to further loss of positional information. Preserving this information is essential for accurate action detection. In this paper, we address this issue by proposing a novel transformer-based network that (a) employs a non-hierarchical structure when modelling different ranges of temporal dependencies and (b) embeds relative positional encoding in its transformer layers. Furthermore, to model co-occurrence action relationships, current methods explicitly embed class relations into the transformer network. However, these approaches are not computationally efficient, as the network needs to compute all possible pair action class relations. We also overcome this challenge by introducing a novel learning paradigm that allows the network to benefit from explicitly modelling temporal co-occurrence action dependencies without imposing their additional computational costs during inference. We evaluate the performance of our proposed approach on two challenging dense multi-label benchmark datasets and show that our method improves the current state-of-the-art results.",
+    "authors": [
+        "Faegheh Sardari",
+        "A. Mustafa",
+        "Philip J. B. Jackson",
+        "Adrian Hilton"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel transformer-based network that employs a non-hierarchical structure when modelling different ranges of temporal dependencies and embeds relative positional encoding in its transformer layers and evaluates the performance of the proposed approach on two challenging dense multi-label benchmark datasets."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

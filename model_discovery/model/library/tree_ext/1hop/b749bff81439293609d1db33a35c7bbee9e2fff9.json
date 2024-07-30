@@ -1,0 +1,39 @@
+{
+    "acronym": "b749bff81439293609d1db33a35c7bbee9e2fff9",
+    "title": "LaFiCMIL: Rethinking Large File Classification from the Perspective of Correlated Multiple Instance Learning",
+    "seed_ids": [
+        "longformer",
+        "453d49fa0a93690ba29b49f126c9d45a969f363e",
+        "594d8e1696619f3cebb7c6bffdad8e0a5592f006",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "33d15b2d2a434ab33a2a88585604f4728a324baf",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "49cf6a22a5dac5bc98b653534af65ffa0bc0e76d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b749bff81439293609d1db33a35c7bbee9e2fff9",
+    "abstract": "Transfomer-based models have significantly advanced natural language processing, in particular the performance in text classification tasks. Nevertheless, these models face challenges in processing large files, primarily due to their input constraints, which are generally restricted to hundreds or thousands of tokens. Attempts to address this issue in existing models usually consist in extracting only a fraction of the essential information from lengthy inputs, while often incurring high computational costs due to their complex architectures. In this work, we address the challenge of classifying large files from the perspective of correlated multiple instance learning. We introduce LaFiCMIL, a method specifically designed for large file classification. LaFiCMIL is optimized for efficient operation on a single GPU, making it a versatile solution for binary, multi-class, and multi-label classification tasks. We conducted extensive experiments using seven diverse and comprehensive benchmark datasets to assess LaFiCMIL's effectiveness. By integrating BERT for feature extraction, LaFiCMIL demonstrates exceptional performance, setting new benchmarks across all datasets. A notable achievement of our approach is its ability to scale BERT to handle nearly 20,000 tokens while operating on a single GPU with 32GB of memory. This efficiency, coupled with its state-of-the-art performance, highlights LaFiCMIL's potential as a groundbreaking approach in the field of large file classification.",
+    "authors": [
+        "Tiezhu Sun",
+        "Weiguo Pian",
+        "N. Daoudi",
+        "Kevin Allix",
+        "Tegawend'e F. Bissyand'e",
+        "Jacques Klein"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces LaFiCMIL, a method specifically designed for large file classification that is optimized for efficient operation on a single GPU, making it a versatile solution for binary, multi-class, and multi-label classification tasks."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

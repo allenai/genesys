@@ -1,0 +1,50 @@
+{
+    "acronym": "2029349c55c1dba3493c5b3bd25152f18ba21ae2",
+    "title": "Augmented Language Models: a Survey",
+    "seed_ids": [
+        "gpt2",
+        "d62c4d00b277e948956b6610ce2644e88fe1577b",
+        "db4ab91d5675c37795e719e997a2827d3d83cd45",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "da1d6445b6b64ce9eb4587ba8abbdc490f648ec1",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "47e15941c8b157873c8264e4bf50318d1ba5cd18",
+        "ada81a4de88a6ce474df2e2446ad11fea480616e",
+        "f8292d4ddf7a6dfe240eeaa9685f5d18eed9a3f6",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "92173d081b15824d22a9ef070e118744ceee8052",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "5cdab78acc4f3aab429a0dd41c3ec7e605d42e7b",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2029349c55c1dba3493c5b3bd25152f18ba21ae2",
+    "abstract": "This survey reviews works in which language models (LMs) are augmented with reasoning skills and the ability to use tools. The former is defined as decomposing a potentially complex task into simpler subtasks while the latter consists in calling external modules such as a code interpreter. LMs can leverage these augmentations separately or in combination via heuristics, or learn to do so from demonstrations. While adhering to a standard missing tokens prediction objective, such augmented LMs can use various, possibly non-parametric external modules to expand their context processing ability, thus departing from the pure language modeling paradigm. We therefore refer to them as Augmented Language Models (ALMs). The missing token objective allows ALMs to learn to reason, use tools, and even act, while still performing standard natural language tasks and even outperforming most regular LMs on several benchmarks. In this work, after reviewing current advance in ALMs, we conclude that this new research direction has the potential to address common limitations of traditional LMs such as interpretability, consistency, and scalability issues.",
+    "authors": [
+        "Gr\u00e9goire Mialon",
+        "Roberto Dess\u00ec",
+        "M. Lomeli",
+        "Christoforos Nalmpantis",
+        "Ramakanth Pasunuru",
+        "Roberta Raileanu",
+        "Baptiste Rozi\u00e8re",
+        "Timo Schick",
+        "Jane Dwivedi-Yu",
+        "Asli Celikyilmaz",
+        "Edouard Grave",
+        "Yann LeCun",
+        "Thomas Scialom"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The missing token objective allows ALMs to learn to reason, use tools, and even act, while still performing standard natural language tasks and even outperforming most regular LMs on several benchmarks."
+    },
+    "citationCount": 279,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

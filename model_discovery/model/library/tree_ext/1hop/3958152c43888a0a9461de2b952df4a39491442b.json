@@ -1,0 +1,31 @@
+{
+    "acronym": "3958152c43888a0a9461de2b952df4a39491442b",
+    "title": "Informed Named Entity Recognition Decoding for Generative Language Models",
+    "seed_ids": [
+        "gpt2",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "fef7e9eeed1ec5f0ba28ff88699f2965cf4d8c40",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3958152c43888a0a9461de2b952df4a39491442b",
+    "abstract": "Ever-larger language models with ever-increasing capabilities are by now well-established text processing tools. Alas, information extraction tasks such as named entity recognition are still largely unaffected by this progress as they are primarily based on the previous generation of encoder-only transformer models. Here, we propose a simple yet effective approach, Informed Named Entity Recognition Decoding (iNERD), which treats named entity recognition as a generative process. It leverages the language understanding capabilities of recent generative models in a future-proof manner and employs an informed decoding scheme incorporating the restricted nature of information extraction into open-ended text generation, improving performance and eliminating any risk of hallucinations. We coarse-tune our model on a merged named entity corpus to strengthen its performance, evaluate five generative language models on eight named entity recognition datasets, and achieve remarkable results, especially in an environment with an unknown entity class set, demonstrating the adaptability of the approach.",
+    "authors": [
+        "Tobias Deu\u00dfer",
+        "L. Hillebrand",
+        "C. Bauckhage",
+        "R. Sifa"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a simple yet effective approach, Informed Named Entity Recognition Decoding (iNERD), which leverages the language understanding capabilities of recent generative models in a future-proof manner and employs an informed decoding scheme incorporating the restricted nature of information extraction into open-ended text generation, improving performance and eliminating any risk of hallucinations."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

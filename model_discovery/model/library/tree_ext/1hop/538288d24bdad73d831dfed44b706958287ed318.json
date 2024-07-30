@@ -1,0 +1,39 @@
+{
+    "acronym": "538288d24bdad73d831dfed44b706958287ed318",
+    "title": "Generating Sequences by Learning to Self-Correct",
+    "seed_ids": [
+        "gpt2",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "023edab4738690444e3924e224c2641017a0d794",
+        "60bff5a4527141599d8e05904baf96410541f8a9",
+        "4a6a65968a8eb8c09ffb57a7774ddabb596565b1",
+        "483336e50c566c5505012d8777b97800a6386113",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "538288d24bdad73d831dfed44b706958287ed318",
+    "abstract": "Sequence generation applications require satisfying semantic constraints, such as ensuring that programs are correct, using certain keywords, or avoiding undesirable content. Language models, whether fine-tuned or prompted with few-shot demonstrations, frequently violate these constraints, and lack a mechanism to iteratively revise their outputs. Moreover, some powerful language models are of extreme scale or inaccessible, making it inefficient, if not infeasible, to update their parameters for task-specific adaptation. We present Self-Correction, an approach that decouples an imperfect base generator (an off-the-shelf language model or supervised sequence-to-sequence model) from a separate corrector that learns to iteratively correct imperfect generations. To train the corrector, we propose an online training procedure that can use either scalar or natural language feedback on intermediate imperfect generations. We show that Self-Correction improves upon the base generator in three diverse generation tasks - mathematical program synthesis, lexically-constrained generation, and toxicity control - even when the corrector is much smaller than the base generator.",
+    "authors": [
+        "Sean Welleck",
+        "Ximing Lu",
+        "Peter West",
+        "Faeze Brahman",
+        "T. Shen",
+        "Daniel Khashabi",
+        "Yejin Choi"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Self-Correction is presented, an approach that decouples an imperfect base generator (an off-the-shelf language model or supervised sequence-to-sequence model) from a separate corrector that learns to iteratively correct imperfect generations."
+    },
+    "citationCount": 137,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

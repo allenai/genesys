@@ -1,0 +1,25 @@
+{
+    "acronym": "61cb29244db287623090763ac34055b1748f180f",
+    "title": "Unmasking Database Vulnerabilities: Zero-Knowledge Schema Inference Attacks in Text-to-SQL Systems",
+    "seed_ids": [
+        "bert",
+        "0b0debb710366cdff461938c80763eace1651af6"
+    ],
+    "s2id": "61cb29244db287623090763ac34055b1748f180f",
+    "abstract": "Relational databases are integral to modern information systems, serving as the foundation for storing, querying, and managing data efficiently and effectively. Advancements in large language modeling have led to the emergence of text-to-SQL technologies, significantly enhancing the querying and extracting of information from these databases and raising concerns about privacy and security. Our research extracts the database schema elements underlying a text-to-SQL model. Knowledge of the schema can make attacks such as SQL injection easier. By asking specially crafted questions, we have developed a zero-knowledge framework designed to probe various database schema elements without knowledge of the database itself. The text-to-SQL models then process these questions to produce an output that we use to uncover the structure of the database schema. We apply it to specialized text-to-SQL models fine-tuned on text-SQL pairs and generative language models used for SQL generation. Overall, we can reconstruct the table names with an F1 of nearly .75 for fine-tuned models and .96 for generative.",
+    "authors": [
+        "DJordje Klisura",
+        "Anthony Rios"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A zero-knowledge framework designed to probe various database schema elements without knowledge of the database itself is developed and applied to specialized text-to-SQL models fine-tuned on text-SQL pairs and generative language models used for SQL generation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,39 @@
+{
+    "acronym": "bebede105aa69a81045bf79682272ee4cfb61475",
+    "title": "Mastering Symbolic Operations: Augmenting Language Models with Compiled Neural Networks",
+    "seed_ids": [
+        "elgllm",
+        "2029349c55c1dba3493c5b3bd25152f18ba21ae2",
+        "525d93a382f6e7873b5d8a2e0713eb3dff7fb250",
+        "4d17732d90440682b0500f4e209c6cc4fac20e0e",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "92173d081b15824d22a9ef070e118744ceee8052",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "bebede105aa69a81045bf79682272ee4cfb61475",
+    "abstract": "Language models' (LMs) proficiency in handling deterministic symbolic reasoning and rule-based tasks remains limited due to their dependency implicit learning on textual data. To endow LMs with genuine rule comprehension abilities, we propose\"Neural Comprehension\"- a framework that synergistically integrates compiled neural networks (CoNNs) into the standard transformer architecture. CoNNs are neural modules designed to explicitly encode rules through artificially generated attention weights. By incorporating CoNN modules, the Neural Comprehension framework enables LMs to accurately and robustly execute rule-intensive symbolic tasks. Extensive experiments demonstrate the superiority of our approach over existing techniques in terms of length generalization, efficiency, and interpretability for symbolic operations. Furthermore, it can be applied to LMs across different model scales, outperforming tool-calling methods in arithmetic reasoning tasks while maintaining superior inference efficiency. Our work highlights the potential of seamlessly unifying explicit rule learning via CoNNs and implicit pattern learning in LMs, paving the way for true symbolic comprehension capabilities.",
+    "authors": [
+        "Yixuan Weng",
+        "Minjun Zhu",
+        "Fei Xia",
+        "Bin Li",
+        "Shizhu He",
+        "Kang Liu",
+        "Jun Zhao"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work highlights the potential of seamlessly unifying explicit rule learning via CoNNs and implicit pattern learning in LMs, paving the way for true symbolic comprehension capabilities."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

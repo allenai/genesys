@@ -1,0 +1,35 @@
+{
+    "acronym": "debf13581cf35a61598f765101e6136f5e5a574b",
+    "title": "RST-LoRA: A Discourse-Aware Low-Rank Adaptation for Long Document Abstractive Summarization",
+    "seed_ids": [
+        "longformer",
+        "9c5609baff6175b0a2e436bb69e89737c4be3cf4",
+        "9cab8c423d9c13d4f35beb97a7f823c250e8f059",
+        "b759a516922b163a93fea70bcc45708a6c24a9c1",
+        "be658d4482299d7a77be324bdb9946bfcbcbad25",
+        "1672864ca8037db4557a19c3eea5eecbe9ba3634",
+        "4b55c9eaa2eb8a52c326124ee97be7a2f2d087a9",
+        "3b39efe6c91ae432dd35bb79431edb8a6719f906",
+        "3d318019788418b21478e8736d03afadc1607690",
+        "a3c8c57075dfebf7f5a57952afafb7407762cc46",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "debf13581cf35a61598f765101e6136f5e5a574b",
+    "abstract": "For long document summarization, discourse structure is important to discern the key content of the text and the differences in importance level between sentences. Unfortunately, the integration of rhetorical structure theory (RST) into parameter-efficient fine-tuning strategies for long document summarization remains unexplored. Therefore, this paper introduces RST-LoRA and proposes four RST-aware variants to explicitly incorporate RST into the LoRA model. Our empirical evaluation demonstrates that incorporating the type and uncertainty of rhetorical relations can complementarily enhance the performance of LoRA in summarization tasks. Furthermore, the best-performing variant we introduced outperforms the vanilla LoRA and full-parameter fine-tuning models, as confirmed by multiple automatic and human evaluations, and even surpasses previous state-of-the-art methods.",
+    "authors": [
+        "Dongqi Pu",
+        "Vera Demberg"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces RST-LoRA and proposes four RST-aware variants to explicitly incorporate RST into the LoRA model, demonstrating that incorporating the type and uncertainty of rhetorical relations can complementarily enhance the performance of LoRA in summarization tasks."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

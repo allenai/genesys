@@ -1,0 +1,35 @@
+{
+    "acronym": "693bdd128a8c0d002402ca367fc70f53c50cecf7",
+    "title": "Extreme Encoder Output Frame Rate Reduction: Improving Computational Latencies of Large End-to-End Models",
+    "seed_ids": [
+        "funneltransformer",
+        "e25f6a60211aa74ecfde8001a5939ff206102de4",
+        "3f28feadf272523190d4c3a451966e39a2cfbf41",
+        "09e2c7adbed37440d4a339852cfa34e5b660f768"
+    ],
+    "s2id": "693bdd128a8c0d002402ca367fc70f53c50cecf7",
+    "abstract": "The accuracy of end-to-end (E2E) automatic speech recognition (ASR) models continues to improve as they are scaled to larger sizes, with some now reaching billions of parameters. Widespread deployment and adoption of these models, however, requires computationally efficient strategies for decoding. In the present work, we study one such strategy: applying multiple frame reduction layers in the encoder to compress encoder outputs into a small number of output frames. While similar techniques have been investigated in previous work, we achieve dramatically more reduction than has previously been demonstrated through the use of multiple funnel reduction layers. Through ablations, we study the impact of various architectural choices in the encoder to identify the most effective strategies. We demonstrate that we can generate one encoder output frame for every 2.56 sec of input speech, without significantly affecting word error rate on a large-scale voice search task, while improving encoder and decoder latencies by 48% and 92% respectively, relative to a strong but computationally expensive baseline.",
+    "authors": [
+        "Rohit Prabhavalkar",
+        "Zhong Meng",
+        "Weiran Wang",
+        "Adam Stooke",
+        "Xingyu Cai",
+        "Yanzhang He",
+        "Arun Narayanan",
+        "Dongseong Hwang",
+        "Tara N. Sainath",
+        "Pedro J. Moreno"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work demonstrates that it can generate one encoder output frame for every 2.56 sec of input speech, without significantly affecting word error rate on a large-scale voice search task, while improving encoder and decoder latencies by 48% and 92% respectively, relative to a strong but computationally expensive baseline."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

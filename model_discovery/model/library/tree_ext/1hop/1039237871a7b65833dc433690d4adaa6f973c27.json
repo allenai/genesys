@@ -1,0 +1,29 @@
+{
+    "acronym": "1039237871a7b65833dc433690d4adaa6f973c27",
+    "title": "Few-shot Text Classification with Saliency-equivalent Concatenation",
+    "seed_ids": [
+        "gpt2",
+        "7eba731a7fd8de712b7b79b5af41a6e2d4dbd191",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1039237871a7b65833dc433690d4adaa6f973c27",
+    "abstract": "In few-shot text classification, the lack of significant features limits models from generalizing to data not included in the training set. Data augmentation is a solution to the classification tasks; however, the standard augmentation methods in natural language processing are not feasible in few-shot learning. In this study, we explore data augmentation in few-shot text classification. We propose saliency-equivalent concatenation (SEC)11Our code is available at https://github.com/IKMLab/SEC.. The core concept of SEC is to append additional key information to an input sentence to help a model understand the sentence easier. In the proposed method, we first leverage a pre-trained language model to generate several novel sentences for each sample in datasets. Then we leave the most relevant one and concatenate it with the original sentence as additional information for each sample. Our experiments on the two few-shot text classification tasks verified that the proposed method can boost the performance of meta-learning models and outperform the previous unsupervised data augmentation methods.",
+    "authors": [
+        "Ying-Jia Lin",
+        "Yu Chang",
+        "Hung-Yu kao",
+        "Hsin-Yang Wang",
+        "Mu Liu"
+    ],
+    "venue": "International Conference on Artificial Intelligence and Knowledge Engineering",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed saliency-equivalent concatenation (SEC) method can boost the performance of meta-learning models and outperform the previous unsupervised data augmentation methods in few-shot text classification."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

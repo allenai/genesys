@@ -1,0 +1,31 @@
+{
+    "acronym": "4c14b1c41cb0aaa68f5d3f4a432f55e7199657ea",
+    "title": "AI and Memory Wall",
+    "seed_ids": [
+        "gpt3",
+        "51db4c39dc0bdf5c95c8bbe89bf4211b48d0b4df",
+        "0a6906bd6f026d3da3031c641ed03081bd0b574e",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "4c14b1c41cb0aaa68f5d3f4a432f55e7199657ea",
+    "abstract": "The availability of unprecedented unsupervised training data, along with neural scaling laws, has resulted in an unprecedented surge in model size and compute requirements for serving/training large language models. However, the main performance bottleneck is increasingly shifting to memory bandwidth. Over the past 20 years, peak server hardware floating-point operations per second have been scaling at 3.0${\\times}$\u00d7 per two years, outpacing the growth of dynamic random-access memory and interconnect bandwidth, which have only scaled at 1.6 and 1.4 times every two years, respectively. This disparity has made memory, rather than compute, the primary bottleneck in AI applications, particularly in serving. Here, we analyze encoder and decoder transformer models and show how memory bandwidth can become the dominant bottleneck for decoder models. We argue for a redesign in model architecture, training, and deployment strategies to overcome this memory limitation.",
+    "authors": [
+        "A. Gholami",
+        "Z. Yao",
+        "Sehoon Kim",
+        "Coleman Hooper",
+        "Michael W. Mahoney",
+        "Kurt Keutzer"
+    ],
+    "venue": "IEEE Micro",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work analyzes encoder and decoder transformer models and shows how memory bandwidth can become the dominant bottleneck for decoder models, and argues for a redesign in model architecture, training, and deployment strategies to overcome this memory limitation."
+    },
+    "citationCount": 56,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "1e291a7c189f4cce66cf647fdae9546465f73341",
+    "title": "Autoregressive Omni-Aware Outpainting for Open-Vocabulary 360-Degree Image Generation",
+    "seed_ids": [
+        "classfreediffu",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8"
+    ],
+    "s2id": "1e291a7c189f4cce66cf647fdae9546465f73341",
+    "abstract": "A 360-degree (omni-directional) image provides an all-encompassing spherical view of a scene. Recently, there has been an increasing interest in synthesising 360-degree images from conventional narrow field of view (NFoV) images captured by digital cameras and smartphones, for providing immersive experiences in various scenarios such as virtual reality. Yet, existing methods typically fall short in synthesizing intricate visual details or ensure the generated images align consistently with user-provided prompts. In this study, autoregressive omni-aware generative network (AOG-Net) is proposed for 360-degree image generation by outpainting an incomplete 360-degree image progressively with NFoV and text guidances joinly or individually. This autoregressive scheme not only allows for deriving finer-grained and text-consistent patterns by dynamically generating and adjusting the process but also offers users greater flexibility to edit their conditions throughout the generation process. A global-local conditioning mechanism is devised to comprehensively formulate the outpainting guidance in each autoregressive step. Text guidances, omni-visual cues, NFoV inputs and omni-geometry are encoded and further formulated with cross-attention based transformers into a global stream and a local stream into a conditioned generative backbone model. As AOG-Net is compatible to leverage large-scale models for the conditional encoder and the generative prior, it enables the generation to use extensive open-vocabulary text guidances. Comprehensive experiments on two commonly used 360-degree image datasets for both indoor and outdoor settings demonstrate the state-of-the-art performance of our proposed method. Our code is available at https://github.com/zhuqiangLu/AOG-NET-360.",
+    "authors": [
+        "Zhuqiang Lu",
+        "Kun Hu",
+        "Chaoyue Wang",
+        "Lei Bai",
+        "Zhiyong Wang"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Autoregressive omni-aware generative network (AOG-Net) is proposed for 360-degree image generation by outpainting an incomplete 360-degree image progressively with NFoV and text guidances joinly or individually, and enables the generation to use extensive open-vocabulary text guidances."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

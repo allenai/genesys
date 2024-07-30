@@ -1,0 +1,29 @@
+{
+    "acronym": "821ec4195a41652ff5cf26c841ce71c5f1e1f614",
+    "title": "Graph Reasoning Transformers for Knowledge-Aware Question Answering",
+    "seed_ids": [
+        "bert",
+        "710d183174844da5b7f392667f3cc25d2b098dde",
+        "80f9f109d1564cb8f82aa440a5f6f3fbe220c9ef",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "821ec4195a41652ff5cf26c841ce71c5f1e1f614",
+    "abstract": "Augmenting Language Models (LMs) with structured knowledge graphs (KGs) aims to leverage structured world knowledge to enhance the capability of LMs to complete knowledge-intensive tasks. However, existing methods are unable to effectively utilize the structured knowledge in a KG due to their inability to capture the rich relational semantics of knowledge triplets. Moreover, the modality gap between natural language text and KGs has become a challenging obstacle when aligning and fusing cross-modal information. To address these challenges, we propose a novel knowledge-augmented question answering (QA) model, namely, Graph Reasoning Transformers (GRT). Different from conventional node-level methods, the GRT serves knowledge triplets as atomic knowledge and utilize a triplet-level graph encoder to capture triplet-level graph features. Furthermore, to alleviate the negative effect of the modality gap on joint reasoning, we propose a representation alignment pretraining to align the cross-modal representations and introduce a cross-modal information fusion module with attention bias to enable fine-grained information fusion. Extensive experiments conducted on three knowledge-intensive QA benchmarks show that the GRT outperforms the state-of-the-art KG-augmented QA systems, demonstrating the effectiveness and adaptation of our proposed model.",
+    "authors": [
+        "Ruilin Zhao",
+        "Feng Zhao",
+        "Liang Hu",
+        "Guandong Xu"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel knowledge-augmented question answering (QA) model, namely, Graph Reasoning Transformers (GRT), which serves knowledge triplets as atomic knowledge and utilize a triplet-level graph encoder to capture triplet-level graph features."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

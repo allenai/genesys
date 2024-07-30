@@ -1,0 +1,33 @@
+{
+    "acronym": "3ba3b46ef11e1f5a287aafe53e78f2d6ddf21cb1",
+    "title": "MIGC++: Advanced Multi-Instance Generation Controller for Image Synthesis",
+    "seed_ids": [
+        "transformer",
+        "classfreediffu",
+        "2078ff863ad47339d4cf1a167c2ea63da260f127",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2d9ae4c167510ed78803735fc57ea67c3cc55a35"
+    ],
+    "s2id": "3ba3b46ef11e1f5a287aafe53e78f2d6ddf21cb1",
+    "abstract": "We introduce the Multi-Instance Generation (MIG) task, which focuses on generating multiple instances within a single image, each accurately placed at predefined positions with attributes such as category, color, and shape, strictly following user specifications. MIG faces three main challenges: avoiding attribute leakage between instances, supporting diverse instance descriptions, and maintaining consistency in iterative generation. To address attribute leakage, we propose the Multi-Instance Generation Controller (MIGC). MIGC generates multiple instances through a divide-and-conquer strategy, breaking down multi-instance shading into single-instance tasks with singular attributes, later integrated. To provide more types of instance descriptions, we developed MIGC++. MIGC++ allows attribute control through text \\&images and position control through boxes \\&masks. Lastly, we introduced the Consistent-MIG algorithm to enhance the iterative MIG ability of MIGC and MIGC++. This algorithm ensures consistency in unmodified regions during the addition, deletion, or modification of instances, and preserves the identity of instances when their attributes are changed. We introduce the COCO-MIG and Multimodal-MIG benchmarks to evaluate these methods. Extensive experiments on these benchmarks, along with the COCO-Position benchmark and DrawBench, demonstrate that our methods substantially outperform existing techniques, maintaining precise control over aspects including position, attribute, and quantity. Project page: https://github.com/limuloo/MIGC.",
+    "authors": [
+        "Dewei Zhou",
+        "You Li",
+        "Fan Ma",
+        "Zongxin Yang",
+        "Yi Yang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces the Multi-Instance Generation task, and introduced the Consistent-MIG algorithm to enhance the iterative MIG ability of MIGC and MIGC++, and developed MIGC++, which provides more types of instance descriptions."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

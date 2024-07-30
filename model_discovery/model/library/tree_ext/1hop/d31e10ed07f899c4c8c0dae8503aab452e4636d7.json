@@ -1,0 +1,30 @@
+{
+    "acronym": "d31e10ed07f899c4c8c0dae8503aab452e4636d7",
+    "title": "TOKEN is a MASK: Few-shot Named Entity Recognition with Pre-trained Language Models",
+    "seed_ids": [
+        "gpt2",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d31e10ed07f899c4c8c0dae8503aab452e4636d7",
+    "abstract": "Transferring knowledge from one domain to another is of practical importance for many tasks in natural language processing, especially when the amount of available data in the target domain is limited. In this work, we propose a novel few-shot approach to domain adaptation in the context of Named Entity Recognition (NER). We propose a two-step approach consisting of a variable base module and a template module that leverages the knowledge captured in pre-trained language models with the help of simple descriptive patterns. Our approach is simple yet versatile and can be applied in few-shot and zero-shot settings. Evaluating our lightweight approach across a number of different datasets shows that it can boost the performance of state-of-the-art baselines by 2-5% F1-score.",
+    "authors": [
+        "A. Davody",
+        "David Ifeoluwa Adelani",
+        "Thomas Kleinbauer",
+        "D. Klakow"
+    ],
+    "venue": "International Conference on Text, Speech and Dialogue",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel few-shot approach to domain adaptation in the context of Named Entity Recognition (NER) with a two-step approach consisting of a variable base module and a template module that leverages the knowledge captured in pre-trained language models with the help of simple descriptive patterns."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

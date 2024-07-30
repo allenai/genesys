@@ -1,0 +1,34 @@
+{
+    "acronym": "51db4c39dc0bdf5c95c8bbe89bf4211b48d0b4df",
+    "title": "SpQR: A Sparse-Quantized Representation for Near-Lossless LLM Weight Compression",
+    "seed_ids": [
+        "roformer",
+        "fd1b829261ba04bb92e0ab60c4f6e7cea0d99fbf",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "51db4c39dc0bdf5c95c8bbe89bf4211b48d0b4df",
+    "abstract": "Recent advances in large language model (LLM) pretraining have led to high-quality LLMs with impressive abilities. By compressing such LLMs via quantization to 3-4 bits per parameter, they can fit into memory-limited devices such as laptops and mobile phones, enabling personalized use. However, quantization down to 3-4 bits per parameter usually leads to moderate-to-high accuracy losses, especially for smaller models in the 1-10B parameter range, which are well-suited for edge deployments. To address this accuracy issue, we introduce the Sparse-Quantized Representation (SpQR), a new compressed format and quantization technique which enables for the first time near-lossless compression of LLMs across model scales, while reaching similar compression levels to previous methods. SpQR works by identifying and isolating outlier weights, which cause particularly-large quantization errors, and storing them in higher precision, while compressing all other weights to 3-4 bits, and achieves relative accuracy losses of less than 1% in perplexity for highly-accurate LLaMA and Falcon LLMs. This makes it possible to run 33B parameter LLM on a single 24 GB consumer GPU without any performance degradation at 15% speedup thus making powerful LLMs available to consumer without any downsides. SpQR comes with efficient algorithms for both encoding weights into its format, as well as decoding them efficiently at runtime. Specifically, we provide an efficient GPU inference algorithm for SpQR which yields faster inference than 16-bit baselines at similar accuracy, while enabling memory compression gains of more than 4x.",
+    "authors": [
+        "Tim Dettmers",
+        "Ruslan Svirschevski",
+        "Vage Egiazarian",
+        "Denis Kuznedelev",
+        "Elias Frantar",
+        "Saleh Ashkboos",
+        "Alexander Borzunov",
+        "T. Hoefler",
+        "Dan Alistarh"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Sparse-Quantized Representation (SpQR), a new compressed format and quantization technique which enables for the first time near-lossless compression of LLMs across model scales, while reaching similar compression levels to previous methods."
+    },
+    "citationCount": 113,
+    "influentialCitationCount": 18,
+    "code": null,
+    "description": null,
+    "url": null
+}

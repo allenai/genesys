@@ -1,0 +1,27 @@
+{
+    "acronym": "f15562af6b15c88f2b10a1d11aa26c15d2be3436",
+    "title": "Summarizing Radiology Reports Findings into Impressions",
+    "seed_ids": [
+        "bigbird",
+        "f30e95be411456a709e7cb9a8b3a3e557bd0356a",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "f15562af6b15c88f2b10a1d11aa26c15d2be3436",
+    "abstract": "Patient hand-off and triage are two fundamental problems in health care. Often doctors must painstakingly summarize complex findings to efficiently communicate with specialists and quickly make decisions on which patients have the most urgent cases. In pursuit of these challenges, we present (1) a model with state-of-art radiology report summarization performance using (2) a novel method for augmenting medical data, and (3) an analysis of the model limitations and radiology knowledge gain. We also provide a data processing pipeline for future models developed on the the MIMIC CXR dataset. Our best performing model was a fine-tuned BERT-to-BERT encoder-decoder with 58.75/100 ROUGE-L F1, which outperformed specialized checkpoints with more sophisticated attention mechanisms. We investigate these aspects in this work.",
+    "authors": [
+        "Raul Salles de Padua",
+        "I. Qureshi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The best performing model was a fine-tuned BERT-to-BERT encoder-decoder with 58.75/100 ROUGE-L F1, which outperformed specialized checkpoints with more sophisticated attention mechanisms."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

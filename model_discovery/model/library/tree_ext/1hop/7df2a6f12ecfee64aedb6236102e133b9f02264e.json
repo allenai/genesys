@@ -1,0 +1,28 @@
+{
+    "acronym": "7df2a6f12ecfee64aedb6236102e133b9f02264e",
+    "title": "HHGT: Hierarchical Heterogeneous Graph Transformer for Heterogeneous Graph Representation Learning",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "7df2a6f12ecfee64aedb6236102e133b9f02264e",
+    "abstract": "Despite the success of Heterogeneous Graph Neural Networks (HGNNs) in modeling real-world Heterogeneous Information Networks (HINs), challenges such as expressiveness limitations and over-smoothing have prompted researchers to explore Graph Transformers (GTs) for enhanced HIN representation learning. However, research on GT in HINs remains limited, with two key shortcomings in existing work: (1) A node's neighbors at different distances in HINs convey diverse semantics. Unfortunately, existing methods ignore such differences and uniformly treat neighbors within a given distance in a coarse manner, which results in semantic confusion. (2) Nodes in HINs have various types, each with unique semantics. Nevertheless, existing methods mix nodes of different types during neighbor aggregation, hindering the capture of proper correlations between nodes of diverse types. To bridge these gaps, we design an innovative structure named (k,t)-ring neighborhood, where nodes are initially organized by their distance, forming different non-overlapping k-ring neighborhoods for each distance. Within each k-ring structure, nodes are further categorized into different groups according to their types, thus emphasizing the heterogeneity of both distances and types in HINs naturally. Based on this structure, we propose a novel Hierarchical Heterogeneous Graph Transformer (HHGT) model, which seamlessly integrates a Type-level Transformer for aggregating nodes of different types within each k-ring neighborhood, followed by a Ring-level Transformer for aggregating different k-ring neighborhoods in a hierarchical manner. Extensive experiments are conducted on downstream tasks to verify HHGT's superiority over 14 baselines, with a notable improvement of up to 24.75% in NMI and 29.25% in ARI for node clustering task on the ACM dataset compared to the best baseline.",
+    "authors": [
+        "Qiuyu Zhu",
+        "Liang Zhang",
+        "Qianxiong Xu",
+        "Kaijun Liu",
+        "Cheng Long",
+        "Xiaoyang Wang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel Hierarchical Heterogeneous Graph Transformer (HHGT) model is proposed, which seamlessly integrates a Type-level Transformer for aggregating nodes of different types within each k-ring neighborhood, followed by a Ring-level Transformer for aggregating different k-ring neighborhoods in a hierarchical manner."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

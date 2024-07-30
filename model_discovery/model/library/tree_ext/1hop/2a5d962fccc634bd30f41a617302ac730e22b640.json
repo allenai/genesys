@@ -1,0 +1,27 @@
+{
+    "acronym": "2a5d962fccc634bd30f41a617302ac730e22b640",
+    "title": "Groningen Group E at SemEval-2024 Task 8: Detecting machine-generated texts through pre-trained language models augmented with explicit linguistic-stylistic features",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "2a5d962fccc634bd30f41a617302ac730e22b640",
+    "abstract": "Our approach to detecting machine-generated text for the SemEval-2024 Task 8 combines a wide range of linguistic-stylistic features with pre-trained language models (PLM). Experiments using random forests and PLMs resulted in an augmented DistilBERT system for subtask A and B and an augmented Longformer for subtask C. These systems achieved accuracies of 0.63 and 0.77 for the mono- and multilingual tracks of subtask A, 0.64 for subtask B and a MAE of 26.07 for subtask C. Although lower than the task organizer\u2019s baselines, we demonstrate that linguistic-stylistic features are predictors for whether a text was authored by a model (and if so, which one).",
+    "authors": [
+        "Patrick Darwinkel",
+        "Sijbren Van Vaals",
+        "Marieke Van Der Holt",
+        "Jarno Van Houten"
+    ],
+    "venue": "International Workshop on Semantic Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Although lower than the task organizer\u2019s baselines, it is demonstrated that linguistic-stylistic features are predictors for whether a text was authored by a model (and if so, which one)."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

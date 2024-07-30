@@ -1,0 +1,36 @@
+{
+    "acronym": "9dc624d7258d1a56117ca720aea953ce46b66b21",
+    "title": "Efficient Attentions for Long Document Summarization",
+    "seed_ids": [
+        "bigbird",
+        "reformer",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "01b15017ac59b8d6f2ce3598c4a7d6358c211426",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "9dc624d7258d1a56117ca720aea953ce46b66b21",
+    "abstract": "The quadratic computational and memory complexities of large Transformers have limited their scalability for long document summarization. In this paper, we propose Hepos, a novel efficient encoder-decoder attention with head-wise positional strides to effectively pinpoint salient information from the source. We further conduct a systematic study of existing efficient self-attentions. Combined with Hepos, we are able to process ten times more tokens than existing models that use full attentions. For evaluation, we present a new dataset, GovReport, with significantly longer documents and summaries. Results show that our models produce significantly higher ROUGE scores than competitive comparisons, including new state-of-the-art results on PubMed. Human evaluation also shows that our models generate more informative summaries with fewer unfaithful errors.",
+    "authors": [
+        "L. Huang",
+        "Shuyang Cao",
+        "Nikolaus Nova Parulian",
+        "Heng Ji",
+        "Lu Wang"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Hepos, a novel efficient encoder-decoder attention with head-wise positional strides to effectively pinpoint salient information from the source is proposed, able to process ten times more tokens than existing models that use full attentions."
+    },
+    "citationCount": 180,
+    "influentialCitationCount": 34,
+    "code": null,
+    "description": null,
+    "url": null
+}

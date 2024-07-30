@@ -1,0 +1,30 @@
+{
+    "acronym": "13bfdd6d1b2cf7222b4ea8bf1b99aefa7243cf53",
+    "title": "Exploring and Verbalizing Academic Ideas by Concept Co-occurrence",
+    "seed_ids": [
+        "gpt",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3"
+    ],
+    "s2id": "13bfdd6d1b2cf7222b4ea8bf1b99aefa7243cf53",
+    "abstract": "Researchers usually come up with new ideas only after thoroughly comprehending vast quantities of literature. The difficulty of this procedure is exacerbated by the fact that the number of academic publications is growing exponentially. In this study, we devise a framework based on concept co-occurrence for academic idea inspiration, which has been integrated into a research assistant system. From our perspective, the emergence of a new idea can be regarded as the fusion of two concepts that co-occur in an academic paper. We construct evolving concept graphs according to the co-occurrence relationship of concepts from 20 disciplines or topics. Then we design a temporal link prediction method based on masked language model to explore potential connections between different concepts. To verbalize the newly discovered connections, we also utilize the pretrained language model to generate a description of an idea based on a new data structure called co-occurrence citation quintuple. We evaluate our proposed system using both automatic metrics and human assessment. The results demonstrate that our system has broad prospects and can assist researchers in expediting the process of discovering new ideas.",
+    "authors": [
+        "Yi Xu",
+        "Shuqian Sheng",
+        "Bo Xue",
+        "Luoyi Fu",
+        "Xinbing Wang",
+        "Cheng Zhou"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A framework based on concept co-occurrence for academic idea inspiration, which has been integrated into a research assistant system, has broad prospects and can assist researchers in expediting the process of discovering new ideas."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

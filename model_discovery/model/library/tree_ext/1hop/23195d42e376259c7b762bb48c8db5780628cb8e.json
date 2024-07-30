@@ -1,0 +1,31 @@
+{
+    "acronym": "23195d42e376259c7b762bb48c8db5780628cb8e",
+    "title": "Two-stage Cytopathological Image Synthesis for Augmenting Cervical Abnormality Screening",
+    "seed_ids": [
+        "classfreediffu",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "23195d42e376259c7b762bb48c8db5780628cb8e",
+    "abstract": "Automatic thin-prep cytologic test (TCT) screening can assist pathologists in finding cervical abnormality towards accurate and efficient cervical cancer diagnosis. Current automatic TCT screening systems mostly involve abnormal cervical cell detection, which generally requires large-scale and diverse training data with high-quality annotations to achieve promising performance. Pathological image synthesis is naturally raised to minimize the efforts in data collection and annotation. However, it is challenging to generate realistic large-size cytopathological images while simultaneously synthesizing visually plausible appearances for small-size abnormal cervical cells. In this paper, we propose a two-stage image synthesis framework to create synthetic data for augmenting cervical abnormality screening. In the first Global Image Generation stage, a Normal Image Generator is designed to generate cytopathological images full of normal cervical cells. In the second Local Cell Editing stage, normal cells are randomly selected from the generated images and then are converted to different types of abnormal cells using the proposed Abnormal Cell Synthesizer. Both Normal Image Generator and Abnormal Cell Synthesizer are built upon Stable Diffusion, a pre-trained foundation model for image synthesis, via parameter-efficient fine-tuning methods for customizing cytopathological image contents and extending spatial layout controllability, respectively. Our experiments demonstrate the synthetic image quality, diversity, and controllability of the proposed synthesis framework, and validate its data augmentation effectiveness in enhancing the performance of abnormal cervical cell detection.",
+    "authors": [
+        "Zhenrong Shen",
+        "Manman Fei",
+        "Xin Wang",
+        "Jiangdong Cai",
+        "Sheng Wang",
+        "Lichi Zhang",
+        "Qian Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A two-stage image synthesis framework to create synthetic data for augmenting cervical abnormality screening and demonstrates the synthetic image quality, diversity, and controllability of the proposed synthesis framework, and validate its data augmentation effectiveness in enhancing the performance of abnormal cervical cell detection."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

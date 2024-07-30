@@ -1,0 +1,33 @@
+{
+    "acronym": "7e243fd3fc349ff9fc7c3011543823645ac25ed6",
+    "title": "SwinGNN: Rethinking Permutation Invariance in Diffusion Models for Graph Generation",
+    "seed_ids": [
+        "analogbits",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "e342165a614588878ad0f4bc9bacf3905df34d08",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "7e243fd3fc349ff9fc7c3011543823645ac25ed6",
+    "abstract": "Diffusion models based on permutation-equivariant networks can learn permutation-invariant distributions for graph data. However, in comparison to their non-invariant counterparts, we have found that these invariant models encounter greater learning challenges since 1) their effective target distributions exhibit more modes; 2) their optimal one-step denoising scores are the score functions of Gaussian mixtures with more components. Motivated by this analysis, we propose a non-invariant diffusion model, called $\\textit{SwinGNN}$, which employs an efficient edge-to-edge 2-WL message passing network and utilizes shifted window based self-attention inspired by SwinTransformers. Further, through systematic ablations, we identify several critical training and sampling techniques that significantly improve the sample quality of graph generation. At last, we introduce a simple post-processing trick, $\\textit{i.e.}$, randomly permuting the generated graphs, which provably converts any graph generative model to a permutation-invariant one. Extensive experiments on synthetic and real-world protein and molecule datasets show that our SwinGNN achieves state-of-the-art performances. Our code is released at https://github.com/qiyan98/SwinGNN.",
+    "authors": [
+        "Qi Yan",
+        "Zhen-Long Liang",
+        "Yang Song",
+        "Renjie Liao",
+        "Lele Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a non-invariant diffusion model, called SwinGNN, which employs an efficient edge-to-edge 2-WL message passing network and utilizes shifted window based self-attention inspired by SwinTransformers, and introduces a simple post-processing trick, randomly permuting the generated graphs, which provably converts any graph generative model to a permutation-Invariant one."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,26 @@
+{
+    "acronym": "843b1cf7f0d6904c3f66dfd705afd1295c3eca82",
+    "title": "Rethinking Supervision in Document Unwarping: A Self-Consistent Flow-Free Approach",
+    "seed_ids": [
+        "transformer",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7"
+    ],
+    "s2id": "843b1cf7f0d6904c3f66dfd705afd1295c3eca82",
+    "abstract": "In recent years, the proliferation of smartphones has led to an upsurge in the digitization of document files via these portable devices. However, images captured by smartphones often suffer from distortions, thereby negatively affecting digital preservation and downstream applications. To address this issue, we introduce DRNet, a novel deep network for document image rectification. Our approach is based on three key designs. Firstly, we exploit the intrinsic geometric consistency inherent in document images to guide the learning process of distortion rectification. Secondly, we design a coarse-to-fine rectification network to leverage the representations derived from the distorted document image, thereby enhancing the rectification result. Thirdly, we propose a unique perspective for supervising the learning of rectification networks, where undistorted document images are employed for supervision, which is free of warping mesh as ground truth in existing methods. Technically, both low-level pixel alignment and high-level semantic alignment jointly contribute to the learning of the mapping relationship between deformed document images and distortion-free ones. We evaluate our method on the challenging DocUNet Benchmark dataset, where it sets a series of state-of-the-art records, demonstrating the superiority of our approach compared to existing learning-based solutions. Additionally, we conduct a comprehensive series of ablation experiments to further validate the effectiveness and merits of our method.",
+    "authors": [
+        "Shaokai Liu",
+        "Hao Feng",
+        "Wen-gang Zhou"
+    ],
+    "venue": "IEEE transactions on circuits and systems for video technology (Print)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DRNet is introduced, a novel deep network for document image rectification that leverages the intrinsic geometric consistency inherent in document images to guide the learning process of distortion rectification and proposes a unique perspective for supervising the learning of rectification networks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

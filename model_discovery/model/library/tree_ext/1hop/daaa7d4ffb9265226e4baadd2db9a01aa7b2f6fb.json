@@ -1,0 +1,41 @@
+{
+    "acronym": "daaa7d4ffb9265226e4baadd2db9a01aa7b2f6fb",
+    "title": "Clinical Text Summarization: Adapting Large Language Models Can Outperform Human Experts",
+    "seed_ids": [
+        "gpt3",
+        "94ce1d5924e05e8d75e43ce70044293ddcef850a",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "998ac3e945857cf2676ee7efdbaf443a0c6f820a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "daaa7d4ffb9265226e4baadd2db9a01aa7b2f6fb",
+    "abstract": "Sifting through vast textual data and summarizing key information from electronic health records (EHR) imposes a substantial burden on how clinicians allocate their time. Although large language models (LLMs) have shown immense promise in natural language processing (NLP) tasks, their efficacy on a diverse range of clinical summarization tasks has not yet been rigorously demonstrated. In this work, we apply domain adaptation methods to eight LLMs, spanning six datasets and four distinct clinical summarization tasks: radiology reports, patient questions, progress notes, and doctor-patient dialogue. Our thorough quantitative assessment reveals trade-offs between models and adaptation methods in addition to instances where recent advances in LLMs may not improve results. Further, in a clinical reader study with ten physicians, we show that summaries from our best-adapted LLMs are preferable to human summaries in terms of completeness and correctness. Our ensuing qualitative analysis highlights challenges faced by both LLMs and human experts. Lastly, we correlate traditional quantitative NLP metrics with reader study scores to enhance our understanding of how these metrics align with physician preferences. Our research marks the first evidence of LLMs outperforming human experts in clinical text summarization across multiple tasks. This implies that integrating LLMs into clinical workflows could alleviate documentation burden, empowering clinicians to focus more on personalized patient care and the inherently human aspects of medicine.",
+    "authors": [
+        "Dave Van Veen",
+        "Cara Van Uden",
+        "Louis Blankemeier",
+        "Jean-Benoit Delbrouck",
+        "Asad Aali",
+        "Christian Bluethgen",
+        "Anuj Pareek",
+        "Malgorzata Polacin",
+        "William Collins",
+        "Neera Ahuja",
+        "C. Langlotz",
+        "Jason Hom",
+        "S. Gatidis",
+        "John M. Pauly",
+        "Akshay S. Chaudhari"
+    ],
+    "venue": "Research Square",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This research marks the first evidence of LLMs outperforming human experts in clinical text summarization across multiple tasks, implying that integrating LLMs into clinical workflows could alleviate documentation burden, empowering clinicians to focus more on personalized patient care and the inherently human aspects of medicine."
+    },
+    "citationCount": 36,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

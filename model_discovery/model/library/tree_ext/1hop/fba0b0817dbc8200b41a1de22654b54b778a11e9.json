@@ -1,0 +1,34 @@
+{
+    "acronym": "fba0b0817dbc8200b41a1de22654b54b778a11e9",
+    "title": "Recommending Root-Cause and Mitigation Steps for Cloud Incidents using Large Language Models",
+    "seed_ids": [
+        "gpt2",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "c858aeb711e0f9e0b9752d887f965096481cc37d",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "fba0b0817dbc8200b41a1de22654b54b778a11e9",
+    "abstract": "Incident management for cloud services is a complex process involving several steps and has a huge impact on both service health and developer productivity. On-call engineers require significant amount of domain knowledge and manual effort for root causing and mitigation of production incidents. Recent advances in artificial intelligence has resulted in state-of-the-art large language models like GPT-3.x (both GPT-3.0 and GPT-3.5), which have been used to solve a variety of problems ranging from question answering to text summarization. In this work, we do the first large-scale study to evaluate the effectiveness of these models for helping engineers root cause and mitigate production incidents. We do a rigorous study at Microsoft, on more than 40,000 incidents and compare several large language models in zero-shot, fine-tuned and multi-task setting using semantic and lexical metrics. Lastly, our human evaluation with actual incident owners show the efficacy and future potential of using artificial intelligence for resolving cloud incidents.",
+    "authors": [
+        "Toufique Ahmed",
+        "Supriyo Ghosh",
+        "Chetan Bansal",
+        "Thomas Zimmermann",
+        "Xuchao Zhang",
+        "S. Rajmohan"
+    ],
+    "venue": "International Conference on Software Engineering",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work does the first large-scale study to evaluate the effectiveness of GPT-3.x models for helping engineers root cause and mitigate production incidents and compares several large language models in zero-shot, fine-tuned and multi-task setting using semantic and lexical metrics."
+    },
+    "citationCount": 30,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

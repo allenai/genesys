@@ -1,0 +1,33 @@
+{
+    "acronym": "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+    "title": "Analog Bits: Generating Discrete Data using Diffusion Models with Self-Conditioning",
+    "seed_ids": [
+        "routingtransformer",
+        "d3pms",
+        "e9b9a47cd81c66603c827f0f2bc4fba0d9ae77c4",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "dd6de9423afcc0f821fee2bd0363a4091c7f8cd3"
+    ],
+    "s2id": "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+    "abstract": "We present Bit Diffusion: a simple and generic approach for generating discrete data with continuous state and continuous time diffusion models. The main idea behind our approach is to first represent the discrete data as binary bits, and then train a continuous diffusion model to model these bits as real numbers which we call analog bits. To generate samples, the model first generates the analog bits, which are then thresholded to obtain the bits that represent the discrete variables. We further propose two simple techniques, namely Self-Conditioning and Asymmetric Time Intervals, which lead to a significant improvement in sample quality. Despite its simplicity, the proposed approach can achieve strong performance in both discrete image generation and image captioning tasks. For discrete image generation, we significantly improve previous state-of-the-art on both CIFAR-10 (which has 3K discrete 8-bit tokens) and ImageNet-64x64 (which has 12K discrete 8-bit tokens), outperforming the best autoregressive model in both sample quality (measured by FID) and efficiency. For image captioning on MS-COCO dataset, our approach achieves competitive results compared to autoregressive models.",
+    "authors": [
+        "Ting Chen",
+        "Ruixiang Zhang",
+        "Geoffrey E. Hinton"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Bit Diffusion is presented, a simple and generic approach for generating discrete data with continuous state and continuous time diffusion models that can achieve strong performance in both discrete image generation and image captioning tasks."
+    },
+    "citationCount": 195,
+    "influentialCitationCount": 35,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "4b9967c741d26a3e497236cee898d1bfaf24c3b5",
+    "title": "Scaling Up Video Summarization Pretraining with Large Language Models",
+    "seed_ids": [
+        "transformer",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "4b9967c741d26a3e497236cee898d1bfaf24c3b5",
+    "abstract": "Long-form video content constitutes a significant portion of internet traffic, making automated video summarization an essential research problem. However, existing video summarization datasets are notably limited in their size, constraining the effectiveness of state-of-the-art methods for generalization. Our work aims to overcome this limitation by capitalizing on the abundance of long-form videos with dense speech-to-video alignment and the remarkable capabilities of recent large language models (LLMs) in summarizing long text. We introduce an automated and scalable pipeline for generating a large-scale video summarization dataset using LLMs as Oracle summarizers. By leveraging the generated dataset, we analyze the limitations of existing approaches and propose a new video summarization model that effectively addresses them. To facilitate further research in the field, our work also presents a new benchmark dataset that contains 1200 long videos each with high-quality summaries annotated by professionals. Extensive experiments clearly indicate that our proposed approach sets a new state-of-the-art in video summarization across several benchmarks.",
+    "authors": [
+        "Dawit Mureja Argaw",
+        "Seunghyun Yoon",
+        "Fabian Caba Heilbron",
+        "Hanieh Deilamsalehy",
+        "Trung Bui",
+        "Zhaowen Wang",
+        "Franck Dernoncourt",
+        "Joon Son Chung"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces an automated and scalable pipeline for generating a large-scale video summarization dataset using LLMs as Oracle summarizers and proposes a new video summarization model that effectively addresses the limitations of existing approaches."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

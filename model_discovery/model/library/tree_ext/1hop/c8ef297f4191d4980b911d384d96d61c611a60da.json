@@ -1,0 +1,33 @@
+{
+    "acronym": "c8ef297f4191d4980b911d384d96d61c611a60da",
+    "title": "Pre-training LongT5 for Vietnamese Mass-Media Multi-document Summarization Task",
+    "seed_ids": [
+        "bigbird",
+        "longt5",
+        "3b39efe6c91ae432dd35bb79431edb8a6719f906",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "274f903041b1a830b37f57929d837c1706e94ec7",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "26963fda30da20ee342b8e5250667ef702c5aed2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "c8ef297f4191d4980b911d384d96d61c611a60da",
+    "abstract": "Multi-document Summarization task aimed to extract the most salient information from the set of input documents. One of the main challenges that face this task is a long-term dependency problem. When we deal with texts written in Vietnamese it is also accompanied by the specific syllable-based text representation, and lack of labeled datasets. The recent advances in machine translation problem results in a significant impact on the related architecture, dubbed as transformers . Being pre-trained on large amounts of raw texts, transformers allows providing a deep knowledge of the texts. In this paper, we survey the findings of the language model applications for text summarization problems, including the remarkable Vietnamese text summarization models. According to the latter, we select LongT5 to pre-train and then fine-tune it for the Vietnamese Multi-document text summarization problem from scratch. We provide a result model analysis and experiments with Multi-document Vietnamese datasets, including ViMs, VMDS, and VLSP2022. We conclude that using a transformer-based model pre-trained on a large amount of unlabeled Vietnamese texts allows us to achieve promising re-sults, with further enhancement via fine-tuning within the small amount of manually summarized texts. The pre-trained model utilized in the experiment section is published 4 .",
+    "authors": [
+        "Nicolay Rusnachenko",
+        "Anh Le",
+        "Ngoc Diep Nguyen"
+    ],
+    "venue": "",
+    "year": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper surveys the findings of the language model applications for text summarization problems, including the remarkable Vietnamese text summarization models, and concludes that using a transformer-based model pre-trained on a large amount of unlabeled Vietnamese texts allows for promising re-sults, with further enhancement within the small amount of manually summarized texts."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

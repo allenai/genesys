@@ -1,0 +1,33 @@
+{
+    "acronym": "467946f0ec2f41f0c9447dd4cf6a5824d39ccbe9",
+    "title": "Reindex-Then-Adapt: Improving Large Language Models for Conversational Recommendation",
+    "seed_ids": [
+        "gpt3",
+        "ca7bd64d372e3bcb3f4633ca4a20291ff57de3c3",
+        "d6db74a36301fdbb4859b5f7ff302337666b93ce",
+        "cbf3bf8f541f5b446c59c8deacbcc18527768c75",
+        "df602516e28a9ef0ef665ed0aef551984d8d770d"
+    ],
+    "s2id": "467946f0ec2f41f0c9447dd4cf6a5824d39ccbe9",
+    "abstract": "Large language models (LLMs) are revolutionizing conversational recommender systems by adeptly indexing item content, understanding complex conversational contexts, and generating relevant item titles. However, controlling the distribution of recommended items remains a challenge. This leads to suboptimal performance due to the failure to capture rapidly changing data distributions, such as item popularity, on targeted conversational recommendation platforms. In conversational recommendation, LLMs recommend items by generating the titles (as multiple tokens) autoregressively, making it difficult to obtain and control the recommendations over all items. Thus, we propose a Reindex-Then-Adapt (RTA) framework, which converts multi-token item titles into single tokens within LLMs, and then adjusts the probability distributions over these single-token item titles accordingly. The RTA framework marries the benefits of both LLMs and traditional recommender systems (RecSys): understanding complex queries as LLMs do; while efficiently controlling the recommended item distributions in conversational recommendations as traditional RecSys do. Our framework demonstrates improved accuracy metrics across three different conversational recommendation datasets and two adaptation settings",
+    "authors": [
+        "Zhankui He",
+        "Zhouhang Xie",
+        "Harald Steck",
+        "Dawen Liang",
+        "Rahul Jha",
+        "Nathan Kallus",
+        "Julian McAuley"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a Reindex-Then-Adapt (RTA) framework, which converts multi-token item titles into single tokens within LLMs, and then adjusts the probability distributions over these single-token item titles accordingly."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

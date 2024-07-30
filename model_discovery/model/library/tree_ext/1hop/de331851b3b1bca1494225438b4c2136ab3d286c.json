@@ -1,0 +1,27 @@
+{
+    "acronym": "de331851b3b1bca1494225438b4c2136ab3d286c",
+    "title": "A Gated MLP Architecture for Learning Topological Dependencies in Spatio-Temporal Graphs",
+    "seed_ids": [
+        "gmlp"
+    ],
+    "s2id": "de331851b3b1bca1494225438b4c2136ab3d286c",
+    "abstract": "Graph Neural Networks (GNNs) and Transformer have been increasingly adopted to learn the complex vector representations of spatio-temporal graphs, capturing intricate spatio-temporal dependencies crucial for applications such as traffic datasets. Although many existing methods utilize multi-head attention mechanisms and message-passing neural networks (MPNNs) to capture both spatial and temporal relations, these approaches encode temporal and spatial relations independently, and reflect the graph's topological characteristics in a limited manner. In this work, we introduce the Cycle to Mixer (Cy2Mixer), a novel spatio-temporal GNN based on topological non-trivial invariants of spatio-temporal graphs with gated multi-layer perceptrons (gMLP). The Cy2Mixer is composed of three blocks based on MLPs: A message-passing block for encapsulating spatial information, a cycle message-passing block for enriching topological information through cyclic subgraphs, and a temporal block for capturing temporal properties. We bolster the effectiveness of Cy2Mixer with mathematical evidence emphasizing that our cycle message-passing block is capable of offering differentiated information to the deep learning model compared to the message-passing block. Furthermore, empirical evaluations substantiate the efficacy of the Cy2Mixer, demonstrating state-of-the-art performances across various traffic benchmark datasets.",
+    "authors": [
+        "Yuncheol Choi",
+        "Minho Lee",
+        "Sun Woo Park",
+        "Seunghwan Lee",
+        "Joohwan Ko"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces the Cycle to Mixer (Cy2Mixer), a novel spatio-temporal GNN based on topological non-trivial invariants of spatio-temporal graphs with gated multi-layer perceptrons (gMLP)."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

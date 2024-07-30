@@ -1,0 +1,30 @@
+{
+    "acronym": "15f089f5c3c2bc6c34f137ca3420c0c5da8796f9",
+    "title": "Measuring design compliance using neural language models: an automotive case study",
+    "seed_ids": [
+        "reformer",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "031e4e43aaffd7a479738dcea69a2d5be7957aa3"
+    ],
+    "s2id": "15f089f5c3c2bc6c34f137ca3420c0c5da8796f9",
+    "abstract": "As the modern vehicle becomes more software-defined, it is beginning to take significant effort to avoid serious regression in software design. This is because automotive software architects rely largely upon manual review of code to spot deviations from specified design principles. Such an approach is both inefficient and prone to error. In recent days, neural language models pre-trained on source code are beginning to be used for automating a variety of programming tasks. In this work, we extend the application of such a Programming Language Model (PLM) to automate the assessment of design compliance. Using a PLM, we construct a system that assesses whether a set of query programs comply with Controller-Handler, a design pattern specified to ensure hardware abstraction in automotive control software. The assessment is based upon measuring whether the geometrical arrangement of query program embeddings, extracted from the PLM, aligns with that of a set of known implementations of the pattern. The level of alignment is then transformed into an interpretable measure of compliance. Using a controlled experiment, we demonstrate that our technique determines compliance with a precision of 92%. Also, using expert review to calibrate the automated assessment, we introduce a protocol to determine the nature of the violation, helping eventual refactoring. Results from this work indicate that neural language models can provide valuable assistance to human architects in assessing and fixing violations in automotive software design.",
+    "authors": [
+        "Dhasarathy Parthasarathy",
+        "Cecilia Ekelin",
+        "A. Karri",
+        "Jiapeng Sun",
+        "P. Moraitis"
+    ],
+    "venue": "International Conference on Predictive Models in Software Engineering",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Results from this work indicate that neural language models can provide valuable assistance to human architects in assessing and fixing violations in automotive software design."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

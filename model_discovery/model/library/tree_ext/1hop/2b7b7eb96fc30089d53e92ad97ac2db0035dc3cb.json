@@ -1,0 +1,26 @@
+{
+    "acronym": "2b7b7eb96fc30089d53e92ad97ac2db0035dc3cb",
+    "title": "Generalized Classification of Satellite Image Time Series with Thermal Positional Encoding",
+    "seed_ids": [
+        "gpt",
+        "94576783bc73bf55a0091203a3d45a0a4665a1ae"
+    ],
+    "s2id": "2b7b7eb96fc30089d53e92ad97ac2db0035dc3cb",
+    "abstract": "Large-scale crop type classification is a task at the core of remote sensing efforts with applications of both economic and ecological importance. Current state-of-the-art deep learning methods are based on self-attention and use satellite image time series (SITS) to discriminate crop types based on their unique growth patterns. However, existing methods generalize poorly to regions not seen during training mainly due to not being robust to temporal shifts of the growing season caused by variations in climate. To this end, we propose Thermal Positional Encoding (TPE) for attention-based crop classifiers. Unlike previous positional encoding based on calendar time (e.g. day-of-year), TPE is based on thermal time, which is obtained by accumulating daily average temperatures over the growing season. Since crop growth is directly related to thermal time, but not calendar time, TPE addresses the temporal shifts between different regions to improve generalization. We propose multiple TPE strategies, including learnable methods, to further improve results compared to the common fixed positional encodings. We demonstrate our approach on a crop classification task across four different European regions, where we obtain state-of-the-art generalization results. Our source code is available at https://github.com/jnyborg/tpe.",
+    "authors": [
+        "Joachim Nyborg",
+        "Charlotte Pelletier",
+        "I. Assent"
+    ],
+    "venue": "2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes Thermal Positional Encoding (TPE) for attention-based crop classifiers, which addresses the temporal shifts between different regions to improve generalization and demonstrates the approach on a crop classification task across four different European regions."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

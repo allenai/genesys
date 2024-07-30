@@ -1,0 +1,32 @@
+{
+    "acronym": "2d6659d7eff19af0b94df4c4b52d0352d88ab4fc",
+    "title": "Self-Supervised Learning on Users' Spontaneous Behaviors for Multi-Scenario Ranking in E-commerce",
+    "seed_ids": [
+        "gpt",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8"
+    ],
+    "s2id": "2d6659d7eff19af0b94df4c4b52d0352d88ab4fc",
+    "abstract": "Multi-scenario Learning to Rank is essential for Recommender Systems, Search Engines and Online Advertising in e-commerce portals where the ranking models are usually applied in many scenarios. However, existing works mainly focus on learning the ranking model for a single scenario, and pay less attention to learning ranking models for multiple scenarios. We identify two practical challenges in industrial multi-scenario ranking systems: (1) The Feedback Loop problem that the model is always trained on the items chosen by the ranker itself. (2) Insufficient training data for small and new scenarios. To address the above issues, we present ZEUS, a novel framework that learns a Zoo of ranking modEls for mUltiple Scenarios based on pre-training on users' spontaneous behaviors (e.g. queries which are directly searched in the search box and not recommended by the ranking system). ZEUS decomposes the training process into two stages: self-supervised learning based pre-training and fine-tuning. Firstly, ZEUS performs self-supervised learning on users' spontaneous behaviors and generates a pre-trained model. Secondly, ZEUS fine-tunes the pre-trained model on users' implicit feedback in multiple scenarios. Extensive experiments on Alibaba's production dataset demonstrate the effectiveness of ZEUS, which significantly outperforms state-of-the-art methods. ZEUS averagely achieves 6.0%, 9.7%, 11.7% improvement in CTR, CVR and GMV respectively than state-of-the-art method.",
+    "authors": [
+        "Yulong Gu",
+        "Wentian Bao",
+        "Dan Ou",
+        "Xiang Li",
+        "Baoliang Cui",
+        "Biyu Ma",
+        "Haikuan Huang",
+        "Qingwen Liu",
+        "Xiaoyi Zeng"
+    ],
+    "venue": "International Conference on Information and Knowledge Management",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ZEUS, a novel framework that learns a Zoo of ranking modEls for mUltiple Scenarios based on pre-training on users' spontaneous behaviors, which significantly outperforms state-of-the-art methods in multi-scenario ranking systems."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

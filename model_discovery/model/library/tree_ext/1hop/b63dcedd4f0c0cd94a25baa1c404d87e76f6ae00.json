@@ -1,0 +1,28 @@
+{
+    "acronym": "b63dcedd4f0c0cd94a25baa1c404d87e76f6ae00",
+    "title": "NLP-IIS@UT at SemEval-2021 Task 4: Machine Reading Comprehension using the Long Document Transformer",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "b63dcedd4f0c0cd94a25baa1c404d87e76f6ae00",
+    "abstract": "This paper presents a technical report of our submission to the 4th task of SemEval-2021, titled: Reading Comprehension of Abstract Meaning. In this task, we want to predict the correct answer based on a question given a context. Usually, contexts are very lengthy and require a large receptive field from the model. Thus, common contextualized language models like BERT miss fine representation and performance due to the limited capacity of the input tokens. To tackle this problem, we used the longformer model to better process the sequences. Furthermore, we utilized the method proposed in the longformer benchmark on wikihop dataset which improved the accuracy on our task data from (23.01% and 22.95%) achieved by the baselines for subtask 1 and 2, respectively, to (70.30% and 64.38%).",
+    "authors": [
+        "Hossein Basafa",
+        "Sajad Movahedi",
+        "A. Ebrahimi",
+        "A. Shakery",
+        "Heshaam Faili"
+    ],
+    "venue": "International Workshop on Semantic Evaluation",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A technical report of the submission to the 4th task of SemEval-2021, titled: Reading Comprehension of Abstract Meaning, using the longformer model to better process the sequences."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

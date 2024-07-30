@@ -1,0 +1,25 @@
+{
+    "acronym": "3f8b025a401a5fa49cc4abf3e7c5082c622b65e0",
+    "title": "Leveraging LLMs in Scholarly Knowledge Graph Question Answering",
+    "seed_ids": [
+        "gpt3",
+        "233e48a00e5172819b36d3834cd0f4335b7ed595"
+    ],
+    "s2id": "3f8b025a401a5fa49cc4abf3e7c5082c622b65e0",
+    "abstract": "This paper presents a scholarly Knowledge Graph Question Answering (KGQA) that answers bibliographic natural language questions by leveraging a large language model (LLM) in a few-shot manner. The model initially identifies the top-n similar training questions related to a given test question via a BERT-based sentence encoder and retrieves their corresponding SPARQL. Using the top-n similar question-SPARQL pairs as an example and the test question creates a prompt. Then pass the prompt to the LLM and generate a SPARQL. Finally, runs the SPARQL against the underlying KG - ORKG (Open Research KG) endpoint and returns an answer. Our system achieves an F1 score of 99.0%, on SciQA - one of the Scholarly-QALD-23 challenge benchmarks.",
+    "authors": [
+        "Tilahun Abedissa Taffa",
+        "Ricardo Usbeck"
+    ],
+    "venue": "QALD/SemREC@ISWC",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A scholarly Knowledge Graph Question Answering (KGQA) that answers bibliographic natural language questions by leveraging a large language model (LLM) in a few-shot manner and achieves an F1 score of 99.0%, on SciQA."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

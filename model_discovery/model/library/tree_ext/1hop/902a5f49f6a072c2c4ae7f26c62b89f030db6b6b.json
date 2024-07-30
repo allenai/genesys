@@ -1,0 +1,28 @@
+{
+    "acronym": "902a5f49f6a072c2c4ae7f26c62b89f030db6b6b",
+    "title": "Are Neural Open-Domain Dialog Systems Robust to Speech Recognition Errors in the Dialog History? An Empirical Study",
+    "seed_ids": [
+        "gpt",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "902a5f49f6a072c2c4ae7f26c62b89f030db6b6b",
+    "abstract": "Large end-to-end neural open-domain chatbots are becoming increasingly popular. However, research on building such chatbots has typically assumed that the user input is written in nature and it is not clear whether these chatbots would seamlessly integrate with automatic speech recognition (ASR) models to serve the speech modality. We aim to bring attention to this important question by empirically studying the effects of various types of synthetic and actual ASR hypotheses in the dialog history on TransferTransfo, a state-of-the-art Generative Pre-trained Transformer (GPT) based neural open-domain dialog system from the NeurIPS ConvAI2 challenge. We observe that TransferTransfo trained on written data is very sensitive to such hypotheses introduced to the dialog history during inference time. As a baseline mitigation strategy, we introduce synthetic ASR hypotheses to the dialog history during training and observe marginal improvements, demonstrating the need for further research into techniques to make end-to-end open-domain chatbots fully speech-robust. To the best of our knowledge, this is the first study to evaluate the effects of synthetic and actual ASR hypotheses on a state-of-the-art neural open-domain dialog system and we hope it promotes speech-robustness as an evaluation criterion in open-domain dialog.",
+    "authors": [
+        "Karthik Gopalakrishnan",
+        "Behnam Hedayatnia",
+        "Longshaokan Wang",
+        "Yang Liu",
+        "Dilek Z. Hakkani-T\u00fcr"
+    ],
+    "venue": "Interspeech",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This is the first study to evaluate the effects of synthetic and actual ASR hypotheses on a state-of-the-art neural open- domain dialog system and it hopes it promotes speech-robustness as an evaluation criterion in open-domain dialog."
+    },
+    "citationCount": 22,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

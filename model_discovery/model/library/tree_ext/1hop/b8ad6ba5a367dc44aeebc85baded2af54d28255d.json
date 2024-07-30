@@ -1,0 +1,43 @@
+{
+    "acronym": "b8ad6ba5a367dc44aeebc85baded2af54d28255d",
+    "title": "ContraCLM: Contrastive Learning For Causal Language Model",
+    "seed_ids": [
+        "gpt2",
+        "5697a0ede5425954d48daa6e1893dc87bd7d8be7",
+        "4b27f18bff43d605805c92696a979714ced0b805",
+        "492a655a67e6ec7423a968cedb70eec0cdbc8e98",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "7fed15cc79332f83b7bfe920c02a9c954322ddcc",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b8ad6ba5a367dc44aeebc85baded2af54d28255d",
+    "abstract": "Despite exciting progress in causal language models, the expressiveness of their representations is largely limited due to poor discrimination ability. To remedy this issue, we present CONTRACLM, a novel contrastive learning framework at both the token-level and the sequence-level. We assess CONTRACLM on a variety of downstream tasks. We show that CONTRACLM enhances the discrimination of representations and bridges the gap with encoder-only models, which makes causal language models better suited for tasks beyond language generation. Specifically, we attain 44% relative improvement on the Semantic Textual Similarity tasks and 34% on Code-to-Code Search tasks. Furthermore, by improving the expressiveness of representations, CONTRACLM also boosts the source code generation capability with 9% relative improvement on execution accuracy on the HumanEval benchmark.",
+    "authors": [
+        "Nihal Jain",
+        "Dejiao Zhang",
+        "Wasi Uddin Ahmad",
+        "Zijian Wang",
+        "Feng Nan",
+        "Xiaopeng Li",
+        "Ming Tan",
+        "Ramesh Nallapati",
+        "Baishakhi Ray",
+        "Parminder Bhatia",
+        "Xiaofei Ma",
+        "Bing Xiang"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that CONTRACLM enhances the discrimination of representations and bridges the gap with encoder-only models, which makes causal language models better suited for tasks beyond language generation."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

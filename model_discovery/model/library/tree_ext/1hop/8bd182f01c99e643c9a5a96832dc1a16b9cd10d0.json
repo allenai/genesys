@@ -1,0 +1,31 @@
+{
+    "acronym": "8bd182f01c99e643c9a5a96832dc1a16b9cd10d0",
+    "title": "Domain-Specific Text Generation for Machine Translation",
+    "seed_ids": [
+        "gpt2",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8bd182f01c99e643c9a5a96832dc1a16b9cd10d0",
+    "abstract": "Preservation of domain knowledge from the source to target is crucial in any translation workflow. It is common in the translation industry to receive highly-specialized projects, where there is hardly any parallel in-domain data. In such scenarios where there is insufficient in-domain data to fine-tune Machine Translation (MT) models, producing translations that are consistent with the relevant context is challenging. In this work, we propose leveraging state-of-the-art pretrained language models (LMs) for domain-specific data augmentation for MT, simulating the domain characteristics of either (a) a small bilingual dataset, or (b) the monolingual source text to be translated. Combining this idea with back-translation, we can generate huge amounts of synthetic bilingual in-domain data for both use cases. For our investigation, we used the state-of-the-art MT architecture, Transformer. We employed mixed fine-tuning to train models that significantly improve translation of in-domain texts. More specifically, our proposed methods achieved improvements of approximately 5-6 BLEU and 2-3 BLEU, respectively, on Arabic-to-English and English-to-Arabic language pairs. Furthermore, the outcome of human evaluation corroborates the automatic evaluation results.",
+    "authors": [
+        "Yasmin Moslem",
+        "Rejwanul Haque",
+        "John D. Kelleher",
+        "Andy Way"
+    ],
+    "venue": "Conference of the Association for Machine Translation in the Americas",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes leveraging state-of-the-art pretrained language models (LMs) for domain-specific data augmentation for MT, simulating the domain characteristics of either a small bilingual dataset, or the monolingual source text to be translated, to generate huge amounts of synthetic bilingual in-domain data."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

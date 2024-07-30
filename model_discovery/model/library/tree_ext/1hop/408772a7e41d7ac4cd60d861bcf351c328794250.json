@@ -1,0 +1,29 @@
+{
+    "acronym": "408772a7e41d7ac4cd60d861bcf351c328794250",
+    "title": "Delving into CLIP latent space for Video Anomaly Recognition",
+    "seed_ids": [
+        "axialattn",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06"
+    ],
+    "s2id": "408772a7e41d7ac4cd60d861bcf351c328794250",
+    "abstract": "We tackle the complex problem of detecting and recognising anomalies in surveillance videos at the frame level, utilising only video-level supervision. We introduce the novel method AnomalyCLIP, the first to combine Large Language and Vision (LLV) models, such as CLIP, with multiple instance learning for joint video anomaly detection and classification. Our approach specifically involves manipulating the latent CLIP feature space to identify the normal event subspace, which in turn allows us to effectively learn text-driven directions for abnormal events. When anomalous frames are projected onto these directions, they exhibit a large feature magnitude if they belong to a particular class. We also introduce a computationally efficient Transformer architecture to model short- and long-term temporal dependencies between frames, ultimately producing the final anomaly score and class prediction probabilities. We compare AnomalyCLIP against state-of-the-art methods considering three major anomaly detection benchmarks, i.e. ShanghaiTech, UCF-Crime, and XD-Violence, and empirically show that it outperforms baselines in recognising video anomalies.",
+    "authors": [
+        "Luca Zanella",
+        "Benedetta Liberatori",
+        "Willi Menapace",
+        "Fabio Poiesi",
+        "Yiming Wang",
+        "Elisa Ricci"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces the novel method AnomalyCLIP, the first to combine Large Language and Vision models, such as CLIP, with multiple instance learning for joint video anomaly detection and classification, and compares it against state-of-the-art methods considering three major anomaly detection benchmarks."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "0bfa292653d7b596496701a5854cdff5c4501130",
+    "title": "\u2018What are you referring to?\u2019 Evaluating the Ability of Multi-Modal Dialogue Models to Process Clarificational Exchanges",
+    "seed_ids": [
+        "gpt2",
+        "eac028c255c76de4c971a7c9531acf04bd91d6c9",
+        "06c7269c10125589d2599f684b751b1640f7a0cc",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0bfa292653d7b596496701a5854cdff5c4501130",
+    "abstract": "Referential ambiguities arise in dialogue when a referring expression does not uniquely identify the intended referent for the addressee. Addressees usually detect such ambiguities immediately and work with the speaker to repair it using meta-communicative, Clarificational Exchanges (CE): a Clarification Request (CR) and a response. Here, we argue that the ability to generate and respond to CRs imposes specific constraints on the architecture and objective functions of multi-modal, visually grounded dialogue models. We use the SIMMC 2.0 dataset to evaluate the ability of different state-of-the-art model architectures to process CEs, with a metric that probes the contextual updates that arise from them in the model. We find that language-based models are able to encode simple multi-modal semantic information and process some CEs, excelling with those related to the dialogue history, whilst multi-modal models can use additional learning objectives to obtain disentangled object representations, which become crucial to handle complex referential ambiguities across modalities overall.",
+    "authors": [
+        "Javier Chiyah-Garcia",
+        "Alessandro Suglia",
+        "Arash Eshghi",
+        "Helen F. Hastie"
+    ],
+    "venue": "SIGDIAL Conferences",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work argues that the ability to generate and respond to CRs imposes specific constraints on the architecture and objective functions of multi-modal, visually grounded dialogue models, and uses the SIMMC 2.0 dataset to evaluate the ability of different state-of-the-art model architectures to process CEs."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

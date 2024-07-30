@@ -1,0 +1,28 @@
+{
+    "acronym": "d7b6b56c84b0005ac3b5d9c530b2a6f8def73145",
+    "title": "Using External Off-Policy Speech-To-Text Mappings in Contextual End-To-End Automated Speech Recognition",
+    "seed_ids": [
+        "memorizingtrans",
+        "0e802c0739771acf70e60d59c2df51cd7e8c50c0",
+        "6642ad0b2fd2bf834388b804250eb9337ceb3f88"
+    ],
+    "s2id": "d7b6b56c84b0005ac3b5d9c530b2a6f8def73145",
+    "abstract": "Despite improvements to the generalization performance of automated speech recognition (ASR) models, specializing ASR models for downstream tasks remains a challenging task, primarily due to reduced data availability (necessitating increased data collection), and rapidly shifting data distributions (requiring more frequent model fine-tuning). In this work, we investigate the potential of leveraging external knowledge, particularly through off-policy key-value stores generated with text-to-speech methods, to allow for flexible post-training adaptation to new data distributions. In our approach, audio embeddings captured from text-to-speech, along with semantic text embeddings, are used to bias ASR via an approximate k-nearest-neighbor (KNN) based attentive fusion step. Our experiments on LibiriSpeech and in-house voice assistant/search datasets show that the proposed approach can reduce domain adaptation time by up to 1K GPU-hours while providing up to 3% WER improvement compared to a fine-tuning baseline, suggesting a promising approach for adapting production ASR systems in challenging zero and few-shot scenarios.",
+    "authors": [
+        "David Chan",
+        "Shalini Ghosh",
+        "A. Rastrow",
+        "Bj\u00f6rn Hoffmeister"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work investigates the potential of leveraging external knowledge, particularly through off-policy key-value stores generated with text-to-speech methods, to allow for flexible post-training adaptation to new data distributions to adapt production ASR systems in challenging zero and few-shot scenarios."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "d67e79e1b72bca4d1da53ccdecff7b2ce147f8e7",
+    "title": "Improving Distant 3D Object Detection Using 2D Box Supervision",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "d67e79e1b72bca4d1da53ccdecff7b2ce147f8e7",
+    "abstract": "Improving the detection of distant 3d objects is an important yet challenging task. For camera-based 3D perception, the annotation of 3d bounding relies heavily on LiDAR for accurate depth information. As such, the distance of annotation is often limited due to the sparsity of LiDAR points on distant objects, which hampers the capability of existing detectors for long-range scenarios. We address this challenge by considering only 2D box supervision for distant objects since they are easy to annotate. We propose LR3D, a framework that learns to recover the missing depth of distant objects. LR3D adopts an implicit projection head to learn the generation of mapping between 2D boxes and depth using the 3D supervision on close objects. This mapping allows the depth estimation of distant objects conditioned on their 2D boxes, making long-range 3D detection with 2D supervision feasible. Experiments show that without distant 3D annotations, LR3D allows camera-based methods to detect distant objects (over 200m) with comparable accuracy to full 3D supervision. Our framework is general, and could widely benefit 3D detection methods to a large extent.",
+    "authors": [
+        "Zetong Yang",
+        "Zhiding Yu",
+        "Chris Choy",
+        "Renhao Wang",
+        "A. Anandkumar",
+        "Jos\u00e9 M. \u00c1lvarez"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "LR3D, a framework that learns to recover the missing depth of distant objects, adopts an implicit projection head to learn the generation of mapping between 2D boxes and depth using the 3D supervision on close objects, and could widely benefit 3D detection methods to a large extent."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,23 @@
+{
+    "acronym": "0da3cefb4e15347760f64f5045a34b38515ef0f0",
+    "title": "Funnel Vision Transformer for image classification",
+    "seed_ids": [
+        "funneltransformer"
+    ],
+    "s2id": "0da3cefb4e15347760f64f5045a34b38515ef0f0",
+    "abstract": "Vision Transformer(ViT) [6] adopts the Transformer architecture on the image classification tasks and outperforms the state-of-the-art convolutional networks with substantially fewer computational resources. However, it\u2019s still expensive to train Transformer either on a very large pre-training dataset or with a large model size. So model efficiency is still an important area to explore. Spatial compression is a common technique widely used in convolutional networks for image classification tasks, which indicates the spatial information redundancy for classification tasks. In addition, inspired by the success of Funnel-Transformer [4] in NLP, this project examines a similar idea on the ImageNet dataset that gradually shrink the image patch length dimension of Vision Transformer as the layers go deeper, in order to save the computational resources (Funnel-ViT). The results show that with with a small pre-training accuracy compromise ( < 1% ), we can save 40% memory, get 37.5% speedup with three funnel blocks, and get 0.6% fine-tuning accuracy improvement. The saved resources can even be re-invested to a wider and deeper Funnel-ViT model to further reduce the pre-training accuracy loss to 0.1%.",
+    "authors": [
+        "Yujing Zhang"
+    ],
+    "venue": "",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This project examines a similar idea on the ImageNet dataset that gradually shrink the image patch length dimension of Vision Transformer as the layers go deeper, in order to save the computational resources (Funnel-ViT), and shows that with with a small pre-training accuracy compromise, it can save 40% memory."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

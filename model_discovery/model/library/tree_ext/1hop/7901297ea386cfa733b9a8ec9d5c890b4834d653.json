@@ -1,0 +1,24 @@
+{
+    "acronym": "7901297ea386cfa733b9a8ec9d5c890b4834d653",
+    "title": "Unsupervised Multi-Document Summarization",
+    "seed_ids": [
+        "gpt",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "7901297ea386cfa733b9a8ec9d5c890b4834d653",
+    "abstract": "Today, vast amounts of textual information are available at any given time. Automatic summaries can help deal with this and allow the reader to focus on the most important information. To automatically summarize a text, current systems often rely on supervised machine learning techniques trained on large datasets. The practical adaptation of these systems proves to be an issue, as many domains only have small datasets to work with. This thesis investigates how well an unsupervised summarization system can work on small multi-document datasets. The multi-document aspect is in contrast to other current systems, as they oftentimes focus on single-document summarization. Therefore, a system that combines extractive and abstractive techniques is proposed. At \ufb01rst, it extractively summarizes each document and then it generates an abstractive summary of all documents by fusing similar sentences. The system has been evaluated on multiple datasets using the quality aspects de\ufb01ned by Grusky et al. [29]. Based on the experiments, the \ufb01ndings suggest that unsupervised systems can compete with supervised systems in generating summaries and the abstractiveness of a system negatively correlates with the information contained in a summary. Given that the information content is the most important aspect of a summary, extractive systems outperformed the proposed system. The thesis is aimed at readers who are interested in current research in NLP and who want to deepen their knowledge in automated summarization.",
+    "authors": [
+        "M. Eisele"
+    ],
+    "venue": "",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is suggested that unsupervised systems can compete with supervised systems in generating summaries and the abstractiveness of a system negatively correlates with the information contained in a summary, given that the information content is the most important aspect of a summary."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

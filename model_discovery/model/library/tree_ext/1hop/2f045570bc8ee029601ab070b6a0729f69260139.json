@@ -1,0 +1,31 @@
+{
+    "acronym": "2f045570bc8ee029601ab070b6a0729f69260139",
+    "title": "Facial Affect Recognition based on Multi Architecture Encoder and Feature Fusion for the ABAW7 Challenge",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "2f045570bc8ee029601ab070b6a0729f69260139",
+    "abstract": "In this paper, we present our approach to addressing the challenges of the 7th ABAW competition. The competition comprises three sub-challenges: Valence Arousal (VA) estimation, Expression (Expr) classification, and Action Unit (AU) detection. To tackle these challenges, we employ state-of-the-art models to extract powerful visual features. Subsequently, a Transformer Encoder is utilized to integrate these features for the VA, Expr, and AU sub-challenges. To mitigate the impact of varying feature dimensions, we introduce an affine module to align the features to a common dimension. Overall, our results significantly outperform the baselines.",
+    "authors": [
+        "Kang Shen",
+        "Xuxiong Liu",
+        "Boyan Wang",
+        "Jun Yao",
+        "Xin Liu",
+        "Yujie Guan",
+        "Yu Wang",
+        "Gengchen Li",
+        "Xiao Sun"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper employs state-of-the-art models to extract powerful visual features and introduces an affine module to align the features to a common dimension to mitigate the impact of varying feature dimensions."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

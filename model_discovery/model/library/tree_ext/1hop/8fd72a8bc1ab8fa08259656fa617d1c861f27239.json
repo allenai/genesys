@@ -1,0 +1,29 @@
+{
+    "acronym": "8fd72a8bc1ab8fa08259656fa617d1c861f27239",
+    "title": "Interpreting Art by Leveraging Pre-Trained Models",
+    "seed_ids": [
+        "gpt2",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "60acc34101dc0395ae6d2ab6abf26cbedb00e961",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8fd72a8bc1ab8fa08259656fa617d1c861f27239",
+    "abstract": "In many domains, so-called foundation models were recently proposed. These models are trained on immense amounts of data resulting in impressive performances on various downstream tasks and benchmarks. Later works focus on leveraging this pre-trained knowledge by combining these models. To reduce data and compute requirements, we utilize and combine foundation models in two ways. First, we use language and vision models to extract and generate a challenging language vision task in the form of artwork interpretation pairs. Second, we combine and fine-tune CLIP as well as GPT-2 to reduce compute requirements for training interpretation models. We perform a qualitative and quantitative analysis of our data and conclude that generating artwork leads to improvements in visual-text alignment and, therefore, to more proficient interpretation models1. Our approach addresses how to leverage and combine pre-trained models to tackle tasks where existing data is scarce or difficult to obtain.",
+    "authors": [
+        "Niklas Penzel",
+        "Joachim Denzler"
+    ],
+    "venue": "2023 18th International Conference on Machine Vision and Applications (MVA)",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work uses language and vision models to extract and generate a challenging language vision task in the form of artwork interpretation pairs and combines and fine-tune CLIP as well as GPT-2 to reduce compute requirements for training interpretation models."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

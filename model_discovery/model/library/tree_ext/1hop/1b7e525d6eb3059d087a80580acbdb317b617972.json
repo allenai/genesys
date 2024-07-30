@@ -1,0 +1,38 @@
+{
+    "acronym": "1b7e525d6eb3059d087a80580acbdb317b617972",
+    "title": "S2Mamba: A Spatial-spectral State Space Model for Hyperspectral Image Classification",
+    "seed_ids": [
+        "mamba",
+        "2833716cabbd7c709f4b266832b8b3fa3e37d2c6",
+        "5f07ef98b64b2ab47105018cbda158527f903b28",
+        "0a32e6ff6eaac83ff325bae4557a8362222979aa",
+        "3af7273d7ca20c0c63cbaa47e60b058840835052",
+        "21ddc4fc3551619b8a64db6ae124acc72aaae2c2",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2"
+    ],
+    "s2id": "1b7e525d6eb3059d087a80580acbdb317b617972",
+    "abstract": "Land cover analysis using hyperspectral images (HSI) remains an open problem due to their low spatial resolution and complex spectral information. Recent studies are primarily dedicated to designing Transformer-based architectures for spatial-spectral long-range dependencies modeling, which is computationally expensive with quadratic complexity. Selective structured state space model (Mamba), which is efficient for modeling long-range dependencies with linear complexity, has recently shown promising progress. However, its potential in hyperspectral image processing that requires handling numerous spectral bands has not yet been explored. In this paper, we innovatively propose S$^2$Mamba, a spatial-spectral state space model for hyperspectral image classification, to excavate spatial-spectral contextual features, resulting in more efficient and accurate land cover analysis. In S$^2$Mamba, two selective structured state space models through different dimensions are designed for feature extraction, one for spatial, and the other for spectral, along with a spatial-spectral mixture gate for optimal fusion. More specifically, S$^2$Mamba first captures spatial contextual relations by interacting each pixel with its adjacent through a Patch Cross Scanning module and then explores semantic information from continuous spectral bands through a Bi-directional Spectral Scanning module. Considering the distinct expertise of the two attributes in homogenous and complicated texture scenes, we realize the Spatial-spectral Mixture Gate by a group of learnable matrices, allowing for the adaptive incorporation of representations learned across different dimensions. Extensive experiments conducted on HSI classification benchmarks demonstrate the superiority and prospect of S$^2$Mamba. The code will be available at: https://github.com/PURE-melo/S2Mamba.",
+    "authors": [
+        "Guanchun Wang",
+        "Xiangrong Zhang",
+        "Zelin Peng",
+        "Tianyang Zhang",
+        "Xiuping Jia",
+        "Licheng Jiao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper innovatively proposes S$^2$Mamba, a spatial-spectral state space model for hyperspectral image classification, to excavate spatial-spectral contextual features, resulting in more efficient and accurate land cover analysis."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

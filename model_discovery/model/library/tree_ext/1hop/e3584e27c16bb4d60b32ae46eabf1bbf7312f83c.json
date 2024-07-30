@@ -1,0 +1,35 @@
+{
+    "acronym": "e3584e27c16bb4d60b32ae46eabf1bbf7312f83c",
+    "title": "STAR: Scale-wise Text-to-image generation via Auto-Regressive representations",
+    "seed_ids": [
+        "gpt2",
+        "76e8218f657c77c38da44daaed5bb54ab727a8fc",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e3584e27c16bb4d60b32ae46eabf1bbf7312f83c",
+    "abstract": "We present STAR, a text-to-image model that employs scale-wise auto-regressive paradigm. Unlike VAR, which is limited to class-conditioned synthesis within a fixed set of predetermined categories, our STAR enables text-driven open-set generation through three key designs: To boost diversity and generalizability with unseen combinations of objects and concepts, we introduce a pre-trained text encoder to extract representations for textual constraints, which we then use as guidance. To improve the interactions between generated images and fine-grained textual guidance, making results more controllable, additional cross-attention layers are incorporated at each scale. Given the natural structure correlation across different scales, we leverage 2D Rotary Positional Encoding (RoPE) and tweak it into a normalized version. This ensures consistent interpretation of relative positions across token maps at different scales and stabilizes the training process. Extensive experiments demonstrate that STAR surpasses existing benchmarks in terms of fidelity,image text consistency, and aesthetic quality. Our findings emphasize the potential of auto-regressive methods in the field of high-quality image synthesis, offering promising new directions for the T2I field currently dominated by diffusion methods.",
+    "authors": [
+        "Xiaoxiao Ma",
+        "Mohan Zhou",
+        "Tao Liang",
+        "Yalong Bai",
+        "Tiejun Zhao",
+        "H. Chen",
+        "Yi Jin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents STAR, a text-to-image model that employs scale-wise auto-regressive paradigm that surpasses existing benchmarks in terms of fidelity, image text consistency, and aesthetic quality, and offers promising new directions for the T2I field currently dominated by diffusion methods."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,32 @@
+{
+    "acronym": "d509120845f16ea19476982e78c07a15874de227",
+    "title": "Enabling Natural Zero-Shot Prompting on Encoder Models via Statement-Tuning",
+    "seed_ids": [
+        "bert",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d509120845f16ea19476982e78c07a15874de227",
+    "abstract": "While Large Language Models (LLMs) exhibit remarkable capabilities in zero-shot and few-shot scenarios, they often require computationally prohibitive sizes. Conversely, smaller Masked Language Models (MLMs) like BERT and RoBERTa achieve state-of-the-art results through fine-tuning but struggle with extending to few-shot and zero-shot settings due to their architectural constraints. Hence, we propose Statement-Tuning, a technique that models discriminative tasks as a set of finite statements and trains an Encoder model to discriminate between the potential statements to determine the label. We do Statement-Tuning on multiple tasks to enable cross-task generalization. Experimental results demonstrate that Statement Tuning achieves competitive performance compared to state-of-the-art LLMs with significantly fewer parameters. Moreover, the study investigates the impact of several design choices on few-shot and zero-shot generalization, revealing that Statement Tuning can achieve sufficient performance with modest training data and benefits from task and statement diversity for unseen task generalizability.",
+    "authors": [
+        "A. Elshabrawy",
+        "Yongix Huang",
+        "Iryna Gurevych",
+        "Alham Fikri Aji"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The study investigates the impact of several design choices on few-shot and zero-shot generalization, revealing that Statement Tuning can achieve sufficient performance with modest training data and benefits from task and statement diversity for unseen task generalizability."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

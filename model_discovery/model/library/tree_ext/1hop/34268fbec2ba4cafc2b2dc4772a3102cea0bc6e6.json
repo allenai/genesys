@@ -1,0 +1,28 @@
+{
+    "acronym": "34268fbec2ba4cafc2b2dc4772a3102cea0bc6e6",
+    "title": "Beyond Surface Similarity: Detecting Subtle Semantic Shifts in Financial Narratives",
+    "seed_ids": [
+        "bert",
+        "2c0fdb6b380b7e12c3245482f288889d898e3d19",
+        "83edcfbb206ddad38a971d605da09390604248ea",
+        "7eba731a7fd8de712b7b79b5af41a6e2d4dbd191"
+    ],
+    "s2id": "34268fbec2ba4cafc2b2dc4772a3102cea0bc6e6",
+    "abstract": "In this paper, we introduce the Financial-STS task, a financial domain-specific NLP task designed to measure the nuanced semantic similarity between pairs of financial narratives. These narratives originate from the financial statements of the same company but correspond to different periods, such as year-over-year comparisons. Measuring the subtle semantic differences between these paired narratives enables market stakeholders to gauge changes over time in the company's financial and operational situations, which is critical for financial decision-making. We find that existing pretrained embedding models and LLM embeddings fall short in discerning these subtle financial narrative shifts. To address this gap, we propose an LLM-augmented pipeline specifically designed for the Financial-STS task. Evaluation on a human-annotated dataset demonstrates that our proposed method outperforms existing methods trained on classic STS tasks and generic LLM embeddings.",
+    "authors": [
+        "Jiaxin Liu",
+        "Yi Yang",
+        "K. Tam"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An LLM-augmented pipeline specifically designed for the Financial-STS task, a financial domain-specific NLP task designed to measure the nuanced semantic similarity between pairs of financial narratives, and outperforms existing methods trained on classic STS tasks and generic LLM embeddings."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

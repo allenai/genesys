@@ -1,0 +1,33 @@
+{
+    "acronym": "9ee149df91046ece6def7fdf02c773a1ec6b8f72",
+    "title": "ScanDL: A Diffusion Model for Generating Synthetic Scanpaths on Texts",
+    "seed_ids": [
+        "diffuseq",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "17d068e78e6f25e65cb08319b19b58279bb8b214",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "9ee149df91046ece6def7fdf02c773a1ec6b8f72",
+    "abstract": "Eye movements in reading play a crucial role in psycholinguistic research studying the cognitive mechanisms underlying human language processing. More recently, the tight coupling between eye movements and cognition has also been leveraged for language-related machine learning tasks such as the interpretability, enhancement, and pre-training of language models, as well as the inference of reader- and text-specific properties. However, scarcity of eye movement data and its unavailability at application time poses a major challenge for this line of research. Initially, this problem was tackled by resorting to cognitive models for synthesizing eye movement data. However, for the sole purpose of generating human-like scanpaths, purely data-driven machine-learning-based methods have proven to be more suitable. Following recent advances in adapting diffusion processes to discrete data, we propose ScanDL, a novel discrete sequence-to-sequence diffusion model that generates synthetic scanpaths on texts. By leveraging pre-trained word representations and jointly embedding both the stimulus text and the fixation sequence, our model captures multi-modal interactions between the two inputs. We evaluate ScanDL within- and across-dataset and demonstrate that it significantly outperforms state-of-the-art scanpath generation methods. Finally, we provide an extensive psycholinguistic analysis that underlines the model's ability to exhibit human-like reading behavior. Our implementation is made available at https://github.com/DiLi-Lab/ScanDL.",
+    "authors": [
+        "Lena S. Bolliger",
+        "D. R. Reich",
+        "Patrick Haller",
+        "Deborah N. Jakobi",
+        "Paul Prasse",
+        "Lena A. Jager"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ScanDL is proposed, a novel discrete sequence-to-sequence diffusion model that generates synthetic scanpaths on texts that significantly outperforms state-of-the-art scanpath generation methods and provides an extensive psycholinguistic analysis that underlines the model's ability to exhibit human-like reading behavior."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

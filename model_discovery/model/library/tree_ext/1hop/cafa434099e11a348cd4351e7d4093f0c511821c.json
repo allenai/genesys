@@ -1,0 +1,29 @@
+{
+    "acronym": "cafa434099e11a348cd4351e7d4093f0c511821c",
+    "title": "Automated Assessment of Comprehension Strategies from Self-Explanations Using LLMs",
+    "seed_ids": [
+        "gpt2",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "cafa434099e11a348cd4351e7d4093f0c511821c",
+    "abstract": "Text comprehension is an essential skill in today\u2019s information-rich world, and self-explanation practice helps students improve their understanding of complex texts. This study was centered on leveraging open-source Large Language Models (LLMs), specifically FLAN-T5, to automatically assess the comprehension strategies employed by readers while understanding Science, Technology, Engineering, and Mathematics (STEM) texts. The experiments relied on a corpus of three datasets (N = 11,833) with self-explanations annotated on 4 dimensions: 3 comprehension strategies (i.e., bridging, elaboration, and paraphrasing) and overall quality. Besides FLAN-T5, we also considered GPT3.5-turbo to establish a stronger baseline. Our experiments indicated that the performance improved with fine-tuning, having a larger LLM model, and providing examples via the prompt. Our best model considered a pretrained FLAN-T5 XXL model and obtained a weighted F1-score of 0.721, surpassing the 0.699 F1-score previously obtained using smaller models (i.e., RoBERTa).",
+    "authors": [
+        "Bogdan-Ioan Nicula",
+        "Mihai Dasc\u0103lu",
+        "Tracy Arner",
+        "R. Balyan",
+        "Danielle S. Mcnamara"
+    ],
+    "venue": "Inf.",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study was centered on leveraging open-source Large Language Models, specifically FLAN-T5, to automatically assess the comprehension strategies employed by readers while understanding Science, Technology, Engineering, and Mathematics (STEM) texts, and indicated that the performance improved with fine-tuning."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

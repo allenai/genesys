@@ -1,0 +1,39 @@
+{
+    "acronym": "0b991a1a5bcdb13646ac0b6873d09bde4cc36fb5",
+    "title": "Masked Language Modeling for Proteins via Linearly Scalable Long-Context Transformers",
+    "seed_ids": [
+        "longformer",
+        "sparsetransformer",
+        "reformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "765866ecb5fe6a225d4e791498caf6a8351c16c7",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "8cef9900c04d7f661c08f4b5b1ed4337ace042a3",
+        "fb507ada871d1e8c29e376dbf7b7879689aa89f9"
+    ],
+    "s2id": "0b991a1a5bcdb13646ac0b6873d09bde4cc36fb5",
+    "abstract": "Transformer models have achieved state-of-the-art results across a diverse range of domains. However, concern over the cost of training the attention mechanism to learn complex dependencies between distant inputs continues to grow. In response, solutions that exploit the structure and sparsity of the learned attention matrix have blossomed. However, real-world applications that involve long sequences, such as biological sequence analysis, may fall short of meeting these assumptions, precluding exploration of these models. To address this challenge, we present a new Transformer architecture, Performer, based on Fast Attention Via Orthogonal Random features (FAVOR). Our mechanism scales linearly rather than quadratically in the number of tokens in the sequence, is characterized by sub-quadratic space complexity and does not incorporate any sparsity pattern priors. Furthermore, it provides strong theoretical guarantees: unbiased estimation of the attention matrix and uniform convergence. It is also backwards-compatible with pre-trained regular Transformers. We demonstrate its effectiveness on the challenging task of protein sequence modeling and provide detailed theoretical analysis.",
+    "authors": [
+        "K. Choromanski",
+        "Valerii Likhosherstov",
+        "David Dohan",
+        "Xingyou Song",
+        "Jared Davis",
+        "Tam\u00e1s Sarl\u00f3s",
+        "David Belanger",
+        "Lucy J. Colwell",
+        "Adrian Weller"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new Transformer architecture, Performer, based on Fast Attention Via Orthogonal Random features (FAVOR), which demonstrates its effectiveness on the challenging task of protein sequence modeling and provides strong theoretical guarantees: unbiased estimation of the attention matrix and uniform convergence."
+    },
+    "citationCount": 78,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

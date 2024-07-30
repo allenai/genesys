@@ -1,0 +1,33 @@
+{
+    "acronym": "3c9808949d16dd2ff365bae21a47ed767f112adc",
+    "title": "On Limitation of Transformer for Learning HMMs",
+    "seed_ids": [
+        "transformer",
+        "1ec3a3ff77cb4b424499b3805ecc90182ecd8f8b",
+        "525d93a382f6e7873b5d8a2e0713eb3dff7fb250",
+        "e82e3f4347674b75c432cb80604d38ee630d4bf6",
+        "c6d38add1b7bbc10f0da37a90e3f1b51ee5fb617",
+        "92173d081b15824d22a9ef070e118744ceee8052",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a",
+        "3694381e74445a8b9f8cb8d373e39626e47191b5",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3c9808949d16dd2ff365bae21a47ed767f112adc",
+    "abstract": "Despite the remarkable success of Transformer-based architectures in various sequential modeling tasks, such as natural language processing, computer vision, and robotics, their ability to learn basic sequential models, like Hidden Markov Models (HMMs), is still unclear. This paper investigates the performance of Transformers in learning HMMs and their variants through extensive experimentation and compares them to Recurrent Neural Networks (RNNs). We show that Transformers consistently underperform RNNs in both training speed and testing accuracy across all tested HMM models. There are even challenging HMM instances where Transformers struggle to learn, while RNNs can successfully do so. Our experiments further reveal the relation between the depth of Transformers and the longest sequence length it can effectively learn, based on the types and the complexity of HMMs. To address the limitation of transformers in modeling HMMs, we demonstrate that a variant of the Chain-of-Thought (CoT), called $\\textit{block CoT}$ in the training phase, can help transformers to reduce the evaluation error and to learn longer sequences at a cost of increasing the training time. Finally, we complement our empirical findings by theoretical results proving the expressiveness of transformers in approximating HMMs with logarithmic depth.",
+    "authors": [
+        "Jiachen Hu",
+        "Qinghua Liu",
+        "Chi Jin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that a variant of the Chain-of-Thought (CoT), called $\\textit{block CoT}$ in the training phase, can help transformers to reduce the evaluation error and to learn longer sequences at a cost of increasing the training time."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

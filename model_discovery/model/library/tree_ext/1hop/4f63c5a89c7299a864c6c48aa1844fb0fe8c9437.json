@@ -1,0 +1,36 @@
+{
+    "acronym": "4f63c5a89c7299a864c6c48aa1844fb0fe8c9437",
+    "title": "Survey of Vulnerabilities in Large Language Models Revealed by Adversarial Attacks",
+    "seed_ids": [
+        "gpt2",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "d1101476c85ae324142440e9f568ecbf41625be5",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "b3c73de96640ee858f83c3f0eda2a3d15d59b847",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "4f63c5a89c7299a864c6c48aa1844fb0fe8c9437",
+    "abstract": "Large Language Models (LLMs) are swiftly advancing in architecture and capability, and as they integrate more deeply into complex systems, the urgency to scrutinize their security properties grows. This paper surveys research in the emerging interdisciplinary field of adversarial attacks on LLMs, a subfield of trustworthy ML, combining the perspectives of Natural Language Processing and Security. Prior work has shown that even safety-aligned LLMs (via instruction tuning and reinforcement learning through human feedback) can be susceptible to adversarial attacks, which exploit weaknesses and mislead AI systems, as evidenced by the prevalence of `jailbreak' attacks on models like ChatGPT and Bard. In this survey, we first provide an overview of large language models, describe their safety alignment, and categorize existing research based on various learning structures: textual-only attacks, multi-modal attacks, and additional attack methods specifically targeting complex systems, such as federated learning or multi-agent systems. We also offer comprehensive remarks on works that focus on the fundamental sources of vulnerabilities and potential defenses. To make this field more accessible to newcomers, we present a systematic review of existing works, a structured typology of adversarial attack concepts, and additional resources, including slides for presentations on related topics at the 62nd Annual Meeting of the Association for Computational Linguistics (ACL'24).",
+    "authors": [
+        "Erfan Shayegani",
+        "Md Abdullah Al Mamun",
+        "Yu Fu",
+        "Pedram Zaree",
+        "Yue Dong",
+        "Nael B. Abu-Ghazaleh"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Research in the emerging interdisciplinary field of adversarial attacks on LLMs, a subfield of trustworthy ML, is surveyed, combining the perspectives of Natural Language Processing and Security."
+    },
+    "citationCount": 58,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

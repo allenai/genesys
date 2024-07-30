@@ -1,0 +1,36 @@
+{
+    "acronym": "97604ba41b465c6cf8fb1341926e8c0e9ca6f88e",
+    "title": "OAAFormer: Robust and Efficient Point Cloud Registration Through Overlapping-Aware Attention in Transformer",
+    "seed_ids": [
+        "linformer",
+        "lineartransformer",
+        "0d5c74ce06a32078cd1ad6ee518af088c7dd54e9",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "6954a6bb9d6f3e365b26b694c963ae1d62a03444"
+    ],
+    "s2id": "97604ba41b465c6cf8fb1341926e8c0e9ca6f88e",
+    "abstract": "In the domain of point cloud registration, the coarse-to-fine feature matching paradigm has received substantial attention owing to its impressive performance. This paradigm involves a two-step process: first, the extraction of multi-level features, and subsequently, the propagation of correspondences from coarse to fine levels. Nonetheless, this paradigm exhibits two notable limitations.Firstly, the utilization of the Dual Softmax operation has the potential to promote one-to-one correspondences between superpoints, inadvertently excluding valuable correspondences. This propensity arises from the fact that a source superpoint typically maintains associations with multiple target superpoints. Secondly, it is imperative to closely examine the overlapping areas between point clouds, as only correspondences within these regions decisively determine the actual transformation. Based on these considerations, we propose {\\em OAAFormer} to enhance correspondence quality. On one hand, we introduce a soft matching mechanism, facilitating the propagation of potentially valuable correspondences from coarse to fine levels. Additionally, we integrate an overlapping region detection module to minimize mismatches to the greatest extent possible. Furthermore, we introduce a region-wise attention module with linear complexity during the fine-level matching phase, designed to enhance the discriminative capabilities of the extracted features. Tests on the challenging 3DLoMatch benchmark demonstrate that our approach leads to a substantial increase of about 7\\% in the inlier ratio, as well as an enhancement of 2-4\\% in registration recall. =",
+    "authors": [
+        "Junjie Gao",
+        "Qiujie Dong",
+        "Ruian Wang",
+        "Shuangmin Chen",
+        "Shiqing Xin",
+        "Changhe Tu",
+        "Wenping Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a soft matching mechanism, facilitating the propagation of potentially valuable correspondences from coarse to fine levels, and introduces a region-wise attention module with linear complexity during the fine-level matching phase, designed to enhance the discriminative capabilities of the extracted features."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "abfa407b9c4702f4caf7ec49ea98c4b844ee6772",
+    "title": "Contrastive Disentangled Learning for Memory-Augmented Transformer",
+    "seed_ids": [
+        "bigbird",
+        "transformerxl",
+        "199dbed0f3104b5d7367d62ee89561351a26d2ce",
+        "67ee20536c30a225b86902af2f091e28e5e19b40",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "abfa407b9c4702f4caf7ec49ea98c4b844ee6772",
+    "abstract": "This paper developed a new memory-augmented sequential learning based on a contrastive disentangled transformer. Con-ventionally, transformer is insufficient to characterize long sequences since the sequence length is restricted to avoid the requirement of overlarge memory. A direct solution to handle this issue is to divide long sequence into short segments, but the context fragmentation will happen. In this paper, the contrastive disentangled memory is exploited to deal with the increasing computation cost as well as the overlarge memory requirement due to long sequences. In particular, an informative selection over the disentangled memory slots is proposed for iterative up-dating in a large-span sequence representation. This paper maximizes the semantic diversity of memory slots and captures the contextual semantics via contrastive learning. The experiments on language understanding show that the context fragmentation is mitigated by the proposed method with reduced computation.",
+    "authors": [
+        "Jen-Tzung Chien",
+        "Shangle Li"
+    ],
+    "venue": "Interspeech",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed memory-augmented sequential learning based on a contrastive disentangled transformer maximizes the semantic diversity of memory slots and captures the contextual semantics via contrastive learning."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

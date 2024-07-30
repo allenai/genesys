@@ -1,0 +1,30 @@
+{
+    "acronym": "607d8df2c6c5f103f10a2d631d7364cc952cb489",
+    "title": "BatchEval: Towards Human-like Text Evaluation",
+    "seed_ids": [
+        "bert",
+        "ba2a423d8c7ae6cfa3424fb13bdbe3a35e5f2273"
+    ],
+    "s2id": "607d8df2c6c5f103f10a2d631d7364cc952cb489",
+    "abstract": "Significant progress has been made in automatic text evaluation with the introduction of large language models (LLMs) as evaluators. However, current sample-wise evaluation paradigm suffers from the following issues: (1) Sensitive to prompt design; (2) Poor resistance to noise; (3) Inferior ensemble performance with static reference. Inspired by the fact that humans treat both criterion definition and inter sample comparison as references for evaluation, we propose BatchEval, a paradigm that conducts batch-wise evaluation iteratively to alleviate the above problems. We explore variants under this paradigm and confirm the optimal settings are two stage procedure with heterogeneous batch composition strategy and decimal scoring format. Comprehensive experiments across 3 LLMs on 4 text evaluation tasks demonstrate that BatchEval outperforms state-of-the-art methods by 10.5% on Pearson correlations with only 64% API cost on average. Further analyses have been conducted to verify the robustness, generalization, and working mechanism of BatchEval.",
+    "authors": [
+        "Peiwen Yuan",
+        "Shaoxiong Feng",
+        "Yiwei Li",
+        "Xinglin Wang",
+        "Boyuan Pan",
+        "Heda Wang",
+        "Kan Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Inspired by the fact that humans treat both criterion definition and inter sample comparison as references for evaluation, BatchEval is proposed, a paradigm that conducts batch-wise evaluation iteratively to alleviate the above problems."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

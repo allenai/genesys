@@ -1,0 +1,28 @@
+{
+    "acronym": "a7fd76d3ac304fa14ecf34cadf3f0af9d2866e75",
+    "title": "Lens: A Foundation Model for Network Traffic in Cybersecurity",
+    "seed_ids": [
+        "bert",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a7fd76d3ac304fa14ecf34cadf3f0af9d2866e75",
+    "abstract": "Network traffic refers to the amount of data being sent and received over the internet or any system that connects computers. Analyzing and understanding network traffic is vital for improving network security and management. However, the analysis of network traffic is challenging due to the diverse nature of data packets, which often feature heterogeneous headers and encrypted payloads lacking semantics. To capture the latent semantics of traffic, a few studies have adopted pre-training techniques based on the Transformer encoder or decoder to learn the representations from massive traffic data. However, these methods typically excel in traffic understanding (classification) or traffic generation tasks. To address this issue, we develop Lens, a foundation model for network traffic that leverages the T5 architecture to learn the pre-trained representations from large-scale unlabeled data. Harnessing the strength of the encoder-decoder framework, which captures the global information while preserving the generative ability, our model can better learn the representations from raw data. To further enhance pre-training effectiveness, we design a novel loss that combines three distinct tasks: Masked Span Prediction (MSP), Packet Order Prediction (POP), and Homologous Traffic Prediction (HTP). Evaluation results across various benchmark datasets demonstrate that the proposed Lens outperforms the baselines in most downstream tasks related to both traffic understanding and generation. Notably, it also requires much less labeled data for fine-tuning compared to current methods.",
+    "authors": [
+        "Qineng Wang",
+        "Chen Qian",
+        "Xiaochang Li",
+        "Ziyu Yao",
+        "Huajie Shao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Lens is developed, a foundation model for network traffic that leverages the T5 architecture to learn the pre-trained representations from large-scale unlabeled data that outperforms the baselines in most downstream tasks related to both traffic understanding and generation."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

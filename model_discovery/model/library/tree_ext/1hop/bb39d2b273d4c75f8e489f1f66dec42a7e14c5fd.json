@@ -1,0 +1,31 @@
+{
+    "acronym": "bb39d2b273d4c75f8e489f1f66dec42a7e14c5fd",
+    "title": "DebugBench: Evaluating Debugging Capability of Large Language Models",
+    "seed_ids": [
+        "gpt2",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "bb39d2b273d4c75f8e489f1f66dec42a7e14c5fd",
+    "abstract": "Large Language Models (LLMs) have demonstrated exceptional coding capability. However, as another critical component of programming proficiency, the debugging capability of LLMs remains relatively unexplored. Previous evaluations of LLMs' debugging ability are significantly limited by the risk of data leakage, the scale of the dataset, and the variety of tested bugs. To overcome these deficiencies, we introduce `DebugBench', an LLM debugging benchmark consisting of 4,253 instances. It covers four major bug categories and 18 minor types in C++, Java, and Python. To construct DebugBench, we collect code snippets from the LeetCode community, implant bugs into source data with GPT-4, and assure rigorous quality checks. We evaluate two commercial and four open-source models in a zero-shot scenario. We find that (1) while closed-source models exhibit inferior debugging performance compared to humans, open-source models relatively lower pass rate scores; (2) the complexity of debugging notably fluctuates depending on the bug category; (3) incorporating runtime feedback has a clear impact on debugging performance which is not always helpful. As an extension, we also compare LLM debugging and code generation, revealing a strong correlation between them for closed-source models. These findings will benefit the development of LLMs in debugging.",
+    "authors": [
+        "Runchu Tian",
+        "Yining Ye",
+        "Yujia Qin",
+        "Xin Cong",
+        "Yankai Lin",
+        "Zhiyuan Liu",
+        "Maosong Sun"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that while closed-source models exhibit inferior debugging performance compared to humans, open-source models relatively lower pass rate scores; the complexity of debugging notably fluctuates depending on the bug category; and incorporating runtime feedback has a clear impact on debugging performance which is not always helpful."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

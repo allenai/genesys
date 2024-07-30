@@ -1,0 +1,30 @@
+{
+    "acronym": "7a0199948d8124296a9f4ba1a60576e5f22cac52",
+    "title": "SelfCP: Compressing Long Prompt to 1/12 Using the Frozen Large Language Model Itself",
+    "seed_ids": [
+        "compresscontext",
+        "2f7364d8e5cf94315bf8905f57de9c5543e9a4bf",
+        "dbc368bc8b49347dd27679894524fa62f88492c9",
+        "da1d6445b6b64ce9eb4587ba8abbdc490f648ec1",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "7a0199948d8124296a9f4ba1a60576e5f22cac52",
+    "abstract": "Long prompt leads to huge hardware costs when using Large Language Models (LLMs). Unfortunately, many tasks, such as summarization, inevitably introduce long task-inputs, and the wide application of in-context learning easily makes the prompt length explode. Inspired by the language understanding ability of LLMs, this paper proposes SelfCP, which uses the LLM itself to C ompress long P rompt into compact virtual tokens. SelfCP applies a general frozen LLM twice, first as an encoder to compress the prompt and then as a decoder to generate responses. Specifically, given a long prompt, we place special tokens within the lengthy segment for compression and signal the LLM to generate k virtual tokens. Af-terward, the virtual tokens concatenate with the uncompressed prompt and are fed into the same LLM to generate the response. In general, SelfCP facilitates the unconditional and conditional compression of prompts, fitting both standard tasks and those with specific objectives. Since the encoder and de-coder are frozen, SelfCP only contains 17M trainable parameters and allows for convenient adaptation across various backbones. We implement SelfCP with two LLM back-bones and evaluate it in both in-and out-domain tasks. Results show that the compressed virtual tokens can substitute 12 \u00d7 larger original prompts effectively 1 .",
+    "authors": [
+        "Jun Gao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Inspired by the language understanding ability of LLMs, this paper proposes SelfCP, which uses the LLM itself to compress prompts into compact virtual tokens, and shows that the compressed virtual tokens can substitute 12 \u00d7 larger original prompts effectively."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

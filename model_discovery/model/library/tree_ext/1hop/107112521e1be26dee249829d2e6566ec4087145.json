@@ -1,0 +1,28 @@
+{
+    "acronym": "107112521e1be26dee249829d2e6566ec4087145",
+    "title": "Is ChatGPT the Future of Causal Text Mining? A Comprehensive Evaluation and Analysis",
+    "seed_ids": [
+        "bert",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c"
+    ],
+    "s2id": "107112521e1be26dee249829d2e6566ec4087145",
+    "abstract": "Causality is fundamental in human cognition and has drawn attention in diverse research fields. With growing volumes of textual data, discerning causalities within text data is crucial, and causal text mining plays a pivotal role in extracting meaningful patterns. This study conducts comprehensive evaluations of ChatGPT's causal text mining capabilities. Firstly, we introduce a benchmark that extends beyond general English datasets, including domain-specific and non-English datasets. We also provide an evaluation framework to ensure fair comparisons between ChatGPT and previous approaches. Finally, our analysis outlines the limitations and future challenges in employing ChatGPT for causal text mining. Specifically, our analysis reveals that ChatGPT serves as a good starting point for various datasets. However, when equipped with a sufficient amount of training data, previous models still surpass ChatGPT's performance. Additionally, ChatGPT suffers from the tendency to falsely recognize non-causal sequences as causal sequences. These issues become even more pronounced with advanced versions of the model, such as GPT-4. In addition, we highlight the constraints of ChatGPT in handling complex causality types, including both intra/inter-sentential and implicit causality. The model also faces challenges with effectively leveraging in-context learning and domain adaptation. We release our code to support further research and development in this field.",
+    "authors": [
+        "Takehiro Takayanagi",
+        "Masahiro Suzuki",
+        "Ryotaro Kobayashi",
+        "Hiroki Sakaji",
+        "Kiyoshi Izumi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study conducts comprehensive evaluations of ChatGPT's causal text mining capabilities and introduces a benchmark that extends beyond general English datasets, including domain-specific and non-English datasets, and highlights the constraints of ChatGPT in handling complex causality types, including both intra/inter-sentential and implicit causality."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

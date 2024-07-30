@@ -1,0 +1,29 @@
+{
+    "acronym": "898c7d93afbbad043085c6e9edc7b6854de8a66c",
+    "title": "Chinese Sequence Labeling with Semi-Supervised Boundary-Aware Language Model Pre-training",
+    "seed_ids": [
+        "bert",
+        "031e4e43aaffd7a479738dcea69a2d5be7957aa3"
+    ],
+    "s2id": "898c7d93afbbad043085c6e9edc7b6854de8a66c",
+    "abstract": "Chinese sequence labeling tasks are sensitive to word boundaries. Although pretrained language models (PLM) have achieved considerable success in these tasks, current PLMs rarely consider boundary information explicitly. An exception to this is BABERT, which incorporates unsupervised statistical boundary information into Chinese BERT\u2019s pre-training objectives. Building upon this approach, we input supervised high-quality boundary information to enhance BABERT\u2019s learning, developing a semi-supervised boundary-aware PLM. To assess PLMs\u2019 ability to encode boundaries, we introduce a novel \u201cBoundary Information Metric\u201d that is both simple and effective. This metric allows comparison of different PLMs without task-specific fine-tuning. Experimental results on Chinese sequence labeling datasets demonstrate that the improved BABERT version outperforms the vanilla version, not only in these tasks but also in broader Chinese natural language understanding tasks. Additionally, our proposed metric offers a convenient and accurate means of evaluating PLMs\u2019 boundary awareness.",
+    "authors": [
+        "Longhui Zhang",
+        "Dingkun Long",
+        "Meishan Zhang",
+        "Yanzhao Zhang",
+        "Pengjun Xie",
+        "Min Zhang"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "To assess PLMs\u2019 ability to encode boundaries, a novel \u201cBoundary Information Metric\u201d is introduced that is both simple and effective and offers a convenient and accurate means of evaluating PLMs\u2019 boundary awareness."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

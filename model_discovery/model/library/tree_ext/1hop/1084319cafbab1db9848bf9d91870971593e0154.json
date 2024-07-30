@@ -1,0 +1,25 @@
+{
+    "acronym": "1084319cafbab1db9848bf9d91870971593e0154",
+    "title": "Electrical Power Consumption Forecasting with Transformers",
+    "seed_ids": [
+        "bigbird",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f"
+    ],
+    "s2id": "1084319cafbab1db9848bf9d91870971593e0154",
+    "abstract": "Until recently, state of the art (SOTA) deep learning methods for time series prediction problems, such as electricity load forecasting, have been based on recurrent neural networks (RNN), convolutional neural networks (CNN), or combinations thereof. However, RNNs involve sequential computations that cannot be parallelized on machine learning accelerators, while CNNs require very deep networks to capture long distance relationships. This paper proposes a sparse transformer based method for time series prediction. The proposed model achieves comparable accuracy to the SOTA method, TSRNN, on the London Smart Meter dataset while achieving up to 10 times faster inference speed.",
+    "authors": [
+        "Jun Wei Chan",
+        "C. Yeo"
+    ],
+    "venue": "Electrical Power and Energy Conference",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A sparse transformer based method for time series prediction that achieves comparable accuracy to the SOTA method, TSRNN, on the London Smart Meter dataset while achieving up to 10 times faster inference speed."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,26 @@
+{
+    "acronym": "ba36854a7a7481363a258b742777604f3a656572",
+    "title": "Remote Diagnosis on Upper Respiratory Tract Infections Based on a Neural Network with Few Symptom Words\u2014A Feasibility Study",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ba36854a7a7481363a258b742777604f3a656572",
+    "abstract": "This study aims explore the feasibility of using neural network (NNs) and deep learning to diagnose three common respiratory diseases with few symptom words. These three diseases are nasopharyngitis, upper respiratory infection, and bronchitis/bronchiolitis. Through natural language processing, the symptom word vectors are encoded by GPT-2 and classified by the last linear layer of the NN. The experimental results are promising, showing that this model achieves a high performance in predicting all three diseases. They revealed 90% accuracy, which suggests the implications of the developed model, highlighting its potential use in assisting patients\u2019 understanding of their conditions via a remote diagnosis. Unlike previous studies that have focused on extracting various categories of information from medical records, this study directly extracts sequential features from unstructured text data, reducing the effort required for data pre-processing.",
+    "authors": [
+        "Chung-Hung Tsai",
+        "Kuan-Hung Liu",
+        "Da-Chuan Cheng"
+    ],
+    "venue": "Diagnostics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The experimental results are promising, showing that this model achieves a high performance in predicting all three diseases, and the implications of the developed model are suggested, highlighting its potential use in assisting patients\u2019 understanding of their conditions via a remote diagnosis."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

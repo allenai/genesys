@@ -1,0 +1,34 @@
+{
+    "acronym": "891fed52e58af8150de46f0b7abbcbad4e6f9dcb",
+    "title": "INGENIOUS: Using Informative Data Subsets for Efficient Pre-Training of Language Models",
+    "seed_ids": [
+        "gpt2",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "cd471b5ef162906ef3d9a84398b3f98e9ee4bf56",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "d931f84abfc4550c10ceb113b142c8eb3e07571e",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "891fed52e58af8150de46f0b7abbcbad4e6f9dcb",
+    "abstract": "A salient characteristic of pre-trained language models (PTLMs) is a remarkable improvement in their generalization capability and emergence of new capabilities with increasing model capacity and pre-training dataset size. Consequently, we are witnessing the development of enormous models pushing the state-of-the-art. It is, however, imperative to realize that this inevitably leads to prohibitively long training times, extortionate computing costs, and a detrimental environmental impact. Significant efforts are underway to make PTLM training more efficient through innovations in model architectures, training pipelines, and loss function design, with scant attention being paid to optimizing the utility of training data. The key question that we ask is whether it is possible to train PTLMs by employing only highly informative subsets of the training data while maintaining downstream performance? Building upon the recent progress in informative data subset selection, we show how we can employ submodular optimization to select highly representative subsets of the training corpora and demonstrate that the proposed framework can be applied to efficiently train multiple PTLMs (BERT, BioBERT, GPT-2) using only a fraction of data. Further, we perform a rigorous empirical evaluation to show that the resulting models achieve up to $\\sim99\\%$ of the performance of the fully-trained models. We made our framework publicly available at https://github.com/Efficient-AI/ingenious.",
+    "authors": [
+        "H. S. V. N. S. K. Renduchintala",
+        "Krishnateja Killamsetty",
+        "S. Bhatia",
+        "Milan Aggarwal",
+        "Ganesh Ramakrishnan",
+        "Rishabh K. Iyer",
+        "Balaji Krishnamurthy"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows how it can employ submodular optimization to select highly representative subsets of the training corpora and demonstrates that the proposed framework can be applied to efficiently train multiple PTLMs using only a fraction of data."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

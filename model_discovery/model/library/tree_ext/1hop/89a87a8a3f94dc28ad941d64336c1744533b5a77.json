@@ -1,0 +1,33 @@
+{
+    "acronym": "89a87a8a3f94dc28ad941d64336c1744533b5a77",
+    "title": "GRETEL: Graph Contrastive Topic Enhanced Language Model for Long Document Extractive Summarization",
+    "seed_ids": [
+        "longformer",
+        "34042e2680e475510a1030b54165a81534ad88d3",
+        "b15469d0ab3dc3a9dec037d761817b3fe546bed6",
+        "9dc624d7258d1a56117ca720aea953ce46b66b21",
+        "46e7383e6fb8da77479d0a828c7a24d924302169",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "203b543bfa1e564bb80ff4229b43174d7c71b0c0",
+        "4d244972ed2e0286363bfb054cb269574d21a72c"
+    ],
+    "s2id": "89a87a8a3f94dc28ad941d64336c1744533b5a77",
+    "abstract": "Recently, neural topic models (NTMs) have been incorporated into pre-trained language models (PLMs), to capture the global semantic information for text summarization. However, in these methods, there remain limitations in the way they capture and integrate the global semantic information. In this paper, we propose a novel model, the graph contrastive topic enhanced language model (GRETEL), that incorporates the graph contrastive topic model with the pre-trained language model, to fully leverage both the global and local contextual semantics for long document extractive summarization. To better capture and incorporate the global semantic information into PLMs, the graph contrastive topic model integrates the hierarchical transformer encoder and the graph contrastive learning to fuse the semantic information from the global document context and the gold summary. To this end, GRETEL encourages the model to efficiently extract salient sentences that are topically related to the gold summary, rather than redundant sentences that cover sub-optimal topics. Experimental results on both general domain and biomedical datasets demonstrate that our proposed method outperforms SOTA methods.",
+    "authors": [
+        "Qianqian Xie",
+        "Jimin Huang",
+        "Tulika Saha",
+        "S. Ananiadou"
+    ],
+    "venue": "International Conference on Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel model that incorporates the graph contrastive topic model with the pre-trained language model, to fully leverage both the global and local contextual semantics for long document extractive summarization, and outperforms SOTA methods."
+    },
+    "citationCount": 19,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

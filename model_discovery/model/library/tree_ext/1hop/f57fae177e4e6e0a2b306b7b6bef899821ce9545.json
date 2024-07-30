@@ -1,0 +1,30 @@
+{
+    "acronym": "f57fae177e4e6e0a2b306b7b6bef899821ce9545",
+    "title": "Instruct Me More! Random Prompting for Visual In-Context Learning",
+    "seed_ids": [
+        "gpt3",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "da454295392cf4caaa39cc465734237ffe55392f",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "f57fae177e4e6e0a2b306b7b6bef899821ce9545",
+    "abstract": "Large-scale models trained on extensive datasets, have emerged as the preferred approach due to their high generalizability across various tasks. In-context learning (ICL), a popular strategy in natural language processing, uses such models for different tasks by providing instructive prompts but without updating model parameters. This idea is now being explored in computer vision, where an input-output image pair (called an in-context pair) is supplied to the model with a query image as a prompt to exemplify the desired output. The efficacy of visual ICL often depends on the quality of the prompts. We thus introduce a method coined Instruct Me More (InMeMo), which augments in-context pairs with a learnable perturbation (prompt), to explore its potential. Our experiments on mainstream tasks reveal that InMeMo surpasses the current state-of-the-art performance. Specifically, compared to the baseline without learnable prompt, InMeMo boosts mIoU scores by 7.35 and 15.13 for foreground segmentation and single object detection tasks, respectively. Our findings suggest that InMeMo offers a versatile and efficient way to enhance the performance of visual ICL with lightweight training. Code is available at https://github.com/Jackieam/InMeMo.",
+    "authors": [
+        "Jiahao Zhang",
+        "Bowen Wang",
+        "Liangzhi Li",
+        "Yuta Nakashima",
+        "Hajime Nagahara"
+    ],
+    "venue": "IEEE Workshop/Winter Conference on Applications of Computer Vision",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a method coined Instruct Me More (InMeMo), which augments in-context pairs with a learnable perturbation (prompt), to explore its potential and suggests that InMeMo offers a versatile and efficient way to enhance the performance of visual ICL with lightweight training."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

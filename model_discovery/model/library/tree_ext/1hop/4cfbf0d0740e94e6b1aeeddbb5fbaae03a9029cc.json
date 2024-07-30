@@ -1,0 +1,43 @@
+{
+    "acronym": "4cfbf0d0740e94e6b1aeeddbb5fbaae03a9029cc",
+    "title": "Slot State Space Models",
+    "seed_ids": [
+        "mamba",
+        "e34868427f607bd35f11576963c36b95673e5a75",
+        "d53fe76bd2795a19ddf52d012917782f6f6f2c1e",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "d98b5c1d0f9a4e39dc79ea7a3f74e54789df5e13",
+        "edd23cff90be3f27e50e74d7b24cd0ca92370bbd",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "31b27d90c2d5732386dd3a46a7d8336c0555c6fe",
+        "661e8d555c4424b5953f17434f2ba910bfcf3afe",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "9226ae23b95b3f6891461e086d910ffeb7ac448a",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "7e9ff94476f41041c75e253e84f487db00e9c861"
+    ],
+    "s2id": "4cfbf0d0740e94e6b1aeeddbb5fbaae03a9029cc",
+    "abstract": "Recent State Space Models (SSMs) such as S4, S5, and Mamba have shown remarkable computational benefits in long-range temporal dependency modeling. However, in many sequence modeling problems, the underlying process is inherently modular and it is of interest to have inductive biases that mimic this modular structure. In this paper, we introduce SlotSSMs, a novel framework for incorporating independent mechanisms into SSMs to preserve or encourage separation of information. Unlike conventional SSMs that maintain a monolithic state vector, SlotSSMs maintains the state as a collection of multiple vectors called slots. Crucially, the state transitions are performed independently per slot with sparse interactions across slots implemented via the bottleneck of self-attention. In experiments, we evaluate our model in object-centric video understanding, 3D visual reasoning, and video prediction tasks, which involve modeling multiple objects and their long-range temporal dependencies. We find that our proposed design offers substantial performance gains over existing sequence modeling methods.",
+    "authors": [
+        "Jindong Jiang",
+        "Fei Deng",
+        "Gautam Singh",
+        "Minseung Lee",
+        "Sungjin Ahn"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "SlotSSMs is introduced, a novel framework for incorporating independent mechanisms into SSMs to preserve or encourage separation of information and it is found that the proposed design offers substantial performance gains over existing sequence modeling methods."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

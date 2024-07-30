@@ -1,0 +1,28 @@
+{
+    "acronym": "2534beb3fd59b827cdb0ad7df14b468497f021f9",
+    "title": "IMGT/RobustpMHC: Robust Training for class-I MHC Peptide Binding Prediction",
+    "seed_ids": [
+        "perceiverio",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7"
+    ],
+    "s2id": "2534beb3fd59b827cdb0ad7df14b468497f021f9",
+    "abstract": "The accurate prediction of peptide-MHC class I binding probabilities is a critical endeavor in immunoinformatics, with broad implications for vaccine development and immunotherapies. While recent deep neural network based approaches have showcased promise in peptide-MHC prediction, they have two shortcomings: (i) they rely on hand-crafted pseudo-sequence extraction, (ii) they do not generalise well to different datasets, which limits the practicality of these approaches. In this paper, we present PerceiverpMHC that is able to learn accurate representations on full-sequences by leveraging efficient transformer based architectures. Additionally, we propose IMGT/RobustpMHC that harnesses the potential of unlabeled data in improving the robustness of peptide-MHC binding predictions through a self-supervised learning strategy. We extensively evaluate RobustpMHC on 8 different datasets and showcase the improvements over the state-of-the-art approaches. Finally, we compile CrystalIMGT, a crystallography verified dataset that presents a challenge to existing approaches due to significantly different peptide-MHC distributions.",
+    "authors": [
+        "Anjana Kushwaha",
+        "P. Duroux",
+        "V. Giudicelli",
+        "Konstantin Todorov",
+        "Sofia Kossida"
+    ],
+    "venue": "bioRxiv",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "PerceiverpMHC is presented that is able to learn accurate representations on full-sequences by leveraging efficient transformer based architectures and IMGT/RobustpM HC is proposed that harnesses the potential of unlabeled data in improving the robustness of peptide-MHC binding predictions through a self-supervised learning strategy."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,34 @@
+{
+    "acronym": "34103f1294844c447fe8872bf5c3ab1c7ce32103",
+    "title": "Point-M2AE: Multi-scale Masked Autoencoders for Hierarchical Point Cloud Pre-training",
+    "seed_ids": [
+        "gpt",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "2e1db8cb373f4d4a51d44308b7a457886d855fbb",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "34103f1294844c447fe8872bf5c3ab1c7ce32103",
+    "abstract": "Masked Autoencoders (MAE) have shown great potentials in self-supervised pre-training for language and 2D image transformers. However, it still remains an open question on how to exploit masked autoencoding for learning 3D representations of irregular point clouds. In this paper, we propose Point-M2AE, a strong Multi-scale MAE pre-training framework for hierarchical self-supervised learning of 3D point clouds. Unlike the standard transformer in MAE, we modify the encoder and decoder into pyramid architectures to progressively model spatial geometries and capture both fine-grained and high-level semantics of 3D shapes. For the encoder that downsamples point tokens by stages, we design a multi-scale masking strategy to generate consistent visible regions across scales, and adopt a local spatial self-attention mechanism during fine-tuning to focus on neighboring patterns. By multi-scale token propagation, the lightweight decoder gradually upsamples point tokens with complementary skip connections from the encoder, which further promotes the reconstruction from a global-to-local perspective. Extensive experiments demonstrate the state-of-the-art performance of Point-M2AE for 3D representation learning. With a frozen encoder after pre-training, Point-M2AE achieves 92.9% accuracy for linear SVM on ModelNet40, even surpassing some fully trained methods. By fine-tuning on downstream tasks, Point-M2AE achieves 86.43% accuracy on ScanObjectNN, +3.36% to the second-best, and largely benefits the few-shot classification, part segmentation and 3D object detection with the hierarchical pre-training scheme. Code is available at https://github.com/ZrrSkywalker/Point-M2AE.",
+    "authors": [
+        "Renrui Zhang",
+        "Ziyu Guo",
+        "Peng Gao",
+        "Rongyao Fang",
+        "Bingyan Zhao",
+        "Dong Wang",
+        "Y. Qiao",
+        "Hongsheng Li"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Point-M2AE is proposed, a strong Multi-scale MAE pre-training framework for hierarchical self-supervised learning of 3D point clouds that modifications the encoder and decoder into pyramid architectures to progressively model spatial geometries and capture both fine-grained and high-level semantics of3D shapes."
+    },
+    "citationCount": 160,
+    "influentialCitationCount": 21,
+    "code": null,
+    "description": null,
+    "url": null
+}

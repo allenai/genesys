@@ -1,0 +1,31 @@
+{
+    "acronym": "6b2225a5559c130a9f52fe0035c49d4af42953c7",
+    "title": "GUing: A Mobile GUI Search Engine using a Vision-Language Model",
+    "seed_ids": [
+        "transformer",
+        "690df0820f35a47e1ce44f90e6ddb4132aa09267",
+        "12d49ca3ca60daad96b97ba1f421f0e236bbe25f"
+    ],
+    "s2id": "6b2225a5559c130a9f52fe0035c49d4af42953c7",
+    "abstract": "App developers use the Graphical User Interface (GUI) of other apps as an important source of inspiration to design and improve their own apps. In recent years, research suggested various approaches to retrieve GUI designs that fit a certain text query from screenshot datasets acquired through automated GUI exploration. However, such text-to-GUI retrieval approaches only leverage the textual information of the GUI elements in the screenshots, neglecting visual information such as icons or background images. In addition, the retrieved screenshots are not steered by app developers and often lack important app features, e.g. whose UI pages require user authentication. To overcome these limitations, this paper proposes GUing, a GUI search engine based on a vision-language model called UIClip, which we trained specifically for the app GUI domain. For this, we first collected app introduction images from Google Play, which usually display the most representative screenshots selected and often captioned (i.e. labeled) by app vendors. Then, we developed an automated pipeline to classify, crop, and extract the captions from these images. This finally results in a large dataset which we share with this paper: including 303k app screenshots, out of which 135k have captions. We used this dataset to train a novel vision-language model, which is, to the best of our knowledge, the first of its kind in GUI retrieval. We evaluated our approach on various datasets from related work and in manual experiment. The results demonstrate that our model outperforms previous approaches in text-to-GUI retrieval achieving a Recall@10 of up to 0.69 and a HIT@10 of 0.91. We also explored the performance of UIClip for other GUI tasks including GUI classification and Sketch-to-GUI retrieval with encouraging results.",
+    "authors": [
+        "Jialiang Wei",
+        "A. Courbis",
+        "Thomas Lambolais",
+        "Binbin Xu",
+        "P. Bernard",
+        "G\u00e9rard Dray",
+        "Walid Maalej"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes GUing, a GUI search engine based on a vision-language model called UIClip, which was trained specifically for the app GUI domain and outperforms previous approaches in text-to-GUI retrieval."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

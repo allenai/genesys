@@ -1,0 +1,29 @@
+{
+    "acronym": "31c320e6a4f86188cbba5dc6dcec39892b4d89bb",
+    "title": "Is Crowdsourcing Breaking Your Bank? Cost-Effective Fine-Tuning of Pre-trained Language Models with Proximal Policy Optimization",
+    "seed_ids": [
+        "gpt2",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "fd1b829261ba04bb92e0ab60c4f6e7cea0d99fbf",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "31c320e6a4f86188cbba5dc6dcec39892b4d89bb",
+    "abstract": "Wide usage of ChatGPT has highlighted the potential of reinforcement learning from human feedback. However, its training pipeline relies on manual ranking, a resource-intensive process. To reduce labor costs, we propose a self-supervised text ranking approach for applying Proximal-Policy-Optimization to fine-tune language models while eliminating the need for human annotators. Our method begins with probabilistic sampling to encourage a language model to generate diverse responses for each input. We then employ TextRank and ISODATA algorithms to rank and cluster these responses based on their semantics. Subsequently, we construct a reward model to learn the rank and optimize our generative policy. Our experimental results, conducted using two language models on three tasks, demonstrate that the models trained by our method considerably outperform baselines regarding BLEU, GLEU, and METEOR scores. Furthermore, our manual evaluation shows that our ranking results exhibit a remarkably high consistency with that of humans. This research significantly reduces training costs of proximal policy-guided models and demonstrates the potential for self-correction of language models.",
+    "authors": [
+        "Shuo Yang",
+        "Gjergji Kasneci"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A self-supervised text ranking approach for applying Proximal-Policy-Optimization to fine-tune language models while eliminating the need for human annotators."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

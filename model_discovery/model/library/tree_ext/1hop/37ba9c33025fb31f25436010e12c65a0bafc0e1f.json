@@ -1,0 +1,34 @@
+{
+    "acronym": "37ba9c33025fb31f25436010e12c65a0bafc0e1f",
+    "title": "Meta-Learning Fast Weight Language Models",
+    "seed_ids": [
+        "transformerxl",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "b7e94220176d9d329ee064fd4359229bf92ef360",
+        "86589b6286ef3c55b8b4fccfb41a3b30b7afdf61",
+        "1a703f08da01cf737cce3fb9064259b3f4b44e9c",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "cd63025532a62fa245a02ec05e32ac4d23089631"
+    ],
+    "s2id": "37ba9c33025fb31f25436010e12c65a0bafc0e1f",
+    "abstract": "Dynamic evaluation of language models (LMs) adapts model parameters at test time using gradient information from previous tokens and substantially improves LM performance. However, it requires over 3x more compute than standard inference. We present Fast Weight Layers (FWLs), a neural component that provides the benefits of dynamic evaluation much more efficiently by expressing gradient updates as linear attention. A key improvement over dynamic evaluation is that FWLs can also be applied at training time, so the model learns to make good use of gradient updates. FWLs can easily be added on top of existing transformer models, require relatively little extra compute or memory to run, and significantly improve language modeling perplexity.",
+    "authors": [
+        "Kevin Clark",
+        "Kelvin Guu",
+        "Ming-Wei Chang",
+        "Panupong Pasupat",
+        "Geoffrey E. Hinton",
+        "Mohammad Norouzi"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Fast Weight Layers are presented, a neural component that provides the benefits of dynamic evaluation much more efficiently by expressing gradient updates as linear attention and can also be applied at training time, so the model learns to make good use of gradient updates."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

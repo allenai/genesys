@@ -1,0 +1,32 @@
+{
+    "acronym": "99934ef57a75f49afe68736cbc7dbf480687b552",
+    "title": "Efficient Quantized Sparse Matrix Operations on Tensor Cores",
+    "seed_ids": [
+        "sparsetransformer",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "d28c18a3c2a0afdc0a8634d18345af8d36e1f948",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "99934ef57a75f49afe68736cbc7dbf480687b552",
+    "abstract": "The exponentially growing model size drives the continued success of deep learning, but it brings prohibitive computation and memory cost. From the algorithm perspective, model sparsification and quantization have been studied to alleviate the problem. From the architecture perspective, hardware vendors provide Tensor cores for acceleration. However, it is very challenging to gain practical speedups from sparse, low-precision matrix operations on Tensor cores, because of the strict requirements for data layout and lack of support for efficiently manipulating the low-precision integers. We propose Magicube, a high-performance sparse-matrix library for low-precision integers on Tensor cores. Magicube supports SpMM and SDDMM, two major sparse operations in deep learning with mixed precision. Experimental results on an NVIDIA A100show that Magicube achieves on average 1.44x (up to 2.37x) speedup over the vendor-optimized library for sparse kernels, and 1.43x speedup over the state-of-the-art with a comparable accuracy for end-to-end sparse Transformer inference.",
+    "authors": [
+        "Shigang Li",
+        "Kazuki Osawa",
+        "T. Hoefler"
+    ],
+    "venue": "International Conference for High Performance Computing, Networking, Storage and Analysis",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes Magicube, a high-performance sparse-matrix library for low-precision integers on Tensor cores, which supports SpMM and SDDMM, two major sparse operations in deep learning with mixed precision."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,35 @@
+{
+    "acronym": "bb58f2f63888456a3e04a56a18996ab8dacdb257",
+    "title": "Is ChatGPT the Ultimate Programming Assistant - How far is it?",
+    "seed_ids": [
+        "gpt2",
+        "d3de0bac5703825796c240bfab8dc3c8e0a90222",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "3bcb17559ce96eb20fa79af8194f4af0380d194a",
+        "40df572b0fbeae0f3db9b364be838c6467d189f2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "bb58f2f63888456a3e04a56a18996ab8dacdb257",
+    "abstract": "Recently, the ChatGPT LLM has received great attention: it can be used as a bot for discussing source code, prompting it to suggest changes, provide descriptions or even generate code. Typical demonstrations generally focus on existing benchmarks, which may have been used in model training (i.e., data leakage). To assess the feasibility of using an LLM as a useful assistant bot for programmers, we must assess its realistic capabilities on unseen problems as well as its capabilities on various tasks. In this paper, we present an empirical study of ChatGPT's potential as a fully automated programming assistant, focusing on the tasks of code generation, program repair, and code summariziation. The study investigates ChatGPT's performance on common programming problems and compares it with state-of-the-art approaches on two benchmarks. Among several findings, our study shows that ChatGPT is effective in dealing with common programming problems. However, our experiments also reveal limitations in terms of its attention span: detailed descriptions will constrain the focus of ChatGPT and prevent it from leveraging its vast knowledge to solve the actual problem. Surprisingly, we have identified the ability of ChatGPT to reason the original intention of the code. We expect future work to build on this insight for dealing with the open question of the oracle problem. Our findings contribute interesting insights to the development of LLMs for programming assistance, notably by demonstrating the importance of prompt engineering, and providing a better understanding of ChatGPT's practical applications for software engineering.",
+    "authors": [
+        "Haoye Tian",
+        "Weiqi Lu",
+        "T. Li",
+        "Xunzhu Tang",
+        "S. Cheung",
+        "Jacques Klein",
+        "Tegawend'e F. Bissyand'e"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An empirical study of ChatGPT's potential as a fully automated programming assistant, focusing on the tasks of code generation, program repair, and code summariziation and identifies the ability ofChatGPT to reason the original intention of the code."
+    },
+    "citationCount": 125,
+    "influentialCitationCount": 10,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,32 @@
+{
+    "acronym": "0d5c74ce06a32078cd1ad6ee518af088c7dd54e9",
+    "title": "Adaptive Assignment for Geometry Aware Local Feature Matching",
+    "seed_ids": [
+        "lineartransformer",
+        "0d9b8ccb1135b8e380dd8015b080158c6aae3ae5",
+        "6f68e1bb253925d8431588555d3010419f322e04"
+    ],
+    "s2id": "0d5c74ce06a32078cd1ad6ee518af088c7dd54e9",
+    "abstract": "The detector-free feature matching approaches are currently attracting great attention thanks to their excellent performance. However, these methods still struggle at large-scale and viewpoint variations, due to the geometric inconsistency resulting from the application of the mutual nearest neighbour criterion (i.e., one-to-one assignment) in patch-level matching. Accordingly, we in-troduce AdaMatcher, which first accomplishes the feature correlation and co-visible area estimation through an elaborate feature interaction module, then performs adaptive assignment on patch-level matching while es-timating the scales between images, and finally refines the co-visible matches through scale alignment and sub-pixel regression module. Extensive experiments show that AdaMatcher outperforms solid baselines and achieves state-of-the-art results on many downstream tasks. Ad-ditionally, the adaptive assignment and sub-pixel refinement module can be used as a refinement network for other matching methods, such as SuperGlue, to boost their performance further. The code will be publicly available at https://github.com/AbyssGaze/AdaMatcher.",
+    "authors": [
+        "Dihe Huang",
+        "Ying Chen",
+        "Shang Xu",
+        "Yong Liu",
+        "Wen-Qi Wu",
+        "Yikang Ding",
+        "Chengjie Wang",
+        "Fan Tang"
+    ],
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "AdaMatcher is in-troduce, which first accomplishes the feature correlation and co-visible area estimation through an elaborate feature interaction module, then performs adaptive assignment on patch-level matching while es-timating the scales between images, and finally refines the co- visible matches through scale alignment and sub-pixel regression module."
+    },
+    "citationCount": 19,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

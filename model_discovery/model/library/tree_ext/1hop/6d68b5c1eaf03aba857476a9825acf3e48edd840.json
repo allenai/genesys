@@ -1,0 +1,32 @@
+{
+    "acronym": "6d68b5c1eaf03aba857476a9825acf3e48edd840",
+    "title": "Hijacking Large Language Models via Adversarial In-Context Learning",
+    "seed_ids": [
+        "gpt2",
+        "982210d4d759efab60d2e50b9fac72dc614ee6d6",
+        "b7ef6182f617ef3e7cc9682f562f794115a4c62c",
+        "faffb6320ff1f25cd472ba0afe7cdba5dde79a5f",
+        "4f63c5a89c7299a864c6c48aa1844fb0fe8c9437",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6d68b5c1eaf03aba857476a9825acf3e48edd840",
+    "abstract": "In-context learning (ICL) has emerged as a powerful paradigm leveraging LLMs for specific downstream tasks by utilizing labeled examples as demonstrations (demos) in the precondition prompts. Despite its promising performance, ICL suffers from instability with the choice and arrangement of examples. Additionally, crafted adversarial attacks pose a notable threat to the robustness of ICL. However, existing attacks are either easy to detect, rely on external models, or lack specificity towards ICL. This work introduces a novel transferable attack against ICL to address these issues, aiming to hijack LLMs to generate the target response or jailbreak. Our hijacking attack leverages a gradient-based prompt search method to learn and append imperceptible adversarial suffixes to the in-context demos without directly contaminating the user queries. Comprehensive experimental results across different generation and jailbreaking tasks highlight the effectiveness of our hijacking attack, resulting in distracted attention towards adversarial tokens and consequently leading to unwanted target outputs. We also propose a defense strategy against hijacking attacks through the use of extra clean demos, which enhances the robustness of LLMs during ICL. Broadly, this work reveals the significant security vulnerabilities of LLMs and emphasizes the necessity for in-depth studies on their robustness.",
+    "authors": [
+        "Yao Qiang",
+        "Xiangyu Zhou",
+        "Dongxiao Zhu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a novel transferable attack against ICL, aiming to hijack LLMs to generate the target response or jailbreak, and reveals the significant security vulnerabilities of LLMs and emphasizes the necessity for in-depth studies on their robustness."
+    },
+    "citationCount": 14,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

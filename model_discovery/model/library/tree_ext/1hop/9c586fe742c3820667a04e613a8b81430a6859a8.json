@@ -1,0 +1,31 @@
+{
+    "acronym": "9c586fe742c3820667a04e613a8b81430a6859a8",
+    "title": "AptaBERT: Predicting aptamer binding interactions",
+    "seed_ids": [
+        "bert",
+        "156a66da569b68ea776c5db38e033aadb4755971"
+    ],
+    "s2id": "9c586fe742c3820667a04e613a8b81430a6859a8",
+    "abstract": "Aptamers, short single-stranded DNA or RNA, are promising as future diagnostic and therapeutic agents. Traditional selection methods, such as the Systemic Evolution of Ligands by Exponential Enrichment (SELEX), are not without limitations being both resource-intensive and prone to biases in library construction and the selection phase. Leveraging Dianox\u2019s extensive aptamer database, we introduce a novel computational approach, AptaBERT, built upon the BERT architecture. This method utilizes self-supervised pre-training on vast amounts of data, followed by supervised fine-tuning to enhance the prediction of aptamer interactions with proteins and small molecules. AptaBERT is fine-tuned for binary classification tasks, distinguishing between positive and negative interactions with proteins and small molecules. AptaBERT achieves a ROC-AUC of 96% for protein interactions, surpassing existing models by at least 15%. For small molecule interactions, AptaBERT attains an ROC-AUC of 85%. Our findings demonstrate AptaBERT\u2019s superior predictive capability and its potential to identify novel aptamers binding to targets.",
+    "authors": [
+        "Flemming Morsch",
+        "Iswarya Lalitha Umasankar",
+        "L. S. Moreta",
+        "Paridhi Latawa",
+        "Danny B. Lange",
+        "Jesper Wengel",
+        "Huram Konjen",
+        "Christian Code"
+    ],
+    "venue": "bioRxiv",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "AptaBERT is demonstrated to have superior predictive capability and its potential to identify novel aptamers binding to targets, surpassing existing models by at least 15% and fine-tuning for binary classification tasks."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,35 @@
+{
+    "acronym": "4293121e2bef84aa8db5aab6634cfcd2d06947d4",
+    "title": "Learn To Remember: Transformer with Recurrent Memory for Document-Level Machine Translation",
+    "seed_ids": [
+        "longformer",
+        "transformerxl",
+        "83238f3402fc4a7c4efa48bae180d81cabed23ee",
+        "b0de1d5fe394226cec0a59d783ab739eb52da76f",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "4293121e2bef84aa8db5aab6634cfcd2d06947d4",
+    "abstract": "The Transformer architecture has led to significant gains in machine translation. However, most studies focus on only sentence-level translation without considering the context dependency within documents, leading to the inadequacy of document-level coherence. Some recent research tried to mitigate this issue by introducing an additional context encoder or translating with multiple sentences or even the entire document. Such methods may lose the information on the target side or have an increasing computational complexity as documents get longer. To address such problems, we introduce a recurrent memory unit to the vanilla Transformer, which supports the information exchange between the sentence and previous context. The memory unit is recurrently updated by acquiring information from sentences, and passing the aggregated knowledge back to subsequent sentence states. We follow a two-stage training strategy, in which the model is first trained at the sentence level and then finetuned for document-level translation. We conduct experiments on three popular datasets for document-level machine translation and our model has an average improvement of 0.91 s-BLEU over the sentence-level baseline. We also achieve state-of-the-art results on TED and News, outperforming the previous work by 0.36 s-BLEU and 1.49 d-BLEU on average.",
+    "authors": [
+        "Yukun Feng",
+        "Feng Li",
+        "Ziang Song",
+        "Boyuan Zheng",
+        "Philipp Koehn"
+    ],
+    "venue": "NAACL-HLT",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A recurrent memory unit is introduced to the vanilla Transformer, which supports the information exchange between the sentence and previous context, and recurrently updated by acquiring information from sentences, and passing the aggregated knowledge back to subsequent sentence states."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

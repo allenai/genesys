@@ -1,0 +1,30 @@
+{
+    "acronym": "8bff28d40f95f9e38860b709b17e026f451a0f8c",
+    "title": "GLULA: Linear attention-based model for efficient human activity recognition from wearable sensors",
+    "seed_ids": [
+        "transformer",
+        "lineartransformer",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "8cef9900c04d7f661c08f4b5b1ed4337ace042a3",
+        "16c844fd4d97f3c6eb38b0d6527c87d184efedc3"
+    ],
+    "s2id": "8bff28d40f95f9e38860b709b17e026f451a0f8c",
+    "abstract": "Abstract Body-worn sensor data is used in monitoring patient activity during rehabilitation and also can be extended to controlling rehabilitation devices based on the activity of the person. The primary focus of research has been on effectively capturing the spatiotemporal dependencies in the data collected by these sensors and efficiently classifying human activities. With the increasing complexity and size of models, there is a growing emphasis on optimizing their efficiency in terms of memory usage and inference time for real-time usage and mobile computers. While hybrid models combining convolutional and recurrent neural networks have shown strong performance compared to traditional approaches, self-attention-based networks have demonstrated even superior results. However, instead of relying on the same transformer architecture, there is an opportunity to develop a novel framework that incorporates recent advancements to enhance speed and memory efficiency, specifically tailored for human activity recognition (HAR) tasks. In line with this approach, we present GLULA, a unique architecture for HAR. GLULA combines gated convolutional networks, branched convolutions, and linear self-attention to achieve efficient and powerful solutions. To enhance the performance of our proposed architecture, we employed manifold mixup as an augmentation variant which proved beneficial in limited data settings. Extensive experiments were conducted on five benchmark datasets: PAMAP2, SKODA, OPPORTUNITY, DAPHNET, and USC-HAD. Our findings demonstrate that GLULA outperforms recent models in the literature on the latter four datasets but also exhibits the lowest parameter count and close to the fastest inference time among state-of-the-art models.",
+    "authors": [
+        "Aldiyar Bolatov",
+        "A. Yessenbayeva",
+        "Adnan Yazici"
+    ],
+    "venue": "Wearable Technologies",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "GLULA, a unique architecture for HAR that combines gated convolutional networks, branched convolutions, and linear self-attention to achieve efficient and powerful solutions for human activity recognition (HAR) tasks, is presented."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

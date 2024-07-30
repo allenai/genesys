@@ -1,0 +1,27 @@
+{
+    "acronym": "228896a28b18ef3ad956dd8000b5ea3b8a0bfd7e",
+    "title": "Exploiting Multi-Modal Features From Pre-trained Networks for Alzheimer's Dementia Recognition",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "228896a28b18ef3ad956dd8000b5ea3b8a0bfd7e",
+    "abstract": "Collecting and accessing a large amount of medical data is very time-consuming and laborious, not only because it is difficult to find specific patients but also because it is required to resolve the confidentiality of a patient's medical records. On the other hand, there are deep learning models, trained on easily collectible, large scale datasets such as Youtube or Wikipedia, offering useful representations. It could therefore be very advantageous to utilize the features from these pre-trained networks for handling a small amount of data at hand. In this work, we exploit various multi-modal features extracted from pre-trained networks to recognize Alzheimer's Dementia using a neural network, with a small dataset provided by the ADReSS Challenge at INTERSPEECH 2020. The challenge regards to discern patients suspicious of Alzheimer's Dementia by providing acoustic and textual data. With the multi-modal features, we modify a Convolutional Recurrent Neural Network based structure to perform classification and regression tasks simultaneously and is capable of computing conversations with variable lengths. Our test results surpass baseline's accuracy by 18.75%, and our validation result for the regression task shows the possibility of classifying 4 classes of cognitive impairment with an accuracy of 78.70%.",
+    "authors": [
+        "Junghyun Koo",
+        "Jie Hwan Lee",
+        "Jaewoo Pyo",
+        "Yujin Jo",
+        "Kyogu Lee"
+    ],
+    "venue": "Interspeech",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work exploits various multi-modal features extracted from pre-trained networks to recognize Alzheimer's Dementia using a neural network, with a small dataset provided by the ADReSS Challenge at INTERSPEECH 2020."
+    },
+    "citationCount": 40,
+    "influentialCitationCount": 10,
+    "code": null,
+    "description": null,
+    "url": null
+}

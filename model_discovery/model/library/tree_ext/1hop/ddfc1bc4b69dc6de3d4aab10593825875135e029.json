@@ -1,0 +1,29 @@
+{
+    "acronym": "ddfc1bc4b69dc6de3d4aab10593825875135e029",
+    "title": "Classic GNNs are Strong Baselines: Reassessing GNNs for Node Classification",
+    "seed_ids": [
+        "transformer",
+        "a21426633bfac7998538355bd0108c04e1be0a0e",
+        "59b7448f816908cfb49a2ab5e63b2fa5786387f7",
+        "277dd73bfeb5c46513ce305136b0e71fcd2a311c",
+        "322cfc0af8b29eff694bc80bca5e456b35e400cc"
+    ],
+    "s2id": "ddfc1bc4b69dc6de3d4aab10593825875135e029",
+    "abstract": "Graph Transformers (GTs) have recently emerged as popular alternatives to traditional message-passing Graph Neural Networks (GNNs), due to their theoretically superior expressiveness and impressive performance reported on standard node classification benchmarks, often significantly outperforming GNNs. In this paper, we conduct a thorough empirical analysis to reevaluate the performance of three classic GNN models (GCN, GAT, and GraphSAGE) against GTs. Our findings suggest that the previously reported superiority of GTs may have been overstated due to suboptimal hyperparameter configurations in GNNs. Remarkably, with slight hyperparameter tuning, these classic GNN models achieve state-of-the-art performance, matching or even exceeding that of recent GTs across 17 out of the 18 diverse datasets examined. Additionally, we conduct detailed ablation studies to investigate the influence of various GNN configurations, such as normalization, dropout, residual connections, network depth, and jumping knowledge mode, on node classification performance. Our study aims to promote a higher standard of empirical rigor in the field of graph machine learning, encouraging more accurate comparisons and evaluations of model capabilities.",
+    "authors": [
+        "Yuankai Luo",
+        "Lei Shi",
+        "Xiao-Ming Wu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper conducts a thorough empirical analysis to reevaluate the performance of three classic GNN models against GTs, suggesting that the previously reported superiority of GTs may have been overstated due to suboptimal hyperparameter configurations in GNNs."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

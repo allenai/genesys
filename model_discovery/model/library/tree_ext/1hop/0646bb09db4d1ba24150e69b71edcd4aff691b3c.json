@@ -1,0 +1,31 @@
+{
+    "acronym": "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+    "title": "Unified Pre-training for Program Understanding and Generation",
+    "seed_ids": [
+        "gpt",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+    "abstract": "Code summarization and generation empower conversion between programming language (PL) and natural language (NL), while code translation avails the migration of legacy code from one PL to another. This paper introduces PLBART, a sequence-to-sequence model capable of performing a broad spectrum of program and language understanding and generation tasks. PLBART is pre-trained on an extensive collection of Java and Python functions and associated NL text via denoising autoencoding. Experiments on code summarization in the English language, code generation, and code translation in seven programming languages show that PLBART outperforms or rivals state-of-the-art models. Moreover, experiments on discriminative tasks, e.g., program repair, clone detection, and vulnerable code detection, demonstrate PLBART\u2019s effectiveness in program understanding. Furthermore, analysis reveals that PLBART learns program syntax, style (e.g., identifier naming convention), logical flow (e.g., \u201cif\u201c block inside an \u201celse\u201c block is equivalent to \u201celse if\u201c block) that are crucial to program semantics and thus excels even with limited annotations.",
+    "authors": [
+        "Wasi Uddin Ahmad",
+        "Saikat Chakraborty",
+        "Baishakhi Ray",
+        "Kai-Wei Chang"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Analysis reveals that PLBART learns program syntax, style, logical flow, and style that are crucial to program semantics and thus excels even with limited annotations, and outperforms or rivals state-of-the-art models."
+    },
+    "citationCount": 578,
+    "influentialCitationCount": 75,
+    "code": null,
+    "description": null,
+    "url": null
+}

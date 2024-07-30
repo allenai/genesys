@@ -1,0 +1,30 @@
+{
+    "acronym": "33fdee6a860b94941e57af94c54eefe78e2a55af",
+    "title": "S2DM: Sector-Shaped Diffusion Models for Video Generation",
+    "seed_ids": [
+        "classfreediffu",
+        "43bafa19f94a42caea89b32a86489aa850317617",
+        "b8b5015b153709176385873e34339f9e520d128f",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "33fdee6a860b94941e57af94c54eefe78e2a55af",
+    "abstract": "Diffusion models have achieved great success in image generation. However, when leveraging this idea for video generation, we face significant challenges in maintaining the consistency and continuity across video frames. This is mainly caused by the lack of an effective framework to align frames of videos with desired temporal features while preserving consistent semantic and stochastic features. In this work, we propose a novel Sector-Shaped Diffusion Model (S2DM) whose sector-shaped diffusion region is formed by a set of ray-shaped reverse diffusion processes starting at the same noise point. S2DM can generate a group of intrinsically related data sharing the same semantic and stochastic features while varying on temporal features with appropriate guided conditions. We apply S2DM to video generation tasks, and explore the use of optical flow as temporal conditions. Our experimental results show that S2DM outperforms many existing methods in the task of video generation without any temporal-feature modelling modules. For text-to-video generation tasks where temporal conditions are not explicitly given, we propose a two-stage generation strategy which can decouple the generation of temporal features from semantic-content features. We show that, without additional training, our model integrated with another temporal conditions generative model can still achieve comparable performance with existing works. Our results can be viewd at https://s2dm.github.io/S2DM/.",
+    "authors": [
+        "Haoran Lang",
+        "Yuxuan Ge",
+        "Zheng Tian"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel Sector-Shaped Diffusion Model (S2DM) whose sector-shaped diffusion region is formed by a set of ray-shaped reverse diffusion processes starting at the same noise point, and proposes a two-stage generation strategy which can decouple the generation of temporal features from semantic-content features."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,26 @@
+{
+    "acronym": "bdfe34118b98554d8bdb8ec2af23bebafa90a7ec",
+    "title": "FD2Foremer: Thinking Face Forgery Detection in Midfrequency Geometry Details",
+    "seed_ids": [
+        "metaformer",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "bdfe34118b98554d8bdb8ec2af23bebafa90a7ec",
+    "abstract": "Face forgery by DeepFake has caused widespread concern in community because of the synthesized media\u2019s risks to the society. However, advances in recent years have been able to produce synthetic images indistinguishable from real images in the RGB space. Extracting midfrequency facial geometry details, including person-specific details and dynamic expression-dependent ones on facial geometry surfaces, is a promising way to highlight forgery clues during face forgery detection. In this paper, we use 3D face reconstruction to generate the displacement map from a single input face image, which is able to represent middle and fine scale details by indicating signed distance from the point in UV space. The cropped face images can also provide eyes and mouse information, so we use face image and its displacement map to extract the image features. Besides, we save the computation cost and maintain competitive performance using a universal transformer architecture and introduce a manifold distillation strategy to train our model from a more complex transformer backbone. Extensive experiments on various public DeepFake datasets indicate the effectiveness of the extracted facial geometry details, and proposed method achieves competitive performance.",
+    "authors": [
+        "Wentao Li",
+        "Zhidong Shen"
+    ],
+    "venue": "Security and Communication Networks",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "3D face reconstruction is used to generate the displacement map from a single input face image, which is able to represent middle and fine scale details by indicating signed distance from the point in UV space and achieves competitive performance."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

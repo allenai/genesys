@@ -1,0 +1,31 @@
+{
+    "acronym": "e24c17b6e7dce667b5f9f8f2cdadc8e14172fe22",
+    "title": "Label Agnostic Pre-training for Zero-shot Text Classification",
+    "seed_ids": [
+        "gpt2",
+        "270f3bea8ca801870a6cc56b4d36f7f2019c9ed0",
+        "adc61e21eafecfbf6ebecc570f9f913659a2bfb2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e24c17b6e7dce667b5f9f8f2cdadc8e14172fe22",
+    "abstract": "Conventional approaches to text classification typically assume the existence of a fixed set of predefined labels to which a given text can be classified. However, in real-world applications, there exists an infinite label space for describing a given text. In addition, depending on the aspect (sentiment, topic, etc.) and domain of the text (finance, legal, etc.), the interpretation of the label can vary greatly. This makes the task of text classification, particularly in the zero-shot scenario, extremely challenging. In this paper, we investigate the task of zero-shot text classification with the aim of improving the ability of pre-trained language models (PLMs) to generalize to both seen and unseen data across varying aspects and domains. To solve this we introduce two new simple yet effective pre-training strategies, Implicit and Explicit pre-training. These methods inject aspect-level understanding into the model at train time with the goal of conditioning the model to build task-level understanding. To evaluate this, we construct and release UTCD, a new benchmark dataset for evaluating text classification in zero-shot settings. Experimental results on UTCD show that our approach achieves improved zero-shot generalization on a suite of challenging datasets across an array of zero-shot formalizations.",
+    "authors": [
+        "Christopher Clarke",
+        "Yuzhao Heng",
+        "Yiping Kang",
+        "K. Flautner",
+        "Lingjia Tang",
+        "Jason Mars"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper investigates the task of zero-shot text classification with the aim of improving the ability of pre-trained language models (PLMs) to generalize to both seen and unseen data across varying aspects and domains and introduces two new simple yet effective pre-training strategies, Implicit and Explicit pre- training."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

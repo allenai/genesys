@@ -1,0 +1,23 @@
+{
+    "acronym": "3390f6615e6b5a5e1921f2a1f52735b2e6f8615a",
+    "title": "Leveraging Domain Adaptation and Data Augmentation to Improve Qur\u2019anic IR in English and Arabic",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "3390f6615e6b5a5e1921f2a1f52735b2e6f8615a",
+    "abstract": "In this work, we approach the problem of Qur\u2019anic information retrieval (IR) in Arabic and English. Using the latest state-of-the-art methods in neural IR, we research what helps to tackle this task more efficiently. Training retrieval models requires a lot of data, which is difficult to obtain for training in-domain. Therefore, we commence with training on a large amount of general domain data and then continue training on in-domain data. To handle the lack of in-domain data, we employed a data augmentation technique, which considerably improved results in MRR@10 and NDCG@5 metrics, setting the state-of-the-art in Qur\u2019anic IR for both English and Arabic. The absence of an Islamic corpus and domain-specific model for IR task in English motivated us to address this lack of resources and take preliminary steps of the Islamic corpus compilation and domain-specific language model (LM) pre-training, which helped to improve the performance of the retrieval models that use the domain-specific LM as the shared backbone. We examined several language models (LMs) in Arabic to select one that efficiently deals with the Qur\u2019anic IR task. Besides transferring successful experiments from English to Arabic, we conducted additional experiments with retrieval task in Arabic to amortize the scarcity of general domain datasets used to train the retrieval models. Handling Qur\u2019anic IR task combining English and Arabic allowed us to enhance the comparison and share valuable insights across models and languages.",
+    "authors": [
+        "Vera Pavlova"
+    ],
+    "venue": "ARABICNLP",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A data augmentation technique was employed, which considerably improved results in MRR@10 and NDCG@5 metrics, setting the state-of-the-art in Qur\u2019anic IR for both English and Arabic."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

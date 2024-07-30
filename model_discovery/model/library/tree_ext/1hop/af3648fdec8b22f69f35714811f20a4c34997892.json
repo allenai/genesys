@@ -1,0 +1,30 @@
+{
+    "acronym": "af3648fdec8b22f69f35714811f20a4c34997892",
+    "title": "Unlock the Correlation between Supervised Fine-Tuning and Reinforcement Learning in Training Code Large Language Models",
+    "seed_ids": [
+        "gpt3",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "af3648fdec8b22f69f35714811f20a4c34997892",
+    "abstract": "Automatic code generation has been a longstanding research topic. With the advancement of general-purpose large language models (LLMs), the ability to code stands out as one important measure to the model's reasoning performance. Usually, a two-stage training paradigm is implemented to obtain a Code LLM, namely the pretraining and the fine-tuning. Within the fine-tuning, supervised fine-tuning (SFT), and reinforcement learning (RL) are often used to improve the model's zero-shot ability. A large number of work has been conducted to improve the model's performance on code-related benchmarks with either modifications to the algorithm or refinement of the dataset. However, we still lack a deep insight into the correlation between SFT and RL. For instance, what kind of dataset should be used to ensure generalization, or what if we abandon the SFT phase in fine-tuning. In this work, we make an attempt to understand the correlation between SFT and RL. To facilitate our research, we manually craft 100 basis python functions, called atomic functions, and then a synthesizing pipeline is deployed to create a large number of synthetic functions on top of the atomic ones. In this manner, we ensure that the train and test sets remain distinct, preventing data contamination. Through comprehensive ablation study, we find: (1) Both atomic and synthetic functions are indispensable for SFT's generalization, and only a handful of synthetic functions are adequate; (2) Through RL, the SFT's generalization to target domain can be greatly enhanced, even with the same training prompts; (3) Training RL from scratch can alleviate the over-fitting issue introduced in the SFT phase.",
+    "authors": [
+        "Jie Chen",
+        "Xintian Han",
+        "Yu Ma",
+        "Xun Zhou",
+        "Liang Xiang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Both atomic and synthetic functions are indispensable for SFT's generalization, and only a handful of synthetic functions are adequate; through RL, the SFT's generalization to target domain can be greatly enhanced, even with the same training prompts."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

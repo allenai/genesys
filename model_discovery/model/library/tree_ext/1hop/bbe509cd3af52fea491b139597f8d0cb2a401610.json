@@ -1,0 +1,30 @@
+{
+    "acronym": "bbe509cd3af52fea491b139597f8d0cb2a401610",
+    "title": "Prompting-based Synthetic Data Generation for Few-Shot Question Answering",
+    "seed_ids": [
+        "gpt2",
+        "615fcfc610fff4dc58dff482cfa3ca1f1e6a3ee5",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "7eba731a7fd8de712b7b79b5af41a6e2d4dbd191",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "bbe509cd3af52fea491b139597f8d0cb2a401610",
+    "abstract": "Although language models (LMs) have boosted the performance of Question Answering, they still need plenty of data. Data annotation, in contrast, is a time-consuming process. This especially applies to Question Answering, where possibly large documents have to be parsed and annotated with questions and their corresponding answers. Furthermore, Question Answering models often only work well for the domain they were trained on. Since annotation is costly, we argue that domain-agnostic knowledge from LMs, such as linguistic understanding, is sufficient to create a well-curated dataset. With this motivation, we show that using large language models can improve Question Answering performance on various datasets in the few-shot setting compared to state-of-the-art approaches. For this, we perform data generation leveraging the Prompting framework, suggesting that language models contain valuable task-agnostic knowledge that can be used beyond the common pre-training/fine-tuning scheme. As a result, we consistently outperform previous approaches on few-shot Question Answering.",
+    "authors": [
+        "Maximilian Schmidt",
+        "A. Bartezzaghi",
+        "Ngoc Thang Vu"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows that using large language models can improve Question Answering performance on various datasets in the few-shot setting compared to state-of-the-art approaches, and performs data generation leveraging the Prompting framework, suggesting that language models contain valuable task-agnostic knowledge that can be used beyond the common pre-training/fine-tuning scheme."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

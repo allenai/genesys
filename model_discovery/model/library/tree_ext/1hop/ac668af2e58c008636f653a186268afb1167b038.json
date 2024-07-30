@@ -1,0 +1,33 @@
+{
+    "acronym": "ac668af2e58c008636f653a186268afb1167b038",
+    "title": "Fast Monte-Carlo Approximation of the Attention Mechanism",
+    "seed_ids": [
+        "longformer",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "ef8d788a904ed66bd8e30ffa69bc3ea1fe57dda7",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "83b8108014e3db4f46354a28ae68193f143c4e7e",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a"
+    ],
+    "s2id": "ac668af2e58c008636f653a186268afb1167b038",
+    "abstract": "We introduce Monte-Carlo Attention (MCA), a randomized approximation method for reducing the computational cost of self-attention mechanisms in Transformer architectures. MCA exploits the fact that the importance of each token in an input sequence vary with respect to their attention scores; thus, some degree of error can be tolerable when encoding tokens with low attention. Using approximate matrix multiplication, MCA applies different error bounds to encode input tokens such that those with low attention scores are computed with relaxed precision, whereas errors of salient elements are minimized. MCA can operate in parallel with other attention optimization schemes and does not require model modification. We study the theoretical error bounds and demonstrate that MCA reduces attention complexity (in FLOPS) for various Transformer models by up to 11 in GLUE benchmarks without compromising model accuracy. Source code and appendix: https://github.com/eis-lab/monte-carlo-attention",
+    "authors": [
+        "Hyunjun Kim",
+        "Jeonggil Ko"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Monte-Carlo Attention is introduced, a randomized approximation method for reducing the computational cost of self-attention mechanisms in Transformer architectures and reduces attention complexity for various Transformer models by up to 11 in GLUE benchmarks without compromising model accuracy."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

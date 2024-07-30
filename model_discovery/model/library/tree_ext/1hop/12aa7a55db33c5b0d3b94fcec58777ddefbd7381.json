@@ -1,0 +1,31 @@
+{
+    "acronym": "12aa7a55db33c5b0d3b94fcec58777ddefbd7381",
+    "title": "TensorCoder: Dimension-Wise Attention via Tensor Representation for Natural Language Modeling",
+    "seed_ids": [
+        "reformer",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "4cf963e5fd88825ac62ad6cce364447e5d2dfb2b",
+        "62dc8ddb4907db4b889c5e93673d9b3c189d1f25"
+    ],
+    "s2id": "12aa7a55db33c5b0d3b94fcec58777ddefbd7381",
+    "abstract": "Transformer has been widely-used in many Natural Language Processing (NLP) tasks and the scaled dot-product attention between tokens is a core module of Transformer. This attention is a token-wise design and its complexity is quadratic to the length of sequence, limiting its application potential for long sequence tasks. In this paper, we propose a dimension-wise attention mechanism based on which a novel language modeling approach (namely TensorCoder) can be developed. The dimension-wise attention can reduce the attention complexity from the original $O(N^2d)$ to $O(Nd^2)$, where $N$ is the length of the sequence and $d$ is the dimensionality of head. We verify TensorCoder on two tasks including masked language modeling and neural machine translation. Compared with the original Transformer, TensorCoder not only greatly reduces the calculation of the original model but also obtains improved performance on masked language modeling task (in PTB dataset) and comparable performance on machine translation tasks.",
+    "authors": [
+        "Shuai Zhang",
+        "Peng Zhang",
+        "Xindian Ma",
+        "Junqiu Wei",
+        "Ning Wang",
+        "Qun Liu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Compared with the original Transformer, TensorCoder not only greatly reduces the calculation of the original model but also obtains improved performance on masked language modeling task (in PTB dataset) and comparable performance on machine translation tasks."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

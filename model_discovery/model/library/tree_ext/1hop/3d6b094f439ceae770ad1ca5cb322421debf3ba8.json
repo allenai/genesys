@@ -1,0 +1,27 @@
+{
+    "acronym": "3d6b094f439ceae770ad1ca5cb322421debf3ba8",
+    "title": "DialoKG: Knowledge-Structure Aware Task-Oriented Dialogue Generation",
+    "seed_ids": [
+        "gpt2",
+        "6ebfbc954b9975d2f2651f380b9bdf46ae963178",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3d6b094f439ceae770ad1ca5cb322421debf3ba8",
+    "abstract": "Task-oriented dialogue generation is challenging since the underlying knowledge is often dynamic and effectively incorporating knowledge into the learning process is hard. It is particularly challenging to generate both human-like and informative responses in this setting. Recent research primarily focused on various knowledge distillation methods where the underlying relationship between the facts in a knowledge base is not effectively captured. In this paper, we go one step further and demonstrate how the structural information of a knowledge graph can improve the system's inference capabilities. Specifically, we propose DialoKG, a novel task-oriented dialogue system that effectively incorporates knowledge into a language model. Our proposed system views relational knowledge as a knowledge graph and introduces (1) a structure-aware knowledge embedding technique, and (2) a knowledge graph-weighted attention masking strategy to facilitate the system selecting relevant information during the dialogue generation. An empirical evaluation demonstrates the effectiveness of DialoKG over state-of-the-art methods on several standard benchmark datasets.",
+    "authors": [
+        "Md. Rony",
+        "Ricardo Usbeck",
+        "Jens Lehmann"
+    ],
+    "venue": "NAACL-HLT",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes DialoKG, a novel task-oriented dialogue system that effectively incorporates knowledge into a language model and introduces (1) a structure-aware knowledge embedding technique, and (2) a knowledge graph-weighted attention masking strategy to facilitate the system selecting relevant information during the dialogue generation."
+    },
+    "citationCount": 26,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

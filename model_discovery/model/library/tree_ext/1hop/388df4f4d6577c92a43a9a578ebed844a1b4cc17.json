@@ -1,0 +1,32 @@
+{
+    "acronym": "388df4f4d6577c92a43a9a578ebed844a1b4cc17",
+    "title": "Jetfire: Efficient and Accurate Transformer Pretraining with INT8 Data Flow and Per-Block Quantization",
+    "seed_ids": [
+        "gpt2",
+        "334e8b7597b69da621c9114e3f695c6315c9267e",
+        "7505337d88e4d36e2e37891c542947a2e3c9e009",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "388df4f4d6577c92a43a9a578ebed844a1b4cc17",
+    "abstract": "Pretraining transformers are generally time-consuming. Fully quantized training (FQT) is a promising approach to speed up pretraining. However, most FQT methods adopt a quantize-compute-dequantize procedure, which often leads to suboptimal speedup and significant performance degradation when used in transformers due to the high memory access overheads and low-precision computations. In this work, we propose Jetfire, an efficient and accurate INT8 training method specific to transformers. Our method features an INT8 data flow to optimize memory access and a per-block quantization method to maintain the accuracy of pretrained transformers. Extensive experiments demonstrate that our INT8 FQT method achieves comparable accuracy to the FP16 training baseline and outperforms the existing INT8 training works for transformers. Moreover, for a standard transformer block, our method offers an end-to-end training speedup of 1.42x and a 1.49x memory reduction compared to the FP16 baseline. Our code is open sourced at https://github.com/thu-ml/Jetfire-INT8Training.",
+    "authors": [
+        "Haocheng Xi",
+        "Yuxiang Chen",
+        "Kang Zhao",
+        "Kaijun Zheng",
+        "Jianfei Chen",
+        "Jun Zhu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes Jetfire, an efficient and accurate INT8 training method specific to transformers, which achieves comparable accuracy to the FP16 training baseline and outperforms the existing INT8 training works for transformers."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

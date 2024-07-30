@@ -1,0 +1,34 @@
+{
+    "acronym": "e295c65efbec7754cc194af0999d489292a3c8b4",
+    "title": "$N$-gram Is Back: Residual Learning of Neural Text Generation with $n$-gram Language Model",
+    "seed_ids": [
+        "gpt2",
+        "6151ee4af6a3fe78f2df7c605598cd9e02b23c5b",
+        "492a655a67e6ec7423a968cedb70eec0cdbc8e98",
+        "6914a7997ff4be207fa7b3472a9c5879abaec646",
+        "1c8aea2bfb61f4661b6907018a5a8bca390900dd",
+        "25db56fc85fe15625c3375064a35e908ba6dfd2a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e295c65efbec7754cc194af0999d489292a3c8b4",
+    "abstract": "$N$-gram language models (LM) have been largely superseded by neural LMs as the latter exhibits better performance. However, we find that $n$-gram models can achieve satisfactory performance on a large proportion of testing cases, indicating they have already captured abundant knowledge of the language with relatively low computational cost. With this observation, we propose to learn a neural LM that fits the residual between an $n$-gram LM and the real-data distribution. The combination of $n$-gram and neural LMs not only allows the neural part to focus on the deeper understanding of language but also provides a flexible way to customize an LM by switching the underlying $n$-gram model without changing the neural model. Experimental results on three typical language tasks (i.e., language modeling, machine translation, and summarization) demonstrate that our approach attains additional performance gains over popular standalone neural models consistently. We also show that our approach allows for effective domain adaptation by simply switching to a domain-specific $n$-gram model, without any extra training. Our code is released at https://github.com/ghrua/NgramRes.",
+    "authors": [
+        "Huayang Li",
+        "Deng Cai",
+        "J. Xu",
+        "Taro Watanabe"
+    ],
+    "venue": "",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results on three typical language tasks demonstrate that the proposed neural LM attains additional performance gains over popular standalone neural models consistently and allows for effective domain adaptation by simply switching to a domain-specific $n$-gram model, without any extra training."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

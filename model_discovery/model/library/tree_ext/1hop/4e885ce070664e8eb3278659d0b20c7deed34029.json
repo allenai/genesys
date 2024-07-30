@@ -1,0 +1,28 @@
+{
+    "acronym": "4e885ce070664e8eb3278659d0b20c7deed34029",
+    "title": "DoSSIER@COLIEE 2021: Leveraging dense retrieval and summarization-based re-ranking for case law retrieval",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "4e885ce070664e8eb3278659d0b20c7deed34029",
+    "abstract": "In this paper, we present our approaches for the case law retrieval and the legal case entailment task in the Competition on Legal Information Extraction/Entailment (COLIEE) 2021. As first stage retrieval methods combined with neural re-ranking methods using contextualized language models like BERT achieved great performance improvements for information retrieval in the web and news domain, we evaluate these methods for the legal domain. A distinct characteristic of legal case retrieval is that the query case and case description in the corpus tend to be long documents and therefore exceed the input length of BERT. We address this challenge by combining lexical and dense retrieval methods on the paragraph-level of the cases for the first stage retrieval. Here we demonstrate that the retrieval on the paragraph-level outperforms the retrieval on the document-level. Furthermore the experiments suggest that dense retrieval methods outperform lexical retrieval. For re-ranking we address the problem of long documents by summarizing the cases and fine-tuning a BERT-based re-ranker with the summaries. Overall, our best results were obtained with a combination of BM25 and dense passage retrieval using domain-specific embeddings.",
+    "authors": [
+        "Sophia Althammer",
+        "Arian Askari",
+        "S. Verberne",
+        "A. Hanbury"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that the retrieval on the paragraph-level of the cases for the first stage retrieval outperforms the retrieve on the document-level, and the experiments suggest that dense retrieval methods outperform lexical retrieval."
+    },
+    "citationCount": 28,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

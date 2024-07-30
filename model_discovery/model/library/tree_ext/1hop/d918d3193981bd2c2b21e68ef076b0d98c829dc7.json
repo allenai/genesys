@@ -1,0 +1,26 @@
+{
+    "acronym": "d918d3193981bd2c2b21e68ef076b0d98c829dc7",
+    "title": "Sketch based Memory for Neural Networks",
+    "seed_ids": [
+        "productkeymem",
+        "830995ef17cc291c13f42dfd9f462137de1d2179"
+    ],
+    "s2id": "d918d3193981bd2c2b21e68ef076b0d98c829dc7",
+    "abstract": "Deep learning has shown tremendous success on a variety of problems. However, unlike traditional computational paradigm, most neural networks do not have access to a memory, which might be hampering its ability to scale to large data structures such as graphs, lookup-tables, databases. We propose a theoretical framework for a neural architecture where sketch based memory is integrated into a neural network in a uniform manner at every layer. This architecture supplements a neural layer by information accessed from the memory before feeding it to the next layer, thereby signi\ufb01cantly expanding the capacity of the network to solve larger problem instances. We show theoretically that problems involving key-value lookup that are traditionally stored in standard databases can now be solved using neural networks augmented by our memory architecture. We also show that our memory layer can be viewed as a kernel function. We show bene\ufb01ts on diverse problems such as long tail image classi\ufb01cation, language model, large graph multi hop traversal, etc. arguing that they are all build upon the classical key-value lookup problem (or the variant where the keys may be fuzzy).",
+    "authors": [
+        "R. Panigrahy",
+        "Xin Wang",
+        "M. Zaheer"
+    ],
+    "venue": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown theoretically that problems involving key-value lookup that are traditionally stored in standard databases can now be solved using neural networks augmented by the sketch based memory architecture, and it is shown that the memory layer can be viewed as a kernel function."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,34 @@
+{
+    "acronym": "c1bdd98b5aab33c6aeb5654f1212b8e7d2152e61",
+    "title": "Text- and Feature-based Models for Compound Multimodal Emotion Recognition in the Wild",
+    "seed_ids": [
+        "bert",
+        "84b6fecf016d74512869c698c66c83729abdf359"
+    ],
+    "s2id": "c1bdd98b5aab33c6aeb5654f1212b8e7d2152e61",
+    "abstract": "Systems for multimodal Emotion Recognition (ER) commonly rely on features extracted from different modalities (e.g., visual, audio, and textual) to predict the seven basic emotions. However, compound emotions often occur in real-world scenarios and are more difficult to predict. Compound multimodal ER becomes more challenging in videos due to the added uncertainty of diverse modalities. In addition, standard features-based models may not fully capture the complex and subtle cues needed to understand compound emotions. %%%% Since relevant cues can be extracted in the form of text, we advocate for textualizing all modalities, such as visual and audio, to harness the capacity of large language models (LLMs). These models may understand the complex interaction between modalities and the subtleties of complex emotions. Although training an LLM requires large-scale datasets, a recent surge of pre-trained LLMs, such as BERT and LLaMA, can be easily fine-tuned for downstream tasks like compound ER. This paper compares two multimodal modeling approaches for compound ER in videos -- standard feature-based vs. text-based. Experiments were conducted on the challenging C-EXPR-DB dataset for compound ER, and contrasted with results on the MELD dataset for basic ER. Our code is available",
+    "authors": [
+        "Nicolas Richet",
+        "Soufiane Belharbi",
+        "Haseeb Aslam",
+        "Meike Emilie Schadt",
+        "Manuela Gonz'alez-Gonz'alez",
+        "Gustave Cortal",
+        "A. L. Koerich",
+        "M. Pedersoli",
+        "Alain Finkel",
+        "Simon Bacon",
+        "Eric Granger"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Two multimodal modeling approaches for compound ER in videos -- standard feature-based vs. text-based are compared -- standard feature-based vs. text-based."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

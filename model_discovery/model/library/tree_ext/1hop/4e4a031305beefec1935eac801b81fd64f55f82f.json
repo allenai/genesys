@@ -1,0 +1,29 @@
+{
+    "acronym": "4e4a031305beefec1935eac801b81fd64f55f82f",
+    "title": "Learning Fast Adaptation on Cross-Accented Speech Recognition",
+    "seed_ids": [
+        "lrt"
+    ],
+    "s2id": "4e4a031305beefec1935eac801b81fd64f55f82f",
+    "abstract": "Local dialects influence people to pronounce words of the same language differently from each other. The great variability and complex characteristics of accents creates a major challenge for training a robust and accent-agnostic automatic speech recognition (ASR) system. In this paper, we introduce a cross-accented English speech recognition task as a benchmark for measuring the ability of the model to adapt to unseen accents using the existing CommonVoice corpus. We also propose an accent-agnostic approach that extends the model-agnostic meta-learning (MAML) algorithm for fast adaptation to unseen accents. Our approach significantly outperforms joint training in both zero-shot, few-shot, and all-shot in the mixed-region and cross-region settings in terms of word error rate.",
+    "authors": [
+        "Genta Indra Winata",
+        "Samuel Cahyawijaya",
+        "Zihan Liu",
+        "Zhaojiang Lin",
+        "Andrea Madotto",
+        "Peng Xu",
+        "Pascale Fung"
+    ],
+    "venue": "Interspeech",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces a cross-accented English speech recognition task as a benchmark for measuring the ability of the model to adapt to unseen accents using the existing CommonVoice corpus and proposes an accent-agnostic approach that extends the model-agnostics meta-learning (MAML) algorithm for fast adaptation toseen accents."
+    },
+    "citationCount": 71,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

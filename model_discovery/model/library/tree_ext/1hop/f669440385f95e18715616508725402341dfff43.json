@@ -1,0 +1,27 @@
+{
+    "acronym": "f669440385f95e18715616508725402341dfff43",
+    "title": "A Parallel Transformer Framework for Video Moment Retrieval",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "f669440385f95e18715616508725402341dfff43",
+    "abstract": "In the realm of video understanding, Video Moment Retrieval (VMR) is an important yet challenging task that aims to locate the boundary of a moment of interest within a long untrimmed video. Existing VMR methods often focus on the visual content extracted from the video only (or frame sequences), however, the rich semantic information at the object level that describes the image's content has not been explored yet. To overcome those limitations, we propose PaTF, an attention-based Parallel Transformer Framework that enriches the feature representations by exploring both low-level visual cues and high-level relational contexts of video-query pairs. Our framework consists of two parallel transformers: one for the visual-textual stream and the other for the semantic-textual stream. The visual-textual stream extracts the links between global visual features and textual information, while the semantic-textual stream emphasises the relations between objects via scene graph representations. Furthermore, our comprehensive experiment conducted on the Charades-STA dataset demonstrates that the proposed framework outperforms the state-of-the-art methods by a large margin, roughly 5% and 7% at Recall@1 with IoU = 0.5 and IoU = 0.7, respectively.",
+    "authors": [
+        "Thao-Nhu Nguyen",
+        "Zongyao Li",
+        "Yamazaki Satoshi",
+        "Jianquan Liu",
+        "C. Gurrin"
+    ],
+    "venue": "International Conference on Multimedia Retrieval",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "PaTF is an attention-based Parallel Transformer Framework that enriches the feature representations by exploring both low-level visual cues and high-level relational contexts of video-query pairs by exploring both low-level visual cues and high-level relational contexts of video-query pairs."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

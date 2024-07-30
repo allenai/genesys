@@ -1,0 +1,27 @@
+{
+    "acronym": "b2fbb53de6656ef0917821e7a6515e9d6cb04c42",
+    "title": "Time Series Classification on Edge with Lightweight Attention Networks",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "b2fbb53de6656ef0917821e7a6515e9d6cb04c42",
+    "abstract": "In recent years, wearable devices and sensing systems have become an integral part of the deployment of Artificial Intelligence (AI) on Edge. These intelligent edge devices perform first-level analytics to reduce data transfer, improve response latency, and preserve privacy. Thus, there is a growing focus on the design of machine learning models with high accuracy, and low resource footprint, suitable for a wide range of applications in the domains of healthcare, wellness, and lifestyle, among others. A majority of these tasks comprise the classification of time series signals collected from physiological and inertial sensors on commercially available wearable devices. A suitable solution for time series classification on edge would allow the use of multiple signal modalities on a broad spectrum of constrained devices. Unfortunately, the time series analytics for resource-limited platforms have not reached the same level of maturity as its full-fledged counterpart. For instance, attention-based networks, which form the state-of-the-art for standard time series classification, have no well-performing, generalized implementation for resource-constrained platforms. Towards this, we present a new architecture suited for time series classification using specialized lightweight attention-like blocks. These blocks, inspired by the attention mechanism and attention condensers, effectively learn time series features. We demonstrate the efficiency of the proposed model design and proof-of-concept implementation on a Human Activity Recognition dataset. Moreover, the generalizability of this architecture is highlighted by the reasonably good classification accuracy on various datasets from the UCR Time Series Classification Archive.",
+    "authors": [
+        "Shalini Mukhopadhyay",
+        "Swarnava Dey",
+        "Arijit Mukherjee",
+        "Arpan Pal",
+        "S. Ashwin"
+    ],
+    "venue": "2024 IEEE International Conference on Pervasive Computing and Communications Workshops and other Affiliated Events (PerCom Workshops)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new architecture suited for time series classification using specialized lightweight attention-like blocks, inspired by the attention mechanism and attention condensers, effectively learn time series features is presented."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

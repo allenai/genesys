@@ -1,0 +1,30 @@
+{
+    "acronym": "98855de46c18bfee76ddb6d0283ebc66aeb6e836",
+    "title": "Demonstrating and Reducing Shortcuts in Vision-Language Representation Learning",
+    "seed_ids": [
+        "gpt2",
+        "bert",
+        "84b6fecf016d74512869c698c66c83729abdf359",
+        "270f3bea8ca801870a6cc56b4d36f7f2019c9ed0",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "98855de46c18bfee76ddb6d0283ebc66aeb6e836",
+    "abstract": "Vision-language models (VLMs) mainly rely on contrastive training to learn general-purpose representations of images and captions. We focus on the situation when one image is associated with several captions, each caption containing both information shared among all captions and unique information per caption about the scene depicted in the image. In such cases, it is unclear whether contrastive losses are sufficient for learning task-optimal representations that contain all the information provided by the captions or whether the contrastive learning setup encourages the learning of a simple shortcut that minimizes contrastive loss. We introduce synthetic shortcuts for vision-language: a training and evaluation framework where we inject synthetic shortcuts into image-text data. We show that contrastive VLMs trained from scratch or fine-tuned with data containing these synthetic shortcuts mainly learn features that represent the shortcut. Hence, contrastive losses are not sufficient to learn task-optimal representations, i.e., representations that contain all task-relevant information shared between the image and associated captions. We examine two methods to reduce shortcut learning in our training and evaluation framework: (i) latent target decoding and (ii) implicit feature modification. We show empirically that both methods improve performance on the evaluation task, but only partly reduce shortcut learning when training and evaluating with our shortcut learning framework. Hence, we show the difficulty and challenge of our shortcut learning framework for contrastive vision-language representation learning.",
+    "authors": [
+        "Maurits J. R. Bleeker",
+        "Mariya Hendriksen",
+        "Andrew Yates",
+        "M. D. Rijke"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces synthetic shortcuts for vision-language: a training and evaluation framework where synthetic shortcuts are injected into image-text data and shows the difficulty and challenge of the shortcut learning framework for contrastive vision-language representation learning."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

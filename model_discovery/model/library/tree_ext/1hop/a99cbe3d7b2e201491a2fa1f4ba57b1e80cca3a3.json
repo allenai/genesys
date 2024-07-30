@@ -1,0 +1,40 @@
+{
+    "acronym": "a99cbe3d7b2e201491a2fa1f4ba57b1e80cca3a3",
+    "title": "LaMemo: Language Modeling with Look-Ahead Memory",
+    "seed_ids": [
+        "transformerxl",
+        "compressivetransformer",
+        "2d82ee05b132d4681c3bd517afc17d608fe6e525",
+        "f75d05e759447c2aedb7097728f29f9a520d9bc1",
+        "83238f3402fc4a7c4efa48bae180d81cabed23ee",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13"
+    ],
+    "s2id": "a99cbe3d7b2e201491a2fa1f4ba57b1e80cca3a3",
+    "abstract": "Although Transformers with fully connected self-attentions are powerful to model long-term dependencies, they are struggling to scale to long texts with thousands of words in language modeling. One of the solutions is to equip the model with a recurrence memory. However, existing approaches directly reuse hidden states from the previous segment that encodes contexts in a uni-directional way. As a result, this prohibits the memory to dynamically interact with the current context that provides up-to-date information for token prediction. To remedy this issue, we propose Look-Ahead Memory (LaMemo) that enhances the recurrence memory by incrementally attending to the right-side tokens and interpolating with the old memory states to maintain long-term information in the history. LaMemo embraces bi-directional attention and segment recurrence with an additional computation overhead only linearly proportional to the memory length. Experiments on widely used language modeling benchmarks demonstrate its superiority over the baselines equipped with different types of memory mechanisms.",
+    "authors": [
+        "Haozhe Ji",
+        "Rongsheng Zhang",
+        "Zhenyu Yang",
+        "Zhipeng Hu",
+        "Minlie Huang"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Look-Ahead Memory (LaMemo) is proposed that enhances the recurrence memory by incrementally attending to the right-side tokens and interpolating with the old memory states to maintain long-term information in the history."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

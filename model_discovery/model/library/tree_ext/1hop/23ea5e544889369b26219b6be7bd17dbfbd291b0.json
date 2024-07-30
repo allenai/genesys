@@ -1,0 +1,31 @@
+{
+    "acronym": "23ea5e544889369b26219b6be7bd17dbfbd291b0",
+    "title": "Nearest Neighbor Future Captioning: Generating Descriptions for Possible Collisions in Object Placement Tasks",
+    "seed_ids": [
+        "transformer",
+        "70557ea6b65846fc30729ceed224acd4ac64ca5d"
+    ],
+    "s2id": "23ea5e544889369b26219b6be7bd17dbfbd291b0",
+    "abstract": "Domestic service robots (DSRs) that support people in everyday environments have been widely investigated. However, their ability to predict and describe future risks resulting from their own actions remains insufficient. In this study, we focus on the linguistic explainability of DSRs. Most existing methods do not explicitly model the region of possible collisions; thus, they do not properly generate descriptions of these regions. In this paper, we propose the Nearest Neighbor Future Captioning Model that introduces the Nearest Neighbor Language Model for future captioning of possible collisions, which enhances the model output with a nearest neighbors retrieval mechanism. Furthermore, we introduce the Collision Attention Module that attends regions of possible collisions, which enables our model to generate descriptions that adequately reflect the objects associated with possible collisions. To validate our method, we constructed a new dataset containing samples of collisions that can occur when a DSR places an object in a simulation environment. The experimental results demonstrated that our method outperformed baseline methods, based on the standard metrics. In particular, on CIDEr-D, the baseline method obtained 25.09 points, whereas our method obtained 33.08 points.",
+    "authors": [
+        "Takumi Komatsu",
+        "Motonari Kambara",
+        "Shumpei Hatanaka",
+        "Haruka Matsuo",
+        "Tsubasa Hirakawa",
+        "Takayoshi Yamashita",
+        "H. Fujiyoshi",
+        "Komei Sugiura"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Nearest Neighbor Future Captioning Model is proposed that introduces the Nearest Neighbor Language Model for future captioning of possible collisions, which enhances the model output with a nearest neighbors retrieval mechanism."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

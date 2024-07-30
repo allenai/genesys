@@ -1,0 +1,33 @@
+{
+    "acronym": "dc85aa5ae85fd17f84769bdf0e8e1de4b105d44b",
+    "title": "ThaiCoref: Thai Coreference Resolution Dataset",
+    "seed_ids": [
+        "bert",
+        "longformer",
+        "c9b0fcfc9470318a56e7dedf4503186e3a343408",
+        "3029263ca51e6c2907f9f99277083cf6afb1adb7",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28"
+    ],
+    "s2id": "dc85aa5ae85fd17f84769bdf0e8e1de4b105d44b",
+    "abstract": "While coreference resolution is a well-established research area in Natural Language Processing (NLP), research focusing on Thai language remains limited due to the lack of large annotated corpora. In this work, we introduce ThaiCoref, a dataset for Thai coreference resolution. Our dataset comprises 777,271 tokens, 44,082 mentions and 10,429 entities across four text genres: university essays, newspapers, speeches, and Wikipedia. Our annotation scheme is built upon the OntoNotes benchmark with adjustments to address Thai-specific phenomena. Utilizing ThaiCoref, we train models employing a multilingual encoder and cross-lingual transfer techniques, achieving a best F1 score of 67.88\\% on the test set. Error analysis reveals challenges posed by Thai's unique linguistic features. To benefit the NLP community, we make the dataset and the model publicly available at http://www.github.com/nlp-chula/thai-coref .",
+    "authors": [
+        "Pontakorn Trakuekul",
+        "Wei Qi Leong",
+        "Charin Polpanumas",
+        "Jitkapat Sawatphol",
+        "William-Chandra Tjhi",
+        "Attapol T. Rutherford"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces ThaiCoref, a dataset for Thai coreference resolution and annotation scheme built upon the OntoNotes benchmark with adjustments to address Thai-specific phenomena, and makes the dataset and model publicly available."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

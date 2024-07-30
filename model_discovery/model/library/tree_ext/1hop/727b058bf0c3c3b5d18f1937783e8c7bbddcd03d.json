@@ -1,0 +1,36 @@
+{
+    "acronym": "727b058bf0c3c3b5d18f1937783e8c7bbddcd03d",
+    "title": "Utilizing BERT for Information Retrieval: Survey, Applications, Resources, and Challenges",
+    "seed_ids": [
+        "gpt",
+        "bert",
+        "7e0c7fdad758482375cb89a110b2f5ad4bee57dd",
+        "faea04bf558c1a8b072bdcfe3cebe06ea4d9d9ca",
+        "2c953a3c378b40dadf2e3fb486713c8608b8e282",
+        "28307bc149a74cfcae657f782f1c7630b6f4acce",
+        "d56c1fc337fb07ec004dc846f80582c327af717c",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "727b058bf0c3c3b5d18f1937783e8c7bbddcd03d",
+    "abstract": "Recent years have witnessed a substantial increase in the use of deep learning to solve various natural language processing (NLP) problems. Early deep learning models were constrained by their sequential or unidirectional nature, such that they struggled to capture the contextual relationships across text inputs. The introduction of bidirectional encoder representations from transformers (BERT) leads to a robust encoder for the transformer model that can understand the broader context and deliver state-of-the-art performance across various NLP tasks. This has inspired researchers and practitioners to apply BERT to practical problems, such as information retrieval (IR). A survey that focuses on a comprehensive analysis of prevalent approaches that apply pretrained transformer encoders like BERT to IR can thus be useful for academia and the industry. In light of this, we revisit a variety of BERT-based methods in this survey, cover a wide range of techniques of IR, and group them into six high-level categories: (i) handling long documents, (ii) integrating semantic information, (iii) balancing effectiveness and efficiency, (iv) predicting the weights of terms, (v) query expansion, and (vi) document expansion. We also provide links to resources, including datasets and toolkits, for BERT-based IR systems. Additionally, we highlight the advantages of employing encoder-based BERT models in contrast to recent large language models like ChatGPT, which are decoder-based and demand extensive computational resources. Finally, we summarize the comprehensive outcomes of the survey and suggest directions for future research in the area.",
+    "authors": [
+        "Jiajia Wang",
+        "Jimmy X. Huang",
+        "Xinhui Tu",
+        "Junmei Wang",
+        "Angela J. Huang",
+        "Md Tahmid Rahman Laskar",
+        "Amran Bhuiyan"
+    ],
+    "venue": "ACM Computing Surveys",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A survey that focuses on a comprehensive analysis of prevalent approaches that apply pretrained transformer encoders like BERT to IR and highlights the advantages of employing encoder-based BERT models in contrast to recent large language models like ChatGPT, which are decoder-based and demand extensive computational resources."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

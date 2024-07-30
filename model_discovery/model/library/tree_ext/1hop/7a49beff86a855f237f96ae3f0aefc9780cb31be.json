@@ -1,0 +1,39 @@
+{
+    "acronym": "7a49beff86a855f237f96ae3f0aefc9780cb31be",
+    "title": "bert2BERT: Towards Reusable Pretrained Language Models",
+    "seed_ids": [
+        "gpt",
+        "981995fd64611f475179b280f4e9c241051ac185",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "5a3749929bf5fb8b1f98a7b2a43c3b957bcf6c88",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7a49beff86a855f237f96ae3f0aefc9780cb31be",
+    "abstract": "In recent years, researchers tend to pre-train ever-larger language models to explore the upper limit of deep models. However, large language model pre-training costs intensive computational resources, and most of the models are trained from scratch without reusing the existing pre-trained models, which is wasteful. In this paper, we propose bert2BERT, which can effectively transfer the knowledge of an existing smaller pre-trained model to a large model through parameter initialization and significantly improve the pre-training efficiency of the large model. Specifically, we extend the previous function-preserving method proposed in computer vision on the Transformer-based language model, and further improve it by proposing a novel method, advanced knowledge for large model\u2019s initialization. In addition, a two-stage learning method is proposed to further accelerate the pre-training. We conduct extensive experiments on representative PLMs (e.g., BERT and GPT) and demonstrate that (1) our method can save a significant amount of training cost compared with baselines including learning from scratch, StackBERT and MSLT; (2) our method is generic and applicable to different types of pre-trained models. In particular, bert2BERT saves about 45% and 47% computational cost of pre-training BERT_{\\rm BASE} and GPT_{\\rm BASE} by reusing the models of almost their half sizes.",
+    "authors": [
+        "Cheng Chen",
+        "Yichun Yin",
+        "Lifeng Shang",
+        "Xin Jiang",
+        "Yujia Qin",
+        "Fengyu Wang",
+        "Zhi Wang",
+        "Xiao Chen",
+        "Zhiyuan Liu",
+        "Qun Liu"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 44,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

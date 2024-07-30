@@ -1,0 +1,27 @@
+{
+    "acronym": "59c2d55c2b3e97e29aa80053e7b55babbcdb9298",
+    "title": "Can Transformers Capture Spatial Relations between Objects?",
+    "seed_ids": [
+        "transformer",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "59c2d55c2b3e97e29aa80053e7b55babbcdb9298",
+    "abstract": "Spatial relationships between objects represent key scene information for humans to understand and interact with the world. To study the capability of current computer vision systems to recognize physically grounded spatial relations, we start by proposing precise relation definitions that permit consistently annotating a benchmark dataset. Despite the apparent simplicity of this task relative to others in the recognition literature, we observe that existing approaches perform poorly on this benchmark. We propose new approaches exploiting the long-range attention capabilities of transformers for this task, and evaluating key design principles. We identify a simple\"RelatiViT\"architecture and demonstrate that it outperforms all current approaches. To our knowledge, this is the first method to convincingly outperform naive baselines on spatial relation prediction in in-the-wild settings. The code and datasets are available in \\url{https://sites.google.com/view/spatial-relation}.",
+    "authors": [
+        "Chuan Wen",
+        "Dinesh Jayaraman",
+        "Yang Gao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work identifies a simple RelatiViT architecture and demonstrates that it outperforms all current approaches on spatial relation prediction in in-the-wild settings, and is the first method to convincingly outperform naive baselines on spatial relation prediction in in-the-wild settings."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,36 @@
+{
+    "acronym": "66d98dc2aad17c03532dbae21d05f098257cc2e2",
+    "title": "LINC: A Neurosymbolic Approach for Logical Reasoning by Combining Language Models with First-Order Logic Provers",
+    "seed_ids": [
+        "gpt3",
+        "c4fb74b5f69e5c0f3822b82e1bd082d5d95fc8d0",
+        "272afc28d03890160b1f2808cc551c962ea9138c",
+        "2029349c55c1dba3493c5b3bd25152f18ba21ae2",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "92173d081b15824d22a9ef070e118744ceee8052"
+    ],
+    "s2id": "66d98dc2aad17c03532dbae21d05f098257cc2e2",
+    "abstract": "Logical reasoning, i.e., deductively inferring the truth value of a conclusion from a set of premises, is an important task for artificial intelligence with wide potential impacts on science, mathematics, and society. While many prompting-based strategies have been proposed to enable Large Language Models (LLMs) to do such reasoning more effectively, they still appear unsatisfactory, often failing in subtle and unpredictable ways. In this work, we investigate the validity of instead reformulating such tasks as modular neurosymbolic programming, which we call LINC: Logical Inference via Neurosymbolic Computation. In LINC, the LLM acts as a semantic parser, translating premises and conclusions from natural language to expressions in first-order logic. These expressions are then offloaded to an external theorem prover, which symbolically performs deductive inference. Leveraging this approach, we observe significant performance gains on FOLIO and a balanced subset of ProofWriter for three different models in nearly all experimental conditions we evaluate. On ProofWriter, augmenting the comparatively small open-source StarCoder+ (15.5B parameters) with LINC even outperforms GPT-3.5 and GPT-4 with Chain-of-Thought (CoT) prompting by an absolute 38% and 10%, respectively. When used with GPT-4, LINC scores 26% higher than CoT on ProofWriter while performing comparatively on FOLIO. Further analysis reveals that although both methods on average succeed roughly equally often on this dataset, they exhibit distinct and complementary failure modes. We thus provide promising evidence for how logical reasoning over natural language can be tackled through jointly leveraging LLMs alongside symbolic provers. All corresponding code is publicly available at https://github.com/benlipkin/linc",
+    "authors": [
+        "Theo X. Olausson",
+        "Alex Gu",
+        "Benjamin Lipkin",
+        "Cedegao Zhang",
+        "Armando Solar-Lezama",
+        "Josh Tenenbaum",
+        "Roger Levy"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Analysis reveals that although both methods on average succeed roughly equally often on this dataset, they exhibit distinct and complementary failure modes, which provides promising evidence for how logical reasoning over natural language can be tackled through jointly leveraging LLMs alongside symbolic provers."
+    },
+    "citationCount": 32,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

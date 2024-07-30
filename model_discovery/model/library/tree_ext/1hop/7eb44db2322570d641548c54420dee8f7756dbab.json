@@ -1,0 +1,33 @@
+{
+    "acronym": "7eb44db2322570d641548c54420dee8f7756dbab",
+    "title": "Corpus for Automatic Structuring of Legal Documents",
+    "seed_ids": [
+        "neurallegal",
+        "1a0a3cc65129097fddc3d47324d1c82d725c3cbe",
+        "24ec60734b3fcad2661fd3c18ec933430058c2f7",
+        "61a5ae33fc34efcdbc710004554ec57e607ce75e",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd"
+    ],
+    "s2id": "7eb44db2322570d641548c54420dee8f7756dbab",
+    "abstract": "In populous countries, pending legal cases have been growing exponentially. There is a need for developing techniques for processing and organizing legal documents. In this paper, we introduce a new corpus for structuring legal documents. In particular, we introduce a corpus of legal judgment documents in English that are segmented into topical and coherent parts. Each of these parts is annotated with a label coming from a list of pre-defined Rhetorical Roles. We develop baseline models for automatically predicting rhetorical roles in a legal document based on the annotated corpus. Further, we show the application of rhetorical roles to improve performance on the tasks of summarization and legal judgment prediction. We release the corpus and baseline model code along with the paper.",
+    "authors": [
+        "Prathamesh Kalamkar",
+        "Aman Tiwari",
+        "Astha Agarwal",
+        "S. Karn",
+        "Smita Gupta",
+        "Vivek Raghavan",
+        "Ashutosh Modi"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A corpus of legal judgment documents in English that are segmented into topical and coherent parts that are annotated with a label coming from a list of pre-defined Rhetorical Roles is introduced."
+    },
+    "citationCount": 42,
+    "influentialCitationCount": 8,
+    "code": null,
+    "description": null,
+    "url": null
+}

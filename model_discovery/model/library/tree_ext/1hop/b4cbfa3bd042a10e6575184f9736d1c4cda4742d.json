@@ -1,0 +1,29 @@
+{
+    "acronym": "b4cbfa3bd042a10e6575184f9736d1c4cda4742d",
+    "title": "Relation Extraction Based on Prompt Information and Feature Reuse",
+    "seed_ids": [
+        "gpt",
+        "743dcf234cffd54c4e096a10a284dd81572b16ea",
+        "da454295392cf4caaa39cc465734237ffe55392f"
+    ],
+    "s2id": "b4cbfa3bd042a10e6575184f9736d1c4cda4742d",
+    "abstract": "ABSTRACT To alleviate the problem of under-utilization features of sentence-level relation extraction, which leads to insufficient performance of the pre-trained language model and underutilization of the feature vector, a sentence-level relation extraction method based on adding prompt information and feature reuse is proposed. At first, in addition to the pair of nominals and sentence information, a piece of prompt information is added, and the overall feature information consists of sentence information, entity pair information, and prompt information, and then the features are encoded by the pre-trained language model ROBERTA. Moreover, in the pre-trained language model, BIGRU is also introduced in the composition of the neural network to extract information, and the feature information is passed through the neural network to form several sets of feature vectors. After that, these feature vectors are reused in different combinations to form multiple outputs, and the outputs are aggregated using ensemble-learning soft voting to perform relation classification. In addition to this, the sum of cross-entropy, KL divergence, and negative log-likelihood loss is used as the final loss function in this paper. In the comparison experiments, the model based on adding prompt information and feature reuse achieved higher results of the SemEval-2010 task 8 relational dataset.",
+    "authors": [
+        "Ping Feng",
+        "Xin Zhang",
+        "Jian Zhao",
+        "Yingying Wang",
+        "Biao Huang"
+    ],
+    "venue": "Data Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The sum of cross-entropy, KL divergence, and negative log-likelihood loss is used as the final loss function in this paper and achieved higher results of the SemEval-2010 task 8 relational dataset."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

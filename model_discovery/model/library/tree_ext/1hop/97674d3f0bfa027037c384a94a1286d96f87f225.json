@@ -1,0 +1,37 @@
+{
+    "acronym": "97674d3f0bfa027037c384a94a1286d96f87f225",
+    "title": "HNO: Hyena Neural Operator for solving PDEs",
+    "seed_ids": [
+        "s4",
+        "httyh",
+        "s4d",
+        "gssm",
+        "998ac3e945857cf2676ee7efdbaf443a0c6f820a",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "a30ac45ac5b7bd2148d3fb80ee7f3c29724e3170",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "72f207c777e4a17180cc54ccc6a743d5f43227af",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "7e9ff94476f41041c75e253e84f487db00e9c861"
+    ],
+    "s2id": "97674d3f0bfa027037c384a94a1286d96f87f225",
+    "abstract": "Numerically solving partial differential equations (PDEs) typically requires fine discretization to resolve necessary spatiotemporal scales, which can be computationally expensive. Recent advances in deep learning have provided a new approach to solving PDEs that involves the use of neural operators. Neural operators are neural network architectures that learn mappings between function spaces and have the capability to solve partial differential equations based on data. This study utilizes a novel neural operator called Hyena, which employs a long convolutional filter that is parameterized by a multilayer perceptron. The Hyena operator is an operation that enjoys sub-quadratic complexity and state space model to parameterize long convolution that enjoys global receptive field. This mechanism enhances the model\u2019s comprehension of the input\u2019s context and enables data-dependent weight for different PDE instances. To measure how effective the layers are in solving PDEs, we conduct experiments on Burger\u2019s equation and Navier Stokes equation. Our findings indicate Hyena Neural operator can serve as an efficient and accurate model for learning PDEs\u2019 solution operator. The data and code used can be found at: https://github.com/Saupatil07/Hyena-Neural-Operator",
+    "authors": [
+        "Saurabh Patil",
+        "Zijie Li",
+        "A. Farimani"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The findings indicate Hyena Neural operator can serve as an efficient and accurate model for learning PDEs\u2019 solution operator."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

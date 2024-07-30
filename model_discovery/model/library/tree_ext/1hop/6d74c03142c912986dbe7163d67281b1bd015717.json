@@ -1,0 +1,48 @@
+{
+    "acronym": "6d74c03142c912986dbe7163d67281b1bd015717",
+    "title": "Recurrent Action Transformer with Memory",
+    "seed_ids": [
+        "rmt",
+        "transformerxl",
+        "007f0aa79ac482bceab208e17fdfeaf18e4a4f29",
+        "9b8130a2a5d3398f4993f540ddd01d440d99d62e",
+        "99b0c3a18050889c591e1db6d51ca01298638437",
+        "7177fcb8e0311eeebd4070b62312a4bec1432ea3",
+        "bfe6fd05f09647b001c7eb6e333a95c881c88344",
+        "25425e299101b13ec2872417a14f961f4f8aa18e",
+        "60c8d0619481eaafdd1189af610d0e636271fed5",
+        "235303a8bc1e4892efd525a38ead657422d8a519",
+        "82ec4a03a945f18bae23f8c5224d6495ec6cd1b0",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "0e802c0739771acf70e60d59c2df51cd7e8c50c0",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "008cfd24dfdfb28fc6a89c32772c7ffe5cb0cf8a",
+        "afad10da0a3b83a4f2a94e8c16c84ac64338e9fe",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "70557ea6b65846fc30729ceed224acd4ac64ca5d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "59a916cdc943f0282908e6f3fa0360f4c5fb78d0"
+    ],
+    "s2id": "6d74c03142c912986dbe7163d67281b1bd015717",
+    "abstract": "Recently, the use of transformers in offline reinforcement learning has become a rapidly developing area. This is due to their ability to treat the agent's trajectory in the environment as a sequence, thereby reducing the policy learning problem to sequence modeling. In environments where the agent's decisions depend on past events (POMDPs), capturing both the event itself and the decision point in the context of the model is essential. However, the quadratic complexity of the attention mechanism limits the potential for context expansion. One solution to this problem is to enhance transformers with memory mechanisms. This paper proposes a Recurrent Action Transformer with Memory (RATE), a novel model architecture incorporating a recurrent memory mechanism designed to regulate information retention. To evaluate our model, we conducted extensive experiments on memory-intensive environments (ViZDoom-Two-Colors, T-Maze, Memory Maze, Minigrid.Memory), classic Atari games and MuJoCo control environments. The results show that using memory can significantly improve performance in memory-intensive environments while maintaining or improving results in classic environments. We hope our findings will stimulate research on memory mechanisms for transformers applicable to offline reinforcement learning.",
+    "authors": [
+        "A. Bessonov",
+        "A. Staroverov",
+        "Huzhenyu Zhang",
+        "A. Kovalev",
+        "D. Yudin",
+        "A. Panov"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Recurrent Action Transformer with Memory (RATE) is proposed, a novel model architecture incorporating a recurrent memory mechanism designed to regulate information retention that can significantly improve performance in memory-intensive environments while maintaining or improving results in classic environments."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

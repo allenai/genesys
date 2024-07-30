@@ -1,0 +1,30 @@
+{
+    "acronym": "4f7f0b37a011a4392b6dd89334cf69122b00df6b",
+    "title": "Evaluation of Deep Neural Network Models for Instance Segmentation of Lumbar Spine MRI",
+    "seed_ids": [
+        "transformer",
+        "a9c214e846188adb645021cd7b1964b8ea1fef6f",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "4f7f0b37a011a4392b6dd89334cf69122b00df6b",
+    "abstract": "Intervertebral disc disease, a prevalent ailment, frequently leads to intermittent or persistent low back pain, and diagnosing and assessing of this disease rely on accurate measurement of vertebral bone and intervertebral disc geometries from lumbar MR images. Deep neural network (DNN) models may assist clinicians with more efficient image segmentation of individual instances (discs and vertebrae) of the lumbar spine in an automated way, which is termed as instance image segmentation. In this work, we evaluated 15 existing DNN models for lumbar spine MR image segmentation. We introduced a new data augmentation technique to create synthetic yet realistic MR image dataset, named SSMSpine, which is made publicly available. The 15 image segmentation models are evaluated on our private in-house dataset and the public SSMSpine dataset, using two metrics, Dice Similarity Coefficient and 95% Hausdorff Distance. The SSMSpine dataset are available at https://github.com/jiasongchen/SSMSpine.",
+    "authors": [
+        "Jiasong Chen",
+        "Linchen Qian",
+        "Linhai Ma",
+        "Timur Urakov",
+        "Weiyong Gu",
+        "Liang Liang"
+    ],
+    "venue": "bioRxiv",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new data augmentation technique is introduced to create synthetic yet realistic MR image dataset, named SSMSpine, which is made publicly available and evaluated 15 existing DNN models for lumbar spine MR image segmentation."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,41 @@
+{
+    "acronym": "883187d0bacf57238ac95e2749bcc601baf2c212",
+    "title": "Dodo: Dynamic Contextual Compression for Decoder-only LMs",
+    "seed_ids": [
+        "compressivetransformer",
+        "5e0cb1c4b91a7486e1c2b15a44a0be56bd74bdc0",
+        "b069c32fcd77160f944ab3ba71ab6f0cfb782c68",
+        "2f7364d8e5cf94315bf8905f57de9c5543e9a4bf",
+        "ffdf78392747ad50c6bb39adab124726db05c3da",
+        "dbc368bc8b49347dd27679894524fa62f88492c9",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "2fc384087f55111a196c96d88029aab324aa543e",
+        "8db711adf1beb3e0c2ec492f3936841d827404e9",
+        "e0cbbca02b332f398c6639b3bea0613f79166220",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "883187d0bacf57238ac95e2749bcc601baf2c212",
+    "abstract": "Transformer-based language models (LMs) are inefficient in long contexts. We propose Dodo, a solution for context compression. Instead of one vector per token in a standard transformer model, Dodo represents text with a dynamic number of hidden states at each layer, reducing the cost of self-attention to a fraction of typical time and space. Moreover, off-the-shelf models such as LLaMA can be adapted to Dodo by efficient parameter tuning methods such as LoRA. In use, Dodo can act as either an autoregressive LM or a context compressor for downstream tasks. We demonstrate through experiments in language modeling, question answering, and summarization that Dodo retains capabilities in these tasks, while drastically reducing the overhead during decoding. For example, in the autoencoding task, Dodo shrinks context at a 20x compression ratio with a BLEU score of 98% for reconstruction, achieving nearly lossless encoding.",
+    "authors": [
+        "Guanghui Qin",
+        "Corby Rosset",
+        "Ethan C. Chau",
+        "Nikhil Rao",
+        "Benjamin Van Durme"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Dodo is proposed, a solution for context compression that represents text with a dynamic number of hidden states at each layer, reducing the cost of self-attention to a fraction of typical time and space."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

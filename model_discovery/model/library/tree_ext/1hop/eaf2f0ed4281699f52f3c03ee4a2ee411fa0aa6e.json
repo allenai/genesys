@@ -1,0 +1,40 @@
+{
+    "acronym": "eaf2f0ed4281699f52f3c03ee4a2ee411fa0aa6e",
+    "title": "Biomedical knowledge graph-optimized prompt generation for large language models",
+    "seed_ids": [
+        "gpt3",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "44279244407a64431810f982be6d0c7da4429dd7",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "710d183174844da5b7f392667f3cc25d2b098dde"
+    ],
+    "s2id": "eaf2f0ed4281699f52f3c03ee4a2ee411fa0aa6e",
+    "abstract": "Large Language Models (LLMs) are being adopted at an unprecedented rate, yet still face challenges in knowledge-intensive domains like biomedicine. Solutions such as pre-training and domain-specific fine-tuning add substantial computational overhead, requiring further domain expertise. Here, we introduce a token-optimized and robust Knowledge Graph-based Retrieval Augmented Generation (KG-RAG) framework by leveraging a massive biomedical KG (SPOKE) with LLMs such as Llama-2-13b, GPT-3.5-Turbo and GPT-4, to generate meaningful biomedical text rooted in established knowledge. Compared to the existing RAG technique for Knowledge Graphs, the proposed method utilizes minimal graph schema for context extraction and uses embedding methods for context pruning. This optimization in context extraction results in more than 50% reduction in token consumption without compromising the accuracy, making a cost-effective and robust RAG implementation on proprietary LLMs. KG-RAG consistently enhanced the performance of LLMs across diverse biomedical prompts by generating responses rooted in established knowledge, accompanied by accurate provenance and statistical evidence (if available) to substantiate the claims. Further benchmarking on human curated datasets, such as biomedical true/false and multiple-choice questions (MCQ), showed a remarkable 71% boost in the performance of the Llama-2 model on the challenging MCQ dataset, demonstrating the framework's capacity to empower open-source models with fewer parameters for domain specific questions. Furthermore, KG-RAG enhanced the performance of proprietary GPT models, such as GPT-3.5 and GPT-4. In summary, the proposed framework combines explicit and implicit knowledge of KG and LLM in a token optimized fashion, thus enhancing the adaptability of general-purpose LLMs to tackle domain-specific questions in a cost-effective fashion.",
+    "authors": [
+        "Karthik Soman",
+        "Peter W Rose",
+        "John H Morris",
+        "Rabia E Akbas",
+        "Brett Smith",
+        "Braian Peetoom",
+        "Catalina Villouta-Reyes",
+        "G. Cerono",
+        "Yongmei Shi",
+        "Angela Rizk-Jackson",
+        "Sharat Israni",
+        "Charlotte A. Nelson",
+        "Sui Huang",
+        "Sergio Baranzini"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A token-optimized and robust Knowledge Graph-based Retrieval Augmented Generation (KG-RAG) framework, which combines explicit and implicit knowledge of KG and LLM in a token optimized fashion, thus enhancing the adaptability of general-purpose LLMs to tackle domain-specific questions in a cost-effective fashion."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

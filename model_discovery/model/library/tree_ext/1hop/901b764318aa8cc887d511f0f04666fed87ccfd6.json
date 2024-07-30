@@ -1,0 +1,25 @@
+{
+    "acronym": "901b764318aa8cc887d511f0f04666fed87ccfd6",
+    "title": "Graph Neural Networks are Dynamic Programmers",
+    "seed_ids": [
+        "normalizedattn",
+        "07fa8c8a703abd7496f4781e9dee53d5de9c8717"
+    ],
+    "s2id": "901b764318aa8cc887d511f0f04666fed87ccfd6",
+    "abstract": "Recent advances in neural algorithmic reasoning with graph neural networks (GNNs) are propped up by the notion of algorithmic alignment. Broadly, a neural network will be better at learning to execute a reasoning task (in terms of sample complexity) if its individual components align well with the target algorithm. Specifically, GNNs are claimed to align with dynamic programming (DP), a general problem-solving strategy which expresses many polynomial-time algorithms. However, has this alignment truly been demonstrated and theoretically quantified? Here we show, using methods from category theory and abstract algebra, that there exists an intricate connection between GNNs and DP, going well beyond the initial observations over individual algorithms such as Bellman-Ford. Exposing this connection, we easily verify several prior findings in the literature, produce better-grounded GNN architectures for edge-centric tasks, and demonstrate empirical results on the CLRS algorithmic reasoning benchmark. We hope our exposition will serve as a foundation for building stronger algorithmically aligned GNNs.",
+    "authors": [
+        "Andrew Dudzik",
+        "Petar Velickovic"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows, using methods from category theory and abstract algebra, that there exists an intricate connection between GNNs and DP, going well beyond the initial observations over individual algorithms such as Bellman-Ford."
+    },
+    "citationCount": 47,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

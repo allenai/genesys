@@ -1,0 +1,27 @@
+{
+    "acronym": "25544d4daf34b0c49844a1f68fd628420297cbcb",
+    "title": "ExTraCT - Explainable Trajectory Corrections from language inputs using Textual description of features",
+    "seed_ids": [
+        "bert",
+        "c6c734e16f66fbfcefac7625cc64599e83292c1e"
+    ],
+    "s2id": "25544d4daf34b0c49844a1f68fd628420297cbcb",
+    "abstract": "Natural language provides an intuitive and expressive way of conveying human intent to robots. Prior works employed end-to-end methods for learning trajectory deformations from language corrections. However, such methods do not generalize to new initial trajectories or object configurations. This work presents ExTraCT, a modular framework for trajectory corrections using natural language that combines Large Language Models (LLMs) for natural language understanding and trajectory deformation functions. Given a scene, ExTraCT generates the trajectory modification features (scene-specific and scene-independent) and their corresponding natural language textual descriptions for the objects in the scene online based on a template. We use LLMs for semantic matching of user utterances to the textual descriptions of features. Based on the feature matched, a trajectory modification function is applied to the initial trajectory, allowing generalization to unseen trajectories and object configurations. Through user studies conducted both in simulation and with a physical robot arm, we demonstrate that trajectories deformed using our method were more accurate and were preferred in about 80\\% of cases, outperforming the baseline. We also showcase the versatility of our system in a manipulation task and an assistive feeding task.",
+    "authors": [
+        "J-Anne Yow",
+        "N. P. Garg",
+        "Manoj Ramanathan",
+        "Wei Tech Ang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ExTraCT is presented, a modular framework for trajectory corrections using natural language that combines Large Language Models (LLMs) for natural language understanding and trajectory deformation functions and it is demonstrated that trajectories deformed using this method were more accurate and were preferred in about 80\\% of cases, outperforming the baseline."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

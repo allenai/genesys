@@ -1,0 +1,24 @@
+{
+    "acronym": "19e1f546808699926c7a78b095ff27a8a282d023",
+    "title": "Supervised Gradual Machine Learning for Aspect Category Detection",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "19e1f546808699926c7a78b095ff27a8a282d023",
+    "abstract": "Aspect Category Detection (ACD) aims to identify implicit and explicit aspects in a given review sentence. The state-of-the-art approaches for ACD use Deep Neural Networks (DNNs) to address the problem as a multi-label classification task. However, learning category-specific representations heavily rely on the amount of labeled examples, which may not readily available in real-world scenarios. In this paper, we propose a novel approach to tackle the ACD task by combining DNNs with Gradual Machine Learning (GML) in a supervised setting. we aim to leverage the strength of DNN in semantic relation modeling, which can facilitate effective knowledge transfer between labeled and unlabeled instances during the gradual inference of GML. To achieve this, we first analyze the learned latent space of the DNN to model the relations, i.e., similar or opposite, between instances. We then represent these relations as binary features in a factor graph to efficiently convey knowledge. Finally, we conduct a comparative study of our proposed solution on real benchmark datasets and demonstrate that the GML approach, in collaboration with DNNs for feature extraction, consistently outperforms pure DNN solutions.",
+    "authors": [
+        "Murtadha H. M. Ahmed",
+        "Qun Chen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel approach to tackle the ACD task by combining DNNs with Gradual Machine Learning (GML) in a supervised setting and aims to leverage the strength of DNN in semantic relation modeling, which can facilitate effective knowledge transfer between labeled and unlabeled instances during the gradual inference of GML."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

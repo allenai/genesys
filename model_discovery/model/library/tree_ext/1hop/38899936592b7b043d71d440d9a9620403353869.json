@@ -1,0 +1,29 @@
+{
+    "acronym": "38899936592b7b043d71d440d9a9620403353869",
+    "title": "ATSumm: Auxiliary information enhanced approach for abstractive disaster Tweet Summarization with sparse training data",
+    "seed_ids": [
+        "longformer",
+        "4afa91b57a5fdbd834e881ce129928cb457c3105",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "25db56fc85fe15625c3375064a35e908ba6dfd2a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "38899936592b7b043d71d440d9a9620403353869",
+    "abstract": "The abundance of situational information on Twitter poses a challenge for users to manually discern vital and relevant information during disasters. A concise and human-interpretable overview of this information helps decision-makers in implementing efficient and quick disaster response. Existing abstractive summarization approaches can be categorized as sentence-based or key-phrase-based approaches. This paper focuses on sentence-based approach, which is typically implemented as a dual-phase procedure in literature. The initial phase, known as the extractive phase, involves identifying the most relevant tweets. The subsequent phase, referred to as the abstractive phase, entails generating a more human-interpretable summary. In this study, we adopt the methodology from prior research for the extractive phase. For the abstractive phase of summarization, most existing approaches employ deep learning-based frameworks, which can either be pre-trained or require training from scratch. However, to achieve the appropriate level of performance, it is imperative to have substantial training data for both methods, which is not readily available. This work presents an Abstractive Tweet Summarizer (ATSumm) that effectively addresses the issue of data sparsity by using auxiliary information. We introduced the Auxiliary Pointer Generator Network (AuxPGN) model, which utilizes a unique attention mechanism called Key-phrase attention. This attention mechanism incorporates auxiliary information in the form of key-phrases and their corresponding importance scores from the input tweets. We evaluate the proposed approach by comparing it with 10 state-of-the-art approaches across 13 disaster datasets. The evaluation results indicate that ATSumm achieves superior performance compared to state-of-the-art approaches, with improvement of 4-80% in ROUGE-N F1-score.",
+    "authors": [
+        "Piyush Garg",
+        "Roshni Chakraborty",
+        "Sourav Kumar Dandapat"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents an Abstractive Tweet Summarizer (ATSumm) that effectively addresses the issue of data sparsity by using auxiliary information and introduced the Auxiliary Pointer Generator Network (AuxPGN) model, which utilizes a unique attention mechanism called Key-phrase attention."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

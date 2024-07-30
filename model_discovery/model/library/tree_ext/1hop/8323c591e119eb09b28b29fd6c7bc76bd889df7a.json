@@ -1,0 +1,32 @@
+{
+    "acronym": "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+    "title": "Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism",
+    "seed_ids": [
+        "gpt",
+        "sparsetransformer",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "ad7129af0644dbcafa9aa2f111cb76526ea444a1",
+        "cd63025532a62fa245a02ec05e32ac4d23089631"
+    ],
+    "s2id": "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+    "abstract": "Recent work in language modeling demonstrates that training large transformer models advances the state of the art in Natural Language Processing applications. However, very large models can be quite difficult to train due to memory constraints. In this work, we present our techniques for training very large transformer models and implement a simple, efficient intra-layer model parallel approach that enables training transformer models with billions of parameters. Our approach does not require a new compiler or library changes, is orthogonal and complimentary to pipeline model parallelism, and can be fully implemented with the insertion of a few communication operations in native PyTorch. We illustrate this approach by converging transformer based models up to 8.3 billion parameters using 512 GPUs. We sustain 15.1 PetaFLOPs across the entire application with 76% scaling efficiency when compared to a strong single GPU baseline that sustains 39 TeraFLOPs, which is 30% of peak FLOPs. To demonstrate that large language models can further advance the state of the art (SOTA), we train an 8.3 billion parameter transformer language model similar to GPT-2 and a 3.9 billion parameter model similar to BERT. We show that careful attention to the placement of layer normalization in BERT-like models is critical to achieving increased performance as the model size grows. Using the GPT-2 model we achieve SOTA results on the WikiText103 (10.8 compared to SOTA perplexity of 15.8) and LAMBADA (66.5% compared to SOTA accuracy of 63.2%) datasets. Our BERT model achieves SOTA results on the RACE dataset (90.9% compared to SOTA accuracy of 89.4%).",
+    "authors": [
+        "M. Shoeybi",
+        "M. Patwary",
+        "Raul Puri",
+        "P. LeGresley",
+        "J. Casper",
+        "Bryan Catanzaro"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A simple, efficient intra-layer model parallel approach that enables training transformer models with billions of parameters and shows that careful attention to the placement of layer normalization in BERT-like models is critical to achieving increased performance as the model size grows."
+    },
+    "citationCount": 1364,
+    "influentialCitationCount": 202,
+    "code": null,
+    "description": null,
+    "url": null
+}

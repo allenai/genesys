@@ -1,0 +1,26 @@
+{
+    "acronym": "42b3a039a666caab2881bfef244d3ce074b7f529",
+    "title": "Sketchformer: Transformer-Based Representation for Sketched Structure",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "42b3a039a666caab2881bfef244d3ce074b7f529",
+    "abstract": "Sketchformer is a novel transformer-based representation for encoding free-hand sketches input in a vector form, i.e. as a sequence of strokes. Sketchformer effectively addresses multiple tasks: sketch classification, sketch based image retrieval (SBIR), and the reconstruction and interpolation of sketches. We report several variants exploring continuous and tokenized input representations, and contrast their performance. Our learned embedding, driven by a dictionary learning tokenization scheme, yields state of the art performance in classification and image retrieval tasks, when compared against baseline representations driven by LSTM sequence to sequence architectures: SketchRNN and derivatives. We show that sketch reconstruction and interpolation are improved significantly by the Sketchformer embedding for complex sketches with longer stroke sequences.",
+    "authors": [
+        "Leo Sampaio Ferraz Ribeiro",
+        "Tu Bui",
+        "J. Collomosse",
+        "M. Ponti"
+    ],
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that sketch reconstruction and interpolation are improved significantly by the Sketchformer embedding for complex sketches with longer stroke sequences, when compared against baseline representations driven by LSTM sequence to sequence architectures: SketchRNN and derivatives."
+    },
+    "citationCount": 110,
+    "influentialCitationCount": 10,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "594d9b9d8a0969cec41aaac228a85728ac89d29b",
+    "title": "MSTF: Multiscale Transformer for Incomplete Trajectory Prediction",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "594d9b9d8a0969cec41aaac228a85728ac89d29b",
+    "abstract": "Motion forecasting plays a pivotal role in autonomous driving systems, enabling vehicles to execute collision warnings and rational local-path planning based on predictions of the surrounding vehicles. However, prevalent methods often assume complete observed trajectories, neglecting the potential impact of missing values induced by object occlusion, scope limitation, and sensor failures. Such oversights inevitably compromise the accuracy of trajectory predictions. To tackle this challenge, we propose an end-to-end framework, termed Multi-scale Transformer (MSTF), meticulously crafted for incomplete trajectory prediction. MSTF integrates a Multiscale Attention Head (MAH) and an Information Increment-based Pattern Adaptive (IIPA) module. Specifically, the MAH component concurrently captures multiscale motion representation of trajectory sequence from various temporal granularities, utilizing a multi-head attention mechanism. This approach facilitates the modeling of global dependencies in motion across different scales, thereby mitigating the adverse effects of missing values. Additionally, the IIPA module adaptively extracts continuity representation of motion across time steps by analyzing missing patterns in the data. The continuity representation delineates motion trend at a higher level, guiding MSTF to generate predictions consistent with motion continuity. We evaluate our proposed MSTF model using two large-scale real-world datasets. Experimental results demonstrate that MSTF surpasses state-of-the-art (SOTA) models in the task of incomplete trajectory prediction, showcasing its efficacy in addressing the challenges posed by missing values in motion forecasting for autonomous driving systems.",
+    "authors": [
+        "Zhanwen Liu",
+        "Chao Li",
+        "Nan Yang",
+        "Yang Wang",
+        "Jiaqi Ma",
+        "Guangliang Cheng",
+        "Xiangmo Zhao"
+    ],
+    "venue": "2024 IEEE Intelligent Vehicles Symposium (IV)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results demonstrate that MSTF surpasses state-of-the-art (SOTA) models in the task of incomplete trajectory prediction, showcasing its efficacy in addressing the challenges posed by missing values in motion forecasting for autonomous driving systems."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

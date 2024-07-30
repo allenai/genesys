@@ -1,0 +1,27 @@
+{
+    "acronym": "c4382ef185f93db523f805fe8e90ce1b50744563",
+    "title": "Chain of Thought with Explicit Evidence Reasoning for Few-shot Relation Extraction",
+    "seed_ids": [
+        "gpt3",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3"
+    ],
+    "s2id": "c4382ef185f93db523f805fe8e90ce1b50744563",
+    "abstract": "Few-shot relation extraction involves identifying the type of relationship between two specific entities within a text, using a limited number of annotated samples. A variety of solutions to this problem have emerged by applying meta-learning and neural graph techniques which typically necessitate a training process for adaptation. Recently, the strategy of in-context learning has been demonstrating notable results without the need of training. Few studies have already utilized in-context learning for zero-shot information extraction. Unfortunately, the evidence for inference is either not considered or implicitly modeled during the construction of chain-of-thought prompts. In this paper, we propose a novel approach for few-shot relation extraction using large language models, named CoT-ER, chain-of-thought with explicit evidence reasoning. In particular, CoT-ER first induces large language models to generate evidences using task-specific and concept-level knowledge. Then these evidences are explicitly incorporated into chain-of-thought prompting for relation extraction. Experimental results demonstrate that our CoT-ER approach (with 0% training data) achieves competitive performance compared to the fully-supervised (with 100% training data) state-of-the-art approach on the FewRel1.0 and FewRel2.0 datasets.",
+    "authors": [
+        "Xilai Ma",
+        "Jing Li",
+        "Min Zhang"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel approach for few-shot relation extraction using large language models, named CoT-ER, chain-of-thought with explicit evidence reasoning, which first induces largelanguage models to generate evidences using task-specific and concept-level knowledge and is explicitly incorporated into chain- of-thought prompting for relation extraction."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

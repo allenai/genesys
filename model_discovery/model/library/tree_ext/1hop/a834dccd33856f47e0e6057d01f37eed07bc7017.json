@@ -1,0 +1,32 @@
+{
+    "acronym": "a834dccd33856f47e0e6057d01f37eed07bc7017",
+    "title": "On Inter-dataset Code Duplication and Data Leakage in Large Language Models",
+    "seed_ids": [
+        "bert",
+        "9ada8fa11b1cdece31f253acae50b62df8d5f823",
+        "1bf21dabbdfc81fd4f9e92b1201ecce744cabb6a",
+        "4b27f18bff43d605805c92696a979714ced0b805",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "a834dccd33856f47e0e6057d01f37eed07bc7017",
+    "abstract": "Motivation. Large language models (LLMs) have exhibited remarkable proficiency in diverse software engineering (SE) tasks. Handling such tasks typically involves acquiring foundational coding knowledge on large, general-purpose datasets during a pre-training phase, and subsequently refining on smaller, task-specific datasets as part of a fine-tuning phase. Problem statement. Data leakage is a well-known issue in training of machine learning models. A manifestation of this issue is the intersection of the training and testing splits. While intra-dataset code duplication examines this intersection within a given dataset and has been addressed in prior research, inter-dataset code duplication, which gauges the overlap between different datasets, remains largely unexplored. If this phenomenon exists, it could compromise the integrity of LLM evaluations because of the inclusion of fine-tuning test samples that were already encountered during pre-training, resulting in inflated performance metrics. Contribution. This paper explores the phenomenon of inter-dataset code duplication and its impact on evaluating LLMs across diverse SE tasks. Study design. We conduct an empirical study using the CSN dataset, a widely adopted pre-training dataset, and five fine-tuning datasets used for various SE tasks. We first identify the intersection between the pre-training and fine-tuning datasets using a deduplication process. Then, we fine-tune four models pre-trained on CSN to evaluate their performance on samples encountered during pre-training and those unseen during that phase. Results. Our findings reveal a potential threat to the evaluation of various LLMs across multiple SE tasks, stemming from the inter-dataset code duplication phenomenon. Moreover, we demonstrate that this threat is accentuated by factors like the LLM's size and the chosen fine-tuning technique.",
+    "authors": [
+        "Jos'e Antonio Hern'andez L'opez",
+        "Boqi Chen",
+        "Tushar Sharma",
+        "D'aniel Varr'o"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The findings reveal a potential threat to the evaluation of various LLMs across multiple SE tasks, stemming from the inter-dataset code duplication phenomenon, and it is demonstrated that this threat is accentuated by factors like the LLM's size and the chosen fine-tuning technique."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,34 @@
+{
+    "acronym": "a225d5d846ba5110232ed5bb32d54ea742b1c2d4",
+    "title": "KNN-Diffusion: Image Generation via Large-Scale Retrieval",
+    "seed_ids": [
+        "classfreediffu",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "0e802c0739771acf70e60d59c2df51cd7e8c50c0",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "4d2a05140dd9bafaf035a846e7bda05f956304d2"
+    ],
+    "s2id": "a225d5d846ba5110232ed5bb32d54ea742b1c2d4",
+    "abstract": "Recent text-to-image models have achieved impressive results. However, since they require large-scale datasets of text-image pairs, it is impractical to train them on new domains where data is scarce or not labeled. In this work, we propose using large-scale retrieval methods, in particular, efficient k-Nearest-Neighbors (kNN), which offers novel capabilities: (1) training a substantially small and efficient text-to-image diffusion model without any text, (2) generating out-of-distribution images by simply swapping the retrieval database at inference time, and (3) performing text-driven local semantic manipulations while preserving object identity. To demonstrate the robustness of our method, we apply our kNN approach on two state-of-the-art diffusion backbones, and show results on several different datasets. As evaluated by human studies and automatic metrics, our method achieves state-of-the-art results compared to existing approaches that train text-to-image generation models using images only (without paired text data)",
+    "authors": [
+        "Oron Ashual",
+        "Shelly Sheynin",
+        "Adam Polyak",
+        "Uriel Singer",
+        "Oran Gafni",
+        "Eliya Nachmani",
+        "Yaniv Taigman"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes using large-scale retrieval methods, in particular, efficient k-Nearest-Neighbors (kNN), which offers novel capabilities: training a substantially small and efficient text-to-image diffusion model without any text, generating out-of-distribution images by simply swapping the retrieval database at inference time, and performing text-driven local semantic manipulations while preserving object identity."
+    },
+    "citationCount": 89,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

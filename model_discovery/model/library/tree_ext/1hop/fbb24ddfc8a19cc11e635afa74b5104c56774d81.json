@@ -1,0 +1,28 @@
+{
+    "acronym": "fbb24ddfc8a19cc11e635afa74b5104c56774d81",
+    "title": "LLM-Driven Multimodal Opinion Expression Identification",
+    "seed_ids": [
+        "bert",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "fbb24ddfc8a19cc11e635afa74b5104c56774d81",
+    "abstract": "Opinion Expression Identification (OEI) is essential in NLP for applications ranging from voice assistants to depression diagnosis. This study extends OEI to encompass multimodal inputs, underlining the significance of auditory cues in delivering emotional subtleties beyond the capabilities of text. We introduce a novel multimodal OEI (MOEI) task, integrating text and speech to mirror real-world scenarios. Utilizing CMU MOSEI and IEMOCAP datasets, we construct the CI-MOEI dataset. Additionally, Text-to-Speech (TTS) technology is applied to the MPQA dataset to obtain the CIM-OEI dataset. We design a template for the OEI task to take full advantage of the generative power of large language models (LLMs). Advancing further, we propose an LLM-driven method STOEI, which combines speech and text modal to identify opinion expressions. Our experiments demonstrate that MOEI significantly improves the performance while our method outperforms existing methods by 9.20\\% and obtains SOTA results.",
+    "authors": [
+        "Bonian Jia",
+        "Huiyao Chen",
+        "Yueheng Sun",
+        "Meishan Zhang",
+        "Min Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study introduces a novel multimodal OEI (MOEI) task, integrating text and speech to mirror real-world scenarios, and proposes an LLM-driven method STOEI, which combines speech and text modal to identify opinion expressions."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

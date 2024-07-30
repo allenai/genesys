@@ -1,0 +1,40 @@
+{
+    "acronym": "942a4290df97dfbcce0cd48aa8647eb70c90ba42",
+    "title": "Using Zero-shot Prompting in the Automatic Creation and Expansion of Topic Taxonomies for Tagging Retail Banking Transactions",
+    "seed_ids": [
+        "gpt2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "942a4290df97dfbcce0cd48aa8647eb70c90ba42",
+    "abstract": "This work presents an unsupervised method for automatically constructing and expanding topic taxonomies using instruction-based fine-tuned LLMs (Large Language Models). We apply topic modeling and keyword extraction techniques to create initial topic taxonomies and LLMs to post-process the resulting terms and create a hierarchy. To expand an existing taxonomy with new terms, we use zero-shot prompting to find out where to add new nodes, which, to our knowledge, is the first work to present such an approach to taxonomy tasks. We use the resulting taxonomies to assign tags that characterize merchants from a retail bank dataset. To evaluate our work, we asked 12 volunteers to answer a two-part form in which we first assessed the quality of the taxonomies created and then the tags assigned to merchants based on that taxonomy. The evaluation revealed a coherence rate exceeding 90% for the chosen taxonomies. The taxonomies' expansion with LLMs also showed exciting results for parent node prediction, with an f1-score above 70% in our taxonomies.",
+    "authors": [
+        "Daniel de S. Moraes",
+        "Pedro T. C. Santos",
+        "P. B. D. Costa",
+        "Matheus A. S. Pinto",
+        "Ivan de J. P. Pinto",
+        "\u00c1. Veiga",
+        "S. Colcher",
+        "A. Busson",
+        "Rafael H. Rocha",
+        "Rennan Gaio",
+        "Rafael Miceli",
+        "Gabriela Tourinho",
+        "Marcos Rabaioli",
+        "Leandro Santos",
+        "Fellipe Marques",
+        "David Favaro"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents an unsupervised method for automatically constructing and expanding topic taxonomies using instruction-based fine-tuned LLMs (Large Language Models) to create initial topic taxonomies and LLMs to post-process the resulting terms and create a hierarchy."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

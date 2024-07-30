@@ -1,0 +1,42 @@
+{
+    "acronym": "067aaf0d1cde4ee21063be137559f2fe50125570",
+    "title": "Multi-Head State Space Model for Speech Recognition",
+    "seed_ids": [
+        "s4",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "2fd10e095b146f99da8cdc6ff58720e2e8fca36d",
+        "11df9ac34655f4ad746e4db39c49f928f0cbd201",
+        "09e2c7adbed37440d4a339852cfa34e5b660f768",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "067aaf0d1cde4ee21063be137559f2fe50125570",
+    "abstract": "State space models (SSMs) have recently shown promising results on small-scale sequence and language modelling tasks, rivalling and outperforming many attention-based approaches. In this paper, we propose a multi-head state space (MH-SSM) architecture equipped with special gating mechanisms, where parallel heads are taught to learn local and global temporal dynamics on sequence data. As a drop-in replacement for multi-head attention in transformer encoders, this new model significantly outperforms the transformer transducer on the LibriSpeech speech recognition corpus. Furthermore, we augment the transformer block with MH-SSMs layers, referred to as the Stateformer, achieving state-of-the-art performance on the LibriSpeech task, with word error rates of 1.76\\%/4.37\\% on the development and 1.91\\%/4.36\\% on the test sets without using an external language model.",
+    "authors": [
+        "Yassir Fathullah",
+        "Chunyang Wu",
+        "Yuan Shangguan",
+        "J. Jia",
+        "Wenhan Xiong",
+        "Jay Mahadeokar",
+        "Chunxi Liu",
+        "Yangyang Shi",
+        "Ozlem Kalinli",
+        "M. Seltzer",
+        "M. Gales"
+    ],
+    "venue": "Interspeech",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A multi-head state space (MH-SSM) architecture equipped with special gating mechanisms, where parallel heads are taught to learn local and global temporal dynamics on sequence data, which significantly outperforms the transformer transducer on the LibriSpeech speech recognition corpus."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

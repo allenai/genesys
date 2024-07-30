@@ -1,0 +1,30 @@
+{
+    "acronym": "3250a38457f3dc5b9b4b3e68dd2e2a9e5fe47d83",
+    "title": "Computing Low-Entropy Couplings for Large-Support Distributions",
+    "seed_ids": [
+        "gpt2",
+        "789df3835224ca1feaa6e5bca69500c86c849d96",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3250a38457f3dc5b9b4b3e68dd2e2a9e5fe47d83",
+    "abstract": "Minimum-entropy coupling (MEC) -- the process of finding a joint distribution with minimum entropy for given marginals -- has applications in areas such as causality and steganography. However, existing algorithms are either computationally intractable for large-support distributions or limited to specific distribution types and sensitive to hyperparameter choices. This work addresses these limitations by unifying a prior family of iterative MEC (IMEC) approaches into a generalized partition-based formalism. From this framework, we derive a novel IMEC algorithm called ARIMEC, capable of handling arbitrary discrete distributions, and introduce a method to make IMEC robust to suboptimal hyperparameter settings. These innovations facilitate the application of IMEC to high-throughput steganography with language models, among other settings. Our codebase is available at https://github.com/ssokota/mec .",
+    "authors": [
+        "Samuel Sokota",
+        "Dylan Sam",
+        "C. S. D. Witt",
+        "Spencer Compton",
+        "Jakob Foerster",
+        "J. Z. Kolter"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel IMEC algorithm is derived, capable of handling arbitrary discrete distributions, and a method to make IMEC robust to suboptimal hyperparameter settings is introduced, which facilitate the application of IMEC to high-throughput steganography with language models, among other settings."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

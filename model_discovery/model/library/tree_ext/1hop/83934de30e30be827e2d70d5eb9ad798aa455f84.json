@@ -1,0 +1,30 @@
+{
+    "acronym": "83934de30e30be827e2d70d5eb9ad798aa455f84",
+    "title": "Explicitly Modeling Adaptive Depths for Transformer",
+    "seed_ids": [
+        "universaltrans",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "2a31319e73d4486716168b65cdf7559baeda18ce",
+        "d602cab8086e2524d5cf2b4c2cfbe815c92dbd78"
+    ],
+    "s2id": "83934de30e30be827e2d70d5eb9ad798aa455f84",
+    "abstract": "The vanilla Transformer conducts a fixed number of computations over all words in a sentence, irrespective of whether they are easy or difficult to learn. In terms of both computational efficiency and ease of learning, it is preferable to dynamically vary the numbers of computations according to the hardness of the input words. However, how to find a suitable estimation for such hardness, then explicitly modeling adaptive computation depths are still not investigated. In this paper, we try to solve this issue, and propose two effective approaches, namely 1) mutual information based estimation and 2) reconstruction loss based estimation, to measure the hardness of learning the representation for a word and determine its computational depth. Results on the classic text classification task (24 datasets in various sizes and domains) show that our approaches achieve superior performance while preserving higher efficiency in computation over the vanilla Transformer and previous depth-adaptive models. More importantly, our approaches lead to more robust depth-adaptive Transformer models with better interpretability of the depth distribution.",
+    "authors": [
+        "Yijin Liu",
+        "Fandong Meng",
+        "Jie Zhou",
+        "Yufeng Chen",
+        "Jinan Xu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Two effective approaches are proposed, namely 1) mutual information based estimation and 2) reconstruction loss based estimation, to measure the hardness of learning the representation for a word and determine its computational depth, to lead to more robust depth-adaptive Transformer models with better interpretability of the depth distribution."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

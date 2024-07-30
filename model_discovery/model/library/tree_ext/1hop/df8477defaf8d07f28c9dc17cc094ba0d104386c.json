@@ -1,0 +1,34 @@
+{
+    "acronym": "df8477defaf8d07f28c9dc17cc094ba0d104386c",
+    "title": "A Multi-Modal Story Generation Framework with AI-Driven Storyline Guidance",
+    "seed_ids": [
+        "gpt2",
+        "149a523493e2c41bfbc7b1299425fa9c918c0cdd",
+        "9aacdbc8b04fa63e6fe93f62a737a11c613f08fb",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "e7c698bdace380f7183dedbe657686f1885f615c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "824d15233236e804b40ad827a3b076e07b2c3d3b",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "df8477defaf8d07f28c9dc17cc094ba0d104386c",
+    "abstract": "An automatic story generation system continuously generates stories with a natural plot. The major challenge of automatic story generation is to maintain coherence between consecutive generated stories without the need for human intervention. To address this, we propose a novel multi-modal story generation framework that includes automated storyline decision-making capabilities. Our framework consists of three independent models: a transformer encoder-based storyline guidance model, which predicts a storyline using a multiple-choice question-answering problem; a transformer decoder-based story generation model that creates a story that describes the storyline determined by the guidance model; and a diffusion-based story visualization model that generates a representative image visually describing a scene to help readers better understand the story flow. Our proposed framework was extensively evaluated through both automatic and human evaluations, which demonstrate that our model outperforms the previous approach, suggesting the effectiveness of our storyline guidance model in making proper plans.",
+    "authors": [
+        "Juntae Kim",
+        "Yoonseok Heo",
+        "Hogeon Yu",
+        "J. Nang"
+    ],
+    "venue": "Electronics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel multi-modal story generation framework that includes automated storyline decision-making capabilities and demonstrates that the model outperforms the previous approach, suggesting the effectiveness of the storyline guidance model in making proper plans."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

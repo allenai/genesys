@@ -1,0 +1,35 @@
+{
+    "acronym": "564d2c79772f3e1e847fa8c410f5ab2ad6134c8d",
+    "title": "VideoMamba: Spatio-Temporal Selective State Space Model",
+    "seed_ids": [
+        "transformer",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "9226ae23b95b3f6891461e086d910ffeb7ac448a",
+        "4990f7542f0600e0501a7e7a931b32eb7cb804d5",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "94b69cf199fa0b6c842e17fe5d6174a9d161c3df"
+    ],
+    "s2id": "564d2c79772f3e1e847fa8c410f5ab2ad6134c8d",
+    "abstract": "We introduce VideoMamba, a novel adaptation of the pure Mamba architecture, specifically designed for video recognition. Unlike transformers that rely on self-attention mechanisms leading to high computational costs by quadratic complexity, VideoMamba leverages Mamba's linear complexity and selective SSM mechanism for more efficient processing. The proposed Spatio-Temporal Forward and Backward SSM allows the model to effectively capture the complex relationship between non-sequential spatial and sequential temporal information in video. Consequently, VideoMamba is not only resource-efficient but also effective in capturing long-range dependency in videos, demonstrated by competitive performance and outstanding efficiency on a variety of video understanding benchmarks. Our work highlights the potential of VideoMamba as a powerful tool for video understanding, offering a simple yet effective baseline for future research in video analysis.",
+    "authors": [
+        "Jinyoung Park",
+        "Heeseon Kim",
+        "Kangwook Ko",
+        "Minbeom Kim",
+        "Changick Kim"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "VideoMamba is introduced, a novel adaptation of the pure Mamba architecture, specifically designed for video recognition, and the proposed Spatio-Temporal Forward and Backward SSM allows the model to effectively capture the complex relationship between non-sequential spatial and sequential temporal information in video."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

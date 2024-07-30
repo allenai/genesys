@@ -1,0 +1,31 @@
+{
+    "acronym": "0ae0029b32cbd7ce770fd40790d11cc3e8812073",
+    "title": "Learning High-resolution Vector Representation from Multi-Camera Images for 3D Object Detection",
+    "seed_ids": [
+        "transformer",
+        "f7e449d7695fbbf43081cc820a81fe0ccb11c3db",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "0ae0029b32cbd7ce770fd40790d11cc3e8812073",
+    "abstract": "The Bird's-Eye-View (BEV) representation is a critical factor that directly impacts the 3D object detection performance, but the traditional BEV grid representation induces quadratic computational cost as the spatial resolution grows. To address this limitation, we present a new camera-based 3D object detector with high-resolution vector representation: VectorFormer. The presented high-resolution vector representation is combined with the lower-resolution BEV representation to efficiently exploit 3D geometry from multi-camera images at a high resolution through our two novel modules: vector scattering and gathering. To this end, the learned vector representation with richer scene contexts can serve as the decoding query for final predictions. We conduct extensive experiments on the nuScenes dataset and demonstrate state-of-the-art performance in NDS and inference time. Furthermore, we investigate query-BEV-based methods incorporated with our proposed vector representation and observe a consistent performance improvement.",
+    "authors": [
+        "Zhili Chen",
+        "Shuangjie Xu",
+        "Maosheng Ye",
+        "Zian Qian",
+        "Xiaoyi Zou",
+        "Dit-Yan Yeung",
+        "Qifeng Chen"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new camera-based 3D object detector with high-resolution vector representation that is combined with the lower-resolution BEV representation to efficiently exploit 3D geometry from multi-camera images at a high resolution through two novel modules: vector scattering and gathering."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

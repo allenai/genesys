@@ -1,0 +1,24 @@
+{
+    "acronym": "ca58031971db787b92a13c46e1dfe801b9b1674a",
+    "title": "ImageNot: A contrast with ImageNet preserves model rankings",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "ca58031971db787b92a13c46e1dfe801b9b1674a",
+    "abstract": "We introduce ImageNot, a dataset designed to match the scale of ImageNet while differing drastically in other aspects. We show that key model architectures developed for ImageNet over the years rank identically when trained and evaluated on ImageNot to how they rank on ImageNet. This is true when training models from scratch or fine-tuning them. Moreover, the relative improvements of each model over earlier models strongly correlate in both datasets. We further give evidence that ImageNot has a similar utility as ImageNet for transfer learning purposes. Our work demonstrates a surprising degree of external validity in the relative performance of image classification models. This stands in contrast with absolute accuracy numbers that typically drop sharply even under small changes to a dataset.",
+    "authors": [
+        "Olawale Salaudeen",
+        "Moritz Hardt"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that key model architectures developed for ImageNet over the years rank identically when trained and evaluated on ImageNot to how they rank on ImageNet, demonstrating a surprising degree of external validity in the relative performance of image classification models."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

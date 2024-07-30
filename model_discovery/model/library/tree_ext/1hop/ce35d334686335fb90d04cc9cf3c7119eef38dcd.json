@@ -1,0 +1,26 @@
+{
+    "acronym": "ce35d334686335fb90d04cc9cf3c7119eef38dcd",
+    "title": "Dual Layer Cogni - Insight Deep-Mood Encoder: A Two- Tiered Approach for Depression Detection",
+    "seed_ids": [
+        "transformer",
+        "bert"
+    ],
+    "s2id": "ce35d334686335fb90d04cc9cf3c7119eef38dcd",
+    "abstract": "Depression (MDD) affects approximately 5% of adults globally, contributing to productivity loss and public health concerns. With 280 million people impacted, the risk of suicide and self-harm underscores its severity. Current treatments are inadequate, and the complex, heterogeneous nature of depression necessitates automated solutions for timely assessment and varied treatments. This study explores the transformative role of Artificial Intelligence in detecting depressive symptoms, leveraging NLP, and multimodal data analysis. The research introduces the \u201cDual Layer Cogni-Insight Deep-Mood Encoder (DLCDME)\u201d model, incorporating two-tiered feature encodings. Four pre-trained language models (BERT, MentalBERT, MentalRoBERTa, PsychBERT, and ClinicalBERT) are experimented and fused with linguistic features for comprehensive representation. A transformer encoder, multi-head attention, and LSTM fine-tuning enhances contextual text feature embeddings, demonstrating the efficacy of ClinicalBERT with transformer encoders for cost-effective large corpus handling. Contributions include a novel feature extraction approach, a thorough model analysis, and the superior performance of DLCDME over contemporary works, holding promise for clinical diagnosis. Our findings reveal that a) the application of ClinicalBERT over DLCDME significantly enhances the performance of depression detection, and b) employing dual feature encodings on text data with transformer attention for predicting depression yields an improved MAE of 3.40 and RMSE of 4.38. The model achieved a test accuracy of 95%, with F1 scores for precision, and recall recorded at 0.95, 0.96, 0.95 respectively.",
+    "authors": [
+        "Neda Firoz",
+        "Olga Berestneva",
+        "Sergey V. Aksyonov"
+    ],
+    "venue": "2024 International Russian Smart Industry Conference (SmartIndustryCon)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The findings reveal that the application of ClinicalBERT over DLCDME significantly enhances the performance of depression detection, and employing dual feature encodings on text data with transformer attention for predicting depression yields an improved MAE of 3.40 and RMSE of 4.38."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

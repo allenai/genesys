@@ -1,0 +1,26 @@
+{
+    "acronym": "c5e787caef8da20a8537fefd587531335c03ce72",
+    "title": "MC-GPT: Empowering Vision-and-Language Navigation with Memory Map and Reasoning Chains",
+    "seed_ids": [
+        "gpt3"
+    ],
+    "s2id": "c5e787caef8da20a8537fefd587531335c03ce72",
+    "abstract": "In the Vision-and-Language Navigation (VLN) task, the agent is required to navigate to a destination following a natural language instruction. While learning-based approaches have been a major solution to the task, they suffer from high training costs and lack of interpretability. Recently, Large Language Models (LLMs) have emerged as a promising tool for VLN due to their strong generalization capabilities. However, existing LLM-based methods face limitations in memory construction and diversity of navigation strategies. To address these challenges, we propose a suite of techniques. Firstly, we introduce a method to maintain a topological map that stores navigation history, retaining information about viewpoints, objects, and their spatial relationships. This map also serves as a global action space. Additionally, we present a Navigation Chain of Thoughts module, leveraging human navigation examples to enrich navigation strategy diversity. Finally, we establish a pipeline that integrates navigational memory and strategies with perception and action prediction modules. Experimental results on the REVERIE and R2R datasets show that our method effectively enhances the navigation ability of the LLM and improves the interpretability of navigation reasoning.",
+    "authors": [
+        "Zhaohuan Zhan",
+        "Lisha Yu",
+        "Sijie Yu",
+        "Guang Tan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a method to maintain a topological map that stores navigation history, retaining information about viewpoints, objects, and their spatial relationships, and establishes a pipeline that integrates navigational memory and strategies with perception and action prediction modules."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,34 @@
+{
+    "acronym": "e2c16d93bca8822b571dd388af4e309069d1a373",
+    "title": "Target-Guided Dialogue Response Generation Using Commonsense and Data Augmentation",
+    "seed_ids": [
+        "gpt2",
+        "1ea7ad7ae45d3d4634b6ffad2a8b0d41ad2fcb25",
+        "6d23532a1e9a8116041fd5aac6b0ef8ddd6d8171",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "2797f8c0398af676612698f2ccc1723a8692f271",
+        "9967faaec2ada5e9c638b6dc9ff577bc28bbd04c",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "710d183174844da5b7f392667f3cc25d2b098dde",
+        "f48ae425e2567be2d993efcaaf74c2274fc9d7c5",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e2c16d93bca8822b571dd388af4e309069d1a373",
+    "abstract": "Target-guided response generation enables dialogue systems to smoothly transition a conversation from a dialogue context toward a target sentence. Such control is useful for designing dialogue systems that direct a conversation toward specific goals, such as creating non-obtrusive recommendations or introducing new topics in the conversation. In this paper, we introduce a new technique for target-guided response generation, which first finds a bridging path of commonsense knowledge concepts between the source and the target, and then uses the identified bridging path to generate transition responses. Additionally, we propose techniques to re-purpose existing dialogue datasets for target-guided generation. Experiments reveal that the proposed techniques outperform various baselines on this task. Finally, we observe that the existing automated metrics for this task correlate poorly with human judgement ratings. We propose a novel evaluation metric that we demonstrate is more reliable for target-guided response evaluation. Our work generally enables dialogue system designers to exercise more control over the conversations that their systems produce.",
+    "authors": [
+        "Prakhar Gupta",
+        "Harsh Jhamtani",
+        "Jeffrey P. Bigham"
+    ],
+    "venue": "NAACL-HLT",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new technique is introduced for target-guided response generation, which first finds a bridging path of commonsense knowledge concepts between the source and the target, and then uses the identified bridges path to generate transition responses."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,35 @@
+{
+    "acronym": "e9e1e00e73c751e5aa7bc0d3583a0f9153df35ef",
+    "title": "Geneverse: A collection of Open-source Multimodal Large Language Models for Genomic and Proteomic Research",
+    "seed_ids": [
+        "gpt3",
+        "1804ea0c26e9b038547ff7a7e3eedf8d9de9717d",
+        "a9f7761b740c85444b86f581801a471340007a0d",
+        "241eefc1bb11e693e0fef6977a65a0a822fb8f5e",
+        "bca0bbd01ea917b7a9fe369288ea3ba03d3b1ff3",
+        "94ce1d5924e05e8d75e43ce70044293ddcef850a",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "44279244407a64431810f982be6d0c7da4429dd7"
+    ],
+    "s2id": "e9e1e00e73c751e5aa7bc0d3583a0f9153df35ef",
+    "abstract": "The applications of large language models (LLMs) are promising for biomedical and healthcare research. Despite the availability of open-source LLMs trained using a wide range of biomedical data, current research on the applications of LLMs to genomics and proteomics is still limited. To fill this gap, we propose a collection of finetuned LLMs and multimodal LLMs (MLLMs), known as Geneverse, for three novel tasks in genomic and proteomic research. The models in Geneverse are trained and evaluated based on domain-specific datasets, and we use advanced parameter-efficient finetuning techniques to achieve the model adaptation for tasks including the generation of descriptions for gene functions, protein function inference from its structure, and marker gene selection from spatial transcriptomic data. We demonstrate that adapted LLMs and MLLMs perform well for these tasks and may outperform closed-source large-scale models based on our evaluations focusing on both truthfulness and structural correctness. All of the training strategies and base models we used are freely accessible.",
+    "authors": [
+        "Tianyu Liu",
+        "Yijia Xiao",
+        "Xiao Luo",
+        "Hua Xu",
+        "W. Zheng",
+        "Hongyu Zhao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a collection of finetuned LLMs and multimodal LLMs (MLLMs), known as Geneverse, for three novel tasks in genomic and proteomic research, and demonstrates that adapted LLMs and MLLMs perform well and may outperform closed-source large-scale models based on evaluations focusing on both truthfulness and structural correctness."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

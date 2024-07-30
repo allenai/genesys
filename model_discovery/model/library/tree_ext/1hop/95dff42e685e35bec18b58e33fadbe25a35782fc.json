@@ -1,0 +1,32 @@
+{
+    "acronym": "95dff42e685e35bec18b58e33fadbe25a35782fc",
+    "title": "Switch Diffusion Transformer: Synergizing Denoising Tasks with Sparse Mixture-of-Experts",
+    "seed_ids": [
+        "classfreediffu",
+        "fae76f91b776310727c0668faa0ddd0ce957877c",
+        "7acc71fad70c4c65203739f156bcb440587df901",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "95dff42e685e35bec18b58e33fadbe25a35782fc",
+    "abstract": "Diffusion models have achieved remarkable success across a range of generative tasks. Recent efforts to enhance diffusion model architectures have reimagined them as a form of multi-task learning, where each task corresponds to a denoising task at a specific noise level. While these efforts have focused on parameter isolation and task routing, they fall short of capturing detailed inter-task relationships and risk losing semantic information, respectively. In response, we introduce Switch Diffusion Transformer (Switch-DiT), which establishes inter-task relationships between conflicting tasks without compromising semantic information. To achieve this, we employ a sparse mixture-of-experts within each transformer block to utilize semantic information and facilitate handling conflicts in tasks through parameter isolation. Additionally, we propose a diffusion prior loss, encouraging similar tasks to share their denoising paths while isolating conflicting ones. Through these, each transformer block contains a shared expert across all tasks, where the common and task-specific denoising paths enable the diffusion model to construct its beneficial way of synergizing denoising tasks. Extensive experiments validate the effectiveness of our approach in improving both image quality and convergence rate, and further analysis demonstrates that Switch-DiT constructs tailored denoising paths across various generation scenarios.",
+    "authors": [
+        "Byeongjun Park",
+        "Hyojun Go",
+        "Jin-Young Kim",
+        "Sangmin Woo",
+        "Seokil Ham",
+        "Changick Kim"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces Switch Diffusion Transformer (Switch-DiT), which establishes inter-task relationships between conflicting tasks without compromising semantic information and proposes a diffusion prior loss, encouraging similar tasks to share their denoising paths while isolating conflicting ones."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

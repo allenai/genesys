@@ -1,0 +1,31 @@
+{
+    "acronym": "b22934bb297d9db55259385bbb8cd8a0d29b4bd1",
+    "title": "RiNALMo: General-Purpose RNA Language Models Can Generalize Well on Structure Prediction Tasks",
+    "seed_ids": [
+        "roformer",
+        "c064c79e3026f81e5043cd5b0f4264b4d43336e6",
+        "0f4780f3f42dbe9755d54495ae17244cc88a7483",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a"
+    ],
+    "s2id": "b22934bb297d9db55259385bbb8cd8a0d29b4bd1",
+    "abstract": "Ribonucleic acid (RNA) plays a variety of crucial roles in fundamental biological processes. Recently, RNA has become an interesting drug target, emphasizing the need to improve our understanding of its structures and functions. Over the years, sequencing technologies have produced an enormous amount of unlabeled RNA data, which hides important knowledge and potential. Motivated by the successes of protein language models, we introduce RiboNucleic Acid Language Model (RiNALMo) to help unveil the hidden code of RNA. RiNALMo is the largest RNA language model to date with $650$ million parameters pre-trained on $36$ million non-coding RNA sequences from several available databases. RiNALMo is able to extract hidden knowledge and capture the underlying structure information implicitly embedded within the RNA sequences. RiNALMo achieves state-of-the-art results on several downstream tasks. Notably, we show that its generalization capabilities can overcome the inability of other deep learning methods for secondary structure prediction to generalize on unseen RNA families. The code has been made publicly available on https://github.com/lbcb-sci/RiNALMo.",
+    "authors": [
+        "Rafael Josip Peni'c",
+        "Tin Vlasic",
+        "Roland Huber",
+        "Yue Wan",
+        "M. \u0160iki\u0107"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "RiNALMo is the largest RNA language model to date with $650$ million parameters pre-trained on $36$ million non-coding RNA sequences from several available databases and shows that its generalization capabilities can overcome the inability of other deep learning methods for secondary structure prediction to generalize on unseen RNA families."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

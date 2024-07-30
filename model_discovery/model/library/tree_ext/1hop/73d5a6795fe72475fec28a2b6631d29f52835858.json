@@ -1,0 +1,29 @@
+{
+    "acronym": "73d5a6795fe72475fec28a2b6631d29f52835858",
+    "title": "Deep Bag-of-Words Model: An Efficient and Interpretable Relevance Architecture for Chinese E-Commerce",
+    "seed_ids": [
+        "bert",
+        "d56c1fc337fb07ec004dc846f80582c327af717c"
+    ],
+    "s2id": "73d5a6795fe72475fec28a2b6631d29f52835858",
+    "abstract": "Text relevance or text matching of query and product is an essential technique for the e-commerce search system to ensure that the displayed products can match the intent of the query. Many studies focus on improving the performance of the relevance model in search system. Recently, pre-trained language models like BERT have achieved promising performance on the text relevance task. While these models perform well on the offline test dataset, there are still obstacles to deploy the pre-trained language model to the online system as their high latency. The two-tower model is extensively employed in industrial scenarios, owing to its ability to harmonize performance with computational efficiency. Regrettably, such models present an opaque ``black box'' nature, which prevents developers from making special optimizations. In this paper, we raise deep Bag-of-Words (DeepBoW) model, an efficient and interpretable relevance architecture for Chinese e-commerce. Our approach proposes to encode the query and the product into the sparse BoW representation, which is a set of word-weight pairs. The weight means the important or the relevant score between the corresponding word and the raw text. The relevance score is measured by the accumulation of the matched word between the sparse BoW representation of the query and the product. Compared to popular dense distributed representation that usually suffers from the drawback of black-box, the most advantage of the proposed representation model is highly explainable and interventionable, which is a superior advantage to the deployment and operation of online search engines. Moreover, the online efficiency of the proposed model is even better than the most efficient inner product form of dense representation ...",
+    "authors": [
+        "Zhe Lin",
+        "Jiwei Tan",
+        "Dan Ou",
+        "Xi Chen",
+        "Shaowei Yao",
+        "Bo Zheng"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Deep Bag-of-Words (DeepBoW) model is raised, an efficient and interpretable relevance architecture for Chinese e-commerce that is highly explainable and interventionable, and the online efficiency of the proposed model is even better than the most efficient inner product form of dense representation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

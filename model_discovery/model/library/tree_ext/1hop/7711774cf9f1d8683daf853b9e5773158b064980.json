@@ -1,0 +1,39 @@
+{
+    "acronym": "7711774cf9f1d8683daf853b9e5773158b064980",
+    "title": "Enable Deep Learning on Mobile Devices: Methods, Systems, and Applications",
+    "seed_ids": [
+        "gpt2",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "ef8d788a904ed66bd8e30ffa69bc3ea1fe57dda7",
+        "8af925f4edf45131b5b6fed8aa655089d58692fa",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "16c844fd4d97f3c6eb38b0d6527c87d184efedc3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7711774cf9f1d8683daf853b9e5773158b064980",
+    "abstract": "Deep neural networks (DNNs) have achieved unprecedented success in the field of artificial intelligence (AI), including computer vision, natural language processing, and speech recognition. However, their superior performance comes at the considerable cost of computational complexity, which greatly hinders their applications in many resource-constrained devices, such as mobile phones and Internet of Things (IoT) devices. Therefore, methods and techniques that are able to lift the efficiency bottleneck while preserving the high accuracy of DNNs are in great demand to enable numerous edge AI applications. This article provides an overview of efficient deep learning methods, systems, and applications. We start from introducing popular model compression methods, including pruning, factorization, quantization, as well as compact model design. To reduce the large design cost of these manual solutions, we discuss the AutoML framework for each of them, such as neural architecture search (NAS) and automated pruning and quantization. We then cover efficient on-device training to enable user customization based on the local data on mobile devices. Apart from general acceleration techniques, we also showcase several task-specific accelerations for point cloud, video, and natural language processing by exploiting their spatial sparsity and temporal/token redundancy. Finally, to support all these algorithmic advancements, we introduce the efficient deep learning system design from both software and hardware perspectives.",
+    "authors": [
+        "Han Cai",
+        "Ji Lin",
+        "Yujun Lin",
+        "Zhijian Liu",
+        "Haotian Tang",
+        "Hanrui Wang",
+        "Ligeng Zhu",
+        "Song Han"
+    ],
+    "venue": "ACM Trans. Design Autom. Electr. Syst.",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This article provides an overview of efficient deep learning methods, systems, and applications by introducing popular model compression methods, including pruning, factorization, quantization, as well as compact model design."
+    },
+    "citationCount": 70,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

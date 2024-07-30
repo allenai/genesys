@@ -1,0 +1,37 @@
+{
+    "acronym": "473e55ded26b201b834ae73966474299528ec48d",
+    "title": "Unified Detoxifying and Debiasing in Language Generation via Inference-time Adaptive Optimization",
+    "seed_ids": [
+        "gpt",
+        "670edecb7a0d3887893c8f287e66209b87e5f56f",
+        "8c62277dada489904a63de4dd87336c27c68fb5e",
+        "492a655a67e6ec7423a968cedb70eec0cdbc8e98",
+        "fd1b829261ba04bb92e0ab60c4f6e7cea0d99fbf",
+        "76a786b1acd6d1aca56e12a8a1db34569fdf9f3a",
+        "5d22b241836e30d5b0d852b463951ab7e3245ea4",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "473e55ded26b201b834ae73966474299528ec48d",
+    "abstract": "Warning: this paper contains model outputs exhibiting offensiveness and biases. Recently pre-trained language models (PLMs) have prospered in various natural language generation (NLG) tasks due to their ability to generate fairly fluent text. Nevertheless, these models are observed to capture and reproduce harmful contents in training corpora, typically toxic language and social biases, raising severe moral issues. Prior works on ethical NLG tackle detoxifying and debiasing separately, which is problematic since we find debiased models still exhibit toxicity while detoxified ones even exacerbate social biases. To address such a challenge, we propose the first unified framework of detoxifying and debiasing called UDDIA, which jointly formalizes these two problems as rectifying the output space. We theoretically interpret our framework as learning a text distribution mixing weighted attributes. Besides, UDDIA conducts adaptive optimization of only a few parameters during decoding based on a parameter-efficient tuning schema without any training data. This leads to minimal generation quality loss and improved rectification performance with acceptable computational cost. Experimental results demonstrate that compared to several strong baselines, UDDIA achieves debiasing and detoxifying simultaneously and better balances efficiency and effectiveness, taking a further step towards practical ethical NLG.",
+    "authors": [
+        "Zonghan Yang",
+        "Xiaoyuan Yi",
+        "Peng Li",
+        "Yang Liu",
+        "Xing Xie"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results demonstrate that compared to several strong baselines, UDDIA achieves debiasing and detoxifying simultaneously and better balances efficiency and effectiveness, taking a further step towards practical ethical NLG."
+    },
+    "citationCount": 22,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

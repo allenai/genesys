@@ -1,0 +1,36 @@
+{
+    "acronym": "3e6a9b9bb793458ca0e97eab78251ab38f8fd417",
+    "title": "Can MLLMs Perform Text-to-Image In-Context Learning?",
+    "seed_ids": [
+        "gpt3",
+        "5fc1a3a49e8f1d106118b69d1d6be3b6caa23da0",
+        "f5e9337477d7a9eb6267d0310549fdefafbb7fe2",
+        "525d93a382f6e7873b5d8a2e0713eb3dff7fb250",
+        "b92628d13e8d090d042232fe6ae0b8998634b893",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3e6a9b9bb793458ca0e97eab78251ab38f8fd417",
+    "abstract": "The evolution from Large Language Models (LLMs) to Multimodal Large Language Models (MLLMs) has spurred research into extending In-Context Learning (ICL) to its multimodal counterpart. Existing such studies have primarily concentrated on image-to-text ICL. However, the Text-to-Image ICL (T2I-ICL), with its unique characteristics and potential applications, remains underexplored. To address this gap, we formally define the task of T2I-ICL and present CoBSAT, the first T2I-ICL benchmark dataset, encompassing ten tasks. Utilizing our dataset to benchmark six state-of-the-art MLLMs, we uncover considerable difficulties MLLMs encounter in solving T2I-ICL. We identify the primary challenges as the inherent complexity of multimodality and image generation, and show that strategies such as fine-tuning and Chain-of-Thought prompting help to mitigate these difficulties, leading to notable improvements in performance. Our code and dataset are available at https://github.com/UW-Madison-Lee-Lab/CoBSAT.",
+    "authors": [
+        "Yuchen Zeng",
+        "Wonjun Kang",
+        "Yicong Chen",
+        "Hyung Il Koo",
+        "Kangwook Lee"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work formally defines the task of T2I-ICL and presents CoBSAT, the first T2I-ICL benchmark dataset, encompassing ten tasks, and uncovers considerable difficulties MLLMs encounter in solving T2I-ICL."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "8ca9cbff7f47e5a499eae993306ae0d742373521",
+    "title": "Borrowing Knowledge From Pre-trained Language Model: A New Data-efficient Visual Learning Paradigm",
+    "seed_ids": [
+        "gpt",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "8ca9cbff7f47e5a499eae993306ae0d742373521",
+    "abstract": "The development of vision models for real-world applications is hindered by the challenge of annotated data scarcity, which has necessitated the adoption of dataefficient visual learning techniques such as semi-supervised learning. Unfortunately, the prevalent cross-entropy supervision is limited by its focus on category discrimination while disregarding the semantic connection between concepts, which ultimately results in the suboptimal exploitation of scarce labeled data. To address this issue, this paper presents a novel approach that seeks to leverage linguistic knowledge for data-efficient visual learning. The proposed approach, BorLan, Borrows knowledge from off-theshelf pretrained Language models that are already endowed with rich semantics extracted from large corpora, to compensate the semantic deficiency due to limited annotation in visual training. Specifically, we design a distribution alignment objective, which guides the vision model to learn both semantic-aware and domain-agnostic representations for the task through linguistic knowledge. One significant advantage of this paradigm is its flexibility in combining various visual and linguistic models. Extensive experiments on semi-supervised learning, single domain generalization and few-shot learning validate its effectiveness. Code is available at https://github.com/BIT-DA/BorLan.",
+    "authors": [
+        "Wenxuan Ma",
+        "Shuang Li",
+        "Jinming Zhang",
+        "Chi Harold Liu",
+        "Jingxuan Kang",
+        "Yulin Wang",
+        "Gao Huang"
+    ],
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel approach that seeks to leverage linguistic knowledge from off-theshelf pretrained Language models that are already endowed with rich semantics extracted from large corpora to compensate the semantic deficiency due to limited annotation in visual training is presented."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

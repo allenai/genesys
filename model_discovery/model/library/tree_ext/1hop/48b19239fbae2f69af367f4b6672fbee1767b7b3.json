@@ -1,0 +1,29 @@
+{
+    "acronym": "48b19239fbae2f69af367f4b6672fbee1767b7b3",
+    "title": "Image Captioning With Controllable and Adaptive Length Levels",
+    "seed_ids": [
+        "bert",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "48b19239fbae2f69af367f4b6672fbee1767b7b3",
+    "abstract": "Image captioning is a core challenge in computer vision, attracting significant attention. Traditional methods prioritize caption quality, often overlooking style control. Our research enhances method controllability, enabling descriptions of varying detail. By integrating a length level embedding into current models, they can produce detailed or concise captions, increasing diversity. We introduce a length-level reranking transformer to correlate image and text complexity, optimizing caption length for informativeness without redundancy. Additionally, with caption length increase, computational complexity grows due to the autoregressive (AR) design of existing methods. To address this, our non-autoregressive (NAR) model maintains constant complexity regardless of caption length. We've developed a training approach that includes refinement sequence training and sequence-level knowledge distillation to close the performance gap between NAR and AR models. In testing, our models set new standards for caption quality on the MS COCO dataset and offer enhanced controllability and diversity. Our NAR model excels over AR models in these aspects and shows greater efficiency with longer captions. With advanced training techniques, our NAR's caption quality rivals that of leading AR models.",
+    "authors": [
+        "Ning Ding",
+        "Chaorui Deng",
+        "Mingkui Tan",
+        "Qing Du",
+        "Zhiwei Ge",
+        "Qi Wu"
+    ],
+    "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a length-level reranking transformer to correlate image and text complexity, optimizing caption length for informativeness without redundancy, and develops a training approach that includes refinement sequence training and sequence-level knowledge distillation to close the performance gap between NAR and AR models."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

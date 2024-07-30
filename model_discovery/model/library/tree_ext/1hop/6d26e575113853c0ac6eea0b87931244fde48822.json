@@ -1,0 +1,29 @@
+{
+    "acronym": "6d26e575113853c0ac6eea0b87931244fde48822",
+    "title": "Instance-level Image Retrieval using Reranking Transformers",
+    "seed_ids": [
+        "linformer",
+        "longformer",
+        "reformer",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "6d26e575113853c0ac6eea0b87931244fde48822",
+    "abstract": "Instance-level image retrieval is the task of searching in a large database for images that match an object in a query image. To address this task, systems usually rely on a retrieval step that uses global image descriptors, and a subsequent step that performs domain-specific refinements or reranking by leveraging operations such as geometric verification based on local features. In this work, we propose Reranking Transformers (RRTs) as a general model to incorporate both local and global features to rerank the matching images in a supervised fashion and thus replace the relatively expensive process of geometric verification. RRTs are lightweight and can be easily parallelized so that reranking a set of top matching results can be performed in a single forward-pass. We perform extensive experiments on the Revisited Oxford and Paris datasets, and the Google Landmarks v2 dataset, showing that RRTs outperform previous reranking approaches while using much fewer local descriptors. Moreover, we demonstrate that, unlike existing approaches, RRTs can be optimized jointly with the feature extractor, which can lead to feature representations tailored to downstream tasks and further accuracy improvements. The code and trained models are publicly available at https://github.com/uvavision/RerankingTransformer.",
+    "authors": [
+        "Fuwen Tan",
+        "Jiangbo Yuan",
+        "Vicente Ordonez"
+    ],
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes Reranking Transformers (RRTs) as a general model to incorporate both local and global features to rerank the matching images in a supervised fashion and thus replace the relatively expensive process of geometric verification."
+    },
+    "citationCount": 70,
+    "influentialCitationCount": 12,
+    "code": null,
+    "description": null,
+    "url": null
+}

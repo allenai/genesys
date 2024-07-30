@@ -1,0 +1,40 @@
+{
+    "acronym": "131ba9932572c92155874db93626cf299659254e",
+    "title": "FLatten Transformer: Vision Transformer using Focused Linear Attention",
+    "seed_ids": [
+        "performer",
+        "977351c92f156db27592e88b14dee2c22d4b312a",
+        "ec139916edd6feb9b3cb3a0325ca96e21dbb0147",
+        "cb5df449643767c1474d0aa6f189223f74a10c3d",
+        "c49ac1f916d6d2edeb187e6619c8d23acd95eb21",
+        "2e644c67a697073d561da4f4dad35e5ad5316cfd",
+        "5d032bd2632b6f5847767f39ce247098c6bbc563",
+        "af679d69fcc1d0fcf0f039aba937853bcb50a8de",
+        "837ac4ed6825502f0460caec45e12e734c85b113",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "7d2a78a1f713b71c3a337247d042c5c2f0b2da84",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "131ba9932572c92155874db93626cf299659254e",
+    "abstract": "The quadratic computation complexity of self-attention has been a persistent challenge when applying Transformer models to vision tasks. Linear attention, on the other hand, offers a much more efficient alternative with its linear complexity by approximating the Softmax operation through carefully designed mapping functions. However, current linear attention approaches either suffer from significant performance degradation or introduce additional computation overhead from the mapping functions. In this paper, we propose a novel Focused Linear Attention module to achieve both high efficiency and expressiveness. Specifically, we first analyze the factors contributing to the performance degradation of linear attention from two perspectives: the focus ability and feature diversity. To overcome these limitations, we introduce a simple yet effective mapping function and an efficient rank restoration module to enhance the expressiveness of self-attention while maintaining low computation complexity. Extensive experiments show that our linear attention module is applicable to a variety of advanced vision Transformers, and achieves consistently improved performances on multiple benchmarks. Code is available at https://github.com/LeapLabTHU/FLatten-Transformer.",
+    "authors": [
+        "Dongchen Han",
+        "Xuran Pan",
+        "Yizeng Han",
+        "Shiji Song",
+        "Gao Huang"
+    ],
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel Focused Linear Attention module, which introduces a simple yet effective mapping function and an efficient rank restoration module to enhance the expressiveness of self-attention while maintaining low computation complexity."
+    },
+    "citationCount": 60,
+    "influentialCitationCount": 10,
+    "code": null,
+    "description": null,
+    "url": null
+}

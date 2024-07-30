@@ -1,0 +1,27 @@
+{
+    "acronym": "2d54afba9479414aff13efa52c14a2041d1f2f88",
+    "title": "Multi-Task Prediction of Clinical Outcomes in the Intensive Care Unit using Flexible Multimodal Transformers",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "2d54afba9479414aff13efa52c14a2041d1f2f88",
+    "abstract": "Recent deep learning research based on Transformer model architectures has demonstrated state-of-the-art performance across a variety of domains and tasks, mostly within the computer vision and natural language processing domains. While some recent studies have implemented Transformers for clinical tasks using electronic health records data, they are limited in scope, flexibility, and comprehensiveness. In this study, we propose a flexible Transformer-based EHR embedding pipeline and predictive model framework that introduces several novel modifications of existing workflows that capitalize on data attributes unique to the healthcare domain. We showcase the feasibility of our flexible design in a case study in the intensive care unit, where our models accurately predict seven clinical outcomes pertaining to readmission and patient mortality over multiple future time horizons.",
+    "authors": [
+        "B. Shickel",
+        "P. Tighe",
+        "A. Bihorac",
+        "Parisa Rashidi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A flexible Transformer-based EHR embedding pipeline and predictive model framework is proposed that introduces several novel modifications of existing workflows that capitalize on data attributes unique to the healthcare domain."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

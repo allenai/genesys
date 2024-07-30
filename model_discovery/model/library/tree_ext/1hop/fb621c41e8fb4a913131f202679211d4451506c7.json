@@ -1,0 +1,27 @@
+{
+    "acronym": "fb621c41e8fb4a913131f202679211d4451506c7",
+    "title": "Efficacy of Machine-Generated Instructions",
+    "seed_ids": [
+        "gpt3",
+        "bert"
+    ],
+    "s2id": "fb621c41e8fb4a913131f202679211d4451506c7",
+    "abstract": "Large\"instruction-tuned\"language models (i.e., finetuned to respond to instructions) have demonstrated a remarkable ability to generalize zero-shot to new tasks. Nevertheless, they depend heavily on human-written instruction data that is often limited in quantity, diversity, and creativity, therefore hindering the generality of the tuned model. We conducted a quantitative study to figure out the efficacy of machine-generated annotations, where we compare the results of a fine-tuned BERT model with human v/s machine-generated annotations. Applying our methods to the vanilla GPT-3 model, we saw that machine generated annotations were 78.54% correct and the fine-tuned model achieved a 96.01% model performance compared to the performance with human-labelled annotations. This result shows that machine-generated annotations are a resource and cost effective way to fine-tune down-stream models.",
+    "authors": [
+        "Samaksh Gulati",
+        "Anshit Verma",
+        "Manoj Parmar",
+        "Palash Choudhary"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A quantitative study to figure out the efficacy of machine-generated annotations, where it is seen that machine generated annotations were 78.54% correct and the fine-tuned model achieved a 96.01% model performance compared to the performance with human-labelled annotations."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

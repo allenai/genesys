@@ -1,0 +1,30 @@
+{
+    "acronym": "1781a4e695114aa277c0022f5ff5f82270cd64cd",
+    "title": "BIMM: Brain Inspired Masked Modeling for Video Representation Learning",
+    "seed_ids": [
+        "gpt3",
+        "4990f7542f0600e0501a7e7a931b32eb7cb804d5",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "1781a4e695114aa277c0022f5ff5f82270cd64cd",
+    "abstract": "The visual pathway of human brain includes two sub-pathways, ie, the ventral pathway and the dorsal pathway, which focus on object identification and dynamic information modeling, respectively. Both pathways comprise multi-layer structures, with each layer responsible for processing different aspects of visual information. Inspired by visual information processing mechanism of the human brain, we propose the Brain Inspired Masked Modeling (BIMM) framework, aiming to learn comprehensive representations from videos. Specifically, our approach consists of ventral and dorsal branches, which learn image and video representations, respectively. Both branches employ the Vision Transformer (ViT) as their backbone and are trained using masked modeling method. To achieve the goals of different visual cortices in the brain, we segment the encoder of each branch into three intermediate blocks and reconstruct progressive prediction targets with light weight decoders. Furthermore, drawing inspiration from the information-sharing mechanism in the visual pathways, we propose a partial parameter sharing strategy between the branches during training. Extensive experiments demonstrate that BIMM achieves superior performance compared to the state-of-the-art methods.",
+    "authors": [
+        "Zhifan Wan",
+        "Jie Zhang",
+        "Chang-bo Li",
+        "Shiguang Shan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Brain Inspired Masked Modeling (BIMM) framework, aiming to learn comprehensive representations from videos, consists of ventral and dorsal branches, which learn image and video representations, respectively."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,32 @@
+{
+    "acronym": "1a9c9e45211805db4a85c91e2b374b0e25b2acf9",
+    "title": "Pruning One More Token is Enough: Leveraging Latency-Workload Non-Linearities for Vision Transformers on the Edge",
+    "seed_ids": [
+        "transformer",
+        "1ea09be3944b6c9054a76e46101f91dd787b36ce",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "5f895e84c1fea75de07b4f90da518273c2e57291",
+        "e2f2662f0734e2edc2b4b36a734de111c7f8d54d"
+    ],
+    "s2id": "1a9c9e45211805db4a85c91e2b374b0e25b2acf9",
+    "abstract": "This paper investigates how to efficiently deploy vision transformers on edge devices. Recent methods reduce the latency of transformer neural networks by removing or merging tokens, with small accuracy degradation. However, these methods are not designed with edge device deployment in mind: jthey do not leverage information about the latency vs. workload trends to improve efficiency. First, we show the latency-workload size relationship is nonlinear for certain workload sizes. We consider this relationship to create a token pruning schedule. Second, we demonstrate a training-free, token pruning method utilizing this schedule. We show that for single batch inference, other methods increase latency by 18.6-30.3% with respect to baseline, while we can reduce it by 9%. For similar latency (within 5.2%) across devices we achieve 78.6%-84.5% ImageNet1K accuracy, while the state-of-the-art, Token Merging, achieves 45.8%-85.4%.",
+    "authors": [
+        "Nick Eliopoulos",
+        "Purvish Jajal",
+        "James Davis",
+        "Gaowen Liu",
+        "George K. Thiravathukal",
+        "Yung-Hsiang Lu"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper shows the latency-workload size relationship is nonlinear for certain workload sizes, and creates a training-free, token pruning method utilizing this relationship to create a token pruning schedule."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

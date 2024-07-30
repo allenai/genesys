@@ -1,0 +1,25 @@
+{
+    "acronym": "9e26a2328626a978edab42fea3c606bbaee61837",
+    "title": "Background Knowledge Grounding for Readable, Relevant, and Factual Biomedical Lay Summaries",
+    "seed_ids": [
+        "longformer",
+        "8a9e7290d403dd2098e5ce80d6338ae03071cf85",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "9e26a2328626a978edab42fea3c606bbaee61837",
+    "abstract": "Communication of scientific findings to the public is important for keeping non-experts informed of developments such as life-saving medical treatments. However, generating readable lay summaries from scientific documents is challenging, and currently, these summaries suffer from critical factual errors. One popular intervention for improving factuality is using additional external knowledge to provide factual grounding. However, it is unclear how these grounding sources should be retrieved, selected, or integrated, and how supplementary grounding documents might affect the readability or relevance of the generated summaries. We develop a simple method for selecting grounding sources and integrating them with source documents. We then use the BioLaySum summarization dataset to evaluate the effects of different grounding sources on summary quality. We found that grounding source documents improves the relevance and readability of lay summaries but does not improve factuality of lay summaries. This continues to be true in zero-shot summarization settings where we hypothesized that grounding might be even more important for factual lay summaries.",
+    "authors": [
+        "Domenic Rosati"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A simple method for selecting grounding sources and integrating them with source documents is developed and it is found that grounding source documents improves the relevance and readability of lay summaries but does not improve factuality ofLay summaries."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

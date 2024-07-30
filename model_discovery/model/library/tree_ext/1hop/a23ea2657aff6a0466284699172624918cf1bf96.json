@@ -1,0 +1,25 @@
+{
+    "acronym": "a23ea2657aff6a0466284699172624918cf1bf96",
+    "title": "Coherence\u2010based automatic short answer scoring using sentence embedding",
+    "seed_ids": [
+        "bert",
+        "bf083bd5dcd3b957f0d13dd715c0ce8d130bda4e"
+    ],
+    "s2id": "a23ea2657aff6a0466284699172624918cf1bf96",
+    "abstract": "Automatic essay scoring (AES) is an essential educational application in natural language processing. This automated process will alleviate the burden by increasing the reliability and consistency of the assessment. With the advances in text embedding libraries and neural network models, AES systems achieved good results in terms of accuracy. However, the actual goals still need to be attained, like embedding essays into vectors with cohesion and coherence, and providing student feedback is still challenging. In this paper, we proposed coherence\u2010based embedding of an essay into vectors using sentence\u2010Bidirectional Encoder Representation for Transformers. We trained these vectors on Long short\u2010term memory and bidirectional long short\u2010term memory to capture sentence connectivity with other sentences' semantics. We used two datasets: standard ASAP Kaggle and a domain\u2010specific dataset with almost 2500 responses from 650 students. Our model performed well on both datasets, with an average quadratic weighted kappa score of 0.76. Furthermore, we achieved good results compared to other prescribed models, and we also tested our model on adversarial responses of both datasets and observed decent outcomes.",
+    "authors": [
+        "Dadi Ramesh",
+        "Suresh Kumar Sanampudi"
+    ],
+    "venue": "European Journal of Education",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposed coherence\u2010based embedding of an essay into vectors using sentence\u2010Bidirectional Encoder Representation for Transformers and achieved good results compared to other prescribed models."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

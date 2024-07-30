@@ -1,0 +1,31 @@
+{
+    "acronym": "0935c34316f9654c2562a4f08cbbbfce758b6857",
+    "title": "CPLIP: Zero-Shot Learning for Histopathology with Comprehensive Vision-Language Alignment",
+    "seed_ids": [
+        "gpt3",
+        "a42fc49a300136d60aaebb668369010ee7746150",
+        "690df0820f35a47e1ce44f90e6ddb4132aa09267",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0935c34316f9654c2562a4f08cbbbfce758b6857",
+    "abstract": "This paper proposes Comprehensive Pathology Language Image Pre-training (CPLIP), a new unsupervised technique designed to enhance the alignment of images and text in histopathology for tasks such as classification and segmentation. This methodology enriches vision-language models by leveraging extensive data without needing ground truth annotations. CPLIP involves constructing a pathology-specific dictionary, generating textual descriptions for images using language models, and retrieving relevant images for each text snippet via a pre-trained model. The model is then fine-tuned using a many-to-many contrastive learning method to align complex interrelated concepts across both modalities. Evaluated across multiple histopathology tasks, CPLIP shows notable improvements in zero-shot learning scenarios, outperforming existing methods in both interpretability and robustness and setting a higher benchmark for the application of vision-language models in the field. To encourage further research and replication, the code for CPLIP is available on GitHub at https://cplip.github.io/",
+    "authors": [
+        "Sajid Javed",
+        "Arif Mahmood",
+        "I. I. Ganapathi",
+        "Fayaz Ali Dharejo",
+        "N. Werghi",
+        "Mohammed Bennamoun"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Evaluated across multiple histopathology tasks, CPLIP shows notable improvements in zero-shot learning scenarios, outperforming existing methods in both interpretability and robustness and setting a higher benchmark for the application of vision-language models in the field."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

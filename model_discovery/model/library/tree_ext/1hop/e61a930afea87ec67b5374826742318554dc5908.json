@@ -1,0 +1,27 @@
+{
+    "acronym": "e61a930afea87ec67b5374826742318554dc5908",
+    "title": "Low-Cost Generation and Evaluation of Dictionary Example Sentences",
+    "seed_ids": [
+        "bert",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e61a930afea87ec67b5374826742318554dc5908",
+    "abstract": "Dictionary example sentences play an important role in illustrating word definitions and usage, but manually creating quality sentences is challenging. Prior works have demonstrated that language models can be trained to generate example sentences. However, they relied on costly customized models and word sense datasets for generation and evaluation of their work. Rapid advancements in foundational models present the opportunity to create low-cost, zero-shot methods for the generation and evaluation of dictionary example sentences. We introduce a new automatic evaluation metric called OxfordEval that measures the win-rate of generated sentences against existing Oxford Dictionary sentences. OxfordEval shows high alignment with human judgments, enabling large-scale automated quality evaluation. We experiment with various LLMs and configurations to generate dictionary sentences across word classes. We complement this with a novel approach of using masked language models to identify and select sentences that best exemplify word meaning. The eventual model, FM-MLM, achieves over 85.1% win rate against Oxford baseline sentences according to OxfordEval, compared to 39.8% win rate for prior model-generated sentences.",
+    "authors": [
+        "Bill Cai",
+        "Clarence Boon Liang Ng",
+        "Daniel Tan",
+        "Shelvia Hotama"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new automatic evaluation metric called OxfordEval is introduced that measures the win-rate of generated sentences against existing Oxford Dictionary sentences and uses a novel approach of using masked language models to identify and select sentences that best exemplify word meaning."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

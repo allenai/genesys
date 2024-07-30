@@ -1,0 +1,29 @@
+{
+    "acronym": "a0b82beb195c34a5385b5b988e8441eee9d8708e",
+    "title": "New Intent Discovery with Attracting and Dispersing Prototype",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "a0b82beb195c34a5385b5b988e8441eee9d8708e",
+    "abstract": "New Intent Discovery (NID) aims to recognize known and infer new intent categories with the help of limited labeled and large-scale unlabeled data. The task is addressed as a feature-clustering problem and recent studies augment instance representation. However, existing methods fail to capture cluster-friendly representations, since they show less capability to effectively control and coordinate within-cluster and between-cluster distances. Tailored to the NID problem, we propose a Robust and Adaptive Prototypical learning (RAP) framework for globally distinct decision boundaries for both known and new intent categories. Specifically, a robust prototypical attracting learning (RPAL) method is designed to compel instances to gravitate toward their corresponding prototype, achieving greater within-cluster compactness. To attain larger between-cluster separation, another adaptive prototypical dispersing learning (APDL) method is devised to maximize the between-cluster distance from the prototype-to-prototype perspective. Experimental results evaluated on three challenging benchmarks (CLINC, BANKING, and StackOverflow) of our method with better cluster-friendly representation demonstrate that RAP brings in substantial improvements over the current state-of-the-art methods (even large language model) by a large margin (average 5.5% improvement).",
+    "authors": [
+        "Shun Zhang",
+        "Jian Yang",
+        "Jiaqi Bai",
+        "Chaoran Yan",
+        "Tongliang Li",
+        "Zhao Yan",
+        "Zhoujun Li"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A robust prototypical attracting learning (RPAL) method is designed to compel instances to gravitate toward their corresponding prototype, achieving greater within-cluster compactness and larger between-cluster separation."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

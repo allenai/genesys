@@ -1,0 +1,46 @@
+{
+    "acronym": "04684d221a1c782d0ca096cdb78efaf10cc115e0",
+    "title": "Mamba-R: Vision Mamba ALSO Needs Registers",
+    "seed_ids": [
+        "mamba",
+        "3e4ed3b3790980efbb537d381c7bc020eefed53f",
+        "cbaf689fd9ea9bc939510019d90535d6249b3367",
+        "62ac3ef81e54e1d1930fb5980b236345ee2e4f32",
+        "3af7273d7ca20c0c63cbaa47e60b058840835052",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "240103933ffe3dac2179cc160a2bd91299357a53",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "a30ac45ac5b7bd2148d3fb80ee7f3c29724e3170",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "04684d221a1c782d0ca096cdb78efaf10cc115e0",
+    "abstract": "Similar to Vision Transformers, this paper identifies artifacts also present within the feature maps of Vision Mamba. These artifacts, corresponding to high-norm tokens emerging in low-information background areas of images, appear much more severe in Vision Mamba -- they exist prevalently even with the tiny-sized model and activate extensively across background regions. To mitigate this issue, we follow the prior solution of introducing register tokens into Vision Mamba. To better cope with Mamba blocks' uni-directional inference paradigm, two key modifications are introduced: 1) evenly inserting registers throughout the input token sequence, and 2) recycling registers for final decision predictions. We term this new architecture Mamba-R. Qualitative observations suggest, compared to vanilla Vision Mamba, Mamba-R's feature maps appear cleaner and more focused on semantically meaningful regions. Quantitatively, Mamba-R attains stronger performance and scales better. For example, on the ImageNet benchmark, our base-size Mamba-R attains 82.9% accuracy, significantly outperforming Vim-B's 81.8%; furthermore, we provide the first successful scaling to the large model size (i.e., with 341M parameters), attaining a competitive accuracy of 83.2% (84.5% if finetuned with 384x384 inputs). Additional validation on the downstream semantic segmentation task also supports Mamba-R's efficacy.",
+    "authors": [
+        "Feng Wang",
+        "Jiahao Wang",
+        "Sucheng Ren",
+        "Guoyizhe Wei",
+        "Jieru Mei",
+        "Wei Shao",
+        "Yuyin Zhou",
+        "Alan L. Yuille",
+        "Cihang Xie"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Qualitative observations suggest, compared to vanilla Vision Mamba, Mamba-R's feature maps appear cleaner and more focused on semantically meaningful regions, and quantitatively, Mamba-R attains stronger performance and scales better."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

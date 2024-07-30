@@ -1,0 +1,26 @@
+{
+    "acronym": "4ac4f24fa28d69838b2a74bf5ab411bc993e688c",
+    "title": "Improving Event Coreference Resolution Using Document-level and Topic-level Information",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "4ac4f24fa28d69838b2a74bf5ab411bc993e688c",
+    "abstract": "Event coreference resolution (ECR) aims to cluster event mentions that refer to the same real-world events. Deep learning methods have achieved SOTA results on the ECR task. However, due to the encoding length limitation, previous methods either adopt classical pairwise models based on sentence-level context or split each document into multiple chunks and encode them separately. They failed to capture the interactions and contextual cues among those long-distance event mentions. Besides, high-level information, such as event topics, is rarely considered to enhance representation learning for ECR. To address the above two issues, we first apply a Longformer-based encoder to obtain the document-level embeddings and an encoder with a trigger-mask mechanism to learn sentence-level embeddings based on local context. In addition, we propose an event topic generator to infer the latent topic-level representations. Finally, using the above event embeddings, we employ a multiple tensor matching method to capture their interactions at the document, sentence, and topic levels. Experimental results on the KBP 2017 dataset show that our model outperforms the SOTA baselines.",
+    "authors": [
+        "Sheng Xu",
+        "Peifeng Li",
+        "Qiaoming Zhu"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Longformer-based encoder is applied and an encoder with a trigger-mask mechanism to learn sentence-level embeddings based on local context and an event topic generator is proposed to infer the latent topic-level representations."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

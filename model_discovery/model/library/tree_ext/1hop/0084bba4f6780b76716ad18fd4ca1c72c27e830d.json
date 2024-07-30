@@ -1,0 +1,31 @@
+{
+    "acronym": "0084bba4f6780b76716ad18fd4ca1c72c27e830d",
+    "title": "SimCURL: Simple Contrastive User Representation Learning from Command Sequences",
+    "seed_ids": [
+        "gpt",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0084bba4f6780b76716ad18fd4ca1c72c27e830d",
+    "abstract": "User modeling is crucial to understanding user behavior and essential for improving user experience and personalized recommendations. When users interact with software, vast amounts of command sequences are generated through logging and analytics systems. These command sequences contain clues to the users\u2019 goals and intents. However, these data modalities are highly unstructured and unlabeled, making it difficult for standard predictive systems to learn from. We propose SimCURL, a simple yet effective contrastive self-supervised deep learning framework that learns user representation from unlabeled command sequences. Our method introduces a user-session network architecture, as well as session dropout as a novel way of data augmentation. We train and evaluate our method on a real-world command sequence dataset of more than half a billion commands. Our method shows significant improvement over existing methods when the learned representation is transferred to downstream tasks such as experience and expertise classification.",
+    "authors": [
+        "Hang Chu",
+        "A. Khasahmadi",
+        "Karl D. D. Willis",
+        "Fraser Anderson",
+        "Yaoli Mao",
+        "Linh-Tam Tran",
+        "Justin Matejka",
+        "Jo Vermeulen"
+    ],
+    "venue": "International Conference on Machine Learning and Applications",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes SimCURL, a simple yet effective contrastive self-supervised deep learning framework that learns user representation from unlabeled command sequences and shows significant improvement over existing methods when the learned representation is transferred to downstream tasks such as experience and expertise classification."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

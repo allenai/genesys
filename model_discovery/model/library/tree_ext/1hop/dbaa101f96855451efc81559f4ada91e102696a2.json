@@ -1,0 +1,30 @@
+{
+    "acronym": "dbaa101f96855451efc81559f4ada91e102696a2",
+    "title": "Algebraic Positional Encodings",
+    "seed_ids": [
+        "roformer",
+        "2e644c67a697073d561da4f4dad35e5ad5316cfd",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "7072db6eddb85ecd2c117365d91bd694760f726e",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "dbaa101f96855451efc81559f4ada91e102696a2",
+    "abstract": "We introduce a novel positional encoding strategy for Transformer-style models, addressing the shortcomings of existing, often ad hoc, approaches. Our framework provides a flexible mapping from the algebraic specification of a domain to an interpretation as orthogonal operators. This design preserves the algebraic characteristics of the source domain, ensuring that the model upholds the desired structural properties. Our scheme can accommodate various structures, including sequences, grids and trees, as well as their compositions. We conduct a series of experiments to demonstrate the practical applicability of our approach. Results suggest performance on par with or surpassing the current state-of-the-art, without hyperparameter optimizations or ``task search'' of any kind. Code will be made available at \\url{github.com/konstantinosKokos/UnitaryPE}.",
+    "authors": [
+        "Konstantinos Kogkalidis",
+        "Jean-Philippe Bernardy",
+        "Vikas Garg"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a novel positional encoding strategy for Transformer-style models, addressing the shortcomings of existing, often ad hoc, approaches, and provides a flexible mapping from the algebraic specification of a domain to an interpretation as orthogonal operators."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

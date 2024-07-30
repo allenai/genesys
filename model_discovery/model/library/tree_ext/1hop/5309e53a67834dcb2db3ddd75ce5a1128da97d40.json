@@ -1,0 +1,31 @@
+{
+    "acronym": "5309e53a67834dcb2db3ddd75ce5a1128da97d40",
+    "title": "Two-stage Generative Question Answering on Temporal Knowledge Graph Using Large Language Models",
+    "seed_ids": [
+        "bert",
+        "5d733042a5185a97eb80e4c665eaeaf71f9d1bba",
+        "710d183174844da5b7f392667f3cc25d2b098dde",
+        "867915b9587c046ce8e4b71ab4dee2a1d8bf0b48"
+    ],
+    "s2id": "5309e53a67834dcb2db3ddd75ce5a1128da97d40",
+    "abstract": "Temporal knowledge graph question answering (TKGQA) poses a significant challenge task, due to the temporal constraints hidden in questions and the answers sought from dynamic structured knowledge. Although large language models (LLMs) have made considerable progress in their reasoning ability over structured data, their application to the TKGQA task is a relatively unexplored area. This paper first proposes a novel generative temporal knowledge graph question answering framework, GenTKGQA, which guides LLMs to answer temporal questions through two phases: Subgraph Retrieval and Answer Generation. First, we exploit LLM's intrinsic knowledge to mine temporal constraints and structural links in the questions without extra training, thus narrowing down the subgraph search space in both temporal and structural dimensions. Next, we design virtual knowledge indicators to fuse the graph neural network signals of the subgraph and the text representations of the LLM in a non-shallow way, which helps the open-source LLM deeply understand the temporal order and structural dependencies among the retrieved facts through instruction tuning. Experimental results on two widely used datasets demonstrate the superiority of our model.",
+    "authors": [
+        "Yifu Gao",
+        "Linbo Qiao",
+        "Zhigang Kan",
+        "Zhihua Wen",
+        "Yongquan He",
+        "Dongsheng Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel generative temporal knowledge graph question answering framework, GenTKGQA, is proposed, which guides LLMs to answer temporal questions through two phases: Subgraph Retrieval and Answer Generation, and designs virtual knowledge indicators to fuse the graph neural network signals of the subgraph and the text representations of the LLM in a non-shallow way."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "ca4ecf116a9b97ce525a01f3f51117877688ddf5",
+    "title": "Similarity Analysis of Contextual Word Representation Models",
+    "seed_ids": [
+        "gpt",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "f6fbb6809374ca57205bd2cf1421d4f4fa04f975",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ca4ecf116a9b97ce525a01f3f51117877688ddf5",
+    "abstract": "This paper investigates contextual word representation models from the lens of similarity analysis. Given a collection of trained models, we measure the similarity of their internal representations and attention. Critically, these models come from vastly different architectures. We use existing and novel similarity measures that aim to gauge the level of localization of information in the deep models, and facilitate the investigation of which design factors affect model similarity, without requiring any external linguistic annotation. The analysis reveals that models within the same family are more similar to one another, as may be expected. Surprisingly, different architectures have rather similar representations, but different individual neurons. We also observed differences in information localization in lower and higher layers and found that higher layers are more affected by fine-tuning on downstream tasks.",
+    "authors": [
+        "John M. Wu",
+        "Yonatan Belinkov",
+        "Hassan Sajjad",
+        "Nadir Durrani",
+        "Fahim Dalvi",
+        "James R. Glass"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The analysis reveals that models within the same family are more similar to one another, as may be expected, while different architectures have rather similar representations, but different individual neurons."
+    },
+    "citationCount": 63,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

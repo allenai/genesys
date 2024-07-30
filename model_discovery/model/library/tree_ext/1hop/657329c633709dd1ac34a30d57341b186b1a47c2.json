@@ -1,0 +1,33 @@
+{
+    "acronym": "657329c633709dd1ac34a30d57341b186b1a47c2",
+    "title": "Efficient Content-Based Sparse Attention with Routing Transformers",
+    "seed_ids": [
+        "sparsetransformer",
+        "reformer",
+        "3df83a60f55c64b40e6dbcd99cf9f67894a0736e",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "fb507ada871d1e8c29e376dbf7b7879689aa89f9"
+    ],
+    "s2id": "657329c633709dd1ac34a30d57341b186b1a47c2",
+    "abstract": "Self-attention has recently been adopted for a wide range of sequence modeling problems. Despite its effectiveness, self-attention suffers from quadratic computation and memory requirements with respect to sequence length. Successful approaches to reduce this complexity focused on attending to local sliding windows or a small set of locations independent of content. Our work proposes to learn dynamic sparse attention patterns that avoid allocating computation and memory to attend to content unrelated to the query of interest. This work builds upon two lines of research: It combines the modeling flexibility of prior work on content-based sparse attention with the efficiency gains from approaches based on local, temporal sparse attention. Our model, the Routing Transformer, endows self-attention with a sparse routing module based on online k-means while reducing the overall complexity of attention to O(n1.5d) from O(n2d) for sequence length n and hidden dimension d. We show that our model outperforms comparable sparse attention models on language modeling on Wikitext-103 (15.8 vs 18.3 perplexity), as well as on image generation on ImageNet-64 (3.43 vs 3.44 bits/dim) while using fewer self-attention layers. Additionally, we set a new state-of-the-art on the newly released PG-19 data-set, obtaining a test perplexity of 33.2 with a 22 layer Routing Transformer model trained on sequences of length 8192. We open-source the code for Routing Transformer in Tensorflow.1",
+    "authors": [
+        "Aurko Roy",
+        "M. Saffar",
+        "Ashish Vaswani",
+        "David Grangier"
+    ],
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to learn dynamic sparse attention patterns that avoid allocating computation and memory to attend to content unrelated to the query of interest, and shows that this model outperforms comparable sparse attention models on language modeling on Wikitext-103, as well as on image generation on ImageNet-64 while using fewer self-attention layers."
+    },
+    "citationCount": 480,
+    "influentialCitationCount": 45,
+    "code": null,
+    "description": null,
+    "url": null
+}

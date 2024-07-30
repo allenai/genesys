@@ -1,0 +1,41 @@
+{
+    "acronym": "f9bfc6d9ba1665b73af3323d46c7642b852759ef",
+    "title": "VideoLLM: Modeling Video Sequence with Large Language Models",
+    "seed_ids": [
+        "gpt",
+        "gpt2",
+        "42a30dc5470f54ec249f25d3c31e05d7c376c8e3",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "4990f7542f0600e0501a7e7a931b32eb7cb804d5",
+        "fa717a2e31f0cef4e26921f3b147a98644d2e64c",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f9bfc6d9ba1665b73af3323d46c7642b852759ef",
+    "abstract": "With the exponential growth of video data, there is an urgent need for automated technology to analyze and comprehend video content. However, existing video understanding models are often task-specific and lack a comprehensive capability of handling diverse tasks. The success of large language models (LLMs) like GPT has demonstrated their impressive abilities in sequence causal reasoning. Building upon this insight, we propose a novel framework called VideoLLM that leverages the sequence reasoning capabilities of pre-trained LLMs from natural language processing (NLP) for video sequence understanding. VideoLLM incorporates a carefully designed Modality Encoder and Semantic Translator, which convert inputs from various modalities into a unified token sequence. This token sequence is then fed into a decoder-only LLM. Subsequently, with the aid of a simple task head, our VideoLLM yields an effective unified framework for different kinds of video understanding tasks. To evaluate the efficacy of VideoLLM, we conduct extensive experiments using multiple LLMs and fine-tuning methods. We evaluate our VideoLLM on eight tasks sourced from four different datasets. The experimental results demonstrate that the understanding and reasoning capabilities of LLMs can be effectively transferred to video understanding tasks. We release the code at https://github.com/cg1177/VideoLLM.",
+    "authors": [
+        "Guo Chen",
+        "Yin-Dong Zheng",
+        "Jiahao Wang",
+        "Jilan Xu",
+        "Yifei Huang",
+        "Junting Pan",
+        "Yi Wang",
+        "Yali Wang",
+        "Y. Qiao",
+        "Tong Lu",
+        "Limin Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel framework called VideoLLM that leverages the sequence reasoning capabilities of pre-trained LLMs from natural language processing (NLP) for video sequence understanding and demonstrates that the understanding and Reasoning capabilities of LLMs can be effectively transferred to video understanding tasks."
+    },
+    "citationCount": 50,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

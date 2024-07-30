@@ -1,0 +1,27 @@
+{
+    "acronym": "338ebebd3450d79596c6735beb83afe732f0faa7",
+    "title": "An Automatic Prompt Generation System for Tabular Data Tasks",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "338ebebd3450d79596c6735beb83afe732f0faa7",
+    "abstract": "Efficient processing of tabular data is important in various industries, especially when working with datasets containing a large number of columns. Large language models (LLMs) have demonstrated their ability on several tasks through carefully crafted prompts. However, creating effective prompts for tabular datasets is challenging due to the structured nature of the data and the need to manage numerous columns. This paper presents an innovative auto-prompt generation system suitable for multiple LLMs, with minimal training. It proposes two novel methods; 1) A Reinforcement Learning-based algorithm for identifying and sequencing task-relevant columns 2) Cell-level similarity-based approach for enhancing few-shot example selection. Our approach has been extensively tested across 66 datasets, demonstrating improved performance in three downstream tasks: data imputation, error detection, and entity matching using two distinct LLMs; Google flan-t5-xxl and Mixtral 8x7B.",
+    "authors": [
+        "Ashlesha Akella",
+        "Abhijit Manatkar",
+        "Brij Chavda",
+        "Hima Patel"
+    ],
+    "venue": "Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 6: Industry Track)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents an innovative auto-prompt generation system suitable for multiple LLMs, with minimal training, and proposes two novel methods; a Reinforcement Learning-based algorithm for identifying and sequencing task-relevant columns and a Cell-level similarity-based approach for enhancing few-shot example selection."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

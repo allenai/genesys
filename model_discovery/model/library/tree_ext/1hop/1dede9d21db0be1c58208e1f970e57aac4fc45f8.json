@@ -1,0 +1,28 @@
+{
+    "acronym": "1dede9d21db0be1c58208e1f970e57aac4fc45f8",
+    "title": "Baby Llama: knowledge distillation from an ensemble of teachers trained on a small dataset with no performance penalty",
+    "seed_ids": [
+        "gpt2",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "5a2263092f49540fd0e049050a96882ff29b00c3",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1dede9d21db0be1c58208e1f970e57aac4fc45f8",
+    "abstract": "We present our submission to the BabyLM challenge, whose goal was to improve the sample efficiency of language models. We trained an ensemble consisting of a GPT-2 and small LLaMA models on the developmentally-plausible, 10M-word BabyLM dataset, then distilled it into a small, 58M-parameter LLaMA model, which exceeds in performance both of its teachers as well as a similar model trained without distillation. This suggests that distillation can not only retain the full performance of the teacher model when the latter is trained on a sufficiently small dataset; it can exceed it, and lead to significantly better performance than direct training.",
+    "authors": [
+        "I. Timiryasov",
+        "J. Tastet"
+    ],
+    "venue": "Proceedings of the BabyLM Challenge at the 27th Conference on Computational Natural Language Learning",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work trained an ensemble consisting of a GPT-2 and small LLaMA models on the developmentally-plausible, 10M-word BabyLM dataset, then distilled it into a small, 58M-parameter L LaMA model, which exceeds in performance both of its teachers as well as a similar model trained without distillation."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,41 @@
+{
+    "acronym": "4318e4ab5e2f5e2a50469aa043fe66c0744370a4",
+    "title": "Catwalk: A Unified Language Model Evaluation Framework for Many Datasets",
+    "seed_ids": [
+        "bert",
+        "1a3f7e23ef8f0bf06d0efa0dc174e4e361226ead",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "0822f8d7e6a72a65e65f147d3a8d8fccd485da40",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "4318e4ab5e2f5e2a50469aa043fe66c0744370a4",
+    "abstract": "The success of large language models has shifted the evaluation paradigms in natural language processing (NLP). The community's interest has drifted towards comparing NLP models across many tasks, domains, and datasets, often at an extreme scale. This imposes new engineering challenges: efforts in constructing datasets and models have been fragmented, and their formats and interfaces are incompatible. As a result, it often takes extensive (re)implementation efforts to make fair and controlled comparisons at scale. Catwalk aims to address these issues. Catwalk provides a unified interface to a broad range of existing NLP datasets and models, ranging from both canonical supervised training and fine-tuning, to more modern paradigms like in-context learning. Its carefully-designed abstractions allow for easy extensions to many others. Catwalk substantially lowers the barriers to conducting controlled experiments at scale. For example, we finetuned and evaluated over 64 models on over 86 datasets with a single command, without writing any code. Maintained by the AllenNLP team at the Allen Institute for Artificial Intelligence (AI2), Catwalk is an ongoing open-source effort: https://github.com/allenai/catwalk.",
+    "authors": [
+        "Dirk Groeneveld",
+        "Anas Awadalla",
+        "Iz Beltagy",
+        "Akshita Bhagia",
+        "Ian Magnusson",
+        "Hao Peng",
+        "Oyvind Tafjord",
+        "Pete Walsh",
+        "Kyle Richardson",
+        "Jesse Dodge"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Catwalk provides a unified interface to a broad range of existing NLP datasets and models, ranging from both canonical supervised training and fine-tuning, to more modern paradigms like in-context learning, and substantially lowers the barriers to conducting controlled experiments at scale."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

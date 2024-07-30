@@ -1,0 +1,34 @@
+{
+    "acronym": "6a0fe3c3c36574e848a6fe3b4dc3ce8853d8eb54",
+    "title": "kNN-Adapter: Efficient Domain Adaptation for Black-Box Language Models",
+    "seed_ids": [
+        "gpt2",
+        "37ba9c33025fb31f25436010e12c65a0bafc0e1f",
+        "563a851106623b9f112d0e2a290d3950a871079c",
+        "da1d6445b6b64ce9eb4587ba8abbdc490f648ec1",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "46c585ee9abf76779ea4b863d2da4358efd0d1d3",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6a0fe3c3c36574e848a6fe3b4dc3ce8853d8eb54",
+    "abstract": "Fine-tuning a language model on a new domain is standard practice for domain adaptation. However, it can be infeasible when it comes to modern large-scale language models such as GPT-3, which can only be accessed through APIs, making it difficult to access the internal parameters of the model. In this paper, we propose $k$NN-Adapter, a method to effectively adapt these black-box large language models (LLMs) to a new domain. The $k$NN-Adapter builds on top of the retrieval-augmented language model, and adaptively learns to interpolate the output of the language model with retrieval results from a datastore consisting of the target domain data. Our experiments on four different domains demonstrate that $k$NN-Adapter significantly improves perplexity, and works particularly well in settings with limited access to LLMs. Additionally, we show that $k$NN-Adapter is more effective than fine-tuning when the amount of training data is limited. We also release a dataset to encourage further study.",
+    "authors": [
+        "Yangsibo Huang",
+        "Daogao Liu",
+        "Zexuan Zhong",
+        "Weijia Shi",
+        "Y. Lee"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed $k$NN-Adapter builds on top of the retrieval-augmented language model, and adaptively learns to interpolate the output of the language model with retrieval results from a datastore consisting of the target domain data."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,27 @@
+{
+    "acronym": "3fc09402d9e03563389a9f213a12d95be241df01",
+    "title": "Shared Manifold Learning Using a Triplet Network for Multiple Sensor Translation and Fusion With Missing Data",
+    "seed_ids": [
+        "fnet",
+        "ae32d3a4445355891d424c9ca1c12f6f402094e2",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f"
+    ],
+    "s2id": "3fc09402d9e03563389a9f213a12d95be241df01",
+    "abstract": "Heterogeneous data fusion can enhance the robustness and accuracy of an algorithm on a given task. However, due to the difference in various modalities, aligning the sensors and embedding their information into discriminative and compact representations is challenging. In this article, we propose a contrastive learning-based multimodal alignment network to align data from different sensors into a shared and discriminative manifold where class information is preserved. The proposed architecture uses a multimodal triplet autoencoder to cluster the latent space in such a way that samples of the same classes from each heterogeneous modality are mapped close to each other. Since all the modalities exist in a shared manifold, a unified classification framework is proposed. The resulting latent space representations are fused to perform more robust and accurate classification. In a missing sensor scenario, the latent space of one sensor is easily and efficiently predicted using another sensor's latent space, thereby allowing sensor translation. We conducted extensive experiments on a manually labeled multimodal dataset containing hyperspectral data from AVIRIS-NG and NEON and light detection and ranging (LiDAR) data from NEON. Finally, the model is validated on two benchmark datasets: Berlin Dataset (hyperspectral and synthetic aperture radar) and MUUFL Gulfport Dataset (hyperspectral and LiDAR). A comparison made with other methods demonstrates the superiority of this method. We achieved a mean overall accuracy of 94.3% on the MUUFL dataset and the best overall accuracy of 71.26% on the Berlin dataset, which is better than other state-of-the-art approaches.",
+    "authors": [
+        "Aditya Dutt",
+        "Alina Zare",
+        "P. Gader"
+    ],
+    "venue": "IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A contrastive learning-based multimodal alignment network to align data from different sensors into a shared and discriminative manifold where class information is preserved and fused to perform more robust and accurate classification."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

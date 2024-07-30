@@ -1,0 +1,44 @@
+{
+    "acronym": "b92628d13e8d090d042232fe6ae0b8998634b893",
+    "title": "LIFT: Language-Interfaced Fine-Tuning for Non-Language Machine Learning Tasks",
+    "seed_ids": [
+        "gpt2",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "46c585ee9abf76779ea4b863d2da4358efd0d1d3",
+        "84476fdf6ead3553f4493dff8e02308439d6222b",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "01f2b214962997260020279bd1fd1f8f372249d4",
+        "75352cc69a29bd5fc411e0e79737cb96b6309161",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "16c844fd4d97f3c6eb38b0d6527c87d184efedc3",
+        "b47381e04739ea3f392ba6c8faaf64105493c196",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b92628d13e8d090d042232fe6ae0b8998634b893",
+    "abstract": "Fine-tuning pretrained language models (LMs) without making any architectural changes has become a norm for learning various language downstream tasks. However, for non-language downstream tasks, a common practice is to employ task-specific designs for input, output layers, and loss functions. For instance, it is possible to fine-tune an LM into an MNIST classifier by replacing the word embedding layer with an image patch embedding layer, the word token output layer with a 10-way output layer, and the word prediction loss with a 10-way classification loss, respectively. A natural question arises: Can LM fine-tuning solve non-language downstream tasks without changing the model architecture or loss function? To answer this, we propose Language-Interfaced Fine-Tuning (LIFT) and study its efficacy and limitations by conducting an extensive empirical study on a suite of non-language classification and regression tasks. LIFT does not make any changes to the model architecture or loss function, and it solely relies on the natural language interface, enabling\"no-code machine learning with LMs.\"We find that LIFT performs comparably well across a wide range of low-dimensional classification and regression tasks, matching the performances of the best baselines in many cases, especially for the classification tasks. We also report experimental results on the fundamental properties of LIFT, including inductive bias, robustness, and sample complexity. We also analyze the effect of pretraining on LIFT and a few properties/techniques specific to LIFT, e.g., context-aware learning via appropriate prompting, calibrated predictions, data generation, and two-stage fine-tuning. Our code is available at https://github.com/UW-Madison-Lee-Lab/LanguageInterfacedFineTuning.",
+    "authors": [
+        "Tuan Dinh",
+        "Yuchen Zeng",
+        "Ruisu Zhang",
+        "Ziqian Lin",
+        "Shashank Rajput",
+        "Michael Gira",
+        "Jy-yong Sohn",
+        "Dimitris Papailiopoulos",
+        "Kangwook Lee"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Language-Interfaced Fine-Tuning is proposed and found that LIFT performs comparably well across a wide range of low-dimensional classification and regression tasks, matching the performances of the best baselines in many cases, especially for the classification tasks."
+    },
+    "citationCount": 83,
+    "influentialCitationCount": 19,
+    "code": null,
+    "description": null,
+    "url": null
+}

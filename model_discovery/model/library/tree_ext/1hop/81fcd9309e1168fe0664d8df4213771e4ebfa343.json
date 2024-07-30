@@ -1,0 +1,34 @@
+{
+    "acronym": "81fcd9309e1168fe0664d8df4213771e4ebfa343",
+    "title": "Scalable Visual Transformers with Hierarchical Pooling",
+    "seed_ids": [
+        "funneltransformer",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "ef8d788a904ed66bd8e30ffa69bc3ea1fe57dda7",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06"
+    ],
+    "s2id": "81fcd9309e1168fe0664d8df4213771e4ebfa343",
+    "abstract": "The recently proposed Visual image Transformers (ViT) with pure attention have achieved promising performance on image recognition tasks, such as image classification. However, the routine of the current ViT model is to maintain a full-length patch sequence during inference, which is redundant and lacks hierarchical representation. To this end, we propose a Hierarchical Visual Transformer (HVT) which progressively pools visual tokens to shrink the sequence length and hence reduces the computational cost, analogous to the feature maps downsampling in Convolutional Neural Networks (CNNs). It brings a great benefit that we can increase the model capacity by scaling dimensions of depth/width/resolution/patch size without introducing extra computational complexity due to the reduced sequence length. Moreover, we empirically find that the average pooled visual tokens contain more discriminative information than the single class token. To demonstrate the improved scalability of our HVT, we conduct extensive experiments on the image classification task. With comparable FLOPs, our HVT outperforms the competitive baselines on ImageNet and CIFAR-100 datasets.",
+    "authors": [
+        "Zizheng Pan",
+        "Bohan Zhuang",
+        "Jing Liu",
+        "Haoyu He",
+        "Jianfei Cai"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Hierarchical Visual Transformer (HVT) is proposed which progressively pools visual tokens to shrink the sequence length and hence reduces the computational cost, analogous to the feature maps downsampling in Convolutional Neural Networks (CNNs)."
+    },
+    "citationCount": 27,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

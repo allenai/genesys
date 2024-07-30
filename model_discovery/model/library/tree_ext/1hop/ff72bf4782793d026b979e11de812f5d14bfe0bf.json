@@ -1,0 +1,43 @@
+{
+    "acronym": "ff72bf4782793d026b979e11de812f5d14bfe0bf",
+    "title": "Mamba or RWKV: Exploring High-Quality and High-Efficiency Segment Anything Model",
+    "seed_ids": [
+        "mamba",
+        "rwkv4",
+        "46732358e98ce6be0c564ae11f71d556a64b4c35",
+        "157ed5647da39a7f5d33a84a90414b2a9e97e301",
+        "9efea405e5dfd277472f24f1dd95a26ca5734a6a",
+        "3af7273d7ca20c0c63cbaa47e60b058840835052",
+        "51f38bd957fa863022feb5878fa1ba3bea6657cf",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "9d992e40150955e03868113d90dbf870a07a0d02",
+        "62b18cc55dcc7ffe52c28e1086aee893b7bc4334",
+        "434d751d355d7a7c20efa570e785c76286245e77",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "ff72bf4782793d026b979e11de812f5d14bfe0bf",
+    "abstract": "Transformer-based segmentation methods face the challenge of efficient inference when dealing with high-resolution images. Recently, several linear attention architectures, such as Mamba and RWKV, have attracted much attention as they can process long sequences efficiently. In this work, we focus on designing an efficient segment-anything model by exploring these different architectures. Specifically, we design a mixed backbone that contains convolution and RWKV operation, which achieves the best for both accuracy and efficiency. In addition, we design an efficient decoder to utilize the multiscale tokens to obtain high-quality masks. We denote our method as RWKV-SAM, a simple, effective, fast baseline for SAM-like models. Moreover, we build a benchmark containing various high-quality segmentation datasets and jointly train one efficient yet high-quality segmentation model using this benchmark. Based on the benchmark results, our RWKV-SAM achieves outstanding performance in efficiency and segmentation quality compared to transformers and other linear attention models. For example, compared with the same-scale transformer model, RWKV-SAM achieves more than 2x speedup and can achieve better segmentation performance on various datasets. In addition, RWKV-SAM outperforms recent vision Mamba models with better classification and semantic segmentation results. Code and models will be publicly available.",
+    "authors": [
+        "Haobo Yuan",
+        "Xiangtai Li",
+        "Lu Qi",
+        "Tao Zhang",
+        "Ming-Hsuan Yang",
+        "Shuicheng Yan",
+        "Chen Change Loy"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work designs a mixed backbone that contains convolution and RWKV operation, which achieves the best for both accuracy and efficiency and designs an efficient decoder to utilize the multiscale tokens to obtain high-quality masks."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

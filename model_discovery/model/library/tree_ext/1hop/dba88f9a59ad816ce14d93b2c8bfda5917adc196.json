@@ -1,0 +1,50 @@
+{
+    "acronym": "dba88f9a59ad816ce14d93b2c8bfda5917adc196",
+    "title": "Is Mamba Effective for Time Series Forecasting?",
+    "seed_ids": [
+        "transformer",
+        "9b54e80ab60632213cfd0a90d2f10f62619e0eb4",
+        "c2679d0d07801c48fb31edc89b0cc33b84b837e4",
+        "da9178eae82d1ca5492aaecd0151ba49481cb8b1",
+        "3a0c5026f7ea965dc4475c8d857fc3b6df27ae05",
+        "3af7273d7ca20c0c63cbaa47e60b058840835052",
+        "a25be4db3b13f1a83a77c045fe4211e2f79717f1",
+        "8acdb7e54d76e9629887209ad15b92c3d87d3c6b",
+        "57a6c75ebb987ea29a1f904de23f72451e095032",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "745594bd0dc3e9dc86f74e100cd2c98ed36256c0",
+        "9297502c3b1eaa528e8a8fb85a83842d0577fdc6",
+        "afeeb8f5018eebb1a1d334b94dbbfc48d167efef",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "9b61adb6f0d1e8831ab2f5481a12e2125b13c50a",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "dba88f9a59ad816ce14d93b2c8bfda5917adc196",
+    "abstract": "In the realm of time series forecasting (TSF), it is imperative for models to adeptly discern and distill hidden patterns within historical time series data to forecast future states. Transformer-based models exhibit formidable efficacy in TSF, primarily attributed to their advantage in apprehending these patterns. However, the quadratic complexity of the Transformer leads to low computational efficiency and high costs, which somewhat hinders the deployment of the TSF model in real-world scenarios. Recently, Mamba, a selective state space model, has gained traction due to its ability to process dependencies in sequences while maintaining near-linear complexity. For TSF tasks, these characteristics enable Mamba to comprehend hidden patterns as the Transformer and reduce computational overhead compared to the Transformer. Therefore, we propose a Mamba-based model named Simple-Mamba (S-Mamba) for TSF. Specifically, we tokenize the time points of each variate autonomously via a linear layer. A bidirectional Mamba layer is utilized to extract inter-variate correlations and a Feed-Forward Network is set to learn temporal dependencies. Finally, the generation of forecast outcomes through a linear mapping layer. Experiments on thirteen public datasets prove that S-Mamba maintains low computational overhead and achieves leading performance. Furthermore, we conduct extensive experiments to explore Mamba's potential in TSF tasks. Our code is available at https://github.com/wzhwzhwzh0921/S-D-Mamba.",
+    "authors": [
+        "Zihan Wang",
+        "Fanheng Kong",
+        "Shi Feng",
+        "Ming Wang",
+        "Han Zhao",
+        "Daling Wang",
+        "Yifei Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a Mamba-based model named Simple-Mamba (S-Mamba) for TSF, which tokenizes the time points of each variate autonomously via a linear layer and enables Mamba to comprehend hidden patterns as the Transformer and reduce computational overhead compared to the Transformer."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

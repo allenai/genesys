@@ -1,0 +1,35 @@
+{
+    "acronym": "81583156b7786f50f3a2ede06ccd308c6c80f2e1",
+    "title": "Collaborative Score Distillation for Consistent Visual Synthesis",
+    "seed_ids": [
+        "classfreediffu",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "81521a80f7aa939281863c15b42e446ff5a0e65a",
+        "3ff7153fd6bd47d08084c7f50f8fd70026c126e7",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2"
+    ],
+    "s2id": "81583156b7786f50f3a2ede06ccd308c6c80f2e1",
+    "abstract": "Generative priors of large-scale text-to-image diffusion models enable a wide range of new generation and editing applications on diverse visual modalities. However, when adapting these priors to complex visual modalities, often represented as multiple images (e.g., video), achieving consistency across a set of images is challenging. In this paper, we address this challenge with a novel method, Collaborative Score Distillation (CSD). CSD is based on the Stein Variational Gradient Descent (SVGD). Specifically, we propose to consider multiple samples as\"particles\"in the SVGD update and combine their score functions to distill generative priors over a set of images synchronously. Thus, CSD facilitates seamless integration of information across 2D images, leading to a consistent visual synthesis across multiple samples. We show the effectiveness of CSD in a variety of tasks, encompassing the visual editing of panorama images, videos, and 3D scenes. Our results underline the competency of CSD as a versatile method for enhancing inter-sample consistency, thereby broadening the applicability of text-to-image diffusion models.",
+    "authors": [
+        "Subin Kim",
+        "Kyungmin Lee",
+        "June Suk Choi",
+        "Jongheon Jeong",
+        "Kihyuk Sohn",
+        "Jinwoo Shin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes to consider multiple samples as \"particles\" in the SVGD update and combine their score functions to distill generative priors over a set of images synchronously, leading to a consistent visual synthesis across multiple samples."
+    },
+    "citationCount": 18,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

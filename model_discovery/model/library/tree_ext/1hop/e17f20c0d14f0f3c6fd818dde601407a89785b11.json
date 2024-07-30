@@ -1,0 +1,26 @@
+{
+    "acronym": "e17f20c0d14f0f3c6fd818dde601407a89785b11",
+    "title": "Synthesizing EEG Signals from Event-Related Potential Paradigms with Conditional Diffusion Models",
+    "seed_ids": [
+        "classfreediffu"
+    ],
+    "s2id": "e17f20c0d14f0f3c6fd818dde601407a89785b11",
+    "abstract": "Data scarcity in the brain-computer interface field can be alleviated through the use of generative models, specifically diffusion models. While diffusion models have previously been successfully applied to electroencephalogram (EEG) data, existing models lack flexibility w.r.t.~sampling or require alternative representations of the EEG data. To overcome these limitations, we introduce a novel approach to conditional diffusion models that utilizes classifier-free guidance to directly generate subject-, session-, and class-specific EEG data. In addition to commonly used metrics, domain-specific metrics are employed to evaluate the specificity of the generated samples. The results indicate that the proposed model can generate EEG data that resembles real data for each subject, session, and class.",
+    "authors": [
+        "Guido Klein",
+        "Pierre Guetschel",
+        "Gianluigi Silvestri",
+        "Michael Tangermann"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel approach to conditional diffusion models that utilizes classifier-free guidance to directly generate subject-, session, and class-specific EEG data that resembles real data for each subject, session, and class is introduced."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

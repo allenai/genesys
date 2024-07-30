@@ -1,0 +1,28 @@
+{
+    "acronym": "1165d59f765dcc629b2c4293c05d102527b26f86",
+    "title": "Decoding Speculative Decoding",
+    "seed_ids": [
+        "gpt3",
+        "4d76206515d6b33903937474273885476fc2771e",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad"
+    ],
+    "s2id": "1165d59f765dcc629b2c4293c05d102527b26f86",
+    "abstract": "Speculative Decoding is a widely used technique to speed up inference for Large Language Models (LLMs) without sacrificing quality. When performing inference, speculative decoding uses a smaller draft model to generate speculative tokens and then uses the target LLM to verify those draft tokens. The speedup provided by speculative decoding heavily depends on the choice of the draft model. In this work, we perform a detailed study comprising over 350 experiments with LLaMA-65B and OPT-66B using speculative decoding and delineate the factors that affect the performance gain provided by speculative decoding. Our experiments indicate that the performance of speculative decoding depends heavily on the latency of the draft model, and the draft model's capability in language modeling does not correlate strongly with its performance in speculative decoding. Based on these insights we explore a new design space for draft models and design hardware-efficient draft models for speculative decoding. Our newly designed draft model for LLaMA-65B can provide 60% higher throughput than existing draft models and can generalize further to the LLaMA-2 model family and supervised fine-tuned models.",
+    "authors": [
+        "Minghao Yan",
+        "Saurabh Agarwal",
+        "Shivaram Venkataraman"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new design space for draft models is explored and a newly designed draft model for LLaMA-65B can provide 60% higher throughput than existing draft models and can generalize further to the LLaMA-2 model family and supervised fine-tuned models."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

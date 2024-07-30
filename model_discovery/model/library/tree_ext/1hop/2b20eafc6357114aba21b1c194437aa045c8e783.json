@@ -1,0 +1,28 @@
+{
+    "acronym": "2b20eafc6357114aba21b1c194437aa045c8e783",
+    "title": "RCMHA: Relative Convolutional Multi-Head Attention for Natural Language Modelling",
+    "seed_ids": [
+        "transformerxl",
+        "d5e999aae76d5270ef272076979c809817458212",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "2e14e84ccec924ed770b58108ad1d9de6f0ca295"
+    ],
+    "s2id": "2b20eafc6357114aba21b1c194437aa045c8e783",
+    "abstract": "The Attention module finds common usage in language modeling, presenting distinct challenges within the broader scope of Natural Language Processing. Multi-Head Attention (MHA) employs an absolute positional encoding, which imposes limitations on token length and entails substantial memory consumption during the processing of embedded inputs. The current remedy proposed by researchers involves the utilization of relative positional encoding, similar to the approach adopted in Transformer-XL or Relative Multi-Head Attention (RMHA), albeit the employed architecture consumes considerable memory resources. To address these challenges, this study endeavors to refine MHA, leveraging relative positional encoding in conjunction with the Depth-Wise Convolutional Layer architecture, which promises heightened accuracy coupled with minimized memory usage. The proposed RCMHA framework entails the modification of two integral components: firstly, the application of the Depth-Wise Convolutional Layer to the input embedding, encompassing Query, Key, and Value parameters; secondly, the incorporation of Relative Positional Encoding into the attention scoring phase, harmoniously integrated with Scaled Dot-Product Attention. Empirical experiments underscore the advantages of RCMHA, wherein it exhibits superior accuracy, boasting a score of 0.572 in comparison to alternative attention modules such as MHA, Multi-DConv-Head Attention (MDHA), and RMHA. Concerning memory utilization, RMHA emerges as the most frugal, demonstrating an average consumption of 2.98 GB, surpassing RMHA which necessitates 3.5 GB.",
+    "authors": [
+        "Herman Sugiharto",
+        "Aradea",
+        "H. Mubarok"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study endeavors to refine MHA, leveraging relative positional encoding in conjunction with the Depth-Wise Convolutional Layer architecture, which promises heightened accuracy coupled with minimized memory usage."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

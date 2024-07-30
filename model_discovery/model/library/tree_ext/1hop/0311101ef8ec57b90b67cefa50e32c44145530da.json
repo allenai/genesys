@@ -1,0 +1,37 @@
+{
+    "acronym": "0311101ef8ec57b90b67cefa50e32c44145530da",
+    "title": "SAPGraph: Structure-aware Extractive Summarization for Scientific Papers with Heterogeneous Graph",
+    "seed_ids": [
+        "longformer",
+        "3d318019788418b21478e8736d03afadc1607690",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "01b15017ac59b8d6f2ce3598c4a7d6358c211426",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "4d244972ed2e0286363bfb054cb269574d21a72c"
+    ],
+    "s2id": "0311101ef8ec57b90b67cefa50e32c44145530da",
+    "abstract": "Scientific paper summarization is always challenging in Natural Language Processing (NLP) since it is hard to collect summaries from such long and complicated text. We observe that previous works tend to extract summaries from the head of the paper, resulting in information incompleteness. In this work, we present SAPGraph to utilize paper structure for solving this problem. SAPGraph is a scientific paper extractive summarization framework based on a structure-aware heterogeneous graph, which models the document into a graph with three kinds of nodes and edges based on structure information of facets and knowledge. Additionally, we provide a large-scale dataset of COVID-19-related papers, CORD-SUM. Experiments on CORD-SUM and ArXiv datasets show that SAPGraph generates more comprehensive and valuable summaries compared to previous works.",
+    "authors": [
+        "Siya Qi",
+        "Lei Li",
+        "Yiyang Li",
+        "Jin Jiang",
+        "Dingxing Hu",
+        "Yuze Li",
+        "Yingqi Zhu",
+        "Yanquan Zhou",
+        "Marina Litvak",
+        "N. Vanetik"
+    ],
+    "venue": "AACL",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "SAPGraph is a scientific paper extractive summarization framework based on a structure-aware heterogeneous graph, which models the document into a graph with three kinds of nodes and edges based on structure information of facets and knowledge."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

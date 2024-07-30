@@ -1,0 +1,25 @@
+{
+    "acronym": "455f711555e066d405ac57245ae7e63a67548918",
+    "title": "Detection of multiple cardiac abnormalities using Convolution, Positional Encoder and Transformer on 12-lead ECG recordings",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "455f711555e066d405ac57245ae7e63a67548918",
+    "abstract": "Objectives: Firstly, we aimed to develop a system capable of detecting multiple cardiac abnormalities simultaneously from 12-lead ECG recordings. Secondly, we tried to improve the detection by analyzing the relationship between imbalanced datasets and optimal classification thresholds. Methods: A novel fusion of Convolution Positional Encoder and Transformer Encoder was used to solve the multi-label classification problem. We used a proper evaluation metric called area under the precision-recall curve (AUPRC) that enabled us to analyze the precision-recall trade-off and find the optimal thresholds. Results: Having outperformed other popular deep networks, the model achieved the highest AUPRC of 0.96 and f1-score of 0.90 on 42511-sample datasets. We also found the negative correlation coefficient of -0.68 between optimal thresholds and the proportion of positive samples. Significance & Conclusion: This study compared the performances of different deep learning architectures on a medical problem and showed the potential of advanced techniques in capturing spatial, temporal features alongside attention mechanisms. It also introduced how to reduce the impact of imbalanced datasets and find optimal classification thresholds.",
+    "authors": [
+        "A. Ford",
+        "J. Lan",
+        "K. Ng"
+    ],
+    "venue": "medRxiv",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study compared the performances of different deep learning architectures on a medical problem and showed the potential of advanced techniques in capturing spatial, temporal features alongside attention mechanisms and introduced how to reduce the impact of imbalanced datasets and find optimal classification thresholds."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

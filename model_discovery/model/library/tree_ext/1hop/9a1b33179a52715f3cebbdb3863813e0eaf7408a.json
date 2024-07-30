@@ -1,0 +1,32 @@
+{
+    "acronym": "9a1b33179a52715f3cebbdb3863813e0eaf7408a",
+    "title": "Large Language Model Bias Mitigation from the Perspective of Knowledge Editing",
+    "seed_ids": [
+        "gpt2",
+        "bert",
+        "82a3228dcda7fd2a8e5d1fc9bb2bf43bfb6ac531",
+        "2f130a320798dba1b13fa2e2822d42273e453038",
+        "76a786b1acd6d1aca56e12a8a1db34569fdf9f3a",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "9a1b33179a52715f3cebbdb3863813e0eaf7408a",
+    "abstract": "Existing debiasing methods inevitably make unreasonable or undesired predictions as they are designated and evaluated to achieve parity across different social groups but leave aside individual facts, resulting in modified existing knowledge. In this paper, we first establish a new bias mitigation benchmark BiasKE leveraging existing and additional constructed datasets, which systematically assesses debiasing performance by complementary metrics on fairness, specificity, and generalization. Meanwhile, we propose a novel debiasing method, Fairness Stamp (FAST), which enables editable fairness through fine-grained calibration on individual biased knowledge. Comprehensive experiments demonstrate that FAST surpasses state-of-the-art baselines with remarkable debiasing performance while not hampering overall model capability for knowledge preservation, highlighting the prospect of fine-grained debiasing strategies for editable fairness in LLMs.",
+    "authors": [
+        "Ruizhe Chen",
+        "Yichen Li",
+        "Zikai Xiao",
+        "Zuo-Qiang Liu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new bias mitigation benchmark BiasKE is established leveraging existing and additional constructed datasets, which systematically assesses debiasing performance by complementary metrics on fairness, specificity, and generalization, and a novel debiasing method, Fairness Stamp, is proposed, which enables editable fairness through fine-grained calibration on individual biased knowledge."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

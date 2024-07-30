@@ -1,0 +1,30 @@
+{
+    "acronym": "ea1ba4fe3cef2cb8e70e11183b22113a34acfe5a",
+    "title": "Spatially-Aware Transformer for Embodied Agents",
+    "seed_ids": [
+        "mentaltimetravel",
+        "235303a8bc1e4892efd525a38ead657422d8a519",
+        "06e40b7a703079c280f8f0886ac2bd984cd318ce",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "008cfd24dfdfb28fc6a89c32772c7ffe5cb0cf8a",
+        "59a916cdc943f0282908e6f3fa0360f4c5fb78d0"
+    ],
+    "s2id": "ea1ba4fe3cef2cb8e70e11183b22113a34acfe5a",
+    "abstract": "Episodic memory plays a crucial role in various cognitive processes, such as the ability to mentally recall past events. While cognitive science emphasizes the significance of spatial context in the formation and retrieval of episodic memory, the current primary approach to implementing episodic memory in AI systems is through transformers that store temporally ordered experiences, which overlooks the spatial dimension. As a result, it is unclear how the underlying structure could be extended to incorporate the spatial axis beyond temporal order alone and thereby what benefits can be obtained. To address this, this paper explores the use of Spatially-Aware Transformer models that incorporate spatial information. These models enable the creation of place-centric episodic memory that considers both temporal and spatial dimensions. Adopting this approach, we demonstrate that memory utilization efficiency can be improved, leading to enhanced accuracy in various place-centric downstream tasks. Additionally, we propose the Adaptive Memory Allocator, a memory management method based on reinforcement learning that aims to optimize efficiency of memory utilization. Our experiments demonstrate the advantages of our proposed model in various environments and across multiple downstream tasks, including prediction, generation, reasoning, and reinforcement learning. The source code for our models and experiments will be available at https://github.com/junmokane/spatially-aware-transformer.",
+    "authors": [
+        "Junmo Cho",
+        "Jaesik Yoon",
+        "Sungjin Ahn"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper explores the use of Spatially-Aware Transformer models, a memory management method based on reinforcement learning that aims to optimize efficiency of memory utilization and demonstrates that memory utilization efficiency can be improved, leading to enhanced accuracy in various place-centric downstream tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

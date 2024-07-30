@@ -1,0 +1,33 @@
+{
+    "acronym": "841015849a9bde6d95b60143dad2b9f429a08ae5",
+    "title": "AtmoRep: A stochastic model of atmosphere dynamics using large scale representation learning",
+    "seed_ids": [
+        "gpt",
+        "17d068e78e6f25e65cb08319b19b58279bb8b214",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "f99de990f791799df398fcd38034c4b395d9b7e0",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "841015849a9bde6d95b60143dad2b9f429a08ae5",
+    "abstract": "The atmosphere affects humans in a multitude of ways, from loss of life due to adverse weather effects to long-term social and economic impacts on societies. Computer simulations of atmospheric dynamics are, therefore, of great importance for the well-being of our and future generations. Here, we propose AtmoRep, a novel, task-independent stochastic computer model of atmospheric dynamics that can provide skillful results for a wide range of applications. AtmoRep uses large-scale representation learning from artificial intelligence to determine a general description of the highly complex, stochastic dynamics of the atmosphere from the best available estimate of the system's historical trajectory as constrained by observations. This is enabled by a novel self-supervised learning objective and a unique ensemble that samples from the stochastic model with a variability informed by the one in the historical record. The task-independent nature of AtmoRep enables skillful results for a diverse set of applications without specifically training for them and we demonstrate this for nowcasting, temporal interpolation, model correction, and counterfactuals. We also show that AtmoRep can be improved with additional data, for example radar observations, and that it can be extended to tasks such as downscaling. Our work establishes that large-scale neural networks can provide skillful, task-independent models of atmospheric dynamics. With this, they provide a novel means to make the large record of atmospheric observations accessible for applications and for scientific inquiry, complementing existing simulations based on first principles.",
+    "authors": [
+        "C. Lessig",
+        "Ilaria Luise",
+        "Bing Gong",
+        "M. Langguth",
+        "S. Stadtler",
+        "Martin G. Schultz"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is established that large-scale neural networks can provide skillful, task-independent models of atmospheric dynamics, and they provide a novel means to make the large record of atmospheric observations accessible for applications and for scientific inquiry."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

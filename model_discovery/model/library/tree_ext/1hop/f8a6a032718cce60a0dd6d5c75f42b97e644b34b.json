@@ -1,0 +1,24 @@
+{
+    "acronym": "f8a6a032718cce60a0dd6d5c75f42b97e644b34b",
+    "title": "Spherical Position Encoding for Transformers",
+    "seed_ids": [
+        "roformer",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "f8a6a032718cce60a0dd6d5c75f42b97e644b34b",
+    "abstract": "Position encoding is the primary mechanism which induces notion of sequential order for input tokens in transformer architectures. Even though this formulation in the original transformer paper has yielded plausible performance for general purpose language understanding and generation, several new frameworks such as Rotary Position Embedding (RoPE) are proposed for further enhancement. In this paper, we introduce the notion of\"geotokens\"which are input elements for transformer architectures, each representing an information related to a geological location. Unlike the natural language the sequential position is not important for the model but the geographical coordinates are. In order to induce the concept of relative position for such a setting and maintain the proportion between the physical distance and distance on embedding space, we formulate a position encoding mechanism based on RoPE architecture which is adjusted for spherical coordinates.",
+    "authors": [
+        "Eren Unlu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "In order to induce the concept of relative position for such a setting and maintain the proportion between the physical distance and distance on embedding space, a position encoding mechanism based on RoPE architecture which is adjusted for spherical coordinates is formulated."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

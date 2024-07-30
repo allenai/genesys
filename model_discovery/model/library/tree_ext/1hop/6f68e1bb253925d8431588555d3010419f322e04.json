@@ -1,0 +1,32 @@
+{
+    "acronym": "6f68e1bb253925d8431588555d3010419f322e04",
+    "title": "Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention",
+    "seed_ids": [
+        "sparsetransformer",
+        "reformer",
+        "8cef9900c04d7f661c08f4b5b1ed4337ace042a3",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6f68e1bb253925d8431588555d3010419f322e04",
+    "abstract": "Transformers achieve remarkable performance in several tasks but due to their quadratic complexity, with respect to the input's length, they are prohibitively slow for very long sequences. To address this limitation, we express the self-attention as a linear dot-product of kernel feature maps and make use of the associativity property of matrix products to reduce the complexity from $\\mathcal{O}\\left(N^2\\right)$ to $\\mathcal{O}\\left(N\\right)$, where $N$ is the sequence length. We show that this formulation permits an iterative implementation that dramatically accelerates autoregressive transformers and reveals their relationship to recurrent neural networks. Our linear transformers achieve similar performance to vanilla transformers and they are up to 4000x faster on autoregressive prediction of very long sequences.",
+    "authors": [
+        "Angelos Katharopoulos",
+        "Apoorv Vyas",
+        "Nikolaos Pappas",
+        "Franccois Fleuret"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work expresses the self-attention as a linear dot-product of kernel feature maps and makes use of the associativity property of matrix products to reduce the complexity from O(N) to N, where N is the sequence length."
+    },
+    "citationCount": 1162,
+    "influentialCitationCount": 164,
+    "code": null,
+    "description": null,
+    "url": null
+}

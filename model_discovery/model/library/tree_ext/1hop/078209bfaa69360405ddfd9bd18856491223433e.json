@@ -1,0 +1,26 @@
+{
+    "acronym": "078209bfaa69360405ddfd9bd18856491223433e",
+    "title": "Self-Attention Empowered Graph Convolutional Network for Structure Learning and Node Embedding",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "078209bfaa69360405ddfd9bd18856491223433e",
+    "abstract": "In representation learning on graph-structured data, many popular graph neural networks (GNNs) fail to capture long-range dependencies, leading to performance degradation. Furthermore, this weakness is magnified when the concerned graph is characterized by heterophily (low homophily). To solve this issue, this paper proposes a novel graph learning framework called the graph convolutional network with self-attention (GCN-SA). The proposed scheme exhibits an exceptional generalization capability in node-level representation learning. The proposed GCN-SA contains two enhancements corresponding to edges and node features. For edges, we utilize a self-attention mechanism to design a stable and effective graph-structure-learning module that can capture the internal correlation between any pair of nodes. This graph-structure-learning module can identify reliable neighbors for each node from the entire graph. Regarding the node features, we modify the transformer block to make it more applicable to enable GCN to fuse valuable information from the entire graph. These two enhancements work in distinct ways to help our GCN-SA capture long-range dependencies, enabling it to perform representation learning on graphs with varying levels of homophily. The experimental results on benchmark datasets demonstrate the effectiveness of the proposed GCN-SA. Compared to other outstanding GNN counterparts, the proposed GCN-SA is competitive.",
+    "authors": [
+        "Mengying Jiang",
+        "Guizhong Liu",
+        "Yuanchao Su",
+        "Xinliang Wu"
+    ],
+    "venue": "Pattern Recognition",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel graph learning framework called the graph convolutional network with self-attention (GCN-SA), which exhibits an exceptional generalization capability in node-level representation learning."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

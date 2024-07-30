@@ -1,0 +1,34 @@
+{
+    "acronym": "5d74e5fe624aa81c94a6ecf74436fce214ebd0b2",
+    "title": "PUMA: Secure Inference of LLaMA-7B in Five Minutes",
+    "seed_ids": [
+        "gpt",
+        "6cfd71d6f3cbe63a0af95b0622a6dd7387ab6acf",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "5d74e5fe624aa81c94a6ecf74436fce214ebd0b2",
+    "abstract": "With ChatGPT as a representative, tons of companies have began to provide services based on large Transformers models. However, using such a service inevitably leak users' prompts to the model provider. Previous studies have studied secure inference for Transformer models using secure multiparty computation (MPC), where model parameters and clients' prompts are kept secret. Despite this, these frameworks are still limited in terms of model performance, efficiency, and deployment. To address these limitations, we propose framework PUMA to enable fast and secure Transformer model inference. Our framework designs high quality approximations for expensive functions such as GeLU and softmax, and significantly reduce the cost of secure inference while preserving the model performance. Additionally, we design secure Embedding and LayerNorm procedures that faithfully implement the desired functionality without undermining the Transformer architecture. PUMA is about $2\\times$ faster than the state-of-the-art framework MPCFORMER(ICLR 2023) and has similar accuracy as plaintext models without fine-tuning (which the previous works failed to achieve). PUMA can even evaluate LLaMA-7B in around 5 minutes to generate 1 token. To our best knowledge, this is the first time that a model with such a parameter size is able to be evaluated under MPC. PUMA has been open-sourced in the Github repository of SecretFlow-SPU.",
+    "authors": [
+        "Ye Dong",
+        "Wen-jie Lu",
+        "Yancheng Zheng",
+        "Haoqi Wu",
+        "Derun Zhao",
+        "Jin Tan",
+        "Zhicong Huang",
+        "Cheng Hong",
+        "Tao Wei",
+        "Wen-Chang Cheng"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes framework PUMA to enable fast and secure Transformer model inference, and designs high quality approximations for expensive functions such as GeLU and softmax, and significantly reduce the cost of secure inference while preserving the model performance."
+    },
+    "citationCount": 26,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

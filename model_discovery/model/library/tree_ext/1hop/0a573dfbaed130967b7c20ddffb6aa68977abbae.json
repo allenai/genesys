@@ -1,0 +1,25 @@
+{
+    "acronym": "0a573dfbaed130967b7c20ddffb6aa68977abbae",
+    "title": "Automatic Conversation Turn-Taking Segmentation in Semantic Facet",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0a573dfbaed130967b7c20ddffb6aa68977abbae",
+    "abstract": "Turn-taking is a significant aspect of a smooth conversation system. Detecting end-of-turn can be difficult for automatic conversation systems, and this can cause misleading conversation systems. To make a conversational system recognizing turn transition points, we propose a token-level turn-taking segmentation using linguistic features. This task imitates the automatic speech recognition environment by organizing several settings. Moreover, we utilize GPT-2, which is well known as a pretrained generative language model, to be able to predict in token-level live text stream. We evaluate our model compared to RNN series models in general conversation datasets and explore model prediction with test sample scenarios.",
+    "authors": [
+        "Dongin Jung",
+        "Yoon-Sik Cho"
+    ],
+    "venue": "International Conference on Electronics, Information and Communications",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a token-level turn-taking segmentation using linguistic features of GPT-2, which is well known as a pretrained generative language model, to be able to predict intoken-level live text stream in general conversation datasets and explores model prediction with test sample scenarios."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

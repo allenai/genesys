@@ -1,0 +1,28 @@
+{
+    "acronym": "f6f456f2472a6f34cfd0bfae64e89b78296c16fe",
+    "title": "Gramian Attention Heads are Strong yet Efficient Vision Learners",
+    "seed_ids": [
+        "metaformer",
+        "182e6c877155d7730378846380a3d1dc294fb54a",
+        "d1869155960e4b1b882b39171dbecd25a7eda3cd",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "f6f456f2472a6f34cfd0bfae64e89b78296c16fe",
+    "abstract": "We introduce a novel architecture design that enhances expressiveness by incorporating multiple head classifiers (i.e., classification heads) instead of relying on channel expansion or additional building blocks. Our approach employs attention-based aggregation, utilizing pairwise feature similarity to enhance multiple lightweight heads with minimal resource overhead. We compute the Gramian matrices to reinforce class tokens in an attention layer for each head. This enables the heads to learn more discriminative representations, enhancing their aggregation capabilities. Furthermore, we propose a learning algorithm that encourages heads to complement each other by reducing correlation for aggregation. Our models eventually surpass state-of-the-art CNNs and ViTs regarding the accuracy-throughput trade-off on ImageNet-1K and deliver remarkable performance across various downstream tasks, such as COCO object instance segmentation, ADE20k semantic segmentation, and fine-grained visual classification datasets. The effectiveness of our framework is substantiated by practical experimental results and further underpinned by generalization error bound. We release the code publicly at: https://github.com/Lab-LVM/imagenet-models.",
+    "authors": [
+        "Jongbin Ryu",
+        "Dongyoon Han",
+        "J. Lim"
+    ],
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a novel architecture design that enhances expressiveness by incorporating multiple head classifiers (i.e., classification heads) instead of relying on channel expansion or additional building blocks and proposes a learning algorithm that encourages heads to complement each other by reducing correlation for aggregation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

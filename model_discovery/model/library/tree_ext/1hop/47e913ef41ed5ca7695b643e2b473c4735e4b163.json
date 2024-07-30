@@ -1,0 +1,26 @@
+{
+    "acronym": "47e913ef41ed5ca7695b643e2b473c4735e4b163",
+    "title": "Neural Network Weights Do Not Converge to Stationary Points: An Invariant Measure Perspective",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "47e913ef41ed5ca7695b643e2b473c4735e4b163",
+    "abstract": "This work examines the deep disconnect between existing theoretical analyses of gradient-based algorithms and the practice of training deep neural networks. Specifically, we provide numerical evidence that in large-scale neural network training (e.g., ImageNet + ResNet101, and WT103 + TransformerXL models), the neural network's weights do not converge to stationary points where the gradient of the loss is zero. Remarkably, however, we observe that even though the weights do not converge to stationary points, the progress in minimizing the loss function halts and training loss stabilizes. Inspired by this observation, we propose a new perspective based on ergodic theory of dynamical systems to explain it. Rather than studying the evolution of weights, we study the evolution of the distribution of weights. We prove convergence of the distribution of weights to an approximate invariant measure, thereby explaining how the training loss can stabilize without weights necessarily converging to stationary points. We further discuss how this perspective can better align optimization theory with empirical observations in machine learning practice.",
+    "authors": [
+        "J. Zhang",
+        "Haochuan Li",
+        "S. Sra",
+        "A. Jadbabaie"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work provides numerical evidence that in large-scale neural network training, the neural network's weights do not converge to stationary points where the gradient of the loss is zero and proposes a new perspective based on ergodic theory of dynamical systems to explain it."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

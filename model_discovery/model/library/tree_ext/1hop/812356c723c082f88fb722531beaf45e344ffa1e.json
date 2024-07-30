@@ -1,0 +1,47 @@
+{
+    "acronym": "812356c723c082f88fb722531beaf45e344ffa1e",
+    "title": "PyramidKV: Dynamic KV Cache Compression based on Pyramidal Information Funneling",
+    "seed_ids": [
+        "streamingllm",
+        "aa085ed9a77d815d3c1d19a468be1d9a8d3efd13",
+        "c9603ec967879c24973b5bd48861df2e5555932e",
+        "ef1b02dc1b82f9955fc4760fcefd92c0fff9f227",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "b6346f9fa093b8e85df712485a2b851b9f680dac",
+        "73290ecbec2f38d1d647ddef1ada69cee41725b3",
+        "b31a5884a8ebe96b6300839b28608b97f8f8ef76",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "2a09ebbfcca1a6994eeb472cd4159f5f3858dbf9",
+        "e586a4591ba0303b769f2c07cbddaf1899cb72e4",
+        "7bd4ca8706a79983d31ab74e6c79bfdfd949602e",
+        "4e3935ef7da6bcbb202ec7f8b285c313cadcd044",
+        "9dc624d7258d1a56117ca720aea953ce46b66b21",
+        "e3aa232577bb427b1f3a34acbdef84bd85734042"
+    ],
+    "s2id": "812356c723c082f88fb722531beaf45e344ffa1e",
+    "abstract": "In this study, we investigate whether attention-based information flow inside large language models (LLMs) is aggregated through noticeable patterns for long context processing. Our observations reveal that LLMs aggregate information through Pyramidal Information Funneling where attention is scattering widely in lower layers, progressively consolidating within specific contexts, and ultimately focusin on critical tokens (a.k.a massive activation or attention sink) in higher layers. Motivated by these insights, we developed PyramidKV, a novel and effective KV cache compression method. This approach dynamically adjusts the KV cache size across different layers, allocating more cache in lower layers and less in higher ones, diverging from traditional methods that maintain a uniform KV cache size. Our experimental evaluations, utilizing the LongBench benchmark, show that PyramidKV matches the performance of models with a full KV cache while retaining only 12% of the KV cache, thus significantly reducing memory usage. In scenarios emphasizing memory efficiency, where only 0.7% of the KV cache is maintained, PyramidKV surpasses other KV cache compression techniques achieving up to a 20.5 absolute accuracy improvement on TREC.",
+    "authors": [
+        "Zefan Cai",
+        "Yichi Zhang",
+        "Bofei Gao",
+        "Yuliang Liu",
+        "Tianyu Liu",
+        "Keming Lu",
+        "Wayne Xiong",
+        "Yue Dong",
+        "Baobao Chang",
+        "Junjie Hu",
+        "Wen Xiao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

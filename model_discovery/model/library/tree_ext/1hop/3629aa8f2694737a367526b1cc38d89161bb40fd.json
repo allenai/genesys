@@ -1,0 +1,28 @@
+{
+    "acronym": "3629aa8f2694737a367526b1cc38d89161bb40fd",
+    "title": "Investigating Lexical Variability in Language Models",
+    "seed_ids": [
+        "transformerxl",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3629aa8f2694737a367526b1cc38d89161bb40fd",
+    "abstract": "Neural language models learn, to varying degrees of accuracy, the grammatical properties of natural languages. In this work, we investigate whether there are systematic sources of variation in the language models\u2019 accuracy. Focusing on subject-verb agreement and reflexive anaphora, we find that certain nouns are systematically understood better than others, an effect which is robust across grammatical tasks and different language models. Surprisingly, we find that across four orders of magnitude, corpus frequency is unrelated to a noun\u2019s performance on grammatical tasks. Finally, we find that a novel noun\u2019s grammatical properties can be few-shot learned from various types of training data. The results present a paradox: there should be less variation in grammatical performance than is actually observed.",
+    "authors": [
+        "Charles Yu",
+        "Ryan Sie",
+        "Nicolas Tedeschi",
+        "Leon Bergen"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Focusing on subject-verb agreement and reflexive anaphora, it is found that certain nouns are systematically understood better than others, an effect which is robust across grammatical tasks and different language models."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

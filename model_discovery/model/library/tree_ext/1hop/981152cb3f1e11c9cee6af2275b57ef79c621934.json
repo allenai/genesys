@@ -1,0 +1,28 @@
+{
+    "acronym": "981152cb3f1e11c9cee6af2275b57ef79c621934",
+    "title": "Improving Diversity of Neural Text Generation via Inverse Probability Weighting",
+    "seed_ids": [
+        "transformerxl",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "981152cb3f1e11c9cee6af2275b57ef79c621934",
+    "abstract": "The neural text generation suffers from the text degeneration issue such as repetition. Traditional stochastic sampling methods only focus on truncating the unreliable\"tail\"of the distribution, and do not address the\"head\"part, which we show might contain tedious or even repetitive candidates with high probability that lead to repetition loops. They also do not consider the issue that human text does not always favor high-probability words. Inspired by these, in this work we propose a heuristic sampling method. We propose to use interquartile range of the predicted distribution to determine the\"head\"part, then permutate and rescale the\"head\"with inverse probability. This aims at decreasing the probability for the tedious and possibly repetitive candidates with higher probability, and increasing the probability for the rational but more surprising candidates with lower probability. The proposed algorithm provides a reasonable permutation on the predicted distribution which enhances diversity without compromising rationality of the distribution. We use pre-trained language model to compare our algorithm with traditional methods. Results show that our algorithm can effectively increase the diversity of generated samples while achieving close resemblance to human text.",
+    "authors": [
+        "Xinran Zhang",
+        "Maosong Sun",
+        "Jiafeng Liu",
+        "Xiaobing Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to use interquartile range of the predicted distribution to determine the \"head\" part of the distribution, then permutate and rescale the\"head\" with inverse probability, which aims at decreasing the probability for the tedious and possibly repetitive candidates with higher probability, and increasing the probabilities for the rational but more surprising candidates with lower probability."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

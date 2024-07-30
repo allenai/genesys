@@ -1,0 +1,36 @@
+{
+    "acronym": "293499319bdd460cb3fca1f0f5eb330e64bf3ff9",
+    "title": "Towards Making the Most of ChatGPT for Machine Translation",
+    "seed_ids": [
+        "gpt2",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "4161ad2d2495d8af1d62dc5e71882bde642cd1c1",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "293499319bdd460cb3fca1f0f5eb330e64bf3ff9",
+    "abstract": "ChatGPT shows remarkable capabilities for machine translation (MT). Several prior studies have shown that it achieves comparable results to commercial systems for high-resource languages, but lags behind in complex tasks, e.g., low-resource and distant-language-pairs translation. However, they usually adopt simple prompts which can not fully elicit the capability of ChatGPT. In this paper, we aim to further mine ChatGPT's translation ability by revisiting several aspects: temperature, task information, and domain information, and correspondingly propose an optimal temperature setting and two (simple but effective) prompts: Task-Specific Prompts (TSP) and Domain-Specific Prompts (DSP). We show that: 1) The performance of ChatGPT depends largely on temperature, and a lower temperature usually can achieve better performance; 2) Emphasizing the task information can further improve ChatGPT's performance, particularly in complex MT tasks; 3) Introducing domain information can elicit ChatGPT's generalization ability and improve its performance in the specific domain; 4) ChatGPT tends to generate hallucinations for non-English-centric MT tasks, which can be partially addressed by our proposed prompts but still need to be highlighted for the MT/NLP community. We also explore the effects of advanced in-context learning strategies and find a (negative but interesting) observation: the powerful chain-of-thought prompt leads to word-by-word translation behavior, thus bringing significant translation degradation.",
+    "authors": [
+        "Keqin Peng",
+        "Liang Ding",
+        "Qihuang Zhong",
+        "Li Shen",
+        "Xuebo Liu",
+        "Min Zhang",
+        "Y. Ouyang",
+        "Dacheng Tao"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the performance of ChatGPT depends largely on temperature, and a lower temperature usually can achieve better performance, and emphasizing the task information can further improveChatGPT's performance, particularly in complex MT tasks."
+    },
+    "citationCount": 129,
+    "influentialCitationCount": 8,
+    "code": null,
+    "description": null,
+    "url": null
+}

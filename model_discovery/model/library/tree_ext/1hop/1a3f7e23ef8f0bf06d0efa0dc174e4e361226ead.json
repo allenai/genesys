@@ -1,0 +1,46 @@
+{
+    "acronym": "1a3f7e23ef8f0bf06d0efa0dc174e4e361226ead",
+    "title": "Paloma: A Benchmark for Evaluating Language Model Fit",
+    "seed_ids": [
+        "gpt2",
+        "84d20ad9f42d80dfd5130a6362d5422be8a6bdc3",
+        "31d65e179b1d00484154b3525d93846dd82f23d8",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "7c3a735c7567b5b54581ba09612db4d18a5dacac",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "0822f8d7e6a72a65e65f147d3a8d8fccd485da40",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1a3f7e23ef8f0bf06d0efa0dc174e4e361226ead",
+    "abstract": "Language models (LMs) commonly report perplexity on monolithic data held out from training. Implicitly or explicitly, this data is composed of domains$\\unicode{x2013}$varying distributions of language. Rather than assuming perplexity on one distribution extrapolates to others, Perplexity Analysis for Language Model Assessment (Paloma), measures LM fit to 585 text domains, ranging from nytimes.com to r/depression on Reddit. We invite submissions to our benchmark and organize results by comparability based on compliance with guidelines such as removal of benchmark contamination from pretraining. Submissions can also record parameter and training token count to make comparisons of Pareto efficiency for performance as a function of these measures of cost. We populate our benchmark with results from 6 baselines pretrained on popular corpora. In case studies, we demonstrate analyses that are possible with Paloma, such as finding that pretraining without data beyond Common Crawl leads to inconsistent fit to many domains.",
+    "authors": [
+        "Ian Magnusson",
+        "Akshita Bhagia",
+        "Valentin Hofmann",
+        "Luca Soldaini",
+        "A. Jha",
+        "Oyvind Tafjord",
+        "Dustin Schwenk",
+        "Pete Walsh",
+        "Yanai Elazar",
+        "Kyle Lo",
+        "Dirk Groeneveld",
+        "Iz Beltagy",
+        "Hanna Hajishirzi",
+        "Noah A. Smith",
+        "Kyle Richardson",
+        "Jesse Dodge"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Perplexity Analysis for Language Model Assessment (Paloma), measures LM fit to 585 text domains, ranging from nytimes.com to r/depression on Reddit, and demonstrates analyses that are possible with Paloma, such as finding that pretraining without data beyond Common Crawl leads to inconsistent fit to many domains."
+    },
+    "citationCount": 14,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

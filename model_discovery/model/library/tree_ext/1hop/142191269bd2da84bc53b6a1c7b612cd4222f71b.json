@@ -1,0 +1,33 @@
+{
+    "acronym": "142191269bd2da84bc53b6a1c7b612cd4222f71b",
+    "title": "MAFiD: Moving Average Equipped Fusion-in-Decoder for Question Answering over Tabular and Textual Data",
+    "seed_ids": [
+        "mega",
+        "70e91e16eb321067d9402710e14a40cf28311f73",
+        "395aae6e7a79e5760457ca38e868acc970016230",
+        "93d3e45395117e21214d404c8753b578c29266d1",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "142191269bd2da84bc53b6a1c7b612cd4222f71b",
+    "abstract": "Transformer-based models for question answering (QA) over tables and texts confront a \u201clong\u201d hybrid sequence over tabular and textual elements, causing long-range reasoning problems. To handle long-range reasoning, we extensively employ a fusion-in-decoder (FiD) and exponential moving average (EMA), proposing a {underline{M}oving {underline{A}verage Equipped {underline{F}usion-{underline{i}n-{underline{D}ecoder ({textbf{MAFiD}). With FiD as the backbone architecture, MAFiD combines various levels of reasoning: {textit{independent encoding} of homogeneous data and {textit{single-row} and {textit{multi-row heterogeneous reasoning}, using a {textit{gated cross attention layer} to effectively aggregate the three types of representations resulting from various reasonings. Experimental results on HybridQA indicate that MAFiD achieves state-of-the-art performance by increasing exact matching (EM) and F1 by $1.1$ and $1.7$, respectively, on the blind test set.",
+    "authors": [
+        "Sung-min Lee",
+        "Eunhwan Park",
+        "Daeryong Seo",
+        "D. Jeon",
+        "Inho Kang",
+        "Seung-Hoon Na"
+    ],
+    "venue": "Findings",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work extensively employs a fusion-in-decoder (FiD) and exponential moving average (EMA) to handle long-range reasoning, and demonstrates that MAFiD achieves state-of-the-art performance by increasing exact matching (EM) and F1 by $1.1$ and \u00a31.7$ on the blind test set."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

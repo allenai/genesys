@@ -1,0 +1,24 @@
+{
+    "acronym": "f239a2bbe29637e3e8131293a237d55071c8002c",
+    "title": "Comparison of Transfer-Learning Approaches for Response Selection in Multi-Turn Conversations",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "f239a2bbe29637e3e8131293a237d55071c8002c",
+    "abstract": "This paper compares three transfer-learning approaches to response selection in dialogs, as part of the Dialog System Technology Challenge 7 (DSTC7) Track 1. In the first approach, Multi-Turn ESIM+ELMo (MT-EE), we incorporate pre-trained contextual embeddings into a sentence-pair model that was originally designed for natural language inference. In the second approach, we fine-tune the Generative Pre-trained Transformer (OpenAI GPT) model. In the third approach, we fine-tune the Bidirectional Encoder Representations from Transformers (BERT) model. Our results show that BERT performed best, followed by the GPT model and then the MTEE model. We also discuss the relative advantages and disadvantages of each approach. The submitted result for Track 1 (MT-EE) placed second and fifth overall for the Advising and Ubuntu datasets respectively.",
+    "authors": [
+        "Jesse Vig",
+        "Kalai Ramea"
+    ],
+    "venue": "",
+    "year": 2018,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper compares three transfer-learning approaches to response selection in dialogs, as part of the Dialog System Technology Challenge 7 (DSTC7) Track 1, and shows that BERT performed best, followed by the GPT model and then the MTEE model."
+    },
+    "citationCount": 43,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

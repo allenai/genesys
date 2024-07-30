@@ -1,0 +1,31 @@
+{
+    "acronym": "c5b8d4b52f736976221652b572770042fc31a830",
+    "title": "Accurate Word Representations with Universal Visual Guidance",
+    "seed_ids": [
+        "gpt",
+        "aa9c6d43b36a55b34c2e9207355d355fd94691af",
+        "5744f56d3253bd7c4341d36de40a93fceaa266b3",
+        "67b1f8e48118bb1aa250f400d475425317bf4117",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "c5b8d4b52f736976221652b572770042fc31a830",
+    "abstract": "Word representation is a fundamental component in neural language understanding models. Recently, pre-trained language models (PrLMs) offer a new performant method of contextualized word representations by leveraging the sequence-level context for modeling. Although the PrLMs generally give more accurate contextualized word representations than non-contextualized models do, they are still subject to a sequence of text contexts without diverse hints for word representation from multimodality. This paper thus proposes a visual representation method to explicitly enhance conventional word embedding with multiple-aspect senses from visual guidance. In detail, we build a small-scale word-image dictionary from a multimodal seed dataset where each word corresponds to diverse related images. The texts and paired images are encoded in parallel, followed by an attention layer to integrate the multimodal representations. We show that the method substantially improves the accuracy of disambiguation. Experiments on 12 natural language understanding and machine translation tasks further verify the effectiveness and the generalization capability of the proposed approach.",
+    "authors": [
+        "Zhuosheng Zhang",
+        "Haojie Yu",
+        "Hai Zhao",
+        "Rui Wang",
+        "M. Utiyama"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A visual representation method to explicitly enhance conventional word embedding with multiple-aspect senses from visual guidance is proposed and it is shown that the method substantially improves the accuracy of disambiguation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

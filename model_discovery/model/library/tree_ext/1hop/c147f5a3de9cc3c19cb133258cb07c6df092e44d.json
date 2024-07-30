@@ -1,0 +1,26 @@
+{
+    "acronym": "c147f5a3de9cc3c19cb133258cb07c6df092e44d",
+    "title": "Few-shot Learning with Prompting Methods",
+    "seed_ids": [
+        "gpt",
+        "d9f6ada77448664b71128bb19df15765336974a6"
+    ],
+    "s2id": "c147f5a3de9cc3c19cb133258cb07c6df092e44d",
+    "abstract": "Today, in natural language processing, labeled data is important, however, getting adequate amount of data is a challenging step. There are many tasks for which it is difficult to obtain the required training data. For example, in machine translation, we need to prepare a lot of data in the target language, so that the work performance is acceptable. We may not be able to collect useful data in the target language. Hence, we need to use few-shot learning. Recently, a method called prompting has evolved, in which text inputs are converted into text with a new structure using a certain format, which has a blank space. Given the prompted text, a pre-trained language model replaces the space with the best word. Prompting can help us in the field of few-shot learning; even in cases where there is no data, i.e. zero-shot learning. Recent works use large language models such as GPT-2 and GPT-3, with the prompting method, performed tasks such as machine translation. These efforts do not use any labeled training data. But these types of models with a massive number of parameters require powerful hardware. Pattern-Exploiting Training (PET) and iterative Pattern-Exploiting Training (iPET) were introduced, which perform few-shot learning using prompting and smaller pre-trained language models such as Bert and Roberta. For example, for the Yahoo text classification dataset, using iPET and Roberta and ten labeled datasets, 70% accuracy has been reached. This paper reviews research works in few-shot learning with a new paradigm in natural language processing, which we dub prompt-based learning or in short, prompting.",
+    "authors": [
+        "Morteza Bahrami",
+        "Muharram Mansoorizadeh",
+        "H. Khotanlou"
+    ],
+    "venue": "2023 6th International Conference on Pattern Recognition and Image Analysis (IPRIA)",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Research works in few-shot learning with a new paradigm in natural language processing, which is dubbed prompt-based learning or in short, prompting are reviewed."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

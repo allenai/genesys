@@ -1,0 +1,25 @@
+{
+    "acronym": "3f4bef1f909468bf7179472b9b160d5463b76e22",
+    "title": "Improving Factual Consistency Between a Response and Persona Facts",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "3f4bef1f909468bf7179472b9b160d5463b76e22",
+    "abstract": "Neural models for response generation produce responses that are semantically plausible but not necessarily factually consistent with facts describing the speaker\u2019s persona. These models are trained with fully supervised learning where the objective function barely captures factual consistency. We propose to fine-tune these models by reinforcement learning and an efficient reward function that explicitly captures the consistency between a response and persona facts as well as semantic plausibility. Our automatic and human evaluations on the PersonaChat corpus confirm that our approach increases the rate of responses that are factually consistent with persona facts over its supervised counterpart while retains the language quality of responses.",
+    "authors": [
+        "Mohsen Mesgar",
+        "Edwin Simpson",
+        "Iryna Gurevych"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to fine-tune neural models for response generation by reinforcement learning and an efficient reward function that explicitly captures the consistency between a response and persona facts as well as semantic plausibility."
+    },
+    "citationCount": 25,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

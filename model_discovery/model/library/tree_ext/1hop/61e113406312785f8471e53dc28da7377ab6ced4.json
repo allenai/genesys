@@ -1,0 +1,40 @@
+{
+    "acronym": "61e113406312785f8471e53dc28da7377ab6ced4",
+    "title": "LLoCO: Learning Long Contexts Offline",
+    "seed_ids": [
+        "compresscontext",
+        "b085968c4362fb286ad6c5ef71a5db9630da0498",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "b6346f9fa093b8e85df712485a2b851b9f680dac",
+        "b31a5884a8ebe96b6300839b28608b97f8f8ef76",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "e586a4591ba0303b769f2c07cbddaf1899cb72e4",
+        "2f7364d8e5cf94315bf8905f57de9c5543e9a4bf",
+        "4e3935ef7da6bcbb202ec7f8b285c313cadcd044",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "9dc624d7258d1a56117ca720aea953ce46b66b21"
+    ],
+    "s2id": "61e113406312785f8471e53dc28da7377ab6ced4",
+    "abstract": "Processing long contexts remains a challenge for large language models (LLMs) due to the quadratic computational and memory overhead of the self-attention mechanism and the substantial KV cache sizes during generation. We propose a novel approach to address this problem by learning contexts offline through context compression and in-domain parameter-efficient finetuning. Our method enables an LLM to create a concise representation of the original context and efficiently retrieve relevant information to answer questions accurately. We introduce LLoCO, a technique that combines context compression, retrieval, and parameter-efficient finetuning using LoRA. Our approach extends the effective context window of a 4k token LLaMA2-7B model to handle up to 128k tokens. We evaluate our approach on several long-context question-answering datasets, demonstrating that LLoCO significantly outperforms in-context learning while using $30\\times$ fewer tokens during inference. LLoCO achieves up to $7.62\\times$ speed-up and substantially reduces the cost of long document question answering, making it a promising solution for efficient long context processing. Our code is publicly available at https://github.com/jeffreysijuntan/lloco.",
+    "authors": [
+        "Sijun Tan",
+        "Xiuyu Li",
+        "Shishir G. Patil",
+        "Ziyang Wu",
+        "Tianjun Zhang",
+        "Kurt Keutzer",
+        "Joseph E. Gonzalez",
+        "Raluca A. Popa"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces LLoCO, a technique that combines context compression, retrieval, and parameter-efficient finetuning using LoRA, and demonstrates that LLoCO significantly outperforms in-context learning while using $30\\times$ fewer tokens during inference."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

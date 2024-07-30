@@ -1,0 +1,40 @@
+{
+    "acronym": "364d04149674df5ae8501007768cd085c4c12cee",
+    "title": "ALISA: Accelerating Large Language Model Inference via Sparsity-Aware KV Caching",
+    "seed_ids": [
+        "longformer",
+        "sparsetransformer",
+        "e28f4687b9ddf562807d12d9799add07aa191d51",
+        "e586a4591ba0303b769f2c07cbddaf1899cb72e4",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "9b069ba5259d229bfd4fe3ac3768148e2d1092f8",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "4badd753be64c5c5b57dd2bb2e515fbe0c0720d8",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "b745b5512ad3b1f652dc0cbb5ddf5a940f397f7d",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28"
+    ],
+    "s2id": "364d04149674df5ae8501007768cd085c4c12cee",
+    "abstract": "The Transformer architecture has significantly advanced natural language processing (NLP) and has been foundational in developing large language models (LLMs) such as LLaMA and OPT, which have come to dominate a broad range of NLP tasks. Despite their superior accuracy, LLMs present unique challenges in practical inference, concerning the compute and memory-intensive nature. Thanks to the autoregressive characteristic of LLM inference, KV caching for the attention layers in Transformers can effectively accelerate LLM inference by substituting quadratic-complexity computation with linear-complexity memory accesses. Yet, this approach requires increasing memory as demand grows for processing longer sequences. The overhead leads to reduced throughput due to I/O bottlenecks and even out-of-memory errors, particularly on resource-constrained systems like a single commodity GPU. In this paper, we propose ALISA, a novel algorithm-system co-design solution to address the challenges imposed by KV caching. On the algorithm level, ALISA prioritizes tokens that are most important in generating a new token via a Sparse Window Attention (SWA) algorithm. SWA introduces high sparsity in attention layers and reduces the memory footprint of KV caching at negligible accuracy loss. On the system level, ALISA employs three-phase token-level dynamical scheduling and optimizes the trade-off between caching and recomputation, thus maximizing the overall performance in resource-constrained systems. In a single GPU-CPU system, we demonstrate that under varying workloads, ALISA improves the throughput of baseline systems such as FlexGen and vLLM by up to 3X and 1.9X, respectively.",
+    "authors": [
+        "Youpeng Zhao",
+        "Di Wu",
+        "Jun Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ALISA, a novel algorithm-system co-design solution to address the challenges imposed by KV caching, employs three-phase token-level dynamical scheduling and optimizes the trade-off between caching and recomputation, thus maximizing the overall performance in resource-constrained systems."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

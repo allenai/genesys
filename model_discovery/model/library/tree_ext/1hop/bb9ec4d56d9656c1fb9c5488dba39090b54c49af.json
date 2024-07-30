@@ -1,0 +1,28 @@
+{
+    "acronym": "bb9ec4d56d9656c1fb9c5488dba39090b54c49af",
+    "title": "Saliency-Guided Hidden Associative Replay for Continual Learning",
+    "seed_ids": [
+        "hopfield",
+        "e788a19d344f95bca85ac505786938f32edce7e2"
+    ],
+    "s2id": "bb9ec4d56d9656c1fb9c5488dba39090b54c49af",
+    "abstract": "Continual Learning is a burgeoning domain in next-generation AI, focusing on training neural networks over a sequence of tasks akin to human learning. While CL provides an edge over traditional supervised learning, its central challenge remains to counteract catastrophic forgetting and ensure the retention of prior tasks during subsequent learning. Amongst various strategies to tackle this, replay based methods have emerged as preeminent, echoing biological memory mechanisms. However, these methods are memory intensive, often preserving entire data samples, an approach inconsistent with humans selective memory retention of salient experiences. While some recent works have explored the storage of only significant portions of data in episodic memory, the inherent nature of partial data necessitates innovative retrieval mechanisms. Current solutions, like inpainting, approximate full data reconstruction from partial cues, a method that diverges from genuine human memory processes. Addressing these nuances, this paper presents the Saliency Guided Hidden Associative Replay for Continual Learning. This novel framework synergizes associative memory with replay-based strategies. SHARC primarily archives salient data segments via sparse memory encoding. Importantly, by harnessing associative memory paradigms, it introduces a content focused memory retrieval mechanism, promising swift and near-perfect recall, bringing CL a step closer to authentic human memory processes. Extensive experimental results demonstrate the effectiveness of our proposed method for various continual learning tasks.",
+    "authors": [
+        "Guangji Bai",
+        "Qilong Zhao",
+        "Xiaoyang Jiang",
+        "Yifei Zhang",
+        "Liang Zhao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents the Saliency Guided Hidden Associative Replay for Continual Learning, a novel framework that synergizes associative memory with replay-based strategies, and introduces a content focused memory retrieval mechanism, bringing CL a step closer to authentic human memory processes."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

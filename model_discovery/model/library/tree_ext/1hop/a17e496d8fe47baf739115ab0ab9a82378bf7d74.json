@@ -1,0 +1,37 @@
+{
+    "acronym": "a17e496d8fe47baf739115ab0ab9a82378bf7d74",
+    "title": "Recall, Retrieve and Reason: Towards Better In-Context Relation Extraction",
+    "seed_ids": [
+        "gpt3",
+        "bert",
+        "7805db74210aa113e83f20ffd0ad1ebcbb12ed7a",
+        "85ca3f50c60aa13237bfa2d46d9fc3c42ef5049c",
+        "2f291b0b59483e9c3c4a3391f34e6b29aff848a1",
+        "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a17e496d8fe47baf739115ab0ab9a82378bf7d74",
+    "abstract": "Relation extraction (RE) aims to identify relations between entities mentioned in texts. Although large language models (LLMs) have demonstrated impressive in-context learning (ICL) abilities in various tasks, they still suffer from poor performances compared to most supervised fine-tuned RE methods. Utilizing ICL for RE with LLMs encounters two challenges: (1) retrieving good demonstrations from training examples, and (2) enabling LLMs exhibit strong ICL abilities in RE. On the one hand, retrieving good demonstrations is a non-trivial process in RE, which easily results in low relevance regarding entities and relations. On the other hand, ICL with an LLM achieves poor performance in RE while RE is different from language modeling in nature or the LLM is not large enough. In this work, we propose a novel recall-retrieve-reason RE framework that synergizes LLMs with retrieval corpora (training examples) to enable relevant retrieving and reliable in-context reasoning. Specifically, we distill the consistently ontological knowledge from training datasets to let LLMs generate relevant entity pairs grounded by retrieval corpora as valid queries. These entity pairs are then used to retrieve relevant training examples from the retrieval corpora as demonstrations for LLMs to conduct better ICL via instruction tuning. Extensive experiments on different LLMs and RE datasets demonstrate that our method generates relevant and valid entity pairs and boosts ICL abilities of LLMs, achieving competitive or new state-of-the-art performance on sentence-level RE compared to previous supervised fine-tuning methods and ICL-based methods.",
+    "authors": [
+        "Guozheng Li",
+        "Peng Wang",
+        "Wenjun Ke",
+        "Yikai Guo",
+        "Ke Ji",
+        "Ziyu Shang",
+        "Jiajun Liu",
+        "Zijie Xu"
+    ],
+    "venue": "Proceedings of the Thirty-ThirdInternational Joint Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel recall-retrieve-reason RE framework that synergizes LLMs with retrieval corpora (training examples) to enable relevant retrieving and reliable in-context reasoning and generates relevant and valid entity pairs and boosts ICL abilities of LLMs."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

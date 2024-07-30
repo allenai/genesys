@@ -1,0 +1,29 @@
+{
+    "acronym": "fd291f8ab240af366da0133c5c5b31562484d5a3",
+    "title": "Validating Large Language Models with ReLM",
+    "seed_ids": [
+        "gpt2",
+        "c2329c685f11efa25c562f97be71ff03103423fd",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "fd291f8ab240af366da0133c5c5b31562484d5a3",
+    "abstract": "Although large language models (LLMs) have been touted for their ability to generate natural-sounding text, there are growing concerns around possible negative effects of LLMs such as data memorization, bias, and inappropriate language. Unfortunately, the complexity and generation capacities of LLMs make validating (and correcting) such concerns difficult. In this work, we introduce ReLM, a system for validating and querying LLMs using standard regular expressions. ReLM formalizes and enables a broad range of language model evaluations, reducing complex evaluation rules to simple regular expression queries. Our results exploring queries surrounding memorization, gender bias, toxicity, and language understanding show that ReLM achieves up to 15x higher system efficiency, 2.5x data efficiency, and increased statistical and prompt-tuning coverage compared to state-of-the-art ad-hoc queries. ReLM offers a competitive and general baseline for the increasingly important problem of LLM validation.",
+    "authors": [
+        "Michael Kuchnik",
+        "V. Smith",
+        "George Amvrosiadis"
+    ],
+    "venue": "Conference on Machine Learning and Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Results exploring queries surrounding memorization, gender bias, toxicity, and language understanding show that ReLM achieves up to 15x higher system efficiency, 2.5x data efficiency, and increased statistical and prompt-tuning coverage compared to state-of-the-art ad-hoc queries."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

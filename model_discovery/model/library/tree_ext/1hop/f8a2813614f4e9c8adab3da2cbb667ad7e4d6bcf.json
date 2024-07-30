@@ -1,0 +1,39 @@
+{
+    "acronym": "f8a2813614f4e9c8adab3da2cbb667ad7e4d6bcf",
+    "title": "Enhancing Recommender Systems with Large Language Model Reasoning Graphs",
+    "seed_ids": [
+        "gpt2",
+        "df602516e28a9ef0ef665ed0aef551984d8d770d",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f8a2813614f4e9c8adab3da2cbb667ad7e4d6bcf",
+    "abstract": "Recommendation systems aim to provide users with relevant suggestions, but often lack interpretability and fail to capture higher-level semantic relationships between user behaviors and profiles. In this paper, we propose a novel approach that leverages large language models (LLMs) to construct personalized reasoning graphs. These graphs link a user's profile and behavioral sequences through causal and logical inferences, representing the user's interests in an interpretable way. Our approach, LLM reasoning graphs (LLMRG), has four components: chained graph reasoning, divergent extension, self-verification and scoring, and knowledge base self-improvement. The resulting reasoning graph is encoded using graph neural networks, which serves as additional input to improve conventional recommender systems, without requiring extra user or item information. Our approach demonstrates how LLMs can enable more logical and interpretable recommender systems through personalized reasoning graphs. LLMRG allows recommendations to benefit from both engineered recommendation systems and LLM-derived reasoning graphs. We demonstrate the effectiveness of LLMRG on benchmarks and real-world scenarios in enhancing base recommendation models.",
+    "authors": [
+        "Yan Wang",
+        "Zhixuan Chu",
+        "Ouyang Xin",
+        "Simeng Wang",
+        "Hongyan Hao",
+        "Yue Shen",
+        "Jinjie Gu",
+        "Siqiao Xue",
+        "James Y. Zhang",
+        "Qing Cui",
+        "Longfei Li",
+        "Jun Zhou",
+        "Shenghe Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This approach demonstrates how LLMs can enable more logical and interpretable recommender systems through personalized reasoning graphs through LLMRG, which allows recommendations to benefit from both engineered recommendation systems and LLM-derived reasoning graphs."
+    },
+    "citationCount": 34,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

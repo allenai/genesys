@@ -1,0 +1,26 @@
+{
+    "acronym": "ebe77e6e49c5b3553710be11e7ff41a4770d6be9",
+    "title": "Where did I leave my keys? \u2014 Episodic-Memory-Based Question Answering on Egocentric Videos",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "f51497f463566581874c941353dd9d80069c5b77"
+    ],
+    "s2id": "ebe77e6e49c5b3553710be11e7ff41a4770d6be9",
+    "abstract": "Humans have a remarkable ability to organize, compress and retrieve episodic memories throughout their daily life. Current AI systems, however, lack comparable capabilities as they are mostly constrained to an analysis with access to the raw input sequence, assuming an unlimited amount of data storage which is not feasible in realistic deployment scenarios. For instance, existing Video Question Answering (VideoQA) models typically reason over the video while already being aware of the question, thus requiring to store the complete video in case the question is not known in advance.In this paper, we address this challenge with three main contributions: First, we propose the Episodic Memory Question Answering (EMQA) task as a specialization of VideoQA. Specifically, EMQA models are constrained to keep only a constant-sized representation of the video input, thus automatically limiting the computation requirements at query time. Second, we introduce a new egocentric VideoQA dataset called QaEgo4D, far larger than existing egocentric VideoQA datasets and featuring video length unprecedented in VideoQA datasets in general. Third, we present extensive experiments on the new dataset, comparing various baseline models in both the VideoQA and the EMQA setting. To facilitate future research on egocentric VideoQA as well as episodic memory representation and retrieval, we publish our code and dataset.",
+    "authors": [
+        "Leonard B\u00e4rmann",
+        "A. Waibel"
+    ],
+    "venue": "2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Episodic Memory Question Answering (EMQA) task is proposed as a specialization of VideoQA, and EMQA models are constrained to keep only a constant-sized representation of the video input, thus automatically limiting the computation requirements at query time."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

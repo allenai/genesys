@@ -1,0 +1,34 @@
+{
+    "acronym": "f5324c908e840995f681ac677c40d5d6b1555622",
+    "title": "Diffusion Models and Semi-Supervised Learners Benefit Mutually with Few Labels",
+    "seed_ids": [
+        "classfreediffu",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "f5324c908e840995f681ac677c40d5d6b1555622",
+    "abstract": "In an effort to further advance semi-supervised generative and classification tasks, we propose a simple yet effective training strategy called dual pseudo training (DPT), built upon strong semi-supervised learners and diffusion models. DPT operates in three stages: training a classifier on partially labeled data to predict pseudo-labels; training a conditional generative model using these pseudo-labels to generate pseudo images; and retraining the classifier with a mix of real and pseudo images. Empirically, DPT consistently achieves SOTA performance of semi-supervised generation and classification across various settings. In particular, with one or two labels per class, DPT achieves a Fr\\'echet Inception Distance (FID) score of 3.08 or 2.52 on ImageNet 256x256. Besides, DPT outperforms competitive semi-supervised baselines substantially on ImageNet classification tasks, achieving top-1 accuracies of 59.0 (+2.8), 69.5 (+3.0), and 74.4 (+2.0) with one, two, or five labels per class, respectively. Notably, our results demonstrate that diffusion can generate realistic images with only a few labels (e.g.,<0.1%) and generative augmentation remains viable for semi-supervised classification. Our code is available at https://github.com/ML-GSAI/DPT.",
+    "authors": [
+        "Zebin You",
+        "Yong Zhong",
+        "Fan Bao",
+        "Jiacheng Sun",
+        "Chongxuan Li",
+        "Jun Zhu"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DPT operates in three stages: training a classifier on partially labeled data to predict pseudo-labels; training a conditional generative model using these pseudo-Labels to generate pseudo images; and retraining the classifier with a mix of real and pseudo images."
+    },
+    "citationCount": 20,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

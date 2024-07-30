@@ -1,0 +1,26 @@
+{
+    "acronym": "4dac8cd323899f081252ac991fb779c3d5e5bfdb",
+    "title": "Paths of A Million People: Extracting Life Trajectories from Wikipedia",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "4dac8cd323899f081252ac991fb779c3d5e5bfdb",
+    "abstract": "The life trajectories of notable people have been studied to pinpoint the times and places of significant events such as birth, death, education, marriage, competition, work, speeches, scientific discoveries, artistic achievements, and battles. Understanding how these individuals interact with others provides valuable insights for broader research into human dynamics. However, the scarcity of trajectory data in terms of volume, density, and inter-person interactions, limits relevant studies from being comprehensive and interactive. We mine millions of biography pages from Wikipedia and tackle the generalization problem stemming from the variety and heterogeneity of the trajectory descriptions. Our ensemble model COSMOS, which combines the idea of semi-supervised learning and contrastive learning, achieves an F1 score of 85.95%. For this task, we also create a hand-curated dataset, WikiLifeTrajectory, consisting of 8,852 (person, time, location) triplets as ground truth. Besides, we perform an empirical analysis on the trajectories of 8,272 historians to demonstrate the validity of the extracted results. To facilitate the research on trajectory extractions and help the analytical studies to construct grand narratives, we make our code, the million-level extracted trajectories, and the WikiLifeTrajectory dataset publicly available.",
+    "authors": [
+        "Ying Zhang",
+        "Xiaofeng Li",
+        "Zhaoyang Liu",
+        "Haipeng Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work mines millions of biography pages from Wikipedia and tackles the generalization problem stemming from the variety and heterogeneity of the trajectory descriptions, and makes the code, the million-level extracted trajectories, and the WikiLifeTrajectory dataset publicly available."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

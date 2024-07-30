@@ -1,0 +1,27 @@
+{
+    "acronym": "8831d02011137fa0def085d677e7ac8a3d94b4b6",
+    "title": "A Lightweight Dynamic Filter For Keyword Spotting",
+    "seed_ids": [
+        "lighdynconv"
+    ],
+    "s2id": "8831d02011137fa0def085d677e7ac8a3d94b4b6",
+    "abstract": "Keyword Spotting (KWS) from speech signals is widely applied to perform fully hands-free speech recognition. The KWS network is designed as a small-footprint model so it can continuously be active. Recent efforts have explored dynamic filter-based models in deep learning frameworks to enhance the system\u2019s robustness or accuracy. However, as a dynamic filter framework requires high computational costs, the implementation is limited to the computational condition of the device. In this paper, we propose a lightweight dynamic filter to improve the performance of KWS. Our proposed model divides the dynamic filter into two branches to reduce computational complexity: pixel level and instance level. The proposed lightweight dynamic filter is applied to the front end of KWS to enhance the separability of the input data. The experimental results show that our model is robustly working on unseen noise and small training data environments by using a small computational resource.",
+    "authors": [
+        "Donghyeon Kim",
+        "Kyungdeuk Ko",
+        "Jeong-gi Kwak",
+        "D. Han",
+        "Hanseok Ko"
+    ],
+    "venue": "2023 IEEE International Conference on Acoustics, Speech, and Signal Processing Workshops (ICASSPW)",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A lightweight dynamic filter is applied to the front end of KWS to enhance the separability of the input data and show that the model is robustly working on unseen noise and small training data environments by using a small computational resource."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

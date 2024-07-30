@@ -1,0 +1,30 @@
+{
+    "acronym": "98665ea70619f5f708161b9996778440ebe0a801",
+    "title": "Selectively Informative Description can Reduce Undesired Embedding Entanglements in Text-to-Image Personalization",
+    "seed_ids": [
+        "classfreediffu",
+        "9550076d9930dd3533ab9276126f1a9265fad7b4",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "3ff7153fd6bd47d08084c7f50f8fd70026c126e7",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "98665ea70619f5f708161b9996778440ebe0a801",
+    "abstract": "In text-to-image personalization, a timely and crucial challenge is the tendency of generated images overfitting to the biases present in the reference images. We initiate our study with a comprehensive categorization of the biases into background, nearby-object, tied-object, substance (in style re-contextualization), and pose biases. These biases manifest in the generated images due to their entanglement into the subject embedding. This undesired embedding entanglement not only results in the reflection of biases from the reference images into the generated images but also notably diminishes the alignment of the generated images with the given generation prompt. To address this challenge, we propose SID~(Selectively Informative Description), a text description strategy that deviates from the prevalent approach of only characterizing the subject's class identification. SID is generated utilizing multimodal GPT-4 and can be seamlessly integrated into optimization-based models. We present comprehensive experimental results along with analyses of cross-attention maps, subject-alignment, non-subject-disentanglement, and text-alignment.",
+    "authors": [
+        "Jimyeong Kim",
+        "Jungwon Park",
+        "Wonjong Rhee"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "SID~(Selectively Informative Description), a text description strategy that deviates from the prevalent approach of only characterizing the subject's class identification, is proposed and can be seamlessly integrated into optimization-based models."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

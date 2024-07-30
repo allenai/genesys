@@ -1,0 +1,25 @@
+{
+    "acronym": "d60da921d685bef88a8f0287228e05ca570a2ebd",
+    "title": "HyperAggregation: Aggregating over Graph Edges with Hypernetworks",
+    "seed_ids": [
+        "hypermixer",
+        "fb7e324729be2931dc463a572566283802d8aff2"
+    ],
+    "s2id": "d60da921d685bef88a8f0287228e05ca570a2ebd",
+    "abstract": "HyperAggregation is a hypernetwork-based aggregation function for Graph Neural Networks. It uses a hypernetwork to dynamically generate weights in the size of the current neighborhood, which are then used to aggregate this neighborhood. This aggregation with the generated weights is done like an MLP-Mixer channel mixing over variable-sized vertex neighborhoods. We demonstrate HyperAggregation in two models, GraphHyperMixer is a model based on MLP-Mixer while GraphHyperConv is derived from a GCN but with a hypernetwork-based aggregation function. We perform experiments on diverse benchmark datasets for the vertex classification, graph classification, and graph regression tasks. The results show that HyperAggregation can be effectively used for homophilic and heterophilic datasets in both inductive and transductive settings. GraphHyperConv performs better than GraphHyperMixer and is especially strong in the transductive setting. On the heterophilic dataset Roman-Empire it reaches a new state of the art. On the graph-level tasks our models perform in line with similarly sized models. Ablation studies investigate the robustness against various hyperparameter choices. The implementation of HyperAggregation as well code to reproduce all experiments is available under https://github.com/Foisunt/HyperAggregation .",
+    "authors": [
+        "N. Lell",
+        "A. Scherp"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results show that HyperAggregation can be effectively used for homophilic and heterophilic datasets in both inductive and transductive settings and is especially strong in the transductive setting."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

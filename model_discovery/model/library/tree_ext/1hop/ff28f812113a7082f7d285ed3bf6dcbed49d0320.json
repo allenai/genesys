@@ -1,0 +1,34 @@
+{
+    "acronym": "ff28f812113a7082f7d285ed3bf6dcbed49d0320",
+    "title": "Leveraging Task Dependency and Contrastive Learning for Case Outcome Classification on European Court of Human Rights Cases",
+    "seed_ids": [
+        "neurallegal",
+        "0476fe2b42398f3482946fff2d5392e22662a248",
+        "9166caa474031b62bacad8a920db8308e6a15120",
+        "fd33e77884e69f6bc099990fc2790248af2749d9",
+        "c67843e9ccb8221abb5d2feecc4f3ce2708e9cf2",
+        "61a5ae33fc34efcdbc710004554ec57e607ce75e",
+        "29584ed6d68a06fdf91440a018f6bc83a44fd177",
+        "cc2d1a66c701e9be9124eb95431b6c3dd79a61d3",
+        "95b4ed2e757189ff02c7840d0dc04c1bc3c88f5c"
+    ],
+    "s2id": "ff28f812113a7082f7d285ed3bf6dcbed49d0320",
+    "abstract": "We report on an experiment in case outcome classification on European Court of Human Rights cases where our model first learns to identify the convention articles allegedly violated by the state from case facts descriptions, and subsequently uses that information to classify whether the court finds a violation of those articles. We assess the dependency between these two tasks at the feature and outcome level. Furthermore, we leverage a hierarchical contrastive loss to pull together article-specific representations of cases at the higher level, leading to distinctive article clusters. The cases in each article cluster are further pulled closer based on their outcome, leading to sub-clusters of cases with similar outcomes. Our experiment results demonstrate that, given a static pre-trained encoder, our models produce a small but consistent improvement in classification performance over single-task and joint models without contrastive loss.",
+    "authors": [
+        "Santosh T.Y.S.S",
+        "Santosh T.Y.S.S",
+        "Phillip Kemper",
+        "Matthias Grabmair"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

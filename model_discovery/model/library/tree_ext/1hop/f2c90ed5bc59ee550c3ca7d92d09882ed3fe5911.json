@@ -1,0 +1,27 @@
+{
+    "acronym": "f2c90ed5bc59ee550c3ca7d92d09882ed3fe5911",
+    "title": "Characterizing Road Maps for Vehicle Endurance Testing with Machine Learning",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "f2c90ed5bc59ee550c3ca7d92d09882ed3fe5911",
+    "abstract": "To select optimal routes for vehicles endurance tests, it is necessary to have a road map characterized by events of interest. In this context, we define events as effects on the vehicle triggered by some proprieties of the routes. Such a characterization strongly relies on data from previous test drives. If new road maps are to be considered, e.g., in a different region, the route selection rather depends on the experience of engineers, which can lead to suboptimal decisions. To overcome this problem, we propose using the existing data from prior test drives to train a machine learning (ML) model, which then transfers this knowledge to unseen road maps. To this end, we formulate a sequential problem that can be solved with state-of-the-art ML architectures. Our experimental results based on real-world data show the potential of the proposed approach as we illustrate for the case of testing energy recuperation in electric vehicles.",
+    "authors": [
+        "Bijin Muthiyackal Abraham",
+        "Christian Drescher",
+        "Daniel Markert",
+        "Ana Perez Grassi",
+        "Alejandro Masrur"
+    ],
+    "venue": "2024 IEEE Intelligent Vehicles Symposium (IV)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes using the existing data from prior test drives to train a machine learning (ML) model, which then transfers this knowledge to unseen road maps, and formulate a sequential problem that can be solved with state-of-the-art ML architectures."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

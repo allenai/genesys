@@ -1,0 +1,25 @@
+{
+    "acronym": "cb8ace1bc431c37497faca211146643bf0f48322",
+    "title": "Multimodal Multilabel Classification by CLIP",
+    "seed_ids": [
+        "transformer",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "cb8ace1bc431c37497faca211146643bf0f48322",
+    "abstract": "Multimodal multilabel classification (MMC) is a challenging task that aims to design a learning algorithm to handle two data sources, the image and text, and learn a comprehensive semantic feature presentation across the modalities. In this task, we review the extensive number of state-of-the-art approaches in MMC and leverage a novel technique that utilises the Contrastive Language-Image Pre-training (CLIP) as the feature extractor and fine-tune the model by exploring different classification heads, fusion methods and loss functions. Finally, our best result achieved more than 90% F_1 score in the public Kaggle competition leaderboard. This paper provides detailed descriptions of novel training methods and quantitative analysis through the experimental results.",
+    "authors": [
+        "Yanming Guo"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel technique is leveraged that utilises the Contrastive Language-Image Pre-training (CLIP) as the feature extractor and fine-tune the model by exploring different classification heads, fusion methods and loss functions."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

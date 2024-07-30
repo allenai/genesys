@@ -1,0 +1,34 @@
+{
+    "acronym": "37fbaa328e7867e4b63de070ee834a3fb510f666",
+    "title": "Implicit Concept Removal of Diffusion Models",
+    "seed_ids": [
+        "classfreediffu",
+        "299a77bf4050c9686d35b905b96d8902734845c5",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2"
+    ],
+    "s2id": "37fbaa328e7867e4b63de070ee834a3fb510f666",
+    "abstract": "Text-to-image (T2I) diffusion models often inadvertently generate unwanted concepts such as watermarks and unsafe images. These concepts, termed as the\"implicit concepts\", could be unintentionally learned during training and then be generated uncontrollably during inference. Existing removal methods still struggle to eliminate implicit concepts primarily due to their dependency on the model's ability to recognize concepts it actually can not discern. To address this, we utilize the intrinsic geometric characteristics of implicit concepts and present the Geom-Erasing, a novel concept removal method based on the geometric-driven control. Specifically, once an unwanted implicit concept is identified, we integrate the existence and geometric information of the concept into the text prompts with the help of an accessible classifier or detector model. Subsequently, the model is optimized to identify and disentangle this information, which is then adopted as negative prompts during generation. Moreover, we introduce the Implicit Concept Dataset (ICD), a novel image-text dataset imbued with three typical implicit concepts (i.e., QR codes, watermarks, and text), reflecting real-life situations where implicit concepts are easily injected. Geom-Erasing effectively mitigates the generation of implicit concepts, achieving the state-of-the-art results on the Inappropriate Image Prompts (I2P) and our challenging Implicit Concept Dataset (ICD) benchmarks.",
+    "authors": [
+        "Zhili Liu",
+        "Kai Chen",
+        "Yifan Zhang",
+        "Jianhua Han",
+        "Lanqing Hong",
+        "Hang Xu",
+        "Zhenguo Li",
+        "Dit-Yan Yeung",
+        "James T. Kwok"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Geom-Erasing effectively mitigates the generation of implicit concepts, achieving the state-of-the-art results on the Inappropriate Image Prompts (I2P) and the authors' challenging Implicit Concept Dataset (ICD) benchmarks."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

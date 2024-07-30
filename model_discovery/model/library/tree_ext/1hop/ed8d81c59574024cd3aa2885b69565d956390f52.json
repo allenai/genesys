@@ -1,0 +1,27 @@
+{
+    "acronym": "ed8d81c59574024cd3aa2885b69565d956390f52",
+    "title": "Trainable Weighted Pooling Method for Text Classification with BERT",
+    "seed_ids": [
+        "bert",
+        "6001dce1c8f63350263e013e0e6ff69816f0a9af",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "ed8d81c59574024cd3aa2885b69565d956390f52",
+    "abstract": "Text classification is one of the central challenges in natural language processing, encompassing techniques for cate-gorizing large amounts of text data into meaningful categories. This field plays an important role in many applications, such as information retrieval, sentiment analysis, and recommendation systems. In recent years, the remarkable development of deep learning technology has led to the proposal of large language models, which have achieved high performance in various tasks. BERT is one of the large language models widely recognized for its potential in text classification. Although BERT can effectively learn context-dependent word representations, an appropriate pooling strategy is necessary to obtain a representation of the entire document. In this study, we propose a pooling method called CLS-average pooling (CAP) that combines the commonly used the [CLS] embedding and the average pooling method in BERT for text classification. We obtain the sentence representations by taking the weighted sum of the embeddings obtained from the [CLS] embedding and the average pooling. At this time, we treat the weights used in CAP as trainable parameters to automatically acquire appropriate weights for text classification. We demonstrated that the proposed method is more effective than conventional pooling methods in text classification tasks by applying it to a dataset for text classification.",
+    "authors": [
+        "Hidenori Yamato",
+        "M. Okada",
+        "Naoki Mori"
+    ],
+    "venue": "2023 15th International Congress on Advanced Applied Informatics Winter (IIAI-AAI-Winter)",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study proposes a pooling method called CLS-average pooling (CAP) that combines the commonly used the [CLS] embedding and the average pooling method in BERT for text classification and demonstrates that the proposed method is more effective than conventional pooling methods in text classification tasks by applying it to a dataset for text classification."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

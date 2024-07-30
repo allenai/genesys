@@ -1,0 +1,32 @@
+{
+    "acronym": "59abd3a23d0ab6290d54da9fa34d8573b9e0eb9b",
+    "title": "vTrain: A Simulation Framework for Evaluating Cost-effective and Compute-optimal Large Language Model Training",
+    "seed_ids": [
+        "gpt3",
+        "ff5eb1bd55d61ae919865f6b4dab84e6ae1974f3",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "59abd3a23d0ab6290d54da9fa34d8573b9e0eb9b",
+    "abstract": "As large language models (LLMs) become widespread in various application domains, a critical challenge the AI community is facing is how to train these large AI models in a cost-effective manner. Existing LLM training plans typically employ a heuristic based parallel training strategy which is based on empirical observations rather than grounded upon a thorough examination of the search space of LLM parallelization. Such limitation renders existing systems to leave significant performance left on the table, wasting millions of dollars worth of training cost. This paper presents our profiling-driven simulator called vTrain, providing AI practitioners a fast yet accurate software framework to determine an efficient and cost-effective LLM training system configuration. We demonstrate vTrain's practicality through several case studies, e.g., effectively evaluating optimal training parallelization strategies that balances training time and its associated training cost, efficient multi-tenant GPU cluster schedulers targeting multiple LLM training jobs, and determining a compute-optimal LLM model architecture given a fixed compute budget.",
+    "authors": [
+        "Jehyeon Bang",
+        "Yujeong Choi",
+        "Myeongwoo Kim",
+        "Yongdeok Kim",
+        "Minsoo Rhu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a profiling-driven simulator called vTrain, providing AI practitioners a fast yet accurate software framework to determine an efficient and cost-effective LLM training system configuration, and demonstrates its practicality through several case studies."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

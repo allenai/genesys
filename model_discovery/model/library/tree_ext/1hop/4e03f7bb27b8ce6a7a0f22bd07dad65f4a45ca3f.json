@@ -1,0 +1,30 @@
+{
+    "acronym": "4e03f7bb27b8ce6a7a0f22bd07dad65f4a45ca3f",
+    "title": "LKM-UNet: Large Kernel Vision Mamba UNet for Medical Image Segmentation",
+    "seed_ids": [
+        "mamba",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "4e03f7bb27b8ce6a7a0f22bd07dad65f4a45ca3f",
+    "abstract": "In clinical practice, medical image segmentation provides useful information on the contours and dimensions of target organs or tissues, facilitating improved diagnosis, analysis, and treatment. In the past few years, convolutional neural networks (CNNs) and Transformers have dominated this area, but they still suffer from either limited receptive fields or costly long-range modeling. Mamba, a State Space Sequence Model (SSM), recently emerged as a promising paradigm for long-range dependency modeling with linear complexity. In this paper, we introduce a Large Kernel Vision Mamba U-shape Network, or LKM-UNet, for medical image segmentation. A distinguishing feature of our LKM-UNet is its utilization of large Mamba kernels, excelling in locally spatial modeling compared to small kernel-based CNNs and Transformers, while maintaining superior efficiency in global modeling compared to self-attention with quadratic complexity. Additionally, we design a novel hierarchical and bidirectional Mamba block to further enhance Mamba's global and neighborhood spatial modeling capability for vision inputs. Comprehensive experiments demonstrate the feasibility and the effectiveness of using large-size Mamba kernels to achieve large receptive fields. Codes are available at https://github.com/wjh892521292/LKM-UNet.",
+    "authors": [
+        "Jinhong Wang",
+        "Jintai Chen",
+        "D. Chen",
+        "Jian Wu"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces a Large Kernel Vision Mamba U-shape Network, or LKM-UNet, for medical image segmentation, excelling in locally spatial modeling compared to small kernel-based CNNs and Transformers, while maintaining superior efficiency in global modeling compared to self-attention with quadratic complexity."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

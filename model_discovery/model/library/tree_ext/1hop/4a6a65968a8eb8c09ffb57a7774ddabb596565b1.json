@@ -1,0 +1,30 @@
+{
+    "acronym": "4a6a65968a8eb8c09ffb57a7774ddabb596565b1",
+    "title": "COLD Decoding: Energy-based Constrained Text Generation with Langevin Dynamics",
+    "seed_ids": [
+        "gpt2",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "4d16457cded23bce6eaa91cd17aefd22af2279f0",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "4a6a65968a8eb8c09ffb57a7774ddabb596565b1",
+    "abstract": "Many applications of text generation require incorporating different constraints to control the semantics or style of generated text. These constraints can be hard (e.g., ensuring certain keywords are included in the output) and soft (e.g., contextualizing the output with the left- or right-hand context). In this paper, we present Energy-based Constrained Decoding with Langevin Dynamics (COLD), a decoding framework which unifies constrained generation as specifying constraints through an energy function, then performing efficient differentiable reasoning over the constraints through gradient-based sampling. COLD decoding is a flexible framework that can be applied directly to off-the-shelf left-to-right language models without the need for any task-specific fine-tuning, as demonstrated through three challenging text generation applications: lexically-constrained generation, abductive reasoning, and counterfactual reasoning. Our experiments on these constrained generation tasks point to the effectiveness of our approach, both in terms of automatic and human evaluation.",
+    "authors": [
+        "Lianhui Qin",
+        "Sean Welleck",
+        "Daniel Khashabi",
+        "Yejin Choi"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "COLD decoding is a flexible framework that can be applied directly to off-the-shelf left-to-right language models without the need for any task-specific fine-tuning, as demonstrated through three challenging text generation applications: lexically-constrained generation, abductive reasoning, and counterfactual reasoning."
+    },
+    "citationCount": 99,
+    "influentialCitationCount": 16,
+    "code": null,
+    "description": null,
+    "url": null
+}

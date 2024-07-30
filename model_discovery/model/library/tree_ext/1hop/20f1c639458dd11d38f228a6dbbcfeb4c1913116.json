@@ -1,0 +1,28 @@
+{
+    "acronym": "20f1c639458dd11d38f228a6dbbcfeb4c1913116",
+    "title": "Bridging the Gap for Tokenizer-Free Language Models",
+    "seed_ids": [
+        "transformerxl",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "20f1c639458dd11d38f228a6dbbcfeb4c1913116",
+    "abstract": "Purely character-based language models (LMs) have been lagging in quality on large scale datasets, and current state-of-the-art LMs rely on word tokenization. It has been assumed that injecting the prior knowledge of a tokenizer into the model is essential to achieving competitive results. In this paper, we show that contrary to this conventional wisdom, tokenizer-free LMs with sufficient capacity can achieve competitive performance on a large scale dataset. We train a vanilla transformer network with 40 self-attention layers on the One Billion Word (lm1b) benchmark and achieve a new state of the art for tokenizer-free LMs, pushing these models to be on par with their word-based counterparts.",
+    "authors": [
+        "Dokook Choe",
+        "Rami Al-Rfou",
+        "Mandy Guo",
+        "Heeyoung Lee",
+        "Noah Constant"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper trains a vanilla transformer network with 40 self-attention layers on the One Billion Word (lm1b) benchmark and achieves a new state of the art for tokenizer-free LMs, pushing these models to be on par with their word-based counterparts."
+    },
+    "citationCount": 18,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

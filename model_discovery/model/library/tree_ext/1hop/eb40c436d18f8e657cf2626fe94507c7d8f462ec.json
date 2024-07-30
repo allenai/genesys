@@ -1,0 +1,32 @@
+{
+    "acronym": "eb40c436d18f8e657cf2626fe94507c7d8f462ec",
+    "title": "PathLDM: Text conditioned Latent Diffusion Model for Histopathology",
+    "seed_ids": [
+        "classfreediffu",
+        "a42fc49a300136d60aaebb668369010ee7746150",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "eb40c436d18f8e657cf2626fe94507c7d8f462ec",
+    "abstract": "To achieve high-quality results, diffusion models must be trained on large datasets. This can be notably prohibitive for models in specialized domains, such as computational pathology. Conditioning on labeled data is known to help in data-efficient model training. Therefore, histopathology reports, which are rich in valuable clinical information, are an ideal choice as guidance for a histopathology generative model. In this paper, we introduce PathLDM, the first text-conditioned Latent Diffusion Model tailored for generating high-quality histopathology images. Leveraging the rich contextual information provided by pathology text reports, our approach fuses image and textual data to enhance the generation process. By utilizing GPT\u2019s capabilities to distill and summarize complex text reports, we establish an effective conditioning mechanism. Through strategic conditioning and necessary architectural enhancements, we achieved a SoTA FID score of 7.64 for text-to-image generation on the TCGA-BRCA dataset, significantly outperforming the closest text-conditioned competitor with FID 30.1. 1",
+    "authors": [
+        "Srikar Yellapragada",
+        "Alexandros Graikos",
+        "P. Prasanna",
+        "T. Kur\u00e7",
+        "J. Saltz",
+        "D. Samaras"
+    ],
+    "venue": "IEEE Workshop/Winter Conference on Applications of Computer Vision",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "PathLDM is introduced, the first text-conditioned Latent Diffusion Model tailored for generating high-quality histopathology images, which achieved a SoTA FID score of 7.64 for text-to-image generation on the TCGA-BRCA dataset, significantly outperforming the closest text-conditioned competitor with FID 30.1."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

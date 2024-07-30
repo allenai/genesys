@@ -1,0 +1,28 @@
+{
+    "acronym": "17b729d9fc868b4015eaeacc4f0252bdce285cc6",
+    "title": "Breast Cancer Classification from Digital Pathology Images via Connectivity-aware Graph Transformer.",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "17b729d9fc868b4015eaeacc4f0252bdce285cc6",
+    "abstract": "Automated classification of breast cancer subtypes from digital pathology images has been an extremely challenging task due to the complicated spatial patterns of cells in the tissue micro-environment. While newly proposed graph transformers are able to capture more long-range dependencies to enhance accuracy, they largely ignore the topological connectivity between graph nodes, which is nevertheless critical to extract more representative features to address this difficult task. In this paper, we propose a novel connectivity-aware graph transformer (CGT) for phenotyping the topology connectivity of the tissue graph constructed from digital pathology images for breast cancer classification. Our CGT seamlessly integrates connectivity embedding to node feature at every graph transformer layer by using local connectivity aggregation, in order to yield more comprehensive graph representations to distinguish different breast cancer subtypes. In light of the realistic intercellular communication mode, we then encode the spatial distance between two arbitrary nodes as connectivity bias in self-attention calculation, thereby allowing the CGT to distinctively harness the connectivity embedding based on the distance of two nodes. We extensively evaluate the proposed CGT on a large cohort of breast carcinoma digital pathology images stained by Haematoxylin & Eosin. Experimental results demonstrate the effectiveness of our CGT, which outperforms state-of-the-art methods by a large margin. Codes are released on https://github.com/wang-kang-6/CGT.",
+    "authors": [
+        "Kang Wang",
+        "Feiyang Zheng",
+        "Lan Cheng",
+        "Hongning Dai",
+        "Qi Dou",
+        "Jing Qin"
+    ],
+    "venue": "IEEE Transactions on Medical Imaging",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel connectivity-aware graph transformer (CGT) for phenotyping the topology connectivity of the tissue graph constructed from digital pathology images for breast cancer classification, which outperforms state-of-the-art methods by a large margin."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "043aa8e8b4768e2b36c5097141b88a6ad2b591b7",
+    "title": "Inductive-Deductive Strategy Reuse for Multi-Turn Instructional Dialogues",
+    "seed_ids": [
+        "bert",
+        "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+        "270f3bea8ca801870a6cc56b4d36f7f2019c9ed0"
+    ],
+    "s2id": "043aa8e8b4768e2b36c5097141b88a6ad2b591b7",
+    "abstract": "Aligning large language models (LLMs) with human expectations requires high-quality instructional dialogues, which can be achieved by raising diverse, in-depth, and insightful instructions that deepen interactions. Existing methods target instructions from real instruction dialogues as a learning goal and fine-tune a user simulator for posing instructions. However, the user simulator struggles to implicitly model complex dialogue flows and pose high-quality instructions. In this paper, we take inspiration from the cognitive abilities inherent in human learning and propose the explicit modeling of complex dialogue flows through instructional strategy reuse. Specifically, we first induce high-level strategies from various real instruction dialogues. These strategies are applied to new dialogue scenarios deductively, where the instructional strategies facilitate high-quality instructions. Experimental results show that our method can generate diverse, in-depth, and insightful instructions for a given dialogue history. The constructed multi-turn instructional dialogues can outperform competitive baselines on the downstream chat model.",
+    "authors": [
+        "Jiao Ou",
+        "Jiayu Wu",
+        "Che Liu",
+        "Fuzheng Zhang",
+        "Di Zhang",
+        "Kun Gai"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper takes inspiration from the cognitive abilities inherent in human learning and proposes the explicit modeling of complex dialogue flows through instructional strategy reuse, which can generate diverse, in-depth, and insightful instructions for a given dialogue history."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

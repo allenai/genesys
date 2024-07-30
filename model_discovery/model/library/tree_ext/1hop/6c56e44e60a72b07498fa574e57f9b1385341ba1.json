@@ -1,0 +1,25 @@
+{
+    "acronym": "6c56e44e60a72b07498fa574e57f9b1385341ba1",
+    "title": "MuST: Multimodal Spatiotemporal Graph-Transformer for Hospital Readmission Prediction",
+    "seed_ids": [
+        "bert",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "6c56e44e60a72b07498fa574e57f9b1385341ba1",
+    "abstract": "Hospital readmission prediction is considered an essential approach to decreasing readmission rates, which is a key factor in assessing the quality and efficacy of a healthcare system. Previous studies have extensively utilized three primary modalities, namely electronic health records (EHR), medical images, and clinical notes, to predict hospital readmissions. However, the majority of these studies did not integrate information from all three modalities or utilize the spatiotemporal relationships present in the dataset. This study introduces a novel model called the Multimodal Spatiotemporal Graph-Transformer (MuST) for predicting hospital readmissions. By employing Graph Convolution Networks and temporal transformers, we can effectively capture spatial and temporal dependencies in EHR and chest radiographs. We then propose a fusion transformer to combine the spatiotemporal features from the two modalities mentioned above with the features from clinical notes extracted by a pre-trained, domain-specific transformer. We assess the effectiveness of our methods using the latest publicly available dataset, MIMIC-IV. The experimental results indicate that the inclusion of multimodal features in MuST improves its performance in comparison to unimodal methods. Furthermore, our proposed pipeline outperforms the current leading methods in the prediction of hospital readmissions.",
+    "authors": [
+        "Yan Miao",
+        "Lequan Yu"
+    ],
+    "venue": "MTSAIL/LEAF/AI4Treat/MMMI/REMIA@MICCAI",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel model called the Multimodal Spatiotemporal Graph-Transformer (MuST) is introduced, which can effectively capture spatial and temporal dependencies in EHR and chest radiographs and outperforms the current leading methods in the prediction of hospital readmissions."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

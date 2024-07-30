@@ -1,0 +1,31 @@
+{
+    "acronym": "9f5e8e6bb1a9771daeb6b003c73f158d3ae18de8",
+    "title": "Save It All: Enabling Full Parameter Tuning for Federated Large Language Models via Cycle Black Gradient Descent",
+    "seed_ids": [
+        "gpt2",
+        "3c6f2e0c5ff5dff6151c3e6489378a53318a75b4",
+        "0e3d1457a66e442fae46c8f96886dc76aef3b085",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "9f5e8e6bb1a9771daeb6b003c73f158d3ae18de8",
+    "abstract": "The advent of large language models (LLMs) has revolutionized the deep learning paradigm, yielding impressive results across a wide array of tasks. However, the pre-training or fine-tuning of LLMs within a federated learning (FL) framework poses substantial challenges, including considerable computational and memory resource demands, as well as communication bottlenecks between servers and clients. Existing solutions either make the unrealistic assumption that the entire model is exchanged for training, or apply parameter-effective fine-tuning methods from centralized learning to train LLMs in FL which tend to underperform during training or fine-tuning stages due to the limited search subspace of parameter updating. In this paper, we introduce a novel method for the efficient training and fine-tuning of LLMs in FL, with minimal resource consumption. Our approach, termed FedCyBGD, utilizes Cycle Block Gradient Descent to periodically update the model. In particular, we design a compression scheme for FedCyBGD, aiming to further decrease the model download cost. It enables full parameter training in FL with only selected block updates and uploads, thereby reducing communication, computation, and memory costs. Our method achieves state-of-the-art performance for FL LLM training, while significantly reducing associated costs. Codes are provided here.",
+    "authors": [
+        "Lin Wang",
+        "Zhichao Wang",
+        "Xiaoying Tang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel method for the efficient training and fine-tuning of LLMs in FL, with minimal resource consumption, is introduced, termed FedCyBGD, that enables full parameter training in FL with only selected block updates and uploads, thereby reducing communication, computation, and memory costs."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

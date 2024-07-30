@@ -1,0 +1,23 @@
+{
+    "acronym": "bca88d6af3493b29ba7debdec8b9875d71b038fc",
+    "title": "Conditional Denoising Diffusion Probabilistic Model for Seismic Diffraction Separation and Imaging",
+    "seed_ids": [
+        "classfreediffu",
+        "71cc838d8a50a0d62cc9c679536f1f25b2ea6b7f"
+    ],
+    "s2id": "bca88d6af3493b29ba7debdec8b9875d71b038fc",
+    "abstract": "Seismic diffractions convey important wave information from subsurface geological targets, such as pinch-outs, faults, and fractures. However, seismic diffractions are usually ignored in conventional seismic imaging process due to their comparatively low amplitude and overlapping wavefield. Seismic diffraction imaging utilizes separated diffractions and can provide enhanced images of the complex geological target. Thus, it is necessary to perform seismic diffraction separation before imaging. Traditional methods, such as the plane wave destruction (PWD) and deep learning methods, have been used to separate diffractions, but the accuracy of the separation deteriorates when applying to complex data. Conditional denoising diffusion probabilistic model (c-DDPM) is an advanced deep generative model with high tractability and flexibility. Thus, we propose to use a c-DDPM to separate seismic diffractions from the full-wavefield data effectively. The separated diffractions are then used for imaging the small-scale targets with high resolution. We use convolution modeling to generate the training dataset efficiently. In the training process, the full-wavefield gathers serve as the conditioning input and the diffraction gathers as the target output. After training, the c-DDPM can separate diffractions from full-wavefield gathers. We use two synthetic datasets and one field dataset to test the performance of the c-DDPM, with PWD and U-Net methods as comparison. The test results demonstrate that the c-DDPM effectively separates diffraction, showing better performance than PWD and U-Net. The diffraction imaging result using c-DDPM shows the small-scale discontinuous targets with high resolution. Our work can provide guidance for the application of c-DDPM in the field of geophysics.",
+    "authors": [
+        "Haozhe Zhang",
+        "Yuanyuan Li",
+        "Jianping Huang"
+    ],
+    "venue": "IEEE Transactions on Geoscience and Remote Sensing",
+    "year": 2024,
+    "tldr": null,
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

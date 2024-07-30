@@ -1,0 +1,33 @@
+{
+    "acronym": "53c3940f35b8b45d55ed49056282e1961954513d",
+    "title": "Self-attention Does Not Need $O(n^2)$ Memory",
+    "seed_ids": [
+        "reformer",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "12809bcb734beafeb47876f42e7b438e27fe99fe",
+        "5d032bd2632b6f5847767f39ce247098c6bbc563",
+        "af679d69fcc1d0fcf0f039aba937853bcb50a8de",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28"
+    ],
+    "s2id": "53c3940f35b8b45d55ed49056282e1961954513d",
+    "abstract": "We present a very simple algorithm for attention that requires $O(1)$ memory with respect to sequence length and an extension to self-attention that requires $O(\\log n)$ memory. This is in contrast with the frequently stated belief that self-attention requires $O(n^2)$ memory. While the time complexity is still $O(n^2)$, device memory rather than compute capability is often the limiting factor on modern accelerators. Thus, reducing the memory requirements of attention allows processing of longer sequences than might otherwise be feasible. We provide a practical implementation for accelerators that requires $O(\\sqrt{n})$ memory, is numerically stable, and is within a few percent of the runtime of the standard implementation of attention. We also demonstrate how to differentiate the function while remaining memory-efficient. For sequence length 16384, the memory overhead of self-attention is reduced by 59X for inference and by 32X for differentiation.",
+    "authors": [
+        "M. Rabe",
+        "Charles Staats"
+    ],
+    "venue": "",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A practical implementation for accelerators that requires $O(\\sqrt{n})$ memory, is numerically stable, and is within a few percent of the runtime of the standard implementation of attention is provided."
+    },
+    "citationCount": 95,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "f15a1a87c345a0b0b2b989064ede053d1411bb03",
+    "title": "Distilling System 2 into System 1",
+    "seed_ids": [
+        "transformer",
+        "aade40af0d85b0b4fe15c97f6222d5c2e4d6d9b3",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "92173d081b15824d22a9ef070e118744ceee8052",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f15a1a87c345a0b0b2b989064ede053d1411bb03",
+    "abstract": "Large language models (LLMs) can spend extra compute during inference to generate intermediate thoughts, which helps to produce better final responses. Since Chain-of-Thought (Wei et al., 2022), many such System 2 techniques have been proposed such as Rephrase and Respond (Deng et al., 2023a), System 2 Attention (Weston and Sukhbaatar, 2023) and Branch-Solve-Merge (Saha et al., 2023). In this work we investigate self-supervised methods to ``compile'' (distill) higher quality outputs from System 2 techniques back into LLM generations without intermediate reasoning token sequences, as this reasoning has been distilled into System 1. We show that several such techniques can be successfully distilled, resulting in improved results compared to the original System 1 performance, and with less inference cost than System 2. We posit that such System 2 distillation will be an important feature of future continually learning AI systems, enabling them to focus System 2 capabilities on the reasoning tasks that they cannot yet do well.",
+    "authors": [
+        "Ping Yu",
+        "Jing Xu",
+        "Jason Weston",
+        "Ilia Kulikov"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Self-supervised methods to ``compile'' higher quality outputs from System 2 techniques back into LLM generations without intermediate reasoning token sequences are investigated, resulting in improved results compared to the original System 1 performance, and with less inference cost than System 2."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

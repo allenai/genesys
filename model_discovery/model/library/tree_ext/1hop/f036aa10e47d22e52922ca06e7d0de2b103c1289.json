@@ -1,0 +1,30 @@
+{
+    "acronym": "f036aa10e47d22e52922ca06e7d0de2b103c1289",
+    "title": "Chain of Thought Explanation for Dialogue State Tracking",
+    "seed_ids": [
+        "gpt3",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "553703db1b3e54e957ed91bad952ff3ba4f59bd5",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2"
+    ],
+    "s2id": "f036aa10e47d22e52922ca06e7d0de2b103c1289",
+    "abstract": "Dialogue state tracking (DST) aims to record user queries and goals during a conversational interaction achieved by maintaining a predefined set of slots and their corresponding values. Current approaches decide slot values opaquely, while humans usually adopt a more deliberate approach by collecting information from relevant dialogue turns and then reasoning the appropriate values. In this work, we focus on the steps needed to figure out slot values by proposing a model named Chain-of-Thought-Explanation (CoTE) for the DST task. CoTE, which is built on the generative DST framework, is designed to create detailed explanations step by step after determining the slot values. This process leads to more accurate and reliable slot values. More-over, to improve the reasoning ability of the CoTE, we further construct more fluent and high-quality explanations with automatic paraphrasing, leading the method CoTE-refined. Experimental results on three widely recognized DST benchmarks-MultiWOZ 2.2, WoZ 2.0, and M2M-demonstrate the remarkable effectiveness of the CoTE. Furthermore, through a meticulous fine-grained analysis, we observe significant benefits of our CoTE on samples characterized by longer dialogue turns, user responses, and reasoning steps.",
+    "authors": [
+        "Lin Xu",
+        "Ningxin Peng",
+        "Daquan Zhou",
+        "See-Kiong Ng",
+        "Jinlan Fu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work focuses on the steps needed to figure out slot values by proposing a model named Chain-of-Thought-Explanation (CoTE) for the DST task, which is built on the generative DST framework and designed to create detailed explanations step by step after determining the slot values."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,26 @@
+{
+    "acronym": "66617d894e4cefc86efbf9ab984caada733f549e",
+    "title": "A general approach for improving deep learning-based medical relation extraction using a pre-trained model and fine-tuning",
+    "seed_ids": [
+        "gpt",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "66617d894e4cefc86efbf9ab984caada733f549e",
+    "abstract": "Abstract The automatic extraction of meaningful relations from biomedical literature or clinical records is crucial in various biomedical applications. Most of the current deep learning approaches for medical relation extraction require large-scale training data to prevent overfitting of the training model. We propose using a pre-trained model and a fine-tuning technique to improve these approaches without additional time-consuming human labeling. Firstly, we show the architecture of Bidirectional Encoder Representations from Transformers (BERT), an approach for pre-training a model on large-scale unstructured text. We then combine BERT with a one-dimensional convolutional neural network (1d-CNN) to fine-tune the pre-trained model for relation extraction. Extensive experiments on three datasets, namely the BioCreative V chemical disease relation corpus, traditional Chinese medicine literature corpus and i2b2 2012 temporal relation challenge corpus, show that the proposed approach achieves state-of-the-art results (giving a relative improvement of 22.2, 7.77, and 38.5% in F1 score, respectively, compared with a traditional 1d-CNN classifier). The source code is available at https://github.com/chentao1999/MedicalRelationExtraction.",
+    "authors": [
+        "Tao Chen",
+        "Mingfen Wu",
+        "Hexi Li"
+    ],
+    "venue": "Database J. Biol. Databases Curation",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows the architecture of Bidirectional Encoder Representations from Transformers (BERT), an approach for pre-training a model on large-scale unstructured text, and combines BERT with a one-dimensional convolutional neural network to fine-tune the pre-trained model for relation extraction."
+    },
+    "citationCount": 31,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

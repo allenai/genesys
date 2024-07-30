@@ -1,0 +1,34 @@
+{
+    "acronym": "2237d4ef1aaaf411b4e3d9dc04a4d5ac1df4b11d",
+    "title": "ReCaLL: Membership Inference via Relative Conditional Log-Likelihoods",
+    "seed_ids": [
+        "gpt3",
+        "a932b662645ab4a348c44c73bb81876cb415ae95",
+        "cb754310302086dfbbcd098263200e2a03f65874",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221"
+    ],
+    "s2id": "2237d4ef1aaaf411b4e3d9dc04a4d5ac1df4b11d",
+    "abstract": "The rapid scaling of large language models (LLMs) has raised concerns about the transparency and fair use of the pretraining data used for training them. Detecting such content is challenging due to the scale of the data and limited exposure of each instance during training. We propose ReCaLL (Relative Conditional Log-Likelihood), a novel membership inference attack (MIA) to detect LLMs' pretraining data by leveraging their conditional language modeling capabilities. ReCaLL examines the relative change in conditional log-likelihoods when prefixing target data points with non-member context. Our empirical findings show that conditioning member data on non-member prefixes induces a larger decrease in log-likelihood compared to non-member data. We conduct comprehensive experiments and show that ReCaLL achieves state-of-the-art performance on the WikiMIA dataset, even with random and synthetic prefixes, and can be further improved using an ensemble approach. Moreover, we conduct an in-depth analysis of LLMs' behavior with different membership contexts, providing insights into how LLMs leverage membership information for effective inference at both the sequence and token level.",
+    "authors": [
+        "Roy Xie",
+        "Junlin Wang",
+        "Ruomin Huang",
+        "Minxing Zhang",
+        "Rong Ge",
+        "Jian Pei",
+        "Neil Zhenqiang Gong",
+        "Bhuwan Dhingra"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ReCaLL (Relative Conditional Log-Likelihood), a novel membership inference attack to detect LLMs' pretraining data by leveraging their conditional language modeling capabilities, and conducts an in-depth analysis of LLMs' behavior with different membership contexts, providing insights into how LLMs leverage membership information for effective inference at both the sequence and token level."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

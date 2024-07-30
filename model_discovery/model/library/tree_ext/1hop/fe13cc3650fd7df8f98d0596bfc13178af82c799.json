@@ -1,0 +1,34 @@
+{
+    "acronym": "fe13cc3650fd7df8f98d0596bfc13178af82c799",
+    "title": "Curiosity-driven Red-teaming for Large Language Models",
+    "seed_ids": [
+        "gpt2",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "fe13cc3650fd7df8f98d0596bfc13178af82c799",
+    "abstract": "Large language models (LLMs) hold great potential for many natural language applications but risk generating incorrect or toxic content. To probe when an LLM generates unwanted content, the current paradigm is to recruit a \\textit{red team} of human testers to design input prompts (i.e., test cases) that elicit undesirable responses from LLMs. However, relying solely on human testers is expensive and time-consuming. Recent works automate red teaming by training a separate red team LLM with reinforcement learning (RL) to generate test cases that maximize the chance of eliciting undesirable responses from the target LLM. However, current RL methods are only able to generate a small number of effective test cases resulting in a low coverage of the span of prompts that elicit undesirable responses from the target LLM. To overcome this limitation, we draw a connection between the problem of increasing the coverage of generated test cases and the well-studied approach of curiosity-driven exploration that optimizes for novelty. Our method of curiosity-driven red teaming (CRT) achieves greater coverage of test cases while mantaining or increasing their effectiveness compared to existing methods. Our method, CRT successfully provokes toxic responses from LLaMA2 model that has been heavily fine-tuned using human preferences to avoid toxic outputs. Code is available at \\url{https://github.com/Improbable-AI/curiosity_redteam}",
+    "authors": [
+        "Zhang-Wei Hong",
+        "Idan Shenfeld",
+        "T. Wang",
+        "Yung-Sung Chuang",
+        "Aldo Pareja",
+        "James Glass",
+        "Akash Srivastava",
+        "Pulkit Agrawal"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The method of curiosity-driven red teaming (CRT) achieves greater coverage of test cases while mantaining or increasing their effectiveness compared to existing methods and provokes toxic responses from LLaMA2 model that has been heavily fine-tuned using human preferences to avoid toxic outputs."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

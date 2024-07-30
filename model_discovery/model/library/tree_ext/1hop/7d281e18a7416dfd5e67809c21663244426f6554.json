@@ -1,0 +1,38 @@
+{
+    "acronym": "7d281e18a7416dfd5e67809c21663244426f6554",
+    "title": "A foundational large language model for edible plant genomes",
+    "seed_ids": [
+        "bert",
+        "bfd2b76998a0521c12903ef5ced517adf70ad2ba",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7d281e18a7416dfd5e67809c21663244426f6554",
+    "abstract": "Significant progress has been made in the field of plant genomics, as demonstrated by the increased use of high-throughput methodologies that enable the characterization of multiple genome-wide molecular phenotypes. These findings have provided valuable insights into plant traits and their underlying genetic mechanisms, particularly in model plant species. Nonetheless, effectively leveraging them to make accurate predictions represents a critical step in crop genomic improvement. We present AgroNT, a foundational large language model trained on genomes from 48 plant species with a predominant focus on crop species. We show that AgroNT can obtain state-of-the-art predictions for regulatory annotations, promoter/terminator strength, tissue-specific gene expression, and prioritize functional variants. We conduct a large-scale in silico saturation mutagenesis analysis on cassava to evaluate the regulatory impact of over 10 million mutations and provide their predicted effects as a resource for variant characterization. Finally, we propose the use of the diverse datasets compiled here as the Plants Genomic Benchmark (PGB), providing a comprehensive bench-mark for deep learning-based methods in plant genomic research. The pre-trained AgroNT model is publicly available on HuggingFace at https://huggingface.co/InstaDeepAI/agro-nucleotide-transformer-1b for future research purposes.",
+    "authors": [
+        "Javier Mendoza-Revilla",
+        "Evan Trop",
+        "Liam Gonzalez",
+        "Ma\u0161a Roller",
+        "Hugo Dalla-Torre",
+        "B. P. de Almeida",
+        "Guillaume Richard",
+        "Jonathan Caton",
+        "Nicol\u00e1s L\u00f3pez Carranza",
+        "Marcin Skwark",
+        "Alexandre Laterre",
+        "Karim Beguir",
+        "Thomas Pierrot",
+        "Marie Lopez"
+    ],
+    "venue": "bioRxiv",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that AgroNT can obtain state-of-the-art predictions for regulatory annotations, promoter/terminator strength, tissue-specific gene expression, and prioritize functional variants, and is proposed as the Plants Genomic Benchmark (PGB), providing a comprehensive bench-mark for deep learning-based methods in plant genomic research."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

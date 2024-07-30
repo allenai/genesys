@@ -1,0 +1,32 @@
+{
+    "acronym": "5a2263092f49540fd0e049050a96882ff29b00c3",
+    "title": "BLiMP: The Benchmark of Linguistic Minimal Pairs for English",
+    "seed_ids": [
+        "transformerxl",
+        "e2587eddd57bc4ba286d91b27c185083f16f40ee",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5a2263092f49540fd0e049050a96882ff29b00c3",
+    "abstract": "Abstract We introduce The Benchmark of Linguistic Minimal Pairs (BLiMP),1 a challenge set for evaluating the linguistic knowledge of language models (LMs) on major grammatical phenomena in English. BLiMP consists of 67 individual datasets, each containing 1,000 minimal pairs\u2014that is, pairs of minimally different sentences that contrast in grammatical acceptability and isolate specific phenomenon in syntax, morphology, or semantics. We generate the data according to linguist-crafted grammar templates, and human aggregate agreement with the labels is 96.4%. We evaluate n-gram, LSTM, and Transformer (GPT-2 and Transformer-XL) LMs by observing whether they assign a higher probability to the acceptable sentence in each minimal pair. We find that state-of-the-art models identify morphological contrasts related to agreement reliably, but they struggle with some subtle semantic and syntactic phenomena, such as negative polarity items and extraction islands.",
+    "authors": [
+        "Alex Warstadt",
+        "Alicia Parrish",
+        "Haokun Liu",
+        "Anhad Mohananey",
+        "Wei Peng",
+        "Sheng-Fu Wang",
+        "Samuel R. Bowman"
+    ],
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Benchmark of Linguistic Minimal Pairs, a challenge set for evaluating the linguistic knowledge of language models (LMs) on major grammatical phenomena in English, finds that state-of-the-art models identify morphological contrasts related to agreement reliably, but they struggle with some subtle semantic and syntactic phenomena."
+    },
+    "citationCount": 346,
+    "influentialCitationCount": 69,
+    "code": null,
+    "description": null,
+    "url": null
+}

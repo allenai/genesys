@@ -1,0 +1,31 @@
+{
+    "acronym": "6c05127d198de1f11d5af696b9f207fff2d8e41a",
+    "title": "Aspect-Based API Review Classification: How Far Can Pre-Trained Transformer Model Go?",
+    "seed_ids": [
+        "transformerxl",
+        "0fe2636446cd686830da3d971b31a004d6094b3c",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "6c05127d198de1f11d5af696b9f207fff2d8e41a",
+    "abstract": "APIs (Application Programming Interfaces) are reusable software libraries and are building blocks for modern rapid software development. Previous research shows that programmers frequently share and search for reviews of APIs on the mainstream software question and answer (Q&A) platforms like Stack Overflow, which motivates researchers to design tasks and approaches related to process API reviews automatically. Among these tasks, classifying API reviews into different aspects (e.g., performance or security), which is called the aspect-based API review classification, is of great importance. The current state-of-the-art (SOTA) solution to this task is based on the traditional machine learning algorithm. Inspired by the great success achieved by pre-trained models on many software engineering tasks, this study fine-tunes six pre-trained models for the aspect-based API review classification task and compares them with the current SOTA solution on an API review benchmark collected by Uddin et al. The investigated models include four models (BERT, RoBERTa, ALBERT and XLNet) that are pre-trained on natural languages, BERTOverflow that is pre-trained on text corpus extracted from posts on Stack Overflow, and CosSensBERT that is designed for handling imbalanced data. The results show that all the six fine-tuned models outperform the traditional machine learning-based tool. More specifically, the improvement on the F1-score ranges from 21.0% to 30.2%. We also find that BERTOverflow, a model pre-trained on the corpus from Stack Overflow, does not show better performance than BERT. The result also suggests that CosSensBERT also does not exhibit better performance than BERT in terms of F1, but it is still worthy of being considered as it achieves better performance on MCC and AUC.",
+    "authors": [
+        "Chengran Yang",
+        "Bowen Xu",
+        "Junaed Younus Khan",
+        "Gias Uddin",
+        "Donggyun Han",
+        "Zhou Yang",
+        "David Lo"
+    ],
+    "venue": "IEEE International Conference on Software Analysis, Evolution, and Reengineering",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study fine-tunes six pre-trained models for the aspect-based API review classification task and compares them with the current SOTA solution on an API review benchmark collected by Uddin et al."
+    },
+    "citationCount": 24,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

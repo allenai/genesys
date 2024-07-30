@@ -1,0 +1,26 @@
+{
+    "acronym": "e2324d9de202ac07f9e4d0cfd72f2285254da9c8",
+    "title": "DeepSwarm: A Deep Model for Swarm Motion Prediction Using Swin Transformer U-Net",
+    "seed_ids": [
+        "transformer",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "e2324d9de202ac07f9e4d0cfd72f2285254da9c8",
+    "abstract": "Swarm behavior is characterized by coordinated movement among agents and has vital applications in various domains. Predicting swarm motion is critical for understanding the underlying mechanisms and dynamics of swarm behaviors. This paper focuses on the problem of swarm motion prediction and establishes a simulation dataset based on the Boids mathematical model. The conventional motion prediction problem is converted into a density map prediction task. A deep learning model, named DeepSwarm, is proposed to tackle this challenge. DeepSwarm leverages the 3D Swin Transformer U-Net architecture to capture spatio-temporal correlations at different granularities. To address the sparsity issue of the swarm density data, the Sparsity Enhanced Module (SEM) is introduced by generating foreground masks. The model is optimized using a combination of multiple loss functions which considers masks and values simultaneously. Extensive experiments show the effectiveness of the proposed DeepSwarm in predicting swarm density maps. Further ablation studies demonstrate the significance of model components.",
+    "authors": [
+        "Yuchen Ji",
+        "Xiuxian Li",
+        "Min Meng"
+    ],
+    "venue": "International Service Availability Symposium",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A deep learning model, named DeepSwarm, is proposed to tackle the problem of swarm motion prediction and a simulation dataset is established based on the Boids mathematical model to address the sparsity issue of the swarm density data."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

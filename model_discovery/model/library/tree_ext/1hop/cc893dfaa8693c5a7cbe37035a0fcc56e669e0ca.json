@@ -1,0 +1,32 @@
+{
+    "acronym": "cc893dfaa8693c5a7cbe37035a0fcc56e669e0ca",
+    "title": "Inverse is Better! Fast and Accurate Prompt for Few-shot Slot Tagging",
+    "seed_ids": [
+        "gpt2",
+        "da454295392cf4caaa39cc465734237ffe55392f",
+        "982cbf7fcee4f3964dd1d411fdeadad6e6f1d465",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "cc893dfaa8693c5a7cbe37035a0fcc56e669e0ca",
+    "abstract": "Prompting methods recently achieve impressive success in few-shot learning. These methods modify input samples with prompt sentence pieces, and decode label tokens to map samples to corresponding labels. However, such a paradigm is very inefficient for the task of slot tagging. Since slot tagging samples are multiple consecutive words in a sentence, the prompting methods have to enumerate all n-grams token spans to find all the possible slots, which greatly slows down the prediction. To tackle this, we introduce an inverse paradigm for prompting. Different from the classic prompts mapping tokens to labels, we reversely predict slot values given slot types. Such inverse prompting only requires a one-turn prediction for each slot type and greatly speeds up the prediction. Besides, we propose a novel Iterative Prediction Strategy, from which the model learns to refine predictions by considering the relations between different slot types. We find, somewhat surprisingly, the proposed method not only predicts faster but also significantly improves the effect (improve over 6.1 F1-scores on 10-shot setting) and achieves new state-of-the-art performance.",
+    "authors": [
+        "Yutai Hou",
+        "Cheng Chen",
+        "Xianzhen Luo",
+        "Bo Li",
+        "Wanxiang Che"
+    ],
+    "venue": "Findings",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces an inverse paradigm for prompting, different from the classic prompts mapping tokens to labels, that reversely predict slot values given slot types and proposes a novel Iterative Prediction Strategy, from which the model learns to refine predictions by considering the relations between different slot types."
+    },
+    "citationCount": 18,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

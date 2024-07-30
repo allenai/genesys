@@ -1,0 +1,24 @@
+{
+    "acronym": "724412297017b802f933468cd17e11ed01ec3126",
+    "title": "Dynamic Speech Emotion Recognition Using A Conditional Neural Process",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "724412297017b802f933468cd17e11ed01ec3126",
+    "abstract": "The problem of predicting emotional attributes from speech has often focused on predicting a single value from a sentence or short speaking turn. These methods often ignore that natural emotions are both dynamic and dependent on context. To model the dynamic nature of emotions, we can treat the prediction of emotion from speech as a time-series problem. We refer to the problem of predicting these emotional traces as dynamic speech emotion recognition. Previous studies in this area have used models that treat all emotional traces as coming from the same underlying distribution. Since emotions are dependent on contextual information, these methods might obscure the context of an emotional interaction. This paper uses a neural process model with a segment-level speech emotion recognition (SER) model for this problem. This type of model leverages information from the time-series and predictions from the SER model to learn a prior that defines a distribution over emotional traces. Our proposed model performs 21% better than a bidirectional long short-term memory (BiLSTM) baseline when predicting emotional traces for valence.",
+    "authors": [
+        "Luz Martinez-Lucas",
+        "Carlos Busso"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A neural process model with a segment-level speech emotion recognition (SER) model that leverages information from the time-series and predictions from the SER model to learn a prior that defines a distribution over emotional traces."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

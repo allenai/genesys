@@ -1,0 +1,32 @@
+{
+    "acronym": "15ec6296f521c8c3c113c358ec259d620af501d5",
+    "title": "Large Language Models Based Automatic Synthesis of Software Specifications",
+    "seed_ids": [
+        "gpt",
+        "3bcb17559ce96eb20fa79af8194f4af0380d194a",
+        "a022bda79947d1f656a1164003c1b3ae9a843df9"
+    ],
+    "s2id": "15ec6296f521c8c3c113c358ec259d620af501d5",
+    "abstract": "Software configurations play a crucial role in determining the behavior of software systems. In order to ensure safe and error-free operation, it is necessary to identify the correct configuration, along with their valid bounds and rules, which are commonly referred to as software specifications. As software systems grow in complexity and scale, the number of configurations and associated specifications required to ensure the correct operation can become large and prohibitively difficult to manipulate manually. Due to the fast pace of software development, it is often the case that correct software specifications are not thoroughly checked or validated within the software itself. Rather, they are frequently discussed and documented in a variety of external sources, including software manuals, code comments, and online discussion forums. Therefore, it is hard for the system administrator to know the correct specifications of configurations due to the lack of clarity, organization, and a centralized unified source to look at. To address this challenge, we propose SpecSyn a framework that leverages a state-of-the-art large language model to automatically synthesize software specifications from natural language sources. Our approach formulates software specification synthesis as a sequence-to-sequence learning problem and investigates the extraction of specifications from large contextual texts. This is the first work that uses a large language model for end-to-end specification synthesis from natural language texts. Empirical results demonstrate that our system outperforms prior the state-of-the-art specification synthesis tool by 21% in terms of F1 score and can find specifications from single as well as multiple sentences.",
+    "authors": [
+        "Shantanu Mandal",
+        "Adhrik Chethan",
+        "Vahid Janfaza",
+        "S. Mahmud",
+        "T. A. Anderson",
+        "Javier Turek",
+        "Jesmin Jahan Tithi",
+        "A. Muzahid"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This is the first work that uses a large language model for end-to-end specification synthesis from natural language texts and outperforms prior the state-of-the-art specification synthesis tool by 21% in terms of F1 score and can find specifications from single as well as multiple sentences."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

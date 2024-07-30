@@ -1,0 +1,48 @@
+{
+    "acronym": "822bb434d6a0b7b5ccbdef9b14495ce7b7935e3b",
+    "title": "MABe22: A Multi-Species Multi-Task Benchmark for Learned Representations of Behavior",
+    "seed_ids": [
+        "perceiverio",
+        "4990f7542f0600e0501a7e7a931b32eb7cb804d5",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8"
+    ],
+    "s2id": "822bb434d6a0b7b5ccbdef9b14495ce7b7935e3b",
+    "abstract": "We introduce MABe22, a large-scale, multi-agent video and trajectory benchmark to assess the quality of learned behavior representations. This dataset is collected from a variety of biology experiments, and includes triplets of interacting mice (4.7 million frames video+pose tracking data, 10 million frames pose only), symbiotic beetle-ant interactions (10 million frames video data), and groups of interacting flies (4.4 million frames of pose tracking data). Accompanying these data, we introduce a panel of real-life downstream analysis tasks to assess the quality of learned representations by evaluating how well they preserve information about the experimental conditions (e.g. strain, time of day, optogenetic stimulation) and animal behavior. We test multiple state-of-the-art self-supervised video and trajectory representation learning methods to demonstrate the use of our benchmark, revealing that methods developed using human action datasets do not fully translate to animal datasets. We hope that our benchmark and dataset encourage a broader exploration of behavior representation learning methods across species and settings.",
+    "authors": [
+        "Jennifer J. Sun",
+        "Markus Marks",
+        "Andrew Ulmer",
+        "Dipam Chakraborty",
+        "Brian Geuther",
+        "Edward Hayes",
+        "Heng Jia",
+        "Vivek Kumar",
+        "Sebastian Oleszko",
+        "Zachary Partridge",
+        "Milan Peelman",
+        "A. Robie",
+        "Catherine E. Schretter",
+        "Keith S. Sheppard",
+        "Chao Sun",
+        "Param Uttarwar",
+        "Julian M. Wagner",
+        "Eric Werner",
+        "Joseph Parker",
+        "P. Perona",
+        "Yisong Yue",
+        "K. Branson",
+        "A. Kennedy"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces MABe22, a large-scale, multi-agent video and trajectory benchmark, and introduces a panel of real-life downstream analysis tasks to assess the quality of learned behavior representations, revealing that methods developed using human action datasets do not fully translate to animal datasets."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

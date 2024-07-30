@@ -1,0 +1,28 @@
+{
+    "acronym": "3de0f4a3454c1004e0c5e5cf2ab815c3576c6729",
+    "title": "EASI-Tex: Edge-Aware Mesh Texturing from Single Image",
+    "seed_ids": [
+        "transformer",
+        "690df0820f35a47e1ce44f90e6ddb4132aa09267",
+        "e342165a614588878ad0f4bc9bacf3905df34d08"
+    ],
+    "s2id": "3de0f4a3454c1004e0c5e5cf2ab815c3576c6729",
+    "abstract": "\n We present a novel approach for\n single-image mesh texturing\n , which employs a diffusion model with judicious conditioning to seamlessly transfer an object's texture from a single RGB image to a given 3D mesh object. We do not assume that the two objects belong to the same category, and even if they do, there can be significant discrepancies in their geometry and part proportions. Our method aims to rectify the discrepancies by conditioning a pre-trained Stable Diffusion generator with edges describing the mesh through ControlNet, and features extracted from the input image using IP-Adapter to generate textures that respect the underlying geometry of the mesh and the input texture without any optimization or training. We also introduce\n Image Inversion\n , a novel technique to quickly personalize the diffusion model for a single concept using a\n single image\n , for cases where the pre-trained IP-Adapter falls short in capturing all the details from the input image faithfully. Experimental results demonstrate the efficiency and effectiveness of our edge-aware single-image mesh texturing approach, coined EASI-Tex, in preserving the details of the input texture on diverse 3D objects, while respecting their geometry.\n \n \n Code\n : https://github.com/sairajk/easi-tex\n",
+    "authors": [
+        "Sai Raj Kishore Perla",
+        "Yizhi Wang",
+        "Ali Mahdavi-Amiri",
+        "Hao Zhang"
+    ],
+    "venue": "ACM Transactions on Graphics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results demonstrate the efficiency and effectiveness of the edge-aware single-image mesh texturing approach, coined EASI-Tex, in preserving the details of the input texture on diverse 3D objects, while respecting their geometry."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

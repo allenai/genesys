@@ -1,0 +1,31 @@
+{
+    "acronym": "cd5d8ebd24490d8ed61302d00d63583f19f7ea76",
+    "title": "SCLert: A Span-Based Joint Model for Measurable Quantitative Information Extraction From Chinese Texts",
+    "seed_ids": [
+        "bert",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "cd5d8ebd24490d8ed61302d00d63583f19f7ea76",
+    "abstract": "Measurable quantitative information is a fundamental set of information related to the quantity of objects, which widely exists in various texts including medical records, national standards and technical reports. In recent years, some researchers have recognized the importance of measurable quantitative information in helping to analyze healthcare and have proposed pipeline-based approaches, but there are still many challenging issues with measurable information extraction. This paper proposes a span-based joint model (SCLert) for measurable quantitative information extraction, which incorporates Chinese generic features and lexicon information for improving the effectiveness of measurable quantitative information recognition. Compared to pipeline extraction methods that require two independent models, our joint extraction model combines both measurable quantitative information recognition and association within one model. The span-based representation enhances the boundary information of entity and enables more accurate extraction of measurable quantitative information. We evaluated the model on a Standard Quantitative Information dataset with 3106 Chinese text sentences and a Clinical Quantitative Information dataset with 1359 Chinese electronic medical records. Experiment results show that our joint model outperforms baseline models by an improvement of 3.67% on recognition and 6.61% on association in F1-score on the standard datasets.",
+    "authors": [
+        "Di Mo",
+        "Bangrui Huang",
+        "Haitao Wang",
+        "Xinyu Cao",
+        "Keqin Gan",
+        "Jie Wei",
+        "Heng Weng",
+        "Tianyong Hao"
+    ],
+    "venue": "IEEE transactions on consumer electronics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A span-based joint model (SCLert) for measurable quantitative information extraction is proposed, which incorporates Chinese generic features and lexicon information for improving the effectiveness of measurable quantitative information recognition."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,35 @@
+{
+    "acronym": "677d402964c60ddebe79071e2e82338b2e1ff9e3",
+    "title": "TractGraphFormer: Anatomically Informed Hybrid Graph CNN-Transformer Network for Classification from Diffusion MRI Tractography",
+    "seed_ids": [
+        "transformer",
+        "9c3f6ccefa2f8ea2b933dd3b1c8f381931b4be9e"
+    ],
+    "s2id": "677d402964c60ddebe79071e2e82338b2e1ff9e3",
+    "abstract": "The relationship between brain connections and non-imaging phenotypes is increasingly studied using deep neural networks. However, the local and global properties of the brain's white matter networks are often overlooked in convolutional network design. We introduce TractGraphFormer, a hybrid Graph CNN-Transformer deep learning framework tailored for diffusion MRI tractography. This model leverages local anatomical characteristics and global feature dependencies of white matter structures. The Graph CNN module captures white matter geometry and grey matter connectivity to aggregate local features from anatomically similar white matter connections, while the Transformer module uses self-attention to enhance global information learning. Additionally, TractGraphFormer includes an attention module for interpreting predictive white matter connections. In sex prediction tests, TractGraphFormer shows strong performance in large datasets of children (n=9345) and young adults (n=1065). Overall, our approach suggests that widespread connections in the WM are predictive of the sex of an individual, and consistent predictive anatomical tracts are identified across the two datasets. The proposed approach highlights the potential of integrating local anatomical information and global feature dependencies to improve prediction performance in machine learning with diffusion MRI tractography.",
+    "authors": [
+        "Yuqian Chen",
+        "Fan Zhang",
+        "Meng Wang",
+        "L. Zekelman",
+        "S. Cetin-Karayumak",
+        "Tengfei Xue",
+        "Chaoyi Zhang",
+        "Yang Song",
+        "N. Makris",
+        "Y. Rathi",
+        "Weidong Cai",
+        "L. O\u2019Donnell"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "TractGraphFormer is introduced, a hybrid Graph CNN-Transformer deep learning framework tailored for diffusion MRI tractography that suggests that widespread connections in the WM are predictive of the sex of an individual, and consistent predictive anatomical tracts are identified across the two datasets."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,35 @@
+{
+    "acronym": "6c9535be1cafd34af1eb691ec3783a666e450e7c",
+    "title": "SSUMamba: Spatial-Spectral Selective State Space Model for Hyperspectral Image Denoising",
+    "seed_ids": [
+        "s4",
+        "mamba",
+        "8664fdad23646b7fea29a2eacc333b26c3eba800",
+        "cbaf689fd9ea9bc939510019d90535d6249b3367",
+        "f67d6126c8436cf91a9cc2ef97c347a41dbf05d4",
+        "0a32e6ff6eaac83ff325bae4557a8362222979aa",
+        "3af7273d7ca20c0c63cbaa47e60b058840835052",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51"
+    ],
+    "s2id": "6c9535be1cafd34af1eb691ec3783a666e450e7c",
+    "abstract": "Denoising is a crucial preprocessing step for hyperspectral images (HSIs) due to noise arising from intraimaging mechanisms and environmental factors. Long-range spatial-spectral correlation modeling is beneficial for HSI denoising but often comes with high computational complexity. Based on the state space model (SSM), Mamba is known for its remarkable long-range dependency modeling capabilities and computational efficiency. Building on this, we introduce a memory-efficient spatial-spectral UMamba (SSUMamba) for HSI denoising, with the spatial-spectral continuous scan (SSCS) Mamba being the core component. SSCS Mamba alternates the row, column, and band in six different orders to generate the sequence and uses the bidirectional SSM to exploit long-range spatial-spectral dependencies. In each order, the images are rearranged between adjacent scans to ensure spatial-spectral continuity. Additionally, 3D convolutions are embedded into the SSCS Mamba to enhance local spatial-spectral modeling. Experiments demonstrate that SSUMamba achieves superior denoising results with lower memory consumption per batch compared to transformer-based methods. The source code is available at https://github.com/lronkitty/SSUMamba.",
+    "authors": [
+        "Guanyiman Fu",
+        "Fengchao Xiong",
+        "Jianfeng Lu",
+        "Jun Zhou",
+        "Yuntao Qian"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A memory-efficient spatial-spectral UMamba (SSUMamba) for HSI denoising, with the spatial-spectral continuous scan (SSCS) Mamba being the core component and using the bidirectional SSM to exploit long-range spatial-spectral dependencies."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

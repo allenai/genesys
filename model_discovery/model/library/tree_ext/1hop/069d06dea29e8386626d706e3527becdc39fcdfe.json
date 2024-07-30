@@ -1,0 +1,26 @@
+{
+    "acronym": "069d06dea29e8386626d706e3527becdc39fcdfe",
+    "title": "EnergyDiff: Universal Time-Series Energy Data Generation using Diffusion Models",
+    "seed_ids": [
+        "transformer",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "069d06dea29e8386626d706e3527becdc39fcdfe",
+    "abstract": "High-resolution time series data are crucial for operation and planning in energy systems such as electrical power systems and heating systems. However, due to data collection costs and privacy concerns, such data is often unavailable or insufficient for downstream tasks. Data synthesis is a potential solution for this data scarcity. With the recent development of generative AI, we propose EnergyDiff, a universal data generation framework for energy time series data. EnergyDiff builds on state-of-the-art denoising diffusion probabilistic models, utilizing a proposed denoising network dedicated to high-resolution time series data and introducing a novel Marginal Calibration technique. Our extensive experimental results demonstrate that EnergyDiff achieves significant improvement in capturing temporal dependencies and marginal distributions compared to baselines, particularly at the 1-minute resolution. Additionally, EnergyDiff consistently generates high-quality time series data across diverse energy domains, time resolutions, and at both customer and transformer levels with reduced computational need.",
+    "authors": [
+        "Nan Lin",
+        "Peter Palensky",
+        "Pedro P. Vergara"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes EnergyDiff, a universal data generation framework for energy time series data that builds on state-of-the-art denoising diffusion probabilistic models, utilizing a proposed denoising network dedicated to high-resolution time series data and introducing a novel Marginal Calibration technique."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

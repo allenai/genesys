@@ -1,0 +1,40 @@
+{
+    "acronym": "32c9b3859086d15184989454eb878638659e64c6",
+    "title": "MineDojo: Building Open-Ended Embodied Agents with Internet-Scale Knowledge",
+    "seed_ids": [
+        "gpt2",
+        "25425e299101b13ec2872417a14f961f4f8aa18e",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "ada81a4de88a6ce474df2e2446ad11fea480616e",
+        "6b7bf6cf5d0e1004d4468edfac4e8f81c0d0c50d",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "32c9b3859086d15184989454eb878638659e64c6",
+    "abstract": "Autonomous agents have made great strides in specialist domains like Atari games and Go. However, they typically learn tabula rasa in isolated environments with limited and manually conceived objectives, thus failing to generalize across a wide spectrum of tasks and capabilities. Inspired by how humans continually learn and adapt in the open world, we advocate a trinity of ingredients for building generalist agents: 1) an environment that supports a multitude of tasks and goals, 2) a large-scale database of multimodal knowledge, and 3) a flexible and scalable agent architecture. We introduce MineDojo, a new framework built on the popular Minecraft game that features a simulation suite with thousands of diverse open-ended tasks and an internet-scale knowledge base with Minecraft videos, tutorials, wiki pages, and forum discussions. Using MineDojo's data, we propose a novel agent learning algorithm that leverages large pre-trained video-language models as a learned reward function. Our agent is able to solve a variety of open-ended tasks specified in free-form language without any manually designed dense shaping reward. We open-source the simulation suite, knowledge bases, algorithm implementation, and pretrained models (https://minedojo.org) to promote research towards the goal of generally capable embodied agents.",
+    "authors": [
+        "Linxi (Jim) Fan",
+        "Guanzhi Wang",
+        "Yunfan Jiang",
+        "Ajay Mandlekar",
+        "Yuncong Yang",
+        "Haoyi Zhu",
+        "Andrew Tang",
+        "De-An Huang",
+        "Yuke Zhu",
+        "Anima Anandkumar"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces MineDojo, a new framework built on the popular Minecraft game that features a simulation suite with thousands of diverse open-ended tasks and an internet-scale knowledge base with Minecraft videos, tutorials, wiki pages, and forum discussions, and proposes a novel agent learning algorithm that leverages large pre-trained video-language models as a learned reward function."
+    },
+    "citationCount": 250,
+    "influentialCitationCount": 46,
+    "code": null,
+    "description": null,
+    "url": null
+}

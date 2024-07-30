@@ -1,0 +1,36 @@
+{
+    "acronym": "076deb54a5d776cd21eabf2c40cdd839f53d6d77",
+    "title": "giMLPs: Gate with Inhibition Mechanism in MLPs",
+    "seed_ids": [
+        "gpt2",
+        "gmlp",
+        "a9c214e846188adb645021cd7b1964b8ea1fef6f",
+        "f75cddf2d42ed01b34686704eb3504becef67442",
+        "9b6af0e358e76d22f209c75b1702c3e6ea7815b1",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "076deb54a5d776cd21eabf2c40cdd839f53d6d77",
+    "abstract": "This paper presents a new model architecture, gate with inhibition MLP (giMLP).The gate with inhibition on CycleMLP (gi-CycleMLP) can produce equal performance on the ImageNet classification task, and it also improves the BERT, Roberta, and DeBERTaV3 models depending on two novel techniques. The first is the gating MLP, where matrix multiplications between the MLP and the trunk Attention input in further adjust models' adaptation. The second is inhibition which inhibits or enhances the branch adjustment, and with the inhibition levels increasing, it offers models more muscular features restriction. We show that the giCycleMLP with a lower inhibition level can be competitive with the original CycleMLP in terms of ImageNet classification accuracy. In addition, we also show through a comprehensive empirical study that these techniques significantly improve the performance of fine-tuning NLU downstream tasks. As for the gate with inhibition MLPs on DeBERTa (giDeBERTa) fine-tuning, we find it can achieve appealing results on most parts of NLU tasks without any extra pretraining again. We also find that with the use of Gate With Inhibition, the activation function should have a short and smooth negative tail, with which the unimportant features or the features that hurt models can be moderately inhibited. The experiments on ImageNet and twelve language downstream tasks demonstrate the effectiveness of Gate With Inhibition, both for image classification and for enhancing the capacity of nature language fine-tuning without any extra pretraining.",
+    "authors": [
+        "C. Kang",
+        "Jindich Prokop",
+        "Lei Tong",
+        "Huiyu Zhou",
+        "Yong Hu",
+        "Daneil Novak"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The experiments on ImageNet and twelve language downstream tasks demonstrate the effectiveness of Gate With Inhibition, both for image classification and for enhancing the capacity of nature language fine-tuning without any extra pretraining."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,26 @@
+{
+    "acronym": "7a950ffb91726284b35206c3cce987640132a307",
+    "title": "Extracting Semantic Relationships in Greek Literary Texts",
+    "seed_ids": [
+        "gpt",
+        "04e96e04ed7ea4916311279a43eede2fb00bb1df",
+        "68e686817f2c33cd09ba3805fa082348f18affd9"
+    ],
+    "s2id": "7a950ffb91726284b35206c3cce987640132a307",
+    "abstract": "In the era of Big Data, the digitization of texts and the advancements in Artificial Intelligence (AI) and Natural Language Processing (NLP) are enabling the automatic analysis of literary works, allowing us to delve into the structure of artifacts and to compare, explore, manage and preserve the richness of our written heritage. This paper proposes a deep-learning-based approach to discovering semantic relationships in literary texts (19th century Greek Literature) facilitating the analysis, organization and management of collections through the automation of metadata extraction. Moreover, we provide a new annotated dataset used to train our model. Our proposed model, REDSandT_Lit, recognizes six distinct relationships, extracting the richest set of relations up to now from literary texts. It efficiently captures the semantic characteristics of the investigating time-period by finetuning the state-of-the-art transformer-based Language Model (LM) for Modern Greek in our corpora. Extensive experiments and comparisons with existing models on our dataset reveal that REDSandT_Lit has superior performance (90% accuracy), manages to capture infrequent relations (100%F in long-tail relations) and can also correct mislabelled sentences. Our results suggest that our approach efficiently handles the peculiarities of literary texts, and it is a promising tool for managing and preserving cultural information in various settings.",
+    "authors": [
+        "Despina Christou",
+        "Grigorios Tsoumakas"
+    ],
+    "venue": "Sustainability",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A deep-learning-based approach to discovering semantic relationships in literary texts (19th century Greek Literature) facilitating the analysis, organization and management of collections through the automation of metadata extraction, and it is a promising tool for managing and preserving cultural information in various settings."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

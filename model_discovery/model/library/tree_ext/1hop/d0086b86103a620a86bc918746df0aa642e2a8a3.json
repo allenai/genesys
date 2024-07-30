@@ -1,0 +1,33 @@
+{
+    "acronym": "d0086b86103a620a86bc918746df0aa642e2a8a3",
+    "title": "Language Models as Knowledge Bases?",
+    "seed_ids": [
+        "gpt",
+        "transformerxl",
+        "e2587eddd57bc4ba286d91b27c185083f16f40ee",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "d0086b86103a620a86bc918746df0aa642e2a8a3",
+    "abstract": "Recent progress in pretraining language models on large textual corpora led to a surge of improvements for downstream NLP tasks. Whilst learning linguistic knowledge, these models may also be storing relational knowledge present in the training data, and may be able to answer queries structured as \u201cfill-in-the-blank\u201d cloze statements. Language models have many advantages over structured knowledge bases: they require no schema engineering, allow practitioners to query about an open class of relations, are easy to extend to more data, and require no human supervision to train. We present an in-depth analysis of the relational knowledge already present (without fine-tuning) in a wide range of state-of-the-art pretrained language models. We find that (i) without fine-tuning, BERT contains relational knowledge competitive with traditional NLP methods that have some access to oracle knowledge, (ii) BERT also does remarkably well on open-domain question answering against a supervised baseline, and (iii) certain types of factual knowledge are learned much more readily than others by standard language model pretraining approaches. The surprisingly strong ability of these models to recall factual knowledge without any fine-tuning demonstrates their potential as unsupervised open-domain QA systems. The code to reproduce our analysis is available at https://github.com/facebookresearch/LAMA.",
+    "authors": [
+        "F. Petroni",
+        "Tim Rockt\u00e4schel",
+        "Patrick Lewis",
+        "A. Bakhtin",
+        "Yuxiang Wu",
+        "Alexander H. Miller",
+        "Sebastian Riedel"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An in-depth analysis of the relational knowledge already present (without fine-tuning) in a wide range of state-of-the-art pretrained language models finds that BERT contains relational knowledge competitive with traditional NLP methods that have some access to oracle knowledge."
+    },
+    "citationCount": 2165,
+    "influentialCitationCount": 263,
+    "code": null,
+    "description": null,
+    "url": null
+}

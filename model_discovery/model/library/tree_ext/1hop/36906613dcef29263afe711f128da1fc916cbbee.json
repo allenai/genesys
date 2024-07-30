@@ -1,0 +1,26 @@
+{
+    "acronym": "36906613dcef29263afe711f128da1fc916cbbee",
+    "title": "Gaussian Kernelized Self-Attention for Long Sequence Data and its Application to CTC-Based Speech Recognition",
+    "seed_ids": [
+        "reformer",
+        "0a82b81fbc0bc25bf4d60f9a18c8ee3571e80d7d"
+    ],
+    "s2id": "36906613dcef29263afe711f128da1fc916cbbee",
+    "abstract": "ISelf-attention (SA) based models have recently achieved significant performance improvements in hybrid and end-to-end automatic speech recognition (ASR) systems owing to their flexible context modeling capability. However, it is also known that the accuracy degrades when applying SA to long sequence data. This is mainly due to the length mismatch between the inference and training data because the training data are usually divided into short segments for efficient training. To mitigate this mismatch, we propose a new architecture, which is a variant of the Gaussian kernel, which itself is a shift-invariant kernel. First, we mathematically demonstrate that self-attention with shared weight parameters for queries and keys is equivalent to a normalized kernel function. By replacing this kernel function with the proposed Gaussian kernel, the architecture becomes completely shift-invariant with the relative position information embedded using a frame indexing technique. The proposed Gaussian kernelized SA was applied to connectionist temporal classification (CTC) based ASR. An experimental evaluation with the Corpus of Spontaneous Japanese (CSJ) and TEDLIUM 3 benchmarks shows that the proposed SA achieves a significant improvement in accuracy (e.g., from 24.0% WER to 6.0% in CSJ) in long sequence data without any windowing techniques.",
+    "authors": [
+        "Yosuke Kashiwagi",
+        "E. Tsunoo",
+        "Shinji Watanabe"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work mathematically demonstrates that self-attention with shared weight parameters for queries and keys is equivalent to a normalized kernel function and proposes a new architecture, which is a variant of the Gaussian kernel, which itself is a shift-invariant kernel."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

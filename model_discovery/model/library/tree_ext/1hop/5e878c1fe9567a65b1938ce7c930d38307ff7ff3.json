@@ -1,0 +1,36 @@
+{
+    "acronym": "5e878c1fe9567a65b1938ce7c930d38307ff7ff3",
+    "title": "Humanoid Locomotion as Next Token Prediction",
+    "seed_ids": [
+        "gpt",
+        "0c4f46e4dcae5527018e6432fb60cfe8c3354e97",
+        "60c8d0619481eaafdd1189af610d0e636271fed5",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5e878c1fe9567a65b1938ce7c930d38307ff7ff3",
+    "abstract": "We cast real-world humanoid control as a next token prediction problem, akin to predicting the next word in language. Our model is a causal transformer trained via autoregressive prediction of sensorimotor trajectories. To account for the multi-modal nature of the data, we perform prediction in a modality-aligned way, and for each input token predict the next token from the same modality. This general formulation enables us to leverage data with missing modalities, like video trajectories without actions. We train our model on a collection of simulated trajectories coming from prior neural network policies, model-based controllers, motion capture data, and YouTube videos of humans. We show that our model enables a full-sized humanoid to walk in San Francisco zero-shot. Our model can transfer to the real world even when trained on only 27 hours of walking data, and can generalize to commands not seen during training like walking backward. These findings suggest a promising path toward learning challenging real-world control tasks by generative modeling of sensorimotor trajectories.",
+    "authors": [
+        "Ilija Radosavovic",
+        "Bike Zhang",
+        "Baifeng Shi",
+        "Jathushan Rajasegaran",
+        "Sarthak Kamat",
+        "Trevor Darrell",
+        "K. Sreenath",
+        "Jitendra Malik"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work casts real-world humanoid control as a next token prediction problem, akin to predicting the next word in language, and develops a causal transformer trained via autoregressive prediction of sensorimotor trajectories that enables a full-sized humanoid to walk in San Francisco zero-shot."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

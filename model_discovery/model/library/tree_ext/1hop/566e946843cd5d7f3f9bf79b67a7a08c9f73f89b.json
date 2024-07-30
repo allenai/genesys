@@ -1,0 +1,32 @@
+{
+    "acronym": "566e946843cd5d7f3f9bf79b67a7a08c9f73f89b",
+    "title": "Generative Next-Basket Recommendation",
+    "seed_ids": [
+        "gpt",
+        "cbf3bf8f541f5b446c59c8deacbcc18527768c75",
+        "df602516e28a9ef0ef665ed0aef551984d8d770d",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8"
+    ],
+    "s2id": "566e946843cd5d7f3f9bf79b67a7a08c9f73f89b",
+    "abstract": "Next-basket Recommendation (NBR) refers to the task of predicting a set of items that a user will purchase in the next basket. However, most of existing works merely focus on the correlations between user preferences and predicted items, ignoring the essential correlations among items in the next basket, which often results in over-homogenization of predicted items. In this work, we presents a Generative next-basket Recommendation model (GenRec), a novel NBR paradigm that generates the recommended items one by one to form the next basket via an autoregressive decoder. This generative NBR paradigm contributes to capturing and considering item correlations inside each baskets in both training and serving. Moreover, we jointly consider user\u2019s both item- and basket-level contextual information to better capture user\u2019s multi-granularity preferences. Extensive experiments on three real-world datasets demonstrate the effectiveness of our model.",
+    "authors": [
+        "Wenqi Sun",
+        "Ruobing Xie",
+        "Junjie Zhang",
+        "Wayne Xin Zhao",
+        "Leyu Lin",
+        "Ji-Rong Wen"
+    ],
+    "venue": "ACM Conference on Recommender Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Generative next-basket Recommendation model (GenRec) is presented, a novel NBR paradigm that generates the recommended items one by one to form the next basket via an autoregressive decoder and jointly considers user\u2019s both item- and basket-level contextual information to better capture user's multi-granularity preferences."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

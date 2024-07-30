@@ -1,0 +1,25 @@
+{
+    "acronym": "a77b69be7727f61b61d02bd0e03209c830267c0b",
+    "title": "Sequence Modeling with Unconstrained Generation Order",
+    "seed_ids": [
+        "universaltrans"
+    ],
+    "s2id": "a77b69be7727f61b61d02bd0e03209c830267c0b",
+    "abstract": "The dominant approach to sequence generation is to produce a sequence in some predefined order, e.g. left to right. In contrast, we propose a more general model that can generate the output sequence by inserting tokens in any arbitrary order. Our model learns decoding order as a result of its training procedure. Our experiments show that this model is superior to fixed order models on a number of sequence generation tasks, such as Machine Translation, Image-to-LaTeX and Image Captioning.",
+    "authors": [
+        "Dmitrii Emelianenko",
+        "Elena Voita",
+        "P. Serdyukov"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This model learns decoding order as a result of its training procedure, and is superior to fixed order models on a number of sequence generation tasks, such as Machine Translation, Image-to-LaTeX and Image Captioning."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,33 @@
+{
+    "acronym": "5aaf780c63c87db6c90c7f96308cf90296c5b226",
+    "title": "Zero-shot Image Captioning by Anchor-augmented Vision-Language Space Alignment",
+    "seed_ids": [
+        "gpt2",
+        "05bcf9999525656cfaa59bc71f8572d771ff3776",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "ada81a4de88a6ce474df2e2446ad11fea480616e",
+        "7f71875f8214dffa4f3276da123c4990a6d437cc",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5aaf780c63c87db6c90c7f96308cf90296c5b226",
+    "abstract": "CLIP (Contrastive Language-Image Pre-Training) has shown remarkable zero-shot transfer capabilities in cross-modal correlation tasks such as visual classification and image retrieval. However, its performance in cross-modal generation tasks like zero-shot image captioning remains unsatisfied. In this work, we discuss that directly employing CLIP for zero-shot image captioning relies more on the textual modality in context and largely ignores the visual information, which we call \\emph{contextual language prior}. To address this, we propose Cross-modal Language Models (CLMs) to facilitate unsupervised cross-modal learning. We further propose Anchor Augment to guide the generative model's attention to the fine-grained information in the representation of CLIP. Experiments on MS COCO and Flickr 30K validate the promising performance of proposed approach in both captioning quality and computational efficiency.",
+    "authors": [
+        "Junyan Wang",
+        "Yi Zhang",
+        "Ming Yan",
+        "Ji Zhang",
+        "J. Sang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes Cross-modal Language Models (CLMs) to facilitate unsupervised cross- modal learning and proposes Anchor Augment to guide the generative model's attention to the fine-grained information in the representation of CLIP."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

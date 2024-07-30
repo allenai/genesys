@@ -1,0 +1,31 @@
+{
+    "acronym": "c4ddba19c2f559b4bbc7f4596bf718a05af79683",
+    "title": "Towards Optimal Learning of Language Models",
+    "seed_ids": [
+        "gpt3",
+        "11cf88dce827bd67cbfa60400306318022e736d5",
+        "6cb35dd6e1338faa0c3d6a6b0020bbcbcc18653d",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a"
+    ],
+    "s2id": "c4ddba19c2f559b4bbc7f4596bf718a05af79683",
+    "abstract": "This work studies the general principles of improving the learning of language models (LMs), which aims at reducing the necessary training steps for achieving superior performance. Specifically, we present a theory for the optimal learning of LMs. We first propose an objective that optimizes LM learning by maximizing the data compression ratio in an\"LM-training-as-lossless-compression\"view. Then, we derive a theorem, named Learning Law, to reveal the properties of the dynamics in the optimal learning process under our objective. The theorem is then validated by experiments on a linear classification and a real-world language modeling task. Finally, we empirically verify that the optimal learning of LMs essentially stems from the improvement of the coefficients in the scaling law of LMs, indicating great promise and significance for designing practical learning acceleration methods. Our code can be found at https://aka.ms/LearningLaw.",
+    "authors": [
+        "Yuxian Gu",
+        "Li Dong",
+        "Y. Hao",
+        "Qingxiu Dong",
+        "Minlie Huang",
+        "Furu Wei"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A theory for the optimal learning of LMs is presented, and it is empirically verified that the optimal learning of LMs essentially stems from the improvement of the coefficients in the scaling law of LMs, indicating great promise and significance for designing practical learning acceleration methods."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

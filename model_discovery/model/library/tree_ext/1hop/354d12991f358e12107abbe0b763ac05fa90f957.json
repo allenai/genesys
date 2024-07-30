@@ -1,0 +1,30 @@
+{
+    "acronym": "354d12991f358e12107abbe0b763ac05fa90f957",
+    "title": "Fair Text Classification with Wasserstein Independence",
+    "seed_ids": [
+        "bert",
+        "039b1c1210c437f3b3ce6e0275ee2137bf5b951c",
+        "5e9c85235210b59a16bdd84b444a904ae271f7e7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "354d12991f358e12107abbe0b763ac05fa90f957",
+    "abstract": "Group fairness is a central research topic in text classification, where reaching fair treatment between sensitive groups (e.g. women vs. men) remains an open challenge. This paper presents a novel method for mitigating biases in neural text classification, agnostic to the model architecture. Considering the difficulty to distinguish fair from unfair information in a text encoder, we take inspiration from adversarial training to induce Wasserstein independence between representations learned to predict our target label and the ones learned to predict some sensitive attribute. Our approach provides two significant advantages. Firstly, it does not require annotations of sensitive attributes in both testing and training data. This is more suitable for real-life scenarios compared to existing methods that require annotations of sensitive attributes at train time. Second, our approach exhibits a comparable or better fairness-accuracy trade-off compared to existing methods.",
+    "authors": [
+        "Thibaud Leteno",
+        "Antoine Gourru",
+        "Charlotte Laclau",
+        "R'emi Emonet",
+        "Christophe Gravier"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a novel method for mitigating biases in neural text classification, agnostic to the model architecture, that takes inspiration from adversarial training to induce Wasserstein independence between representations learned to predict the authors' target label and the ones learning to predict some sensitive attribute."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

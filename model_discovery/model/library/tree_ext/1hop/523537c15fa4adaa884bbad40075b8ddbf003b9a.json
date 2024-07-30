@@ -1,0 +1,30 @@
+{
+    "acronym": "523537c15fa4adaa884bbad40075b8ddbf003b9a",
+    "title": "A Hardware Evaluation Framework for Large Language Model Inference",
+    "seed_ids": [
+        "gpt3",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "5af69480a7ae3b571df6782a11ec4437b386a7d9",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "523537c15fa4adaa884bbad40075b8ddbf003b9a",
+    "abstract": "The past year has witnessed the increasing popularity of Large Language Models (LLMs). Their unprecedented scale and associated high hardware cost have impeded their broader adoption, calling for efficient hardware designs. With the large hardware needed to simply run LLM inference, evaluating different hardware designs becomes a new bottleneck. This work introduces LLMCompass, a hardware evaluation framework for LLM inference workloads. LLMCompass is fast, accurate, versatile, and able to describe and evaluate different hardware designs. LLMCompass includes a mapper to automatically find performance-optimal mapping and scheduling. It also incorporates an area-based cost model to help architects reason about their design choices. Compared to real-world hardware, LLMCompass' estimated latency achieves an average 10.4% error rate across various operators with various input sizes and an average 4.1% error rate for LLM inference. With LLMCompass, simulating a 4-NVIDIA A100 GPU node running GPT-3 175B inference can be done within 16 minutes on commodity hardware, including 26,400 rounds of the mapper's parameter search. With the aid of LLMCompass, this work draws architectural implications and explores new cost-effective hardware designs. By reducing the compute capability or replacing High Bandwidth Memory (HBM) with traditional DRAM, these new designs can achieve as much as 3.41x improvement in performance/cost compared to an NVIDIA A100, making them promising choices for democratizing LLMs. LLMCompass is planned to be fully open-source.",
+    "authors": [
+        "Hengrui Zhang",
+        "August Ning",
+        "R. Prabhakar",
+        "D. Wentzlaff"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "LLMCompass is a hardware evaluation framework for LLM inference workloads that includes a mapper to automatically find performance-optimal mapping and scheduling and incorporates an area-based cost model to help architects reason about their design choices."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

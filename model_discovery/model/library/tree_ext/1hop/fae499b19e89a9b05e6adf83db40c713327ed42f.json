@@ -1,0 +1,28 @@
+{
+    "acronym": "fae499b19e89a9b05e6adf83db40c713327ed42f",
+    "title": "Navigating the Kaleidoscope of COVID-19 Misinformation Using Deep Learning",
+    "seed_ids": [
+        "gpt",
+        "adc61e21eafecfbf6ebecc570f9f913659a2bfb2",
+        "3bcb17559ce96eb20fa79af8194f4af0380d194a",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "8659bf379ca8756755125a487c43cfe8611ce842"
+    ],
+    "s2id": "fae499b19e89a9b05e6adf83db40c713327ed42f",
+    "abstract": "Irrespective of the success of the deep learning-based mixed-domain transfer learning approach for solving various Natural Language Processing tasks, it does not lend a generalizable solution for detecting misinformation from COVID-19 social media data. Due to the inherent complexity of this type of data, caused by its dynamic (context evolves rapidly), nuanced (misinformation types are often ambiguous), and diverse (skewed, fine-grained, and overlapping categories) nature, it is imperative for an effective model to capture both the local and global context of the target domain. By conducting a systematic investigation, we show that: (i) the deep Transformer-based pre-trained models, utilized via the mixed-domain transfer learning, are only good at capturing the local context, thus exhibits poor generalization, and (ii) a combination of shallow network-based domain-specific models and convolutional neural networks can efficiently extract local as well as global context directly from the target data in a hierarchical fashion, enabling it to offer a more generalizable solution.",
+    "authors": [
+        "Yuanzhi Chen",
+        "Mohammad Rashedul Hasan"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The deep Transformer-based pre-trained models utilized via the mixed-domain transfer learning are only good at capturing the local context, thus exhibits poor generalization, and a combination of shallow network-based domain-specific models and convolutional neural networks can efficiently extract local as well as global context directly from the target data in a hierarchical fashion."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

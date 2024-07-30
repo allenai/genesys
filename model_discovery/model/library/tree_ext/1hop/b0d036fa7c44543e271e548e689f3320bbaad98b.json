@@ -1,0 +1,27 @@
+{
+    "acronym": "b0d036fa7c44543e271e548e689f3320bbaad98b",
+    "title": "Assisted Text Annotation Using Active Learning to Achieve High Quality with Little Effort",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "b0d036fa7c44543e271e548e689f3320bbaad98b",
+    "abstract": "Large amounts of annotated data have become more important than ever, especially since the rise of deep learning techniques. However, manual annotations are costly. We propose a tool that enables researchers to create large, high-quality, annotated datasets with only a few manual annotations, thus strongly reducing annotation cost and effort. For this purpose, we combine an active learning (AL) approach with a pre-trained language model to semi-automatically identify annotation categories in the given text documents. To highlight our research direction's potential, we evaluate the approach on the task of identifying frames in news articles. Our preliminary results show that employing AL strongly reduces the number of annotations for correct classification of even these complex and subtle frames. On the framing dataset, the AL approach needs only 16.3% of the annotations to reach the same performance as a model trained on the full dataset.",
+    "authors": [
+        "Franziska Weeber",
+        "Felix Hamborg",
+        "K. Donnay",
+        "Bela Gipp"
+    ],
+    "venue": "ACM/IEEE Joint Conference on Digital Libraries",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work combines an active learning (AL) approach with a pre-trained language model to semi-automatically identify annotation categories in the given text documents to create large, high-quality, annotated datasets with only a few manual annotations."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

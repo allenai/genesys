@@ -1,0 +1,29 @@
+{
+    "acronym": "9f1c5777a193b2c3bb2b25e248a156348e5ba56d",
+    "title": "Cloze-driven Pretraining of Self-attention Networks",
+    "seed_ids": [
+        "gpt",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "b47381e04739ea3f392ba6c8faaf64105493c196"
+    ],
+    "s2id": "9f1c5777a193b2c3bb2b25e248a156348e5ba56d",
+    "abstract": "We present a new approach for pretraining a bi-directional transformer model that provides significant performance gains across a variety of language understanding problems. Our model solves a cloze-style word reconstruction task, where each word is ablated and must be predicted given the rest of the text. Experiments demonstrate large performance gains on GLUE and new state of the art results on NER as well as constituency parsing benchmarks, consistent with BERT. We also present a detailed analysis of a number of factors that contribute to effective pretraining, including data domain and size, model capacity, and variations on the cloze objective.",
+    "authors": [
+        "Alexei Baevski",
+        "Sergey Edunov",
+        "Yinhan Liu",
+        "Luke Zettlemoyer",
+        "Michael Auli"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new approach for pretraining a bi-directional transformer model that provides significant performance gains across a variety of language understanding problems, including cloze-style word reconstruction task, and a detailed analysis of a number of factors that contribute to effective pretraining."
+    },
+    "citationCount": 188,
+    "influentialCitationCount": 22,
+    "code": null,
+    "description": null,
+    "url": null
+}

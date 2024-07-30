@@ -1,0 +1,30 @@
+{
+    "acronym": "446efa0bcf3528b51332a12495cb56784dd8bad3",
+    "title": "GLoMo: Unsupervisedly Learned Relational Graphs as Transferable Representations",
+    "seed_ids": [
+        "memcompress",
+        "6084b58d8b4b0caf3a2a7f3a1bee1cc527927e39"
+    ],
+    "s2id": "446efa0bcf3528b51332a12495cb56784dd8bad3",
+    "abstract": "Modern deep transfer learning approaches have mainly focused on learning generic feature vectors from one task that are transferable to other tasks, such as word embeddings in language and pretrained convolutional features in vision. However, these approaches usually transfer unary features and largely ignore more structured graphical representations. This work explores the possibility of learning generic latent relational graphs that capture dependencies between pairs of data units (e.g., words or pixels) from large-scale unlabeled data and transferring the graphs to downstream tasks. Our proposed transfer learning framework improves performance on various tasks including question answering, natural language inference, sentiment analysis, and image classification. We also show that the learned graphs are generic enough to be transferred to different embeddings on which the graphs have not been trained (including GloVe embeddings, ELMo embeddings, and task-specific RNN hidden unit), or embedding-free units such as image pixels.",
+    "authors": [
+        "Zhilin Yang",
+        "J. Zhao",
+        "Bhuwan Dhingra",
+        "Kaiming He",
+        "William W. Cohen",
+        "R. Salakhutdinov",
+        "Yann LeCun"
+    ],
+    "venue": "arXiv.org",
+    "year": 2018,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work explores the possibility of learning generic latent relational graphs that capture dependencies between pairs of data units from large-scale unlabeled data and transferring the graphs to downstream tasks, and shows that the learned graphs are generic enough to be transferred to different embeddings on which the graphs have been trained."
+    },
+    "citationCount": 33,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

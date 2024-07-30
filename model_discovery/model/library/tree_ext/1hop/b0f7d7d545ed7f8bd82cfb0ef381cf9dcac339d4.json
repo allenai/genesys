@@ -1,0 +1,27 @@
+{
+    "acronym": "b0f7d7d545ed7f8bd82cfb0ef381cf9dcac339d4",
+    "title": "ScanFormer: Referring Expression Comprehension by Iteratively Scanning",
+    "seed_ids": [
+        "transformer",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "b0f7d7d545ed7f8bd82cfb0ef381cf9dcac339d4",
+    "abstract": "Referring Expression Comprehension (REC) aims to localize the target objects specified by free-form natural language descriptions in images. While state-of-the-art methods achieve impressive performance, they perform a dense perception of images, which incorporates redundant visual regions unrelated to linguistic queries, leading to additional computational overhead. This inspires us to explore a question: can we eliminate linguistic-irrelevant redundant visual regions to improve the efficiency of the model? Existing relevant methods primarily focus on fundamental visual tasks, with limited exploration in vision-language fields. To address this, we propose a coarse-to-fine iterative perception framework, called ScanFormer. It can iteratively exploit the image scale pyramid to extract linguistic-relevant visual patches from top to bottom. In each iteration, irrelevant patches are discarded by our designed informativeness prediction. Furthermore, we propose a patch selection strategy for discarded patches to accelerate inference. Experiments on widely used datasets, namely RefCOCO, RefCOCO+, RefCOCOg, and ReferItGame, verify the effectiveness of our method, which can strike a balance between accuracy and efficiency.",
+    "authors": [
+        "Wei Su",
+        "Peihan Miao",
+        "Huanzhang Dou",
+        "Xi Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A coarse-to-fine iterative perception framework that can strike a balance between accuracy and efficiency, called ScanFormer, which can eliminate linguistic-irrelevant redundant visual regions to improve the efficiency of the model."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

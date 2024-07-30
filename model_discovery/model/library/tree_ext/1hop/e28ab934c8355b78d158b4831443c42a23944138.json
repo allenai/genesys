@@ -1,0 +1,30 @@
+{
+    "acronym": "e28ab934c8355b78d158b4831443c42a23944138",
+    "title": "Topology-aware MLP for Skeleton-based Action Recognition",
+    "seed_ids": [
+        "gmlp",
+        "4ed79a14ce75439935195856583c3036415b0865",
+        "ba637c4f1a170f1e2dadeadb71a63cf2b9a46de2",
+        "485c08025157973bb52a935c6aa3bee74f990c01",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "e28ab934c8355b78d158b4831443c42a23944138",
+    "abstract": "\u2014Graph convolution networks (GCNs) have achieved remarkable performance in skeleton-based action recognition. However, existing previous GCN-based methods have relied excessively on elaborate human body priors and constructed complex feature aggregation mechanisms, which limits the generalizability of networks. To solve these problems, we propose a novel Spatial Topology Gating Unit (STGU), which is an MLP-based variant without extra priors, to capture the co-occurrence topology features that encode the spatial dependency across all joints. In STGU, to model the sample-specific and completely independent point-wise topology attention, a new gate-based feature interaction mechanism is introduced to activate the features point-to-point by the attention map generated from the input. Based on the STGU, in this work, we propose the first topology-aware MLP-based model, Ta-MLP, for skeleton-based action recognition. In comparison with existing previous meth-ods on three large-scale datasets, Ta-MLP achieves competitive performance. In addition, Ta-MLP reduces the parameters by up to 62.5% with favorable results. Compared with previous state-of-the-art (SOAT) approaches, Ta-MLP pushes the frontier of real-time action recognition. The code will be available at https://github.com/BUPTSJZhang/Ta-MLP.",
+    "authors": [
+        "Shaojie Zhang",
+        "Jianqin Yin",
+        "Yonghao Dang",
+        "Jiajun Fu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes the first topology-aware MLP-based model, Ta-MLP, for skeleton-based action recognition, which achieves competitive performance and pushes the frontier of real-time action recognition."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

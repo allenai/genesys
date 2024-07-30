@@ -1,0 +1,26 @@
+{
+    "acronym": "14908a18ff831005b6b4fc953ce61e1b4e7b54ee",
+    "title": "Practical Text Classification With Large Pre-Trained Language Models",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "14908a18ff831005b6b4fc953ce61e1b4e7b54ee",
+    "abstract": "Multi-emotion sentiment classification is a natural language processing (NLP) problem with valuable use cases on real-world data. We demonstrate that large-scale unsupervised language modeling combined with finetuning offers a practical solution to this task on difficult datasets, including those with label class imbalance and domain-specific context. By training an attention-based Transformer network (Vaswani et al. 2017) on 40GB of text (Amazon reviews) (McAuley et al. 2015) and fine-tuning on the training set, our model achieves a 0.69 F1 score on the SemEval Task 1:E-c multi-dimensional emotion classification problem (Mohammad et al. 2018), based on the Plutchik wheel of emotions (Plutchik 1979). These results are competitive with state of the art models, including strong F1 scores on difficult (emotion) categories such as Fear (0.73), Disgust (0.77) and Anger (0.78), as well as competitive results on rare categories such as Anticipation (0.42) and Surprise (0.37). Furthermore, we demonstrate our application on a real world text classification task. We create a narrowly collected text dataset of real tweets on several topics, and show that our finetuned model outperforms general purpose commercially available APIs for sentiment and multidimensional emotion classification on this dataset by a significant margin. We also perform a variety of additional studies, investigating properties of deep learning architectures, datasets and algorithms for achieving practical multidimensional sentiment classification. Overall, we find that unsupervised language modeling and finetuning is a simple framework for achieving high quality results on real-world sentiment classification.",
+    "authors": [
+        "Neel Kant",
+        "Raul Puri",
+        "Nikolai Yakovenko",
+        "Bryan Catanzaro"
+    ],
+    "venue": "arXiv.org",
+    "year": 2018,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work demonstrates that large-scale unsupervised language modeling combined with finetuning offers a practical solution to multi-emotion sentiment classification on difficult datasets, including those with label class imbalance and domain-specific context."
+    },
+    "citationCount": 58,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

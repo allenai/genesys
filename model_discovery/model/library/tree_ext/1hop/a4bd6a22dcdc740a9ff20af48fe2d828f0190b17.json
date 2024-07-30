@@ -1,0 +1,42 @@
+{
+    "acronym": "a4bd6a22dcdc740a9ff20af48fe2d828f0190b17",
+    "title": "Value-aware Approximate Attention",
+    "seed_ids": [
+        "performer",
+        "lineartransformer",
+        "reformer",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "cec7872b194aadf54140578b9be52939eb1112e9",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "63857190aaf5aab1d94b54bb257b7b03b8cb5a50",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "2e14e84ccec924ed770b58108ad1d9de6f0ca295",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "8cef9900c04d7f661c08f4b5b1ed4337ace042a3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a4bd6a22dcdc740a9ff20af48fe2d828f0190b17",
+    "abstract": "Following the success of dot-product attention in Transformers, numerous approximations have been recently proposed to address its quadratic complexity with respect to the input length. However, all approximations thus far have ignored the contribution of the *value vectors* to the quality of approximation. In this work, we argue that research efforts should be directed towards approximating the true output of the attention sub-layer, which includes the value vectors. We propose a value-aware objective, and show theoretically and empirically that an optimal approximation of a value-aware objective substantially outperforms an optimal approximation that ignores values, in the context of language modeling. Moreover, we show that the choice of kernel function for computing attention similarity can substantially affect the quality of sparse approximations, where kernel functions that are less skewed are more affected by the value vectors.",
+    "authors": [
+        "Ankit Gupta",
+        "Jonathan Berant"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is argued that research efforts should be directed towards approximating the true output of the attention sub-layer, which includes the value vectors, and it is shown that the choice of kernel function for computing attention similarity can substantially affect the quality of sparse approximations."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

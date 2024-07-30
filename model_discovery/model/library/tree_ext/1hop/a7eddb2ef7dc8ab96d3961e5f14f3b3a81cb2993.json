@@ -1,0 +1,28 @@
+{
+    "acronym": "a7eddb2ef7dc8ab96d3961e5f14f3b3a81cb2993",
+    "title": "'One size doesn't fit all': Learning how many Examples to use for In-Context Learning for Improved Text Classification",
+    "seed_ids": [
+        "gpt3",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c"
+    ],
+    "s2id": "a7eddb2ef7dc8ab96d3961e5f14f3b3a81cb2993",
+    "abstract": "Predictive models in natural language processing (NLP) have evolved from training models from scratch to fine-tuning pre-trained models with labelled data. An extreme form of this fine-tuning involves in-context learning (ICL), where the output of a pre-trained generative model (frozen decoder parameters) is controlled only with variations in the input strings (called instructions or prompts). An important component of ICL is the use of a small number of labelled data instances as examples in the prompt. While existing work uses a static number of examples during inference for each data instance, in this paper we propose a novel methodology of dynamically adapting the number of examples as per the data. This is analogous to the use of a variable-sized neighborhood in k-nearest neighbors (k-NN) classifier. In our proposed workflow of adaptive ICL (AICL), the number of demonstrations to employ during the inference on a particular data instance is predicted by the Softmax posteriors of a classifier. The parameters of this classifier are fitted on the optimal number of examples in ICL required to correctly infer the label of each instance in the training set with the hypothesis that a test instance that is similar to a training instance should use the same (or a closely matching) number of few-shot examples. Our experiments show that our AICL method results in improvement in text classification task on several standard datasets.",
+    "authors": [
+        "Manish Chandra",
+        "Debasis Ganguly",
+        "Yiwen Li",
+        "I. Ounis"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "In this paper, a novel methodology of dynamically adapting the number of examples as per the data is proposed, analogous to the use of a variable-sized neighborhood in k-nearest neighbors (k-NN) classifier."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

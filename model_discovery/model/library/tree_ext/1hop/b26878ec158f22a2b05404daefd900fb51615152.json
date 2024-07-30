@@ -1,0 +1,33 @@
+{
+    "acronym": "b26878ec158f22a2b05404daefd900fb51615152",
+    "title": "AttBind: Memory-Efficient Acceleration for Long-Range Attention Using Vector-Derived Symbolic Binding",
+    "seed_ids": [
+        "transformer",
+        "nystromformer",
+        "performer",
+        "linformer",
+        "d84b292c2e90d0b0edfedc33141d305d8e9de5df",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87"
+    ],
+    "s2id": "b26878ec158f22a2b05404daefd900fb51615152",
+    "abstract": "Transformer models have achieved a number of breakthrough results in a variety of complex tasks. Transformer's promising performance originates from multi-head attention (MHA), which can model long-range sequence data dependency. Better performance has been demonstrated to be obtained by increasing the sequence length $N$. However, scaling up the sequence length is extremely challenging for memory-constrained hardware because the naive Transformer requires quadratic $O(N^{2})$ complexity. In this work, we address this challenge by leveraging the binding operation in vector symbolic architecture (VSA). We propose the memory-efficient MHA algorithm to simplify the MHA computation at the cost of linear complexity. Then, we present the ASIC hardware architecture with optimized timing and dataflow to accelerate the proposed algorithm. We extensively evaluate our design across various long-range attention tasks. Our experiments show that the accuracy is competitive to state-of-the-art MHA optimization approaches with lower memory consumption and inference latency. The proposed algorithm achieves 7.8\u00d7 speedup and 4.5\u00d7 reduction in data movement over the naive Transformer on ASIC. Meanwhile, our design supports 8 to 16 \u00d7 sequence lengths compared to existing hardware accelerators.",
+    "authors": [
+        "Weihong Xu",
+        "Jaeyoung Kang",
+        "Tajana Simunic"
+    ],
+    "venue": "Design, Automation and Test in Europe",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes the memory-efficient MHA algorithm to simplify the MHA computation at the cost of linear complexity, and presents the ASIC hardware architecture with optimized timing and dataflow to accelerate the proposed algorithm."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

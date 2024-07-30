@@ -1,0 +1,25 @@
+{
+    "acronym": "215a856a6fa798349087b6c4c486800a8931ed13",
+    "title": "RIVQ-VAE: Discrete Rotation-Invariant 3D Representation Learning",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "215a856a6fa798349087b6c4c486800a8931ed13",
+    "abstract": "Building local surface representations has recently attracted significant attention in 3D vision, allowing to structure complex 3D shapes as sequences of simpler local geometries. Inspired by advances in 2D discrete representation learning, recent approaches have proposed to break up 3D shapes into regular grids, where each cell is associated with a discrete code sampled from a learnable codebook. Unfortunately, existing methods ignore both the local rigid self-similarities as well as the ambiguities inherent to 3D geometry related to possible changes in orientation. As a result, such techniques require very large codebooks to capture all possible variability in both geometry and pose. In this work, we propose a novel generative model that improves the generation quality by compactly embedding local geometries in a rotation- and translation-invariant manner. This strategy allows our codebook of discrete codes to express a larger range of geometric structures by avoiding local and global redundancies. Crucially, we demonstrate via a careful architecture design that our approach allows to recover meaningful shapes from local embeddings, while ensuring global consistency. The conducted experiments show that our approach outperforms baseline methods by a large margin under similar settings.",
+    "authors": [
+        "Mariem Mezghanni",
+        "Malika Boulkenafed",
+        "M. Ovsjanikov"
+    ],
+    "venue": "International Conference on 3D Vision",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel generative model that improves the generation quality by compactly embedding local geometries in a rotation- and translation-invariant manner, and allows the codebook of discrete codes to express a larger range of geometric structures by avoiding local and global redundancies."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

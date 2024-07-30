@@ -1,0 +1,34 @@
+{
+    "acronym": "8e562e604c7343951ceafc4294c5be6e7e1c8755",
+    "title": "ECloudGen: Access to Broader Chemical Space for Structure-based Molecule Generation",
+    "seed_ids": [
+        "roformer",
+        "997d7b9645af64c1920e2ffb7da51f8e1b0f42a7",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "8e562e604c7343951ceafc4294c5be6e7e1c8755",
+    "abstract": "AI-aided drug design has facilitated structure-based molecule generation strategies. However, despite significant success, the restriction of the scarcity of protein-ligand data prevents the models from fully exploiting the learning chemical space and discovering unexplored potential drugs. The limited chemical space sampling contrasts with the original intention of generation models to explore a broader chemical space, leading to what we term the Chemical Space Generation Paradox. To address the proposed paradox, we developed ECloudGen with the following attributes: (1) Fundamental Physical Representation: We introduce the electron cloud representation, unifying all biological forces under one representation, offering a compact and continuous learning space. (2) Broad and Structurally Ordered Chemical Space: Utilizing electron clouds as generative agents, ECloudGen leverages data without binding structure to access a broader chemical space. In implementation, ECloudDiff as a latent ECloud-based diffusion model is established to sample high-fidelity electron clouds conditioned on pockets\u2019s structure; and CEMP as a novel contrastive learning strategy is proposed to structurally organize the chemical space, thus enabling controllable generation. Subsequent experiments confirm ECloud-Gen\u2019s state-of-the-art performance, in generating chemically feasible molecules with high binding efficacy, drug-likeness, and other chemical properties. Besides, ECloudGen proves to encompass a broader chemical space and also demonstrates superiority in controllable generation in extensive experiments.",
+    "authors": [
+        "Odin Zhang",
+        "Jieyu Jin",
+        "Haitao Lin",
+        "Jintu Zhang",
+        "Chenqing Hua",
+        "Yufei Huang",
+        "Huifeng Zhao",
+        "Chang-Yu Hsieh",
+        "Tingjun Hou"
+    ],
+    "venue": "bioRxiv",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ECloudGen proves to encompass a broader chemical space and also demonstrates superiority in controllable generation in extensive experiments, as well as addressing the proposed paradox of the Chemical Space Generation Paradox."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

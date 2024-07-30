@@ -1,0 +1,37 @@
+{
+    "acronym": "cfdaf06f93d53e045006a087d8cac70ad142c631",
+    "title": "Mixture of In-Context Prompters for Tabular PFNs",
+    "seed_ids": [
+        "transformer",
+        "gpt3",
+        "3fb0731538c59f8520a309996a0567b58965f0fe",
+        "594d8e1696619f3cebb7c6bffdad8e0a5592f006",
+        "525d93a382f6e7873b5d8a2e0713eb3dff7fb250",
+        "e3fc46d5f4aae2c7a8a86b6bd21ca8db5d40fcbd",
+        "264fb3355fe11c9063bc9e466d438f720d15ef52",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "cfdaf06f93d53e045006a087d8cac70ad142c631",
+    "abstract": "Recent benchmarks found In-Context Learning (ICL) outperforms both deep learning and tree-based algorithms on small tabular datasets. However, on larger datasets, ICL for tabular learning cannot run without severely compromising performance, due to its quadratic space and time complexity w.r.t. dataset size. We propose MIXTUREPFN, which both extends nearest-neighbor sampling to the state-of-the-art ICL for tabular learning model and uses bootstrapping to finetune said model on the inference-time dataset. MIXTUREPFN is the Condorcet winner across 36 diverse tabular datasets against 19 strong deep learning and tree-based baselines, achieving the highest mean rank among Top-10 aforementioned algorithms with statistical significance.",
+    "authors": [
+        "Derek Xu",
+        "Olcay Cirit",
+        "Reza Asadi",
+        "Yizhou Sun",
+        "Wei Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes MIXTUREPFN, which both extends nearest-neighbor sampling to the state-of-the-art ICL for tabular learning model and uses bootstrapping to finetune said model on the inference-time dataset."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

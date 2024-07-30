@@ -1,0 +1,33 @@
+{
+    "acronym": "1446dd7b605721adc120fa2fde696282e389efaa",
+    "title": "CPPF: A contextual and post-processing-free model for automatic speech recognition",
+    "seed_ids": [
+        "gpt2",
+        "f8cf6c42d48326ff7ae172c5e555178d440bf7cb",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "f8b89d917065d5e406ba9769be020ba0d95a31ce",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1446dd7b605721adc120fa2fde696282e389efaa",
+    "abstract": "ASR systems have become increasingly widespread in recent years. However, their textual outputs often require post-processing tasks before they can be practically utilized. To address this issue, we draw inspiration from the multifaceted capabilities of LLMs and Whisper, and focus on integrating multiple ASR text processing tasks related to speech recognition into the ASR model. This integration not only shortens the multi-stage pipeline, but also prevents the propagation of cascading errors, resulting in direct generation of post-processed text. In this study, we focus on ASR-related processing tasks, including Contextual ASR and multiple ASR post processing tasks. To achieve this objective, we introduce the CPPF model, which offers a versatile and highly effective alternative to ASR processing. CPPF seamlessly integrates these tasks without any significant loss in recognition performance.",
+    "authors": [
+        "Lei Zhang",
+        "Zhengkun Tian",
+        "Xiang Chen",
+        "Jiaming Sun",
+        "Hongyu Xiang",
+        "Ke Ding",
+        "Guanglu Wan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study focuses on integrating multiple ASR text processing tasks related to speech recognition into the ASR model, and introduces the CPPF model, which offers a versatile and highly effective alternative to ASR processing."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

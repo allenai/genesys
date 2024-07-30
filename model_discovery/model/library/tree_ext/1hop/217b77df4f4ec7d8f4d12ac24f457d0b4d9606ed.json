@@ -1,0 +1,24 @@
+{
+    "acronym": "217b77df4f4ec7d8f4d12ac24f457d0b4d9606ed",
+    "title": "MAEF-Net: MLP Attention for Feature Enhancement in U-Net based Medical Image Segmentation Networks",
+    "seed_ids": [
+        "gmlp"
+    ],
+    "s2id": "217b77df4f4ec7d8f4d12ac24f457d0b4d9606ed",
+    "abstract": "Medical image segmentation plays an important role in diagnosis. Since the introduction of U-Net, numerous advancements have been implemented to enhance its performance and expand its applicability. The advent of Transformers in computer vision has led to the integration of self-attention mechanisms into U-Net, resulting in significant breakthroughs. However, the inherent complexity of Transformers renders these networks computationally demanding and parameter-heavy. Recent studies have demonstrated that multilayer perceptrons (MLPs), with their simpler architecture, can achieve comparable performance to Transformers in natural language processing and computer vision tasks. Building upon these findings, we have enhanced the previously proposed \u201cEnhanced-Feature-Four-Fold-Net\u201d (EF$^{3}$-Net) by introducing an MLP-attention block to learn long-range dependencies and expand the receptive field. This enhanced network is termed \u201cMLP-Attention Enhanced-Feature-four-fold-Net\u201d, abbreviated as \u201cMAEF-Net\u201d. To further enhance accuracy while reducing computational complexity, the proposed network incorporates additional efficient design elements. MAEF-Net was evaluated against several general and specialized medical image segmentation networks using four challenging medical image datasets. The results demonstrate that the proposed network exhibits high computational efficiency and comparable or superior performance to EF$^{3}$-Net and several state-of-the-art methods, particularly in segmenting blurry objects.",
+    "authors": [
+        "Yunchu Zhang",
+        "Jianfei Dong"
+    ],
+    "venue": "IEEE journal of biomedical and health informatics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed network is enhanced by introducing an MLP-attention block to learn long-range dependencies and expand the receptive field and exhibits high computational efficiency and comparable or superior performance to EF$^{3}$-Net and several state-of-the-art methods, particularly in segmenting blurry objects."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

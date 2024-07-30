@@ -1,0 +1,26 @@
+{
+    "acronym": "0ce06bec1ca9f4a0b0406a055d9f6cd9e6ed63ca",
+    "title": "Lightweight Zero-shot Text-to-Speech with Mixture of Adapters",
+    "seed_ids": [
+        "gpt3"
+    ],
+    "s2id": "0ce06bec1ca9f4a0b0406a055d9f6cd9e6ed63ca",
+    "abstract": "The advancements in zero-shot text-to-speech (TTS) methods, based on large-scale models, have demonstrated high fidelity in reproducing speaker characteristics. However, these models are too large for practical daily use. We propose a lightweight zero-shot TTS method using a mixture of adapters (MoA). Our proposed method incorporates MoA modules into the decoder and the variance adapter of a non-autoregressive TTS model. These modules enhance the ability to adapt a wide variety of speakers in a zero-shot manner by selecting appropriate adapters associated with speaker characteristics on the basis of speaker embeddings. Our method achieves high-quality speech synthesis with minimal additional parameters. Through objective and subjective evaluations, we confirmed that our method achieves better performance than the baseline with less than 40\\% of parameters at 1.9 times faster inference speed. Audio samples are available on our demo page (https://ntt-hilab-gensp.github.io/is2024lightweightTTS/).",
+    "authors": [
+        "Kenichi Fujita",
+        "Takanori Ashihara",
+        "Marc Delcroix",
+        "Yusuke Ijima"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A lightweight zero-shot TTS method using a mixture of adapters (MoA) that achieves high-quality speech synthesis with minimal additional parameters and achieves better performance than the baseline with less than 40\\% of parameters at 1.9 times faster inference speed."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

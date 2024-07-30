@@ -1,0 +1,38 @@
+{
+    "acronym": "378702db60e4e9761dcdb0b73f0b9a1549bbbb58",
+    "title": "Cactus: Towards Psychological Counseling Conversations using Cognitive Behavioral Theory",
+    "seed_ids": [
+        "gpt2",
+        "f78fe02f681a0a9a6867b007bd39e3884de64a91",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "378702db60e4e9761dcdb0b73f0b9a1549bbbb58",
+    "abstract": "Recently, the demand for psychological counseling has significantly increased as more individuals express concerns about their mental health. This surge has accelerated efforts to improve the accessibility of counseling by using large language models (LLMs) as counselors. To ensure client privacy, training open-source LLMs faces a key challenge: the absence of realistic counseling datasets. To address this, we introduce Cactus, a multi-turn dialogue dataset that emulates real-life interactions using the goal-oriented and structured approach of Cognitive Behavioral Therapy (CBT). We create a diverse and realistic dataset by designing clients with varied, specific personas, and having counselors systematically apply CBT techniques in their interactions. To assess the quality of our data, we benchmark against established psychological criteria used to evaluate real counseling sessions, ensuring alignment with expert evaluations. Experimental results demonstrate that Camel, a model trained with Cactus, outperforms other models in counseling skills, highlighting its effectiveness and potential as a counseling agent. We make our data, model, and code publicly available.",
+    "authors": [
+        "Suyeon Lee",
+        "Sunghwan Kim",
+        "Minju Kim",
+        "Dongjin Kang",
+        "Dongil Yang",
+        "Harim Kim",
+        "Minseok Kang",
+        "Dayi Jung",
+        "Min Hee Kim",
+        "Seungbeen Lee",
+        "Kyoung-Mee Chung",
+        "Youngjae Yu",
+        "Dongha Lee",
+        "Jinyoung Yeo"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces Cactus, a multi-turn dialogue dataset that emulates real-life interactions using the goal-oriented and structured approach of Cognitive Behavioral Therapy (CBT), and creates a diverse and realistic dataset."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

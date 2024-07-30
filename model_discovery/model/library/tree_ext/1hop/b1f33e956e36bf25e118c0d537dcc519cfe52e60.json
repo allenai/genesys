@@ -1,0 +1,28 @@
+{
+    "acronym": "b1f33e956e36bf25e118c0d537dcc519cfe52e60",
+    "title": "CTL++: Evaluating Generalization on Never-Seen Compositional Patterns of Known Functions, and Compatibility of Neural Representations",
+    "seed_ids": [
+        "neuraldatarouter",
+        "e528466e2aff981511d4ca6e063211297c0b4175",
+        "ed535e93d5b5a8b689e861e9c6083a806d1535c2",
+        "5cdab78acc4f3aab429a0dd41c3ec7e605d42e7b"
+    ],
+    "s2id": "b1f33e956e36bf25e118c0d537dcc519cfe52e60",
+    "abstract": "Well-designed diagnostic tasks have played a key role in studying the failure of neural nets (NNs) to generalize systematically. Famous examples include SCAN and Compositional Table Lookup (CTL). Here we introduce CTL++, a new diagnostic dataset based on compositions of unary symbolic functions. While the original CTL is used to test length generalization or productivity, CTL++ is designed to test systematicity of NNs, that is, their capability to generalize to unseen compositions of known functions. CTL++ splits functions into groups and tests performance on group elements composed in a way not seen during training. We show that recent CTL-solving Transformer variants fail on CTL++. The simplicity of the task design allows for fine-grained control of task difficulty, as well as many insightful analyses. For example, we measure how much overlap between groups is needed by tested NNs for learning to compose. We also visualize how learned symbol representations in outputs of functions from different groups are compatible in case of success but not in case of failure. These results provide insights into failure cases reported on more complex compositions in the natural language domain. Our code is public.",
+    "authors": [
+        "R'obert Csord'as",
+        "Kazuki Irie",
+        "J. Schmidhuber"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "CTL++ is introduced, a new diagnostic dataset based on compositions of unary symbolic functions designed to test systematicity of NNs, that is, their capability to generalize to unseen compositions of known functions."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

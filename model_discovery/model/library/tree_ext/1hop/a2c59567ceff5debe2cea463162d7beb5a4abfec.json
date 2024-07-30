@@ -1,0 +1,31 @@
+{
+    "acronym": "a2c59567ceff5debe2cea463162d7beb5a4abfec",
+    "title": "ILLUMINER: Instruction-tuned Large Language Models as Few-shot Intent Classifier and Slot Filler",
+    "seed_ids": [
+        "bert",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "cc893dfaa8693c5a7cbe37035a0fcc56e669e0ca",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a2c59567ceff5debe2cea463162d7beb5a4abfec",
+    "abstract": "State-of-the-art intent classification (IC) and slot filling (SF) methods often rely on data-intensive deep learning models, limiting their practicality for industry applications. Large language models on the other hand, particularly instruction-tuned models (Instruct-LLMs), exhibit remarkable zero-shot performance across various natural language tasks. This study evaluates Instruct-LLMs on popular benchmark datasets for IC and SF, emphasizing their capacity to learn from fewer examples. We introduce ILLUMINER, an approach framing IC and SF as language generation tasks for Instruct-LLMs, with a more efficient SF-prompting method compared to prior work. A comprehensive comparison with multiple baselines shows that our approach, using the FLAN-T5 11B model, outperforms the state-of-the-art joint IC+SF method and in-context learning with GPT3.5 (175B), particularly in slot filling by 11.1\u201332.2 percentage points. Additionally, our in-depth ablation study demonstrates that parameter-efficient fine-tuning requires less than 6% of training data to yield comparable performance with traditional full-weight fine-tuning.",
+    "authors": [
+        "Paramita Mirza",
+        "Viju Sudhi",
+        "S. Sahoo",
+        "Sinchana Ramakanth Bhat"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "LLUMINER is introduced, an approach framing IC and SF as language generation tasks for Instruct-LLMs, with a more efficient SF-prompting method compared to prior work, and it is demonstrated that parameter-efficient fine-tuning requires less than 6% of training data to yield comparable performance with traditional full-weight fine-tuning."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

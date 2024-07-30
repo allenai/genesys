@@ -1,0 +1,28 @@
+{
+    "acronym": "5ba52b8acb2dfbc48b963155fd8c46a3cdcf9280",
+    "title": "Lightweight Contextual Logical Structure Recovery",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "5ba52b8acb2dfbc48b963155fd8c46a3cdcf9280",
+    "abstract": "Logical structure recovery in scientific articles associates text with a semantic section of the article. Although previous work has disregarded the surrounding context of a line, we model this important information by employing line-level attention on top of a transformer-based scientific document processing pipeline. With the addition of loss function engineering and data augmentation techniques with semi-supervised learning, our method improves classification performance by 10% compared to a recent state-of-the-art model. Our parsimonious, text-only method achieves a performance comparable to that of other works that use rich document features such as font and spatial position, using less data without sacrificing performance, resulting in a lightweight training pipeline.",
+    "authors": [
+        "Po-Wei Huang",
+        "Abhinav Ramesh Kashyap",
+        "Yanxia Qin",
+        "Yajing Yang",
+        "Min-Yen Kan"
+    ],
+    "venue": "SDP",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work model this important information by employing line-level attention on top of a transformer-based scientific document processing pipeline, and achieves a performance comparable to that of other works that use rich document features such as font and spatial position using less data without sacrificing performance."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

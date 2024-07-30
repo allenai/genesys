@@ -1,0 +1,32 @@
+{
+    "acronym": "f8292d4ddf7a6dfe240eeaa9685f5d18eed9a3f6",
+    "title": "Language Models that Seek for Knowledge: Modular Search & Generation for Dialogue and Prompt Completion",
+    "seed_ids": [
+        "gpt2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "46c585ee9abf76779ea4b863d2da4358efd0d1d3",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f8292d4ddf7a6dfe240eeaa9685f5d18eed9a3f6",
+    "abstract": "Language models (LMs) have recently been shown to generate more factual responses by employing modularity (Zhou et al., 2021) in combination with retrieval (Adolphs et al., 2021). We extend the recent approach of Adolphs et al. (2021) to include internet search as a module. Our SeeKeR (Search engine->Knowledge->Response) method thus applies a single LM to three modular tasks in succession: search, generating knowledge, and generating a final response. We show that, when using SeeKeR as a dialogue model, it outperforms the state-of-the-art model BlenderBot 2 (Chen et al., 2021) on open-domain knowledge-grounded conversations for the same number of parameters, in terms of consistency, knowledge and per-turn engagingness. SeeKeR applied to topical prompt completions as a standard language model outperforms GPT2 (Radford et al., 2019) and GPT3 (Brown et al., 2020) in terms of factuality and topicality, despite GPT3 being a vastly larger model. Our code and models are made publicly available.",
+    "authors": [
+        "Kurt Shuster",
+        "M. Komeili",
+        "Leonard Adolphs",
+        "Stephen Roller",
+        "Arthur Szlam",
+        "J. Weston"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that, when using SeeKeR as a dialogue model, it outperforms the state-of-the-art model BlenderBot 2 on open-domain knowledge-grounded conversations for the same number of parameters, in terms of consistency, knowledge and per-turn engagingness."
+    },
+    "citationCount": 103,
+    "influentialCitationCount": 13,
+    "code": null,
+    "description": null,
+    "url": null
+}

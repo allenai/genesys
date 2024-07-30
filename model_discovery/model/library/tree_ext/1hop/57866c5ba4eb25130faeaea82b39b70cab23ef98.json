@@ -1,0 +1,34 @@
+{
+    "acronym": "57866c5ba4eb25130faeaea82b39b70cab23ef98",
+    "title": "A User-Friendly Framework for Generating Model-Preferred Prompts in Text-to-Image Synthesis",
+    "seed_ids": [
+        "gpt2",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "14c3cf58192774b9b6fc6188df99efd6ab5fc739",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "57866c5ba4eb25130faeaea82b39b70cab23ef98",
+    "abstract": "Well-designed prompts have demonstrated the potential to guide text-to-image models in generating amazing images. Although existing prompt engineering methods can provide high-level guidance, it is challenging for novice users to achieve the desired results by manually entering prompts due to a discrepancy between novice-user-input prompts and the model-preferred prompts. To bridge the distribution gap between user input behavior and model training datasets, we first construct a novel Coarse-Fine Granularity Prompts dataset (CFP) and propose a novel User-Friendly Fine-Grained Text Generation framework (UF-FGTG) for automated prompt optimization. For CFP, we construct a novel dataset for text-to-image tasks that combines coarse and fine-grained prompts to facilitate the development of automated prompt generation methods. For UF-FGTG, we propose a novel framework that automatically translates user-input prompts into model-preferred prompts. Specifically, we propose a prompt refiner that continually rewrites prompts to empower users to select results that align with their unique needs. Meanwhile, we integrate image-related loss functions from the text-to-image model into the training process of text generation to generate model-preferred prompts. Additionally, we propose an adaptive feature extraction module to ensure diversity in the generated results. Experiments demonstrate that our approach is capable of generating more visually appealing and diverse images than previous state-of-the-art methods, achieving an average improvement of 5% across six quality and aesthetic metrics. Data and code are available at https://github.com/Naylenv/UF-FGTG.",
+    "authors": [
+        "Nailei Hei",
+        "Qianyu Guo",
+        "Zihao Wang",
+        "Yan Wang",
+        "Haofen Wang",
+        "Wenqiang Zhang"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A prompt refiner that continually rewrites prompts to empower users to select results that align with their unique needs is proposed and is capable of generating more visually appealing and diverse images than previous state-of-the-art methods."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

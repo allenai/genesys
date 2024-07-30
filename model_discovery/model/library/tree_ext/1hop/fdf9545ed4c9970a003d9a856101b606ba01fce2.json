@@ -1,0 +1,42 @@
+{
+    "acronym": "fdf9545ed4c9970a003d9a856101b606ba01fce2",
+    "title": "LeaPformer: Enabling Linear Transformers for Autoregressive and Simultaneous Tasks via Learned Proportions",
+    "seed_ids": [
+        "performer",
+        "lineartransformer",
+        "15c59092bef6d49c7a3993fae45629839250b8ac",
+        "e3fc46d5f4aae2c7a8a86b6bd21ca8db5d40fcbd",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "08ffdec40291a2ccb5f8a6cc048b01247fb34b96",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "67ee20536c30a225b86902af2f091e28e5e19b40",
+        "4889ba5a8ae8b2169dd44d1d3a605bf9820bae8d",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "fdf9545ed4c9970a003d9a856101b606ba01fce2",
+    "abstract": "A promising approach to preserving model performance in linearized transformers is to employ position-based re-weighting functions. However, state-of-the-art re-weighting functions rely heavily on target sequence lengths, making it difficult or impossible to apply them to autoregressive and simultaneous tasks, where the target and sometimes even the input sequence length are unknown. To address this issue, we propose Learned Proportions (LeaP) and LeaPformers. Our contribution is built on two major components. First, we generalize the dependence on explicit positional representations and sequence lengths into dependence on sequence proportions for re-weighting. Second, we replace static positional representations with dynamic proportions derived via a compact module, enabling more flexible attention concentration patterns. We evaluate LeaPformer against eight representative efficient transformers on the Long-Range Arena benchmark, showing that LeaPformer achieves the best quality-throughput trade-off, as well as LeaPformer to Wikitext-103 autoregressive language modeling and simultaneous speech-to-text translation for two language pairs, achieving competitive results.",
+    "authors": [
+        "Victor Agostinelli",
+        "Sanghyun Hong",
+        "Lizhong Chen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Learned Proportions (LeaP) and LeaPformers are proposed, which replace static positional representations with dynamic proportions derived via a compact module, enabling more flexible attention concentration patterns."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

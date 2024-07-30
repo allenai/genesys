@@ -1,0 +1,27 @@
+{
+    "acronym": "1cdbb5c2935c021fabad1373acafc2254461233d",
+    "title": "Attention-free based dual-encoder mechanism for Aspect-based Multimodal Sentiment Recognition",
+    "seed_ids": [
+        "fnet",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f"
+    ],
+    "s2id": "1cdbb5c2935c021fabad1373acafc2254461233d",
+    "abstract": "Multimodal aspect-based sentiment recognition (MABSR) is a recently developed task in sentiment recognition that tries to assess the sentiment associated with text and image pairings by generally extracting the polarity terms from the pairs. Both the pipeline and the unified transformer based technique, which employs the cross-attention only mechanism, have been widely utilized in recent works. However, the alignment between text and picture is not openly and reliably included in these approaches. There is still a minimum threshold of aligned image-text pairings needed for supervised fine-tuning of said universal transformers for MABSR. Motivated by this observation and inspired by the various attention-only mechanisms, we analyze MABSR and propose an attention-free encoder-based transformer architecture. Dual attention-free based backbone encoder models with cross-modal symmetry are utilized in this work. To improve cross-modal performance, we include two new subtasks: aspect-only extraction and polarity feature representation alignment. This motivates both encoders to provide more precise depictions of multiple modalities.",
+    "authors": [
+        "Pankaj Gupta",
+        "Ananya Pandey",
+        "Ajeet Kumar",
+        "D. Vishwakarma"
+    ],
+    "venue": "2023 International Conference in Advances in Power, Signal, and Information Technology (APSIT)",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work analyzes MABSR and proposes an attention-free encoder-based transformer architecture that motivates both encoders to provide more precise depictions of multiple modalities and includes two new subtasks: aspect-only extraction and polarity feature representation alignment."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

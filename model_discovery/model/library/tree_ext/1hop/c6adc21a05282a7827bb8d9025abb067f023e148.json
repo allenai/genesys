@@ -1,0 +1,26 @@
+{
+    "acronym": "c6adc21a05282a7827bb8d9025abb067f023e148",
+    "title": "Simultaneous Selection and Adaptation of Source Data via Four-Level Optimization",
+    "seed_ids": [
+        "transformer",
+        "ad7129af0644dbcafa9aa2f111cb76526ea444a1"
+    ],
+    "s2id": "c6adc21a05282a7827bb8d9025abb067f023e148",
+    "abstract": "In many NLP applications, to mitigate data deficiency in a target task, source data is collected to help with target model training. Existing transfer learning methods either select a subset of source examples that are close to the target domain or try to adapt all source examples into the target domain, then use selected or adapted source examples to train the target model. These methods either incur significant information loss or bear the risk that after adaptation, source examples which are originally already in the target domain may be outside the target domain. To address the limitations of these methods, we propose a four-level optimization based framework which simultaneously selects and adapts source data. Our method can automatically identify in-domain and out-of-domain source examples and apply example-specific processing methods: selection for in-domain examples and adaptation for out-of-domain examples. Experiments on various datasets demonstrate the effectiveness of our proposed method.",
+    "authors": [
+        "Pengtao Xie",
+        "Xingchen Zhao",
+        "Xuehai He"
+    ],
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a four-level optimization based framework which simultaneously selects and adapts source data and can automatically identify in-domain and out-of-domain source examples and apply example-specific processing methods: selection for in-domain examples and adaptation for out-of-domain examples."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

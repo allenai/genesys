@@ -1,0 +1,29 @@
+{
+    "acronym": "85c2753526d515969f4ed75013ae5065beab5ed1",
+    "title": "Humans and language models diverge when predicting repeating text",
+    "seed_ids": [
+        "gpt2",
+        "eaee0b647d336c6fc8b844812675ec35cddf14a1",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "97a531f96a8d9a4c1d379637daf7dcc714db1b35",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "85c2753526d515969f4ed75013ae5065beab5ed1",
+    "abstract": "Language models that are trained on the next-word prediction task have been shown to accurately model human behavior in word prediction and reading speed. In contrast with these findings, we present a scenario in which the performance of humans and LMs diverges. We collected a dataset of human next-word predictions for five stimuli that are formed by repeating spans of text. Human and GPT-2 LM predictions are strongly aligned in the first presentation of a text span, but their performance quickly diverges when memory (or in-context learning) begins to play a role. We traced the cause of this divergence to specific attention heads in a middle layer. Adding a power-law recency bias to these attention heads yielded a model that performs much more similarly to humans. We hope that this scenario will spur future work in bringing LMs closer to human behavior.",
+    "authors": [
+        "Aditya R. Vaidya",
+        "Javier Turek",
+        "Alexander G. Huth"
+    ],
+    "venue": "Conference on Computational Natural Language Learning",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A scenario in which the performance of humans and LMs diverges is presented, and a model is traced to specific attention heads in a middle layer that performs much more similarly to humans."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

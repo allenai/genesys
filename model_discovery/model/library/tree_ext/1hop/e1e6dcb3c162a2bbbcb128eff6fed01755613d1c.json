@@ -1,0 +1,41 @@
+{
+    "acronym": "e1e6dcb3c162a2bbbcb128eff6fed01755613d1c",
+    "title": "Generative AI Beyond LLMs: System Implications of Multi-Modal Generation",
+    "seed_ids": [
+        "flashattn",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "e342165a614588878ad0f4bc9bacf3905df34d08",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "657329c633709dd1ac34a30d57341b186b1a47c2"
+    ],
+    "s2id": "e1e6dcb3c162a2bbbcb128eff6fed01755613d1c",
+    "abstract": "As the development of large-scale Generative AI models evolve beyond text (1D) generation to include image (2D) and video (3D) generation, processing spatial and temporal information presents unique challenges to quality, performance, and efficiency. We present the first work towards understanding this new system design space for multi-modal text-to-image (TTI) and text-to-video (TTV) generation models. Current model architecture designs are bifurcated into 2 categories: Diffusion-and Transformer-based models. Our systematic performance characterization on a suite of eight representative TTI/TTV models shows that after state-of-the-art optimization techniques such as Flash Attention are applied, Convolution accounts for up to 44% of execution time for Diffusion-based TTI models, while Linear layers consume up to 49 % of execution time for Transformer-based models. We additionally observe that Diffusion-based TTI models resemble the Prefill stage of LLM inference, and benefit from 1.1-2.5x greater speedup from Flash Attention than Transformer-based TTI models that resemble the Decode phase. Since optimizations designed for LLMs do not map directly onto TTI/TTV models, we must conduct a thorough characterization of these workloads to gain insights for new optimization opportunities. In doing so, we define sequence length in the context of TTI/TTV models and observe sequence length can vary up to 4x in Diffusion model inference. We additionally observe temporal aspects of TTV workloads pose unique system bottlenecks, with Temporal Attention accounting for over 60 % of total Attention time. Overall, our in-depth system performance characterization is a critical first step towards designing efficient and deployable systems for emerging TTI/TTV workloads.",
+    "authors": [
+        "Alicia Golden",
+        "Samuel Hsia",
+        "Fei Sun",
+        "Bilge Acun",
+        "Basil Hosmer",
+        "Yejin Lee",
+        "Zach DeVito",
+        "Jeff Johnson",
+        "Gu-Yeon Wei",
+        "David Brooks",
+        "Carole-Jean Wu"
+    ],
+    "venue": "IEEE International Symposium on Performance Analysis of Systems and Software",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The first work towards understanding this new system design space for multi-modal text-to-image (TTI) and text-to-video (TTV) generation models is presented, which defines sequence length in the context of TTI/TTV models and observes sequence length can vary up to 4x in Diffusion model inference."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,35 @@
+{
+    "acronym": "9121b7e4cb8d8d241574e7066a8aadcda93b4828",
+    "title": "ModuleFormer: Modularity Emerges from Mixture-of-Experts",
+    "seed_ids": [
+        "roformer",
+        "neuraldatarouter",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "9575afb5702bc33d7df14c48feeee5901ea00369",
+        "e528466e2aff981511d4ca6e063211297c0b4175",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "9121b7e4cb8d8d241574e7066a8aadcda93b4828",
+    "abstract": "Large Language Models (LLMs) have achieved remarkable results. However, existing models are expensive to train and deploy, and it is also difficult to expand their knowledge beyond pre-training data without forgetting previous knowledge. This paper proposes a new neural network architecture, ModuleFormer, that leverages modularity to improve the efficiency and flexibility of large language models. ModuleFormer is based on the Sparse Mixture of Experts (SMoE). Unlike the previous SMoE-based modular language model, which requires domain-labeled data to learn domain-specific experts, ModuleFormer can induce modularity from uncurated data with its new load balancing and concentration losses. ModuleFormer is a modular architecture that includes two different types of modules: new stick-breaking attention heads and feedforward experts. Different modules are sparsely activated conditions on the input token during training and inference. In our experiment, we found that the modular architecture enables three important abilities for large pre-trained language models: 1) Efficiency, since ModuleFormer only activates a subset of its modules for each input token, thus it could achieve the same performance as dense LLMs with more than two times throughput; 2) Extendability, ModuleFormer is more immune to catastrophic forgetting than dense LLMs and can be easily extended with new modules to learn new knowledge that is not included in the training data; 3) Specialisation, finetuning ModuleFormer could specialize a subset of modules to the finetuning task and the task-unrelated modules could be easily pruned for a lightweight deployment.",
+    "authors": [
+        "Yikang Shen",
+        "Zheyu Zhang",
+        "Tianyou Cao",
+        "Shawn Tan",
+        "Zhenfang Chen",
+        "Chuang Gan"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new neural network architecture, ModuleFormer, that leverages modularity to improve the efficiency and flexibility of large language models and is more immune to catastrophic forgetting than dense LLMs."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

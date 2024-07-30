@@ -1,0 +1,27 @@
+{
+    "acronym": "060f1131f615410a2accd0dafa8b784649f47628",
+    "title": "Improving semantic coverage of data-to-text generation model using dynamic memory networks",
+    "seed_ids": [
+        "gpt2",
+        "transformerxl",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "060f1131f615410a2accd0dafa8b784649f47628",
+    "abstract": "Abstract This paper proposes a sequence-to-sequence model for data-to-text generation, called DM-NLG, to generate a natural language text from structured nonlinguistic input. Specifically, by adding a dynamic memory module to the attention-based sequence-to-sequence model, it can store the information that leads to generate previous output words and use it to generate the next word. In this way, the decoder part of the model is aware of all previous decisions, and as a result, the generation of duplicate words or incomplete semantic concepts is prevented. To improve the generated sentences quality by the DM-NLG decoder, a postprocessing step is performed using the pretrained language models. To prove the effectiveness of the DM-NLG model, we performed experiments on five different datasets and observed that our proposed model is able to reduce the slot error rate rate by 50% and improve the BLEU by 10%, compared to the state-of-the-art models.",
+    "authors": [
+        "Elham Seifossadat",
+        "H. Sameti"
+    ],
+    "venue": "Natural Language Engineering",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A dynamic memory module is added to the attention-based sequence-to-sequence model to generate a natural language text from structured nonlinguistic input that can store the information that leads to generate previous output words and use it to generate the next word."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

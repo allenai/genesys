@@ -1,0 +1,26 @@
+{
+    "acronym": "2bb54f9bfab243ce578d8b9bd7e40d10caa81448",
+    "title": "Exploration of multilingual prompts in document-grounded dialogue",
+    "seed_ids": [
+        "gpt",
+        "b76e98a0a023d37c6534aa2ead09c8ff595f0bae"
+    ],
+    "s2id": "2bb54f9bfab243ce578d8b9bd7e40d10caa81448",
+    "abstract": "Transferring DGD models from high-resource languages to low-resource languages is a meaningful but challenging task. Being able to provide multilingual responses to multilingual documents further complicates the task. This paper describes our method at DialDoc23 Shared Task (Document-Grounded Dialogue and Conversational Question Answering) for generate responses based on the most relevant passage retrieved. We divide it into three steps of retrieval, re-ranking and generation. Our methods include negative sample augmentation, prompt learning, pseudo-labeling and ensemble. On the submission page, we rank 2nd based on the sum of token-level F1, SacreBleu and Rouge-L scores used for the final evaluation, and get the total score of 210.25.",
+    "authors": [
+        "Xiaochen Zhang",
+        "Huang Qing",
+        "Fu Lin"
+    ],
+    "venue": "Workshop on Document-grounded Dialogue and Conversational Question Answering",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper describes the method at DialDoc23 Shared Task (Document-Grounded Dialogue and Conversational Question Answering) for generate responses based on the most relevant passage retrieved, and divides it into three steps of retrieval, re-ranking and generation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

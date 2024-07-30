@@ -1,0 +1,26 @@
+{
+    "acronym": "dab05c972fe4537e362b262b33dffc00de5f5311",
+    "title": "Exposing Bias in Online Communities through Large-Scale Language Models",
+    "seed_ids": [
+        "gpt",
+        "76a786b1acd6d1aca56e12a8a1db34569fdf9f3a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "dab05c972fe4537e362b262b33dffc00de5f5311",
+    "abstract": "Progress in natural language generation research has been shaped by the ever-growing size of language models. While large language models pre-trained on web data can generate human-sounding text, they also reproduce social biases and contribute to the propagation of harmful stereotypes. This work utilises the flaw of bias in language models to explore the biases of six different online communities. In order to get an insight into the communities' viewpoints, we fine-tune GPT-Neo 1.3B with six social media datasets. The bias of the resulting models is evaluated by prompting the models with different demographics and comparing the sentiment and toxicity values of these generations. Together, these methods reveal that bias differs in type and intensity for the various models. This work not only affirms how easily bias is absorbed from training data but also presents a scalable method to identify and compare the bias of different datasets or communities. Additionally, the examples generated for this work demonstrate the limitations of using automated sentiment and toxicity classifiers in bias research.",
+    "authors": [
+        "Celine Wald",
+        "Lukas Pfahler"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work utilises the flaw of bias in language models to explore the biases of six different online communities, fine-tune GPT-Neo with six social media datasets and presents a scalable method to identify and compare the bias of different datasets or communities."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

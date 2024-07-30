@@ -1,0 +1,37 @@
+{
+    "acronym": "a0b8dd97ea43b59ed5ff74af470a31c1d48019c8",
+    "title": "Text Feature Adversarial Learning for Text Generation With Knowledge Transfer From GPT2",
+    "seed_ids": [
+        "gpt2",
+        "75352cc69a29bd5fc411e0e79737cb96b6309161",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "7cc730da554003dda77796d2cb4f06da5dfd5592",
+        "203b543bfa1e564bb80ff4229b43174d7c71b0c0",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a0b8dd97ea43b59ed5ff74af470a31c1d48019c8",
+    "abstract": "Text generation is a key component of many natural language tasks. Motivated by the success of generative adversarial networks (GANs) for image generation, many text-specific GANs have been proposed. However, due to the discrete nature of text, these text GANs often use reinforcement learning (RL) or continuous relaxations to calculate gradients during learning, leading to high-variance or biased estimation. Furthermore, the existing text GANs often suffer from mode collapse (i.e., they have limited generative diversity). To tackle these problems, we propose a new text GAN model named text feature GAN (TFGAN), where adversarial learning is performed in a continuous text feature space. In the adversarial game, GPT2 provides the \u201ctrue\u201d features, while the generator of TFGAN learns from them. TFGAN is trained by maximum likelihood estimation on text space and adversarial learning on text feature space, effectively combining them into a single objective, while alleviating mode collapse. TFGAN achieves appealing performance in text generation tasks, and it can also be used as a flexible framework for learning text representations.",
+    "authors": [
+        "Hao Zhang",
+        "Yulai Cong",
+        "Zhengjue Wang",
+        "Lei Zhang",
+        "Miaoyun Zhao",
+        "Liqun Chen",
+        "Shijing Si",
+        "Ricardo Henao",
+        "L. Carin"
+    ],
+    "venue": "IEEE Transactions on Neural Networks and Learning Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "TFGAN is a new text GAN model named text feature GAN (TFGAN), where adversarial learning is performed in a continuous text feature space, and it can also be used as a flexible framework for learning text representations."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

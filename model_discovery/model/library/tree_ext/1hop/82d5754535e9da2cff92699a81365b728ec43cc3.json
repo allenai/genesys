@@ -1,0 +1,37 @@
+{
+    "acronym": "82d5754535e9da2cff92699a81365b728ec43cc3",
+    "title": "Rough Transformers: Lightweight Continuous-Time Sequence Modelling with Path Signatures",
+    "seed_ids": [
+        "transformer",
+        "917096f28209ef90c9e6363cf49438341120af5e",
+        "5ee2008c1eab4545f1e001b2cf3c0578b7a1aafe",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "b0c5c673c690c644a7d4af73adb783bd98486181",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "82d5754535e9da2cff92699a81365b728ec43cc3",
+    "abstract": "Time-series data in real-world settings typically exhibit long-range dependencies and are observed at non-uniform intervals. In these settings, traditional sequence-based recurrent models struggle. To overcome this, researchers often replace recurrent architectures with Neural ODE-based models to account for irregularly sampled data and use Transformer-based architectures to account for long-range dependencies. Despite the success of these two approaches, both incur very high computational costs for input sequences of even moderate length. To address this challenge, we introduce the Rough Transformer, a variation of the Transformer model that operates on continuous-time representations of input sequences and incurs significantly lower computational costs. In particular, we propose \\textit{multi-view signature attention}, which uses path signatures to augment vanilla attention and to capture both local and global (multi-scale) dependencies in the input data, while remaining robust to changes in the sequence length and sampling frequency and yielding improved spatial processing. We find that, on a variety of time-series-related tasks, Rough Transformers consistently outperform their vanilla attention counterparts while obtaining the representational benefits of Neural ODE-based models, all at a fraction of the computational time and memory resources.",
+    "authors": [
+        "Fernando Moreno-Pino",
+        "Alvaro Arroyo",
+        "H. Waldon",
+        "Xiaowen Dong",
+        "\u00c1lvaro Cartea"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Rough Transformer is introduced, a variation of the Transformer model that operates on continuous-time representations of input sequences and incurs significantly lower computational costs, and a multi-view signature attention is proposed, which uses path signatures to augment vanilla attention and to capture both local and global dependencies in the input data."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

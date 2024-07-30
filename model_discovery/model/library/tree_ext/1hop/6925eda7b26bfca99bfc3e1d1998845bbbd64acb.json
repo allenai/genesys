@@ -1,0 +1,26 @@
+{
+    "acronym": "6925eda7b26bfca99bfc3e1d1998845bbbd64acb",
+    "title": "Normalization of Input-output Shared Embeddings in Text Generation Models",
+    "seed_ids": [
+        "lighdynconv",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "6925eda7b26bfca99bfc3e1d1998845bbbd64acb",
+    "abstract": "Neural Network based models have been state-of-the-art models for various Natural Language Processing tasks, however, the input and output dimension problem in the networks has still not been fully resolved, especially in text generation tasks (e.g. Machine Translation, Text Summarization), in which input and output both have huge sizes of vocabularies. Therefore, input-output embedding weight sharing has been introduced and adopted widely, which remains to be improved. Based on linear algebra and statistical theories, this paper locates the shortcoming of existed input-output embedding weight sharing method, then raises methods for improving input-output weight shared embedding, among which methods of normalization of embedding weight matrices show best performance. These methods are nearly computational cost-free, can get combined with other embedding techniques, and show good effectiveness when applied on state-of-the-art Neural Network models. For Transformer-big models, the normalization techniques can get at best 0.6 BLEU improvement compared to the original version of model on WMT'16 En-De dataset, and similar BLEU improvements on IWSLT 14' datasets. For DynamicConv models, 0.5 BLEU improvement can be attained on WMT'16 En-De dataset, and 0.41 BLEU improvement on IWSLT 14' De-En translation task is achieved.",
+    "authors": [
+        "Jinyang Liu",
+        "Yujia Zhai",
+        "Zizhong Chen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Methods for improving input-output weight shared embedding are raised, among which methods of normalization of embedding weight matrices show best performance, which are nearly computational cost-free, can get combined with other embedding techniques, and show good effectiveness on state-of-the-art Neural Network models."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

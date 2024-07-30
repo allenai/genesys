@@ -1,0 +1,40 @@
+{
+    "acronym": "ce6b6046ad26e0f29932b539919c58333aedf1eb",
+    "title": "EL-Attention: Memory Efficient Lossless Attention for Generation",
+    "seed_ids": [
+        "linformer",
+        "longformer",
+        "sinkhorn",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "b1c39d042fdf8f00a407b0df734764beb6c3b062",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ce6b6046ad26e0f29932b539919c58333aedf1eb",
+    "abstract": "Transformer model with multi-head attention requires caching intermediate results for efficient inference in generation tasks. However, cache brings new memory-related costs and prevents leveraging larger batch size for faster speed. We propose memory-efficient lossless attention (called EL-attention) to address this issue. It avoids heavy operations for building multi-head keys and values, cache for them is not needed. EL-attention constructs an ensemble of attention results by expanding query while keeping key and value shared. It produces the same result as multi-head attention with less GPU memory and faster inference speed. We conduct extensive experiments on Transformer, BART, and GPT-2 for summarization and question generation tasks. The results show EL-attention speeds up existing models by 1.6x to 5.3x without accuracy loss.",
+    "authors": [
+        "Yu Yan",
+        "Jiusheng Chen",
+        "Weizhen Qi",
+        "Nikhil Bhendawade",
+        "Yeyun Gong",
+        "Nan Duan",
+        "Ruofei Zhang"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Memory-efficient lossless attention (called EL-attention) is proposed to address the issue of caching intermediate results for efficient inference in generation tasks and speeds up existing models by 1.6x to 5.3x without accuracy loss."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

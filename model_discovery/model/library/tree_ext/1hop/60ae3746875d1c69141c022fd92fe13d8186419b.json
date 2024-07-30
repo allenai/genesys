@@ -1,0 +1,40 @@
+{
+    "acronym": "60ae3746875d1c69141c022fd92fe13d8186419b",
+    "title": "Hierarchical Multi-Granularity Interaction Graph Convolutional Network for Long Document Classification",
+    "seed_ids": [
+        "longformer",
+        "3f24be61416886d13d3468ba7b946bf5a722e9c5",
+        "f8d44802ac8190864c61c9aaf4a8b450261873ab",
+        "786077a54eee75d0fd74b8565f91b9386a6344cd",
+        "3d318019788418b21478e8736d03afadc1607690",
+        "33d15b2d2a434ab33a2a88585604f4728a324baf",
+        "84daddd294fa3cc12596b5785f81c2a153d2fb1d",
+        "e32a12b14e212506115cc6804667b3d8297917e1",
+        "afad10da0a3b83a4f2a94e8c16c84ac64338e9fe",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "01b15017ac59b8d6f2ce3598c4a7d6358c211426",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "f51497f463566581874c941353dd9d80069c5b77"
+    ],
+    "s2id": "60ae3746875d1c69141c022fd92fe13d8186419b",
+    "abstract": "With the growing demand for text analytics, long document classification (LDC) has received extensive attention, and great progress has been made. To reveal the complex structure and extract the intrinsic feature, the current approaches focus on modeling a long sequence with sparse attention or representing word-sentence or word-section relations partially. However, the thorough hierarchical structure from words, sentences to sections of long documents remains relatively unexplored. For this purpose, we propose a novel Hierarchical Multi-granularity Interaction Graph Convolutional Network (HMIGCN) for long document classification, in which three different granularity graphs, i.e., section graph, sentence graph and word graph, are constructed hierarchically. The section graph encapsulates the macrostructure of a long document, while the sentence and word graphs delve into the document's microstructure. Notably, within the sentence graph, we introduce a Global-Local Graph Convolutional (GLGC) block to adaptively capture both global and local dependency structures among sentence nodes. Additionally, to integrate the three graph networks as a whole, two well-designed techniques, namely section-guided pooling block and transfer fusion block, are proposed to train the model jointly by promoting each other. Extensive experiments on five long document datasets show that our model outperforms the existing state-of-the-art LDC models.",
+    "authors": [
+        "Tengfei Liu",
+        "Yongli Hu",
+        "Junbin Gao",
+        "Yanfeng Sun",
+        "Baocai Yin"
+    ],
+    "venue": "IEEE/ACM Transactions on Audio Speech and Language Processing",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel Hierarchical Multi-granularity Interaction Graph Convolutional Network (HMIGCN) for long document classification, in which three different granularity graphs are constructed hierarchically, which outperforms the existing state-of-the-art LDC models."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

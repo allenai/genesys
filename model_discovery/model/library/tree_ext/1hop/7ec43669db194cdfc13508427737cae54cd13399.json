@@ -1,0 +1,27 @@
+{
+    "acronym": "7ec43669db194cdfc13508427737cae54cd13399",
+    "title": "Efficient Contextual Representation Learning With Continuous Outputs",
+    "seed_ids": [
+        "gpt",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7ec43669db194cdfc13508427737cae54cd13399",
+    "abstract": "Abstract Contextual representation models have achieved great success in improving various downstream natural language processing tasks. However, these language-model-based encoders are difficult to train due to their large parameter size and high computational complexity. By carefully examining the training procedure, we observe that the softmax layer, which predicts a distribution of the target word, often induces significant overhead, especially when the vocabulary size is large. Therefore, we revisit the design of the output layer and consider directly predicting the pre-trained embedding of the target word for a given context. When applied to ELMo, the proposed approach achieves a 4-fold speedup and eliminates 80% trainable parameters while achieving competitive performance on downstream tasks. Further analysis shows that the approach maintains the speed advantage under various settings, even when the sentence encoder is scaled up.",
+    "authors": [
+        "Liunian Harold Li",
+        "Patrick H. Chen",
+        "Cho-Jui Hsieh",
+        "Kai-Wei Chang"
+    ],
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work revisits the design of the output layer and considers directly predicting the pre-trained embedding of the target word for a given context and achieves a 4-fold speedup and eliminates 80% trainable parameters while achieving competitive performance on downstream tasks."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

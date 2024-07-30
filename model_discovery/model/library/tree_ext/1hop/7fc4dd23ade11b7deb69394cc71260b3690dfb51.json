@@ -1,0 +1,25 @@
+{
+    "acronym": "7fc4dd23ade11b7deb69394cc71260b3690dfb51",
+    "title": "Toward Zero-Shot Instruction Following",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7fc4dd23ade11b7deb69394cc71260b3690dfb51",
+    "abstract": "This work proposes a challenging yet more realistic setting for zero-shot cross-task generalization: zero-shot instruction following, presuming the existence of a paragraph-style task definition while no demonstrations exist. To better learn the task supervision from the definition, we propose two strategies: first, to automatically find out the critical sentences in the definition; second, a ranking objective to force the model to generate the gold outputs with higher probabilities when those critical parts are highlighted in the definition. The joint efforts of the two strategies yield state-of-the-art performance on the Super-NaturalInstructions. Our code is available on GitHub.",
+    "authors": [
+        "Renze Lou",
+        "Wenpeng Yin"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a challenging yet more realistic setting for zero-shot cross-task generalization: zero-shot instruction following, presuming the existence of a paragraph-style task definition while no demonstrations exist, and proposes two strategies to better learn the task supervision from the definition."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

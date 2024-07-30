@@ -1,0 +1,30 @@
+{
+    "acronym": "4cdc184f728aa27d6ab9b1791ade28d9e761ceab",
+    "title": "Scaling Diffusion Mamba with Bidirectional SSMs for Efficient Image and Video Generation",
+    "seed_ids": [
+        "mamba",
+        "6827e87642874d9bf69f0f1548d79a164aaa5e1e",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "2d9ae4c167510ed78803735fc57ea67c3cc55a35"
+    ],
+    "s2id": "4cdc184f728aa27d6ab9b1791ade28d9e761ceab",
+    "abstract": "In recent developments, the Mamba architecture, known for its selective state space approach, has shown potential in the efficient modeling of long sequences. However, its application in image generation remains underexplored. Traditional diffusion transformers (DiT), which utilize self-attention blocks, are effective but their computational complexity scales quadratically with the input length, limiting their use for high-resolution images. To address this challenge, we introduce a novel diffusion architecture, Diffusion Mamba (DiM), which foregoes traditional attention mechanisms in favor of a scalable alternative. By harnessing the inherent efficiency of the Mamba architecture, DiM achieves rapid inference times and reduced computational load, maintaining linear complexity with respect to sequence length. Our architecture not only scales effectively but also outperforms existing diffusion transformers in both image and video generation tasks. The results affirm the scalability and efficiency of DiM, establishing a new benchmark for image and video generation techniques. This work advances the field of generative models and paves the way for further applications of scalable architectures.",
+    "authors": [
+        "Shentong Mo",
+        "Yapeng Tian"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a novel diffusion architecture, Diffusion Mamba (DiM), which foregoes traditional attention mechanisms in favor of a scalable alternative, and not only scales effectively but also outperforms existing diffusion transformers in both image and video generation tasks."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

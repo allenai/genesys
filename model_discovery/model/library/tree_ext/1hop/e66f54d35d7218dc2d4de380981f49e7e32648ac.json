@@ -1,0 +1,28 @@
+{
+    "acronym": "e66f54d35d7218dc2d4de380981f49e7e32648ac",
+    "title": "Boosting Multimodal Large Language Models with Visual Tokens Withdrawal for Rapid Inference",
+    "seed_ids": [
+        "streamingllm",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c"
+    ],
+    "s2id": "e66f54d35d7218dc2d4de380981f49e7e32648ac",
+    "abstract": "Multimodal large language models (MLLMs) demand considerable computations for inference due to the extensive parameters and the additional input tokens needed for visual information representation. Herein, we introduce Visual Tokens Withdrawal (VTW), a plug-and-play module to boost MLLMs for rapid inference. Our approach is inspired by two intriguing phenomena we have observed: (1) the attention sink phenomenon that is prevalent in LLMs also persists in MLLMs, suggesting that initial tokens and nearest tokens receive the majority of attention, while middle vision tokens garner minimal attention in deep layers; (2) the presence of information migration, which implies that visual information is transferred to subsequent text tokens within the first few layers of MLLMs. As per our findings, we conclude that vision tokens are not necessary in the deep layers of MLLMs. Thus, we strategically withdraw them at a certain layer, enabling only text tokens to engage in subsequent layers. To pinpoint the ideal layer for vision tokens withdrawal, we initially analyze a limited set of tiny datasets and choose the first layer that meets the Kullback-Leibler divergence criterion. Our VTW approach can cut computational overhead by over 40\\% across diverse multimodal tasks while maintaining performance. Our code is released at https://github.com/lzhxmu/VTW.",
+    "authors": [
+        "Zhihang Lin",
+        "Mingbao Lin",
+        "Luxi Lin",
+        "Rongrong Ji"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is concluded that vision tokens are not necessary in the deep layers of MLLMs, so the VTW approach can cut computational overhead by over 40\\% across diverse multimodal tasks while maintaining performance."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

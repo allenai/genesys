@@ -1,0 +1,29 @@
+{
+    "acronym": "5f8d7d0b1ae395d4e3df17917d5f245b2a97531e",
+    "title": "MedT5SQL: a transformers-based large language model for text-to-SQL conversion in the healthcare domain",
+    "seed_ids": [
+        "transformer",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "5f8d7d0b1ae395d4e3df17917d5f245b2a97531e",
+    "abstract": "Introduction In response to the increasing prevalence of electronic medical records (EMRs) stored in databases, healthcare staff are encountering difficulties retrieving these records due to their limited technical expertise in database operations. As these records are crucial for delivering appropriate medical care, there is a need for an accessible method for healthcare staff to access EMRs. Methods To address this, natural language processing (NLP) for Text-to-SQL has emerged as a solution, enabling non-technical users to generate SQL queries using natural language text. This research assesses existing work on Text-to-SQL conversion and proposes the MedT5SQL model specifically designed for EMR retrieval. The proposed model utilizes the Text-to-Text Transfer Transformer (T5) model, a Large Language Model (LLM) commonly used in various text-based NLP tasks. The model is fine-tuned on the MIMICSQL dataset, the first Text-to-SQL dataset for the healthcare domain. Performance evaluation involves benchmarking the MedT5SQL model on two optimizers, varying numbers of training epochs, and using two datasets, MIMICSQL and WikiSQL. Results For MIMICSQL dataset, the model demonstrates considerable effectiveness in generating question-SQL pairs achieving accuracy of 80.63%, 98.937%, and 90% for exact match accuracy matrix, approximate string-matching, and manual evaluation, respectively. When testing the performance of the model on WikiSQL dataset, the model demonstrates efficiency in generating SQL queries, with an accuracy of 44.2% on WikiSQL and 94.26% for approximate string-matching. Discussion Results indicate improved performance with increased training epochs. This work highlights the potential of fine-tuned T5 model to convert medical-related questions written in natural language to Structured Query Language (SQL) in healthcare domain, providing a foundation for future research in this area.",
+    "authors": [
+        "Alaa Marshan",
+        "Anwar Nais AlMutairi",
+        "Athina Ioannou",
+        "David Bell",
+        "A. Monaghan",
+        "Mahir Arzoky"
+    ],
+    "venue": "Frontiers Big Data",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work highlights the potential of fine-tuned T5 model to convert medical-related questions written in natural language to Structured Query Language (SQL) in healthcare domain, providing a foundation for future research in this area."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

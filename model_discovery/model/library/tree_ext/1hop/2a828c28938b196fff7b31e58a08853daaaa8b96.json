@@ -1,0 +1,34 @@
+{
+    "acronym": "2a828c28938b196fff7b31e58a08853daaaa8b96",
+    "title": "Frequency-Oriented Efficient Transformer for All-in-One Weather-Degraded Image Restoration",
+    "seed_ids": [
+        "metaformer",
+        "fbf68eb0cf8237cef59ebdb301569c79b9676ff9",
+        "a9c214e846188adb645021cd7b1964b8ea1fef6f",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "2a828c28938b196fff7b31e58a08853daaaa8b96",
+    "abstract": "Adverse weather conditions, such as rain, raindrop, snow and haze, consistently degrade images in an unpredictable manner, thereby rendering existing task-specific and task-aligned methods inadequate in addressing this formidable problem. To this end, we investigate the application of Transformer in image restoration and introduce an efficient frequency-oriented method called AIRFormer, which is designed to restore weather-degraded images comprehensively and holistically. Specifically, we identify that the initial self-attention mechanism exhibits distinctive properties akin to a low-pass filter. Therefore, we construct a frequency-guided Transformer encoder by incorporating wavelet-based prior information to guide the extraction of image features. Additionally, considering the non-specific frequency characteristics of self-attention in the later stages, we develop a frequency-refined Transformer decoder that incorporates learnable task-specific queries across spatial dimensions, channel dimensions, and wavelet domains. To facilitate the training of our proposed method, we curate a comprehensive benchmark dataset named AIR40K that, encompasses a wide range of challenging scenarios. Extensive experimental evaluations demonstrate the superiority of our AIRFormer over both task-aligned and all-in-one methods across 15 publicly available datasets. Notably, AIRFormer achieves the best trade-off between the inference time and quality of reconstructed image, comparing with existing methods such as TransWeather and Restormer. The source code, dataset and pre-trained models will be available at https://github.com/chdwyb/AIRFormer.",
+    "authors": [
+        "Tao Gao",
+        "Yuanbo Wen",
+        "Kaihao Zhang",
+        "Jing Zhang",
+        "Ting Chen",
+        "Lidong Liu",
+        "Wenhan Luo"
+    ],
+    "venue": "IEEE transactions on circuits and systems for video technology (Print)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work investigates the application of Transformer in image restoration and introduces an efficient frequency-oriented method, which is designed to restore weather-degraded images comprehensively and holistically, and achieves the best trade-off between the inference time and quality of reconstructed image."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

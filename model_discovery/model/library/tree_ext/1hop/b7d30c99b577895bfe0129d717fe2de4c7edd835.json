@@ -1,0 +1,36 @@
+{
+    "acronym": "b7d30c99b577895bfe0129d717fe2de4c7edd835",
+    "title": "AI-Enhanced Cognitive Behavioral Therapy: Deep Learning and Large Language Models for Extracting Cognitive Pathways from Social Media Texts",
+    "seed_ids": [
+        "transformer",
+        "15aad9b72ad278397a467a2f7a2576fff6557c5f",
+        "319b84be7a843250bc81d7086f79a4126d550277",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "b7d30c99b577895bfe0129d717fe2de4c7edd835",
+    "abstract": "Cognitive Behavioral Therapy (CBT) is an effective technique for addressing the irrational thoughts stemming from mental illnesses, but it necessitates precise identification of cognitive pathways to be successfully implemented in patient care. In current society, individuals frequently express negative emotions on social media on specific topics, often exhibiting cognitive distortions, including suicidal behaviors in extreme cases. Yet, there is a notable absence of methodologies for analyzing cognitive pathways that could aid psychotherapists in conducting effective interventions online. In this study, we gathered data from social media and established the task of extracting cognitive pathways, annotating the data based on a cognitive theoretical framework. We initially categorized the task of extracting cognitive pathways as a hierarchical text classification with four main categories and nineteen subcategories. Following this, we structured a text summarization task to help psychotherapists quickly grasp the essential information. Our experiments evaluate the performance of deep learning and large language models (LLMs) on these tasks. The results demonstrate that our deep learning method achieved a micro-F1 score of 62.34% in the hierarchical text classification task. Meanwhile, in the text summarization task, GPT-4 attained a Rouge-1 score of 54.92 and a Rouge-2 score of 30.86, surpassing the experimental deep learning model's performance. However, it may suffer from an issue of hallucination. We have made all models and codes publicly available to support further research in this field.",
+    "authors": [
+        "Meng Jiang",
+        "Y. Yu",
+        "Qing Zhao",
+        "Jianqiang Li",
+        "Changwei Song",
+        "Hongzhi Qi",
+        "Wei Zhai",
+        "Dan Luo",
+        "Xiaoqin Wang",
+        "Guanghui Fu",
+        "Bing Xiang Yang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study gathered data from social media and established the task of extracting cognitive pathways, annotating the data based on a cognitive theoretical framework, and categorized the task of extracting cognitive pathways as a hierarchical text classification with four main categories and nineteen subcategories."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

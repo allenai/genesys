@@ -1,0 +1,34 @@
+{
+    "acronym": "7a91227560bb6889c1994993d5823fad455f787d",
+    "title": "IMPUS: Image Morphing with Perceptually-Uniform Sampling Using Diffusion Models",
+    "seed_ids": [
+        "classfreediffu",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "82482585e94192b4e9913727e461f89cd08e9725",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "7a91227560bb6889c1994993d5823fad455f787d",
+    "abstract": "We present a diffusion-based image morphing approach with perceptually-uniform sampling (IMPUS) that produces smooth, direct and realistic interpolations given an image pair. The embeddings of two images may lie on distinct conditioned distributions of a latent diffusion model, especially when they have significant semantic difference. To bridge this gap, we interpolate in the locally linear and continuous text embedding space and Gaussian latent space. We first optimize the endpoint text embeddings and then map the images to the latent space using a probability flow ODE. Unlike existing work that takes an indirect morphing path, we show that the model adaptation yields a direct path and suppresses ghosting artifacts in the interpolated images. To achieve this, we propose a heuristic bottleneck constraint based on a novel relative perceptual path diversity score that automatically controls the bottleneck size and balances the diversity along the path with its directness. We also propose a perceptually-uniform sampling technique that enables visually smooth changes between the interpolated images. Extensive experiments validate that our IMPUS can achieve smooth, direct, and realistic image morphing and is adaptable to several other generative tasks.",
+    "authors": [
+        "Zhaoyuan Yang",
+        "Zhengyang Yu",
+        "Zhiwei Xu",
+        "Jaskirat Singh",
+        "Jing Zhang",
+        "Dylan Campbell",
+        "Peter Tu",
+        "Richard Hartley"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a heuristic bottleneck constraint based on a novel relative perceptual path diversity score that automatically controls the bottleneck size and balances the diversity along the path with its directness and proposes a perceptually-uniform sampling technique that enables visually smooth changes between the interpolated images."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

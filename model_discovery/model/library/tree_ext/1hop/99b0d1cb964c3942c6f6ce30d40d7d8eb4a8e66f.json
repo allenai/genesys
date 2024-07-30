@@ -1,0 +1,38 @@
+{
+    "acronym": "99b0d1cb964c3942c6f6ce30d40d7d8eb4a8e66f",
+    "title": "Mirror: A Universal Framework for Various Information Extraction Tasks",
+    "seed_ids": [
+        "bert",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "6ff68b34a5f78bdd14437fe5a79aebbc42c26467",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28"
+    ],
+    "s2id": "99b0d1cb964c3942c6f6ce30d40d7d8eb4a8e66f",
+    "abstract": "Sharing knowledge between information extraction tasks has always been a challenge due to the diverse data formats and task variations. Meanwhile, this divergence leads to information waste and increases difficulties in building complex applications in real scenarios. Recent studies often formulate IE tasks as a triplet extraction problem. However, such a paradigm does not support multi-span and n-ary extraction, leading to weak versatility. To this end, we reorganize IE problems into unified multi-slot tuples and propose a universal framework for various IE tasks, namely Mirror. Specifically, we recast existing IE tasks as a multi-span cyclic graph extraction problem and devise a non-autoregressive graph decoding algorithm to extract all spans in a single step. It is worth noting that this graph structure is incredibly versatile, and it supports not only complex IE tasks, but also machine reading comprehension and classification tasks. We manually construct a corpus containing 57 datasets for model pretraining, and conduct experiments on 30 datasets across 8 downstream tasks. The experimental results demonstrate that our model has decent compatibility and outperforms or reaches competitive performance with SOTA systems under few-shot and zero-shot settings. The code, model weights, and pretraining corpus are available at https://github.com/Spico197/Mirror .",
+    "authors": [
+        "Tong Zhu",
+        "Junfei Ren",
+        "Zijian Yu",
+        "Mengsong Wu",
+        "Guoliang Zhang",
+        "Xiaoye Qu",
+        "Wenliang Chen",
+        "Zhefeng Wang",
+        "Baoxing Huai",
+        "Min Zhang"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work recast existing IE tasks as a multi-span cyclic graph extraction problem and devise a non-autoregressive graph decoding algorithm to extract all spans in a single step, which has decent compatibility and outperforms or reaches competitive performance with SOTA systems under few-shot and zero-shot settings."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

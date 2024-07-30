@@ -1,0 +1,26 @@
+{
+    "acronym": "4d57313131e1f2d769e32f4d3f945e6c4d92ccd3",
+    "title": "Feature Differentiation Reconstruction Network for Weakly-Supervised Video Anomaly Detection",
+    "seed_ids": [
+        "metaformer"
+    ],
+    "s2id": "4d57313131e1f2d769e32f4d3f945e6c4d92ccd3",
+    "abstract": "Recent research into video anomaly detection under weakly supervised settings has made significant progress in identifying anomalies with only coarse-grained annotations. Mainstream weakly supervised methods improve detection performance by generating high-quality pseudo labels for video segments. However, these pseudo-label-based methods have been ordinarily hindered by manually-set constraint rules as the bottleneck. In this paper, we propose the Feature Differentiation Reconstruction Network (FDR-Net), which no longer relies on pseudo labels and instead uses a differential reconstruction strategy to improve the discriminability of the representation. Concretely, video features are first randomly masked out and then reconstructed with distinct targets for normal and abnormal videos during the differential reconstruction process. Besides, we also introduce a dense transformer-based encoder to refine spatial-temporal relationships among video segments. Comprehensive experiments on ShanghaiTech demonstrate the superior performance of our model.",
+    "authors": [
+        "Yiling Gong",
+        "Sihui Luo",
+        "Chong Wang",
+        "Yujie Zheng"
+    ],
+    "venue": "IEEE Signal Processing Letters",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes the Feature Differentiation Reconstruction Network (FDR-Net), which no longer relies on pseudo labels and instead uses a differential reconstruction strategy to improve the discriminability of the representation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

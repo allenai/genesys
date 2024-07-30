@@ -1,0 +1,28 @@
+{
+    "acronym": "5a3749929bf5fb8b1f98a7b2a43c3b957bcf6c88",
+    "title": "Efficient Training of BERT by Progressively Stacking",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "5a3749929bf5fb8b1f98a7b2a43c3b957bcf6c88",
+    "abstract": "Unsupervised pre-training is commonly used in natural language processing: a deep neural network trained with proper unsupervised prediction tasks are shown to be effective in many down-stream tasks. Because it is easy to create a large monolingual dataset by collecting data from the Web, we can train high-capacity models. Therefore, training ef\ufb01ciency becomes a critical issue even when using high-performance hardware. In this paper, we explore an ef\ufb01cient training method for the state-of-the-art bidirectional Transformer (BERT) model. By visualizing the self-attention distributions of different layers at different positions in a well-trained BERT model, we \ufb01nd that in most layers, the self-attention distribution will concentrate locally around its position and the start-of-sentence token. Motivated by this, we pro-pose the stacking algorithm to transfer knowledge from a shallow model to a deep model; then we apply stacking progressively to accelerate BERT training. Experiments showed that the models trained by our training strategy achieve similar performance to models trained from scratch, but our algorithm is much faster.",
+    "authors": [
+        "Linyuan Gong",
+        "Di He",
+        "Zhuohan Li",
+        "Tao Qin",
+        "Liwei Wang",
+        "Tie-Yan Liu"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper explores an ef\ufb01cient training method for the state-of-the-art bidirectional Transformer (BERT) model and pro-poses the stacking algorithm to transfer knowledge from a shallow model to a deep model; then the algorithm is applied progressively to accelerate BERT training."
+    },
+    "citationCount": 125,
+    "influentialCitationCount": 16,
+    "code": null,
+    "description": null,
+    "url": null
+}

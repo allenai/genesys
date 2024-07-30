@@ -1,0 +1,32 @@
+{
+    "acronym": "8f48171bf05474449777d9bbf6766d480332e09f",
+    "title": "A Generalist Framework for Panoptic Segmentation of Images and Videos",
+    "seed_ids": [
+        "analogbits",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "3a906b77fa218adc171fecb28bb81c24c14dcc7b",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "8f48171bf05474449777d9bbf6766d480332e09f",
+    "abstract": "Panoptic segmentation assigns semantic and instance ID labels to every pixel of an image. As permutations of instance IDs are also valid solutions, the task requires learning of high-dimensional one-to-many mapping. As a result, state-of-the-art approaches use customized architectures and task-specific loss functions. We formulate panoptic segmentation as a discrete data generation problem, without relying on inductive bias of the task. A diffusion model is proposed to model panoptic masks, with a simple architecture and generic loss function. By simply adding past predictions as a conditioning signal, our method is capable of modeling video (in a streaming setting) and thereby learns to track object instances automatically. With extensive experiments, we demonstrate that our simple approach can perform competitively to state-of-the-art specialist methods in similar settings. 1",
+    "authors": [
+        "Ting Chen",
+        "Lala Li",
+        "Saurabh Saxena",
+        "Geoffrey E. Hinton",
+        "David J. Fleet"
+    ],
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work forms panoptic segmentation as a discrete data generation problem, without relying on inductive bias of the task, and proposes a diffusion model to model panoptic masks, with a simple architecture and generic loss function."
+    },
+    "citationCount": 71,
+    "influentialCitationCount": 14,
+    "code": null,
+    "description": null,
+    "url": null
+}

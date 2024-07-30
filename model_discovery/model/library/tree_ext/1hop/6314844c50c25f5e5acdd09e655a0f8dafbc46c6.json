@@ -1,0 +1,28 @@
+{
+    "acronym": "6314844c50c25f5e5acdd09e655a0f8dafbc46c6",
+    "title": "Multi-modal Video Chapter Generation",
+    "seed_ids": [
+        "bigbird",
+        "914a4686c365c1f24935abcd8de9d117450e0b43",
+        "145b8b5d99a2beba6029418ca043585b90138d12"
+    ],
+    "s2id": "6314844c50c25f5e5acdd09e655a0f8dafbc46c6",
+    "abstract": "Chapter generation becomes practical technique for online videos nowadays. The chapter breakpoints enable users to quickly find the parts they want and get the summative annotations. However, there is no public method and dataset for this task. To facilitate the research along this direction, we introduce a new dataset called ChapterGen, which consists of approximately 10 k user-generated videos with annotated chapter information. Our data collection procedure is fast, scalable and does not require any additional manual annotation. On top of this dataset, we design a effective baseline specificlly for video chapters generation task. which captures two aspects of a video,including visual dynamics and narration text. It disentangles local and global video features f or localization and title generation respectively. To parse the long video efficiently,a skip sliding window mechanism is designed to localize potential chapters. And a cross attention multi-modal fusion module is developed to aggregate local features for title generation. Our experiments demonstrate that the proposed framework achieves superior results over existing methods which illustrate that the method design for similar task cannot be transfered directly even after fine-tuning. Code and dataset are available at https://github.com/czt117/MVCG.",
+    "authors": [
+        "Xiao Cao",
+        "Zitan Chen",
+        "Canyu Le",
+        "Lei Meng"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new dataset called ChapterGen is introduced, which consists of approximately 10 k user-generated videos with annotated chapter information, which is fast, scalable and does not require any additional manual annotation for data collection."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

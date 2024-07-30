@@ -1,0 +1,35 @@
+{
+    "acronym": "1c7db9fb18246787fbe3de6e0eaa370ae749e795",
+    "title": "Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference",
+    "seed_ids": [
+        "streamingllm",
+        "compressivetransformer",
+        "flashattn",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "4e3935ef7da6bcbb202ec7f8b285c313cadcd044",
+        "9dc624d7258d1a56117ca720aea953ce46b66b21",
+        "f51497f463566581874c941353dd9d80069c5b77"
+    ],
+    "s2id": "1c7db9fb18246787fbe3de6e0eaa370ae749e795",
+    "abstract": "As the demand for long-context large language models (LLMs) increases, models with context windows of up to 128K or 1M tokens are becoming increasingly prevalent. However, long-context LLM inference is challenging since the inference speed decreases significantly as the sequence length grows. This slowdown is primarily caused by loading a large KV cache during self-attention. Previous works have shown that a small portion of critical tokens will dominate the attention outcomes. However, we observe the criticality of a token highly depends on the query. To this end, we propose Quest, a query-aware KV cache selection algorithm. Quest keeps track of the minimal and maximal Key values in KV cache pages and estimates the criticality of a given page using Query vectors. By only loading the Top-K critical KV cache pages for attention, Quest significantly speeds up self-attention without sacrificing accuracy. We show that Quest can achieve up to 2.23x self-attention speedup, which reduces inference latency by 7.03x while performing well on tasks with long dependencies with negligible accuracy loss. Code is available at http://github.com/mit-han-lab/Quest .",
+    "authors": [
+        "Jiaming Tang",
+        "Yilong Zhao",
+        "Kan Zhu",
+        "Guangxuan Xiao",
+        "Baris Kasikci",
+        "Song Han"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes Quest, a query-aware KV cache selection algorithm that can achieve up to 2.23x self-attention speedup, which reduces inference latency by 7.03x while performing well on tasks with long dependencies with negligible accuracy loss."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

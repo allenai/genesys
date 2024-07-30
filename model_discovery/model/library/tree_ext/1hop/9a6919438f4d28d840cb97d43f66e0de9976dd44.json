@@ -1,0 +1,33 @@
+{
+    "acronym": "9a6919438f4d28d840cb97d43f66e0de9976dd44",
+    "title": "X-Eval: Generalizable Multi-aspect Text Evaluation via Augmented Instruction Tuning with Auxiliary Evaluation Aspects",
+    "seed_ids": [
+        "bert",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "ba2a423d8c7ae6cfa3424fb13bdbe3a35e5f2273",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "9a6919438f4d28d840cb97d43f66e0de9976dd44",
+    "abstract": "Natural Language Generation (NLG) typically involves evaluating the generated text in various aspects (e.g., consistency and naturalness) to obtain a comprehensive assessment. However, multi-aspect evaluation remains challenging as it may require the evaluator to generalize to any given evaluation aspect even if it\u2019s absent during training. In this paper, we introduce X-Eval, a two-stage instruction tuning framework to evaluate text in both seen and unseen aspects customized by end users. X-Eval consists of two learning stages: the vanilla instruction tuning stage that improves the model\u2019s ability to follow evaluation instructions, and an enhanced instruction tuning stage that exploits the connections between fine-grained evaluation aspects to better assess text quality. To support the training of X-Eval, we collect AspectInstruct, the first instruction tuning dataset tailored for multi-aspect NLG evaluation spanning 27 diverse evaluation aspects with 65 tasks. To enhance task diversity, we devise an augmentation strategy that converts human rating annotations into diverse forms of NLG evaluation tasks, including scoring, comparison, ranking, and Boolean question answering. Extensive experiments across three essential categories of NLG tasks: dialogue generation, summarization, and data-to-text coupled with 21 aspects in meta-evaluation, demonstrate that X-Eval enables even a lightweight language model to achieve a comparable if not higher correlation with human judgments compared to the state-of-the-art NLG evaluators like GPT-4.",
+    "authors": [
+        "Minqian Liu",
+        "Ying Shen",
+        "Zhiyang Xu",
+        "Yixin Cao",
+        "Eunah Cho",
+        "Vaibhav Kumar",
+        "Reza Ghanadan",
+        "Lifu Huang"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "X-Eval is introduced, a two-stage instruction tuning framework to evaluate text in both seen and unseen aspects customized by end users that enables even a lightweight language model to achieve a comparable if not higher correlation with human judgments compared to the state-of-the-art NLG evaluators like GPT-4."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

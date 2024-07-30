@@ -1,0 +1,53 @@
+{
+    "acronym": "9e16d8cc6096ec0d2733a4ecf41ce09d9a4bd19c",
+    "title": "Scaling Data-Constrained Language Models",
+    "seed_ids": [
+        "gpt2",
+        "1a849f298dcd49fe99ebca6749c0564585aa3018",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "1bf21dabbdfc81fd4f9e92b1201ecce744cabb6a",
+        "34c2939d3147946b2ac218e7857e1bc4c8902679",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "bb15f3727f827a3cb88b5d3ca48415c09b40a88f",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "914254fac74a2da051cccf6ca16afcaad416a079",
+        "6edccbd83a9aae204785d4821f97855677c33866",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "b21670e8061a06ab97e7d6052c9345a326e84ff8",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "fd1b829261ba04bb92e0ab60c4f6e7cea0d99fbf",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28"
+    ],
+    "s2id": "9e16d8cc6096ec0d2733a4ecf41ce09d9a4bd19c",
+    "abstract": "The current trend of scaling language models involves increasing both parameter count and training dataset size. Extrapolating this trend suggests that training dataset size may soon be limited by the amount of text data available on the internet. Motivated by this limit, we investigate scaling language models in data-constrained regimes. Specifically, we run a large set of experiments varying the extent of data repetition and compute budget, ranging up to 900 billion training tokens and 9 billion parameter models. We find that with constrained data for a fixed compute budget, training with up to 4 epochs of repeated data yields negligible changes to loss compared to having unique data. However, with more repetition, the value of adding compute eventually decays to zero. We propose and empirically validate a scaling law for compute optimality that accounts for the decreasing value of repeated tokens and excess parameters. Finally, we experiment with approaches mitigating data scarcity, including augmenting the training dataset with code data or removing commonly used filters. Models and datasets from our 400 training runs are freely available at https://github.com/huggingface/datablations.",
+    "authors": [
+        "Niklas Muennighoff",
+        "Alexander M. Rush",
+        "B. Barak",
+        "Teven Le Scao",
+        "Aleksandra Piktus",
+        "Nouamane Tazi",
+        "Sampo Pyysalo",
+        "Thomas Wolf",
+        "Colin Raffel"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes and empirically validate a scaling law for compute optimality that accounts for the decreasing value of repeated tokens and excess parameters and experiment with approaches mitigating data scarcity, including augmenting the training dataset with code data or removing commonly used filters."
+    },
+    "citationCount": 95,
+    "influentialCitationCount": 9,
+    "code": null,
+    "description": null,
+    "url": null
+}

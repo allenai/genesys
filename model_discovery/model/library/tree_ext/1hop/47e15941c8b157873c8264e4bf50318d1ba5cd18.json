@@ -1,0 +1,30 @@
+{
+    "acronym": "47e15941c8b157873c8264e4bf50318d1ba5cd18",
+    "title": "Natural Language to Code Translation with Execution",
+    "seed_ids": [
+        "gpt2",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "47e15941c8b157873c8264e4bf50318d1ba5cd18",
+    "abstract": "Generative models of code, pretrained on large corpora of programs, have shown great success in translating natural language to code (Chen et al., 2021; Austin et al., 2021; Li et al., 2022, inter alia). While these models do not explicitly incorporate program semantics (i.e., execution results) during training, they are able to generate correct solutions for many problems. However, choosing a single correct program from a generated set for each problem remains challenging. In this work, we introduce execution result\u2013based minimum Bayes risk decoding (MBR-EXEC) for program selection and show that it improves the few-shot performance of pretrained code models on natural-language-to-code tasks. We select output programs from a generated candidate set by marginalizing over program implementations that share the same semantics. Because exact equivalence is intractable, we execute each program on a small number of test inputs to approximate semantic equivalence. Across datasets, execution or simulated execution significantly outperforms the methods that do not involve program semantics. We find that MBR-EXEC consistently improves over all execution-unaware selection methods, suggesting it as an effective approach for natural language to code translation.",
+    "authors": [
+        "Freda Shi",
+        "Daniel Fried",
+        "Marjan Ghazvininejad",
+        "Luke Zettlemoyer",
+        "Sida I. Wang"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces execution result\u2013based minimum Bayes risk decoding (MBR-EXEC) for program selection and finds that it consistently improves over all execution-unaware selection methods, suggesting it as an effective approach for natural language to code translation."
+    },
+    "citationCount": 89,
+    "influentialCitationCount": 12,
+    "code": null,
+    "description": null,
+    "url": null
+}

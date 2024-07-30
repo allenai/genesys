@@ -1,0 +1,29 @@
+{
+    "acronym": "0ccc2b26197cfd93f740b71837cf1925e280c4fc",
+    "title": "Learning with SASQuaTCh: a Novel Variational Quantum Transformer Architecture with Kernel-Based Self-Attention",
+    "seed_ids": [
+        "transformer",
+        "e5d4f61545d026e54084bcb1ed1e3df92c7bc7b7",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "5b1bb67f700b676ac44a32ec87aeb9ff018da55f"
+    ],
+    "s2id": "0ccc2b26197cfd93f740b71837cf1925e280c4fc",
+    "abstract": "The widely popular transformer network popularized by the generative pre-trained transformer (GPT) has a large field of applicability, including predicting text and images, classification, and even predicting solutions to the dynamics of physical systems. In the latter context, the continuous analog of the self-attention mechanism at the heart of transformer networks has been applied to learning the solutions of partial differential equations and reveals a convolution kernel nature that can be exploited by the Fourier transform. It is well known that many quantum algorithms that have provably demonstrated a speedup over classical algorithms utilize the quantum Fourier transform. In this work, we explore quantum circuits that can efficiently express a self-attention mechanism through the perspective of kernel-based operator learning. In this perspective, we are able to represent deep layers of a vision transformer network using simple gate operations and a set of multi-dimensional quantum Fourier transforms. We analyze the computational and parameter complexity of our novel variational quantum circuit, which we call Self-Attention Sequential Quantum Transformer Channel (SASQuaTCh), and demonstrate its utility on simplified classification problems.",
+    "authors": [
+        "Ethan N. Evans",
+        "Matthew G. Cook",
+        "Zachary P. Bradshaw",
+        "Margarite L. LaBorde"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work explores quantum circuits that can efficiently express a self-attention mechanism through the perspective of kernel-based operator learning and develops a novel variational quantum circuit, which is called Self-Attention Sequential Quantum Transformer Channel (SASQuaTCh), and demonstrates its utility on simplified classification problems."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

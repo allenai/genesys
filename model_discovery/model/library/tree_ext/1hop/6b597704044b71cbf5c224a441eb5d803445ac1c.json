@@ -1,0 +1,36 @@
+{
+    "acronym": "6b597704044b71cbf5c224a441eb5d803445ac1c",
+    "title": "Rotary Position Embedding for Vision Transformer",
+    "seed_ids": [
+        "transformer",
+        "bert",
+        "roformer",
+        "5351614e845a70c7df0582fc306336b56dd51f25",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "4cf65e4f358c45476790df1f0ced0fc90c2a405b",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "a9c214e846188adb645021cd7b1964b8ea1fef6f",
+        "7509c66a666e2e3f14bc8676b969b945ee6e136f",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "6b597704044b71cbf5c224a441eb5d803445ac1c",
+    "abstract": "Rotary Position Embedding (RoPE) performs remarkably on language models, especially for length extrapolation of Transformers. However, the impacts of RoPE on computer vision domains have been underexplored, even though RoPE appears capable of enhancing Vision Transformer (ViT) performance in a way similar to the language domain. This study provides a comprehensive analysis of RoPE when applied to ViTs, utilizing practical implementations of RoPE for 2D vision data. The analysis reveals that RoPE demonstrates impressive extrapolation performance, i.e., maintaining precision while increasing image resolution at inference. It eventually leads to performance improvement for ImageNet-1k, COCO detection, and ADE-20k segmentation. We believe this study provides thorough guidelines to apply RoPE into ViT, promising improved backbone performance with minimal extra computational overhead. Our code and pre-trained models are available at https://github.com/naver-ai/rope-vit",
+    "authors": [
+        "Byeongho Heo",
+        "Song Park",
+        "Dongyoon Han",
+        "Sangdoo Yun"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study provides a comprehensive analysis of RoPE when applied to ViTs, utilizing practical implementations of RoPE for 2D vision data and reveals that RoPE demonstrates impressive extrapolation performance, i.e., maintaining precision while increasing image resolution at inference."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,36 @@
+{
+    "acronym": "a8e6a8480543efdfd5189a19c6c54a40d2cc6efe",
+    "title": "BOOT: Data-free Distillation of Denoising Diffusion Models with Bootstrapping",
+    "seed_ids": [
+        "classfreediffu",
+        "4c26a1c6e573c772e1634b1747d7e9a3b33dce52",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "a8e6a8480543efdfd5189a19c6c54a40d2cc6efe",
+    "abstract": "Diffusion models have demonstrated excellent potential for generating diverse images. However, their performance often suffers from slow generation due to iterative denoising. Knowledge distillation has been recently proposed as a remedy that can reduce the number of inference steps to one or a few without significant quality degradation. However, existing distillation methods either require significant amounts of offline computation for generating synthetic training data from the teacher model or need to perform expensive online learning with the help of real data. In this work, we present a novel technique called BOOT, that overcomes these limitations with an efficient data-free distillation algorithm. The core idea is to learn a time-conditioned model that predicts the output of a pre-trained diffusion model teacher given any time step. Such a model can be efficiently trained based on bootstrapping from two consecutive sampled steps. Furthermore, our method can be easily adapted to large-scale text-to-image diffusion models, which are challenging for conventional methods given the fact that the training sets are often large and difficult to access. We demonstrate the effectiveness of our approach on several benchmark datasets in the DDIM setting, achieving comparable generation quality while being orders of magnitude faster than the diffusion teacher. The text-to-image results show that the proposed approach is able to handle highly complex distributions, shedding light on more efficient generative modeling.",
+    "authors": [
+        "Jiatao Gu",
+        "Shuangfei Zhai",
+        "Yizhe Zhang",
+        "Lingjie Liu",
+        "J. Susskind"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The core idea is to learn a time-conditioned model that predicts the output of a pre-trained diffusion model teacher given any time step, which can be efficiently trained based on bootstrapping from two consecutive sampled steps."
+    },
+    "citationCount": 34,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

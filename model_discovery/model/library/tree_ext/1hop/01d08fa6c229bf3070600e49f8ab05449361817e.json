@@ -1,0 +1,43 @@
+{
+    "acronym": "01d08fa6c229bf3070600e49f8ab05449361817e",
+    "title": "Long-range Sequence Modeling with Predictable Sparse Attention",
+    "seed_ids": [
+        "luna",
+        "nystromformer",
+        "performer",
+        "linformer",
+        "longformer",
+        "sinkhorn",
+        "fnet",
+        "af679d69fcc1d0fcf0f039aba937853bcb50a8de",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "0b991a1a5bcdb13646ac0b6873d09bde4cc36fb5",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "f51497f463566581874c941353dd9d80069c5b77"
+    ],
+    "s2id": "01d08fa6c229bf3070600e49f8ab05449361817e",
+    "abstract": "Self-attention mechanism has been shown to be an effective approach for capturing global context dependencies in sequence modeling, but it suffers from quadratic complexity in time and memory usage. Due to the sparsity of the attention matrix, much computation is redundant. Therefore, in this paper, we design an efficient Transformer architecture, named Fourier Sparse Attention for Transformer (FSAT), for fast long-range sequence modeling. We provide a brand-new perspective for constructing sparse attention matrix, i.e. making the sparse attention matrix predictable. Two core sub-modules are: (1) A fast Fourier transform based hidden state cross module, which captures and pools L^2 semantic combinations in \\mathcal{O}(L\\log L) time complexity. (2) A sparse attention matrix estimation module, which predicts dominant elements of an attention matrix based on the output of the previous hidden state cross module. By reparameterization and gradient truncation, FSAT successfully learned the index of dominant elements. The overall complexity about the sequence length is reduced from \\mathcal{O}(L^2) to \\mathcal{O}(L\\log L). Extensive experiments (natural language, vision, and math) show that FSAT remarkably outperforms the standard multi-head attention and its variants in various long-sequence tasks with low computational costs, and achieves new state-of-the-art results on the Long Range Arena benchmark.",
+    "authors": [
+        "Yimeng Zhuang",
+        "Jing Zhang",
+        "Mei Tu"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An efficient Transformer architecture, named Fourier Sparse Attention for Transformer (FSAT), for fast long-range sequence modeling, which remarkably outperforms the standard multi-head attention and its variants in various long-sequence tasks with low computational costs, and achieves new state-of-the-art results on the Long Range Arena benchmark."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

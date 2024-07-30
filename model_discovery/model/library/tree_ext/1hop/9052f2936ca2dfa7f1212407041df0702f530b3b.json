@@ -1,0 +1,39 @@
+{
+    "acronym": "9052f2936ca2dfa7f1212407041df0702f530b3b",
+    "title": "DSAP: Dynamic Sparse Attention Perception Matcher for Accurate Local Feature Matching",
+    "seed_ids": [
+        "lineartransformer",
+        "a6159daf277e73ca511da98a0d05432f6bab0de7",
+        "0d5c74ce06a32078cd1ad6ee518af088c7dd54e9",
+        "221e3f9f9c6e68eb68dd7084ef8e1e692869da85",
+        "9ede78aa6a5471b2bbf07987ed62232df7446f4e",
+        "0d9b8ccb1135b8e380dd8015b080158c6aae3ae5",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "6954a6bb9d6f3e365b26b694c963ae1d62a03444"
+    ],
+    "s2id": "9052f2936ca2dfa7f1212407041df0702f530b3b",
+    "abstract": "Local feature matching, which aims to establish the matches between image pairs, is a pivotal component of multiple visual applications. While current transformer-based works exhibit remarkable performance, they mechanically alternate self- and cross-attention in a predetermined order without considering their prioritization, culminating in inadequate enhancement of visual descriptors. Moreover, when calculating attention matrices to integrate global context, current methods only explicitly model the correlation among the feature channels without taking their importance into account, leaving insufficient message propagation. In this work, we develop a dynamic sparse attention perception (DSAP) matcher to tackle the aforementioned issues. To resolve the first issue, DSAP presents a dynamic perception strategy (DPS) that enables the network to dynamically implement feature enhancement via modifying both forward and backward propagation. During forward propagation, DPS assigns a learnable perception score to each transformer layer and employs an exponential moving average algorithm (EMA) to calculate the current score. After that, DPS utilizes an indicator function to binarize the score, allowing DSAP to adaptively determine the appropriate utilization of self- or cross-attention at the current iteration. During backward propagation, DPS employs a gradient estimator that adjusts the gradient of perception scores, thus rendering them differentiable. To tackle the second issue, DSAP introduces a weighted sparse transformer (WSFormer) that recalibrates attention matrices by concurrently considering both channel importance and channel correlation. WSFormer predicts attention vectors to weight attention matrices while constructing multiple sparse attention matrices to integrate various global messages, thus highlighting informative channels and inhibiting redundant message propagation. Extensive experiments in public datasets and real environments demonstrate that DSAP achieves exceptional performances across various downstream tasks, including relative pose estimation and visual localization. The code is available at https://github.com/mooncake199809/DSAP.",
+    "authors": [
+        "Kun Dai",
+        "Ke Wang",
+        "Tao Xie",
+        "Tao Sun",
+        "Jinhang Zhang",
+        "Qingjia Kong",
+        "Zhiqiang Jiang",
+        "Ruifeng Li",
+        "Lijun Zhao",
+        "Mohamed Omar"
+    ],
+    "venue": "IEEE Transactions on Instrumentation and Measurement",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A dynamic sparse attention perception (DSAP) matcher that enables the network to dynamically implement feature enhancement via modifying both forward and backward propagation and introduces a weighted sparse transformer (WSFormer) that recalibrates attention matrices by concurrently considering both channel importance and channel correlation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

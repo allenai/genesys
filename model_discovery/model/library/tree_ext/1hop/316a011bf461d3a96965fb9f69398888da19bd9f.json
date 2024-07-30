@@ -1,0 +1,31 @@
+{
+    "acronym": "316a011bf461d3a96965fb9f69398888da19bd9f",
+    "title": "SynerGPT: In-Context Learning for Personalized Drug Synergy Prediction and Drug Design",
+    "seed_ids": [
+        "gpt2",
+        "2029349c55c1dba3493c5b3bd25152f18ba21ae2",
+        "525d93a382f6e7873b5d8a2e0713eb3dff7fb250",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "316a011bf461d3a96965fb9f69398888da19bd9f",
+    "abstract": "Predicting synergistic drug combinations can help accelerate discovery of cancer treatments, particularly therapies personalized to a patient\u2019s specific tumor via biopsied cells. In this paper, we propose a novel setting and models for in-context drug synergy learning. We are given a small \u201cpersonalized dataset\u201d of 10-20 drug synergy relationships in the context of specific cancer cell targets. Our goal is to predict additional drug synergy relationships in that context. Inspired by recent work that pre-trains a GPT language model (LM) to \u201cin-context learn\u201d common function classes, we devise novel pre-training schemes that enable a GPT model to in-context learn \u201cdrug synergy functions\u201d. Our model\u2014which does not use any textual corpora, molecular fingerprints, protein interaction or any other domain-specific knowledge\u2014 is able to achieve competitive results. We further integrate our in-context approach with a genetic algorithm to optimize model prompts and select synergy candidates to test after conducting a patient biopsy. Finally, we explore a novel task of inverse drug design which can potentially enable the design of drugs that synergize specifically to target a given patient\u2019s \u201cpersonalized dataset\u201d. Our findings can potentially have an important impact on precision cancer medicine, and also raise intriguing questions on non-textual pre-training for LMs.",
+    "authors": [
+        "Carl N. Edwards",
+        "Aakanksha Naik",
+        "Tushar Khot",
+        "Martin Burke",
+        "Heng Ji",
+        "Tom Hope"
+    ],
+    "venue": "bioRxiv",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel setting and models for in-context drug synergy learning are proposed, inspired by recent work that pre-trains a GPT language model (LM) to \u201cin-context learn\u201d common function classes, and novel pre-training schemes that enable a G PT model to in- context learn \u201cdrug synergy functions\u201d are devised."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

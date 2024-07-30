@@ -1,0 +1,30 @@
+{
+    "acronym": "4315bed6770d331ec36bfc76254f54ac34d7005c",
+    "title": "Split Time Series into Patches: Rethinking Long-term Series Forecasting with Dateformer",
+    "seed_ids": [
+        "reformer",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "30dcc0e191a376fea0e7a46f94c53872c029efc9"
+    ],
+    "s2id": "4315bed6770d331ec36bfc76254f54ac34d7005c",
+    "abstract": "Time is one of the most signi\ufb01cant characteristics of time-series, yet has received insuf\ufb01cient attention. Prior time-series forecasting research has mainly focused on mapping a past sub series (lookback window) to a future series (forecast window), and time of series often just play an auxiliary role even completely ignored in most cases. Due to the point-wise processing within these windows, extrapolating series to longer-term future is tough in the pattern. To overcome this barrier, we propose a brand-new time-series forecasting framework named Dateformer who turns attention to modeling time instead of following the above practice. Speci\ufb01cally, time-series are \ufb01rst split into patches by day to supervise the learning of dynamic date-representations with D ate E ncoder R epresentations from T ransformers ( DERT ). These representations are then fed into a simple decoder to produce a coarser (or global) prediction, and used to help the model seek valuable information from the lookback window to learn a re\ufb01ned (or local) prediction. Dateformer obtains the \ufb01nal result by summing the above two parts. Our empirical studies on seven benchmarks show that the time-modeling method is more ef\ufb01cient for long-term series forecasting compared with sequence-modeling methods. Dateformer yields state-of-the-art accuracy with a 40% remarkable relative improvement, and broadens the maximum credible forecasting range to a half-yearly level.",
+    "authors": [
+        "Julong Young",
+        "Huiqiang Wang",
+        "Junhui Chen",
+        "Feihu Huang",
+        "Jian Peng"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A brand-new time-series forecasting framework named Dateformer who turns attention to modeling time instead of following sequence-modeling methods, and yields state-of-the-art accuracy with a 40% remarkable relative improvement, and broadens the maximum credible forecasting range to a half-yearly level."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

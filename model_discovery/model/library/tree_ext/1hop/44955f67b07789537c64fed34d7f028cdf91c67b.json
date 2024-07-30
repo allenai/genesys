@@ -1,0 +1,34 @@
+{
+    "acronym": "44955f67b07789537c64fed34d7f028cdf91c67b",
+    "title": "VoiceShop: A Unified Speech-to-Speech Framework for Identity-Preserving Zero-Shot Voice Editing",
+    "seed_ids": [
+        "transformer",
+        "33de773be1733347a01cb07a5bb1b6cdfa956a47",
+        "42e726e2ea5bbb946001947d1a5b31ccc6b7aef9",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812"
+    ],
+    "s2id": "44955f67b07789537c64fed34d7f028cdf91c67b",
+    "abstract": "We present VoiceShop, a novel speech-to-speech framework that can modify multiple attributes of speech, such as age, gender, accent, and speech style, in a single forward pass while preserving the input speaker's timbre. Previous works have been constrained to specialized models that can only edit these attributes individually and suffer from the following pitfalls: the magnitude of the conversion effect is weak, there is no zero-shot capability for out-of-distribution speakers, or the synthesized outputs exhibit undesirable timbre leakage. Our work proposes solutions for each of these issues in a simple modular framework based on a conditional diffusion backbone model with optional normalizing flow-based and sequence-to-sequence speaker attribute-editing modules, whose components can be combined or removed during inference to meet a wide array of tasks without additional model finetuning. Audio samples are available at \\url{https://voiceshopai.github.io}.",
+    "authors": [
+        "Philip Anastassiou",
+        "Zhenyu Tang",
+        "Kainan Peng",
+        "Dongya Jia",
+        "Jiaxin Li",
+        "Ming Tu",
+        "Yuping Wang",
+        "Yuxuan Wang",
+        "Mingbo Ma"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

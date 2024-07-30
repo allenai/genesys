@@ -1,0 +1,30 @@
+{
+    "acronym": "fcdcd4b0c5e6c4726e31576e83fc4554bc09e59f",
+    "title": "HalluciBot: Is There No Such Thing as a Bad Question?",
+    "seed_ids": [
+        "bert",
+        "f1e56def812bc398d1b2b8c9a7ea6a623abd38e5",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "92173d081b15824d22a9ef070e118744ceee8052",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "d9f6ada77448664b71128bb19df15765336974a6"
+    ],
+    "s2id": "fcdcd4b0c5e6c4726e31576e83fc4554bc09e59f",
+    "abstract": "Hallucination continues to be one of the most critical challenges in the institutional adoption journey of Large Language Models (LLMs). In this context, an overwhelming number of studies have focused on analyzing the post-generation phase - refining outputs via feedback, analyzing logit output values, or deriving clues via the outputs' artifacts. We propose HalluciBot, a model that predicts the probability of hallucination $\\textbf{before generation}$, for any query imposed to an LLM. In essence, HalluciBot does not invoke any generation during inference. To derive empirical evidence for HalluciBot, we employ a Multi-Agent Monte Carlo Simulation using a Query Perturbator to craft $n$ variations per query at train time. The construction of our Query Perturbator is motivated by our introduction of a new definition of hallucination - $\\textit{truthful hallucination}$. Our training methodology generated 2,219,022 estimates for a training corpus of 369,837 queries, spanning 13 diverse datasets and 3 question-answering scenarios. HalluciBot predicts both binary and multi-class probabilities of hallucination, enabling a means to judge the query's quality with regards to its propensity to hallucinate. Therefore, HalluciBot paves the way to revise or cancel a query before generation and the ensuing computational waste. Moreover, it provides a lucid means to measure user accountability for hallucinatory queries.",
+    "authors": [
+        "William Watson",
+        "Nicole Cho"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "HalluciBot is proposed, a model that predicts the probability of hallucination before generation for any query imposed to an LLM, enabling a means to judge the query's quality with regards to its propensity to hallucinate."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

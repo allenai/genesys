@@ -1,0 +1,27 @@
+{
+    "acronym": "caa187db8ac7fe6050c50265026c8cece2f337c4",
+    "title": "Semantically Corrected Amharic Automatic Speech Recognition",
+    "seed_ids": [
+        "transformer",
+        "6b47f13216b730ab1e46f77b2f92f6a8120b281f",
+        "0651e9cbe0b8c1b4465c80d2309af62e5e4da574",
+        "bf0e844f547eec1e161bc5374c0ab13e9d2aa321"
+    ],
+    "s2id": "caa187db8ac7fe6050c50265026c8cece2f337c4",
+    "abstract": "Automatic Speech Recognition (ASR) can play a crucial role in enhancing the accessibility of spoken languages worldwide. In this paper, we build a set of ASR tools for Amharic, a language spoken by more than 50 million people primarily in eastern Africa. Amharic is written in the Ge'ez script, a sequence of graphemes with spacings denoting word boundaries. This makes computational processing of Amharic challenging since the location of spacings can significantly impact the meaning of formed sentences. We find that existing benchmarks for Amharic ASR do not account for these spacings and only measure individual grapheme error rates, leading to significantly inflated measurements of in-the-wild performance. In this paper, we first release corrected transcriptions of existing Amharic ASR test datasets, enabling the community to accurately evaluate progress. Furthermore, we introduce a post-processing approach using a transformer encoder-decoder architecture to organize raw ASR outputs into a grammatically complete and semantically meaningful Amharic sentence. Through experiments on the corrected test dataset, our model enhances the semantic correctness of Amharic speech recognition systems, achieving a Character Error Rate (CER) of 5.5\\% and a Word Error Rate (WER) of 23.3\\%.",
+    "authors": [
+        "Samuael Adnew",
+        "Paul Pu Liang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A post-processing approach using a transformer encoder-decoder architecture to organize raw ASR outputs into a grammatically complete and semantically meaningful Amharic sentence is introduced, enhancing the semantic correctness of Amharic speech recognition systems."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

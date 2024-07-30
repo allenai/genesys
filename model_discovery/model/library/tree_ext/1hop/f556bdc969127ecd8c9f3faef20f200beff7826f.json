@@ -1,0 +1,24 @@
+{
+    "acronym": "f556bdc969127ecd8c9f3faef20f200beff7826f",
+    "title": "A Light Transformer For Speech-To-Intent Applications",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "f556bdc969127ecd8c9f3faef20f200beff7826f",
+    "abstract": "Spoken language understanding (SLU) systems can make life more agreeable, safer (e.g. in a car) or can increase the independence of physically challenged users. However, due to the many sources of variation in speech, a well-trained system is hard to transfer to other conditions like a different language or to speech impaired users. A remedy is to design a user-taught SLU system that can learn fully from scratch from users\u2019 demonstrations, which in turn requires that the system\u2019s model quickly converges after only a few training samples. In this paper, we propose a light transformer structure by using a simplified relative position encoding with the goal to reduce the model size and improve efficiency. The light transformer works as an alternative speech encoder for an existing user-taught multitask SLU system. Experimental results on three datasets with challenging speech conditions prove our approach outperforms the existed system and other state-of-art models with half of the original model size and training time.",
+    "authors": [
+        "Pu Wang",
+        "H. V. hamme"
+    ],
+    "venue": "Spoken Language Technology Workshop",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Results prove the proposed light transformer works as an alternative speech encoder for an existing user-taught multitask SLU system and outperforms the existed system and other state-of-art models with half of the original model size and training time."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

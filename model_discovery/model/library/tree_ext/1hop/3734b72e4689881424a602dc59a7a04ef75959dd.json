@@ -1,0 +1,32 @@
+{
+    "acronym": "3734b72e4689881424a602dc59a7a04ef75959dd",
+    "title": "Region Attention Transformer for Medical Image Restoration",
+    "seed_ids": [
+        "transformer",
+        "3074f2f3a7dbaec548e00d8c2f6522059cbe729c",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "3734b72e4689881424a602dc59a7a04ef75959dd",
+    "abstract": "Transformer-based methods have demonstrated impressive results in medical image restoration, attributed to the multi-head self-attention (MSA) mechanism in the spatial dimension. However, the majority of existing Transformers conduct attention within fixed and coarsely partitioned regions (\\text{e.g.} the entire image or fixed patches), resulting in interference from irrelevant regions and fragmentation of continuous image content. To overcome these challenges, we introduce a novel Region Attention Transformer (RAT) that utilizes a region-based multi-head self-attention mechanism (R-MSA). The R-MSA dynamically partitions the input image into non-overlapping semantic regions using the robust Segment Anything Model (SAM) and then performs self-attention within these regions. This region partitioning is more flexible and interpretable, ensuring that only pixels from similar semantic regions complement each other, thereby eliminating interference from irrelevant regions. Moreover, we introduce a focal region loss to guide our model to adaptively focus on recovering high-difficulty regions. Extensive experiments demonstrate the effectiveness of RAT in various medical image restoration tasks, including PET image synthesis, CT image denoising, and pathological image super-resolution. Code is available at \\href{https://github.com/Yaziwel/Region-Attention-Transformer-for-Medical-Image-Restoration.git}{https://github.com/RAT}.",
+    "authors": [
+        "Zhiwen Yang",
+        "Haowei Chen",
+        "Ziniu Qian",
+        "Yang Zhou",
+        "Hui Zhang",
+        "Dan Zhao",
+        "Bingzheng Wei",
+        "Yan Xu"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel Region Attention Transformer (RAT) is introduced that utilizes a region-based multi-head self-attention mechanism (R-MSA) and dynamically partitions the input image into non-overlapping semantic regions using the robust Segment Anything Model (SAM)."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

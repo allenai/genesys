@@ -1,0 +1,31 @@
+{
+    "acronym": "decd8a292bbb313d68da151f3fb4a82943b99c4e",
+    "title": "A Cooperative Lightweight Translation Algorithm Combined with Sparse-ReLU",
+    "seed_ids": [
+        "rfa",
+        "lighdynconv",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "6f68e1bb253925d8431588555d3010419f322e04"
+    ],
+    "s2id": "decd8a292bbb313d68da151f3fb4a82943b99c4e",
+    "abstract": "In the field of natural language processing (NLP), machine translation algorithm based on Transformer is challenging to deploy on hardware due to a large number of parameters and low parametric sparsity of the network weights. Meanwhile, the accuracy of lightweight machine translation networks also needs to be improved. To solve this problem, we first design a new activation function, Sparse-ReLU, to improve the parametric sparsity of weights and feature maps, which facilitates hardware deployment. Secondly, we design a novel cooperative processing scheme with CNN and Transformer and use Sparse-ReLU to improve the accuracy of the translation algorithm. Experimental results show that our method, which combines Transformer and CNN with the Sparse-ReLU, achieves a 2.32% BLEU improvement in prediction accuracy and reduces the number of parameters of the model by 23%, and the sparsity of the inference model increases by more than 50%.",
+    "authors": [
+        "Xintao Xu",
+        "Yi Liu",
+        "Gang Chen",
+        "Junbin Ye",
+        "Zhigang Li",
+        "Huaxiang Lu"
+    ],
+    "venue": "Computational Intelligence and Neuroscience",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work designs a novel cooperative processing scheme with CNN and Transformer and uses Sparse-ReLU to improve the accuracy of the translation algorithm and reduces the number of parameters of the model and increases the sparsity of the inference model."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

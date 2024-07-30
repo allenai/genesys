@@ -1,0 +1,32 @@
+{
+    "acronym": "46b83fc7c83c2f399ad64b1904798afd03d9a3ab",
+    "title": "An Evaluation of Generative Pre-Training Model-based Therapy Chatbot for Caregivers",
+    "seed_ids": [
+        "transformerxl",
+        "3bcb17559ce96eb20fa79af8194f4af0380d194a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "7ef27f3ddc41ca27e1be9f7c224712cf06eb7d31",
+        "80f9f109d1564cb8f82aa440a5f6f3fbe220c9ef",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "46b83fc7c83c2f399ad64b1904798afd03d9a3ab",
+    "abstract": "With the advent of off-the-shelf intelligent home products and broader internet adoption, researchers increasingly explore smart computing applications that provide easier access to health and wellness resources. AI-based systems like chatbots have the potential to provide services that could provide mental health support. However, existing therapy chatbots are often retrieval-based, requiring users to respond with a constrained set of answers, which may not be appropriate given that such pre-determined inquiries may not reflect each patient\u2019s unique circumstances. Generative-based approaches, such as the OpenAI GPT models, could allow for more dynamic conversations in therapy chatbot contexts than previous approaches. To investigate the generative-based model\u2019s potential in therapy chatbot contexts, we built a chatbot using the GPT-2 model. We fine-tuned it with 306 therapy session transcripts between family caregivers of individuals with dementia and therapists conducting Problem Solving Therapy. We then evaluated the model\u2019s pre-trained and the fine-tuned model in terms of basic qualities using three meta-information measurements: the proportion of non-word outputs, the length of response, and sentiment components. Results showed that: (1) the fine-tuned model created more non-word outputs than the pre-trained model; (2) the fine-tuned model generated outputs whose length was more similar to that of the therapists compared to the pre-trained model; (3) both the pre-trained model and fine-tuned model were likely to generate more negative and fewer positive outputs than the therapists. We discuss potential reasons for the problem, the implications, and solutions for developing therapy chatbots and call for investigations of the AI-based system application.",
+    "authors": [
+        "Lu Wang",
+        "Munif Ishad Mujib",
+        "Jake Williams",
+        "G. Demiris",
+        "Jina Huh-Yoo"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "To investigate the generative-based model\u2019s potential in therapy chatbot contexts, a chatbot was built using the GPT-2 model and fine-tuned with 306 therapy session transcripts between family caregivers of individuals with dementia and therapists conducting Problem Solving Therapy."
+    },
+    "citationCount": 22,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

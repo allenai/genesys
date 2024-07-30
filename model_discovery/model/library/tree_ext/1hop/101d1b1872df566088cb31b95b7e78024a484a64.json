@@ -1,0 +1,27 @@
+{
+    "acronym": "101d1b1872df566088cb31b95b7e78024a484a64",
+    "title": "Attending to Entities for Better Text Understanding",
+    "seed_ids": [
+        "universaltrans",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "e2587eddd57bc4ba286d91b27c185083f16f40ee",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "101d1b1872df566088cb31b95b7e78024a484a64",
+    "abstract": "Recent progress in NLP witnessed the development of large-scale pre-trained language models (GPT, BERT, XLNet, etc.) based on Transformer (Vaswani et al. 2017), and in a range of end tasks, such models have achieved state-of-the-art results, approaching human performance. This clearly demonstrates the power of the stacked self-attention architecture when paired with a sufficient number of layers and a large amount of pre-training data. However, on tasks that require complex and long-distance reasoning where surface-level cues are not enough, there is still a large gap between the pre-trained models and human performance. Strubell et al. (2018) recently showed that it is possible to inject knowledge of syntactic structure into a model through supervised self-attention. We conjecture that a similar injection of semantic knowledge, in particular, coreference information, into an existing model would improve performance on such complex problems. On the LAMBADA (Paperno et al. 2016) task, we show that a model trained from scratch with coreference as auxiliary supervision for self-attention outperforms the largest GPT-2 model, setting the new state-of-the-art, while only containing a tiny fraction of parameters compared to GPT-2. We also conduct a thorough analysis of different variants of model architectures and supervision configurations, suggesting future directions on applying similar techniques to other problems.",
+    "authors": [
+        "Pengxiang Cheng",
+        "K. Erk"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "On the LAMBADA (Paperno et al. 2016) task, it is shown that a model trained from scratch with coreference as auxiliary supervision for self-attention outperforms the largest GPT-2 model, setting the new state-of-the-art, while only containing a tiny fraction of parameters compared to G PT-2."
+    },
+    "citationCount": 33,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

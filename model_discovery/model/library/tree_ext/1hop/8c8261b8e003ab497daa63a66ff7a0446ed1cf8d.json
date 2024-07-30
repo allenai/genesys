@@ -1,0 +1,30 @@
+{
+    "acronym": "8c8261b8e003ab497daa63a66ff7a0446ed1cf8d",
+    "title": "TransLandSeg: A Transfer Learning Approach for Landslide Semantic Segmentation Based on Vision Foundation Model",
+    "seed_ids": [
+        "transformer",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "8c8261b8e003ab497daa63a66ff7a0446ed1cf8d",
+    "abstract": "Landslides are one of the most destructive natural disasters in the world, posing a serious threat to human life and safety. The development of foundation models has provided a new research paradigm for large-scale landslide detection. The Segment Anything Model (SAM) has garnered widespread attention in the field of image segmentation. However, our experiment found that SAM performed poorly in the task of landslide segmentation. We propose TransLandSeg, which is a transfer learning approach for landslide semantic segmentation based on a vision foundation model (VFM). TransLandSeg outperforms traditional semantic segmentation models on both the Landslide4Sense dataset and the Bijie landslide dataset. Our proposed adaptive transfer learning (ATL) architecture enables the powerful segmentation capability of SAM to be transferred to landslide detection by training only 1.3% of the number of the parameters of SAM, which greatly improves the training efficiency of the model. Finally we also conducted ablation experiments on models with different ATL structures, concluded that the deployment location and residual connection of ATL play an important role in TransLandSeg accuracy improvement.",
+    "authors": [
+        "Changhong Hou",
+        "Junchuan Yu",
+        "Daqing Ge",
+        "Liu Yang",
+        "Laidian Xi",
+        "Yunxuan Pang",
+        "Yi Wen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "TransLandSeg is proposed, which is a transfer learning approach for landslide semantic segmentation based on a vision foundation model (VFM) and outperforms traditional semantic segmentation models on both the Landslide4Sense dataset and the Bijie landslide dataset."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

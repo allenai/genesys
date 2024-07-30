@@ -1,0 +1,39 @@
+{
+    "acronym": "d874af0891e0ed816d3db3379a700a2a42f1be08",
+    "title": "ConvFormer: Revisiting Transformer for Sequential User Modeling",
+    "seed_ids": [
+        "poolingformer",
+        "longformer",
+        "9b6af0e358e76d22f209c75b1702c3e6ea7815b1",
+        "e32a12b14e212506115cc6804667b3d8297917e1",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8",
+        "6954a6bb9d6f3e365b26b694c963ae1d62a03444",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "d874af0891e0ed816d3db3379a700a2a42f1be08",
+    "abstract": "Sequential user modeling, a critical task in personalized recommender systems, focuses on predicting the next item a user would prefer, requiring a deep understanding of user behavior sequences. Despite the remarkable success of Transformer-based models across various domains, their full potential in comprehending user behavior remains untapped. In this paper, we re-examine Transformer-like architectures aiming to advance state-of-the-art performance. We start by revisiting the core building blocks of Transformer-based methods, analyzing the effectiveness of the item-to-item mechanism within the context of sequential user modeling. After conducting a thorough experimental analysis, we identify three essential criteria for devising efficient sequential user models, which we hope will serve as practical guidelines to inspire and shape future designs. Following this, we introduce ConvFormer, a simple but powerful modification to the Transformer architecture that meets these criteria, yielding state-of-the-art results. Additionally, we present an acceleration technique to minimize the complexity associated with processing extremely long sequences. Experiments on four public datasets showcase ConvFormer's superiority and confirm the validity of our proposed criteria.",
+    "authors": [
+        "Hao Wang",
+        "Jianxun Lian",
+        "M. Wu",
+        "Haoxuan Li",
+        "Jiajun Fan",
+        "Wanyue Xu",
+        "Chaozhuo Li",
+        "Xing Xie"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper re-examines Transformer-like architectures aiming to advance state-of-the-art performance and introduces ConvFormer, a simple but powerful modification to the Transformer architecture that meets three essential criteria for devising efficient sequential user models, which it hopes will serve as practical guidelines to inspire and shape future designs."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

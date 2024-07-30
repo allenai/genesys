@@ -1,0 +1,32 @@
+{
+    "acronym": "95ac1eb4b2fb3826c34ea1154e5bd561e1a18bbf",
+    "title": "Advancing Graph Generation through Beta Diffusion",
+    "seed_ids": [
+        "d3pms",
+        "8b20edda4a0013d628b9c4e9e4b42a5f1310b12f",
+        "fb4ebe2e158296cef577a373f30117882e00d221",
+        "4319a5faceb0f94fc791e49dc0b94dd4d142f90e",
+        "0dcd241afa426b287da651c13c61bb26f7c546dd",
+        "9714b88d4d984426d901fc539c7c69d03290ce12",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0"
+    ],
+    "s2id": "95ac1eb4b2fb3826c34ea1154e5bd561e1a18bbf",
+    "abstract": "Diffusion models have demonstrated effectiveness in generating natural images and have been extended to generate diverse data types, including graphs. This new generation of diffusion-based graph generative models has demonstrated significant performance improvements over methods that rely on variational autoencoders or generative adversarial networks. It's important to recognize, however, that most of these models employ Gaussian or categorical diffusion processes, which can struggle with sparse and long-tailed data distributions. In our work, we introduce Graph Beta Diffusion (GBD), a diffusion-based generative model particularly adept at capturing diverse graph structures. GBD utilizes a beta diffusion process, tailored for the sparse and range-bounded characteristics of graph adjacency matrices. Furthermore, we have developed a modulation technique that enhances the realism of the generated graphs by stabilizing the generation of critical graph structures, while preserving flexibility elsewhere. The outstanding performance of GBD across three general graph benchmarks and two biochemical graph benchmarks highlights its capability to effectively capture the complexities of real-world graph data. The code will be made available at https://github.com/YH-UtMSB/Graph_Beta_Diffusion",
+    "authors": [
+        "Yilin He",
+        "Xinyang Liu",
+        "Bo Chen",
+        "Mingyuan Zhou"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Graph Beta Diffusion (GBD), a diffusion-based generative model particularly adept at capturing diverse graph structures, is introduced, which utilizes a beta diffusion process, tailored for the sparse and range-bounded characteristics of graph adjacency matrices."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

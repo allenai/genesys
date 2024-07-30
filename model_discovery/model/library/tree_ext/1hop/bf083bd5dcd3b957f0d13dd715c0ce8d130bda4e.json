@@ -1,0 +1,28 @@
+{
+    "acronym": "bf083bd5dcd3b957f0d13dd715c0ce8d130bda4e",
+    "title": "Don\u2019t take \u201cnswvtnvakgxpm\u201d for an answer \u2013The surprising vulnerability of automatic content scoring systems to adversarial input",
+    "seed_ids": [
+        "gpt",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "bf083bd5dcd3b957f0d13dd715c0ce8d130bda4e",
+    "abstract": "Automatic content scoring systems are widely used on short answer tasks to save human effort. However, the use of these systems can invite cheating strategies, such as students writing irrelevant answers in the hopes of gaining at least partial credit. We generate adversarial answers for benchmark content scoring datasets based on different methods of increasing sophistication and show that even simple methods lead to a surprising decrease in content scoring performance. As an extreme example, up to 60% of adversarial answers generated from random shuffling of words in real answers are accepted by a state-of-the-art scoring system. In addition to analyzing the vulnerabilities of content scoring systems, we examine countermeasures such as adversarial training and show that these measures improve system robustness against adversarial answers considerably but do not suffice to completely solve the problem.",
+    "authors": [
+        "Yuning Ding",
+        "Brian Riordan",
+        "Andrea Horbach",
+        "A. Cahill",
+        "Torsten Zesch"
+    ],
+    "venue": "International Conference on Computational Linguistics",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that even simple methods lead to a surprising decrease in content scoring performance and countermeasures such as adversarial training improve system robustness against adversarial answers considerably but do not suffice to completely solve the problem."
+    },
+    "citationCount": 23,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

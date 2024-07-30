@@ -1,0 +1,27 @@
+{
+    "acronym": "5472c41afa571697433bcb6a21e4e30fbb4a0419",
+    "title": "Unified Examination of Entity Linking in Absence of Candidate Sets",
+    "seed_ids": [
+        "bert",
+        "26c3551d5482f61b6b527e6d86de270fa0c256f8",
+        "cbfbe1da18b559a74c818c61b3994168e5f6c1e1"
+    ],
+    "s2id": "5472c41afa571697433bcb6a21e4e30fbb4a0419",
+    "abstract": "Despite remarkable strides made in the development of entity linking systems in recent years, a comprehensive comparative analysis of these systems using a unified framework is notably absent. This paper addresses this oversight by introducing a new black-box benchmark and conducting a comprehensive evaluation of all state-of-the-art entity linking methods. We use an ablation study to investigate the impact of candidate sets on the performance of entity linking. Our findings uncover exactly how much such entity linking systems depend on candidate sets, and how much this limits the general applicability of each system. We present an alternative approach to candidate sets, demonstrating that leveraging the entire in-domain candidate set can serve as a viable substitute for certain models. We show the trade-off between less restrictive candidate sets, increased inference time and memory footprint for some models.",
+    "authors": [
+        "Nicolas Ong",
+        "Hassan S. Shavarani",
+        "Anoop Sarkar"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces a new black-box benchmark and conducts a comprehensive evaluation of all state-of-the-art entity linking methods, using an ablation study to investigate the impact of candidate sets on the performance of entity linking, and presents an alternative approach to candidate sets."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

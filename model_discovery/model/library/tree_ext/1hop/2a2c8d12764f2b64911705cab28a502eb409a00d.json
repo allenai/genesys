@@ -1,0 +1,29 @@
+{
+    "acronym": "2a2c8d12764f2b64911705cab28a502eb409a00d",
+    "title": "Let There Be Order: Rethinking Ordering in Autoregressive Graph Generation",
+    "seed_ids": [
+        "gpt2",
+        "5eda60d4940d4185df45c5703e103458171d465d",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2a2c8d12764f2b64911705cab28a502eb409a00d",
+    "abstract": "Conditional graph generation tasks involve training a model to generate a graph given a set of input conditions. Many previous studies employ autoregressive models to incrementally generate graph components such as nodes and edges. However, as graphs typically lack a natural ordering among their components, converting a graph into a sequence of tokens is not straightforward. While prior works mostly rely on conventional heuristics or graph traversal methods like breadth-first search (BFS) or depth-first search (DFS) to convert graphs to sequences, the impact of ordering on graph generation has largely been unexplored. This paper contributes to this problem by: (1) highlighting the crucial role of ordering in autoregressive graph generation models, (2) proposing a novel theoretical framework that perceives ordering as a dimensionality reduction problem, thereby facilitating a deeper understanding of the relationship between orderings and generated graph accuracy, and (3) introducing\"latent sort,\"a learning-based ordering scheme to perform dimensionality reduction of graph tokens. Our experimental results showcase the effectiveness of latent sort across a wide range of graph generation tasks, encouraging future works to further explore and develop learning-based ordering schemes for autoregressive graph generation.",
+    "authors": [
+        "Jie Bu",
+        "Kazi Sajeed Mehrab",
+        "A. Karpatne"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper contributes to this problem by proposing a novel theoretical framework that perceives ordering as a dimensionality reduction problem, thereby facilitating a deeper understanding of the relationship between orderings and generated graph accuracy, and introducing latent sort, a learning-based ordering scheme to performdimensionality reduction of graph tokens."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

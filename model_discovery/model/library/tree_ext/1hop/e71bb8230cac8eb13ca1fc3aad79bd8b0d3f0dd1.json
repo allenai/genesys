@@ -1,0 +1,39 @@
+{
+    "acronym": "e71bb8230cac8eb13ca1fc3aad79bd8b0d3f0dd1",
+    "title": "Pseudo-grading of tumor subpopulations from single-cell transcriptomic data using Phenotype Algebra",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "e71bb8230cac8eb13ca1fc3aad79bd8b0d3f0dd1",
+    "abstract": "Single-cell RNA-sequencing (scRNA-seq) coupled with robust computational analysis facilitates the characterization of phenotypic heterogeneity within tumors. Current scRNA-seq analysis pipelines are capable of identifying a myriad of malignant and non-malignant cell subtypes from single-cell profiling of tumors. However, given the extent of intra-tumoral heterogeneity, it is challenging to assess the risk associated with individual malignant cell subpopulations, primarily due to the complexity of the cancer phenotype space and the lack of clinical annotations associated with tumor scRNA-seq studies. To this end, we introduce SCellBOW, a scRNA-seq analysis framework inspired by document embedding techniques from the domain of Natural Language Processing (NLP). SCellBOW is a novel computational approach that facilitates effective identification and high-quality visualization of single-cell subpopulations. We compared SCellBOW with existing best practice methods for its ability to precisely represent phenotypically divergent cell types across multiple scRNA-seq datasets, including our in-house generated human splenocyte and matched peripheral blood mononuclear cell (PBMC) dataset. For malignant cells, SCellBOW estimates the relative risk associated with each cluster and stratifies them based on their aggressiveness. This is achieved by simulating how the presence or absence of a specific malignant cell subpopulation influences disease prognosis. Using SCellBOW, we identified a hitherto unknown and pervasive AR\u2212/NElow (androgen-receptor-negative, neuroendocrine-low) malignant subpopulation in metastatic prostate cancer with conspicuously high aggressiveness. Overall, the risk-stratification capabilities of SCellBOW hold promise for formulating tailored therapeutic interventions by identifying clinically relevant tumor subpopulations and their impact on prognosis.",
+    "authors": [
+        "Namrata Bhattacharya",
+        "A. Rockstroh",
+        "S. Deshpande",
+        "S. Thomas",
+        "Anunay Yadav",
+        "Chitrita Goswami",
+        "Smriti Chawla",
+        "Pierre Solomon",
+        "C. Fourgeux",
+        "Gaurav Ahuja",
+        "B. Hollier",
+        "Himanshu Kumar",
+        "A. Roquilly",
+        "J. Poschmann",
+        "M. Lehman",
+        "C. Nelson",
+        "Debarka Sengupta"
+    ],
+    "venue": "bioRxiv",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Using SCellBOW, a scRNA-seq analysis framework inspired by document embedding techniques from the domain of Natural Language Processing, a hitherto unknown and pervasive AR\u2212/NElow malignant subpopulation in metastatic prostate cancer is identified with conspicuously high aggressiveness."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "e5790aca2bdfbe61ddbb4ac8af3ef9cae163e56e",
+    "title": "Investigating Gender Bias in Turkish Language Models",
+    "seed_ids": [
+        "bert",
+        "5b1641b7661b4d9ec2826e847ebf1b36f2d5bdec",
+        "5e9c85235210b59a16bdd84b444a904ae271f7e7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e5790aca2bdfbe61ddbb4ac8af3ef9cae163e56e",
+    "abstract": "Language models are trained mostly on Web data, which often contains social stereotypes and biases that the models can inherit. This has potentially negative consequences, as models can amplify these biases in downstream tasks or applications. However, prior research has primarily focused on the English language, especially in the context of gender bias. In particular, grammatically gender-neutral languages such as Turkish are underexplored despite representing different linguistic properties to language models with possibly different effects on biases. In this paper, we fill this research gap and investigate the significance of gender bias in Turkish language models. We build upon existing bias evaluation frameworks and extend them to the Turkish language by translating existing English tests and creating new ones designed to measure gender bias in the context of T\\\"urkiye. Specifically, we also evaluate Turkish language models for their embedded ethnic bias toward Kurdish people. Based on the experimental results, we attribute possible biases to different model characteristics such as the model size, their multilingualism, and the training corpora. We make the Turkish gender bias dataset publicly available.",
+    "authors": [
+        "Orhun Caglidil",
+        "Malte Ostendorff",
+        "Georg Rehm"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work builds upon existing bias evaluation frameworks and extends them to the Turkish language by translating existing English tests and creating new ones designed to measure gender bias in the context of T\\\"urkiye\" and evaluates Turkish language models for their embedded ethnic bias toward Kurdish people."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "d999b928371a5301d8a9a29ebef484db5d5b343c",
+    "title": "A Sparse Sinkhorn Transformer for Multi-Behaviour Recommendation",
+    "seed_ids": [
+        "sinkhorn",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8"
+    ],
+    "s2id": "d999b928371a5301d8a9a29ebef484db5d5b343c",
+    "abstract": "Modelling dynamic user-item interactions using GNN in Recommender Systems has attracted significant research interest recently. Existing research has focused on single type user-item interactions such as \u201cpurchases or \u201cuser ratings in ecommerce domain, whereas real-world scenarios involve multi-type interactions such as \u201cview\u201d, \u201cadd-to-favourites\u201d, \u201cadd-to-cart\u201d and \u201cproduct purchase\u201d that are not considered by these approaches. To address this problem, Vanilla transformer-based self-attention mechanism have been adopted in literature for multi-behaviour recommendation. These methods suffer from high computational cost which results in scalability issues especially on large datasets. To overcome this limitation, we propose the Sinkhorn Transformer for Multi-Behaviour Recommendation (STMBR) model. Our proposed method uses a differentiable algorithm to sort and re-arrange elements of the input sequence based on Sparse Sinkhorn Attention. Experimental results on three real-world-datasets show our model\u2019s competitive recommendation performance against the state-of-the-art baselines at lower computational cost.",
+    "authors": [
+        "Tendai Mukande",
+        "Esraa Ali",
+        "Annalina Caputo",
+        "Ruihai Dong",
+        "Noel E. O'Connor"
+    ],
+    "venue": "IEEE International Conference on e-Business Engineering",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Sinkhorn Transformer for Multi-Behaviour Recommendation (STMBR) model uses a differentiable algorithm to sort and re-arrange elements of the input sequence based on Sparse Sinkhorn Attention to show its competitive recommendation performance against the state-of-the-art baselines at lower computational cost."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

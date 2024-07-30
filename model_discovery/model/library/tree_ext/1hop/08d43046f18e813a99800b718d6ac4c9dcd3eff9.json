@@ -1,0 +1,26 @@
+{
+    "acronym": "08d43046f18e813a99800b718d6ac4c9dcd3eff9",
+    "title": "ID-XCB: Data-independent Debiasing for Fair and Accurate Transformer-based Cyberbullying Detection",
+    "seed_ids": [
+        "bert",
+        "a022bda79947d1f656a1164003c1b3ae9a843df9",
+        "5e9c85235210b59a16bdd84b444a904ae271f7e7"
+    ],
+    "s2id": "08d43046f18e813a99800b718d6ac4c9dcd3eff9",
+    "abstract": "Swear words are a common proxy to collect datasets with cyberbullying incidents. Our focus is on measuring and mitigating biases derived from spurious associations between swear words and incidents occurring as a result of such data collection strategies. After demonstrating and quantifying these biases, we introduce ID-XCB, the first data-independent debiasing technique that combines adversarial training, bias constraints and debias fine-tuning approach aimed at alleviating model attention to bias-inducing words without impacting overall model performance. We explore ID-XCB on two popular session-based cyberbullying datasets along with comprehensive ablation and generalisation studies. We show that ID-XCB learns robust cyberbullying detection capabilities while mitigating biases, outperforming state-of-the-art debiasing methods in both performance and bias mitigation. Our quantitative and qualitative analyses demonstrate its generalisability to unseen data.",
+    "authors": [
+        "Peiling Yi",
+        "A. Zubiaga"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces ID-XCB, the first data-independent debiasing technique that combines adversarial training, bias constraints and debias fine-tuning approach aimed at alleviating model attention to bias-inducing words without impacting overall model performance."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,50 @@
+{
+    "acronym": "51f38bd957fa863022feb5878fa1ba3bea6657cf",
+    "title": "Vision-RWKV: Efficient and Scalable Visual Perception with RWKV-Like Architectures",
+    "seed_ids": [
+        "mamba",
+        "rwkv4",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "434d751d355d7a7c20efa570e785c76286245e77",
+        "59708496c88f173276a40d779a1f83bcfe2e7842",
+        "240103933ffe3dac2179cc160a2bd91299357a53",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "f35f5aedc30e2c5ded210d9c91ba6e84bd029425",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "6be32b4321f95b79bb2e37feeab0c3c7f902195e",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "51f38bd957fa863022feb5878fa1ba3bea6657cf",
+    "abstract": "Transformers have revolutionized computer vision and natural language processing, but their high computational complexity limits their application in high-resolution image processing and long-context analysis. This paper introduces Vision-RWKV (VRWKV), a model adapted from the RWKV model used in the NLP field with necessary modifications for vision tasks. Similar to the Vision Transformer (ViT), our model is designed to efficiently handle sparse inputs and demonstrate robust global processing capabilities, while also scaling up effectively, accommodating both large-scale parameters and extensive datasets. Its distinctive advantage lies in its reduced spatial aggregation complexity, which renders it exceptionally adept at processing high-resolution images seamlessly, eliminating the necessity for windowing operations. Our evaluations demonstrate that VRWKV surpasses ViT's performance in image classification and has significantly faster speeds and lower memory usage processing high-resolution inputs. In dense prediction tasks, it outperforms window-based models, maintaining comparable speeds. These results highlight VRWKV's potential as a more efficient alternative for visual perception tasks. Code is released at \\url{https://github.com/OpenGVLab/Vision-RWKV}.",
+    "authors": [
+        "Yuchen Duan",
+        "Weiyun Wang",
+        "Zhe Chen",
+        "Xizhou Zhu",
+        "Lewei Lu",
+        "Tong Lu",
+        "Yu Qiao",
+        "Hongsheng Li",
+        "Jifeng Dai",
+        "Wenhai Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Vision-RWKV (VRWKV), a model adapted from the RWKV model used in the NLP field with necessary modifications for vision tasks, surpasses ViT's performance in image classification and has significantly faster speeds and lower memory usage processing high-resolution inputs."
+    },
+    "citationCount": 18,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

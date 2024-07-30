@@ -1,0 +1,50 @@
+{
+    "acronym": "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+    "title": "Long Range Language Modeling via Gated State Spaces",
+    "seed_ids": [
+        "s4",
+        "dssm",
+        "flash",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "0e802c0739771acf70e60d59c2df51cd7e8c50c0",
+        "736eb449526fe7128917954ec5532b59e318ec78",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "c49ac1f916d6d2edeb187e6619c8d23acd95eb21",
+        "12809bcb734beafeb47876f42e7b438e27fe99fe",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "2fd10e095b146f99da8cdc6ff58720e2e8fca36d",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "63857190aaf5aab1d94b54bb257b7b03b8cb5a50",
+        "baed71eed57ad462f3ab138d4b1700a738cd5414",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+    "abstract": "State space models have shown to be effective at modeling long range dependencies, specially on sequence classification tasks. In this work we focus on autoregressive sequence modeling over English books, Github source code and ArXiv mathematics articles. Based on recent developments around the effectiveness of gated activation functions, we propose a new layer named Gated State Space (GSS) and show that it trains significantly faster than the diagonal version of S4 (i.e. DSS) on TPUs, is fairly competitive with several well-tuned Transformer-based baselines and exhibits zero-shot generalization to longer inputs while being straightforward to implement. Finally, we show that leveraging self-attention to model local dependencies improves the performance of GSS even further.",
+    "authors": [
+        "Harsh Mehta",
+        "Ankit Gupta",
+        "Ashok Cutkosky",
+        "Behnam Neyshabur"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a new layer named Gated State Space (GSS) and shows that it trains significantly faster than the diagonal version of S4 on TPUs, is fairly competitive with several well-tuned Transformer-based baselines and exhibits zero-shot generalization to longer inputs while being straightforward to implement."
+    },
+    "citationCount": 134,
+    "influentialCitationCount": 17,
+    "code": null,
+    "description": null,
+    "url": null
+}

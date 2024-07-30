@@ -1,0 +1,25 @@
+{
+    "acronym": "6a27d0c411ae050e033ebb8c5af79fad083cab74",
+    "title": "Is word segmentation necessary for Vietnamese sentiment classification?",
+    "seed_ids": [
+        "s4",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51"
+    ],
+    "s2id": "6a27d0c411ae050e033ebb8c5af79fad083cab74",
+    "abstract": "To the best of our knowledge, this paper made the first attempt to answer whether word segmentation is necessary for Vietnamese sentiment classification. To do this, we presented five pre-trained monolingual S4-based language models for Vietnamese, including one model without word segmentation, and four models using RDRsegmenter, uitnlp, pyvi, or underthesea toolkits in the pre-processing data phase. According to comprehensive experimental results on two corpora, including the VLSP2016-SA corpus of technical article reviews from the news and social media and the UIT-VSFC corpus of the educational survey, we have two suggestions. Firstly, using traditional classifiers like Naive Bayes or Support Vector Machines, word segmentation maybe not be necessary for the Vietnamese sentiment classification corpus, which comes from the social domain. Secondly, word segmentation is necessary for Vietnamese sentiment classification when word segmentation is used before using the BPE method and feeding into the deep learning model. In this way, the RDRsegmenter is the stable toolkit for word segmentation among the uitnlp, pyvi, and underthesea toolkits.",
+    "authors": [
+        "Duc-Vu Nguyen",
+        "N. Nguyen"
+    ],
+    "venue": "Conference on Research, Innovation and Vision for the Future in Computing & Communication Technologies",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presented five pre-trained monolingual S4-based language models for Vietnamese, including one model without word segmentation, and four models using RDRsegmenter, uitnlp, pyvi, or underthesea toolkits in the pre-processing data phase."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

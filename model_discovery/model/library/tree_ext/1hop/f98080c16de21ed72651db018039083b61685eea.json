@@ -1,0 +1,25 @@
+{
+    "acronym": "f98080c16de21ed72651db018039083b61685eea",
+    "title": "Detecting Fake Points of Interest from Location Data",
+    "seed_ids": [
+        "funneltransformer",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "f98080c16de21ed72651db018039083b61685eea",
+    "abstract": "The pervasiveness of GPS-enabled mobile devices and the widespread use of location-based services have resulted in the generation of massive amounts of geo-tagged data. In recent times, the data analysis now has access to more sources, including reviews, news, and images, which also raises questions about the reliability of Point-of-Interest (POI) data sources. While previous research attempted to detect fake POI data through various security mechanisms, the current work attempts to capture the fake POI data in a much simpler way. The proposed work is focused on supervised learning methods and their capability to find hidden patterns in location-based data. The ground truth labels are obtained through real-world data, and the fake data is generated using an API, so we get a dataset with both the real and fake labels on the location data. The objective is to predict the truth about a POI using the Multi-Layer Perceptron (MLP) method. In the proposed work, MLP based on data classification technique is used to classify location data accurately. The proposed method is compared with traditional classification and robust and recent deep neural methods. The results show that the proposed method is better than the baseline methods.",
+    "authors": [
+        "S. Bashir",
+        "V. Mi\u0161i\u0107"
+    ],
+    "venue": "2021 IEEE International Conference on Big Data (Big Data)",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The objective is to predict the truth about a POI using the Multi-Layer Perceptron (MLP) method, and the results show that the proposed method is better than the baseline methods."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

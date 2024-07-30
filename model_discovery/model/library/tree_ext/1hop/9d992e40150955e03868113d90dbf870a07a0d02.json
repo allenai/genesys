@@ -1,0 +1,34 @@
+{
+    "acronym": "9d992e40150955e03868113d90dbf870a07a0d02",
+    "title": "SegRefiner: Towards Model-Agnostic Segmentation Refinement with Discrete Diffusion Process",
+    "seed_ids": [
+        "d3pms",
+        "c5349e515efe3513682ba62da122be5756650af1",
+        "81621c53c6aa421deb81bb1359138ded0fb4e258",
+        "8f48171bf05474449777d9bbf6766d480332e09f",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "9d992e40150955e03868113d90dbf870a07a0d02",
+    "abstract": "In this paper, we explore a principal way to enhance the quality of object masks produced by different segmentation models. We propose a model-agnostic solution called SegRefiner, which offers a novel perspective on this problem by interpreting segmentation refinement as a data generation process. As a result, the refinement process can be smoothly implemented through a series of denoising diffusion steps. Specifically, SegRefiner takes coarse masks as inputs and refines them using a discrete diffusion process. By predicting the label and corresponding states-transition probabilities for each pixel, SegRefiner progressively refines the noisy masks in a conditional denoising manner. To assess the effectiveness of SegRefiner, we conduct comprehensive experiments on various segmentation tasks, including semantic segmentation, instance segmentation, and dichotomous image segmentation. The results demonstrate the superiority of our SegRefiner from multiple aspects. Firstly, it consistently improves both the segmentation metrics and boundary metrics across different types of coarse masks. Secondly, it outperforms previous model-agnostic refinement methods by a significant margin. Lastly, it exhibits a strong capability to capture extremely fine details when refining high-resolution images. The source code and trained models are available at https://github.com/MengyuWang826/SegRefiner.",
+    "authors": [
+        "Meng Wang",
+        "Henghui Ding",
+        "J. Liew",
+        "Jiajun Liu",
+        "Yao Zhao",
+        "Yunchao Wei"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A model-agnostic solution called SegRefiner is proposed, which offers a novel perspective on segmentation refinement as a data generation process by interpreting segmentation refinement as a data generation process, and which outperforms previous model-agnostic refinement methods by a significant margin."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

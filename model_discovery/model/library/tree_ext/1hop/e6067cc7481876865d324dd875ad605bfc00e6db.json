@@ -1,0 +1,37 @@
+{
+    "acronym": "e6067cc7481876865d324dd875ad605bfc00e6db",
+    "title": "VeCAF: Vision-language Collaborative Active Finetuning with Training Objective Awareness",
+    "seed_ids": [
+        "bert",
+        "8ca9cbff7f47e5a499eae993306ae0d742373521",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e6067cc7481876865d324dd875ad605bfc00e6db",
+    "abstract": "Finetuning a pretrained vision model (PVM) is a common technique for learning downstream vision tasks. However, the conventional finetuning process with randomly sampled data points results in diminished training efficiency. To address this drawback, we propose a novel approach, Vision-language Collaborative Active Finetuning (VeCAF). With the emerging availability of labels and natural language annotations of images through web-scale crawling or controlled generation, VeCAF makes use of these information to perform parametric data selection for PVM finetuning. VeCAF incorporates the finetuning objective to select significant data points that effectively guide the PVM towards faster convergence to meet the performance goal. This process is assisted by the inherent semantic richness of the text embedding space which we use to augment image features. Furthermore, the flexibility of text-domain augmentation allows VeCAF to handle out-of-distribution scenarios without external data. Extensive experiments show the leading performance and high computational efficiency of VeCAF that is superior to baselines in both in-distribution and out-of-distribution image classification tasks. On ImageNet, VeCAF uses up to 3.3x less training batches to reach the target performance compared to full finetuning, and achieves an accuracy improvement of 2.7% over the state-of-the-art active finetuning method with the same number of batches.",
+    "authors": [
+        "Rongyu Zhang",
+        "Zefan Cai",
+        "Huanrui Yang",
+        "Zidong Liu",
+        "Denis A Gudovskiy",
+        "Tomoyuki Okuno",
+        "Yohei Nakata",
+        "Kurt Keutzer",
+        "Baobao Chang",
+        "Yuan Du",
+        "Li Du",
+        "Shanghang Zhang"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "VeCAF incorporates the finetuning objective to select significant data points that effectively guide the PVM towards faster convergence to meet the performance goal and is assisted by the inherent semantic richness of the text embedding space which is assisted by the inherent semantic richness of the text embedding space."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

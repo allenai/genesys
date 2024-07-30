@@ -1,0 +1,31 @@
+{
+    "acronym": "f51497f463566581874c941353dd9d80069c5b77",
+    "title": "Compressive Transformers for Long-Range Sequence Modelling",
+    "seed_ids": [
+        "sparsetransformer",
+        "transformerxl",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "cd63025532a62fa245a02ec05e32ac4d23089631"
+    ],
+    "s2id": "f51497f463566581874c941353dd9d80069c5b77",
+    "abstract": "We present the Compressive Transformer, an attentive sequence model which compresses past memories for long-range sequence learning. We find the Compressive Transformer obtains state-of-the-art language modelling results in the WikiText-103 and Enwik8 benchmarks, achieving 17.1 ppl and 0.97 bpc respectively. We also find it can model high-frequency speech effectively and can be used as a memory mechanism for RL, demonstrated on an object matching task. To promote the domain of long-range sequence learning, we propose a new open-vocabulary language modelling benchmark derived from books, PG-19.",
+    "authors": [
+        "Jack W. Rae",
+        "Anna Potapenko",
+        "Siddhant M. Jayakumar",
+        "T. Lillicrap"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Compressive Transformer is presented, an attentive sequence model which compresses past memories for long-range sequence learning and can model high-frequency speech effectively and can be used as a memory mechanism for RL, demonstrated on an object matching task."
+    },
+    "citationCount": 492,
+    "influentialCitationCount": 64,
+    "code": null,
+    "description": null,
+    "url": null
+}

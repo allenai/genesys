@@ -1,0 +1,27 @@
+{
+    "acronym": "d3942757c6760c2ebb55f3c5254b81f110a68e3b",
+    "title": "Learned feature representations are biased by complexity, learning order, position, and more",
+    "seed_ids": [
+        "transformer",
+        "ac70fb2c74aa87420878c441c3d24969947e0294",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d3942757c6760c2ebb55f3c5254b81f110a68e3b",
+    "abstract": "Representation learning, and interpreting learned representations, are key areas of focus in machine learning and neuroscience. Both fields generally use representations as a means to understand or improve a system's computations. In this work, however, we explore surprising dissociations between representation and computation that may pose challenges for such efforts. We create datasets in which we attempt to match the computational role that different features play, while manipulating other properties of the features or the data. We train various deep learning architectures to compute these multiple abstract features about their inputs. We find that their learned feature representations are systematically biased towards representing some features more strongly than others, depending upon extraneous properties such as feature complexity, the order in which features are learned, and the distribution of features over the inputs. For example, features that are simpler to compute or learned first tend to be represented more strongly and densely than features that are more complex or learned later, even if all features are learned equally well. We also explore how these biases are affected by architectures, optimizers, and training regimes (e.g., in transformers, features decoded earlier in the output sequence also tend to be represented more strongly). Our results help to characterize the inductive biases of gradient-based representation learning. These results also highlight a key challenge for interpretability $-$ or for comparing the representations of models and brains $-$ disentangling extraneous biases from the computationally important aspects of a system's internal representations.",
+    "authors": [
+        "Andrew Kyle Lampinen",
+        "Stephanie C. Y. Chan",
+        "Katherine Hermann"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Surprising dissociations between representation and computation are explored, highlighting a key challenge for interpretability or for comparing the representations of models and brains disentangling extraneous biases from the computationally important aspects of a system's internal representations."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

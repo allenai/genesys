@@ -1,0 +1,42 @@
+{
+    "acronym": "a7a40b35b6f37c554f1c5c2038892ed70c693a64",
+    "title": "Learning to Grow Pretrained Models for Efficient Transformer Training",
+    "seed_ids": [
+        "gpt2",
+        "8326dba15f6b8ee6e43c23eea3265a05e59e8135",
+        "434f4ecbfdea4496bbcd763427fc605bf11abddc",
+        "1098ca3dbda5778c2bf6c9e8cbb9bc7a02249e10",
+        "7a49beff86a855f237f96ae3f0aefc9780cb31be",
+        "981995fd64611f475179b280f4e9c241051ac185",
+        "a68c3412e60560290400d2707596f82a914b7c00",
+        "d28c18a3c2a0afdc0a8634d18345af8d36e1f948",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "5a3749929bf5fb8b1f98a7b2a43c3b957bcf6c88",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a7a40b35b6f37c554f1c5c2038892ed70c693a64",
+    "abstract": "Scaling transformers has led to significant breakthroughs in many domains, leading to a paradigm in which larger versions of existing models are trained and released on a periodic basis. New instances of such models are typically trained completely from scratch, despite the fact that they are often just scaled-up versions of their smaller counterparts. How can we use the implicit knowledge in the parameters of smaller, extant models to enable faster training of newer, larger models? This paper describes an approach for accelerating transformer training by learning to grow pretrained transformers, where we learn to linearly map the parameters of the smaller model to initialize the larger model. For tractable learning, we factorize the linear transformation as a composition of (linear) width- and depth-growth operators, and further employ a Kronecker factorization of these growth operators to encode architectural knowledge. Extensive experiments across both language and vision transformers demonstrate that our learned Linear Growth Operator (LiGO) can save up to 50% computational cost of training from scratch, while also consistently outperforming strong baselines that also reuse smaller pretrained models to initialize larger models.",
+    "authors": [
+        "Peihao Wang",
+        "Rameswar Panda",
+        "Lucas Torroba Hennigen",
+        "P. Greengard",
+        "Leonid Karlinsky",
+        "R. Feris",
+        "David D. Cox",
+        "Zhangyang Wang",
+        "Yoon Kim"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper describes an approach for accelerating transformer training by learning to grow pretrained transformers, where it is learned to linearly map the parameters of the smaller model to initialize the larger model."
+    },
+    "citationCount": 32,
+    "influentialCitationCount": 8,
+    "code": null,
+    "description": null,
+    "url": null
+}

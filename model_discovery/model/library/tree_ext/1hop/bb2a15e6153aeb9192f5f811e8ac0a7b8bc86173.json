@@ -1,0 +1,30 @@
+{
+    "acronym": "bb2a15e6153aeb9192f5f811e8ac0a7b8bc86173",
+    "title": "On the Limitations of Fine-tuned Judge Models for LLM Evaluation",
+    "seed_ids": [
+        "bert",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c"
+    ],
+    "s2id": "bb2a15e6153aeb9192f5f811e8ac0a7b8bc86173",
+    "abstract": "Recently, there has been a growing trend of utilizing Large Language Model (LLM) to evaluate the quality of other LLMs. Many studies have employed proprietary close-source models, especially GPT-4, as the evaluator. Alternatively, other works have fine-tuned judge models based on open-source LLMs as the evaluator. While the fine-tuned judge models are claimed to achieve comparable evaluation capability with GPT-4, in this study, we conduct an empirical study of judge models. Our findings indicate that although the fine-tuned judge models achieve high performance on in-domain test sets, even surpassing GPT-4, they underperform GPT-4 across several dimensions, including generalizability, fairness, aspect-specific evaluation, and scalability. We also reveal that the fine-tuned judge model inherently operates as a task-specific classifier, consequently imposing the limitations. Finally, we propose an effective indicator to measure the reliability of fine-tuned judges, with the aim of maximizing their utility in LLM evaluation.",
+    "authors": [
+        "Hui Huang",
+        "Yingqi Qu",
+        "Hongli Zhou",
+        "Jing Liu",
+        "Muyun Yang",
+        "Bing Xu",
+        "Tiejun Zhao"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Although the fine-tuned judge models achieve high performance on in-domain test sets, even surpassing GPT-4, they underperform GPT-4 across several dimensions, including generalizability, fairness, aspect-specific evaluation, and scalability."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

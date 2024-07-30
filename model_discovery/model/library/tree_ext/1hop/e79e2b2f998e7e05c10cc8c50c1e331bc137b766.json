@@ -1,0 +1,35 @@
+{
+    "acronym": "e79e2b2f998e7e05c10cc8c50c1e331bc137b766",
+    "title": "ClusTR: Exploring Efficient Self-attention via Clustering for Vision Transformers",
+    "seed_ids": [
+        "routingtransformer",
+        "0d9b8ccb1135b8e380dd8015b080158c6aae3ae5",
+        "f75cddf2d42ed01b34686704eb3504becef67442",
+        "71363797140647ebb3f540584de0a8758d2f7aa2",
+        "3cbe314cc5407a6c3249815b5173f22ea15173c2",
+        "6e8f35c6d54acb14109c9b792a62609eac8a7b5e",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "e79e2b2f998e7e05c10cc8c50c1e331bc137b766",
+    "abstract": "Although Transformers have successfully transitioned from their language modelling origins to image-based applications, their quadratic computational complexity remains a challenge, particularly for dense prediction. In this paper we propose a content-based sparse attention method, as an alternative to dense self-attention, aiming to reduce the computation complexity while retaining the ability to model long-range dependencies. Specifically, we cluster and then aggregate key and value tokens, as a content-based method of reducing the total token count. The resulting clustered-token sequence retains the semantic diversity of the original signal, but can be processed at a lower computational cost. Besides, we further extend the clustering-guided attention from single-scale to multi-scale, which is conducive to dense prediction tasks. We label the proposed Transformer architecture ClusTR, and demonstrate that it achieves state-of-the-art performance on various vision tasks but at lower computational cost and with fewer parameters. For instance, our ClusTR small model with 22.7M parameters achieves 83.2\\% Top-1 accuracy on ImageNet. Source code and ImageNet models will be made publicly available.",
+    "authors": [
+        "Yutong Xie",
+        "Jianpeng Zhang",
+        "Yong Xia",
+        "A. Hengel",
+        "Qi Wu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper clusters and then aggregate key and value tokens, as a content-based method of reducing the total token count, and extends the clustering-guided attention from single-scale to multi-scale, which is conducive to dense prediction tasks."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

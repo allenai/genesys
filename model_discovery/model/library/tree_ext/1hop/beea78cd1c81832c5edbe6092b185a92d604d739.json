@@ -1,0 +1,34 @@
+{
+    "acronym": "beea78cd1c81832c5edbe6092b185a92d604d739",
+    "title": "Multi-domain Knowledge Graph Collaborative Pre-training and Prompt Tuning for Diverse Downstream Tasks",
+    "seed_ids": [
+        "bert",
+        "13965d8d68217308ff8c7e738ced637739c6a1b8",
+        "9ad4911a7923e19df9fb36cd03de5a63cb86ba63",
+        "a8568bac56c24b5d25e373a117f947171d5f97be"
+    ],
+    "s2id": "beea78cd1c81832c5edbe6092b185a92d604d739",
+    "abstract": "Knowledge graphs (KGs) provide reliable external knowledge for a wide variety of AI tasks in the form of structured triples. Knowledge graph pre-training (KGP) aims to pre-train neural networks on large-scale KGs and provide unified interfaces to enhance different downstream tasks, which is a key direction for KG management, maintenance, and applications. Existing works often focus on purely research questions in open domains, or they are not open source due to data security and privacy in real scenarios. Meanwhile, existing studies have not explored the training efficiency and transferability of KGP models in depth. To address these problems, We propose a framework MuDoK to achieve multi-domain collaborative pre-training and efficient prefix prompt tuning to serve diverse downstream tasks like recommendation and text understanding. Our design is a plug-and-play prompt learning approach that can be flexibly adapted to different downstream task backbones. In response to the lack of open-source benchmarks, we constructed a new multi-domain KGP benchmark called KPI with two large-scale KGs and six different sub-domain tasks to evaluate our method and open-sourced it for subsequent research. We evaluated our approach based on constructed KPI benchmarks using diverse backbone models in heterogeneous downstream tasks. The experimental results show that our framework brings significant performance gains, along with its generality, efficiency, and transferability.",
+    "authors": [
+        "Yichi Zhang",
+        "Binbin Hu",
+        "Zhuo Chen",
+        "Lingbing Guo",
+        "Ziqi Liu",
+        "Zhiqiang Zhang",
+        "Lei Liang",
+        "Hua-zeng Chen",
+        "Wen Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A framework MuDoK is proposed to achieve multi-domain collaborative pre-training and efficient prefix prompt tuning to serve diverse downstream tasks like recommendation and text understanding and experimental results show that the framework brings significant performance gains, along with its generality, efficiency, and transferability."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

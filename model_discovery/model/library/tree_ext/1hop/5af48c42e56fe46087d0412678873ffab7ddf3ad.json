@@ -1,0 +1,28 @@
+{
+    "acronym": "5af48c42e56fe46087d0412678873ffab7ddf3ad",
+    "title": "Input-level Inductive Biases for 3D Reconstruction",
+    "seed_ids": [
+        "perceiverio",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812"
+    ],
+    "s2id": "5af48c42e56fe46087d0412678873ffab7ddf3ad",
+    "abstract": "Much of the recent progress in 3D vision has been driven by the development of specialized architectures that incorporate geometrical inductive biases. In this paper we tackle 3D reconstruction using a domain agnostic architecture and study how to inject the same type of inductive biases directly as extra inputs to the model. This approach makes it possible to apply existing general models, such as Perceivers, on this rich domain, without the need for architectural changes, while simultaneously maintaining data efficiency of bespoke models. In particular we study how to encode cameras, projective ray incidence and epipolar geometry as model inputs, and demonstrate competitive multi-view depth estimation performance on multiple benchmarks.",
+    "authors": [
+        "Yifan Wang",
+        "Carl Doersch",
+        "Relja Arandjelovi'c",
+        "Jo\u00e3o Carreira",
+        "Andrew Zisserman"
+    ],
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper tackles 3D reconstruction using a domain agnostic architecture and study how to inject the same type of inductive biases directly as extra inputs to the model."
+    },
+    "citationCount": 19,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

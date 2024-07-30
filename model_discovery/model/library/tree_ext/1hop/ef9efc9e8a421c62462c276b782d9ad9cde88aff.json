@@ -1,0 +1,31 @@
+{
+    "acronym": "ef9efc9e8a421c62462c276b782d9ad9cde88aff",
+    "title": "Noise-Aware Training of Layout-Aware Language Models",
+    "seed_ids": [
+        "etc",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d"
+    ],
+    "s2id": "ef9efc9e8a421c62462c276b782d9ad9cde88aff",
+    "abstract": "A visually rich document (VRD) utilizes visual features along with linguistic cues to disseminate information. Training a custom extractor that identifies named entities from a document requires a large number of instances of the target document type annotated at textual and visual modalities. This is an expensive bottleneck in enterprise scenarios, where we want to train custom extractors for thousands of different document types in a scalable way. Pre-training an extractor model on unlabeled instances of the target document type, followed by a fine-tuning step on human-labeled instances does not work in these scenarios, as it surpasses the maximum allowable training time allocated for the extractor. We address this scenario by proposing a Noise-Aware Training method or NAT in this paper. Instead of acquiring expensive human-labeled documents, NAT utilizes weakly labeled documents to train an extractor in a scalable way. To avoid degradation in the model's quality due to noisy, weakly labeled samples, NAT estimates the confidence of each training sample and incorporates it as uncertainty measure during training. We train multiple state-of-the-art extractor models using NAT. Experiments on a number of publicly available and in-house datasets show that NAT-trained models are not only robust in performance -- it outperforms a transfer-learning baseline by up to 6% in terms of macro-F1 score, but it is also more label-efficient -- it reduces the amount of human-effort required to obtain comparable performance by up to 73%.",
+    "authors": [
+        "Ritesh Sarkhel",
+        "Xiaoqi Ren",
+        "Lauro Beltrao Costa",
+        "Guolong Su",
+        "Vincent Perot",
+        "Yanan Xie",
+        "Emmanouil Koukoumidis",
+        "Arnab Nandi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experiments show that NAT-trained models are not only robust in performance -- it outperforms a transfer-learning baseline by up to 6% in terms of macro-F1 score, but it is also more label-efficient -- it reduces the amount of human-effort required to obtain comparable performance by up to 73%."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

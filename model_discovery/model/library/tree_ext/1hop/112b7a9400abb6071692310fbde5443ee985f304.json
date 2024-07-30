@@ -1,0 +1,26 @@
+{
+    "acronym": "112b7a9400abb6071692310fbde5443ee985f304",
+    "title": "Detecting Phishing URLs using the BERT Transformer Model",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "112b7a9400abb6071692310fbde5443ee985f304",
+    "abstract": "Phishing websites many a times look-alike to benign websites with the objective being to lure unsuspecting users to visit them. The visits at times may be driven through links in phishing emails, links from web pages as well as web search results. Although the precise motivations behind phishing websites may differ the common denominator lies in the fact that unsuspecting users are mostly required to take some action e.g., clicking on a desired Uniform Resource Locator (URL). To accurately identify phishing websites, the cybersecurity community has relied on a variety of approaches including blacklisting, heuristic techniques as well as content-based approaches among others. The identification techniques are every so often enhanced using an array of methods i.e., honeypots, features recognitions, manual reporting, web-crawlers among others. Nevertheless, a number of phishing websites still escape detection either because they are not blacklisted, are too recent or were incorrectly evaluated. It is therefore imperative to enhance solutions that could mitigate phishing websites threats. In this study, the effectiveness of the Bidirectional Encoder Representations from Transformers (BERT) is investigated as a possible tool for detecting phishing URLs. The experimental results detail that the BERT transformer model achieves acceptable prediction results without requiring advanced URLs feature selection techniques or the involvement of a domain specialist.",
+    "authors": [
+        "Denish Omondi Otieno",
+        "Faranak Abri",
+        "A. Namin",
+        "Keith S. Jones"
+    ],
+    "venue": "BigData Congress [Services Society]",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The effectiveness of the Bidirectional Encoder Representations from Transformers (BERT) is investigated as a possible tool for detecting phishing URLs and experimental results detail that the BERT transformer model achieves acceptable prediction results without requiring advanced URLs feature selection techniques or the involvement of a domain specialist."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

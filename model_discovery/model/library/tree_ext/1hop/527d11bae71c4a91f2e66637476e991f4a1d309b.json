@@ -1,0 +1,32 @@
+{
+    "acronym": "527d11bae71c4a91f2e66637476e991f4a1d309b",
+    "title": "Enhancing the Stability of LLM-based Speech Generation Systems through Self-Supervised Representations",
+    "seed_ids": [
+        "gpt3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "527d11bae71c4a91f2e66637476e991f4a1d309b",
+    "abstract": "Large Language Models (LLMs) are one of the most promising technologies for the next era of speech generation systems, due to their scalability and in-context learning capabilities. Nevertheless, they suffer from multiple stability issues at inference time, such as hallucinations, content skipping or speech repetitions. In this work, we introduce a new self-supervised Voice Conversion (VC) architecture which can be used to learn to encode transitory features, such as content, separately from stationary ones, such as speaker ID or recording conditions, creating speaker-disentangled representations. Using speaker-disentangled codes to train LLMs for text-to-speech (TTS) allows the LLM to generate the content and the style of the speech only from the text, similarly to humans, while the speaker identity is provided by the decoder of the VC model. Results show that LLMs trained over speaker-disentangled self-supervised representations provide an improvement of 4.7pp in speaker similarity over SOTA entangled representations, and a word error rate (WER) 5.4pp lower. Furthermore, they achieve higher naturalness than human recordings of the LibriTTS test-other dataset. Finally, we show that using explicit reference embedding negatively impacts intelligibility (stability), with WER increasing by 14pp compared to the model that only uses text to infer the style.",
+    "authors": [
+        "\u00c1lvaro Mart\u00edn-Cortinas",
+        "Daniel S'aez-Trigueros",
+        "Iv'an Vall'es-P'erez",
+        "Biel Tura Vecino",
+        "Piotr Bilinski",
+        "Mateusz Lajszczak",
+        "Grzegorz Beringer",
+        "R. Barra-Chicote",
+        "Jaime Lorenzo-Trueba"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new self-supervised Voice Conversion (VC) architecture is introduced which can be used to learn to encode transitory features, such as content, separately from stationary ones, such as speaker ID or recording conditions, creating speaker-disentangled representations."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

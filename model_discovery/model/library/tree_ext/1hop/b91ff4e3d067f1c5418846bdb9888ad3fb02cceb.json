@@ -1,0 +1,34 @@
+{
+    "acronym": "b91ff4e3d067f1c5418846bdb9888ad3fb02cceb",
+    "title": "MAVEN-Arg: Completing the Puzzle of All-in-One Event Understanding Dataset with Event Argument Annotation",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "b91ff4e3d067f1c5418846bdb9888ad3fb02cceb",
+    "abstract": "Understanding events in texts is a core objective of natural language understanding, which requires detecting event occurrences, extracting event arguments, and analyzing inter-event relationships. However, due to the annotation challenges brought by task complexity, a large-scale dataset covering the full process of event understanding has long been absent. In this paper, we introduce MAVEN-Arg, which augments MAVEN datasets with event argument annotations, making the first all-in-one dataset supporting event detection, event argument extraction (EAE), and event relation extraction. As an EAE benchmark, MAVEN-Arg offers three main advantages: (1) a comprehensive schema covering 162 event types and 612 argument roles, all with expert-written definitions and examples; (2) a large data scale, containing 98,591 events and 290,613 arguments obtained with laborious human annotation; (3) the exhaustive annotation supporting all task variants of EAE, which annotates both entity and non-entity event arguments in document level. Experiments indicate that MAVEN-Arg is quite challenging for both fine-tuned EAE models and proprietary large language models (LLMs). Furthermore, to demonstrate the benefits of an all-in-one dataset, we preliminarily explore a potential application, future event prediction, with LLMs. MAVEN-Arg and codes can be obtained from https://github.com/THU-KEG/MAVEN-Argument.",
+    "authors": [
+        "Xiaozhi Wang",
+        "Hao Peng",
+        "Yong Guan",
+        "Kaisheng Zeng",
+        "Jianhui Chen",
+        "Lei Hou",
+        "Xu Han",
+        "Yankai Lin",
+        "Zhiyuan Liu",
+        "Ruobing Xie",
+        "Jie Zhou",
+        "Juanzi Li"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "MAVEN-Arg is introduced, which augments MAVEN datasets with event argument annotations, making the first all-in-one dataset supporting event detection, event argument extraction (EAE), and event relation extraction."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

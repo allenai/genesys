@@ -1,0 +1,29 @@
+{
+    "acronym": "e9168b393b5ba1777d138f536c424dd1fd9ce0f4",
+    "title": "An All-MLP Sequence Modeling Architecture That Excels at Copying",
+    "seed_ids": [
+        "repeatafterme",
+        "189fde3f4dfa105bb51472a8945618f395919560",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "6f68e1bb253925d8431588555d3010419f322e04"
+    ],
+    "s2id": "e9168b393b5ba1777d138f536c424dd1fd9ce0f4",
+    "abstract": "Recent work demonstrated Transformers' ability to efficiently copy strings of exponential sizes, distinguishing them from other architectures. We present the Causal Relation Network (CausalRN), an all-MLP sequence modeling architecture that can match Transformers on the copying task. Extending Relation Networks (RNs), we implemented key innovations to support autoregressive sequence modeling while maintaining computational feasibility. We discovered that exponentially-activated RNs are reducible to linear time complexity, and pre-activation normalization induces an infinitely growing memory pool, similar to a KV cache. In ablation study, we found both exponential activation and pre-activation normalization are indispensable for Transformer-level copying. Our findings provide new insights into what actually constitutes strong in-context retrieval.",
+    "authors": [
+        "Chenwei Cui",
+        "Zehao Yan",
+        "Gedeon Muhawenayo",
+        "Hannah Kerner"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Causal Relation Network (CausalRN), an all-MLP sequence modeling architecture that can match Transformers on the copying task is presented, and it is found both exponential activation and pre-activation normalization are indispensable for Transformer-level copying."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

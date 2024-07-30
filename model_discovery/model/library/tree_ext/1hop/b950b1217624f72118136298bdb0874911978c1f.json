@@ -1,0 +1,29 @@
+{
+    "acronym": "b950b1217624f72118136298bdb0874911978c1f",
+    "title": "HiGen: Hierarchical Graph Generative Networks",
+    "seed_ids": [
+        "performer",
+        "8b20edda4a0013d628b9c4e9e4b42a5f1310b12f",
+        "0dcd241afa426b287da651c13c61bb26f7c546dd",
+        "59b7448f816908cfb49a2ab5e63b2fa5786387f7",
+        "9714b88d4d984426d901fc539c7c69d03290ce12",
+        "277dd73bfeb5c46513ce305136b0e71fcd2a311c",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d"
+    ],
+    "s2id": "b950b1217624f72118136298bdb0874911978c1f",
+    "abstract": "Most real-world graphs exhibit a hierarchical structure, which is often overlooked by existing graph generation methods. To address this limitation, we propose a novel graph generative network that captures the hierarchical nature of graphs and successively generates the graph sub-structures in a coarse-to-fine fashion. At each level of hierarchy, this model generates communities in parallel, followed by the prediction of cross-edges between communities using separate neural networks. This modular approach enables scalable graph generation for large and complex graphs. Moreover, we model the output distribution of edges in the hierarchical graph with a multinomial distribution and derive a recursive factorization for this distribution. This enables us to generate community graphs with integer-valued edge weights in an autoregressive manner. Empirical studies demonstrate the effectiveness and scalability of our proposed generative model, achieving state-of-the-art performance in terms of graph quality across various benchmark datasets. The code is available at https://github.com/Karami-m/HiGen_main.",
+    "authors": [
+        "Mahdi Karami"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel graph generative network that captures the hierarchical nature of graphs and successively generates the graph sub-structures in a coarse-to-fine fashion is proposed, achieving state-of-the-art performance in terms of graph quality across various benchmark datasets."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

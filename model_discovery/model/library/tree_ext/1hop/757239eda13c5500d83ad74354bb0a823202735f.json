@@ -1,0 +1,27 @@
+{
+    "acronym": "757239eda13c5500d83ad74354bb0a823202735f",
+    "title": "Linear attention coupled Fourier neural operator for simulation of three-dimensional turbulence",
+    "seed_ids": [
+        "linformer",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87"
+    ],
+    "s2id": "757239eda13c5500d83ad74354bb0a823202735f",
+    "abstract": "Modeling three-dimensional (3D) turbulence by neural networks is difcult because 3D turbulence is highly-nonlinear with high degrees of freedom and the corresponding simulation is memoryintensive. Recently, the attention mechanism has been shown as a promising approach to boost the performance of neural networks on turbulence simulation. However, the standard self-attention mechanism uses O(n2) time and space with respect to input dimension n, and such quadratic complexity has become the main bottleneck for attention to be applied on 3D turbulence simulation. In this work, we resolve this issue with the concept of linear attention network. The linear attention approximates the standard attention by adding two linear projections, reducing the overall self-attention complexity from O(n2) to O(n) in both time and space. The linear attention coupled Fourier neural operator (LAFNO) is developed for the simulation of 3D isotropic turbulence and free shear turbulence. Numerical simulations show that the linear attention mechanism provides 40% error reduction at the same level of computational cost, and LAFNO can accurately reconstruct a variety of statistics and instantaneous spatial structures of 3D turbulence. The linear attention method would be helpful for the improvement of neural network models of 3D nonlinear problems involving high-dimensional data in other scientifc domains.",
+    "authors": [
+        "W. Peng",
+        "Zelong Yuan",
+        "Zhijie Li",
+        "Jianchun Wang"
+    ],
+    "venue": "The Physics of Fluids",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The linear attention coupled Fourier neural operator (LAFNO) is developed for the simulation of 3D isotropic turbulence and free shear turbulence and Numerical simulations show that the linear attention mechanism provides 40% error reduction at the same level of computational cost, and LAFNO can accurately reconstruct a variety of statistics and instantaneous spatial structures of3D turbulence."
+    },
+    "citationCount": 23,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

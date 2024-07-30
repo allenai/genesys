@@ -1,0 +1,49 @@
+{
+    "acronym": "e8d49f58030a861810eec227903f39031e7622e6",
+    "title": "Discrete Diffusion Language Model for Long Text Summarization",
+    "seed_ids": [
+        "mamba",
+        "sedd",
+        "d3pms",
+        "0a32e6ff6eaac83ff325bae4557a8362222979aa",
+        "ce806f8d32f6fb1eaa821248a1bc4fa2cd949fbb",
+        "4319a5faceb0f94fc791e49dc0b94dd4d142f90e",
+        "67cdecbcfed07b9a29d9e2a92da684604383afd7",
+        "5f90d43e6ece5c6ee6e8186e4b57d46c85377713",
+        "1f898d66acabff511a3871b82799aa73c0055402",
+        "a1186d7d9a9ef258c76afef1177e4f348061a537",
+        "33433e9103b00aa0c42597cbfe13a429fbf5abdf",
+        "a979742220a88b1d32e1fbe72c41e8ba3007053c",
+        "22775e58932cdfbd273a2a835a22c5d86800a458",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "0b9770a377b3f96cef9f268cee1791d39a0d4893",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "ac2e15fbfe3ea338725f5d33d17a5a687609c431",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "e9b9a47cd81c66603c827f0f2bc4fba0d9ae77c4",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "063eee315e864f0842d3074629dccc4bb36d19e7",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "e8d49f58030a861810eec227903f39031e7622e6",
+    "abstract": "While diffusion models excel at conditional generating high-quality images, prior works in discrete diffusion models were not evaluated on conditional long-text generation. In this work, we address the limitations of prior discrete diffusion models for conditional long-text generation, particularly in long sequence-to-sequence tasks such as abstractive summarization. Despite fast decoding speeds compared to autoregressive methods, previous diffusion models failed on the abstractive summarization task due to the incompatibility between the backbone architectures and the random noising process. To overcome these challenges, we introduce a novel semantic-aware noising process that enables Transformer backbones to handle long sequences effectively. Additionally, we propose CrossMamba, an adaptation of the Mamba model to the encoder-decoder paradigm, which integrates seamlessly with the random absorbing noising process. Our approaches achieve state-of-the-art performance on three benchmark summarization datasets: Gigaword, CNN/DailyMail, and Arxiv, outperforming existing discrete diffusion models on ROUGE metrics as well as possessing much faster speed in inference compared to autoregressive models.",
+    "authors": [
+        "Do Huu Dat",
+        "Do Duc Anh",
+        "A. Luu",
+        "W. Buntine"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a novel semantic-aware noising process that enables Transformer backbones to handle long sequences effectively and proposes CrossMamba, an adaptation of the Mamba model to the encoder-decoder paradigm, which integrates seamlessly with the random absorbing noising process."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

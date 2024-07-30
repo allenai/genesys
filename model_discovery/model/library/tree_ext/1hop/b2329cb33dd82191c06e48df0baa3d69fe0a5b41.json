@@ -1,0 +1,26 @@
+{
+    "acronym": "b2329cb33dd82191c06e48df0baa3d69fe0a5b41",
+    "title": "GPT-HateCheck: Can LLMs Write Better Functional Tests for Hate Speech Detection?",
+    "seed_ids": [
+        "gpt3",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c"
+    ],
+    "s2id": "b2329cb33dd82191c06e48df0baa3d69fe0a5b41",
+    "abstract": "Online hate detection suffers from biases incurred in data sampling, annotation, and model pre-training. Therefore, measuring the averaged performance over all examples in held-out test data is inadequate. Instead, we must identify specific model weaknesses and be informed when it is more likely to fail. A recent proposal in this direction is HateCheck, a suite for testing fine-grained model functionalities on synthesized data generated using templates of the kind \u201cYou are just a [slur] to me.\u201d However, despite enabling more detailed diagnostic insights, the HateCheck test cases are often generic and have simplistic sentence structures that do not match the real-world data. To address this limitation, we propose GPT-HateCheck, a framework to generate more diverse and realistic functional tests from scratch by instructing large language models (LLMs). We employ an additional natural language inference (NLI) model to verify the generations. Crowd-sourced annotation demonstrates that the generated test cases are of high quality. Using the new functional tests, we can uncover model weaknesses that would be overlooked using the original HateCheck dataset.",
+    "authors": [
+        "Yiping Jin",
+        "Leo Wanner",
+        "A. Shvets"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "GPT-HateCheck is proposed, a framework to generate more diverse and realistic functional tests from scratch by instructing large language models (LLMs) and an additional natural language inference (NLI) model to verify the generations."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

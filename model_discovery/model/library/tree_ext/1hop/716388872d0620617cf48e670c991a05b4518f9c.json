@@ -1,0 +1,35 @@
+{
+    "acronym": "716388872d0620617cf48e670c991a05b4518f9c",
+    "title": "ALPINE: An adaptive language-agnostic pruning method for language models for code",
+    "seed_ids": [
+        "transformer",
+        "3ba0b9250d5e91c01eb7cca8269afec23f24c515",
+        "51db4c39dc0bdf5c95c8bbe89bf4211b48d0b4df",
+        "9ada8fa11b1cdece31f253acae50b62df8d5f823",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "e9fc39f56abbc6b8aed1e05496d985e70345a95a",
+        "4b27f18bff43d605805c92696a979714ced0b805",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "0fe2636446cd686830da3d971b31a004d6094b3c"
+    ],
+    "s2id": "716388872d0620617cf48e670c991a05b4518f9c",
+    "abstract": "Language models of code have demonstrated state-of-the-art performance across various software engineering and source code analysis tasks. However, their demanding computational resource requirements and consequential environmental footprint remain as significant challenges. This work introduces ALPINE, an adaptive programming language-agnostic pruning technique designed to substantially reduce these models' computational overhead. The proposed method offers a pluggable layer that can be integrated with all Transformer-based models. With ALPINE, input sequences undergo adaptive compression throughout the pipeline, reaching a size up to $\\times 3$ less their initial size, resulting in significantly reduced computational load. Our experiments on two software engineering tasks, defect prediction and code clone detection across three language models CodeBERT, GraphCodeBERT and UniXCoder show that ALPINE achieves up to a 50% reduction in FLOPs, a 58.1% decrease in memory footprint, and a 28.1% improvement in throughput on average. This led to a reduction in CO2 by up to $44.85$%. Importantly, it achieves the reduction in computation resources while maintaining up to 98.1% of the original predictive performance. These findings highlight the potential of ALPINE in making language models of code more resource-efficient and accessible while preserving their performance, contributing to the overall sustainability of adopting language models in software development. Also, it sheds light on redundant and noisy information in source code analysis corpora, as shown by the substantial sequence compression achieved by ALPINE.",
+    "authors": [
+        "M. Saad",
+        "Jos'e Antonio Hern'andez L'opez",
+        "Boqi Chen",
+        "D'aniel Varr'o",
+        "Tushar Sharma"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces ALPINE, an adaptive programming language-agnostic pruning technique designed to substantially reduce these models' computational overhead and sheds light on redundant and noisy information in source code analysis corpora, as shown by the substantial sequence compression achieved by ALPINE."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

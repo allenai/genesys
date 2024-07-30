@@ -1,0 +1,32 @@
+{
+    "acronym": "1b5bb1189998e49771b16a57865bf1be51598800",
+    "title": "Causality is all you need",
+    "seed_ids": [
+        "bert",
+        "29584ed6d68a06fdf91440a018f6bc83a44fd177",
+        "270f3bea8ca801870a6cc56b4d36f7f2019c9ed0",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "710d183174844da5b7f392667f3cc25d2b098dde",
+        "cc2d1a66c701e9be9124eb95431b6c3dd79a61d3"
+    ],
+    "s2id": "1b5bb1189998e49771b16a57865bf1be51598800",
+    "abstract": "In the fundamental statistics course, students are taught to remember the well-known saying:\"Correlation is not Causation\". Till now, statistics (i.e., correlation) have developed various successful frameworks, such as Transformer and Pre-training large-scale models, which have stacked multiple parallel self-attention blocks to imitate a wide range of tasks. However, in the causation community, how to build an integrated causal framework still remains an untouched domain despite its excellent intervention capabilities. In this paper, we propose the Causal Graph Routing (CGR) framework, an integrated causal scheme relying entirely on the intervention mechanisms to reveal the cause-effect forces hidden in data. Specifically, CGR is composed of a stack of causal layers. Each layer includes a set of parallel deconfounding blocks from different causal graphs. We combine these blocks via the concept of the proposed sufficient cause, which allows the model to dynamically select the suitable deconfounding methods in each layer. CGR is implemented as the stacked networks, integrating no confounder, back-door adjustment, front-door adjustment, and probability of sufficient cause. We evaluate this framework on two classical tasks of CV and NLP. Experiments show CGR can surpass the current state-of-the-art methods on both Visual Question Answer and Long Document Classification tasks. In particular, CGR has great potential in building the\"causal\"pre-training large-scale model that effectively generalizes to diverse tasks. It will improve the machines' comprehension of causal relationships within a broader semantic space.",
+    "authors": [
+        "Ning Xu",
+        "Yifei Gao",
+        "Hongshuo Tian",
+        "Yongdong Zhang",
+        "An-An Liu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Causal Graph Routing framework is proposed, an integrated causal scheme relying entirely on the intervention mechanisms to reveal the cause-effect forces hidden in data, and can surpass the current state-of-the-art methods on both Visual Question Answer and Long Document Classification tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

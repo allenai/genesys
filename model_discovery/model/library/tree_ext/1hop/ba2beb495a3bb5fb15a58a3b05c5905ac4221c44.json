@@ -1,0 +1,28 @@
+{
+    "acronym": "ba2beb495a3bb5fb15a58a3b05c5905ac4221c44",
+    "title": "Stochastic Non-Autoregressive Transformer-Based Multi-Modal Pedestrian Trajectory Prediction for Intelligent Vehicles",
+    "seed_ids": [
+        "transformer",
+        "f6390beca54411b06f3bde424fb983a451789733"
+    ],
+    "s2id": "ba2beb495a3bb5fb15a58a3b05c5905ac4221c44",
+    "abstract": "Pedestrian trajectory prediction, which aims at predicting the future positions of all pedestrians in a crowd scene given their past trajectories, is the cornerstone of autonomous driving and intelligent transportation systems. Accurate prediction and fast inference are both indispensable for real-world applications. In this paper, we propose a stochastic non-autoregressive Transformer-based multi-modal trajectory prediction model to address the two challenges. Specifically, a novel graph attention module dedicated to joint learning of social and temporal interaction is proposed to explore the complex interaction among pedestrians while integrating sparse attention mechanism, pedestrian identity, and temporal order contained in the trajectory data. By doing so, the interaction across temporal and social dimensions can be simultaneously processed to extract abundant context features for prediction. Besides, to accelerate inference speed, we put forward a stochastic non-autoregressive Transformer model with multi-modal prediction capability where each future trajectory can be inferred in a parallel fashion, therefore, resulting in diverse trajectory predictions and less computational cost. Extensive experiments and ablation studies are performed to evaluate our approach. The empirical results demonstrate that the proposed model not only produces high prediction accuracy but also infers with fast speed. The code of the proposed method will be publicly available at https://github.com/xbchen82/SNARTF.",
+    "authors": [
+        "Xiaobo Chen",
+        "Huanjian Zhang",
+        "Fuwen Deng",
+        "Jun Liang",
+        "Jian Yang"
+    ],
+    "venue": "IEEE transactions on intelligent transportation systems (Print)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A stochastic non-autoregressive Transformer-based multi-modal trajectory prediction model with multi-modal prediction capability where each future trajectory can be inferred in a parallel fashion, resulting in diverse trajectory predictions and less computational cost."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

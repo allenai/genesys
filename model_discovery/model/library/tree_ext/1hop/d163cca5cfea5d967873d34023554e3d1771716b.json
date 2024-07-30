@@ -1,0 +1,34 @@
+{
+    "acronym": "d163cca5cfea5d967873d34023554e3d1771716b",
+    "title": "Unraveling Attention via Convex Duality: Analysis and Interpretations of Vision Transformers",
+    "seed_ids": [
+        "metaformer",
+        "9b6af0e358e76d22f209c75b1702c3e6ea7815b1",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "a7721b6523971394a8bd4bfda139122ef59b22cd",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "40ca4fcfffa7ca9aa9b7ff06ecf3cd0436712d78"
+    ],
+    "s2id": "d163cca5cfea5d967873d34023554e3d1771716b",
+    "abstract": "Vision transformers using self-attention or its proposed alternatives have demonstrated promising results in many image related tasks. However, the underpinning inductive bias of attention is not well understood. To address this issue, this paper analyzes attention through the lens of convex duality. For the non-linear dot-product self-attention, and alternative mechanisms such as MLP-mixer and Fourier Neural Operator (FNO), we derive equivalent finite-dimensional convex problems that are interpretable and solvable to global optimality. The convex programs lead to {\\it block nuclear-norm regularization} that promotes low rank in the latent feature and token dimensions. In particular, we show how self-attention networks implicitly clusters the tokens, based on their latent similarity. We conduct experiments for transferring a pre-trained transformer backbone for CIFAR-100 classification by fine-tuning a variety of convex attention heads. The results indicate the merits of the bias induced by attention compared with the existing MLP or linear heads.",
+    "authors": [
+        "Arda Sahiner",
+        "Tolga Ergen",
+        "Batu Mehmet Ozturkler",
+        "J. Pauly",
+        "M. Mardani",
+        "Mert Pilanci"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper analyzes attention through the lens of convex duality, and shows how self-attention networks implicitly clusters the tokens, based on their latent similarity, in order to derive equivalent finite-dimensional convex problems that are interpretable and solvable to global optimality."
+    },
+    "citationCount": 27,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

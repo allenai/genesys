@@ -1,0 +1,31 @@
+{
+    "acronym": "d13a0c8d49cb268d8d245925baee0316c1fe1875",
+    "title": "Which transformer architecture fits my data? A vocabulary bottleneck in self-attention",
+    "seed_ids": [
+        "gpt",
+        "bc022dbb37b1bbf3905a7404d19c03ccbf6b81a8",
+        "b1c39d042fdf8f00a407b0df734764beb6c3b062",
+        "e763fdc9ae56826ff799163ea035b29bffd8ea6f",
+        "dd6de9423afcc0f821fee2bd0363a4091c7f8cd3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d13a0c8d49cb268d8d245925baee0316c1fe1875",
+    "abstract": "After their successful debut in natural language processing, Transformer architectures are now becoming the de-facto standard in many domains. An obstacle for their deployment over new modalities is the architectural configuration: the optimal depth-to-width ratio has been shown to dramatically vary across data types (e.g., $10$x larger over images than over language). We theoretically predict the existence of an embedding rank bottleneck that limits the contribution of self-attention width to the Transformer expressivity. We thus directly tie the input vocabulary size and rank to the optimal depth-to-width ratio, since a small vocabulary size or rank dictates an added advantage of depth over width. We empirically demonstrate the existence of this bottleneck and its implications on the depth-to-width interplay of Transformer architectures, linking the architecture variability across domains to the often glossed-over usage of different vocabulary sizes or embedding ranks in different domains. As an additional benefit, our rank bottlenecking framework allows us to identify size redundancies of $25\\%-50\\%$ in leading NLP models such as ALBERT and T5.",
+    "authors": [
+        "Noam Wies",
+        "Yoav Levine",
+        "Daniel Jannai",
+        "A. Shashua"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work theoretically predicts the existence of an embedding rank bottleneck that limits the contribution of self-attention width to the Transformer expressivity, and empirically demonstrates the existence and implications on the depth-to-width interplay of Transformer architectures."
+    },
+    "citationCount": 18,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

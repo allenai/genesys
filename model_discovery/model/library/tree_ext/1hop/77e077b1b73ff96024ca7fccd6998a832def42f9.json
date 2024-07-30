@@ -1,0 +1,28 @@
+{
+    "acronym": "77e077b1b73ff96024ca7fccd6998a832def42f9",
+    "title": "A Dual-Branch Fusion Network Based on Reconstructed Transformer for Building Extraction in Remote Sensing Imagery",
+    "seed_ids": [
+        "metaformer",
+        "bf6ce546c589fa8054b3972b266532664914bd21",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "77e077b1b73ff96024ca7fccd6998a832def42f9",
+    "abstract": "Automatic extraction of building contours from high-resolution images is of great significance in the fields of urban planning, demographics, and disaster assessment. Network models based on convolutional neural network (CNN) and transformer technology have been widely used for semantic segmentation of buildings from high resolution remote sensing images (HRSI). However, the fixed geometric structure and the local receptive field of the convolutional kernel are not good at global feature extraction, and the transformer technique with self-attention mechanism introduces computational redundancies and extracts local feature details poorly in the process of modeling the global contextual information. In this paper, a dual-branch fused reconstructive transformer network, DFRTNet, is proposed for efficient and accurate building extraction. In the encoder, the traditional transformer is reconfigured by designing the local and global feature extraction module (LGFE); the branch of global feature extraction (GFE) performs dynamic range attention (DRA) based on the idea of top-k attention for extracting global features; furthermore, the branch of local feature extraction (LFE) is used to obtain fine-grained features. The multilayer perceptron (MLP) is employed to efficiently fuse the local and global features. In the decoder, a simple channel attention module (CAM) is used in the up-sampling part to enhance channel dimension features. Our network achieved the best segmentation accuracy on both the WHU and Massachusetts building datasets when compared to other mainstream and state-of-the-art methods.",
+    "authors": [
+        "Yitong Wang",
+        "Shumin Wang",
+        "Aixia Dou"
+    ],
+    "venue": "Italian National Conference on Sensors",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A dual-branch fused reconstructive transformer network, DFRTNet, is proposed for efficient and accurate building extraction and achieved the best segmentation accuracy on both the WHU and Massachusetts building datasets when compared to other mainstream and state-of-the-art methods."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

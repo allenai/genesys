@@ -1,0 +1,37 @@
+{
+    "acronym": "d9e8eed5ffdbd323d90e1986191b1eb5c8cb9f13",
+    "title": "Feasibility of State Space Models for Network Traffic Generation",
+    "seed_ids": [
+        "mamba",
+        "6acbc413e8cf3c5c52d37c2aeefe80334ec0fccf",
+        "a7fd76d3ac304fa14ecf34cadf3f0af9d2866e75",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "2d82ee05b132d4681c3bd517afc17d608fe6e525",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d9e8eed5ffdbd323d90e1986191b1eb5c8cb9f13",
+    "abstract": "Many problems in computer networking rely on parsing collections of network traces (e.g., traffic prioritization, intrusion detection). Unfortunately, the availability and utility of these collections is limited due to privacy concerns, data staleness, and low representativeness. While methods for generating data to augment collections exist, they often fall short in replicating the quality of real-world traffic In this paper, we i) survey the evolution of traffic simulators/generators and ii) propose the use of state-space models, specifically Mamba, for packet-level, synthetic network trace generation by modeling it as an unsupervised sequence generation problem. Early evaluation shows that state-space models can generate synthetic network traffic with higher statistical similarity to real traffic than the state-of-the-art. Our approach thus has the potential to reliably generate realistic, informative synthetic network traces for downstream tasks.",
+    "authors": [
+        "Andrew Chu",
+        "Xi Jiang",
+        "Shinan Liu",
+        "A. Bhagoji",
+        "Francesco Bronzino",
+        "Paul Schmitt",
+        "Nick Feamster"
+    ],
+    "venue": "NAIC",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes the use of state-space models, specifically Mamba, for packet-level, synthetic network trace generation by modeling it as an unsupervised sequence generation problem and shows that state-space models can generate synthetic network traffic with higher statistical similarity to real traffic than the state-of-the-art."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

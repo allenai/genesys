@@ -1,0 +1,32 @@
+{
+    "acronym": "7091030c831a81f5968285e91340b9fd5a107f6c",
+    "title": "Training and Inference on Any-Order Autoregressive Models the Right Way",
+    "seed_ids": [
+        "d3pms",
+        "063eee315e864f0842d3074629dccc4bb36d19e7",
+        "599bc7cfe98c2b57ddbe111412203a636da57be0",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "a77b69be7727f61b61d02bd0e03209c830267c0b",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "dd6de9423afcc0f821fee2bd0363a4091c7f8cd3"
+    ],
+    "s2id": "7091030c831a81f5968285e91340b9fd5a107f6c",
+    "abstract": "Conditional inference on arbitrary subsets of variables is a core problem in probabilistic inference with important applications such as masked language modeling and image inpainting. In recent years, the family of Any-Order Autoregressive Models (AO-ARMs) -- closely related to popular models such as BERT and XLNet -- has shown breakthrough performance in arbitrary conditional tasks across a sweeping range of domains. But, in spite of their success, in this paper we identify significant improvements to be made to previous formulations of AO-ARMs. First, we show that AO-ARMs suffer from redundancy in their probabilistic model, i.e., they define the same distribution in multiple different ways. We alleviate this redundancy by training on a smaller set of univariate conditionals that still maintains support for efficient arbitrary conditional inference. Second, we upweight the training loss for univariate conditionals that are evaluated more frequently during inference. Our method leads to improved performance with no compromises on tractability, giving state-of-the-art likelihoods in arbitrary conditional modeling on text (Text8), image (CIFAR10, ImageNet32), and continuous tabular data domains.",
+    "authors": [
+        "Andy Shih",
+        "Dorsa Sadigh",
+        "Stefano Ermon"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper shows that AO-ARMs suffer from redundancy in their probabilistic model, and alleviates this redundancy by training on a smaller set of univariate conditionals that still maintains support for efficient arbitrary conditional inference, leading to improved performance with no compromises on tractability."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,40 @@
+{
+    "acronym": "ec63a748510824ea63b4e0b39dbcdfc06985ed04",
+    "title": "Are We Really Making Much Progress? Bag-of-Words vs. Sequence vs. Graph vs. Hierarchy for Single-and Multi-Label Text Classi\ufb01cation",
+    "seed_ids": [
+        "gmlp",
+        "786077a54eee75d0fd74b8565f91b9386a6344cd",
+        "15a6ae89b2bc959d4a5b48a8ce590526b50f1c98",
+        "a2dc903de8559fde0e32e163fb267d228735cd43",
+        "a554a0aae55be5597de8f6ece0a4dd0bd5a0e5f4",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "adc61e21eafecfbf6ebecc570f9f913659a2bfb2",
+        "2573af4e13d9a5dddb257d22cd38a600528d9a8b",
+        "3bcb17559ce96eb20fa79af8194f4af0380d194a",
+        "80f9f109d1564cb8f82aa440a5f6f3fbe220c9ef",
+        "5618ff7d0b6ee52280b73f4d106264fc91bd9a1e"
+    ],
+    "s2id": "ec63a748510824ea63b4e0b39dbcdfc06985ed04",
+    "abstract": "The popularity of graph neural networks has triggered a resurgence of graph-based meth-ods for single-label and multi-label text clas-si\ufb01cation. However, it is unclear whether these graph-based methods are bene\ufb01cial compared to standard machine learning meth-ods and modern pretrained language models. We compare a rich selection of bag-of-words, sequence-based, graph-based, and hierarchical methods for text classi\ufb01cation. We aggregate results from the literature over 5 single-label and 7 multi-label datasets and run our own experiments. Our \ufb01ndings un-ambiguously demonstrate that for single-label and multi-label classi\ufb01cation tasks, the graph-based methods fail to outperform \ufb01ne-tuned language models and sometimes even perform worse than standard machine learning meth-ods like multilayer perceptron (MLP) on a bag-of-words. This questions the enormous amount of effort put into the development of new graph-based methods in the last years and the promises they make for text classi\ufb01cation. Given our extensive experiments, we con\ufb01rm that pretrained language models remain state-of-the-art in text classi\ufb01cation despite all recent specialized advances. We argue that future work in text classi\ufb01cation should thoroughly test against strong baselines like MLPs to properly assess the true scienti\ufb01c progress. The source code is available:",
+    "authors": [
+        "Lukas Galke",
+        "Andor Diera",
+        "Bao Xin Lin",
+        "Bhakti Khera",
+        "Tim Meuser",
+        "Tushar Singhal",
+        "Fabian Karl",
+        "A. Scherp"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is argued that future work in text classi\ufb01cation should thoroughly test against strong baselines like MLPs to properly assess the true scienti\ufb01c progress and that pretrained language models remain state-of-the-art in text classi\ufb01cation despite all recent specialized advances."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

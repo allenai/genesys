@@ -1,0 +1,26 @@
+{
+    "acronym": "16bdaa61c9ca4694f8edb08185475f040800f2c4",
+    "title": "Towards Understanding Counseling Conversations: Domain Knowledge and Large Language Models",
+    "seed_ids": [
+        "bert",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "16bdaa61c9ca4694f8edb08185475f040800f2c4",
+    "abstract": "Understanding the dynamics of counseling conversations is an important task, yet it is a challenging NLP problem regardless of the recent advance of Transformer-based pre-trained language models. This paper proposes a systematic approach to examine the efficacy of domain knowledge and large language models (LLMs) in better representing conversations between a crisis counselor and a help seeker. We empirically show that state-of-the-art language models such as Transformer-based models and GPT models fail to predict the conversation outcome. To provide richer context to conversations, we incorporate human-annotated domain knowledge and LLM-generated features; simple integration of domain knowledge and LLM features improves the model performance by approximately 15%. We argue that both domain knowledge and LLM-generated features can be exploited to better characterize counseling conversations when they are used as an additional context to conversations.",
+    "authors": [
+        "Younghun Lee",
+        "Dan Goldwasser",
+        "Laura Schwab Reese"
+    ],
+    "venue": "Findings",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper empirically show that state-of-the-art language models such as Transformer-based models and GPT models fail to predict the conversation outcome, and argues that both domain knowledge and large language models can be exploited to better characterize counseling conversations when they are used as an additional context to conversations."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

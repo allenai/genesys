@@ -1,0 +1,30 @@
+{
+    "acronym": "c4ecf3f935a2d019cfe880db0ba1fbe7a6af2e9d",
+    "title": "Transformer-Based Image Inpainting Detection via Label Decoupling and Constrained Adversarial Training",
+    "seed_ids": [
+        "transformer",
+        "6e8f35c6d54acb14109c9b792a62609eac8a7b5e"
+    ],
+    "s2id": "c4ecf3f935a2d019cfe880db0ba1fbe7a6af2e9d",
+    "abstract": "Image inpainting based on generative adversarial networks (GANs) has achieved great success in producing visually plausible images and plays an important role in many real tasks. However, the techniques of image inpainting might also be maliciously used, e.g., altering or removing interesting objects to report fake news. Despite the promising performance of recently developed inpainting detection algorithms, they are built on convolutional neural networks (CNNs) with limited receptive fields. Consequently, they fail to fully capture the disparity between the inpainted regions and untouched regions and thus are ineffective in obtaining fine-grained detection results. In this work, we develop a new image inpainting detection approach. First, we propose a locally enhanced transformer architecture tailored for image inpainting detection. Unlike previous CNN-based methods, our approach leverages both the short-range and long-range dependencies of pixels, enabling the learning of diverse statistical behaviors of inpainted and untouched regions. Second, to mitigate the distraction caused by near-edge pixels with a mixed nature during training, we propose decoupling the label into a body map and a soft-edge map, and then a cross-modality attention module is designed to propagate their information interactively. It demonstrates that our decoupling strategy outperforms the conventional edge supervision in enhancing detection accuracy. Finally, we devise a constrained adversarial training methodology in consideration of the confrontational generation procedure of deep image inpainting methods. It shows that our constrained adversarial training further enhances the detection performance by adaptively introducing interference noise in the inpainted regions. Extensive experiments validate the superiority of our scheme compared to existing CNN-based methods, showcasing its desirable detection generalizability for both deep inpainting and traditional inpainting algorithms.",
+    "authors": [
+        "Yuanman Li",
+        "Liangpei Hu",
+        "Li Dong",
+        "Haiwei Wu",
+        "Jinyu Tian",
+        "Jiantao Zhou",
+        "Xia Li"
+    ],
+    "venue": "IEEE transactions on circuits and systems for video technology (Print)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A locally enhanced transformer architecture tailored for image inpainting detection that leverages both the short-range and long-range dependencies of pixels, enabling the learning of diverse statistical behaviors of inpainted and untouched regions and a constrained adversarial training methodology."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

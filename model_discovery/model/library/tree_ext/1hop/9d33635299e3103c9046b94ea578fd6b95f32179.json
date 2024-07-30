@@ -1,0 +1,31 @@
+{
+    "acronym": "9d33635299e3103c9046b94ea578fd6b95f32179",
+    "title": "MoCoUTRL: a momentum contrastive framework for unsupervised text representation learning",
+    "seed_ids": [
+        "gpt",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "b76e98a0a023d37c6534aa2ead09c8ff595f0bae"
+    ],
+    "s2id": "9d33635299e3103c9046b94ea578fd6b95f32179",
+    "abstract": "This paper presents MoCoUTRL: a Momentum Contrastive Framework for Unsupervised Text Representation Learning. This model improves two aspects of recently popular contrastive learning algorithms in natural language processing (NLP). Firstly, MoCoUTRL employs multi-granularity semantic contrastive learning objectives, enabling a more comprehensive understanding of the semantic features of samples. Secondly, MoCoUTRL uses a dynamic dictionary to act as the approximately ground-truth representation for each token, providing the pseudo labels for token-level contrastive learning. The MoCoUTRL can extend the use of pre-trained language models (PLM) and even large-scale language models (LLM) into a plug-and-play semantic feature extractor that can fuel multiple downstream tasks. Experimental results on several publicly available datasets and further theoretical analysis validate the effectiveness and interpretability of the proposed method in this paper.",
+    "authors": [
+        "Ao Zou",
+        "Wenning Hao",
+        "Dawei Jin",
+        "Gang Chen",
+        "Feiyan Sun"
+    ],
+    "venue": "Connection science",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The MoCoUTRL employs multi-granularity semantic contrastive learning objectives, enabling a more comprehensive understanding of the semantic features of samples, and uses a dynamic dictionary to act as the approximately ground-truth representation for each token."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,26 @@
+{
+    "acronym": "7a5244214ec0eab43635fe711038ad7f02663dcb",
+    "title": "Disease- and Drug-Related Knowledge Extraction for Health Management from Online Health Communities Based on BERT-BiGRU-ATT",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "7a5244214ec0eab43635fe711038ad7f02663dcb",
+    "abstract": "Knowledge extraction from rich text in online health communities can supplement and improve the existing knowledge base, supporting evidence-based medicine and clinical decision making. The extracted time series health management data of users can help users with similar conditions when managing their health. By annotating four relationships, this study constructed a deep learning model, BERT-BiGRU-ATT, to extract disease\u2013medication relationships. A Chinese-pretrained BERT model was used to generate word embeddings for the question-and-answer data from online health communities in China. In addition, the bidirectional gated recurrent unit, combined with an attention mechanism, was employed to capture sequence context features and then to classify text related to diseases and drugs using a softmax classifier and to obtain the time series data provided by users. By using various word embedding training experiments and comparisons with classical models, the superiority of our model in relation to extraction was verified. Based on the knowledge extraction, the evolution of a user\u2019s disease progression was analyzed according to the time series data provided by users to further analyze the evolution of the user\u2019s disease progression. BERT word embedding, GRU, and attention mechanisms in our research play major roles in knowledge extraction. The knowledge extraction results obtained are expected to supplement and improve the existing knowledge base, assist doctors\u2019 diagnosis, and help users with dynamic lifecycle health management, such as user disease treatment management. In future studies, a co-reference resolution can be introduced to further improve the effect of extracting the relationships among diseases, drugs, and drug effects.",
+    "authors": [
+        "Yanli Zhang",
+        "Xinmiao Li",
+        "Yu Yang",
+        "Tao Wang"
+    ],
+    "venue": "International Journal of Environmental Research and Public Health",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A deep learning model is constructed, BERT-BiGRU-ATT, to extract disease\u2013medication relationships from rich text in online health communities, and the evolution of a user\u2019s disease progression was analyzed according to the time series data provided by users."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

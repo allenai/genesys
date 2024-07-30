@@ -1,0 +1,40 @@
+{
+    "acronym": "713806165610c237f551a7b68e6b09b3ded75502",
+    "title": "SparQ Attention: Bandwidth-Efficient LLM Inference",
+    "seed_ids": [
+        "gqa",
+        "cf188f980d987d70358e414f44505e8427496d08",
+        "b842b83a7ff5dff8e3b83915d8c15423b6085728",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "5f895e84c1fea75de07b4f90da518273c2e57291",
+        "5d032bd2632b6f5847767f39ce247098c6bbc563",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "40ca4fcfffa7ca9aa9b7ff06ecf3cd0436712d78",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "e3aa232577bb427b1f3a34acbdef84bd85734042"
+    ],
+    "s2id": "713806165610c237f551a7b68e6b09b3ded75502",
+    "abstract": "The computational difficulties of large language model (LLM) inference remain a significant obstacle to their widespread deployment. The need for many applications to support long input sequences and process them in large batches typically causes token-generation to be bottlenecked by data transfer. For this reason, we introduce SparQ Attention, a technique for increasing the inference throughput of LLMs by utilising memory bandwidth more efficiently within the attention layers, through selective fetching of the cached history. Our proposed technique can be applied directly to off-the-shelf LLMs during inference, without requiring any modification to the pre-training setup or additional fine-tuning. We show that SparQ Attention brings up to 8x savings in attention data transfers without substantial drops in accuracy, by evaluating Llama 2 and 3, Mistral, Gemma and Pythia models on a wide range of downstream tasks.",
+    "authors": [
+        "Luka Ribar",
+        "Ivan Chelombiev",
+        "Luke Hudlass-Galley",
+        "Charlie Blake",
+        "Carlo Luschi",
+        "Douglas Orr"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that SparQ Attention brings up to 8x savings in attention data transfers without substantial drops in accuracy, by evaluating Llama 2 and 3, Mistral, Gemma and Pythia models on a wide range of downstream tasks."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

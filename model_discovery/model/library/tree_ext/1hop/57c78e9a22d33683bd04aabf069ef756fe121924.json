@@ -1,0 +1,30 @@
+{
+    "acronym": "57c78e9a22d33683bd04aabf069ef756fe121924",
+    "title": "EEE-QA: Exploring Effective and Efficient Question-Answer Representations",
+    "seed_ids": [
+        "bert",
+        "ed38c6b157c11476939c426ec6871c926f2f3524",
+        "710d183174844da5b7f392667f3cc25d2b098dde",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "57c78e9a22d33683bd04aabf069ef756fe121924",
+    "abstract": "Current approaches to question answering rely on pre-trained language models (PLMs) like RoBERTa. This work challenges the existing question-answer encoding convention and explores finer representations. We begin with testing various pooling methods compared to using the begin-of-sentence token as a question representation for better quality. Next, we explore opportunities to simultaneously embed all answer candidates with the question. This enables cross-reference between answer choices and improves inference throughput via reduced memory usage. Despite their simplicity and effectiveness, these methods have yet to be widely studied in current frameworks. We experiment with different PLMs, and with and without the integration of knowledge graphs. Results prove that the memory efficacy of the proposed techniques with little sacrifice in performance. Practically, our work enhances 38-100% throughput with 26-65% speedups on consumer-grade GPUs by allowing for considerably larger batch sizes. Our work sends a message to the community with promising directions in both representation quality and efficiency for the question-answering task in natural language processing.",
+    "authors": [
+        "Zhanghao Hu",
+        "Yijun Yang",
+        "Junjie Xu",
+        "Yifu Qiu",
+        "Pinzhen Chen"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work challenges the existing question-answer encoding convention and explores finer representations and opportunities to simultaneously embed all answer candidates with the question to enable cross-reference between answer choices and improve inference throughput via reduced memory usage."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,33 @@
+{
+    "acronym": "6b66ea79bc382ec5dd695ccb0b437bf38e3de556",
+    "title": "Do we need Label Regularization to Fine-tune Pre-trained Language Models?",
+    "seed_ids": [
+        "gpt2",
+        "5335fe1bf347f7ad1dce1611ea4b60bd8391a090",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6b66ea79bc382ec5dd695ccb0b437bf38e3de556",
+    "abstract": "Knowledge Distillation (KD) is a prominent neural model compression technique that heavily relies on teacher network predictions to guide the training of a student model. Considering the ever-growing size of pre-trained language models (PLMs), KD is often adopted in many NLP tasks involving PLMs. However, it is evident that in KD, deploying the teacher network during training adds to the memory and computational requirements of training. In the computer vision literature, the necessity of the teacher network is put under scrutiny by showing that KD is a label regularization technique that can be replaced with lighter teacher-free variants such as the label-smoothing technique. However, to the best of our knowledge, this issue is not investigated in NLP. Therefore, this work concerns studying different label regularization techniques and whether we actually need them to improve the fine-tuning of smaller PLM networks on downstream tasks. In this regard, we did a comprehensive set of experiments on different PLMs such as BERT, RoBERTa, and GPT with more than 600 distinct trials and ran each configuration five times. This investigation led to a surprising observation that KD and other label regularization techniques do not play any meaningful role over regular fine-tuning when the student model is pre-trained. We further explore this phenomenon in different settings of NLP and computer vision tasks and demonstrate that pre-training itself acts as a kind of regularization, and additional label regularization is unnecessary.",
+    "authors": [
+        "I. Kobyzev",
+        "A. Jafari",
+        "Mehdi Rezagholizadeh",
+        "Tianda Li",
+        "Alan Do-Omri",
+        "Peng Lu",
+        "P. Poupart",
+        "A. Ghodsi"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This investigation led to a surprising observation that KD and other label regularization techniques do not play any meaningful role over regular fine-tuning when the student model is pre-trained, and additional labelRegularization is unnecessary."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

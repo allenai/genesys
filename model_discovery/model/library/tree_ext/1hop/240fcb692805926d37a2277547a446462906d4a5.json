@@ -1,0 +1,25 @@
+{
+    "acronym": "240fcb692805926d37a2277547a446462906d4a5",
+    "title": "Enhancing Micro Gesture Recognition for Emotion Understanding via Context-Aware Visual-Text Contrastive Learning",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "240fcb692805926d37a2277547a446462906d4a5",
+    "abstract": "Psychological studies have shown that Micro Gestures (MG) are closely linked to human emotions. MG-based emotion understanding has attracted much attention because it allows for emotion understanding through nonverbal body gestures without relying on identity information (e.g., facial and electrocardiogram data). Therefore, it is essential to recognize MG effectively for advanced emotion understanding. However, existing Micro Gesture Recognition (MGR) methods utilize only a single modality (e.g., RGB or skeleton) while overlooking crucial textual information. In this letter, we propose a simple but effective visual-text contrastive learning solution that utilizes text information for MGR. In addition, instead of using handcrafted prompts for visual-text contrastive learning, we propose a novel module called Adaptive prompting to generate context-aware prompts. The experimental results show that the proposed method achieves state-of-the-art performance on two public datasets. Furthermore, based on an empirical study utilizing the results of MGR for emotion understanding, we demonstrate that using the textual results of MGR significantly improves performance by 6%+ compared to directly using video as input.",
+    "authors": [
+        "Deng Li",
+        "Bohao Xing",
+        "Xin Liu"
+    ],
+    "venue": "IEEE Signal Processing Letters",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This letter proposes a simple but effective visual-text contrastive learning solution that utilizes text information for Micro Gesture Recognition (MGR) and proposes a novel module called Adaptive prompting to generate context-aware prompts."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

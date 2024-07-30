@@ -1,0 +1,28 @@
+{
+    "acronym": "f28bad7ffbfc23493ca882326fb55b80883a4e6e",
+    "title": "Understanding Position Bias Effects on Fairness in Social Multi-Document Summarization",
+    "seed_ids": [
+        "bert",
+        "b759a516922b163a93fea70bcc45708a6c24a9c1",
+        "274f903041b1a830b37f57929d837c1706e94ec7",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "f28bad7ffbfc23493ca882326fb55b80883a4e6e",
+    "abstract": "Text summarization models have typically focused on optimizing aspects of quality such as fluency, relevance, and coherence, particularly in the context of news articles. However, summarization models are increasingly being used to summarize diverse sources of text, such as social media data, that encompass a wide demographic user base. It is thus crucial to assess not only the quality of the generated summaries, but also the extent to which they can fairly represent the opinions of diverse social groups. Position bias, a long-known issue in news summarization, has received limited attention in the context of social multi-document summarization. We deeply investigate this phenomenon by analyzing the effect of group ordering in input documents when summarizing tweets from three distinct linguistic communities: African-American English, Hispanic-aligned Language, and White-aligned Language. Our empirical analysis shows that although the textual quality of the summaries remains consistent regardless of the input document order, in terms of fairness, the results vary significantly depending on how the dialect groups are presented in the input data. Our results suggest that position bias manifests differently in social multi-document summarization, severely impacting the fairness of summarization models.",
+    "authors": [
+        "Olubusayo Olabisi",
+        "Ameeta Agrawal"
+    ],
+    "venue": "Workshop on NLP for Similar Languages, Varieties and Dialects",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work deeply investigates the effect of group ordering in input documents when summarizing tweets from three distinct linguistic communities: African-American English, Hispanic-aligned Language, and White-aligned Language, and suggests that position bias manifests differently in social multi-document summarization, severely impacting the fairness of summarization models."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

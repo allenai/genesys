@@ -1,0 +1,25 @@
+{
+    "acronym": "9d902474f238e7a0b8c6009c5eb2172fae40dd7d",
+    "title": "Universal Language Model Fine-Tuning with Subword Tokenization for Polish",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "9d902474f238e7a0b8c6009c5eb2172fae40dd7d",
+    "abstract": "Universal Language Model for Fine-tuning [arXiv:1801.06146] (ULMFiT) is one of the first NLP methods for efficient inductive transfer learning. Unsupervised pretraining results in improvements on many NLP tasks for English. In this paper, we describe a new method that uses subword tokenization to adapt ULMFiT to languages with high inflection. Our approach results in a new state-of-the-art for the Polish language, taking first place in Task 3 of PolEval'18. After further training, our final model outperformed the second best model by 35%. We have open-sourced our pretrained models and code.",
+    "authors": [
+        "Piotr Czapla",
+        "Jeremy Howard",
+        "Marcin Kardas"
+    ],
+    "venue": "arXiv.org",
+    "year": 2018,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new method is described that uses subword tokenization to adapt ULMFiT to languages with high inflection, results in a new state-of-the-art for the Polish language and outperformed the second best model by 35%."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

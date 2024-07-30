@@ -1,0 +1,33 @@
+{
+    "acronym": "15f3aec37c6ac48bb9db91a6541eb21754c5b4cf",
+    "title": "Applying contrastive pre-training for depression and anxiety risk prediction in type 2 diabetes patients based on heterogeneous electronic health records: a primary healthcare case study",
+    "seed_ids": [
+        "roformer",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "15f3aec37c6ac48bb9db91a6541eb21754c5b4cf",
+    "abstract": "Abstract Objective Due to heterogeneity and limited medical data in primary healthcare services (PHS), assessing the psychological risk of type 2 diabetes mellitus (T2DM) patients in PHS is difficult. Using unsupervised contrastive pre-training, we proposed a deep learning framework named depression and anxiety prediction (DAP) to predict depression and anxiety in T2DM patients. Materials and Methods The DAP model consists of two sub-models. Firstly, the pre-trained model of DAP used unlabeled discharge records of 85 085 T2DM patients from the First Affiliated Hospital of Nanjing Medical University for unsupervised contrastive learning on heterogeneous electronic health records (EHRs). Secondly, the fine-tuned model of DAP used case\u2013control cohorts (17 491 patients) selected from 149 596 T2DM patients\u2019 EHRs in the Nanjing Health Information Platform (NHIP). The DAP model was validated in 1028 patients from PHS in NHIP. Evaluation included receiver operating characteristic area under the curve (ROC-AUC) and precision-recall area under the curve (PR-AUC), and decision curve analysis (DCA). Results The pre-training step allowed the DAP model to converge at a faster rate. The fine-tuned DAP model significantly outperformed the baseline models (logistic regression, extreme gradient boosting, and random forest) with ROC-AUC of 0.91\u00b10.028 and PR-AUC of 0.80\u00b10.067 in 10-fold internal validation, and with ROC-AUC of 0.75\u2009\u00b1\u20090.045 and PR-AUC of 0.47\u2009\u00b1\u20090.081 in external validation. The DCA indicate the clinical potential of the DAP model. Conclusion The DAP model effectively predicted post-discharge depression and anxiety in T2DM patients from PHS, reducing data fragmentation and limitations. This study highlights the DAP model\u2019s potential for early detection and intervention in depression and anxiety, improving outcomes for diabetes patients.",
+    "authors": [
+        "Wei Feng",
+        "Honghan Wu",
+        "Hui Ma",
+        "Zhenhuan Tao",
+        "Mengdie Xu",
+        "Xin Zhang",
+        "Shan Lu",
+        "Cheng Wan",
+        "Yun Liu"
+    ],
+    "venue": "J. Am. Medical Informatics Assoc.",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The DAP model effectively predicted post-discharge depression and anxiety in T2DM patients from PHS, reducing data fragmentation and limitations and highlighting the model\u2019s potential for early detection and intervention in depression and anxiety, improving outcomes for diabetes patients."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

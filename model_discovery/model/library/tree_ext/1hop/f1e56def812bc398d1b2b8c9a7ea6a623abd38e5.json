@@ -1,0 +1,37 @@
+{
+    "acronym": "f1e56def812bc398d1b2b8c9a7ea6a623abd38e5",
+    "title": "Gradient-based Constrained Sampling from Language Models",
+    "seed_ids": [
+        "gpt2",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "4a6a65968a8eb8c09ffb57a7774ddabb596565b1",
+        "76a786b1acd6d1aca56e12a8a1db34569fdf9f3a",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "ad7129af0644dbcafa9aa2f111cb76526ea444a1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f1e56def812bc398d1b2b8c9a7ea6a623abd38e5",
+    "abstract": "Large pretrained language models are successful at generating fluent text but are notoriously hard to controllably sample from. In this work, we study constrained sampling from such language models, i.e., generating text that satisfies user-defined constraints, while maintaining fluency and model\u2019s performance in a downstream task. We propose MuCoLa\u2014a sampling procedure that combines the log-likelihood of the language model with arbitrary (differentiable) constraints in a single energy function, and then generates samples in a non-autoregressive manner. Specifically, it initializes the entire output sequence with noise and follows a Markov chain defined by Langevin Dynamics using the gradients of this energy. We evaluate MuCoLa on text generation with soft and hard constraints as well as their combinations, obtaining significant improvements over competitive baselines for toxicity avoidance, sentiment control, and keyword-guided generation.",
+    "authors": [
+        "Sachin Kumar",
+        "Biswajit Paria",
+        "Yulia Tsvetkov"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes MuCoLa\u2014a sampling procedure that combines the log-likelihood of the language model with arbitrary (differentiable) constraints in a single energy function, and then generates samples in a non-autoregressive manner."
+    },
+    "citationCount": 41,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

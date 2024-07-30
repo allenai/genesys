@@ -1,0 +1,33 @@
+{
+    "acronym": "61fa56fbdb3b7668a0ac1b895312a9c7bca682e4",
+    "title": "VCSUM: A Versatile Chinese Meeting Summarization Dataset",
+    "seed_ids": [
+        "longformer",
+        "0a41cb292242a82b2b09b3bf23b48349b981a640",
+        "ac95a18762133d4065ac8af518c33084d83c5582",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "01b15017ac59b8d6f2ce3598c4a7d6358c211426",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "61fa56fbdb3b7668a0ac1b895312a9c7bca682e4",
+    "abstract": "Compared to news and chat summarization, the development of meeting summarization is hugely decelerated by the limited data. To this end, we introduce a versatile Chinese meeting summarization dataset, dubbed VCSum, consisting of 239 real-life meetings, with a total duration of over 230 hours. We claim our dataset is versatile because we provide the annotations of topic segmentation, headlines, segmentation summaries, overall meeting summaries, and salient sentences for each meeting transcript. As such, the dataset can adapt to various summarization tasks or methods, including segmentation-based summarization, multi-granularity summarization and retrieval-then-generate summarization. Our analysis confirms the effectiveness and robustness of VCSum. We also provide a set of benchmark models regarding different downstream summarization tasks on VCSum to facilitate further research. The dataset and code will be released at https://github.com/hahahawu/VCSum.",
+    "authors": [
+        "Han Wu",
+        "Mingjie Zhan",
+        "Haochen Tan",
+        "Zhaohui Hou",
+        "Ding Liang",
+        "Linqi Song"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A versatile Chinese meeting summarization dataset, dubbed VCSum, consisting of 239 real-life meetings, with a total duration of over 230 hours that can adapt to various summarization tasks or methods, including segmentation-based summarization, multi-granularity summarization and retrieval-then-generate summarization."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

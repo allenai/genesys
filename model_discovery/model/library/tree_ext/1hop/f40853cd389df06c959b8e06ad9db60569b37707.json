@@ -1,0 +1,34 @@
+{
+    "acronym": "f40853cd389df06c959b8e06ad9db60569b37707",
+    "title": "Enhancing Court View Generation with Knowledge Injection and Guidance",
+    "seed_ids": [
+        "transformer",
+        "1e3e65e7773b7869d9bd7f5394b54199e48195e6",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "982cbf7fcee4f3964dd1d411fdeadad6e6f1d465",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8"
+    ],
+    "s2id": "f40853cd389df06c959b8e06ad9db60569b37707",
+    "abstract": "Court View Generation (CVG) is a challenging task in the field of Legal Artificial Intelligence (LegalAI), which aims to generate court views based on the plaintiff claims and the fact descriptions. While Pretrained Language Models (PLMs) have showcased their prowess in natural language generation, their application to the complex, knowledge-intensive domain of CVG often reveals inherent limitations. In this paper, we present a novel approach, named Knowledge Injection and Guidance (KIG), designed to bolster CVG using PLMs. To efficiently incorporate domain knowledge during the training stage, we introduce a knowledge-injected prompt encoder for prompt tuning, thereby reducing computational overhead. Moreover, to further enhance the model\u2019s ability to utilize domain knowledge, we employ a generating navigator, which dynamically guides the text generation process in the inference stage without altering the model\u2019s architecture, making it readily transferable. Comprehensive experiments on real-world data demonstrate the effectiveness of our approach compared to several established baselines, especially in the responsivity of claims, where it outperforms the best baseline by 11.87%.",
+    "authors": [
+        "Ang Li",
+        "Yiquan Wu",
+        "Yifei Liu",
+        "Fei Wu",
+        "Ming Cai",
+        "Kun Kuang"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel approach to bolster CVG using Pretrained Language Models with a knowledge-injected prompt encoder for prompt tuning and a generating navigator, which dynamically guides the text generation process in the inference stage without altering the model\u2019s architecture, making it readily transferable."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

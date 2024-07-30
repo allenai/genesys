@@ -1,0 +1,28 @@
+{
+    "acronym": "a70981ab7b4011b8f4e656e383685d8c3cd58c79",
+    "title": "From Quick-draw To Story: A Story Generation System for Kids\u2019 Robot",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "a70981ab7b4011b8f4e656e383685d8c3cd58c79",
+    "abstract": "From quick-draw to story aims to draw a narrative story based on simple lines children draw. On account of the simple knowledge contained in quick-draw and lack of labelled data, this task is assuredly challenging. In this paper, it is divided into two subtasks. Firstly, a Multitask Transformer Network is proposed to generate the sentence on the grounds of the information of quick-draw. Secondly, we finetune the OpenAI Generative Pre-training Model (OpenAI GPT) to generate a story on the basis of the sentence. However, evaluating the text generation model is difficult. In order to solve with this, a new evaluation metric based on Story Cloze Test is proposed. Our evaluations indicate the prominent results our method has achieved in this task.",
+    "authors": [
+        "Lecheng Wang",
+        "Shizheng Qin",
+        "Menglong Xu",
+        "Rui Zhang",
+        "Lizhe Qi",
+        "Wenqiang Zhang"
+    ],
+    "venue": "IEEE International Conference on Robotics and Biomimetics",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Multitask Transformer Network is proposed to generate the sentence on the grounds of the information of quick-draw and the OpenAI Generative Pre-training Model (OpenAI GPT) is finetune to generate a story on the basis of the sentence."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

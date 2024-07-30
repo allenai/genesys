@@ -1,0 +1,25 @@
+{
+    "acronym": "a34b66242f3bf7cff958d1a582afa2442e6ab1e6",
+    "title": "Similarity Maps for Self-Training Weakly-Supervised Phrase Grounding",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a34b66242f3bf7cff958d1a582afa2442e6ab1e6",
+    "abstract": "A phrase grounding model receives an input image and a text phrase and outputs a suitable localization map. We present an effective way to refine a phrase ground model by considering self-similarity maps extracted from the latent representation of the model's image encoder. Our main insights are that these maps resemble localization maps and that by combining such maps, one can obtain useful pseudo-labels for performing self-training. Our results surpass, by a large margin, the state of the art in weakly supervised phrase grounding. A similar gap in performance is obtained for a recently proposed downstream task called WWbL, in which only the image is input, without any text. Our code is available at https://github.com/talshaharabany/Similarity-Maps-for-Self-Training-Weakly-Supervised-Phrase-Grounding",
+    "authors": [
+        "Tal Shaharabany",
+        "Lior Wolf"
+    ],
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An effective way to refine a phrase ground model is presented by considering self-similarity maps extracted from the latent representation of the model's image encoder, which resemble localization maps and that by combining such maps, one can obtain useful pseudo-labels for performing self-training."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

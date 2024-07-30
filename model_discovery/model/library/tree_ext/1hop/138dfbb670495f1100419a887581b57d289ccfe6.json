@@ -1,0 +1,29 @@
+{
+    "acronym": "138dfbb670495f1100419a887581b57d289ccfe6",
+    "title": "MultiMax: Sparse and Multi-Modal Attention Learning",
+    "seed_ids": [
+        "transformer",
+        "c1a4278f969acfc6682a924e31b95e1ade9703ee",
+        "6914a7997ff4be207fa7b3472a9c5879abaec646",
+        "c2f36f14419565a0fed3032b7f1d1811daf6702e",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "138dfbb670495f1100419a887581b57d289ccfe6",
+    "abstract": "SoftMax is a ubiquitous ingredient of modern machine learning algorithms. It maps an input vector onto a probability simplex and reweights the input by concentrating the probability mass at large entries. Yet, as a smooth approximation to the Argmax function, a significant amount of probability mass is distributed to other, residual entries, leading to poor interpretability and noise. Although sparsity can be achieved by a family of SoftMax variants, they often require an alternative loss function and do not preserve multi-modality. We show that this trade-off between multi-modality and sparsity limits the expressivity of SoftMax as well as its variants. We provide a solution to this tension between objectives by proposing a piece-wise differentiable function, termed MultiMax, which adaptively modulates the output distribution according to input entry range. Through comprehensive analysis and evaluation, we show that MultiMax successfully produces a distribution that supresses irrelevant entries while preserving multimodality, with benefits in image classification, language modeling and machine translation. The code is available at https://github.com/ZhouYuxuanYX/MultiMax.",
+    "authors": [
+        "Yuxuan Zhou",
+        "Mario Fritz",
+        "M. Keuper"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Through comprehensive analysis and evaluation, it is shown that MultiMax successfully produces a distribution that supresses irrelevant entries while preserving multimodality, with benefits in image classification, language modeling and machine translation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

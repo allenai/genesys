@@ -1,0 +1,28 @@
+{
+    "acronym": "1a18d74ec5b6ac0c82036e48df53a4f6c13817c8",
+    "title": "Zero-Shot Code Representation Learning via Prompt Tuning",
+    "seed_ids": [
+        "transformer",
+        "7a1069dafaeb484e22f2473d5545f1e45ce30656",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "0fe2636446cd686830da3d971b31a004d6094b3c"
+    ],
+    "s2id": "1a18d74ec5b6ac0c82036e48df53a4f6c13817c8",
+    "abstract": "Learning code representations has been the core prerequisite of many software engineering tasks such as code clone detection and code generation. State-of-the-art program representation techniques mainly utilize pre-trained language models (PLMs) such as CodeBERT. A Transformer encoder is firstly pre-trained on a large-scale code corpus to acquire general knowledge about source code. The pre-trained model is then fine-tuned on specific tasks using an amount of labeled data. However, gathering training samples for the downstream tasks can be prohibitively expensive and impractical for domain-specific languages or project-specific tasks. Besides, pre-training and downstream tasks are usually heterogeneous, which makes it difficult to fully explore the knowledge learned during pre-training. In this paper, we propose Zecoler, a zero-shot approach for learning code representations. Zecoler is built upon a pre-trained programming language model. In order to elicit knowledge from the PLMs efficiently, Zecoler casts the downstream tasks to the same form of pre-training objectives by inserting train-able prompts into the original input. These prompts can guide PLMs on how to generate better results. Subsequently, we employ the prompt tuning technique to search for the optimal prompts for PLMs automatically. This enables the representation model to efficiently fit the downstream tasks through fine-tuning on the dataset in source language domain and then reuse the pre-trained knowledge for the target domain in a zero-shot style. We evaluate Zecoler in five code intelligence tasks including code clone detection, code search, method name prediction, code summarization, and code generation. The results show that our approach significantly outperforms baseline models under the zero-shot setting.",
+    "authors": [
+        "Nan Cui",
+        "Xiaodong Gu",
+        "Beijun Shen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Zecoler, a zero-shot approach for learning code representations, is proposed, built upon a pre-trained programming language model and evaluated in five code intelligence tasks including code clone detection, code search, method name prediction, code summarization, and code generation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

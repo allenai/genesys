@@ -1,0 +1,29 @@
+{
+    "acronym": "a2d81cc04f73e2898fb16e7e8c8f9cf69adadfd5",
+    "title": "Probabilistic Multienergy Load Forecasting Based on Hybrid Attention-Enabled Transformer Network and Gaussian Process-Aided Residual Learning",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "a2d81cc04f73e2898fb16e7e8c8f9cf69adadfd5",
+    "abstract": "Precise multienergy load forecasting (MELF) significantly contributes to the stable and economic operation of integrated energy systems (IES). However, existing MELF approaches exhibit three primary limitations: (i) naively aggregate all input features without explicit mechanisms to capture complex coupling relationships between multiple energy loads; (ii) incapable of fully exploiting the local load characteristics of each individual task; (iii) provide only deterministic forecasting results. To address these limitations, in this article, we propose a global\u2013local probabilistic multi-energy load forecasting framework based on hybrid attention mechanism-enabled Transformer (HAT) network and sparse variational Gaussian process (SVGP)-aided residual learning method. Specifically, HAT is first utilized to capture the consumption behavior of the multi-energy loads. It employs a temporal attention module to extract the load patterns of each task and a task attention module to explicitly capture the coupling relationships between different tasks. The multiple pieces of information are fused through a gated fusion unit for the joint predictions of multiple loads. Then, an SVGP with a composite kernel is adopted to learn the local load characteristics specific to each individual task by modeling the residual of the forecasting outcomes. This further enhances the performance of the proposed method and allows us to achieve effective quantification of the forecasting uncertainties. Numerical simulations using real IES load data reveal that the proposed framework outperforms state-of-the-art deterministic load forecasting by 11% at least in mean absolute percentage error (MAPE) and probabilistic load forecasting by 5% at least in both pinball loss and Winkler score metrics.",
+    "authors": [
+        "Pengfei Zhao",
+        "Weihao Hu",
+        "Di Cao",
+        "Zhenyuan Zhang",
+        "Yuehui Huang",
+        "Longcheng Dai",
+        "Zhe Chen"
+    ],
+    "venue": "IEEE Transactions on Industrial Informatics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Numerical simulations reveal that the proposed framework outperforms state-of-the-art deterministic load forecasting by 11% at least in mean absolute percentage error (MAPE) and probabilistic load forecasting by 5% at least in both pinball loss and Winkler score metrics."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

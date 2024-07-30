@@ -1,0 +1,33 @@
+{
+    "acronym": "8e5af286e461ad07625e43e17d4c69e8b16d9fbb",
+    "title": "Distilled Language Models are economically efficient for the enterprise. ...mostly.",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8e5af286e461ad07625e43e17d4c69e8b16d9fbb",
+    "abstract": "Contacting customer service via chat is a common practice. Because employing customer service agents is expensive, many companies are turning to NLP that assists human agents by auto-generating responses that can be used directly or with modifications. With their ability to handle large context windows, Large Language Models (LLMs) are a natural fit for this use case. However, their efficacy must be balanced with the cost of training and serving them. This paper assesses the practical cost and impact of LLMs for the enterprise as a function of the usefulness of the responses that they generate. We present a cost framework for evaluating an NLP model\u2019s utility for this use case and apply it to a single brand as a case study in the context of an existing agent assistance product. We compare three strategies for specializing an LLM \u2014 prompt engineering, fine-tuning, and knowledge distillation \u2014 using feedback from the brand\u2019s customer service agents. We find that the usability of a model\u2019s responses can make up for a large difference in inference cost for our case study brand, and we extrapolate our findings to the broader enterprise space.",
+    "authors": [
+        "Kristen Howell",
+        "Gwen Christian",
+        "P. Fomitchov",
+        "Gitit Kehat",
+        "Julianne Marzulla",
+        "Leanne Rolston",
+        "Jadin Tredup",
+        "Ilana Zimmerman",
+        "Ethan Selfridge",
+        "Joe Bradley"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that the usability of a model\u2019s responses can make up for a large difference in inference cost for the authors' case study brand, and the findings are extrapolated to the broader enterprise space."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

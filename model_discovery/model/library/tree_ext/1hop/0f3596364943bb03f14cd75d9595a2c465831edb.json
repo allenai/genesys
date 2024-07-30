@@ -1,0 +1,29 @@
+{
+    "acronym": "0f3596364943bb03f14cd75d9595a2c465831edb",
+    "title": "Simulated Chats for Building Dialog Systems: Learning to Generate Conversations from Instructions",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "7eba731a7fd8de712b7b79b5af41a6e2d4dbd191",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0f3596364943bb03f14cd75d9595a2c465831edb",
+    "abstract": "Popular dialog datasets such as MultiWOZ are created by providing crowd workers an instruction, expressed in natural language, that describes the task to be accomplished. Crowd workers play the role of a user and an agent to generate dialogs to accomplish tasks involving booking restaurant tables, calling a taxi etc. In this paper, we present a data creation strategy that uses the pre-trained language model, GPT2, to simulate the interaction between crowd workers by creating a user bot and an agent bot. We train the simulators using a smaller percentage of actual crowd-generated conversations and their corresponding instructions. We demonstrate that by using the simulated data, we achieve significant improvements in low-resource settings on two publicly available datasets - the MultiWOZ dataset and the Persona chat dataset.",
+    "authors": [
+        "Biswesh Mohapatra",
+        "Gaurav Pandey",
+        "Danish Contractor",
+        "Sachindra Joshi"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a data creation strategy that uses the pre-trained language model, GPT2, to simulate the interaction between crowd workers by creating a user bot and an agent bot and demonstrates that by using the simulated data, it achieves significant improvements in low-resource settings on two publicly available datasets."
+    },
+    "citationCount": 22,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

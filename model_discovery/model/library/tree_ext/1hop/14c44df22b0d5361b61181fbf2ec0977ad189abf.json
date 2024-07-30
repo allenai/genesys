@@ -1,0 +1,41 @@
+{
+    "acronym": "14c44df22b0d5361b61181fbf2ec0977ad189abf",
+    "title": "KDEformer: Accelerating Transformers via Kernel Density Estimation",
+    "seed_ids": [
+        "scatterbrain",
+        "reformer",
+        "9b069ba5259d229bfd4fe3ac3768148e2d1092f8",
+        "90b21dbad8969b74d704eed15a3d98722a88e464",
+        "4b0541eccd8f98852d6807a14fbac17f775c7b40",
+        "5f895e84c1fea75de07b4f90da518273c2e57291",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "c0f709acf38eb27702b0fbce1215db0ebaa2de2b",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "c49c292e1fb1d215c88828a52134b7ccfa52be44",
+        "b745b5512ad3b1f652dc0cbb5ddf5a940f397f7d"
+    ],
+    "s2id": "14c44df22b0d5361b61181fbf2ec0977ad189abf",
+    "abstract": "Dot-product attention mechanism plays a crucial role in modern deep architectures (e.g., Transformer) for sequence modeling, however, na\\\"ive exact computation of this model incurs quadratic time and memory complexities in sequence length, hindering the training of long-sequence models. Critical bottlenecks are due to the computation of partition functions in the denominator of softmax function as well as the multiplication of the softmax matrix with the matrix of values. Our key observation is that the former can be reduced to a variant of the kernel density estimation (KDE) problem, and an efficient KDE solver can be further utilized to accelerate the latter via subsampling-based fast matrix products. Our proposed KDEformer can approximate the attention in sub-quadratic time with provable spectral norm bounds, while all prior results merely provide entry-wise error bounds. Empirically, we verify that KDEformer outperforms other attention approximations in terms of accuracy, memory, and runtime on various pre-trained models. On BigGAN image generation, we achieve better generative scores than the exact computation with over $4\\times$ speedup. For ImageNet classification with T2T-ViT, KDEformer shows over $18\\times$ speedup while the accuracy drop is less than $0.5\\%$.",
+    "authors": [
+        "A. Zandieh",
+        "Insu Han",
+        "Majid Daliri",
+        "Amin Karbasi"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed KDEformer can approximate the attention in sub-quadratic time with provable spectral norm bounds, while all prior results merely provide entry-wise error bounds, and outperforms other attention approximations in terms of accuracy, memory, and runtime on various pre-trained models."
+    },
+    "citationCount": 27,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

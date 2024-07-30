@@ -1,0 +1,34 @@
+{
+    "acronym": "3ea28675f2573e3c1f7e936a2776a5edf9e1434b",
+    "title": "Make Inference Faster: Efficient GPU Memory Management for Butterfly Sparse Matrix Multiplication",
+    "seed_ids": [
+        "m2",
+        "butterfly",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "67904b80a33bc09a5b2b1db296faea1b79fa80e9",
+        "8326dba15f6b8ee6e43c23eea3265a05e59e8135",
+        "fbaa944e73644ce12ea4a0ac8ffb64c3280f3aff",
+        "90b21dbad8969b74d704eed15a3d98722a88e464",
+        "5a4efa0f5a5576c78e536903ae86b693466fb30a",
+        "b1ac64438608aac1a8dfd0adf8fec8c6220f6bfd"
+    ],
+    "s2id": "3ea28675f2573e3c1f7e936a2776a5edf9e1434b",
+    "abstract": "This paper is the first to assess the state of existing sparse matrix multiplication algorithms on GPU for the butterfly structure, a promising form of sparsity. This is achieved through a comprehensive benchmark that can be easily modified to add a new implementation. The goal is to provide a simple tool for users to select the optimal implementation based on their settings. Using this benchmark, we find that existing implementations spend up to 50% of their total runtime on memory rewriting operations. We show that these memory operations can be optimized by introducing a new CUDA kernel that minimizes the transfers between the different levels of GPU memory, achieving a median speed-up factor of x1.4 while also reducing energy consumption (median of x0.85). We also demonstrate the broader significance of our results by showing how the new kernel can speed up the inference of neural networks.",
+    "authors": [
+        "Antoine Gonon",
+        "L\u00e9on Zheng",
+        "Pascal Carrivain",
+        "Quoc-Tung Le"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper is the first to assess the state of existing sparse matrix multiplication algorithms on GPU for the butterfly structure through a comprehensive benchmark that can be easily modified to add a new implementation, and shows how the new kernel can speed up the inference of neural networks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

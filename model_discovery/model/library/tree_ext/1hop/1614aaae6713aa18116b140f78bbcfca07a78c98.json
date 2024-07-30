@@ -1,0 +1,27 @@
+{
+    "acronym": "1614aaae6713aa18116b140f78bbcfca07a78c98",
+    "title": "Improving Conditioning in Context-Aware Sequence to Sequence Models",
+    "seed_ids": [
+        "memcompress",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "1614aaae6713aa18116b140f78bbcfca07a78c98",
+    "abstract": "Neural sequence to sequence models are well established for applications which can be cast as mapping a single input sequence into a single output sequence. In this work, we focus on cases where generation is conditioned on both a short query and a long context, such as abstractive question answering or document-level translation. We modify the standard sequence-to-sequence approach to make better use of both the query and the context by expanding the conditioning mechanism to intertwine query and context attention. We also introduce a simple and efficient data augmentation method for the proposed model. Experiments on three different tasks show that both changes lead to consistent improvements.",
+    "authors": [
+        "Xinyi Wang",
+        "J. Weston",
+        "Michael Auli",
+        "Yacine Jernite"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work modifications the standard sequence-to-sequence approach to make better use of both the query and the context by expanding the conditioning mechanism to intertwine query and context attention."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "d468920ebf2ccc052d4c233ca01617ea2ff4186b",
+    "title": "Some Like It Small: Czech Semantic Embedding Models for Industry Applications",
+    "seed_ids": [
+        "bert",
+        "9bbdcc03d872987eef9165f4a63c3878a5b05189",
+        "270f3bea8ca801870a6cc56b4d36f7f2019c9ed0",
+        "b76e98a0a023d37c6534aa2ead09c8ff595f0bae"
+    ],
+    "s2id": "d468920ebf2ccc052d4c233ca01617ea2ff4186b",
+    "abstract": "This article focuses on the development and evaluation of Small-sized Czech sentence embedding models. Small models are important components for real-time industry applications in resource-constrained environments. Given the limited availability of labeled Czech data, alternative approaches, including pre-training, knowledge distillation, and unsupervised contrastive fine-tuning, are investigated. Comprehensive intrinsic and extrinsic analyses are conducted, showcasing the competitive performance of our models compared to significantly larger counterparts, with approximately 8 times smaller size and 5 times faster speed than conventional Base-sized models. To promote cooperation and reproducibility, both the models and the evaluation pipeline are made publicly accessible. Ultimately, this article presents practical applications of the developed sentence embedding models in Seznam.cz, the Czech search engine. These models have effectively replaced previous counterparts, enhancing the overall search experience for instance, in organic search, featured snippets, and image search. This transition has yielded improved performance.",
+    "authors": [
+        "Jir\u00ed Bedn\u00e1r",
+        "Jakub N'aplava",
+        "Petra Baranc\u00edkov\u00e1",
+        "Ondrej Lisick\u00fd"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Practical applications of the developed sentence embedding models in Seznam.cz, the Czech search engine, are presented, showing how these models have effectively replaced previous counterparts, enhancing the overall search experience, in organic search, featured snippets, and image search."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

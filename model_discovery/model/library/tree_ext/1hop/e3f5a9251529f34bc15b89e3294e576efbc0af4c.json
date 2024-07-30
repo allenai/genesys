@@ -1,0 +1,32 @@
+{
+    "acronym": "e3f5a9251529f34bc15b89e3294e576efbc0af4c",
+    "title": "NeRDi: Single-View NeRF Synthesis with Language-Guided Diffusion as General Image Priors",
+    "seed_ids": [
+        "gpt2",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e3f5a9251529f34bc15b89e3294e576efbc0af4c",
+    "abstract": "2D-to-3D reconstruction is an ill-posed problem, yet humans are good at solving this problem due to their prior knowledge of the 3D world developed over years. Driven by this observation, we propose NeRDi, a single-view NeRF synthesis framework with general image priors from 2D diffusion models. Formulating single-view reconstruction as an image-conditioned 3D generation problem, we optimize the NeRF representations by minimizing a diffusion loss on its arbitrary view renderings with a pretrained image diffusion model under the input-view constraint. We leverage off-the-shelf vision-language models and introduce a two-section language guidance as conditioning inputs to the diffusion model. This is essentially helpful for improving multiview content coherence as it narrows down the general image prior conditioned on the semantic and visual features of the single-view input image. Additionally, we introduce a geometric loss based on estimated depth maps to regularize the underlying 3D geometry of the NeRF. Experimental results on the DTU MVS dataset show that our method can synthesize novel views with higher quality even compared to existing methods trained on this dataset. We also demonstrate our generalizability in zero-shot NeRF synthesis for in-the-wild images.",
+    "authors": [
+        "Congyue Deng",
+        "C. Jiang",
+        "C. Qi",
+        "Xinchen Yan",
+        "Yin Zhou",
+        "L. Guibas",
+        "Drago Anguelov"
+    ],
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes NeRDi, a single-view NeRF synthesis framework with general image priors from 2D diffusion models, and optimize the NeRF representations by minimizing a diffusion loss on its arbitrary view renderings with a pretrained image diffusion model under the input-view constraint."
+    },
+    "citationCount": 122,
+    "influentialCitationCount": 8,
+    "code": null,
+    "description": null,
+    "url": null
+}

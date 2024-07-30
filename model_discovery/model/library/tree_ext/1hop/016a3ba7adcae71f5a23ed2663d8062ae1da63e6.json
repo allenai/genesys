@@ -1,0 +1,35 @@
+{
+    "acronym": "016a3ba7adcae71f5a23ed2663d8062ae1da63e6",
+    "title": "SAC: Accelerating and Structuring Self-Attention via Sparse Adaptive Connection",
+    "seed_ids": [
+        "sparsetransformer",
+        "reformer",
+        "transformerxl",
+        "bptrans",
+        "2e14e84ccec924ed770b58108ad1d9de6f0ca295",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "2a31319e73d4486716168b65cdf7559baeda18ce",
+        "446efa0bcf3528b51332a12495cb56784dd8bad3"
+    ],
+    "s2id": "016a3ba7adcae71f5a23ed2663d8062ae1da63e6",
+    "abstract": "While the self-attention mechanism has been widely used in a wide variety of tasks, it has the unfortunate property of a quadratic cost with respect to the input length, which makes it difficult to deal with long inputs. In this paper, we present a method for accelerating and structuring self-attentions: Sparse Adaptive Connection (SAC). In SAC, we regard the input sequence as a graph and attention operations are performed between linked nodes. In contrast with previous self-attention models with pre-defined structures (edges), the model learns to construct attention edges to improve task-specific performances. In this way, the model is able to select the most salient nodes and reduce the quadratic complexity regardless of the sequence length. Based on SAC, we show that previous variants of self-attention models are its special cases. Through extensive experiments on neural machine translation, language modeling, graph representation learning and image classification, we demonstrate SAC is competitive with state-of-the-art models while significantly reducing memory cost.",
+    "authors": [
+        "Xiaoya Li",
+        "Yuxian Meng",
+        "Qinghong Han",
+        "Fei Wu",
+        "Jiwei Li"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Through extensive experiments on neural machine translation, language modeling, graph representation learning and image classification, it is demonstrated SAC is competitive with state-of-the-art models while significantly reducing memory cost."
+    },
+    "citationCount": 18,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

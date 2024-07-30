@@ -1,0 +1,28 @@
+{
+    "acronym": "3eba01e41208e69942fc0cdaca391d4ed49a99e7",
+    "title": "On the Robustness of Dialogue History Representation in Conversational Question Answering: A Comprehensive Study and a New Prompt-based Method",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "3eba01e41208e69942fc0cdaca391d4ed49a99e7",
+    "abstract": "Most work on modeling the conversation history in Conversational Question Answering (CQA) reports a single main result on a common CQA benchmark. While existing models show impressive results on CQA leaderboards, it remains unclear whether they are robust to shifts in setting (sometimes to more realistic ones), training data size (e.g., from large to small sets) and domain. In this work, we design and conduct the first large-scale robustness study of history modeling approaches for CQA. We find that high benchmark scores do not necessarily translate to strong robustness, and that various methods can perform extremely differently under different settings. Equipped with the insights from our study, we design a novel prompt-based history modeling approach and demonstrate its strong robustness across various settings. Our approach is inspired by existing methods that highlight historic answers in the passage. However, instead of highlighting by modifying the passage token embeddings, we add textual prompts directly in the passage text. Our approach is simple, easy to plug into practically any model, and highly effective, thus we recommend it as a starting point for future model developers. We also hope that our study and insights will raise awareness to the importance of robustness-focused evaluation, in addition to obtaining high leaderboard scores, leading to better CQA systems.1",
+    "authors": [
+        "Zorik Gekhman",
+        "Nadav Oved",
+        "Orgad Keller",
+        "Idan Szpektor",
+        "Roi Reichart"
+    ],
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work design and conduct the first large-scale robustness study of history modeling approaches for CQA, finding that high benchmark scores do not necessarily translate to strong robustness, and that various methods can perform extremely differently under different settings."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

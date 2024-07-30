@@ -1,0 +1,25 @@
+{
+    "acronym": "3107f89c4aef4e17a55700cfa2ee02906f6c0fdc",
+    "title": "HAAN: Human Action Aware Network for Multi-label Temporal Action Detection",
+    "seed_ids": [
+        "reformer"
+    ],
+    "s2id": "3107f89c4aef4e17a55700cfa2ee02906f6c0fdc",
+    "abstract": "The task of multi-label temporal action detection aims to accurately detect dense action instances in untrimmed videos. Previous methods focused on modeling the appearance features of RGB images have struggled to capture the fine details and subtle variations in human actions, resulting in three critical issues: overlapping action confusion, intra-class appearance diversity, and background interferences. These issues have significantly undermined the accuracy and generalization of detection models. To tackle these issues, we propose incorporating the human skeleton into the feature design of the detection model. By utilizing multi-person skeletons, our proposed method can accurately represent various human actions in the scene, balance the salience of overlapping actions, and reduce the impact of changes in human appearance and background interferences on action features. Overall, we propose a novel two-stream human action aware network~(HAAN) for multi-label temporal action detection based on the original RGB frames and the estimated skeleton frames. To leverage the complementary advantages of RGB features and skeleton features, we design a cross-modality fusion module that allows the two features to guide each other and enhance their representation of human actions. On the popular benchmarks MultiTHUMOS and Charades, our HAAN achieves state-of-the-art performance with 56.9% (+5.4%) and 32.1% (+3.3%) mean average precision (mAP) compared to the best available methods. Importantly, HAAN shows superior improvements of +6.83%, +22.35%, and +2.56% on the challenging sample subsets of the three critical issues.",
+    "authors": [
+        "Zikai Gao",
+        "P. Qiao",
+        "Yong Dou"
+    ],
+    "venue": "ACM Multimedia",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel two-stream human action aware network~(HAAN) for multi-label temporal action detection based on the original RGB frames and the estimated skeleton frames that designs a cross-modality fusion module that allows the two features to guide each other and enhance their representation of human actions."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

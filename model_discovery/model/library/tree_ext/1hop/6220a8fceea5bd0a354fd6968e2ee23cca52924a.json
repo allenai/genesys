@@ -1,0 +1,31 @@
+{
+    "acronym": "6220a8fceea5bd0a354fd6968e2ee23cca52924a",
+    "title": "Effinformer: A Deep-Learning-Based Data-Driven Modeling of DC\u2013DC Bidirectional Converters",
+    "seed_ids": [
+        "reformer",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "30dcc0e191a376fea0e7a46f94c53872c029efc9"
+    ],
+    "s2id": "6220a8fceea5bd0a354fd6968e2ee23cca52924a",
+    "abstract": "This article presents a data-driven modeling method founded on deep learning (DL) to precisely model and identify a dc\u2013dc bidirectional converter that is widely used in renewable energy systems (RESs). In contrast to the circuit-theory-based methods that require dealing with a high number of circuit parameters and result in models that are often complex and costly, DL-based approaches yield more parsimonious models. However, the typical DL schemes still have limitations in terms of accuracy, stability, and computational complexity. To this end, we propose an end-to-end DL framework named efficient Informer (Effinformer), which leverages sparse self-attention, a novel dilated causal convolution-based distilling operation, and an enhanced decoder to minimize the computational complexity while improving modeling accuracy and speed. Compared to existing modeling techniques and current state-of-the-art DL techniques, the proposed Effinformer exhibits superior performance through experimental results and analysis. Then, we further extend the proposed network to long-term prediction scenarios to demonstrate its excellent generalization ability and elegant robustness. Extensive experiments show that Effinformer is more conducive to enhancing prediction accuracy and reliability from the perspective of handling ripple interference and outliers. This characteristic makes it highly advantageous for practical engineering applications.",
+    "authors": [
+        "Qianyi Shang",
+        "Fei Xiao",
+        "Yaxiang Fan",
+        "Wei Kang",
+        "Haocheng Qin",
+        "Ruitian Wang"
+    ],
+    "venue": "IEEE Transactions on Instrumentation and Measurement",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An end-to-end DL framework named efficient Informer (Effinformer), which leverages sparse self-attention, a novel dilated causal convolution-based distilling operation, and an enhanced decoder to minimize the computational complexity while improving modeling accuracy and speed."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

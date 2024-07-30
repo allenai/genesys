@@ -1,0 +1,38 @@
+{
+    "acronym": "ac2e15fbfe3ea338725f5d33d17a5a687609c431",
+    "title": "On The Computational Complexity of Self-Attention",
+    "seed_ids": [
+        "reformer",
+        "soft",
+        "4b0541eccd8f98852d6807a14fbac17f775c7b40",
+        "2e644c67a697073d561da4f4dad35e5ad5316cfd",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "3a906b77fa218adc171fecb28bb81c24c14dcc7b",
+        "77706ee4cbdbb23345da22af37bc1b9f5ec8f110",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "ac2e15fbfe3ea338725f5d33d17a5a687609c431",
+    "abstract": "Transformer architectures have led to remarkable progress in many state-of-art applications. However, despite their successes, modern transformers rely on the self-attention mechanism, whose time- and space-complexity is quadratic in the length of the input. Several approaches have been proposed to speed up self-attention mechanisms to achieve sub-quadratic running time; however, the large majority of these works are not accompanied by rigorous error guarantees. In this work, we establish lower bounds on the computational complexity of self-attention in a number of scenarios. We prove that the time complexity of self-attention is necessarily quadratic in the input length, unless the Strong Exponential Time Hypothesis (SETH) is false. This argument holds even if the attention computation is performed only approximately, and for a variety of attention mechanisms. As a complement to our lower bounds, we show that it is indeed possible to approximate dot-product self-attention using finite Taylor series in linear-time, at the cost of having an exponential dependence on the polynomial order.",
+    "authors": [
+        "Feyza Duman Keles",
+        "Pruthuvi Maheshakya Wijewardena",
+        "C. Hegde"
+    ],
+    "venue": "International Conference on Algorithmic Learning Theory",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that the time complexity of self-attention is necessarily quadratic in the input length, unless the Strong Exponential Time Hypothesis (SETH) is false, and it is shown that it is indeed possible to approximate dot-product self-Attention using finite Taylor series in linear-time, at the cost of having an exponential dependence on the polynomial order."
+    },
+    "citationCount": 49,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

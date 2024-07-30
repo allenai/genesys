@@ -1,0 +1,26 @@
+{
+    "acronym": "16d50ed383027b136432c1fbc09aedec8ed99013",
+    "title": "Enhancing Information Retrieval in Fact Extraction and Verification",
+    "seed_ids": [
+        "bigbird",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "16d50ed383027b136432c1fbc09aedec8ed99013",
+    "abstract": "Modern fact verification systems have distanced themselves from the black box paradigm by providing the evidence used to infer their veracity judgments. Hence, evidence-backed fact verification systems\u2019 performance heavily depends on the capabilities of their retrieval component to identify these facts. A popular evaluation benchmark for these systems is the FEVER task, which consists of determining the veracity of short claims using sentences extracted from Wikipedia. In this paper, we present a novel approach to the the retrieval steps of the FEVER task leveraging the graph structure of Wikipedia. The retrieval models surpass state of the art results at both sentence and document level. Additionally, we show that by feeding our retrieved evidence to the best-performing textual entailment model, we set a new state of the art in the FEVER competition.",
+    "authors": [
+        "Daniel Guzman Olivares",
+        "Lara Quijano",
+        "F. Liberatore"
+    ],
+    "venue": "FEVER",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel approach to the the retrieval steps of the FEVER task leveraging the graph structure of Wikipedia is presented, which shows that the retrieval models surpass state of the art results at both sentence and document level."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

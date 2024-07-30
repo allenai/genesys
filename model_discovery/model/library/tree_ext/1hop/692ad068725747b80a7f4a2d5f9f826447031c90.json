@@ -1,0 +1,27 @@
+{
+    "acronym": "692ad068725747b80a7f4a2d5f9f826447031c90",
+    "title": "ASR Adaptation for E-commerce Chatbots using Cross-Utterance Context and Multi-Task Language Modeling",
+    "seed_ids": [
+        "transformerxl",
+        "3d0718f438be9715a3f8f3250b955c84d6e0b13e",
+        "6f22b0da3447eebff003d0f6d4b9ed0864b85d2a"
+    ],
+    "s2id": "692ad068725747b80a7f4a2d5f9f826447031c90",
+    "abstract": "Automatic Speech Recognition (ASR) robustness toward slot entities are critical in e-commerce voice assistants that involve monetary transactions and purchases. Along with effective domain adaptation, it is intuitive that cross utterance contextual cues play an important role in disambiguating domain specific content words from speech. In this paper, we investigate various techniques to improve contextualization, content word robustness and domain adaptation of a Transformer-XL neural language model (NLM) to rescore ASR N-best hypotheses. To improve contextualization, we utilize turn level dialogue acts along with cross utterance context carry over. Additionally, to adapt our domain-general NLM towards e-commerce on-the-fly, we use embeddings derived from a finetuned masked LM on in-domain data. Finally, to improve robustness towards in-domain content words, we propose a multi-task model that can jointly perform content word detection and language modeling tasks. Compared to a non-contextual LSTM LM baseline, our best performing NLM rescorer results in a content WER reduction of 19.2% on e-commerce audio test set and a slot labeling F1 improvement of 6.4%.",
+    "authors": [
+        "Ashish Shenoy",
+        "S. Bodapati",
+        "K. Kirchhoff"
+    ],
+    "venue": "ECNLP",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper investigates various techniques to improve contextualization, content word robustness and domain adaptation of a Transformer-XL neural language model (NLM) to rescore ASR N-best hypotheses and proposes a multi-task model that can jointly perform content word detection and language modeling tasks."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

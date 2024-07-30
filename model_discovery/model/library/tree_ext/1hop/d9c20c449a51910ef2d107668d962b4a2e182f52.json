@@ -1,0 +1,42 @@
+{
+    "acronym": "d9c20c449a51910ef2d107668d962b4a2e182f52",
+    "title": "Follow-Your-Click: Open-domain Regional Image Animation via Short Prompts",
+    "seed_ids": [
+        "classfreediffu",
+        "ebe4e298853acbe82ed5957f01210e7e38d28b9b",
+        "183230c342973a8bdf715ab813d188cdf6b988d1",
+        "1206b05eae5a06ba662ae79fb291b50e359c4f42",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "2d9ae4c167510ed78803735fc57ea67c3cc55a35",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "d9c20c449a51910ef2d107668d962b4a2e182f52",
+    "abstract": "Despite recent advances in image-to-video generation, better controllability and local animation are less explored. Most existing image-to-video methods are not locally aware and tend to move the entire scene. However, human artists may need to control the movement of different objects or regions. Additionally, current I2V methods require users not only to describe the target motion but also to provide redundant detailed descriptions of frame contents. These two issues hinder the practical utilization of current I2V tools. In this paper, we propose a practical framework, named Follow-Your-Click, to achieve image animation with a simple user click (for specifying what to move) and a short motion prompt (for specifying how to move). Technically, we propose the first-frame masking strategy, which significantly improves the video generation quality, and a motion-augmented module equipped with a short motion prompt dataset to improve the short prompt following abilities of our model. To further control the motion speed, we propose flow-based motion magnitude control to control the speed of target movement more precisely. Our framework has simpler yet precise user control and better generation performance than previous methods. Extensive experiments compared with 7 baselines, including both commercial tools and research methods on 8 metrics, suggest the superiority of our approach. Project Page: https://follow-your-click.github.io/",
+    "authors": [
+        "Yue Ma",
+        "Yin-Yin He",
+        "Hongfa Wang",
+        "Andong Wang",
+        "Chenyang Qi",
+        "Chengfei Cai",
+        "Xiu Li",
+        "Zhifeng Li",
+        "H. Shum",
+        "Wei Liu",
+        "Qifeng Chen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a practical framework, named Follow-Your-Click, to achieve image animation with a simple user click and a short motion prompt and has simpler yet precise user control and better generation performance than previous methods."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "d11773a5d338a3ccb449f231f2147a512ed4817d",
+    "title": "Adapted Swin Transformer-based Real-Time Plasma Shape Detection and Control in HL-3",
+    "seed_ids": [
+        "metaformer",
+        "dd1139cfc609c2f3263d02e97176d5275caebc0a",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "d11773a5d338a3ccb449f231f2147a512ed4817d",
+    "abstract": "In the field of magnetic confinement plasma control, the accurate feedback of plasma position and shape primarily relies on calculations derived from magnetic measurements through equilibrium reconstruction or matrix mapping method. However, under harsh conditions like high-energy neutron radiation and elevated temperatures, the installation of magnetic probes within the device becomes challenging. Relying solely on external magnetic probes can compromise the precision of EFIT in determining the plasma shape. To tackle this issue, we introduce a real-time, non-magnetic measurement method on the HL-3 tokamak, which diagnoses the plasma position and shape via imaging. Particularly, we put forward an adapted Swin Transformer model, the Poolformer Swin Transformer (PST), to accurately and fastly interpret the plasma shape from the Charge-Coupled Device Camera (CCD) images. By adopting multi-task learning and knowledge distillation techniques, the model is capable of robustly detecting six shape parameters under disruptive conditions such as a divertor shape and gas injection, circumventing global brightness changes and cumbersome manual labeling. Specifically, the well-trained PST model capably infers R and Z within the mean average error below 1.1 cm and 1.8 cm, respectively, while requiring less than 2 ms for end-to-end feedback, an 80 improvement over the smallest Swin Transformer model, laying the foundation for real-time control. Finally, we deploy the PST model in the Plasma Control System (PCS) using TensorRT, and achieve 500 ms stable PID feedback control based on the PST-computed horizontal displacement information. In conclusion, this research opens up new avenues for the practical application of image-computing plasma shape diagnostic methods in the realm of real-time feedback control.",
+    "authors": [
+        "Qianyun Dong",
+        "Zhengwei Chen",
+        "Rongpeng Li",
+        "Zongyu Yang",
+        "Feng Gao",
+        "Yihang Chen",
+        "Fan Xia",
+        "Wulyu Zhong",
+        "Zhifeng Zhao"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": null,
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

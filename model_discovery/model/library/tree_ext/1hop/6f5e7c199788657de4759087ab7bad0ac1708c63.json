@@ -1,0 +1,31 @@
+{
+    "acronym": "6f5e7c199788657de4759087ab7bad0ac1708c63",
+    "title": "Efficient Recurrent Off-Policy RL Requires a Context-Encoder-Specific Learning Rate",
+    "seed_ids": [
+        "mamba",
+        "e4e1464a4b9df83153bfde9a2b03ff15fe958364",
+        "7177fcb8e0311eeebd4070b62312a4bec1432ea3",
+        "d98b5c1d0f9a4e39dc79ea7a3f74e54789df5e13",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51"
+    ],
+    "s2id": "6f5e7c199788657de4759087ab7bad0ac1708c63",
+    "abstract": "Real-world decision-making tasks are usually partially observable Markov decision processes (POMDPs), where the state is not fully observable. Recent progress has demonstrated that recurrent reinforcement learning (RL), which consists of a context encoder based on recurrent neural networks (RNNs) for unobservable state prediction and a multilayer perceptron (MLP) policy for decision making, can mitigate partial observability and serve as a robust baseline for POMDP tasks. However, previous recurrent RL methods face training stability issues due to the gradient instability of RNNs. In this paper, we propose Recurrent Off-policy RL with Context-Encoder-Specific Learning Rate (RESeL) to tackle this issue. Specifically, RESeL uses a lower learning rate for context encoder than other MLP layers to ensure the stability of the former while maintaining the training efficiency of the latter. We integrate this technique into existing off-policy RL methods, resulting in the RESeL algorithm. We evaluated RESeL in 18 POMDP tasks, including classic, meta-RL, and credit assignment scenarios, as well as five MDP locomotion tasks. The experiments demonstrate significant improvements in training stability with RESeL. Comparative results show that RESeL achieves notable performance improvements over previous recurrent RL baselines in POMDP tasks, and is competitive with or even surpasses state-of-the-art methods in MDP tasks. Further ablation studies highlight the necessity of applying a distinct learning rate for the context encoder.",
+    "authors": [
+        "Fan Luo",
+        "Zuolin Tu",
+        "Zefang Huang",
+        "Yang Yu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Recurrent Off-policy RL with Context-Encoder-Specific Learning Rate (RESeL) is proposed, which uses a lower learning rate for context encoder than other MLP layers to ensure the stability of the former while maintaining the training efficiency of the latter."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

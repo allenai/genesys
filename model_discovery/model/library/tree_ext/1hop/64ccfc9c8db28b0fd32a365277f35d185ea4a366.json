@@ -1,0 +1,28 @@
+{
+    "acronym": "64ccfc9c8db28b0fd32a365277f35d185ea4a366",
+    "title": "Exploring The Efficient Market Hypothesis for Accurate Stock Movement Prediction via Feature-Axis Transformer",
+    "seed_ids": [
+        "transformer",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "30dcc0e191a376fea0e7a46f94c53872c029efc9"
+    ],
+    "s2id": "64ccfc9c8db28b0fd32a365277f35d185ea4a366",
+    "abstract": "Stock movement forecasting is a significant challenge in financial machine-learning application fields due to its profound impact on financial markets. While the Efficient Market Hypothesis (EMH) [10] postulates that predicting stock movement is nearly impossible, recent studies using deep learning methodologies exhibit promising results. The EMH is based on the assumption that stock prices immediately incorporate all available information, such as financial statements, earnings announcements, and macroeconomic news. Input features used by the prior studies commonly include Open, High, Low, Close, and Adjusted Close (OHLCA), which potentially contain salient information for forecasting movements. However, most have yet to extract the information implicit in each price separately and utilize it to make predictions. This paper proposes FATE: Feature-Axis Transformer based on EMH designed to leverage each OHLCA component to facilitate stock movement prediction. FATE consists of three modules: 1) capturing each feature's temporal correlation between various stocks; 2) generating global market context data; and 3) constructing a contextual vector through correlating to other prices around the closing price. Experimental results show that FATE demonstrates better predictive results than state-of-the-art baselines on six real-world datasets. FATE also yields profitable portfolio trading gains compared to the baselines. Furthermore, it offers interpretable visualized results during its stock movement forecasting operations.",
+    "authors": [
+        "Kanghyeon Seo",
+        "Jihoon Yang"
+    ],
+    "venue": "ACM Symposium on Applied Computing",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "FATE: Feature-Axis Transformer based on EMH designed to leverage each OHLCA component to facilitate stock movement prediction demonstrates better predictive results than state-of-the-art baselines on six real-world datasets."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

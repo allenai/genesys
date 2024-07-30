@@ -1,0 +1,23 @@
+{
+    "acronym": "263f9f956bbf632461aa280fc9e2e179ddb1d59f",
+    "title": "Longer-term dependency learning using Transformers-XL on SQuAD 2.0",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "263f9f956bbf632461aa280fc9e2e179ddb1d59f",
+    "abstract": "I propose an application of the Transformer-XL attention model to the SQUAD 2.0 dataset, by first implementing a similar architecture to that of QANet, replacing the RNNs of the BIDAF model with encoders, and then changing out the self-attention layer to that of Transformer-XL [1]. In traditional transformers, there exists an upper dependency length limit equal to the length of this context. The Transformer-XL addresses these issues by caching the representations of previous segments to be reused as additional context to future segments, thus increasing the context size and allowing information to flow from one segment to the next. This longer-term dependency capture can be particularly useful when applying transformers to domains outside of natural language. Similar results are shown with the Transformer-XL / QANet combined model as for the baseline BIDAF, and some suggestions and explanations are provided in the Discussion section below.",
+    "authors": [
+        "Belinda Mo"
+    ],
+    "venue": "",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

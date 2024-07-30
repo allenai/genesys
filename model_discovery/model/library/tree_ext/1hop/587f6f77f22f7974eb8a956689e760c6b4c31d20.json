@@ -1,0 +1,26 @@
+{
+    "acronym": "587f6f77f22f7974eb8a956689e760c6b4c31d20",
+    "title": "An Attentive Fourier-Augmented Image-Captioning Transformer",
+    "seed_ids": [
+        "fnet",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f"
+    ],
+    "s2id": "587f6f77f22f7974eb8a956689e760c6b4c31d20",
+    "abstract": "Many vision\u2013language models that output natural language, such as image-captioning models, usually use image features merely for grounding the captions and most of the good performance of the model can be attributed to the language model, which does all the heavy lifting, a phenomenon that has persisted even with the emergence of transformer-based architectures as the preferred base architecture of recent state-of-the-art vision\u2013language models. In this paper, we make the images matter more by using fast Fourier transforms to further breakdown the input features and extract more of their intrinsic salient information, resulting in more detailed yet concise captions. This is achieved by performing a 1D Fourier transformation on the image features first in the hidden dimension and then in the sequence dimension. These extracted features alongside the region proposal image features result in a richer image representation that can then be queried to produce the associated captions, which showcase a deeper understanding of image\u2013object\u2013location relationships than similar models. Extensive experiments performed on the MSCOCO dataset demonstrate a CIDER-D, BLEU-1, and BLEU-4 score of 130, 80.5, and 39, respectively, on the MSCOCO benchmark dataset.",
+    "authors": [
+        "Raymond Ian Osolo",
+        "Zhan Yang",
+        "Jun Long"
+    ],
+    "venue": "Applied Sciences",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Using fast Fourier transforms to further breakdown the input features and extract more of their intrinsic salient information, resulting in more detailed yet concise captions, which showcase a deeper understanding of image\u2013object\u2013location relationships than similar models."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

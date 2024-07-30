@@ -1,0 +1,26 @@
+{
+    "acronym": "b7e95c79a8279f2d7a2a9b24df0504a52e7c0c81",
+    "title": "Stance Detection with Explanations",
+    "seed_ids": [
+        "bert",
+        "be658d4482299d7a77be324bdb9946bfcbcbad25"
+    ],
+    "s2id": "b7e95c79a8279f2d7a2a9b24df0504a52e7c0c81",
+    "abstract": "Identification of stance has recently gained a lot of attention with the extreme growth of fake news and filter bubbles. Over the last decade, many feature-based and deep-learning approaches have been proposed to solve stance detection. However, almost none of the existing works focus on providing a meaningful explanation for their prediction. In this work, we study stance detection with an emphasis on generating explanations for the predicted stance by capturing the pivotal argumentative structure embedded in a document. We propose to build a stance tree that utilizes rhetorical parsing to construct an evidence tree and to use Dempster Shafer Theory to aggregate the evidence. Human studies show that our unsupervised technique of generating stance explanations outperforms the SOTA extractive summarization method in terms of informativeness, non-redundancy, coverage, and overall quality. Furthermore, experiments show that our explanation-based stance prediction excels or matches the performance of the SOTA model on various benchmark datasets.",
+    "authors": [
+        "Rudra Ranajee Saha",
+        "L. Lakshmanan",
+        "Raymond T. Ng"
+    ],
+    "venue": "International Conference on Computational Logic",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to build a stance tree that utilizes rhetorical parsing to construct an evidence tree and to use Dempster Shafer Theory to aggregate the evidence."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

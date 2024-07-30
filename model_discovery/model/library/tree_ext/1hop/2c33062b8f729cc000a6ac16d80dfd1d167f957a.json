@@ -1,0 +1,29 @@
+{
+    "acronym": "2c33062b8f729cc000a6ac16d80dfd1d167f957a",
+    "title": "Disentangling and Integrating Relational and Sensory Information in Transformer Architectures",
+    "seed_ids": [
+        "transformer",
+        "flashattn",
+        "roformer",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a"
+    ],
+    "s2id": "2c33062b8f729cc000a6ac16d80dfd1d167f957a",
+    "abstract": "The Transformer architecture processes sequences by implementing a form of neural message-passing that consists of iterative information retrieval (attention), followed by local processing (position-wise MLP). Two types of information are essential under this general computational paradigm:\"sensory\"information about individual objects, and\"relational\"information describing the relationships between objects. Standard attention naturally encodes the former, but does not explicitly encode the latter. In this paper, we present an extension of Transformers where multi-head attention is augmented with two distinct types of attention heads, each routing information of a different type. The first type is the standard attention mechanism of Transformers, which captures object-level features, while the second type is a novel attention mechanism we propose to explicitly capture relational information. The two types of attention heads each possess different inductive biases, giving the resulting architecture greater efficiency and versatility. The promise of this approach is demonstrated empirically across a range of tasks.",
+    "authors": [
+        "Awni Altabaa",
+        "John Lafferty"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents an extension of Transformers where multi-head attention is augmented with two distinct types of attention heads, each routing information of a different type, giving the resulting architecture greater efficiency and versatility."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

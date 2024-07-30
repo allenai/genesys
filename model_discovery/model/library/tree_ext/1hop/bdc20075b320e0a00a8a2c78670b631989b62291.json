@@ -1,0 +1,29 @@
+{
+    "acronym": "bdc20075b320e0a00a8a2c78670b631989b62291",
+    "title": "Zero-shot prompt-based classification: topic labeling in times of foundation models in German Tweets",
+    "seed_ids": [
+        "transformer",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "14908a18ff831005b6b4fc953ce61e1b4e7b54ee"
+    ],
+    "s2id": "bdc20075b320e0a00a8a2c78670b631989b62291",
+    "abstract": "Filtering and annotating textual data are routine tasks in many areas, like social media or news analytics. Automating these tasks allows to scale the analyses wrt. speed and breadth of content covered and decreases the manual effort required. Due to technical advancements in Natural Language Processing, specifically the success of large foundation models, a new tool for automating such annotation processes by using a text-to-text interface given written guidelines without providing training samples has become available. In this work, we assess these advancements in-the-wild by empirically testing them in an annotation task on German Twitter data about social and political European crises. We compare the prompt-based results with our human annotation and preceding classification approaches, including Naive Bayes and a BERT-based fine-tuning/domain adaptation pipeline. Our results show that the prompt-based approach - despite being limited by local computation resources during the model selection - is comparable with the fine-tuned BERT but without any annotated training data. Our findings emphasize the ongoing paradigm shift in the NLP landscape, i.e., the unification of downstream tasks and elimination of the need for pre-labeled training data.",
+    "authors": [
+        "Simon M\u00fcnker",
+        "Kai Kugler",
+        "Achim Rettinger"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results show that the prompt-based approach is comparable with the fine-tuned BERT but without any annotated training data, emphasizing the ongoing paradigm shift in the NLP landscape, i.e., the unification of downstream tasks and elimination of the need for pre-labeled training data."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

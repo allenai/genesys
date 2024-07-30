@@ -1,0 +1,30 @@
+{
+    "acronym": "cec42a1e10705cb1b70df8d1debb377282267f2f",
+    "title": "Large Language Models Struggle in Token-Level Clinical Named Entity Recognition",
+    "seed_ids": [
+        "bert",
+        "da72dfe9d30ea9d74b5cb9a3b724d706ed7ddc08",
+        "94ce1d5924e05e8d75e43ce70044293ddcef850a"
+    ],
+    "s2id": "cec42a1e10705cb1b70df8d1debb377282267f2f",
+    "abstract": "Large Language Models (LLMs) have revolutionized various sectors, including healthcare where they are employed in diverse applications. Their utility is particularly significant in the context of rare diseases, where data scarcity, complexity, and specificity pose considerable challenges. In the clinical domain, Named Entity Recognition (NER) stands out as an essential task and it plays a crucial role in extracting relevant information from clinical texts. Despite the promise of LLMs, current research mostly concentrates on document-level NER, identifying entities in a more general context across entire documents, without extracting their precise location. Additionally, efforts have been directed towards adapting ChatGPT for token-level NER. However, there is a significant research gap when it comes to employing token-level NER for clinical texts, especially with the use of local open-source LLMs. This study aims to bridge this gap by investigating the effectiveness of both proprietary and local LLMs in token-level clinical NER. Essentially, we delve into the capabilities of these models through a series of experiments involving zero-shot prompting, few-shot prompting, retrieval-augmented generation (RAG), and instruction-fine-tuning. Our exploration reveals the inherent challenges LLMs face in token-level NER, particularly in the context of rare diseases, and suggests possible improvements for their application in healthcare. This research contributes to narrowing a significant gap in healthcare informatics and offers insights that could lead to a more refined application of LLMs in the healthcare sector.",
+    "authors": [
+        "Qiuhao Lu",
+        "Rui Li",
+        "Andrew Wen",
+        "Jinlian Wang",
+        "Liwei Wang",
+        "Hongfang Liu"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This exploration reveals the inherent challenges LLMs face in token-level NER, particularly in the context of rare diseases, and suggests possible improvements for their application in healthcare, as well as contributing to narrowing a significant gap in healthcare informatics."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

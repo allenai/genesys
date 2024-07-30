@@ -1,0 +1,27 @@
+{
+    "acronym": "3eded6bad90cc890a3b2acc6edb88223d1765d53",
+    "title": "A Sample-Based Training Method for Distantly Supervised Relation Extraction with Pre-Trained Transformers",
+    "seed_ids": [
+        "gpt",
+        "68e686817f2c33cd09ba3805fa082348f18affd9",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3eded6bad90cc890a3b2acc6edb88223d1765d53",
+    "abstract": "Multiple instance learning (MIL) has become the standard learning paradigm for distantly supervised relation extraction (DSRE). However, due to relation extraction being performed at bag level, MIL has significant hardware requirements for training when coupled with large sentence encoders such as deep transformer neural networks. In this paper, we propose a novel sampling method for DSRE that relaxes these hardware requirements. In the proposed method, we limit the number of sentences in a batch by randomly sampling sentences from the bags in the batch. However, this comes at the cost of losing valid sentences from bags. To alleviate the issues caused by random sampling, we use an ensemble of trained models for prediction. We demonstrate the effectiveness of our approach by using our proposed learning setting to fine-tuning BERT on the widely NYT dataset. Our approach significantly outperforms previous state-of-the-art methods in terms of AUC and P@N metrics.",
+    "authors": [
+        "Mehrdad Nasser",
+        "Mohamad Bagher Sajadi",
+        "B. Minaei-Bidgoli"
+    ],
+    "venue": "International Conference on Natural Language and Speech Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel sampling method for DSRE that limit the number of sentences in a batch by randomly sampling sentences from the bags in the batch and significantly outperforms previous state-of-the-art methods in terms of AUC and P@N metrics."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

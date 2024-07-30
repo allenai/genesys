@@ -1,0 +1,25 @@
+{
+    "acronym": "92c27870dbd3fd53600f80e1fe08310509018cb1",
+    "title": "AnomGraphAdv: Enhancing Anomaly and Network Intrusion Detection in Wireless Networks Using Adversarial Training and Temporal Graph Networks",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "92c27870dbd3fd53600f80e1fe08310509018cb1",
+    "abstract": "Detecting DoS attacks and other malicious activities in wireless networks is crucial for cybersecurity. The challenge arises due to the unlabeled nature of the majority of available network data, mainly because of the high volume and diverse data streams from numerous sensors. The complex temporal correlation patterns and highly varying signatures pose a significant challenge to timeseries-based anomalies and intrusion detection systems. Additionally, the evolving nature of networks and dynamically changing attack patterns lead to zero-day attacks (new, unknown threats). The rarity of anomalies and intrusions, coupled with the highly imbalanced nature of the dataset, adds complexity to the challenge. To address this problem, we propose the AnomGraphAdv Network, a novel unsupervised approach with adversarial training for Anomalies and Network Intrusion Detection in multivariate timeseries data. We introduce a novel temporal graph network and jointly use it with a temporal self-attention mechanism inside the encoder to learn both temporal and non-temporal patterns in the data. Additionally, we propose a custom-designed loss function that trains the model adversarially to minimize the reconstruction error for normal events while maximizing it for anomalous events to amplify subtle anomalies. This loss function simultaneously enhances the contrast between global and local-temporal correlation patterns. Extensive evaluations on five benchmark datasets demonstrate that the AnomGraphAdv Network significantly outperforms state-of-the-art methods in terms of AUROC and F1-score.",
+    "authors": [
+        "Supriya Bajpai",
+        "Pagadala Krishna Murthy",
+        "Niraj Kumar"
+    ],
+    "venue": "Wireless Network Security",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The AnomGraphAdv Network is proposed, a novel unsupervised approach with adversarial training for Anomalies and Network Intrusion Detection in multivariate timeseries data that significantly outperforms state-of-the-art methods in terms of AUROC and F1-score."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "6cb35dd6e1338faa0c3d6a6b0020bbcbcc18653d",
+    "title": "Sophia: A Scalable Stochastic Second-order Optimizer for Language Model Pre-training",
+    "seed_ids": [
+        "gpt2",
+        "592e2a4c8bb3e72b1f6d671d6642907fa81b1782",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6cb35dd6e1338faa0c3d6a6b0020bbcbcc18653d",
+    "abstract": "Given the massive cost of language model pre-training, a non-trivial improvement of the optimization algorithm would lead to a material reduction on the time and cost of training. Adam and its variants have been state-of-the-art for years, and more sophisticated second-order (Hessian-based) optimizers often incur too much per-step overhead. In this paper, we propose Sophia, Second-order Clipped Stochastic Optimization, a simple scalable second-order optimizer that uses a light-weight estimate of the diagonal Hessian as the pre-conditioner. The update is the moving average of the gradients divided by the moving average of the estimated Hessian, followed by element-wise clipping. The clipping controls the worst-case update size and tames the negative impact of non-convexity and rapid change of Hessian along the trajectory. Sophia only estimates the diagonal Hessian every handful of iterations, which has negligible average per-step time and memory overhead. On language modeling with GPT models of sizes ranging from 125M to 1.5B, Sophia achieves a 2x speed-up compared to Adam in the number of steps, total compute, and wall-clock time, achieving the same perplexity with 50% fewer steps, less total compute, and reduced wall-clock time. Theoretically, we show that Sophia, in a much simplified setting, adapts to the heterogeneous curvatures in different parameter dimensions, and thus has a run-time bound that does not depend on the condition number of the loss.",
+    "authors": [
+        "Hong Liu",
+        "Zhiyuan Li",
+        "David Leo Wright Hall",
+        "Percy Liang",
+        "Tengyu Ma"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "S Sophia, Second-order Clipped Stochastic Optimization is proposed, a simple scalable second-order optimizer that uses a light-weight estimate of the diagonal Hessian as the pre-conditioner and has a run-time bound that does not depend on the condition number of the loss."
+    },
+    "citationCount": 75,
+    "influentialCitationCount": 16,
+    "code": null,
+    "description": null,
+    "url": null
+}

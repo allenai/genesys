@@ -1,0 +1,29 @@
+{
+    "acronym": "e94e677b83007ebc661f202704f2c3c32e82dc0f",
+    "title": "Knowledge Graphs and Pre-trained Language Models enhanced Representation Learning for Conversational Recommender Systems",
+    "seed_ids": [
+        "bert",
+        "d6db74a36301fdbb4859b5f7ff302337666b93ce",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "e94e677b83007ebc661f202704f2c3c32e82dc0f",
+    "abstract": "Conversational recommender systems (CRSs) utilize natural language interactions and dialog history to infer user preferences and provide accurate recommendations. Due to the limited conversation context and background knowledge, existing CRSs rely on external sources such as knowledge graphs (KGs) to enrich the context and model entities based on their interrelations. However, these methods ignore the rich intrinsic information within entities. To address this, we introduce the knowledge-enhanced entity representation learning (KERL) framework, which leverages both the KG and a pretrained language model (PLM) to improve the semantic understanding of entities for CRS. In our KERL framework, entity textual descriptions are encoded via a PLM, while a KG helps reinforce the representation of these entities. We also employ positional encoding to effectively capture the temporal information of entities in a conversation. The enhanced entity representation is then used to develop a recommender component that fuses both entity and contextual representations for more informed recommendations, as well as a dialog component that generates informative entity-related information in the response text. A high-quality KG with aligned entity descriptions is constructed to facilitate this study, namely, the Wiki Movie Knowledge Graph (WikiMKG). The experimental results show that KERL achieves state-of-the-art results in both recommendation and response generation tasks. Our code is publicly available at the link: https://github.com/icedpanda/KERL.",
+    "authors": [
+        "Zhangchi Qiu",
+        "Ye Tao",
+        "Shirui Pan",
+        "Alan Wee-Chung Liew"
+    ],
+    "venue": "IEEE Transactions on Neural Networks and Learning Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The knowledge-enhanced entity representation learning (KERL) framework, which leverages both the KG and a pretrained language model (PLM) to improve the semantic understanding of entities for CRS, achieves state-of-the-art results in both recommendation and response generation tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

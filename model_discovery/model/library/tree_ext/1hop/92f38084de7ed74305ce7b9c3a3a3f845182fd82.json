@@ -1,0 +1,42 @@
+{
+    "acronym": "92f38084de7ed74305ce7b9c3a3a3f845182fd82",
+    "title": "Recurrent Distance Filtering for Graph Representation Learning",
+    "seed_ids": [
+        "s4d",
+        "dssm",
+        "s5",
+        "resurrectrnn",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "5eda60d4940d4185df45c5703e103458171d465d",
+        "a30ac45ac5b7bd2148d3fb80ee7f3c29724e3170",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "277dd73bfeb5c46513ce305136b0e71fcd2a311c",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "8af925f4edf45131b5b6fed8aa655089d58692fa",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "92f38084de7ed74305ce7b9c3a3a3f845182fd82",
+    "abstract": "Graph neural networks based on iterative one-hop message passing have been shown to struggle in harnessing the information from distant nodes effectively. Conversely, graph transformers allow each node to attend to all other nodes directly, but lack graph inductive bias and have to rely on ad-hoc positional encoding. In this paper, we propose a new architecture to reconcile these challenges. Our approach stems from the recent breakthroughs in long-range modeling provided by deep state-space models: for a given target node, our model aggregates other nodes by their shortest distances to the target and uses a linear RNN to encode the sequence of hop representations. The linear RNN is parameterized in a particular diagonal form for stable long-range signal propagation and is theoretically expressive enough to encode the neighborhood hierarchy. With no need for positional encoding, we empirically show that the performance of our model is comparable to or better than that of state-of-the-art graph transformers on various benchmarks, with a significantly reduced computational cost. Our code is open-source at https://github.com/skeletondyh/GRED.",
+    "authors": [
+        "Yuhui Ding",
+        "Antonio Orvieto",
+        "Bobby He",
+        "Thomas Hofmann"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a new architecture for graph neural networks based on iterative one-hop message passing that is comparable to or better than that of state-of-the-art graph transformers on various benchmarks, with a significantly reduced computational cost."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

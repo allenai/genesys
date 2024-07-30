@@ -1,0 +1,25 @@
+{
+    "acronym": "8659bf379ca8756755125a487c43cfe8611ce842",
+    "title": "To Tune or Not to Tune? Adapting Pretrained Representations to Diverse Tasks",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "8659bf379ca8756755125a487c43cfe8611ce842",
+    "abstract": "While most previous work has focused on different pretraining objectives and architectures for transfer learning, we ask how to best adapt the pretrained model to a given target task. We focus on the two most common forms of adaptation, feature extraction (where the pretrained weights are frozen), and directly fine-tuning the pretrained model. Our empirical results across diverse NLP tasks with two state-of-the-art models show that the relative performance of fine-tuning vs. feature extraction depends on the similarity of the pretraining and target tasks. We explore possible explanations for this finding and provide a set of adaptation guidelines for the NLP practitioner.",
+    "authors": [
+        "Matthew E. Peters",
+        "Sebastian Ruder",
+        "Noah A. Smith"
+    ],
+    "venue": "RepL4NLP@ACL",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The empirical results across diverse NLP tasks with two state-of-the-art models show that the relative performance of fine-tuning vs. feature extraction depends on the similarity of the pretraining and target tasks."
+    },
+    "citationCount": 396,
+    "influentialCitationCount": 30,
+    "code": null,
+    "description": null,
+    "url": null
+}

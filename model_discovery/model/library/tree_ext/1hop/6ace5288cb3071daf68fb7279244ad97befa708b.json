@@ -1,0 +1,30 @@
+{
+    "acronym": "6ace5288cb3071daf68fb7279244ad97befa708b",
+    "title": "Pre-trained Maldi Transformers improve MALDI-TOF MS-based prediction",
+    "seed_ids": [
+        "bert",
+        "ad1d86d75dbbeef25659414a7ca1de179abb1ae0",
+        "6bfafb32b423c3f0456a10984814f89046def489",
+        "79b4ec1aaf67a04a9afa0d8138f84b7be66c00cb",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "6ace5288cb3071daf68fb7279244ad97befa708b",
+    "abstract": "For the last decade, matrix-assisted laser desportion/ionization time-of-flight mass spectrometry (MALDI-TOF MS) has been the reference method for species identification in clinical microbiology. Hampered by a historical lack of open data, machine learning research towards models specifically adapted to MALDI-TOF MS remains in its infancy. Given the growing complexity of available datasets (such as large-scale antimicrobial resistance prediction), a need for models that (1) are specifically designed for MALDI-TOF MS data, and (2) have high representational capacity, presents itself. Here, we introduce Maldi Transformer, an adaptation of the state-of-the-art transformer architecture to the MALDI-TOF mass spectral domain. We propose the first self-supervised pre-training technique specifically designed for mass spectra. The technique is based on shuffling peaks across spectra, and pre-training the transformer as a peak discriminator. Extensive benchmarks confirm the efficacy of this novel design. The final result is a model exhibiting state-of-the-art (or competitive) performance on downstream prediction tasks. In addition, we show that Maldi Transformer\u2019s identification of noisy spectra may be leveraged towards higher predictive performance. All code supporting this study is distributed on PyPI and is packaged under: https://github.com/gdewael/maldi-nn",
+    "authors": [
+        "Gaetan De Waele",
+        "G. Menschaert",
+        "P. Vandamme",
+        "Willem Waegeman"
+    ],
+    "venue": "bioRxiv",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Maldi Transformer is introduced, an adaptation of the state-of-the-art transformer architecture to the MALDI-TOF mass spectral domain and is proposed the first self-supervised pre-training technique specifically designed for mass spectra."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

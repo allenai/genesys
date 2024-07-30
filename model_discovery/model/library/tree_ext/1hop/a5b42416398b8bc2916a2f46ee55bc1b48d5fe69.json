@@ -1,0 +1,29 @@
+{
+    "acronym": "a5b42416398b8bc2916a2f46ee55bc1b48d5fe69",
+    "title": "Understanding Token Probability Encoding in Output Embeddings",
+    "seed_ids": [
+        "gpt2",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a5b42416398b8bc2916a2f46ee55bc1b48d5fe69",
+    "abstract": "In this paper, we investigate the output token probability information in the output embedding of language models. We provide an approximate common log-linear encoding of output token probabilities within the output embedding vectors and demonstrate that it is accurate and sparse when the output space is large and output logits are concentrated. Based on such findings, we edit the encoding in output embedding to modify the output probability distribution accurately. Moreover, the sparsity we find in output probability encoding suggests that a large number of dimensions in the output embedding do not contribute to causal language modeling. Therefore, we attempt to delete the output-unrelated dimensions and find more than 30% of the dimensions can be deleted without significant movement in output distribution and degeneration on sequence generation. Additionally, in training dynamics, we use such encoding as a probe and find that the output embeddings capture token frequency information in early steps, even before an obvious convergence starts.",
+    "authors": [
+        "Hakaze Cho",
+        "Yoshihiro Sakai",
+        "Kenshiro Tanaka",
+        "Mariko Kato",
+        "Naoya Inoue"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An approximate common log-linear encoding of output token probabilities within the output embedding vectors is provided and it is demonstrated that it is accurate and sparse when the output space is large and output logits are concentrated."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

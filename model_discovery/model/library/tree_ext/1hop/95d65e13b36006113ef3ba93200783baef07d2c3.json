@@ -1,0 +1,32 @@
+{
+    "acronym": "95d65e13b36006113ef3ba93200783baef07d2c3",
+    "title": "Mutual Enhancement of Large and Small Language Models with Cross-Silo Knowledge Transfer",
+    "seed_ids": [
+        "bert",
+        "0e3d1457a66e442fae46c8f96886dc76aef3b085",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "95d65e13b36006113ef3ba93200783baef07d2c3",
+    "abstract": "While large language models (LLMs) are empowered with broad knowledge, their task-specific performance is often suboptimal. It necessitates fine-tuning LLMs with task-specific data, but such data may be inaccessible due to privacy concerns. In this paper, we propose a novel approach to enhance LLMs with smaller language models (SLMs) that are trained on clients using their private task-specific data. To enable mutual enhancement between LLMs and SLMs, we propose CrossLM, where the SLMs promote the LLM to generate task-specific high-quality data, and both the LLM and SLMs are enhanced with the generated data. We evaluate CrossLM using publicly accessible language models across a range of benchmark tasks. The results demonstrate that CrossLM significantly enhances the task-specific performance of SLMs on clients and the LLM on the cloud server simultaneously while preserving the LLM's generalization capability.",
+    "authors": [
+        "Yongheng Deng",
+        "Ziqing Qiao",
+        "Ju Ren",
+        "Yang Liu",
+        "Yaoxue Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes CrossLM, a novel approach to enhance LLMs with smaller language models (SLMs) that are trained on clients using their private task-specific data, and demonstrates that CrossLM significantly enhances the task- specific performance of SLMs on clients and the LLM on the cloud server simultaneously while preserving theLLM's generalization capability."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

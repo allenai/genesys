@@ -1,0 +1,26 @@
+{
+    "acronym": "c25565d13041010ab8321a605d88fd9952323fc4",
+    "title": "Hierarchical Transformer Network for Utterance-level Emotion Recognition",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "c25565d13041010ab8321a605d88fd9952323fc4",
+    "abstract": "While there have been significant advances in detecting emotions in text, in the field of utterance-level emotion recognition (ULER), there are still many problems to be solved. In this paper, we address some challenges in ULER in dialog systems. (1) The same utterance can deliver different emotions when it is in different contexts. (2) Long-range contextual information is hard to effectively capture. (3) Unlike the traditional text classification problem, for most datasets of this task, they contain inadequate conversations or speech. (4) To better model the emotional interaction between speakers, speaker information is necessary. To address the problems of (1) and (2), we propose a hierarchical transformer framework (apart from the description of other studies, the \u201ctransformer\u201d in this paper usually refers to the encoder part of the transformer) with a lower-level transformer to model the word-level input and an upper-level transformer to capture the context of utterance-level embeddings. For problem (3), we use bidirectional encoder representations from transformers (BERT), a pretrained language model, as the lower-level transformer, which is equivalent to introducing external data into the model and solves the problem of data shortage to some extent. For problem (4), we add speaker embeddings to the model for the first time, which enables our model to capture the interaction between speakers. Experiments on three dialog emotion datasets, Friends, EmotionPush, and EmoryNLP, demonstrate that our proposed hierarchical transformer network models obtain competitive results compared with the state-of-the-art methods in terms of the macro-averaged F1-score (macro-F1).",
+    "authors": [
+        "Qingbiao Li",
+        "Chunhua Wu",
+        "K. Zheng",
+        "Zhe Wang"
+    ],
+    "venue": "Applied Sciences",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experiments demonstrate that the proposed hierarchical transformer network models obtain competitive results compared with the state-of-the-art methods in terms of the macro-averaged F1-score (macro-F1)."
+    },
+    "citationCount": 22,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

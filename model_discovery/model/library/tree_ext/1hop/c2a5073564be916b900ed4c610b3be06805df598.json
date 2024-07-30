@@ -1,0 +1,34 @@
+{
+    "acronym": "c2a5073564be916b900ed4c610b3be06805df598",
+    "title": "Diffusion models for time-series applications: a survey",
+    "seed_ids": [
+        "diffusionlm",
+        "e342165a614588878ad0f4bc9bacf3905df34d08",
+        "17d068e78e6f25e65cb08319b19b58279bb8b214",
+        "ef7993ab30d0a8afabb4ebab080e471c0d5c743c",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f"
+    ],
+    "s2id": "c2a5073564be916b900ed4c610b3be06805df598",
+    "abstract": "Diffusion models, a family of generative models based on deep learning, have become increasingly prominent in cutting-edge machine learning research. With distinguished performance in generating samples that resemble the observed data, diffusion models are widely used in image, video, and text synthesis nowadays. In recent years, the concept of diffusion has been extended to time-series applications, and many powerful models have been developed. Considering the deficiency of a methodical summary and discourse on these models, we provide this survey as an elementary resource for new researchers in this area and to provide inspiration to motivate future research. For better understanding, we include an introduction about the basics of diffusion models. Except for this, we primarily focus on diffusion-based methods for time-series forecasting, imputation, and generation, and present them, separately, in three individual sections. We also compare different methods for the same application and highlight their connections if applicable. Finally, we conclude with the common limitation of diffusion-based methods and highlight potential future research directions. \u6269\u6563\u6a21\u578b,\u4e00\u7c7b\u57fa\u4e8e\u6df1\u5ea6\u5b66\u4e60\u7684\u751f\u6210\u6a21\u578b\u5bb6\u65cf,\u5728\u524d\u6cbf\u673a\u5668\u5b66\u4e60\u7814\u7a76\u4e2d\u53d8\u5f97\u65e5\u76ca\u91cd\u8981\u3002\u6269\u6563\u6a21\u578b\u4ee5\u5728\u751f\u6210\u4e0e\u89c2\u5bdf\u6570\u636e\u76f8\u4f3c\u6837\u672c\u65b9\u9762\u7684\u5353\u8d8a\u6027\u80fd\u800c\u8457\u79f0,\u5982\u4eca\u5e7f\u6cdb\u7528\u4e8e\u56fe\u50cf\u3001\u89c6\u9891\u548c\u6587\u672c\u5408\u6210\u3002\u8fd1\u5e74\u6765,\u6269\u6563\u7684\u6982\u5ff5\u5df2\u6269\u5c55\u5230\u65f6\u95f4\u5e8f\u5217\u5e94\u7528\u9886\u57df,\u6d8c\u73b0\u51fa\u8bb8\u591a\u5f3a\u5927\u7684\u6a21\u578b\u3002\u9274\u4e8e\u8fd9\u4e9b\u6a21\u578b\u7f3a\u4e4f\u7cfb\u7edf\u6027\u603b\u7ed3\u548c\u8ba8\u8bba,\u6211\u4eec\u63d0\u4f9b\u6b64\u7efc\u8ff0\u4f5c\u4e3a\u6b64\u9886\u57df\u65b0\u7814\u7a76\u4eba\u5458\u7684\u57fa\u7840\u8d44\u6e90,\u5e76\u4e3a\u6fc0\u53d1\u672a\u6765\u7814\u7a76\u63d0\u4f9b\u7075\u611f\u3002\u4e3a\u66f4\u597d\u7406\u89e3,\u5f15\u5165\u4e86\u6709\u5173\u6269\u6563\u6a21\u578b\u57fa\u7840\u77e5\u8bc6\u7684\u4ecb\u7ecd\u3002\u9664\u6b64\u4e4b\u5916,\u4e3b\u8981\u5173\u6ce8\u57fa\u4e8e\u6269\u6563\u7684\u65f6\u95f4\u5e8f\u5217\u9884\u6d4b\u3001\u63d2\u8865\u548c\u751f\u6210\u65b9\u6cd5,\u5e76\u5c06\u5b83\u4eec\u5206\u522b\u5728\u4e09\u4e2a\u72ec\u7acb\u7ae0\u8282\u4e2d\u5448\u73b0\u3002\u8fd8\u6bd4\u8f83\u4e86\u540c\u4e00\u5e94\u7528\u7684\u4e0d\u540c\u65b9\u6cd5,\u5e76\u5f3a\u8c03\u5b83\u4eec\u4e4b\u95f4\u7684\u5173\u8054(\u82e5\u9002\u7528)\u3002\u6700\u540e,\u603b\u7ed3\u4e86\u6269\u6563\u65b9\u6cd5\u7684\u5171\u540c\u5c40\u9650\u6027,\u5e76\u7a81\u51fa\u5f3a\u8c03\u6f5c\u5728\u7684\u672a\u6765\u7814\u7a76\u65b9\u5411\u3002",
+    "authors": [
+        "Lequan Lin",
+        "Zhengkun Li",
+        "Ruikun Li",
+        "Xuliang Li",
+        "Junbin Gao"
+    ],
+    "venue": "Frontiers Inf. Technol. Electron. Eng.",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This survey focuses on diffusion-based methods for time-series forecasting, imputation, and generation, and compares different methods for the same application and highlights their connections if applicable."
+    },
+    "citationCount": 29,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

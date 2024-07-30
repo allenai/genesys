@@ -1,0 +1,27 @@
+{
+    "acronym": "ea5b08051a8a09b9d5cd2c3a3446a5cae42fa2ed",
+    "title": "Introducing Syllable Tokenization for Low-resource Languages: A Case Study with Swahili",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ea5b08051a8a09b9d5cd2c3a3446a5cae42fa2ed",
+    "abstract": "Many attempts have been made in multilingual NLP to ensure that pre-trained language models, such as mBERT or GPT2 get better and become applicable to low-resource languages. To achieve multilingualism for pre-trained language models (PLMs), we need techniques to create word embeddings that capture the linguistic characteristics of any language. Tokenization is one such technique because it allows for the words to be split based on characters or subwords, creating word embeddings that best represent the structure of the language. Creating such word embeddings is essential to applying PLMs to other languages where the model was not trained, enabling multilingual NLP. However, most PLMs use generic tokenization methods like BPE, wordpiece, or unigram which may not suit specific languages. We hypothesize that tokenization based on syllables within the input text, which we call syllable tokenization, should facilitate the development of syllable-aware language models. The syllable-aware language models make it possible to apply PLMs to languages that are rich in syllables, for instance, Swahili. Previous works introduced subword tokenization. Our work extends such efforts. Notably, we propose a syllable tokenizer and adopt an experiment-centric approach to validate the proposed tokenizer based on the Swahili language. We conducted text-generation experiments with GPT2 to evaluate the effectiveness of the syllable tokenizer. Our results show that the proposed syllable tokenizer generates syllable embeddings that effectively represent the Swahili language.",
+    "authors": [
+        "Jesse Atuhurra",
+        "Hiroyuki Shindo",
+        "Hidetaka Kamigaito",
+        "Taro Watanabe"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed syllable tokenizer is proposed and an experiment-centric approach is adopted to validate the proposed tokenizer based on the Swahili language, showing that the proposed syllable tokenizer generates syllable embeddings that effectively represent the Swahili language."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

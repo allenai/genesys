@@ -1,0 +1,29 @@
+{
+    "acronym": "74ee76c939430c99e832c0eeefa069b02f260294",
+    "title": "Automated Keyphrase Generation for Brazilian Legal Information Retrieval",
+    "seed_ids": [
+        "gpt2",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "2c953a3c378b40dadf2e3fb486713c8608b8e282",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "74ee76c939430c99e832c0eeefa069b02f260294",
+    "abstract": "Due to the high volume of cases in transit in the Brazilian judicial system, it is of great interest to automate processes that help legal professionals. With the recent advances in text generation methods, there is potential to apply these techniques in tasks that require automation. In this article, we address the problem of automating the writing of keyphrases, a sequence of key terms present in documents used in courts throughout Brazil. For this, we are proposing the use of a text-to-text framework based on generative Transformers. We evaluated several generative Transformer models (such as PTT5, mT5, OPT, and BLOOM) for the proposal, and a comparison of their performance is presented. The best-performing model, PTT5, was adopted as the text generator since it achieved a BLEU score of 37.54% in the test set, outperforming other evaluated methods by up to 24.6%. Finally, to assess the influence of keyphrases and the quality of the generated ones, we performed several experiments based on a real case of legal information retrieval. By using traditional information retrieval methods, such as TF-IDF and BM25, in combination with the original, generated keyphrases, or both, we observed gains statistically significant (p-value ${<}$ 0.05) in all experiments.",
+    "authors": [
+        "K. Sakiyama",
+        "R. Nogueira",
+        "R.A.F. Romero"
+    ],
+    "venue": "IEEE International Joint Conference on Neural Network",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This article addresses the problem of automating the writing of keyphrases, a sequence of key terms present in documents used in courts throughout Brazil, by proposing the use of a text-to-text framework based on generative Transformers."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

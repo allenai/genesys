@@ -1,0 +1,29 @@
+{
+    "acronym": "2d4b9747ee32d7bd94f257dbba1dae163d65940e",
+    "title": "The Interpreter Understands Your Meaning: End-to-end Spoken Language Understanding Aided by Speech Translation",
+    "seed_ids": [
+        "longformer",
+        "42d755b43b32090ca33377265ad42d73c76604cd",
+        "f8cf6c42d48326ff7ae172c5e555178d440bf7cb",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc"
+    ],
+    "s2id": "2d4b9747ee32d7bd94f257dbba1dae163d65940e",
+    "abstract": "End-to-end spoken language understanding (SLU) remains elusive even with current large pretrained language models on text and speech, especially in multilingual cases. Machine translation has been established as a powerful pretraining objective on text as it enables the model to capture high-level semantics of the input utterance and associations between different languages, which is desired for speech models that work on lower-level acoustic frames. Motivated particularly by the task of cross-lingual SLU, we demonstrate that the task of speech translation (ST) is a good means of pretraining speech models for end-to-end SLU on both intra- and cross-lingual scenarios. By introducing ST, our models reach higher performance over baselines on monolingual and multilingual intent classification as well as spoken question answering using SLURP, MINDS-14, and NMSQA benchmarks. To verify the effectiveness of our methods, we also create new benchmark datasets from both synthetic and real sources, for speech summarization and low-resource/zero-shot transfer from English to French or Spanish. We further show the value of preserving knowledge for the ST pretraining task for better downstream performance, possibly using Bayesian transfer regularizers.",
+    "authors": [
+        "Mutian He",
+        "Philip N. Garner"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that the task of speech translation (ST) is a good means of pretraining speech models for end-to-end SLU on both intra- and cross-lingual scenarios and the value of preserving knowledge for the ST pretraining task for better downstream performance, possibly using Bayesian transfer regularizers."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

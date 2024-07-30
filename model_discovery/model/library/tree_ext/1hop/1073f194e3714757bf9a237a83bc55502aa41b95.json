@@ -1,0 +1,38 @@
+{
+    "acronym": "1073f194e3714757bf9a237a83bc55502aa41b95",
+    "title": "Separations in the Representational Capabilities of Transformers and Recurrent Architectures",
+    "seed_ids": [
+        "mamba",
+        "dssm",
+        "d53fe76bd2795a19ddf52d012917782f6f6f2c1e",
+        "189fde3f4dfa105bb51472a8945618f395919560",
+        "1ec3a3ff77cb4b424499b3805ecc90182ecd8f8b",
+        "240103933ffe3dac2179cc160a2bd91299357a53",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "f393aff1593c2d370ec0ae004910d18e40524967",
+        "525d93a382f6e7873b5d8a2e0713eb3dff7fb250",
+        "e82e3f4347674b75c432cb80604d38ee630d4bf6",
+        "c6d38add1b7bbc10f0da37a90e3f1b51ee5fb617",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "3694381e74445a8b9f8cb8d373e39626e47191b5"
+    ],
+    "s2id": "1073f194e3714757bf9a237a83bc55502aa41b95",
+    "abstract": "Transformer architectures have been widely adopted in foundation models. Due to their high inference costs, there is renewed interest in exploring the potential of efficient recurrent architectures (RNNs). In this paper, we analyze the differences in the representational capabilities of Transformers and RNNs across several tasks of practical relevance, including index lookup, nearest neighbor, recognizing bounded Dyck languages, and string equality. For the tasks considered, our results show separations based on the size of the model required for different architectures. For example, we show that a one-layer Transformer of logarithmic width can perform index lookup, whereas an RNN requires a hidden state of linear size. Conversely, while constant-size RNNs can recognize bounded Dyck languages, we show that one-layer Transformers require a linear size for this task. Furthermore, we show that two-layer Transformers of logarithmic size can perform decision tasks such as string equality or disjointness, whereas both one-layer Transformers and recurrent models require linear size for these tasks. We also show that a log-size two-layer Transformer can implement the nearest neighbor algorithm in its forward pass; on the other hand recurrent models require linear size. Our constructions are based on the existence of $N$ nearly orthogonal vectors in $O(\\log N)$ dimensional space and our lower bounds are based on reductions from communication complexity problems. We supplement our theoretical results with experiments that highlight the differences in the performance of these architectures on practical-size sequences.",
+    "authors": [
+        "S. Bhattamishra",
+        "Michael Hahn",
+        "Phil Blunsom",
+        "Varun Kanade"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper analyzes the differences in the representational capabilities of Transformers and RNNs across several tasks of practical relevance, including index lookup, nearest neighbor, recognizing bounded Dyck languages, and string equality."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,32 @@
+{
+    "acronym": "7670f7ff476975cd0c41b0829652607b03b4161e",
+    "title": "D-FaST: Cognitive Signal Decoding with Disentangled Frequency-Spatial-Temporal Attention",
+    "seed_ids": [
+        "transformer",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "7670f7ff476975cd0c41b0829652607b03b4161e",
+    "abstract": "Cognitive Language Processing (CLP), situated at the intersection of Natural Language Processing (NLP) and cognitive science, plays a progressively pivotal role in the domains of artificial intelligence, cognitive intelligence, and brain science. Among the essential areas of investigation in CLP, Cognitive Signal Decoding (CSD) has made remarkable achievements, yet there still exist challenges related to insufficient global dynamic representation capability and deficiencies in multi-domain feature integration. In this paper, we introduce a novel paradigm for CLP referred to as Disentangled Frequency-Spatial-Temporal Attention(D-FaST). Specifically, we present an novel cognitive signal decoder that operates on disentangled frequency-space-time domain attention. This decoder encompasses three key components: frequency domain feature extraction employing multi-view attention, spatial domain feature extraction utilizing dynamic brain connection graph attention, and temporal feature extraction relying on local time sliding window attention. These components are integrated within a novel disentangled framework. Additionally, to encourage advancements in this field, we have created a new CLP dataset, MNRED. Subsequently, we conducted an extensive series of experiments, evaluating D-FaST's performance on MNRED, as well as on publicly available datasets including ZuCo, BCIC IV-2A, and BCIC IV-2B. Our experimental results demonstrate that D-FaST outperforms existing methods significantly on both our datasets and traditional CSD datasets including establishing a state-of-the-art accuracy score 78.72% on MNRED, pushing the accuracy score on ZuCo to 78.35%, accuracy score on BCIC IV-2A to 74.85% and accuracy score on BCIC IV-2B to 76.81%.",
+    "authors": [
+        "WeiGuo Chen",
+        "Changjian Wang",
+        "Kele Xu",
+        "Yuan Yuan",
+        "Yanru Bai",
+        "Dongsong Zhang"
+    ],
+    "venue": "IEEE Transactions on Cognitive and Developmental Systems",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "D-FaST is presented, an novel cognitive signal decoder that operates on disentangled frequency-space-time domain attention that outperforms existing methods significantly on both the authors' datasets and traditional CSD datasets."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

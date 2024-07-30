@@ -1,0 +1,29 @@
+{
+    "acronym": "1ce17013869c9295ff8f295fa41a4933f2966aac",
+    "title": "Attention-based Stylisation for Exemplar Image Colourisation",
+    "seed_ids": [
+        "axialattn",
+        "30f326353dfeed21216c1cf98d3c42d794fa054e",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06"
+    ],
+    "s2id": "1ce17013869c9295ff8f295fa41a4933f2966aac",
+    "abstract": "Exemplar-based colourisation aims to add plausible colours to a grayscale image using the guidance of a colour reference image. Most existing methods tackle the task as a style transfer problem, using a convolutional neural network (CNN) to obtain deep representations of the content of both inputs. Stylised outputs are then obtained by computing similarities between both feature representations in order to transfer the style of the reference to the content of the target input. However, in order to gain robustness towards dissimilar references, the stylised outputs need to be refined with a second colourisation network, which significantly increases the overall system complexity. This work reformulates the existing methodology introducing a novel end-to-end colourisation network that unifies the feature matching with the colourisation process. The proposed architecture integrates attention modules at different resolutions that learn how to perform the style transfer task in an unsupervised way towards decoding realistic colour predictions. Moreover, axial attention is proposed to simplify the attention operations and to obtain a fast but robust cost-effective architecture. Experimental validations demonstrate efficiency of the proposed methodology which generates high quality and visually appealing colourisation. Furthermore, the complexity of the proposed methodology is reduced compared to the state-of-the-art methods.",
+    "authors": [
+        "M. G. Blanch",
+        "Issa Khalifeh",
+        "A. Smeaton",
+        "N. O\u2019Connor",
+        "M. Mrak"
+    ],
+    "venue": "IEEE International Workshop on Multimedia Signal Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work reformulates the existing methodology introducing a novel end-to-end colourisation network that unifies the feature matching with the colourisation process and the complexity of the proposed methodology is reduced compared to the state-of-the-art methods."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

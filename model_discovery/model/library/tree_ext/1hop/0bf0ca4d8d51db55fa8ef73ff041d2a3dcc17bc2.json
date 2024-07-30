@@ -1,0 +1,36 @@
+{
+    "acronym": "0bf0ca4d8d51db55fa8ef73ff041d2a3dcc17bc2",
+    "title": "EDITS: An Easy-to-difficult Training Strategy for Cloud Failure Prediction",
+    "seed_ids": [
+        "compressivetransformer",
+        "f51497f463566581874c941353dd9d80069c5b77"
+    ],
+    "s2id": "0bf0ca4d8d51db55fa8ef73ff041d2a3dcc17bc2",
+    "abstract": "Cloud failures have been a major threat to the reliability of cloud services. Many failure prediction approaches have been proposed to predict cloud failures before they actually occur, so that proactive actions can be taken to ensure service reliability. In industrial practice, existing failure prediction approaches mainly focus on utilizing state-of-the-art time series models to enhance the performance of failure prediction but neglect the training strategy. However, as curriculum learning points out, models perform better when they are trained with data in an order of easy-to-difficult. In this paper, we propose EDITS, a novel training strategy for cloud failure prediction, which greatly improves the performance of the existing cloud failure prediction models. Our experimental results on industrial and public datasets show that EDITS can obviously enhance the performance of cloud failure prediction model. In addition, EDITS also outperforms other curriculum learning methods. More encouragingly, our proposed EDITS has been successfully applied to Microsoft 365 and Azure online service systems, and has obviously reduced financial losses caused by cloud failures.",
+    "authors": [
+        "Qingwei Lin",
+        "Tianci Li",
+        "Pu Zhao",
+        "Yudong Liu",
+        "Minghua Ma",
+        "Lingling Zheng",
+        "Murali Chintalapati",
+        "Bo Liu",
+        "Paul Wang",
+        "Hongyu Zhang",
+        "Yingnong Dang",
+        "S. Rajmohan",
+        "Dongmei Zhang"
+    ],
+    "venue": "The Web Conference",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes EDITS, a novel training strategy for cloud failure prediction, which greatly improves the performance of the existing cloud failure Prediction models and outperforms other curriculum learning methods."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

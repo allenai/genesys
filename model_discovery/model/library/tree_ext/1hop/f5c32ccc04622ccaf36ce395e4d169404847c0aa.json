@@ -1,0 +1,25 @@
+{
+    "acronym": "f5c32ccc04622ccaf36ce395e4d169404847c0aa",
+    "title": "Transformer-based Capacity Prediction for Lithium-ion Batteries with Data Augmentation",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "f5c32ccc04622ccaf36ce395e4d169404847c0aa",
+    "abstract": "Lithium-ion batteries are pivotal to technological advancements in transportation, electronics, and clean energy storage. The optimal operation and safety of these batteries require proper and reliable estimation of battery capacities to monitor the state of health. Current methods for estimating the capacities fail to adequately account for long-term temporal dependencies of key variables (e.g., voltage, current, and temperature) associated with battery aging and degradation. In this study, we explore the usage of transformer networks to enhance the estimation of battery capacity. We develop a transformer-based battery capacity prediction model that accounts for both long-term and short-term patterns in battery data. Further, to tackle the data scarcity issue, data augmentation is used to increase the data size, which helps to improve the performance of the model. Our proposed method is validated with benchmark datasets. Simulation results show the effectiveness of data augmentation and the transformer network in improving the accuracy and robustness of battery capacity prediction.",
+    "authors": [
+        "Gift O. Modekwe",
+        "Saif S. S. Al-Wahaibi",
+        "Qiugang Lu"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study develops a transformer-based battery capacity prediction model that accounts for both long-term and short-term patterns in battery data and uses data augmentation to increase the data size to improve the performance of the model."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

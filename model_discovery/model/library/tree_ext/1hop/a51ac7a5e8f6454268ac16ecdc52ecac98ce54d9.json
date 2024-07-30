@@ -1,0 +1,37 @@
+{
+    "acronym": "a51ac7a5e8f6454268ac16ecdc52ecac98ce54d9",
+    "title": "DeepSpeed Ulysses: System Optimizations for Enabling Training of Extreme Long Sequence Transformer Models",
+    "seed_ids": [
+        "gpt2",
+        "5e0cb1c4b91a7486e1c2b15a44a0be56bd74bdc0",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "f30e95be411456a709e7cb9a8b3a3e557bd0356a",
+        "16e623059ffccab60f4c35be028a2d4f10933515",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a51ac7a5e8f6454268ac16ecdc52ecac98ce54d9",
+    "abstract": "Computation in a typical Transformer-based large language model (LLM) can be characterized by batch size, hidden dimension, number of layers, and sequence length. Until now, system works for accelerating LLM training have focused on the first three dimensions: data parallelism for batch size, tensor parallelism for hidden size and pipeline parallelism for model depth or layers. These widely studied forms of parallelism are not targeted or optimized for long sequence Transformer models. Given practical application needs for long sequence LLM, renewed attentions are being drawn to sequence parallelism. However, existing works in sequence parallelism are constrained by memory-communication inefficiency, limiting their scalability to long sequence large models. In this work, we introduce DeepSpeed-Ulysses, a novel, portable and effective methodology for enabling highly efficient and scalable LLM training with extremely long sequence length. DeepSpeed-Ulysses at its core partitions input data along the sequence dimension and employs an efficient all-to-all collective communication for attention computation. Theoretical communication analysis shows that whereas other methods incur communication overhead as sequence length increases, DeepSpeed-Ulysses maintains constant communication volume when sequence length and compute devices are increased proportionally. Furthermore, experimental evaluations show that DeepSpeed-Ulysses trains 2.5x faster with 4x longer sequence length than the existing method SOTA baseline.",
+    "authors": [
+        "S. A. Jacobs",
+        "Masahiro Tanaka",
+        "Chengming Zhang",
+        "Minjia Zhang",
+        "L. Song",
+        "Samyam Rajbhandari",
+        "Yuxiong He"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DeepSpeed-Ulysses is introduced, a novel, portable and effective methodology for enabling highly efficient and scalable LLM training with extremely long sequence length and theoretical communication analysis shows that whereas other methods incur communication overhead as sequence length increases, DeepSpeed- Ulysses maintains constant communication volume when sequencelength and compute devices are increased proportionally."
+    },
+    "citationCount": 29,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

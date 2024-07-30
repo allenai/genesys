@@ -1,0 +1,26 @@
+{
+    "acronym": "039b1c1210c437f3b3ce6e0275ee2137bf5b951c",
+    "title": "Assessing Social and Intersectional Biases in Contextualized Word Representations",
+    "seed_ids": [
+        "gpt",
+        "5e9c85235210b59a16bdd84b444a904ae271f7e7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "039b1c1210c437f3b3ce6e0275ee2137bf5b951c",
+    "abstract": "Social bias in machine learning has drawn significant attention, with work ranging from demonstrations of bias in a multitude of applications, curating definitions of fairness for different contexts, to developing algorithms to mitigate bias. In natural language processing, gender bias has been shown to exist in context-free word embeddings. Recently, contextual word representations have outperformed word embeddings in several downstream NLP tasks. These word representations are conditioned on their context within a sentence, and can also be used to encode the entire sentence. In this paper, we analyze the extent to which state-of-the-art models for contextual word representations, such as BERT and GPT-2, encode biases with respect to gender, race, and intersectional identities. Towards this, we propose assessing bias at the contextual word level. This novel approach captures the contextual effects of bias missing in context-free word embeddings, yet avoids confounding effects that underestimate bias at the sentence encoding level. We demonstrate evidence of bias at the corpus level, find varying evidence of bias in embedding association tests, show in particular that racial bias is strongly encoded in contextual word models, and observe that bias effects for intersectional minorities are exacerbated beyond their constituent minority identities. Further, evaluating bias effects at the contextual word level captures biases that are not captured at the sentence level, confirming the need for our novel approach.",
+    "authors": [
+        "Y. Tan",
+        "Elisa Celis"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Evaluating bias effects at the contextual word level captures biases that are not captured at the sentence level, confirming the need for this novel approach."
+    },
+    "citationCount": 198,
+    "influentialCitationCount": 15,
+    "code": null,
+    "description": null,
+    "url": null
+}

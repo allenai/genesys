@@ -1,0 +1,33 @@
+{
+    "acronym": "7bbfb2bd188e4cdeef3b3b7f6f6b45b756d5c4a9",
+    "title": "Multi-level Multiple Instance Learning with Transformer for Whole Slide Image Classification",
+    "seed_ids": [
+        "nystromformer",
+        "longformer",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "7bbfb2bd188e4cdeef3b3b7f6f6b45b756d5c4a9",
+    "abstract": "Whole slide image (WSI) refers to a type of high-resolution scanned tissue image, which is extensively employed in computer-assisted diagnosis (CAD). The extremely high resolution and limited availability of region-level annotations make employing deep learning methods for WSI-based digital diagnosis challenging. Recently integrating multiple instance learning (MIL) and Transformer for WSI analysis shows very promising results. However, designing effective Transformers for this weakly-supervised high-resolution image analysis is an underexplored yet important problem. In this paper, we propose a Multi-level MIL (MMIL) scheme by introducing a hierarchical structure to MIL, which enables efficient handling of MIL tasks involving a large number of instances. Based on MMIL, we instantiated MMIL-Transformer, an efficient Transformer model with windowed exact self-attention for large-scale MIL tasks. To validate its effectiveness, we conducted a set of experiments on WSI classification tasks, where MMIL-Transformer demonstrate superior performance compared to existing state-of-the-art methods, i.e., 96.80% test AUC and 97.67% test accuracy on the CAMELYON16 dataset, 99.04% test AUC and 94.37% test accuracy on the TCGA-NSCLC dataset, respectively. All code and pre-trained models are available at: https://github.com/hustvl/MMIL-Transformer",
+    "authors": [
+        "Rui-qi Zhang",
+        "Qiaozheng Zhang",
+        "Yingzhuang Liu",
+        "Hao Xin",
+        "Y. Liu",
+        "Xinggang Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Multi-level MIL (MMIL) scheme is proposed by introducing a hierarchical structure to MIL, which enables efficient handling of MIL tasks involving a large number of instances and instantiated MMIL-Transformer, an efficient Transformer model with windowed exact self-attention for large-scale MIL tasks."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

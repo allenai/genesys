@@ -1,0 +1,30 @@
+{
+    "acronym": "b0e7055fcbb33e0cf1a93a27b483db66a57ffd5b",
+    "title": "A Systematic Evaluation of Response Selection for Open Domain Dialogue",
+    "seed_ids": [
+        "gpt2",
+        "902a5f49f6a072c2c4ae7f26c62b89f030db6b6b",
+        "9967faaec2ada5e9c638b6dc9ff577bc28bbd04c",
+        "c6c734e16f66fbfcefac7625cc64599e83292c1e",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b0e7055fcbb33e0cf1a93a27b483db66a57ffd5b",
+    "abstract": "Recent progress on neural approaches for language processing has triggered a resurgence of interest on building intelligent open-domain chatbots. However, even the state-of-the-art neural chatbots cannot produce satisfying responses for every turn in a dialog. A practical solution is to generate multiple response candidates for the same context, and then perform response ranking/selection to determine which candidate is the best. Previous work in response selection typically trains response rankers using synthetic data that is formed from existing dialogs by using a ground truth response as the single appropriate response and constructing inappropriate responses via random selection or using adversarial methods. In this work, we curated a dataset where responses from multiple response generators produced for the same dialog context are manually annotated as appropriate (positive) and inappropriate (negative). We argue that such training data better matches the actual use case examples, enabling the models to learn to rank responses effectively. With this new dataset, we conduct a systematic evaluation of state-of-the-art methods for response selection, and demonstrate that both strategies of using multiple positive candidates and using manually verified hard negative candidates can bring in significant performance improvement in comparison to using the adversarial training data, e.g., increase of 3% and 13% in Recall@1 score, respectively.",
+    "authors": [
+        "Behnam Hedayatnia",
+        "Di Jin",
+        "Yang Liu",
+        "Dilek Z. Hakkani-T\u00fcr"
+    ],
+    "venue": "SIGDIAL Conferences",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work curated a dataset where responses from multiple response generators produced for the same dialog context are manually annotated as appropriate (positive) and inappropriate (negative) and argues that such training data better matches the actual use case examples, enabling the models to learn to rank responses effectively."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

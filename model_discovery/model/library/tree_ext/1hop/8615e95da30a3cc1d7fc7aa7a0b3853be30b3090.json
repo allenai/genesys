@@ -1,0 +1,36 @@
+{
+    "acronym": "8615e95da30a3cc1d7fc7aa7a0b3853be30b3090",
+    "title": "Extend and Explain: Interpreting Very Long Language Models",
+    "seed_ids": [
+        "bigbird",
+        "longformer",
+        "1ec16018e9152c50bbaed1d49c3077b9fb6d2838",
+        "f30e95be411456a709e7cb9a8b3a3e557bd0356a",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "a022bda79947d1f656a1164003c1b3ae9a843df9"
+    ],
+    "s2id": "8615e95da30a3cc1d7fc7aa7a0b3853be30b3090",
+    "abstract": "While Transformer language models (LMs) are state-of-the-art for information extraction, long text introduces computational challenges requiring suboptimal preprocessing steps or alternative model architectures. Sparse attention LMs can represent longer sequences, overcoming performance hurdles. However, it remains unclear how to explain predictions from these models, as not all tokens attend to each other in the self-attention layers, and long sequences pose computational challenges for explainability algorithms when runtime depends on document length. These challenges are severe in the medical context where documents can be very long, and machine learning (ML) models must be auditable and trustworthy. We introduce a novel Masked Sampling Procedure (MSP) to identify the text blocks that contribute to a prediction, apply MSP in the context of predicting diagnoses from medical text, and validate our approach with a blind review by two clinicians. Our method identifies about 1.7x more clinically informative text blocks than the previous state-of-the-art, runs up to 100x faster, and is tractable for generating important phrase pairs. MSP is particularly well-suited to long LMs but can be applied to any text classifier. We provide a general implementation of MSP.",
+    "authors": [
+        "Joel Stremmel",
+        "B. Hill",
+        "Jeffrey S. Hertzberg",
+        "Jaime Murillo",
+        "Llewelyn Allotey",
+        "E. Halperin"
+    ],
+    "venue": "ML4H@NeurIPS",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel Masked Sampling Procedure (MSP) is introduced to identify the text blocks that contribute to a prediction, apply MSP in the context of predicting diagnoses from medical text, and validate the approach with a blind review by two clinicians."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

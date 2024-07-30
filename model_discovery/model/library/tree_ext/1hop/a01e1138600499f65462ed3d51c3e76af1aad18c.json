@@ -1,0 +1,40 @@
+{
+    "acronym": "a01e1138600499f65462ed3d51c3e76af1aad18c",
+    "title": "The pitfalls of next-token prediction",
+    "seed_ids": [
+        "transformer",
+        "mamba",
+        "5339f21241f64f76a0a891888fb1796f9aede7d1",
+        "55f1cde49846c58b0bedebde15b8f7d939f39432",
+        "aade40af0d85b0b4fe15c97f6222d5c2e4d6d9b3",
+        "24576dcca716c82f66b8cc3c85ecfae18be41edd",
+        "e82e3f4347674b75c432cb80604d38ee630d4bf6",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "92173d081b15824d22a9ef070e118744ceee8052",
+        "063eee315e864f0842d3074629dccc4bb36d19e7",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "168fc3525f7b97695a97b04e257ee9bd1e832acb",
+        "25db56fc85fe15625c3375064a35e908ba6dfd2a",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a01e1138600499f65462ed3d51c3e76af1aad18c",
+    "abstract": "Can a mere next-token predictor faithfully model human intelligence? We crystallize this emerging concern and correct popular misconceptions surrounding it, and advocate a simple multi-token objective. As a starting point, we argue that the two often-conflated phases of next-token prediction -- autoregressive inference and teacher-forced training -- must be treated distinctly. The popular criticism that errors can compound during autoregressive inference, crucially assumes that teacher-forcing has learned an accurate next-token predictor. This assumption sidesteps a more deep-rooted problem we expose: in certain classes of tasks, teacher-forcing can simply fail to learn an accurate next-token predictor in the first place. We describe a general mechanism of how teacher-forcing can fail, and design a minimal planning task where both the Transformer and the Mamba architecture empirically fail in that manner -- remarkably, despite the task being straightforward to learn. Finally, we provide preliminary evidence that this failure can be resolved using a simple modification that predicts multiple tokens in advance. We hope this finding can ground future debates and inspire explorations beyond the next-token prediction paradigm. We make our code available under https://github.com/gregorbachmann/Next-Token-Failures",
+    "authors": [
+        "Gregor Bachmann",
+        "Vaishnavh Nagarajan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A general mechanism of how teacher-forcing can fail is described, and a minimal planning task where both the Transformer and the Mamba architecture empirically fail in that manner -- remarkably, despite the task being straightforward to learn."
+    },
+    "citationCount": 11,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

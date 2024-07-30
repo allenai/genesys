@@ -1,0 +1,26 @@
+{
+    "acronym": "491ef7fb89a958f1c615292c4ec8f3bd1d12f59d",
+    "title": "Music to Dance as Language Translation using Sequence Models",
+    "seed_ids": [
+        "transformer",
+        "465b80aea2b99ffe0710325f5c256e8d2ac642a5",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51"
+    ],
+    "s2id": "491ef7fb89a958f1c615292c4ec8f3bd1d12f59d",
+    "abstract": "Synthesising appropriate choreographies from music remains an open problem. We introduce MDLT, a novel approach that frames the choreography generation problem as a translation task. Our method leverages an existing data set to learn to translate sequences of audio into corresponding dance poses. We present two variants of MDLT: one utilising the Transformer architecture and the other employing the Mamba architecture. We train our method on AIST++ and PhantomDance data sets to teach a robotic arm to dance, but our method can be applied to a full humanoid robot. Evaluation metrics, including Average Joint Error and Frechet Inception Distance, consistently demonstrate that, when given a piece of music, MDLT excels at producing realistic and high-quality choreography. The code can be found at github.com/meowatthemoon/MDLT.",
+    "authors": [
+        "Andr\u00e9 Rosa de Sousa Porf\u00edrio Correia",
+        "Lu'is A. Alexandre"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces MDLT, a novel approach that frames the choreography generation problem as a translation task, and presents two variants of MDLT: one utilising the Transformer architecture and the other employing the Mamba architecture."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

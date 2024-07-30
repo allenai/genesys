@@ -1,0 +1,29 @@
+{
+    "acronym": "563a851106623b9f112d0e2a290d3950a871079c",
+    "title": "Nearest Neighbor Zero-Shot Inference",
+    "seed_ids": [
+        "gpt2",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "563a851106623b9f112d0e2a290d3950a871079c",
+    "abstract": "Retrieval-augmented language models (LMs) use non-parametric memory to substantially outperform their non-retrieval counterparts on perplexity-based evaluations, but it is an open question whether they achieve similar gains in few- and zero-shot end-task accuracy. We extensively study one such model, the k-nearest neighbor LM (kNN-LM), showing that the gains marginally transfer. The main challenge is to achieve coverage of the verbalizer tokens that define the different end-task class labels. To address this challenge, we also introduce kNN-Prompt, a simple and effective kNN-LM with automatically expanded fuzzy verbalizers (e.g. to expand \u201cterrible\u201d to also include \u201csilly\u201d and other task-specific synonyms for sentiment classification). Across nine diverse end-tasks, using kNN-Prompt with GPT-2 large yields significant performance boosts over strong zeroshot baselines (13.4% absolute improvement over the base LM on average). We also show that other advantages of non-parametric augmentation hold for end tasks; kNN-Prompt is effective for domain adaptation with no further training, and gains increase with the size of the retrieval model.",
+    "authors": [
+        "Weijia Shi",
+        "Julian Michael",
+        "Suchin Gururangan",
+        "Luke Zettlemoyer"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "KNN-Prompt is introduced, a simple and effective kNN-LM with automatically expanded fuzzy verbalizers that is effective for domain adaptation with no further training, and gains increase with the size of the retrieval model."
+    },
+    "citationCount": 26,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

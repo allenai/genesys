@@ -1,0 +1,38 @@
+{
+    "acronym": "05bcf9999525656cfaa59bc71f8572d771ff3776",
+    "title": "Language Models Can See: Plugging Visual Controls in Text Generation",
+    "seed_ids": [
+        "gpt2",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "492a655a67e6ec7423a968cedb70eec0cdbc8e98",
+        "ac95a18762133d4065ac8af518c33084d83c5582",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "05bcf9999525656cfaa59bc71f8572d771ff3776",
+    "abstract": "Generative language models (LMs) such as GPT-2/3 can be prompted to generate text with remarkable quality. While they are designed for text-prompted generation, it remains an open question how the generation process could be guided by modalities beyond text such as images. In this work, we propose a training-free framework, called MAGIC (iMAge-Guided text generatIon with CLIP), for plugging in visual controls in the generation process and enabling LMs to perform multimodal tasks (e.g., image captioning) in a zero-shot manner. MAGIC is a simple yet efficient plug-and-play framework, which directly combines an off-the-shelf LM (i.e., GPT-2) and an image-text matching model (i.e., CLIP) for image-grounded text generation. During decoding, MAGIC influences the generation of the LM by introducing a CLIP-induced score, called magic score, which regularizes the generated result to be semantically related to a given image while being coherent to the previously generated context. Notably, the proposed decoding scheme does not involve any gradient update operation, therefore being computationally efficient. On the challenging task of zero-shot image captioning, MAGIC outperforms the state-of-the-art method by notable margins with a nearly 27 times decoding speedup. MAGIC is a flexible framework and is theoretically compatible with any text generation tasks that incorporate image grounding. In the experiments, we showcase that it is also capable of performing visually grounded story generation given both an image and a text prompt.",
+    "authors": [
+        "Yixuan Su",
+        "Tian Lan",
+        "Yahui Liu",
+        "Fangyu Liu",
+        "Dani Yogatama",
+        "Yan Wang",
+        "Lingpeng Kong",
+        "Nigel Collier"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A training-free framework for plugging in visual controls in the generation process and enabling LMs to perform multimodal tasks (e.g., image captioning) in a zero-shot manner, which outperforms the state-of-the-art method by notable margins with a nearly 27 times decoding speedup."
+    },
+    "citationCount": 79,
+    "influentialCitationCount": 19,
+    "code": null,
+    "description": null,
+    "url": null
+}

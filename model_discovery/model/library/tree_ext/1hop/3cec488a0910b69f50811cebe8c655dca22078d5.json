@@ -1,0 +1,21 @@
+{
+    "acronym": "3cec488a0910b69f50811cebe8c655dca22078d5",
+    "title": "Evidence Extraction for Machine Reading Comprehension with Deep Probabilistic Logic",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "3cec488a0910b69f50811cebe8c655dca22078d5",
+    "abstract": "In this paper, we focus on extracting evidence sentences for multiple-choice machine reading comprehension. Previous neural multiple-choice reading comprehension models take the whole context as input and seldom provide evidence to make their predictions convincing. We hypothesize that identifying evidence sentences that explain or support question-answer pairs can improve the interpretability of models and further boost their performance. The unavailability of ground truth in most existing datasets, and the fact that we usually require multiple-sentence reasoning and prior knowledge to find evidence makes this task more challenging. Our system contains two deep neural network (DNN) modules: one for evidence sentence extraction and the other for answer option selection (e.g., exsiting reading comprehension models). We apply distant supervision to train a DNN for evidence sentence extraction. To denoise imperfect labels, we treat evidence sentences as latent variables and combine all the linguistic priors over evidence sentences based on a deep probabilistic logic learning framework. We evaluate our methods on three challenging multiple-choice reading comprehension datasets: MultiRC, RACE, and SemEval2018 Task 11. We achieve state-of-the-art performance on all these datasets, indicating the effectiveness of our proposed evidence sentence extraction module.1",
+    "authors": [],
+    "venue": "",
+    "year": 2018,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a system that treats evidence sentences as latent variables and combines all the linguistic priors over evidence sentences based on a deep probabilistic logic learning framework to denoise imperfect labels and achieves state-of-the-art performance on three challenging datasets."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

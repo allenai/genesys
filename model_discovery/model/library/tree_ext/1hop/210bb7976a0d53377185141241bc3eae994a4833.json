@@ -1,0 +1,30 @@
+{
+    "acronym": "210bb7976a0d53377185141241bc3eae994a4833",
+    "title": "Model Merging by Uncertainty-Based Gradient Matching",
+    "seed_ids": [
+        "gpt2",
+        "71ba5f845bd22d42003675b7cea970ca9e590bcc",
+        "1ea7ad7ae45d3d4634b6ffad2a8b0d41ad2fcb25",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "210bb7976a0d53377185141241bc3eae994a4833",
+    "abstract": "Models trained on different datasets can be merged by a weighted-averaging of their parameters, but why does it work and when can it fail? Here, we connect the inaccuracy of weighted-averaging to mismatches in the gradients and propose a new uncertainty-based scheme to improve the performance by reducing the mismatch. The connection also reveals implicit assumptions in other schemes such as averaging, task arithmetic, and Fisher-weighted averaging. Our new method gives consistent improvements for large language models and vision transformers, both in terms of performance and robustness to hyperparameters.",
+    "authors": [
+        "Nico Daheim",
+        "Thomas M\u00f6llenhoff",
+        "E. M. Ponti",
+        "Iryna Gurevych",
+        "Mohammad Emtiyaz Khan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The inaccuracy of weighted-averaging is connected to mismatches in the gradients and a new uncertainty-based scheme to improve the performance by reducing the mismatch is proposed."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

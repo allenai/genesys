@@ -1,0 +1,31 @@
+{
+    "acronym": "dcd8e4e17e829640fa8ea4cca9ee5b79f433cda7",
+    "title": "Phrase-level Textual Adversarial Attack with Label Preservation",
+    "seed_ids": [
+        "gpt",
+        "gpt2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "dcd8e4e17e829640fa8ea4cca9ee5b79f433cda7",
+    "abstract": "Generating high-quality textual adversarial examples is critical for investigating the pitfalls of natural language processing (NLP) models and further promoting their robustness. Existing attacks are usually realized through word-level or sentence-level perturbations, which either limit the perturbation space or sacrifice fluency and textual quality, both affecting the attack effectiveness. In this paper, we propose Phrase-Level Textual Adversarial aTtack (PLAT) that generates adversarial samples through phrase-level perturbations. PLAT first extracts the vulnerable phrases as attack targets by a syntactic parser, and then perturbs them by a pre-trained blank-infilling model. Such flexible perturbation design substantially expands the search space for more effective attacks without introducing too many modifications, and meanwhile maintaining the textual fluency and grammaticality via contextualized generation using surrounding texts. Moreover, we develop a label-preservation filter leveraging the likelihoods of language models fine-tuned on each class, rather than textual similarity, to rule out those perturbations that potentially alter the original class label for humans. Extensive experiments and human evaluation demonstrate that PLAT has a superior attack effectiveness as well as a better label consistency than strong baselines.",
+    "authors": [
+        "Yibin Lei",
+        "Yu Cao",
+        "Dianqi Li",
+        "Tianyi Zhou",
+        "Meng Fang",
+        "Mykola Pechenizkiy"
+    ],
+    "venue": "NAACL-HLT",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "PLAT first extracts the vulnerable phrases as attack targets by a syntactic parser, and then perturbs them by a pre-trained blank-infilling model, and develops a label-preservation filter to rule out those perturbations that potentially alter the original class label for humans."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

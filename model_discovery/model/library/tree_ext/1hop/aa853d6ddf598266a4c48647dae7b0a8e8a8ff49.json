@@ -1,0 +1,32 @@
+{
+    "acronym": "aa853d6ddf598266a4c48647dae7b0a8e8a8ff49",
+    "title": "User Inference Attacks on Large Language Models",
+    "seed_ids": [
+        "gpt2",
+        "cb754310302086dfbbcd098263200e2a03f65874",
+        "d1101476c85ae324142440e9f568ecbf41625be5",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "aa853d6ddf598266a4c48647dae7b0a8e8a8ff49",
+    "abstract": "Fine-tuning is a common and effective method for tailoring large language models (LLMs) to specialized tasks and applications. In this paper, we study the privacy implications of fine-tuning LLMs on user data. To this end, we consider a realistic threat model, called user inference, wherein an attacker infers whether or not a user's data was used for fine-tuning. We design attacks for performing user inference that require only black-box access to the fine-tuned LLM and a few samples from a user which need not be from the fine-tuning dataset. We find that LLMs are susceptible to user inference across a variety of fine-tuning datasets, at times with near perfect attack success rates. Further, we theoretically and empirically investigate the properties that make users vulnerable to user inference, finding that outlier users, users with identifiable shared features between examples, and users that contribute a large fraction of the fine-tuning data are most susceptible to attack. Based on these findings, we identify several methods for mitigating user inference including training with example-level differential privacy, removing within-user duplicate examples, and reducing a user's contribution to the training data. While these techniques provide partial mitigation of user inference, we highlight the need to develop methods to fully protect fine-tuned LLMs against this privacy risk.",
+    "authors": [
+        "Nikhil Kandpal",
+        "Krishna Pillutla",
+        "Alina Oprea",
+        "P. Kairouz",
+        "Christopher A. Choquette-Choo",
+        "Zheng Xu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper considers a realistic threat model, called user inference, wherein an attacker infers whether or not a user's data was used for fine-tuning and identifies several methods for mitigating user inference including training with example-level differential privacy, removing within-user duplicate examples, and reducing a user's contribution to the training data."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

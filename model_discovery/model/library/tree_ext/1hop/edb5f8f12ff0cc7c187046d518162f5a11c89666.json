@@ -1,0 +1,27 @@
+{
+    "acronym": "edb5f8f12ff0cc7c187046d518162f5a11c89666",
+    "title": "Semantic-Enhanced Representation Learning for Road Networks with Temporal Dynamics",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "edb5f8f12ff0cc7c187046d518162f5a11c89666",
+    "abstract": "In this study, we introduce a novel framework called Toast for learning general-purpose representations of road networks, along with its advanced counterpart DyToast, designed to enhance the integration of temporal dynamics to boost the performance of various time-sensitive downstream tasks. Specifically, we propose to encode two pivotal semantic characteristics intrinsic to road networks: traffic patterns and traveling semantics. To achieve this, we refine the skip-gram module by incorporating auxiliary objectives aimed at predicting the traffic context associated with a target road segment. Moreover, we leverage trajectory data and design pre-training strategies based on Transformer to distill traveling semantics on road networks. DyToast further augments this framework by employing unified trigonometric functions characterized by their beneficial properties, enabling the capture of temporal evolution and dynamic nature of road networks more effectively. With these proposed techniques, we can obtain representations that encode multi-faceted aspects of knowledge within road networks, applicable across both road segment-based applications and trajectory-based applications. Extensive experiments on two real-world datasets across three tasks demonstrate that our proposed framework consistently outperforms the state-of-the-art baselines by a significant margin.",
+    "authors": [
+        "Yile Chen",
+        "Xiucheng Li",
+        "Gao Cong",
+        "Zhifeng Bao",
+        "Cheng Long"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "d81732bbc63ea40c8dabe1a1b504ab00463b502c",
+    "title": "TimeDRL: Disentangled Representation Learning for Multivariate Time-Series",
+    "seed_ids": [
+        "bert",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "7fed15cc79332f83b7bfe920c02a9c954322ddcc"
+    ],
+    "s2id": "d81732bbc63ea40c8dabe1a1b504ab00463b502c",
+    "abstract": "Multivariate time-series data in numerous real-world applications (e.g., healthcare and industry) are informative but challenging due to the lack of labels and high dimensionality. Recent studies in self-supervised learning have shown their potential in learning rich representations without relying on labels, yet they fall short in learning disentangled embeddings and addressing issues of inductive bias (e.g., transformation-invariance). To tackle these challenges, we propose TimeDRL, a generic multivariate time-series representation learning frame-work with disentangled dual-level embeddings. TimeDRL is characterized by three novel features: (i) disentangled derivation of timestamp-level and instance-level embeddings from patched time-series data using a [CLS] token strategy; (ii) utilization of timestamp-predictive and instance-contrastive tasks for disentangled representation learning, with the former optimizing timestamp-level embeddings with predictive loss, and the latter optimizing instance-level embeddings with contrastive loss; and (iii) avoidance of augmentation methods to eliminate inductive biases, such as transformation-invariance from cropping and masking. Comprehensive experiments on 6 time-series forecasting datasets and 5 time-series classification datasets have shown that TimeDRL consistently surpasses existing representation learning approaches, achieving an average improvement of forecasting by 58.02% in MSE and classification by 1.48% in accuracy. Further-more, extensive ablation studies confirmed the relative contribution of each component in TimeDRL's architecture, and semi-supervised learning evaluations demonstrated its effectiveness in real-world scenarios, even with limited labeled data. The code is available at https://github.com/blacksnail789521/TimeDRL.",
+    "authors": [
+        "Ching Chang",
+        "Chiao-Tung Chan",
+        "Wei-Yao Wang",
+        "Wenjie Peng",
+        "Tien-Fu Chen"
+    ],
+    "venue": "IEEE International Conference on Data Engineering",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "TimeDRL, a generic multivariate time-series representation learning frame-work with disentangled dual-level embeddings, is proposed, demonstrating its effectiveness in real-world scenarios, even with limited labeled data."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

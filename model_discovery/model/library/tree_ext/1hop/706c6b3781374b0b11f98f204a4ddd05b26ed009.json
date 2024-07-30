@@ -1,0 +1,40 @@
+{
+    "acronym": "706c6b3781374b0b11f98f204a4ddd05b26ed009",
+    "title": "Knowledge Infused Decoding",
+    "seed_ids": [
+        "gpt2",
+        "9fa9d5dd481400b2f3904b33d542d70a6affccb9",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "83fac78857c7e65fe10a11a798674dd3cd259c1d",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "80f9f109d1564cb8f82aa440a5f6f3fbe220c9ef",
+        "f48ae425e2567be2d993efcaaf74c2274fc9d7c5",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "706c6b3781374b0b11f98f204a4ddd05b26ed009",
+    "abstract": "Pre-trained language models (LMs) have been shown to memorize a substantial amount of knowledge from the pre-training corpora; however, they are still limited in recalling factually correct knowledge given a certain context. Hence, they tend to suffer from counterfactual or hallucinatory generation when used in knowledge-intensive natural language generation (NLG) tasks. Recent remedies to this problem focus on modifying either the pre-training or task fine-tuning objectives to incorporate knowledge, which normally require additional costly training or architecture modification of LMs for practical applications. We present Knowledge Infused Decoding (KID) -- a novel decoding algorithm for generative LMs, which dynamically infuses external knowledge into each step of the LM decoding. Specifically, we maintain a local knowledge memory based on the current context, interacting with a dynamically created external knowledge trie, and continuously update the local memory as a knowledge-aware constraint to guide decoding via reinforcement learning. On six diverse knowledge-intensive NLG tasks, task-agnostic LMs (e.g., GPT-2 and BART) armed with KID outperform many task-optimized state-of-the-art models, and show particularly strong performance in few-shot scenarios over seven related knowledge-infusion techniques. Human evaluation confirms KID's ability to generate more relevant and factual language for the input context when compared with multiple baselines. Finally, KID also alleviates exposure bias and provides stable generation quality when generating longer sequences. Code for KID is available at https://github.com/microsoft/KID.",
+    "authors": [
+        "Ruibo Liu",
+        "Guoqing Zheng",
+        "Shashank Gupta",
+        "Radhika Gaonkar",
+        "Chongyang Gao",
+        "Soroush Vosoughi",
+        "Milad Shokouhi",
+        "A. Awadallah"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Knowledge Infused Decoding (KID) -- a novel decoding algorithm for generative LMs, which dynamically infuses external knowledge into each step of the LM decoding, which maintains a local knowledge memory based on the current context, interacting with a dynamically created external knowledge trie, and continuously update the local memory as a knowledge-aware constraint to guide decoding via reinforcement learning."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

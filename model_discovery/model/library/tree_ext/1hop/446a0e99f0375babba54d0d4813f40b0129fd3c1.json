@@ -1,0 +1,29 @@
+{
+    "acronym": "446a0e99f0375babba54d0d4813f40b0129fd3c1",
+    "title": "Detecting Offensive Language Based on Graph Attention Networks and Fusion Features",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "446a0e99f0375babba54d0d4813f40b0129fd3c1",
+    "abstract": "The pervasiveness of offensive language on social networks has caused adverse effects on society, such as abusive behavior online. It is urgent to detect offensive language and curb its spread. In the popular datasets, the distribution of users and tweets is imbalanced, which limits the generalization ability of the model. In addition, existing research shows that methods with community information extracted from the social graphs effectively improve the performance of offensive language detection. However, the existing models deal with social graphs independently, which seriously affects the effectiveness of detection models. In this article, we release a new dataset with users and social relationships. To encode community information, we construct the social graphs based on the user historical behavior information and social relationships. Moreover, we propose a model based on graph attention networks (GATs) and fusion features for offensive language detection (GF-OLD). Specifically, the community information is directly captured by the GAT module, and the text embeddings are taken from the last hidden layer of bidirectional encoder representation from transformer (BERT). Attention mechanisms and position encoding are used to fuse these features. Our method outperforms baselines with the F1-score of 89.94%. The results show that our model effectively learns the potential information of social graphs and text, and user historical behavior information is more suitable for user attribute in the social graphs.",
+    "authors": [
+        "Zhenxiong Miao",
+        "Xingshu Chen",
+        "Haizhou Wang",
+        "R. Tang",
+        "Zhou Yang",
+        "Tiemai Huang",
+        "Wenyi Tang"
+    ],
+    "venue": "IEEE Transactions on Computational Social Systems",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A model based on graph attention networks (GATs) and fusion features for offensive language detection (GF-OLD) and text embeddings are taken from the last hidden layer of bidirectional encoder representation from transformer (BERT)."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

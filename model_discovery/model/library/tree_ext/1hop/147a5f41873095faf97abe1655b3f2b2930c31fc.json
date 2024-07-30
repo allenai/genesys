@@ -1,0 +1,34 @@
+{
+    "acronym": "147a5f41873095faf97abe1655b3f2b2930c31fc",
+    "title": "Do large language models and humans have similar behaviours in causal inference with script knowledge?",
+    "seed_ids": [
+        "bert",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "f48ae425e2567be2d993efcaaf74c2274fc9d7c5",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "147a5f41873095faf97abe1655b3f2b2930c31fc",
+    "abstract": "Recently, large pre-trained language models (LLMs) have demonstrated superior language understanding abilities, including zero-shot causal reasoning. However, it is unclear to what extent their capabilities are similar to human ones. We here study the processing of an event B in a script-based story, which causally depends on a previous event A. In our manipulation, event A is stated, negated, or omitted in an earlier section of the text. We first conducted a self-paced reading experiment, which showed that humans exhibit significantly longer reading times when causal conflicts exist (\\neg A \\rightarrow B) than under logical conditions (A \\rightarrow B). However, reading times remain similar when cause A is not explicitly mentioned, indicating that humans can easily infer event B from their script knowledge. We then tested a variety of LLMs on the same data to check to what extent the models replicate human behavior. Our experiments show that 1) only recent LLMs, like GPT-3 or Vicuna, correlate with human behavior in the \\neg A \\rightarrow B condition. 2) Despite this correlation, all models still fail to predict that nil \\rightarrow B is less surprising than \\neg A \\rightarrow B, indicating that LLMs still have difficulties integrating script knowledge.",
+    "authors": [
+        "Xudong Hong",
+        "Margarita Ryzhova",
+        "Daniel Adrian Biondi",
+        "Vera Demberg"
+    ],
+    "venue": "STARSEM",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The processing of an event B in a script-based story, which causally depends on a previous event A, is studied, which shows that humans exhibit significantly longer reading times when causal conflicts exist than under logical conditions."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

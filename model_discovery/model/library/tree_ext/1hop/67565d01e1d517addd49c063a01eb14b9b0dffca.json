@@ -1,0 +1,23 @@
+{
+    "acronym": "67565d01e1d517addd49c063a01eb14b9b0dffca",
+    "title": "Anonymized BERT: An Augmentation Approach to the Gendered Pronoun Resolution Challenge",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "67565d01e1d517addd49c063a01eb14b9b0dffca",
+    "abstract": "We present our 7th place solution to the Gendered Pronoun Resolution challenge, which uses BERT without fine-tuning and a novel augmentation strategy designed for contextual embedding token-level tasks. Our method anonymizes the referent by replacing candidate names with a set of common placeholder names. Besides the usual benefits of effectively increasing training data size, this approach diversifies idiosyncratic information embedded in names. Using same set of common first names can also help the model recognize names better, shorten token length, and remove gender and regional biases associated with names. The system scored 0.1947 log loss in stage 2, where the augmentation contributed to an improvements of 0.04. Post-competition analysis shows that, when using different embedding layers, the system scores 0.1799 which would be third place.",
+    "authors": [
+        "Bo Liu"
+    ],
+    "venue": "Proceedings of the First Workshop on Gender Bias in Natural Language Processing",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents the 7th place solution to the Gendered Pronoun Resolution challenge, which uses BERT without fine-tuning and a novel augmentation strategy designed for contextual embedding token-level tasks, and anonymizes the referent by replacing candidate names with a set of common placeholder names."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

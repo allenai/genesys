@@ -1,0 +1,33 @@
+{
+    "acronym": "63857190aaf5aab1d94b54bb257b7b03b8cb5a50",
+    "title": "GMAT: Global Memory Augmentation for Transformers",
+    "seed_ids": [
+        "longformer",
+        "blockbert",
+        "reformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "2e14e84ccec924ed770b58108ad1d9de6f0ca295",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "63857190aaf5aab1d94b54bb257b7b03b8cb5a50",
+    "abstract": "Transformer-based models have become ubiquitous in natural language processing thanks to their large capacity, innate parallelism and high performance. The contextualizing component of a Transformer block is the $\\textit{pairwise dot-product}$ attention that has a large $\\Omega(L^2)$ memory requirement for length $L$ sequences, limiting its ability to process long documents. This has been the subject of substantial interest recently, where multiple approximations were proposed to reduce the quadratic memory requirement using sparse attention matrices. In this work, we propose to augment sparse Transformer blocks with a dense attention-based $\\textit{global memory}$ of length $M$ ($\\ll L$) which provides an aggregate global view of the entire input sequence to each position. Our augmentation has a manageable $O(M\\cdot(L+M))$ memory overhead, and can be seamlessly integrated with prior sparse solutions. Moreover, global memory can also be used for sequence compression, by representing a long input sequence with the memory representations only. We empirically show that our method leads to substantial improvement on a range of tasks, including (a) synthetic tasks that require global reasoning, (b) masked language modeling, and (c) reading comprehension.",
+    "authors": [
+        "Ankit Gupta",
+        "Jonathan Berant"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to augment sparse Transformer blocks with a dense attention-based $\\textit{global memory}$ of length $M$ ($\\ll L$) which provides an aggregate global view of the entire input sequence to each position, and empirically shows that this method leads to substantial improvement on a range of tasks."
+    },
+    "citationCount": 44,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

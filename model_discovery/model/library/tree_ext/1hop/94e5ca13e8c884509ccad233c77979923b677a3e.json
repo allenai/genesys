@@ -1,0 +1,30 @@
+{
+    "acronym": "94e5ca13e8c884509ccad233c77979923b677a3e",
+    "title": "UnCommonSense: Informative Negative Knowledge about Everyday Concepts",
+    "seed_ids": [
+        "gpt2",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "f48ae425e2567be2d993efcaaf74c2274fc9d7c5",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "94e5ca13e8c884509ccad233c77979923b677a3e",
+    "abstract": "Commonsense knowledge about everyday concepts is an important asset for AI applications, such as question answering and chatbots. Recently, we have seen an increasing interest in the construction of structured commonsense knowledge bases (CSKBs). An important part of human commonsense is about properties that do not apply to concepts, yet existing CSKBs only store positive statements. Moreover, since CSKBs operate under the open-world assumption, absent statements are considered to have unknown truth rather than being invalid. This paper presents the UNCOMMONSENSE framework for materializing informative negative commonsense statements. Given a target concept, comparable concepts are identified in the CSKB, for which a local closed-world assumption is postulated. This way, positive statements about comparable concepts that are absent for the target concept become seeds for negative statement candidates. The large set of candidates is then scrutinized, pruned and ranked by informativeness. Intrinsic and extrinsic evaluations show that our method significantly outperforms the state-of-the-art. A large dataset of informative negations is released as a resource for future research.",
+    "authors": [
+        "Hiba Arnaout",
+        "S. Razniewski",
+        "G. Weikum",
+        "Jeff Z. Pan"
+    ],
+    "venue": "International Conference on Information and Knowledge Management",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Intrinsic and extrinsic evaluations show that the UNCOMMONSENSE framework for materializing informative negative commonsense statements significantly outperforms the state-of-the-art."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

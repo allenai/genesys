@@ -1,0 +1,27 @@
+{
+    "acronym": "c884bd5daea4e96c7ff9a93cedf87ed4ce399c33",
+    "title": "Multi-Modal Disordered Representation Learning Network for Description-Based Person Search",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "c884bd5daea4e96c7ff9a93cedf87ed4ce399c33",
+    "abstract": "Description-based person search aims to retrieve images of the target identity via textual descriptions. One of the challenges for this task is to extract discriminative representation from images and descriptions. Most existing methods apply the part-based split method or external models to explore the fine-grained details of local features, which ignore the global relationship between partial information and cause network instability. To overcome these issues, we propose a Multi-modal Disordered Representation Learning Network (MDRL) for description-based person search to fully extract the visual and textual representations. Specifically, we design a Cross-modality Global Feature Learning Architecture to learn the global features from the two modalities and meet the demand of the task. Based on our global network, we introduce a Disorder Local Learning Module to explore local features by a disordered reorganization strategy from both visual and textual aspects and enhance the robustness of the whole network. Besides, we introduce a Cross-modality Interaction Module to guide the two streams to extract visual or textual representations considering the correlation between modalities. Extensive experiments are conducted on two public datasets, and the results show that our method outperforms the state-of-the-art methods on CUHK-PEDES and ICFG-PEDES datasets and achieves superior performance.",
+    "authors": [
+        "Fan Yang",
+        "Wei Li",
+        "Menglong Yang",
+        "Binbin Liang",
+        "Jianwei Zhang"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Multi-modal Disordered Representation Learning Network (MDRL) is proposed for description-based person search to fully extract the visual and textual representations and improves the robustness of the whole network."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

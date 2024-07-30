@@ -1,0 +1,30 @@
+{
+    "acronym": "ba8ac47e930ad9a3ad777b1ac04f6c9b9621c09f",
+    "title": "A Data-Driven Guided Decoding Mechanism for Diagnostic Captioning",
+    "seed_ids": [
+        "transformer",
+        "492a655a67e6ec7423a968cedb70eec0cdbc8e98",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "ba8ac47e930ad9a3ad777b1ac04f6c9b9621c09f",
+    "abstract": "Diagnostic Captioning (DC) automatically generates a diagnostic text from one or more medical images (e.g., X-rays, MRIs) of a patient. Treated as a draft, the generated text may assist clinicians, by providing an initial estimation of the patient's condition, speeding up and helping safeguard the diagnostic process. The accuracy of a diagnostic text, however, strongly depends on how well the key medical conditions depicted in the images are expressed. We propose a new data-driven guided decoding method that incorporates medical information, in the form of existing tags capturing key conditions of the image(s), into the beam search of the diagnostic text generation process. We evaluate the proposed method on two medical datasets using four DC systems that range from generic image-to-text systems with CNN encoders and RNN decoders to pre-trained Large Language Models. The latter can also be used in few- and zero-shot learning scenarios. In most cases, the proposed mechanism improves performance with respect to all evaluation measures. We provide an open-source implementation of the proposed method at https://github.com/nlpaueb/dmmcs.",
+    "authors": [
+        "Panagiotis Kaliosis",
+        "John Pavlopoulos",
+        "Foivos Charalampakos",
+        "Georgios Moschovis",
+        "I. Androutsopoulos"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new data-driven guided decoding method that incorporates medical information, in the form of existing tags capturing key conditions of the image(s), into the beam search of the diagnostic text generation process is proposed."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

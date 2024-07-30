@@ -1,0 +1,35 @@
+{
+    "acronym": "6b149cd0974e353ab7a58b5a5af759b03e82665c",
+    "title": "Locality-Sensitive Hashing for Long Context Neural Machine Translation",
+    "seed_ids": [
+        "reformer",
+        "b0de1d5fe394226cec0a59d783ab739eb52da76f",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "07a9f47885cae97efb7b4aa109392128532433da",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13"
+    ],
+    "s2id": "6b149cd0974e353ab7a58b5a5af759b03e82665c",
+    "abstract": "After its introduction the Transformer architecture quickly became the gold standard for the task of neural machine translation. A major advantage of the Transformer compared to previous architectures is the faster training speed achieved by complete parallelization across timesteps due to the use of attention over recurrent layers. However, this also leads to one of the biggest problems of the Transformer, namely the quadratic time and memory complexity with respect to the input length. In this work we adapt the locality-sensitive hashing approach of Kitaev et al. (2020) to self-attention in the Transformer, we extended it to cross-attention and apply this memory efficient framework to sentence- and document-level machine translation. Our experiments show that the LSH attention scheme for sentence-level comes at the cost of slightly reduced translation quality. For document-level NMT we are able to include much bigger context sizes than what is possible with the baseline Transformer. However, more context does neither improve translation quality nor improve scores on targeted test suites.",
+    "authors": [
+        "Frithjof Petrick",
+        "Jan Rosendahl",
+        "Christian Herold",
+        "H. Ney"
+    ],
+    "venue": "International Workshop on Spoken Language Translation",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work adapts the locality-sensitive hashing approach of Kitaev et al. (2020) to self-attention in the Transformer, extended it to cross-att attention and applies this memory efficient framework to sentence- and document-level machine translation."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

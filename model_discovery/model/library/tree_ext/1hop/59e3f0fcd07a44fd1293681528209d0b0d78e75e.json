@@ -1,0 +1,29 @@
+{
+    "acronym": "59e3f0fcd07a44fd1293681528209d0b0d78e75e",
+    "title": "Mixed Multi-Head Self-Attention for Neural Machine Translation",
+    "seed_ids": [
+        "lighdynconv",
+        "d9f1eed347959149f27002485a7fe339604fe45d",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "59e3f0fcd07a44fd1293681528209d0b0d78e75e",
+    "abstract": "Recently, the Transformer becomes a state-of-the-art architecture in the filed of neural machine translation (NMT). A key point of its high-performance is the multi-head self-attention which is supposed to allow the model to independently attend to information from different representation subspaces. However, there is no explicit mechanism to ensure that different attention heads indeed capture different features, and in practice, redundancy has occurred in multiple heads. In this paper, we argue that using the same global attention in multiple heads limits multi-head self-attention\u2019s capacity for learning distinct features. In order to improve the expressiveness of multi-head self-attention, we propose a novel Mixed Multi-Head Self-Attention (MMA) which models not only global and local attention but also forward and backward attention in different attention heads. This enables the model to learn distinct representations explicitly among multiple heads. In our experiments on both WAT17 English-Japanese as well as IWSLT14 German-English translation task, we show that, without increasing the number of parameters, our models yield consistent and significant improvements (0.9 BLEU scores on average) over the strong Transformer baseline.",
+    "authors": [
+        "Hongyi Cui",
+        "Shohei Iida",
+        "Po-Hsuan Hung",
+        "T. Utsuro",
+        "M. Nagata"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is argued that using the same global attention in multiple heads limits multi-head self-attention\u2019s capacity for learning distinct features, and a novel Mixed Multi-Head Self-Attention (MMA) is proposed which models not only global and local attention but also forward and backward attention in different attention heads."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "01e564bf0bd7923e84b07d47a7278196fa637fb6",
+    "title": "A Large Language Model approach to SQL-to-Text Generation",
+    "seed_ids": [
+        "mqa",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "01e564bf0bd7923e84b07d47a7278196fa637fb6",
+    "abstract": "Generating relevant explanations given an structured code representation, such as SQL, is a challenging task. Tackling the SQL-to-text, more specifically the SQL-explanation problem, benefits both non-technical and technical users. Automatic explanations written in human language can facilitate the understanding of the query\u2019s logical structure and it also helps developers to better document and learn SQL code. The approaches for this niche are diverse. Some of them involve sequence-to-sequence models and others utilize graph-to-sequence models to generate explanations. However, considering the latest advances in Large Language Models (LLMs) and the relatively little attention in SQL-to-text problem, we investigate a new generative approach based on LLMs to infer the logical structure about the query, including columns, tables and relations. We categorize our research on SQL-explanation as a subtask of SQL-to-text to differ from the translation of SQL code into natural language questions. Experiments were conducted with the open-source Falcon LLM and compared with T5 LLM and Graph2Seq models. The results show that Falcon outperforms previous models achieving 70% of accuracy with human evaluation on Spider dataset and it achieves competitive 75% accuracy with human evaluation on WikiSQL dataset.",
+    "authors": [
+        "Vanessa C\u00e2mara",
+        "Rayol Mendonca-Neto",
+        "Andr\u00e9 Silva",
+        "Luiz Cordovil"
+    ],
+    "venue": "IEEE International Conference on Consumer Electronics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work investigates a new generative approach based on LLMs to infer the logical structure about the query, including columns, tables and relations, and shows that Falcon outperforms previous models achieving 70% of accuracy with human evaluation on Spider dataset and it achieves competitive 75% accuracy with human evaluation on WikiSQL dataset."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

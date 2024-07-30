@@ -1,0 +1,31 @@
+{
+    "acronym": "25eb994ad3eb17ff45c3ee76baa3a2d8a58aec90",
+    "title": "Patch-Consistent Optical Translation Across Sensors: Large-Scale Denoising Diffusion with Heterogeneous Change Detection as a Use Case",
+    "seed_ids": [
+        "classfreediffu",
+        "c8abd95ec7dfc6ed81ea27f577d3570c3896bcb1",
+        "17d068e78e6f25e65cb08319b19b58279bb8b214",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "25eb994ad3eb17ff45c3ee76baa3a2d8a58aec90",
+    "abstract": "In the field of remote sensing, the challenge of comparing images captured by disparate sensors is a common obstacle. This requires image translation -- converting imagery from one sensor domain to another while preserving the original content. Denoising Diffusion Implicit Models (DDIM) are potential state-of-the-art solutions for such domain translation due to their proven superiority in multiple image-to-image translation tasks in classic computer vision. However, these models struggle with large-scale multi-patch imagery, often focusing solely on small patches and resulting in inconsistencies across the full image. To overcome these limitations, we propose a novel method that leverages DDIM for effective optical image translation over large areas. Our approach is tailored to super-resolve large-scale low spatial resolution images into high-resolution equivalents from disparate optical sensors, ensuring uniformity across hundreds of patches. Extensive experiments with a dataset of paired Sentinel-II and Planet Dove images show that our approach provides precise domain adaptation and artifact reduction. Our technique preserves the image content while also improving radiometric (color) accuracy and feature representations. The outcome is a high-resolution large-scale image with consistent patches, vital for applications such as heterogeneous change detection (HCD). We present a unique training and testing algorithm rooted in DDIMs, a thorough image quality assessment, and a comparative study against the standard classifier-free guided DDIM framework and five other leading methods. The efficacy of our approach is further demonstrated by substantial enhancements in HCD tasks performed in the urban settings of Beirut, Lebanon, and Austin, USA.",
+    "authors": [
+        "J. G. Vinholi",
+        "Marco Chini",
+        "Anis Amziane",
+        "Renato Machado",
+        "D. Silva",
+        "P. Matgen"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel method that leverages DDIM for effective optical image translation over large areas is proposed, tailored to super-resolve large-scale low spatial resolution images into high-resolution equivalents from disparate optical sensors, ensuring uniformity across hundreds of patches."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

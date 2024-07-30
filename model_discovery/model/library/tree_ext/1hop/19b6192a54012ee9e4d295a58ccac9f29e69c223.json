@@ -1,0 +1,27 @@
+{
+    "acronym": "19b6192a54012ee9e4d295a58ccac9f29e69c223",
+    "title": "Predictability\u2010Aware Subsequence Modeling for Sequential Recommendation",
+    "seed_ids": [
+        "transformer",
+        "beec9c8657d370efdb1b259cc27fcbf5697282c9",
+        "d3f51870f4da5dd9c2a08a55cfa8a380b8d49208",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8"
+    ],
+    "s2id": "19b6192a54012ee9e4d295a58ccac9f29e69c223",
+    "abstract": "Sequential recommendation frames the recommendation task as a next\u2010item prediction problem, where the model is trained to predict the next item given a user behavior sequence. While recent research has made significant progress in developing advanced models for this task, there exists a notable gap in the exploration of subsequences and the predictability inherent in user behavior sequences. This oversight can lead models to recall inconsequential sequential patterns, adversely affecting recommendation quality. In this paper, we introduce a novel approach to augmenting sequential recommendation by integrating predictability awareness into subsequence modeling. Our method begins by discerning the predictability of target items; those easily predicted often align with the preceding subsequence, while those that are hard to predict typically indicate transitions to other subsequences. Leveraging this predictability information, we enhance the discovery of meaningful subsequences within individual user behavior sequences. Evaluation of four benchmark data sets using various state\u2010of\u2010the\u2010art sequential models illustrates the efficacy of our approach in enhancing recommendation performance. \u00a9 2024 Institute of Electrical Engineers of Japan and Wiley Periodicals LLC.",
+    "authors": [
+        "Hangyu Deng",
+        "Jinglu Hu"
+    ],
+    "venue": "IEEJ TRANSACTIONS ON ELECTRICAL AND ELECTRONIC ENGINEERING",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel approach to augmenting sequential recommendation by integrating predictability awareness into subsequence modeling is introduced, which enhances the discovery of meaningful subsequences within individual user behavior sequences."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

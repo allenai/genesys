@@ -1,0 +1,27 @@
+{
+    "acronym": "f32e14b12555fdcb3288ede98c3e5313cf13a355",
+    "title": "Defining and Extracting generalizable interaction primitives from DNNs",
+    "seed_ids": [
+        "bert",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221"
+    ],
+    "s2id": "f32e14b12555fdcb3288ede98c3e5313cf13a355",
+    "abstract": "Faithfully summarizing the knowledge encoded by a deep neural network (DNN) into a few symbolic primitive patterns without losing much information represents a core challenge in explainable AI. To this end, Ren et al. (2023c) have derived a series of theorems to prove that the inference score of a DNN can be explained as a small set of interactions between input variables. However, the lack of generalization power makes it still hard to consider such interactions as faithful primitive patterns encoded by the DNN. Therefore, given different DNNs trained for the same task, we develop a new method to extract interactions that are shared by these DNNs. Experiments show that the extracted interactions can better reflect common knowledge shared by different DNNs.",
+    "authors": [
+        "Lu Chen",
+        "Siyu Lou",
+        "Benhao Huang",
+        "Quanshi Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new method is developed to extract interactions that are shared by these DNNs trained for the same task, and experiments show that the extracted interactions can better reflect common knowledge shared by different DNNs."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

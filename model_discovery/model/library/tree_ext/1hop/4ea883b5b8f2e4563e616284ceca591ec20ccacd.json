@@ -1,0 +1,30 @@
+{
+    "acronym": "4ea883b5b8f2e4563e616284ceca591ec20ccacd",
+    "title": "FastSAG: Towards Fast Non-Autoregressive Singing Accompaniment Generation",
+    "seed_ids": [
+        "perceiverio",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "4c64c35198453662882afd63d618a832c7d8c1b2"
+    ],
+    "s2id": "4ea883b5b8f2e4563e616284ceca591ec20ccacd",
+    "abstract": "Singing Accompaniment Generation (SAG), which generates instrumental music to accompany input vocals, is crucial to developing human-AI symbiotic art creation systems. The state-of-the-art method, SingSong, utilizes a multi-stage autoregressive (AR) model for SAG, however, this method is extremely slow as it generates semantic and acoustic tokens recursively, and this makes it impossible for real-time applications. In this paper, we aim to develop a Fast SAG method that can create high-quality and coherent accompaniments. A non-AR diffusion-based framework is developed, which by carefully designing the conditions inferred from the vocal signals, generates the Mel spectrogram of the target accompaniment directly. With diffusion and Mel spectrogram modeling, the proposed method significantly simplifies the AR token-based SingSong framework, and largely accelerates the generation. We also design semantic projection, prior projection blocks as well as a set of loss functions, to ensure the generated accompaniment has semantic and rhythm coherence with the vocal signal. By intensive experimental studies, we demonstrate that the proposed method can generate better samples than SingSong, and accelerate the generation by at least 30 times. Audio samples and code are available at this link.",
+    "authors": [
+        "Jianyi Chen",
+        "Wei Xue",
+        "Xu Tan",
+        "Zhen Ye",
+        "Qi-fei Liu",
+        "Yi-Ting Guo"
+    ],
+    "venue": "Proceedings of the Thirty-ThirdInternational Joint Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A non-AR diffusion-based framework is developed, which by carefully designing the conditions inferred from the vocal signals, generates the Mel spectrogram of the target accompaniment directly and significantly simplifies the AR token-based SingSong framework, and largely accelerates the generation."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

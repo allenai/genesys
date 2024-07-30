@@ -1,0 +1,29 @@
+{
+    "acronym": "b0a0f36abc5a63ae886b11cb3eff8d40e6f746f0",
+    "title": "POE: Process of Elimination for Multiple Choice Reasoning",
+    "seed_ids": [
+        "gpt3",
+        "ed38c6b157c11476939c426ec6871c926f2f3524",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "b0a0f36abc5a63ae886b11cb3eff8d40e6f746f0",
+    "abstract": "Language models (LMs) are capable of conducting in-context learning for multiple choice reasoning tasks, but the options in these tasks are treated equally. As humans often first eliminate wrong options before picking the final correct answer, we argue a similar two-step strategy can make LMs better at these tasks. To this end, we present the Process of Elimination (POE), a two-step scoring method. In the first step, POE scores each option, and eliminates seemingly wrong options. In the second step, POE masks these wrong options, and makes the final prediction from the remaining options. Zero-shot experiments on 8 reasoning tasks illustrate the effectiveness of POE, and a following analysis finds our method to be especially performant on logical reasoning tasks. We further analyze the effect of masks, and show that POE applies to few-shot settings and large language models (LLMs) like ChatGPT.",
+    "authors": [
+        "Chenkai Ma",
+        "Xinya Du"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Process of Elimination (POE), a two-step scoring method that masks wrong options, and makes the final prediction from the remaining options, is presented and found to be especially performant on logical reasoning tasks."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

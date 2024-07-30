@@ -1,0 +1,36 @@
+{
+    "acronym": "3d5ec5fe25732116b0ca351c112468cb60bd4b50",
+    "title": "CLICK: Integrating Causal Inference and Commonsense Knowledge Incorporation for Counterfactual Story Generation",
+    "seed_ids": [
+        "gpt2",
+        "c7c6d338e47b236edea76790d2997333f497319e",
+        "706c6b3781374b0b11f98f204a4ddd05b26ed009",
+        "24628e4f338680d57d23b7dc4912dc26efb6324b",
+        "4d16457cded23bce6eaa91cd17aefd22af2279f0",
+        "f48ae425e2567be2d993efcaaf74c2274fc9d7c5",
+        "824d15233236e804b40ad827a3b076e07b2c3d3b",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3d5ec5fe25732116b0ca351c112468cb60bd4b50",
+    "abstract": "Counterfactual reasoning explores what could have happened if the circumstances were different from what actually occurred. As a crucial subtask, counterfactual story generation integrates counterfactual reasoning into the generative narrative chain, which requires the model to preserve minimal edits and ensure narrative consistency. Previous work prioritizes conflict detection as a first step, and then replaces conflicting content with appropriate words. However, these methods mainly face two challenging issues: (a) the causal relationship between story event sequences is not fully utilized in the conflict detection stage, leading to inaccurate conflict detection, and (b) the absence of proper planning in the content rewriting stage results in a lack of narrative consistency in the generated story ending. In this paper, we propose a novel counterfactual generation framework called CLICK based on causal inference in event sequences and commonsense knowledge incorporation. To address the first issue, we utilize the correlation between adjacent events in the story ending to iteratively calculate the contents from the original ending affected by the condition. The content with the original condition is then effectively prevented from carrying over into the new story ending, thereby avoiding causal conflict with the counterfactual conditions. Considering the second issue, we incorporate structural commonsense knowledge about counterfactual conditions, equipping the framework with comprehensive background information on the potential occurrence of counterfactual conditional events. Through leveraging a rich hierarchical data structure, CLICK gains the ability to establish a more coherent and plausible narrative trajectory for subsequent storytelling. Experimental results show that our model outperforms previous unsupervised state-of-the-art methods and achieves gains of 2.65 in BLEU, 4.42 in ENTScore, and 3.84 in HMean on the TIMETRAVEL dataset.",
+    "authors": [
+        "Dandan Li",
+        "Ziyu Guo",
+        "Qing Liu",
+        "Li Jin",
+        "Zequen Zhang",
+        "Kaiwen Wei",
+        "Feng Li"
+    ],
+    "venue": "Electronics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel counterfactual generation framework called CLICK based on causal inference in event sequences and commonsense knowledge incorporation is proposed, which outperforms previous unsupervised state-of-the-art methods and achieves gains of 2.65 in BLEU, 4.42 in ENTScore, and 3.84 in HMean on the TIMETRAVEL dataset."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

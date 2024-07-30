@@ -1,0 +1,41 @@
+{
+    "acronym": "2bf1ca5a9d0ff5735893ef6d9a7e2258dec47461",
+    "title": "LDSeq: Latent Diffusion Models for Sequence to Sequence Text Generation",
+    "seed_ids": [
+        "diffuseq",
+        "analogbits",
+        "020a50f6a7154850ac81e3cde69ad8198ded6751",
+        "a1186d7d9a9ef258c76afef1177e4f348061a537",
+        "a979742220a88b1d32e1fbe72c41e8ba3007053c",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "24425954960ce968e5f14360fbdd0605abcadfcf"
+    ],
+    "s2id": "2bf1ca5a9d0ff5735893ef6d9a7e2258dec47461",
+    "abstract": "Diffusion models have demonstrated remarkable success in generating continuous data, such as images and audios. Previous studies on text generation employing continuous diffusion models have revealed the potential of the diffusion framework. However, challenges like embedding collapse persist, limiting the overall generation performance. In this paper we introduce LDSeq, a latent diffusion framework employing a two-stage training procedure for sequence-to-sequence text generation. In the proposed framework, we first train a Variational Auto-Encoder (VAE) on downstream datasets to compress the target text of samples into a continuous latent space, and then we train a conditional latent diffusion model in the fixed continuous latent space, where the latent vectors are iteratively sampled conditioned on the input source text. The disjoint training stages prevent the collapse of diffusion space. Experimental results on paraphrase generation and text summarization datasets show that LDSeq achieves comparable or superior performance in comparison to AR and NAR baselines while requiring lower training cost. Furthermore, We discuss some potential future directions for enhancing diffusion models in the text generation domain.",
+    "authors": [
+        "Yizhou Ding",
+        "Jidong Tian",
+        "Shanxing Mei",
+        "Yifan Zhou",
+        "Yuwu Dong",
+        "Hao He",
+        "Weisheng Hu"
+    ],
+    "venue": "International Conference on Computer Science and Artificial Intelligence",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "LDSeq, a latent diffusion framework employing a two-stage training procedure for sequence-to-sequence text generation, and results show that LDSeq achieves comparable or superior performance in comparison to AR and NAR baselines while requiring lower training cost."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

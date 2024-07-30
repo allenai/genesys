@@ -1,0 +1,33 @@
+{
+    "acronym": "7618f17179bb316002cb6cc472d61382776af6b7",
+    "title": "Sparse Mixers: Combining MoE and Mixing to build a more efficient BERT",
+    "seed_ids": [
+        "gmlp",
+        "fnet",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "da0d38cf2ac7e2a6908e0d9e1fff07058daab2ed",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "79b4ec1aaf67a04a9afa0d8138f84b7be66c00cb",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "07a9f47885cae97efb7b4aa109392128532433da",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf",
+        "d9f6ada77448664b71128bb19df15765336974a6"
+    ],
+    "s2id": "7618f17179bb316002cb6cc472d61382776af6b7",
+    "abstract": "We combine the capacity of sparsely gated Mixture-of-Experts (MoE) with the speed and stability of linear, mixing transformations to design the Sparse Mixer encoder model. Sparse Mixer slightly outperforms (<1%) BERT on GLUE and SuperGLUE, but more importantly trains 65% faster and runs inference 61% faster. We also present a faster variant, prosaically named Fast Sparse Mixer, that marginally underperforms BERT on SuperGLUE, but trains and runs nearly twice as fast. We justify the design of these two models by carefully ablating through various mixing mechanisms, MoE configurations and hyperparameters. Sparse Mixer overcomes many of the latency and stability concerns of MoE models and offers the prospect of serving sparse student models, without resorting to distilling them to dense variants.",
+    "authors": [
+        "J. Lee-Thorp",
+        "J. Ainslie"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Sparse Mixer encoder model overcomes many of the latency and stability concerns of MoE models and offers the prospect of serving sparse student models, without resorting to distilling them to dense variants."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

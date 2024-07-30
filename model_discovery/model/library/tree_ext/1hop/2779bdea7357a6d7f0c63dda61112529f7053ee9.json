@@ -1,0 +1,29 @@
+{
+    "acronym": "2779bdea7357a6d7f0c63dda61112529f7053ee9",
+    "title": "Fine-grained Speech Sentiment Analysis in Chinese Psychological Support Hotlines Based on Large-scale Pre-trained Model",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "2779bdea7357a6d7f0c63dda61112529f7053ee9",
+    "abstract": "Suicide and suicidal behaviors remain significant challenges for public policy and healthcare. In response, psychological support hotlines have been established worldwide to provide immediate help to individuals in mental crises. The effectiveness of these hotlines largely depends on accurately identifying callers' emotional states, particularly underlying negative emotions indicative of increased suicide risk. However, the high demand for psychological interventions often results in a shortage of professional operators, highlighting the need for an effective speech emotion recognition model. This model would automatically detect and analyze callers' emotions, facilitating integration into hotline services. Additionally, it would enable large-scale data analysis of psychological support hotline interactions to explore psychological phenomena and behaviors across populations. Our study utilizes data from the Beijing psychological support hotline, the largest suicide hotline in China. We analyzed speech data from 105 callers containing 20,630 segments and categorized them into 11 types of negative emotions. We developed a negative emotion recognition model and a fine-grained multi-label classification model using a large-scale pre-trained model. Our experiments indicate that the negative emotion recognition model achieves a maximum F1-score of 76.96%. However, it shows limited efficacy in the fine-grained multi-label classification task, with the best model achieving only a 41.74% weighted F1-score. We conducted an error analysis for this task, discussed potential future improvements, and considered the clinical application possibilities of our study. All the codes are public available.",
+    "authors": [
+        "Zhonglong Chen",
+        "Changwei Song",
+        "Yining Chen",
+        "Jianqiang Li",
+        "Guanghui Fu",
+        "Yongsheng Tong",
+        "Qing Zhao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A negative emotion recognition model and a fine-grained multi-label classification model using a large-scale pre-trained model are developed that would enable large-scale data analysis of psychological support hotline interactions to explore psychological phenomena and behaviors across populations."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

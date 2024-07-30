@@ -1,0 +1,28 @@
+{
+    "acronym": "adc13ef61e47628e9efcdca0c27654370e46dae5",
+    "title": "SciXGen: A Scientific Paper Dataset for Context-Aware Text Generation",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "bb0ce614ab4c0251e6a4fc16f695b5facbfc1d70",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "adc13ef61e47628e9efcdca0c27654370e46dae5",
+    "abstract": "Generating texts in scientific papers requires not only capturing the content contained within the given input but also frequently acquiring the external information called \\textit{context}. We push forward the scientific text generation by proposing a new task, namely \\textbf{context-aware text generation} in the scientific domain, aiming at exploiting the contributions of context in generated texts. To this end, we present a novel challenging large-scale \\textbf{Sci}entific Paper Dataset for Conte\\textbf{X}t-Aware Text \\textbf{Gen}eration (SciXGen), consisting of well-annotated 205,304 papers with full references to widely-used objects (e.g., tables, figures, algorithms) in a paper. We comprehensively benchmark, using state-of-the-arts, the efficacy of our newly constructed SciXGen dataset in generating description and paragraph. Our dataset and benchmarks will be made publicly available to hopefully facilitate the scientific text generation research.",
+    "authors": [
+        "Hong Chen",
+        "Hiroya Takamura",
+        "Hideki Nakayama"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a novel challenging large-scale SciXGen dataset, consisting of well-annotated 205,304 papers with full references to widely-used objects in a paper, aiming at exploiting the contributions of context in generated texts."
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

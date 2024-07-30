@@ -1,0 +1,31 @@
+{
+    "acronym": "c42f35c980e148f93f0c9de653320503dbfe9361",
+    "title": "EurNet: Efficient Multi-Range Relational Modeling of Spatial Multi-Relational Data",
+    "seed_ids": [
+        "gmlp",
+        "fa717a2e31f0cef4e26921f3b147a98644d2e64c",
+        "5a9bc55f6332e38f62eb509b684147a1d4f10fd9",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "c42f35c980e148f93f0c9de653320503dbfe9361",
+    "abstract": "Modeling spatial relationship in the data remains critical across many different tasks, such as image classification, semantic segmentation and protein structure understanding. Previous works often use a unified solution like relative positional encoding. However, there exists different kinds of spatial relations, including short-range, medium-range and long-range relations, and modeling them separately can better capture the focus of different tasks on the multi-range relations (e.g., short-range relations can be important in instance segmentation, while long-range relations should be upweighted for semantic segmentation). In this work, we introduce the EurNet for Efficient multi-range relational modeling. EurNet constructs the multi-relational graph, where each type of edge corresponds to short-, medium- or long-range spatial interactions. In the constructed graph, EurNet adopts a novel modeling layer, called gated relational message passing (GRMP), to propagate multi-relational information across the data. GRMP captures multiple relations within the data with little extra computational cost. We study EurNets in two important domains for image and protein structure modeling. Extensive experiments on ImageNet classification, COCO object detection and ADE20K semantic segmentation verify the gains of EurNet over the previous SoTA FocalNet. On the EC and GO protein function prediction benchmarks, EurNet consistently surpasses the previous SoTA GearNet. Our results demonstrate the strength of EurNets on modeling spatial multi-relational data from various domains. The implementations of EurNet for image modeling are available at https://github.com/hirl-team/EurNet-Image . The implementations for other applied domains/tasks will be released soon.",
+    "authors": [
+        "Minghao Xu",
+        "Yuanfan Guo",
+        "Yi Xu",
+        "Jiangtao Tang",
+        "Xinlei Chen",
+        "Yuandong Tian"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The EurNet for Efficient multi-range relational modeling is introduced, and EurNet adopts a novel modeling layer, called gated relational message passing (GRMP), to propagate multi-relational information across the data."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

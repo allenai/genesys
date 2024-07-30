@@ -1,0 +1,26 @@
+{
+    "acronym": "6491d8bcac8490d9ffde33612f87e15c90a44e97",
+    "title": "On-The-Fly Information Retrieval Augmentation for Language Models",
+    "seed_ids": [
+        "gpt",
+        "productkeymem",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6491d8bcac8490d9ffde33612f87e15c90a44e97",
+    "abstract": "Here we experiment with the use of information retrieval as an augmentation for pre-trained language models. The text corpus used in information retrieval can be viewed as form of episodic memory which grows over time. By augmenting GPT 2.0 with information retrieval we achieve a zero shot 15% relative reduction in perplexity on Gigaword corpus without any re-training. We also validate our IR augmentation on an event co-reference task.",
+    "authors": [
+        "Hai Wang",
+        "David A. McAllester"
+    ],
+    "venue": "NUSE",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "By augmenting GPT 2.0 with information retrieval, this work achieves a zero shot 15% relative reduction in perplexity on Gigaword corpus without any re-training."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

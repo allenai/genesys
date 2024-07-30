@@ -1,0 +1,28 @@
+{
+    "acronym": "32211e7360c90687b0907363f0f9843e3549da01",
+    "title": "SentiCSE: A Sentiment-aware Contrastive Sentence Embedding Framework with Sentiment-guided Textual Similarity",
+    "seed_ids": [
+        "bert",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "32211e7360c90687b0907363f0f9843e3549da01",
+    "abstract": "Recently, sentiment-aware pre-trained language models (PLMs) demonstrate impressive results in downstream sentiment analysis tasks. However, they neglect to evaluate the quality of their constructed sentiment representations; they just focus on improving the fine-tuning performance, which overshadows the representation quality. We argue that without guaranteeing the representation quality, their downstream performance can be highly dependent on the supervision of the fine-tuning data rather than representation quality. This problem would make them difficult to foray into other sentiment-related domains, especially where labeled data is scarce. We first propose Sentiment-guided Textual Similarity (SgTS), a novel metric for evaluating the quality of sentiment representations, which is designed based on the degree of equivalence in sentiment polarity between two sentences. We then propose SentiCSE, a novel Sentiment-aware Contrastive Sentence Embedding framework for constructing sentiment representations via combined word-level and sentence-level objectives, whose quality is guaranteed by SgTS. Qualitative and quantitative comparison with the previous sentiment-aware PLMs shows the superiority of our work. Our code is available at: https://github.com/nayohan/SentiCSE",
+    "authors": [
+        "Jaemin Kim",
+        "Yohan Na",
+        "Kangmin Kim",
+        "Sang Rak Lee",
+        "Dong-Kyu Chae"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "SentiCSE is proposed, a novel Sentiment-aware Contrastive Sentence Embedding framework for constructing sentiment representations via combined word-level and sentence-level objectives, whose quality is guaranteed by Sentiment-guided Textual Similarity (SgTS), a novel metric for evaluating the quality of sentiment representations."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

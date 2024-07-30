@@ -1,0 +1,31 @@
+{
+    "acronym": "df9181a58bc03b6fb10014d5cd2806c1482d7c59",
+    "title": "Time Series Representation Models",
+    "seed_ids": [
+        "transformer",
+        "bert",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676"
+    ],
+    "s2id": "df9181a58bc03b6fb10014d5cd2806c1482d7c59",
+    "abstract": "Time series analysis remains a major challenge due to its sparse characteristics, high dimensionality, and inconsistent data quality. Recent advancements in transformer-based techniques have enhanced capabilities in forecasting and imputation; however, these methods are still resource-heavy, lack adaptability, and face difficulties in integrating both local and global attributes of time series. To tackle these challenges, we propose a new architectural concept for time series analysis based on introspection. Central to this concept is the self-supervised pretraining of Time Series Representation Models (TSRMs), which once learned can be easily tailored and fine-tuned for specific tasks, such as forecasting and imputation, in an automated and resource-efficient manner. Our architecture is equipped with a flexible and hierarchical representation learning process, which is robust against missing data and outliers. It can capture and learn both local and global features of the structure, semantics, and crucial patterns of a given time series category, such as heart rate data. Our learned time series representation models can be efficiently adapted to a specific task, such as forecasting or imputation, without manual intervention. Furthermore, our architecture's design supports explainability by highlighting the significance of each input value for the task at hand. Our empirical study using four benchmark datasets shows that, compared to investigated state-of-the-art baseline methods, our architecture improves imputation and forecasting errors by up to 90.34% and 71.54%, respectively, while reducing the required trainable parameters by up to 92.43%. The source code is available at https://github.com/RobertLeppich/TSRM.",
+    "authors": [
+        "Robert Leppich",
+        "Vanessa Borst",
+        "Veronika Lesch",
+        "S. Kounev"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a new architectural concept for time series analysis based on introspection, which improves imputation and forecasting errors by up to 90.34% and 71.54%, respectively, while reducing the required trainable parameters by up to 92.43%."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

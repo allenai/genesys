@@ -1,0 +1,28 @@
+{
+    "acronym": "6a316d0913596b65032f4b6956ba19a40e6c960f",
+    "title": "Finding the Missing Data: A BERT-inspired Approach Against Package Loss in Wireless Sensing",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "6a316d0913596b65032f4b6956ba19a40e6c960f",
+    "abstract": "Despite the development of various deep learning methods for Wi-Fi sensing, package loss often results in noncontinuous estimation of the Channel State Information (CSI), which negatively impacts the performance of the learning models. To overcome this challenge, we propose a deep learning model based on Bidirectional Encoder Representations from Transformers (BERT) for CSI recovery, named CSI-BERT. CSI-BERT can be trained in an self-supervised manner on the target dataset without the need for additional data. Furthermore, unlike traditional interpolation methods that focus on one subcarrier at a time, CSI-BERT captures the sequential relationships across different subcarriers. Experimental results demonstrate that CSI-BERT achieves lower error rates and faster speed compared to traditional interpolation methods, even when facing with high loss rates. Moreover, by harnessing the recovered CSI obtained from CSI-BERT, other deep learning models like Residual Network and Recurrent Neural Network can achieve an average increase in accuracy of approximately 15\\% in Wi-Fi sensing tasks. The collected dataset WiGesture and code for our model are publicly available at https://github.com/RS2002/CSI-BERT.",
+    "authors": [
+        "Zijian Zhao",
+        "Tingwei Chen",
+        "Fanyi Meng",
+        "Hang Li",
+        "Xiaoyang Li",
+        "Guangxu Zhu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A deep learning model based on Bidirectional Encoder Representations from Transformers (BERT) for CSI recovery, named CSI-BERT, which achieves lower error rates and faster speed compared to traditional interpolation methods, even when facing with high loss rates."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "9f7db53338c8e76d708faf1a126e7b43331a57b2",
+    "title": "Beyond Static Evaluation: A Dynamic Approach to Assessing AI Assistants\u2019 API Invocation Capabilities",
+    "seed_ids": [
+        "transformer",
+        "0b0debb710366cdff461938c80763eace1651af6"
+    ],
+    "s2id": "9f7db53338c8e76d708faf1a126e7b43331a57b2",
+    "abstract": "With the rise of Large Language Models (LLMs), AI assistants\u2019 ability to utilize tools, especially through API calls, has advanced notably. This progress has necessitated more accurate evaluation methods. Many existing studies adopt static evaluation, where they assess AI assistants\u2019 API call based on pre-defined dialogue histories. However, such evaluation method can be misleading, as an AI assistant might fail in generating API calls from preceding human interaction in real cases. Instead of the resource-intensive method of direct human-machine interactions, we propose Automated Dynamic Evaluation (AutoDE) to assess an assistant\u2019s API call capability without human involvement. In our framework, we endeavor to closely mirror genuine human conversation patterns in human-machine interactions, using a LLM-based user agent, equipped with a user script to ensure human alignment. Experimental results highlight that AutoDE uncovers errors overlooked by static evaluations, aligning more closely with human assessment. Testing four AI assistants using our crafted benchmark, our method further mirrored human evaluation compared to conventional static evaluations.",
+    "authors": [
+        "Honglin Mu",
+        "Yang Xu",
+        "Yunlong Feng",
+        "Xiaofeng Han",
+        "Yitong Li",
+        "Yutai Hou",
+        "Wanxiang Che"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes Automated Dynamic Evaluation (AutoDE) to assess an assistant\u2019s API call capability without human involvement, and endeavors to closely mirror genuine human conversation patterns in human-machine interactions, using a LLM-based user agent equipped with a user script to ensure human alignment."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

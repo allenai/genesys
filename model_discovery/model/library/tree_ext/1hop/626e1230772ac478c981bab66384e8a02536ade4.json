@@ -1,0 +1,34 @@
+{
+    "acronym": "626e1230772ac478c981bab66384e8a02536ade4",
+    "title": "Adding Conditional Control to Diffusion Models with Reinforcement Learning",
+    "seed_ids": [
+        "classfreediffu",
+        "eb40c436d18f8e657cf2626fe94507c7d8f462ec",
+        "37232ccce1cfafbe9b9918557f0b6cdf80e5b83a",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "14c3cf58192774b9b6fc6188df99efd6ab5fc739"
+    ],
+    "s2id": "626e1230772ac478c981bab66384e8a02536ade4",
+    "abstract": "Diffusion models are powerful generative models that allow for precise control over the characteristics of the generated samples. While these diffusion models trained on large datasets have achieved success, there is often a need to introduce additional controls in downstream fine-tuning processes, treating these powerful models as pre-trained diffusion models. This work presents a novel method based on reinforcement learning (RL) to add additional controls, leveraging an offline dataset comprising inputs and corresponding labels. We formulate this task as an RL problem, with the classifier learned from the offline dataset and the KL divergence against pre-trained models serving as the reward functions. We introduce our method, $\\textbf{CTRL}$ ($\\textbf{C}$onditioning pre-$\\textbf{T}$rained diffusion models with $\\textbf{R}$einforcement $\\textbf{L}$earning), which produces soft-optimal policies that maximize the abovementioned reward functions. We formally demonstrate that our method enables sampling from the conditional distribution conditioned on additional controls during inference. Our RL-based approach offers several advantages over existing methods. Compared to commonly used classifier-free guidance, our approach improves sample efficiency, and can greatly simplify offline dataset construction by exploiting conditional independence between the inputs and additional controls. Furthermore, unlike classifier guidance, we avoid the need to train classifiers from intermediate states to additional controls.",
+    "authors": [
+        "Yulai Zhao",
+        "Masatoshi Uehara",
+        "Gabriele Scalia",
+        "Tommaso Biancalani",
+        "Sergey Levine",
+        "Ehsan Hajiramezanali"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a novel method based on reinforcement learning (RL) to add additional controls to diffusion models, leveraging an offline dataset comprising inputs and corresponding labels, which produces soft-optimal policies that maximize the reward functions."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

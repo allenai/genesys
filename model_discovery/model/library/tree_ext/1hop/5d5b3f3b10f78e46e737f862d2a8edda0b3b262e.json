@@ -1,0 +1,29 @@
+{
+    "acronym": "5d5b3f3b10f78e46e737f862d2a8edda0b3b262e",
+    "title": "NestedFormer: Nested Modality-Aware Transformer for Brain Tumor Segmentation",
+    "seed_ids": [
+        "metaformer",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "5d5b3f3b10f78e46e737f862d2a8edda0b3b262e",
+    "abstract": "Multi-modal MR imaging is routinely used in clinical practice to diagnose and investigate brain tumors by providing rich complementary information. Previous multi-modal MRI segmentation methods usually perform modal fusion by concatenating multi-modal MRIs at an early/middle stage of the network, which hardly explores non-linear dependencies between modalities. In this work, we propose a novel Nested Modality-Aware Transformer (NestedFormer) to explicitly explore the intra-modality and inter-modality relationships of multi-modal MRIs for brain tumor segmentation. Built on the transformer-based multi-encoder and single-decoder structure, we perform nested multi-modal fusion for high-level representations of different modalities and apply modality-sensitive gating (MSG) at lower scales for more effective skip connections. Specifically, the multi-modal fusion is conducted in our proposed Nested Modality-aware Feature Aggregation (NMaFA) module, which enhances long-term dependencies within individual modalities via a tri-orientated spatial-attention transformer, and further complements key contextual information among modalities via a cross-modality attention transformer. Extensive experiments on BraTS2020 benchmark and a private meningiomas segmentation (MeniSeg) dataset show that the NestedFormer clearly outperforms the state-of-the-arts. The code is available at https://github.com/920232796/NestedFormer.",
+    "authors": [
+        "Zhaohu Xing",
+        "Lequan Yu",
+        "Liang Wan",
+        "Tong Han",
+        "Lei Zhu"
+    ],
+    "venue": "International Conference on Medical Image Computing and Computer-Assisted Intervention",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel Nested Modality-Aware Transformer (NestedFormer), which enhances long-term dependencies within individual modalities via a tri-orientated spatial-attention transformer, and further complements key contextual information among modalities through a cross-modality attention transformer."
+    },
+    "citationCount": 38,
+    "influentialCitationCount": 4,
+    "code": null,
+    "description": null,
+    "url": null
+}

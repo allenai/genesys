@@ -1,0 +1,50 @@
+{
+    "acronym": "e0cbbca02b332f398c6639b3bea0613f79166220",
+    "title": "ABC: Attention with Bounded-memory Control",
+    "seed_ids": [
+        "rfa",
+        "linformer",
+        "lineartransformer",
+        "bigbird",
+        "longformer",
+        "af679d69fcc1d0fcf0f039aba937853bcb50a8de",
+        "64a29bee2e1ad29547d590a3cc26274f4c537145",
+        "054e307c1edf4b28137ffcbce980fe81f0647d20",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "1a703f08da01cf737cce3fb9064259b3f4b44e9c",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "0cd82dfae930ac4b57c0e959f744f2d10bf87649",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "07a9f47885cae97efb7b4aa109392128532433da",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "ad7129af0644dbcafa9aa2f111cb76526ea444a1"
+    ],
+    "s2id": "e0cbbca02b332f398c6639b3bea0613f79166220",
+    "abstract": "Transformer architectures have achieved state- of-the-art results on a variety of natural language processing (NLP) tasks. However, their attention mechanism comes with a quadratic complexity in sequence lengths, making the computational overhead prohibitive, especially for long sequences. Attention context can be seen as a random-access memory with each token taking a slot. Under this perspective, the memory size grows linearly with the sequence length, and so does the overhead of reading from it. One way to improve the efficiency is to bound the memory size. We show that disparate approaches can be subsumed into one abstraction, attention with bounded-memory control (ABC), and they vary in their organization of the memory. ABC reveals new, unexplored possibilities. First, it connects several efficient attention variants that would otherwise seem apart. Second, this abstraction gives new insights\u2014an established approach (Wang et al., 2020b) previously thought to not be applicable in causal attention, actually is. Last, we present a new instance of ABC, which draws inspiration from existing ABC approaches, but replaces their heuristic memory-organizing functions with a learned, contextualized one. Our experiments on language modeling, machine translation, and masked language model finetuning show that our approach outperforms previous efficient attention models; compared to the strong transformer baselines, it significantly improves the inference time and space efficiency with no or negligible accuracy loss.",
+    "authors": [
+        "Hao Peng",
+        "Jungo Kasai",
+        "Nikolaos Pappas",
+        "Dani Yogatama",
+        "Zhaofeng Wu",
+        "Lingpeng Kong",
+        "Roy Schwartz",
+        "Noah A. Smith"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows that disparate approaches can be subsumed into one abstraction, attention with bounded-memory control (ABC), and it outperforms previous efficient attention models; compared to the strong transformer baselines, it significantly improves the inference time and space efficiency with no or negligible accuracy loss."
+    },
+    "citationCount": 21,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

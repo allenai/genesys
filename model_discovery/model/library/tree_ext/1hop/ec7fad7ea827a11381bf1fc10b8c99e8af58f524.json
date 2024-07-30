@@ -1,0 +1,28 @@
+{
+    "acronym": "ec7fad7ea827a11381bf1fc10b8c99e8af58f524",
+    "title": "What is this Article about? Extreme Summarization with Topic-aware Convolutional Neural Networks",
+    "seed_ids": [
+        "memcompress",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "0bd5beed98675a63f9207851674d478009549900",
+        "145b8b5d99a2beba6029418ca043585b90138d12"
+    ],
+    "s2id": "ec7fad7ea827a11381bf1fc10b8c99e8af58f524",
+    "abstract": "We introduce \"extreme summarization,\" a new\u00a0single-document summarization task which aims at creating a short,\u00a0one-sentence news summary answering the question \"What is the\u00a0article about?\". We argue that extreme summarization, by nature, is\u00a0not amenable to extractive strategies and requires an abstractive\u00a0modeling approach. In the hope of driving research on this task\u00a0further: (a) we collect a real-world, large scale dataset by\u00a0harvesting online articles from the British Broadcasting Corporation\u00a0(BBC); and (b) propose a novel abstractive model which is\u00a0conditioned on the article's topics and based entirely on\u00a0convolutional neural networks. We demonstrate experimentally that\u00a0this architecture captures long-range dependencies in a document and\u00a0recognizes pertinent content, outperforming an oracle extractive\u00a0system and state-of-the-art abstractive approaches when evaluated automatically and by humans on the extreme summarization\u00a0dataset.",
+    "authors": [
+        "Shashi Narayan",
+        "Shay B. Cohen",
+        "Mirella Lapata"
+    ],
+    "venue": "Journal of Artificial Intelligence Research",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel abstractive model is proposed which is conditioned on the article's topics and based entirely on convolutional neural networks, outperforming an oracle extractive system and state-of-the-art abstractive approaches when evaluated automatically and by humans on the extreme summarization dataset."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,33 @@
+{
+    "acronym": "677b6888a24c0f241b200e5f2b8e0ae6d347ba0b",
+    "title": "SirLLM: Streaming Infinite Retentive LLM",
+    "seed_ids": [
+        "streamingllm",
+        "914d7562bcfe3f3546d94687839de8c0edc5866e",
+        "4ea5ca620122e6a9a2b000444d36491cebf49c7c",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "d62c4d00b277e948956b6610ce2644e88fe1577b",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "677b6888a24c0f241b200e5f2b8e0ae6d347ba0b",
+    "abstract": "As Large Language Models (LLMs) become increasingly prevalent in various domains, their ability to process inputs of any length and maintain a degree of memory becomes essential. However, the one-off input of overly long texts is limited, as studies have shown that when input lengths exceed the LLMs' pre-trained text length, there is a dramatic decline in text generation capabilities. Moreover, simply extending the length of pre-training texts is impractical due to the difficulty in obtaining long text data and the substantial memory consumption costs this would entail for LLMs. Recent efforts have employed streaming inputs to alleviate the pressure of excessively long text inputs, but this approach can significantly impair the model's long-term memory capabilities. Motivated by this challenge, we introduce Streaming Infinite Retentive LLM (SirLLM), which allows LLMs to maintain longer memory during infinite-length dialogues without the need for fine-tuning. SirLLM utilizes the Token Entropy metric and a memory decay mechanism to filter key phrases, endowing LLMs with both long-lasting and flexible memory. We designed three distinct tasks and constructed three datasets to measure the effectiveness of SirLLM from various angles: (1) DailyDialog; (2) Grocery Shopping; (3) Rock-Paper-Scissors. Our experimental results robustly demonstrate that SirLLM can achieve stable and significant improvements across different LLMs and tasks, compellingly proving its effectiveness. When having a coversation,\"A sir could forget himself,\"but SirLLM never does! Our code is publicly available at https://github.com/Zoeyyao27/SirLLM",
+    "authors": [
+        "Yao Yao",
+        "Z. Li",
+        "Hai Zhao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "SirLLM is introduced, which allows LLMs to maintain longer memory during infinite-length dialogues without the need for fine-tuning, and utilizes the Token Entropy metric and a memory decay mechanism to filter key phrases, endowing LLMs with both long-lasting and flexible memory."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "f2567e06205ce31beb09570a13e83febcf6cc481",
+    "title": "Enhancing Transformer with Horizontal and Vertical Guiding Mechanisms for Neural Language Modeling",
+    "seed_ids": [
+        "transformerxl",
+        "b1c39d042fdf8f00a407b0df734764beb6c3b062",
+        "2e14e84ccec924ed770b58108ad1d9de6f0ca295",
+        "830995ef17cc291c13f42dfd9f462137de1d2179",
+        "2a31319e73d4486716168b65cdf7559baeda18ce",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f2567e06205ce31beb09570a13e83febcf6cc481",
+    "abstract": "Language modeling is an important problem in Natural Language Processing (NLP), and the multi-layer Transformer network is currently the most advanced and effective model for this task. However, there exist two inherent defects in its multi-head self-attention structure: (1) attention information loss: the lower-level attention weights cannot be explicitly passed through upper layers, which may lead the network lose some pivotal attention information captured by lower-level layers; (2) multi-head bottleneck: the dimension of each head in vanilla Transformer is relatively small and the process of each head is independent, which introduces an expressive bottleneck and makes subspace learning inadequate constitutionally. To overcome these two weaknesses, a novel neural architecture named Guide-Transformer is proposed in this paper. The Guide-Transformer utilizes horizontal and vertical attention information to guide the original process of the multi-head self-attention sublayer without introducing excessive complexity. The experimental results on three authoritative language modeling benchmarks demonstrate the effectiveness of Guide-Transformer. For the popular perplexity (ppl) and bits-per-character (bpc) evaluation metrics, Guide-Transformer achieves moderate improvements over the powerful baseline model.",
+    "authors": [
+        "Anlin Qu",
+        "Jianwei Niu",
+        "Shasha Mo"
+    ],
+    "venue": "ICC 2021 - IEEE International Conference on Communications",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel neural architecture named Guide-Transformer is proposed, which utilizes horizontal and vertical attention information to guide the original process of the multi-head self-attention sublayer without introducing excessive complexity."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

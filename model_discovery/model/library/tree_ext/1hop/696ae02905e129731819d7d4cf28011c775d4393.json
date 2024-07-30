@@ -1,0 +1,30 @@
+{
+    "acronym": "696ae02905e129731819d7d4cf28011c775d4393",
+    "title": "Discriminative Reasoning with Sparse Event Representation for Document-level Event-Event Relation Extraction",
+    "seed_ids": [
+        "flash",
+        "caf084d6f1f46f1aad60691efbb1b9bb0a77d257",
+        "5f5adc7b50771979f5c8c5107ead099b8342c2f6",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7"
+    ],
+    "s2id": "696ae02905e129731819d7d4cf28011c775d4393",
+    "abstract": "Document-level Event Causality Identification (DECI) aims to extract causal relations between events in a document. It challenges conventional sentence-level task (SECI) with difficult long-text understanding. In this paper, we propose a novel DECI model (SENDIR) for better document-level reasoning. Different from existing works that build an event graph via linguistic tools, SENDIR does not require any prior knowledge. The basic idea is to discriminate event pairs in the same sentence or span multiple sentences by assuming their different information density: 1) low density in the document suggests sparse attention to skip irrelevant information. Our module 1 designs various types of attention for event representation learning to capture long-distance dependence. 2) High density in a sentence makes SECI relatively easy. Module 2 uses different weights to highlight the roles and contributions of intra- and inter-sentential reasoning, which introduces supportive event pairs for joint modeling. Extensive experiments demonstrate great improvements in SENDIR and the effectiveness of various sparse attention for document-level representations. Codes will be released later.",
+    "authors": [
+        "Changsen Yuan",
+        "Heyan Huang",
+        "Yixin Cao",
+        "Yonggang Wen"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel DECI model (SENDIR) for better document-level reasoning, different from existing works that build an event graph via linguistic tools, which introduces supportive event pairs for joint modeling."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

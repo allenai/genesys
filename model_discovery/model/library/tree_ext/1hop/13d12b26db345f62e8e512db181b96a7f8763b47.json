@@ -1,0 +1,36 @@
+{
+    "acronym": "13d12b26db345f62e8e512db181b96a7f8763b47",
+    "title": "An Embodied Generalist Agent in 3D World",
+    "seed_ids": [
+        "gpt3",
+        "25425e299101b13ec2872417a14f961f4f8aa18e",
+        "32c9b3859086d15184989454eb878638659e64c6",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c"
+    ],
+    "s2id": "13d12b26db345f62e8e512db181b96a7f8763b47",
+    "abstract": "Leveraging massive knowledge from large language models (LLMs), recent machine learning models show notable successes in general-purpose task solving in diverse domains such as computer vision and robotics. However, several significant challenges remain: (i) most of these models rely on 2D images yet exhibit a limited capacity for 3D input; (ii) these models rarely explore the tasks inherently defined in 3D world, e.g., 3D grounding, embodied reasoning and acting. We argue these limitations significantly hinder current models from performing real-world tasks and approaching general intelligence. To this end, we introduce LEO, an embodied multi-modal generalist agent that excels in perceiving, grounding, reasoning, planning, and acting in the 3D world. LEO is trained with a unified task interface, model architecture, and objective in two stages: (i) 3D vision-language (VL) alignment and (ii) 3D vision-language-action (VLA) instruction tuning. We collect large-scale datasets comprising diverse object-level and scene-level tasks, which require considerable understanding of and interaction with the 3D world. Moreover, we meticulously design an LLM-assisted pipeline to produce high-quality 3D VL data. Through extensive experiments, we demonstrate LEO's remarkable proficiency across a wide spectrum of tasks, including 3D captioning, question answering, embodied reasoning, navigation and manipulation. Our ablative studies and scaling analyses further provide valuable insights for developing future embodied generalist agents. Code and data are available on project page.",
+    "authors": [
+        "Jiangyong Huang",
+        "Silong Yong",
+        "Xiaojian Ma",
+        "Xiongkun Linghu",
+        "Puhao Li",
+        "Yan Wang",
+        "Qing Li",
+        "Song-Chun Zhu",
+        "Baoxiong Jia",
+        "Siyuan Huang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces LEO, an embodied multi-modal generalist agent that excels in perceiving, grounding, reasoning, planning, and acting in the 3D world and demonstrates its remarkable proficiency across a wide spectrum of tasks, including 3D captioning, question answering, embodied reasoning, navigation and manipulation."
+    },
+    "citationCount": 28,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

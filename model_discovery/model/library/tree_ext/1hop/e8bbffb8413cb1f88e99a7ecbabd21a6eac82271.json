@@ -1,0 +1,32 @@
+{
+    "acronym": "e8bbffb8413cb1f88e99a7ecbabd21a6eac82271",
+    "title": "Consistent Video-to-Video Transfer Using Synthetic Dataset",
+    "seed_ids": [
+        "classfreediffu",
+        "cf694df964caa156ec306b45d3a3127533cb458f",
+        "00b167a24f57f96294a4581bb185a57b0a4af365",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "e8bbffb8413cb1f88e99a7ecbabd21a6eac82271",
+    "abstract": "We introduce a novel and efficient approach for text-based video-to-video editing that eliminates the need for resource-intensive per-video-per-model finetuning. At the core of our approach is a synthetic paired video dataset tailored for video-to-video transfer tasks. Inspired by Instruct Pix2Pix's image transfer via editing instruction, we adapt this paradigm to the video domain. Extending the Prompt-to-Prompt to videos, we efficiently generate paired samples, each with an input video and its edited counterpart. Alongside this, we introduce the Long Video Sampling Correction during sampling, ensuring consistent long videos across batches. Our method surpasses current methods like Tune-A-Video, heralding substantial progress in text-based video-to-video editing and suggesting exciting avenues for further exploration and deployment.",
+    "authors": [
+        "Jiaxin Cheng",
+        "Tianjun Xiao",
+        "Tong He"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel and efficient approach for text-based video-to-video editing that eliminates the need for resource-intensive per-video-per-model finetuning and introduces the Long Video Sampling Correction during sampling, ensuring consistent long videos across batches."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

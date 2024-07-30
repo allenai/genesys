@@ -1,0 +1,31 @@
+{
+    "acronym": "09b9b5463d562548ce8d5a3a5ff5dc3685ad3156",
+    "title": "LawngNLI: A Long-Premise Benchmark for In-Domain Generalization from Short to Long Contexts and for Implication-Based Retrieval",
+    "seed_ids": [
+        "nystromformer",
+        "42f8a3da7021bc725fa14fdb63fa9c7c9fc934f6",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "270f3bea8ca801870a6cc56b4d36f7f2019c9ed0",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "c6c734e16f66fbfcefac7625cc64599e83292c1e",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "09b9b5463d562548ce8d5a3a5ff5dc3685ad3156",
+    "abstract": "Natural language inference has trended toward studying contexts beyond the sentence level. An important application area is law: past cases often do not foretell how they apply to new situations and implications must be inferred. This paper introduces LawngNLI, constructed from U.S. legal opinions with automatic labels with high human-validated accuracy. Premises are long and multigranular. Experiments show two use cases. First, LawngNLI can benchmark for in-domain generalization from short to long contexts. It has remained unclear if large-scale long-premise NLI datasets actually need to be constructed: near-top performance on long premises could be achievable by fine-tuning using short premises. Without multigranularity, benchmarks cannot distinguish lack of fine-tuning on long premises versus domain shift between short and long datasets. In contrast, our long and short premises share the same examples and domain. Models fine-tuned using several past NLI datasets and/or our short premises fall short of top performance on our long premises. So for at least certain domains (such as ours), large-scale long-premise datasets are needed. Second, LawngNLI can benchmark for implication-based retrieval. Queries are entailed or contradicted by target documents, allowing users to move between arguments and evidence. Leading retrieval models perform reasonably zero shot on a LawngNLI-derived retrieval task. We compare different systems for re-ranking, including lexical overlap and cross-encoders fine-tuned using a modified LawngNLI or past NLI datasets. LawngNLI can train and test systems for implication-based case retrieval and argumentation.",
+    "authors": [
+        "William F. Bruno",
+        "D. Roth"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces LawngNLI, constructed from U.S. legal opinions with automatic labels with high human-validated accuracy, which can train and test systems for implication-based case retrieval and argumentation and benchmarks for in-domain generalization from short to long contexts."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

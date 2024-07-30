@@ -1,0 +1,31 @@
+{
+    "acronym": "e90abd1ab92b3ae415a763b89148f490d1efbf80",
+    "title": "CoSQA+: Enhancing Code Search Dataset with Matching Code",
+    "seed_ids": [
+        "gpt",
+        "9ef16bd420b0fb13fadfb71f2095ba134680c741",
+        "9ada8fa11b1cdece31f253acae50b62df8d5f823",
+        "4b27f18bff43d605805c92696a979714ced0b805",
+        "0fe2636446cd686830da3d971b31a004d6094b3c"
+    ],
+    "s2id": "e90abd1ab92b3ae415a763b89148f490d1efbf80",
+    "abstract": "Semantic code search, retrieving code that matches a given natural language query, is an important task to improve productivity in software engineering. Existing code search datasets are problematic: either using unrealistic queries, or with mismatched codes, and typically using one-to-one query-code pairing, which fails to reflect the reality that a query might have multiple valid code matches. This paper introduces CoSQA+, pairing high-quality queries (reused from CoSQA) with multiple suitable codes. We collect code candidates from diverse sources and form candidate pairs by pairing queries with these codes. Utilizing the power of large language models (LLMs), we automate pair annotation, filtering, and code generation for queries without suitable matches. Through extensive experiments, CoSQA+ has demonstrated superior quality over CoSQA. Models trained on CoSQA+ exhibit improved performance. Furthermore, we propose a new metric Mean Multi-choice Reciprocal Rank (MMRR), to assess one-to-N code search performance. We provide the code and data at https://github.com/DeepSoftwareAnalytics/CoSQA_Plus.",
+    "authors": [
+        "Jing Gong",
+        "Yanghui Wu",
+        "Linxi Liang",
+        "Zibin Zheng",
+        "Yanlin Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces CoSQA+, pairing high-quality queries (reused from CoSQA) with multiple suitable codes, and proposes a new metric Mean Multi-choice Reciprocal Rank (MMRR), to assess one-to-N code search performance."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

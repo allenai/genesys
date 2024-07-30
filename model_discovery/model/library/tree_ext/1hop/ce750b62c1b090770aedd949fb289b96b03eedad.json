@@ -1,0 +1,32 @@
+{
+    "acronym": "ce750b62c1b090770aedd949fb289b96b03eedad",
+    "title": "SeDR: Segment Representation Learning for Long Documents Dense Retrieval",
+    "seed_ids": [
+        "longformer",
+        "2f5a60cce19c6e5ca5a527f713d3b1545d64f0ef",
+        "9eb7860ae9777997ed17f6de623b0ab08cfc2df5",
+        "63857190aaf5aab1d94b54bb257b7b03b8cb5a50",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28"
+    ],
+    "s2id": "ce750b62c1b090770aedd949fb289b96b03eedad",
+    "abstract": "Recently, Dense Retrieval (DR) has become a promising solution to document retrieval, where document representations are used to perform effective and efficient semantic search. However, DR remains challenging on long documents, due to the quadratic complexity of its Transformer-based encoder and the finite capacity of a low-dimension embedding. Current DR models use suboptimal strategies such as truncating or splitting-and-pooling to long documents leading to poor utilization of whole document information. In this work, to tackle this problem, we propose Segment representation learning for long documents Dense Retrieval (SeDR). In SeDR, Segment-Interaction Transformer is proposed to encode long documents into document-aware and segment-sensitive representations, while it holds the complexity of splitting-and-pooling and outperforms other segment-interaction patterns on DR. Since GPU memory requirements for long document encoding causes insufficient negatives for DR training, Late-Cache Negative is further proposed to provide additional cache negatives for optimizing representation learning. Experiments on MS MARCO and TREC-DL datasets show that SeDR achieves superior performance among DR models, and confirm the effectiveness of SeDR on long document retrieval.",
+    "authors": [
+        "Junying Chen",
+        "Qingcai Chen",
+        "Dongfang Li",
+        "Yutao Huang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "In SeDR, Segment-Interaction Transformer is proposed to encode long documents into document-aware and segment-sensitive representations, while it holds the complexity of splitting-and-pooling and outperforms other segment-interaction patterns on DR."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "0ff7f557203d1489110b9d2f89a76245def7b530",
+    "title": "Align, Mask and Select: A Simple Method for Incorporating Commonsense Knowledge into Language Representation Models",
+    "seed_ids": [
+        "gpt",
+        "01f2b214962997260020279bd1fd1f8f372249d4",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "031e4e43aaffd7a479738dcea69a2d5be7957aa3",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "0ff7f557203d1489110b9d2f89a76245def7b530",
+    "abstract": "The state-of-the-art pre-trained language representation models, such as Bidirectional Encoder Representations from Transformers (BERT), rarely incorporate commonsense knowledge or other knowledge explicitly. We propose a pre-training approach for incorporating commonsense knowledge into language representation models. We construct a commonsense-related multi-choice question answering dataset for pre-training a neural language representation model. The dataset is created automatically by our proposed \"align, mask, and select\" (AMS) method. We also investigate different pre-training tasks. Experimental results demonstrate that pre-training models using the proposed approach followed by fine-tuning achieve significant improvements over previous state-of-the-art models on two commonsense-related benchmarks, including CommonsenseQA and Winograd Schema Challenge. We also observe that fine-tuned models after the proposed pre-training approach maintain comparable performance on other NLP tasks, such as sentence classification and natural language inference tasks, compared to the original BERT models. These results verify that the proposed approach, while significantly improving commonsense-related NLP tasks, does not degrade the general language representation capabilities.",
+    "authors": [
+        "Zhiquan Ye",
+        "Qian Chen",
+        "Wen Wang",
+        "Zhenhua Ling"
+    ],
+    "venue": "arXiv.org",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results demonstrate that pre-training models using the proposed approach followed by fine-tuning achieve significant improvements over previous state-of-the-art models on two commonsense-related benchmarks, including CommonsenseQA and Winograd Schema Challenge."
+    },
+    "citationCount": 65,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "33433e9103b00aa0c42597cbfe13a429fbf5abdf",
+    "title": "Score-based Continuous-time Discrete Diffusion Models",
+    "seed_ids": [
+        "d3pms",
+        "e9b9a47cd81c66603c827f0f2bc4fba0d9ae77c4",
+        "599bc7cfe98c2b57ddbe111412203a636da57be0",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "33433e9103b00aa0c42597cbfe13a429fbf5abdf",
+    "abstract": "Score-based modeling through stochastic differential equations (SDEs) has provided a new perspective on diffusion models, and demonstrated superior performance on continuous data. However, the gradient of the log-likelihood function, i.e., the score function, is not properly defined for discrete spaces. This makes it non-trivial to adapt \\textcolor{\\cdiff}{the score-based modeling} to categorical data. In this paper, we extend diffusion models to discrete variables by introducing a stochastic jump process where the reverse process denoises via a continuous-time Markov chain. This formulation admits an analytical simulation during backward sampling. To learn the reverse process, we extend score matching to general categorical data and show that an unbiased estimator can be obtained via simple matching of the conditional marginal distributions. We demonstrate the effectiveness of the proposed method on a set of synthetic and real-world music and image benchmarks.",
+    "authors": [
+        "Haoran Sun",
+        "Lijun Yu",
+        "Bo Dai",
+        "D. Schuurmans",
+        "H. Dai"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper extends score matching to general categorical data and shows that an unbiased estimator can be obtained via simple matching of the conditional marginal distributions and demonstrates the effectiveness of the proposed method on a set of synthetic and real-world music and image benchmarks."
+    },
+    "citationCount": 31,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

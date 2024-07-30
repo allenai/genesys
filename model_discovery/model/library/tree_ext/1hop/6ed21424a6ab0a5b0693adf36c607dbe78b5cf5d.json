@@ -1,0 +1,32 @@
+{
+    "acronym": "6ed21424a6ab0a5b0693adf36c607dbe78b5cf5d",
+    "title": "Modeling Parallel Programs using Large Language Models",
+    "seed_ids": [
+        "gpt2",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "49c3f85573a3204c5e66317289e4cecfed50f38a",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6ed21424a6ab0a5b0693adf36c607dbe78b5cf5d",
+    "abstract": "Parallel programs in high performance computing (HPC) continue to grow in complexity and scale in the exascale era. The diversity in hardware and parallel programming models make developing, optimizing, and maintaining parallel software even more burdensome for developers. One way to alleviate some of these burdens is with automated development and analysis tools. Such tools can perform complex and/or remedial tasks for developers that increase their productivity and decrease the chance for error. Until recently, such tools for code development and performance analysis have been limited in the complexity of tasks they can perform, especially for parallel programs. However, with recent advancements in language modeling, and the availability of large amounts of open-source code related data, these tools have started to utilize predictive language models to automate more complex tasks. In this paper, we show how large language models (LLMs) can be applied to tasks specific to high performance and scientific codes. We introduce a new dataset of HPC and scientific codes and use it to fine-tune several pre-trained models. We compare several pre-trained LLMs on HPC-related tasks and introduce a new model, HPC-Coder, fine-tuned on parallel codes. In our experiments, we show that this model can auto-complete HPC functions where generic models cannot, decorate for loops with OpenMP pragmas, and model performance changes in scientific application repositories as well as programming competition solutions.",
+    "authors": [
+        "Daniel Nichols",
+        "Aniruddha Marathe",
+        "Harshitha Menon",
+        "T. Gamblin",
+        "A. Bhatele"
+    ],
+    "venue": "ISC High Performance 2024 Research Paper Proceedings (39th International Conference)",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown how large language models (LLMs) can be applied to tasks specific to high performance and scientific codes and a new model, HPC-Coder, fine-tuned on parallel codes is introduced."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,27 @@
+{
+    "acronym": "047e170d6857f593d30fa01e61954b13254bf2b3",
+    "title": "Improving Multimodal Sentiment Analysis: Supervised Angular Margin-based Contrastive Learning for Enhanced Fusion Representation",
+    "seed_ids": [
+        "bert",
+        "33172567ab1dff9ca32c8d995d88bbff466f3236"
+    ],
+    "s2id": "047e170d6857f593d30fa01e61954b13254bf2b3",
+    "abstract": "The effectiveness of a model is heavily reliant on the quality of the fusion representation of multiple modalities in multimodal sentiment analysis. Moreover, each modality is extracted from raw input and integrated with the rest to construct a multimodal representation. Although previous methods have proposed multimodal representations and achieved promising results, most of them focus on forming positive and negative pairs, neglecting the variation in sentiment scores within the same class. Additionally, they fail to capture the significance of unimodal representations in the fusion vector. To address these limitations, we introduce a framework called Supervised Angular-based Contrastive Learning for Multimodal Sentiment Analysis. This framework aims to enhance discrimination and generalizability of the multimodal representation and overcome biases in the fusion vector's modality. Our experimental results, along with visualizations on two widely used datasets, demonstrate the effectiveness of our approach.",
+    "authors": [
+        "Cong-Duy Nguyen",
+        "Thong Nguyen",
+        "D. Vu",
+        "Anh Tuan Luu"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This framework aims to enhance discrimination and generalizability of the multimodal representation and overcome biases in the fusion vector's modality."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

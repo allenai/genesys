@@ -1,0 +1,29 @@
+{
+    "acronym": "4e767b191683dca0ea6d33216508159886144da4",
+    "title": "Question Answering with Long Multiple-Span Answers",
+    "seed_ids": [
+        "transformerxl",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "4e767b191683dca0ea6d33216508159886144da4",
+    "abstract": "Answering questions in many real-world applications often requires complex and precise information excerpted from texts spanned across a long document. However, currently no such annotated dataset is publicly available, which hinders the development of neural question-answering (QA) systems. To this end, we present MASH-QA, a Multiple Answer Spans Healthcare Question Answering dataset from the consumer health domain, where answers may need to be excerpted from multiple, non-consecutive parts of text spanned across a long document. We also propose MultiCo, a neural architecture that is able to capture the relevance among multiple answer spans, by using a query-based contextualized sentence selection approach, for forming the answer to the given question. We also demonstrate that conventional QA models are not suitable for this type of task and perform poorly in this setting. Extensive experiments are conducted, and the experimental results confirm the proposed model significantly outperforms the state-of-the-art QA models in this multi-span QA setting.",
+    "authors": [
+        "Ming Zhu",
+        "Aman Ahuja",
+        "Da-Cheng Juan",
+        "Wei Wei",
+        "Chandan K. Reddy"
+    ],
+    "venue": "Findings",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents MASH-QA, a Multiple Answer Spans Healthcare Question Answering dataset from the consumer health domain, and proposes MultiCo, a neural architecture that is able to capture the relevance among multiple answer spans, by using a query-based contextualized sentence selection approach, for forming the answer to the given question."
+    },
+    "citationCount": 67,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

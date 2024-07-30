@@ -1,0 +1,38 @@
+{
+    "acronym": "9b91b3031ea159e4964d18b2ce703168660ecf46",
+    "title": "Scalable High-Resolution Pixel-Space Image Synthesis with Hourglass Diffusion Transformers",
+    "seed_ids": [
+        "hierarchitrans",
+        "classfreediffu",
+        "6827e87642874d9bf69f0f1548d79a164aaa5e1e",
+        "6e3a3b7a8a0376d867cad72eedf2f9b746f29a33",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "231e768f0cd280faa0f725bb353262cb4fed08d1",
+        "eaf3a64b637b3699678374a2afe8dde05d17a5cc",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "9b91b3031ea159e4964d18b2ce703168660ecf46",
+    "abstract": "We present the Hourglass Diffusion Transformer (HDiT), an image generative model that exhibits linear scaling with pixel count, supporting training at high-resolution (e.g. $1024 \\times 1024$) directly in pixel-space. Building on the Transformer architecture, which is known to scale to billions of parameters, it bridges the gap between the efficiency of convolutional U-Nets and the scalability of Transformers. HDiT trains successfully without typical high-resolution training techniques such as multiscale architectures, latent autoencoders or self-conditioning. We demonstrate that HDiT performs competitively with existing models on ImageNet $256^2$, and sets a new state-of-the-art for diffusion models on FFHQ-$1024^2$.",
+    "authors": [
+        "Katherine Crowson",
+        "Stefan Andreas Baumann",
+        "Alex Birch",
+        "Tanishq Mathew Abraham",
+        "Daniel Z. Kaplan",
+        "Enrico Shippole"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 13,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

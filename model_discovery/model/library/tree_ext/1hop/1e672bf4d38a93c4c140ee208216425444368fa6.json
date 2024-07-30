@@ -1,0 +1,32 @@
+{
+    "acronym": "1e672bf4d38a93c4c140ee208216425444368fa6",
+    "title": "LMRL Gym: Benchmarks for Multi-Turn Reinforcement Learning with Language Models",
+    "seed_ids": [
+        "gpt2",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "1e672bf4d38a93c4c140ee208216425444368fa6",
+    "abstract": "Large language models (LLMs) provide excellent text-generation capabilities, but standard prompting and generation methods generally do not lead to intentional or goal-directed agents and might necessitate considerable prompt tuning. This becomes particularly apparent in multi-turn conversations: even the best current LLMs rarely ask clarifying questions, engage in explicit information gathering, or take actions now that lead to better decisions after multiple turns. Reinforcement learning has the potential to leverage the powerful modeling capabilities of LLMs, as well as their internal representation of textual interactions, to create capable goal-directed language agents. This can enable intentional and temporally extended interactions, such as with humans, through coordinated persuasion and carefully crafted questions, or in goal-directed play through text games to bring about desired final outcomes. However, enabling this requires the community to develop stable and reliable reinforcement learning algorithms that can effectively train LLMs. Developing such algorithms requires tasks that can gauge progress on algorithm design, provide accessible and reproducible evaluations for multi-turn interactions, and cover a range of task properties and challenges in improving reinforcement learning algorithms. Our paper introduces the LMRL-Gym benchmark for evaluating multi-turn RL for LLMs, together with an open-source research framework containing a basic toolkit for getting started on multi-turn RL with offline value-based and policy-based RL methods. Our benchmark consists of 8 different language tasks, which require multiple rounds of language interaction and cover a range of tasks in open-ended dialogue and text games.",
+    "authors": [
+        "Marwa Abdulhai",
+        "Isadora White",
+        "Charles Burton Snell",
+        "Charles Sun",
+        "Joey Hong",
+        "Yuexiang Zhai",
+        "Kelvin Xu",
+        "Sergey Levine"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The LMRL-Gym benchmark for evaluating multi-turn RL for LLMs is introduced, together with an open-source research framework containing a basic toolkit for getting started on multi- turn RL with offline value-based and policy-based RL methods."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

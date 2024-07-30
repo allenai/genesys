@@ -1,0 +1,35 @@
+{
+    "acronym": "169fd6c457d99a21c32b6f23bbfd1e09a2513684",
+    "title": "Relay Diffusion: Unifying diffusion process across resolutions for image synthesis",
+    "seed_ids": [
+        "classfreediffu",
+        "6e3a3b7a8a0376d867cad72eedf2f9b746f29a33",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "169fd6c457d99a21c32b6f23bbfd1e09a2513684",
+    "abstract": "Diffusion models achieved great success in image synthesis, but still face challenges in high-resolution generation. Through the lens of discrete cosine transformation, we find the main reason is that \\emph{the same noise level on a higher resolution results in a higher Signal-to-Noise Ratio in the frequency domain}. In this work, we present Relay Diffusion Model (RDM), which transfers a low-resolution image or noise into an equivalent high-resolution one for diffusion model via blurring diffusion and block noise. Therefore, the diffusion process can continue seamlessly in any new resolution or model without restarting from pure noise or low-resolution conditioning. RDM achieves state-of-the-art FID on CelebA-HQ and sFID on ImageNet 256$\\times$256, surpassing previous works such as ADM, LDM and DiT by a large margin. All the codes and checkpoints are open-sourced at \\url{https://github.com/THUDM/RelayDiffusion}.",
+    "authors": [
+        "Jiayan Teng",
+        "Wendi Zheng",
+        "Ming Ding",
+        "Wenyi Hong",
+        "Jianqiao Wangni",
+        "Zhuoyi Yang",
+        "Jie Tang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Relay Diffusion Model (RDM) is presented, which transfers a low-resolution image or noise into an equivalent high-resolution one for diffusion model via blurring diffusion and block noise, and achieves state-of-the-art FID on CelebA-HQ and sFID on ImageNet 256."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

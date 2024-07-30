@@ -1,0 +1,34 @@
+{
+    "acronym": "5d22b241836e30d5b0d852b463951ab7e3245ea4",
+    "title": "Reducing Sentiment Bias in Language Models via Counterfactual Evaluation",
+    "seed_ids": [
+        "transformerxl",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "ad7129af0644dbcafa9aa2f111cb76526ea444a1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "5d22b241836e30d5b0d852b463951ab7e3245ea4",
+    "abstract": "Advances in language modeling architectures and the availability of large text corpora have driven progress in automatic text generation. While this results in models capable of generating coherent texts, it also prompts models to internalize social biases present in the training corpus. This paper aims to quantify and reduce a particular type of bias exhibited by language models: bias in the sentiment of generated text. Given a conditioning context (e.g., a writing prompt) and a language model, we analyze if (and how) the sentiment of the generated text is affected by changes in values of sensitive attributes (e.g., country names, occupations, genders) in the conditioning context using a form of counterfactual evaluation. We quantify sentiment bias by adopting individual and group fairness metrics from the fair machine learning literature, and demonstrate that large-scale models trained on two different corpora (news articles, and Wikipedia) exhibit considerable levels of bias. We then propose embedding and sentiment prediction-derived regularization on the language model\u2019s latent representations. The regularizations improve fairness metrics while retaining comparable levels of perplexity and semantic similarity.",
+    "authors": [
+        "Po-Sen Huang",
+        "Huan Zhang",
+        "Ray Jiang",
+        "Robert Stanforth",
+        "Johannes Welbl",
+        "Jack W. Rae",
+        "Vishal Maini",
+        "Dani Yogatama",
+        "Pushmeet Kohli"
+    ],
+    "venue": "Findings",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper quantifies sentiment bias by adopting individual and group fairness metrics from the fair machine learning literature, and proposes embedding and sentiment prediction-derived regularization on the language model\u2019s latent representations."
+    },
+    "citationCount": 180,
+    "influentialCitationCount": 17,
+    "code": null,
+    "description": null,
+    "url": null
+}

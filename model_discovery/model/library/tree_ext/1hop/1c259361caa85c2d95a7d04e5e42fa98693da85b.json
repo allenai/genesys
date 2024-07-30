@@ -1,0 +1,32 @@
+{
+    "acronym": "1c259361caa85c2d95a7d04e5e42fa98693da85b",
+    "title": "Large Language Models as Evolutionary Optimizers",
+    "seed_ids": [
+        "gpt3",
+        "94ce1d5924e05e8d75e43ce70044293ddcef850a",
+        "bb58f2f63888456a3e04a56a18996ab8dacdb257",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "db4ab91d5675c37795e719e997a2827d3d83cd45",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2"
+    ],
+    "s2id": "1c259361caa85c2d95a7d04e5e42fa98693da85b",
+    "abstract": "Evolutionary algorithms (EAs) have achieved remarkable success in tackling complex combinatorial optimization problems. However, EAs often demand carefully-designed operators with the aid of domain expertise to achieve satisfactory performance. In this work, we present the first study on large language models (LLMs) as evolutionary combinatorial optimizers. The main advantage is that it requires minimal domain knowledge and human efforts, as well as no additional training of the model. This approach is referred to as LLM-driven EA (LMEA). Specifically, in each generation of the evolutionary search, LMEA instructs the LLM to select parent solutions from current population, and perform crossover and mutation to generate offspring solutions. Then, LMEA evaluates these new solutions and include them into the population for the next generation. LMEA is equipped with a self-adaptation mechanism that controls the temperature of the LLM. This enables it to balance between exploration and exploitation and prevents the search from getting stuck in local optima. We investigate the power of LMEA on the classical traveling salesman problems (TSPs) widely used in combinatorial optimization research. Notably, the results show that LMEA performs competitively to traditional heuristics in finding high-quality solutions on TSP instances with up to 20 nodes. Additionally, we also study the effectiveness of LLM-driven crossover/mutation and the self-adaptation mechanism in evolutionary search. In summary, our results reveal the great potentials of LLMs as evolutionary optimizers for solving combinatorial problems. We hope our research shall inspire future explorations on LLM-driven EAs for complex optimization challenges.",
+    "authors": [
+        "Shengcai Liu",
+        "Caishun Chen",
+        "Xinghua Qu",
+        "Ke Tang",
+        "Y. Ong"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The first study on large language models (LLMs) as evolutionary combinatorial optimizers as well as no additional training of the model are presented, revealing the great potentials of LLMs as evolutionary optimizers for solving combinatorsial problems."
+    },
+    "citationCount": 27,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

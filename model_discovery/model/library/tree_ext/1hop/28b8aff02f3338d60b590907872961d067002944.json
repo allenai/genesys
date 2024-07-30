@@ -1,0 +1,42 @@
+{
+    "acronym": "28b8aff02f3338d60b590907872961d067002944",
+    "title": "Adaptivity and Modularity for Efficient Generalization Over Task Complexity",
+    "seed_ids": [
+        "universaltrans",
+        "1f346f74e8eabececa4896d734ab9b261f30830d",
+        "24576dcca716c82f66b8cc3c85ecfae18be41edd",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "fb7e324729be2931dc463a572566283802d8aff2",
+        "92173d081b15824d22a9ef070e118744ceee8052",
+        "da0d38cf2ac7e2a6908e0d9e1fff07058daab2ed",
+        "ed535e93d5b5a8b689e861e9c6083a806d1535c2",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812",
+        "5335fe1bf347f7ad1dce1611ea4b60bd8391a090"
+    ],
+    "s2id": "28b8aff02f3338d60b590907872961d067002944",
+    "abstract": "Can transformers generalize efficiently on problems that require dealing with examples with different levels of difficulty? We introduce a new task tailored to assess generalization over different complexities and present results that indicate that standard transformers face challenges in solving these tasks. These tasks are variations of pointer value retrieval previously introduced by Zhang et al. (2021). We investigate how the use of a mechanism for adaptive and modular computation in transformers facilitates the learning of tasks that demand generalization over the number of sequential computation steps (i.e., the depth of the computation graph). Based on our observations, we propose a transformer-based architecture called Hyper-UT, which combines dynamic function generation from hyper networks with adaptive depth from Universal Transformers. This model demonstrates higher accuracy and a fairer allocation of computational resources when generalizing to higher numbers of computation steps. We conclude that mechanisms for adaptive depth and modularity complement each other in improving efficient generalization concerning example complexity. Additionally, to emphasize the broad applicability of our findings, we illustrate that in a standard image recognition task, Hyper- UT's performance matches that of a ViT model but with considerably reduced computational demands (achieving over 70\\% average savings by effectively using fewer layers).",
+    "authors": [
+        "Samira Abnar",
+        "O. Saremi",
+        "Laurent Dinh",
+        "Shantel Wilson",
+        "Miguel Angel Bautista",
+        "Chen Huang",
+        "Vimal Thilak",
+        "Etai Littwin",
+        "Jiatao Gu",
+        "Josh Susskind",
+        "Samy Bengio"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A transformer-based architecture called Hyper-UT is proposed, which combines dynamic function generation from hyper networks with adaptive depth from Universal Transformers and concludes that mechanisms for adaptive depth and modularity complement each other in improving efficient generalization concerning example complexity."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

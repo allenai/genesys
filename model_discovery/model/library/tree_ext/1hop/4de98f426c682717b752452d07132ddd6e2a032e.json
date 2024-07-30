@@ -1,0 +1,33 @@
+{
+    "acronym": "4de98f426c682717b752452d07132ddd6e2a032e",
+    "title": "Speed Is All You Need: On-Device Acceleration of Large Diffusion Models via GPU-Aware Optimizations",
+    "seed_ids": [
+        "flashattn",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "4de98f426c682717b752452d07132ddd6e2a032e",
+    "abstract": "The rapid development and application of foundation models have revolutionized the field of artificial intelligence. Large diffusion models have gained significant attention for their ability to generate photorealistic images and support various tasks. On-device deployment of these models provides benefits such as lower server costs, offline functionality, and improved user privacy. However, common large diffusion models have over 1 billion parameters and pose challenges due to restricted computational and memory resources on devices. We present a series of implementation optimizations for large diffusion models that achieve the fastest reported inference latency to-date(under 12 seconds for Stable Diffusion 1.4 without INT8 quantization for a 512 \u00d7 512 image with 20 iterations) on GPU-equipped mobile devices. These enhancements broaden the applicability of generative AI and improve the overall user experience across a wide range of devices.",
+    "authors": [
+        "Yu-Hui Chen",
+        "Raman Sarokin",
+        "Juhyun Lee",
+        "Jiuqiang Tang",
+        "Chuo-Ling Chang",
+        "Andrei Kulik",
+        "Matthias Grundmann"
+    ],
+    "venue": "2023 IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A series of implementation optimizations for large diffusion models are presented that achieve the fastest reported inference latency to-date and broaden the applicability of generative AI and improve the overall user experience across a wide range of devices."
+    },
+    "citationCount": 26,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

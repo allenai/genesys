@@ -1,0 +1,26 @@
+{
+    "acronym": "6d130ebff26dbbf00e3c601973872ff0c0c4235f",
+    "title": "How do Language Models Bind Entities in Context?",
+    "seed_ids": [
+        "roformer",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "6d130ebff26dbbf00e3c601973872ff0c0c4235f",
+    "abstract": "To correctly use in-context information, language models (LMs) must bind entities to their attributes. For example, given a context describing a\"green square\"and a\"blue circle\", LMs must bind the shapes to their respective colors. We analyze LM representations and identify the binding ID mechanism: a general mechanism for solving the binding problem, which we observe in every sufficiently large model from the Pythia and LLaMA families. Using causal interventions, we show that LMs' internal activations represent binding information by attaching binding ID vectors to corresponding entities and attributes. We further show that binding ID vectors form a continuous subspace, in which distances between binding ID vectors reflect their discernability. Overall, our results uncover interpretable strategies in LMs for representing symbolic knowledge in-context, providing a step towards understanding general in-context reasoning in large-scale LMs.",
+    "authors": [
+        "Jiahai Feng",
+        "Jacob Steinhardt"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work analyzes LM representations and identifies the binding ID mechanism: a general mechanism for solving the binding problem, which is observed in every sufficiently large model from the Pythia and LLaMA families."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "4cd1eacb7d0e3657ac01a4f687638832546cd072",
+    "title": "DeepEventMine: end-to-end neural nested event extraction from biomedical texts",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "4cd1eacb7d0e3657ac01a4f687638832546cd072",
+    "abstract": "Abstract Motivation Recent neural approaches on event extraction from text mainly focus on flat events in general domain, while there are less attempts to detect nested and overlapping events. These existing systems are built on given entities and they depend on external syntactic tools. Results We propose an end-to-end neural nested event extraction model named DeepEventMine that extracts multiple overlapping directed acyclic graph structures from a raw sentence. On the top of the bidirectional encoder representations from transformers model, our model detects nested entities and triggers, roles, nested events and their modifications in an end-to-end manner without any syntactic tools. Our DeepEventMine model achieves the new state-of-the-art performance on seven biomedical nested event extraction tasks. Even when gold entities are unavailable, our model can detect events from raw text with promising performance. Availability and implementation Our codes and models to reproduce the results are available at: https://github.com/aistairc/DeepEventMine. Supplementary information Supplementary data are available at Bioinformatics online.",
+    "authors": [
+        "H. Trieu",
+        "Thy Thy Tran",
+        "Khoa Duong",
+        "Anh-Tuan Nguyen",
+        "Makoto Miwa",
+        "Makoto Miwa",
+        "S. Ananiadou"
+    ],
+    "venue": "Bioinform.",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An end-to-end neural nested event extraction model named DeepEventMine that extracts multiple overlapping directed acyclic graph structures from a raw sentence by detecting nested entities and triggers, roles, nested events and their modifications in an end- to-end manner without any syntactic tools."
+    },
+    "citationCount": 64,
+    "influentialCitationCount": 9,
+    "code": null,
+    "description": null,
+    "url": null
+}

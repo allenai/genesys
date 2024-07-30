@@ -1,0 +1,29 @@
+{
+    "acronym": "6f84447bbf037a4102904eba308fecbbc97ccabb",
+    "title": "ScribbleGen: Generative Data Augmentation Improves Scribble-supervised Semantic Segmentation",
+    "seed_ids": [
+        "classfreediffu",
+        "15736f7c205d961c00378a938daffaacb5a0718d",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "6f84447bbf037a4102904eba308fecbbc97ccabb",
+    "abstract": "Recent advances in generative models, such as diffusion models, have made generating high-quality synthetic images widely accessible. Prior works have shown that training on synthetic images improves many perception tasks, such as image classification, object detection, and semantic segmentation. We are the first to explore generative data augmentations for scribble-supervised semantic segmentation. We propose ScribbleGen, a generative data augmentation method that leverages a ControlNet diffusion model conditioned on semantic scribbles to produce high-quality training data. However, naive implementations of generative data augmentations may inadvertently harm the performance of the downstream segmentor rather than improve it. We leverage classifier-free diffusion guidance to enforce class consistency and introduce encode ratios to trade off data diversity for data realism. Using the guidance scale and encode ratio, we can generate a spectrum of high-quality training images. We propose multiple augmentation schemes and find that these schemes significantly impact model performance, especially in the low-data regime. Our framework further reduces the gap between the performance of scribble-supervised segmentation and that of fully-supervised segmentation. We also show that our framework significantly improves segmentation performance on small datasets, even surpassing fully-supervised segmentation. The code is available at https://github.com/mengtang-lab/scribblegen.",
+    "authors": [
+        "Jacob Schnell",
+        "Jieke Wang",
+        "Lu Qi",
+        "Vincent Tao Hu",
+        "Meng Tang"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work is the first to explore generative data augmentations for scribble-supervised semantic segmentation, and proposes ScribbleGen, a generative data augmentation method that leverages a ControlNet diffusion model conditioned on semantic scribbles to produce high-quality training data."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

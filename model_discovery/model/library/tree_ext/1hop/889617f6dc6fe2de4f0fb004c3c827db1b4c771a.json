@@ -1,0 +1,42 @@
+{
+    "acronym": "889617f6dc6fe2de4f0fb004c3c827db1b4c771a",
+    "title": "Attention Alignment and Flexible Positional Embeddings Improve Transformer Length Extrapolation",
+    "seed_ids": [
+        "alibi",
+        "roformer",
+        "landmarkattn",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "2a09ebbfcca1a6994eeb472cd4159f5f3858dbf9",
+        "60b35c6d68acced19b0c66edcfc0ee0a2c11efed",
+        "9ada8fa11b1cdece31f253acae50b62df8d5f823",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "5735e49e501c8e51e9be4079592e46e047747b03",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "d6c5aab433d9871cabc01ffb1e5e1ea89141155b",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "53c3940f35b8b45d55ed49056282e1961954513d",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "50796b0f3edf9cb5ff1e447c298b33755378aa4f"
+    ],
+    "s2id": "889617f6dc6fe2de4f0fb004c3c827db1b4c771a",
+    "abstract": "An ideal length-extrapolatable Transformer language model can handle sequences longer than the training length without any fine-tuning. Such long-context utilization capability relies heavily on a flexible positional embedding design. Upon investigating the flexibility of existing large pre-trained Transformer language models, we find that the T5 family deserves a closer look, as its positional embeddings capture rich and flexible attention patterns. However, T5 suffers from the dispersed attention issue: the longer the input sequence, the flatter the attention distribution. To alleviate the issue, we propose two attention alignment strategies via temperature scaling. Our findings show improvement on the long-context utilization capability of T5 on language modeling, retrieval, multi-document question answering, and code completion tasks without any fine-tuning. This suggests that a flexible positional embedding design and attention alignment can go a long way toward Transformer length extrapolation.",
+    "authors": [
+        "Ta-Chung Chi",
+        "Ting-Han Fan",
+        "Alexander I. Rudnicky"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Improvement is shown on the long-context utilization capability of T5 on language modeling, retrieval, multi-document question answering, and code completion tasks without any fine-tuning, suggesting that a flexible positional embedding design and attention alignment can go a long way toward Transformer length extrapolation."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

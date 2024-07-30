@@ -1,0 +1,31 @@
+{
+    "acronym": "4e2f99a2ad6660825a8b3cac03eb47dec2c06a1b",
+    "title": "CrossTune: Black-Box Few-Shot Classification with Label Enhancement",
+    "seed_ids": [
+        "gpt3",
+        "bert",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "15a6ae89b2bc959d4a5b48a8ce590526b50f1c98",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "4e2f99a2ad6660825a8b3cac03eb47dec2c06a1b",
+    "abstract": "Training or finetuning large-scale language models (LLMs) requires substantial computation resources, motivating recent efforts to explore parameter-efficient adaptation to downstream tasks. One approach is to treat these models as black boxes and use forward passes (Inference APIs) to interact with them. Current research focuses on adapting these black-box models to downstream tasks using gradient-free prompt optimization, but this often involves an expensive process of searching task-specific prompts. Therefore, we are motivated to study black-box language model adaptation without prompt search. Specifically, we introduce a label-enhanced cross-attention network called CrossTune, which models the semantic relatedness between the input text sequence and task-specific label descriptions. Its effectiveness is examined in the context of few-shot text classification. To improve the generalization of CrossTune, we utilize ChatGPT to generate additional training data through in-context learning. A switch mechanism is implemented to exclude low-quality ChatGPT-generated data. Through extensive experiments on seven benchmark text classification datasets, we demonstrate that our proposed approach outperforms the previous state-of-the-art gradient-free black-box tuning method by 5.7% on average. Even without using ChatGPT-augmented data, CrossTune performs better or comparably than previous black-box tuning methods, suggesting the effectiveness of our approach.",
+    "authors": [
+        "Danqing Luo",
+        "Chen Zhang",
+        "Yan Zhang",
+        "Haizhou Li"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A label-enhanced cross-attention network called CrossTune is introduced, which models the semantic relatedness between the input text sequence and task-specific label descriptions and its effectiveness is examined in the context of few-shot text classification."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

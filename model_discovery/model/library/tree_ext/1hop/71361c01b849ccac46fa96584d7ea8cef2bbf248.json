@@ -1,0 +1,38 @@
+{
+    "acronym": "71361c01b849ccac46fa96584d7ea8cef2bbf248",
+    "title": "Nicheformer: a foundation model for single-cell and spatial omics",
+    "seed_ids": [
+        "transformer",
+        "bert",
+        "f0a4ea1386ba62561019ef7d33bbb2aec23239c5",
+        "374664a1f5704c7451975e3f231a29f439aeaecd",
+        "6ead954223cdc6f08c7d8b8324b80ec8b0cb2fcd",
+        "6246ce88c98e4d7ec6421782f7cfd3c910595000"
+    ],
+    "s2id": "71361c01b849ccac46fa96584d7ea8cef2bbf248",
+    "abstract": "Tissue makeup and the corresponding orchestration of vital biological activities, ranging from development and differentiation to immune response and regeneration, rely fundamentally on the cellular microenvironment and the interactions between cells. Spatial single-cell genomics allows probing such interactions in an unbiased and, increasingly, scalable fashion. To learn a unified cell representation that accounts for local dependencies in the cellular microenvironment and the underlying cell interactions, we propose to generalize recent foundation modeling approaches for disassociated single-cell transcriptomics to the spatial omics setting. Our model, Nicheformer, is a transformer-based foundation model that combines human and mouse dissociated single-cell and targeted spatial transcriptomics data to learn a cellular representation useful for a large variety of downstream tasks. Nicheformer is pretrained on over 57 million dissociated and 53 million spatially resolved cells across 73 tissues from both human and mouse. Subsequently, the model is fine-tuned on spatial tasks for spatial omics data to decode spatially resolved cellular information. We demonstrate the usefulness of Nicheformer in both zero-shot-like as well as fine-tuning scenarios on a novel set of spatially-relevant downstream tasks such as spatial density prediction or niche and region label prediction. In particular, we show that Nicheformer enables the prediction of the spatial context of dissociated cells, allowing the transfer of rich spatial information to scRNA-seq datasets. We define a series of novel spatial prediction problems and observe consistent top performance of Nicheformer, demonstrating the advantage of the improved model capacity of the underlying transformer. Altogether, our large-scale resource of more than 110 million cells in a partial spatial context, together with the set of novel spatial learning tasks and the Nicheformer model itself, will pave the way for the next generation of machine-learning models for spatial single-cell analysis.",
+    "authors": [
+        "A. C. Schaar",
+        "Alejandro Tejada-Lapuerta",
+        "G. Palla",
+        "Robert M Gutgesell",
+        "Lennard Halle",
+        "M. Minaeva",
+        "L. Vornholz",
+        "L. Dony",
+        "Francesca Drummer",
+        "Mojtaba Bahrami",
+        "F. Theis"
+    ],
+    "venue": "bioRxiv",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that Nicheformer enables the prediction of the spatial context of dissociated cells, allowing the transfer of rich spatial information to scRNA-seq datasets, and will pave the way for the next generation of machine-learning models for spatial single-cell analysis."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

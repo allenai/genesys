@@ -1,0 +1,31 @@
+{
+    "acronym": "bfcf848f7ddebb44270ab020c15a09902c29615e",
+    "title": "On the Utility of Self-Supervised Models for Prosody-Related Tasks",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "bfcf848f7ddebb44270ab020c15a09902c29615e",
+    "abstract": "Self-Supervised Learning (SSL) from speech data has produced models that have achieved remarkable performance in many tasks, and that are known to implicitly represent many aspects of information latently present in speech signals. However, relatively little is known about the suitability of such models for prosody-related tasks or the extent to which they encode prosodic information. We present a new evaluation framework, \u201cSUPERB-prosody,\u201d consisting of three prosody-related downstream tasks and two pseudo tasks. We find that 13 of the 15 SSL models outperformed the baseline on all the prosody-related tasks. We also show good performance on two pseudo tasks: prosody reconstruction and future prosody prediction. We further analyze the layerwise contributions of the SSL models. Overall we conclude that SSL speech models are highly effective for prosody-related tasks. We release our code11https://github.com/JSALT-2022-SSL/superb-prosody for the community to support further investigation of SSL models' utility for prosody.",
+    "authors": [
+        "Guan-Ting Lin",
+        "Chiyu Feng",
+        "Wei Huang",
+        "Yuan Tseng",
+        "Tzu-Han Lin",
+        "Chen-An Li",
+        "Hung-yi Lee",
+        "Nigel G. Ward"
+    ],
+    "venue": "Spoken Language Technology Workshop",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new evaluation framework, \u201cSUPERB-prosody,\u201d is presented, consisting of three prosody-related downstream tasks and two pseudo tasks, which concludes that SSL speech models are highly effective for prosodic-related tasks."
+    },
+    "citationCount": 30,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

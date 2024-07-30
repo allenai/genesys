@@ -1,0 +1,34 @@
+{
+    "acronym": "91810e6a58af763c7a9bebc468d5172f661bfff9",
+    "title": "CEV-LM: Controlled Edit Vector Language Model for Shaping Natural Language Generations",
+    "seed_ids": [
+        "ssdlm",
+        "0b9770a377b3f96cef9f268cee1791d39a0d4893",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "76a786b1acd6d1aca56e12a8a1db34569fdf9f3a",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "ad7129af0644dbcafa9aa2f111cb76526ea444a1"
+    ],
+    "s2id": "91810e6a58af763c7a9bebc468d5172f661bfff9",
+    "abstract": "As large-scale language models become the standard for text generation, there is a greater need to tailor the generations to be more or less concise, targeted, and informative, depending on the audience/application. Existing control approaches primarily adjust the semantic (e.g., emotion, topics), structural (e.g., syntax tree, parts-of-speech), and lexical (e.g., keyword/phrase inclusion) properties of text, but are insufficient to accomplish complex objectives such as pacing which control the complexity and readability of the text. In this paper, we introduce CEV-LM - a lightweight, semi-autoregressive language model that utilizes constrained edit vectors to control three complementary metrics (speed, volume, and circuitousness) that quantify the shape of text (e.g., pacing of content). We study an extensive set of state-of-the-art CTG models and find that CEV-LM provides significantly more targeted and precise control of these three metrics while preserving semantic content, using less training data, and containing fewer parameters.",
+    "authors": [
+        "Samraj Moorjani",
+        "A. Krishnan",
+        "Hari Sundaram"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "CEV-LM is introduced - a lightweight, semi-autoregressive language model that utilizes constrained edit vectors to control three complementary metrics (speed, volume, and circuitousness) that quantify the shape of text and provides significantly more targeted and precise control of these three metrics."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

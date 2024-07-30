@@ -1,0 +1,24 @@
+{
+    "acronym": "4afa91b57a5fdbd834e881ce129928cb457c3105",
+    "title": "Cross-Lingual Query-Based Summarization of Crisis-Related Social Media: An Abstractive Approach Using Transformers",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "4afa91b57a5fdbd834e881ce129928cb457c3105",
+    "abstract": "Relevant and timely information collected from social media during crises can be an invaluable resource for emergency management. However, extracting this information remains a challenging task, particularly when dealing with social media postings in multiple languages. This work proposes a cross-lingual method for retrieving and summarizing crisis-relevant information from social media postings. We describe a uniform way of expressing various information needs through structured queries and a way of creating summaries answering those information needs. The method is based on multilingual transformers embeddings. Queries are written in one of the languages supported by the embeddings, and the extracted sentences can be in any of the other languages supported. Abstractive summaries are created by transformers. The evaluation, done by crowdsourcing evaluators and emergency management experts, and carried out on collections extracted from Twitter during five large-scale disasters spanning ten languages, shows the flexibility of our approach. The generated summaries are regarded as more focused, structured, and coherent than existing state-of-the-art methods, and experts compare them favorably against summaries created by existing, state-of-the-art methods.",
+    "authors": [
+        "Fedor Vitiugin",
+        "Carlos Castillo"
+    ],
+    "venue": "ACM Conference on Hypertext & Social Media",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a cross-lingual method for retrieving and summarizing crisis-relevant information from social media postings, based on multilingual transformers embeddings, and generates summaries regarded as more focused, structured, and coherent than existing state-of-the-art methods."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

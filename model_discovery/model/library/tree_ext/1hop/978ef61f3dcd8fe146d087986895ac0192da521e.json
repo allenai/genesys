@@ -1,0 +1,29 @@
+{
+    "acronym": "978ef61f3dcd8fe146d087986895ac0192da521e",
+    "title": "FAMuS: Frames Across Multiple Sources",
+    "seed_ids": [
+        "longformer",
+        "c9b0fcfc9470318a56e7dedf4503186e3a343408",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "978ef61f3dcd8fe146d087986895ac0192da521e",
+    "abstract": "Understanding event descriptions is a central aspect of language processing, but current approaches focus overwhelmingly on single sentences or documents. Aggregating information about an event across documents can offer a much richer understanding. To this end, we present FAMuS, a new corpus of Wikipedia passages that report on some event, paired with underlying, genre-diverse (non-Wikipedia) source articles for the same event. Events and (cross-sentence) arguments in both report and source are annotated against FrameNet, providing broad coverage of different event types. We present results on two key event understanding tasks enabled by FAMuS: source validation\u2014determining whether a document is a valid source for a target report event\u2014and cross-document argument extraction\u2014full-document argument extraction for a target event from both its report and the correct source article.",
+    "authors": [
+        "Siddharth Vashishtha",
+        "Alexander Martin",
+        "William Gantt",
+        "Benjamin Van Durme",
+        "Aaron Steven White"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "FAMuS is presented, a new corpus of Wikipedia passages that report on some event, paired with underlying, genre-diverse (non-Wikipedia) source articles for the same event, providing broad coverage of different event types."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

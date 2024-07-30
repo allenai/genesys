@@ -1,0 +1,29 @@
+{
+    "acronym": "3ffacc6497866476bd54da5f87b182c882cc9794",
+    "title": "Are Neighbors Enough? Multi-Head Neural n-gram can be Alternative to Self-attention",
+    "seed_ids": [
+        "longformer",
+        "sparsetransformer",
+        "981dbdf6f87f13f3f3047a925c519fc39a35202b",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "3ffacc6497866476bd54da5f87b182c882cc9794",
+    "abstract": "Impressive performance of Transformer has been attributed to self-attention, where dependencies between entire input in a sequence are considered at every position. In this work, we reform the neural $n$-gram model, which focuses on only several surrounding representations of each position, with the multi-head mechanism as in Vaswani et al.(2017). Through experiments on sequence-to-sequence tasks, we show that replacing self-attention in Transformer with multi-head neural $n$-gram can achieve comparable or better performance than Transformer. From various analyses on our proposed method, we find that multi-head neural $n$-gram is complementary to self-attention, and their combinations can further improve performance of vanilla Transformer.",
+    "authors": [
+        "Mengsay Loem",
+        "Sho Takase",
+        "Masahiro Kaneko",
+        "Naoaki Okazaki"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that replacing self-attention in Transformer with multi-head neural $n$-gram can achieve comparable or better performance than Transformer, and their combinations can further improve performance of vanilla Transformer."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

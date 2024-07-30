@@ -1,0 +1,32 @@
+{
+    "acronym": "1594cefd771963e5ef289c948038f18bcf567a79",
+    "title": "DiffsFormer: A Diffusion Transformer on Stock Factor Augmentation",
+    "seed_ids": [
+        "classfreediffu",
+        "c2a5073564be916b900ed4c610b3be06805df598",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "1594cefd771963e5ef289c948038f18bcf567a79",
+    "abstract": "Machine learning models have demonstrated remarkable efficacy and efficiency in a wide range of stock forecasting tasks. However, the inherent challenges of data scarcity, including low signal-to-noise ratio (SNR) and data homogeneity, pose significant obstacles to accurate forecasting. To address this issue, we propose a novel approach that utilizes artificial intelligence-generated samples (AIGS) to enhance the training procedures. In our work, we introduce the Diffusion Model to generate stock factors with Transformer architecture (DiffsFormer). DiffsFormer is initially trained on a large-scale source domain, incorporating conditional guidance so as to capture global joint distribution. When presented with a specific downstream task, we employ DiffsFormer to augment the training procedure by editing existing samples. This editing step allows us to control the strength of the editing process, determining the extent to which the generated data deviates from the target domain. To evaluate the effectiveness of DiffsFormer augmented training, we conduct experiments on the CSI300 and CSI800 datasets, employing eight commonly used machine learning models. The proposed method achieves relative improvements of 7.2% and 27.8% in annualized return ratio for the respective datasets. Furthermore, we perform extensive experiments to gain insights into the functionality of DiffsFormer and its constituent components, elucidating how they address the challenges of data scarcity and enhance the overall model performance. Our research demonstrates the efficacy of leveraging AIGS and the DiffsFormer architecture to mitigate data scarcity in stock forecasting tasks.",
+    "authors": [
+        "Yuan Gao",
+        "Haokun Chen",
+        "Xiang Wang",
+        "Zhicai Wang",
+        "Xue Wang",
+        "Jinyang Gao",
+        "Bolin Ding"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces the Diffusion Model to generate stock factors with Transformer architecture (DiffsFormer) and performs extensive experiments to gain insights into the functionality of DiffsFormer and its constituent components, elucidating how they address the challenges of data scarcity and enhance the overall model performance."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

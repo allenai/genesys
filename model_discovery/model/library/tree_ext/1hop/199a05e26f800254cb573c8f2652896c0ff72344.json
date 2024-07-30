@@ -1,0 +1,29 @@
+{
+    "acronym": "199a05e26f800254cb573c8f2652896c0ff72344",
+    "title": "Context-aware Difference Distilling for Multi-change Captioning",
+    "seed_ids": [
+        "transformer",
+        "fa3a9f31788a52ef1979060e98b60bdc3b9e066f"
+    ],
+    "s2id": "199a05e26f800254cb573c8f2652896c0ff72344",
+    "abstract": "Multi-change captioning aims to describe complex and coupled changes within an image pair in natural language. Compared with single-change captioning, this task requires the model to have higher-level cognition ability to reason an arbitrary number of changes. In this paper, we propose a novel context-aware difference distilling (CARD) network to capture all genuine changes for yielding sentences. Given an image pair, CARD first decouples context features that aggregate all similar/dissimilar semantics, termed common/difference context features. Then, the consistency and independence constraints are designed to guarantee the alignment/discrepancy of common/difference context features. Further, the common context features guide the model to mine locally unchanged features, which are subtracted from the pair to distill locally difference features. Next, the difference context features augment the locally difference features to ensure that all changes are distilled. In this way, we obtain an omni-representation of all changes, which is translated into linguistic sentences by a transformer decoder. Extensive experiments on three public datasets show CARD performs favourably against state-of-the-art methods.The code is available at https://github.com/tuyunbin/CARD.",
+    "authors": [
+        "Yunbin Tu",
+        "Liang Li",
+        "Li Su",
+        "Zheng-Jun Zha",
+        "Chenggang Yan",
+        "Qin Huang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel context-aware difference distilling network to capture all genuine changes for yielding sentences, and obtains an omni-representation of all changes, which is translated into linguistic sentences by a transformer decoder."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

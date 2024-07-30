@@ -1,0 +1,36 @@
+{
+    "acronym": "5cdab78acc4f3aab429a0dd41c3ec7e605d42e7b",
+    "title": "Measuring Compositional Generalization: A Comprehensive Method on Realistic Data",
+    "seed_ids": [
+        "universaltrans"
+    ],
+    "s2id": "5cdab78acc4f3aab429a0dd41c3ec7e605d42e7b",
+    "abstract": "State-of-the-art machine learning methods exhibit limited compositional generalization. At the same time, there is a lack of realistic benchmarks that comprehensively measure this ability, which makes it challenging to find and evaluate improvements. We introduce a novel method to systematically construct such benchmarks by maximizing compound divergence while guaranteeing a small atom divergence between train and test sets, and we quantitatively compare this method to other approaches for creating compositional generalization benchmarks. We present a large and realistic natural language question answering dataset that is constructed according to this method, and we use it to analyze the compositional generalization ability of three machine learning architectures. We find that they fail to generalize compositionally and that there is a surprisingly strong negative correlation between compound divergence and accuracy. We also demonstrate how our method can be used to create new compositionality benchmarks on top of the existing SCAN dataset, which confirms these findings.",
+    "authors": [
+        "Daniel Keysers",
+        "Nathanael Sch\u00e4rli",
+        "Nathan Scales",
+        "Hylke Buisman",
+        "Daniel Furrer",
+        "S. Kashubin",
+        "Nikola Momchev",
+        "Danila Sinopalnikov",
+        "Lukasz Stafiniak",
+        "Tibor Tihon",
+        "Dmitry Tsarkov",
+        "Xiao Wang",
+        "Marc van Zee",
+        "O. Bousquet"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel method to systematically construct compositional generalization benchmarks by maximizing compound divergence while guaranteeing a small atom divergence between train and test sets is introduced, and it is demonstrated how this method can be used to create new compositionality benchmarks on top of the existing SCAN dataset."
+    },
+    "citationCount": 311,
+    "influentialCitationCount": 53,
+    "code": null,
+    "description": null,
+    "url": null
+}

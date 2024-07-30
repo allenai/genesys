@@ -1,0 +1,26 @@
+{
+    "acronym": "0b49f69ff09ed57f4ce0e564bb30a2bf9484be25",
+    "title": "Entity Linking in the Job Market Domain",
+    "seed_ids": [
+        "bert",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "0b49f69ff09ed57f4ce0e564bb30a2bf9484be25",
+    "abstract": "In Natural Language Processing, entity linking (EL) has centered around Wikipedia, but yet remains underexplored for the job market domain. Disambiguating skill mentions can help us get insight into the current labor market demands. In this work, we are the first to explore EL in this domain, specifically targeting the linkage of occupational skills to the ESCO taxonomy (le Vrang et al., 2014). Previous efforts linked coarse-grained (full) sentences to a corresponding ESCO skill. In this work, we link more fine-grained span-level mentions of skills. We tune two high-performing neural EL models, a bi-encoder (Wu et al., 2020) and an autoregressive model (Cao et al., 2021), on a synthetically generated mention\u2013skill pair dataset and evaluate them on a human-annotated skill-linking benchmark. Our findings reveal that both models are capable of linking implicit mentions of skills to their correct taxonomy counterparts. Empirically, BLINK outperforms GENRE in strict evaluation, but GENRE performs better in loose evaluation (accuracy@k).",
+    "authors": [
+        "Mike Zhang",
+        "R. Goot",
+        "Barbara Plank"
+    ],
+    "venue": "Findings",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work tunes two high-performing neural EL models, a bi-encoder and an autoregressive model, on a synthetically generated mention\u2013skill pair dataset and reveals that both models are capable of linking implicit mentions of skills to their correct taxonomy counterparts."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

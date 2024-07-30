@@ -1,0 +1,34 @@
+{
+    "acronym": "1e12fcff9c7d6a1bad379da6d3368ee605081903",
+    "title": "UniLog: Automatic Logging via LLM and In-Context Learning",
+    "seed_ids": [
+        "gpt3"
+    ],
+    "s2id": "1e12fcff9c7d6a1bad379da6d3368ee605081903",
+    "abstract": "Logging, which aims to determine the position of logging statements, the verbosity levels, and the log messages, is a crucial process for software reliability enhancement. In recent years, numerous automatic logging tools have been designed to assist developers in one of the logging tasks (e.g., providing suggestions on whether to log in try-catch blocks). These tools are useful in certain situations yet cannot provide a comprehensive logging solution in general. Moreover, although recent research has started to explore end-to-end logging, it is still largely constrained by the high cost of fine-tuning, hindering its practical usefulness in software development. To address these problems, this paper proposes UniLog, an automatic logging framework based on the in-context learning (ICL) paradigm of large language models (LLMs). Specifically, UniLog can generate an appropriate logging statement with only a prompt containing five demonstration examples without any model tuning. In addition, UniLog can further enhance its logging ability after warmup with only a few hundred random samples. We evaluated UniLog on a large dataset containing 12,012 code snippets extracted from 1,465 GitHub repositories. The results show that UniLog achieved the state-of-the-art performance in automatic logging: (1) 76.9% accuracy in selecting logging positions, (2) 72.3% accuracy in predicting verbosity levels, and (3) 27.1 BLEU-4 score in generating log messages. Meanwhile, UniLog requires less than 4% of the parameter tuning time needed by fine-tuning the same LLM.",
+    "authors": [
+        "Junjielong Xu",
+        "Ziang Cui",
+        "Yuan Zhao",
+        "Xu Zhang",
+        "Shilin He",
+        "Pinjia He",
+        "Liqun Li",
+        "Yu Kang",
+        "Qingwei Lin",
+        "Yingnong Dang",
+        "S. Rajmohan",
+        "Dongmei Zhang"
+    ],
+    "venue": "International Conference on Software Engineering",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "UniLog is proposed, an automatic logging framework based on the in-context learning (ICL) paradigm of large language models (LLMs) that can generate an appropriate logging statement with only a prompt containing five demonstration examples without any model tuning."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

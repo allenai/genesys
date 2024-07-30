@@ -1,0 +1,29 @@
+{
+    "acronym": "458338001cfed16975e84785a05201763aeff399",
+    "title": "Efficient Saliency Encoding for Visual Place Recognition: Introducing the Lightweight Pooling-Centric Saliency-Aware VPR Method",
+    "seed_ids": [
+        "metaformer"
+    ],
+    "s2id": "458338001cfed16975e84785a05201763aeff399",
+    "abstract": "The letter introduces a novel Visual Place Recognition (VPR) method called Lightweight Pooling-centric Saliency-aware VPR (LPS-VPR), a high-performance VPR method capable of exploiting saliency information without computational burden. The key contribution of the method is a pooling-based saliency encoder (PSE) that efficiently extracts and integrates local context saliency cues into the image embedding, avoiding using computationally intensive operations such as attention for saliency cues extraction. The method employs a multi-level feature pyramid fusion with a cascaded backtracking structure, merging multi-scale embedding information from different levels of the backbone network with negligible computational demand. The LPS-VPR method demonstrates superior performance on mainstream VPR benchmarks, showcasing state-of-the-art (SoTA) runtime efficiency and detailed ablation studies highlight the effectiveness of each LPS-VPR component. Extended visual demonstrations further underscore the effectiveness and superiority of LPS-VPR, making it a promising solution for real-world large-scale VPR applications.",
+    "authors": [
+        "Jiwei Nie",
+        "Dingyu Xue",
+        "Feng Pan",
+        "Zuotao Ning",
+        "Wei Liu",
+        "Jun Hu",
+        "Shuai Cheng"
+    ],
+    "venue": "IEEE Robotics and Automation Letters",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

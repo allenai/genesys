@@ -1,0 +1,25 @@
+{
+    "acronym": "1255d716d0e0bb2a6193a8ece204549a2bc46f7a",
+    "title": "An FNet based Auto Encoder for Long Sequence News Story Generation",
+    "seed_ids": [
+        "fnet",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f"
+    ],
+    "s2id": "1255d716d0e0bb2a6193a8ece204549a2bc46f7a",
+    "abstract": "In this paper, we design an auto encoder based off of Google's FNet Architecture in order to generate text from a subset of news stories contained in Google's C4 dataset. We discuss previous attempts and methods to generate text from autoencoders and non LLM Models. FNET poses multiple advantages to BERT based encoders in the realm of efficiency which train 80% faster on GPUs and 70% faster on TPUs. We then compare outputs of how this autencoder perfroms on different epochs. Finally, we analyze what outputs the encoder produces with different seed text.",
+    "authors": [
+        "Paul K. Mandal",
+        "Rakeshkumar V. Mahto"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper designs an auto encoder based off of Google's FNet Architecture in order to generate text from a subset of news stories contained in Google's C4 dataset and analyzes what outputs the encoder produces with different seed text."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

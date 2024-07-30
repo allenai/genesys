@@ -1,0 +1,27 @@
+{
+    "acronym": "e07056e2f2851ee58f59aec8ce38a22a1dd2af8e",
+    "title": "Resolving Transcription Ambiguity in Spanish: A Hybrid Acoustic-Lexical System for Punctuation Restoration",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "e07056e2f2851ee58f59aec8ce38a22a1dd2af8e",
+    "abstract": "Punctuation restoration is a crucial step after Automatic Speech Recognition (ASR) systems to enhance transcript readability and facilitate subsequent NLP tasks. Nevertheless, conventional lexical-based approaches are inadequate for solving the punctuation restoration task in Spanish, where ambiguity can be often found between unpunctuated declaratives and questions. In this study, we propose a novel hybrid acoustic-lexical punctuation restoration system for Spanish transcription, which consolidates acoustic and lexical signals through a modular process. Our experiment results show that the proposed system can effectively improve F1 score of question marks and overall punctuation restoration on both public and internal Spanish conversational datasets. Additionally, benchmark comparison against LLMs (Large Language Model) indicates the superiority of our approach in accuracy, reliability and latency. Furthermore, we demonstrate that the Word Error Rate (WER) of the ASR module also benefits from our proposed system.",
+    "authors": [
+        "Xiliang Zhu",
+        "Chia-Tien Chang",
+        "Shayna Gardiner",
+        "David Rossouw",
+        "Jonas Robertson"
+    ],
+    "venue": "UNIMPLICIT",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel hybrid acoustic-lexical punctuation restoration system for Spanish transcription, which consolidates acoustic and lexical signals through a modular process, and benchmark comparison against LLMs (Large Language Model) indicates the superiority of the approach in accuracy, reliability and latency."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

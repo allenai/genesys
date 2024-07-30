@@ -1,0 +1,34 @@
+{
+    "acronym": "6d23532a1e9a8116041fd5aac6b0ef8ddd6d8171",
+    "title": "The Moral Integrity Corpus: A Benchmark for Ethical Dialogue Systems",
+    "seed_ids": [
+        "gpt2",
+        "2ea64b7c7617f6cc1768373124ca0243d772a90f",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e04a80263d252a3d8a382ba37a249b9345620570",
+        "7a15950dc71079285a4eaf195de5aadd87c41b40",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "ad7129af0644dbcafa9aa2f111cb76526ea444a1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6d23532a1e9a8116041fd5aac6b0ef8ddd6d8171",
+    "abstract": "Conversational agents have come increasingly closer to human competence in open-domain dialogue settings; however, such models can reflect insensitive, hurtful, or entirely incoherent viewpoints that erode a user\u2019s trust in the moral integrity of the system. Moral deviations are difficult to mitigate because moral judgments are not universal, and there may be multiple competing judgments that apply to a situation simultaneously. In this work, we introduce a new resource, not to authoritatively resolve moral ambiguities, but instead to facilitate systematic understanding of the intuitions, values and moral judgments reflected in the utterances of dialogue systems. The Moral Integrity Corpus, MIC, is such a resource, which captures the moral assumptions of 38k prompt-reply pairs, using 99k distinct Rules of Thumb (RoTs). Each RoT reflects a particular moral conviction that can explain why a chatbot\u2019s reply may appear acceptable or problematic. We further organize RoTs with a set of 9 moral and social attributes and benchmark performance for attribute classification. Most importantly, we show that current neural language models can automatically generate new RoTs that reasonably describe previously unseen interactions, but they still struggle with certain scenarios. Our findings suggest that MIC will be a useful resource for understanding and language models\u2019 implicit moral assumptions and flexibly benchmarking the integrity of conversational agents. To download the data, see https://github.com/GT-SALT/mic",
+    "authors": [
+        "Caleb Ziems",
+        "Jane A. Yu",
+        "Yi-Chia Wang",
+        "A. Halevy",
+        "Diyi Yang"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Moral Integrity Corpus, MIC, is a resource, which captures the moral assumptions of 38k prompt-reply pairs, using 99k distinct Rules of Thumb (RoTs), and is suggested that MIC will be a useful resource for understanding and language models\u2019 implicit moral assumptions and flexibly benchmarking the integrity of conversational agents."
+    },
+    "citationCount": 72,
+    "influentialCitationCount": 13,
+    "code": null,
+    "description": null,
+    "url": null
+}

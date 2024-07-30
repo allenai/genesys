@@ -1,0 +1,41 @@
+{
+    "acronym": "de85fe2d88188a50ab1f9cffe378b5a4360e8c05",
+    "title": "DiffuSIA: A Spiral Interaction Architecture for Encoder-Decoder Text Diffusion",
+    "seed_ids": [
+        "diffusionlm",
+        "diffuseq",
+        "selfcondembdiffu",
+        "analogbits",
+        "a1186d7d9a9ef258c76afef1177e4f348061a537",
+        "a979742220a88b1d32e1fbe72c41e8ba3007053c",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "dce74859a3a8573a2f5f59afae9bfde7b56d20df",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "6eb426af01b8871cf88fe01bff85f9b2ec8e5a04",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "de85fe2d88188a50ab1f9cffe378b5a4360e8c05",
+    "abstract": "Diffusion models have emerged as the new state-of-the-art family of deep generative models, and their promising potentials for text generation have recently attracted increasing attention. Existing studies mostly adopt a single encoder architecture with partially noising processes for conditional text generation, but its degree of flexibility for conditional modeling is limited. In fact, the encoder-decoder architecture is naturally more flexible for its detachable encoder and decoder modules, which is extensible to multilingual and multimodal generation tasks for conditions and target texts. However, the encoding process of conditional texts lacks the understanding of target texts. To this end, a spiral interaction architecture for encoder-decoder text diffusion (DiffuSIA) is proposed. Concretely, the conditional information from encoder is designed to be captured by the diffusion decoder, while the target information from decoder is designed to be captured by the conditional encoder. These two types of information flow run through multilayer interaction spirally for deep fusion and understanding. DiffuSIA is evaluated on four text generation tasks, including paraphrase, text simplification, question generation, and open-domain dialogue generation. Experimental results show that DiffuSIA achieves competitive performance among previous methods on all four tasks, demonstrating the effectiveness and generalization ability of the proposed method.",
+    "authors": [
+        "Chao-Hong Tan",
+        "Jia-Chen Gu",
+        "Zhen-Hua Ling"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results show that DiffuSIA achieves competitive performance among previous methods on all four tasks, demonstrating the effectiveness and generalization ability of the proposed method."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

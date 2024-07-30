@@ -1,0 +1,23 @@
+{
+    "acronym": "da3104bf6a6349eab1cf38ad16d6dfaed531a94d",
+    "title": "Comparative Analysis of Neural NLP Models for Information Extraction from Accounting Documents",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "da3104bf6a6349eab1cf38ad16d6dfaed531a94d",
+    "abstract": "Natural Language Processing has reached a high importance in research and business applications. The state-of-the-art techniques are being used to automate tasks like extracting relevant entities from documents or translating texts from one language to another. This thesis focuses on the task of selecting models that have performed well on standard benchmarks for those tasks, and adapting them to a new and specialised problem: the labelling of entities in invoice documents. For this purpose, five state-of-the-art Neural Network models are presented, applied and evaluated. The results show that four out of the five selected models, based on recurrent and convolutional architectures, can be implemented successfully and perform similarly well on test documents with average F1 performance scores of 68-71% on word level and 67-69% on entity level. A detailed error analysis reveals that low data quality and suboptimal choice of labels due to the dataset\u2019s origins are the main factors that influence the models\u2019 performances. The thesis proposes a ranking of the five models with regards to their prediction performance as well as their cost and difficulty of implementation in order to answer the main research question. Possible improvements are proposed for future work, while the limitations of the project\u2019s setting are explored and discussed. This project aims to contribute a different perspective to NER research by analysing and discussing errors and poor design choices in order to propose future improvements.",
+    "authors": [
+        "A. K\u00fcpper"
+    ],
+    "venue": "",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A ranking of the five state-of-the-art Neural Network models is proposed with regards to their prediction performance as well as their cost and difficulty of implementation in order to answer the main research question."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

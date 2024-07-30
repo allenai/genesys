@@ -1,0 +1,28 @@
+{
+    "acronym": "9da452beb26e1f979032f8e9dca77eefd61202b6",
+    "title": "An Empirical Study: Extensive Deep Temporal Point Process",
+    "seed_ids": [
+        "fnet",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f"
+    ],
+    "s2id": "9da452beb26e1f979032f8e9dca77eefd61202b6",
+    "abstract": "Temporal point process as the stochastic process on continuous domain of time is commonly used to model the asynchronous event sequence featuring with occurrence timestamps. Thanks to the strong expressivity of deep neural networks, they are emerging as a promising choice for capturing the patterns in asynchronous sequences, in the context of temporal point process. In this paper, we first review recent research emphasis and difficulties in modeling asynchronous event sequences with deep temporal point process, which can be concluded into four fields: encoding of history sequence, formulation of conditional intensity function, relational discovery of events and learning approaches for optimization. We introduce most of recently proposed models by dismantling them into the four parts, and conduct experiments by remodularizing the first three parts with the same learning strategy for a fair empirical evaluation. Besides, we extend the history encoders and conditional intensity function family, and propose a Granger causality discovery framework for exploiting the relations among multi-types of events. Because the Granger causality can be represented by the Granger causality graph, discrete graph structure learning in the framework of Variational Inference is employed to reveal latent structures of the graph. Further experiments show that the proposed framework with latent graph discovery can both capture the relations and achieve an improved fitting and predicting performance.",
+    "authors": [
+        "Haitao Lin",
+        "Cheng Tan",
+        "Lirong Wu",
+        "Zhangyang Gao",
+        "Stan Z. Li"
+    ],
+    "venue": "",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper reviews recent research emphasis and difficulties in modeling asynchronous event sequences with deep temporal point process, and proposes a Granger causality discovery framework for exploiting the relations among multi-types of events."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

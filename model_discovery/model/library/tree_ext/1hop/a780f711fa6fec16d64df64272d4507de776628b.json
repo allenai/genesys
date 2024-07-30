@@ -1,0 +1,26 @@
+{
+    "acronym": "a780f711fa6fec16d64df64272d4507de776628b",
+    "title": "Ara--CANINE: Character-Based Pre-Trained Language Model for Arabic Language Understanding",
+    "seed_ids": [
+        "bert",
+        "20f1c639458dd11d38f228a6dbbcfeb4c1913116"
+    ],
+    "s2id": "a780f711fa6fec16d64df64272d4507de776628b",
+    "abstract": "Recent advancements in the field of natural language processing have markedly enhanced the capability of machines to comprehend human language. However, as language models progress, they require continuous architectural enhancements and different approaches to text processing. One significant challenge stems from the rich diversity of languages, each characterized by its distinctive grammar resulting in a decreased accuracy of language models for specific languages, especially for low-resource languages. This limitation is exacerbated by the reliance of existing NLP models on rigid tokenization methods, rendering them susceptible to issues with previously unseen or infrequent words. Additionally, models based on word and subword tokenization are vulnerable to minor typographical errors, whether they occur naturally or result from adversarial misspellings. To address these challenges, this paper presents the utilization of a recently proposed free-tokenization method, such as Cannine, to enhance the comprehension of natural language. Specifically, we employ this method to develop an Arabic-free tokenization language model. In this research, we will precisely evaluate our model\u2019s performance across a range of eight tasks using Arabic Language Understanding Evaluation (ALUE) benchmark. Furthermore, we will conduct a comparative analysis, pitting our free-tokenization model against existing Arabic language models that rely on sub-word tokenization. By making our pre-training and fine-tuning models accessible to the Arabic NLP community, we aim to facilitate the replication of our experiments and contribute to the advancement of Arabic language processing capabilities. To further support reproducibility and open-source collaboration, the complete source code and model checkpoints will be made publicly available on our Huggingface1 . In conclusion, the results of our study will demonstrate that the free-tokenization approach exhibits comparable performance to established Arabic language models that utilize sub-word tokenization techniques. Notably, in certain tasks, our model surpasses the performance of some of these existing models. This evidence underscores the efficacy of free-tokenization in processing the Arabic language, particularly in specific linguistic contexts.",
+    "authors": [
+        "Abdulelah Alkesaiberi",
+        "Ali Alkhathlan",
+        "Ahmed Abdelali"
+    ],
+    "venue": "International Journal on Cybernetics &amp; Informatics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results of this study will demonstrate that the free-tokenization approach exhibits comparable performance to established Arabic language models that utilize sub-word tokenization techniques, which underscores the efficacy of free-tokenization in processing the Arabic language, particularly in specific linguistic contexts."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

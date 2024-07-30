@@ -1,0 +1,36 @@
+{
+    "acronym": "6e0b6ba5cae954a0643baeb00167965e88458fc3",
+    "title": "On the Blind Spots of Model-Based Evaluation Metrics for Text Generation",
+    "seed_ids": [
+        "gpt2",
+        "2a0336bc5887968bd5590ea6b2b1f953edd9dcbc",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "670edecb7a0d3887893c8f287e66209b87e5f56f",
+        "b6c4a96e09b9f11e7c70e7f1fbe3f3971b92762d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6e0b6ba5cae954a0643baeb00167965e88458fc3",
+    "abstract": "In this work, we explore a useful but often neglected methodology for robustness analysis of text generation evaluation metrics: stress tests with synthetic data. Basically, we design and synthesize a wide range of potential errors and check whether they result in a commensurate drop in the metric scores. We examine a range of recently proposed evaluation metrics based on pretrained language models, for the tasks of open-ended generation, translation, and summarization. Our experiments reveal interesting insensitivities, biases, or even loopholes in existing metrics. For example, we find that BERTScore is confused by truncation errors in summarization, and MAUVE (built on top of GPT-2) is insensitive to errors at the beginning or middle of generations. Further, we investigate the reasons behind these blind spots and suggest practical workarounds for a more reliable evaluation of text generation. We have released our code and data at https://github.com/cloudygoose/blindspot_nlg.",
+    "authors": [
+        "Tianxing He",
+        "Jingyu Zhang",
+        "Tianle Wang",
+        "Sachin Kumar",
+        "Kyunghyun Cho",
+        "James R. Glass",
+        "Yulia Tsvetkov"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work design and synthesize a wide range of potential errors and check whether they result in a commensurate drop in the metric scores, and finds that BERTScore is confused by truncation errors in summarization, and MAUVE is insensitive to errors at the beginning or middle of generations."
+    },
+    "citationCount": 31,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

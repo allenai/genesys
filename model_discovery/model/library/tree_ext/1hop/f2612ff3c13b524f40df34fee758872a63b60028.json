@@ -1,0 +1,34 @@
+{
+    "acronym": "f2612ff3c13b524f40df34fee758872a63b60028",
+    "title": "ESQA: Event Sequences Question Answering",
+    "seed_ids": [
+        "bert",
+        "5b7f5488c380cf5085a5dd93e993ad293b225eee",
+        "b92628d13e8d090d042232fe6ae0b8998634b893",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "f2612ff3c13b524f40df34fee758872a63b60028",
+    "abstract": "Event sequences (ESs) arise in many practical domains including finance, retail, social networks, and healthcare. In the context of machine learning, event sequences can be seen as a special type of tabular data with annotated timestamps. Despite the importance of ESs modeling and analysis, little effort was made in adapting large language models (LLMs) to the ESs domain. In this paper, we highlight the common difficulties of ESs processing and propose a novel solution capable of solving multiple downstream tasks with little or no finetuning. In particular, we solve the problem of working with long sequences and improve time and numeric features processing. The resulting method, called ESQA, effectively utilizes the power of LLMs and, according to extensive experiments, achieves state-of-the-art results in the ESs domain.",
+    "authors": [
+        "Irina Abdullaeva",
+        "Andrei Filatov",
+        "Mikhail Orlov",
+        "Ivan Karpukhin",
+        "Viacheslav Vasilev",
+        "Denis Dimitrov",
+        "Andrey Kuznetsov",
+        "Ivan A Kireev",
+        "Andrey Savchenko"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The common difficulties of ESs processing are highlighted and a novel solution capable of solving multiple downstream tasks with little or no finetuning is proposed, called ESQA, which effectively utilizes the power of LLMs and achieves state-of-the-art results in the ESs domain."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

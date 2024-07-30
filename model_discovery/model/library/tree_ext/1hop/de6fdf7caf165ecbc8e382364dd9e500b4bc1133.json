@@ -1,0 +1,24 @@
+{
+    "acronym": "de6fdf7caf165ecbc8e382364dd9e500b4bc1133",
+    "title": "Corpus-based Identification of Verbs Participating in Verb Alternations Using Classification and Manual Annotation",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "de6fdf7caf165ecbc8e382364dd9e500b4bc1133",
+    "abstract": "English verb alternations allow participating verbs to appear in a set of syntactically different constructions whose associated semantic frames are systematically related. We use ENCOW and VerbNet data to train classifiers to predict the instrument subject alternation and the causative-inchoative alternation, relying on count-based and vector-based features as well as perplexity-based language model features, which are intended to reflect each alternation\u2019s felicity by simulating it. Beyond the prediction task, we use the classifier results as a source for a manual annotation step in order to identify new, unseen instances of each alternation. This is possible because existing alternation datasets contain positive, but no negative instances and are not comprehensive. Over several sequences of classification-annotation steps, we iteratively extend our sets of alternating verbs. Our hybrid approach to the identification of new alternating verbs reduces the required annotation effort by only presenting annotators with the highest-scoring candidates from the previous classification. Due to the success of semi-supervised and unsupervised features, our approach can easily be transferred to further alternations.",
+    "authors": [
+        "Esther Seyffarth",
+        "Laura Kallmeyer"
+    ],
+    "venue": "International Conference on Computational Linguistics",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work uses ENCOW and VerbNet data to train classifiers to predict the instrument subject alternation and the causative-inchoative alternation, relying on count-based and vector-based features as well as perplexity-based language model features, which are intended to reflect each alternation\u2019s felicity by simulating it."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

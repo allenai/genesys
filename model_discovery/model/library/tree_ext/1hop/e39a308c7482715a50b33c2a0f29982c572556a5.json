@@ -1,0 +1,25 @@
+{
+    "acronym": "e39a308c7482715a50b33c2a0f29982c572556a5",
+    "title": "ICAL: Implicit Character-Aided Learning for Enhanced Handwritten Mathematical Expression Recognition",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "e39a308c7482715a50b33c2a0f29982c572556a5",
+    "abstract": "Significant progress has been made in the field of handwritten mathematical expression recognition, while existing encoder-decoder methods are usually difficult to model global information in \\LaTeX. Therefore, this paper introduces a novel approach, Implicit Character-Aided Learning (ICAL), to mine the global expression information and enhance handwritten mathematical expression recognition. Specifically, we propose the Implicit Character Construction Module (ICCM) to predict implicit character sequences and use a Fusion Module to merge the outputs of the ICCM and the decoder, thereby producing corrected predictions. By modeling and utilizing implicit character information, ICAL achieves a more accurate and context-aware interpretation of handwritten mathematical expressions. Experimental results demonstrate that ICAL notably surpasses the state-of-the-art(SOTA) models, improving the expression recognition rate (ExpRate) by 2.21\\%/1.75\\%/1.28\\% on the CROHME 2014/2016/2019 datasets respectively, and achieves a remarkable 69.25\\% on the challenging HME100k test set. We make our code available on the GitHub: https://github.com/qingzhenduyu/ICAL",
+    "authors": [
+        "Jianhua Zhu",
+        "Liangcai Gao",
+        "Wenqi Zhao"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "By modeling and utilizing implicit character information, ICAL achieves a more accurate and context-aware interpretation of handwritten mathematical expressions and notably surpasses the state-of-the-art SOTA models."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

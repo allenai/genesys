@@ -1,0 +1,27 @@
+{
+    "acronym": "e95f6b87227819e4b22bf97e04bc99f3970af18f",
+    "title": "Extracting Precedence Relations between Video Lectures in MOOCs",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "e95f6b87227819e4b22bf97e04bc99f3970af18f",
+    "abstract": "Nowadays, the high dropout rate has become a widespread phenomenon in various MOOC platforms. When learning a MOOC, many learners are reluctant to spend time learning from the first video lecture to the last one. If we can recommend a learning path based on learners' individual needs and ignore irrelevant video lectures in the MOOC, it will help them learn more efficiently. The premise of learning path recommendation is to understand the precedence relations between learning resources. In this paper, we propose a novel approach for extracting precedence relations between video lectures in a MOOC. According to \"knowledge depth\" of concepts, we extract the core concepts from the video captions accurately. Transformer-based models are used to discover concept prerequisite relations, which help us identify the precedence relations between video lectures in MOOCs. Experiments show that the proposed method outperforms the state-of-the-art methods.",
+    "authors": [
+        "K. Xiao",
+        "Youheng Bai",
+        "Yan Zhang"
+    ],
+    "venue": "International Conference on Multimedia Retrieval",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel approach for extracting precedence relations between video lectures in a MOOC, which outperforms the state-of-the-art methods and extracts the core concepts from the video captions accurately."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "354d36b76cca9def86d4f1c3e185f61e51669f84",
+    "title": "Multi-step Temporal Modeling for UAV Tracking",
+    "seed_ids": [
+        "transformer",
+        "6b6ffb94626e672caffafc77097491d9ee7a8682"
+    ],
+    "s2id": "354d36b76cca9def86d4f1c3e185f61e51669f84",
+    "abstract": "In the realm of unmanned aerial vehicle (UAV) tracking, Siamese-based approaches have gained traction due to their optimal balance between efficiency and precision. However, UAV scenarios often present challenges such as insufficient sampling resolution, fast motion and small objects with limited feature information. As a result, temporal context in UAV tracking tasks plays a pivotal role in target location, overshadowing the target's precise features. In this paper, we introduce MT-Track, a streamlined and efficient multi-step temporal modeling framework designed to harness the temporal context from historical frames for enhanced UAV tracking. This temporal integration occurs in two steps: correlation map generation and correlation map refinement. Specifically, we unveil a unique temporal correlation module that dynamically assesses the interplay between the template and search region features. This module leverages temporal information to refresh the template feature, yielding a more precise correlation map. Subsequently, we propose a mutual transformer module to refine the correlation maps of historical and current frames by modeling the temporal knowledge in the tracking sequence. This method significantly trims computational demands compared to the raw transformer. The compact yet potent nature of our tracking framework ensures commendable tracking outcomes, particularly in extended tracking scenarios.",
+    "authors": [
+        "Xiaoying Yuan",
+        "Tingfa Xu",
+        "Xincong Liu",
+        "Ying Wang",
+        "Haolin Qin",
+        "Yuqiang Fang",
+        "Jianan Li"
+    ],
+    "venue": "IEEE transactions on circuits and systems for video technology (Print)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "MT-Track is introduced, a streamlined and efficient multi-step temporal modeling framework designed to harness the temporal context from historical frames for enhanced UAV tracking and proposes a mutual transformer module to refine the correlation maps of historical and current frames."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "d716873b6fac8d6e8baf6910ed87b36bb01096b0",
+    "title": "SemAudio: Semantic-Aware Streaming Communications for Real-Time Audio Transmission",
+    "seed_ids": [
+        "transformerxl"
+    ],
+    "s2id": "d716873b6fac8d6e8baf6910ed87b36bb01096b0",
+    "abstract": "Deep learning (DL) enabled semantic communications have been developed to improve the offline communication efficiently and intelligently by exploring the semantic information, while constraining their applications in real-time online scenarios. In this work, we propose SemAudio, the first DL-based streaming semantic communication system for real-time audio processing. To better extract the semantic features of the audio signal, SemAudio employs the Transformer-XL due to its potential to capture long-distance dependency. Moreover, the system works based on a chunk-based mask attention strategy to enable real-time streaming. By incorporating the novel Transformer-XL and chunk-wise approach, SemAudio can effectively learn and extract semantic features from real-time audio data. Furthermore, to alleviate the channel distortion and attenuation, the semantic and channel encoder/decoder are jointly designed by minimizing the mean error in both time and frequency domains rather than the merely time domain. The extensive experimental results suggest that our proposed SemAudio outperforms the traditional communications. Besides, the proposed SemAudio compromises the quality and latency to meet real-time requirements, which obtains satisfactory performance with significantly higher accuracy and lower latency under multiple channel conditions for real-time audio communication.",
+    "authors": [
+        "Hao Wei",
+        "Wenjun Xu",
+        "Fengyu Wang",
+        "Xin Du",
+        "Tiankui Zhang",
+        "Ping Zhang"
+    ],
+    "venue": "Global Communications Conference",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes SemAudio, the first DL-based streaming semantic communication system for real-time audio processing that employs the novel Transformer-XL and chunk-wise approach and obtains satisfactory performance with significantly higher accuracy and lower latency under multiple channel conditions for real -time audio communication."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

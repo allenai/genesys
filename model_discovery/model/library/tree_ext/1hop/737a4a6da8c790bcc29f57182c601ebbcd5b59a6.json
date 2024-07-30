@@ -1,0 +1,34 @@
+{
+    "acronym": "737a4a6da8c790bcc29f57182c601ebbcd5b59a6",
+    "title": "Multi-dimensional patient acuity estimation with longitudinal EHR tokenization and flexible transformer networks",
+    "seed_ids": [
+        "longformer",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "78a0fb70b79116eb8d42c5951ced4f9efba513f0",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "737a4a6da8c790bcc29f57182c601ebbcd5b59a6",
+    "abstract": "Transformer model architectures have revolutionized the natural language processing (NLP) domain and continue to produce state-of-the-art results in text-based applications. Prior to the emergence of transformers, traditional NLP models such as recurrent and convolutional neural networks demonstrated promising utility for patient-level predictions and health forecasting from longitudinal datasets. However, to our knowledge only few studies have explored transformers for predicting clinical outcomes from electronic health record (EHR) data, and in our estimation, none have adequately derived a health-specific tokenization scheme to fully capture the heterogeneity of EHR systems. In this study, we propose a dynamic method for tokenizing both discrete and continuous patient data, and present a transformer-based classifier utilizing a joint embedding space for integrating disparate temporal patient measurements. We demonstrate the feasibility of our clinical AI framework through multi-task ICU patient acuity estimation, where we simultaneously predict six mortality and readmission outcomes. Our longitudinal EHR tokenization and transformer modeling approaches resulted in more accurate predictions compared with baseline machine learning models, which suggest opportunities for future multimodal data integrations and algorithmic support tools using clinical transformer networks.",
+    "authors": [
+        "B. Shickel",
+        "B. Silva",
+        "T. Ozrazgat-Baslanti",
+        "Yuanfang Ren",
+        "Kia Khezeli",
+        "Ziyuan Guan",
+        "P. Tighe",
+        "A. Bihorac",
+        "Parisa Rashidi"
+    ],
+    "venue": "Frontiers in Digital Health",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study proposes a dynamic method for tokenizing both discrete and continuous patient data, and presents a transformer-based classifier utilizing a joint embedding space for integrating disparate temporal patient measurements and demonstrates the feasibility of the clinical AI framework through multi-task ICU patient acuity estimation."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

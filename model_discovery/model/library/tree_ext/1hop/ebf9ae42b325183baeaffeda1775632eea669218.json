@@ -1,0 +1,25 @@
+{
+    "acronym": "ebf9ae42b325183baeaffeda1775632eea669218",
+    "title": "Autonomous Monitors for Detecting Failures Early and Reporting Interpretable Alerts in Cloud Operations",
+    "seed_ids": [
+        "gpt3"
+    ],
+    "s2id": "ebf9ae42b325183baeaffeda1775632eea669218",
+    "abstract": "Detecting failures early in cloud-based software systems is highly significant as it can reduce operational costs, enhance service reliability, and improve user experience. Many existing approaches include anomaly detection in metrics or a blend of metric and log features. However, such approaches tend to be very complex and hardly explainable, and consequently non-trivial for implementation and evaluation in industrial contexts. In collaboration with a case company and their cloud-based system in the domain of PIM (Product Information Management), we propose and implement autonomous monitors for proactive monitoring across multiple services of distributed software architecture, fused with anomaly detection in performance metrics and log analysis using GPT-3. We demonstrated that operations engineers tend to be more efficient by having access to interpretable alert notifications based on detected anomalies that contain information about implications and potential root causes. Additionally, proposed autonomous monitors turned out to be beneficial for the timely identification and revision of potential issues before they propagate and cause severe consequences.",
+    "authors": [
+        "Adha Hrusto",
+        "Per Runeson",
+        "Magnus C. Ohlsson"
+    ],
+    "venue": "2024 IEEE/ACM 46th International Conference on Software Engineering: Software Engineering in Practice (ICSE-SEIP)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes and implements autonomous monitors for proactive monitoring across multiple services of distributed software architecture, fused with anomaly detection in performance metrics and log analysis using GPT-3, and demonstrated that operations engineers tend to be more efficient by having access to interpretable alert notifications based on detected anomalies."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

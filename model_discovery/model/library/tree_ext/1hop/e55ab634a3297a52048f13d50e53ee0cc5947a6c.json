@@ -1,0 +1,29 @@
+{
+    "acronym": "e55ab634a3297a52048f13d50e53ee0cc5947a6c",
+    "title": "Punctuation Restoration Improves Structure Understanding without Supervision",
+    "seed_ids": [
+        "gpt",
+        "bert",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "d9f6ada77448664b71128bb19df15765336974a6"
+    ],
+    "s2id": "e55ab634a3297a52048f13d50e53ee0cc5947a6c",
+    "abstract": "Unsupervised learning objectives like language modeling and de-noising constitute a significant part in producing pre-trained models that perform various downstream applications from natural language understanding to conversational tasks. However, despite impressive generative capabilities of recent large language models, their abilities to capture syntactic or semantic structure within text lag behind. We hypothesize that the mismatch between linguistic performance and competence in machines is attributable to insufficient transfer of linguistic structure knowledge to computational systems with currently popular pre-training objectives. We show that punctuation restoration as a learning objective improves in- and out-of-distribution performance on structure-related tasks like named entity recognition, open information extraction, chunking, and part-of-speech tagging. Punctuation restoration is an effective learning objective that can improve structure understanding and yield a more robust structure-aware representations of natural language.",
+    "authors": [
+        "Junghyun Min",
+        "Minho Lee",
+        "Woochul Lee",
+        "Yeonsoo Lee"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that punctuation restoration as a learning objective improves in- and out-of-distribution performance on structure-related tasks like named entity recognition, open information extraction, chunking, and part-of-speech tagging and can improve structure understanding and yield a more robust structure-aware representations of natural language."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

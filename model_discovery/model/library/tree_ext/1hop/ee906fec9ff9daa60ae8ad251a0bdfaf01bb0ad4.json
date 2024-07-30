@@ -1,0 +1,23 @@
+{
+    "acronym": "ee906fec9ff9daa60ae8ad251a0bdfaf01bb0ad4",
+    "title": "Domain Embeddings for Generating Complex Descriptions of Concepts in Italian Language",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "ee906fec9ff9daa60ae8ad251a0bdfaf01bb0ad4",
+    "abstract": "In this work, we propose a Distributional Semantic resource enriched with linguistic and lexical information extracted from electronic dictionaries, designed to address the challenge of bridging the gap between the continuous semantic values represented by distributional vectors and the discrete descriptions offered by general semantics theory. Recently, many researchers have concentrated on the nexus between embeddings and a comprehensive theory of semantics and meaning. This often involves decoding the representation of word meanings in Distributional Models into a set of discrete, manually constructed properties such as semantic primitives or features, using neural decoding techniques. Our approach introduces an alternative strategy grounded in linguistic data. We have developed a collection of domain-specific co-occurrence matrices, derived from two sources: a classification of Italian nouns categorized into 4 semantic traits and 20 concrete noun sub-categories, and a list of Italian verbs classified according to their semantic classes. In these matrices, the co-occurrence values for each word are calculated exclusively with a defined set of words pertinent to a particular lexical domain. The resource comprises 21 domain-specific matrices, one comprehensive matrix, and a Graphical User Interface. Our model facilitates the generation of reasoned semantic descriptions of concepts by selecting matrices directly associated with concrete conceptual knowledge, such as a matrix based on location nouns and the concept of animal habitats. We assessed the utility of the resource through two experiments, achieving promising outcomes in both: the automatic classification of animal nouns and the extraction of animal features.",
+    "authors": [
+        "Alessandro Maisto"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

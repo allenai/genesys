@@ -1,0 +1,29 @@
+{
+    "acronym": "5bb8588f0ae7be7cf7d9111ad32137db8211b97f",
+    "title": "Generalized Power Attacks against Crypto Hardware using Long-Range Deep Learning",
+    "seed_ids": [
+        "flash",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c"
+    ],
+    "s2id": "5bb8588f0ae7be7cf7d9111ad32137db8211b97f",
+    "abstract": "To make cryptographic processors more resilient against side-channel attacks, engineers have developed various countermeasures. However, the effectiveness of these countermeasures is often uncertain, as it depends on the complex interplay between software and hardware. Assessing a countermeasure\u2019s effectiveness using profiling techniques or machine learning so far requires significant expertise and effort to be adapted to new targets which makes those assessments expensive. We argue that including cost-effective automated attacks will help chip design teams to quickly evaluate their countermeasures during the development phase, paving the way to more secure chips.In this paper, we lay the foundations toward such automated system by proposing GPAM, the first deep-learning system for power side-channel analysis that generalizes across multiple cryptographic algorithms, implementations, and side-channel countermeasures without the need for manual tuning or trace preprocessing. We demonstrate GPAM\u2019s capability by successfully attacking four hardened hardware-accelerated elliptic-curve digital-signature implementations. We showcase GPAM\u2019s ability to generalize across multiple algorithms by attacking a protected AES implementation and achieving comparable performance to state-of-the-art attacks, but without manual trace curation and within a limited budget. We release our data and models as an open-source contribution to allow the community to independently replicate our results and build on them.",
+    "authors": [
+        "Elie Bursztein",
+        "L. Invernizzi",
+        "Karel Kr'al",
+        "D. Moghimi",
+        "J. Picod",
+        "Marina Zhang"
+    ],
+    "venue": "IACR Transactions on Cryptographic Hardware and Embedded Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "GPAM is proposed, the first deep-learning system for power side-channel analysis that generalizes across multiple cryptographic algorithms, implementations, and side-channel countermeasures without the need for manual tuning or trace preprocessing."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

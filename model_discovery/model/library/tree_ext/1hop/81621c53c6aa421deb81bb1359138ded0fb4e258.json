@@ -1,0 +1,36 @@
+{
+    "acronym": "81621c53c6aa421deb81bb1359138ded0fb4e258",
+    "title": "DiffusionDet: Diffusion Model for Object Detection",
+    "seed_ids": [
+        "analogbits",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "8f48171bf05474449777d9bbf6766d480332e09f",
+        "c69361b20ad3d88ad4c5e9e1a3a66d0932f2bc43",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "3b2a675bb617ae1a920e8e29d535cdf27826e999",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "71cc838d8a50a0d62cc9c679536f1f25b2ea6b7f",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "81621c53c6aa421deb81bb1359138ded0fb4e258",
+    "abstract": "We propose DiffusionDet, a new framework that formulates object detection as a denoising diffusion process from noisy boxes to object boxes. During the training stage, object boxes diffuse from ground-truth boxes to random distribution, and the model learns to reverse this noising process. In inference, the model refines a set of randomly generated boxes to the output results in a progressive way. Our work possesses an appealing property of flexibility, which enables the dynamic number of boxes and iterative evaluation. The extensive experiments on the standard benchmarks show that DiffusionDet achieves favorable performance compared to previous well-established detectors. For example, DiffusionDet achieves 5.3 AP and 4.8 AP gains when evaluated with more boxes and iteration steps, under a zero-shot transfer setting from COCO to CrowdHuman. Our code is available at https://github.com/ShoufaChen/DiffusionDet.",
+    "authors": [
+        "Shoufa Chen",
+        "Pei Sun",
+        "Yibing Song",
+        "P. Luo"
+    ],
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The extensive experiments show that DiffusionDet achieves favorable performance compared to previous well-established detectors, and possesses an appealing property of flexibility, which enables the dynamic number of boxes and iterative evaluation."
+    },
+    "citationCount": 274,
+    "influentialCitationCount": 30,
+    "code": null,
+    "description": null,
+    "url": null
+}

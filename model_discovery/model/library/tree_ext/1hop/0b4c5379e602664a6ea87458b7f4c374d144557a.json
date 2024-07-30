@@ -1,0 +1,30 @@
+{
+    "acronym": "0b4c5379e602664a6ea87458b7f4c374d144557a",
+    "title": "Mo\u00fbsai: Text-to-Music Generation with Long-Context Latent Diffusion",
+    "seed_ids": [
+        "classfreediffu",
+        "c4494280e557ae1a5d4c34c854c4350f4ea3c912",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "0b4c5379e602664a6ea87458b7f4c374d144557a",
+    "abstract": "The recent surge in popularity of diffusion models for image generation has brought new attention to the potential of these models in other ar-eas of media synthesis. One area that has yet to be fully explored is the application of diffusion models to music generation. Music generation requires to handle multiple aspects, including the temporal dimension, long-term structure, multiple layers of overlapping sounds, and nuances that only trained listeners can detect. In our work, we investigate the potential of diffusion models for text-conditional music generation. We develop a cascading latent diffusion approach that can generate multiple minutes of high-quality stereo music at 48kHz from textual descriptions. For each model, we make an effort to maintain reasonable inference speed, targeting real-time on a single consumer GPU. In addition to trained models, we provide a collection of open-source libraries with the hope of facilitating future work in the \ufb01eld. 1",
+    "authors": [
+        "Flavio Schneider",
+        "Zhijing Jin",
+        "B. Sch\u00f6lkopf"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A cascading latent diffusion approach that can generate multiple minutes of high-quality stereo music at 48kHz from textual descriptions is developed, targeting real-time on a single consumer GPU."
+    },
+    "citationCount": 31,
+    "influentialCitationCount": 6,
+    "code": null,
+    "description": null,
+    "url": null
+}

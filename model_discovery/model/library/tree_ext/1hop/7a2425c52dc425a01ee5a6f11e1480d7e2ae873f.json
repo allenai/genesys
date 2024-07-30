@@ -1,0 +1,25 @@
+{
+    "acronym": "7a2425c52dc425a01ee5a6f11e1480d7e2ae873f",
+    "title": "ArtFusion: Controllable Arbitrary Style Transfer using Dual Conditional Latent Diffusion Models",
+    "seed_ids": [
+        "classfreediffu",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "7a2425c52dc425a01ee5a6f11e1480d7e2ae873f",
+    "abstract": "Arbitrary Style Transfer (AST) aims to transform images by adopting the style from any selected artwork. Nonetheless, the need to accommodate diverse and subjective user preferences poses a significant challenge. While some users wish to preserve distinct content structures, others might favor a more pronounced stylization. Despite advances in feed-forward AST methods, their limited customizability hinders their practical application. We propose a new approach, ArtFusion, which provides a flexible balance between content and style. In contrast to traditional methods reliant on biased similarity losses, ArtFusion utilizes our innovative Dual Conditional Latent Diffusion Probabilistic Models (Dual-cLDM). This approach mitigates repetitive patterns and enhances subtle artistic aspects like brush strokes and genre-specific features. Despite the promising results of conditional diffusion probabilistic models (cDM) in various generative tasks, their introduction to style transfer is challenging due to the requirement for paired training data. ArtFusion successfully navigates this issue, offering more practical and controllable stylization. A key element of our approach involves using a single image for both content and style during model training, all the while maintaining effective stylization during inference. ArtFusion outperforms existing approaches on outstanding controllability and faithful presentation of artistic details, providing evidence of its superior style transfer capabilities. Furthermore, the Dual-cLDM utilized in ArtFusion carries the potential for a variety of complex multi-condition generative tasks, thus greatly broadening the impact of our research.",
+    "authors": [
+        "Da Chen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ArtFusion outperforms existing approaches on outstanding controllability and faithful presentation of artistic details, providing evidence of its superior style transfer capabilities."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

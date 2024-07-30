@@ -1,0 +1,41 @@
+{
+    "acronym": "af385c0fdd0eda2bbf429bea6fedffc327c8a180",
+    "title": "Randomized Positional Encodings Boost Length Generalization of Transformers",
+    "seed_ids": [
+        "alibi",
+        "transformerxl",
+        "roformer",
+        "neuraldatarouter",
+        "29bc052f3c46bf1110cc02fd71d454ebe8b13b80",
+        "c6d38add1b7bbc10f0da37a90e3f1b51ee5fb617",
+        "e528466e2aff981511d4ca6e063211297c0b4175",
+        "ed535e93d5b5a8b689e861e9c6083a806d1535c2",
+        "49e65b12d8d11f2ccb5ddd7be72a8f746b2d1bc2",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "5cdab78acc4f3aab429a0dd41c3ec7e605d42e7b"
+    ],
+    "s2id": "af385c0fdd0eda2bbf429bea6fedffc327c8a180",
+    "abstract": "Transformers have impressive generalization capabilities on tasks with a fixed context length. However, they fail to generalize to sequences of arbitrary length, even for seemingly simple tasks such as duplicating a string. Moreover, simply training on longer sequences is inefficient due to the quadratic computation complexity of the global attention mechanism. In this work, we demonstrate that this failure mode is linked to positional encodings being out-of-distribution for longer sequences (even for relative encodings) and introduce a novel family of positional encodings that can overcome this problem. Concretely, our randomized positional encoding scheme simulates the positions of longer sequences and randomly selects an ordered subset to fit the sequence\u2019s length. Our large-scale empirical evaluation of 6000 models across 15 algorithmic reasoning tasks shows that our method allows Transformers to generalize to sequences of unseen length (increasing test accuracy by 12.0% on average).",
+    "authors": [
+        "Anian Ruoss",
+        "Gr'egoire Del'etang",
+        "Tim Genewein",
+        "Jordi Grau-Moya",
+        "R. Csord\u00e1s",
+        "Mehdi Abbana Bennani",
+        "S. Legg",
+        "J. Veness"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work demonstrates that this failure mode is linked to positional encodings being out-of-distribution for longer sequences (even for relative encoding) and introduces a novel family of positional encodes that can overcome this problem."
+    },
+    "citationCount": 54,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

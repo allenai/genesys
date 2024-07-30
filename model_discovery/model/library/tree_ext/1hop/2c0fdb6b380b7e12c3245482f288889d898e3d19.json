@@ -1,0 +1,33 @@
+{
+    "acronym": "2c0fdb6b380b7e12c3245482f288889d898e3d19",
+    "title": "GDA: Generative Data Augmentation Techniques for Relation Extraction Tasks",
+    "seed_ids": [
+        "gpt2",
+        "81303a966c2359d7b4a9f4ffbdeaef62ed6f151c",
+        "24fcdaf969089e6a411f7cebc9274bbc53c25e42",
+        "7eba731a7fd8de712b7b79b5af41a6e2d4dbd191",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "2c0fdb6b380b7e12c3245482f288889d898e3d19",
+    "abstract": "Relation extraction (RE) tasks show promising performance in extracting relations from two entities mentioned in sentences, given sufficient annotations available during training. Such annotations would be labor-intensive to obtain in practice. Existing work adopts data augmentation techniques to generate pseudo-annotated sentences beyond limited annotations. These techniques neither preserve the semantic consistency of the original sentences when rule-based augmentations are adopted, nor preserve the syntax structure of sentences when expressing relations using seq2seq models, resulting in less diverse augmentations. In this work, we propose a dedicated augmentation technique for relational texts, named GDA, which uses two complementary modules to preserve both semantic consistency and syntax structures. We adopt a generative formulation and design a multi-tasking solution to achieve synergies. Furthermore, GDA adopts entity hints as the prior knowledge of the generative model to augment diverse sentences. Experimental results in three datasets under a low-resource setting showed that GDA could bring {\\em 2.0\\%} F1 improvements compared with no augmentation technique. Source code and data are available.",
+    "authors": [
+        "Xuming Hu",
+        "Aiwei Liu",
+        "Zeqi Tan",
+        "Xin Zhang",
+        "Chenwei Zhang",
+        "Irwin King",
+        "Philip S. Yu"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A dedicated augmentation technique for relational texts, named GDA, which uses two complementary modules to preserve both semantic consistency and syntax structures and adopts entity hints as the prior knowledge of the generative model to augment diverse sentences."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

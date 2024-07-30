@@ -1,0 +1,26 @@
+{
+    "acronym": "23314d80ba3a3acf6d66d519c7ca2a6b48eb3eca",
+    "title": "Attention-Free Keyword Spotting",
+    "seed_ids": [
+        "gmlp",
+        "94b69cf199fa0b6c842e17fe5d6174a9d161c3df",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "23314d80ba3a3acf6d66d519c7ca2a6b48eb3eca",
+    "abstract": "Till now, attention-based models have been used with great success in the keyword spotting problem domain. However, in light of recent advances in deep learning, the question arises whether self-attention is truly irreplaceable for recognizing speech keywords. We thus explore the usage of gated MLPs\u2014previously shown to be alternatives to transformers in vision tasks\u2014for the keyword spotting task. We provide a family of highly ef\ufb01cient MLP-based models for keyword spotting, with less than 0.5 million parameters. We show that our approach achieves competitive performance on Google Speech Commands V2-12 and V2-35 benchmarks with much fewer parameters than self-attention-based methods.",
+    "authors": [
+        "Mashrur M. Morshed",
+        "Ahmad Omar Ahsan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work explores the usage of gated MLPs\u2014previously shown to be alternatives to transformers in vision tasks\u2014for the keyword spotting task and provides a family of highly ef\ufb01cient MLP-based models for keyword spotting, with less than 0.5 million parameters."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

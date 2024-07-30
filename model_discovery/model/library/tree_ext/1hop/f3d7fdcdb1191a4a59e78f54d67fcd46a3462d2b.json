@@ -1,0 +1,39 @@
+{
+    "acronym": "f3d7fdcdb1191a4a59e78f54d67fcd46a3462d2b",
+    "title": "Temporal Scaling Law for Large Language Models",
+    "seed_ids": [
+        "transformer",
+        "gpt3",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f3d7fdcdb1191a4a59e78f54d67fcd46a3462d2b",
+    "abstract": "Recently, Large Language Models (LLMs) have been widely adopted in a wide range of tasks, leading to increasing attention towards the research on how scaling LLMs affects their performance. Existing works, termed Scaling Laws, have discovered that the final test loss of LLMs scales as power-laws with model size, computational budget, and dataset size. However, the temporal change of the test loss of an LLM throughout its pre-training process remains unexplored, though it is valuable in many aspects, such as selecting better hyperparameters \\textit{directly} on the target LLM. In this paper, we propose the novel concept of Temporal Scaling Law, studying how the test loss of an LLM evolves as the training steps scale up. In contrast to modeling the test loss as a whole in a coarse-grained manner, we break it down and dive into the fine-grained test loss of each token position, and further develop a dynamic hyperbolic-law. Afterwards, we derive the much more precise temporal scaling law by studying the temporal patterns of the parameters in the dynamic hyperbolic-law. Results on both in-distribution (ID) and out-of-distribution (OOD) validation datasets demonstrate that our temporal scaling law accurately predicts the test loss of LLMs across training steps. Our temporal scaling law has broad practical applications. First, it enables direct and efficient hyperparameter selection on the target LLM, such as data mixture proportions. Secondly, viewing the LLM pre-training dynamics from the token position granularity provides some insights to enhance the understanding of LLM pre-training.",
+    "authors": [
+        "Yizhe Xiong",
+        "Xiansheng Chen",
+        "Xin Ye",
+        "Hui Chen",
+        "Zijia Lin",
+        "Haoran Lian",
+        "Jianwei Niu",
+        "Guiguang Ding"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes the novel concept of Temporal Scaling Law, studying how the test loss of an LLM evolves as the training steps scale up, and derives the much more precise temporal scaling law by studying the temporal patterns of the parameters in the dynamic hyperbolic-law."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

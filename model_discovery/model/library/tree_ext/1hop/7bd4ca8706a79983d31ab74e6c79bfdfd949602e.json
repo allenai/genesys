@@ -1,0 +1,33 @@
+{
+    "acronym": "7bd4ca8706a79983d31ab74e6c79bfdfd949602e",
+    "title": "Label Words are Anchors: An Information Flow Perspective for Understanding In-Context Learning",
+    "seed_ids": [
+        "gpt2",
+        "48abfc41a0abf023d2037ebb2f274835e0d322d0",
+        "525d93a382f6e7873b5d8a2e0713eb3dff7fb250",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "7bd4ca8706a79983d31ab74e6c79bfdfd949602e",
+    "abstract": "In-context learning (ICL) emerges as a promising capability of large language models (LLMs) by providing them with demonstration examples to perform diverse tasks. However, the underlying mechanism of how LLMs learn from the provided context remains under-explored. In this paper, we investigate the working mechanism of ICL through an information flow lens. Our findings reveal that label words in the demonstration examples function as anchors: (1) semantic information aggregates into label word representations during the shallow computation layers' processing; (2) the consolidated information in label words serves as a reference for LLMs' final predictions. Based on these insights, we introduce an anchor re-weighting method to improve ICL performance, a demonstration compression technique to expedite inference, and an analysis framework for diagnosing ICL errors in GPT2-XL. The promising applications of our findings again validate the uncovered ICL working mechanism and pave the way for future studies.",
+    "authors": [
+        "Lean Wang",
+        "Lei Li",
+        "Damai Dai",
+        "Deli Chen",
+        "Hao Zhou",
+        "Fandong Meng",
+        "Jie Zhou",
+        "Xu Sun"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An anchor re-weighting method to improve ICL performance, a demonstration compression technique to expedite inference, and an analysis framework for diagnosing ICL errors in GPT2-XL are introduced."
+    },
+    "citationCount": 87,
+    "influentialCitationCount": 12,
+    "code": null,
+    "description": null,
+    "url": null
+}

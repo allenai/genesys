@@ -1,0 +1,34 @@
+{
+    "acronym": "e528466e2aff981511d4ca6e063211297c0b4175",
+    "title": "The Neural Data Router: Adaptive Control Flow in Transformers Improves Systematic Generalization",
+    "seed_ids": [
+        "nystromformer",
+        "transformerxl",
+        "universaltrans",
+        "ed535e93d5b5a8b689e861e9c6083a806d1535c2",
+        "49e65b12d8d11f2ccb5ddd7be72a8f746b2d1bc2",
+        "86589b6286ef3c55b8b4fccfb41a3b30b7afdf61",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "5cdab78acc4f3aab429a0dd41c3ec7e605d42e7b",
+        "59a916cdc943f0282908e6f3fa0360f4c5fb78d0"
+    ],
+    "s2id": "e528466e2aff981511d4ca6e063211297c0b4175",
+    "abstract": "Despite progress across a broad range of applications, Transformers have limited success in systematic generalization. The situation is especially frustrating in the case of algorithmic tasks, where they often fail to find intuitive solutions that route relevant information to the right node/operation at the right time in the grid represented by Transformer columns. To facilitate the learning of useful control flow, we propose two modifications to the Transformer architecture, copy gate and geometric attention. Our novel Neural Data Router (NDR) achieves 100% length generalization accuracy on the classic compositional table lookup task, as well as near-perfect accuracy on the simple arithmetic task and a new variant of ListOps testing for generalization across computational depths. NDR's attention and gating patterns tend to be interpretable as an intuitive form of neural routing. Our code is public.",
+    "authors": [
+        "R. Csord\u00e1s",
+        "Kazuki Irie",
+        "J. Schmidhuber"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This novel Neural Data Router (NDR) achieves 100% length generalization accuracy on the classic compositional table lookup task, as well as near-perfect errors on the simple arithmetic task and a new variant of ListOps testing for generalization across computational depths."
+    },
+    "citationCount": 42,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

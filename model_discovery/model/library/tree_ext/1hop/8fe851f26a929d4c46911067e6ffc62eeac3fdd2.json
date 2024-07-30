@@ -1,0 +1,30 @@
+{
+    "acronym": "8fe851f26a929d4c46911067e6ffc62eeac3fdd2",
+    "title": "Take Care of Your Prompt Bias! Investigating and Mitigating Prompt Bias in Factual Knowledge Extraction",
+    "seed_ids": [
+        "bert",
+        "293499319bdd460cb3fca1f0f5eb330e64bf3ff9",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "d9f6ada77448664b71128bb19df15765336974a6"
+    ],
+    "s2id": "8fe851f26a929d4c46911067e6ffc62eeac3fdd2",
+    "abstract": "Recent research shows that pre-trained language models (PLMs) suffer from \u201cprompt bias\u201d in factual knowledge extraction, i.e., prompts tend to introduce biases toward specific labels. Prompt bias presents a significant challenge in assessing the factual knowledge within PLMs. Therefore, this paper aims to improve the reliability of existing benchmarks by thoroughly investigating and mitigating prompt bias. We show that: 1) all prompts in the experiments exhibit non-negligible bias, with gradient-based prompts like AutoPrompt and OptiPrompt displaying significantly higher levels of bias; 2) prompt bias can amplify benchmark accuracy unreasonably by overfitting the test datasets, especially on imbalanced datasets like LAMA. Based on these findings, we propose a representation-based approach to mitigate the prompt bias during inference time. Specifically, we first estimate the biased representation using prompt-only querying, and then remove it from the model\u2019s internal representations to generate the debiased representations, which are used to produce the final debiased outputs. Experiments across various prompts, PLMs, and benchmarks show that our approach can not only correct the overfitted performance caused by prompt bias, but also significantly improve the prompt retrieval capability (up to 10% absolute performance gain). These results indicate that our approach effectively alleviates prompt bias in knowledge evaluation, thereby enhancing the reliability of benchmark assessments. Hopefully, our plug-and-play approach can be a golden standard to strengthen PLMs toward reliable knowledge bases. Code and data are released in https://github.com/FelliYang/PromptBias.",
+    "authors": [
+        "Ziyang Xu",
+        "Keqin Peng",
+        "Liang Ding",
+        "D. Tao",
+        "Xiliang Lu"
+    ],
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The approach effectively alleviates prompt bias in knowledge evaluation, thereby enhancing the reliability of benchmark assessments, and can be a golden standard to strengthen PLMs toward reliable knowledge bases."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

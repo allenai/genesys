@@ -1,0 +1,29 @@
+{
+    "acronym": "be7e2dd603587f9707f84a6f0402ca6e0451f857",
+    "title": "CTVSR: Collaborative Spatial\u2013Temporal Transformer for Video Super-Resolution",
+    "seed_ids": [
+        "transformer",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "be7e2dd603587f9707f84a6f0402ca6e0451f857",
+    "abstract": "Video super-resolution (VSR) is important in video processing for reconstructing high-definition image sequences from corresponding continuous and highly-related video frames. However, existing VSR methods have limitations in fusing spatial-temporal information. Some methods only fuse spatial-temporal information on a limited range of total input sequences, while others adopt a recurrent strategy that gradually attenuates the spatial information. While recent advances in VSR utilize Transformer-based methods to improve the quality of the upscaled videos, these methods require significant computational resources to model the long-range dependencies, which dramatically increases the model complexity. To address these issues, we propose a Collaborative Transformer for Video Super-Resolution (CTVSR). The proposed method integrates the strengths of Transformer-based and recurrent-based models by concurrently assimilating the spatial information derived from multi-scale receptive fields and the temporal information acquired from temporal trajectories. In particular, we propose a Spatial Enhanced Network (SEN) with two key components: Token Dropout Attention (TDA) and Deformable Multi-head Cross Attention (DMCA). TDA focuses on the key regions to extract more informative features, and DMCA employs deformable cross attention to gather information from adjacent frames. Moreover, we introduce a Temporal-trajectory Enhanced Network (TEN) that computes the similarity of a given token with temporally-related tokens in the temporal trajectory, which is different from previous methods that evaluate all tokens within the temporal dimension. With comprehensive quantitative and qualitative experiments on four widely-used VSR benchmarks, the proposed CTVSR achieves competitive performance with relatively low computational consumption and high forward speed.",
+    "authors": [
+        "Jun Tang",
+        "Chenyan Lu",
+        "Zhengxue Liu",
+        "Jiale Li",
+        "Hang Dai",
+        "Yong Ding"
+    ],
+    "venue": "IEEE transactions on circuits and systems for video technology (Print)",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Collaborative Transformer for Video Super-Resolution (CTVSR) is proposed that integrates the strengths of Transformer-based and recurrent-based models by concurrently assimilating the spatial information derived from multi-scale receptive fields and the temporal information acquired from temporal trajectories."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

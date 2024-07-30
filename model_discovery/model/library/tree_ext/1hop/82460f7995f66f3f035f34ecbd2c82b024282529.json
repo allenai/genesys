@@ -1,0 +1,47 @@
+{
+    "acronym": "82460f7995f66f3f035f34ecbd2c82b024282529",
+    "title": "Make Your LLM Fully Utilize the Context",
+    "seed_ids": [
+        "landmarkattn",
+        "7b2470f0f53fcd79b82ed6a0e6062f39b07c27d6",
+        "d8b51d518f2dd62943762ceaa8961d3b1bfbcc1a",
+        "c9603ec967879c24973b5bd48861df2e5555932e",
+        "539fadfb615ef84c240f4741061c44eeda540091",
+        "2b35b946a8ad64e018c24b283bc1c6c65d36fb67",
+        "b31a5884a8ebe96b6300839b28608b97f8f8ef76",
+        "b0db25e317cf856f1ec1ca3df0e573d850ed4696",
+        "b069c32fcd77160f944ab3ba71ab6f0cfb782c68",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "60b35c6d68acced19b0c66edcfc0ee0a2c11efed",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "f75d05e759447c2aedb7097728f29f9a520d9bc1",
+        "ec307b17f193b14292206b65a1bcc95bfd8f02ed",
+        "4e3935ef7da6bcbb202ec7f8b285c313cadcd044",
+        "9dc624d7258d1a56117ca720aea953ce46b66b21",
+        "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "82460f7995f66f3f035f34ecbd2c82b024282529",
+    "abstract": "While many contemporary large language models (LLMs) can process lengthy input, they still struggle to fully utilize information within the long context, known as the lost-in-the-middle challenge. We hypothesize that it stems from insufficient explicit supervision during the long-context training, which fails to emphasize that any position in a long context can hold crucial information. Based on this intuition, our study presents information-intensive (IN2) training, a purely data-driven solution to overcome lost-in-the-middle. Specifically, IN2 training leverages a synthesized long-context question-answer dataset, where the answer requires (1) fine-grained information awareness on a short segment (~128 tokens) within a synthesized long context (4K-32K tokens), and (2) the integration and reasoning of information from two or more short segments. Through applying this information-intensive training on Mistral-7B, we present FILM-7B (FILl-in-the-Middle). To thoroughly assess the ability of FILM-7B for utilizing long contexts, we design three probing tasks that encompass various context styles (document, code, and structured-data context) and information retrieval patterns (forward, backward, and bi-directional retrieval). The probing results demonstrate that FILM-7B can robustly retrieve information from different positions in its 32K context window. Beyond these probing tasks, FILM-7B significantly improves the performance on real-world long-context tasks (e.g., 23.5->26.9 F1 score on NarrativeQA), while maintaining a comparable performance on short-context tasks (e.g., 59.3->59.2 accuracy on MMLU). Github Link: https://github.com/microsoft/FILM.",
+    "authors": [
+        "Shengnan An",
+        "Zexiong Ma",
+        "Zeqi Lin",
+        "Nanning Zheng",
+        "Jian-Guang Lou"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study presents information-intensive (IN2) training, a purely data-driven solution to overcome lost-in-the-middle challenge and presents FILM-7B (FILl-in-the-Middle), a purely data-driven solution to overcome lost-in-the-middle challenge."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "3b7deb3ff648776e11f55a235360bd40a6c15ffb",
+    "title": "CoDA21: Evaluating Language Understanding Capabilities of NLP Models With Context-Definition Alignment",
+    "seed_ids": [
+        "gpt2",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "d9f6ada77448664b71128bb19df15765336974a6",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "3b7deb3ff648776e11f55a235360bd40a6c15ffb",
+    "abstract": "Pretrained language models (PLMs) have achieved superhuman performance on many benchmarks, creating a need for harder tasks. We introduce CoDA21 (Context Definition Alignment), a challenging benchmark that measures natural language understanding (NLU) capabilities of PLMs: Given a definition and a context each for k words, but not the words themselves, the task is to align the k definitions with the k contexts. CoDA21 requires a deep understanding of contexts and definitions, including complex inference and world knowledge. We find that there is a large gap between human and PLM performance, suggesting that CoDA21 measures an aspect of NLU that is not sufficiently covered in existing benchmarks.",
+    "authors": [
+        "Lutfi Kerem Senel",
+        "Timo Schick",
+        "Hinrich Sch\u00fctze"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that there is a large gap between human and PLM performance, suggesting that CoDA21 measures an aspect of NLU that is not sufficiently covered in existing benchmarks."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

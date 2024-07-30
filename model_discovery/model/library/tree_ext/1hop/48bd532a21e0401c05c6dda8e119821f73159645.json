@@ -1,0 +1,25 @@
+{
+    "acronym": "48bd532a21e0401c05c6dda8e119821f73159645",
+    "title": "Efficient Transformer-based Hyper-parameter Optimization for Resource-constrained IoT Environments",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "48bd532a21e0401c05c6dda8e119821f73159645",
+    "abstract": "The hyper-parameter optimization (HPO) process is imperative for finding the best-performing Convolutional Neural Networks (CNNs). The automation process of HPO is characterized by its sizable computational footprint and its lack of transparency; both important factors in a resource-constrained Internet of Things (IoT) environment. In this paper, we address these problems by proposing a novel approach that combines transformer architecture and actor-critic Reinforcement Learning (RL) model, TRL-HPO, equipped with multi-headed attention that enables parallelization and progressive generation of layers. These assumptions are founded empirically by evaluating TRL-HPO on the MNIST dataset and comparing it with state-of-the-art approaches that build CNN models from scratch. The results show that TRL-HPO outperforms the classification results of these approaches by 6.8% within the same time frame, demonstrating the efficiency of TRL-HPO for the HPO process. The analysis of the results identifies the main culprit for performance degradation attributed to stacking fully connected layers. This paper identifies new avenues for improving RL-based HPO processes in resource-constrained environments.",
+    "authors": [
+        "I. Shaer",
+        "S. Nikan",
+        "Abdallah Shami"
+    ],
+    "venue": "IEEE Internet of Things Magazine",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel approach that combines transformer architecture and actor-critic Reinforcement Learning model, TRL-HPO, equipped with multi-headed attention that enables parallelization and progressive generation of layers is proposed, demonstrating the efficiency of TRL-HPO for the HPO process."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

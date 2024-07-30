@@ -1,0 +1,34 @@
+{
+    "acronym": "670b4f3aebb1156f608880e26f710d3dc04fee51",
+    "title": "Specialist or Generalist? Instruction Tuning for Specific NLP Tasks",
+    "seed_ids": [
+        "gpt3",
+        "bb6ae69945f0f90c5197f8ab7072dcc8eec02cd6",
+        "5697a0ede5425954d48daa6e1893dc87bd7d8be7",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "492a655a67e6ec7423a968cedb70eec0cdbc8e98",
+        "053b1d7b97eb2c91fc3921d589c160b0923c70b1",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "670b4f3aebb1156f608880e26f710d3dc04fee51",
+    "abstract": "The potential of large language models (LLMs) to simultaneously perform a wide range of natural language processing (NLP) tasks has been the subject of extensive research. Although instruction tuning has proven to be a data-efficient method for transforming LLMs into such generalist models, their performance still lags behind specialist models trained exclusively for specific tasks. In this paper, we investigate whether incorporating broad-coverage generalist instruction tuning can contribute to building a specialist model. We hypothesize that its efficacy depends on task specificity and skill requirements. Our experiments assess four target tasks with distinct coverage levels, revealing that integrating generalist instruction tuning consistently enhances model performance when the task coverage is broad. The effect is particularly pronounced when the amount of task-specific training data is limited. Further investigation into three target tasks focusing on different capabilities demonstrates that generalist instruction tuning improves understanding and reasoning abilities. However, for tasks requiring factual knowledge, generalist data containing hallucinatory information may negatively affect the model's performance. Overall, our work provides a systematic guide for developing specialist models with general instruction tuning. Our code and other related resources can be found at https://github.com/DavidFanzz/Generalist_or_Specialist.",
+    "authors": [
+        "Chufan Shi",
+        "Yixuan Su",
+        "Cheng Yang",
+        "Yujiu Yang",
+        "Deng Cai"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Investigation of four target tasks with distinct coverage levels demonstrates that integrating generalist instruction tuning consistently enhances model performance when the task coverage is broad, and provides a systematic guide for developing specialist models with general instruction tuning."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

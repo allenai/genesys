@@ -1,0 +1,28 @@
+{
+    "acronym": "5476e1a2dbd1662c065b10b9b9cd86f99c2c7813",
+    "title": "TASA: Temporal Attention With Spatial Autoencoder Network for Odor-Induced Emotion Classification Using EEG",
+    "seed_ids": [
+        "transformer"
+    ],
+    "s2id": "5476e1a2dbd1662c065b10b9b9cd86f99c2c7813",
+    "abstract": "The olfactory system enables humans to smell different odors, which are closely related to emotions. The high temporal resolution and non-invasiveness of Electroencephalogram (EEG) make it suitable to objectively study human preferences for odors. Effectively learning the temporal dynamics and spatial information from EEG is crucial for detecting odor-induced emotional valence. In this paper, we propose a deep learning architecture called Temporal Attention with Spatial Autoencoder Network (TASA) for predicting odor-induced emotions using EEG. TASA consists of a filter-bank layer, a spatial encoder, a time segmentation layer, a Long Short-Term Memory (LSTM) module, a multi-head self-attention (MSA) layer, and a fully connected layer. We improve upon the previous work by utilizing a two-phase learning framework, using the autoencoder module to learn the spatial information among electrodes by reconstructing the given input with a latent representation in the spatial dimension, which aims to minimize information loss compared to spatial filtering with CNN. The second improvement is inspired by the continuous nature of the olfactory process; we propose to use LSTM-MSA in TASA to capture its temporal dynamics by learning the intercorrelation among the time segments of the EEG. TASA is evaluated on an existing olfactory EEG dataset and compared with several existing deep learning architectures to demonstrate its effectiveness in predicting olfactory-triggered emotional responses. Interpretability analyses with DeepLIFT also suggest that TASA learns spatial-spectral features that are relevant to olfactory-induced emotion recognition.",
+    "authors": [
+        "Chengxuan Tong",
+        "Yi Ding",
+        "Zhuo Zhang",
+        "Haihong Zhang",
+        "Kevin JunLiang Lim",
+        "Cuntai Guan"
+    ],
+    "venue": "IEEE transactions on neural systems and rehabilitation engineering",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A deep learning architecture called Temporal Attention with Spatial Autoencoder Network (TASA) for predicting odor-induced emotions using EEG, and Interpretability analyses with DeepLIFT suggest that TASA learns spatial-spectral features that are relevant to olfactory-induced emotion recognition."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

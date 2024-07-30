@@ -1,0 +1,24 @@
+{
+    "acronym": "886f04fa5cb313a10b6b8ed2da4ab16faecc2a19",
+    "title": "Low-resource neural machine translation with morphological modeling",
+    "seed_ids": [
+        "bert",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "886f04fa5cb313a10b6b8ed2da4ab16faecc2a19",
+    "abstract": "Morphological modeling in neural machine translation (NMT) is a promising approach to achieving open-vocabulary machine translation for morphologically-rich languages. However, existing methods such as sub-word tokenization and character-based models are limited to the surface forms of the words. In this work, we propose a framework-solution for modeling complex morphology in low-resource settings. A two-tier transformer architecture is chosen to encode morphological information at the inputs. At the target-side output, a multi-task multi-label training scheme coupled with a beam search-based decoder are found to improve machine translation performance. An attention augmentation scheme to the transformer model is proposed in a generic form to allow integration of pre-trained language models and also facilitate modeling of word order relationships between the source and target languages. Several data augmentation techniques are evaluated and shown to increase translation performance in low-resource settings. We evaluate our proposed solution on Kinyarwanda - English translation using public-domain parallel text. Our final models achieve competitive performance in relation to large multi-lingual models. We hope that our results will motivate more use of explicit morphological information and the proposed model and data augmentations in low-resource NMT.",
+    "authors": [
+        "Antoine Nzeyimana"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A framework-solution for modeling complex morphology in low-resource settings with a two-tier transformer architecture is proposed, chosen to encode morphological information at the inputs and several data augmentation techniques are evaluated and shown to increase translation performance in low-resource settings."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

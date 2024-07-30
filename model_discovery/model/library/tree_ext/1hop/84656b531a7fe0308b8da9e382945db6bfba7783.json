@@ -1,0 +1,30 @@
+{
+    "acronym": "84656b531a7fe0308b8da9e382945db6bfba7783",
+    "title": "AlcLaM: Arabic Dialectal Language Model",
+    "seed_ids": [
+        "bert",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "069e0d896da7c79faeee4cf057548d5da7ce885e"
+    ],
+    "s2id": "84656b531a7fe0308b8da9e382945db6bfba7783",
+    "abstract": "Pre-trained Language Models (PLMs) are integral to many modern natural language processing (NLP) systems. Although multilingual models cover a wide range of languages, they often grapple with challenges like high inference costs and a lack of diverse non-English training data. Arabic-specific PLMs are trained predominantly on modern standard Arabic, which compromises their performance on regional dialects. To tackle this, we construct an Arabic dialectal corpus comprising 3.4M sentences gathered from social media platforms. We utilize this corpus to expand the vocabulary and retrain a BERT-based model from scratch. Named AlcLaM, our model was trained using only 13 GB of text, which represents a fraction of the data used by existing models such as CAMeL, MARBERT, and ArBERT, compared to 7.8%, 10.2%, and 21.3%, respectively. Remarkably, AlcLaM demonstrates superior performance on a variety of Arabic NLP tasks despite the limited training data. AlcLaM is available at GitHub https://github.com/amurtadha/Alclam and HuggingFace https://huggingface.co/rahbi.",
+    "authors": [
+        "Murtadha Ahmed",
+        "Saghir Alfasly",
+        "Bo Wen",
+        "Jamaal Qasem",
+        "Mohammed Ahmed",
+        "Yunfeng Liu"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An Arabic dialectal corpus comprising 3.4M sentences gathered from social media platforms is constructed to expand the vocabulary and retrain a BERT-based model from scratch, demonstrating superior performance on a variety of Arabic NLP tasks despite the limited training data."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

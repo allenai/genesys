@@ -1,0 +1,29 @@
+{
+    "acronym": "81303a966c2359d7b4a9f4ffbdeaef62ed6f151c",
+    "title": "Think Rationally about What You See: Continuous Rationale Extraction for Relation Extraction",
+    "seed_ids": [
+        "gpt2",
+        "61ae335f89b2ecc9736fba81b074660882c6347c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "81303a966c2359d7b4a9f4ffbdeaef62ed6f151c",
+    "abstract": "Relation extraction (RE) aims to extract potential relations according to the context of two entities, thus, deriving rational contexts from sentences plays an important role. Previous works either focus on how to leverage the entity information (e.g., entity types, entity verbalization) to inference relations, but ignore context-focused content, or use counterfactual thinking to remove the model's bias of potential relations in entities, but the relation reasoning process will still be hindered by irrelevant content. Therefore, how to preserve relevant content and remove noisy segments from sentences is a crucial task. In addition, retained content needs to be fluent enough to maintain semantic coherence and interpretability. In this work, we propose a novel rationale extraction framework named RE2, which leverages two continuity and sparsity factors to obtain relevant and coherent rationales from sentences. To solve the problem that the gold rationales are not labeled, RE2 applies an optimizable binary mask to each token in the sentence, and adjust the rationales that need to be selected according to the relation label. Experiments on four datasets show that RE2 surpasses baselines.",
+    "authors": [
+        "Xuming Hu",
+        "Zhaochen Hong",
+        "Chenwei Zhang",
+        "Irwin King",
+        "Philip S. Yu"
+    ],
+    "venue": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel rationale extraction framework named RE2 is proposed, which leverages two continuity and sparsity factors to obtain relevant and coherent rationales from sentences, and applies an optimizable binary mask to each token in the sentence."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

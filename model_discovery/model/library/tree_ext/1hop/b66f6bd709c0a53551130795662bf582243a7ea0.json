@@ -1,0 +1,39 @@
+{
+    "acronym": "b66f6bd709c0a53551130795662bf582243a7ea0",
+    "title": "MTMamba: Enhancing Multi-Task Dense Scene Understanding by Mamba-Based Decoders",
+    "seed_ids": [
+        "mamba",
+        "2dda6da7375bf5e8bcf60f87b17ba10757f3bc57",
+        "57a6c75ebb987ea29a1f904de23f72451e095032",
+        "1df04f33a8ef313cc2067147dbb79c3ca7c5c99f",
+        "a6e2dca754f3dc625a9da5f10f9b7a57079bfd27",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "b66f6bd709c0a53551130795662bf582243a7ea0",
+    "abstract": "Multi-task dense scene understanding, which learns a model for multiple dense prediction tasks, has a wide range of application scenarios. Modeling long-range dependency and enhancing cross-task interactions are crucial to multi-task dense prediction. In this paper, we propose MTMamba, a novel Mamba-based architecture for multi-task scene understanding. It contains two types of core blocks: self-task Mamba (STM) block and cross-task Mamba (CTM) block. STM handles long-range dependency by leveraging Mamba, while CTM explicitly models task interactions to facilitate information exchange across tasks. Experiments on NYUDv2 and PASCAL-Context datasets demonstrate the superior performance of MTMamba over Transformer-based and CNN-based methods. Notably, on the PASCAL-Context dataset, MTMamba achieves improvements of +2.08, +5.01, and +4.90 over the previous best methods in the tasks of semantic segmentation, human parsing, and object boundary detection, respectively. The code is available at https://github.com/EnVision-Research/MTMamba.",
+    "authors": [
+        "Baijiong Lin",
+        "Weisen Jiang",
+        "Pengguang Chen",
+        "Yu Zhang",
+        "Shu Liu",
+        "Ying Chen"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "MTMamba, a novel Mamba-based architecture for multi-task scene understanding that contains two types of core blocks: self-task Mamba (STM) block and cross-task Mamba (CTM) block, which handles long-range dependency by leveraging Mamba, while CTM explicitly models task interactions to facilitate information exchange across tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

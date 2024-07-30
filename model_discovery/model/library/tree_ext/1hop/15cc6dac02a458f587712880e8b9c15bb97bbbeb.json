@@ -1,0 +1,26 @@
+{
+    "acronym": "15cc6dac02a458f587712880e8b9c15bb97bbbeb",
+    "title": "Combining Lexical and Neural Retrieval with Longformer-based Summarization for Effective Case Law Retrieval",
+    "seed_ids": [
+        "longformer",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "15cc6dac02a458f587712880e8b9c15bb97bbbeb",
+    "abstract": "In this paper, we combine lexical and neural ranking models for case law retrieval. In this task, the query is a full case document, and the candidate documents are prior cases that are potentially relevant to the current case. Most documents are longer than 1024 tokens, which makes retrieval and classification with Transformer-based models problematic. We create shorter query documents with different methods: term extraction, noun phrase extraction, entity extraction, and automatic summarization using Longformer-Encoder-Decoder (LED). We then combine the summaries with five different rankingmodels: aBM25ranker,statisticallanguagemodelling,theDeepRelevanceMatchingModel(DRMM),aVanillaBERT ranker, and a Longformer ranker. We optimised all models and combined the best lexical ranker with neural retrieval models using different ensemble classifiers. We evaluate our methods on the retrieval benchmarks from COLIEE\u201920 and COLIEE\u201921. We beat state-of-the-art models for case law retrieval with both benchmark sets. Our experiments show the importance of tuning lexical retrieval methods, summarizing query documents, and combining lexical and neural models into one ranker for effective case law retrieval. In addition, training and optimizing our rankers is much faster than passage-level retrieval models (a few hours compared to several days for training).",
+    "authors": [
+        "Arian Askari",
+        "S. Verberne"
+    ],
+    "venue": "Biennial Conference on Design of Experimental Search & Information Retrieval Systems",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The experiments show the importance of tuning lexical retrieval methods, summarizing query documents, and combining lexical and neural models into one ranker for effective case law retrieval, and how training and optimizing the rankers is much faster than passage-level retrieval models."
+    },
+    "citationCount": 26,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

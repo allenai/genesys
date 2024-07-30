@@ -1,0 +1,31 @@
+{
+    "acronym": "d84b292c2e90d0b0edfedc33141d305d8e9de5df",
+    "title": "DTQAtten: Leveraging Dynamic Token-based Quantization for Efficient Attention Architecture",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d84b292c2e90d0b0edfedc33141d305d8e9de5df",
+    "abstract": "Models based on the attention mechanism, i.e. transformers, have shown extraordinary performance in Natural Language Processing (NLP) tasks. However, their memory footprint, inference latency, and power consumption are still prohibitive for efficient inference at edge devices, even at data centers. To tackle this issue, we present an algorithm-architecture co-design with dynamic and mixed-precision quantization, DTQAtten. We present empirically that the tolerance to the noise varies from token to token in attention-based NLP models. This finding leads us to quantize different tokens with mixed levels of bits. Thus, we design a compression framework that (i) dynamically quantizes tokens while they are forwarded in the models and (ii) jointly determines the ratio of each precision. Moreover, due to the dynamic mixed-precision tokens caused by our framework, previous matrix-multiplication accelerators (e.g. systolic array) cannot effectively exploit the benefit of the compressed attention computation. We thus design our accelerator with the variable-speed systolic array (VSSA) and propose an effective optimization strategy to alleviate the pipeline-stall problem in VSSA without hardware overhead. We conduct experiments with existing attention-based NLP models, including BERT and GPT-2 on various language tasks. Our results show that DTQAtten outperforms the previous neural network accelerator Eyeriss by 13.12\u00d7 in terms of speedup and 3.8\u00d7 in terms of energy-saving. Compared with the state-of-the-art attention accelerator SpAtten, our DTQAtten achieves at least 2.65\u00d7 speedup and 3.38\u00d7 energy efficiency improvement.",
+    "authors": [
+        "Tao Yang",
+        "Dongyue Li",
+        "Zhuoran Song",
+        "Yilong Zhao",
+        "Fangxin Liu",
+        "Zongwu Wang",
+        "Zhezhi He",
+        "Li Jiang"
+    ],
+    "venue": "Design, Automation and Test in Europe",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work designs an algorithm-architecture co-design with dynamic and mixed-precision quantization with an effective optimization strategy to alleviate the pipeline-stall problem in VSSA without hardware overhead and conducts experiments with existing attention-based NLP models."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

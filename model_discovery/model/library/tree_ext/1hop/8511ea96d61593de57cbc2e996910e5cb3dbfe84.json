@@ -1,0 +1,38 @@
+{
+    "acronym": "8511ea96d61593de57cbc2e996910e5cb3dbfe84",
+    "title": "DISTFLASHATTN: Distributed Memory-efficient Attention for Long-context LLMs Training",
+    "seed_ids": [
+        "flashattn",
+        "02ad9f3fefe33cb9ca546591bec65dbdf7766c80",
+        "a51ac7a5e8f6454268ac16ecdc52ecac98ce54d9",
+        "9575afb5702bc33d7df14c48feeee5901ea00369",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "53c3940f35b8b45d55ed49056282e1961954513d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8511ea96d61593de57cbc2e996910e5cb3dbfe84",
+    "abstract": "FlashAttention (Dao, 2023) effectively reduces the quadratic peak memory usage to linear in training transformer-based large language models (LLMs) on a single GPU. In this paper, we introduce DISTFLASHATTN, a distributed memory-efficient attention mechanism optimized for long-context LLMs training. We propose three key techniques: token-level workload balancing, overlapping key-value communication, and a rematerialization-aware gradient checkpointing algorithm. We evaluate DISTFLASHATTN on Llama-7B and variants with sequence lengths from 32K to 512K. DISTFLASHATTN achieves 8x longer sequences, 4.45 - 5.64x speedup compared to Ring Self-Attention, 2 - 8x longer sequences, 1.24 - 2.01x speedup compared to Megatron-LM with FlashAttention. It achieves 1.67x and 1.26 - 1.88x speedup compared to recent Ring Attention and DeepSpeed-Ulysses. Code is available at https://github.com/RulinShao/LightSeq.",
+    "authors": [
+        "Dacheng Li",
+        "Rulin Shao",
+        "Anze Xie",
+        "Eric P. Xing",
+        "Xuezhe Ma",
+        "Ion Stoica",
+        "Joseph E. Gonzalez",
+        "Hao Zhang"
+    ],
+    "venue": "",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DISTFLASHATTN, a distributed memory-efficient attention mechanism optimized for long-context LLMs training, is introduced and three key techniques are proposed: token-level workload balancing, overlapping key-value communication, and a rematerialization-aware gradient checkpointing algorithm."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

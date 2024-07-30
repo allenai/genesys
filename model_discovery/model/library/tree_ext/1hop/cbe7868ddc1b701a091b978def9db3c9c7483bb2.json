@@ -1,0 +1,29 @@
+{
+    "acronym": "cbe7868ddc1b701a091b978def9db3c9c7483bb2",
+    "title": "IDoFew: Intermediate Training Using Dual-Clustering in Language Models for Few Labels Text Classification",
+    "seed_ids": [
+        "bert",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3"
+    ],
+    "s2id": "cbe7868ddc1b701a091b978def9db3c9c7483bb2",
+    "abstract": "Language models such as Bidirectional Encoder Representations from Transformers (BERT) have been very effective in various Natural Language Processing (NLP) and text mining tasks including text classification. However, some tasks still pose challenges for these models, including text classification with limited labels. This can result in a cold-start problem. Although some approaches have attempted to address this problem through single-stage clustering as an intermediate training step coupled with a pre-trained language model, which generates pseudo-labels to improve classification, these methods are often error-prone due to the limitations of the clustering algorithms. To overcome this, we have developed a novel two-stage intermediate clustering with subsequent fine-tuning that models the pseudo-labels reliably, resulting in reduced prediction errors. The key novelty in our model, IDoFew, is that the two-stage clustering coupled with two different clustering algorithms helps exploit the advantages of the complementary algorithms that reduce the errors in generating reliable pseudo-labels for fine-tuning. Our approach has shown significant improvements compared to strong comparative models.",
+    "authors": [
+        "Abdullah Alsuhaibani",
+        "Hamad Zogan",
+        "Imran Razzak",
+        "Shoaib Jameel",
+        "Guandong Xu"
+    ],
+    "venue": "Web Search and Data Mining",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The key novelty in the model, IDoFew, is that the two-stage clustering coupled with two different clustering algorithms helps exploit the advantages of the complementary algorithms that reduce the errors in generating reliable pseudo-labels for fine-tuning."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

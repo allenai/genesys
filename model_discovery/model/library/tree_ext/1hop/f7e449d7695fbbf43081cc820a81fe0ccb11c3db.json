@@ -1,0 +1,31 @@
+{
+    "acronym": "f7e449d7695fbbf43081cc820a81fe0ccb11c3db",
+    "title": "PnP-DETR: Towards Efficient Visual Analysis with Transformers",
+    "seed_ids": [
+        "reformer",
+        "2e1db8cb373f4d4a51d44308b7a457886d855fbb",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87"
+    ],
+    "s2id": "f7e449d7695fbbf43081cc820a81fe0ccb11c3db",
+    "abstract": "Recently, DETR [3] pioneered the solution of vision tasks with transformers, it directly translates the image feature map into the object detection result. Though effective, translating the full feature map can be costly due to redundant computation on some area like the background. In this work, we encapsulate the idea of reducing spatial redundancy into a novel poll and pool (PnP) sampling module, with which we build an end-to-end PnP-DETR architecture that adaptively allocates its computation spatially to be more efficient. Concretely, the PnP module abstracts the image feature map into fine foreground object feature vectors and a small number of coarse background contextual feature vectors. The transformer models information interaction within the fine-coarse feature space and translates the features into the detection result. Moreover, the PnP-augmented model can instantly achieve various desired trade-offs between performance and computation with a single model by varying the sampled feature length, without requiring to train multiple models as existing methods. Thus it offers greater flexibility for deployment in diverse scenarios with varying computation constraint. We further validate the generalizability of the PnP module on panoptic segmentation and the recent transformer-based image recognition model ViT [7] and show consistent efficiency gain. We believe our method makes a step for efficient visual analysis with transformers, wherein spatial redundancy is commonly observed. Code and models will be available.",
+    "authors": [
+        "Tao Wang",
+        "Li Yuan",
+        "Yunpeng Chen",
+        "Jiashi Feng",
+        "Shuicheng Yan"
+    ],
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work encapsulates the idea of reducing spatial redundancy into a novel poll and pool (PnP) sampling module, with which it is built an end-to-end PnP-DETR architecture that adaptively allocates its computation spatially to be more efficient."
+    },
+    "citationCount": 62,
+    "influentialCitationCount": 9,
+    "code": null,
+    "description": null,
+    "url": null
+}

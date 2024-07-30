@@ -1,0 +1,28 @@
+{
+    "acronym": "f4f90522950274b4485f11fb292c32d1c4e5d16f",
+    "title": "Reward-based Input Construction for Cross-document Relation Extraction",
+    "seed_ids": [
+        "bert",
+        "caf084d6f1f46f1aad60691efbb1b9bb0a77d257",
+        "83b8108014e3db4f46354a28ae68193f143c4e7e"
+    ],
+    "s2id": "f4f90522950274b4485f11fb292c32d1c4e5d16f",
+    "abstract": "Relation extraction (RE) is a fundamental task in natural language processing, aiming to identify relations between target entities in text. While many RE methods are designed for a single sentence or document, cross-document RE has emerged to address relations across multiple long documents. Given the nature of long documents in cross-document RE, extracting document embeddings is challenging due to the length constraints of pre-trained language models. Therefore, we propose REward-based Input Construction (REIC), the first learning-based sentence selector for cross-document RE. REIC extracts sentences based on relational evidence, enabling the RE module to effectively infer relations. Since supervision of evidence sentences is generally unavailable, we train REIC using reinforcement learning with RE prediction scores as rewards. Experimental results demonstrate the superiority of our method over heuristic methods for different RE structures and backbones in cross-document RE. Our code is publicly available at https://github.com/aailabkaist/REIC.",
+    "authors": [
+        "Byeonghu Na",
+        "Suhyeon Jo",
+        "Yeongmin Kim",
+        "Il-Chul Moon"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes REward-based Input Construction (REIC), the first learning-based sentence selector for cross-document RE, and trains REIC using reinforcement learning with RE prediction scores as rewards, demonstrating the superiority of the method over heuristic methods for different RE structures and backbones in cross-document RE."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

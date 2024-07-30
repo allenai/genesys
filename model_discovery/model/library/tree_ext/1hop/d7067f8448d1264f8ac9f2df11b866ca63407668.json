@@ -1,0 +1,31 @@
+{
+    "acronym": "d7067f8448d1264f8ac9f2df11b866ca63407668",
+    "title": "DeTriever: Decoder-representation-based Retriever for Improving NL2SQL In-Context Learning",
+    "seed_ids": [
+        "bert",
+        "0b0debb710366cdff461938c80763eace1651af6",
+        "a07a94168608322600fd3cab54df1410b96852b6"
+    ],
+    "s2id": "d7067f8448d1264f8ac9f2df11b866ca63407668",
+    "abstract": "While in-context Learning (ICL) has proven to be an effective technique to improve the performance of Large Language Models (LLMs) in a variety of complex tasks, notably in translating natural language questions into Structured Query Language (NL2SQL), the question of how to select the most beneficial demonstration examples remains an open research problem. While prior works often adapted off-the-shelf encoders to retrieve examples dynamically, an inherent discrepancy exists in the representational capacities between the external retrievers and the LLMs. Further, optimizing the selection of examples is a non-trivial task, since there are no straightforward methods to assess the relative benefits of examples without performing pairwise inference. To address these shortcomings, we propose DeTriever, a novel demonstration retrieval framework that learns a weighted combination of LLM hidden states, where rich semantic information is encoded. To train the model, we propose a proxy score that estimates the relative benefits of examples based on the similarities between output queries. Experiments on two popular NL2SQL benchmarks demonstrate that our method significantly outperforms the state-of-the-art baselines on one-shot NL2SQL tasks.",
+    "authors": [
+        "Yuxi Feng",
+        "Raymond Li",
+        "Zhenan Fan",
+        "G. Carenini",
+        "Mohammadreza Pourreza",
+        "Weiwei Zhang",
+        "Yong Zhang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DeTriever is proposed, a novel demonstration retrieval framework that learns a weighted combination of LLM hidden states, where rich semantic information is encoded that significantly outperforms the state-of-the-art baselines on one-shot NL2SQL tasks."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

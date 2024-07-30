@@ -1,0 +1,34 @@
+{
+    "acronym": "68d2d79c43905eebedf25e757f23c69a9436643d",
+    "title": "Training a Large Video Model on a Single Machine in a Day",
+    "seed_ids": [
+        "flashattn",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "4990f7542f0600e0501a7e7a931b32eb7cb804d5",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "e2f2662f0734e2edc2b4b36a734de111c7f8d54d",
+        "78a0fb70b79116eb8d42c5951ced4f9efba513f0",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "68d2d79c43905eebedf25e757f23c69a9436643d",
+    "abstract": "Videos are big, complex to pre-process, and slow to train on. State-of-the-art large-scale video models are trained on clusters of 32 or more GPUs for several days. As a consequence, academia largely ceded the training of large video models to industry. In this paper, we show how to still train a state-of-the-art video model on a single machine with eight consumer-grade GPUs in a day. We identify three bottlenecks, IO, CPU, and GPU computation, and optimize each. The result is a highly efficient video training pipeline. For comparable architectures, our pipeline achieves higher accuracies with $\\frac{1}{8}$ of the computation compared to prior work. Code is available at https://github.com/zhaoyue-zephyrus/AVION.",
+    "authors": [
+        "Yue Zhao",
+        "Philipp Krahenbuhl"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper shows how to still train a state-of-the-art video model on a single machine with eight consumer-grade GPUs in a day, and identifies three bottlenecks, IO, CPU, and GPU computation, and optimize each and produces a highly efficient video training pipeline."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

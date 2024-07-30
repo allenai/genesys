@@ -1,0 +1,35 @@
+{
+    "acronym": "d613e92a30f19029d842d8ef7d73f8ad4dbbd3ae",
+    "title": "Optimized Speculative Sampling for GPU Hardware Accelerators",
+    "seed_ids": [
+        "flashattn",
+        "b842b83a7ff5dff8e3b83915d8c15423b6085728",
+        "7368c3cdf7cbed194e96dc4da53ed61f185e3d82",
+        "52045d4d4ae305aebb9e92fbbcf23104242c4d31",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "53c3940f35b8b45d55ed49056282e1961954513d",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf"
+    ],
+    "s2id": "d613e92a30f19029d842d8ef7d73f8ad4dbbd3ae",
+    "abstract": "In this work, we optimize speculative sampling for parallel hardware accelerators to improve sampling speed. We notice that substantial portions of the intermediate matrices necessary for speculative sampling can be computed concurrently. This allows us to distribute the workload across multiple GPU threads, enabling simultaneous operations on matrix segments within thread blocks. Additionally, we use fast on-chip memory to store intermediate results, thereby minimizing the frequency of slow read and write operations across different types of memory. This results in profiling time improvements ranging from 6% to 13% relative to the baseline implementation, without compromising accuracy. To further accelerate speculative sampling, probability distributions parameterized by softmax are approximated by sigmoid. This approximation approach results in significantly greater relative improvements in profiling time, ranging from 37% to 94%, with a slight decline in accuracy. We conduct extensive experiments on both automatic speech recognition and summarization tasks to validate the effectiveness of our optimization methods.",
+    "authors": [
+        "Dominik Wagner",
+        "Seanie Lee",
+        "Ilja Baumann",
+        "Philipp Seeberger",
+        "K. Riedhammer",
+        "T. Bocklet"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "To accelerate speculative sampling, probability distributions parameterized by softmax are approximated by sigmoid, and this approximation approach results in significantly greater relative improvements in profiling time, with a slight decline in accuracy."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,45 @@
+{
+    "acronym": "0be270c33a3db85cbcd2bd74aee99decd3cf397f",
+    "title": "Only 5% Attention Is All You Need: Efficient Long-range Document-level Neural Machine Translation",
+    "seed_ids": [
+        "rfa",
+        "bigbird",
+        "sparsetransformer",
+        "reformer",
+        "296c4ff39184fb7787954bc4e1a5bde89e16c16e",
+        "1a883522f3c0051d70be1f8cbdb8989a77395006",
+        "af679d69fcc1d0fcf0f039aba937853bcb50a8de",
+        "b0de1d5fe394226cec0a59d783ab739eb52da76f",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812",
+        "9ed25f101f19ea735ca300848948ed64064b97ca",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "6b149cd0974e353ab7a58b5a5af759b03e82665c"
+    ],
+    "s2id": "0be270c33a3db85cbcd2bd74aee99decd3cf397f",
+    "abstract": "Document-level Neural Machine Translation (DocNMT) has been proven crucial for handling discourse phenomena by introducing document-level context information. One of the most important directions is to input the whole document directly to the standard Transformer model. In this case, efficiency becomes a critical concern due to the quadratic complexity of the attention module. Existing studies either focus on the encoder part, which cannot be deployed on sequence-to-sequence generation tasks, e.g., Machine Translation (MT), or suffer from a significant performance drop. In this work, we keep the translation performance while gaining 20\\% speed up by introducing extra selection layer based on lightweight attention that selects a small portion of tokens to be attended. It takes advantage of the original attention to ensure performance and dimension reduction to accelerate inference. Experimental results show that our method could achieve up to 95\\% sparsity (only 5\\% tokens attended) approximately, and save 93\\% computation cost on the attention module compared with the original Transformer, while maintaining the performance.",
+    "authors": [
+        "Zihan Liu",
+        "Zewei Sun",
+        "Shanbo Cheng",
+        "Shujian Huang",
+        "Mingxuan Wang"
+    ],
+    "venue": "International Joint Conference on Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work keeps the translation performance while gaining 20% speed up by introducing extra selection layer based on lightweight attention that selects a small portion of tokens to be attended, and takes advantage of the original attention to ensure performance and dimension reduction to accelerate inference."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

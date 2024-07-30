@@ -1,0 +1,31 @@
+{
+    "acronym": "f1957038e9ded19108d3c71340d7462152b70f25",
+    "title": "Integrating Graph Contextualized Knowledge into Pre-trained Language Models",
+    "seed_ids": [
+        "gpt",
+        "5744f56d3253bd7c4341d36de40a93fceaa266b3",
+        "031e4e43aaffd7a479738dcea69a2d5be7957aa3"
+    ],
+    "s2id": "f1957038e9ded19108d3c71340d7462152b70f25",
+    "abstract": "Complex node interactions are common in knowledge graphs (KGs), and these interactions can be considered as contextualized knowledge exists in the topological structure of KGs. Traditional knowledge representation learning (KRL) methods usually treat a single triple as a training unit, neglecting the usage of graph contextualized knowledge. To utilize these unexploited graph-level knowledge, we propose an approach to model subgraphs in a medical KG. Then, the learned knowledge is integrated with a pre-trained language model to do the knowledge generalization. Experimental results demonstrate that our model achieves the state-of-the-art performance on several medical NLP tasks, and the improvement above MedERNIE indicates that graph contextualized knowledge is beneficial.",
+    "authors": [
+        "Bin He",
+        "Di Zhou",
+        "Jinghui Xiao",
+        "Xin Jiang",
+        "Qun Liu",
+        "Nicholas Jing Yuan",
+        "Tong Xu"
+    ],
+    "venue": "Findings",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results demonstrate that the proposed model achieves the state-of-the-art performance on several medical NLP tasks, and the improvement above MedERNIE indicates that graph contextualized knowledge is beneficial."
+    },
+    "citationCount": 67,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

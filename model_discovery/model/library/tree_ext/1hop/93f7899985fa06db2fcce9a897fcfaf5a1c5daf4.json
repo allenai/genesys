@@ -1,0 +1,28 @@
+{
+    "acronym": "93f7899985fa06db2fcce9a897fcfaf5a1c5daf4",
+    "title": "A Review of State of the Art Deep Learning Models for Ontology Construction",
+    "seed_ids": [
+        "gpt",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "8659bf379ca8756755125a487c43cfe8611ce842",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "93f7899985fa06db2fcce9a897fcfaf5a1c5daf4",
+    "abstract": "Researchers are working towards automation of ontology construction to manage the ever-growing data on the web. Currently, there is a shift from the use of machine learning techniques towards exploration of deep learning models for ontology construction. Deep learning model are capable of extracting terms, entities, relations, and classifications, and perform axiom learning from the underutilized richness of web-based knowledge. There has been remarkable progress in automatic ontology creation using deep learning models since they can perform word embedding, long-term dependency acquisition, concept extraction from large corpora, and inference of abstracted relationships based on broad corpora. Despite their emerging importance, deep learning models remain underutilized in ontology construction, and there is no comprehensive review of their application in ontology learning. This paper presents a comprehensive review of existing deep-learning models for the construction of ontologies, the strength and the weaknesses presented by the deep learning models for ontology learning as well as promising directions to achieve a more robust deep learning models. The Deep Learning models reviewed include Recurrent Neural Networks (RNNs), Convolutional Neural Networks (CNNs), Long-Short Term Memory (LSTMs), and Gated Recurrent Unit (GRU) as well as their ensembles. While these traditional deep learning models have achieved great success, one of their limitations is that they struggle to understand the meaning and order of data in sequences. CNNs and RNN-based models such as LSTMs and GRUs can be computationally expensive due to their large number of parameters or complex gating mechanisms. Furthermore, RNN models suffer from vanishing gradients, making it difficult to learn long-term relationships in sequences. Additionally, RNN-based models process information sequentially, limiting their ability to take advantage of powerful parallel computing hardware, slowing down training and inference, especially for long sequences. Consequently, there has been a shift towards Generative Pre-Trained (GPT) models and Bidirectional Encoder Representations from Transformers (BERT) models. This paper also reviewed the GPT-3, GPT-4, and the BERT models for extracting terms, entities, relations, and classifications. While GPT models excel in contextual understanding and flexibility, they fall short when handling domain-specific terminology and disambiguating complex relationships. Fine-tuning and domain-specific training data could minimize these shortcomings, and further enhance the performance of GPT in term and relation extraction tasks. On the other hand, the BERT models excel in comprehending context-heavy texts, but struggles with higher-level abstraction and inference tasks due to a lack of explicit semantic knowledge, thus necessitating inference for unspecified relationships. The paper recommends further research on deep learning models for ontology alignment and merging. Also, the ensembling of deep learning models and the use of domain-specific knowledge for ontology learning require further research for ontology construction.",
+    "authors": [
+        "Tsitsi Zengeya",
+        "Jean Vincent Fonou-Dombeu"
+    ],
+    "venue": "IEEE Access",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A comprehensive review of existing deep-learning models for the construction of ontologies, the strength and the weaknesses presented by the deep learning models for ontology learning as well as promising directions to achieve a more robust deep learning models are presented."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

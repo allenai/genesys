@@ -1,0 +1,28 @@
+{
+    "acronym": "89797ebece1fb441573b127cfd40e61dbcdf651d",
+    "title": "BISeizuRe: BERT-Inspired Seizure Data Representation to Improve Epilepsy Monitoring",
+    "seed_ids": [
+        "bert"
+    ],
+    "s2id": "89797ebece1fb441573b127cfd40e61dbcdf651d",
+    "abstract": "This study presents a novel approach for EEG-based seizure detection leveraging a BERT-based model. The model, BENDR, undergoes a two-phase training process. Initially, it is pre-trained on the extensive Temple University Hospital EEG Corpus (TUEG), a 1.5 TB dataset comprising over 10,000 subjects, to extract common EEG data patterns. Subsequently, the model is fine-tuned on the CHB-MIT Scalp EEG Database, consisting of 664 EEG recordings from 24 pediatric patients, of which 198 contain seizure events. Key contributions include optimizing fine-tuning on the CHB-MIT dataset, where the impact of model architecture, pre-processing, and post-processing techniques are thoroughly examined to enhance sensitivity and reduce false positives per hour (FP/h). We also explored custom training strategies to ascertain the most effective setup. The model undergoes a novel second pre-training phase before subject-specific fine-tuning, enhancing its generalization capabilities. The optimized model demonstrates substantial performance enhancements, achieving as low as 0.23 FP/h, 2.5$\\times$ lower than the baseline model, with a lower but still acceptable sensitivity rate, showcasing the effectiveness of applying a BERT-based approach on EEG-based seizure detection.",
+    "authors": [
+        "Luca Benfenati",
+        "T. Ingolfsson",
+        "A. Cossettini",
+        "D. J. Pagliari",
+        "Alessio Burrello",
+        "Luca Benini"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The optimized model demonstrates substantial performance enhancements, achieving as low as 0.23 FP/h, 2.5$\\times$ lower than the baseline model, with a lower but still acceptable sensitivity rate, showcasing the effectiveness of applying a BERT-based approach on EEG-based seizure detection."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

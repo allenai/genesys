@@ -1,0 +1,39 @@
+{
+    "acronym": "bccf83d3b47a77f4e5f22ba3eefae3c4ce675c6a",
+    "title": "Synthetic location trajectory generation using categorical diffusion models",
+    "seed_ids": [
+        "bert",
+        "diffusionlm",
+        "analogbits",
+        "33433e9103b00aa0c42597cbfe13a429fbf5abdf",
+        "22775e58932cdfbd273a2a835a22c5d86800a458",
+        "2c6ac935c826002976722ca8d3319f691975687e",
+        "69144d537f90f214d5b07a7c79121d16afd7da16",
+        "b64537bdf7a103aa01972ba06ea24a9c08f7cd74",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "e9b9a47cd81c66603c827f0f2bc4fba0d9ae77c4",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "599bc7cfe98c2b57ddbe111412203a636da57be0",
+        "94bcd712aed610b8eaeccc57136d65ec988356f2",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "b45d656ac8cc2e940609580cf291ee76ffcac20a"
+    ],
+    "s2id": "bccf83d3b47a77f4e5f22ba3eefae3c4ce675c6a",
+    "abstract": "Diffusion probabilistic models (DPMs) have rapidly evolved to be one of the predominant generative models for the simulation of synthetic data, for instance, for computer vision, audio, natural language processing, or biomolecule generation. Here, we propose using DPMs for the generation of synthetic individual location trajectories (ILTs) which are sequences of variables representing physical locations visited by individuals. ILTs are of major importance in mobility research to understand the mobility behavior of populations and to ultimately inform political decision-making. We represent ILTs as multi-dimensional categorical random variables and propose to model their joint distribution using a continuous DPM by first applying the diffusion process in a continuous unconstrained space and then mapping the continuous variables into a discrete space. We demonstrate that our model can synthesize realistic ILPs by comparing conditionally and unconditionally generated sequences to real-world ILPs from a GNSS tracking data set which suggests the potential use of our model for synthetic data generation, for example, for benchmarking models used in mobility research.",
+    "authors": [
+        "Simon Dirmeier",
+        "Ye Hong",
+        "Fernando P\u00e9rez-Cruz"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that the proposed DPM can synthesize realistic ILPs by comparing conditionally and unconditionally generated sequences to real-world ILPs from a GNSS tracking data set which suggests the potential use of the model for synthetic data generation, for example, for benchmarking models used in mobility research."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

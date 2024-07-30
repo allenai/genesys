@@ -1,0 +1,48 @@
+{
+    "acronym": "f640a2635f38cbb3dbb83775088c2e27b790ad77",
+    "title": "A Unified View of Long-Sequence Models towards Modeling Million-Scale Dependencies",
+    "seed_ids": [
+        "s4",
+        "hippo",
+        "s4d",
+        "performer",
+        "fnet",
+        "memorizingtrans",
+        "240300b1da360f22bf0b82c6817eacebba6deed4",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "0e802c0739771acf70e60d59c2df51cd7e8c50c0",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "a9c214e846188adb645021cd7b1964b8ea1fef6f",
+        "5d032bd2632b6f5847767f39ce247098c6bbc563",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "320efa53dea3e8f836790682fbd4196132c49749",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "366244acdd930e488ae224ab6e2a92dc24aa7e06",
+        "8cef9900c04d7f661c08f4b5b1ed4337ace042a3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f640a2635f38cbb3dbb83775088c2e27b790ad77",
+    "abstract": "Ever since their conception, Transformers have taken over traditional sequence models in many tasks, such as NLP, image classification, and video/audio processing, for their fast training and superior performance. Much of the merit is attributable to positional encoding and multi-head attention. However, Transformers fall short in learning long-range dependencies mainly due to the quadratic complexity scaled with context length, in terms of both time and space. Consequently, over the past five years, a myriad of methods has been proposed to make Transformers more efficient. In this work, we first take a step back, study and compare existing solutions to long-sequence modeling in terms of their pure mathematical formulation. Specifically, we summarize them using a unified template, given their shared nature of token mixing. Through benchmarks, we then demonstrate that long context length does yield better performance, albeit application-dependent, and traditional Transformer models fall short in taking advantage of long-range dependencies. Next, inspired by emerging sparse models of huge capacity, we propose a machine learning system for handling million-scale dependencies. As a proof of concept, we evaluate the performance of one essential component of this system, namely, the distributed multi-head attention. We show that our algorithm can scale up attention computation by almost $40\\times$ using four GeForce RTX 4090 GPUs, compared to vanilla multi-head attention mechanism. We believe this study is an instrumental step towards modeling million-scale dependencies.",
+    "authors": [
+        "Hongyu H\u00e8",
+        "Marko Kabic"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work takes a step back, studies and compares existing solutions to long-sequence modeling in terms of their pure mathematical formulation, and summarizes them using a unified template, given their shared nature of token mixing, to propose a machine learning system for handling million-scale dependencies."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

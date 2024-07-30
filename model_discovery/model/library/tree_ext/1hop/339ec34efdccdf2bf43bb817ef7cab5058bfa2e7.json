@@ -1,0 +1,34 @@
+{
+    "acronym": "339ec34efdccdf2bf43bb817ef7cab5058bfa2e7",
+    "title": "Segment and Caption Anything",
+    "seed_ids": [
+        "gpt2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "339ec34efdccdf2bf43bb817ef7cab5058bfa2e7",
+    "abstract": "We propose a method to efficiently equip the Segment Anything Model (SAM) with the ability to generate regional captions. SAM presents strong generalizability to segment anything while is short for semantic understanding. By introducing a lightweight query-based feature mixer, we align the region-specific features with the embedding space of language models for later caption generation. As the number of trainable parameters is small (typically in the order of tens of millions), it costs less computation, less memory usage, and less communication bandwidth, resulting in both fast and scalable training. To address the scarcity problem of regional caption data, we propose to first pre-train our model on objection detection and segmentation tasks. We call this step weak supervision pretraining since the pre-training data only contains category names instead of full-sentence descriptions. The weak supervision pretraining allows us to leverage many publicly available object detection and segmentation datasets. We conduct extensive experiments to demonstrate the superiority of our method and validate each design choice. This work serves as a stepping stone towards scaling up regional captioning data and sheds light on exploring efficient ways to augment SAM with regional semantics. The project page, along with the associated code, can be accessed via https://xk-huang.github.io/segment-caption-anything/.",
+    "authors": [
+        "Xiaoke Huang",
+        "Jianfeng Wang",
+        "Yansong Tang",
+        "Zheng Zhang",
+        "Han Hu",
+        "Jiwen Lu",
+        "Lijuan Wang",
+        "Zicheng Liu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A method to efficiently equip the Segment Anything Model (SAM) with the ability to generate regional captions by introducing a lightweight query-based feature mixer that aligns the region-specific features with the embedding space of language models for later caption generation."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

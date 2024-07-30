@@ -1,0 +1,32 @@
+{
+    "acronym": "3c6ea16b1e98e9544c5a6115a3f91746038c69d7",
+    "title": "MC-MLP: Multiple Coordinate Frames in all-MLP Architecture for Vision",
+    "seed_ids": [
+        "gmlp",
+        "f75cddf2d42ed01b34686704eb3504becef67442",
+        "71363797140647ebb3f540584de0a8758d2f7aa2",
+        "9b6af0e358e76d22f209c75b1702c3e6ea7815b1",
+        "b0cd93e95fb6885db47d755a4c631158b0198047",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "3c6ea16b1e98e9544c5a6115a3f91746038c69d7",
+    "abstract": "In deep learning, Multi-Layer Perceptrons (MLPs) have once again garnered attention from researchers. This paper introduces MC-MLP, a general MLP-like backbone for computer vision that is composed of a series of fully-connected (FC) layers. In MC-MLP, we propose that the same semantic information has varying levels of difficulty in learning, depending on the coordinate frame of features. To address this, we perform an orthogonal transform on the feature information, equivalent to changing the coordinate frame of features. Through this design, MC-MLP is equipped with multi-coordinate frame receptive fields and the ability to learn information across different coordinate frames. Experiments demonstrate that MC-MLP outperforms most MLPs in image classification tasks, achieving better performance at the same parameter level. The code will be available at: https://github.com/ZZM11/MC-MLP.",
+    "authors": [
+        "Zhimin Zhu",
+        "Jianguo Zhao",
+        "Tong Mu",
+        "Yuliang Yang",
+        "Mengyu Zhu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "MC-MLP is introduced, a general MLP-like backbone for computer vision that is composed of a series of fully-connected (FC) layers that is equipped with multi-coordinate frame receptive fields and the ability to learn information across different coordinate frames."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

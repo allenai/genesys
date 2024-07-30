@@ -1,0 +1,26 @@
+{
+    "acronym": "115b3e2def78b3907d6bdbda8c579edfa7232746",
+    "title": "Transformer-F: A Transformer network with effective methods for learning universal sentence representation",
+    "seed_ids": [
+        "linformer",
+        "universaltrans",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "adc61e21eafecfbf6ebecc570f9f913659a2bfb2"
+    ],
+    "s2id": "115b3e2def78b3907d6bdbda8c579edfa7232746",
+    "abstract": "The Transformer model is widely used in natural language processing for sentence representation. However, the previous Transformer-based models focus on function words that have limited meaning in most cases and could merely extract high-level semantic abstraction features. In this paper, two approaches are introduced to improve the performance of Transformers. We calculated the attention score by multiplying the part-of-speech weight vector with the correlation coefficient, which helps extract the words with more practical meaning. The weight vector is obtained by the input text sequence based on the importance of the part-of-speech. Furthermore, we fuse the features of each layer to make the sentence representation results more comprehensive and accurate. In experiments, we demonstrate the effectiveness of our model Transformer-F on three standard text classification datasets. Experimental results show that our proposed model significantly boosts the performance of text classification as compared to the baseline model. Specifically, we obtain a 5.28% relative improvement over the vanilla Transformer on the simple tasks.",
+    "authors": [
+        "Yu Shi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results show that the proposed model Transformer-F significantly boosts the performance of text classification as compared to the baseline model, and fuse the features of each layer to make the sentence representation results more comprehensive and accurate."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

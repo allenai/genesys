@@ -1,0 +1,26 @@
+{
+    "acronym": "920bc729ad9d5d66991b1cead89b4bd3ca9215f2",
+    "title": "Estimating Depression Severity from Long-Sequence Face Videos via an Ensemble Global Diverse Convolutional Model",
+    "seed_ids": [
+        "sgconv",
+        "240300b1da360f22bf0b82c6817eacebba6deed4",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51"
+    ],
+    "s2id": "920bc729ad9d5d66991b1cead89b4bd3ca9215f2",
+    "abstract": "Depression is a mood disorder that has serious consequences for both individuals and society. The current diagnosis of depression relies on questionnaires and clinical interviews, which are complex and subjective, as they depend on multiple factors such as the patient\u2019s comorbidities, cognitive ability, honesty in describing symptoms, and the experience and motivation of the clinician. An automated way of estimating depression severity objectively would, therefore, be of great assistance to clinicians. Over the last decade, various affective computing systems have been proposed that use machine learning, speech analysis, and computer vision techniques to extract unimodal or multimodal cues and estimate the severity of depression. Temporal information plays a crucial role in learning spatiotemporal patterns in depression data. When inferring depression severity from face videos, analysing long sequences at different temporal scales is potentially more informative than analysing short ones. Therefore, a new approach based on long sequence structured global convolution and various temporal scales on diverse kernels in an end-to-end ensemble model has been developed and evaluated for estimating depression severity from face video data. The application of this long-range dependency technique is novel in automated depression analysis. The proposed ensemble model explores the role of temporal scales in assessing depression severity from facial movement information and outperforms common deep learning models and single structured global convolution models. The results confirm that analysing facial movements at different temporal scales is an important component towards effective diagnostic aids in depression analysis.",
+    "authors": [
+        "Ghazal Bargshady",
+        "Roland Goecke"
+    ],
+    "venue": "International Conference on Digital Image Computing: Techniques and Applications",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new approach based on long sequence structured global convolution and various temporal scales on diverse kernels in an end-to-end ensemble model has been developed and evaluated for estimating depression severity from face video data and confirms that analysing facial movements at different temporal scales is an important component towards effective diagnostic aids in depression analysis."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,27 @@
+{
+    "acronym": "40f108828e8e917c16daf9e9535e1cefb156c794",
+    "title": "Representation Learning with Conditional Information Flow Maximization",
+    "seed_ids": [
+        "bert",
+        "af524c1068fef53ed8d6ac4f692c9f0c9aa932e3"
+    ],
+    "s2id": "40f108828e8e917c16daf9e9535e1cefb156c794",
+    "abstract": "This paper proposes an information-theoretic representation learning framework, named conditional information flow maximization, to extract noise-invariant sufficient representations for the input data and target task. It promotes the learned representations have good feature uniformity and sufficient predictive ability, which can enhance the generalization of pre-trained language models (PLMs) for the target task. Firstly, an information flow maximization principle is proposed to learn more sufficient representations by simultaneously maximizing both input-representation and representation-label mutual information. In contrast to information bottleneck, we handle the input-representation information in an opposite way to avoid the over-compression issue of latent representations. Besides, to mitigate the negative effect of potential redundant features, a conditional information minimization principle is designed to eliminate negative redundant features while preserve noise-invariant features from the input. Experiments on 13 language understanding benchmarks demonstrate that our method effectively improves the performance of PLMs for classification and regression. Extensive experiments show that the learned representations are more sufficient, robust and transferable.",
+    "authors": [
+        "Dou Hu",
+        "Lingwei Wei",
+        "Wei Zhou",
+        "Songlin Hu"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An information-theoretic representation learning framework to extract noise-invariant sufficient representations for the input data and target task is proposed, which promotes the learned representations have good feature uniformity and sufficient predictive ability, which can enhance the generalization of pre-trained language models (PLMs) for the target task."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,38 @@
+{
+    "acronym": "ab892825da3c560ff72d84d57a4239a6f12fa8b9",
+    "title": "Scattering Vision Transformer: Spectral Mixing Matters",
+    "seed_ids": [
+        "metaformer",
+        "gmlp",
+        "fnet",
+        "c57467e652f3f9131b3e7e40c23059abe395f01d",
+        "a9d13e00c30fa82ec201587719efc11a11fceb7e",
+        "dd1139cfc609c2f3263d02e97176d5275caebc0a",
+        "bf6ce546c589fa8054b3972b266532664914bd21",
+        "c4f4e5e86cb9468235fd5d7c9ccce09a68084463",
+        "f75cddf2d42ed01b34686704eb3504becef67442",
+        "71363797140647ebb3f540584de0a8758d2f7aa2",
+        "9b6af0e358e76d22f209c75b1702c3e6ea7815b1",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f",
+        "3cbe314cc5407a6c3249815b5173f22ea15173c2",
+        "955f90930d48750e7239478b4eed440eb84131cd",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "ab892825da3c560ff72d84d57a4239a6f12fa8b9",
+    "abstract": "Vision transformers have gained significant attention and achieved state-of-the-art performance in various computer vision tasks, including image classification, instance segmentation, and object detection. However, challenges remain in addressing attention complexity and effectively capturing fine-grained information within images. Existing solutions often resort to down-sampling operations, such as pooling, to reduce computational cost. Unfortunately, such operations are non-invertible and can result in information loss. In this paper, we present a novel approach called Scattering Vision Transformer (SVT) to tackle these challenges. SVT incorporates a spectrally scattering network that enables the capture of intricate image details. SVT overcomes the invertibility issue associated with down-sampling operations by separating low-frequency and high-frequency components. Furthermore, SVT introduces a unique spectral gating network utilizing Einstein multiplication for token and channel mixing, effectively reducing complexity. We show that SVT achieves state-of-the-art performance on the ImageNet dataset with a significant reduction in a number of parameters and FLOPS. SVT shows 2\\% improvement over LiTv2 and iFormer. SVT-H-S reaches 84.2\\% top-1 accuracy, while SVT-H-B reaches 85.2\\% (state-of-art for base versions) and SVT-H-L reaches 85.7\\% (again state-of-art for large versions). SVT also shows comparable results in other vision tasks such as instance segmentation. SVT also outperforms other transformers in transfer learning on standard datasets such as CIFAR10, CIFAR100, Oxford Flower, and Stanford Car datasets. The project page is available on this webpage.\\url{https://badripatro.github.io/svt/}.",
+    "authors": [
+        "B. N. Patro",
+        "Vijay Srinivas Agneeswaran"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a novel approach called Scattering Vision Transformer (SVT), which incorporates a spectrally scattering network that enables the capture of intricate image details and overcomes the invertibility issue associated with down-sampling operations by separating low-frequency and high-frequency components."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

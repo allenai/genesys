@@ -1,0 +1,32 @@
+{
+    "acronym": "a6c7bcb5c43b98abb153c3fa3da80f3b525e6eac",
+    "title": "Molecular Contrastive Pretraining with Collaborative Featurizations",
+    "seed_ids": [
+        "bert",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "6aded7d6f93fd93c5632b627b6520830a3999ad4",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a6c7bcb5c43b98abb153c3fa3da80f3b525e6eac",
+    "abstract": "Molecular pretraining, which learns molecular representations over massive unlabeled data, has become a prominent paradigm to solve a variety of tasks in computational chemistry and drug discovery. Recently, prosperous progress has been made in molecular pretraining with different molecular featurizations, including 1D SMILES strings, 2D graphs, and 3D geometries. However, the role of molecular featurizations with their corresponding neural architectures in molecular pretraining remains largely unexamined. In this paper, through two case studies\u2500chirality classification and aromatic ring counting\u2500we first demonstrate that different featurization techniques convey chemical information differently. In light of this observation, we propose a simple and effective MOlecular pretraining framework with COllaborative featurizations (MOCO). MOCO comprehensively leverages multiple featurizations that complement each other and outperforms existing state-of-the-art models that solely rely on one or two featurizations on a wide range of molecular property prediction tasks.",
+    "authors": [
+        "Yanqiao Zhu",
+        "Dingshuo Chen",
+        "Yuanqi Du",
+        "Yingze Wang",
+        "Q. Liu",
+        "Shu Wu"
+    ],
+    "venue": "Journal of Chemical Information and Modeling",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A simple and effective MOlecular pretraining framework with COllaborative featurizations (MOCO), which comprehensively leverages multiple featurizations that complement each other and outperforms existing state-of-the-art models that solely rely on one or two featurizations on a wide range of molecular property prediction tasks."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

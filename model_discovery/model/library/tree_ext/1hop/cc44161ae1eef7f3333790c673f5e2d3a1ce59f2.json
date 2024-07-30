@@ -1,0 +1,27 @@
+{
+    "acronym": "cc44161ae1eef7f3333790c673f5e2d3a1ce59f2",
+    "title": "Amplifying Diversity and Quality in Commonsense Knowledge Graph Completion (Student Abstract)",
+    "seed_ids": [
+        "gpt",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3"
+    ],
+    "s2id": "cc44161ae1eef7f3333790c673f5e2d3a1ce59f2",
+    "abstract": "Conventional commonsense knowledge graph completion (CKGC) methods provide inadequate sequence when fine-tuning or generating stages and incorporate full fine-tuning, which fail to align with the autoregressive model's pre-training patterns and have insufficient parameter efficiency. Moreover, decoding through beam or greedy search produces low diversity and high similarity in generated tail entities. Hence, we resort to prefix-tuning and propose a lightweight, effective pipeline to enhance the quality and diversity of extracted commonsense knowledge. Precisely, we measure head entity similarity to yield and then concatenate top-k tuples before each target tuple for prefix-tuning the source LM, thereby improving the efficiency and speed for pretrained models; then, we design a penalty-tailored diverse beam search (p-DBS) for decoding tail entities, producing a greater quantity and diversity of generated commonsense tuples; besides, a filter strategy is utilized to filter out invalid commonsense knowledge. Through extensive automatic evaluations, including ChatGPT scoring, our method can extract diverse, novel, and accurate commonsense knowledge (CK).",
+    "authors": [
+        "Liu Yu",
+        "Fenghui Tian",
+        "Ping Kuang",
+        "Fan Zhou"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a lightweight, effective pipeline to enhance the quality and diversity of extracted commonsense knowledge and designs a penalty-tailored diverse beam search for decoding tail entities, producing a greater quantity and diversity of generated commonsense tuples."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

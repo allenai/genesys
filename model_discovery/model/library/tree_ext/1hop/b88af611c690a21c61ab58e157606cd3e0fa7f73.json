@@ -1,0 +1,32 @@
+{
+    "acronym": "b88af611c690a21c61ab58e157606cd3e0fa7f73",
+    "title": "LOGIN: A Large Language Model Consulted Graph Neural Network Training Framework",
+    "seed_ids": [
+        "gpt2",
+        "gpt3",
+        "bert",
+        "db4ab91d5675c37795e719e997a2827d3d83cd45",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "b88af611c690a21c61ab58e157606cd3e0fa7f73",
+    "abstract": "Recent prevailing works on graph machine learning typically follow a similar methodology that involves designing advanced variants of graph neural networks (GNNs) to maintain the superior performance of GNNs on different graphs. In this paper, we aim to streamline the GNN design process and leverage the advantages of Large Language Models (LLMs) to improve the performance of GNNs on downstream tasks. We formulate a new paradigm, coined\"LLMs-as-Consultants,\"which integrates LLMs with GNNs in an interactive manner. A framework named LOGIN (LLM Consulted GNN training) is instantiated, empowering the interactive utilization of LLMs within the GNN training process. First, we attentively craft concise prompts for spotted nodes, carrying comprehensive semantic and topological information, and serving as input to LLMs. Second, we refine GNNs by devising a complementary coping mechanism that utilizes the responses from LLMs, depending on their correctness. We empirically evaluate the effectiveness of LOGIN on node classification tasks across both homophilic and heterophilic graphs. The results illustrate that even basic GNN architectures, when employed within the proposed LLMs-as-Consultants paradigm, can achieve comparable performance to advanced GNNs with intricate designs. Our codes are available at https://github.com/QiaoYRan/LOGIN.",
+    "authors": [
+        "Yiran Qiao",
+        "Xiang Ao",
+        "Yang Liu",
+        "Jiarong Xu",
+        "Xiaoqian Sun",
+        "Qing He"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results illustrate that even basic GNN architectures, when employed within the proposed LLMs-as-Consultants paradigm, can achieve comparable performance to advanced GNNs with intricate designs."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

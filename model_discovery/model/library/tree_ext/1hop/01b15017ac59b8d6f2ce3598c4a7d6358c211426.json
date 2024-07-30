@@ -1,0 +1,27 @@
+{
+    "acronym": "01b15017ac59b8d6f2ce3598c4a7d6358c211426",
+    "title": "A Divide-and-Conquer Approach to the Summarization of Long Documents",
+    "seed_ids": [
+        "bigbird",
+        "25db56fc85fe15625c3375064a35e908ba6dfd2a",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "01b15017ac59b8d6f2ce3598c4a7d6358c211426",
+    "abstract": "We present a novel divide-and-conquer method for the neural summarization of long documents. Our method exploits the discourse structure of the document and uses sentence similarity to split the problem into an ensemble of smaller summarization problems. In particular, we break a long document and its summary into multiple source-target pairs, which are used for training a model that learns to summarize each part of the document separately. These partial summaries are then combined in order to produce a final complete summary. With this approach we can decompose the problem of long document summarization into smaller and simpler problems, reducing computational complexity and creating more training examples, which at the same time contain less noise in the target summaries compared to the standard approach. We demonstrate that this approach paired with different summarization models, including sequence-to-sequence RNNs and Transformers, can lead to improved summarization performance. Our best models achieve results that are on par with the state-of-the-art in two two publicly available datasets of academic articles.",
+    "authors": [
+        "Alexios Gidiotis",
+        "Grigorios Tsoumakas"
+    ],
+    "venue": "IEEE/ACM Transactions on Audio Speech and Language Processing",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work exploits the discourse structure of the document and uses sentence similarity to split the problem into an ensemble of smaller summarization problems, which can decompose the problem of long document summarization into smaller and simpler problems, reducing computational complexity and creating more training examples."
+    },
+    "citationCount": 97,
+    "influentialCitationCount": 12,
+    "code": null,
+    "description": null,
+    "url": null
+}

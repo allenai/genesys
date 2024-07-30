@@ -1,0 +1,34 @@
+{
+    "acronym": "94728974dbb62148eb3af4446f052e87bc2e08d8",
+    "title": "Towards Coarse-to-Fine Evaluation of Inference Efficiency for Large Language Models",
+    "seed_ids": [
+        "flashattn",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "0a6906bd6f026d3da3031c641ed03081bd0b574e",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336"
+    ],
+    "s2id": "94728974dbb62148eb3af4446f052e87bc2e08d8",
+    "abstract": "In real world, large language models (LLMs) can serve as the assistant to help users accomplish their jobs, and also support the development of advanced applications. For the wide application of LLMs, the inference efficiency is an essential concern, which has been widely studied in existing work, and numerous optimization algorithms and code libraries have been proposed to improve it. Nonetheless, users still find it challenging to compare the effectiveness of all the above methods and understand the underlying mechanisms. In this work, we perform a detailed coarse-to-fine analysis of the inference performance of various code libraries. To evaluate the overall effectiveness, we examine four usage scenarios within two practical applications. We further provide both theoretical and empirical fine-grained analyses of each module in the Transformer architecture. Our experiments yield comprehensive results that are invaluable for researchers to evaluate code libraries and improve inference strategies.",
+    "authors": [
+        "Yushuo Chen",
+        "Tianyi Tang",
+        "Erge Xiang",
+        "Linjiang Li",
+        "Wayne Xin Zhao",
+        "Jing Wang",
+        "Yunpeng Chai",
+        "Ji-Rong Wen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work performs a detailed coarse-to-fine analysis of the inference performance of various code libraries and provides both theoretical and empirical fine-grained analyses of each module in the Transformer architecture."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

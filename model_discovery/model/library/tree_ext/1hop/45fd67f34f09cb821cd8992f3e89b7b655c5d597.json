@@ -1,0 +1,29 @@
+{
+    "acronym": "45fd67f34f09cb821cd8992f3e89b7b655c5d597",
+    "title": "CloudpredNet: An Ultra-Short-Term Movement Prediction Model for Ground-Based Cloud Image",
+    "seed_ids": [
+        "reformer",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676"
+    ],
+    "s2id": "45fd67f34f09cb821cd8992f3e89b7b655c5d597",
+    "abstract": "Ground-based cloud images can provide information on weather and cloud conditions, which are important for cloud monitoring and PV power generation forecasting. Prediction of short-time cloud movement from images is a major means of intra-hourly irradiation forecasting for solar power generation and is also important for precipitation forecasting. However, there is a lack of advanced and complete methods for cloud movement prediction from ground-based cloud images, and traditional techniques based on image processing and motion vector calculations have difficulty in predicting cloud morphological changes, which makes accurate prediction of cloud motion (especially nonlinear motion) very challenging. Therefore, this paper proposes CloudpredNet, a ground-based cloud ultra-short-term movement prediction model based on an \u201cencoder-generator\u201d architecture. This paper also proposes a loss function dedicated to the time series prediction of ground-based cloud images and combines the attention mechanism to train the model. The model is validated on a publicly available dataset, and it is demonstrated that it has good performance in all metrics of cloud image generation for the next 10 minutes.",
+    "authors": [
+        "Liang Wei",
+        "Tingting Zhu",
+        "Yiren Guo",
+        "Chao Ni",
+        "Qingyuan Zheng"
+    ],
+    "venue": "IEEE Access",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes CloudpredNet, a ground-based cloud ultra-short-term movement prediction model based on an \u201cencoder-generator\u201d architecture that is validated on a publicly available dataset, and it is demonstrated that it has good performance in all metrics of cloud image generation for the next 10 minutes."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

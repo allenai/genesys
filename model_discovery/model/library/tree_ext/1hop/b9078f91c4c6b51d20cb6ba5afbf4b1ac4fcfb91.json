@@ -1,0 +1,32 @@
+{
+    "acronym": "b9078f91c4c6b51d20cb6ba5afbf4b1ac4fcfb91",
+    "title": "PerlDiff: Controllable Street View Synthesis Using Perspective-Layout Diffusion Models",
+    "seed_ids": [
+        "classfreediffu",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "b9078f91c4c6b51d20cb6ba5afbf4b1ac4fcfb91",
+    "abstract": "Controllable generation is considered a potentially vital approach to address the challenge of annotating 3D data, and the precision of such controllable generation becomes particularly imperative in the context of data production for autonomous driving. Existing methods focus on the integration of diverse generative information into controlling inputs, utilizing frameworks such as GLIGEN or ControlNet, to produce commendable outcomes in controllable generation. However, such approaches intrinsically restrict generation performance to the learning capacities of predefined network architectures. In this paper, we explore the integration of controlling information and introduce PerlDiff (Perspective-Layout Diffusion Models), a method for effective street view image generation that fully leverages perspective 3D geometric information. Our PerlDiff employs 3D geometric priors to guide the generation of street view images with precise object-level control within the network learning process, resulting in a more robust and controllable output. Moreover, it demonstrates superior controllability compared to alternative layout control methods. Empirical results justify that our PerlDiff markedly enhances the precision of generation on the NuScenes and KITTI datasets. Our codes and models are publicly available at https://github.com/LabShuHangGU/PerlDiff.",
+    "authors": [
+        "Jinhua Zhang",
+        "Hualian Sheng",
+        "Sijia Cai",
+        "Bing Deng",
+        "Qiao Liang",
+        "Wen Li",
+        "Ying Fu",
+        "Jieping Ye",
+        "Shuhang Gu"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces PerlDiff (Perspective-Layout Diffusion Models), a method for effective street view image generation that fully leverages perspective 3D geometric information and demonstrates superior controllability compared to alternative layout control methods."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,30 @@
+{
+    "acronym": "9f6267bdd8083ab10d26263bd42d4d8f448f2c9a",
+    "title": "DRAformer: Differentially Reconstructed Attention Transformer for Time-Series Forecasting",
+    "seed_ids": [
+        "reformer",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676"
+    ],
+    "s2id": "9f6267bdd8083ab10d26263bd42d4d8f448f2c9a",
+    "abstract": "Time-series forecasting plays an important role in many real-world scenarios, such as equipment life cycle forecasting, weather forecasting, and traffic flow forecasting. It can be observed from recent research that a variety of transformer-based models have shown remarkable results in time-series forecasting. However, there are still some issues that limit the ability of transformer-based models on time-series forecasting tasks: (i) learning directly on raw data is susceptible to noise due to its complex and unstable feature representation; (ii) the self-attention mechanisms pay insufficient attention to changing features and temporal dependencies. In order to solve these two problems, we propose a transformer-based differentially reconstructed attention model DRAformer. Specifically, DRAformer has the following innovations: (i) learning against differenced sequences, which preserves clear and stable sequence features by differencing and highlights the changing properties of sequences; (ii) the reconstructed attention: integrated distance attention exhibits sequential distance through a learnable Gaussian kernel, distributed difference attention calculates distribution difference by mapping the difference sequence to the adaptive feature space, and the combination of the two effectively focuses on the sequences with prominent associations; (iii) the reconstructed decoder input, which extracts sequence features by integrating variation information and temporal correlations, thereby obtaining a more comprehensive sequence representation. Extensive experiments on four large-scale datasets demonstrate that DRAformer outperforms state-of-the-art baselines.",
+    "authors": [
+        "Benhan Li",
+        "Shengdong Du",
+        "Tianrui Li",
+        "Jie Hu",
+        "Zhenglong Jia"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DRAformer is a transformer-based differentially reconstructed attention model that outperforms state-of-the-art baselines in time-series forecasting and has the following innovations: learning against differenced sequences, which preserves clear and stable sequence features by differencing and highlights the changing properties of sequences."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

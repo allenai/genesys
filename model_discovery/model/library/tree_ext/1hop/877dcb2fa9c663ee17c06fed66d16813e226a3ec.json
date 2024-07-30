@@ -1,0 +1,33 @@
+{
+    "acronym": "877dcb2fa9c663ee17c06fed66d16813e226a3ec",
+    "title": "CATs++: Boosting Cost Aggregation With Convolutions and Transformers",
+    "seed_ids": [
+        "linformer",
+        "cc052339afebba8adf9d1868d51b9f3b1d6d0eac",
+        "da0d38cf2ac7e2a6908e0d9e1fff07058daab2ed",
+        "6d26e575113853c0ac6eea0b87931244fde48822",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7",
+        "6954a6bb9d6f3e365b26b694c963ae1d62a03444"
+    ],
+    "s2id": "877dcb2fa9c663ee17c06fed66d16813e226a3ec",
+    "abstract": "Cost aggregation is a process in image matching tasks that aims to disambiguate the noisy matching scores. Existing methods generally tackle this by hand-crafted or CNN-based methods, which either lack robustness to severe deformations or inherit the limitation of CNNs that fail to discriminate incorrect matches due to limited receptive fields and inadaptability. In this paper, we introduce Cost Aggregation with Transformers (CATs) to tackle this by exploring global consensus among initial correlation map with the help of some architectural designs that allow us to benefit from global receptive fields of self-attention mechanism. To this end, we include appearance affinity modeling, which helps to disambiguate the noisy initial correlation maps. Furthermore, we introduce some techniques, including multi-level aggregation to exploit rich semantics prevalent at different feature levels and swapping self-attention to obtain reciprocal matching scores to act as a regularization. Although CATs can attain competitive performance, it may face some limitations, i.e., high computational costs, which may restrict its applicability only at limited resolution and hurt performance. To overcome this, we propose CATs++, an extension of CATs. Concretely, we introduce early convolutions prior to cost aggregation with a transformer to control the number of tokens and inject some convolutional inductive bias, then propose a novel transformer architecture for both efficient and effective cost aggregation, which results in apparent performance boost and cost reduction. With the reduced costs, we are able to compose our network with a hierarchical structure to process higher-resolution inputs. We show that the proposed method with these integrated outperforms the previous state-of-the-art methods by large margins. Codes and pretrained weights are available at: https://ku-cvlab.github.io/CATs-PlusPlus-Project-Page/.",
+    "authors": [
+        "Seokju Cho",
+        "Sunghwan Hong",
+        "Seung Wook Kim"
+    ],
+    "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Early convolutions prior to cost aggregation with a transformer to control the number of tokens and inject some convolutional inductive bias are introduced, then a novel transformer architecture is proposed for both efficient and effective cost aggregation, which results in apparent performance boost and cost reduction."
+    },
+    "citationCount": 23,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

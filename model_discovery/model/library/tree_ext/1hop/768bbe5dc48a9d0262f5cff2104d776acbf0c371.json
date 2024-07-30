@@ -1,0 +1,29 @@
+{
+    "acronym": "768bbe5dc48a9d0262f5cff2104d776acbf0c371",
+    "title": "CovTransformer: A transformer model for SARS-CoV-2 lineage frequency forecasting",
+    "seed_ids": [
+        "transformer",
+        "3a906b77fa218adc171fecb28bb81c24c14dcc7b"
+    ],
+    "s2id": "768bbe5dc48a9d0262f5cff2104d776acbf0c371",
+    "abstract": "With hundreds of SARS-CoV-2 lineages circulating in the global population, there is an urgent need for forecasting lineage frequencies and thus identifying rapidly expanding lineages. To address this need, we constructed a framework for SARS-CoV-2 lineage frequency forecasting (CovTransformer), based on the transformer architecture. We designed our framework to navigate challenges such as a limited amount of data with high levels of noise and bias. We first trained and tested the model using data from the UK and the US, and then tested the generalization ability of the model on data collected across the globe. Remarkably, the model makes predictions two months into the future with high levels of accuracy in 31 countries. Finally, we show that our model performed substantially better than the current gold-standard, i.e. a regression-based model implemented in Nextstrain. Overall, our work demonstrates transformer models represent a promising approach for lineage forecasting and pandemic monitoring.",
+    "authors": [
+        "Y. Feng",
+        "E. E. Goldberg",
+        "M. Kupperman",
+        "X. Zhang",
+        "Y. Lin",
+        "R. Ke"
+    ],
+    "venue": "medRxiv",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work constructed a framework for SARS-CoV-2 lineage frequency forecasting (CovTransformer), based on the transformer architecture, and shows that the model performed substantially better than the current gold-standard, i.e. a regression-based model implemented in Nextstrain."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

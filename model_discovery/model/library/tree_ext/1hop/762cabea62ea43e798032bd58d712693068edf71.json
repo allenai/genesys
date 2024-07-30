@@ -1,0 +1,26 @@
+{
+    "acronym": "762cabea62ea43e798032bd58d712693068edf71",
+    "title": "ClickDiffusion: Harnessing LLMs for Interactive Precise Image Editing",
+    "seed_ids": [
+        "gpt3",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1"
+    ],
+    "s2id": "762cabea62ea43e798032bd58d712693068edf71",
+    "abstract": "Recently, researchers have proposed powerful systems for generating and manipulating images using natural language instructions. However, it is difficult to precisely specify many common classes of image transformations with text alone. For example, a user may wish to change the location and breed of a particular dog in an image with several similar dogs. This task is quite difficult with natural language alone, and would require a user to write a laboriously complex prompt that both disambiguates the target dog and describes the destination. We propose ClickDiffusion, a system for precise image manipulation and generation that combines natural language instructions with visual feedback provided by the user through a direct manipulation interface. We demonstrate that by serializing both an image and a multi-modal instruction into a textual representation it is possible to leverage LLMs to perform precise transformations of the layout and appearance of an image. Code available at https://github.com/poloclub/ClickDiffusion.",
+    "authors": [
+        "Alec Helbling",
+        "Seongmin Lee",
+        "Polo Chau"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ClickDiffusion is proposed, a system for precise image manipulation and generation that combines natural language instructions with visual feedback provided by the user through a direct manipulation interface and it is demonstrated that by serializing both an image and a multi-modal instruction into a textual representation it is possible to leverage LLMs to perform precise transformations of the layout and appearance of an image."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

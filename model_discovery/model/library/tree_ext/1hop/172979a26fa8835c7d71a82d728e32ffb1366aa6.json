@@ -1,0 +1,28 @@
+{
+    "acronym": "172979a26fa8835c7d71a82d728e32ffb1366aa6",
+    "title": "Diversity Enhanced Table-to-Text Generation via Type Control",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "172979a26fa8835c7d71a82d728e32ffb1366aa6",
+    "abstract": "Generating natural language statements to convey logical inferences from tabular data (i.e., Logical NLG) is a process with one input and a variety of valid outputs. This characteristic underscores the need for a method to produce a diverse set of valid outputs, presenting different perspectives of the input data. We propose a simple yet effective diversity-enhancing scheme that builds upon an inherent property of the statements, their logic-types, by using a type-controlled table-to-text generation model. We demonstrate, through extensive automatic and human evaluations over the two publicly available Logical NLG datasets, that our proposed method both facilitates the ability to effectively control the generated statement type, and produces results superior to the strongest baselines in terms of quality and factuality-diversity trade-off.",
+    "authors": [
+        "Yotam Perlitz",
+        "L. Ein-Dor",
+        "D. Sheinwald",
+        "N. Slonim",
+        "Michal Shmueli-Scheuer"
+    ],
+    "venue": "",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work demonstrates, through extensive automatic and human evaluations over the two publicly available Logical NLG datasets, that the proposed method both facilitates the ability to effectively control the generated statement type, and produces results superior to the strongest baselines in terms of quality and factuality-diversity trade-off."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

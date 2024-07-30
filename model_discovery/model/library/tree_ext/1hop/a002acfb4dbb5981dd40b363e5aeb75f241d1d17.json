@@ -1,0 +1,31 @@
+{
+    "acronym": "a002acfb4dbb5981dd40b363e5aeb75f241d1d17",
+    "title": "QURIOUS: Question Generation Pretraining for Text Generation",
+    "seed_ids": [
+        "gpt",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a002acfb4dbb5981dd40b363e5aeb75f241d1d17",
+    "abstract": "Recent trends in natural language processing using pretraining have shifted focus towards pretraining and fine-tuning approaches for text generation. Often the focus has been on task-agnostic approaches that generalize the language modeling objective. We propose question generation as a pretraining method, which better aligns with the text generation objectives. Our text generation models pretrained with this method are better at understanding the essence of the input and are better language models for the target task. When evaluated on two text generation tasks, abstractive summarization and answer-focused question generation, our models result in state-of-the-art performances in terms of automatic metrics. Human evaluators also found our summaries and generated questions to be more natural, concise and informative.",
+    "authors": [
+        "Shashi Narayan",
+        "Gon\u00e7alo Sim\u00e3es",
+        "Ji Ma",
+        "Hannah Craighead",
+        "Ryan T. McDonald"
+    ],
+    "venue": "arXiv.org",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes question generation as a pretraining method, which better aligns with the text generation objectives and is better at understanding the essence of the input and are better language models for the target task."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

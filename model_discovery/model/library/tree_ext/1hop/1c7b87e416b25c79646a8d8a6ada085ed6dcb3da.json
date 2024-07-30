@@ -1,0 +1,38 @@
+{
+    "acronym": "1c7b87e416b25c79646a8d8a6ada085ed6dcb3da",
+    "title": "Adaptive Guidance: Training-free Acceleration of Conditional Diffusion Models",
+    "seed_ids": [
+        "classfreediffu",
+        "383393bc2a33d9bb0642c2ac21b55cfc542c6aa3",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "3ff7153fd6bd47d08084c7f50f8fd70026c126e7",
+        "2f4c451922e227cbbd4f090b74298445bbd900d0",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "145b8b5d99a2beba6029418ca043585b90138d12",
+        "54ee2435014a23f06018a77a9d32e875a0152249"
+    ],
+    "s2id": "1c7b87e416b25c79646a8d8a6ada085ed6dcb3da",
+    "abstract": "This paper presents a comprehensive study on the role of Classifier-Free Guidance (CFG) in text-conditioned diffusion models from the perspective of inference efficiency. In particular, we relax the default choice of applying CFG in all diffusion steps and instead search for efficient guidance policies. We formulate the discovery of such policies in the differentiable Neural Architecture Search framework. Our findings suggest that the denoising steps proposed by CFG become increasingly aligned with simple conditional steps, which renders the extra neural network evaluation of CFG redundant, especially in the second half of the denoising process. Building upon this insight, we propose\"Adaptive Guidance\"(AG), an efficient variant of CFG, that adaptively omits network evaluations when the denoising process displays convergence. Our experiments demonstrate that AG preserves CFG's image quality while reducing computation by 25%. Thus, AG constitutes a plug-and-play alternative to Guidance Distillation, achieving 50% of the speed-ups of the latter while being training-free and retaining the capacity to handle negative prompts. Finally, we uncover further redundancies of CFG in the first half of the diffusion process, showing that entire neural function evaluations can be replaced by simple affine transformations of past score estimates. This method, termed LinearAG, offers even cheaper inference at the cost of deviating from the baseline model. Our findings provide insights into the efficiency of the conditional denoising process that contribute to more practical and swift deployment of text-conditioned diffusion models.",
+    "authors": [
+        "Angela Castillo",
+        "Jonas Kohler",
+        "Juan C. P'erez",
+        "Juan Pablo P'erez",
+        "Albert Pumarola",
+        "Bernard Ghanem",
+        "Pablo Arbel'aez",
+        "Ali K. Thabet"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Adaptive Guidance is proposed, an efficient variant of CFG that adaptively omits network evaluations when the denoising process displays convergence, and provides insights into the efficiency of the conditional denoising process that contribute to more practical and swift deployment of text-conditioned diffusion models."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

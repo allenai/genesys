@@ -1,0 +1,28 @@
+{
+    "acronym": "c78c0b627e74e15ccfaec107b5c6c66f6b3e3865",
+    "title": "A Research on Attraction Details Question-answer Pair Generation based on Gate Attention Unit",
+    "seed_ids": [
+        "flash",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "c78c0b627e74e15ccfaec107b5c6c66f6b3e3865",
+    "abstract": "The promotional information on the current scenic site is mixed and not clear enough. The long text information can be refined into multiple question-answer (QA) pairs by the question-answer pair generation (QAG). The vast majority of the standard QAG models depend on self-consideration unit, and there are cases that the created answers are not sufficiently precise and the produced questions and answers don\u2019t coordinate. We propose an encoder-decoder architecture based on the Gate Attention Unit (GAU) to handle the QAG task. We found that the GAU applied directly to the encoder-decoder structure, that cross-attention based on GAU can\u2019t handle the information from the encoder and decoder well with a single head attention unit, and that the problem can be effectively solved by using a multi-head attention mechanism. In this work, experiments are conducted to identify the appropriate model structure for the GauFormer with the best outcome on the QAG task for attraction detail. This demonstrates that GAU is capable of handling more text generation work.",
+    "authors": [
+        "Weiming Huang",
+        "Jin Fan",
+        "Qingling Chang"
+    ],
+    "venue": "2023 4th International Conference on Electronic Communication and Artificial Intelligence (ICECAI)",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work found that the GAU applied directly to the encoder-decoder structure, that cross-attention based on GAU can\u2019t handle the information from the encoding and decoder well with a single head attention unit, and that the problem can be effectively solved by using a multi-head attention mechanism."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

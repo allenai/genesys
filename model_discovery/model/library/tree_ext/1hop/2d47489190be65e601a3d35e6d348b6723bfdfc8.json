@@ -1,0 +1,36 @@
+{
+    "acronym": "2d47489190be65e601a3d35e6d348b6723bfdfc8",
+    "title": "OmniVec: Learning robust representations with cross modal sharing",
+    "seed_ids": [
+        "perceiverio",
+        "128fc3e518a9616cd2780d974d32b4ef47ba5901",
+        "37e5c2947514815efb7aaf6a744631ae3cbce8f9",
+        "573f30d20cf4aada21dba273f5d47a7af09cac45",
+        "ada81a4de88a6ce474df2e2446ad11fea480616e",
+        "3c6ec875050ad4d2319725697d74154f66ced597",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "d8d2e574965fe733eb1416e03df2b5c2914fc530",
+        "bf80051ca9ae1e76e2bdbdcf44df559e7eb73cb1",
+        "b3bf9fe13195e9aa70e1dac04e01fcff7008e812",
+        "3a906b77fa218adc171fecb28bb81c24c14dcc7b",
+        "270f3bea8ca801870a6cc56b4d36f7f2019c9ed0",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "2d47489190be65e601a3d35e6d348b6723bfdfc8",
+    "abstract": "Majority of research in learning based methods has been towards designing and training networks for specific tasks. However, many of the learning based tasks, across modalities, share commonalities and could be potentially tackled in a joint framework. We present an approach in such direction, to learn multiple tasks, in multiple modalities, with a unified architecture. The proposed network is composed of task specific encoders, a common trunk in the middle, followed by task specific prediction heads. We first pre-train it by self-supervised masked training, followed by sequential training for the different tasks. We train the network on all major modalities, e.g. visual, audio, text and 3D, and report results on 22 diverse and challenging public benchmarks. We demonstrate empirically that, using a joint network to train across modalities leads to meaningful information sharing and this allows us to achieve state-of-the-art results on most of the benchmarks. We also show generalization of the trained network on cross-modal tasks as well as unseen datasets and tasks.",
+    "authors": [
+        "Siddharth Srivastava",
+        "Gaurav Sharma"
+    ],
+    "venue": "IEEE Workshop/Winter Conference on Applications of Computer Vision",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated empirically that, using a joint network to train across modalities leads to meaningful information sharing and this allows the proposed network to achieve state-of-the-art results on most of the benchmarks."
+    },
+    "citationCount": 22,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

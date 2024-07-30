@@ -1,0 +1,45 @@
+{
+    "acronym": "18afd48a21bba81ba71eb11dde98638089470dd0",
+    "title": "MultiFusion: Fusing Pre-Trained Models for Multi-Lingual, Multi-Modal Image Generation",
+    "seed_ids": [
+        "roformer",
+        "6f6e2e0311589a9af045f6acd00b7dee6d19fce4",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "3aa2c10dd6c72267ea8a622c8f30b3c9240d5fab",
+        "3ff7153fd6bd47d08084c7f50f8fd70026c126e7",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "de18baa4964804cf471d85a5a090498242d2e79f",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "18afd48a21bba81ba71eb11dde98638089470dd0",
+    "abstract": "The recent popularity of text-to-image diffusion models (DM) can largely be attributed to the intuitive interface they provide to users. The intended generation can be expressed in natural language, with the model producing faithful interpretations of text prompts. However, expressing complex or nuanced ideas in text alone can be difficult. To ease image generation, we propose MultiFusion that allows one to express complex and nuanced concepts with arbitrarily interleaved inputs of multiple modalities and languages. MutliFusion leverages pre-trained models and aligns them for integration into a cohesive system, thereby avoiding the need for extensive training from scratch. Our experimental results demonstrate the efficient transfer of capabilities from individual modules to the downstream model. Specifically, the fusion of all independent components allows the image generation module to utilize multilingual, interleaved multimodal inputs despite being trained solely on monomodal data in a single language.",
+    "authors": [
+        "Marco Bellagente",
+        "Manuel Brack",
+        "Hannah Teufel",
+        "Felix Friedrich",
+        "Bjorn Deiseroth",
+        "C. Eichenberg",
+        "Andrew M. Dai",
+        "R. Baldock",
+        "Souradeep Nanda",
+        "Koen Oostermeijer",
+        "Andres Felipe Cruz Salinas",
+        "P. Schramowski",
+        "K. Kersting",
+        "Samuel Weinbach"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The fusion of all independent components allows the image generation module to utilize multilingual, interleaved multimodal inputs despite being trained solely on monomodal data in a single language."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

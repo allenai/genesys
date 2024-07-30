@@ -1,0 +1,37 @@
+{
+    "acronym": "a72975eb88eb31f193e9587e7415cb04e7bcdbee",
+    "title": "Generating Benchmarks for Factuality Evaluation of Language Models",
+    "seed_ids": [
+        "gpt2",
+        "465471bb5bf1a945549d6291c2d23367966b4957",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a72975eb88eb31f193e9587e7415cb04e7bcdbee",
+    "abstract": "Before deploying a language model (LM) within a given domain, it is important to measure its tendency to generate factually incorrect information in that domain. Existing methods for factuality evaluation of LLM generation focus on facts sampled from the LM itself, and thus do not control the set of evaluated facts and might under-represent domain specific or rare facts. We propose FACTOR: Factual Assessment via Corpus TransfORmation, a scalable approach for evaluating LM factuality. FACTOR automatically transforms a factual corpus of interest into a benchmark evaluating an LM\u2019s propensity to generate true facts from the corpus vs. similar but incorrect statements. We use our framework to create three benchmarks: Wiki-FACTOR, News-FACTOR and Expert-FACTOR. We show that: (i) our benchmark scores increase with model size and improve when the LM is augmented with retrieval; (ii) benchmark score and perplexity do not always agree on model ranking; (iii) when perplexity and benchmark score disagree, the latter better reflects factuality in open-ended generation, as measured by human annotators.",
+    "authors": [
+        "Dor Muhlgay",
+        "Ori Ram",
+        "Inbal Magar",
+        "Yoav Levine",
+        "Nir Ratner",
+        "Yonatan Belinkov",
+        "Omri Abend",
+        "Kevin Leyton-Brown",
+        "A. Shashua",
+        "Y. Shoham"
+    ],
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes FACTOR: Factual Assessment via Corpus TransfORmation, a scalable approach for evaluating LM factuality that automatically transforms a factual corpus of interest into a benchmark evaluating an LM\u2019s propensity to generate true facts from the corpus vs. similar but incorrect statements."
+    },
+    "citationCount": 48,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

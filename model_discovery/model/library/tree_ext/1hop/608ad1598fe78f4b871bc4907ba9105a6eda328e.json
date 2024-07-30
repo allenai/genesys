@@ -1,0 +1,31 @@
+{
+    "acronym": "608ad1598fe78f4b871bc4907ba9105a6eda328e",
+    "title": "LDM-SVC: Latent Diffusion Model Based Zero-Shot Any-to-Any Singing Voice Conversion with Singer Guidance",
+    "seed_ids": [
+        "classfreediffu",
+        "33de773be1733347a01cb07a5bb1b6cdfa956a47",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "608ad1598fe78f4b871bc4907ba9105a6eda328e",
+    "abstract": "Any-to-any singing voice conversion (SVC) is an interesting audio editing technique, aiming to convert the singing voice of one singer into that of another, given only a few seconds of singing data. However, during the conversion process, the issue of timbre leakage is inevitable: the converted singing voice still sounds like the original singer's voice. To tackle this, we propose a latent diffusion model for SVC (LDM-SVC) in this work, which attempts to perform SVC in the latent space using an LDM. We pretrain a variational autoencoder structure using the noted open-source So-VITS-SVC project based on the VITS framework, which is then used for the LDM training. Besides, we propose a singer guidance training method based on classifier-free guidance to further suppress the timbre of the original singer. Experimental results show the superiority of the proposed method over previous works in both subjective and objective evaluations of timbre similarity.",
+    "authors": [
+        "Shihao Chen",
+        "Yu Gu",
+        "Jie Zhang",
+        "Na Li",
+        "Rilin Chen",
+        "Liping Chen",
+        "Lirong Dai"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A latent diffusion model for SVC (LDM-SVC) is proposed in this work, which attempts to perform SVC in the latent space using an LDM and shows the superiority of the proposed method over previous works in both subjective and objective evaluations of timbre similarity."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

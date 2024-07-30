@@ -1,0 +1,25 @@
+{
+    "acronym": "2f9df5993fd3f1407d720614834eb07647b434ba",
+    "title": "Complex-valued Butterfly Transform for Efficient Hyperspectral Image Processing",
+    "seed_ids": [
+        "butterfly",
+        "b1ac64438608aac1a8dfd0adf8fec8c6220f6bfd"
+    ],
+    "s2id": "2f9df5993fd3f1407d720614834eb07647b434ba",
+    "abstract": "Hyper-spectral imaging (HSI) is a critical remote sensing modality that captures high-resolution spectral information in addition to high spatial resolution. Due to its ability to capture rich information about the material properties of the target, HSI has found applications such as agriculture, ecological monitoring, urban planning, and medicine. However, HSI images tend to have high spatial resolution and many channels, thus requiring models that can integrate information over a large context and identify spectral signatures. HSI classification datasets are also highly imbalanced, sparsely labeled, and significantly smaller than standard vision datasets like ImageNet or CIFAR, thus motivating smaller models with high sample efficiency. This work combines the strengths of multi-scale representations and data-driven feature learning. We generalize the butterfly transform to a learned complex-valued butterfly layer, allowing for parameter-efficient extraction of hierarchical complex-valued features from 1D signals. This allows us to create a lean yet highly accurate hyperspectral image classification model. Benchmarked on the Indian Pines, ROSIS-03 Pavia University, and Salinas datasets, our method demonstrates accuracy on par with SSDGL while using $7\\mathbf{x}$ fewer parameters. On the most imbalanced and sparsely labeled dataset, our method outperforms SSDGL.",
+    "authors": [
+        "Utkarsh Singhal",
+        "Stella X. Yu"
+    ],
+    "venue": "IEEE International Joint Conference on Neural Network",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work generalizes the butterfly transform to a learned complex-valued butterfly layer, allowing for parameter-efficient extraction of hierarchical complex- valued features from 1D signals, and creates a lean yet highly accurate hyperspectral image classification model."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

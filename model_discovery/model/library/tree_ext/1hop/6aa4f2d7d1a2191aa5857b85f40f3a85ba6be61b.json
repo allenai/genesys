@@ -1,0 +1,32 @@
+{
+    "acronym": "6aa4f2d7d1a2191aa5857b85f40f3a85ba6be61b",
+    "title": "A Meta-Evaluation of Faithfulness Metrics for Long-Form Hospital-Course Summarization",
+    "seed_ids": [
+        "longformer",
+        "5a104380f0b671e956e3f202ff592917b92eabf5",
+        "3b39efe6c91ae432dd35bb79431edb8a6719f906",
+        "933d1d4f18e721160ddbf8dab25c33f8e3d2cec7",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "7cc730da554003dda77796d2cb4f06da5dfd5592"
+    ],
+    "s2id": "6aa4f2d7d1a2191aa5857b85f40f3a85ba6be61b",
+    "abstract": "Long-form clinical summarization of hospital admissions has real-world significance because of its potential to help both clinicians and patients. The faithfulness of summaries is critical to their safe usage in clinical settings. To better understand the limitations of abstractive systems, as well as the suitability of existing evaluation metrics, we benchmark faithfulness metrics against fine-grained human annotations for model-generated summaries of a patient's Brief Hospital Course. We create a corpus of patient hospital admissions and summaries for a cohort of HIV patients, each with complex medical histories. Annotators are presented with summaries and source notes, and asked to categorize manually highlighted summary elements (clinical entities like conditions and medications as well as actions like\"following up\") into one of three categories: ``Incorrect,'' ``Missing,'' and ``Not in Notes.'' We meta-evaluate a broad set of proposed faithfulness metrics and, across metrics, explore the importance of domain adaptation (e.g. the impact of in-domain pre-training and metric fine-tuning), the use of source-summary alignments, and the effects of distilling a single metric from an ensemble of pre-existing metrics. Off-the-shelf metrics with no exposure to clinical text correlate well yet overly rely on summary extractiveness. As a practical guide to long-form clinical narrative summarization, we find that most metrics correlate best to human judgments when provided with one summary sentence at a time and a minimal set of relevant source context.",
+    "authors": [
+        "Griffin Adams",
+        "J. Zucker",
+        "No\u00e9mie Elhadad"
+    ],
+    "venue": "Machine Learning in Health Care",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that most metrics correlate best to human judgments when provided with one summary sentence at a time and a minimal set of relevant source context, which is a practical guide to long-form clinical narrative summarization."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

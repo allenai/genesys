@@ -1,0 +1,30 @@
+{
+    "acronym": "e77c3097d7605b1b8d61c13617b6fdceac59f9d8",
+    "title": "Cross-Thought for Sentence Encoder Pre-training",
+    "seed_ids": [
+        "gpt",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "e77c3097d7605b1b8d61c13617b6fdceac59f9d8",
+    "abstract": "In this paper, we propose Cross-Thought, a novel approach to pre-training sequence encoder, which is instrumental in building reusable sequence embeddings for large-scale NLP tasks such as question answering. Instead of using the original signals of full sentences, we train a Transformer-based sequence encoder over a large set of short sequences, which allows the model to automatically select the most useful information for predicting masked words. Experiments on question answering and textual entailment tasks demonstrate that our pre-trained encoder can outperform state-of-the-art encoders trained with continuous sentence signals as well as traditional masked language modeling baselines. Our proposed approach also achieves new state of the art on HotpotQA (full-wiki setting) by improving intermediate information retrieval performance.",
+    "authors": [
+        "Shuohang Wang",
+        "Yuwei Fang",
+        "S. Sun",
+        "Zhe Gan",
+        "Yu Cheng",
+        "Jing Jiang",
+        "Jingjing Liu"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes Cross-Thought, a novel approach to pre-training sequence encoder, which is instrumental in building reusable sequence embeddings for large-scale NLP tasks such as question answering and textual entailment tasks."
+    },
+    "citationCount": 18,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,29 @@
+{
+    "acronym": "43c70b8646088036115027528f075e9384d4789c",
+    "title": "MethylBERT: A Transformer-based model for read-level DNA methylation pattern identification and tumour deconvolution",
+    "seed_ids": [
+        "bert",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "43c70b8646088036115027528f075e9384d4789c",
+    "abstract": "DNA methylation (DNAm) is a key epigenetic mark that shows profound alterations in cancer. Read-level methylomes enable more in-depth DNAm analysis due to the broad coverage and preservation of rare cell-type signals, compared to array-based data such as 450K/EPIC array. Here, we propose MethylBERT, a novel Transformer-based model for read-level methylation pattern classification. MethylBERT identifies tumour-derived sequence reads based on their methylation patterns and genomic sequence. Using the calculated classification probability, the method estimates tumour cell fractions within bulk samples and provides an assessment of the model precision. In our evaluation, MethylBERT outperforms existing deconvolution methods and demonstrates high accuracy regardless of methylation pattern complexity, read length and read coverage. Moreover, we show its potential for accurate non-invasive early cancer diagnostics using liquid biopsy samples. MethylBERT represents a significant advancement in read-level methylome analysis. It will increase the accuracy of tumour deconvolution and enhance circulating tumour DNA studies.",
+    "authors": [
+        "Yunhee Jeong",
+        "Clarissa Gerh\u00e4user",
+        "G. Sauter",
+        "T. Schlomm",
+        "Karl Rohr",
+        "P. Lutsik"
+    ],
+    "venue": "bioRxiv",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "MethylBERT outperforms existing deconvolution methods and demonstrates high accuracy regardless of methylation pattern complexity, read length and read coverage, and has potential for accurate non-invasive early cancer diagnostics using liquid biopsy samples."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

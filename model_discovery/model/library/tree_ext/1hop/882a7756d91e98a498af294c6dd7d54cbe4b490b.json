@@ -1,0 +1,31 @@
+{
+    "acronym": "882a7756d91e98a498af294c6dd7d54cbe4b490b",
+    "title": "Leveraging Information Bottleneck for Scientific Document Summarization",
+    "seed_ids": [
+        "longformer",
+        "9dc624d7258d1a56117ca720aea953ce46b66b21",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "203b543bfa1e564bb80ff4229b43174d7c71b0c0"
+    ],
+    "s2id": "882a7756d91e98a498af294c6dd7d54cbe4b490b",
+    "abstract": "This paper presents an unsupervised extractive approach to summarize scientific long documents based on the Information Bottleneck principle. Inspired by previous work which uses the Information Bottleneck principle for sentence compression, we extend it to document level summarization with two separate steps. In the first step, we use signal(s) as queries to retrieve the key content from the source document. Then, a pre-trained language model conducts further sentence search and edit to return the final extracted summaries. Importantly, our work can be flexibly extended to a multi-view framework by different signals. Automatic evaluation on three scientific document datasets verifies the effectiveness of the proposed framework. The further human evaluation suggests that the extracted summaries cover more content aspects than previous systems.",
+    "authors": [
+        "Jiaxin Ju",
+        "Ming Liu",
+        "Huan Yee Koh",
+        "Yuan Jin",
+        "Lan Du",
+        "Shirui Pan"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents an unsupervised extractive approach to summarize scientific long documents based on the Information Bottleneck principle with two separate steps that can be flexibly extended to a multi-view framework by different signals."
+    },
+    "citationCount": 10,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

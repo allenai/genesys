@@ -1,0 +1,27 @@
+{
+    "acronym": "489ac5d1e6aedb7f9c8c151cd117879cd8017aa8",
+    "title": "F-CACNN: A framework integrating FNet and adaptive attention for end-to-end EEG emotion recognition",
+    "seed_ids": [
+        "fnet",
+        "e0d9d80dd0ef1a9996feac61d3315f44ec31aca3",
+        "1f133158a8973fb33fea188f20517cd7e69bfe7f"
+    ],
+    "s2id": "489ac5d1e6aedb7f9c8c151cd117879cd8017aa8",
+    "abstract": "An important area of study in human-computer interaction is emotional brain-computer interface based on electroencephalogram (EEG). A challenge in this area is how to make full use of channel correlation and provide timely feedback on effective emotion recognition results. In this study, we present a FNet-based and channel attention convolution neural network-based model (F-CACNN) for emotion recognition. We thoroughly explore the EEG channel information with the adaptive channel attention mechanism and employ the FNet mechanism for the first time to realize emotion recognition more efficiently. On the one hand, we include the adaptive channel attention technique into the convolutional neural network to adaptively assign the weights according to the importance of each channel and extract EEG spatial features. On the other hand, the FNet mechanism is integrated into long short-term memory. It takes the Fourier Transform to extract the EEG temporal feature without learnable parameterization. Experimental results show that our method can effectively realize emotion recognition without handcrafted features extraction, and significantly reduce time consumption, which meets the current demand for end-to-end emotion recognition.",
+    "authors": [
+        "Zhoulei Cao",
+        "Xiaoliang Wang",
+        "Yuzhen Liu"
+    ],
+    "venue": "2023 IEEE Smart World Congress (SWC)",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A FNet-based and channel attention convolution neural network-based model (F-CACNN) for emotion recognition that can effectively realize emotion recognition without handcrafted features extraction, and significantly reduce time consumption, which meets the current demand for end-to-end emotion recognition."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

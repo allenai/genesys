@@ -1,0 +1,24 @@
+{
+    "acronym": "c18cda412640ea71effa91ac0583e41f5f91fadf",
+    "title": "Automated Evaluation Approach for Time-Dependent QA Pairs on Web Crawler-Based QA System",
+    "seed_ids": [
+        "bigbird"
+    ],
+    "s2id": "c18cda412640ea71effa91ac0583e41f5f91fadf",
+    "abstract": "This paper presents an approach to deal with the generalized Question Answering (QA) system. This work demonstrates an end to end system that is capable of dealing with the open domain questions i.e. not particular to any genre. For this research different technologies like beautiful Soup is used to scrape the web, MS-Marco dataset is used to train and shorten the document using transfer learning. Document/answers obtained using these processes are validated using an exact match with the Gold answer available in the dataset. This automatic evaluation method fails due to linguistic ambiguities inherent in the data. Taking limitation of this automatic evaluation method as a challenge, in this work an heuristic approach is proposed to deal with the Questions and answers that are dependent on time. A metric is proposed that uses current timestamp and top-n predicted answers from QA system as input. This approach is further tested on the publicly available GNQ(Google Natural Question) dataset. Out of that we have tested for 100 odd pairs and achieved an accuracy of 78% for the test data. The proposed heuristic approach appears to have the great prospect of developing into a beneficial scheme for gathering pinpoint, credible, and specific information in an accurate, real-time and efficient manner.",
+    "authors": [
+        "Shraddha Arora",
+        "Niladri Chatterjee"
+    ],
+    "venue": "International Conference on Service Operations and Logistics, and Informatics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An heuristic approach is proposed to deal with the Questions and answers that are dependent on time that appears to have the great prospect of developing into a beneficial scheme for gathering pinpoint, credible, and specific information in an accurate, real-time and efficient manner."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

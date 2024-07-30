@@ -1,0 +1,27 @@
+{
+    "acronym": "21ca6fd342e8f39919c7545dac3192f7e6a869e0",
+    "title": "Transformers with Stochastic Competition for Tabular Data Modelling",
+    "seed_ids": [
+        "transformer",
+        "25d3a4e048d0020ba9cffc6442ebd4e7bb548a55",
+        "7072db6eddb85ecd2c117365d91bd694760f726e"
+    ],
+    "s2id": "21ca6fd342e8f39919c7545dac3192f7e6a869e0",
+    "abstract": "Despite the prevalence and significance of tabular data across numerous industries and fields, it has been relatively underexplored in the realm of deep learning. Even today, neural networks are often overshadowed by techniques such as gradient boosted decision trees (GBDT). However, recent models are beginning to close this gap, outperforming GBDT in various setups and garnering increased attention in the field. Inspired by this development, we introduce a novel stochastic deep learning model specifically designed for tabular data. The foundation of this model is a Transformer-based architecture, carefully adapted to cater to the unique properties of tabular data through strategic architectural modifications and leveraging two forms of stochastic competition. First, we employ stochastic\"Local Winner Takes All\"units to promote generalization capacity through stochasticity and sparsity. Second, we introduce a novel embedding layer that selects among alternative linear embedding layers through a mechanism of stochastic competition. The effectiveness of the model is validated on a variety of widely-used, publicly available datasets. We demonstrate that, through the incorporation of these elements, our model yields high performance and marks a significant advancement in the application of deep learning to tabular data.",
+    "authors": [
+        "Andreas Voskou",
+        "Charalambos Christoforou",
+        "S. Chatzis"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel stochastic deep learning model specifically designed for tabular data that selects among alternative linear embedding layers through a mechanism of stochastic competition and is validated on a variety of widely-used, publicly available datasets."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

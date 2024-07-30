@@ -1,0 +1,30 @@
+{
+    "acronym": "c2bc931a3f6e2a4fdb9918038f47666188625739",
+    "title": "Effect of tokenization on transformers for biological sequences",
+    "seed_ids": [
+        "gpt",
+        "0f4780f3f42dbe9755d54495ae17244cc88a7483",
+        "d8d2e574965fe733eb1416e03df2b5c2914fc530",
+        "7072db6eddb85ecd2c117365d91bd694760f726e",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280"
+    ],
+    "s2id": "c2bc931a3f6e2a4fdb9918038f47666188625739",
+    "abstract": "Deep learning models are transforming biological research. Many bioinformatics and comparative genomics algorithms analyze genomic data, either DNA or protein sequences. Examples include sequence alignments, phylogenetic tree inference and automatic classification of protein functions. Among these deep learning algorithms, models for processing natural languages, developed in the natural language processing (NLP) community, were recently applied to biological sequences. However, biological sequences are different than natural languages, such as English, and French, in which segmentation of the text to separate words is relatively straightforward. Moreover, biological sequences are characterized by extremely long sentences, which hamper their processing by current machine-learning models, notably the transformer architecture. In NLP, one of the first processing steps is to transform the raw text to a list of tokens. Deep-learning applications to biological sequence data mostly segment proteins and DNA to single characters. In this work, we study the effect of alternative tokenization algorithms on eight different tasks in biology, from predicting the function of proteins and their stability, through nucleotide sequence alignment, to classifying proteins to specific families. We demonstrate that applying alternative tokenization algorithms can increase accuracy and at the same time, substantially reduce the input length compared to the trivial tokenizer in which each character is a token. Furthermore, applying these tokenization algorithms allows interpreting trained models, taking into account dependencies among positions. Finally, we trained these tokenizers on a large dataset of protein sequences containing more than 400 billion amino acids, which resulted in over a three-fold decrease in the number of tokens. We then tested these tokenizers trained on large-scale data on the above specific tasks and showed that for some tasks it is highly beneficial to train database-specific tokenizers. Our study suggests that tokenizers are likely to be a critical component in future deep-network analysis of biological sequence data.",
+    "authors": [
+        "Edo Dotan",
+        "Gal Jaschek",
+        "T. Pupko",
+        "Yonatan Belinkov"
+    ],
+    "venue": "bioRxiv",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work demonstrates that applying alternative tokenization algorithms can increase accuracy and at the same time, substantially reduce the input length compared to the trivial tokenizer, and suggests that tokenizers are likely to be a critical component in future deep-network analysis of biological sequence data."
+    },
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

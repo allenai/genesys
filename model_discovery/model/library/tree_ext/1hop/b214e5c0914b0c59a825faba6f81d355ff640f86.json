@@ -1,0 +1,24 @@
+{
+    "acronym": "b214e5c0914b0c59a825faba6f81d355ff640f86",
+    "title": "Entity Decomposition with Filtering: A Zero-Shot Clinical Named Entity Recognition Framework",
+    "seed_ids": [
+        "gpt3"
+    ],
+    "s2id": "b214e5c0914b0c59a825faba6f81d355ff640f86",
+    "abstract": "Clinical named entity recognition (NER) aims to retrieve important entities within clinical narratives. Recent works have demonstrated that large language models (LLMs) can achieve strong performance in this task. While previous works focus on proprietary LLMs, we investigate how open NER LLMs, trained specifically for entity recognition, perform in clinical NER. In this paper, we aim to improve them through a novel framework, entity decomposition with filtering, or EDF. Our key idea is to decompose the entity recognition task into several retrievals of sub-entity types. We also introduce a filtering mechanism to remove incorrect entities. Our experimental results demonstrate the efficacy of our framework across all metrics, models, datasets, and entity types. Our analysis reveals that entity decomposition can recognize previously missed entities with substantial improvement. We further provide a comprehensive evaluation of our framework and an in-depth error analysis to pave future works.",
+    "authors": [
+        "Reza Averly",
+        "Xia Ning"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel framework to decompose the entity recognition task into several retrievals of sub-entity types and reveals that entity decomposition can recognize previously missed entities with substantial improvement."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

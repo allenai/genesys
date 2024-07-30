@@ -1,0 +1,29 @@
+{
+    "acronym": "06cd65936fdb2d2a5d51ca7fd612c48fbffc228e",
+    "title": "Fuse It More Deeply! A Variational Transformer with Layer-Wise Latent Variable Inference for Text Generation",
+    "seed_ids": [
+        "gpt2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "06cd65936fdb2d2a5d51ca7fd612c48fbffc228e",
+    "abstract": "The past several years have witnessed Variational Auto-Encoder\u2019s superiority in various text generation tasks. However, due to the sequential nature of the text, auto-regressive decoders tend to ignore latent variables and then reduce to simple language models, known as the \\textit{KL vanishing} problem, which would further deteriorate when VAE is combined with Transformer-based structures. To ameliorate this problem, we propose Della, a novel variational Transformer framework. Della learns a series of layer-wise latent variables with each inferred from those of lower layers and tightly coupled with the hidden states by low-rank tensor product. In this way, Della forces these posterior latent variables to be fused deeply with the whole computation path and hence incorporate more information. We theoretically demonstrate that our method can be regarded as entangling latent variables to avoid posterior information decrease through layers, enabling Della to get higher non-zero KL values even without any annealing or thresholding tricks. Experiments on four unconditional and three conditional generation tasks show that Della could better alleviate KL vanishing and improve both quality and diversity compared to several strong baselines.",
+    "authors": [
+        "Jinyi Hu",
+        "Xiaoyuan Yi",
+        "Wenhao Li",
+        "Maosong Sun",
+        "Xing Xie"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Della, a novel variational Transformer framework that learns a series of layer-wise latent variables with each inferred from those of lower layers and tightly coupled with the hidden states by low-rank tensor product, could better alleviate KL vanishing and improve both quality and diversity compared to several strong baselines."
+    },
+    "citationCount": 19,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

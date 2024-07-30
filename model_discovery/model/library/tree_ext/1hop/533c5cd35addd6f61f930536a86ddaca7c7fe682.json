@@ -1,0 +1,28 @@
+{
+    "acronym": "533c5cd35addd6f61f930536a86ddaca7c7fe682",
+    "title": "Trustworthy Social Bias Measurement",
+    "seed_ids": [
+        "gpt2",
+        "7ea0e91c5d5dc73f2133bc46d7ebb6cb83034dae",
+        "039b1c1210c437f3b3ce6e0275ee2137bf5b951c",
+        "5e9c85235210b59a16bdd84b444a904ae271f7e7",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "533c5cd35addd6f61f930536a86ddaca7c7fe682",
+    "abstract": "How do we design measures of social bias that we trust? While prior work has introduced several measures, no measure has gained widespread trust: instead, mounting evidence argues we should distrust these measures. In this work, we design bias measures that warrant trust based on the cross-disciplinary theory of measurement modeling. To combat the frequently fuzzy treatment of social bias in NLP, we explicitly define social bias, grounded in principles drawn from social science research. We operationalize our definition by proposing a general bias measurement framework DivDist, which we use to instantiate 5 concrete bias measures. To validate our measures, we propose a rigorous testing protocol with 8 testing criteria (e.g. predictive validity: do measures predict biases in US employment?). Through our testing, we demonstrate considerable evidence to trust our measures, showing they overcome conceptual, technical, and empirical deficiencies present in prior measures.",
+    "authors": [
+        "Rishi Bommasani",
+        "Percy Liang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work designs bias measures that warrant trust based on the cross-disciplinary theory of measurement modeling, and operationalizes its definition by proposing a general bias measurement framework DivDist, which is used to instantiate 5 concrete bias measures."
+    },
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

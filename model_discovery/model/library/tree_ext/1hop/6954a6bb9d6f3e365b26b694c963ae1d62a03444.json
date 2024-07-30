@@ -1,0 +1,37 @@
+{
+    "acronym": "6954a6bb9d6f3e365b26b694c963ae1d62a03444",
+    "title": "Fastformer: Additive Attention Can Be All You Need",
+    "seed_ids": [
+        "poolingformer",
+        "bigbird",
+        "longformer",
+        "reformer",
+        "84daddd294fa3cc12596b5785f81c2a153d2fb1d",
+        "e32a12b14e212506115cc6804667b3d8297917e1",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "0b991a1a5bcdb13646ac0b6873d09bde4cc36fb5",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6954a6bb9d6f3e365b26b694c963ae1d62a03444",
+    "abstract": "Transformer is a powerful model for text understanding. However, it is inefficient due to its quadratic complexity to input sequence length. Although there are many methods on Transformer acceleration, they are still either inefficient on long sequences or not effective enough. In this paper, we propose Fastformer, which is an efficient Transformer model based on additive attention. In Fastformer, instead of modeling the pair-wise interactions between tokens, we first use additive attention mechanism to model global contexts, and then further transform each token representation based on its interaction with global context representations. In this way, Fastformer can achieve effective context modeling with linear complexity. Extensive experiments on five datasets show that Fastformer is much more efficient than many existing Transformer models and can meanwhile achieve comparable or even better long text modeling performance.",
+    "authors": [
+        "Chuhan Wu",
+        "Fangzhao Wu",
+        "Tao Qi",
+        "Yongfeng Huang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "In Fastformer, instead of modeling the pair-wise interactions between tokens, the model first uses additive attention mechanism to model global contexts, and then further transform each token representation based on its interaction with global context representations to achieve effective context modeling with linear complexity."
+    },
+    "citationCount": 89,
+    "influentialCitationCount": 22,
+    "code": null,
+    "description": null,
+    "url": null
+}

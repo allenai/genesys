@@ -1,0 +1,37 @@
+{
+    "acronym": "c754a10e57accbf8729410654cc59e874a416293",
+    "title": "Deep is a Luxury We Don't Have",
+    "seed_ids": [
+        "nystromformer",
+        "performer",
+        "42a7015e48a1e00b70ebb442a82afb4b10017c0b",
+        "1a703f08da01cf737cce3fb9064259b3f4b44e9c",
+        "6fa1cfc4f97f03a8485692418c7aa1a06c574a85",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "2cf3bd0cc1382f35384e259d99e4f9744eeaed28",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "c754a10e57accbf8729410654cc59e874a416293",
+    "abstract": "Medical images come in high resolutions. A high resolution is vital for finding malignant tissues at an early stage. Yet, this resolution presents a challenge in terms of modeling long range dependencies. Shallow transformers eliminate this problem, but they suffer from quadratic complexity. In this paper, we tackle this complexity by leveraging a linear self-attention approximation. Through this approximation, we propose an efficient vision model called HCT that stands for High resolution Convolutional Transformer. HCT brings transformers' merits to high resolution images at a significantly lower cost. We evaluate HCT using a high resolution mammography dataset. HCT is significantly superior to its CNN counterpart. Furthermore, we demonstrate HCT's fitness for medical images by evaluating its effective receptive field.Code available at https://bit.ly/3ykBhhf",
+    "authors": [
+        "Ahmed Taha",
+        "Yen Nhi Truong Vu",
+        "Brent Mombourquette",
+        "Thomas P. Matthews",
+        "Jason Su",
+        "Sadanand Singh"
+    ],
+    "venue": "International Conference on Medical Image Computing and Computer-Assisted Intervention",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes an efficient vision model called HCT that stands for High resolution Convolutional Transformer, which brings transformers' merits to high resolution images at a significantly lower cost and demonstrates HCT's fitness for medical images by evaluating its effective receptive field."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

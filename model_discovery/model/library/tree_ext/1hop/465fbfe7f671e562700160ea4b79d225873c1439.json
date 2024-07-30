@@ -1,0 +1,35 @@
+{
+    "acronym": "465fbfe7f671e562700160ea4b79d225873c1439",
+    "title": "Towards Better Chinese Spelling Check for Search Engines: A New Dataset and Strong Baseline",
+    "seed_ids": [
+        "bert",
+        "964bd39b546f0f6625ff3b9ef1083f797807ef2e",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "465fbfe7f671e562700160ea4b79d225873c1439",
+    "abstract": "Misspellings in search engine queries may prevent search engines from returning accurate results. For Chinese mobile search engines, due to the different input methods (e.g., hand-written and T9 input methods), more types of misspellings exist, making this problem more challenging. As an essential module of search engines, Chinese Spelling Check~(CSC) models aim to detect and correct misspelled Chinese characters from user-issued queries. Despite the great value of CSC to the search engine, there is no CSC benchmark collected from real-world search engine queries. To fill this blank, we construct and release the Alipay Search Engine Query (AlipaySEQ) spelling check dataset. To the best of our knowledge, AlipaySEQ is the first Chinese Spelling Check dataset collected from the real-world scenario of Chinese mobile search engines. It consists of 15,522 high-quality human annotated and 1,175,151 automatically generated samples. To demonstrate the unique challenges of AlipaySEQ in the era of Large Language Models~(LLMs), we conduct a thorough study to analyze the difference between AlipaySEQ and existing SIGHAN benchmarks and compare the performance of various baselines, including existing task-specific methods and LLMs. We observe that all baselines fail to perform satisfactorily due to the over-correction problem. Especially, LLMs exhibit below-par performance on AlipaySEQ, which is rather surprising. Therefore, to alleviate the over-correction problem, we introduce a model-agnostic CSC Self-Refine Framework (SRF) to construct a strong baseline. Comprehensive experiments demonstrate that our proposed SRF, though more effective against existing models on both the AlipaySEQ and SIGHAN15, is still far from achieving satisfactory performance on our real-world dataset. With the newly collected real-world dataset and strong baseline, we hope more progress can be achieved on such a challenging and valuable task.",
+    "authors": [
+        "Yue Wang",
+        "Zilong Zheng",
+        "Zecheng Tang",
+        "Juntao Li",
+        "Zhihui Liu",
+        "Kunlong Chen",
+        "Jinxiong Chang",
+        "Qishen Zhang",
+        "Zhongyi Liu",
+        "Min Zhang"
+    ],
+    "venue": "Web Search and Data Mining",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A model-agnostic CSC Self-Refine Framework (SRF) is introduced to alleviate the over-correction problem of Chinese Spelling Check models and construct a strong baseline, to demonstrate the unique challenges of AlipaySEQ in the era of Large Language Models~(LLMs)."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

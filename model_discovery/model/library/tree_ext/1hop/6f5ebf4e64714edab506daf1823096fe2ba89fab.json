@@ -1,0 +1,46 @@
+{
+    "acronym": "6f5ebf4e64714edab506daf1823096fe2ba89fab",
+    "title": "LongT5-Mulla: LongT5 With Multi-Level Local Attention for a Longer Sequence",
+    "seed_ids": [
+        "bigbird",
+        "longformer",
+        "longt5",
+        "f3ca1504ab4cc14f491f07e5a8b38d93890551e1",
+        "732e3faec4e5be4d144256f2c379b9dc49f0b227",
+        "24b951275a7a42ef36aca8352caaf6f4cd6238d2",
+        "68cf0b9021f904a765e760291d0c9a509aab0067",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "2d82ee05b132d4681c3bd517afc17d608fe6e525",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "999deaecf0adb9defa3b233be32c6a1c3f7090a3",
+        "84daddd294fa3cc12596b5785f81c2a153d2fb1d",
+        "42e41ab2211b8ba78e36326ea21e05bd25d92c42",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "6e6a2fe517b33e1f29d761ae31fb37ddccb9a213",
+        "d27669c82faf78ea08cceaa0a171b540cccc304d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "01b15017ac59b8d6f2ce3598c4a7d6358c211426",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "2e14e84ccec924ed770b58108ad1d9de6f0ca295",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "6f785623450c17f4d4089dd812bc0de8bcfbb55c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6f5ebf4e64714edab506daf1823096fe2ba89fab",
+    "abstract": "Efficient Transformer models typically employ local and global attention methods, or utilize hierarchical or recurrent architectures, to process long text inputs in natural language processing tasks. However, these models face challenges in terms of sacrificing either efficiency, accuracy, or compatibility to develop their application in longer sequences. To maintain both the accuracy of global attention and the efficiency of local attention, while keeping a good compatibility to be easily applied to an existing pre-trained model, in this paper, we propose multi-level local attention (Mulla attention), which is a hierarchical local attention that acts on both the input sequence and multiple pooling sequences of different granularity simultaneously, thus performing long-range modeling while maintaining linear or log-linear complexity. We apply Mulla attention to LongT5 and implement our LongT5-Mulla sequence-to-sequence model, without introducing new parameters except for positional embeddings. Experiments show that our model can surpass all baseline models, including two original variants of LongT5, in the 8~16k-input long text summarization task on the Multi-News, arXiv and WCEP-10 datasets, with improvements of at least +0.22, +0.01, +0.52 percentage points (pp) averaged Rouge scores respectively, while at the meantime being able to effectively process longer sequences that have 16~48k tokens with at least 52.6% lower memory consumption than LongT5-tglobal, and +0.56~1.62 pp averaged Rouge scores higher than LongT5-local. These results demonstrate that our proposed LongT5-Mulla model can effectively process long sequences and extend the maximum input length for long text tasks from 16k to 48k while maintaining accuracy and efficiency.",
+    "authors": [
+        "Le Zhou"
+    ],
+    "venue": "IEEE Access",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes multi-level local attention (Mulla attention), which is a hierarchical local attention that acts on both the input sequence and multiple pooling sequences of different granularity simultaneously, thus performing long-range modeling while maintaining linear or log-linear complexity."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

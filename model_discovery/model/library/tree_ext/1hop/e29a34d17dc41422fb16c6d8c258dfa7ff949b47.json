@@ -1,0 +1,43 @@
+{
+    "acronym": "e29a34d17dc41422fb16c6d8c258dfa7ff949b47",
+    "title": "MambaAD: Exploring State Space Models for Multi-class Unsupervised Anomaly Detection",
+    "seed_ids": [
+        "s4",
+        "6d49ed0ea24b9c218f5ec6731cd261ce618df2ac",
+        "206974b54e00c1145157d6bc4229b9a2b77ea929",
+        "f67d6126c8436cf91a9cc2ef97c347a41dbf05d4",
+        "5867382590f9f0ff8caf15804d20bde10845b2d2",
+        "b24e899ec0f77eef2fc87a9b8e50516367aa1f97",
+        "38c48a1cd296d16dc9c56717495d6e44cc354444",
+        "5a77b508302771fc083bf24e0bcda8553c9b5421",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2"
+    ],
+    "s2id": "e29a34d17dc41422fb16c6d8c258dfa7ff949b47",
+    "abstract": "Recent advancements in anomaly detection have seen the efficacy of CNN- and transformer-based approaches. However, CNNs struggle with long-range dependencies, while transformers are burdened by quadratic computational complexity. Mamba-based models, with their superior long-range modeling and linear efficiency, have garnered substantial attention. This study pioneers the application of Mamba to multi-class unsupervised anomaly detection, presenting MambaAD, which consists of a pre-trained encoder and a Mamba decoder featuring (Locality-Enhanced State Space) LSS modules at multi-scales. The proposed LSS module, integrating parallel cascaded (Hybrid State Space) HSS blocks and multi-kernel convolutions operations, effectively captures both long-range and local information. The HSS block, utilizing (Hybrid Scanning) HS encoders, encodes feature maps into five scanning methods and eight directions, thereby strengthening global connections through the (State Space Model) SSM. The use of Hilbert scanning and eight directions significantly improves feature sequence modeling. Comprehensive experiments on six diverse anomaly detection datasets and seven metrics demonstrate state-of-the-art performance, substantiating the method's effectiveness.",
+    "authors": [
+        "Haoyang He",
+        "Yuhu Bai",
+        "Jiangning Zhang",
+        "Qingdong He",
+        "Hongxu Chen",
+        "Zhenye Gan",
+        "Chengjie Wang",
+        "Xiangtai Li",
+        "Guanzhong Tian",
+        "Lei Xie"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study pioneers the application of Mamba to multi-class unsupervised anomaly detection, presenting MambaAD, which consists of a pre-trained encoder and a Mamba decoder featuring (Locality-Enhanced State Space) LSS modules at multi-scales."
+    },
+    "citationCount": 9,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

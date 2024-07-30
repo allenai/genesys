@@ -1,0 +1,34 @@
+{
+    "acronym": "1bfe2a9a40a5f34c5c6b99c182d37a6e93f95aa9",
+    "title": "CodeFusion: A Pre-trained Diffusion Model for Code Generation",
+    "seed_ids": [
+        "gpt3",
+        "54b6e5dcef733c151adef0ac06430f63cb301a36",
+        "9ada8fa11b1cdece31f253acae50b62df8d5f823",
+        "44f0eb7be111747f54a8669f74be0bb0dad96cff",
+        "1386b8a11929cf02da291c56aca353e33bbc22ed",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "0fe2636446cd686830da3d971b31a004d6094b3c"
+    ],
+    "s2id": "1bfe2a9a40a5f34c5c6b99c182d37a6e93f95aa9",
+    "abstract": "Imagine a developer who can only change their last line of code, how often would they have to start writing a function from scratch before it is correct? Auto-regressive models for code generation from natural language have a similar limitation: they do not easily allow reconsidering earlier tokens generated. We introduce CodeFusion, a pre-trained diffusion code generation model that addresses this limitation by iteratively denoising a complete program conditioned on the encoded natural language. We evaluate CodeFusion on the task of natural language to code generation for Bash, Python, and Microsoft Excel conditional formatting (CF) rules. Experiments show that CodeFusion (75M parameters) performs on par with state-of-the-art auto-regressive systems (350M-175B parameters) in top-1 accuracy and outperforms them in top-3 and top-5 accuracy due to its better balance in diversity versus quality.",
+    "authors": [
+        "Mukul Singh",
+        "J. Cambronero",
+        "Sumit Gulwani",
+        "Vu Le",
+        "Carina Negreanu",
+        "Gust Verbruggen"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces CodeFusion, a pre-trained diffusion code generation model that addresses this limitation of auto-regressive models by iteratively denoising a complete program conditioned on the encoded natural language."
+    },
+    "citationCount": 12,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,34 @@
+{
+    "acronym": "eb0931c39904a40c6cb4aa35c9b21d5e3b7dc856",
+    "title": "Compound Word Transformer: Learning to Compose Full-Song Music over Dynamic Directed Hypergraphs",
+    "seed_ids": [
+        "lineartransformer",
+        "transformerxl",
+        "ad4c63d617d89ac82ad3fd1dfa68a9f2afa84443",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "ce510c6cfeac703706460680e977c54554840830",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "75acc731bdd2b626edc74672a30da3bc51010ae8",
+        "24a70db0bbb5f486126477e32a6a44ab917a4b11",
+        "fb507ada871d1e8c29e376dbf7b7879689aa89f9"
+    ],
+    "s2id": "eb0931c39904a40c6cb4aa35c9b21d5e3b7dc856",
+    "abstract": "To apply neural sequence models such as the Transformers to music generation tasks, one has to represent a piece of music by a sequence of tokens drawn from a finite set of pre-defined vocabulary. Such a vocabulary usually involves tokens of various types. For example, to describe a musical note, one needs separate tokens to indicate the note\u2019s pitch, duration, velocity (dynamics), and placement (onset time) along the time grid. While different types of tokens may possess different properties, existing models usually treat them equally, in the same way as modeling words in natural languages. In this paper, we present a conceptually different approach that explicitly takes into account the type of the tokens, such as note types and metric types. And, we propose a new Transformer decoder architecture that uses different feed-forward heads to model tokens of different types. With an expansion-compression trick, we convert a piece of music to a sequence of compound words by grouping neighboring tokens, greatly reducing the length of the token sequences. We show that the resulting model can be viewed as a learner over dynamic directed hypergraphs. And, we employ it to learn to compose expressive Pop piano music of full-song length (involving up to 10K individual tokens per song), both conditionally and unconditionally. Our experiment shows that, compared to state-of-the-art models, the proposed model converges 5 to 10 times faster at training (i.e., within a day on a single GPU with 11 GB memory), and with comparable quality in the generated music",
+    "authors": [
+        "Wen-Yi Hsiao",
+        "Jen-Yu Liu",
+        "Yin-Cheng Yeh",
+        "Yi-Hsuan Yang"
+    ],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a conceptually different approach that explicitly takes into account the type of the tokens, such as note types and metric types, and proposes a new Transformer decoder architecture that uses different feed-forward heads to model tokens of different types."
+    },
+    "citationCount": 131,
+    "influentialCitationCount": 28,
+    "code": null,
+    "description": null,
+    "url": null
+}

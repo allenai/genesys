@@ -1,0 +1,48 @@
+{
+    "acronym": "83edcfbb206ddad38a971d605da09390604248ea",
+    "title": "BloombergGPT: A Large Language Model for Finance",
+    "seed_ids": [
+        "gpt2",
+        "bb15f3727f827a3cb88b5d3ca48415c09b40a88f",
+        "1d26c947406173145a4665dd7ab255e03494ea28",
+        "44279244407a64431810f982be6d0c7da4429dd7",
+        "914254fac74a2da051cccf6ca16afcaad416a079",
+        "6edccbd83a9aae204785d4821f97855677c33866",
+        "b21670e8061a06ab97e7d6052c9345a326e84ff8",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "fd1b829261ba04bb92e0ab60c4f6e7cea0d99fbf",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "04f4e55e14150b7c48b0287ba77c7443df76ed45",
+        "f51497f463566581874c941353dd9d80069c5b77",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "2fa3f7ce620a1c7155daef6620dd6bb0e01934f3",
+        "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47"
+    ],
+    "s2id": "83edcfbb206ddad38a971d605da09390604248ea",
+    "abstract": "The use of NLP in the realm of financial technology is broad and complex, with applications ranging from sentiment analysis and named entity recognition to question answering. Large Language Models (LLMs) have been shown to be effective on a variety of tasks; however, no LLM specialized for the financial domain has been reported in literature. In this work, we present BloombergGPT, a 50 billion parameter language model that is trained on a wide range of financial data. We construct a 363 billion token dataset based on Bloomberg's extensive data sources, perhaps the largest domain-specific dataset yet, augmented with 345 billion tokens from general purpose datasets. We validate BloombergGPT on standard LLM benchmarks, open financial benchmarks, and a suite of internal benchmarks that most accurately reflect our intended usage. Our mixed dataset training leads to a model that outperforms existing models on financial tasks by significant margins without sacrificing performance on general LLM benchmarks. Additionally, we explain our modeling choices, training process, and evaluation methodology. We release Training Chronicles (Appendix C) detailing our experience in training BloombergGPT.",
+    "authors": [
+        "Shijie Wu",
+        "Ozan Irsoy",
+        "Steven Lu",
+        "Vadim Dabravolski",
+        "Mark Dredze",
+        "Sebastian Gehrmann",
+        "P. Kambadur",
+        "D. Rosenberg",
+        "Gideon Mann"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents BloombergGPT, a 50 billion parameter language model that is trained on a wide range of financial data, and constructs a 363 billion token dataset based on Bloomberg's extensive data sources, perhaps the largest domain-specific dataset yet."
+    },
+    "citationCount": 447,
+    "influentialCitationCount": 29,
+    "code": null,
+    "description": null,
+    "url": null
+}

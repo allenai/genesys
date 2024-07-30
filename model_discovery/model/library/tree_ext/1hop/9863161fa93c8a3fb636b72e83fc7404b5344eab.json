@@ -1,0 +1,28 @@
+{
+    "acronym": "9863161fa93c8a3fb636b72e83fc7404b5344eab",
+    "title": "Spatial and Channel Aggregation Network for Lightweight Image Super-Resolution",
+    "seed_ids": [
+        "metaformer",
+        "fc4cbc7a75f5a3bbca59db5513231555f078fe78",
+        "ba637c4f1a170f1e2dadeadb71a63cf2b9a46de2",
+        "c8b25fab5608c3e033d34b4483ec47e68ba109b7"
+    ],
+    "s2id": "9863161fa93c8a3fb636b72e83fc7404b5344eab",
+    "abstract": "Advanced deep learning-based Single Image Super-Resolution (SISR) techniques are designed to restore high-frequency image details and enhance imaging resolution through the use of rapid and lightweight network architectures. Existing SISR methodologies face the challenge of striking a balance between performance and computational costs, which hinders the practical application of SISR methods. In response to this challenge, the present study introduces a lightweight network known as the Spatial and Channel Aggregation Network (SCAN), designed to excel in image super-resolution (SR) tasks. SCAN is the first SISR method to employ large-kernel convolutions combined with feature reduction operations. This design enables the network to focus more on challenging intermediate-level information extraction, leading to improved performance and efficiency of the network. Additionally, an innovative 9 \u00d7 9 large kernel convolution was introduced to further expand the receptive field. The proposed SCAN method outperforms state-of-the-art lightweight SISR methods on benchmark datasets with a 0.13 dB improvement in peak signal-to-noise ratio (PSNR) and a 0.0013 increase in structural similarity (SSIM). Moreover, on remote sensing datasets, SCAN achieves a 0.4 dB improvement in PSNR and a 0.0033 increase in SSIM.",
+    "authors": [
+        "Xianyu Wu",
+        "Linze Zuo",
+        "Feng Huang"
+    ],
+    "venue": "Italian National Conference on Sensors",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The present study introduces a lightweight network known as the Spatial and Channel Aggregation Network (SCAN), designed to excel in image super-resolution (SR) tasks, and is the first SISR method to employ large-kernel convolutions combined with feature reduction operations."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,40 @@
+{
+    "acronym": "f1c39410893794ee3643efa85be1816964aa85ea",
+    "title": "Imagen Editor and EditBench: Advancing and Evaluating Text-Guided Image Inpainting",
+    "seed_ids": [
+        "classfreediffu",
+        "498ac9b2e494601d20a3d0211c16acf2b7954a54",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "039b1c1210c437f3b3ce6e0275ee2137bf5b951c"
+    ],
+    "s2id": "f1c39410893794ee3643efa85be1816964aa85ea",
+    "abstract": "Text-guided image editing can have a transformative impact in supporting creative applications. A key challenge is to generate edits that are faithful to input text prompts, while consistent with input images. We present Imagen Editor, a cascaded diffusion model built, by fine-tuning Imagen [36] on text-guided image inpainting. Imagen Editor's edits are faithful to the text prompts, which is accomplished by using object detectors to propose inpainting masks during training. In addition, Imagen Editor captures fine details in the input image by conditioning the cascaded pipeline on the original high resolution image. To improve qualitative and quantitative evaluation, we introduce EditBench, a systematic benchmark for text-guided image inpainting. EditBench evaluates inpainting edits on natural and generated images exploring objects, attributes, and scenes. Through extensive human evaluation on EditBench, we find that object-masking during training leads to across-the-board improvements in text-image alignment \u2013 such that Imagen Editor is preferred over DALL-E 2 [31] and Stable Diffusion [33] \u2013 and, as a cohort, these models are better at object-rendering than text-rendering, and handle material/color/size attributes better than count/shape attributes.",
+    "authors": [
+        "Su Wang",
+        "Chitwan Saharia",
+        "Ceslee Montgomery",
+        "J. Pont-Tuset",
+        "Shai Noy",
+        "S. Pellegrini",
+        "Yasumasa Onoe",
+        "Sarah Laszlo",
+        "David J. Fleet",
+        "Radu Soricut",
+        "Jason Baldridge",
+        "Mohammad Norouzi",
+        "Peter Anderson",
+        "William Chan"
+    ],
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Through extensive human evaluation on EditBench, it is found that object-masking during training leads to across-the-board improvements in text-image alignment \u2013 such that Imagen Editor is preferred over DALL-E 2 and Stable Diffusion \u2013 and, as a cohort, these models are better at object-rendering than text-rendered, and handle material/color/size attributes better than count/shape attributes."
+    },
+    "citationCount": 94,
+    "influentialCitationCount": 11,
+    "code": null,
+    "description": null,
+    "url": null
+}

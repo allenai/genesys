@@ -1,0 +1,27 @@
+{
+    "acronym": "88a9924ba302f9c5c8065d9e38798e9506c5b171",
+    "title": "CHAI: A CHatbot AI for Task-Oriented Dialogue with Offline Reinforcement Learning",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "88a9924ba302f9c5c8065d9e38798e9506c5b171",
+    "abstract": "Conventionally, generation of natural language for dialogue agents may be viewed as a statistical learning problem: determine the patterns in human-provided data and generate appropriate responses with similar statistical properties. However, dialogue can also be regarded as a goal directed process, where speakers attempt to accomplish a specific task. Reinforcement learning (RL) algorithms are designed specifically for solving such goal-directed problems, but the most direct way to apply RL, through trial-and-error learning in human conversations, is costly. In this paper, we study how offline reinforcement learning can instead be used to train dialogue agents entirely using static datasets collected from human speakers. Our experiments show that recently developed offline RL methods can be combined with language models to yield realistic dialogue agents that better accomplish task goals.",
+    "authors": [
+        "Siddharth Verma",
+        "Justin Fu",
+        "Mengjiao Yang",
+        "S. Levine"
+    ],
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper studies how offline reinforcement learning can instead be used to train dialogue agents entirely using static datasets collected from human speakers, and shows that recently developed offline RL methods can be combined with language models to yield realistic dialogue agents that better accomplish task goals."
+    },
+    "citationCount": 32,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

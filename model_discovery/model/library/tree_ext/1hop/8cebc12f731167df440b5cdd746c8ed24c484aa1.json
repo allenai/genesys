@@ -1,0 +1,34 @@
+{
+    "acronym": "8cebc12f731167df440b5cdd746c8ed24c484aa1",
+    "title": "QCQA: Quality and Capacity-aware grouped Query Attention",
+    "seed_ids": [
+        "gqa",
+        "mqa",
+        "e9576198e9ee767ede4b1ac6a739267aa52a9832",
+        "c193eb176985a81ae64f63c5e50b2f11cfb7c4e6",
+        "ef8d788a904ed66bd8e30ffa69bc3ea1fe57dda7",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "92e121c6e114fe3cfb89370df03847c66a9b4e28",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "8cebc12f731167df440b5cdd746c8ed24c484aa1",
+    "abstract": "Excessive memory requirements of key and value features (KV-cache) present significant challenges in the autoregressive inference of large language models (LLMs), restricting both the speed and length of text generation. Approaches such as Multi-Query Attention (MQA) and Grouped Query Attention (GQA) mitigate these challenges by grouping query heads and consequently reducing the number of corresponding key and value heads. However, MQA and GQA decrease the KV-cache size requirements at the expense of LLM accuracy (quality of text generation). These methods do not ensure an optimal tradeoff between KV-cache size and text generation quality due to the absence of quality-aware grouping of query heads. To address this issue, we propose Quality and Capacity-Aware Grouped Query Attention (QCQA), which identifies optimal query head groupings using an evolutionary algorithm with a computationally efficient and inexpensive fitness function. We demonstrate that QCQA achieves a significantly better tradeoff between KV-cache capacity and LLM accuracy compared to GQA. For the Llama2 $7\\,$B model, QCQA achieves $\\mathbf{20}$\\% higher accuracy than GQA with similar KV-cache size requirements in the absence of fine-tuning. After fine-tuning both QCQA and GQA, for a similar KV-cache size, QCQA provides $\\mathbf{10.55}\\,$\\% higher accuracy than GQA. Furthermore, QCQA requires $40\\,$\\% less KV-cache size than GQA to attain similar accuracy. The proposed quality and capacity-aware grouping of query heads can serve as a new paradigm for KV-cache optimization in autoregressive LLM inference.",
+    "authors": [
+        "Vinay Joshi",
+        "Prashant Laddha",
+        "Shambhavi Sinha",
+        "O. J. Omer",
+        "S. Subramoney"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Quality and Capacity-Aware Grouped Query Attention (QCQA), which identifies optimal query head groupings using an evolutionary algorithm with a computationally efficient and inexpensive fitness function, achieves a significantly better tradeoff between KV-cache capacity and LLM accuracy compared to GQA."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

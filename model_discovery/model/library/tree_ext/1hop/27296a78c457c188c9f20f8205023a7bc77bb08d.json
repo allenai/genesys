@@ -1,0 +1,23 @@
+{
+    "acronym": "27296a78c457c188c9f20f8205023a7bc77bb08d",
+    "title": "Acquiring Linguistic Knowledge from Multimodal Input",
+    "seed_ids": [
+        "bert",
+        "5a2263092f49540fd0e049050a96882ff29b00c3",
+        "d9f6ada77448664b71128bb19df15765336974a6"
+    ],
+    "s2id": "27296a78c457c188c9f20f8205023a7bc77bb08d",
+    "abstract": "In contrast to children, language models (LMs) exhibit considerably inferior data efficiency when acquiring language. In this submission to the BabyLM Challenge (Warstadt et al., 2023), we test the hypothesis that this data efficiency gap is partly caused by a lack of multimodal input and grounding in the learning environment of typical language models. Although previous work looking into this question found that multimodal training can even harm language-only performance, we speculate that these findings can be attributed to catastrophic forgetting of complex language due to fine-tuning on captions data. To test our hypothesis, we perform an ablation study on FLAVA (Singh et al., 2022), a multimodal vision-and-language model, independently varying the volume of text and vision input to quantify how much text data (if any) can be offset by vision at different data scales. We aim to limit catastrophic forgetting through a multitask pretraining regime that includes unimodal text-only tasks and data sampled from WiT, the relatively diverse Wikipedia-based dataset (Srinivasan et al., 2021). Our results are largely negative: Multimodal pretraining does not harm our models' language performance but does not consistently help either. That said, our conclusions are limited by our having been able to conduct only a small number of runs. While we must leave open the possibility that multimodal input explains some of the gap in data efficiency between LMs and humans, positive evidence for this hypothesis will require better architectures and techniques for multimodal training.",
+    "authors": [
+        "Theodor Amariucai",
+        "Alexander Scott Warstadt"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": null,
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

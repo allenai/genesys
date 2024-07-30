@@ -1,0 +1,27 @@
+{
+    "acronym": "cd47990716fa0215f40fc219b485d81e879df87c",
+    "title": "Automated Repair of AI Code with Large Language Models and Formal Verification",
+    "seed_ids": [
+        "gpt2",
+        "f542c184eec4c3252d678118a7f32cf327b6f23a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "cd47990716fa0215f40fc219b485d81e879df87c",
+    "abstract": "The next generation of AI systems requires strong safety guarantees. This report looks at the software implementation of neural networks and related memory safety properties, including NULL pointer deference, out-of-bound access, double-free, and memory leaks. Our goal is to detect these vulnerabilities, and automatically repair them with the help of large language models. To this end, we first expand the size of NeuroCodeBench, an existing dataset of neural network code, to about 81k programs via an automated process of program mutation. Then, we verify the memory safety of the mutated neural network implementations with ESBMC, a state-of-the-art software verifier. Whenever ESBMC spots a vulnerability, we invoke a large language model to repair the source code. For the latest task, we compare the performance of various state-of-the-art prompt engineering techniques, and an iterative approach that repeatedly calls the large language model.",
+    "authors": [
+        "Yiannis Charalambous",
+        "Edoardo Manino",
+        "Lucas C. Cordeiro"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This report looks at the software implementation of neural networks and related memory safety properties, including NULL pointer deference, out-of-bound access, double-free, and memory leaks, and compares the performance of various state-of-the-art prompt engineering techniques, and an iterative approach that repeatedly calls the large language model."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "c57293882b2561e1ba03017902df9fc2f289dea2",
+    "title": "Hierarchical Text-Conditional Image Generation with CLIP Latents",
+    "seed_ids": [
+        "classfreediffu",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "eb95b02edfaeb28f528b5ee8b705388bb9a933be",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "de18baa4964804cf471d85a5a090498242d2e79f"
+    ],
+    "s2id": "c57293882b2561e1ba03017902df9fc2f289dea2",
+    "abstract": "Contrastive models like CLIP have been shown to learn robust representations of images that capture both semantics and style. To leverage these representations for image generation, we propose a two-stage model: a prior that generates a CLIP image embedding given a text caption, and a decoder that generates an image conditioned on the image embedding. We show that explicitly generating image representations improves image diversity with minimal loss in photorealism and caption similarity. Our decoders conditioned on image representations can also produce variations of an image that preserve both its semantics and style, while varying the non-essential details absent from the image representation. Moreover, the joint embedding space of CLIP enables language-guided image manipulations in a zero-shot fashion. We use diffusion models for the decoder and experiment with both autoregressive and diffusion models for the prior, finding that the latter are computationally more efficient and produce higher-quality samples.",
+    "authors": [
+        "A. Ramesh",
+        "Prafulla Dhariwal",
+        "Alex Nichol",
+        "Casey Chu",
+        "Mark Chen"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that explicitly generating image representations improves image diversity with minimal loss in photorealism and caption similarity, and the joint embedding space of CLIP enables language-guided image manipulations in a zero-shot fashion."
+    },
+    "citationCount": 4751,
+    "influentialCitationCount": 400,
+    "code": null,
+    "description": null,
+    "url": null
+}

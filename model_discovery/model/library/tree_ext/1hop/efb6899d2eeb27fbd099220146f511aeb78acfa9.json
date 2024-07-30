@@ -1,0 +1,29 @@
+{
+    "acronym": "efb6899d2eeb27fbd099220146f511aeb78acfa9",
+    "title": "On the power of foundation models",
+    "seed_ids": [
+        "gpt",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "85e7d63f75c0916bd350a229e040c5fbb1472e7a",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "efb6899d2eeb27fbd099220146f511aeb78acfa9",
+    "abstract": "With infinitely many high-quality data points, infinite computational power, an infinitely large foundation model with a perfect training algorithm and guaranteed zero generalization error on the pretext task, can the model be used for everything? This question cannot be answered by the existing theory of representation, optimization or generalization, because the issues they mainly investigate are assumed to be nonexistent here. In this paper, we show that category theory provides powerful machinery to answer this question. We have proved three results. The first one limits the power of prompt-based learning, saying that the model can solve a downstream task with prompts if and only if the task is representable. The second one says fine tuning does not have this limit, as a foundation model with the minimum required power (up to symmetry) can theoretically solve downstream tasks for the category defined by pretext task, with fine tuning and enough resources. Our final result can be seen as a new type of generalization theorem, showing that the foundation model can generate unseen objects from the target category (e.g., images) using the structural information from the source category (e.g., texts). Along the way, we provide a categorical framework for supervised and self-supervised learning, which might be of independent interest.",
+    "authors": [
+        "Yang Yuan"
+    ],
+    "venue": "International Conference on Machine Learning",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proves that a foundation model with the minimum required power can theoretically solve downstream tasks for the category defined by pretext task, with fine tuning and enough resources, and provides a categorical framework for supervised and self-supervised learning."
+    },
+    "citationCount": 25,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

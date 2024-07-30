@@ -1,0 +1,38 @@
+{
+    "acronym": "dd618e8ece2d2a248487522c987df685258c047b",
+    "title": "Linear-Time Self Attention with Codeword Histogram for Efficient Recommendation",
+    "seed_ids": [
+        "linformer",
+        "reformer",
+        "clusteredattn",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "baed71eed57ad462f3ab138d4b1700a738cd5414",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "657329c633709dd1ac34a30d57341b186b1a47c2",
+        "34a4e6818d680875ff0bef9a76de0376118446d1",
+        "f4238bd2385a52413ccbacfd9e409a650235bd13",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8"
+    ],
+    "s2id": "dd618e8ece2d2a248487522c987df685258c047b",
+    "abstract": "Self-attention has become increasingly popular in a variety of sequence modeling tasks from natural language processing to recommendation, due to its effectiveness. However, self-attention suffers from quadratic computational and memory complexities, prohibiting its applications on long sequences. Existing approaches that address this issue mainly rely on a sparse attention context, either using a local window, or a permuted bucket obtained by locality-sensitive hashing (LSH) or sorting, while crucial information may be lost. Inspired by the idea of vector quantization that uses cluster centroids to approximate items, we propose LISA (LInear-time Self Attention), which enjoys both the effectiveness of vanilla self-attention and the efficiency of sparse attention. LISA scales linearly with the sequence length, while enabling full contextual attention via computing differentiable histograms of codeword distributions. Meanwhile, unlike some efficient attention methods, our method poses no restriction on casual masking or sequence length. We evaluate our method on four real-world datasets for sequential recommendation. The results show that LISA outperforms the state-of-the-art efficient attention methods in both performance and speed; and it is up to 57x faster and 78x more memory efficient than vanilla self-attention.",
+    "authors": [
+        "Yongji Wu",
+        "Defu Lian",
+        "N. Gong",
+        "Lu Yin",
+        "Mingyang Yin",
+        "Jingren Zhou",
+        "Hongxia Yang"
+    ],
+    "venue": "The Web Conference",
+    "year": 2021,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes LISA (LInear-time Self Attention), which enjoys both the effectiveness of vanilla self-attention and the efficiency of sparse attention, and outperforms the state-of-the-art efficient attention methods in both performance and speed."
+    },
+    "citationCount": 15,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

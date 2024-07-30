@@ -1,0 +1,26 @@
+{
+    "acronym": "83b8108014e3db4f46354a28ae68193f143c4e7e",
+    "title": "Structured Pruning of Large Language Models",
+    "seed_ids": [
+        "transformerxl",
+        "80cf2a6af4200ecfca1c18fc89de16148f1cd4bf"
+    ],
+    "s2id": "83b8108014e3db4f46354a28ae68193f143c4e7e",
+    "abstract": "Large language models have recently achieved state of the art performance across a wide variety of natural language tasks. Meanwhile, the size of these models and their latency have significantly increased, which makes their usage costly, and raises an interesting question: do language models need to be large? We study this question through the lens of model compression. We present a novel, structured pruning approach based on low rank factorization and augmented Lagrangian L0 norm regularization. Our structured approach achieves significant inference speedups while matching or outperforming our unstructured pruning baseline at various sparsity levels. We apply our method to state of the art models on the enwiki8 dataset and obtain a 1.19 perplexity score with just 5M parameters, vastly outperforming a model of the same size trained from scratch. We also demonstrate that our method can be applied to language model fine-tuning by pruning the BERT model on several downstream classification benchmarks.",
+    "authors": [
+        "Ziheng Wang",
+        "Jeremy Wohlwend",
+        "Tao Lei"
+    ],
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel, structured pruning approach based on low rank factorization and augmented Lagrangian L0 norm regularization is presented, which achieves significant inference speedups while matching or outperforming the authors' unstructured pruning baseline at various sparsity levels."
+    },
+    "citationCount": 225,
+    "influentialCitationCount": 28,
+    "code": null,
+    "description": null,
+    "url": null
+}

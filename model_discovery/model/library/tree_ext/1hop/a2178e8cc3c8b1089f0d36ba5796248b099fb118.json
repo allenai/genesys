@@ -1,0 +1,29 @@
+{
+    "acronym": "a2178e8cc3c8b1089f0d36ba5796248b099fb118",
+    "title": "Analyzing Key Neurons in Large Language Models",
+    "seed_ids": [
+        "bert",
+        "2fd5de4b4f75234f980157b00e4db8af7a228578",
+        "d0086b86103a620a86bc918746df0aa642e2a8a3",
+        "f6fbb6809374ca57205bd2cf1421d4f4fa04f975",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "a2178e8cc3c8b1089f0d36ba5796248b099fb118",
+    "abstract": "Large Language Models (LLMs) possess vast amounts of knowledge within their parameters, prompting research into methods for locating and editing this knowledge. Previous investigations have primarily focused on fill-in-the-blank tasks and locating entity-related usually single-token facts) information in relatively small-scale language models. However, several key questions remain unanswered: (1) How can we effectively locate query-relevant neurons in contemporary autoregressive LLMs, such as LLaMA and Mistral? (2) How can we address the challenge of long-form text generation? (3) Are there localized knowledge regions in LLMs? In this study, we introduce Neuron Attribution-Inverse Cluster Attribution (NA-ICA), a novel architecture-agnostic framework capable of identifying key neurons in LLMs. NA-ICA allows for the examination of long-form answers beyond single tokens by employing the proxy task of multi-choice question answering. To evaluate the effectiveness of our detected key neurons, we construct two multi-choice QA datasets spanning diverse domains and languages. Empirical evaluations demonstrate that NA-ICA outperforms baseline methods significantly. Moreover, analysis of neuron distributions reveals the presence of visible localized regions, particularly within different domains. Finally, we demonstrate the potential applications of our detected key neurons in knowledge editing and neuron-based prediction.",
+    "authors": [
+        "Lihu Chen",
+        "Adam Dejl",
+        "Francesca Toni"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study introduces Neuron Attribution-Inverse Cluster Attribution (NA-ICA), a novel architecture-agnostic framework capable of identifying key neurons in LLMs that allows for the examination of long-form answers beyond single tokens by employing the proxy task of multi-choice question answering."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

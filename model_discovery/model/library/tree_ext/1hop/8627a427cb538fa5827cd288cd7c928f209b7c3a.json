@@ -1,0 +1,32 @@
+{
+    "acronym": "8627a427cb538fa5827cd288cd7c928f209b7c3a",
+    "title": "Contextualization Distillation from Large Language Model for Knowledge Graph Completion",
+    "seed_ids": [
+        "bert",
+        "700a6b189877f6b3cd795a30b30acb27c18d3354",
+        "f78fe02f681a0a9a6867b007bd39e3884de64a91",
+        "36c50e6638dddc8324eef9bfa064bfcab80cbef4",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "8627a427cb538fa5827cd288cd7c928f209b7c3a",
+    "abstract": "While textual information significantly enhances the performance of pre-trained language models (PLMs) in knowledge graph completion (KGC), the static and noisy nature of existing corpora collected from Wikipedia articles or synsets definitions often limits the potential of PLM-based KGC models. To surmount these challenges, we introduce the Contextualization Distillation strategy, a versatile plug-in-and-play approach compatible with both discriminative and generative KGC frameworks. Our method begins by instructing large language models (LLMs) to transform compact, structural triplets into context-rich segments. Subsequently, we introduce two tailored auxiliary tasks\u2014reconstruction and contextualization\u2014allowing smaller KGC models to assimilate insights from these enriched triplets. Comprehensive evaluations across diverse datasets and KGC techniques highlight the efficacy and adaptability of our approach, revealing consistent performance enhancements irrespective of underlying pipelines or architectures. Moreover, our analysis makes our method more explainable and provides insight into how to generate high-quality corpora for KGC, as well as the selection of suitable distillation tasks.",
+    "authors": [
+        "Dawei Li",
+        "Zhen Tan",
+        "Tianlong Chen",
+        "Huan Liu"
+    ],
+    "venue": "Findings",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Contextualization Distillation strategy is introduced, a versatile plug-in-and-play approach compatible with both discriminative and generative KGC frameworks that provides insight into how to generate high-quality corpora for KGC, as well as the selection of suitable distillation tasks."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

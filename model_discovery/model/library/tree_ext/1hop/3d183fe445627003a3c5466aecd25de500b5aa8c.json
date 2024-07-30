@@ -1,0 +1,29 @@
+{
+    "acronym": "3d183fe445627003a3c5466aecd25de500b5aa8c",
+    "title": "MonoDTR: Monocular 3D Object Detection with Depth-Aware Transformer",
+    "seed_ids": [
+        "lineartransformer",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87"
+    ],
+    "s2id": "3d183fe445627003a3c5466aecd25de500b5aa8c",
+    "abstract": "Monocular 3D object detection is an important yet challenging task in autonomous driving. Some existing methods leverage depth information from an off-the-shelf depth estimator to assist 3D detection, but suffer from the additional computational burden and achieve limited performance caused by inaccurate depth priors. To alleviate this, we propose MonoDTR, a novel end-to-end depth-aware transformer network for monocular 3D object detection. It mainly consists of two components: (1) the Depth-Aware Feature Enhancement (DFE) module that implicitly learns depth-aware features with auxiliary supervision without requiring extra computation, and (2) the Depth-Aware Transformer (DTR) module that globally integrates context- and depth-aware features. Moreover, different from conventional pixel-wise positional encodings, we introduce a novel depth positional encoding (DPE) to inject depth positional hints into transformers. Our proposed depth-aware modules can be easily plugged into existing image-only monocular 3D object detectors to improve the performance. Extensive experiments on the KITTI dataset demonstrate that our approach outperforms previous state-of-the-art monocular-based methods and achieves real-time detection. Code is available at https://github.com/kuanchihhuang/.MonoDTR.",
+    "authors": [
+        "Kuan-Chih Huang",
+        "Tsung-Han Wu",
+        "Hung-Ting Su",
+        "Winston H. Hsu"
+    ],
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes MonoDTR, a novel end-to-end depth-aware transformer network for monocular 3D object detection that outperforms previous state-of-the-art monocular-based methods and achieves real-time detection."
+    },
+    "citationCount": 99,
+    "influentialCitationCount": 10,
+    "code": null,
+    "description": null,
+    "url": null
+}

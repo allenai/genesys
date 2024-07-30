@@ -1,0 +1,34 @@
+{
+    "acronym": "42945da4aa9547e0f7095263feb09a2b2336aaf0",
+    "title": "Hybridformer: Improving Squeezeformer with Hybrid Attention and NSR Mechanism",
+    "seed_ids": [
+        "roformer",
+        "c49ac1f916d6d2edeb187e6619c8d23acd95eb21",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d",
+        "7e5709d81558d3ef4265de29ea75931afeb1f2dd",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87",
+        "09e2c7adbed37440d4a339852cfa34e5b660f768"
+    ],
+    "s2id": "42945da4aa9547e0f7095263feb09a2b2336aaf0",
+    "abstract": "SqueezeFormer has recently shown impressive performance in automatic speech recognition (ASR). However, its inference speed suffers from the quadratic complexity of softmax-attention (SA). In addition, limited by the large convolution kernel size, the local modeling ability of SqueezeFormer is insufficient. In this paper, we propose a novel method HybridFormer to improve SqueezeFormer in a fast and efficient way. Specifically, we first incorporate linear attention (LA) and propose a hybrid LASA paradigm to increase the model\u2019s inference speed. Second, a hybrid neural architecture search (NAS) guided structural re-parameterization (SRep) mechanism, termed NSR, is proposed to enhance the ability of the model to extract local interactions. Extensive experiments conducted on the LibriSpeech dataset demonstrate that our proposed HybridFormer can achieve a 9.1% relative word error rate (WER) reduction over SqueezeFormer on the test-other dataset. Furthermore, when input speech is 30s, the HybridFormer can improve the model\u2019s inference speed up to 18%. Our source code is available online1.",
+    "authors": [
+        "Yuguang Yang",
+        "Y. Pan",
+        "Jingjing Yin",
+        "Jiangyu Han",
+        "Lei Ma",
+        "Heng Lu"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel method HybridFormer is proposed to improve SqueezeFormer in a fast and efficient way and first incorporate linear attention (LA) and propose a hybrid LASA paradigm to increase the model\u2019s inference speed."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

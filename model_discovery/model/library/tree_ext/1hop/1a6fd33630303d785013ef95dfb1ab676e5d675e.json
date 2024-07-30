@@ -1,0 +1,27 @@
+{
+    "acronym": "1a6fd33630303d785013ef95dfb1ab676e5d675e",
+    "title": "A Multi-Stage Adaptive Feature Fusion Neural Network for Multimodal Gait Recognition",
+    "seed_ids": [
+        "settransformer"
+    ],
+    "s2id": "1a6fd33630303d785013ef95dfb1ab676e5d675e",
+    "abstract": "Gait recognition is a biometric technology that has received extensive attention. Most existing gait recognition algorithms are unimodal, and a few multimodal gait recognition algorithms perform multimodal fusion only once. None of these algorithms may fully exploit the complementary advantages of the multiple modalities. In this paper, by considering the temporal and spatial characteristics of gait data, we propose a multi-stage feature fusion strategy (MSFFS), which performs multimodal fusions at different stages in the feature extraction process. Also, we propose an adaptive feature fusion module (AFFM) that considers the semantic association between silhouettes and skeletons. The fusion process fuses different silhouette areas with their more related skeleton joints. Since visual appearance changes and time passage co-occur in a gait period, we propose a multiscale spatial-temporal feature extractor (MSSTFE) to learn the spatial-temporal linkage features thoroughly. Specifically, MSSTFE extracts and aggregates spatial-temporal linkages information at different spatial scales. Combining the strategy and modules mentioned above, we propose a multi-stage adaptive feature fusion (MSAFF) neural network, which shows state-of-the-art performance in many experiments on three datasets. Besides, MSAFF is equipped with feature dimensional pooling (FD Pooling), which can significantly reduce the dimension of the gait representations without hindering the accuracy.",
+    "authors": [
+        "Shinan Zou",
+        "Jianbo Xiong",
+        "Chao Fan",
+        "Shiqi Yu",
+        "Jin Tang"
+    ],
+    "venue": "2023 IEEE International Joint Conference on Biometrics (IJCB)",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "By considering the temporal and spatial characteristics of gait data, a multi-stage feature fusion strategy (MSFFS), which performs multimodal fusions at different stages in the feature extraction process, and an adaptive feature fusion module (AFFM) that considers the semantic association between silhouettes and skeletons."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

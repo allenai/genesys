@@ -1,0 +1,51 @@
+{
+    "acronym": "275b005c33a315ad603f236cd5766efe07ef6a54",
+    "title": "Found in the Middle: How Language Models Use Long Contexts Better via Plug-and-Play Positional Encoding",
+    "seed_ids": [
+        "pi",
+        "selfextend",
+        "streamingllm",
+        "roformer",
+        "3e8d4062ec4353ff2701c7769336dbdb97f8814c",
+        "2b8439f319dfa73df62ca8957ff6d0c1f3c7a73c",
+        "a9468d8bfa6bd016dfd3128c4e8408e30eb8549b",
+        "36697944858ab17ca23b23ae2043aa6c0b2e3d5d",
+        "a54761081c2b001c057fb6e1ea9a48058d5aa5e0",
+        "2b35b946a8ad64e018c24b283bc1c6c65d36fb67",
+        "fdc53c2c10742464087c0525f77e32604827a21d",
+        "a51ac7a5e8f6454268ac16ecdc52ecac98ce54d9",
+        "f5afaccfe90268485a9961c5771ec5e71e9b806c",
+        "80980cd10d19f021c14a6b7eee871b6a5d328024",
+        "732e3faec4e5be4d144256f2c379b9dc49f0b227",
+        "c600b697700c844cbc85009be70f1cdfeef3593e",
+        "ac95a18762133d4065ac8af518c33084d83c5582",
+        "148011adfae37b821407aae84fcbbf7fb4619eb6",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "7e9ff94476f41041c75e253e84f487db00e9c861",
+        "e3aa232577bb427b1f3a34acbdef84bd85734042",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "275b005c33a315ad603f236cd5766efe07ef6a54",
+    "abstract": "This paper aims to overcome the\"lost-in-the-middle\"challenge of large language models (LLMs). While recent advancements have successfully enabled LLMs to perform stable language modeling with up to 4 million tokens, the persistent difficulty faced by most LLMs in identifying relevant information situated in the middle of the context has not been adequately tackled. To address this problem, this paper introduces Multi-scale Positional Encoding (Ms-PoE) which is a simple yet effective plug-and-play approach to enhance the capacity of LLMs to handle the relevant information located in the middle of the context, without fine-tuning or introducing any additional overhead. Ms-PoE leverages the position indice rescaling to relieve the long-term decay effect introduced by RoPE, while meticulously assigning distinct scaling ratios to different attention heads to preserve essential knowledge learned during the pre-training step, forming a multi-scale context fusion from short to long distance. Extensive experiments with a wide range of LLMs demonstrate the efficacy of our approach. Notably, Ms-PoE achieves an average accuracy gain of up to 3.8 on the Zero-SCROLLS benchmark over the original LLMs. Code are available at https://github.com/VITA-Group/Ms-PoE.",
+    "authors": [
+        "Zhenyu (Allen) Zhang",
+        "Runjin Chen",
+        "Shiwei Liu",
+        "Zhewei Yao",
+        "Olatunji Ruwase",
+        "Beidi Chen",
+        "Xiaoxia Wu",
+        "Zhangyang Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Ms-PoE leverages the position indice rescaling to relieve the long-term decay effect introduced by RoPE, while meticulously assigning distinct scaling ratios to different attention heads to preserve essential knowledge learned during the pre-training step, forming a multi-scale context fusion from short to long distance."
+    },
+    "citationCount": 8,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

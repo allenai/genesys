@@ -1,0 +1,53 @@
+{
+    "acronym": "de7f235452bec5304290f6faa54b9ff36a27e592",
+    "title": "Time-SSM: Simplifying and Unifying State Space Models for Time Series Forecasting",
+    "seed_ids": [
+        "s4",
+        "hippo",
+        "httyh",
+        "mamba",
+        "s5",
+        "3e4ed3b3790980efbb537d381c7bc020eefed53f",
+        "fea8a3096391a418cb9ef724e0ff9754e5a467fd",
+        "dba88f9a59ad816ce14d93b2c8bfda5917adc196",
+        "3a0c5026f7ea965dc4475c8d857fc3b6df27ae05",
+        "f3ca1515d610ec8811d3b4f9a209eae099523048",
+        "9c5062743eaace5c1ff822bba819031f05cd3106",
+        "b8e57155bbcc1ce8a112482c85b3a3bb25f3fe52",
+        "afeeb8f5018eebb1a1d334b94dbbfc48d167efef",
+        "16f01c1b3ddd0b2abd5ddfe4fdb3f74767607277",
+        "a7d68b1702af08ce4dbbf2cd0b083e744ae5c6be",
+        "5b7f5488c380cf5085a5dd93e993ad293b225eee",
+        "6d7d141c75af752ffc0d8a6184cca3f9323d6c74",
+        "a30ac45ac5b7bd2148d3fb80ee7f3c29724e3170",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "016e99ccef0afb7011f3ea3b1b932611c8fb957b",
+        "8064d3873c646dc9ff949d72c54c634a906fc092",
+        "563bac1c5cdd5096e9dbf8d4f3d5b3c4f7284e06",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51",
+        "ca9047c78d48b606c4e4f0c456b1dda550de28b2",
+        "fc46ccb83dc121c33de7ab6bdedab7d970780b2f",
+        "35a9749df07a2ab97c51af4d260b095b00da7676",
+        "7e9ff94476f41041c75e253e84f487db00e9c861"
+    ],
+    "s2id": "de7f235452bec5304290f6faa54b9ff36a27e592",
+    "abstract": "State Space Models (SSMs) have emerged as a potent tool in sequence modeling tasks in recent years. These models approximate continuous systems using a set of basis functions and discretize them to handle input data, making them well-suited for modeling time series data collected at specific frequencies from continuous systems. Despite its potential, the application of SSMs in time series forecasting remains underexplored, with most existing models treating SSMs as a black box for capturing temporal or channel dependencies. To address this gap, this paper proposes a novel theoretical framework termed Dynamic Spectral Operator, offering more intuitive and general guidance on applying SSMs to time series data. Building upon our theory, we introduce Time-SSM, a novel SSM-based foundation model with only one-seventh of the parameters compared to Mamba. Various experiments validate both our theoretical framework and the superior performance of Time-SSM.",
+    "authors": [
+        "Jiaxi Hu",
+        "Disen Lan",
+        "Ziyu Zhou",
+        "Qingsong Wen",
+        "Yuxuan Liang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel theoretical framework termed Dynamic Spectral Operator, offering more intuitive and general guidance on applying SSMs to time series data, and introduces Time-SSM, a novel SSM-based foundation model with only one-seventh of the parameters compared to Mamba."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,28 @@
+{
+    "acronym": "789df3835224ca1feaa6e5bca69500c86c849d96",
+    "title": "Perfectly Secure Steganography Using Minimum Entropy Coupling",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "789df3835224ca1feaa6e5bca69500c86c849d96",
+    "abstract": "Steganography is the practice of encoding secret information into innocuous content in such a manner that an adversarial third party would not realize that there is hidden meaning. While this problem has classically been studied in security literature, recent advances in generative models have led to a shared interest among security and machine learning researchers in developing scalable steganography techniques. In this work, we show that a steganography procedure is perfectly secure under Cachin (1998)'s information-theoretic model of steganography if and only if it is induced by a coupling. Furthermore, we show that, among perfectly secure procedures, a procedure maximizes information throughput if and only if it is induced by a minimum entropy coupling. These insights yield what are, to the best of our knowledge, the first steganography algorithms to achieve perfect security guarantees for arbitrary covertext distributions. To provide empirical validation, we compare a minimum entropy coupling-based approach to three modern baselines -- arithmetic coding, Meteor, and adaptive dynamic grouping -- using GPT-2, WaveRNN, and Image Transformer as communication channels. We find that the minimum entropy coupling-based approach achieves superior encoding efficiency, despite its stronger security constraints. In aggregate, these results suggest that it may be natural to view information-theoretic steganography through the lens of minimum entropy coupling.",
+    "authors": [
+        "C. S. D. Witt",
+        "Samuel Sokota",
+        "J. Z. Kolter",
+        "J. Foerster",
+        "Martin Strohmeier"
+    ],
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows that a Steganography procedure is perfectly secure under Cachin (1998)'s information-theoretic model of steganography if and only if it is induced by a coupling, and shows that, among perfectly secure procedures, a procedure maximizes information throughput if andonly if it has beeninduced by a minimum entropy coupling."
+    },
+    "citationCount": 16,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

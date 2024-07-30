@@ -1,0 +1,31 @@
+{
+    "acronym": "bfe2bc9efeca12a8266af7b345f803e9ea3572f5",
+    "title": "A Soft Contrastive Learning-based Prompt Model for Few-shot Sentiment Analysis",
+    "seed_ids": [
+        "bert",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda"
+    ],
+    "s2id": "bfe2bc9efeca12a8266af7b345f803e9ea3572f5",
+    "abstract": "Few-shot text classification has attracted great interest in both academia and industry due to the lack of labeled data in many fields. Different from general text classification (e.g., topic classification), few-shot sentiment classification is more challenging because the semantic distances among the classes are more subtle. For instance, the semantic distances between the sentiment labels in a positive or negative polarity (e.g., ``love\"and ``joy\", ``remorse\"and ``sadness\") are close, while the distances are large for the sentiment labels in two opposite polarities (e.g., ``love\"and ``sadness\"). To address this problem, we propose a Soft Contrastive learning-based Prompt (\\texttt{SCP}) model for few-shot sentiment analysis. First, we design a sentiment-aware chain of thought prompt module to guide the model to predict the sentiment from coarse grain to fine grain via a series of intermediate reasoning steps. Then, we propose a soft contrastive learning algorithm to take the correlation of the labels into account. A series of experiments on several sentiment analysis datasets show the great advantages of \\texttt{SCP} by comparing it with SOTA baselines (e.g., ChatGPT).",
+    "authors": [
+        "Jingyi Zhou",
+        "Jie Zhou",
+        "Jiabao Zhao",
+        "Siyin Wang",
+        "Haijun Shan",
+        "Gui Tao",
+        "Qi Zhang",
+        "Xuanjing Huang"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A sentiment-aware chain of thought prompt module is designed to guide the model to predict the sentiment from coarse grain to fine grain via a series of intermediate reasoning steps and a soft contrastive learning algorithm is proposed to take the correlation of the labels into account."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

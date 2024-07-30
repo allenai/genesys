@@ -1,0 +1,36 @@
+{
+    "acronym": "d2421cffac277e230cb97fc2355b32e03dd8bb1f",
+    "title": "ExeGPT: Constraint-Aware Resource Scheduling for LLM Inference",
+    "seed_ids": [
+        "gpt3",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "e4f82c0a13cae6739239ae0c25a554b6daff35af",
+        "adc13ef61e47628e9efcdca0c27654370e46dae5",
+        "8323c591e119eb09b28b29fd6c7bc76bd889df7a",
+        "8b0f27bb594b1eaaf493eaf1e2ee723a2b0a19ad",
+        "faadd7d081c8d67e8c2567e8a5579e46cd6b2280",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "d2421cffac277e230cb97fc2355b32e03dd8bb1f",
+    "abstract": "This paper presents ExeGPT, a distributed system designed for constraint-aware LLM inference. ExeGPT finds and runs with an optimal execution schedule to maximize inference throughput while satisfying a given latency constraint. By leveraging the distribution of input and output sequences, it effectively allocates resources and determines optimal execution configurations, including batch sizes and partial tensor parallelism. We also introduce two scheduling strategies based on Round-Robin Allocation and Workload-Aware Allocation policies, suitable for different NLP workloads. We evaluate ExeGPT on six LLM instances of T5, OPT, and GPT-3 and five NLP tasks, each with four distinct latency constraints. Compared to FasterTransformer, ExeGPT achieves up to 15.2\u00d7 improvements in throughput and 6\u00d7 improvements in latency. Overall, ExeGPT achieves an average throughput gain of 2.9\u00d7 across twenty evaluation scenarios. Moreover, when adapting to changing sequence distributions, the cost of adjusting the schedule in ExeGPT is reasonably modest. ExeGPT proves to be an effective solution for optimizing and executing LLM inference for diverse NLP workload and serving conditions.",
+    "authors": [
+        "Hyungjun Oh",
+        "Kihong Kim",
+        "Jaemin Kim",
+        "Sungkyun Kim",
+        "Junyeol Lee",
+        "Du-seong Chang",
+        "Jiwon Seo"
+    ],
+    "venue": "International Conference on Architectural Support for Programming Languages and Operating Systems",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ExeGPT proves to be an effective solution for optimizing and executing LLM inference for diverse NLP workload and serving conditions and achieves an average throughput gain of 2.9\u00d7 across twenty evaluation scenarios."
+    },
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

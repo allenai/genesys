@@ -1,0 +1,35 @@
+{
+    "acronym": "e04e190e8517ffbdebc273ac74456dca5881ea8f",
+    "title": "Controllable Contextualized Image Captioning: Directing the Visual Narrative through User-Defined Highlights",
+    "seed_ids": [
+        "longt5",
+        "48b19239fbae2f69af367f4b6672fbee1767b7b3",
+        "173f0ba1105373ebf0981f9b5ee30893c43e015d",
+        "6e31cedc02984a564107d15716071c86894bedf0",
+        "05bcf9999525656cfaa59bc71f8572d771ff3776",
+        "3dfb1f50f2a34a699c339dabaa6f9b3a977973de",
+        "9b10c49575c5aa07b5076d2f5b27c67b68b09c9b",
+        "e04a80263d252a3d8a382ba37a249b9345620570"
+    ],
+    "s2id": "e04e190e8517ffbdebc273ac74456dca5881ea8f",
+    "abstract": "Contextualized Image Captioning (CIC) evolves traditional image captioning into a more complex domain, necessitating the ability for multimodal reasoning. It aims to generate image captions given specific contextual information. This paper further introduces a novel domain of Controllable Contextualized Image Captioning (Ctrl-CIC). Unlike CIC, which solely relies on broad context, Ctrl-CIC accentuates a user-defined highlight, compelling the model to tailor captions that resonate with the highlighted aspects of the context. We present two approaches, Prompting-based Controller (P-Ctrl) and Recalibration-based Controller (R-Ctrl), to generate focused captions. P-Ctrl conditions the model generation on highlight by prepending captions with highlight-driven prefixes, whereas R-Ctrl tunes the model to selectively recalibrate the encoder embeddings for highlighted tokens. Additionally, we design a GPT-4V empowered evaluator to assess the quality of the controlled captions alongside standard assessment methods. Extensive experimental results demonstrate the efficient and effective controllability of our method, charting a new direction in achieving user-adaptive image captioning. Code is available at https://github.com/ShunqiM/Ctrl-CIC .",
+    "authors": [
+        "Shunqi Mao",
+        "Chaoyi Zhang",
+        "Hang Su",
+        "Hwanjun Song",
+        "Igor Shalyminov",
+        "Weidong Cai"
+    ],
+    "venue": "",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Two approaches are presented, Prompting-based Controller (P-Ctrl) and Recalibration-based Controller (R-Ctrl), to generate focused captions, and a GPT-4V empowered evaluator is designed to assess the quality of the controlled captions alongside standard assessment methods."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

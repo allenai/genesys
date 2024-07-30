@@ -1,0 +1,26 @@
+{
+    "acronym": "0af60a523a360b3360322877268f9c6fbeab1c10",
+    "title": "Large-Scale Multi-Document Summarization with Information Extraction and Compression",
+    "seed_ids": [
+        "gpt2",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "0af60a523a360b3360322877268f9c6fbeab1c10",
+    "abstract": "We develop an abstractive summarization framework independent of labeled data for multiple heterogeneous documents. Unlike existing multi-document summarization methods, our framework processes documents telling different stories instead of documents on the same topic. We also enhance an existing sentence fusion method with a uni-directional language model to prioritize fused sentences with higher sentence probability with the goal of increasing readability. Lastly, we construct a total of twelve dataset variations based on CNN/Daily Mail and the NewsRoom datasets, where each document group contains a large and diverse collection of documents to evaluate the performance of our model in comparison with other baseline systems. Our experiments demonstrate that our framework outperforms current state-of-the-art methods in this more generic setting.",
+    "authors": [
+        "Ning Wang",
+        "Han Liu",
+        "D. Klabjan"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work develops an abstractive summarization framework independent of labeled data for multiple heterogeneous documents and enhances an existing sentence fusion method with a uni-directional language model to prioritize fused sentences with higher sentence probability with the goal of increasing readability."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

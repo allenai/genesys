@@ -1,0 +1,31 @@
+{
+    "acronym": "0ef6788f630ed121e52265b048fcdf97a930e923",
+    "title": "Benchmarking Large Language Models on Answering and Explaining Challenging Medical Questions",
+    "seed_ids": [
+        "bert",
+        "d5e7c9eb41061be87d770cca7730f47d69a0cef7",
+        "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+        "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "0ef6788f630ed121e52265b048fcdf97a930e923",
+    "abstract": "LLMs have demonstrated impressive performance in answering medical questions, such as achieving passing scores on medical licensing examinations. However, medical board exam or general clinical questions do not capture the complexity of realistic clinical cases. Moreover, the lack of reference explanations means we cannot easily evaluate the reasoning of model decisions, a crucial component of supporting doctors in making complex medical decisions. To address these challenges, we construct two new datasets: JAMA Clinical Challenge and Medbullets. JAMA Clinical Challenge consists of questions based on challenging clinical cases, while Medbullets comprises simulated clinical questions. Both datasets are structured as multiple-choice question-answering tasks, accompanied by expert-written explanations. We evaluate seven LLMs on the two datasets using various prompts. Experiments demonstrate that our datasets are harder than previous benchmarks. Human and automatic evaluations of model-generated explanations provide insights into the promise and deficiency of LLMs for explainable medical QA.",
+    "authors": [
+        "Hanjie Chen",
+        "Zhouxiang Fang",
+        "Yash Singla",
+        "Mark Dredze"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Human and automatic evaluations of model-generated explanations provide insights into the promise and deficiency of LLMs for explainable medical QA."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 1,
+    "code": null,
+    "description": null,
+    "url": null
+}

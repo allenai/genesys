@@ -1,0 +1,34 @@
+{
+    "acronym": "577def35ce131165ea9f228466ed5fd2664f2e5f",
+    "title": "Aligners: Decoupling LLMs and Alignment",
+    "seed_ids": [
+        "gpt2",
+        "gpt3",
+        "be55e8ec4213868db08f2c3168ae666001bea4b8",
+        "538288d24bdad73d831dfed44b706958287ed318",
+        "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+        "fd1b829261ba04bb92e0ab60c4f6e7cea0d99fbf",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "577def35ce131165ea9f228466ed5fd2664f2e5f",
+    "abstract": "Large Language Models (LLMs) need to be aligned with human expectations to ensure their safety and utility in most applications. Alignment is challenging, costly, and needs to be repeated for every LLM and alignment criterion. We propose to decouple LLMs and alignment by training aligner models that can be used to align any LLM for a given criteria on an as-needed basis, thus also reducing the potential negative impacts of alignment on performance. Our recipe for training the aligner models solely relies on synthetic data generated with a (prompted) LLM and can be easily adjusted for a variety of alignment criteria. We use the same synthetic data to train inspectors, binary miss-alignment classification models to guide a\"squad\"of multiple aligners. Our empirical results demonstrate consistent improvements when applying aligner squad to various LLMs, including chat-aligned models, across several instruction-following and red-teaming datasets.",
+    "authors": [
+        "Lilian Ngweta",
+        "Mayank Agarwal",
+        "Subha Maity",
+        "Alex Gittens",
+        "Yuekai Sun",
+        "M. Yurochkin"
+    ],
+    "venue": "Tiny Papers @ ICLR",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to decouple LLMs and alignment by training aligner models that can be used to align any LLM for a given criteria on an as-needed basis, thus also reducing the potential negative impacts of alignment on performance."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

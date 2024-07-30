@@ -1,0 +1,28 @@
+{
+    "acronym": "6bf294656f518abd22a91640aadebf22ed837cf0",
+    "title": "A Chinese Question Answering System based on GPT",
+    "seed_ids": [
+        "gpt",
+        "83b56c3c7a61767bd88d85796aa5dbc4976912c3",
+        "68e686817f2c33cd09ba3805fa082348f18affd9",
+        "8cd4054b41936ba0889edc26be8969c3dc8491d8",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6bf294656f518abd22a91640aadebf22ed837cf0",
+    "abstract": "The Chinese question-answering system needs to select the most appropriate answer from the answer library for user according to the given question on the natural language form. Previous question-answering systems required modeling for specific task characteristics and designing multiple modules. This paper first proposes to use the Generative Pre-trained Transformer (GPT) to implement the Chinese question-answering system. To optimize and improve the model, this Chinese model pays more attention to the contextual content and semantic characteristics, and we designed a new method to train this model. This model reduces the number of modules in the question-answering system. This paper evaluates the model on the Document-Based Chinese Question and Answer (DBQA) dataset and achieves a 2.5% improvement in MRR/MAP over the latest lattice convolutional neural networks (Lattice CNNs). (Abstract)",
+    "authors": [
+        "Shuai Liu",
+        "Xiaojun Huang"
+    ],
+    "venue": "2019 IEEE 10th International Conference on Software Engineering and Service Science (ICSESS)",
+    "year": 2019,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper evaluates the model on the Document-Based Chinese Question and Answer (DBQA) dataset and achieves a 2.5% improvement in MRR/MAP over the latest lattice convolutional neural networks (Lattice CNNs)."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

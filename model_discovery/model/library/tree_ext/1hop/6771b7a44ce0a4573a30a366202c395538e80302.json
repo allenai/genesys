@@ -1,0 +1,27 @@
+{
+    "acronym": "6771b7a44ce0a4573a30a366202c395538e80302",
+    "title": "CollabStory: Multi-LLM Collaborative Story Generation and Authorship Analysis",
+    "seed_ids": [
+        "bert",
+        "ac45bbf9940512d9d686cf8cd3a95969bc313570",
+        "65ccc1c6f45b8f9054578deb419557df9ec9f1f9"
+    ],
+    "s2id": "6771b7a44ce0a4573a30a366202c395538e80302",
+    "abstract": "The rise of unifying frameworks that enable seamless interoperability of Large Language Models (LLMs) has made LLM-LLM collaboration for open-ended tasks a possibility. Despite this, there have not been efforts to explore such collaborative writing. We take the next step beyond human-LLM collaboration to explore this multi-LLM scenario by generating the first exclusively LLM-generated collaborative stories dataset called CollabStory. We focus on single-author ($N=1$) to multi-author (up to $N=5$) scenarios, where multiple LLMs co-author stories. We generate over 32k stories using open-source instruction-tuned LLMs. Further, we take inspiration from the PAN tasks that have set the standard for human-human multi-author writing tasks and analysis. We extend their authorship-related tasks for multi-LLM settings and present baselines for LLM-LLM collaboration. We find that current baselines are not able to handle this emerging scenario. Thus, CollabStory is a resource that could help propel an understanding as well as the development of techniques to discern the use of multiple LLMs. This is crucial to study in the context of writing tasks since LLM-LLM collaboration could potentially overwhelm ongoing challenges related to plagiarism detection, credit assignment, maintaining academic integrity in educational settings, and addressing copyright infringement concerns. We make our dataset and code available at \\texttt{\\url{https://github.com/saranya-venkatraman/multi_llm_story_writing}}.",
+    "authors": [
+        "Saranya Venkatraman",
+        "Nafis Irtiza Tripto",
+        "Dongwon Lee"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The next step beyond human-LLM collaboration is taken to explore this multi-LLM scenario by generating the first exclusively LLM-generated collaborative stories dataset called CollabStory, which focuses on single-author to multi-author scenarios, where multiple LLMs co-author stories."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

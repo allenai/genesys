@@ -1,0 +1,27 @@
+{
+    "acronym": "db783c480faf87b38e8806d4ef455dfde6e335aa",
+    "title": "Towards JavaScript program repair with Generative Pre-trained Transformer (GPT-2)",
+    "seed_ids": [
+        "gpt2",
+        "0646bb09db4d1ba24150e69b71edcd4aff691b3c",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "db783c480faf87b38e8806d4ef455dfde6e335aa",
+    "abstract": "The goal of Automated Program Repair (APR) is to find a fix to software bugs, without human intervention. The so-called Gener-ate and Validate (G&V) approach deemed to be the most popular method in the last few years, where the APR tool creates a patch and it is validated against an oracle. Recent years for Natural Language Processing (NLP) were of great interest, with new pre-trained models shattering records on tasks ranging from sentiment analysis to question answering. Usually these deep learning models inspire the APR community as well. These approaches usually require a large dataset on which the model can be trained (or fine-tuned) and evaluated. The criterion to accept a patch depends on the underlying dataset, but usually the generated patch should be exactly the same as the one created by a human developer. As NLP models are more and more capable to form sentences, and the sentences will form coherent paragraphs, the APR tools are also better and better at generating syntactically and semantically correct source code. As the Generative Pre-trained Transformer (GPT) model is now avail-able to everyone thanks to the NLP and AI research community, it can be fine-tuned to specific tasks (not necessarily on natural language). In this work we use the GPT-2 model to generate source code, to the best of our knowledge, the GPT-2 model was not used for Automated Program Repair so far. The model is fine-tuned for a specific task: it has been taught to fix JavaScript bugs automatically. To do so, we trained the model on 16863JS code snippets, where it could learn the nature of the observed programming language. In our experiments we observed that the GPT-2 model was able to learn how to write syntactically correct source code almost on every attempt, although it failed to learn good bug-fixes in some cases. Nonetheless it was able to generate the correct fixes in most of the cases, resulting in an overall accuracy up to 17.25%.",
+    "authors": [
+        "M\u00e1rk Lajk\u00f3",
+        "Viktor Csuvik",
+        "L\u00e1szl\u00f3 Vid\u00e1cs"
+    ],
+    "venue": "APR",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The GPT-2 model was able to learn how to write syntactically correct source code almost on every attempt, although it failed to learn good bug-fixes in some cases, resulting in an overall accuracy up to 17.25%."
+    },
+    "citationCount": 17,
+    "influentialCitationCount": 2,
+    "code": null,
+    "description": null,
+    "url": null
+}

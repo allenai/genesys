@@ -1,0 +1,45 @@
+{
+    "acronym": "f5789596531fad358c3166fdb5bd72d8e661c32c",
+    "title": "Small-scale proxies for large-scale Transformer training instabilities",
+    "seed_ids": [
+        "gpt2",
+        "7368c3cdf7cbed194e96dc4da53ed61f185e3d82",
+        "5c326260baa5e91a6a39c4d87ebe6770ade86816",
+        "e750cf66d0e7ade8e21da38df3eb2a174b027f48",
+        "13a0d8bb38f739990c8cd65a44061c6534f17221",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "f5789596531fad358c3166fdb5bd72d8e661c32c",
+    "abstract": "Teams that have trained large Transformer-based models have reported training instabilities at large scale that did not appear when training with the same hyperparameters at smaller scales. Although the causes of such instabilities are of scientific interest, the amount of resources required to reproduce them has made investigation difficult. In this work, we seek ways to reproduce and study training stability and instability at smaller scales. First, we focus on two sources of training instability described in previous work: the growth of logits in attention layers (Dehghani et al., 2023) and divergence of the output logits from the log probabilities (Chowdhery et al., 2022). By measuring the relationship between learning rate and loss across scales, we show that these instabilities also appear in small models when training at high learning rates, and that mitigations previously employed at large scales are equally effective in this regime. This prompts us to investigate the extent to which other known optimizer and model interventions influence the sensitivity of the final loss to changes in the learning rate. To this end, we study methods such as warm-up, weight decay, and the $\\mu$Param (Yang et al., 2022), and combine techniques to train small models that achieve similar losses across orders of magnitude of learning rate variation. Finally, to conclude our exploration we study two cases where instabilities can be predicted before they emerge by examining the scaling behavior of model activation and gradient norms.",
+    "authors": [
+        "Mitchell Wortsman",
+        "Peter J. Liu",
+        "Lechao Xiao",
+        "Katie Everett",
+        "A. Alemi",
+        "Ben Adlam",
+        "John D. Co-Reyes",
+        "Izzeddin Gur",
+        "Abhishek Kumar",
+        "Roman Novak",
+        "Jeffrey Pennington",
+        "Jascha Narain Sohl-Dickstein",
+        "Kelvin Xu",
+        "Jaehoon Lee",
+        "Justin Gilmer",
+        "Simon Kornblith"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work investigates the extent to which other known optimizer and model interventions influence the sensitivity of the final loss to changes in the learning rate, and studies two cases where instabilities can be predicted before they emerge by examining the scaling behavior of model activation and gradient norms."
+    },
+    "citationCount": 31,
+    "influentialCitationCount": 5,
+    "code": null,
+    "description": null,
+    "url": null
+}

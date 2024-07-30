@@ -1,0 +1,25 @@
+{
+    "acronym": "db25ffd7326808c718a1813a941808de4c78ee76",
+    "title": "Ef\ufb01\ufb01cent Language Modeling of Long-Term Dependencies",
+    "seed_ids": [
+        "reformer",
+        "f6390beca54411b06f3bde424fb983a451789733",
+        "e0c6abdbdecf04ffac65c440da77fb9d66bb474c"
+    ],
+    "s2id": "db25ffd7326808c718a1813a941808de4c78ee76",
+    "abstract": "The transformer architecture [1] has received signi\ufb01cant research attention due to its ability to effectively model word-level and global contextual dependencies exclusively using self-attention, thereby enabling language models such as BERT [2] to achieve state-of-the-art performance. However, the quadratic cost of attention and linear memory cost per layer have severely limited the transformer to operate solely on short sequences, a problem partially addressed by the reversible layers and LSH attention proposed in the reformer [3]. In this work, we study and improve properties of the reformer as a language model, introducing k -means clustering for attention and connection tying in reversible layers to improve reformer complexity and representational power. We evaluate our model on masked language modeling as well as selected GLUE benchmarks, and we \ufb01nd that our modi\ufb01cations signi\ufb01-cantly improve training times and model capacity. The methods presented in our work are generalizable to other attention-based models and have the potential to drastically improve the ef\ufb01cacy of long-term language dependency modeling.",
+    "authors": [
+        "Manan A. Shah"
+    ],
+    "venue": "",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work study and improve properties of the reformer as a language model, introducing k -means clustering for attention and connection tying in reversible layers to improve reformer complexity and representational power."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

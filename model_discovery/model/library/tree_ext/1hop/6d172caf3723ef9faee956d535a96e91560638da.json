@@ -1,0 +1,30 @@
+{
+    "acronym": "6d172caf3723ef9faee956d535a96e91560638da",
+    "title": "GPT-2 Metadata Pretraining Towards Instruction Finetuning for Ukrainian",
+    "seed_ids": [
+        "flashattn",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "15190e8b459bd85d546286f7d7da61b4f4f3f58a",
+        "1098ca3dbda5778c2bf6c9e8cbb9bc7a02249e10",
+        "1a703f08da01cf737cce3fb9064259b3f4b44e9c",
+        "6f68e1bb253925d8431588555d3010419f322e04",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "6d172caf3723ef9faee956d535a96e91560638da",
+    "abstract": "We explore pretraining unidirectional language models on 4B tokens from the largest curated corpus of Ukrainian, UberText 2.0. We enrich document text by surrounding it with weakly structured metadata, such as title, tags, and publication year, enabling metadata-conditioned text generation and text-conditioned metadata prediction at the same time. We pretrain GPT-2 Small, Medium and Large models each on single GPU, reporting training times, BPC on BrUK and BERTScore on titles for 1000 News from the Future. Next, we venture to formatting POS and NER datasets as instructions, and train low-rank attention adapters, performing these tasks as constrained text generation. We release our models for the community at https://github.com/proger/uk4b.",
+    "authors": [
+        "Volodymyr Kyrylov",
+        "Dmytro Chaplynskyi"
+    ],
+    "venue": "UNLP",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work explores pretraining unidirectional language models on 4B tokens from the largest curated corpus of Ukrainian, UberText 2.0, to enrich document text by surrounding it with weakly structured metadata, enabling metadata-conditioned text generation and text- Conditioned metadata prediction at the same time."
+    },
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,33 @@
+{
+    "acronym": "1f7ad9525b5dd32094ffa4354c7746ae9ec64872",
+    "title": "HumMUSS: Human Motion Understanding using State Space Models",
+    "seed_ids": [
+        "s4d",
+        "gssm",
+        "dssm",
+        "9a83aeadc8db65fb6da39ec977360541cddaff5c",
+        "a128b1c47e6842605fb95bceae930d2135fc38fc",
+        "eaef083b9d661f42cc0d89d9d8156218f33a91d9",
+        "ca444821352a4bd91884413d8070446e2960715a",
+        "dc0102a51a9d33e104a4a3808a18cf17f057228c",
+        "ac2618b2ce5cdcf86f9371bcca98bc5e37e46f51"
+    ],
+    "s2id": "1f7ad9525b5dd32094ffa4354c7746ae9ec64872",
+    "abstract": "Understanding human motion from video is essential for a range of applications, including pose estimation, mesh recovery and action recognition. While state-of-the-art methods predominantly rely on transformer-based architectures, these approaches have limitations in practical scenarios. Transformers are slower when sequentially predicting on a continuous stream of frames in real-time, and do not generalize to new frame rates. In light of these constraints, we propose a novel attention-free spatiotemporal model for human motion understanding building upon recent advancements in state space models. Our model not only matches the performance of transformer-based models in various motion understanding tasks but also brings added benefits like adaptability to different video frame rates and enhanced training speed when working with longer sequence of keypoints. Moreover, the proposed model supports both offline and real-time applications. For real-time sequential prediction, our model is both memory efficient and several times faster than transformer-based approaches while maintaining their high accuracy.",
+    "authors": [
+        "Arnab Kumar Mondal",
+        "Stefano Alletto",
+        "Denis Tome"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel attention-free spatiotemporal model for human motion understanding building upon recent advancements in state space models that is both memory efficient and several times faster than transformer-based approaches while maintaining their high accuracy."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

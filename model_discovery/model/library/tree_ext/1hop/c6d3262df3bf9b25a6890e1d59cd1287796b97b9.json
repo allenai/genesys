@@ -1,0 +1,25 @@
+{
+    "acronym": "c6d3262df3bf9b25a6890e1d59cd1287796b97b9",
+    "title": "RRWKV: Capturing Long-range Dependencies in RWKV",
+    "seed_ids": [
+        "rwkv4",
+        "026b3396a63ed5772329708b7580d633bb86bec9",
+        "d5e999aae76d5270ef272076979c809817458212"
+    ],
+    "s2id": "c6d3262df3bf9b25a6890e1d59cd1287796b97b9",
+    "abstract": "Owing to the impressive dot-product attention, the Transformers have been the dominant architectures in various natural language processing (NLP) tasks. Recently, the Receptance Weighted Key Value (RWKV) architecture follows a non-transformer architecture to eliminate the drawbacks of dot-product attention, where memory and computational complexity exhibits quadratic scaling with sequence length. Although RWKV has exploited a linearly tensor-product attention mechanism and achieved parallelized computations by deploying the time-sequential mode, it fails to capture long-range dependencies because of its limitation on looking back at previous information, compared with full information obtained by direct interactions in the standard transformer. Therefore, the paper devises the Retrospected Receptance Weighted Key Value (RRWKV) architecture via incorporating the retrospecting ability into the RWKV to effectively absorb information, which maintains memory and computational efficiency as well.",
+    "authors": [
+        "Leilei Wang"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The paper devises the Retrospected Receptance Weighted Key Value architecture via incorporating the retrospecting ability into the RWKV to effectively absorb information, which maintains memory and computational efficiency as well."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

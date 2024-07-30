@@ -1,0 +1,26 @@
+{
+    "acronym": "0aadffbee7918a8f3a3b00396439d75b8a71116d",
+    "title": "Speech Enhancement Using MLP-Based Architecture With Convolutional Token Mixing Module and Squeeze-and-Excitation Network",
+    "seed_ids": [
+        "gmlp",
+        "70afa5d4c72943e691d4f4a3bc95800be4542816"
+    ],
+    "s2id": "0aadffbee7918a8f3a3b00396439d75b8a71116d",
+    "abstract": "The Conformer has shown impressive performance for speech enhancement by exploiting the local and global contextual information, although it requires high computational complexity and many parameters. Recently, multi-layer perceptron (MLP)-based models such as MLP-mixer and gMLP have demonstrated comparable performances with much less computational complexity in the computer vision area. These models showed that all-MLP architectures may perform as good as more advanced structures, but the nature of the MLP limits the application of these architectures to the input with a variable length such as speech and audio. In this paper, we propose the cgMLP-SE model, which is a gMLP-based architecture with convolutional token mixing modules and squeeze-and-excitation network to utilize both local and global contextual information as in the Conformer. Specifically, the token-mixing modules in gMLP are replaced by convolutional layers, squeeze-and-excitation network-based gating is applied on top of the convolutional gating module, and additional feed-forward layers are added to make the cgMLP-SE module a macaron-like structure sandwiched by feed-forward layers like a Conformer block. Experimental results on the TIMIT-DNS noise dataset and the Voice Bank-DEMAND dataset showed that the proposed method exhibited similar speech quality and intelligibility to the Conformer with a smaller model size and less computational complexity.",
+    "authors": [
+        "Hyungchan Song",
+        "Minseung Kim",
+        "Jong Won Shin"
+    ],
+    "venue": "IEEE Access",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The cgMLP-SE model is proposed, which is a g MLP-based architecture with convolutional token mixing modules and squeeze-and-excitation network to utilize both local and global contextual information as in the Conformer."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,31 @@
+{
+    "acronym": "76eef89e0a05c4b67f19697e233916f4b3a77ff4",
+    "title": "ASADI: Accelerating Sparse Attention Using Diagonal-based In-Situ Computing",
+    "seed_ids": [
+        "longformer",
+        "13270b9759cf0296b5a346fbb58b706e8ad0a982",
+        "f841f3d912be52a621aab1a979632e9daeab6599",
+        "b97c3c370401dc34d2adbeb24f34de5180a14be6",
+        "4badd753be64c5c5b57dd2bb2e515fbe0c0720d8",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2"
+    ],
+    "s2id": "76eef89e0a05c4b67f19697e233916f4b3a77ff4",
+    "abstract": "The self-attention mechanism is the performance bottleneck of Transformer-based language models, particularly for long sequences. Researchers have proposed using sparse attention to speed up the Transformer. However, sparse attention introduces significant random access overhead, limiting computational efficiency. To mitigate this issue, researchers attempt to improve data reuse by utilizing row/column locality. Unfortunately, we find that sparse attention does not naturally exhibit strong row/column locality, but instead has excellent diagonal locality. Thus, it is worthwhile to use diagonal compression (DIA) format. However, existing sparse matrix computation paradigms struggle to efficiently support DIA format in attention computation. To address this problem, we propose ASADI, a novel software-hardware co-designed sparse attention accelerator. In the soft-ware side, we propose a new sparse matrix computation paradigm that directly supports the DIA format in self-attention computation. In the hardware side, we present a novel sparse attention accelerator that efficiently implements our computation paradigm using highly parallel in-situ computing. We thoroughly evaluate ASADI across various models and datasets. Our experimental results demonstrate an average performance improvement of 18.6 \u00d7 and energy savings of 2.9\u00d7 compared to a PIM-based baseline.",
+    "authors": [
+        "Huize Li",
+        "Zhaoying Li",
+        "Zhenyu Bai",
+        "Tulika Mitra"
+    ],
+    "venue": "International Symposium on High-Performance Computer Architecture",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ASADI, a novel software-hardware co-designed sparse attention accelerator that efficiently implements the self-attention paradigm using highly parallel in-situ computing, is presented."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

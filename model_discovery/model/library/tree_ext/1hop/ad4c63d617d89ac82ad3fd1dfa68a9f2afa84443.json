@@ -1,0 +1,29 @@
+{
+    "acronym": "ad4c63d617d89ac82ad3fd1dfa68a9f2afa84443",
+    "title": "Automatic Composition of Guitar Tabs by Transformers and Groove Modeling",
+    "seed_ids": [
+        "transformerxl",
+        "ce510c6cfeac703706460680e977c54554840830",
+        "24a70db0bbb5f486126477e32a6a44ab917a4b11",
+        "fb507ada871d1e8c29e376dbf7b7879689aa89f9"
+    ],
+    "s2id": "ad4c63d617d89ac82ad3fd1dfa68a9f2afa84443",
+    "abstract": "Deep learning algorithms are increasingly developed for learning to compose music in the form of MIDI files. However, whether such algorithms work well for composing guitar tabs, which are quite different from MIDIs, remain relatively unexplored. To address this, we build a model for composing fingerstyle guitar tabs with Transformer-XL, a neural sequence model architecture. With this model, we investigate the following research questions. First, whether the neural net generates note sequences with meaningful note-string combinations, which is important for the guitar but not other instruments such as the piano. Second, whether it generates compositions with coherent rhythmic groove, crucial for fingerstyle guitar music. And, finally, how pleasant the composed music is in comparison to real, human-made compositions. Our work provides preliminary empirical evidence of the promise of deep learning for tab composition, and suggests areas for future study.",
+    "authors": [
+        "Yu-Hua Chen",
+        "Yu-Hsiang Huang",
+        "Wen-Yi Hsiao",
+        "Yi-Hsuan Yang"
+    ],
+    "venue": "International Society for Music Information Retrieval Conference",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work builds a model for composing fingerstyle guitar tabs with Transformer-XL, a neural sequence model architecture, and provides preliminary empirical evidence of the promise of deep learning for tab composition, and suggests areas for future study."
+    },
+    "citationCount": 28,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

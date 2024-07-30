@@ -1,0 +1,33 @@
+{
+    "acronym": "f98525843f7e03d247a2dc94951799a0d7101437",
+    "title": "Joint Contextual Modeling for ASR Correction and Language Understanding",
+    "seed_ids": [
+        "gpt"
+    ],
+    "s2id": "f98525843f7e03d247a2dc94951799a0d7101437",
+    "abstract": "The quality of automatic speech recognition (ASR) is critical to Dialogue Systems as ASR errors propagate to and directly impact downstream tasks such as language understanding (LU). In this paper, we propose multi-task neural approaches to perform contextual language correction on ASR outputs jointly with LU to improve the performance of both tasks simultaneously. To measure the effectiveness of this approach we used a public benchmark, the 2nd Dialogue State Tracking (DSTC2) corpus. As a baseline approach, we trained task specific Statistical Language Models (SLM) and fine-tuned state-of-the-art Generative Pre-training (GPT) Language Model to re-rank the n-best ASR hypotheses, followed by a model to identify the dialog act and slots. i) We further trained ranker models using GPT and Hierarchical CNN-RNN models with discriminatory losses to detect the best output given n-best hypotheses. We extended these ranker models to first select the best ASR output and then identify the dialogue act and slots in an end to end fashion. ii) We also proposed a novel joint ASR error correction and LU model, a word confusion pointer network (WCN-Ptr) with multihead self attention on top, which consumes the word confusions populated from the n-best. We show that the error rates of off the shelf ASR and following LU systems can be reduced significantly by 14% relative with joint models trained using small amounts of in-domain data.",
+    "authors": [
+        "Yue Weng",
+        "Sai Sumanth Miryala",
+        "Chandra Khatri",
+        "Runze Wang",
+        "H. Zheng",
+        "Piero Molino",
+        "Mahdi Namazifar",
+        "A. Papangelis",
+        "Hugh Williams",
+        "Franziska Bell",
+        "Gokhan Tur"
+    ],
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2020,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel joint ASR error correction and LU model, a word confusion pointer network (WCN-Ptr) with multihead self attention on top, which consumes the word confusions populated from the n-best."
+    },
+    "citationCount": 45,
+    "influentialCitationCount": 3,
+    "code": null,
+    "description": null,
+    "url": null
+}

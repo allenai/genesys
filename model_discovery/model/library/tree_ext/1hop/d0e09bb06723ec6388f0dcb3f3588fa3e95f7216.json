@@ -1,0 +1,32 @@
+{
+    "acronym": "d0e09bb06723ec6388f0dcb3f3588fa3e95f7216",
+    "title": "RA-Rec: An Efficient ID Representation Alignment Framework for LLM-based Recommendation",
+    "seed_ids": [
+        "gpt3",
+        "cbf3bf8f541f5b446c59c8deacbcc18527768c75",
+        "df602516e28a9ef0ef665ed0aef551984d8d770d",
+        "925ad2897d1b5decbea320d07e99afa9110e09b2",
+        "690edf44e8739fd80bdfb76f40c9a4a222f3bba8",
+        "29ddc1f43f28af7c846515e32cc167bc66886d0c"
+    ],
+    "s2id": "d0e09bb06723ec6388f0dcb3f3588fa3e95f7216",
+    "abstract": "Large language models (LLM) have recently emerged as a powerful tool for a variety of natural language processing tasks, bringing a new surge of combining LLM with recommendation systems, termed as LLM-based RS. Current approaches generally fall into two main paradigms, the ID direct usage paradigm and the ID translation paradigm, noting their core weakness stems from lacking recommendation knowledge and uniqueness. To address this limitation, we propose a new paradigm, ID representation, which incorporates pre-trained ID embeddings into LLMs in a complementary manner. In this work, we present RA-Rec, an efficient ID representation alignment framework for LLM-based recommendation, which is compatible with multiple ID-based methods and LLM architectures. Specifically, we treat ID embeddings as soft prompts and design an innovative alignment module and an efficient tuning method with tailored data construction for alignment. Extensive experiments demonstrate RA-Rec substantially outperforms current state-of-the-art methods, achieving up to 3.0% absolute HitRate@100 improvements while utilizing less than 10x training data.",
+    "authors": [
+        "Xiaohan Yu",
+        "Li Zhang",
+        "Xin Zhao",
+        "Yue Wang",
+        "Zhongrui Ma"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents RA-Rec, an efficient ID representation alignment framework for LLM-based recommendation, which is compatible with multiple ID-based methods and LLM architectures, and designs an innovative alignment module and an efficient tuning method with tailored data construction for alignment."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,47 @@
+{
+    "acronym": "299a77bf4050c9686d35b905b96d8902734845c5",
+    "title": "Holistic Evaluation of Text-To-Image Models",
+    "seed_ids": [
+        "gpt2",
+        "d4d7966a7b4dbf4cd764e443392d22826618a293",
+        "cf694df964caa156ec306b45d3a3127533cb458f",
+        "e342165a614588878ad0f4bc9bacf3905df34d08",
+        "c57293882b2561e1ba03017902df9fc2f289dea2",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "2cd605106b88c85d7d8b865b1ef0f8c8293debf1",
+        "9405cc0d6169988371b2755e573cc28650d14dfe"
+    ],
+    "s2id": "299a77bf4050c9686d35b905b96d8902734845c5",
+    "abstract": "The stunning qualitative improvement of recent text-to-image models has led to their widespread attention and adoption. However, we lack a comprehensive quantitative understanding of their capabilities and risks. To fill this gap, we introduce a new benchmark, Holistic Evaluation of Text-to-Image Models (HEIM). Whereas previous evaluations focus mostly on text-image alignment and image quality, we identify 12 aspects, including text-image alignment, image quality, aesthetics, originality, reasoning, knowledge, bias, toxicity, fairness, robustness, multilinguality, and efficiency. We curate 62 scenarios encompassing these aspects and evaluate 26 state-of-the-art text-to-image models on this benchmark. Our results reveal that no single model excels in all aspects, with different models demonstrating different strengths. We release the generated images and human evaluation results for full transparency at https://crfm.stanford.edu/heim/v1.1.0 and the code at https://github.com/stanford-crfm/helm, which is integrated with the HELM codebase.",
+    "authors": [
+        "Tony Lee",
+        "Michihiro Yasunaga",
+        "Chenlin Meng",
+        "Yifan Mai",
+        "Joon Sung Park",
+        "Agrim Gupta",
+        "Yunzhi Zhang",
+        "Deepak Narayanan",
+        "Hannah Teufel",
+        "Marco Bellagente",
+        "Minguk Kang",
+        "Taesung Park",
+        "J. Leskovec",
+        "Jun-Yan Zhu",
+        "Fei-Fei Li",
+        "Jiajun Wu",
+        "Stefano Ermon",
+        "Percy Liang"
+    ],
+    "venue": "Neural Information Processing Systems",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new benchmark, Holistic Evaluation of Text-to-Image Models (HEIM), which identifies 12 aspects, including text-image alignment, image quality, aesthetics, originality, reasoning, knowledge, bias, toxicity, fairness, robustness, multilinguality, and efficiency, and reveals that no single model excels in all aspects."
+    },
+    "citationCount": 55,
+    "influentialCitationCount": 7,
+    "code": null,
+    "description": null,
+    "url": null
+}

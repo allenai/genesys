@@ -1,0 +1,31 @@
+{
+    "acronym": "b3e9f97eae69118e3257375d6325e1c6b9b1101c",
+    "title": "Guided Conditional Diffusion Classifier (ConDiff) for Enhanced Prediction of Infection in Diabetic Foot Ulcers",
+    "seed_ids": [
+        "classfreediffu",
+        "dd1139cfc609c2f3263d02e97176d5275caebc0a",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d"
+    ],
+    "s2id": "b3e9f97eae69118e3257375d6325e1c6b9b1101c",
+    "abstract": "To detect infected wounds in Diabetic Foot Ulcers (DFUs) from photographs, preventing severe complications and amputations. Methods: This paper proposes the Guided Conditional Diffusion Classifier (ConDiff), a novel deep-learning infection detection model that combines guided image synthesis with a denoising diffusion model and distance-based classification. The process involves (1) generating guided conditional synthetic images by injecting Gaussian noise to a guide image, followed by denoising the noise-perturbed image through a reverse diffusion process, conditioned on infection status and (2) classifying infections based on the minimum Euclidean distance between synthesized images and the original guide image in embedding space. Results: ConDiff demonstrated superior performance with an accuracy of 83% and an F1-score of 0.858, outperforming state-of-the-art models by at least 3%. The use of a triplet loss function reduces overfitting in the distance-based classifier. Conclusions: ConDiff not only enhances diagnostic accuracy for DFU infections but also pioneers the use of generative discriminative models for detailed medical image analysis, offering a promising approach for improving patient outcomes.",
+    "authors": [
+        "Palawat Busaranuvong",
+        "Emmanuel O. Agu",
+        "Deepak Kumar",
+        "Shefalika Gautam",
+        "Reza Saadati Fard",
+        "B. Tulu",
+        "Diane Strong"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Guided Conditional Diffusion Classifier (ConDiff), a novel deep-learning infection detection model that combines guided image synthesis with a denoising diffusion model and distance-based classification, is proposed, offering a promising approach for improving patient outcomes."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

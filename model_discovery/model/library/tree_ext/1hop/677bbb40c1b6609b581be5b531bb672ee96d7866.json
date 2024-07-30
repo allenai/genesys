@@ -1,0 +1,30 @@
+{
+    "acronym": "677bbb40c1b6609b581be5b531bb672ee96d7866",
+    "title": "TexShape: Information Theoretic Sentence Embedding for Language Models",
+    "seed_ids": [
+        "bert",
+        "c61d54644e9aedcfc756e5d6fe4cc8b78c87755d",
+        "270f3bea8ca801870a6cc56b4d36f7f2019c9ed0"
+    ],
+    "s2id": "677bbb40c1b6609b581be5b531bb672ee96d7866",
+    "abstract": "With the exponential growth in data volume and the emergence of data-intensive applications, particularly in the field of machine learning, concerns related to resource utilization, privacy, and fairness have become paramount. This paper focuses on the textual domain of data and addresses challenges regarding encoding sentences to their optimized representations through the lens of information-theory. In particular, we use empirical estimates of mutual information, using the Donsker-Varadhan definition of Kullback-Leibler divergence. Our approach leverages this estimation to train an information-theoretic sentence embedding, called TexShape, for (task-based) data compression or for filtering out sensitive information, enhancing privacy and fairness. In this study, we employ a benchmark language model for initial text representation, complemented by neural networks for information-theoretic compression and mutual information estimations. Our experiments demonstrate significant advancements in preserving maximal targeted information and minimal sensitive information over adverse compression ratios, in terms of predictive accuracy of downstream models that are trained using the compressed data.",
+    "authors": [
+        "Kaan Kale",
+        "H. Esfahanizadeh",
+        "Noel Elias",
+        "Oguzhan Baser",
+        "Muriel M\u00e9dard",
+        "S. Vishwanath"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper addresses challenges regarding encoding sentences to their optimized representations through the lens of information-theory and uses empirical estimates of mutual information, using the Donsker-Varadhan definition of Kullback-Leibler divergence to train an information-theoretic sentence embedding, called TexShape."
+    },
+    "citationCount": 1,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

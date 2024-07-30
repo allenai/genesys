@@ -1,0 +1,25 @@
+{
+    "acronym": "e8015e7730eda6d72884e5fb379819e93816e672",
+    "title": "Exploring speech style spaces with language models: Emotional TTS without emotion labels",
+    "seed_ids": [
+        "gpt3"
+    ],
+    "s2id": "e8015e7730eda6d72884e5fb379819e93816e672",
+    "abstract": "Many frameworks for emotional text-to-speech (E-TTS) rely on human-annotated emotion labels that are often inaccurate and difficult to obtain. Learning emotional prosody implicitly presents a tough challenge due to the subjective nature of emotions. In this study, we propose a novel approach that leverages text awareness to acquire emotional styles without the need for explicit emotion labels or text prompts. We present TEMOTTS, a two-stage framework for E-TTS that is trained without emotion labels and is capable of inference without auxiliary inputs. Our proposed method performs knowledge transfer between the linguistic space learned by BERT and the emotional style space constructed by global style tokens. Our experimental results demonstrate the effectiveness of our proposed framework, showcasing improvements in emotional accuracy and naturalness. This is one of the first studies to leverage the emotional correlation between spoken content and expressive delivery for emotional TTS.",
+    "authors": [
+        "Shreeram Suresh Chandra",
+        "Zongyang Du",
+        "Berrak Sisman"
+    ],
+    "venue": "The Speaker and Language Recognition Workshop",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study presents TEMOTTS, a two-stage framework for E-TTS that is trained without emotion labels and is capable of inference without auxiliary inputs, and is one of the first studies to leverage the emotional correlation between spoken content and expressive delivery for emotional TTS."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,25 @@
+{
+    "acronym": "798747451141fc5a73b818da74693c9d93e6e3f1",
+    "title": "Local Feature Matching with Transformers for low-end devices",
+    "seed_ids": [
+        "linformer",
+        "bf80051ca9ae1e76e2bdbdcf44df559e7eb73cb1",
+        "c0b79e6a5fd88ef13aa4780df5aae0aaa6b2be87"
+    ],
+    "s2id": "798747451141fc5a73b818da74693c9d93e6e3f1",
+    "abstract": "LoFTR arXiv:2104.00680 is an efficient deep learning method for finding appropriate local feature matches on image pairs. This paper reports on the optimization of this method to work on devices with low computational performance and limited memory. The original LoFTR approach is based on a ResNet arXiv:1512.03385 head and two modules based on Linear Transformer arXiv:2006.04768 architecture. In the presented work, only the coarse-matching block was left, the number of parameters was significantly reduced, and the network was trained using a knowledge distillation technique. The comparison showed that this approach allows to obtain an appropriate feature detection accuracy for the student model compared to the teacher model in the coarse matching block, despite the significant reduction of model size. Also, the paper shows additional steps required to make model compatible with NVIDIA TensorRT runtime, and shows an approach to optimize training method for low-end GPUs.",
+    "authors": [
+        "Kyrylo Kolodiazhnyi"
+    ],
+    "venue": "arXiv.org",
+    "year": 2022,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The comparison showed that this approach allows to obtain an appropriate feature detection accuracy for the student model compared to the teacher model in the coarse matching block, despite the significant reduction of model size."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

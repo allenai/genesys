@@ -1,0 +1,31 @@
+{
+    "acronym": "0d7229d2b560670e5e0b643dce10c9230a5c3eb6",
+    "title": "Scalable neural network models and terascale datasets for particle-flow reconstruction",
+    "seed_ids": [
+        "performer",
+        "87c5b281fa43e6f27191b20a8dd694eda1126336",
+        "3fbf6339273c50b04e886fa9bd4ad18c952a683d"
+    ],
+    "s2id": "0d7229d2b560670e5e0b643dce10c9230a5c3eb6",
+    "abstract": "We study scalable machine learning models for full event reconstruction in high-energy electron-positron collisions based on a highly granular detector simulation. Particle-flow (PF) reconstruction can be formulated as a supervised learning task using tracks and calorimeter clusters or hits. We compare a graph neural network and kernel-based transformer and demonstrate that both avoid quadratic memory allocation and computational cost while achieving realistic PF reconstruction. We show that hyperparameter tuning on a supercomputer significantly enhances the physics performance of the models, improving the jet transverse momentum resolution by up to 50% compared to the baseline. The resulting model is highly portable across hardware processors, supporting Nvidia, AMD, and Intel Habana cards. Finally, we demonstrate that the model can be trained on highly granular inputs consisting of tracks and calorimeter hits, resulting in a competitive physics performance with the baseline. Datasets and software to reproduce the studies are published following the findable, accessible, interoperable, and reusable (FAIR) principles.",
+    "authors": [
+        "J. Pata",
+        "Eric Wulff",
+        "Farouk Mokhtar",
+        "D. Southwick",
+        "Mengke Zhang",
+        "M. Girone",
+        "Javier Mauricio Duarte"
+    ],
+    "venue": "arXiv.org",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that hyperparameter tuning on a supercomputer significantly enhances the physics performance of the models, improving the jet transverse momentum resolution by up to 50% compared to the baseline."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

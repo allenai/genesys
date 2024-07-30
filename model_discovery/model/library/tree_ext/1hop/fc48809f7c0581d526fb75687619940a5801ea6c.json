@@ -1,0 +1,28 @@
+{
+    "acronym": "fc48809f7c0581d526fb75687619940a5801ea6c",
+    "title": "Compositional Generalization without Trees using Multiset Tagging and Latent Permutations",
+    "seed_ids": [
+        "neuraldatarouter",
+        "e528466e2aff981511d4ca6e063211297c0b4175",
+        "ed535e93d5b5a8b689e861e9c6083a806d1535c2",
+        "395de0bd3837fdf4b4b5e5f04835bcc69c279481"
+    ],
+    "s2id": "fc48809f7c0581d526fb75687619940a5801ea6c",
+    "abstract": "Seq2seq models have been shown to struggle with compositional generalization in semantic parsing, i.e. generalizing to unseen compositions of phenomena that the model handles correctly in isolation.We phrase semantic parsing as a two-step process: we first tag each input token with a multiset of output tokens. Then we arrange the tokens into an output sequence using a new way of parameterizing and predicting permutations. We formulate predicting a permutation as solving a regularized linear program and we backpropagate through the solver. In contrast to prior work, our approach does not place a priori restrictions on possible permutations, making it very expressive.Our model outperforms pretrained seq2seq models and prior work on realistic semantic parsing tasks that require generalization to longer examples. We also outperform non-tree-based models on structural generalization on the COGS benchmark.For the first time, we show that a model without an inductive bias provided by trees achieves high accuracy on generalization to deeper recursion depth.",
+    "authors": [
+        "Matthias Lindemann",
+        "Alexander Koller",
+        "Ivan Titov"
+    ],
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2023,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "For the first time, a model without an inductive bias provided by trees achieves high accuracy on generalization to deeper recursion depth and outperforms non-tree-based models on structural generalization on the COGS benchmark."
+    },
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

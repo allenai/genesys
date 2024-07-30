@@ -1,0 +1,33 @@
+{
+    "acronym": "bce1223934e068d9266f5d15f0f24f577eeddc26",
+    "title": "Zero-Shot Multi-Object Shape Completion",
+    "seed_ids": [
+        "roformer",
+        "c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "53c3940f35b8b45d55ed49056282e1961954513d",
+        "6351ebb4a3287f5f3e1273464b3b91e5df5a16d7",
+        "66c10bf1f11bc1b2d92204d8f8391d087f6de1c4"
+    ],
+    "s2id": "bce1223934e068d9266f5d15f0f24f577eeddc26",
+    "abstract": "We present a 3D shape completion method that recovers the complete geometry of multiple objects in complex scenes from a single RGB-D image. Despite notable advancements in single object 3D shape completion, high-quality reconstructions in highly cluttered real-world multi-object scenes remains a challenge. To address this issue, we propose OctMAE, an architecture that leverages an Octree U-Net and a latent 3D MAE to achieve high-quality and near real-time multi-object shape completion through both local and global geometric reasoning. Because a na\\\"ive 3D MAE can be computationally intractable and memory intensive even in the latent space, we introduce a novel occlusion masking strategy and adopt 3D rotary embeddings, which significantly improves the runtime and shape completion quality. To generalize to a wide range of objects in diverse scenes, we create a large-scale photorealistic dataset, featuring a diverse set of 12K 3D object models from the Objaverse dataset which are rendered in multi-object scenes with physics-based positioning. Our method outperforms the current state-of-the-art on both synthetic and real-world datasets and demonstrates a strong zero-shot capability.",
+    "authors": [
+        "Shun Iwase",
+        "Katherine Liu",
+        "V. Guizilini",
+        "Adrien Gaidon",
+        "Kris Kitani",
+        "Rares Ambrus",
+        "Sergey Zakharov"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "OctMAE, an architecture that leverages an Octree U-Net and a latent 3D MAE to achieve high-quality and near real-time multi-object shape completion through both local and global geometric reasoning, is proposed."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,32 @@
+{
+    "acronym": "6899e73636e8a8ad9b21266b2063a0043d8b54ff",
+    "title": "Predicting Genetic Mutation from Whole Slide Images via Biomedical-Linguistic Knowledge Enhanced Multi-label Classification",
+    "seed_ids": [
+        "transformer",
+        "4f3888ea13bef9403d6c7a96c14a85575a79bce0"
+    ],
+    "s2id": "6899e73636e8a8ad9b21266b2063a0043d8b54ff",
+    "abstract": "Predicting genetic mutations from whole slide images is indispensable for cancer diagnosis. However, existing work training multiple binary classification models faces two challenges: (a) Training multiple binary classifiers is inefficient and would inevitably lead to a class imbalance problem. (b) The biological relationships among genes are overlooked, which limits the prediction performance. To tackle these challenges, we innovatively design a Biological-knowledge enhanced PathGenomic multi-label Transformer to improve genetic mutation prediction performances. BPGT first establishes a novel gene encoder that constructs gene priors by two carefully designed modules: (a) A gene graph whose node features are the genes' linguistic descriptions and the cancer phenotype, with edges modeled by genes' pathway associations and mutation consistencies. (b) A knowledge association module that fuses linguistic and biomedical knowledge into gene priors by transformer-based graph representation learning, capturing the intrinsic relationships between different genes' mutations. BPGT then designs a label decoder that finally performs genetic mutation prediction by two tailored modules: (a) A modality fusion module that firstly fuses the gene priors with critical regions in WSIs and obtains gene-wise mutation logits. (b) A comparative multi-label loss that emphasizes the inherent comparisons among mutation status to enhance the discrimination capabilities. Sufficient experiments on The Cancer Genome Atlas benchmark demonstrate that BPGT outperforms the state-of-the-art.",
+    "authors": [
+        "Gexin Huang",
+        "Chenfei Wu",
+        "Mingjie Li",
+        "Xiaojun Chang",
+        "Ling Chen",
+        "Ying Sun",
+        "Shen Zhao",
+        "Xiaodan Liang",
+        "Liang Lin"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Biological-knowledge enhanced PathGenomic multi-label Transformer to improve genetic mutation prediction performances and demonstrates that BPGT outperforms the state-of-the-art."
+    },
+    "citationCount": 0,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}

@@ -1,0 +1,26 @@
+{
+    "acronym": "038fc046f3b7b7a3adefeea172e4b94a214e0c2a",
+    "title": "Human Curriculum Effects Emerge with In-Context Learning in Neural Networks",
+    "seed_ids": [
+        "gpt3",
+        "525d93a382f6e7873b5d8a2e0713eb3dff7fb250"
+    ],
+    "s2id": "038fc046f3b7b7a3adefeea172e4b94a214e0c2a",
+    "abstract": "Human learning is sensitive to rule-like structure and the curriculum of examples used for training. In tasks governed by succinct rules, learning is more robust when related examples are blocked across trials, but in the absence of such rules, interleaving is more effective. To date, no neural model has simultaneously captured these seemingly contradictory effects. Here we show that this same tradeoff spontaneously emerges with \u201cin-context learning\u201d (ICL) both in neural networks trained with metalearning and in large language models (LLMs). ICL is the ability to learn new tasks \u201cin context\u201d \u2014 without weight changes \u2014 via an inner-loop algorithm implemented in activation dynamics. Experiments with pretrained LLMs and metalearning transformers show that ICL exhibits the blocking advantage demonstrated in humans on a task involving rule-like structure, and conversely, that concurrent in-weight learning reproduces the interleaving advantage observed in humans on tasks lacking such structure.",
+    "authors": [
+        "Jacob Russin",
+        "Ellie Pavlick",
+        "Michael J. Frank"
+    ],
+    "venue": "arXiv.org",
+    "year": 2024,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experiments with pretrained LLMs and metalearning transformers show that ICL exhibits the blocking advantage demonstrated in humans on a task involving rule-like structure, and conversely, that concurrent in-weight learning reproduces the interleaving advantage observed in humans on tasks lacking such structure."
+    },
+    "citationCount": 2,
+    "influentialCitationCount": 0,
+    "code": null,
+    "description": null,
+    "url": null
+}
