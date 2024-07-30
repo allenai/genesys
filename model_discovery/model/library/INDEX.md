@@ -1,4 +1,4 @@
-# Language Modeling Library (256)
+# Language Modeling Library (300)
 Library of methods and theory that may inspire the language modeling designs. Around 256 major papers & projects, and other interesting stuffs. Google Sheet: https://docs.google.com/spreadsheets/d/1GxMjIY-RZWChS6g03NP9q4kv9tRjvQ9N8ZBkHIPvR1Y/edit?usp=sharing
 
 ## Baselines and Core Reference Designs (155)
