@@ -8,15 +8,18 @@ import importlib
 import exec_utils
 import numpy as np
 import os
+import copy
 import platform
+
+from scipy.optimize import curve_fit
 
 from ..model.loader import reload_gam
 
+import time
 import ast
 import astor
 import inspect
 import traceback
-from datasets import load_dataset
 
 from transformers import TrainingArguments, DataCollatorForLanguageModeling
 
@@ -24,6 +27,36 @@ from model_discovery.configs.gam_config import DEFAULT_CONTEXT_LENGTH,DEFAULT_TO
 from model_discovery.ve.data_loader import load_datasets_args
 from model_discovery.ve.modis_trainer import ModisTrainer
 import model_discovery.utils as U
+
+
+def power_function(n, a, b, c):
+    return a * np.power(n, b) + c 
+
+def analyze_complexity(sequence_lengths, runtimes, memory_usages):
+    # Convert lists to numpy arrays for fitting
+    sequence_lengths = np.array(sequence_lengths)
+    runtimes = np.array(runtimes)
+    memory_usages = np.array(memory_usages)
+
+    # Fit the runtime data to the runtime_function
+    popt_runtime, _ = curve_fit(power_function, sequence_lengths, runtimes)
+    a_runtime, b_runtime = popt_runtime[:2]
+
+    # Fit the memory usage data to the memory_function
+    popt_memory, _ = curve_fit(power_function, sequence_lengths, memory_usages)
+    c_memory, d_memory = popt_memory[:2]
+
+    print(f"Runtime complexity: O({a_runtime}n^{b_runtime:.2f})")
+    print(f"Memory usage complexity: O({c_memory}n^{d_memory:.2f})")
+
+    return popt_runtime, popt_memory
+
+
+MODULE_DIR = os.path.dirname(os.path.realpath(__file__))
+CACHEPATH = f"{MODULE_DIR}"
+
+
+#### TODO: Multi-GPU checker
 
 
 class GABFormatChecker:
@@ -304,7 +337,7 @@ from model_discovery.model.utils.modules import MLP
 class GAB(GABBase):
     def __init__(self,embed_dim: int, n_heads, device=None,dtype=None,**kwargs):
         factory_kwargs = {"device": device, "dtype": dtype} # remember to pass it to nn layers
-        super().__init__()
+        super().__init__(embed_dim)
         self.fn = MHA(embed_dim, n_heads, causal=True, **factory_kwargs)
         self.fn2 = MLP(embed_dim, 4*embed_dim, embed_dim, **factory_kwargs)
         self.norm1 = nn.LayerNorm(embed_dim, **factory_kwargs)
@@ -333,30 +366,113 @@ class EffectiveChecker: # WORING IN PROGRESS
         self.data_collator = DataCollatorForLanguageModeling(self.tokenizer, mlm=False)
 
     def get_benchmark(self,config):
-        return {}
+        exec(BENCHMARK_MODEL,globals())
+        if torch.cuda.is_available():
+            glm,_ = reload_gam(config,BENCHMARK_MODEL,'BENCHMARK_MODEL',dtype=torch.bfloat16, device="cuda") # intentially use bfloat16 to check whether the model is correctly defined
+            glm = glm.cuda()
+            glm=glm.to(torch.bfloat16)
+        else:
+            glm,_ = reload_gam(config,BENCHMARK_MODEL,'BENCHMARK_MODEL',dtype=torch.float16, device="cpu")
+            glm = glm.to(torch.float16)
+        runtime, loss, gradient_of_losses,max_memory_allocated,total_flos,train_loss=self.test_training(config,glm)
+        return {'run_time':runtime,'loss':loss,'gradient_of_losses':gradient_of_losses,'max_memory_allocated':max_memory_allocated,
+                'total_flos':total_flos,'train_loss':train_loss}
 
     def check_training(self, config, model) -> None:
-        sysinfo=get_system_info_str()
-        benchmark=U.load_json(f'./agent/checker_benchmark.json')
-        if 'training' not in benchmark:
-            benchmark['training']={}
-        if sysinfo not in benchmark['training']:
-            self.get_benchmark(config)
+        benchmarks=U.load_json(f'{CACHEPATH}/checker_benchmark.json')
+        if 'training' not in benchmarks:
+            benchmarks['training']={}
+        cache_key=f'{config.scale}_{get_system_info_str()}'
+        if cache_key not in benchmarks['training']:
+            benchmark=self.get_benchmark(config)
+            benchmarks['training'][cache_key]=benchmark
+            U.save_json(benchmarks,f'{CACHEPATH}/checker_benchmark.json')
+        else:
+            benchmark=benchmarks['training'][cache_key]
 
-        run_time,loss,gradient_of_losses=self.test_training(config,model)
+        run_time,loss,gradient_of_losses,max_memory_allocated,total_flos,train_loss=self.test_training(config,model)
         if gradient_of_losses>0:
             self.errors.append('The model is not training correctly. The loss is not decreasing. ')
-        if torch.isnan(loss):
-            self.errors.append('The model is not training correctly. The loss is NaN. ')
-        # if run_time>benchmark['run_time']*10:
-        #     self.errors.append('The model is not efficient. The training time is too long. ')
+        if loss>1e4: # its already abnormal
+            self.errors.append('The model is diverging. The loss is NaN. ')
+        if run_time>benchmark['run_time']*10:
+            self.errors.append(f"The model is not efficient. The training time is overly long. Its {run_time/benchmark['run_time']:.2f} times of the benchmark.")
+        elif run_time>benchmark['run_time']*5:
+            self.warnings.append(f"The model is not efficient. The training time is long. Its {run_time/benchmark['run_time']:.2f} times of the benchmark.")
+        if max_memory_allocated>benchmark['max_memory_allocated']*5:
+            self.errors.append(f"The model is not efficient. The memory usage is overly high. Its {max_memory_allocated/benchmark['max_memory_allocated']:.2f} times of the benchmark.")
+        elif max_memory_allocated>benchmark['max_memory_allocated']*2:
+            self.warnings.append(f"The model is not efficient. The memory usage is high. Its {max_memory_allocated/benchmark['max_memory_allocated']:.2f} times of the benchmark.")
+        if total_flos>benchmark['total_flos']*5:
+            self.errors.append(f"The model is not efficient. The FLOPs is overly high. Its {total_flos/benchmark['total_flos']:.2f} times of the benchmark.")
+        elif total_flos>benchmark['total_flos']*2:
+            self.warnings.append(f"The model is not efficient. The FLOPs is high. Its {total_flos/benchmark['total_flos']:.2f} times of the benchmark.")
+        if train_loss>benchmark['train_loss']*5:
+            self.errors.append(f"The model is not efficient. The training loss is overly high. Its {train_loss/benchmark['train_loss']:.2f} times of the benchmark.")
+        elif train_loss>benchmark['train_loss']*2:
+            self.warnings.append(f"The model is not efficient. The training loss is high. Its {train_loss/benchmark['train_loss']:.2f} times of the benchmark.")
+
+        self.results['run_time'] = run_time
+        self.results['loss'] = loss
+        self.results['gradient_of_losses'] = gradient_of_losses
+        self.results['max_memory_allocated'] = max_memory_allocated
+        self.results['total_flos'] = total_flos
+        self.results['train_loss'] = train_loss
+
 
     def check_complexity(self, config, model) -> None:
+        return # NOT WORKING YET, HARD TO FIT A GOOD FUNC 
+
         # let the model inference with different input size and see whether the time is linearly increased
-        raise NotImplementedError
+        model.eval()
+        gab=model.backbone.blocks[0]
+        gam=model.backbone
+        runtimes=[]
+        memory_usages=[]
+        seqlens=[500*k for k in range(20)]
+        D=model.backbone.d_model
+        for seqlen in seqlens:
+            torch.cuda.reset_peak_memory_stats()
+            X = torch.randn(2, seqlen, D).to(gam.device).to(gam.dtype)
+                
+            # Measure inference time
+            start_time = time.time()
+            with torch.no_grad():
+                if torch.cuda.is_available():
+                    torch.cuda.synchronize()  # Ensure GPU computations are done
+                output = gab(X)
+                if torch.cuda.is_available():
+                    torch.cuda.synchronize()  # Ensure GPU computations are done
+            end_time = time.time()
+            runtime = end_time - start_time
+
+            # Measure memory usage
+            memory_usage = torch.cuda.max_memory_allocated() / 1024 ** 2  # Convert bytes to MB
+
+            runtimes.append(runtime)
+            memory_usages.append(memory_usage)
+
+        seqlens = np.array(seqlens) / 500 # need to tune this coefficient to get right fit
+        time_complexity, space_complexity = analyze_complexity(seqlens, runtimes, memory_usages)
+        t_scale, t_power = time_complexity[:2]
+        m_scale, m_power = space_complexity[:2]
+        if t_power>3:
+            self.errors.append(f'The model is not efficient. The time complexity is too high. It is O({t_scale}n^{t_power:.2f}).')
+        elif t_power>2:
+            self.warnings.append(f'The model is not efficient. The time complexity is high. It is O({t_scale}n^{t_power:.2f}).')
+        if m_power>3:
+            self.errors.append(f'The model is not efficient. The space complexity is too high. It is O({m_scale}n^{m_power:.2f}).')
+        elif m_power>2:
+            self.warnings.append(f'The model is not efficient. The space complexity is high. It is O({m_scale}n^{m_power:.2f}).')
+
+        self.results['time_complexity'] = time_complexity
+        self.results['space_complexity'] = space_complexity
+
 
     def test_training(self, config, model):
         # TODO: maybe use profiler to get more metrics
+        model.train()
+        torch.cuda.reset_peak_memory_stats()
         with U.CodeTimer("Training check setup"):
             ckpt_dir=os.environ.get("CKPT_DIR")
             training_args=TrainingArguments(
@@ -393,9 +509,12 @@ class EffectiveChecker: # WORING IN PROGRESS
         
         run_time=output.metrics['train_runtime']
         loss=output.training_loss
-        losses=[log['loss'] for log in trainer.state.log_history]
+        losses=[log['loss'] for log in trainer.state.log_history if 'loss' in log]
         gradient_of_losses=np.gradient(losses).mean()
-        return run_time,loss,gradient_of_losses
+        total_flos=output.metrics['total_flos']
+        train_loss=trainer.state.log_history[-1]['train_loss'] # average the loss across all steps
+        max_memory_allocated = torch.cuda.max_memory_allocated() / 1024 ** 2  # Convert bytes to MB
+        return run_time,loss,gradient_of_losses,max_memory_allocated,total_flos,train_loss
 
     def reset(self):
         self.errors.clear()
@@ -412,11 +531,11 @@ class EffectiveChecker: # WORING IN PROGRESS
     
     def check(self, config, model) -> bool:
         self.reset()
-        self.check_training(config,model)
-        # self.check_complexity(config,model)
-
+        with U.CodeTimer(" - Training effectiveness checking"):
+            self.check_training(config,model)
+        with U.CodeTimer(" - Inference effectiveness checking"):
+            self.check_complexity(config,model)
         return self._report_errors()
-
 
 
 
@@ -437,7 +556,7 @@ class Checker(exec_utils.BaseTool):
     check(check,gab_code: str, name: str) 
         
     This is the main method that checks the proposed 
-        block using `_is_causal` (has causal attention), 
+        block using `_check_causality` (has causal attention), 
         `_check_differentiable` (check that all operations 
         are differentiable)  and `check_magnitude` (that 
         parameters are within a certain range)
@@ -467,7 +586,7 @@ class Checker(exec_utils.BaseTool):
         self.report = ''
 
     ### HAS SOME WEIRD BUGS ### It may also due to torch
-    def _is_causal(self, block, D: int, seq_len: int = 100) -> bool:
+    def _check_causality(self, block, D: int, seq_len: int = 100) -> bool:
         """Checks if a design is causal
 
         :param block: 
@@ -478,9 +597,7 @@ class Checker(exec_utils.BaseTool):
             The block target sequence length.
         """
         B: int = 2
-        X = torch.arange(seq_len * B * D).float().reshape(B, seq_len, D)
-        if torch.cuda.is_available():
-            X = X.cuda()
+        X = torch.arange(seq_len * B * D).float().reshape(B, seq_len, D).to(block.device).to(block.dtype)
             
         block.eval()  # Set block to evaluation mode, so that dropout layers are not active
         with torch.no_grad():
@@ -569,7 +686,7 @@ class Checker(exec_utils.BaseTool):
         self.rprint('Checking forward pass...')
         mock_input = torch.randint(0, vocab_size, (2, 2048)).cuda() if \
           torch.cuda.is_available() else torch.randint(0, vocab_size, (2, 2048))
-        mock_input = mock_input.to(gab.device, gab.dtype)
+        mock_input = mock_input.to(gab.device)
         emb.eval()
         gab.eval()
         try:
@@ -598,6 +715,7 @@ class Checker(exec_utils.BaseTool):
         :param path: 
             The path of the proposed module 
         """
+        time_start=time.time()
         self.reset()
         with U.CodeTimer("Format checking"):
             self.rprint('Checking the designed model...')
@@ -605,15 +723,18 @@ class Checker(exec_utils.BaseTool):
                 checkpass,gab_code = self._check_format_and_reformat(gab_code)
                 assert checkpass
             except AssertionError:
-                return False,self.report,gab_code
+                return False,self.report,gab_code,{}
         
         with U.CodeTimer("Model initialization"):
             try: 
                 exec(gab_code,globals())
                 if torch.cuda.is_available():
                     glm,_ = reload_gam(config,gab_code,name,dtype=torch.bfloat16, device="cuda") # intentially use bfloat16 to check whether the model is correctly defined
+                    glm = glm.cuda()
+                    glm=glm.to(torch.bfloat16)
                 else:
                     glm,_ = reload_gam(config,gab_code,name,dtype=torch.float16, device="cpu")
+                    glm = glm.to(torch.float16)
                 mock_input=torch.randint(0, config.vocab_size, (8, 2048))
                 mock_input = mock_input.to(glm.device)
                 output = glm(mock_input)
@@ -626,11 +747,13 @@ class Checker(exec_utils.BaseTool):
                     'Hint: 1. if it is a dtype or device error, check whether the factory kwargs are passed to the layers. '
                     '2. If it is a shape error, check whether the output shape is equal to the input shape. The output shape of GAB should be the same as the input.'
                 )
-                return False,self.report,gab_code
+                return False,self.report,gab_code,{}
         
             ### check model size 
             gam = glm.backbone
             gab = gam.blocks[0].gab
+            gab.device = glm.device
+            gab.dtype = glm.dtype
             self.rprint(
                 f'Model initialization succeeded.\n'
                 f'{glm.print_size(printout=False)}'
@@ -646,22 +769,24 @@ class Checker(exec_utils.BaseTool):
                     config.vocab_size
                 )
                 assert checkpass1
-                checkpass2=self._is_causal(
+                checkpass2=self._check_causality(
                     gab,
                     gam.d_model
                 )
                 checkpass3=self._check_differentiable(glm,config.vocab_size)
-                checkpass4=self._check_effectiveness(glm,config)
+                checkpass4,effectiveness=self._check_effectiveness(glm,config)
                 assert checkpass2 and checkpass3 and checkpass4
             except AssertionError:
                 self.rprint('Model test failed\n')
                 if not checkpass2:
                     self.rprint('Hint: If you used convolutional layer, you should consider that the conv kernel may cover the future steps. '
                                 'You can add padding and truncation of future steps to the conv layer to make it causal.\n')
-                return False,self.report,gab_code
+                return False,self.report,gab_code,{}
 
         self.rprint("All tests passed!\n")
-        return True,self.report,gab_code
+        time_end=time.time()
+        print(f'Total time for checking: {time_end-time_start:.2f}s')
+        return True,self.report,gab_code,effectiveness
     
     def tune(self,config,gab_code,name,tune_dim=True)->str: # the model is already correct but we need to tune its scale
         print('Tuning the model scale...')

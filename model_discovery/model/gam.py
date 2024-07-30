@@ -225,6 +225,8 @@ class GAM(nn.Module):
         self.embedding = nn.Embedding(vocab_size, d_model, **self.factory_kwargs)
         self.use_template = use_template
         self.n_block=n_block
+        self.device=device
+        self.dtype=dtype
 
         # We change the order of residual and layer norm:
         # Instead of LN -> Attn / MLP -> Add, we do:

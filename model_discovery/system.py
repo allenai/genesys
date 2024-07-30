@@ -356,7 +356,8 @@ class ModelDiscoverySystem(exec_utils.System):
                     query  = GAB_ERROR
                     continue 
                 
-                checkpass,check_report,code = self.checker.check(self._cfg,code,design_name)
+                ### TODO: save and use effectiveness
+                checkpass,check_report,code,effectiveness = self.checker.check(self._cfg,code,design_name)
                 
                 if stream:
                     stream.write(
@@ -381,13 +382,13 @@ class ModelDiscoverySystem(exec_utils.System):
                             stream.markdown(self_report["text"]) #<-- change
 
                     explain=self_report['text']
-                    return code,explain,designer_cost
+                    return code,explain,designer_cost,effectiveness
                 else:
                     query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix"
                     source = 'user'
                     self.checker.reset()
 
-        return None,None,designer_cost
+        return None,None,designer_cost,None
         
 
     def query_system(
@@ -432,7 +433,7 @@ class ModelDiscoverySystem(exec_utils.System):
         self._queries.append(designer_query)
 
         for _ in range(self._config.max_design_refines):
-            code,explain,designer_cost = self.design(query,designer_context,stream,status_handler)
+            code,explain,designer_cost,effectiveness = self.design(query,designer_context,stream,status_handler)
             costs['design'] += designer_cost
             if code is None: continue
 
@@ -495,7 +496,7 @@ class ModelDiscoverySystem(exec_utils.System):
             if stream:
                 stream.markdown(summary)
 
-        return title,code,explain,summary,autocfg,review,rating,costs
+        return title,code,explain,summary,autocfg,review,rating,costs,effectiveness
 
     @classmethod
     def from_config(cls: Type[C],config: ConfigType,**kwargs) -> C:

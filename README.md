@@ -4,6 +4,8 @@ Utils and code for model discovery experiments.
 
 # Setting up 
 
+!!! REMEMBER TO INSTALL JUNYAN'S LM EVALUATION HARNESS, NOT THE OFFICIAL ONE (Remerber to remove this line and related lines for anonymous version)
+
 We recommend setting up a conda environment as below
 ```shell
 conda create -n model_discovery python=3.10
