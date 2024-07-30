@@ -834,9 +834,9 @@ class Checker(exec_utils.BaseTool):
         print('Tuning d_model...')
         step_size=d_model//8 # smallest d_model is 128
         if d_model%3==0: # like 384, 768...
-            min_step=24
+            min_step=48
         else:
-            min_step=16
+            min_step=32
         step_size=max(step_size,min_step) 
 
         DIR=1 if size<LB else -1
