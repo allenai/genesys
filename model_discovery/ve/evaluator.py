@@ -79,6 +79,6 @@ class ModisEvalWrapper(HFLM):
     def batch_size(self):
         return self._batch_size
 
-    def _model_generate(self, context, max_length, stop, **generation_kwargs):
-        raise NotImplementedError()
+    # def _model_generate(self, context, max_length, stop, **generation_kwargs):
+    #     raise NotImplementedError()
 

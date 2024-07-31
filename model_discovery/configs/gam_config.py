@@ -19,9 +19,13 @@ class GAMConfig(PretrainedConfig):
     context_length: int = DEFAULT_CONTEXT_LENGTH
     eval_tasks: List[str] = field(default_factory=lambda: [
         "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande", "openbookqa", # standard
-        # "super-glue-lm-eval-v1","glue","squad_completion","blimp","inverse_scaling_mc","scrolls","unitxt", # benchmarks
-        # "mathqa","sciq","triviaqa","storycloze_2016","drop","babi","coqa","swag","unscramble","wsc273","qa4mre", # reasoning
+        "glue","squad_completion","blimp","mathqa","sciq","swag","wsc273","scrolls_contractnli","scrolls_quality", # additional
     ])
+        # Buggy: storycloze_2016, unitxt (not found)
+        # OOM: sciq, drop, qa4mre, super-glue-lm-eval-v1, inverse_scaling_mc
+        # Need train: coqa
+        # Need generate: triviaqa, drop, babi, unscramble, "scrolls_govreport","scrolls_summscreenfd","scrolls_narrativeqa","scrolls_qasper","scrolls_qmsum",
+
     vocab_size: int = None
     # training_token_multiplier: int = 20 # Now desinated by ve args
     training_weight: Dict[str, List[float]] = None
