@@ -72,7 +72,12 @@ class ModisEvalWrapper(HFLM):
 
         super().__init__(model,tokenizer=tokenizer)
         self.vocab_size = self.tokenizer.vocab_size
-        self._batch_size = int(batch_size) if batch_size is not None else 64
+        # if batch_size is None:
+        #     self._batch_size = 64
+        # elif batch_size == "auto":
+        #     self._batch_size = 1
+        # else:
+        #     self._batch_size = int(batch_size)
         self._max_length = max_length
 
     @property

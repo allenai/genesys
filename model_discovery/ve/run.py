@@ -336,9 +336,10 @@ def run_eval(args):
         "--model_args", f"pretrained={args.evoname}/{args.scale}/{args.design_id},ckpt_dir={args.ckpt_dir},gab_name={args.gab_name}",
         "--tasks", ",".join(cfg.eval_tasks), 
         # "--device", "cuda",
-        "--batch_size", f"{cfg.eval_batch_size}",
+        "--batch_size", f"auto",
+        "--max_batch_size", f"{cfg.eval_batch_size}",
         "--output_path", f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/eval_results",
-        "--cache_requests", "true", # refresh for debugging, true for normal #TODO: fast but seems inaccurate???
+        "--cache_requests", "refresh", # refresh for debugging, true for normal 
         # "--wandb_args", "project=modis",
     ]
     gab,gab_config=BlockRegister.load_block(args.gab_name)
