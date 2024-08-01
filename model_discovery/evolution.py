@@ -188,7 +188,7 @@ class DesignArtifact(NodeObject):
     rating: int
     review: str
     costs: Dict[str,float]
-    effectiveness: Dict[str,float] = None
+    check_results: dict = None
 
     def save(self,db_dir: str):
         U.mkdir(U.pjoin(db_dir,self.acronym))
@@ -204,6 +204,8 @@ class DesignArtifact(NodeObject):
             f.write(self.summary)
         with open(U.pjoin(db_dir,self.acronym,"review.md"),'w') as f:
             f.write(self.review+f'\n\n## Rating\n{self.rating} out of 5')
+        if self.check_results:
+            U.save_json(self.check_results,U.pjoin(db_dir,self.acronym,"check_results.json"))
         
     @classmethod
     def load(cls, db_dir: str, id:str) -> DesignArtifact:
@@ -554,7 +556,7 @@ class EvolutionSystem(exec_utils.System):
         response=self.rnd_agent(instruct) 
         if response is None: # no design sampled
             return None
-        title,rawcode,explain,summary,autocfg,review,rating,costs,effectiveness=response
+        title,rawcode,explain,summary,autocfg,review,rating,costs,check_results=response
         for i in [' and ',' for ','-']:
             title=title.replace(i,' ')
         acronym=''.join([i[0].upper() for i in title.split(' ') if i.isalpha()])
@@ -576,7 +578,7 @@ class EvolutionSystem(exec_utils.System):
             'review':review,
             'rating':rating,
             'costs':costs,
-            'effectiveness':effectiveness,
+            'check_results':check_results,
         }
         return artifact
 
@@ -588,14 +590,14 @@ class EvolutionSystem(exec_utils.System):
         scale=self.ptree.G.nodes[design_id]['data'].scale
         review=self.ptree.G.nodes[design_id]['data'].review
         rating=self.ptree.G.nodes[design_id]['data'].rating
-        effectiveness=self.ptree.G.nodes[design_id]['data'].effectiveness
+        check_results=self.ptree.G.nodes[design_id]['data'].check_results
         config:GAMConfig=eval(f'GAMConfig_{scale}()')
         config_str=config.to_prompt()
         artifact_obj=f'## Title: {title}\n## Acronym: {acronym}\n\n## Code:\n\n{rawcode}\n\n## Justification:\n\n{explain}'
         artifact_obj+=f'\\## Config and Reference:\n\n{config_str}\n\n'
         artifact_obj+=f'## Review:\n\n{review}\n\n## Rating:\n\n{rating} out of 5\n\n'
-        if effectiveness:
-            artifact_obj+=f'## Effectiveness:\n\n{json.dumps(effectiveness,indent=4)}\n\n'
+        if check_results:
+            artifact_obj+=f"## Effectiveness:\n\n{json.dumps(check_results['effectiveness'],indent=4)}\n\n"
         if report:
             artifact_obj+=f'## Report:\n\n{json.dumps(report,indent=4)}'
         return artifact_obj
@@ -823,12 +825,12 @@ gab_config = {
     design_name='test_design'
 
     # code=code_MHA
-    # checkpass,check_report,gabcode,effectiveness = checker.check(cfg,code,design_name)
-    # print(effectiveness)
+    # checkpass,check_report,gabcode,check_results = checker.check(cfg,code,design_name)
+    # print(check_results)
 
     # print('Check the second code')
     # code=code_RetNet
-    # checkpass,check_report,gabcode,effectiveness = checker.check(cfg,code,design_name)
+    # checkpass,check_report,gabcode,check_results = checker.check(cfg,code,design_name)
 
 
 

@@ -31,7 +31,7 @@ def check_tune(scale, model_name):
     )
     cfg = eval(f"GAMConfig_{scale}()")
     code=MODEL2CODE[model_name]
-    checkpass,report,code,effectiveness = checker.check(cfg,code,model_name)
+    checkpass,report,code,results = checker.check(cfg,code,model_name)
     if not checkpass:
         print(report)
         raise Exception('Model does not pass the checker')
@@ -41,8 +41,10 @@ def check_tune(scale, model_name):
     code+='\n\n\nfrom .block_registry import BlockRegister\n\nBlockRegister(\n    name="default",\n    config=block_config\n)(GAB)'
     with open(U.pjoin(LIBRARY_PATH,model_name,'gab.py'),'w') as f:
         f.write(code)
-    with open(U.pjoin(LIBRARY_PATH,model_name,'effectiveness.json'),'w') as f:
-        json.dump(effectiveness,f)
+    savedir=f"{LIBRARY_PATH}/{model_name}/reports"
+    U.mkdir(savedir,exist_ok=True)
+    with open(U.pjoin(savedir,f'check_{scale}.json'),'w') as f:
+        json.dump(results,f,indent=4)
 
 def run(scale,model_name,args): # do a single verify
     with open(U.pjoin(LIBRARY_PATH,model_name,'gab.py'),'r') as f:
@@ -64,10 +66,8 @@ def run(scale,model_name,args): # do a single verify
         ve_main(args)
     report=U.load_json(reportdir)
     savedir=f"{LIBRARY_PATH}/{model_name}/reports"
-    U.mkdir(savedir)
+    U.mkdir(savedir,exist_ok=True)
     U.save_json(report,U.pjoin(savedir,f"report_{scale}.json"))
-    # copy effectiveness.json to savedir
-    os.system(f"cp {U.pjoin(LIBRARY_PATH,model_name,'effectiveness.json')} {U.pjoin(savedir,'effectiveness.json')}")
 
 
 if __name__ == "__main__":

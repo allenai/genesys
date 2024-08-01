@@ -788,7 +788,12 @@ class Checker(exec_utils.BaseTool):
         self.rprint("All tests passed!\n")
         time_end=time.time()
         print(f'[Total time for checking: {time_end-time_start:.2f}s]')
-        return True,self.report,gab_code,effectiveness
+
+        results = {
+            'log': self.report,
+            'effectiveness': effectiveness,
+        }
+        return True,self.report,gab_code,results
     
     def tune(self,config,gab_code,name,tune_dim=True)->str: # the model is already correct but we need to tune its scale
         print('Tuning the model scale...')
