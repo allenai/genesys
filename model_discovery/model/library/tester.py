@@ -1,4 +1,5 @@
 import os,sys
+import json
 
 from model_discovery.agents.checker import *
 
@@ -30,7 +31,7 @@ def check_tune(scale, model_name):
     )
     cfg = eval(f"GAMConfig_{scale}()")
     code=MODEL2CODE[model_name]
-    checkpass,report,code = checker.check(cfg,code,model_name)
+    checkpass,report,code,effectiveness = checker.check(cfg,code,model_name)
     if not checkpass:
         print(report)
         raise Exception('Model does not pass the checker')
@@ -40,6 +41,8 @@ def check_tune(scale, model_name):
     code+='\n\n\nfrom .block_registry import BlockRegister\n\nBlockRegister(\n    name="default",\n    config=block_config\n)(GAB)'
     with open(U.pjoin(LIBRARY_PATH,model_name,'gab.py'),'w') as f:
         f.write(code)
+    with open(U.pjoin(LIBRARY_PATH,model_name,'effectiveness.json'),'w') as f:
+        json.dump(effectiveness,f)
 
 def run(scale,model_name,args): # do a single verify
     with open(U.pjoin(LIBRARY_PATH,model_name,'gab.py'),'r') as f:
@@ -63,12 +66,13 @@ def run(scale,model_name,args): # do a single verify
     savedir=f"{LIBRARY_PATH}/{model_name}/reports"
     U.mkdir(savedir)
     U.save_json(report,U.pjoin(savedir,f"report_{scale}.json"))
+    # copy effectiveness.json to savedir
+    os.system(f"cp {U.pjoin(LIBRARY_PATH,model_name,'effectiveness.json')} {U.pjoin(savedir,'effectiveness.json')}")
 
 
 if __name__ == "__main__":
-
-    scale = '14M' #sys.argv[1]
-    model_name = 'retnet' # sys.argv[2]
+    model_name = 'gpt2' 
+    scale = '14M' 
     args = ve_parser.parse_args()
 
     if args.mode=='check':

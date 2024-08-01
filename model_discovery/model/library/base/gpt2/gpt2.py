@@ -11,8 +11,8 @@ class GAB(GABBase):
         super().__init__(embed_dim)
         self.fn = MHA(embed_dim, n_heads, causal=True, rotary_emb_dim=int(rotary_pct*embed_dim//n_heads), **factory_kwargs)
         self.fn2 = GatedMLP(embed_dim, **factory_kwargs)
-        self.norm1 = RMSNorm(embed_dim, **factory_kwargs)
-        self.norm2 = RMSNorm(embed_dim, **factory_kwargs)
+        self.norm1 = RMSNorm(embed_dim).to(device=device,dtype=dtype)
+        self.norm2 = RMSNorm(embed_dim).to(device=device,dtype=dtype)
 
     def _forward(self,X,**kwargs): # type hints are optional but recommended
         X = self.fn(self.norm1(X))+X
