@@ -46,18 +46,21 @@ def check_tune(scale, model_name):
     with open(U.pjoin(savedir,f'check_{scale}.json'),'w') as f:
         json.dump(results,f,indent=4)
 
-def run(scale,model_name,args): # do a single verify
+def run(scale,model_name,args,training_token_multiplier=20): # do a single verify
     with open(U.pjoin(LIBRARY_PATH,model_name,'gab.py'),'r') as f:
         code=f.read()
     with open('/home/junyanc/model_discovery/model_discovery/model/gab.py','w') as f:
         f.write(code)
     args.evoname='LIBRARY_HOLD'
     args.design_id=model_name+'_'+scale
-    args.config=f'GAMConfig_{scale}'
+    assert training_token_multiplier>0
+    if training_token_multiplier!=20:
+        args.design_id+=f'-{training_token_multiplier}x'
+    args.scale=scale
     args.ckpt_dir=ckpt_dir
     args.data_dir=os.environ.get("DATA_DIR")
     args.resume=True
-    args.training_token_multiplier=20
+    args.training_token_multiplier=training_token_multiplier
     args.logging_steps=10
     # args.n_gpus=4
     args.port="25869"
@@ -67,12 +70,16 @@ def run(scale,model_name,args): # do a single verify
     report=U.load_json(reportdir)
     savedir=f"{LIBRARY_PATH}/{model_name}/reports"
     U.mkdir(savedir,exist_ok=True)
-    U.save_json(report,U.pjoin(savedir,f"report_{scale}.json"))
+    report_name=f"report_{scale}.json"
+    if training_token_multiplier!=20:
+        tail=f"{training_token_multiplier}x"
+        report_name=f"report_{scale}-{tail}.json"
+    U.save_json(report,U.pjoin(savedir,report_name))
 
 
 if __name__ == "__main__":
-    model_name = 'gpt2' 
-    scale = '14M' 
+    model_name = 'retnet' 
+    scale = '31M' 
     args = ve_parser.parse_args()
 
     if args.mode=='check':

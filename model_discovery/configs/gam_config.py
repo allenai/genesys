@@ -222,7 +222,6 @@ class GAMConfig_1T(GAMConfig): # Just for fun
 @dataclass
 class GAMConfig_debug(GAMConfig_14M):
     scale: str = 'debug'
-    context_length: int = 512
     training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     # eval_tasks: List[str] = field(default_factory=lambda: [
     #     "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande",
