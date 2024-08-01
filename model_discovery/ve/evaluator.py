@@ -1,7 +1,7 @@
 import torch
 import sys
 import logging
-
+from typing import Optional, Union  
 
 import transformers
 from transformers import AutoTokenizer
@@ -20,6 +20,11 @@ from .. import utils as U
 
 util_logger = logging.getLogger('model_discovery.evals.evaluator')
 
+from lm_eval import utils
+
+eval_logger = utils.eval_logger
+
+
 
 @register_model("modis")
 class ModisEvalWrapper(HFLM):
@@ -34,11 +39,16 @@ class ModisEvalWrapper(HFLM):
             gab_config,
             ckpt_dir,
             max_length=2048,
-            batch_size=None,
+            batch_size: Optional[Union[int, str]] = 1,
+            max_batch_size: Optional[int] = 64,
+            logits_cache: bool = True,
+            truncation: Optional[bool] = False,
             device="cuda",
             dtype=torch.float16,
             **kwargs
         ):
+        assert isinstance(batch_size, (int, str))
+
         util_logger.info('Running evaluation')
         
         b = pretrained.split("/")
@@ -72,13 +82,29 @@ class ModisEvalWrapper(HFLM):
 
         super().__init__(model,tokenizer=tokenizer)
         self.vocab_size = self.tokenizer.vocab_size
-        if batch_size != 'auto':
-            self._batch_size = int(batch_size) if batch_size is not None else 64
         self._max_length = max_length
+        self.logits_cache = logits_cache
+        self.truncation = truncation
+
+        self.batch_schedule = 1
+        self.batch_sizes = {}
+        self.max_batch_size = max_batch_size
+
+        if str(batch_size).startswith("auto"):
+            batch_size = batch_size.split(":")
+            self.batch_size_per_gpu = batch_size[0]
+            self.batch_schedule = float(batch_size[1]) if len(batch_size) > 1 else 1
+        else:
+            self.batch_size_per_gpu = int(batch_size)
+
 
     @property
     def batch_size(self):
-        return self._batch_size
+        return self.batch_size_per_gpu
+    
+    # @property
+    # def batch_size(self):
+    #     return self._batch_size
 
     # def _model_generate(self, context, max_length, stop, **generation_kwargs):
     #     raise NotImplementedError()

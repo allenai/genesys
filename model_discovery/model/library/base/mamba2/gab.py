@@ -4,6 +4,7 @@ from model_discovery.model.utils.modules import GABBase
 import math
 import torch.nn.functional as F
 from einops import rearrange, repeat
+from torchtune.modules import RMSNorm
 
 
 def segsum_unstable(x):
@@ -162,14 +163,12 @@ class GAB(GABBase):
         self.mamba2 = Mamba2Simple(embed_dim, d_state, d_conv, expand,
             headdim, ngroups, A_init_range, dt_min, dt_max, dt_init_floor,
             chunk_size, **factory_kwargs)
-        self.norm1 = nn.LayerNorm(embed_dim, **factory_kwargs)
-        self.norm2 = nn.LayerNorm(embed_dim, **factory_kwargs)
+        self.norm1 = RMSNorm(embed_dim, eps=1e-05).to(**factory_kwargs)
+        self.norm2 = RMSNorm(embed_dim, eps=1e-05).to(**factory_kwargs)
 
     def _forward(self, X, **kwargs):
-        hidden_states = self.norm1(X.to(dtype=self.norm1.weight.dtype))
-        X = self.mamba1(hidden_states) + X
-        hidden_states = self.norm2(X.to(dtype=self.norm2.weight.dtype))
-        X = self.mamba2(hidden_states) + X
+        X = self.mamba1(self.norm1(X)) + X
+        X = self.mamba2(self.norm2(X)) + X
         return X
 
 

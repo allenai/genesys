@@ -7,6 +7,30 @@
             "max_memory_allocated": 4643.521484375,
             "total_flos": 582903398400.0,
             "train_loss": 9.0375
+        },
+        "31M_x86_64 NVIDIA RTX A6000 47.54 GB": {
+            "run_time": 1.779,
+            "loss": 7.69375,
+            "gradient_of_losses": -1.09375,
+            "max_memory_allocated": 1090.34765625,
+            "total_flos": 581361991680.0,
+            "train_loss": 7.69375
+        },
+        "70M_x86_64 NVIDIA RTX A6000 47.54 GB": {
+            "run_time": 1.8746,
+            "loss": 5.4140625,
+            "gradient_of_losses": -1.73204,
+            "max_memory_allocated": 1514.89306640625,
+            "total_flos": 2322365153280.0,
+            "train_loss": 5.4140625
+        },
+        "125M_x86_64 NVIDIA RTX A6000 47.54 GB": {
+            "run_time": 2.1213,
+            "loss": 4.272314453125,
+            "gradient_of_losses": -2.15871,
+            "max_memory_allocated": 3007.1953125,
+            "total_flos": 10445924597760.0,
+            "train_loss": 4.272314453125
         }
     }
 }

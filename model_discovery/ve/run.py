@@ -235,17 +235,22 @@ def exec_train(args,training_args, trainer):
     U.save_json(wandb_ids,f"{training_args.output_dir}/wandb_ids.json")
     
     # Automatically resume from the latest checkpoint if it exists
-    last_checkpoint = U.get_last_checkpoint(training_args.output_dir)
-    if args.resume and last_checkpoint:
-        util_logger.info(
-            f"Resuming training from checkpoint: {last_checkpoint}"
-        )
-        trainer.train(resume_from_checkpoint=last_checkpoint)
+    if args.training_token_multiplier > 0:
+        last_checkpoint = U.get_last_checkpoint(training_args.output_dir)
+        if args.resume and last_checkpoint:
+            util_logger.info(
+                f"Resuming training from checkpoint: {last_checkpoint}"
+            )
+            trainer.train(resume_from_checkpoint=last_checkpoint)
+        else:
+            util_logger.info(
+                "No checkpoint found, starting training from scratch"
+            )
+            trainer.train()
     else:
         util_logger.info(
-            "No checkpoint found, starting training from scratch"
+            "Training token multiplier is set to 0, skipping training."
         )
-        trainer.train()
 
     trainer.save_model(training_args.output_dir+'/pretrained')
     util_logger.info(
@@ -339,7 +344,7 @@ def run_eval(args):
         "--batch_size", f"auto",
         "--max_batch_size", f"{cfg.eval_batch_size}",
         "--output_path", f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/eval_results",
-        "--cache_requests", "refresh", # refresh for debugging, true for normal 
+        "--cache_requests", "true", # refresh for debugging, true for normal 
         # "--wandb_args", "project=modis",
     ]
     gab,gab_config=BlockRegister.load_block(args.gab_name)

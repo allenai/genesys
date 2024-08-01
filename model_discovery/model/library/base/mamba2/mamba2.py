@@ -30,6 +30,8 @@ from einops import rearrange, repeat
 
 # from mamba_ssm.ops.triton.layer_norm import RMSNorm, layer_norm_fn
 
+from torchtune.modules import RMSNorm
+
 
 
 def segsum_unstable(x):
@@ -267,10 +269,8 @@ class GAB(GABBase):
         # COMPLETING THE CODE HERE #
         self.mamba1=Mamba2Simple(embed_dim, d_state, d_conv, expand, headdim, ngroups, A_init_range, dt_min, dt_max, dt_init_floor, chunk_size, **factory_kwargs)
         self.mamba2=Mamba2Simple(embed_dim, d_state, d_conv, expand, headdim, ngroups, A_init_range, dt_min, dt_max, dt_init_floor, chunk_size, **factory_kwargs)
-        # self.norm1 = RMSNorm(embed_dim, eps=1e-5, **factory_kwargs)
-        # self.norm2 = RMSNorm(embed_dim, eps=1e-5, **factory_kwargs)
-        self.norm1 = nn.LayerNorm(embed_dim, **factory_kwargs)
-        self.norm2 = nn.LayerNorm(embed_dim, **factory_kwargs)
+        self.norm1 = RMSNorm(embed_dim, eps=1e-5).to(**factory_kwargs)
+        self.norm2 = RMSNorm(embed_dim, eps=1e-5).to(**factory_kwargs)
 
 
     # YOU CAN ADD MORE FUNCTIONS HERE #
@@ -278,10 +278,8 @@ class GAB(GABBase):
 
     def _forward(self,X,**kwargs): # type hints are optional but recommended
         # THE CODE HERE MUST BE COMPLETED #
-        hidden_states = self.norm1(X.to(dtype=self.norm1.weight.dtype))
-        X = self.mamba1(hidden_states) + X
-        hidden_states = self.norm2(X.to(dtype=self.norm2.weight.dtype))
-        X = self.mamba2(hidden_states) + X
+        X = self.mamba1(self.norm1(X)) + X
+        X = self.mamba2(self.norm2(X)) + X
         return X
         
     

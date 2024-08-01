@@ -395,7 +395,7 @@ class ModisLMHeadModel(PreTrainedModel):
         if num_last_tokens > 0:
             hidden_states = hidden_states[:, -num_last_tokens:]
         lm_logits = self.lm_head(hidden_states)
-        # CausalLMOutput = namedtuple("CausalLMOutput", ["logits"])
+        # lm_logits = torch.rand_like(lm_logits).to(lm_logits.device, dtype=lm_logits.dtype) # FOR RANDOM TESTING
         return CausalLMOutput(logits=lm_logits)
 
     @classmethod

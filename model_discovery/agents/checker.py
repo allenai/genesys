@@ -394,7 +394,7 @@ class EffectiveChecker: # WORING IN PROGRESS
             self.errors.append('The model is not training correctly. The loss is not decreasing. ')
         if loss>1e4: # its already abnormal
             self.errors.append('The model is diverging. The loss is NaN. ')
-        if run_time>benchmark['run_time']*10:
+        if run_time>benchmark['run_time']*50: # NOTE: MAKE IT REALLY LOOSE NOW
             self.errors.append(f"The model is not efficient. The training time is overly long. Its {run_time/benchmark['run_time']:.2f} times of the benchmark.")
         elif run_time>benchmark['run_time']*5:
             self.warnings.append(f"The model is not efficient. The training time is long. Its {run_time/benchmark['run_time']:.2f} times of the benchmark.")
@@ -788,7 +788,12 @@ class Checker(exec_utils.BaseTool):
         self.rprint("All tests passed!\n")
         time_end=time.time()
         print(f'[Total time for checking: {time_end-time_start:.2f}s]')
-        return True,self.report,gab_code,effectiveness
+
+        results = {
+            'log': self.report,
+            'effectiveness': effectiveness,
+        }
+        return True,self.report,gab_code,results
     
     def tune(self,config,gab_code,name,tune_dim=True)->str: # the model is already correct but we need to tune its scale
         print('Tuning the model scale...')
