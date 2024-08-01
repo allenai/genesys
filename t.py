@@ -53,6 +53,8 @@
 # print('Bi-Dir MHA:',torch.allclose(bidir_out[:,:16], bidir_out_pert[:,:16]))
 
 
+
+
 import torch
 from torch import nn
 import time
@@ -82,10 +84,11 @@ class Net(nn.Module):
             num_features *= s
         return num_features
     
-t0=time.time()
-net = Net().cuda()
-print("Time to create the network: ", time.time()-t0)
-x=torch.randn(8,1,32,32).cuda()
-t0=time.time()
-y=net(x)
-print("Time to forward pass: ", time.time()-t0)
+while True:
+    t0=time.time()
+    net = Net().cuda()
+    # print("Time to create the network: ", time.time()-t0)
+    x=torch.randn(8,1,32,32).cuda()
+    t0=time.time()
+    y=net(x)
+    # print("Time to forward pass: ", time.time()-t0)

@@ -30,9 +30,10 @@ class GAMConfig(PretrainedConfig):
     batch_tokens: int 
     context_length: int = DEFAULT_CONTEXT_LENGTH
     eval_tasks: List[str] = field(default_factory=lambda: [
-        "glue","inverse_scaling_mc",
-        *STANDARD_EVAL_TASKS,
-        *ADDITIONAL_EVAL_TASKS,
+        "glue",
+        # "inverse_scaling_mc",
+        # *STANDARD_EVAL_TASKS,
+        # *ADDITIONAL_EVAL_TASKS,
         *BABYLM_GROUP,
         *TINY_NON_STANDARD,
     ])
