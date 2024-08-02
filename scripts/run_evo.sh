@@ -14,18 +14,24 @@ while true; do
     # Check the sum of the budgets in the state.json file
     sum_budgets=$(python -c "
 import json
-import sys
+import os,sys
 
 state_file = sys.argv[1]
-with open(state_file) as f:
-    state = json.load(f)
 
-print(sum(state['budgets'].values()))
+if not os.path.exists(state_file):
+    print(1) # new round, just return 1
+else:
+    with open(state_file) as f:
+        state = json.load(f)
+
+    print(sum(state['budgets'].values()))
 " "$state_file")
     
     if [ "$sum_budgets" -eq "0" ]; then
         echo "All budgets are 0, stopping the loop."
         break
+    else
+        echo "The budget still remains, continue the loop."
     fi
 
     python -m model_discovery.evolution --mode evolve --evoname $evoname

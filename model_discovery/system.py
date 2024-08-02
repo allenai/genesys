@@ -7,6 +7,7 @@ import json
 import time
 import tempfile
 import copy
+import numpy as np
 # import uuid
 
 #from IPython.display import display, Markdown, Latex
@@ -129,12 +130,39 @@ class CustomParams(exec_utils.ModuleParams):
             "exclude_hash" : True,
         }
     )
-    reviewer_spec: str = exec_utils.ParamField(
+    reviewer_spec_creative: str = exec_utils.ParamField(
         default=os.path.abspath(
-            f'{PROJ_SRC}/../etc/agent_spec/reviewer.json'
+            f'{PROJ_SRC}/../etc/agent_spec/reviewer_creative.json'
         ),
         metadata={
-            "help"         : 'Specification of reviewer agent',
+            "help"         : 'Specification of creative reviewer agent',
+            "exclude_hash" : True,
+        }
+    )
+    reviewer_spec_balance: str = exec_utils.ParamField(
+        default=os.path.abspath(
+            f'{PROJ_SRC}/../etc/agent_spec/reviewer_balance.json'
+        ),
+        metadata={
+            "help"         : 'Specification of balance reviewer agent',
+            "exclude_hash" : True,
+        }
+    )
+    reviwer_spec_rigorous: str = exec_utils.ParamField(
+        default=os.path.abspath(
+            f'{PROJ_SRC}/../etc/agent_spec/reviewer_rigorous.json'
+        ),
+        metadata={
+            "help"         : 'Specification of rigorous reviewer agent',
+            "exclude_hash" : True,
+        }
+    )
+    debugger_spec: str = exec_utils.ParamField(
+        default=os.path.abspath(
+            f'{PROJ_SRC}/../etc/agent_spec/debugger.json'
+        ),
+        metadata={
+            "help"         : 'Specification of debugger agent',
             "exclude_hash" : True,
         }
     )
@@ -251,10 +279,12 @@ class ModelDiscoverySystem(exec_utils.System):
     --------
     :param designer: 
         The designer LLM agent. 
-    :param reviewer: 
-        The reviewer LLM agent. 
+    :param reviewers: 
+        The reviewer LLM agents. 
     :param checker: 
         The checker tool agent. 
+    :param debugger:
+        The debugger LLM agent.
     :param block_template: 
         The templated code to be filled in during 
         the block search. 
@@ -280,8 +310,9 @@ class ModelDiscoverySystem(exec_utils.System):
     def __init__(
         self,
         designer : Type[exec_utils.SimpleLMAgent],
-        reviewer : Type[exec_utils.SimpleLMAgent],
+        reviewers : Dict[str,Type[exec_utils.SimpleLMAgent]],
         checker  : Type[exec_utils.BaseTool], 
+        debugger : Type[exec_utils.SimpleLMAgent],
         *,
         block_template: str,
         gam_template: str,
@@ -293,8 +324,8 @@ class ModelDiscoverySystem(exec_utils.System):
         
         :param designer: 
             The designer agent. 
-        :param reviewer: 
-           The reviewer agent. 
+        :param reviewers: 
+           The reviewer agents. 
         :param block_template: 
            The autoregressive block that the model has to fill in.
         :param model_implementation: 
@@ -305,8 +336,9 @@ class ModelDiscoverySystem(exec_utils.System):
         """
         ### modules 
         self.designer = designer
-        self.reviewer = reviewer
+        self.reviewers = reviewers
         self.checker = checker
+        self.debugger = debugger
         
         self.gam_py = gam_template
         self.gab_py = block_template
@@ -325,6 +357,8 @@ class ModelDiscoverySystem(exec_utils.System):
         problem_history = copy.deepcopy(designer_context) # a new dialog branch
         source='user'
 
+        debugger_context = []
+        initial_error = None
         for attempt in range(self._config.max_design_attempts):
             self.logging.info(f'Attempting design, attempt={attempt}')
             
@@ -332,18 +366,26 @@ class ModelDiscoverySystem(exec_utils.System):
 
             with status_handler(f"Attempt {attempt+1}"): 
                 
-                designer_out = self.designer(
+                agent=self.designer if attempt==0 else self.debugger
+                designer_out = agent(
                     query,
                     source=source,
-                    manual_history=problem_history, #<--- dialogue history and state
+                    manual_history=problem_history if attempt==0 else debugger_context,
                 )
-                problem_history.append((query,source))
-            
+                if attempt == 0:
+                    problem_history.append((query,source))
+                else:
+                    debugger_context.append((query,source))
+
                 try:
                     code = designer_out.get("code",None)
                     text = designer_out.get("text")
                     designer_cost += designer_out["_details"]["running_cost"]
-                    problem_history.append((str(text),"assistant"))
+                    if attempt == 0:
+                        problem_history.append((str(text),"assistant"))
+                        debugger_context.append((f'The researcher designed the model: {text}',"user"))
+                    else:
+                        debugger_context.append((f'{text}',"assistant"))
 
                     assert "# gab.py" in code 
                 
@@ -370,10 +412,12 @@ class ModelDiscoverySystem(exec_utils.System):
                         " Generate a creative name of your design as the title of your report in the first line of your response."
                         " Do not include abbreviations or acronyms of your design in the title. You can use them in the body of the report."
                     )
+                    if initial_error is not None:
+                        error_info=f"Your design didn't pass the checker initially:\n\n{initial_error}\n\nIt has been fixed by the assistant already as follows:\n\n{code}","user"
                     with status_handler(f"Querying agent for report..."):
                         self.logging.info('Now trying to compile self report...')
                         self_report = self.designer(
-                            report_query,
+                            report_query if initial_error is None else f'{error_info}\n\n{report_query}',
                             source='user',
                             manual_history=problem_history, # TODO: simplify this, full debugging process maybe not useful
                         )
@@ -385,10 +429,36 @@ class ModelDiscoverySystem(exec_utils.System):
                 else:
                     query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix"
                     source = 'user'
+                    if attempt == 0:
+                        initial_error = check_report
                     self.checker.reset()
 
         return None,None,designer_cost,None
         
+
+    def review(self,proposal,costs,stream,status_handler): 
+        reviewer_query = REVIEWER_PROMPT.format(
+            proposal=proposal,
+            gab_base=GAB_BASE,
+            gam_py=self.gam_py,
+            instruct='' # TODO: add references from S2 etc.
+        )
+        reviews = {}
+        ratings = {}
+        with status_handler(f"Querying reviewer agent for review..."):
+            for style in self.reviewers:
+                reviewer = self.reviewers[style]
+                response = reviewer(
+                    reviewer_query,
+                    source='user',
+                    # No history for reviewer or would some history be useful?
+                )
+                if stream:
+                    stream.markdown(response["text"])
+                ratings[reviewer] = response["rating"]
+                reviews[reviewer] = response["review"]
+                costs['review'] += response["_details"]["running_cost"]
+        return ratings,reviews,costs
 
     def query_system(
         self,
@@ -439,31 +509,21 @@ class ModelDiscoverySystem(exec_utils.System):
             proposal=f'{explain}\n\nImplementation:\n\n{code}\n\n'
             designer_context.append((query,"user")) 
             designer_context.append((proposal,"assistant"))
-            
-            reviewer_query = REVIEWER_PROMPT.format(
-                proposal=proposal,
-                gab_base=GAB_BASE,
-                gam_py=self.gam_py,
-                instruct='' # TODO: add references from S2 etc.
-            )
-            with status_handler(f"Querying reviewer agent for review..."):
-                response = self.reviewer( # maybe multiple reviewers?
-                    reviewer_query,
-                    source='user',
-                    # No history for reviewer or would some history be useful?
-                )
-                if stream:
-                    stream.markdown(response["text"])
-                rating = response["rating"]
-                review = response["review"]
-                costs['review'] += response["_details"]["running_cost"]
-                if rating >= self._config.reviewer_threshold:
-                    found_design = True
-                    break
-                else: # next round design
-                    # remember to change the prompt if using multiple reviewers
-                    query=f'The design didn\'t pass the review process, here is the feedback from the reviewer, please improve your design based on the review:\n\n{review}\n\n## Rating\n{rating} out of 5'
 
+            ratings,reviews,costs = self.review(proposal,costs,stream,status_handler)
+            rating=np.mean(list(ratings.values()))
+            if rating >= self._config.reviewer_threshold:
+                found_design = True
+                break
+            else: # next round design
+                # remember to change the prompt if using multiple reviewers
+                review_ratings=''
+                for idx, style in enumerate(self.reviewers):
+                    review=reviews[style]
+                    rating=ratings[style]
+                    review_ratings+=f'# Review of Reviewer {idx+1}:\n\n{review}\n\n## Rating: {rating} out of 5\n\n'
+
+                query=f'The design didn\'t pass the review process, here is the feedback from the reviewer, please improve your design based on the reviews: {review_ratings}'
 
         if not found_design:
             return None
@@ -495,7 +555,7 @@ class ModelDiscoverySystem(exec_utils.System):
             if stream:
                 stream.markdown(summary)
 
-        return title,code,explain,summary,autocfg,review,rating,costs,check_results
+        return title,code,explain,summary,autocfg,reviews,ratings,costs,check_results
 
     @classmethod
     def from_config(cls: Type[C],config: ConfigType,**kwargs) -> C:
@@ -517,10 +577,27 @@ class ModelDiscoverySystem(exec_utils.System):
         checker = BuildTool(
             tool_type="checker",
         )
-        reviewer = BuildAgent(
+        reviewers = {
+            'balance': BuildAgent(
+                config,
+                agent_file=config.reviewer_spec,
+                agent_model_type="reviewer_balance"
+            ),
+            'creative': BuildAgent(
+                config,
+                agent_file=config.reviewer_spec,
+                agent_model_type="reviewer_creative"
+            ),
+            'rigorous': BuildAgent(
+                config,
+                agent_file=config.reviewer_spec,
+                agent_model_type="reviewer_rigorous"
+            )
+        }
+        debugger = BuildAgent(
             config,
-            agent_file=config.reviewer_spec,
-            agent_model_type="reviewer_agent"
+            agent_file=config.debugger_spec,
+            agent_model_type="debugger_agent"
         )
         
         ### get the model information for context
@@ -529,8 +606,9 @@ class ModelDiscoverySystem(exec_utils.System):
         
         return cls(
             designer,
-            reviewer,
+            reviewers,
             checker,
+            debugger,
             block_template=block,
             gam_template=code,
             config=config,

@@ -109,6 +109,9 @@ class NodeObject:
 
     def to_desc(self) -> str:
         raise NotImplementedError
+    
+    def to_prompt(self) -> str:
+        raise NotImplementedError
 
 @dataclass
 class LibraryReference(NodeObject):
@@ -142,7 +145,7 @@ class LibraryReference(NodeObject):
         else:
             return 'Reference'
 
-    def to_desc(self) -> str:
+    def to_desc(self,reformat=True) -> str:
         mdtext=f'# {self.title}'
         if self.s2id:
             mdtext+=f'\n* S2 ID {self.s2id} *'
@@ -153,7 +156,7 @@ class LibraryReference(NodeObject):
             # tldr=self.tldr.replace(',',',\n')
             mdtext+=f'\n\n* TL;DR {self.tldr} *'
         if self.abstract:
-            abstract=self.abstract.replace('.','.\n')
+            abstract=self.abstract.replace('.','.\n') if reformat else self.abstract
             mdtext+=f'\n\n## Abstract\n{abstract}'
         if self.venue:
             mdtext+=f'\n\n* Published at {self.venue} in {self.year} *'
@@ -162,12 +165,22 @@ class LibraryReference(NodeObject):
         if self.influentialCitationCount:
             mdtext+=f'\n* Impactful citations {self.influentialCitationCount} *'
         if self.description:
-            description=self.description.replace('.','.\n')
+            description=self.description.replace('.','.\n') if reformat else self.description
             mdtext+=f'\n\n## Description\n{description}'
         if self.url:
             mdtext+=f'\n\n* [Link]({self.url}) *'
-        return mdtext.replace(':',' ').replace('e.\ng.\n','e.g.').replace('i.\ne.\n','i.e.')
-    
+        if reformat:
+            return mdtext.replace(':',' ').replace('e.\ng.\n','e.g.').replace('i.\ne.\n','i.e.')
+        return mdtext
+
+    def to_prompt(self) -> str:
+        prompt=self.to_desc(reformat=False)
+        if self.code:
+            prompt+=f'\n\n## Code\n\n{self.code}'
+        return prompt
+
+
+
 @dataclass
 class LibraryReference1hop(LibraryReference):
 
@@ -185,9 +198,10 @@ class DesignArtifact(NodeObject):
     scale: str
     summary: str
     instruct: str
-    rating: int
-    review: str
+    ratings: dict
+    reviews: dict
     costs: Dict[str,float]
+    verify_report: dict = None
     check_results: dict = None
 
     def save(self,db_dir: str):
@@ -202,15 +216,20 @@ class DesignArtifact(NodeObject):
                 f.write(self.instruct)
         with open(U.pjoin(db_dir,self.acronym,"summary.md"),'w') as f:
             f.write(self.summary)
-        with open(U.pjoin(db_dir,self.acronym,"review.md"),'w') as f:
-            f.write(self.review+f'\n\n## Rating\n{self.rating} out of 5')
+        with open(U.pjoin(db_dir,self.acronym,"reviews.md"),'w') as f:
+            f.write(self.get_reviews())
         if self.check_results:
             U.save_json(self.check_results,U.pjoin(db_dir,self.acronym,"check_results.json"))
         
     @classmethod
     def load(cls, db_dir: str, id:str) -> DesignArtifact:
-        return cls.from_dict(U.load_json(U.pjoin(db_dir,id,"artifact.json")))
-    
+        obj = cls.from_dict(U.load_json(U.pjoin(db_dir,id,"artifact.json")))
+        report_dir=U.pjoin(db_dir,'..','ve',id,'report.json')
+        if U.pexists(report_dir):
+            obj.verify_report=U.load_json(report_dir)
+        return obj
+
+
     def to_desc(self) -> str:
         title=self.title.replace(':',' ')
         summary=self.summary.replace(':',' ')
@@ -230,6 +249,29 @@ class DesignArtifact(NodeObject):
         mdtext=f'# {title} ({self.scale})\n\n{summary}\n\n## Rating\n{self.rating} out of 5'
         return mdtext.replace('e.\ng.\n','e.g.').replace('i.\ne.\n','i.e.')
     
+    def get_reviews(self):
+        review_ratings=''
+        for idx, style in enumerate(self.reviews):
+            review=self.reviews[style]
+            rating=self.ratings[style]
+            review_ratings+=f'# Review of Reviewer {idx+1} ({style}):\n\n{review}\n\n## Rating: {rating} out of 5\n\n'
+        return review_ratings
+
+    def to_prompt(self):
+        scale=self.scale
+        config:GAMConfig=eval(f'GAMConfig_{scale}()')
+        config_str=config.to_prompt()
+        prompt=f'## Title: {self.title}\n## Acronym: {self.acronym}\n\n## Code:\n\n{self.rawcode}\n\n## Justification:\n\n{self.explain}'
+        prompt+=f'\\## Config and Reference:\n\n{config_str}\n\n'
+        prompt+=self.get_reviews()
+        if self.check_results:
+            prompt+=f"## Effectiveness:\n\n{json.dumps(self.check_results['effectiveness'],indent=4)}\n\n"
+        if self.verify_report:
+            report=report_reader(self.verify_report)
+            prompt+=f'## Report:\n\n{json.dumps(report,indent=4)}'
+        return prompt
+    
+
 class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     # Read from a design base and construct a phylogenetic tree
     def __init__(self, db_dir: str):
@@ -258,10 +300,10 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             i += 1
         return f"{acronym}{i}"
 
-    def designs(self):
+    def filter_by_type(self,types):
         nodes=[]
         for node in self.G.nodes:
-            if self.G.nodes[node]['data'].type=='DesignArtifact':
+            if self.G.nodes[node]['data'].type in types:
                 nodes.append(node)
         return nodes
     
@@ -461,11 +503,12 @@ class EvolutionSystem(exec_utils.System):
 
         self.rnd_agent = BuildSystem(
             debug_steps=True, # True for debugging, but very long
-            cache_type="diskcache", #<-- agent caching method 
+            # cache_type="diskcache", #<-- agent caching method 
             temperature=0.1,
             jupyter=False,
-            cache_id=919,
+            # cache_id=919,
             #from_json='/path/to/config'
+            **kwargs
         )
         self.ptree=PhylogeneticTree(U.pjoin(self.evo_dir,'db'))
         self.ptree.export()
@@ -556,7 +599,7 @@ class EvolutionSystem(exec_utils.System):
         response=self.rnd_agent(instruct) 
         if response is None: # no design sampled
             return None
-        title,rawcode,explain,summary,autocfg,review,rating,costs,check_results=response
+        title,rawcode,explain,summary,autocfg,reviews,ratings,costs,check_results=response
         for i in [' and ',' for ','-']:
             title=title.replace(i,' ')
         acronym=''.join([i[0].upper() for i in title.split(' ') if i.isalpha()])
@@ -575,32 +618,12 @@ class EvolutionSystem(exec_utils.System):
             'scale':self.state['scales'][scale_id],
             'instruct':instruct,
             'summary':summary,
-            'review':review,
-            'rating':rating,
+            'reviews':reviews,
+            'ratings':ratings,
             'costs':costs,
             'check_results':check_results,
         }
         return artifact
-
-    def make_artifact(self,design_id,report=None):
-        rawcode=self.ptree.G.nodes[design_id]['data'].rawcode
-        explain=self.ptree.G.nodes[design_id]['data'].explain
-        title=self.ptree.G.nodes[design_id]['data'].title
-        acronym=self.ptree.G.nodes[design_id]['data'].acronym
-        scale=self.ptree.G.nodes[design_id]['data'].scale
-        review=self.ptree.G.nodes[design_id]['data'].review
-        rating=self.ptree.G.nodes[design_id]['data'].rating
-        check_results=self.ptree.G.nodes[design_id]['data'].check_results
-        config:GAMConfig=eval(f'GAMConfig_{scale}()')
-        config_str=config.to_prompt()
-        artifact_obj=f'## Title: {title}\n## Acronym: {acronym}\n\n## Code:\n\n{rawcode}\n\n## Justification:\n\n{explain}'
-        artifact_obj+=f'\\## Config and Reference:\n\n{config_str}\n\n'
-        artifact_obj+=f'## Review:\n\n{review}\n\n## Rating:\n\n{rating} out of 5\n\n'
-        if check_results:
-            artifact_obj+=f"## Effectiveness:\n\n{json.dumps(check_results['effectiveness'],indent=4)}\n\n"
-        if report:
-            artifact_obj+=f'## Report:\n\n{json.dumps(report,indent=4)}'
-        return artifact_obj
     
 
     # TODO: upgrade to Selector agent
@@ -611,29 +634,26 @@ class EvolutionSystem(exec_utils.System):
         if K==0: # no design to sample
             return '',[]
         if self.select_method=='heuristic':
-            topk,reports = self.heuristic_select(K,selector_instruct)
+            topk = self.heuristic_select(K,selector_instruct)
         elif self.select_method=='random':
-            topk,reports = self.random_select(K,selector_instruct)
+            topk = self.random_select(K,selector_instruct)
         if K==1: # Mutate
-            artifact_obj=self.make_artifact(topk[0],reports[topk[0]])
-            instruct=f'Please improve based on this design for the new design, think of how to overcome its weaknesses and absorb its advantage:\n\n{artifact_obj}'
+            prompt=topk[0].to_prompt()
+            instruct=f'Please improve based on this design for the new design, think of how to overcome its weaknesses and absorb its advantage:\n\n{prompt}'
         else: # Cross-over
-            artifact_objs='\n\n\n'.join([self.make_artifact(design_id,reports[design_id]) for design_id in topk])
-            instruct=f'Please improve by combining the advantages and mitigating the disadvantages of these designs for the new design:\n\n{artifact_objs}'
+            prompts='\n\n\n'.join([topk[i].to_prompt() for i in topk])
+            instruct=f'Please improve by combining the advantages and mitigating the disadvantages of these designs for the new design:\n\n{prompts}'
         return instruct,list(topk)
         
     def heuristic_select(self,K: int=1,selector_instruct=''):
         alpha=0.1
         sample_metrics={}
         sample_scale={}
-        reports={}
         for node in self.ptree.designs():
             artifact=self.ptree.G.nodes[node]['data']
-            if U.pexists(U.pjoin(self.evo_dir,'ve',node,'report.json')):
-                report=U.load_json(U.pjoin(self.evo_dir,'ve',node,'report.json'))
-                report=report_reader(report)
-                reports[node]=report
+            if artifact.verify_report is not None:
                 # TODO: upgrade this thing
+                report=report_reader(artifact.verify_report)
                 sample_metrics[node]=np.mean([v for k,v in report['metrics']['eval'].items() if 'acc' in k])
                 scale_id=self.state['scales'].index(artifact.scale)+1
                 sample_scale[node]=scale_id
@@ -643,19 +663,11 @@ class EvolutionSystem(exec_utils.System):
         prob=prob*np.array([v for k,v in sample_scale.items()]) # prefer the higher scale
         prob=prob/np.sum(prob)
         topk=np.random.choice(list(sample_metrics.keys()),size=K,replace=False,p=prob)
-        return topk,reports
+        return topk
 
     def random_select(self,K: int=1,selector_instruct=''):
-        topk=random.sample(self.ptree.designs(),K)
-        reports={}
-        for node in topk:
-            if U.pexists(U.pjoin(self.evo_dir,'ve',node,'report.json')):
-                report=U.load_json(U.pjoin(self.evo_dir,'ve',node,'report.json'))
-                report=report_reader(report)
-                reports[node]=report
-            else:
-                reports[node]=None
-        return topk,reports
+        topk=random.sample(self.ptree.filter_by_type(['DesignArtifact','ReferenceWithCode']),K)
+        return topk
 
 
     
@@ -760,69 +772,74 @@ if __name__ == '__main__':
         "select_method=random",
     ]
 
-    # evoname=ve_parser.parse_args().evoname
-    # strparams.append(f"evoname={evoname}")
+    args = ve_parser.parse_args()
+    strparams.append(f"evoname={args.evoname}")
 
     evolution_system = BuildEvolution(
         strparams=';'.join(strparams),
-        cache_type='diskcache',
+        do_cache=False,
+        # cache_type='diskcache',
     )
-    test_evolve('evo_test_003',step=False)
+    evolution_system._run(args.mode)
 
 
-    code_MHA='''
-# gab.py
 
-import torch
-import torch.nn as nn
-from mamba_ssm.modules.mha import MHA
+    # test_evolve('evo_test_003',step=False)
 
-from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMPORT STATEMENT #
 
-class GAB(GABBase):
-    """Generalized Autoregressive Block
-        Input:        X: (batch, seqlen, embed_dim)
-        Output:       Y: (batch, seqlen, embed_dim)
-        Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
-    """
-    def __init__(self, embed_dim: int, device=None, dtype=None, n_heads=8, ff_dim=None, dropout=0.1): 
-        factory_kwargs = {"device": device, "dtype": dtype} 
-        super().__init__(embed_dim)
+#     code_MHA='''
+# # gab.py
+
+# import torch
+# import torch.nn as nn
+# from mamba_ssm.modules.mha import MHA
+
+# from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMPORT STATEMENT #
+
+# class GAB(GABBase):
+#     """Generalized Autoregressive Block
+#         Input:        X: (batch, seqlen, embed_dim)
+#         Output:       Y: (batch, seqlen, embed_dim)
+#         Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
+#     """
+#     def __init__(self, embed_dim: int, device=None, dtype=None, n_heads=8, ff_dim=None, dropout=0.1): 
+#         factory_kwargs = {"device": device, "dtype": dtype} 
+#         super().__init__(embed_dim)
         
-        if ff_dim is None:
-            ff_dim = 4 * embed_dim  # Feed-forward dimension is 4 times the embedding dimension
+#         if ff_dim is None:
+#             ff_dim = 4 * embed_dim  # Feed-forward dimension is 4 times the embedding dimension
         
-        self.attention = nn.MultiheadAttention(embed_dim, n_heads, dropout=dropout, **factory_kwargs)
-        # self.attn = MHA(embed_dim, n_heads, causal=False, **factory_kwargs)
-        # self.lstm=nn.LSTM(embed_dim, embed_dim, batch_first=True)
-        # self.bilstm=nn.LSTM(embed_dim, embed_dim//2, batch_first=True, bidirectional=True)
-        # self.causalconv = nn.Conv1d(embed_dim, embed_dim, kernel_size=3, padding=2, groups=4, **factory_kwargs)
-        # self.conv = nn.Conv1d(embed_dim, embed_dim, 3, padding=1)
+#         self.attention = nn.MultiheadAttention(embed_dim, n_heads, dropout=dropout, **factory_kwargs)
+#         # self.attn = MHA(embed_dim, n_heads, causal=False, **factory_kwargs)
+#         # self.lstm=nn.LSTM(embed_dim, embed_dim, batch_first=True)
+#         # self.bilstm=nn.LSTM(embed_dim, embed_dim//2, batch_first=True, bidirectional=True)
+#         # self.causalconv = nn.Conv1d(embed_dim, embed_dim, kernel_size=3, padding=2, groups=4, **factory_kwargs)
+#         # self.conv = nn.Conv1d(embed_dim, embed_dim, 3, padding=1)
 
-    def _forward(self, X, **kwargs): 
-        output,_ = self.attention(X, X, X)
-        # mask=nn.Transformer.generate_square_subsequent_mask(len(X)).to(X.device)
-        # output,_ = self.attention(X, X, X, attn_mask=mask)
-        # output = self.attn(X)
-        # output,_ = self.lstm(X)
-        # output,_ = self.bilstm(X)
-        # output = self.causalconv(X.permute(0,2,1)).permute(0,2,1)[:,:-2]
-        # output = self.conv(X.permute(0,2,1)).permute(0,2,1)
-        return output 
+#     def _forward(self, X, **kwargs): 
+#         output,_ = self.attention(X, X, X)
+#         # mask=nn.Transformer.generate_square_subsequent_mask(len(X)).to(X.device)
+#         # output,_ = self.attention(X, X, X, attn_mask=mask)
+#         # output = self.attn(X)
+#         # output,_ = self.lstm(X)
+#         # output,_ = self.bilstm(X)
+#         # output = self.causalconv(X.permute(0,2,1)).permute(0,2,1)[:,:-2]
+#         # output = self.conv(X.permute(0,2,1)).permute(0,2,1)
+#         return output 
     
-gab_config = {
-    'n_heads': 8,
-    'ff_dim': None,  # This will be set to 4 * embed_dim in the GAB class
-    'dropout': 0.1
-}
-'''
+# gab_config = {
+#     'n_heads': 8,
+#     'ff_dim': None,  # This will be set to 4 * embed_dim in the GAB class
+#     'dropout': 0.1
+# }
+# '''
 
-    code_retnet_dir='/home/junyanc/model_discovery/model_discovery/model/library/base/retnet/retnet_edu.py'
-    code_RetNet=open(code_retnet_dir,'r').read()
+#     code_retnet_dir='/home/junyanc/model_discovery/model_discovery/model/library/base/retnet/retnet_edu.py'
+#     code_RetNet=open(code_retnet_dir,'r').read()
 
-    checker=evolution_system.rnd_agent.checker
-    cfg=evolution_system.rnd_agent._cfg
-    design_name='test_design'
+#     checker=evolution_system.rnd_agent.checker
+#     cfg=evolution_system.rnd_agent._cfg
+#     design_name='test_design'
 
     # code=code_MHA
     # checkpass,check_report,gabcode,check_results = checker.check(cfg,code,design_name)
