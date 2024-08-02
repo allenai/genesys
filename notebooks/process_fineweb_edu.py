@@ -125,23 +125,33 @@ print(f"Processing {low} to {high}, rank {RANK}, word size {WORD_SIZE}")
 for idx,subset in enumerate(FWE_SUBSETS):
     if idx < low or idx >= high:
         continue
-    export_dir_dataset = os.path.join(export_dir,subset)
     try:
-        ss=load_dataset(export_dir_dataset)
+        ss=load_dataset(
+            'chengjunyan1/fineweb-edu-4',
+            data_dir='data/'+subset,
+            ignore_verifications=True
+        )        
         assert ss.num_rows['train'] > 0
         print(f"Already processed: {subset}")
         continue
-    except:
-        pass
-    print(f"Processing {idx+1}/{len(FWE_SUBSETS)}: {subset}")
+    except Exception as e:
+        print(e)
+        print(f"Processing {idx+1}/{len(FWE_SUBSETS)}: {subset}")
     ds = load_dataset("HuggingFaceFW/fineweb-edu", subset)
     ds_filtered = ds.filter(lambda x: x['score'] >= 4.0, num_proc=28)
-    ds_filtered.save_to_disk(export_dir_dataset) 
-    print(f"Saved {subset}")
-    if load_dataset(export_dir_dataset).num_rows['train'] == 0:
-        print(f"Empty dataset: {subset}")
-        shutil.rmtree(export_dir_dataset, ignore_errors=True)
-    else:
-        ds.cleanup_cache_files()
+    ds_filtered.push_to_hub('chengjunyan1/fineweb-edu-4',data_dir='data/'+subset)
+    print(f"Pushed {subset}")
+    try:
+        ss=load_dataset(
+            'chengjunyan1/fineweb-edu-4',
+            data_dir='data/'+subset,
+            ignore_verifications=True
+        )
+        assert ss.num_rows['train'] > 0
+        print(f"Successfully processed: {subset}")
+        # ds.cleanup_cache_files()
+    except Exception as e:
+        print(e)
+        print(f"Failed to process {subset}")
 
 print("Done")
