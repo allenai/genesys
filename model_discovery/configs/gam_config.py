@@ -12,13 +12,12 @@ class GAMConfig(PretrainedConfig):
     n_block: int
     scale: str
     reference_size: int # a reference param num based on GPT
-    training_data: List[str]
     batch_tokens: int 
     context_length: int = DEFAULT_CONTEXT_LENGTH
+    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     eval_tasks: List[str] = field(default_factory=lambda: [
         *DEFAULT_TASK_LIST1,
     ])
-
     vocab_size: int = None
     # training_token_multiplier: int = 20 # Now desinated by ve args
     training_weight: Dict[str, List[float]] = None
@@ -30,7 +29,8 @@ class GAMConfig(PretrainedConfig):
     pad_vocab_size_multiple: int = 8
     tie_embeddings: bool = True
     use_template: bool = False
-    per_device_batch_size: int = None # Will overwrite batch_tokens if set
+    per_device_batch_size: int = None # Will overwrite batch_tokens if set, SHOULD NEVER BE SET IN EVOLUTIONARY MODE
+    gradient_accumulation_steps: int = 1
 
     def __post_init__(self):
         super().__init__()  # Initialize superclass with necessary arguments
@@ -74,7 +74,6 @@ class GAMConfig_14M(GAMConfig):
     d_model: int = 128
     n_block: int = 6
     reference_size: int = 5280384
-    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     eval_batch_size: int = 512
     learning_rate: float = 1e-3
     batch_tokens: int = 1024*512 # 0.5M tokens
@@ -86,7 +85,6 @@ class GAMConfig_31M(GAMConfig):
     d_model: int = 256
     n_block: int = 6
     reference_size: int = 12920064
-    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     eval_batch_size: int = 256
     learning_rate: float = 1e-3
     batch_tokens: int = 1024*512 # 0.5M tokens
@@ -98,7 +96,6 @@ class GAMConfig_70M(GAMConfig):
     d_model: int = 512
     n_block: int = 6
     reference_size: int = 35277312
-    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     eval_batch_size: int = 512
     learning_rate: float = 1e-3
     batch_tokens: int = 1024*512 # 0.5M tokens
@@ -110,10 +107,10 @@ class GAMConfig_125M(GAMConfig):
     d_model: int = 768
     n_block: int = 12
     reference_size: int = 109566720
-    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     eval_batch_size: int = 512
     learning_rate: float = 6e-4
     batch_tokens: int = 1024*512 # 0.5M tokens
+    gradient_accumulation_steps: int = 2
     
 
 @dataclass
@@ -122,10 +119,10 @@ class GAMConfig_350M(GAMConfig):
     d_model: int = 1024
     n_block: int = 24
     reference_size: int = 334906368
-    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     eval_batch_size: int = 512
     learning_rate: float = 3e-4
     batch_tokens: int = 1024*512 # 0.5M tokens
+    gradient_accumulation_steps: int = 4
 
 
 @dataclass
@@ -134,10 +131,10 @@ class GAMConfig_760M(GAMConfig):
     d_model: int = 1536
     n_block: int = 24
     reference_size: int = 728851968
-    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     eval_batch_size: int = 512
     learning_rate: float = 2.5e-4
     batch_tokens: int = 1024*512 # 0.5M tokens
+    gradient_accumulation_steps: int = 8
 
 
 @dataclass
@@ -146,7 +143,6 @@ class GAMConfig_1300M(GAMConfig):
     d_model: int = 2048
     n_block: int = 24
     reference_size: int = 1273792512
-    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     eval_batch_size: int = 512
     learning_rate: float = 2e-4
     batch_tokens: int = 1024*1024 # 1M tokens
@@ -158,7 +154,6 @@ class GAMConfig_2700M(GAMConfig):
     d_model: int = 2560
     n_block: int = 32
     reference_size: int = 2598996480
-    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     eval_batch_size: int = 512
     learning_rate: float = 1.6e-4
     batch_tokens: int = 1024*1024 # 1M tokens
@@ -170,7 +165,6 @@ class GAMConfig_6700M(GAMConfig):
     d_model: int = 4096
     n_block: int = 32
     reference_size: int = 6574313472
-    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     eval_batch_size: int = 512
     learning_rate: float = 1.2e-4
     batch_tokens: int = 2*1024*1024 # 2M tokens
@@ -183,7 +177,6 @@ class GAMConfig_13B(GAMConfig):
     d_model: int = 5120
     n_block: int = 40
     reference_size: int = 12747985920
-    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     eval_batch_size: int = 512
     learning_rate: float = 1e-4
     batch_tokens: int = 2*1024*1024 # 2M tokens
@@ -196,7 +189,6 @@ class GAMConfig_175B(GAMConfig):
     d_model: int = 12288
     n_block: int = 96
     reference_size: int = 175e9 # too large to initialize
-    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     eval_batch_size: int = 512
     learning_rate: float = 0.6e-4
     batch_tokens: int = 3200*1024 # 3.2M tokens
@@ -209,7 +201,6 @@ class GAMConfig_1T(GAMConfig): # Just for fun
     d_model: int = 20480
     n_block: int = 200
     reference_size: int = 1e12 
-    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     eval_batch_size: int = 512
     learning_rate: float = 0.3e-4
     batch_tokens: int = 6400*1024 # 6.4M tokens
@@ -222,7 +213,6 @@ class GAMConfig_1T(GAMConfig): # Just for fun
 @dataclass
 class GAMConfig_debug(GAMConfig_14M):
     scale: str = 'debug'
-    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
     # eval_tasks: List[str] = field(default_factory=lambda: [
     #     "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande",
     #     "blimp", # "blimp_filtered","blimp_supplement"
@@ -230,7 +220,6 @@ class GAMConfig_debug(GAMConfig_14M):
     rms_norm: bool = False 
     fused_add_norm: bool = False # TRITON BUGGY
     use_template: bool = False
-    # per_device_batch_size: int = 256
     
 
 

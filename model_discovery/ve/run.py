@@ -52,7 +52,6 @@ parser.add_argument("--scale", type=str, default='debug')
 parser.add_argument("--n_gpus", type=int, default=torch.cuda.device_count())
 parser.add_argument("--n_nodes", type=int, default=1)
 parser.add_argument("--save_steps", type=int, default=50)
-parser.add_argument("--gradient_accumulation_steps", type=int, default=1)
 parser.add_argument("--training_token_multiplier", type=int, default=20) # by default equals to 20 suggested by Chinchilla
 parser.add_argument("--optim", type=str, default="adamw_hf") # adamw_apex_fused is faster but BUGGY
 parser.add_argument("--wandb_project", type=str, default='model_discovery')
@@ -65,6 +64,7 @@ parser.add_argument("--logging_steps", type=int, default=20)
 parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
 parser.add_argument("--PERF_PROF_MODE", type=bool, default=False) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
 parser.add_argument("--port", type=str, default="29500") # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
+parser.add_argument("--tune_lr_in_auto_bs", type=bool, default=False) # tune lr or tune grad accumulation steps
 
 # PATCH for the evolution
 parser.add_argument("--mode", type=str, default='') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
@@ -170,10 +170,11 @@ def run_train(args,gab,gab_config) -> None:
     if config.per_device_batch_size:
         num_steps = int(training_tokens / (config.per_device_batch_size * args.n_gpus * args.n_nodes * config.context_length))+1
         per_device_batch_size=config.per_device_batch_size
-    else:
+    else: # auto find bs based on training tokens, can preset gradient_accumulation_steps to avoid too many auto tune steps
         num_steps = int(np.ceil(training_tokens / (config.batch_tokens)))
-        per_device_batch_size=(config.batch_tokens // config.context_length)//args.n_gpus
-    print(f"Training tokens: {training_tokens}, num steps: {num_steps}, per device batch size: {per_device_batch_size}")
+        per_device_batch_size=(config.batch_tokens // config.context_length)//args.n_gpus//config.gradient_accumulation_steps
+
+    print(f"Training tokens: {U.strscale(training_tokens)}, num steps: {num_steps}, per device batch size: {per_device_batch_size}, num gpus: {args.n_gpus}")
 
     training_args=TrainingArguments(
         learning_rate=config.learning_rate,
@@ -181,7 +182,7 @@ def run_train(args,gab,gab_config) -> None:
         per_device_train_batch_size=per_device_batch_size,
         per_device_eval_batch_size = per_device_batch_size * 2,
         auto_find_batch_size=True, # for safety
-        gradient_accumulation_steps=args.gradient_accumulation_steps,
+        gradient_accumulation_steps=config.gradient_accumulation_steps,
         optim=args.optim,
         output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}",
         logging_steps=args.logging_steps,
@@ -209,6 +210,7 @@ def run_train(args,gab,gab_config) -> None:
             tokenizer=tokenizer,
             args=training_args,
             data_collator=data_collator,
+            tune_lr_in_auto_bs=args.tune_lr_in_auto_bs, # tune lr or tune grad accumulation steps
         )
     print(f'Time elapsed for setting up trainer: {(time.perf_counter() - start):.1f} s')
     
@@ -427,6 +429,7 @@ def main(args):
         The CLI arguments. 
     """
     start = time.perf_counter()
+    print(f"Starting run with args: {args}")
     setup(args)
     train(args)
     evalu(args)
