@@ -19,7 +19,7 @@ from torchtune.modules import RotaryPositionalEmbeddings,RMSNorm
 
 
 
-def naive_retention(q, k, v): # SUPER SUPER SLOW!!!
+def naive_retention(q, k, v): 
     orig_type = q.dtype
     q, k, v = q.float(), k.float(), v.float()
     _, n_heads, seq_len, d_head = q.shape
@@ -105,7 +105,6 @@ class MultiScaleRetention(nn.Module):
         hidden_states: torch.Tensor,
         **kwargs
     ) -> torch.Tensor:
-        # launching the triton kernel for just one token will actually be slower
         q = self.q_proj(hidden_states)
         k = self.k_proj(hidden_states)
         v = self.v_proj(hidden_states)

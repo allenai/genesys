@@ -13,6 +13,7 @@ import warnings
 import inspect
 from typing import TYPE_CHECKING, Any, Callable, Dict, List, Optional, Tuple, Union
 
+import copy
 
 # Integrations must be imported before ML frameworks:
 # isort: off
@@ -29,7 +30,6 @@ import torch.distributed as dist
 from torch import nn
 
 
-
 from transformers import __version__
 from transformers.debug_utils import DebugOption, DebugUnderflowOverflow
 from transformers.integrations.deepspeed import deepspeed_init, deepspeed_load_checkpoint
@@ -38,11 +38,19 @@ from transformers.trainer_callback import (
     ExportableState,
     TrainerState,
 )
+
+from transformers.modeling_utils import PreTrainedModel
+from transformers.training_args import OptimizerNames, ParallelMode, TrainingArguments
+from transformers.data.data_collator import DataCollator, DataCollatorWithPadding, default_data_collator
+from torch.utils.data import DataLoader, Dataset, IterableDataset, RandomSampler, SequentialSampler
+from transformers.tokenization_utils_base import PreTrainedTokenizerBase
+
 from transformers.trainer_pt_utils import (
     get_model_param_count,
 )
 from transformers.trainer_utils import (
     HPSearchBackend,
+    EvalPrediction,
     TrainOutput,
     enable_full_determinism,
     find_executable_batch_size, # simple but robust, keep this
@@ -58,6 +66,8 @@ from transformers.utils import (
     is_torch_xla_available,
     is_apex_available
 )
+
+from transformers.trainer_callback import TrainerCallback
 
 from transformers.trainer import logger,TRAINER_STATE_NAME,DistributedType,_is_peft_model,skip_first_batches
 
@@ -319,6 +329,40 @@ if is_apex_available():
 
 
 class ModisTrainer(Trainer):
+
+
+    def __init__(
+        self,
+        model: Union[PreTrainedModel, nn.Module] = None,
+        args: TrainingArguments = None,
+        data_collator: Optional[DataCollator] = None,
+        train_dataset: Optional[Union[Dataset, IterableDataset, "datasets.Dataset"]] = None,
+        eval_dataset: Optional[Union[Dataset, Dict[str, Dataset], "datasets.Dataset"]] = None,
+        tokenizer: Optional[PreTrainedTokenizerBase] = None,
+        model_init: Optional[Callable[[], PreTrainedModel]] = None,
+        compute_metrics: Optional[Callable[[EvalPrediction], Dict]] = None,
+        callbacks: Optional[List[TrainerCallback]] = None,
+        optimizers: Tuple[torch.optim.Optimizer, torch.optim.lr_scheduler.LambdaLR] = (None, None),
+        preprocess_logits_for_metrics: Optional[Callable[[torch.Tensor, torch.Tensor], torch.Tensor]] = None,
+        tune_lr_in_auto_bs: bool = False,
+    ):
+        super().__init__(
+            model=model,
+            args=args,
+            data_collator=data_collator,
+            train_dataset=train_dataset,
+            eval_dataset=eval_dataset,
+            tokenizer=tokenizer,
+            model_init=model_init,
+            compute_metrics=compute_metrics,
+            callbacks=callbacks,
+            optimizers=optimizers,
+            preprocess_logits_for_metrics=preprocess_logits_for_metrics,
+        )
+        self.args_backup=copy.deepcopy(args) 
+        self.tune_lr_in_auto_bs = tune_lr_in_auto_bs
+        
+                
     def compute_loss(self, model, inputs, return_outputs=False):
         input_ids = inputs.pop("input_ids")
         lm_logits = model(input_ids).logits
@@ -448,7 +492,8 @@ class ModisTrainer(Trainer):
         self.accelerator.free_memory()
         self._train_batch_size = batch_size
         args_max_steps = args.max_steps # Do not override the original value
-        learning_rate = self.args.learning_rate
+        self.args.learning_rate = self.args_backup.learning_rate # set initial lr to be the backup
+        self.args.gradient_accumulation_steps = self.args_backup.gradient_accumulation_steps # set initial accumulation steps to be the backup
         if self.args.auto_find_batch_size:
             if self.state.train_batch_size != self._train_batch_size:
                 from accelerate.utils import release_memory
@@ -464,9 +509,14 @@ class ModisTrainer(Trainer):
                     self.propagate_args_to_deepspeed(True)
                     self.args.per_device_train_batch_size = original_bs
             self.state.train_batch_size = self._train_batch_size
-            args_max_steps = int(np.ceil(self.args.max_steps * self.args.per_device_train_batch_size // self._train_batch_size))
-            self.args.learning_rate *= self._train_batch_size / self.args.per_device_train_batch_size
-            print(f"Auto-set batch size to {self._train_batch_size}, max_steps to {args_max_steps}, learning rate to {self.args.learning_rate}")
+            if self.tune_lr_in_auto_bs:
+                args_max_steps = int(np.ceil(self.args.max_steps * self.args.per_device_train_batch_size // self._train_batch_size))
+                self.args.learning_rate *= self._train_batch_size / self.args.per_device_train_batch_size
+                print(f"Auto-set batch size to {self._train_batch_size}, max_steps to {args_max_steps}, learning rate to {self.args.learning_rate}")
+            else:
+                self.args.gradient_accumulation_steps *= self.args.per_device_train_batch_size // self._train_batch_size
+                args.gradient_accumulation_steps = self.args.gradient_accumulation_steps
+                print(f"Auto-set batch size to {self._train_batch_size}, max_steps to {args_max_steps}, accumulation steps to {self.args.gradient_accumulation_steps}")
         logger.debug(f"Currently training with a batch size of: {self._train_batch_size}")
         # Data loader and number of training steps
         train_dataloader = self.get_train_dataloader()
@@ -542,7 +592,6 @@ class ModisTrainer(Trainer):
 
         if not delay_optimizer_creation:
             self.create_optimizer_and_scheduler(num_training_steps=max_steps)
-            self.args.learning_rate = learning_rate
 
         self.state = TrainerState(
             stateful_callbacks=[
@@ -590,7 +639,6 @@ class ModisTrainer(Trainer):
                 self._fsdp_qlora_plugin_updates()
                 self.model = self.accelerator.prepare(self.model)
             self.create_optimizer_and_scheduler(num_training_steps=max_steps)
-            self.args.learning_rate = learning_rate
 
         # prepare using `accelerator` prepare
         if use_accelerator_prepare:

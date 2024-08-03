@@ -62,8 +62,8 @@ def run(scale,model_name,args,training_token_multiplier=20): # do a single verif
     args.resume=True
     args.training_token_multiplier=training_token_multiplier
     args.logging_steps=10
-    # args.n_gpus=4
     args.port="25869"
+    args.tune_lr_in_auto_bs=False
     reportdir=f"{ckpt_dir}/{args.evoname}/ve/{args.design_id}/report.json"
     if not os.path.exists(reportdir):
         ve_main(args)
@@ -78,8 +78,8 @@ def run(scale,model_name,args,training_token_multiplier=20): # do a single verif
 
 
 if __name__ == "__main__":
-    model_name = 'retnet' 
-    scale = '31M' 
+    model_name = 'gpt2' 
+    scale = '125M' 
     args = ve_parser.parse_args()
 
     if args.mode=='check':

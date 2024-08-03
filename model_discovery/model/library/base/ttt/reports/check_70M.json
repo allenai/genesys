@@ -1,0 +1,11 @@
+{
+    "log": "Checking the designed model...\nChecking code format...\nCode format is correct and reformatted.\n\n\nWarnings:\n\nThe super().__init__(embed_dim) call in GAB is force overwritten by the reformatter. It may cause error if you modified this line.\n\nModel initialization succeeded.\n|------Model size------|\n Total params: 34.73M (tied)\n - GAM params: 34.73M\n   - Embedding: 16.38M\n   - Non-embedding: 18.35M\n     - Block: 3.06M x 6\n       - GAB: 3.06M\n - LM Head params: 16.38M\n|----------------------|\n\nChecking forward pass...\nForward pass test passed\nChecking differentiability...\nDifferentiability test passed\nChecking effectiveness...\nThe model is effective.\n\n\nWarnings:\n\nThe model is not efficient. The training time is long. Its 8.57 times of the benchmark.\nAll tests passed!\n\n",
+    "effectiveness": {
+        "run_time": 16.0563,
+        "loss": 6.340625,
+        "gradient_of_losses": -1.9765599999999999,
+        "max_memory_allocated": 1990.86279296875,
+        "total_flos": 2254812610560.0,
+        "train_loss": 6.340625
+    }
+}

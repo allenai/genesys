@@ -18,15 +18,18 @@ import os,sys
 
 state_file = sys.argv[1]
 
-if not os.path.exists(state_file):
-    print(1) # new round, just return 1
-else:
+try:
     with open(state_file) as f:
         state = json.load(f)
 
     print(sum(state['budgets'].values()))
+except FileNotFoundError as e: 
+    print(1) # new round, just return 1
+
 " "$state_file")
-    
+
+    echo "The sum num of budgets: $sum_budgets"
+
     if [ "$sum_budgets" -eq "0" ]; then
         echo "All budgets are 0, stopping the loop."
         break

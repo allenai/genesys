@@ -91,3 +91,23 @@ You can run:
 
 sh run_demo.sh
 ```
+
+
+# Pseudo Code
+
+for i in max_attemp:
+    while P<threshold_P:
+        # self-refine
+        P,new_design ~ designer()
+    for j in max_attemp_checker:
+        pass = checker(new_design)
+        if pass:
+            break
+        else:
+            new_design,P ~ debugger()
+    if pass:
+        review=reviewer(new_design)
+        if review>threshold:
+            break
+        else:
+            new_design ~ designer()

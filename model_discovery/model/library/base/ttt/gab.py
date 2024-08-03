@@ -7,10 +7,7 @@ import torch.utils.checkpoint
 from torch.utils._pytree import tree_map
 from transformers.utils import logging
 from transformers.activations import ACT2FN
-try:
-    from causal_conv1d import causal_conv1d_fn, causal_conv1d_update
-except:
-    causal_conv1d_update, causal_conv1d_fn = None, None
+causal_conv1d_update, causal_conv1d_fn = None, None
 logger = logging.get_logger(__name__)
 
 
