@@ -4,12 +4,14 @@ Utils and code for model discovery experiments.
 
 # Setting up 
 
-!!! REMEMBER TO INSTALL JUNYAN'S LM EVALUATION HARNESS, NOT THE OFFICIAL ONE (Remerber to remove this line and related lines for anonymous version)
 
-We recommend setting up a conda environment as below
+We recommend setting up a conda environment as below, remember to edit the `setup.sh` file to include the necessary environment variables before running the setup script.
+
 ```shell
-conda create -n model_discovery python=3.10
-conda activate model_discovery 
+conda create -n modis python=3.12
+conda activate modis
+3pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 # for cuda 11.8
+bash scripts/setup.sh # remember to set up the environment variables in setup.sh
 ```
 
 ### python dependencies 
