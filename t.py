@@ -53,42 +53,56 @@
 # print('Bi-Dir MHA:',torch.allclose(bidir_out[:,:16], bidir_out_pert[:,:16]))
 
 
+#####################################################################################################################
 
+# import torch
+# from torch import nn
+# import time
 
-import torch
-from torch import nn
-import time
+# class Net(nn.Module):
+#     def __init__(self):
+#         super(Net, self).__init__()
+#         self.conv1 = nn.Conv2d(1, 6, 3)
+#         self.conv2 = nn.Conv2d(6, 16, 3)
+#         self.fc1 = nn.Linear(16 * 6 * 6, 120)
+#         self.fc2 = nn.Linear(120, 84)
+#         self.fc3 = nn.Linear(84, 10)
 
-class Net(nn.Module):
-    def __init__(self):
-        super(Net, self).__init__()
-        self.conv1 = nn.Conv2d(1, 6, 3)
-        self.conv2 = nn.Conv2d(6, 16, 3)
-        self.fc1 = nn.Linear(16 * 6 * 6, 120)
-        self.fc2 = nn.Linear(120, 84)
-        self.fc3 = nn.Linear(84, 10)
+#     def forward(self, x):
+#         x = torch.max_pool2d(torch.relu(self.conv1(x)), (2, 2))
+#         x = torch.max_pool2d(torch.relu(self.conv2(x)), 2)
+#         x = x.view(-1, self.num_flat_features(x))
+#         x = torch.relu(self.fc1(x))
+#         x = torch.relu(self.fc2(x))
+#         x = self.fc3(x)
+#         return x
 
-    def forward(self, x):
-        x = torch.max_pool2d(torch.relu(self.conv1(x)), (2, 2))
-        x = torch.max_pool2d(torch.relu(self.conv2(x)), 2)
-        x = x.view(-1, self.num_flat_features(x))
-        x = torch.relu(self.fc1(x))
-        x = torch.relu(self.fc2(x))
-        x = self.fc3(x)
-        return x
-
-    def num_flat_features(self, x):
-        size = x.size()[1:]
-        num_features = 1
-        for s in size:
-            num_features *= s
-        return num_features
+#     def num_flat_features(self, x):
+#         size = x.size()[1:]
+#         num_features = 1
+#         for s in size:
+#             num_features *= s
+#         return num_features
     
-while True:
-    t0=time.time()
-    net = Net().cuda()
-    # print("Time to create the network: ", time.time()-t0)
-    x=torch.randn(8,1,32,32).cuda()
-    t0=time.time()
-    y=net(x)
-    # print("Time to forward pass: ", time.time()-t0)
+# while True:
+#     t0=time.time()
+#     net = Net().cuda()
+#     # print("Time to create the network: ", time.time()-t0)
+#     x=torch.randn(8,1,32,32).cuda()
+#     t0=time.time()
+#     y=net(x)
+#     # print("Time to forward pass: ", time.time()-t0)
+
+
+#####################################################################################################################
+
+def fn2(a,b):
+    print(a)
+    print(b)
+
+def fn(a,**kwargs):
+    print(kwargs)
+    fn2(a,**kwargs)
+
+
+fn(1,b=[])
