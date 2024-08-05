@@ -23,10 +23,11 @@ class GAMConfig(PretrainedConfig):
 
 class Block(nn.Module):
     def __init__(
-        self, d_model, block_config, norm_epsilon=1e-5, device=None, dtype=None,
+        self, d_model, block_loc, block_config, norm_epsilon=1e-5, device=None, dtype=None,
     ):
         factory_kwargs = {"device": device, "dtype": dtype}
         super().__init__()
+        self.block_loc=block_loc
         self.norm = nn.LayerNorm(d_model, eps=norm_epsilon,**factory_kwargs)
         self.gab = GAB(embed_dim=d_model, device=device, dtype=dtype, **block_config)
         self.norm2 = nn.LayerNorm(d_model, eps=norm_epsilon,**factory_kwargs)
@@ -34,12 +35,12 @@ class Block(nn.Module):
 
 
     def forward(
-        self, hidden_states: Tensor, residual: Optional[Tensor] = None, **gab_kwargs
+        self, hidden_states: Tensor, residual: Optional[Tensor] = None, **intermediate_vars
     ):
         residual = (hidden_states + residual) if residual is not None else hidden_states
         hidden_states = self.norm(residual.to(dtype=self.norm.weight.dtype))
-        hidden_states = self.gab(hidden_states, **gab_kwargs)
-        return hidden_states, residual
+        hidden_states, intermediate_vars = self.gab(hidden_states, **intermediate_vars)
+        return hidden_states, residual, intermediate_vars
 
 
 class GAM(nn.Module):
@@ -65,11 +66,12 @@ class GAM(nn.Module):
             [
                 Block(
                     d_model,
-                    block_config,
+                    block_loc=(layer_idx,n_block),
+                    block_config=block_config,
                     norm_epsilon=norm_epsilon,
                     **self.factory_kwargs,
                 )
-                for _ in range(n_block)
+                for layer_idx in range(n_block)
             ]
         )
 
@@ -77,12 +79,13 @@ class GAM(nn.Module):
             d_model, eps=norm_epsilon, **self.factory_kwargs
         )
 
-    def forward(self, input_ids, **gab_kwargs):
+    def forward(self, input_ids):
         hidden_states = self.embedding(input_ids)
         residual = None
+        intermediate_vars = {}
         for block in self.blocks:
-            hidden_states, residual = block(
-                hidden_states, residual, **gab_kwargs
+            hidden_states, residual, intermediate_vars = block(
+                hidden_states, residual, **intermediate_vars
             )
         residual = (hidden_states + residual) if residual is not None else hidden_states
         hidden_states = self.norm_out(residual)

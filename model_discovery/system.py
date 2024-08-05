@@ -57,18 +57,24 @@ SYSTEM_OUT = os.path.abspath(f"{PROJ_SRC}/../_runs")
 GAB_BASE='''
 class GABBase(nn.Module):
     """ Base class for Generalized Autoregressive Block """
-    def __init__(self,embed_dim: int): 
+    def __init__(self,embed_dim: int, block_loc: tuple): 
         super().__init__()
         self.embed_dim = embed_dim
+        self.block_loc = block_loc # location of a block within the network, (layer_idx, n_block)
 
     def _forward(self,X,**kwargs): 
         raise NotImplementedError
      
     # YOU ARE NOT ALLOW TO OVERRIDE THIS METHOD #
-    def forward(self,X,**kwargs):
+    def forward(self,X,**intermediate_vars):
         """Forward pass of the model"""
         assert X.shape[-1] == self.embed_dim
         Y=self._forward(X,**kwargs)
+        if isinstance(Y,tuple):
+            intermediate_vars = Y[1:]
+            Y = Y[0]
+        else:
+            intermediate_vars = {}
         assert Y.shape == X.shape
         return Y
 '''

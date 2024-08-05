@@ -91,8 +91,8 @@ class GABFormatChecker:
         # Remove the if __name__ == "__main__": block
         code_ast = self._remove_main_block(code_ast)
 
-        # Ensure super().__init__(embed_dim) remains unchanged
-        code_ast = self._ensure_super_init(code_ast)
+        # Ensure super().__init__(embed_dim, block_loc) remains unchanged
+        code_ast = self._ensure_methods(code_ast)
         
         # Update self.gab_code with the modified AST
         self.gab_code = astor.to_source(code_ast)
@@ -142,12 +142,22 @@ class GABFormatChecker:
 
         return MainBlockRemover().visit(code_ast)
     
-    def _ensure_super_init(self, code_ast):
+    def _ensure_methods(self, code_ast):
         class SuperInitCorrector(ast.NodeTransformer):
             def visit_ClassDef(cls, node):
                 if node.name == 'GAB':
                     for item in node.body:
                         if isinstance(item, ast.FunctionDef) and item.name == '__init__':
+                            current_args = [arg.arg for arg in item.args.args]
+                            required_args = ['embed_dim', 'block_loc', 'device', 'dtype']
+                            
+                            # Check for missing required arguments and add them if missing
+                            for arg in required_args:
+                                if arg not in current_args:
+                                    self.warnings.append(f'The "__init__" method of "GAB" is missing the "{arg}" argument. Automatically added by the reformatter.\n')
+                                    new_arg = ast.arg(arg=arg, annotation=None)
+                                    item.args.args.append(new_arg)
+
                             found_super = False
                             for i, stmt in enumerate(item.body):
                                 if isinstance(stmt, ast.Expr) and isinstance(stmt.value, ast.Call):
@@ -158,7 +168,7 @@ class GABFormatChecker:
                                         stmt.value.func.value.func.id == 'super'):
                                         found_super = True
                                         self.warnings.append(
-                                            'The super().__init__(embed_dim) call in GAB is force overwritten by the reformatter. It may cause error if you modified this line.\n'
+                                            'The super().__init__(embed_dim, block_loc) call in GAB is force overwritten by the reformatter. It may cause error if you modified this line.\n'
                                         )
                                         stmt.value = ast.Call(
                                             func=ast.Attribute(
@@ -170,16 +180,19 @@ class GABFormatChecker:
                                                 attr='__init__',
                                                 ctx=ast.Load()
                                             ),
-                                            args=[ast.Name(id='embed_dim', ctx=ast.Load())],
+                                            args=[
+                                                ast.Name(id='embed_dim', ctx=ast.Load()),
+                                                ast.Name(id='block_loc', ctx=ast.Load())
+                                            ],
                                             keywords=[]
                                         )
                                         break
 
                             if not found_super:
                                 self.warnings.append(
-                                    'The super().__init__(embed_dim) call is missing in the __init__ method. Automatically added by the reformatter.\n'
+                                    'The super().__init__(embed_dim, block_loc) call is missing in the __init__ method. Automatically added by the reformatter.\n'
                                 )
-                                # Insert super().__init__(embed_dim) at the start of the __init__ method
+                                # Insert super().__init__(embed_dim, block_loc) at the start of the __init__ method
                                 super_call = ast.Expr(
                                     value=ast.Call(
                                         func=ast.Attribute(
@@ -191,14 +204,22 @@ class GABFormatChecker:
                                             attr='__init__',
                                             ctx=ast.Load()
                                         ),
-                                        args=[ast.Name(id='embed_dim', ctx=ast.Load())],
+                                        args=[
+                                            ast.Name(id='embed_dim', ctx=ast.Load()),
+                                            ast.Name(id='block_loc', ctx=ast.Load())
+                                        ],
                                         keywords=[]
                                     )
                                 )
                                 item.body.insert(0, super_call)
 
-                return node
-
+                        if isinstance(item, ast.FunctionDef) and item.name == '_forward':
+                            # Check if **kwargs or **intermediate_vars is in the function arguments
+                            if item.args.kwarg is None:
+                                self.warnings.append(f'The "_forward" method of "GAB" is missing the "**intermediate_vars" argument. Automatically adding the argument.\n')
+                                # Add **intermediate_vars to the function arguments
+                                item.args.kwarg = ast.arg(arg='intermediate_vars', annotation=None)                
+                                
         return SuperInitCorrector().visit(code_ast)
     
     def _check_class_definition(self, code_ast) -> None:
@@ -230,14 +251,11 @@ class GABFormatChecker:
             if not hasattr(gab_class, method):
                 self.errors.append(f'The method "{method}" is not defined in the class "GAB".\n')
         
-        # Check __init__ arguments
-        init_signature = inspect.signature(gab_class.__init__)
-        init_parameters = init_signature.parameters
-        required_args = ['embed_dim', 'device', 'dtype']
-        for arg in required_args:
-            if arg not in init_parameters:
-                self.errors.append(f'The "__init__" method of "GAB" is missing the "{arg}" argument.\n')
-        
+        # Check if forward method is overwritten in GAB
+        gab_base_class = gab_class.__bases__[0]
+        if hasattr(gab_base_class, 'forward') and 'forward' in gab_class.__dict__:
+            self.errors.append('The "forward" method in "GAB" class overrides the one in "GABBase", which is not allowed.\n')
+
         # Check docstrings
         # for method in required_methods:
         #     if not inspect.getdoc(getattr(gab_class, method, None)):
@@ -260,7 +278,7 @@ class GABFormatChecker:
 
         init_signature = inspect.signature(gab_class.__init__)
         init_parameters = init_signature.parameters
-        excluded_args = {'self','embed_dim', 'device', 'dtype','kwargs'}
+        excluded_args = {'self','embed_dim', 'block_loc', 'device', 'dtype', 'kwargs'}
         init_args = {name for name in init_parameters if name not in excluded_args}
 
         config_args = set(gab_config.keys())
@@ -335,9 +353,9 @@ from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMP
 from model_discovery.model.utils.modules import MLP 
 
 class GAB(GABBase):
-    def __init__(self,embed_dim: int, n_heads, device=None,dtype=None,**kwargs):
+    def __init__(self,embed_dim: int, block_loc: tuple, n_heads, device=None,dtype=None,**kwargs):
         factory_kwargs = {"device": device, "dtype": dtype} # remember to pass it to nn layers
-        super().__init__(embed_dim)
+        super().__init__(embed_dim, block_loc)
         self.fn = MHA(embed_dim, n_heads, causal=True, **factory_kwargs)
         self.fn2 = MLP(embed_dim, 4*embed_dim, embed_dim, **factory_kwargs)
         self.norm1 = nn.LayerNorm(embed_dim, **factory_kwargs)

@@ -42,23 +42,25 @@ class GAM(nn.Module):
             [
                 GAB(
                     embed_dim=d_model, 
+                    block_loc=(layer_idx,n_block),
                     device=device, 
                     dtype=dtype, 
                     **block_config
                 )
-                for _ in range(n_block)
+                for layer_idx in range(n_block)
             ]
         )
         self.norm_out = nn.LayerNorm(
             d_model, eps=norm_epsilon, **self.factory_kwargs
         )
 
-    def forward(self, input_ids, **gab_kwargs):
+    def forward(self, input_ids):
         hidden_states = self.embedding(input_ids)
+        intermediate_vars = {}
         for block in self.blocks:
-            hidden_states= block(
+            hidden_states, intermediate_vars = block(
                 hidden_states,
-                **gab_kwargs
+                **intermediate_vars
             )
         hidden_states = self.norm_out(hidden_states)
         return hidden_states

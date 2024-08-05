@@ -20,6 +20,7 @@ from model_discovery.configs.gam_config import GAMConfig
 from model_discovery.model.utils.generation import decode
 from model_discovery.model.utils.hf import load_config_hf, load_state_dict_hf
 # from model_discovery.model.utils.generation import GenerationMixin
+from model_discovery.model.utils.modules import GABBase
 from .utils.modules import GatedMLP, MLP
 
 from model_discovery.model.block_registry import BlockRegister
@@ -40,7 +41,7 @@ from model_discovery import utils as U
 
 class Block(nn.Module):
     def __init__(
-        self, dim, gab, mlp_cls=None, norm_cls=nn.LayerNorm, fused_add_norm=False, residual_in_fp32=False
+        self, dim, gab: GABBase, mlp_cls=None, norm_cls=nn.LayerNorm, fused_add_norm=False, residual_in_fp32=False
     ):
         """
         Simple block wrapping a gab constructor with LayerNorm/RMSNorm and residual connection"
@@ -131,6 +132,7 @@ class Block(nn.Module):
 def create_block(
     block_implementation,
     d_model,
+    block_loc,
     block_config,
     norm_epsilon=1e-5,
     rms_norm=False,
@@ -144,6 +146,7 @@ def create_block(
     constructor = partial(
         block_implementation,
         embed_dim=d_model,
+        block_loc=block_loc,
         device=device,
         dtype=dtype,
         **block_config
@@ -242,8 +245,9 @@ class GAM(nn.Module):
             [
                 create_block(
                     block_implementation,
-                    d_model,
-                    block_config,
+                    embed_dim=d_model,
+                    block_loc=(layer_idx,n_block),
+                    block_config=block_config,
                     norm_epsilon=norm_epsilon,
                     rms_norm=rms_norm,
                     residual_in_fp32=residual_in_fp32,
@@ -251,7 +255,7 @@ class GAM(nn.Module):
                     use_template=use_template,
                     **self.factory_kwargs,
                 )
-                for _ in range(n_block)
+                for layer_idx in range(n_block)
             ]
         )
 

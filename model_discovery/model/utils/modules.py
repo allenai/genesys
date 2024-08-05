@@ -5,29 +5,34 @@ from torch.nn import functional as F
 from abc import ABC, abstractmethod
 
 
+
+# Future TODO: maybe allow the agent to design topology as well, and support complicated structures
+# e.g., more dimensions, not only n_block and a linear coordinate, but also in a grid, etc., or even hetereogeneous
+# Philosophy of GAB: a super cube allows everything internally, but not the external topology (i.e., for i in range(n_blocks): GAB(i), a linear topology)
+# It is still complete but not flexible enough (e.g., agent can design one huge macro block or depth and width related functions to implement strange topology)
 class GABBase(nn.Module):
     """ Base class for Generalized Autoregressive Block """
-    def __init__(self,embed_dim: int): # TODO: maybe add layer_idx
+    def __init__(self,embed_dim: int, block_loc: tuple):
         super().__init__()
         self.embed_dim = embed_dim
+        self.block_loc = block_loc # location of a block within the network, (layer_idx, n_block)
 
-    def _forward(self,X,**intermediate_vars): 
+    def _forward(self, X, **intermediate_vars): 
         raise NotImplementedError
      
     # YOU ARE NOT ALLOW TO OVERRIDE THIS METHOD #
-    def forward(self,X,**intermediate_vars):
+    def forward(self, X, **intermediate_vars):
         """Forward pass of the model"""
         assert len(X.shape) == 3, "Input shape must be (batch, seqlen, embed_dim)"
         assert X.shape[-1] == self.embed_dim
-        ret=self._forward(X,**intermediate_vars)
-        if isinstance(ret, tuple):
-            Y = ret[0]
-            intermediate_vars = ret[1:]
+        Y=self._forward(X,**intermediate_vars)
+        if isinstance(Y, tuple):
+            intermediate_vars = Y[1:]
+            Y = Y[0]
         else:
-            Y = ret
             intermediate_vars = {}
         assert Y.shape == X.shape, f"GAB Output shape must be the same as input shape, got {Y.shape} instead"
-        return Y,intermediate_vars
+        return Y, intermediate_vars
 
 
 class GatedMLP(nn.Module):

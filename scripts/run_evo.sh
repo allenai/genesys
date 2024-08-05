@@ -23,7 +23,7 @@ try:
         state = json.load(f)
 
     print(sum(state['budgets'].values()))
-except FileNotFoundError as e: 
+except Exception as e: # must be not
     print(1) # new round, just return 1
 
 " "$state_file")

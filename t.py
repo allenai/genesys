@@ -100,9 +100,12 @@ def fn2(a,b):
     print(a)
     print(b)
 
-def fn(a,**kwargs):
-    print(kwargs)
-    fn2(a,**kwargs)
+def fn(a):
+    print(a)
 
+kwargs={
+    'w':2
+}
 
-fn(1,b=[])
+fn(1,**kwargs)
+
