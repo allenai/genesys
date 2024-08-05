@@ -36,6 +36,7 @@ def check_tune(scale, model_name):
         print(report)
         raise Exception('Model does not pass the checker')
     autocfg = checker.tune(cfg,code,model_name)
+    print('Tuning complete, saving the code with autocfg.')
     # U.save_json(autocfg,f"{LIBRARY_PATH}/{model_name}/autocfg.json")
     code=code+f'\n\n\n{autocfg}\nblock_config=gab_config\nblock_config.update(autoconfig)'
     code+='\n\n\nfrom .block_registry import BlockRegister\n\nBlockRegister(\n    name="default",\n    config=block_config\n)(GAB)'
@@ -78,8 +79,8 @@ def run(scale,model_name,args,training_token_multiplier=20): # do a single verif
 
 
 if __name__ == "__main__":
-    model_name = 'gpt2' 
-    scale = '125M' 
+    model_name = 'rwkv6' 
+    scale = '31M' 
     args = ve_parser.parse_args()
 
     if args.mode=='check':

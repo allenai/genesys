@@ -245,7 +245,7 @@ class GAM(nn.Module):
             [
                 create_block(
                     block_implementation,
-                    embed_dim=d_model,
+                    d_model=d_model,
                     block_loc=(layer_idx,n_block),
                     block_config=block_config,
                     norm_epsilon=norm_epsilon,

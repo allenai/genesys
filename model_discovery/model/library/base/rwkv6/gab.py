@@ -257,11 +257,11 @@ class GAB(GABBase):
         Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
     """
 
-    def __init__(self, embed_dim: int, device=None, dtype=None, num_heads:
-        int=4, proj_low_rank_dim: int=32, gate_low_rank_dim: int=64,
-        norm_eps: float=1e-05, **kwargs):
+    def __init__(self, embed_dim: int, block_loc, device=None, dtype=None,
+        num_heads: int=4, proj_low_rank_dim: int=32, gate_low_rank_dim: int
+        =64, norm_eps: float=1e-05, **kwargs):
         factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim)
+        super().__init__(embed_dim, block_loc)
         self.hidden_size = embed_dim
         self.attn_norm = nn.LayerNorm(self.hidden_size, bias=True, eps=
             norm_eps, **factory_kwargs)

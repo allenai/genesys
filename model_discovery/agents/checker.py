@@ -87,12 +87,7 @@ class GABFormatChecker:
             self.errors.append(f'The code is not parsable:\n{str(e)}\n')
             return self._report_errors()
         
-
-        # Remove the if __name__ == "__main__": block
-        code_ast = self._remove_main_block(code_ast)
-
-        # Ensure super().__init__(embed_dim, block_loc) remains unchanged
-        code_ast = self._ensure_methods(code_ast)
+        code_ast = self._reformat(code_ast) # NOTE: maybe also check docstrings
         
         # Update self.gab_code with the modified AST
         self.gab_code = astor.to_source(code_ast)
@@ -106,28 +101,19 @@ class GABFormatChecker:
         #     self.errors.append(f'The code is not executable:\n{str(e)}\n')
         #     return self._report_errors()
         
-        # Check for the required class and its base class
-        self._check_class_definition(code_ast)
-        
-        # Check for required import statements
-        if 'GABBase' not in local_ns:
-            self.errors.append(
-                'The import statement is not correct. Cannot find "from model_discovery.model.utils.modules import GABBase". '
-                'The GAB class must be inherited from GABBase. You should never define a GABBase class.\n'
-            )
-
-        # Additional checks for methods and docstrings
-        self._check_methods_and_docstrings(local_ns)
-        
         # Check for gab_config dictionary
         self._check_gab_config_dictionary(local_ns, code_ast)
 
         # Report all errors
         return self._report_errors()
-
-    def _remove_main_block(self, code_ast):
-        class MainBlockRemover(ast.NodeTransformer):
-            def visit_If(self, node):
+    
+    def _reformat(self, code_ast):
+        self.found_import = False
+        self.found_GAB = False
+        self.found__init__=False
+        self.found__forward=False
+        class GABCorrector(ast.NodeTransformer):
+            def visit_If(cls, node):
                 # Check if this is the if __name__ == "__main__": block
                 if (isinstance(node.test, ast.Compare) and
                     isinstance(node.test.left, ast.Name) and
@@ -139,24 +125,60 @@ class GABFormatChecker:
                     )
                     return None
                 return node
+            
+            def visit_ImportFrom(cls, node):
+                if (node.module == 'model_discovery.model.utils.modules' and
+                        any(alias.name == 'GABBase' for alias in node.names)):
+                    self.found_import = True
+                return node
 
-        return MainBlockRemover().visit(code_ast)
-    
-    def _ensure_methods(self, code_ast):
-        class SuperInitCorrector(ast.NodeTransformer):
             def visit_ClassDef(cls, node):
+                if node.name == 'GABBase':
+                    self.warnings.append(
+                        'The GAB class must be inherited from GABBase. You should never define a GABBase class by yourself. Automatically removed by the corrector, may cause errors.\n'
+                    )
+                    return None
+
                 if node.name == 'GAB':
+                    self.found_GAB = True
+                    # Check if GAB inherits from GABBase
+                    if not any(base.id == 'GABBase' for base in node.bases if isinstance(base, ast.Name)):
+                        self.warnings.append('The class "GAB" does not inherit from "GABBase". Automatically adding the inheritance.\n')
+                        node.bases.append(ast.Name(id='GABBase', ctx=ast.Load()))
+
+                    # Remove any forward method to avoid overriding
+                    new_body = []
+                    for item in node.body:
+                        if isinstance(item, ast.FunctionDef) and item.name == 'forward':
+                            self.warnings.append(f'The "forward" method in "GAB" class is removed to avoid overriding the one in "GABBase". This may cause error.\n')
+                            continue
+                        new_body.append(item)
+                    node.body = new_body
+
                     for item in node.body:
                         if isinstance(item, ast.FunctionDef) and item.name == '__init__':
+                            self.found__init__=True
                             current_args = [arg.arg for arg in item.args.args]
-                            required_args = ['embed_dim', 'block_loc', 'device', 'dtype']
+                            required_args = ['self','embed_dim', 'block_loc', 'device', 'dtype']
                             
-                            # Check for missing required arguments and add them if missing
-                            for arg in required_args:
-                                if arg not in current_args:
-                                    self.warnings.append(f'The "__init__" method of "GAB" is missing the "{arg}" argument. Automatically added by the reformatter.\n')
-                                    new_arg = ast.arg(arg=arg, annotation=None)
-                                    item.args.args.append(new_arg)
+                            # Create a new list of args with required args in correct order
+                            new_args = []
+                            added_args = set()
+                            for required_arg in required_args:
+                                if required_arg not in current_args:
+                                    self.warnings.append(f'The "__init__" method of "GAB" is missing the "{required_arg}" argument. Automatically added by the reformatter.\n')
+                                    new_args.append(ast.arg(arg=required_arg, annotation=None))
+                                    added_args.add(required_arg)
+                                else:
+                                    new_args.append(item.args.args[current_args.index(required_arg)])
+                                    added_args.add(required_arg)
+
+                            # Add remaining arguments that are not in the required list
+                            for arg in item.args.args:
+                                if arg.arg not in added_args:
+                                    new_args.append(arg)
+
+                            item.args.args = new_args
 
                             found_super = False
                             for i, stmt in enumerate(item.body):
@@ -214,53 +236,38 @@ class GABFormatChecker:
                                 item.body.insert(0, super_call)
 
                         if isinstance(item, ast.FunctionDef) and item.name == '_forward':
+                            self.found__forward=True
                             # Check if **kwargs or **intermediate_vars is in the function arguments
                             if item.args.kwarg is None:
                                 self.warnings.append(f'The "_forward" method of "GAB" is missing the "**intermediate_vars" argument. Automatically adding the argument.\n')
                                 # Add **intermediate_vars to the function arguments
-                                item.args.kwarg = ast.arg(arg='intermediate_vars', annotation=None)                
+                                item.args.kwarg = ast.arg(arg='intermediate_vars', annotation=None)    
+                return node
                                 
-        return SuperInitCorrector().visit(code_ast)
-    
-    def _check_class_definition(self, code_ast) -> None:
-        class_found = False
-        for node in ast.walk(code_ast):
-            if isinstance(node, ast.ClassDef) and node.name == 'GAB':
-                class_found = True
-                base_names = [base.id for base in node.bases if isinstance(base, ast.Name)]
-                if 'GABBase' not in base_names:
-                    self.errors.append(
-                        'The class name is not correct. Cannot find class "GAB(GABBase)". '
-                        'The name of the block class must be GAB and inherited from GABBase.\n'
-                    )
-                break
+        code_ast = GABCorrector().visit(code_ast)
 
-        if not class_found:
-            self.errors.append(
-                'The class "GAB" is not defined. Ensure the class name is "GAB" and it inherits from "GABBase".\n'
+        # Check and add the import if necessary
+        if not self.found_import:
+            self.warnings.append('The import for "GABBase" from "model_discovery.model.utils.modules" is missing. Automatically adding the import.\n')
+            import_node = ast.ImportFrom(
+                module='model_discovery.model.utils.modules',
+                names=[ast.alias(name='GABBase', asname=None)],
+                level=0
             )
+            code_ast.body.insert(0, import_node)
 
-    def _check_methods_and_docstrings(self,local_ns) -> None:
-        gab_class = local_ns.get('GAB')
-        if not gab_class:
+        if not self.found_GAB:
             self.errors.append('The class "GAB" is not defined in the provided code.\n')
-            return
 
-        required_methods = ['__init__', '_forward']
-        for method in required_methods:
-            if not hasattr(gab_class, method):
-                self.errors.append(f'The method "{method}" is not defined in the class "GAB".\n')
-        
-        # Check if forward method is overwritten in GAB
-        gab_base_class = gab_class.__bases__[0]
-        if hasattr(gab_base_class, 'forward') and 'forward' in gab_class.__dict__:
-            self.errors.append('The "forward" method in "GAB" class overrides the one in "GABBase", which is not allowed.\n')
+        if not self.found__forward:
+            self.errors.append(f'The method "_forward" is not defined in the class "GAB".\n')
 
-        # Check docstrings
-        # for method in required_methods:
-        #     if not inspect.getdoc(getattr(gab_class, method, None)):
-        #         self.warnings.append(f'The docstring for method "{method}" is missing.\n')
-        
+        if not self.found__init__:
+            self.errors.append(f'The method "__init__" is not defined in the class "GAB".\n')
+
+        return code_ast
+
+
     def _check_gab_config_dictionary(self, local_ns, code_ast) -> None:
         gab_config = local_ns.get('gab_config')
         if not gab_config:
@@ -457,7 +464,7 @@ class EffectiveChecker: # WORING IN PROGRESS
             with torch.no_grad():
                 if torch.cuda.is_available():
                     torch.cuda.synchronize()  # Ensure GPU computations are done
-                output = gab(X)
+                output,_ = gab(X)
                 if torch.cuda.is_available():
                     torch.cuda.synchronize()  # Ensure GPU computations are done
             end_time = time.time()
@@ -616,7 +623,7 @@ class Checker(exec_utils.BaseTool):
             
         block.eval()  # Set block to evaluation mode, so that dropout layers are not active
         with torch.no_grad():
-            Y = block(X)
+            Y,_ = block(X)
 
         print('Checking causality... It checks the causality by changing all future steps X[t+delta] of X[t] and see if Y[t] or any previous outputs change.')
         bar = tqdm(range(seq_len), desc='Causality test', colour='green')
@@ -625,7 +632,7 @@ class Checker(exec_utils.BaseTool):
             X_mod[:, t + 1:, :]*=-1 # Perturb the future steps of X[t]
 
             with torch.no_grad():
-                Y_mod = block(X_mod)
+                Y_mod,_ = block(X_mod)
                         
             # If any previous outputs change when future X[t + delta] changes, then it is not causal
             if not torch.equal(Y[:, :t+1, :], Y_mod[:, :t+1, :]):#, atol=1e-5):
@@ -707,7 +714,7 @@ class Checker(exec_utils.BaseTool):
         try:
             with torch.no_grad():
                 input=emb(mock_input)
-                output = gab(input)
+                output,_ = gab(input)
         except Exception as e:
             error_trace = traceback.format_exc()
             self.rprint(
@@ -821,8 +828,8 @@ class Checker(exec_utils.BaseTool):
         vocab_size=config.vocab_size
         reference_size=config.reference_size
         threshold=config.size_threshold
-        UB=reference_size*(1+threshold)
-        LB=reference_size*(1-threshold)
+        UB=int(reference_size*(1+threshold))
+        LB=int(reference_size*(1-threshold))
         print(f'Reference size: {reference_size}, threshold: {threshold}, upper bound: {UB}, lower bound: {LB}')
 
         exec(gab_code,globals())

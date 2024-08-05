@@ -1,0 +1,11 @@
+{
+    "log": "Checking the designed model...\nChecking code format...\nCode format is correct and reformatted.\n\n\nWarnings:\n\nThe \"__init__\" method of \"GAB\" is missing the \"block_loc\" argument. Automatically added by the reformatter.\n\nThe super().__init__(embed_dim, block_loc) call in GAB is force overwritten by the reformatter. It may cause error if you modified this line.\n\nModel initialization succeeded.\n|------Model size------|\n Total params: 13.38M (tied)\n - GAM params: 13.38M\n   - Embedding: 8.19M\n   - Non-embedding: 5.19M\n     - Block: 864.26K x 6\n       - GAB: 864.26K\n - LM Head params: 8.19M\n|----------------------|\n\nChecking forward pass...\nForward pass test passed\nChecking differentiability...\nDifferentiability test passed\nChecking effectiveness...\nThe model is effective.\n\n\nWarnings:\n\nThe model is not efficient. The training time is long. Its 46.22 times of the benchmark.\nThe model is not efficient. The memory usage is high. Its 3.31 times of the benchmark.\nAll tests passed!\n\n",
+    "effectiveness": {
+        "run_time": 82.2272,
+        "loss": 7.525,
+        "gradient_of_losses": -0.9875,
+        "max_memory_allocated": 3612.916015625,
+        "total_flos": 637230120960.0,
+        "train_loss": 7.525
+    }
+}
