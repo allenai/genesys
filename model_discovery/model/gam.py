@@ -70,7 +70,7 @@ class Block(nn.Module):
                 ), "Only LayerNorm and RMSNorm are supported for fused_add_norm"
 
     def forward(
-            self, hidden_states: Tensor, residual: Optional[Tensor] = None, **gab_kwargs
+            self, hidden_states: Tensor, residual: Optional[Tensor] = None, **intermediate_vars
     ):
         r"""Pass the input through the encoder layer.
 
@@ -102,7 +102,7 @@ class Block(nn.Module):
 
         # If no template, then just GAB, all norms and res should be taken care by GAB
 
-        hidden_states = self.gab(hidden_states, **gab_kwargs)
+        hidden_states,intermediate_vars = self.gab(hidden_states, **intermediate_vars)
         
         if self.use_template:
             if not self.fused_add_norm:
@@ -122,10 +122,10 @@ class Block(nn.Module):
                     is_rms_norm=isinstance(self.norm2, RMSNorm)
                 )
             hidden_states = self.mlp(hidden_states)
-        return hidden_states, residual
+        return hidden_states, residual, intermediate_vars
 
-    def allocate_inference_cache(self, batch_size, max_seqlen, dtype=None, **kwargs):
-        return self.gab.allocate_inference_cache(batch_size, max_seqlen, dtype=dtype, **kwargs)
+    # def allocate_inference_cache(self, batch_size, max_seqlen, dtype=None, **kwargs):
+    #     return self.gab.allocate_inference_cache(batch_size, max_seqlen, dtype=dtype, **kwargs)
 
 
 def create_block(
@@ -273,12 +273,13 @@ class GAM(nn.Module):
             for i, block in enumerate(self.blocks)
         }
 
-    def forward(self, input_ids, inference_params=None, **gab_kwargs):
+    def forward(self, input_ids):
         hidden_states = self.embedding(input_ids)
         residual = None
+        intermediate_vars = {}
         for block in self.blocks:
-            hidden_states, residual = block(
-                hidden_states, residual, **gab_kwargs
+            hidden_states, residual, intermediate_vars = block(
+                hidden_states, residual, **intermediate_vars
             )
         if self.use_template: # in template, all blocks are pre-res (none for L1), so need a final res here
             if not self.fused_add_norm:

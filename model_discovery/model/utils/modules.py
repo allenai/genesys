@@ -7,21 +7,27 @@ from abc import ABC, abstractmethod
 
 class GABBase(nn.Module):
     """ Base class for Generalized Autoregressive Block """
-    def __init__(self,embed_dim: int): 
+    def __init__(self,embed_dim: int): # TODO: maybe add layer_idx
         super().__init__()
         self.embed_dim = embed_dim
 
-    def _forward(self,X,**kwargs): 
+    def _forward(self,X,**intermediate_vars): 
         raise NotImplementedError
      
     # YOU ARE NOT ALLOW TO OVERRIDE THIS METHOD #
-    def forward(self,X,**kwargs):
+    def forward(self,X,**intermediate_vars):
         """Forward pass of the model"""
         assert len(X.shape) == 3, "Input shape must be (batch, seqlen, embed_dim)"
         assert X.shape[-1] == self.embed_dim
-        Y=self._forward(X,**kwargs)
+        ret=self._forward(X,**intermediate_vars)
+        if isinstance(ret, tuple):
+            Y = ret[0]
+            intermediate_vars = ret[1:]
+        else:
+            Y = ret
+            intermediate_vars = {}
         assert Y.shape == X.shape, f"GAB Output shape must be the same as input shape, got {Y.shape} instead"
-        return Y
+        return Y,intermediate_vars
 
 
 class GatedMLP(nn.Module):
