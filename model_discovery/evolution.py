@@ -367,7 +367,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             #select_menu=True, # filter_menu=True,
             # heading=f'Phylogenetic Tree for {self.db_dir.split("/")[-2]}'
         )
-        nt.prep_notebook(True,'./etc/ptree_template.html')
+        nt.prep_notebook(True)#,'./etc/ptree_template.html')
         nt.from_nx(G)
         fname='PTree.html' if not layout else 'PTree_layout.html'
         nt.show(U.pjoin(self.db_dir, '..', fname))
@@ -641,15 +641,18 @@ class EvolutionSystem(exec_utils.System):
             prompt=topk[0].to_prompt()
             instruct=f'Please improve based on this design for the new design, think of how to overcome its weaknesses and absorb its advantage:\n\n{prompt}'
         else: # Cross-over
-            prompts='\n\n\n'.join([topk[i].to_prompt() for i in topk])
+            prompts='\n\n\n'.join([i.to_prompt() for i in topk])
             instruct=f'Please improve by combining the advantages and mitigating the disadvantages of these designs for the new design:\n\n{prompts}'
         return instruct,list(topk)
-        
+
+    def nodes2data(self,nodes):
+        return [self.ptree.G.nodes[node]['data'] for node in nodes]
+
     def heuristic_select(self,K: int=1,selector_instruct=''):
         alpha=0.1
         sample_metrics={}
         sample_scale={}
-        for node in self.ptree.designs():
+        for node in self.ptree.filter_by_type(['DesignArtifact']):
             artifact=self.ptree.G.nodes[node]['data']
             if artifact.verify_report is not None:
                 # TODO: upgrade this thing
@@ -663,11 +666,11 @@ class EvolutionSystem(exec_utils.System):
         prob=prob*np.array([v for k,v in sample_scale.items()]) # prefer the higher scale
         prob=prob/np.sum(prob)
         topk=np.random.choice(list(sample_metrics.keys()),size=K,replace=False,p=prob)
-        return topk
+        return self.nodes2data(topk)
 
     def random_select(self,K: int=1,selector_instruct=''):
         topk=random.sample(self.ptree.filter_by_type(['DesignArtifact','ReferenceWithCode']),K)
-        return topk
+        return self.nodes2data(topk)
 
 
     
@@ -756,7 +759,8 @@ def test_evolve(test_name,step=False):
     ]
     evolution_system = BuildEvolution(
         strparams=';'.join(strparams),
-        cache_type='diskcache',
+        do_cache=False,
+        # cache_type='diskcache',
     )
     while evolution_system.evolve():
         if step:
@@ -775,16 +779,14 @@ if __name__ == '__main__':
     args = ve_parser.parse_args()
     strparams.append(f"evoname={args.evoname}")
 
-    evolution_system = BuildEvolution(
-        strparams=';'.join(strparams),
-        do_cache=False,
-        # cache_type='diskcache',
-    )
-    evolution_system._run(args.mode)
+    # evolution_system = BuildEvolution(
+    #     strparams=';'.join(strparams),
+    #     do_cache=False,
+    #     # cache_type='diskcache',
+    # )
+    # evolution_system._run(args.mode)
 
-
-
-    # test_evolve('evo_test_003',step=False)
+    test_evolve('test_evo_003',step=False)
 
 
 #     code_MHA='''

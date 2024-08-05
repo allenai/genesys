@@ -35,6 +35,8 @@ from .agents.prompts.prompts import (
     GAB_ERROR
 )
 
+import model_discovery.utils as U
+
 C = TypeVar("C",bound="ModelDiscoverySystem")
 
 from .configs.gam_config import ( 
@@ -148,7 +150,7 @@ class CustomParams(exec_utils.ModuleParams):
             "exclude_hash" : True,
         }
     )
-    reviwer_spec_rigorous: str = exec_utils.ParamField(
+    reviewer_spec_rigorous: str = exec_utils.ParamField(
         default=os.path.abspath(
             f'{PROJ_SRC}/../etc/agent_spec/reviewer_rigorous.json'
         ),
@@ -370,8 +372,8 @@ class ModelDiscoverySystem(exec_utils.System):
                 designer_out = agent(
                     query,
                     source=source,
-                    manual_history=problem_history if attempt==0 else debugger_context,
-                )
+                    manual_history=tuple(problem_history) if attempt==0 else tuple(debugger_context),
+                ) # wierd, say list is unhastable type in kwargs
                 if attempt == 0:
                     problem_history.append((query,source))
                 else:
@@ -419,7 +421,7 @@ class ModelDiscoverySystem(exec_utils.System):
                         self_report = self.designer(
                             report_query if initial_error is None else f'{error_info}\n\n{report_query}',
                             source='user',
-                            manual_history=problem_history, # TODO: simplify this, full debugging process maybe not useful
+                            manual_history=tuple(problem_history), # TODO: simplify this, full debugging process maybe not useful
                         )
                         if stream:
                             stream.markdown(self_report["text"]) #<-- change
@@ -580,24 +582,24 @@ class ModelDiscoverySystem(exec_utils.System):
         reviewers = {
             'balance': BuildAgent(
                 config,
-                agent_file=config.reviewer_spec,
-                agent_model_type="reviewer_balance"
+                agent_file=config.reviewer_spec_balance,
+                agent_model_type="reviewer_agent"
             ),
             'creative': BuildAgent(
                 config,
-                agent_file=config.reviewer_spec,
-                agent_model_type="reviewer_creative"
+                agent_file=config.reviewer_spec_creative,
+                agent_model_type="reviewer_agent"
             ),
             'rigorous': BuildAgent(
                 config,
-                agent_file=config.reviewer_spec,
-                agent_model_type="reviewer_rigorous"
+                agent_file=config.reviewer_spec_rigorous,
+                agent_model_type="reviewer_agent"
             )
         }
         debugger = BuildAgent(
             config,
             agent_file=config.debugger_spec,
-            agent_model_type="debugger_agent"
+            agent_model_type="designer_agent"
         )
         
         ### get the model information for context

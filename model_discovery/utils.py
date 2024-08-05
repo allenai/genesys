@@ -7,6 +7,9 @@ pjoin=os.path.join
 pexists=os.path.exists
 mkdir=ft.partial(os.makedirs, exist_ok=True)
 
+def pdebug(*value):
+    print(f'[**Debug info**]',*value)
+
 getmodelsize = lambda model: sum(p.numel() for p in model.parameters())
 strmodelsize = lambda model: strscale(getmodelsize(model))
 
