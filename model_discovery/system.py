@@ -308,7 +308,7 @@ class DialogThread:
         response = agent(
             query,
             source=source,
-            manual_history=history
+            manual_history=tuple(history)
         )
         self.message(agent.name,caller,response)
         return response
@@ -469,7 +469,7 @@ class ModelDiscoverySystem(exec_utils.System):
                     agent=agent,
                     query=query,
                     source=source,
-                    history=tuple(problem_history) if attempt==0 else tuple(debugger_context),
+                    history=problem_history if attempt==0 else debugger_context,
                 )
 
                 if attempt == 0:
@@ -525,7 +525,7 @@ class ModelDiscoverySystem(exec_utils.System):
                             agent=self.designer,
                             query=report_query if initial_error is None else f'{error_info}\n\n{report_query}',
                             source=source,
-                            history=tuple(problem_history),
+                            history=problem_history,
                         )
                         if stream:
                             stream.markdown(self_report["text"]) #<-- change
