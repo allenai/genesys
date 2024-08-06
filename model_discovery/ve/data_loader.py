@@ -12,9 +12,14 @@ from datasets import (
 import numpy as np
 import functools as ft
 from typing import List
+import boto3
+import gzip
 
 from ..configs.gam_config import GAMConfig
 from .. import utils as U
+
+DEFAULT_NUM_PROC_LOAD =  os.cpu_count()*4 # Configure it based on your system, it can significantly speed up the download of datasets
+DEFAULT_NUM_PROC_TOKENIZE =  max(os.cpu_count()-4,1)
 
 
 def get_tokenizer(tokenizer_name):
@@ -70,7 +75,6 @@ def combine_datasets(dataset_dicts, weights:dict=None): # weights e.g. {'train':
     
     return DatasetDict(combined_dict)
 
-
 def pretokenize_dataset(dataset_name):
     def decorator(dataload_func):
         @ft.wraps(dataload_func)
@@ -87,16 +91,16 @@ def pretokenize_dataset(dataset_name):
 
             try:
                 tokenized_datasets = load_from_disk(tokenized_dir)
-                print(f"Loaded tokenized dataset {dataset_name} from disk")
+                print(f"Loaded tokenized dataset {dataset_name} from {tokenized_dir}")
             except FileNotFoundError:
                 ds = dataload_func(tokenizer_name=tokenizer_name, context_length=context_length, *args, **kwargs)
-                ds = ds.shuffle()
+                # ds = ds.shuffle() # no need to shuffle now, hf trainer will shuffle it every epoch, https://discuss.huggingface.co/t/how-to-ensure-the-dataset-is-shuffled-for-each-epoch-using-trainer-and-datasets/4212/7
                 tokenized_datasets = ds.map(
                     lambda x: tokenize(x, tokenizer=tokenizer, context_length=context_length),
-                    batched=True, remove_columns=ds["train"].column_names, num_proc=16, batch_size=1000,
+                    batched=True, remove_columns=ds["train"].column_names, num_proc=DEFAULT_NUM_PROC_TOKENIZE, batch_size=1000,
                 )
                 tokenized_datasets.save_to_disk(tokenized_dir)
-                print(f"Saved tokenized dataset {dataset_name} to disk")
+                print(f"Saved tokenized dataset {dataset_name} to {tokenized_dir}")
 
             return tokenized_datasets
         return wrapper
@@ -104,7 +108,7 @@ def pretokenize_dataset(dataset_name):
 
 @pretokenize_dataset('babylm')
 def load_babylm(tokenizer_name, context_length):
-    return load_dataset('deven367/babylm-100M')
+    return load_dataset('deven367/babylm-100M', num_proc=DEFAULT_NUM_PROC_LOAD)
 
 @pretokenize_dataset('tinystories')
 def load_tinystories(tokenizer_name, context_length):
@@ -112,17 +116,47 @@ def load_tinystories(tokenizer_name, context_length):
         "train": 'https://huggingface.co/datasets/roneneldan/TinyStories/resolve/main/TinyStoriesV2-GPT4-train.txt',
         'valid': 'https://huggingface.co/datasets/roneneldan/TinyStories/resolve/main/TinyStoriesV2-GPT4-valid.txt'
     }
-    return load_dataset("text", data_files=data_files)
+    return load_dataset("text", data_files=data_files, num_proc=DEFAULT_NUM_PROC_LOAD)
 
 @pretokenize_dataset('wikitext-2')
 def load_wikitext2(tokenizer_name, context_length):
-    return load_dataset('wikitext','wikitext-2-v1')
+    return load_dataset('wikitext','wikitext-2-v1', num_proc=DEFAULT_NUM_PROC_LOAD)
 
+
+session = boto3.Session(
+    aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
+    aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"])
+s3 = session.client("s3")
+
+def download_contents_py(blob_id):
+    key = f"content/{blob_id}"
+    obj = s3.get_object(Bucket="softwareheritage", Key=key)
+    with gzip.GzipFile(fileobj=obj['Body']) as fin:
+        content = fin.read().decode("utf-8", errors="ignore")
+    return {"text": content}
+
+@pretokenize_dataset('python-edu-10')
+def load_python_edu_10(tokenizer_name, context_length):
+    ds = load_dataset("chengjunyan1/smollm-10", "python-edu", split="train", num_proc=DEFAULT_NUM_PROC_LOAD)
+    ds = ds.map(download_contents_py, input_columns="blob_id", num_proc=DEFAULT_NUM_PROC_LOAD)
+    ds = DatasetDict({"train": ds})
+    return ds
+
+@pretokenize_dataset('fineweb-edu-dedup-10')
+def load_fine_web_dedup_10(tokenizer_name, context_length):
+    return load_dataset("chengjunyan1/smollm-10","fineweb-edu-dedup", num_proc=DEFAULT_NUM_PROC_LOAD)
+
+@pretokenize_dataset('cosmopedia-v2-10')
+def load_cosmopedia_v2_10(tokenizer_name, context_length):
+    return load_dataset("chengjunyan1/smollm-10","cosmopedia-v2", num_proc=DEFAULT_NUM_PROC_LOAD)
 
 loaders={
     'babylm'      :load_babylm,
     'tinystories' :load_tinystories,
-    'wikitext2'  :load_wikitext2
+    'wikitext2'  :load_wikitext2,
+    'python-edu-10':load_python_edu_10,
+    'fineweb-edu-dedup-10':load_fine_web_dedup_10,
+    'cosmopedia-v2-10':load_cosmopedia_v2_10
 }
 
 def load_datasets(cfg: GAMConfig): # weights e.g. {'train':[1.5,1.0]} for two datasets

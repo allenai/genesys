@@ -13,8 +13,9 @@ class GAMConfig(PretrainedConfig):
     scale: str
     reference_size: int # a reference param num based on GPT
     batch_tokens: int 
+    learning_rate: float
     context_length: int = DEFAULT_CONTEXT_LENGTH
-    training_data: List[str] = field(default_factory=lambda: ['babylm', 'tinystories'])
+    training_data: List[str] = field(default_factory=lambda: SMOLLM_10_CORPUS)
     eval_tasks: List[str] = field(default_factory=lambda: [
         *DEFAULT_TASK_LIST1,
     ])
@@ -67,6 +68,7 @@ class GAMConfig(PretrainedConfig):
 # Configs below are come from GPT-3 paper https://arxiv.org/pdf/2005.14165, applied by Mamba, TTT
 # The major difference between GPT-3 and Pythia setting is on 760M, where Pythia used an 1B model instead, other differences including lr, bs
 # Notice that due to the use of Llama tokenizer and tied params, the reference size looks different 
+
 
 @dataclass
 class GAMConfig_14M(GAMConfig):
