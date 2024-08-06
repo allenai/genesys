@@ -583,8 +583,8 @@ class ModelDiscoverySystem(exec_utils.System):
                 )
                 if stream:
                     stream.markdown(response["text"])
-                ratings[reviewer] = response["rating"]
-                reviews[reviewer] = response["review"]
+                ratings[style] = response["rating"]
+                reviews[style] = response["review"]
                 costs['review'] += response["_details"]["running_cost"]
         return ratings,reviews,costs
 
