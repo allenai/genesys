@@ -6,7 +6,7 @@ import sys
 import re
 import exec_utils
 import pathlib
-import uuid
+import datetime
 import os
 import json
 import time
@@ -597,7 +597,7 @@ class EvolutionSystem(exec_utils.System):
     def sample(self,scale_id,instruct,verbose=True):
         """ Sample a design at a given scale and verify it """
         self.rnd_agent.set_config(self.scales[scale_id])
-        session_id=uuid.uuid4().hex
+        session_id=f'sample_{len(self.ptree.filter_by_type(['DesignArtifact']))}_{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}'
         log_dir=U.pjoin(self.evo_dir,'log',session_id)
         U.mkdir(log_dir)
         response=self.rnd_agent(instruct,log_dir=log_dir) 
@@ -783,14 +783,14 @@ if __name__ == '__main__':
     args = ve_parser.parse_args()
     strparams.append(f"evoname={args.evoname}")
 
-    evolution_system = BuildEvolution(
-        strparams=';'.join(strparams),
-        do_cache=False,
-        # cache_type='diskcache',
-    )
+    # evolution_system = BuildEvolution(
+    #     strparams=';'.join(strparams),
+    #     do_cache=False,
+    #     # cache_type='diskcache',
+    # )
     # evolution_system._run(args.mode)
 
-    # test_evolve('test_evo_003',step=False)
+    test_evolve('test_evo_003',step=True)
 
 
 #     code_MHA='''
@@ -841,19 +841,20 @@ if __name__ == '__main__':
 # '''
 
 
-    checker=evolution_system.rnd_agent.checker
-    cfg=evolution_system.rnd_agent._cfg
-    design_name='test_design'
+    # checker=evolution_system.rnd_agent.checker
+    # cfg=evolution_system.rnd_agent._cfg
+    # design_name='test_design'
 
     # code=code_MHA
     # checkpass,check_report,gabcode,check_results = checker.check(cfg,code,design_name)
     # print(check_results)
 
-    print('Check the second code')
-    code_retnet_dir='/home/junyanc/model_discovery/model_discovery/model/library/base/retnet/retnet_edu.py'
-    code=open(code_retnet_dir,'r').read()
-    checkpass,check_report,gabcode,check_results = checker.check(cfg,code,design_name)
+    # print('Check the second code')
+    # code_retnet_dir='/home/junyanc/model_discovery/model_discovery/model/library/base/retnet/retnet_edu.py'
+    # code=open(code_retnet_dir,'r').read()
+    # checkpass,check_report,gabcode,check_results = checker.check(cfg,code,design_name)
 
+    # print('Check the third code')
     # code=U.read_file('./draft.py')
     # ret=checker.check(cfg,code,design_name)
 

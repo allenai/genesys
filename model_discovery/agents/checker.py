@@ -224,6 +224,7 @@ class GABFormatChecker:
     def __init__(self):
         self.errors = []
         self.warnings = []
+        self.hints = []
         self.gab_code = None
 
     def reset(self):
@@ -255,11 +256,12 @@ class GABFormatChecker:
         print(f'Code after reformatted:\n\n{self.gab_code}\n\n')
 
         # Execute the modified AST
-        # try: ####LEAVE IT OPEN FOR DEBUGGING CAUSE, REMEMBER TO UNCOMMENT
-        exec(self.gab_code, globals().copy(), local_ns)
-        # except Exception as e:
-        #     self.errors.append(f'The code is not executable:\n{str(e)}\n')
-        #     return self._report_errors()
+        try: ####NOTE: LEAVE IT OPEN FOR DEBUGGING CAUSE, REMEMBER TO UNCOMMENT
+            exec(self.gab_code, globals().copy(), local_ns)
+        except Exception as e:
+            self.errors.append(f'The code is not executable:\n{str(e)}\nHint: 1. Check whether you have implement redundant part, remember that you only need to implement the autoregressive block, not the whole model like embedding layer and lm head. \n')
+            self.hints.append('REFRESH_TEMPLATE')
+            return self._report_errors()
         
         # Check for gab_config dictionary
         self._check_gab_config_dictionary(local_ns, code_ast)
@@ -290,12 +292,15 @@ class GABFormatChecker:
 
         if not corrector.found_GAB:
             self.errors.append('The class "GAB" is not defined in the provided code.\n')
+            self.hints.append('REFRESH_TEMPLATE')
         
         if not corrector.found__forward:
             self.errors.append(f'The method "_forward" is not defined in the class "GAB" or "GAB" is not defined.\n')
+            self.hints.append('REFRESH_TEMPLATE')
 
         if not corrector.found__init__:
             self.errors.append(f'The method "__init__" is not defined in the class "GAB" or "GAB" is not defined.\n')
+            self.hints.append('REFRESH_TEMPLATE')
 
         return code_ast
 
@@ -303,15 +308,18 @@ class GABFormatChecker:
     def _check_gab_config_dictionary(self, local_ns, code_ast) -> None:
         if not 'gab_config' in local_ns:
             self.errors.append('The dictionary "gab_config" is not defined.\n')
+            self.hints.append('REFRESH_TEMPLATE')
             return 
         
         gab_config = local_ns['gab_config']
         if not isinstance(gab_config, dict):
             self.errors.append('"gab_config" should be a dictionary.\n')
+            self.hints.append('REFRESH_TEMPLATE')
             return 
         
         if 'GAB' not in local_ns:
             self.errors.append('The class "GAB" is not defined in the provided code, cannot validate "gab_config".\n')
+            self.hints.append('REFRESH_TEMPLATE')
             return
 
         gab_class = local_ns['GAB']
@@ -329,13 +337,16 @@ class GABFormatChecker:
         default_args = optional_args - config_args
 
         if missing_args:
-            self.errors.append(f'The dictionary "gab_config" is missing the following arguments: {", ".join(missing_args)} in "GAB.__init__".\n')
+            missing_args = [f'"{arg}"' for arg in missing_args]
+            self.errors.append(f'The dictionary "gab_config" is missing the following required arguments: {", ".join(missing_args)} in "GAB.__init__".\n')
 
         if default_args:
-            self.warnings.append(f'These args are not set by gab_config, and directly use the default value: {", ".join(default_args)}.\n')
+            default_args = [f'"{arg}"' for arg in default_args]
+            self.warnings.append(f'These args are not set by gab_config and directly use the default value: {", ".join(default_args)}. Ignore this if it is intended.\n')
 
         if redundant_args:
-            self.warnings.append(f'The dictionary "gab_config" contains extra arguments: {", ".join(redundant_args)} not used or not allowed to be re-defined in "GAB.__init__". They are automatically removed by the reformatter.\n')
+            redundant_args = [f'"{arg}"' for arg in redundant_args]
+            self.warnings.append(f'The dictionary "gab_config" contains redundant arguments: {", ".join(redundant_args)} not used or not allowed to be re-defined in "GAB.__init__". They are automatically removed by the reformatter.\n')
             class ConfigModifier(ast.NodeTransformer):
                 def visit_Assign(self, node):
                     if isinstance(node.targets[0], ast.Name) and node.targets[0].id == 'gab_config':
@@ -360,7 +371,7 @@ class GABFormatChecker:
             report='Code format is correct and reformatted.\n'
         if self.warnings:
             report+='\n\nWarnings:\n\n'+'\n'.join(self.warnings)
-        return not bool(self.errors),report,self.gab_code
+        return not bool(self.errors),report,self.hints,self.gab_code
 
 
 def get_system_info_str():
@@ -421,6 +432,7 @@ class EffectiveChecker: # WORING IN PROGRESS
         self.errors = []
         self.warnings = []
         self.results = {}
+        self.hints = []
         self.ds, self.tokenizer = load_datasets_args(
             DEFAULT_TOKENIZER,
             DEFAULT_CONTEXT_LENGTH,
@@ -587,7 +599,7 @@ class EffectiveChecker: # WORING IN PROGRESS
             report='The model is effective.\n'
         if self.warnings:
             report+='\n\nWarnings:\n\n'+'\n'.join(self.warnings)
-        return not bool(self.errors),report,self.results
+        return not bool(self.errors),report,self.results,self.hints
     
     def check(self, config, model) -> bool:
         self.reset()
@@ -624,6 +636,7 @@ class Checker(exec_utils.BaseTool):
     """
     def __init__(self):
         self.report = ''
+        self.hints = []
         self.format_checker = GABFormatChecker()
         self.effective_checker = EffectiveChecker()
 
@@ -717,7 +730,8 @@ class Checker(exec_utils.BaseTool):
 
     def _check_effectiveness(self, model, config) -> bool:
         self.rprint('Checking effectiveness...')
-        checkpass,errors,results=self.effective_checker.check(config, model)    
+        checkpass,errors,results,hints=self.effective_checker.check(config, model)    
+        self.hints += hints
         self.rprint(errors)
         return checkpass,results
     
@@ -730,7 +744,8 @@ class Checker(exec_utils.BaseTool):
 
         """
         self.rprint('Checking code format...')
-        checkpass,errors,gab_code=self.format_checker.check(gab_code)
+        checkpass,errors,hints,gab_code=self.format_checker.check(gab_code)
+        self.hints += hints
         self.rprint(errors)
         return checkpass,gab_code
     
@@ -784,7 +799,7 @@ class Checker(exec_utils.BaseTool):
                 checkpass,gab_code = self._check_format_and_reformat(gab_code)
                 assert checkpass
             except AssertionError:
-                return False,self.report,gab_code,{}
+                return False,self.report,gab_code,{'hints': self.hints}
         
         with U.CodeTimer("Model initialization"): # NOTE: very time consuming for the first time, but luckily only happens for the very first run, maybe reduce the time of first run>
             try: 
@@ -812,7 +827,7 @@ class Checker(exec_utils.BaseTool):
                     'Hint: 1. if it is a dtype or device error, check whether the factory kwargs are passed to the layers. '
                     '2. If it is a shape error, check whether the output shape is equal to the input shape. The output shape of GAB should be the same as the input.'
                 )
-                return False,self.report,gab_code,{}
+                return False,self.report,gab_code,{'hints': self.hints}
         
             ### check model size 
             gam = glm.backbone
@@ -846,7 +861,7 @@ class Checker(exec_utils.BaseTool):
                 if not checkpass2:
                     self.rprint('Hint: If you used convolutional layer, you should consider that the conv kernel may cover the future steps. '
                                 'You can add padding and truncation of future steps to the conv layer to make it causal.\n')
-                return False,self.report,gab_code,{}
+                return False,self.report,gab_code,{'hints': self.hints}
 
         self.rprint("All tests passed!\n")
         time_end=time.time()
@@ -855,6 +870,7 @@ class Checker(exec_utils.BaseTool):
         results = {
             'log': self.report,
             'effectiveness': effectiveness,
+            'hints': self.hints
         }
         return True,self.report,gab_code,results
     

@@ -9,6 +9,7 @@ import tempfile
 import copy
 import numpy as np
 # import uuid
+import pandas as pd
 
 #from IPython.display import display, Markdown, Latex
 from types import ModuleType
@@ -22,6 +23,7 @@ from typing import (
     Optional,
     Union
 )
+from dataclasses import dataclass
 
 from exec_utils.aliases import ConfigType
 from exec_utils import (
@@ -274,6 +276,74 @@ class PrintSystem:
     def markdown(self,msg,**kwargs):
         print(msg)
 
+
+class DialogThread:
+    def __init__(self,name,did,parent,log_dir=None):
+        self.did = did
+        self.parent = parent
+        self.logs = []
+        self.mid = 0 # message id
+        self.name=name # The name of the thread
+        self.log_dir = None
+        self.return_message = None # set it means the thread has returned
+        if log_dir:
+            self.log_dir = U.pjoin(log_dir,f"thread_{did}_{name}")
+            U.mkdir(self.log_dir)
+
+    def log(self,type,data):
+        timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+        activity = (timestamp,type,data)
+        self.logs.append(activity)
+        log_content = {'timestamp':timestamp,'type':type,'data':data}
+        if self.log_dir: # save to seperate json files to avoid write conficts/lag
+            U.save_json(log_content,f"{self.log_dir}/{timestamp}.json")
+    
+    def message(self,sender,receiver,content):
+        data={'mid':self.mid,'sender':sender,'receiver':receiver,'content':content}
+        self.log('message',data)
+        self.mid += 1
+        
+    def query_agent(self,caller,agent,query,source='user',history=[]):
+        self.message(caller,agent.name,query)
+        response = agent(
+            query,
+            source=source,
+            manual_history=history
+        )
+        self.message(agent.name,caller,response)
+        return response
+    
+    def fork(self,name,did,call=None): # a fork return a new thread, each thread expose a call and return message to the parent thread, the fork call and return
+        self.log('fork',{'did':did,'name':name,'call':call})
+        return DialogThread(name,did,self.did,self.log_dir)
+    
+class DialogManager:
+    def __init__(self,log_dir,system_info):
+        self.log_dir = log_dir
+        self.threads = {}
+        self.threads[0] = DialogThread('root',0,-1,self.log_dir) # create a root thread
+        if log_dir:
+            U.save_json(system_info,f"{log_dir}/system_info.json")
+    
+    def assign_did(self):
+        return len(self.threads)
+    
+    def fork(self,parent_did,name,call_message=None):
+        parent = self.threads[parent_did]
+        did = self.assign_did()
+        self.threads[did] = parent.fork(name,did,call_message)
+        return did
+    
+    def close_thread(self,did,content):
+        thread = self.threads[did]
+        thread.return_message = content
+    
+    def get_thread(self,did):
+        return self.threads[did]
+
+    def get_active_threads(self):
+        return [thread for thread in self.threads if thread.return_message is None]
+
     
 @exec_utils.Registry(
     resource_type="system_type",
@@ -355,26 +425,34 @@ class ModelDiscoverySystem(exec_utils.System):
 
         ###
         self._queries = [] 
+    
+    def get_system_info(self):
+        system_info = {}
+        system_info['agents']={
+            'designer':self.designer.config,
+            'reviewers':{style:agent.config for style,agent in self.reviewers.items()},
+            'debugger':self.debugger.config
+        }
 
     def new_session(self,log_dir=None):
-        self.sess_log = []
-        self.design_round = 0
-        self.log_dir = log_dir # setting a log_dir to log the dialogs
+        U.mkdir(log_dir)
+        self.states = {}
+        self.states['refresh_template'] = 0 
+        self.dialog = DialogManager(log_dir,self.get_system_info())
 
-    def log_activity(self,activity:tuple): # TODO: finishi this!
-        # (when, who, what), when: which round, what time, who: which agent, what: what action
-        if self.log_dir:
-            self.sess_log.append(activity)
-            U.save_json(self.sess_log,f"{self.log_dir}/session_log.json")
+    def close_session(self):
+        self.dialog.close_thread(0,'Session closed')
+        if self.dialog.get_active_threads():
+            raise ValueError('There are active threads, can not close the session')
 
     def set_config(self,cfg:GAMConfig): # reset the gam config of the system
         self._cfg = cfg
 
-    def design(self,query,designer_context,stream,status_handler): # input query, context, output design and explanation
+    def design(self,query,designer_context,stream,status_handler,thread_did): # input query, context, output design and explanation
         designer_cost = 0
-        self.design_round += 1
         problem_history = copy.deepcopy(designer_context) # a new dialog branch
         source='user'
+        thread: DialogThread=self.dialog.get_thread(thread_did)
 
         debugger_context = []
         initial_error = None
@@ -386,11 +464,14 @@ class ModelDiscoverySystem(exec_utils.System):
             with status_handler(f"Attempt {attempt+1}"): 
                 
                 agent=self.designer if attempt==0 else self.debugger
-                designer_out = agent(
-                    query,
+                designer_out = thread.query_agent(
+                    caller='system' if attempt==0 else 'debugger',
+                    agent=agent,
+                    query=query,
                     source=source,
-                    manual_history=tuple(problem_history) if attempt==0 else tuple(debugger_context),
-                ) # wierd, say list is unhastable type in kwargs
+                    history=tuple(problem_history) if attempt==0 else tuple(debugger_context),
+                )
+
                 if attempt == 0:
                     problem_history.append((query,source))
                 else:
@@ -406,6 +487,7 @@ class ModelDiscoverySystem(exec_utils.System):
                     else:
                         debugger_context.append((f'{text}',"assistant"))
 
+                    assert code is not None
                     assert "# gab.py" in code 
                 
                     if stream: #and code:
@@ -418,6 +500,9 @@ class ModelDiscoverySystem(exec_utils.System):
                     continue 
                 
                 checkpass,check_report,code,check_results = self.checker.check(self._cfg,code,design_name)
+                checker_hints = check_results['hints']
+                if 'REFRESH_TEMPLATE' in checker_hints:
+                    self.states['refresh_template'] += 1
                 
                 if stream:
                     stream.write(
@@ -435,10 +520,12 @@ class ModelDiscoverySystem(exec_utils.System):
                         error_info=f"Your design didn't pass the checker initially:\n\n{initial_error}\n\nIt has been fixed by the assistant already as follows:\n\n{code}","user"
                     with status_handler(f"Querying agent for report..."):
                         self.logging.info('Now trying to compile self report...')
-                        self_report = self.designer(
-                            report_query if initial_error is None else f'{error_info}\n\n{report_query}',
-                            source='user',
-                            manual_history=tuple(problem_history), # TODO: simplify this, full debugging process maybe not useful
+                        self_report = thread.query_agent(
+                            caller='system',
+                            agent=self.designer,
+                            query=report_query if initial_error is None else f'{error_info}\n\n{report_query}',
+                            source=source,
+                            history=tuple(problem_history),
                         )
                         if stream:
                             stream.markdown(self_report["text"]) #<-- change
@@ -446,7 +533,13 @@ class ModelDiscoverySystem(exec_utils.System):
                     explain=self_report['text']
                     return code,explain,designer_cost,check_results
                 else:
-                    query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix"
+                    query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix."
+                    if self.states['refresh_template'] >=1:
+                        query+=f'\nHere is the template for the GAB block for you to refresh:\n\n{self.gab_py}'
+                    if self.states['refresh_template'] >= 2:
+                        query+=f'\nHere is the definition of GABBase for you to refresh:\n\n{GAB_BASE}'
+                    if self.states['refresh_template'] >= 3:
+                        query+=f'\nHere is the definition for the GAM model for you to refresh:\n\n{self.gam_py}'
                     source = 'user'
                     if attempt == 0:
                         initial_error = check_report
@@ -455,7 +548,8 @@ class ModelDiscoverySystem(exec_utils.System):
         return None,None,designer_cost,None
         
 
-    def review(self,proposal,costs,stream,status_handler): 
+    def review(self,proposal,costs,stream,status_handler,thread_did): 
+        thread = self.dialog.get_thread(thread_did)
         reviewer_query = REVIEWER_PROMPT.format(
             proposal=proposal,
             gab_base=GAB_BASE,
@@ -467,8 +561,10 @@ class ModelDiscoverySystem(exec_utils.System):
         with status_handler(f"Querying reviewer agent for review..."):
             for style in self.reviewers:
                 reviewer = self.reviewers[style]
-                response = reviewer(
-                    reviewer_query,
+                response = thread.query_agent(
+                    caller='system',
+                    agent=reviewer,
+                    query=reviewer_query,
                     source='user',
                     # No history for reviewer or would some history be useful?
                 )
@@ -500,6 +596,7 @@ class ModelDiscoverySystem(exec_utils.System):
         
         """
         self.new_session(log_dir)
+        main_did = self.dialog.fork(0,'main','Starting a new session...')
 
         costs={ # NOTE: costs in exec_utils need to be updated
             'design':0,
@@ -523,31 +620,38 @@ class ModelDiscoverySystem(exec_utils.System):
         found_design = False
         self._queries.append(designer_query)
 
-        for _ in range(self._config.max_design_refines):
-            code,explain,designer_cost,check_results = self.design(query,designer_context,stream,status_handler)
+        for i in range(self._config.max_design_refines):
+            refine_thread_did = self.dialog.fork(main_did,'design_refine',f'Design refinement round {i+1}')
+
+            design_thread_did = self.dialog.fork(refine_thread_did,'design_attempt',f'Starting design attempt...')
+            code,explain,designer_cost,check_results = self.design(query,designer_context,stream,status_handler,design_thread_did)
             costs['design'] += designer_cost
             if code is None: continue
 
             proposal=f'{explain}\n\nImplementation:\n\n{code}\n\n'
+            self.dialog.close_thread(design_thread_did,f'The designer has designed the model:\n\n{proposal}')
             designer_context.append((query,"user")) 
             designer_context.append((proposal,"assistant"))
 
-            ratings,reviews,costs = self.review(proposal,costs,stream,status_handler)
+            review_thread_did = self.dialog.fork(refine_thread_did,'review',f'Sending the design to reviewers for review...')
+            ratings,reviews,costs = self.review(proposal,costs,stream,status_handler,review_thread_did)
+            review_ratings=''
+            for idx, style in enumerate(self.reviewers):
+                review=reviews[style]
+                rating=ratings[style]
+                review_ratings+=f'# Review of Reviewer {idx+1}:\n\n{review}\n\n## Rating: {rating} out of 5\n\n'
+            self.dialog.close_thread(review_thread_did,f'The reviewers have returned the reviews:\n\n{review_ratings}')
             rating=np.mean(list(ratings.values()))
             if rating >= self._config.reviewer_threshold:
                 found_design = True
+                self.dialog.close_thread(refine_thread_did,f'The design passed the review process')
                 break
             else: # next round design
-                # remember to change the prompt if using multiple reviewers
-                review_ratings=''
-                for idx, style in enumerate(self.reviewers):
-                    review=reviews[style]
-                    rating=ratings[style]
-                    review_ratings+=f'# Review of Reviewer {idx+1}:\n\n{review}\n\n## Rating: {rating} out of 5\n\n'
-
                 query=f'The design didn\'t pass the review process, here is the feedback from the reviewer, please improve your design based on the reviews: {review_ratings}'
+                self.dialog.close_thread(refine_thread_did,f'The design didn\'t pass the review process')
 
         if not found_design:
+            self.dialog.close_thread(main_did,'The design process has ended without a successful design')
             return None
         
         title=explain.split('\n')[0].replace('#','').strip()#+'_'+str(uuid.uuid4().hex[:6])
@@ -568,18 +672,26 @@ class ModelDiscoverySystem(exec_utils.System):
                 f"{explain}\n\nImplementation of {title}:\n\n{code}\n\n"
                 "Please summarize the design with a description of the design and a simple pseudo code that conclude the core idea in few sentences."
             )
-            response = self.designer(
-                summary_query,
+            summary_thread_did = self.dialog.fork(main_did,'summary')
+            summary_thread = self.dialog.get_thread(summary_thread_did)
+            response = summary_thread.query_agent(
+                caller='system',
+                agent=self.designer,
+                query=summary_query,
                 source='user',
             )
             summary=response['text']
+            self.dialog.close_thread(summary_thread_did,f'The summary of the design is:\n\n{summary}')
             costs['summary'] += response["_details"]["running_cost"]
             if stream:
                 stream.markdown(summary)
         
         if self.log_dir:
             U.save_json(costs,f"{self.log_dir}/costs.json")
+        
+        self.dialog.close_thread(main_did,f'The design process has ended with a successful design:\n\nTitle: {title}\n\nCode:\n\n{code}\n\nExplaination:\n\n{explain}\n\nSummary:\n\n{summary}\n\nReviews:\n\n{review_ratings}')
 
+        self.close_session()
         return title,code,explain,summary,autocfg,reviews,ratings,check_results
 
     @classmethod
