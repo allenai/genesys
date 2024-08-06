@@ -32,7 +32,7 @@ Here are some hints:
 5. All dimensions of your model should always be a function of d_model (e.g., 2.5 times of d_model), you should never ever manually set a dimension of a layer to a fixed number in your config.
 6. The GABBase provides a block_loc to help you locate the current block within the network which allows you to implement topology related operations.
 7. The forward method allows you to create intermediate variables in intermediate_vars if you need.
-8. You are not allowed to write any global code, e.g. example usage, macro definitions, etc. in gab.py besides gab_config.
+8. Only import, import from, class definition, function definition, and gab_config definition can be shown in the code. Do not include any other operations in the code. They will be automatically removed.
 
 {instruct}
 

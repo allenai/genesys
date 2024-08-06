@@ -1,4 +1,5 @@
 from model_discovery.model.utils.modules import GABBase
+from model_discovery.model.utils.modules import GABBase
 import math
 import torch
 import torch.nn as nn
@@ -62,8 +63,4 @@ class SpectralHyenaLongformer(nn.Module):
         return output
 
 
-model = SpectralHyenaLongformer(d_model=512, seq_len=1024, num_heads=8,
-    attention_window=256, attention_dilation=1)
-input_tensor = torch.randn(32, 1024, 512)
-output = model(input_tensor)
-print(output.shape)
+gab_config = {}

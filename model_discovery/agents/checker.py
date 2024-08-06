@@ -70,6 +70,20 @@ class GABFormatChecker:
         self.warnings.clear()
         self.gab_code = None
 
+    def clean_code(self,gab_code):
+        lines=gab_code.split('\n')
+        gabbase_import_line='from model_discovery.model.utils.modules import GABBase'
+        num_import_lines=0
+        new_lines=[]
+        for i,line in enumerate(lines):
+            if line.strip()==gabbase_import_line:
+                num_import_lines+=1
+                if num_import_lines>1:
+                    continue
+            new_lines.append(line)
+        gab_code='\n'.join(new_lines)
+        return gab_code
+
     def check(self, gab_code: str) -> bool:
         """Check if the model format is correct.
 
@@ -90,8 +104,8 @@ class GABFormatChecker:
         code_ast = self._reformat(code_ast) # NOTE: maybe also check docstrings
         
         # Update self.gab_code with the modified AST
-        self.gab_code = astor.to_source(code_ast)
-
+        gab_code = astor.to_source(code_ast)
+        self.gab_code = self.clean_code(gab_code)
         print(f'Code after reformatted:\n\n{self.gab_code}\n\n')
 
         # Execute the modified AST
@@ -126,7 +140,7 @@ class GABFormatChecker:
                     return None
                 return node
             
-            def visit_ImportFrom(cls, node):
+            def visit_ImportFrom(cls, node): # FIXME: seems not working, always not found, but doesn't matter too much
                 if (node.module == 'model_discovery.model.utils.modules' and
                         any(alias.name == 'GABBase' for alias in node.names)):
                     self.found_import = True
@@ -244,12 +258,19 @@ class GABFormatChecker:
                                 item.args.kwarg = ast.arg(arg='intermediate_vars', annotation=None)    
                 return node
 
-            def visit_Expr(cls, node):
-                # Check if this is a standalone expression or function call
-                if isinstance(node.value, ast.Call):
-                    self.warnings.append('A standalone expression or function call is removed by the reformatter.\n')
-                    return None
+            def visit_Module(cls, node):
+                # Only keep Import, ImportFrom, FunctionDef, ClassDef, and gab_config nodes
+                new_body = []
+                for n in node.body:
+                    if isinstance(n, (ast.Import, ast.ImportFrom, ast.FunctionDef, ast.ClassDef)):
+                        new_body.append(n)
+                    elif isinstance(n, ast.Assign) and (len(n.targets) == 1 and isinstance(n.targets[0], ast.Name) and n.targets[0].id == 'gab_config'):
+                        new_body.append(n)
+                    else:
+                        self.warnings.append(f'The statement "{astor.to_source(n).strip()}" is removed by the reformatter.\n')
+                node.body = new_body
                 return node
+            
         
         code_ast = GABCorrector().visit(code_ast)
 
@@ -276,20 +297,20 @@ class GABFormatChecker:
 
 
     def _check_gab_config_dictionary(self, local_ns, code_ast) -> None:
-        gab_config = local_ns.get('gab_config')
-        if not gab_config:
+        if not 'gab_config' in local_ns:
             self.errors.append('The dictionary "gab_config" is not defined.\n')
             return 
         
+        gab_config = local_ns['gab_config']
         if not isinstance(gab_config, dict):
             self.errors.append('"gab_config" should be a dictionary.\n')
             return 
         
-        gab_class = local_ns.get('GAB')
-        if not gab_class:
+        if 'GAB' not in local_ns:
             self.errors.append('The class "GAB" is not defined in the provided code, cannot validate "gab_config".\n')
             return
 
+        gab_class = local_ns['GAB']
         init_signature = inspect.signature(gab_class.__init__)
         init_parameters = init_signature.parameters
         excluded_args = {'self','embed_dim', 'block_loc', 'device', 'dtype', 'kwargs'}
