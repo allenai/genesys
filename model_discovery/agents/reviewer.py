@@ -78,13 +78,14 @@ class ReviewerAgent(exec_utils.SimpleLMAgent):
             raw_response = self.model(
                 prompt=query,
                 model_state=self.model_state,
-                history=manual_history
+                history=tuple(manual_history)
             )
             try:
                 response = self.parse_output(raw_response)
                 success = True
                 break
             except Exception as e: 
+                manual_history=list(manual_history)
                 manual_history.append((raw_response.text,'assistant'))
                 query = f"Error parsing output from model: {e}\n\nThe output must be a json with keys 'rating' and 'review'"
         

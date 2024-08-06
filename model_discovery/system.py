@@ -288,7 +288,7 @@ class AgentContext:
         return [(query,source) for query,source,_ in self.data]
 
 
-class DialogThread:
+class DialogThread: # Maybe one thread one context? No, e.g., multiple agents can be in same thread with different context
     def __init__(self,name,did,parent,log_dir=None):
         self.did = did
         self.parent = parent
