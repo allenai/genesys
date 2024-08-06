@@ -19,7 +19,7 @@ from ..configs.gam_config import GAMConfig
 from .. import utils as U
 
 DEFAULT_NUM_PROC_LOAD =  os.cpu_count()*4 # Configure it based on your system, it can significantly speed up the download of datasets
-DEFAULT_NUM_PROC_TOKENIZE =  max(os.cpu_count()-4,1)
+DEFAULT_NUM_PROC_TOKENIZE =  max(int(os.cpu_count()*0.8),1)
 
 
 def get_tokenizer(tokenizer_name):
