@@ -41,9 +41,21 @@ def load_json(file,default={}):
     with open(file) as f:
         return json.load(f)
     
-def save_json(data,file): 
+def save_json(data,file,indent=4): 
     with open(file, 'w') as f:
-        json.dump(data, f, indent=4)
+        json.dump(data, f, indent=indent)
+
+def read_file(file,lines=False):
+    if not pexists(file):
+        return None
+    with open(file) as f:
+        if lines:
+            return f.readlines()
+        return f.read()
+
+def write_file(file,data):
+    with open(file, 'w') as f:
+        f.write(data)
 
 def get_last_checkpoint(output_dir: str):
     """Gets the last checkpoint 

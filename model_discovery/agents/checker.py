@@ -243,7 +243,14 @@ class GABFormatChecker:
                                 # Add **intermediate_vars to the function arguments
                                 item.args.kwarg = ast.arg(arg='intermediate_vars', annotation=None)    
                 return node
-                                
+
+            def visit_Expr(cls, node):
+                # Check if this is a standalone expression or function call
+                if isinstance(node.value, ast.Call):
+                    self.warnings.append('A standalone expression or function call is removed by the reformatter.\n')
+                    return None
+                return node
+        
         code_ast = GABCorrector().visit(code_ast)
 
         # Check and add the import if necessary

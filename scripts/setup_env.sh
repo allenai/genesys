@@ -5,7 +5,7 @@ show_help() {
     echo "Usage: $0 [options]"
     echo ""
     echo "Options:"
-    echo "  --prepare-data-only, -pd    Only prepare the pre-training datasets"
+    echo "  --prepare-data-only, -d    Only prepare the pre-training datasets"
     echo "  -h, --help                   Show this help message"
 }
 
@@ -14,7 +14,7 @@ PREPARE_DATA_ONLY=false
 
 while [[ "$#" -gt 0 ]]; do
     case $1 in
-        --prepare-data-only|-pd) PREPARE_DATA_ONLY=true ;;
+        --prepare-data-only|-d) PREPARE_DATA_ONLY=true ;;
         -h|--help) show_help; exit 0 ;;
         *) echo "Unknown parameter passed: $1"; show_help; exit 1 ;;
     esac

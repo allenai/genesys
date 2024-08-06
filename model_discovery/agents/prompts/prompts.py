@@ -28,14 +28,15 @@ Here are some hints:
 1. You need to consider the GAM model structure and the default operations like the normalization when designing the GAB block. Always remember that GAB is a part of the GAM model, it should not be designed as a whole model. 
 2. You need to consider the magnitute of the model based on the reference model size, d_model and n_blocks. The n_blocks can be automatically adjusted so do not need to worry too much.
 3. The model should be able to be parallel trained, which means you should not introduce recurrent operators like RNN or LSTM. The model should always be causal and differentiable.
-4. The design should be innovative, you are not encouraged to simply copy an existing idea such as transformer block, you need to design your own block.
+4. The design should be innovative, you are not allowed to copy a previous design such as transformer block, you need to design your own block.
 5. All dimensions of your model should always be a function of d_model (e.g., 2.5 times of d_model), you should never ever manually set a dimension of a layer to a fixed number in your config.
 6. The GABBase provides a block_loc to help you locate the current block within the network which allows you to implement topology related operations.
 7. The forward method allows you to create intermediate variables in intermediate_vars if you need.
+8. You are not allowed to write any global code, e.g. example usage, macro definitions, etc. in gab.py besides gab_config.
 
 {instruct}
 
-Now, use the information provided above to complete the code. You should strictly follow the instructions in gab.py and do not remove anything suggested by the instructions.
+Now, use the information provided above to complete the code. You should strictly follow the instructions in gab.py and do not remove anything suggested by the instructions. 
 
 Your response should include the full gab.py file with the completed code. 
 Specifically, when providing the full gab.py file, please preserve # gab.py at the beginning of the file.

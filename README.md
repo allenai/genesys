@@ -14,6 +14,8 @@ conda activate modis
 bash scripts/setup.sh # remember to set up the environment variables in setup.sh
 ```
 
+Hint: use ```bash scripts/setup.sh -d``` to prepare datasets only
+
 ### python dependencies 
 Currently, the agent portion relies on a private agent repo [**here**](https://github.com/allenai/exec_utils) (*soon to be made public and renamed*). This can be installed as below (requires github token):
 ```shell

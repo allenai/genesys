@@ -356,12 +356,23 @@ class ModelDiscoverySystem(exec_utils.System):
         ###
         self._queries = [] 
 
+    def new_session(self,log_dir=None):
+        self.sess_log = []
+        self.design_round = 0
+        self.log_dir = log_dir # setting a log_dir to log the dialogs
+
+    def log_activity(self,activity:tuple): # TODO: finishi this!
+        # (when, who, what), when: which round, what time, who: which agent, what: what action
+        if self.log_dir:
+            self.sess_log.append(activity)
+            U.save_json(self.sess_log,f"{self.log_dir}/session_log.json")
+
     def set_config(self,cfg:GAMConfig): # reset the gam config of the system
         self._cfg = cfg
 
-
     def design(self,query,designer_context,stream,status_handler): # input query, context, output design and explanation
         designer_cost = 0
+        self.design_round += 1
         problem_history = copy.deepcopy(designer_context) # a new dialog branch
         source='user'
 
@@ -471,6 +482,7 @@ class ModelDiscoverySystem(exec_utils.System):
     def query_system(
         self,
         query: Optional[str] = '',
+        log_dir: Optional[str] = None,
         stream: Optional[ModuleType] = None,
         frontend: Optional[bool] = False,
         status: Optional[bool] = True,
@@ -487,6 +499,8 @@ class ModelDiscoverySystem(exec_utils.System):
             with a frontend.
         
         """
+        self.new_session(log_dir)
+
         costs={ # NOTE: costs in exec_utils need to be updated
             'design':0,
             'review':0,
@@ -562,8 +576,11 @@ class ModelDiscoverySystem(exec_utils.System):
             costs['summary'] += response["_details"]["running_cost"]
             if stream:
                 stream.markdown(summary)
+        
+        if self.log_dir:
+            U.save_json(costs,f"{self.log_dir}/costs.json")
 
-        return title,code,explain,summary,autocfg,reviews,ratings,costs,check_results
+        return title,code,explain,summary,autocfg,reviews,ratings,check_results
 
     @classmethod
     def from_config(cls: Type[C],config: ConfigType,**kwargs) -> C:

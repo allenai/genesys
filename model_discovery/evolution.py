@@ -6,6 +6,7 @@ import sys
 import re
 import exec_utils
 import pathlib
+import uuid
 import os
 import json
 import time
@@ -200,7 +201,7 @@ class DesignArtifact(NodeObject):
     instruct: str
     ratings: dict
     reviews: dict
-    costs: Dict[str,float]
+    session_id: str # store the agent design process
     verify_report: dict = None
     check_results: dict = None
 
@@ -475,6 +476,7 @@ class EvolutionSystem(exec_utils.System):
             self.ckpt_dir=os.environ.get("CKPT_DIR")
         self.evo_dir=U.pjoin(self.ckpt_dir,self.evoname)
         U.mkdir(self.evo_dir)
+
         self.select_method=self.params['select_method']
 
         # load or init the state
@@ -578,7 +580,6 @@ class EvolutionSystem(exec_utils.System):
         else:   
             K=np.random.choice([1,2,3],p=[0.4,0.4,0.2])
         instruct,seed_ids=self.select(K) # use the seed_ids to record the phylogenetic tree
-        instruct+=f'\nYou should be creative, do not copy the previous designs, design your own block.'# {np.random.rand()}'
         artifact=self.sample(scale_id,instruct) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
         if artifact is None:
             print("No design sampled")
@@ -596,10 +597,13 @@ class EvolutionSystem(exec_utils.System):
     def sample(self,scale_id,instruct,verbose=True):
         """ Sample a design at a given scale and verify it """
         self.rnd_agent.set_config(self.scales[scale_id])
-        response=self.rnd_agent(instruct) 
+        session_id=uuid.uuid4().hex
+        log_dir=U.pjoin(self.evo_dir,'log',session_id)
+        U.mkdir(log_dir)
+        response=self.rnd_agent(instruct,log_dir=log_dir) 
         if response is None: # no design sampled
             return None
-        title,rawcode,explain,summary,autocfg,reviews,ratings,costs,check_results=response
+        title,rawcode,explain,summary,autocfg,reviews,ratings,check_results=response
         for i in [' and ',' for ','-']:
             title=title.replace(i,' ')
         acronym=''.join([i[0].upper() for i in title.split(' ') if i.isalpha()])
@@ -611,6 +615,7 @@ class EvolutionSystem(exec_utils.System):
 
         artifact={
             'title':title,
+            'session_id':session_id,
             'acronym':acronym,
             'code':code,
             'rawcode':rawcode,
@@ -620,7 +625,6 @@ class EvolutionSystem(exec_utils.System):
             'summary':summary,
             'reviews':reviews,
             'ratings':ratings,
-            'costs':costs,
             'check_results':check_results,
         }
         return artifact
@@ -779,14 +783,14 @@ if __name__ == '__main__':
     args = ve_parser.parse_args()
     strparams.append(f"evoname={args.evoname}")
 
-    # evolution_system = BuildEvolution(
-    #     strparams=';'.join(strparams),
-    #     do_cache=False,
-    #     # cache_type='diskcache',
-    # )
+    evolution_system = BuildEvolution(
+        strparams=';'.join(strparams),
+        do_cache=False,
+        # cache_type='diskcache',
+    )
     # evolution_system._run(args.mode)
 
-    test_evolve('test_evo_003',step=False)
+    # test_evolve('test_evo_003',step=False)
 
 
 #     code_MHA='''
@@ -839,9 +843,9 @@ if __name__ == '__main__':
 #     code_retnet_dir='/home/junyanc/model_discovery/model_discovery/model/library/base/retnet/retnet_edu.py'
 #     code_RetNet=open(code_retnet_dir,'r').read()
 
-#     checker=evolution_system.rnd_agent.checker
-#     cfg=evolution_system.rnd_agent._cfg
-#     design_name='test_design'
+    checker=evolution_system.rnd_agent.checker
+    cfg=evolution_system.rnd_agent._cfg
+    design_name='test_design'
 
     # code=code_MHA
     # checkpass,check_report,gabcode,check_results = checker.check(cfg,code,design_name)
@@ -851,6 +855,7 @@ if __name__ == '__main__':
     # code=code_RetNet
     # checkpass,check_report,gabcode,check_results = checker.check(cfg,code,design_name)
 
+    code=U.read_file('./draft.py')
+    ret=checker.check(cfg,code,design_name)
 
 
-    
