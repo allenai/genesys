@@ -59,6 +59,167 @@ CACHEPATH = f"{MODULE_DIR}"
 #### TODO: Multi-GPU checker
 
 
+
+class GABCorrector(ast.NodeTransformer):
+    def __init__(self):
+        self.warnings = []
+        self.errors = []
+        self.found_import = False
+        self.found_GAB = False
+        self.found__init__=False
+        self.found__forward=False
+
+    def visit_If(self, node):
+        # Check if this is the if __name__ == "__main__": block
+        if (isinstance(node.test, ast.Compare) and
+            isinstance(node.test.left, ast.Name) and
+            node.test.left.id == '__name__' and
+            isinstance(node.test.comparators[0], ast.Constant) and
+            node.test.comparators[0].value == '__main__'):
+            self.warnings.append(
+                'The if __name__ == "__main__": block is removed by the reformatter.\n'
+            )
+            return None
+        return node
+    
+    def visit_ImportFrom(self, node): # FIXME: seems not working, always not found, but doesn't matter too much
+        if (node.module == 'model_discovery.model.utils.modules' and
+                any(alias.name == 'GABBase' for alias in node.names)):
+            self.found_import = True
+        return node
+
+    def visit_ClassDef(self, node):
+        if node.name == 'GABBase':
+            self.warnings.append(
+                'The GAB class must be inherited from GABBase. You should never define a GABBase class by yourself. Automatically removed by the corrector, may cause errors.\n'
+            )
+            return None
+
+        if node.name == 'GAB':
+            self.found_GAB = True
+            # Check if GAB inherits from GABBase
+            if not any(base.id == 'GABBase' for base in node.bases if isinstance(base, ast.Name)):
+                self.warnings.append('The class "GAB" does not inherit from "GABBase". Automatically adding the inheritance.\n')
+                node.bases.append(ast.Name(id='GABBase', ctx=ast.Load()))
+
+            # Remove any forward method to avoid overriding
+            new_body = []
+            for item in node.body:
+                if isinstance(item, ast.FunctionDef) and item.name == 'forward':
+                    self.warnings.append(f'The "forward" method in "GAB" class is removed to avoid overriding the one in "GABBase". This may cause error.\n')
+                    continue
+                new_body.append(item)
+            node.body = new_body
+
+            for item in node.body:
+                if isinstance(item, ast.FunctionDef) and item.name == '__init__':
+                    self.found__init__=True
+                    current_args = [arg.arg for arg in item.args.args]
+                    required_args = ['self','embed_dim', 'block_loc', 'device', 'dtype']
+                    
+                    # Create a new list of args with required args in correct order
+                    new_args = []
+                    added_args = set()
+                    for required_arg in required_args:
+                        if required_arg not in current_args:
+                            self.warnings.append(f'The "__init__" method of "GAB" is missing the "{required_arg}" argument. Automatically added by the reformatter.\n')
+                            new_args.append(ast.arg(arg=required_arg, annotation=None))
+                            added_args.add(required_arg)
+                        else:
+                            new_args.append(item.args.args[current_args.index(required_arg)])
+                            added_args.add(required_arg)
+
+                    # Add remaining arguments that are not in the required list
+                    for arg in item.args.args:
+                        if arg.arg not in added_args:
+                            new_args.append(arg)
+
+                    item.args.args = new_args
+
+                    found_super = False
+                    for i, stmt in enumerate(item.body):
+                        if isinstance(stmt, ast.Expr) and isinstance(stmt.value, ast.Call):
+                            if (isinstance(stmt.value.func, ast.Attribute) and
+                                stmt.value.func.attr == '__init__' and
+                                isinstance(stmt.value.func.value, ast.Call) and
+                                isinstance(stmt.value.func.value.func, ast.Name) and
+                                stmt.value.func.value.func.id == 'super'):
+                                found_super = True
+                                self.warnings.append(
+                                    'The super().__init__(embed_dim, block_loc) call in GAB is force overwritten by the reformatter. It may cause error if you modified this line.\n'
+                                )
+                                stmt.value = ast.Call(
+                                    func=ast.Attribute(
+                                        value=ast.Call(
+                                            func=ast.Name(id='super', ctx=ast.Load()),
+                                            args=[],
+                                            keywords=[]
+                                        ),
+                                        attr='__init__',
+                                        ctx=ast.Load()
+                                    ),
+                                    args=[
+                                        ast.Name(id='embed_dim', ctx=ast.Load()),
+                                        ast.Name(id='block_loc', ctx=ast.Load())
+                                    ],
+                                    keywords=[]
+                                )
+                                break
+
+                    if not found_super:
+                        self.warnings.append(
+                            'The super().__init__(embed_dim, block_loc) call is missing in the __init__ method. Automatically added by the reformatter.\n'
+                        )
+                        # Insert super().__init__(embed_dim, block_loc) at the start of the __init__ method
+                        super_call = ast.Expr(
+                            value=ast.Call(
+                                func=ast.Attribute(
+                                    value=ast.Call(
+                                        func=ast.Name(id='super', ctx=ast.Load()),
+                                        args=[],
+                                        keywords=[]
+                                    ),
+                                    attr='__init__',
+                                    ctx=ast.Load()
+                                ),
+                                args=[
+                                    ast.Name(id='embed_dim', ctx=ast.Load()),
+                                    ast.Name(id='block_loc', ctx=ast.Load())
+                                ],
+                                keywords=[]
+                            )
+                        )
+                        item.body.insert(0, super_call)
+
+                if isinstance(item, ast.FunctionDef) and item.name == '_forward':
+                    self.found__forward=True
+                    # Check if **kwargs or **intermediate_vars is in the function arguments
+                    if item.args.kwarg is None:
+                        self.warnings.append(f'The "_forward" method of "GAB" is missing the "**intermediate_vars" argument. Automatically adding the argument.\n')
+                        # Add **intermediate_vars to the function arguments
+                        item.args.kwarg = ast.arg(arg='intermediate_vars', annotation=None)    
+        return node
+
+class GABCleaner(ast.NodeTransformer):
+    def __init__(self):
+        self.warnings = []
+        self.errors = []
+
+    def visit_Module(self, node):
+        # Only keep Import, ImportFrom, FunctionDef, ClassDef, and gab_config nodes
+        new_body = []
+        for n in node.body:
+            if isinstance(n, (ast.Import, ast.ImportFrom, ast.FunctionDef, ast.ClassDef)):
+                new_body.append(n)
+            elif isinstance(n, ast.Assign) and (len(n.targets) == 1 and isinstance(n.targets[0], ast.Name) and n.targets[0].id == 'gab_config'):
+                new_body.append(n)
+            elif isinstance(n, ast.Expr) and isinstance(n.value, ast.Constant):
+                continue
+            else:
+                self.warnings.append(f'The statement "{astor.to_source(n).strip()}" is removed by the reformatter.\n')
+        node.body = new_body
+        return node   
+
 class GABFormatChecker:
     def __init__(self):
         self.errors = []
@@ -69,20 +230,6 @@ class GABFormatChecker:
         self.errors.clear()
         self.warnings.clear()
         self.gab_code = None
-
-    def clean_code(self,gab_code):
-        lines=gab_code.split('\n')
-        gabbase_import_line='from model_discovery.model.utils.modules import GABBase'
-        num_import_lines=0
-        new_lines=[]
-        for i,line in enumerate(lines):
-            if line.strip()==gabbase_import_line:
-                num_import_lines+=1
-                if num_import_lines>1:
-                    continue
-            new_lines.append(line)
-        gab_code='\n'.join(new_lines)
-        return gab_code
 
     def check(self, gab_code: str) -> bool:
         """Check if the model format is correct.
@@ -104,8 +251,7 @@ class GABFormatChecker:
         code_ast = self._reformat(code_ast) # NOTE: maybe also check docstrings
         
         # Update self.gab_code with the modified AST
-        gab_code = astor.to_source(code_ast)
-        self.gab_code = self.clean_code(gab_code)
+        self.gab_code = astor.to_source(code_ast)
         print(f'Code after reformatted:\n\n{self.gab_code}\n\n')
 
         # Execute the modified AST
@@ -121,161 +267,19 @@ class GABFormatChecker:
         # Report all errors
         return self._report_errors()
     
+
+    def apply_visitor(self, visitor, code_ast):
+        code_ast = visitor.visit(code_ast)
+        self.warnings.extend(visitor.warnings)
+        self.errors.extend(visitor.errors)
+        return code_ast, visitor
+
     def _reformat(self, code_ast):
-        self.found_import = False
-        self.found_GAB = False
-        self.found__init__=False
-        self.found__forward=False
-        class GABCorrector(ast.NodeTransformer):
-            def visit_If(cls, node):
-                # Check if this is the if __name__ == "__main__": block
-                if (isinstance(node.test, ast.Compare) and
-                    isinstance(node.test.left, ast.Name) and
-                    node.test.left.id == '__name__' and
-                    isinstance(node.test.comparators[0], ast.Constant) and
-                    node.test.comparators[0].value == '__main__'):
-                    self.warnings.append(
-                        'The if __name__ == "__main__": block is removed by the reformatter.\n'
-                    )
-                    return None
-                return node
-            
-            def visit_ImportFrom(cls, node): # FIXME: seems not working, always not found, but doesn't matter too much
-                if (node.module == 'model_discovery.model.utils.modules' and
-                        any(alias.name == 'GABBase' for alias in node.names)):
-                    self.found_import = True
-                return node
-
-            def visit_ClassDef(cls, node):
-                if node.name == 'GABBase':
-                    self.warnings.append(
-                        'The GAB class must be inherited from GABBase. You should never define a GABBase class by yourself. Automatically removed by the corrector, may cause errors.\n'
-                    )
-                    return None
-
-                if node.name == 'GAB':
-                    self.found_GAB = True
-                    # Check if GAB inherits from GABBase
-                    if not any(base.id == 'GABBase' for base in node.bases if isinstance(base, ast.Name)):
-                        self.warnings.append('The class "GAB" does not inherit from "GABBase". Automatically adding the inheritance.\n')
-                        node.bases.append(ast.Name(id='GABBase', ctx=ast.Load()))
-
-                    # Remove any forward method to avoid overriding
-                    new_body = []
-                    for item in node.body:
-                        if isinstance(item, ast.FunctionDef) and item.name == 'forward':
-                            self.warnings.append(f'The "forward" method in "GAB" class is removed to avoid overriding the one in "GABBase". This may cause error.\n')
-                            continue
-                        new_body.append(item)
-                    node.body = new_body
-
-                    for item in node.body:
-                        if isinstance(item, ast.FunctionDef) and item.name == '__init__':
-                            self.found__init__=True
-                            current_args = [arg.arg for arg in item.args.args]
-                            required_args = ['self','embed_dim', 'block_loc', 'device', 'dtype']
-                            
-                            # Create a new list of args with required args in correct order
-                            new_args = []
-                            added_args = set()
-                            for required_arg in required_args:
-                                if required_arg not in current_args:
-                                    self.warnings.append(f'The "__init__" method of "GAB" is missing the "{required_arg}" argument. Automatically added by the reformatter.\n')
-                                    new_args.append(ast.arg(arg=required_arg, annotation=None))
-                                    added_args.add(required_arg)
-                                else:
-                                    new_args.append(item.args.args[current_args.index(required_arg)])
-                                    added_args.add(required_arg)
-
-                            # Add remaining arguments that are not in the required list
-                            for arg in item.args.args:
-                                if arg.arg not in added_args:
-                                    new_args.append(arg)
-
-                            item.args.args = new_args
-
-                            found_super = False
-                            for i, stmt in enumerate(item.body):
-                                if isinstance(stmt, ast.Expr) and isinstance(stmt.value, ast.Call):
-                                    if (isinstance(stmt.value.func, ast.Attribute) and
-                                        stmt.value.func.attr == '__init__' and
-                                        isinstance(stmt.value.func.value, ast.Call) and
-                                        isinstance(stmt.value.func.value.func, ast.Name) and
-                                        stmt.value.func.value.func.id == 'super'):
-                                        found_super = True
-                                        self.warnings.append(
-                                            'The super().__init__(embed_dim, block_loc) call in GAB is force overwritten by the reformatter. It may cause error if you modified this line.\n'
-                                        )
-                                        stmt.value = ast.Call(
-                                            func=ast.Attribute(
-                                                value=ast.Call(
-                                                    func=ast.Name(id='super', ctx=ast.Load()),
-                                                    args=[],
-                                                    keywords=[]
-                                                ),
-                                                attr='__init__',
-                                                ctx=ast.Load()
-                                            ),
-                                            args=[
-                                                ast.Name(id='embed_dim', ctx=ast.Load()),
-                                                ast.Name(id='block_loc', ctx=ast.Load())
-                                            ],
-                                            keywords=[]
-                                        )
-                                        break
-
-                            if not found_super:
-                                self.warnings.append(
-                                    'The super().__init__(embed_dim, block_loc) call is missing in the __init__ method. Automatically added by the reformatter.\n'
-                                )
-                                # Insert super().__init__(embed_dim, block_loc) at the start of the __init__ method
-                                super_call = ast.Expr(
-                                    value=ast.Call(
-                                        func=ast.Attribute(
-                                            value=ast.Call(
-                                                func=ast.Name(id='super', ctx=ast.Load()),
-                                                args=[],
-                                                keywords=[]
-                                            ),
-                                            attr='__init__',
-                                            ctx=ast.Load()
-                                        ),
-                                        args=[
-                                            ast.Name(id='embed_dim', ctx=ast.Load()),
-                                            ast.Name(id='block_loc', ctx=ast.Load())
-                                        ],
-                                        keywords=[]
-                                    )
-                                )
-                                item.body.insert(0, super_call)
-
-                        if isinstance(item, ast.FunctionDef) and item.name == '_forward':
-                            self.found__forward=True
-                            # Check if **kwargs or **intermediate_vars is in the function arguments
-                            if item.args.kwarg is None:
-                                self.warnings.append(f'The "_forward" method of "GAB" is missing the "**intermediate_vars" argument. Automatically adding the argument.\n')
-                                # Add **intermediate_vars to the function arguments
-                                item.args.kwarg = ast.arg(arg='intermediate_vars', annotation=None)    
-                return node
-
-            def visit_Module(cls, node):
-                # Only keep Import, ImportFrom, FunctionDef, ClassDef, and gab_config nodes
-                new_body = []
-                for n in node.body:
-                    if isinstance(n, (ast.Import, ast.ImportFrom, ast.FunctionDef, ast.ClassDef)):
-                        new_body.append(n)
-                    elif isinstance(n, ast.Assign) and (len(n.targets) == 1 and isinstance(n.targets[0], ast.Name) and n.targets[0].id == 'gab_config'):
-                        new_body.append(n)
-                    else:
-                        self.warnings.append(f'The statement "{astor.to_source(n).strip()}" is removed by the reformatter.\n')
-                node.body = new_body
-                return node
-            
-        
-        code_ast = GABCorrector().visit(code_ast)
+        code_ast,corrector = self.apply_visitor(GABCorrector(), code_ast)
+        code_ast,_ = self.apply_visitor(GABCleaner(), code_ast)
 
         # Check and add the import if necessary
-        if not self.found_import:
+        if not corrector.found_import:
             self.warnings.append('The import for "GABBase" from "model_discovery.model.utils.modules" is missing. Automatically adding the import.\n')
             import_node = ast.ImportFrom(
                 module='model_discovery.model.utils.modules',
@@ -284,14 +288,14 @@ class GABFormatChecker:
             )
             code_ast.body.insert(0, import_node)
 
-        if not self.found_GAB:
+        if not corrector.found_GAB:
             self.errors.append('The class "GAB" is not defined in the provided code.\n')
+        
+        if not corrector.found__forward:
+            self.errors.append(f'The method "_forward" is not defined in the class "GAB" or "GAB" is not defined.\n')
 
-        if not self.found__forward:
-            self.errors.append(f'The method "_forward" is not defined in the class "GAB".\n')
-
-        if not self.found__init__:
-            self.errors.append(f'The method "__init__" is not defined in the class "GAB".\n')
+        if not corrector.found__init__:
+            self.errors.append(f'The method "__init__" is not defined in the class "GAB" or "GAB" is not defined.\n')
 
         return code_ast
 
@@ -313,19 +317,25 @@ class GABFormatChecker:
         gab_class = local_ns['GAB']
         init_signature = inspect.signature(gab_class.__init__)
         init_parameters = init_signature.parameters
+
         excluded_args = {'self','embed_dim', 'block_loc', 'device', 'dtype', 'kwargs'}
-        init_args = {name for name in init_parameters if name not in excluded_args}
+        required_args = {name for name, param in init_parameters.items() if name not in excluded_args and param.default == inspect.Parameter.empty}
+        optional_args = {name for name, param in init_parameters.items() if name not in excluded_args and param.default != inspect.Parameter.empty}
 
         config_args = set(gab_config.keys())
 
-        missing_args = init_args - config_args
-        extra_args = config_args - init_args
+        missing_args = required_args - config_args
+        redundant_args = config_args - (required_args | optional_args)
+        default_args = optional_args - config_args
 
         if missing_args:
             self.errors.append(f'The dictionary "gab_config" is missing the following arguments: {", ".join(missing_args)} in "GAB.__init__".\n')
 
-        if extra_args:
-            self.warnings.append(f'The dictionary "gab_config" contains extra arguments: {", ".join(extra_args)} not used or not allowed to be re-defined in "GAB.__init__". They are automatically removed by the reformatter.\n')
+        if default_args:
+            self.warnings.append(f'These args are not set by gab_config, and directly use the default value: {", ".join(default_args)}.\n')
+
+        if redundant_args:
+            self.warnings.append(f'The dictionary "gab_config" contains extra arguments: {", ".join(redundant_args)} not used or not allowed to be re-defined in "GAB.__init__". They are automatically removed by the reformatter.\n')
             class ConfigModifier(ast.NodeTransformer):
                 def visit_Assign(self, node):
                     if isinstance(node.targets[0], ast.Name) and node.targets[0].id == 'gab_config':
@@ -333,7 +343,7 @@ class GABFormatChecker:
                             new_keys = []
                             new_values = []
                             for key, value in zip(node.value.keys, node.value.values):
-                                if isinstance(key, ast.Constant) and key.s not in extra_args:
+                                if isinstance(key, ast.Constant) and key.s not in redundant_args:
                                     new_keys.append(key)
                                     new_values.append(value)
                             node.value.keys = new_keys

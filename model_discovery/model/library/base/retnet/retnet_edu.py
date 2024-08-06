@@ -215,6 +215,7 @@ class GAB(GABBase):
 """ The dictionary of hyperparameters for constructing a GAB layer
     embed_dim, device, dtype should NOT be included in gab_config
 """
+# THE HYPERPARAMETERS OF CUSTOMIZED ARGUMENTS IN GAB CLASS #
 gab_config = {
     # THE HYPERPARAMETERS OF ADDITIONAL ARGUMENTS IN GAB CLASS #
     'expand_k': 1,

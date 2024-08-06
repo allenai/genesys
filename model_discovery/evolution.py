@@ -840,8 +840,6 @@ if __name__ == '__main__':
 # }
 # '''
 
-#     code_retnet_dir='/home/junyanc/model_discovery/model_discovery/model/library/base/retnet/retnet_edu.py'
-#     code_RetNet=open(code_retnet_dir,'r').read()
 
     checker=evolution_system.rnd_agent.checker
     cfg=evolution_system.rnd_agent._cfg
@@ -851,11 +849,12 @@ if __name__ == '__main__':
     # checkpass,check_report,gabcode,check_results = checker.check(cfg,code,design_name)
     # print(check_results)
 
-    # print('Check the second code')
-    # code=code_RetNet
-    # checkpass,check_report,gabcode,check_results = checker.check(cfg,code,design_name)
+    print('Check the second code')
+    code_retnet_dir='/home/junyanc/model_discovery/model_discovery/model/library/base/retnet/retnet_edu.py'
+    code=open(code_retnet_dir,'r').read()
+    checkpass,check_report,gabcode,check_results = checker.check(cfg,code,design_name)
 
-    code=U.read_file('./draft.py')
-    ret=checker.check(cfg,code,design_name)
+    # code=U.read_file('./draft.py')
+    # ret=checker.check(cfg,code,design_name)
 
 
