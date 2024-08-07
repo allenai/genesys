@@ -17,7 +17,7 @@ import pandas as pd
 import numpy as np
 from io import StringIO
 import random
-from networkx.drawing.nx_pydot import write_dot
+from networkx.drawing.nx_pydot import to_pydot,warnings
 from pyvis.network import Network
 import math
 
@@ -73,9 +73,6 @@ NODE_SIZE_MAP={
     '1300M':45,
 }
 
-
-LIBRARY_DIR = '/home/junyanc/model_discovery/model_discovery/model/library'
-
 REFERENCE_COLOR = '#AF47D2'
 RWC_COLOR = '#FB773C' # reference with code
 EXT_COLOR_1HOC = '#ed556a' # extended 1-hop reference
@@ -100,12 +97,12 @@ class NodeObject:
     
     @classmethod
     def load(cls, save_dir: str, acronym:str):
-        with open(U.pjoin(save_dir,acronym+'.json'),'r') as f:
+        with open(U.pjoin(save_dir,acronym+'.json'),'r', encoding='utf-8') as f:
             return cls.from_dict(json.load(f))
 
     def save(self,save_dir: str):
         os.makedirs(save_dir, exist_ok=True)
-        with open(U.pjoin(save_dir,self.acronym+'.json'),'w') as f:
+        with open(U.pjoin(save_dir,self.acronym+'.json'),'w', encoding='utf-8') as f:
             json.dump(self.to_dict(),f,indent=4)
 
     def to_desc(self) -> str:
@@ -133,9 +130,9 @@ class LibraryReference(NodeObject):
         py_dir=U.pjoin(LIBRARY_DIR,'base',self.acronym,self.acronym+'_edu.py')
         go_dir=U.pjoin(LIBRARY_DIR,'base',self.acronym,self.acronym+'_edu.go')
         if U.pexists(py_dir):
-            self.code=f'# {self.acronym}_edu.py\n\n'+open(py_dir,'r').read()
+            self.code=f'# {self.acronym}_edu.py\n\n'+open(py_dir,'r', encoding='utf-8').read()
         elif U.pexists(go_dir):
-            self.code=f'// {self.acronym}_edu.go\n\n'+open(go_dir,'r').read()
+            self.code=f'// {self.acronym}_edu.go\n\n'+open(go_dir,'r', encoding='utf-8').read()
         else:
             self.code=None
 
@@ -208,16 +205,16 @@ class DesignArtifact(NodeObject):
     def save(self,db_dir: str):
         U.mkdir(U.pjoin(db_dir,self.acronym))
         U.save_json(self.to_dict(),U.pjoin(db_dir,self.acronym,"artifact.json"))
-        with open(U.pjoin(db_dir,self.acronym,"gab.py"),'w') as f:
+        with open(U.pjoin(db_dir,self.acronym,"gab.py"),'w', encoding='utf-8') as f:
             f.write(self.code)
-        with open(U.pjoin(db_dir,self.acronym,"explaination.md"),'w') as f:
+        with open(U.pjoin(db_dir,self.acronym,"explaination.md"),'w', encoding='utf-8') as f:
             f.write(self.explain)
         if self.instruct:
-            with open(U.pjoin(db_dir,self.acronym,"instruct.md"),'w') as f:
+            with open(U.pjoin(db_dir,self.acronym,"instruct.md"),'w', encoding='utf-8') as f:
                 f.write(self.instruct)
-        with open(U.pjoin(db_dir,self.acronym,"summary.md"),'w') as f:
+        with open(U.pjoin(db_dir,self.acronym,"summary.md"),'w', encoding='utf-8') as f:
             f.write(self.summary)
-        with open(U.pjoin(db_dir,self.acronym,"reviews.md"),'w') as f:
+        with open(U.pjoin(db_dir,self.acronym,"reviews.md"),'w', encoding='utf-8') as f:
             f.write(self.get_reviews())
         if self.check_results:
             U.save_json(self.check_results,U.pjoin(db_dir,self.acronym,"check_results.json"))
@@ -272,6 +269,24 @@ class DesignArtifact(NodeObject):
             prompt+=f'## Report:\n\n{json.dumps(report,indent=4)}'
         return prompt
     
+
+def write_dot(G, path):
+    """Write NetworkX graph G to Graphviz dot format on path.
+
+    Path can be a string or a file handle.
+    """
+    msg = (
+        "nx.nx_pydot.write_dot depends on the pydot package, which has"
+        "known issues and is not actively maintained. Consider using"
+        "nx.nx_agraph.write_dot instead.\n\n"
+        "See https://github.com/networkx/networkx/issues/5723"
+    )
+    warnings.warn(msg, PendingDeprecationWarning, stacklevel=2)
+    P = to_pydot(G)
+    with open(path, "w", encoding='utf-8') as f:
+        f.write(P.to_string())
+    return
+
 
 class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     # Read from a design base and construct a phylogenetic tree
@@ -694,7 +709,7 @@ class EvolutionSystem(exec_utils.System):
 
     def _verify(self,design_id): # do a single verify
         artifact=U.load_json(U.pjoin(self.evo_dir,'db',design_id,'artifact.json'))
-        with open('/home/junyanc/model_discovery/model_discovery/model/gab.py','w') as f:
+        with open('./model/gab.py','w', encoding='utf-8') as f:
             f.write(artifact['code'])
         args = ve_parser.parse_args()
         args.evoname=self.evoname
@@ -778,6 +793,7 @@ if __name__ == '__main__':
         "scales=14M,31M,70M",
         "selection_ratio=0.25",
         "select_method=random",
+        "ckpt_dir=./ckpt",
     ]
 
     args = ve_parser.parse_args()

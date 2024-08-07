@@ -1,7 +1,7 @@
 import os
 import transformers
 
-# from huggingface_hub import login
+from huggingface_hub import login
 from transformers import AutoTokenizer
 from datasets import (
     load_dataset,
@@ -20,6 +20,8 @@ from .. import utils as U
 
 DEFAULT_NUM_PROC_LOAD =  os.cpu_count()*4 # Configure it based on your system, it can significantly speed up the download of datasets
 DEFAULT_NUM_PROC_TOKENIZE =  max(os.cpu_count()//2,1)
+
+login(os.environ.get("HF_KEY",None))
 
 
 def get_tokenizer(tokenizer_name):

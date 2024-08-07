@@ -107,8 +107,8 @@ def setup(args) -> None:
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
     
-    ### log into the hf hub 
-    login(os.environ.get("HF_KEY",None))
+    # ### log into the hf hub 
+    # login(os.environ.get("HF_KEY",None))
 
 
 def before_train(args):
