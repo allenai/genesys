@@ -860,8 +860,8 @@ class Checker(exec_utils.BaseTool):
                 assert checkpass2 and checkpass3
                 checkpass4,effectiveness=self._check_effectiveness(glm,config)
                 assert checkpass4
-            except:# AssertionError:
-                self.rprint('Model test failed\n')
+            except Exception as e:# AssertionError:
+                self.rprint('Model test failed\n',e)
                 if not checkpass2:
                     self.rprint('Hint: If you used convolutional layer, you should consider that the conv kernel may cover the future steps. '
                                 'You can add padding and truncation of future steps to the conv layer to make it causal.\n')
