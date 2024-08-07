@@ -22,6 +22,22 @@ from pyvis.network import Network
 import math
 
 
+try: # a stupid patch for windows
+    from .secrets import *
+    os.environ['MY_OPENAI_KEY']=MY_OPENAI_KEY
+    os.environ['HF_KEY']=HF_KEY
+    os.environ['HF_HUB_KEY']=HF_HUB_KEY
+    os.environ['GITHUB_TOKEN']=GITHUB_TOKEN
+    os.environ['WANDB_API_KEY']=WANDB_API_KEY
+    os.environ['S2_API_KEY']=S2_API_KEY
+    os.environ['AWS_SECRET_ACCESS_KEY']=AWS_SECRET_ACCESS_KEY
+    os.environ['AWS_ACCESS_KEY_ID']=AWS_ACCESS_KEY_ID
+    os.environ['DATA_DIR']=DATA_DIR
+    os.environ['CKPT_DIR']=CKPT_DIR
+    os.environ['HF_DATASETS_TRUST_REMOTE_CODE']='1'    
+except:
+    pass
+
 
 from types import ModuleType
 from typing import (
@@ -53,8 +69,8 @@ __all__ = [
     "BuildEvolution",
 ]
 
-LIBRARY_DIR = '/home/junyanc/model_discovery/model_discovery/model/library'
 
+LIBRARY_DIR = './model_discovery/model/library'
 
 NODE_COLOR_MAP={
     '14M':'#5698c3',
@@ -805,14 +821,14 @@ if __name__ == '__main__':
     args = ve_parser.parse_args()
     strparams.append(f"evoname={args.evoname}")
 
-    evolution_system = BuildEvolution(
-        strparams=';'.join(strparams),
-        do_cache=False,
-        # cache_type='diskcache',
-    )
-    evolution_system._run(args.mode)
+    # evolution_system = BuildEvolution(
+    #     strparams=';'.join(strparams),
+    #     do_cache=False,
+    #     # cache_type='diskcache',
+    # )
+    # evolution_system._run(args.mode)
 
-    # test_evolve('test_evo_003',step=True)
+    test_evolve('test_evo_003',step=True)
 
 
 #     code_MHA='''
