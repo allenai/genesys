@@ -842,6 +842,7 @@ class Checker(exec_utils.BaseTool):
             )
 
         # Functional checks
+        effectiveness = None
         with U.CodeTimer("Model functional tests"):
             checkpass2=False
             try:
@@ -856,8 +857,9 @@ class Checker(exec_utils.BaseTool):
                     gam.d_model
                 )
                 checkpass3=self._check_differentiable(glm,config.vocab_size)
+                assert checkpass2 and checkpass3
                 checkpass4,effectiveness=self._check_effectiveness(glm,config)
-                assert checkpass2 and checkpass3 and checkpass4
+                assert checkpass4
             except:# AssertionError:
                 self.rprint('Model test failed\n')
                 if not checkpass2:
