@@ -152,7 +152,7 @@ def create_block(
         **block_config
     )
     norm_cls = partial(
-        nn.LayerNorm if not rms_norm else RMSNorm, eps=norm_epsilon, **factory_kwargs
+        nn.LayerNorm if (not rms_norm or not RMSNorm) else RMSNorm, eps=norm_epsilon, **factory_kwargs
     )
     mlp_cls = partial(
         MLP, hidden_features=d_model*4, out_features=d_model, **factory_kwargs
