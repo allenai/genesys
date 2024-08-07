@@ -21,6 +21,24 @@ from networkx.drawing.nx_pydot import to_pydot,warnings
 from pyvis.network import Network
 import math
 
+
+
+#REMEMBER TO REMOVE THEM BEFORE PUSHING TO GITHUB#
+os.environ['MY_OPENAI_KEY']='sk-proj-5YcQ7h7d34Q0eFFRwgWuT3BlbkFJBlL9LYQpRAYSwwhNIJfU'
+os.environ['HF_KEY']='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'
+os.environ['HF_HUB_KEY']='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'
+os.environ['GITHUB_TOKEN']='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'
+os.environ['WANDB_API_KEY']='878b7ca8a974b08a1af47c2d0b43b612b4f1dd91'
+os.environ['S2_API_KEY']='rKyg8o2I1bUQYUeePeLF1AJtJxeyJfv8rywBZzMc'
+os.environ['AWS_SECRET_ACCESS_KEY']='nQBLyXa37ga+iSDLcn6JaHiDjAOVmTC9uARkRkqd'
+os.environ['AWS_ACCESS_KEY_ID']='AKIA3YPWPMPFRSBLX4NX'
+os.environ['DATA_DIR']='C:\\ChengJunyan1\\Research\\model_discovery\\data'
+os.environ['CKPT_DIR']='C:\\ChengJunyan1\\Research\\model_discovery\\ckpt'
+os.environ['HF_DATASETS_TRUST_REMOTE_CODE']='1'
+##################################################
+
+
+
 from types import ModuleType
 from typing import (
     Type,
@@ -50,6 +68,10 @@ __all__ = [
     "EvolutionSystem",
     "BuildEvolution",
 ]
+
+# LIBRARY_DIR = '/home/junyanc/model_discovery/model_discovery/model/library'
+
+LIBRARY_DIR = 'C:\\ChengJunyan1\\Research\\model_discovery\\model_discovery\\model\\library'
 
 NODE_COLOR_MAP={
     '14M':'#5698c3',

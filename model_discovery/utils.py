@@ -38,23 +38,23 @@ def letternum2num(s):
 def load_json(file,default={}):
     if not pexists(file):
         return default
-    with open(file) as f:
+    with open(file, encoding='utf-8') as f:
         return json.load(f)
     
 def save_json(data,file,indent=4): 
-    with open(file, 'w') as f:
+    with open(file, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=indent)
 
 def read_file(file,lines=False):
     if not pexists(file):
         return None
-    with open(file) as f:
+    with open(file, encoding='utf-8') as f:
         if lines:
             return f.readlines()
         return f.read()
 
 def write_file(file,data):
-    with open(file, 'w') as f:
+    with open(file, 'w', encoding='utf-8') as f:
         f.write(data)
 
 def get_last_checkpoint(output_dir: str):

@@ -301,7 +301,7 @@ class DialogThread: # Maybe one thread one context? No, e.g., multiple agents ca
             U.mkdir(self.log_dir)
 
     def log(self,type,data): #directly log to disk
-        timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+        timestamp = time.strftime('%Y-%m-%d_%H-%M-%S')
         log_content = {'timestamp':timestamp,'type':type,'data':data}
         if self.log_dir: # save to seperate json files to avoid write conficts/lag
             U.save_json(log_content,f"{self.log_dir}/{timestamp}.json")
