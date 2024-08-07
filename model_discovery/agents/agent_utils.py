@@ -9,10 +9,10 @@ from exec_utils.models.utils import openai_costs
 
 
 
-## Patch for the OpenAIModel format
+## Patch for the OpenAIModel structured outputs: https://platform.openai.com/docs/guides/structured-outputs/introduction
 
 
-def format__call__(
+def structured__call__(
         model: OpenAIModel,
         prompt: str,
         response_format: Dict[str,Any],
@@ -37,7 +37,7 @@ def format__call__(
     
     """
     if model_state is None:
-        return _prompt_model_format(
+        return _prompt_model_structured(
             model,
             model.create_message(
                 query=prompt,
@@ -53,11 +53,11 @@ def format__call__(
         query=prompt,
         manual_history=history
     )
-    return _prompt_model_format(model,message,response_format,**kwargs)
+    return _prompt_model_structured(model,message,response_format,**kwargs)
 
 
 
-def _prompt_model_format(model,message,response_format,**kwargs) -> str:
+def _prompt_model_structured(model,message,response_format,**kwargs) -> str:
     """Main method for calling the underlying LM. 
     
     :see: https://github.com/jiangjiechen/auction-arena/blob/main/src/bidder_base.py#L167
@@ -67,7 +67,7 @@ def _prompt_model_format(model,message,response_format,**kwargs) -> str:
     """
     for i in range(model._config.num_calls):
         try:
-            return call_model_format(model,message,response_format)
+            return call_model_structured(model,message,response_format)
         except Exception as e:
             model.logging.warning(
                 f'Issue encountered while running running, msg={e}, retrying',
@@ -81,7 +81,7 @@ def _prompt_model_format(model,message,response_format,**kwargs) -> str:
     )
 
 
-def call_model_format(model,message,response_format) -> ModelOutput:
+def call_model_structured(model,message,response_format) -> ModelOutput:
     """Calls the underlying model 
     
     :param message: 

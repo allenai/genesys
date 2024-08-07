@@ -11,7 +11,7 @@ import exec_utils
 import json
 import re
 
-from .agent_utils import format__call__
+from .agent_utils import structured__call__,ModelOutput
 
 __all__ = [
     "ReviewerAgent"
@@ -86,10 +86,11 @@ class ReviewerAgent(exec_utils.SimpleLMAgent):
                     "type": "object",
                     "properties": {
                         "review": {
-                            "type": "string"
+                            "type": "string",
                         },
                         "rating": {
-                            "type": "float"
+                            "type": "number",
+                            "description": "A number between 0 and 5, can be a float."
                         }
                     },
                     "required": ["review", "rating"],
@@ -100,7 +101,7 @@ class ReviewerAgent(exec_utils.SimpleLMAgent):
 
         success = False
         for _ in range(num_max_retry):
-            raw_response = format__call__(
+            raw_response = structured__call__(
                 self.model,
                 response_format=response_format,
                 prompt=query,
