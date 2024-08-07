@@ -11,9 +11,13 @@ import exec_utils
 import json
 import re
 
+from .agent_utils import format__call__
+
 __all__ = [
     "ReviewerAgent"
 ]
+
+
 
 
 @exec_utils.Registry(
@@ -73,9 +77,32 @@ class ReviewerAgent(exec_utils.SimpleLMAgent):
         self.model_state.query_state = source
         num_max_retry=5
 
+        response_format = {
+            "type": "json_schema",
+            "json_schema": {
+                "name": "review_response",
+                "strict": True,
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "review": {
+                            "type": "string"
+                        },
+                        "rating": {
+                            "type": "float"
+                        }
+                    },
+                    "required": ["review", "rating"],
+                    "additionalProperties": False
+                }
+            }
+        }
+
         success = False
         for _ in range(num_max_retry):
-            raw_response = self.model(
+            raw_response = format__call__(
+                self.model,
+                response_format=response_format,
                 prompt=query,
                 model_state=self.model_state,
                 history=tuple(manual_history)
