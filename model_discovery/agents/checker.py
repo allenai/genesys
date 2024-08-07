@@ -659,7 +659,7 @@ class Checker(exec_utils.BaseTool):
         self.report = ''
 
     ### HAS SOME WEIRD BUGS ### It may also due to torch
-    def _check_causality(self, block, D: int, seq_len: int) -> bool:
+    def _check_causality(self, block, D: int, seq_len: int = 100) -> bool:
         """Checks if a design is causal
 
         :param block: 
@@ -853,8 +853,7 @@ class Checker(exec_utils.BaseTool):
                 assert checkpass1
                 checkpass2=self._check_causality(
                     gab,
-                    gam.d_model,
-                    DEFAULT_CONTEXT_LENGTH
+                    gam.d_model
                 )
                 checkpass3=self._check_differentiable(glm,config.vocab_size)
                 checkpass4,effectiveness=self._check_effectiveness(glm,config)
