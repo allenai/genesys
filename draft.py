@@ -1,66 +1,72 @@
-from model_discovery.model.utils.modules import GABBase
-from model_discovery.model.utils.modules import GABBase
-import math
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
+from model_discovery.model.utils.modules import GABBase
 from einops import rearrange
 
 
-class PositionalEmbedding(nn.Module):
+class GeometricAttention(nn.Module):
 
-    def __init__(self, emb_dim, seq_len):
-        super().__init__()
-        self.seq_len = seq_len
-        self.emb_dim = emb_dim
-        self.pos_emb = nn.Parameter(torch.randn(1, seq_len, emb_dim))
+    def __init__(self, d_model, nhead, dropout=0.1):
+        super(GeometricAttention, self).__init__()
+        self.att = nn.MultiheadAttention(d_model, nhead, dropout=dropout)
+        self.copy_gate = nn.Linear(d_model, 1)
+        self.dropout = nn.Dropout(dropout)
+        self.norm = nn.LayerNorm(d_model)
 
-    def forward(self, x):
-        return x + self.pos_emb[:, :x.size(1), :]
-
-
-class SpectralHyenaLongformer(nn.Module):
-
-    def __init__(self, d_model, seq_len, num_heads, attention_window,
-        attention_dilation, filter_order=64):
-        super().__init__()
-        self.d_model = d_model
-        self.seq_len = seq_len
-        self.num_heads = num_heads
-        self.head_dim = d_model // num_heads
-        self.attention_window = attention_window
-        self.attention_dilation = attention_dilation
-        self.query = nn.Linear(d_model, d_model)
-        self.key = nn.Linear(d_model, d_model)
-        self.value = nn.Linear(d_model, d_model)
-        self.pos_emb = PositionalEmbedding(d_model, seq_len)
-        self.hyena_filter = nn.Conv1d(d_model, d_model, kernel_size=
-            filter_order, padding=filter_order // 2, groups=d_model)
-        self.spectral_filter = nn.Conv1d(d_model, d_model, kernel_size=
-            filter_order, padding=filter_order // 2, groups=d_model)
-        self.ffn = nn.Sequential(nn.Linear(d_model, 4 * d_model), nn.GELU(),
-            nn.Linear(4 * d_model, d_model))
-
-    def forward(self, x, attention_mask=None):
-        bsz, seq_len, _ = x.size()
-        x = self.pos_emb(x)
-        q = self.query(x).view(bsz, seq_len, self.num_heads, self.head_dim
-            ).transpose(1, 2)
-        k = self.key(x).view(bsz, seq_len, self.num_heads, self.head_dim
-            ).transpose(1, 2)
-        v = self.value(x).view(bsz, seq_len, self.num_heads, self.head_dim
-            ).transpose(1, 2)
-        attn_weights = torch.einsum('bhqd,bhkd->bhqk', q, k) / math.sqrt(self
-            .head_dim)
-        attn_weights = F.softmax(attn_weights, dim=-1)
-        attn_output = torch.einsum('bhqk,bhvd->bhqd', attn_weights, v
-            ).transpose(1, 2).contiguous().view(bsz, seq_len, self.d_model)
-        hyena_output = self.hyena_filter(x.transpose(1, 2)).transpose(1, 2)
-        spectral_output = self.spectral_filter(x.transpose(1, 2)).transpose(
-            1, 2)
-        output = attn_output + hyena_output + spectral_output
-        output = self.ffn(output)
+    def forward(self, src, mask=None):
+        attn_output, _ = self.att(src, src, src, attn_mask=mask)
+        gate = torch.sigmoid(self.copy_gate(src))
+        output = gate * src + (1 - gate) * attn_output
+        output = self.dropout(output)
+        output = self.norm(output + src)
         return output
 
 
-gab_config = {}
+class SegmentLevelRecurrence(nn.Module):
+
+    def __init__(self, d_model, nhead, mem_len, dropout=0.1):
+        super(SegmentLevelRecurrence, self).__init__()
+        self.mem_len = mem_len
+        self.att = nn.MultiheadAttention(d_model, nhead, dropout=dropout)
+        self.norm = nn.LayerNorm(d_model)
+        self.memory = None
+
+    def forward(self, src, mask=None):
+        if self.memory is None:
+            self.memory = src.new_zeros((self.mem_len, src.size(1), src.
+                size(2)))
+        combined = torch.cat([self.memory, src], dim=0)
+        attn_output, _ = self.att(src, combined, combined, attn_mask=mask)
+        self.memory = combined[-self.mem_len:].detach()
+        output = self.norm(attn_output + src)
+        return output
+
+
+class GAB(GABBase):
+    """Generalized Autoregressive Block
+        Input:        X: (batch, seqlen, embed_dim)
+        Output:       Y: (batch, seqlen, embed_dim)
+        Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, device=None, dtype
+        =None, nhead=8, mem_len=128, dropout=0.1):
+        factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc)
+        self.geometric_attention = GeometricAttention(embed_dim, nhead, dropout
+            )
+        self.segment_recurrence = SegmentLevelRecurrence(embed_dim, nhead,
+            mem_len, dropout)
+        self.ffn = nn.Sequential(nn.Linear(embed_dim, 4 * embed_dim), nn.
+            ReLU(), nn.Linear(4 * embed_dim, embed_dim), nn.Dropout(dropout
+            ), nn.LayerNorm(embed_dim))
+
+    def _forward(self, X, **intermediate_vars):
+        mask = None
+        X = self.geometric_attention(X, mask)
+        X = self.segment_recurrence(X, mask)
+        X = self.ffn(X)
+        return X
+
+
+gab_config = {'nhead': 8, 'mem_len': 128, 'dropout': 0.1}

@@ -356,7 +356,7 @@ class DialogManager:
         return self.threads[did]
 
     def get_active_threads(self):
-        return [thread for thread in self.threads if thread.return_message is None]
+        return [did for did in self.threads if self.threads[did].return_message is None]
 
     
 @exec_utils.Registry(
@@ -450,6 +450,7 @@ class ModelDiscoverySystem(exec_utils.System):
 
     def new_session(self,log_dir=None):
         U.mkdir(log_dir)
+        self.log_dir = log_dir
         self.states = {}
         self.states['refresh_template'] = 0 
         self.dialog = DialogManager(log_dir,self.get_system_info())
@@ -528,9 +529,10 @@ class ModelDiscoverySystem(exec_utils.System):
                         "The designed model passed the tests, now please generate a text report explaining and justifying your design."
                         " Generate a creative name of your design as the title of your report in the first line of your response."
                         " Do not include abbreviations or acronyms of your design in the title. You can use them in the body of the report."
+                        f" Here is the code of the designed model after degugging:\n\n{code}" # FIXME: what is the code after debugging is not the same as the idea before debugging
                     )
                     if initial_error is not None:
-                        error_info=f"Your design didn't pass the checker initially:\n\n{initial_error}\n\nIt has been fixed by the assistant already as follows:\n\n{code}","user"
+                        error_info=f"Your design didn't pass the checker initially:\n\n{initial_error}\n\nIt has been fixed by the assistant already as follows:\n\n{code}"
                     with status_handler(f"Querying agent for report..."):
                         self.logging.info('Now trying to compile self report...')
                         self_report = thread.query_agent(

@@ -494,7 +494,7 @@ class EffectiveChecker: # WORING IN PROGRESS
         self.results['train_loss'] = train_loss
 
 
-    def check_complexity(self, config, model) -> None:
+    def check_complexity(self, config, model) -> None: # NOTE: NEED TO CONSIDER THAT VARIANT CONTEXT LENGTH MAY IMPACT MODEL WITH *MEMORY*
         return # NOT WORKING YET, HARD TO FIT A GOOD FUNC 
 
         # let the model inference with different input size and see whether the time is linearly increased
@@ -659,7 +659,7 @@ class Checker(exec_utils.BaseTool):
         self.report = ''
 
     ### HAS SOME WEIRD BUGS ### It may also due to torch
-    def _check_causality(self, block, D: int, seq_len: int = 100) -> bool:
+    def _check_causality(self, block, D: int, seq_len: int) -> bool:
         """Checks if a design is causal
 
         :param block: 
@@ -704,8 +704,8 @@ class Checker(exec_utils.BaseTool):
 
         """
         self.rprint('Checking differentiability...')
-        mock_input = torch.randint(0, vocab_size, (2, 2048)).cuda() if \
-          torch.cuda.is_available() else torch.randint(0, vocab_size, (2, 2048))
+        mock_input = torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH)).cuda() if \
+          torch.cuda.is_available() else torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
         criterion = nn.CrossEntropyLoss()
         model.train()
         optimizer = optim.Adam(model.parameters())
@@ -721,7 +721,7 @@ class Checker(exec_utils.BaseTool):
         # Check gradients
         for name, param in model.named_parameters():
             if param.grad is None:
-                self.rprint(f"Error: Parameter {name} does not have a gradient")
+                self.rprint(f"Error: Parameter {name} does not have a gradient. Hint: Check whether you have any unused parameters.")
                 return False
 
         self.rprint('Differentiability test passed')
@@ -759,8 +759,8 @@ class Checker(exec_utils.BaseTool):
 
         """
         self.rprint('Checking forward pass...')
-        mock_input = torch.randint(0, vocab_size, (2, 2048)).cuda() if \
-          torch.cuda.is_available() else torch.randint(0, vocab_size, (2, 2048))
+        mock_input = torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH)).cuda() if \
+          torch.cuda.is_available() else torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
         mock_input = mock_input.to(gab.device)
         emb.eval()
         gab.eval()
@@ -812,7 +812,7 @@ class Checker(exec_utils.BaseTool):
                     glm=glm.to(torch.bfloat16)
                 else:
                     glm=glm.to(torch.float16)
-                mock_input=torch.randint(0, config.vocab_size, (2, 2048))
+                mock_input=torch.randint(0, config.vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
                 mock_input = mock_input.to(glm.device)
                 t0=time.time()
                 glm(mock_input) # super slow as well, why??? but its only for the first time initialization
@@ -851,12 +851,13 @@ class Checker(exec_utils.BaseTool):
                 assert checkpass1
                 checkpass2=self._check_causality(
                     gab,
-                    gam.d_model
+                    gam.d_model,
+                    DEFAULT_CONTEXT_LENGTH
                 )
                 checkpass3=self._check_differentiable(glm,config.vocab_size)
                 checkpass4,effectiveness=self._check_effectiveness(glm,config)
                 assert checkpass2 and checkpass3 and checkpass4
-            except AssertionError:
+            except:# AssertionError:
                 self.rprint('Model test failed\n')
                 if not checkpass2:
                     self.rprint('Hint: If you used convolutional layer, you should consider that the conv kernel may cover the future steps. '
@@ -946,7 +947,7 @@ class Checker(exec_utils.BaseTool):
             try:
                 if torch.cuda.is_available():
                     glm = glm.cuda()
-                mock_input=torch.randint(0, vocab_size, (2, 2048)).to(glm.device)
+                mock_input=torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH)).to(glm.device)
                 _ = glm(mock_input)
                 break
             except Exception as e:
