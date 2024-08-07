@@ -494,6 +494,8 @@ class EvolutionSystem(exec_utils.System):
         self.evoname=self.params['evoname'] # Provide the name for the whole run including evolutions of all scales, all designs, all agents
         if not 'ckpt_dir' in self.params or not self.params['ckpt_dir']:
             self.ckpt_dir=os.environ.get("CKPT_DIR")
+        else:
+            self.ckpt_dir=self.params['ckpt_dir']
         self.evo_dir=U.pjoin(self.ckpt_dir,self.evoname)
         U.mkdir(self.evo_dir)
 
@@ -798,20 +800,19 @@ if __name__ == '__main__':
         "scales=14M,31M,70M",
         "selection_ratio=0.25",
         "select_method=random",
-        "ckpt_dir=./ckpt",
     ]
 
     args = ve_parser.parse_args()
     strparams.append(f"evoname={args.evoname}")
 
-    # evolution_system = BuildEvolution(
-    #     strparams=';'.join(strparams),
-    #     do_cache=False,
-    #     # cache_type='diskcache',
-    # )
-    # evolution_system._run(args.mode)
+    evolution_system = BuildEvolution(
+        strparams=';'.join(strparams),
+        do_cache=False,
+        # cache_type='diskcache',
+    )
+    evolution_system._run(args.mode)
 
-    test_evolve('test_evo_003',step=True)
+    # test_evolve('test_evo_003',step=True)
 
 
 #     code_MHA='''
