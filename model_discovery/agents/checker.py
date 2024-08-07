@@ -825,8 +825,10 @@ class Checker(exec_utils.BaseTool):
                     'Error: Model initialization failed with error: '+str(e)+'\n'
                     'Full Traceback: \n' + error_trace + '\n'
                     'Hint: 1. if it is a dtype or device error, check whether the factory kwargs are passed to the layers. '
-                    '2. If it is a shape error, check whether the output shape is equal to the input shape. The output shape of GAB should be the same as the input.'
+                    '2. If it is a shape error, check whether the output shape is equal to the input shape. The output shape of GAB should be the same as the input. '
+                    '3. Always remember to follow the template and do not implement redundant part like embedding layer. '
                 )
+                self.hints.append('REFRESH_TEMPLATE')
                 return False,self.report,gab_code,{'hints': self.hints}
         
             ### check model size 
