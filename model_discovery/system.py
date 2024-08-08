@@ -347,6 +347,7 @@ class DialogManager:
     
     def close_thread(self,did,content):
         self.threads[did].return_message = content
+        self.threads[did].log('close',{'return_message':content})
     
     def access_thread(self,did):
         return self.threads[did]
@@ -354,6 +355,103 @@ class DialogManager:
     def get_active_threads(self):
         return [did for did in self.threads if self.threads[did].return_message is None]
 
+@dataclass
+class DialogTreeNode:
+    did: int
+    parent: int
+    name: str
+    logs: List[Dict[str,Any]]
+    children: list
+    return_message: Optional[str]
+    fork_call: Optional[str]
+
+    def to_mark(self):
+        md=f'# {self.name}\n'
+        for child in self.children:
+            childmark=child.to_mark()
+            for line in childmark.split('\n'):
+                md+=f'#{line}\n'
+        return md
+    
+    def to_timeline(self):
+        timeline={}
+        timeline['title']={
+            'text': {
+                'headline': f'Dialog: {self.name}, ID: {self.did}',
+                'text': f'<p>Fork call: {self.fork_call}</p>\n<p>Return message: {self.return_message}</p>'
+            },
+        }
+        timeline['events']=[]
+        for log in self.logs:
+            timestamp = log['timestamp'] # time.strftime('%Y-%m-%d_%H-%M-%S')
+            YMD,HMS = timestamp.split('_')
+            Y,M,D = map(int,YMD.split('-'))
+            H,M,S = map(int,HMS.split('-'))
+            timeobj = {'year':Y,'month':M,'day':D,'hour':H,'minute':M,'second':S}
+            if log['type']=='message':
+                timeline['events'].append({
+                    'start_date': timeobj,
+                    'text': {
+                        'headline': f"Message from {log['data']['sender']} to {log['data']['receiver']}",
+                        'text': f"<p>{log['data']['content']}</p>"
+                    }
+                })
+            elif log['type']=='fork':
+                timeline['events'].append({
+                    'start_date': timeobj,
+                    'text': {
+                        'headline': f"Thread forked: {log['data']['name']}",
+                        'text': f"<p>{log['data']['call']}</p>"
+                    }
+                })
+            elif log['type']=='close':
+                timeline['events'].append({
+                    'start_date': timeobj,
+                    'text': {
+                        'headline': "Thread closed",
+                        'text': f"<p>Return message: {log['data']['return_message']}</p>"
+                    }
+                })
+        return timeline
+
+
+class DialogTreeViewer: # only for viewing and anlyzing the agents dialogs
+    def __init__(self,log_dir):
+        self.log_dir = log_dir
+        self.threads = {}
+        self.system_info = U.load_json(f"{log_dir}/system_info.json")
+        self.root = self.load_thread(U.pjoin(log_dir,f'thread_0_root'),0,'root',-1)
+
+    def load_thread(self,log_dir,did,name,parent_did,fork_call=None):
+        logs=[]
+        childrens=[]
+        return_message=None
+        for log_file in os.listdir(log_dir): # should be already sorted by timestamp
+            if log_file.endswith('.json'):
+                log=U.load_json(U.pjoin(log_dir,log_file))
+                logs.append(log)
+                if log['type']=='fork':
+                    childdid = log['data']['did']
+                    childname = log['data']['name']
+                    childcall = log['data']['call']
+                    childrens.append(self.load_thread(
+                        U.pjoin(log_dir,f'thread_{childdid}_{childname}'),
+                        childdid,childname,did,childcall))
+                elif log['type']=='close':
+                    return_message = log['data']['return_message']
+        node = DialogTreeNode(did,parent_did,name,logs,childrens,return_message,fork_call)
+        self.threads[f'{did}_{name}'] = node
+        return node
+
+    def to_markmap(self):
+        treemd=self.root.to_mark()
+        cleaned_lines=[]
+        for line in treemd.split('\n'):
+            if line.replace('#','').replace(' ','')!='':
+                cleaned_lines.append(line)
+        clean_md = '\n'.join(cleaned_lines)
+        return clean_md
+    
     
 @exec_utils.Registry(
     resource_type="system_type",
@@ -630,7 +728,7 @@ class ModelDiscoverySystem(exec_utils.System):
         self._queries.append(designer_query)
 
         for i in range(self._config.max_design_refines):
-            refine_thread_did = self.dialog.fork(main_did,'design_refine',f'Design refinement round {i+1}')
+            refine_thread_did = self.dialog.fork(main_did,f'design_refine_{i}',f'Design refinement round {i+1}')
 
             design_thread_did = self.dialog.fork(refine_thread_did,'design_attempt',f'Starting design attempt...')
             code,explain,designer_cost,check_results = self.design(query,designer_context,stream,status_handler,design_thread_did)
@@ -642,7 +740,7 @@ class ModelDiscoverySystem(exec_utils.System):
             designer_context.append(query,"user",{'sender':'system','did':design_thread_did,'mid':0})
             designer_context.append(proposal,"assistant",{'sender':'designer','did':design_thread_did,'mid':self.dialog.access_thread(design_thread_did).mid-1})
 
-            review_thread_did = self.dialog.fork(refine_thread_did,'review',f'Sending the design to reviewers for review...')
+            review_thread_did = self.dialog.fork(refine_thread_did,f'review_{i}',f'Sending the design to reviewers for review...')
             ratings,reviews,costs = self.review(proposal,costs,stream,status_handler,review_thread_did)
             review_ratings=''
             for idx, style in enumerate(self.reviewers):
