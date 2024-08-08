@@ -21,7 +21,7 @@ NONACC_EVAL_TASKS = ["lambada_openai","cola","tinyGSM8k"]
 
 # Other need generate: squad_completion
 
-SMOLLM_10_CORPUS=['python-edu-10','fineweb-edu-dedup-10','cosmopedia-v2-10']
+SMOLLM_10_CORPUS=['python-edu-12.5','fineweb-edu-dedup-12.5','cosmopedia-v2-12.5']
 
 DEFAULT_TASK_LIST1=[
     "inverse_scaling_mc",

@@ -137,28 +137,30 @@ def download_contents_py(blob_id):
         content = fin.read().decode("utf-8", errors="ignore")
     return {"text": content}
 
-@pretokenize_dataset('python-edu-10')
-def load_python_edu_10(tokenizer_name, context_length):
-    ds = load_dataset("chengjunyan1/smollm-10", "python-edu", split="train", num_proc=DEFAULT_NUM_PROC_LOAD)
-    ds = ds.map(download_contents_py, input_columns="blob_id", num_proc=DEFAULT_NUM_PROC_LOAD)
-    ds = DatasetDict({"train": ds})
+@pretokenize_dataset('python-edu-12.5')
+def load_python_edu_12_5(tokenizer_name, context_length):
+    ds = load_dataset("chengjunyan1/smollm-12.5-corpus", "python-edu", num_proc=DEFAULT_NUM_PROC_LOAD)
+    ds_train = ds['train'].map(download_contents_py, input_columns="blob_id", num_proc=DEFAULT_NUM_PROC_LOAD)
+    ds_test = ds['test'].map(download_contents_py, input_columns="blob_id", num_proc=DEFAULT_NUM_PROC_LOAD)
+    ds_eval = ds['eval'].map(download_contents_py, input_columns="blob_id", num_proc=DEFAULT_NUM_PROC_LOAD)
+    ds = DatasetDict({'train':ds_train, 'test':ds_test, 'eval':ds_eval})
     return ds
 
-@pretokenize_dataset('fineweb-edu-dedup-10')
-def load_fine_web_dedup_10(tokenizer_name, context_length):
-    return load_dataset("chengjunyan1/smollm-10","fineweb-edu-dedup", num_proc=DEFAULT_NUM_PROC_LOAD)
+@pretokenize_dataset('fineweb-edu-dedup-12.5')
+def load_fine_web_dedup_12_5(tokenizer_name, context_length):
+    return load_dataset("chengjunyan1/smollm-12.5-corpus","fineweb-edu-dedup", num_proc=DEFAULT_NUM_PROC_LOAD)
 
-@pretokenize_dataset('cosmopedia-v2-10')
-def load_cosmopedia_v2_10(tokenizer_name, context_length):
-    return load_dataset("chengjunyan1/smollm-10","cosmopedia-v2", num_proc=DEFAULT_NUM_PROC_LOAD)
+@pretokenize_dataset('cosmopedia-v2-12.5')
+def load_cosmopedia_v2_12_5(tokenizer_name, context_length):
+    return load_dataset("chengjunyan1/smollm-12.5-corpus","cosmopedia-v2", num_proc=DEFAULT_NUM_PROC_LOAD)
 
 loaders={
     'babylm'      :load_babylm,
     'tinystories' :load_tinystories,
     'wikitext2'  :load_wikitext2,
-    'python-edu-10':load_python_edu_10,
-    'fineweb-edu-dedup-10':load_fine_web_dedup_10,
-    'cosmopedia-v2-10':load_cosmopedia_v2_10
+    'python-edu-12.5':load_python_edu_12_5,
+    'fineweb-edu-dedup-12.5':load_fine_web_dedup_12_5,
+    'cosmopedia-v2-12.5':load_cosmopedia_v2_12_5
 }
 
 def load_datasets(cfg: GAMConfig): # weights e.g. {'train':[1.5,1.0]} for two datasets
