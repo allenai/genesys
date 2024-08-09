@@ -397,7 +397,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         self.remove_redundant_edges()
             
 
-    def viz(self,G,height=5000,width="100%",layout=False): # larger canvas may be needed for large trees
+    def viz(self,G,height=5000,width="100%",layout=False,max_nodes=None): # larger canvas may be needed for large trees
         nt=Network(
             directed=True,height=height,width=width,
             layout=layout, bgcolor="#fafafa", #font_color="#ffffff",
@@ -406,12 +406,15 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         )
         nt.prep_notebook(True)#,'./etc/ptree_template.html')
         nt.from_nx(G)
-        fname='PTree.html' if not layout else 'PTree_layout.html'
-        nt.show(U.pjoin(self.db_dir, '..', fname))
+        fname='PTree' if not layout else 'PTree_layout'
+        if max_nodes: fname+=f'_{max_nodes}'
+        nt.show(U.pjoin(self.db_dir, '..', fname+'.html'))
 
-    def export(self,with_ext=False):
+    def export(self,with_ext=False,max_nodes=None,height=5000,layout=False):
         G=nx.DiGraph()
-        for node in self.G.nodes:
+        for idx,node in enumerate(self.G.nodes):
+            if max_nodes and idx>max_nodes:
+                break
             data=self.G.nodes[node]['data']
             if data.type=='DesignArtifact':
                 scale=data.scale
@@ -444,9 +447,10 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         for edge in self.G.edges:
             if edge[0] in G.nodes and edge[1] in G.nodes:
                 G.add_edge(edge[0],edge[1])
-        write_dot(G, U.pjoin(self.db_dir, '..', "phylogenetic_tree.dot"))
-        self.viz(G)
-        # self.viz(G,layout=True)
+        fname='phylogenetic_tree'
+        if max_nodes: fname+=f'_{max_nodes}'
+        write_dot(G, U.pjoin(self.db_dir, '..', fname+".dot"))
+        self.viz(G,max_nodes=max_nodes,height=height,layout=layout)
 
 
 def report_reader(report):
