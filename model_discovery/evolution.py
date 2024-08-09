@@ -498,7 +498,9 @@ class EvolutionSystem(exec_utils.System):
     def __init__(self,agent_system,config,**kwargs):
         self.agents = agent_system
         self._config = config
-        
+        self.load(**kwargs)
+
+    def load(self,**kwargs):
         # init params, TODO: upgrade to exec_util params, use a simple str params for now
         self.params={}
         for param in self._config.strparams.split(';'):
@@ -552,6 +554,10 @@ class EvolutionSystem(exec_utils.System):
         )
         self.ptree=PhylogeneticTree(U.pjoin(self.evo_dir,'db'))
         self.ptree.export()
+
+    def reload(self,config):
+        self._config = config
+        self.load()
 
     def query_system(self,
         query: Optional[str] = '',

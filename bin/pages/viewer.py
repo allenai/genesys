@@ -8,37 +8,16 @@ from streamlit_markmap import markmap
 from streamlit_timeline import timeline
 
 sys.path.append('.')
-from model_discovery import BuildEvolution
 from model_discovery.system import DialogTreeViewer
 import model_discovery.utils as U
 
 
-st.set_page_config(page_title="Modis Lab", layout="wide")
-
-@st.cache_resource()
-def build_evo_system(name='test_evo_003'):
-    strparams=[
-        f"evoname={name}",
-        "scales=14M,31M,70M",
-        "selection_ratio=0.25",
-        "select_method=random",
-    ]
-    evo_system = BuildEvolution(
-        strparams=';'.join(strparams),
-        do_cache=False,
-        # cache_type='diskcache',
-    )
-    return evo_system
-
-evosys = build_evo_system()
 
 
-
-
-def main(argv):
+def viewer(evosys,project_dir):
     
     ### build the system 
-    st.title("Modis Agent Viewer")
+    st.title("Agent Viewer")
 
     log_dir = U.pjoin(evosys.evo_dir, 'log')
     dialogs = {}
@@ -58,7 +37,7 @@ def main(argv):
     
 
     ### side bar 
-    st.sidebar.button("reset")
+    # st.sidebar.button("reset")
 
 
         
@@ -75,5 +54,3 @@ def main(argv):
     #         evosys(instruction,frontend=True,stream=st)
         
     
-if __name__ == "__main__":
-    main(sys.argv[1:]) 

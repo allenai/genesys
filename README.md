@@ -1,4 +1,4 @@
-# model_discovery 
+# Model Disovery 
 
 Utils and code for model discovery experiments. 
 
