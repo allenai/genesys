@@ -10,19 +10,27 @@ from dataclasses import dataclass, field, asdict
 
 DESIGNER_PROMPT="""Design a novel autoregressive model block by completing the blanks marked in the Python code file gab.py below, which includes the initialization where you can define your custom arguments, the forward function where you can define convenient functions in the GAB class such as caches, the configuration with the hyperparameters that correspond to the arguments you defined:
 
+```python
 {gab_py}
+```
 
 The GAB is inherited from this GABBase class, you should always import it by "from model_discovery.model.utils.modules import GABBase", you should never remove this statement from gab.py and you should never define another GABBase class in gab.py:
 
+```python
 {gab_base}
+```
 
 This code will be used to construct a gam model in gam.py:
 
+```python
 {gam_py}
+```
 
 This is the configuration and references for the target model:
 
+```python
 {config}
+```
 
 Here are some hints:      
 1. You need to consider the GAM model structure and the default operations like the normalization when designing the GAB block. Always remember that GAB is a part of the GAM model, it should not be designed as a whole model. 
@@ -49,11 +57,15 @@ REVIEWER_PROMPT="""This is the proposal of the design of the general autoregress
 
 The GAB is inhereted from this GABBase class:
 
+```python
 {gab_base}
+```
 
 The definition of a gam model in gam.py:
 
+```python
 {gam_py}
+```
 
 {instruct}
 

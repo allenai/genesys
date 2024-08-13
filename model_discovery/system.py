@@ -5,11 +5,13 @@ import pathlib
 import os
 import json
 import time
+from datetime import datetime
 import tempfile
 import copy
 import numpy as np
 # import uuid
 import pandas as pd
+import functools as ft
 
 #from IPython.display import display, Markdown, Latex
 from types import ModuleType
@@ -21,7 +23,8 @@ from typing import (
     TypeVar,
     Tuple,
     Optional,
-    Union
+    Union,
+    NamedTuple
 )
 from dataclasses import dataclass
 
@@ -30,6 +33,7 @@ from exec_utils import (
     BuildAgent,
     BuildTool
 )
+from exec_utils.models import SimpleLMAgent
 from .agents import *
 from .agents.prompts.prompts import (
     DESIGNER_PROMPT,
@@ -55,6 +59,8 @@ __all__ = [
 
 PROJ_SRC = os.path.abspath(os.path.dirname(__file__))
 SYSTEM_OUT = os.path.abspath(f"{PROJ_SRC}/../_runs")
+
+FAILED = "FAILED"
 
 GAB_BASE='''
 class GABBase(nn.Module):
@@ -269,7 +275,8 @@ class EmptyHandler:
 
 class PrintSystem:
     def __init__(self,config):
-        self.jupyter = config.jupyter        
+        self.jupyter = config.jupyter   
+        self.status = EmptyHandler     
     
     def write(self,msg,**kwargs):
         print(msg)
@@ -281,89 +288,236 @@ class AgentContext:
     def __init__(self):
         self.data = []
     
-    def append(self,query,source,metadata):
-        self.data.append((query,source,metadata))
+    def append(self,query,role,metadata):
+        assert isinstance(query,str) and isinstance(role,str), f'Query and role must be strings'
+        self.data.append((query,role,metadata))
     
     def get(self):
-        return [(query,source) for query,source,_ in self.data]
+        return [(query,role) for query,role,_ in self.data]
+    
 
 
-class DialogThread: # Maybe one thread one context? No, e.g., multiple agents can be in same thread with different context
-    def __init__(self,name,did,parent,log_dir=None):
-        self.did = did
+class AgentDialogFlow:
+    def __init__(self,fn):
+        self.fn = fn
+
+    def __call__(self,query,parent_tid,**kwargs):
+        try:
+            flow=ft.partial(self.fn,query=query,parent_tid=parent_tid)
+        except Exception as e:
+            raise ValueError(f'Thread function must have query and parent_tid as argument, error: {e}')
+        output = flow(**kwargs)
+        assert isinstance(output,tuple) and len(output)==2 and isinstance(output[0],str), f'Thread function should return a tuple of (message,return)'
+        return output
+
+
+@dataclass
+class ROLE:
+    name: str
+    obj: Any = None
+    role: str = None
+    def __post_init__(self):
+        if self.role is None:
+            if isinstance(self.obj,SimpleLMAgent):
+                self.role = 'assistant'
+            elif isinstance(self.obj,AgentDialogFlow):
+                self.role = 'system'
+            elif isinstance(self.obj,AgentDialogThread):
+                self.role = 'system'
+
+SYSTEM_CALLER = ROLE('system',role='system')
+
+
+class AgentDialogThread: # TODO: let runable thread be CFG
+    '''
+    An Agent program is nested by threads
+    Thread types:
+        Chat: Query -> Agent -> message, none, the most basic thread 
+        Flow: Query -> Flow -> message, return, a chat composed of control flow
+        Pipe: Query -> [LThread -> RThread] -> RRes, (LRes, LRet, RRet), a pipe composed of two threads
+        Empty: No agent or function, only forking
+    '''
+    def __init__(self,name,tid,parent,stream,caller=None,callee=None,log_dir=None,context=AgentContext()): 
+        self.tid = tid
         self.parent = parent
         self.mid = 0 # message id
         self.name=name # The name of the thread
         self.log_dir = None
-        self.return_message = None # set it means the thread has returned
+        # self.return_message = None # set it means the thread has closed
+        self.stream = stream   
+        self.history = context # dialog history of the thread
+        self.flow=None # the call message to the agent
+        self.agent = None
+        self.rthread = None
+        self.type = None
+        self.log_count = 0
+        self._carry(caller,callee)
         if log_dir:
-            self.log_dir = U.pjoin(log_dir,f"thread_{did}_{name}")
+            self.log_dir = U.pjoin(log_dir,f"thread_{tid}_{name}")
             U.mkdir(self.log_dir)
 
-    def log(self,type,data): #directly log to disk
-        timestamp = time.strftime('%Y-%m-%d_%H-%M-%S')
+    def _carry(self,caller,callee):
+        self.caller = caller
+        if caller:
+            assert isinstance(caller,ROLE), f'Caller must be a ROLE object if caller is provided'
+        self.callee = callee
+        if callee:
+            assert isinstance(callee,ROLE), f'Callee must be a ROLE object if callee is provided'
+            if isinstance(callee.obj,AgentDialogFlow):
+                self.flow = callee.obj
+                self.type = 'flow'
+            elif isinstance(callee.obj,SimpleLMAgent):
+                self.agent = callee.obj
+                self.type = 'chat'
+                self.hinter = ROLE('SYSTEM',role='system') # optional system hint between query and response
+            elif isinstance(callee.obj,AgentDialogThread):
+                assert isinstance(self.caller.obj,AgentDialogThread), f'Pipe should be between two threads'
+                self.lthread = self.caller.obj
+                self.rthread = callee.obj
+                self.type = 'pipe'
+
+    def _log(self,type,data,timestamp=None,verbose=False): #directly log to disk
+        if not timestamp:
+            timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
         log_content = {'timestamp':timestamp,'type':type,'data':data}
+        if verbose:
+            if type=='message':
+                self.stream.markdown(data['content'])
+            elif type=='fork':
+                self.stream.markdown(f'Thread {self.tid}:{self.name} forked {data['tid']}:{data["name"]} with note: {data["note"]}')
+            # elif type=='close':
+            #     self.stream.markdown(f'Thread {self.tid}:{self.name} closed with return message: {data["return_message"]}')
         if self.log_dir: # save to seperate json files to avoid write conficts/lag
-            U.save_json(log_content,f"{self.log_dir}/{timestamp}.json")
+            U.save_json(log_content,U.pjoin(f"{self.log_dir}",f"{timestamp}_{self.log_count}.json"))
+        self.log_count += 1
     
-    def message(self,sender,receiver,content,context):
-        data={'mid':self.mid,'sender':sender,'receiver':receiver,'content':content,'context':context}
-        self.log('message',data)
+    def _message(self,sender,receiver,content,timestamp=None): # log message to the history
+        data={'mid':self.mid,'sender':sender.name,'receiver':receiver.name,'content':content}
+        metadata = {'sender':sender.name, 'tid': self.tid, 'mid': self.mid} # generated by which agent which thread which message
+        self.history.append(content,sender.role,metadata)
+        self._log('message',data,timestamp)
         self.mid += 1
         
-    def query_agent(self,caller,agent,query,source,context=None):
-        self.message(caller,agent.name,query,'CALLER')
-        history = context.get() if context else []
-        response = agent(
-            query,
-            source=source,
-            manual_history=tuple(history)
+    def _chat(self,query,system_hint=None): # Only two types of call, Query->Response or Query->Hint->Response
+        assert self.type=='chat', f'Thread {self.tid}:{self.name} is not chatable'
+        if system_hint is not None: # Query->Hint->Response, only for user
+            # assert self.caller.role == 'user'
+            self._message(self.caller,self.callee,query)
+            input=system_hint
+            queryer=self.hinter
+        else: # Query->Response
+            input=query
+            queryer=self.caller
+        assert isinstance(input,str), f'Input must be a string'
+        query_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        response = self.agent(
+            input,
+            source=queryer.role, # NOTE: Neet to modify exec_utils to allow it use system as a role
+            manual_history=tuple(self.history.get())
         )
-        if context:
-            context=context.data
-        self.message(agent.name,caller,response,context)
-        return response
+        text = response['text']
+        self._message(queryer,self.callee,query,query_time)
+        self._message(self.callee,self.caller,text)
+        return text,response
     
-    def fork(self,name,did,call=None): # a fork return a new thread, each thread expose a call and return message to the parent thread, the fork call and return
-        self.log('fork',{'did':did,'name':name,'call':call})
-        return DialogThread(name,did,self.did,self.log_dir)
+    def _flow(self,query,**kwargs):
+        assert self.type=='flow', f'Thread {self.tid}:{self.name} is not runable'
+        query_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        try:
+            flow=ft.partial(self.flow,query=query,parent_tid=self.tid)
+        except Exception as e:
+            raise ValueError(f'Thread function must have query and parent_tid as argument, error: {e}')
+        output = flow(**kwargs)
+        assert isinstance(output,tuple) and len(output)==2, f'Thread function should return a tuple of (message,return)'
+        msg,ret = output
+        self._message(self.caller,self.callee,query,query_time)
+        self._message(self.callee,self.caller,msg)
+        return msg,ret
+
+    def _call(self,query,**kwargs):
+        if self.type=='flow':
+            msg,ret = self._flow(query,**kwargs)
+        elif self.type=='chat':
+            msg,ret = self._chat(query,**kwargs)
+        else:
+            raise ValueError(f'Thread {self.tid}:{self.name} is not callable: it should be either chatable or runable.')
+        return msg, ret
     
-class DialogManager:
-    def __init__(self,log_dir,system_info):
+    def _pipe(self,input,largs,rargs):
+        assert self.type=='pipe', f'Thread {self.tid}:{self.name} is not a pipe'
+        query_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        left_msg,left_ret = self.lthread._call(input,**largs)
+        right_msg,right_ret = self.rthread._call(left_msg,**rargs)
+        assert isinstance(left_msg,str) and isinstance(right_msg,str), f'Pipe should return message'
+        if right_msg != FAILED:
+            self._message(self.caller,self.callee,left_msg,query_time)
+            self._message(self.callee,SYSTEM_CALLER,right_msg)
+        return right_msg,(left_msg,left_ret,right_ret)
+    
+    def __call__(self,query,**kwargs):
+        assert self.type!='empty', f'Thread {self.tid}:{self.name} is not callable'
+        if self.type=='pipe':
+            return self._pipe(query,**kwargs)
+        else:
+            return self._call(query,**kwargs)
+
+    def _fork(self,name,tid,caller=None,callee=None,context=AgentContext(),note=None): # a fork return a new thread, each thread expose a call and return message to the parent thread, the fork call and return
+        self._log('fork',{'tid':tid,'name':name,'note':note,'context':context.data}) 
+        return AgentDialogThread(name,tid,self.tid,self.stream,caller,callee,self.log_dir,context)
+
+class AgentDialogManager: # all dialogs should be go through the dialog manager
+    def __init__(self,log_dir,system_info,stream):
         self.log_dir = log_dir
         self.threads = {}
-        self.threads[0] = DialogThread('root',0,-1,self.log_dir) # create a root thread
+        self.threads[0] = AgentDialogThread('root',0,-1,stream,log_dir=self.log_dir) # create a root thread
+        self.stream = stream
         if log_dir:
+            session_id=log_dir.split('/')[-1]
+            self.stream.markdown(f'Session created. ID: {session_id}')
             U.save_json(system_info,f"{log_dir}/system_info.json")
     
-    def assign_did(self):
+    def _assign_tid(self):
         return len(self.threads)
     
-    def fork(self,parent_did,name,call_message=None):
-        parent = self.threads[parent_did]
-        did = self.assign_did()
-        self.threads[did] = parent.fork(name,did,call_message)
-        return did
+    def fork(self,parent_tid,caller=None,callee=None,context=AgentContext(),name=None,note=None):
+        parent_thread = self.threads[parent_tid]
+        tid = self._assign_tid()
+        if not name: name = f'thread_{tid}'
+        else: name = f'{tid}_{name}'
+        self.threads[tid] = parent_thread._fork(name,tid,caller,callee,context=context,note=note)
+        return tid
     
-    def close_thread(self,did,content):
-        self.threads[did].return_message = content
-        self.threads[did].log('close',{'return_message':content})
+    def carry(self,pipe_tid,lthread_tid,rthread_tid):
+        LROLE = ROLE(self.threads[lthread_tid].name,self.threads[lthread_tid])
+        RROLE = ROLE(self.threads[rthread_tid].name,self.threads[rthread_tid])
+        self.threads[pipe_tid]._carry(LROLE,RROLE)
     
-    def access_thread(self,did):
-        return self.threads[did]
+    # def close(self,tid,content):
+    #     self.threads[tid].return_message = content
+    #     self.threads[tid]._log('close',{'return_message':content})
+    
+    def access(self,tid):
+        return self.threads[tid]
+    
+    def call(self,tid,query,**kwargs):
+        return self.threads[tid](query,**kwargs)
+    
+    def context(self,tid):
+        return self.threads[tid].history
 
-    def get_active_threads(self):
-        return [did for did in self.threads if self.threads[did].return_message is None]
+    # def active_threads(self):
+    #     return [tid for tid in self.threads if self.threads[tid].return_message is None]
+        
 
 @dataclass
 class DialogTreeNode:
-    did: int
+    tid: int
     parent: int
     name: str
     logs: List[Dict[str,Any]]
     children: list
-    return_message: Optional[str]
-    fork_call: Optional[str]
+    # return_message: Optional[str]
+    fork_note: Optional[str]
 
     def to_mark(self):
         md=f'# {self.name}\n'
@@ -377,8 +531,8 @@ class DialogTreeNode:
         timeline={}
         timeline['title']={
             'text': {
-                'headline': f'Dialog: {self.name}, ID: {self.did}',
-                'text': f'<p>Fork call: {self.fork_call}</p>\n<p>Return message: {self.return_message}</p>'
+                'headline': f'Dialog: {self.name}, ID: {self.tid}',
+                'text': f'<p>Fork note: {self.fork_note}</p>'#\n<p>Return message: {self.return_message}</p>'
             },
         }
         timeline['events']=[]
@@ -386,8 +540,8 @@ class DialogTreeNode:
             timestamp = log['timestamp'] # time.strftime('%Y-%m-%d_%H-%M-%S')
             YMD,HMS = timestamp.split('_')
             Y,M,D = map(int,YMD.split('-'))
-            H,M,S = map(int,HMS.split('-'))
-            timeobj = {'year':Y,'month':M,'day':D,'hour':H,'minute':M,'second':S}
+            H,min,S = map(int,HMS.split('-'))
+            timeobj = {'year':Y,'month':M,'day':D,'hour':H,'minute':min,'second':S}
             if log['type']=='message':
                 timeline['events'].append({
                     'start_date': timeobj,
@@ -401,20 +555,21 @@ class DialogTreeNode:
                     'start_date': timeobj,
                     'text': {
                         'headline': f"Thread forked: {log['data']['name']}",
-                        'text': f"<p>{log['data']['call']}</p>"
+                        'text': f"<p>{log['data']['note']}</p>"
                     }
                 })
-            elif log['type']=='close':
-                timeline['events'].append({
-                    'start_date': timeobj,
-                    'text': {
-                        'headline': "Thread closed",
-                        'text': f"<p>Return message: {log['data']['return_message']}</p>"
-                    }
-                })
+            # elif log['type']=='close':
+            #     timeline['events'].append({
+            #         'start_date': timeobj,
+            #         'text': {
+            #             'headline': "Thread closed",
+            #             'text': f"<p>Return message: {log['data']['return_message']}</p>"
+            #         }
+            #     })
         return timeline
 
 
+# TODO: update to compactible with the Threads
 class DialogTreeViewer: # only for viewing and anlyzing the agents dialogs
     def __init__(self,log_dir):
         self.log_dir = log_dir
@@ -422,25 +577,25 @@ class DialogTreeViewer: # only for viewing and anlyzing the agents dialogs
         self.system_info = U.load_json(f"{log_dir}/system_info.json")
         self.root = self.load_thread(U.pjoin(log_dir,f'thread_0_root'),0,'root',-1)
 
-    def load_thread(self,log_dir,did,name,parent_did,fork_call=None):
+    def load_thread(self,log_dir,tid,name,parent_tid,fork_note=None):
         logs=[]
         childrens=[]
-        return_message=None
+        # return_message=None
         for log_file in os.listdir(log_dir): # should be already sorted by timestamp
             if log_file.endswith('.json'):
                 log=U.load_json(U.pjoin(log_dir,log_file))
                 logs.append(log)
                 if log['type']=='fork':
-                    childdid = log['data']['did']
+                    childtid = log['data']['tid']
                     childname = log['data']['name']
-                    childcall = log['data']['call']
+                    childnote = log['data']['note']
                     childrens.append(self.load_thread(
-                        U.pjoin(log_dir,f'thread_{childdid}_{childname}'),
-                        childdid,childname,did,childcall))
-                elif log['type']=='close':
-                    return_message = log['data']['return_message']
-        node = DialogTreeNode(did,parent_did,name,logs,childrens,return_message,fork_call)
-        self.threads[f'{did}_{name}'] = node
+                        U.pjoin(log_dir,f'thread_{childtid}_{childname}'),
+                        childtid,childname,tid,childnote))
+                # elif log['type']=='close':
+                #     return_message = log['data']['return_message']
+        node = DialogTreeNode(tid,parent_tid,name,logs,childrens,fork_note)
+        self.threads[name] = node
         return node
 
     def to_markmap(self):
@@ -452,7 +607,64 @@ class DialogTreeViewer: # only for viewing and anlyzing the agents dialogs
         clean_md = '\n'.join(cleaned_lines)
         return clean_md
     
+
+#region Prompt CFG
+
+
+class PromptCFGNode:
+    def __init__(self) -> None:
+        pass
+
+    def forward(self):
+        raise NotImplementedError
+
+    def type(self):
+        raise NotImplementedError
+
+class ConditionNode(PromptCFGNode): # It will check a condition and return true or false
+    def __init__(self,condition):
+        super().__init__()
+        self.condition = condition
+        self.data = []
     
+    def type(self):
+        return 'condition'
+
+class ProcessNode(PromptCFGNode): # It will call an agent and return a response
+    def __init__(self,prompt):
+        super().__init__()
+        self.prompt = prompt
+    
+    def type(self):
+        return 'process'
+
+class EntryNode(PromptCFGNode): # It will be the entry point of the dialog
+    def __init__(self):
+        super().__init__()
+        self.data = []
+    
+    def type(self):
+        return 'entry'
+
+class ExitNode(PromptCFGNode): # It will be the exit point of the dialog
+    def __init__(self):
+        super().__init__()
+        self.data = []
+    
+    def type(self):
+        return 'exit'
+
+class PromptCFG:
+    def __init__(self):
+        self.entry = EntryNode()
+        self.prompts= {}
+        self.conditions = {}
+
+    
+#endregion
+    
+
+
 @exec_utils.Registry(
     resource_type="system_type",
     name="model_discovery_system",
@@ -531,9 +743,9 @@ class ModelDiscoverySystem(exec_utils.System):
         self._config = config
         self._cfg = gam_config
 
-        ###
-        self._queries = [] 
-    
+        self.design_flow=AgentDialogFlow(self._design)
+        self.review_flow=AgentDialogFlow(self._review)
+
     def get_system_info(self):
         system_info = {}
         system_info['agents']={
@@ -542,58 +754,50 @@ class ModelDiscoverySystem(exec_utils.System):
             'debugger':self.debugger.config
         }
 
-    def new_session(self,log_dir=None):
+    def new_session(self,log_dir=None,stream=None):
         U.mkdir(log_dir)
         self.log_dir = log_dir
         self.states = {}
         self.states['refresh_template'] = 0 
-        self.dialog = DialogManager(log_dir,self.get_system_info())
+        self.dialog = AgentDialogManager(log_dir,self.get_system_info(),stream)
 
-    def close_session(self):
-        self.dialog.close_thread(0,'Session closed')
-        if self.dialog.get_active_threads():
-            raise ValueError('There are active threads, can not close the session')
+    # def close_session(self):
+    #     self.dialog.close(0,'Session closed')
+    #     if self.dialog.active_threads():
+    #         raise ValueError('There are active threads, can not close the session')
 
     def set_config(self,cfg:GAMConfig): # reset the gam config of the system
         self._cfg = cfg
 
-    def design(self,query,designer_context,stream,status_handler,thread_did): # input query, context, output design and explanation
-        designer_cost = 0
-        problem_history = copy.deepcopy(designer_context) # a new dialog branch
-        source='user'
+    def _design(cls,query,stream,status_handler,parent_tid,context): # input query, context, output design and explanation, thread_tid is the id of the thread in which the design is running
+        design_cost = 0
 
-        debugger_context = AgentContext()
         initial_error = None
-        for attempt in range(self._config.max_design_attempts):
-            self.logging.info(f'Attempting design, attempt={attempt}')
+        DESIGNER_CALLEE = ROLE('designer',cls.designer)
+        design_thread_tid=cls.dialog.fork(parent_tid,SYSTEM_CALLER,DESIGNER_CALLEE,context=context,
+                                          name='designing',note=f'Starting design...')
+        debug_thread_tid=None
+        for attempt in range(cls._config.max_design_attempts):
+            cls.logging.info(f'Attempting design, attempt={attempt}')
             
-            design_name = f"{self._config.run_name}_{attempt}_{len(self._queries)}"
+            if attempt == 0:
+                thread_tid = design_thread_tid
+            else:
+                if debug_thread_tid is None:
+                    query = f'The designer designed the model: {text}\n\nThe checker failed the model: {query}\n\nPlease debug the model.'
+                    DEBUGGER_CALLEE = ROLE('debugger',cls.debugger)
+                    debug_thread_tid = cls.dialog.fork(design_thread_tid,SYSTEM_CALLER,DEBUGGER_CALLEE,
+                                                      name='debugging',note='Starting debugging...')
+                thread_tid = debug_thread_tid
 
-            with status_handler(f"Attempt {attempt+1}"): 
+            with status_handler(f"Design Attempt {attempt+1}"): 
                 
-                caller='system' if attempt==0 else 'debugger'
-                agent=self.designer if attempt==0 else self.debugger
-                designer_out = self.dialog.access_thread(thread_did).query_agent(
-                    caller, agent, query, source,
-                    context=problem_history if attempt==0 else debugger_context,
-                )
-                metadata = {'sender':caller, 'did': thread_did, 'mid': self.dialog.access_thread(thread_did).mid-2} # generated by which agent which thread which message
-                if attempt == 0:
-                    problem_history.append(query,source,metadata)
-                else:
-                    debugger_context.append(query,source,metadata)
+                _,out=cls.dialog.call(thread_tid,query)
 
                 try:
-                    code = designer_out.get("code",None)
-                    text = designer_out.get("text")
-                    designer_cost += designer_out["_details"]["running_cost"]
-                    metadata = {'sender':agent.name, 'did': thread_did, 'mid': self.dialog.access_thread(thread_did).mid-1} # generated by which agent which thread which message
-                    if attempt == 0:
-                        problem_history.append(str(text),"assistant",metadata)
-                        debugger_context.append(f'The designer designed the model: {text}',"user",metadata)
-                    else:
-                        debugger_context.append(f'{text}',"assistant",metadata)
-
+                    code = out.get("code",None)
+                    text = out.get("text")
+                    design_cost += out["_details"]["running_cost"]
                     assert code is not None
                     assert "# gab.py" in code 
                 
@@ -602,14 +806,14 @@ class ModelDiscoverySystem(exec_utils.System):
                         stream.markdown(str(text))
 
                 except AssertionError:
-                    source = "user"
                     query  = GAB_ERROR
                     continue 
                 
-                checkpass,check_report,code,check_results = self.checker.check(self._cfg,code,design_name)
+                design_name = f"{cls._config.run_name}_{attempt}"
+                checkpass,check_report,code,check_results = cls.checker.check(cls._cfg,code,design_name)
                 checker_hints = check_results['hints']
                 if 'REFRESH_TEMPLATE' in checker_hints:
-                    self.states['refresh_template'] += 1
+                    cls.states['refresh_template'] += 1
                 
                 if stream:
                     stream.write(
@@ -617,70 +821,83 @@ class ModelDiscoverySystem(exec_utils.System):
                         unsafe_allow_html=True
                     )
                 
-                if checkpass:
-                    report_query = (
-                        "The designed model passed the tests, now please generate a text report explaining and justifying your design."
-                        " Generate a creative name of your design as the title of your report in the first line of your response."
-                        " Do not include abbreviations or acronyms of your design in the title. You can use them in the body of the report."
-                        f" Here is the code of the designed model after degugging:\n\n{code}" # FIXME: what is the code after debugging is not the same as the idea before debugging
-                    )
-                    if initial_error is not None:
-                        error_info=f"Your design didn't pass the checker initially:\n\n{initial_error}\n\nIt has been fixed by the assistant already as follows:\n\n{code}"
-                    with status_handler(f"Querying agent for report..."):
-                        self.logging.info('Now trying to compile self report...')
-                        self_report = self.dialog.access_thread(thread_did).query_agent(
-                            caller='system',
-                            agent=self.designer,
-                            query=report_query if initial_error is None else f'{error_info}\n\n{report_query}',
-                            source=source,
-                            context=problem_history,
-                        )
-                        if stream:
-                            stream.markdown(self_report["text"]) #<-- change
+                if checkpass: break
 
-                    explain=self_report['text']
-                    return code,explain,designer_cost,check_results
-                else:
-                    query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix."
-                    if self.states['refresh_template'] >=1:
-                        query+=f'\nHere is the template for the GAB block for you to refresh:\n\n{self.gab_py}'
-                    if self.states['refresh_template'] >= 2:
-                        query+=f'\nHere is the definition of GABBase for you to refresh:\n\n{GAB_BASE}'
-                    if self.states['refresh_template'] >= 3:
-                        query+=f'\nHere is the definition for the GAM model for you to refresh:\n\n{self.gam_py}'
-                    source = 'user'
-                    if attempt == 0:
-                        initial_error = check_report
-                    self.checker.reset()
+                query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix."
+                if cls.states['refresh_template'] >=1:
+                    query+=f'\nHere is the template for the GAB block for you to refresh:\n\n```python\n{cls.gab_py}```'
+                if cls.states['refresh_template'] >= 2:
+                    query+=f'\nHere is the definition of GABBase for you to refresh:\n\n```python\n{GAB_BASE}```'
+                if cls.states['refresh_template'] >= 3:
+                    query+=f'\nHere is the definition for the GAM model for you to refresh:\n\n```python\n{cls.gam_py}```'
+                if attempt == 0:
+                    initial_error = check_report
+                cls.checker.reset()
 
-        return None,None,designer_cost,None
+        if checkpass:
+            report_query = (
+                "The designed model passed the tests, now please generate a text report explaining and justifying your design."
+                " Generate a creative name of your design as the title of your report in the first line of your response."
+                " Do not include abbreviations or acronyms of your design in the title. You can use them in the body of the report."
+                f" Here is the code of the designed model after degugging:\n\n{code}" # FIXME: what is the code after debugging is not the same as the idea before debugging
+            )
+            if initial_error is not None:
+                error_info=f"Your design didn't pass the checker initially:\n\n{initial_error}\n\nIt has been fixed by the assistant already as follows:\n\n{code}"
+                report_query = f"{error_info}\n\n{report_query}"
+            with status_handler(f"Querying agent for report..."):
+                cls.logging.info('Now trying to compile self report...')
+                explain,_ = cls.dialog.call(design_thread_tid,report_query)
+                if stream:
+                    stream.markdown(explain) #<-- change
+
+            proposal=f'{explain}\n\nImplementation:\n\n{code}\n\n'
+            # cls.dialog.close(design_thread_tid,proposal)
+            # if debug_thread_tid:
+            #     cls.dialog.close(debug_thread_tid,'The design passed the debugging process')
+            return proposal,(code,explain,design_cost,check_results)
+
+        # cls.dialog.close(design_thread_tid,FAILED)
+        # if debug_thread_tid:
+        #     cls.dialog.close(debug_thread_tid,'The design failed the debugging process')
+        return FAILED,(None,None,design_cost,None)
         
 
-    def review(self,proposal,costs,stream,status_handler,thread_did): 
+    def _review(cls,query,stream,status_handler,parent_tid,context): 
+        if query == FAILED:
+            return FAILED,(False,None,None,0)
         reviewer_query = REVIEWER_PROMPT.format(
-            proposal=proposal,
+            proposal=query,
             gab_base=GAB_BASE,
-            gam_py=self.gam_py,
+            gam_py=cls.gam_py,
             instruct='' # TODO: add references from S2 etc.
         )
         reviews = {}
         ratings = {}
-        with status_handler(f"Querying reviewer agent for review..."):
-            for style in self.reviewers:
-                reviewer = self.reviewers[style]
-                response = self.dialog.access_thread(thread_did).query_agent(
-                    caller='system',
-                    agent=reviewer,
-                    query=reviewer_query,
-                    source='user',
-                    # No history for reviewer or would some history be useful?
-                )
+        review_cost=0
+        for style in cls.reviewers:
+            with status_handler(f"Querying {style} reviewer for review..."):
+                REVIWER_CALLEE = ROLE('reviewer',cls.reviewers[style])
+                review_thread_tid = cls.dialog.fork(parent_tid,SYSTEM_CALLER,REVIWER_CALLEE,note=f'Starting review process: {style}')
+                _,response = cls.dialog.call(review_thread_tid,reviewer_query)
+
                 if stream:
+                    stream.write(f'Review of {style} reviewer...')
                     stream.markdown(response["text"])
                 ratings[style] = response["rating"]
                 reviews[style] = response["review"]
-                costs['review'] += response["_details"]["running_cost"]
-        return ratings,reviews,costs
+                review_cost += response["_details"]["running_cost"]
+        review_ratings=''
+        for idx, style in enumerate(cls.reviewers):
+            review=reviews[style]
+            rating=ratings[style]
+            review_ratings+=f'# Review of Reviewer {idx+1}:\n\n{review}\n\n## Rating: {rating} out of 5\n\n'
+        rating=np.mean(list(ratings.values()))
+        review_pass = rating >= cls._config.reviewer_threshold
+        if review_pass:
+            response=f'The design passed the review process with an average rating of {rating} out of 5. Review details:\n\n{review_ratings}'
+        else:
+            response=f'The design didn\'t pass the review process with an average rating of {rating} out of 5. Review details:\n\n{review_ratings}'
+        return response,(review_pass,ratings,reviews,review_cost)
 
     def query_system(
         self,
@@ -702,64 +919,57 @@ class ModelDiscoverySystem(exec_utils.System):
             with a frontend.
         
         """
-        self.new_session(log_dir)
-        main_did = self.dialog.fork(0,'main','Starting a new session...')
+        status_handler = stream.status if stream and status else EmptyHandler
+        if stream is None:# and self._config.debug_steps:
+            stream = PrintSystem(self._config)
+        self.new_session(log_dir,stream)
+        main_tid = self.dialog.fork(0,note='Starting a new session...',name='main')
 
-        costs={ # NOTE: costs in exec_utils need to be updated
+        costs={ # NOTE: make cost inside threads or dialog manager
             'design':0,
             'review':0,
             'summary':0,
         }
-        status_handler = stream.status if stream and status else EmptyHandler
-        if stream is None and self._config.debug_steps:
-            stream = PrintSystem(self._config)
             
-        designer_context = AgentContext() # should be input, design, review, design, review, ...
-
-        # query = f"{query}\nPlease only write raw Python code and nothing more, no special formatting or extra text."
-        designer_query = DESIGNER_PROMPT.format(
+        design_query = DESIGNER_PROMPT.format(
             gab_base=GAB_BASE,
             gam_py=self.gam_py,
             gab_py=self.gab_py,
             config=self._cfg.to_prompt(), #<--- need to parameterize 
             instruct=query,
         )
-        found_design = False
-        self._queries.append(designer_query)
-
+        query=design_query
+        
+        refine_pipe_tid = self.dialog.fork(main_tid,SYSTEM_CALLER,SYSTEM_CALLER,note='Design refinement pipe.',name='refine')
         for i in range(self._config.max_design_refines):
-            refine_thread_did = self.dialog.fork(main_did,f'design_refine_{i}',f'Design refinement round {i+1}')
+            DESIGN_CALLEE = ROLE('designer',self.design_flow)
+            design_pipe_tid = self.dialog.fork(refine_pipe_tid,SYSTEM_CALLER,DESIGN_CALLEE,note=f'launch design flow',name=f'design_{i}')
+            REVIEW_CALLEE = ROLE('reviewer',self.review_flow) 
+            review_pipe_tid = self.dialog.fork(refine_pipe_tid,SYSTEM_CALLER,REVIEW_CALLEE,note=f'launch review flow',name=f'review_{i}')
+            self.dialog.carry(refine_pipe_tid,design_pipe_tid,review_pipe_tid)
+            rres,(lres,lret,rret) = self.dialog.call(refine_pipe_tid,query,
+                                                     largs={'stream':stream,'status_handler':status_handler,'context':self.dialog.context(refine_pipe_tid)},
+                                                     rargs={'stream':stream,'status_handler':status_handler,'context':None})
+            review_pass,ratings,reviews,review_cost = rret
+            code,explain,design_cost,check_results = lret
+            costs['design'] += design_cost
+            costs['review'] += review_cost
+            if lres == FAILED:
+                query = design_query
+            else:
+                query=rres
 
-            design_thread_did = self.dialog.fork(refine_thread_did,'design_attempt',f'Starting design attempt...')
-            code,explain,designer_cost,check_results = self.design(query,designer_context,stream,status_handler,design_thread_did)
-            costs['design'] += designer_cost
-            if code is None: continue
 
-            proposal=f'{explain}\n\nImplementation:\n\n{code}\n\n'
-            self.dialog.close_thread(design_thread_did,f'The designer has designed the model:\n\n{proposal}')
-            designer_context.append(query,"user",{'sender':'system','did':design_thread_did,'mid':0})
-            designer_context.append(proposal,"assistant",{'sender':'designer','did':design_thread_did,'mid':self.dialog.access_thread(design_thread_did).mid-1})
-
-            review_thread_did = self.dialog.fork(refine_thread_did,f'review_{i}',f'Sending the design to reviewers for review...')
-            ratings,reviews,costs = self.review(proposal,costs,stream,status_handler,review_thread_did)
-            review_ratings=''
-            for idx, style in enumerate(self.reviewers):
-                review=reviews[style]
-                rating=ratings[style]
-                review_ratings+=f'# Review of Reviewer {idx+1}:\n\n{review}\n\n## Rating: {rating} out of 5\n\n'
-            self.dialog.close_thread(review_thread_did,f'The reviewers have returned the reviews:\n\n{review_ratings}')
-            rating=np.mean(list(ratings.values()))
-            if rating >= self._config.reviewer_threshold:
-                found_design = True
-                self.dialog.close_thread(refine_thread_did,f'The design passed the review process')
+            if review_pass:
+                # found_design = True
+                # self.dialog.close(refine_pipe_tid,f'The design passed the review process')
                 break
-            else: # next round design
-                query=f'The design didn\'t pass the review process, here is the feedback from the reviewer, please improve your design based on the reviews: {review_ratings}'
-                self.dialog.close_thread(refine_thread_did,f'The design didn\'t pass the review process')
+            # else: # next round design
+            #     self.dialog.close(refine_pipe_tid,f'The design didn\'t pass the review process')
 
-        if not found_design:
-            self.dialog.close_thread(main_did,'The design process has ended without a successful design')
-            return None
+        # if not found_design:
+        #     self.dialog.close(main_tid,'The design process has ended without a successful design')
+        #     return None
         
         title=explain.split('\n')[0].replace('#','').strip()#+'_'+str(uuid.uuid4().hex[:6])
 
@@ -779,15 +989,11 @@ class ModelDiscoverySystem(exec_utils.System):
                 f"{explain}\n\nImplementation of {title}:\n\n{code}\n\n"
                 "Please summarize the design with a description of the design and a simple pseudo code that conclude the core idea in few sentences."
             )
-            summary_thread_did = self.dialog.fork(main_did,'summary')
-            response = self.dialog.access_thread(summary_thread_did).query_agent(
-                caller='system',
-                agent=self.designer,
-                query=summary_query,
-                source='user',
-            )
+            SUMMARY_CALLER = ROLE('designer',self.designer)
+            summary_thread_tid = self.dialog.fork(main_tid,SYSTEM_CALLER,SUMMARY_CALLER,note='Starting summary process...')
+            _,response = self.dialog.call(summary_thread_tid,query=summary_query)
             summary=response['text']
-            self.dialog.close_thread(summary_thread_did,f'The summary of the design is:\n\n{summary}')
+            # self.dialog.close(summary_thread_tid,f'The summary of the design is:\n\n{summary}')
             costs['summary'] += response["_details"]["running_cost"]
             if stream:
                 stream.markdown(summary)
@@ -795,9 +1001,9 @@ class ModelDiscoverySystem(exec_utils.System):
         if self.log_dir:
             U.save_json(costs,f"{self.log_dir}/costs.json")
         
-        self.dialog.close_thread(main_did,f'The design process has ended with a successful design:\n\nTitle: {title}\n\nCode:\n\n{code}\n\nExplaination:\n\n{explain}\n\nSummary:\n\n{summary}\n\nReviews:\n\n{review_ratings}')
+        # self.dialog.close(main_tid,f'The design process has ended with a successful design:\n\nTitle: {title}\n\nCode:\n\n{code}\n\nExplaination:\n\n{explain}\n\nSummary:\n\n{summary}\n\nReviews:\n\n{review_ratings}')
 
-        self.close_session()
+        # self.close_session()
         return title,code,explain,summary,autocfg,reviews,ratings,check_results
 
     @classmethod
@@ -883,4 +1089,6 @@ def BuildSystem(
     #     kwargs["wdir"] = wdir
         
     return BuildSystem(config,**kwargs)
+
+
 

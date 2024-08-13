@@ -50,7 +50,7 @@ from typing import (
     Optional,
     Union
 )
-from .system import BuildSystem
+from .system import BuildSystem,PrintSystem
 from exec_utils.factory import _check_config
 from exec_utils import BuildSystem as NativeBuild
 from exec_utils.aliases import ConfigType
@@ -195,7 +195,7 @@ class LibraryReference(NodeObject):
     def to_prompt(self) -> str:
         prompt=self.to_desc(reformat=False)
         if self.code:
-            prompt+=f'\n\n## Code\n\n{self.code}'
+            prompt+=f'\n\n## Code\n\n```python\n{self.code}```'
         return prompt
 
 
@@ -502,6 +502,7 @@ class EvolutionSystem(exec_utils.System):
     def __init__(self,agent_system,config,**kwargs):
         self.agents = agent_system
         self._config = config
+        self.stream = PrintSystem(self._config)
         self.load(**kwargs)
 
     def load(self,**kwargs):
@@ -510,7 +511,7 @@ class EvolutionSystem(exec_utils.System):
         for param in self._config.strparams.split(';'):
             key,val=param.split('=')
             self.params[key]=val
-        print(self.params)
+        self.stream.write(self.params)
 
         # set the name and save dir
         self.evoname=self.params['evoname'] # Provide the name for the whole run including evolutions of all scales, all designs, all agents
@@ -542,10 +543,10 @@ class EvolutionSystem(exec_utils.System):
 
         self.scales=[eval(f'GAMConfig_{scale}()') for scale in self.state['scales']]
 
-        print(f"Evolution system initialized with scales: {self.state['scales']}")
-        print(f"Current scale: {self.state['current_scale']}")
-        print(f"Budgets remaining: {self.state['budgets']}")
-        print(f"Checkpoint directory: {self.evo_dir}")
+        self.stream.write(f"Evolution system initialized with scales: {self.state['scales']}")
+        self.stream.write(f"Current scale: {self.state['current_scale']}")
+        self.stream.write(f"Budgets remaining: {self.state['budgets']}")
+        self.stream.write(f"Checkpoint directory: {self.evo_dir}")
 
         self.rnd_agent = BuildSystem(
             debug_steps=True, # True for debugging, but very long
@@ -558,6 +559,9 @@ class EvolutionSystem(exec_utils.System):
         )
         self.ptree=PhylogeneticTree(U.pjoin(self.evo_dir,'db'))
         self.ptree.export()
+
+    def link_stream(self,stream):
+        self.stream=stream
 
     def reload(self,config):
         self._config = config
@@ -572,7 +576,7 @@ class EvolutionSystem(exec_utils.System):
     ) -> list:
         """ Talk to the selector agent """
         
-        print("Hello from the evolution system")
+        self.stream.write("Hello from the evolution system")
 
 
     def load_state(self):
@@ -589,28 +593,28 @@ class EvolutionSystem(exec_utils.System):
         
     def _run(self,mode):
         if mode=='evolve':
-            print('\n\n'+'+'*50)
-            print("RUNNING IN EVOLUTION MODE...\n\n")
+            self.stream.write('\n\n'+'+'*50)
+            self.stream.write("RUNNING IN EVOLUTION MODE...\n\n")
             ret=self.evolve()
             if ret is None:
-                print("No budget left for the evolution")
+                self.stream.write("No budget left for the evolution")
                 time.sleep(1)
             else:
-                print(f"Design {ret} sampled")
+                self.stream.write(f"Design {ret} sampled")
         elif mode=='verify':
-            print('\n\n'+'x'*50)
-            print("RUNNING IN VERIFICATION MODE...\n\n")
+            self.stream.write('\n\n'+'x'*50)
+            self.stream.write("RUNNING IN VERIFICATION MODE...\n\n")
             ret=self.verify()
             if ret is None:
-                print("No unverified design left")
+                self.stream.write("No unverified design left")
                 time.sleep(1)
             else: 
-                print(f"Design {ret} verified")
+                self.stream.write(f"Design {ret} verified")
 
     def evolve(self): # run a single evolution step unless no budget left
         scale_id=self.state['current_scale']
         if scale_id>=len(self.state['scales']): # no scale left
-            print("No scale left")
+            self.stream.write("No scale left")
             return None
         scale=self.state['scales'][scale_id]
         budget=self.state['budgets'][scale]
@@ -630,7 +634,7 @@ class EvolutionSystem(exec_utils.System):
         instruct,seed_ids=self.select(K) # use the seed_ids to record the phylogenetic tree
         artifact=self.sample(scale_id,instruct) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
         if artifact is None:
-            print("No design sampled")
+            self.stream.write("No design sampled")
             return True # no design sampled, continue
         # save the design to the phylogenetic tree and update the budget
         artifact['seed_ids']=seed_ids
@@ -648,7 +652,7 @@ class EvolutionSystem(exec_utils.System):
         session_id=f'sample_{len(self.ptree.filter_by_type(['DesignArtifact']))}_{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}'
         log_dir=U.pjoin(self.evo_dir,'log',session_id)
         U.mkdir(log_dir)
-        response=self.rnd_agent(instruct,log_dir=log_dir) 
+        response=self.rnd_agent(instruct,log_dir=log_dir,stream=self.stream) 
         if response is None: # no design sampled
             return None
         title,rawcode,explain,summary,autocfg,reviews,ratings,check_results=response
@@ -777,6 +781,7 @@ class EvolutionSystem(exec_utils.System):
 
 def BuildEvolution(
         config: Optional[ConfigType] = None,
+        stream: Optional[ModuleType] = None,
         **kwargs
     ) -> EvolutionSystem:
     """Factory for loading evolution system 
@@ -787,6 +792,8 @@ def BuildEvolution(
     """
     kwargs["system_type"] = "evolution"
     evolution = NativeBuild(config,**kwargs)
+    if stream:
+        evolution.link_stream(stream)
     return evolution
 
 
@@ -838,7 +845,7 @@ if __name__ == '__main__':
     # )
     # evolution_system._run(args.mode)
 
-    test_evolve('test_evo_003',step=True)
+    test_evolve('test_evo_004',step=True)
 
 
 #     code_MHA='''

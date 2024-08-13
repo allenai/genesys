@@ -63,8 +63,8 @@ def engine(evosys,project_dir):
     with col3:
         with st.expander("Memory Info"):
             st.write(mem_info)
-    
 
+    
     designed=os.listdir(U.pjoin(evosys.evo_dir,'db'))
     unverified=[]
     for design_id in designed:

@@ -1,6 +1,7 @@
 import json
 import time
 import pathlib
+import datetime
 import streamlit as st
 import sys,os
 
@@ -31,4 +32,8 @@ def design(evosys,project_dir):
         instruction = str(None) if not instruction else instruction 
         
         with st.spinner(text="running discovery loop"):
-            system(instruction,frontend=True,stream=st)
+            session_id=f'sample_test_{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}'
+            log_dir=U.pjoin(evosys.evo_dir,'log',session_id)
+            system(instruction,frontend=True,stream=st,log_dir=log_dir)
+
+            

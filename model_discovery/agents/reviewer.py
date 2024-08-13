@@ -43,8 +43,9 @@ class ReviewerAgent(exec_utils.SimpleLMAgent):
         raw_text = raw_output.text
         output = {}
 
-        js = re.findall(r"```json(.*?)```", raw_text, re.DOTALL)
-        json_output = json.loads(js[0])
+        # js = re.findall(r"```json(.*?)```", raw_text, re.DOTALL)
+        # json_output = json.loads(js[0])
+        json_output = json.loads(raw_text)
 
         output["text"] = raw_text
         output["rating"] = json_output['rating']
@@ -99,26 +100,26 @@ class ReviewerAgent(exec_utils.SimpleLMAgent):
             }
         }
 
-        success = False
-        for _ in range(num_max_retry):
-            raw_response = structured__call__(
-                self.model,
-                response_format=response_format,
-                prompt=query,
-                model_state=self.model_state,
-                history=tuple(manual_history)
-            )
-            try:
-                response = self.parse_output(raw_response)
-                success = True
-                break
-            except Exception as e: 
-                manual_history=list(manual_history)
-                manual_history.append((raw_response.text,'assistant'))
-                query = f"Error parsing output from model: {e}\n\nThe output must be a json with keys 'rating' and 'review'"
+        # success = False
+        # for _ in range(num_max_retry):
+        raw_response = structured__call__(
+            self.model,
+            response_format=response_format,
+            prompt=query,
+            model_state=self.model_state,
+            history=tuple(manual_history)
+        )
+        # try:
+        response = self.parse_output(raw_response)
+            #     success = True
+            #     break
+            # except Exception as e: 
+            #     manual_history=list(manual_history)
+            #     manual_history.append((raw_response.text,'assistant'))
+            #     query = f"Error parsing output from model: {e}\n\nThe output must be a json with keys 'rating' and 'review'"
         
-        if not success:
-            raise ValueError(f"Error parsing output from model: {e}\n\nThe output must be a json with keys 'rating' and 'review'")
+        # if not success:
+        #     raise ValueError(f"Error parsing output from model\n\nThe output must be a json with keys 'rating' and 'review'")
         return response
 
     

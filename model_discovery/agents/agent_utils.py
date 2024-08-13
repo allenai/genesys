@@ -151,3 +151,7 @@ def call_model_structured(model,message,response_format) -> ModelOutput:
         input_tokens=completions.usage.prompt_tokens,
         output_tokens=completions.usage.completion_tokens
     )
+
+
+
+

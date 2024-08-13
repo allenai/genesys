@@ -4,7 +4,7 @@ import pathlib
 import functools as ft
 import streamlit as st
 
-st.set_page_config(page_title="Storm", layout="wide")
+st.set_page_config(page_title="AlphaLM", layout="wide")
 
 
 sys.path.append('.')
@@ -24,7 +24,7 @@ from bin.pages.prompt import prompt
 # Setup the evo system
 
 @st.cache_resource()
-def build_evo_system(name='test_evo_003'):
+def build_evo_system(name='test_evo_004'):
     strparams=[
         f"evoname={name}",
         "scales=14M,31M,70M",
