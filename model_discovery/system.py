@@ -562,7 +562,7 @@ class DialogTreeViewer: # only for viewing and anlyzing the agents dialogs
         self.log_dir = log_dir
         self.threads = {}
         self.system_info = U.load_json(f"{log_dir}/system_info.json")
-        self.root = self.load_thread(U.pjoin(log_dir,f'thread_0_root'),'root',-1)
+        self.root = self.load_thread(U.pjoin(log_dir,f'thread_0_root'),0,'root',-1)
 
     def load_thread(self,log_dir,tid,alias,parent_tid,fork_note=None):
         logs=[]
