@@ -322,7 +322,7 @@ class ROLE:
         if self.role is None:
             if isinstance(self.obj,SimpleLMAgent):
                 self.role = 'assistant'
-            elif isinstance(self.obj,AgentDialogFlow):
+            elif isinstance(self.obj,AgentDialogFlow) or isinstance(self.obj,AgentDialogFlow2):
                 self.role = 'system'
             elif isinstance(self.obj,AgentDialogThread):
                 self.role = 'system'
