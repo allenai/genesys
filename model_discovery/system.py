@@ -554,7 +554,7 @@ class DialogTreeNode:
                     'start_date': timeobj,
                     'text': {
                         'headline': f"Message from {log['data']['sender']} to {log['data']['receiver']}",
-                        'text': f"{content}<h5><i>Running cost: {float(log['data']['cost'])}</i></h5>"
+                        'text': f"{content}<p style='float: right;'><b><i>Running cost: {float(log['data']['cost'])}</i></b></p>"
                     }
                 })
             elif log['type']=='fork':
