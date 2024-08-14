@@ -387,7 +387,7 @@ class AgentDialogThread: # TODO: let runable thread be CFG
             if type=='message':
                 self.stream.markdown(data['content'])
             elif type=='fork':
-                self.stream.markdown(f'Thread {self.tid}:{self.alias} forked {data['tid']}:{data["alias"]} with note: {data["note"]}')
+                self.stream.markdown(f'Thread {self.tid}:{self.alias} forked {data["tid"]}:{data["alias"]} with note: {data["note"]}')
         if self.log_dir: # save to seperate json files to avoid write conficts/lag
             U.save_json(log_content,U.pjoin(f"{self.log_dir}",f"{timestamp}_{self.log_count}.json"))
         self.log_count += 1

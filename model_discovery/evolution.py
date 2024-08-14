@@ -649,7 +649,7 @@ class EvolutionSystem(exec_utils.System):
     def sample(self,scale_id,instruct,verbose=True):
         """ Sample a design at a given scale and verify it """
         self.rnd_agent.set_config(self.scales[scale_id])
-        session_id=f'sample_{len(self.ptree.filter_by_type(['DesignArtifact']))}_{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}'
+        session_id=f'sample_{len(self.ptree.filter_by_type(["DesignArtifact"]))}_{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}'
         log_dir=U.pjoin(self.evo_dir,'log',session_id)
         U.mkdir(log_dir)
         response=self.rnd_agent(instruct,log_dir=log_dir,stream=self.stream) 
