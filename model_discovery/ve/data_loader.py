@@ -126,8 +126,8 @@ def load_wikitext2(tokenizer_name, context_length):
 
 
 session = boto3.Session(
-    aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
-    aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"])
+    aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID",None),
+    aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY",None))
 s3 = session.client("s3")
 
 def download_contents_py(blob_id):
