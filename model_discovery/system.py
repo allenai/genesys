@@ -512,7 +512,6 @@ class DialogTreeNode:
     alias: str
     logs: List[Dict[str,Any]]
     children: list
-    cost: float
     fork_note: Optional[str]
 
     def to_mark(self):
@@ -543,7 +542,7 @@ class DialogTreeNode:
                     'start_date': timeobj,
                     'text': {
                         'headline': f"Message from {log['data']['sender']} to {log['data']['receiver']}",
-                        'text': f"<p>{log['data']['content']}</p>"
+                        'text': f"<p>{log['data']['content']}</p><p>Running cost: {log['data']['cost']}</p>"
                     }
                 })
             elif log['type']=='fork':
@@ -563,9 +562,9 @@ class DialogTreeViewer: # only for viewing and anlyzing the agents dialogs
         self.log_dir = log_dir
         self.threads = {}
         self.system_info = U.load_json(f"{log_dir}/system_info.json")
-        self.root = self.load_thread(U.pjoin(log_dir,f'thread_0_root'),0,'root',-1)
+        self.root = self.load_thread(U.pjoin(log_dir,f'thread_0_root'),'root',-1)
 
-    def load_thread(self,log_dir,tid,alias,parent_tid,fork_note=None,cost=0):
+    def load_thread(self,log_dir,tid,alias,parent_tid,fork_note=None):
         logs=[]
         childrens=[]
         for log_file in os.listdir(log_dir): # should be already sorted by timestamp
@@ -576,11 +575,10 @@ class DialogTreeViewer: # only for viewing and anlyzing the agents dialogs
                     childtid = log['data']['tid']
                     childalias = log['data']['alias']
                     childnote = log['data']['note']
-                    childcost = log['data']['cost']
                     childrens.append(self.load_thread(
                         U.pjoin(log_dir,f'thread_{childtid}_{childalias}'),
-                        childtid,childalias,tid,childnote,childcost))
-        node = DialogTreeNode(tid,parent_tid,alias,logs,childrens,cost,fork_note)
+                        childtid,childalias,tid,childnote))
+        node = DialogTreeNode(tid,parent_tid,alias,logs,childrens,fork_note)
         self.threads[alias] = node
         return node
 
