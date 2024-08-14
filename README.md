@@ -7,6 +7,22 @@ Utils and code for model discovery experiments.
 
 We recommend setting up a conda environment as below, remember to edit the `setup.sh` file to include the necessary environment variables before running the setup script.
 
+Environment variables needed: 
+```shell
+export MY_OPENAI_KEY=YOURKEY
+export HF_KEY=YOURKEY
+export HF_HUB_KEY=YOURKEY
+export GITHUB_TOKEN=YOURKEY
+export WANDB_API_KEY=YOURKEY
+export AWS_SECRET_ACCESS_KEY=YOURKEY # Get it and ID from AWS, Security Credentials of your account
+export AWS_ACCESS_KEY_ID=YOURKEY 
+export S2_API_KEY=YOURKEY # Optional, it allows higher rate limit for the S2 API
+export DATA_DIR=~/model_discovery/data # Change it to your data dir
+export CKPT_DIR=~/model_discovery/ckpt # Change it to your checkpoint dir
+export HF_DATASETS_TRUST_REMOTE_CODE=1
+```
+You can also set them in setup.sh then follow the instructions below to set up the environment.
+
 ```shell
 conda create -n modis python=3.12
 conda activate modis

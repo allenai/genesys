@@ -882,8 +882,8 @@ class ModelDiscoverySystem(exec_utils.System):
         self._config = config
         self._cfg = gam_config
 
-        # self.design_flow=AgentDialogFlow2(self._design)
-        self.design_flow=self.build_design_flow()
+        # self.design_flow=self.build_design_flow()
+        self.design_flow=AgentDialogFlow2(self._design)
         self.review_flow=AgentDialogFlow2(self._review)
 
     def get_system_info(self):
