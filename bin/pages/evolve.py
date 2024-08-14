@@ -48,12 +48,13 @@ def evolve(evosys,project_dir):
 
 
     st.header("Phylogenetic Tree Viewer")
-    max_nodes=10
-    evosys.ptree.export(max_nodes=max_nodes)
-    ptree_dot_dir=U.pjoin(evosys.evo_dir,f'phylogenetic_tree_{max_nodes}.dot')
     ptree_dir_full=U.pjoin(evosys.evo_dir,f'PTree.html')
     if st.button('Click here to view the Phylogenetic Tree'):
         check_output("start " + ptree_dir_full, shell=True)
+        
+    # max_nodes=10
+    # evosys.ptree.export(max_nodes=max_nodes)
+    # ptree_dot_dir=U.pjoin(evosys.evo_dir,f'phylogenetic_tree_{max_nodes}.dot')
     # st.write(f'Only showing the first {max_nodes} nodes.')
     # st.graphviz_chart(ptree_dot_dir)
 

@@ -4,7 +4,7 @@ import pathlib
 import functools as ft
 import streamlit as st
 
-st.set_page_config(page_title="AlphaLM", layout="wide")
+st.set_page_config(page_title="AlphaGPT", layout="wide")
 
 
 sys.path.append('.')

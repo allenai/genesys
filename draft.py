@@ -1,111 +1,195 @@
-import torch
-import torch.nn as nn
-from model_discovery.model.utils.modules import GABBase
-import torch.nn.functional as F
 
+class AgentFlowNode:
+    def __init__(self,id,alias,prog) -> None:
+        self.id=id
+        self.alias=alias
+        self._call=prog
+        self.children = None
 
-class ConvCompress(nn.Module):
+    def __call__(self,query,states,**kwargs):
+        raise NotImplementedError
 
-    def __init__(self, dim, ratio=3, groups=1, **factory_kwargs):
-        super().__init__()
-        self.conv = nn.Conv1d(dim, dim, ratio, stride=ratio, groups=groups,
-            **factory_kwargs)
+    def type(self):
+        raise NotImplementedError
+    
+    def link(self,children):
+        assert isinstance(children,Dict[int,AgentFlowNode]), f'Children must be a dict of flow nodes'
+        for id,child in children.items():
+            assert isinstance(id,int) and id>=0, f'Children id must be an integer >=0'
+            assert isinstance(child,AgentFlowNode), f'Children must be a flow node'
+        self.children = children
+    
 
-    def forward(self, mem):
-        mem = mem.transpose(1, 2)
-        compressed_mem = self.conv(mem)
-        return compressed_mem.transpose(1, 2)
-
-
-class FourierFFTLayer(nn.Module):
-
-    def __init__(self):
-        super().__init__()
-
-    @torch.cuda.amp.autocast(enabled=False)
-    def forward(self, hidden_states):
-        return torch.fft.fft(torch.fft.fft(hidden_states.float(), dim=-1),
-            dim=-2).real
-
-
-class HybridAttention(nn.Module):
-
-    def __init__(self, dim, heads=8, causal=False, compression_factor=3,
-        dropout=0.0, **factory_kwargs):
-        super().__init__()
-        assert dim % heads == 0, 'dimension must be divisible by number of heads'
-        self.heads = heads
-        self.causal = causal
-        self.compression_factor = compression_factor
-        self.compress_fn = ConvCompress(dim, compression_factor, groups=
-            heads, **factory_kwargs)
-        self.to_qkv = nn.Linear(dim, dim * 3, bias=False, **factory_kwargs)
-        self.to_out = nn.Linear(dim, dim, **factory_kwargs)
-        self.dropout = nn.Dropout(dropout)
-        self.null_k = nn.Parameter(torch.zeros(1, 1, dim, **factory_kwargs))
-        self.null_v = nn.Parameter(torch.zeros(1, 1, dim, **factory_kwargs))
-        self.fft_layer = FourierFFTLayer()
-
-    def forward(self, x, input_mask=None):
-        b, t, d, h, cf, device = (*x.shape, self.heads, self.
-            compression_factor, x.device)
-        q, k, v = self.to_qkv(x).chunk(3, dim=-1)
-        padding = cf - t % cf
-        if padding < cf:
-            k, v = map(lambda t: F.pad(t, (0, 0, padding, 0)), (k, v))
-        k, v = map(self.compress_fn, (k, v))
-        nk, nv = map(lambda t: t.expand(b, -1, -1), (self.null_k, self.null_v))
-        k = torch.cat((nk, k), dim=1)
-        v = torch.cat((nv, v), dim=1)
-        q, k, v = map(lambda t: t.reshape(*t.shape[:2], h, -1).transpose(1,
-            2), (q, k, v))
-        dots = torch.einsum('bhid,bhjd->bhij', q, k) * d ** -0.5
-        mask_value = -torch.finfo(dots.dtype).max
-        if self.causal:
-            mask_q = mask_k = torch.arange(t, device=device)
-            if padding < cf:
-                mask_k = F.pad(mask_k, (padding, 0))
-            mask_k, _ = mask_k.reshape(-1, cf).max(dim=-1)
-            mask = mask_q[:, None] < mask_k[None, :]
-            mask = F.pad(mask, (1, 0), value=False)
-            dots.masked_fill_(mask[None, None, ...], mask_value)
-            del mask
-        if input_mask is not None:
-            mask_q = mask_k = input_mask
-            if padding < cf:
-                mask_k = F.pad(mask_k, (padding, 0), value=True)
-            mask_k = mask_k.reshape(b, -1, cf).sum(dim=-1) > 0
-            mask = mask_q[:, None, :, None] < mask_k[:, None, None, :]
-            mask = F.pad(mask, (1, 0), value=True)
-            dots.masked_fill_(~mask, mask_value)
-            del mask
-        attn = dots.softmax(dim=-1)
-        attn = self.dropout(attn)
-        out = torch.einsum('bhij,bhjd->bhid', attn, v)
-        out = out.transpose(1, 2).reshape(b, t, d)
-        out = self.to_out(out)
-        out = self.fft_layer(out)
-        return out
-
-
-class GAB(GABBase):
-    """Generalized Autoregressive Block
-        Input:        X: (batch, seqlen, embed_dim)
-        Output:       Y: (batch, seqlen, embed_dim)
-        Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
+class CONDNode(AgentFlowNode): # It will check a condition and return true or false, the order of the children is the order of the selections
     """
+    A COND node input query and kwargs, output a selection index, it routes to another block
+    """
+    def __call__(self,query,states,**kwargs):
+        assert self.children, f'CONDNode {self.alias}-{self.id}: COND node cannot be a terminal node'
+        ret = self._call(query,states,**kwargs)
+        assert isinstance(ret,int) and ret>=0, f'CONDNode {self.alias}-{self.id}: Condition must return a boolean or a positive integer'
+        assert ret<len(self.children), f'CONDNode {self.alias}-{self.id}: Condition must return a value less than the number of selections'
+        child = self.children[ret]
+        assert isinstance(child,AgentFlowNode), f'CONDNode {self.alias}-{self.id}: Children must be a flow node'
+        return child(query,states,**kwargs)
+    
+    def type(self):
+        return 'COND'
 
-    def __init__(self, embed_dim: int, block_loc: tuple, device=None, dtype
-        =None, heads=8, compression_factor=3, dropout=0.1, causal=False, **
-        kwargs):
-        factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc)
-        self.hybrid_attention = HybridAttention(embed_dim, heads, causal,
-            compression_factor, dropout, **factory_kwargs)
+class PROCNode(AgentFlowNode): # It will call an agent and return a response
+    
+    def __call__(self, query,states, **kwargs):
+        query,states,ret = self._call(query,states,**kwargs)
+        assert isinstance(query,str), f'A PROC node must return a string response message'
+        assert isinstance(ret,dict), f'A PROC node must return a dict of additional returns'
+        if self.children:
+            assert len(self.children)==1, f'PROCNode {self.alias}-{self.id}: Children of a PROC node must be one'
+            child = self.children[0]
+            return child(query,states,**ret) 
+        return query,states,ret
+    
+    def type(self):
+        return 'PROC'
 
-    def _forward(self, X, **intermediate_vars):
-        return self.hybrid_attention(X)
+class AgentFlow:
+    """
+    input query and kwargs, output a response message and a dict of additional returns
+    """
+    def __init__(self,states={}):
+        self.nodes={}
+        self.states=states # global vars
+        self.entry = PROCNode(0,'entry',lambda x,**kwargs: (x,kwargs))
+        self.nodes[0] = self.entry
+        self.alias_to_id = {'entry':0}
+
+    def __call__(self,query,**kwargs):
+        query,states,ret = self.entry(query,self.states,**kwargs)
+        self.states = states
+        return query,ret
+    
+    def new_node(self,alias,prog,type):
+        assert alias not in self.alias_to_id, f'Alias {alias} already exists'
+        id=self.assign_id()
+        if type=='PROC':
+            self.nodes[id] = PROCNode(id,alias,prog)
+        elif type=='COND':
+            self.nodes[id] = CONDNode(id,alias,prog)
+        self.alias_to_id[alias] = id
+        return id
+    
+    def assign_id(self):
+        return len(self.nodes)
+
+    def link(self,id_or_alias,children):
+        if isinstance(children,AgentFlowNode):
+            children = {0:children}
+        elif isinstance(children,List[AgentFlowNode]):
+            children = {i:child for i,child in enumerate(children)}
+        elif isinstance(children,Dict[int,AgentFlowNode]):
+            pass
+        else:
+            raise ValueError(f'Children must be a dict of flow nodes, or a list of flow nodes, or a single flow node')
+        if isinstance(id_or_alias,str):
+            id_or_alias = self.alias_to_id[id_or_alias]
+        self.nodes[id_or_alias].link(children)
 
 
-gab_config = {'heads': 8, 'compression_factor': 3, 'dropout': 0.1, 'causal':
-    False}
+design_states = {
+    'initial_error':None,
+}
+design_flow = AgentFlow(design_states)
+
+
+
+
+
+def _design(cls,query,states,stream,status_handler,parent_tid,context): # input query, context, output design and explanation, thread_tid is the id of the thread in which the design is running
+    initial_error = None
+    DESIGNER = ROLE('designer',cls.designer)
+    DEBUGGER = ROLE('debugger',cls.debugger)
+    design_thread_tid=cls.dialog.fork(parent_tid,SYSTEM_CALLER,DESIGNER,context=context,
+                                        alias='designing',note=f'Starting design...')
+    debug_thread_tid=None
+    for attempt in range(cls._config.max_design_attempts):
+        cls.logging.info(f'Attempting design, attempt={attempt}')
+        
+        if attempt == 0:
+            thread_tid = design_thread_tid
+        else:
+            if debug_thread_tid is None:
+                query = f'The designer designed the model: {text}\n\nThe checker failed the model: {query}\n\nPlease debug the model.'
+                debug_thread_tid = cls.dialog.fork(design_thread_tid,SYSTEM_CALLER,DEBUGGER,
+                                                    alias='debugging',note='Starting debugging...')
+            thread_tid = debug_thread_tid
+
+        # Block 2: Input thread_tid, query, and get checked code
+        with status_handler(f"Design Attempt {attempt+1}"): 
+            
+            # BLOCK 
+            _,out=cls.dialog.call(thread_tid,query)
+
+            try:
+                code = out.get("code",None)
+                text = out.get("text")
+                assert code is not None
+                assert "# gab.py" in code 
+            
+                if stream: #and code:
+                    stream.write('Model authored code block...')
+                    stream.markdown(str(text))
+                success = True
+            except AssertionError:
+                success = False
+            
+            if not success:  # if the code is not generated,
+                query  = GAB_ERROR
+                continue 
+
+            design_name = f"{cls._config.run_name}_{attempt}"
+            checkpass,check_report,code,check_results = cls.checker.check(cls._cfg,code,design_name)
+            checker_hints = check_results['hints']
+            if 'REFRESH_TEMPLATE' in checker_hints:
+                cls.states['refresh_template'] += 1
+            
+            if stream:
+                stream.write(
+                    f"""<details><summary>code check</summary>{check_report}</details>""",
+                    unsafe_allow_html=True
+                )
+
+        # COND block
+        if checkpass:  
+            break # goto next block
+        else:
+            # BLOCK return constant, input attempt, output initial_error query
+            query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix."
+            if cls.states['refresh_template'] >=1:
+                query+=f'\nHere is the template for the GAB block for you to refresh:\n\n```python\n{cls.gab_py}```'
+            if cls.states['refresh_template'] >= 2:
+                query+=f'\nHere is the definition of GABBase for you to refresh:\n\n```python\n{GAB_BASE}```'
+            if cls.states['refresh_template'] >= 3:
+                query+=f'\nHere is the definition for the GAM model for you to refresh:\n\n```python\n{cls.gam_py}```'
+            if attempt == 0:
+                initial_error = check_report
+
+    if checkpass:
+        report_query = (
+            "The designed model passed the tests, now please generate a text report explaining and justifying your design."
+            " Generate a creative name of your design as the title of your report in the first line of your response."
+            " Do not include abbreviations or acronyms of your design in the title. You can use them in the body of the report."
+            f" Here is the code of the designed model after degugging:\n\n{code}" # FIXME: what is the code after debugging is not the same as the idea before debugging
+        )
+        if initial_error is not None:
+            error_info=f"Your design didn't pass the checker initially:\n\n{initial_error}\n\nIt has been fixed by the assistant already as follows:\n\n{code}"
+            report_query = f"{error_info}\n\n{report_query}"
+        with status_handler(f"Querying agent for report..."):
+            cls.logging.info('Now trying to compile self report...')
+            explain,_ = cls.dialog.call(design_thread_tid,report_query)
+            if stream:
+                stream.markdown(explain) #<-- change
+
+        proposal=f'{explain}\n\nImplementation:\n\n{code}\n\n'
+        return proposal, {'code':code,'text':explain,'check_results':check_results}
+
+    return FAILED, {'code':None,'text':None,'check_results':None}
+    
