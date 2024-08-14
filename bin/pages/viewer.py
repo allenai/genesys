@@ -32,25 +32,8 @@ def viewer(evosys,project_dir):
         markmap(dialog.to_markmap(),height=300)
         selected_thread = st.selectbox("Select a thread", list(dialog.threads.keys()))
         thread = dialog.threads[selected_thread]
-        timeline(thread.to_timeline(),height=600)
+        timeline(thread.to_timeline(),height=800)
 
-    
-
-    ### side bar 
-    # st.sidebar.button("reset")
-
-
-        
-    # filler = "Find me a new model"
-
-    # instruction = st.text_input(label = "Add any additional instructions (optional)" )
-    # submit = st.button(label="Design model")
-
-    
-    # if submit or instruction:
-    #     instruction = str(None) if not instruction else instruction 
-        
-    #     with st.spinner(text="running discovery loop"):
-    #         evosys(instruction,frontend=True,stream=st)
-        
+    with st.sidebar:
+        st.write("Empty sidebar")
     

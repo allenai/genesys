@@ -16,3 +16,7 @@ def home(evosys,project_dir):
     readme = U.read_file(U.pjoin(project_dir,'README.md'))
     st.markdown(readme)
 
+
+    with st.sidebar:
+        st.write("Empty sidebar")
+    

@@ -9,11 +9,13 @@ from datetime import datetime
 import tempfile
 import copy
 import numpy as np
-# import uuid
+import uuid
 import pandas as pd
 import functools as ft
 import networkx as nx
 import inspect
+import markdown
+import re
 
 #from IPython.display import display, Markdown, Latex
 from types import ModuleType
@@ -527,7 +529,7 @@ class DialogTreeNode:
         timeline['title']={
             'text': {
                 'headline': f'Dialog: {self.alias}, ID: {self.tid}',
-                'text': f'<p>Fork note: {self.fork_note}</p>'
+                'text': f'{markdown.markdown(self.fork_note)}'
             },
         }
         timeline['events']=[]
@@ -538,11 +540,21 @@ class DialogTreeNode:
             H,min,S = map(int,HMS.split('-'))
             timeobj = {'year':Y,'month':M,'day':D,'hour':H,'minute':min,'second':S}
             if log['type']=='message':
+                content=log['data']['content']
+                codes = re.findall(r"```python(.*?)```", content, re.DOTALL)
+                replace = {}
+                for code in codes:
+                    mark='CODE_REPLACE_TEMP_'+uuid.uuid4().hex.upper()
+                    replace[mark]=code
+                    content = content.replace(f"```python{code}```",mark)
+                content = markdown.markdown(content)
+                for mark,code in replace.items():
+                    content = content.replace(mark,f"<code style='display: block; white-space: pre-wrap;'>{code}</code>")
                 timeline['events'].append({
                     'start_date': timeobj,
                     'text': {
                         'headline': f"Message from {log['data']['sender']} to {log['data']['receiver']}",
-                        'text': f"<p>{log['data']['content']}</p><p>Running cost: {log['data']['cost']}</p>"
+                        'text': f"{content}<h5><i>Running cost: {float(log['data']['cost'])}</i></h5>"
                     }
                 })
             elif log['type']=='fork':
@@ -550,7 +562,7 @@ class DialogTreeNode:
                     'start_date': timeobj,
                     'text': {
                         'headline': f"Thread forked: {log['data']['alias']}",
-                        'text': f"<p>{log['data']['note']}</p>"
+                        'text': f"{markdown.markdown(log['data']['note'])}"
                     }
                 })
         return timeline
@@ -1077,7 +1089,6 @@ class ModelDiscoverySystem(exec_utils.System):
                     code = out.get("code",None)
                     text = out.get("text")
                     assert code is not None
-                    assert "# gab.py" in code 
                 
                     if stream: #and code:
                         stream.write('Model authored code block...')

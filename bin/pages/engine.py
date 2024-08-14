@@ -86,3 +86,9 @@ def engine(evosys,project_dir):
         st.write("There is no unverified designs.")
     for design_id in unverified:
         st.write(f"Design: {design_id}")
+
+
+
+    with st.sidebar:
+        st.write("Empty sidebar")
+    

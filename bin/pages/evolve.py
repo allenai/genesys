@@ -64,3 +64,6 @@ def evolve(evosys,project_dir):
     components.html(source_code, height = 800)
 
 
+    with st.sidebar:
+        st.write("Empty sidebar")
+    

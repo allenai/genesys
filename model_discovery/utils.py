@@ -2,6 +2,7 @@ import os
 import json
 import functools as ft
 import time
+import re
 
 pjoin=os.path.join
 pexists=os.path.exists
@@ -85,3 +86,4 @@ class CodeTimer:
         self.end = time.time()
         self.elapsed = self.end - self.start
         print(f"[Elapsed time for {self.label}: {self.elapsed:.3f} seconds]")
+

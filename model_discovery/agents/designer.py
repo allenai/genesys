@@ -45,7 +45,9 @@ class DesignerAgent(exec_utils.SimpleLMAgent):
 
         codes = re.findall(r"```python(.*?)```", raw_text, re.DOTALL)
         if codes:
-            output["code"] = codes[0]
+            for code in codes:
+                if code.strip().startswith("# gab.py"):
+                    output["code"] = code
 
         output["text"] = raw_text
         output["_details"] = {}

@@ -47,7 +47,7 @@ Here are some hints:
 Now, use the information provided above to complete the code. You should strictly follow the instructions in gab.py and do not remove anything suggested by the instructions. 
 
 Your response should include the full gab.py file with the completed code. 
-Specifically, when providing the full gab.py file, please preserve # gab.py at the beginning of the file.
+Specifically, when providing the full gab.py file, please preserve # gab.py at the beginning of the file. You can write multiple codes during your analysis process, but only one with # gab.py at the beginning will be detected as gab.py, if multiple gab.py are detected in your response, only the last one will be applied.
 You should derive your design step by step with detailed analysis and explanation before writing your code. 
 """
 
@@ -72,4 +72,6 @@ The definition of a gam model in gam.py:
 Now, carefully review the design and give the feedback in a step by step way. You must return as a json file with two keys: 'review' and 'rating'. 
 The 'review' key should contain a detailed feedback of the design written in markdown, and the 'rating' key should contain the rating of the design from 1 to 5.
 """
-GAB_ERROR = """Please provide the full gab code, and please do not modify other parts of the code. Specifically, please preserve # gab.py at the beginning of gab.py."""
+
+
+GAB_ERROR = """Please provide the full gab code, and please do not modify other parts of the code. Specifically, please preserve # gab.py at the beginning of gab.py. You can write multiple codes during your analysis process, but only one with # gab.py at the beginning will be detected as gab.py, if multiple gab.py are detected in your response, only the last one will be applied. Please follow the instructions in the prompt and provide the full gab.py file with the completed code. """
