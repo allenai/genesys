@@ -366,7 +366,7 @@ class AgentDialogThread: # TODO: let runable thread be CFG
         self.callee = callee
         if callee:
             assert isinstance(callee,ROLE), f'Callee must be a ROLE object if callee is provided'
-            if isinstance(callee.obj,AgentDialogFlow):
+            if isinstance(callee.obj,AgentDialogFlow) or isinstance(callee.obj,AgentDialogFlow2):
                 self.flow = callee.obj
                 self.type = 'flow'
             elif isinstance(callee.obj,SimpleLMAgent):
