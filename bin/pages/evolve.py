@@ -5,6 +5,7 @@ import streamlit as st
 import sys,os
 from subprocess import check_output
 import graphviz
+import streamlit.components.v1 as components
 
 
 sys.path.append('.')
@@ -49,13 +50,17 @@ def evolve(evosys,project_dir):
 
     st.header("Phylogenetic Tree Viewer")
     ptree_dir_full=U.pjoin(evosys.evo_dir,f'PTree.html')
-    if st.button('Click here to view the Phylogenetic Tree'):
+    if st.button('Click here to view the Full Phylogenetic Tree'):
         check_output("start " + ptree_dir_full, shell=True)
-        
-    # max_nodes=10
-    # evosys.ptree.export(max_nodes=max_nodes)
-    # ptree_dot_dir=U.pjoin(evosys.evo_dir,f'phylogenetic_tree_{max_nodes}.dot')
-    # st.write(f'Only showing the first {max_nodes} nodes.')
-    # st.graphviz_chart(ptree_dot_dir)
+
+    # check this: https://github.com/napoles-uach/streamlit_network 
+
+    max_nodes=200
+    evosys.ptree.export(max_nodes=max_nodes,height='800px')
+    ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{max_nodes}.html')
+    st.write(f'Only showing the first {max_nodes} nodes.')
+    HtmlFile = open(ptree_dir_small, 'r', encoding='utf-8')
+    source_code = HtmlFile.read() 
+    components.html(source_code, height = 800)
 
 

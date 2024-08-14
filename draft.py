@@ -35,6 +35,24 @@ class CONDNode(AgentFlowNode): # It will check a condition and return true or fa
     
     def type(self):
         return 'COND'
+    
+class LOOPNode(AgentFlowNode): # It will loop until a condition is met
+    """
+    _call is a condition function, it returns a boolean value, and states, 
+    """
+    def __call__(self,query,states,**kwargs):
+        assert self.children, f'LOOPNode {self.alias}-{self.id}: LOOP node cannot be a terminal node'
+        assert len(self.children)==2, f'LOOPNode {self.alias}-{self.id}: Children of a LOOP node must be two, the first is the loop body, the second is the exit'
+        while True:
+            cont,states = self._call(query,states,**kwargs)
+            assert isinstance(cont,bool), f'LOOPNode {self.alias}-{self.id}: Condition must return a boolean'
+            if cont:
+                query,states,kwargs = self.children[0](query,states,**kwargs)
+            else:
+                return self.children[1](query,states,**kwargs)
+        
+    def type(self):
+        return 'LOOP'
 
 class PROCNode(AgentFlowNode): # It will call an agent and return a response
     
@@ -74,8 +92,17 @@ class AgentFlow:
             self.nodes[id] = PROCNode(id,alias,prog)
         elif type=='COND':
             self.nodes[id] = CONDNode(id,alias,prog)
+        elif type=='LOOP':
+            self.nodes[id] = LOOPNode(id,alias,prog)
         self.alias_to_id[alias] = id
         return id
+    
+    def new_proc(self,alias,prog):
+        return self.new_node(alias,prog,'PROC')
+    def new_cond(self,alias,prog):
+        return self.new_node(alias,prog,'COND')
+    def new_loop(self,alias,prog):
+        return self.new_node(alias,prog,'LOOP')
     
     def assign_id(self):
         return len(self.nodes)
@@ -87,6 +114,12 @@ class AgentFlow:
             children = {i:child for i,child in enumerate(children)}
         elif isinstance(children,Dict[int,AgentFlowNode]):
             pass
+        elif isinstance(children,int):
+            assert children in self.nodes, f'Children id {children} does not exist'
+            children = {0:self.nodes[children]}
+        elif isinstance(children,str):
+            assert children in self.alias_to_id, f'Children alias {children} does not exist'
+            children = {0:self.nodes[self.alias_to_id[children]]}
         else:
             raise ValueError(f'Children must be a dict of flow nodes, or a list of flow nodes, or a single flow node')
         if isinstance(id_or_alias,str):
@@ -94,22 +127,13 @@ class AgentFlow:
         self.nodes[id_or_alias].link(children)
 
 
-design_states = {
-    'initial_error':None,
-}
-design_flow = AgentFlow(design_states)
-
 
 
 
 
 def _design(cls,query,states,stream,status_handler,parent_tid,context): # input query, context, output design and explanation, thread_tid is the id of the thread in which the design is running
-    initial_error = None
-    DESIGNER = ROLE('designer',cls.designer)
-    DEBUGGER = ROLE('debugger',cls.debugger)
-    design_thread_tid=cls.dialog.fork(parent_tid,SYSTEM_CALLER,DESIGNER,context=context,
-                                        alias='designing',note=f'Starting design...')
-    debug_thread_tid=None
+    
+    query,states,ret = initialize_design(query,states,cls,parent_tid,context)
     for attempt in range(cls._config.max_design_attempts):
         cls.logging.info(f'Attempting design, attempt={attempt}')
         
@@ -118,6 +142,7 @@ def _design(cls,query,states,stream,status_handler,parent_tid,context): # input 
         else:
             if debug_thread_tid is None:
                 query = f'The designer designed the model: {text}\n\nThe checker failed the model: {query}\n\nPlease debug the model.'
+                DEBUGGER = ROLE('debugger',cls.debugger)
                 debug_thread_tid = cls.dialog.fork(design_thread_tid,SYSTEM_CALLER,DEBUGGER,
                                                     alias='debugging',note='Starting debugging...')
             thread_tid = debug_thread_tid
