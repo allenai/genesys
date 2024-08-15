@@ -1,0 +1,172 @@
+st20=>start: start Entry of the flow
+io21=>inputoutput: input: Input: query, ['cls', 'stream', 'status_handler', 'parent_tid', 'context']
+op22:init_design=>operation: ### init_design:
+
+        def design_initializer(query,states,cls,parent_tid,context,**kwargs):
+            states['initial_error'] = None
+            states['design_attemps'] = 0
+            DESIGNER = ROLE('designer',cls.designer)
+            design_thread_tid=cls.dialog.fork(parent_tid,SYSTEM_CALLER,DESIGNER,context=context,
+                                                alias='designing',note=f'Starting design...')
+            debug_thread_tid=None
+            return query,states,{'design_thread_tid':design_thread_tid,'debug_thread_tid':debug_thread_tid}
+
+cond23:design_loop=>condition: ### design_loop:
+
+        def design_loop_controller(query,states,cls,**kwargs):
+            cont = states['design_attemps'] < cls._config.max_design_attempts
+            attempt = states['design_attemps']
+            cls.logging.info(f'Attempting design, attempt={attempt}')
+            states['design_attemps'] += 1
+            return cont,states
+
+sub34:design_succeed_or_failed=>subroutine: ### design_succeed_or_failed:
+
+        def design_terminal_check(query,states,checkpass,**kwargs):
+            return 0 if checkpass else 1
+
+op35:design_failure_exit=>operation: ### design_failure_exit:
+
+        def design_failure_exit(query,states,cls,**kwargs):
+            return FAILED,states,{'code':None,'text':None,'check_results':None}
+
+io36=>inputoutput: output: Output: query, ['code', 'text', 'check_results']
+e37=>end: end End of the flow
+op31:design_succeed=>operation: ### design_succeed:
+
+        def design_succeed_return(query,states,cls,check_results,status_handler,code,stream,**kwargs):
+            design_thread_tid = states['design_thread_tid']
+            initial_error = states['initial_error']
+            report_query = (
+                "The designed model passed the tests, now please generate a text report explaining and justifying your design."
+                " Generate a creative name of your design as the title of your report in the first line of your response."
+                " Do not include abbreviations or acronyms of your design in the title. You can use them in the body of the report."
+                f" Here is the code of the designed model after degugging:\n\n{code}" 
+                # FIXME: what is the code after debugging is not the same as the idea before debugging
+            )
+            if initial_error is not None:
+                error_info=(
+                    f"Your design didn't pass the checker initially:\n\n{initial_error}"
+                    f"\n\nIt has been fixed by the assistant already as follows:\n\n{code}"
+                )
+                report_query = f"{error_info}\n\n{report_query}"
+            with status_handler(f"Querying agent for report..."):
+                cls.logging.info('Now trying to compile self report...')
+                explain,_ = cls.dialog.call(design_thread_tid,report_query)
+                if stream:
+                    stream.markdown(explain) #<-- change
+
+            proposal=f'{explain}\n\nImplementation:\n\n{code}\n\n'
+            return proposal, states, {'code':code,'text':explain,'check_results':check_results}
+
+io32=>inputoutput: output: Output: query, ['code', 'text', 'check_results']
+e33=>end: end End of the flow
+sub24:design_switch=>subroutine: ### design_switch:
+
+        def design_thread_switch(query,states,**kwargs):
+            attempt = states['design_attemps']
+            states['current_thread']=kwargs['design_thread_tid']
+            return 0 if attempt == 0 else 1
+
+op26:design_loop_body=>operation: ### design_loop_body:
+
+        def design_loop_body(query,states,cls,status_handler,stream,**kwargs):
+            attempt = states['design_attemps']
+            thread_tid = states['current_thread']
+            # Block 2: Input thread_tid, query, and get checked code
+            with status_handler(f"Design Attempt {attempt+1}"): 
+                
+                # BLOCK 
+                _,out=cls.dialog.call(thread_tid,query)
+
+                try:
+                    code = out.get("code",None)
+                    text = out.get("text")
+                    assert code is not None
+                    assert "# gab.py" in code 
+                
+                    if stream: #and code:
+                        stream.write('Model authored code block...')
+                        stream.markdown(str(text))
+                    generated = True
+                except AssertionError:
+                    generated = False
+            ret={'code':code,'text':text,'generated':generated}
+            return query,states,ret
+
+sub27:gocheck_or_goback=>subroutine: ### gocheck_or_goback:
+
+        def gocheck_or_goback(query,states,generated,**kwargs):
+            return 1 if generated else 0
+
+op28:check_design=>operation: ### check_design:
+
+        def check_design(query,states,cls,stream,**kwargs):
+            attempt = states['design_attemps']
+            design_name = f"{cls._config.run_name}_{attempt}"
+            checkpass,check_report,code,check_results = cls.checker.check(cls._cfg,code,design_name)
+            checker_hints = check_results['hints']
+            if 'REFRESH_TEMPLATE' in checker_hints:
+                cls.states['refresh_template'] += 1
+            
+            if stream:
+                stream.write(
+                    f"""<details><summary>code check</summary>{check_report}</details>""",
+                    unsafe_allow_html=True
+                )
+            ret={'checkpass':checkpass,'check_report':check_report,'code':code,'check_results':check_results}
+            return query,states,ret
+
+sub29:check_pass=>subroutine: ### check_pass:
+
+        def check_pass(query,states,checkpass,**kwargs):
+            return 0 if checkpass else 1
+
+op30:design_failed=>operation: ### design_failed:
+
+        def design_failed(query,states,cls,check_report,**kwargs):
+            query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix."
+            if cls.states['refresh_template'] >=1:
+                query+=f'\nHere is the template for the GAB block for you to refresh:\n\n```python\n{cls.gab_py}```'
+            if cls.states['refresh_template'] >= 2:
+                query+=f'\nHere is the definition of GABBase for you to refresh:\n\n```python\n{GAB_BASE}```'
+            if cls.states['refresh_template'] >= 3:
+                query+=f'\nHere is the definition for the GAM model for you to refresh:\n\n```python\n{cls.gam_py}```'
+            return query,states,{}
+
+op25:switch_to_debug=>operation: ### switch_to_debug:
+
+        def switch_to_debug(query,states,text,cls,**kwargs):
+            debug_thread_tid = kwargs['debug_thread_tid']
+            if debug_thread_tid is None:
+                query = f'The designer designed the model: {text}\n\nThe checker failed the model: {query}\n\nPlease debug the model.'
+                DEBUGGER = ROLE('debugger',cls.debugger)
+                debug_thread_tid = cls.dialog.fork(states['current_thread'],SYSTEM_CALLER,DEBUGGER,
+                                                  alias='debugging',note='Starting debugging...')
+            states['current_thread']=kwargs['debug_thread_tid']
+            return query,states,{'debug_thread_tid':debug_thread_tid}
+
+
+st20->io21
+io21->op22:init_design
+op22:init_design->cond23:design_loop
+cond23:design_loop->
+cond23:design_loop->
+cond23:design_loop(yes)->sub34:design_succeed_or_failed
+sub34:design_succeed_or_failed(right)->op31:design_succeed
+sub34:design_succeed_or_failed(bottom)->op35:design_failure_exit
+op35:design_failure_exit->io36
+io36->e37
+op31:design_succeed->io32
+io32->e33
+cond23:design_loop(no)->sub24:design_switch
+sub24:design_switch(right)->op26:design_loop_body
+sub24:design_switch(right)->op25:switch_to_debug
+op26:design_loop_body->sub27:gocheck_or_goback
+sub27:gocheck_or_goback(right)->op26:design_loop_body
+sub27:gocheck_or_goback(right)->op28:check_design
+op28:check_design->sub29:check_pass
+sub29:check_pass(right)->op30:design_failed
+sub29:check_pass(right)->op31:design_succeed
+op30:design_failed->op26:design_loop_body
+op25:switch_to_debug->op26:design_loop_body

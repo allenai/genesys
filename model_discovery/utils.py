@@ -3,6 +3,7 @@ import json
 import functools as ft
 import time
 import re
+import textwrap
 
 pjoin=os.path.join
 pexists=os.path.exists
@@ -87,3 +88,23 @@ class CodeTimer:
         self.elapsed = self.end - self.start
         print(f"[Elapsed time for {self.label}: {self.elapsed:.3f} seconds]")
 
+
+def remove_leading_indent(source_code):
+    # Split source code into lines
+    lines = source_code.splitlines()
+
+    # Find the first line that starts with "def", "class", or another relevant keyword
+    indent_level = None
+    for line in lines:
+        stripped_line = line.lstrip()
+        if not indent_level:
+            indent_level = len(line) - len(stripped_line) # use first line indent by default
+        if stripped_line.startswith(("def ", "class ")):
+            # Calculate the number of leading spaces (indentation level)
+            indent_level = len(line) - len(stripped_line)
+            break
+
+    # Remove the leading indent based on the detected indent_level
+    normalized_lines = [line[indent_level:] if len(line) > indent_level else line for line in lines]
+
+    return '\n'.join(normalized_lines)

@@ -3,6 +3,7 @@ import time
 import pathlib
 import functools as ft
 import streamlit as st
+import importlib
 
 st.set_page_config(page_title="AlphaGPT", layout="wide")
 
@@ -13,12 +14,28 @@ import model_discovery.utils as U
 
 from streamlit_navigation_bar import st_navbar
 
-from bin.pages.home import home
-from bin.pages.viewer import viewer
-from bin.pages.design import design
-from bin.pages.evolve import evolve
-from bin.pages.engine import engine
-from bin.pages.prompt import prompt
+# Import full modules
+import bin.pages.home
+import bin.pages.viewer
+import bin.pages.design
+import bin.pages.evolve
+import bin.pages.engine
+import bin.pages.prompt
+
+# importlib.reload(bin.pages.home)
+# importlib.reload(bin.pages.viewer)
+# importlib.reload(bin.pages.evolve)
+# importlib.reload(bin.pages.design)
+# importlib.reload(bin.pages.engine)
+# importlib.reload(bin.pages.prompt)
+
+home = bin.pages.home.home
+viewer = bin.pages.viewer.viewer
+design = bin.pages.design.design
+evolve = bin.pages.evolve.evolve
+engine = bin.pages.engine.engine
+prompt = bin.pages.prompt.prompt
+
 
 
 # Setup the evo system
@@ -77,15 +94,25 @@ pages = {
     'Prompt': prompt,
 }
 titles=list(pages.keys())+['GitHub']
-page = st_navbar(
+pg = st_navbar(
     titles,
     logo_path=logo_path,
     styles=styles,
     urls=urls
 )
-
 pages['Home'] = home
 
+# if pg == 'Home':
+#     importlib.reload(bin.pages.home)
+# elif pg == 'Viewer':
+#     importlib.reload(bin.pages.viewer)
+# elif pg == 'Evolve':
+#     importlib.reload(bin.pages.evolve)
+# elif pg == 'Design':
+#     importlib.reload(bin.pages.design)
+# elif pg == 'Engine':
+#     importlib.reload(bin.pages.engine)
+# elif pg == 'Prompt':
+#     importlib.reload(bin.pages.prompt)
 
-pages[page](evosys,project_dir)
-
+pages[pg](evosys,project_dir)

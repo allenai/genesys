@@ -69,9 +69,9 @@ to specify where to dump data when running training.
 Install the custmoized lm_eval: https://github.com/chengjunyan1/lm-evaluation-harness/tree/main
 
 You must export DATA_DIR first, then download evaluation data in DATA_DIR, e.g.:
-
+```
 {DATA_DIR}/blimp_filtered/adjunct_island.jsonl
-
+```
 The download link for babyLM evaluation data: https://files.osf.io/v1/resources/ad7qg/providers/osfstorage/66358ec34664da20a0ed6acc/?zip=evaluation_data 
 
 Notice that everytime you change your DATA_DIR, you may need to reinstall it, and remember DO NOT INSTALL peft
@@ -115,6 +115,7 @@ sh run_demo.sh
 
 # Pseudo Code
 
+```
 for i in max_attemp:
     while P<threshold_P:
         # self-refine
@@ -131,3 +132,4 @@ for i in max_attemp:
             break
         else:
             new_design ~ designer()
+```
