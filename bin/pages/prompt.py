@@ -46,53 +46,63 @@ def prompt(evosys,project_dir):
     system=evosys.rnd_agent
     evo_dir=evosys.evo_dir
     
-    # simple_mode = 'VIEW_FLOWCHART_SIMPLE' 
-    # if simple_mode not in st.session_state:
-    #     st.session_state[simple_mode] = True
+    simple_mode = 'VIEW_FLOWCHART_SIMPLE' 
+    if simple_mode not in st.session_state:
+        st.session_state[simple_mode] = True
 
-    # with st.sidebar:
-    #     if st.button('View Simplified Flowchart'):
-    #         st.session_state[simple_mode] = True
-    #     if st.button('View Full Flowchart'):
-    #         st.session_state[simple_mode] = False
+    with st.sidebar:
+        if st.button('View Simplified Flowchart'):
+            st.session_state[simple_mode] = True
+            st.rerun()
+        if st.button('View Full Flowchart'):
+            st.session_state[simple_mode] = False
+            st.rerun()
 
-    simple_mode = True
 
-    selected_id = system.design_flow_test.export(700,simplify=simple_mode)
-    nodes=system.design_flow_test.nodes
+    simple_mode = st.session_state[simple_mode] # True
+
+    
 
     if simple_mode:
-        if selected_id:
-            node_id=int(selected_id)
-            if node_id in nodes:
-                node=nodes[node_id]
-                if node:
-                    source=inspect.getsource(node._call)
-                    source=U.remove_leading_indent(source)
-                    st.markdown(f'### Selected Node ID {node_id}: {node.alias}')
-                    st.code(source)
-                else:
-                    st.markdown(f'### Node ID {node_id} does not have a source.')
+        col1, col2 = st.columns([2,1])
+        with col1:
+            selected_id = system.design_flow.export(800,simplify=simple_mode)
 
+        with col2:
+            nodes=system.design_flow.nodes
+            if selected_id:
+                node_id=int(selected_id)
+                if node_id in nodes:
+                    node=nodes[node_id]
+                    if node:
+                        source=node.inspect()
+                        st.markdown(f'### Selected Node ID {node_id}: {node.alias}')
+                        st.code(source)
+                    else:
+                        st.markdown(f'### Node ID {node_id} does not have a source.')
+                else:
+                    st.markdown('### Select a code and view source here.')
             else:
                 st.markdown('### Select a code and view source here.')
-        else:
-            st.markdown('### Select a code and view source here.')
+    else:
+        system.design_flow.export(800)
 
 
-    design_code = inspect.getsource(system._design)
-    design_code=U.remove_leading_indent(design_code)
-    design_fc=pfc.Flowchart.from_code(design_code)
-    
-    fc_dir=U.pjoin(evo_dir,'design_flowchart_raw.html')
-    pfc.output_html(fc_dir,'Design Flowchart',design_fc.flowchart())
+    st.markdown('## ALang Design Flow Source')
+    st.code(system.DESIGN_ALANG)
 
-    if st.button('Click here to view the Control Flow Graph of the Python based Design Flow'):
-        check_output("start " + fc_dir, shell=True)
+    st.markdown('## Naive Control Flow Viewer')
 
-    # st.code(design_fc.flowchart())
+    col1, col2 = st.columns(2)
+
+    with col1:
+        fc_dir = system.design_flow_naive.export(evo_dir)
+        if st.button('Click here to view the Flow Chart of a Naive Design Flow'):
+            check_output("start " + fc_dir, shell=True)
+
+    with col2:
+        fc_dir = system.review_flow.export(evo_dir)
+        if st.button('Click here to view the Flow Chart of a Naive Review Flow'):
+            check_output("start " + fc_dir, shell=True)
 
     # components.html(open(fc_dir).read(),height=800,scrolling=True)
-
-
-

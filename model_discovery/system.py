@@ -21,9 +21,10 @@ import astor
 from streamlit_flow import streamlit_flow
 from streamlit_flow.elements import StreamlitFlowNode, StreamlitFlowEdge
 from streamlit_flow.layouts import TreeLayout, RadialLayout
+import pyflowchart as pfc
 
 #from IPython.display import display, Markdown, Latex
-from types import ModuleType
+from types import ModuleType, CodeType, FunctionType
 from typing import (
     Type,
     List,
@@ -43,7 +44,7 @@ from exec_utils import (
     BuildTool
 )
 from exec_utils.models import SimpleLMAgent
-from .agents import *
+from .agents.roles import *
 from .agents.prompts.prompts import (
     DESIGNER_PROMPT,
     REVIEWER_PROMPT,
@@ -305,21 +306,6 @@ class AgentContext:
         return [(query,role) for query,role,_ in self.data]
     
 
-
-class AgentDialogFlow2:
-    def __init__(self,fn):
-        self.fn = fn
-
-    def __call__(self,query,parent_tid,**kwargs):
-        try:
-            flow=ft.partial(self.fn,query=query,parent_tid=parent_tid)
-        except Exception as e:
-            raise ValueError(f'Thread function must have query and parent_tid as argument, error: {e}')
-        output = flow(**kwargs)
-        assert isinstance(output,tuple) and len(output)==2 and isinstance(output[0],str), f'Thread function should return a tuple of (message,return)'
-        return output
-
-
 @dataclass
 class ROLE:
     name: str
@@ -329,7 +315,7 @@ class ROLE:
         if self.role is None:
             if isinstance(self.obj,SimpleLMAgent):
                 self.role = 'assistant'
-            elif isinstance(self.obj,AgentDialogFlow) or isinstance(self.obj,AgentDialogFlow2):
+            elif isinstance(self.obj,AgentDialogFlow) or isinstance(self.obj,AgentDialogFlowNaive):
                 self.role = 'system'
             elif isinstance(self.obj,AgentDialogThread):
                 self.role = 'system'
@@ -373,7 +359,7 @@ class AgentDialogThread: # TODO: let runable thread be CFG
         self.callee = callee
         if callee:
             assert isinstance(callee,ROLE), f'Callee must be a ROLE object if callee is provided'
-            if isinstance(callee.obj,AgentDialogFlow) or isinstance(callee.obj,AgentDialogFlow2):
+            if isinstance(callee.obj,AgentDialogFlow) or isinstance(callee.obj,AgentDialogFlowNaive):
                 self.flow = callee.obj
                 self.type = 'flow'
             elif isinstance(callee.obj,SimpleLMAgent):
@@ -611,14 +597,45 @@ class DialogTreeViewer: # only for viewing and anlyzing the agents dialogs
 
 #region Prompt CFG
 
+
+class AgentDialogFlowNaive:
+    def __init__(self,name,prog):
+        self.name = name
+        self._call = prog
+
+    def __call__(self,query,parent_tid,**kwargs):
+        try:
+            flow=ft.partial(self._call,query=query,parent_tid=parent_tid)
+        except Exception as e:
+            raise ValueError(f'Thread function must have query and parent_tid as argument, error: {e}')
+        output = flow(**kwargs)
+        assert isinstance(output,tuple) and len(output)==2 and isinstance(output[0],str), f'Thread function should return a tuple of (message,return)'
+        return output
+    
+    def export(self,dir):
+        source = inspect.getsource(self._call)
+        source=U.remove_leading_indent(source)
+        fc=pfc.Flowchart.from_code(source)
+        
+        fc_dir=U.pjoin(dir,f'{self.name.replace(' ','_')}_flowchart.html')
+        pfc.output_html(fc_dir,f'Flowchart of {self.name}',fc.flowchart())
+        return fc_dir
+
+
+
 class AgentFlowNode:
-    def __init__(self,id,alias,prog) -> None:
+    def __init__(self,id,alias,prog,hints=None) -> None:
         self.id=id
         self.alias=alias
-        self._call=prog
+        self.prog=prog
         self.children = {}
+        self.hints = hints # a dict of hints for the children written on the edge, tell people what excectly each path means
 
-    def __call__(self,query,states,**kwargs):
+    def __call__(self,query,state,**kwargs):
+        print(f'Calling {self.alias}')
+        return self._call(query,state,**kwargs)
+    
+    def _call(self,query,state,**kwargs):
         raise NotImplementedError
 
     def link(self,children):
@@ -627,71 +644,96 @@ class AgentFlowNode:
             assert isinstance(id,int) and id>=0, f'Children id must be an integer >=0'
             assert isinstance(child,AgentFlowNode), f'Children must be a flow node'
         self.children = children
+    
+    def inspect(self,remove_indent=True):
+        source=inspect.getsource(self.prog)
+        if remove_indent:
+            source=U.remove_leading_indent(source)
+        return source
 
 
 class CONDNode(AgentFlowNode): # It will check a condition and return true or false, the order of the children is the order of the selections
     """
-    A COND node input query and kwargs, output a selection index and updated states, it routes to another block
+    A COND node input query and kwargs, output a selection index and updated state, it routes to another block
     COND Node can only have multiple children
     """
-    def __init__(self,id,alias,prog,selections=None) -> None:
-        super().__init__(id,alias,prog)
-        self.selections = selections
-
-    def __call__(self,query,states,**kwargs):
-        assert self.children!=[], f'CONDNode {self.alias}-{self.id}: COND node cannot be a terminal node'
-        ret,states = self._call(query,states,**kwargs)
-        assert isinstance(ret,int) and ret>=0, f'CONDNode {self.alias}-{self.id}: Condition must return a boolean or a positive integer'
-        assert ret<len(self.children), f'CONDNode {self.alias}-{self.id}: Condition must return a value less than the number of selections'
+    def _call(self,query,state,**kwargs):
+        assert self.children!=[], f'CONDNode {self.alias}: COND node cannot be a terminal node'
+        input_state = copy.deepcopy(state)  
+        rets = self.prog(query,state,**kwargs)
+        if isinstance(rets,int):
+            ret = rets
+        elif isinstance(rets,tuple):
+            assert len(rets)==2, f'CONDNode {self.alias}: Condition must return a positive integer, and optionally the updated state'
+            ret,state = rets
+            assert isinstance(state,dict), f'CONDNode {self.alias}: State must be a dict'
+            for key in input_state:
+                assert key in state, f'CONDNode {self.alias}: {key} lost in state'
+        assert isinstance(ret,int) and ret>=0, f'CONDNode {self.alias}: Condition must return a boolean or a positive integer'
+        assert ret<len(self.children), f'CONDNode {self.alias}: Condition must return a value less than the number of selections'
         child = self.children[ret]
-        assert isinstance(child,AgentFlowNode), f'CONDNode {self.alias}-{self.id}: Children must be a flow node'
-        return child(query,states,**kwargs)
+        assert isinstance(child,AgentFlowNode), f'CONDNode {self.alias}: Children must be a flow node'
+        return child(query,state,**kwargs)
 
 class LOOPNode(AgentFlowNode): # It will loop until a condition is met
     """
-    LOOP Node will run a condition which return a boolean and updated states, then run the loop body or exit
+    LOOP Node will run a condition which return a boolean and updated state, then run the loop body or exit
     LOOP Node can only have 2 children, the first is the loop body, the second is the exit
     """
-    def __call__(self,query,states,**kwargs):
-        assert len(self.children)==2, f'LOOPNode {self.alias}-{self.id}: Children of a LOOP node must be two, the first is the loop body, the second is the exit'
-        while True:
-            cont,states = self._call(query,states,**kwargs)
-            assert isinstance(cont,bool), f'LOOPNode {self.alias}-{self.id}: Condition must return a boolean'
-            if cont:
-                query,states,kwargs = self.children[0](query,states,**kwargs)
-            else:
-                return self.children[1](query,states,**kwargs)
+    def _call(self,query,state,**kwargs):
+        assert len(self.children)==2, f'LOOPNode {self.alias}: Children of a LOOP node must be two, the first is the loop body, the second is the exit'
+        # while True: # TODO: now seems just a boolean condition, and full of goto, the loop can easily be lost, need to be more like a loop
+        input_state = copy.deepcopy(state)
+        rets = self.prog(query,state,**kwargs)
+        if isinstance(rets,bool):
+            cont = rets
+        elif isinstance(rets,tuple):
+            assert len(rets)==2, f'LOOPNode {self.alias}: Condition must return a boolean and optionally the updated state'
+            cont,state=rets
+            assert isinstance(state,dict), f'CONDNode {self.alias}: State must be a dict'
+            for key in input_state:
+                assert key in state, f'CONDNode {self.alias}: {key} lost in state'
+        assert isinstance(cont,bool), f'LOOPNode {self.alias}: Condition must return a boolean'
+        if cont:
+            # query,state,kwargs = self.children[0](query,state,**kwargs)
+            return self.children[0](query,state,**kwargs)
+        else:
+            return self.children[1](query,state,**kwargs)
     
 class PROCNode(AgentFlowNode): # It will call an agent and return a response
     """
     PROC Node will really process the query and update the flow of kwargs, the flow will increment monotonicly
-    All nodes can update states but only PROC node can update the query and kwargs
+    All nodes can update state but only PROC node can update the query and kwargs
     PROC Node can only have one child
     """
-    def __call__(self, query,states, **kwargs):
-        query,states,ret = self._call(query,states,**kwargs)
+    def _call(self, query,state, **kwargs):
+        try:
+            query,state,ret = self.prog(query,state,**kwargs)
+        except Exception as e:
+            raise ValueError(f'Error in PROCNode: {self.alias}: {e}')
         assert isinstance(query,str), f'A PROC node must return a string response message'
         assert isinstance(ret,dict), f'A PROC node must return a dict of additional returns'
-        ret = kwargs.update(ret) 
+        kwargs.update(ret) # update the flow of kwargs
         if self.children!=[]:
-            assert len(self.children)==1, f'PROCNode {self.alias}-{self.id}: Children of a PROC node must be one'
+            assert len(self.children)==1, f'PROCNode {self.alias}: Children of a PROC node must be one'
             child = self.children[0]
-            return child(query,states,**ret) 
-        return query,states,ret
-    
+            return child(query,state,**kwargs) 
+        return query,state,kwargs
+
 class AgentDialogFlow:
     """
     input query and kwargs, output a response message and a dict of additional returns
     """
-    def __init__(self,name,states={},args=[],outputs=[]):
+    def __init__(self,name,args=[],outputs=[],init_state={}):
         self.nodes={}
         self.name=name
         self.args=args
         self.outputs=outputs # what to expect from the return
-        self.states=states # global vars
+        self.state=init_state ### global vars, the state allows COND and LOOP pass signals without editing the query and flow of kwargs which is only allowed by PROC 
+        self.init_state=copy.deepcopy(init_state)
         id_entry=self.assign_id()
         self.id_entry=id_entry
-        self.entry = PROCNode(id_entry,'entry',lambda x,**kwargs: (x,kwargs))
+        self.entry = PROCNode(id_entry,'entry',lambda x,y,**kwargs: (x,y,kwargs))
         self.nodes[id_entry] = self.entry
         self.alias_to_id = {'entry':id_entry}
         self.flow_nodes={}
@@ -709,28 +751,30 @@ class AgentDialogFlow:
         self.nodes_to_flowtail = {id_entry:id_input} # map node id to flowchart node id (for linking)
 
     def __call__(self,query,**kwargs):
+        state = copy.deepcopy(self.init_state)
+        kwargs = {} if not kwargs else kwargs
         missing_args=[]
         for arg in self.args:
             if arg not in kwargs:
                 missing_args.append(arg)
         assert len(missing_args)==0, f'Missing arguments: {missing_args}'
-        query,states,ret = self.entry(query,self.states,**kwargs)
+        query,state,ret = self.entry(query,state,**kwargs)
         out={}
         for output in self.outputs:
             assert output in ret, f'Missing output: {output}'
             out[output] = ret[output]
-        self.states = states
+        self.state = state
         return query,out
 
-    def _new_node(self,alias,prog,type,is_end=False,selections=None):
-        assert alias not in self.alias_to_id, f'Alias {alias} already exists'
+    def _new_node(self,alias,prog,type,hints=None,is_end=False):
+        assert alias not in self.alias_to_id, f'Alias `{alias}` already exists'
         id=self.assign_id()
         self.nodes_to_flowtail[id] = id
         source=inspect.getsource(prog)
         # source=U.remove_leading_indent(source)
         if type=='PROC':
-            self.nodes[id] = PROCNode(id,alias,prog)
-            self.flow_nodes[id] = StreamlitFlowNode(str(id),(0,0),{'content':f'###### {alias}```python\n{source}\n```'},
+            self.nodes[id] = PROCNode(id,alias,prog,hints)
+            self.flow_nodes[id] = StreamlitFlowNode(str(id),(0,0),{'content':f'###### {alias}\n```python\n{source}\n```'},
                                                                 source_position='right',target_position='left',
                                                                 style={'textAlign': 'left','backgroundColor':'#c0c4c3'})
             self.flow_nodes_simple[id] = copy.deepcopy(self.flow_nodes[id])
@@ -748,15 +792,15 @@ class AgentDialogFlow:
                 self.flow_edges.append(StreamlitFlowEdge(f'{id_output}-{id_end}',str(id_output),str(id_end),animated=True,style={'markerEnd': 'url(#arrow)'}))
                 self.nodes_to_flowtail[id] = id_end
         elif type=='COND':
-            self.nodes[id] = CONDNode(id,alias,prog,selections)
-            self.flow_nodes[id] = StreamlitFlowNode(str(id),(0,0),{'content':f'###### {alias}```python\n{source}\n```'},
+            self.nodes[id] = CONDNode(id,alias,prog,hints)
+            self.flow_nodes[id] = StreamlitFlowNode(str(id),(0,0),{'content':f'###### {alias}\n```python\n{source}\n```'},
                                                                 source_position='right',target_position='left',
                                                                 style={'textAlign': 'left','backgroundColor':'#b7d07a'})
             self.flow_nodes_simple[id] = copy.deepcopy(self.flow_nodes[id])
             self.flow_nodes_simple[id].data['content'] = f'###### {alias}'
         elif type=='LOOP':
-            self.nodes[id] = LOOPNode(id,alias,prog)
-            self.flow_nodes[id] = StreamlitFlowNode(str(id),(0,0),{'content':f'###### {alias}```python\n{source}\n```'},
+            self.nodes[id] = LOOPNode(id,alias,prog,hints)
+            self.flow_nodes[id] = StreamlitFlowNode(str(id),(0,0),{'content':f'###### {alias}\n```python\n{source}\n```'},
                                                                 source_position='right',target_position='left',
                                                                 style={'textAlign': 'left','backgroundColor':'#f9d367'})
             self.flow_nodes_simple[id] = copy.deepcopy(self.flow_nodes[id])
@@ -765,12 +809,13 @@ class AgentDialogFlow:
         self.alias_to_id[alias] = id
         return id
     
-    def new_proc(self,alias,prog,is_end=False):
-        return self._new_node(alias,prog,'PROC',is_end=is_end)
-    def new_cond(self,alias,prog,selections):
-        return self._new_node(alias,prog,'COND',selections=selections)
-    def new_loop(self,alias,prog):
-        return self._new_node(alias,prog,'LOOP')
+    def new_proc(self,alias,prog,hint=None,is_end=False):
+        hints = {0:hint} if hint else None
+        return self._new_node(alias,prog,'PROC',hints,is_end=is_end)
+    def new_cond(self,alias,prog,hints=None):
+        return self._new_node(alias,prog,'COND',hints)
+    def new_loop(self,alias,prog,hints=None):
+        return self._new_node(alias,prog,'LOOP',hints)
     
     def assign_id(self):
         id = len(self.nodes)
@@ -781,16 +826,19 @@ class AgentDialogFlow:
         if isinstance(children,AgentFlowNode):
             children = {0:children}
         elif isinstance(children,list):
-            children = {}
+            _children = {}
             for i,child in enumerate(children):
                 if isinstance(child,AgentFlowNode):
-                    children[i] = child
+                    _children[i] = child
                 elif isinstance(child,int):
                     assert child in self.nodes, f'Children id {child} does not exist'
-                    children[i] = self.nodes[child]
+                    _children[i] = self.nodes[child]
                 elif isinstance(child,str):
                     assert child in self.alias_to_id, f'Children alias {child} does not exist'
-                    children[i] = self.nodes[self.alias_to_id[child]]
+                    _children[i] = self.nodes[self.alias_to_id[child]]
+                else:
+                    raise ValueError(f'Children must be a dict of flow nodes, or a list of flow nodes, or a single flow node')
+            children = _children
         elif isinstance(children,dict):
             for i,child in children.items():
                 assert isinstance(i,int) and i>=0, f'Children id must be a positive integer if dict is provided'
@@ -822,17 +870,19 @@ class AgentDialogFlow:
         if isinstance(node,PROCNode):
             assert len(children)==1, f'PROCNode {node.alias}-{node.id}: Children of a PROC node must be one'
             child = children[0]
-            self.flow_edges.append(StreamlitFlowEdge(f'{flow_id}-{child.id}',str(flow_id),str(child.id),animated=True))
+            hint = node.hints[0] if node.hints else None
+            self.flow_edges.append(StreamlitFlowEdge(f'{flow_id}-{child.id}',str(flow_id),str(child.id),animated=True,label=hint))
         elif isinstance(node,CONDNode):
             assert len(children)>1, f'CONDNode {node.alias}-{node.id}: COND node cannot be a terminal node'
-            selections = node.selections
+            hints = node.hints
             for i,child in children.items():
-                label = f'{selections[i]}' if selections else f'Selection {i}'
+                label = f'{hints[i]}' if hints else f'Selection {i}'
                 self.flow_edges.append(StreamlitFlowEdge(f'{flow_id}-{child.id}',str(flow_id),str(child.id),animated=True,label=label))
         elif isinstance(node,LOOPNode):
             assert len(children)==2, f'LOOPNode {node.alias}-{node.id}: Children of a LOOP node must be two, the first is the loop body, the second is the exit'
-            self.flow_edges.append(StreamlitFlowEdge(f'{flow_id}-{children[0].id}',str(flow_id),str(children[0].id),animated=True,label='Loop Body'))
-            self.flow_edges.append(StreamlitFlowEdge(f'{flow_id}-{children[1].id}',str(flow_id),str(children[1].id),animated=True,label='Exit'))
+            hint0,hint1 = (node.hints[0],node.hints[1]) if node.hints else ('Loop Body','Exit')
+            self.flow_edges.append(StreamlitFlowEdge(f'{flow_id}-{children[0].id}',str(flow_id),str(children[0].id),animated=True,label=hint0))
+            self.flow_edges.append(StreamlitFlowEdge(f'{flow_id}-{children[1].id}',str(flow_id),str(children[1].id),animated=True,label=hint1))
 
     def export(self,height=1000,simplify=False):
         if simplify:
@@ -871,7 +921,472 @@ class AgentDialogFlow:
         )
     
 #endregion
+
+class ALangCompiler:
+    """
+    Agent Language for Agent Dialog Flow Definition, the key idea is that an agent dialog flow is an assembly line for processing the message.
+    This assembly line is composed of PROC node that can really process the message and two type of control nodes: COND and LOOP, one for branching and the other for looping.
+    Right now, the language is super primitive, the advantage is simply make the design super modularized and easy to understand, the disadvantage is that it is not very flexible and powerful.
+    Main issue it that the definition of the modules are not so elegant, and the grammers are simply instructions.
     
+    
+    Primitive calls:
+
+    FLOW name arg0|arg1|... output0|output1|... # must be the first line and only once
+    PROC node alias prog [hint] # node is var name of the node
+    EXIT node alias prog [hint]
+    COND node alias prog [hint0|hint1|...]
+    LOOP node alias prog [hintLoop|hintExit] # TODO: need to improve, right now it is essentially a COND node and you need to manually go back
+    LINK node_or_alias chil0|child1|... # child can be node name or alias
+
+    Other system calls not implemented yet:
+    FORK, PIPE
+
+    name, alias and hints must be bracketed by ``, never use `|` in name, alias or hints
+    ENTRY is a special predefined constant for the entry node
+
+    flow = Acompiler.compile(ALANG, modules) # the compiler returns an AgentDialogFlow object
+    or Acompiler.compile(ALANG, modules, init_state)
+    or Acompiler.compile(build_flow_func) where build_flow_func has all module definitions and return the ALANG string and optionally the init_state
+    """
+    def _create_flow(self,line,init_state):
+        _line,maps = self._replace_brackets(line)
+        parts = _line.split(' ')
+        assert len(parts)==4, f'A flow definition line must have 4 parts, found {len(parts)}, line: {line}'
+        _,name,args,outputs = parts
+        name = maps[name]
+        flow = AgentDialogFlow(name,args.split('|'),outputs.split('|'),init_state)
+        self._nodes['ENTRY']=flow.id_entry
+        self._aliases['ENTRY']=flow.entry.alias
+        return flow
+
+    def _replace_brackets(self,line):
+        maps = {}
+        for i,match in enumerate(re.finditer(r'`[^`]+`',line)):
+            mark = f'BRACKET_REPLACE_TEMP_{i}'
+            maps[mark] = match.group()
+            line = line.replace(match.group(),mark)
+        return line,maps
+    
+    def map_back(self,var,map):
+        if var in map:
+            return map[var][1:-1]
+        return var
+
+    def _parse_node(self,line):
+        _line,maps = self._replace_brackets(line)
+        splits = _line.split(' ')
+        assert len(splits)==4 or len(splits)==5, f'A node definition line must have 4 or 5 parts, found {len(splits)}, line: "{line}"'
+        nodetype,name,_alias,prog = splits[:4]
+        alias = self.map_back(_alias,maps)
+        is_end = False
+        if nodetype=='EXIT':
+            nodetype='PROC'
+            is_end=True
+        hints={}
+        if len(splits)==5:
+            for i,hint in enumerate(splits[4].split('|')):
+                hints[i] = self.map_back(hint,maps)
+        prog = self._modules[prog]
+        self._nodes[name]=self._flow._new_node(alias,prog,nodetype,hints,is_end)
+        self._aliases[name]=alias
+
+    def _parse_link(self,line):
+        _line,maps = self._replace_brackets(line)
+        splits = _line.split(' ')
+        assert len(splits)==3, f'A link definition line must have 3 parts, found {len(splits)}, line: "{line}"'
+        node_or_alias,_children = splits[1:]
+        if node_or_alias in maps:
+            node_or_alias = self.map_back(node_or_alias,maps)
+        children = []
+        for child in _children.split('|'):
+            child=self.map_back(child,maps)
+            if child in self._nodes:
+                child = self._nodes[child]
+            children.append(child)
+        if node_or_alias in self._nodes:
+            node_or_alias = self._nodes[node_or_alias]
+        self._flow.link(node_or_alias,children)
+
+    def _convert(self,ALANG,init_state):
+        for i,line in enumerate(ALANG.split('\n')):
+            line = line.strip()
+            if line=='': continue
+            if i==0:
+                assert line.startswith('FLOW'), f'ALANG must start with FLOW'
+                self._flow = self._create_flow(line,init_state)
+            else:
+                if line.startswith('PROC') or line.startswith('COND') or line.startswith('LOOP') or line.startswith('EXIT'):
+                    try:
+                        self._parse_node(line)
+                    except Exception as e:
+                        raise ValueError(f'ALANG line {i+1}: "{line}"\n{e}')
+                elif line.startswith('LINK'):
+                    try:
+                        self._parse_link(line)
+                    except Exception as e:
+                        raise ValueError(f'ALANG line {i+1}: "{line}"\n{e}')
+                else:
+                    if line.startswith('FLOW'):
+                        raise ValueError(f'ALANG line {i+1}: "{line}"\nFLOW can only be the first line')
+                    else:
+                        raise ValueError(f'ALANG line {i+1}: "{line}"\nInvalid syntax, must be PROC, COND, LOOP, LINK or EXIT')
+
+    def _fn_to_modules(self,func):
+        _modules = {}
+        for const in func.__code__.co_consts:
+            if isinstance(const, CodeType):
+                function_name = const.co_name
+                function_obj = FunctionType(const, globals())
+                _modules[function_name] = function_obj
+        return _modules
+    
+    def _module_to_modules(self,module):
+        return {name: obj for name, obj in vars(module).items() if callable(obj)}
+
+    def _source_to_modules(self,source):
+        ns = {}
+        try:
+            exec(source, ns)
+        except Exception as e:
+            raise ValueError(f'Error in source you provided as modules: {e}')
+        return {name: obj for name, obj in ns.items() if callable(obj)}
+
+    def compile(self,ALANG,modules,init_state={}):
+        self._flow=None
+        self._nodes={} # node var name to id
+        self._aliases={} # node var name to alias
+        if isinstance(modules,FunctionType):
+            self._modules = self._fn_to_modules(modules)
+        elif isinstance(modules,dict):
+            for i,fn in modules.items():
+                assert isinstance(fn,FunctionType), f'Modules must be a dict of functions, found {type(fn)} for {i}'
+                assert i==fn.__name__, f'Module function name must be the same as the key, found {fn.__name__} for {i}'
+            self._modules=modules
+        elif isinstance(modules,ModuleType):
+            self._modules = self._module_to_modules(modules)
+        elif isinstance(modules,str):
+            self._modules = self._source_to_modules(modules)
+        else:
+            raise ValueError(f'Type of modules not supported: {type(modules)}, currently supported types are: a function with all module definitions, dict of modules, an imported module where the functions are defined, str of source code')
+        self._convert(ALANG,init_state)
+        return self._flow
+
+
+
+def design_flow_definition():
+    args=['cls','stream','status_handler','parent_tid','context']
+    outputs=['code','text','check_results']
+    design_flow = AgentDialogFlow(name='Model Design Flow',args=args,outputs=outputs)
+
+    ALANG = 'FLOW `Model Design Flow` cls|stream|status_handler|parent_tid|context code|text|check_results\n'
+
+
+    def design_initializer(query,state,cls,parent_tid,context,**kwargs):
+        assert isinstance(cls,ModelDiscoverySystem), f'cls must be a ModelDiscoverySystem object'
+        state['initial_error'] = None
+        state['design_attemps'] = 0
+        DESIGNER = ROLE('designer',cls.designer)
+        design_thread_tid=cls.dialog.fork(parent_tid,SYSTEM_CALLER,DESIGNER,context=context,
+                                            alias='designing',note=f'Starting design...')
+        debug_thread_tid=None
+        return query,state,{'design_thread_tid':design_thread_tid,'debug_thread_tid':debug_thread_tid}
+
+    init_design_node = design_flow.new_proc('Initialize Design Flow',design_initializer)
+    design_flow.link(design_flow.id_entry,init_design_node)
+    ALANG += 'PROC init_design_node `Initialize Design Flow` design_initializer\n'
+    ALANG += 'LINK ENTRY init_design_node\n'
+
+
+    def design_loop_controller(query,state,cls,**kwargs):
+        assert isinstance(cls,ModelDiscoverySystem), f'cls must be a ModelDiscoverySystem object'
+        cont = state['design_attemps'] < cls._config.max_design_attempts
+        attempt = state['design_attemps']
+        cls.logging.info(f'Attempting design, attempt={attempt}')
+        state['design_attemps'] += 1
+        return cont,state
+
+    design_loop_controller_node = design_flow.new_loop('Design Loop Controler',design_loop_controller,hints={0:'Enter the design loop',1:'The design loop should terminate'})
+    design_flow.link(init_design_node,design_loop_controller_node)
+    ALANG += 'LOOP design_loop_controller_node `Design Loop Controler` design_loop_controller `Enter the design loop`|`The design loop should terminate`\n'
+    ALANG += 'LINK init_design_node design_loop_controller_node\n'
+
+    def design_thread_switch(query,state,**kwargs):
+        attempt = state['design_attemps']
+        state['current_thread']=kwargs['design_thread_tid']
+        return 0 if attempt == 1 else 1,state
+    design_switch_node = design_flow.new_cond('Design Switch',design_thread_switch,{0:'Sample initial design',1:'Debug the design'})
+    ALANG += 'COND design_switch_node `Design Switch` design_thread_switch `Sample initial design`|`Debug the design`\n'
+
+    def switch_to_debug(query,state,text,cls,**kwargs):
+        assert isinstance(cls,ModelDiscoverySystem), f'cls must be a ModelDiscoverySystem object'
+        debug_thread_tid = kwargs['debug_thread_tid']
+        if debug_thread_tid is None:
+            query = f'The designer designed the model: {text}\n\nThe checker failed the model: {query}\n\nPlease debug the model.'
+            DEBUGGER = ROLE('debugger',cls.debugger)
+            debug_thread_tid = cls.dialog.fork(state['current_thread'],SYSTEM_CALLER,DEBUGGER,
+                                                alias='debugging',note='Starting debugging...')
+        state['current_thread']=debug_thread_tid
+        return query,state,{'debug_thread_tid':debug_thread_tid}
+    switch_to_debug_node = design_flow.new_proc('Switch to Debug Thread',switch_to_debug,hint='Debugger take over')
+    ALANG += 'PROC switch_to_debug_node `Switch to Debug Thread` switch_to_debug `Debugger take over`\n'
+
+    # Define design loop body
+    def design_loop_body(query,state,cls,status_handler,stream,**kwargs):
+        assert isinstance(cls,ModelDiscoverySystem), f'cls must be a ModelDiscoverySystem object'
+        attempt = state['design_attemps']
+        thread_tid = state['current_thread']
+        # Block 2: Input thread_tid, query, and get checked code
+        with status_handler(f"Design Attempt {attempt+1}"): 
+            
+            # BLOCK 
+            _,out=cls.dialog.call(thread_tid,query)
+
+            try:
+                code = out.get("code",None)
+                text = out.get("text")
+                assert code is not None
+                assert "# gab.py" in code 
+            
+                if stream: #and code:
+                    stream.write('Model authored code block...')
+                    stream.markdown(str(text))
+                generated = True
+            except AssertionError:
+                generated = False
+        ret={'code':code,'text':text,'generated':generated}
+        return query,state,ret
+    design_loop_body_node = design_flow.new_proc('Design Loop Body',design_loop_body,hint='Agent response')
+    design_flow.link(design_switch_node,{0:design_loop_body_node,1:switch_to_debug_node})
+    design_flow.link(switch_to_debug_node,design_loop_body_node)
+    ALANG += 'PROC design_loop_body_node `Design Loop Body` design_loop_body `Agent response`\n'
+    ALANG += 'LINK design_switch_node design_loop_body_node|switch_to_debug_node\n'
+    ALANG += 'LINK switch_to_debug_node design_loop_body_node\n'
+
+    def gocheck_or_goback(query,state,generated,**kwargs):
+        return 1 if generated else 0
+    gocheck_or_goback_node = design_flow.new_cond('Whether code is generated?',gocheck_or_goback,{0:'No, go back and retry',1:'Yes, pass to the checker'})
+    ALANG += 'COND gocheck_or_goback_node `Whether code is generated?` gocheck_or_goback `No, go back and retry`|`Yes, pass to the checker`\n'
+
+    def check_design(query,state,cls,stream,code,**kwargs):
+        assert isinstance(cls,ModelDiscoverySystem), f'cls must be a ModelDiscoverySystem object'
+        attempt = state['design_attemps']
+        design_name = f"{cls._config.run_name}_{attempt}"
+        checkpass,check_report,code,check_results = cls.checker.check(cls._cfg,code,design_name)
+        checker_hints = check_results['hints']
+        if 'REFRESH_TEMPLATE' in checker_hints:
+            cls.sess_state['refresh_template'] += 1
+        
+        if stream:
+            stream.write(
+                f"""<details><summary>code check</summary>{check_report}</details>""",
+                unsafe_allow_html=True
+            )
+        ret={'checkpass':checkpass,'check_report':check_report,'code':code,'check_results':check_results}
+        return query,state,ret
+    check_design_node = design_flow.new_proc('Checker checks design',check_design)
+    design_flow.link(design_loop_body_node,gocheck_or_goback_node)
+    design_flow.link(gocheck_or_goback_node,{0:design_loop_controller_node,1:check_design_node})
+    ALANG += 'PROC check_design_node `Checker checks design` check_design\n'
+    ALANG += 'LINK design_loop_body_node gocheck_or_goback_node\n'
+    ALANG += 'LINK gocheck_or_goback_node design_loop_controller_node|check_design_node\n'
+
+    def check_pass(query,state,checkpass,**kwargs):
+        return 1 if checkpass else 0
+    check_pass_node = design_flow.new_cond('Pass or not?',check_pass,{0:'Failed, retry or end of the loop.',1:'Passed, go to report generation.'})
+    design_flow.link(check_design_node,check_pass_node)
+    ALANG += 'COND check_pass_node `Pass or not?` check_pass `Failed, retry or end of the loop.`|`Passed, go to report generation.`\n'
+    ALANG += 'LINK check_design_node check_pass_node\n'
+
+    def design_failed(query,state,cls,check_report,**kwargs):
+        assert isinstance(cls,ModelDiscoverySystem), f'cls must be a ModelDiscoverySystem object'
+        query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix."
+        if cls.sess_state['refresh_template'] >=1:
+            query+=f'\nHere is the template for the GAB block for you to refresh:\n\n```python\n{cls.gab_py}```'
+        if cls.sess_state['refresh_template'] >= 2:
+            query+=f'\nHere is the definition of GABBase for you to refresh:\n\n```python\n{GAB_BASE}```'
+        if cls.sess_state['refresh_template'] >= 3:
+            query+=f'\nHere is the definition for the GAM model for you to refresh:\n\n```python\n{cls.gam_py}```'
+        return query,state,{}
+    design_failed_node = design_flow.new_proc('Design failed prompt',design_failed,hint='Prompt to retry or end of the loop.')
+    design_flow.link(design_failed_node,design_loop_controller_node)
+    ALANG += 'PROC design_failed_node `Design failed prompt` design_failed `Prompt to retry or end of the loop.`\n'
+    ALANG += 'LINK design_failed_node design_loop_controller_node\n'
+
+    def design_succeed_return(query,state,cls,check_results,status_handler,code,stream,**kwargs):
+        assert isinstance(cls,ModelDiscoverySystem), f'cls must be a ModelDiscoverySystem object'
+        design_thread_tid = kwargs['design_thread_tid']
+        initial_error = state['initial_error']
+        report_query = (
+            "The designed model passed the tests, now please generate a text report explaining and justifying your design."
+            " Generate a creative name of your design as the title of your report in the first line of your response."
+            " Do not include abbreviations or acronyms of your design in the title. You can use them in the body of the report."
+            f" Here is the code of the designed model after degugging:\n\n{code}" 
+            # FIXME: what is the code after debugging is not the same as the idea before debugging
+        )
+        if initial_error is not None:
+            error_info=(
+                f"Your design didn't pass the checker initially:\n\n{initial_error}"
+                f"\n\nIt has been fixed by the assistant already as follows:\n\n{code}"
+            )
+            report_query = f"{error_info}\n\n{report_query}"
+        with status_handler(f"Querying agent for report..."):
+            cls.logging.info('Now trying to compile self report...')
+            explain,_ = cls.dialog.call(design_thread_tid,report_query)
+            if stream:
+                stream.markdown(explain) #<-- change
+
+        proposal=f'{explain}\n\nImplementation:\n\n{code}\n\n'
+        return proposal, state, {'code':code,'text':explain,'check_results':check_results}
+    design_succeed_node = design_flow.new_proc('Design succeed & report generation',design_succeed_return, is_end=True)
+    design_flow.link(check_pass_node,{0:design_failed_node,1:design_succeed_node})
+    ALANG += 'EXIT design_succeed_node `Design succeed & report generation` design_succeed_return\n'
+    ALANG += 'LINK check_pass_node design_failed_node|design_succeed_node\n'
+
+    def design_terminal_check(query,state,checkpass,**kwargs):
+        return 1 if checkpass else 0
+    design_terminal_check_node = design_flow.new_cond('Loop terminated.',design_terminal_check,{0:'Design failed',1:'Design succeed'})
+    ALANG += 'COND design_terminal_check_node `Loop terminated.` design_terminal_check `Design failed`|`Design succeed`\n'
+
+    def design_failure_exit(query,state,**kwargs):
+        return FAILED,state,{'code':None,'text':None,'check_results':None}
+    design_failure_exit_node = design_flow.new_proc('Exit with failure',design_failure_exit, hint='Output FAILED and "None"s', is_end=True)
+    design_flow.link(design_terminal_check_node,{0:design_failure_exit_node,1:design_succeed_node})
+    ALANG += 'EXIT design_failure_exit_node `Exit with failure` design_failure_exit `Output FAILED and "None"s`\n'
+    ALANG += 'LINK design_terminal_check_node design_failure_exit_node|design_succeed_node\n'
+    
+    design_flow.link(design_loop_controller_node,{0:design_switch_node,1:design_terminal_check_node})
+    ALANG += 'LINK design_loop_controller_node design_switch_node|design_terminal_check_node\n'
+    return design_flow, ALANG
+
+
+
+def _design_naive(cls,query,stream,status_handler,parent_tid,context): # input query, context, output design and explanation, thread_tid is the id of the thread in which the design is running
+    assert isinstance(cls,ModelDiscoverySystem), f'cls must be an instance of ModelDiscoverySystem'
+    initial_error = None
+    DESIGNER = ROLE('designer',cls.designer)
+    DEBUGGER = ROLE('debugger',cls.debugger)
+    design_thread_tid=cls.dialog.fork(parent_tid,SYSTEM_CALLER,DESIGNER,context=context,
+                                        alias='designing',note=f'Starting design...')
+    debug_thread_tid=None
+    for attempt in range(cls._config.max_design_attempts):
+        cls.logging.info(f'Attempting design, attempt={attempt}')
+        
+        if attempt == 0:
+            thread_tid = design_thread_tid
+        else:
+            if debug_thread_tid is None:
+                query = f'The designer designed the model: {text}\n\nThe checker failed the model: {query}\n\nPlease debug the model.'
+                debug_thread_tid = cls.dialog.fork(design_thread_tid,SYSTEM_CALLER,DEBUGGER,
+                                                    alias='debugging',note='Starting debugging...')
+            thread_tid = debug_thread_tid
+
+        # Block 2: Input thread_tid, query, and get checked code
+        with status_handler(f"Design Attempt {attempt+1}"): 
+            
+            # BLOCK 
+            _,out=cls.dialog.call(thread_tid,query)
+
+            try:
+                code = out.get("code",None)
+                text = out.get("text")
+                assert code is not None
+            
+                if stream: #and code:
+                    stream.write('Model authored code block...')
+                    stream.markdown(str(text))
+                success = True
+            except AssertionError:
+                success = False
+            
+            if not success:  # if the code is not generated,
+                query  = GAB_ERROR
+                continue 
+
+            design_name = f"{cls._config.run_name}_{attempt}"
+            checkpass,check_report,code,check_results = cls.checker.check(cls._cfg,code,design_name)
+            checker_hints = check_results['hints']
+            if 'REFRESH_TEMPLATE' in checker_hints:
+                cls.sess_state['refresh_template'] += 1
+            
+            if stream:
+                stream.write(
+                    f"""<details><summary>code check</summary>{check_report}</details>""",
+                    unsafe_allow_html=True
+                )
+
+        # COND block
+        if checkpass:  
+            break # goto next block
+        else:
+            # BLOCK return constant, input attempt, output initial_error query
+            query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix."
+            if cls.sess_state['refresh_template'] >=1:
+                query+=f'\nHere is the template for the GAB block for you to refresh:\n\n```python\n{cls.gab_py}```'
+            if cls.sess_state['refresh_template'] >= 2:
+                query+=f'\nHere is the definition of GABBase for you to refresh:\n\n```python\n{GAB_BASE}```'
+            if cls.sess_state['refresh_template'] >= 3:
+                query+=f'\nHere is the definition for the GAM model for you to refresh:\n\n```python\n{cls.gam_py}```'
+            if attempt == 0:
+                initial_error = check_report
+
+    if checkpass:
+        report_query = (
+            "The designed model passed the tests, now please generate a text report explaining and justifying your design."
+            " Generate a creative name of your design as the title of your report in the first line of your response."
+            " Do not include abbreviations or acronyms of your design in the title. You can use them in the body of the report."
+            f" Here is the code of the designed model after degugging:\n\n{code}" 
+            # FIXME: what is the code after debugging is not the same as the idea before debugging
+        )
+        if initial_error is not None:
+            error_info=f"Your design didn't pass the checker initially:\n\n{initial_error}\n\nIt has been fixed by the assistant already as follows:\n\n{code}"
+            report_query = f"{error_info}\n\n{report_query}"
+        with status_handler(f"Querying agent for report..."):
+            cls.logging.info('Now trying to compile self report...')
+            explain,_ = cls.dialog.call(design_thread_tid,report_query)
+            if stream:
+                stream.markdown(explain) #<-- change
+
+        proposal=f'{explain}\n\nImplementation:\n\n{code}\n\n'
+        return proposal, {'code':code,'text':explain,'check_results':check_results}
+    else:
+        return FAILED, {'code':None,'text':None,'check_results':None}
+    
+
+def _review_naive(cls,query,stream,status_handler,parent_tid,context): 
+    if query == FAILED:
+        return FAILED, {'review_pass':False,'ratings':None,'reviews':None}
+    reviewer_query = REVIEWER_PROMPT.format(
+        proposal=query,
+        gab_base=GAB_BASE,
+        gam_py=cls.gam_py,
+        instruct='' # TODO: add references from S2 etc.
+    )
+    reviews = {}
+    ratings = {}
+    for style in cls.reviewers:
+        with status_handler(f"Querying {style} reviewer for review..."):
+            REVIWER_CALLEE = ROLE('reviewer',cls.reviewers[style])
+            review_thread_tid = cls.dialog.fork(parent_tid,SYSTEM_CALLER,REVIWER_CALLEE,note=f'Starting review process: {style}')
+            _,response = cls.dialog.call(review_thread_tid,reviewer_query)
+
+            if stream:
+                stream.write(f'Review of {style} reviewer...')
+                stream.markdown(response["text"])
+            ratings[style] = response["rating"]
+            reviews[style] = response["review"]
+    review_ratings=''
+    for idx, style in enumerate(cls.reviewers):
+        review=reviews[style]
+        rating=ratings[style]
+        review_ratings+=f'# Review of Reviewer {idx+1}:\n\n{review}\n\n## Rating: {rating} out of 5\n\n'
+    rating=np.mean(list(ratings.values()))
+    review_pass = rating >= cls._config.reviewer_threshold
+    if review_pass:
+        response=f'The design passed the review process with an average rating of {rating} out of 5. Review details:\n\n{review_ratings}'
+    else:
+        response=f'The design didn\'t pass the review process with an average rating of {rating} out of 5. Review details:\n\n{review_ratings}'
+    return response,{'review_pass':review_pass,'ratings':ratings,'reviews':reviews}
 
 
 @exec_utils.Registry(
@@ -952,10 +1467,12 @@ class ModelDiscoverySystem(exec_utils.System):
         self._config = config
         self._cfg = gam_config
 
-        self.design_flow=AgentDialogFlow2(self._design)
-        self.review_flow=AgentDialogFlow2(self._review)
+        self.review_flow=AgentDialogFlowNaive('Model Review Flow',_review_naive)
+        _, self.DESIGN_ALANG =design_flow_definition()
+        self.design_flow=ALangCompiler().compile(self.DESIGN_ALANG,design_flow_definition)
 
-        self.design_flow_test=self.build_design_flow()
+        self.design_flow_naive=AgentDialogFlowNaive('Model Design Flow',_design_naive)
+
 
     def get_system_info(self):
         system_info = {}
@@ -968,289 +1485,12 @@ class ModelDiscoverySystem(exec_utils.System):
     def new_session(self,log_dir=None,stream=None):
         U.mkdir(log_dir)
         self.log_dir = log_dir
-        self.states = {}
-        self.states['refresh_template'] = 0 
+        self.sess_state = {} 
+        self.sess_state['refresh_template'] = 0 
         self.dialog = AgentDialogManager(log_dir,self.get_system_info(),stream)
 
     def set_config(self,cfg:GAMConfig): # reset the gam config of the system
         self._cfg = cfg
-
-    def build_design_flow(self):
-        args=['cls','stream','status_handler','parent_tid','context']
-        outputs=['code','text','check_results']
-        design_flow = AgentDialogFlow(name='Model Design Flow',args=args,outputs=outputs)
-        def design_initializer(query,states,cls,parent_tid,context,**kwargs):
-            states['initial_error'] = None
-            states['design_attemps'] = 0
-            DESIGNER = ROLE('designer',cls.designer)
-            design_thread_tid=cls.dialog.fork(parent_tid,SYSTEM_CALLER,DESIGNER,context=context,
-                                                alias='designing',note=f'Starting design...')
-            debug_thread_tid=None
-            return query,states,{'design_thread_tid':design_thread_tid,'debug_thread_tid':debug_thread_tid}
-
-        init_design_node = design_flow.new_proc('Initialize Design Flow',design_initializer)
-        design_flow.link(design_flow.id_entry,init_design_node)
-
-        def design_loop_controller(query,states,cls,**kwargs):
-            cont = states['design_attemps'] < cls._config.max_design_attempts
-            attempt = states['design_attemps']
-            cls.logging.info(f'Attempting design, attempt={attempt}')
-            states['design_attemps'] += 1
-            return cont,states
-
-        design_loop_controller_node = design_flow.new_loop('Design Loop Controler',design_loop_controller)
-        design_flow.link(init_design_node,design_loop_controller_node)
-
-        def design_thread_switch(query,states,**kwargs):
-            attempt = states['design_attemps']
-            states['current_thread']=kwargs['design_thread_tid']
-            return 0 if attempt == 0 else 1
-        design_switch_node = design_flow.new_cond('Design Switch',design_thread_switch,{0:'Sample initial design',1:'Debug the design'})
-
-        def switch_to_debug(query,states,text,cls,**kwargs):
-            debug_thread_tid = kwargs['debug_thread_tid']
-            if debug_thread_tid is None:
-                query = f'The designer designed the model: {text}\n\nThe checker failed the model: {query}\n\nPlease debug the model.'
-                DEBUGGER = ROLE('debugger',cls.debugger)
-                debug_thread_tid = cls.dialog.fork(states['current_thread'],SYSTEM_CALLER,DEBUGGER,
-                                                  alias='debugging',note='Starting debugging...')
-            states['current_thread']=kwargs['debug_thread_tid']
-            return query,states,{'debug_thread_tid':debug_thread_tid}
-        switch_to_debug_node = design_flow.new_proc('Switch to Debug Thread',switch_to_debug)
-
-        # Define design loop body
-        def design_loop_body(query,states,cls,status_handler,stream,**kwargs):
-            attempt = states['design_attemps']
-            thread_tid = states['current_thread']
-            # Block 2: Input thread_tid, query, and get checked code
-            with status_handler(f"Design Attempt {attempt+1}"): 
-                
-                # BLOCK 
-                _,out=cls.dialog.call(thread_tid,query)
-
-                try:
-                    code = out.get("code",None)
-                    text = out.get("text")
-                    assert code is not None
-                    assert "# gab.py" in code 
-                
-                    if stream: #and code:
-                        stream.write('Model authored code block...')
-                        stream.markdown(str(text))
-                    generated = True
-                except AssertionError:
-                    generated = False
-            ret={'code':code,'text':text,'generated':generated}
-            return query,states,ret
-        design_loop_body_node = design_flow.new_proc('Design Loop Body',design_loop_body)
-        design_flow.link(design_switch_node,{0:design_loop_body_node,1:switch_to_debug_node})
-        design_flow.link(switch_to_debug_node,design_loop_body_node)
-
-        def gocheck_or_goback(query,states,generated,**kwargs):
-            return 1 if generated else 0
-        gocheck_or_goback_node = design_flow.new_cond('Whether code is generated',gocheck_or_goback,{0:'Go back and redesign',1:'Input to the checker'})
-
-        def check_design(query,states,cls,stream,**kwargs):
-            attempt = states['design_attemps']
-            design_name = f"{cls._config.run_name}_{attempt}"
-            checkpass,check_report,code,check_results = cls.checker.check(cls._cfg,code,design_name)
-            checker_hints = check_results['hints']
-            if 'REFRESH_TEMPLATE' in checker_hints:
-                cls.states['refresh_template'] += 1
-            
-            if stream:
-                stream.write(
-                    f"""<details><summary>code check</summary>{check_report}</details>""",
-                    unsafe_allow_html=True
-                )
-            ret={'checkpass':checkpass,'check_report':check_report,'code':code,'check_results':check_results}
-            return query,states,ret
-        check_design_node = design_flow.new_proc('Check design by checker',check_design)
-        design_flow.link(design_loop_body_node,gocheck_or_goback_node)
-        design_flow.link(gocheck_or_goback_node,{0:design_loop_controller_node,1:check_design_node})
-
-        def check_pass(query,states,checkpass,**kwargs):
-            return 1 if checkpass else 0
-        check_pass_node = design_flow.new_cond('check_pass',check_pass,{0:'Design failed',1:'Design passed'})
-        design_flow.link(check_design_node,check_pass_node)
-
-        def design_failed(query,states,cls,check_report,**kwargs):
-            query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix."
-            if cls.states['refresh_template'] >=1:
-                query+=f'\nHere is the template for the GAB block for you to refresh:\n\n```python\n{cls.gab_py}```'
-            if cls.states['refresh_template'] >= 2:
-                query+=f'\nHere is the definition of GABBase for you to refresh:\n\n```python\n{GAB_BASE}```'
-            if cls.states['refresh_template'] >= 3:
-                query+=f'\nHere is the definition for the GAM model for you to refresh:\n\n```python\n{cls.gam_py}```'
-            return query,states,{}
-        design_failed_node = design_flow.new_proc('Design failed prompt',design_failed)
-        design_flow.link(design_failed_node,design_loop_controller_node)
-
-        def design_succeed_return(query,states,cls,check_results,status_handler,code,stream,**kwargs):
-            design_thread_tid = states['design_thread_tid']
-            initial_error = states['initial_error']
-            report_query = (
-                "The designed model passed the tests, now please generate a text report explaining and justifying your design."
-                " Generate a creative name of your design as the title of your report in the first line of your response."
-                " Do not include abbreviations or acronyms of your design in the title. You can use them in the body of the report."
-                f" Here is the code of the designed model after degugging:\n\n{code}" 
-                # FIXME: what is the code after debugging is not the same as the idea before debugging
-            )
-            if initial_error is not None:
-                error_info=(
-                    f"Your design didn't pass the checker initially:\n\n{initial_error}"
-                    f"\n\nIt has been fixed by the assistant already as follows:\n\n{code}"
-                )
-                report_query = f"{error_info}\n\n{report_query}"
-            with status_handler(f"Querying agent for report..."):
-                cls.logging.info('Now trying to compile self report...')
-                explain,_ = cls.dialog.call(design_thread_tid,report_query)
-                if stream:
-                    stream.markdown(explain) #<-- change
-
-            proposal=f'{explain}\n\nImplementation:\n\n{code}\n\n'
-            return proposal, states, {'code':code,'text':explain,'check_results':check_results}
-        design_succeed_node = design_flow.new_proc('Design succeed & report generation',design_succeed_return, is_end=True)
-        design_flow.link(check_pass_node,{0:design_failed_node,1:design_succeed_node})
-
-        def design_terminal_check(query,states,checkpass,**kwargs):
-            return 1 if checkpass else 0
-        design_terminal_check_node = design_flow.new_cond('Loop terminal check',design_terminal_check,{0:'design failed',1:'design succeed'})
-
-        def design_failure_exit(query,states,cls,**kwargs):
-            return FAILED,states,{'code':None,'text':None,'check_results':None}
-        design_failure_exit_node = design_flow.new_proc('Exit with failure',design_failure_exit, is_end=True)
-        design_flow.link(design_terminal_check_node,{0:design_failure_exit_node,1:design_succeed_node})
-        
-        design_flow.link(design_loop_controller_node,{0:design_terminal_check_node,1:design_switch_node})
-        return design_flow
-
-
-    def _design(cls,query,stream,status_handler,parent_tid,context): # input query, context, output design and explanation, thread_tid is the id of the thread in which the design is running
-        initial_error = None
-        DESIGNER = ROLE('designer',cls.designer)
-        DEBUGGER = ROLE('debugger',cls.debugger)
-        design_thread_tid=cls.dialog.fork(parent_tid,SYSTEM_CALLER,DESIGNER,context=context,
-                                          alias='designing',note=f'Starting design...')
-        debug_thread_tid=None
-        for attempt in range(cls._config.max_design_attempts):
-            cls.logging.info(f'Attempting design, attempt={attempt}')
-            
-            if attempt == 0:
-                thread_tid = design_thread_tid
-            else:
-                if debug_thread_tid is None:
-                    query = f'The designer designed the model: {text}\n\nThe checker failed the model: {query}\n\nPlease debug the model.'
-                    debug_thread_tid = cls.dialog.fork(design_thread_tid,SYSTEM_CALLER,DEBUGGER,
-                                                      alias='debugging',note='Starting debugging...')
-                thread_tid = debug_thread_tid
-
-            # Block 2: Input thread_tid, query, and get checked code
-            with status_handler(f"Design Attempt {attempt+1}"): 
-                
-                # BLOCK 
-                _,out=cls.dialog.call(thread_tid,query)
-
-                try:
-                    code = out.get("code",None)
-                    text = out.get("text")
-                    assert code is not None
-                
-                    if stream: #and code:
-                        stream.write('Model authored code block...')
-                        stream.markdown(str(text))
-                    success = True
-                except AssertionError:
-                    success = False
-                
-                if not success:  # if the code is not generated,
-                    query  = GAB_ERROR
-                    continue 
-
-                design_name = f"{cls._config.run_name}_{attempt}"
-                checkpass,check_report,code,check_results = cls.checker.check(cls._cfg,code,design_name)
-                checker_hints = check_results['hints']
-                if 'REFRESH_TEMPLATE' in checker_hints:
-                    cls.states['refresh_template'] += 1
-                
-                if stream:
-                    stream.write(
-                        f"""<details><summary>code check</summary>{check_report}</details>""",
-                        unsafe_allow_html=True
-                    )
-
-            # COND block
-            if checkpass:  
-                break # goto next block
-            else:
-                # BLOCK return constant, input attempt, output initial_error query
-                query = f"The designed model didn't pass, you need to try again. Here is the report:\n{check_report}. Please fix."
-                if cls.states['refresh_template'] >=1:
-                    query+=f'\nHere is the template for the GAB block for you to refresh:\n\n```python\n{cls.gab_py}```'
-                if cls.states['refresh_template'] >= 2:
-                    query+=f'\nHere is the definition of GABBase for you to refresh:\n\n```python\n{GAB_BASE}```'
-                if cls.states['refresh_template'] >= 3:
-                    query+=f'\nHere is the definition for the GAM model for you to refresh:\n\n```python\n{cls.gam_py}```'
-                if attempt == 0:
-                    initial_error = check_report
-
-        if checkpass:
-            report_query = (
-                "The designed model passed the tests, now please generate a text report explaining and justifying your design."
-                " Generate a creative name of your design as the title of your report in the first line of your response."
-                " Do not include abbreviations or acronyms of your design in the title. You can use them in the body of the report."
-                f" Here is the code of the designed model after degugging:\n\n{code}" 
-                # FIXME: what is the code after debugging is not the same as the idea before debugging
-            )
-            if initial_error is not None:
-                error_info=f"Your design didn't pass the checker initially:\n\n{initial_error}\n\nIt has been fixed by the assistant already as follows:\n\n{code}"
-                report_query = f"{error_info}\n\n{report_query}"
-            with status_handler(f"Querying agent for report..."):
-                cls.logging.info('Now trying to compile self report...')
-                explain,_ = cls.dialog.call(design_thread_tid,report_query)
-                if stream:
-                    stream.markdown(explain) #<-- change
-
-            proposal=f'{explain}\n\nImplementation:\n\n{code}\n\n'
-            return proposal, {'code':code,'text':explain,'check_results':check_results}
-        else:
-            return FAILED, {'code':None,'text':None,'check_results':None}
-        
-
-    def _review(cls,query,stream,status_handler,parent_tid,context): 
-        if query == FAILED:
-            return FAILED, {'review_pass':False,'ratings':None,'reviews':None}
-        reviewer_query = REVIEWER_PROMPT.format(
-            proposal=query,
-            gab_base=GAB_BASE,
-            gam_py=cls.gam_py,
-            instruct='' # TODO: add references from S2 etc.
-        )
-        reviews = {}
-        ratings = {}
-        for style in cls.reviewers:
-            with status_handler(f"Querying {style} reviewer for review..."):
-                REVIWER_CALLEE = ROLE('reviewer',cls.reviewers[style])
-                review_thread_tid = cls.dialog.fork(parent_tid,SYSTEM_CALLER,REVIWER_CALLEE,note=f'Starting review process: {style}')
-                _,response = cls.dialog.call(review_thread_tid,reviewer_query)
-
-                if stream:
-                    stream.write(f'Review of {style} reviewer...')
-                    stream.markdown(response["text"])
-                ratings[style] = response["rating"]
-                reviews[style] = response["review"]
-        review_ratings=''
-        for idx, style in enumerate(cls.reviewers):
-            review=reviews[style]
-            rating=ratings[style]
-            review_ratings+=f'# Review of Reviewer {idx+1}:\n\n{review}\n\n## Rating: {rating} out of 5\n\n'
-        rating=np.mean(list(ratings.values()))
-        review_pass = rating >= cls._config.reviewer_threshold
-        if review_pass:
-            response=f'The design passed the review process with an average rating of {rating} out of 5. Review details:\n\n{review_ratings}'
-        else:
-            response=f'The design didn\'t pass the review process with an average rating of {rating} out of 5. Review details:\n\n{review_ratings}'
-        return response,{'review_pass':review_pass,'ratings':ratings,'reviews':reviews}
 
     def query_system(
         self,
@@ -1295,8 +1535,8 @@ class ModelDiscoverySystem(exec_utils.System):
             review_pipe_tid = self.dialog.fork(refine_pipe_tid,SYSTEM_CALLER,REVIEW_CALLEE,note=f'launch review flow',alias=f'review_{i}')
             self.dialog.carry(refine_pipe_tid,design_pipe_tid,review_pipe_tid)
             rres,(lres,lret,rret) = self.dialog.call(refine_pipe_tid,query,
-                                                     largs={'stream':stream,'status_handler':status_handler,'context':self.dialog.context(refine_pipe_tid)},
-                                                     rargs={'stream':stream,'status_handler':status_handler,'context':None})
+                                                     largs={'cls':self,'stream':stream,'status_handler':status_handler,'context':self.dialog.context(refine_pipe_tid)},
+                                                     rargs={'cls':self,'stream':stream,'status_handler':status_handler,'context':None})
             review_pass,ratings,reviews = rret['review_pass'],rret['ratings'],rret['reviews']
             code,explain,check_results = lret['code'],lret['text'],lret['check_results']
             if lres == FAILED:

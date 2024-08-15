@@ -13,7 +13,7 @@ import platform
 
 from scipy.optimize import curve_fit
 
-from ..model.loader import reload_gam
+from ...model.loader import reload_gam
 
 import time
 import ast

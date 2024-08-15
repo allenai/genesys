@@ -102,17 +102,17 @@ pg = st_navbar(
 )
 pages['Home'] = home
 
-# if pg == 'Home':
-#     importlib.reload(bin.pages.home)
-# elif pg == 'Viewer':
-#     importlib.reload(bin.pages.viewer)
-# elif pg == 'Evolve':
-#     importlib.reload(bin.pages.evolve)
-# elif pg == 'Design':
-#     importlib.reload(bin.pages.design)
-# elif pg == 'Engine':
-#     importlib.reload(bin.pages.engine)
-# elif pg == 'Prompt':
-#     importlib.reload(bin.pages.prompt)
+if pg == 'Home':
+    importlib.reload(bin.pages.home)
+elif pg == 'Viewer':
+    importlib.reload(bin.pages.viewer)
+elif pg == 'Evolve':
+    importlib.reload(bin.pages.evolve)
+elif pg == 'Design':
+    importlib.reload(bin.pages.design)
+elif pg == 'Engine':
+    importlib.reload(bin.pages.engine)
+elif pg == 'Prompt':
+    importlib.reload(bin.pages.prompt)
 
 pages[pg](evosys,project_dir)
