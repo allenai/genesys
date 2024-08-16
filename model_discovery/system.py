@@ -1073,6 +1073,9 @@ class ALangCompiler:
         return {name: obj for name, obj in vars(module).items() if callable(obj)}
 
     def _source_to_modules(self,source):
+        # if it is a path of a file
+        if U.pexists(source):
+            source = U.read_file(source)
         ns = {}
         try:
             exec(source, ns)
@@ -1093,10 +1096,10 @@ class ALangCompiler:
             self._modules=modules
         elif isinstance(modules,ModuleType):
             self._modules = self._module_to_modules(modules)
-        elif isinstance(modules,str):
+        elif isinstance(modules,str): # path or source code
             self._modules = self._source_to_modules(modules)
         else:
-            raise ValueError(f'Type of modules not supported: {type(modules)}, currently supported types are: a function with all module definitions, dict of modules, an imported module where the functions are defined, str of source code')
+            raise ValueError(f'Type of modules not supported: {type(modules)}, currently supported types are: a function with all module definitions, dict of modules, an imported module where the functions are defined, str of source code, path to the source file')
         ALANG_reformated=self._convert(ALANG,init_state)
         if reformat:
             return self._flow,ALANG_reformated
