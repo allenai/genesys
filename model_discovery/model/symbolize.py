@@ -1,40 +1,42 @@
 ''' Symbolic Representation and Operations of GAB '''
 
-import inspect
 
-from .block_registry import BlockRegister
-
-from .library import *
+from .library import MODEL2CODE
 
 from torch.fx import symbolic_trace
-
-class Symbolizer:
-    def __init__(self, gab_name: str):
-        gab_class,gab_config = BlockRegister.load_block(gab_name)
-        # print(gab_class)
-        # print(gab_config)
-
-        gab=gab_class(128,1) # can we do some static analysis?
-
-        symbolic_traced=symbolic_trace(gab)
-
-        # source_code = inspect.getsource(gab_class)
-        # inf_code= inspect.getsource(gab._forward)
-
-        print(symbolic_traced.code)
-        print(symbolic_traced.graph)
+from exec_utils import (
+    BuildTool
+)
+from ..configs.gam_config import ( 
+    GAMConfig,GAMConfig_14M,GAMConfig_31M,GAMConfig_70M,GAMConfig_125M,GAMConfig_350M,GAMConfig_760M,
+    GAMConfig_1300M,GAMConfig_2700M,GAMConfig_6700M,GAMConfig_13B,GAMConfig_175B,GAMConfig_1T,GAMConfig_debug
+)
+from .loader import reload_gam
 
 
 
-
+def load_gab(model_name: str,scale='14M'):
+    code=MODEL2CODE[model_name]
+    checker = BuildTool(
+        tool_type="checker",
+    )
+    try:
+        checkpass,gab_code = checker._check_format_and_reformat(gab_code)
+        assert checkpass
+    except AssertionError as e:
+        print('Model does not pass the format checker')
+        raise e
+    exec(code,globals())
+    cfg = eval(f"GAMConfig_{scale}()")
+    glm,_ = reload_gam(cfg,gab_code,model_name)
+    gam = glm.backbone
+    gab = gam.blocks[0].gab
+    return gab
 
 
 
 if __name__ == '__main__':
-
-    block=ttt
-
-    sym=Symbolizer('mamba_simple')
-
+    sym=load_gab('rwkv6')
+    print(sym)
 
     

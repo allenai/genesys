@@ -804,12 +804,12 @@ class Checker(exec_utils.BaseTool):
         with U.CodeTimer("Model initialization"): # NOTE: very time consuming for the first time, but luckily only happens for the very first run, maybe reduce the time of first run>
             try: 
                 exec(gab_code,globals())
-                glm,_ = reload_gam(config,gab_code,name)#,dtype=torch.bfloat16, device="cuda") # intentially use bfloat16 to check whether the model is correctly defined
+                glm,_ = reload_gam(config,gab_code,name)
                 if torch.cuda.is_available():
                     t0=time.time()
                     glm = glm.cuda() # this step super slow!!! why??? Any solution???
                     print(f'Time for moving model to GPU: {time.time()-t0:.2f}s')
-                    glm=glm.to(torch.bfloat16)
+                    glm=glm.to(torch.bfloat16) # intentially use bfloat16 to check whether the model is correctly defined
                 else:
                     glm=glm.to(torch.float16)
                 mock_input=torch.randint(0, config.vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
