@@ -715,7 +715,7 @@ class PROCNode(AgentFlowNode): # It will call an agent and return a response
         assert isinstance(ret,dict), f'A PROC node must return a dict of additional returns'
         kwargs.update(ret) # update the flow of kwargs
         if self.children!=[]:
-            assert len(self.children)==1, f'PROCNode {self.alias}: Children of a PROC node must be one'
+            assert len(self.children)==1, f'PROCNode {self.alias}: Children of a PROC node must be one, but got {self.children}'
             child = self.children[0]
             return child(query,state,**kwargs) 
         return query,state,kwargs
@@ -937,20 +937,21 @@ class ALangCompiler:
     EXIT node alias prog [hint]
     COND node alias prog [hint0|hint1|...]
     LOOP node alias prog [hintLoop|hintExit] # TODO: need to improve, right now it is essentially a COND node and you need to manually go back
-    LINK node_or_alias chil0|child1|... # child can be node name or alias
+    LINK or ->: node_or_alias -> chil0|child1|... # child can be node name or alias
 
     Other system calls not implemented yet:
     FORK, PIPE
 
-    name, alias and hints must be bracketed by ``, never use `|` in name, alias or hints
-    ENTRY is a special predefined constant for the entry node
+    - name, alias and hints must be bracketed by ``
+    - ENTRY is a special predefined constant for the entry node
+    - -> and | are special characters, never use them in name, alias or hints
 
     flow = Acompiler.compile(ALANG, modules) # the compiler returns an AgentDialogFlow object
     or Acompiler.compile(ALANG, modules, init_state)
     or Acompiler.compile(build_flow_func) where build_flow_func has all module definitions and return the ALANG string and optionally the init_state
     """
     def _create_flow(self,line,init_state):
-        _line,maps = self._replace_brackets(line)
+        _line,maps = self._preprocess_line(line)
         parts = _line.split(' ')
         assert len(parts)==4, f'A flow definition line must have 4 parts, found {len(parts)}, line: {line}'
         _,name,args,outputs = parts
@@ -960,7 +961,8 @@ class ALangCompiler:
         self._aliases['ENTRY']=flow.entry.alias
         return flow
 
-    def _replace_brackets(self,line):
+    def _preprocess_line(self,line):
+        line = self.remove_comments(line)
         maps = {}
         for i,match in enumerate(re.finditer(r'`[^`]+`',line)):
             mark = f'BRACKET_REPLACE_TEMP_{i}'
@@ -974,9 +976,11 @@ class ALangCompiler:
         return var
 
     def _parse_node(self,line):
-        _line,maps = self._replace_brackets(line)
+        _line,maps = self._preprocess_line(line)
         splits = _line.split(' ')
         assert len(splits)==4 or len(splits)==5, f'A node definition line must have 4 or 5 parts, found {len(splits)}, line: "{line}"'
+        for i in range(len(splits)):
+            splits[i] = splits[i].strip()
         nodetype,name,_alias,prog = splits[:4]
         alias = self.map_back(_alias,maps)
         is_end = False
@@ -992,10 +996,15 @@ class ALangCompiler:
         self._aliases[name]=alias
 
     def _parse_link(self,line):
-        _line,maps = self._replace_brackets(line)
-        splits = _line.split(' ')
-        assert len(splits)==3, f'A link definition line must have 3 parts, found {len(splits)}, line: "{line}"'
-        node_or_alias,_children = splits[1:]
+        _line,maps = self._preprocess_line(line)
+        if line.startswith('LINK'):
+            splits = _line.split(' ')
+            assert len(splits)==3, f'A link definition line must have 3 parts, found {len(splits)}, line: "{line}"'
+            node_or_alias,_children = splits[1:]
+        else:
+            node_or_alias,_children = _line.split('->')
+        node_or_alias = node_or_alias.strip()
+        _children = _children.strip()
         if node_or_alias in maps:
             node_or_alias = self.map_back(node_or_alias,maps)
         children = []
@@ -1008,29 +1017,48 @@ class ALangCompiler:
             node_or_alias = self._nodes[node_or_alias]
         self._flow.link(node_or_alias,children)
 
+    def remove_comments(self,line):
+        return line.split('#')[0].strip()
+
     def _convert(self,ALANG,init_state):
+        links_def=[]
+        nodes_def=[]
+        ALANG_reformated = '# Flow Definition\n'
         for i,line in enumerate(ALANG.split('\n')):
             line = line.strip()
             if line=='': continue
             if i==0:
-                assert line.startswith('FLOW'), f'ALANG must start with FLOW'
+                assert line.startswith('FLOW'), f'ALANG must start with FLOW definition'
                 self._flow = self._create_flow(line,init_state)
+                ALANG_reformated += line+'\n\n'
             else:
                 if line.startswith('PROC') or line.startswith('COND') or line.startswith('LOOP') or line.startswith('EXIT'):
+                    assert '->' not in line, f'ALANG line {i+1}: "{line}"\nDo not use -> besides define a LINK'
                     try:
                         self._parse_node(line)
                     except Exception as e:
                         raise ValueError(f'ALANG line {i+1}: "{line}"\n{e}')
-                elif line.startswith('LINK'):
+                    nodes_def.append(line)
+                elif line.startswith('LINK') or '->' in line:
+                    if line.startswith('LINK'):
+                        assert '->' not in line, f'ALANG line {i+1}: "{line}"\nUse either LINK or ->, not both'
                     try:
                         self._parse_link(line)
                     except Exception as e:
                         raise ValueError(f'ALANG line {i+1}: "{line}"\n{e}')
+                    links_def.append(line)
+                elif line.startswith('#'):
+                    pass # ignore it
                 else:
                     if line.startswith('FLOW'):
                         raise ValueError(f'ALANG line {i+1}: "{line}"\nFLOW can only be the first line')
                     else:
                         raise ValueError(f'ALANG line {i+1}: "{line}"\nInvalid syntax, must be PROC, COND, LOOP, LINK or EXIT')
+        ALANG_reformated+='# Node Definitions\n'
+        ALANG_reformated+='\n'.join(nodes_def)+'\n\n'
+        ALANG_reformated+='# Link Definitions\n'
+        ALANG_reformated+='\n'.join(links_def)
+        return ALANG_reformated
 
     def _fn_to_modules(self,func):
         _modules = {}
@@ -1052,7 +1080,7 @@ class ALangCompiler:
             raise ValueError(f'Error in source you provided as modules: {e}')
         return {name: obj for name, obj in ns.items() if callable(obj)}
 
-    def compile(self,ALANG,modules,init_state={}):
+    def compile(self,ALANG,modules,init_state={},reformat=False):
         self._flow=None
         self._nodes={} # node var name to id
         self._aliases={} # node var name to alias
@@ -1069,15 +1097,17 @@ class ALangCompiler:
             self._modules = self._source_to_modules(modules)
         else:
             raise ValueError(f'Type of modules not supported: {type(modules)}, currently supported types are: a function with all module definitions, dict of modules, an imported module where the functions are defined, str of source code')
-        self._convert(ALANG,init_state)
+        ALANG_reformated=self._convert(ALANG,init_state)
+        if reformat:
+            return self._flow,ALANG_reformated
         return self._flow
 
 
 
 def design_flow_definition():
-    args=['cls','stream','status_handler','parent_tid','context']
-    outputs=['code','text','check_results']
-    design_flow = AgentDialogFlow(name='Model Design Flow',args=args,outputs=outputs)
+    # args=['cls','stream','status_handler','parent_tid','context']
+    # outputs=['code','text','check_results']
+    # design_flow = AgentDialogFlow(name='Model Design Flow',args=args,outputs=outputs)
 
     ALANG = 'FLOW `Model Design Flow` cls|stream|status_handler|parent_tid|context code|text|check_results\n'
 
@@ -1091,11 +1121,10 @@ def design_flow_definition():
                                             alias='designing',note=f'Starting design...')
         debug_thread_tid=None
         return query,state,{'design_thread_tid':design_thread_tid,'debug_thread_tid':debug_thread_tid}
-
-    init_design_node = design_flow.new_proc('Initialize Design Flow',design_initializer)
-    design_flow.link(design_flow.id_entry,init_design_node)
+    # init_design_node = design_flow.new_proc('Initialize Design Flow',design_initializer)
+    # design_flow.link(design_flow.id_entry,init_design_node)
     ALANG += 'PROC init_design_node `Initialize Design Flow` design_initializer\n'
-    ALANG += 'LINK ENTRY init_design_node\n'
+    ALANG += 'ENTRY -> init_design_node\n'
 
 
     def design_loop_controller(query,state,cls,**kwargs):
@@ -1105,17 +1134,16 @@ def design_flow_definition():
         cls.logging.info(f'Attempting design, attempt={attempt}')
         state['design_attemps'] += 1
         return cont,state
-
-    design_loop_controller_node = design_flow.new_loop('Design Loop Controler',design_loop_controller,hints={0:'Enter the design loop',1:'The design loop should terminate'})
-    design_flow.link(init_design_node,design_loop_controller_node)
+    # design_loop_controller_node = design_flow.new_loop('Design Loop Controler',design_loop_controller,hints={0:'Enter the design loop',1:'The design loop should terminate'})
+    # design_flow.link(init_design_node,design_loop_controller_node)
     ALANG += 'LOOP design_loop_controller_node `Design Loop Controler` design_loop_controller `Enter the design loop`|`The design loop should terminate`\n'
-    ALANG += 'LINK init_design_node design_loop_controller_node\n'
+    ALANG += 'init_design_node -> design_loop_controller_node\n'
 
     def design_thread_switch(query,state,**kwargs):
         attempt = state['design_attemps']
         state['current_thread']=kwargs['design_thread_tid']
         return 0 if attempt == 1 else 1,state
-    design_switch_node = design_flow.new_cond('Design Switch',design_thread_switch,{0:'Sample initial design',1:'Debug the design'})
+    # design_switch_node = design_flow.new_cond('Design Switch',design_thread_switch,{0:'Sample initial design',1:'Debug the design'})
     ALANG += 'COND design_switch_node `Design Switch` design_thread_switch `Sample initial design`|`Debug the design`\n'
 
     def switch_to_debug(query,state,text,cls,**kwargs):
@@ -1128,7 +1156,7 @@ def design_flow_definition():
                                                 alias='debugging',note='Starting debugging...')
         state['current_thread']=debug_thread_tid
         return query,state,{'debug_thread_tid':debug_thread_tid}
-    switch_to_debug_node = design_flow.new_proc('Switch to Debug Thread',switch_to_debug,hint='Debugger take over')
+    # switch_to_debug_node = design_flow.new_proc('Switch to Debug Thread',switch_to_debug,hint='Debugger take over')
     ALANG += 'PROC switch_to_debug_node `Switch to Debug Thread` switch_to_debug `Debugger take over`\n'
 
     # Define design loop body
@@ -1156,16 +1184,16 @@ def design_flow_definition():
                 generated = False
         ret={'code':code,'text':text,'generated':generated}
         return query,state,ret
-    design_loop_body_node = design_flow.new_proc('Design Loop Body',design_loop_body,hint='Agent response')
-    design_flow.link(design_switch_node,{0:design_loop_body_node,1:switch_to_debug_node})
-    design_flow.link(switch_to_debug_node,design_loop_body_node)
+    # design_loop_body_node = design_flow.new_proc('Design Loop Body',design_loop_body,hint='Agent response')
+    # design_flow.link(design_switch_node,{0:design_loop_body_node,1:switch_to_debug_node})
+    # design_flow.link(switch_to_debug_node,design_loop_body_node)
     ALANG += 'PROC design_loop_body_node `Design Loop Body` design_loop_body `Agent response`\n'
-    ALANG += 'LINK design_switch_node design_loop_body_node|switch_to_debug_node\n'
-    ALANG += 'LINK switch_to_debug_node design_loop_body_node\n'
+    ALANG += 'design_switch_node -> design_loop_body_node|switch_to_debug_node\n'
+    ALANG += 'switch_to_debug_node -> design_loop_body_node\n'
 
     def gocheck_or_goback(query,state,generated,**kwargs):
         return 1 if generated else 0
-    gocheck_or_goback_node = design_flow.new_cond('Whether code is generated?',gocheck_or_goback,{0:'No, go back and retry',1:'Yes, pass to the checker'})
+    # gocheck_or_goback_node = design_flow.new_cond('Whether code is generated?',gocheck_or_goback,{0:'No, go back and retry',1:'Yes, pass to the checker'})
     ALANG += 'COND gocheck_or_goback_node `Whether code is generated?` gocheck_or_goback `No, go back and retry`|`Yes, pass to the checker`\n'
 
     def check_design(query,state,cls,stream,code,**kwargs):
@@ -1184,19 +1212,19 @@ def design_flow_definition():
             )
         ret={'checkpass':checkpass,'check_report':check_report,'code':code,'check_results':check_results}
         return query,state,ret
-    check_design_node = design_flow.new_proc('Checker checks design',check_design)
-    design_flow.link(design_loop_body_node,gocheck_or_goback_node)
-    design_flow.link(gocheck_or_goback_node,{0:design_loop_controller_node,1:check_design_node})
+    # check_design_node = design_flow.new_proc('Checker checks design',check_design)
+    # design_flow.link(design_loop_body_node,gocheck_or_goback_node)
+    # design_flow.link(gocheck_or_goback_node,{0:design_loop_controller_node,1:check_design_node})
     ALANG += 'PROC check_design_node `Checker checks design` check_design\n'
-    ALANG += 'LINK design_loop_body_node gocheck_or_goback_node\n'
-    ALANG += 'LINK gocheck_or_goback_node design_loop_controller_node|check_design_node\n'
+    ALANG += 'design_loop_body_node -> gocheck_or_goback_node\n'
+    ALANG += 'gocheck_or_goback_node -> design_loop_controller_node|check_design_node\n'
 
     def check_pass(query,state,checkpass,**kwargs):
         return 1 if checkpass else 0
-    check_pass_node = design_flow.new_cond('Pass or not?',check_pass,{0:'Failed, retry or end of the loop.',1:'Passed, go to report generation.'})
-    design_flow.link(check_design_node,check_pass_node)
+    # check_pass_node = design_flow.new_cond('Pass or not?',check_pass,{0:'Failed, retry or end of the loop.',1:'Passed, go to report generation.'})
+    # design_flow.link(check_design_node,check_pass_node)
     ALANG += 'COND check_pass_node `Pass or not?` check_pass `Failed, retry or end of the loop.`|`Passed, go to report generation.`\n'
-    ALANG += 'LINK check_design_node check_pass_node\n'
+    ALANG += 'check_design_node -> check_pass_node\n'
 
     def design_failed(query,state,cls,check_report,**kwargs):
         assert isinstance(cls,ModelDiscoverySystem), f'cls must be a ModelDiscoverySystem object'
@@ -1208,10 +1236,10 @@ def design_flow_definition():
         if cls.sess_state['refresh_template'] >= 3:
             query+=f'\nHere is the definition for the GAM model for you to refresh:\n\n```python\n{cls.gam_py}```'
         return query,state,{}
-    design_failed_node = design_flow.new_proc('Design failed prompt',design_failed,hint='Prompt to retry or end of the loop.')
-    design_flow.link(design_failed_node,design_loop_controller_node)
+    # design_failed_node = design_flow.new_proc('Design failed prompt',design_failed,hint='Prompt to retry or end of the loop.')
+    # design_flow.link(design_failed_node,design_loop_controller_node)
     ALANG += 'PROC design_failed_node `Design failed prompt` design_failed `Prompt to retry or end of the loop.`\n'
-    ALANG += 'LINK design_failed_node design_loop_controller_node\n'
+    ALANG += 'design_failed_node -> design_loop_controller_node\n'
 
     def design_succeed_return(query,state,cls,check_results,status_handler,code,stream,**kwargs):
         assert isinstance(cls,ModelDiscoverySystem), f'cls must be a ModelDiscoverySystem object'
@@ -1238,26 +1266,26 @@ def design_flow_definition():
 
         proposal=f'{explain}\n\nImplementation:\n\n{code}\n\n'
         return proposal, state, {'code':code,'text':explain,'check_results':check_results}
-    design_succeed_node = design_flow.new_proc('Design succeed & report generation',design_succeed_return, is_end=True)
-    design_flow.link(check_pass_node,{0:design_failed_node,1:design_succeed_node})
+    # design_succeed_node = design_flow.new_proc('Design succeed & report generation',design_succeed_return, is_end=True)
+    # design_flow.link(check_pass_node,{0:design_failed_node,1:design_succeed_node})
     ALANG += 'EXIT design_succeed_node `Design succeed & report generation` design_succeed_return\n'
-    ALANG += 'LINK check_pass_node design_failed_node|design_succeed_node\n'
+    ALANG += 'check_pass_node -> design_failed_node|design_succeed_node\n'
 
     def design_terminal_check(query,state,checkpass,**kwargs):
         return 1 if checkpass else 0
-    design_terminal_check_node = design_flow.new_cond('Loop terminated.',design_terminal_check,{0:'Design failed',1:'Design succeed'})
+    # design_terminal_check_node = design_flow.new_cond('Loop terminated.',design_terminal_check,{0:'Design failed',1:'Design succeed'})
     ALANG += 'COND design_terminal_check_node `Loop terminated.` design_terminal_check `Design failed`|`Design succeed`\n'
 
     def design_failure_exit(query,state,**kwargs):
         return FAILED,state,{'code':None,'text':None,'check_results':None}
-    design_failure_exit_node = design_flow.new_proc('Exit with failure',design_failure_exit, hint='Output FAILED and "None"s', is_end=True)
-    design_flow.link(design_terminal_check_node,{0:design_failure_exit_node,1:design_succeed_node})
-    ALANG += 'EXIT design_failure_exit_node `Exit with failure` design_failure_exit `Output FAILED and "None"s`\n'
-    ALANG += 'LINK design_terminal_check_node design_failure_exit_node|design_succeed_node\n'
+    # design_failure_exit_node = design_flow.new_proc('Exit with failure',design_failure_exit, hint='Output FAILED and "None"s', is_end=True)
+    # design_flow.link(design_terminal_check_node,{0:design_failure_exit_node,1:design_succeed_node})
+    ALANG += 'EXIT design_failure_exit_node `Exit with failure` design_failure_exit `Output FAILED and Nones`\n'
+    ALANG += 'design_terminal_check_node -> design_failure_exit_node|design_succeed_node\n'
     
-    design_flow.link(design_loop_controller_node,{0:design_switch_node,1:design_terminal_check_node})
-    ALANG += 'LINK design_loop_controller_node design_switch_node|design_terminal_check_node\n'
-    return design_flow, ALANG
+    # design_flow.link(design_loop_controller_node,{0:design_switch_node,1:design_terminal_check_node})
+    ALANG += 'design_loop_controller_node -> design_switch_node|design_terminal_check_node\n'
+    return ALANG #, design_flow
 
 
 
@@ -1468,8 +1496,8 @@ class ModelDiscoverySystem(exec_utils.System):
         self._cfg = gam_config
 
         self.review_flow=AgentDialogFlowNaive('Model Review Flow',_review_naive)
-        _, self.DESIGN_ALANG =design_flow_definition()
-        self.design_flow=ALangCompiler().compile(self.DESIGN_ALANG,design_flow_definition)
+        self.DESIGN_ALANG =design_flow_definition()
+        self.design_flow,self.DESIGN_ALANG_reformatted=ALangCompiler().compile(self.DESIGN_ALANG,design_flow_definition,reformat=True)
 
         self.design_flow_naive=AgentDialogFlowNaive('Model Design Flow',_design_naive)
 

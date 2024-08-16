@@ -89,7 +89,8 @@ def prompt(evosys,project_dir):
 
 
     st.markdown('## ALang Design Flow Source')
-    st.code(system.DESIGN_ALANG)
+    st.write('Automatically reformatted by compiler')
+    st.code(system.DESIGN_ALANG_reformatted,line_numbers=True,language='bash')
 
     st.markdown('## Naive Control Flow Viewer')
 
