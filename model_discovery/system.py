@@ -1285,7 +1285,7 @@ def design_flow_definition():
     
     # design_flow.link(design_loop_controller_node,{0:design_switch_node,1:design_terminal_check_node})
     ALANG += 'design_loop_controller_node -> design_switch_node|design_terminal_check_node\n'
-    return ALANG #, design_flow
+    return ALANG #, design_flow # Notice that this return is not required, the compiler only looks at the functions defined within
 
 
 
