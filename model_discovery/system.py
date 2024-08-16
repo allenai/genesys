@@ -1084,6 +1084,8 @@ class ALangCompiler:
         return {name: obj for name, obj in ns.items() if callable(obj)}
 
     def compile(self,ALANG,modules,init_state={},reformat=False):
+        if U.pexists(ALANG):
+            ALANG = U.read_file(ALANG)
         self._flow=None
         self._nodes={} # node var name to id
         self._aliases={} # node var name to alias
