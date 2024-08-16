@@ -2,9 +2,9 @@
 
 import inspect
 
-from .example_designs.mamba_simple import *
-
 from .block_registry import BlockRegister
+
+from .library import *
 
 from torch.fx import symbolic_trace
 
@@ -31,6 +31,8 @@ class Symbolizer:
 
 
 if __name__ == '__main__':
+
+    block=ttt
 
     sym=Symbolizer('mamba_simple')
 

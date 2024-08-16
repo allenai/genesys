@@ -10,6 +10,7 @@ from subprocess import check_output
 
 sys.path.append('.')
 import model_discovery.utils as U
+from model_discovery.system import AgentDialogFlowNaive,design_naive   
 
 def mock1():
     st.title("Mock Page 1")
@@ -97,13 +98,15 @@ def prompt(evosys,project_dir):
     col1, col2 = st.columns(2)
 
     with col1:
-        fc_dir = system.design_flow_naive.export(evo_dir)
         if st.button('Click here to view the Flow Chart of a Naive Design Flow'):
+            fc_dir = system.design_flow_naive.export(evo_dir)
             check_output("start " + fc_dir, shell=True)
+        st.code(inspect.getsource(system.design_flow_naive.prog))
 
     with col2:
-        fc_dir = system.review_flow.export(evo_dir)
         if st.button('Click here to view the Flow Chart of a Naive Review Flow'):
+            fc_dir = system.review_flow.export(evo_dir)
             check_output("start " + fc_dir, shell=True)
+        st.code(inspect.getsource(system.review_flow.prog))
 
     # components.html(open(fc_dir).read(),height=800,scrolling=True)

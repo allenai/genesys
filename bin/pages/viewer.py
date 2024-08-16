@@ -8,7 +8,7 @@ from streamlit_markmap import markmap
 from streamlit_timeline import timeline
 
 sys.path.append('.')
-from model_discovery.system import DialogTreeViewer
+from model_discovery.agents.flow.alang import DialogTreeViewer
 import model_discovery.utils as U
 
 

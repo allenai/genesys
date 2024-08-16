@@ -73,5 +73,30 @@ Now, carefully review the design and give the feedback in a step by step way. Yo
 The 'review' key should contain a detailed feedback of the design written in markdown, and the 'rating' key should contain the rating of the design from 1 to 5.
 """
 
+GAB_BASE='''
+class GABBase(nn.Module):
+    """ Base class for Generalized Autoregressive Block """
+    def __init__(self,embed_dim: int, block_loc: tuple): 
+        super().__init__()
+        self.embed_dim = embed_dim
+        self.block_loc = block_loc # location of a block within the network, (layer_idx, n_block)
+
+    def _forward(self,X,**kwargs): 
+        raise NotImplementedError
+     
+    # YOU ARE NOT ALLOW TO OVERRIDE THIS METHOD #
+    def forward(self,X,**intermediate_vars):
+        """Forward pass of the model"""
+        assert X.shape[-1] == self.embed_dim
+        Y=self._forward(X,**kwargs)
+        if isinstance(Y,tuple):
+            intermediate_vars = Y[1:]
+            Y = Y[0]
+        else:
+            intermediate_vars = {}
+        assert Y.shape == X.shape
+        return Y
+'''
+
 
 GAB_ERROR = """Please provide the full gab code, and please do not modify other parts of the code. Specifically, please preserve # gab.py at the beginning of gab.py. You can write multiple codes during your analysis process, but only one with # gab.py at the beginning will be detected as gab.py, if multiple gab.py are detected in your response, only the last one will be applied. Please follow the instructions in the prompt and provide the full gab.py file with the completed code. """
