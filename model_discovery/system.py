@@ -1084,8 +1084,10 @@ class ALangCompiler:
         return {name: obj for name, obj in ns.items() if callable(obj)}
 
     def compile(self,ALANG,modules,init_state={},reformat=False):
-        if U.pexists(ALANG):
+        if U.pexists(ALANG): # path of a ALANG script file
             ALANG = U.read_file(ALANG)
+        if isinstance(init_state,str): # path of a json file
+            init_state = U.load_json(init_state)
         self._flow=None
         self._nodes={} # node var name to id
         self._aliases={} # node var name to alias
