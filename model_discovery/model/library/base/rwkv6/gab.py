@@ -274,12 +274,12 @@ class GAB(GABBase):
         self.ffn = RWKV6FeedForward(hidden_size=self.hidden_size, **
             factory_kwargs)
 
-    def _forward(self, X, **kwargs):
+    def _forward(self, X, **Z):
         hidden_states = self.attn_norm(X)
         X = self.attn(hidden_states) + X
         hidden_states = self.ffn_norm(X)
         X = self.ffn(hidden_states) + X
-        return X
+        return X, Z
 
 
 """ The dictionary of hyperparameters for constructing a GAB layer

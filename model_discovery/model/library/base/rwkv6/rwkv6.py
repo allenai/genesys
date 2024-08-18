@@ -321,6 +321,7 @@ class GAB(GABBase):
     def __init__(
             self,
             embed_dim: int, 
+            block_loc: tuple,
             device=None,
             dtype=None,
             num_heads: int = 4,
@@ -331,7 +332,7 @@ class GAB(GABBase):
         ): # YOU CAN ADD MORE ARGUMENTS, BUT YOU HAVE TO HAVE embed_dim, device, dtype AS THE ARGUTMENTS #
         # argv: list of hyperparameters
         factory_kwargs = {"device": device, "dtype": dtype} # remember to pass it to nn layers
-        super().__init__(embed_dim) # DO NOT CHANGE THIS LINE #
+        super().__init__(embed_dim, block_loc) # DO NOT CHANGE THIS LINE #
         
         # COMPLETING THE CODE HERE #
         self.hidden_size = embed_dim

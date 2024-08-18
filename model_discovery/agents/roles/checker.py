@@ -209,7 +209,7 @@ class GABCleaner(ast.NodeTransformer):
         # Only keep Import, ImportFrom, FunctionDef, ClassDef, and gab_config nodes
         new_body = []
         for n in node.body:
-            if isinstance(n, (ast.Import, ast.ImportFrom, ast.FunctionDef, ast.ClassDef)):
+            if isinstance(n, (ast.Import, ast.ImportFrom, ast.FunctionDef, ast.ClassDef, ast.Try)):
                 new_body.append(n)
             elif isinstance(n, ast.Assign) and (len(n.targets) == 1 and isinstance(n.targets[0], ast.Name) and n.targets[0].id == 'gab_config'):
                 new_body.append(n)
@@ -219,6 +219,23 @@ class GABCleaner(ast.NodeTransformer):
                 self.warnings.append(f'The statement "{astor.to_source(n).strip()}" is removed by the reformatter.\n')
         node.body = new_body
         return node   
+    
+    def visit_Try(self, node):
+        # Visit the body and handlers of the try-except block
+        new_body = []
+        for n in node.body:
+            if isinstance(n, (ast.Import, ast.ImportFrom)):
+                new_body.append(n)
+            else:
+                self.warnings.append(f'The statement in try block "{astor.to_source(n).strip()}" is removed by the reformatter.\n')
+
+        node.body = new_body
+        # Keep all except handlers
+        for handler in node.handlers:
+            handler.body = [n for n in handler.body if isinstance(n, (ast.Import, ast.ImportFrom))]
+        
+        return node if new_body or node.handlers else None  # Remove the entire try block if empty
+
 
 class GABFormatChecker:
     def __init__(self):

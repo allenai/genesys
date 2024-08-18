@@ -21,8 +21,10 @@ from .. import utils as U
 DEFAULT_NUM_PROC_LOAD =  os.cpu_count()*4 # Configure it based on your system, it can significantly speed up the download of datasets
 DEFAULT_NUM_PROC_TOKENIZE =  max(os.cpu_count()//2,1)
 
-login(os.environ.get("HF_KEY",None))
-
+try:
+    login(os.environ.get("HF_KEY",None))
+except Exception as e: 
+    print("Failed to login to HuggingFace Hub, some datasets may not be available to download.")
 
 def get_tokenizer(tokenizer_name):
     tokenizer=AutoTokenizer.from_pretrained(tokenizer_name)
@@ -125,10 +127,13 @@ def load_wikitext2(tokenizer_name, context_length):
     return load_dataset('wikitext','wikitext-2-v1', num_proc=DEFAULT_NUM_PROC_LOAD)
 
 
-session = boto3.Session(
-    aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID",None),
-    aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY",None))
-s3 = session.client("s3")
+try:
+    session = boto3.Session(
+        aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID",None),
+        aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY",None))
+    s3 = session.client("s3")
+except Exception as e:
+    print("Failed to connect to S3, Python-Edu may not be available to download.")
 
 def download_contents_py(blob_id):
     key = f"content/{blob_id}"

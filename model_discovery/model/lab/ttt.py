@@ -16,6 +16,8 @@ from transformers.utils import logging
 from transformers.activations import ACT2FN
 # from transformers.utils.import_utils import is_causal_conv1d_available # CAUSE EARLY INIT CUDA
 
+from torchtune.modules import RotaryPositionalEmbeddings
+
 try:
     from causal_conv1d import causal_conv1d_fn, causal_conv1d_update
 except:
@@ -144,14 +146,14 @@ class RotaryEmbedding(nn.Module):
         self.register_buffer("inv_freq", inv_freq, persistent=False)
 
     @torch.no_grad()
-    def forward(self, x, position_ids):
+    def forward(self, x, position_ids, inv_freq_expanded):
         # x: [bs, num_attention_heads, seq_len, head_size]
-        inv_freq_expanded = self.inv_freq[None, :, None].float().expand(position_ids.shape[0], -1, 1)
+        # inv_freq_expanded = self.inv_freq[None, :, None].float().expand(position_ids.shape[0], -1, 1)
         position_ids_expanded = position_ids[:, None, :].float()
         # Force float32 since bfloat16 loses precision on long contexts
         # See https://github.com/huggingface/transformers/pull/29285
         device_type = x.device.type
-        device_type = device_type if isinstance(device_type, str) and device_type != "mps" else "cpu"
+        # device_type = device_type if isinstance(device_type, str) and device_type != "mps" else "cpu"
         with torch.autocast(device_type=device_type, enabled=False):
             freqs = (inv_freq_expanded.float() @ position_ids_expanded.float()).transpose(1, 2)
             emb = torch.cat((freqs, freqs), dim=-1)
@@ -179,11 +181,11 @@ class Conv(nn.Module):
         # [B, C, L]
         hidden_states = hidden_states.transpose(1, 2)
 
-        if causal_conv1d_fn is None:
-            hidden_states = self.conv(hidden_states)[..., :seq_len]
-        else:
-            conv_weights = self.conv.weight.view(self.conv.weight.size(0), self.conv.weight.size(2))
-            hidden_states = causal_conv1d_fn(hidden_states, conv_weights, self.conv.bias, activation=None)
+        # if causal_conv1d_fn is None:
+        hidden_states = self.conv(hidden_states)[..., :seq_len]
+        # else:
+        #     conv_weights = self.conv.weight.view(self.conv.weight.size(0), self.conv.weight.size(2))
+        #     hidden_states = causal_conv1d_fn(hidden_states, conv_weights, self.conv.bias, activation=None)
 
         # [B, L, C]
         hidden_states = hidden_states.transpose(1, 2)
@@ -314,10 +316,15 @@ class TTTLinear(nn.Module):
 
     def _init_rope(self):
         self.rope_theta = self.rope_theta
-        self.rotary_emb = RotaryEmbedding(
+        # self.rotary_emb = RotaryEmbedding(
+        #     self.head_dim,
+        #     max_position_embeddings=self.mini_batch_size,
+        #     base=self.rope_theta,
+        # )
+        self.rotary_emb = RotaryPositionalEmbeddings(
             self.head_dim,
-            max_position_embeddings=self.mini_batch_size,
-            base=self.rope_theta,
+            max_seq_len=self.mini_batch_size,
+            base=self.rope_theta
         )
 
     def _init_ttt_lr_gate(self):
@@ -562,16 +569,19 @@ class TTTLinear(nn.Module):
         XQ, XK, XV = self.get_qkv_projections(hidden_states)
 
         # [B, L, C] -> [B, L, num_heads, head_dim] -> [B, num_heads, L, head_dim]
-        XQ = XQ.reshape(B, L, self.num_heads, self.head_dim).transpose(1, 2)
-        XK = XK.reshape(B, L, self.num_heads, self.head_dim).transpose(1, 2)
-        XV = XV.reshape(B, L, self.num_heads, self.head_dim).transpose(1, 2)
+        XQ = XQ.reshape(B, L, self.num_heads, self.head_dim)#.transpose(1, 2)
+        XK = XK.reshape(B, L, self.num_heads, self.head_dim)#.transpose(1, 2)
+        XV = XV.reshape(B, L, self.num_heads, self.head_dim)#.transpose(1, 2)
 
-        cos, sin = self.rotary_emb(XV, position_ids % self.mini_batch_size)
+        # cos, sin = self.rotary_emb(XV, position_ids % self.mini_batch_size)
 
-        # permute_qk and undo_permute_qk is just for aligning pytorch with jax pre-training
-        XQ, XK = permute_qk(XQ, XK)
-        XQ, XK = apply_rotary_pos_emb(XQ, XK, cos, sin)
-        XQ, XK = undo_permute_qk(XQ, XK)
+        # # permute_qk and undo_permute_qk is just for aligning pytorch with jax pre-training
+        # XQ, XK = permute_qk(XQ, XK)
+        # XQ, XK = apply_rotary_pos_emb(XQ, XK, cos, sin)
+        # XQ, XK = undo_permute_qk(XQ, XK)
+        print(XQ.shape,XQ.size(1))
+        XQ = self.rotary_emb(XQ, input_pos=position_ids % self.mini_batch_size).transpose(1, 2)
+        XK = self.rotary_emb(XK, input_pos=position_ids % self.mini_batch_size).transpose(1, 2)
 
         output_hidden_states = []
         # when input sequence length is not a multiple of mini_batch_size
@@ -612,7 +622,7 @@ class TTTLinear(nn.Module):
 
 
 
-class GAB(GABBase):
+class GAB(nn.Module):#GABBase):
     """Generalized Autoregressive Block
         Input:        X: (batch, seqlen, embed_dim)
         Output:       Y: (batch, seqlen, embed_dim)
@@ -624,7 +634,7 @@ class GAB(GABBase):
                  **kwargs): # YOU CAN ADD MORE ARGUMENTS, BUT YOU HAVE TO HAVE embed_dim, device, dtype AS THE ARGUTMENTS #
         # argv: list of hyperparameters
         factory_kwargs = {"device": device, "dtype": dtype} # remember to pass it to nn layers
-        super().__init__(embed_dim) # DO NOT CHANGE THIS LINE #
+        super().__init__()#embed_dim) # DO NOT CHANGE THIS LINE #
         
         # COMPLETING THE CODE HERE #
         self.hidden_size = embed_dim
@@ -656,16 +666,16 @@ class GAB(GABBase):
     # YOU CAN ADD MORE FUNCTIONS HERE #
 
 
-    def _forward(self,X,*Z): # type hints are optional but recommended
+    def forward(self,X,position_ids):#,**kwargs): # type hints are optional but recommended
 
         # THE CODE HERE MUST BE COMPLETED #
         hidden_states = X
-        position_ids = torch.arange(
-            0,
-            X.shape[1],
-            dtype=torch.long,
-            device=X.device,
-        ).unsqueeze(0)
+        # position_ids = torch.arange(
+        #     0,
+        #     X.shape[1],
+        #     dtype=torch.long,
+        #     device=X.device,
+        # ).unsqueeze(0)
 
         residual = hidden_states
         hidden_states = self.conv(hidden_states)

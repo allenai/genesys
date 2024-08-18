@@ -44,7 +44,7 @@ class GAB(nn.Module):
         Output:       Y: (batch, seqlen, embed_dim)
         Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
     """
-    def __init__(self, embed_dim: int, num_heads: int, mlp_ratio: float = 4.0, dropout: float = 0.1, device=None, dtype=None, **kwargs):
+    def __init__(self, embed_dim: int, num_heads: int = 8, mlp_ratio: float = 4.0, dropout: float = 0.1, device=None, dtype=None, **kwargs):
         factory_kwargs = {"device": device, "dtype": dtype}
         super().__init__()
         self.embed_dim = embed_dim
@@ -63,10 +63,11 @@ class GAB(nn.Module):
         self.norm2= nn.LayerNorm(embed_dim, **factory_kwargs)
         # self.norm3= nn.LayerNorm(embed_dim, **factory_kwargs)
 
-    def _forward(self, X, **kwargs):
-        assert X.shape[-1] == self.embed_dim
-        B, N, C = X.shape
-        mask = torch.tril(torch.ones(N, N, device=X.device, dtype=X.dtype)).unsqueeze(0).unsqueeze(0)
+    def _forward(self, X, mask):#Z={}):
+        # assert X.shape[-1] == self.embed_dim
+        # B, N, C = X.shape
+        # mask = torch.tril(torch.ones(N, N, device=X.device, dtype=X.dtype)).unsqueeze(0).unsqueeze(0)
+        # mask = Z['mask']
         X= self.norm1(X)
         attn_output = self.attn(X, mask)
         residual = X + attn_output
@@ -77,11 +78,12 @@ class GAB(nn.Module):
         # gmlp_output = self.gmlp(residual)
         # out= residual + gmlp_output
         out= residual
-        return out
+        return out#, Z
 
-    def forward(self, X, **kwargs):
-        Y = self._forward(X, **kwargs)
-        assert Y.shape[-1] == self.embed_dim
+    def forward(self, X, mask):#, **Z):
+        # Y, Z = self._forward(X, **Z)
+        Y = self._forward(X, mask)
+        # assert Y.shape[-1] == self.embed_dim
         return Y
 
 def gab_config() -> dict:
@@ -96,10 +98,10 @@ def gab_config() -> dict:
 
 
 
-# Perform registration after defining gab_config
-from .block_registry import BlockRegister
+# # Perform registration after defining gab_config
+# from .block_registry import BlockRegister
 
-BlockRegister(
-    name="default",
-    config=gab_config()
-)(GAB)
+# BlockRegister(
+#     name="default",
+#     config=gab_config()
+# )(GAB)

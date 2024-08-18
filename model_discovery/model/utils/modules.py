@@ -17,22 +17,22 @@ class GABBase(nn.Module):
         self.embed_dim = embed_dim
         self.block_loc = block_loc # location of a block within the network, (layer_idx, n_block)
 
-    def _forward(self, X, **intermediate_vars): 
+    def _forward(self, X, *Z): 
         raise NotImplementedError
      
     # YOU ARE NOT ALLOW TO OVERRIDE THIS METHOD #
-    def forward(self, X, **intermediate_vars):
+    def forward(self, X, *Z):
         """Forward pass of the model"""
         assert len(X.shape) == 3, "Input shape must be (batch, seqlen, embed_dim)"
         assert X.shape[-1] == self.embed_dim
-        Y=self._forward(X,**intermediate_vars)
+        Y = self._forward(X, *Z)
         if isinstance(Y, tuple):
-            intermediate_vars = Y[1:]
-            Y = Y[0]
+            Y,Z = Y
         else:
-            intermediate_vars = {}
+            Z = ()
         assert Y.shape == X.shape, f"GAB Output shape must be the same as input shape, got {Y.shape} instead"
-        return Y, intermediate_vars
+        assert isinstance(Z, tuple), "Intermediate variables must be stored in a tuple"
+        return Y, Z
 
 
 class GatedMLP(nn.Module):
