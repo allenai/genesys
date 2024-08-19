@@ -676,9 +676,12 @@ class GAB(GABBase):
         hidden_states = self.seq_norm(hidden_states)
 
         # TTT Layer
+        # hidden_states = self.seq_modeling_block(
+        #     hidden_states=hidden_states,
+        #     position_ids=position_ids,
+        # )
         hidden_states = self.seq_modeling_block(
-            hidden_states=hidden_states,
-            position_ids=position_ids,
+            hidden_states,position_ids,
         )
         hidden_states = residual + hidden_states
 

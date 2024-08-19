@@ -17,6 +17,9 @@ from model_discovery.configs.gam_config import (
     GAMConfig_1300M,GAMConfig_2700M,GAMConfig_6700M,GAMConfig_13B,GAMConfig_175B,GAMConfig_1T,GAMConfig_debug
 )
 
+#!!! BETTER NOT HAVING ANY KWARGS WHEN CALLING AN NN.MODULE
+# When using a kwarg wrapper, the kwargs will be hidden in CONSTANTS
+
 
 def load_gab(model_name: str, scale='14M'):
     gab_code = MODEL2CODE[model_name]
@@ -46,11 +49,13 @@ def load_gab(model_name: str, scale='14M'):
     return gab,cfg
 
 
+
 class ModuleNode:
-    def __init__(self, name, graph_module=None):
+    def __init__(self, name, graph_module=None,kwarg=None):
         self.name = name
         self.graph_module = graph_module
         self.children = []
+        self.kwargs = kwarg
 
     def print_tree(self, indent=""):
         print(indent + self.name)
@@ -63,6 +68,7 @@ class ModuleNode:
 class BlockAnalysis:
     root: ModuleNode
     nodes: dict
+    config: GAMConfig
 
 class BlockAnalyzer:
     def __init__(self):
@@ -129,7 +135,7 @@ class BlockAnalyzer:
                 pass
         traced_module = torch.jit.trace(module, inputs)
         # Create a ModuleNode for the current module
-        node = ModuleNode(module_path, traced_module)
+        node = ModuleNode(module_path, traced_module, kwargs)
         self.current_nodes[module_path] = node
 
         # Recursively trace submodules
@@ -157,10 +163,14 @@ class BlockAnalyzer:
         self.current_inputs['root'] = (input_tensor, None)
         self.module_tree_root = self.analyze_submodule('root', model)
 
-        return BlockAnalysis(self.module_tree_root, self.current_nodes)
+        return BlockAnalysis(self.module_tree_root, self.current_nodes, cfg)
+    
+
+
 
 
 if __name__ == '__main__':
     gab,cfg = load_gab('ttt')
     analyzer = BlockAnalyzer()
     analysis = analyzer.analyze(gab, cfg)
+

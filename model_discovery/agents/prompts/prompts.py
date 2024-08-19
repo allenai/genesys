@@ -8,47 +8,62 @@ from dataclasses import dataclass, field, asdict
 #     * create 3 different types of blocks A,B,C, has AABC structure, then you can let layer_idx%4=0,1 for A, 2 for B, 3 for C
 # 1. Use different types of blocks is not required also there is no preference for heterogeneous or homogeneous blocks, you can choose to create only one type of block or multiple types of blocks.
 
-DESIGNER_PROMPT="""Design a novel autoregressive model block by completing the blanks marked in the Python code file gab.py below, which includes the initialization where you can define your custom arguments, the forward function where you can define convenient functions in the GAB class such as caches, the configuration with the hyperparameters that correspond to the arguments you defined:
+DESIGNER_PROMPT="""
+Design a novel autoregressive model block by completing the blanks marked in the
+Python code file gab.py below, which includes the initialization where you can
+define your custom arguments, the forward function where you can define
+convenient functions in the GAB class such as caches, the configuration with the
+hyperparameters that correspond to the arguments you defined:
 
-```python
-{gab_py}
-```
+```python {gab_py} ```
 
-The GAB is inherited from this GABBase class, you should always import it by "from model_discovery.model.utils.modules import GABBase", you should never remove this statement from gab.py and you should never define another GABBase class in gab.py:
+The GAB is inherited from this GABBase class, you should always import it by
+"from model_discovery.model.utils.modules import GABBase", you should never
+remove this statement from gab.py and you should never define another GABBase
+class in gab.py:
 
-```python
-{gab_base}
-```
+```python {gab_base} ```
 
 This code will be used to construct a gam model in gam.py:
 
-```python
-{gam_py}
-```
+```python {gam_py} ```
 
 This is the configuration and references for the target model:
 
-```python
-{config}
-```
+```python {config} ```
 
-Here are some hints:      
-1. You need to consider the GAM model structure and the default operations like the normalization when designing the GAB block. Always remember that GAB is a part of the GAM model, it should not be designed as a whole model. 
-2. You need to consider the magnitute of the model based on the reference model size, d_model and n_blocks. The n_blocks can be automatically adjusted so do not need to worry too much.
-3. The model should be able to be parallel trained, which means you should not introduce recurrent operators like RNN or LSTM. The model should always be causal and differentiable.
-4. The design should be innovative, you are not allowed to copy a previous design such as transformer block, you need to design your own block.
-5. All dimensions of your model should always be a function of d_model (e.g., 2.5 times of d_model), you should never ever manually set a dimension of a layer to a fixed number in your config.
-6. The GABBase provides a block_loc to help you locate the current block within the network which allows you to implement topology related operations.
-7. The forward method allows you to create intermediate variables in intermediate_vars if you need.
-8. Only import, import from, class definition, function definition, and gab_config definition can be shown in the code. Do not include any other operations in the code. They will be automatically removed.
+Here are some hints: 1. You need to consider the GAM model structure and the
+default operations like the normalization when designing the GAB block. Always
+remember that GAB is a part of the GAM model, it should not be designed as a
+whole model. 2. You need to consider the magnitute of the model based on the
+reference model size, d_model and n_blocks. The n_blocks can be automatically
+adjusted so do not need to worry too much. 3. The model should be able to be
+parallel trained, which means you should not introduce recurrent operators like
+RNN or LSTM. The model should always be causal and differentiable. 4. The design
+should be innovative, you are not allowed to copy a previous design such as
+transformer block, you need to design your own block. 5. All dimensions of your
+model should always be a function of d_model (e.g., 2.5 times of d_model), you
+should never ever manually set a dimension of a layer to a fixed number in your
+config. 6. The GABBase provides a block_loc to help you locate the current block
+within the network which allows you to implement topology related operations. 7.
+The forward method allows you to create intermediate variables in
+intermediate_vars if you need. 8. Only import, import from, class definition,
+function definition, and gab_config definition can be shown in the code. Do not
+include any other operations in the code. They will be automatically removed.
 
 {instruct}
 
-Now, use the information provided above to complete the code. You should strictly follow the instructions in gab.py and do not remove anything suggested by the instructions. 
+Now, use the information provided above to complete the code. You should
+strictly follow the instructions in gab.py and do not remove anything suggested
+by the instructions. 
 
-Your response should include the full gab.py file with the completed code. 
-Specifically, when providing the full gab.py file, please preserve # gab.py at the beginning of the file. You can write multiple codes during your analysis process, but only one with # gab.py at the beginning will be detected as gab.py, if multiple gab.py are detected in your response, only the last one will be applied.
-You should derive your design step by step with detailed analysis and explanation before writing your code. 
+Your response should include the full gab.py file with the completed code.
+Specifically, when providing the full gab.py file, please preserve # gab.py at
+the beginning of the file. You can write multiple codes during your analysis
+process, but only one with # gab.py at the beginning will be detected as gab.py,
+if multiple gab.py are detected in your response, only the last one will be
+applied. You should derive your design step by step with detailed analysis and
+explanation before writing your code. 
 """
 
 REVIEWER_PROMPT="""This is the proposal of the design of the general autoregressive block (gab) for you to review:
@@ -100,3 +115,5 @@ class GABBase(nn.Module):
 
 
 GAB_ERROR = """Please provide the full gab code, and please do not modify other parts of the code. Specifically, please preserve # gab.py at the beginning of gab.py. You can write multiple codes during your analysis process, but only one with # gab.py at the beginning will be detected as gab.py, if multiple gab.py are detected in your response, only the last one will be applied. Please follow the instructions in the prompt and provide the full gab.py file with the completed code. """
+
+

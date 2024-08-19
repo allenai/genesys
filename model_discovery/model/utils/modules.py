@@ -17,22 +17,55 @@ class GABBase(nn.Module):
         self.embed_dim = embed_dim
         self.block_loc = block_loc # location of a block within the network, (layer_idx, n_block)
 
-    def _forward(self, X, *Z): 
+    def _forward(self, X, **Z): 
         raise NotImplementedError
      
     # YOU ARE NOT ALLOW TO OVERRIDE THIS METHOD #
-    def forward(self, X, *Z):
+    def forward(self, X, **Z): # kwargs not parsable by torchscript but more flexible
         """Forward pass of the model"""
         assert len(X.shape) == 3, "Input shape must be (batch, seqlen, embed_dim)"
         assert X.shape[-1] == self.embed_dim
-        Y = self._forward(X, *Z)
+        Y = self._forward(X, Z)
         if isinstance(Y, tuple):
-            Y,Z = Y
+            Y, Z = Y
         else:
-            Z = ()
+            Z = {}
         assert Y.shape == X.shape, f"GAB Output shape must be the same as input shape, got {Y.shape} instead"
-        assert isinstance(Z, tuple), "Intermediate variables must be stored in a tuple"
+        assert isinstance(Z, dict), "Intermediate variables must be stored in a dict"
         return Y, Z
+    
+
+class GABUnit(nn.Module): 
+    """ 
+    Instead of directly giving the full implementation of a GAB block, the agent need to 
+    design a series of nested GAB units and construct the full GAB block as a pipeline of these units.
+
+    GAB is fractal, like GAB itself, each GAB unit accepts X and Z as input and returns Y and Z as output.
+    """ 
+    def __init__(self, id, unit_name, embed_dim: int, device=None, dtype=None):
+        super().__init__()
+        self.id = id
+        self.unit_name = unit_name # name or path?
+        self.embed_dim = embed_dim
+        self.device = device
+        self.dtype = dtype
+
+    def _forward(self, X, **Z):
+        raise NotImplementedError
+    
+    def forward(self, X, **Z):
+        assert len(X.shape) == 3, "Input shape must be (batch, seqlen, embed_dim)"
+        assert X.shape[-1] == self.embed_dim
+        Y = self._forward(X, Z)
+        if isinstance(Y, tuple):
+            Y, Z = Y
+        else:
+            Z = {}
+        assert Y.shape == X.shape, f"GAB Unit must has a sequence with the same shape as input in output, got {Y.shape} instead"
+        assert isinstance(Z, dict), "Intermediate variables must be stored in a tuple"
+        return Y, Z
+
+
 
 
 class GatedMLP(nn.Module):
