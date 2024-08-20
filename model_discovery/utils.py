@@ -6,6 +6,7 @@ import re
 import textwrap
 
 pjoin=os.path.join
+psplit=os.path.split
 pexists=os.path.exists
 mkdir=ft.partial(os.makedirs, exist_ok=True)
 

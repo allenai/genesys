@@ -17,6 +17,31 @@ class GABBase(nn.Module):
         self.embed_dim = embed_dim
         self.block_loc = block_loc # location of a block within the network, (layer_idx, n_block)
 
+    def _forward(self, X, *Z): 
+        raise NotImplementedError
+     
+    # YOU ARE NOT ALLOW TO OVERRIDE THIS METHOD #
+    def forward(self, X, *Z): # kwargs not parsable by torchscript but more flexible
+        """Forward pass of the model"""
+        assert len(X.shape) == 3, "Input shape must be (batch, seqlen, embed_dim)"
+        assert X.shape[-1] == self.embed_dim
+        Y = self._forward(X, *Z)
+        if isinstance(Y, tuple):
+            Y, Z = Y
+        else:
+            Z = ()
+        assert Y.shape == X.shape, f"GAB Output shape must be the same as input shape, got {Y.shape} instead"
+        assert isinstance(Z, tuple), "Intermediate variables must be stored in a tuple"
+        return Y, Z
+    
+
+class GABFlow(nn.Module):
+    """ Generalized Autoregressive Block that composed of a tree of GAB units """
+    def __init__(self,embed_dim: int, block_loc: tuple):
+        super().__init__()
+        self.embed_dim = embed_dim
+        self.block_loc = block_loc # location of a block within the network, (layer_idx, n_block)
+
     def _forward(self, X, **Z): 
         raise NotImplementedError
      
@@ -42,13 +67,10 @@ class GABUnit(nn.Module):
 
     GAB is fractal, like GAB itself, each GAB unit accepts X and Z as input and returns Y and Z as output.
     """ 
-    def __init__(self, id, unit_name, embed_dim: int, device=None, dtype=None):
+    def __init__(self, unit_name, embed_dim: int):
         super().__init__()
-        self.id = id
-        self.unit_name = unit_name # name or path?
+        self.unit_name = unit_name 
         self.embed_dim = embed_dim
-        self.device = device
-        self.dtype = dtype
 
     def _forward(self, X, **Z):
         raise NotImplementedError
@@ -58,11 +80,12 @@ class GABUnit(nn.Module):
         assert X.shape[-1] == self.embed_dim
         Y = self._forward(X, Z)
         if isinstance(Y, tuple):
-            Y, Z = Y
+            Y, Z_ = Y
         else:
-            Z = {}
+            Z_ = {}
         assert Y.shape == X.shape, f"GAB Unit must has a sequence with the same shape as input in output, got {Y.shape} instead"
-        assert isinstance(Z, dict), "Intermediate variables must be stored in a tuple"
+        assert isinstance(Z_, dict), "Intermediate variables must be stored in a tuple"
+        Z.update(Z_) # the new intermediate variables are updated to the current Z
         return Y, Z
 
 

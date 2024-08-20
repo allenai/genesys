@@ -30,7 +30,7 @@ class GAB(GABBase):
     # YOU CAN ADD MORE FUNCTIONS HERE #
 
 
-    def _forward(self, X, **intermediate_vars): 
+    def _forward(self, X, *Z): 
         
         # THE CODE HERE MUST BE COMPLETED #
 
