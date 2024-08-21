@@ -9,7 +9,7 @@ import model_discovery.utils as U
 
 
 
-ROOT_UNIT_TEMPLATE = '''# {name}.py
+ROOT_UNIT_TEMPLATE = '''# UNIT_NAME.py
 
 import torch
 import torch.nn as nn
@@ -22,7 +22,7 @@ from model_discovery.model.utils.modules import GABUnit # DO NOT CHANGE THIS IMP
 # YOU CAN DEFINE MORE CLASSES OR FUNCTIONS HERE #
 
 
-class {name}(GABUnit): 
+class UNIT_NAME(GABUnit): 
     """Generalized Autoregressive Block
         Input:        X: (batch, seqlen, embed_dim), Z: {dict of all current intermediate variables}
         Output:       Y: (batch, seqlen, embed_dim), Z_: Optional, {dict of *new* intermediate variables to update the current Z}
@@ -50,6 +50,7 @@ class {name}(GABUnit):
 class GABBook: # GABUnit code book, registry of GABUnits, shared by a whole evolution
     def __init__(self, db_dir=None, rename=True):
         self.units = {}
+        self.sources = {}
         self.log = []
         self.rename = rename
         self.units_dir = U.pjoin(db_dir, 'units')
@@ -84,7 +85,8 @@ class GABBook: # GABUnit code book, registry of GABUnits, shared by a whole evol
             raise ValueError(f"Failed to parse source code: {e}")
         assert name in modules, f"Unit {name} is not defined in the source code"
         unit = modules[name]
-        assert isinstance(unit,GABUnit), f"Unit {name} is not a GABUnit"
+        # assert isinstance(unit, GABUnit), f"Unit {name} is not a GABUnit, got {type(unit)} instead"
+        assert issubclass(unit, GABUnit), f"Unit {name} is not a subclass of GABUnit, got {type(unit)} instead"
         return unit
     
     def load(self, name):
@@ -92,16 +94,19 @@ class GABBook: # GABUnit code book, registry of GABUnits, shared by a whole evol
         if U.pexists(dir):
             name=U.psplit(dir)[-1].split('.')[0]
             source = U.read_file(dir)
-            unit=self.parse_source(source,name,rename=self.rename)
+            unit=self.parse_source(source,name)
             assert name not in self.units, f"Unit {name} is not registered"
             self.units[name] = unit
-        else:
-            raise ValueError(f"File {dir} does not exist")
+            self.sources[name] = source
+        # else:
+        #     raise ValueError(f"File {dir} does not exist")
         
     def register_from_source(self, source, name): # Write
         rname = self.assign_name(name)
         if rname != name:
-            source = source.replace(name,rname) # XXX: this is a very naive way to rename the class, may cause problems
+            # XXX: this is a very naive way to rename the class, may cause problems, but it should be be called in the script elsewhere
+            source = source.replace(f'# {name}.py',f'# {rname}.py')
+            source = source.replace(f'class {name}',f'class {rname}')
         return self._write_from_source(source,rname)
     
     def _write_from_source(self, source, name): # Write
@@ -111,6 +116,7 @@ class GABBook: # GABUnit code book, registry of GABUnits, shared by a whole evol
             raise ValueError(f"Failed to check source code: {e}")
         unit = self.parse_source(source,name)
         self.units[name] = unit
+        self.sources[name] = source
         U.write_file(U.pjoin(self.units_dir,f'{name}.py'),source)
         return unit
 
@@ -123,6 +129,11 @@ class GABBook: # GABUnit code book, registry of GABUnits, shared by a whole evol
             raise ValueError(f"Unit {unit_name} is not registered")
         return self.units[unit_name]
 
+    def get_source(self, unit_name):
+        if unit_name not in self.sources:
+            raise ValueError(f"Unit {unit_name} is not registered")
+        return self.sources[unit_name]
+    
 
 @dataclass
 class GABNode: # this is mainly used to 1. track the hierarchies 2. used for the Linker to solve the dependencies
@@ -138,7 +149,7 @@ class GABNode: # this is mainly used to 1. track the hierarchies 2. used for the
             'child':self.child,
             'config':self.config
         }
-        U.save_json(U.pjoin(flow_dir,f'{self.name}.json'),data)
+        U.save_json(data,U.pjoin(flow_dir,f'{self.name}.json'))
 
     @classmethod
     def load(cls, name, flow_dir):
@@ -156,11 +167,26 @@ class GABTree:
         self.config = {} # the config of the whole design, avoid assigning configs to individual GABUnits
         U.mkdir(self.flow_dir)
         self.load()
-        if len(self.path)==0: # if the tree is empty, create a new one
+        if len(self.path)==0: # if the tree is empty, create a new one, seems redundant, you have to have a root, then having name, then create tree
             self.path[self.name] = GABNode(name=self.name)
-            root_template = ROOT_UNIT_TEMPLATE.replace('{name}', 'test_tree')
+            root_template = ROOT_UNIT_TEMPLATE.replace('UNIT_NAME', name)
             self.book.register_from_source(root_template,self.name)
             self.save()
+        
+    def create_root(self, name, source):
+        self.path[name] = GABNode(name=name)
+        self.book.register_from_source(source,name)
+        self.save()
+
+    def get_unit(self, path):
+        if path not in self.path:
+            raise ValueError(f"Path {path} is not registered")
+        return self.book.retrieve(self.path[path].name)
+    
+    def get_source(self, path):
+        if path not in self.path:
+            raise ValueError(f"Path {path} is not registered")
+        return self.book.get_source(self.path[path].name)
 
     def save(self):
         dir=U.pjoin(self.flow_dir,f'metadata.json')
@@ -169,7 +195,7 @@ class GABTree:
             'path': list(self.path.keys()),
             'config':self.config,
         }
-        U.save_json(dir,metadata)
+        U.save_json(metadata,dir)
         for i in self.path:
             self.path[i].save(self.flow_dir)
     

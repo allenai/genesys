@@ -113,7 +113,9 @@ sh run_demo.sh
 ```
 
 
-# Pseudo Code
+# Pseudo Code Draft
+
+Designer agent:
 
 ```
 for i in max_attemp:
@@ -133,3 +135,32 @@ for i in max_attemp:
         else:
             new_design ~ designer()
 ```
+
+GAB Flow Execution:
+
+Transformer
+ - MHA
+   - RoPE
+   - Dot-Product Attn
+ - FFN
+   - Gated
+
+P=Transformer.MHA
+
+X=Input Tensor
+Z={} # intermediate variates
+P=root
+while True:
+    for line in **get_unit**(P).source:
+        if is_gab_unit(line): # in this case, its calling a child
+            P=line.get_path()
+            break
+        else:
+            X,Z=execute(line)
+    P=P.next()
+    if not P:
+        break
+
+        
+
+

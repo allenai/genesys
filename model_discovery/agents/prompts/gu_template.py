@@ -1,5 +1,4 @@
-# UNIT_NAME.py
-# replace UNIT_NAME with the unit_name of your unit
+# GAB_UNIT_IMPLEMENTATION  # DO NOT CHANGE OR REMOVE THE MAKK HERE, KEEP IT ALWAYS THE FIRST LINE #
 
 import torch
 import torch.nn as nn
@@ -12,8 +11,8 @@ from model_discovery.model.utils.modules import GABUnit # DO NOT CHANGE THIS IMP
 # YOU CAN DEFINE MORE CLASSES OR FUNCTIONS HERE #
 
 
-class UNIT_NAME(GABUnit): # Replace UNIT_NAME with the unit_name of your unit
-    """Generalized Autoregressive Block
+class CustomGABUnit(GABUnit): # DO NOT CHANGE THE NAME OF THIS CLASS
+    """Generalized Autoregressive Block Unit
         Input:        X: (batch, seqlen, embed_dim), Z: {dict of all current intermediate variables}
         Output:       Y: (batch, seqlen, embed_dim), Z_: Optional, {dict of *new* intermediate variables to update the current Z}
         Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
@@ -37,15 +36,3 @@ class UNIT_NAME(GABUnit): # Replace UNIT_NAME with the unit_name of your unit
 
         raise NotImplementedError
     
-    
-
-
-### Decouple hyperparameters from the unit design
-# """ 
-# The dictionary of hyperparameters for constructing this unit, the config off all
-# units will be merged together and passed to the GAB class
-# """
-# unit_config = {
-#     # THE HYPERPARAMETERS OF ADDITIONAL ARGUMENTS IN GAB CLASS #
-# }
-

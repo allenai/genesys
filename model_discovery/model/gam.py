@@ -146,7 +146,7 @@ def create_block(
     constructor = partial(
         block_implementation,
         embed_dim=d_model,
-        block_loc=block_loc,
+        block_loc=block_loc, # (layer_idx, n_block)
         device=device,
         dtype=dtype,
         **block_config

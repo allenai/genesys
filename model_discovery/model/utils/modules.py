@@ -1,6 +1,7 @@
 # Copyright (c) 2024, Tri Dao, Albert Gu.
 from torch import nn
 from torch.nn import functional as F
+import inspect
 
 from abc import ABC, abstractmethod
 
@@ -67,18 +68,19 @@ class GABUnit(nn.Module):
 
     GAB is fractal, like GAB itself, each GAB unit accepts X and Z as input and returns Y and Z as output.
     """ 
-    def __init__(self, unit_name, embed_dim: int):
+    def __init__(self, embed_dim: int):
         super().__init__()
-        self.unit_name = unit_name 
         self.embed_dim = embed_dim
 
     def _forward(self, X, **Z):
         raise NotImplementedError
     
-    def forward(self, X, **Z):
+    def forward(self, X, Z):
         assert len(X.shape) == 3, "Input shape must be (batch, seqlen, embed_dim)"
         assert X.shape[-1] == self.embed_dim
-        Y = self._forward(X, Z)
+        _params = inspect.signature(self._forward).parameters
+        _Z = {k: v for k, v in Z.items() if k in _params}
+        Y = self._forward(X, **_Z)
         if isinstance(Y, tuple):
             Y, Z_ = Y
         else:
