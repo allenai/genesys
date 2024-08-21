@@ -844,3 +844,25 @@ class ALangCompiler:
         if reformat:
             return self._flow,ALANG_reformated
         return self._flow
+
+
+
+
+def register_module(func):
+    func._is_registered = True  # Mark the function as registered
+    return func
+
+class FlowModules:
+    def __init__(self):
+        self._modules = {}
+
+        # Step 3: Iterate through all methods of the class
+        for attr_name in dir(self):
+            attr = getattr(self, attr_name)
+            
+            # Check if the method is marked with @register
+            if callable(attr) and getattr(attr, '_is_registered', False):
+                # Bind 'self' using functools.partial and store in __modules
+                self._modules[attr_name] = ft.partial(attr, self)
+
+
