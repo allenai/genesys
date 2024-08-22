@@ -19,15 +19,43 @@ from streamlit_flow.layouts import TreeLayout, RadialLayout
 import pyflowchart as pfc
 
 #from IPython.display import display, Markdown, Latex
-from types import ModuleType, CodeType, FunctionType
-from typing import Any, Dict, List, Optional
+from types import ModuleType, CodeType, FunctionType, MethodType
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 from exec_utils.models import SimpleLMAgent
+from exec_utils.models.model import ModelOutput
 
 import model_discovery.utils as U
 
 FAILED = "FAILED"
 
+
+
+
+@dataclass
+class AgentPrompt:
+    prompt: str
+    parser: Any = None
+    format: Any = None
+
+    def __call__(self,**kwargs):
+        return self.prompt.format(**kwargs)
+    
+    def parse(self,raw_output: ModelOutput) -> Dict[Any,Any]:
+        if not self.parser:
+            raw_text = raw_output.text
+            output = {}
+            output["text"] = raw_text
+            output["_details"] = {}
+            output["_details"]["cost"] = raw_output.cost
+            output["_details"]["running_cost"] = 0
+            return output
+        return self.parser(raw_output)
+    
+    def apply(self,agent):
+        agent.parse_output = self.parse
+        agent.response_format = self.format
+        return agent
 
 class AgentContext:
     def __init__(self):
@@ -56,7 +84,7 @@ class ROLE:
                 self.role = 'system'
 
 SYSTEM_CALLER = ROLE('system',role='system')
-
+USER_CALLER = ROLE('user',role='user')
 
 class AgentDialogThread: # TODO: let runable thread be CFG
     '''
@@ -140,7 +168,7 @@ class AgentDialogThread: # TODO: let runable thread be CFG
         assert isinstance(input,str), f'Input must be a string'
         query_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
         response = self.agent(
-            input,
+            query=input,
             source=queryer.role, # NOTE: Neet to modify exec_utils to allow it use system as a role
             manual_history=tuple(self.history.get())
         )
@@ -333,6 +361,14 @@ class DialogTreeViewer: # only for viewing and anlyzing the agents dialogs
 
 #region Prompt CFG
 
+def inspect_module(prog):
+    if isinstance(prog,ft.partial):
+        source=inspect.getsource(prog.func)
+    else:
+        source=inspect.getsource(prog)
+    
+    return source
+
 
 class AgentDialogFlowNaive:
     def __init__(self,name,prog):
@@ -349,7 +385,7 @@ class AgentDialogFlowNaive:
         return output
     
     def export(self,dir):
-        source = inspect.getsource(self.prog)
+        source=inspect_module(self.prog)
         source=U.remove_leading_indent(source)
         fc=pfc.Flowchart.from_code(source)
         
@@ -368,7 +404,6 @@ class AgentFlowNode:
         self.hints = hints # a dict of hints for the children written on the edge, tell people what excectly each path means
 
     def __call__(self,query,state,**kwargs):
-        print(f'Calling {self.alias}')
         return self._call(query,state,**kwargs)
     
     def _call(self,query,state,**kwargs):
@@ -382,7 +417,7 @@ class AgentFlowNode:
         self.children = children
     
     def inspect(self,remove_indent=True):
-        source=inspect.getsource(self.prog)
+        source=inspect_module(self.prog)
         if remove_indent:
             source=U.remove_leading_indent(source)
         return source
@@ -396,7 +431,9 @@ class CONDNode(AgentFlowNode): # It will check a condition and return true or fa
     def _call(self,query,state,**kwargs):
         assert self.children!=[], f'CONDNode {self.alias}: COND node cannot be a terminal node'
         input_state = copy.deepcopy(state)  
-        rets = self.prog(query,state,**kwargs)
+        _params = inspect.signature(self.prog).parameters
+        _kwargs = {k: v for k, v in kwargs.items() if k in _params}
+        rets = self.prog(query=query,state=state,**_kwargs)
         if isinstance(rets,int):
             ret = rets
         elif isinstance(rets,tuple):
@@ -420,7 +457,9 @@ class LOOPNode(AgentFlowNode): # It will loop until a condition is met
         assert len(self.children)==2, f'LOOPNode {self.alias}: Children of a LOOP node must be two, the first is the loop body, the second is the exit'
         # while True: # TODO: now seems just a boolean condition, and full of goto, the loop can easily be lost, need to be more like a loop
         input_state = copy.deepcopy(state)
-        rets = self.prog(query,state,**kwargs)
+        _params = inspect.signature(self.prog).parameters
+        _kwargs = {k: v for k, v in kwargs.items() if k in _params}
+        rets = self.prog(query=query,state=state,**_kwargs)
         if isinstance(rets,bool):
             cont = rets
         elif isinstance(rets,tuple):
@@ -443,10 +482,12 @@ class PROCNode(AgentFlowNode): # It will call an agent and return a response
     PROC Node can only have one child
     """
     def _call(self, query,state, **kwargs):
-        try:
-            query,state,ret = self.prog(query,state,**kwargs)
-        except Exception as e:
-            raise ValueError(f'Error in PROCNode: {self.alias}: {e}')
+        # try:
+        _params = inspect.signature(self.prog).parameters
+        _kwargs = {k: v for k, v in kwargs.items() if k in _params}
+        query,state,ret = self.prog(query=query,state=state,**_kwargs)
+        # except Exception as e:
+        #     raise ValueError(f'Error in PROCNode: {self.alias}: {e}')
         assert isinstance(query,str), f'A PROC node must return a string response message'
         assert isinstance(ret,dict), f'A PROC node must return a dict of additional returns'
         kwargs.update(ret) # update the flow of kwargs
@@ -460,16 +501,16 @@ class AgentDialogFlow:
     """
     input query and kwargs, output a response message and a dict of additional returns
     """
-    def __init__(self,name,args=[],outputs=[],init_state={}):
+    def __init__(self,name,args=[],outs=[],init_state={}):
         self.nodes={}
         self.name=name
         self.args=args
-        self.outputs=outputs # what to expect from the return
+        self.outs=outs # what to expect from the return
         self.state=init_state ### global vars, the state allows COND and LOOP pass signals without editing the query and flow of kwargs which is only allowed by PROC 
         self.init_state=copy.deepcopy(init_state)
         id_entry=self.assign_id()
         self.id_entry=id_entry
-        self.entry = PROCNode(id_entry,'entry',lambda x,y,**kwargs: (x,y,kwargs))
+        self.entry = PROCNode(id_entry,'entry',lambda query,state,**kwargs: (query,state,kwargs))
         self.nodes[id_entry] = self.entry
         self.alias_to_id = {'entry':id_entry}
         self.flow_nodes={}
@@ -496,7 +537,7 @@ class AgentDialogFlow:
         assert len(missing_args)==0, f'Missing arguments: {missing_args}'
         query,state,ret = self.entry(query,state,**kwargs)
         out={}
-        for output in self.outputs:
+        for output in self.outs:
             assert output in ret, f'Missing output: {output}'
             out[output] = ret[output]
         self.state = state
@@ -506,7 +547,7 @@ class AgentDialogFlow:
         assert alias not in self.alias_to_id, f'Alias `{alias}` already exists'
         id=self.assign_id()
         self.nodes_to_flowtail[id] = id
-        source=inspect.getsource(prog)
+        source=inspect_module(prog)
         # source=U.remove_leading_indent(source)
         if type=='PROC':
             self.nodes[id] = PROCNode(id,alias,prog,hints)
@@ -518,7 +559,7 @@ class AgentDialogFlow:
             if is_end:
                 id_output = self.assign_id()
                 id_end = self.assign_id()
-                self.flow_nodes[id_output] = StreamlitFlowNode(str(id_output),(0,0),{'content':f'###### Outputs: query, {self.outputs}'},
+                self.flow_nodes[id_output] = StreamlitFlowNode(str(id_output),(0,0),{'content':f'###### Outputs: query, {self.outs}'},
                                                                 source_position='right',target_position='left',
                                                                 style={'backgroundColor': '#f0d695'})
                 self.flow_nodes[id_end] = StreamlitFlowNode(str(id_end),(0,0),{'content':f'###### Exit flow by Node [{alias}]'},'output',
@@ -668,7 +709,7 @@ class ALangCompiler:
     
     Primitive calls:
 
-    FLOW name arg0|arg1|... output0|output1|... # must be the first line and only once
+    FLOW name arg0|arg1|... output0|output1|... # must be the first line and only once, use None if args or outs are empty
     PROC node alias prog [hint] # node is var name of the node
     EXIT node alias prog [hint]
     COND node alias prog [hint0|hint1|...]
@@ -690,9 +731,11 @@ class ALangCompiler:
         _line,maps = self._preprocess_line(line)
         parts = _line.split(' ')
         assert len(parts)==4, f'A flow definition line must have 4 parts, found {len(parts)}, line: {line}'
-        _,name,args,outputs = parts
+        _,name,args,outs = parts
         name = maps[name]
-        flow = AgentDialogFlow(name,args.split('|'),outputs.split('|'),init_state)
+        args = [] if args=='None' else args.split('|')
+        outs = [] if outs=='None' else outs.split('|')
+        flow = AgentDialogFlow(name,args,outs,init_state)
         self._nodes['ENTRY']=flow.id_entry
         self._aliases['ENTRY']=flow.entry.alias
         return flow
@@ -770,10 +813,10 @@ class ALangCompiler:
             else:
                 if line.startswith('PROC') or line.startswith('COND') or line.startswith('LOOP') or line.startswith('EXIT'):
                     assert '->' not in line, f'ALANG line {i+1}: "{line}"\nDo not use -> besides define a LINK'
-                    try:
-                        self._parse_node(line)
-                    except Exception as e:
-                        raise ValueError(f'ALANG line {i+1}: "{line}"\n{e}')
+                    # try:
+                    self._parse_node(line)
+                    # except Exception as e:
+                    #     raise ValueError(f'ALANG line {i+1}: "{line}"\n{e}')
                     nodes_def.append(line)
                 elif line.startswith('LINK') or '->' in line:
                     if line.startswith('LINK'):
@@ -831,7 +874,7 @@ class ALangCompiler:
             self._modules = self._fn_to_modules(modules)
         elif isinstance(modules,dict):
             for i,fn in modules.items():
-                assert isinstance(fn,FunctionType), f'Modules must be a dict of functions, found {type(fn)} for {i}'
+                assert isinstance(fn,FunctionType) or isinstance(fn,ft.partial) or isinstance(fn,MethodType), f'Modules must be a dict of functions, found {type(fn)} for {i}'
                 assert i==fn.__name__, f'Module function name must be the same as the key, found {fn.__name__} for {i}'
             self._modules=modules
         elif isinstance(modules,ModuleType):
@@ -848,21 +891,85 @@ class ALangCompiler:
 
 
 
-def register_module(func):
-    func._is_registered = True  # Mark the function as registered
-    return func
+def register_module(type='PROC',alias=None,hints=None,node=None,links=None):
+    def decorator(func):
+        assert type in ['PROC','COND','LOOP','EXIT'], f'Type must be PROC, COND, LOOP, or EXIT found {type}'
+        # Extract the function's signature
+        sig = inspect.signature(func)
+        # Define the required arguments
+        required_args = {'query', 'state'}
 
-class FlowModules:
-    def __init__(self):
+        # Check if the required arguments are in the function's signature
+        func_args = set(sig.parameters.keys())
+        missing_args = required_args - func_args
+
+        if missing_args:
+            raise ValueError(f"Missing required arguments: {missing_args} in function '{func.__name__}'")
+
+        # Attach the hint to the function
+        func._is_registered = True
+        func._hints = hints  # Store the hint in the function's attribute
+        func._alias = alias if alias else func.__name__  
+        func._type = type
+        func._node = node if node else func.__name__
+        func._links = links 
+        if links:
+            assert isinstance(links,str) or isinstance(links,list), f'Links must be a string or a list of strings if provided, found {type(links)}'
+        return func
+
+    return decorator
+
+class FlowCreator:
+    def __init__(self,system,name,args=[],outs=[]):
         self._modules = {}
+        self.system = system # An AgentSystem object
+        self.name = name
+        self.args:List[str] = args
+        self.outs:List[str] = outs
+        self.nodes_def=[]
+        self.links_def=self._links()
 
-        # Step 3: Iterate through all methods of the class
         for attr_name in dir(self):
             attr = getattr(self, attr_name)
-            
-            # Check if the method is marked with @register
             if callable(attr) and getattr(attr, '_is_registered', False):
-                # Bind 'self' using functools.partial and store in __modules
-                self._modules[attr_name] = ft.partial(attr, self)
-
-
+                self._modules[attr_name] = attr #ft.partial(attr, self)
+                # self._modules[attr_name].__name__ = attr_name
+                alias = getattr(attr, '_alias')
+                hints = getattr(attr, '_hints')
+                type = getattr(attr, '_type')
+                node = getattr(attr, '_node')
+                links = getattr(attr, '_links')
+                self.nodes_def.append(f'{type} {node} `{alias}` {attr_name} `{hints}`')
+                if links:
+                    if isinstance(links,str):
+                        self.links_def.append(f'{node} -> {links}')
+                    elif isinstance(links,list):
+                        self.links_def.append(f'{node} -> {"|".join(links)}')
+                    else:
+                        raise ValueError(f'Links must be a string or a list of strings, found {type(links)}')
+        
+        self.script = self._alang()
+        self.flow = self._compile()
+        
+    # either a single string or a list of strings
+    def _links(self)->List[str]:
+        raise NotImplementedError
+    
+    def _alang(self)->str:
+        args = '|'.join(self.args) if self.args else 'None'
+        outs = '|'.join(self.outs) if self.outs else 'None'
+        ascript = f'FLOW `{self.name}` {args} {outs}\n\n '
+        ascript += '\n'.join(self.nodes_def)+'\n\n'
+        if isinstance(self.links_def,str):
+            ascript += self.links_def
+        elif isinstance(self.links_def,list):
+            ascript += '\n'.join(self.links_def)
+        else:
+            raise ValueError(f'Links definition must be a string or a list of strings, found {type(self.links_def)}')
+        return ascript
+    
+    def _compile(self,init_state={}):
+        _flow,_script= ALangCompiler().compile(self._alang(),self._modules,init_state,True)
+        self.script = _script
+        return _flow
+    

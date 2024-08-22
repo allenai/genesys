@@ -9,7 +9,10 @@ from typing import (
 )
 import re
 import exec_utils 
+from exec_utils.models.model import ModelOutput
 import random
+from ..agent_utils import structured__call__,ModelOutput
+
 
 __all__ = [
     "DesignerAgent",
@@ -76,11 +79,20 @@ class DesignerAgent(exec_utils.SimpleLMAgent):
             to the agent (which requires using the history)  
         """
         self.model_state.query_state = source
-        raw_response = self.model(
-            prompt=query,
-            model_state=self.model_state,
-            history=manual_history
-        )
+        if not self.response_format:
+            raw_response = self.model(
+                prompt=query,
+                model_state=self.model_state,
+                history=tuple(manual_history)
+            )
+        else:
+            raw_response = structured__call__(
+                self.model,
+                response_format=self.response_format,
+                prompt=query,
+                model_state=self.model_state,
+                history=tuple(manual_history)
+            )
         response = self.parse_output(raw_response)
 
         # print(query)

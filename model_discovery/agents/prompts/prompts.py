@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field, asdict
-
+from ..flow.alang import AgentPrompt
 
 # 1. You can use layer_idx to create arbitrary model structure with different types of blocks, examples:
 #     * create 1 type of block for all layers, you can ignore layer_idx
@@ -147,9 +147,9 @@ response, following the provided instructions, and finish those tasks step by
 step in the coming multi-round dialog. 
 """
 
+GU_DESIGNER_SYSTEM = AgentPrompt(GU_DESIGNER_SYSTEM)
 
-
-GU_DESIGN_SCRATCH_RAW = """
+GU_DESIGN_SCRATCH_raw = """
 You are now designing an autoregressive model block. The auto-regressive model
 is complex, so we will break it down into smaller parts. A block is represented
 as multiple nested units which are called the Generalized Autoregressive Block
@@ -250,7 +250,7 @@ of the name of your design, write the full code, and provide the configs.
 """
 
 
-GU_DESIGN_SCRATCH = """
+GU_DESIGN_SCRATCH_gpt = """
 **Task:** You are designing an autoregressive model block. Due to its
 complexity, we will break it into smaller components called **Generalized
 Autoregressive Block Units (GABUnits)**. 
@@ -318,22 +318,168 @@ creatively, implement the code, and finally, define the configs.
 """
 
 
-GU_DESIGN_STEP = """ 
 
+
+
+GU_DESIGN_SCRATCH = """
+You are now designing an autoregressive model block. The auto-regressive model
+is complex, so we will break it down into smaller parts. A block is represented
+as multiple nested units which are called the Generalized Autoregressive Block
+Unit (GABUnit). Each GABUnit accepts a sequence of embeddings X and a dictionary
+of intermediate variables Z as input, and outputs a sequence of embeddings Y and
+a dictionary of new or updated intermediate variables Z_. Z_ is optional, when
+it is provided, it will be used to update Z by Z.update(Z_). 
+
+A GABUnit is inherited from nn.Module as follows:
+
+```python {GAB_UNIT} ```
+
+You will design a GABUnit by completing the blanks marked in this template:
+
+```python {GU_TEMPLATE} ```
+
+In a GABUnit, you can call other GABUnits, as such, you can create a complicated
+GAB block by nesting multiple GABUnits. However, each GABUnit should be not too
+complex, if you want to create  complex block, you should break it down into
+smaller GABUnits and nest them. As such, you should design a GAB block in a
+top-down manner. 
+
+Notice that, everytime you are only allowed to edit within one GABUnit. You can
+leave placeholder code of the GABUnits that you wish to implement later. Notice
+that, when a GABUnit is detected as fully implemented, it will be tested for
+correctness. You will need to ensure the correctness of all the GABUnits in the
+final GAB at the end.
+
+Start by filling in the blanks of this root GABUnit:
+
+```python {ROOT_UNIT_TEMPLATE} ```
+
+You should strictly follow the instructions in the template and do not remove
+the template code. Your response should include: 
+
+1. The intuitions and analysis of the GABUnit you are designing. You should
+   think of how the design can be novel, creative, and powerful. The analysis
+   should be detailed and considerable. It should decide a direction of the
+   design, the core ideas and the justifications. Remember that you goal is to
+   discover the best and novel autoregressive language model block that can
+   defeat the existing state of arts.
+2. A rough plan of the children GABUnits that may need to be designed in the
+   future.
+3. The pseudo code of the GABUnit you are designing that capture the high-level
+   idea. 
+4. The name of the GABUnit you are designing. For the root GABUnit, the name
+   will the name of the whole block design, so you definitely think of a
+   meaningful name or a creative name that conclude your design, such as
+   Transformers, Mamba, CausalConv, SSM, S6, YOLO, etc. Never use a meaningless
+   name like RootGAB, NewGAB, etc. 
+5. The full implementation of the GABUnit you designed, remember to replece the
+   unit_name marks by the actual unit name. Notice that you can contain multiple
+   python codes in your response, but only the last one with "#
+   GAB_UNIT_IMPLEMENTATION" mark in the first line will be detected as the final
+   implementation. If multiple GABUnits are detected in your response, only the
+   last one will be applied. When you are trying to give the full implementation
+   of the GABUnit you designed, you should always keep this mark at the first
+   line, otherwise, the system will not be able to recognize your code.
+6. The config of the hyperparameters you introduced in the GABUnit, it should be
+   a python dict, the keys are the hyperparams you introduced and the values are
+   the corresponding default values.
+
+Here are some guidelines for designing the GABUnit:
+
+1. You need to think of a meaningful name of the GABUnit you are designing or
+   refering as the placeholder. When you are defining a placeholder, you should
+   have an idea of the function of this GABUnit. By defining placeholders, you
+   are defining the outline of the design you want to implement.
+2. When calling a GABUnit, you should pass both the X and Z to the GABUnit. You
+   should pass Z in the kwargs manner, for example {{GABUnit}}(X, **Z).
+3. When defining a GABUnit object in __init__, you should privide the type hint,
+   for example, ```self.unit: GABUnit = {{unit_name}}(**kwargs) ```, remember to
+   pass such a kwargs which allows more customized arguments you will define
+   later in your actual implementation to be passed in. When you defines a
+   GABUnit, it should be either a known GABUnit or a placeholder of a GABUnit
+   you are going to design. It should never be something else such as nn.Module
+   or a constant. The system will automatically detect the GABUnit placeholders
+   and create a new empty GABUnit or fetch it from the base if it is already
+   defined.
+4. Be sure to design the block in a top-down manner, be patient and think
+   long-run, do never think of designing everything at once. Learn to define
+   placeholders that may carry out complicated operations and implement them
+   later. Especially when you are working on the root GABUnit. 
+5. Be sure to be innovative, do not copy the existing designs such as the
+   vanilla Transformer block. Be creative and think of a new design that can
+   defeat the existing state of the art models. Try your best to transcend the
+   human experts!
+
+Now, give your design, don't be hurry to try to design everything at once, be
+patient and focus on the current GABUnit you are designing. You will be asked
+later to finish the remaining parts of the GAB block. Remember to design it step
+by step, firstly do an analysis which shows your design intention, make sure the
+design is novel, then write down the pseudo code before implement it, then think
+of the name of your design, write the full code, and provide the configs.
 """
 
+# https://platform.openai.com/docs/guides/structured-outputs/supported-schemas Recursion supported, but maybe not use, it cannot isolate errors
+
+GU_DESIGN_SCRATCH_format = {
+  "type": "json_schema",
+  "json_schema": {
+    "name": "gab_unit_design",
+    "description": "Design a Generalized Autoregressive Block Unit (GABUnit) for an autoregressive model block",
+    "strict": True,
+    "schema": {
+      "type": "object",
+      "properties": {
+        "analysis": {
+          "type": "string",
+          "description": "Intuitions and analysis behind the design of the GABUnit"
+        },
+        "motivation": {
+          "type": "string",
+          "description": "Core ideas and justifications driving the design"
+        },
+        "reasoning": {
+          "type": "string",
+          "description": "Detailed reasoning and how the design can be novel and powerful"
+        },
+        "pseudo_code": {
+          "type": "string",
+          "description": "High-level pseudocode of the GABUnit being designed"
+        },
+        "future_plan": {
+          "type": "string",
+          "description": "Plan for future GABUnits that may need to be implemented"
+        },
+        "unit_name": {
+          "type": "string",
+          "description": "The name of the designed GABUnit"
+        },
+        "implementation": {
+          "type": "string",
+          "description": "Full Python code implementation of the designed GABUnit"
+        },
+        "config": {
+          "type": "string",
+          "description": "Configuration dictionary containing hyperparameters used in the GABUnit"
+        }
+      },
+      "required": [
+        "analysis",
+        "motivation",
+        "reasoning",
+        "pseudo_code",
+        "future_plan",
+        "unit_name",
+        "implementation",
+        "config"
+      ],
+      "additionalProperties": False
+    }
+  }
+}
 
 
-class GUPrompter:
-    def __init__(self,gtree):
-        self.gt = gtree
-
-    def create_gu_prompt(self,path): # for continue designing
-        unit = self.gt.get_unit(path)
-        source = self.gt.get_source(path)
 
 
+DESIGN_FROM_SCRATCH = AgentPrompt(GU_DESIGN_SCRATCH,format=GU_DESIGN_SCRATCH_format)
 
-class GUParser:
-    def __init__(self) -> None:
-        pass
+

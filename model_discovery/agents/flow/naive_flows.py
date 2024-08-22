@@ -1,15 +1,15 @@
 import numpy as np
 
 from .alang import ROLE,SYSTEM_CALLER,FAILED
-from ..prompts.prompts import GAB_ERROR,REVIEWER_PROMPT,GAB_BASE
+from ..prompts.prompts import GAB_ERROR,REVIEWER_PROMPT,GAB_BASE,DESIGNER_PROMPT
 
 # from model_discovery.system import ModelDiscoverySystem
 
 
 def design_flow_definition():
     # args=['cls','stream','status_handler','parent_tid','context']
-    # outputs=['code','text','check_results']
-    # design_flow = AgentDialogFlow(name='Model Design Flow',args=args,outputs=outputs)
+    # outs=['code','text','check_results']
+    # design_flow = AgentDialogFlow(name='Model Design Flow',args=args,outs=outs)
 
     ALANG = 'FLOW `Model Design Flow` cls|stream|status_handler|parent_tid|context code|text|check_results\n'
 
@@ -317,3 +317,62 @@ def review_naive(cls,query,stream,status_handler,parent_tid,context):
         response=f'The design didn\'t pass the review process with an average rating of {rating} out of 5. Review details:\n\n{review_ratings}'
     return response,{'review_pass':review_pass,'ratings':ratings,'reviews':reviews}
 
+
+
+def naive_design_review(cls,query,stream,status_handler):
+    main_tid = cls.dialog.fork(0,note='Starting a new session...',alias='main')
+    design_query = DESIGNER_PROMPT.format(
+        gab_base=GAB_BASE,
+        gam_py=cls.gam_py,
+        gab_py=cls.gab_py,
+        config=cls._cfg.to_prompt(), #<--- need to parameterize 
+        instruct=query,
+    )
+    query=design_query
+    
+    refine_pipe_tid = cls.dialog.fork(main_tid,SYSTEM_CALLER,SYSTEM_CALLER,note='Design refinement pipe.',alias='refine')
+    for i in range(cls._config.max_design_refines):
+        DESIGN_CALLEE = ROLE('designer',cls.design_flow)
+        design_pipe_tid = cls.dialog.fork(refine_pipe_tid,SYSTEM_CALLER,DESIGN_CALLEE,note=f'launch design flow',alias=f'design_{i}')
+        REVIEW_CALLEE = ROLE('reviewer',cls.review_flow) 
+        review_pipe_tid = cls.dialog.fork(refine_pipe_tid,SYSTEM_CALLER,REVIEW_CALLEE,note=f'launch review flow',alias=f'review_{i}')
+        cls.dialog.carry(refine_pipe_tid,design_pipe_tid,review_pipe_tid)
+        rres,(lres,lret,rret) = cls.dialog.call(refine_pipe_tid,query,
+                                                    largs={'cls':cls,'stream':stream,'status_handler':status_handler,'context':cls.dialog.context(refine_pipe_tid)},
+                                                    rargs={'cls':cls,'stream':stream,'status_handler':status_handler,'context':None})
+        review_pass,ratings,reviews = rret['review_pass'],rret['ratings'],rret['reviews']
+        code,explain,check_results = lret['code'],lret['text'],lret['check_results']
+        if lres == FAILED:
+            query = design_query
+        else:
+            query=rres
+
+
+        if review_pass: break
+
+    title=explain.split('\n')[0].replace('#','').strip()#+'_'+str(uuid.uuid4().hex[:6])
+
+    ### Leave it open for now for debugging, the model only fails if it designs a really huge block
+    # try:
+    autocfg = cls.checker.tune(cls._cfg,code,title)
+    # except Exception as e:
+    #     print(f"Error tuning the scale of designed model: {e}")
+    #     return None
+    
+    ### Generate a summary
+    with status_handler(f"Generating summary..."):
+        cls.logging.info('Generating summary of the design...')
+        summary_query = (
+            "Here is a design of an autoregressive language model block. "
+            "The code and explanation of the design are provided below:\n\n"
+            f"{explain}\n\nImplementation of {title}:\n\n{code}\n\n"
+            "Please summarize the design with a description of the design and a simple pseudo code that conclude the core idea in few sentences."
+        )
+        SUMMARY_CALLER = ROLE('designer',cls.designer)
+        summary_thread_tid = cls.dialog.fork(main_tid,SYSTEM_CALLER,SUMMARY_CALLER,note='Starting summary process...')
+        _,response = cls.dialog.call(summary_thread_tid,query=summary_query)
+        summary=response['text']
+        if stream:
+            stream.markdown(summary)
+    
+    return title,code,explain,summary,autocfg,reviews,ratings,check_results

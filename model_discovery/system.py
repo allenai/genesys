@@ -26,14 +26,9 @@ from exec_utils import (
     BuildTool
 )
 from .agents.roles import *
-from .agents.prompts.prompts import (
-    DESIGNER_PROMPT,
-    REVIEWER_PROMPT,
-    GAB_ERROR,
-    GAB_BASE
-)
 from .agents.flow.alang import AgentDialogManager,AgentDialogFlowNaive,ALangCompiler,SYSTEM_CALLER,FAILED,ROLE
-from .agents.flow.flows import design_flow_definition,review_naive,design_naive
+from .agents.flow.naive_flows import design_flow_definition,review_naive,design_naive,naive_design_review
+from .agents.flow.gu_flow import gu_design
 
 import model_discovery.utils as U
 
@@ -337,6 +332,8 @@ class ModelDiscoverySystem(exec_utils.System):
 
         self.design_flow_naive=AgentDialogFlowNaive('Model Design Flow',design_naive)
 
+        # self.design_fn=naive_design_review
+        self.design_fn=gu_design
 
     def get_system_info(self):
         system_info = {}
@@ -379,62 +376,8 @@ class ModelDiscoverySystem(exec_utils.System):
         if stream is None:# and self._config.debug_steps:
             stream = PrintSystem(self._config)
         self.new_session(log_dir,stream)
-        main_tid = self.dialog.fork(0,note='Starting a new session...',alias='main')
 
-        design_query = DESIGNER_PROMPT.format(
-            gab_base=GAB_BASE,
-            gam_py=self.gam_py,
-            gab_py=self.gab_py,
-            config=self._cfg.to_prompt(), #<--- need to parameterize 
-            instruct=query,
-        )
-        query=design_query
-        
-        refine_pipe_tid = self.dialog.fork(main_tid,SYSTEM_CALLER,SYSTEM_CALLER,note='Design refinement pipe.',alias='refine')
-        for i in range(self._config.max_design_refines):
-            DESIGN_CALLEE = ROLE('designer',self.design_flow)
-            design_pipe_tid = self.dialog.fork(refine_pipe_tid,SYSTEM_CALLER,DESIGN_CALLEE,note=f'launch design flow',alias=f'design_{i}')
-            REVIEW_CALLEE = ROLE('reviewer',self.review_flow) 
-            review_pipe_tid = self.dialog.fork(refine_pipe_tid,SYSTEM_CALLER,REVIEW_CALLEE,note=f'launch review flow',alias=f'review_{i}')
-            self.dialog.carry(refine_pipe_tid,design_pipe_tid,review_pipe_tid)
-            rres,(lres,lret,rret) = self.dialog.call(refine_pipe_tid,query,
-                                                     largs={'cls':self,'stream':stream,'status_handler':status_handler,'context':self.dialog.context(refine_pipe_tid)},
-                                                     rargs={'cls':self,'stream':stream,'status_handler':status_handler,'context':None})
-            review_pass,ratings,reviews = rret['review_pass'],rret['ratings'],rret['reviews']
-            code,explain,check_results = lret['code'],lret['text'],lret['check_results']
-            if lres == FAILED:
-                query = design_query
-            else:
-                query=rres
-
-
-            if review_pass: break
-
-        title=explain.split('\n')[0].replace('#','').strip()#+'_'+str(uuid.uuid4().hex[:6])
-
-        ### Leave it open for now for debugging, the model only fails if it designs a really huge block
-        # try:
-        autocfg = self.checker.tune(self._cfg,code,title)
-        # except Exception as e:
-        #     print(f"Error tuning the scale of designed model: {e}")
-        #     return None
-        
-        ### Generate a summary
-        with status_handler(f"Generating summary..."):
-            self.logging.info('Generating summary of the design...')
-            summary_query = (
-                "Here is a design of an autoregressive language model block. "
-                "The code and explanation of the design are provided below:\n\n"
-                f"{explain}\n\nImplementation of {title}:\n\n{code}\n\n"
-                "Please summarize the design with a description of the design and a simple pseudo code that conclude the core idea in few sentences."
-            )
-            SUMMARY_CALLER = ROLE('designer',self.designer)
-            summary_thread_tid = self.dialog.fork(main_tid,SYSTEM_CALLER,SUMMARY_CALLER,note='Starting summary process...')
-            _,response = self.dialog.call(summary_thread_tid,query=summary_query)
-            summary=response['text']
-            if stream:
-                stream.markdown(summary)
-        
+        title,code,explain,summary,autocfg,reviews,ratings,check_results = self.design_fn(self,query,stream,status_handler)
         return title,code,explain,summary,autocfg,reviews,ratings,check_results
 
     @classmethod
