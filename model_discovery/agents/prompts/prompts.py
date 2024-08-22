@@ -1,6 +1,11 @@
 from dataclasses import dataclass, field, asdict
 from ..flow.alang import AgentPrompt
 
+from exec_utils.models.model import ModelOutput
+import re
+from typing import Dict, Any
+
+
 # 1. You can use layer_idx to create arbitrary model structure with different types of blocks, examples:
 #     * create 1 type of block for all layers, you can ignore layer_idx
 #     * create 2 different types of blocks for layers with layer_idx%2=0,1
@@ -321,7 +326,7 @@ creatively, implement the code, and finally, define the configs.
 
 
 
-GU_DESIGN_SCRATCH = """
+GU_DESIGN_SCRATCH_json = """
 You are now designing an autoregressive model block. The auto-regressive model
 is complex, so we will break it down into smaller parts. A block is represented
 as multiple nested units which are called the Generalized Autoregressive Block
@@ -477,9 +482,21 @@ GU_DESIGN_SCRATCH_format = {
   }
 }
 
+def GU_DESIGN_SCRATCH_parser(raw_output: ModelOutput) -> Dict[Any,Any]:
+      raw_text = raw_output.text
+      output = {}
+      codes = re.findall(r"```python(.*?)```", raw_text, re.DOTALL)
+      if codes:
+         for code in codes:
+               if code.strip().startswith("# gab.py"):
+                  output["code"] = code
+      output["text"] = raw_text
+      output["_details"] = {}
+      output["_details"]["cost"] = raw_output.cost
+      output["_details"]["running_cost"] = 0
+      return output
 
+DESIGN_FROM_SCRATCH = AgentPrompt(GU_DESIGN_SCRATCH_raw,GU_DESIGN_SCRATCH_parser)#,format=GU_DESIGN_SCRATCH_format)
 
-
-DESIGN_FROM_SCRATCH = AgentPrompt(GU_DESIGN_SCRATCH,format=GU_DESIGN_SCRATCH_format)
 
 
