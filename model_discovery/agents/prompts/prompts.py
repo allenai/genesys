@@ -130,7 +130,7 @@ GAB_ERROR = """Please provide the full gab code, and please do not modify other 
 
 
 
-GU_DESIGNER_SYSTEM = """
+GU_DESIGNER_SYSTEM_prompt = """
 You are a professional AI researcher focusing on discovering the best
 autoregressive language model block. You goal is to design a novel block
 following the Generalized Autoregressive Block (GAB) structure. The GAB is
@@ -152,7 +152,7 @@ response, following the provided instructions, and finish those tasks step by
 step in the coming multi-round dialog. 
 """
 
-GU_DESIGNER_SYSTEM = AgentPrompt(GU_DESIGNER_SYSTEM)
+GU_DESIGNER_SYSTEM = AgentPrompt(GU_DESIGNER_SYSTEM_prompt)
 
 GU_DESIGN_SCRATCH_raw = """
 You are now designing an autoregressive model block. The auto-regressive model

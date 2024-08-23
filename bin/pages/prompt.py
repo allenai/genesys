@@ -13,7 +13,7 @@ import model_discovery.utils as U
 
 from model_discovery.evolution import EvolutionSystem
 
-from model_discovery.agents.flow.gu_flow import GUFlow
+from model_discovery.agents.flow.gu_flows import GUFlowScratch
 
 def mock1():
     st.title("Mock Page 1")
@@ -65,12 +65,12 @@ def prompt(evosys:EvolutionSystem,project_dir):
 
     simple_mode = st.session_state[simple_mode] # True
 
-    # flow=system.design_flow
-    # script=system.DESIGN_ALANG_reformatted
+    flow=system.design_flow
+    script=system.DESIGN_ALANG_reformatted
 
-    gu_flow = GUFlow(system,None,None)
-    flow = gu_flow.flow
-    script = gu_flow.script
+    # gu_flow = GUFlowScratch(system,None,None)
+    # flow = gu_flow.flow
+    # script = gu_flow.script
 
     if simple_mode:
         col1, col2 = st.columns([2,1])

@@ -28,7 +28,7 @@ from exec_utils import (
 from .agents.roles import *
 from .agents.flow.alang import AgentDialogManager,AgentDialogFlowNaive,ALangCompiler,SYSTEM_CALLER,FAILED,ROLE
 from .agents.flow.naive_flows import design_flow_definition,review_naive,design_naive,naive_design_review
-from .agents.flow.gu_flow import gu_design
+from .agents.flow.gu_flows import gu_design_scratch
 
 import model_discovery.utils as U
 
@@ -333,7 +333,7 @@ class ModelDiscoverySystem(exec_utils.System):
         self.design_flow_naive=AgentDialogFlowNaive('Model Design Flow',design_naive)
 
         # self.design_fn=naive_design_review
-        self.design_fn=gu_design
+        self.design_fn_scratch=gu_design_scratch
 
     def get_system_info(self):
         system_info = {}
@@ -359,25 +359,30 @@ class ModelDiscoverySystem(exec_utils.System):
         stream: Optional[ModuleType] = None,
         frontend: Optional[bool] = False,
         status: Optional[bool] = True,
+        metadata = None, # such as seeds, non str instructions
         **kwargs
     ) -> list:
         """Main function for implementing system calls.
 
         :param query: 
-            The query to the overall system. 
+            The query to the overall system. It should be an instruct from the upper evo system
         :param stream: 
             The (optional) streamlit module for writing to frontend 
         :param frontend: 
             Switch indiciating whether system is being used 
             with a frontend.
-        
+        :param metadata:
+            Additional information about the query. Mainly about the seeds.
         """
         status_handler = stream.status if stream and status else EmptyHandler
         if stream is None:# and self._config.debug_steps:
             stream = PrintSystem(self._config)
         self.new_session(log_dir,stream)
-
-        title,code,explain,summary,autocfg,reviews,ratings,check_results = self.design_fn(self,query,stream,status_handler)
+        if metadata:
+            seeds = metadata['seeds'] # a list of NodeObjects, see definition in evolution.py 
+            seed_types = [seed.type for seed in seeds] # the types of the seeds, can select the flow based on the types later
+        # now its from scratch, could be decided by the type of the provided seed
+        title,code,explain,summary,autocfg,reviews,ratings,check_results = self.design_fn_scratch(self,query,stream,status_handler)
         return title,code,explain,summary,autocfg,reviews,ratings,check_results
 
     @classmethod

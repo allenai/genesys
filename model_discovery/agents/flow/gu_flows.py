@@ -23,13 +23,18 @@ GAB_UNIT=inspect.getsource(GABUnit)
 
 
 
-class GUFlow(FlowCreator):
+class GUFlowScratch(FlowCreator): 
+    """
+    The flow for designing a GAB Flow nested of GAB Units from scratch.
+    the input query should be the seeds from the root tree for the design
+    """
     def __init__(self,system,status_handler,stream):
         super().__init__(system,'GAB Unit Design Flow')
         self.system=system
         self.status_handler=status_handler
         self.stream=stream
         self.args=['main_tid']
+        self.outs=[]
 
         # prepare roles
         self.system.designer.model_state.static_message=self.system.designer.model_state.fn(
@@ -86,11 +91,11 @@ class GUFlow(FlowCreator):
         return query,state,{}
 
 
-def gu_design(cls,query,stream,status_handler):
+def gu_design_scratch(cls,query,stream,status_handler):
     main_tid = cls.dialog.fork(0,note='Starting a new session...',alias='main')
-    gu_flow = GUFlow(cls, status_handler, stream)
+    gu_flow = GUFlowScratch(cls, status_handler, stream)
     GU_CALLEE = ROLE('GAB Unit Designer',gu_flow.flow)
     gu_tid = cls.dialog.fork(main_tid,SYSTEM_CALLER,GU_CALLEE,note=f'launch design flow',alias=f'gu_design')
     res,ret=cls.dialog.call(gu_tid,query,main_tid=main_tid)
 
-    
+    # return title,code,explain,summary,autocfg,reviews,ratings,check_results

@@ -101,7 +101,7 @@ EXT_COLOR_1HOC = '#ed556a' # extended 1-hop reference
 
 @dataclass
 class NodeObject:
-    acronym: str
+    acronym: str # acronym is the unique identifier for the node
     title: str
     seed_ids: List[str]
 
@@ -631,13 +631,14 @@ class EvolutionSystem(exec_utils.System):
             K=np.random.choice([0,1,2,3],p=[0.2,0.3,0.3,0.2]) # TODO: upgrade this to be configurable and better (e.g. decay 0 with scales)
         else:   
             K=np.random.choice([1,2,3],p=[0.4,0.4,0.2])
-        instruct,seed_ids=self.select(K) # use the seed_ids to record the phylogenetic tree
-        artifact=self.sample(scale_id,instruct) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
+        instruct,seeds=self.select(K) # use the seed_ids to record the phylogenetic tree
+
+        artifact=self.sample(scale_id,instruct,seeds) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
         if artifact is None:
             self.stream.write("No design sampled")
             return True # no design sampled, continue
         # save the design to the phylogenetic tree and update the budget
-        artifact['seed_ids']=seed_ids
+        artifact['seed_ids']=[seed.acronym for seed in seeds]
         self.ptree.new_design(artifact)
         scale=self.state['scales'][scale_id]
         self.state['budgets'][scale]-=1
@@ -646,13 +647,16 @@ class EvolutionSystem(exec_utils.System):
         self.ptree.export()
         return artifact['acronym']
 
-    def sample(self,scale_id,instruct,verbose=True):
+    def sample(self,scale_id,instruct,seeds:List[NodeObject],verbose=True):
         """ Sample a design at a given scale and verify it """
         self.rnd_agent.set_config(self.scales[scale_id])
         session_id=f'sample_{len(self.ptree.filter_by_type(["DesignArtifact"]))}_{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}'
         log_dir=U.pjoin(self.evo_dir,'log',session_id)
         U.mkdir(log_dir)
-        response=self.rnd_agent(instruct,log_dir=log_dir,stream=self.stream) 
+        metadata={
+            'seeds': seeds,
+        }
+        response=self.rnd_agent(instruct,log_dir=log_dir,stream=self.stream,metadata=metadata)  # instruct should have a type
         if response is None: # no design sampled
             return None
         title,rawcode,explain,summary,autocfg,reviews,ratings,check_results=response
@@ -684,7 +688,7 @@ class EvolutionSystem(exec_utils.System):
 
     # TODO: upgrade to Selector agent
 
-    def select(self,K: int=1,selector_instruct=''): # K is the number of designs to sample, instruct is the instruction to the selector, select seeds or select populations
+    def select(self,K: int=1,selector_instruct='')-> Tuple[str,List[NodeObject]]: # K is the number of designs to sample, instruct is the instruction to the selector, select seeds or select populations
         """ Provide the instruction including seeds and instructs for the next design """
         K=min(K,len(self.ptree.G.nodes))
         if K==0: # no design to sample
@@ -699,12 +703,12 @@ class EvolutionSystem(exec_utils.System):
         else: # Cross-over
             prompts='\n\n\n'.join([i.to_prompt() for i in topk])
             instruct=f'Please improve by combining the advantages and mitigating the disadvantages of these designs for the new design:\n\n{prompts}'
-        return instruct,list(topk)
+        return instruct,topk
 
     def nodes2data(self,nodes):
         return [self.ptree.G.nodes[node]['data'] for node in nodes]
 
-    def heuristic_select(self,K: int=1,selector_instruct=''):
+    def heuristic_select(self,K: int=1,selector_instruct='')-> List[NodeObject]:
         alpha=0.1
         sample_metrics={}
         sample_scale={}
@@ -818,8 +822,8 @@ def test_evolve(test_name,step=False):
     ]
     evolution_system = BuildEvolution(
         strparams=';'.join(strparams),
-        do_cache=False,
-        # cache_type='diskcache',
+        do_cache=True,
+        cache_type='diskcache',
     )
     while evolution_system.evolve():
         if step:
