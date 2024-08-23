@@ -28,7 +28,7 @@ from exec_utils import (
 from .agents.roles import *
 from .agents.flow.alang import AgentDialogManager,AgentDialogFlowNaive,ALangCompiler,SYSTEM_CALLER,FAILED,ROLE
 from .agents.flow.naive_flows import design_flow_definition,review_naive,design_naive,naive_design_review
-from .agents.flow.gu_flows import gu_design_scratch
+from .agents.flow.gau_flows import gu_design_scratch
 
 import model_discovery.utils as U
 
@@ -228,18 +228,21 @@ def get_context_info(config,templated=False) -> Tuple[str,str]:
     
     return (block,code) 
 
-class EmptyHandler: 
-    def __init__(self,*args,**kwargs):
-        pass 
+class NaiveHandler: 
+    def __init__(self,message,*args,**kwargs):
+        self.message = message
+        
     def __enter__(self):
-        pass
+        print(f'\n[START: {self.message}]\n')
+
     def __exit__(self, exc_type, exc_val, exc_tb):
-        pass
+        print(f'\n[FINISH: {self.message}]\n')
 
 class PrintSystem:
     def __init__(self,config):
         self.jupyter = config.jupyter   
-        self.status = EmptyHandler     
+        self.status = NaiveHandler     
+        self._isprintsystem = True
     
     def write(self,msg,**kwargs):
         print(msg)
@@ -374,7 +377,8 @@ class ModelDiscoverySystem(exec_utils.System):
         :param metadata:
             Additional information about the query. Mainly about the seeds.
         """
-        status_handler = stream.status if stream and status else EmptyHandler
+
+        status_handler = stream.status if stream and status else NaiveHandler
         if stream is None:# and self._config.debug_steps:
             stream = PrintSystem(self._config)
         self.new_session(log_dir,stream)

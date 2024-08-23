@@ -13,7 +13,7 @@ import model_discovery.utils as U
 
 from model_discovery.evolution import EvolutionSystem
 
-from model_discovery.agents.flow.gu_flows import GUFlowScratch
+from model_discovery.agents.flow.gau_flows import GUFlowScratch
 
 def mock1():
     st.title("Mock Page 1")

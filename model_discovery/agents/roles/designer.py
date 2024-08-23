@@ -95,11 +95,6 @@ class DesignerAgent(exec_utils.SimpleLMAgent):
             )
         response = self.parse_output(raw_response)
 
-        # print(query)
-        # print('*'*60)
-        # print(response['text'])
-
-        
         return response
 
     

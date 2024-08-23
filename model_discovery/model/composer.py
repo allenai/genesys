@@ -1,9 +1,9 @@
-# Translate GABUnits to the executable GAB
+# Translate GAUBases to the executable GAB
 import os
 from typing import List
 
 from dataclasses import dataclass, field
-from .utils.modules import GABFlow, GABUnit
+from .utils.modules import GAUBase
 
 import model_discovery.utils as U
 
@@ -14,7 +14,7 @@ ROOT_UNIT_TEMPLATE = '''# UNIT_NAME.py
 import torch
 import torch.nn as nn
 
-from model_discovery.model.utils.modules import GABUnit # DO NOT CHANGE THIS IMPORT STATEMENT #
+from model_discovery.model.utils.modules import GAUBase # DO NOT CHANGE THIS IMPORT STATEMENT #
 
 
 # YOU CAN IMPORT MORE MODULES HERE #
@@ -22,7 +22,7 @@ from model_discovery.model.utils.modules import GABUnit # DO NOT CHANGE THIS IMP
 # YOU CAN DEFINE MORE CLASSES OR FUNCTIONS HERE #
 
 
-class UNIT_NAME(GABUnit): 
+class UNIT_NAME(GAUBase): 
     """Generalized Autoregressive Block
         Input:        X: (batch, seqlen, embed_dim), Z: {dict of all current intermediate variables}
         Output:       Y: (batch, seqlen, embed_dim), Z_: Optional, {dict of *new* intermediate variables to update the current Z}
@@ -47,7 +47,7 @@ class UNIT_NAME(GABUnit):
 '''
 
 
-class GABBook: # GABUnit code book, registry of GABUnits, shared by a whole evolution
+class GABBook: # GAU code book, registry of GAUs, shared by a whole evolution
     def __init__(self, db_dir=None, rename=True):
         self.units = {}
         self.sources = {}
@@ -85,8 +85,8 @@ class GABBook: # GABUnit code book, registry of GABUnits, shared by a whole evol
             raise ValueError(f"Failed to parse source code: {e}")
         assert name in modules, f"Unit {name} is not defined in the source code"
         unit = modules[name]
-        # assert isinstance(unit, GABUnit), f"Unit {name} is not a GABUnit, got {type(unit)} instead"
-        assert issubclass(unit, GABUnit), f"Unit {name} is not a subclass of GABUnit, got {type(unit)} instead"
+        # assert isinstance(unit, GAUBase), f"Unit {name} is not a GAUBase, got {type(unit)} instead"
+        assert issubclass(unit, GAUBase), f"Unit {name} is not a subclass of GAUBase, got {type(unit)} instead"
         return unit
     
     def load(self, name):
@@ -137,7 +137,7 @@ class GABBook: # GABUnit code book, registry of GABUnits, shared by a whole evol
 
 @dataclass
 class GABNode: # this is mainly used to 1. track the hierarchies 2. used for the Linker to solve the dependencies
-    name: str # name of the GABUnit, do we need an alias?
+    name: str # name of the GAUBase, do we need an alias?
     next: str = None # pointer to the next GABNode, GABTree is always a series 
     child: str = None # pointer to the child GABNode, if there is a child, it will go through the child branch until the end then go back and pass the output to the next 
     config: dict = field(default_factory=dict)
@@ -164,7 +164,7 @@ class GABTree:
         self.name = name # name of a design 
         self.book = GABBook(db_dir)
         self.flow_dir = U.pjoin(db_dir, 'flows', self.name)
-        self.config = {} # the config of the whole design, avoid assigning configs to individual GABUnits
+        self.config = {} # the config of the whole design, avoid assigning configs to individual GAUBases
         U.mkdir(self.flow_dir)
         self.load()
         if len(self.path)==0: # if the tree is empty, create a new one, seems redundant, you have to have a root, then having name, then create tree
@@ -223,7 +223,7 @@ class GABTree:
         if node.child is not None:
             self.load_tree(f'{path}.{node.child}')
 
-    def compose_flow(self): # scan from the root unit, recursively compose the GABFlow by fill in the GABUnit
+    def compose_flow(self): # scan from the root unit, recursively compose the GABFlow by fill in the GAUBase
         pass
 
 

@@ -165,29 +165,29 @@ class LibraryReference(NodeObject):
             return 'Reference'
 
     def to_desc(self,reformat=True) -> str:
-        mdtext=f'# {self.title}'
+        mdtext=f'## {self.title}'
         if self.s2id:
-            mdtext+=f'\n* S2 ID {self.s2id} *'
+            mdtext+=f'\n**S2 ID:** {self.s2id} '
         if self.authors:
             authors=', '.join(self.authors)
-            mdtext+=f'\n* Authors: {authors} *'
+            mdtext+=f'\n**Authors:** {authors} '
         if self.tldr:
             # tldr=self.tldr.replace(',',',\n')
-            mdtext+=f'\n\n* TL;DR {self.tldr} *'
+            mdtext+=f'\n\n**TL;DR:** {self.tldr} '
         if self.abstract:
             abstract=self.abstract.replace('.','.\n') if reformat else self.abstract
-            mdtext+=f'\n\n## Abstract\n{abstract}'
+            mdtext+=f'\n\n**Abstract**\n{abstract}'
         if self.venue:
-            mdtext+=f'\n\n* Published at {self.venue} in {self.year} *'
+            mdtext+=f'\n\n**Published at *{self.venue}* in *{self.year}***'
         if self.citationCount:
-            mdtext+=f'\n* Cited {self.citationCount} times *'
+            mdtext+=f'\n**Cited {self.citationCount} times**'
         if self.influentialCitationCount:
-            mdtext+=f'\n* Impactful citations {self.influentialCitationCount} *'
+            mdtext+=f'\n**Impactful citations {self.influentialCitationCount}**'
         if self.description:
             description=self.description.replace('.','.\n') if reformat else self.description
-            mdtext+=f'\n\n## Description\n{description}'
+            mdtext+=f'\n\n### Description\n{description}'
         if self.url:
-            mdtext+=f'\n\n* [Link]({self.url}) *'
+            mdtext+=f'\n\n**[Link]({self.url})**'
         if reformat:
             return mdtext.replace(':',' ').replace('e.\ng.\n','e.g.').replace('i.\ne.\n','i.e.')
         return mdtext
@@ -195,7 +195,7 @@ class LibraryReference(NodeObject):
     def to_prompt(self) -> str:
         prompt=self.to_desc(reformat=False)
         if self.code:
-            prompt+=f'\n\n## Code\n\n```python\n{self.code}```'
+            prompt+=f'\n\n## Reference Code\n<details><summary>Click me</summary>\n\n```python\n{self.code}\n```\n</details>\n\n'
         return prompt
 
 
@@ -287,7 +287,7 @@ class DesignArtifact(NodeObject):
             prompt+=f"## Effectiveness:\n\n{json.dumps(self.check_results['effectiveness'],indent=4)}\n\n"
         if self.verify_report:
             report=report_reader(self.verify_report)
-            prompt+=f'## Report:\n\n{json.dumps(report,indent=4)}'
+            prompt+=f'## Report:\n\n{json.dumps(report,indent=4)}\n\n'
         return prompt
     
 
@@ -627,10 +627,7 @@ class EvolutionSystem(exec_utils.System):
             
 
     def _evolve(self,scale_id): # do evolve that produce one design and operate the phylogenetic tree
-        if scale_id==0:
-            K=np.random.choice([0,1,2,3],p=[0.2,0.3,0.3,0.2]) # TODO: upgrade this to be configurable and better (e.g. decay 0 with scales)
-        else:   
-            K=np.random.choice([1,2,3],p=[0.4,0.4,0.2])
+        K=np.random.choice([1,2,3],p=[1,0,0])
         instruct,seeds=self.select(K) # use the seed_ids to record the phylogenetic tree
 
         artifact=self.sample(scale_id,instruct,seeds) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
@@ -647,7 +644,7 @@ class EvolutionSystem(exec_utils.System):
         self.ptree.export()
         return artifact['acronym']
 
-    def sample(self,scale_id,instruct,seeds:List[NodeObject],verbose=True):
+    def sample(self,scale_id,instruct,seeds:List[NodeObject]):
         """ Sample a design at a given scale and verify it """
         self.rnd_agent.set_config(self.scales[scale_id])
         session_id=f'sample_{len(self.ptree.filter_by_type(["DesignArtifact"]))}_{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}'
@@ -699,10 +696,13 @@ class EvolutionSystem(exec_utils.System):
             topk = self.random_select(K,selector_instruct)
         if K==1: # Mutate
             prompt=topk[0].to_prompt()
-            instruct=f'Please improve based on this design for the new design, think of how to overcome its weaknesses and absorb its advantage:\n\n{prompt}'
+            # instruct=f'Please improve based on this design for the new design, think of how to overcome its weaknesses and absorb its advantage:\n\n{prompt}'
+            instruct=prompt
         else: # Cross-over
-            prompts='\n\n\n'.join([i.to_prompt() for i in topk])
-            instruct=f'Please improve by combining the advantages and mitigating the disadvantages of these designs for the new design:\n\n{prompts}'
+            prompts='\n\n\n'.join([f'# *Reference {i+1}*\n\n'+obj.to_prompt() for i,obj in enumerate(topk)])
+            # instruct=f'Please improve by combining the advantages and mitigating the disadvantages of these designs for the new design:\n\n{prompts}'
+            instruct=prompts
+        # TODO: should leave the prompt creation to the agent
         return instruct,topk
 
     def nodes2data(self,nodes):

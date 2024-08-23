@@ -1,9 +1,9 @@
-# GAB_UNIT_IMPLEMENTATION  # DO NOT CHANGE OR REMOVE THE MAKK HERE, KEEP IT ALWAYS THE FIRST LINE #
+# gab.py   # DO NOT CHANGE OR REMOVE THE MAKK HERE, KEEP IT ALWAYS THE FIRST LINE #
 
 import torch
 import torch.nn as nn
 
-from model_discovery.model.utils.modules import GABUnit # DO NOT CHANGE THIS IMPORT STATEMENT #
+from model_discovery.model.utils.modules import GAUBase # DO NOT CHANGE THIS IMPORT STATEMENT #
 
 
 # YOU CAN IMPORT MORE MODULES HERE #
@@ -11,7 +11,7 @@ from model_discovery.model.utils.modules import GABUnit # DO NOT CHANGE THIS IMP
 # YOU CAN DEFINE MORE CLASSES OR FUNCTIONS HERE #
 
 
-class CustomGABUnit(GABUnit): # DO NOT CHANGE THE NAME OF THIS CLASS
+class GAU(GAUBase): # DO NOT CHANGE THE NAME OF THIS CLASS
     """Generalized Autoregressive Block Unit
         Input:        X: (batch, seqlen, embed_dim), Z: {dict of all current intermediate variables}
         Output:       Y: (batch, seqlen, embed_dim), Z_: Optional, {dict of *new* intermediate variables to update the current Z}
