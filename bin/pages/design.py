@@ -22,6 +22,9 @@ def design(evosys,project_dir):
     ### side bar 
     st.sidebar.button("reset design query")
         
+
+    st.subheader("Design Flow: Sample Initial Design from Scratch using Random Selected Seeds")
+
     col1, col2 = st.columns([3, 1])
     with col1:
         instruction = st.text_input(label = "Add any additional instructions (optional)" )

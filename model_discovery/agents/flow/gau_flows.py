@@ -137,9 +137,19 @@ class GUFlowScratch(FlowCreator):
             with self.status_handler(status_info):
                 self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,proposal_prompt)
                 _,out=self.dialog.call(design_proposer_tid,proposal_prompt)
-                title,proposal=out['title'],out['text']
+                title=out['title']
+                if 'proposal' in out:
+                    proposal=out['proposal']
+                    reflection=out['reflection']
+                    changes=out['changes']
+                    self.stream.write(f'# Proposal\n{proposal}')
+                    self.stream.write(f'# Reflection\n{reflection}')
+                    self.stream.write(f'# Changes\n{changes}')
+                else:
+                    proposal=out['text']
+                    self.stream.write(proposal)
                 context_design_proposer=self.dialog.context(design_proposer_tid)
-                self.stream.write(proposal)
+                self.print_raw_output(out)
 
 
             PROPOSAL_REVIEWER=reload_role('proposal_reviewer',self.gpt4o0806_agent, 
@@ -157,6 +167,8 @@ class GUFlowScratch(FlowCreator):
                 self.stream.write(suggestions)
                 passornot='Pass' if rating>3 else 'Fail'
                 self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
+                self.print_raw_output(out)
+
 
             trace={
                 'title':title,
@@ -181,6 +193,20 @@ class GUFlowScratch(FlowCreator):
         return query,state,RET
     
 
+    def check_GAU(self,gau_code):
+
+        # check format
+        # 1. if multiple GAUBase classes are defined
+        # 2. if the class is named GAU
+        # 3. if the imports are correct
+
+        # check functionality
+        # 1. create placeholders
+        # 2. run checker to check the whole model
+
+
+        return True
+
     
     @register_module(
         "PROC",
@@ -199,14 +225,16 @@ class GUFlowScratch(FlowCreator):
         
         status_info=f'Starting design implementation of root unit...'
         with self.status_handler(status_info):
-            gu_design_root_prompt=P.GU_DESIGN_IMPLEMENTATION_ROOT(
+            gu_design_root_prompt=P.GU_IMPLEMENTATION_ROOT(
                 PROPOSAL=proposal['proposal'],REVIEW=proposal['review'],RATING=proposal['rating'])
-            P.GU_DESIGN_IMPLEMENTATION_ROOT.apply(DESIGN_IMPLEMENTER.obj)
+            P.GU_IMPLEMENTATION_ROOT.apply(DESIGN_IMPLEMENTER.obj)
             self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_design_root_prompt)
             _,out=self.dialog.call(design_implementer_tid,gu_design_root_prompt)
 
-            self.stream.write(out['text'])
-
+            self.stream.write(f'## Implementation of {out['unit_name']}')
+            self.stream.write(out['analysis'])
+            self.stream.write(f'### Code\n```python\n{out['implementation']}\n```')
+                              
             self.print_raw_output(out)
 
         

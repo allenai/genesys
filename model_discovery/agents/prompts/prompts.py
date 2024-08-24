@@ -129,231 +129,8 @@ GAB_ERROR = """Please provide the full gab code, and please do not modify other 
 
 
 
-""" ============================= Design from scratch init ===================================== """
-# Initialize the design from scratch 
-
-#region GU Design from scratch init
 
 
-
-GU_DESIGN_SCRATCH_prompt = """
-Start by filling in the blanks of this root GAU:
-
-```python {ROOT_UNIT_TEMPLATE} ```
-
-You should strictly follow the instructions in the template and do not remove
-the template code. Your response should include: 
-
-1. The intuitions and analysis of the GAU you are designing. You should
-   think of how the design can be novel, creative, and powerful. The analysis
-   should be detailed and considerable. It should decide a direction of the
-   design, the core ideas and the justifications. Remember that you goal is to
-   discover the best and novel autoregressive language model block that can
-   defeat the existing state of arts.
-2. A rough plan of the children GAUs that may need to be designed in the
-   future.
-3. The pseudo code of the GAU you are designing that capture the high-level
-   idea. 
-4. The name of the GAU you are designing. For the root GAU, the name
-   will the name of the whole block design, so you definitely think of a
-   meaningful name or a creative name that conclude your design, such as
-   Transformers, Mamba, CausalConv, SSM, S6, YOLO, etc. Never use a meaningless
-   name like RootGAB, NewGAB, etc. When you are trying to provide the name, you
-   should wrap the name in the this format ```unit_name {{unit_name}}``` in
-   order to allow the system to be able to detect it. 
-5. The full implementation of the GAU you designed, remember to replece the
-   unit_name marks by the actual unit name. Notice that you can contain multiple
-   python codes in your response, but only the last one with "#
-   GAB_UNIT_IMPLEMENTATION" mark in the first line will be detected as the final
-   implementation. If multiple GAUs are detected in your response, only the
-   last one will be applied. When you are trying to give the full implementation
-   of the GAU you designed, you should always keep this mark at the first
-   line, otherwise, the system will not be able to recognize your code.
-6. The config of the hyperparameters you introduced in the GAU. You should
-   provide the config dict in the following format: ```config {{
-        # ADD HYPERPARAMETERS HERE #
-    }} ``` in your response.
-
-Here are some guidelines for designing the GAU:
-
-1. You need to think of a meaningful name of the GAU you are designing or
-   refering as the placeholder. When you are defining a placeholder, you should
-   have an idea of the function of this GAU. By defining placeholders, you
-   are defining the outline of the design you want to implement.
-2. When calling a GAU, you should pass both the X and Z to the GAU. You
-   should pass Z in the kwargs manner, for example {{GAU}}(X, **Z).
-3. When defining a GAU object in __init__, you should privide the type hint,
-   for example, ```self.unit: GAU = {{unit_name}}(**kwargs) ```, remember to
-   pass such a kwargs which allows more customized arguments you will define
-   later in your actual implementation to be passed in. When you defines a
-   GAU, it should be either a known GAU or a placeholder of a GAU
-   you are going to design. It should never be something else such as nn.Module
-   or a constant. The system will automatically detect the GAU placeholders
-   and create a new empty GAU or fetch it from the base if it is already
-   defined.
-4. Be sure to design the block in a top-down manner, be patient and think
-   long-run, do never think of designing everything at once. Learn to define
-   placeholders that may carry out complicated operations and implement them
-   later. Especially when you are working on the root GAU. 
-5. Be sure to be innovative, do not copy the existing designs such as the
-   vanilla Transformer block. Be creative and think of a new design that can
-   defeat the existing state of the art models. Try your best to transcend the
-   human experts!
-
-Now, give your design, don't be hurry to try to design everything at once, be
-patient and focus on the current GAU you are designing. You will be asked
-later to finish the remaining parts of the GAB block. Remember to design it step
-by step, firstly do an analysis which shows your design intention, make sure the
-design is novel, then write down the pseudo code before implement it, then think
-of the name of your design, write the full code, and provide the configs.
-"""
-
-GU_DESIGN_SCRATCH_prompt_json = """
-Start by filling in the blanks of this root GAU:
-
-```python {ROOT_UNIT_TEMPLATE} ```
-
-You should strictly follow the instructions in the template and do not remove
-the template code. Your response should include: 
-
-1. The intuitions and analysis of the GAU you are designing. You should
-   think of how the design can be novel, creative, and powerful. The analysis
-   should be detailed and considerable. It should decide a direction of the
-   design, the core ideas and the justifications. Remember that you goal is to
-   discover the best and novel autoregressive language model block that can
-   defeat the existing state of arts.
-2. A rough plan of the children GAUs that may need to be designed in the
-   future.
-3. The pseudo code of the GAU you are designing that capture the high-level
-   idea. 
-4. The name of the GAU you are designing. For the root GAU, the name
-   will the name of the whole block design, so you definitely think of a
-   meaningful name or a creative name that conclude your design, such as
-   Transformers, Mamba, CausalConv, SSM, S6, YOLO, etc. Never use a meaningless
-   name like RootGAB, NewGAB, etc. 
-5. The full implementation of the GAU you designed, remember to replece the
-   unit_name marks by the actual unit name. Notice that you can contain multiple
-   python codes in your response, but only the last one with "#
-   GAB_UNIT_IMPLEMENTATION" mark in the first line will be detected as the final
-   implementation. If multiple GAUs are detected in your response, only the
-   last one will be applied. When you are trying to give the full implementation
-   of the GAU you designed, you should always keep this mark at the first
-   line, otherwise, the system will not be able to recognize your code.
-6. The config of the hyperparameters you introduced in the GAU, it should be
-   a python dict, the keys are the hyperparams you introduced and the values are
-   the corresponding default values.
-
-Here are some guidelines for designing the GAU:
-
-1. You need to think of a meaningful name of the GAU you are designing or
-   refering as the placeholder. When you are defining a placeholder, you should
-   have an idea of the function of this GAU. By defining placeholders, you
-   are defining the outline of the design you want to implement.
-2. When calling a GAU, you should pass both the X and Z to the GAU. You
-   should pass Z in the kwargs manner, for example {{GAU}}(X, **Z).
-3. When defining a GAU object in __init__, you should privide the type hint,
-   for example, ```self.unit: GAU = {{unit_name}}(**kwargs) ```, remember to
-   pass such a kwargs which allows more customized arguments you will define
-   later in your actual implementation to be passed in. When you defines a
-   GAU, it should be either a known GAU or a placeholder of a GAU
-   you are going to design. It should never be something else such as nn.Module
-   or a constant. The system will automatically detect the GAU placeholders
-   and create a new empty GAU or fetch it from the base if it is already
-   defined.
-4. Be sure to design the block in a top-down manner, be patient and think
-   long-run, do never think of designing everything at once. Learn to define
-   placeholders that may carry out complicated operations and implement them
-   later. Especially when you are working on the root GAU. 
-5. Be sure to be innovative, do not copy the existing designs such as the
-   vanilla Transformer block. Be creative and think of a new design that can
-   defeat the existing state of the art models. Try your best to transcend the
-   human experts!
-
-Now, give your design, don't be hurry to try to design everything at once, be
-patient and focus on the current GAU you are designing. You will be asked
-later to finish the remaining parts of the GAB block. Remember to design it step
-by step, firstly do an analysis which shows your design intention, make sure the
-design is novel, then write down the pseudo code before implement it, then think
-of the name of your design, write the full code, and provide the configs.
-"""
-
-GU_DESIGN_SCRATCH_format = {
-  "type": "json_schema",
-  "json_schema": {
-    "name": "gab_unit_design",
-    "description": "Design a Generalized Autoregressive Block Unit (GAU) for an autoregressive model block",
-    "strict": True,
-    "schema": {
-      "type": "object",
-      "properties": {
-        "analysis": {
-          "type": "string",
-          "description": "Intuitions and analysis behind the design of the GAU"
-        },
-        "motivation": {
-          "type": "string",
-          "description": "Core ideas and justifications driving the design"
-        },
-        "reasoning": {
-          "type": "string",
-          "description": "Detailed reasoning and how the design can be novel and powerful"
-        },
-        "pseudo_code": {
-          "type": "string",
-          "description": "High-level pseudocode of the GAU being designed"
-        },
-        "future_plan": {
-          "type": "string",
-          "description": "Plan for future GAUs that may need to be implemented"
-        },
-        "unit_name": {
-          "type": "string",
-          "description": "The name of the designed GAU"
-        },
-        "implementation": {
-          "type": "string",
-          "description": "Full Python code implementation of the designed GAU"
-        },
-        "config": {
-          "type": "string",
-          "description": "Configuration dictionary containing hyperparameters used in the GAU"
-        }
-      },
-      "required": [
-        "analysis",
-        "motivation",
-        "reasoning",
-        "pseudo_code",
-        "future_plan",
-        "unit_name",
-        "implementation",
-        "config"
-      ],
-      "additionalProperties": False
-    }
-  }
-}
-
-# https://platform.openai.com/docs/guides/structured-outputs/supported-schemas Recursion supported, but maybe not use, it cannot isolate errors
-
-def GU_DESIGN_SCRATCH_parser(raw_output: ModelOutput) -> Dict[Any,Any]:
-      raw_text = raw_output.text
-      output = {}
-      codes = re.findall(r"```python(.*?)```", raw_text, re.DOTALL)
-      if codes:
-         for code in codes:
-               if code.strip().startswith("# gab.py"):
-                  output["code"] = code
-
-      output["text"] = raw_text
-      output["_details"] = {}
-      output["_details"]["cost"] = raw_output.cost
-      output["_details"]["running_cost"] = 0
-      return output
-
-DESIGN_FROM_SCRATCH = AgentPrompt(GU_DESIGN_SCRATCH_prompt,GU_DESIGN_SCRATCH_parser)#,format=GU_DESIGN_SCRATCH_format)
-
-# endregion
 
 
 
@@ -362,6 +139,17 @@ DESIGN_FROM_SCRATCH = AgentPrompt(GU_DESIGN_SCRATCH_prompt,GU_DESIGN_SCRATCH_par
 #######################################################
 
 
+
+
+
+def GENERAL_JSON_parser(raw_output: ModelOutput) -> Dict[Any,Any]:
+      raw_text = raw_output.text
+      output = json.loads(raw_text)  
+      output["text"] = raw_text
+      output["_details"] = {}
+      output["_details"]["cost"] = raw_output.cost
+      output["_details"]["running_cost"] = 0
+      return output
 
 
 """ ============================= GU Designer System Prompt ========================================== """
@@ -486,13 +274,17 @@ review the proposal of the design of the autoregressive language model blocks.
 
 Here is the instruction about how to review the proposal:
 
-1. Check if the design is potentially accurate, robust, efficient, and scalable.
+1. Check if the design is potentially accurate, robust, efficient, and scalable. 
 
 2. The designed block must be novel, you need to check whether it is simply
    applying an existing design such as a transformer block.
 
 3. If there is any unclear part, missing part, mistakes, unjustified, unrigorous
    parts in the proposal, you should explicitly point out. 
+
+4. Notice that, empirical results are not expected in the proposal stage, so you
+   should check the design based on the theoretical analysis and the plan of the
+   design.
    
 Your evaluation should be fair and comprehensive. 
 """
@@ -552,17 +344,7 @@ GU_PROPOSAL_REVIEW_format = {
    }
 }
 
-
-def GU_PROPOSAL_REVIEW_parser(raw_output: ModelOutput) -> Dict[Any,Any]:
-      raw_text = raw_output.text
-      output = json.loads(raw_text)  
-      output["text"] = raw_text
-      output["_details"] = {}
-      output["_details"]["cost"] = raw_output.cost
-      output["_details"]["running_cost"] = 0
-      return output
-
-GU_PROPOSAL_REVIEW = AgentPrompt(GU_PROPOSAL_REVIEW_prompt,GU_PROPOSAL_REVIEW_parser,GU_PROPOSAL_REVIEW_format)   
+GU_PROPOSAL_REVIEW = AgentPrompt(GU_PROPOSAL_REVIEW_prompt,GENERAL_JSON_parser,GU_PROPOSAL_REVIEW_format)   
 
 # endregion
 
@@ -585,11 +367,59 @@ Rating: {RATING} out of 5 (passing score is 3)
 Suggestions: {SUGGESTIONS}
 
 Please refine your proposal based on the feedback. You should address the issues
-and improve the design based on the suggestions. Keep the format instructions. 
+and improve the design based on the suggestions. You need to firstly provide the
+reflection of the feedback, then give the full proposal keeping the format
+instructions, finally, a summary of the changes you made.
 """
 
+GU_PROPOSAL_REFINEMENT_format = {
+   "type": "json_schema",
+   "json_schema": {
+         "name": "proposal_refinement_response",
+         "strict": True,
+         "schema": {
+            "type": "object",
+            "properties": {
+               "reflection": {
+                     "type": "string",
+                     "description": "The reflection based on the review, rating, and suggestions."
+               },
+               "proposal": {
+                     "type": "string",
+                     "description": "The fall proposal, keep the format instructions."
+               },
+               "changes": {
+                     "type": "string",
+                     "description": "The summary of the changes you made."
+               },
+            },
+            "required": ["reflection", "proposal","changes"],
+            "additionalProperties": False
+         }
+   }
+}
 
-GU_PROPOSAL_REFINEMENT = AgentPrompt(GU_PROPOSAL_REFINEMENT_prompt,GU_DESIGN_PROPOSAL_parser)
+
+def GU_PROPOSAL_REFINEMENT_parser(raw_output: ModelOutput) -> Dict[Any,Any]:
+   title=""
+   raw_text = raw_output.text.strip()
+   output = json.loads(raw_output.text)
+   for line in output["proposal"].split("\n"):
+      if line.startswith("# "):
+         title = line[2:]
+         break
+   if title == "":
+       title = raw_text.split("\n")[0]
+   output["title"] = title
+   output["text"] = raw_text
+   output["_details"] = {}
+   output["_details"]["cost"] = raw_output.cost
+   output["_details"]["running_cost"] = 0
+   return output
+
+
+
+GU_PROPOSAL_REFINEMENT = AgentPrompt(GU_PROPOSAL_REFINEMENT_prompt,GU_PROPOSAL_REFINEMENT_parser,GU_PROPOSAL_REFINEMENT_format)
 
 
 
@@ -665,20 +495,17 @@ As the proposal is high-level, you will still need to think of the details of
 the implementation of each block. As a result, when implementing one GAU, you
 should follow the following steps and include them in your response:
 
-1. The intuitions and analysis of the GAU you are designing. You should think of
-   how the design can be novel, creative, and powerful. The analysis should be
-   detailed and considerable. It should decide a direction of the design, the
-   core ideas and the justifications. Remember that you goal is to discover the
-   best and novel autoregressive language model block that can defeat the
-   existing state of arts.
+1. The intuitions and analysis of the GAU you are designing. Start from and go
+   beyond the proposal and review, you should think of how the design can be
+   novel, creative, and powerful. The analysis should be detailed and
+   thoughtful. It should decide a direction of the design, the core ideas and
+   the justifications. Remember that you goal is to discover the best and novel
+   autoregressive language model block that can defeat the existing state of
+   arts.
 2. A rough plan of the children GAUs that may need to be designed in the future.
 3. The pseudo code of the GAU you are designing that capture the high-level
    idea. 
-4. The name of the GAU you are designing. When you are trying to provide the
-   name, you should wrap the name in the this format ```unit_name
-   {{unit_name}}``` in order to allow the system to be able to detect it.
-   Remember to remove the brackets.
-5. The full implementation of the GAU you designed, remember to replece the
+4. The full implementation of the GAU you designed, remember to replece the
    unit_name marks by the actual unit name. Notice that you can contain multiple
    python codes in your response, but only the last one with "# gau.py" mark in
    the first line will be detected as the final implementation. If multiple GAUs
@@ -686,6 +513,23 @@ should follow the following steps and include them in your response:
    are trying to give the full implementation of the GAU you designed, you
    should always keep this mark at the first line, otherwise, the system will
    not be able to recognize your code.
+5. Do not change the class name GAU, the system will automatically rename it
+   using the unit_name you provide, and it should be the only GAU class (which
+   can be decided by whether it is inherited from GAUBase) defined in your
+   implementation, do not define any other GAU classes in your implementation.
+   No need to worry about the placeholders, the system will automatically create
+   the empty GAU classes for them.
+6. When calling a GAU, you should pass both the X and Z to the GAU. You should
+   pass Z in the kwargs manner, for example {{unit_name}}(X, **Z).
+7. When defining a GAU object in __init__, you should privide the type hint, for
+   example, ```self.unit: GAUBase = {{unit_name}}(**kwargs) ```, remember to
+   pass such a kwargs which allows more customized arguments you will define
+   later in your actual implementation to be passed in. When you defines a GAU,
+   it should be either a known GAU or a placeholder of a GAU you are going to
+   design. It should never be something else such as nn.Module or a constant.
+   The system will automatically detect the GAU placeholders and create a new
+   empty GAU or fetch it from the base if it is already defined. Do not
+   implement any placeholders, you will be asked to implement them later.
 
 Here are some guidelines for designing the GAU:
 
@@ -693,21 +537,11 @@ Here are some guidelines for designing the GAU:
    refering as the placeholder. When you are defining a placeholder, you should
    have an idea of the function of this GAU. By defining placeholders, you are
    defining the outline of the design you want to implement.
-2. When calling a GAU, you should pass both the X and Z to the GAU. You should
-   pass Z in the kwargs manner, for example {{unit_name}}(X, **Z).
-3. When defining a GAU object in __init__, you should privide the type hint, for
-   example, ```self.unit: GAUBase = {{unit_name}}(**kwargs) ```, remember to
-   pass such a kwargs which allows more customized arguments you will define
-   later in your actual implementation to be passed in. When you defines a GAU,
-   it should be either a known GAU or a placeholder of a GAU you are going to
-   design. It should never be something else such as nn.Module or a constant.
-   The system will automatically detect the GAU placeholders and create a new
-   empty GAU or fetch it from the base if it is already defined.
-4. Be sure to design the block in a top-down manner, be patient and think
+2. Be sure to design the block in a top-down manner, be patient and think
    long-run, do never think of designing everything at once. Learn to define
    placeholders that may carry out complicated operations and implement them
    later. Especially when you are working on the root GAU. 
-5. Be sure to be innovative, do not copy the existing designs such as the
+3. Be sure to be innovative, do not copy the existing designs such as the
    vanilla Transformer block. Be creative and think of a new design that can
    defeat the existing state of the art models. Try your best to transcend the
    human experts!
@@ -725,14 +559,14 @@ DESIGN_IMPLEMENTATER_SYSTEM = AgentPrompt(DESIGN_IMPLEMENTATER_SYSTEM_prompt)
 
 
 
-""" ============================= GU Design Implementation Root ===================================== """
+""" ============================= GU Implementation Root ===================================== """
 
 
-# region GU Design Implementation Root
+# region GU Implementation Root
 
 
 
-GU_DESIGN_IMPLEMENTATION_ROOT_prompt = """
+GU_IMPLEMENTATION_ROOT_prompt = """
 Here is the proposal of the design for you to implement:
 
 {PROPOSAL}
@@ -755,21 +589,53 @@ block.
 """
 
 
-def GU_DESIGN_IMPLEMENTATION_ROOT_parser(raw_output: ModelOutput) -> Dict[Any,Any]:
-   raw_text = raw_output.text
+GU_IMPLEMENTATION_format = {
+   "type": "json_schema",
+   "json_schema": {
+         "name": "implement_response",
+         "strict": True,
+         "schema": {
+            "type": "object",
+            "properties": {
+               "analysis": {
+                     "type": "string",
+                     "description": "Analysis, plans, and pseudocode of the GAU being designed"
+               },
+               "unit_name": {
+                     "type": "string",
+                     'description': "The name of the designed GAU"
+               },
+               "implementation": {
+                     "type": "string",
+                     "description": "the full python implementation of the designed GAU"
+               },
+            },
+            "required": ["analysis", "unit_name","implementation"],
+            "additionalProperties": False
+         }
+   }
+}
 
 
-   output = {}
-   output["text"] = raw_text
-   output["_details"] = {}
-   output["_details"]["cost"] = raw_output.cost
-   output["_details"]["running_cost"] = 0
-   return output
+GU_IMPLEMENTATION_ROOT = AgentPrompt(GU_IMPLEMENTATION_ROOT_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_format)
 
-GU_DESIGN_IMPLEMENTATION_ROOT = AgentPrompt(GU_DESIGN_IMPLEMENTATION_ROOT_prompt,GU_DESIGN_IMPLEMENTATION_ROOT_parser)
+# endregion
+
+
+""" ============================= GU Implementation Check Prompt ===================================== """
+
+
+# region GU Implementation Check Root
+
 
 
 # endregion
+
+
+
+
+
+
 
 
 
