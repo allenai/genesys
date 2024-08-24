@@ -2,7 +2,8 @@ import os
 import numpy as np
 from typing import Any,Dict, List
 import inspect
-import copy
+import ast
+import astor
 
 from exec_utils.models.model import ModelOutput
 from .alang import FlowCreator,register_module,ROLE,SYSTEM_CALLER,USER_CALLER,AgentContext
@@ -61,6 +62,66 @@ def print_raw_output(stream,out):
             f"""<details><summary>Raw output</summary>{out}</details>""",
             unsafe_allow_html=True
         )
+
+
+
+class GAUReformer(ast.NodeTransformer):
+    def __init__(self):
+        self.errors = []
+        self.gau_class_found = False
+        self.gaubase_classes = []
+        self.found_gaubase_import = False
+
+    def visit_ImportFrom(self, node):
+        # Check if 'from model_discovery.model.utils.modules import GAUBase' exists
+        if node.module == 'model_discovery.model.utils.modules' and any(alias.name == 'GAUBase' for alias in node.names):
+            self.found_gaubase_import = True
+        return self.generic_visit(node)
+
+    def visit_ClassDef(self, node):
+        # Check for classes inheriting from GAUBase
+        if any(base.id == "GAUBase" for base in node.bases):
+            self.gaubase_classes.append(node)
+        
+        # Check if there's a class named 'GAU'
+        if node.name == "GAU":
+            self.gau_class_found = True
+            # Ensure GAU inherits from GAUBase
+            if not any(base.id == "GAUBase" for base in node.bases):
+                node.bases = [ast.Name(id="GAUBase", ctx=ast.Load())]
+        
+        return self.generic_visit(node)
+
+    def visit_Module(self, node):
+        # Add import if not found
+        if not self.found_gaubase_import:
+            gaubase_import = ast.ImportFrom(module='model_discovery.model.utils.modules', names=[ast.alias(name='GAUBase', asname=None)], level=0)
+            node.body.insert(1, gaubase_import)
+
+        # Handle GAU class detection and renaming
+        if not self.gau_class_found:
+            if len(self.gaubase_classes) == 1:
+                # Rename the only GAUBase class to GAU
+                gau_class_node = self.gaubase_classes[0]
+                gau_class_node.name = "GAU"
+            elif len(self.gaubase_classes) == 0:                                                                                                                                         self.errors.append("Error: No class inheriting from GAUBase found.")
+            else:
+                self.errors.append("Error: Multiple classes inheriting from GAUBase found.")
+        else:
+            # Remove other classes that inherit from GAUBase (other than GAU)
+            for cls in self.gaubase_classes:
+                if cls.name != "GAU":
+                    node.body.remove(cls)
+
+        return self.generic_visit(node)
+
+def check_and_reformat_gau_code(source_code):
+    tree = ast.parse(source_code)
+    reformer = GAUReformer()
+    transformed_tree = reformer.visit(tree)
+    reformatted_code = astor.to_source(transformed_tree)
+    
+    return reformatted_code, reformer.errors
 
 
 class GUFlowScratch(FlowCreator): 
@@ -156,9 +217,16 @@ class GUFlowScratch(FlowCreator):
                                                 P.GU_PROPOSAL_REVIEWER_SYSTEM())
             proposal_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,PROPOSAL_REVIEWER,context=context_proposal_reviewer,
                                                 alias='proposal_review',note=f'Reviewing proposal...')
-            with self.status_handler(f'Reviewing design proposal (version {i})...'):
+            if i==0:
+                status_info=f'Reviewing initial proposal...'
                 proposal_review_prompt=P.GU_PROPOSAL_REVIEW(PROPOSAL=proposal)
                 P.GU_PROPOSAL_REVIEW.apply(PROPOSAL_REVIEWER.obj)
+            else:
+                status_info=f'Refining refined proposal (version {i})...'
+                proposal_review_prompt=P.GU_PROPOSAL_REREVIEW(PROPOSAL=proposal)
+                P.GU_PROPOSAL_REREVIEW.apply(PROPOSAL_REVIEWER.obj)
+            
+            with self.status_handler(status_info):
                 self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,proposal_review_prompt)
                 _,out=self.dialog.call(proposal_reviewer_tid,proposal_review_prompt)
                 review,rating,suggestions=out['review'],out['rating'],out['suggestions']
@@ -239,6 +307,7 @@ class GUFlowScratch(FlowCreator):
 
         
 
+        return query,state,{}
 
     
     @register_module(

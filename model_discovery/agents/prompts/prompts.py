@@ -279,8 +279,14 @@ Here is the instruction about how to review the proposal:
 2. The designed block must be novel, you need to check whether it is simply
    applying an existing design such as a transformer block.
 
+3. Find the highlights of the design, think of whether those highlights can lead
+   to a successful design described above. Then think of the potential problems,
+   limitations, risk or weaknesses of the design. Write down those concerns in
+   your review.
+
 3. If there is any unclear part, missing part, mistakes, unjustified, unrigorous
-   parts in the proposal, you should explicitly point out. 
+   parts in the proposal, you should explicitly point them out in your
+   suggestions. 
 
 4. Notice that, empirical results are not expected in the proposal stage, so you
    should check the design based on the theoretical analysis and the plan of the
@@ -308,14 +314,16 @@ you to review:
 {PROPOSAL}
 
 Please give your review and rating of the design in the proposal, and
-suggestions for the clarification, correction, or additional information. Your
-rating decides whether the proposal can pass or not, rating is a float number
-between 0 and 5. 1 is bad, 2 is not good enough, 3 is really good, 4 is excellent, 5 is
-an outstanding design you have never seen and highly recommended. 3 is the
-boarder for pass.
+suggestions for the clarification, correction, or additional information.
+Rememeber that the rating and review should be completely based on the *design*
+not the writing, any writing suggestions or highlights should be contained in
+suggestions. Your rating decides whether the proposal can pass or not, rating is
+a float number between 0 and 5. 1 is bad, 2 is not good enough, 3 is really
+good, 4 is excellent, 5 is an outstanding design you have never seen and highly
+recommended. 3 is the boarder for pass.
 
-Be very strict and fair. Do not pass a proposal easily, give a pass only when it is
-good enough.
+Be very strict and fair. Do not pass a proposal easily, give a pass only when it
+is good enough.
 """
 
 GU_PROPOSAL_REVIEW_format = {
@@ -421,9 +429,71 @@ def GU_PROPOSAL_REFINEMENT_parser(raw_output: ModelOutput) -> Dict[Any,Any]:
 
 GU_PROPOSAL_REFINEMENT = AgentPrompt(GU_PROPOSAL_REFINEMENT_prompt,GU_PROPOSAL_REFINEMENT_parser,GU_PROPOSAL_REFINEMENT_format)
 
+# endregion
 
+
+
+""" ============================= GU Proposal Rereview ===================================== """
+
+
+# region GU Give analysis first 
+
+
+GU_PROPOSAL_REREVIEW_prompt = """
+The designer has modified the proposal based on your review, here is the refined
+version for you to review:
+
+{PROPOSAL}
+
+The change log:
+
+{CHANGE_LOG}
+
+Read the refined proposal carefully, check the change log, think of whether
+those changes can address the concerns you pointed out in the previous review.
+Then think is there more concerns or potential problems in the refined proposal.
+Then give your review, rating, and suggestions. Rememeber that the rating and
+review should be completely based on the *design* not the writing, any writing
+suggestions or highlights should be contained in suggestions. Do not boost the
+rating simply for "awarding" the address of a concern.
+
+Be very strict and fair. Do not pass a proposal easily, give a pass only when it
+is good enough.
+"""
+
+GU_PROPOSAL_REREVIEW_format = {
+   "type": "json_schema",
+   "json_schema": {
+         "name": "review_response",
+         "strict": True,
+         "schema": {
+            "type": "object",
+            "properties": {
+               "review": {
+                     "type": "string",
+               },
+               "rating": {
+                     "type": "number",
+                     "description": "A float number between 0 and 5."
+               },
+               "suggestions": {
+                     "type": "string",
+                     "description": "The suggestions for clarification, correction, or additional information."
+               },
+            },
+            "required": ["review", "rating","suggestions"],
+            "additionalProperties": False
+         }
+   }
+}
+
+GU_PROPOSAL_REREVIEW = AgentPrompt(GU_PROPOSAL_REREVIEW_prompt,GENERAL_JSON_parser,GU_PROPOSAL_REREVIEW_format)
 
 # endregion
+
+
+
+
 
 #######################################################
 # GU Implementation Prompts
@@ -513,15 +583,23 @@ should follow the following steps and include them in your response:
    are trying to give the full implementation of the GAU you designed, you
    should always keep this mark at the first line, otherwise, the system will
    not be able to recognize your code.
-5. Do not change the class name GAU, the system will automatically rename it
+
+Here are some guidelines for designing the GAU:
+
+ - Do not change the class name GAU, the system will automatically rename it
    using the unit_name you provide, and it should be the only GAU class (which
    can be decided by whether it is inherited from GAUBase) defined in your
    implementation, do not define any other GAU classes in your implementation.
    No need to worry about the placeholders, the system will automatically create
    the empty GAU classes for them.
-6. When calling a GAU, you should pass both the X and Z to the GAU. You should
+ - You must have the GAU class that inherited from GAUBase defined in your code,
+   here is what will happen if it is not found: 1. If there are multiple or no
+   GAUBase classes detected, the system will report an error. 2. If there is
+   only one GAUBase class detected, the system will automatically rename it and
+   regard it as the GAU class you designed.
+ - When calling a GAU, you should pass both the X and Z to the GAU. You should
    pass Z in the kwargs manner, for example {{unit_name}}(X, **Z).
-7. When defining a GAU object in __init__, you should privide the type hint, for
+ - When defining a GAU object in __init__, you should privide the type hint, for
    example, ```self.unit: GAUBase = {{unit_name}}(**kwargs) ```, remember to
    pass such a kwargs which allows more customized arguments you will define
    later in your actual implementation to be passed in. When you defines a GAU,
@@ -530,18 +608,17 @@ should follow the following steps and include them in your response:
    The system will automatically detect the GAU placeholders and create a new
    empty GAU or fetch it from the base if it is already defined. Do not
    implement any placeholders, you will be asked to implement them later.
-
-Here are some guidelines for designing the GAU:
-
-1. You need to think of a meaningful name of the GAU you are designing or
+ - If multiple GAU classes are detected in your response, only the one named
+   "GAU" will be preserved, others will be removed.
+ - You need to think of a meaningful name of the GAU you are designing or
    refering as the placeholder. When you are defining a placeholder, you should
    have an idea of the function of this GAU. By defining placeholders, you are
    defining the outline of the design you want to implement.
-2. Be sure to design the block in a top-down manner, be patient and think
+ - Be sure to design the block in a top-down manner, be patient and think
    long-run, do never think of designing everything at once. Learn to define
    placeholders that may carry out complicated operations and implement them
    later. Especially when you are working on the root GAU. 
-3. Be sure to be innovative, do not copy the existing designs such as the
+ - Be sure to be innovative, do not copy the existing designs such as the
    vanilla Transformer block. Be creative and think of a new design that can
    defeat the existing state of the art models. Try your best to transcend the
    human experts!
@@ -580,7 +657,9 @@ Rating: {RATING} out of 5 (passing score is 3)
 Now, start by implementing a root GAU based on the proposal follow the
 instructions, templates, and the format requirements. The GAU will be reviewed
 and checked. It will be accepted only when it pass bothe the review and check
-process. 
+process. Your analysis should be as detailed as possible, and the implementation
+can introduce new ideas and details that are not covered in the proposal that
+can improve the design.
 
 Don't be hurry to try to implemente everything at once, be patient, slowly, and
 focus on the current GAU you are designing. And always remember to design it in
