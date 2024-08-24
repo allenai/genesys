@@ -40,6 +40,7 @@ def apply_prompt(role,prompt,**kwargs):
 
 def print_details(stream,agent,context,prompt):
     if not hasattr(stream,'_isprintsystem'):
+        stream.write('Details of the input:')
         stream.write(
             f"""<details><summary>Agent system prompt</summary>{agent.model_state.static_message}</details>""",
             unsafe_allow_html=True
@@ -53,6 +54,14 @@ def print_details(stream,agent,context,prompt):
             unsafe_allow_html=True
         )
         stream.write('---')
+
+def print_raw_output(stream,out):
+    if not hasattr(stream,'_isprintsystem'):
+        stream.write(
+            f"""<details><summary>Raw output</summary>{out}</details>""",
+            unsafe_allow_html=True
+        )
+
 
 class GUFlowScratch(FlowCreator): 
     """
@@ -83,30 +92,36 @@ class GUFlowScratch(FlowCreator):
     def print_details(self,agent,context,prompt):
         print_details(self.stream,agent,context,prompt)
 
+    def print_raw_output(self,out):
+        print_raw_output(self.stream,out)
+
     @register_module(
         "PROC",
         hints="output the initial threads",
-        links='sample_initial_design',
+        links='generate_proposal',
     )
     def design_initializer(self,query,state):
         return query,state,{}
 
     @register_module(
         "PROC",
-        hints="output the initial threads",
-        links='end_of_design',
+        hints="output the proposal after review",
+        links='implement_proposal',
     )
-    def sample_initial_design(self,query,state,main_tid):
+    def generate_proposal(self,query,state,main_tid):
         self.dialog=self.system.dialog
 
         with self.status_handler('Starting the design process, seeds sampled.'):
             self.stream.write(query,unsafe_allow_html=True)
 
+        self.stream.write(f'#### Start design process by generating a design proposal')
+
+
         traces=[]
         context_design_proposer=AgentContext()
         context_proposal_reviewer=AgentContext()
         for i in range(self.max_attemps['design_proposal']):
-            DESIGN_PROPOSER=reload_role('designer',self.gpt4o0806_agent,P.GU_DESIGNER_SYSTEM(
+            DESIGN_PROPOSER=reload_role('designer',self.gpt4o0806_agent,P.GU_DESIGN_PROPOSER_SYSTEM(
                 GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
             design_proposer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_PROPOSER,context=context_design_proposer,
                                                 alias='design_proposal',note=f'Starting design proposal...')
@@ -115,7 +130,7 @@ class GUFlowScratch(FlowCreator):
                 proposal_prompt=P.GU_DESIGN_PROPOSAL(SEEDS=query)
                 P.GU_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
             else:
-                status_info=f'Refining design proposal, attempt {i}...'
+                status_info=f'Refining design proposal (attempt {i})...'
                 proposal_prompt=P.GU_PROPOSAL_REFINEMENT(REVIEW=review,RATING=rating,SUGGESTIONS=suggestions)
                 P.GU_PROPOSAL_REFINEMENT.apply(DESIGN_PROPOSER.obj)
             
@@ -131,7 +146,7 @@ class GUFlowScratch(FlowCreator):
                                                 P.GU_PROPOSAL_REVIEWER_SYSTEM())
             proposal_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,PROPOSAL_REVIEWER,context=context_proposal_reviewer,
                                                 alias='proposal_review',note=f'Reviewing proposal...')
-            with self.status_handler(f'Reviewing design proposal version {i}...'):
+            with self.status_handler(f'Reviewing design proposal (version {i})...'):
                 proposal_review_prompt=P.GU_PROPOSAL_REVIEW(PROPOSAL=proposal)
                 P.GU_PROPOSAL_REVIEW.apply(PROPOSAL_REVIEWER.obj)
                 self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,proposal_review_prompt)
@@ -153,12 +168,50 @@ class GUFlowScratch(FlowCreator):
             traces.append(trace)
 
             if rating>3:
+                self.stream.write(f'#### Proposal passed with rating {rating} out of 5, starting implementation')
                 break
         
-        RET=trace # the final proposal
+        if rating<=3:
+            self.stream.write(f'#### Proposal failed with rating {rating} out of 5, stopping design process')
+            raise Exception('Design proposal failed, stopping design process')
+        RET={
+            'proposal':trace,
+            'traces':traces,
+        }
+        return query,state,RET
+    
+
+    
+    @register_module(
+        "PROC",
+        hints="output the initial threads",
+        links='end_of_design',
+    )
+    def implement_proposal(self,query,state,main_tid,proposal):
+        self.dialog=self.system.dialog
+        
+        traces=[]
+        context_design_implementer=AgentContext()
+        DESIGN_IMPLEMENTER=reload_role('design_implementer',self.gpt4o0806_agent,P.DESIGN_IMPLEMENTATER_SYSTEM(
+            GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
+        design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
+                                            alias='design_proposal',note=f'Starting design proposal...')
+        
+        status_info=f'Starting design implementation of root unit...'
+        with self.status_handler(status_info):
+            gu_design_root_prompt=P.GU_DESIGN_IMPLEMENTATION_ROOT(
+                PROPOSAL=proposal['proposal'],REVIEW=proposal['review'],RATING=proposal['rating'])
+            P.GU_DESIGN_IMPLEMENTATION_ROOT.apply(DESIGN_IMPLEMENTER.obj)
+            self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_design_root_prompt)
+            _,out=self.dialog.call(design_implementer_tid,gu_design_root_prompt)
+
+            self.stream.write(out['text'])
+
+            self.print_raw_output(out)
+
+        
 
 
-        return query,state,{}
     
     @register_module(
         "EXIT",

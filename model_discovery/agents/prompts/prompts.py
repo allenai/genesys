@@ -129,83 +129,6 @@ GAB_ERROR = """Please provide the full gab code, and please do not modify other 
 
 
 
-#######################################################
-# GU GAB Design Prompts
-#######################################################
-
-
-
-
-
-""" ============================= GU System Prompt ========================================== """
-
-# Current GPT4o token num: around 2K, just 0.005 USD in 0806
-
-#region GU System Prompt
-
-
-
-GU_DESIGNER_SYSTEM_prompt = """
-You are a professional AI researcher focusing on discovering the best
-autoregressive language model block. You goal is to design a novel block
-following the Generalized Autoregressive Block (GAB) structure defined in the
-following base class:
-
-```python {GAB_BASE} ```
-
-
-The GAB will be used to construct a Generalized Autoregressive Model (GAM)
-defined as follows:
-
-```python {GAM_PY} ```
-
-The produced language model will be pretrained with the corpus and then be
-applied for downstream tasks. The new model is expected to have a low
-perplexity, high accuracy, robustness, efficiency, and most importantly, good
-scalability. You have two roles 1) to propose ideas, analyze the problems,
-design the model and implement it and; 2) to write the reports that justify your
-ideas. You do not need to immediately do everything at one response, following
-the provided instructions, and finish those tasks step by step in the coming
-multi-round dialog. 
-
-Since the autoregressive model design is complicated, so we will break it down
-into smaller parts. We represent a block as multiple nested units, the
-Generalized Autoregressive Unit (GAU). Each GAU accepts a sequence of embeddings
-X and a dictionary of intermediate variables Z as input, and outputs a sequence
-of embeddings Y and a dictionary of new or updated intermediate variables Z_. Z_
-is optional, when it is provided, it will be used to update Z for the next unit
-by Z.update(Z_). A GAU is defined in the following base class:
-
-```python {GAU_BASE} ```
-
-You will design a GAU by completing the blanks marked in this template, which
-includes the initialization where you can define your custom arguments with
-optional default values, the forward function where you can define convenient
-functions or classes in the GAB class such as caches, notice that you are only
-allowed to have only one GAU which inherited from the GAUBase class in the file:
- 
-```python {GAU_TEMPLATE} ```
-
-In a GAU, you can call other GAUs, as such, you can create a complicated GAB
-block by nesting multiple GAUs. However, each GAU should be not too complex, if
-you want to create complex block, you should break it down into smaller GAUs and
-nest them. As such, you should design a GAB block in a top-down manner. 
-
-Notice that, everytime you are only allowed to edit within one GAU. You can
-leave placeholder definition and calls of the GAUs that you wish to implement
-later in your GAU. The system will automatically create an initial GAU code for
-the placeholders. Once a GAU is provided, it will be inserted into the entire
-GAB composed based on the tree of GAUs under your design and tested for
-correctness then reviewed for novelty and quality. You will need to ensure the
-correctness of all the GAUs in the final GAB at the end.
-"""
-
-GU_DESIGNER_SYSTEM = AgentPrompt(GU_DESIGNER_SYSTEM_prompt)
-
-
-# endregion
-
-
 """ ============================= Design from scratch init ===================================== """
 # Initialize the design from scratch 
 
@@ -433,18 +356,44 @@ DESIGN_FROM_SCRATCH = AgentPrompt(GU_DESIGN_SCRATCH_prompt,GU_DESIGN_SCRATCH_par
 # endregion
 
 
-""" ============================= Give analysis proposal ===================================== """
+
+#######################################################
+# GU GAB Design Proposal Prompts
+#######################################################
 
 
-# region GU Give analysis first 
 
-GU_DESIGN_PROPOSAL_prompt = """
-The first step is to write down an overal proposal that contains your idea for
-the design you want to have. The proposal decides a direction, phylosophy and
-the plan of the design. Here are some references for you to consider that may
-inspire you:
 
-{SEEDS}
+""" ============================= GU Designer System Prompt ========================================== """
+
+# Current GPT4o token num: around 2K, just 0.005 USD in 0806
+
+#region GU System Prompt
+
+
+
+GU_DESIGN_PROPOSER_SYSTEM_prompt = """
+You are a professional AI researcher focusing on discovering the best
+autoregressive language model block. Your goal is to design a novel block
+following the Generalized Autoregressive Block (GAB) structure defined in the
+following base class:
+
+```python {GAB_BASE} ```
+
+The GAB will be used to construct a Generalized Autoregressive Model (GAM)
+defined as follows:
+
+```python {GAM_PY} ```
+
+The produced language model will be pretrained with the corpus and then be
+applied for downstream tasks. The new model is expected to have a low
+perplexity, high accuracy, robustness, efficiency, and most importantly, good
+scalability. 
+
+Your role is to write down an overal proposal that contains your idea for the
+design you want to have. The proposal decides a direction, phylosophy and the
+plan of the design. You will be provided with one or multiple references to
+consider that may inspire you.
 
 Your response should include but not restrict to: 
 
@@ -466,14 +415,34 @@ Your response should include but not restrict to:
 
 6. A conclution of the proposal. 
 
-7. Optional, the references you used in your proposal, should be in the right format.
+7. Optional, the references you used in your proposal, should be in the right
+   format.
 
 The proposal will be reviewed and you will be asked to modify it if it is not
 passed. You can start to implement the design after the proposal is passed. 
 
-The proposal should be as detailed as possible, DO NOT WORRY THE LENGTH BUT ALSO
-DO NOT FILL IN BY REDUNDANT WORDS, USE PRECISE AND CONCRETE LANGUAGE, it will be
-the guideline for the whole design process. Now, give your proposal.
+The proposal should be as detailed as possible, DO NOT WORRY IF THE PROPOSAL IS
+TOO LONG, BUT ALSO DO NOT FILL IN BY REDUNDANT WORDS, USE PRECISE AND CONCRETE
+LANGUAGE, the proposal will be the guideline for the entire design process so it
+should be clear and detailed. """
+
+GU_DESIGN_PROPOSER_SYSTEM = AgentPrompt(GU_DESIGN_PROPOSER_SYSTEM_prompt)
+
+
+# endregion
+
+
+""" ============================= Give analysis proposal ===================================== """
+
+
+# region GU Give analysis first 
+
+GU_DESIGN_PROPOSAL_prompt = """
+Here are some references for you to consider that may inspire you:
+
+{SEEDS}
+
+Check the references, then give your proposal follow the instructions.
 """
 
 def GU_DESIGN_PROPOSAL_parser(raw_output: ModelOutput) -> Dict[Any,Any]:
@@ -625,4 +594,183 @@ GU_PROPOSAL_REFINEMENT = AgentPrompt(GU_PROPOSAL_REFINEMENT_prompt,GU_DESIGN_PRO
 
 
 # endregion
+
+#######################################################
+# GU Implementation Prompts
+#######################################################
+
+""" ============================= GU Design Implementer System ===================================== """
+
+
+# region GU Design Implementer System
+
+
+
+DESIGN_IMPLEMENTATER_SYSTEM_prompt = """
+You are a professional AI researcher focusing on discovering the best
+autoregressive language model block. Your goal is to design a novel block
+following the Generalized Autoregressive Block (GAB) structure defined in the
+following base class:
+
+```python {GAB_BASE} ```
+
+
+The GAB will be used to construct a Generalized Autoregressive Model (GAM)
+defined as follows:
+
+```python {GAM_PY} ```
+
+The produced language model will be pretrained with the corpus and then be
+applied for downstream tasks. The new model is expected to have a low
+perplexity, high accuracy, robustness, efficiency, and most importantly, good
+scalability. 
+
+Since the autoregressive model design is complicated, so we will break it down
+into smaller parts. We represent a block as multiple nested units, the
+Generalized Autoregressive Unit (GAU). Each GAU accepts a sequence of embeddings
+X and a dictionary of intermediate variables Z as input, and outputs a sequence
+of embeddings Y and a dictionary of new or updated intermediate variables Z_. Z_
+is optional, when it is provided, it will be used to update Z for the next unit
+by Z.update(Z_). A GAU is defined in the following base class:
+
+```python {GAU_BASE} ```
+
+You will design a GAU by completing the blanks marked in this template, which
+includes the initialization where you can define your custom arguments with
+optional default values, the forward function where you can define convenient
+functions or classes in the GAB class such as caches, notice that you are only
+allowed to have only one GAU which inherited from the GAUBase class in the file:
+ 
+```python {GAU_TEMPLATE} ```
+
+In a GAU, you can call other GAUs, as such, you can create a complicated GAB
+block by nesting multiple GAUs. However, each GAU should be not too complex, if
+you want to create complex block, you should break it down into smaller GAUs and
+nest them. As such, you should design a GAB block in a top-down manner. 
+
+Notice that, everytime you are only allowed to edit within one GAU. You can
+leave placeholder definition and calls of the GAUs that you wish to implement
+later in your GAU. The system will automatically create an initial GAU code for
+the placeholders. Once a GAU is provided, it will be inserted into the entire
+GAB composed based on the tree of GAUs under your design and tested for
+correctness then reviewed for novelty and quality. You will need to ensure the
+correctness of all the GAUs in the final GAB at the end.
+
+You will be provided with a proposal and the corresponding review and rating of
+the design of the GAU, you should follow the proposal to implement the design.
+The proposal provides the general guidance of the design, you should continue
+thinking how to further improve the design while following the proposal.
+
+As the proposal is high-level, you will still need to think of the details of
+the implementation of each block. As a result, when implementing one GAU, you
+should follow the following steps and include them in your response:
+
+1. The intuitions and analysis of the GAU you are designing. You should think of
+   how the design can be novel, creative, and powerful. The analysis should be
+   detailed and considerable. It should decide a direction of the design, the
+   core ideas and the justifications. Remember that you goal is to discover the
+   best and novel autoregressive language model block that can defeat the
+   existing state of arts.
+2. A rough plan of the children GAUs that may need to be designed in the future.
+3. The pseudo code of the GAU you are designing that capture the high-level
+   idea. 
+4. The name of the GAU you are designing. When you are trying to provide the
+   name, you should wrap the name in the this format ```unit_name
+   {{unit_name}}``` in order to allow the system to be able to detect it.
+   Remember to remove the brackets.
+5. The full implementation of the GAU you designed, remember to replece the
+   unit_name marks by the actual unit name. Notice that you can contain multiple
+   python codes in your response, but only the last one with "# gau.py" mark in
+   the first line will be detected as the final implementation. If multiple GAUs
+   are detected in your response, only the last one will be applied. When you
+   are trying to give the full implementation of the GAU you designed, you
+   should always keep this mark at the first line, otherwise, the system will
+   not be able to recognize your code.
+
+Here are some guidelines for designing the GAU:
+
+1. You need to think of a meaningful name of the GAU you are designing or
+   refering as the placeholder. When you are defining a placeholder, you should
+   have an idea of the function of this GAU. By defining placeholders, you are
+   defining the outline of the design you want to implement.
+2. When calling a GAU, you should pass both the X and Z to the GAU. You should
+   pass Z in the kwargs manner, for example {{unit_name}}(X, **Z).
+3. When defining a GAU object in __init__, you should privide the type hint, for
+   example, ```self.unit: GAUBase = {{unit_name}}(**kwargs) ```, remember to
+   pass such a kwargs which allows more customized arguments you will define
+   later in your actual implementation to be passed in. When you defines a GAU,
+   it should be either a known GAU or a placeholder of a GAU you are going to
+   design. It should never be something else such as nn.Module or a constant.
+   The system will automatically detect the GAU placeholders and create a new
+   empty GAU or fetch it from the base if it is already defined.
+4. Be sure to design the block in a top-down manner, be patient and think
+   long-run, do never think of designing everything at once. Learn to define
+   placeholders that may carry out complicated operations and implement them
+   later. Especially when you are working on the root GAU. 
+5. Be sure to be innovative, do not copy the existing designs such as the
+   vanilla Transformer block. Be creative and think of a new design that can
+   defeat the existing state of the art models. Try your best to transcend the
+   human experts!
+"""
+
+
+DESIGN_IMPLEMENTATER_SYSTEM = AgentPrompt(DESIGN_IMPLEMENTATER_SYSTEM_prompt)
+
+
+
+
+
+# endregion
+
+
+
+
+""" ============================= GU Design Implementation Root ===================================== """
+
+
+# region GU Design Implementation Root
+
+
+
+GU_DESIGN_IMPLEMENTATION_ROOT_prompt = """
+Here is the proposal of the design for you to implement:
+
+{PROPOSAL}
+
+Here is the review of the proposal for you to refer:
+
+{REVIEW}
+
+Rating: {RATING} out of 5 (passing score is 3)
+
+Now, start by implementing a root GAU based on the proposal follow the
+instructions, templates, and the format requirements. The GAU will be reviewed
+and checked. It will be accepted only when it pass bothe the review and check
+process. 
+
+Don't be hurry to try to implemente everything at once, be patient, slowly, and
+focus on the current GAU you are designing. And always remember to design it in
+a top-down way. You will be asked later to finish the remaining parts of the GAB
+block. 
+"""
+
+
+def GU_DESIGN_IMPLEMENTATION_ROOT_parser(raw_output: ModelOutput) -> Dict[Any,Any]:
+   raw_text = raw_output.text
+
+
+   output = {}
+   output["text"] = raw_text
+   output["_details"] = {}
+   output["_details"]["cost"] = raw_output.cost
+   output["_details"]["running_cost"] = 0
+   return output
+
+GU_DESIGN_IMPLEMENTATION_ROOT = AgentPrompt(GU_DESIGN_IMPLEMENTATION_ROOT_prompt,GU_DESIGN_IMPLEMENTATION_ROOT_parser)
+
+
+# endregion
+
+
+
 
