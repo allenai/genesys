@@ -109,3 +109,9 @@ def remove_leading_indent(source_code):
     normalized_lines = [line[indent_level:] if len(line) > indent_level else line for line in lines]
 
     return '\n'.join(normalized_lines)
+
+def replace_from_second(text, old, new):
+    first_part, remaining = text.split(old, 1)
+    remaining = remaining.replace(old, new)
+    return first_part + old + remaining
+

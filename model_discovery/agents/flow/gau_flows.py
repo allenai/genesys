@@ -257,6 +257,8 @@ class GUFlowScratch(FlowCreator):
                         f'#### Format Warnings\n{format_warnings}\n\n'
                     )
                 )
+                # !!!TODO: the reformatter should rename the existing kwargs from the tree, okey for root node
+                # !!!TODO: remove any possible if __name__=='__main__' method from the code
                 # 2. Review the code for GAU
                 review, rating, suggestions = None, None, None
                 # 3. check the functionality of the composed GAB

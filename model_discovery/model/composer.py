@@ -1,6 +1,8 @@
 # Translate GAUBases to the executable GAB
 import os
+import ast, astor
 from typing import List, Dict
+import json
 
 from dataclasses import dataclass, field
 from .utils.modules import GAUBase
@@ -9,41 +11,26 @@ import model_discovery.utils as U
 
 
 
-ROOT_UNIT_TEMPLATE = '''# UNIT_NAME.py
+
+
+GAB_TEMPLATE='''
+# gab.py    # DO NOT CHANGE OR REMOVE THE MAKK HERE, KEEP IT ALWAYS THE FIRST LINE #
 
 import torch
 import torch.nn as nn
 
-from model_discovery.model.utils.modules import GAUBase # DO NOT CHANGE THIS IMPORT STATEMENT #
+from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMPORT STATEMENT #
 
 
-# YOU CAN IMPORT MORE MODULES HERE #
+class GAB(GABBase):
+    def __init__(self,embed_dim: int, block_loc: tuple, device=None,dtype=None,**kwargs): # YOU CAN ADD MORE ARGUMENTS, BUT YOU HAVE TO HAVE embed_dim, device, dtype AS THE ARGUTMENTS #
+        factory_kwargs = {{"device": device, "dtype": dtype}} # remember to pass it to nn layers
+        super().__init__(embed_dim, block_loc) # DO NOT CHANGE THIS LINE #
+        self.root = {ROOT_UNIT_NAME}(embed_dim, embed_dim=embed_dim, device=device, dtype=dtype, **kwargs)
 
-# YOU CAN DEFINE MORE CLASSES OR FUNCTIONS HERE #
-
-
-class UNIT_NAME(GAUBase): 
-    """Generalized Autoregressive Block
-        Input:        X: (batch, seqlen, embed_dim), Z: {dict of all current intermediate variables}
-        Output:       Y: (batch, seqlen, embed_dim), Z_: Optional, {dict of *new* intermediate variables to update the current Z}
-        Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
-    """
-    def __init__(self, embed_dim: int, device=None, dtype=None,**kwargs): # YOU CAN ADD MORE ARGUMENTS, BUT YOU HAVE TO HAVE embed_dim, device, dtype AS THE ARGUTMENTS #
-        # argv: list of hyperparameters
-        factory_kwargs = {"device": device, "dtype": dtype} # remember to pass it to all nn layers
-        super().__init__(embed_dim) # DO NOT CHANGE THIS LINE #
-        
-        # COMPLETING THE CODE HERE #
-
-
-    # YOU CAN ADD MORE FUNCTIONS HERE #
-
-
-    def _forward(self, X, **Z): 
-
-        # COMPLETING THE CODE HERE #
-        
-        return X
+    def _forward(self, X, *Z): 
+        X, Z = self.root(X, **Z)
+        return X, Z
 '''
 
 
@@ -120,6 +107,80 @@ def check_tree_name(name, lib_dir):
     assert name not in existing_trees, f"Tree {name} is already in the database"
 
 
+
+class GABComposer:
+    
+    def generate_gab_code(self,tree):
+        root_node = tree.root
+        generated_code = []
+        
+        # Recursively generate code for the root and its children
+        self.generate_node_code(root_node.name, generated_code, tree.units)
+        
+        # Combine all generated code into a single Python file content
+        gau_code = "\n".join(generated_code)
+
+        gathered_args={}
+        for unit in tree.units.values():
+            gathered_args.update(unit.args)
+        gab_code=GAB_TEMPLATE.format(ROOT_UNIT_NAME=root_node.name)
+
+        cfg_code=f'gab_config = {json.dumps(gathered_args)}'
+
+        compoesed_code = f'{gab_code}\n\n{gau_code}\n\n{cfg_code}'
+
+        compoesed_code=U.replace_from_second(compoesed_code,'import torch\n','')
+        compoesed_code=U.replace_from_second(compoesed_code,'import torch.nn as nn\n','')
+        compoesed_code=U.replace_from_second(compoesed_code,'from model_discovery.model.utils.modules import GAUBase\n','')
+
+        return compoesed_code
+
+
+    # Recursive function to generate code for a node and its children
+    def generate_node_code(self, unit_name, generated_code: List[str], units):
+        # Check if the node exists in units
+        if unit_name not in units:
+            # If the node does not exist in units, create a placeholder
+            generated_code.append(self.create_placeholder_class(unit_name))
+        else:
+            node = units[unit_name]
+            generated_code.append(node.code)
+            
+            # Recursively generate code for children
+            children_units=set()
+            for child_name, child_unit_name in node.children.items():
+                children_units.add(child_unit_name)
+            for child_unit in children_units:
+                self.generate_node_code(child_unit, generated_code, units)
+
+    # Function to create a placeholder class for a GAUNode
+    def create_placeholder_class(self, unit_name) -> str:
+        class_template = f"""
+class {unit_name}(GAUBase): 
+    def __init__(self, embed_dim: int, device=None, dtype=None, **kwargs): 
+        factory_kwargs = {{"device": device, "dtype": dtype}} 
+        super().__init__(embed_dim) 
+        
+    def _forward(self, X, **Z): 
+        return X
+"""
+        return class_template
+
+    # Function to convert the generated code to AST using ast and astor
+    def convert_code_to_ast(self, code: str):
+        try:
+            return ast.parse(code)
+        except SyntaxError as e:
+            print(f"Syntax error in code: {code}")
+            raise e
+
+    # Function to convert AST back to Python code using astor
+    def convert_ast_to_code(self, ast_tree: ast.AST) -> str:
+        return astor.to_source(ast_tree)
+    
+
+
+
 # ideally the GAUTree is similar to a pseudo-code
 class GAUTree:
     def __init__(self, name, proposal, review, rating, suggestions, lib_dir=None):
@@ -134,12 +195,16 @@ class GAUTree:
         self.flows_dir = U.pjoin(lib_dir, 'flows')
         U.mkdir(self.flows_dir)
 
-    def add_unit(self, name, code, args, desc, path, review, rating, report, children, suggestions):
-        assert name not in self.units, f"Unit {name} is already in the tree"
+    def add_unit(self, name, code, args, desc, path, review, rating, report, children, suggestions, overwrite=False):
+        if name in self.units and not overwrite:
+            print(f"Unit {name} is already in the tree")
+            return
+        # assert name not in self.units, f"Unit {name} is already in the tree"
         assert not self.dict.exist(name), f"Unit {name} is already registered"
-        self.units[name] = GAUNode(name, code, args, desc, path, review, rating, report, children, suggestions)
+        node = GAUNode(name, code, args, desc, path, review, rating, report, children, suggestions)
         if len(self.units)==0:
-            self.root = self.units[name]
+            self.root = node
+        self.units[name] = node
 
     def del_unit(self, name):
         assert name in self.units, f"Unit {name} is not in the tree"
@@ -175,7 +240,8 @@ class GAUTree:
         tree.root = tree.dict.get(data['root'])
         return tree
 
-    def compose_flow(self): # compose the GAB from the GAUTree and test it
-        pass
+    def compose(self): # compose the GAB from the GAUTree and test it
+        gab_code = GABComposer().generate_gab_code(self)
+        return gab_code
 
 

@@ -91,25 +91,23 @@ class AttributeChecker(ast.NodeVisitor):
                 if arg.arg not in self.required_args and arg.arg != "self":
                     self.new_args[arg.arg] = arg.annotation 
             
+            # Look for annotated assignments in the __init__ method
             for stmt in node.body:
                 if isinstance(stmt, ast.AnnAssign):
                     # Look for annotated assignments with GAUBase
                     if isinstance(stmt.annotation, ast.Name) and stmt.annotation.id == "GAUBase":
                         # Process the value (which is a constructor call) to check arguments
                         if isinstance(stmt.value, ast.Call) and isinstance(stmt.value.func, ast.Name):
-                            unit_name = stmt.value.func.id
-                            # Verify and add missing arguments
-                            existing_arg_names = {kw.arg for kw in stmt.value.keywords if kw.arg is not None}
-                            missing_args = [arg for arg in self.required_args if arg not in existing_arg_names]
-                            if missing_args:
-                                for arg in missing_args:
-                                    if arg == "kwargs":
-                                        # Handle **kwargs
-                                        stmt.value.keywords.append(ast.keyword(arg=None, value=ast.Name(id="kwargs", ctx=ast.Load())))
-                                    else:
-                                        new_kw = ast.keyword(arg=arg, value=ast.Name(id=arg, ctx=ast.Load()))
-                                        stmt.value.keywords.append(new_kw)
-                            self.children_units[stmt.target.attr] = unit_name
+                            stmt.value.keywords = []
+                            stmt.value.args = []
+                            for arg in self.required_args:
+                                if arg == "kwargs":
+                                    # Handle **kwargs
+                                    stmt.value.keywords.append(ast.keyword(arg=None, value=ast.Name(id="kwargs", ctx=ast.Load())))
+                                else:
+                                    new_kw = ast.keyword(arg=arg, value=ast.Name(id=arg, ctx=ast.Load()))
+                                    stmt.value.keywords.append(new_kw)
+                            self.children_units[stmt.target.attr] = stmt.value.func.id
 
         elif node.name == "_forward":
             self.found__forward = True
