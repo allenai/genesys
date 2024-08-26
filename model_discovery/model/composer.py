@@ -13,28 +13,6 @@ import model_discovery.utils as U
 
 
 
-GAB_TEMPLATE='''
-# gab.py    # DO NOT CHANGE OR REMOVE THE MAKK HERE, KEEP IT ALWAYS THE FIRST LINE #
-
-import torch
-import torch.nn as nn
-
-from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMPORT STATEMENT #
-
-
-class GAB(GABBase):
-    def __init__(self,embed_dim: int, block_loc: tuple, device=None,dtype=None,**kwargs): # YOU CAN ADD MORE ARGUMENTS, BUT YOU HAVE TO HAVE embed_dim, device, dtype AS THE ARGUTMENTS #
-        factory_kwargs = {{"device": device, "dtype": dtype}} # remember to pass it to nn layers
-        super().__init__(embed_dim, block_loc) # DO NOT CHANGE THIS LINE #
-        self.root = {ROOT_UNIT_NAME}(embed_dim, embed_dim=embed_dim, device=device, dtype=dtype, **kwargs)
-
-    def _forward(self, X, *Z): 
-        X, Z = self.root(X, **Z)
-        return X, Z
-'''
-
-
-
 @dataclass
 class GAUNode: # this is mainly used to 1. track the hierarchies 2. used for the Linker to solve the dependencies 3. fully serialize the GAUTree
     name: str # name of the GAU 
@@ -108,6 +86,27 @@ def check_tree_name(name, lib_dir):
 
 
 
+
+GAB_TEMPLATE='''
+# gab.py    # DO NOT CHANGE OR REMOVE THE MAKK HERE, KEEP IT ALWAYS THE FIRST LINE #
+
+import torch
+import torch.nn as nn
+
+from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMPORT STATEMENT #
+
+
+class GAB(GABBase):
+    def __init__(self,embed_dim: int, block_loc: tuple, device=None,dtype=None,**kwargs): # YOU CAN ADD MORE ARGUMENTS, BUT YOU HAVE TO HAVE embed_dim, device, dtype AS THE ARGUTMENTS #
+        factory_kwargs = {{"device": device, "dtype": dtype}} # remember to pass it to nn layers
+        super().__init__(embed_dim, block_loc) # DO NOT CHANGE THIS LINE #
+        self.root = {ROOT_UNIT_NAME}(embed_dim=embed_dim, device=device, dtype=dtype, **kwargs)
+
+    def _forward(self, X, **Z): 
+        X, Z = self.root(X, **Z)
+        return X, Z
+'''
+
 class GABComposer:
     
     def generate_gab_code(self,tree):
@@ -177,7 +176,6 @@ class {unit_name}(GAUBase):
     # Function to convert AST back to Python code using astor
     def convert_ast_to_code(self, ast_tree: ast.AST) -> str:
         return astor.to_source(ast_tree)
-    
 
 
 

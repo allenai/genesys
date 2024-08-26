@@ -261,20 +261,27 @@ class GUFlowScratch(FlowCreator):
                 # !!!TODO: remove any possible if __name__=='__main__' method from the code
                 # 2. Review the code for GAU
                 review, rating, suggestions = None, None, None
+
                 # 3. check the functionality of the composed GAB
                 if format_errors==[]:
                     self.tree.add_unit(
                         out['unit_name'],reformatted_code,new_args,out['analysis'],called_path,review,rating,None,gau_children,suggestions
                     )
-                    report,checkpass=None,False
-                    self.tree.units[out['unit_name']].report=report # report was left empty earlier
-                    if checkpass:
-                        self.stream.write(f'### Check passed')
-                    else:
+                    design_name=self.tree.name.replace(' ','_')
+                    gabcode = self.tree.compose()
+                    # XXX: The way how vars pass may still problematic, i.e. **Z
+                    checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(self.system._cfg,gabcode,design_name)
+                    self.stream.write(f'### Check passed: {checkpass}')
+                    self.stream.write(f'### Check Report\n```python\n{check_report}\n```')
+                    self.stream.write(f'### Check Output\n```python\n{check_results}\n```')
+                    self.stream.write(f'### Reformatted GAB Code\n```python\n{gabcode_reformat}\n```')
+                    
+                    self.tree.units[out['unit_name']].report=check_report+f'\n\nChecker output:\n{check_results}'
+                    if not checkpass or rating<=3: # retry
                         self.tree.del_unit(out['unit_name'])
             
 
-            # break # NOTE: REMEMBER TO REMOVE THIS LINE
+            break # NOTE: REMEMBER TO REMOVE THIS LINE
 
         return query,state,{}
 

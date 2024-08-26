@@ -18,21 +18,21 @@ class GABBase(nn.Module):
         self.embed_dim = embed_dim
         self.block_loc = block_loc # location of a block within the network, (layer_idx, n_block)
 
-    def _forward(self, X, *Z): 
+    def _forward(self, X, **Z): 
         raise NotImplementedError
      
     # YOU ARE NOT ALLOW TO OVERRIDE THIS METHOD #
-    def forward(self, X, *Z): # kwargs not parsable by torchscript but more flexible
+    def forward(self, X, **Z): # kwargs not parsable by torchscript but more flexible
         """Forward pass of the model"""
         assert len(X.shape) == 3, "Input shape must be (batch, seqlen, embed_dim)"
         assert X.shape[-1] == self.embed_dim
-        Y = self._forward(X, *Z)
+        Y = self._forward(X, **Z)
         if isinstance(Y, tuple):
             Y, Z = Y
         else:
-            Z = ()
+            Z = {}
         assert Y.shape == X.shape, f"GAB Output shape must be the same as input shape, got {Y.shape} instead"
-        assert isinstance(Z, tuple), "Intermediate variables must be stored in a tuple"
+        assert isinstance(Z, dict), "Intermediate variables must be stored in a dict"
         return Y, Z
     
 
@@ -50,7 +50,7 @@ class GAUBase(nn.Module):
     def _forward(self, X, **Z):
         raise NotImplementedError
     
-    def forward(self, X, Z):
+    def forward(self, X, **Z):
         assert len(X.shape) == 3, "Input shape must be (batch, seqlen, embed_dim)"
         assert X.shape[-1] == self.embed_dim
         _params = inspect.signature(self._forward).parameters
