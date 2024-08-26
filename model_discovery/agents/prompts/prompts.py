@@ -447,7 +447,7 @@ version for you to review:
 
 The change log:
 
-{CHANGE_LOG}
+{CHANGES}
 
 Read the refined proposal carefully, check the change log, think of whether
 those changes can address the concerns you pointed out in the previous review.
@@ -593,10 +593,13 @@ Here are some guidelines for designing the GAU:
    No need to worry about the placeholders, the system will automatically create
    the empty GAU classes for them.
  - You must have the GAU class that inherited from GAUBase defined in your code,
-   here is what will happen if it is not found: 1. If there are multiple or no
-   GAUBase classes detected, the system will report an error. 2. If there is
-   only one GAUBase class detected, the system will automatically rename it and
-   regard it as the GAU class you designed.
+   here is what will happen if it is not found: 1. If there is no GAUBase
+   classes detected, the system will report an error. 2. If there is only one
+   GAUBase class detected, the system will automatically rename it and regard it
+   as the GAU class you designed. 3. If there are multiple GAUBase classes
+   detected, the system will take the one with the name "GAU" or the unit_name
+   you provided as the GAU class you designed, and remove others. If no such
+   name is found, the system will report an error.
  - When calling a GAU, you should pass both the X and Z to the GAU. You should
    pass Z in the kwargs manner, for example {{unit_name}}(X, **Z).
  - When defining a GAU object in __init__, you should privide the type hint, for
@@ -705,6 +708,10 @@ GU_IMPLEMENTATION_ROOT = AgentPrompt(GU_IMPLEMENTATION_ROOT_prompt,GENERAL_JSON_
 
 
 # region GU Implementation Check Root
+
+
+
+
 
 
 

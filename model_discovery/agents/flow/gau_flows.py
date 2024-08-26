@@ -2,15 +2,14 @@ import os
 import numpy as np
 from typing import Any,Dict, List
 import inspect
-import ast
-import astor
 
 from exec_utils.models.model import ModelOutput
 from .alang import FlowCreator,register_module,ROLE,SYSTEM_CALLER,USER_CALLER,AgentContext
+from .gau_utils import check_and_reformat_gau_code
 
 # from model_discovery.system import ModelDiscoverySystem
 import model_discovery.agents.prompts.prompts as P
-from model_discovery.model.composer import ROOT_UNIT_TEMPLATE,GAUBase
+from model_discovery.model.composer import GAUBase, GAUTree, check_tree_name
 
 
 current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
@@ -39,6 +38,10 @@ def apply_prompt(role,prompt,**kwargs):
     return role,_prompt
 
 
+def collapse_write(stream,summary,content):
+    stream.write(f'<details><summary>{summary}</summary>{content}</details>',unsafe_allow_html=True)
+
+
 def print_details(stream,agent,context,prompt):
     if not hasattr(stream,'_isprintsystem'):
         stream.write('Details of the input:')
@@ -64,66 +67,6 @@ def print_raw_output(stream,out):
         )
 
 
-
-class GAUReformer(ast.NodeTransformer):
-    def __init__(self):
-        self.errors = []
-        self.gau_class_found = False
-        self.gaubase_classes = []
-        self.found_gaubase_import = False
-
-    def visit_ImportFrom(self, node):
-        # Check if 'from model_discovery.model.utils.modules import GAUBase' exists
-        if node.module == 'model_discovery.model.utils.modules' and any(alias.name == 'GAUBase' for alias in node.names):
-            self.found_gaubase_import = True
-        return self.generic_visit(node)
-
-    def visit_ClassDef(self, node):
-        # Check for classes inheriting from GAUBase
-        if any(base.id == "GAUBase" for base in node.bases):
-            self.gaubase_classes.append(node)
-        
-        # Check if there's a class named 'GAU'
-        if node.name == "GAU":
-            self.gau_class_found = True
-            # Ensure GAU inherits from GAUBase
-            if not any(base.id == "GAUBase" for base in node.bases):
-                node.bases = [ast.Name(id="GAUBase", ctx=ast.Load())]
-        
-        return self.generic_visit(node)
-
-    def visit_Module(self, node):
-        # Add import if not found
-        if not self.found_gaubase_import:
-            gaubase_import = ast.ImportFrom(module='model_discovery.model.utils.modules', names=[ast.alias(name='GAUBase', asname=None)], level=0)
-            node.body.insert(1, gaubase_import)
-
-        # Handle GAU class detection and renaming
-        if not self.gau_class_found:
-            if len(self.gaubase_classes) == 1:
-                # Rename the only GAUBase class to GAU
-                gau_class_node = self.gaubase_classes[0]
-                gau_class_node.name = "GAU"
-            elif len(self.gaubase_classes) == 0:                                                                                                                                         self.errors.append("Error: No class inheriting from GAUBase found.")
-            else:
-                self.errors.append("Error: Multiple classes inheriting from GAUBase found.")
-        else:
-            # Remove other classes that inherit from GAUBase (other than GAU)
-            for cls in self.gaubase_classes:
-                if cls.name != "GAU":
-                    node.body.remove(cls)
-
-        return self.generic_visit(node)
-
-def check_and_reformat_gau_code(source_code):
-    tree = ast.parse(source_code)
-    reformer = GAUReformer()
-    transformed_tree = reformer.visit(tree)
-    reformatted_code = astor.to_source(transformed_tree)
-    
-    return reformatted_code, reformer.errors
-
-
 class GUFlowScratch(FlowCreator): 
     """
     The flow for designing a GAB Flow nested of GAB Units from scratch.
@@ -138,11 +81,15 @@ class GUFlowScratch(FlowCreator):
         self.outs=[]
         self.max_attemps={
             'design_proposal':10,
+            'implementation_debug':10,
         }
+        self.lib_dir=system.lib_dir
 
         # prepare roles
         self.gpt4o0806_agent=self.system.designer # as we replaced the system prompt, essential its just a base agent
         self.gpt4omini_agent=self.system.debugger 
+
+        self.tree = None
 
     def _links(self):
         links_def=[
@@ -167,7 +114,7 @@ class GUFlowScratch(FlowCreator):
     @register_module(
         "PROC",
         hints="output the proposal after review",
-        links='implement_proposal',
+        links='implement_proposal_root',
     )
     def generate_proposal(self,query,state,main_tid):
         self.dialog=self.system.dialog
@@ -223,7 +170,7 @@ class GUFlowScratch(FlowCreator):
                 P.GU_PROPOSAL_REVIEW.apply(PROPOSAL_REVIEWER.obj)
             else:
                 status_info=f'Refining refined proposal (version {i})...'
-                proposal_review_prompt=P.GU_PROPOSAL_REREVIEW(PROPOSAL=proposal)
+                proposal_review_prompt=P.GU_PROPOSAL_REREVIEW(PROPOSAL=proposal,CHANGES=changes)
                 P.GU_PROPOSAL_REREVIEW.apply(PROPOSAL_REVIEWER.obj)
             
             with self.status_handler(status_info):
@@ -237,7 +184,6 @@ class GUFlowScratch(FlowCreator):
                 self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
                 self.print_raw_output(out)
 
-
             trace={
                 'title':title,
                 'proposal':proposal,
@@ -249,6 +195,8 @@ class GUFlowScratch(FlowCreator):
 
             if rating>3:
                 self.stream.write(f'#### Proposal passed with rating {rating} out of 5, starting implementation')
+                check_tree_name(title,self.lib_dir) # TODO: error handling
+                self.tree=GAUTree(name=title,proposal=proposal,review=review,rating=rating,suggestions=suggestions,lib_dir=self.lib_dir)
                 break
         
         if rating<=3:
@@ -260,52 +208,71 @@ class GUFlowScratch(FlowCreator):
         }
         return query,state,RET
     
-
-    def check_GAU(self,gau_code):
-
-        # check format
-        # 1. if multiple GAUBase classes are defined
-        # 2. if the class is named GAU
-        # 3. if the imports are correct
-
-        # check functionality
-        # 1. create placeholders
-        # 2. run checker to check the whole model
-
-
-        return True
-
     
     @register_module(
         "PROC",
         hints="output the initial threads",
         links='end_of_design',
     )
-    def implement_proposal(self,query,state,main_tid,proposal):
+    def implement_proposal_root(self,query,state,main_tid,proposal):
         self.dialog=self.system.dialog
         
         traces=[]
         context_design_implementer=AgentContext()
-        DESIGN_IMPLEMENTER=reload_role('design_implementer',self.gpt4o0806_agent,P.DESIGN_IMPLEMENTATER_SYSTEM(
-            GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
-        design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
-                                            alias='design_proposal',note=f'Starting design proposal...')
-        
-        status_info=f'Starting design implementation of root unit...'
-        with self.status_handler(status_info):
-            gu_design_root_prompt=P.GU_IMPLEMENTATION_ROOT(
-                PROPOSAL=proposal['proposal'],REVIEW=proposal['review'],RATING=proposal['rating'])
-            P.GU_IMPLEMENTATION_ROOT.apply(DESIGN_IMPLEMENTER.obj)
-            self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_design_root_prompt)
-            _,out=self.dialog.call(design_implementer_tid,gu_design_root_prompt)
+        context_implementation_reviewer=AgentContext()
+        for i in range(self.max_attemps['design_proposal']):
+            DESIGN_IMPLEMENTER=reload_role('design_implementer',self.gpt4o0806_agent,P.DESIGN_IMPLEMENTATER_SYSTEM(
+                GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
+            design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
+                                                alias='design_proposal',note=f'Starting design proposal...')
+            
+            status_info=f'Starting design implementation of root unit...'
+            with self.status_handler(status_info):
+                gu_design_root_prompt=P.GU_IMPLEMENTATION_ROOT(
+                    PROPOSAL=proposal['proposal'],REVIEW=proposal['review'],RATING=proposal['rating'])
+                P.GU_IMPLEMENTATION_ROOT.apply(DESIGN_IMPLEMENTER.obj)
+                self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_design_root_prompt)
+                _,out=self.dialog.call(design_implementer_tid,gu_design_root_prompt)
 
-            self.stream.write(f'## Implementation of {out['unit_name']}')
-            self.stream.write(out['analysis'])
-            self.stream.write(f'### Code\n```python\n{out['implementation']}\n```')
-                              
-            self.print_raw_output(out)
+                self.stream.write(f'## Implementation of {out["unit_name"]}')
+                self.stream.write(out['analysis'])
+                self.stream.write(f'### Code\n```python\n{out["implementation"]}\n```')
+                                
+                self.print_raw_output(out)
 
-        
+            # Run all checks for every implementations, optimize both grammar and semantics at the same time 
+            # avoid redundant debugging steps, i.e. only the debug for the passed plans are needed
+            with self.status_handler('Checking the implementation of the root unit...'):
+                # 1. check the format code for GAU
+                reformatted_code,gau_children,new_args,called_path,format_errors,format_warnings=check_and_reformat_gau_code(out['implementation'],out['unit_name'])
+                collapse_write(
+                    self.stream,
+                    'Code format check',
+                    (
+                        f'### Reformatted Code\n```python\n{reformatted_code}\n```\n\n'
+                        f'#### Detected Children\n{gau_children}\n\n'
+                        f'#### New Arguments\n{new_args}\n\n'
+                        f'#### Called Path\n{called_path}\n\n'
+                        f'#### Format Errors\n{format_errors}\n\n'
+                        f'#### Format Warnings\n{format_warnings}\n\n'
+                    )
+                )
+                # 2. Review the code for GAU
+                review, rating, suggestions = None, None, None
+                # 3. check the functionality of the composed GAB
+                if format_errors==[]:
+                    self.tree.add_unit(
+                        out['unit_name'],reformatted_code,new_args,out['analysis'],called_path,review,rating,None,gau_children,suggestions
+                    )
+                    report,checkpass=None,False
+                    self.tree.units[out['unit_name']].report=report # report was left empty earlier
+                    if checkpass:
+                        self.stream.write(f'### Check passed')
+                    else:
+                        self.tree.del_unit(out['unit_name'])
+            
+
+            # break # NOTE: REMEMBER TO REMOVE THIS LINE
 
         return query,state,{}
 

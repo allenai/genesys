@@ -180,9 +180,9 @@ class LibraryReference(NodeObject):
         if self.venue:
             mdtext+=f'\n\n**Published at *{self.venue}* in *{self.year}***'
         if self.citationCount:
-            mdtext+=f'\n**Cited {self.citationCount} times**'
+            mdtext+=f'\n\n**Cited {self.citationCount} times**'
         if self.influentialCitationCount:
-            mdtext+=f'\n**Impactful citations {self.influentialCitationCount}**'
+            mdtext+=f'\n\n**Impactful citations {self.influentialCitationCount}**'
         if self.description:
             description=self.description.replace('.','.\n') if reformat else self.description
             mdtext+=f'\n\n### Description\n{description}'
@@ -549,10 +549,11 @@ class EvolutionSystem(exec_utils.System):
         self.stream.write(f"Checkpoint directory: {self.evo_dir}")
 
         self.rnd_agent = BuildSystem(
-            debug_steps=True, # True for debugging, but very long
+            debug_steps=False, # True for debugging, but very long
             # cache_type="diskcache", #<-- agent caching method 
             temperature=0.1,
             jupyter=False,
+            lib_dir=U.pjoin(self.evo_dir,'lib'),
             # cache_id=919,
             #from_json='/path/to/config'
             **kwargs

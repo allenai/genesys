@@ -170,6 +170,12 @@ class CustomParams(exec_utils.ModuleParams):
             "help" : 'Location of code prompting ',
         }
     )
+    lib_dir: str = exec_utils.ParamField(
+        default=None,
+        metadata={
+            "help" : 'GAU Library directory',
+        }
+    )
     ### debugging
     debug_steps: bool = exec_utils.ParamField(
         default=True,
@@ -250,7 +256,6 @@ class PrintSystem:
         print(msg)
 
 
-
 @exec_utils.Registry(
     resource_type="system_type",
     name="model_discovery_system",
@@ -297,6 +302,7 @@ class ModelDiscoverySystem(exec_utils.System):
         reviewers : Dict[str,Type[exec_utils.SimpleLMAgent]],
         checker  : Type[exec_utils.BaseTool], 
         debugger : Type[exec_utils.SimpleLMAgent],
+        lib_dir: str,
         *,
         block_template: str,
         gam_template: str,
@@ -328,6 +334,10 @@ class ModelDiscoverySystem(exec_utils.System):
         self.gab_py = block_template
         self._config = config
         self._cfg = gam_config
+        self.lib_dir = lib_dir
+
+
+        # Load flows
 
         self.review_flow=AgentDialogFlowNaive('Model Review Flow',review_naive)
         self.DESIGN_ALANG =design_flow_definition()
@@ -441,6 +451,7 @@ class ModelDiscoverySystem(exec_utils.System):
             reviewers,
             checker,
             debugger,
+            lib_dir=config.lib_dir,
             block_template=block,
             gam_template=code,
             config=config,

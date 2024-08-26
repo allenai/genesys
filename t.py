@@ -1,106 +1,120 @@
-# import torch
-# import torch.nn as nn
+import ast
+import astor
 
-# from mamba_ssm.modules.mha import MHA
+class GAUReformer(ast.NodeTransformer):
+    def __init__(self, unit_name):
+        self.errors = []
+        self.gau_class_found = False
+        self.gaubase_classes = []
+        self.unit_name = unit_name
+        self.found_gaubase_import = False
 
+    def is_inheriting_from_gaubase(self, bases):
+        # Check if any of the base classes are GAUBase, whether directly as ast.Name or ast.Attribute
+        for base in bases:
+            if isinstance(base, ast.Name) and base.id == "GAUBase":
+                return True
+            elif isinstance(base, ast.Attribute) and base.attr == "GAUBase":
+                return True
+        return False
 
-# class GAB(nn.Module):
-#     """Generalized Autoregressive Block
-#         Input:        X: (batch, seqlen, embed_dim)
-#         Output:       Y: (batch, seqlen, embed_dim)
-#         Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
-#     """
-#     def __init__(self, embed_dim: int, device=None, dtype=None, n_heads=8, dropout=0.1): 
-#         factory_kwargs = {"device": device, "dtype": dtype} 
-#         super().__init__()
+    def visit_ImportFrom(self, node):
+        # Check if 'from model_discovery.model.utils.modules import GAUBase' exists
+        if node.module == 'model_discovery.model.utils.modules' and any(alias.name == 'GAUBase' for alias in node.names):
+            self.found_gaubase_import = True
+        return self.generic_visit(node)
+
+    def visit_ClassDef(self, node):
+        # Check for classes inheriting from GAUBase
+        if self.is_inheriting_from_gaubase(node.bases):
+            self.gaubase_classes.append(node)
         
-#         self.attention = nn.MultiheadAttention(embed_dim, n_heads, dropout=dropout, **factory_kwargs)
-#         self.bidir_attn = MHA(embed_dim, n_heads, **factory_kwargs)
-#         self.causal_attn = MHA(embed_dim, n_heads, causal=True, **factory_kwargs)
-
-#         self.lstm=nn.LSTM(embed_dim, embed_dim, batch_first=True)
-#         self.bilstm=nn.LSTM(embed_dim, embed_dim, batch_first=True, bidirectional=True)
-
-#         self.causal_conv = nn.Conv1d(embed_dim, embed_dim, kernel_size=3, padding=2, groups=4, **factory_kwargs)
-#         self.bidir_conv = nn.Conv1d(embed_dim, embed_dim, 3, padding=1)
-
-#     def forward(self, X, **kwargs): 
-#         mask = nn.Transformer.generate_square_subsequent_mask(len(X)).to(X.device)
-#         causal_output, _ = self.attention(X, X, X, attn_mask=mask)
-#         bidir_output, _ = self.attention(X, X, X)
+        # Check if there's a class named 'GAU'
+        if node.name == "GAU":
+            self.gau_class_found = True
+            # Rename GAU class to unit_name
+            node.name = self.unit_name
+            # Ensure GAU inherits from GAUBase
+            if not self.is_inheriting_from_gaubase(node.bases):
+                node.bases = [ast.Name(id="GAUBase", ctx=ast.Load())]
         
-#         # causal_output = self.causal_attn(X)
-#         # bidir_output = self.bidir_attn(X)
+        return self.generic_visit(node)
 
-#         # causal_output,_ = self.lstm(X)
-#         # bidir_output,_ = self.bilstm(X)
+    def visit_Module(self, node):
+        # Add import if not found
+        if not self.found_gaubase_import:
+            gaubase_import = ast.ImportFrom(module='model_discovery.model.utils.modules', names=[ast.alias(name='GAUBase', asname=None)], level=0)
+            node.body.insert(0, gaubase_import)
 
-#         # causal_output = self.causal_conv(X.permute(0,2,1)).permute(0,2,1)[:,:-2]
-#         # bidir_output = self.bidir_conv(X.permute(0,2,1)).permute(0,2,1)
-#         return causal_output, bidir_output
+        # Handle GAU class detection and renaming
+        if not self.gau_class_found:
+            if len(self.gaubase_classes) == 1:
+                # Rename the only GAUBase class to GAU (with unit_name)
+                gau_class_node = self.gaubase_classes[0]
+                gau_class_node.name = self.unit_name
+            elif len(self.gaubase_classes) > 1:
+                # Find the class with the name matching unit_name
+                matching_class = None
+                for cls in self.gaubase_classes:
+                    if cls.name == self.unit_name:
+                        matching_class = cls
+                        break
+                
+                if matching_class:
+                    matching_class.name = self.unit_name
+                else:
+                    self.errors.append(f"Error: Multiple classes inheriting from GAUBase found, but none match the provided unit_name '{self.unit_name}'.")
+            else:
+                self.errors.append("Error: No class inheriting from GAUBase found.")
+        else:
+            # Remove other classes that inherit from GAUBase (other than the renamed class)
+            for cls in self.gaubase_classes:
+                if cls.name != self.unit_name:
+                    node.body.remove(cls)
 
-# mha=GAB(32)
-# mha.eval()
+        return self.generic_visit(node)
 
-# input = torch.arange(10 * 32 * 32).float().reshape(10, 32, 32)
-# causal_out,bidir_out= mha(input)
-
-# input_=input.clone()
-# input_[:, 16:,:] *= -1
-# causal_out_pert,bidir_out_pert = mha(input_)
-
-# print('Causal MHA:',torch.allclose(causal_out[:, :16,:], causal_out_pert[:, :16,:]))  
-# print('Bi-Dir MHA:',torch.allclose(bidir_out[:,:16], bidir_out_pert[:,:16]))
-
-
-#####################################################################################################################
-
-# import torch
-# from torch import nn
-# import time
-
-# class Net(nn.Module):
-#     def __init__(self):
-#         super(Net, self).__init__()
-#         self.conv1 = nn.Conv2d(1, 6, 3)
-#         self.conv2 = nn.Conv2d(6, 16, 3)
-#         self.fc1 = nn.Linear(16 * 6 * 6, 120)
-#         self.fc2 = nn.Linear(120, 84)
-#         self.fc3 = nn.Linear(84, 10)
-
-#     def forward(self, x):
-#         x = torch.max_pool2d(torch.relu(self.conv1(x)), (2, 2))
-#         x = torch.max_pool2d(torch.relu(self.conv2(x)), 2)
-#         x = x.view(-1, self.num_flat_features(x))
-#         x = torch.relu(self.fc1(x))
-#         x = torch.relu(self.fc2(x))
-#         x = self.fc3(x)
-#         return x
-
-#     def num_flat_features(self, x):
-#         size = x.size()[1:]
-#         num_features = 1
-#         for s in size:
-#             num_features *= s
-#         return num_features
+def check_and_reformat_code(source_code, unit_name):
+    tree = ast.parse(source_code)
+    reformer = GAUReformer(unit_name)
+    transformed_tree = reformer.visit(tree)
+    reformatted_code = astor.to_source(transformed_tree)
     
-# while True:
-#     t0=time.time()
-#     net = Net().cuda()
-#     # print("Time to create the network: ", time.time()-t0)
-#     x=torch.randn(8,1,32,32).cuda()
-#     t0=time.time()
-#     y=net(x)
-#     # print("Time to forward pass: ", time.time()-t0)
+    return reformatted_code, reformer.errors
 
+# Example usage
+source_code = """
+# gau.py
 
-#####################################################################################################################
+import torch
+import torch.nn as nn
 
+from model_discovery.model.utils.modules import GAUBase
 
-import os
+# Placeholder classes for future implementation
+class MemoryAccessUnit(GAUBase):
+    def __init__(self, embed_dim, memory_size, device=None, dtype=None):
+        super().__init__(embed_dim)
 
-# Ch\\
+    def _forward(self, X, **Z):
+        return X, {}
 
-print(os.environ)
+class DownsamplingUnit(GAUBase):
+    def __init__(self, embed_dim, downsample_factor, device=None, dtype=None):
+        super().__init__(embed_dim)
 
+    def _forward(self, X, **Z):
+        return X, {}
 
+class GAU(GAUBase):  # This class will be renamed to the unit_name
+    def __init__(self, embed_dim: int, device=None, dtype=None):
+        super().__init__(embed_dim)
+
+    def _forward(self, X, **Z):
+        return X, Z
+"""
+
+unit_name = "CustomGAU"  # Provide the unit_name to rename GAU class
+reformatted_code, errors = check_and_reformat_code(source_code, unit_name)
+print("Reformatted Code:\n", reformatted_code)
+print("Errors:\n", errors)
