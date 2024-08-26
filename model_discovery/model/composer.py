@@ -22,25 +22,14 @@ class GAUNode: # this is mainly used to 1. track the hierarchies 2. used for the
     path: List[str] # execution path of the GAU children objects
     review: str 
     rating: str
-    report: str # report of checks and tests
     children: Dict[str,str] # children of the GAU, key is the object name, value is the unit name
     suggestions: str # suggestions for the GAU from reviewer for further improvement
 
+    def json(self):
+        return json.dumps(self.__dict__, indent=4)
 
     def save(self, dir):
-        data={
-            'name':self.name,
-            'code':self.code,
-            'args':self.args,
-            'desc':self.desc,
-            'path':self.path,
-            'review':self.review,
-            'rating':self.rating,
-            'report':self.report,
-            'children':self.children,
-            'suggestions':self.suggestions
-        }
-        U.save_json(data,U.pjoin(dir,f'{self.name}.json'))
+        U.save_json(self.__dict__,U.pjoin(dir,f'{self.name}.json'))
 
     @classmethod
     def load(cls, name, dir):
@@ -193,13 +182,13 @@ class GAUTree:
         self.flows_dir = U.pjoin(lib_dir, 'flows')
         U.mkdir(self.flows_dir)
 
-    def add_unit(self, name, code, args, desc, path, review, rating, report, children, suggestions, overwrite=False):
+    def add_unit(self, name, code, args, desc, path, review, rating, children, suggestions, overwrite=False):
         if name in self.units and not overwrite:
             print(f"Unit {name} is already in the tree")
             return
         # assert name not in self.units, f"Unit {name} is already in the tree"
         assert not self.dict.exist(name), f"Unit {name} is already registered"
-        node = GAUNode(name, code, args, desc, path, review, rating, report, children, suggestions)
+        node = GAUNode(name, code, args, desc, path, review, rating, children, suggestions)
         if len(self.units)==0:
             self.root = node
         self.units[name] = node

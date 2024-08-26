@@ -370,7 +370,7 @@ Your proposal has been reviewed and rated by the expert, here is the feedback:
 
 {REVIEW}
 
-Rating: {RATING} out of 5 (passing score is 3)
+Rating: {RATING} out of 5 ({PASS_OR_NOT})
 
 Suggestions: {SUGGESTIONS}
 
@@ -461,33 +461,8 @@ Be very strict and fair. Do not pass a proposal easily, give a pass only when it
 is good enough.
 """
 
-GU_PROPOSAL_REREVIEW_format = {
-   "type": "json_schema",
-   "json_schema": {
-         "name": "review_response",
-         "strict": True,
-         "schema": {
-            "type": "object",
-            "properties": {
-               "review": {
-                     "type": "string",
-               },
-               "rating": {
-                     "type": "number",
-                     "description": "A float number between 0 and 5."
-               },
-               "suggestions": {
-                     "type": "string",
-                     "description": "The suggestions for clarification, correction, or additional information."
-               },
-            },
-            "required": ["review", "rating","suggestions"],
-            "additionalProperties": False
-         }
-   }
-}
 
-GU_PROPOSAL_REREVIEW = AgentPrompt(GU_PROPOSAL_REREVIEW_prompt,GENERAL_JSON_parser,GU_PROPOSAL_REREVIEW_format)
+GU_PROPOSAL_REREVIEW = AgentPrompt(GU_PROPOSAL_REREVIEW_prompt,GENERAL_JSON_parser,GU_PROPOSAL_REVIEW_format)
 
 # endregion
 
@@ -655,7 +630,7 @@ Here is the review of the proposal for you to refer:
 
 {REVIEW}
 
-Rating: {RATING} out of 5 (passing score is 3)
+Rating: {RATING} out of 5 (Passing score is >3)
 
 Now, start by implementing a root GAU based on the proposal follow the
 instructions, templates, and the format requirements. The GAU will be reviewed
@@ -704,15 +679,242 @@ GU_IMPLEMENTATION_ROOT = AgentPrompt(GU_IMPLEMENTATION_ROOT_prompt,GENERAL_JSON_
 # endregion
 
 
-""" ============================= GU Implementation Check Prompt ===================================== """
 
 
-# region GU Implementation Check Root
+""" ============================= GU Implementation Reviewer System ===================================== """
+
+
+# region GU Give analysis first 
+
+
+GU_IMPLEMENTATION_REVIEWER_SYSTEM_prompt = """
+You are a an expert in autoregressive language model research, you are asked to
+review the details and implementations of a novel autoregressive language model
+block. 
+
+As the language model design is complicated, so we break it down into smaller
+units, called the Generalized Autoregressive Unit (GAU). Each GAU accepts a
+sequence of embeddings X and a dictionary of intermediate variables Z as input,
+and outputs a sequence of embeddings Y and a dictionary of new or updated
+intermediate variables Z_. Z_ is optional, when it is provided, it will be used
+to update Z for the next unit by Z.update(Z_). A GAU is defined in the following
+base class: 
+
+{GAU_BASE}
+
+
+By nesting multiple GAUs, we can design arbitrary complex autoregressive
+language model blocks. Every time, a model designer agent will design or refine
+a GAU following an overall proposal. You are asked to review the design and its
+implementation, and give review, rating and suggestions to the designer.
+
+Here is the instruction about how to review the unit design:
+
+1. Check if the design and implementation is potentially accurate, robust,
+   efficient, and scalable.
+
+2. The designed block must be novel, you need to check whether the designer is
+   simply applying an existing design such as a transformer block. 
+
+3. Find the highlights of the design, think of whether those highlights can lead
+   to a successful design described above. Then think of the potential problems,
+   limitations, risk or weaknesses of the design. Write down those concerns in
+   your review.
+
+3. If there is any unclear part, missing part, mistakes, unjustified, unrigorous
+   parts in the design or implementation, you should explicitly point them out
+   in your suggestions. 
+
+4. Notice that, empirical results are not expected in the design stage, so you
+   should check the design based on the theoretical analysis and the proposal of
+   the design.
+
+5. The implementation may have error, such as not causal, or not differentiable,
+   such error is not your concern, unless it is a design error. You should focus
+   on the design, not the implementation error. But you should check whether the
+   idea can be implemented in a causal, differentiable and efficient way.
+   
+Your evaluation should be fair and comprehensive. 
+"""
+
+GU_IMPLEMENTATION_REVIEWER_SYSTEM = AgentPrompt(GU_IMPLEMENTATION_REVIEWER_SYSTEM_prompt)
+
+# endregion
+
+
+
+""" ============================= GU Implementation Root Review Prompt ===================================== """
+
+
+# region GU Implementation Root Review 
+
+GU_IMPLEMENTATION_ROOT_REVIEW_prompt = """
+The designer has designed and implemented a root GAU named {UNIT_NAME} following
+this proposal:
+
+{PROPOSAL}
+
+Notice that the designer is allowed to introduce new ideas and details that are
+not covered in the proposal that can improve the design. As long as the design
+does not change the core idea of the proposal, it is acceptable.
+
+Here is the design idea of the root GAU:
+
+{ANALYSIS}
+
+Here is the full implementation of the root GAU:
+
+{IMPLEMENTATION}
+
+Here is the information from the checker, the checker checks the forward,
+backward, causality, etc., of the language model constructed using the designed
+GAU and possibly other GAUs which are designed and checked previously, the
+execution trace is provideded for you to refer:
+
+{CHECKER_REPORT}
+
+Read the proposal first, then the design ideas carefully, check the
+implementation and the checker information, then give your review, rating, and
+suggestions. Rememeber that the rating and review should be completely based on
+the *design* not the writing. Your rating decides whether the design can pass or
+not, rating is a float number between 0 and 5. 1 is bad, 2 is not good enough, 3
+is really good, 4 is excellent, 5 is an outstanding design you have never seen
+and highly recommended. 3 is the boarder for pass. If there is a clear error in
+the design or implementation, you should point it out in your review or
+suggestions.
+
+Be very strict and fair. Do not pass a design easily, give a pass only when it
+is good enough.
+"""
+
+GU_IMPLEMENTATION_ROOT_REVIEW_format = {
+   "type": "json_schema",
+   "json_schema": {
+         "name": "review_response",
+         "strict": True,
+         "schema": {
+            "type": "object",
+            "properties": {
+               "review": {
+                     "type": "string",
+               },
+               "rating": {
+                     "type": "number",
+                     "description": "A float number between 0 and 5."
+               },
+               "suggestions": {
+                     "type": "string",
+                     "description": "The suggestions for improving or correcting the design."
+               },
+            },
+            "required": ["review", "rating","suggestions"],
+            "additionalProperties": False
+         }
+   }
+}
 
 
 
 
+GU_IMPLEMENTATION_ROOT_REVIEW = AgentPrompt(GU_IMPLEMENTATION_ROOT_REVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_ROOT_REVIEW_format)
 
+
+# endregion
+
+
+
+""" ============================= GU Implementation Retry Prompt ===================================== """
+
+# region GU Implementation Retry
+
+
+FORMAT_CHECKER_REPORT = """
+Your code {RESULT} the format checker:
+
+Errors:
+
+{ERRORS}
+
+Warnings:
+
+{WARNINGS}
+"""
+
+FUNCTION_CHECKER_REPORT = """
+Your code {RESULT} the functionality checker:
+
+{REPORT}
+"""
+
+
+GU_IMPLEMENTATION_RETRY_prompt = """
+Your design has been checked by the format checker, functionality checker, and
+reviewed by the expert. However, it is not passed, here are the feedbacks.
+
+Here is the information from the format checker, it checks whether your code
+follows the format requirements:
+
+{FORMAT_CHECKER_REPORT}
+
+Here is the information from the functionality checker, it checks the forward,
+backward, causality, etc., of the language model constructed using the designed
+GAU and possibly other GAUs which are designed and checked previously, the
+execution trace is provideded for you to refer:
+
+{FUNCTION_CHECKER_REPORT}
+
+
+Here is the review of the expert:
+
+{REVIEW}
+
+Rating: {RATING} out of 5 ({PASS_OR_NOT})
+
+Here are the suggestions from the expert:
+
+{SUGGESTIONS}
+
+Please refine your design and implementation based on the feedback. You should
+address the issues and improve the design based on the suggestions. You need to
+guarantee that the implementation should pass all checkers. You need to firstly
+provide the reflection of the feedback including the checkers' if you didnt pass
+and the reviewer's, then give the full design including the new analysis, plans,
+pseudocode, and the implementations. Keeping the format instructions, finally, a
+summary of the changes you made.
+"""
+
+GU_IMPLEMENTATION_RETRY_format = {
+   "type": "json_schema",
+   "json_schema": {
+         "name": "implementation_refinement_response",
+         "strict": True,
+         "schema": {
+            "type": "object",
+            "properties": {
+               "reflection": {
+                     "type": "string",
+                     "description": "The reflection based on the review, rating, and suggestions."
+               },
+               "analysis": {
+                     "type": "string",
+                     "description": "Analysis, plans, and pseudocode of the GAU being designed"
+               },
+               "implementation": {
+                     "type": "string",
+                     "description": "the full python implementation of the designed GAU"
+               },
+               "changes": {
+                     "type": "string",
+                     "description": "The summary of the changes you made."
+               },
+            },
+            "required": ["reflection", "analysis","implementation","changes"],
+            "additionalProperties": False
+         }
+   }
+}
+
+GU_IMPLEMENTATION_RETRY= AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_RETRY_format)
 
 
 # endregion
@@ -722,7 +924,57 @@ GU_IMPLEMENTATION_ROOT = AgentPrompt(GU_IMPLEMENTATION_ROOT_prompt,GENERAL_JSON_
 
 
 
+""" ============================= GU Implementation Root Rereview Prompt ===================================== """
 
 
+# region GU Implementation Root Review 
+
+GU_IMPLEMENTATION_ROOT_REREVIEW_prompt = """
+The designer has refined its design and implemention of the root GAU {UNIT_NAME}
+following the same proposal based on the feedbacks from you and the checking
+results.
+
+Here is the updated design idea of the root GAU:
+
+{ANALYSIS}
+
+Here is the updated full implementation of the root GAU:
+
+{IMPLEMENTATION}
+
+Here is a summary of the changes made:
+
+{CHANGES}
+
+Here is the information from the checker on this refined design, the checker
+checks the forward, backward, causality, etc., of the language model constructed
+using the designed GAU and possibly other GAUs which are designed and checked
+previously, the execution trace is provideded for you to refer:
+
+{CHECKER_REPORT}
+
+Read the proposal first, then the design ideas carefully, check the
+implementation, and the checker information, think of whether those changes can
+address the concerns you pointed out in the previous review, then give your
+review, rating, and suggestions. 
+
+Rememeber that the rating and review should be completely based on the *design*
+not the writing. Your rating decides whether the design can pass or not, rating
+is a float number between 0 and 5. 1 is bad, 2 is not good enough, 3 is really
+good, 4 is excellent, 5 is an outstanding design you have never seen and highly
+recommended. 3 is the boarder for pass. If there is a clear error in the design
+or implementation, you should point it out in your review or suggestions. Do not
+boost the rating simply for "awarding" the address of a concern.
+
+Be very strict and fair. Do not pass a design easily, give a pass only when it
+is good enough.
+"""
+
+
+
+GU_IMPLEMENTATION_ROOT_REREVIEW = AgentPrompt(GU_IMPLEMENTATION_ROOT_REREVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_ROOT_REVIEW_format)
+
+
+# endregion
 
 

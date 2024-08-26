@@ -139,7 +139,8 @@ class GUFlowScratch(FlowCreator):
                 P.GU_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
             else:
                 status_info=f'Refining design proposal (attempt {i})...'
-                proposal_prompt=P.GU_PROPOSAL_REFINEMENT(REVIEW=review,RATING=rating,SUGGESTIONS=suggestions)
+                proposal_prompt=P.GU_PROPOSAL_REFINEMENT(REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
+                                                         PASS_OR_NOT='Pass' if rating>3 else 'Fail')
                 P.GU_PROPOSAL_REFINEMENT.apply(DESIGN_PROPOSER.obj)
             
             with self.status_handler(status_info):
@@ -178,10 +179,10 @@ class GUFlowScratch(FlowCreator):
                 _,out=self.dialog.call(proposal_reviewer_tid,proposal_review_prompt)
                 review,rating,suggestions=out['review'],out['rating'],out['suggestions']
                 context_proposal_reviewer=self.dialog.context(proposal_reviewer_tid)
-                self.stream.write(review)
-                self.stream.write(suggestions)
                 passornot='Pass' if rating>3 else 'Fail'
                 self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
+                self.stream.write(review)
+                self.stream.write(suggestions)
                 self.print_raw_output(out)
 
             trace={
@@ -220,24 +221,44 @@ class GUFlowScratch(FlowCreator):
         traces=[]
         context_design_implementer=AgentContext()
         context_implementation_reviewer=AgentContext()
+        succeed=False
         for i in range(self.max_attemps['design_proposal']):
             DESIGN_IMPLEMENTER=reload_role('design_implementer',self.gpt4o0806_agent,P.DESIGN_IMPLEMENTATER_SYSTEM(
                 GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
             design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
                                                 alias='design_proposal',note=f'Starting design proposal...')
             
-            status_info=f'Starting design implementation of root unit...'
-            with self.status_handler(status_info):
+            if i==0:
+                status_info=f'Starting design implementation of root unit...'
                 gu_design_root_prompt=P.GU_IMPLEMENTATION_ROOT(
-                    PROPOSAL=proposal['proposal'],REVIEW=proposal['review'],RATING=proposal['rating'])
+                    PROPOSAL=proposal['proposal'],REVIEW=proposal['review'],RATING=proposal['rating'],
+                )
                 P.GU_IMPLEMENTATION_ROOT.apply(DESIGN_IMPLEMENTER.obj)
+            else:
+                status_info=f'Refining design implementation of root unit (attempt {i})...'
+                gu_design_root_prompt=P.GU_IMPLEMENTATION_RETRY(
+                    FORMAT_CHECKER_REPORT=FORMAT_CHECKER_REPORT,
+                    FUNCTION_CHECKER_REPORT=FUNCTION_CHECKER_REPORT,
+                    REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
+                    PASS_OR_NOT='Pass' if rating>3 else 'Fail'
+                )
+                P.GU_IMPLEMENTATION_RETRY.apply(DESIGN_IMPLEMENTER.obj)
+            with self.status_handler(status_info): 
                 self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_design_root_prompt)
                 _,out=self.dialog.call(design_implementer_tid,gu_design_root_prompt)
 
-                self.stream.write(f'## Implementation of {out["unit_name"]}')
-                self.stream.write(out['analysis'])
-                self.stream.write(f'### Code\n```python\n{out["implementation"]}\n```')
-                                
+                if i==0:
+                    unit_name,implementation,analysis=out['unit_name'],out['implementation'],out['analysis']
+                    self.stream.write(f'## Implementation of {unit_name}')
+                else:
+                    reflection,analysis,implementation,changes=out['reflection'],out['analysis'],out['implementation'],out['changes']
+                    self.stream.write(f'### Reflection\n{reflection}')
+                    self.stream.write(f'## Refinement of {unit_name}')
+                self.stream.write(analysis)
+                self.stream.write(f'### Code\n```python\n{implementation}\n```')
+                if i>0:
+                    self.stream.write(f'### Changes\n{changes}')
+
                 self.print_raw_output(out)
 
             # Run all checks for every implementations, optimize both grammar and semantics at the same time 
@@ -259,13 +280,12 @@ class GUFlowScratch(FlowCreator):
                 )
                 # !!!TODO: the reformatter should rename the existing kwargs from the tree, okey for root node
                 # !!!TODO: remove any possible if __name__=='__main__' method from the code
-                # 2. Review the code for GAU
-                review, rating, suggestions = None, None, None
-
-                # 3. check the functionality of the composed GAB
+                # 2. check the functionality of the composed GAB
+                checkpass=False
+                func_checks = {}
                 if format_errors==[]:
                     self.tree.add_unit(
-                        out['unit_name'],reformatted_code,new_args,out['analysis'],called_path,review,rating,None,gau_children,suggestions
+                        unit_name,reformatted_code,new_args,analysis,called_path,None,None,gau_children,None
                     )
                     design_name=self.tree.name.replace(' ','_')
                     gabcode = self.tree.compose()
@@ -276,14 +296,80 @@ class GUFlowScratch(FlowCreator):
                     self.stream.write(f'### Check Output\n```python\n{check_results}\n```')
                     self.stream.write(f'### Reformatted GAB Code\n```python\n{gabcode_reformat}\n```')
                     
-                    self.tree.units[out['unit_name']].report=check_report+f'\n\nChecker output:\n{check_results}'
-                    if not checkpass or rating<=3: # retry
-                        self.tree.del_unit(out['unit_name'])
-            
+                    func_checks = {
+                        'checkpass':checkpass,
+                        'check_report':check_report,
+                        'check_results':check_results,
+                        'reformatted_gab_code':gabcode_reformat,
+                    }
 
-            break # NOTE: REMEMBER TO REMOVE THIS LINE
+            # 3. Review the code for GAU
+            IMPLEMENTATION_REVIEWER=reload_role('implementation_reviewer',self.gpt4o0806_agent, 
+                                                P.GU_IMPLEMENTATION_REVIEWER_SYSTEM(GAU_BASE=GAU_BASE))
+            implementation_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_REVIEWER,context=context_implementation_reviewer,
+                                                alias='implementation_review',note=f'Reviewing implementation...')
+            if i==0:
+                status_info=f'Reviewing implementation of root unit...'
+                gu_implementation_root_review_prompt=P.GU_IMPLEMENTATION_ROOT_REVIEW(
+                    UNIT_NAME=unit_name,PROPOSAL=proposal['proposal'],ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,CHECKER_REPORT=check_report)
+                P.GU_IMPLEMENTATION_ROOT_REVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
+            else:
+                status_info=f'Refining refined implementation of root unit (version {i})...'
+                gu_implementation_root_review_prompt=P.GU_IMPLEMENTATION_ROOT_REREVIEW(
+                    UNIT_NAME=unit_name,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
+                    CHANGES=changes,CHECKER_REPORT=check_report
+                )
+                P.GU_IMPLEMENTATION_ROOT_REREVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
+            with self.status_handler(status_info):
+                self.print_details(IMPLEMENTATION_REVIEWER.obj,context_implementation_reviewer,gu_implementation_root_review_prompt)
+                _,out=self.dialog.call(implementation_reviewer_tid,gu_implementation_root_review_prompt)
+                review,rating,suggestions=out['review'],out['rating'],out['suggestions']
+                context_implementation_reviewer=self.dialog.context(implementation_reviewer_tid)
+                passornot='Pass' if rating>3 else 'Fail'
+                self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
+                self.stream.write(review)
+                self.stream.write(suggestions)
+                self.print_raw_output(out)
 
-        return query,state,{}
+                self.tree.units[unit_name].rating=rating
+                self.tree.units[unit_name].review=review
+                self.tree.units[unit_name].suggestions=suggestions
+
+            design = {
+                'unit': self.tree.units[unit_name].json(),
+                'format_errors':format_errors,
+                'format_warnings':format_warnings,
+                'func_checks':func_checks,
+            }
+            traces.append(design)
+            if not checkpass or rating<=3 or len(format_errors)>0:
+                self.tree.del_unit(out['unit_name'])
+                FORMAT_CHECKER_REPORT = P.FORMAT_CHECKER_REPORT.format(
+                    RESULT='failed' if len(format_errors)>0 else 'passed',
+                    ERRORS=format_errors,
+                    WARNINGS=format_warnings
+                )
+                if len(format_errors)>0:
+                    FUNCTION_CHECKER_REPORT = 'Functionality check skipped due to format errors.'
+                else:
+                    FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT.format(
+                        RESULT='failed' if not checkpass else 'passed',
+                        REPORT=check_report,
+                    )
+            else:
+                succeed=True
+                break
+        
+        if not succeed:
+            self.stream.write(f'#### Implementation failed, stopping design process')
+            raise Exception('Design implementation failed, stopping design process')
+            # TODO: design a checkpoint to save the current progress and continue later
+
+        RET={
+            'design':design,
+            'traces':traces,
+        }
+        return query,state,RET
 
     
     @register_module(
