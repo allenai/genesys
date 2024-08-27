@@ -164,3 +164,12 @@ while True:
         
 
 
+
+
+#### Notes
+
+
+1. The reviewer sometimes stuck there, giving the same reviews
+2. Fix Format Checker
+3. Seeds are important, make some manual seeds
+

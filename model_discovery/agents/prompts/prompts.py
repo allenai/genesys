@@ -839,10 +839,21 @@ Warnings:
 {WARNINGS}
 """
 
-FUNCTION_CHECKER_REPORT = """
-Your code {RESULT} the functionality checker:
+FUNCTION_CHECKER_REPORT_PASS = """
+Your code passed the functionality checker:
 
 {REPORT}
+"""
+
+
+FUNCTION_CHECKER_REPORT_FAIL= """
+Your code failed the functionality checker:
+
+{REPORT}
+
+Here is the composed gab.py file based on your implementation for you to refer:
+
+{GAB_CODE_WITH_LINE_NUM}
 """
 
 

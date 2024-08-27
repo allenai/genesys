@@ -816,7 +816,8 @@ class Checker(exec_utils.BaseTool):
                 checkpass,gab_code = self._check_format_and_reformat(gab_code)
                 assert checkpass
             except AssertionError:
-                return False,self.report,gab_code,{'hints': self.hints}
+                check_report=self.get_report(gab_code)
+                return False,check_report,gab_code,{'hints': self.hints}
         
         with U.CodeTimer("Model initialization"): # NOTE: very time consuming for the first time, but luckily only happens for the very first run, maybe reduce the time of first run>
             try: 
@@ -846,7 +847,8 @@ class Checker(exec_utils.BaseTool):
                     '3. Always remember to follow the template and do not implement redundant part like embedding layer. '
                 )
                 self.hints.append('REFRESH_TEMPLATE')
-                return False,self.report,gab_code,{'hints': self.hints}
+                check_report=self.get_report(gab_code)
+                return False,check_report,gab_code,{'hints': self.hints}
         
             ### check model size 
             gam = glm.backbone
@@ -882,7 +884,8 @@ class Checker(exec_utils.BaseTool):
                 if not checkpass2:
                     self.rprint('Hint: If you used convolutional layer, you should consider that the conv kernel may cover the future steps. '
                                 'You can add padding and truncation of future steps to the conv layer to make it causal.\n')
-                return False,self.report,gab_code,{'hints': self.hints}
+                check_report=self.get_report(gab_code)
+                return False,check_report,gab_code,{'hints': self.hints}
 
         self.rprint("All tests passed!\n")
         time_end=time.time()
@@ -893,8 +896,23 @@ class Checker(exec_utils.BaseTool):
             'effectiveness': effectiveness,
             'hints': self.hints
         }
-        return True,self.report,gab_code,results
+        check_report=self.get_report(gab_code)
+        return True,check_report,gab_code,results
     
+    
+    def get_report(self,gab_code):
+        gabcode_lines=gab_code.split('\n')
+        new_check_report=[]
+        for line in self.report.split('\n'):
+            if 'File "<string>", line' in line:
+                line=line.replace('File "<string>", line','File "gab.py", line')
+                line_num=int(line.split('File "gab.py", line ')[-1].split(',')[0].strip())
+                line=line.replace(f'line {line_num}',f'line {line_num}: {gabcode_lines[line_num-1]}')
+            new_check_report.append(line)
+        check_report='\n'.join(new_check_report)
+        return check_report
+
+
     def tune(self,config,gab_code,name,tune_dim=True)->str: # the model is already correct but we need to tune its scale
         print('Tuning the model scale...')
         d_model=config.d_model

@@ -246,6 +246,7 @@ class GUFlowScratch(FlowCreator):
             with self.status_handler(status_info): 
                 self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_design_root_prompt)
                 _,out=self.dialog.call(design_implementer_tid,gu_design_root_prompt)
+                context_design_implementer=self.dialog.context(design_implementer_tid)
 
                 if i==0:
                     unit_name,implementation,analysis=out['unit_name'],out['implementation'],out['analysis']
@@ -284,6 +285,7 @@ class GUFlowScratch(FlowCreator):
                 }
                 # !!!TODO: the reformatter should rename the existing kwargs from the tree, okey for root node
                 # !!!TODO: remove any possible if __name__=='__main__' method from the code
+                # FIXME: The checker seems buggy! It some times gives two same classes
                 # 2. check the functionality of the composed GAB
                 checkpass=False
                 func_checks = {}
@@ -355,10 +357,16 @@ class GUFlowScratch(FlowCreator):
                 if len(format_errors)>0:
                     FUNCTION_CHECKER_REPORT = 'Functionality check skipped due to format errors.'
                 else:
-                    FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT.format(
-                        RESULT='failed' if not checkpass else 'passed',
-                        REPORT=check_report,
-                    )
+                    if checkpass:
+                        FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT_PASS.format(
+                            REPORT=check_report,
+                        )
+                    else:
+                        gabcode_reformat_with_line_num = '\n'.join([f'{i+1}: {line}' for i,line in enumerate(gabcode_reformat.split('\n'))])
+                        FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT_FAIL.format(
+                            REPORT=check_report,
+                            GAB_CODE_WITH_LINE_NUM=gabcode_reformat_with_line_num
+                        )
             else:
                 succeed=True
                 self.stream.write(f'#### Implementation of root passed, designing remaning units recursively')
@@ -414,6 +422,7 @@ class GUFlowScratch(FlowCreator):
                 self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_implementation_unit_selection_prompt)
                 _,out=self.dialog.call(design_implementer_tid,gu_implementation_unit_selection_prompt)
                 selection,motivation,termination=out['selection'],out['motivation'],out['termination']
+                context_design_implementer=self.dialog.context(design_implementer_tid)
                 self.stream.write(f'### Selection: {selection}')
                 self.stream.write(f'### Motivation\n{motivation}')
 
@@ -448,19 +457,20 @@ class GUFlowScratch(FlowCreator):
                         GU_IMPLEMENTATION_UNIT=P.gen_GU_IMPLEMENTATION_UNIT(refine=False)
                         gu_implement_unit_prompt=GU_IMPLEMENTATION_UNIT()
                     GU_IMPLEMENTATION_UNIT.apply(DESIGN_IMPLEMENTER.obj)
-                else:
+                else: # Debugging or refining the implementation
                     status_info=f'Refining design implementation of root unit (attempt {i})...'
                     REFINE=True
                     gu_implement_unit_prompt=P.GU_IMPLEMENTATION_RETRY(
                         FORMAT_CHECKER_REPORT=FORMAT_CHECKER_REPORT,
                         FUNCTION_CHECKER_REPORT=FUNCTION_CHECKER_REPORT,
                         REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
-                        PASS_OR_NOT='Accept' if rating>3 else 'Reject'
+                        PASS_OR_NOT='Accept' if rating>3 else 'Reject',
                     )
                     P.GU_IMPLEMENTATION_RETRY.apply(DESIGN_IMPLEMENTER.obj)
                 with self.status_handler(status_info): 
                     self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_implement_unit_prompt)
                     _,out=self.dialog.call(design_implementer_tid,gu_implement_unit_prompt)
+                    context_design_implementer=self.dialog.context(design_implementer_tid)
                     if REFINE:
                         reflection,analysis,implementation,changes=out['reflection'],out['analysis'],out['implementation'],out['changes']
                         self.stream.write(f'### Reflection\n{reflection}')
@@ -509,6 +519,7 @@ class GUFlowScratch(FlowCreator):
                         gabcode = self.tree.compose()
                         # XXX: The way how vars pass may still problematic, i.e. **Z
                         checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(self.system._cfg,gabcode,design_name)
+
                         self.stream.write(f'### Check passed: {checkpass}')
                         self.stream.write(f'### Check Report\n```python\n{check_report}\n```')
                         self.stream.write(f'### Check Output\n```python\n{check_results}\n```')
@@ -583,10 +594,16 @@ class GUFlowScratch(FlowCreator):
                     if len(format_errors)>0:
                         FUNCTION_CHECKER_REPORT = 'Functionality check skipped due to format errors.'
                     else:
-                        FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT.format(
-                            RESULT='failed' if not checkpass else 'passed',
-                            REPORT=check_report,
-                        )
+                        if checkpass:
+                            FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT_PASS.format(
+                                REPORT=check_report,
+                            )
+                        else:
+                            gabcode_reformat_with_line_num = '\n'.join([f'{i+1}: {line}' for i,line in enumerate(gabcode_reformat.split('\n'))])
+                            FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT_FAIL.format(
+                                REPORT=check_report,
+                                GAB_CODE_WITH_LINE_NUM=gabcode_reformat_with_line_num
+                            )
                 else:
                     succeed=True
                     self.stream.write(f'#### Implementation passed, starting the next unit')

@@ -86,10 +86,25 @@ class AttributeChecker(ast.NodeVisitor):
                     break
             node.args.kwarg = ast.arg(arg="kwargs", annotation=None)
 
-            # Check for new args and default values in __init__
-            for arg in node.args.args:
+            # Handle default values
+            # `defaults` will be shorter than `args.args` if not all args have default values
+            defaults = node.args.defaults
+            num_non_default_args = len(arg_names) - len(defaults)
+            
+            # Loop through all arguments
+            for i, arg in enumerate(node.args.args):
                 if arg.arg not in self.required_args and arg.arg != "self":
-                    self.new_args[arg.arg] = arg.annotation 
+                    # Check if the argument has a default value
+                    if i >= num_non_default_args:
+                        # Get the corresponding default value from defaults
+                        default_value_node = defaults[i - num_non_default_args]
+                        try:
+                            self.new_args[arg.arg] = ast.literal_eval(default_value_node)
+                        except ValueError:
+                            self.new_args[arg.arg] = None  # Handle cases where ast.literal_eval can't evaluate
+                    else:
+                        # If no default value, set it to None
+                        self.new_args[arg.arg] = None
             
             # Look for annotated assignments in the __init__ method
             for stmt in node.body:
