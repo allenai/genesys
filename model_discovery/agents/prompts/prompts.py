@@ -7,11 +7,11 @@ import json
 from typing import Dict, Any
 
 
-
+'''
 #######################################################
 # Naive GAB Design Prompts
 #######################################################
-
+'''
 
 # 1. You can use layer_idx to create arbitrary model structure with different types of blocks, examples:
 #     * create 1 type of block for all layers, you can ignore layer_idx
@@ -132,12 +132,11 @@ GAB_ERROR = """Please provide the full gab code, and please do not modify other 
 
 
 
-
-
+'''
 #######################################################
 # GU GAB Design Proposal Prompts
 #######################################################
-
+'''
 
 
 
@@ -469,10 +468,12 @@ GU_PROPOSAL_REREVIEW = AgentPrompt(GU_PROPOSAL_REREVIEW_prompt,GENERAL_JSON_pars
 
 
 
+'''
+#######################################################
+# GU Implementation Root Prompts
+#######################################################
+'''
 
-#######################################################
-# GU Implementation Prompts
-#######################################################
 
 """ ============================= GU Design Implementer System ===================================== """
 
@@ -787,7 +788,7 @@ Be very strict and fair. Do not pass a design easily, give a pass only when it
 is good enough.
 """
 
-GU_IMPLEMENTATION_ROOT_REVIEW_format = {
+GU_IMPLEMENTATION_REVIEW_format = {
    "type": "json_schema",
    "json_schema": {
          "name": "review_response",
@@ -814,9 +815,7 @@ GU_IMPLEMENTATION_ROOT_REVIEW_format = {
 }
 
 
-
-
-GU_IMPLEMENTATION_ROOT_REVIEW = AgentPrompt(GU_IMPLEMENTATION_ROOT_REVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_ROOT_REVIEW_format)
+GU_IMPLEMENTATION_ROOT_REVIEW = AgentPrompt(GU_IMPLEMENTATION_ROOT_REVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
 
 
 # endregion
@@ -924,21 +923,21 @@ GU_IMPLEMENTATION_RETRY= AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_JSON
 
 
 
-""" ============================= GU Implementation Root Rereview Prompt ===================================== """
+""" ============================= GU Implementation Rereview Prompt ===================================== """
 
 
-# region GU Implementation Root Review 
+# region GU Implementation Review 
 
-GU_IMPLEMENTATION_ROOT_REREVIEW_prompt = """
-The designer has refined its design and implemention of the root GAU {UNIT_NAME}
+GU_IMPLEMENTATION_REREVIEW_prompt = """
+The designer has refined its design and implemention of the GAU {UNIT_NAME}
 following the same proposal based on the feedbacks from you and the checking
 results.
 
-Here is the updated design idea of the root GAU:
+Here is the updated design idea of the GAU:
 
 {ANALYSIS}
 
-Here is the updated full implementation of the root GAU:
+Here is the updated full implementation of the GAU:
 
 {IMPLEMENTATION}
 
@@ -972,9 +971,368 @@ is good enough.
 
 
 
-GU_IMPLEMENTATION_ROOT_REREVIEW = AgentPrompt(GU_IMPLEMENTATION_ROOT_REREVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_ROOT_REVIEW_format)
+GU_IMPLEMENTATION_REREVIEW = AgentPrompt(GU_IMPLEMENTATION_REREVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
 
 
 # endregion
 
+
+
+
+'''
+#######################################################
+# GU Implementation nodes Prompts
+#######################################################
+'''
+
+'''
+Recursively implement the units or optionally refine a unit until no unimplemented unit is left and the designer/reviewer is satisfied.
+The inputs are:
+1. View of the current design, including a tree of the implemented and unimplemented units
+2. The code (full code, the input tokens are cheap)
+3. The proposal
+
+Then the agent need to select a unit to work on from the tree
+'''
+
+
+
+
+
+""" ============================= GU Implementation Unit Selection ===================================== """
+
+
+# region GU Implementation Root
+
+GU_IMPLEMENTATION_UNIT_SELECTION_prompt = """
+Here is the proposal of the design for you to implement:
+
+{PROPOSAL}
+
+Here is the review of the proposal for you to refer:
+
+{REVIEW}
+
+Rating: {RATING} out of 5 (Passing score is >3)
+
+Here is a view of the progress of the implementation, its a tree of the GAUs
+that composed the GAB block, the unimplemented GAUs are marked with
+(unimplemented), it also shows an overview of the execution paths of the
+children GAUs inside each implemented units, along with the rating of the unit:
+
+{VIEW}
+
+This is the exported code of the current design:
+
+{GAB_CODE}
+
+Now, select one GAU from the tree to work on, you can either select an
+unimplemented GAU to implement or an implemented GAU to refine. And give a
+motivation of your selection along with an overall evaluation of the current
+view and a rough plan of your implementation. You need to provide the class name
+of the GAU you are going to work on in your selection.
+
+You will need to implement all the unimplemented GAUs in the tree. When all the
+nodes are implemented, you can choose to terminate the design process when you
+feel the design is good enough and no more left to improve. 
+"""
+
+
+def gen_GU_IMPLEMENTATION_UNIT_SELECTION(SELECTIONS):
+   GU_IMPLEMENTATION_UNIT_SELECTION_format = {
+      "type": "json_schema",
+      "json_schema": {
+            "name": "implement_response",
+            "strict": True,
+            "schema": {
+               "type": "object",
+               "properties": {
+                  "motivation": {
+                        "type": "string",
+                        "description": "Overall view, motivation and plans of the selection."
+                  },
+                  "selection": {
+                        "type": "string",
+                        'description': "The name of the GAU you are going to work on.",
+                        'enum': SELECTIONS
+                  },
+                  'termination': {
+                     'type': 'boolean',
+                     'description': 'Whether to terminate the design process. It will be ignored if there are unimplemented units left.'
+                  }
+               },
+               "required": ["motivation", "selection","termination"],
+               "additionalProperties": False
+            }
+      }
+   }
+   return AgentPrompt(GU_IMPLEMENTATION_UNIT_SELECTION_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_UNIT_SELECTION_format)
+
+# endregion
+
+
+
+
+""" ============================= GU Implementation Unit ===================================== """
+
+
+# region GU Implementation Root
+
+
+
+
+def gen_GU_IMPLEMENTATION_UNIT(refine=False):
+
+   if refine:
+      GU_IMPLEMENTATION_UNIT_prompt = """
+Here is the description of the GAU you are going to refine:
+
+{DESCRIPTION}
+
+Here is the full implementation of the GAU you are going to refine:
+
+{IMPLEMENTATION}
+
+This is the review of the GAU:
+
+{REVIEW}
+
+Rating: {RATING} out of 5 (Passing score is >3)
+
+The suggestions from the reviewer:
+
+{SUGGESTIONS}
+
+
+Now you need to refine the GAU based on the feedback. You should address the
+issues and improve the design based on the suggestions. You need to firstly
+provide the reflection of the feedback, then give the full design including the
+new analysis, plans, pseudocode, and the implementations. Keeping the format
+instructions, finally, a summary of the changes you made.
+
+Your design and implementation should be based on the proposal, following the
+instructions, templates, and the format requirements. The GAU will be reviewed
+and checked. It will be accepted only when it pass bothe the review and check
+process. Your analysis should be as detailed as possible, and the implementation
+can introduce new ideas and details that are not covered in the proposal that
+can improve the design. 
+
+Don't be hurry to try to implemente everything at once, be patient, slowly, and
+focus on the current GAU you are designing. And always remember to design it in
+a top-down way. You are encouraged to define more children GAU placeholders that
+can be implemented later for more complicated operations. You will be asked
+later to finish the remaining parts of the GAB block. 
+   """
+      GU_IMPLEMENTATION_UNIT_format = {
+         "type": "json_schema",
+         "json_schema": {
+               "name": "implementation_refinement_response",
+               "strict": True,
+               "schema": {
+                  "type": "object",
+                  "properties": {
+                     "reflection": {
+                           "type": "string",
+                           "description": "The reflection based on the review, rating, and suggestions."
+                     },
+                     "analysis": {
+                           "type": "string",
+                           "description": "Analysis, plans, and pseudocode of the GAU being designed"
+                     },
+                     "implementation": {
+                           "type": "string",
+                           "description": "the full python implementation of the designed GAU"
+                     },
+                     "changes": {
+                           "type": "string",
+                           "description": "The summary of the changes you made."
+                     },
+                  },
+                  "required": ["reflection", "analysis","implementation","changes"],
+                  "additionalProperties": False
+               }
+         }
+      }
+   else:
+      GU_IMPLEMENTATION_UNIT_prompt = """
+Now, please design and implement the GAU you selected. Your design and
+implementation should be based on the proposal, following the instructions,
+templates, and the format requirements. The GAU will be reviewed and checked. It
+will be accepted only when it pass bothe the review and check process. Your
+analysis should be as detailed as possible, and the implementation can introduce
+new ideas and details that are not covered in the proposal that can improve the
+design. 
+
+Don't be hurry to try to implemente everything at once, be patient, slowly, and
+focus on the current GAU you are designing. And always remember to design it in
+a top-down way. You are encouraged to define more children GAU placeholders that
+can be implemented later for more complicated operations. You will be asked
+later to finish the remaining parts of the GAB block. 
+   """
+      GU_IMPLEMENTATION_UNIT_format = {
+         "type": "json_schema",
+         "json_schema": {
+               "name": "implementation_refinement_response",
+               "strict": True,
+               "schema": {
+                  "type": "object",
+                  "properties": {
+                     "analysis": {
+                           "type": "string",
+                           "description": "Analysis, plans, and pseudocode of the GAU being designed"
+                     },
+                     "implementation": {
+                           "type": "string",
+                           "description": "the full python implementation of the designed GAU"
+                     },
+                  },
+                  "required": ["analysis","implementation"],
+                  "additionalProperties": False
+               }
+         }
+      }
+
+   return AgentPrompt(GU_IMPLEMENTATION_UNIT_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_UNIT_format)
+
+# endregion
+
+
+""" ============================= GU Implementation Unit Review Prompt ===================================== """
+
+
+# region GU Implementation Root Review 
+
+GU_IMPLEMENTATION_UNIT_REVIEW_prompt = """
+Here is the proposal of the designing to implement:
+
+{PROPOSAL}
+
+Here is a view of the progress of the implementation, its a tree of the GAUs
+that composed the GAB block, the unimplemented GAUs are marked with
+(unimplemented), it also shows an overview of the execution paths of the
+children GAUs inside each implemented units, along with the rating of the unit:
+
+{VIEW}
+
+This is the exported code of the current design:
+
+{GAB_CODE}
+
+The designer has chosen to implement a GAU named {UNIT_NAME}.Notice that the
+designer is allowed to introduce new ideas and details that are not covered in
+the proposal that can improve the design. As long as the design does not change
+the core idea of the proposal, it is acceptable.
+
+Here is the design idea of the GAU:
+
+{ANALYSIS}
+
+Here is the full implementation of the GAU:
+
+{IMPLEMENTATION}
+
+Here is the information from the checker, the checker checks the forward,
+backward, causality, etc., of the language model constructed using the designed
+GAU and possibly other GAUs which are designed and checked previously, the
+execution trace is provideded for you to refer:
+
+{CHECKER_REPORT}
+
+Read the proposal first, then the design ideas carefully, check the
+implementation and the checker information, then give your review, rating, and
+suggestions. Rememeber that the rating and review should be completely based on
+the *design* not the writing. Your rating decides whether the design can pass or
+not, rating is a float number between 0 and 5. 1 is bad, 2 is not good enough, 3
+is really good, 4 is excellent, 5 is an outstanding design you have never seen
+and highly recommended. 3 is the boarder for pass. If there is a clear error in
+the design or implementation, you should point it out in your review or
+suggestions.
+
+Be very strict and fair. Do not pass a design easily, give a pass only when it
+is good enough.
+"""
+
+GU_IMPLEMENTATION_UNIT_REVIEW = AgentPrompt(GU_IMPLEMENTATION_UNIT_REVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
+
+
+# endregion
+
+
+""" ============================= GU Implementation Unit Refine Review Prompt ===================================== """
+
+
+# region GU Implementation Root Review 
+
+GU_IMPLEMENTATION_UNIT_REFINE_REVIEW_prompt = """
+Here is the proposal of the designing to implement:
+
+{PROPOSAL}
+
+Here is a view of the progress of the implementation, its a tree of the GAUs
+that composed the GAB block, the unimplemented GAUs are marked with
+(unimplemented), it also shows an overview of the execution paths of the
+children GAUs inside each implemented units, along with the rating of the unit:
+
+{VIEW}
+
+This is the exported code of the current design:
+
+{GAB_CODE}
+
+The designer has chosen to refine a GAU named {UNIT_NAME}.Notice that the
+designer is allowed to introduce new ideas and details that are not covered in
+the proposal that can improve the design. As long as the design does not change
+the core idea of the proposal, it is acceptable.
+
+This is the description of this GAU:
+
+{DESCRIPTION}
+
+Here is the previous review of the GAU:
+
+{REVIEW}
+
+Rating: {RATING} out of 5 (Passing score is >3)
+
+The suggestions from the previous reviewer:
+
+{SUGGESTIONS}
+
+Here is the design idea of the GAU:
+
+{ANALYSIS}
+
+Here is the full implementation of the GAU:
+
+{IMPLEMENTATION}
+
+Here is a summary of the changes made:
+
+{CHANGES}
+
+Here is the information from the checker, the checker checks the forward,
+backward, causality, etc., of the language model constructed using the designed
+GAU and possibly other GAUs which are designed and checked previously, the
+execution trace is provideded for you to refer:
+
+{CHECKER_REPORT}
+
+Read the proposal first, then the design ideas carefully, check the
+implementation and the checker information, then give your review, rating, and
+suggestions. Rememeber that the rating and review should be completely based on
+the *design* not the writing. Your rating decides whether the design can pass or
+not, rating is a float number between 0 and 5. 1 is bad, 2 is not good enough, 3
+is really good, 4 is excellent, 5 is an outstanding design you have never seen
+and highly recommended. 3 is the boarder for pass. If there is a clear error in
+the design or implementation, you should point it out in your review or
+suggestions.
+
+Be very strict and fair. Do not pass a design easily, give a pass only when it
+is good enough.
+"""
+
+GU_IMPLEMENTATION_UNIT_REFINE_REVIEW = AgentPrompt(GU_IMPLEMENTATION_UNIT_REFINE_REVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
+
+
+# endregion
 

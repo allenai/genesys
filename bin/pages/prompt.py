@@ -65,12 +65,12 @@ def prompt(evosys:EvolutionSystem,project_dir):
 
     simple_mode = st.session_state[simple_mode] # True
 
-    flow=system.design_flow
-    script=system.DESIGN_ALANG_reformatted
+    # flow=system.design_flow
+    # script=system.DESIGN_ALANG_reformatted
 
-    # gu_flow = GUFlowScratch(system,None,None)
-    # flow = gu_flow.flow
-    # script = gu_flow.script
+    gu_flow = GUFlowScratch(system,None,None)
+    flow = gu_flow.flow
+    script = gu_flow.script
 
     if simple_mode:
         col1, col2 = st.columns([2,1])

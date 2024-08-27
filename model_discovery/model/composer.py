@@ -230,5 +230,40 @@ class GAUTree:
     def compose(self): # compose the GAB from the GAUTree and test it
         gab_code = GABComposer().generate_gab_code(self)
         return gab_code
+    
+    def _view(self,_name,obj='root',path='',node=None,pstr='',unimplemented=set()):
+        # create a string representation of the tree
+        name=obj+': '+_name
+        if node is None: 
+            name += ' (Unimplemented)'
+            unimplemented.add(_name)
+        else:
+            name += f' (Rating: {node.rating}/5, Exec path: {'->'.join(node.path)})'
+        if path!='':
+            level=len(path.split('.'))
+            name='    '*level+' |- '+name
+            path+='.'+_name
+        else:
+            pstr+=f'GAU Tree Map of {self.name}:\n'
+            path=_name
+        pstr+='  '+name+'\n'
+        if node is not None:
+            for child, child_unit in node.children.items():
+                child_node = self.units.get(child_unit,None)
+                pstr,unimplemented=self._view(child_unit,child,path,child_node,pstr,unimplemented)
+        return pstr,unimplemented
+
+    def view(self):
+        pstr,unimplemented=self._view(self.root.name,node=self.root)
+        implemented = set(self.units.keys())
+        pstr+='\nImplemented Units: '+', '.join(implemented)
+        if len(unimplemented)>0:
+            pstr+='\nUnimplemented Units: '+', '.join(unimplemented)
+        else:
+            pstr+='\nAll units are implemented.'
+        return pstr,list(implemented),list(unimplemented)
+
+
+
 
 
