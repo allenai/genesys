@@ -1,9 +1,9 @@
 import inspect
-from .base.ttt import ttt
-from .base.mamba2 import mamba2
-from .base.rwkv6 import rwkv6
-from .base.retnet import retnet
-from .base.gpt2 import gpt2
+from .core.ttt import ttt
+from .core.mamba2 import mamba2
+from .core.rwkv6 import rwkv6
+from .core.retnet import retnet
+from .core.gpt2 import gpt2
 
 
 MODEL2CODE = {

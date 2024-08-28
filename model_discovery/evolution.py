@@ -94,6 +94,7 @@ NODE_SIZE_MAP={
     '1300M':45,
 }
 
+CORE_COLOR = '#f0a1a8' # core reference
 REFERENCE_COLOR = '#AF47D2'
 RWC_COLOR = '#FB773C' # reference with code
 EXT_COLOR_1HOC = '#ed556a' # extended 1-hop reference
@@ -150,17 +151,24 @@ class LibraryReference(NodeObject):
     def __post_init__(self):
         py_dir=U.pjoin(LIBRARY_DIR,'base',self.acronym,self.acronym+'_edu.py')
         go_dir=U.pjoin(LIBRARY_DIR,'base',self.acronym,self.acronym+'_edu.go')
+        core_dir=U.pjoin(LIBRARY_DIR,'core',self.acronym,self.acronym+'_edu.py')
         if U.pexists(py_dir):
             self.code=f'# {self.acronym}_edu.py\n\n'+open(py_dir,'r', encoding='utf-8').read()
         elif U.pexists(go_dir):
             self.code=f'// {self.acronym}_edu.go\n\n'+open(go_dir,'r', encoding='utf-8').read()
+        elif U.pexists(core_dir):
+            self.code=f'# {self.acronym}_edu.py\n\n'+open(core_dir,'r', encoding='utf-8').read()
         else:
             self.code=None
 
     @property
     def type(self) -> str:
+        core_dir=U.pjoin(LIBRARY_DIR,'core',self.acronym,self.acronym+'_edu.py')
         if self.code is not None:
-            return 'ReferenceWithCode'
+            if U.pexists(core_dir):
+                return 'ReferenceCore'
+            else:
+                return 'ReferenceWithCode'
         else:
             return 'Reference'
 
@@ -428,6 +436,10 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
                 size=5*max(0,int(math.log(citations,3)))+10 if citations else 10
             elif data.type=='ReferenceWithCode':
                 color=RWC_COLOR
+                citations=data.citationCount
+                size=5*max(0,int(math.log(citations,3)))+10 if citations else 10
+            elif data.type=='ReferenceCore':
+                color=CORE_COLOR
                 citations=data.citationCount
                 size=5*max(0,int(math.log(citations,3)))+10 if citations else 10
             else: # VERY SLOW TO LOAD

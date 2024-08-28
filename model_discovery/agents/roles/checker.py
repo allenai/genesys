@@ -713,22 +713,26 @@ class Checker(exec_utils.BaseTool):
         return True
 
 
-    def _check_differentiable(self,model,vocab_size: int) -> bool:
-        """Check if the mode is differentiable 
-
+    def _check_differentiable(self, model, vocab_size: int) -> bool:
+        """Check if the model is differentiable.
+        A basic check, run effectiveness checker for more practical gradient checks.
+        
         :param model: 
-            The target model with the new block. 
+            The target model with the new block.
         :param vocab_size: 
-            The model vocabulary size. 
-
+            The model vocabulary size.
+            
+        :return: 
+            True if the model is differentiable, False if it is not.
         """
         self.rprint('Checking differentiability...')
         mock_input = torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH)).cuda() if \
-          torch.cuda.is_available() else torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
+            torch.cuda.is_available() else torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
+        
         criterion = nn.CrossEntropyLoss()
         model.train()
         optimizer = optim.Adam(model.parameters())
-
+        
         # Zero the parameter gradients
         optimizer.zero_grad()
         logits = model(mock_input).logits
@@ -737,15 +741,47 @@ class Checker(exec_utils.BaseTool):
             mock_input.view(-1)
         )
         loss.backward()
+        
+        used_params = set()
+        
+        # Hook to register which parameters are used during the forward pass
+        def hook_fn(module, input, output):
+            for param in module.parameters():
+                used_params.add(param)
+        
+        # Register hooks for all submodules
+        hooks = []
+        for submodule in model.modules():
+            hook = submodule.register_forward_hook(hook_fn)
+            hooks.append(hook)
+
+        # Forward pass again to collect used parameters
+        model(mock_input)
+        
+        # Remove all hooks
+        for hook in hooks:
+            hook.remove()
+        
+        all_gradients_present = True
+        
         # Check gradients
         for name, param in model.named_parameters():
-            if param.grad is None:
-                self.rprint(f"Error: Parameter {name} does not have a gradient. Hint: Check whether you have any unused parameters.")
-                return False
+            if param.requires_grad:
+                if param in used_params and param.grad is None:
+                    # Used parameter without gradient -> Error
+                    self.rprint(f"Error: Used parameter {name} requires gradients but has none.")
+                    all_gradients_present = False
+                elif param not in used_params:
+                    # Unused parameter -> Warning
+                    self.rprint(f"Warning: Parameter {name} was not used in the forward pass.")
+        
+        if all_gradients_present:
+            self.rprint('Differentiability test passed')
+            return True
+        else:
+            self.rprint('Differentiability test failed due to missing gradients.')
+            return False
 
-        self.rprint('Differentiability test passed')
-        return True
-    
 
     def _check_effectiveness(self, model, config) -> bool:
         self.rprint('Checking effectiveness...')
@@ -839,7 +875,7 @@ class Checker(exec_utils.BaseTool):
                 with contextlib.redirect_stdout(output):
                     glm(mock_input) # super slow as well, why??? but its only for the first time initialization
                 captured_output = output.getvalue()
-                self.rprint(f'Forward check passed. Captured output during the forward pass:\n{captured_output}\n')
+                self.rprint(f'Forward check passed. Captured output during the forward pass:\n{captured_output}\n'+'-'*50)
                 print(f'Time for the first forward pass: {time.time()-t0:.2f}s')
         
             except Exception as e:
