@@ -198,7 +198,7 @@ class GUFlowScratch(FlowCreator):
             if rating>3:
                 self.stream.write(f'#### Proposal passed with rating {rating} out of 5, starting implementation')
                 check_tree_name(title,self.lib_dir) # TODO: error handling
-                self.tree=GAUTree(name=title,proposal=proposal,review=review,rating=rating,suggestions=suggestions,lib_dir=self.lib_dir)
+                self.tree=GAUTree(name=title,proposal=proposal,review=review,rating=rating,suggestions=suggestions,lib_dir=self.lib_dir,proposal_traces=traces)
                 break
         
         if rating<=3:
@@ -368,6 +368,7 @@ class GUFlowScratch(FlowCreator):
                         )
             else:
                 succeed=True
+                self.tree.units[unitname].design_traces=traces
                 self.stream.write(f'#### Implementation of root passed, designing remaning units recursively')
                 break
         
@@ -603,6 +604,7 @@ class GUFlowScratch(FlowCreator):
                             )
                 else:
                     succeed=True
+                    self.tree.units[selection].design_traces=traces
                     self.stream.write(f'#### Implementation passed, starting the next unit')
                     break
             
@@ -650,7 +652,9 @@ def gu_design_scratch(cls,query,stream,status_handler):
     GU_CALLEE = ROLE('GAB Unit Designer',gu_flow.flow)
     gu_tid = cls.dialog.fork(main_tid,SYSTEM_CALLER,GU_CALLEE,note=f'launch design flow',alias=f'gu_design')
     res,ret=cls.dialog.call(gu_tid,query,main_tid=main_tid)
-    design_stack = ret['design_stack']
+
+    # actually tree comprises everything
+    # return self.tree
 
     # return title,code,explain,summary,autocfg,reviews,ratings,check_results
 

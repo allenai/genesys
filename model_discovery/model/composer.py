@@ -11,8 +11,6 @@ import model_discovery.utils as U
 
 
 
-
-
 @dataclass
 class GAUNode: # this is mainly used to 1. track the hierarchies 2. used for the Linker to solve the dependencies 3. fully serialize the GAUTree
     name: str # name of the GAU 
@@ -23,6 +21,7 @@ class GAUNode: # this is mainly used to 1. track the hierarchies 2. used for the
     rating: str
     children: List[str] # children of the GAU, unit class names
     suggestions: str # suggestions for the GAU from reviewer for further improvement
+    design_traces: list = None # traces of the design process
 
     def json(self):
         return json.dumps(self.__dict__, indent=4)
@@ -34,7 +33,6 @@ class GAUNode: # this is mainly used to 1. track the hierarchies 2. used for the
     def load(cls, name, dir):
         data=U.load_json(U.pjoin(dir,f'{name}.json'))
         return cls(**data)
-
 
 
 class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
@@ -71,8 +69,6 @@ def check_tree_name(name, lib_dir):
     U.mkdir(flows_dir)
     existing_trees=[f.split('.')[0] for f in os.listdir(flows_dir)]
     assert name not in existing_trees, f"Tree {name} is already in the database"
-
-
 
 
 class GABComposer:
@@ -172,11 +168,12 @@ class {unit_name}(GAUBase):
 
 # ideally the GAUTree is similar to a pseudo-code
 class GAUTree:
-    def __init__(self, name, proposal, review, rating, suggestions, lib_dir=None):
+    def __init__(self, name, proposal, review, rating, suggestions, lib_dir=None, proposal_traces=[]):
         self.units = {} 
         self.root = None
         self.name = name # name of a design 
         self.proposal = proposal # proposal of the design
+        self.proposal_traces = proposal_traces # traces of the proposal
         self.review = review # review of the design
         self.rating = rating
         self.suggestions = suggestions
@@ -184,13 +181,13 @@ class GAUTree:
         self.flows_dir = U.pjoin(lib_dir, 'flows')
         U.mkdir(self.flows_dir)
 
-    def add_unit(self, name, code, args, desc, review, rating, children, suggestions, overwrite=False):
+    def add_unit(self, name, code, args, desc, review, rating, children, suggestions, design_traces=None, overwrite=False):
         if name in self.units and not overwrite:
             print(f"Unit {name} is already in the tree")
             return
         # assert name not in self.units, f"Unit {name} is already in the tree"
         assert not self.dict.exist(name), f"Unit {name} is already registered"
-        node = GAUNode(name, code, args, desc, review, rating, children, suggestions)
+        node = GAUNode(name, code, args, desc, review, rating, children, suggestions, design_traces)
         if len(self.units)==0:
             self.root = node
         self.units[name] = node
@@ -216,7 +213,7 @@ class GAUTree:
         }
         U.save_json(data,dir)
         for unit in self.units.values(): # Do not overwrite by default, which should be done by the design process
-            if not self.dict.exist(unit.name):
+            if not self.dict.exist(unit.name): # Deal with the name repetition
                 self.dict.register(unit)
 
     @classmethod
