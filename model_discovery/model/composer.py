@@ -19,10 +19,9 @@ class GAUNode: # this is mainly used to 1. track the hierarchies 2. used for the
     code: str # code of the GAU
     args: dict # *new* args and default values of the GAU
     desc: str
-    path: List[str] # execution path of the GAU children objects
     review: str 
     rating: str
-    children: Dict[str,str] # children of the GAU, key is the object name, value is the unit name
+    children: List[str] # children of the GAU, unit class names
     suggestions: str # suggestions for the GAU from reviewer for further improvement
 
     def json(self):
@@ -76,29 +75,9 @@ def check_tree_name(name, lib_dir):
 
 
 
-GAB_TEMPLATE='''
-# gab.py    # DO NOT CHANGE OR REMOVE THE MAKK HERE, KEEP IT ALWAYS THE FIRST LINE #
-
-import torch
-import torch.nn as nn
-
-from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMPORT STATEMENT #
-
-
-class GAB(GABBase):
-    def __init__(self,embed_dim: int, block_loc: tuple, device=None,dtype=None,**kwargs): # YOU CAN ADD MORE ARGUMENTS, BUT YOU HAVE TO HAVE embed_dim, device, dtype AS THE ARGUTMENTS #
-        factory_kwargs = {{"device": device, "dtype": dtype}} # remember to pass it to nn layers
-        super().__init__(embed_dim, block_loc) # DO NOT CHANGE THIS LINE #
-        self.root = {ROOT_UNIT_NAME}(embed_dim=embed_dim, device=device, dtype=dtype, **kwargs)
-
-    def _forward(self, X, **Z): 
-        X, Z = self.root(X, **Z)
-        return X, Z
-'''
-
 class GABComposer:
     
-    def generate_gab_code(self,tree):
+    def compose(self,tree):
         root_node = tree.root
         generated_code = []
         
@@ -111,9 +90,31 @@ class GABComposer:
         gathered_args={}
         for unit in tree.units.values():
             gathered_args.update(unit.args)
+
+            
+        GAB_TEMPLATE='''
+# gab.py    # DO NOT CHANGE OR REMOVE THE MAKK HERE, KEEP IT ALWAYS THE FIRST LINE #
+
+import torch
+import torch.nn as nn
+
+from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMPORT STATEMENT #
+
+
+class GAB(GABBase):
+    def __init__(self,embed_dim: int, block_loc: tuple, device=None,dtype=None,**kwargs): # YOU CAN ADD MORE ARGUMENTS, BUT YOU HAVE TO HAVE embed_dim, device, dtype AS THE ARGUTMENTS #
+        factory_kwargs = {{"device": device, "dtype": dtype}} # remember to pass it to nn layers
+        super().__init__(embed_dim, block_loc) # DO NOT CHANGE THIS LINE #
+        self.root = {ROOT_UNIT_NAME}(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwargs, **factory_kwargs, **kwargs)
+
+    def _forward(self, X, **Z): 
+        X, Z = self.root(X, **Z)
+        return X, Z
+'''
+
         gab_code=GAB_TEMPLATE.format(ROOT_UNIT_NAME=root_node.name)
 
-        cfg_code=f'gab_config = {json.dumps(gathered_args)}'
+        cfg_code=f'gab_config = {str(gathered_args)}'
 
         compoesed_code = f'{gab_code}\n\n{gau_code}\n\n{cfg_code}'
 
@@ -135,19 +136,16 @@ class GABComposer:
             generated_code.append(node.code)
             
             # Recursively generate code for children
-            children_units=set()
-            for child_name, child_unit_name in node.children.items():
-                children_units.add(child_unit_name)
-            for child_unit in children_units:
+            for child_unit in set(node.children):
                 self.generate_node_code(child_unit, generated_code, units)
 
     # Function to create a placeholder class for a GAUNode
     def create_placeholder_class(self, unit_name) -> str:
         class_template = f"""
 class {unit_name}(GAUBase): 
-    def __init__(self, embed_dim: int, device=None, dtype=None, **kwargs): 
-        factory_kwargs = {{"device": device, "dtype": dtype}} 
-        super().__init__(embed_dim) 
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict, device=None, dtype=None, **kwargs): 
+        self.factory_kwargs = {{"device": device, "dtype": dtype}} 
+        super().__init__(embed_dim, block_loc, kwarg_all)
         
     def _forward(self, X, **Z): 
         return X
@@ -182,13 +180,13 @@ class GAUTree:
         self.flows_dir = U.pjoin(lib_dir, 'flows')
         U.mkdir(self.flows_dir)
 
-    def add_unit(self, name, code, args, desc, path, review, rating, children, suggestions, overwrite=False):
+    def add_unit(self, name, code, args, desc, review, rating, children, suggestions, overwrite=False):
         if name in self.units and not overwrite:
             print(f"Unit {name} is already in the tree")
             return
         # assert name not in self.units, f"Unit {name} is already in the tree"
         assert not self.dict.exist(name), f"Unit {name} is already registered"
-        node = GAUNode(name, code, args, desc, path, review, rating, children, suggestions)
+        node = GAUNode(name, code, args, desc, review, rating, children, suggestions)
         if len(self.units)==0:
             self.root = node
         self.units[name] = node
@@ -228,17 +226,17 @@ class GAUTree:
         return tree
 
     def compose(self): # compose the GAB from the GAUTree and test it
-        gab_code = GABComposer().generate_gab_code(self)
+        gab_code = GABComposer().compose(self)
         return gab_code
     
-    def _view(self,_name,obj='root',path='',node=None,pstr='',unimplemented=set()):
+    def _view(self,_name,path='',node=None,pstr='',unimplemented=set()):
         # create a string representation of the tree
-        name=obj+': '+_name
+        name=_name
         if node is None: 
             name += ' (Unimplemented)'
             unimplemented.add(_name)
         else:
-            name += f' (Rating: {node.rating}/5, Exec path: {'->'.join(node.path)})'
+            name += f" (Rating: {node.rating}/5)"
         if path!='':
             level=len(path.split('.'))
             name='    '*level+' |- '+name
@@ -248,9 +246,9 @@ class GAUTree:
             path=_name
         pstr+='  '+name+'\n'
         if node is not None:
-            for child, child_unit in node.children.items():
+            for child_unit in node.children:
                 child_node = self.units.get(child_unit,None)
-                pstr,unimplemented=self._view(child_unit,child,path,child_node,pstr,unimplemented)
+                pstr,unimplemented=self._view(child_unit,path,child_node,pstr,unimplemented)
         return pstr,unimplemented
 
     def view(self):

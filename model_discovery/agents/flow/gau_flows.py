@@ -10,7 +10,7 @@ from .gau_utils import check_and_reformat_gau_code
 
 # from model_discovery.system import ModelDiscoverySystem
 import model_discovery.agents.prompts.prompts as P
-from model_discovery.model.composer import GAUBase, GAUTree, check_tree_name
+from model_discovery.model.composer import GAUBase, GAUTree, check_tree_name, GABComposer
 
 
 current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
@@ -21,6 +21,7 @@ GAM_TEMPLATE=open(gam_prompt_path).read()
 GAU_TEMPLATE=open(gau_template_path).read()
 
 GAU_BASE=inspect.getsource(GAUBase)
+GAB_COMPOSER=inspect.getsource(GABComposer)
 
 
 def load_system_prompt(agent,prompt):
@@ -78,7 +79,7 @@ class GUFlowScratch(FlowCreator):
         self.status_handler=status_handler
         self.stream=stream
         self.args=['main_tid']#,'max_attemps']
-        self.outs=[]
+        self.outs=['design_stack']
         self.max_attemps={
             'design_proposal':10,
             'implementation_debug':10,
@@ -224,7 +225,7 @@ class GUFlowScratch(FlowCreator):
         succeed=False
         for i in range(self.max_attemps['implementation_debug']):
             DESIGN_IMPLEMENTER=reload_role('design_implementer',self.gpt4o0806_agent,P.DESIGN_IMPLEMENTATER_SYSTEM(
-                GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
+                GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,GAB_COMPOSER=GAB_COMPOSER))
             design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
                                                 alias='design_implementation',note=f'Starting design implementation...')
             
@@ -249,12 +250,12 @@ class GUFlowScratch(FlowCreator):
                 context_design_implementer=self.dialog.context(design_implementer_tid)
 
                 if i==0:
-                    unit_name,implementation,analysis=out['unit_name'],out['implementation'],out['analysis']
-                    self.stream.write(f'## Implementation of {unit_name}')
+                    unitname,analysis,children,implementation=out['unitname'],out['analysis'],out['children'],out['implementation']
+                    self.stream.write(f'## Implementation of {unitname}')
                 else:
-                    reflection,analysis,implementation,changes=out['reflection'],out['analysis'],out['implementation'],out['changes']
+                    reflection,analysis,implementation,changes,children=out['reflection'],out['analysis'],out['implementation'],out['changes'],out['children']
                     self.stream.write(f'### Reflection\n{reflection}')
-                    self.stream.write(f'## Refinement of {unit_name}')
+                    self.stream.write(f'## Refinement of {unitname}')
                 self.stream.write(analysis)
                 self.stream.write(f'### Code\n```python\n{implementation}\n```')
                 if i>0:
@@ -266,15 +267,13 @@ class GUFlowScratch(FlowCreator):
             # avoid redundant debugging steps, i.e. only the debug for the passed plans are needed
             with self.status_handler('Checking the implementation of the root unit...'):
                 # 1. check the format code for GAU
-                reformatted_code,gau_children,new_args,called_path,format_errors,format_warnings=check_and_reformat_gau_code(out['implementation'],unit_name)
+                reformatted_code,new_args,format_errors,format_warnings=check_and_reformat_gau_code(implementation,unitname,children)
                 collapse_write(
                     self.stream,
                     'Code format check',
                     (
                         f'### Reformatted Code\n```python\n{reformatted_code}\n```\n\n'
-                        f'#### Detected Children\n{gau_children}\n\n'
                         f'#### New Arguments\n{new_args}\n\n'
-                        f'#### Called Path\n{called_path}\n\n'
                         f'#### Format Errors\n{format_errors}\n\n'
                         f'#### Format Warnings\n{format_warnings}\n\n'
                     )
@@ -291,7 +290,7 @@ class GUFlowScratch(FlowCreator):
                 func_checks = {}
                 if format_errors==[]:
                     self.tree.add_unit(
-                        unit_name,reformatted_code,new_args,analysis,called_path,None,None,gau_children,None
+                        unitname,reformatted_code,new_args,analysis,None,None,children,None
                     )
                     design_name=self.tree.name.replace(' ','_')
                     gabcode = self.tree.compose()
@@ -316,12 +315,12 @@ class GUFlowScratch(FlowCreator):
             if i==0:
                 status_info=f'Reviewing implementation of root unit...'
                 gu_implementation_root_review_prompt=P.GU_IMPLEMENTATION_ROOT_REVIEW(
-                    UNIT_NAME=unit_name,PROPOSAL=proposal['proposal'],ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,CHECKER_REPORT=check_report)
+                    UNIT_NAME=unitname,PROPOSAL=proposal['proposal'],ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,CHECKER_REPORT=check_report)
                 P.GU_IMPLEMENTATION_ROOT_REVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
             else:
                 status_info=f'Reviewing refined implementation of root unit (version {i})...'
                 gu_implementation_root_review_prompt=P.GU_IMPLEMENTATION_REREVIEW(
-                    UNIT_NAME=unit_name,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
+                    UNIT_NAME=unitname,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
                     CHANGES=changes,CHECKER_REPORT=check_report
                 )
                 P.GU_IMPLEMENTATION_REREVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
@@ -336,19 +335,19 @@ class GUFlowScratch(FlowCreator):
                 self.stream.write(suggestions)
                 self.print_raw_output(out)
 
-                self.tree.units[unit_name].rating=rating
-                self.tree.units[unit_name].review=review
-                self.tree.units[unit_name].suggestions=suggestions
+                self.tree.units[unitname].rating=rating
+                self.tree.units[unitname].review=review
+                self.tree.units[unitname].suggestions=suggestions
 
             design = {
-                'unit': self.tree.units[unit_name].json(),
+                'unit': self.tree.units[unitname].json(),
                 'gab_code':gabcode_reformat,
                 'format_checks':format_checks,
                 'func_checks':func_checks,
             }
             traces.append(design)
             if not checkpass or rating<=3 or len(format_errors)>0:
-                self.tree.del_unit(unit_name)
+                self.tree.del_unit(unitname)
                 FORMAT_CHECKER_REPORT = P.FORMAT_CHECKER_REPORT.format(
                     RESULT='failed' if len(format_errors)>0 else 'passed',
                     ERRORS=format_errors,
@@ -408,7 +407,7 @@ class GUFlowScratch(FlowCreator):
                 post_refinement+=1
 
             DESIGN_IMPLEMENTER=reload_role('design_implementer',self.gpt4o0806_agent,P.DESIGN_IMPLEMENTATER_SYSTEM(
-                GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
+                GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,GAB_COMPOSER=GAB_COMPOSER))
             design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
                                                 alias='design_implementation',note=f'Starting design implementation...')
             with self.status_handler('Selecting the next unit to work on...'):
@@ -438,7 +437,7 @@ class GUFlowScratch(FlowCreator):
             
             for i in range(self.max_attemps['implementation_debug']):
                 DESIGN_IMPLEMENTER=reload_role('design_implementer',self.gpt4o0806_agent,P.DESIGN_IMPLEMENTATER_SYSTEM(
-                    GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
+                    GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,GAB_COMPOSER=GAB_COMPOSER))
                 design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
                                                     alias='design_implementation',note=f'Starting design implementation...')
                 REFINE=False
@@ -472,11 +471,11 @@ class GUFlowScratch(FlowCreator):
                     _,out=self.dialog.call(design_implementer_tid,gu_implement_unit_prompt)
                     context_design_implementer=self.dialog.context(design_implementer_tid)
                     if REFINE:
-                        reflection,analysis,implementation,changes=out['reflection'],out['analysis'],out['implementation'],out['changes']
+                        reflection,analysis,implementation,changes,children=out['reflection'],out['analysis'],out['implementation'],out['changes'],out['children']
                         self.stream.write(f'### Reflection\n{reflection}')
                         self.stream.write(f'## Refinement of {selection}')
                     else:
-                        implementation,analysis=out['implementation'],out['analysis']
+                        implementation,analysis,children=out['implementation'],out['analysis'],out['children']
                         self.stream.write(f'## Implementation of {selection}')
                     self.stream.write(analysis)
                     self.stream.write(f'### Code\n```python\n{implementation}\n```')
@@ -489,15 +488,13 @@ class GUFlowScratch(FlowCreator):
                 # avoid redundant debugging steps, i.e. only the debug for the passed plans are needed
                 with self.status_handler('Checking the implementation of the selected unit...'):
                     # 1. check the format code for GAU
-                    reformatted_code,gau_children,new_args,called_path,format_errors,format_warnings=check_and_reformat_gau_code(out['implementation'],selection)
+                    reformatted_code,new_args,format_errors,format_warnings=check_and_reformat_gau_code(implementation,selection,children)
                     collapse_write(
                         self.stream,
                         'Code format check',
                         (
                             f'### Reformatted Code\n```python\n{reformatted_code}\n```\n\n'
-                            f'#### Detected Children\n{gau_children}\n\n'
                             f'#### New Arguments\n{new_args}\n\n'
-                            f'#### Called Path\n{called_path}\n\n'
                             f'#### Format Errors\n{format_errors}\n\n'
                             f'#### Format Warnings\n{format_warnings}\n\n'
                         )
@@ -513,7 +510,7 @@ class GUFlowScratch(FlowCreator):
                     func_checks = {}
                     if format_errors==[]:
                         self.tree.add_unit(
-                            selection,reformatted_code,new_args,analysis,called_path,None,None,gau_children,None
+                            selection,reformatted_code,new_args,analysis,None,None,children,None
                         )
                         design_name=self.tree.name.replace(' ','_')
                         gabcode = self.tree.compose()
@@ -621,7 +618,7 @@ class GUFlowScratch(FlowCreator):
             }
             RETS[selection]=RET
         
-        return query,state,RETS
+        return query,state,{'unit_designs':RETS}
 
 
 
@@ -630,9 +627,21 @@ class GUFlowScratch(FlowCreator):
         "EXIT",
         hints="output the initial threads",
     )
-    def end_of_design(self,query,state):
+    def end_of_design(self,query,state,proposal,proposal_traces,root_design,root_design_traces,unit_designs):
         
-        return query,state,{}
+        design_stack={
+            'proposal':proposal,
+            'proposal_traces':proposal_traces,
+            'root_design':root_design,
+            'root_design_traces':root_design_traces,
+            'unit_designs':unit_designs,
+        }
+
+        RET={
+            'design_stack':design_stack,
+        }
+
+        return query,state,RET
 
 
 def gu_design_scratch(cls,query,stream,status_handler):
@@ -641,6 +650,7 @@ def gu_design_scratch(cls,query,stream,status_handler):
     GU_CALLEE = ROLE('GAB Unit Designer',gu_flow.flow)
     gu_tid = cls.dialog.fork(main_tid,SYSTEM_CALLER,GU_CALLEE,note=f'launch design flow',alias=f'gu_design')
     res,ret=cls.dialog.call(gu_tid,query,main_tid=main_tid)
+    design_stack = ret['design_stack']
 
     # return title,code,explain,summary,autocfg,reviews,ratings,check_results
 

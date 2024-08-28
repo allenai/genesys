@@ -43,9 +43,11 @@ class GAUBase(nn.Module):
 
     GAB is fractal, like GAB itself, each GAB unit accepts X and Z as input and returns Y and Z as output.
     """ 
-    def __init__(self, embed_dim: int):
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict):
         super().__init__()
         self.embed_dim = embed_dim
+        self.block_loc = block_loc # location of a block within the network, (layer_idx, n_block)
+        self.kwarg_all = kwarg_all # dict of all kwargs, use it to initialize the children units
 
     def _forward(self, X, **Z):
         raise NotImplementedError
@@ -64,8 +66,6 @@ class GAUBase(nn.Module):
         assert isinstance(Z_, dict), "Intermediate variables must be stored in a tuple"
         Z.update(Z_) # the new intermediate variables are updated to the current Z
         return Y, Z
-
-
 
 
 class GatedMLP(nn.Module):

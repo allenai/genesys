@@ -5,6 +5,7 @@ from exec_utils.models.model import ModelOutput
 import re
 import json
 from typing import Dict, Any
+from pydantic import BaseModel
 
 
 '''
@@ -322,7 +323,7 @@ good, 4 is excellent, 5 is an outstanding design you have never seen and highly
 recommended. 3 is the boarder for pass.
 
 Be very strict and fair. Do not pass a proposal easily, give a pass only when it
-is good enough.
+is good enough. 
 """
 
 GU_PROPOSAL_REVIEW_format = {
@@ -524,6 +525,13 @@ block by nesting multiple GAUs. However, each GAU should be not too complex, if
 you want to create complex block, you should break it down into smaller GAUs and
 nest them. As such, you should design a GAB block in a top-down manner. 
 
+The GAUs you designed will consist a tree where the children of a node are the
+GAUs defined in the __init__ method of the node. And you will be asked to start
+your design by designing a root node. The tree will be used to compose the GAB
+block using this GABComposer class:
+
+```python {GAB_COMPOSER} ```
+
 Notice that, everytime you are only allowed to edit within one GAU. You can
 leave placeholder definition and calls of the GAUs that you wish to implement
 later in your GAU. The system will automatically create an initial GAU code for
@@ -552,7 +560,7 @@ should follow the following steps and include them in your response:
 3. The pseudo code of the GAU you are designing that capture the high-level
    idea. 
 4. The full implementation of the GAU you designed, remember to replece the
-   unit_name marks by the actual unit name. Notice that you can contain multiple
+   unitname marks by the actual unit name. Notice that you can contain multiple
    python codes in your response, but only the last one with "# gau.py" mark in
    the first line will be detected as the final implementation. If multiple GAUs
    are detected in your response, only the last one will be applied. When you
@@ -563,7 +571,7 @@ should follow the following steps and include them in your response:
 Here are some guidelines for designing the GAU:
 
  - Do not change the class name GAU, the system will automatically rename it
-   using the unit_name you provide, and it should be the only GAU class (which
+   using the unitname you provide, and it should be the only GAU class (which
    can be decided by whether it is inherited from GAUBase) defined in your
    implementation, do not define any other GAU classes in your implementation.
    No need to worry about the placeholders, the system will automatically create
@@ -573,18 +581,31 @@ Here are some guidelines for designing the GAU:
    classes detected, the system will report an error. 2. If there is only one
    GAUBase class detected, the system will automatically rename it and regard it
    as the GAU class you designed. 3. If there are multiple GAUBase classes
-   detected, the system will take the one with the name "GAU" or the unit_name
+   detected, the system will take the one with the name "GAU" or the unitname
    you provided as the GAU class you designed, and remove others. If no such
    name is found, the system will report an error.
  - When calling a GAU, you should pass both the X and Z to the GAU. You should
-   pass Z in the kwargs manner, for example {{unit_name}}(X, **Z).
- - When defining a GAU object in __init__, you should privide the type hint, for
-   example, ```self.unit: GAUBase = {{unit_name}}(**kwargs) ```, remember to
-   pass such a kwargs which allows more customized arguments you will define
-   later in your actual implementation to be passed in. When you defines a GAU,
-   it should be either a known GAU or a placeholder of a GAU you are going to
-   design. It should never be something else such as nn.Module or a constant.
-   The system will automatically detect the GAU placeholders and create a new
+   pass Z in the kwargs manner, for example {{unitname}}(X, **Z).
+ - Whenever you define a GAU instance, you should always follow this way:
+   ```self.{{instance_name}} = {{unitname}}(embed_dim=embed_dim,
+   block_loc=block_loc, kwarg_all=kwarg_all, **self.factory_kwargs, **kwarg_all)
+   ```, and ```self.factory_kwargs = {{"device": device, "dtype": dtype}}```. 
+ - embed_dim is the dimension of input, it decides the network, block_loc is a
+   tuple of (layer_idx, n_block) that helps you locate the block within the
+   network, kwarg_all is a dictionary of all hyperparameters across all units,
+   device and dtype should be passed to any nn layers, parameters, tensors, etc.
+   you defined in __init__, _forward, or any other places, you can pass it
+   through self.factory_kwargs every where in your GAU.
+ - When you defines a GAU, it should be either a known GAU or a placeholder of a
+   GAU you are going to design. It should never be something else such as
+   nn.Module or a constant. You should provide the *full list* of the children
+   GAU classes you will use inside the __init__ method in your response to
+   ensure the system can detect them correctly when composing the GAB code.
+   Notice that you should record the class names of the GAU not the name of the
+   instances of the GAU.
+ - You are not allowed to define an instance of a GAU inside nn.Sequential.
+   nn.ModuleList and nn.ModuleDict are allowed.
+ - The system will automatically detect the GAU placeholders and create a new
    empty GAU or fetch it from the base if it is already defined. Do not
    implement any placeholders, you will be asked to implement them later.
  - If multiple GAU classes are detected in your response, only the one named
@@ -638,7 +659,7 @@ instructions, templates, and the format requirements. The GAU will be reviewed
 and checked. It will be accepted only when it pass bothe the review and check
 process. Your analysis should be as detailed as possible, and the implementation
 can introduce new ideas and details that are not covered in the proposal that
-can improve the design.
+can improve the design. 
 
 Don't be hurry to try to implemente everything at once, be patient, slowly, and
 focus on the current GAU you are designing. And always remember to design it in
@@ -647,33 +668,38 @@ block.
 """
 
 
-GU_IMPLEMENTATION_format = {
-   "type": "json_schema",
-   "json_schema": {
-         "name": "implement_response",
-         "strict": True,
-         "schema": {
-            "type": "object",
-            "properties": {
-               "analysis": {
-                     "type": "string",
-                     "description": "Analysis, plans, and pseudocode of the GAU being designed"
-               },
-               "unit_name": {
-                     "type": "string",
-                     'description': "The name of the designed GAU"
-               },
-               "implementation": {
-                     "type": "string",
-                     "description": "the full python implementation of the designed GAU"
-               },
-            },
-            "required": ["analysis", "unit_name","implementation"],
-            "additionalProperties": False
-         }
-   }
-}
+# GU_IMPLEMENTATION_format = {
+#    "type": "json_schema",
+#    "json_schema": {
+#          "name": "implement_response",
+#          "strict": True,
+#          "schema": {
+#             "type": "object",
+#             "properties": {
+#                "analysis": {
+#                      "type": "string",
+#                      "description": "Analysis, plans, and pseudocode of the GAU being designed"
+#                },
+#                "unitname": {
+#                      "type": "string",
+#                      'description': "The name of the designed GAU"
+#                },
+#                "implementation": {
+#                      "type": "string",
+#                      "description": "the full python implementation of the designed GAU"
+#                },
+#             },
+#             "required": ["analysis", "unitname","implementation"],
+#             "additionalProperties": False
+#          }
+#    }
+# }
 
+class GU_IMPLEMENTATION_format(BaseModel):
+   analysis: str
+   unitname: str
+   children: list[str]
+   implementation: str
 
 GU_IMPLEMENTATION_ROOT = AgentPrompt(GU_IMPLEMENTATION_ROOT_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_format)
 
@@ -785,7 +811,13 @@ the design or implementation, you should point it out in your review or
 suggestions.
 
 Be very strict and fair. Do not pass a design easily, give a pass only when it
-is good enough.
+is good enough. Notice that the designer is expected work on one unit at a time
+and use a top-down manner to design the model, thus a unit may include
+unimplemented placeholders. This is allowed, the review should be focused on the
+unit being designed itself, not the implementation of the placeholders as they
+are expected to be implemented later. The empirical results are not expected in
+the design stage, so you should check the design based on the theoretical
+analysis. 
 """
 
 GU_IMPLEMENTATION_REVIEW_format = {
@@ -890,39 +922,48 @@ guarantee that the implementation should pass all checkers. You need to firstly
 provide the reflection of the feedback including the checkers' if you didnt pass
 and the reviewer's, then give the full design including the new analysis, plans,
 pseudocode, and the implementations. Keeping the format instructions, finally, a
-summary of the changes you made.
+summary of the changes you made. In order to better locate the bug, you can
+write some prints in your code to help you debug. The outputs will be captured
+by the functionality checker and shown in the report.
 """
 
-GU_IMPLEMENTATION_RETRY_format = {
-   "type": "json_schema",
-   "json_schema": {
-         "name": "implementation_refinement_response",
-         "strict": True,
-         "schema": {
-            "type": "object",
-            "properties": {
-               "reflection": {
-                     "type": "string",
-                     "description": "The reflection based on the review, rating, and suggestions."
-               },
-               "analysis": {
-                     "type": "string",
-                     "description": "Analysis, plans, and pseudocode of the GAU being designed"
-               },
-               "implementation": {
-                     "type": "string",
-                     "description": "the full python implementation of the designed GAU"
-               },
-               "changes": {
-                     "type": "string",
-                     "description": "The summary of the changes you made."
-               },
-            },
-            "required": ["reflection", "analysis","implementation","changes"],
-            "additionalProperties": False
-         }
-   }
-}
+# GU_IMPLEMENTATION_RETRY_format = {
+#    "type": "json_schema",
+#    "json_schema": {
+#          "name": "implementation_refinement_response",
+#          "strict": True,
+#          "schema": {
+#             "type": "object",
+#             "properties": {
+#                "reflection": {
+#                      "type": "string",
+#                      "description": "The reflection based on the review, rating, and suggestions."
+#                },
+#                "analysis": {
+#                      "type": "string",
+#                      "description": "Analysis, plans, and pseudocode of the GAU being designed"
+#                },
+#                "implementation": {
+#                      "type": "string",
+#                      "description": "the full python implementation of the designed GAU"
+#                },
+#                "changes": {
+#                      "type": "string",
+#                      "description": "The summary of the changes you made."
+#                },
+#             },
+#             "required": ["reflection", "analysis","implementation","changes"],
+#             "additionalProperties": False
+#          }
+#    }
+# }'
+
+class GU_IMPLEMENTATION_RETRY_format(BaseModel):
+   reflection: str
+   analysis: str
+   implementation: str
+   changes: str
+   children: list[str]
 
 GU_IMPLEMENTATION_RETRY= AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_RETRY_format)
 
@@ -977,7 +1018,13 @@ or implementation, you should point it out in your review or suggestions. Do not
 boost the rating simply for "awarding" the address of a concern.
 
 Be very strict and fair. Do not pass a design easily, give a pass only when it
-is good enough.
+is good enough. Notice that the designer is expected work on one unit at a time
+and use a top-down manner to design the model, thus a unit may include
+unimplemented placeholders. This is allowed, the review should be focused on the
+unit being designed itself, not the implementation of the placeholders as they
+are expected to be implemented later. The empirical results are not expected in
+the design stage, so you should check the design based on the theoretical
+analysis.  
 """
 
 
@@ -1134,36 +1181,42 @@ a top-down way. You are encouraged to define more children GAU placeholders that
 can be implemented later for more complicated operations. You will be asked
 later to finish the remaining parts of the GAB block. 
    """
-      GU_IMPLEMENTATION_UNIT_format = {
-         "type": "json_schema",
-         "json_schema": {
-               "name": "implementation_refinement_response",
-               "strict": True,
-               "schema": {
-                  "type": "object",
-                  "properties": {
-                     "reflection": {
-                           "type": "string",
-                           "description": "The reflection based on the review, rating, and suggestions."
-                     },
-                     "analysis": {
-                           "type": "string",
-                           "description": "Analysis, plans, and pseudocode of the GAU being designed"
-                     },
-                     "implementation": {
-                           "type": "string",
-                           "description": "the full python implementation of the designed GAU"
-                     },
-                     "changes": {
-                           "type": "string",
-                           "description": "The summary of the changes you made."
-                     },
-                  },
-                  "required": ["reflection", "analysis","implementation","changes"],
-                  "additionalProperties": False
-               }
-         }
-      }
+      # GU_IMPLEMENTATION_UNIT_format = {
+      #    "type": "json_schema",
+      #    "json_schema": {
+      #          "name": "implementation_refinement_response",
+      #          "strict": True,
+      #          "schema": {
+      #             "type": "object",
+      #             "properties": {
+      #                "reflection": {
+      #                      "type": "string",
+      #                      "description": "The reflection based on the review, rating, and suggestions."
+      #                },
+      #                "analysis": {
+      #                      "type": "string",
+      #                      "description": "Analysis, plans, and pseudocode of the GAU being designed"
+      #                },
+      #                "implementation": {
+      #                      "type": "string",
+      #                      "description": "the full python implementation of the designed GAU"
+      #                },
+      #                "changes": {
+      #                      "type": "string",
+      #                      "description": "The summary of the changes you made."
+      #                },
+      #             },
+      #             "required": ["reflection", "analysis","implementation","changes"],
+      #             "additionalProperties": False
+      #          }
+      #    }
+      # }
+      class GU_IMPLEMENTATION_UNIT_format(BaseModel):
+         reflection: str
+         analysis: str
+         implementation: str
+         changes: str
+         children: list[str]
    else:
       GU_IMPLEMENTATION_UNIT_prompt = """
 Now, please design and implement the GAU you selected. Your design and
@@ -1180,28 +1233,33 @@ a top-down way. You are encouraged to define more children GAU placeholders that
 can be implemented later for more complicated operations. You will be asked
 later to finish the remaining parts of the GAB block. 
    """
-      GU_IMPLEMENTATION_UNIT_format = {
-         "type": "json_schema",
-         "json_schema": {
-               "name": "implementation_refinement_response",
-               "strict": True,
-               "schema": {
-                  "type": "object",
-                  "properties": {
-                     "analysis": {
-                           "type": "string",
-                           "description": "Analysis, plans, and pseudocode of the GAU being designed"
-                     },
-                     "implementation": {
-                           "type": "string",
-                           "description": "the full python implementation of the designed GAU"
-                     },
-                  },
-                  "required": ["analysis","implementation"],
-                  "additionalProperties": False
-               }
-         }
-      }
+      # GU_IMPLEMENTATION_UNIT_format = {
+      #    "type": "json_schema",
+      #    "json_schema": {
+      #          "name": "implementation_refinement_response",
+      #          "strict": True,
+      #          "schema": {
+      #             "type": "object",
+      #             "properties": {
+      #                "analysis": {
+      #                      "type": "string",
+      #                      "description": "Analysis, plans, and pseudocode of the GAU being designed"
+      #                },
+      #                "implementation": {
+      #                      "type": "string",
+      #                      "description": "the full python implementation of the designed GAU"
+      #                },
+      #             },
+      #             "required": ["analysis","implementation"],
+      #             "additionalProperties": False
+      #          }
+      #    }
+      # }
+      class GU_IMPLEMENTATION_UNIT_format(BaseModel):
+         analysis: str
+         unitname: str
+         children: list[str]
+         implementation: str
 
    return AgentPrompt(GU_IMPLEMENTATION_UNIT_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_UNIT_format)
 
@@ -1260,7 +1318,13 @@ the design or implementation, you should point it out in your review or
 suggestions.
 
 Be very strict and fair. Do not pass a design easily, give a pass only when it
-is good enough.
+is good enough. Notice that the designer is expected work on one unit at a time
+and use a top-down manner to design the model, thus a unit may include
+unimplemented placeholders. This is allowed, the review should be focused on the
+unit being designed itself, not the implementation of the placeholders as they
+are expected to be implemented later. The empirical results are not expected in
+the design stage, so you should check the design based on the theoretical
+analysis.  
 """
 
 GU_IMPLEMENTATION_UNIT_REVIEW = AgentPrompt(GU_IMPLEMENTATION_UNIT_REVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
@@ -1339,7 +1403,13 @@ the design or implementation, you should point it out in your review or
 suggestions.
 
 Be very strict and fair. Do not pass a design easily, give a pass only when it
-is good enough.
+is good enough. Notice that the designer is expected work on one unit at a time
+and use a top-down manner to design the model, thus a unit may include
+unimplemented placeholders. This is allowed, the review should be focused on the
+unit being designed itself, not the implementation of the placeholders as they
+are expected to be implemented later. The empirical results are not expected in
+the design stage, so you should check the design based on the theoretical
+analysis. 
 """
 
 GU_IMPLEMENTATION_UNIT_REFINE_REVIEW = AgentPrompt(GU_IMPLEMENTATION_UNIT_REFINE_REVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)

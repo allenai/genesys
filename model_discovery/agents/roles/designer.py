@@ -79,20 +79,18 @@ class DesignerAgent(exec_utils.SimpleLMAgent):
             to the agent (which requires using the history)  
         """
         self.model_state.query_state = source
-        if not self.response_format:
-            raw_response = self.model(
-                prompt=query,
-                model_state=self.model_state,
-                history=tuple(manual_history)
-            )
-        else:
-            raw_response = structured__call__(
-                self.model,
-                response_format=self.response_format,
-                prompt=query,
-                model_state=self.model_state,
-                history=tuple(manual_history)
-            )
+        if not hasattr(self,"response_format"): # PATCH
+            self.response_format = None
+        if not hasattr(self,"logprobs"): # PATCH
+            self.logprobs = False
+        raw_response = structured__call__(
+            self.model,
+            response_format=self.response_format, 
+            prompt=query,
+            model_state=self.model_state, 
+            history=tuple(manual_history),
+            logprobs=self.logprobs,
+        )
         response = self.parse_output(raw_response)
 
         return response

@@ -8,6 +8,7 @@ import importlib
 import exec_utils
 import numpy as np
 import os
+import io,contextlib
 import copy
 import platform
 
@@ -361,25 +362,26 @@ class GABFormatChecker:
             default_args = [f'"{arg}"' for arg in default_args]
             self.warnings.append(f'These args are not set by gab_config and directly use the default value: {", ".join(default_args)}. Ignore this if it is intended.\n')
 
-        if redundant_args:
-            redundant_args = [f'"{arg}"' for arg in redundant_args]
-            self.warnings.append(f'The dictionary "gab_config" contains redundant arguments: {", ".join(redundant_args)} not used or not allowed to be re-defined in "GAB.__init__". They are automatically removed by the reformatter.\n')
-            class ConfigModifier(ast.NodeTransformer):
-                def visit_Assign(self, node):
-                    if isinstance(node.targets[0], ast.Name) and node.targets[0].id == 'gab_config':
-                        if isinstance(node.value, ast.Dict):
-                            new_keys = []
-                            new_values = []
-                            for key, value in zip(node.value.keys, node.value.values):
-                                if isinstance(key, ast.Constant) and key.s not in redundant_args:
-                                    new_keys.append(key)
-                                    new_values.append(value)
-                            node.value.keys = new_keys
-                            node.value.values = new_values
-                    return node
+        # XXX: Seems imcompatible with the GAU
+        # if redundant_args:
+        #     redundant_args = [f'"{arg}"' for arg in redundant_args]
+        #     self.warnings.append(f'The dictionary "gab_config" contains redundant arguments: {", ".join(redundant_args)} not used or not allowed to be re-defined in "GAB.__init__". They are automatically removed by the reformatter.\n')
+        #     class ConfigModifier(ast.NodeTransformer):
+        #         def visit_Assign(self, node):
+        #             if isinstance(node.targets[0], ast.Name) and node.targets[0].id == 'gab_config':
+        #                 if isinstance(node.value, ast.Dict):
+        #                     new_keys = []
+        #                     new_values = []
+        #                     for key, value in zip(node.value.keys, node.value.values):
+        #                         if isinstance(key, ast.Constant) and key.s not in redundant_args:
+        #                             new_keys.append(key)
+        #                             new_values.append(value)
+        #                     node.value.keys = new_keys
+        #                     node.value.values = new_values
+        #             return node
 
-            modified_ast = ConfigModifier().visit(code_ast)
-            self.gab_code = astor.to_source(modified_ast)
+        #     modified_ast = ConfigModifier().visit(code_ast)
+        #     self.gab_code = astor.to_source(modified_ast)
 
     def _report_errors(self) -> bool:
         if self.errors:
@@ -688,7 +690,7 @@ class Checker(exec_utils.BaseTool):
         """
         B: int = 2
         X = torch.arange(seq_len * B * D).float().reshape(B, seq_len, D).to(block.device).to(block.dtype)
-            
+
         block.eval()  # Set block to evaluation mode, so that dropout layers are not active
         with torch.no_grad():
             Y,_ = block(X)
@@ -701,7 +703,7 @@ class Checker(exec_utils.BaseTool):
 
             with torch.no_grad():
                 Y_mod,_ = block(X_mod)
-                        
+
             # If any previous outputs change when future X[t + delta] changes, then it is not causal
             if not torch.equal(Y[:, :t+1, :], Y_mod[:, :t+1, :]):#, atol=1e-5):
                 print(f'Error: Causality test failed at t={t}')
@@ -833,9 +835,12 @@ class Checker(exec_utils.BaseTool):
                 mock_input=torch.randint(0, config.vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
                 mock_input = mock_input.to(glm.device)
                 t0=time.time()
-                glm(mock_input) # super slow as well, why??? but its only for the first time initialization
+                output = io.StringIO()
+                with contextlib.redirect_stdout(output):
+                    glm(mock_input) # super slow as well, why??? but its only for the first time initialization
+                captured_output = output.getvalue()
+                self.rprint(f'Forward check passed. Captured output during the forward pass:\n{captured_output}\n')
                 print(f'Time for the first forward pass: {time.time()-t0:.2f}s')
-
         
             except Exception as e:
                 error_trace = traceback.format_exc()

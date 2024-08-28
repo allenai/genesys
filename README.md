@@ -172,4 +172,11 @@ while True:
 1. The reviewer sometimes stuck there, giving the same reviews
 2. Fix Format Checker
 3. Seeds are important, make some manual seeds
+4. Introduce AIS prompts maybe if it helps
+5. *Interactive debugging*
+   1. Capture the prints during the execution of GAB code
+   2. Also maybe prompt the code gen process
+6. Experiment of kwargs passing:
+   1. e.g _forward define actual kwargs, but forward pass **Z
+   2. Will Z still preserve all args?
 

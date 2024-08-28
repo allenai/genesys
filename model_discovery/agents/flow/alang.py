@@ -52,9 +52,10 @@ class AgentPrompt:
             return output
         return self.parser(raw_output)
     
-    def apply(self,agent):
+    def apply(self,agent,logprobs=False):
         agent.parse_output = self.parse
         agent.response_format = self.format
+        agent.logprobs = logprobs
         return agent
 
 class AgentContext:
@@ -389,7 +390,7 @@ class AgentDialogFlowNaive:
         source=U.remove_leading_indent(source)
         fc=pfc.Flowchart.from_code(source)
         
-        fc_dir=U.pjoin(dir,f'{self.name.replace(' ','_')}_flowchart.html')
+        fc_dir=U.pjoin(dir,f'{self.name.replace(" ","_")}_flowchart.html')
         pfc.output_html(fc_dir,f'Flowchart of {self.name}',fc.flowchart())
         return fc_dir
 
