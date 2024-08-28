@@ -1,7 +1,7 @@
 import os,sys
 import json
 
-from model_discovery.agents.checker import *
+from model_discovery.agents.roles.checker import *
 
 from model_discovery.model.library import MODEL2CODE
 
@@ -30,8 +30,13 @@ def check_tune(scale, model_name):
         tool_type="checker",
     )
     cfg = eval(f"GAMConfig_{scale}()")
-    code=MODEL2CODE[model_name]
-    checkpass,report,code,results = checker.check(cfg,code,model_name)
+
+    if model_name in MODEL2CODE:
+        code=MODEL2CODE[model_name]
+    else:
+        code=U.read_file(model_name) # assert model_name is a path
+
+    checkpass,report,code,results = checker.check(cfg,code,model_name,True)
     if not checkpass:
         print(report)
         raise Exception('Model does not pass the checker')
@@ -46,6 +51,7 @@ def check_tune(scale, model_name):
     U.mkdir(savedir,exist_ok=True)
     with open(U.pjoin(savedir,f'check_{scale}.json'),'w') as f:
         json.dump(results,f,indent=4)
+
 
 def run(scale,model_name,args,training_token_multiplier=20): # do a single verify
     with open(U.pjoin(LIBRARY_PATH,model_name,'gab.py'),'r') as f:

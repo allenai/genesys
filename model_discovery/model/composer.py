@@ -80,9 +80,10 @@ class GABComposer:
     def compose(self,tree):
         root_node = tree.root
         generated_code = []
+        processed_units = set()
         
         # Recursively generate code for the root and its children
-        self.generate_node_code(root_node.name, generated_code, tree.units)
+        self.generate_node_code(root_node.name, generated_code, tree.units, processed_units)
         
         # Combine all generated code into a single Python file content
         gau_code = "\n".join(generated_code)
@@ -126,7 +127,10 @@ class GAB(GABBase):
 
 
     # Recursive function to generate code for a node and its children
-    def generate_node_code(self, unit_name, generated_code: List[str], units):
+    def generate_node_code(self, unit_name, generated_code: List[str], units, processed_units):
+        if unit_name in processed_units:
+            return
+        processed_units.add(unit_name)
         # Check if the node exists in units
         if unit_name not in units:
             # If the node does not exist in units, create a placeholder

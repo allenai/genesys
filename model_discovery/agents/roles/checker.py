@@ -423,9 +423,8 @@ def get_system_info_str():
 
 BENCHMARK_MODEL = '''
 import torch.nn as nn
-from mamba_ssm.modules.mha import MHA
 from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMPORT STATEMENT #
-from model_discovery.model.utils.modules import MLP 
+from model_discovery.model.utils.modules import MLP,MHA
 
 class GAB(GABBase):
     def __init__(self,embed_dim: int, block_loc: tuple, n_heads, device=None,dtype=None,**kwargs):
@@ -839,11 +838,13 @@ class Checker(exec_utils.BaseTool):
         return True
     
 
-    def check(self, config, gab_code: str, name: str) -> bool:
+    def check(self, config, gab_code: str, name: str, eff=False) -> bool:
         """Runs through a bunch of checks for the new module at path 
 
         :param path: 
             The path of the proposed module 
+        :param eff:
+            Whether check effectiveness or not
         """
         # torch.cuda.empty_cache()
         time_start=time.time()
@@ -917,9 +918,11 @@ class Checker(exec_utils.BaseTool):
                     gam.d_model
                 )
                 checkpass3=self._check_differentiable(glm,config.vocab_size)
-                assert checkpass2 and checkpass3
-                # checkpass4,effectiveness=self._check_effectiveness(glm,config)
-                # assert checkpass4
+                if eff:
+                    checkpass4,effectiveness=self._check_effectiveness(glm,config)
+                    assert checkpass2 and checkpass3 and checkpass4
+                else:
+                    assert checkpass2 and checkpass3
             except Exception as e:# AssertionError:
                 self.rprint(f'Model test failed\n{e}')
                 if not checkpass2:

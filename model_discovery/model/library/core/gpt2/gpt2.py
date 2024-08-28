@@ -1,6 +1,11 @@
 import torch.nn as nn
-from mamba_ssm.modules.mha import MHA
-from mamba_ssm.modules.mlp import GatedMLP
+try:
+    from mamba_ssm.modules.mha import MHA
+    from mamba_ssm.modules.mlp import GatedMLP
+except:
+    MHA=None
+    GatedMLP=None   
+
 from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMPORT STATEMENT #
 
 from torchtune.modules import RMSNorm
