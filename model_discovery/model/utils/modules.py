@@ -32,11 +32,12 @@ class GABBase(nn.Module):
         assert X.shape[-1] == self.embed_dim
         Y = self._forward(X, **Z)
         if isinstance(Y, tuple):
-            Y, Z = Y
+            Y, Z_ = Y
         else:
-            Z = {}
+            Z_ = {}
         assert Y.shape == X.shape, f"GAB Output shape must be the same as input shape, got {Y.shape} instead"
         assert isinstance(Z, dict), "Intermediate variables must be stored in a dict"
+        Z.update(Z_) # the new intermediate variables are updated to the current Z
         return Y, Z
     
 

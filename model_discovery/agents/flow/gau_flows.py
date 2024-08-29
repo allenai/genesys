@@ -265,7 +265,7 @@ class GUFlowScratch(FlowCreator):
                     self.stream.write(f'### Reflection\n{reflection}')
                     self.stream.write(f'## Refinement of {unitname}')
                 self.stream.write(analysis)
-                self.stream.write('### Specification\n'+spec.to_prompt())
+                self.stream.write('### *Specification*\n'+spec.to_prompt())
                 self.stream.write(f'### Code\n```python\n{implementation}\n```')
                 if i>0:
                     self.stream.write(f'### Changes\n{changes}')
@@ -443,7 +443,7 @@ class GUFlowScratch(FlowCreator):
                 )
                 GU_IMPLEMENTATION_UNIT_SELECTION.apply(DESIGN_IMPLEMENTER.obj)
                 self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_implementation_unit_selection_prompt)
-                self.stream.write(f'#### Current Tree Map\n```\n{VIEW}\n```\n\nNow selecting the next unit to work on...')
+                self.stream.write(f'#### Current Tree Map and Units\n```\n{VIEW.replace('```python','').replace('```','')}\n```\n\nNow selecting the next unit to work on...')
                 _,out=self.dialog.call(design_implementer_tid,gu_implementation_unit_selection_prompt)
                 selection,motivation,termination=out['selection'],out['motivation'],out['termination']
                 context_design_implementer=self.dialog.context(design_implementer_tid)

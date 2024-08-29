@@ -17,10 +17,10 @@ class UnitDeclaration(BaseModel):
    def to_prompt(self):
       return f"""
 Unit Name: {self.unitname}
-   - Demands: {self.demands}
-   - Inputs: {", ".join(self.inputs)}
-   - Outputs: {", ".join(self.outputs)}
-      """
+- Demands: {self.demands}
+- Inputs: {", ".join(self.inputs)}
+- Outputs: {", ".join(self.outputs)}
+"""
 
 class UnitSpec(BaseModel):
    unitname: str
@@ -31,11 +31,11 @@ class UnitSpec(BaseModel):
    def to_prompt(self):
       return f"""
 Unit Name: {self.unitname}
-   ---
-   {self.docstring}
-   ---
-   - Inputs: {", ".join(self.inputs)}
-   - Outputs: {", ".join(self.outputs)}
+'''
+{self.docstring}  
+'''
+- Inputs: {", ".join(self.inputs)}
+- Outputs: {", ".join(self.outputs)}
 """
 
 class GU_IMPLEMENTATION_ROOT_format(BaseModel): 
@@ -630,17 +630,25 @@ should follow the following steps and include them in your response:
    as changing IO is complicated since it can have influence to the parent
    model. The pseudo code of the GAU you are designing that capture the
    high-level idea. 
-2. A full specification if you are designing a root unit, or a docstring if you
-   are designing the non-root units, which is description of the GAU you are
-   designing including the desciption of its function, behavior, how it works,
-   the idea and key features, the constraints, and the details of the inputs and
-   outputs, how to use and example usages, and other information you think is
-   important for the user to understand and use the GAU. A full specification
-   should contain not only docstring but also the unit name, variable names of
-   expected inputs, and outputs. The docstring should be clear and detailed, it
-   will be used for the users to understand the GAU you designed without looking
-   at the implementation. It should allows the user to safely use this GAU and
-   know its advantages and limitations when considering to use it.
+2. Based on the type of unit you are designing, you should provide the
+   following: 
+    - If you are designing the non-root units or refining the root unit: You
+      should provide an API level docstring, which is description of the GAU you
+      are designing including the desciption of its function, behavior, how it
+      works, the idea and key features, the constraints, and the details of the
+      inputs and outputs, how to use and example usages, and other information
+      you think is important for the user to understand and use the GAU. The
+      docstring should be clear and detailed, it will be used for the users to
+      understand the GAU you designed without looking at the implementation. It
+      should allows the user to safely use this GAU and know its advantages and
+      limitations when considering to use it.
+    - If you are designing a new root unit: You should provide a full
+      specification which contains not only the docstring but also the unit
+      name, variable names of expected inputs, and outputs. Notice that root
+      unit may input and output intermediate variables, and may vary if you
+      introduced topology related designs. Simular to GAU, the intermediate
+      variables Z will be accumulatively updated from upper stream blocks to the
+      lower stream blocks. 
 3. The list of children you need to define. To declare a child GAU, you should
    provide the unit name, variable names of the expected inputs and outputs
    (i.e. the interfaces of the child), the demands of the child including the
@@ -687,7 +695,7 @@ Here are some guidelines for designing the GAU:
    places, you can pass it through self.factory_kwargs every where in your GAU.
  - You can use the block_loc to implment the topology related operations,
    example usages: 
-    - Initilizing the internal states, memories, caches, embeddings, etc. in the
+    - Initializing the internal states, memories, caches, embeddings, etc. in the
       first block (GAB composed by the unit tree) of the network, and updating
       them in the later blocks. 
     - Using variant operations, or even model architecture in different blocks,
