@@ -531,7 +531,7 @@ class GUFlowScratch(FlowCreator):
                     # never overwrite existing ones, as the children might be reused
                     new_declared = []
                     for childname,child in children.items():
-                        if childname not in self.tree.declares:
+                        if childname not in self.tree.declares and childname not in self.tree.units: # only add new ones
                             self.tree.declares[childname]=child
                             new_declared.append(childname)
 
