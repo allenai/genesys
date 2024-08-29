@@ -681,7 +681,8 @@ should follow the following steps and include them in your response:
    are detected in your response, only the last one will be applied. When you
    are trying to give the full implementation of the GAU you designed, you
    should always keep this mark at the first line, otherwise, the system will
-   not be able to recognize your code.
+   not be able to recognize your code. Notice that you should never write a
+   __main__ part in your code which will be automatically removed by the system. 
 
 Here are some guidelines for designing the GAU:
 

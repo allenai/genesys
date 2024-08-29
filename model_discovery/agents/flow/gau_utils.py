@@ -7,23 +7,34 @@ import astor
 #############################################################
 
 
-class ImportChecker(ast.NodeVisitor):
-    def __init__(self):
-        self.found_gaubase_import = False
-
-    def visit_ImportFrom(self, node):
-        # Check if 'from model_discovery.model.utils.modules import GAUBase' exists
-        if node.module == 'model_discovery.model.utils.modules' and any(alias.name == 'GAUBase' for alias in node.names):
-            self.found_gaubase_import = True
-        return self.generic_visit(node)
-
-
-class ClassRenamer(ast.NodeTransformer):
+class FormatChecker(ast.NodeTransformer):
     def __init__(self, unit_name):
         self.unit_name = unit_name
+        self.found_gaubase_import = False
+        self.found_gautest_import = False
         self.gau_class_found = False
         self.gaubase_classes = []
         self.errors = []
+        self.warnings = []
+
+    def visit_ImportFrom(self, node):
+        # Remove any import from model_discovery.model.utils.modules
+        if node.module == 'model_discovery.model.utils.modules':
+            return None  # Remove this import line
+        return self.generic_visit(node)
+
+    def visit_If(self, node):
+        # Check if this is the if __name__ == "__main__": block
+        if (isinstance(node.test, ast.Compare) and
+            isinstance(node.test.left, ast.Name) and
+            node.test.left.id == '__name__' and
+            isinstance(node.test.comparators[0], ast.Constant) and
+            node.test.comparators[0].value == '__main__'):
+            self.warnings.append(
+                'The if __name__ == "__main__": block is removed by the reformatter.\n'
+            )
+            return None
+        return node
 
     def visit_ClassDef(self, node):
         # Extract the base class names
@@ -416,20 +427,25 @@ class AttributeChecker(ast.NodeVisitor):
         print(f"Rewritten instantiation: {node.func.id if isinstance(node.func, ast.Name) else node.func.attr}(embed_dim, block_loc, kwarg_all, **self.factory_kwargs, **kwarg_all)")
 
 
-
 class ModuleProcessor(ast.NodeTransformer):
-    def __init__(self, found_gaubase_import, gaubase_classes, unit_name, gau_class_found):
-        self.found_gaubase_import = found_gaubase_import
+    def __init__(self, gaubase_classes, unit_name, gau_class_found):
         self.gaubase_classes = gaubase_classes
         self.unit_name = unit_name
         self.gau_class_found = gau_class_found
         self.errors = []
+        self.warnings = []
 
     def visit_Module(self, node):
-        # Add import if not found
-        if not self.found_gaubase_import:
-            gaubase_import = ast.ImportFrom(module='model_discovery.model.utils.modules', names=[ast.alias(name='GAUBase', asname=None)], level=0)
-            node.body.insert(0, gaubase_import)
+        # Add the combined import line at the top
+        gaubase_import = ast.ImportFrom(
+            module='model_discovery.model.utils.modules',
+            names=[
+                ast.alias(name='GAUBase', asname=None),
+                ast.alias(name='gau_test', asname=None)
+            ],
+            level=0
+        )
+        node.body.insert(2, gaubase_import) # Insert after the first two lines which should be import torch and nn
 
         # Handle renaming and removing other classes that inherit from GAUBase
         if not self.gau_class_found and len(self.gaubase_classes) == 1:
@@ -459,23 +475,19 @@ def check_and_reformat_gau_code(source_code, unit_name, children):
     errors = []
     warnings = []
 
-    # Step 2: Run an import checker to determine if GAUBase import exists
-    import_checker = ImportChecker()
-    import_checker.visit(tree)
+    # Step 2: Run the format checker which now removes the import lines
+    format_checker = FormatChecker(unit_name)
+    format_checker.visit(tree)
 
-    # Step 3: Run the first pass to rename classes and gather class-related information
-    class_renamer = ClassRenamer(unit_name)
-    class_renamer.visit(tree)
-
-    # Check KwargAll
+    # Step 3: Run the KwargAllChecker
     kwarg_all_checker = KwargAllChecker(unit_name)
     kwarg_all_checker.visit(tree)
 
-    # Check init 
+    # Step 4: Run the InitChecker
     init_checker = InitChecker(unit_name)
     init_checker.visit(tree)
 
-    # Step 4: Run the second pass to check the __init__ method for annotated attributes
+    # Step 5: Run the AttributeChecker
     attribute_checker = AttributeChecker(unit_name, children)
     attribute_checker.visit(tree)
     if not attribute_checker.found_init:
@@ -483,13 +495,20 @@ def check_and_reformat_gau_code(source_code, unit_name, children):
     if not attribute_checker.found__forward:
         errors.append("Error: No _forward method found in the GAU.")
 
-    # Step 5: Process the module (e.g., imports and removing classes)
-    module_processor = ModuleProcessor(import_checker.found_gaubase_import, class_renamer.gaubase_classes, unit_name, class_renamer.gau_class_found)
+    # Step 6: Process the module (e.g., imports and removing classes)
+    module_processor = ModuleProcessor(
+        format_checker.gaubase_classes,
+        unit_name,
+        format_checker.gau_class_found
+    )
     module_processor.visit(tree)
 
+    # Step 7: Generate the reformatted source code
     reformatted_code = astor.to_source(tree)
     
-    errors += class_renamer.errors + attribute_checker.errors + module_processor.errors
-    # return the code, children, args, called, errors, and warnings
-    return reformatted_code, attribute_checker.new_args, errors, warnings
+    # Step 8: Collect errors and warnings
+    errors += format_checker.errors + attribute_checker.errors + module_processor.errors
+    warnings += format_checker.warnings
 
+    # Return the reformatted code, any new arguments, errors, and warnings
+    return reformatted_code, attribute_checker.new_args, errors, warnings
