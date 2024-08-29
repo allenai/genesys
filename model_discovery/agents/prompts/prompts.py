@@ -654,7 +654,10 @@ should follow the following steps and include them in your response:
    (i.e. the interfaces of the child), the demands of the child including the
    expected function, behavior and the description of the interfaces. The
    demands should be clear and detailed, it should be a guideline for the
-   implementation of the child GAU.
+   implementation of the child GAU. You can reuse an existing GAU or a declared
+   GAU as your child, you can do this by declaring the children with the unit
+   name of the GAU you want to reuse, and the system will automatically reuse
+   the GAU, the other parts of your declaration will be ignored.
 4. The full implementation of the GAU you designed, remember to replece the
    unitname marks by the actual unit name. Notice that you can contain multiple
    python codes in your response, but only the last one with "# gau.py" mark in
@@ -695,9 +698,9 @@ Here are some guidelines for designing the GAU:
    places, you can pass it through self.factory_kwargs every where in your GAU.
  - You can use the block_loc to implment the topology related operations,
    example usages: 
-    - Initializing the internal states, memories, caches, embeddings, etc. in the
-      first block (GAB composed by the unit tree) of the network, and updating
-      them in the later blocks. 
+    - Initializing the internal states, memories, caches, embeddings, etc. in
+      the first block (GAB composed by the unit tree) of the network, and
+      updating them in the later blocks. 
     - Using variant operations, or even model architecture in different blocks,
       such as using one kind in odd blocks and another kind in even blocks.
       Using a different structure in the last block of the network. Making a

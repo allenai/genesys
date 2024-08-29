@@ -175,7 +175,7 @@ class {unit_name}(GAUBase):
 # ideally the GAUTree is similar to a pseudo-code
 class GAUTree:
     def __init__(self, name, proposal, review, rating, suggestions, lib_dir=None, proposal_traces=[]):
-        self.units = {} 
+        self.units:Dict[str,GAUNode] = {} 
         self.declares:Dict[str,UnitDeclaration] = {} # the declarations of the units in the tree, not including the root as it has spec directly
         self.root = None
         self.name = name # name of a design 

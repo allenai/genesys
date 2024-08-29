@@ -271,7 +271,7 @@ class GUFlowScratch(FlowCreator):
                     self.stream.write(f'### Changes\n{changes}')
                 
                 children = {child['unitname']: P.UnitDeclaration.model_validate(child) for child in children}
-                self.tree.declares.update(children)
+                self.tree.declares=children # directly overwrite, as the root unit is the first one
                 self.stream.write(f'### Children')
                 for childname,child in children.items():
                     self.stream.write(f'##### {childname}\n'+child.to_prompt())
@@ -363,7 +363,7 @@ class GUFlowScratch(FlowCreator):
             }
             traces.append(design)
             if not checkpass or rating<=3 or len(format_errors)>0:
-                self.tree.del_unit(unitname)
+                self.tree.del_unit(unitname) # didnt remove declares as there might be reuses
                 FORMAT_CHECKER_REPORT = P.FORMAT_CHECKER_REPORT.format(
                     RESULT='failed' if len(format_errors)>0 else 'passed',
                     ERRORS=format_errors,
@@ -528,7 +528,12 @@ class GUFlowScratch(FlowCreator):
                         self.stream.write(f'### Changes\n{changes}')
                     
                     children = {child['unitname']: P.UnitDeclaration.model_validate(child) for child in children}
-                    self.tree.declares.update(children)
+                    # never overwrite existing ones, as the children might be reused
+                    new_declared = []
+                    for childname,child in children.items():
+                        if childname not in self.tree.declares:
+                            self.tree.declares[childname]=child
+                            new_declared.append(childname)
 
                     self.stream.write(f'### Children')
                     for childname,child in children.items():
@@ -634,9 +639,11 @@ class GUFlowScratch(FlowCreator):
                 traces.append(design)
                 if not checkpass or rating<=3 or len(format_errors)>0:
                     if selection in UNIMPLEMENTED: 
-                        self.tree.del_unit(selection)
+                        self.tree.del_unit(selection) # remove the unit 
                     else:
-                        self.tree.units[selection]=node_backup
+                        self.tree.units[selection]=node_backup # restore the unit
+                    for childname in new_declared: 
+                        self.tree.del_declare(childname) # remove the new declared children to restore the tree
                     FORMAT_CHECKER_REPORT = P.FORMAT_CHECKER_REPORT.format(
                         RESULT='failed' if len(format_errors)>0 else 'passed',
                         ERRORS=format_errors,
