@@ -594,6 +594,22 @@ block by nesting multiple GAUs. However, each GAU should be not too complex, if
 you want to create complex block, you should break it down into smaller GAUs and
 nest them. As such, you should design a GAB block in a top-down manner. 
 
+You should also write the unit tests for any parts in your implementation and
+the GAU you designed, the unit tests are decorated by @gau_test, the system will
+automatically detect the unit tests based on this decorator and run them in a
+checker to help you diagnose and debug the GAU you designed. You should write
+assertions and make prints in the unit tests. The unit tests accept only device
+and dtype as arguments, you should use them to initialize your GAU and mock
+inputs. You can rename the function but never change the arguments and the
+decorator. The unit tests should also not return anything, they will be ignored
+by the system.
+
+Write bug free and easy debugging code is important. In order to better locate
+the bug, you should also always write assertions and optionally print in your
+code that help you to diagnose the system. They can also be the signals for you
+to debug other units in future. The outputs will be captured by the
+functionality checker and shown in the report.
+
 The GAUs you designed will consist a tree where the children of a node are the
 GAUs defined in the __init__ method of the node. And you will be asked to start
 your design by designing a root node. The tree will be used to compose the GAB
@@ -1009,11 +1025,6 @@ relection, you then give the full design including the new analysis, plans,
 pseudocode, and the implementations as well, keeping the format instructions.
 Finally, give a summary of the changes you made. 
 
-In order to better locate the bug, you should always write assertions and
-optionally print in your code that help you to diagnose the system. They can
-also be the signals for you to debug other units in future. The outputs will be
-captured by the functionality checker and shown in the report.
-
 Remember that the bug should always be able to be solve within the unit you are
 designing, as the other units are either implemented and fully tested or are
 placeholders which will have no computation. You should also try to make the
@@ -1223,7 +1234,6 @@ The suggestions from the reviewer:
 
 {SUGGESTIONS}
 
-
 Now you need to refine the GAU based on the feedback. You should address the
 issues and improve the design based on the suggestions. You need to firstly
 provide the reflection of the feedback including: If you didn't pass the
@@ -1233,11 +1243,6 @@ the plans to address them; If you failed on both, then give both. After
 relection, you then give the full design including the new analysis, plans,
 pseudocode, and the implementations as well, keeping the format instructions.
 Finally, give a summary of the changes you made.
-
-In order to better locate the bug, you should always write assertions and
-optionally print in your code that help you to diagnose the system. They can
-also be the signals for you to debug other units in future. The outputs will be
-captured by the functionality checker and shown in the report.
 
 Remember that the bug should always be able to be solve within the unit you are
 designing, as the other units are either implemented and fully tested or are
