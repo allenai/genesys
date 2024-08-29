@@ -71,6 +71,9 @@ class GAUBase(nn.Module):
         Z.update(Z_) # the new intermediate variables are updated to the current Z
         return Y, Z
 
+def gau_test(func):
+    func._is_gau_test = True
+    return func
 
 
 class MLP(nn.Module):

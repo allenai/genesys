@@ -41,7 +41,97 @@ class ClassRenamer(ast.NodeTransformer):
         return self.generic_visit(node)
 
 
-### TODO: There must be more complicated patterns, need to solve them by recursion, but it is good for now
+class KwargAllChecker(ast.NodeVisitor):
+    def __init__(self,unit_name):
+        self.inside_gau_class = False
+        self.unit_name = unit_name
+        self.warnings = []
+        self.additional_args = []  # To store arguments that need to be added to __init__
+        self.existing_args = []  # To track existing arguments
+
+    def visit_FunctionDef(self, node):
+        # Check only the __init__ function
+        if node.name == "__init__":
+            # Extract argument names and defaults from the __init__ method
+            init_arg_names = [arg.arg for arg in node.args.args]
+            non_default_arg_count = len(init_arg_names) - len(node.args.defaults)
+            new_body = []
+
+            for stmt in node.body:
+                # Handle Assign: self.param_name = kwarg_all.get('param_name', default_value)
+                if (isinstance(stmt, ast.Assign) and isinstance(stmt.value, ast.Call)
+                    and isinstance(stmt.value.func, ast.Attribute) and stmt.value.func.attr == "get"):
+                    
+                    self.process_kwarg_get(stmt, stmt.value, stmt.targets[0], node, init_arg_names, non_default_arg_count)
+                    continue
+
+                # Handle AnnAssign: self.param_name: Type = kwarg_all.get('param_name', default_value)
+                if (isinstance(stmt, ast.AnnAssign) and isinstance(stmt.value, ast.Call)
+                    and isinstance(stmt.value.func, ast.Attribute) and stmt.value.func.attr == "get"):
+                    
+                    self.process_kwarg_get(stmt, stmt.value, stmt.target, node, init_arg_names, non_default_arg_count, is_annassign=True)
+                    continue
+
+                # If no matching pattern, keep the original statement
+                new_body.append(stmt)
+
+            # Replace the old body with the new one
+            node.body = new_body
+
+            # Add new arguments to __init__ if needed
+            for param_name, default_value in self.additional_args:
+                node.args.args.append(ast.arg(arg=param_name, annotation=None))
+                node.args.defaults.append(default_value)
+
+        return self.generic_visit(node)
+
+    def process_kwarg_get(self, stmt, get_call, target, node, init_arg_names, non_default_arg_count, is_annassign=False):
+        """Process kwarg_all.get('param_name', default_value) in Assign or AnnAssign"""
+        if (isinstance(get_call.func.value, ast.Name) and get_call.func.value.id == "kwarg_all"
+            and len(get_call.args) == 2 and isinstance(get_call.args[0], ast.Constant)):
+            
+            param_name = get_call.args[0].value
+            default_value = get_call.args[1]
+
+            self.warnings.append(f"Warning: '{param_name}' extracted from kwarg_all. Adding or updating it as an argument to __init__.")
+
+            # If the param already exists, check if it has a default value
+            if param_name in init_arg_names:
+                param_index = init_arg_names.index(param_name)
+                if param_index < non_default_arg_count:  # If it's a non-default argument
+                    # Set the default value by moving it to the correct position
+                    node.args.defaults.insert(param_index - non_default_arg_count, default_value)
+                    non_default_arg_count -= 1  # Adjust the count of non-default args
+            else:
+                # Add the param to __init__ arguments if not already present
+                self.additional_args.append((param_name, default_value))
+                init_arg_names.append(param_name)
+
+            # Replace the line with self.param_name = param_name
+            new_assign = ast.Assign(
+                targets=[target],
+                value=ast.Name(id=param_name, ctx=ast.Load())
+            )
+            if is_annassign:  # Preserve the annotation if it was an AnnAssign
+                new_assign = ast.AnnAssign(
+                    target=target,
+                    annotation=stmt.annotation,
+                    value=ast.Name(id=param_name, ctx=ast.Load()),
+                    simple=1
+                )
+
+            node.body.append(new_assign)
+
+    def visit_ClassDef(self, node):
+        if node.name == self.unit_name:
+            self.inside_gau_class = True  # Start processing only when inside GAU class
+            self.generic_visit(node)
+            self.inside_gau_class = False  # Reset after processing GAU class
+        else:
+            # Skip other classes
+            self.inside_gau_class = False
+
+
 class InitChecker(ast.NodeVisitor):
     def __init__(self, unit_name):
         self.unit_name = unit_name
@@ -105,6 +195,7 @@ class InitChecker(ast.NodeVisitor):
 
 
 
+### TODO: There must be more complicated patterns, need to solve them by recursion, but it is good for now
 class AttributeChecker(ast.NodeVisitor):
     def __init__(self, unit_name, children):
         self.unit_name = unit_name
@@ -375,6 +466,10 @@ def check_and_reformat_gau_code(source_code, unit_name, children):
     # Step 3: Run the first pass to rename classes and gather class-related information
     class_renamer = ClassRenamer(unit_name)
     class_renamer.visit(tree)
+
+    # Check KwargAll
+    kwarg_all_checker = KwargAllChecker(unit_name)
+    kwarg_all_checker.visit(tree)
 
     # Check init 
     init_checker = InitChecker(unit_name)

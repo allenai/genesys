@@ -3,6 +3,7 @@ import json
 import functools as ft
 import time
 import re
+import keyword
 import textwrap
 
 pjoin=os.path.join
@@ -115,3 +116,23 @@ def replace_from_second(text, old, new):
     remaining = remaining.replace(old, new)
     return first_part + old + remaining
 
+def to_camel_case_gab_class_name(name):
+    # Replace non-word characters with spaces to isolate words
+    words = re.sub(r'\W|^(?=\d)', ' ', name).split()
+    
+    # Capitalize the first letter of each word and join them together
+    camel_case_name = ''.join(word.capitalize() for word in words)
+    
+    # Ensure the variable name doesn't start with a digit
+    if camel_case_name and camel_case_name[0].isdigit():
+        camel_case_name = 'GAB' + camel_case_name
+    
+    # Check if the name is a Python keyword
+    if keyword.iskeyword(camel_case_name):
+        camel_case_name += 'GAB'
+    
+    # Fallback if the name is empty
+    if not camel_case_name:
+        raise ValueError("The name is empty after converting to camel case")
+    
+    return camel_case_name

@@ -9,31 +9,37 @@ from .utils.modules import GAUBase
 
 import model_discovery.utils as U
 
+from model_discovery.agents.prompts.prompts import UnitSpec, UnitDeclaration
+
+
 
 
 @dataclass
 class GAUNode: # this is mainly used to 1. track the hierarchies 2. used for the Linker to solve the dependencies 3. fully serialize the GAUTree
-    name: str # name of the GAU 
+    spec: UnitSpec # name of the GAU 
     code: str # code of the GAU
     args: dict # *new* args and default values of the GAU
-    desc: str
+    desc: str # description of the GAU
     review: str 
     rating: str
-    children: List[str] # children of the GAU, unit class names
+    children: list[str] # list of children GAUs
     suggestions: str # suggestions for the GAU from reviewer for further improvement
     design_traces: list = None # traces of the design process
+    demands: str = None # demands of the GAU from declaration, root GAU has no demands as the demand is the proposal
 
     def json(self):
-        return json.dumps(self.__dict__, indent=4)
+        data = self.__dict__.copy()
+        data['spec'] = self.spec.model_dump_json()  
+        return json.dumps(data, indent=4)
 
     def save(self, dir):
-        U.save_json(self.__dict__,U.pjoin(dir,f'{self.name}.json'))
+        U.save_json(json.loads(self.json()), U.pjoin(dir, f'{self.spec.unitname}.json'))
 
     @classmethod
     def load(cls, name, dir):
-        data=U.load_json(U.pjoin(dir,f'{name}.json'))
+        data = U.load_json(U.pjoin(dir, f'{name}.json'))
+        data['spec'] = UnitSpec.model_validate_json(json.dumps(data['spec']))  # Ensure proper deserialization
         return cls(**data)
-
 
 class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
     def __init__(self, lib_dir=None):
@@ -52,7 +58,7 @@ class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
             self.units[name]=GAUNode.load(name,self.units_dir)
 
     def register(self, unit: GAUNode):
-        name = unit.name
+        name = unit.spec.unitname
         assert name not in self.units, f"Unit {name} is already registered" # never overwrite for backward compatibility
         self.units[name] = unit
         unit.save(self.units_dir)
@@ -79,7 +85,7 @@ class GABComposer:
         processed_units = set()
         
         # Recursively generate code for the root and its children
-        self.generate_node_code(root_node.name, generated_code, tree.units, processed_units)
+        self.generate_node_code(root_node.spec.unitname, generated_code, tree.units, processed_units)
         
         # Combine all generated code into a single Python file content
         gau_code = "\n".join(generated_code)
@@ -109,7 +115,7 @@ class GAB(GABBase):
         return X, Z
 '''
 
-        gab_code=GAB_TEMPLATE.format(ROOT_UNIT_NAME=root_node.name)
+        gab_code=GAB_TEMPLATE.format(ROOT_UNIT_NAME=root_node.spec.unitname)
 
         cfg_code=f'gab_config = {str(gathered_args)}'
 
@@ -137,7 +143,7 @@ class GAB(GABBase):
             
             # Recursively generate code for children
             for child_unit in set(node.children):
-                self.generate_node_code(child_unit, generated_code, units)
+                self.generate_node_code(child_unit, generated_code, units, processed_units)
 
     # Function to create a placeholder class for a GAUNode
     def create_placeholder_class(self, unit_name) -> str:
@@ -170,6 +176,7 @@ class {unit_name}(GAUBase):
 class GAUTree:
     def __init__(self, name, proposal, review, rating, suggestions, lib_dir=None, proposal_traces=[]):
         self.units = {} 
+        self.declares:Dict[str,UnitDeclaration] = {} # the declarations of the units in the tree, not including the root as it has spec directly
         self.root = None
         self.name = name # name of a design 
         self.proposal = proposal # proposal of the design
@@ -181,13 +188,14 @@ class GAUTree:
         self.flows_dir = U.pjoin(lib_dir, 'flows')
         U.mkdir(self.flows_dir)
 
-    def add_unit(self, name, code, args, desc, review, rating, children, suggestions, design_traces=None, overwrite=False):
+    def add_unit(self, spec, code, args, desc, review, rating, children, suggestions, design_traces=None, demands=None, overwrite=False):
+        name = spec.unitname
         if name in self.units and not overwrite:
             print(f"Unit {name} is already in the tree")
             return
         # assert name not in self.units, f"Unit {name} is already in the tree"
         assert not self.dict.exist(name), f"Unit {name} is already registered"
-        node = GAUNode(name, code, args, desc, review, rating, children, suggestions, design_traces)
+        node = GAUNode(spec, code, args, desc, review, rating, children, suggestions, design_traces, demands)
         if len(self.units)==0:
             self.root = node
         self.units[name] = node
@@ -204,16 +212,18 @@ class GAUTree:
         dir=U.pjoin(self.flows_dir,f'{self.name}.json')
         data = {
             'name':self.name,
-            'root':self.root.name,
+            'root':self.root.spec.unitname,
             'units':list(self.units.keys()),
+            'declares': {name:declare.model_dump_json() for name,declare in self.declares.items()},
             'proposal':self.proposal,
+            'proposal_traces':self.proposal_traces,
             'review':self.review,
             'rating':self.rating,
             'suggestions':self.suggestions
         }
         U.save_json(data,dir)
         for unit in self.units.values(): # Do not overwrite by default, which should be done by the design process
-            if not self.dict.exist(unit.name): # Deal with the name repetition
+            if not self.dict.exist(unit.spec.unitname): # Deal with the name repetition
                 self.dict.register(unit)
 
     @classmethod
@@ -253,13 +263,20 @@ class GAUTree:
         return pstr,unimplemented
 
     def view(self):
-        pstr,unimplemented=self._view(self.root.name,node=self.root)
+        pstr,unimplemented=self._view(self.root.spec.unitname,node=self.root)
         implemented = set(self.units.keys())
         pstr+='\nImplemented Units: '+', '.join(implemented)
         if len(unimplemented)>0:
             pstr+='\nUnimplemented Units: '+', '.join(unimplemented)
         else:
             pstr+='\nAll units are implemented.'
+
+        pstr+='\n\nSpecifications for Implemented Units:\n'
+        for unit in self.units.values():
+            pstr+=unit.spec.to_prompt()+'\n'
+        pstr+='\n\nDeclarations for Unimplemented Units:\n'
+        for unit in unimplemented:
+            pstr+=self.declares[unit].to_prompt()+'\n'
         return pstr,list(implemented),list(unimplemented)
 
 

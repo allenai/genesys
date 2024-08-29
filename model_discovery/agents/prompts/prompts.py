@@ -8,18 +8,72 @@ from typing import Dict, Any
 from pydantic import BaseModel
 
 
+class UnitDeclaration(BaseModel):
+   unitname: str
+   demands: str
+   inputs: list[str]
+   outputs: list[str]
+
+   def to_prompt(self):
+      return f"""
+Unit Name: {self.unitname}
+   - Demands: {self.demands}
+   - Inputs: {", ".join(self.inputs)}
+   - Outputs: {", ".join(self.outputs)}
+      """
+
+class UnitSpec(BaseModel):
+   unitname: str
+   docstring: str
+   inputs: list[str]
+   outputs: list[str]
+
+   def to_prompt(self):
+      return f"""
+Unit Name: {self.unitname}
+   ---
+   {self.docstring}
+   ---
+   - Inputs: {", ".join(self.inputs)}
+   - Outputs: {", ".join(self.outputs)}
+"""
+
+class GU_IMPLEMENTATION_ROOT_format(BaseModel): 
+   analysis: str
+   spec: UnitSpec
+   children: list[UnitDeclaration]
+   implementation: str
+
+class GU_IMPLEMENTATION_format(BaseModel): 
+   analysis: str
+   docstring: str
+   children: list[UnitDeclaration]
+   implementation: str
+
+class GU_IMPLEMENTATION_ROOT_RETRY_format(BaseModel): # for retry, only allow to update description
+   reflection: str
+   analysis: str
+   spec: UnitSpec
+   implementation: str
+   children: list[UnitDeclaration]
+   changes: str
+
+class GU_IMPLEMENTATION_RETRY_format(BaseModel): # for retry, only allow to update description
+   reflection: str
+   analysis: str
+   docstring: str
+   implementation: str
+   children: list[UnitDeclaration]
+   changes: str
+
+
+
+
 '''
 #######################################################
 # Naive GAB Design Prompts
 #######################################################
 '''
-
-# 1. You can use layer_idx to create arbitrary model structure with different types of blocks, examples:
-#     * create 1 type of block for all layers, you can ignore layer_idx
-#     * create 2 different types of blocks for layers with layer_idx%2=0,1
-#     * create 3 different types of blocks for layers with layer_idx%3=0,1,2
-#     * create 3 different types of blocks A,B,C, has AABC structure, then you can let layer_idx%4=0,1 for A, 2 for B, 3 for C
-# 1. Use different types of blocks is not required also there is no preference for heterogeneous or homogeneous blocks, you can choose to create only one type of block or multiple types of blocks.
 
 DESIGNER_PROMPT="""
 Design a novel autoregressive model block by completing the blanks marked in the
@@ -107,7 +161,7 @@ class GABBase(nn.Module):
     def __init__(self,embed_dim: int, block_loc: tuple): 
         super().__init__()
         self.embed_dim = embed_dim
-        self.block_loc = block_loc # location of a block within the network, (layer_idx, n_block)
+        self.block_loc = block_loc # location of the GAB block within the network, (block_idx, n_block), e.g. (0, 6) for the first block in a network with 6 blocks in total
 
     def _forward(self,X,**kwargs): 
         raise NotImplementedError
@@ -183,28 +237,32 @@ design you want to have. The proposal decides a direction, phylosophy and the
 plan of the design. You will be provided with one or multiple references to
 consider that may inspire you.
 
-Your response should include but not restrict to: 
+Your response should include: 
 
-1. A title with the name of the design in the level 1 header format. You shuld
-   have only one level 1 header in your response which is the name of the
-   design.
+1. A model name, it should be a camel case legal variable name for defining the
+   model class in pytorch.
 
-2. Your motivation of the design. What problem you want to solve based on the
-   insights or observations you have about the autoregressive models today, and
-   any inspirations you may have from the references. 
+2. The proposal, it should include but not restrict to the following parts: a. A
+   title with the name of the design in the level 1 header format. You shuld
+      have only one level 1 header in your response which is the name of the
+      design.
 
-3. The analysis of the problem.
+   b. Your motivation of the design. What problem you want to solve based on the
+      insights or observations you have about the autoregressive models today,
+      and any inspirations you may have from the references. 
 
-4. The core idea and phylosophy behind of your design that may solve the problem
-   you proposed. 
+   c. The analysis of the problem.
 
-5. The plan of the design. You should include subsections of that describe the
-   details of each part of the design with the justifications.
+   d. The core idea and phylosophy behind of your design that may solve the
+      problem you proposed. 
 
-6. A conclution of the proposal. 
+   e. The plan of the design. You should include subsections of that describe
+      the details of each part of the design with the justifications.
 
-7. Optional, the references you used in your proposal, should be in the right
-   format.
+   f. A conclution of the proposal. 
+
+   g. Optional, the references you used in your proposal, should be in the right
+      format.
 
 The proposal will be reviewed and you will be asked to modify it if it is not
 passed. You can start to implement the design after the proposal is passed. 
@@ -233,25 +291,32 @@ Here are some references for you to consider that may inspire you:
 Check the references, then give your proposal follow the instructions.
 """
 
-def GU_DESIGN_PROPOSAL_parser(raw_output: ModelOutput) -> Dict[Any,Any]:
-   title=""
-   raw_text = raw_output.text.strip()
-   for line in raw_text.split("\n"):
-      if line.startswith("# "):
-         title = line[2:]
-         break
-   if title == "":
-       title = raw_text.split("\n")[0]
-   output = {}
-   output["title"] = title
-   output["text"] = raw_text
-   output["_details"] = {}
-   output["_details"]["cost"] = raw_output.cost
-   output["_details"]["running_cost"] = 0
-   return output
+
+GU_DESIGN_PROPOSAL_format = {
+   "type": "json_schema",
+   "json_schema": {
+         "name": "proposal_refinement_response",
+         "strict": True,
+         "schema": {
+            "type": "object",
+            "properties": {
+               "modelname": {
+                     "type": "string",
+                     "description": "The name of the model. It should be a camel case legal variable name for defining the model class in pytorch."
+               },
+               "proposal": {
+                     "type": "string",
+                     "description": "The fall proposal, keep the format instructions."
+               },
+            },
+            "required": ["modelname", "proposal"],
+            "additionalProperties": False
+         }
+   }
+}
 
 
-GU_DESIGN_PROPOSAL = AgentPrompt(GU_DESIGN_PROPOSAL_prompt,GU_DESIGN_PROPOSAL_parser)
+GU_DESIGN_PROPOSAL = AgentPrompt(GU_DESIGN_PROPOSAL_prompt,GENERAL_JSON_parser,GU_DESIGN_PROPOSAL_format)
 
 
 # endregion
@@ -392,6 +457,10 @@ GU_PROPOSAL_REFINEMENT_format = {
                      "type": "string",
                      "description": "The reflection based on the review, rating, and suggestions."
                },
+               "modelname": {
+                     "type": "string",
+                     "description": "The name of the model. It should be a camel case legal variable name for defining the model class in pytorch."
+               },
                "proposal": {
                      "type": "string",
                      "description": "The fall proposal, keep the format instructions."
@@ -401,7 +470,7 @@ GU_PROPOSAL_REFINEMENT_format = {
                      "description": "The summary of the changes you made."
                },
             },
-            "required": ["reflection", "proposal","changes"],
+            "required": ["reflection", "modelname", "proposal","changes"],
             "additionalProperties": False
          }
    }
@@ -549,16 +618,35 @@ As the proposal is high-level, you will still need to think of the details of
 the implementation of each block. As a result, when implementing one GAU, you
 should follow the following steps and include them in your response:
 
-1. The intuitions and analysis of the GAU you are designing. Start from and go
-   beyond the proposal and review, you should think of how the design can be
-   novel, creative, and powerful. The analysis should be detailed and
-   thoughtful. It should decide a direction of the design, the core ideas and
-   the justifications. Remember that you goal is to discover the best and novel
-   autoregressive language model block that can defeat the existing state of
-   arts.
-2. A rough plan of the children GAUs that may need to be designed in the future.
-3. The pseudo code of the GAU you are designing that capture the high-level
-   idea. 
+1. An analysis, it should contain the detailed process of how you design the
+   GAU. Start from and go beyond the proposal and review, you should think of
+   how the design can be novel, creative, and powerful. The analysis should be
+   detailed and thoughtful. It should decide a direction of the design, the core
+   ideas and the justifications. Remember that you goal is to discover the best
+   and novel autoregressive language model block that can defeat the existing
+   state of arts. A rough plan of the children GAUs that may need to be designed
+   in the future. You should have a basic idea of its function, input and
+   output, the details can be completed later. However the IO should be decided,
+   as changing IO is complicated since it can have influence to the parent
+   model. The pseudo code of the GAU you are designing that capture the
+   high-level idea. 
+2. A full specification if you are designing a root unit, or a docstring if you
+   are designing the non-root units, which is description of the GAU you are
+   designing including the desciption of its function, behavior, how it works,
+   the idea and key features, the constraints, and the details of the inputs and
+   outputs, how to use and example usages, and other information you think is
+   important for the user to understand and use the GAU. A full specification
+   should contain not only docstring but also the unit name, variable names of
+   expected inputs, and outputs. The docstring should be clear and detailed, it
+   will be used for the users to understand the GAU you designed without looking
+   at the implementation. It should allows the user to safely use this GAU and
+   know its advantages and limitations when considering to use it.
+3. The list of children you need to define. To declare a child GAU, you should
+   provide the unit name, variable names of the expected inputs and outputs
+   (i.e. the interfaces of the child), the demands of the child including the
+   expected function, behavior and the description of the interfaces. The
+   demands should be clear and detailed, it should be a guideline for the
+   implementation of the child GAU.
 4. The full implementation of the GAU you designed, remember to replece the
    unitname marks by the actual unit name. Notice that you can contain multiple
    python codes in your response, but only the last one with "# gau.py" mark in
@@ -590,12 +678,24 @@ Here are some guidelines for designing the GAU:
    ```self.{{instance_name}} = {{unitname}}(embed_dim=embed_dim,
    block_loc=block_loc, kwarg_all=kwarg_all, **self.factory_kwargs, **kwarg_all)
    ```, and ```self.factory_kwargs = {{"device": device, "dtype": dtype}}```. 
- - embed_dim is the dimension of input, it decides the network, block_loc is a
-   tuple of (layer_idx, n_block) that helps you locate the block within the
-   network, kwarg_all is a dictionary of all hyperparameters across all units,
-   device and dtype should be passed to any nn layers, parameters, tensors, etc.
-   you defined in __init__, _forward, or any other places, you can pass it
-   through self.factory_kwargs every where in your GAU.
+ - embed_dim is the dimension of input, it decides the network; block_loc is a
+   tuple of (block_idx, n_block) that helps you locate the GAB block to be
+   composed within the network, e.g. (0, 6) for the first block in a network
+   with 6 blocks in total; kwarg_all is a dictionary of all hyperparameters
+   across all units, device and dtype should be passed to any nn layers,
+   parameters, tensors, etc. you defined in __init__, _forward, or any other
+   places, you can pass it through self.factory_kwargs every where in your GAU.
+ - You can use the block_loc to implment the topology related operations,
+   example usages: 
+    - Initilizing the internal states, memories, caches, embeddings, etc. in the
+      first block (GAB composed by the unit tree) of the network, and updating
+      them in the later blocks. 
+    - Using variant operations, or even model architecture in different blocks,
+      such as using one kind in odd blocks and another kind in even blocks.
+      Using a different structure in the last block of the network. Making a
+      hybrid structure that using different structure when the block_idx mod by
+      4 is 0, 1, 2, 3. Making a pyramid structure with  the middle block is the
+      bottleneck... 
  - When you defines a GAU, it should be either a known GAU or a placeholder of a
    GAU you are going to design. It should never be something else such as
    nn.Module or a constant. You should provide the *full list* of the children
@@ -656,7 +756,7 @@ Rating: {RATING} out of 5 (Passing score is >3)
 
 Now, start by implementing a root GAU based on the proposal follow the
 instructions, templates, and the format requirements. The GAU will be reviewed
-and checked. It will be accepted only when it pass bothe the review and check
+and checked. It will be accepted only when it pass both the review and check
 process. Your analysis should be as detailed as possible, and the implementation
 can introduce new ideas and details that are not covered in the proposal that
 can improve the design. 
@@ -668,40 +768,7 @@ block.
 """
 
 
-# GU_IMPLEMENTATION_format = {
-#    "type": "json_schema",
-#    "json_schema": {
-#          "name": "implement_response",
-#          "strict": True,
-#          "schema": {
-#             "type": "object",
-#             "properties": {
-#                "analysis": {
-#                      "type": "string",
-#                      "description": "Analysis, plans, and pseudocode of the GAU being designed"
-#                },
-#                "unitname": {
-#                      "type": "string",
-#                      'description': "The name of the designed GAU"
-#                },
-#                "implementation": {
-#                      "type": "string",
-#                      "description": "the full python implementation of the designed GAU"
-#                },
-#             },
-#             "required": ["analysis", "unitname","implementation"],
-#             "additionalProperties": False
-#          }
-#    }
-# }
-
-class GU_IMPLEMENTATION_format(BaseModel):
-   analysis: str
-   unitname: str
-   children: list[str]
-   implementation: str
-
-GU_IMPLEMENTATION_ROOT = AgentPrompt(GU_IMPLEMENTATION_ROOT_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_format)
+GU_IMPLEMENTATION_ROOT = AgentPrompt(GU_IMPLEMENTATION_ROOT_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_ROOT_format)
 
 # endregion
 
@@ -788,6 +855,10 @@ does not change the core idea of the proposal, it is acceptable.
 Here is the design idea of the root GAU:
 
 {ANALYSIS}
+
+This is the specification of the root GAU:
+
+{SPECIFICATION}
 
 Here is the full implementation of the root GAU:
 
@@ -919,53 +990,28 @@ Here are the suggestions from the expert:
 Please refine your design and implementation based on the feedback. You should
 address the issues and improve the design based on the suggestions. You need to
 guarantee that the implementation should pass all checkers. You need to firstly
-provide the reflection of the feedback including the checkers' if you didnt pass
-and the reviewer's, then give the full design including the new analysis, plans,
-pseudocode, and the implementations. Keeping the format instructions, finally, a
-summary of the changes you made. In order to better locate the bug, you can
-write some prints in your code to help you debug. The outputs will be captured
-by the functionality checker and shown in the report.
+provide the reflection of the feedback including: If you didn't pass the
+checker's check, then give an analysis of the bugs, and the plans to fix them;
+If you failed on reviewer's review, then the the analysis of the concerns, and
+the plans to address them; If you failed on both, then give both. After
+relection, you then give the full design including the new analysis, plans,
+pseudocode, and the implementations as well, keeping the format instructions.
+Finally, give a summary of the changes you made. 
+
+In order to better locate the bug, you should always write assertions and
+optionally print in your code that help you to diagnose the system. They can
+also be the signals for you to debug other units in future. The outputs will be
+captured by the functionality checker and shown in the report.
+
+Remember that the bug should always be able to be solve within the unit you are
+designing, as the other units are either implemented and fully tested or are
+placeholders which will have no computation. You should also try to make the
+unit self-contained, so that when you are working on another unit, you do not
+need to worry about the implementation of this unit.
 """
 
-# GU_IMPLEMENTATION_RETRY_format = {
-#    "type": "json_schema",
-#    "json_schema": {
-#          "name": "implementation_refinement_response",
-#          "strict": True,
-#          "schema": {
-#             "type": "object",
-#             "properties": {
-#                "reflection": {
-#                      "type": "string",
-#                      "description": "The reflection based on the review, rating, and suggestions."
-#                },
-#                "analysis": {
-#                      "type": "string",
-#                      "description": "Analysis, plans, and pseudocode of the GAU being designed"
-#                },
-#                "implementation": {
-#                      "type": "string",
-#                      "description": "the full python implementation of the designed GAU"
-#                },
-#                "changes": {
-#                      "type": "string",
-#                      "description": "The summary of the changes you made."
-#                },
-#             },
-#             "required": ["reflection", "analysis","implementation","changes"],
-#             "additionalProperties": False
-#          }
-#    }
-# }'
 
-class GU_IMPLEMENTATION_RETRY_format(BaseModel):
-   reflection: str
-   analysis: str
-   implementation: str
-   changes: str
-   children: list[str]
-
-GU_IMPLEMENTATION_RETRY= AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_RETRY_format)
+GU_IMPLEMENTATION_ROOT_RETRY= AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_ROOT_RETRY_format)
 
 
 # endregion
@@ -988,6 +1034,10 @@ results.
 Here is the updated design idea of the GAU:
 
 {ANALYSIS}
+
+This is the specification of the GAU:
+
+{SPECIFICATION}
 
 Here is the updated full implementation of the GAU:
 
@@ -1143,9 +1193,10 @@ def gen_GU_IMPLEMENTATION_UNIT(refine=False):
 
    if refine:
       GU_IMPLEMENTATION_UNIT_prompt = """
-Here is the description of the GAU you are going to refine:
+Here is the sepecification of the GAU you are going to refine, please keep the
+interfaces:
 
-{DESCRIPTION}
+{SPECIFICATION}
 
 Here is the full implementation of the GAU you are going to refine:
 
@@ -1164,9 +1215,24 @@ The suggestions from the reviewer:
 
 Now you need to refine the GAU based on the feedback. You should address the
 issues and improve the design based on the suggestions. You need to firstly
-provide the reflection of the feedback, then give the full design including the
-new analysis, plans, pseudocode, and the implementations. Keeping the format
-instructions, finally, a summary of the changes you made.
+provide the reflection of the feedback including: If you didn't pass the
+checker's check, then give an analysis of the bugs, and the plans to fix them;
+If you failed on reviewer's review, then the the analysis of the concerns, and
+the plans to address them; If you failed on both, then give both. After
+relection, you then give the full design including the new analysis, plans,
+pseudocode, and the implementations as well, keeping the format instructions.
+Finally, give a summary of the changes you made.
+
+In order to better locate the bug, you should always write assertions and
+optionally print in your code that help you to diagnose the system. They can
+also be the signals for you to debug other units in future. The outputs will be
+captured by the functionality checker and shown in the report.
+
+Remember that the bug should always be able to be solve within the unit you are
+designing, as the other units are either implemented and fully tested or are
+placeholders which will have no computation. You should also try to make the
+unit self-contained, so that when you are working on another unit, you do not
+need to worry about the implementation of this unit.
 
 Your design and implementation should be based on the proposal, following the
 instructions, templates, and the format requirements. The GAU will be reviewed
@@ -1181,44 +1247,13 @@ a top-down way. You are encouraged to define more children GAU placeholders that
 can be implemented later for more complicated operations. You will be asked
 later to finish the remaining parts of the GAB block. 
    """
-      # GU_IMPLEMENTATION_UNIT_format = {
-      #    "type": "json_schema",
-      #    "json_schema": {
-      #          "name": "implementation_refinement_response",
-      #          "strict": True,
-      #          "schema": {
-      #             "type": "object",
-      #             "properties": {
-      #                "reflection": {
-      #                      "type": "string",
-      #                      "description": "The reflection based on the review, rating, and suggestions."
-      #                },
-      #                "analysis": {
-      #                      "type": "string",
-      #                      "description": "Analysis, plans, and pseudocode of the GAU being designed"
-      #                },
-      #                "implementation": {
-      #                      "type": "string",
-      #                      "description": "the full python implementation of the designed GAU"
-      #                },
-      #                "changes": {
-      #                      "type": "string",
-      #                      "description": "The summary of the changes you made."
-      #                },
-      #             },
-      #             "required": ["reflection", "analysis","implementation","changes"],
-      #             "additionalProperties": False
-      #          }
-      #    }
-      # }
-      class GU_IMPLEMENTATION_UNIT_format(BaseModel):
-         reflection: str
-         analysis: str
-         implementation: str
-         changes: str
-         children: list[str]
+      GU_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_RETRY_format
    else:
       GU_IMPLEMENTATION_UNIT_prompt = """
+Here is the declaration of the GAU you are going to implement, plase follow the decalration:
+
+{DECLARATION}
+
 Now, please design and implement the GAU you selected. Your design and
 implementation should be based on the proposal, following the instructions,
 templates, and the format requirements. The GAU will be reviewed and checked. It
@@ -1233,33 +1268,7 @@ a top-down way. You are encouraged to define more children GAU placeholders that
 can be implemented later for more complicated operations. You will be asked
 later to finish the remaining parts of the GAB block. 
    """
-      # GU_IMPLEMENTATION_UNIT_format = {
-      #    "type": "json_schema",
-      #    "json_schema": {
-      #          "name": "implementation_refinement_response",
-      #          "strict": True,
-      #          "schema": {
-      #             "type": "object",
-      #             "properties": {
-      #                "analysis": {
-      #                      "type": "string",
-      #                      "description": "Analysis, plans, and pseudocode of the GAU being designed"
-      #                },
-      #                "implementation": {
-      #                      "type": "string",
-      #                      "description": "the full python implementation of the designed GAU"
-      #                },
-      #             },
-      #             "required": ["analysis","implementation"],
-      #             "additionalProperties": False
-      #          }
-      #    }
-      # }
-      class GU_IMPLEMENTATION_UNIT_format(BaseModel):
-         analysis: str
-         unitname: str
-         children: list[str]
-         implementation: str
+      GU_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_format
 
    return AgentPrompt(GU_IMPLEMENTATION_UNIT_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_UNIT_format)
 
@@ -1282,6 +1291,10 @@ that composed the GAB block, the unimplemented GAUs are marked with
 children GAUs inside each implemented units, along with the rating of the unit:
 
 {VIEW}
+
+This is the specification of the GAU you are going to review:
+
+{SPECIFICATION}
 
 This is the exported code of the current design:
 
@@ -1377,6 +1390,10 @@ Here is the design idea of the GAU:
 
 {ANALYSIS}
 
+This is the specification of the GAU:
+
+{SPECIFICATION}
+
 Here is the full implementation of the GAU:
 
 {IMPLEMENTATION}
@@ -1416,4 +1433,19 @@ GU_IMPLEMENTATION_UNIT_REFINE_REVIEW = AgentPrompt(GU_IMPLEMENTATION_UNIT_REFINE
 
 
 # endregion
+
+
+
+
+""" ============================= GU Implementation Unit Retry Prompt ===================================== """
+
+# region GU Implementation Retry
+
+
+GU_IMPLEMENTATION_UNIT_RETRY= AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_RETRY_format)
+
+
+# endregion
+
+
 
