@@ -707,8 +707,17 @@ Here are some guidelines for designing the GAU:
    pass Z in the kwargs manner, for example {{unitname}}(X, **Z). If you need to
    pass aditional arguments, you should add it to Z then pass it to the GAU. So
    that the code won't cause error even the the GAU has not been implemented
-   yet. The output of the GAU is also always two values, Y and dict Z_, if you want
-   to output more values, you should put it in Z_ and return it.
+   yet. The output of the GAU is also always two values, Y and dict Z_, X and Y
+   are reserved for a path to convey the sequence of embeddings, if you imagine
+   the model is a pipeline of operations, X and Y is the main product, while Z
+   is the intermediate products. X and Y should always be a sequence of
+   embeddings, any other values should be put in Z. You should always have an
+   embedding Y as the output of the GAU, even if you just simple pass the input
+   X to the output Y. This path is important to guarantee the composed GAB is
+   always executable. So if you are designing a block that do not actually
+   operate the sequence, you should use Z to pass the expected inputs from the
+   upper stream block and pass the expected outputs to Z for the downstream
+   blocks.
  - Whenever you define a GAU instance, you should always follow this way:
    ```self.{{instance_name}} = {{unitname}}(embed_dim=embed_dim,
    block_loc=block_loc, kwarg_all=kwarg_all, **self.factory_kwargs, **kwarg_all)
