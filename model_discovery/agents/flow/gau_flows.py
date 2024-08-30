@@ -282,7 +282,7 @@ class GUFlowScratch(FlowCreator):
             # avoid redundant debugging steps, i.e. only the debug for the passed plans are needed
             with self.status_handler('Checking the implementation of the root unit...'):
                 # 1. check the format code for GAU
-                reformatted_code,new_args,format_errors,format_warnings=check_and_reformat_gau_code(implementation,unitname,children)
+                reformatted_code,new_args,gau_tests,format_errors,format_warnings=check_and_reformat_gau_code(implementation,unitname,children)
                 collapse_write(
                     self.stream,
                     'Code format check',
@@ -305,8 +305,13 @@ class GUFlowScratch(FlowCreator):
                 func_checks = {}
                 if format_errors==[]:
                     self.tree.add_unit(
-                        spec,reformatted_code,new_args,analysis,None,None,list(children.keys()),None,
+                        spec,reformatted_code,new_args,analysis,None,None,list(children.keys()),gau_tests,None,
                     )
+                    # run unit tests
+                    _unit_test_results, _unit_test_code = self.tree.test_unit(spec.unitname, True)
+                    self.stream.write(f'### Unit Tests Code\n```python\n{_unit_test_code}\n```')
+                    self.stream.write(f'### Unit Tests Results\n```bash\n{_unit_test_results}```')
+
                     gabcode = self.tree.compose()
                     checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(self.system._cfg,gabcode,unitname)
                     self.stream.write(f'### Check passed: {checkpass}')
@@ -316,7 +321,7 @@ class GUFlowScratch(FlowCreator):
                     
                     func_checks = {
                         'checkpass':checkpass,
-                        'check_report':check_report,
+                        'check_report':_unit_test_results + '\n\n' + check_report,
                         'check_results':check_results,
                     }
 
@@ -377,7 +382,7 @@ class GUFlowScratch(FlowCreator):
                             REPORT=check_report,
                         )
                     else:
-                        gabcode_reformat_with_line_num = '\n'.join([f'{i+1}: {line}' for i,line in enumerate(gabcode_reformat.split('\n'))])
+                        gabcode_reformat_with_line_num = U.add_line_num(gabcode_reformat)
                         FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT_FAIL.format(
                             REPORT=check_report,
                             GAB_CODE_WITH_LINE_NUM=gabcode_reformat_with_line_num
@@ -499,30 +504,30 @@ class GUFlowScratch(FlowCreator):
                     context_design_implementer=self.dialog.context(design_implementer_tid)
                     reflection,changes=None,None
                     if REFINE:
-                        reflection,analysis,implementation,changes,children,docstring=out['reflection'],out['analysis'],out['implementation'],out['changes'],out['children'],out['docstring']
+                        reflection,analysis,implementation,changes,children,document=out['reflection'],out['analysis'],out['implementation'],out['changes'],out['children'],out['document']
                         self.stream.write(f'### Reflection\n{reflection}')
                         self.stream.write(f'## Refinement of {selection}')
                         if selection in IMPLEMENTED:
                             spec=self.tree.units[selection].spec
-                            spec.docstring=docstring
+                            spec.document=document
                         else:
                             spec = P.UnitSpec(
                                 unitname=selection,
-                                docstring=docstring,
+                                document=document,
                                 inputs=declaration.inputs,
                                 outputs=declaration.outputs
                             )
                     else:
-                        implementation,analysis,children,docstring=out['implementation'],out['analysis'],out['children'],out['docstring']
+                        implementation,analysis,children,document=out['implementation'],out['analysis'],out['children'],out['document']
                         self.stream.write(f'## Implementation of {selection}')
                         spec = P.UnitSpec(
                             unitname=selection,
-                            docstring=docstring,
+                            document=document,
                             inputs=declaration.inputs,
                             outputs=declaration.outputs
                         )                    
                     self.stream.write(analysis)
-                    self.stream.write(f'### Docstring\n{docstring}')
+                    self.stream.write(f'### Document\n{document}')
                     self.stream.write(f'### Code\n```python\n{implementation}\n```')
                     if REFINE:
                         self.stream.write(f'### Changes\n{changes}')
@@ -546,7 +551,7 @@ class GUFlowScratch(FlowCreator):
                 # avoid redundant debugging steps, i.e. only the debug for the passed plans are needed
                 with self.status_handler('Checking the implementation of the selected unit...'):
                     # 1. check the format code for GAU
-                    reformatted_code,new_args,format_errors,format_warnings=check_and_reformat_gau_code(implementation,selection,children)
+                    reformatted_code,new_args,gau_tests,format_errors,format_warnings=check_and_reformat_gau_code(implementation,selection,children)
                     collapse_write(
                         self.stream,
                         'Code format check',
@@ -568,12 +573,15 @@ class GUFlowScratch(FlowCreator):
                     func_checks = {}
                     if format_errors==[]:
                         self.tree.add_unit(
-                            spec,reformatted_code,new_args,analysis,None,None,list(children.keys()),None,demands=declaration.demands
+                            spec,reformatted_code,new_args,analysis,None,None,list(children.keys()),gau_tests,None,demands=declaration.demands
                         )
-                        gabcode = self.tree.compose()
-                        # XXX: The way how vars pass may still problematic, i.e. **Z
-                        checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(self.system._cfg,gabcode,selection)
+                        # run unit tests
+                        _unit_test_results, _unit_test_code = self.tree.test_unit(spec.unitname, True)
+                        self.stream.write(f'### Unit Tests Code\n```python\n{_unit_test_code}\n```')
+                        self.stream.write(f'### Unit Tests Results\n```bash\n{_unit_test_results}\n```')
 
+                        gabcode = self.tree.compose()
+                        checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(self.system._cfg,gabcode,selection)
                         self.stream.write(f'### Check passed: {checkpass}')
                         self.stream.write(f'### Check Report\n```python\n{check_report}\n```')
                         self.stream.write(f'### Check Output\n```python\n{check_results}\n```')

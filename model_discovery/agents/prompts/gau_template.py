@@ -11,7 +11,7 @@ from model_discovery.model.utils.modules import GAUBase, gau_test # DO NOT CHANG
 # YOU CAN DEFINE MORE CLASSES OR FUNCTIONS HERE #
 
 
-class GAU(GAUBase): # DO NOT CHANGE THE NAME OF THIS CLASS!!! #
+class UnitName(GAUBase):
     """Generalized Autoregressive Block Unit
         Input:        X: (batch, seqlen, embed_dim), Z: {dict of all intermediate variables} 
         Output:       Y: (batch, seqlen, embed_dim), Z_: Optional, {dict of *new* intermediate variables to update the current Z}
@@ -43,9 +43,9 @@ class GAU(GAUBase): # DO NOT CHANGE THE NAME OF THIS CLASS!!! #
 # WRITE YOUR UNIT TEST FUNCTIONS HERE #
 
 @gau_test # DO NOT CHANGE THIS DECORATOR, OTHERWISE IT WON'T BE RECOGNIZED AS A UNIT TEST #
-def unittest(device=None, dtype=None)->None: # YOU CAN RENAME THE FUNCTION, BUT DO NOT CHANGE THE ARGUMENTS, IT SHOULD ALSO NOT RETURN ANYTHING #
+def unit_test_name(device=None, dtype=None)->None: # RENAME THIS FUNCTION, DO NOT CHANGE THE ARGUMENTS, IT SHOULD ALSO NOT RETURN ANYTHING #
     # AN AVAILABLE DEVICE AND DTYPE ARE PASSED AS ARGUMENTS, USE THEM TO INITIALIZE YOUR GAU AND MOCK INPUTS #
 
     # WRITE ASSERTIONS TO PERFORM THE TEST, USE PRINT TO DEBUG #
     
-    raise NotImplementedError
+    raise NotImplementedError # YOU MUST IMPLEMENT THIS FUNCTION #

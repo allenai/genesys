@@ -24,7 +24,7 @@ Unit Name: {self.unitname}
 
 class UnitSpec(BaseModel):
    unitname: str
-   docstring: str
+   document: str
    inputs: list[str]
    outputs: list[str]
 
@@ -32,7 +32,7 @@ class UnitSpec(BaseModel):
       return f"""
 Unit Name: {self.unitname}
 '''
-{self.docstring}  
+{self.document}  
 '''
 - Inputs: {", ".join(self.inputs)}
 - Outputs: {", ".join(self.outputs)}
@@ -46,7 +46,7 @@ class GU_IMPLEMENTATION_ROOT_format(BaseModel):
 
 class GU_IMPLEMENTATION_format(BaseModel): 
    analysis: str
-   docstring: str
+   document: str
    children: list[UnitDeclaration]
    implementation: str
 
@@ -61,7 +61,7 @@ class GU_IMPLEMENTATION_ROOT_RETRY_format(BaseModel): # for retry, only allow to
 class GU_IMPLEMENTATION_RETRY_format(BaseModel): # for retry, only allow to update description
    reflection: str
    analysis: str
-   docstring: str
+   document: str
    implementation: str
    children: list[UnitDeclaration]
    changes: str
@@ -594,15 +594,16 @@ block by nesting multiple GAUs. However, each GAU should be not too complex, if
 you want to create complex block, you should break it down into smaller GAUs and
 nest them. As such, you should design a GAB block in a top-down manner. 
 
-You should also write the unit tests for any parts in your implementation and
-the GAU you designed, the unit tests are decorated by @gau_test, the system will
-automatically detect the unit tests based on this decorator and run them in a
-checker to help you diagnose and debug the GAU you designed. You should write
-assertions and make prints in the unit tests. The unit tests accept only device
-and dtype as arguments, you should use them to initialize your GAU and mock
-inputs. You can rename the function but never change the arguments and the
-decorator. The unit tests should also not return anything, they will be ignored
-by the system.
+You must write the unit tests for your implementation and the GAU you designed,
+the unit tests are decorated by @gau_test, the system will automatically detect
+the unit tests based on this decorator and run them in a checker to help you
+diagnose and debug the GAU you designed. You should write assertions and make
+prints in the unit tests. The unit tests accept only device and dtype as
+arguments, you should use them to initialize your GAU and mock inputs. You can
+rename the function but never change the arguments and the decorator. The unit
+tests should also not return anything, they will be ignored by the system. You
+can also write your debugging functions as gau unit tests, they will be executed
+by the system and the outputs will be captured and shown in the report.
 
 Write bug free and easy debugging code is important. In order to better locate
 the bug, you should also always write assertions and optionally print in your
@@ -649,22 +650,22 @@ should follow the following steps and include them in your response:
 2. Based on the type of unit you are designing, you should provide the
    following: 
     - If you are designing the non-root units or refining the root unit: You
-      should provide an API level docstring, which is description of the GAU you
-      are designing including the desciption of its function, behavior, how it
-      works, the idea and key features, the constraints, and the details of the
-      inputs and outputs, how to use and example usages, and other information
-      you think is important for the user to understand and use the GAU. The
-      docstring should be clear and detailed, it will be used for the users to
-      understand the GAU you designed without looking at the implementation. It
-      should allows the user to safely use this GAU and know its advantages and
-      limitations when considering to use it.
+      should provide a document, which is a description and user guide of the
+      GAU you are designing including the desciption of its function, behavior,
+      how it works, the idea and key features, the constraints, and the details
+      of the inputs and outputs, how to use and illustrative example usages, and
+      other information you think is important for the user to understand and
+      use the GAU. The document should be clear and detailed, it will be used
+      for the users to understand the GAU you designed without looking at the
+      implementation. It should allows the user to safely use this GAU and know
+      its advantages and limitations when considering to use it.
     - If you are designing a new root unit: You should provide a full
-      specification which contains not only the docstring but also the unit
-      name, variable names of expected inputs, and outputs. Notice that root
-      unit may input and output intermediate variables, and may vary if you
-      introduced topology related designs. Simular to GAU, the intermediate
-      variables Z will be accumulatively updated from upper stream blocks to the
-      lower stream blocks. 
+      specification which contains not only the document but also the unit name,
+      variable names of expected inputs, and outputs. Notice that root unit may
+      input and output intermediate variables, and may vary if you introduced
+      topology related designs. Simular to GAU, the intermediate variables Z
+      will be accumulatively updated from upper stream blocks to the lower
+      stream blocks. 
 3. The list of children you need to define. To declare a child GAU, you should
    provide the unit name, variable names of the expected inputs and outputs
    (i.e. the interfaces of the child), the demands of the child including the
@@ -686,12 +687,14 @@ should follow the following steps and include them in your response:
 
 Here are some guidelines for designing the GAU:
 
- - Do not change the class name GAU, the system will automatically rename it
-   using the unitname you provide, and it should be the only GAU class (which
-   can be decided by whether it is inherited from GAUBase) defined in your
-   implementation, do not define any other GAU classes in your implementation.
-   No need to worry about the placeholders, the system will automatically create
-   the empty GAU classes for them.
+ - Remember to change the class name of the GAU in the template by the unit
+   name, the system will automatically rename it using the unitname you provide,
+   and it should be the only GAU class (which can be decided by whether it is
+   inherited from GAUBase) defined in your implementation, do not define any
+   other GAU classes in your implementation. No need to worry about the
+   placeholders, the system will automatically create the empty GAU classes for
+   them. If you do not rename the class name to the unitname, it may cause
+   problem when you refer it in your unit tests.
  - You must have the GAU class that inherited from GAUBase defined in your code,
    here is what will happen if it is not found: 1. If there is no GAUBase
    classes detected, the system will report an error. 2. If there is only one
@@ -701,7 +704,11 @@ Here are some guidelines for designing the GAU:
    you provided as the GAU class you designed, and remove others. If no such
    name is found, the system will report an error.
  - When calling a GAU, you should pass both the X and Z to the GAU. You should
-   pass Z in the kwargs manner, for example {{unitname}}(X, **Z).
+   pass Z in the kwargs manner, for example {{unitname}}(X, **Z). If you need to
+   pass aditional arguments, you should add it to Z then pass it to the GAU. So
+   that the code won't cause error even the the GAU has not been implemented
+   yet. The output of the GAU is also always two values, Y and dict Z_, if you want
+   to output more values, you should put it in Z_ and return it.
  - Whenever you define a GAU instance, you should always follow this way:
    ```self.{{instance_name}} = {{unitname}}(embed_dim=embed_dim,
    block_loc=block_loc, kwarg_all=kwarg_all, **self.factory_kwargs, **kwarg_all)
@@ -737,7 +744,7 @@ Here are some guidelines for designing the GAU:
    empty GAU or fetch it from the base if it is already defined. Do not
    implement any placeholders, you will be asked to implement them later.
  - If multiple GAU classes are detected in your response, only the one named
-   "GAU" will be preserved, others will be removed.
+   "GAU" will be preserved, others will be removed. 
  - You need to think of a meaningful name of the GAU you are designing or
    refering as the placeholder. When you are defining a placeholder, you should
    have an idea of the function of this GAU. By defining placeholders, you are

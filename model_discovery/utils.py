@@ -136,3 +136,7 @@ def to_camel_case_gab_class_name(name):
         raise ValueError("The name is empty after converting to camel case")
     
     return camel_case_name
+
+def add_line_num(code):  # line i: code
+    lines = code.split('\n')
+    return '\n'.join([f'line {i+1}: {line}' for i, line in enumerate(lines)])

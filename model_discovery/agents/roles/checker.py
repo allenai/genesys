@@ -21,6 +21,8 @@ import ast
 import astor
 import inspect
 import traceback
+from contextlib import redirect_stdout, redirect_stderr
+
 
 from transformers import TrainingArguments, DataCollatorForLanguageModeling
 
@@ -857,11 +859,41 @@ class Checker(exec_utils.BaseTool):
             except AssertionError:
                 check_report=self.get_report(gab_code)
                 return False,check_report,gab_code,{'hints': self.hints}
-        
+
+        captured_output=''
         with U.CodeTimer("Model initialization"): # NOTE: very time consuming for the first time, but luckily only happens for the very first run, maybe reduce the time of first run>
             try: 
-                exec(gab_code,globals())
-                glm,_ = reload_gam(config,gab_code,name)
+                
+                # Prepare to capture output
+                _test_output = io.StringIO()
+
+                # Create a custom namespace
+                namespace = {
+                    '__name__': '__main__',
+                    'print': lambda *args, **kwargs: print(*args, file=_test_output, **kwargs),
+                    'traceback': traceback,
+                }
+                
+                try:
+                    # Redirect stdout and stderr to capture all output
+                    with redirect_stdout(_test_output), redirect_stderr(_test_output):
+                        exec(gab_code,namespace)
+
+                    # Get the captured output
+                    captured_output = _test_output.getvalue()
+                except Exception as e:
+                    captured_output = f"An error occurred while executing the unit test:\n{traceback.format_exc()}"
+                    
+
+                _test_output = io.StringIO()
+                with redirect_stdout(_test_output), redirect_stderr(_test_output):
+                    glm,_ = reload_gam(config,gab_code,name)
+                captured = _test_output.getvalue()
+                if captured != '':
+                    captured_output += f' - Captured outputs during the loading and initialization of the model:\n\n{captured}\n\n'
+                else:
+                    captured_output += ' - No captured output during the loading and initialization of the model.\n\n'
+
                 if torch.cuda.is_available():
                     t0=time.time()
                     glm = glm.cuda() # this step super slow!!! why??? Any solution???
@@ -872,11 +904,17 @@ class Checker(exec_utils.BaseTool):
                 mock_input=torch.randint(0, config.vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
                 mock_input = mock_input.to(glm.device)
                 t0=time.time()
-                output = io.StringIO()
-                with contextlib.redirect_stdout(output):
+
+                _test_output = io.StringIO()
+                with redirect_stdout(_test_output), redirect_stderr(_test_output):
                     glm(mock_input) # super slow as well, why??? but its only for the first time initialization
-                captured_output = output.getvalue()
-                self.rprint(f'Forward check passed. Captured output during the forward pass:\n{captured_output}\n'+'-'*50)
+                captured = _test_output.getvalue()
+                if captured != '':
+                    captured_output += f' - Captured outputs during forward pass of the model:\n\n{captured}\n\n'
+                else:
+                    captured_output += ' - No captured output during the forward pass of the model.\n\n'
+
+                self.rprint(f'Forward check passed. Captured output during the test:\n\n{captured_output}\n\n')
                 print(f'Time for the first forward pass: {time.time()-t0:.2f}s')
         
             except Exception as e:

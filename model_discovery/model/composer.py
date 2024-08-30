@@ -3,9 +3,15 @@ import os
 import ast, astor
 from typing import List, Dict
 import json
+import io
+import sys
+import traceback
+from contextlib import redirect_stdout, redirect_stderr
+import torch
+import torch.nn as nn
 
 from dataclasses import dataclass, field
-from .utils.modules import GAUBase
+from .utils.modules import GAUBase, gau_test
 
 import model_discovery.utils as U
 
@@ -23,6 +29,7 @@ class GAUNode: # this is mainly used to 1. track the hierarchies 2. used for the
     review: str 
     rating: str
     children: list[str] # list of children GAUs
+    gautests: Dict[str, str] # unit tests of the GAU
     suggestions: str # suggestions for the GAU from reviewer for further improvement
     design_traces: list = None # traces of the design process
     demands: str = None # demands of the GAU from declaration, root GAU has no demands as the demand is the proposal
@@ -78,12 +85,11 @@ def check_tree_name(name, lib_dir):
 
 
 class GABComposer:
-    
     def compose(self,tree):
         root_node = tree.root
         generated_code = []
         processed_units = set()
-        
+
         # Recursively generate code for the root and its children
         self.generate_node_code(root_node.spec.unitname, generated_code, tree.units, processed_units)
         
@@ -94,7 +100,7 @@ class GABComposer:
         for unit in tree.units.values():
             gathered_args.update(unit.args)
 
-            
+        
         GAB_TEMPLATE='''
 # gab.py    # DO NOT CHANGE OR REMOVE THE MAKK HERE, KEEP IT ALWAYS THE FIRST LINE #
 
@@ -123,11 +129,38 @@ class GAB(GABBase):
 
         compoesed_code=U.replace_from_second(compoesed_code,'import torch\n','')
         compoesed_code=U.replace_from_second(compoesed_code,'import torch.nn as nn\n','')
-        compoesed_code=U.replace_from_second(compoesed_code,'from model_discovery.model.utils.modules import GAUBase\n','')
+        compoesed_code=U.replace_from_second(compoesed_code,'from model_discovery.model.utils.modules import GAUBase, gau_test\n','')
 
         return compoesed_code
+ 
+    def compose_unit(self, tree, unit_name):
+        if unit_name not in tree.units:
+            print(f"Unit {unit_name} is not in the tree")
+            return None
+        
+        unit = tree.units[unit_name]
+        gau_tests = unit.gautests
+        
+        generated_code = []
+        processed_units = set()
+        self.generate_node_code(unit_name, generated_code, tree.units, processed_units)
 
+        gau_code = "\n".join(generated_code)
 
+        run_code = f'def run_{unit_name}_tests():\n'
+        for test_name, test_code in gau_tests.items():
+            gau_code += f"\n\n{test_code}"
+            run_code += f"\ttry:\n\t\ttest_{unit_name}_{test_name}()\n"
+            run_code += '\texcept Exception as e:\n'
+            run_code += f'\t\tprint("Error in running {test_name}:")\n'
+            run_code += '\t\tprint(traceback.format_exc())\n'
+        run_code += '\n\nif __name__ == "__main__":'
+        run_code += f"\n\trun_{unit_name}_tests()"
+
+        composed_code = f'{gau_code}\n\n{run_code}'
+        return composed_code
+
+        
     # Recursive function to generate code for a node and its children
     def generate_node_code(self, unit_name, generated_code: List[str], units, processed_units):
         if unit_name in processed_units:
@@ -188,14 +221,14 @@ class GAUTree:
         self.flows_dir = U.pjoin(lib_dir, 'flows')
         U.mkdir(self.flows_dir)
 
-    def add_unit(self, spec, code, args, desc, review, rating, children, suggestions, design_traces=None, demands=None, overwrite=False):
+    def add_unit(self, spec, code, args, desc, review, rating, children, gautests, suggestions, design_traces=None, demands=None, overwrite=False):
         name = spec.unitname
         if name in self.units and not overwrite:
             print(f"Unit {name} is already in the tree")
             return
         # assert name not in self.units, f"Unit {name} is already in the tree"
         assert not self.dict.exist(name), f"Unit {name} is already registered"
-        node = GAUNode(spec, code, args, desc, review, rating, children, suggestions, design_traces, demands)
+        node = GAUNode(spec, code, args, desc, review, rating, children, gautests, suggestions, design_traces, demands)
         if len(self.units)==0:
             self.root = node
         self.units[name] = node
@@ -203,6 +236,10 @@ class GAUTree:
     def del_unit(self, name):
         assert name in self.units, f"Unit {name} is not in the tree"
         del self.units[name]
+    
+    def del_declare(self, name):
+        assert name in self.declares, f"Unit {name} is not declared"
+        del self.declares[name]
 
     def register_unit(self, name): # permanently register a unit to the GAUDict, do it only when the unit is fully tested
         assert name in self.units, f"Unit {name} is not in the tree"
@@ -237,8 +274,63 @@ class GAUTree:
         return tree
 
     def compose(self): # compose the GAB from the GAUTree and test it
-        gab_code = GABComposer().compose(self)
-        return gab_code
+        return GABComposer().compose(self)
+    
+    def compose_unit(self, unit_name): # compose a single unit for running unit tests
+        return GABComposer().compose_unit(self, unit_name)
+    
+    def test_unit(self, unit_name, return_code=True):
+        code = self.compose_unit(unit_name)
+        if code is None:
+            report = f'Unit {unit_name} not found'
+            return (report, None) if return_code else report
+
+        # Prepare to capture output
+        _test_output = io.StringIO()
+
+        # Create a custom namespace
+        namespace = {
+            '__name__': '__main__',
+            'print': lambda *args, **kwargs: print(*args, file=_test_output, **kwargs),
+            'traceback': traceback,
+        }
+
+        try:
+            # Redirect stdout and stderr to capture all output
+            with redirect_stdout(_test_output), redirect_stderr(_test_output):
+                exec(code, namespace)
+
+            # Get the captured output
+            captured_output = _test_output.getvalue()
+        except Exception as e:
+            error_msg = f"An error occurred while executing the unit test:\n{traceback.format_exc()}"
+            if return_code:
+                return error_msg, code
+            return error_msg
+
+        if captured_output:
+            new_check_report=[]
+            code_lines=code.split('\n')
+            need_code_lines=False
+            for line in captured_output.split('\n'):
+                if 'File "<string>", line' in line:
+                    need_code_lines=True
+                    fname=f'test_{unit_name}.py'
+                    line=line.replace('File "<string>", line',f'File "{fname}", line')
+                    line_num=int(line.split(f'File "{fname}", line ')[-1].split(',')[0].strip())
+                    line=line.replace(f'line {line_num}',f'line {line_num}: {code_lines[line_num-1]}')
+                new_check_report.append(line)
+            check_report='\n'.join(new_check_report)                
+            report = f"Unit tests outputs for {unit_name}:\n\n{check_report}"
+            if need_code_lines:
+                report = f'Unit tests code with line number:\n\n{U.add_line_num(code)}\n\n{report}'
+        else:
+            report = f"No output captured for {unit_name} unit tests"
+
+        if return_code:
+            return report, code
+        return report
+
     
     def _view(self,_name,path='',node=None,pstr='',unimplemented=set()):
         # create a string representation of the tree
@@ -278,7 +370,6 @@ class GAUTree:
         for unit in unimplemented:
             pstr+=self.declares[unit].to_prompt()+'\n'
         return pstr,list(implemented),list(unimplemented)
-
 
 
 

@@ -469,6 +469,63 @@ class ModuleProcessor(ast.NodeTransformer):
         return self.generic_visit(node)
 
 
+class GauTestChecker(ast.NodeTransformer):
+    def __init__(self, unit_name):
+        self.gau_tests = {}  # Dictionary to store function names and their code
+        self.warnings = []
+        self.unit_name = unit_name
+
+    def visit_FunctionDef(self, node):
+        # Check if the function is decorated with @gau_test
+        if any(isinstance(decorator, ast.Name) and decorator.id == 'gau_test' for decorator in node.decorator_list):
+            # Prepare lists for arguments and defaults
+            args = node.args.args
+            defaults = list(node.args.defaults)
+
+            # Check if 'device' exists, add it with default value if it doesn't
+            if not any(arg.arg == 'device' for arg in args):
+                args.append(ast.arg(arg='device', annotation=None))
+                defaults.append(ast.Constant(value=None))
+
+            # Check if 'dtype' exists, add it with default value if it doesn't
+            if not any(arg.arg == 'dtype' for arg in args):
+                args.append(ast.arg(arg='dtype', annotation=None))
+                defaults.append(ast.Constant(value=None))
+
+            # Ensure device and dtype have default values if they exist without them
+            for i, arg in enumerate(args):
+                if arg.arg == 'device' or arg.arg == 'dtype':
+                    if i >= len(args) - len(defaults):
+                        continue
+                    defaults.insert(i - len(args) + len(defaults), ast.Constant(value=None))
+
+            # If any argument does not have a default value, issue a warning and skip the function
+            if len(defaults) < len(args):
+                self.warnings.append(
+                    f"Warning: GAU test function '{node.name}' has arguments without default values which is not automatically executable. It will be ignored."
+                )
+                return None
+
+            # Assign the updated args and defaults back to the function node
+            node.args.args = args
+            node.args.defaults = defaults
+
+            # Rename the function by adding the unit_name as a prefix
+            test_name = node.name
+            node.name = f"test_{self.unit_name}_{node.name}"
+
+            # Convert the function node back to source code
+            function_code = astor.to_source(node)
+
+            # Store the function's name and its source code
+            self.gau_tests[test_name] = function_code
+
+            # Remove the function from the original code
+            return None
+
+        return self.generic_visit(node)
+
+
 def check_and_reformat_gau_code(source_code, unit_name, children):
     # Step 1: Parse the source code into an AST
     tree = ast.parse(source_code)
@@ -478,6 +535,13 @@ def check_and_reformat_gau_code(source_code, unit_name, children):
     # Step 2: Run the format checker which now removes the import lines
     format_checker = FormatChecker(unit_name)
     format_checker.visit(tree)
+
+    # Step 3: Run the GauTestChecker to detect and remove functions decorated by @gau_test
+    gau_test_checker = GauTestChecker(unit_name)
+    gau_test_checker.visit(tree)
+    gau_tests = gau_test_checker.gau_tests
+    if gau_tests == {}:
+        warnings.append("Warning: No valid gau unit test function found, please write gau unit tests, a gau unit test function should be decorated with @gau_test.")
 
     # Step 3: Run the KwargAllChecker
     kwarg_all_checker = KwargAllChecker(unit_name)
@@ -494,6 +558,7 @@ def check_and_reformat_gau_code(source_code, unit_name, children):
         errors.append("Error: No __init__ method found in the GAU.")
     if not attribute_checker.found__forward:
         errors.append("Error: No _forward method found in the GAU.")
+    new_args = attribute_checker.new_args
 
     # Step 6: Process the module (e.g., imports and removing classes)
     module_processor = ModuleProcessor(
@@ -508,7 +573,7 @@ def check_and_reformat_gau_code(source_code, unit_name, children):
     
     # Step 8: Collect errors and warnings
     errors += format_checker.errors + attribute_checker.errors + module_processor.errors
-    warnings += format_checker.warnings
+    warnings += format_checker.warnings + gau_test_checker.warnings
 
     # Return the reformatted code, any new arguments, errors, and warnings
-    return reformatted_code, attribute_checker.new_args, errors, warnings
+    return reformatted_code, new_args, gau_tests, errors, warnings
