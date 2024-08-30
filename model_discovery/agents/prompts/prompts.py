@@ -718,6 +718,8 @@ Here are some guidelines for designing the GAU:
    operate the sequence, you should use Z to pass the expected inputs from the
    upper stream block and pass the expected outputs to Z for the downstream
    blocks.
+ - You should never ever using X and Y to input or output anything besides the
+   sequence, if you want to do that, pass them to Z!
  - Whenever you define a GAU instance, you should always follow this way:
    ```self.{{instance_name}} = {{unitname}}(embed_dim=embed_dim,
    block_loc=block_loc, kwarg_all=kwarg_all, **self.factory_kwargs, **kwarg_all)

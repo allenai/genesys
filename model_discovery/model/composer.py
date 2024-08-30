@@ -286,34 +286,41 @@ class GAUTree:
             return (report, None) if return_code else report
 
         # Prepare to capture output
-        _test_output = io.StringIO()
+        _stdout_output = io.StringIO()
+        _stderr_output = io.StringIO()
 
         # Create a custom namespace
         namespace = {
             '__name__': '__main__',
-            'print': lambda *args, **kwargs: print(*args, file=_test_output, **kwargs),
+            'print': lambda *args, **kwargs: print(*args, file=_stdout_output, **kwargs),
             'traceback': traceback,
         }
 
         try:
             # Redirect stdout and stderr to capture all output
-            with redirect_stdout(_test_output), redirect_stderr(_test_output):
+            with redirect_stdout(_stdout_output), redirect_stderr(_stderr_output):
                 exec(code, namespace)
 
             # Get the captured output
-            captured_output = _test_output.getvalue()
+            captured_stdout = _stdout_output.getvalue()
+            captured_stderr = _stderr_output.getvalue()
         except Exception as e:
             error_msg = f"An error occurred while executing the unit test:\n{traceback.format_exc()}"
             if return_code:
-                return error_msg, code
-            return error_msg
+                return error_msg, code, False
+            return error_msg, False
 
-        if captured_output:
+        passed=True
+        if captured_stderr:
+            passed=False
+        if captured_stdout or captured_stderr:
             new_check_report=[]
             code_lines=code.split('\n')
             need_code_lines=False
+            captured_output = captured_stdout+'\n'+captured_stderr
             for line in captured_output.split('\n'):
                 if 'File "<string>", line' in line:
+                    passed=False
                     need_code_lines=True
                     fname=f'test_{unit_name}.py'
                     line=line.replace('File "<string>", line',f'File "{fname}", line')
@@ -328,8 +335,8 @@ class GAUTree:
             report = f"No output captured for {unit_name} unit tests"
 
         if return_code:
-            return report, code
-        return report
+            return report, code, passed
+        return report, passed
 
     
     def _view(self,_name,path='',node=None,pstr='',unimplemented=set()):

@@ -308,7 +308,8 @@ class GUFlowScratch(FlowCreator):
                         spec,reformatted_code,new_args,analysis,None,None,list(children.keys()),gau_tests,None,
                     )
                     # run unit tests
-                    _unit_test_results, _unit_test_code = self.tree.test_unit(spec.unitname, True)
+                    _unit_test_results, _unit_test_code, _unit_test_passed = self.tree.test_unit(spec.unitname, True)
+                    self.stream.write(f'### Unit Tests Passed: {_unit_test_passed}')
                     self.stream.write(f'### Unit Tests Code\n```python\n{_unit_test_code}\n```')
                     self.stream.write(f'### Unit Tests Results\n```bash\n{_unit_test_results}```')
 
@@ -319,9 +320,14 @@ class GUFlowScratch(FlowCreator):
                     self.stream.write(f'### Check Output\n```python\n{check_results}\n```')
                     self.stream.write(f'### Reformatted GAB Code\n```python\n{gabcode_reformat}\n```')
                     
+                    checkpass = checkpass and _unit_test_passed
+                    check_report = _unit_test_results + '\n\n' + check_report
+                    if not _unit_test_passed:
+                        if 'All tests passed!' in check_report:
+                            check_report = check_report.replace('All tests passed!','Checker checks passed, but unit tests failed. You must implement the unit tests and pass them.')
                     func_checks = {
                         'checkpass':checkpass,
-                        'check_report':_unit_test_results + '\n\n' + check_report,
+                        'check_report':check_report,
                         'check_results':check_results,
                     }
 
@@ -576,7 +582,8 @@ class GUFlowScratch(FlowCreator):
                             spec,reformatted_code,new_args,analysis,None,None,list(children.keys()),gau_tests,None,demands=declaration.demands
                         )
                         # run unit tests
-                        _unit_test_results, _unit_test_code = self.tree.test_unit(spec.unitname, True)
+                        _unit_test_results, _unit_test_code, _unit_test_passed = self.tree.test_unit(spec.unitname, True)
+                        self.stream.write(f'### Unit Tests Passed: {_unit_test_passed}')
                         self.stream.write(f'### Unit Tests Code\n```python\n{_unit_test_code}\n```')
                         self.stream.write(f'### Unit Tests Results\n```bash\n{_unit_test_results}\n```')
 
@@ -587,6 +594,7 @@ class GUFlowScratch(FlowCreator):
                         self.stream.write(f'### Check Output\n```python\n{check_results}\n```')
                         self.stream.write(f'### Reformatted GAB Code\n```python\n{gabcode_reformat}\n```')
                         
+                        checkpass = checkpass and _unit_test_passed
                         func_checks = {
                             'checkpass':checkpass,
                             'check_report':check_report,
