@@ -168,14 +168,12 @@ class InitChecker(ast.NodeVisitor):
                 # Detect and skip the self.factory_kwargs assignment
                 if isinstance(stmt, ast.Assign) and isinstance(stmt.targets[0], ast.Attribute):
                     target = stmt.targets[0]
-                    if (target.value.id == "self" and target.attr == "factory_kwargs"):
-                        factory_kwargs_found = True
+                    if (isinstance(target.value, ast.Name) and target.value.id == "self" and target.attr == "factory_kwargs"):
                         continue
                 
                 # Detect and skip the super().__init__ call
                 if isinstance(stmt, ast.Expr) and isinstance(stmt.value, ast.Call):
                     if isinstance(stmt.value.func, ast.Attribute) and stmt.value.func.attr == "__init__":
-                        super_init_found = True
                         continue
 
                 new_body.append(stmt)

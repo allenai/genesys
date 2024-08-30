@@ -58,8 +58,7 @@ class GAUBase(nn.Module):
         raise NotImplementedError
     
     def forward(self, X, **Z):
-        assert len(X.shape) == 3, "Input shape must be (batch, seqlen, embed_dim)"
-        assert X.shape[-1] == self.embed_dim
+        assert len(X.shape) == 3 and X.shape[-1] == self.embed_dim, f"Input X must be a sequence of shape (batch, seqlen, embed_dim), all other kinds of variables should be passed by Z."
         _params = inspect.signature(self._forward).parameters
         _Z = {k: v for k, v in Z.items() if k in _params}
         Y = self._forward(X, **_Z)
@@ -67,8 +66,8 @@ class GAUBase(nn.Module):
             Y, Z_ = Y
         else:
             Z_ = {}
-        assert Y.shape == X.shape, f"GAB Unit must has a sequence with the same shape as input in output, got {Y.shape} instead"
-        assert isinstance(Z_, dict), "Intermediate variables must be stored in a tuple"
+        assert Y.shape == X.shape, f"GAU output Y must be a sequence with the same shape as input, got {Y.shape}, all other kinds of variables should be passed by Z."
+        assert isinstance(Z_, dict), "Intermediate variables must be stored in a dict"
         Z.update(Z_) # the new intermediate variables are updated to the current Z
         return Y, Z
 

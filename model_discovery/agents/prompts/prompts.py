@@ -840,8 +840,7 @@ intermediate variables Z_. Z_ is optional, when it is provided, it will be used
 to update Z for the next unit by Z.update(Z_). A GAU is defined in the following
 base class: 
 
-{GAU_BASE}
-
+```python {GAU_BASE} ```
 
 By nesting multiple GAUs, we can design arbitrary complex autoregressive
 language model blocks. Every time, a model designer agent will design or refine
@@ -1043,6 +1042,11 @@ the plans to address them; If you failed on both, then give both. After
 relection, you then give the full design including the new analysis, plans,
 pseudocode, and the implementations as well, keeping the format instructions.
 Finally, give a summary of the changes you made. 
+
+Rememeber to follow the GAU structure, here is the GAUBase class for you to
+refresh:
+
+```python {GAU_BASE} ```
 
 Remember that the bug should always be able to be solve within the unit you are
 designing, as the other units are either implemented and fully tested or are

@@ -244,7 +244,8 @@ class GUFlowScratch(FlowCreator):
                     FORMAT_CHECKER_REPORT=FORMAT_CHECKER_REPORT,
                     FUNCTION_CHECKER_REPORT=FUNCTION_CHECKER_REPORT,
                     REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
-                    PASS_OR_NOT='Pass' if rating>3 else 'Fail'
+                    PASS_OR_NOT='Pass' if rating>3 else 'Fail',
+                    GAU_BASE=GAU_BASE
                 )
                 P.GU_IMPLEMENTATION_ROOT_RETRY.apply(DESIGN_IMPLEMENTER.obj)
             with self.status_handler(status_info): 
@@ -502,6 +503,7 @@ class GUFlowScratch(FlowCreator):
                         FUNCTION_CHECKER_REPORT=FUNCTION_CHECKER_REPORT,
                         REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
                         PASS_OR_NOT='Accept' if rating>3 else 'Reject',
+                        GAU_BASE=GAU_BASE
                     )
                     P.GU_IMPLEMENTATION_UNIT_RETRY.apply(DESIGN_IMPLEMENTER.obj)
                 with self.status_handler(status_info): 
