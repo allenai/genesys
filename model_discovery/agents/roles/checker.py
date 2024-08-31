@@ -462,12 +462,7 @@ class EffectiveChecker: # WORING IN PROGRESS
 
     def get_benchmark(self,config):
         exec(BENCHMARK_MODEL,globals())
-        glm,_ = reload_gam(config,BENCHMARK_MODEL,'BENCHMARK_MODEL')#,dtype=torch.bfloat16, device="cuda") # intentially use bfloat16 to check whether the model is correctly defined
-        if torch.cuda.is_available():
-            glm = glm.cuda()
-            glm=glm.to(torch.bfloat16)
-        else:
-            glm = glm.to(torch.float16)
+        glm,_ = reload_gam(config,BENCHMARK_MODEL,'BENCHMARK_MODEL',**U.get_factory_kwargs()) # intentially use bfloat16 to check whether the model is correctly defined
         runtime, loss, gradient_of_losses,max_memory_allocated,total_flos,train_loss=self.test_training(config,glm)
         return {'run_time':runtime,'loss':loss,'gradient_of_losses':gradient_of_losses,'max_memory_allocated':max_memory_allocated,
                 'total_flos':total_flos,'train_loss':train_loss}
@@ -696,7 +691,7 @@ class Checker(exec_utils.BaseTool):
         with torch.no_grad():
             Y,_ = block(X)
 
-        print('Checking causality... It checks the causality by changing all future steps X[t+delta] of X[t] and see if Y[t] or any previous outputs change.')
+        self.rprint('Checking causality... It checks the causality by changing all future steps X[t+delta] of X[t] and see if Y[t] or any previous outputs change.')
         bar = tqdm(range(seq_len), desc='Causality test', colour='green')
         for t in bar:
             X_mod = X.clone()
@@ -707,10 +702,10 @@ class Checker(exec_utils.BaseTool):
 
             # If any previous outputs change when future X[t + delta] changes, then it is not causal
             if not torch.equal(Y[:, :t+1, :], Y_mod[:, :t+1, :]):#, atol=1e-5):
-                print(f'Error: Causality test failed at t={t}')
+                self.rprint(f'Error: Causality test failed at t={t}')
                 return False
 
-        print('Causality test passed')
+        self.rprint('Causality test passed')
         return True
 
 
@@ -884,23 +879,15 @@ class Checker(exec_utils.BaseTool):
                 except Exception as e:
                     captured_output = f"An error occurred while executing the unit test:\n{traceback.format_exc()}"
                     
-
                 _test_output = io.StringIO()
                 with redirect_stdout(_test_output), redirect_stderr(_test_output):
-                    glm,_ = reload_gam(config,gab_code,name)
+                    glm,_ = reload_gam(config,gab_code,name,**U.get_factory_kwargs())
                 captured = _test_output.getvalue()
                 if captured != '':
                     captured_output += f' - Captured outputs during the loading and initialization of the model:\n\n{captured}\n\n'
                 else:
                     captured_output += ' - No captured output during the loading and initialization of the model.\n\n'
 
-                if torch.cuda.is_available():
-                    t0=time.time()
-                    glm = glm.cuda() # this step super slow!!! why??? Any solution???
-                    print(f'Time for moving model to GPU: {time.time()-t0:.2f}s')
-                    glm=glm.to(torch.bfloat16) # intentially use bfloat16 to check whether the model is correctly defined
-                else:
-                    glm=glm.to(torch.float16)
                 mock_input=torch.randint(0, config.vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
                 mock_input = mock_input.to(glm.device)
                 t0=time.time()
@@ -1011,7 +998,7 @@ class Checker(exec_utils.BaseTool):
         if 'GAB' not in globals(): 
             raise NameError("GAB class not defined in the executed code")
 
-        glm,_ = reload_gam(config,gab_code,name)
+        glm,_ = reload_gam(config,gab_code,name,**U.get_factory_kwargs())
         size=sum(p.numel() for p in glm.parameters())
         if LB<size<UB:
             print('The model size is already within the threshold.')
@@ -1023,7 +1010,7 @@ class Checker(exec_utils.BaseTool):
             n_block+=DIR
             print(f'Trying n_block={n_block}')
             auto_cfg={'n_block':n_block}
-            glm,_ = reload_gam(config,gab_code,name,auto_cfg)
+            glm,_ = reload_gam(config,gab_code,name,auto_cfg,**U.get_factory_kwargs())
             size=sum(p.numel() for p in glm.parameters())
             if LB<size<UB:
                 print('Model after tuned:')
@@ -1051,7 +1038,7 @@ class Checker(exec_utils.BaseTool):
             d_model+=step_size*DIR
             print(f'Trying d_model={d_model}, n_block={n_block}')
             auto_cfg={'d_model':d_model,'n_block':n_block}
-            glm,_ = reload_gam(config,gab_code,name,auto_cfg)
+            glm,_ = reload_gam(config,gab_code,name,auto_cfg,**U.get_factory_kwargs())
             size=sum(p.numel() for p in glm.parameters())
             NEW_DIR=1 if size<reference_size else -1
             if NEW_DIR!=DIR:
@@ -1065,15 +1052,13 @@ class Checker(exec_utils.BaseTool):
         print(f'Checking model correctness with d_model={d_model}')
         while True:
             try:
-                if torch.cuda.is_available():
-                    glm = glm.cuda()
                 mock_input=torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH)).to(glm.device)
                 _ = glm(mock_input)
                 break
             except Exception as e:
                 d_model+=step_size*DIR
                 print(f'The model is incorrect. Trying d_model={d_model}')
-                glm,_ = reload_gam(config,gab_code,name,auto_cfg)
+                glm,_ = reload_gam(config,gab_code,name,auto_cfg,**U.get_factory_kwargs())
                 size=sum(p.numel() for p in glm.parameters())
                 if size>reference_size*(1+2*threshold) or size<reference_size*(1-2*threshold):
                     # Not likely to happen when reference d_model is a multiple of 128 and step_size is at least 8 or 12, but leave it for safety

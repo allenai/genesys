@@ -316,16 +316,18 @@ class GUFlowScratch(FlowCreator):
 
                     gabcode = self.tree.compose()
                     checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(self.system._cfg,gabcode,unitname)
+                     
+                    if not _unit_test_passed:
+                        if 'All tests passed!' in check_report:
+                            check_report = check_report.replace('All tests passed!','Checker checks passed, but unit tests failed. You must implement the unit tests and pass them.')
+                    
                     self.stream.write(f'### Check passed: {checkpass}')
                     self.stream.write(f'### Check Report\n```python\n{check_report}\n```')
                     self.stream.write(f'### Check Output\n```python\n{check_results}\n```')
                     self.stream.write(f'### Reformatted GAB Code\n```python\n{gabcode_reformat}\n```')
-                    
+                   
                     checkpass = checkpass and _unit_test_passed
                     check_report = _unit_test_results + '\n\n' + check_report
-                    if not _unit_test_passed:
-                        if 'All tests passed!' in check_report:
-                            check_report = check_report.replace('All tests passed!','Checker checks passed, but unit tests failed. You must implement the unit tests and pass them.')
                     func_checks = {
                         'checkpass':checkpass,
                         'check_report':check_report,
@@ -591,12 +593,18 @@ class GUFlowScratch(FlowCreator):
 
                         gabcode = self.tree.compose()
                         checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(self.system._cfg,gabcode,selection)
+
+                        if not _unit_test_passed:
+                            if 'All tests passed!' in check_report:
+                                check_report = check_report.replace('All tests passed!','Checker checks passed, but unit tests failed. You must implement the unit tests and pass them.')
+                    
                         self.stream.write(f'### Check passed: {checkpass}')
                         self.stream.write(f'### Check Report\n```python\n{check_report}\n```')
                         self.stream.write(f'### Check Output\n```python\n{check_results}\n```')
                         self.stream.write(f'### Reformatted GAB Code\n```python\n{gabcode_reformat}\n```')
                         
                         checkpass = checkpass and _unit_test_passed
+                        check_report = _unit_test_results + '\n\n' + check_report
                         func_checks = {
                             'checkpass':checkpass,
                             'check_report':check_report,

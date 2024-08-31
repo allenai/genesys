@@ -1034,14 +1034,14 @@ Here are the suggestions from the expert:
 
 Please refine your design and implementation based on the feedback. You should
 address the issues and improve the design based on the suggestions. You need to
-guarantee that the implementation should pass all checkers. You need to firstly
-provide the reflection of the feedback including: If you didn't pass the
-checker's check, then give an analysis of the bugs, and the plans to fix them;
-If you failed on reviewer's review, then the the analysis of the concerns, and
-the plans to address them; If you failed on both, then give both. After
-relection, you then give the full design including the new analysis, plans,
-pseudocode, and the implementations as well, keeping the format instructions.
-Finally, give a summary of the changes you made. 
+guarantee that the implementation should pass all checkers and unit tests. You
+need to firstly provide the reflection of the feedback including: If you didn't
+pass the checker's check, then give an analysis of the bugs, and the plans to
+fix them; If you failed on reviewer's review, then the the analysis of the
+concerns, and the plans to address them; If you failed on both, then give both.
+After relection, you then give the full design including the new analysis,
+plans, pseudocode, and the implementations as well, keeping the format
+instructions. Finally, give a summary of the changes you made. 
 
 Rememeber to follow the GAU structure, here is the GAUBase class for you to
 refresh:
@@ -1260,12 +1260,12 @@ The suggestions from the reviewer:
 Now you need to refine the GAU based on the feedback. You should address the
 issues and improve the design based on the suggestions. You need to firstly
 provide the reflection of the feedback including: If you didn't pass the
-checker's check, then give an analysis of the bugs, and the plans to fix them;
-If you failed on reviewer's review, then the the analysis of the concerns, and
-the plans to address them; If you failed on both, then give both. After
-relection, you then give the full design including the new analysis, plans,
-pseudocode, and the implementations as well, keeping the format instructions.
-Finally, give a summary of the changes you made.
+checker's check or unit tests, give an analysis of the bugs, and the plans to
+fix them; If you failed on reviewer's review, then the the analysis of the
+concerns, and the plans to address them; If you failed on both, then give both.
+After relection, you then give the full design including the new analysis,
+plans, pseudocode, and the implementations as well, keeping the format
+instructions. Finally, give a summary of the changes you made.
 
 Remember that the bug should always be able to be solve within the unit you are
 designing, as the other units are either implemented and fully tested or are
@@ -1275,7 +1275,7 @@ need to worry about the implementation of this unit.
 
 Your design and implementation should be based on the proposal, following the
 instructions, templates, and the format requirements. The GAU will be reviewed
-and checked. It will be accepted only when it pass bothe the review and check
+and checked. It will be accepted only when it pass both the review and check
 process. Your analysis should be as detailed as possible, and the implementation
 can introduce new ideas and details that are not covered in the proposal that
 can improve the design. 
@@ -1289,14 +1289,15 @@ later to finish the remaining parts of the GAB block.
       GU_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_RETRY_format
    else:
       GU_IMPLEMENTATION_UNIT_prompt = """
-Here is the declaration of the GAU you are going to implement, plase follow the decalration:
+Here is the declaration of the GAU you are going to implement, plase follow the
+decalration:
 
 {DECLARATION}
 
 Now, please design and implement the GAU you selected. Your design and
 implementation should be based on the proposal, following the instructions,
 templates, and the format requirements. The GAU will be reviewed and checked. It
-will be accepted only when it pass bothe the review and check process. Your
+will be accepted only when it pass both the review and check process. Your
 analysis should be as detailed as possible, and the implementation can introduce
 new ideas and details that are not covered in the proposal that can improve the
 design. 
