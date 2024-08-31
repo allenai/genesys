@@ -328,11 +328,15 @@ class GUFlowScratch(FlowCreator):
                    
                     checkpass = checkpass and _unit_test_passed
                     check_report = _unit_test_results + '\n\n' + check_report
-                    func_checks = {
-                        'checkpass':checkpass,
-                        'check_report':check_report,
-                        'check_results':check_results,
-                    }
+                else:
+                    check_report = 'Format check failed, please fix the format errors and try again.'
+                    check_results = {}
+                    
+                func_checks = {
+                    'checkpass':checkpass,
+                    'check_report':check_report,
+                    'check_results':check_results,
+                }
 
             # 3. Review the code for GAU
             IMPLEMENTATION_REVIEWER=reload_role('implementation_reviewer',self.gpt4o0806_agent, 
@@ -607,9 +611,8 @@ class GUFlowScratch(FlowCreator):
                         check_report = _unit_test_results + '\n\n' + check_report
                     else:
                         check_report = 'Format check failed, please fix the format errors and try again.'
-                        checkpass=False
                         check_results={}
-                        
+
                     func_checks = {
                         'checkpass':checkpass,
                         'check_report':check_report,
