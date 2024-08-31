@@ -304,10 +304,10 @@ class GUFlowScratch(FlowCreator):
                 # 2. check the functionality of the composed GAB
                 checkpass=False
                 func_checks = {}
+                self.tree.add_unit(
+                    spec,reformatted_code,new_args,analysis,None,None,list(children.keys()),gau_tests,None,
+                )
                 if format_errors==[]:
-                    self.tree.add_unit(
-                        spec,reformatted_code,new_args,analysis,None,None,list(children.keys()),gau_tests,None,
-                    )
                     # run unit tests
                     _unit_test_results, _unit_test_code, _unit_test_passed = self.tree.test_unit(spec.unitname, True)
                     self.stream.write(f'### Unit Tests Passed: {_unit_test_passed}')
@@ -581,10 +581,10 @@ class GUFlowScratch(FlowCreator):
                     # 2. check the functionality of the composed GAB
                     checkpass=False
                     func_checks = {}
+                    self.tree.add_unit(
+                        spec,reformatted_code,new_args,analysis,None,None,list(children.keys()),gau_tests,None,demands=declaration.demands
+                    )
                     if format_errors==[]:
-                        self.tree.add_unit(
-                            spec,reformatted_code,new_args,analysis,None,None,list(children.keys()),gau_tests,None,demands=declaration.demands
-                        )
                         # run unit tests
                         _unit_test_results, _unit_test_code, _unit_test_passed = self.tree.test_unit(spec.unitname, True)
                         self.stream.write(f'### Unit Tests Passed: {_unit_test_passed}')
@@ -605,11 +605,16 @@ class GUFlowScratch(FlowCreator):
                         
                         checkpass = checkpass and _unit_test_passed
                         check_report = _unit_test_results + '\n\n' + check_report
-                        func_checks = {
-                            'checkpass':checkpass,
-                            'check_report':check_report,
-                            'check_results':check_results,
-                        }
+                    else:
+                        check_report = 'Format check failed, please fix the format errors and try again.'
+                        checkpass=False
+                        check_results={}
+                        
+                    func_checks = {
+                        'checkpass':checkpass,
+                        'check_report':check_report,
+                        'check_results':check_results,
+                    }
 
                 # 3. Review the code for GAU
                 IMPLEMENTATION_REVIEWER=reload_role('implementation_reviewer',self.gpt4o0806_agent, 
