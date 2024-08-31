@@ -765,11 +765,11 @@ class GAUCallChecker(ast.NodeVisitor):
         keywords = stmt.value.keywords
         lineno = stmt.lineno
         if not (len(args) == 1 and len(keywords) == 1 and isinstance(keywords[0].value, ast.Name) and keywords[0].arg is None and keywords[0].value.id == "Z"):
-            self.errors.append(f'line {lineno}: {self.code_lines[lineno-1]}: Error: GAU call must have the sequence as the first argument and the **Z. If you need to pass in other arguments, you can do so in the **Z.')
+            self.errors.append(f'line {lineno}: {self.code_lines[lineno-1]}: Error: GAU call must have the sequence as the first argument and the **Z. If you need to pass in other arguments, you can do so in the **Z. Do not change the name of Z.')
 
         target = stmt.targets[0]
         if not (isinstance(target, ast.Tuple) and len(target.elts)==2 and isinstance(target.elts[1], ast.Name) and target.elts[1].id == "Z"):
-            self.errors.append(f'line {lineno}: {self.code_lines[lineno-1]}: Error: GAU call always returns a tuple of two variables, the first is a sequence and the second must be the updated **Z. If you need to return other variables, you can do so in the **Z.')
+            self.errors.append(f'line {lineno}: {self.code_lines[lineno-1]}: Error: GAU call always returns a tuple of two variables, the first is a sequence and the second must be the updated **Z. If you need to return other variables, you can do so in the **Z. Do not change the name of Z, and Z will be updated in-place when it go through the GAU.')
         
 
     def get_instance_name(self, func_attr):
