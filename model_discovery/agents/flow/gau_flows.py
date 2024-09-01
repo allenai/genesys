@@ -331,7 +331,8 @@ class GUFlowScratch(FlowCreator):
                 else:
                     check_report = 'Format check failed, please fix the format errors and try again.'
                     check_results = {}
-                    
+                    gabcode_reformat=None
+
                 func_checks = {
                     'checkpass':checkpass,
                     'check_report':check_report,
@@ -612,6 +613,7 @@ class GUFlowScratch(FlowCreator):
                     else:
                         check_report = 'Format check failed, please fix the format errors and try again.'
                         check_results={}
+                        gabcode_reformat=None
 
                     func_checks = {
                         'checkpass':checkpass,
