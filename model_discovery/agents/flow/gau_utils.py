@@ -868,3 +868,41 @@ def check_and_reformat_gau_code(source_code, unit_name, children):
 
     # Return the reformatted code, any new arguments, errors, and warnings
     return reformatted_code, new_args, gau_tests, errors, warnings
+
+
+
+
+################################################################
+# Core Library Code Cleaner
+################################################################
+
+
+class CoreLibraryCodeCleaner(ast.NodeTransformer):
+    def __init__(self, kws):
+        self.kws=kws
+
+    def visit_Assign(self, node): 
+        if isinstance(node.targets[0], ast.Name) and node.targets[0].id in self.kws:
+            return None
+        return self.generic_visit(node)
+
+
+def process_core_library_code(code, unit_name):
+    # remove all gau tests
+    tree=ast.parse(code)
+    warnings=[]
+    gau_test_checker=GauTestChecker(unit_name)
+    gau_test_checker.visit(tree)
+    gau_tests=gau_test_checker.gau_tests
+    if gau_tests == {}:
+        warnings.append("Warning: No valid gau unit test function found, please write gau unit tests, a gau unit test function should be decorated with @gau_test.")
+
+    # remove global constants: SPEC, ARGS, DESC, CHILDREN, REVIEW, RATING, SUGGESTIONS, DEMANDS
+    kws=['SPEC', 'ARGS', 'DESC', 'CHILDREN', 'REVIEW', 'RATING', 'SUGGESTIONS', 'DEMANDS']
+    cleaner=CoreLibraryCodeCleaner(kws)
+    cleaner.visit(tree)
+    code=astor.to_source(tree)
+    return code, gau_tests, warnings
+    
+
+

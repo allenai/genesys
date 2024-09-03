@@ -55,6 +55,7 @@ from exec_utils.factory import _check_config
 from exec_utils import BuildSystem as NativeBuild
 from exec_utils.aliases import ConfigType
 
+from model_discovery.model.composer import GAUTree
 from model_discovery import utils as U
 from .configs.gam_config import ( 
     GAMConfig,GAMConfig_14M,GAMConfig_31M,GAMConfig_70M,GAMConfig_125M,GAMConfig_350M,GAMConfig_760M,
@@ -147,6 +148,7 @@ class LibraryReference(NodeObject):
     code: str = None
     description: str = None
     url: str = None
+    tree: GAUTree = None
 
     def __post_init__(self):
         py_dir=U.pjoin(LIBRARY_DIR,'base',self.acronym,self.acronym+'_edu.py')
@@ -158,6 +160,7 @@ class LibraryReference(NodeObject):
             self.code=f'// {self.acronym}_edu.go\n\n'+open(go_dir,'r', encoding='utf-8').read()
         elif U.pexists(core_dir):
             self.code=f'# {self.acronym}_edu.py\n\n'+open(core_dir,'r', encoding='utf-8').read()
+            self.tree=GAUTree.load_from_base(U.pjoin(LIBRARY_DIR,'core',self.acronym,'units'))
         else:
             self.code=None
 
@@ -166,7 +169,10 @@ class LibraryReference(NodeObject):
         core_dir=U.pjoin(LIBRARY_DIR,'core',self.acronym,self.acronym+'_edu.py')
         if self.code is not None:
             if U.pexists(core_dir):
-                return 'ReferenceCore'
+                if self.tree is None:
+                    return 'ReferenceCore'
+                else:
+                    return 'ReferenceCoreWithTree'
             else:
                 return 'ReferenceWithCode'
         else:
@@ -438,7 +444,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
                 color=RWC_COLOR
                 citations=data.citationCount
                 size=5*max(0,int(math.log(citations,3)))+10 if citations else 10
-            elif data.type=='ReferenceCore':
+            elif data.type in ['ReferenceCore', 'ReferenceCoreWithTree']:
                 color=CORE_COLOR
                 citations=data.citationCount
                 size=5*max(0,int(math.log(citations,3)))+10 if citations else 10
@@ -698,15 +704,16 @@ class EvolutionSystem(exec_utils.System):
 
     # TODO: upgrade to Selector agent
 
-    def select(self,K: int=1,selector_instruct='')-> Tuple[str,List[NodeObject]]: # K is the number of designs to sample, instruct is the instruction to the selector, select seeds or select populations
+    def select(self,K: int=1,selector_instruct='',
+            filter_type=['DesignArtifact','ReferenceWithCode','ReferenceCoreWithTree','ReferenceCore'])-> Tuple[str,List[NodeObject]]: # K is the number of designs to sample, instruct is the instruction to the selector, select seeds or select populations
         """ Provide the instruction including seeds and instructs for the next design """
-        K=min(K,len(self.ptree.G.nodes))
+        K=min(K,len(self.ptree.filter_by_type(filter_type)))
         if K==0: # no design to sample
             return '',[]
         if self.select_method=='heuristic':
-            topk = self.heuristic_select(K,selector_instruct)
+            topk = self.heuristic_select(K,selector_instruct,filter_type)
         elif self.select_method=='random':
-            topk = self.random_select(K,selector_instruct)
+            topk = self.random_select(K,selector_instruct,filter_type)
         if K==1: # Mutate
             prompt=topk[0].to_prompt()
             # instruct=f'Please improve based on this design for the new design, think of how to overcome its weaknesses and absorb its advantage:\n\n{prompt}'
@@ -721,11 +728,12 @@ class EvolutionSystem(exec_utils.System):
     def nodes2data(self,nodes):
         return [self.ptree.G.nodes[node]['data'] for node in nodes]
 
-    def heuristic_select(self,K: int=1,selector_instruct='')-> List[NodeObject]:
+    def heuristic_select(self,K: int=1,selector_instruct='',
+            filter_type=['DesignArtifact','ReferenceWithCode','ReferenceCoreWithTree','ReferenceCore'])-> List[NodeObject]:
         alpha=0.1
         sample_metrics={}
         sample_scale={}
-        for node in self.ptree.filter_by_type(['DesignArtifact']):
+        for node in self.ptree.filter_by_type(filter_type):
             artifact=self.ptree.G.nodes[node]['data']
             if artifact.verify_report is not None:
                 # TODO: upgrade this thing
@@ -741,11 +749,10 @@ class EvolutionSystem(exec_utils.System):
         topk=np.random.choice(list(sample_metrics.keys()),size=K,replace=False,p=prob)
         return self.nodes2data(topk)
 
-    def random_select(self,K: int=1,selector_instruct=''):
-        topk=random.sample(self.ptree.filter_by_type(['DesignArtifact','ReferenceWithCode']),K)
+    def random_select(self,K: int=1,selector_instruct='',
+            filter_type=['DesignArtifact','ReferenceWithCode','ReferenceCoreWithTree','ReferenceCore']):
+        topk=random.sample(self.ptree.filter_by_type(filter_type),K)
         return self.nodes2data(topk)
-
-
     
     def verify(self): # run a single verify that verify one unverified design
         designed=os.listdir(U.pjoin(self.evo_dir,'db'))

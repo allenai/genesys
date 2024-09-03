@@ -16,7 +16,7 @@ from .utils.modules import GAUBase, gau_test
 import model_discovery.utils as U
 
 from model_discovery.agents.prompts.prompts import UnitSpec, UnitDeclaration
-
+from model_discovery.agents.flow.gau_utils import process_core_library_code
 
 
 
@@ -51,9 +51,10 @@ class GAUNode: # this is mainly used to 1. track the hierarchies 2. used for the
 class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
     def __init__(self, lib_dir=None):
         self.units = {}
-        self.units_dir = U.pjoin(lib_dir, 'units')
-        U.mkdir(self.units_dir)
-        self.load()
+        if lib_dir is not None:
+            self.units_dir = U.pjoin(lib_dir, 'units')
+            U.mkdir(self.units_dir)
+            self.load()
 
     def exist(self, name):
         return name in self.units   
@@ -218,8 +219,9 @@ class GAUTree:
         self.rating = rating
         self.suggestions = suggestions
         self.dict = GAUDict(lib_dir)
-        self.flows_dir = U.pjoin(lib_dir, 'flows')
-        U.mkdir(self.flows_dir)
+        if lib_dir is not None:
+            self.flows_dir = U.pjoin(lib_dir, 'flows')
+            U.mkdir(self.flows_dir)
 
     def add_unit(self, spec, code, args, desc, review, rating, children, gautests, suggestions, design_traces=None, demands=None, overwrite=False):
         name = spec.unitname
@@ -346,7 +348,8 @@ class GAUTree:
             name += ' (Unimplemented)'
             unimplemented.add(_name)
         else:
-            name += f" (Rating: {node.rating}/5)"
+            if node.rating is not None:
+                name += f" (Rating: {node.rating}/5)"
         if path!='':
             level=len(path.split('.'))
             name='    '*level+' |- '+name
@@ -373,11 +376,46 @@ class GAUTree:
         pstr+='\n\nSpecifications for Implemented Units:\n'
         for unit in self.units.values():
             pstr+=unit.spec.to_prompt()+'\n'
-        pstr+='\n\nDeclarations for Unimplemented Units:\n'
-        for unit in unimplemented:
-            pstr+=self.declares[unit].to_prompt()+'\n'
+        if len(unimplemented)>0:
+            pstr+='\n\nDeclarations for Unimplemented Units:\n'
+            for unit in unimplemented:
+                pstr+=self.declares[unit].to_prompt()+'\n'
         return pstr,list(implemented),list(unimplemented)
 
+    @classmethod
+    def load_from_base(cls,path,lib_dir=None):
+        '''
+        load a GAUTree from the core library, the path should include the metadata.yaml and the units directory /src,
+        each src file should include SPEC, ARGS, DESC, CHILDREN, and the unit tests
+        '''
+        if not U.pexists(path):
+            return None
+        metadata=U.load_yaml(U.pjoin(path,'metadata.yaml'))
+        name=metadata['name']
+        proposal=metadata['proposal']
+        review=metadata.get('review',None)
+        rating=metadata.get('rating',None)
+        suggestions=metadata.get('suggestions',None)
+        tree=cls(name,proposal,review,rating,suggestions,lib_dir=lib_dir)
+        for unit in os.listdir(U.pjoin(path,'src')):
+            if unit.endswith('.py'):
+                code=U.read_file(U.pjoin(path,'src',unit))
+                local={}
+                exec(code,local)
+                spec=UnitSpec.model_validate(local['SPEC'])
+                args=local['ARGS']
+                desc=local['DESC']
+                children=local['CHILDREN']
+                review=local.get('REVIEW',None)
+                rating=local.get('RATING',None)
+                suggestions=local.get('SUGGESTIONS',None)
+                demands=local.get('DEMANDS',None)
+                code,gautests,warnings=process_core_library_code(code,spec.unitname)
+                if warnings:
+                    print(f'Warning {spec.unitname}: {warnings}')
+                tree.add_unit(spec,code,args,desc,review,rating,children,gautests,suggestions,demands)
+        tree.root=tree.units[metadata['root']]
+        return tree
 
 
 

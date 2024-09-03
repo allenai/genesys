@@ -25,16 +25,18 @@ print(LIBRARY_PATH)
 ckpt_dir=os.environ.get("CKPT_DIR")
 
 
-def check_tune(scale, model_name):
+def check_tune(scale, model_name, path=None):
     checker = BuildTool(
         tool_type="checker",
     )
     cfg = eval(f"GAMConfig_{scale}()")
 
-    if model_name in MODEL2CODE:
+    if path is None:
+        assert model_name in MODEL2CODE, "Model name not found in MODEL2CODE, path not provided as well"
         code=MODEL2CODE[model_name]
+        path = U.pjoin(LIBRARY_PATH, model_name)
     else:
-        code=U.read_file(model_name) # assert model_name is a path
+        code=U.read_file(U.pjoin(path, f'{model_name}.py')) # assert model_name is a path
 
     checkpass,report,code,results = checker.check(cfg,code,model_name,True)
     if not checkpass:
@@ -42,19 +44,21 @@ def check_tune(scale, model_name):
         raise Exception('Model does not pass the checker')
     autocfg = checker.tune(cfg,code,model_name)
     print('Tuning complete, saving the code with autocfg.')
-    # U.save_json(autocfg,f"{LIBRARY_PATH}/{model_name}/autocfg.json")
     code=code+f'\n\n\n{autocfg}\nblock_config=gab_config\nblock_config.update(autoconfig)'
     code+='\n\n\nfrom .block_registry import BlockRegister\n\nBlockRegister(\n    name="default",\n    config=block_config\n)(GAB)'
-    with open(U.pjoin(LIBRARY_PATH,model_name,'gab.py'),'w') as f:
+    with open(U.pjoin(path,'gab.py'),'w') as f:
         f.write(code)
-    savedir=f"{LIBRARY_PATH}/{model_name}/reports"
+    savedir=U.pjoin(path, 'reports')
     U.mkdir(savedir,exist_ok=True)
     with open(U.pjoin(savedir,f'check_{scale}.json'),'w') as f:
         json.dump(results,f,indent=4)
 
 
-def run(scale,model_name,args,training_token_multiplier=20): # do a single verify
-    with open(U.pjoin(LIBRARY_PATH,model_name,'gab.py'),'r') as f:
+def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a single verify
+    if path is None:
+        assert model_name in MODEL2CODE, "Model name not found in MODEL2CODE, path not provided as well"
+        path=U.pjoin(LIBRARY_PATH, model_name)
+    with open(U.pjoin(path,'gab.py'),'r') as f:
         code=f.read()
     with open('/home/junyanc/model_discovery/model_discovery/model/gab.py','w') as f:
         f.write(code)
@@ -85,13 +89,13 @@ def run(scale,model_name,args,training_token_multiplier=20): # do a single verif
 
 
 if __name__ == "__main__":
-    # model_name = 'rwkv6' 
-    model_name = '/home/junyanc/model_discovery/model_discovery/model/library/core/gpt2/tree/gab.py'
+    model_name = 'gpt2' 
+    path = '/home/junyanc/model_discovery/model_discovery/model/library/core/gpt2/gau'
     scale = '14M' 
     args = ve_parser.parse_args()
 
     if args.mode=='check':
-        check_tune(scale, model_name)
-    # else:
-    #     run(scale, model_name,args) # Then run this
+        check_tune(scale, model_name, path)
+    else:
+        run(scale, model_name,args, path=path) # Then run this
 

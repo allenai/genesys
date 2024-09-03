@@ -661,11 +661,16 @@ should follow the following steps and include them in your response:
       its advantages and limitations when considering to use it.
     - If you are designing a new root unit: You should provide a full
       specification which contains not only the document but also the unit name,
-      variable names of expected inputs, and outputs. Notice that root unit may
-      input and output intermediate variables, and may vary if you introduced
-      topology related designs. Simular to GAU, the intermediate variables Z
-      will be accumulatively updated from upper stream blocks to the lower
-      stream blocks. 
+      variable names of expected inputs, and outputs. For optional inputs, you
+      can mark them with * at the beginning of the variable name. You only need
+      to provide the variables that are really processed and outputted. For
+      example, sequence X and Y is required as input and output respectively,
+      however the unit may not process it, so it does not need to be listed even
+      it will be provided and returned. Notice that root unit may input and
+      output intermediate variables, and may vary if you introduced topology
+      related designs. Simular to GAU, the intermediate variables Z will be
+      accumulatively updated from upper stream blocks to the lower stream
+      blocks. 
 3. The list of children you need to define. To declare a child GAU, you should
    provide the unit name, variable names of the expected inputs and outputs
    (i.e. the interfaces of the child), the demands of the child including the

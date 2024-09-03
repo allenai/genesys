@@ -6,6 +6,7 @@ import re
 import keyword
 import textwrap
 import torch
+import yaml
 
 pjoin=os.path.join
 psplit=os.path.split
@@ -61,6 +62,13 @@ def read_file(file,lines=False):
 def write_file(file,data):
     with open(file, 'w', encoding='utf-8') as f:
         f.write(data)
+
+def load_yaml(file): # load yaml file as a dictionary
+    if not pexists(file):
+        return {}
+    with open(file, encoding='utf-8') as f:
+        return yaml.load(f, Loader=yaml.FullLoader)
+
 
 def get_last_checkpoint(output_dir: str):
     """Gets the last checkpoint 
@@ -150,3 +158,4 @@ def get_factory_kwargs():
         device='cpu'
         dtype=torch.float16
     return {"device": device, "dtype": dtype}
+

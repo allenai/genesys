@@ -44,5 +44,33 @@ def design(evosys,project_dir):
             instruct+=f'\n\n## Additional Instructions from the user\n\n{instruction}'
             system(instruct,frontend=True,stream=st,log_dir=log_dir)
 
+    
+    st.subheader("Design Flow: Improve Model Design using Random Selected Manual Seeds")
+
+    filter_type = st.multiselect(label="Additional sources",options=['DesignArtifact','ReferenceWithCode','ReferenceCoreWithTree','ReferenceCore'])
+
+    col1, col2 = st.columns([3, 1])
+    with col1:
+        instruction = st.text_input(label = "Add any additional instructions (optional)" )
+    with col2:
+        K = st.number_input(label="Number of seeds to sample",min_value=1,value=2)
+
+    submit = st.button(label="Design model")
+
+    if submit or instruction:
+        instruction = str(None) if not instruction else instruction 
+        
+        with st.spinner(text="running discovery loop"):
+            session_id=f'sample_test_{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}'
+            log_dir=U.pjoin(evosys.evo_dir,'log',session_id)
+
+            instruct,seeds=evosys.select(K,filter_type=['ReferenceCoreWithTree']) # use the seed_ids to record the phylogenetic tree
+            
+            if filter_type:
+                instruct,seeds=evosys.select(K,filter_type=filter_type) # use the seed_ids to record the phylogenetic tree
+            instruct+=f'\n\n## Additional Instructions from the user\n\n{instruction}'
+            system(instruct,frontend=True,stream=st,log_dir=log_dir)
+
+
 
             

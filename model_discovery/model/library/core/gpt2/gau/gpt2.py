@@ -132,7 +132,7 @@ class RotaryPositionalEmbeddings(GAUBase):
     def _rope_init(self):
         theta = 1.0 / (
             self.base
-            ** (torch.arange(0, self.dim, 2)[: (self.dim // 2)].float() / self.dim)
+            ** (torch.arange(0, self.dim, 2,**self.factory_kwargs)[: (self.dim // 2)].float() / self.dim)
         )
         self.register_buffer("theta", theta, persistent=False)
         self.build_rope_cache(self.max_seq_len)
@@ -284,8 +284,6 @@ class MHA(GAUBase):
             inference_params: for generation. Adapted from Megatron-LM (and Apex)
             https://github.com/NVIDIA/apex/blob/3ff1a10f72ec07067c4e44759442329804ac5162/apex/transformer/testing/standalone_transformer_lm.py#L470
         """
-        # seqlen_offset = 0
-        # rotary_max_seqlen = None
         qkv = self.in_proj(X)
         if self.mlp_dim > 0:
             qkv, x_mlp = qkv.split([qkv.shape[-1] - self.mlp_dim, self.mlp_dim], dim=-1)
@@ -295,13 +293,6 @@ class MHA(GAUBase):
             qkv = rearrange(
                 self.conv1d(rearrange(qkv, "b s d -> b d s"))[..., :-(self.d_conv - 1)], "b d s -> b s d"
             ).contiguous()
-        # q, kv = qkv.split([self.num_heads * self.head_dim, self.num_heads_kv * 2 * self.head_dim], dim=-1)
-        # q = rearrange(q, "... (h d) -> ... h d", d=self.head_dim)
-        # kv = rearrange(kv, "... (two hkv d) -> ... two hkv d", two=2, d=self.head_dim)
-        # q, kv = self.rotary_emb(
-        #     q, kv, seqlen_offset=seqlen_offset, max_seqlen=rotary_max_seqlen
-        # )
-        # k, v = kv.unbind(dim=-3)
 
         q,k,v=qkv.split([self.num_heads * self.head_dim]*3, dim=-1)
         q=rearrange(q, "... (h d) -> ... h d", d=self.head_dim)
