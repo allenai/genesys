@@ -153,29 +153,34 @@ class LibraryReference(NodeObject):
     def __post_init__(self):
         py_dir=U.pjoin(LIBRARY_DIR,'base',self.acronym,self.acronym+'_edu.py')
         go_dir=U.pjoin(LIBRARY_DIR,'base',self.acronym,self.acronym+'_edu.go')
-        core_dir=U.pjoin(LIBRARY_DIR,'core',self.acronym,self.acronym+'_edu.py')
+        core_dir=U.pjoin(LIBRARY_DIR,'core',self.acronym)
         if U.pexists(py_dir):
             self.code=f'# {self.acronym}_edu.py\n\n'+open(py_dir,'r', encoding='utf-8').read()
         elif U.pexists(go_dir):
             self.code=f'// {self.acronym}_edu.go\n\n'+open(go_dir,'r', encoding='utf-8').read()
         elif U.pexists(core_dir):
-            self.code=f'# {self.acronym}_edu.py\n\n'+open(core_dir,'r', encoding='utf-8').read()
-            self.tree=GAUTree.load_from_base(U.pjoin(LIBRARY_DIR,'core',self.acronym,'units'))
+            code_dir=U.pjoin(core_dir,self.acronym+'_edu.py')
+            tree_dir=U.pjoin(core_dir,'units')
+            if U.pexists(code_dir):    
+                self.code=f'# {self.acronym}_edu.py\n\n'+open(code_dir,'r', encoding='utf-8').read()
+            if U.pexists(tree_dir):
+                self.tree=GAUTree.load_from_base(tree_dir)
+            if self.tree is not None:
+                print(f'{self.acronym} tree loaded')
         else:
             self.code=None
 
     @property
     def type(self) -> str:
-        core_dir=U.pjoin(LIBRARY_DIR,'core',self.acronym,self.acronym+'_edu.py')
-        if self.code is not None:
-            if U.pexists(core_dir):
-                if self.tree is None:
-                    return 'ReferenceCore'
-                else:
-                    return 'ReferenceCoreWithTree'
-            else:
+        core_dir=U.pjoin(LIBRARY_DIR,'core',self.acronym)
+        if self.tree is not None: # as long as there is a tree, it is a core reference
+            return 'ReferenceCoreWithTree'
+        elif self.code is not None: # if there is code, it is a reference with code
+            if U.pexists(core_dir): # if there is a core dir, it is a core reference
+                return 'ReferenceCore'
+            else: # otherwise, it is a reference with code
                 return 'ReferenceWithCode'
-        else:
+        else: # if there is no code, it is a reference
             return 'Reference'
 
     def to_desc(self,reformat=True) -> str:
@@ -208,8 +213,13 @@ class LibraryReference(NodeObject):
 
     def to_prompt(self) -> str:
         prompt=self.to_desc(reformat=False)
-        if self.code:
-            prompt+=f'\n\n## Reference Code\n<details><summary>Click me</summary>\n\n```python\n{self.code}\n```\n</details>\n\n'
+        if self.tree:
+            prompt+=f'\n\n{self.tree.to_prompt()}\n\n'
+        elif self.code:
+            if self.type=='ReferenceCore':
+                prompt+=f'\n\n## GAB Implementation\n<details><summary>Click me</summary>\n\n```python\n{self.code}\n```\n</details>\n\n'
+            else:
+                prompt+=f'\n\n## Reference Code\n<details><summary>Click me</summary>\n\n```python\n{self.code}\n```\n</details>\n\n'
         return prompt
 
 
@@ -217,11 +227,12 @@ class LibraryReference(NodeObject):
 @dataclass
 class LibraryReference1hop(LibraryReference):
 
-    def type(self):
-        if self.code is not None:
-            return 'Reference1hopWithCode'
-        else:
-            return 'Reference1hop'
+    @property
+    def type(self) -> str:
+        # if self.code is not None:
+        #     return 'Reference1hopWithCode'
+        # else:
+        return 'Reference1hop'
 
 @dataclass
 class DesignArtifact(NodeObject):
@@ -352,6 +363,8 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         return f"{acronym}{i}"
 
     def filter_by_type(self,types):
+        if isinstance(types, str):
+            types=[types]
         nodes=[]
         for node in self.G.nodes:
             if self.G.nodes[node]['data'].type in types:
@@ -409,7 +422,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             self.G.add_edge(seed_id, product_id)
         
         self.remove_redundant_edges()
-            
+        
 
     def viz(self,G,height=5000,width="100%",layout=False,max_nodes=None): # larger canvas may be needed for large trees
         nt=Network(
@@ -577,7 +590,7 @@ class EvolutionSystem(exec_utils.System):
             **kwargs
         )
         self.ptree=PhylogeneticTree(U.pjoin(self.evo_dir,'db'))
-        self.ptree.export()
+        # self.ptree.export()
 
     def link_stream(self,stream):
         self.stream=stream
@@ -704,7 +717,26 @@ class EvolutionSystem(exec_utils.System):
 
     # TODO: upgrade to Selector agent
 
-    def select(self,K: int=1,selector_instruct='',
+
+    def select(self,K: Union[int,Dict[str,int]],selector_instruct='')->Tuple[str,List[NodeObject]]:
+        '''
+        K: int or dict of {source_type: num of seeds}, if K is int, then sample from all default sources (the ones with code)
+        Return:
+            seeds: List[NodeObject]
+            instruct: str, the prompt generated from the selector and seeds
+        '''
+        seeds=[]
+        prompt=''
+        if isinstance(K,int):
+            prompt,seeds=self._select(K,selector_instruct)
+        elif isinstance(K,dict):
+            for source_type,num in K.items():
+                instruct,topk=self._select(num,selector_instruct,source_type)
+                prompt+=f'# Sampling {num} designs from base *{source_type}*\n\n{instruct}\n\n'
+                seeds.extend(topk)
+        return prompt,seeds
+
+    def _select(self,K: int=1,selector_instruct='',
             filter_type=['DesignArtifact','ReferenceWithCode','ReferenceCoreWithTree','ReferenceCore'])-> Tuple[str,List[NodeObject]]: # K is the number of designs to sample, instruct is the instruction to the selector, select seeds or select populations
         """ Provide the instruction including seeds and instructs for the next design """
         K=min(K,len(self.ptree.filter_by_type(filter_type)))
@@ -725,7 +757,7 @@ class EvolutionSystem(exec_utils.System):
         # TODO: should leave the prompt creation to the agent
         return instruct,topk
 
-    def nodes2data(self,nodes):
+    def nodes2data(self,nodes)->List[NodeObject]: # convert the nodes to data: NodeObject
         return [self.ptree.G.nodes[node]['data'] for node in nodes]
 
     def heuristic_select(self,K: int=1,selector_instruct='',
@@ -767,7 +799,6 @@ class EvolutionSystem(exec_utils.System):
                 return 'FAILED'
         return None
         
-
     def _verify(self,design_id): # do a single verify
         artifact=U.load_json(U.pjoin(self.evo_dir,'db',design_id,'artifact.json'))
         with open('./model/gab.py','w', encoding='utf-8') as f:

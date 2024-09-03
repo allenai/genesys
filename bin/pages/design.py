@@ -21,56 +21,39 @@ def design(evosys,project_dir):
 
     ### side bar 
     st.sidebar.button("reset design query")
-        
 
-    st.subheader("Design Flow: Sample Initial Design from Scratch using Random Selected Seeds")
-
-    col1, col2 = st.columns([3, 1])
+    col1, col2 = st.columns([1, 3])
     with col1:
-        instruction = st.text_input(label = "Add any additional instructions (optional)" )
+        mode = st.selectbox(label="Design Mode",options=['Design from scratch','Design from existing design'])
     with col2:
-        K = st.number_input(label="Number of seeds to sample",min_value=1,value=2)
+        instruction = st.text_input(label = "Add any additional instructions (optional)" )
+
+
+    sources = ['ReferenceCoreWithTree', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference', 'Reference1hop']
+    sources={i:len(evosys.ptree.filter_by_type(i)) for i in sources}
+    n_sources = {}
+
+    st.subheader("Configure the number of seeds to sample from each source")
+    cols = st.columns(len(sources))
+    for i,source in enumerate(sources):
+        with cols[i]:
+            if mode=='Design from existing design' and source=='ReferenceCoreWithTree':
+                n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=1,value=1,max_value=1,disabled=True)
+            else:
+                n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=0,max_value=sources[source])
 
     submit = st.button(label="Design model")
 
-    if submit or instruction:
-        instruction = str(None) if not instruction else instruction 
-        
-        with st.spinner(text="running discovery loop"):
+    if submit:
+        if sum(n_sources.values())==0:
+            st.write("You selected no seed, the agent will randomly generate a design for you.")
+        with st.spinner(text="running model design loop"):
             session_id=f'sample_test_{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}'
             log_dir=U.pjoin(evosys.evo_dir,'log',session_id)
             
-            instruct,seeds=evosys.select(K) # use the seed_ids to record the phylogenetic tree
+            instruct,seeds=evosys.select(n_sources) # use the seed_ids to record the phylogenetic tree
+        if instruction:
             instruct+=f'\n\n## Additional Instructions from the user\n\n{instruction}'
-            system(instruct,frontend=True,stream=st,log_dir=log_dir)
+        system(instruct,frontend=True,stream=st,log_dir=log_dir)
 
     
-    st.subheader("Design Flow: Improve Model Design using Random Selected Manual Seeds")
-
-    filter_type = st.multiselect(label="Additional sources",options=['DesignArtifact','ReferenceWithCode','ReferenceCoreWithTree','ReferenceCore'])
-
-    col1, col2 = st.columns([3, 1])
-    with col1:
-        instruction = st.text_input(label = "Add any additional instructions (optional)" )
-    with col2:
-        K = st.number_input(label="Number of seeds to sample",min_value=1,value=2)
-
-    submit = st.button(label="Design model")
-
-    if submit or instruction:
-        instruction = str(None) if not instruction else instruction 
-        
-        with st.spinner(text="running discovery loop"):
-            session_id=f'sample_test_{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}'
-            log_dir=U.pjoin(evosys.evo_dir,'log',session_id)
-
-            instruct,seeds=evosys.select(K,filter_type=['ReferenceCoreWithTree']) # use the seed_ids to record the phylogenetic tree
-            
-            if filter_type:
-                instruct,seeds=evosys.select(K,filter_type=filter_type) # use the seed_ids to record the phylogenetic tree
-            instruct+=f'\n\n## Additional Instructions from the user\n\n{instruction}'
-            system(instruct,frontend=True,stream=st,log_dir=log_dir)
-
-
-
-            

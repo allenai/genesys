@@ -381,6 +381,11 @@ class GAUTree:
             for unit in unimplemented:
                 pstr+=self.declares[unit].to_prompt()+'\n'
         return pstr,list(implemented),list(unimplemented)
+    
+    def to_prompt(self):
+        view,_,_=self.view()
+        code=self.compose()
+        return f'## Tree Map of the GAUs\n<details><summary>Click me</summary>\n\n```bash\n{view}\n```\n</details>\n\n## Composed GAB Code\n<details><summary>Click me</summary>\n\n```python\n{code}\n```\n</details>\n\n'
 
     @classmethod
     def load_from_base(cls,path,lib_dir=None):

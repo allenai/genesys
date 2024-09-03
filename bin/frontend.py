@@ -14,27 +14,29 @@ import model_discovery.utils as U
 
 from streamlit_navigation_bar import st_navbar
 
-# Import full modules
-import bin.pages.home
-import bin.pages.viewer
-import bin.pages.design
-import bin.pages.evolve
-import bin.pages.engine
-import bin.pages.prompt
 
-# importlib.reload(bin.pages.home)
-# importlib.reload(bin.pages.viewer)
-# importlib.reload(bin.pages.evolve)
-# importlib.reload(bin.pages.design)
-# importlib.reload(bin.pages.engine)
-# importlib.reload(bin.pages.prompt)
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(project_root)
 
-home = bin.pages.home.home
-viewer = bin.pages.viewer.viewer
-design = bin.pages.design.design
-evolve = bin.pages.evolve.evolve
-engine = bin.pages.engine.engine
-prompt = bin.pages.prompt.prompt
+# Import the parent module first
+import bin.pages
+
+# Function to dynamically import and reload modules
+def import_and_reload(module_name):
+    full_module_name = f'bin.pages.{module_name}'
+    if full_module_name in sys.modules:
+        return importlib.reload(sys.modules[full_module_name])
+    return importlib.import_module(full_module_name)
+
+# Import and reload modules
+home = import_and_reload('home').home
+viewer = import_and_reload('viewer').viewer
+design = import_and_reload('design').design
+evolve = import_and_reload('evolve').evolve
+engine = import_and_reload('engine').engine
+prompt = import_and_reload('prompt').prompt
+
+
 
 
 
