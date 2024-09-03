@@ -85,12 +85,13 @@ def run(scale,model_name,args,training_token_multiplier=20): # do a single verif
 
 
 if __name__ == "__main__":
-    model_name = 'rwkv6' 
-    scale = '31M' 
+    # model_name = 'rwkv6' 
+    model_name = '/home/junyanc/model_discovery/model_discovery/model/library/core/gpt2/tree/gab.py'
+    scale = '14M' 
     args = ve_parser.parse_args()
 
     if args.mode=='check':
         check_tune(scale, model_name)
-    else:
-        run(scale, model_name,args) # Then run this
+    # else:
+    #     run(scale, model_name,args) # Then run this
 

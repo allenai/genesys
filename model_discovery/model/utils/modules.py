@@ -28,8 +28,8 @@ class GABBase(nn.Module):
     # YOU ARE NOT ALLOW TO OVERRIDE THIS METHOD #
     def forward(self, X, **Z): # kwargs not parsable by torchscript but more flexible
         """Forward pass of the model"""
-        assert len(X.shape) == 3, "Input shape must be (batch, seqlen, embed_dim)"
-        assert X.shape[-1] == self.embed_dim
+        assert len(X.shape) == 3, f"Input shape must be (batch, seqlen, embed_dim), got {len(X.shape)}D instead"
+        assert X.shape[-1] == self.embed_dim, f"Input shape must be (batch, seqlen, embed_dim), got {X.shape} instead"
         Y = self._forward(X, **Z)
         if isinstance(Y, tuple):
             Y, Z_ = Y
@@ -58,8 +58,9 @@ class GAUBase(nn.Module):
         raise NotImplementedError
     
     def forward(self, X, **Z):
-        assert len(X.shape) == 3 and X.shape[-1] == self.embed_dim, f"Input X must be a sequence of shape (batch, seqlen, embed_dim), all other kinds of variables should be passed by Z."
+        assert len(X.shape) == 3 and X.shape[-1] == self.embed_dim, f"Input X must be a sequence of shape (batch, seqlen, embed_dim), all other kinds of variables should be passed by Z. Got {X.shape} instead."
         _params = inspect.signature(self._forward).parameters
+        X=X.to(**self.factory_kwargs)
         _Z = {k: v for k, v in Z.items() if k in _params}
         Y = self._forward(X, **_Z)
         if isinstance(Y, tuple):

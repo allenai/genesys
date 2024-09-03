@@ -267,6 +267,7 @@ class GABFormatChecker:
             code_ast = ast.parse(gab_code)
         except Exception as e:
             self.errors.append(f'The code is not parsable:\n{str(e)}\n')
+            self.errors.append('Full traceback:\n'+traceback.format_exc())
             return self._report_errors()
         
         code_ast = self._reformat(code_ast) # NOTE: maybe also check docstrings
@@ -279,7 +280,9 @@ class GABFormatChecker:
         try: ####NOTE: LEAVE IT OPEN FOR DEBUGGING CAUSE, REMEMBER TO UNCOMMENT
             exec(self.gab_code, globals().copy(), local_ns)
         except Exception as e:
-            self.errors.append(f'The code is not executable:\n{str(e)}\nHint: 1. Check whether you have implement redundant part, remember that you only need to implement the autoregressive block, not the whole model like embedding layer and lm head. \n')
+            self.errors.append(f'The code is not executable:\n{str(e)}')
+            self.errors.append('Full traceback:\n'+traceback.format_exc())
+            self.errors.append('Hint: 1. Check whether you have implement redundant part, remember that you only need to implement the autoregressive block, not the whole model like embedding layer and lm head. \n')
             self.hints.append('REFRESH_TEMPLATE')
             return self._report_errors()
         
@@ -869,6 +872,7 @@ class Checker(exec_utils.BaseTool):
                     'traceback': traceback,
                 }
                 
+                self.rprint('Checking the unit tests...')
                 try:
                     # Redirect stdout and stderr to capture all output
                     with redirect_stdout(_test_output), redirect_stderr(_test_output):
@@ -879,29 +883,38 @@ class Checker(exec_utils.BaseTool):
                 except Exception as e:
                     captured_output = f"An error occurred while executing the unit test:\n{traceback.format_exc()}"
                     
+                self.rprint('Reloading the model...')
                 _test_output = io.StringIO()
                 with redirect_stdout(_test_output), redirect_stderr(_test_output):
                     glm,_ = reload_gam(config,gab_code,name,**U.get_factory_kwargs())
                 captured = _test_output.getvalue()
                 if captured != '':
-                    captured_output += f' - Captured outputs during the loading and initialization of the model:\n\n{captured}\n\n'
+                    captured_output += f' - Captured outputs during the loading and initialization of the model:\n\n{captured}\n\nEND OF CAPTURED OUTPUT.\n\n'
                 else:
-                    captured_output += ' - No captured output during the loading and initialization of the model.\n\n'
+                    captured_output += ' - No captured output during the loading and initialization of the model.\n\nEND OF CAPTURED OUTPUT.\n\n'
 
                 mock_input=torch.randint(0, config.vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
                 mock_input = mock_input.to(glm.device)
                 t0=time.time()
 
+                self.rprint('Checking the forward pass...')
                 _test_output = io.StringIO()
                 with redirect_stdout(_test_output), redirect_stderr(_test_output):
-                    glm(mock_input) # super slow as well, why??? but its only for the first time initialization
-                captured = _test_output.getvalue()
-                if captured != '':
-                    captured_output += f' - Captured outputs during forward pass of the model:\n\n{captured}\n\n'
-                else:
-                    captured_output += ' - No captured output during the forward pass of the model.\n\n'
+                    try:
+                        glm(mock_input)
+                    except Exception as e:
+                        self.rprint(f"An exception occurred during the forward pass:\n\n")
+                        self.rprint(f"Error type: {type(e).__name__}")
+                        self.rprint(f"Error message: {str(e)}")
+                        self.rprint("\nTraceback:\n"+traceback.format_exc())
 
-                self.rprint(f'Forward check passed. Captured output during the test:\n\n{captured_output}\n\n')
+                captured = _test_output.getvalue()
+                if captured:
+                    captured_output += f' - Captured output or error during forward pass of the model:\n\n{captured}\n\nEND OF CAPTURED OUTPUT.\n\n'
+                else:
+                    captured_output += ' - No captured output or error during the forward pass of the model.\n\nEND OF CAPTURED OUTPUT.\n\n'
+
+                self.rprint(f'Forward check passed. Captured output during the test:\n\n{captured_output}\n\nEND OF CAPTURED OUTPUT.\n\n')
                 print(f'Time for the first forward pass: {time.time()-t0:.2f}s')
         
             except Exception as e:
@@ -909,6 +922,7 @@ class Checker(exec_utils.BaseTool):
                 self.rprint(
                     'Error: Model initialization failed with error: '+str(e)+'\n'
                     'Full Traceback: \n' + error_trace + '\n'
+                    'Captured output during the test:\n\n' + captured_output + '\n\nEND OF CAPTURED OUTPUT.\n\n'
                     'Hint: 1. if it is a dtype or device error, check whether the factory kwargs are passed to the layers, and whether you manually designate a type instead of apply the type from factory kwargs or the input\'s type during conversion or creating of an variable. '
                     '2. If it is a shape error, check whether the output shape is equal to the input shape. The output shape of GAB should be the same as the input. '
                     '3. Always remember to follow the template and do not implement redundant part like embedding layer. '
@@ -950,6 +964,7 @@ class Checker(exec_utils.BaseTool):
                     assert checkpass2 and checkpass3
             except Exception as e:# AssertionError:
                 self.rprint(f'Model test failed\n{e}')
+                self.rprint('Full traceback:\n'+traceback.format_exc())
                 if not checkpass2:
                     self.rprint('Hint: If you used convolutional layer, you should consider that the conv kernel may cover the future steps. '
                                 'You can add padding and truncation of future steps to the conv layer to make it causal.\n')

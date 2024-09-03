@@ -3,7 +3,7 @@
 import torch
 import torch.nn as nn
 
-from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMPORT STATEMENT #
+from model_discovery.model.utils.modules import GABBase,GAUBase,gau_test # DO NOT CHANGE THIS IMPORT STATEMENT #
 
 
 from typing import Any, Dict, Optional, Tuple, Union
@@ -612,13 +612,33 @@ class TTTLinear(nn.Module):
 
 
 
+
+
+
+
+
+
+class TTT(GAUBase):
+    def __init__(self,embed_dim: int, device=None,dtype=None,
+                 scan_checkpoint_group_size=4,conv_kernel=4,
+                mini_batch_size=16,rope_theta=10000.0,rms_norm_eps=1e-6,ttt_base_lr=1.0,
+                 **kwargs): # YOU CAN ADD MORE ARGUMENTS, BUT YOU HAVE TO HAVE embed_dim, device, dtype AS THE ARGUTMENTS #
+        super().__init__(embed_dim) # DO NOT CHANGE THIS LINE #
+        self.hidden_size = embed_dim
+        self.seq_modeling_block = TTTLinear(
+            hidden_size=embed_dim,
+            num_attention_heads=num_attention_heads,
+        )
+        
+
+
 class GAB(GABBase):
     """Generalized Autoregressive Block
         Input:        X: (batch, seqlen, embed_dim)
         Output:       Y: (batch, seqlen, embed_dim)
         Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
     """
-    def __init__(self,embed_dim: int, device=None,dtype=None,
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict, device=None, dtype=None,
                  scan_checkpoint_group_size=4,conv_kernel=4,
                 mini_batch_size=16,rope_theta=10000.0,rms_norm_eps=1e-6,ttt_base_lr=1.0,
                  **kwargs): # YOU CAN ADD MORE ARGUMENTS, BUT YOU HAVE TO HAVE embed_dim, device, dtype AS THE ARGUTMENTS #
