@@ -235,6 +235,32 @@ class GAUTree:
             self.root = node
         self.units[name] = node
 
+    def rename_unit(self, oldname, newname):
+        assert oldname in self.units, f"Unit {oldname} is not in the tree"
+        assert newname not in self.units, f"Unit {newname} is already in the tree"
+        # rename children
+        for unit in self.units.values():
+            if oldname in unit.children:
+                unit.children[unit.children.index(oldname)] = newname
+        # rename the root if necessary
+        if self.root.spec.unitname == oldname:
+            self.root.spec.unitname = newname
+        # rename the declares
+        if oldname in self.declares:
+            self.declares[newname] = self.declares[oldname]
+            del self.declares[oldname]
+        # rename the proposal_traces
+        for i,trace in enumerate(self.proposal_traces):
+            if trace==oldname:
+                self.proposal_traces[i] = newname
+        # rename the units
+        for unit in self.units.values():
+            if unit.spec.unitname == oldname:
+                unit.spec.unitname = newname
+        # # rename the dict
+        # self.dict.rename(oldname, newname)
+
+
     def del_unit(self, name):
         assert name in self.units, f"Unit {name} is not in the tree"
         del self.units[name]
@@ -246,6 +272,27 @@ class GAUTree:
     def register_unit(self, name): # permanently register a unit to the GAUDict, do it only when the unit is fully tested
         assert name in self.units, f"Unit {name} is not in the tree"
         self.dict.register(self.units[name])
+
+    def descendants(self,name): # recursively get decendants of a unit
+        assert name in self.units or name in self.declares, f"Unit {name} is neither in the tree nor declared"
+        if name in self.units:
+            node=self.units[name]
+            descendants=set(node.children)
+            for child in node.children:
+                descendants.update(self.descendants(child))
+        else:
+            descendants=set()
+        return descendants
+    
+    def clear_disconnected(self):
+        connected=self.descendants(self.root.spec.unitname)
+        removed=[]
+        for unit in list(self.units.keys()):
+            if unit not in connected:
+                removed.append(unit)
+        for unit in removed:
+            del self.units[unit]
+        return removed  
     
     def save(self): # save the Tree only when the design is finalized and fully tested
         dir=U.pjoin(self.flows_dir,f'{self.name}.json')

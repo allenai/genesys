@@ -660,14 +660,17 @@ class EvolutionSystem(exec_utils.System):
 
     def _evolve(self,scale_id): # do evolve that produce one design and operate the phylogenetic tree
         K=np.random.choice([1,2,3],p=[1,0,0])
-        instruct,seeds=self.select(K) # use the seed_ids to record the phylogenetic tree
+        instruct,metadata=self.select(K) # use the seed_ids to record the phylogenetic tree
 
-        artifact=self.sample(scale_id,instruct,seeds) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
+        artifact=self.sample(scale_id,instruct,metadata) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
         if artifact is None:
             self.stream.write("No design sampled")
             return True # no design sampled, continue
         # save the design to the phylogenetic tree and update the budget
-        artifact['seed_ids']=[seed.acronym for seed in seeds]
+        seed=metadata['seed']
+        references=metadata['references']
+        artifact['seed_ids']=[seed.acronym for seed in seed]
+        artifact['references']=[reference.acronym for reference in references]
         self.ptree.new_design(artifact)
         scale=self.state['scales'][scale_id]
         self.state['budgets'][scale]-=1
@@ -676,15 +679,12 @@ class EvolutionSystem(exec_utils.System):
         self.ptree.export()
         return artifact['acronym']
 
-    def sample(self,scale_id,instruct,seeds:List[NodeObject]):
+    def sample(self,scale_id,instruct,metadata,mode='existing'):
         """ Sample a design at a given scale and verify it """
         self.rnd_agent.set_config(self.scales[scale_id])
         session_id=f'sample_{len(self.ptree.filter_by_type(["DesignArtifact"]))}_{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}'
         log_dir=U.pjoin(self.evo_dir,'log',session_id)
         U.mkdir(log_dir)
-        metadata={
-            'seeds': seeds,
-        }
         response=self.rnd_agent(instruct,log_dir=log_dir,stream=self.stream,metadata=metadata)  # instruct should have a type
         if response is None: # no design sampled
             return None
@@ -718,7 +718,7 @@ class EvolutionSystem(exec_utils.System):
     # TODO: upgrade to Selector agent
 
 
-    def select(self,K: Union[int,Dict[str,int]],selector_instruct='')->Tuple[str,List[NodeObject]]:
+    def select(self,K: Union[int,Dict[str,int]],selector_instruct='',mode='existing')->Tuple[str,List[NodeObject]]:
         '''
         K: int or dict of {source_type: num of seeds}, if K is int, then sample from all default sources (the ones with code)
         Return:
@@ -732,9 +732,28 @@ class EvolutionSystem(exec_utils.System):
         elif isinstance(K,dict):
             for source_type,num in K.items():
                 instruct,topk=self._select(num,selector_instruct,source_type)
-                prompt+=f'# Sampling {num} designs from base *{source_type}*\n\n{instruct}\n\n'
+                prompt+=instruct
                 seeds.extend(topk)
-        return prompt,seeds
+        if mode=='existing':
+            seed_types = ['DesignArtifact','ReferenceCoreWithTree']
+            seed = [i for i in seeds if i.type in seed_types]
+            references = [i for i in seeds if i.type not in seed_types]
+            assert len(seed)>0, "There must be at least one seed from DesignArtifact or ReferenceCoreWithTree when design from existing"
+            if len(seed)>1:
+                seed = random.choice(seed) # randomly select for now
+                references = [i for i in seeds if i.acronym!=seed.acronym]
+            else:
+                seed = seeds[0]
+        elif mode=='scratch':
+            seed_types = ['DesignArtifact','ReferenceCoreWithTree','ReferenceWithCode']
+            seed = [i for i in seeds if i.type in seed_types]
+            references = [i for i in seeds if i.type not in seed_types]
+        metadata={
+            'mode': mode,
+            'seed': seed,
+            'references': references,
+        }
+        return prompt,metadata
 
     def _select(self,K: int=1,selector_instruct='',
             filter_type=['DesignArtifact','ReferenceWithCode','ReferenceCoreWithTree','ReferenceCore'])-> Tuple[str,List[NodeObject]]: # K is the number of designs to sample, instruct is the instruction to the selector, select seeds or select populations
@@ -746,15 +765,7 @@ class EvolutionSystem(exec_utils.System):
             topk = self.heuristic_select(K,selector_instruct,filter_type)
         elif self.select_method=='random':
             topk = self.random_select(K,selector_instruct,filter_type)
-        if K==1: # Mutate
-            prompt=topk[0].to_prompt()
-            # instruct=f'Please improve based on this design for the new design, think of how to overcome its weaknesses and absorb its advantage:\n\n{prompt}'
-            instruct=prompt
-        else: # Cross-over
-            prompts='\n\n\n'.join([f'# *Reference {i+1}*\n\n'+obj.to_prompt() for i,obj in enumerate(topk)])
-            # instruct=f'Please improve by combining the advantages and mitigating the disadvantages of these designs for the new design:\n\n{prompts}'
-            instruct=prompts
-        # TODO: should leave the prompt creation to the agent
+        instruct='' # TODO: leave it to the selector agent
         return instruct,topk
 
     def nodes2data(self,nodes)->List[NodeObject]: # convert the nodes to data: NodeObject

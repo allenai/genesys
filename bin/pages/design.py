@@ -24,7 +24,7 @@ def design(evosys,project_dir):
 
     col1, col2 = st.columns([1, 3])
     with col1:
-        mode = st.selectbox(label="Design Mode",options=['Design from scratch','Design from existing design'])
+        mode = st.selectbox(label="Design Mode",options=['Design from existing design','Design from scratch (unstable)'])
     with col2:
         instruction = st.text_input(label = "Add any additional instructions (optional)" )
 
@@ -51,9 +51,10 @@ def design(evosys,project_dir):
             session_id=f'sample_test_{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}'
             log_dir=U.pjoin(evosys.evo_dir,'log',session_id)
             
-            instruct,seeds=evosys.select(n_sources) # use the seed_ids to record the phylogenetic tree
+            _mode = 'existing' if mode=='Design from existing design' else 'scratch'
+            instruct,metadata=evosys.select(n_sources,mode=_mode) # use the seed_ids to record the phylogenetic tree
         if instruction:
             instruct+=f'\n\n## Additional Instructions from the user\n\n{instruction}'
-        system(instruct,frontend=True,stream=st,log_dir=log_dir)
+        system(instruct,frontend=True,stream=st,log_dir=log_dir,metadata=metadata)
 
     
