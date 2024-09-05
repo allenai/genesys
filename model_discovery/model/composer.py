@@ -235,7 +235,8 @@ class GAUTree:
             self.root = node
         self.units[name] = node
 
-    def rename_unit(self, oldname, newname):
+    def rename_unit(self, oldname, newname): # also need to rename the references in the code, seems hard, so we do not do it for now
+        raise NotImplementedError("Not implemented yet")
         assert oldname in self.units, f"Unit {oldname} is not in the tree"
         assert newname not in self.units, f"Unit {newname} is already in the tree"
         # rename children
@@ -260,6 +261,9 @@ class GAUTree:
         # # rename the dict
         # self.dict.rename(oldname, newname)
 
+    def get_children(self,name):
+        assert name in self.units, f"Unit {name} is not in the tree"
+        return self.units[name].children
 
     def del_unit(self, name):
         assert name in self.units, f"Unit {name} is not in the tree"

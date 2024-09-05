@@ -1042,12 +1042,13 @@ class GUFlowExisting(FlowCreator):
                         if round>1: # round > 1, use unit implementation prompt, tree view background is already in context
                             gu_implement_unit_prompt=GU_IMPLEMENTATION_UNIT(
                                 SPECIFICATION=node.spec.to_prompt(),IMPLEMENTATION=node.code,REVIEW=node.review,RATING=node.rating,
-                                SUGGESTIONS=node.suggestions
+                                SUGGESTIONS=node.suggestions, CHILDREN=node.children
                             )
                         else: # round 1, use unit implementation prompt with tree view background, context is empty
                             gu_implement_unit_prompt=GU_IMPLEMENTATION_UNIT(
                                 SPECIFICATION=node.spec.to_prompt(),IMPLEMENTATION=node.code,REVIEW=node.review,RATING=node.rating,
-                                SUGGESTIONS=node.suggestions,VIEW=VIEW, GAB_CODE=GAB_CODE
+                                SUGGESTIONS=node.suggestions,VIEW=VIEW, GAB_CODE=GAB_CODE, CHILDREN=node.children,
+                                PROPOSAL=proposal['proposal'],PREVIEW=proposal['review'],PRATING=proposal['rating'],
                             )
                     else:
                         REFINE=False # implement a new unit
@@ -1295,10 +1296,11 @@ class GUFlowExisting(FlowCreator):
                 RETS[selection]=RET
 
         ########################### Design finished ###########################  
-        self.tree.rename_unit(proposal['selection'],NEWNAME)
+        # self.tree.rename_unit(proposal['selection'],NEWNAME)
         self.tree.clear_disconnected() 
+
         
-        return query,state,{'unit_designs':RETS}
+        return query,state,{'unit_designs':RETS,'new_name':NEWNAME}
 
     @register_module(
         "PROC",
@@ -1319,7 +1321,7 @@ class GUFlowExisting(FlowCreator):
         "EXIT",
         hints="output the initial threads",
     )
-    def end_of_design(self,query,state,proposal,proposal_traces,root_design,root_design_traces,unit_designs):
+    def end_of_design(self,query,state,proposal,proposal_traces,root_design,root_design_traces,unit_designs,new_name):
         
         design_stack={
             'proposal':proposal,
@@ -1327,6 +1329,7 @@ class GUFlowExisting(FlowCreator):
             'root_design':root_design,
             'root_design_traces':root_design_traces,
             'unit_designs':unit_designs,
+            'new_name':new_name,
         }
         RET={
             'design_stack':design_stack,
