@@ -16,12 +16,13 @@ class GPT2(GAUBase):
         self.norm2=RMSNorm(embed_dim=self.embed_dim, block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)   
 
     def _forward(self,X,**Z): # type hints are optional but recommended
-        X,Z=self.mha(X,**Z)
-        X,Z=self.norm1(X,**Z)
-        X,Z=self.mlp(X,**Z)
-        X,Z=self.norm2(X,**Z)
+        X1,Z=self.norm1(X,**Z)
+        X2,Z=self.mha(X1,**Z)
+        X=X+X2
+        X3,Z=self.norm2(X,**Z)
+        X4,Z=self.mlp(X3,**Z)
+        X=X+X4
         return X,Z
-
 
 
 @gau_test

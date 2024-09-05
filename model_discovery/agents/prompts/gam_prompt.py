@@ -66,7 +66,7 @@ class GAM(nn.Module):
         return hidden_states
 
 
-class ModisLMHeadModel(PreTrainedModel):
+class GLMHeadModel(PreTrainedModel):
     ''' Generalized Autoregressive Models with LM Head '''
     config_class = GAMConfig
 

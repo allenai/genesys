@@ -9,6 +9,35 @@ from pydantic import BaseModel
 
 
 
+
+GAB_BASE='''
+class GABBase(nn.Module):
+    """ Base class for Generalized Autoregressive Block """
+    def __init__(self,embed_dim: int, block_loc: tuple): 
+        super().__init__()
+        self.embed_dim = embed_dim
+        self.block_loc = block_loc # location of the GAB block within the network, (block_idx, n_block), e.g. (0, 6) for the first block in a network with 6 blocks in total
+
+    def _forward(self,X,**kwargs): 
+        raise NotImplementedError
+     
+    # YOU ARE NOT ALLOW TO OVERRIDE THIS METHOD #
+    def forward(self,X,**Z):
+        """Forward pass of the model"""
+        assert X.shape[-1] == self.embed_dim
+        Y_=self._forward(X,**Z)
+        if isinstance(Y_,tuple):
+            Y, Z = Y_
+        else:
+            Z = {}
+        assert Y.shape == X.shape
+        return Y, Z
+'''
+
+GAB_ERROR = """Please provide the full gab code, and please do not modify other parts of the code. Specifically, please preserve # gab.py at the beginning of gab.py. You can write multiple codes during your analysis process, but only one with # gab.py at the beginning will be detected as gab.py, if multiple gab.py are detected in your response, only the last one will be applied. Please follow the instructions in the prompt and provide the full gab.py file with the completed code. """
+
+
+
 class UnitDeclaration(BaseModel):
    unitname: str
    demands: str
@@ -51,7 +80,7 @@ class GU_IMPLEMENTATION_format(BaseModel):
    children: list[UnitDeclaration]
    implementation: str
 
-class GU_IMPLEMENTATION_ROOT_RETRY_format(BaseModel): # for retry, only allow to update description
+class GU_IMPLEMENTATION_ROOT_RETRY_format(BaseModel): # for retry, can update spec 
    reflection: str
    analysis: str
    spec: UnitSpec
@@ -59,15 +88,13 @@ class GU_IMPLEMENTATION_ROOT_RETRY_format(BaseModel): # for retry, only allow to
    children: list[UnitDeclaration]
    changes: str
 
-class GU_IMPLEMENTATION_RETRY_format(BaseModel): # for retry
+class GU_IMPLEMENTATION_RETRY_format(BaseModel): # for retry, only allow to update document
    reflection: str
    analysis: str
    document: str
    implementation: str
    children: list[UnitDeclaration]
    changes: str
-
-
 
 class GU_IMPLEMENTATION_REFINE_format(BaseModel): # for refine, allow to update description, implementation, children, and changes
    newname: str
@@ -180,40 +207,6 @@ The definition of a gam model in gam.py:
 Now, carefully review the design and give the feedback in a step by step way. You must return as a json file with two keys: 'review' and 'rating'. 
 The 'review' key should contain a detailed feedback of the design written in markdown, and the 'rating' key should contain the rating of the design from 1 to 5.
 """
-
-GAB_BASE='''
-class GABBase(nn.Module):
-    """ Base class for Generalized Autoregressive Block """
-    def __init__(self,embed_dim: int, block_loc: tuple): 
-        super().__init__()
-        self.embed_dim = embed_dim
-        self.block_loc = block_loc # location of the GAB block within the network, (block_idx, n_block), e.g. (0, 6) for the first block in a network with 6 blocks in total
-
-    def _forward(self,X,**kwargs): 
-        raise NotImplementedError
-     
-    # YOU ARE NOT ALLOW TO OVERRIDE THIS METHOD #
-    def forward(self,X,**Z):
-        """Forward pass of the model"""
-        assert X.shape[-1] == self.embed_dim
-        Y_=self._forward(X,**Z)
-        if isinstance(Y_,tuple):
-            Y, Z = Y_
-        else:
-            Z = {}
-        assert Y.shape == X.shape
-        return Y, Z
-'''
-
-GAB_ERROR = """Please provide the full gab code, and please do not modify other parts of the code. Specifically, please preserve # gab.py at the beginning of gab.py. You can write multiple codes during your analysis process, but only one with # gab.py at the beginning will be detected as gab.py, if multiple gab.py are detected in your response, only the last one will be applied. Please follow the instructions in the prompt and provide the full gab.py file with the completed code. """
-
-
-
-
-
-
-
-
 
 
 
@@ -1990,6 +1983,202 @@ GUE_PROPOSAL_REREVIEW = AgentPrompt(GUE_PROPOSAL_REREVIEW_prompt,GENERAL_JSON_pa
 
 # endregion
 
+
+
+
+
+
+
+'''
+#######################################################
+# GUE Implementation System Prompt
+#######################################################
+'''
+
+
+""" ============================= GUE Design Implementer System ===================================== """
+
+
+# region GU Design Implementer System
+
+
+# About GAB
+GUE_DESIGNER_SYSTEM_prompt_part1 = """
+You are a researcher designing a new autoregressive language model (LM). Modern
+LMs are typically structured as a stack of repeating blocks. Each block accepts: 
+
+1. A sequence of embeddings $X$ of shape $(B, L, D)$, where $B$ is the batch
+   size, $L$ is the sequence length, and $D$ is the embedding dimension.
+2. Intermediate variables $Z$ (may be passed as keyword arguments), such as
+   memory, states, caches, etc.
+
+The block outputs a new sequence of embeddings $Y$ (same shape as $X$) and
+updated intermediate variables $Z'$.
+
+The model architecture can be written as:
+
+```python 
+tokens = Tokenizer(sentence)
+X = Embeddings(tokens)
+Z = {{}} # initialized as an empty dictionary which might be updated by the blocks
+for block in Blocks:
+   X, Z = block(X, **Z)
+output = Logits(X)
+```
+
+Your goal is to discover the best novel autoregressive LM block that can defeat
+the existing state-of-the-art models, measured in low perplexity in corpora,
+high accuracy in downstream tasks, robustness to variant inputs, efficiency in
+training and inference, and most importantly, good scalability that providing
+better overall performance with more data and larger models.
+
+"""
+
+# About GAU
+GUE_DESIGNER_SYSTEM_prompt_part2 = """
+## Generalized Autoregressive Units 
+
+To design this block, you break it down into smaller components called
+Generalized Autoregressive Units (GAUs), which inherit from the following base
+class:
+
+```python {GAU_BASE}```
+
+The key idea is that a language model (LM) block can be decomposed into a series
+of nested units. Each unit shares the same interface as the LM block, mapping
+the sequence $X$ and intermediate variables $Z$ to a new sequence $Y$ and
+updated variables $Z'$, which incorporate the newly computed values or new
+variables. These units can be arranged hierarchically, with the outputs of one
+unit passing into the next, potentially with intermediate operations in between.
+Units can be nested within one another, allowing a block to be represented as a
+tree of units with a root node. As such, you can focus on designing one unit at
+a time.
+
+For example, GPT-2 can be represented using a root unit:
+
+```python 
+class GPT2(GAUBase):
+   def __init__(self,...):
+      self.norm1 = RMSNorm(...)
+      self.mha = MHA(...)
+      self.norm2 = RMSNorm(...)
+      self.mlp = GatedMLP(...)
+
+   def _forward(self,X,**Z):
+      X1,Z=self.norm1(X,**Z) 
+      X2,Z=self.mha(X1,**Z) 
+      X=X+X2 
+      X3,Z=self.norm2(X,**Z)
+      X4,Z=self.mlp(X3,**Z) 
+      X=X+X4 
+      return X,Z
+```
+
+In this example, the block consists of three child units: `RMSNorm`, `MHA`, and
+`GatedMLP`. Each of these units follows the same interface and structure as the
+root unit and may themselves be composed of nested child units.
+
+"""
+
+# About the role  
+GUE_DESIGNER_SYSTEM_prompt_part3 = """
+## Instructions about the design process
+
+Instead of starting everything from scratch, you will start from an existing LM
+block design implemented as a tree of GAUs. You will be given a proposal for
+refining the design, and a target GAU you are going to refine. You need to
+implement based on the proposal. You can modify the operations of the target
+GAU, or even introduce new children GAUs to the unit. When you are trying to
+define new children GAUs, you need to declare them in your response, and call
+them in the unit you are refining. A placeholder called that directly map inputs
+to outputs will be automatically created by the system. You can choose to
+implement them later. Remember that, you do not need to implement the unit
+immediately, you can wait until you are designing the next unit. You will be
+asked to implement all unimplemented units you defined, and you will have the
+changes to revise your modifications afterward. However, keep in mind that,
+every time you only have the access to one unit, and cannot make changes to the
+other units. And you will only be allowed to access the target unit in the
+proposal stage and the new declared units in the implementation stage. So if
+your unit is dependent on an input from its parent, it will cause the trouble,
+you should pick the parent unit from the beginning. 
+
+You will need to provide your analysis and reasoning process, and the
+implementation of the refined unit. The implementation should follow the
+following template strictly:
+
+```python {GAU_TEMPLATE} ```
+
+For each GAU, you should also provide at least one unit test for it. Then the
+unit will be put back to the tree and checked for correctness, executability,
+and effectiveness. You need to make sure your refinement wont cause any error to
+the entire model. The design will also be reviewed and rated by a reviewer. A
+design can be accepted only when it pass the unit tests, review, and check
+process. 
+
+If you failed to pass the review, you will need to refine the design based on
+the feedback. If you failed to pass the unit tests or the check process, you
+need to debug your code, fix the bugs, and try again. You will be provided with
+the error traces from the compiler, you can write some print statements to
+diagnose the problem, be patient and do not rush to try to solve all problems in
+one time, you can gradually solve them in multiple rounds of dialogs. 
+"""
+
+
+GUE_DESIGNER_SYSTEM_prompt_part4 = """
+## Guidelines for Designing the GAU:
+
+1. **Class Naming & Structure**: - Ensure it is the only GAU class (inherited
+   from `GAUBase`) in your implementation and name it correctly with the name
+   you provided. Avoid defining any other GAU classes. - Ensure you are
+   referring to the right class names in unit tests. 
+
+2. **GAU Call Behavior**: - Always call the  GAU in this format:
+   `Y,Z'={{unitname}}(X, **Z)`. If you want to pass any extra arguments than
+   sequence X, pass it through the kwargs $Z$, e.g., Z['arg']=value. The outputs
+   are always sequence $Y$ and updated $Z'$. If you expect any extra outputs
+   besides sequence $Y$, read it from $Z'$, e.g., var=Z'.get('var',None).
+
+3. **GAU Initialization**: - Always define a GAU instance like this: 
+     ```python self.{{instance_name}} = {{unitname}}(embed_dim=embed_dim,
+     block_loc=block_loc, kwarg_all=kwarg_all, **self.factory_kwargs,
+     **kwarg_all) ```
+4. **Embedding & Block Location**: - `embed_dim` specifies the input dimension.
+   `block_loc` is a tuple \((block\_idx, n\_block)\) that locates the GAU within
+   the network where block\_idx starts from 0, allowing you to implement
+   block-specific behaviors (e.g., varying architectures or operations between
+   blocks, initializing intermediate variables acrossing blocks in the first
+   block).
+
+5. **Module Definition**: - Avoid using `GAU` instances inside `nn.Sequential`.
+   You can use `nn.ModuleList` or `nn.ModuleDict`.
+
+6. **Placeholder Management**:
+    - The system will handle GAU placeholders automatically. Don't manually
+      implement placeholders; you will be asked to implement them later.
+
+7. **Design Approach**:
+    - Name GAUs meaningfully and define placeholders thoughtfully, outlining the
+      design. Develop blocks top-down, with placeholders for complex operations
+      to be implemented later. 
+
+8. **Be Innovative**:
+    - Design new GAUs to surpass current models. Avoid copying existing
+      architectures like the vanilla Transformer—strive for creativity and
+      transcendence over existing state-of-the-art models.
+
+"""
+
+
+GUE_DESIGNER_SYSTEM_prompt=GUE_DESIGNER_SYSTEM_prompt_part1+GUE_DESIGNER_SYSTEM_prompt_part2+GUE_DESIGNER_SYSTEM_prompt_part3+GUE_DESIGNER_SYSTEM_prompt_part4
+
+
+GUE_DESIGNER_SYSTEM = AgentPrompt(GUE_DESIGNER_SYSTEM_prompt)
+
+
+
+
+
+# endregion
 
 
 

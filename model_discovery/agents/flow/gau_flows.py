@@ -11,6 +11,7 @@ from .gau_utils import check_and_reformat_gau_code
 # from model_discovery.system import ModelDiscoverySystem
 import model_discovery.agents.prompts.prompts as P
 from model_discovery.model.composer import GAUBase, GAUTree, check_tree_name, GABComposer
+from model_discovery.model.utils.modules import GABBase
 import model_discovery.utils as U
 
 
@@ -22,7 +23,9 @@ GAM_TEMPLATE=open(gam_prompt_path).read()
 GAU_TEMPLATE=open(gau_template_path).read()
 
 GAU_BASE=inspect.getsource(GAUBase)
+GAB_BASE=inspect.getsource(GABBase)
 GAB_COMPOSER=inspect.getsource(GABComposer)
+
 
 
 def load_system_prompt(agent,prompt):
@@ -144,7 +147,7 @@ class GUFlowScratch(FlowCreator): # ❄️ FREEZING #
         context_proposal_reviewer=AgentContext()
         for i in range(self.max_attemps['design_proposal']):
             DESIGN_PROPOSER=reload_role('designer',self.gpt4o0806_agent,P.GU_DESIGN_PROPOSER_SYSTEM(
-                GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
+                GAB_BASE=GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
             design_proposer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_PROPOSER,context=context_design_proposer,
                                                 alias='design_proposal',note=f'Starting design proposal...')
             if i==0:
@@ -240,7 +243,7 @@ class GUFlowScratch(FlowCreator): # ❄️ FREEZING #
         succeed=False
         for i in range(self.max_attemps['implementation_debug']):
             DESIGN_IMPLEMENTER=reload_role('design_implementer',self.gpt4o0806_agent,P.DESIGN_IMPLEMENTATER_SYSTEM(
-                GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,GAB_COMPOSER=GAB_COMPOSER))
+                GAB_BASE=GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,GAB_COMPOSER=GAB_COMPOSER))
             design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
                                                 alias='design_implementation',note=f'Starting design implementation...')
             
@@ -462,7 +465,7 @@ class GUFlowScratch(FlowCreator): # ❄️ FREEZING #
                 post_refinement+=1
 
             DESIGN_IMPLEMENTER=reload_role('design_implementer',self.gpt4o0806_agent,P.DESIGN_IMPLEMENTATER_SYSTEM(
-                GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,GAB_COMPOSER=GAB_COMPOSER))
+                GAB_BASE=GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,GAB_COMPOSER=GAB_COMPOSER))
             design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
                                                 alias='design_implementation',note=f'Starting design implementation...')
             GAB_CODE=self.tree.compose()
@@ -495,7 +498,7 @@ class GUFlowScratch(FlowCreator): # ❄️ FREEZING #
             
             for i in range(self.max_attemps['implementation_debug']):
                 DESIGN_IMPLEMENTER=reload_role('design_implementer',self.gpt4o0806_agent,P.DESIGN_IMPLEMENTATER_SYSTEM(
-                    GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,GAB_COMPOSER=GAB_COMPOSER))
+                    GAB_BASE=GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,GAB_COMPOSER=GAB_COMPOSER))
                 design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
                                                     alias='design_implementation',note=f'Starting design implementation...')
                 REFINE=False
@@ -858,7 +861,7 @@ class GUFlowExisting(FlowCreator):
         SELECTIONS=list(self.tree.units.keys())
         for i in range(self.max_attemps['design_proposal']):
             DESIGN_PROPOSER=reload_role('designer',self.gpt4o0806_agent,P.GUE_DESIGN_PROPOSER_SYSTEM(
-                GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
+                GAB_BASE=GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
             design_proposer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_PROPOSER,context=context_design_proposer,
                                                 alias='design_proposal',note=f'Starting design proposal...')
             if i==0:
@@ -962,15 +965,14 @@ class GUFlowExisting(FlowCreator):
         RETS={}
         RETS['/FAILED']=[]
         round=0
-        PROTECTED_UNITS=list(set(self.tree.units.keys())-set([proposal['selection']])) # the units besides the current one
+        PROTECTED_UNITS=list(set(self.tree.units.keys())-set([proposal['selection']])) # the units besides the current one, they should not be *modified*, can be removed as descendants
         self.stream.write(f'##### Protected Units: {PROTECTED_UNITS}')
 
         post_refinement=0
         while True:
-            # Working on one unit at a time
-            round+=1
+            round+=1 # Each round works on one unit at a time, start counting from beginning so that we dont wrap it in wrong place
             traces=[]
-            context_design_implementer=AgentContext()
+            context_design_implementer=AgentContext() # context accummulated for all attempts in one unit
             context_implementation_reviewer=AgentContext()
             succeed=False
             VIEW,IMPLEMENTED,UNIMPLEMENTED=self.tree.view()
@@ -980,30 +982,33 @@ class GUFlowExisting(FlowCreator):
 
             self.stream.write(f'Round {round}. Unprotected Implemented: {IMPLEMENTED}, Unimplemented: {UNIMPLEMENTED}')
 
-            if len(UNIMPLEMENTED)==0 and round>1:
+            if len(UNIMPLEMENTED)==0 and round>1: # round 1 is selected unit, naturally no unimplemented units, consume the post refinement count only if round>1
                 post_refinement+=1
 
-            DESIGN_IMPLEMENTER=reload_role('design_implementer',self.gpt4o0806_agent,P.DESIGN_IMPLEMENTATER_SYSTEM(
-                GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,GAB_COMPOSER=GAB_COMPOSER))
+            ################# SELECTING THE NEXT UNIT TO WORK ON #################
+
+            DESIGN_IMPLEMENTER=reload_role('design_implementer',self.gpt4o0806_agent,P.GUE_DESIGNER_SYSTEM(
+                GAB_BASE=GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,GAB_COMPOSER=GAB_COMPOSER))
             design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
                                                 alias='design_implementation',note=f'Starting design implementation...')
             
-            if round>1:
+            if round>1: # if round > 1, let the agent choose the next unit to work on, TODO: maybe more background about previous rounds
                 with self.status_handler('Selecting the next unit to work on...'):
-                    GU_IMPLEMENTATION_UNIT_SELECTION=P.gen_GUE_IMPLEMENTATION_UNIT_SELECTION(IMPLEMENTED+UNIMPLEMENTED)
-                    gu_implementation_unit_selection_prompt=GU_IMPLEMENTATION_UNIT_SELECTION(
+                    GUE_IMPLEMENTATION_UNIT_SELECTION=P.gen_GUE_IMPLEMENTATION_UNIT_SELECTION(IMPLEMENTED+UNIMPLEMENTED)
+                    gu_implementation_unit_selection_prompt=GUE_IMPLEMENTATION_UNIT_SELECTION(
                         PROPOSAL=proposal['proposal'],REVIEW=proposal['review'],RATING=proposal['rating'],
                         VIEW=VIEW, GAB_CODE=GAB_CODE
                     )
-                    GU_IMPLEMENTATION_UNIT_SELECTION.apply(DESIGN_IMPLEMENTER.obj)
+                    GUE_IMPLEMENTATION_UNIT_SELECTION.apply(DESIGN_IMPLEMENTER.obj)
                     self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_implementation_unit_selection_prompt)
-                    self.stream.write(f'#### Current Tree Map and Units\n```\n{VIEW.replace('```python','').replace('```','')}\n```\n\nNow selecting the next unit to work on...')
+                    self.stream.write(f'#### Current Tree Map and Units\n```\n{VIEW.replace("```python","").replace("```","")}\n```\n\nNow selecting the next unit to work on...')
+                    
                     _,out=self.dialog.call(design_implementer_tid,gu_implementation_unit_selection_prompt)
                     selection,motivation,termination=out['selection'],out['motivation'],out['termination']
-                    context_design_implementer=self.dialog.context(design_implementer_tid)
+                    context_design_implementer=self.dialog.context(design_implementer_tid) # update context with tree view background
                     self.stream.write(f'### Selection: {selection}')
-                    self.stream.write(f'### Motivation\n{motivation}')   
-            else:
+                    self.stream.write(f'### Motivation\n{motivation}')    
+            else: # round 1, work on the selected unit
                 selection=proposal['selection']
                 termination=False
 
@@ -1019,31 +1024,33 @@ class GUFlowExisting(FlowCreator):
             if termination and len(UNIMPLEMENTED)==0:
                 self.stream.write(f'#### All units have been implemented, the agent choose to terminate the design process')
                 break
-            
+
+            ################# UNIT IMPLEMENTATION INNER LOOP #################
+
+            tree_backup=copy.deepcopy(self.tree) # backup the tree for rollback
             for i in range(self.max_attemps['implementation_debug']):
-                DESIGN_IMPLEMENTER=reload_role('design_implementer',self.gpt4o0806_agent,P.DESIGN_IMPLEMENTATER_SYSTEM(
-                    GAB_BASE=P.GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,GAB_COMPOSER=GAB_COMPOSER))
+                DESIGN_IMPLEMENTER=reload_role('design_implementer',self.gpt4o0806_agent,P.GUE_DESIGNER_SYSTEM(
+                    GAB_BASE=GAB_BASE,GAM_PY=GAM_TEMPLATE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,GAB_COMPOSER=GAB_COMPOSER))
                 design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
                                                     alias='design_implementation',note=f'Starting design implementation...')
-                if i==0:
+                if i==0: # first attempt, implement the unit
                     status_info=f'Starting design implementation of {selection}...'
                     if selection in IMPLEMENTED:
-                        REFINE=True
+                        REFINE=True 
                         GU_IMPLEMENTATION_UNIT=P.gen_GUE_IMPLEMENTATION_UNIT(refine=True,begin=round==1) # first round can only be an implemented unit
                         node=self.tree.units[selection]
-                        if round>1:
+                        if round>1: # round > 1, use unit implementation prompt, tree view background is already in context
                             gu_implement_unit_prompt=GU_IMPLEMENTATION_UNIT(
                                 SPECIFICATION=node.spec.to_prompt(),IMPLEMENTATION=node.code,REVIEW=node.review,RATING=node.rating,
                                 SUGGESTIONS=node.suggestions
                             )
-                        else:
+                        else: # round 1, use unit implementation prompt with tree view background, context is empty
                             gu_implement_unit_prompt=GU_IMPLEMENTATION_UNIT(
                                 SPECIFICATION=node.spec.to_prompt(),IMPLEMENTATION=node.code,REVIEW=node.review,RATING=node.rating,
                                 SUGGESTIONS=node.suggestions,VIEW=VIEW, GAB_CODE=GAB_CODE
                             )
-                        node_backup=copy.deepcopy(self.tree.units[selection])
                     else:
-                        REFINE=False
+                        REFINE=False # implement a new unit
                         GU_IMPLEMENTATION_UNIT=P.gen_GUE_IMPLEMENTATION_UNIT(refine=False)
                         declaration=self.tree.declares[selection]
                         gu_implement_unit_prompt=GU_IMPLEMENTATION_UNIT(DECLARATION=declaration.to_prompt())
@@ -1051,7 +1058,7 @@ class GUFlowExisting(FlowCreator):
                 else: # Debugging or refining the implementation
                     status_info=f'Refining design implementation of {selection} (attempt {i})...'
                     REFINE=True
-                    if round>1:
+                    if round>1: 
                         RETRY_RPOMPT=P.GU_IMPLEMENTATION_UNIT_RETRY
                     else:
                         RETRY_RPOMPT=P.GUE_IMPLEMENTATION_UNIT_REFINE
@@ -1065,29 +1072,29 @@ class GUFlowExisting(FlowCreator):
                     RETRY_RPOMPT.apply(DESIGN_IMPLEMENTER.obj)
 
 
-                with self.status_handler(status_info): 
+                with self.status_handler(status_info): # calling the agent
                     self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_implement_unit_prompt)
                     _,out=self.dialog.call(design_implementer_tid,gu_implement_unit_prompt)
                     context_design_implementer=self.dialog.context(design_implementer_tid)
                     reflection,changes=None,None
-                    if REFINE:
+                    if REFINE: # 1. working on an existing unit 2. all >0 attempts
                         reflection,analysis,implementation,changes,children,document=out['reflection'],out['analysis'],out['implementation'],out['changes'],out['children'],out['document']
                         self.stream.write(f'### Reflection\n{reflection}')
                         self.stream.write(f'## Refinement of {selection}')
                         if round==1:
-                            newname=out['newname']
-                            self.stream.write(f'#### New Name: {newname}')
-                        if selection in IMPLEMENTED:
+                            NEWNAME=out['newname']
+                            self.stream.write(f'#### New Name: {NEWNAME}')
+                        if selection in IMPLEMENTED: # update the unit spec for now, unit name update at the end
                             spec=self.tree.units[selection].spec
                             spec.document=document
-                        else:
+                        else: # possible when debugging the implementation of a new unit
                             spec = P.UnitSpec(
                                 unitname=selection,
                                 document=document,
                                 inputs=declaration.inputs,
                                 outputs=declaration.outputs
                             )
-                    else:
+                    else: # only for the first attempt of a new unit, the reason we do this is that the response format is different for this case
                         implementation,analysis,children,document=out['implementation'],out['analysis'],out['children'],out['document']
                         self.stream.write(f'## Implementation of {selection}')
                         spec = P.UnitSpec(
@@ -1184,7 +1191,7 @@ class GUFlowExisting(FlowCreator):
                         'check_results':check_results,
                     }
 
-                # 3. Review the code for GAU
+                ########################### Review the implementation ###########################
                 IMPLEMENTATION_REVIEWER=reload_role('implementation_reviewer',self.gpt4o0806_agent, 
                                                     P.GU_IMPLEMENTATION_REVIEWER_SYSTEM(GAU_BASE=GAU_BASE))
                 implementation_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_REVIEWER,context=context_implementation_reviewer,
@@ -1227,6 +1234,7 @@ class GUFlowExisting(FlowCreator):
                     self.tree.units[selection].review=review
                     self.tree.units[selection].suggestions=suggestions
 
+                ########################### Attempt finished ###########################  
                 design = {
                     'unit': self.tree.units[selection].json(),
                     'gab_code':gabcode_reformat,
@@ -1236,13 +1244,15 @@ class GUFlowExisting(FlowCreator):
                     'changes':changes,
                 }
                 traces.append(design)
-                if not checkpass or rating<=3 or len(format_errors)>0:
-                    if selection in UNIMPLEMENTED: 
-                        self.tree.del_unit(selection) # remove the unit 
-                    else:
-                        self.tree.units[selection]=node_backup # restore the unit
-                    for childname in new_declared: 
-                        self.tree.del_declare(childname) # remove the new declared children to restore the tree
+                if not checkpass or rating<=3 or len(format_errors)>0: # failed  
+                    succeed=False
+                    self.tree=tree_backup # restore the tree
+                    # if selection in UNIMPLEMENTED: 
+                    #     self.tree.del_unit(selection) # remove the unit 
+                    # else:
+                    #     self.tree.units[selection]=node_backup # restore the unit
+                    # for childname in new_declared: 
+                    #     self.tree.del_declare(childname) # remove the new declared children to restore the tree
                     FORMAT_CHECKER_REPORT = P.FORMAT_CHECKER_REPORT.format(
                         RESULT='failed' if len(format_errors)>0 else 'passed',
                         ERRORS=format_errors,
@@ -1264,11 +1274,12 @@ class GUFlowExisting(FlowCreator):
                 else:
                     succeed=True
                     self.tree.units[selection].design_traces=traces
-                    removed=self.tree.clear_disconnected()
+                    # removed=self.tree.clear_disconnected() # there might be some disconnected units, leave it for now
                     # PROTECTED_UNITS=list(set(PROTECTED_UNITS)-set(removed))
                     self.stream.write(f'#### Implementation passed, starting the next unit')
                     break
             
+            ########################### Round finished ###########################  
             if not succeed:
                 self.stream.write(f'#### Implementation failed, trying the next unit')
                 RET={
@@ -1283,7 +1294,9 @@ class GUFlowExisting(FlowCreator):
                 }
                 RETS[selection]=RET
 
-        self.tree.rename_unit(proposal['selection'],newname)
+        ########################### Design finished ###########################  
+        self.tree.rename_unit(proposal['selection'],NEWNAME)
+        self.tree.clear_disconnected() 
         
         return query,state,{'unit_designs':RETS}
 

@@ -40,6 +40,9 @@ class Block(nn.Module):
         residual = (hidden_states + residual) if residual is not None else hidden_states
         hidden_states = self.norm(residual.to(dtype=self.norm.weight.dtype))
         hidden_states, intermediate_vars = self.gab(hidden_states, **intermediate_vars)
+        residual = hidden_states + residual
+        hidden_states = self.norm2(residual.to(dtype=self.norm2.weight.dtype))
+        hidden_states = self.mlp(hidden_states)
         return hidden_states, residual, intermediate_vars
 
 

@@ -54,7 +54,7 @@ class GAUBase(nn.Module):
         self.block_loc = block_loc # location of a block within the network, (layer_idx, n_block)
         self.kwarg_all = kwarg_all # dict of all kwargs, use it to initialize the children units
 
-    def _forward(self, X, **Z):
+    def _forward(self, X, **Z): # you can define the arguments instead of using **Z
         raise NotImplementedError
     
     def forward(self, X, **Z):
