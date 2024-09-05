@@ -35,7 +35,7 @@ class GABBase(nn.Module):
             Y, Z_ = Y
         else:
             Z_ = {}
-        assert Y.shape == X.shape, f"GAB Output shape must be the same as input shape, got {Y.shape} instead"
+        assert Y.shape == X.shape, f"GAB Output shape must be the same as input shape of {X.shape}, got {Y.shape} instead"
         assert isinstance(Z, dict), "Intermediate variables must be stored in a dict"
         Z.update(Z_) # the new intermediate variables are updated to the current Z
         return Y, Z
@@ -67,7 +67,7 @@ class GAUBase(nn.Module):
             Y, Z_ = Y
         else:
             Z_ = {}
-        assert Y.shape == X.shape, f"GAU output Y must be a sequence with the same shape as input, got {Y.shape}, all other kinds of variables should be passed by Z."
+        assert Y.shape == X.shape, f"GAU output Y must be a sequence with the same shape as input of {X.shape}, got {Y.shape} instead, all other kinds of variables should be passed by Z."
         assert isinstance(Z_, dict), "Intermediate variables must be stored in a dict"
         Z.update(Z_) # the new intermediate variables are updated to the current Z
         return Y, Z

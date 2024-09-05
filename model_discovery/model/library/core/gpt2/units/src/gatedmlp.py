@@ -33,12 +33,13 @@ class GatedMLP(GAUBase):
 @gau_test
 def test_gatedmlp(device=None,dtype=None):
     embed_dim=128
-    block_loc=(0,1)
+    block_loc=(0,6)
     kwarg_all={'hidden_features':128,'out_features':128,'activation':F.silu,'bias':False,'multiple_of':128}
-    gatedmlp=GatedMLP(embed_dim,block_loc,kwarg_all,device=device,dtype=dtype)
-    x=torch.randn(1,128)
-    y=gatedmlp(x)
-    assert y.shape==(1,128)
+    gatedmlp=GatedMLP(embed_dim,block_loc,kwarg_all,device=device,dtype=dtype,**kwarg_all)
+    x=torch.randn(1,100,128).to(device=device,dtype=dtype)
+    Z={}
+    y,Z_=gatedmlp(x,**Z)
+    assert y.shape==(1,100,128)
 
 
 

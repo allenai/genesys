@@ -118,11 +118,15 @@ class MHA(GAUBase):
 
 
 @gau_test
-def test_mha():
-    mha = MHA(embed_dim=128, block_loc=(0,0), kwarg_all={})
-    x = torch.randn(1,128)
-    y = mha(x)
-    assert y.shape==(1,128)
+def test_mha(device=None,dtype=None):   
+    embed_dim=128
+    block_loc=(0,6)
+    kwarg_all={}
+    mha = MHA(embed_dim, block_loc, kwarg_all, device=device, dtype=dtype,**kwarg_all)
+    x = torch.randn(1,100,128).to(device=device,dtype=dtype)
+    Z={}
+    y,Z_=mha(x,**Z)   
+    assert y.shape==(1,100,128)
 
 SPEC = {
     "unitname": "MHA",

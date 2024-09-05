@@ -1164,7 +1164,7 @@ class GUFlowExisting(FlowCreator):
                         # run unit tests
                         _unit_test_results, _unit_test_code, _unit_test_passed = self.tree.test_unit(spec.unitname, True)
                         self.stream.write(f'### Unit Tests Passed: {_unit_test_passed}')
-                        self.stream.write(f'### Unit Tests Code\n```python\n{_unit_test_code}\n```')
+                        # self.stream.write(f'### Unit Tests Code\n```python\n{_unit_test_code}\n```')
                         self.stream.write(f'### Unit Tests Results\n```bash\n{_unit_test_results}\n```')
 
                         gabcode = self.tree.compose()
@@ -1194,7 +1194,7 @@ class GUFlowExisting(FlowCreator):
 
                 ########################### Review the implementation ###########################
                 IMPLEMENTATION_REVIEWER=reload_role('implementation_reviewer',self.gpt4o0806_agent, 
-                                                    P.GU_IMPLEMENTATION_REVIEWER_SYSTEM(GAU_BASE=GAU_BASE))
+                                                    P.GUE_IMPLEMENTATION_REVIEWER_SYSTEM())
                 implementation_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_REVIEWER,context=context_implementation_reviewer,
                                                     alias='implementation_review',note=f'Reviewing implementation...')
                 if REFINE:
@@ -1321,13 +1321,11 @@ class GUFlowExisting(FlowCreator):
         "EXIT",
         hints="output the initial threads",
     )
-    def end_of_design(self,query,state,proposal,proposal_traces,root_design,root_design_traces,unit_designs,new_name):
+    def end_of_design(self,query,state,proposal,proposal_traces,unit_designs,new_name):
         
         design_stack={
             'proposal':proposal,
             'proposal_traces':proposal_traces,
-            'root_design':root_design,
-            'root_design_traces':root_design_traces,
             'unit_designs':unit_designs,
             'new_name':new_name,
         }

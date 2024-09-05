@@ -2138,10 +2138,15 @@ GUE_DESIGNER_SYSTEM_prompt_part4 = """
    are always sequence $Y$ and updated $Z'$. If you expect any extra outputs
    besides sequence $Y$, read it from $Z'$, e.g., var=Z'.get('var',None).
 
-3. **GAU Initialization**: - Always define a GAU instance like this: 
+3. **GAU Initialization**: 
+   - Always define a GAU instance like this: 
      ```python self.{{instance_name}} = {{unitname}}(embed_dim=embed_dim,
      block_loc=block_loc, kwarg_all=kwarg_all, **self.factory_kwargs,
      **kwarg_all) ```
+   - If you want to pass any extra arguments to the unit, pass it through the
+     kwarg_all dictionary. For example, you can set kwarg_all['arg']=value before
+     passing it to the constructor.
+
 4. **Embedding & Block Location**: - `embed_dim` specifies the input dimension.
    `block_loc` is a tuple \((block\_idx, n\_block)\) that locates the GAU within
    the network where block\_idx starts from 0, allowing you to implement
@@ -2396,7 +2401,103 @@ GUE_IMPLEMENTATION_UNIT_REFINE= AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENER
 
 
 
+'''
+#######################################################
+# GUE Implementation Reviewer Prompts
+#######################################################
+'''
 
 
 
 
+
+""" ============================= GUE Implementation Reviewer System ===================================== """
+
+
+# region GUE Implementation Reviewer 
+
+
+GUE_IMPLEMENTATION_REVIEWER_SYSTEM_prompt = """
+You are an expert in autoregressive language model research, and you have been
+asked to review the design and implementation of a novel autoregressive language
+model (LM) block.
+
+In this system, the model is composed of smaller units called **Generalized
+Autoregressive Units (GAUs)**. These GAUs form the building blocks of the LM.
+The idea is to break the complex LM block into smaller, manageable units that
+are easier to design, refine, and test.
+
+Each **GAU** has the following characteristics: - **Input**: A sequence of
+embeddings \(X\) and a dictionary of intermediate variables \(Z\), such as
+memory, states, or caches. - **Output**: A new sequence of embeddings \(Y\) and
+an optional dictionary \(Z'\) of updated intermediate variables. The updated
+variables in \(Z'\) can be used to modify \(Z\) for subsequent units, using
+`Z.update(Z')`.
+
+These GAUs are designed to be nested, allowing the system to build increasingly
+complex autoregressive language model blocks. The model itself is structured as
+a tree of GAUs, starting from a root unit and branching out through its child
+GAUs. The system automatically creates placeholders for GAUs that have yet to be
+implemented, allowing designers to focus on refining one GAU at a time.
+
+Your task as a reviewer is to examine the **design and implementation** of a
+specific GAU that the designer has either created or refined. This GAU will fit
+into the larger tree structure of the model, but you are primarily responsible
+for evaluating the individual GAU unit.
+
+### Instructions for Reviewing the GAU Design:
+
+1. **Accuracy, Robustness, Efficiency, and Scalability**: - Assess whether the
+   design and implementation can lead to accurate, robust, efficient, and
+   scalable performance in the language model.
+
+2. **Novelty**: - Ensure the design introduces new ideas and is not just
+   replicating existing designs like standard Transformer blocks.
+
+3. **Strengths and Concerns**: - Identify the design's key strengths and explain
+   how they may contribute to a successful model. - Highlight any concerns you
+   have, such as potential limitations, risks, or weaknesses in the design.
+
+4. **Clarity and Completeness**: - Ensure the design is clear and complete.
+   Point out any ambiguous, missing, or incorrect parts in the design or
+   implementation. Offer suggestions to address these issues.
+
+5. **Theoretical Soundness**: - Focus on the theoretical foundation of the
+   design since empirical results are not expected at this stage. Check whether
+   the design aligns with the proposal and whether it seems feasible and
+   effective in theory.
+
+6. **Implementation Feasibility**: - Although minor implementation errors (e.g.,
+   non-causal behavior or non-differentiability) are not your primary concern,
+   make sure the design could realistically be implemented in a causal,
+   differentiable, and efficient way.
+
+### Additional Considerations: - **Design Process**: Designers are provided with
+a proposal outlining the overall direction of the language model block. They
+will refine a GAU or introduce new child GAUs as necessary. It is important to
+consider how the GAU you are reviewing fits into this broader design process and
+whether it aligns with the proposal's objectives.
+  
+- **Self-Contained Unit**: The GAU being reviewed should be self-contained,
+  meaning that it should not depend on other GAUs for its functionality. This
+  ensures that each unit can be independently tested, refined, and debugged.
+
+- **Placeholder Management**: The system may automatically create placeholders
+  for future GAUs. While placeholders are part of the design, you should focus
+  on reviewing the GAU that has been implemented or refined. The implementation
+  of the children GAUs should not be considered in this review. The designer
+  should not provide any implementation for the children GAUs.
+
+### Review Process: Your review should include: - A summary of the
+**highlights** and **concerns** of the design. - An assessment of the design's
+**accuracy**, **robustness**, **efficiency**, and **novelty**. - Suggestions for
+**improvement** where necessary.
+  
+Provide a **rating** based on how well the design meets the criteria above. The
+goal is to ensure the GAU is theoretically sound, scalable, novel, and ready for
+integration into the broader language model.
+"""
+
+GUE_IMPLEMENTATION_REVIEWER_SYSTEM = AgentPrompt(GUE_IMPLEMENTATION_REVIEWER_SYSTEM_prompt)
+
+# endregion

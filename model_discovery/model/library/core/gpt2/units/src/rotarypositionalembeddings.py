@@ -140,12 +140,21 @@ class RotaryPositionalEmbeddings(GAUBase):
 
 
 @gau_test
-def test_rotarypositionalembeddings():
-    rotarypositionalembeddings = RotaryPositionalEmbeddings(embed_dim=128, block_loc=(0,0), kwarg_all={})
-    input_emb = torch.randn(1,128)
-    input_pos = torch.arange(128)
-    output_emb = rotarypositionalembeddings(input_emb, input_pos)
-    assert output_emb.shape==(1,128)
+def test_rotarypositionalembeddings(device=None,dtype=None):    
+    embed_dim=128
+    block_loc=(0,6)
+    kwarg_all={}
+    rotarypositionalembeddings = RotaryPositionalEmbeddings(embed_dim, block_loc, kwarg_all, device=device, dtype=dtype,**kwarg_all)
+    input_emb = torch.randn(1,100,128).to(device=device,dtype=dtype)
+    input_pos = torch.arange(128).to(device=device,dtype=dtype)
+    X=torch.randn(1,100,128).to(device=device,dtype=dtype)
+    Z={
+        "input_emb":input_emb,
+        "input_pos":input_pos,
+    }
+    _,Z_= rotarypositionalembeddings(X,**Z)
+    output_emb=Z_["output_emb"]
+    assert output_emb.shape==(1,100,128)
 
 
 SPEC ={

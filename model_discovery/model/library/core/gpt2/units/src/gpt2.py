@@ -26,11 +26,15 @@ class GPT2(GAUBase):
 
 
 @gau_test
-def test_gpt2():
-    gpt2 = GPT2(embed_dim=128, block_loc=(0,0), kwarg_all={})
-    x = torch.randn(1,128)
-    y = gpt2(x)
-    assert y.shape==(1,128)
+def test_gpt2(device=None,dtype=None):
+    embed_dim=128
+    block_loc=(0,6)
+    kwarg_all={}
+    gpt2 = GPT2(embed_dim, block_loc, kwarg_all, device=device, dtype=dtype,**kwarg_all)
+    x = torch.randn(1,100,128).to(device=device,dtype=dtype)
+    Z={}
+    y,Z_=gpt2(x,**Z)
+    assert y.shape==(1,100,128)
 
 
 SPEC = {
@@ -41,11 +45,7 @@ SPEC = {
 GPT2
 ''',
 }
-ARGS = {
-    "embed_dim":128,
-    "block_loc":(0,0),
-    "kwarg_all":{},
-}
+ARGS = {}
 CHILDREN = ['MHA','GatedMLP','RMSNorm']
 DESC='''
 ''' 

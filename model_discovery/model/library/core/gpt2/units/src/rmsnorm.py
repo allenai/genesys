@@ -28,11 +28,15 @@ class RMSNorm(GAUBase):
 
 
 @gau_test
-def test_rmsnorm():
-    rmsnorm = RMSNorm(embed_dim=128, block_loc=(0,0), kwarg_all={})
-    x = torch.randn(1,128)
-    y = rmsnorm(x)
-    assert y.shape==(1,128)
+def test_rmsnorm(device=None,dtype=None):
+    embed_dim=128
+    block_loc=(0,6)
+    kwarg_all={}
+    rmsnorm = RMSNorm(embed_dim, block_loc, kwarg_all, device=device, dtype=dtype,**kwarg_all)
+    x = torch.randn(1,100,128).to(device=device,dtype=dtype)
+    Z={}
+    y,Z_=rmsnorm(x,**Z)
+    assert y.shape==(1,100,128)
 
 
 
