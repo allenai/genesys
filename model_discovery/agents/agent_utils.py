@@ -9,8 +9,11 @@ from exec_utils.models.model import ModelState,OpenAIModel,ModelRuntimeError,Mod
 from exec_utils.models.utils import openai_costs
 
 
-
+'''
+#################################################################################################################################
 ## Patch for the OpenAIModel structured outputs: https://platform.openai.com/docs/guides/structured-outputs/introduction
+#################################################################################################################################
+'''
 
 
 def structured__call__(
@@ -170,4 +173,22 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
         input_tokens=completions.usage.prompt_tokens,
         output_tokens=completions.usage.completion_tokens
     )
+
+
+'''
+#################################################################################################################################
+## Patch for Claude Agent and possibly structured outputs with LangChain
+## https://api.python.langchain.com/en/latest/chat_models/langchain_anthropic.chat_models.ChatAnthropic.html
+#################################################################################################################################
+'''
+
+
+
+
+
+
+
+
+
+
 

@@ -694,7 +694,10 @@ class Checker(exec_utils.BaseTool):
         with torch.no_grad():
             Y,_ = block(X)
 
-        self.rprint('Checking causality... It checks the causality by changing all future steps X[t+delta] of X[t] and see if Y[t] or any previous outputs change.')
+        self.rprint(
+            'Checking causality... It checks the causality by changing all future steps X[t+delta] of X[t] and see if Y[t] or any previous outputs change.'
+            f'Mock input shape: {X.shape}.'
+        )
         bar = tqdm(range(seq_len), desc='Causality test', colour='green')
         for t in bar:
             X_mod = X.clone()
@@ -724,9 +727,9 @@ class Checker(exec_utils.BaseTool):
         :return: 
             True if the model is differentiable, False if it is not.
         """
-        self.rprint('Checking differentiability...')
         mock_input = torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH)).cuda() if \
             torch.cuda.is_available() else torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
+        self.rprint(f'Checking differentiability... Mock input shape: {mock_input.shape}.')
         
         criterion = nn.CrossEntropyLoss()
         model.train()
@@ -812,10 +815,10 @@ class Checker(exec_utils.BaseTool):
             The model vocabulary size. 
 
         """
-        self.rprint('Checking forward pass...')
         mock_input = torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH)).cuda() if \
           torch.cuda.is_available() else torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
         mock_input = mock_input.to(gab.device)
+        self.rprint(f'Checking forward pass... Mock input shape: {mock_input.shape}.')
         emb.eval()
         gab.eval()
         try:
@@ -897,7 +900,7 @@ class Checker(exec_utils.BaseTool):
                 mock_input = mock_input.to(glm.device)
                 t0=time.time()
 
-                self.rprint('Checking the forward pass...')
+                self.rprint(f'Testing forward pass... Mock input shape: {mock_input.shape}.')
                 _test_output = io.StringIO()
                 with redirect_stdout(_test_output), redirect_stderr(_test_output):
                     try:
@@ -1039,31 +1042,25 @@ class Checker(exec_utils.BaseTool):
             raise ValueError('The model size requirement cannot be met by tuning n_block.')
                 
         print('Tuning d_model...')
-        step_size=d_model//8 # smallest d_model is 128
-        if d_model%3==0: # like 384, 768...
-            min_step=48
-        else:
-            min_step=32
-        step_size=max(step_size,min_step) 
 
-        DIR=1 if size<LB else -1
+        # keep depth first, then width
+        MIN_DIM=96 # model dim is always a multiple of 64 or 96
         while True: # tune d_model as little as possible
-            if (step_size<min_step) or (LB<size<UB):
+            if LB<=size<=UB:
                 break
-            d_model+=step_size*DIR
+            elif size<LB:
+                n_block+=1
+            elif size>UB:
+                if d_model<=MIN_DIM:
+                    n_block-=1
+                else:
+                    d_model//=2
             print(f'Trying d_model={d_model}, n_block={n_block}')
             auto_cfg={'d_model':d_model,'n_block':n_block}
-            glm,_ = reload_gam(config,gab_code,name,auto_cfg,**U.get_factory_kwargs())
             size=sum(p.numel() for p in glm.parameters())
-            NEW_DIR=1 if size<reference_size else -1
-            if NEW_DIR!=DIR:
-                DIR=NEW_DIR
-                step_size=step_size//2
-        # if not LB<size<UB: # usually unless the agent create a over huge block
-        #     raise ValueError('The model size requirement cannot be met by tuning d_model.')
         
-        # Final adjustment of dim to check whether the dim cause error (e.g., dim head)
-        DIR=1 if size<reference_size else -1
+
+
         print(f'Checking model correctness with d_model={d_model}')
         while True:
             try:

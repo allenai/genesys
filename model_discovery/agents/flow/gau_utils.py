@@ -376,7 +376,8 @@ class AttributeChecker(ast.NodeVisitor):
         if isinstance(stmt, (ast.Assign, ast.AnnAssign)):
             target = stmt.targets[0] if isinstance(stmt, ast.Assign) else stmt.target
 
-            if isinstance(target, ast.Attribute) and target.value.id == "self":
+            # some times there is sentence like self.A.B = ..., it is not an assignment to a gau instance, so we need to exclude this case
+            if isinstance(target, ast.Attribute) and isinstance(target.value, ast.Name) and target.value.id == "self":
                 self.current_path.append(target.attr)
                 if self.is_child_class(stmt.value.func):
                     class_name = stmt.value.func.id if isinstance(stmt.value.func, ast.Name) else stmt.value.func.attr
@@ -742,7 +743,8 @@ class GAUCallChecker(ast.NodeVisitor):
             target = stmt.targets[0] if isinstance(stmt, ast.Assign) else stmt.target
             value = stmt.value  
             
-            if isinstance(target, ast.Attribute) and target.value.id == "self": 
+            # some times there is sentence like self.A.B = ..., it is not an assignment to a gau instance, so we need to exclude this case
+            if isinstance(target, ast.Attribute) and isinstance(target.value, ast.Name) and target.value.id == "self": 
                 if target.attr in self.gau_instances: # gau on left hand side
                     instance = self.gau_instances[target.attr]
                     if 'class' in instance:

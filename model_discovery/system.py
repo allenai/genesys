@@ -147,6 +147,15 @@ class CustomParams(exec_utils.ModuleParams):
             "exclude_hash" : True,
         }
     )
+    claude_spec: str = exec_utils.ParamField(
+        default=os.path.abspath(
+            f'{PROJ_SRC}/../etc/agent_spec/claude.json'
+        ),
+        metadata={
+            "help"         : 'Specification of claude agent',
+            "exclude_hash" : True,
+        }
+    )
     ### code information
     block_template: str = exec_utils.ParamField(
         default=os.path.abspath(
@@ -304,6 +313,7 @@ class ModelDiscoverySystem(exec_utils.System):
         reviewers : Dict[str,Type[exec_utils.SimpleLMAgent]],
         checker  : Type[exec_utils.BaseTool], 
         debugger : Type[exec_utils.SimpleLMAgent],
+        claude : Type[exec_utils.SimpleLMAgent],
         lib_dir: str,
         *,
         block_template: str,
@@ -331,6 +341,8 @@ class ModelDiscoverySystem(exec_utils.System):
         self.reviewers = reviewers
         self.checker = checker
         self.debugger = debugger
+
+        self.claude = claude
         
         self.gam_py = gam_template
         self.gab_py = block_template
@@ -448,6 +460,11 @@ class ModelDiscoverySystem(exec_utils.System):
             agent_file=config.debugger_spec,
             agent_model_type="designer_agent"
         )
+        claude = BuildAgent(
+            config,
+            agent_file=config.claude_spec,
+            agent_model_type="claude_agent"
+        )
         
         ### get the model information for context
         cfg = eval(f"{config.gam_config}()")
@@ -458,6 +475,7 @@ class ModelDiscoverySystem(exec_utils.System):
             reviewers,
             checker,
             debugger,
+            claude,
             lib_dir=config.lib_dir,
             block_template=block,
             gam_template=code,

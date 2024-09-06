@@ -15,16 +15,16 @@ from ..agent_utils import structured__call__,ModelOutput
 
 
 __all__ = [
-    "DesignerAgent",
+    "ClaudeAgent",
 ]
 
 @exec_utils.Registry(
     resource_type="agent_model_type",
-    name="designer_agent",
+    name="claude_agent",
     cache="query"
 )
-class DesignerAgent(exec_utils.SimpleLMAgent):
-    """Agent for designing new models. Can be applied as a gpt base agent.
+class ClaudeAgent(exec_utils.SimpleLMAgent):
+    """Claude Base Agent 
     
     Methods 
     ----------
@@ -45,12 +45,6 @@ class DesignerAgent(exec_utils.SimpleLMAgent):
         """
         raw_text = raw_output.text
         output = {}
-
-        codes = re.findall(r"```python(.*?)```", raw_text, re.DOTALL)
-        if codes:
-            for code in codes:
-                if code.strip().startswith("# gab.py"):
-                    output["code"] = code
 
         output["text"] = raw_text
         output["_details"] = {}

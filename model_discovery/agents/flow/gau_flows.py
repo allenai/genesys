@@ -994,7 +994,8 @@ class GUFlowExisting(FlowCreator):
             
             if round>1: # if round > 1, let the agent choose the next unit to work on, TODO: maybe more background about previous rounds
                 with self.status_handler('Selecting the next unit to work on...'):
-                    GUE_IMPLEMENTATION_UNIT_SELECTION=P.gen_GUE_IMPLEMENTATION_UNIT_SELECTION(IMPLEMENTED+UNIMPLEMENTED)
+                    GUE_IMPLEMENTATION_UNIT_SELECTION=P.gen_GUE_IMPLEMENTATION_UNIT_SELECTION(
+                        IMPLEMENTED+UNIMPLEMENTED,post_refining=len(UNIMPLEMENTED)==0)
                     gu_implementation_unit_selection_prompt=GUE_IMPLEMENTATION_UNIT_SELECTION(
                         PROPOSAL=proposal['proposal'],REVIEW=proposal['review'],RATING=proposal['rating'],
                         VIEW=VIEW_DETAILED,LOG='\n'.join(LOG)
@@ -1004,10 +1005,11 @@ class GUFlowExisting(FlowCreator):
                     self.stream.write(f'{VIEW_DETAILED}\n\nNow selecting the next unit to work on...')
                     
                     _,out=self.dialog.call(design_implementer_tid,gu_implementation_unit_selection_prompt)
-                    selection,motivation,termination=out['selection'],out['motivation'],out['termination']
+                    selection,motivation,rough_plan,termination=out['selection'],out['motivation'],out['rough_plan'],out['termination']
                     context_design_implementer=self.dialog.context(design_implementer_tid) # update context with tree view background
                     self.stream.write(f'### Selection: {selection}')
                     self.stream.write(f'### Motivation\n{motivation}')    
+                    self.stream.write(f'### Rough Plan\n{rough_plan}')
             else: # round 1, work on the selected unit
                 selection=proposal['selection']
                 termination=False
@@ -1191,7 +1193,8 @@ class GUFlowExisting(FlowCreator):
                         checker_report = check_report
                         check_report = f'### Unit tests\n```bash\n{_unit_test_results}\n```\n\n### Checkers report\n```bash\n{check_report}\n```\n\n'
                     else:
-                        check_report = 'Format check failed, please fix the format errors and try again.'
+                        check_report = 'Format check failed with fetal errors, please fix the format errors and try again.'
+                        checker_report = 'Format check failed with fetal errors, please fix the format errors and try again.'
                         check_results={}
                         gabcode_reformat=None
 

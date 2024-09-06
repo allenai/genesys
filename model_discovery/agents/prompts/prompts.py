@@ -67,9 +67,18 @@ class DebuggingStep(BaseModel):
     diagnosis: str
     suggested_action: str
 
-class GU_IMPLEMENTATION_RETRY_format(BaseModel): # for retry, only allow to update document
+class GU_IMPLEMENTATION_RETRY_DEBUG_format(BaseModel): # for retry, only allow to update document
    reflection: str
    debugging_steps: list[DebuggingStep]
+   analysis: str
+   document: str
+   implementation: str
+   children: list[UnitDeclaration]
+   changes: str
+
+
+class GU_IMPLEMENTATION_RETRY_format(BaseModel): # for retry, only allow to update document
+   reflection: str
    analysis: str
    document: str
    implementation: str
@@ -84,6 +93,8 @@ class GU_IMPLEMENTATION_REFINE_format(BaseModel): # for refine, allow to update 
    implementation: str
    children: list[UnitDeclaration]
    changes: str
+
+
 
 
 
@@ -1074,27 +1085,29 @@ Your design has undergone checks by the format checker, functionality checker, a
 
 ### Next Steps:
 
-Please refine your design and implementation based on the feedback provided. Your updated submission must pass all checks and unit tests. Follow the steps below:
+Please refine your design and implementation based on the feedback provided. Your updated submission must pass all checks and unit tests. Follow the steps outlined below:
 
-1. **Reflect on the Reviewer's Feedback**:
-   - If the review raised concerns, provide an analysis of these concerns and how you intend to address them.
+1. **Analyze the Reviewer's Feedback**:
+   - Carefully examine any concerns raised by the reviewer. For each concern, provide a thorough analysis and outline how you plan to address it in your design and implementation.
 
-2. **Debugging and Diagnosing**:
-   - Analyze the bugs raised in any of the unit tests, format checker, or functionality checker, step by step, in every step, you need to diagnose the cause of the bug, then propose a potential move including an actual code edit that may solve the problems or a print statement that helps diagnose the issue.
-   - If there is no bug, no need to do anything in this step.
+2. **Debugging and Diagnosis**:
+   - If bugs were identified in the unit tests, format checker, or functionality checker, systematically analyze each bug. For every step of the debugging process:
+     - **Diagnose the root cause**: Investigate and identify the exact source of the issue.
+     - **Propose a solution**: Suggest a detailed action, including a specific code change or the addition of print statements to further diagnose the problem.
+     - **Concrete code changes**: Your proposed solutions must include precise and well-explained code edits. If the bug persists, document the reasoning for your next diagnostic step.
+   - If no bugs were found, you may skip this step.
 
 3. **Redesign and Reimplementation**:
-   - Provide a full redesign, including:
-     - A new analysis based on the feedback.
-     - Detailed plans and pseudocode outlining how you will implement the changes.
-     - The actual implementation, ensuring it follows the correct format and passes the required checks.
-     - Apply the potential moves proposed in the debugging steps.
-   - Include a log of the changes you've made, highlighting the specific edits in your code with explanations for each modification. Please provide the exact code snippets that you modified including necessary contexts.
+   - After reflecting on the feedback and diagnosing any issues, proceed with the redesign:
+     - **New analysis**: Provide an updated analysis based on the feedback.
+     - **Detailed plan and pseudocode**: Outline how you will implement changes, ensuring alignment with the overall design goals.
+     - **Implementation**: Apply the potential solutions proposed during debugging and ensure that the code adheres to the required format and passes all necessary checks.
+     - **Change log**: Document every change you made, with detailed explanations and the relevant code snippets, including the surrounding context to illustrate how and why the edits were made.
 
 4. **Key Considerations**:
-   - Follow the **GAU template** and **base class instructions** strictly.
-   - The bugs or issues should be solvable within the GAU you are designing. Other units are either already fully tested or placeholders, and therefore, should not require changes.
-   - Ensure your unit is **self-contained**. This allows the unit to be functional on its own, without needing future adjustments when working on other units.
+   - **Follow the GAU template and base class instructions** precisely**: Make sure your implementation is consistent with the provided guidelines.
+   - **Limit changes to the current GAU**: Any bugs or issues should be resolved within the GAU you are working on. Other units are either fully tested or placeholders and should not require changes.
+   - **Ensure the unit is self-contained**: Your unit should function independently, without requiring future modifications to other units. This modularity is essential for scalability and ease of integration.
 
 Here is the GAUBase class for you to refer:
 
@@ -1523,7 +1536,7 @@ GU_IMPLEMENTATION_UNIT_REFINE_REVIEW = AgentPrompt(GU_IMPLEMENTATION_UNIT_REFINE
 # region GU Implementation Retry
 
 
-GU_IMPLEMENTATION_UNIT_RETRY= AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_RETRY_format)
+GU_IMPLEMENTATION_UNIT_RETRY= AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_RETRY_DEBUG_format)
 
 
 # endregion
@@ -1800,10 +1813,10 @@ Your rating will determine whether the proposal passes. Assign a **float value b
 - **4**: Excellent design, well thought out and near approval.
 - **5**: Outstanding design, highly innovative and strongly recommended.
 
-**A rating of 4 or above is required to pass.**
-
 Provide a **rating** based on how well the design meets the criteria above. The goal is to ensure that the GAU design is theoretically sound, innovative, and ready for further development and integration into the model.
 """
+
+# a rating of 4 or above is required to pass. # do not let agent know
 
 GUE_PROPOSAL_REVIEWER_SYSTEM = AgentPrompt(GUE_PROPOSAL_REVIEWER_SYSTEM_prompt)
 
@@ -2217,7 +2230,9 @@ GUE_DESIGNER_SYSTEM = AgentPrompt(GUE_DESIGNER_SYSTEM_prompt)
 
 # region GUE Implementation Unit Selection
 
-GUE_IMPLEMENTATION_UNIT_SELECTION_prompt = """
+
+def gen_GUE_IMPLEMENTATION_UNIT_SELECTION(SELECTIONS,post_refining=False):
+   GUE_IMPLEMENTATION_UNIT_SELECTION_prompt = """
 ####  Overall Proposal for Refining the Design:
 {PROPOSAL}
 
@@ -2252,9 +2267,6 @@ Below is a tree of the GAUs that compose the language model (LM) block and the d
 - You are required to implement all the unimplemented GAUs in the tree. 
 - Once all units are implemented, you may choose to **terminate the design process** if you believe the design is complete and there are no further improvements to make.
 """
-
-
-def gen_GUE_IMPLEMENTATION_UNIT_SELECTION(SELECTIONS):
    GUE_IMPLEMENTATION_UNIT_SELECTION_format = {
       "type": "json_schema",
       "json_schema": {
@@ -2272,16 +2284,27 @@ def gen_GUE_IMPLEMENTATION_UNIT_SELECTION(SELECTIONS):
                         'description': "The name of the GAU you are going to work on.",
                         'enum': SELECTIONS
                   },
+                  'rough_plan': {
+                     'type': 'string',
+                     'description': 'The rough plan for implementing or refining the selected GAU.'
+                  },
                   'termination': {
                      'type': 'boolean',
                      'description': 'Whether to terminate the design process. It will be ignored if there are unimplemented units left.'
                   }
                },
-               "required": ["motivation", "selection","termination"],
+               "required": ["motivation", "selection","rough_plan","termination"],
                "additionalProperties": False
             }
       }
    }
+   if post_refining:
+      GUE_IMPLEMENTATION_UNIT_SELECTION_prompt+=(
+         '\n\nYou have implemented all the unimplemented GAUs, you can choose to terminate the design process if you think the design is complete. '
+         'You should continue refining the design only if you have more ideas to improve the design and there must be concrete changes to the design. '
+         'So, please also include the reason for you to continue the design process in your motivation. '
+         'And in adition, please provide a plan for the changes you will make in your rough plan.'
+      )
    return AgentPrompt(GUE_IMPLEMENTATION_UNIT_SELECTION_prompt,GENERAL_JSON_parser,GUE_IMPLEMENTATION_UNIT_SELECTION_format)
 
 # endregion
@@ -2519,7 +2542,6 @@ whether it aligns with the proposal's objectives.
    - **3**: Good design that meets the requirements.
    - **4**: Excellent design, well-thought-out and close to approval.
    - **5**: An outstanding and highly innovative design, strongly recommended.
-- A score higher than **3** is required for a pass.
 
 Provide a **rating** based on how well the design meets the criteria above. The
 goal is to ensure the GAU is theoretically sound, scalable, novel, and ready for
