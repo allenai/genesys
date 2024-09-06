@@ -1,9 +1,14 @@
 import numpy as np
 
 from .alang import ROLE,SYSTEM_CALLER,FAILED
-from ..prompts.prompts import GAB_ERROR,REVIEWER_PROMPT,GAB_BASE,DESIGNER_PROMPT
+from ..prompts.prompts import GAB_ERROR,REVIEWER_PROMPT,DESIGNER_PROMPT
 
 # from model_discovery.system import ModelDiscoverySystem
+import inspect  
+
+from model_discovery.model.utils.modules import GABBase
+
+GAB_BASE=inspect.getsource(GABBase)
 
 
 def design_flow_definition():

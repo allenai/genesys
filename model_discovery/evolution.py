@@ -183,45 +183,70 @@ class LibraryReference(NodeObject):
         else: # if there is no code, it is a reference
             return 'Reference'
 
-    def to_desc(self,reformat=True) -> str:
-        mdtext=f'## {self.title}'
+    def to_desc(self, reformat=True) -> str:
+        mdtext = f'## {self.title}'
+        
         if self.s2id:
-            mdtext+=f'\n**S2 ID:** {self.s2id} '
+            mdtext += f'\n**S2 ID:** {self.s2id}'
+        
         if self.authors:
-            authors=', '.join(self.authors)
-            mdtext+=f'\n**Authors:** {authors} '
+            authors = ', '.join(self.authors)
+            mdtext += f'\n**Authors:** {authors}'
+        
         if self.tldr:
-            # tldr=self.tldr.replace(',',',\n')
-            mdtext+=f'\n\n**TL;DR:** {self.tldr} '
+            mdtext += f'\n\n**TL;DR:** {self.tldr}'
+        
         if self.abstract:
-            abstract=self.abstract.replace('.','.\n') if reformat else self.abstract
-            mdtext+=f'\n\n**Abstract**\n{abstract}'
+            abstract = self.abstract.replace('. ', '.\n') if reformat else self.abstract
+            mdtext += f'\n\n**Abstract:**\n{abstract}'
+        
         if self.venue:
-            mdtext+=f'\n\n**Published at *{self.venue}* in *{self.year}***'
+            mdtext += f'\n\n**Published at:** *{self.venue}* in {self.year}'
+        
         if self.citationCount:
-            mdtext+=f'\n\n**Cited {self.citationCount} times**'
+            mdtext += f'\n\n**Cited:** {self.citationCount} times'
+        
         if self.influentialCitationCount:
-            mdtext+=f'\n\n**Impactful citations {self.influentialCitationCount}**'
+            mdtext += f'\n\n**Impactful Citations:** {self.influentialCitationCount}'
+        
         if self.description:
-            description=self.description.replace('.','.\n') if reformat else self.description
-            mdtext+=f'\n\n### Description\n{description}'
+            description = self.description.replace('. ', '.\n') if reformat else self.description
+            mdtext += f'\n\n### Description:\n{description}'
+        
         if self.url:
-            mdtext+=f'\n\n**[Link]({self.url})**'
+            mdtext += f'\n\n**[Link to Paper]({self.url})**'
+
         if reformat:
-            return mdtext.replace(':',' ').replace('e.\ng.\n','e.g.').replace('i.\ne.\n','i.e.')
+            return mdtext.replace(':', ' ').replace('e.\ng.\n', 'e.g.').replace('i.\ne.\n', 'i.e.')
+        
         return mdtext
 
     def to_prompt(self) -> str:
-        prompt=self.to_desc(reformat=False)
+        prompt = self.to_desc(reformat=False)
+        
         if self.tree:
-            prompt+=f'\n\n{self.tree.to_prompt()}\n\n'
+            prompt += f'\n\n{self.tree.to_prompt()}\n\n'
         elif self.code:
-            if self.type=='ReferenceCore':
-                prompt+=f'\n\n## GAB Implementation\n<details><summary>Click me</summary>\n\n```python\n{self.code}\n```\n</details>\n\n'
+            if self.type == 'ReferenceCore':
+                prompt += (
+                    f'\n\n## GAB Implementation\n'
+                    '<details><summary>Click to expand</summary>\n\n'
+                    '```python\n'
+                    f'{self.code}\n'
+                    '```\n'
+                    '</details>\n\n'
+                )
             else:
-                prompt+=f'\n\n## Reference Code\n<details><summary>Click me</summary>\n\n```python\n{self.code}\n```\n</details>\n\n'
-        return prompt
+                prompt += (
+                    f'\n\n## Reference Code\n'
+                    '<details><summary>Click to expand</summary>\n\n'
+                    '```python\n'
+                    f'{self.code}\n'
+                    '```\n'
+                    '</details>\n\n'
+                )
 
+        return prompt
 
 
 @dataclass

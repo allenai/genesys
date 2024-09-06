@@ -9,33 +9,7 @@ from pydantic import BaseModel
 
 
 
-
-GAB_BASE='''
-class GABBase(nn.Module):
-    """ Base class for Generalized Autoregressive Block """
-    def __init__(self,embed_dim: int, block_loc: tuple): 
-        super().__init__()
-        self.embed_dim = embed_dim
-        self.block_loc = block_loc # location of the GAB block within the network, (block_idx, n_block), e.g. (0, 6) for the first block in a network with 6 blocks in total
-
-    def _forward(self,X,**kwargs): 
-        raise NotImplementedError
-     
-    # YOU ARE NOT ALLOW TO OVERRIDE THIS METHOD #
-    def forward(self,X,**Z):
-        """Forward pass of the model"""
-        assert X.shape[-1] == self.embed_dim
-        Y_=self._forward(X,**Z)
-        if isinstance(Y_,tuple):
-            Y, Z = Y_
-        else:
-            Z = {}
-        assert Y.shape == X.shape
-        return Y, Z
-'''
-
 GAB_ERROR = """Please provide the full gab code, and please do not modify other parts of the code. Specifically, please preserve # gab.py at the beginning of gab.py. You can write multiple codes during your analysis process, but only one with # gab.py at the beginning will be detected as gab.py, if multiple gab.py are detected in your response, only the last one will be applied. Please follow the instructions in the prompt and provide the full gab.py file with the completed code. """
-
 
 
 class UnitDeclaration(BaseModel):
@@ -88,8 +62,14 @@ class GU_IMPLEMENTATION_ROOT_RETRY_format(BaseModel): # for retry, can update sp
    children: list[UnitDeclaration]
    changes: str
 
+
+class DebuggingStep(BaseModel):
+    diagnosis: str
+    suggested_action: str
+
 class GU_IMPLEMENTATION_RETRY_format(BaseModel): # for retry, only allow to update document
    reflection: str
+   debugging_steps: list[DebuggingStep]
    analysis: str
    document: str
    implementation: str
@@ -1039,17 +1019,18 @@ GU_IMPLEMENTATION_ROOT_REVIEW = AgentPrompt(GU_IMPLEMENTATION_ROOT_REVIEW_prompt
 # region GU Implementation Retry
 
 
-FORMAT_CHECKER_REPORT = """
-Your code {RESULT} the format checker:
+def gen_FORMAT_CHECKER_REPORT(RESULT,ERRORS,WARNINGS):
+   FORMAT_CHECKER_REPORT = f"Your code {RESULT} the format checker."
+   if ERRORS:
+      FORMAT_CHECKER_REPORT += "Errors:\n"
+      for error in ERRORS:
+         FORMAT_CHECKER_REPORT += f"\t{error}\n"
+   if WARNINGS:
+      FORMAT_CHECKER_REPORT += "Warnings:\n"
+      for warning in WARNINGS:
+         FORMAT_CHECKER_REPORT += f"\t{warning}\n"
+   return FORMAT_CHECKER_REPORT
 
-Errors:
-
-{ERRORS}
-
-Warnings:
-
-{WARNINGS}
-"""
 
 FUNCTION_CHECKER_REPORT_PASS = """
 Your code passed the functionality checker:
@@ -1063,62 +1044,63 @@ Your code failed the functionality checker:
 
 {REPORT}
 
-Here is the composed gab.py file based on your implementation for you to refer:
+Here is the composed LM block code `gab.py` based on the GAUs for you to refer:
 
 {GAB_CODE_WITH_LINE_NUM}
 """
 
 
 GU_IMPLEMENTATION_RETRY_prompt = """
-Your design has been checked by the format checker, functionality checker, and
-reviewed by the expert. However, it is not passed, here are the feedbacks.
+Your design has undergone checks by the format checker, functionality checker, and has been reviewed by an expert. Unfortunately, it did not pass. Below is the feedback:
 
-Here is the information from the format checker, it checks whether your code
-follows the format requirements:
+- **Format Checker**: This report assesses whether your code adheres to the required format guidelines.
+  
+  **Format Checker Report**:
+  {FORMAT_CHECKER_REPORT}
 
-{FORMAT_CHECKER_REPORT}
+- **Functionality Checker**: The functionality checker evaluates two critical aspects:
+  1. **Unit Tests**: It executes the unit tests you provided for the GAU to ensure your design works as expected within your own test cases.
+  2. **Whole Model Integration**: Beyond testing the GAU in isolation, the functionality checker integrates your GAU into the larger language model (LM). It compose the tree of GAUs as the LM block. It generates any necessary placeholder classes for unimplemented units and verifies the functionality of the entire LM, including forward pass, backward pass, and causality.
 
-Here is the information from the functionality checker, it checks the forward,
-backward, causality, etc., of the language model constructed using the designed
-GAU and possibly other GAUs which are designed and checked previously, the
-execution trace is provideded for you to refer:
+  **Functionality Checker Report**:
+  {FUNCTION_CHECKER_REPORT}
 
-{FUNCTION_CHECKER_REPORT}
+- **Expert Review**: 
+  **Review**: {REVIEW}
+  **Rating**: {RATING} out of 5 ({PASS_OR_NOT})
 
+- **Suggestions from the Expert**:
+  {SUGGESTIONS}
 
-Here is the review of the expert:
+### Next Steps:
 
-{REVIEW}
+Please refine your design and implementation based on the feedback provided. Your updated submission must pass all checks and unit tests. Follow the steps below:
 
-Rating: {RATING} out of 5 ({PASS_OR_NOT})
+1. **Reflect on the Reviewer's Feedback**:
+   - If the review raised concerns, provide an analysis of these concerns and how you intend to address them.
 
-Here are the suggestions from the expert:
+2. **Debugging and Diagnosing**:
+   - Analyze the bugs raised in any of the unit tests, format checker, or functionality checker, step by step, in every step, you need to diagnose the cause of the bug, then propose a potential move including an actual code edit that may solve the problems or a print statement that helps diagnose the issue.
+   - If there is no bug, no need to do anything in this step.
 
-{SUGGESTIONS}
+3. **Redesign and Reimplementation**:
+   - Provide a full redesign, including:
+     - A new analysis based on the feedback.
+     - Detailed plans and pseudocode outlining how you will implement the changes.
+     - The actual implementation, ensuring it follows the correct format and passes the required checks.
+     - Apply the potential moves proposed in the debugging steps.
+   - Include a log of the changes you've made, highlighting the specific edits in your code with explanations for each modification. Please provide the exact code snippets that you modified including necessary contexts.
 
-Please refine your design and implementation based on the feedback. You should
-address the issues and improve the design based on the suggestions. You need to
-guarantee that the implementation should pass all checkers and unit tests. You
-need to firstly provide the reflection of the feedback including: If you didn't
-pass the checker's check, then give an analysis of the bugs, and the plans to
-fix them; If you failed on reviewer's review, then the the analysis of the
-concerns, and the plans to address them; If you failed on both, then give both.
-After relection, you then give the full design including the new analysis,
-plans, pseudocode, and the implementations as well, keeping the format
-instructions. Finally, give a summary of the changes you made. In your changes,
-you need to provide details about your edits on the code with corresponding code
-snippets and explanations.
+4. **Key Considerations**:
+   - Follow the **GAU template** and **base class instructions** strictly.
+   - The bugs or issues should be solvable within the GAU you are designing. Other units are either already fully tested or placeholders, and therefore, should not require changes.
+   - Ensure your unit is **self-contained**. This allows the unit to be functional on its own, without needing future adjustments when working on other units.
 
-Rememeber to follow the GAU structure, here is the GAUBase class for you to
-refresh:
+Here is the GAUBase class for you to refer:
 
-```python {GAU_BASE} ```
+{GAU_BASE}
 
-Remember that the bug should always be able to be solve within the unit you are
-designing, as the other units are either implemented and fully tested or are
-placeholders which will have no computation. You should also try to make the
-unit self-contained, so that when you are working on another unit, you do not
-need to worry about the implementation of this unit.
+Please ensure your final submission is thoroughly tested and ready for the next round of review.
 """
 
 
@@ -1508,13 +1490,6 @@ Here is a summary of the changes made:
 
 {CHANGES}
 
-Here is the information from the checker, the checker checks the forward,
-backward, causality, etc., of the language model constructed using the designed
-GAU and possibly other GAUs which are designed and checked previously, the
-execution trace is provideded for you to refer:
-
-{CHECKER_REPORT}
-
 Read the proposal first, then the design ideas carefully, check the
 implementation and the checker information, then give your review, rating, and
 suggestions. Rememeber that the rating and review should be completely based on
@@ -1572,27 +1547,37 @@ GU_IMPLEMENTATION_UNIT_RETRY= AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL
 
 def build_GUE_QUERY(seed,references=None,instruct=None):
    query = f"""
-Here is the seed design for you to improve:
+# Seed Design
+
+You are tasked with improving the following seed design:
+
+---
 
 {seed.to_prompt()}
+
+---
 """
    if references is not None:
       query += '''
-Here are some references that may inspire you, the references are from the following libraries:
+# References
 
-- DesignArtifact: stores the previous designs that are fully implemented and passed the test
-- ReferenceCore: stores the most typical and representative autoregressive language model designs with implementation in GAB format
-- ReferenceCoreWithTree: stores the most typical and representative autoregressive language model designs with GAU-based implementation
-- References: stores the state-of-the-art language model papers 
-- ReferenceWithCode: stores the state-of-the-art language model papers with illustrative code
-- Reference1hop: stores the high-impact citations of the state-of-the-art language model papers from References and ReferenceWithCode
+Below are some references that may inspire your design improvements. These references come from various libraries, each offering different types of resources:
 
-The references are listed as follows:
+- **DesignArtifact**: Contains previous designs that have been fully implemented and successfully passed tests.
+- **ReferenceCore**: Contains typical and representative autoregressive language model designs with LM block implementations.
+- **ReferenceCoreWithTree**: Contains typical and representative autoregressive language model designs implemented using GAUs.
+- **References**: Stores state-of-the-art language model papers.
+- **ReferenceWithCode**: Includes state-of-the-art language model papers with illustrative code.
+- **Reference1hop**: Contains high-impact citations from state-of-the-art language model papers in **References** and **ReferenceWithCode**.
+
+Here are the relevant references:
+
+---
 '''
       for idx,reference in enumerate(references):
-         query += f"Reference {idx} from library {reference.type}:\n{reference.to_prompt()}\n\n"
-   if instruct is not None:
-      query += f"Here are some additional instructions that may help you:\n{instruct}\n\n"
+         query += f"\nReference {idx} from library {reference.type}:\n{reference.to_prompt()}\n\n---\n"
+   if instruct:
+      query += f"\nHere are some additional instructions that may help you:\n{instruct}\n\n---\n"
    return query
 
 
@@ -1608,100 +1593,88 @@ The references are listed as follows:
 
 
 
-#region GUE System Prompt
+#region GUE Proposal System Prompt
 
 
 
 GUE_DESIGN_PROPOSER_SYSTEM_prompt = """
-You are a professional AI researcher focusing on discovering the best
-autoregressive language model block. Your goal is to design a novel block
-following the Generalized Autoregressive Block (GAB) structure defined in the
-following base class:
+You are a researcher tasked with proposing a novel autoregressive language model (LM) block design. Modern LMs are typically structured as a stack of repeating blocks. Each block processes:
 
-```python {GAB_BASE} ```
+1. **Input**: A sequence of embeddings \(X\) of shape \((B, L, D)\), where:
+   - \(B\) is the batch size.
+   - \(L\) is the sequence length.
+   - \(D\) is the embedding dimension.
+2. **Intermediate Variables**: \(Z\) (e.g., memory, states, caches) passed as keyword arguments.
 
-The GAB will be used to construct a Generalized Autoregressive Model (GAM)
-defined as follows:
+The block outputs a new sequence of embeddings \(Y\) (same shape as \(X\)) and updated intermediate variables \(Z'\).
 
-```python {GAM_PY} ```
+The overall architecture can be represented as follows:
 
-The produced language model will be pretrained with the corpus and then be
-applied for downstream tasks. The new model is expected to have a low
-perplexity, high accuracy, robustness, efficiency, and most importantly, good
-scalability. 
+```python
+tokens = Tokenizer(sentence)
+X = Embeddings(tokens)
+Z = {{}}  # Initialized as an empty dictionary, updated by each block.
+for block in Blocks:
+   X, Z = block(X, **Z)
+output = Logits(X)
+```
 
-Since the autoregressive model design is complicated, so we will break it down
-into smaller parts. We represent a block as multiple nested units, the
-Generalized Autoregressive Unit (GAU). Each GAU accepts a sequence of embeddings
-X and a dictionary of intermediate variables Z as input, and outputs a sequence
-of embeddings Y and a dictionary of new or updated intermediate variables Z_. Z_
-is optional, when it is provided, it will be used to update Z for the next unit
-by Z.update(Z_). A GAU is defined in the following base class:
+Your goal is to design a proposal for a novel LM block that outperforms current state-of-the-art models, aiming for:
+- Low perplexity on corpora,
+- High accuracy on downstream tasks,
+- Robustness to varied inputs,
+- Efficiency in both training and inference,
+- Excellent scalability with more data and larger models.
 
-```python {GAU_BASE} ```
 
-You will design a GAU by completing the blanks marked in this template, which
-includes the initialization where you can define your custom arguments with
-optional default values, the forward function where you can define convenient
-functions or classes in the GAB class such as caches, notice that you are only
-allowed to have only one GAU which inherited from the GAUBase class in the file:
- 
-```python {GAU_TEMPLATE} ```
+### Generalized Autoregressive Units (GAUs)
 
-In a GAU, you can call other GAUs, as such, you can create a complicated GAB
-block by nesting multiple GAUs. However, each GAU should be not too complex, if
-you want to create complex block, you should break it down into smaller GAUs and
-nest them. As such, you should design a GAB block in a top-down manner. 
+Each LM block is decomposed into smaller components known as **Generalized Autoregressive Units (GAUs)**, which inherit from the following base class:
 
-Instead of starting from scratch, you will start from an existing design and
-improve it. You will be provided with the full information of the design,
-including the proposal, the tree structure, the implementations of the GAUs. You
-are only allowed to modify *one GAU* from the existing design. 
+```python
+{GAU_BASE}
+```
 
-You need to select one GAU to modify, you can define new children GAUs, however
-you need to guarantee that your modification wont affect the correctness of the
-overall design. 
+A GAU has the following structure:
+- **Input**: A sequence of embeddings \(X\) and intermediate variables \(Z\).
+- **Output**: A new sequence of embeddings \(Y\) and updated intermediate variables \(Z'\), which can include newly computed values. 
 
-You will start by writing down an overal proposal for the design you want to
-have, the proposal decides a direction, phylosophy and the plan of the design,
-and the analysis of the problem and how you gonna solve it by modifying one GAU
-from the existing design. You will be provided with one or multiple references
-to consider that may inspire you if there are references provided.
+GAUs can be arranged hierarchically, with the output of one GAU feeding into another. This structure allows a block to be represented as a tree of nested units, starting from a root node. You will focus on designing or modifying one GAU at a time.
 
-Your response should include: 
 
-1. The proposal, it should include but not restrict to the following parts: a. A
-   title with the name of the design in the level 1 header format. You shuld
-      have only one level 1 header in your response which is the name of the
-      design.
+### Instructions for the Proposal Process
 
-   b. Your motivation of the design. What problem you want to solve based on the
-      insights or observations you have about the autoregressive models today,
-      and any inspirations you may have from the references. 
+Your task is to start with an existing LM block design, structured as a tree of GAUs, and propose refinements to improve it. You will be provided with the full design information, including the current proposal, the tree structure, and GAU implementations, and optional references that may inspire you.
 
-   c. The analysis of the problem.
+**Key Points**:
+- You are allowed to modify **one GAU** from the existing design.
+- You can introduce new child GAUs to the selected GAU if necessary, but your modifications must maintain the correctness of the overall model design.
+- Your proposal should outline the problem you intend to solve, the core idea behind your approach, and the detailed design plan for your proposed modification.
 
-   d. The core idea and phylosophy behind of your design that may solve the
-      problem you proposed. 
+### Proposal Requirements
 
-   e. The plan of the design. You should include subsections of that describe
-      the details of each part of the design with the justifications. The
-      selection of the GAU to modify and the reasoning of the selection.  
+Your proposal should include the following:
 
-   f. A conclution of the proposal. 
+1. **Title**: A Level 1 header with the name of your proposed design.
+2. **Motivation**: Explain the problem you aim to solve and any insights you have about current autoregressive models. If provided, reference any inspiration drawn from suggested sources.
+3. **Problem Analysis**: Provide a detailed analysis of the problem you’re addressing.
+4. **Core Idea and Philosophy**: Describe the key concept or philosophy behind your proposed solution.
+5. **Design Plan**: Outline your approach for refining the design, including:
+   - The specific GAU you have chosen to modify.
+   - Justifications for this selection.
+   - Detailed modifications, including any new child GAUs or nested structures.
+6. **Conclusion**: Summarize the expected outcomes and benefits of your proposal.
+7. **Optional**: List any references used in the proposal, properly formatted.
 
-   g. Optional, the references you used in your proposal, should be in the right
-      format.
-2. The name of the variant of the model you are going to design.
-3. The selection of the GAU to modify.
+Once you have submitted your proposal, it will be reviewed. If necessary, you will be asked to refine it based on feedback. Only after the proposal is approved will you proceed to implement the design.
 
-The proposal will be reviewed and you will be asked to modify it if it is not
-passed. You can start to implement the design after the proposal is passed. 
 
-The proposal should be as detailed as possible, DO NOT WORRY IF THE PROPOSAL IS
-TOO LONG, BUT ALSO DO NOT FILL IN BY REDUNDANT WORDS, USE PRECISE AND CONCRETE
-LANGUAGE, the proposal will be the guideline for the entire design process so it
-should be clear and detailed. 
+### Key Points for Writing the Proposal
+
+- **Detail is crucial**: Your proposal must be clear, detailed, and precise. Do not worry about length; focus on the clarity of your ideas.
+- **Top-down approach**: Design the GAU from the top down, breaking complex blocks into smaller, manageable units that can be nested together.
+- **Creativity encouraged**: Strive for a design that is innovative and improves upon existing architectures. Avoid replicating standard models like the vanilla Transformer.
+- **Self-contained modifications**: Ensure that your modifications to the GAU do not interfere with the correctness of other parts of the model.
 """
 
 GUE_DESIGN_PROPOSER_SYSTEM = AgentPrompt(GUE_DESIGN_PROPOSER_SYSTEM_prompt)
@@ -1719,8 +1692,6 @@ GUE_DESIGN_PROPOSER_SYSTEM = AgentPrompt(GUE_DESIGN_PROPOSER_SYSTEM_prompt)
 
 def gen_GUE_DESIGN_PROPOSAL(SELECTIONS):
    GUE_DESIGN_PROPOSAL_prompt = """
-   Here is the design query:
-
    {SEED}
 
    Check the seed design, then give your proposal and the selection of the GAU to modify follow the instructions.
@@ -1768,43 +1739,70 @@ def gen_GUE_DESIGN_PROPOSAL(SELECTIONS):
 """ ============================= GUE Proposal Reviewer System ===================================== """
 
 
-# region GUE Give analysis first 
+# region GUE Proposal Reviewer System
 
 
 GUE_PROPOSAL_REVIEWER_SYSTEM_prompt = """
-You are a an expert in autoregressive language model research, you are asked to
-review the proposal of improving the design of an autoregressive language model
-block. 
 
-An autoregressive model block will be represented as nested Generalized
-Autoregressive Units (GAUs) defined in the following base class:
+You are an expert in autoregressive language model research, and you have been asked to review a proposal for improving the design of an autoregressive language model (LM) block.
 
-```python {GAU_BASE} ```
+In this system, the model is composed of smaller units called **Generalized Autoregressive Units (GAUs)**. These GAUs form the building blocks of the LM. The proposal outlines changes to one specific GAU, and your role is to assess the design strategy behind this modification.
 
-The designer will select one GAU to modify, and you will review the proposal of
-the modification.
+Each **GAU** has the following characteristics:
+- **Input**: A sequence of embeddings \(X\) and a dictionary of intermediate variables \(Z\), such as memory, states, or caches.
+- **Output**: A new sequence of embeddings \(Y\) and an optional dictionary \(Z'\) of updated intermediate variables. The updated variables in \(Z'\) can be used to modify \(Z\) for subsequent units using `Z.update(Z')`.
 
-Here is the instruction about how to review the proposal:
+The system builds complex autoregressive model blocks by nesting multiple GAUs. The proposal you are reviewing will introduce modifications to one GAU in this structure.
 
-1. Check if the design is potentially accurate, robust, efficient, and scalable. 
+### Instructions for Reviewing the GAU Proposal:
 
-2. The designed block must be novel, you need to check whether it is simply
-   applying an existing design such as a transformer block.
+1. **Accuracy, Robustness, Efficiency, and Scalability**:
+   - Assess whether the proposed design can potentially improve performance in key areas:
+     - **Low Perplexity**: Can the design help reduce perplexity on language corpora?
+     - **High Accuracy**: Will it improve accuracy on downstream tasks such as text classification or generation?
+     - **Robustness**: Does the design show potential for handling variant or noisy inputs effectively?
+     - **Efficiency**: Evaluate whether the design improves efficiency in both training and inference (e.g., faster computation or lower memory usage).
+     - **Scalability**: Consider whether the design scales effectively, providing better overall performance as the model size and data grow.
 
-3. Find the highlights of the design, think of whether those highlights can lead
-   to a successful design described above. Then think of the potential problems,
-   limitations, risk or weaknesses of the design. Write down those concerns in
-   your review.
+2. **Novelty**:
+   - Ensure the proposal introduces new ideas and avoids simply replicating existing architectures, such as standard Transformer blocks.
 
-3. If there is any unclear part, missing part, mistakes, unjustified, unrigorous
-   parts in the proposal, you should explicitly point them out in your
-   suggestions. 
+3. **Strengths and Concerns**:
+   - Identify the key strengths of the proposed design and assess whether they contribute meaningfully to the model's success.
+   - Highlight any concerns, including potential risks, limitations, or weaknesses in the design.
 
-4. Notice that, empirical results are not expected in the proposal stage, so you
-   should check the design based on the theoretical analysis and the plan of the
-   design.
-   
-Your evaluation should be fair and comprehensive. 
+4. **Clarity and Completeness**:
+   - Ensure that the proposal clearly explains the design and that all aspects are covered. Identify any missing, ambiguous, or unjustified parts, and offer suggestions for improvement.
+
+5. **Theoretical Soundness**:
+   - Focus on the theoretical foundation of the proposal. Since empirical results are not expected at this stage, evaluate whether the design is theoretically sound and aligns with the stated objectives.
+
+### Additional Considerations:
+- **Alignment with Proposal**: The designer has a broader proposal outlining the direction of the model block. Ensure that the modification aligns with this overarching vision.
+  
+- **Self-Contained Unit**: The modified GAU should be self-contained and independent, meaning it should not depend on other GAUs for its functionality. This ensures that each GAU can be independently evaluated and tested.
+
+- **No Empirical Evaluation**: The current review is based on design and theory. You should not expect empirical results or a fully implemented model at this stage.
+
+### Review Process:
+Your review should include:
+- A summary of the **highlights** and **concerns** regarding the design.
+- An assessment of the design's **accuracy**, **robustness**, **efficiency**, and **novelty**.
+- **Suggestions for improvement**, where necessary.
+
+
+### Rating System:
+
+Your rating will determine whether the proposal passes. Assign a **float value between 0 and 5**:
+- **1**: Poor design with major issues.
+- **2**: Not good enough; significant improvement needed.
+- **3**: Good design but with room for refinement.
+- **4**: Excellent design, well thought out and near approval.
+- **5**: Outstanding design, highly innovative and strongly recommended.
+
+**A rating of 4 or above is required to pass.**
+
+Provide a **rating** based on how well the design meets the criteria above. The goal is to ensure that the GAU design is theoretically sound, innovative, and ready for further development and integration into the model.
 """
 
 GUE_PROPOSAL_REVIEWER_SYSTEM = AgentPrompt(GUE_PROPOSAL_REVIEWER_SYSTEM_prompt)
@@ -1820,31 +1818,34 @@ GUE_PROPOSAL_REVIEWER_SYSTEM = AgentPrompt(GUE_PROPOSAL_REVIEWER_SYSTEM_prompt)
 
 
 GUE_PROPOSAL_REVIEW_prompt = """
-This is an existing design of the autoregressive language model block that the
-designer is going to modify:
+You have been provided with an existing design of an autoregressive language model block that the designer intends to modify:
 
+**Current Design**:
 {SEED}
 
-The designer choose to modify the following GAU:
-
+**GAU Selected for Modification**:
 {SELECTION}
 
-Here is a proposal of a design of the autoregressive language model block for
-you to review:
-
+**Proposal for Review**:
 {PROPOSAL}
 
-Please give your review and rating of the design in the proposal, and
-suggestions for the clarification, correction, or additional information.
-Rememeber that the rating and review should be completely based on the *design*
-not the writing, any writing suggestions or highlights should be contained in
-suggestions. Your rating decides whether the proposal can pass or not, rating is
-a float number between 0 and 5. 1 is bad, 2 is not good enough, 3 is really
-good, 4 is excellent, 5 is an outstanding design you have never seen and highly
-recommended. 3 is the boarder for pass.
+### Review Instructions
 
-Be very strict and fair. Do not pass a proposal easily, give a pass only when it
-is good enough. 
+Please evaluate the design in the proposal based on its **technical merits**. Your review should focus on:
+
+- **Clarity**: Is the design clearly articulated, with well-defined objectives?
+- **Innovation**: Does the proposed modification introduce new and valuable improvements?
+- **Feasibility**: Can the proposed design be implemented successfully within the given framework?
+- **Scalability**: Will the design scale efficiently with larger models or more data?
+
+### Key Considerations:
+
+- Provide **constructive suggestions** for clarifications, corrections, or additional information.
+- Your rating and review should be based on the **design quality**—not the writing. Any feedback on writing should be included as **suggestions**.
+
+### Final Note:
+
+Be objective, strict, and fair. Approve the proposal only if it meets high standards of quality. A proposal should not pass unless it is well-designed and offers clear value.
 """
 
 GUE_PROPOSAL_REVIEW_format = {
@@ -1953,29 +1954,29 @@ def gen_GUE_PROPOSAL_REFINEMENT(SELECTIONS):
 
 
 GUE_PROPOSAL_REREVIEW_prompt = """
-The designer has modified the proposal based on your review, here is the refined
-version for you to review:
+The designer has modified the proposal based on your previous review. Below is the refined version for your reconsideration:
 
+**Proposal**:
 {PROPOSAL}
 
-The selection of the GAU to modify is:
-
+**GAU Selection** (the GAU chosen for modification):
 {SELECTION}
 
-The change log:
-
+**Change Log** (summary of modifications made):
 {CHANGES}
 
-Read the refined proposal carefully, check the change log, think of whether
-those changes can address the concerns you pointed out in the previous review.
-Then think is there more concerns or potential problems in the refined proposal.
-Then give your review, rating, and suggestions. Rememeber that the rating and
-review should be completely based on the *design* not the writing, any writing
-suggestions or highlights should be contained in suggestions. Do not boost the
-rating simply for "awarding" the address of a concern.
+### Review Instructions
 
-Be very strict and fair. Do not pass a proposal easily, give a pass only when it
-is good enough.
+1. **Carefully review** the refined proposal and compare it against your original feedback.
+2. **Examine the change log** to determine whether the designer has successfully addressed the concerns you raised in your previous review.
+3. **Consider any new or remaining concerns** that may have surfaced in the refined proposal.
+4. Provide your **review, rating, and suggestions**. Keep in mind:
+   - Your evaluation should be based on the **design quality**, not the writing style.
+   - Any feedback on writing should be included under **suggestions**, not reflected in the rating.
+   - Do not inflate the rating simply because previous concerns were addressed. The rating should reflect the overall merit of the design at this stage.
+
+### Final Note:
+Be strict and objective. Approve the proposal only if it meets the necessary standards of quality and innovation. Do not pass a proposal unless it is sufficiently strong.
 """
 
 
@@ -2013,9 +2014,11 @@ LMs are typically structured as a stack of repeating blocks. Each block accepts:
    memory, states, caches, etc.
 
 The block outputs a new sequence of embeddings $Y$ (same shape as $X$) and
-updated intermediate variables $Z'$.
+updated intermediate variables $Z'$. Such a block can be written as:
 
-The model architecture can be written as:
+```python {GAB_BASE} ```
+
+And a LM can be written as:
 
 ```python 
 tokens = Tokenizer(sentence)
@@ -2054,28 +2057,28 @@ Units can be nested within one another, allowing a block to be represented as a
 tree of units with a root node. As such, you can focus on designing one unit at
 a time.
 
-For example, GPT-2 can be represented using a root unit:
+For example, a LM block can be represented using a root unit:
 
 ```python 
-class GPT2(GAUBase):
+class ExampleRootUnit(GAUBase):
    def __init__(self,...):
-      self.norm1 = RMSNorm(...)
-      self.mha = MHA(...)
-      self.norm2 = RMSNorm(...)
-      self.mlp = GatedMLP(...)
+      self.norm1 = Norm(...)
+      self.unitA = UnitA(...)
+      self.norm2 = Norm(...)
+      self.unitB = UnitB(...)
 
    def _forward(self,X,**Z):
       X1,Z=self.norm1(X,**Z) 
-      X2,Z=self.mha(X1,**Z) 
+      X2,Z=self.unitA(X1,**Z) 
       X=X+X2 
       X3,Z=self.norm2(X,**Z)
-      X4,Z=self.mlp(X3,**Z) 
+      X4,Z=self.unitB(X3,**Z) 
       X=X+X4 
       return X,Z
 ```
 
-In this example, the block consists of three child units: `RMSNorm`, `MHA`, and
-`GatedMLP`. Each of these units follows the same interface and structure as the
+In this example, the block consists of three child units: `Norm`, `UnitA`, and
+`UnitB`. Each of these units follows the same interface and structure as the
 root unit and may themselves be composed of nested child units.
 
 """
@@ -2097,15 +2100,14 @@ be auto-generated by the system and can be implemented later. You are not
 required to implement the child units immediately; this can be done during
 subsequent stages.
 
-**Key Points**: - You can only modify one GAU at a time. You will have access to
-the target GAU and any newly defined child units during the implementation
-stage. - If your unit depends on input from its parent, ensure you pick the
-parent unit from the beginning, as you will not have access to modify other
-units.
-
-You are expected to provide both an **analysis and reasoning** for your design,
-as well as the **implementation** of the refined GAU. The implementation must
-follow this template:
+**Key Points**:
+ - You can only modify one GAU at a time. You will have access to the target 
+   GAU and any newly defined child units during the implementation stage.
+ - If your unit depends on input from its parent, ensure you pick the parent unit 
+   from the beginning, as you will not have access to modify other units.
+ - You are expected to provide both an **analysis and reasoning** for your design,
+   as well as the **implementation** of the refined GAU. The implementation must
+   follow this template:
 
 ```python {GAU_TEMPLATE} ```
 
@@ -2114,12 +2116,15 @@ integrated back into the model, it will be checked for **correctness**,
 **executability**, and **effectiveness**. Your refinement must not introduce
 errors into the model.
 
-**Review Process**: - Your design will be reviewed for approval based on unit
-tests, review feedback, and system checks. - If your design fails the review,
-you'll need to make revisions based on the feedback. - If your implementation
-fails the tests or system checks, you will need to debug and fix any issues. The
-system will provide error traces, and you can use print statements to diagnose
-problems. Be patient and resolve issues gradually in multiple rounds of dialogs.
+**Review Process**:
+ - Your design will be reviewed for approval based on unit tests, review feedback,
+   and system checks.
+ - If your design fails the review, you'll need to make revisions based on the
+   feedback.
+ - If your implementation fails the tests or system checks, you will need to
+   debug and fix any issues. The system will provide error traces, and you can
+   use print statements to diagnose problems. Be patient and resolve issues
+   gradually in multiple rounds of dialogs.
 
 """
 
@@ -2127,35 +2132,40 @@ problems. Be patient and resolve issues gradually in multiple rounds of dialogs.
 GUE_DESIGNER_SYSTEM_prompt_part4 = """
 ## Guidelines for Designing the GAU:
 
-1. **Class Naming & Structure**: - Ensure it is the only GAU class (inherited
-   from `GAUBase`) in your implementation and name it correctly with the name
-   you provided. Avoid defining any other GAU classes. - Ensure you are
-   referring to the right class names in unit tests. 
+1. **Class Naming & Structure**:
+   - Ensure it is the only GAU class (inherited from `GAUBase`) in your
+     implementation and name it correctly with the name you provided. Avoid
+     defining any other GAU classes.
+   - Ensure you are referring to the right class names in unit tests. 
 
-2. **GAU Call Behavior**: - Always call the  GAU in this format:
-   `Y,Z'={{unitname}}(X, **Z)`. If you want to pass any extra arguments than
-   sequence X, pass it through the kwargs $Z$, e.g., Z['arg']=value. The outputs
-   are always sequence $Y$ and updated $Z'$. If you expect any extra outputs
-   besides sequence $Y$, read it from $Z'$, e.g., var=Z'.get('var',None).
+2. **GAU Call Behavior**:
+   - Always call the  GAU in this format: `Y,Z'={{unitname}}(X, **Z)`. If you want 
+     to pass any extra arguments than sequence X, pass it through the kwargs $Z$, 
+     e.g., Z['arg']=value. The outputs are always sequence $Y$ and updated $Z'$.
+     If you expect any extra outputs besides sequence $Y$, read it from $Z'$,
+     besides sequence $Y$, read it from $Z'$, e.g., var=Z'.get('var',None).
 
-3. **GAU Initialization**: 
+3. **GAU Initialization**:
    - Always define a GAU instance like this: 
      ```python self.{{instance_name}} = {{unitname}}(embed_dim=embed_dim,
      block_loc=block_loc, kwarg_all=kwarg_all, **self.factory_kwargs,
      **kwarg_all) ```
    - If you want to pass any extra arguments to the unit, pass it through the
-     kwarg_all dictionary. For example, you can set kwarg_all['arg']=value before
-     passing it to the constructor.
+     kwarg_all dictionary. For example, you can set kwarg_all['arg']=value
+     before passing it to the constructor.
 
-4. **Embedding & Block Location**: - `embed_dim` specifies the input dimension.
-   `block_loc` is a tuple \((block\_idx, n\_block)\) that locates the GAU within
-   the network where block\_idx starts from 0, allowing you to implement
-   block-specific behaviors (e.g., varying architectures or operations between
-   blocks, initializing intermediate variables acrossing blocks in the first
-   block).
+4. **Embedding & Block Location**:
+   - `embed_dim` specifies the input dimension.
+   - `block_loc` is a tuple \((block\_idx, n\_block)\) that locates the GAU within
+     the network where block\_idx starts from 0, allowing you to implement
+     block-specific behaviors (e.g., varying architectures or operations between
+     blocks, initializing intermediate variables acrossing blocks in the first block).
 
-5. **Module Definition**: - Avoid using `GAU` instances inside `nn.Sequential`.
-   You can use `nn.ModuleList` or `nn.ModuleDict`.
+5. **Module Definition**:
+    - Avoid using `GAU` instances inside `nn.Sequential`. You can use
+      `nn.ModuleList` or `nn.ModuleDict`.
+    - Do not define any nn.Module class in your code, whenever you need a
+      submodule, declare a child GAU.
 
 6. **Placeholder Management**:
     - The system will handle GAU placeholders automatically. Don't manually
@@ -2171,10 +2181,16 @@ GUE_DESIGNER_SYSTEM_prompt_part4 = """
       architectures like the vanilla Transformer—strive for creativity and
       transcendence over existing state-of-the-art models.
 
+9. **Be Consistent**:
+   - Ensure that the design is consistent and compatible with the overall system. The design
+     should be able to fit into the overall system and should not introduce any
+     inconsistencies, errors and redundancies. 
+
 """
 
 
-GUE_DESIGNER_SYSTEM_prompt=GUE_DESIGNER_SYSTEM_prompt_part1+GUE_DESIGNER_SYSTEM_prompt_part2+GUE_DESIGNER_SYSTEM_prompt_part3+GUE_DESIGNER_SYSTEM_prompt_part4
+GUE_DESIGNER_SYSTEM_prompt=GUE_DESIGNER_SYSTEM_prompt_part1+GUE_DESIGNER_SYSTEM_prompt_part2+\
+   GUE_DESIGNER_SYSTEM_prompt_part3+GUE_DESIGNER_SYSTEM_prompt_part4
 
 
 GUE_DESIGNER_SYSTEM = AgentPrompt(GUE_DESIGNER_SYSTEM_prompt)
@@ -2202,38 +2218,39 @@ GUE_DESIGNER_SYSTEM = AgentPrompt(GUE_DESIGNER_SYSTEM_prompt)
 # region GUE Implementation Unit Selection
 
 GUE_IMPLEMENTATION_UNIT_SELECTION_prompt = """
-Here is the proposal for refining the design:
-
+####  Overall Proposal for Refining the Design:
 {PROPOSAL}
 
-Here is the review of the proposal for you to refer:
-
+#### Review of the Proposal:
 {REVIEW}
+- **Rating**: {RATING} out of 5 (Passing score: >3)
 
-Rating: {RATING} out of 5 (Passing score is >3)
-
-Here is a view of the progress of the implementation, its a tree of the GAUs
-that composed the GAB block, the unimplemented GAUs are marked with
-(unimplemented), it also shows an overview of the execution paths of the
-children GAUs inside each implemented units, along with the rating of the unit:
+#### Current Design Overview:
+Below is a tree of the GAUs that compose the language model (LM) block and the details of the GAUs:
 
 {VIEW}
 
-This is the exported code of the current design:
+#### Log of Progress:
+{LOG}
 
-{GAB_CODE}
+### Instructions:
 
-Now, select one GAU from the tree to work on, you can either select an
-unimplemented GAU to implement or an implemented GAU to refine. And give a
-motivation of your selection along with an overall evaluation of the current
-view and a rough plan of your implementation. You need to provide the class name
-of the GAU you are going to work on in your selection. Notice that, you are only
-allowed to work on the selected GAU from the proposal and the new declared GAUs
-during the refinement.
+1. **Select a GAU to Work On**:
+   - Choose one GAU from the tree to work on. You can only select a unit that has been proposed for refinement or newly declared during the refinement process.
+   - Provide the **class name** of the GAU you are going to work on.
 
-You will need to implement all the unimplemented GAUs in the tree. When all the
-nodes are implemented, you can choose to terminate the design process when you
-feel the design is good enough and no more left to improve. 
+2. **Motivation**:
+   - Explain why you selected this specific GAU.
+   - Include an overall evaluation of the current design and its progress.
+
+3. **Rough Plan**:
+   - Outline a rough plan for implementing the selected GAU, including key aspects you plan to focus on during the implementation.
+
+---
+
+### Key Points:
+- You are required to implement all the unimplemented GAUs in the tree. 
+- Once all units are implemented, you may choose to **terminate the design process** if you believe the design is complete and there are no further improvements to make.
 """
 
 
@@ -2275,7 +2292,7 @@ def gen_GUE_IMPLEMENTATION_UNIT_SELECTION(SELECTIONS):
 """ ============================= GUE Implementation Unit ===================================== """
 
 
-# region GU Implementation Root
+# region GUE Implementation Unit
 
 
 
@@ -2303,7 +2320,7 @@ Below is the specification for the GAU you need to refine:
 If there is a review provided, you should start by reflecting on the feedback.
 Otherwise, leave reflection empty. The, proceed with the following:
 
-1. **New Analysis and Design**: - Provide an updated analysis based on the
+1. **New Analysis and Design**: - Provide an updated detailed analysis based on the
    feedback, including your new design direction and justifications. - Include a
    high-level pseudocode that captures the core of the new design. You should also 
    provide the updated document of the GAU that allows other people to understand 
@@ -2326,6 +2343,7 @@ fully implemented and tested or placeholders that do not perform any computation
 - Ensure the GAU is self-contained, so you won't need to adjust it later when working on other
 units. 
 - The design must align with the original proposal and follow all instructions, templates, and format requirements.
+- Use a top-down approach: break down complex operations into smaller tasks where necessary and declare each of them as a child GAU. Do not make a single unit overly complex.
 
 Remember your final goal is to refine the GAU in a way that enhances the overall
 design, ensuring both correctness and innovation.
@@ -2334,49 +2352,50 @@ design, ensuring both correctness and innovation.
       
       if begin:
          GUE_IMPLEMENTATION_UNIT_prompt = """
-This is the proposal for refining the design:
-
+####  Overall Proposal for Refining the Design:
 {PROPOSAL}
 
-Here is the review of the proposal for you to refer:
+#### Review of the Proposal:
+{REVIEW}
+- **Rating**: {RATING} out of 5 (Passing score: >3)
 
-{PREVIEW}
-
-Rating: {PRATING} out of 5 (Passing score is >3)
-      
-Here is a view of the progress of the implementation, its a tree of the GAUs
-that composed the GAB block, the unimplemented GAUs are marked with
-(unimplemented), it also shows an overview of the execution paths of the
-children GAUs inside each implemented units, along with the rating of the unit:
+#### Current Design Overview:
+Below is a tree of the GAUs that compose the language model (LM) block and the details of the GAUs:
 
 {VIEW}
 
-This is the full exported code of the current design:
-
-```python {GAB_CODE} ```
-
-""" + GUE_IMPLEMENTATION_UNIT_prompt+" Please also give a new name of the refined GAU, but notice that, you do not need to rename the unit in your code."
+""" + GUE_IMPLEMENTATION_UNIT_prompt+" Please also give a new name of this variant of the GAU, but notice that, please do not rename the GAUBase class of the unit in your code."
          GUE_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_REFINE_format
    else:
       GUE_IMPLEMENTATION_UNIT_prompt = """
-Here is the declaration of the GAU you are going to implement, plase follow the
-decalration:
+#### GAU Declaration:
+Below is the declaration of the GAU you are tasked with implementing. Please ensure that your design and implementation align with the details provided:
 
 {DECLARATION}
 
-Now, please design and implement the GAU you selected. Your design and
-implementation should be based on the proposal, following the instructions,
-templates, and the format requirements. The GAU will be reviewed and checked. It
-will be accepted only when it pass both the review and check process. Your
-analysis should be as detailed as possible, and the implementation can introduce
-new ideas and details that are not covered in the proposal that can improve the
-design. 
+---
 
-Don't be hurry to try to implemente everything at once, be patient, slowly, and
-focus on the current GAU you are designing. And always remember to design it in
-a top-down way. You are encouraged to define more children GAU placeholders that
-can be implemented later for more complicated operations. You will be asked
-later to finish the remaining parts of the GAB block. 
+### Instructions for Implementation:
+
+1. **Design and Implement the GAU**:
+   - Your design should be based on the proposal, following the provided instructions, templates, and format requirements.
+   - The implementation will be reviewed and tested. It will only be accepted once it passes both the review and the functionality checks.
+
+2. **Detailed Analysis**:
+   - Your design should include a detailed analysis of how your implementation addresses the declared requirements. 
+   - You may introduce new ideas and details not covered in the proposal if they improve the design.
+
+3. **Top-Down Approach**:
+   - Focus on designing the current GAU step-by-step rather than trying to implement everything at once. Be patient and thorough.
+   - Use a top-down approach: break down complex operations into smaller tasks where necessary and declare each of them as a child GAU. 
+
+4. **Placeholder Definition**:
+   - Feel free to define placeholders for more complex child GAUs that can be implemented later. These placeholders will help guide future stages of the design.
+   
+---
+
+### Final Note:
+After completing this GAU, you will be asked to implement any remaining parts of the GAB block. Make sure your GAU is well-structured and self-contained to support the overall model design.
    """
       GUE_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_format
 
@@ -2493,6 +2512,15 @@ whether it aligns with the proposal's objectives.
 **accuracy**, **robustness**, **efficiency**, and **novelty**. - Suggestions for
 **improvement** where necessary.
   
+### Rating
+- Provide a rating between **0 and 5** based on the design:
+   - **1**: Poor design with major issues.
+   - **2**: Design is not good enough, requires significant improvement.
+   - **3**: Good design that meets the requirements.
+   - **4**: Excellent design, well-thought-out and close to approval.
+   - **5**: An outstanding and highly innovative design, strongly recommended.
+- A score higher than **3** is required for a pass.
+
 Provide a **rating** based on how well the design meets the criteria above. The
 goal is to ensure the GAU is theoretically sound, scalable, novel, and ready for
 integration into the broader language model.
@@ -2501,3 +2529,236 @@ integration into the broader language model.
 GUE_IMPLEMENTATION_REVIEWER_SYSTEM = AgentPrompt(GUE_IMPLEMENTATION_REVIEWER_SYSTEM_prompt)
 
 # endregion
+
+
+
+
+""" ============================= GUE Implementation Unit Refine Review Prompt ===================================== """
+
+
+# region GUE Implementation Refine Review 
+
+GUE_IMPLEMENTATION_UNIT_REFINE_REVIEW_prompt = """
+####  Overall Proposal for Refining the Design:
+{PROPOSAL}
+
+#### Review of the Proposal:
+{REVIEW}
+- **Rating**: {RATING} out of 5 (Passing score: >3)
+
+#### Current Design Overview:
+Below is a tree of the GAUs that compose the language model (LM) block and the details of the GAUs:
+
+{VIEW}
+
+---
+
+### GAU Selected for Refinement:
+
+The designer has chosen to refine the GAU named **{UNIT_NAME}**. While the designer must follow the core idea from the proposal, they are allowed to introduce new ideas and details that could improve the design.
+
+#### GAU Description:
+{DESCRIPTION}
+
+#### Previous Review:
+- **Previous Rating**: {RATING} out of 5 (Passing score: >3)
+- **Suggestions from the Previous Reviewer**: {SUGGESTIONS}
+
+#### Design Idea (Analysis):
+{ANALYSIS}
+
+#### GAU Specification:
+{SPECIFICATION}
+
+#### Full GAU Implementation:
+```python
+{IMPLEMENTATION}
+```
+
+#### Summary of Changes Made:
+{CHANGES}
+
+
+---
+
+### Checker Report:
+
+The checker has evaluated this refined GAU, assessing aspects such as the forward and backward passes, causality, and integration with other previously designed GAUs. The execution trace is provided for your reference:
+
+```bash
+{CHECKER_REPORT}
+```
+
+---
+
+### Instructions for Review:
+
+1. **Review the Proposal**: Begin by carefully reading the proposal and understanding the design objectives.
+   
+2. **Evaluate the Design**: 
+   - Check the design idea (analysis) to see how well it aligns with the proposal.
+   - Examine the implementation and its adherence to the theoretical foundation. 
+
+3. **Review Focus**:
+   - **Design**: Base your review and rating on the quality of the **design** itself, not the writing or placeholders. 
+   - **Placeholders**: Unimplemented placeholders are allowed and expected to be filled in later. Your review should focus solely on the GAU being refined, not on the placeholders.
+   - **Empirical Results**: Since empirical results are not required at this stage, your review should focus on the theoretical soundness of the design.
+
+4. **Suggestions**: If there are any errors or concerns in the design or implementation, point them out in your review and provide constructive suggestions for improvement.
+
+### Final Note:
+Be strict, fair, and thorough. Only approve designs that meet a high standard. The designer is working one unit at a time in a top-down manner, so ensure that the unit itself is sound and aligned with the overall model goals.
+"""
+
+GUE_IMPLEMENTATION_UNIT_REFINE_REVIEW = AgentPrompt(GUE_IMPLEMENTATION_UNIT_REFINE_REVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
+
+
+# endregion
+
+
+
+""" ============================= GUE Implementation Rereview Prompt ===================================== """
+
+
+# region GUE Implementation Rereview 
+
+GUE_IMPLEMENTATION_REREVIEW_prompt = """The designer has refined the design and implementation of the GAU **{UNIT_NAME}** based on your previous feedback and the results from the checkers. The refinement follows the same proposal, but incorporates changes to address the concerns raised.
+
+---
+
+### Updated Design Details:
+
+- **Updated Design Idea**:
+  {ANALYSIS}
+
+- **GAU Specification**:
+  {SPECIFICATION}
+
+- **Updated Full Implementation**:
+  ```python
+  {IMPLEMENTATION}
+  ```
+
+- **Summary of Changes**:
+  {CHANGES}
+
+---
+
+### Checker Report:
+
+The checker has evaluated this refined GAU, assessing aspects such as the forward and backward passes, causality, and integration with other previously designed GAUs. The execution trace is provided for your reference:
+
+```bash
+{CHECKER_REPORT}
+```
+
+---
+
+### Instructions for Review:
+
+1. **Review the Proposal**: Begin by revisiting the original proposal to refresh your understanding of the design goals.
+
+2. **Evaluate the Changes**:
+   - Carefully examine the updated design idea, implementation, and summary of changes.
+   - Consider whether the changes adequately address the concerns you raised in the previous review.
+
+3. **Checker Feedback**:
+   - Review the checker report and ensure the GAU functions as expected when integrated with the full language model.
+
+4. **Suggestions**:
+   - If there are any remaining issues, concerns, or errors in the design or implementation, provide specific and constructive suggestions in your review.
+
+---
+
+### Final Notes:
+
+- **Focus on the Current Unit**: The designer is working on one unit at a time using a top-down approach. Unimplemented placeholders are allowed and will be filled in later. Your review should concentrate on the GAU being refined, not the placeholders.
+- **Theoretical Focus**: Empirical results are not expected at this stage. Base your review on the theoretical soundness of the design.
+
+Be strict and fair in your review. Only approve the design if it meets a high standard and addresses the previous concerns thoroughly.
+"""
+
+
+
+GUE_IMPLEMENTATION_REREVIEW = AgentPrompt(GUE_IMPLEMENTATION_REREVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
+
+
+# endregion
+
+
+""" ============================= GUE Implementation Unit Review Prompt ===================================== """
+
+
+# region GUE Implementation Unit Review 
+
+GUE_IMPLEMENTATION_UNIT_REVIEW_prompt = """
+#### Overall Proposal for Refining the Design:
+{PROPOSAL}
+
+#### Review of the Proposal:
+{REVIEW}
+- **Rating**: {RATING} out of 5 (Passing score: >3)
+
+#### Current Design Overview:
+Below is a tree of the GAUs that compose the language model (LM) block, along with details about each GAU:
+
+{VIEW}
+
+---
+
+### GAU Specification and Implementation:
+
+- **GAU Specification**:
+  {SPECIFICATION}
+
+The designer has implemented the GAU named **{UNIT_NAME}**. Note that the designer is permitted to introduce new ideas and details that go beyond the proposal, provided they improve the design without altering its core concept.
+
+- **Design Idea (Analysis)**:
+  {ANALYSIS}
+
+- **Full GAU Implementation**:
+  ```python
+  {IMPLEMENTATION}
+  ```
+
+---
+
+### Checker Report:
+
+The checker has evaluated the GAU's behavior, including aspects such as forward and backward passes, causality, and integration with other previously implemented GAUs. The execution trace is provided for your reference:
+
+```bash
+{CHECKER_REPORT}
+```
+
+---
+
+### Instructions for Review:
+
+1. **Review the Proposal**: Begin by reviewing the original proposal to understand the objectives behind the design.
+
+2. **Evaluate the Design**:
+   - Review the design idea (analysis) and check if the implementation aligns with the theoretical framework.
+   - Ensure that any new ideas introduced by the designer enhance the design without straying from the core concept.
+
+3. **Checker Feedback**:
+   - Examine the checker report to verify that the GAU functions correctly when integrated into the full LM model.
+
+4. **Suggestions**:
+   - Provide constructive feedback, especially if there are any issues or concerns with the design or implementation.
+
+---
+
+### Final Considerations:
+
+- **Focus on the Current Unit**: The designer is working on one unit at a time using a top-down approach. Unimplemented placeholders are acceptable and will be handled later. Your review should focus on the unit being reviewed, not the placeholders.
+- **Theoretical Focus**: Empirical results are not expected at this stage, so base your review on the theoretical soundness of the design.
+
+Be strict, fair, and thorough in your evaluation. Only approve the design if it meets a high standard of quality and innovation.
+"""
+
+GUE_IMPLEMENTATION_UNIT_REVIEW = AgentPrompt(GUE_IMPLEMENTATION_UNIT_REVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
+
+
+# endregion
+

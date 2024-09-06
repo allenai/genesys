@@ -40,7 +40,11 @@ def design(evosys,project_dir):
             if mode=='Design from existing design' and source=='ReferenceCoreWithTree':
                 n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=1,value=1,max_value=1,disabled=True)
             else:
-                n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=0,max_value=sources[source])
+                init_value=min(1,sources[source])
+                n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=init_value,max_value=sources[source])
+
+    if mode!='Design from existing design':
+        st.write("WARNING: Design from scratch has not been updated, it may not work as expected.")
 
     submit = st.button(label="Design model")
 

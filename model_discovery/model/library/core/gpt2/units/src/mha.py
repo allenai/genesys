@@ -30,6 +30,7 @@ class MHA(GAUBase):
         d_conv: int=0,
         device=None,
         dtype=None,
+        **kwargs,
     ) -> None:
         """
         num_heads_kv: can be used to toggle MQA / GQA. If None, use num_heads.

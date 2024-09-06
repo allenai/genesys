@@ -102,6 +102,19 @@ class GABComposer:
             gathered_args.update(unit.args)
 
         
+        gab_code=self.compose_root(root_node)
+        cfg_code=f'gab_config = {str(gathered_args)}'
+
+        compoesed_code = f'{gab_code}\n\n{gau_code}\n\n{cfg_code}'
+
+        compoesed_code=U.replace_from_second(compoesed_code,'import torch\n','')
+        compoesed_code=U.replace_from_second(compoesed_code,'import torch.nn as nn\n','')
+        compoesed_code=U.replace_from_second(compoesed_code,'from model_discovery.model.utils.modules import GAUBase, gau_test\n','')
+
+        return compoesed_code
+    
+    def compose_root(self,root_node):
+        
         GAB_TEMPLATE='''
 # gab.py    # DO NOT CHANGE OR REMOVE THE MAKK HERE, KEEP IT ALWAYS THE FIRST LINE #
 
@@ -123,17 +136,8 @@ class GAB(GABBase):
 '''
 
         gab_code=GAB_TEMPLATE.format(ROOT_UNIT_NAME=root_node.spec.unitname)
-
-        cfg_code=f'gab_config = {str(gathered_args)}'
-
-        compoesed_code = f'{gab_code}\n\n{gau_code}\n\n{cfg_code}'
-
-        compoesed_code=U.replace_from_second(compoesed_code,'import torch\n','')
-        compoesed_code=U.replace_from_second(compoesed_code,'import torch.nn as nn\n','')
-        compoesed_code=U.replace_from_second(compoesed_code,'from model_discovery.model.utils.modules import GAUBase, gau_test\n','')
-
-        return compoesed_code
- 
+        return gab_code
+    
     def compose_unit(self, tree, unit_name):
         if unit_name not in tree.units:
             print(f"Unit {unit_name} is not in the tree")
@@ -329,6 +333,9 @@ class GAUTree:
     def compose(self): # compose the GAB from the GAUTree and test it
         return GABComposer().compose(self)
     
+    def compose_root(self): # compose the root of the GAUTree
+        return GABComposer().compose_root(self.root)
+
     def compose_unit(self, unit_name): # compose a single unit for running unit tests
         return GABComposer().compose_unit(self, unit_name)
     
@@ -380,63 +387,112 @@ class GAUTree:
                     line_num=int(line.split(f'File "{fname}", line ')[-1].split(',')[0].strip())
                     line=line.replace(f'line {line_num}',f'line {line_num}: {code_lines[line_num-1]}')
                 new_check_report.append(line)
-            check_report='\n'.join(new_check_report)                
-            report = f"Unit tests outputs for {unit_name}:\n\n{check_report}"
+            report='\n'.join(new_check_report)                
             if need_code_lines:
-                report = f'Unit tests code with line number:\n\n{U.add_line_num(code)}\n\n{report}'
+                report = f'Exported unit tests script with line number:\n\n{U.add_line_num(code)}\n\n{'-'*100}\n\n{report}'
         else:
             report = f"No output captured for {unit_name} unit tests"
 
         if return_code:
             return report, code, passed
         return report, passed
-
-    
-    def _view(self,_name,path='',node=None,pstr='',unimplemented=set()):
-        # create a string representation of the tree
-        name=_name
+        
+    def _view(self, _name, path='', node=None, pstr='', unimplemented=set()):
+        """
+        Create a string representation of the GAU tree structure.
+        """
+        name = _name
+        
+        # Handling unimplemented nodes
         if node is None: 
             name += ' (Unimplemented)'
             unimplemented.add(_name)
         else:
             if node.rating is not None:
                 name += f" (Rating: {node.rating}/5)"
-        if path!='':
-            level=len(path.split('.'))
-            name='    '*level+' |- '+name
-            path+='.'+_name
+        
+        # Define levels for tree structure indentation
+        if path != '':
+            level = len(path.split('.'))
+            name = '    ' * level + ' |- ' + name
+            path += '.' + _name
         else:
-            pstr+=f'GAU Tree Map of {self.name}:\n'
-            path=_name
-        pstr+='  '+name+'\n'
+            pstr += f'GAU Tree Map for {self.name}:\n'
+            path = _name
+        
+        pstr += '  ' + name + '\n'
+        
+        # Recursively view child nodes
         if node is not None:
             for child_unit in node.children:
-                child_node = self.units.get(child_unit,None)
-                pstr,unimplemented=self._view(child_unit,path,child_node,pstr,unimplemented)
-        return pstr,unimplemented
+                child_node = self.units.get(child_unit, None)
+                pstr, unimplemented = self._view(child_unit, path, child_node, pstr, unimplemented)
+        
+        return pstr, unimplemented
 
-    def view(self):
-        pstr,unimplemented=self._view(self.root.spec.unitname,node=self.root)
+    def view(self, unit_code=True):
+        """
+        Returns a detailed view of the GAU tree, showing implemented and unimplemented units,
+        along with their specifications and code if applicable.
+        """
+        pstr, unimplemented = self._view(self.root.spec.unitname, node=self.root)
+        
+        # Collect implemented and unimplemented units
         implemented = set(self.units.keys())
-        pstr+='\nImplemented Units: '+', '.join(implemented)
-        if len(unimplemented)>0:
-            pstr+='\nUnimplemented Units: '+', '.join(unimplemented)
+        
+        # Display implemented and unimplemented units
+        pstr += '\nImplemented Units: ' + ', '.join(implemented)
+        if unimplemented:
+            pstr += '\nUnimplemented Units: ' + ', '.join(unimplemented)
         else:
-            pstr+='\nAll units are implemented.'
-
-        pstr+='\n\nSpecifications for Implemented Units:\n'
+            pstr += '\nAll units are implemented.'
+        
+        pstr += '\n\nSpecifications for Implemented Units:\n'
+        
+        # Append specifications and code for implemented units
         for unit in self.units.values():
-            pstr+=unit.spec.to_prompt()+'\n'
-        if len(unimplemented)>0:
-            pstr+='\n\nDeclarations for Unimplemented Units:\n'
+            pstr += unit.spec.to_prompt() + '\n'
+            if unit_code:
+                pstr += f'\nCode:\n```python\n{unit.code}\n```\n'
+        
+        # Append unimplemented unit declarations
+        if unimplemented:
+            pstr += '\n\nDeclarations for Unimplemented Units:\n'
             for unit in unimplemented:
-                pstr+=self.declares[unit].to_prompt()+'\n'
-        return pstr,list(implemented),list(unimplemented)
-    
-    def to_prompt(self):
-        view,_,_=self.view()
-        code=self.compose()
-        return f'## Tree Map of the GAUs\n<details><summary>Click me</summary>\n\n```bash\n{view}\n```\n</details>\n\n## Composed GAB Code\n<details><summary>Click me</summary>\n\n```python\n{code}\n```\n</details>\n\n'
+                pstr += self.declares[unit].to_prompt() + '\n'
+        
+        return pstr, list(implemented), list(unimplemented)
+
+    def to_prompt(self, unit_code=True):
+        """
+        Generates the final prompt including the GAU tree and the composed LM block code.
+        """
+        view, _, _ = self.view(unit_code)
+        
+        # Generate the complete composed LM block code
+        code = self.compose_root() if unit_code else self.compose()
+        
+        return (
+            f'## Tree Map of the GAUs\n'
+            '<details><summary>Click to expand</summary>\n\n'
+            f'```bash\n{view}\n```\n'
+            '</details>\n\n'
+            '## Composed LM Block Code\n'
+            '<details><summary>Click to expand</summary>\n\n'
+            f'```python\n{code}\n'
+            '... # Unit implementations\n```\n'
+            '</details>\n\n'
+        ) if unit_code else (
+            f'## Tree Map of the GAUs\n'
+            '<details><summary>Click to expand</summary>\n\n'
+            f'```bash\n{view}\n```\n'
+            '</details>\n\n'
+            '## Composed LM Block Code\n'
+            '<details><summary>Click to expand</summary>\n\n'
+            f'```python\n{code}\n```\n'
+            '</details>\n\n'
+        )
+
 
     @classmethod
     def load_from_base(cls,path,lib_dir=None):

@@ -137,8 +137,6 @@ class RotaryPositionalEmbeddings(GAUBase):
 
 
 
-
-
 @gau_test
 def test_rotarypositionalembeddings(device=None,dtype=None):    
     embed_dim=128

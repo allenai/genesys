@@ -9,9 +9,10 @@ import astor
 
 
 
-class GAUFinder(ast.NodeTransformer):
+class GAUFinder(ast.NodeVisitor):
     def __init__(self):
         self.gaubase_classes = []
+        self.errors = []
 
     def visit_ClassDef(self, node):
         # Extract the base class names
@@ -19,7 +20,14 @@ class GAUFinder(ast.NodeTransformer):
 
         # Check for classes inheriting from GAUBase
         if any(base == "GAUBase" for base in base_names):
-            self.gaubase_classes.append(node)
+            if len(base_names) == 1:
+                self.gaubase_classes.append(node)
+            else:
+                self.errors.append(f"class {node.name}({','.join(base_names)}): a GAU can only inherit from GAUBase directly, not multiple classes: {base_names}.")  
+
+        # Check for nn.Module
+        if any(base == "Module" for base in base_names):
+            self.errors.append(f"class {node.name}({','.join(base_names)}): you are not allowed to define any nn.Module, whenever you need a submodule, declare a child GAU instead.")
         
         return self.generic_visit(node)
 
@@ -798,23 +806,38 @@ def check_and_reformat_gau_code(source_code, unit_name, children):
     # Step 1: Parse the source code into an AST
     tree = ast.parse(source_code)
     errors = []
+    fetal_errors = []
     warnings = []
 
     # Step 2: Run the format checker which now removes the import lines
     gaufinder = GAUFinder()
     gaufinder.visit(tree)
+    fetal_errors += gaufinder.errors
     gau_classes = gaufinder.gaubase_classes
+
+    if len(gau_classes)==1:
+        if gau_classes[0].name != unit_name:
+            errors.append(f"Error: GAUBase class {unit_name} not found, found a GAUBase class {gau_classes[0].name} instead. "
+                          "Please make sure the GAUBase class name is the same as the unit name. If you are refining a unit, you should keep the name of the class unchanged. Do not use the new name to rename the class. "
+                          "The checker will continue the checking process by assuming this class is the unit class."
+                          )
+    elif len(gau_classes) > 1:
+        errors.append(
+            f"Error: Multiple GAUBase classes found: {', '.join(cls.name for cls in gau_classes)}. Please make sure there is only one GAUBase class and the unit name is the same as the GAUBase class name."
+            " If you want to define children GAUs, please leave them as placeholder for now and do not implement them, you will be asked to implement them later."
+            " If you are refining a unit, you should keep the name of the class unchanged. Do not use the new name to rename the class."
+            " The checker will continue the checking process if there is a GAUBase class matches the unit name. Or assuming `GAU` is the unit class."
+        )
+        # for cls in gau_classes:
+        #     if cls.name in [unit_name, "GAU"]: 
+        #         continue
+        #     if cls.name not in children:
+        #         errors.append(f"Error: GAUBase class '{cls.name}' you defined is not provided in children list, if you need to define a children in your GAU, you need to declare it and provide in your children list.")
+
     format_checker = FormatChecker(unit_name, gau_classes)
     format_checker.visit(tree)
     if not format_checker.gau_class_found:
-        errors.append(f"Error: Cannot detect the unit class.")
-
-    if len(gau_classes) > 1:
-        for cls in gau_classes:
-            if cls.name in [unit_name, "GAU"]: 
-                continue
-            if cls.name not in children:
-                errors.append(f"Error: GAUBase class '{cls.name}' you defined is not provided in children list, if you need to define a children in your GAU, you need to declare it and provide in your children list.")
+        fetal_errors.append(f"Error: Cannot detect the unit class.")
 
     # Step 3: Run the GauTestChecker to detect and remove functions decorated by @gau_test
     gau_test_checker = GauTestChecker(unit_name)
@@ -848,26 +871,25 @@ def check_and_reformat_gau_code(source_code, unit_name, children):
     attribute_checker = AttributeChecker(unit_name, children, code_lines)
     attribute_checker.visit(tree)
     if not attribute_checker.found_init:
-        errors.append("Error: No __init__ method found in the GAU.")
+        fetal_errors.append("Error: No __init__ method found in the GAU.")
     if not attribute_checker.found__forward:
-        errors.append("Error: No _forward method found in the GAU.")
+        fetal_errors.append("Error: No _forward method found in the GAU.")
     new_args = attribute_checker.new_args
 
     gau_instances = {key.replace("self.", ""): value for key, value in attribute_checker.gau_instances.items()}   
-    print(gau_instances)
     gaucallchecker = GAUCallChecker(unit_name, gau_instances, code_lines, children)
     gaucallchecker.visit(tree)
-    errors += gaucallchecker.errors
+    fetal_errors += gaucallchecker.errors
 
     # Step 7: Generate the reformatted source code
     reformatted_code = astor.to_source(tree)
     
     # Step 8: Collect errors and warnings
-    errors += format_checker.errors + attribute_checker.errors + module_processor.errors
+    fetal_errors += format_checker.errors + attribute_checker.errors + module_processor.errors
     warnings += format_checker.warnings + gau_test_checker.warnings + attribute_checker.warnings
 
     # Return the reformatted code, any new arguments, errors, and warnings
-    return reformatted_code, new_args, gau_tests, errors, warnings
+    return reformatted_code, new_args, gau_tests, errors, warnings, fetal_errors
 
 
 

@@ -889,9 +889,9 @@ class Checker(exec_utils.BaseTool):
                     glm,_ = reload_gam(config,gab_code,name,**U.get_factory_kwargs())
                 captured = _test_output.getvalue()
                 if captured != '':
-                    captured_output += f' - Captured outputs during the loading and initialization of the model:\n\n{captured}\n\nEND OF CAPTURED OUTPUT.\n\n'
+                    captured_output += f' - Captured outputs during the loading and initialization of the model:\n\nBEGIN OF CAPTURED OUTPUT:\n\n{captured}\n\nEND OF CAPTURED OUTPUT.\n\n'
                 else:
-                    captured_output += ' - No captured output during the loading and initialization of the model.\n\nEND OF CAPTURED OUTPUT.\n\n'
+                    captured_output += ' - No captured output during the loading and initialization of the model.\n\n'
 
                 mock_input=torch.randint(0, config.vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
                 mock_input = mock_input.to(glm.device)
@@ -910,11 +910,11 @@ class Checker(exec_utils.BaseTool):
 
                 captured = _test_output.getvalue()
                 if captured:
-                    captured_output += f' - Captured output or error during forward pass of the model:\n\n{captured}\n\nEND OF CAPTURED OUTPUT.\n\n'
+                    captured_output += f' - Captured output or error during forward pass of the model:\n\nBEGIN OF CAPTURED OUTPUT:\n\n{captured}\n\nEND OF CAPTURED OUTPUT.\n\n'
                 else:
-                    captured_output += ' - No captured output or error during the forward pass of the model.\n\nEND OF CAPTURED OUTPUT.\n\n'
+                    captured_output += ' - No captured output or error during the forward pass of the model.\n\n'
 
-                self.rprint(f'Forward check passed. Captured output during the test:\n\n{captured_output}\n\nEND OF CAPTURED OUTPUT.\n\n')
+                self.rprint(f'Forward check finished. Captured output during the test:\n\nBEGIN OF CAPTURED OUTPUT:\n\n{captured_output}\n\nEND OF CAPTURED OUTPUT.\n\n')
                 print(f'Time for the first forward pass: {time.time()-t0:.2f}s')
         
             except Exception as e:
@@ -922,10 +922,10 @@ class Checker(exec_utils.BaseTool):
                 self.rprint(
                     'Error: Model initialization failed with error: '+str(e)+'\n'
                     'Full Traceback: \n' + error_trace + '\n'
-                    'Captured output during the test:\n\n' + captured_output + '\n\nEND OF CAPTURED OUTPUT.\n\n'
-                    'Hint: 1. if it is a dtype or device error, check whether the factory kwargs are passed to the layers, and whether you manually designate a type instead of apply the type from factory kwargs or the input\'s type during conversion or creating of an variable. '
-                    '2. If it is a shape error, check whether the output shape is equal to the input shape. The output shape of GAB should be the same as the input. '
-                    '3. Always remember to follow the template and do not implement redundant part like embedding layer. '
+                    f'Captured output during the test:\n\nBEGIN OF CAPTURED OUTPUT:\n\n{captured_output}\n\nEND OF CAPTURED OUTPUT.\n\n'
+                    'Hints: 1. if it is a dtype or device error, check whether the factory kwargs are passed to the layers, and whether you manually designate a type instead of apply the type from factory kwargs or the input\'s type during conversion or creating of an variable. \n'
+                    '2. If it is a shape error, check whether the output sequence shape is equal to the input sequence shape. GAU must accept a sequence X and additional arguments from Z as input and output a sequence Y with the same shape of input sequence and optional updated intermediate variables Z. \n'
+                    '3. Always remember to strictly follow the GAU template and do not implement redundant part like embedding layer. \n'
                 )
                 self.hints.append('REFRESH_TEMPLATE')
                 check_report=self.get_report(gab_code)
