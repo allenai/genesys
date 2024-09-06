@@ -79,7 +79,7 @@ class ClaudeAgent(exec_utils.SimpleLMAgent):
             self.logprobs = False
         raw_response = claude__call__(
             self.model,
-            response_format=self.response_format, # not supported for claude
+            response_format=self.response_format, # not stably supported for claude
             prompt=query,
             model_state=self.model_state, 
             history=tuple(manual_history),

@@ -97,41 +97,7 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
         see https://openai.com/index/introducing-structured-outputs-in-the-api/ for more details.
 
     example for json_schema, it also supports pydantic models, see url above:
-    
-    response_format = {
-        "type": "json_schema",
-        "json_schema": {
-            "name": "math_response",
-            "strict": True,
-            "schema": {
-                "type": "object",
-                "properties": {
-                "steps": {
-                    "type": "array",
-                    "items": {
-                    "type": "object",
-                    "properties": {
-                        "explanation": {
-                        "type": "string"
-                        },
-                        "output": {
-                        "type": "string"
-                        }
-                    },
-                    "required": ["explanation", "output"],
-                    "additionalProperties": False
-                    }
-                },
-                "final_answer": {
-                    "type": "string"
-                }
-                },
-                "required": ["steps", "final_answer"],
-                "additionalProperties": False
-            }
-        }
-    } 
-    or pydantic BaseModel # Recommended!
+    pydantic BaseModel # Recommended!
     """
     
     assert 'gpt-4o' in model._config.model_name
@@ -183,11 +149,13 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
 '''
 
 import anthropic
+from langchain_anthropic import ChatAnthropic
 
 
-def claude_create_message(query,instruction,examples,history):
+def claude_create_message(query,instruction=[],examples=[],history=[]):
     messages = []
     for content,role in history:
+        role = 'user' if role!='assistant' else 'assistant'
         messages.append({"content": content, "role": role})
     messages.append({"content": query, "role": "user"})
     return messages
@@ -234,9 +202,11 @@ def claude__call__(
             **kwargs
         )
     
-    message = model_state.create_message(
+    message = claude_create_message(
         query=prompt,
-        manual_history=history
+        instruction=instruction,
+        examples=examples,
+        history=history
     )
     return _prompt_model_claude(model,message,system,response_format,logprobs,**kwargs)
 
@@ -265,32 +235,56 @@ def _prompt_model_claude(model,message,system,response_format,logprobs=False,**k
         f'Error encountered when running model, msg={e}'
     )
 
+
+def to_langchain_message(message,system):
+    messages = [("system",system)]
+    for msg in message:
+        messages.append((msg['role'],msg['content']))
+    return messages
+
 def call_model_claude(model,message,system,response_format, logprobs=False) -> ModelOutput:
     """Calls the claude model 
     
     https://docs.anthropic.com/en/api/messages
 
     logprobs is not supported for claude
-    response_format is not supported for claude
+    response_format is not stably supported for claude
     """
     
-    RET=anthropic.Anthropic().messages.create(
-        model="claude-3-5-sonnet-20240620", # model in config is ignored
-        max_tokens=model._config.max_output_token,
-        messages=message, 
-        temperature=model._config.temperature,
-        system=system, # claude does not has system role, system prompt must be passed separately
-    )
-    if RET['type']=='error':
-        raise Exception(RET['error'])
-    else:
+    if response_format is not None and inspect.isclass(response_format) and issubclass(response_format,BaseModel):
+        model = ChatAnthropic(
+            model="claude-3-5-sonnet-20240620", 
+            temperature=model._config.temperature,
+            max_tokens=model._config.max_output_tokens,
+        )
+        structured_llm = model.with_structured_output(response_format)
+
+        RET=structured_llm.invoke(to_langchain_message(message,system))
         return ModelOutput(
-            text=RET['content'][0]['text'],
+            text=str(RET.json()),
             cost=0,
             token_probs=[],
-            input_tokens=RET['usage']['input_tokens'],
-            output_tokens=RET['usage']['output_tokens']
+            input_tokens=0,
+            output_tokens=0,
         )
+    else:
+        RET=anthropic.Anthropic().messages.create(
+            model="claude-3-5-sonnet-20240620", # model in config is ignored
+            max_tokens=model._config.max_output_token,
+            messages=message, 
+            temperature=model._config.temperature,
+            system=system, # claude does not has system role, system prompt must be passed separately
+        )
+        if RET['type']=='error':
+            raise Exception(RET['error'])
+        else:
+            return ModelOutput(
+                text=RET['content'][0]['text'],
+                cost=0,
+                token_probs=[],
+                input_tokens=RET['usage']['input_tokens'],
+                output_tokens=RET['usage']['output_tokens']
+            )
 
 
 

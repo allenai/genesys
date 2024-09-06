@@ -817,6 +817,13 @@ class GUFlowExisting(FlowCreator):
         self.gpt4omini_agent=self.system.debugger 
         self.claude_agent=self.system.claude
 
+        self.agents={
+            'DESIGN_PROPOSER':self.claude_agent,
+            'PROPOSAL_REVIEWER':self.claude_agent,
+            'DESIGN_IMPLEMENTER':self.gpt4o0806_agent,
+            'IMPLEMENTATION_REVIEWER':self.claude_agent,
+        }
+
         self.tree = tree
 
     def _links(self):
@@ -861,7 +868,7 @@ class GUFlowExisting(FlowCreator):
         context_proposal_reviewer=AgentContext()
         SELECTIONS=list(self.tree.units.keys())
         for i in range(self.max_attemps['design_proposal']):
-            DESIGN_PROPOSER=reload_role('designer',self.gpt4o0806_agent,P.GUE_DESIGN_PROPOSER_SYSTEM(GAU_BASE=GAU_BASE))
+            DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],P.GUE_DESIGN_PROPOSER_SYSTEM(GAU_BASE=GAU_BASE))
             design_proposer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_PROPOSER,context=context_design_proposer,
                                                 alias='design_proposal',note=f'Starting design proposal...')
             if i==0:
@@ -894,7 +901,7 @@ class GUFlowExisting(FlowCreator):
                 self.print_raw_output(out)
 
 
-            PROPOSAL_REVIEWER=reload_role('proposal_reviewer',self.gpt4o0806_agent,P.GUE_PROPOSAL_REVIEWER_SYSTEM())
+            PROPOSAL_REVIEWER=reload_role('proposal_reviewer',self.agents['PROPOSAL_REVIEWER'],P.GUE_PROPOSAL_REVIEWER_SYSTEM())
             proposal_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,PROPOSAL_REVIEWER,context=context_proposal_reviewer,
                                                 alias='proposal_review',note=f'Reviewing proposal...')
             if i==0:
@@ -988,7 +995,7 @@ class GUFlowExisting(FlowCreator):
 
             ################# SELECTING THE NEXT UNIT TO WORK ON #################
 
-            DESIGN_IMPLEMENTER=reload_role('design_implementer',self.gpt4o0806_agent,P.GUE_DESIGNER_SYSTEM(
+            DESIGN_IMPLEMENTER=reload_role('design_implementer',self.agents['DESIGN_IMPLEMENTER'],P.GUE_DESIGNER_SYSTEM(
                 GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
             design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
                                                 alias='design_implementation',note=f'Starting design implementation...')
@@ -1033,7 +1040,7 @@ class GUFlowExisting(FlowCreator):
 
             tree_backup=copy.deepcopy(self.tree) # backup the tree for rollback
             for attempt in range(self.max_attemps['implementation_debug']):
-                DESIGN_IMPLEMENTER=reload_role('design_implementer',self.gpt4o0806_agent,P.GUE_DESIGNER_SYSTEM(
+                DESIGN_IMPLEMENTER=reload_role('design_implementer',self.agents['DESIGN_IMPLEMENTER'],P.GUE_DESIGNER_SYSTEM(
                     GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
                 design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
                                                     alias='design_implementation',note=f'Starting design implementation...')
@@ -1206,7 +1213,7 @@ class GUFlowExisting(FlowCreator):
                     }
 
                 ########################### Review the implementation ###########################
-                IMPLEMENTATION_REVIEWER=reload_role('implementation_reviewer',self.gpt4o0806_agent, 
+                IMPLEMENTATION_REVIEWER=reload_role('implementation_reviewer',self.agents['IMPLEMENTATION_REVIEWER'], 
                                                     P.GUE_IMPLEMENTATION_REVIEWER_SYSTEM())
                 implementation_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_REVIEWER,context=context_implementation_reviewer,
                                                     alias='implementation_review',note=f'Reviewing implementation...')
