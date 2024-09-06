@@ -21,7 +21,7 @@ __all__ = [
 @exec_utils.Registry(
     resource_type="agent_model_type",
     name="claude_agent",
-    cache="query"
+    cache=None
 )
 class ClaudeAgent(exec_utils.SimpleLMAgent):
     """Claude Base Agent 

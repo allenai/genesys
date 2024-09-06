@@ -25,6 +25,7 @@ import math
 try: # a stupid patch for windows
     from .secrets import *
     os.environ['MY_OPENAI_KEY']=MY_OPENAI_KEY
+    os.environ['CLAUDE_API_KEY']=CLAUDE_API_KEY
     os.environ['HF_KEY']=HF_KEY
     os.environ['HF_HUB_KEY']=HF_HUB_KEY
     os.environ['GITHUB_TOKEN']=GITHUB_TOKEN

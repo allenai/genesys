@@ -21,7 +21,7 @@ __all__ = [
 @exec_utils.Registry(
     resource_type="agent_model_type",
     name="designer_agent",
-    cache="query"
+    cache=None
 )
 class DesignerAgent(exec_utils.SimpleLMAgent):
     """Agent for designing new models. Can be applied as a gpt base agent.

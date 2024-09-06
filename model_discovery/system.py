@@ -111,33 +111,33 @@ class CustomParams(exec_utils.ModuleParams):
             "exclude_hash" : True,
         }
     )
-    reviewer_spec_creative: str = exec_utils.ParamField(
-        default=os.path.abspath(
-            f'{PROJ_SRC}/../etc/agent_spec/reviewer_creative.json'
-        ),
-        metadata={
-            "help"         : 'Specification of creative reviewer agent',
-            "exclude_hash" : True,
-        }
-    )
-    reviewer_spec_balance: str = exec_utils.ParamField(
-        default=os.path.abspath(
-            f'{PROJ_SRC}/../etc/agent_spec/reviewer_balance.json'
-        ),
-        metadata={
-            "help"         : 'Specification of balance reviewer agent',
-            "exclude_hash" : True,
-        }
-    )
-    reviewer_spec_rigorous: str = exec_utils.ParamField(
-        default=os.path.abspath(
-            f'{PROJ_SRC}/../etc/agent_spec/reviewer_rigorous.json'
-        ),
-        metadata={
-            "help"         : 'Specification of rigorous reviewer agent',
-            "exclude_hash" : True,
-        }
-    )
+    # reviewer_spec_creative: str = exec_utils.ParamField(
+    #     default=os.path.abspath(
+    #         f'{PROJ_SRC}/../etc/agent_spec/reviewer_creative.json'
+    #     ),
+    #     metadata={
+    #         "help"         : 'Specification of creative reviewer agent',
+    #         "exclude_hash" : True,
+    #     }
+    # )
+    # reviewer_spec_balance: str = exec_utils.ParamField(
+    #     default=os.path.abspath(
+    #         f'{PROJ_SRC}/../etc/agent_spec/reviewer_balance.json'
+    #     ),
+    #     metadata={
+    #         "help"         : 'Specification of balance reviewer agent',
+    #         "exclude_hash" : True,
+    #     }
+    # )
+    # reviewer_spec_rigorous: str = exec_utils.ParamField(
+    #     default=os.path.abspath(
+    #         f'{PROJ_SRC}/../etc/agent_spec/reviewer_rigorous.json'
+    #     ),
+    #     metadata={
+    #         "help"         : 'Specification of rigorous reviewer agent',
+    #         "exclude_hash" : True,
+    #     }
+    # )
     debugger_spec: str = exec_utils.ParamField(
         default=os.path.abspath(
             f'{PROJ_SRC}/../etc/agent_spec/debugger.json'
@@ -279,8 +279,8 @@ class ModelDiscoverySystem(exec_utils.System):
     --------
     :param designer: 
         The designer LLM agent. 
-    :param reviewers: 
-        The reviewer LLM agents. 
+    # :param reviewers: 
+    #     The reviewer LLM agents. 
     :param checker: 
         The checker tool agent. 
     :param debugger:
@@ -310,7 +310,7 @@ class ModelDiscoverySystem(exec_utils.System):
     def __init__(
         self,
         designer : Type[exec_utils.SimpleLMAgent],
-        reviewers : Dict[str,Type[exec_utils.SimpleLMAgent]],
+        # reviewers : Dict[str,Type[exec_utils.SimpleLMAgent]],
         checker  : Type[exec_utils.BaseTool], 
         debugger : Type[exec_utils.SimpleLMAgent],
         claude : Type[exec_utils.SimpleLMAgent],
@@ -326,8 +326,8 @@ class ModelDiscoverySystem(exec_utils.System):
         
         :param designer: 
             The designer agent. 
-        :param reviewers: 
-           The reviewer agents. 
+        # :param reviewers: 
+        #    The reviewer agents. 
         :param block_template: 
            The autoregressive block that the model has to fill in.
         :param model_implementation: 
@@ -338,7 +338,7 @@ class ModelDiscoverySystem(exec_utils.System):
         """
         ### modules 
         self.designer = designer
-        self.reviewers = reviewers
+        # self.reviewers = reviewers
         self.checker = checker
         self.debugger = debugger
 
@@ -369,8 +369,9 @@ class ModelDiscoverySystem(exec_utils.System):
         system_info = {}
         system_info['agents']={
             'designer':self.designer.config,
-            'reviewers':{style:agent.config for style,agent in self.reviewers.items()},
-            'debugger':self.debugger.config
+            # 'reviewers':{style:agent.config for style,agent in self.reviewers.items()},
+            'debugger':self.debugger.config,
+            'claude':self.claude.config
         }
 
     def new_session(self,log_dir=None,stream=None):
@@ -438,23 +439,23 @@ class ModelDiscoverySystem(exec_utils.System):
         checker = BuildTool(
             tool_type="checker",
         )
-        reviewers = {
-            'balance': BuildAgent(
-                config,
-                agent_file=config.reviewer_spec_balance,
-                agent_model_type="reviewer_agent"
-            ),
-            'creative': BuildAgent(
-                config,
-                agent_file=config.reviewer_spec_creative,
-                agent_model_type="reviewer_agent"
-            ),
-            'rigorous': BuildAgent(
-                config,
-                agent_file=config.reviewer_spec_rigorous,
-                agent_model_type="reviewer_agent"
-            )
-        }
+        # reviewers = {
+        #     'balance': BuildAgent(
+        #         config,
+        #         agent_file=config.reviewer_spec_balance,
+        #         agent_model_type="reviewer_agent"
+        #     ),
+        #     'creative': BuildAgent(
+        #         config,
+        #         agent_file=config.reviewer_spec_creative,
+        #         agent_model_type="reviewer_agent"
+        #     ),
+        #     'rigorous': BuildAgent(
+        #         config,
+        #         agent_file=config.reviewer_spec_rigorous,
+        #         agent_model_type="reviewer_agent"
+        #     )
+        # }
         debugger = BuildAgent(
             config,
             agent_file=config.debugger_spec,
@@ -472,7 +473,7 @@ class ModelDiscoverySystem(exec_utils.System):
         
         return cls(
             designer,
-            reviewers,
+            # reviewers,
             checker,
             debugger,
             claude,

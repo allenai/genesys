@@ -815,6 +815,7 @@ class GUFlowExisting(FlowCreator):
         # prepare roles
         self.gpt4o0806_agent=self.system.designer # as we replaced the system prompt, essential its just a base agent
         self.gpt4omini_agent=self.system.debugger 
+        self.claude_agent=self.system.claude
 
         self.tree = tree
 
