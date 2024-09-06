@@ -1,11 +1,8 @@
 import torch    
 import torch.nn as nn
-
-from model_discovery.model.utils.modules import GAUBase,gau_test # DO NOT CHANGE THIS IMPORT STATEMENT #
-
 import torch.nn.functional as F
 
-
+from model_discovery.model.utils.modules import GAUBase,gau_test # DO NOT CHANGE THIS IMPORT STATEMENT #
 
 
 class GatedMLP(GAUBase):

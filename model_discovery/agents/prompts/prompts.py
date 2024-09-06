@@ -41,6 +41,7 @@ class UnitSpec(BaseModel):
    def to_prompt(self):
       return f"""
 Unit Name: {self.unitname}
+Document:
 '''
 {self.document}  
 '''
@@ -57,7 +58,6 @@ class GU_IMPLEMENTATION_ROOT_format(BaseModel):
 
 class GU_IMPLEMENTATION_format(BaseModel): 
    analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
-   document: str = Field(..., description="The document of the GAU, describe the function, interfaces, usages, etc. Allowing the user to understand how it works without reading the implementation.")
    children: list[UnitDeclaration] = Field(..., description="Declarations of the child GAUs in this GAU. It can be existing GAUs or new GAUs you want to declare.")
    implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
 
@@ -74,20 +74,18 @@ class DebuggingStep(BaseModel):
     diagnosis: str = Field(..., description="The diagnosis of the cause of the error.")
     suggested_action: str = Field(..., description="The suggested action to fix the error. Must be a concrete code about what to modify or print statements that help locate the error.")
 
-class GU_IMPLEMENTATION_RETRY_DEBUG_format(BaseModel): # for retry, only allow to update document
+class GU_IMPLEMENTATION_RETRY_DEBUG_format(BaseModel): # for retry
    reflection: str = Field(..., description="The reflection of the feedback from the reviewer.")
    debugging_steps: list[DebuggingStep] = Field(..., description="The debugging steps to fix the error.")
    analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
-   document: str = Field(..., description="The document of the GAU, describe the function, interfaces, usages, etc. Allowing the user to understand how it works without reading the implementation.")
    implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
    children: list[UnitDeclaration] = Field(..., description="Declarations of the child GAUs in this GAU. It can be existing GAUs or new GAUs you want to declare.")
    changes: str = Field(..., description="The exact changes you have made in the code. It must include detailed code diffs and necessary context with explanation.")
 
 
-class GU_IMPLEMENTATION_RETRY_format(BaseModel): # for retry, only allow to update document
+class GU_IMPLEMENTATION_RETRY_format(BaseModel): # for retry
    reflection: str = Field(..., description="The reflection of the feedback from the reviewer.")
    analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
-   document: str = Field(..., description="The document of the GAU, describe the function, interfaces, usages, etc. Allowing the user to understand how it works without reading the implementation.")
    implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
    children: list[UnitDeclaration] = Field(..., description="Declarations of the child GAUs in this GAU. It can be existing GAUs or new GAUs you want to declare.")
    changes: str = Field(..., description="The exact changes you have made in the code. It must include detailed code diffs and necessary context with explanation.")
@@ -96,7 +94,6 @@ class GU_IMPLEMENTATION_REFINE_format(BaseModel): # for refine, allow to update 
    newname: str = Field(..., description="The name of this GAU variant, remember that do not apply this new name to your implementation, keep the original name in the implementation.")
    reflection: str = Field(..., description="The reflection of the feedback from the reviewer.")
    analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
-   document: str = Field(..., description="The document of the GAU, describe the function, interfaces, usages, etc. Allowing the user to understand how it works without reading the implementation.")
    implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
    children: list[UnitDeclaration] = Field(..., description="Declarations of the child GAUs in this GAU. It can be existing GAUs or new GAUs you want to declare.")
    changes: str = Field(..., description="The exact changes you have made in the code. It must include detailed code diffs and necessary context with explanation.")
@@ -1013,7 +1010,7 @@ Please refine your design and implementation based on the feedback provided. You
    - After reflecting on the feedback and diagnosing any issues, proceed with the redesign:
      - **New analysis**: Provide an updated analysis based on the feedback.
      - **Detailed plan and pseudocode**: Outline how you will implement changes, ensuring alignment with the overall design goals.
-     - **Implementation**: Apply the potential solutions proposed during debugging and ensure that the code adheres to the required format and passes all necessary checks.
+     - **Implementation**: Apply the potential solutions proposed during debugging and ensure that the code adheres to the required format and passes all necessary checks. Remember to update the docstring of the GAU class accordingly.
      - **Change log**: Document every change you made, with detailed explanations and the relevant code snippets, including the surrounding context to illustrate how and why the edits were made.
 
 4. **Key Considerations**:
@@ -1769,7 +1766,7 @@ def gen_GUE_PROPOSAL_REFINEMENT(SELECTIONS):
    reflection of the feedback, then give the full proposal keeping the format
    instructions, finally, a summary of the changes you made.
    """
-   
+
    SelectionEnum=generate_enum_from_list('selection',SELECTIONS)
 
    class GUE_PROPOSAL_REFINEMENT_format(BaseModel):
@@ -1946,7 +1943,9 @@ subsequent stages.
    from the beginning, as you will not have access to modify other units.
  - You are expected to provide both an **analysis and reasoning** for your design,
    as well as the **implementation** of the refined GAU. The implementation must
-   follow this template:
+   follow this template, specifically, always remember to write the docstring for the 
+   GAU class following the instruction in the template which requires you to write the 
+   docstring with pytorch style:
 
 ```python {GAU_TEMPLATE} ```
 
@@ -1971,34 +1970,43 @@ errors into the model.
 GUE_DESIGNER_SYSTEM_prompt_part4 = """
 ## Guidelines for Designing the GAU:
 
-1. **Class Naming & Structure**:
-   - Ensure it is the only GAU class (inherited from `GAUBase`) in your
+1. **Class Naming & Structure**: - Ensure it is the only GAU class (inherited
+   from `GAUBase`) in your
      implementation and name it correctly with the name you provided. Avoid
      defining any other GAU classes.
    - Ensure you are referring to the right class names in unit tests. 
+   - You must provide default values for all the arguments you introduced in the
+     __init__ function of the GAU class or provide a way to handle the value
+     missing. Otherwise, the checker will fail.
 
-2. **GAU Call Behavior**:
-   - Always call the  GAU in this format: `Y,Z'={{unitname}}(X, **Z)`. If you want 
-     to pass any extra arguments than sequence X, pass it through the kwargs $Z$, 
-     e.g., Z['arg']=value. The outputs are always sequence $Y$ and updated $Z'$.
-     If you expect any extra outputs besides sequence $Y$, read it from $Z'$,
-     besides sequence $Y$, read it from $Z'$, e.g., var=Z'.get('var',None).
+2. **GAU Call Behavior**: - Always call the  GAU in this format:
+   `Y,Z'={{unitname}}(X, **Z)`. If you want 
+     to pass any extra arguments than sequence X, pass it through the kwargs
+     $Z$, e.g., Z['arg']=value. The outputs are always sequence $Y$ and updated
+     $Z'$. If you expect any extra outputs besides sequence $Y$, read it from
+     $Z'$, besides sequence $Y$, read it from $Z'$, e.g.,
+     var=Z'.get('var',None).
 
-3. **GAU Initialization**:
-   - Always define a GAU instance like this: 
+3. **GAU Initialization**: - Always define a GAU instance like this: 
      ```python self.{{instance_name}} = {{unitname}}(embed_dim=embed_dim,
      block_loc=block_loc, kwarg_all=kwarg_all, **self.factory_kwargs,
      **kwarg_all) ```
    - If you want to pass any extra arguments to the unit, pass it through the
-     kwarg_all dictionary. For example, you can set kwarg_all['arg']=value
-     before passing it to the constructor.
-
-4. **Embedding & Block Location**:
-   - `embed_dim` specifies the input dimension.
-   - `block_loc` is a tuple \((block\_idx, n\_block)\) that locates the GAU within
+     kwarg_all dictionary. For example, suppose you introduced two additional 
+     arguments, `arg1` and `arg2`, you can pass them like this:
+     ```python
+     kwarg_all['arg1']=...
+     kwarg_all['arg2']=...
+     ... = UnitName(..., kwarg_all=kwarg_all, ..., **kwarg_all)
+     ```
+     
+4. **Embedding & Block Location**: - `embed_dim` specifies the input dimension.
+   - `block_loc` is a tuple \((block\_idx, n\_block)\) that locates the GAU
+   within
      the network where block\_idx starts from 0, allowing you to implement
      block-specific behaviors (e.g., varying architectures or operations between
-     blocks, initializing intermediate variables acrossing blocks in the first block).
+     blocks, initializing intermediate variables acrossing blocks in the first
+     block).
 
 5. **Module Definition**:
     - Avoid using `GAU` instances inside `nn.Sequential`. You can use
@@ -2020,8 +2028,8 @@ GUE_DESIGNER_SYSTEM_prompt_part4 = """
       architectures like the vanilla Transformer—strive for creativity and
       transcendence over existing state-of-the-art models.
 
-9. **Be Consistent**:
-   - Ensure that the design is consistent and compatible with the overall system. The design
+9. **Be Consistent**: - Ensure that the design is consistent and compatible with
+   the overall system. The design
      should be able to fit into the overall system and should not introduce any
      inconsistencies, errors and redundancies. 
 
@@ -2147,30 +2155,33 @@ Below is the specification for the GAU you need to refine:
 If there is a review provided, you should start by reflecting on the feedback.
 Otherwise, leave reflection empty. The, proceed with the following:
 
-1. **New Analysis and Design**: - Provide an updated detailed analysis based on the
-   feedback, including your new design direction and justifications. - Include a
-   high-level pseudocode that captures the core of the new design. You should also 
-   provide the updated document of the GAU that allows other people to understand 
-   the design and implementation without the need to read the code.
+1. **New Analysis and Design**: - Provide an updated detailed analysis based on
+   the feedback, including your new design direction and justifications. -
+   Include a high-level pseudocode that captures the core of the new design. 
 
 2. **Implementation**: - Provide the full updated implementation of the GAU,
-   following the specified format and templates. 
+   following the specified format and templates. Remember to update the
+   docstring of the GAU class accordingly. Follow the instruction in the GAU
+   template carefully. If the original docstring is missing or incorrect or not 
+   following the template, please rewrite the docstring based on the new design.
 
-3. **Children list**: - Provide the list of the children GAUs that are declared in the 
-   current GAU. You can declare new children GAUs or preserve the existing ones. If you do 
-   not declare any new children GAUs, you should provide the original children GAUs. 
+3. **Children list**: - Provide the list of the children GAUs that are declared
+   in the current GAU. You can declare new children GAUs or preserve the
+   existing ones. If you do not declare any new children GAUs, you should
+   provide the original children GAUs. 
 
 4. **Log of Changes**: - Summarize the key changes you made during the
    refinement process. Including *all* code snippets where you made a change
    wrapped in ```python ```.
 
-### Key Points to Remember: 
-- The bug or issue must always be resolved within the current GAU, as other units are either 
-fully implemented and tested or placeholders that do not perform any computation. 
-- Ensure the GAU is self-contained, so you won't need to adjust it later when working on other
-units. 
-- The design must align with the original proposal and follow all instructions, templates, and format requirements.
-- Use a top-down approach: break down complex operations into smaller tasks where necessary and declare each of them as a child GAU. Do not make a single unit overly complex.
+### Key Points to Remember: - The bug or issue must always be resolved within
+the current GAU, as other units are either fully implemented and tested or
+placeholders that do not perform any computation. - Ensure the GAU is
+self-contained, so you won't need to adjust it later when working on other
+units. - The design must align with the original proposal and follow all
+instructions, templates, and format requirements. - Use a top-down approach:
+break down complex operations into smaller tasks where necessary and declare
+each of them as a child GAU. Do not make a single unit overly complex.
 
 Remember your final goal is to refine the GAU in a way that enhances the overall
 design, ensuring both correctness and innovation.
@@ -2207,7 +2218,8 @@ Below is the declaration of the GAU you are tasked with implementing. Please ens
 1. **Design and Implement the GAU**:
    - Your design should be based on the proposal, following the provided instructions, templates, and format requirements.
    - The implementation will be reviewed and tested. It will only be accepted once it passes both the review and the functionality checks.
-
+   - Write the docstring of the GAU class carefully. Follow the instruction about the format of the docstring in the GAU template carefully.
+   
 2. **Detailed Analysis**:
    - Your design should include a detailed analysis of how your implementation addresses the declared requirements. 
    - You may introduce new ideas and details not covered in the proposal if they improve the design.

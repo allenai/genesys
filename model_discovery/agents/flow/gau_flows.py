@@ -1090,7 +1090,7 @@ class GUFlowExisting(FlowCreator):
                     context_design_implementer=self.dialog.context(design_implementer_tid)
                     reflection,changes,debugging_steps=None,None,None
                     if REFINE: # 1. working on an existing unit 2. all >0 attempts
-                        reflection,analysis,implementation,changes,children,document=out['reflection'],out['analysis'],out['implementation'],out['changes'],out['children'],out['document']
+                        reflection,analysis,implementation,changes,children=out['reflection'],out['analysis'],out['implementation'],out['changes'],out['children']
                         self.stream.write(f'### Reflection\n{reflection}')
                         self.stream.write(f'## Refinement of {selection}')
                         if 'debugging_steps' in out:
@@ -1104,25 +1104,23 @@ class GUFlowExisting(FlowCreator):
                             self.stream.write(f'#### New Name: {NEWNAME}')
                         if selection in IMPLEMENTED: # update the unit spec for now, unit name update at the end
                             spec=self.tree.units[selection].spec
-                            spec.document=document
                         else: # possible when debugging the implementation of a new unit
                             spec = P.UnitSpec(
                                 unitname=selection,
-                                document=document,
+                                document=None,
                                 inputs=declaration.inputs,
                                 outputs=declaration.outputs
                             )
                     else: # only for the first attempt of a new unit, the reason we do this is that the response format is different for this case
-                        implementation,analysis,children,document=out['implementation'],out['analysis'],out['children'],out['document']
+                        implementation,analysis,children=out['implementation'],out['analysis'],out['children']
                         self.stream.write(f'## Implementation of {selection}')
                         spec = P.UnitSpec(
                             unitname=selection,
-                            document=document,
+                            document=None,
                             inputs=declaration.inputs,
                             outputs=declaration.outputs
                         )                    
                     self.stream.write(analysis)
-                    self.stream.write(f'### Document\n{document}')
                     self.stream.write(f'### Code\n```python\n{implementation}\n```')
                     if REFINE:
                         self.stream.write(f'### Changes\n{changes}')
@@ -1146,12 +1144,14 @@ class GUFlowExisting(FlowCreator):
                 # avoid redundant debugging steps, i.e. only the debug for the passed plans are needed
                 with self.status_handler('Checking the implementation of the selected unit...'):
                     # 1. check the format code for GAU
-                    reformatted_code,new_args,gau_tests,format_errors,format_warnings,fetal_errors=check_and_reformat_gau_code(implementation,selection,children)
+                    reformatted_code,new_args,gau_tests,format_errors,format_warnings,fetal_errors,docstring=check_and_reformat_gau_code(implementation,selection,children)
+                    spec.document=docstring
                     collapse_write(
                         self.stream,
                         'Code format check',
                         (
                             f'\n\n#### Format Check Passed: {len(format_errors+fetal_errors)==0}\n\n'
+                            f'#### Document\n{docstring}\n\n'
                             f'#### Reformatted Code\n\n```python\n{reformatted_code}\n```\n\n'
                             f'#### New Arguments\n{new_args}\n\n'
                             f'#### Format Errors\n{format_errors+fetal_errors}\n\n'

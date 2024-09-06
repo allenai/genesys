@@ -39,6 +39,7 @@ class FormatChecker(ast.NodeTransformer):
         self.found_gaubase_import = False
         self.gau_class_found = False
         self.gaubase_classes = gaubase_classes
+        self.docstring = None
         self.errors = []
         self.warnings = []
 
@@ -69,9 +70,11 @@ class FormatChecker(ast.NodeTransformer):
         if node.name == "GAU" or (len(self.gaubase_classes) == 1 and not self.gau_class_found):
             node.name = self.unit_name
             self.gau_class_found = True
+            self.docstring = ast.get_docstring(node)
         
         if node.name == self.unit_name:
             self.gau_class_found = True
+            self.docstring = ast.get_docstring(node)
         
         return self.generic_visit(node)
 
@@ -838,6 +841,7 @@ def check_and_reformat_gau_code(source_code, unit_name, children):
 
     format_checker = FormatChecker(unit_name, gau_classes)
     format_checker.visit(tree)
+    docstring=format_checker.docstring
     if not format_checker.gau_class_found:
         fetal_errors.append(f"Error: Cannot detect the unit class.")
 
@@ -891,7 +895,7 @@ def check_and_reformat_gau_code(source_code, unit_name, children):
     warnings += format_checker.warnings + gau_test_checker.warnings + attribute_checker.warnings
 
     # Return the reformatted code, any new arguments, errors, and warnings
-    return reformatted_code, new_args, gau_tests, errors, warnings, fetal_errors
+    return reformatted_code, new_args, gau_tests, errors, warnings, fetal_errors, docstring
 
 
 
