@@ -30,7 +30,7 @@ GAB_COMPOSER=inspect.getsource(GABComposer)
 
 def load_system_prompt(agent,prompt):
     agent.model_state.static_message=agent.model_state.fn(
-            instruction=prompt,examples=[]
+        instruction=prompt,examples=[]
     )
     return agent
 
@@ -1364,6 +1364,6 @@ def gu_design_existing(cls,instruct,stream,status_handler,seed,references=None):
     main_tid = cls.dialog.fork(0,note='Starting a new session...',alias='main')
     gu_flow = GUFlowExisting(cls, status_handler,stream,tree)
     GU_CALLEE = ROLE('GAB Unit Designer',gu_flow.flow)
-    gu_tid = cls.dialog.fork(main_tid,SYSTEM_CALLER,GU_CALLEE,note=f'launch design flow',alias=f'gu_design')
-    res,ret=cls.dialog.call(gu_tid,query,main_tid=main_tid,references=references)
+    gue_tid = cls.dialog.fork(main_tid,SYSTEM_CALLER,GU_CALLEE,note=f'launch design flow',alias=f'gu_design')
+    res,ret=cls.dialog.call(gue_tid,query,main_tid=main_tid,references=references)
 

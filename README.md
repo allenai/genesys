@@ -10,6 +10,7 @@ We recommend setting up a conda environment as below, remember to edit the `setu
 Environment variables needed: 
 ```shell
 export MY_OPENAI_KEY=YOURKEY
+export ANTHROPIC_API_KEY=YOURKEY
 export HF_KEY=YOURKEY
 export HF_HUB_KEY=YOURKEY
 export GITHUB_TOKEN=YOURKEY

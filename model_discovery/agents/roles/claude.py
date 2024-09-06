@@ -11,7 +11,7 @@ import re
 import exec_utils 
 from exec_utils.models.model import ModelOutput
 import random
-from ..agent_utils import structured__call__,ModelOutput
+from ..agent_utils import claude__call__,ModelOutput
 
 
 __all__ = [
@@ -77,13 +77,14 @@ class ClaudeAgent(exec_utils.SimpleLMAgent):
             self.response_format = None
         if not hasattr(self,"logprobs"): # PATCH
             self.logprobs = False
-        raw_response = structured__call__(
+        raw_response = claude__call__(
             self.model,
-            response_format=self.response_format, 
+            response_format=self.response_format, # not supported for claude
             prompt=query,
             model_state=self.model_state, 
             history=tuple(manual_history),
-            logprobs=self.logprobs,
+            logprobs=self.logprobs, # not supported for claude
+            system=self.model_state.static_message[0]['content'],
         )
         response = self.parse_output(raw_response)
 

@@ -72,19 +72,19 @@ def _prompt_model_structured(model,message,response_format,logprobs=False,**kwar
     
     """
     for i in range(model._config.num_calls):
-        # try:
-        return call_model_structured(model,message,response_format,logprobs=logprobs)
-        # except Exception as e:
-        #     model.logging.warning(
-        #         f'Issue encountered while running running, msg={e}, retrying',
-        #         exc_info=True
-        #     )
+        try:
+            return call_model_structured(model,message,response_format,logprobs=logprobs)
+        except Exception as e:
+            model.logging.warning(
+                f'Issue encountered while running running, msg={e}, retrying',
+                exc_info=True
+            )
             
-        #     time.sleep(2**(i+1))
+            time.sleep(2**(i+1))
 
-            # raise ModelRuntimeError(
-            #     f'Error encountered when running model, msg={e}'
-            # )
+    raise ModelRuntimeError(
+        f'Error encountered when running model, msg={e}'
+    )
 
 
 def call_model_structured(model,message,response_format, logprobs=False) -> ModelOutput:
@@ -131,7 +131,7 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
             }
         }
     } 
-    or pydantic BaseModel
+    or pydantic BaseModel # Recommended!
     """
     
     assert 'gpt-4o' in model._config.model_name
@@ -178,14 +178,119 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
 '''
 #################################################################################################################################
 ## Patch for Claude Agent and possibly structured outputs with LangChain
-## https://api.python.langchain.com/en/latest/chat_models/langchain_anthropic.chat_models.ChatAnthropic.html
+## https://python.langchain.com/v0.1/docs/modules/model_io/chat/structured_output/#anthropic 
 #################################################################################################################################
 '''
 
+import anthropic
+
+
+def claude_create_message(query,instruction,examples,history):
+    messages = []
+    for content,role in history:
+        messages.append({"content": content, "role": role})
+    messages.append({"content": query, "role": "user"})
+    return messages
+
+
+def claude__call__(
+        model: OpenAIModel, # model in config is ignored
+        prompt: str,
+        response_format: Union[Dict[str,Any],BaseModel]=None, # not supported for claude
+        instruction: Optional[str]="",
+        examples: Optional[List[Any]] = [],
+        history: Optional[List[Any]] = [],
+        model_state: Optional[ModelState] = None,
+        logprobs=False, # not supported for claude
+        system: Optional[str] = None,
+        **kwargs
+    ):
+    """Makes a call the underlying model 
+
+    :param prompt: 
+        The prompt to the underlying model. 
+    :param instruction: 
+        The optional instruction to the model 
+    :param examples: 
+        The optional set of in-context examples 
+    :param history: 
+        The optional history items for model 
+    :param model_state: 
+        The optional model state at the point of querying 
+    
+    """
+    if model_state is None:
+        return _prompt_model_structured(
+            model,
+            claude_create_message(
+                query=prompt,
+                instruction=instruction,
+                examples=examples,
+                history=history,
+            ),
+            response_format,
+            logprobs=logprobs,
+            system=system,
+            **kwargs
+        )
+    
+    message = model_state.create_message(
+        query=prompt,
+        manual_history=history
+    )
+    return _prompt_model_claude(model,message,system,response_format,logprobs,**kwargs)
 
 
 
+def _prompt_model_claude(model,message,system,response_format,logprobs=False,**kwargs) -> str:
+    """Main method for calling the underlying LM. 
+    
+    :see: https://github.com/jiangjiechen/auction-arena/blob/main/src/bidder_base.py#L167
+    :param prompt: 
+        The input prompt object to the model. 
+    
+    """
+    for i in range(model._config.num_calls):
+        try:
+            return call_model_claude(model,message,system,response_format,logprobs)
+        except Exception as e:
+            model.logging.warning(
+                f'Issue encountered while running running, msg={e}, retrying',
+                exc_info=True
+            )
+            
+            time.sleep(2**(i+1))
 
+    raise ModelRuntimeError(
+        f'Error encountered when running model, msg={e}'
+    )
+
+def call_model_claude(model,message,system,response_format, logprobs=False) -> ModelOutput:
+    """Calls the claude model 
+    
+    https://docs.anthropic.com/en/api/messages
+
+    logprobs is not supported for claude
+    response_format is not supported for claude
+    """
+    
+    RET=anthropic.Anthropic().messages.create(
+        model="claude-3-5-sonnet-20240620", # model in config is ignored
+        max_tokens=model._config.max_output_token,
+        messages=message, 
+        temperature=model._config.temperature,
+        system=system, # claude does not has system role, system prompt must be passed separately
+    )
+    if RET['type']=='error':
+        raise Exception(RET['error'])
+    else:
+        return ModelOutput(
+            text=RET['content'][0]['text'],
+            cost=0,
+            token_probs=[],
+            input_tokens=RET['usage']['input_tokens'],
+            output_tokens=RET['usage']['output_tokens']
+        )
 
 
 

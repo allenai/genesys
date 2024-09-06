@@ -5,18 +5,24 @@ from exec_utils.models.model import ModelOutput
 import re
 import json
 from typing import Dict, Any
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+from enum import Enum
 
+
+
+def generate_enum_from_list(enum_name: str, values: list):
+    enum_dict = {value: value for value in values}
+    return Enum(enum_name, enum_dict)
 
 
 GAB_ERROR = """Please provide the full gab code, and please do not modify other parts of the code. Specifically, please preserve # gab.py at the beginning of gab.py. You can write multiple codes during your analysis process, but only one with # gab.py at the beginning will be detected as gab.py, if multiple gab.py are detected in your response, only the last one will be applied. Please follow the instructions in the prompt and provide the full gab.py file with the completed code. """
 
 
 class UnitDeclaration(BaseModel):
-   unitname: str
-   demands: str
-   inputs: list[str]
-   outputs: list[str]
+   unitname: str = Field(..., description="The name of the child GAU you are declaring.")
+   demands: str = Field(..., description="The function of the child GAU you expect to implement.")
+   inputs: list[str] = Field(..., description="The variable names of which you expect the child GAU to take as input from `Z`. `X` means only expect the sequence as input and nothing from `Z`.")
+   outputs: list[str] = Field(..., description="The variable names of which you expect the child GAU to output to `Z'`. `Y` means only expect the sequence as output and nothing to `Z'`.")
 
    def to_prompt(self):
       return f"""
@@ -27,10 +33,10 @@ Unit Name: {self.unitname}
 """
 
 class UnitSpec(BaseModel):
-   unitname: str
-   document: str
-   inputs: list[str]
-   outputs: list[str]
+   unitname: str = Field(..., description="The name of the GAU.")
+   document: str = Field(..., description="The docstring of the GAU, describe the function, interfaces, usages, etc. Allowing the user to understand how it works without reading the implementation.")
+   inputs: list[str] = Field(..., description="The variable names of which the GAU expects to take as input from `Z`. `X` means only expect the sequence as input and nothing from `Z`.")
+   outputs: list[str] = Field(..., description="The variable names of which the GAU expects to output to `Z'`. `Y` means only expect the sequence as output and nothing to `Z'`.")
 
    def to_prompt(self):
       return f"""
@@ -43,58 +49,57 @@ Unit Name: {self.unitname}
 """
 
 class GU_IMPLEMENTATION_ROOT_format(BaseModel): 
-   analysis: str
-   spec: UnitSpec
-   children: list[UnitDeclaration]
-   implementation: str
+   analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
+   spec: UnitSpec = Field(..., description="The specification of the GAU.")
+   children: list[UnitDeclaration] = Field(..., description="Declarations of the child GAUs in this GAU. It can be existing GAUs or new GAUs you want to declare.")
+   implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
+
 
 class GU_IMPLEMENTATION_format(BaseModel): 
-   analysis: str
-   document: str
-   children: list[UnitDeclaration]
-   implementation: str
+   analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
+   document: str = Field(..., description="The document of the GAU, describe the function, interfaces, usages, etc. Allowing the user to understand how it works without reading the implementation.")
+   children: list[UnitDeclaration] = Field(..., description="Declarations of the child GAUs in this GAU. It can be existing GAUs or new GAUs you want to declare.")
+   implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
 
 class GU_IMPLEMENTATION_ROOT_RETRY_format(BaseModel): # for retry, can update spec 
-   reflection: str
-   analysis: str
-   spec: UnitSpec
-   implementation: str
-   children: list[UnitDeclaration]
-   changes: str
+   reflection: str = Field(..., description="The reflection of the feedback from the reviewer and checkers.")
+   analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
+   spec: UnitSpec = Field(..., description="The specification of the GAU.")
+   implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
+   children: list[UnitDeclaration] = Field(..., description="Declarations of the child GAUs in this GAU. It can be existing GAUs or new GAUs you want to declare.")
+   changes: str = Field(..., description="The exact changes you have made in the code. It must include detailed code diffs and necessary context with explanation.")
 
 
 class DebuggingStep(BaseModel):
-    diagnosis: str
-    suggested_action: str
+    diagnosis: str = Field(..., description="The diagnosis of the cause of the error.")
+    suggested_action: str = Field(..., description="The suggested action to fix the error. Must be a concrete code about what to modify or print statements that help locate the error.")
 
 class GU_IMPLEMENTATION_RETRY_DEBUG_format(BaseModel): # for retry, only allow to update document
-   reflection: str
-   debugging_steps: list[DebuggingStep]
-   analysis: str
-   document: str
-   implementation: str
-   children: list[UnitDeclaration]
-   changes: str
+   reflection: str = Field(..., description="The reflection of the feedback from the reviewer.")
+   debugging_steps: list[DebuggingStep] = Field(..., description="The debugging steps to fix the error.")
+   analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
+   document: str = Field(..., description="The document of the GAU, describe the function, interfaces, usages, etc. Allowing the user to understand how it works without reading the implementation.")
+   implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
+   children: list[UnitDeclaration] = Field(..., description="Declarations of the child GAUs in this GAU. It can be existing GAUs or new GAUs you want to declare.")
+   changes: str = Field(..., description="The exact changes you have made in the code. It must include detailed code diffs and necessary context with explanation.")
 
 
 class GU_IMPLEMENTATION_RETRY_format(BaseModel): # for retry, only allow to update document
-   reflection: str
-   analysis: str
-   document: str
-   implementation: str
-   children: list[UnitDeclaration]
-   changes: str
+   reflection: str = Field(..., description="The reflection of the feedback from the reviewer.")
+   analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
+   document: str = Field(..., description="The document of the GAU, describe the function, interfaces, usages, etc. Allowing the user to understand how it works without reading the implementation.")
+   implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
+   children: list[UnitDeclaration] = Field(..., description="Declarations of the child GAUs in this GAU. It can be existing GAUs or new GAUs you want to declare.")
+   changes: str = Field(..., description="The exact changes you have made in the code. It must include detailed code diffs and necessary context with explanation.")
 
 class GU_IMPLEMENTATION_REFINE_format(BaseModel): # for refine, allow to update description, implementation, children, and changes
-   newname: str
-   reflection: str
-   analysis: str
-   document: str
-   implementation: str
-   children: list[UnitDeclaration]
-   changes: str
-
-
+   newname: str = Field(..., description="The name of this GAU variant, remember that do not apply this new name to your implementation, keep the original name in the implementation.")
+   reflection: str = Field(..., description="The reflection of the feedback from the reviewer.")
+   analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
+   document: str = Field(..., description="The document of the GAU, describe the function, interfaces, usages, etc. Allowing the user to understand how it works without reading the implementation.")
+   implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
+   children: list[UnitDeclaration] = Field(..., description="Declarations of the child GAUs in this GAU. It can be existing GAUs or new GAUs you want to declare.")
+   changes: str = Field(..., description="The exact changes you have made in the code. It must include detailed code diffs and necessary context with explanation.")
 
 
 
@@ -106,8 +111,6 @@ def GENERAL_JSON_parser(raw_output: ModelOutput) -> Dict[Any,Any]:
       output["_details"]["cost"] = raw_output.cost
       output["_details"]["running_cost"] = 0
       return output
-
-
 
 
 
@@ -334,30 +337,9 @@ Here are some references for you to consider that may inspire you:
 Check the references, then give your proposal follow the instructions.
 """
 
-
-GU_DESIGN_PROPOSAL_format = {
-   "type": "json_schema",
-   "json_schema": {
-         "name": "proposal_refinement_response",
-         "strict": True,
-         "schema": {
-            "type": "object",
-            "properties": {
-               "modelname": {
-                     "type": "string",
-                     "description": "The name of the model. It should be a camel case legal variable name for defining the model class in pytorch."
-               },
-               "proposal": {
-                     "type": "string",
-                     "description": "The fall proposal, keep the format instructions."
-               },
-            },
-            "required": ["modelname", "proposal"],
-            "additionalProperties": False
-         }
-   }
-}
-
+class GU_DESIGN_PROPOSAL_format(BaseModel):
+   modelname: str = Field(..., description="The name of the model. It should be a camel case legal variable name for defining the model class in pytorch.")
+   proposal: str = Field(..., description="The full proposal, keep the format instructions.")
 
 GU_DESIGN_PROPOSAL = AgentPrompt(GU_DESIGN_PROPOSAL_prompt,GENERAL_JSON_parser,GU_DESIGN_PROPOSAL_format)
 
@@ -433,31 +415,10 @@ Be very strict and fair. Do not pass a proposal easily, give a pass only when it
 is good enough. 
 """
 
-GU_PROPOSAL_REVIEW_format = {
-   "type": "json_schema",
-   "json_schema": {
-         "name": "review_response",
-         "strict": True,
-         "schema": {
-            "type": "object",
-            "properties": {
-               "review": {
-                     "type": "string",
-               },
-               "rating": {
-                     "type": "number",
-                     "description": "A float number between 0 and 5."
-               },
-               "suggestions": {
-                     "type": "string",
-                     "description": "The suggestions for clarification, correction, or additional information."
-               },
-            },
-            "required": ["review", "rating","suggestions"],
-            "additionalProperties": False
-         }
-   }
-}
+class GU_PROPOSAL_REVIEW_format(BaseModel):
+   review: str = Field(..., description="The review of the proposal, keep the format instructions.")
+   rating: float = Field(..., description="A float number between 0 and 5.")
+   suggestions: str = Field(..., description="The suggestions for clarification, correction, or additional information.")
 
 GU_PROPOSAL_REVIEW = AgentPrompt(GU_PROPOSAL_REVIEW_prompt,GENERAL_JSON_parser,GU_PROPOSAL_REVIEW_format)   
 
@@ -487,37 +448,10 @@ reflection of the feedback, then give the full proposal keeping the format
 instructions, finally, a summary of the changes you made.
 """
 
-GU_PROPOSAL_REFINEMENT_format = {
-   "type": "json_schema",
-   "json_schema": {
-         "name": "proposal_refinement_response",
-         "strict": True,
-         "schema": {
-            "type": "object",
-            "properties": {
-               "reflection": {
-                     "type": "string",
-                     "description": "The reflection based on the review, rating, and suggestions."
-               },
-               "modelname": {
-                     "type": "string",
-                     "description": "The name of the model. It should be a camel case legal variable name for defining the model class in pytorch."
-               },
-               "proposal": {
-                     "type": "string",
-                     "description": "The fall proposal, keep the format instructions."
-               },
-               "changes": {
-                     "type": "string",
-                     "description": "The summary of the changes you made."
-               },
-            },
-            "required": ["reflection", "modelname", "proposal","changes"],
-            "additionalProperties": False
-         }
-   }
-}
-
+class GU_PROPOSAL_REFINEMENT_format(BaseModel):
+   reflection: str = Field(..., description="The reflection based on the review, rating, and suggestions.")
+   proposal: str = Field(..., description="The fall proposal, keep the format instructions.")
+   changes: str = Field(..., description="The summary of the changes you made.")
 
 def GU_PROPOSAL_REFINEMENT_parser(raw_output: ModelOutput) -> Dict[Any,Any]:
    title=""
@@ -991,32 +925,10 @@ the design stage, so you should check the design based on the theoretical
 analysis. 
 """
 
-GU_IMPLEMENTATION_REVIEW_format = {
-   "type": "json_schema",
-   "json_schema": {
-         "name": "review_response",
-         "strict": True,
-         "schema": {
-            "type": "object",
-            "properties": {
-               "review": {
-                     "type": "string",
-               },
-               "rating": {
-                     "type": "number",
-                     "description": "A float number between 0 and 5."
-               },
-               "suggestions": {
-                     "type": "string",
-                     "description": "The suggestions for improving or correcting the design."
-               },
-            },
-            "required": ["review", "rating","suggestions"],
-            "additionalProperties": False
-         }
-   }
-}
-
+class GU_IMPLEMENTATION_REVIEW_format(BaseModel):
+   review: str = Field(..., description="The review of the proposal, keep the format instructions.")
+   rating: float = Field(..., description="A float number between 0 and 5.")
+   suggestions: str = Field(..., description="The suggestions for clarification, correction, or additional information.")
 
 GU_IMPLEMENTATION_ROOT_REVIEW = AgentPrompt(GU_IMPLEMENTATION_ROOT_REVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
 
@@ -1253,33 +1165,15 @@ feel the design is good enough and no more left to improve.
 
 
 def gen_GU_IMPLEMENTATION_UNIT_SELECTION(SELECTIONS):
-   GU_IMPLEMENTATION_UNIT_SELECTION_format = {
-      "type": "json_schema",
-      "json_schema": {
-            "name": "implement_response",
-            "strict": True,
-            "schema": {
-               "type": "object",
-               "properties": {
-                  "motivation": {
-                        "type": "string",
-                        "description": "Overall view, motivation and plans of the selection."
-                  },
-                  "selection": {
-                        "type": "string",
-                        'description': "The name of the GAU you are going to work on.",
-                        'enum': SELECTIONS
-                  },
-                  'termination': {
-                     'type': 'boolean',
-                     'description': 'Whether to terminate the design process. It will be ignored if there are unimplemented units left.'
-                  }
-               },
-               "required": ["motivation", "selection","termination"],
-               "additionalProperties": False
-            }
-      }
-   }
+
+   SelectionEnum=generate_enum_from_list('selection',SELECTIONS)
+
+   class GU_IMPLEMENTATION_UNIT_SELECTION_format(BaseModel):
+      selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
+      motivation: str = Field(..., description="The motivation for the selection.")
+      rough_plan: str = Field(..., description="The rough plan for implementing the selected GAU.")
+      termination: bool = Field(..., description="Whether to terminate the design process.")
+
    return AgentPrompt(GU_IMPLEMENTATION_UNIT_SELECTION_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_UNIT_SELECTION_format)
 
 # endregion
@@ -1703,42 +1597,22 @@ GUE_DESIGN_PROPOSER_SYSTEM = AgentPrompt(GUE_DESIGN_PROPOSER_SYSTEM_prompt)
 
 
 
-def gen_GUE_DESIGN_PROPOSAL(SELECTIONS):
+def gen_GUE_DESIGN_PROPOSAL(SELECTIONS:list[str]):
    GUE_DESIGN_PROPOSAL_prompt = """
    {SEED}
 
    Check the seed design, then give your proposal and the selection of the GAU to modify follow the instructions.
    """
 
-   GU_DESIGN_PROPOSAL_format = {
-      "type": "json_schema",
-      "json_schema": {
-            "name": "design_proposal_response",
-            "strict": True,
-            "schema": {
-               "type": "object",
-               "properties": {
-                  "proposal": {
-                        "type": "string",
-                        "description": "The fall proposal, keep the format instructions."
-                  },
-                  "selection": {
-                        "type": "string",
-                        'description': "The name of the GAU you are going to work on.",
-                        'enum': SELECTIONS
-                  },
-                  "modelname": {
-                        "type": "string",
-                        "description": "The name of the variant of the model you are going to design."
-                  },
-               },
-               "required": ["proposal", "selection", "modelname"],
-               "additionalProperties": False
-            }
-      }
-   }
+   SelectionEnum=generate_enum_from_list('selection',SELECTIONS)
 
-   return AgentPrompt(GUE_DESIGN_PROPOSAL_prompt,GENERAL_JSON_parser,GU_DESIGN_PROPOSAL_format)
+   class GUE_DESIGN_PROPOSAL_format(BaseModel):
+      proposal: str = Field(..., description="The full proposal, keep the format instructions.")
+      selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
+      modelname: str = Field(..., description="The name of the variant of the model you are going to design.")
+
+
+   return AgentPrompt(GUE_DESIGN_PROPOSAL_prompt,GENERAL_JSON_parser,GUE_DESIGN_PROPOSAL_format)
 
 
 
@@ -1861,31 +1735,10 @@ Please evaluate the design in the proposal based on its **technical merits**. Yo
 Be objective, strict, and fair. Approve the proposal only if it meets high standards of quality. A proposal should not pass unless it is well-designed and offers clear value.
 """
 
-GUE_PROPOSAL_REVIEW_format = {
-   "type": "json_schema",
-   "json_schema": {
-         "name": "review_response",
-         "strict": True,
-         "schema": {
-            "type": "object",
-            "properties": {
-               "review": {
-                     "type": "string",
-               },
-               "rating": {
-                     "type": "number",
-                     "description": "A float number between 0 and 5."
-               },
-               "suggestions": {
-                     "type": "string",
-                     "description": "The suggestions for clarification, correction, or additional information."
-               },
-            },
-            "required": ["review", "rating","suggestions"],
-            "additionalProperties": False
-         }
-   }
-}
+class GUE_PROPOSAL_REVIEW_format(BaseModel):
+   review: str = Field(..., description="The review of the proposal.")
+   rating: float = Field(..., description="A float number between 0 and 5.")
+   suggestions: str = Field(..., description="The suggestions for clarification, correction, or additional information.")
 
 GUE_PROPOSAL_REVIEW = AgentPrompt(GUE_PROPOSAL_REVIEW_prompt,GENERAL_JSON_parser,GUE_PROPOSAL_REVIEW_format)   
 
@@ -1916,42 +1769,15 @@ def gen_GUE_PROPOSAL_REFINEMENT(SELECTIONS):
    reflection of the feedback, then give the full proposal keeping the format
    instructions, finally, a summary of the changes you made.
    """
+   
+   SelectionEnum=generate_enum_from_list('selection',SELECTIONS)
 
-   GUE_PROPOSAL_REFINEMENT_format = {
-      "type": "json_schema",
-      "json_schema": {
-            "name": "proposal_refinement_response",
-            "strict": True,
-            "schema": {
-               "type": "object",
-               "properties": {
-                  "reflection": {
-                        "type": "string",
-                        "description": "The reflection based on the review, rating, and suggestions."
-                  },
-                  "proposal": {
-                        "type": "string",
-                        "description": "The fall proposal, keep the format instructions."
-                  },
-                  "selection": {
-                        "type": "string",
-                        'description': "The name of the GAU you are going to work on.",
-                        'enum': SELECTIONS
-                  },
-                  "modelname": {
-                        "type": "string",
-                        "description": "The name of the variant of the model you are going to design."
-                  },
-                  "changes": {
-                        "type": "string",
-                        "description": "The summary of the changes you made."
-                  },
-               },
-               "required": ["reflection", "proposal", "selection", "modelname", "changes"],
-               "additionalProperties": False
-            }
-      }
-   }
+   class GUE_PROPOSAL_REFINEMENT_format(BaseModel):
+      reflection: str = Field(..., description="The reflection based on the review, rating, and suggestions.")
+      proposal: str = Field(..., description="The fall proposal, keep the format instructions.")
+      selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
+      modelname: str = Field(..., description="The name of the variant of the model you are going to design.")
+      changes: str = Field(..., description="The summary of the changes you made.") 
 
 
    return AgentPrompt(GUE_PROPOSAL_REFINEMENT_prompt,GENERAL_JSON_parser,GUE_PROPOSAL_REFINEMENT_format)
@@ -2267,37 +2093,15 @@ Below is a tree of the GAUs that compose the language model (LM) block and the d
 - You are required to implement all the unimplemented GAUs in the tree. 
 - Once all units are implemented, you may choose to **terminate the design process** if you believe the design is complete and there are no further improvements to make.
 """
-   GUE_IMPLEMENTATION_UNIT_SELECTION_format = {
-      "type": "json_schema",
-      "json_schema": {
-            "name": "implement_response",
-            "strict": True,
-            "schema": {
-               "type": "object",
-               "properties": {
-                  "motivation": {
-                        "type": "string",
-                        "description": "Overall view, motivation and plans of the selection."
-                  },
-                  "selection": {
-                        "type": "string",
-                        'description': "The name of the GAU you are going to work on.",
-                        'enum': SELECTIONS
-                  },
-                  'rough_plan': {
-                     'type': 'string',
-                     'description': 'The rough plan for implementing or refining the selected GAU.'
-                  },
-                  'termination': {
-                     'type': 'boolean',
-                     'description': 'Whether to terminate the design process. It will be ignored if there are unimplemented units left.'
-                  }
-               },
-               "required": ["motivation", "selection","rough_plan","termination"],
-               "additionalProperties": False
-            }
-      }
-   }
+
+   SelectionEnum=generate_enum_from_list('selection',SELECTIONS)
+
+   class GUE_IMPLEMENTATION_UNIT_SELECTION_format(BaseModel):
+      selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
+      motivation: str = Field(..., description="The motivation for the selection.")
+      rough_plan: str = Field(..., description="The rough plan for implementing the selected GAU.")
+      termination: bool = Field(..., description="Whether to terminate the design process.")
+
    if post_refining:
       GUE_IMPLEMENTATION_UNIT_SELECTION_prompt+=(
          '\n\nYou have implemented all the unimplemented GAUs, you can choose to terminate the design process if you think the design is complete. '
