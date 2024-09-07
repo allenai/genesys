@@ -2,11 +2,11 @@
 from ..flow.alang import AgentPrompt
 from model_discovery.model.utils.modules import UnitSpec,UnitDecl
 
-from exec_utils.models.model import ModelOutput
 import re
 import json
 from typing import Dict, Any
 from pydantic import BaseModel, Field
+from ..agent_utils import ModelOutputPlus
 from enum import Enum
 
 
@@ -64,12 +64,12 @@ class GU_IMPLEMENTATION_REFINE_format(BaseModel): # for refine, allow to update 
 
 
 
-def GENERAL_JSON_parser(raw_output: ModelOutput) -> Dict[Any,Any]:
+def GENERAL_JSON_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       raw_text = raw_output.text
       output = json.loads(raw_text)  
       output["text"] = raw_text
       output["_details"] = {}
-      output["_details"]["cost"] = raw_output.cost
+      output["_details"]["cost"] = raw_output.usage
       output["_details"]["running_cost"] = 0
       return output
 
@@ -414,7 +414,7 @@ class GU_PROPOSAL_REFINEMENT_format(BaseModel):
    proposal: str = Field(..., description="The fall proposal, keep the format instructions.")
    changes: str = Field(..., description="The summary of the changes you made.")
 
-def GU_PROPOSAL_REFINEMENT_parser(raw_output: ModelOutput) -> Dict[Any,Any]:
+def GU_PROPOSAL_REFINEMENT_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
    title=""
    raw_text = raw_output.text.strip()
    output = json.loads(raw_output.text)
@@ -427,7 +427,7 @@ def GU_PROPOSAL_REFINEMENT_parser(raw_output: ModelOutput) -> Dict[Any,Any]:
    output["title"] = title
    output["text"] = raw_text
    output["_details"] = {}
-   output["_details"]["cost"] = raw_output.cost
+   output["_details"]["cost"] = raw_output.usage
    output["_details"]["running_cost"] = 0
    return output
 

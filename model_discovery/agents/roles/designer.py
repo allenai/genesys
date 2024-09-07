@@ -9,9 +9,8 @@ from typing import (
 )
 import re
 import exec_utils 
-from exec_utils.models.model import ModelOutput
 import random
-from ..agent_utils import structured__call__,ModelOutput
+from ..agent_utils import structured__call__,ModelOutputPlus
 
 
 __all__ = [
@@ -33,7 +32,7 @@ class DesignerAgent(exec_utils.SimpleLMAgent):
     parse_output(raw_output: str) -> Any
         The main method for parsing and normalizing the output 
     """
-    def parse_output(self,raw_output: ModelOutput) -> Dict[Any,Any]:
+    def parse_output(self,raw_output: ModelOutputPlus) -> Dict[Any,Any]:
         """Execution of the output produced by the agent.  
 
         :param raw_output: 
@@ -54,7 +53,7 @@ class DesignerAgent(exec_utils.SimpleLMAgent):
 
         output["text"] = raw_text
         output["_details"] = {}
-        output["_details"]["cost"] = raw_output.cost
+        output["_details"]["cost"] = raw_output.usage
         output["_details"]["running_cost"] = self.cost
 
         return output

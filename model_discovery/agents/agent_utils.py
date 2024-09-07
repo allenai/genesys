@@ -5,8 +5,33 @@ from typing import List,Any,Optional,Dict,Union
 from pydantic import BaseModel
 import inspect
 
-from exec_utils.models.model import ModelState,OpenAIModel,ModelRuntimeError,ModelOutput
+from exec_utils.models.model import ModelState,OpenAIModel,ModelRuntimeError,UtilityModel
 from exec_utils.models.utils import openai_costs
+
+
+
+
+class ModelOutputPlus(UtilityModel):
+    """Helper class for showing model output 
+
+    :param text: 
+        The text produced by the model 
+    :param cost: 
+        The cost of running inference on the input 
+        producing the text 
+    :param log_probs: 
+        Details about model logprobs 
+
+    """
+    text: str
+    token_probs: List = []
+    cost: float = 0.0
+    input_tokens: int = 0.
+    output_tokens: int = 0.
+    usage: Dict = {}
+    
+    def __repr__(self):
+        return self.text
 
 
 '''
@@ -87,7 +112,7 @@ def _prompt_model_structured(model,message,response_format,logprobs=False,**kwar
     )
 
 
-def call_model_structured(model,message,response_format, logprobs=False) -> ModelOutput:
+def call_model_structured(model,message,response_format, logprobs=False) -> ModelOutputPlus:
     """Calls the underlying model 
     
     :param message: 
@@ -132,7 +157,7 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
     )
     model._model_cost += cost
     token_probs = completions.choices[0].token_probs.content if logprobs else []
-    return ModelOutput(
+    return ModelOutputPlus(
         text=output,
         cost=cost,
         token_probs=token_probs,
@@ -150,15 +175,68 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
 
 import anthropic
 from langchain_anthropic import ChatAnthropic
+from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 
 
-def claude_create_message(query,instruction=[],examples=[],history=[]):
-    messages = []
-    for content,role in history:
-        role = 'user' if role!='assistant' else 'assistant'
-        messages.append({"content": content, "role": role})
-    messages.append({"content": query, "role": "user"})
-    return messages
+class ConversationHistory:
+    def __init__(self,history,query):
+        # Initialize an empty list to store conversation turns
+        self.turns = []
+        for content,role in history:
+            if role=='assistant':
+                self.add_turn_assistant(content)
+            else:
+                self.add_turn_user(content)
+        self.add_turn_user(query)
+
+    def add_turn_assistant(self, content):
+        # Add an assistant's turn to the conversation history
+        self.turns.append({
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": content
+                }
+            ]
+        })
+
+    def add_turn_user(self, content):
+        # Add a user's turn to the conversation history
+        self.turns.append({
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": content
+                }
+            ]
+        })
+
+    def get_turns(self,use_cache=True):
+        # Retrieve conversation turns with specific formatting
+        result = []
+        user_turns_processed = 0
+        # Iterate through turns in reverse order
+        for turn in reversed(self.turns):
+            if turn["role"] == "user" and user_turns_processed < 2 and use_cache:
+                # Add the last two user turns with ephemeral cache control
+                result.append({
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": turn["content"][0]["text"],
+                            "cache_control": {"type": "ephemeral"}
+                        }
+                    ]
+                })
+                user_turns_processed += 1
+            else:
+                # Add other turns as they are
+                result.append(turn)
+        # Return the turns in the original order
+        return list(reversed(result))
 
 
 def claude__call__(
@@ -170,6 +248,7 @@ def claude__call__(
         history: Optional[List[Any]] = [],
         model_state: Optional[ModelState] = None,
         logprobs=False, # not supported for claude
+        use_cache: bool = True,
         system: Optional[str] = None,
         **kwargs
     ):
@@ -187,32 +266,26 @@ def claude__call__(
         The optional model state at the point of querying 
     
     """
+    messages=ConversationHistory(history,prompt).get_turns(use_cache)
+    if use_cache:
+        system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}]
+    else:
+        system=[{"type": "text", "text": system}]
     if model_state is None:
         return _prompt_model_structured(
             model,
-            claude_create_message(
-                query=prompt,
-                instruction=instruction,
-                examples=examples,
-                history=history,
-            ),
+            messages,
             response_format,
             logprobs=logprobs,
             system=system,
             **kwargs
         )
     
-    message = claude_create_message(
-        query=prompt,
-        instruction=instruction,
-        examples=examples,
-        history=history
-    )
-    return _prompt_model_claude(model,message,system,response_format,logprobs,**kwargs)
+    return _prompt_model_claude(model,messages,system,response_format,logprobs,use_cache,**kwargs)
 
 
 
-def _prompt_model_claude(model,message,system,response_format,logprobs=False,**kwargs) -> str:
+def _prompt_model_claude(model,message,system,response_format,logprobs=False,use_cache=True,**kwargs) -> str:
     """Main method for calling the underlying LM. 
     
     :see: https://github.com/jiangjiechen/auction-arena/blob/main/src/bidder_base.py#L167
@@ -220,10 +293,10 @@ def _prompt_model_claude(model,message,system,response_format,logprobs=False,**k
         The input prompt object to the model. 
     
     """
-    e='Unknown error'
+    ERROR=[]
     for i in range(model._config.num_calls):
         try:
-            return call_model_claude(model,message,system,response_format,logprobs)
+            return call_model_claude(model,message,system,response_format,logprobs,use_cache)
         except Exception as e:
             model.logging.warning(
                 f'Issue encountered while running running, msg={e}, retrying',
@@ -231,42 +304,74 @@ def _prompt_model_claude(model,message,system,response_format,logprobs=False,**k
             )
             
             time.sleep(2**(i+1))
+            ERROR.append(f'Attempt {i+1} error: {e}')
 
+    if len(ERROR)>0:
+        ERROR='\n'.join(ERROR)
+    else:
+        ERROR='Unknown error'
     raise ModelRuntimeError(
-        f'Error encountered when running model, msg={e}'
+        f'Error encountered when running model, msg={ERROR}'
     )
 
 
 def to_langchain_message(message,system):
-    messages = [("system",system)]
+    messages = [SystemMessage(system)]
     for msg in message:
-        messages.append((msg['role'],msg['content']))
+        msg_type=HumanMessage if msg['role']=='user' else AIMessage
+        messages.append(msg_type(msg['content']))
     return messages
 
-def call_model_claude(model,message,system,response_format, logprobs=False) -> ModelOutput:
+def call_model_claude(model,message,system,response_format, logprobs=False,use_cache=True) -> ModelOutputPlus:
     """Calls the claude model 
     
     https://docs.anthropic.com/en/api/messages
 
     logprobs is not supported for claude
-    response_format is not stably supported for claude
+    response_format is not stably supported for claude, but not a big deal, just use tool using feature to implement
+
+    Prompt caching is powerful:
+    Cookbook: https://github.com/anthropics/anthropic-cookbook/blob/main/misc/prompt_caching.ipynb
+    Use with LangChain: https://github.com/langchain-ai/langchain/pull/25644
+
+    Suppose 5 rounds, each round generates 1K tokens, 1K input sys/round (2K INCRE/round), 2K system, input costs:
+    No cache: 2K+4K+6K+8K+10K = 30K * 1 = SR+I(R-1)R/2
+    Cache: 2K*1.25 + (2*0.1)+2*1.25 + (4*0.1)+2*1.25 + (6*0.1)+2*1.25 + (8*0.1)+2*1.25 
+         = Write: 1.25(S+(R-1)I) + Read: 0.1(S(R-1)+I(R-1)(R-2)/2)  # R>=2
+    R: num of rounds
+    I: incremental input tokens per round
+    S: system tokens
+    
+    R=5, I=4K, S=3K
+    No cache: SR+I(R-1)R/2 = 3K*5+(5-1)*5/2*4K = 15+40 = 55K
+    Cache: 1.25(S+(R-1)I) + 0.1(S(R-1)+I(R-1)(R-2)/2) = 19*1.25 + 0.1*(12+24)=3.6+23.75=27.35K
+
     """
+    if use_cache:
+        extra_headers={"anthropic-beta": "prompt-caching-2024-07-31"}
+    else:
+        extra_headers={}
     
     if response_format is not None and inspect.isclass(response_format) and issubclass(response_format,BaseModel):
         model = ChatAnthropic(
             model="claude-3-5-sonnet-20240620", 
             temperature=model._config.temperature,
             max_tokens=model._config.max_output_tokens,
+            extra_headers=extra_headers
         )
-        structured_llm = model.with_structured_output(response_format)
+        structured_llm = model.with_structured_output(response_format,include_raw=True)
 
-        RET=structured_llm.invoke(to_langchain_message(message,system))
-        return ModelOutput(
-            text=str(RET.json()),
+        message=to_langchain_message(message,system)
+        RET=structured_llm.invoke(message)
+        usage=RET['raw'].response_metadata['usage']
+        parsed=RET['parsed']
+        return ModelOutputPlus(
+            text=str(parsed.json()),
             cost=0,
             token_probs=[],
             input_tokens=0,
             output_tokens=0,
+            usage=usage
         )
     else:
         RET=anthropic.Anthropic().messages.create(
@@ -275,16 +380,18 @@ def call_model_claude(model,message,system,response_format, logprobs=False) -> M
             messages=message, 
             temperature=model._config.temperature,
             system=system, # claude does not has system role, system prompt must be passed separately
+            extra_headers=extra_headers
         )
         if RET['type']=='error':
             raise Exception(RET['error'])
         else:
-            return ModelOutput(
+            return ModelOutputPlus(
                 text=RET['content'][0]['text'],
                 cost=0,
                 token_probs=[],
                 input_tokens=RET['usage']['input_tokens'],
-                output_tokens=RET['usage']['output_tokens']
+                output_tokens=RET['usage']['output_tokens'],
+                usage=RET['usage']
             )
 
 

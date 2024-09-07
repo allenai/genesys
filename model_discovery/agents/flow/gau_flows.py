@@ -1,8 +1,11 @@
 import os
 import numpy as np
-from typing import Any,Dict, List
+from typing import Any,Dict, List, Union
 import inspect
 import copy
+import requests
+import backoff
+import time
 
 from exec_utils.models.model import ModelOutput
 from .alang import FlowCreator,register_module,ROLE,SYSTEM_CALLER,USER_CALLER,AgentContext
@@ -793,6 +796,50 @@ def gu_design_scratch(cls,instruct,stream,status_handler,seed,references=None):
 ###################################################################
 
 
+
+
+def on_backoff(details):
+    print(
+        f"Backing off {details['wait']:0.1f} seconds after {details['tries']} tries "
+        f"calling function {details['target'].__name__} at {time.strftime('%X')}"
+    )
+
+@backoff.on_exception(
+    backoff.expo, requests.exceptions.HTTPError, on_backoff=on_backoff
+)
+def search_for_papers(query, result_limit=10) -> Union[None, List[Dict]]:
+    # https://api.semanticscholar.org/api-docs/graph#tag/Paper-Data/operation/post_graph_get_papers
+    # should also search from the internal base or KGs
+    if not query:
+        return None
+    S2_API_KEY=os.environ['S2_API_KEY']
+    rsp = requests.get(
+        "https://api.semanticscholar.org/graph/v1/paper/search",
+        headers={"X-API-KEY": S2_API_KEY},
+        params={
+            "query": query,
+            "limit": result_limit,
+            "fields": "title,authors,venue,year,abstract,citationStyles,citationCount",
+        },
+    )
+    print(f"Response Status Code: {rsp.status_code}")
+    print(
+        f"Response Content: {rsp.text[:500]}"
+    )  # Print the first 500 characters of the response content
+    rsp.raise_for_status()
+    results = rsp.json()
+    total = results["total"]
+    time.sleep(1.0)
+    if not total:
+        return None
+
+    papers = results["data"]
+    return papers
+
+
+
+
+
 class GUFlowExisting(FlowCreator): 
     """
     The flow for designing a GAB Flow nested of GAB Units from scratch.
@@ -837,6 +884,7 @@ class GUFlowExisting(FlowCreator):
 
     def print_raw_output(self,out):
         print_raw_output(self.stream,out)
+        self.stream.write(f'##### **Usage**\n {out["_details"]["cost"]}')
 
     @register_module(
         "PROC",

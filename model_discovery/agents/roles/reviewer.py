@@ -11,7 +11,7 @@ import exec_utils
 import json
 import re
 
-from ..agent_utils import structured__call__,ModelOutput
+from ..agent_utils import structured__call__,ModelOutputPlus
 
 __all__ = [
     "ReviewerAgent"
@@ -30,7 +30,7 @@ class ReviewerAgent(exec_utils.SimpleLMAgent):
 
     """
 
-    def parse_output(self,raw_output: ModelOutput) -> Dict[Any,Any]:
+    def parse_output(self,raw_output: ModelOutputPlus) -> Dict[Any,Any]:
         """Execution of the output produced by the agent.  
 
         :param raw_output: 
@@ -51,7 +51,7 @@ class ReviewerAgent(exec_utils.SimpleLMAgent):
         output["rating"] = json_output['rating']
         output["review"] = json_output['review']
         output["_details"] = {}
-        output["_details"]["cost"] = raw_output.cost
+        output["_details"]["cost"] = raw_output.usage
         output["_details"]["running_cost"] = self.cost
 
         return output
