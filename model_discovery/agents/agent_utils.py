@@ -220,6 +220,7 @@ def _prompt_model_claude(model,message,system,response_format,logprobs=False,**k
         The input prompt object to the model. 
     
     """
+    e='Unknown error'
     for i in range(model._config.num_calls):
         try:
             return call_model_claude(model,message,system,response_format,logprobs)

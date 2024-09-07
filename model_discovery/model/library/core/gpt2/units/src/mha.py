@@ -2,7 +2,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from model_discovery.model.utils.modules import GAUBase,gau_test # DO NOT CHANGE THIS IMPORT STATEMENT #
+from model_discovery.model.utils.modules import GAUBase,gau_test,UnitDecl # DO NOT CHANGE THIS IMPORT STATEMENT #
+
 
 import math
 from einops import rearrange, repeat
@@ -10,7 +11,7 @@ from einops import rearrange, repeat
 
 
 
-class MHA(GAUBase):
+class MHA(GAUBase): # DO NOT CHANGE THIS CLASS NAME #
     """Multi-head self-attention and cross-attention"""
 
     def __init__(
@@ -128,6 +129,17 @@ def test_mha(device=None,dtype=None):
     Z={}
     y,Z_=mha(x,**Z)   
     assert y.shape==(1,100,128)
+
+
+CHILDREN_DECLARATIONS = [
+    UnitDecl(
+        unitname="RotaryPositionalEmbeddings",
+        requirements="",
+        inputs=['input_emb','*input_pos'],
+        outputs=['output_emb'],
+    ),
+]
+
 
 SPEC = {
     "unitname": "MHA",

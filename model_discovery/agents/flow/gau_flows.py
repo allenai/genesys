@@ -286,7 +286,7 @@ class GUFlowScratch(FlowCreator): # ❄️ FREEZING #
                 if i>0:
                     self.stream.write(f'### Changes\n{changes}')
                 
-                children = {child['unitname']: P.UnitDeclaration.model_validate(child) for child in children}
+                children = {child['unitname']: P.UnitDecl.model_validate(child) for child in children}
                 self.tree.declares=children # directly overwrite, as the root unit is the first one
                 self.stream.write(f'### Children')
                 for childname,child in children.items():
@@ -562,7 +562,7 @@ class GUFlowScratch(FlowCreator): # ❄️ FREEZING #
                     if REFINE:
                         self.stream.write(f'### Changes\n{changes}')
                     
-                    children = {child['unitname']: P.UnitDeclaration.model_validate(child) for child in children}
+                    children = {child['unitname']: P.UnitDecl.model_validate(child) for child in children}
                     # never overwrite existing ones, as the children might be reused
                     new_declared = []
                     for childname,child in children.items():
@@ -602,7 +602,7 @@ class GUFlowScratch(FlowCreator): # ❄️ FREEZING #
                     checkpass=False
                     func_checks = {}
                     self.tree.add_unit(
-                        spec,reformatted_code,new_args,analysis,None,None,list(children.keys()),gau_tests,None,demands=declaration.demands
+                        spec,reformatted_code,new_args,analysis,None,None,list(children.keys()),gau_tests,None,requirements=declaration.requirements
                     )
                     if format_errors==[]:
                         # run unit tests
@@ -820,7 +820,7 @@ class GUFlowExisting(FlowCreator):
         self.agents={
             'DESIGN_PROPOSER':self.claude_agent,
             'PROPOSAL_REVIEWER':self.claude_agent,
-            'DESIGN_IMPLEMENTER':self.gpt4o0806_agent,
+            'DESIGN_IMPLEMENTER':self.claude_agent,
             'IMPLEMENTATION_REVIEWER':self.claude_agent,
         }
 
@@ -1090,15 +1090,18 @@ class GUFlowExisting(FlowCreator):
                     context_design_implementer=self.dialog.context(design_implementer_tid)
                     reflection,changes,debugging_steps=None,None,None
                     if REFINE: # 1. working on an existing unit 2. all >0 attempts
-                        reflection,analysis,implementation,changes,children=out['reflection'],out['analysis'],out['implementation'],out['changes'],out['children']
+                        reflection,analysis,implementation,changes=out['reflection'],out['analysis'],out['implementation'],out['changes']
                         self.stream.write(f'### Reflection\n{reflection}')
                         self.stream.write(f'## Refinement of {selection}')
                         if 'debugging_steps' in out:
                             debugging_steps=out['debugging_steps']
-                            self.stream.write(f'### Debugging Steps\n')
-                            for idx,step in enumerate(debugging_steps):
-                                self.stream.write(f'##### Diagnosis {idx+1}\n{step["diagnosis"]}\n')
-                                self.stream.write(f'##### Suggested Action {idx+1}\n{step["suggested_action"]}\n')
+                            if isinstance(debugging_steps,list):
+                                self.stream.write(f'### Debugging Steps\n')
+                                for idx,step in enumerate(debugging_steps):
+                                    self.stream.write(f'##### Diagnosis {idx+1}\n{step["diagnosis"]}\n')
+                                    self.stream.write(f'##### Suggested Action {idx+1}\n{step["suggested_action"]}\n')
+                            else:
+                                self.stream.write(f'### Debugging Steps\n{debugging_steps}')
                         if round==1 and attempt==0:
                             NEWNAME=out['newname']
                             self.stream.write(f'#### New Name: {NEWNAME}')
@@ -1107,16 +1110,16 @@ class GUFlowExisting(FlowCreator):
                         else: # possible when debugging the implementation of a new unit
                             spec = P.UnitSpec(
                                 unitname=selection,
-                                document=None,
+                                document='',
                                 inputs=declaration.inputs,
                                 outputs=declaration.outputs
                             )
                     else: # only for the first attempt of a new unit, the reason we do this is that the response format is different for this case
-                        implementation,analysis,children=out['implementation'],out['analysis'],out['children']
+                        implementation,analysis=out['implementation'],out['analysis']
                         self.stream.write(f'## Implementation of {selection}')
                         spec = P.UnitSpec(
                             unitname=selection,
-                            document=None,
+                            document='',
                             inputs=declaration.inputs,
                             outputs=declaration.outputs
                         )                    
@@ -1125,7 +1128,19 @@ class GUFlowExisting(FlowCreator):
                     if REFINE:
                         self.stream.write(f'### Changes\n{changes}')
                     
-                    children = {child['unitname']: P.UnitDeclaration.model_validate(child) for child in children}
+
+                    self.print_raw_output(out)
+
+
+                # Run all checks for every implementations, optimize both grammar and semantics at the same time 
+                # avoid redundant debugging steps, i.e. only the debug for the passed plans are needed
+                with self.status_handler('Checking the implementation of the selected unit...'):
+                    # 1. check the format code for GAU
+                    reformatted_code,new_args,gau_tests,format_errors,format_warnings,fetal_errors,docstring,children_decl=check_and_reformat_gau_code(implementation,selection)
+                    spec.document=docstring
+
+
+                    children = {child.unitname: child for child in children_decl}
                     # never overwrite existing ones, as the children might be reused
                     NEW_DECLARED = []
                     for childname,child in children.items():
@@ -1136,16 +1151,7 @@ class GUFlowExisting(FlowCreator):
                     self.stream.write(f'### Children')
                     for childname,child in children.items():
                         self.stream.write(f'##### {childname}\n'+child.to_prompt())
-
-                    self.print_raw_output(out)
-
-
-                # Run all checks for every implementations, optimize both grammar and semantics at the same time 
-                # avoid redundant debugging steps, i.e. only the debug for the passed plans are needed
-                with self.status_handler('Checking the implementation of the selected unit...'):
-                    # 1. check the format code for GAU
-                    reformatted_code,new_args,gau_tests,format_errors,format_warnings,fetal_errors,docstring=check_and_reformat_gau_code(implementation,selection,children)
-                    spec.document=docstring
+                    
                     collapse_write(
                         self.stream,
                         'Code format check',
@@ -1169,7 +1175,7 @@ class GUFlowExisting(FlowCreator):
                     func_checks = {}
                     if selection not in self.tree.units:
                         self.tree.add_unit(
-                            spec,reformatted_code,new_args,analysis,None,None,list(children.keys()),gau_tests,None,demands=declaration.demands
+                            spec,reformatted_code,new_args,analysis,None,None,list(children.keys()),gau_tests,None,requirements=declaration.requirements
                         )
                     else:
                         self.tree.units[selection].code=reformatted_code

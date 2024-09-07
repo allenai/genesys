@@ -15,7 +15,7 @@ from .utils.modules import GAUBase, gau_test
 
 import model_discovery.utils as U
 
-from model_discovery.agents.prompts.prompts import UnitSpec, UnitDeclaration
+from model_discovery.model.utils.modules import UnitSpec, UnitDecl
 from model_discovery.agents.flow.gau_utils import process_core_library_code
 
 
@@ -32,7 +32,7 @@ class GAUNode: # this is mainly used to 1. track the hierarchies 2. used for the
     gautests: Dict[str, str] # unit tests of the GAU
     suggestions: str # suggestions for the GAU from reviewer for further improvement
     design_traces: list = None # traces of the design process
-    demands: str = None # demands of the GAU from declaration, root GAU has no demands as the demand is the proposal
+    requirements: str = None # requirements of the GAU from declaration, root GAU has no requirements as the demand is the proposal
 
     def json(self):
         data = self.__dict__.copy()
@@ -88,11 +88,12 @@ def check_tree_name(name, lib_dir):
 class GABComposer:
     def compose(self,tree):
         root_node = tree.root
+        declares=tree.declares
         generated_code = []
         processed_units = set()
 
         # Recursively generate code for the root and its children
-        self.generate_node_code(root_node.spec.unitname, generated_code, tree.units, processed_units)
+        self.generate_node_code(root_node.spec.unitname, generated_code, tree.units, processed_units,declares)
         
         # Combine all generated code into a single Python file content
         gau_code = "\n".join(generated_code)
@@ -109,7 +110,7 @@ class GABComposer:
 
         compoesed_code=U.replace_from_second(compoesed_code,'import torch\n','')
         compoesed_code=U.replace_from_second(compoesed_code,'import torch.nn as nn\n','')
-        compoesed_code=U.replace_from_second(compoesed_code,'from model_discovery.model.utils.modules import GAUBase, gau_test\n','')
+        compoesed_code=U.replace_from_second(compoesed_code,'from model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n','')
 
         return compoesed_code
     
@@ -138,7 +139,7 @@ class GAB(GABBase):
         gab_code=GAB_TEMPLATE.format(ROOT_UNIT_NAME=root_node.spec.unitname)
         return gab_code
     
-    def compose_unit(self, tree, unit_name):
+    def compose_unit(self, tree, unit_name,declares):
         if unit_name not in tree.units:
             print(f"Unit {unit_name} is not in the tree")
             return None
@@ -148,7 +149,7 @@ class GAB(GABBase):
         
         generated_code = []
         processed_units = set()
-        self.generate_node_code(unit_name, generated_code, tree.units, processed_units)
+        self.generate_node_code(unit_name, generated_code, tree.units, processed_units,declares)
 
         gau_code = "\n".join(generated_code)
 
@@ -167,24 +168,28 @@ class GAB(GABBase):
 
         
     # Recursive function to generate code for a node and its children
-    def generate_node_code(self, unit_name, generated_code: List[str], units, processed_units):
+    def generate_node_code(self, unit_name, generated_code: List[str], units, processed_units,declares):
         if unit_name in processed_units:
             return
         processed_units.add(unit_name)
         # Check if the node exists in units
         if unit_name not in units:
             # If the node does not exist in units, create a placeholder
-            generated_code.append(self.create_placeholder_class(unit_name))
+            outputs='{}'
+            if unit_name in declares:
+                declare=declares[unit_name]
+                outputs='{'+','.join([f"'{name}': None" for name in declare.outputs])+'}'
+            generated_code.append(self.create_placeholder_class(unit_name,outputs))
         else:
             node = units[unit_name]
             generated_code.append(node.code)
             
             # Recursively generate code for children
             for child_unit in set(node.children):
-                self.generate_node_code(child_unit, generated_code, units, processed_units)
+                self.generate_node_code(child_unit, generated_code, units, processed_units,declares)
 
     # Function to create a placeholder class for a GAUNode
-    def create_placeholder_class(self, unit_name) -> str:
+    def create_placeholder_class(self, unit_name, outputs='{}') -> str:
         class_template = f"""
 class {unit_name}(GAUBase): 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict, device=None, dtype=None, **kwargs): 
@@ -192,7 +197,8 @@ class {unit_name}(GAUBase):
         super().__init__(embed_dim, block_loc, kwarg_all)
         
     def _forward(self, X, **Z): 
-        return X
+        Z_={outputs}
+        return X, Z_
 """
         return class_template
 
@@ -214,7 +220,7 @@ class {unit_name}(GAUBase):
 class GAUTree:
     def __init__(self, name, proposal, review, rating, suggestions, lib_dir=None, proposal_traces=[]):
         self.units:Dict[str,GAUNode] = {} 
-        self.declares:Dict[str,UnitDeclaration] = {} # the declarations of the units in the tree, not including the root as it has spec directly
+        self.declares:Dict[str,UnitDecl] = {} # the declarations of the units in the tree, not including the root as it has spec directly
         self.root = None
         self.name = name # name of a design 
         self.proposal = proposal # proposal of the design
@@ -227,14 +233,14 @@ class GAUTree:
             self.flows_dir = U.pjoin(lib_dir, 'flows')
             U.mkdir(self.flows_dir)
 
-    def add_unit(self, spec, code, args, desc, review, rating, children, gautests, suggestions, design_traces=None, demands=None, overwrite=False):
+    def add_unit(self, spec, code, args, desc, review, rating, children, gautests, suggestions, design_traces=None, requirements=None, overwrite=False):
         name = spec.unitname
         if name in self.units and not overwrite:
             print(f"Unit {name} is already in the tree")
             return
         # assert name not in self.units, f"Unit {name} is already in the tree"
         assert not self.dict.exist(name), f"Unit {name} is already registered"
-        node = GAUNode(spec, code, args, desc, review, rating, children, gautests, suggestions, design_traces, demands)
+        node = GAUNode(spec, code, args, desc, review, rating, children, gautests, suggestions, design_traces, requirements)
         if len(self.units)==0:
             self.root = node
         self.units[name] = node
@@ -337,7 +343,7 @@ class GAUTree:
         return GABComposer().compose_root(self.root)
 
     def compose_unit(self, unit_name): # compose a single unit for running unit tests
-        return GABComposer().compose_unit(self, unit_name)
+        return GABComposer().compose_unit(self, unit_name,self.declares)
     
     def test_unit(self, unit_name, return_code=True):
         code = self.compose_unit(unit_name)
@@ -521,11 +527,11 @@ class GAUTree:
                 review=local.get('REVIEW',None)
                 rating=local.get('RATING',None)
                 suggestions=local.get('SUGGESTIONS',None)
-                demands=local.get('DEMANDS',None)
+                requirements=local.get('REQUIREMENTS',None)
                 code,gautests,warnings=process_core_library_code(code,spec.unitname)
                 if warnings:
                     print(f'Warning {spec.unitname}: {warnings}')
-                tree.add_unit(spec,code,args,desc,review,rating,children,gautests,suggestions,demands)
+                tree.add_unit(spec,code,args,desc,review,rating,children,gautests,suggestions,requirements)
         tree.root=tree.units[metadata['root']]
         return tree
 

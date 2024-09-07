@@ -4,11 +4,11 @@ import torch.nn.functional as F
 
 from torch import Tensor
 
-from model_discovery.model.utils.modules import GAUBase,gau_test # DO NOT CHANGE THIS IMPORT STATEMENT #
+from model_discovery.model.utils.modules import GAUBase,gau_test,UnitDecl # DO NOT CHANGE THIS IMPORT STATEMENT #
 
 
 
-class RMSNorm(GAUBase):
+class RMSNorm(GAUBase): # DO NOT CHANGE THIS CLASS NAME #
     def __init__(self,embed_dim: int, block_loc: tuple, kwarg_all: dict, device=None,dtype=None,
             eps=1e-5, **kwargs):
         """If group_size is not None, we do GroupNorm with each group having group_size elements.
@@ -40,6 +40,7 @@ def test_rmsnorm(device=None,dtype=None):
     assert y.shape==(1,100,128)
 
 
+CHILDREN_DECLARATIONS = []
 
 SPEC = {
     "unitname": "RMSNorm",

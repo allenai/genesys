@@ -4,8 +4,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from model_discovery.model.utils.modules import GAUBase, gau_test # DO NOT CHANGE THIS IMPORT STATEMENT #
-
+from model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl # DO NOT CHANGE THIS IMPORT STATEMENT #
 
 # YOU CAN IMPORT MORE MODULES HERE #
 
@@ -99,3 +98,17 @@ def unit_test_name(device=None, dtype=None)->None: # RENAME THIS FUNCTION, DO NO
     # WRITE ASSERTIONS TO PERFORM THE TEST, USE PRINT TO DEBUG #
     
     raise NotImplementedError # YOU MUST IMPLEMENT THIS FUNCTION #
+
+
+# DECLARE ALL CHILDREN GAUs HERE (EITHER EXISTING OR NEW), IF YOU HAVE NO CHILDREN, LEAVE IT AS AN EMPTY LIST #
+
+CHILDREN_DECLARATIONS = [ # DO NOT REMOVE THIS LINE, DO NOT CHANGE THIS NAME #
+    # UnitDecl(
+    #   unitname="", # Name of the child GAU
+    #   demands="", # Demands of the child GAU
+    #   inputs=[], # List of argument names
+    #   outputs=[] # List of argument names
+    # ),  
+    # ... ADD MORE CHILDREN GAU DECLARATIONS HERE ... #
+]
+

@@ -1,6 +1,9 @@
 import ast
 import astor
 
+from model_discovery.model.utils.modules import UnitDecl
+
+
 
 #############################################################
 # GAU Format checker and reformatter
@@ -617,7 +620,8 @@ class ModuleProcessor(ast.NodeTransformer):
             module='model_discovery.model.utils.modules',
             names=[
                 ast.alias(name='GAUBase', asname=None),
-                ast.alias(name='gau_test', asname=None)
+                ast.alias(name='gau_test', asname=None),
+                ast.alias(name='UnitDecl', asname=None),
             ],
             level=0
         )
@@ -807,12 +811,17 @@ class GAUCallChecker(ast.NodeVisitor):
 
 
 
-def check_and_reformat_gau_code(source_code, unit_name, children):
-    # Step 1: Parse the source code into an AST
-    tree = ast.parse(source_code)
+def check_and_reformat_gau_code(source_code, unit_name):
     errors = []
     fetal_errors = []
     warnings = []
+
+    # Step 1: Parse the source code into an AST
+    try:
+        tree = ast.parse(source_code)
+    except Exception as e:
+        fetal_errors.append(f"Error parsing the code: {e}\n")
+        return None, None, None, errors, warnings, fetal_errors, None
 
     # Step 2: Run the format checker which now removes the import lines
     gaufinder = GAUFinder()
@@ -870,8 +879,26 @@ def check_and_reformat_gau_code(source_code, unit_name, children):
 
     ### Assume code lines wont change after this step
     reformatted_code = astor.to_source(tree)
+
+    local={}
+    try:
+        exec(reformatted_code,local)
+    except Exception as e:
+        fetal_errors.append(f"Error executing the code: {e}\nWill continue the checking process but please fix the code first.")
+    children_decl=local.get('CHILDREN_DECLARATIONS',None)
+    if children_decl is None:
+        warnings.append("Warning: No CHILDREN_DECLARATIONS found in the GAU. Will assume there is no children.")
+        children=[]
+    else:
+        children=[decl.unitname for decl in children_decl]
+
     tree = ast.parse(reformatted_code)
+    cleaner=CodeKeywordCleaner(['CHILDREN_DECLARATIONS'])
+    cleaner.visit(tree)
+
+    reformatted_code=astor.to_source(tree)
     code_lines = reformatted_code.split('\n')
+    tree = ast.parse(reformatted_code)
 
     # Step 5: Run the AttributeChecker
     attribute_checker = AttributeChecker(unit_name, children, code_lines)
@@ -895,7 +922,7 @@ def check_and_reformat_gau_code(source_code, unit_name, children):
     warnings += format_checker.warnings + gau_test_checker.warnings + attribute_checker.warnings
 
     # Return the reformatted code, any new arguments, errors, and warnings
-    return reformatted_code, new_args, gau_tests, errors, warnings, fetal_errors, docstring
+    return reformatted_code, new_args, gau_tests, errors, warnings, fetal_errors, docstring, children_decl
 
 
 
@@ -905,7 +932,7 @@ def check_and_reformat_gau_code(source_code, unit_name, children):
 ################################################################
 
 
-class CoreLibraryCodeCleaner(ast.NodeTransformer):
+class CodeKeywordCleaner(ast.NodeTransformer):
     def __init__(self, kws):
         self.kws=kws
 
@@ -925,9 +952,9 @@ def process_core_library_code(code, unit_name):
     if gau_tests == {}:
         warnings.append("Warning: No valid gau unit test function found, please write gau unit tests, a gau unit test function should be decorated with @gau_test.")
 
-    # remove global constants: SPEC, ARGS, DESC, CHILDREN, REVIEW, RATING, SUGGESTIONS, DEMANDS
-    kws=['SPEC', 'ARGS', 'DESC', 'CHILDREN', 'REVIEW', 'RATING', 'SUGGESTIONS', 'DEMANDS']
-    cleaner=CoreLibraryCodeCleaner(kws)
+    # remove global constants: SPEC, ARGS, DESC, CHILDREN, REVIEW, RATING, SUGGESTIONS, REQUIREMENTS
+    kws=['SPEC', 'ARGS', 'DESC', 'CHILDREN', 'REVIEW', 'RATING', 'SUGGESTIONS', 'REQUIREMENTS']
+    cleaner=CodeKeywordCleaner(kws)
     cleaner.visit(tree)
     code=astor.to_source(tree)
     return code, gau_tests, warnings

@@ -4,14 +4,14 @@ import torch.nn.functional as F
 
 from torch import Tensor
 
-from model_discovery.model.utils.modules import GAUBase,gau_test # DO NOT CHANGE THIS IMPORT STATEMENT #
+from model_discovery.model.utils.modules import GAUBase,gau_test,UnitDecl # DO NOT CHANGE THIS IMPORT STATEMENT #
 
 from typing import Optional
 
 
 
 
-class RotaryPositionalEmbeddings(GAUBase):
+class RotaryPositionalEmbeddings(GAUBase): # DO NOT CHANGE THIS CLASS NAME #
     """
     This class implements Rotary Positional Embeddings (RoPE)
     proposed in https://arxiv.org/abs/2104.09864.
@@ -154,6 +154,9 @@ def test_rotarypositionalembeddings(device=None,dtype=None):
     _,Z_= rotarypositionalembeddings(X,**Z)
     output_emb=Z_["output_emb"]
     assert output_emb.shape==(1,100,128)
+
+
+CHILDREN_DECLARATIONS = []
 
 
 SPEC ={

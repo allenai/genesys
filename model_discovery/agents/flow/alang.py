@@ -31,7 +31,6 @@ FAILED = "FAILED"
 
 
 
-
 @dataclass
 class AgentPrompt:
     prompt: str

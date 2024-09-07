@@ -1,5 +1,6 @@
-from dataclasses import dataclass, field, asdict
+
 from ..flow.alang import AgentPrompt
+from model_discovery.model.utils.modules import UnitSpec,UnitDecl
 
 from exec_utils.models.model import ModelOutput
 import re
@@ -18,47 +19,14 @@ def generate_enum_from_list(enum_name: str, values: list):
 GAB_ERROR = """Please provide the full gab code, and please do not modify other parts of the code. Specifically, please preserve # gab.py at the beginning of gab.py. You can write multiple codes during your analysis process, but only one with # gab.py at the beginning will be detected as gab.py, if multiple gab.py are detected in your response, only the last one will be applied. Please follow the instructions in the prompt and provide the full gab.py file with the completed code. """
 
 
-class UnitDeclaration(BaseModel):
-   unitname: str = Field(..., description="The name of the child GAU you are declaring.")
-   demands: str = Field(..., description="The function of the child GAU you expect to implement.")
-   inputs: list[str] = Field(..., description="The variable names of which you expect the child GAU to take as input from `Z`. `X` means only expect the sequence as input and nothing from `Z`.")
-   outputs: list[str] = Field(..., description="The variable names of which you expect the child GAU to output to `Z'`. `Y` means only expect the sequence as output and nothing to `Z'`.")
-
-   def to_prompt(self):
-      return f"""
-Unit Name: {self.unitname}
-- Demands: {self.demands}
-- Inputs: {", ".join(self.inputs)}
-- Outputs: {", ".join(self.outputs)}
-"""
-
-class UnitSpec(BaseModel):
-   unitname: str = Field(..., description="The name of the GAU.")
-   document: str = Field(..., description="The docstring of the GAU, describe the function, interfaces, usages, etc. Allowing the user to understand how it works without reading the implementation.")
-   inputs: list[str] = Field(..., description="The variable names of which the GAU expects to take as input from `Z`. `X` means only expect the sequence as input and nothing from `Z`.")
-   outputs: list[str] = Field(..., description="The variable names of which the GAU expects to output to `Z'`. `Y` means only expect the sequence as output and nothing to `Z'`.")
-
-   def to_prompt(self):
-      return f"""
-Unit Name: {self.unitname}
-Document:
-'''
-{self.document}  
-'''
-- Inputs: {", ".join(self.inputs)}
-- Outputs: {", ".join(self.outputs)}
-"""
-
 class GU_IMPLEMENTATION_ROOT_format(BaseModel): 
    analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
    spec: UnitSpec = Field(..., description="The specification of the GAU.")
-   children: list[UnitDeclaration] = Field(..., description="Declarations of the child GAUs in this GAU. It can be existing GAUs or new GAUs you want to declare.")
    implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
 
 
 class GU_IMPLEMENTATION_format(BaseModel): 
    analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
-   children: list[UnitDeclaration] = Field(..., description="Declarations of the child GAUs in this GAU. It can be existing GAUs or new GAUs you want to declare.")
    implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
 
 class GU_IMPLEMENTATION_ROOT_RETRY_format(BaseModel): # for retry, can update spec 
@@ -66,7 +34,6 @@ class GU_IMPLEMENTATION_ROOT_RETRY_format(BaseModel): # for retry, can update sp
    analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
    spec: UnitSpec = Field(..., description="The specification of the GAU.")
    implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
-   children: list[UnitDeclaration] = Field(..., description="Declarations of the child GAUs in this GAU. It can be existing GAUs or new GAUs you want to declare.")
    changes: str = Field(..., description="The exact changes you have made in the code. It must include detailed code diffs and necessary context with explanation.")
 
 
@@ -76,18 +43,16 @@ class DebuggingStep(BaseModel):
 
 class GU_IMPLEMENTATION_RETRY_DEBUG_format(BaseModel): # for retry
    reflection: str = Field(..., description="The reflection of the feedback from the reviewer.")
-   debugging_steps: list[DebuggingStep] = Field(..., description="The debugging steps to fix the error.")
+   # debugging_steps: list[DebuggingStep] = Field(..., description="The debugging steps to fix the error.")
+   debugging_steps: str = Field(..., description="The debugging steps to fix the error.")
    analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
    implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
-   children: list[UnitDeclaration] = Field(..., description="Declarations of the child GAUs in this GAU. It can be existing GAUs or new GAUs you want to declare.")
    changes: str = Field(..., description="The exact changes you have made in the code. It must include detailed code diffs and necessary context with explanation.")
-
 
 class GU_IMPLEMENTATION_RETRY_format(BaseModel): # for retry
    reflection: str = Field(..., description="The reflection of the feedback from the reviewer.")
    analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
    implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
-   children: list[UnitDeclaration] = Field(..., description="Declarations of the child GAUs in this GAU. It can be existing GAUs or new GAUs you want to declare.")
    changes: str = Field(..., description="The exact changes you have made in the code. It must include detailed code diffs and necessary context with explanation.")
 
 class GU_IMPLEMENTATION_REFINE_format(BaseModel): # for refine, allow to update description, implementation, children, and changes
@@ -95,7 +60,6 @@ class GU_IMPLEMENTATION_REFINE_format(BaseModel): # for refine, allow to update 
    reflection: str = Field(..., description="The reflection of the feedback from the reviewer.")
    analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
    implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
-   children: list[UnitDeclaration] = Field(..., description="Declarations of the child GAUs in this GAU. It can be existing GAUs or new GAUs you want to declare.")
    changes: str = Field(..., description="The exact changes you have made in the code. It must include detailed code diffs and necessary context with explanation.")
 
 
@@ -646,9 +610,9 @@ should follow the following steps and include them in your response:
       blocks. 
 3. The list of children you need to define. To declare a child GAU, you should
    provide the unit name, variable names of the expected inputs and outputs
-   (i.e. the interfaces of the child), the demands of the child including the
+   (i.e. the interfaces of the child), the requirements of the child including the
    expected function, behavior and the description of the interfaces. The
-   demands should be clear and detailed, it should be a guideline for the
+   requirements should be clear and detailed, it should be a guideline for the
    implementation of the child GAU. You can reuse an existing GAU or a declared
    GAU as your child, you can do this by declaring the children with the unit
    name of the GAU you want to reuse, and the system will automatically reuse
@@ -1017,6 +981,9 @@ Please refine your design and implementation based on the feedback provided. You
    - **Follow the GAU template and base class instructions** precisely**: Make sure your implementation is consistent with the provided guidelines.
    - **Limit changes to the current GAU**: Any bugs or issues should be resolved within the GAU you are working on. Other units are either fully tested or placeholders and should not require changes.
    - **Ensure the unit is self-contained**: Your unit should function independently, without requiring future modifications to other units. This modularity is essential for scalability and ease of integration.
+
+5. **No access to other units**: 
+   - Remember that you can only solve the bugs within the unit you are working on, you cannot access other units including the child units. You can update them later, all your updates to the child unit classes in your code will be ignored and removed. Only the edits to the current unit will be kept. Think of how to solve the problems or delay the problems by editing within current unit.
 
 Here is the GAUBase class for you to refer:
 
@@ -1921,48 +1888,71 @@ root unit and may themselves be composed of nested child units.
 
 # About the role  
 GUE_DESIGNER_SYSTEM_prompt_part3 = """
+
 ### Instructions for the Design Process
 
-You will start by refining an existing language model (LM) block design,
-structured as a tree of GAUs (Generalized Autoregressive Units). A proposal will
-be provided, specifying a target GAU for refinement. Your task is to implement
-changes based on the proposal. You can modify the target GAU's operations or
-introduce new child GAUs. However, remember that the proposal is a high-level
-guideline, you can introduce more variants that make the design better.
+You will start by refining an existing language model (LM) block design, structured as a tree of GAUs (Generalized Autoregressive Units). A proposal will be provided, specifying a target GAU for refinement. Your task is to implement changes based on the proposal. You can modify the target GAU's operations or introduce new child GAUs. Remember, the proposal is a high-level guideline—you're encouraged to explore better design variants.
 
-When introducing new child GAUs, declare them in your response and call them
-within the target GAU. Placeholders, which directly map inputs to outputs, will
-be auto-generated by the system and can be implemented later. You are not
-required to implement the child units immediately; this can be done during
-subsequent stages.
+### Key Design Principles:
 
-**Key Points**:
- - You can only modify one GAU at a time. You will have access to the target 
-   GAU and any newly defined child units during the implementation stage.
- - If your unit depends on input from its parent, ensure you pick the parent unit 
-   from the beginning, as you will not have access to modify other units.
- - You are expected to provide both an **analysis and reasoning** for your design,
-   as well as the **implementation** of the refined GAU. The implementation must
-   follow this template, specifically, always remember to write the docstring for the 
-   GAU class following the instruction in the template which requires you to write the 
-   docstring with pytorch style:
+1. **Decomposition of Complex GAUs**:  
+   If a GAU is complex, it is essential to decompose it into smaller child GAUs to make the design and testing process easier. Follow this top-down approach:
+   - **Identify complex components**: Decide if a component should be turned into a child GAU.
+   - **Perform requirement analysis**: Define the child GAU's name, requirements, inputs, and outputs. Add this information to the `CHILDREN_DECLARATION` list using the `UnitDecl` structure:
+     - **Name**: The name of the child GAU.
+     - **Requirements**: Functional requirements for the child GAU.
+     - **Inputs**: Variables passed to the child GAU through the `Z` dictionary (e.g., `Z['input_name'] = ...`). If `X` is an input, it represents the sequence input (shape: `(B, L, D)`) and is not stored in `Z`.
+     - **Outputs**: Variables returned by the child GAU through the `Z` dictionary (e.g., `Z'['output_name'] = ...`). If `Y` is an output, it represents the sequence output and is not stored in `Z`.
+   > **Note**: `X` and `Y` are special inputs and outputs for sequences. They are not expected to be passed through `Z`.
 
-```python {GAU_TEMPLATE} ```
+2. **Placeholder Declaration and Child GAU Calls**:  
+   Declare and instantiate child GAUs in the parent GAU’s `__init__` method as placeholders, like:
+   ```python
+   self.{{child_instance}} = {{ChildName}}(...)
+   ```
+   Call the child GAU in the forward pass using this pattern:
+   ```python
+   Z['arg1'] = ...
+   Z['arg2'] = ...
 
-For each GAU, you must also include at least one unit test. After the unit is
-integrated back into the model, it will be checked for **correctness**,
-**executability**, and **effectiveness**. Your refinement must not introduce
-errors into the model.
+   Y, Z_ = self.{{child_instance}}(X, **Z)
 
-**Review Process**:
- - Your design will be reviewed for approval based on unit tests, review feedback,
-   and system checks.
- - If your design fails the review, you'll need to make revisions based on the
-   feedback.
- - If your implementation fails the tests or system checks, you will need to
-   debug and fix any issues. The system will provide error traces, and you can
-   use print statements to diagnose problems. Be patient and resolve issues
-   gradually in multiple rounds of dialogs.
+   out1 = Z_.get('out1', None)
+   out2 = Z_.get('out2', None)
+   ```
+   - You can replace `X`, `Y`, `Z`, and `Z_` with other variable names, but ensure the sequences (`X`, `Y`) are always shaped `(B, L, D)`.
+   - Ensure all inputs/outputs, other than sequences, are passed via `Z` and `Z_`.
+
+3. **Prepare Inputs and Outputs**:  
+   All inputs needed by child GAUs should be prepared in advance. After finalizing the parent GAU, you won’t be able to modify it when implementing the child GAUs. Always retrieve values from `Z` using `Z.get('var', None)` or other default values to avoid errors. Similarly, when implementing a GAU, you should also handle the case if an input argument is not in `Z` or is `None`.
+
+The system will handle placeholders for declared child GAUs by generating empty classes that accept `X` and `Z` as inputs and return the same `X` and `Z` as outputs. Your job is to correctly prepare the inputs and manage outputs for each child GAU.
+
+### Implementation Guidelines:
+
+- **One GAU at a Time**:  
+  Each time, you will work on a **single GAU**. Either you’ll be assigned a GAU from the proposal or choose one from the proposal GAU and newly declared child GAUs. So when selecting a GAU to implement, you need to consider the dependency between GAUs as well.
+  
+- **No Access to Other GAUs**:  
+  When working on a GAU, you will only have access to the current GAU’s implementation and not the internal details of other GAUs. Ensure interactions between GAUs are handled through `Z` and `Z_`.
+
+- **Child GAUs**:  
+  When decomposing a GAU into child GAUs, ensure that the placeholder instantiation and calls are correct. Though you won’t implement them immediately, placeholders will be provided. Ensure all input/output interfaces for placeholders are properly handled in the current GAU.
+
+- **Docstring**:  
+  Provide a **docstring** for the GAU, explaining its inputs, outputs, and purpose. Follow PyTorch’s style guidelines, as the docstring will help others understand the GAU’s role and how it interacts with other units.
+
+- **Unit Tests**:  
+  Write at least one **unit test** for each GAU. Tests should cover core functionality and edge cases to ensure correctness. After the GAU is integrated into the model, tests will be run automatically to validate its performance.
+
+- **Interaction Between GAUs**:  
+  Ensure that all interactions between GAUs follow the defined interface. You will not be able to modify other GAUs once your current GAU is finalized, so proper input/output management is essential.
+
+- **Focus on One GAU**:  
+  Focus on the design of the current GAU without worrying about the internal workings of its parents, siblings, or children. Ensure your design allows the GAU to communicate effectively with its children using their defined interfaces.
+
+- **Iterative Design**:  
+  You will receive feedback and go through iterative rounds of design. If your implementation introduces errors or fails tests, you will need to debug and refine your GAU. The system will guide you through this process with error traces and diagnostics.
 
 """
 
@@ -1970,36 +1960,37 @@ errors into the model.
 GUE_DESIGNER_SYSTEM_prompt_part4 = """
 ## Guidelines for Designing the GAU:
 
-1. **Class Naming & Structure**: - Ensure it is the only GAU class (inherited
-   from `GAUBase`) in your
-     implementation and name it correctly with the name you provided. Avoid
-     defining any other GAU classes.
+1. **Class Naming & Structure**:
+   - Ensure that your GAU class inherits from `GAUBase` and is named as specified in the proposal. You should only define **one** GAU class in your implementation. Do not define any other GAU classes in this block.
+   - Ensure all the arguments introduced in the `__init__` function of the GAU class have either a default value or a way to handle missing values. If an argument is optional, handle it gracefully. Missing argument handling is necessary to prevent checker failures unless `None` is a valid value.
    - Ensure you are referring to the right class names in unit tests. 
-   - You must provide default values for all the arguments you introduced in the
-     __init__ function of the GAU class or provide a way to handle the value
-     missing. Otherwise, the checker will fail.
 
-2. **GAU Call Behavior**: - Always call the  GAU in this format:
-   `Y,Z'={{unitname}}(X, **Z)`. If you want 
-     to pass any extra arguments than sequence X, pass it through the kwargs
-     $Z$, e.g., Z['arg']=value. The outputs are always sequence $Y$ and updated
-     $Z'$. If you expect any extra outputs besides sequence $Y$, read it from
-     $Z'$, besides sequence $Y$, read it from $Z'$, e.g.,
-     var=Z'.get('var',None).
-
-3. **GAU Initialization**: - Always define a GAU instance like this: 
+2. **GAU Call Behavior**:
+   - The GAU should always be called in this format:
+     ```python
+     Y, Z' = self.{{unit_instance}}(X, **Z)
+     ```
+     If additional inputs are required, pass them through `Z` (e.g., `Z['arg'] = value`). 
+     - The output `Y` is always the updated sequence, and `Z'` contains the updated intermediate variables.
+     - If extra outputs besides `Y` are expected, retrieve them from `Z'`, e.g.:
+     ```python
+     var = Z'.get('var', None)
+     ```
+   
+3. **GAU Initialization**:
+    - Always initialize a GAU instance as follows:
      ```python self.{{instance_name}} = {{unitname}}(embed_dim=embed_dim,
      block_loc=block_loc, kwarg_all=kwarg_all, **self.factory_kwargs,
      **kwarg_all) ```
-   - If you want to pass any extra arguments to the unit, pass it through the
-     kwarg_all dictionary. For example, suppose you introduced two additional 
-     arguments, `arg1` and `arg2`, you can pass them like this:
+   - If you need to pass extra arguments to the unit, include them in `kwarg_all`.
+     For example, suppose you introduced two additional arguments, `arg1` and `arg2`, 
+     you can pass them as follows:
      ```python
      kwarg_all['arg1']=...
      kwarg_all['arg2']=...
-     ... = UnitName(..., kwarg_all=kwarg_all, ..., **kwarg_all)
+     ... = {{UnitName}}(..., kwarg_all=kwarg_all, ..., **kwarg_all)
      ```
-     
+
 4. **Embedding & Block Location**: - `embed_dim` specifies the input dimension.
    - `block_loc` is a tuple \((block\_idx, n\_block)\) that locates the GAU
    within
@@ -2011,27 +2002,24 @@ GUE_DESIGNER_SYSTEM_prompt_part4 = """
 5. **Module Definition**:
     - Avoid using `GAU` instances inside `nn.Sequential`. You can use
       `nn.ModuleList` or `nn.ModuleDict`.
-    - Do not define any nn.Module class in your code, whenever you need a
-      submodule, declare a child GAU.
+    - Do not define any nn.Module classes in your code. Declare child GAUs instead and do not implement them in your code.
 
 6. **Placeholder Management**:
-    - The system will handle GAU placeholders automatically. Don't manually
-      implement placeholders; you will be asked to implement them later.
+   - Placeholders for child GAUs will be automatically handled by the system. Avoid manually implementing placeholders at this stage. You will be prompted to implement them later when necessary.
+   - When declaring placeholders for child GAUs in your design, follow the proper syntax and ensure correct input-output handling.
 
 7. **Design Approach**:
-    - Name GAUs meaningfully and define placeholders thoughtfully, outlining the
-      design. Develop blocks top-down, with placeholders for complex operations
-      to be implemented later. 
+   - Name GAUs meaningfully. Each GAU should represent a distinct unit with a clear function in the architecture.
+   - Follow a top-down design approach: if the operation is complex, decompose it into child GAUs and define their placeholders. Ensure each placeholder aligns with the broader structure of the model, ready for future implementation.
 
 8. **Be Innovative**:
-    - Design new GAUs to surpass current models. Avoid copying existing
-      architectures like the vanilla Transformer—strive for creativity and
-      transcendence over existing state-of-the-art models.
-
-9. **Be Consistent**: - Ensure that the design is consistent and compatible with
-   the overall system. The design
-     should be able to fit into the overall system and should not introduce any
-     inconsistencies, errors and redundancies. 
+   - Focus on designing GAUs that improve performance and efficiency. Avoid replicating existing architectures (e.g., vanilla Transformers) and aim to transcend current state-of-the-art models.
+   - Introduce unique mechanisms or structures that differentiate your GAUs from traditional models.
+   - Do not simply copy from the references or existing codebases. You can use their ideas to inspire you for your own original designs.
+   
+9. **Be Consistent**: 
+   - Ensure your design remains consistent and fits seamlessly into the overall system architecture.
+   - Avoid introducing errors, inconsistencies, or redundant code. Your GAU should operate smoothly alongside existing GAUs and should not introduce any deviations from the overall design philosophy.
 
 """
 

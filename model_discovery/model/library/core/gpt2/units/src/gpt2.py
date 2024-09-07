@@ -2,12 +2,12 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from model_discovery.model.utils.modules import GAUBase,gau_test # DO NOT CHANGE THIS IMPORT STATEMENT #
+from model_discovery.model.utils.modules import GAUBase,gau_test,UnitDecl # DO NOT CHANGE THIS IMPORT STATEMENT #
 
 
 
 
-class GPT2(GAUBase):
+class GPT2(GAUBase): # DO NOT CHANGE THIS CLASS NAME #
     def __init__(self,embed_dim: int, block_loc: tuple, kwarg_all: dict, device=None,dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
@@ -36,6 +36,28 @@ def test_gpt2(device=None,dtype=None):
     Z={}
     y,Z_=gpt2(x,**Z)
     assert y.shape==(1,100,128)
+
+
+CHILDREN_DECLARATIONS = [
+    UnitDecl(
+        unitname="MHA",
+        requirements="",
+        inputs=['X'],
+        outputs=['Y'],
+    ),
+    UnitDecl(
+        unitname="GatedMLP",
+        requirements="",
+        inputs=['X'],
+        outputs=['Y'],
+    ),
+    UnitDecl(
+        unitname="RMSNorm",
+        requirements="", 
+        inputs=['X'],
+        outputs=['Y'],
+    ),
+]
 
 
 SPEC = {

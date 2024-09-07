@@ -2,6 +2,7 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 import inspect
+from pydantic import BaseModel, Field
 
 import math
 
@@ -9,6 +10,39 @@ from einops import rearrange
 
 from abc import ABC, abstractmethod
 
+
+
+
+class UnitDecl(BaseModel):
+   unitname: str = Field(..., description="The name of the child GAU you are declaring.")
+   requirements: str = Field(..., description="The requirements of the child GAU you expect to implement.")
+   inputs: list[str] = Field(..., description="The variable names of which you expect the child GAU to take as input from `Z`. `X` specifically means expect the sequence as input. asterisk (*) at the beginning of the variable name means that the variable is optional.")
+   outputs: list[str] = Field(..., description="The variable names of which you expect the child GAU to output to `Z'`. `Y` specifically means expect the sequence as output.")
+
+   def to_prompt(self):
+      return f"""
+Unit Name: {self.unitname}
+- Requirements: {self.requirements}
+- Inputs: {", ".join(self.inputs)}
+- Outputs: {", ".join(self.outputs)}
+"""
+
+class UnitSpec(BaseModel):
+   unitname: str = Field(..., description="The name of the GAU.")
+   document: str = Field(..., description="The docstring of the GAU, describe the function, interfaces, usages, etc. Allowing the user to understand how it works without reading the implementation.")
+   inputs: list[str] = Field(..., description="The variable names of which the GAU expects to take as input from `Z`. `X` specifically means expect the sequence as input. asterisk (*) at the beginning of the variable name means that the variable is optional.")
+   outputs: list[str] = Field(..., description="The variable names of which the GAU expects to output to `Z'`. `Y` specifically means expect the sequence as output.")
+
+   def to_prompt(self):
+      return f"""
+Unit Name: {self.unitname}
+Document:
+'''
+{self.document}  
+'''
+- Inputs: {", ".join(self.inputs)}
+- Outputs: {", ".join(self.outputs)}
+"""
 
 
 # Future TODO: maybe allow the agent to design topology as well, and support complicated structures
