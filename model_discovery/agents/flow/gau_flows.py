@@ -845,7 +845,7 @@ class GUFlowExisting(FlowCreator):
     The flow for designing a GAB Flow nested of GAB Units from scratch.
     the input query should be the seeds from the root tree for the design
     """
-    def __init__(self,system,status_handler,stream,tree):
+    def __init__(self,system,status_handler,stream,tree,agent_cfg={}):
         super().__init__(system,'GAU Design Flow from Existing Tree')
         self.system=system
         self.status_handler=status_handler
@@ -864,11 +864,19 @@ class GUFlowExisting(FlowCreator):
         self.gpt4omini_agent=self.system.debugger 
         self.claude_agent=self.system.claude
 
+        AGENT_TYPES = {
+            'claude3.5_sonnet':self.claude_agent,
+            'gpt4o_0806':self.gpt4o0806_agent,
+            'gpt4o_mini':self.gpt4omini_agent,
+        }
+        DEFAULT_AGENT='claude3.5_sonnet'
+
+        agent_types=agent_cfg.get('agent_types',{})     
         self.agents={
-            'DESIGN_PROPOSER':self.claude_agent,
-            'PROPOSAL_REVIEWER':self.claude_agent,
-            'DESIGN_IMPLEMENTER':self.claude_agent,
-            'IMPLEMENTATION_REVIEWER':self.claude_agent,
+            'DESIGN_PROPOSER':AGENT_TYPES[agent_types.get('DESIGN_PROPOSER',DEFAULT_AGENT)],
+            'PROPOSAL_REVIEWER':AGENT_TYPES[agent_types.get('PROPOSAL_REVIEWER',DEFAULT_AGENT)],
+            'DESIGN_IMPLEMENTER':AGENT_TYPES[agent_types.get('DESIGN_IMPLEMENTER',DEFAULT_AGENT)],
+            'IMPLEMENTATION_REVIEWER':AGENT_TYPES[agent_types.get('IMPLEMENTATION_REVIEWER',DEFAULT_AGENT)],
         }
         self.costs={
             'DESIGN_PROPOSER':0,
@@ -1436,11 +1444,11 @@ class GUFlowExisting(FlowCreator):
 
 
 
-def gu_design_existing(cls,instruct,stream,status_handler,seed,references=None):
+def gu_design_existing(cls,instruct,stream,status_handler,seed,references=None,agent_cfg={}):
     query=P.build_GUE_QUERY(seed,references,instruct)
     tree = seed.tree
     main_tid = cls.dialog.fork(0,note='Starting a new session...',alias='main')
-    gu_flow = GUFlowExisting(cls, status_handler,stream,tree)
+    gu_flow = GUFlowExisting(cls, status_handler,stream,tree,agent_cfg)
     GU_CALLEE = ROLE('GAB Unit Designer',gu_flow.flow)
     gue_tid = cls.dialog.fork(main_tid,SYSTEM_CALLER,GU_CALLEE,note=f'launch design flow',alias=f'gu_design')
     _,ret=cls.dialog.call(gue_tid,query,main_tid=main_tid,references=references)

@@ -9,20 +9,37 @@ from exec_utils.models.model import ModelState,OpenAIModel,ModelRuntimeError,Uti
 from exec_utils.models.utils import openai_costs
 
 
-def gpt4o_costs(usage,mini=False):
-    if mini:
-        usage['cost']=usage['input_tokens']*0.15/1e6 + usage['output_tokens']*0.6/1e6
-    else:
-        usage['cost']=usage['input_tokens']*2.5/1e6 + usage['output_tokens']*10/1e6
+def gpt4o_costs(usage,model_name):
+    costs={
+        "gpt-4o-2024-08-06":{
+            'input':2.5/1e6,
+            'output':10/1e6,
+        },
+        "gpt-4o-mini":{
+            'input':0.15/1e6,
+            'output':0.6/1e6,
+        },
+    }
+    usage['cost']=usage['input_tokens']*costs[model_name]['input'] + usage['output_tokens']*costs[model_name]['output']
+    usage['model_name']=model_name
     return usage
 
-def claude3_5_sonnet_costs(usage):
-    cost=usage['input_tokens']*3/1e6 + usage['output_tokens']*15/1e6
+def claude3_5_sonnet_costs(usage,model_name='claude-3-5-sonnet-20240620'):
+    costs={
+        "claude-3-5-sonnet-20240620":{
+            'input':3/1e6,
+            'output':15/1e6,
+            'cache_creation':3.75/1e6,
+            'cache_read':0.3/1e6,
+        },
+    }
+    cost=usage['input_tokens']*costs[model_name]['input'] + usage['output_tokens']*costs[model_name]['output']
     if 'cache_creation_input_tokens' in usage:
-        cost+=usage['cache_creation_input_tokens']*3.75/1e6
+        cost+=usage['cache_creation_input_tokens']*costs[model_name]['cache_creation']
     if 'cache_read_input_tokens' in usage:
-        cost+=usage['cache_read_input_tokens']*0.3/1e6
+        cost+=usage['cache_read_input_tokens']*costs[model_name]['cache_read']
     usage['cost']=cost
+    usage['model_name']=model_name
     return usage
     
 
@@ -171,7 +188,7 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
         'input_tokens':completions.usage.prompt_tokens,
         'output_tokens':completions.usage.completion_tokens,
     }
-    usage=gpt4o_costs(usage,mini='mini' in model._config.model_name)
+    usage=gpt4o_costs(usage,model._config.model_name)
     cost=usage['cost']
     model._model_cost += cost
     token_probs = completions.choices[0].token_probs.content if logprobs else []
@@ -267,6 +284,7 @@ def claude__call__(
         logprobs=False, # not supported for claude
         use_cache: bool = True, # XXX: not working with structured outputs now!
         system: Optional[str] = None,
+        model_name: Optional[str] = 'claude-3-5-sonnet-20240620',
         **kwargs
     ):
     """Makes a call the underlying model 
@@ -284,6 +302,7 @@ def claude__call__(
     
     """
     messages=ConversationHistory(history,prompt).get_turns(use_cache)
+    model._config.model_name=model_name
     if use_cache:
         system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}]
     else:
@@ -364,18 +383,14 @@ def call_model_claude(model,message,system,response_format, logprobs=False,use_c
     Cache: 1.25(S+(R-1)I) + 0.1(S(R-1)+I(R-1)(R-2)/2) = 19*1.25 + 0.1*(12+24)=3.6+23.75=27.35K
 
     """
+
     if use_cache: # XXX: not working with structured outputs now!
         extra_headers={"anthropic-beta": "prompt-caching-2024-07-31"}
     else:
         extra_headers={}
     
     if response_format is not None and inspect.isclass(response_format) and issubclass(response_format,BaseModel):
-        lc_model = ChatAnthropic(
-            model="claude-3-5-sonnet-20240620", 
-            temperature=model._config.temperature,
-            max_tokens=model._config.max_output_tokens,
-            extra_headers=extra_headers
-        )
+        lc_model = ChatAnthropic(model=model._config.model_name)
         structured_llm = lc_model.with_structured_output(response_format,include_raw=True)
         tools_args=structured_llm.dict()['first']['steps__']['raw']['kwargs']
         # tools[0]['cache_control']={"type": "ephemeral"}
@@ -383,7 +398,7 @@ def call_model_claude(model,message,system,response_format, logprobs=False,use_c
         tools_args={}
         
     RET=anthropic.Anthropic().messages.create(
-        model="claude-3-5-sonnet-20240620", # model in config is ignored
+        model=model._config.model_name, # model in config is ignored
         max_tokens=model._config.max_output_tokens,
         messages=message, 
         temperature=model._config.temperature,
@@ -405,7 +420,7 @@ def call_model_claude(model,message,system,response_format, logprobs=False,use_c
     else:
         text=RET['content'][0]['text']
 
-    usage=claude3_5_sonnet_costs(RET['usage'])
+    usage=claude3_5_sonnet_costs(RET['usage'],model._config.model_name)
 
     return ModelOutputPlus(
         text=text,

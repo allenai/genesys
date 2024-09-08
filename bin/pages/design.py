@@ -32,7 +32,7 @@ def design(evosys,project_dir):
     sources = ['ReferenceCoreWithTree', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference', 'Reference1hop']
     sources={i:len(evosys.ptree.filter_by_type(i)) for i in sources}
     n_sources = {}
-
+    
     st.subheader("Configure the number of seeds to sample from each source")
     cols = st.columns(len(sources))
     for i,source in enumerate(sources):
@@ -43,8 +43,26 @@ def design(evosys,project_dir):
                 init_value=min(1,sources[source])
                 n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=init_value,max_value=sources[source])
 
+    st.subheader("Configure the base models for each agent")
+    AGENT_TYPES = ['claude3.5_sonnet','gpt4o_0806','gpt4o_mini']
+    agent_type_labels = {
+        'DESIGN_PROPOSER':'Proposal Agent',
+        'PROPOSAL_REVIEWER':'Proposal Reviewer',
+        'DESIGN_IMPLEMENTER':'Implementation Agent',
+        'IMPLEMENTATION_REVIEWER':'Implementation Reviewer',
+    }
+    agent_types = {}
+    cols = st.columns(4)
+    for i,agent in enumerate(agent_type_labels):
+        with cols[i]:
+            agent_types[agent] = st.selectbox(label=agent_type_labels[agent],options=AGENT_TYPES)
+    agent_cfg = {'agent_types':agent_types}
+
     if mode!='Design from existing design':
         st.write("WARNING: Design from scratch has not been updated, it may not work as expected.")
+
+    # st.write(agent_cfg)
+    # st.write(n_sources)
 
     submit = st.button(label="Design model")
 
@@ -59,6 +77,6 @@ def design(evosys,project_dir):
             instruct,metadata=evosys.select(n_sources,mode=_mode) # use the seed_ids to record the phylogenetic tree
         if instruction:
             instruct+=f'\n\n## Additional Instructions from the user\n\n{instruction}'
-        system(instruct,frontend=True,stream=st,log_dir=log_dir,metadata=metadata)
+        system(instruct,frontend=True,stream=st,log_dir=log_dir,metadata=metadata,agent_cfg=agent_cfg)
 
     

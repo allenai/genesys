@@ -18,23 +18,26 @@ from streamlit_navigation_bar import st_navbar
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(project_root)
 
-# Import the parent module first
-import bin.pages
+# # Import the parent module first
+# import bin.pages
 
-# Function to dynamically import and reload modules
-def import_and_reload(module_name):
-    full_module_name = f'bin.pages.{module_name}'
-    if full_module_name in sys.modules:
-        return importlib.reload(sys.modules[full_module_name])
-    return importlib.import_module(full_module_name)
+# # Function to dynamically import and reload modules
+# def import_and_reload(module_name):
+#     full_module_name = f'bin.pages.{module_name}'
+#     if full_module_name in sys.modules:
+#         return importlib.reload(sys.modules[full_module_name])
+#     return importlib.import_module(full_module_name)
 
-# Import and reload modules
-home = import_and_reload('home').home
-viewer = import_and_reload('viewer').viewer
-design = import_and_reload('design').design
-evolve = import_and_reload('evolve').evolve
-engine = import_and_reload('engine').engine
-prompt = import_and_reload('prompt').prompt
+# # Import and reload modules
+# home = import_and_reload('home').home
+# viewer = import_and_reload('viewer').viewer
+# design = import_and_reload('design').design
+# evolve = import_and_reload('evolve').evolve
+# engine = import_and_reload('engine').engine
+# prompt = import_and_reload('prompt').prompt
+
+
+from bin.pages import home,viewer,design,evolve,engine,prompt
 
 
 

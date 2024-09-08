@@ -344,8 +344,8 @@ class ModelDiscoverySystem(exec_utils.System):
 
         self.claude = claude
         
-        self.gam_py = gam_template
-        self.gab_py = block_template
+        # self.gam_py = gam_template
+        # self.gab_py = block_template
         self._config = config
         self._cfg = gam_config
         self.lib_dir = lib_dir
@@ -391,6 +391,7 @@ class ModelDiscoverySystem(exec_utils.System):
         frontend: Optional[bool] = False,
         status: Optional[bool] = True,
         metadata = None, # such as seeds, non str instructions
+        agent_cfg = {},
         **kwargs
     ) -> list:
         """Main function for implementing system calls.
@@ -416,7 +417,7 @@ class ModelDiscoverySystem(exec_utils.System):
         if mode=='scratch': 
             title,code,explain,summary,autocfg,reviews,ratings,check_results = self.design_fn_scratch(self,query,stream,status_handler,seed,references)
         elif mode=='existing':
-            title,code,explain,summary,autocfg,reviews,ratings,check_results = self.design_fn_existing(self,query,stream,status_handler,seed,references)
+            title,code,explain,summary,autocfg,reviews,ratings,check_results = self.design_fn_existing(self,query,stream,status_handler,seed,references,agent_cfg)
         return title,code,explain,summary,autocfg,reviews,ratings,check_results
 
     @classmethod
