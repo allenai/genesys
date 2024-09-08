@@ -5,6 +5,7 @@ import pathlib
 import os
 
 import numpy as np
+import datetime
 
 from typing import (
     Type,
@@ -248,24 +249,66 @@ def get_context_info(config,templated=False) -> Tuple[str,str]:
 class NaiveHandler: 
     def __init__(self,message,*args,**kwargs):
         self.message = message
-        
+
     def __enter__(self):
         print(f'\n[START: {self.message}]\n')
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         print(f'\n[FINISH: {self.message}]\n')
 
+class StatusHandlerWrapper:
+    def __init__(self, handler_class, log_function):
+        self.handler_class = handler_class
+        self.log_function = log_function
+
+    def __call__(self, message, *args, **kwargs):
+        class WrappedHandler:
+            def __init__(cls, message, log_function, *args, **kwargs):
+                cls.message = message
+                cls.log_function = log_function
+                cls.original_handler = self.handler_class(message, *args, **kwargs)
+
+            def __enter__(cls):
+                cls.log_function(cls.message, 'enter')
+                return cls.original_handler.__enter__()
+
+            def __exit__(cls, exc_type, exc_val, exc_tb):
+                cls.log_function(cls.message, 'exit')
+                return cls.original_handler.__exit__(exc_type, exc_val, exc_tb)
+
+        return WrappedHandler(message, self.log_function, *args, **kwargs)
+    
 class PrintSystem:
     def __init__(self,config):
         self.jupyter = config.jupyter   
-        self.status = NaiveHandler     
         self._isprintsystem = True
+        self.status = NaiveHandler
     
     def write(self,msg,**kwargs):
         print(msg)
+
     def markdown(self,msg,**kwargs):
         print(msg)
 
+class StreamWrapper:
+    def __init__(self,stream,log_file):
+        self.stream=stream
+        self.log_file=log_file
+        self._log=[]
+        self.status = StatusHandlerWrapper(stream.status, self.log)
+    
+    def log(self,msg,type):
+        self._log.append((datetime.datetime.now(),msg,type))
+        U.write_file(self.log_file,str(self._log))
+    
+    def write(self,msg,**kwargs):
+        self.stream.write(msg,**kwargs)
+        self.log(msg,'write')
+
+    def markdown(self,msg,**kwargs):
+        self.stream.markdown(msg,**kwargs)
+        self.log(msg,'markdown')
+        
 
 @exec_utils.Registry(
     resource_type="system_type",
@@ -407,17 +450,21 @@ class ModelDiscoverySystem(exec_utils.System):
             Additional information about the query. Mainly about the seeds.
         """
 
-        status_handler = stream.status if stream and status else NaiveHandler
         if stream is None:# and self._config.debug_steps:
             stream = PrintSystem(self._config)
-        self.new_session(log_dir,stream)
+        design_handler = stream.status if stream and status else NaiveHandler
+        design_stream = StreamWrapper(stream,log_file)
+        self.new_session(log_dir,design_stream)
         mode = metadata['mode']
         seed = metadata['seed']
         references = metadata['references']
+        log_file = os.path.join(self.log_dir,'stream.log')
+        metainfo = {'agent_cfg':agent_cfg}
+        U.save_json(metainfo,U.pjoin(log_dir,'metainfo.json'))
         if mode=='scratch': 
-            title,code,explain,summary,autocfg,reviews,ratings,check_results = self.design_fn_scratch(self,query,stream,status_handler,seed,references)
+            title,code,explain,summary,autocfg,reviews,ratings,check_results = self.design_fn_scratch(self,query,design_stream,design_handler,seed,references)
         elif mode=='existing':
-            title,code,explain,summary,autocfg,reviews,ratings,check_results = self.design_fn_existing(self,query,stream,status_handler,seed,references,agent_cfg)
+            title,code,explain,summary,autocfg,reviews,ratings,check_results = self.design_fn_existing(self,query,design_stream,design_handler,seed,references,agent_cfg)
         return title,code,explain,summary,autocfg,reviews,ratings,check_results
 
     @classmethod

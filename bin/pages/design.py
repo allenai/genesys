@@ -64,14 +64,20 @@ def design(evosys,project_dir):
     # st.write(agent_cfg)
     # st.write(n_sources)
 
-    submit = st.button(label="Design model")
+    col1,col2=st.columns(2)
+    with col1:
+        save_folder = st.text_input(label="Save folder name",value='default')
+    with col2:
+        submit = st.button(label="Design model")
 
     if submit:
         if sum(n_sources.values())==0:
             st.write("You selected no seed, the agent will randomly generate a design for you.")
         with st.spinner(text="running model design loop"):
-            session_id=f'sample_test_{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}'
-            log_dir=U.pjoin(evosys.evo_dir,'log',session_id)
+            type_abbr = {'claude3.5_sonnet':'C','gpt4o_0806':'G','gpt4o_mini':'M'}
+            type_abbr = ''.join([type_abbr[i] for i in agent_types.values()])
+            session_id=f'{type_abbr}_{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}'
+            log_dir=U.pjoin(evosys.evo_dir,'log',save_folder,session_id)
             
             _mode = 'existing' if mode=='Design from existing design' else 'scratch'
             instruct,metadata=evosys.select(n_sources,mode=_mode) # use the seed_ids to record the phylogenetic tree

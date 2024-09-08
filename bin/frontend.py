@@ -46,7 +46,7 @@ from bin.pages import home,viewer,design,evolve,engine,prompt
 # Setup the evo system
 
 @st.cache_resource()
-def build_evo_system(name='test_evo_004'):
+def build_evo_system(name='test_evo_000'):
     strparams=[
         f"evoname={name}",
         "scales=14M,31M,70M",

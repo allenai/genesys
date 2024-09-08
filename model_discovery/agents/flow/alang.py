@@ -230,8 +230,7 @@ class AgentDialogManager: # all dialogs should be go through the dialog manager
         self.threads[0] = AgentDialogThread('root',0,-1,stream,log_dir=self.log_dir) # create a root thread
         self.stream = stream
         if log_dir:
-            session_id=log_dir.split('/')[-1]
-            self.stream.markdown(f'Session created. ID: {session_id}')
+            self.stream.markdown(f'Session created. Save path: {log_dir}')
             U.save_json(system_info,f"{log_dir}/system_info.json")
     
     def _assign_tid(self):
