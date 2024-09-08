@@ -9,6 +9,22 @@ from exec_utils.models.model import ModelState,OpenAIModel,ModelRuntimeError,Uti
 from exec_utils.models.utils import openai_costs
 
 
+def gpt4o_costs(usage,mini=False):
+    if mini:
+        usage['cost']=usage['input_tokens']*0.15/1e6 + usage['output_tokens']*0.6/1e6
+    else:
+        usage['cost']=usage['input_tokens']*2.5/1e6 + usage['output_tokens']*10/1e6
+    return usage
+
+def claude3_5_sonnet_costs(usage):
+    cost=usage['input_tokens']*3/1e6 + usage['output_tokens']*15/1e6
+    if 'cache_creation_input_tokens' in usage:
+        cost+=usage['cache_creation_input_tokens']*3.75/1e6
+    if 'cache_read_input_tokens' in usage:
+        cost+=usage['cache_read_input_tokens']*0.3/1e6
+    usage['cost']=cost
+    return usage
+    
 
 
 class ModelOutputPlus(UtilityModel):
@@ -151,10 +167,12 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
     else:
         output = msg.content
 
-    cost = openai_costs(
-        model._config.model_name,
-        completions.usage
-    )
+    usage={
+        'input_tokens':completions.usage.prompt_tokens,
+        'output_tokens':completions.usage.completion_tokens,
+    }
+    usage=gpt4o_costs(usage,mini='mini' in model._config.model_name)
+    cost=usage['cost']
     model._model_cost += cost
     token_probs = completions.choices[0].token_probs.content if logprobs else []
     return ModelOutputPlus(
@@ -162,7 +180,8 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
         cost=cost,
         token_probs=token_probs,
         input_tokens=completions.usage.prompt_tokens,
-        output_tokens=completions.usage.completion_tokens
+        output_tokens=completions.usage.completion_tokens,
+        usage=usage
     )
 
 
@@ -360,64 +379,42 @@ def call_model_claude(model,message,system,response_format, logprobs=False,use_c
         structured_llm = lc_model.with_structured_output(response_format,include_raw=True)
         tools_args=structured_llm.dict()['first']['steps__']['raw']['kwargs']
         # tools[0]['cache_control']={"type": "ephemeral"}
+    else:
+        tools_args={}
         
-        RET=anthropic.Anthropic().messages.create(
-            model="claude-3-5-sonnet-20240620", # model in config is ignored
-            max_tokens=model._config.max_output_tokens,
-            messages=message, 
-            temperature=model._config.temperature,
-            system=system, # claude does not has system role, system prompt must be passed separately
-            extra_headers=extra_headers,
-            **tools_args
-        )
+    RET=anthropic.Anthropic().messages.create(
+        model="claude-3-5-sonnet-20240620", # model in config is ignored
+        max_tokens=model._config.max_output_tokens,
+        messages=message, 
+        temperature=model._config.temperature,
+        system=system, # claude does not has system role, system prompt must be passed separately
+        extra_headers=extra_headers,
+        **tools_args
+    )
+    RET=RET.dict()
+    if RET['type']=='error':
+        raise Exception(RET['error'])
 
+    if tools_args!={}:
         try:
-            assert RET.content[0].type=='tool_use'
-            parsed=response_format.model_validate(RET.content[0].input) 
+            assert RET['content'][0]['type']=='tool_use'
+            parsed=response_format.model_validate(RET['content'][0]['input']) 
         except Exception as e:
             raise e
-
-        # message=to_langchain_message(message,system)
-        # RET=structured_llm.invoke(message)
-        
-        RET=RET.dict()
-        if RET['type']=='error':
-            raise Exception(RET['error'])
-        usage=RET['usage']
-        cost=usage['input_tokens']*3/1e6 + usage['output_tokens']*15/1e6
-        cost+=usage['cache_creation_input_tokens']*3.75/1e6
-        cost+=usage['cache_read_input_tokens']*0.3/1e6
-        usage['cost']=cost
-        return ModelOutputPlus(
-            text=str(parsed.json()),
-            cost=cost,
-            token_probs=[],
-            input_tokens=usage['input_tokens'],
-            output_tokens=usage['output_tokens'],
-            usage=usage,
-        )
+        text=parsed.json()
     else:
-        RET=anthropic.Anthropic().messages.create(
-            model="claude-3-5-sonnet-20240620", # model in config is ignored
-            max_tokens=model._config.max_output_tokens,
-            messages=message, 
-            temperature=model._config.temperature,
-            system=system, # claude does not has system role, system prompt must be passed separately
-            extra_headers=extra_headers
-        )
-        if RET['type']=='error':
-            raise Exception(RET['error'])
-        else:
-            cost=RET['usage']['input_tokens']*3/1e6 + RET['usage']['output_tokens']*15/1e6
-            RET['usage']['cost']=cost
-            return ModelOutputPlus(
-                text=RET['content'][0]['text'],
-                cost=cost,
-                token_probs=[],
-                input_tokens=RET['usage']['input_tokens'],
-                output_tokens=RET['usage']['output_tokens'],
-                usage=RET['usage']
-            )
+        text=RET['content'][0]['text']
+
+    usage=claude3_5_sonnet_costs(RET['usage'])
+
+    return ModelOutputPlus(
+        text=text,
+        cost=usage['cost'],
+        token_probs=[],
+        input_tokens=usage['input_tokens'],
+        output_tokens=usage['output_tokens'],
+        usage=usage,
+    )
 
 
 
