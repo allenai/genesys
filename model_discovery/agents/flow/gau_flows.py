@@ -870,7 +870,12 @@ class GUFlowExisting(FlowCreator):
             'DESIGN_IMPLEMENTER':self.claude_agent,
             'IMPLEMENTATION_REVIEWER':self.claude_agent,
         }
-
+        self.kwargs={
+            'DESIGN_PROPOSER':{'use_raw':False},
+            'PROPOSAL_REVIEWER':{'use_raw':False},
+            'DESIGN_IMPLEMENTER':{'use_raw':False},
+            'IMPLEMENTATION_REVIEWER':{'use_raw':False},
+        }
         self.tree = tree
 
     def _links(self):
@@ -933,7 +938,7 @@ class GUFlowExisting(FlowCreator):
             
             with self.status_handler(status_info):
                 self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,proposal_prompt)
-                _,out=self.dialog.call(design_proposer_tid,proposal_prompt)
+                _,out=self.dialog.call(design_proposer_tid,proposal_prompt,**self.kwargs['DESIGN_PROPOSER'])
                 selection,proposal,modelname=out['selection'],out['proposal'],out['modelname']
                 self.stream.write(f'### Design Name: {modelname}')
                 self.stream.write(f'### Selection: {selection}')
@@ -965,7 +970,7 @@ class GUFlowExisting(FlowCreator):
             
             with self.status_handler(status_info):
                 self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,proposal_review_prompt)
-                _,out=self.dialog.call(proposal_reviewer_tid,proposal_review_prompt)
+                _,out=self.dialog.call(proposal_reviewer_tid,proposal_review_prompt,**self.kwargs['PROPOSAL_REVIEWER'])
                 review,rating,suggestions=out['review'],out['rating'],out['suggestions']
                 context_proposal_reviewer=self.dialog.context(proposal_reviewer_tid)
                 passornot='Pass' if rating>=4 else 'Fail'
@@ -1060,7 +1065,7 @@ class GUFlowExisting(FlowCreator):
                     self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_implementation_unit_selection_prompt)
                     self.stream.write(f'{VIEW_DETAILED}\n\nNow selecting the next unit to work on...')
                     
-                    _,out=self.dialog.call(design_implementer_tid,gu_implementation_unit_selection_prompt)
+                    _,out=self.dialog.call(design_implementer_tid,gu_implementation_unit_selection_prompt,**self.kwargs['DESIGN_IMPLEMENTER'])
                     selection,motivation,rough_plan,termination=out['selection'],out['motivation'],out['rough_plan'],out['termination']
                     context_design_implementer=self.dialog.context(design_implementer_tid) # update context with tree view background
                     self.stream.write(f'### Selection: {selection}')
@@ -1134,7 +1139,7 @@ class GUFlowExisting(FlowCreator):
 
                 with self.status_handler(status_info): # calling the agent
                     self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_implement_unit_prompt)
-                    _,out=self.dialog.call(design_implementer_tid,gu_implement_unit_prompt)
+                    _,out=self.dialog.call(design_implementer_tid,gu_implement_unit_prompt,**self.kwargs['DESIGN_IMPLEMENTER'])
                     context_design_implementer=self.dialog.context(design_implementer_tid)
                     reflection,changes,debugging_steps=None,None,None
                     if REFINE: # 1. working on an existing unit 2. all >0 attempts
@@ -1298,7 +1303,7 @@ class GUFlowExisting(FlowCreator):
                     P.GUE_IMPLEMENTATION_UNIT_REVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
                 with self.status_handler(status_info):
                     self.print_details(IMPLEMENTATION_REVIEWER.obj,context_implementation_reviewer,gue_implementation_unit_review_prompt)
-                    _,out=self.dialog.call(implementation_reviewer_tid,gue_implementation_unit_review_prompt)
+                    _,out=self.dialog.call(implementation_reviewer_tid,gue_implementation_unit_review_prompt,**self.kwargs['IMPLEMENTATION_REVIEWER'])
                     review,rating,suggestions=out['review'],out['rating'],out['suggestions']
                     context_implementation_reviewer=self.dialog.context(implementation_reviewer_tid)
                     passornot='Accept' if rating>3 else 'Reject'

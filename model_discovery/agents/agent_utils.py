@@ -29,6 +29,7 @@ class ModelOutputPlus(UtilityModel):
     input_tokens: int = 0.
     output_tokens: int = 0.
     usage: Dict = {}
+    raw: List[Dict] = None # raw content output 
     
     def __repr__(self):
         return self.text
@@ -183,11 +184,20 @@ class ConversationHistory:
         # Initialize an empty list to store conversation turns
         self.turns = []
         for content,role in history:
-            if role=='assistant':
-                self.add_turn_assistant(content)
+            if isinstance(content,str):
+                if role=='assistant':
+                    self.add_turn_assistant(content)
+                else:
+                    self.add_turn_user(content)
             else:
-                self.add_turn_user(content)
+                self.add_turn_raw(content,'assistant') # raw content from agent
         self.add_turn_user(query)
+
+    def add_turn_raw(self,content,role):
+        self.turns.append({
+            "role": role,
+            "content": content
+        })
 
     def add_turn_assistant(self, content):
         # Add an assistant's turn to the conversation history
@@ -221,20 +231,9 @@ class ConversationHistory:
         for turn in reversed(self.turns):
             if turn["role"] == "user" and user_turns_processed < 2 and use_cache:
                 # Add the last two user turns with ephemeral cache control
-                result.append({
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": turn["content"][0]["text"],
-                            "cache_control": {"type": "ephemeral"}
-                        }
-                    ]
-                })
+                turn['content'][0]['cache_control'] = {"type": "ephemeral"}
                 user_turns_processed += 1
-            else:
-                # Add other turns as they are
-                result.append(turn)
+            result.append(turn)
         # Return the turns in the original order
         return list(reversed(result))
 
@@ -248,7 +247,7 @@ def claude__call__(
         history: Optional[List[Any]] = [],
         model_state: Optional[ModelState] = None,
         logprobs=False, # not supported for claude
-        use_cache: bool = True,
+        use_cache: bool = True, # XXX: not working with structured outputs now!
         system: Optional[str] = None,
         **kwargs
     ):
@@ -315,12 +314,12 @@ def _prompt_model_claude(model,message,system,response_format,logprobs=False,use
     )
 
 
-def to_langchain_message(message,system):
-    messages = [SystemMessage(system)]
-    for msg in message:
-        msg_type=HumanMessage if msg['role']=='user' else AIMessage
-        messages.append(msg_type(msg['content']))
-    return messages
+# def to_langchain_message(message,system):
+#     messages = [SystemMessage(system)]
+#     for msg in message:
+#         msg_type=HumanMessage if msg['role']=='user' else AIMessage
+#         messages.append(msg_type(msg['content']))
+#     return messages
 
 def call_model_claude(model,message,system,response_format, logprobs=False,use_cache=True) -> ModelOutputPlus:
     """Calls the claude model 
@@ -347,36 +346,62 @@ def call_model_claude(model,message,system,response_format, logprobs=False,use_c
     Cache: 1.25(S+(R-1)I) + 0.1(S(R-1)+I(R-1)(R-2)/2) = 19*1.25 + 0.1*(12+24)=3.6+23.75=27.35K
 
     """
-    if use_cache:
+    if use_cache: # XXX: not working with structured outputs now!
         extra_headers={"anthropic-beta": "prompt-caching-2024-07-31"}
     else:
         extra_headers={}
     
     if response_format is not None and inspect.isclass(response_format) and issubclass(response_format,BaseModel):
-        model = ChatAnthropic(
+        lc_model = ChatAnthropic(
             model="claude-3-5-sonnet-20240620", 
             temperature=model._config.temperature,
             max_tokens=model._config.max_output_tokens,
             extra_headers=extra_headers
         )
-        structured_llm = model.with_structured_output(response_format,include_raw=True)
+        structured_llm = lc_model.with_structured_output(response_format,include_raw=True)
+        tools_args=structured_llm.dict()['first']['steps__']['raw']['kwargs']
+        # tools[0]['cache_control']={"type": "ephemeral"}
+        
+        RET=anthropic.Anthropic().messages.create(
+            model="claude-3-5-sonnet-20240620", # model in config is ignored
+            max_tokens=model._config.max_output_tokens,
+            messages=message, 
+            temperature=model._config.temperature,
+            system=system, # claude does not has system role, system prompt must be passed separately
+            extra_headers=extra_headers,
+            **tools_args
+        )
 
-        message=to_langchain_message(message,system)
-        RET=structured_llm.invoke(message)
-        usage=RET['raw'].response_metadata['usage']
-        parsed=RET['parsed']
+        try:
+            assert RET.content[0].type=='tool_use'
+            parsed=response_format.model_validate(RET.content[0].input) 
+        except Exception as e:
+            raise e
+
+        # message=to_langchain_message(message,system)
+        # RET=structured_llm.invoke(message)
+        
+        RET=RET.dict()
+        if RET['type']=='error':
+            raise Exception(RET['error'])
+        usage=RET['usage']
+        cost=usage['input_tokens']*3/1e6 + usage['output_tokens']*15/1e6
+        cost+=usage['cache_creation_input_tokens']*3.75/1e6
+        cost+=usage['cache_read_input_tokens']*0.3/1e6
+        usage['cost']=cost
         return ModelOutputPlus(
             text=str(parsed.json()),
-            cost=0,
+            cost=cost,
             token_probs=[],
-            input_tokens=0,
-            output_tokens=0,
-            usage=usage
+            input_tokens=usage['input_tokens'],
+            output_tokens=usage['output_tokens'],
+            usage=usage,
+            raw=RET['content']
         )
     else:
         RET=anthropic.Anthropic().messages.create(
             model="claude-3-5-sonnet-20240620", # model in config is ignored
-            max_tokens=model._config.max_output_token,
+            max_tokens=model._config.max_output_tokens,
             messages=message, 
             temperature=model._config.temperature,
             system=system, # claude does not has system role, system prompt must be passed separately
@@ -385,9 +410,11 @@ def call_model_claude(model,message,system,response_format, logprobs=False,use_c
         if RET['type']=='error':
             raise Exception(RET['error'])
         else:
+            cost=RET['usage']['input_tokens']*3/1e6 + RET['usage']['output_tokens']*15/1e6
+            RET['usage']['cost']=cost
             return ModelOutputPlus(
                 text=RET['content'][0]['text'],
-                cost=0,
+                cost=cost,
                 token_probs=[],
                 input_tokens=RET['usage']['input_tokens'],
                 output_tokens=RET['usage']['output_tokens'],

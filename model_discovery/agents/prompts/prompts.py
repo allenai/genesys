@@ -68,6 +68,7 @@ def GENERAL_JSON_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       raw_text = raw_output.text
       output = json.loads(raw_text)  
       output["text"] = raw_text
+      output["raw"] = raw_output.raw
       output["_details"] = {}
       output["_details"]["cost"] = raw_output.usage
       output["_details"]["running_cost"] = 0
@@ -426,6 +427,7 @@ def GU_PROPOSAL_REFINEMENT_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
        title = raw_text.split("\n")[0]
    output["title"] = title
    output["text"] = raw_text
+   output['raw'] = raw_output.raw
    output["_details"] = {}
    output["_details"]["cost"] = raw_output.usage
    output["_details"]["running_cost"] = 0
