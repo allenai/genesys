@@ -29,7 +29,6 @@ class ModelOutputPlus(UtilityModel):
     input_tokens: int = 0.
     output_tokens: int = 0.
     usage: Dict = {}
-    raw: List[Dict] = None # raw content output 
     
     def __repr__(self):
         return self.text
@@ -396,7 +395,6 @@ def call_model_claude(model,message,system,response_format, logprobs=False,use_c
             input_tokens=usage['input_tokens'],
             output_tokens=usage['output_tokens'],
             usage=usage,
-            raw=RET['content']
         )
     else:
         RET=anthropic.Anthropic().messages.create(

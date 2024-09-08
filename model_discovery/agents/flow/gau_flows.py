@@ -870,11 +870,11 @@ class GUFlowExisting(FlowCreator):
             'DESIGN_IMPLEMENTER':self.claude_agent,
             'IMPLEMENTATION_REVIEWER':self.claude_agent,
         }
-        self.kwargs={
-            'DESIGN_PROPOSER':{'use_raw':False},
-            'PROPOSAL_REVIEWER':{'use_raw':False},
-            'DESIGN_IMPLEMENTER':{'use_raw':False},
-            'IMPLEMENTATION_REVIEWER':{'use_raw':False},
+        self.costs={
+            'DESIGN_PROPOSER':0,
+            'PROPOSAL_REVIEWER':0,
+            'DESIGN_IMPLEMENTER':0,
+            'IMPLEMENTATION_REVIEWER':0,
         }
         self.tree = tree
 
@@ -887,9 +887,21 @@ class GUFlowExisting(FlowCreator):
     def print_details(self,agent,context,prompt):
         print_details(self.stream,agent,context,prompt)
 
-    def print_raw_output(self,out):
+    def print_raw_output(self,out,agent):
         print_raw_output(self.stream,out)
-        self.stream.write(f'##### **Usage**\n {out["_details"]["cost"]}')
+        self.costs[agent]+=out["_details"]["running_cost"]
+        total_cost=sum(self.costs.values())
+        usage=out["_details"]["cost"]
+        if isinstance(usage,float):
+            self.stream.write(f'##### **Usage**\n {usage}')
+        else:
+            self.stream.write(f'##### **Usage**')
+            for k,v in usage.items():
+                self.stream.write(f' - *{k}*: {v}')
+        self.stream.write(f'###### **Running Cost**')
+        for agent,cost in self.costs.items():
+            self.stream.write(f' - *{agent} Cost*: {cost}')
+        self.stream.write(f'###### **Session Total Cost**: {total_cost}')
 
     @register_module(
         "PROC",
@@ -938,7 +950,7 @@ class GUFlowExisting(FlowCreator):
             
             with self.status_handler(status_info):
                 self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,proposal_prompt)
-                _,out=self.dialog.call(design_proposer_tid,proposal_prompt,**self.kwargs['DESIGN_PROPOSER'])
+                _,out=self.dialog.call(design_proposer_tid,proposal_prompt)
                 selection,proposal,modelname=out['selection'],out['proposal'],out['modelname']
                 self.stream.write(f'### Design Name: {modelname}')
                 self.stream.write(f'### Selection: {selection}')
@@ -951,7 +963,7 @@ class GUFlowExisting(FlowCreator):
                 else:
                     self.stream.write(proposal)
                 context_design_proposer=self.dialog.context(design_proposer_tid)
-                self.print_raw_output(out)
+                self.print_raw_output(out,'DESIGN_PROPOSER')
 
 
             PROPOSAL_REVIEWER=reload_role('proposal_reviewer',self.agents['PROPOSAL_REVIEWER'],P.GUE_PROPOSAL_REVIEWER_SYSTEM())
@@ -970,14 +982,14 @@ class GUFlowExisting(FlowCreator):
             
             with self.status_handler(status_info):
                 self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,proposal_review_prompt)
-                _,out=self.dialog.call(proposal_reviewer_tid,proposal_review_prompt,**self.kwargs['PROPOSAL_REVIEWER'])
+                _,out=self.dialog.call(proposal_reviewer_tid,proposal_review_prompt)
                 review,rating,suggestions=out['review'],out['rating'],out['suggestions']
                 context_proposal_reviewer=self.dialog.context(proposal_reviewer_tid)
                 passornot='Pass' if rating>=4 else 'Fail'
                 self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
                 self.stream.write(review)
                 self.stream.write(suggestions)
-                self.print_raw_output(out)
+                self.print_raw_output(out,'PROPOSAL_REVIEWER')
 
             trace={
                 'selection':selection,
@@ -1065,7 +1077,7 @@ class GUFlowExisting(FlowCreator):
                     self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_implementation_unit_selection_prompt)
                     self.stream.write(f'{VIEW_DETAILED}\n\nNow selecting the next unit to work on...')
                     
-                    _,out=self.dialog.call(design_implementer_tid,gu_implementation_unit_selection_prompt,**self.kwargs['DESIGN_IMPLEMENTER'])
+                    _,out=self.dialog.call(design_implementer_tid,gu_implementation_unit_selection_prompt)
                     selection,motivation,rough_plan,termination=out['selection'],out['motivation'],out['rough_plan'],out['termination']
                     context_design_implementer=self.dialog.context(design_implementer_tid) # update context with tree view background
                     self.stream.write(f'### Selection: {selection}')
@@ -1139,7 +1151,7 @@ class GUFlowExisting(FlowCreator):
 
                 with self.status_handler(status_info): # calling the agent
                     self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_implement_unit_prompt)
-                    _,out=self.dialog.call(design_implementer_tid,gu_implement_unit_prompt,**self.kwargs['DESIGN_IMPLEMENTER'])
+                    _,out=self.dialog.call(design_implementer_tid,gu_implement_unit_prompt)
                     context_design_implementer=self.dialog.context(design_implementer_tid)
                     reflection,changes,debugging_steps=None,None,None
                     if REFINE: # 1. working on an existing unit 2. all >0 attempts
@@ -1181,8 +1193,7 @@ class GUFlowExisting(FlowCreator):
                     if REFINE:
                         self.stream.write(f'### Changes\n{changes}')
                     
-
-                    self.print_raw_output(out)
+                    self.print_raw_output(out,'DESIGN_IMPLEMENTER')
 
 
                 # Run all checks for every implementations, optimize both grammar and semantics at the same time 
@@ -1303,14 +1314,14 @@ class GUFlowExisting(FlowCreator):
                     P.GUE_IMPLEMENTATION_UNIT_REVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
                 with self.status_handler(status_info):
                     self.print_details(IMPLEMENTATION_REVIEWER.obj,context_implementation_reviewer,gue_implementation_unit_review_prompt)
-                    _,out=self.dialog.call(implementation_reviewer_tid,gue_implementation_unit_review_prompt,**self.kwargs['IMPLEMENTATION_REVIEWER'])
+                    _,out=self.dialog.call(implementation_reviewer_tid,gue_implementation_unit_review_prompt)
                     review,rating,suggestions=out['review'],out['rating'],out['suggestions']
                     context_implementation_reviewer=self.dialog.context(implementation_reviewer_tid)
                     passornot='Accept' if rating>3 else 'Reject'
                     self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
                     self.stream.write(review)
                     self.stream.write(suggestions)
-                    self.print_raw_output(out)
+                    self.print_raw_output(out,'IMPLEMENTATION_REVIEWER')
 
                     self.tree.units[selection].rating=rating
                     self.tree.units[selection].review=review
@@ -1418,6 +1429,7 @@ class GUFlowExisting(FlowCreator):
         }
         RET={
             'design_stack':design_stack,
+            'costs':self.costs,
         }
 
         return query,state,RET
@@ -1431,5 +1443,9 @@ def gu_design_existing(cls,instruct,stream,status_handler,seed,references=None):
     gu_flow = GUFlowExisting(cls, status_handler,stream,tree)
     GU_CALLEE = ROLE('GAB Unit Designer',gu_flow.flow)
     gue_tid = cls.dialog.fork(main_tid,SYSTEM_CALLER,GU_CALLEE,note=f'launch design flow',alias=f'gu_design')
-    res,ret=cls.dialog.call(gue_tid,query,main_tid=main_tid,references=references)
-
+    _,ret=cls.dialog.call(gue_tid,query,main_tid=main_tid,references=references)
+    costs=ret['costs']
+    design_stack=ret['design_stack']
+    new_tree=gu_flow.tree
+    new_name=ret['new_name']
+    return new_tree,new_name,design_stack,costs
