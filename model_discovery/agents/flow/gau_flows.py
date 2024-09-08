@@ -845,19 +845,16 @@ class GUFlowExisting(FlowCreator):
     The flow for designing a GAB Flow nested of GAB Units from scratch.
     the input query should be the seeds from the root tree for the design
     """
-    def __init__(self,system,status_handler,stream,tree,agent_cfg={}):
+    def __init__(self,system,status_handler,stream,tree,design_cfg={}):
         super().__init__(system,'GAU Design Flow from Existing Tree')
         self.system=system
         self.status_handler=status_handler
         self.stream=stream
         self.args=['main_tid']
         self.outs=['design_stack']
-        self.max_attemps={
-            'design_proposal':10,
-            'implementation_debug':10,
-            'post_refinement':10,
-        }
         self.lib_dir=system.lib_dir
+
+        # self.
 
         # prepare roles
         self.gpt4o0806_agent=self.system.designer # as we replaced the system prompt, essential its just a base agent
@@ -870,14 +867,21 @@ class GUFlowExisting(FlowCreator):
             'gpt4o_mini':self.gpt4omini_agent,
         }
         DEFAULT_AGENT='claude3.5_sonnet'
+        DEFAULT_MAX_ATTEMPTS={
+            'design_proposal':10,
+            'implementation_debug':7,
+            'post_refinement':5,
+        }
 
-        agent_types=agent_cfg.get('agent_types',{})     
+        self.max_attemps=design_cfg.get('max_attemps',DEFAULT_MAX_ATTEMPTS)
+        agent_types=design_cfg.get('agent_types',{})     
         self.agents={
             'DESIGN_PROPOSER':AGENT_TYPES[agent_types.get('DESIGN_PROPOSER',DEFAULT_AGENT)],
             'PROPOSAL_REVIEWER':AGENT_TYPES[agent_types.get('PROPOSAL_REVIEWER',DEFAULT_AGENT)],
             'DESIGN_IMPLEMENTER':AGENT_TYPES[agent_types.get('DESIGN_IMPLEMENTER',DEFAULT_AGENT)],
             'IMPLEMENTATION_REVIEWER':AGENT_TYPES[agent_types.get('IMPLEMENTATION_REVIEWER',DEFAULT_AGENT)],
         }
+
         self.costs={
             'DESIGN_PROPOSER':0,
             'PROPOSAL_REVIEWER':0,
@@ -895,10 +899,13 @@ class GUFlowExisting(FlowCreator):
     def print_details(self,agent,context,prompt):
         print_details(self.stream,agent,context,prompt)
 
+    @property
+    def total_cost(self):
+        return sum(self.costs.values())
+
     def print_raw_output(self,out,agent):
         print_raw_output(self.stream,out)
         self.costs[agent]+=out["_details"]["running_cost"]
-        total_cost=sum(self.costs.values())
         usage=out["_details"]["cost"]
         if isinstance(usage,float):
             self.stream.write(f'##### **Usage**\n {usage}')
@@ -909,7 +916,7 @@ class GUFlowExisting(FlowCreator):
         self.stream.write(f'###### **Running Cost**')
         for agent,cost in self.costs.items():
             self.stream.write(f' - *{agent} Cost*: {cost}')
-        self.stream.write(f'###### **Session Total Cost**: {total_cost}')
+        self.stream.write(f'###### **Session Total Cost**: {self.total_cost}')
 
     @register_module(
         "PROC",
@@ -1444,11 +1451,11 @@ class GUFlowExisting(FlowCreator):
 
 
 
-def gu_design_existing(cls,instruct,stream,status_handler,seed,references=None,agent_cfg={}):
+def gu_design_existing(cls,instruct,stream,status_handler,seed,references=None,design_cfg={}):
     query=P.build_GUE_QUERY(seed,references,instruct)
     tree = seed.tree
     main_tid = cls.dialog.fork(0,note='Starting a new session...',alias='main')
-    gu_flow = GUFlowExisting(cls, status_handler,stream,tree,agent_cfg)
+    gu_flow = GUFlowExisting(cls, status_handler,stream,tree,design_cfg)
     GU_CALLEE = ROLE('GAB Unit Designer',gu_flow.flow)
     gue_tid = cls.dialog.fork(main_tid,SYSTEM_CALLER,GU_CALLEE,note=f'launch design flow',alias=f'gu_design')
     _,ret=cls.dialog.call(gue_tid,query,main_tid=main_tid,references=references)
