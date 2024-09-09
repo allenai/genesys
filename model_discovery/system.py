@@ -29,7 +29,7 @@ from exec_utils import (
 from .agents.roles import *
 from .agents.flow.alang import AgentDialogManager,AgentDialogFlowNaive,ALangCompiler,SYSTEM_CALLER,FAILED,ROLE
 from .agents.flow.naive_flows import design_flow_definition,review_naive,design_naive,naive_design_review
-from .agents.flow.gau_flows import gu_design_scratch,gu_design_existing
+from .agents.flow.gau_flows import gu_design_scratch,gu_design_existing,EndReasons
 
 # from .evolution import NodeObject
 
@@ -450,7 +450,7 @@ class ModelDiscoverySystem(exec_utils.System):
             Additional information about the query. Mainly about the seeds.
         """
 
-        if stream is None:# and self._config.debug_steps:
+        if stream is None: # and self._config.debug_steps:
             stream = PrintSystem(self._config)
         design_handler = stream.status if stream and status else NaiveHandler
         design_stream = StreamWrapper(stream,log_file)
@@ -462,10 +462,13 @@ class ModelDiscoverySystem(exec_utils.System):
         metainfo = {'agent_cfg':agent_cfg}
         U.save_json(metainfo,U.pjoin(log_dir,'metainfo.json'))
         if mode=='scratch': 
-            title,code,explain,summary,autocfg,reviews,ratings,check_results = self.design_fn_scratch(self,query,design_stream,design_handler,seed,references)
+            RET = self.design_fn_scratch(self,query,design_stream,design_handler,seed,references)
         elif mode=='existing':
-            title,code,explain,summary,autocfg,reviews,ratings,check_results = self.design_fn_existing(self,query,design_stream,design_handler,seed,references,agent_cfg)
+            RET = self.design_fn_existing(self,query,design_stream,design_handler,seed,references,agent_cfg)
+        
+        
         return title,code,explain,summary,autocfg,reviews,ratings,check_results
+
 
     @classmethod
     def from_config(cls: Type[C],config: ConfigType,**kwargs) -> C:

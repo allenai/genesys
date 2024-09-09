@@ -1,6 +1,7 @@
 import os
 import numpy as np
 from typing import Any,Dict, List, Union
+from enum import Enum
 import inspect
 import copy
 import requests
@@ -837,8 +838,35 @@ def search_for_papers(query, result_limit=10) -> Union[None, List[Dict]]:
     return papers
 
 
+def safe_get_cfg_dict(cfg,key,default):
+    _dict=cfg.get(key,default) 
+    _cfg_dict={}
+    for k,v in default.items():
+        _cfg_dict[k]=_dict.get(k,v)
+    return _cfg_dict
 
 
+# end reasons
+
+class EndReasons(Enum):
+    PROPOSAL_FAILED='Proposal Failed'
+    MAX_POST_REFINEMENT_REACHED='Max Post Refinement Reached'
+    AGENT_TERMINATION='Agent Choose Termination'
+    MAX_TOTAL_BUDGET_REACHED='Max Total Budget Reached'
+    MAX_DEBUG_BUDGET_REACHED='Max Debug Budget Reached'
+    MAX_FAILED_ROUNDS_REACHED='Max Failed Rounds Reached'
+    UNFINISHED='Unfinished'
+
+
+END_REASONS_LABELS = {
+    EndReasons.PROPOSAL_FAILED:'Failed',
+    EndReasons.MAX_POST_REFINEMENT_REACHED:'Success',
+    EndReasons.AGENT_TERMINATION:'Success',
+    EndReasons.MAX_TOTAL_BUDGET_REACHED:'Failed',
+    EndReasons.MAX_DEBUG_BUDGET_REACHED:'Failed',
+    EndReasons.MAX_FAILED_ROUNDS_REACHED:'Failed',
+    EndReasons.UNFINISHED:'Unfinished',
+}
 
 class GUFlowExisting(FlowCreator): 
     """
@@ -854,33 +882,46 @@ class GUFlowExisting(FlowCreator):
         self.outs=['design_stack']
         self.lib_dir=system.lib_dir
 
-        # self.
-
         # prepare roles
         self.gpt4o0806_agent=self.system.designer # as we replaced the system prompt, essential its just a base agent
         self.gpt4omini_agent=self.system.debugger 
         self.claude_agent=self.system.claude
+
 
         AGENT_TYPES = {
             'claude3.5_sonnet':self.claude_agent,
             'gpt4o_0806':self.gpt4o0806_agent,
             'gpt4o_mini':self.gpt4omini_agent,
         }
-        DEFAULT_AGENT='claude3.5_sonnet'
+        DEFAULT_AGENTS={
+            'DESIGN_PROPOSER':'claude3.5_sonnet',
+            'PROPOSAL_REVIEWER':'claude3.5_sonnet',
+            'DESIGN_IMPLEMENTER':'claude3.5_sonnet',
+            'IMPLEMENTATION_REVIEWER':'claude3.5_sonnet',
+        }
         DEFAULT_MAX_ATTEMPTS={
             'design_proposal':10,
             'implementation_debug':7,
             'post_refinement':5,
         }
-
-        self.max_attemps=design_cfg.get('max_attemps',DEFAULT_MAX_ATTEMPTS)
-        agent_types=design_cfg.get('agent_types',{})     
-        self.agents={
-            'DESIGN_PROPOSER':AGENT_TYPES[agent_types.get('DESIGN_PROPOSER',DEFAULT_AGENT)],
-            'PROPOSAL_REVIEWER':AGENT_TYPES[agent_types.get('PROPOSAL_REVIEWER',DEFAULT_AGENT)],
-            'DESIGN_IMPLEMENTER':AGENT_TYPES[agent_types.get('DESIGN_IMPLEMENTER',DEFAULT_AGENT)],
-            'IMPLEMENTATION_REVIEWER':AGENT_TYPES[agent_types.get('IMPLEMENTATION_REVIEWER',DEFAULT_AGENT)],
+        DEFAULT_TERMINATION={
+            'max_failed_rounds':3,
+            'max_total_budget':0, # 0 means no limit
+            'max_debug_budget':2,
         }
+        DEFAULT_THRESHOLD={
+            'proposal_rating':4,
+            'implementation_rating':3,
+        }
+
+        self.failed_rounds=0
+        self.max_attemps=safe_get_cfg_dict(design_cfg,'max_attemps',DEFAULT_MAX_ATTEMPTS)
+        agent_types=safe_get_cfg_dict(design_cfg,'agent_types',DEFAULT_AGENTS)     
+        self.agents={k:AGENT_TYPES[v] for k,v in agent_types.items()}
+        self.termination=safe_get_cfg_dict(design_cfg,'termination',DEFAULT_TERMINATION)
+        self.threshold=safe_get_cfg_dict(design_cfg,'threshold',DEFAULT_THRESHOLD)
+
+        # assert any(self.termination.values())>0, 'At least one of the termination conditions should be set'
 
         self.costs={
             'DESIGN_PROPOSER':0,
@@ -889,6 +930,8 @@ class GUFlowExisting(FlowCreator):
             'IMPLEMENTATION_REVIEWER':0,
         }
         self.tree = tree
+
+        self.SUCCEED=False
 
     def _links(self):
         links_def=[
@@ -902,6 +945,14 @@ class GUFlowExisting(FlowCreator):
     @property
     def total_cost(self):
         return sum(self.costs.values())
+    
+    @property
+    def implementation_cost(self):
+        return self.costs['DESIGN_IMPLEMENTER']+self.costs['IMPLEMENTATION_REVIEWER']
+
+    @property
+    def proposal_cost(self):
+        return self.costs['DESIGN_PROPOSER']+self.costs['PROPOSAL_REVIEWER']
 
     def print_raw_output(self,out,agent):
         print_raw_output(self.stream,out)
@@ -917,6 +968,7 @@ class GUFlowExisting(FlowCreator):
         for agent,cost in self.costs.items():
             self.stream.write(f' - *{agent} Cost*: {cost}')
         self.stream.write(f'###### **Session Total Cost**: {self.total_cost}')
+
 
     @register_module(
         "PROC",
@@ -1000,7 +1052,7 @@ class GUFlowExisting(FlowCreator):
                 _,out=self.dialog.call(proposal_reviewer_tid,proposal_review_prompt)
                 review,rating,suggestions=out['review'],out['rating'],out['suggestions']
                 context_proposal_reviewer=self.dialog.context(proposal_reviewer_tid)
-                passornot='Pass' if rating>=4 else 'Fail'
+                passornot='Pass' if rating>=self.threshold['proposal_rating'] else 'Fail'
                 self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
                 self.stream.write(review)
                 self.stream.write(suggestions)
@@ -1017,18 +1069,19 @@ class GUFlowExisting(FlowCreator):
             }
             traces.append(trace)
 
-            if rating>=4:
+            if rating>=self.threshold['proposal_rating']:
                 self.tree=copy.deepcopy(self.tree)
                 self.tree.name=modelname
                 self.stream.write(f'#### Proposal passed with rating {rating} out of 5, starting implementation')
                 break
         
-        if rating<=3:
+        if rating<self.threshold['proposal_rating']:
             self.stream.write(f'#### Proposal failed with rating {rating} out of 5, stopping design process')
-            raise Exception('Design proposal failed, stopping design process')
+            # raise Exception('Design proposal failed, stopping design process')
         RET={
             'proposal':trace,
             'proposal_traces':traces,
+            'proposal_passed':rating>=self.threshold['proposal_rating'],
         }
         return query,state,RET
         
@@ -1039,12 +1092,15 @@ class GUFlowExisting(FlowCreator):
         hints="output the design stack",
         links='self_evaluation',
     )
-    def implement_proposal_recursive(self,query,state,main_tid,proposal):
+    def implement_proposal_recursive(self,query,state,main_tid,proposal,proposal_passed):
         '''
         1. Implement the selected unit first
         2. Implement any unimplemented newly declared units
         3. Do post refinement, if new units defined, go to 2, post refinement count will not be refreshed
         '''
+        if not proposal_passed:
+            self.stream.log(EndReasons.PROPOSAL_FAILED,'end')
+            return query,state,{'unit_designs':{},'new_name':''}
 
         self.dialog=self.system.dialog
 
@@ -1108,12 +1164,34 @@ class GUFlowExisting(FlowCreator):
             else:
                 self.stream.write(f'##### Start design implementation of {selection}')
 
+            ### Termination
+
+            # 1. design succeeded, post refinement count reached
             if post_refinement>self.max_attemps['post_refinement']:
                 self.stream.write(f'#### All units have been implemented and maximal refinements are reached, stopping design process')
+                self.SUCCEED=True
+                self.stream.log(EndReasons.MAX_POST_REFINEMENT_REACHED,'end')
                 break
             
+            # 2. design succeeded, agent choose to terminate
             if termination and len(UNIMPLEMENTED)==0:
                 self.stream.write(f'#### All units have been implemented, the agent choose to terminate the design process')
+                self.SUCCEED=True
+                self.stream.log(EndReasons.AGENT_TERMINATION,'end')
+                break
+
+            # 3. design failed, force stop conditions
+            if (self.termination['max_total_budget']>0 and self.total_cost>self.termination['max_total_budget']):
+                self.stream.write(f'#### Max total budget reached, stopping design process')
+                self.stream.log(EndReasons.MAX_TOTAL_BUDGET_REACHED,'end')
+                break
+            if (self.termination['max_debug_budget']>0 and self.implementation_cost>self.termination['max_debug_budget']):
+                self.stream.write(f'#### Max debug budget reached, stopping design process')
+                self.stream.log(EndReasons.MAX_DEBUG_BUDGET_REACHED,'end')
+                break
+            if (self.termination['max_failed_rounds']>0 and self.failed_rounds>self.termination['max_failed_rounds']):
+                self.stream.write(f'#### Max failed rounds reached, stopping design process')
+                self.stream.log(EndReasons.MAX_FAILED_ROUNDS_REACHED,'end')
                 break
 
             ################# UNIT IMPLEMENTATION INNER LOOP #################
@@ -1396,6 +1474,7 @@ class GUFlowExisting(FlowCreator):
                     'unit_design_traces':traces,
                 }
                 RETS['/FAILED'].append(RET)
+                self.failed_rounds+=1
                 LOG.append(f'Round {round} finished. Failed to implement unit {selection}.')
             else:
                 RET={
@@ -1434,8 +1513,8 @@ class GUFlowExisting(FlowCreator):
         "EXIT",
         hints="output the initial threads",
     )
-    def end_of_design(self,query,state,proposal,proposal_traces,unit_designs,new_name):
-        
+    def end_of_design(self,query,state,proposal,proposal_traces,proposal_passed,unit_designs,new_name):
+
         design_stack={
             'proposal':proposal,
             'proposal_traces':proposal_traces,
@@ -1445,6 +1524,7 @@ class GUFlowExisting(FlowCreator):
         RET={
             'design_stack':design_stack,
             'costs':self.costs,
+            'succeed':self.SUCCEED,
         }
 
         return query,state,RET
@@ -1460,7 +1540,9 @@ def gu_design_existing(cls,instruct,stream,status_handler,seed,references=None,d
     gue_tid = cls.dialog.fork(main_tid,SYSTEM_CALLER,GU_CALLEE,note=f'launch design flow',alias=f'gu_design')
     _,ret=cls.dialog.call(gue_tid,query,main_tid=main_tid,references=references)
     costs=ret['costs']
+    succeed=ret['succeed']
     design_stack=ret['design_stack']
     new_tree=gu_flow.tree
-    new_name=ret['new_name']
-    return new_tree,new_name,design_stack,costs
+    new_name=design_stack['new_name']
+    return new_tree,new_name,design_stack,costs,succeed
+
