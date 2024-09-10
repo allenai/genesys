@@ -114,60 +114,11 @@ sh run_demo.sh
 ```
 
 
-# Pseudo Code Draft
-
-Designer agent:
-
-```
-for i in max_attemp:
-    while P<threshold_P:
-        # self-refine
-        P,new_design ~ designer()
-    for j in max_attemp_checker:
-        pass = checker(new_design)
-        if pass:
-            break
-        else:
-            new_design,P ~ debugger()
-    if pass:
-        review=reviewer(new_design)
-        if review>threshold:
-            break
-        else:
-            new_design ~ designer()
-```
-
-GAB Flow Execution:
-
-Transformer
- - MHA
-   - RoPE
-   - Dot-Product Attn
- - FFN
-   - Gated
-
-P=Transformer.MHA
-
-X=Input Tensor
-Z={} # intermediate variates
-P=root
-while True:
-    for line in **get_unit**(P).source:
-        if is_gab_unit(line): # in this case, its calling a child
-            P=line.get_path()
-            break
-        else:
-            X,Z=execute(line)
-    P=P.next()
-    if not P:
-        break
-
-        
 
 
 
 
-#### Notes
+#### Note 
 
 
 1. The reviewer sometimes stuck there, giving the same reviews
@@ -181,4 +132,25 @@ while True:
    1. e.g _forward define actual kwargs, but forward pass **Z
    2. Will Z still preserve all args?
 
+
+# ALG NEW
+
+ALG 1 Evolve
+    T0<-Library
+    for t in t_max:
+        T_t+1=do(choose(design,verify),Tt)
+
+ALG 2 Design(Tt) -> T_t+1 # grow the tree, show more possible moves
+    select(D in Tt)->n
+    sample(n)->Ds->T_t+1
+
+ALG 3 Verify(Tt) -> T_t+1 # make a move, reveal a node under one scale
+    pick(D in Tt)->d # ranking all Ds 
+    verify(d,s)->D^s->T_t+1 # choose a scale s 
+
+ALG 4 Sample(n) -> Ds
+    for i in Ns:
+        propose(n)->Ps # assume implementation does not help proposal, as implementation is mostly translating proposal from NL to code
+    for i in Ni: 
+        implement(Ps)->Ds # decide later by ranking all Ps, we assume implementer follow overall idea of the proposal, but with some details modified if necessary
 

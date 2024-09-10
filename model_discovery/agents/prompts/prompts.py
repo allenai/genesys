@@ -4,7 +4,7 @@ from model_discovery.model.utils.modules import UnitSpec,UnitDecl
 
 import re
 import json
-from typing import Dict, Any
+from typing import Dict, Any, List
 from pydantic import BaseModel, Field
 from ..agent_utils import ModelOutputPlus
 from enum import Enum
@@ -1546,9 +1546,75 @@ Once you have submitted your proposal, it will be reviewed. If necessary, you wi
 - **Top-down approach**: Design the GAU from the top down, breaking complex blocks into smaller, manageable units that can be nested together.
 - **Creativity encouraged**: Strive for a design that is innovative and improves upon existing architectures. Avoid replicating standard models like the vanilla Transformer.
 - **Self-contained modifications**: Ensure that your modifications to the GAU do not interfere with the correctness of other parts of the model.
+
 """
 
+GUE_DESIGN_PROPOSER_SYSTEM_2STAGE_prompt = GUE_DESIGN_PROPOSER_SYSTEM_prompt + """
+## Two-Stage Process for Proposal Development
+
+To enhance the proposal development process, you should follow a structured two-stage approach:
+
+### Stage 1: Ideation and Information Gathering
+
+In this initial stage, focus on generating ideas and collecting relevant information, if you are revising a proposal that was failed before, you should also reflect based on the feedback:
+
+1. **Seed Design Analysis**: 
+   - Carefully review the provided seed design that you're tasked to improve.
+   - Identify potential areas for enhancement or optimization.
+
+2. **Initial Ideation**:
+   - Brainstorm rough ideas and hypotheses for improving the design.
+   - Consider novel approaches that could address limitations in the current model.
+
+3. **Information Gathering Preparation**:
+   - Formulate specific questions and topics for research based on your initial ideas.
+   - Prepare detailed instructions for the information gathering assistant.
+
+4. **Collaboration with Information Gathering Assistant**:
+   - Provide clear, concrete instructions to the assistant about the information you need.
+   - Specify key areas of interest, potential sources, and any specific papers or researchers to focus on.
+   - The more detailed and clear your instructions, the more relevant and accurate the information you'll receive.
+
+5. **Review of Gathered Information**:
+   - Carefully study the report provided by the information gathering assistant.
+   - Identify key insights, methodologies, or techniques that could be applied to your design.
+
+### Stage 2: Proposal Development
+
+Using the insights gained from Stage 1, develop a comprehensive and detailed proposal:
+
+1. **Synthesis of Ideas**:
+   - Combine your initial ideas with the information from the research report.
+   - Identify the most promising approaches for improving the LM block design.
+
+2. **Detailed Design Planning**:
+   - Select the specific GAU you will modify based on your research and ideation.
+   - Outline the proposed modifications in detail, including any new child GAUs or nested structures.
+   - Ensure that your changes maintain the overall correctness and coherence of the model.
+
+3. **Proposal Writing**:
+   - Follow the structure outlined in the original prompt (Title, Motivation, Problem Analysis, etc.).
+   - Incorporate specific references and insights from the research report to support your design choices.
+   - Provide clear justifications for each aspect of your proposed modifications.
+
+4. **Innovation and Creativity**:
+   - Push beyond standard architectures, aiming for novel solutions that address current limitations in LMs.
+   - Consider how your proposed changes might improve various aspects such as perplexity, accuracy, robustness, efficiency, and scalability.
+
+5. **Practical Considerations**:
+   - Address potential challenges in implementing your proposed design.
+   - Consider computational efficiency and scalability in your proposal.
+
+6. **Refinement and Review**:
+   - Critically review your proposal, ensuring all parts are coherent and well-justified.
+   - Be prepared to refine your proposal based on feedback, maintaining flexibility in your approach.
+
+Remember, the goal is to produce a novel, well-researched, and practically feasible improvement to the existing LM block design. Your proposal should demonstrate both creativity and a deep understanding of current autoregressive language models.
+"""
+
+
 GUE_DESIGN_PROPOSER_SYSTEM = AgentPrompt(GUE_DESIGN_PROPOSER_SYSTEM_prompt)
+GUE_DESIGN_PROPOSER_SYSTEM_2STAGE = AgentPrompt(GUE_DESIGN_PROPOSER_SYSTEM_2STAGE_prompt)
 
 
 # endregion
@@ -1561,23 +1627,57 @@ GUE_DESIGN_PROPOSER_SYSTEM = AgentPrompt(GUE_DESIGN_PROPOSER_SYSTEM_prompt)
 
 
 
-def gen_GUE_DESIGN_PROPOSAL(SELECTIONS:list[str]):
-   GUE_DESIGN_PROPOSAL_prompt = """
-   {SEED}
-
-   Check the seed design, then give your proposal and the selection of the GAU to modify follow the instructions.
-   """
-
+def gen_GUE_DESIGN_PROPOSAL(SELECTIONS:list[str],two_stage:bool=False):
+   
    SelectionEnum=generate_enum_from_list('selection',SELECTIONS)
 
-   class GUE_DESIGN_PROPOSAL_format(BaseModel):
+   class GUE_DESIGN_PROPOSAL_STAGE1_format(BaseModel):
+      ideation: str = Field(..., description="The initial ideation about the direction of how to improve the seed design.")
+      instructions: str = Field(..., description="The instructions for the information gathering assistant.")
+
+   class GUE_DESIGN_PROPOSAL_STAGE2_format(BaseModel):
       proposal: str = Field(..., description="The full proposal, keep the format instructions.")
       selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
       modelname: str = Field(..., description="The name of the variant of the model you are going to design.")
 
+   if two_stage:
+      GUE_DESIGN_PROPOSAL_stage1_prompt = """
+{SEED}
 
-   return AgentPrompt(GUE_DESIGN_PROPOSAL_prompt,GENERAL_JSON_parser,GUE_DESIGN_PROPOSAL_format)
+Based on the provided seed design and references, please:
 
+1. Analyze the current design and identify potential areas for improvement.
+2. Develop initial ideas for enhancing the LM block design.
+3. Formulate specific questions and topics for further research.
+4. Prepare clear instructions for the information gathering assistant.
+      """
+
+      GUE_DESIGN_PROPOSAL_stage2_prompt = """
+The information gathering assistant has gathered the information for you, here is the information:
+
+{GATHERED_INFO}
+
+Using the gathered information and your initial ideation as well as the provided seed and references, please:
+
+1. Synthesize your ideas with the research findings.
+2. Develop a comprehensive proposal for improving the LM block design.
+3. Select a specific GAU to modify and explain your choice.
+4. Detail your proposed modifications, including any new structures.
+5. Justify your design choices and explain expected improvements.
+      """
+
+      prompt1=AgentPrompt(GUE_DESIGN_PROPOSAL_stage1_prompt,GENERAL_JSON_parser,GUE_DESIGN_PROPOSAL_STAGE1_format)
+      prompt2=AgentPrompt(GUE_DESIGN_PROPOSAL_stage2_prompt,GENERAL_JSON_parser,GUE_DESIGN_PROPOSAL_STAGE2_format)
+      return prompt1,prompt2
+
+   else:
+      GUE_DESIGN_PROPOSAL_prompt = """
+{SEED}
+
+Check the seed design, then give your proposal and the selection of the GAU to modify follow the instructions.
+"""
+
+      return AgentPrompt(GUE_DESIGN_PROPOSAL_prompt,GENERAL_JSON_parser,GUE_DESIGN_PROPOSAL_STAGE2_format)
 
 
 # endregion
@@ -1717,34 +1817,117 @@ GUE_PROPOSAL_REVIEW = AgentPrompt(GUE_PROPOSAL_REVIEW_prompt,GENERAL_JSON_parser
 # region GU Proposal Refinement
 
 
-def gen_GUE_PROPOSAL_REFINEMENT(SELECTIONS): 
-
-   GUE_PROPOSAL_REFINEMENT_prompt = """
-   Your proposal has been reviewed and rated by the expert, here is the feedback:
-
-   {REVIEW}
-
-   Rating: {RATING} out of 5 ({PASS_OR_NOT})
-
-   Suggestions: {SUGGESTIONS}
-
-   Please refine your proposal based on the feedback. You should address the issues
-   and improve the design based on the suggestions. You need to firstly provide the
-   reflection of the feedback, then give the full proposal keeping the format
-   instructions, finally, a summary of the changes you made.
-   """
+def gen_GUE_PROPOSAL_REFINEMENT(SELECTIONS:list[str],two_stage:bool=False): 
 
    SelectionEnum=generate_enum_from_list('selection',SELECTIONS)
 
-   class GUE_PROPOSAL_REFINEMENT_format(BaseModel):
-      reflection: str = Field(..., description="The reflection based on the review, rating, and suggestions.")
-      proposal: str = Field(..., description="The fall proposal, keep the format instructions.")
-      selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
-      modelname: str = Field(..., description="The name of the variant of the model you are going to design.")
-      changes: str = Field(..., description="The summary of the changes you made.") 
 
+   if two_stage:
+      class GUE_PROPOSAL_REFINEMENT_STAGE1_format(BaseModel):
+         reflection: str = Field(..., description="The reflection based on the review, rating, and suggestions.")
+         ideation: str = Field(..., description="The updated ideation about the direction of how to improve the seed design.")
+         instructions: str = Field(..., description="The instructions for the information gathering assistant.")
 
-   return AgentPrompt(GUE_PROPOSAL_REFINEMENT_prompt,GENERAL_JSON_parser,GUE_PROPOSAL_REFINEMENT_format)
+      class GUE_PROPOSAL_REFINEMENT_STAGE2_format(BaseModel):
+         proposal: str = Field(..., description="The fall proposal, keep the format instructions.")
+         selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
+         modelname: str = Field(..., description="The name of the variant of the model you are going to design.")
+         changes: str = Field(..., description="The summary of the changes you made.") 
+
+      GUE_PROPOSAL_REFINEMENT_STAGE1_prompt = """
+Your proposal has been reviewed by an expert. Please carefully consider the following feedback:
+
+---
+Review: {REVIEW}
+
+Rating: {RATING} out of 5 ({PASS_OR_NOT})
+
+Suggestions: {SUGGESTIONS}
+---
+
+Based on this feedback, please refine your proposal by following these steps:
+
+1. Reflection:
+   - Analyze the feedback critically.
+   - Identify key areas for improvement.
+   - Consider how to address each point raised by the expert.
+
+2. Updated Ideation:
+   - Revisit your original design concept.
+   - Incorporate the expert's suggestions into your thinking.
+   - Develop new ideas that address the identified weaknesses.
+
+3. Information Gathering Instructions:
+   - Formulate specific questions based on the feedback and your new ideas.
+   - Identify areas where additional research is needed.
+   - Provide clear, detailed instructions for the information gathering assistant.
+
+Focus on addressing the expert's concerns while maintaining the innovative aspects of your original proposal. Be specific, thorough, and consider both theoretical improvements and practical implementation.
+      """
+
+      GUE_PROPOSAL_REFINEMENT_STAGE2_prompt = """
+The information gathering assistant has provided the following information based on your instructions:
+
+---
+{GATHERED_INFO}
+---
+
+Using this new information, along with your updated ideation and the original seed design and references, please develop a refined proposal. Follow these steps:
+
+1. Synthesis:
+   - Integrate the new research findings with your updated ideas.
+   - Identify key insights that address the expert's feedback.
+
+2. Proposal Development:
+   - Revise your LM block design improvement proposal.
+   - Ensure all aspects of the expert's feedback are addressed.
+   - Maintain or enhance the innovative elements of your original proposal.
+
+3. GAU Selection and Modification:
+   - Clearly state which GAU you've chosen to modify and why.
+   - Detail your proposed changes, including any new structures or nested GAUs.
+   - Explain how these modifications address the expert's concerns.
+
+4. Justification and Expected Improvements:
+   - Provide robust justification for each design choice.
+   - Explain how your refined design is expected to improve upon the original.
+   - Address how the changes relate to perplexity, accuracy, robustness, efficiency, and scalability.
+
+5. Change Summary:
+   - Concisely list the key changes made from your original proposal.
+   - Explain how each change addresses specific feedback points.
+
+Ensure your refined proposal is comprehensive, well-justified, and directly addresses all points raised in the expert review. Strive for a balance between innovation and addressing the practical concerns highlighted in the feedback.
+      """
+
+      prompt1=AgentPrompt(GUE_PROPOSAL_REFINEMENT_STAGE1_prompt,GENERAL_JSON_parser,GUE_PROPOSAL_REFINEMENT_STAGE1_format)
+      prompt2=AgentPrompt(GUE_PROPOSAL_REFINEMENT_STAGE2_prompt,GENERAL_JSON_parser,GUE_PROPOSAL_REFINEMENT_STAGE2_format)
+      return prompt1,prompt2
+
+   else:
+      class GUE_PROPOSAL_REFINEMENT_format(BaseModel):
+         reflection: str = Field(..., description="The reflection based on the review, rating, and suggestions.")
+         proposal: str = Field(..., description="The fall proposal, keep the format instructions.")
+         selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
+         modelname: str = Field(..., description="The name of the variant of the model you are going to design.")
+         changes: str = Field(..., description="The summary of the changes you made.") 
+
+      GUE_PROPOSAL_REFINEMENT_prompt = """
+      Your proposal has been reviewed and rated by the expert, here is the feedback:
+
+      {REVIEW}
+
+      Rating: {RATING} out of 5 ({PASS_OR_NOT})
+
+      Suggestions: {SUGGESTIONS}
+
+      Please refine your proposal based on the feedback. You should address the issues
+      and improve the design based on the suggestions. You need to firstly provide the
+      reflection of the feedback, then give the full proposal keeping the format
+      instructions, finally, a summary of the changes you made.
+      """
+
+      return AgentPrompt(GUE_PROPOSAL_REFINEMENT_prompt,GENERAL_JSON_parser,GUE_PROPOSAL_REFINEMENT_format)
 
 # endregion
 
@@ -1789,6 +1972,186 @@ GUE_PROPOSAL_REREVIEW = AgentPrompt(GUE_PROPOSAL_REREVIEW_prompt,GENERAL_JSON_pa
 
 
 
+
+
+
+
+'''
+#######################################################
+# GUE Proposal Search Assistant Prompt
+#######################################################
+'''
+
+
+""" ============================= S2 Search Assistant System ===================================== """
+
+# region S2 Search Assistant System
+
+
+
+S2_SEARCH_ASSISTANT_SYSTEM_prompt = """
+You are an advanced search assistant designed to help researchers gather relevant information from Semantic Scholar. Your task is to interpret the given ideation and instructions, formulate appropriate search queries, analyze the results, and compile a comprehensive report.
+
+## Input
+You will receive:
+1. Ideation: The researcher's initial thoughts and concepts.
+2. Instructions: Specific guidance on what information to gather.
+
+## Process
+Follow these steps iteratively until you have gathered sufficient information:
+
+1. Query Formulation:
+   - Analyze the ideation and instructions.
+   - Construct a relevant search query for Semantic Scholar.
+
+
+2. Result Analysis:
+   - Review the search results returned by the Semantic Scholar API.
+   - Analyze the relevance and quality of each paper based on:
+     - Title
+     - Authors
+     - Venue
+     - Year
+     - Abstract
+     - Citation count
+     - Open access availability
+
+3. Iterative Refinement:
+   - If the results are not satisfactory, refine your query and repeat steps 1-2.
+
+4. Information Extraction:
+   - For relevant papers, extract key information including:
+     - Main findings
+     - Methodologies
+     - Implications for the research topic
+
+5. Continuation Decision:
+   - Decide if further searches are needed based on the quality and quantity of gathered information.
+
+## Output
+Once you have gathered sufficient information, compile a report with the following structure:
+
+1. Executive Summary:
+   - Brief overview of the search process and key findings
+
+2. Relevant Papers:
+   - List of most relevant papers with their details:
+     - Title
+     - Authors
+     - Venue
+     - Year
+     - Brief summary
+     - Citation count
+     - Link to open access PDF (if available)
+
+3. Key Insights:
+   - Synthesis of main findings and their relevance to the original ideation and instructions
+
+4. Methodologies:
+   - Overview of notable methodologies found in the literature
+
+5. Research Gaps:
+   - Identification of potential gaps or areas for further investigation
+
+6. Recommendations:
+   - Suggestions for how the gathered information can be applied to the original research question or idea
+
+Remember to maintain a balance between thoroughness and conciseness in your report. Focus on quality over quantity, ensuring that each included paper and insight is directly relevant to the researcher's needs as expressed in the ideation and instructions.
+"""
+
+
+S2_SEARCH_ASSISTANT_SYSTEM = AgentPrompt(S2_SEARCH_ASSISTANT_SYSTEM_prompt)
+
+
+# endregion
+
+
+""" ============================= S2 Search Proposal Query ===================================== """
+
+
+# region S2 Search Proposal Query
+
+
+class S2_SEARCH_PROPOSAL_QUERY_format(BaseModel):
+   analysis: str = Field(..., description="The analysis of the ideation and instructions.")
+   query: str = Field(..., description="The query to search for papers.")
+
+class S2_SEARCH_PROPOSAL_RESPONSE_format(BaseModel):
+   report: str = Field(..., description="The report of the search.")
+   references: List[str] = Field(..., description="The list of titles of all the reference papers.")
+   continue_search: bool = Field(..., description="Whether to continue the search.")
+
+S2_SEARCH_PROPOSAL_QUERY_prompt = """
+You are tasked with generating a search query for Semantic Scholar based on the given ideation and instructions. Analyze the input carefully and formulate an effective query.
+
+Here is the ideation including the researcher's initial thoughts and concepts:
+
+{IDEATION}
+
+Here are the instructions from the researcher about specific guidance on what information to gather:
+
+{INSTRUCTIONS}
+
+## Please provide the following information:
+
+1. Analysis:
+   - Briefly analyze the ideation and instructions.
+   - Identify key concepts, themes, and potential search terms.
+   - Consider any specific requirements or constraints mentioned.
+
+2. Query:
+   - Formulate a clear and focused search query.
+   - Use relevant keywords and phrases from the ideation and instructions.
+   - Do not use advanced search operators (e.g., AND, OR, quotation marks for exact phrases).
+   - Keep in mind the following Semantic Scholar search tips:
+     - No special query syntax is supported.
+     - Replace hyphens with spaces to find matches.
+     - Be specific to narrow down results.
+     - Consider including author names, publication years, or venues if relevant.
+
+Remember, the quality of the search results depends heavily on the query you formulate. Aim for a balance between specificity (to get relevant results) and breadth (to not miss important papers).
+"""
+
+S2_SEARCH_PROPOSAL_RESPONSE_prompt = """
+You are tasked with analyzing the search results from Semantic Scholar, generating a report, and deciding whether to continue the search. Evaluate the results carefully in relation to the original ideation and instructions.
+
+Here is the search results:
+
+{SEARCH_RESULTS}
+
+## Please provide the following information:
+
+1. Report:
+   - Summarize the search results, focusing on the most relevant papers.
+   - Highlight key findings, methodologies, and insights related to the original ideation.
+   - Identify any gaps in the literature or areas for further investigation.
+   - Structure your report as follows:
+     a. Overview of search results
+     b. Most relevant papers (3-5) with brief summaries
+     c. More relevant papers (if any) that are valuable and may help the researcher with brief summaries
+     d. Key insights and their relevance to the original ideation
+     e. Notable methodologies found
+     f. Identified research gaps
+     g. Recommendations for applying the findings
+
+2. References
+   - List of titles of all the reference papers.
+
+3. Continue Search:
+   - Decide whether further searching is necessary based on:
+     a. Quality and relevance of the results
+     b. Coverage of the topics from the original ideation and instructions
+     c. Identification of new areas that require exploration
+   - Set to true if more searching is needed, false if sufficient information has been gathered.
+
+In your analysis, prioritize papers that are highly cited, recent, and from reputable venues. Consider the relevance of each paper to the original ideation and instructions. If you decide to continue the search, think about how the query could be refined or expanded to address any gaps in the current results.
+"""
+
+
+S2_SEARCH_PROPOSAL_QUERY = AgentPrompt(S2_SEARCH_PROPOSAL_QUERY_prompt,GENERAL_JSON_parser,S2_SEARCH_PROPOSAL_QUERY_format)
+S2_SEARCH_PROPOSAL_RESPONSE = AgentPrompt(S2_SEARCH_PROPOSAL_RESPONSE_prompt,GENERAL_JSON_parser,S2_SEARCH_PROPOSAL_RESPONSE_format)
+
+# endregion
 
 
 

@@ -130,19 +130,19 @@ def _prompt_model_structured(model,message,response_format,logprobs=False,**kwar
     
     """
     for i in range(model._config.num_calls):
-        try:
-            return call_model_structured(model,message,response_format,logprobs=logprobs)
-        except Exception as e:
-            model.logging.warning(
-                f'Issue encountered while running running, msg={e}, retrying',
-                exc_info=True
-            )
+        # try:
+        return call_model_structured(model,message,response_format,logprobs=logprobs)
+        # except Exception as e:
+        #     model.logging.warning(
+        #         f'Issue encountered while running running, msg={e}, retrying',
+        #         exc_info=True
+        #     )
             
-            time.sleep(2**(i+1))
+        #     time.sleep(2**(i+1))
 
-    raise ModelRuntimeError(
-        f'Error encountered when running model, msg={e}'
-    )
+    # raise ModelRuntimeError(
+    #     f'Error encountered when running model, msg={e}'
+    # )
 
 
 def call_model_structured(model,message,response_format, logprobs=False) -> ModelOutputPlus:
@@ -165,6 +165,7 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
         model_fn=model.model_obj.beta.chat.completions.parse
     else:
         model_fn=model.model_obj.chat.completions.create
+    
     completions = model_fn(
         model=model._config.model_name,
         messages=message,
@@ -416,7 +417,7 @@ def call_model_claude(model,message,system,response_format, logprobs=False,use_c
             parsed=response_format.model_validate(RET['content'][0]['input']) 
         except Exception as e:
             raise e
-        text=parsed.json()
+        text=parsed.model_dump_json()
     else:
         text=RET['content'][0]['text']
 

@@ -37,11 +37,6 @@ import model_discovery.utils as U
 
 C = TypeVar("C",bound="ModelDiscoverySystem")
 
-from .configs.gam_config import ( 
-    GAMConfig,GAMConfig_14M,GAMConfig_31M,GAMConfig_70M,GAMConfig_125M,GAMConfig_350M,GAMConfig_760M,
-    GAMConfig_1300M,GAMConfig_2700M,GAMConfig_6700M,GAMConfig_13B,GAMConfig_175B,GAMConfig_1T,GAMConfig_debug
-)
-
 # import multiprocessing as mp
 
 __all__ = [
@@ -75,8 +70,6 @@ class CustomParams(exec_utils.ModuleParams):
        Points to the file for the GAM template used in the prompt 
     :param debug_step: 
        Print the system steps when running. 
-    :param gam_config: 
-       The target configuration for the GAM model being explored.
     :param run_name: 
        The name identifier of the model search session. 
 
@@ -182,12 +175,6 @@ class CustomParams(exec_utils.ModuleParams):
             "help" : 'Location of code prompting ',
         }
     )
-    lib_dir: str = exec_utils.ParamField(
-        default=None,
-        metadata={
-            "help" : 'GAU Library directory',
-        }
-    )
     ### debugging
     debug_steps: bool = exec_utils.ParamField(
         default=True,
@@ -200,13 +187,6 @@ class CustomParams(exec_utils.ModuleParams):
         default=False,
         metadata={
             "help"         : 'Inside of jupyter',
-            "exclude_hash" : True,
-        }
-    )
-    gam_config: str = exec_utils.ParamField(
-        default='GAMConfig_14M',
-        metadata={
-            "help"         : 'Debug the steps of the system',
             "exclude_hash" : True,
         }
     )
@@ -331,8 +311,6 @@ class ModelDiscoverySystem(exec_utils.System):
     :param block_template: 
         The templated code to be filled in during 
         the block search. 
-    :param gam_config: 
-        the global model configuration 
     :param config: 
         The system level configuration. 
         
@@ -357,11 +335,7 @@ class ModelDiscoverySystem(exec_utils.System):
         checker  : Type[exec_utils.BaseTool], 
         debugger : Type[exec_utils.SimpleLMAgent],
         claude : Type[exec_utils.SimpleLMAgent],
-        lib_dir: str,
         *,
-        block_template: str,
-        gam_template: str,
-        gam_config: Type[GAMConfig],
         config: ConfigType 
     ) -> None:
         """Create a `DiscoverySystem` instance 
@@ -390,9 +364,9 @@ class ModelDiscoverySystem(exec_utils.System):
         # self.gam_py = gam_template
         # self.gab_py = block_template
         self._config = config
-        self._cfg = gam_config
-        self.lib_dir = lib_dir
-
+        
+        # to be set later
+        self.ptree = None
 
         # Load flows
 
@@ -406,35 +380,36 @@ class ModelDiscoverySystem(exec_utils.System):
         self.design_fn_scratch=gu_design_scratch
         self.design_fn_existing=gu_design_existing
 
-
+    def bind_ptree(self,ptree): # need to bind a tree before start working
+        self.ptree = ptree
 
     def get_system_info(self):
         system_info = {}
         system_info['agents']={
-            'designer':self.designer.config,
+            'gpt4o':self.designer.config,
             # 'reviewers':{style:agent.config for style,agent in self.reviewers.items()},
-            'debugger':self.debugger.config,
-            'claude':self.claude.config
+            'gpt4o-mini':self.debugger.config,
+            'claude3.5_sonnet':self.claude.config
         }
 
-    def new_session(self,log_dir=None,stream=None):
+    def new_session(self,log_dir,stream):
         U.mkdir(log_dir)
         self.log_dir = log_dir
+        log_file = os.path.join(log_dir,'stream.log')
         self.sess_state = {} 
         self.dialog = AgentDialogManager(log_dir,self.get_system_info(),stream)
-
-    def set_config(self,cfg:GAMConfig): # reset the gam config of the system
-        self._cfg = cfg
+        design_stream = StreamWrapper(stream,log_file)
+        return design_stream
 
     def query_system(
         self,
-        query: Optional[str] = '',
-        log_dir: Optional[str] = None,
+        query: Optional[str] = '',  # will be recoginized as additional user query
+        design_id: Optional[str] = None, # a full design session raised by the evo system, a session is a "local" space over the tree
         stream: Optional[ModuleType] = None,
         frontend: Optional[bool] = False,
         status: Optional[bool] = True,
-        metadata = None, # such as seeds, non str instructions
-        agent_cfg = {},
+        design_cfg = {},
+        mode='existing',
         **kwargs
     ) -> list:
         """Main function for implementing system calls.
@@ -450,24 +425,22 @@ class ModelDiscoverySystem(exec_utils.System):
             Additional information about the query. Mainly about the seeds.
         """
 
+        assert self.ptree is not None, 'Phylogenetic tree is not initialized, please bind a tree first'
         if stream is None: # and self._config.debug_steps:
             stream = PrintSystem(self._config)
         design_handler = stream.status if stream and status else NaiveHandler
-        design_stream = StreamWrapper(stream,log_file)
-        self.new_session(log_dir,design_stream)
-        mode = metadata['mode']
-        seed = metadata['seed']
-        references = metadata['references']
-        log_file = os.path.join(self.log_dir,'stream.log')
-        metainfo = {'agent_cfg':agent_cfg}
+        log_dir=U.pjoin(self.ptree.db_dir,'log',session_id)
+        design_stream=self.new_session(log_dir,stream)
+        mode, seed, references = metadata['mode'], metadata['seed'], metadata['references'] # find it from session
+        metainfo = {'design_cfg':design_cfg,'mode':mode}
         U.save_json(metainfo,U.pjoin(log_dir,'metainfo.json'))
+        instruct=query
         if mode=='scratch': 
-            RET = self.design_fn_scratch(self,query,design_stream,design_handler,seed,references)
+            raise NotImplementedError('Scratch mode is not stable and not updated, do not use it')
+            RET = self.design_fn_scratch(self,instruct,design_stream,design_handler,seed,references)
         elif mode=='existing':
-            RET = self.design_fn_existing(self,query,design_stream,design_handler,seed,references,agent_cfg)
-        
-        
-        return title,code,explain,summary,autocfg,reviews,ratings,check_results
+            RET = self.design_fn_existing(self,instruct,design_stream,design_handler,seed,self.ptree,session_id,references,design_cfg)
+        return RET
 
 
     @classmethod
@@ -519,7 +492,6 @@ class ModelDiscoverySystem(exec_utils.System):
         )
         
         ### get the model information for context
-        cfg = eval(f"{config.gam_config}()")
         block, code = get_context_info(config,templated=cfg.use_template)
         
         return cls(
@@ -528,11 +500,9 @@ class ModelDiscoverySystem(exec_utils.System):
             checker,
             debugger,
             claude,
-            lib_dir=config.lib_dir,
             block_template=block,
             gam_template=code,
             config=config,
-            gam_config=cfg
         )
 
 def BuildSystem(

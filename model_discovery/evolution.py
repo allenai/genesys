@@ -16,6 +16,7 @@ import networkx as nx
 import pandas as pd
 import numpy as np
 from io import StringIO
+import hashlib
 import random
 from networkx.drawing.nx_pydot import to_pydot,warnings
 from pyvis.network import Network
@@ -367,17 +368,53 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         self.db_dir = db_dir
         self.lib_dir = U.pjoin(LIBRARY_DIR,'tree')
         self.lib_ext_dir = U.pjoin(LIBRARY_DIR,'tree_ext')
+        self.design_sessions = {}
         U.mkdir(db_dir)
         self.load()
 
-    def new_design(self, artifact_dict: dict):
-        artifact = DesignArtifact.from_dict(artifact_dict)
-        acronym = self.unique_acronym(artifact.acronym)
-        artifact.acronym = acronym
-        artifact.save(self.db_dir)
-        self.G.add_node(acronym, data=artifact)
-        for seed_id in artifact.seed_ids:
-            self.G.add_edge(seed_id, acronym)
+    # def new_design(self, artifact_dict: dict):
+    #     artifact = DesignArtifact.from_dict(artifact_dict)
+    #     acronym = self.unique_acronym(artifact.acronym)
+    #     artifact.acronym = acronym
+    #     artifact.save(self.db_dir)
+    #     self.G.add_node(acronym, data=artifact)
+    #     for seed_id in artifact.seed_ids:
+    #         self.G.add_edge(seed_id, acronym)
+
+    # new design: proposal -> implement -> verify
+
+    def load_design_sessions(self):
+        for design_id in os.listdir(self.db_dir):
+            metadata = U.load_json(U.pjoin(self.db_dir, design_id, 'metadata.json'))
+            self.design_sessions[design_id] = metadata
+
+    # How to handle variants? i.e., in GPT, there are optional pre-conv and post-conv, maybe just all of them to the tree, let selector to choose
+
+    def new_design(self, seed_ids, ref_ids, instruct, mode='existing'): # new design session, a session explore the steps from a selected node
+        # generate unique hash for the design, do not consider the order
+        design_id = hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode}".encode()).hexdigest()
+        metadata = {
+            'seed_ids': seed_ids,
+            'ref_ids': ref_ids,
+            'instruct': instruct,
+            'mode': mode,
+            'proposed': [],
+            'implemented': [],
+            'verified': [],
+        }
+        self.design_sessions[design_id] = metadata
+        U.save_json(metadata, U.pjoin(self.db_dir, design_id, 'metadata.json'))
+        U.mkdir(U.pjoin(self.db_dir,design_id,'log'))
+        return design_id
+
+    def proposal(self, design_id: str, proposal): # create a proposal node, should include also agent info, etc.
+        pass
+
+    def implement(self, design_id: str, implementation): # update a proposal node with implementation
+        pass
+
+    def verify(self, design_id: str, scale: str, verification_report): # attach a verification report under a scale to an implemented node
+        pass
 
     def unique_acronym(self, acronym: str) -> str:
         existing_acronyms = set(self.G.nodes)
@@ -605,17 +642,17 @@ class EvolutionSystem(exec_utils.System):
         self.stream.write(f"Budgets remaining: {self.state['budgets']}")
         self.stream.write(f"Checkpoint directory: {self.evo_dir}")
 
+        self.ptree=PhylogeneticTree(U.pjoin(self.evo_dir,'db'))
         self.rnd_agent = BuildSystem(
             debug_steps=False, # True for debugging, but very long
             # cache_type="diskcache", #<-- agent caching method 
             temperature=0.1,
             jupyter=False,
-            lib_dir=U.pjoin(self.evo_dir,'lib'),
             # cache_id=919,
             #from_json='/path/to/config'
             **kwargs
         )
-        self.ptree=PhylogeneticTree(U.pjoin(self.evo_dir,'db'))
+        self.rnd_agent.bind_ptree(self.ptree)
         # self.ptree.export()
 
     def link_stream(self,stream):
@@ -643,107 +680,137 @@ class EvolutionSystem(exec_utils.System):
     def save_state(self):
         U.save_json(self.state,U.pjoin(self.evo_dir,'state.json'))
 
-    def run(self): 
-        """ Run the scale-climbing evolution """
-        raise NotImplementedError("This method is not implemented for multi-gpu yet")
-        while self.evolve():
-            self.verify()
-        
-    def _run(self,mode):
-        if mode=='evolve':
-            self.stream.write('\n\n'+'+'*50)
-            self.stream.write("RUNNING IN EVOLUTION MODE...\n\n")
-            ret=self.evolve()
-            if ret is None:
-                self.stream.write("No budget left for the evolution")
-                time.sleep(1)
-            else:
-                self.stream.write(f"Design {ret} sampled")
-        elif mode=='verify':
-            self.stream.write('\n\n'+'x'*50)
-            self.stream.write("RUNNING IN VERIFICATION MODE...\n\n")
-            ret=self.verify()
-            if ret is None:
-                self.stream.write("No unverified design left")
-                time.sleep(1)
-            else: 
-                self.stream.write(f"Design {ret} verified")
+    # def run(self): 
+    #     """ Run the scale-climbing evolution """
+    #     raise NotImplementedError("This method is not implemented for multi-gpu yet")
+    #     while self.evolve():
+    #         self.verify()
 
-    def evolve(self): # run a single evolution step unless no budget left
-        scale_id=self.state['current_scale']
-        if scale_id>=len(self.state['scales']): # no scale left
-            self.stream.write("No scale left")
-            return None
-        scale=self.state['scales'][scale_id]
-        budget=self.state['budgets'][scale]
-        if budget==0: 
-            self.state['current_scale']+=1 # Will influence the sampling distribution
-            self.save_state()
-            return self.evolve()
-        else:
-            return self._evolve(scale_id)
+    # def _run(self,mode):
+    #     if mode=='evolve':
+    #         self.stream.write('\n\n'+'+'*50)
+    #         self.stream.write("RUNNING IN EVOLUTION MODE...\n\n")
+    #         ret=self.evolve()
+    #         if ret is None:
+    #             self.stream.write("No budget left for the evolution")
+    #             time.sleep(1)
+    #         else:
+    #             self.stream.write(f"Design {ret} sampled")
+    #     elif mode=='verify':
+    #         self.stream.write('\n\n'+'x'*50)
+    #         self.stream.write("RUNNING IN VERIFICATION MODE...\n\n")
+    #         ret=self.verify()
+    #         if ret is None:
+    #             self.stream.write("No unverified design left")
+    #             time.sleep(1)
+    #         else: 
+    #             self.stream.write(f"Design {ret} verified")
+
+    # def evolve(self): # run a single evolution step unless no budget left
+    #     scale_id=self.state['current_scale']
+    #     if scale_id>=len(self.state['scales']): # no scale left
+    #         self.stream.write("No scale left")
+    #         return None
+    #     scale=self.state['scales'][scale_id]
+    #     budget=self.state['budgets'][scale]
+    #     if budget==0: 
+    #         self.state['current_scale']+=1 # Will influence the sampling distribution
+    #         self.save_state()
+    #         return self.evolve()
+    #     else:
+    #         return self._evolve(scale_id)
             
 
-    def _evolve(self,scale_id): # do evolve that produce one design and operate the phylogenetic tree
-        K=np.random.choice([1,2,3],p=[1,0,0])
-        instruct,metadata=self.select(K) # use the seed_ids to record the phylogenetic tree
+    # def _evolve(self,scale_id): # do evolve that produce one design and operate the phylogenetic tree
+    #     raise NotImplementedError("Just run design")
+       
+    #     K=np.random.choice([1,2,3],p=[1,0,0])
+    #     instruct,seed,refs=self.select(K) # use the seed_ids to record the phylogenetic tree
 
-        artifact=self.sample(scale_id,instruct,metadata) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
-        if artifact is None:
-            self.stream.write("No design sampled")
-            return True # no design sampled, continue
-        # save the design to the phylogenetic tree and update the budget
-        seed=metadata['seed']
-        references=metadata['references']
-        artifact['seed_ids']=[seed.acronym for seed in seed]
-        artifact['references']=[reference.acronym for reference in references]
-        self.ptree.new_design(artifact)
-        scale=self.state['scales'][scale_id]
-        self.state['budgets'][scale]-=1
-        # self.state['unverified'].append(artifact['acronym'])
-        self.save_state() # NOTE!!!: handle it carefully in multi-threading
-        self.ptree.export()
-        return artifact['acronym']
+    #     artifact=self.sample(instruct,metadata) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
+    #     if artifact is None:
+    #         self.stream.write("No design sampled")
+    #         return True # no design sampled, continue
+    #     # save the design to the phylogenetic tree and update the budget
+    #     seed,references=metadata['seed'],metadata['references']
+    #     artifact['seed_ids']=[seed.acronym for seed in seed]
+    #     artifact['references']=[reference.acronym for reference in references]
+    #     self.ptree.new_design(artifact)
+    #     scale=self.state['scales'][scale_id]
+    #     self.state['budgets'][scale]-=1
+    #     # self.state['unverified'].append(artifact['acronym'])
+    #     self.save_state() # NOTE!!!: handle it carefully in multi-threading
+    #     self.ptree.export()
+    #     return artifact['acronym']
+    
+    def _evolve(self): # each time do one step, agent choose what to do, use shell to run it continuously 
+        act=random.choice(['design','verify'])
+        if act=='design':
+            self.design()
+        elif act=='verify':
+            self.verify()
 
-    def sample(self,scale_id,instruct,metadata,mode='existing'):
-        """ Sample a design at a given scale and verify it """
-        self.rnd_agent.set_config(self.scales[scale_id])
-        session_id=f'sample_{len(self.ptree.filter_by_type(["DesignArtifact"]))}_{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}'
-        log_dir=U.pjoin(self.evo_dir,'log',session_id)
-        U.mkdir(log_dir)
-        response=self.rnd_agent(instruct,log_dir=log_dir,stream=self.stream,metadata=metadata)  # instruct should have a type
-        if response is None: # no design sampled
-            return None
-        title,rawcode,explain,summary,autocfg,reviews,ratings,check_results=response
-        for i in [' and ',' for ','-']:
-            title=title.replace(i,' ')
-        acronym=''.join([i[0].upper() for i in title.split(' ') if i.isalpha()])
+    def design(self): # select then sample
+        raise NotImplementedError("Select then Sample")
+        instruct,seed,refs=self.select(n_sources,mode=_mode) # use the seed_ids to record the phylogenetic tree
+        self.sample(instruct,seed,refs,design_id=None,mode='existing',user_input='',design_cfg=self.design_cfg)
 
-        # modify the code to fit the block registry
-        # TODO: change the registry name to acronyms
-        code=rawcode+f'\n\n\n{autocfg}\nblock_config=gab_config\nblock_config.update(autoconfig)'
-        code+='\n\n\nfrom .block_registry import BlockRegister\n\nBlockRegister(\n    name="default",\n    config=block_config\n)(GAB)'
 
-        artifact={
-            'title':title,
-            'session_id':session_id,
-            'acronym':acronym,
-            'code':code,
-            'rawcode':rawcode,
-            'explain':explain,
-            'scale':self.state['scales'][scale_id],
-            'instruct':instruct,
-            'summary':summary,
-            'reviews':reviews,
-            'ratings':ratings,
-            'check_results':check_results,
-        }
-        return artifact
+    def sample(self,instruct=None,seed:List[NodeObject]=None,refs:List[NodeObject]=None,design_id=None,mode='existing',user_input='',design_cfg={}):
+        """ 
+        Sample a design at a given scale and verify it 
+        
+        Input optional selector instruct and metadata, return a design artifact
+        DB should be fully managed by the agent system, likewise, VE should be fully managed by the verification engine
+        agent system should only have access to DB, and VE should only have access to VE
+
+        Selector choose which seeds to use, and budget for verification
+        Given the seeds which direct the global direction, the agent system should be fully responsible for the best local move
+        
+        1. create a new session, each session focusing a local area determined by select (instruct, seed, refs)
+        """
+
+        # 1. create or retrieve a new session
+        if design_id is None: # if provided, then its resuming a session
+            assert seed is None and refs is None and instruct is None, "Must provide seed, refs, and instruct to create a new design"
+            seed_ids = [seed.acronym for seed in seed]
+            ref_ids = [ref.acronym for ref in refs]
+            design_id=self.ptree.new_design(seed_ids, ref_ids, instruct)
+        else: # resuming a session
+            self.stream.write(f"Resuming design session: {design_id}")
+
+        # 2. run the design session, all taken care of by the agent, it will grow the ptree
+        self.rnd_agent(user_input,design_id,stream=self.stream,mode=mode,design_cfg=design_cfg)  # instruct should have a type
+        
+        # if response is None: # no design sampled
+        #     return None
+        # title,rawcode,explain,summary,autocfg,reviews,ratings,check_results=response
+        # for i in [' and ',' for ','-']:
+        #     title=title.replace(i,' ')
+        # acronym=''.join([i[0].upper() for i in title.split(' ') if i.isalpha()])
+
+        # # modify the code to fit the block registry
+        # # TODO: change the registry name to acronyms
+        # code=rawcode+f'\n\n\n{autocfg}\nblock_config=gab_config\nblock_config.update(autoconfig)'
+        # code+='\n\n\nfrom .block_registry import BlockRegister\n\nBlockRegister(\n    name="default",\n    config=block_config\n)(GAB)'
+
+        # artifact={
+        #     'title':title,
+        #     'session_id':session_id,
+        #     'acronym':acronym,
+        #     'code':code,
+        #     'rawcode':rawcode,
+        #     'explain':explain,
+        #     'instruct':instruct,
+        #     'summary':summary,
+        #     'reviews':reviews,
+        #     'ratings':ratings,
+        #     'check_results':check_results,
+        # }
+        # return artifact
     
 
     # TODO: upgrade to Selector agent
-
-
     def select(self,K: Union[int,Dict[str,int]],selector_instruct='',mode='existing')->Tuple[str,List[NodeObject]]:
         '''
         K: int or dict of {source_type: num of seeds}, if K is int, then sample from all default sources (the ones with code)
@@ -752,34 +819,29 @@ class EvolutionSystem(exec_utils.System):
             instruct: str, the prompt generated from the selector and seeds
         '''
         seeds=[]
-        prompt=''
+        instruct=''
         if isinstance(K,int):
-            prompt,seeds=self._select(K,selector_instruct)
+            instruct,seeds=self._select(K,selector_instruct)
         elif isinstance(K,dict):
             for source_type,num in K.items():
-                instruct,topk=self._select(num,selector_instruct,source_type)
-                prompt+=instruct
+                _instruct,topk=self._select(num,selector_instruct,source_type)
+                instruct+=_instruct # NOTE: should not like this
                 seeds.extend(topk)
         if mode=='existing':
             seed_types = ['DesignArtifact','ReferenceCoreWithTree']
-            seed = [i for i in seeds if i.type in seed_types]
-            references = [i for i in seeds if i.type not in seed_types]
+            seed = [i for i in seeds if i.type in seed_types] # NOTE: need improve 
+            refs = [i for i in seeds if i.type not in seed_types]
             assert len(seed)>0, "There must be at least one seed from DesignArtifact or ReferenceCoreWithTree when design from existing"
             if len(seed)>1:
-                seed = random.choice(seed) # randomly select for now
-                references = [i for i in seeds if i.acronym!=seed.acronym]
+                seed = random.choice(seed) # NOTE: randomly select for now, should not happen at all
+                refs = [i for i in seeds if i.acronym!=seed.acronym]
             else:
                 seed = seeds[0]
         elif mode=='scratch':
             seed_types = ['DesignArtifact','ReferenceCoreWithTree','ReferenceWithCode']
             seed = [i for i in seeds if i.type in seed_types]
-            references = [i for i in seeds if i.type not in seed_types]
-        metadata={
-            'mode': mode,
-            'seed': seed,
-            'references': references,
-        }
-        return prompt,metadata
+            refs = [i for i in seeds if i.type not in seed_types]
+        return instruct,seed,refs
 
     def _select(self,K: int=1,selector_instruct='',
             filter_type=['DesignArtifact','ReferenceWithCode','ReferenceCoreWithTree','ReferenceCore'])-> Tuple[str,List[NodeObject]]: # K is the number of designs to sample, instruct is the instruction to the selector, select seeds or select populations
@@ -823,27 +885,30 @@ class EvolutionSystem(exec_utils.System):
         topk=random.sample(self.ptree.filter_by_type(filter_type),K)
         return self.nodes2data(topk)
     
-    def verify(self): # run a single verify that verify one unverified design
+    def verify(self): # choose then verify
+        raise NotImplementedError("Need update")    
         designed=os.listdir(U.pjoin(self.evo_dir,'db'))
         for design_id in designed:
             report_dir=U.pjoin(self.evo_dir,'ve',design_id,'report.json')
             if U.load_json(report_dir)=={}:
                 for _ in range(3): # try 3 times
-                    self._verify(design_id) # verify the design until it's done
+                    scale=random.choice(self.state['scales']) # XXX: ad hoc
+                    self._verify(design_id,scale) # verify the design until it's done
                     report=U.load_json(report_dir)
                     if report!={}: 
                         return design_id
                 return 'FAILED'
         return None
         
-    def _verify(self,design_id): # do a single verify
+    def _verify(self,design_id,scale): # do a single verify
+        raise NotImplementedError("Need update")
         artifact=U.load_json(U.pjoin(self.evo_dir,'db',design_id,'artifact.json'))
         with open('./model/gab.py','w', encoding='utf-8') as f:
             f.write(artifact['code'])
         args = ve_parser.parse_args()
         args.evoname=self.evoname
         args.design_id=artifact['acronym']
-        args.scale=artifact["scale"]
+        args.scale=scale
         args.ckpt_dir=self.ckpt_dir
         args.data_dir=os.environ.get("DATA_DIR")
         args.resume=True
