@@ -235,7 +235,8 @@ def design(evosys,project_dir):
             with st.spinner(text=spinner_text):
                 _mode = DesignModes(mode)
                 design_id=None
-                evosys.design(n_sources,design_cfg,user_input=user_input,mode=_mode,design_id=design_id)
+                resume=False
+                evosys.design(n_sources,design_cfg,user_input=user_input,mode=_mode,design_id=design_id,resume=resume)
     
     elif selected_design:
         with st.empty():

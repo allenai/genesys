@@ -955,11 +955,11 @@ class EvolutionSystem(exec_utils.System):
             self.verify()
 
     # TODO: the interface should be updated when selector agent is ready, and design cfg is ready
-    def design(self,n_sources,design_cfg,user_input='',design_id=None,mode=DesignModes.MUTATION): # select then sample, TODO: n_sources and design_cfg should be configed
+    def design(self,n_sources,design_cfg,user_input='',design_id=None,mode=DesignModes.MUTATION,resume=True): # select then sample, TODO: n_sources and design_cfg should be configed
         # user_input and design_cfg maybe changed by the user, so we need to pass them in
         unfinished_designs = self.ptree.get_unfinished_designs()
         if design_id is None:
-            if len(unfinished_designs)==0:
+            if len(unfinished_designs)==0 or not resume:
                 instruct,seed,refs=self.select(n_sources,mode=mode) # use the seed_ids to record the phylogenetic tree
                 self.sample(instruct,seed,refs,mode=mode,user_input=user_input,design_cfg=design_cfg)
             else:
