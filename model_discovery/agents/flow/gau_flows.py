@@ -31,6 +31,11 @@ GAB_BASE=inspect.getsource(GABBase)
 GAB_COMPOSER=inspect.getsource(GABComposer)
 
 
+class DesignModes(Enum):
+    MUTATION = 'Mutate from existing design'
+    SCRATCH = 'Design from scratch (unstable)'
+    CROSSOVER = 'Crossover multiple designs (unsupported)'
+
 
 def load_system_prompt(agent,prompt):
     agent.model_state.static_message=agent.model_state.fn(
@@ -798,7 +803,7 @@ def gu_design_scratch(cls,instruct,stream,status_handler,seed,references=None):
 ###################################################################
 
 
-# region Existing
+# region MUTATION
 
 
 def on_backoff(details):
@@ -841,15 +846,6 @@ def search_for_papers(query, result_limit=10) -> Union[None, List[Dict]]:
     return papers
 
 
-def safe_get_cfg_dict(cfg,key,default):
-    _dict=cfg.get(key,default) 
-    _cfg_dict={}
-    for k,v in default.items():
-        _cfg_dict[k]=_dict.get(k,v)
-    return _cfg_dict
-
-
-
 class EndReasons(Enum):
     PROPOSAL_FAILED='Proposal Failed'
     MAX_POST_REFINEMENT_REACHED='Max Post Refinement Reached'
@@ -874,12 +870,12 @@ END_REASONS_LABELS = {
     EndReasons.UNFINISHED:'Unfinished',
 }
 
-class GUFlowExisting(FlowCreator): 
+class GUFlowMutation(FlowCreator): 
     """
     The flow for designing a GAB Flow nested of GAB Units from scratch.
     the input query should be the seeds from the root tree for the design
     """
-    def __init__(self,system,status_handler,stream,tree,ptree,session_id,design_cfg={}):
+    def __init__(self,system,status_handler,stream,design_id,design_cfg,user_input=''):
         self.costs={
             'DESIGN_PROPOSER':0,
             'PROPOSAL_REVIEWER':0,
@@ -907,57 +903,27 @@ class GUFlowExisting(FlowCreator):
             'gpt4o_0806':self.gpt4o0806_agent,
             'gpt4o_mini':self.gpt4omini_agent,
         }
-        DEFAULT_AGENTS={
-            'DESIGN_PROPOSER':'claude3.5_sonnet',
-            'PROPOSAL_REVIEWER':'claude3.5_sonnet',
-            'DESIGN_IMPLEMENTER':'claude3.5_sonnet',
-            'IMPLEMENTATION_REVIEWER':'claude3.5_sonnet',
-            'SEARCH_ASSISTANT':'gpt4o_mini',
-        }
-        DEFAULT_MAX_ATTEMPTS={
-            'design_proposal':10,
-            'implementation_debug':7,
-            'post_refinement':5,
-            'max_search_rounds':10,
-        }
-        DEFAULT_TERMINATION={
-            'max_failed_rounds':3,
-            'max_total_budget':0, # 0 means no limit
-            'max_debug_budget':2,
-        }
-        DEFAULT_THRESHOLD={
-            'proposal_rating':4,
-            'implementation_rating':3,
-        }
-        DEFAULT_SEARCH_SETTINGS={
-            'proposal_search':True,
-            'proposal_review_search':True,
-            'search_for_papers_num':10,
-        }
-
-        DEFAULT_MODE=RunningModes.BOTH
-        DEFAULT_NUM_SAMPLES={
-            'proposal':1,
-            'implementation':1,
-        }
 
         self.failed_rounds=0
-        self.max_attemps=safe_get_cfg_dict(design_cfg,'max_attemps',DEFAULT_MAX_ATTEMPTS)
-        agent_types=safe_get_cfg_dict(design_cfg,'agent_types',DEFAULT_AGENTS)     
+        self.max_attemps=design_cfg['max_attemps']
+        agent_types=design_cfg['agent_types']     
         self.agents={k:AGENT_TYPES[v] for k,v in agent_types.items()}
-        self.termination=safe_get_cfg_dict(design_cfg,'termination',DEFAULT_TERMINATION)
-        self.threshold=safe_get_cfg_dict(design_cfg,'threshold',DEFAULT_THRESHOLD)
-        self.search_settings=safe_get_cfg_dict(design_cfg,'search_settings',DEFAULT_SEARCH_SETTINGS)
-        self.mode=safe_get_cfg_dict(design_cfg,'running_mode',DEFAULT_MODE)
-        self.num_samples=safe_get_cfg_dict(design_cfg,'num_samples',DEFAULT_NUM_SAMPLES)
+        self.termination=design_cfg['termination']
+        self.threshold=design_cfg['threshold']
+        self.search_settings=design_cfg['search_settings']
+        self.mode=design_cfg['running_mode']
+        self.num_samples=design_cfg['num_samples']
+        self.design_cfg=design_cfg
+        self.user_input=user_input
 
         # assert any(self.termination.values())>0, 'At least one of the termination conditions should be set'
 
-        self.tree = tree
-        self.ptree = ptree # evo tree
-        self.session_id = session_id
+        self.design_id = design_id
+        self.ptree=system.ptree
+        seeds,refs,instruct=self.ptree.get_session_input(design_id)
+        self.seed_tree = self.ptree.get_gau_tree(seeds[0].acronym)
+        self.seed_input=P.build_GUM_QUERY(seeds[0],refs,instruct,user_input)
 
-        self.SUCCEED=False
 
     def _links(self):
         links_def=[
@@ -1001,7 +967,14 @@ class GUFlowExisting(FlowCreator):
         hints="output the initial threads",
         links='generate_proposal',
     )
-    def design_initializer(self,query,state):
+    def design_initializer(self,query,state,proposal=None):
+        if proposal:
+            if self.mode!=RunningModes.IMPLEMENTATION_ONLY:
+                self.stream.write(f'Proposal is provided, running mode will be forced switched to implementation only from {self.mode}')
+                self.mode=RunningModes.IMPLEMENTATION_ONLY
+        else:
+            if self.mode==RunningModes.IMPLEMENTATION_ONLY:
+                raise Exception('Proposal is required for implementation only mode')
         return query,state,{}
     
 
@@ -1055,13 +1028,14 @@ class GUFlowExisting(FlowCreator):
         if self.mode==RunningModes.IMPLEMENTATION_ONLY:
             self.stream.write('Implementation only mode, skipping proposal generation...')
             return query,state,{}
-        for i in range(self.num_samples['proposal']):
-            query,state,RET=self._generate_proposal(query,state,main_tid)
-            proposal,proposal_traces,proposal_passed=RET['proposal'],RET['proposal_traces'],RET['proposal_passed']
-            if proposal_passed:
-                self.tree.add_artifact(proposal)
+        passed_proposals=self.ptree.session_proposals(self.design_id,passed_only=True)
+        for _ in range(self.num_samples['proposal']-len(passed_proposals)):
+            cost_raw=copy.deepcopy(self.costs)
+            query,state,RET=self._generate_proposal(self.seed_input,state,main_tid)
+            proposal,proposal_traces=RET['proposal'],RET['proposal_traces']
+            costs={k:v-cost_raw[k] for k,v in self.costs.items()}
+            self.ptree.propose(self.design_id,proposal,proposal_traces,costs,self.design_cfg,self.user_input)
         return query,state,{}
-
 
     def _generate_proposal(self,query,state,main_tid):
         '''
@@ -1079,28 +1053,29 @@ class GUFlowExisting(FlowCreator):
         traces=[]
         context_design_proposer=AgentContext()
         context_proposal_reviewer=AgentContext()
-        SELECTIONS=list(self.tree.units.keys())
+        SELECTIONS=list(self.base_tree.units.keys())
         for i in range(self.max_attemps['design_proposal']):
-            DESIGN_PROPOSER_SYSTEM=P.GUE_DESIGN_PROPOSER_SYSTEM_2STAGE if USE_2STAGE else P.GUE_DESIGN_PROPOSER_SYSTEM
+            DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM_2STAGE if USE_2STAGE else P.GUM_DESIGN_PROPOSER_SYSTEM
             DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],DESIGN_PROPOSER_SYSTEM(GAU_BASE=GAU_BASE))
             design_proposer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_PROPOSER,context=context_design_proposer,
                                                 alias='design_proposal',note=f'Starting design proposal...')
             if i==0:
                 status_info=f'Initial design proposal...'
-                GUE_DESIGN_PROPOSAL=P.gen_GUE_DESIGN_PROPOSAL(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE)
+                GUM_DESIGN_PROPOSAL=P.gen_GUM_DESIGN_PROPOSAL(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE)
                 if USE_2STAGE:
-                    GUE_DESIGN_PROPOSAL,GUE_DESIGN_PROPOSAL_STAGE2=GUE_DESIGN_PROPOSAL
-                proposal_prompt=GUE_DESIGN_PROPOSAL(SEED=query)
-                GUE_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
+                    GUM_DESIGN_PROPOSAL,GUM_DESIGN_PROPOSAL_STAGE2=GUM_DESIGN_PROPOSAL
+                proposal_prompt=GUM_DESIGN_PROPOSAL(SEED=query)
+                GUM_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
             else:
                 status_info=f'Refining design proposal (attempt {i})...'
-                GUE_PROPOSAL_REFINEMENT=P.gen_GUE_PROPOSAL_REFINEMENT(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE)
+                GUM_PROPOSAL_REFINEMENT=P.gen_GUM_PROPOSAL_REFINEMENT(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE)
                 if USE_2STAGE:
-                    GUE_PROPOSAL_REFINEMENT,GUE_DESIGN_PROPOSAL_STAGE2=GUE_PROPOSAL_REFINEMENT
-                proposal_prompt=GUE_PROPOSAL_REFINEMENT(REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
+                    GUM_PROPOSAL_REFINEMENT,GUM_DESIGN_PROPOSAL_STAGE2=GUM_PROPOSAL_REFINEMENT
+                proposal_prompt=GUM_PROPOSAL_REFINEMENT(REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
                                                          PASS_OR_NOT='Pass' if rating>=4 else 'Fail')
-                GUE_PROPOSAL_REFINEMENT.apply(DESIGN_PROPOSER.obj)
+                GUM_PROPOSAL_REFINEMENT.apply(DESIGN_PROPOSER.obj)
             
+            ideation,instructions,search_report,search_references=None,None,None,None
             if USE_2STAGE:
                 with self.status_handler(status_info):
                     self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,proposal_prompt)
@@ -1113,11 +1088,11 @@ class GUFlowExisting(FlowCreator):
                     self.print_raw_output(out,'DESIGN_PROPOSER')
 
                 with self.status_handler('Searching from S2...'):
-                    s2_report,s2_references=self.search_proposal(main_tid,ideation,instructions)
+                    search_report,search_references=self.search_proposal(main_tid,ideation,instructions)
 
                 with self.status_handler('Generating proposal...'):
-                    proposal_prompt_stage2=GUE_DESIGN_PROPOSAL_STAGE2(GATHERED_INFO=s2_report)
-                    GUE_DESIGN_PROPOSAL_STAGE2.apply(DESIGN_PROPOSER.obj)
+                    proposal_prompt_stage2=GUM_DESIGN_PROPOSAL_STAGE2(GATHERED_INFO=search_report)
+                    GUM_DESIGN_PROPOSAL_STAGE2.apply(DESIGN_PROPOSER.obj)
                     self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,proposal_prompt_stage2)
                     _,out=self.dialog.call(design_proposer_tid,proposal_prompt_stage2)
                     selection,proposal,modelname,changes=out['selection'],out['proposal'],out['modelname'],out.get('changes',None)
@@ -1126,7 +1101,6 @@ class GUFlowExisting(FlowCreator):
                         self.stream.write(f'# Changes\n{changes}')
                     context_design_proposer=self.dialog.context(design_proposer_tid)
                     self.print_raw_output(out,'DESIGN_PROPOSER')
-
 
             else:
                 with self.status_handler(status_info):
@@ -1145,21 +1119,19 @@ class GUFlowExisting(FlowCreator):
                     self.print_raw_output(out,'DESIGN_PROPOSER')
 
 
-
-
-            PROPOSAL_REVIEWER=reload_role('proposal_reviewer',self.agents['PROPOSAL_REVIEWER'],P.GUE_PROPOSAL_REVIEWER_SYSTEM())
+            PROPOSAL_REVIEWER=reload_role('proposal_reviewer',self.agents['PROPOSAL_REVIEWER'],P.GUM_PROPOSAL_REVIEWER_SYSTEM())
             proposal_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,PROPOSAL_REVIEWER,context=context_proposal_reviewer,
                                                 alias='proposal_review',note=f'Reviewing proposal...')
             if i==0:
                 status_info=f'Reviewing initial proposal...'
-                proposal_review_prompt=P.GUE_PROPOSAL_REVIEW(
+                proposal_review_prompt=P.GUM_PROPOSAL_REVIEW(
                     SEED=query,SELECTION=selection,PROPOSAL=proposal)
-                P.GUE_PROPOSAL_REVIEW.apply(PROPOSAL_REVIEWER.obj)
+                P.GUM_PROPOSAL_REVIEW.apply(PROPOSAL_REVIEWER.obj)
             else:
                 status_info=f'Reviewing refined proposal (version {i})...'
-                proposal_review_prompt=P.GUE_PROPOSAL_REREVIEW(
+                proposal_review_prompt=P.GUM_PROPOSAL_REREVIEW(
                     SELECTION=selection,PROPOSAL=proposal,CHANGES=changes)
-                P.GUE_PROPOSAL_REREVIEW.apply(PROPOSAL_REVIEWER.obj)
+                P.GUM_PROPOSAL_REREVIEW.apply(PROPOSAL_REVIEWER.obj)
             
             with self.status_handler(status_info):
                 self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,proposal_review_prompt)
@@ -1173,19 +1145,26 @@ class GUFlowExisting(FlowCreator):
                 self.print_raw_output(out,'PROPOSAL_REVIEWER')
 
             trace={
+                # proposal content
                 'selection':selection,
+                'modelname':modelname,
                 'proposal':proposal,
+                # review process
                 'review':review,
                 'rating':rating,
+                'passed':passornot=='Pass',
                 'suggestions':suggestions,
                 'reflection':reflection,
                 'changes':changes,
+                # search process
+                'ideation':ideation,
+                'instructions':instructions,
+                'search_report':search_report,
+                'search_references':search_references,
             }
             traces.append(trace)
 
             if rating>=self.threshold['proposal_rating']:
-                self.tree=copy.deepcopy(self.tree)
-                self.tree.name=modelname
                 self.stream.write(f'#### Proposal passed with rating {rating} out of 5, starting implementation')
                 break
         
@@ -1200,45 +1179,71 @@ class GUFlowExisting(FlowCreator):
         return query,state,RET
         
 
+    def rerank_proposals(self,proposals): # now simply rank by rating, TODO: improve it
+        rerank={}
+        rank=sorted(proposals,key=lambda x:x.rating,reverse=True)
+        rerank['rank']=[proposal.modelname for proposal in rank]
+        return rerank
 
-    def select_proposal(self):
+    def reranked_proposal(self):
         # select the highest rated unimplemented proposal
-        pass
+        proposals=[]
+        rerank=self.ptree.session_get(self.design_id,'reranked')
+        if not rerank:
+            proposals=self.ptree.session_proposals(self.design_id,passed_only=True)
+            rerank=self.rerank_proposals(proposals)
+            self.ptree.session_set(self.design_id,'reranked',rerank)
+        for acronym in rerank['rank']:
+            design=self.ptree.get_design(acronym)
+            if design.implmentation is None or not design.implementation.succeed:
+                proposals.append(design.proposal)
+        return proposals
 
     @register_module(
         "PROC",
         hints="output the design stack",
-        links='self_evaluation',
+        links='end_of_design',
     )
-    def implement_proposal_recursive(self,query,state,main_tid,proposal=None,proposal_passed=None):
+    def implement_proposal_recursive(self,query,state,main_tid,proposal=None): # if provide a proposal, then design session should be taken care of manually
+        if self.mode==RunningModes.PROPOSAL_ONLY:
+            self.stream.write('Proposal only mode, skipping implementation...')
+            return query,state,{}
+        elif self.mode==RunningModes.IMPLEMENTATION_ONLY:
+            self.stream.write('Implementation only mode, will select from unimplemented passed proposals or using provided proposal if any')
+        if proposal is None:
+            proposals=self.reranked_proposal()
+        else:
+            proposals=[proposal]
+        for proposal in proposals:
+            self.stream.write(f'Implementing proposal: {proposal.modelname} with rating {proposal.rating} out of 5')
+            self.tree=copy.deepcopy(self.base_tree)
+            self.tree.name=proposal.modelname
+            cost_raw=copy.deepcopy(self.costs)
+            RETS=self._implement_proposal_recursive(main_tid,proposal)
+            costs={k:v-cost_raw[k] for k,v in self.costs.items()}
+            ROUNDS,new_unit_name,SUCCEED=RETS['ROUNDS'],RETS['new_unit_name'],RETS['SUCCEED']
+            self.ptree.implement(self.design_id,self.tree,new_unit_name,ROUNDS,SUCCEED,costs,self.design_cfg,self.user_input)
+
+        return query,state,{}
+   
+    def _implement_proposal_recursive(self,main_tid,proposal=None):
         '''
         1. Implement the selected unit first
         2. Implement any unimplemented newly declared units
         3. Do post refinement, if new units defined, go to 2, post refinement count will not be refreshed
         '''
-        if self.mode==RunningModes.PROPOSAL_ONLY:
-            self.stream.write('Proposal only mode, skipping implementation...')
-            return query,state,{'unit_designs':{},'new_name':''}
-        else: 
-            if self.mode==RunningModes.BOTH:
-                if not proposal_passed:
-                    self.stream.log(EndReasons.PROPOSAL_FAILED,'end')
-                    return query,state,{'unit_designs':{},'new_name':''}
-            else:
-                self.stream.write('Implementation only mode, will select from unimplemented proposals or using provided proposal if any')
-                if proposal is None:
-                    proposal=self.select_proposal()
 
         self.dialog=self.system.dialog
 
         RETS={}
-        RETS['/FAILED']=[]
+        RETS['ROUNDS']=[]
+        SUCCEED=False
         LOG=[]
         round=0
-        PROTECTED_UNITS=list(set(self.tree.units.keys())-set([proposal['selection']])) # the units besides the current one, they should not be *modified*, can be removed as descendants
+        PROTECTED_UNITS=list(set(self.tree.units.keys())-set([proposal.selection])) # the units besides the current one, they should not be *modified*, can be removed as descendants
         self.stream.write(f'##### Protected Units: {PROTECTED_UNITS}')
 
-        post_refinement=0
+        post_refinement=0 # TODO: introduce self-evaluate to post-refinement
         while True:
             round+=1 # Each round works on one unit at a time, start counting from beginning so that we dont wrap it in wrong place
             traces=[]
@@ -1258,20 +1263,20 @@ class GUFlowExisting(FlowCreator):
 
             ################# SELECTING THE NEXT UNIT TO WORK ON #################
 
-            DESIGN_IMPLEMENTER=reload_role('design_implementer',self.agents['DESIGN_IMPLEMENTER'],P.GUE_DESIGNER_SYSTEM(
+            DESIGN_IMPLEMENTER=reload_role('design_implementer',self.agents['DESIGN_IMPLEMENTER'],P.GUM_DESIGNER_SYSTEM(
                 GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
             design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
                                                 alias='design_implementation',note=f'Starting design implementation...')
             
             if round>1: # if round > 1, let the agent choose the next unit to work on, TODO: maybe more background about previous rounds
                 with self.status_handler('Selecting the next unit to work on...'):
-                    GUE_IMPLEMENTATION_UNIT_SELECTION=P.gen_GUE_IMPLEMENTATION_UNIT_SELECTION(
+                    GUM_IMPLEMENTATION_UNIT_SELECTION=P.gen_GUM_IMPLEMENTATION_UNIT_SELECTION(
                         IMPLEMENTED+UNIMPLEMENTED,post_refining=len(UNIMPLEMENTED)==0)
-                    gu_implementation_unit_selection_prompt=GUE_IMPLEMENTATION_UNIT_SELECTION(
-                        PROPOSAL=proposal['proposal'],REVIEW=proposal['review'],RATING=proposal['rating'],
+                    gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
+                        PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating,
                         VIEW=VIEW_DETAILED,LOG='\n'.join(LOG)
                     )
-                    GUE_IMPLEMENTATION_UNIT_SELECTION.apply(DESIGN_IMPLEMENTER.obj)
+                    GUM_IMPLEMENTATION_UNIT_SELECTION.apply(DESIGN_IMPLEMENTER.obj)
                     self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_implementation_unit_selection_prompt)
                     self.stream.write(f'{VIEW_DETAILED}\n\nNow selecting the next unit to work on...')
                     
@@ -1282,7 +1287,7 @@ class GUFlowExisting(FlowCreator):
                     self.stream.write(f'### Motivation\n{motivation}')    
                     self.stream.write(f'### Rough Plan\n{rough_plan}')
             else: # round 1, work on the selected unit
-                selection=proposal['selection']
+                selection=proposal.selection
                 termination=False
             LOG.append(f'Round {round} started. Implementing unit {selection}.')
 
@@ -1296,14 +1301,14 @@ class GUFlowExisting(FlowCreator):
             # 1. design succeeded, post refinement count reached
             if post_refinement>self.max_attemps['post_refinement']:
                 self.stream.write(f'#### All units have been implemented and maximal refinements are reached, stopping design process')
-                self.SUCCEED=True
+                SUCCEED=True
                 self.stream.log(EndReasons.MAX_POST_REFINEMENT_REACHED,'end')
                 break
             
             # 2. design succeeded, agent choose to terminate
             if termination and len(UNIMPLEMENTED)==0:
                 self.stream.write(f'#### All units have been implemented, the agent choose to terminate the design process')
-                self.SUCCEED=True
+                SUCCEED=True
                 self.stream.log(EndReasons.AGENT_TERMINATION,'end')
                 break
 
@@ -1325,7 +1330,7 @@ class GUFlowExisting(FlowCreator):
 
             tree_backup=copy.deepcopy(self.tree) # backup the tree for rollback
             for attempt in range(self.max_attemps['implementation_debug']):
-                DESIGN_IMPLEMENTER=reload_role('design_implementer',self.agents['DESIGN_IMPLEMENTER'],P.GUE_DESIGNER_SYSTEM(
+                DESIGN_IMPLEMENTER=reload_role('design_implementer',self.agents['DESIGN_IMPLEMENTER'],P.GUM_DESIGNER_SYSTEM(
                     GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
                 design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
                                                     alias='design_implementation',note=f'Starting design implementation...')
@@ -1333,32 +1338,32 @@ class GUFlowExisting(FlowCreator):
                     status_info=f'Starting design implementation of {selection}...'
                     if selection in IMPLEMENTED:
                         REFINE=True 
-                        GUE_IMPLEMENTATION_UNIT=P.gen_GUE_IMPLEMENTATION_UNIT(refine=True,begin=round==1) # first round can only be an implemented unit
+                        GUM_IMPLEMENTATION_UNIT=P.gen_GUM_IMPLEMENTATION_UNIT(refine=True,begin=round==1) # first round can only be an implemented unit
                         node=self.tree.units[selection]
                         if round>1: # round > 1, use unit implementation prompt, tree view background is already in context
-                            gu_implement_unit_prompt=GUE_IMPLEMENTATION_UNIT(
+                            gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT(
                                 SPECIFICATION=node.spec.to_prompt(),IMPLEMENTATION=node.code,REVIEW=node.review,RATING=node.rating,
                                 SUGGESTIONS=node.suggestions, CHILDREN=node.children
                             )
                         else: # round 1, use unit implementation prompt with tree view background, context is empty
-                            gu_implement_unit_prompt=GUE_IMPLEMENTATION_UNIT(
+                            gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT(
                                 SPECIFICATION=node.spec.to_prompt(),IMPLEMENTATION=node.code,REVIEW=node.review,RATING=node.rating,
                                 SUGGESTIONS=node.suggestions,VIEW=VIEW_DETAILED, CHILDREN=node.children,
-                                PROPOSAL=proposal['proposal'],PREVIEW=proposal['review'],PRATING=proposal['rating'],
+                                PROPOSAL=proposal.proposal,PREVIEW=proposal.review,PRATING=proposal.rating,
                             )
                     else:
                         REFINE=False # implement a new unit
-                        GUE_IMPLEMENTATION_UNIT=P.gen_GUE_IMPLEMENTATION_UNIT(refine=False)
+                        GUM_IMPLEMENTATION_UNIT=P.gen_GUM_IMPLEMENTATION_UNIT(refine=False)
                         declaration=self.tree.declares[selection]
-                        gu_implement_unit_prompt=GUE_IMPLEMENTATION_UNIT(DECLARATION=declaration.to_prompt())
-                    GUE_IMPLEMENTATION_UNIT.apply(DESIGN_IMPLEMENTER.obj)
+                        gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT(DECLARATION=declaration.to_prompt())
+                    GUM_IMPLEMENTATION_UNIT.apply(DESIGN_IMPLEMENTER.obj)
                 else: # Debugging or refining the implementation
                     status_info=f'Refining design implementation of {selection} (attempt {attempt})...'
                     REFINE=True
                     # if round>1: 
                     RETRY_RPOMPT=P.GU_IMPLEMENTATION_UNIT_RETRY
                     # else:
-                    #     RETRY_RPOMPT=P.GUE_IMPLEMENTATION_UNIT_REFINE
+                    #     RETRY_RPOMPT=P.GUM_IMPLEMENTATION_UNIT_REFINE
                     gu_implement_unit_prompt=RETRY_RPOMPT(
                         FORMAT_CHECKER_REPORT=FORMAT_CHECKER_REPORT,
                         FUNCTION_CHECKER_REPORT=FUNCTION_CHECKER_REPORT,
@@ -1504,37 +1509,37 @@ class GUFlowExisting(FlowCreator):
 
                 ########################### Review the implementation ###########################
                 IMPLEMENTATION_REVIEWER=reload_role('implementation_reviewer',self.agents['IMPLEMENTATION_REVIEWER'], 
-                                                    P.GUE_IMPLEMENTATION_REVIEWER_SYSTEM())
+                                                    P.GUM_IMPLEMENTATION_REVIEWER_SYSTEM())
                 implementation_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_REVIEWER,context=context_implementation_reviewer,
                                                     alias='implementation_review',note=f'Reviewing implementation...')
                 if REFINE:
                     if attempt==0:
                         status_info=f'Reviewing refinement of {selection}...'
-                        gue_implementation_unit_review_prompt=P.GUE_IMPLEMENTATION_UNIT_REFINE_REVIEW(
+                        gum_implementation_unit_review_prompt=P.GUM_IMPLEMENTATION_UNIT_REFINE_REVIEW(
                             UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
-                            CHANGES=changes,PROPOSAL=proposal['proposal'], CHECKER_REPORT=checker_report,
+                            CHANGES=changes,PROPOSAL=proposal.proposal, CHECKER_REPORT=checker_report,
                             VIEW=VIEW_DETAILED, DESCRIPTION=node.desc,REVIEW=node.review,
                             RATING=node.rating,SUGGESTIONS=node.suggestions,SPECIFICATION=node.spec.to_prompt()
                         )
-                        P.GUE_IMPLEMENTATION_UNIT_REFINE_REVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
+                        P.GUM_IMPLEMENTATION_UNIT_REFINE_REVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
                     else:
                         status_info=f'Reviewing refined implementation of {selection} (version {attempt})...'
-                        gue_implementation_unit_review_prompt=P.GUE_IMPLEMENTATION_REREVIEW(
+                        gum_implementation_unit_review_prompt=P.GUM_IMPLEMENTATION_REREVIEW(
                             UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
                             CHANGES=changes,SPECIFICATION=spec.to_prompt(), CHECKER_REPORT=checker_report
                         )
-                        P.GUE_IMPLEMENTATION_REREVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
+                        P.GUM_IMPLEMENTATION_REREVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
                 else: # first attempt of a new unit
                     status_info=f'Reviewing implementation of {selection}...'
-                    gue_implementation_unit_review_prompt=P.GUE_IMPLEMENTATION_UNIT_REVIEW(
-                        UNIT_NAME=selection,PROPOSAL=proposal['proposal'],REVIEW=proposal['review'],
-                        RATING=proposal['rating'],VIEW=VIEW_DETAILED,SPECIFICATION=spec.to_prompt(),
+                    gum_implementation_unit_review_prompt=P.GUM_IMPLEMENTATION_UNIT_REVIEW(
+                        UNIT_NAME=selection,PROPOSAL=proposal.proposal,REVIEW=proposal.review,
+                        RATING=proposal.rating,VIEW=VIEW_DETAILED,SPECIFICATION=spec.to_prompt(),
                         ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,CHECKER_REPORT=checker_report,
                     )
-                    P.GUE_IMPLEMENTATION_UNIT_REVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
+                    P.GUM_IMPLEMENTATION_UNIT_REVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
                 with self.status_handler(status_info):
-                    self.print_details(IMPLEMENTATION_REVIEWER.obj,context_implementation_reviewer,gue_implementation_unit_review_prompt)
-                    _,out=self.dialog.call(implementation_reviewer_tid,gue_implementation_unit_review_prompt)
+                    self.print_details(IMPLEMENTATION_REVIEWER.obj,context_implementation_reviewer,gum_implementation_unit_review_prompt)
+                    _,out=self.dialog.call(implementation_reviewer_tid,gum_implementation_unit_review_prompt)
                     review,rating,suggestions=out['review'],out['rating'],out['suggestions']
                     context_implementation_reviewer=self.dialog.context(implementation_reviewer_tid)
                     passornot='Accept' if rating>3 else 'Reject'
@@ -1597,79 +1602,57 @@ class GUFlowExisting(FlowCreator):
             if not succeed:
                 self.stream.write(f'#### Implementation failed, trying the next unit')
                 RET={
+                    'round':round,
+                    'succeed':False,
                     'unit_design':design,
                     'unit_design_traces':traces,
                 }
-                RETS['/FAILED'].append(RET)
+                RETS['ROUNDS'].append(RET)
                 self.failed_rounds+=1
                 LOG.append(f'Round {round} finished. Failed to implement unit {selection}.')
             else:
                 RET={
+                    'round':round,
+                    'succeed':True,
                     'unit_design':design,
                     'unit_design_traces':traces,
                 }
-                RETS[selection]=RET
+                RETS['ROUNDS'].append(RET)
                 LOG.append(f'Round {round} finished. Successfully implemented unit {selection}.')
                 if NEW_DECLARED:
                     LOG.append(f'Newly declared units in Round {round}: {NEW_DECLARED}.')
                 
-
         ########################### Design finished ###########################  
         # self.tree.rename_unit(proposal['selection'],NEWNAME)
         self.tree.clear_disconnected() 
-
-        
-        return query,state,{'unit_designs':RETS,'new_name':NEWNAME}
-
-    @register_module(
-        "PROC",
-        hints="output the designs",
-        links='end_of_design',
-    )
-    def self_evaluation(self,query,state,main_tid):
-        # self evaluate then maybe redesign but the units can be reused
-        self.dialog=self.system.dialog
-
-        # TODO
-
-        return query,state,{}
-
-
+        RETS['new_unit_name']=NEWNAME
+        RETS['SUCCEED']=SUCCEED
+        return RETS
+    
     
     @register_module(
         "EXIT",
         hints="output the initial threads",
     )
-    def end_of_design(self,query,state,proposal,proposal_traces,proposal_passed,unit_designs,new_name):
+    def end_of_design(self,query,state):
 
-        design_stack={
-            'proposal':proposal,
-            'proposal_traces':proposal_traces,
-            'unit_designs':unit_designs,
-            'new_name':new_name,
-        }
-        RET={
-            'design_stack':design_stack,
-            'costs':self.costs,
-            'succeed':self.SUCCEED,
-        }
+        # nothing to do here, as the ptree is already updated
 
-        return query,state,RET
+        return query,state,{}
 
-def gu_design_existing(system,instruct,stream,status_handler,seed,ptree,session_id,references=None,design_cfg={},proposal=None):
-    query=P.build_GUE_QUERY(seed,references,instruct)
-    tree = seed.tree
+def gu_design_mutation(system,stream,design_id,design_cfg,user_input='',proposal=None):
     main_tid = system.dialog.fork(0,note='Starting a new session...',alias='main')
-    gu_flow = GUFlowExisting(system, status_handler,stream,tree,ptree,session_id,design_cfg)
+    status_handler = stream.status
+    gu_flow = GUFlowMutation(system, status_handler,stream,design_id,design_cfg,user_input)
     GU_CALLEE = ROLE('GAB Unit Designer',gu_flow.flow)
-    gue_tid = system.dialog.fork(main_tid,SYSTEM_CALLER,GU_CALLEE,note=f'launch design flow',alias=f'gu_design')
-    _,ret=system.dialog.call(gue_tid,query,main_tid=main_tid,proposal=proposal) 
-    costs=ret['costs']
-    succeed=ret['succeed']
-    design_stack=ret['design_stack']
-    new_tree=gu_flow.tree
-    new_name=design_stack['new_name']
-    return new_tree,new_name,design_stack,costs,succeed
+    gum_tid = system.dialog.fork(main_tid,SYSTEM_CALLER,GU_CALLEE,note=f'launch design flow',alias=f'gu_mutate')
+    system.dialog.call(gum_tid,'',main_tid=main_tid,proposal=proposal) 
+
+    # costs=ret['costs']
+    # succeed=ret['succeed']
+    # design_stack=ret['design_stack']
+    # new_tree=gu_flow.tree
+    # new_name=design_stack['new_name']
+    # return new_tree,new_name,design_stack,costs,succeed
 
 # endregion
-

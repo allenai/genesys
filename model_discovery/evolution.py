@@ -52,7 +52,7 @@ from typing import (
     Optional,
     Union
 )
-from .system import BuildSystem,PrintSystem
+from .system import BuildSystem,PrintSystem,DesignModes
 from exec_utils.factory import _check_config
 from exec_utils import BuildSystem as NativeBuild
 from exec_utils.aliases import ConfigType
@@ -261,87 +261,216 @@ class LibraryReference1hop(LibraryReference):
         # else:
         return 'Reference1hop'
 
+# @dataclass
+# class DesignArtifact(NodeObject):
+#     code: str
+#     rawcode: str
+#     explain: str
+#     scale: str
+#     summary: str
+#     instruct: str
+#     ratings: dict
+#     reviews: dict
+#     session_id: str # store the agent design process
+#     verify_report: dict = None
+#     check_results: dict = None
+
+#     def save(self,db_dir: str):
+#         U.mkdir(U.pjoin(db_dir,self.acronym))
+#         U.save_json(self.to_dict(),U.pjoin(db_dir,self.acronym,"artifact.json"))
+#         with open(U.pjoin(db_dir,self.acronym,"gab.py"),'w', encoding='utf-8') as f:
+#             f.write(self.code)
+#         with open(U.pjoin(db_dir,self.acronym,"explaination.md"),'w', encoding='utf-8') as f:
+#             f.write(self.explain)
+#         if self.instruct:
+#             with open(U.pjoin(db_dir,self.acronym,"instruct.md"),'w', encoding='utf-8') as f:
+#                 f.write(self.instruct)
+#         with open(U.pjoin(db_dir,self.acronym,"summary.md"),'w', encoding='utf-8') as f:
+#             f.write(self.summary)
+#         with open(U.pjoin(db_dir,self.acronym,"reviews.md"),'w', encoding='utf-8') as f:
+#             f.write(self.get_reviews())
+#         if self.check_results:
+#             U.save_json(self.check_results,U.pjoin(db_dir,self.acronym,"check_results.json"))
+        
+#     @classmethod
+#     def load(cls, db_dir: str, id:str) -> DesignArtifact:
+#         obj = cls.from_dict(U.load_json(U.pjoin(db_dir,id,"artifact.json")))
+#         report_dir=U.pjoin(db_dir,'..','ve',id,'report.json')
+#         if U.pexists(report_dir):
+#             obj.verify_report=U.load_json(report_dir)
+#         return obj
+
+
+#     def to_desc(self) -> str:
+#         title=self.title.replace(':',' ')
+#         summary=self.summary.replace(':',' ')
+
+#         # Split the summary into parts: code blocks and non-code blocks
+#         code_block_pattern = re.compile(r'(```python[\s\S]*?```)', re.MULTILINE)
+#         numbered_list_pattern = re.compile(r'(\d+\.\s[^\n]*\n)', re.MULTILINE)
+#         parts = re.split(r'(```python[\s\S]*?```|\d+\.\s[^\n]*\n)', summary)
+
+#         # Replace colons in the non-code block parts
+#         for i in range(len(parts)):
+#             if not code_block_pattern.match(parts[i]) and not numbered_list_pattern.match(parts[i]):
+#                 parts[i] = parts[i].replace('.', '.\n').replace(';', ';\n').replace('?', '?\n').replace('!', '!\n').replace(',', '\n')
+
+#         # Join the parts back together
+#         summary = ''.join(parts)
+#         mdtext=f'# {title} ({self.scale})\n\n{summary}\n\n## Rating\n{self.rating} out of 5'
+#         return mdtext.replace('e.\ng.\n','e.g.').replace('i.\ne.\n','i.e.')
+    
+#     def get_reviews(self):
+#         review_ratings=''
+#         for idx, style in enumerate(self.reviews):
+#             review=self.reviews[style]
+#             rating=self.ratings[style]
+#             review_ratings+=f'# Review of Reviewer {idx+1} ({style}):\n\n{review}\n\n## Rating: {rating} out of 5\n\n'
+#         return review_ratings
+
+#     def to_prompt(self):
+#         scale=self.scale
+#         config:GAMConfig=eval(f'GAMConfig_{scale}()')
+#         config_str=config.to_prompt()
+#         prompt=f'## Title: {self.title}\n## Acronym: {self.acronym}\n\n## Code:\n\n{self.rawcode}\n\n## Justification:\n\n{self.explain}'
+#         prompt+=f'\\## Config and Reference:\n\n{config_str}\n\n'
+#         prompt+=self.get_reviews()
+#         if self.check_results:
+#             prompt+=f"## Effectiveness:\n\n{json.dumps(self.check_results['effectiveness'],indent=4)}\n\n"
+#         if self.verify_report:
+#             report=report_reader(self.verify_report)
+#             prompt+=f'## Report:\n\n{json.dumps(report,indent=4)}\n\n'
+#         return prompt
+
+
+
+
+@dataclass
+class Proposal:
+    selection:str
+    modelname:str
+    proposal:str
+    review:str
+    rating:int
+    passed:bool
+    suggestions:str
+    reflection:str
+    changes:str
+    ideation:str
+    instructions:str
+    search_report:str
+    search_references:str
+    traces: List[Dict]
+    costs: Dict[str, float]
+    design_cfg: Dict[str, Any]
+    user_input: str
+
+    def save(self, design_dir: str):
+        U.save_json(self.to_dict(), U.pjoin(design_dir, f'proposal.json'))
+
+    @classmethod
+    def load(cls, design_dir: str):
+        if not U.pexists(U.pjoin(design_dir, 'proposal.json')):
+            return None
+        return cls.from_dict(U.load_json(U.pjoin(design_dir, 'proposal.json')))
+
+
+@dataclass
+class ImplementationAttempt:
+    succeed: bool
+    new_unit_name: str
+    rounds: int
+    costs: Dict[str, float]
+    tree: GAUTree
+    design_cfg: Dict[str, Any]
+    user_input: str
+
+@dataclass
+class Implementation:
+    succeed: bool
+    new_unit_name: str
+    implementation: GAUTree
+    history: List[ImplementationAttempt]
+    # TODO:consider gaudict management
+
+    def save(self, design_dir: str):
+        U.save_json(self.to_dict(), U.pjoin(design_dir, f'implementation.json'))
+
+    @classmethod
+    def load(cls, design_dir: str):
+        if not U.pexists(U.pjoin(design_dir, 'implementation.json')):
+            return None
+        return cls.from_dict(U.load_json(U.pjoin(design_dir, 'implementation.json')))
+    
+    def get_cost(self):
+        costs={}
+        for attempt in self.history:
+            for k,v in attempt.costs.items():
+                if k not in costs:
+                    costs[k]=0
+                costs[k]+=v
+        return costs
+
+@dataclass
+class Verification:
+    scale: str
+    verification_report: str
+    verification_passed: bool
+
+    def save(self, design_dir: str):
+        U.save_json(self.to_dict(), U.pjoin(design_dir, f'verification.json'))
+
+    @classmethod
+    def load(cls, dir: str):
+        return cls.from_dict(U.load_json(dir))
+
 @dataclass
 class DesignArtifact(NodeObject):
-    code: str
-    rawcode: str
-    explain: str
-    scale: str
-    summary: str
-    instruct: str
-    ratings: dict
-    reviews: dict
-    session_id: str # store the agent design process
-    verify_report: dict = None
-    check_results: dict = None
-
-    def save(self,db_dir: str):
-        U.mkdir(U.pjoin(db_dir,self.acronym))
-        U.save_json(self.to_dict(),U.pjoin(db_dir,self.acronym,"artifact.json"))
-        with open(U.pjoin(db_dir,self.acronym,"gab.py"),'w', encoding='utf-8') as f:
-            f.write(self.code)
-        with open(U.pjoin(db_dir,self.acronym,"explaination.md"),'w', encoding='utf-8') as f:
-            f.write(self.explain)
-        if self.instruct:
-            with open(U.pjoin(db_dir,self.acronym,"instruct.md"),'w', encoding='utf-8') as f:
-                f.write(self.instruct)
-        with open(U.pjoin(db_dir,self.acronym,"summary.md"),'w', encoding='utf-8') as f:
-            f.write(self.summary)
-        with open(U.pjoin(db_dir,self.acronym,"reviews.md"),'w', encoding='utf-8') as f:
-            f.write(self.get_reviews())
-        if self.check_results:
-            U.save_json(self.check_results,U.pjoin(db_dir,self.acronym,"check_results.json"))
-        
+    design_id: str # design session id
+    proposal: Proposal
+    implementation: Implementation = None # find by modelname/id
+    verifications: Dict[str, Verification] = {} # find by modelname/id
+    
+    @property
+    def stage(self) -> str:
+        if self.verifications:
+            return 'Verified'
+        elif self.implementation:
+            if self.implementation.succeed:
+                return 'Implemented'
+            else:
+                return 'ImplementationFailed'
+        elif self.proposal:
+            if self.proposal.passed:
+                return 'Proposed'
+            else:
+                return 'ProposalFailed'
+            
     @classmethod
-    def load(cls, db_dir: str, id:str) -> DesignArtifact:
-        obj = cls.from_dict(U.load_json(U.pjoin(db_dir,id,"artifact.json")))
-        report_dir=U.pjoin(db_dir,'..','ve',id,'report.json')
-        if U.pexists(report_dir):
-            obj.verify_report=U.load_json(report_dir)
-        return obj
-
-
-    def to_desc(self) -> str:
-        title=self.title.replace(':',' ')
-        summary=self.summary.replace(':',' ')
-
-        # Split the summary into parts: code blocks and non-code blocks
-        code_block_pattern = re.compile(r'(```python[\s\S]*?```)', re.MULTILINE)
-        numbered_list_pattern = re.compile(r'(\d+\.\s[^\n]*\n)', re.MULTILINE)
-        parts = re.split(r'(```python[\s\S]*?```|\d+\.\s[^\n]*\n)', summary)
-
-        # Replace colons in the non-code block parts
-        for i in range(len(parts)):
-            if not code_block_pattern.match(parts[i]) and not numbered_list_pattern.match(parts[i]):
-                parts[i] = parts[i].replace('.', '.\n').replace(';', ';\n').replace('?', '?\n').replace('!', '!\n').replace(',', '\n')
-
-        # Join the parts back together
-        summary = ''.join(parts)
-        mdtext=f'# {title} ({self.scale})\n\n{summary}\n\n## Rating\n{self.rating} out of 5'
-        return mdtext.replace('e.\ng.\n','e.g.').replace('i.\ne.\n','i.e.')
-    
-    def get_reviews(self):
-        review_ratings=''
-        for idx, style in enumerate(self.reviews):
-            review=self.reviews[style]
-            rating=self.ratings[style]
-            review_ratings+=f'# Review of Reviewer {idx+1} ({style}):\n\n{review}\n\n## Rating: {rating} out of 5\n\n'
-        return review_ratings
-
+    def load(cls, design_dir: str):
+        metadata = U.load_json(U.pjoin(design_dir, 'metadata.json'))
+        proposal = Proposal.load(design_dir)
+        if proposal is None:
+            return None
+        implementation = Implementation.load(design_dir)
+        verifications = {}
+        for scale in os.listdir(U.pjoin(design_dir,'verifications')):
+            dir = U.pjoin(design_dir,'verifications',f'{scale}.json')
+            if U.pexists(dir):
+                verifications[scale] = Verification.load(dir)
+        return cls(proposal=proposal, implementation=implementation, verifications=verifications, **metadata)
+            
     def to_prompt(self):
-        scale=self.scale
-        config:GAMConfig=eval(f'GAMConfig_{scale}()')
-        config_str=config.to_prompt()
-        prompt=f'## Title: {self.title}\n## Acronym: {self.acronym}\n\n## Code:\n\n{self.rawcode}\n\n## Justification:\n\n{self.explain}'
-        prompt+=f'\\## Config and Reference:\n\n{config_str}\n\n'
-        prompt+=self.get_reviews()
-        if self.check_results:
-            prompt+=f"## Effectiveness:\n\n{json.dumps(self.check_results['effectiveness'],indent=4)}\n\n"
-        if self.verify_report:
-            report=report_reader(self.verify_report)
-            prompt+=f'## Report:\n\n{json.dumps(report,indent=4)}\n\n'
-        return prompt
-    
+        raise NotImplementedError('to_prompt is not implemented yet for DesignArtifact, TODO')
+
+    def get_cost(self):
+        costs=self.proposal.costs
+        if self.implementation:
+            icosts=self.implementation.get_cost()
+            costs={k:v+icosts[k] for k,v in costs.items()}
+        # TODO: maybe rerank, selection, etc. cost
+        return costs
+
 
 def write_dot(G, path):
     """Write NetworkX graph G to Graphviz dot format on path.
@@ -363,6 +492,27 @@ def write_dot(G, path):
 
 class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     # Read from a design base and construct a phylogenetic tree
+    """
+    Physical structure:
+    db_dir
+    ├── designs
+    │   ├── acronym
+    |   |   ├── metadata.json
+    │   │   ├── proposal.json
+    │   │   ├── implementation.json
+    │   │   ├── verifications
+    │   │   │   ├── scale.json
+    │   │   │   └── ...
+    │   └── ...
+    ├── sessions
+    │   ├── design_id
+    │   │   ├── metadata.json
+    │   │   ├── log
+    │   │   │   ├── stream.log
+    │   │   │   └── ...
+    │   └── ...
+    | ... # units, etc.
+    """
     def __init__(self, db_dir: str):
         self.G = nx.DiGraph()
         self.db_dir = db_dir
@@ -370,48 +520,144 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         self.lib_ext_dir = U.pjoin(LIBRARY_DIR,'tree_ext')
         self.design_sessions = {}
         U.mkdir(db_dir)
+        U.mkdir(U.pjoin(db_dir,'designs'))
+        U.mkdir(U.pjoin(db_dir,'sessions'))
         self.load()
-
-    # def new_design(self, artifact_dict: dict):
-    #     artifact = DesignArtifact.from_dict(artifact_dict)
-    #     acronym = self.unique_acronym(artifact.acronym)
-    #     artifact.acronym = acronym
-    #     artifact.save(self.db_dir)
-    #     self.G.add_node(acronym, data=artifact)
-    #     for seed_id in artifact.seed_ids:
-    #         self.G.add_edge(seed_id, acronym)
 
     # new design: proposal -> implement -> verify
 
     def load_design_sessions(self):
-        for design_id in os.listdir(self.db_dir):
-            metadata = U.load_json(U.pjoin(self.db_dir, design_id, 'metadata.json'))
+        for design_id in os.listdir(U.pjoin(self.db_dir,'sessions')):
+            metadata = U.load_json(U.pjoin(self.session_dir(design_id), 'metadata.json'))
             self.design_sessions[design_id] = metadata
+
+    @property
+    def design_cost(self):
+        costs=0
+        designs=self.filter_by_type('DesignArtifact')
+        for design in designs:
+            costs+=sum(self.get_node(design).get_cost().values())
+        return costs
 
     # How to handle variants? i.e., in GPT, there are optional pre-conv and post-conv, maybe just all of them to the tree, let selector to choose
 
-    def new_design(self, seed_ids, ref_ids, instruct, mode='existing'): # new design session, a session explore the steps from a selected node
+    def new_design(self, seed_ids, ref_ids, instruct, mode=DesignModes.MUTATION): # new design session, a session explore the steps from a selected node
         # generate unique hash for the design, do not consider the order
         design_id = hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode}".encode()).hexdigest()
-        metadata = {
+        sessdata = {
             'seed_ids': seed_ids,
             'ref_ids': ref_ids,
             'instruct': instruct,
             'mode': mode,
             'proposed': [],
-            'implemented': [],
-            'verified': [],
+            'reranked': {},
         }
-        self.design_sessions[design_id] = metadata
-        U.save_json(metadata, U.pjoin(self.db_dir, design_id, 'metadata.json'))
-        U.mkdir(U.pjoin(self.db_dir,design_id,'log'))
+        self.design_sessions[design_id] = sessdata
+        U.save_json(sessdata, U.pjoin(self.session_dir(design_id), 'metadata.json'))
+        U.mkdir(U.pjoin(self.session_dir(design_id), 'log'))
         return design_id
+    
+    def get_gau_tree(self,acronym:str):
+        node=self.get_node(acronym)
+        if node.type=='ReferenceCoreWithTree':
+            tree=node.tree
+            return tree
+        elif node.type=='DesignArtifact':
+            tree=node.implementation.tree
+            return tree
+        else:
+            return None 
+    
+    def get_session_input(self,design_id:str):
+        sessdata=self.design_sessions[design_id]
+        seeds=[self.get_node(seed_id) for seed_id in sessdata['seed_ids']]
+        refs=[self.get_node(ref_id) for ref_id in sessdata['ref_ids']]
+        return seeds,refs,sessdata['instruct']
+    
+    def session_dir(self, design_id: str):
+        return U.pjoin(self.db_dir, 'sessions', design_id)
+    
+    def session_get(self,design_id:str,key:str):
+        return self.design_sessions[design_id].get(key)
 
-    def proposal(self, design_id: str, proposal): # create a proposal node, should include also agent info, etc.
-        pass
+    def session_set(self,design_id:str,key:str,value):
+        self.design_sessions[design_id][key]=value
+        self.save_session(design_id)
+    
+    def design_dir(self, acronym: str):
+        return U.pjoin(self.db_dir, 'designs', acronym)
+    
+    def get_node(self, acronym: str):
+        return self.G.nodes[acronym]['data']
+    
+    def get_unfinished_designs(self):
+        unfinished_designs = []
+        for design_id in self.design_sessions:
+            sessdata=self.design_sessions[design_id]
+            num_samples=sessdata['design_cfg']['num_samples']
+            passed = self.session_proposals(design_id,passed_only=True)
+            implemented = self.session_implementations(design_id,succeed_only=True)
+            if sum(passed)<num_samples['proposal'] or \
+                sum(implemented)<num_samples['implementation']:
+                unfinished_designs.append(design_id)
+        return unfinished_designs
+    
+    def session_proposals(self,design_id:str,passed_only=False):
+        sessdata=self.design_sessions[design_id]
+        designs = [self.get_node(acronym) for acronym in sessdata['proposed']]
+        proposals = [design.proposal for design in designs]
+        if passed_only:
+            proposals = [proposal for proposal in proposals if proposal.passed]
+        return proposals
+    
+    def session_implementations(self,design_id:str,succeed_only=False):
+        sessdata=self.design_sessions[design_id]
+        designs = [self.get_node(acronym) for acronym in sessdata['proposed']]
+        implementations = [design.implementation for design in designs if design.implementation is not None]
+        if succeed_only:
+            implementations = [implementation for implementation in implementations if implementation.succeed]
+        return implementations
 
-    def implement(self, design_id: str, implementation): # update a proposal node with implementation
-        pass
+    def propose(self, design_id: str, proposal,proposal_traces,costs,design_cfg,user_input): # create a new design artifact
+        sessdata=self.design_sessions[design_id]
+        seeds=sessdata['seed_ids']
+        proposal['traces']=proposal_traces
+        proposal['costs']=costs
+        proposal['design_cfg']=design_cfg
+        proposal['user_input']=user_input
+        proposal = Proposal(**proposal)
+        title = f'{proposal.modelname}: Refinement of {seeds} by improving {proposal.selection}'
+        for line in proposal.proposal.split("\n"):
+            if line.startswith("# "):
+                title = line[2:]
+                break
+        acronym = self.unique_acronym(proposal.modelname)
+        proposal.modelname = acronym
+        metadata = {'design_id': design_id, 'acronym': acronym, 'seed_ids': seeds, 'title': title}
+        U.save_json(metadata, U.pjoin(self.session_dir(design_id), 'metadata.json'))
+        proposal.save(self.session_dir(design_id))
+        design_artifact = DesignArtifact(design_id=design_id, acronym=acronym, seed_ids=seeds, title=title, proposal=proposal)
+        self.G.add_node(acronym, data=design_artifact)
+        self.design_sessions[design_id]['proposed'].append(acronym)
+        self.save_session(design_id)
+
+    def save_session(self,design_id: str):
+        sessdata=self.design_sessions[design_id]
+        U.save_json(sessdata, U.pjoin(self.session_dir(design_id), 'metadata.json'))
+
+    def implement(self, design_id: str, tree,new_unit_name,ROUNDS,SUCCEED,costs,design_cfg,user_input): # update a proposal node with implementation
+        design_artifact=self.get_node(design_id)
+        implementation=design_artifact.implementation
+        attempt=ImplementationAttempt(succeed=SUCCEED, new_unit_name=new_unit_name, rounds=ROUNDS, costs=costs, tree=tree, design_cfg=design_cfg, user_input=user_input)
+        if implementation is None:
+            implementation=Implementation(succeed=SUCCEED, new_unit_name=new_unit_name, implementation=tree, history=[attempt])
+        else:
+            implementation.succeed=SUCCEED
+            implementation.implementation=tree
+            implementation.new_unit_name=new_unit_name
+            implementation.history.append(attempt)
+        implementation.save(self.design_dir(design_id))
+        design_artifact.implementation=implementation
 
     def verify(self, design_id: str, scale: str, verification_report): # attach a verification report under a scale to an implemented node
         pass
@@ -456,8 +702,8 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             
     def load(self):
         edges_to_add = []
-        for id in os.listdir(self.db_dir):
-            artifact = DesignArtifact.load(self.db_dir, id)
+        for id in os.listdir(U.pjoin(self.db_dir,'designs')):
+            artifact = DesignArtifact.load(self.design_dir(id))
             self.G.add_node(artifact.acronym, data=artifact)
             for seed_id in artifact.seed_ids:
                 edges_to_add.append((seed_id, artifact.acronym))
@@ -485,6 +731,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             self.G.add_edge(seed_id, product_id)
         
         self.remove_redundant_edges()
+        self.load_design_sessions()
         
 
     def viz(self,G,height=5000,width="100%",layout=False,max_nodes=None): # larger canvas may be needed for large trees
@@ -617,6 +864,7 @@ class EvolutionSystem(exec_utils.System):
         U.mkdir(self.evo_dir)
 
         self.select_method=self.params['select_method']
+        self.design_budget_limit=int(self.params.get('design_budget',0)) # 0 means unlimited, cost save in evo tree
 
         # load or init the state
         self.state=self.load_state() # load the state by evoname
@@ -628,7 +876,6 @@ class EvolutionSystem(exec_utils.System):
         if 'current_scale' not in self.state:
             self.state['current_scale']=0
         if 'budgets' not in self.state: # remaining budget for each scale
-            self.state['budgets']={}
             budget=1
             for scale in self.state['scales'][::-1]:
                 self.state['budgets'][scale]=int(np.ceil(budget))
@@ -680,83 +927,50 @@ class EvolutionSystem(exec_utils.System):
     def save_state(self):
         U.save_json(self.state,U.pjoin(self.evo_dir,'state.json'))
 
-    # def run(self): 
-    #     """ Run the scale-climbing evolution """
-    #     raise NotImplementedError("This method is not implemented for multi-gpu yet")
-    #     while self.evolve():
-    #         self.verify()
 
-    # def _run(self,mode):
-    #     if mode=='evolve':
-    #         self.stream.write('\n\n'+'+'*50)
-    #         self.stream.write("RUNNING IN EVOLUTION MODE...\n\n")
-    #         ret=self.evolve()
-    #         if ret is None:
-    #             self.stream.write("No budget left for the evolution")
-    #             time.sleep(1)
-    #         else:
-    #             self.stream.write(f"Design {ret} sampled")
-    #     elif mode=='verify':
-    #         self.stream.write('\n\n'+'x'*50)
-    #         self.stream.write("RUNNING IN VERIFICATION MODE...\n\n")
-    #         ret=self.verify()
-    #         if ret is None:
-    #             self.stream.write("No unverified design left")
-    #             time.sleep(1)
-    #         else: 
-    #             self.stream.write(f"Design {ret} verified")
-
-    # def evolve(self): # run a single evolution step unless no budget left
-    #     scale_id=self.state['current_scale']
-    #     if scale_id>=len(self.state['scales']): # no scale left
-    #         self.stream.write("No scale left")
-    #         return None
-    #     scale=self.state['scales'][scale_id]
-    #     budget=self.state['budgets'][scale]
-    #     if budget==0: 
-    #         self.state['current_scale']+=1 # Will influence the sampling distribution
-    #         self.save_state()
-    #         return self.evolve()
-    #     else:
-    #         return self._evolve(scale_id)
-            
-
-    # def _evolve(self,scale_id): # do evolve that produce one design and operate the phylogenetic tree
-    #     raise NotImplementedError("Just run design")
-       
-    #     K=np.random.choice([1,2,3],p=[1,0,0])
-    #     instruct,seed,refs=self.select(K) # use the seed_ids to record the phylogenetic tree
-
-    #     artifact=self.sample(instruct,metadata) # NOTE: maybe randomly jump up or down to next scale? How to use the budget more wisely?
-    #     if artifact is None:
-    #         self.stream.write("No design sampled")
-    #         return True # no design sampled, continue
-    #     # save the design to the phylogenetic tree and update the budget
-    #     seed,references=metadata['seed'],metadata['references']
-    #     artifact['seed_ids']=[seed.acronym for seed in seed]
-    #     artifact['references']=[reference.acronym for reference in references]
-    #     self.ptree.new_design(artifact)
-    #     scale=self.state['scales'][scale_id]
-    #     self.state['budgets'][scale]-=1
-    #     # self.state['unverified'].append(artifact['acronym'])
-    #     self.save_state() # NOTE!!!: handle it carefully in multi-threading
-    #     self.ptree.export()
-    #     return artifact['acronym']
-    
-    def _evolve(self): # each time do one step, agent choose what to do, use shell to run it continuously 
+    def check_budget(self,action):
+        if action=='design': # check the design budget
+            if self.design_budget_limit>0 and self.ptree.design_cost>=self.design_budget_limit:
+                return False
+        elif action=='verify':
+            if sum(self.state['budgets'].values())<=0:
+                return False
+        else:
+            raise ValueError(f"Invalid action: {action}")
+        return True
+        
+    def evolve(self): # each time do one step, agent choose what to do, use shell to run it continuously 
+        if not self.check_budget('design') and not self.check_budget('verify'):
+            self.stream.write(f"No budget for design and verify, evolution stops, system sleeps, please terminate manually")
+            time.sleep(1e9)
+            return
         act=random.choice(['design','verify'])
+        if not self.check_budget(act):
+            self.stream.write(f"No budget for {act}, will do another action")
+            act='design' if act=='verify' else 'verify'
+
         if act=='design':
-            self.design()
+            self.design() # FIXME: it needs to be updated with actual selector and design cfg
         elif act=='verify':
             self.verify()
 
-    def design(self): # select then sample
-        raise NotImplementedError("Select then Sample")
-        instruct,seed,refs=self.select(n_sources,mode=_mode) # use the seed_ids to record the phylogenetic tree
-        self.sample(instruct,seed,refs,design_id=None,mode='existing',user_input='',design_cfg=self.design_cfg)
+    # TODO: the interface should be updated when selector agent is ready, and design cfg is ready
+    def design(self,n_sources,design_cfg,user_input='',design_id=None,mode=DesignModes.MUTATION): # select then sample, TODO: n_sources and design_cfg should be configed
+        # user_input and design_cfg maybe changed by the user, so we need to pass them in
+        unfinished_designs = self.ptree.get_unfinished_designs()
+        if design_id is None:
+            if len(unfinished_designs)==0:
+                instruct,seed,refs=self.select(n_sources,mode=mode) # use the seed_ids to record the phylogenetic tree
+                self.sample(instruct,seed,refs,mode=mode,user_input=user_input,design_cfg=design_cfg)
+            else:
+                design_id = random.choice(unfinished_designs)
+                self.stream.write(f"There are {len(unfinished_designs)} unfinished designs, restore session {design_id}")
+                self.sample(design_id=design_id,user_input=user_input,design_cfg=design_cfg) # should not change the design_cfg
+        else:
+            self.stream.write(f"Design id provided, will restore session {design_id}")
+            self.sample(design_id=design_id,user_input=user_input,design_cfg=design_cfg)
 
-
-    def sample(self,instruct=None,seed:List[NodeObject]=None,refs:List[NodeObject]=None,design_id=None,mode='existing',user_input='',design_cfg={}):
+    def sample(self,instruct=None,seed:List[NodeObject]=None,refs:List[NodeObject]=None,design_id=None,mode=DesignModes.MUTATION,user_input='',design_cfg={}):
         """ 
         Sample a design at a given scale and verify it 
         
@@ -766,52 +980,13 @@ class EvolutionSystem(exec_utils.System):
 
         Selector choose which seeds to use, and budget for verification
         Given the seeds which direct the global direction, the agent system should be fully responsible for the best local move
-        
-        1. create a new session, each session focusing a local area determined by select (instruct, seed, refs)
         """
 
-        # 1. create or retrieve a new session
-        if design_id is None: # if provided, then its resuming a session
-            assert seed is None and refs is None and instruct is None, "Must provide seed, refs, and instruct to create a new design"
-            seed_ids = [seed.acronym for seed in seed]
-            ref_ids = [ref.acronym for ref in refs]
-            design_id=self.ptree.new_design(seed_ids, ref_ids, instruct)
-        else: # resuming a session
-            self.stream.write(f"Resuming design session: {design_id}")
+        self.rnd_agent(user_input,instruct,seed,refs,design_id,self.stream,design_cfg,mode)
 
-        # 2. run the design session, all taken care of by the agent, it will grow the ptree
-        self.rnd_agent(user_input,design_id,stream=self.stream,mode=mode,design_cfg=design_cfg)  # instruct should have a type
-        
-        # if response is None: # no design sampled
-        #     return None
-        # title,rawcode,explain,summary,autocfg,reviews,ratings,check_results=response
-        # for i in [' and ',' for ','-']:
-        #     title=title.replace(i,' ')
-        # acronym=''.join([i[0].upper() for i in title.split(' ') if i.isalpha()])
-
-        # # modify the code to fit the block registry
-        # # TODO: change the registry name to acronyms
-        # code=rawcode+f'\n\n\n{autocfg}\nblock_config=gab_config\nblock_config.update(autoconfig)'
-        # code+='\n\n\nfrom .block_registry import BlockRegister\n\nBlockRegister(\n    name="default",\n    config=block_config\n)(GAB)'
-
-        # artifact={
-        #     'title':title,
-        #     'session_id':session_id,
-        #     'acronym':acronym,
-        #     'code':code,
-        #     'rawcode':rawcode,
-        #     'explain':explain,
-        #     'instruct':instruct,
-        #     'summary':summary,
-        #     'reviews':reviews,
-        #     'ratings':ratings,
-        #     'check_results':check_results,
-        # }
-        # return artifact
-    
 
     # TODO: upgrade to Selector agent
-    def select(self,K: Union[int,Dict[str,int]],selector_instruct='',mode='existing')->Tuple[str,List[NodeObject]]:
+    def select(self,K: Union[int,Dict[str,int]],selector_instruct='',mode=DesignModes.MUTATION)->Tuple[str,List[NodeObject]]:
         '''
         K: int or dict of {source_type: num of seeds}, if K is int, then sample from all default sources (the ones with code)
         Return:
@@ -827,7 +1002,7 @@ class EvolutionSystem(exec_utils.System):
                 _instruct,topk=self._select(num,selector_instruct,source_type)
                 instruct+=_instruct # NOTE: should not like this
                 seeds.extend(topk)
-        if mode=='existing':
+        if mode==DesignModes.MUTATION:
             seed_types = ['DesignArtifact','ReferenceCoreWithTree']
             seed = [i for i in seeds if i.type in seed_types] # NOTE: need improve 
             refs = [i for i in seeds if i.type not in seed_types]
@@ -837,10 +1012,12 @@ class EvolutionSystem(exec_utils.System):
                 refs = [i for i in seeds if i.acronym!=seed.acronym]
             else:
                 seed = seeds[0]
-        elif mode=='scratch':
+        elif mode==DesignModes.SCRATCH:
             seed_types = ['DesignArtifact','ReferenceCoreWithTree','ReferenceWithCode']
             seed = [i for i in seeds if i.type in seed_types]
             refs = [i for i in seeds if i.type not in seed_types]
+        elif mode==DesignModes.CROSSOVER:
+            raise NotImplementedError("TODO: do it in future")
         return instruct,seed,refs
 
     def _select(self,K: int=1,selector_instruct='',
@@ -885,6 +1062,11 @@ class EvolutionSystem(exec_utils.System):
         topk=random.sample(self.ptree.filter_by_type(filter_type),K)
         return self.nodes2data(topk)
     
+    def choose(self):
+        """ Choose a move, select a design to verify """
+        raise NotImplementedError
+
+
     def verify(self): # choose then verify
         raise NotImplementedError("Need update")    
         designed=os.listdir(U.pjoin(self.evo_dir,'db'))
@@ -972,6 +1154,7 @@ def test_evolve(test_name,step=False):
         "scales=14M,31M,70M",
         "selection_ratio=0.25",
         "select_method=random",
+        "design_budget=0",
     ]
     evolution_system = BuildEvolution(
         strparams=';'.join(strparams),
@@ -990,6 +1173,7 @@ if __name__ == '__main__':
         "scales=14M,31M,70M",
         "selection_ratio=0.25",
         "select_method=random",
+        "design_budget=0",
     ]
 
     args = ve_parser.parse_args()
@@ -1004,7 +1188,7 @@ if __name__ == '__main__':
 
     test_evolve('test_evo_004',step=True)
 
-
+ 
 #     code_MHA='''
 # # gab.py
 

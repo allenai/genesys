@@ -159,3 +159,11 @@ def get_factory_kwargs():
         dtype=torch.float16
     return {"device": device, "dtype": dtype}
 
+
+def safe_get_cfg_dict(cfg,key,default):
+    _dict=cfg.get(key,default) 
+    _cfg_dict={}
+    for k,v in default.items():
+        _cfg_dict[k]=_dict.get(k,v)
+    return _cfg_dict
+

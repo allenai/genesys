@@ -29,7 +29,7 @@ from exec_utils import (
 from .agents.roles import *
 from .agents.flow.alang import AgentDialogManager,AgentDialogFlowNaive,ALangCompiler,SYSTEM_CALLER,FAILED,ROLE
 from .agents.flow.naive_flows import design_flow_definition,review_naive,design_naive,naive_design_review
-from .agents.flow.gau_flows import gu_design_scratch,gu_design_existing,EndReasons
+from .agents.flow.gau_flows import gu_design_scratch,gu_design_mutation,DesignModes,RunningModes
 
 # from .evolution import NodeObject
 
@@ -207,26 +207,17 @@ class CustomParams(exec_utils.ModuleParams):
     )
 
 
-def get_context_info(config,templated=False) -> Tuple[str,str]:
-    """Grabs the block and model implementation details for the prompt 
-
-    :param config: 
-        The global configuration 
-    :raises: ValueError 
-
-    """
-    if not os.path.isfile(config.block_template):
-        raise ValueError(f'Cannot find the block template: {config.block_template}')
-    if templated:
-        config.gam_template = config.gam_template.replace('.py','_templated.py')
-    if not os.path.isfile(config.gam_template):
-        raise ValueError(f'Cannot find the code context')
-    block = open(config.block_template).read()
-    code = open(config.gam_template).read()
-    
-    return (block,code) 
-
 class NaiveHandler: 
+    def __init__(self,message,*args,**kwargs):
+        self.message = message
+
+    def __enter__(self):
+        print(f'\n[START: {self.message}]\n')
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(f'\n[FINISH: {self.message}]\n')
+
+class NaiveSpinner:
     def __init__(self,message,*args,**kwargs):
         self.message = message
 
@@ -258,11 +249,35 @@ class StatusHandlerWrapper:
 
         return WrappedHandler(message, self.log_function, *args, **kwargs)
     
+class SpinnerWrapper:
+    def __init__(self, spinner_class, log_function):
+        self.spinner_class = spinner_class
+        self.log_function = log_function
+
+    def __call__(self, message, *args, **kwargs):
+        class WrappedSpinner:
+            def __init__(cls, message, log_function, *args, **kwargs):
+                cls.message = message
+                cls.log_function = log_function
+                cls.original_spinner = self.spinner_class(message, *args, **kwargs)
+
+            def __enter__(cls):
+                cls.log_function(cls.message, 'enter')
+                return cls.original_spinner.__enter__()
+
+            def __exit__(cls, exc_type, exc_val, exc_tb):
+                cls.log_function(cls.message, 'exit')
+                return cls.original_spinner.__exit__(exc_type, exc_val, exc_tb)
+
+        return WrappedSpinner(message, self.log_function, *args, **kwargs)
+    
+
 class PrintSystem:
     def __init__(self,config):
         self.jupyter = config.jupyter   
         self._isprintsystem = True
         self.status = NaiveHandler
+        self.spinner = NaiveSpinner
     
     def write(self,msg,**kwargs):
         print(msg)
@@ -270,12 +285,16 @@ class PrintSystem:
     def markdown(self,msg,**kwargs):
         print(msg)
 
+
 class StreamWrapper:
     def __init__(self,stream,log_file):
         self.stream=stream
         self.log_file=log_file
         self._log=[]
+        if U.pexists(self.log_file):
+            self._log=eval(U.read_file(self.log_file))
         self.status = StatusHandlerWrapper(stream.status, self.log)
+        self.spinner = SpinnerWrapper(stream.spinner, self.log)
     
     def log(self,msg,type):
         self._log.append((datetime.datetime.now(),msg,type))
@@ -378,7 +397,7 @@ class ModelDiscoverySystem(exec_utils.System):
 
         # New flows for production
         self.design_fn_scratch=gu_design_scratch
-        self.design_fn_existing=gu_design_existing
+        self.design_fn_mutation=gu_design_mutation
 
     def bind_ptree(self,ptree): # need to bind a tree before start working
         self.ptree = ptree
@@ -392,30 +411,29 @@ class ModelDiscoverySystem(exec_utils.System):
             'claude3.5_sonnet':self.claude.config
         }
 
-    def new_session(self,log_dir,stream):
-        U.mkdir(log_dir)
-        self.log_dir = log_dir
-        log_file = os.path.join(log_dir,'stream.log')
+    def new_session(self,design_id,stream):
+        self.log_dir = U.pjoin(self.ptree.session_dir(design_id), 'log')
+        log_file = U.pjoin(self.log_dir,'stream.log')
         self.sess_state = {} 
-        self.dialog = AgentDialogManager(log_dir,self.get_system_info(),stream)
+        self.dialog = AgentDialogManager(self.log_dir,self.get_system_info(),stream)
         design_stream = StreamWrapper(stream,log_file)
         return design_stream
 
     def query_system(
         self,
-        query: Optional[str] = '',  # will be recoginized as additional user query
-        design_id: Optional[str] = None, # a full design session raised by the evo system, a session is a "local" space over the tree
+        user_input='',
+        instruct=None,
+        seed=None,
+        refs=None,
+        design_id=None,
         stream: Optional[ModuleType] = None,
-        frontend: Optional[bool] = False,
-        status: Optional[bool] = True,
         design_cfg = {},
-        mode='existing',
+        mode=DesignModes.MUTATION,
+        proposal=None, # implementation only mode, directly implement a proposal, experimental
         **kwargs
     ) -> list:
         """Main function for implementing system calls.
 
-        :param query: 
-            The query to the overall system. It should be an instruct or hint from the upper evo system or the user
         :param stream: 
             The (optional) streamlit module for writing to frontend 
         :param frontend: 
@@ -426,21 +444,71 @@ class ModelDiscoverySystem(exec_utils.System):
         """
 
         assert self.ptree is not None, 'Phylogenetic tree is not initialized, please bind a tree first'
+        
         if stream is None: # and self._config.debug_steps:
             stream = PrintSystem(self._config)
-        design_handler = stream.status if stream and status else NaiveHandler
-        log_dir=U.pjoin(self.ptree.db_dir,'log',session_id)
-        design_stream=self.new_session(log_dir,stream)
-        mode, seed, references = metadata['mode'], metadata['seed'], metadata['references'] # find it from session
-        metainfo = {'design_cfg':design_cfg,'mode':mode}
-        U.save_json(metainfo,U.pjoin(log_dir,'metainfo.json'))
-        instruct=query
-        if mode=='scratch': 
-            raise NotImplementedError('Scratch mode is not stable and not updated, do not use it')
-            RET = self.design_fn_scratch(self,instruct,design_stream,design_handler,seed,references)
-        elif mode=='existing':
-            RET = self.design_fn_existing(self,instruct,design_stream,design_handler,seed,self.ptree,session_id,references,design_cfg)
-        return RET
+
+        DEFAULT_AGENTS={
+            'DESIGN_PROPOSER':'claude3.5_sonnet',
+            'PROPOSAL_REVIEWER':'claude3.5_sonnet',
+            'DESIGN_IMPLEMENTER':'claude3.5_sonnet',
+            'IMPLEMENTATION_REVIEWER':'claude3.5_sonnet',
+            'SEARCH_ASSISTANT':'gpt4o_mini',
+        }
+        DEFAULT_MAX_ATTEMPTS={
+            'design_proposal':10,
+            'implementation_debug':7,
+            'post_refinement':5,
+            'max_search_rounds':10,
+        }
+        DEFAULT_TERMINATION={
+            'max_failed_rounds':3,
+            'max_total_budget':0, # 0 means no limit
+            'max_debug_budget':2,
+        }
+        DEFAULT_THRESHOLD={
+            'proposal_rating':4,
+            'implementation_rating':3,
+        }
+        DEFAULT_SEARCH_SETTINGS={
+            'proposal_search':True,
+            'proposal_review_search':True,
+            'search_for_papers_num':10,
+        }
+        DEFAULT_MODE=RunningModes.BOTH
+        DEFAULT_NUM_SAMPLES={
+            'proposal':1,
+            'implementation':1,
+        }
+        
+        design_cfg['max_attemps']=U.safe_get_cfg_dict(design_cfg,'max_attemps',DEFAULT_MAX_ATTEMPTS)
+        design_cfg['agent_types']=U.safe_get_cfg_dict(design_cfg,'agent_types',DEFAULT_AGENTS)
+        design_cfg['termination']=U.safe_get_cfg_dict(design_cfg,'termination',DEFAULT_TERMINATION)
+        design_cfg['threshold']=U.safe_get_cfg_dict(design_cfg,'threshold',DEFAULT_THRESHOLD)
+        design_cfg['search_settings']=U.safe_get_cfg_dict(design_cfg,'search_settings',DEFAULT_SEARCH_SETTINGS)
+        design_cfg['running_mode']=U.safe_get_cfg_dict(design_cfg,'running_mode',DEFAULT_MODE)
+        design_cfg['num_samples']=U.safe_get_cfg_dict(design_cfg,'num_samples',DEFAULT_NUM_SAMPLES)
+
+        # 1. create or retrieve a new session
+        if design_id is None: # if provided, then its resuming a session
+            assert seed is None and refs is None and instruct is None, "Must provide seed, refs, and instruct to create a new design"
+            seed_ids = [seed.acronym for seed in seed]
+            ref_ids = [ref.acronym for ref in refs]
+            design_id=self.ptree.new_design(seed_ids, ref_ids, instruct, mode)
+        else: # resuming a session
+            stream.write(f"Restoring design session: {design_id}")
+            mode=self.ptree.session_get(design_id,'mode')
+        
+        design_stream=self.new_session(design_id,stream)
+        if mode==DesignModes.MUTATION:
+            self.design_fn_mutation(self,design_stream,design_id,design_cfg,user_input,proposal)
+        elif mode==DesignModes.SCRATCH:
+            raise NotImplementedError('Scratch mode is unstable, do not use it')
+            self.design_fn_scratch(self,design_stream,design_id)
+        elif mode==DesignModes.CROSSOVER:
+            raise NotImplementedError('Crossover mode is not implemented')
+        else:
+            raise ValueError(f'Invalid design mode: {mode}')
 
 
     @classmethod
@@ -491,17 +559,12 @@ class ModelDiscoverySystem(exec_utils.System):
             agent_model_type="claude_agent"
         )
         
-        ### get the model information for context
-        block, code = get_context_info(config,templated=cfg.use_template)
-        
         return cls(
             designer,
             # reviewers,
             checker,
             debugger,
             claude,
-            block_template=block,
-            gam_template=code,
             config=config,
         )
 

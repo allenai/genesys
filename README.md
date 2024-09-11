@@ -133,24 +133,50 @@ sh run_demo.sh
    2. Will Z still preserve all args?
 
 
-# ALG NEW
+# Model Discovery Algorithm
 
-ALG 1 Evolve
-    T0<-Library
-    for t in t_max:
-        T_t+1=do(choose(design,verify),Tt)
+Assumptions:
+1. Cost of verification >> sampling where in the sampling process, the cost of implementation > proposal
+2. The verification process can asymptotically reflect the distance to the optimum or alternatively the improvements
+3. High-quality samples (designs chosen to verify) can increase the convergence of the evolution process
+4. LLM thinking depth correlated to total output lengths in a dialog for producing one sample
+5. LLM agent can asymptotically produce a high-quality sample after a dialog with probability p
+6. More assumptions for the selector... TODO
 
-ALG 2 Design(Tt) -> T_t+1 # grow the tree, show more possible moves
-    select(D in Tt)->n
-    sample(n)->Ds->T_t+1
+ALG 1 Evolve(empty) -> Tt 
+    init(library)->T0
+    while budget>0: # design and verify budgets
+        decide(design,verify)->action
+        action(Tt)->T_t+1
 
-ALG 3 Verify(Tt) -> T_t+1 # make a move, reveal a node under one scale
-    pick(D in Tt)->d # ranking all Ds 
-    verify(d,s)->D^s->T_t+1 # choose a scale s 
+ALG 2 Design(Tt) -> T_t+1 # grow the tree, explore more possible moves (D)
+    if design_budget>0:
+        select(all D and core refs in Tt)->n
+        sample(n)->Ds,cost
+        Tt.append(Ds)->T_t+1
+        design_budget-=cost
+
+ALG 3 Verify(Tt) -> T_t+1 # make a move from explored possible moves (D)
+    choose(all D in Tt)->d,s # s is scale
+    if verify_budget[s]>0:  
+        verify(d,s)->d^s
+        Tt.update(d,d^s)->T_t+1 # update a design with verification under scale s
+        verify_budget[s]-=1
+        optimize(selector,T_t+1)->selector'
 
 ALG 4 Sample(n) -> Ds
-    for i in Ns:
-        propose(n)->Ps # assume implementation does not help proposal, as implementation is mostly translating proposal from NL to code
-    for i in Ni: 
-        implement(Ps)->Ds # decide later by ranking all Ps, we assume implementer follow overall idea of the proposal, but with some details modified if necessary
+    Ps=[]
+    for i in range(Np): 
+        propose(n)->Pi
+        Tt.add(Pi)
+        Ps.append(Pi)
+    Ps'=Rerank(Ps)
+    Ds=[]
+    for i in range(Ni): 
+        implement(Ps'[i])->Di
+        Ds.append(Di)
+    return Ds
+
+ALG 5 Select(Tt) -> T_t+1
+    TODO...
 

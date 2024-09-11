@@ -1406,17 +1406,17 @@ GU_IMPLEMENTATION_UNIT_RETRY= AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL
 '''
 ###################################################################################################
 ##                                                                                               ##
-## GU Design from existing design prompts                                                        ##
+## GU Mutate from existing design prompts                                                        ##
 ##                                                                                               ##
 ###################################################################################################
 '''
 
 
-# All start with GUE_
+# All start with GUM_
 
 
 
-def build_GUE_QUERY(seed,references=None,instruct=None):
+def build_GUM_QUERY(seed,refs=None,instruct=None,user_input=None):
    query = f"""
 # Seed Design
 
@@ -1428,7 +1428,7 @@ You are tasked with improving the following seed design:
 
 ---
 """
-   if references is not None:
+   if refs is not None:
       query += '''
 # References
 
@@ -1445,30 +1445,32 @@ Here are the relevant references:
 
 ---
 '''
-      for idx,reference in enumerate(references):
+      for idx,reference in enumerate(refs):
          query += f"\nReference {idx} from library {reference.type}:\n{reference.to_prompt()}\n\n---\n"
    if instruct:
       query += f"\nHere are some additional instructions that may help you:\n{instruct}\n\n---\n"
+   if user_input:
+      query += f"\nHere are the instructions from the user, please follow them:\n{user_input}\n\n---\n"
    return query
 
 
 '''
 #######################################################
-# GUE Design from Exisitng Proposal Prompts
+# GUM Design from Exisitng Proposal Prompts
 #######################################################
 '''
 
 
 
-""" ============================= GUE Designer Exisitng Proposal System Prompt ========================================== """
+""" ============================= GUM Designer Exisitng Proposal System Prompt ========================================== """
 
 
 
-#region GUE Proposal System Prompt
+#region GUM Proposal System Prompt
 
 
 
-GUE_DESIGN_PROPOSER_SYSTEM_prompt = """
+GUM_DESIGN_PROPOSER_SYSTEM_prompt = """
 You are a researcher tasked with proposing a novel autoregressive language model (LM) block design. Modern LMs are typically structured as a stack of repeating blocks. Each block processes:
 
 1. **Input**: A sequence of embeddings \(X\) of shape \((B, L, D)\), where:
@@ -1549,7 +1551,7 @@ Once you have submitted your proposal, it will be reviewed. If necessary, you wi
 
 """
 
-GUE_DESIGN_PROPOSER_SYSTEM_2STAGE_prompt = GUE_DESIGN_PROPOSER_SYSTEM_prompt + """
+GUM_DESIGN_PROPOSER_SYSTEM_2STAGE_prompt = GUM_DESIGN_PROPOSER_SYSTEM_prompt + """
 ## Two-Stage Process for Proposal Development
 
 To enhance the proposal development process, you should follow a structured two-stage approach:
@@ -1613,8 +1615,8 @@ Remember, the goal is to produce a novel, well-researched, and practically feasi
 """
 
 
-GUE_DESIGN_PROPOSER_SYSTEM = AgentPrompt(GUE_DESIGN_PROPOSER_SYSTEM_prompt)
-GUE_DESIGN_PROPOSER_SYSTEM_2STAGE = AgentPrompt(GUE_DESIGN_PROPOSER_SYSTEM_2STAGE_prompt)
+GUM_DESIGN_PROPOSER_SYSTEM = AgentPrompt(GUM_DESIGN_PROPOSER_SYSTEM_prompt)
+GUM_DESIGN_PROPOSER_SYSTEM_2STAGE = AgentPrompt(GUM_DESIGN_PROPOSER_SYSTEM_2STAGE_prompt)
 
 
 # endregion
@@ -1623,25 +1625,25 @@ GUE_DESIGN_PROPOSER_SYSTEM_2STAGE = AgentPrompt(GUE_DESIGN_PROPOSER_SYSTEM_2STAG
 """ ============================= Give analysis proposal ===================================== """
 
 
-# region GUE Give analysis first 
+# region GUM Give analysis first 
 
 
 
-def gen_GUE_DESIGN_PROPOSAL(SELECTIONS:list[str],two_stage:bool=False):
+def gen_GUM_DESIGN_PROPOSAL(SELECTIONS:list[str],two_stage:bool=False):
    
    SelectionEnum=generate_enum_from_list('selection',SELECTIONS)
 
-   class GUE_DESIGN_PROPOSAL_STAGE1_format(BaseModel):
+   class GUM_DESIGN_PROPOSAL_STAGE1_format(BaseModel):
       ideation: str = Field(..., description="The initial ideation about the direction of how to improve the seed design.")
       instructions: str = Field(..., description="The instructions for the information gathering assistant.")
 
-   class GUE_DESIGN_PROPOSAL_STAGE2_format(BaseModel):
+   class GUM_DESIGN_PROPOSAL_STAGE2_format(BaseModel):
       proposal: str = Field(..., description="The full proposal, keep the format instructions.")
       selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
       modelname: str = Field(..., description="The name of the variant of the model you are going to design.")
 
    if two_stage:
-      GUE_DESIGN_PROPOSAL_stage1_prompt = """
+      GUM_DESIGN_PROPOSAL_stage1_prompt = """
 {SEED}
 
 Based on the provided seed design and references, please:
@@ -1652,7 +1654,7 @@ Based on the provided seed design and references, please:
 4. Prepare clear instructions for the information gathering assistant.
       """
 
-      GUE_DESIGN_PROPOSAL_stage2_prompt = """
+      GUM_DESIGN_PROPOSAL_stage2_prompt = """
 The information gathering assistant has gathered the information for you, here is the information:
 
 {GATHERED_INFO}
@@ -1666,18 +1668,18 @@ Using the gathered information and your initial ideation as well as the provided
 5. Justify your design choices and explain expected improvements.
       """
 
-      prompt1=AgentPrompt(GUE_DESIGN_PROPOSAL_stage1_prompt,GENERAL_JSON_parser,GUE_DESIGN_PROPOSAL_STAGE1_format)
-      prompt2=AgentPrompt(GUE_DESIGN_PROPOSAL_stage2_prompt,GENERAL_JSON_parser,GUE_DESIGN_PROPOSAL_STAGE2_format)
+      prompt1=AgentPrompt(GUM_DESIGN_PROPOSAL_stage1_prompt,GENERAL_JSON_parser,GUM_DESIGN_PROPOSAL_STAGE1_format)
+      prompt2=AgentPrompt(GUM_DESIGN_PROPOSAL_stage2_prompt,GENERAL_JSON_parser,GUM_DESIGN_PROPOSAL_STAGE2_format)
       return prompt1,prompt2
 
    else:
-      GUE_DESIGN_PROPOSAL_prompt = """
+      GUM_DESIGN_PROPOSAL_prompt = """
 {SEED}
 
 Check the seed design, then give your proposal and the selection of the GAU to modify follow the instructions.
 """
 
-      return AgentPrompt(GUE_DESIGN_PROPOSAL_prompt,GENERAL_JSON_parser,GUE_DESIGN_PROPOSAL_STAGE2_format)
+      return AgentPrompt(GUM_DESIGN_PROPOSAL_prompt,GENERAL_JSON_parser,GUM_DESIGN_PROPOSAL_STAGE2_format)
 
 
 # endregion
@@ -1687,13 +1689,13 @@ Check the seed design, then give your proposal and the selection of the GAU to m
 
 
 
-""" ============================= GUE Proposal Reviewer System ===================================== """
+""" ============================= GUM Proposal Reviewer System ===================================== """
 
 
-# region GUE Proposal Reviewer System
+# region GUM Proposal Reviewer System
 
 
-GUE_PROPOSAL_REVIEWER_SYSTEM_prompt = """
+GUM_PROPOSAL_REVIEWER_SYSTEM_prompt = """
 
 You are an expert in autoregressive language model research, and you have been asked to review a proposal for improving the design of an autoregressive language model (LM) block.
 
@@ -1756,19 +1758,19 @@ Provide a **rating** based on how well the design meets the criteria above. The 
 
 # a rating of 4 or above is required to pass. # do not let agent know
 
-GUE_PROPOSAL_REVIEWER_SYSTEM = AgentPrompt(GUE_PROPOSAL_REVIEWER_SYSTEM_prompt)
+GUM_PROPOSAL_REVIEWER_SYSTEM = AgentPrompt(GUM_PROPOSAL_REVIEWER_SYSTEM_prompt)
 
 # endregion
 
 
 
-""" ============================= GUE Proposal Review ===================================== """
+""" ============================= GUM Proposal Review ===================================== """
 
 
-# region GUE Proposal Review 
+# region GUM Proposal Review 
 
 
-GUE_PROPOSAL_REVIEW_prompt = """
+GUM_PROPOSAL_REVIEW_prompt = """
 You have been provided with an existing design of an autoregressive language model block that the designer intends to modify:
 
 **Current Design**:
@@ -1799,42 +1801,42 @@ Please evaluate the design in the proposal based on its **technical merits**. Yo
 Be objective, strict, and fair. Approve the proposal only if it meets high standards of quality. A proposal should not pass unless it is well-designed and offers clear value.
 """
 
-class GUE_PROPOSAL_REVIEW_format(BaseModel):
+class GUM_PROPOSAL_REVIEW_format(BaseModel):
    review: str = Field(..., description="The review of the proposal.")
    rating: float = Field(..., description="A float number between 0 and 5.")
    suggestions: str = Field(..., description="The suggestions for clarification, correction, or additional information.")
 
-GUE_PROPOSAL_REVIEW = AgentPrompt(GUE_PROPOSAL_REVIEW_prompt,GENERAL_JSON_parser,GUE_PROPOSAL_REVIEW_format)   
+GUM_PROPOSAL_REVIEW = AgentPrompt(GUM_PROPOSAL_REVIEW_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_format)   
 
 # endregion
 
 
 
 
-""" ============================= GUE Proposal Refinement ===================================== """
+""" ============================= GUM Proposal Refinement ===================================== """
 
 
 # region GU Proposal Refinement
 
 
-def gen_GUE_PROPOSAL_REFINEMENT(SELECTIONS:list[str],two_stage:bool=False): 
+def gen_GUM_PROPOSAL_REFINEMENT(SELECTIONS:list[str],two_stage:bool=False): 
 
    SelectionEnum=generate_enum_from_list('selection',SELECTIONS)
 
 
    if two_stage:
-      class GUE_PROPOSAL_REFINEMENT_STAGE1_format(BaseModel):
+      class GUM_PROPOSAL_REFINEMENT_STAGE1_format(BaseModel):
          reflection: str = Field(..., description="The reflection based on the review, rating, and suggestions.")
          ideation: str = Field(..., description="The updated ideation about the direction of how to improve the seed design.")
          instructions: str = Field(..., description="The instructions for the information gathering assistant.")
 
-      class GUE_PROPOSAL_REFINEMENT_STAGE2_format(BaseModel):
+      class GUM_PROPOSAL_REFINEMENT_STAGE2_format(BaseModel):
          proposal: str = Field(..., description="The fall proposal, keep the format instructions.")
          selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
          modelname: str = Field(..., description="The name of the variant of the model you are going to design.")
          changes: str = Field(..., description="The summary of the changes you made.") 
 
-      GUE_PROPOSAL_REFINEMENT_STAGE1_prompt = """
+      GUM_PROPOSAL_REFINEMENT_STAGE1_prompt = """
 Your proposal has been reviewed by an expert. Please carefully consider the following feedback:
 
 ---
@@ -1865,7 +1867,7 @@ Based on this feedback, please refine your proposal by following these steps:
 Focus on addressing the expert's concerns while maintaining the innovative aspects of your original proposal. Be specific, thorough, and consider both theoretical improvements and practical implementation.
       """
 
-      GUE_PROPOSAL_REFINEMENT_STAGE2_prompt = """
+      GUM_PROPOSAL_REFINEMENT_STAGE2_prompt = """
 The information gathering assistant has provided the following information based on your instructions:
 
 ---
@@ -1900,19 +1902,19 @@ Using this new information, along with your updated ideation and the original se
 Ensure your refined proposal is comprehensive, well-justified, and directly addresses all points raised in the expert review. Strive for a balance between innovation and addressing the practical concerns highlighted in the feedback.
       """
 
-      prompt1=AgentPrompt(GUE_PROPOSAL_REFINEMENT_STAGE1_prompt,GENERAL_JSON_parser,GUE_PROPOSAL_REFINEMENT_STAGE1_format)
-      prompt2=AgentPrompt(GUE_PROPOSAL_REFINEMENT_STAGE2_prompt,GENERAL_JSON_parser,GUE_PROPOSAL_REFINEMENT_STAGE2_format)
+      prompt1=AgentPrompt(GUM_PROPOSAL_REFINEMENT_STAGE1_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REFINEMENT_STAGE1_format)
+      prompt2=AgentPrompt(GUM_PROPOSAL_REFINEMENT_STAGE2_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REFINEMENT_STAGE2_format)
       return prompt1,prompt2
 
    else:
-      class GUE_PROPOSAL_REFINEMENT_format(BaseModel):
+      class GUM_PROPOSAL_REFINEMENT_format(BaseModel):
          reflection: str = Field(..., description="The reflection based on the review, rating, and suggestions.")
          proposal: str = Field(..., description="The fall proposal, keep the format instructions.")
          selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
          modelname: str = Field(..., description="The name of the variant of the model you are going to design.")
          changes: str = Field(..., description="The summary of the changes you made.") 
 
-      GUE_PROPOSAL_REFINEMENT_prompt = """
+      GUM_PROPOSAL_REFINEMENT_prompt = """
       Your proposal has been reviewed and rated by the expert, here is the feedback:
 
       {REVIEW}
@@ -1927,19 +1929,19 @@ Ensure your refined proposal is comprehensive, well-justified, and directly addr
       instructions, finally, a summary of the changes you made.
       """
 
-      return AgentPrompt(GUE_PROPOSAL_REFINEMENT_prompt,GENERAL_JSON_parser,GUE_PROPOSAL_REFINEMENT_format)
+      return AgentPrompt(GUM_PROPOSAL_REFINEMENT_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REFINEMENT_format)
 
 # endregion
 
 
 
-""" ============================= GUE Proposal Rereview ===================================== """
+""" ============================= GUM Proposal Rereview ===================================== """
 
 
-# region GUE Proposal rereview 
+# region GUM Proposal rereview 
 
 
-GUE_PROPOSAL_REREVIEW_prompt = """
+GUM_PROPOSAL_REREVIEW_prompt = """
 The designer has modified the proposal based on your previous review. Below is the refined version for your reconsideration:
 
 **Proposal**:
@@ -1966,7 +1968,7 @@ Be strict and objective. Approve the proposal only if it meets the necessary sta
 """
 
 
-GUE_PROPOSAL_REREVIEW = AgentPrompt(GUE_PROPOSAL_REREVIEW_prompt,GENERAL_JSON_parser,GUE_PROPOSAL_REVIEW_format)
+GUM_PROPOSAL_REREVIEW = AgentPrompt(GUM_PROPOSAL_REREVIEW_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_format)
 
 # endregion
 
@@ -1978,7 +1980,7 @@ GUE_PROPOSAL_REREVIEW = AgentPrompt(GUE_PROPOSAL_REREVIEW_prompt,GENERAL_JSON_pa
 
 '''
 #######################################################
-# GUE Proposal Search Assistant Prompt
+# GUM Proposal Search Assistant Prompt
 #######################################################
 '''
 
@@ -2158,19 +2160,19 @@ S2_SEARCH_PROPOSAL_RESPONSE = AgentPrompt(S2_SEARCH_PROPOSAL_RESPONSE_prompt,GEN
 
 '''
 #######################################################
-# GUE Implementation System Prompt
+# GUM Implementation System Prompt
 #######################################################
 '''
 
 
-""" ============================= GUE Design Implementer System ===================================== """
+""" ============================= GUM Design Implementer System ===================================== """
 
 
 # region GU Design Implementer System
 
 
 # About GAB
-GUE_DESIGNER_SYSTEM_prompt_part1 = """
+GUM_DESIGNER_SYSTEM_prompt_part1 = """
 You are a researcher designing a new autoregressive language model (LM). Modern
 LMs are typically structured as a stack of repeating blocks. Each block accepts: 
 
@@ -2204,7 +2206,7 @@ better overall performance with more data and larger models.
 """
 
 # About GAU
-GUE_DESIGNER_SYSTEM_prompt_part2 = """
+GUM_DESIGNER_SYSTEM_prompt_part2 = """
 ## Generalized Autoregressive Units 
 
 To design this block, you break it down into smaller components called
@@ -2250,7 +2252,7 @@ root unit and may themselves be composed of nested child units.
 """
 
 # About the role  
-GUE_DESIGNER_SYSTEM_prompt_part3 = """
+GUM_DESIGNER_SYSTEM_prompt_part3 = """
 
 ### Instructions for the Design Process
 
@@ -2320,7 +2322,7 @@ The system will handle placeholders for declared child GAUs by generating empty 
 """
 
 
-GUE_DESIGNER_SYSTEM_prompt_part4 = """
+GUM_DESIGNER_SYSTEM_prompt_part4 = """
 ## Guidelines for Designing the GAU:
 
 1. **Class Naming & Structure**:
@@ -2387,11 +2389,11 @@ GUE_DESIGNER_SYSTEM_prompt_part4 = """
 """
 
 
-GUE_DESIGNER_SYSTEM_prompt=GUE_DESIGNER_SYSTEM_prompt_part1+GUE_DESIGNER_SYSTEM_prompt_part2+\
-   GUE_DESIGNER_SYSTEM_prompt_part3+GUE_DESIGNER_SYSTEM_prompt_part4
+GUM_DESIGNER_SYSTEM_prompt=GUM_DESIGNER_SYSTEM_prompt_part1+GUM_DESIGNER_SYSTEM_prompt_part2+\
+   GUM_DESIGNER_SYSTEM_prompt_part3+GUM_DESIGNER_SYSTEM_prompt_part4
 
 
-GUE_DESIGNER_SYSTEM = AgentPrompt(GUE_DESIGNER_SYSTEM_prompt)
+GUM_DESIGNER_SYSTEM = AgentPrompt(GUM_DESIGNER_SYSTEM_prompt)
 
 
 
@@ -2404,20 +2406,20 @@ GUE_DESIGNER_SYSTEM = AgentPrompt(GUE_DESIGNER_SYSTEM_prompt)
 
 '''
 #######################################################
-# GUE Implementation nodes Prompts
+# GUM Implementation nodes Prompts
 #######################################################
 '''
 
 
 
-""" ============================= GUE Implementation Unit Selection ===================================== """
+""" ============================= GUM Implementation Unit Selection ===================================== """
 
 
-# region GUE Implementation Unit Selection
+# region GUM Implementation Unit Selection
 
 
-def gen_GUE_IMPLEMENTATION_UNIT_SELECTION(SELECTIONS,post_refining=False):
-   GUE_IMPLEMENTATION_UNIT_SELECTION_prompt = """
+def gen_GUM_IMPLEMENTATION_UNIT_SELECTION(SELECTIONS,post_refining=False):
+   GUM_IMPLEMENTATION_UNIT_SELECTION_prompt = """
 ####  Overall Proposal for Refining the Design:
 {PROPOSAL}
 
@@ -2455,38 +2457,38 @@ Below is a tree of the GAUs that compose the language model (LM) block and the d
 
    SelectionEnum=generate_enum_from_list('selection',SELECTIONS)
 
-   class GUE_IMPLEMENTATION_UNIT_SELECTION_format(BaseModel):
+   class GUM_IMPLEMENTATION_UNIT_SELECTION_format(BaseModel):
       selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
       motivation: str = Field(..., description="The motivation for the selection.")
       rough_plan: str = Field(..., description="The rough plan for implementing the selected GAU.")
       termination: bool = Field(..., description="Whether to terminate the design process.")
 
    if post_refining:
-      GUE_IMPLEMENTATION_UNIT_SELECTION_prompt+=(
+      GUM_IMPLEMENTATION_UNIT_SELECTION_prompt+=(
          '\n\nYou have implemented all the unimplemented GAUs, you can choose to terminate the design process if you think the design is complete. '
          'You should continue refining the design only if you have more ideas to improve the design and there must be concrete changes to the design. '
          'So, please also include the reason for you to continue the design process in your motivation. '
          'And in adition, please provide a plan for the changes you will make in your rough plan.'
       )
-   return AgentPrompt(GUE_IMPLEMENTATION_UNIT_SELECTION_prompt,GENERAL_JSON_parser,GUE_IMPLEMENTATION_UNIT_SELECTION_format)
+   return AgentPrompt(GUM_IMPLEMENTATION_UNIT_SELECTION_prompt,GENERAL_JSON_parser,GUM_IMPLEMENTATION_UNIT_SELECTION_format)
 
 # endregion
 
 
 
 
-""" ============================= GUE Implementation Unit ===================================== """
+""" ============================= GUM Implementation Unit ===================================== """
 
 
-# region GUE Implementation Unit
+# region GUM Implementation Unit
 
 
 
 
-def gen_GUE_IMPLEMENTATION_UNIT(refine=False,begin=False):
+def gen_GUM_IMPLEMENTATION_UNIT(refine=False,begin=False):
 
    if refine:
-      GUE_IMPLEMENTATION_UNIT_prompt = """
+      GUM_IMPLEMENTATION_UNIT_prompt = """
 Below is the specification for the GAU you need to refine:
 
 **Specification**: {SPECIFICATION}
@@ -2537,10 +2539,10 @@ each of them as a child GAU. Do not make a single unit overly complex.
 Remember your final goal is to refine the GAU in a way that enhances the overall
 design, ensuring both correctness and innovation.
    """
-      GUE_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_RETRY_format
+      GUM_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_RETRY_format
       
       if begin:
-         GUE_IMPLEMENTATION_UNIT_prompt = """
+         GUM_IMPLEMENTATION_UNIT_prompt = """
 ####  Overall Proposal for Refining the Design:
 {PROPOSAL}
 
@@ -2553,10 +2555,10 @@ Below is a tree of the GAUs that compose the language model (LM) block and the d
 
 {VIEW}
 
-""" + GUE_IMPLEMENTATION_UNIT_prompt+" Please also give a new name of this variant of the GAU, but notice that, please do not rename the GAUBase class of the unit in your code."
-         GUE_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_REFINE_format
+""" + GUM_IMPLEMENTATION_UNIT_prompt+" Please also give a new name of this variant of the GAU, but notice that, please do not rename the GAUBase class of the unit in your code."
+         GUM_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_REFINE_format
    else:
-      GUE_IMPLEMENTATION_UNIT_prompt = """
+      GUM_IMPLEMENTATION_UNIT_prompt = """
 #### GAU Declaration:
 Below is the declaration of the GAU you are tasked with implementing. Please ensure that your design and implementation align with the details provided:
 
@@ -2587,22 +2589,22 @@ Below is the declaration of the GAU you are tasked with implementing. Please ens
 ### Final Note:
 After completing this GAU, you will be asked to implement any remaining parts of the GAB block. Make sure your GAU is well-structured and self-contained to support the overall model design.
    """
-      GUE_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_format
+      GUM_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_format
 
 
-   return AgentPrompt(GUE_IMPLEMENTATION_UNIT_prompt,GENERAL_JSON_parser,GUE_IMPLEMENTATION_UNIT_format)
+   return AgentPrompt(GUM_IMPLEMENTATION_UNIT_prompt,GENERAL_JSON_parser,GUM_IMPLEMENTATION_UNIT_format)
 
 # endregion
 
 
 
 
-""" ============================= GUE Implementation Unit Refine Prompt ===================================== """
+""" ============================= GUM Implementation Unit Refine Prompt ===================================== """
 
 # region GU Implementation Refine
 
 
-GUE_IMPLEMENTATION_UNIT_REFINE= AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REFINE_format)
+GUM_IMPLEMENTATION_UNIT_REFINE= AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REFINE_format)
 
 
 # endregion
@@ -2612,7 +2614,7 @@ GUE_IMPLEMENTATION_UNIT_REFINE= AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENER
 
 '''
 #######################################################
-# GUE Implementation Reviewer Prompts
+# GUM Implementation Reviewer Prompts
 #######################################################
 '''
 
@@ -2620,13 +2622,13 @@ GUE_IMPLEMENTATION_UNIT_REFINE= AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENER
 
 
 
-""" ============================= GUE Implementation Reviewer System ===================================== """
+""" ============================= GUM Implementation Reviewer System ===================================== """
 
 
-# region GUE Implementation Reviewer 
+# region GUM Implementation Reviewer 
 
 
-GUE_IMPLEMENTATION_REVIEWER_SYSTEM_prompt = """
+GUM_IMPLEMENTATION_REVIEWER_SYSTEM_prompt = """
 You are an expert in autoregressive language model research, and you have been
 asked to review the design and implementation of a novel autoregressive language
 model (LM) block.
@@ -2715,19 +2717,19 @@ goal is to ensure the GAU is theoretically sound, scalable, novel, and ready for
 integration into the broader language model.
 """
 
-GUE_IMPLEMENTATION_REVIEWER_SYSTEM = AgentPrompt(GUE_IMPLEMENTATION_REVIEWER_SYSTEM_prompt)
+GUM_IMPLEMENTATION_REVIEWER_SYSTEM = AgentPrompt(GUM_IMPLEMENTATION_REVIEWER_SYSTEM_prompt)
 
 # endregion
 
 
 
 
-""" ============================= GUE Implementation Unit Refine Review Prompt ===================================== """
+""" ============================= GUM Implementation Unit Refine Review Prompt ===================================== """
 
 
-# region GUE Implementation Refine Review 
+# region GUM Implementation Refine Review 
 
-GUE_IMPLEMENTATION_UNIT_REFINE_REVIEW_prompt = """
+GUM_IMPLEMENTATION_UNIT_REFINE_REVIEW_prompt = """
 ####  Overall Proposal for Refining the Design:
 {PROPOSAL}
 
@@ -2799,19 +2801,19 @@ The checker has evaluated this refined GAU, assessing aspects such as the forwar
 Be strict, fair, and thorough. Only approve designs that meet a high standard. The designer is working one unit at a time in a top-down manner, so ensure that the unit itself is sound and aligned with the overall model goals.
 """
 
-GUE_IMPLEMENTATION_UNIT_REFINE_REVIEW = AgentPrompt(GUE_IMPLEMENTATION_UNIT_REFINE_REVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
+GUM_IMPLEMENTATION_UNIT_REFINE_REVIEW = AgentPrompt(GUM_IMPLEMENTATION_UNIT_REFINE_REVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
 
 
 # endregion
 
 
 
-""" ============================= GUE Implementation Rereview Prompt ===================================== """
+""" ============================= GUM Implementation Rereview Prompt ===================================== """
 
 
-# region GUE Implementation Rereview 
+# region GUM Implementation Rereview 
 
-GUE_IMPLEMENTATION_REREVIEW_prompt = """The designer has refined the design and implementation of the GAU **{UNIT_NAME}** based on your previous feedback and the results from the checkers. The refinement follows the same proposal, but incorporates changes to address the concerns raised.
+GUM_IMPLEMENTATION_REREVIEW_prompt = """The designer has refined the design and implementation of the GAU **{UNIT_NAME}** based on your previous feedback and the results from the checkers. The refinement follows the same proposal, but incorporates changes to address the concerns raised.
 
 ---
 
@@ -2869,18 +2871,18 @@ Be strict and fair in your review. Only approve the design if it meets a high st
 
 
 
-GUE_IMPLEMENTATION_REREVIEW = AgentPrompt(GUE_IMPLEMENTATION_REREVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
+GUM_IMPLEMENTATION_REREVIEW = AgentPrompt(GUM_IMPLEMENTATION_REREVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
 
 
 # endregion
 
 
-""" ============================= GUE Implementation Unit Review Prompt ===================================== """
+""" ============================= GUM Implementation Unit Review Prompt ===================================== """
 
 
-# region GUE Implementation Unit Review 
+# region GUM Implementation Unit Review 
 
-GUE_IMPLEMENTATION_UNIT_REVIEW_prompt = """
+GUM_IMPLEMENTATION_UNIT_REVIEW_prompt = """
 #### Overall Proposal for Refining the Design:
 {PROPOSAL}
 
@@ -2946,7 +2948,7 @@ The checker has evaluated the GAU's behavior, including aspects such as forward 
 Be strict, fair, and thorough in your evaluation. Only approve the design if it meets a high standard of quality and innovation.
 """
 
-GUE_IMPLEMENTATION_UNIT_REVIEW = AgentPrompt(GUE_IMPLEMENTATION_UNIT_REVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
+GUM_IMPLEMENTATION_UNIT_REVIEW = AgentPrompt(GUM_IMPLEMENTATION_UNIT_REVIEW_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
 
 
 # endregion

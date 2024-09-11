@@ -8,7 +8,7 @@ import sys,os
 
 sys.path.append('.')
 import model_discovery.utils as U
-from model_discovery.agents.flow.gau_flows import EndReasons,RunningModes,END_REASONS_LABELS
+from model_discovery.agents.flow.gau_flows import EndReasons,RunningModes,END_REASONS_LABELS,DesignModes
 
 
 
@@ -105,7 +105,7 @@ def design(evosys,project_dir):
         col1, col2 = st.columns([1, 3])
         with col1:
             # st.markdown("#### Configure design mode")
-            mode = st.selectbox(label="Design Mode",options=['Design from existing design','Design from scratch (unstable)'])
+            mode = st.selectbox(label="Design Mode",options=[i.value for i in DesignModes])
         with col2:
             # st.markdown("#### Configure the base models for each agent")
             AGENT_TYPES = ['claude3.5_sonnet','gpt4o_0806','gpt4o_mini']
@@ -124,8 +124,8 @@ def design(evosys,project_dir):
                     agent_types[agent] = st.selectbox(label=agent_type_labels[agent],options=AGENT_TYPES,index=index)
             design_cfg['agent_types'] = agent_types
 
-        if mode!='Design from existing design':
-            st.header("WARNING!!!: Design from scratch has not been updated, it may not work as expected.")
+        if mode!=DesignModes.MUTATION.value:
+            st.header("WARNING!!!: Only mutation mode is supported now. Other modes are not stable or unimplemented.")
 
 
         sources = ['ReferenceCoreWithTree', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference', 'Reference1hop']
@@ -135,7 +135,7 @@ def design(evosys,project_dir):
         cols = st.columns(len(sources))
         for i,source in enumerate(sources):
             with cols[i]:
-                if mode=='Design from existing design' and source=='ReferenceCoreWithTree':
+                if mode==DesignModes.MUTATION.value and source=='ReferenceCoreWithTree':
                     n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=1,value=1,max_value=1,disabled=True)
                 else:
                     init_value=min(1,sources[source])
@@ -200,16 +200,15 @@ def design(evosys,project_dir):
 
 
 
-
     #### Run design
 
     # cols = st.columns([7,2.5,1.8,1.2])
     cols = st.columns([7,3,2])
     with cols[0]:
-        instruction = st.text_input(label = "Add any additional instructions (optional)" )
+        user_input = st.text_input(label = "Add any additional instructions (optional)" )
     with cols[1]:
-        mode = st.selectbox(label="Running Mode",options=[i.value for i in RunningModes],index=2)
-        design_cfg['running_mode'] = RunningModes(mode)
+        running_mode = st.selectbox(label="Running Mode",options=[i.value for i in RunningModes],index=2)
+        design_cfg['running_mode'] = RunningModes(running_mode)
     with cols[2]:
         EXPERIMENT_RUNS = st.number_input(label="Number of design runs",min_value=1,value=1)
     
@@ -218,7 +217,7 @@ def design(evosys,project_dir):
         with st.expander('Check configurations'):
             st.write(design_cfg)
     with cols[1]:
-        submit = st.button(label="***Run design***", use_container_width=True)
+        submit = st.button(label="***Run design***", use_container_width=True,disabled=mode!=DesignModes.MUTATION.value)
 
     if submit:
         for i in range(EXPERIMENT_RUNS):
@@ -234,13 +233,9 @@ def design(evosys,project_dir):
             else:
                 spinner_text = f"running model design loop ({i+1}/{EXPERIMENT_RUNS})"
             with st.spinner(text=spinner_text):
-                # type_abbr = {'claude3.5_sonnet':'C','gpt4o_0806':'G','gpt4o_mini':'M'}
-                # type_abbr = ''.join([type_abbr[i] for i in agent_types.values()])
-                _mode = 'existing' if mode=='Design from existing design' else 'scratch'
-                instruct,seed,refs=evosys.select(n_sources,mode=_mode) # use the seed_ids to record the phylogenetic tree
-            # if instruction:
-            #     instruct+=f'\n\n## Additional Instructions from the user\n\n{instruction}'
-            evosys.sample(instruct,seed,refs,design_id=None,mode='existing',user_input=instruction,design_cfg=design_cfg)
+                _mode = DesignModes(mode)
+                design_id=None
+                evosys.design(n_sources,design_cfg,user_input=user_input,mode=_mode,design_id=design_id)
     
     elif selected_design:
         with st.empty():
