@@ -180,3 +180,6 @@ ALG 4 Sample(n) -> Ds
 ALG 5 Select(Tt) -> T_t+1
     TODO...
 
+
+
+
