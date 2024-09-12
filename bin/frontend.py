@@ -54,7 +54,7 @@ def build_evo_system(name='test_evo_000'):
         "scales=14M,31M,70M",
         "selection_ratio=0.25",
         "select_method=random",
-        "design_budget=0",
+        
     ]
     evo_system = BuildEvolution(
         strparams=';'.join(strparams),
