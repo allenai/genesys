@@ -803,6 +803,7 @@ class EvolutionSystem(exec_utils.System):
             self.state['current_scale']=0
         if 'budgets' not in self.state: # remaining budget for each scale
             budget=1
+            self.state['budgets']={}    
             for scale in self.state['scales'][::-1]:
                 self.state['budgets'][scale]=int(np.ceil(budget))
                 budget/=self.state['selection_ratio']
